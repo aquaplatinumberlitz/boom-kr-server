@@ -107,15 +107,6 @@
       "limits": "Mechanical consistency notsemantic/gate certification; unchanged-code tests reused notrerun."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP163-balanced-eight.json",
-      "sha256": "44c197b44f158c7609a341a7026b217445faccffbbb9c16ef87aa4578d9bacc9",
-      "bytes": 58369,
-      "count": 228
-    }
-  ],
   "delta": {
     "added": [
       "ActualManner1/8syntheticslots4to4Start0/104 versus1to7Start7/no104/native/UI/wireproof."
@@ -206,6 +197,154 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP163balanced8actualStart/positive-negative/nativecopylimits/PR233merge/nextmodepresetStart3audit synchronized beforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00012",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "0e82c775a10be55c2cf11da3740aab6bdbedaed663b4f9c7f55c9075ff64ef19"
+    },
+    {
+      "id": "RUN-00016",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "2c14d1259f61a2a006ebc1ff477b284e59752da54abef98e71266577a1a89f8c"
+    },
+    {
+      "id": "RUN-00017",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/native-verification.json",
+      "bytes": 5738,
+      "sha256": "191f3e087e2f3f513c9b04647fa1ae13f67d00b2e5e2e218586184611f8d8933"
+    },
+    {
+      "id": "RUN-00021",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles/client.log",
+      "bytes": 69876,
+      "sha256": "83b5b038e3dc0f6cba7de48044702cf82127acaf64bc3a127dddfb12e5592b3e"
+    },
+    {
+      "id": "RUN-00094",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/cycles-oracle.json",
+      "bytes": 53123,
+      "sha256": "756c61a4d0ce311592b794525f15af6aab9f3e78c91873163b8765068c5bd9d0"
+    },
+    {
+      "id": "RUN-00109",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/raw-seal.json",
+      "bytes": 16393,
+      "sha256": "a8dd7ac1a03440866eb48dac9a7f5a5149d21143e2616a0757e05a80c4b0af22"
+    },
+    {
+      "id": "RUN-00116",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles/client.log",
+      "bytes": 65760,
+      "sha256": "f4385b974293a4ec6bac8237c4b54848214c0ebf757b093bbe4c3a1935141f84"
+    },
+    {
+      "id": "RUN-00189",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/cycles-oracle.json",
+      "bytes": 51640,
+      "sha256": "9ad7f4b2fd8dbd3e8e4295c0caf1e576583f63283b4320283cf13d33e9759a74"
+    },
+    {
+      "id": "RUN-00204",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/raw-seal.json",
+      "bytes": 16393,
+      "sha256": "010cbc46845ae2c7c009bc2856af1ada65f39a5fd886a303b0604e4ee557db15"
+    },
+    {
+      "id": "RUN-00208",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/reuse-question.json",
+      "bytes": 3240,
+      "sha256": "d8951a1124c41e7be88eb3e7443446c5c5aa00dfd1b96aa97854755c1847c66b"
+    },
+    {
+      "id": "RUN-00209",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/server-source-reuse.json",
+      "bytes": 11240,
+      "sha256": "b2e50e90c9cbe6ab86d1d0d36ef0be004a07894497dcc578fdf4732ec2a40f19"
+    },
+    {
+      "id": "RUN-00211",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/verification.json",
+      "bytes": 2066,
+      "sha256": "36e5cf895641308a142f53a515a502099d7f622bb29249f82a7765fdfa49857e"
+    },
+    {
+      "id": "RUN-00214",
+      "kind": "local",
+      "path": "local/research/codex/balanced-eight-r1/visual-review.json",
+      "bytes": 811,
+      "sha256": "091c72b47dca5dcee3630a8552a4d2672905f020c1fd3b16c91a735a4d6ad2f4"
+    },
+    {
+      "id": "RUN-00221",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/verification.json",
+      "bytes": 25352,
+      "sha256": "1603b50a33133a0aa0a7e5cc8ff1bfdd69a9224f5a129cc7480ab4ece069071d"
+    },
+    {
+      "id": "RUN-00224",
+      "kind": "local",
+      "path": "local/research/codex/team-mode-reset-r4/team-mode-verification.json",
+      "bytes": 251796,
+      "sha256": "b621727e0e155de7b3634b2f912988dd6b76e87c2437b6714b0a4a3b2d570f35"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/balanced-eight-r1",
+      "path": "local/evidence-manifests/a8bc195b8d73e60f081ca1d2fb1655a171130c01258cbb0cdc0e4797657978f5.jsonl",
+      "sha256": "a8bc195b8d73e60f081ca1d2fb1655a171130c01258cbb0cdc0e4797657978f5",
+      "bytes": 41959,
+      "count": 202,
+      "files_bytes": 71753648
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a365543ff45487d6fc50b2ec238ad186c0e2bd1e29d04e781254a601bf669cde.jsonl",
+      "sha256": "a365543ff45487d6fc50b2ec238ad186c0e2bd1e29d04e781254a601bf669cde",
+      "bytes": 627,
+      "count": 3,
+      "files_bytes": 74185
+    },
+    {
+      "run": "local/research/codex/eight-player-r1",
+      "path": "local/evidence-manifests/45daab36876b4633c67568210dde0d1b2d782687aa0bd7d14198d6372138300f.jsonl",
+      "sha256": "45daab36876b4633c67568210dde0d1b2d782687aa0bd7d14198d6372138300f",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 9377
+    },
+    {
+      "run": "local/research/codex/team-mode-reset-r4",
+      "path": "local/evidence-manifests/edd696af8121129d92ff2d489f54cd3bc45105031ae3bf064327b379a1a5bbab.jsonl",
+      "sha256": "edd696af8121129d92ff2d489f54cd3bc45105031ae3bf064327b379a1a5bbab",
+      "bytes": 833,
+      "count": 4,
+      "files_bytes": 954
     }
   ]
 }

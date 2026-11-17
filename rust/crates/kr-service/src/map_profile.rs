@@ -14,6 +14,8 @@ pub(crate) struct Profile {
     spawns: Vec<[u8; 2]>,
     scripted: bool,
     payload_sha256: String,
+    #[serde(default)]
+    drops: Vec<(String, u32)>,
 }
 fn error() -> io::Error {
     io::Error::other("inconsistent or unsupported pack map profile")
@@ -45,7 +47,8 @@ fn adler_zero(bytes: &[u8]) -> u32 {
 }
 impl Profile {
     pub(crate) fn load(pin: &FixturePin) -> io::Result<Self> {
-        let value: Self = serde_json::from_slice(&pin.load()?).map_err(io::Error::other)?;
+        let mut value: Self = serde_json::from_slice(&pin.load()?).map_err(io::Error::other)?;
+        crate::item_scope::apply(&value.name, &mut value.drops)?;
         if value.scripted
             || (value.width, value.height) != (15, 13)
             || !(2..=8).contains(&value.spawns.len())

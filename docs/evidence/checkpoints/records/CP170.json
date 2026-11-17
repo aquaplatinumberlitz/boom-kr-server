@@ -158,15 +158,6 @@
       "limits": "Run không thử Start3; CP168 floor Start3 không backfill; Bwhite1frame không hang proof."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP170-current-basic-cycles.json",
-      "bytes": 373778,
-      "sha256": "ab2ab6f314915ef50f6fedc13bd0230e36bed41fc512e06255969cad441388ff",
-      "count": 1472
-    }
-  ],
   "delta": {
     "added": [
       "Cùng current basic copy profile hai outcomes/reset/Ready, three native item effects và hidden/stat/195/key reset.",
@@ -262,6 +253,208 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP170 current basic two-cycle/reset milestone, CP169 merge, limits và optional preset/Start3 next step đã đồng bộ trước complete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/actor-fields-initial.json",
+      "bytes": 340371,
+      "sha256": "c6e623dd3e1acaf5f9491b974920461575028ce4c437d158098c9326e78602b5"
+    },
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/actor-fields.json",
+      "bytes": 358731,
+      "sha256": "aa8b0dcdb43026e9a85231ee8d9a068d11d6584764335d36d7296a014a1f2477"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/alignment-verification.json",
+      "bytes": 271,
+      "sha256": "b5df3aa5672e772d8c1ed695c383a84995891b3c3e4ba02b80d73983befd3ffd"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/analysis-corrections.json",
+      "bytes": 764,
+      "sha256": "10daeeabff11a86cc1cb6ffe2c4cf062ba5bb28f3579ff2f32af1b27f41332d1"
+    },
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/analysis-driver-initial.py",
+      "bytes": 10670,
+      "sha256": "8a17efc3ba08f0b0cc66f50f60764bdcc7f8297d1e47ec4a9566b2656d9ce164"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/analysis-driver.txt",
+      "bytes": 1080,
+      "sha256": "1ddefbcc8a2ea0393d4fc722d59d499dfd1e105b1684c410cc025181aad7b479"
+    },
+    {
+      "id": "RUN-00011",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00012",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/basic-cycle-verification.json",
+      "bytes": 2330,
+      "sha256": "305063d03fd9fddf5f6a125659f0bc27c5ec21dbfef15b773e37137474ddb608"
+    },
+    {
+      "id": "RUN-00014",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/catalog-check.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUN-00015",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/chain-summary.json",
+      "bytes": 64579,
+      "sha256": "f6079a369782759b89325ab4390501f6d7460195aa1a5c90615e6c4c0b5ec097"
+    },
+    {
+      "id": "RUN-00018",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/cp170-snapshot/docs/PLAN.md",
+      "bytes": 35564,
+      "sha256": "c8a2359b02e9d27f877d9a3c6deb7070e62e3c09b09b8fd374e3fecd46cb3854"
+    },
+    {
+      "id": "RUN-01342",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/cycles-recipe.json",
+      "bytes": 1024,
+      "sha256": "8e0367d0a312efba4c5c75cccd65753651bb170e7a49bd1993f04d95c3770574"
+    },
+    {
+      "id": "RUN-01344",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/diff-check.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUN-01345",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "86329af1244464b24aeb49572923936c901ddd8d23d6e9a8fcce59ecdb7f4168"
+    },
+    {
+      "id": "RUN-01355",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "8c242f7c3787d5b95f278e134633a14076606d7de7d142530bf11215a766dd85"
+    },
+    {
+      "id": "RUN-01359",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/life-agreement-verification.json",
+      "bytes": 6820,
+      "sha256": "7c2c523134b8f30b9dd2f759307de1a9233a7b30fe55c8ab62e04e00832abeb6"
+    },
+    {
+      "id": "RUN-01360",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "eaab79fade85ab1fa3f212482c9b13c34b67d9c7cc3ae2b3ac0fb695852f9753"
+    },
+    {
+      "id": "RUN-01361",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/loading-milestones.json",
+      "bytes": 19336,
+      "sha256": "5ef0b4fc818f6f74c89ea1bc854c9dda464e4b3b9481aaba1362450c0f422a6f"
+    },
+    {
+      "id": "RUN-01362",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/mode-gating-verification.json",
+      "bytes": 2047,
+      "sha256": "323a2709c28c7743d8477c11dd0b38e8b7c3de102a87d474ad4aa81050db9f2f"
+    },
+    {
+      "id": "RUN-01363",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/mode180-native.json",
+      "bytes": 4698,
+      "sha256": "ad3afa43e76940733ec4214aa1d118672cc7d65a44e1e1f6a017963f9ad251c3"
+    },
+    {
+      "id": "RUN-01364",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/native-actual.json",
+      "bytes": 70009,
+      "sha256": "e4466f05b1564751d5fec3fb107a0631a49a2689984865a02229305da18875f6"
+    },
+    {
+      "id": "RUN-01379",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/raw-seal.json",
+      "bytes": 270968,
+      "sha256": "aede95d9fef596e49f716a096054506649ae4768e40ae2fe766c7572f8595a16"
+    },
+    {
+      "id": "RUN-01406",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/reuse-question.json",
+      "bytes": 2987,
+      "sha256": "181bb9bda61692567dfdcb7edf2903a1c5f3d6f04000655911f44635a3f9296a"
+    },
+    {
+      "id": "RUN-01408",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/runtime-preflight.json",
+      "bytes": 21466,
+      "sha256": "c34ec467c69a8c760d81cf62cc95b10b94048636fc94fcaf6eb7194131f4081c"
+    },
+    {
+      "id": "RUN-01455",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/server-source-reuse.json",
+      "bytes": 7658,
+      "sha256": "c01123b560350b84c106c06d821a7514d8b0519863ab6eb5397debbe6290bc1f"
+    },
+    {
+      "id": "RUN-01461",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-cycles-r1/visual-review.json",
+      "bytes": 1075,
+      "sha256": "38cbc721c1b4350edbbb6a418fe1e1fc36f87ba403910e81c6c1b0632915e54d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/current-basic-cycles-r1",
+      "path": "local/evidence-manifests/b5dc1435269d201b8b153d21589619d0c8981b48c83d3dbec86b3008b577a811.jsonl",
+      "sha256": "b5dc1435269d201b8b153d21589619d0c8981b48c83d3dbec86b3008b577a811",
+      "bytes": 293409,
+      "count": 1437,
+      "files_bytes": 127440864
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/425600bc972373dde3c3fda8ad2edbf5c378743fae1426956489177a13c4ff76.jsonl",
+      "sha256": "425600bc972373dde3c3fda8ad2edbf5c378743fae1426956489177a13c4ff76",
+      "bytes": 1667,
+      "count": 9,
+      "files_bytes": 316995
     }
   ]
 }

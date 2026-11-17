@@ -138,15 +138,6 @@
       "limits": "Mechanical consistency only; required local/history checker runs again before commit/merge; independent review waived."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP147-eight-player.json",
-      "bytes": 110739,
-      "sha256": "77199f9f6ead185de65e8c2b4f35eff568709fb3e2d3b0d016a26156c4a72047",
-      "count": 449
-    }
-  ],
   "delta": {
     "added": [
       "New bounded8slot/4v4/1v7/ninthcapacity runtime and nativebalanceblock; canonical sources/catalog/issue14 linked."
@@ -231,6 +222,230 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP147 scoped8roster/capacity/team findings, unknowns and navigation synchronized; PLAN remains sole work order; gates unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RE-0002",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/balance-emulation.json",
+      "bytes": 4395,
+      "sha256": "f836f4b8229caaa4188944d0bd3133b1612261d6e5e494214701e1dfb63d9724"
+    },
+    {
+      "id": "RE-0003",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/checks/artifacts.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RE-0004",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/checks/docs.txt",
+      "bytes": 175,
+      "sha256": "9051ea974e8bfaef32ade6a33135104518c3783419ae7b75cfa9a0df4835ef8b"
+    },
+    {
+      "id": "RE-0005",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/checks/issues.txt",
+      "bytes": 130,
+      "sha256": "2e4cc1ff55fc3cf218beb00e90a15f4adfbceb49a27616ed462443a3f777b5de"
+    },
+    {
+      "id": "RE-0010",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/cp147-snapshot/docs/PROTOCOL.md",
+      "bytes": 436641,
+      "sha256": "dd4458e4997a312047a0df5468892621764e2121a788215ff4bf9729c3b1bd98"
+    },
+    {
+      "id": "RE-0018",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/client.log",
+      "bytes": 69766,
+      "sha256": "9e208d9a1efe28911a792de894eb79abb75c7280630702a7dc3d6798537d5797"
+    },
+    {
+      "id": "RE-0043",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/four-four/run.json",
+      "bytes": 20460,
+      "sha256": "47f60f0c5951c8f44126a73eeb5f09a74702e0e777f2ef9ea5cfb33ea39b53ed"
+    },
+    {
+      "id": "RE-0120",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/raw-seal.json",
+      "bytes": 60260,
+      "sha256": "478c342e6ba4a2d52bf947dcc73d9e376c723211a1d67961542145f7fd86d490"
+    },
+    {
+      "id": "RE-0121",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/rea-timeout.json",
+      "bytes": 280,
+      "sha256": "2be7b0d0363f8d1ab057e8f295d020c688927fe8aaee54c7575d1cc27312ea53"
+    },
+    {
+      "id": "RE-0148",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/client.log",
+      "bytes": 66282,
+      "sha256": "bd6a4d49edff8ba6dcc58c98d6902e4cd42ec1434555d1f0d5e7afb1f6f0002e"
+    },
+    {
+      "id": "RE-0173",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run/run.json",
+      "bytes": 21008,
+      "sha256": "f4d5a5cf10d144e6d8fcc173491d4925d6c5936782d362bbdd18e1a51b299a1f"
+    },
+    {
+      "id": "RE-0220",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-four-four/run-oracle.json",
+      "bytes": 53118,
+      "sha256": "6f2f0f4799634137ff7f1185ed7cb810b8f0e7822b5203fc40eac95b0db2334d"
+    },
+    {
+      "id": "RE-0249",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/client.log",
+      "bytes": 62305,
+      "sha256": "36a97224d41f950926ec5ff84cd42c908708f722c51b3cebd58ed7b5464983ba"
+    },
+    {
+      "id": "RE-0274",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-nine/run/run.json",
+      "bytes": 20522,
+      "sha256": "35296b220acb3f9f4a2161e36369f219c6616aaa2037ff51da25bfacd5a32d97"
+    },
+    {
+      "id": "RE-0348",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/client.log",
+      "bytes": 65339,
+      "sha256": "0c783a7736977f0799a987bd87cf066711d88087b23ce351fbd5b8ae57a3cffc"
+    },
+    {
+      "id": "RE-0373",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run/run.json",
+      "bytes": 20850,
+      "sha256": "a0ec0dbebd71beef3d9f3fde9a31adfe156f6833717d45eeb93e2b674943dbe1"
+    },
+    {
+      "id": "RE-0420",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/run-oracle.json",
+      "bytes": 51785,
+      "sha256": "b7de6f0db4b71d8bb1ae3c7e1dd27c226da63673fc1380adae37e0bc55a2faa3"
+    },
+    {
+      "id": "RE-0423",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/reuse-question.json",
+      "bytes": 2446,
+      "sha256": "a669652faf48cfffcd310bc12d44b2a66e4c340e1083e21fbe24a533a93aea60"
+    },
+    {
+      "id": "RE-0424",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/room-getters.json",
+      "bytes": 1994,
+      "sha256": "20a32b81724b81b9e5bcdf08d8680915c32107675f99988592d456a5b9fb64da"
+    },
+    {
+      "id": "RE-0426",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/start-guard-instructions.json",
+      "bytes": 91872,
+      "sha256": "a11bb06acfad08f044cdcefe79f6aecd3cd23fee19a2fe93599d9396db464fd0"
+    },
+    {
+      "id": "RE-0428",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/verification.json",
+      "bytes": 25352,
+      "sha256": "1603b50a33133a0aa0a7e5cc8ff1bfdd69a9224f5a129cc7480ab4ece069071d"
+    },
+    {
+      "id": "RE-0429",
+      "kind": "local",
+      "path": "local/research/codex/eight-player-r1/verify_balance.py",
+      "bytes": 2819,
+      "sha256": "32c15af2905386586c2b8eb483ab1e14fd78e684a0418c2ad17b99c380581d80"
+    },
+    {
+      "id": "RE-0436",
+      "kind": "local",
+      "path": "local/research/codex/room-map-r1/playmap-list-summary.json",
+      "bytes": 1644,
+      "sha256": "aa134e49aa3c4321a29bc641a2169e726cd68c168c63d6b3ee00214928155311"
+    },
+    {
+      "id": "RE-0438",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/build_player.py",
+      "bytes": 3046,
+      "sha256": "e820e8379c44387e6963a52c5c1edab1695c6040d76445a2d3126f4ec8d3033f"
+    },
+    {
+      "id": "RE-0446",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "id": "RE-0447",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CA.exe",
+      "bytes": 10141152,
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "id": "RE-0448",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/docs/game-spec-web.md",
+      "bytes": 18383,
+      "sha256": "32d64c68fc18db889f4f0dae2a169100081ccaadc0e5caa5c9a900d5e9340cad"
+    },
+    {
+      "id": "RE-0449",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boom-re/docs/oc_a-room.md",
+      "bytes": 23378,
+      "sha256": "5fbc0db42e99c6f34a09a60468783ac70e98984735d1ff49d9ebc14ee4aaf6f4"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/eight-player-r1",
+      "path": "local/evidence-manifests/b0f4ced7d294d441a2ad17fc819bdbb0b625fa8cd57267888a1734daf139c511.jsonl",
+      "sha256": "b0f4ced7d294d441a2ad17fc819bdbb0b625fa8cd57267888a1734daf139c511",
+      "bytes": 81370,
+      "count": 412,
+      "files_bytes": 141139452
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/3f2bfea634f19419f884958e2242056dbb372d1daf866aee35fb923bcda63007.jsonl",
+      "sha256": "3f2bfea634f19419f884958e2242056dbb372d1daf866aee35fb923bcda63007",
+      "bytes": 1152,
+      "count": 6,
+      "files_bytes": 136365
+    },
+    {
+      "run": "local/research/codex/room-map-r1",
+      "path": "local/evidence-manifests/7e2a406170a40b75923790b9f0778ffc6431fd7a410f12f5484b3ecac574a642.jsonl",
+      "sha256": "7e2a406170a40b75923790b9f0778ffc6431fd7a410f12f5484b3ecac574a642",
+      "bytes": 610,
+      "count": 3,
+      "files_bytes": 82353
     }
   ]
 }

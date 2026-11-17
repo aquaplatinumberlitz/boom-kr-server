@@ -132,15 +132,6 @@
       "limits": "Mechanical checks/model separatefromsemanticacceptance andgate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP137-integrated-survivor.json",
-      "bytes": 1353634,
-      "sha256": "6c38948548c31b78f1956e5d611ff8fe7f869721a1e49868f886194030ab0b5c",
-      "count": 5333
-    }
-  ],
   "delta": {
     "added": [
       "Native combinednormalcurrenttrap/deadline/resultdrain/survivor/movement2 sameprofile/run proof."
@@ -228,6 +219,176 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP137nativecombined2 confirmed/failedUIpartials distinguished, sourceboundedlimits/endpointnextstep/issue/catalog synced beforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00453",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/analysis-summary.json",
+      "bytes": 3925,
+      "sha256": "24eb2ee82b6e99088d048d47f45c3d6b2e5bb15f57139c390f3acca025d52559"
+    },
+    {
+      "id": "RUN-00458",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00468",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/cp137-snapshot/docs/PLAN.md",
+      "bytes": 33087,
+      "sha256": "5624c5738ab66a8c45cf1ee1a068861e227ad8cd1fc7926ee5214afde310c853"
+    },
+    {
+      "id": "RUN-02671",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "ddb0ba491fe531a7ea707a88fd766eeb345d61b8c1e80aea23c3cb9847e0dde6"
+    },
+    {
+      "id": "RUN-02673",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/drained-verification.json",
+      "bytes": 3930,
+      "sha256": "0e4c2168b33f3cc07dfe9aa93e2b84153ec32fe79c835922c6d98c087c767b06"
+    },
+    {
+      "id": "RUN-02691",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/integration-verification.json",
+      "bytes": 197070,
+      "sha256": "a31deed6430d7c5cd226cabcdfb6a1dbd53b6c8061d21400b3c2574c4a79a439"
+    },
+    {
+      "id": "RUN-02694",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "c1ab283be370d106068ab44f0dd4d2da54a6b235edac9eae74d0e5a47f9c10ce"
+    },
+    {
+      "id": "RUN-02713",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/partial-verification.json",
+      "bytes": 201432,
+      "sha256": "97a8a37a1f19388e1db68e67c3520c1ee266a51ed9d2e34adf113d920e526ea1"
+    },
+    {
+      "id": "RUN-02718",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/peer-verification.json",
+      "bytes": 165240,
+      "sha256": "8984e5453f140698bf711661e3aa018d1759130928f1ce487b6c49fbdd972c97"
+    },
+    {
+      "id": "RUN-02724",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/raw-seal.json",
+      "bytes": 450164,
+      "sha256": "3c685cb08639e37ead90799bdb5868ef1d56604ab5fbf21d947f638e3ce27bb3"
+    },
+    {
+      "id": "RUN-02795",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/reuse-question.json",
+      "bytes": 3789,
+      "sha256": "b21011a91105162ef42a634a4245d301d534fee42c88d1420549c959e0268c1c"
+    },
+    {
+      "id": "RUN-02839",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/runtime-verification.json",
+      "bytes": 2338,
+      "sha256": "578ca24022b82ad53e46bbab96f6bbd23f42b29a0aadd2b8122839783be20ce2"
+    },
+    {
+      "id": "RUN-02841",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/semantic-boundaries-verification.json",
+      "bytes": 8022,
+      "sha256": "ab796146cbe8a42d4fd1a07ba6f9c86aa38a37f906187f64ad5d5be1990d9101"
+    },
+    {
+      "id": "RUN-02848",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/transport-verification.json",
+      "bytes": 6244,
+      "sha256": "48a7866ca6451ff7c779d22fe057b51e5436cd5c2d698818f9264f2f314e0709"
+    },
+    {
+      "id": "RUN-02862",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r1/visual-review.json",
+      "bytes": 840,
+      "sha256": "dc586565e5534463fc78ea9360bcd32a6e1c4fc2a6545d1e1eb057c7be1a8c78"
+    },
+    {
+      "id": "RUN-03940",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r2/cycles/run.json",
+      "bytes": 195909,
+      "sha256": "c12b08bb9de6deabc328d028e007f3551c5541dfcf2792b8e6a0bbfe994f6ac0"
+    },
+    {
+      "id": "RUN-05215",
+      "kind": "local",
+      "path": "local/research/codex/integrated-survivor-r3/cycles/run.json",
+      "bytes": 241255,
+      "sha256": "d333af9e01480160ae87059131a64839a339294f7d5e3a608ea62c3acd04ffcd"
+    },
+    {
+      "id": "RUN-05333",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/server-tests.txt",
+      "bytes": 326,
+      "sha256": "f28b95e479069101d2aec9e3c4074164e368ada7e65cef0671c89402aab651a0"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/integrated-survivor-r1",
+      "path": "local/evidence-manifests/0db857fd62ec28c384434e48cc8891e3bba684b08381dc58f303d8d94564acc6.jsonl",
+      "sha256": "0db857fd62ec28c384434e48cc8891e3bba684b08381dc58f303d8d94564acc6",
+      "bytes": 582957,
+      "count": 2847,
+      "files_bytes": 66832811
+    },
+    {
+      "run": "local/research/codex/integrated-survivor-r2",
+      "path": "local/evidence-manifests/2376075d6d7a49d1d541807d75520cf15036a4fb2d752269547f0cc3bea45ab5.jsonl",
+      "sha256": "2376075d6d7a49d1d541807d75520cf15036a4fb2d752269547f0cc3bea45ab5",
+      "bytes": 238886,
+      "count": 1179,
+      "files_bytes": 30966828
+    },
+    {
+      "run": "local/research/codex/integrated-survivor-r3",
+      "path": "local/evidence-manifests/a977373527dd21cb352045207e06b157949b6872358fe465ce67ccbf7cd920d2.jsonl",
+      "sha256": "a977373527dd21cb352045207e06b157949b6872358fe465ce67ccbf7cd920d2",
+      "bytes": 260221,
+      "count": 1281,
+      "files_bytes": 32224488
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b46d1bfb5b7fa5d21008f2e01234226ef1c212ef474981e07271950d0b329201.jsonl",
+      "sha256": "b46d1bfb5b7fa5d21008f2e01234226ef1c212ef474981e07271950d0b329201",
+      "bytes": 1202,
+      "count": 6,
+      "files_bytes": 252820
+    },
+    {
+      "run": "local/research/codex/loading-timeout-positive-r1",
+      "path": "local/evidence-manifests/963d76fceb51647d162e40c4c7125c915bd98094ab98d1be801a828d54fc015c.jsonl",
+      "sha256": "963d76fceb51647d162e40c4c7125c915bd98094ab98d1be801a828d54fc015c",
+      "bytes": 484,
+      "count": 2,
+      "files_bytes": 577
     }
   ]
 }

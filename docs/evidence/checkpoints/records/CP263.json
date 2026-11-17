@@ -120,15 +120,6 @@
       "limits": "Native2/4/8/account after remaining R1 steps; no inherited certification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP263-r1c-player-slots.json",
-      "bytes": 629955,
-      "sha256": "adce4642fcc4d15faa584dfa12a2ab80659bfa62b82e1ec66e474b17bb349edb",
-      "count": 2357
-    }
-  ],
   "delta": {
     "added": [
       "SlotAllocation and common106 template with runtime PlayerId projection cache.",
@@ -294,5 +285,247 @@
   ],
   "completed_feature_groups": [
     "r1c-player-identity-slots-template"
+  ],
+  "evidence": [
+    {
+      "id": "R1CCP263-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 68423,
+      "sha256": "7ae48cdc02c1b48befd1e647706a1ca33a812480db870fe1050d0c4666857356"
+    },
+    {
+      "id": "R1CCP263-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 218567,
+      "sha256": "8c4c3d1076901302db8fa01dd3390101d30a68e4bfc2741d446cbd81f0907b3b"
+    },
+    {
+      "id": "R1CCP263-00003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 127877,
+      "sha256": "05ca61ea3e92aae72627de49d5ff177aeb80496f8c5b81564e2bea01222485ae"
+    },
+    {
+      "id": "R1CCP263-00004",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 852624,
+      "sha256": "48ab2dccda374d3d7d862e4b3c9a6b924e0c6fb8af6bdb72426d2548ef7f6471"
+    },
+    {
+      "id": "R1CCP263-00005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 54104,
+      "sha256": "1f1336e4a5fd1fc4b6e783a395ef6367a0b98629252973d64fc64d30d5345aef"
+    },
+    {
+      "id": "R1CCP263-00006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD080.json",
+      "bytes": 4914,
+      "sha256": "6167caa1ef7e22ec054ee183278a5771741692a17706692e0e8d8da1801c0005"
+    },
+    {
+      "id": "R1CCP263-00007",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 283628,
+      "sha256": "05ac94322520daf575ad5fa82ba1072a05722d8c3bee5ac746e11dc89029ea4d"
+    },
+    {
+      "id": "R1CCP263-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42628,
+      "sha256": "9e10581150ea6310787cbc445f353575b8b52f47905e26ea5ee61581123de802"
+    },
+    {
+      "id": "R1CCP263-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 59922,
+      "sha256": "09bf8d628a90f0e5b43527c310ddb25b261fce3b01076fefd8bb9e83c14d5b2f"
+    },
+    {
+      "id": "R1CCP263-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1c-player-slots.json",
+      "bytes": 4475,
+      "sha256": "6964650722207225684d8b09ab54b8fe16125a0750af11c91cff2f5c48807958"
+    },
+    {
+      "id": "R1CCP263-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 230280,
+      "sha256": "120c6dd19d573ad277d853830e55320661a315dd7d5b5ac0cfb0c6e57daf6221"
+    },
+    {
+      "id": "R1CCP263-00019",
+      "kind": "local",
+      "path": "local/research/codex/cp262-merged.json",
+      "bytes": 123,
+      "sha256": "d405527586ad66c2d5a1cbceade03da08b7ecdab9bb00aaf9d0e913e679764a7"
+    },
+    {
+      "id": "R1CCP263-00023",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/B106-unready.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "R1CCP263-00025",
+      "kind": "local",
+      "path": "local/research/codex/r1c-delivery-r1/selfcheck.json",
+      "bytes": 2989,
+      "sha256": "0bf1353ac1277fe282c8d67af85a563684486b0373bdf4164b18b920c6745a0e"
+    },
+    {
+      "id": "R1CCP263-00849",
+      "kind": "local",
+      "path": "local/research/codex/r1c-regression-r1/harness-failure.json",
+      "bytes": 314,
+      "sha256": "e82020466c962b7c64c29e5ebaec3067dadf93da9e44d792a83c5b4c2d15514d"
+    },
+    {
+      "id": "R1CCP263-02123",
+      "kind": "local",
+      "path": "local/research/codex/r1c-regression-r2/player-slots/verification.json",
+      "bytes": 1048,
+      "sha256": "62881dc950dbd1665f17e85ee35b1f0034137646bac05d2963edb17214182c57"
+    },
+    {
+      "id": "R1CCP263-02157",
+      "kind": "local",
+      "path": "local/research/codex/r1c-regression-r2/source/rust/crates/kr-service/src/player_template.rs",
+      "bytes": 6984,
+      "sha256": "3f41dba39016c3b58e813fd82df7a47c5cd6c65fb7f04fee6974b20482e395fd"
+    },
+    {
+      "id": "R1CCP263-02158",
+      "kind": "local",
+      "path": "local/research/codex/r1c-regression-r2/source/rust/crates/kr-service/src/room.rs",
+      "bytes": 29741,
+      "sha256": "ff9b604c620dae63b8ceefc8855f3fea3fb7edf789a0b9beba80a0165579cfbe"
+    },
+    {
+      "id": "R1CCP263-02161",
+      "kind": "local",
+      "path": "local/research/codex/r1c-regression-r2/source/rust/crates/kr-service/src/rules.rs",
+      "bytes": 7246,
+      "sha256": "f33e1b45473bc7f0123ada39807afc2cc3ae03412cb291f258167de6cad2634f"
+    },
+    {
+      "id": "R1CCP263-02323",
+      "kind": "local",
+      "path": "local/research/codex/r1c-regression-r2/verification.json",
+      "bytes": 8790,
+      "sha256": "d08efc7f77ab9f153e8cd4a4bb1f288eeecc6c1d4ea3f3665918621404076492"
+    },
+    {
+      "id": "R1CCP263-02324",
+      "kind": "local",
+      "path": "local/research/codex/r1c-regression-r2/wire-comparison.json",
+      "bytes": 8842,
+      "sha256": "38a71034122ddc0e29201c5f874631cfab2fd07866399ed30e5a667578749d6d"
+    },
+    {
+      "id": "R1CCP263-02327",
+      "kind": "local",
+      "path": "local/research/codex/r1c-source-check-r3.txt",
+      "bytes": 10801,
+      "sha256": "ceb97d9cc8cc3797c780a3d347d96e6218b1dfb269c9c167d22c27b3d2f9ceb0"
+    },
+    {
+      "id": "R1CCP263-02329",
+      "kind": "local",
+      "path": "local/research/codex/r1c-template-source-survey-r1/all-profiles.json",
+      "bytes": 24543,
+      "sha256": "c5a18d2cde38fcbe4692667c7a9edf331f1eb026730359d034af99b9119d4eb8"
+    },
+    {
+      "id": "R1CCP263-02354",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "R1CCP263-02356",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 31016,
+      "sha256": "19195628325e6c5dbf5fbee9551fef47936994697e667c6e433666024b710b5f"
+    },
+    {
+      "id": "R1CCP263-02357",
+      "kind": "repository",
+      "path": "tools/README.md",
+      "bytes": 26075,
+      "sha256": "aec2f4f3ca92f888fa6868894ce57ee15699024ce43b8f2b64f0e050f0ce9281"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/db392b196c55ed34145593dec23b6804f5fa2d15f8b8cd442fa78a55c7a379ff.jsonl",
+      "sha256": "db392b196c55ed34145593dec23b6804f5fa2d15f8b8cd442fa78a55c7a379ff",
+      "bytes": 3484,
+      "count": 19,
+      "files_bytes": 2212746
+    },
+    {
+      "run": "local/research/codex/r1c-delivery-r1",
+      "path": "local/evidence-manifests/3f4b4d76a7163447b9743cc0ca70b536c0c343f1c875263e5806e5baa19eee83.jsonl",
+      "sha256": "3f4b4d76a7163447b9743cc0ca70b536c0c343f1c875263e5806e5baa19eee83",
+      "bytes": 4150,
+      "count": 19,
+      "files_bytes": 2209525
+    },
+    {
+      "run": "local/research/codex/r1c-regression-r1",
+      "path": "local/evidence-manifests/8cd6074a88daac6b3b6589c8a03e01a56613c261df937a1317a77268ff0c1b4f.jsonl",
+      "sha256": "8cd6074a88daac6b3b6589c8a03e01a56613c261df937a1317a77268ff0c1b4f",
+      "bytes": 239740,
+      "count": 1098,
+      "files_bytes": 637837573
+    },
+    {
+      "run": "local/research/codex/r1c-regression-r2",
+      "path": "local/evidence-manifests/bd187256da1ae3842dde53975525e09974a6b7f8b2e91051841fc5d77e7c355e.jsonl",
+      "sha256": "bd187256da1ae3842dde53975525e09974a6b7f8b2e91051841fc5d77e7c355e",
+      "bytes": 255843,
+      "count": 1174,
+      "files_bytes": 639628661
+    },
+    {
+      "run": "local/research/codex/r1c-template-source-survey-r1",
+      "path": "local/evidence-manifests/bb5cf230ab7cbd7a4ef4f6c0a7c4c2b885cd5580ebaa9b6a0db06c0b053667c3.jsonl",
+      "sha256": "bb5cf230ab7cbd7a4ef4f6c0a7c4c2b885cd5580ebaa9b6a0db06c0b053667c3",
+      "bytes": 1931,
+      "count": 9,
+      "files_bytes": 50942
+    },
+    {
+      "run": "local/research/codex/rust-eight-baseline-config-r1",
+      "path": "local/evidence-manifests/8484a21e4a9ab7ecb2a9f8d1f329834f01b42d128cf1977089125edb0c549f74.jsonl",
+      "sha256": "8484a21e4a9ab7ecb2a9f8d1f329834f01b42d128cf1977089125edb0c549f74",
+      "bytes": 1780,
+      "count": 8,
+      "files_bytes": 1932
+    },
+    {
+      "run": "local/research/codex/rust-four-startup-inputs-r1",
+      "path": "local/evidence-manifests/bf4b24ed9a594e9209162f7cc85f4ed955695d320b707064a94b9e2b1ddba176.jsonl",
+      "sha256": "bf4b24ed9a594e9209162f7cc85f4ed955695d320b707064a94b9e2b1ddba176",
+      "bytes": 870,
+      "count": 4,
+      "files_bytes": 964
+    }
   ]
 }

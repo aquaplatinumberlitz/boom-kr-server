@@ -138,15 +138,6 @@
       "limits": "NEXT-EIGHT-PORTABLE-ADMISSION; fixed4v4two-cycleproofnotallgame/gate. K6ccontrolledInternetendpointmissing."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP210-eight-two-team-cycles.json",
-      "bytes": 761178,
-      "sha256": "be96935b03cd9281d13372b66785c904a0f0adfdb00bcd355aa12ddb052f0af2",
-      "count": 2981
-    }
-  ],
   "delta": {
     "added": [
       "Fixed8reportderivedlife/7peer170/rank8/180/reset implementation,metadataflag/767TCP/363server.",
@@ -244,6 +235,354 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP210source-firstreuse/fixed8life-rank-reset/same-run2outcomes/limits/nextportable-admission/issue14syncedbeforecomplete; auditnext212unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EIGHT210-00007",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "EIGHT210-00014",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "EIGHT210-00026",
+      "kind": "local",
+      "path": "local/research/codex/cp210-bundle-tests.txt",
+      "bytes": 16727,
+      "sha256": "c2b4cf69df605a702ee6a358f6de8324cc6a2cd00c6735270be96d55a183285f"
+    },
+    {
+      "id": "EIGHT210-00030",
+      "kind": "local",
+      "path": "local/research/codex/cp210-server-tests.txt",
+      "bytes": 463,
+      "sha256": "7e1c9334a12701596c54b34b254edaf231b3b120b8bdd374faa9eaea4ab53c47"
+    },
+    {
+      "id": "EIGHT210-00040",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/cp210-snapshot/docs/PLAN.md",
+      "bytes": 62352,
+      "sha256": "2a70a200df681f1ec8320d6d17a7cc8d9fdbfa50492ccbd5fb76d6f9fc1add68"
+    },
+    {
+      "id": "EIGHT210-00041",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/cp210-snapshot/docs/PROTOCOL.md",
+      "bytes": 651371,
+      "sha256": "9618f45985821b616033e802f0b74da74d422cbd9c52f0e8e2cd2e7f203867dd"
+    },
+    {
+      "id": "EIGHT210-00046",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/cp210-snapshot/docs/features.json",
+      "bytes": 189888,
+      "sha256": "9c9d96f8fe066a19300d8dd22dddbf4ba2731ee61d4f1ddaf7e1980344e3793e"
+    },
+    {
+      "id": "EIGHT210-02149",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/draft-verification.json",
+      "bytes": 320,
+      "sha256": "961e5a7037a814ae9951405d1c437ca392e037f9765ddc1e48ee8764c89fa948"
+    },
+    {
+      "id": "EIGHT210-02163",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/getter-verification.json",
+      "bytes": 393,
+      "sha256": "55e0f623e95cc0352c4ba4afbbb1bcfe7c66f38f75b71dac73fa098af5967104"
+    },
+    {
+      "id": "EIGHT210-02166",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/manual-images.json",
+      "bytes": 1303,
+      "sha256": "09852752a28c3199f2199c1170a6d2ab3a62e8e3f0b7a36ff9c5dddf29210b9e"
+    },
+    {
+      "id": "EIGHT210-02167",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/native-reports.json",
+      "bytes": 19287,
+      "sha256": "959dcde15e52bf58b317614d664b84779fe82e04d5e1ffb672428cdeac26ae87"
+    },
+    {
+      "id": "EIGHT210-02172",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/pre-runtime-reuse-verification.json",
+      "bytes": 2620,
+      "sha256": "1e3c1cce970539e8a9f2c3a509361fabf1a849041738dbe5da62ea519a43e97c"
+    },
+    {
+      "id": "EIGHT210-02174",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/rank-inputs.json",
+      "bytes": 1026,
+      "sha256": "fd490ca0860cb6736606add28818e2e0582ccc81d0f394a7af0f3ad1ff434b3d"
+    },
+    {
+      "id": "EIGHT210-02179",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/rank8-native-records.json",
+      "bytes": 44289,
+      "sha256": "dd042105e8e701372ba50fcc9beb6f6da9056467322e2df4c9ae1bb34de6941e"
+    },
+    {
+      "id": "EIGHT210-02180",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/rank8-team0-native-records.json",
+      "bytes": 44289,
+      "sha256": "51d52e146180f309d10a37f3be6d57f52572e4fccd55dcbae8871de0a9ed61da"
+    },
+    {
+      "id": "EIGHT210-02181",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/raw-seal.json",
+      "bytes": 422349,
+      "sha256": "debcb7420531d10ef5bf87f02373a2e296fa6415dd286be8fb52eb0b4f600119"
+    },
+    {
+      "id": "EIGHT210-02292",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/source-first.json",
+      "bytes": 4225,
+      "sha256": "6724b6d060b3eeec403b4b72806349c6865c756387141f8090c982e64ebd5584"
+    },
+    {
+      "id": "EIGHT210-02929",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/tcp-verification.json",
+      "bytes": 488,
+      "sha256": "7ca69351733e1dc74f65e0d0a45384a53e380e8c07a88075045fd9bfbca20ee9"
+    },
+    {
+      "id": "EIGHT210-02932",
+      "kind": "local",
+      "path": "local/research/codex/eight-life-rank-r1/verification.json",
+      "bytes": 748541,
+      "sha256": "f2aeb84b3174baff7196c581326cffcc4d75e4105549d4329f17c6dbccd48f4c"
+    },
+    {
+      "id": "EIGHT210-02945",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "EIGHT210-02948",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "EIGHT210-02961",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "EIGHT210-02962",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "EIGHT210-02963",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "EIGHT210-02970",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "EIGHT210-02974",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "EIGHT210-02976",
+      "kind": "repository",
+      "path": "server/eight_battle_policy.py",
+      "bytes": 889,
+      "sha256": "b2d5ce49bc23f7023b0ad52841998bdaff28e913a358ab490c99ff5ea3702e67"
+    },
+    {
+      "id": "EIGHT210-02977",
+      "kind": "repository",
+      "path": "server/eight_player_service.py",
+      "bytes": 5245,
+      "sha256": "49096fef48dac56b6e1bd18bedaa2d1333339853a273f6592cc9497b48706fe3"
+    },
+    {
+      "id": "EIGHT210-02978",
+      "kind": "repository",
+      "path": "server/four_battle_policy.py",
+      "bytes": 6031,
+      "sha256": "31ce7d3d843e1fe21c80e4583b85bc2d974ca495de5bc9ddf95b06d1717cfd81"
+    },
+    {
+      "id": "EIGHT210-02979",
+      "kind": "repository",
+      "path": "server/four_observability.py",
+      "bytes": 5944,
+      "sha256": "86900b2b0793faa4f55c659f99fbbfd17b688a263888521f8ab9d33ec6c332ea"
+    },
+    {
+      "id": "EIGHT210-02980",
+      "kind": "repository",
+      "path": "server/four_player_service.py",
+      "bytes": 40275,
+      "sha256": "b996449509838be2fc3101c462251826b9726bc395e838080a5631e8212c4b7b"
+    },
+    {
+      "id": "EIGHT210-02981",
+      "kind": "repository",
+      "path": "server/test_eight_battle_policy.py",
+      "bytes": 3954,
+      "sha256": "cbd07174ba9cfff118a7b3cde70c270c5dd3388af8b4bdff08760d22caf9aeee"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/5fe1545983549e3102e94b3c462b6baee682b0370595211aaccd83ccb99c763f.jsonl",
+      "sha256": "5fe1545983549e3102e94b3c462b6baee682b0370595211aaccd83ccb99c763f",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/794241dfc80548bc51b2bb092592d2160c3239749ae9f483315f5ac41fb96139.jsonl",
+      "sha256": "794241dfc80548bc51b2bb092592d2160c3239749ae9f483315f5ac41fb96139",
+      "bytes": 4843,
+      "count": 26,
+      "files_bytes": 6588839
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/f70949708115feaaed2db3e9851a5e415f963f1a4e02892f37452fe59f308d97.jsonl",
+      "sha256": "f70949708115feaaed2db3e9851a5e415f963f1a4e02892f37452fe59f308d97",
+      "bytes": 648,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/26801ed980c550916765456b602beba06238f57d7be288c72ca8b0fc8af21805.jsonl",
+      "sha256": "26801ed980c550916765456b602beba06238f57d7be288c72ca8b0fc8af21805",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/93e4c8b4daefd7954021d8ddd855593e301a865356e72a3625255a63af5e131b.jsonl",
+      "sha256": "93e4c8b4daefd7954021d8ddd855593e301a865356e72a3625255a63af5e131b",
+      "bytes": 650,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/3ba5f1fdd6c1a5532d04b2842bbaf83943ceed6d69b9b7836672d7cc39de1a90.jsonl",
+      "sha256": "3ba5f1fdd6c1a5532d04b2842bbaf83943ceed6d69b9b7836672d7cc39de1a90",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/60a01f78f9c27ceb95067fc5a2ac760131ba08a2ee3a8a4ca142213ccafdac77.jsonl",
+      "sha256": "60a01f78f9c27ceb95067fc5a2ac760131ba08a2ee3a8a4ca142213ccafdac77",
+      "bytes": 1026,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/eight-life-rank-r1",
+      "path": "local/evidence-manifests/f2dc9e9b4769123d7a710427e7815862c34146d2decf7daf734e73e36d1fe96f.jsonl",
+      "sha256": "f2dc9e9b4769123d7a710427e7815862c34146d2decf7daf734e73e36d1fe96f",
+      "bytes": 593285,
+      "count": 2882,
+      "files_bytes": 140067850
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/961d5d51be9302e54b288d996ee8ec00509e6eea9b85cadb0397f54e930e821c.jsonl",
+      "sha256": "961d5d51be9302e54b288d996ee8ec00509e6eea9b85cadb0397f54e930e821c",
+      "bytes": 1792,
+      "count": 8,
+      "files_bytes": 254996480
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/217e5f3b582d986dcd29bc58d453060c67c71cb03a75c31521ad1fd175e25273.jsonl",
+      "sha256": "217e5f3b582d986dcd29bc58d453060c67c71cb03a75c31521ad1fd175e25273",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/ab340f6a08e674016a1f2b3e73f1afa02f192fecc8aa4e567098c5686f4587c3.jsonl",
+      "sha256": "ab340f6a08e674016a1f2b3e73f1afa02f192fecc8aa4e567098c5686f4587c3",
+      "bytes": 447,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/c3b878d00d24fbc694bea62745396686fbbd579a1f4280383916d5cc1d2777c8.jsonl",
+      "sha256": "c3b878d00d24fbc694bea62745396686fbbd579a1f4280383916d5cc1d2777c8",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/65cc4bc75482fb897cdf5c149072dc5474fab5f7ef081221c2162f7197272e70.jsonl",
+      "sha256": "65cc4bc75482fb897cdf5c149072dc5474fab5f7ef081221c2162f7197272e70",
+      "bytes": 991,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/a12d5ed90dd85f64f21746f5b354930e7ee3775a14e12e8af8ff0ee22193c078.jsonl",
+      "sha256": "a12d5ed90dd85f64f21746f5b354930e7ee3775a14e12e8af8ff0ee22193c078",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/b30f13fd7497b95626b280829912af44fbd67326b9495df5a6c4938972ef7797.jsonl",
+      "sha256": "b30f13fd7497b95626b280829912af44fbd67326b9495df5a6c4938972ef7797",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

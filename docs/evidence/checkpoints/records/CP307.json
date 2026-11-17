@@ -137,15 +137,6 @@
       "limits": "Exact committed head/full local-history/CI required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP307-camp08-report122.json",
-      "bytes": 113730,
-      "sha256": "5f81ecd6c83faee258600f2037847679e50c52fcba31e6c2bd58b7b39fab5908",
-      "count": 436
-    }
-  ],
   "delta": {
     "added": [
       "Parser Rust cho variant122 đã đo, chưa serving integration.",
@@ -242,6 +233,247 @@
       "path": "docs/content/client-language.md",
       "state": "unchanged",
       "reason": "Không thực hiện L1; L-probe-b giữ thứ tự riêng trên dashboard."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CAMP307-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3491,
+      "sha256": "5342545ccce8bdf266e39906b53a8443d9e97bd7159cb07badc86bc9ecb36a4f"
+    },
+    {
+      "id": "CAMP307-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 262019,
+      "sha256": "0710ffbf6b5f2f2f173bf1a22cd3a3bf41317632683bf54dd3c7d5ba45bee66f"
+    },
+    {
+      "id": "CAMP307-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 156498,
+      "sha256": "ede4013cb8f494f7379c968f16777350a810a41f4875e7fbe35cfc92129dbc38"
+    },
+    {
+      "id": "CAMP307-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82961,
+      "sha256": "da63b481bdb9efde2af69edb34711d0adbdca6e4cbb633375dbf9c7bc3edb343"
+    },
+    {
+      "id": "CAMP307-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44425,
+      "sha256": "5280465024829f330214e240c702e0abcf321d077b7fcd78e3339d022c2b17b2"
+    },
+    {
+      "id": "CAMP307-0006",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-camp08-report122.json",
+      "bytes": 4779,
+      "sha256": "d62c4f502be1fb557fc4e251cf943265ff20ef54a75d48bb0bc0d3a1fa235b51"
+    },
+    {
+      "id": "CAMP307-0007",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 274781,
+      "sha256": "8781dbe597b888aa82009046598fe06a4c6e82d8d9a1b224ffc22e07816ea4b6"
+    },
+    {
+      "id": "CAMP307-0008",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 56476,
+      "sha256": "eada16fad785a08d8717dd5f3fa47c268ff1809540d67fb07ccc6ad84d90a5b5"
+    },
+    {
+      "id": "CAMP307-0010",
+      "kind": "local",
+      "path": "local/research/codex/camp08-report122-cargo-tests.txt",
+      "bytes": 26635,
+      "sha256": "927d39c818ac1947bb857ea966dfe8825d231b08752bd3a155454d0bb231b777"
+    },
+    {
+      "id": "CAMP307-0011",
+      "kind": "local",
+      "path": "local/research/codex/camp08-report122-parser-verification.json",
+      "bytes": 1531,
+      "sha256": "3f361d1b7605881d3d513701f1ed4e40bc78947acdd54bc9627afeb6b88e4a16"
+    },
+    {
+      "id": "CAMP307-0012",
+      "kind": "local",
+      "path": "local/research/codex/cp307-docs-precheck.txt",
+      "bytes": 198,
+      "sha256": "ae8cfa26a138f74c064eced88b237ba9bfaf5ce4a72ceeccbc9d8af7eff20d00"
+    },
+    {
+      "id": "CAMP307-0017",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-c2s122-native-r2/native122-verification.json",
+      "bytes": 3645,
+      "sha256": "7328e5e4049fd0ce5423cdddef81296e558a22a75b16e042399b2910a6bf2924"
+    },
+    {
+      "id": "CAMP307-0028",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r3/failed-condition-verification.json",
+      "bytes": 875,
+      "sha256": "ae68b53809fda236403712adc52f50cdeec35a964da129e964258cad873a1fe0"
+    },
+    {
+      "id": "CAMP307-0094",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r3/passive-wait-observation.json",
+      "bytes": 605,
+      "sha256": "64de856b12b3e3d50219ce95b4285691b8390b7553db0361e439562635727a6c"
+    },
+    {
+      "id": "CAMP307-0115",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r4/condition-verification.json",
+      "bytes": 6360,
+      "sha256": "0a31697f56a61b15dcc82176b63502c19eebdbff008893a39fe2bbb1f1f6fd24"
+    },
+    {
+      "id": "CAMP307-0199",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r4/native/raw-seal.json",
+      "bytes": 16118,
+      "sha256": "76c39ab3befeda1c8d157518ecf44429ff83244502a5567464a6bf2e6dd820da"
+    },
+    {
+      "id": "CAMP307-0227",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r5/failed-condition-verification.json",
+      "bytes": 928,
+      "sha256": "0bf0c0aac50284f8cec9805677c10a281911112490dce86bcafb8c595054dd06"
+    },
+    {
+      "id": "CAMP307-0290",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r6/association-byte-control.json",
+      "bytes": 851,
+      "sha256": "1820aa9d4f9cc3426bddae94ece614ffdeeff81452460e393a45a2d76dfaddee"
+    },
+    {
+      "id": "CAMP307-0292",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r6/association-verification.json",
+      "bytes": 6596,
+      "sha256": "95a48ddc3e640b66ac0c0ffe6a9bd826000d423a29ba7b5463545d46f4326a6b"
+    },
+    {
+      "id": "CAMP307-0389",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-condition-native-r6/native/raw-seal.json",
+      "bytes": 16121,
+      "sha256": "3ca4334f65ca8473e02678518374735a86846576e979237a0282cc0c03b6b964"
+    },
+    {
+      "id": "CAMP307-0407",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-report-association-r1/condition-branch.json",
+      "bytes": 9151,
+      "sha256": "3d0eb3881449212319fc82c8bfec7e6ce5ca1b63781ad5a6032f4a4f1b670096"
+    },
+    {
+      "id": "CAMP307-0408",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-report-association-r1/effect-and-predicate.json",
+      "bytes": 9350,
+      "sha256": "bb8e315130a3ced0c7d146195f60f89ca55bd179c4219fdaae07cb53d1a633fb"
+    },
+    {
+      "id": "CAMP307-0413",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-report-association-r1/mcp-open-failure.json",
+      "bytes": 2720,
+      "sha256": "73bb7688b7de123e7cfaa5dfc6b8efe7540b77da89f8c356d09053a2433dc46a"
+    },
+    {
+      "id": "CAMP307-0414",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-report-association-r1/reuse.json",
+      "bytes": 1231,
+      "sha256": "5dcf235de4868c59ebb6569db98f3ece7639150c96b32722ad5f67210e65283c"
+    },
+    {
+      "id": "CAMP307-0434",
+      "kind": "repository",
+      "path": "rust/Cargo.lock",
+      "bytes": 32227,
+      "sha256": "c8d313f8974c53ca76402d50fd198a3a5fb4367b11ad78d62effa2dc3ee1c1ef"
+    },
+    {
+      "id": "CAMP307-0435",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "bytes": 8805,
+      "sha256": "997eeb698225b0f63692dcbc97555476bc05eb635f32cd41608c35a9c22171af"
+    },
+    {
+      "id": "CAMP307-0436",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_report122.rs",
+      "bytes": 1218,
+      "sha256": "c1306a89e0f86d61341addbc1105484dc8de9c28b0b614ef38953cfefdbf7d6c"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/f40ec435a329332253ce95563c227fd4804167d07d2d85cd6b8c5d647e881eda.jsonl",
+      "sha256": "f40ec435a329332253ce95563c227fd4804167d07d2d85cd6b8c5d647e881eda",
+      "bytes": 4574,
+      "count": 24,
+      "files_bytes": 180399
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r3",
+      "path": "local/evidence-manifests/6eee29e7bbd7ffa3d5e94c7896ddc57ccc7bccced3ef0b1bd251c5db46af3b81.jsonl",
+      "sha256": "6eee29e7bbd7ffa3d5e94c7896ddc57ccc7bccced3ef0b1bd251c5db46af3b81",
+      "bytes": 17750,
+      "count": 83,
+      "files_bytes": 268356932
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r4",
+      "path": "local/evidence-manifests/2ae5e74aa844df4747fea9667acf35a986424d92c91b4e49d986bc897201f6b1.jsonl",
+      "sha256": "2ae5e74aa844df4747fea9667acf35a986424d92c91b4e49d986bc897201f6b1",
+      "bytes": 23725,
+      "count": 110,
+      "files_bytes": 271829396
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r5",
+      "path": "local/evidence-manifests/bf3eff2d7d95bbbc4851c20eb2073d31460bcf8e9bfaf034dfc50e16e84f3457.jsonl",
+      "sha256": "bf3eff2d7d95bbbc4851c20eb2073d31460bcf8e9bfaf034dfc50e16e84f3457",
+      "bytes": 15729,
+      "count": 74,
+      "files_bytes": 1861602807
+    },
+    {
+      "run": "local/research/codex/g1-camp08-condition-native-r6",
+      "path": "local/evidence-manifests/fdf404dcb268c9926a2ef3b2053776dba0f89c8fbdb6417bcf2ebef987289ca4.jsonl",
+      "sha256": "fdf404dcb268c9926a2ef3b2053776dba0f89c8fbdb6417bcf2ebef987289ca4",
+      "bytes": 24150,
+      "count": 112,
+      "files_bytes": 271906280
+    },
+    {
+      "run": "local/research/codex/g1-camp08-report-association-r1",
+      "path": "local/evidence-manifests/eb95c096ff44b3ce0e24296f70c6eb71ca499e975259e7e67d8c014065e7c288.jsonl",
+      "sha256": "eb95c096ff44b3ce0e24296f70c6eb71ca499e975259e7e67d8c014065e7c288",
+      "bytes": 1308,
+      "count": 6,
+      "files_bytes": 4569
     }
   ]
 }

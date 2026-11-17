@@ -139,15 +139,6 @@
       "limits": "Fullrequire-local/historyandexactPRheadrequired; reviewwaivednotapproved."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP225-auth-fresh-process.json",
-      "bytes": 184490,
-      "sha256": "2c695906319585927fa55ffbf3e681d55a4517c3244745a1191d847730a1a9f2",
-      "count": 690
-    }
-  ],
   "delta": {
     "added": [
       "Nativepriorselector11getter/store-before1requestsourcebound.",
@@ -263,6 +254,162 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP225freshprocesspositive-negative/priorselector/limits/currentroomgap/catalog/issues/AUD065next228syncedbeforecomplete,oldrecords/rawunchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH225-00002",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/batch-verification.json",
+      "bytes": 31092,
+      "sha256": "704858323e43ade7661a28dd530883c875bdf1cdf668d02a75d0384a4399ec1d"
+    },
+    {
+      "id": "AUTH225-00013",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-delivery-r1/manual-review.json",
+      "bytes": 2727,
+      "sha256": "e7a8f71a6e22f160dde72115bc8b492c4d98125f91279246a9494d8369fe0f56"
+    },
+    {
+      "id": "AUTH225-00276",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/bad-fresh-B/raw-seal.json",
+      "bytes": 58580,
+      "sha256": "a883239e3286ebd73ca1d6cee87c2337f7ad7a214d5d855ddfded2e2b523ed09"
+    },
+    {
+      "id": "AUTH225-00286",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/verification.json",
+      "bytes": 2327,
+      "sha256": "ca2dc6336b9f926ab58afb93674f8e00a59e31674eaade5e47f1d9c100374214"
+    },
+    {
+      "id": "AUTH225-00287",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-negative-r1/visual-review.json",
+      "bytes": 592,
+      "sha256": "2d7b088e96e78a2069d47488bec0a340091bf13cf4b4ff77c8ea543b4da1d25c"
+    },
+    {
+      "id": "AUTH225-00473",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/fresh-B/raw-seal.json",
+      "bytes": 38497,
+      "sha256": "5500e947c88aacb2d133c2738197dc806d10215ade45ca9178eeca317ba7f8cc"
+    },
+    {
+      "id": "AUTH225-00481",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/verification.json",
+      "bytes": 22563,
+      "sha256": "f9b9fb7cf2f203ba1e2006057283789c69eb71e69dac221ee5307d428016af8c"
+    },
+    {
+      "id": "AUTH225-00482",
+      "kind": "local",
+      "path": "local/research/codex/auth-fresh-process-r1/visual-review.json",
+      "bytes": 683,
+      "sha256": "d899abc7628ecb311517cd4f2466b55c80957af9c499a1f4fb3f3bdfd4254b73"
+    },
+    {
+      "id": "AUTH225-00485",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/conditional-prefix.json",
+      "bytes": 5906,
+      "sha256": "3ab98b407d845ae786e5cc1eb7835cd44a667a38a7677d80be4d89c54113f232"
+    },
+    {
+      "id": "AUTH225-00650",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/historical-fatal-scan.json",
+      "bytes": 3799,
+      "sha256": "2f05e8a6cd206524813b44dfc8447131fb20d0dd1c522c1e924de0affb71e58b"
+    },
+    {
+      "id": "AUTH225-00657",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/selector-accessors.json",
+      "bytes": 4313,
+      "sha256": "848bac61f8688361f7b90ee364e8831820bba04e2f62b0d1df004164644fc48d"
+    },
+    {
+      "id": "AUTH225-00660",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-discriminator-r1/verification.json",
+      "bytes": 2867,
+      "sha256": "dd3bd8ef74bca0e9c079e42b70973e318ffaf98ab765aad90d0cb45aacda6787"
+    },
+    {
+      "id": "AUTH225-00668",
+      "kind": "local",
+      "path": "local/research/codex/cp225-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH225-00669",
+      "kind": "local",
+      "path": "local/research/codex/cp225-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "3299bea9ac5a59f73b5e53bd4f1f7394d885920037ec8ceb7c14b58b27b228ec"
+    },
+    {
+      "id": "AUTH225-00674",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue14-updated.json",
+      "bytes": 37220,
+      "sha256": "8a9c905065b778d112a2c39384d86ca12b56e1bf1bff299c75aecf93664a4e66"
+    },
+    {
+      "id": "AUTH225-00677",
+      "kind": "local",
+      "path": "local/research/codex/cp225-issue285-updated.json",
+      "bytes": 10546,
+      "sha256": "50ff7481d67727be3436b6cb42e1255ba484e185466f7bbee994385b0dad1bf3"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9d8dd050de8b39f4a538dd3273de723a397295bb8f41e9ffa63241057e098ff0.jsonl",
+      "sha256": "9d8dd050de8b39f4a538dd3273de723a397295bb8f41e9ffa63241057e098ff0",
+      "bytes": 5057,
+      "count": 27,
+      "files_bytes": 6998527
+    },
+    {
+      "run": "local/research/codex/auth-fresh-delivery-r1",
+      "path": "local/evidence-manifests/b8093f9214dd3c5a029ae1b32301514661ec9a2beda122abc0de562edbba24b1.jsonl",
+      "sha256": "b8093f9214dd3c5a029ae1b32301514661ec9a2beda122abc0de562edbba24b1",
+      "bytes": 2330,
+      "count": 10,
+      "files_bytes": 1610846
+    },
+    {
+      "run": "local/research/codex/auth-fresh-process-negative-r1",
+      "path": "local/evidence-manifests/10bc5c1ae2d696274599799de88d81a957cbd99e9490facd42dd931d6ac90a97.jsonl",
+      "sha256": "10bc5c1ae2d696274599799de88d81a957cbd99e9490facd42dd931d6ac90a97",
+      "bytes": 60949,
+      "count": 271,
+      "files_bytes": 17829982
+    },
+    {
+      "run": "local/research/codex/auth-fresh-process-r1",
+      "path": "local/evidence-manifests/e71033fdf1be425dcc5e47b5d9381065586571c6857a970926ba872ba40a1957.jsonl",
+      "sha256": "e71033fdf1be425dcc5e47b5d9381065586571c6857a970926ba872ba40a1957",
+      "bytes": 40585,
+      "count": 192,
+      "files_bytes": 7550162
+    },
+    {
+      "run": "local/research/codex/auth-retry-discriminator-r1",
+      "path": "local/evidence-manifests/af356a68293dfdaae5eaa08962bac466c38814e9ce6c4e50b2e2c080b3422ed9.jsonl",
+      "sha256": "af356a68293dfdaae5eaa08962bac466c38814e9ce6c4e50b2e2c080b3422ed9",
+      "bytes": 38226,
+      "count": 174,
+      "files_bytes": 6714922
     }
   ]
 }

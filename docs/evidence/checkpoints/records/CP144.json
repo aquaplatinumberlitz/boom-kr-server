@@ -169,15 +169,6 @@
       "limits": "Mechanicalconsistencyandmanualscopeaudit donotcertifygate/semanticcompleteness."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP144-virtual-pending-eof.json",
-      "bytes": 619873,
-      "sha256": "28083bf363b27ae629f86a60404eac9117791521ed92c60bcd867a162ec95b9c",
-      "count": 2452
-    }
-  ],
   "delta": {
     "added": [
       "ActualpendingguestEOF/fence/noblast/nativeAcleanup aftertwo normalvirtualguardcycles;helperEOFbench/fixedcopy;AUD044periodic."
@@ -257,6 +248,230 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP144actualEOF/nativecleanup/helpercontrols/110correction/timinglimits/AUD044/nextoldUDP/issue14 syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/153-check.txt",
+      "bytes": 23,
+      "sha256": "3b6271a0fd92b605ad48bd20aae4b95d27bcf00db0b8f2223c1c6f06a01805f5"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/address-ready-verification.json",
+      "bytes": 5081,
+      "sha256": "e1e8a742e5a2f95e7bdc4ebe51094645be6819840eb0f5c9ec05811f6afbb491"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/analysis-corrections.json",
+      "bytes": 558,
+      "sha256": "908cb92bcc77a2cddaa67f0488a2ccb1f4b7b7fd7a3f7b528149106853725fd1"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00010",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/basic-verification.json",
+      "bytes": 274802,
+      "sha256": "bfc361e4bbbee96d90c8eab0b0d47ff5eff4b8143b2d20e116bd61d4cc677fb2"
+    },
+    {
+      "id": "RUN-00011",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/bench_proxy_eof.py",
+      "bytes": 2360,
+      "sha256": "49466c17632544696f939a701b2aa7b4468062088e18a5b27ab08823ebdb61e6"
+    },
+    {
+      "id": "RUN-00020",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/cp144-snapshot/docs/evidence/checkpoints/audits/AUD044.json",
+      "bytes": 5246,
+      "sha256": "a8f5a33f73259682b738462c3a99982c18a2d09fef56c87281632cd5daf78f8a"
+    },
+    {
+      "id": "RUN-00025",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/crc-check.txt",
+      "bytes": 33,
+      "sha256": "bedffc1f36f23090199d432fb5a27f9f68df4ca8529643750d55c477bede6b63"
+    },
+    {
+      "id": "RUN-02263",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/cycles/run.json",
+      "bytes": 414873,
+      "sha256": "9b12adfb084aa65ab911cdb9df03ccf1e5931460ba29a395868c27dafb824d27"
+    },
+    {
+      "id": "RUN-02281",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "a4d2a8c7dc7bf1edeaf90e9e1c53db9b9f2c28a1299bdcc0a768e2f10416ef83"
+    },
+    {
+      "id": "RUN-02285",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/fields-check.txt",
+      "bytes": 33,
+      "sha256": "ef2ef6f4cc003ea1f1d98c613514635e1b2ce98c27b8e2f9c8d3c8a91c2a46f8"
+    },
+    {
+      "id": "RUN-02287",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/flags-check.txt",
+      "bytes": 54,
+      "sha256": "ded0fc7210312146dac59167ccdfe3040e0704cded480eeb4e1a36764294b198"
+    },
+    {
+      "id": "RUN-02302",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/guard-integration-verification.json",
+      "bytes": 10522,
+      "sha256": "f641bbf4bafb9a98fa0ddeacc713d3103a82d3fffb80a690f748f4f149de17fa"
+    },
+    {
+      "id": "RUN-02304",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "26580e21f01e7c3edb6df6a7dba4d42b655266732e685169489648a514e7f285"
+    },
+    {
+      "id": "RUN-02310",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/movement-wire-verification.json",
+      "bytes": 50214,
+      "sha256": "d9e2539faa498222c18ebd65c747f7594b7e47200fa33ea10d14837334794869"
+    },
+    {
+      "id": "RUN-02320",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/peer-getter-check.txt",
+      "bytes": 38,
+      "sha256": "0551c142ad65b6649ff1cb178447740cbb301fc8046fe1e2db483b15d32b432e"
+    },
+    {
+      "id": "RUN-02322",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/pending-eof-check.txt",
+      "bytes": 877,
+      "sha256": "e808d3a61d3aa7bd2284796d3999a807e586d8ccaa5ddc7ab6db01ab4fdb16bd"
+    },
+    {
+      "id": "RUN-02323",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/pending-eof-draft-check.txt",
+      "bytes": 704,
+      "sha256": "46eb519f2822e8098a6066d54f72d70e5497bc3c4d84040c250d93ed9d1a2404"
+    },
+    {
+      "id": "RUN-02324",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/pending-eof-verification.json",
+      "bytes": 4189,
+      "sha256": "2fba095b26a0b6ea0081a77fc51d2f0c2f90bc56c38ec3e302dc7994951176cd"
+    },
+    {
+      "id": "RUN-02326",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/pickup-verification.json",
+      "bytes": 2988,
+      "sha256": "a0ffbe98515a13aa10b1177f3aec295e4fe77cb3ba2ce7f2d64af11450f99ec3"
+    },
+    {
+      "id": "RUN-02328",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/proxy-eof-baseline.json",
+      "bytes": 2554,
+      "sha256": "847cedfdcc64b220f9c223ba06d1c339d29564a44da499680e99fa464fc9ee86"
+    },
+    {
+      "id": "RUN-02329",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/proxy-eof-fixed.json",
+      "bytes": 3243,
+      "sha256": "a15bde9f1c340647fad800ce25d6775e256fa3426a40fadb5e0e1ac2cd847df4"
+    },
+    {
+      "id": "RUN-02330",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/raw-seal.json",
+      "bytes": 461027,
+      "sha256": "c0ccb177ad07349bfc30cf401bdfc471fe683fe03a8a863d6460d5d97bbc9d4d"
+    },
+    {
+      "id": "RUN-02332",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/reports-check.txt",
+      "bytes": 29,
+      "sha256": "2d2ea36db490200d1c364be1bdad8b2fabd081672878b6436d356be5d25b0052"
+    },
+    {
+      "id": "RUN-02431",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/tcp_replay.py",
+      "bytes": 7088,
+      "sha256": "4f98c6b3d7f900df8ddc9c7e1e9fd3221e2452c170a9ae50bc249ad96cbf668e"
+    },
+    {
+      "id": "RUN-02442",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/verify_pending_eof_draft.py",
+      "bytes": 7211,
+      "sha256": "6a7af2c7b47dca4724715baa672ad8c6ded6a829e39d898c48ccd5204eeb6cad"
+    },
+    {
+      "id": "RUN-02447",
+      "kind": "local",
+      "path": "local/research/codex/virtual-pending-eof-r1/visual-review.json",
+      "bytes": 1288,
+      "sha256": "8dd15b0a86d20524a6f7aa73c8d2b6feb1eecc78c233b94579fd23868c4ee3ae"
+    },
+    {
+      "id": "RUN-02452",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/server-tests.txt",
+      "bytes": 331,
+      "sha256": "f68f879ad1b4c2f0d7adb4e0654a2b23d9b55110f5c2b4631e4f84c77cadbbeb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/virtual-pending-eof-r1",
+      "path": "local/evidence-manifests/4ef7235aebbff9e4d78cd7a92a7c5320c1f3e1e9a660ede614535eb096c4959f.jsonl",
+      "sha256": "4ef7235aebbff9e4d78cd7a92a7c5320c1f3e1e9a660ede614535eb096c4959f",
+      "bytes": 490985,
+      "count": 2420,
+      "files_bytes": 61866641
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/6019364f264e083540c4229eccfd555d4a52fff020743e2012ea870d8b01790e.jsonl",
+      "sha256": "6019364f264e083540c4229eccfd555d4a52fff020743e2012ea870d8b01790e",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 80298
+    },
+    {
+      "run": "local/research/codex/virtual-tcp-guard-r1",
+      "path": "local/evidence-manifests/7d6875662bb5cee6dfd7bab6aaf82b83b3e17afa9e49f301d10823bfae3a2c5c.jsonl",
+      "sha256": "7d6875662bb5cee6dfd7bab6aaf82b83b3e17afa9e49f301d10823bfae3a2c5c",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 418
     }
   ]
 }

@@ -26,7 +26,7 @@ noUIclicks/packetfunctioninjection/forcedreturns. Inheritedglobal1A966FCreset l�
 khôngvanilla. Rollback: chọn harnessservice gốc và copy/prefix riêng mới; không ghi đè files của run.
 Source/config được pin trước run, kiểm sau cleanup. `raw-seal.json` phủ log/CALog/recipe/ảnh/native
 và service outputs; binary/DB/assets không commit. Toàn bộ hash qua
-[CP180](../checkpoints/records/CP180.json)/[evidence manifest](../checkpoints/evidence/CP180-live-codec-stream.json).
+[CP180](../checkpoints/records/CP180.json) (tra cứu: `python3 tools/evidence_lookup.py cp CP180`).
 
 `verification.json`:321 measurable checks, includes raw/inputpins/nativepartialstate/authcursor/
 coalescedleftbytes/seq, exact1bitnegative, independentcodec rejectsbadCRC, nonoverlap/isolation/cleanup.
@@ -60,7 +60,7 @@ VNerrorbranchmethodology dùng làm reference, không portVNcode/opcode/layout. 
 76modelcases/fullgameplay. `verification.json`batchauth:655measurablerelationships/raw/inputpins/
 nonoverlap/PID/nativeframer/seq/cursor/writerframes; nămrun đều cleanup/seal trước đổi recipe.
 `raw-seal.json` từngrun phủ logs/ảnh/service/timeline; failure/control không ghi đè. SHA toànbatch và
-selectedoldoracles ở [CP181](../checkpoints/records/CP181.json)/[manifest](../checkpoints/evidence/CP181-codec-retry.json),
+selectedoldoracles ở [CP181](../checkpoints/records/CP181.json) (`python3 tools/evidence_lookup.py cp CP181`),
 CP180evidence manifest được reuse bằng reference nguyên hash, không copyrawindex lớn.
 
 Adapter/harness/GDB chỉ ở local, productionserver/codec và47fixtures không đổi. UIclick chỉ sau

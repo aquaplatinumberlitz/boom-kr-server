@@ -121,15 +121,6 @@
       "limits": "SeparateacceptanceperPLAN, no promotionfromrefactor."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP269-r1f-session-binding.json",
-      "bytes": 377130,
-      "sha256": "a2db49111ea2bec80edd5ed38ae0280c0f896488c4b98ea3deb8d03d000314c5",
-      "count": 1418
-    }
-  ],
   "delta": {
     "added": [
       "ProfilesbytokenownedPlayerId/currentChannelendpoint andLegacyDirectPlan snapshots.",
@@ -311,5 +302,246 @@
   ],
   "completed_feature_groups": [
     "r1f-account-session-profile-direct-endpoints"
+  ],
+  "evidence": [
+    {
+      "id": "R1FCP269-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3922,
+      "sha256": "1ccd1d4812ddd4634fd3df08373495a227a68bb41ed11585a168b29c62fc68b3"
+    },
+    {
+      "id": "R1FCP269-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 221979,
+      "sha256": "78c23e8175e41cdf3d71cfe07a35719a10ffc81b3fd63d5b6f20775a86b2eb40"
+    },
+    {
+      "id": "R1FCP269-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 69403,
+      "sha256": "4852fbe7968032a8d06b32a5db3a58c3737fda6b3e558ae4d697c99bfe247733"
+    },
+    {
+      "id": "R1FCP269-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 138710,
+      "sha256": "45e1eba7027b948b389f09432ebd0e11cd447827d1d9d3c46c0e0ffdc8bbc5e1"
+    },
+    {
+      "id": "R1FCP269-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 871281,
+      "sha256": "774513080c19bc1a2415b40975eb5a088c7bcd5b19e75b33841eb3ed8615262b"
+    },
+    {
+      "id": "R1FCP269-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 56323,
+      "sha256": "01c70995432324feb7522cd874bb3ec6ca3d2cf20b2e3dc2a3557e246da9b321"
+    },
+    {
+      "id": "R1FCP269-00007",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 42893,
+      "sha256": "a76de19697fe5b1d0434621b59966234d2369a09212a7cac2656d75806e21efc"
+    },
+    {
+      "id": "R1FCP269-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD086.json",
+      "bytes": 4595,
+      "sha256": "46f69c5ac7ed976d8fd528dabeb96f782515b0aa033f7279d562d55eb6f9894c"
+    },
+    {
+      "id": "R1FCP269-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284343,
+      "sha256": "08a31fac6e87c65c9a65f39eba10d1b8a96d3ec8fee9b1873b560a0f1ce7189f"
+    },
+    {
+      "id": "R1FCP269-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42598,
+      "sha256": "9b34591ebed4cf37745b121bcd7813542ab2cc361333df6f90006ca3c0b27767"
+    },
+    {
+      "id": "R1FCP269-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 63994,
+      "sha256": "73f0a26bfa98e2871da5407527ff58c746113b2e20ddc3e66420ae30ebaa020d"
+    },
+    {
+      "id": "R1FCP269-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1f-session-binding.json",
+      "bytes": 4366,
+      "sha256": "4150fc2a8a6b1f133b84d5ae9505d963819a63ef384f2ec54e0be31263387238"
+    },
+    {
+      "id": "R1FCP269-00013",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 234095,
+      "sha256": "8649c4dfd2df03dca6fb591e3a724983d9454bbfa91055cd0bcba93d1334cddf"
+    },
+    {
+      "id": "R1FCP269-00097",
+      "kind": "local",
+      "path": "local/research/codex/r1f-account-serving-r1/verification.json",
+      "bytes": 2251,
+      "sha256": "a40283b653e7520a2bd19a38249b13425b6b6a01443d7c99d5ac0a5e6a9eff60"
+    },
+    {
+      "id": "R1FCP269-00099",
+      "kind": "local",
+      "path": "local/research/codex/r1f-build-r2.txt",
+      "bytes": 165,
+      "sha256": "5eab245759a081039716fc3823efc9638461387424d83840fe84fcb698eb039a"
+    },
+    {
+      "id": "R1FCP269-00101",
+      "kind": "local",
+      "path": "local/research/codex/r1f-clippy-r2.txt",
+      "bytes": 165,
+      "sha256": "4e6b1b556f03b181298ab76f272b65f7e7bae0d2f3fdb5ba917d8647d13a13d5"
+    },
+    {
+      "id": "R1FCP269-00102",
+      "kind": "local",
+      "path": "local/research/codex/r1f-delivery-r1/selfcheck.json",
+      "bytes": 2466,
+      "sha256": "4cab5dbca5d01b4faaa0781fcf41af5a3c54b43a6848b398d4c862365e21ce9d"
+    },
+    {
+      "id": "R1FCP269-00118",
+      "kind": "local",
+      "path": "local/research/codex/r1f-delivery-r1/snapshot/rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 16159,
+      "sha256": "d568675cd023eef27abe86ccd5c64e57f823fb476d5fd1e774f383866e260112"
+    },
+    {
+      "id": "R1FCP269-00119",
+      "kind": "local",
+      "path": "local/research/codex/r1f-delivery-r1/snapshot/rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 18570,
+      "sha256": "db677a280c0fcb24d39618d2be023342f3e63d255b4e967dcf3403397d3f9b79"
+    },
+    {
+      "id": "R1FCP269-00121",
+      "kind": "local",
+      "path": "local/research/codex/r1f-delivery-r1/snapshot/rust/crates/kr-service/src/peer_routes.rs",
+      "bytes": 3464,
+      "sha256": "65f6230334ff8f08bbc90a6e174900cd050eb78a46310c5d969411cc6fa2ea97"
+    },
+    {
+      "id": "R1FCP269-00122",
+      "kind": "local",
+      "path": "local/research/codex/r1f-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 113146,
+      "sha256": "5a7b4f6d381ee135190d232fda80149181ac715b96e6e9eb890d2fedb367fa47"
+    },
+    {
+      "id": "R1FCP269-00125",
+      "kind": "local",
+      "path": "local/research/codex/r1f-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R1FCP269-01400",
+      "kind": "local",
+      "path": "local/research/codex/r1f-regression-r1/verification.json",
+      "bytes": 10613,
+      "sha256": "e5a03ead9485b21eb4b8df794ca0c2d911550dfadcda1c5836334a05fe18441d"
+    },
+    {
+      "id": "R1FCP269-01401",
+      "kind": "local",
+      "path": "local/research/codex/r1f-regression-r1/wire-comparison.json",
+      "bytes": 6021,
+      "sha256": "7e6b83f3ed8868810d7db38ebb84e8a61276f789e761779e990f1727818f0c5d"
+    },
+    {
+      "id": "R1FCP269-01413",
+      "kind": "local",
+      "path": "local/research/codex/r1f-shared-nat-r1/verification.json",
+      "bytes": 8322,
+      "sha256": "85b076aaad0a9cc5af5ec0f49599fea89c2bab1c519393d297c2c3f8e00e9755"
+    },
+    {
+      "id": "R1FCP269-01415",
+      "kind": "local",
+      "path": "local/research/codex/r1f-workspace-tests-r2.txt",
+      "bytes": 11676,
+      "sha256": "11dd7ec2ca63832fa147e88e6e7d2330704824360e445f4f3e95a66bab3d03f8"
+    },
+    {
+      "id": "R1FCP269-01418",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 32936,
+      "sha256": "fc4efc4cd84db733b4d85a8c1f0741c2246ad857e653aca0e61141fc121d9b70"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/2c84c1bd25c8df2452a50103efcc36eba525b2eb29a60655fbe1fa476037c066.jsonl",
+      "sha256": "2c84c1bd25c8df2452a50103efcc36eba525b2eb29a60655fbe1fa476037c066",
+      "bytes": 3878,
+      "count": 21,
+      "files_bytes": 191180
+    },
+    {
+      "run": "local/research/codex/r1f-account-serving-r1",
+      "path": "local/evidence-manifests/bd99caa4f6dcb4cce9331b2b0616bd8fe9ae2e6db8f191d6342a24aa316b6251.jsonl",
+      "sha256": "bd99caa4f6dcb4cce9331b2b0616bd8fe9ae2e6db8f191d6342a24aa316b6251",
+      "bytes": 14477,
+      "count": 70,
+      "files_bytes": 102225363
+    },
+    {
+      "run": "local/research/codex/r1f-delivery-r1",
+      "path": "local/evidence-manifests/113e915a16463256d4dbdf44fc1320c5d47d8d7eb7973fec30551d61befc75cb.jsonl",
+      "sha256": "113e915a16463256d4dbdf44fc1320c5d47d8d7eb7973fec30551d61befc75cb",
+      "bytes": 3930,
+      "count": 18,
+      "files_bytes": 2168364
+    },
+    {
+      "run": "local/research/codex/r1f-preparation-r1",
+      "path": "local/evidence-manifests/702033667074e8e347682391c2ded72c2caedc97e3fe3c7394ab3c0ea204fe10.jsonl",
+      "sha256": "702033667074e8e347682391c2ded72c2caedc97e3fe3c7394ab3c0ea204fe10",
+      "bytes": 674,
+      "count": 3,
+      "files_bytes": 7588
+    },
+    {
+      "run": "local/research/codex/r1f-regression-r1",
+      "path": "local/evidence-manifests/248ca94df7980fd620e3bd89af28fba79d6415c6b3d0dc0efd5db44825745903.jsonl",
+      "sha256": "248ca94df7980fd620e3bd89af28fba79d6415c6b3d0dc0efd5db44825745903",
+      "bytes": 276649,
+      "count": 1269,
+      "files_bytes": 661242027
+    },
+    {
+      "run": "local/research/codex/r1f-shared-nat-r1",
+      "path": "local/evidence-manifests/b022d3a2ac886abe09d090c1ec20f731039b4a768a34af373790889bf753ba74.jsonl",
+      "sha256": "b022d3a2ac886abe09d090c1ec20f731039b4a768a34af373790889bf753ba74",
+      "bytes": 2037,
+      "count": 10,
+      "files_bytes": 182890
+    }
   ]
 }

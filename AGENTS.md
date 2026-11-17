@@ -127,8 +127,14 @@ diff và nội dung bàn giao trước khi gửi. Báo kết quả/nghiệm thu 
 CI GitHub Actions (`.github/workflows/docs.yml`, `rust.yml`) chạy trên mọi PR; trước khi merge, `gh pr checks <số>`
 phải đạt. CI đỏ thì sửa, không merge. CI không thay các kiểm cần `local/` dưới đây.
 Docs/checkpoint: chạy python3 tools/check_docs.py,python3 tools/check_checkpoints.py --require-local
---require-history và git diff --check. Thiếu raw/pending/unsynced phải báo rõ;checker không tự xác nhận
+--require-history và git diff --check. Checker cache sha256 file host-local ở `local/cache/` (key path+size+mtime+inode);
+`--no-hash-cache` buộc hash lại toàn bộ khi cần kiểm sâu định kỳ. Thiếu raw/pending/unsynced phải báo rõ;checker không tự xác nhận
 ngữ nghĩa hoặc đóng gate.
+Danh sách file local của checkpoint nằm trong run manifest `local/evidence-manifests/` (record chỉ giữ con trỏ run);
+checkpoint mới gọi `checkpoint_evidence.pack_evidence`, tra cứu bằng `python3 tools/evidence_lookup.py`
+([cách dùng](docs/evidence/checkpoints/README.md#lean-evidence)).
+Dọn `local/` theo [quy tắc lưu giữ](docs/evidence/owner-directives/local-retention.json): chỉ qua kế hoạch dry run của
+`tools/local_retention.py`; `--apply` cần hash kế hoạch chủ dự án đã duyệt, không tự xóa raw ngoài kế hoạch.
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
 Rust server: `cargo fmt --manifest-path rust/Cargo.toml --all --check`, `cargo clippy --manifest-path rust/Cargo.toml
 --workspace --all-targets --locked -- -D warnings`, `cargo test --manifest-path rust/Cargo.toml --workspace --locked`;

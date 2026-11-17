@@ -194,15 +194,6 @@
       "limits": "NEXT-K7-ADMISSION-CONTROL active, noInternetgate/multiplayercountinference."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP196-NAT-host-EOF.json",
-      "bytes": 443952,
-      "sha256": "56ca6d0d1d02aea71a18703a8c281e4e4130cf8d2b80ac840ef8b8a560ff1503",
-      "count": 1746
-    }
-  ],
   "delta": {
     "added": [
       "FocusedpendingBhostEOF/nativeAcleanup/fenceunderNATUDPqdisc; preservedfailedR1andboundedR2positive.",
@@ -302,6 +293,741 @@
       "path": "docs/evidence/checkpoints/audits/AUD058.json",
       "state": "updated",
       "reason": "CP196EOF/partialR1-boundedR2/PCAPGDBchronology/AUD058currentdocs+limits/nextincomingadmission synchronizedbeforecomplete, nextaudit200."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EOF196-00001",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-EOF-analysis.log",
+      "bytes": 796,
+      "sha256": "ebc1b18717d5d2adaa8db6b2e14cb16773baf32172e908f318104443c5768399"
+    },
+    {
+      "id": "EOF196-00006",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r1/cycles.gdb",
+      "bytes": 23563,
+      "sha256": "01d948efa974acaccaf041090052f937b8882a6d7978ca126ee2ece4d02dc236"
+    },
+    {
+      "id": "EOF196-00679",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r1/cycles/client.log",
+      "bytes": 134980,
+      "sha256": "7059de202ed649da30db002b810c805bb17d9a16f520bd769bad003256225689"
+    },
+    {
+      "id": "EOF196-00696",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r1/cycles/udp-capture-index.json",
+      "bytes": 36413,
+      "sha256": "aed472b09396cabe7884fad247d2718f4ddb9b1bd0d4a28e952223ad49e01966"
+    },
+    {
+      "id": "EOF196-00709",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r1/gdb_live_positions.py",
+      "bytes": 1500,
+      "sha256": "50d2ad859928bac02c83b342da0076e424800d5314191c45a34a5ef142a2d561"
+    },
+    {
+      "id": "EOF196-00718",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r1/partial-tail-verification-r2.json",
+      "bytes": 7196,
+      "sha256": "a5ad43f38c62649171cb55c4110a0cb0b81c7bb3c70a970de5ce8cc2ea375dd6"
+    },
+    {
+      "id": "EOF196-00719",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r1/partial-tail-verification.json",
+      "bytes": 6768,
+      "sha256": "d257343d9fedfb1011d70513913e252a7de1bb1dc0b9f1391655a271e46c1d88"
+    },
+    {
+      "id": "EOF196-00720",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r1/probe-stop-diagnosis.json",
+      "bytes": 1150,
+      "sha256": "1f0f22632cbbafecd0aa98369a1ffe82a3e91b1e4f1691e4e1397a84538c74fa"
+    },
+    {
+      "id": "EOF196-00777",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/EOF-tail-verification.json",
+      "bytes": 1481,
+      "sha256": "e0e32d1c23ec90320191c9532eed90f2e1d4f08352bc9b21e5e4cc1339f2bdbb"
+    },
+    {
+      "id": "EOF196-00781",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/cp196-snapshot/docs/PLAN.md",
+      "bytes": 54506,
+      "sha256": "650e9d5027eaf17eacc4880050af8e660161d8f707cc61c457dcd2f30c82b0e8"
+    },
+    {
+      "id": "EOF196-00784",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/cp196-snapshot/docs/evidence/checkpoints/audits/AUD058.json",
+      "bytes": 8202,
+      "sha256": "84c6ece55cba4af5263c358a9b0e71e1b4901f29ac08040ddf6adf4a9bca9bf9"
+    },
+    {
+      "id": "EOF196-01497",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/host-eof-verification.json",
+      "bytes": 1949,
+      "sha256": "0767cb6d5bf76d5f2f4d8bd6d4897b06bd5e2cf3cf5a17b91963ab44e95d19a8"
+    },
+    {
+      "id": "EOF196-01501",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/raw-seal.json",
+      "bytes": 141368,
+      "sha256": "6e2832e65fa6c6b386af9aa3f5865b4c297ac3672db9d2d0c4bdae9ecd0c18e4"
+    },
+    {
+      "id": "EOF196-01554",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/source-first.json",
+      "bytes": 3257,
+      "sha256": "750ffd06d4576f5dd1108e864373467c4b9a6dbe0bf5b5ed58a45afb728dc70a"
+    },
+    {
+      "id": "EOF196-01555",
+      "kind": "local",
+      "path": "local/research/codex/NAT-netem-host-EOF-r2/test-reuse.json",
+      "bytes": 12237,
+      "sha256": "371f1643825891ff6bcd92c64052338e04b7f35ae318c612376c977c60176e12"
+    },
+    {
+      "id": "EOF196-01565",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "EOF196-01572",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "EOF196-01576",
+      "kind": "local",
+      "path": "local/research/codex/cp193-checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "ae6be4c349d91c7ecd453d9eefd293317446b83ec573a30322d0f6ff6481db26"
+    },
+    {
+      "id": "EOF196-01577",
+      "kind": "local",
+      "path": "local/research/codex/cp193-server-tests.txt",
+      "bytes": 394,
+      "sha256": "6e7558883fe8d7d328687d56c578079f072298119de13273ab82384392e75832"
+    },
+    {
+      "id": "EOF196-01579",
+      "kind": "local",
+      "path": "local/research/codex/cp195-exact-head-results.json",
+      "bytes": 647,
+      "sha256": "1acda72ec7267bdacab1bfe54267f652f434d76bab5034f4294988b8e41a7be9"
+    },
+    {
+      "id": "EOF196-01580",
+      "kind": "local",
+      "path": "local/research/codex/cp195-pr-merged.json",
+      "bytes": 123,
+      "sha256": "7329cf00bb2882a879b3ecec2882893c93b229d75c2871f1350492e1cc8d4af3"
+    },
+    {
+      "id": "EOF196-01587",
+      "kind": "local",
+      "path": "local/research/codex/cp196-audit-contact.png",
+      "bytes": 393651,
+      "sha256": "5929ebb33d68c18c70f41ae9d9e8290f4e3fec113662db24b3f870509e0f48ac"
+    },
+    {
+      "id": "EOF196-01588",
+      "kind": "local",
+      "path": "local/research/codex/cp196-audit-reading.json",
+      "bytes": 11415,
+      "sha256": "41fa6fcf6c30706d2df4832b71d79139d1547536e220ef5a3eb99128183c1615"
+    },
+    {
+      "id": "EOF196-01589",
+      "kind": "local",
+      "path": "local/research/codex/cp196-docs-check.txt",
+      "bytes": 175,
+      "sha256": "93e04e61a581dd4dae1cf59ba9b6e2ed99999d4d6a39cebe143feee0a5d40b7c"
+    },
+    {
+      "id": "EOF196-01599",
+      "kind": "local",
+      "path": "local/research/codex/k6b-admission-preflight-r1/verification.json",
+      "bytes": 4877,
+      "sha256": "06bb2df70b992e7d681871a5126d03683bbc3829f4a0f6c2c53edcfb892a59ad"
+    },
+    {
+      "id": "EOF196-01602",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "EOF196-01603",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/netem-native-verification.json",
+      "bytes": 3057,
+      "sha256": "f4f5ce3fcac640d59d4a4202daec5a3abf14951d249acf126d9dd780a8ffc831"
+    },
+    {
+      "id": "EOF196-01606",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "EOF196-01672",
+      "kind": "local",
+      "path": "local/research/codex/probe_lan_accept_order.py",
+      "bytes": 4219,
+      "sha256": "eafb17ab3b5bcb4261ea2c5a9239b416f17bd1ebd3cd44a79ff2a178f62ab4e8"
+    },
+    {
+      "id": "EOF196-01678",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "EOF196-01679",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "EOF196-01680",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "EOF196-01688",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "EOF196-01693",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "EOF196-01696",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "EOF196-01697",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "EOF196-01698",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "EOF196-01699",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "EOF196-01700",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "EOF196-01701",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "EOF196-01702",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "EOF196-01703",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "EOF196-01704",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "EOF196-01705",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "EOF196-01706",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "EOF196-01707",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "EOF196-01708",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "EOF196-01709",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "EOF196-01710",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "EOF196-01711",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "EOF196-01712",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "EOF196-01713",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "EOF196-01714",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "EOF196-01715",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "EOF196-01716",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "EOF196-01717",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "EOF196-01718",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "EOF196-01719",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "EOF196-01720",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "EOF196-01721",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "EOF196-01722",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "EOF196-01723",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "EOF196-01724",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "EOF196-01725",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "EOF196-01726",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "EOF196-01727",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "EOF196-01728",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "EOF196-01729",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "EOF196-01730",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "EOF196-01731",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "EOF196-01732",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "EOF196-01733",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "EOF196-01734",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "EOF196-01735",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "EOF196-01736",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "EOF196-01737",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "EOF196-01738",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "EOF196-01739",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "EOF196-01740",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "EOF196-01741",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "EOF196-01742",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "EOF196-01743",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "EOF196-01744",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "EOF196-01745",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "EOF196-01746",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/99159d79b95a6acd7fbda918b9f6762bd4d7156a653514279ff39d75fc67f9a7.jsonl",
+      "sha256": "99159d79b95a6acd7fbda918b9f6762bd4d7156a653514279ff39d75fc67f9a7",
+      "bytes": 4989,
+      "count": 27,
+      "files_bytes": 6229744
+    },
+    {
+      "run": "local/research/codex/NAT-netem-host-EOF-r1",
+      "path": "local/evidence-manifests/a118592e19479db55e20526d0371cd55ea32e00d888f7eb71633fde4b652d8de.jsonl",
+      "sha256": "a118592e19479db55e20526d0371cd55ea32e00d888f7eb71633fde4b652d8de",
+      "bytes": 156657,
+      "count": 766,
+      "files_bytes": 27198375
+    },
+    {
+      "run": "local/research/codex/NAT-netem-host-EOF-r2",
+      "path": "local/evidence-manifests/a8ad7095d128809ea6dce0561aa197c7093d8bd2dbc7e96ac000b4c2a09d047a.jsonl",
+      "sha256": "a8ad7095d128809ea6dce0561aa197c7093d8bd2dbc7e96ac000b4c2a09d047a",
+      "bytes": 158220,
+      "count": 773,
+      "files_bytes": 27592073
+    },
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/982e7b6732375f9d02513ae534db6606b0355fb8e8ab53b81934f904608063e6.jsonl",
+      "sha256": "982e7b6732375f9d02513ae534db6606b0355fb8e8ab53b81934f904608063e6",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/4048821bfa5fb50d24d7a90a6a7f8e0faaf67ed69935c9ce1e23c0b5362b37a4.jsonl",
+      "sha256": "4048821bfa5fb50d24d7a90a6a7f8e0faaf67ed69935c9ce1e23c0b5362b37a4",
+      "bytes": 642,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/95c0b7bd0cb6e77090cef87e5ab3e2f8ff04c7368e44f859b28ed48845d93520.jsonl",
+      "sha256": "95c0b7bd0cb6e77090cef87e5ab3e2f8ff04c7368e44f859b28ed48845d93520",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/fc6dc6a66f4ff59dae8690604418c4871bd18ab11cbe554ddfc21e458ae9773b.jsonl",
+      "sha256": "fc6dc6a66f4ff59dae8690604418c4871bd18ab11cbe554ddfc21e458ae9773b",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/5d8924588f33731ea4763b35564446129a056bbfff584ef1e222b56e7ca67ce9.jsonl",
+      "sha256": "5d8924588f33731ea4763b35564446129a056bbfff584ef1e222b56e7ca67ce9",
+      "bytes": 461,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/b0dd745f11f7082395aa73c17211250dd268f202c0f7e70e901016b6bcce9000.jsonl",
+      "sha256": "b0dd745f11f7082395aa73c17211250dd268f202c0f7e70e901016b6bcce9000",
+      "bytes": 1016,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/dcd7537a986c50fc57a7338f8b06fb91711d831077333b5f3dd4479a0e8eea7f.jsonl",
+      "sha256": "dcd7537a986c50fc57a7338f8b06fb91711d831077333b5f3dd4479a0e8eea7f",
+      "bytes": 504,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/1cf49d1650b750790636da49e4ec7a8f164df9abb86cdb2a776c91610c1dbef0.jsonl",
+      "sha256": "1cf49d1650b750790636da49e4ec7a8f164df9abb86cdb2a776c91610c1dbef0",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/ef20e12f358b77f8b9fa7fae091569e48b41baa32b378f1d0243f71196c7d9f9.jsonl",
+      "sha256": "ef20e12f358b77f8b9fa7fae091569e48b41baa32b378f1d0243f71196c7d9f9",
+      "bytes": 443,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/portable-bundle-r1",
+      "path": "local/evidence-manifests/ca441f3222d4d7465cc9241a6cfe1678d9c8698418dea501a3136c56a8d2b4a3.jsonl",
+      "sha256": "ca441f3222d4d7465cc9241a6cfe1678d9c8698418dea501a3136c56a8d2b4a3",
+      "bytes": 15246,
+      "count": 60,
+      "files_bytes": 175668
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/a373d687a18e74946fc13fa06dc2f57314f744430a2885fe2b233073e1959584.jsonl",
+      "sha256": "a373d687a18e74946fc13fa06dc2f57314f744430a2885fe2b233073e1959584",
+      "bytes": 641,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/38ab7efe524ab9b78b3828202ab1312895efd50d41164d86a0b46ff646b9bc3d.jsonl",
+      "sha256": "38ab7efe524ab9b78b3828202ab1312895efd50d41164d86a0b46ff646b9bc3d",
+      "bytes": 981,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/f46c042959938ff370ee11aabbed3a678e265cd0df19ba01fc5e3d10dd8b5734.jsonl",
+      "sha256": "f46c042959938ff370ee11aabbed3a678e265cd0df19ba01fc5e3d10dd8b5734",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/834462f699ac6c06b9f44daec55f870821f1c77d66cd8e0543b5f4287ff193d5.jsonl",
+      "sha256": "834462f699ac6c06b9f44daec55f870821f1c77d66cd8e0543b5f4287ff193d5",
+      "bytes": 453,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

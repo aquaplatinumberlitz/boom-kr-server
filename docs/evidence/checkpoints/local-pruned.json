@@ -1,0 +1,5 @@
+{
+  "schema": "kre-local-pruned-v1",
+  "authorization": "docs/evidence/owner-directives/local-retention.json",
+  "entries": []
+}

@@ -1,5 +1,18 @@
 # Item, stat, pickup và kim
 
+<a id="g1-scoped-drops"></a>
+### Bảng rơi server theo phạm vi G1
+
+Theo [quyết định chủ dự án](../evidence/owner-directives/g1-item-scope-cut.json), Rust giữ Bomb/Fire/Roller,
+MaxPower, kim/cứu, Shoe và Punch. [Dữ liệu server](../../rust/data/g1-item-drops.json) giữ mọi row của sáu map,
+kể cả row trùng, với trọng số 0 cho mọi tên ngoài tập giữ. Profile Rust áp bảng này khi load; profile raw của pack,
+exporter và code/evidence item cũ được giữ nguyên. [Metadata nguồn/hash](../evidence/rust-service/g1-item-scope-data.json)
+ghi số row và phạm vi kiểm. Trọng số không là phần trăm hoặc bằng chứng RNG server gốc.
+
+Các item cố định và hidden list2 từ fixture được kiểm riêng trước bind: chỉ chấp nhận kind 0–5 hoặc 145,
+sau đó kiểm policy MaxPower/Shoe/Punch/kim. Bảng rơi không tự cấp quyền bật hành động chưa nghiệm thu,
+không sinh lại item của nhóm bị tắt hoặc mở thêm nhóm item ngoài G1.
+
 [Mục lục](../PROTOCOL.md) · [Câu hỏi đang mở](../RESEARCH.md) · [Thứ tự việc](../PLAN.md#dashboard).
 
 <a id="item-families"></a>

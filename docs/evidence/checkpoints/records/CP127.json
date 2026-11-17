@@ -147,21 +147,6 @@
       "limits": "Models andselectedmanualobservation/mechanicalchecks notautomaticallynative/originalauthority or gate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP127-pending-exit-fixed.json",
-      "bytes": 246404,
-      "sha256": "a756dbee95223f6bf8d531cdae3f09c828fa93722913ff6461872cc505d38c51",
-      "count": 966
-    },
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP127-pending-exit-control.json",
-      "bytes": 247026,
-      "sha256": "ef61e86059d2e62a047df16f57bd953b24f62bdc8ed017672cb5172d2e3c2ebd",
-      "count": 957
-    }
-  ],
   "delta": {
     "added": [
       "ActualnormalUIexitwithoneBpendingbombcontrolvsnewmode/fencejobdrop/no158/nativestages/resultreturn/Lobby proof."
@@ -242,6 +227,189 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP127pendingbombcontrol/fixed/namedmode/fence/no158/opaquefieldlimits/nextpostbombrejoinCP128audit; oldrecord/raw/gateunchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "FIX-00001",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/analysis-correction.json",
+      "bytes": 1113,
+      "sha256": "f2537ec3e659940e34c7b35207d9c81989b62e63c95cec686db7c23ad6698e3b"
+    },
+    {
+      "id": "FIX-00886",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/cycles/run.json",
+      "bytes": 86654,
+      "sha256": "ed69fe49a57c11f92eb107d880c7decc7667f3b548eed5fcb6f0708850d9c6a1"
+    },
+    {
+      "id": "FIX-00898",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/exit-verification.json",
+      "bytes": 85228,
+      "sha256": "206ccade5a618a9304908027dd914c780b6eb3667a5bf5441ec259059c68c4ce"
+    },
+    {
+      "id": "FIX-00901",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/native-exit-check.txt",
+      "bytes": 28,
+      "sha256": "b13e5333da298ecf6a62b865f37a66f8504d5071980fbb74f7f3554240cb83d7"
+    },
+    {
+      "id": "FIX-00907",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/pending-fields-check.txt",
+      "bytes": 771,
+      "sha256": "9b01f5edcc0d110a82f44e8aa830e53df832473f04da09f189124a883dcb1a18"
+    },
+    {
+      "id": "FIX-00908",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/pending-fields-check2.txt",
+      "bytes": 76,
+      "sha256": "f0f1c8b84649b3f1fe2fdfb99b301c95f8a8d2f4e3b6a72e66e6cb8f38317712"
+    },
+    {
+      "id": "FIX-00909",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/pending-fixed-check.txt",
+      "bytes": 769,
+      "sha256": "81e940e9698b1278b8e7f080059f75444a8f7c838f87584e366fefb3d8b7ba97"
+    },
+    {
+      "id": "FIX-00911",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/raw-seal.json",
+      "bytes": 184173,
+      "sha256": "08ed115e01799baa053334f6efc73306f8096d38bf7641d25b7b54a6e154e0ef"
+    },
+    {
+      "id": "FIX-00929",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/runtime-source/server/probe_service.py",
+      "bytes": 83416,
+      "sha256": "043fa892ca1636eacb8baaad4cf78b0b698297b7d5809553ff7d03cade949c7c"
+    },
+    {
+      "id": "FIX-00935",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/runtime-source/server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "FIX-00964",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-fixed-r1/visual-review.json",
+      "bytes": 747,
+      "sha256": "43b486a042b9177356ba4cc8a6e17664d7c23eeff3b51934c6ce6d2d503b2887"
+    },
+    {
+      "id": "CTRL-00003",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "CTRL-00885",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/cycles/run.json",
+      "bytes": 85424,
+      "sha256": "976e5f765b714416f20f8bcbccdd573bafa3c3cc2428d9c235399e8263148371"
+    },
+    {
+      "id": "CTRL-00895",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "f980cac379b5622a44c0903634409af498b25760367dd91d27c955ca5b681abd"
+    },
+    {
+      "id": "CTRL-00901",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "bfc7030c8197d9e1d02568ad56263cfbec10af09b51ec58520ddad1beed79600"
+    },
+    {
+      "id": "CTRL-00906",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/pending-control-check.txt",
+      "bytes": 84,
+      "sha256": "559975fe13fa3432c4e949e75b82eece13fcbcf63c87aebf3218ddf389b3d2c3"
+    },
+    {
+      "id": "CTRL-00907",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/pending-control-verification.json",
+      "bytes": 87309,
+      "sha256": "3b7d5fb14aeef1d37868a37fb29fffebde4fd9d4165e54ba0af097cf128b135c"
+    },
+    {
+      "id": "CTRL-00908",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/pending-policy-decision.json",
+      "bytes": 2186,
+      "sha256": "fba504cdca548c05f84424a7063e4d0e7d4f9a6e4fd332a351c27665000cbe2a"
+    },
+    {
+      "id": "CTRL-00909",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/pending-tests.txt",
+      "bytes": 102,
+      "sha256": "b6a161abed43b9a0dba9259cd451b39b20b10425ac13cc14786554c0e6fac7f1"
+    },
+    {
+      "id": "CTRL-00911",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/raw-seal.json",
+      "bytes": 183720,
+      "sha256": "3e800f0b5ee68c416bd3469c727db8f6c61c3338e812a6fef04127544ceb5270"
+    },
+    {
+      "id": "CTRL-00951",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-bomb-control-r1/server-tests.txt",
+      "bytes": 315,
+      "sha256": "4ff3c3febaaf8901b5f09586cf55de09e06e815afca7f938236c8ae2bf4064ac"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/active-exit-bomb-fixed-r1",
+      "path": "local/evidence-manifests/36ca8c685e2470026e3587b37810f15f2a067f0c3d3e3c860f4f7b5929f639bd.jsonl",
+      "sha256": "36ca8c685e2470026e3587b37810f15f2a067f0c3d3e3c860f4f7b5929f639bd",
+      "bytes": 195504,
+      "count": 953,
+      "files_bytes": 40748135
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/3027f296facd16bfeb2b88ce824ce3a35dbb172660bdc5cbc4d96300d01612dc.jsonl",
+      "sha256": "3027f296facd16bfeb2b88ce824ce3a35dbb172660bdc5cbc4d96300d01612dc",
+      "bytes": 815,
+      "count": 4,
+      "files_bytes": 117748
+    },
+    {
+      "run": "local/research/codex/active-exit-bomb-control-r1",
+      "path": "local/evidence-manifests/6863148a242c3651b308c5fc5276582feb8af817df1bbfd46506fce9aa238691.jsonl",
+      "sha256": "6863148a242c3651b308c5fc5276582feb8af817df1bbfd46506fce9aa238691",
+      "bytes": 196412,
+      "count": 943,
+      "files_bytes": 40917133
+    },
+    {
+      "run": "local/research/codex/active-exit-rejoin-r1",
+      "path": "local/evidence-manifests/3846b15671ae86a676ce4162d3ababebe82752a4e2cf7b2bf0a6b2fdc0bb2147.jsonl",
+      "sha256": "3846b15671ae86a676ce4162d3ababebe82752a4e2cf7b2bf0a6b2fdc0bb2147",
+      "bytes": 474,
+      "count": 2,
+      "files_bytes": 429
     }
   ]
 }

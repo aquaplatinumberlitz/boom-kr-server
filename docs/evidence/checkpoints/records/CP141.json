@@ -159,15 +159,6 @@
       "limits": "Mechanicalconsistencyonly; notsemanticacceptance/gates."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP141-service-peer-address.json",
-      "bytes": 330788,
-      "sha256": "6c529d67438c82d0193834a344fde8af8c32b876381d81067a40203a0961e3b2",
-      "count": 1305
-    }
-  ],
   "delta": {
     "added": [
       "ProductionexplicitIPv4configuration/default127 andsame-runbasic2cycles+postreturn2normalReady95/native110renderwithoutshims."
@@ -251,6 +242,180 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP141productionaddress/no-shim2basiccycles/normalReadyproof/limits/corrections/newmovementgap/issue14 syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/address-ready-check.txt",
+      "bytes": 1903,
+      "sha256": "237b5ec7cc598da7ad9e9c9c76afdd345c65e1458f5e34412c91332b10e8c6f9"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/address-ready-draft-check.txt",
+      "bytes": 766,
+      "sha256": "f69897876bba1439ecd135c502890a054ad880766bc72a92c2541804048e2d06"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/address-ready-verification.json",
+      "bytes": 4240,
+      "sha256": "d232130eff4016bb99c47d49cbc45956b6804a05ca44b13776942451e938c190"
+    },
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/analysis-corrections.json",
+      "bytes": 878,
+      "sha256": "363ea88e5578cd05e466180ba5f6a24b6bb9089f67b52c9fd70bf251efff41e5"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/basic-check.txt",
+      "bytes": 1722,
+      "sha256": "160d5b1485d0380b2b01a898e8159f1f0ac6cdb6a2216551ce76894e2eae5c6a"
+    },
+    {
+      "id": "RUN-00010",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/basic-verification.json",
+      "bytes": 157516,
+      "sha256": "d0b84ea514ce1fa69d2c0358856a04be510aeeaca18428e66c1a20700dd02abb"
+    },
+    {
+      "id": "RUN-01178",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/cycles/run.json",
+      "bytes": 163838,
+      "sha256": "aa05fbfaead45ec8e7b85aeb607dfe5afe2741e925ec3c56845792ee5566e152"
+    },
+    {
+      "id": "RUN-01193",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "0d382ce43d7a67ce8289e1f80c17229b8aa454c00aec02b37b386622d9056798"
+    },
+    {
+      "id": "RUN-01194",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/fields-check.txt",
+      "bytes": 32,
+      "sha256": "9deadcdf1199fdd8bb71ec9605cebe3f844d4af95707d6f23cf75897c61705a5"
+    },
+    {
+      "id": "RUN-01196",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/flags-check.txt",
+      "bytes": 54,
+      "sha256": "5b68529c65f7ed72126b0ff3ac5d3abad3848404f844e2330874da205e7c83b3"
+    },
+    {
+      "id": "RUN-01201",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "acf4a2e8367c6a458bdb00c7fb8a4810c33b114f3e267d14fc0b3d453b2e595f"
+    },
+    {
+      "id": "RUN-01210",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/network-tests.txt",
+      "bytes": 1001,
+      "sha256": "72ea65422c3ee4fb90bf564a4b05afabbdb368cb60818a7459eca2b67c5e793d"
+    },
+    {
+      "id": "RUN-01215",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/raw-seal.json",
+      "bytes": 239370,
+      "sha256": "8526ff800530e5da2075e67adc31c8efe1a8640d98888315d2b112a33f815b50"
+    },
+    {
+      "id": "RUN-01217",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/reports-check.txt",
+      "bytes": 29,
+      "sha256": "b33b7c147c43279eb83805b763b22aa3aded3c620e16b188d4eaa103a28afaf1"
+    },
+    {
+      "id": "RUN-01256",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/runtime-source/server/probe_service.py",
+      "bytes": 89863,
+      "sha256": "c73bd0ddbbb6f0f78c1af1d15a5db839838cb4871b4babbb9893e018d3ea3d48"
+    },
+    {
+      "id": "RUN-01276",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/runtime-source/server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "RUN-01292",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/server-tests.txt",
+      "bytes": 331,
+      "sha256": "f68f879ad1b4c2f0d7adb4e0654a2b23d9b55110f5c2b4631e4f84c77cadbbeb"
+    },
+    {
+      "id": "RUN-01297",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/verify_address_ready_draft.py",
+      "bytes": 4971,
+      "sha256": "9f75c1ea36e75353b96562c6b0ae98c1930e2f0020111a72da2d0620426582a1"
+    },
+    {
+      "id": "RUN-01301",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/visual-review.json",
+      "bytes": 1309,
+      "sha256": "a229ba038bcf0bfb0322ad6d66ddbb21d805269c2cdecdeb4d7dd13dacbf060b"
+    },
+    {
+      "id": "RUN-01302",
+      "kind": "local",
+      "path": "local/research/codex/wine_probe_service_peer_address.py",
+      "bytes": 58722,
+      "sha256": "9fece02a4c8f6bbc51657505ce84780bff6133b2810bc5675954bc829e288dcd"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/service-peer-address-r1",
+      "path": "local/evidence-manifests/f28ab6ffee60af082baeeb1143e2c179befc9e1b4e00b1f5e1ed9c690c264cf6.jsonl",
+      "sha256": "f28ab6ffee60af082baeeb1143e2c179befc9e1b4e00b1f5e1ed9c690c264cf6",
+      "bytes": 260609,
+      "count": 1280,
+      "files_bytes": 53657941
+    },
+    {
+      "run": "local/research/codex/virtual-basic-cycles-r1",
+      "path": "local/evidence-manifests/b95a53d7a42c7f963935f12ff2687a3e89e815f01609baaf25fa170fc3cef8ab.jsonl",
+      "sha256": "b95a53d7a42c7f963935f12ff2687a3e89e815f01609baaf25fa170fc3cef8ab",
+      "bytes": 672,
+      "count": 3,
+      "files_bytes": 29072
     }
   ]
 }

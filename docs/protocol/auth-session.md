@@ -22,7 +22,11 @@ Khi vào phòng, đọc preference của chính account và khôi phục trướ
 Hai run native kiểm chọn Dizni, hai kết quả đối nhau/reset/trận tiếp; restart trên đúng DB đã seal rồi fresh account
 login/launcher/client, không gửi92 vẫn nhận Dizni và chơi tiếp. Account còn lại giữ Dao; identity/profile_version không đổi.
 Own profile291 tại sảnh vẫn zero-profile hiện có; chưa phục hồi projection nhân vật trong291. Unsupported key bị từ chối
-trước DB. Writer-lock và revoke-while-waiting có kiểm TCP/SQLite riêng, không được gọi là native negatives.
+trước DB. Theo [G1 #457](../evidence/rust-service/g1-character-rejection.json), well-formed92 ở Idle/setup
+cho key chưa đo nhận lại current110 chỉ trên socket của mình; nhân vật, Ready, membership và DB/revision giữ nguyên.
+Client phục hồi C1, sau đó chọn C0→C1 và chơi hai vòng/kết quả/reset trên cùng transport; peer vẫn là C0.
+Đây là policy design dùng consumer 110 đã đo, không khẳng định phản hồi của server gốc. Malformed/local-player khác0,
+phase hoặc membership cũ tiếp tục bị từ chối. Writer-lock/revoke và key2/26/65535 có kiểm TCP/SQLite riêng, không gọi là native negatives.
 
 Đây là phần nhân vật của M6; [journal trận/kết quả](life-results.md#rust-match-journal-serving) có acceptance riêng.
 Không suy account resume/match restore, inventory hoặc progression từ persistence. Các nhân vật khác theo G1.

@@ -130,15 +130,6 @@
       "limits": "Newpreset/export addedaftersealedruntime. Fullcheckpointlocal/historybeforecommit, no gate/semanticcertification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP159-production-baseline.json",
-      "bytes": 345822,
-      "sha256": "c8b1b098eff261f71c60f1b6395a69076d0c644327cb8a5ded06a45db38d7b49",
-      "count": 1369
-    }
-  ],
   "delta": {
     "added": [
       "Currentproductionmodule/no165measurementhold/noactiveUDP replay two normalcycles/nativeeffects/reset/Ready.",
@@ -236,6 +227,202 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP159production2cycles/pickup1or2/nativeproof/renderlimit/47fixturepresetimplementation/PR229merge/exportsmoke/AUD160next syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/actor-fields.json",
+      "bytes": 1555736,
+      "sha256": "3c6de9bd48749b122380cc9fc5366a78b70fa7a0337be4a91707d73140509372"
+    },
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/capture-claim-verification.json",
+      "bytes": 2282,
+      "sha256": "642a094de1c7c0492d329219c4f18282d084fb7a771a277879990b65061ed65e"
+    },
+    {
+      "id": "RUN-00020",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/cycle-boundary-verification.json",
+      "bytes": 2519,
+      "sha256": "2aeb75b494924f9d6d62b9d78dbd506f93134c0ec74bac06f3d67f3bb3d7521a"
+    },
+    {
+      "id": "RUN-01220",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "d906ea3a74e8cfa880a1306c8819036d36ce824dbe5c9f919e4b0cd1661976f7"
+    },
+    {
+      "id": "RUN-01221",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/endpoint-peer-verification.json",
+      "bytes": 184431,
+      "sha256": "9249fd0431c329d8336614bcd6da11db7e92e6719010c023057fbdf63eb54ab6"
+    },
+    {
+      "id": "RUN-01222",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/export-tests.txt",
+      "bytes": 102,
+      "sha256": "08de03281ac2efba5e76457f824e81f376a60431fdfe597fab9dd31fdd774d93"
+    },
+    {
+      "id": "RUN-01223",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/export-validation.json",
+      "bytes": 445,
+      "sha256": "3a0ae095a6d6b66c7a0171046a309a15e28eb10256cb043fc7d972090c94f0de"
+    },
+    {
+      "id": "RUN-01225",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/final-tool-source/server/profiles/two-client-battle.json",
+      "bytes": 14031,
+      "sha256": "ecc7e3081a330926ab0d9011dad6c0c13d8b26406cb3e54db318262eaa755d45"
+    },
+    {
+      "id": "RUN-01226",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/final-tool-source/tools/export_probe_profile.py",
+      "bytes": 8737,
+      "sha256": "58078ea45da990f132ebb8df238a4c88bb240032a3f540806fd6f72bd9ba07c6"
+    },
+    {
+      "id": "RUN-01227",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/final-tool-source/tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "RUN-01228",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/flag-reader-verification.json",
+      "bytes": 1433339,
+      "sha256": "7c29ba0ccd596ff699e063e4feeb35885a14adee9045560cd1195f2e7508075f"
+    },
+    {
+      "id": "RUN-01237",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/hot-gate-verification.json",
+      "bytes": 5411,
+      "sha256": "0e201a9a5f528b679e73b7b9360c05f2b13648c3d26b93c2bae70c29c6c1b699"
+    },
+    {
+      "id": "RUN-01240",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "3150a6bced18d6b21263c281a2bbb362a3b11920dc8057f5196ad17dd54e8907"
+    },
+    {
+      "id": "RUN-01243",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/life-agreement-verification.json",
+      "bytes": 6816,
+      "sha256": "3081589508cbc6ce3d6a49779df62d0d11a6e34568f5b653016cc7589486f891"
+    },
+    {
+      "id": "RUN-01244",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "7e36540416009daf37aabecf4070d03913e7008ef1b718f1035f0e0b39c56463"
+    },
+    {
+      "id": "RUN-01246",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/native-exit-packets.json",
+      "bytes": 128771,
+      "sha256": "1321a529ed3d79b566efd91596544e60a372738381fa7cfc394099237136840e"
+    },
+    {
+      "id": "RUN-01253",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "f304109723ab8d50091f38f448ef5e2b9cf98e1a901d4c5189d0233a9573b3f0"
+    },
+    {
+      "id": "RUN-01254",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/production-pickup-verification.json",
+      "bytes": 1111,
+      "sha256": "0c5dd2374be5607423a578bb097248fa1dbf6d71e403dd1e91aa5eae9a27fe75"
+    },
+    {
+      "id": "RUN-01256",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/raw-seal.json",
+      "bytes": 244607,
+      "sha256": "42d77fbb29507fdaa430fae1fe2cfee47f1ebef3e7254955481c0c934251fe37"
+    },
+    {
+      "id": "RUN-01339",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/server-source-reuse.json",
+      "bytes": 6889,
+      "sha256": "31103d104fb17df09cad0297799ce578410a863aba213ee25024c961639cfa55"
+    },
+    {
+      "id": "RUN-01357",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/visual-review.json",
+      "bytes": 1497,
+      "sha256": "97aa1992cfe6507c1c07961fd1b249491547d876b236de2c08214beead879544"
+    },
+    {
+      "id": "RUN-01358",
+      "kind": "local",
+      "path": "local/research/codex/production-baseline-r1/world-reset-verification.json",
+      "bytes": 943,
+      "sha256": "6e6f8e09a2b00166f238541951845c51ba70bfeb13ac8e3eeab5fb36274abad9"
+    },
+    {
+      "id": "RUN-01369",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-ui-r2/profile.json",
+      "bytes": 15174,
+      "sha256": "158b1ce7915853acb6c864abc8e9d634bfd2ec55bb8ae76c31e82223853ce11a"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/production-baseline-r1",
+      "path": "local/evidence-manifests/6d94f22c3791e879f91e7e9179520e4e3ff8efe11ae5c942a4b50069edf1ab4c.jsonl",
+      "sha256": "6d94f22c3791e879f91e7e9179520e4e3ff8efe11ae5c942a4b50069edf1ab4c",
+      "bytes": 271035,
+      "count": 1337,
+      "files_bytes": 118006695
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9112221947accd6d06f77995e449c4c9ea83dbec0dfd0a442fffca73a444bf73.jsonl",
+      "sha256": "9112221947accd6d06f77995e449c4c9ea83dbec0dfd0a442fffca73a444bf73",
+      "bytes": 1132,
+      "count": 6,
+      "files_bytes": 102972
+    },
+    {
+      "run": "local/research/codex/trap-udp-counter-gap-r5",
+      "path": "local/evidence-manifests/9314c72461c8d6f697c26f1a395fbdb62a52a5e08d90a2e0753c08905e61939d.jsonl",
+      "sha256": "9314c72461c8d6f697c26f1a395fbdb62a52a5e08d90a2e0753c08905e61939d",
+      "bytes": 472,
+      "count": 2,
+      "files_bytes": 510
     }
   ]
 }

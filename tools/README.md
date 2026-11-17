@@ -37,6 +37,11 @@ evidence hash,closed-task/active-next-step và audit theo nhóm tính năng/poli
 Trên host chạy --require-local --require-history;clone thiếu raw báo UNVERIFIED khi không flag.
 Pending review hiện WARNING,không thành semantic approval. [Quy trình/giới hạn](../docs/evidence/checkpoints/README.md).
 Tests: python3 tools/test_checkpoints.py.
+`evidence_lookup.py` tra checkpoint, run và manifest theo path, SHA-256, evidence ID hoặc CP, kiểm hash khi cần và
+đọc được danh sách đầy đủ cũ trong Git; `migrate_checkpoint_evidence.py` chuyển record sang run manifest local.
+[Cách dùng và giới hạn](../docs/evidence/checkpoints/README.md#lean-evidence).
+`local_retention.py` lập kế hoạch dọn `local/` (dry run mặc định, phân lớp giữ/nén/disposable, đo exclusive btrfs);
+`--apply` chỉ chạy với hash kế hoạch đã được chủ dự án duyệt. [Quy tắc](../docs/evidence/checkpoints/README.md#local-retention).
 Audit có thể ghi một `AGENTS.md` ở đầu trước chuỗi liên tục README→PLAN→PROTOCOL→RESEARCH;
 checker vẫn từ chối thiếu/đảo docs lõi hoặc prefix khác. Đây là tương thích metadata AUD057,
 giữ nguyên audit/checkpoint complete và không tự xác nhận nội dung đã đọc.

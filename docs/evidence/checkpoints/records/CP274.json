@@ -145,15 +145,6 @@
       "limits": "No production code changed; CP273 source Rust117 and legacy TCP306/wire regression reused, not rerun without a source change."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP274-r1-native-final.json",
-      "bytes": 923625,
-      "sha256": "d28b5e0511fa1345da4719c9137e7340c669d703f746a54ce00ae342b3e958e1",
-      "count": 3351
-    }
-  ],
   "delta": {
     "added": [
       "Final direct legacy native R1 regression and explicit acceptance comparison."
@@ -275,5 +266,256 @@
   ],
   "completed_feature_groups": [
     "r1-final-native-regression-existing-profiles"
+  ],
+  "evidence": [
+    {
+      "id": "R1FINAL274-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3682,
+      "sha256": "34c3dfed2545542506314e9a23789a01f4008bcfb788ac767f71e42bf4f48aed"
+    },
+    {
+      "id": "R1FINAL274-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 238174,
+      "sha256": "5429d18ce8682e36bc75156d7a7b004815f045df6906e4b9a0036c642e142cff"
+    },
+    {
+      "id": "R1FINAL274-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 136689,
+      "sha256": "90111b0bfe587c01fcd40e45972990130e007af1450e6ad3ad356ca2c838cd0a"
+    },
+    {
+      "id": "R1FINAL274-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 58059,
+      "sha256": "783abe58f48df80fb6f5cdce567c69c54db0cf2dccd1ca58d9fec398bc283162"
+    },
+    {
+      "id": "R1FINAL274-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "R1FINAL274-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 26509,
+      "sha256": "3e5acdf3acd5e3aed43d9e9fc6ccae433c3a85675bec1b0704414637f9e72e20"
+    },
+    {
+      "id": "R1FINAL274-00007",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 44287,
+      "sha256": "afb8eb845032f5b3310d873e7b6a4a89744a71d427cc857f9bd32c0572753e39"
+    },
+    {
+      "id": "R1FINAL274-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD090.json",
+      "bytes": 4118,
+      "sha256": "e5d802c1f9b333c483140838af53bc5e96705e1807013c6a007ef4c1fc90c684"
+    },
+    {
+      "id": "R1FINAL274-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1-native-final.json",
+      "bytes": 9358,
+      "sha256": "74da18f4b719cd6de8e1cfcbbbb3a2d97a0739467e3305413621aad7e5544bff"
+    },
+    {
+      "id": "R1FINAL274-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 249936,
+      "sha256": "94e3247e0d6d53f591812d8edf828ab0b997a7935e680dd81ecdc90a7b2c90fc"
+    },
+    {
+      "id": "R1FINAL274-00030",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-census-r1.txt",
+      "bytes": 63,
+      "sha256": "c60a8fc4ffbf20633ee4b4877257015b97428959899f6841fc026e9d125ec4d2"
+    },
+    {
+      "id": "R1FINAL274-00034",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-docs-r4.txt",
+      "bytes": 274,
+      "sha256": "3dbf11b715b3a82f239e3a12fd2dce62b64141af8689bd9c422a2f9d3d69832d"
+    },
+    {
+      "id": "R1FINAL274-00363",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/account/life-verification.json",
+      "bytes": 572280,
+      "sha256": "4f8b4adebe8e61506320b65103a04c84dcb4d5e9ee1744b82276633ecec4a3f7"
+    },
+    {
+      "id": "R1FINAL274-00434",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/account/native-account-basic/raw-seal.json",
+      "bytes": 16495,
+      "sha256": "47696c39f519774d22f00c660fc40a52c674c8652c3750ecb26ff65e254f2e64"
+    },
+    {
+      "id": "R1FINAL274-00439",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/account/ownership-verification-r2.json",
+      "bytes": 5391,
+      "sha256": "c3248e06078fb7369071d87a8f2d5cb086f839a011af8b4f35aab4700f9a53b2"
+    },
+    {
+      "id": "R1FINAL274-00440",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/account/peer-getter-verification.json",
+      "bytes": 420,
+      "sha256": "811deab926b0f9122a1437fc48b74f024738e92f08369f2c2d28f1807400606a"
+    },
+    {
+      "id": "R1FINAL274-00446",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/account/ui-review.json",
+      "bytes": 591,
+      "sha256": "20d0c1132312eb5d9286cb0295192c5c2120cea7b507206837fc5135bb001f8e"
+    },
+    {
+      "id": "R1FINAL274-00455",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/eight/eight-getter-verification.json",
+      "bytes": 436,
+      "sha256": "f60c1eecbf70c900af3cf407a62ca77616ac716c614fd42387ec27c4b4661a10"
+    },
+    {
+      "id": "R1FINAL274-00456",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/eight/eight-verification.json",
+      "bytes": 15964749,
+      "sha256": "ba11773e83f63d0078f0fc2f2cfb4402191281d38f88d0664653f16623f3aa17"
+    },
+    {
+      "id": "R1FINAL274-00457",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/eight/export-recovery.json",
+      "bytes": 26098,
+      "sha256": "fac1edcc5844656f12700b81789d5b87d67a3b4a0d12a9bacf859c70f63a18a6"
+    },
+    {
+      "id": "R1FINAL274-01684",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/eight/native-eight/raw-seal.json",
+      "bytes": 34685,
+      "sha256": "a028a78415747d142d80a16d0213ee9e5d456e080416a47d40a60d9f0e96af6b"
+    },
+    {
+      "id": "R1FINAL274-01698",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/eight/ui-review.json",
+      "bytes": 647,
+      "sha256": "e8ecac7caddb07b97c473b43620fe9753b7bd96635f212b99ddab7e83dee9ed2"
+    },
+    {
+      "id": "R1FINAL274-01720",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/four/failed-export-preservation.json",
+      "bytes": 2038,
+      "sha256": "2e0ca0ea024329771e663cedf9359bdbb3698b8d8e44bf938c280e639ca95fe8"
+    },
+    {
+      "id": "R1FINAL274-02821",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/four-export-followup/harness-equivalence.json",
+      "bytes": 601,
+      "sha256": "4498d701c6523e6c1b78c322d9b9168ced1aa3d33f8afa30ca23d48745557cf6"
+    },
+    {
+      "id": "R1FINAL274-02911",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/four-export-followup/native-four/raw-seal.json",
+      "bytes": 20195,
+      "sha256": "9d3b2a21a3cf9d140af12ce7a5f0a1af59651ca6b5c62919ede9513d1cbbdf3e"
+    },
+    {
+      "id": "R1FINAL274-02915",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/four-export-followup/results-getter-verification.json",
+      "bytes": 433,
+      "sha256": "f06be9033bb038653c47f90568ff87cdda524c7a360f82d250b94bd67427d007"
+    },
+    {
+      "id": "R1FINAL274-02916",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/four-export-followup/results-verification.json",
+      "bytes": 117140,
+      "sha256": "87c86a19a9bf61d61bef8a0c29aa322b4d0b2c91f5f3a1bca04844d0dacaceb7"
+    },
+    {
+      "id": "R1FINAL274-02924",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/four-export-followup/ui-review.json",
+      "bytes": 600,
+      "sha256": "84cc05b76e48b8e09e43f0d37b5ffbf3214aa2d967682ad2992998d597881ea4"
+    },
+    {
+      "id": "R1FINAL274-03238",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/two/life-verification.json",
+      "bytes": 572126,
+      "sha256": "c41cfc7f8e5443f7990cb164581d902d1d854d93b4679cbfc80479f6b66a2b51"
+    },
+    {
+      "id": "R1FINAL274-03308",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/two/native-life/raw-seal.json",
+      "bytes": 15163,
+      "sha256": "9f8925b9ae7ccf0d62e57bbee225a52ecd0b6684f5847600d55b1cefa3760701"
+    },
+    {
+      "id": "R1FINAL274-03312",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/two/peer-getter-verification.json",
+      "bytes": 420,
+      "sha256": "f4e3afc1a0f4836b998211bb8e1723be63ac35fd0dbd7e296373e0039919c9f2"
+    },
+    {
+      "id": "R1FINAL274-03318",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-native-r1/two/ui-review.json",
+      "bytes": 577,
+      "sha256": "58f7381afaf65d32f0fe685f029904818f6fe56a55149a31531feb2fc40a607f"
+    },
+    {
+      "id": "R1FINAL274-03319",
+      "kind": "local",
+      "path": "local/research/codex/r1-final-python-tests-r1.txt",
+      "bytes": 190,
+      "sha256": "2670d3a0e6399515d6db1ec683c186823189e33f38c2a05fba83700d35b34248"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0e3a68c52aba6ec2877ddc712eebe6537023d9c66f79945e33d6be959f5d22ec.jsonl",
+      "sha256": "0e3a68c52aba6ec2877ddc712eebe6537023d9c66f79945e33d6be959f5d22ec",
+      "bytes": 11971,
+      "count": 63,
+      "files_bytes": 253905
+    },
+    {
+      "run": "local/research/codex/r1-final-native-r1",
+      "path": "local/evidence-manifests/28e587e952f71d0632f7cb2849529e332acba213d72b411b94d808abd04c1f0d.jsonl",
+      "sha256": "28e587e952f71d0632f7cb2849529e332acba213d72b411b94d808abd04c1f0d",
+      "bytes": 737664,
+      "count": 3255,
+      "files_bytes": 32175677941
+    }
   ]
 }

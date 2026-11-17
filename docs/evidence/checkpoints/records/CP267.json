@@ -84,15 +84,6 @@
       "limits": "Designonly; nativeR1f/relay/finalR1remain."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP267-relay-endpoint-design.json",
-      "bytes": 12987,
-      "sha256": "9f0e19678ad56e27eeba8cecbfcdf0c8b0dc86e0ac015bf213e9638f9d42855a",
-      "count": 51
-    }
-  ],
   "delta": {
     "added": [
       "Concretemodule/reverseedgecandidatedesign/lifecycle/resource/rollback/nativeacceptance beforeR1f.",
@@ -227,5 +218,172 @@
   ],
   "completed_feature_groups": [
     "relay-endpoint-design-before-r1f"
+  ],
+  "evidence": [
+    {
+      "id": "RELAYDESCP267-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3908,
+      "sha256": "2b5f51fea85308016f91f9bc3cc2dbd26f2f9dfd304b73822c49b1907417cf18"
+    },
+    {
+      "id": "RELAYDESCP267-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 221197,
+      "sha256": "c648da45a0f332f38c75d34c26a62ae05715d9ec7239f73ff2674319b6646e98"
+    },
+    {
+      "id": "RELAYDESCP267-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 67676,
+      "sha256": "9364bb2a431187a8a3c4dfa7203629f4d3fca0937aa8f0c1b86b46e404721c17"
+    },
+    {
+      "id": "RELAYDESCP267-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 138029,
+      "sha256": "f40206e0b9986b0eb8e9573fdbd638d294be627837249b4970aa87f72f50d950"
+    },
+    {
+      "id": "RELAYDESCP267-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 866105,
+      "sha256": "b452697ff4886548350363edf81f63d6a939925a86b502343cc2562db893e5ca"
+    },
+    {
+      "id": "RELAYDESCP267-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 56195,
+      "sha256": "6b5d7432a58bf8633069591cf62999f1901334c2bc4fed1b8d617c3d0c0f63da"
+    },
+    {
+      "id": "RELAYDESCP267-00007",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 42843,
+      "sha256": "600f749e816aae20a04a51079804e44e7a246ac3a3467e8b913a6ba9a2ac89d8"
+    },
+    {
+      "id": "RELAYDESCP267-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD084.json",
+      "bytes": 3798,
+      "sha256": "da946f430b0cb16cd5b8a3fd1b09cfd4e06531675f61adcd5df46365c85b6019"
+    },
+    {
+      "id": "RELAYDESCP267-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 284156,
+      "sha256": "6fdc06fa782e81616d5516c677550ad5a6d8d002bdc0b208b0e3c4cc67a64e92"
+    },
+    {
+      "id": "RELAYDESCP267-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42579,
+      "sha256": "1a3bedf83c55230c8c83599a404aacd8c000fc56b2beeb3d8ecfb02025c119cf"
+    },
+    {
+      "id": "RELAYDESCP267-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 62843,
+      "sha256": "a07c82b9a8b10a0c3a2acc80d4fb06b361a6b14d6de21add24a93b1c9f41e89e"
+    },
+    {
+      "id": "RELAYDESCP267-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/relay-endpoint-design.json",
+      "bytes": 3217,
+      "sha256": "fd1fce048c2ae9e8c53c2730fd53e71223e39e3ef888d86f16d3a8ade3bfd9d2"
+    },
+    {
+      "id": "RELAYDESCP267-00013",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 233243,
+      "sha256": "e253c249c9e7ac463926e5a5d87a2044a3a2b5bfa3ce42d843e751271eb7f659"
+    },
+    {
+      "id": "RELAYDESCP267-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp267-docs-preappend.txt",
+      "bytes": 251,
+      "sha256": "d9e3dbf8d67963254c3b2ce75139bf58bffcf5fea9b94369af9d6a8308fa13e9"
+    },
+    {
+      "id": "RELAYDESCP267-00022",
+      "kind": "local",
+      "path": "local/research/codex/cp267-privacy-preappend.json",
+      "bytes": 288,
+      "sha256": "53e9f86fb09136d5b13167b792cb526f4139f56240f0bcc2e4cfde0ff5b919bd"
+    },
+    {
+      "id": "RELAYDESCP267-00024",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/selfcheck.json",
+      "bytes": 2002,
+      "sha256": "f7e8d5c19405052c53397b360bdf7af34f8fb409285cc716948cfeec2f119e3b"
+    },
+    {
+      "id": "RELAYDESCP267-00043",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/rust/crates/kr-service/src/room.rs",
+      "bytes": 29741,
+      "sha256": "ff9b604c620dae63b8ceefc8855f3fea3fb7edf789a0b9beba80a0165579cfbe"
+    },
+    {
+      "id": "RELAYDESCP267-00046",
+      "kind": "local",
+      "path": "local/research/codex/relay-design-delivery-r1/source/server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "RELAYDESCP267-00048",
+      "kind": "local",
+      "path": "local/research/codex/relay-endpoint-source-reuse-r1/decision-review.json",
+      "bytes": 3619,
+      "sha256": "30b66e2c59aac956eee64b83ad2d6351dc8b23212a539ef4de8c0140439b6034"
+    },
+    {
+      "id": "RELAYDESCP267-00049",
+      "kind": "local",
+      "path": "local/research/codex/relay-endpoint-source-reuse-r1/survey.json",
+      "bytes": 4747,
+      "sha256": "1e2cc4ac69c4c58e0b56e606c1243958dcfa8c6c420dfe844fa77787d453660f"
+    },
+    {
+      "id": "RELAYDESCP267-00051",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 32583,
+      "sha256": "fc89cc497a78b4b7a871252151ac28bc76561eebe0b1a8ab788207fd4497dcc5"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/7b89daa4ef24bb15298ac5793f58fa1dec2af02869f75ee19e98b9162f447fdc.jsonl",
+      "sha256": "7b89daa4ef24bb15298ac5793f58fa1dec2af02869f75ee19e98b9162f447fdc",
+      "bytes": 1921,
+      "count": 10,
+      "files_bytes": 168910
+    },
+    {
+      "run": "local/research/codex/relay-design-delivery-r1",
+      "path": "local/evidence-manifests/eab44ed971f88107b15d982e7d2d30267e9a181dec53f12d6a1323232fdae3c1.jsonl",
+      "sha256": "eab44ed971f88107b15d982e7d2d30267e9a181dec53f12d6a1323232fdae3c1",
+      "bytes": 4678,
+      "count": 20,
+      "files_bytes": 2264243
+    }
   ]
 }

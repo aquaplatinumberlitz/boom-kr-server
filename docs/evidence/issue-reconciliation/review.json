@@ -1014,56 +1014,55 @@
       "reviewed_utc": "2026-11-17T12:35:05.125317+00:00"
     },
     {
+      "number": 457,
+      "kre": "KRE-G1-CHARACTER-REJECTION",
+      "features": [
+        "KR-R002"
+      ],
+      "classification": "in_progress",
+      "known": "Đã có code/test tập trung TCP/SQLite giữ phiên và current110 khi key chưa đo. Native đang kiểm bằng harness ma trận; chưa đóng G1.",
+      "remaining": "Native same transport, chọn hợp lệ sau từ chối, hai vòng/reset, audit/checkpoint và gate nhóm trước merge.",
+      "next_test": "Native #457 và kiểm hàm từ chối/current profile trước Start.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Chủ dự án đưa đường ngắn issue457 vào G1; roster mở rộng vẫn để sau.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ],
+      "evidence": [
+        "docs/evidence/owner-directives/g1-item-scope-cut.json"
+      ],
+      "prs": [],
+      "successors": []
+    },
+    {
       "number": 460,
       "kre": "KRE-G1-PUNCH-HORIZONTAL",
       "features": [
         "KR-F010"
       ],
       "classification": "completed",
-      "known": "CP334/AUD142 có reference và Rust native hai account, selector0/source6,3→6,5, full-row reservation, peer/reset/journal thưởng0. Original exit1/unmount busy và exact-byte recovery được giữ rõ. PR461 merge sau exact-head/history và CI xanh.",
-      "remaining": "Scope selector0 endpoint +2 cột đã hoàn tất; selector2 ở #462 và Shoe coverage còn theo PLAN. Không full trajectory hoặc vận hành.",
-      "next_test": "Tiếp #462, không chạy lại selector0 đã nghiệm thu.",
+      "known": "CP334/AUD142: native Rust horizontal hai account/hai vòng, journal thưởng0 và guards; PR461 đã merge.",
+      "remaining": "Phạm vi selector0 đã tích hợp; ma trận Punch còn các khoảng cách/biên theo chỉ đạo mới.",
+      "next_test": "Gộp kết quả cũ vào ma trận Punch, không mở PR theo selector.",
       "acceptance": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
-      "reason": "Đối chiếu native/wire/DB,584834 evidence/0errors/history verified và mergePR461; không biến cleanup failure thành process pass0.",
+      "reason": "Theo coverage Shoe/Punch còn thiếu trong PLAN, không thêm scope ngoài G1 hoặc mở toàn geometry từ endpoint.",
       "sources": [
         "docs/PLAN.md#dashboard",
         "docs/PROTOCOL.md",
         "docs/RESEARCH.md#gap-ability-debuff"
       ],
       "evidence": [
-        "docs/evidence/rust-service/g1-punch-horizontal.json"
+        "docs/evidence/item-families/punch-horizontal-action.json"
       ],
       "prs": [
         461
       ],
       "successors": [],
-      "reviewed_utc": "2026-11-17T13:53:40.367457+00:00"
-    },
-    {
-      "number": 462,
-      "kre": "KRE-G1-PUNCH-SELECTOR2",
-      "features": [
-        "KR-F010"
-      ],
-      "classification": "in_progress",
-      "known": "Reference selector2/source6,4→6,3 hai vòng, native peer/lifecycle/bom tiếp/result/reset,712 field và independent wire. Candidate Rust giữ same-row/-one-column/full-row reservation.",
-      "remaining": "Full Rust checks/build, native account/floor chỉPunch/peer/reset/journal, audit/checkpoint/exact-head/CI trước tích hợp.",
-      "next_test": "Dùng passive feedback căn row6 rồi column4 theo Right trước Space, giữ source/target từ actual118/119. Dùng owned-namespace cleanup đã có synthetic control ở helper mới, không sửa CP334 raw.",
-      "acceptance": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
-      "reason": "Theo selector2 còn thiếu trong PLAN; không đoán geometry đối xứng với selector0 hoặc original path law.",
-      "sources": [
-        "docs/PLAN.md#dashboard",
-        "docs/PROTOCOL.md",
-        "docs/RESEARCH.md#gap-ability-debuff"
-      ],
-      "evidence": [
-        "docs/evidence/item-families/punch-selector2-action.json"
-      ],
-      "prs": [],
-      "successors": [],
-      "reviewed_utc": "2026-11-17T13:53:40.367457+00:00"
+      "reviewed_utc": "2026-11-17T12:35:05.125317+00:00"
     }
   ],
-  "as_of_utc": "2026-11-17T13:53:40.367457+00:00",
+  "as_of_utc": "2026-11-17T12:35:05.125317+00:00",
   "limits": "Đối soát issue thủ công có ngày; snapshot là trạng thái lúc chụp, không chứng nhận acceptance hoặc đóng gate."
 }

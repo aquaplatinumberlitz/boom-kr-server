@@ -111,15 +111,6 @@
       "limits": "This PR exact-head/raw/history and CI still required before merge; worktree local symlink cannot satisfy checker, final verification runs from canonical checkout."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP296-life-actions.json",
-      "bytes": 802800,
-      "sha256": "d94c740a54380c57ea2bb142c472f0c6911799108be3549af9158a1d08096483",
-      "count": 3058
-    }
-  ],
   "delta": {
     "added": [
       "RoomRules kim/cứu policy, current credit/pair/rescuer validation and all-recipient delivery barriers.",
@@ -230,5 +221,367 @@
   ],
   "completed_feature_groups": [
     "rust-g1-needle-rescue"
+  ],
+  "evidence": [
+    {
+      "id": "G1LIFE296-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "G1LIFE296-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3783,
+      "sha256": "e1f4cbeca10acb861e3458519dd3eddad9e8da3b4326bbde4f2ac59b7e1074c9"
+    },
+    {
+      "id": "G1LIFE296-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 256597,
+      "sha256": "ef1c4ad217e5caa3225ec08ce8c0b7b42aaccac1652943fc0a07c2468e6da856"
+    },
+    {
+      "id": "G1LIFE296-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 151421,
+      "sha256": "8c4898a22b791fe98e2fd9953ec95239b9c52fea226d1a4c2b28e444e45f2d2f"
+    },
+    {
+      "id": "G1LIFE296-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 79665,
+      "sha256": "3eabfc590178145c073bca455e23d2560f24a86b608efa3a3815f6d046fb8908"
+    },
+    {
+      "id": "G1LIFE296-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66794,
+      "sha256": "dbd0f5b9274f9d067655dfaebecba3f34cf21280b27fb87fc3afcc8bcb1de217"
+    },
+    {
+      "id": "G1LIFE296-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 37101,
+      "sha256": "cd4132e24312b1cbc5967f9e1ec5bbc12e5aa296643e968f26c2994891a000b0"
+    },
+    {
+      "id": "G1LIFE296-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD112.json",
+      "bytes": 5730,
+      "sha256": "7c0696fcb22c2084ed4e8b4493aad04f22b0bfdb1c5c367955767881f23b8f29"
+    },
+    {
+      "id": "G1LIFE296-00009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 313947,
+      "sha256": "3b4da4f9f847e9d5135a9abc82dc82a8b7c937c97d9b3fbe4c3c83b20b433549"
+    },
+    {
+      "id": "G1LIFE296-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 33997,
+      "sha256": "9e438e5d5213129c538d0f21270854152107ac6063598528fcdac5fc27732ca2"
+    },
+    {
+      "id": "G1LIFE296-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-life-actions.json",
+      "bytes": 11337,
+      "sha256": "e957a1b5ce73bf7452bb5f89b5c43348252a8225a0d7e95f5a7b13495450d860"
+    },
+    {
+      "id": "G1LIFE296-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 269146,
+      "sha256": "cdfe70f62e5416a78dddd8345db102b4d88b5c46b955d131488031e6fdd2877f"
+    },
+    {
+      "id": "G1LIFE296-00013",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 57563,
+      "sha256": "f373d53abb6db05cc09d25fbf8a8ea35eaa2376d739cd13382dbe2404e7b6889"
+    },
+    {
+      "id": "G1LIFE296-00014",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 109505,
+      "sha256": "ff775c18837f044a02eb7ef7c1adfbb129462ee4c09acaae37f8c0509928b570"
+    },
+    {
+      "id": "G1LIFE296-00019",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-build-r4.txt",
+      "bytes": 72,
+      "sha256": "8c233a54790c4800d3dd585436af679aa838da259bfdb129412e2d51cdb75cdc"
+    },
+    {
+      "id": "G1LIFE296-00023",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-clippy-r4.txt",
+      "bytes": 169,
+      "sha256": "c34cd5b9000ba487942498991700f5f4fe099b3ddc9119a37f0e3cd4388b1f82"
+    },
+    {
+      "id": "G1LIFE296-00026",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-docs-final-r3.txt",
+      "bytes": 198,
+      "sha256": "ccc0e1a428edafc544879d73b2081c43ba396391480e31dd3edd47debb552883"
+    },
+    {
+      "id": "G1LIFE296-00031",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-fmt-r4.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "G1LIFE296-00036",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-room-integration-r2.txt",
+      "bytes": 1172,
+      "sha256": "47f9726193fc3b2580c5236571f21691d824e32ddd6484ea53f8f3d2ebfed710"
+    },
+    {
+      "id": "G1LIFE296-00037",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-source-r1/opaque167-reuse.json",
+      "bytes": 1287,
+      "sha256": "e8a9c4cea2e15ecbee1478090cf5dd1ff2c7d922724588495c88c102a5f69730"
+    },
+    {
+      "id": "G1LIFE296-00038",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-source-r1/reuse.json",
+      "bytes": 3356,
+      "sha256": "d5372e242291840cb024ba8e561ae51ab36bfb3568ee48023b469bbf15a2e43d"
+    },
+    {
+      "id": "G1LIFE296-00042",
+      "kind": "local",
+      "path": "local/research/codex/g1-life-actions-workspace-r4.txt",
+      "bytes": 21775,
+      "sha256": "73d34f4fea9ccf20af6cf5ba1721899a584a65333ce854d804436c4ceeb3f327"
+    },
+    {
+      "id": "G1LIFE296-01027",
+      "kind": "local",
+      "path": "local/research/codex/g1-needle-native-r3/decoded-channels-shared.json",
+      "bytes": 37461,
+      "sha256": "4e7bca10d4286594f02950599076969b7cb893077803d8449c6bc2b4ae66bc24"
+    },
+    {
+      "id": "G1LIFE296-01896",
+      "kind": "local",
+      "path": "local/research/codex/g1-needle-native-r4/manual-ui-review.json",
+      "bytes": 1031,
+      "sha256": "b85ec111b5de986d4f314ae2fcc44d304e239513e71c5d3a45dbba001789a704"
+    },
+    {
+      "id": "G1LIFE296-01977",
+      "kind": "local",
+      "path": "local/research/codex/g1-needle-native-r4/native/raw-seal.json",
+      "bytes": 16618,
+      "sha256": "f4459a249754ec6e289a8c5678ba45df81bc67a209934d23ccc4f489f595b045"
+    },
+    {
+      "id": "G1LIFE296-01983",
+      "kind": "local",
+      "path": "local/research/codex/g1-needle-native-r4/needle-getter-verification.json",
+      "bytes": 607,
+      "sha256": "64f7c913cb40d9d518a814d1b0a84652143eb0f38faf0d9f7fd43324190e3bee"
+    },
+    {
+      "id": "G1LIFE296-01984",
+      "kind": "local",
+      "path": "local/research/codex/g1-needle-native-r4/needle-native-verification.json",
+      "bytes": 59787,
+      "sha256": "75d28e7841ceb5ff753b4a65a3a27ccd0e84efdd5a168a8a3d41cf5980424d89"
+    },
+    {
+      "id": "G1LIFE296-02518",
+      "kind": "local",
+      "path": "local/research/codex/g1-rescue-native-r1/native/storage-recovery.json",
+      "bytes": 853,
+      "sha256": "a22c8045f6009e8ef51e2480d8cceb17601280087ad081608b86acbe652aeec3"
+    },
+    {
+      "id": "G1LIFE296-02902",
+      "kind": "local",
+      "path": "local/research/codex/g1-rescue-native-r2/manual-ui-review.json",
+      "bytes": 1038,
+      "sha256": "956f83b0f439dbd9eedcdfc044bd62e406d49aa8595102508c3342e345607704"
+    },
+    {
+      "id": "G1LIFE296-03006",
+      "kind": "local",
+      "path": "local/research/codex/g1-rescue-native-r2/native/raw-seal.json",
+      "bytes": 21323,
+      "sha256": "ce6906cefe2d6eff9ca8775a1b4d2f0f0b58233ce34c2cbd7ce49ab74085c67f"
+    },
+    {
+      "id": "G1LIFE296-03014",
+      "kind": "local",
+      "path": "local/research/codex/g1-rescue-native-r2/rescue-getter-verification.json",
+      "bytes": 608,
+      "sha256": "8b8ef9ac9a92e5cd957932ad1868f7f5f54f3ee37e71ad6602ad4e8aed7f5049"
+    },
+    {
+      "id": "G1LIFE296-03015",
+      "kind": "local",
+      "path": "local/research/codex/g1-rescue-native-r2/rescue-native-verification.json",
+      "bytes": 256129,
+      "sha256": "38596d7d78042a5efb5525d28b4ce094ca2dffbd8d14c00cbd4737549a76087a"
+    },
+    {
+      "id": "G1LIFE296-03023",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-delivery-receipt.json",
+      "bytes": 1084,
+      "sha256": "ddf68eb92893e88bbccf753ed9824b2f402f0483955045978a811da53ebd9b04"
+    },
+    {
+      "id": "G1LIFE296-03050",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 35989,
+      "sha256": "1c7ce9d4acedbbff219fdf5e38ce94e9289cb77c63bebfede2a82e9735e24ca2"
+    },
+    {
+      "id": "G1LIFE296-03051",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 64925,
+      "sha256": "17dc35e4035da7eaa8d4537fcc3024e4ce72fd3fc0a0734f5a08aba7c0e23b66"
+    },
+    {
+      "id": "G1LIFE296-03052",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life.rs",
+      "bytes": 17859,
+      "sha256": "36d9c7c43fea4ea4c307f28610e3483b22cc74ed408e3e6b76ec8f3cc89ea61d"
+    },
+    {
+      "id": "G1LIFE296-03053",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life_actions.rs",
+      "bytes": 16860,
+      "sha256": "95836e1322a74072ed8ce7e8a546382e61ba2041c760fa0ba62247f095e1ac23"
+    },
+    {
+      "id": "G1LIFE296-03054",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "bytes": 10546,
+      "sha256": "c2ed49ea039e451d0ef711d622991faca89f7fcbd51a12f14a16cb2209fa1942"
+    },
+    {
+      "id": "G1LIFE296-03055",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 14840,
+      "sha256": "3f61130be973e189ebcdd429daffe2c9428aaf75b1a0dbfe39ae4496864a6446"
+    },
+    {
+      "id": "G1LIFE296-03056",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 178935,
+      "sha256": "a5a2d38720f1d7cd17d67843d2d51ec22707d54a2edec6b73ce19472244924aa"
+    },
+    {
+      "id": "G1LIFE296-03057",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_life_tests.rs",
+      "bytes": 8988,
+      "sha256": "12d8b94e551d2bd08569d639b0c87ef58fe887feccaff1539fd78868dd04a060"
+    },
+    {
+      "id": "G1LIFE296-03058",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 9377,
+      "sha256": "c0cd8fa9c13dbe5c56037fcafbc7bba9ea220733319b90d9ce234967d054c380"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b508d7e90e84e874696cd0c186451b2e827354bd164d8b8038de73689ee13fb0.jsonl",
+      "sha256": "b508d7e90e84e874696cd0c186451b2e827354bd164d8b8038de73689ee13fb0",
+      "bytes": 12383,
+      "count": 65,
+      "files_bytes": 53950197
+    },
+    {
+      "run": "local/research/codex/g1-life-issue-before",
+      "path": "local/evidence-manifests/62d743713141da48b47a0e48a6c60bab018d322a4066949bf5d40ead9501787d.jsonl",
+      "sha256": "62d743713141da48b47a0e48a6c60bab018d322a4066949bf5d40ead9501787d",
+      "bytes": 479,
+      "count": 2,
+      "files_bytes": 343124
+    },
+    {
+      "run": "local/research/codex/g1-needle-native-r1",
+      "path": "local/evidence-manifests/83c98f7d6904f2241f4758e107d662dcdb13ad7cd33c874c450d08b3cf156189.jsonl",
+      "sha256": "83c98f7d6904f2241f4758e107d662dcdb13ad7cd33c874c450d08b3cf156189",
+      "bytes": 98152,
+      "count": 460,
+      "files_bytes": 526015884
+    },
+    {
+      "run": "local/research/codex/g1-needle-native-r2",
+      "path": "local/evidence-manifests/fdfa39e6d694b268dbfe7c635f7718a1adf5fccfed7414ee7391f110125014b8.jsonl",
+      "sha256": "fdfa39e6d694b268dbfe7c635f7718a1adf5fccfed7414ee7391f110125014b8",
+      "bytes": 107189,
+      "count": 503,
+      "files_bytes": 532058571
+    },
+    {
+      "run": "local/research/codex/g1-needle-native-r3",
+      "path": "local/evidence-manifests/408a73498d493446337d54588f06b77f583a8620368004156e92bb3cbac1f569.jsonl",
+      "sha256": "408a73498d493446337d54588f06b77f583a8620368004156e92bb3cbac1f569",
+      "bytes": 93264,
+      "count": 437,
+      "files_bytes": 529643062
+    },
+    {
+      "run": "local/research/codex/g1-needle-native-r4",
+      "path": "local/evidence-manifests/f97dccf94796aa47d5545b36bfa30f25b55694b4f2ab0a8a2c523632e97933a0.jsonl",
+      "sha256": "f97dccf94796aa47d5545b36bfa30f25b55694b4f2ab0a8a2c523632e97933a0",
+      "bytes": 113162,
+      "count": 530,
+      "files_bytes": 536158962
+    },
+    {
+      "run": "local/research/codex/g1-rescue-native-r1",
+      "path": "local/evidence-manifests/c8ce34a3f420cdd9027bad3fbc12511ad099d122f02990c20c24d38ee891af5b.jsonl",
+      "sha256": "c8ce34a3f420cdd9027bad3fbc12511ad099d122f02990c20c24d38ee891af5b",
+      "bytes": 113385,
+      "count": 529,
+      "files_bytes": 535624681
+    },
+    {
+      "run": "local/research/codex/g1-rescue-native-r2",
+      "path": "local/evidence-manifests/bb8a344916f387b06585ea0ce307d61742636008f061e1398878e685caf4d48d.jsonl",
+      "sha256": "bb8a344916f387b06585ea0ce307d61742636008f061e1398878e685caf4d48d",
+      "bytes": 104640,
+      "count": 490,
+      "files_bytes": 547856619
+    }
   ]
 }

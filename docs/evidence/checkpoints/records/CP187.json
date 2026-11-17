@@ -174,15 +174,6 @@
       "limits": "alignnotstable:R2-A-hidden-row. Unused2cycle/Start3verifierspreparednotexecuted/countedaspass. OldCP171proofnotsubstituted."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP187-current-291-room.json",
-      "bytes": 569657,
-      "sha256": "a43d06f1c8c488d832001c8e5bd5cd87703dbd51a244dc1329039de777330a62",
-      "count": 2263
-    }
-  ],
   "delta": {
     "added": [
       "CurrentnativeB291/nameguard/two-clientroom/load/hostrejoin/firstresult/reset/Start2 integration andmanualK4scope.",
@@ -279,6 +270,832 @@
       "path": "tools/README.md",
       "state": "updated",
       "reason": "CP187nativeABIcontrol/currentK4scope/partialgameplay/nextgap synchronizedbeforecomplete, periodicCP188 unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ROOM187-00001",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/abort-rejoin-r1/C-guestB106-chief64.bin",
+      "bytes": 242,
+      "sha256": "baba396be0cc267d0bc54828a1ecc4fff464c51035722ba92650a071bcfb99a4"
+    },
+    {
+      "id": "ROOM187-00002",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/abort-rejoin-r1/C106-slot0-id3.bin",
+      "bytes": 242,
+      "sha256": "5232f9b513e18fa78c6bd15a1c093f2997382e695d8f98398f33f95bede3470f"
+    },
+    {
+      "id": "ROOM187-00003",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-profile-r1/auth-A-final.bin",
+      "bytes": 175,
+      "sha256": "fe0f99796dbaff2ca37ed90552139d125a5a8bff5ac7feba516d3f235fa5e3e7"
+    },
+    {
+      "id": "ROOM187-00004",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-profile-r1/auth-B-final.bin",
+      "bytes": 175,
+      "sha256": "8ae2e5f61c9bb29508e819e1f83a68fddead3906c4e212ef6ed162bc7a621774"
+    },
+    {
+      "id": "ROOM187-00005",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/auth-profile-r1/auth-C-final.bin",
+      "bytes": 173,
+      "sha256": "24f4146726929e8655a1246d28b79cf1785532c715841da874ed723f8ba1322a"
+    },
+    {
+      "id": "ROOM187-00006",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "ROOM187-00007",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-calc-r1/kind0.bin",
+      "bytes": 51,
+      "sha256": "5095a65ab689b03ac91e11a9d306341cf9995b5bf8dc8ac146706908c60496b7"
+    },
+    {
+      "id": "ROOM187-00008",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-calc-r1/result180-full.bin",
+      "bytes": 41,
+      "sha256": "b2e1c6e22b2210d0ac198fea278d2b7d70d982935e88acb641b36cb45afaa8b0"
+    },
+    {
+      "id": "ROOM187-00009",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-position-r1/exvillage117.bin",
+      "bytes": 46,
+      "sha256": "7fd36d5d2b8ff284fe763e138280ff7ce1b50db83dca2355f33fced8283bc0bc"
+    },
+    {
+      "id": "ROOM187-00010",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-position-r1/exvillage121.bin",
+      "bytes": 167,
+      "sha256": "2e6319e9e5eb55a9ad6594710ec4aeaa749b6f8eee72a1e0016beb44885a90c0"
+    },
+    {
+      "id": "ROOM187-00011",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bomb-position-r1/exvillage196.bin",
+      "bytes": 45,
+      "sha256": "387d6f2b6c3e0eeda401498af890635110016b3756d181d89930c2a4a7a2dcde"
+    },
+    {
+      "id": "ROOM187-00012",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bootstrap-reply-r1.bin",
+      "bytes": 15,
+      "sha256": "75be47b3067e2b1e9d2cf99b5a7eb7f949a074482409fb3eafc1a553cec53cd1"
+    },
+    {
+      "id": "ROOM187-00013",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "ROOM187-00014",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/cache-boundary-r1/compressed238.bin",
+      "bytes": 110,
+      "sha256": "57411adce8a650524b558e25b904bb916f01ba2d9e1fb2e7c8206e6e1a5b2727"
+    },
+    {
+      "id": "ROOM187-00015",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/cache-boundary-r1/compressed241.bin",
+      "bytes": 69,
+      "sha256": "5e72176a25896892c49f5ee971bac080b21adbd039a259d7844d095bfe32de28"
+    },
+    {
+      "id": "ROOM187-00016",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/A-guest106-unready.bin",
+      "bytes": 242,
+      "sha256": "16408678ed4d2ddd219483f9bb6fae35795c8c5ee1a43f4d1b0d5873b3c0a290"
+    },
+    {
+      "id": "ROOM187-00017",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/B106-unready.bin",
+      "bytes": 242,
+      "sha256": "aa4195a574665e458749443e495d9a50635802db288749bc3e77ae4d72584c08"
+    },
+    {
+      "id": "ROOM187-00018",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/B110-unready.bin",
+      "bytes": 44,
+      "sha256": "eed1d08df651766528969f1c20f0ddfdd944a47368ce9ca66635852e96d5bb27"
+    },
+    {
+      "id": "ROOM187-00019",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "ROOM187-00020",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/duo-round-r1/room91-session1.bin",
+      "bytes": 88,
+      "sha256": "71815044dd7d0f70de6969d640c6bf5b47d1e9cfb16c7d23a2a420d6f93bd0ed"
+    },
+    {
+      "id": "ROOM187-00021",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/leave-r1/channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "ROOM187-00022",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/leave-r1/promote110-B.bin",
+      "bytes": 44,
+      "sha256": "858c5eb8c855a0ccf978574cd9c67eca7dede7e72d2d33c012b5ecb8928ca796"
+    },
+    {
+      "id": "ROOM187-00023",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "ROOM187-00024",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/peer-duo-r1/B-guest106.bin",
+      "bytes": 242,
+      "sha256": "0bee9221a7efc770b9f5b57bbc504e023163e6f78552ca460edc9636dd76a252"
+    },
+    {
+      "id": "ROOM187-00025",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/peer-duo-r1/peer153-replace.bin",
+      "bytes": 135,
+      "sha256": "e6eb2fe741c021ab2c1ac82c84a42a5e4d936e0a2e8a80cb0c4cfaac326589fa"
+    },
+    {
+      "id": "ROOM187-00026",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "ROOM187-00027",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/postwait-r1/channel17-zero-arrays.bin",
+      "bytes": 75,
+      "sha256": "5bb5a42cb1ea4fe8967d50ed39649cc886a493c0a13a25ceb2df589a2b9bcd37"
+    },
+    {
+      "id": "ROOM187-00028",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/postwait-r1/flags62-status2.bin",
+      "bytes": 41,
+      "sha256": "f0199e6a5f835884fec25568a342f42d247c2bfa720f677866957c2299437ab9"
+    },
+    {
+      "id": "ROOM187-00029",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/postwait-r1/redirect7-loopback.bin",
+      "bytes": 52,
+      "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+    },
+    {
+      "id": "ROOM187-00030",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/prepare_k4_compare_copy.py",
+      "bytes": 6279,
+      "sha256": "9243edf6e0571807f23555215b4c87ce2be912d56b1ab67c936e4533a878b7f4"
+    },
+    {
+      "id": "ROOM187-00031",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A106-unready.bin",
+      "bytes": 242,
+      "sha256": "2dbc2c247eb94c40af6338e733c98eb18dfa833a2d48662209ce952ca9d9fec7"
+    },
+    {
+      "id": "ROOM187-00032",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A110-ready.bin",
+      "bytes": 44,
+      "sha256": "2b8c7ae9412c1bee0340587269b1e32af2e3c2117081bc28a331202f8f82d422"
+    },
+    {
+      "id": "ROOM187-00033",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/A110-unready.bin",
+      "bytes": 44,
+      "sha256": "979cfad03305717aaaa203643e875d48aa1430a7d8b34ba534c7fb26668c55db"
+    },
+    {
+      "id": "ROOM187-00034",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/B106-chief.bin",
+      "bytes": 242,
+      "sha256": "8dee2a2f58af50ebcf7487d66040c97c374683ed8726ccfe9dd13e064ebf9d86"
+    },
+    {
+      "id": "ROOM187-00035",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/rejoin-r1/reply87-A-session1.bin",
+      "bytes": 45,
+      "sha256": "79b35b72494211e3b4b7af04904a75cd8b67d99c1cb39f33d93b3cf056816586"
+    },
+    {
+      "id": "ROOM187-00036",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "ROOM187-00037",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "ROOM187-00038",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "ROOM187-00039",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-go-r1/go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "ROOM187-00040",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-go-r1/reply159.bin",
+      "bytes": 77,
+      "sha256": "aafc349b2b6f518fffbac1a02df7e7c7c94a2c328fdb35d68c8fd67bb1ebef01"
+    },
+    {
+      "id": "ROOM187-00041",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-repeat-r1/rank175-v2.bin",
+      "bytes": 340,
+      "sha256": "facec5f1b3dc5decafce8369562c77466cea676299b07748240f44ae090892cd"
+    },
+    {
+      "id": "ROOM187-00042",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/round-repeat-r1/ready110-guest.bin",
+      "bytes": 44,
+      "sha256": "ad74bf8e95420203ee6b8f397b43df72fee8a977c9921ccebfa50d794b22861b"
+    },
+    {
+      "id": "ROOM187-00043",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "ROOM187-00044",
+      "kind": "repository",
+      "path": "/home/admin/boom/repos/boom-kr-server/local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "ROOM187-00046",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r1/blocker-verification.json",
+      "bytes": 134402,
+      "sha256": "19c8918aa34751e4684e2dec6c24eef88691e0d2bb6afbb6b0ba69d4bd25eebe"
+    },
+    {
+      "id": "ROOM187-00913",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r1/import-compare-oracle.json",
+      "bytes": 3877,
+      "sha256": "c9ac6e056c95909e9cbff8d4be3cc6c0ab9613c2683f41ab023485ae2fcc10c9"
+    },
+    {
+      "id": "ROOM187-00915",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r1/import-lstrcmpia-oracle.json",
+      "bytes": 3878,
+      "sha256": "f63d039a3c83ccc08631994b7f87a546550be436728bd4db79c94a9d5ce8390e"
+    },
+    {
+      "id": "ROOM187-00921",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r1/native-code-byte-comparison.json",
+      "bytes": 1639,
+      "sha256": "f307d29bf68a1513bb452e62214555a5d29c9fe0af8624c5bc6c239851e80887"
+    },
+    {
+      "id": "ROOM187-00923",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r1/raw-seal.json",
+      "bytes": 170561,
+      "sha256": "f901f4336716a3fb467fe458fab9213ddb35d79d742989104724a00825f50d2b"
+    },
+    {
+      "id": "ROOM187-00986",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r1/source-first.json",
+      "bytes": 4395,
+      "sha256": "2d7ab818e976986faaaee3df3ba8f0755db3e71325546ec69c120749e5679abc"
+    },
+    {
+      "id": "ROOM187-00989",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "ROOM187-00991",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/copy-equivalence.json",
+      "bytes": 1198,
+      "sha256": "4ff01ec40276d2322c938e853ca4263b91afe07d38234de76aa1a133240eb6f1"
+    },
+    {
+      "id": "ROOM187-00994",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/cp187-snapshot/docs/PLAN.md",
+      "bytes": 48651,
+      "sha256": "9724aa9ca62d0f5eca4e884c0bada91472e0217cf609ab46a9e6577110882ef5"
+    },
+    {
+      "id": "ROOM187-00999",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/cp187-snapshot/docs/evidence/lobby-identity/k4-acceptance.json",
+      "bytes": 4198,
+      "sha256": "3dca432bf9dd39a263f4d40b6e99388549d6d3ecaf4666a8d937d4feccb5b4c3"
+    },
+    {
+      "id": "ROOM187-02111",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/cycles/run.json",
+      "bytes": 253621,
+      "sha256": "04e8db58e25aeff4a0741c1bbbd30beb1b108ce3a822c48c621fae6dc6cc1c6f"
+    },
+    {
+      "id": "ROOM187-02135",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/import-copy-patch.json",
+      "bytes": 2657,
+      "sha256": "fb5db475a4f3d701fe463c4298a07ae1ef92dde1f2898eb007e442c9f34839e3"
+    },
+    {
+      "id": "ROOM187-02136",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/k4-room-reentry-start2-contact.png",
+      "bytes": 318997,
+      "sha256": "d3c2e3db78c54d3023801bf5050334b4bc82b34db48bb3c26432fc0f16067581"
+    },
+    {
+      "id": "ROOM187-02141",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/raw-seal.json",
+      "bytes": 223807,
+      "sha256": "e2e9dac57e251adb995b04acb9f0b6d0b7341e09fbd56c84e64c5a10ac7ce865"
+    },
+    {
+      "id": "ROOM187-02142",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/room-acceptance-verification.json",
+      "bytes": 62975,
+      "sha256": "1d53f4d982d5bfd77b73f2a1d776132f5273dcf16b2badb89cd6a0acc62a882d"
+    },
+    {
+      "id": "ROOM187-02195",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/scoped-k4-verification.json",
+      "bytes": 3610,
+      "sha256": "b10baa7d44780bfef6f250a4b43d3df43e6d0a8bea6aa9745588a38042e0c160"
+    },
+    {
+      "id": "ROOM187-02196",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/server-tests.txt",
+      "bytes": 394,
+      "sha256": "80bb0ec5189a15f6b5e81257e2b0eaa7a59f01b80b7e08a468ba7dd4e4e093af"
+    },
+    {
+      "id": "ROOM187-02199",
+      "kind": "local",
+      "path": "local/research/codex/k4-current-291-r2/tool-verification.json",
+      "bytes": 980,
+      "sha256": "431ead8322912b54797b9ec22491d39f7a278aa6c2ba1106abe4e3886e9f227c"
+    },
+    {
+      "id": "ROOM187-02212",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "ROOM187-02213",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "ROOM187-02214",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "ROOM187-02215",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "ROOM187-02216",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "ROOM187-02217",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "ROOM187-02218",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "ROOM187-02219",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "ROOM187-02220",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "ROOM187-02221",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "ROOM187-02222",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "ROOM187-02223",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "ROOM187-02224",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "ROOM187-02225",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "ROOM187-02226",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "ROOM187-02227",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "ROOM187-02228",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "ROOM187-02229",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "ROOM187-02230",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "ROOM187-02231",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "ROOM187-02232",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "ROOM187-02233",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "ROOM187-02234",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "ROOM187-02235",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "ROOM187-02236",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "ROOM187-02237",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "ROOM187-02238",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "ROOM187-02239",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "ROOM187-02240",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "ROOM187-02241",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "ROOM187-02242",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "ROOM187-02243",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "ROOM187-02244",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "ROOM187-02245",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "ROOM187-02246",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "ROOM187-02247",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "ROOM187-02248",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "ROOM187-02249",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "ROOM187-02250",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "ROOM187-02251",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "ROOM187-02252",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "ROOM187-02253",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "ROOM187-02254",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "ROOM187-02255",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "ROOM187-02256",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "ROOM187-02257",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "ROOM187-02258",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "ROOM187-02259",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "ROOM187-02260",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "ROOM187-02261",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "ROOM187-02262",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "ROOM187-02263",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/ecc576e1ca09a31d7f0b7f297df087245aba8c01c4b7ed0211e82871a30a0b81.jsonl",
+      "sha256": "ecc576e1ca09a31d7f0b7f297df087245aba8c01c4b7ed0211e82871a30a0b81",
+      "bytes": 1694,
+      "count": 9,
+      "files_bytes": 186069
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/4444d218f32ed8fbd3f27ebede83f06735578ff13634e02be86af17dbcad453d.jsonl",
+      "sha256": "4444d218f32ed8fbd3f27ebede83f06735578ff13634e02be86af17dbcad453d",
+      "bytes": 189245,
+      "count": 937,
+      "files_bytes": 37699376
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r2",
+      "path": "local/evidence-manifests/39637ae378b3d5f519dbb60f7edbb740495f99ada3e651c39a0d3da8e73b36d7.jsonl",
+      "sha256": "39637ae378b3d5f519dbb60f7edbb740495f99ada3e651c39a0d3da8e73b36d7",
+      "bytes": 243116,
+      "count": 1203,
+      "files_bytes": 48047502
     }
   ]
 }

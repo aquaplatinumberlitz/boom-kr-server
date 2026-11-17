@@ -128,15 +128,6 @@
       "limits": "Mechanicalconsistency/regression only; requirelocal/history beforecommit. Noindependentreview/gateclosure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP149-direct-channel-positive.json",
-      "bytes": 385751,
-      "sha256": "1b6446c6189129c0736825b5c7b5f6c6036127d614798c6734eae0dd7fc89884",
-      "count": 1505
-    }
-  ],
   "delta": {
     "added": [
       "AllTCPdirect/no rootproxy/nativepositive2cycles/capture/Ready."
@@ -228,6 +219,181 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP149routeproof/itempartial/correction/missingFirefeedbacknext/PR219merged/audit152 synchronized."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/actor-fields.json",
+      "bytes": 880490,
+      "sha256": "4480f8d511afc1c31fd7b7946b290226b7a562b9abbb90282c79f810c602a822"
+    },
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/address-ready-verification.json",
+      "bytes": 4436,
+      "sha256": "28187edb0a7ed8860fa3dea905ae21c1851fd1490c522959c5adb902960847f4"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/analysis-corrections.json",
+      "bytes": 4429,
+      "sha256": "f046b12552a08307ca4ee86ffae6b45d5e4c94043adf47f1943ddf388131a0dc"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/basic-power-assumption-failed.txt",
+      "bytes": 955,
+      "sha256": "7655fe0863cbb0348dff6100716045374973bf21b61fcb0823d7a1975c87edbf"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/basic-verification.json",
+      "bytes": 182100,
+      "sha256": "865f04df258e0a36528ab74c3b6adddd1ebc1cc87969cd80049568c6d1413f06"
+    },
+    {
+      "id": "RUN-01319",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/cycles/client-B.log",
+      "bytes": 162812,
+      "sha256": "8ef0301aa2fc5bf1b3f712207cc7daa0559777f6cb2cb6ed0e6a54e96274637b"
+    },
+    {
+      "id": "RUN-01320",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/cycles/client.log",
+      "bytes": 182478,
+      "sha256": "39d5b08ac68b93f759ab43f091bba59d451e88744ffee01b1c6664e4fb50a2f4"
+    },
+    {
+      "id": "RUN-01344",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/cycles/run.json",
+      "bytes": 380311,
+      "sha256": "bb78dc2f3cb2c5093ddea7e04ad142627fab09e9af6c38977de263dfc0042429"
+    },
+    {
+      "id": "RUN-01345",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/cycles/service-state.json",
+      "bytes": 201585,
+      "sha256": "029bf5dfe6441e868543b353a5dc0799f1393235cb6fe4a80d143ee72e16fca1"
+    },
+    {
+      "id": "RUN-01358",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/direct-verification.json",
+      "bytes": 13161,
+      "sha256": "1dcfe48c95344bdb8793fee7053e5a1a539d07d3c9732c3dec69a084c9acbf61"
+    },
+    {
+      "id": "RUN-01359",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "d9497d5eff77a0d027db973094d7dc388fd5bf8f64664929f231d4d7a28e2bd2"
+    },
+    {
+      "id": "RUN-01360",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/endpoint-peer-verification.json",
+      "bytes": 161060,
+      "sha256": "3496cc43cca2220c81a916f923bd88458b9f54d8163341c8c1034b90e223a635"
+    },
+    {
+      "id": "RUN-01369",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "f059d7ea752b87d2382ce1f15d5b39db4bc70e4b24c1e9cfa6723d9e38270728"
+    },
+    {
+      "id": "RUN-01373",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/movement-wire-verification.json",
+      "bytes": 39923,
+      "sha256": "c2fb16cf60bf8e3afffd8b131a3fb6b9cba1b4ac82a3abf04610a7c3a6cf0e86"
+    },
+    {
+      "id": "RUN-01390",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/pickup-verification.json",
+      "bytes": 2452,
+      "sha256": "1d6fb2221370570f50cb50635c64832b718029454cf36dc22c1639e550d6b964"
+    },
+    {
+      "id": "RUN-01392",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/raw-seal.json",
+      "bytes": 277429,
+      "sha256": "8957a6f30a5585712e8dc504b8bf06def1d49f34aeb1f954b3b12b3401eb4b1d"
+    },
+    {
+      "id": "RUN-01431",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/reuse-question.json",
+      "bytes": 2553,
+      "sha256": "1bccc60d1aa1aebc580ea31c01e6233c612557504493a81cdd5da77ace1812ec"
+    },
+    {
+      "id": "RUN-01433",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/runtime-preflight.json",
+      "bytes": 18638,
+      "sha256": "623f3948a010fca09ffd78b0222f72499447487d71dd9a7f45c38719b49cd07b"
+    },
+    {
+      "id": "RUN-01498",
+      "kind": "local",
+      "path": "local/research/codex/direct-channel-positive-r1/visual-review.json",
+      "bytes": 1245,
+      "sha256": "f3340d36ee8108b7c3db56cd174b8c084113170890816404220b54f2b286f4ae"
+    },
+    {
+      "id": "RUN-01503",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/server-tests.txt",
+      "bytes": 337,
+      "sha256": "279e571a9c544630e0633f5bc5d621da7503699017783630d834afc8545ada31"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/direct-channel-positive-r1",
+      "path": "local/evidence-manifests/78b5a7e4db5e6c1719cd0890e519982f22b927679e8cf71b7826ea0d58739cc5.jsonl",
+      "sha256": "78b5a7e4db5e6c1719cd0890e519982f22b927679e8cf71b7826ea0d58739cc5",
+      "bytes": 305485,
+      "count": 1480,
+      "files_bytes": 117998042
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/09c0d3bb664fab873338cfd5bb192cfee020ec163593457d451a17f5e14ff7a7.jsonl",
+      "sha256": "09c0d3bb664fab873338cfd5bb192cfee020ec163593457d451a17f5e14ff7a7",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 70036
+    },
+    {
+      "run": "local/research/codex/service-channel-endpoint-r2",
+      "path": "local/evidence-manifests/1c60e6aa95681a6b738325e240c34d84ecb0fca10abfc7145c1ac445af12e705.jsonl",
+      "sha256": "1c60e6aa95681a6b738325e240c34d84ecb0fca10abfc7145c1ac445af12e705",
+      "bytes": 484,
+      "count": 2,
+      "files_bytes": 486
     }
   ]
 }

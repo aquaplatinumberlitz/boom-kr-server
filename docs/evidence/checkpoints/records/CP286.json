@@ -105,15 +105,6 @@
       "limits": "Independent review waived; exact-head/local-history/CI before merge remain required."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP286-companion-foundation.json",
-      "bytes": 316391,
-      "sha256": "02086c16031213749025b90e7b6c5e3c6dfec343a5298e395a91c6d3773648ad",
-      "count": 1216
-    }
-  ],
   "delta": {
     "added": [
       "kr-tunnel standard authenticated transport and loopback proxy foundation.",
@@ -221,5 +212,247 @@
   ],
   "completed_feature_groups": [
     "rust-companion-transport-foundation"
+  ],
+  "evidence": [
+    {
+      "id": "N1RB286-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "N1RB286-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3950,
+      "sha256": "02d62a75b7fcdc082714021fc2545313b29518573523acaa12b9fad47a30b49e"
+    },
+    {
+      "id": "N1RB286-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 250934,
+      "sha256": "22e0cc06ff74127b0d95385b078af9d94b447e0fd9090a16feee8e1869ca5f62"
+    },
+    {
+      "id": "N1RB286-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 144481,
+      "sha256": "77fc9bad6d23ea33e8c71499680b1a244e3f05558f4a5a2b49479795f8be4370"
+    },
+    {
+      "id": "N1RB286-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 77655,
+      "sha256": "65f241eda091b3193a0f39ec0ac67ed9a33bc4360b4ef0d4dd58270593f07207"
+    },
+    {
+      "id": "N1RB286-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66111,
+      "sha256": "137e33dc203bc310e9b01d9dfb7ecac64de4633e31e4b664d96dd4a95a7cb418"
+    },
+    {
+      "id": "N1RB286-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 32564,
+      "sha256": "e9e0e7e1913e6dd3aae30ef4e7f45a8f175ba3b85cf7e084e4b461b219dd684b"
+    },
+    {
+      "id": "N1RB286-00008",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 45160,
+      "sha256": "d9d654926f9286ab975f3f5afece83a5036e2ca5559d14c69e53996c88aea863"
+    },
+    {
+      "id": "N1RB286-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD102.json",
+      "bytes": 4779,
+      "sha256": "b4bfb301f400a751c648aa738029146f8ea632f93d39873bb95c1bdc18ae391a"
+    },
+    {
+      "id": "N1RB286-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 302821,
+      "sha256": "f3b9498681dae0d51b49f29f358659f966c4e2bd172f46fd990922de6a719c19"
+    },
+    {
+      "id": "N1RB286-00011",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 30490,
+      "sha256": "f581e09ec58300d9cc21e2566905d80cf7e34c82bfdd4d50eb4c88edeb72267e"
+    },
+    {
+      "id": "N1RB286-00012",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/n1rb-companion-foundation.json",
+      "bytes": 7455,
+      "sha256": "a48c4907d6769f4b09a2bcc3e46e01a7c8632c355226c09dac731073df657685"
+    },
+    {
+      "id": "N1RB286-00013",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 263349,
+      "sha256": "132dc5e897679e8f13f3a7f0db17e889744a6082f8750e710932e48f296a15dc"
+    },
+    {
+      "id": "N1RB286-00014",
+      "kind": "repository",
+      "path": "docs/protocol/udp-peer.md",
+      "bytes": 76269,
+      "sha256": "a0429c9d10b393c119d06dcdf7181128a3277c6c4382420260d9a61775809bfc"
+    },
+    {
+      "id": "N1RB286-00016",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-dependency-review.json",
+      "bytes": 3355,
+      "sha256": "7d2a4b4a2a5c14835912e57cd0b623abaac6dfaf99fa53df81303eed1ef49f42"
+    },
+    {
+      "id": "N1RB286-00017",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-foundation-build-r1.txt",
+      "bytes": 72,
+      "sha256": "732186322402325172940531d8d6d7cfac85dc902585b2bef6715ad6839dacfd"
+    },
+    {
+      "id": "N1RB286-00018",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-foundation-clippy-r1.txt",
+      "bytes": 969,
+      "sha256": "ce924b2163ac53fcc4d442aa4ff71a1b3c2e4b2d70f43c835be334a13b829b09"
+    },
+    {
+      "id": "N1RB286-00019",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-foundation-fmt-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "N1RB286-00020",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-foundation-tests-r1.txt",
+      "bytes": 18323,
+      "sha256": "505e0473d05cb82889b26f780b45596dede8d8fcf7fb6a0e10221abde21ea838"
+    },
+    {
+      "id": "N1RB286-00844",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-proxy-native-r4/native/raw-seal.json",
+      "bytes": 18822,
+      "sha256": "736da29f4ab5def618672e9fc3eebedd3a19e95ab58fb7f25a8e393f99606ea8"
+    },
+    {
+      "id": "N1RB286-00861",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-proxy-native-r5/companion-getter-verification.json",
+      "bytes": 610,
+      "sha256": "4c1af5194abf90e37ac91edd01b961e00f186db2174a4fbebe698a74b498ddb1"
+    },
+    {
+      "id": "N1RB286-00862",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-proxy-native-r5/companion-verification.json",
+      "bytes": 37383,
+      "sha256": "2e74f376d3e75872c113b5c30fcf1eaab44994ed1cf86681ef655c232ebc801a"
+    },
+    {
+      "id": "N1RB286-01175",
+      "kind": "local",
+      "path": "local/research/codex/n1rb-proxy-native-r5/native/raw-seal.json",
+      "bytes": 18828,
+      "sha256": "9b6fcbac6cd0b0511b0df88dae0934b76cc7de2ac14f0ed44287ec85bcc7dc99"
+    },
+    {
+      "id": "N1RB286-01214",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/lib.rs",
+      "bytes": 10642,
+      "sha256": "7f5fae5539be38d660c3e07c8067c7a7cbb46f2a20ed969f7138ed37a2f16c3d"
+    },
+    {
+      "id": "N1RB286-01215",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/proxy.rs",
+      "bytes": 6914,
+      "sha256": "bda4cdd87e83c4318217d438fd090eece2b55a9021a7ac8b1e8ad1292d22dd47"
+    },
+    {
+      "id": "N1RB286-01216",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/tests.rs",
+      "bytes": 6085,
+      "sha256": "c19214b6ea7d79c7a3a351e37aff940eb0fecc5a9b4f7d5b25ace38a0911fb35"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0a0d698b8cbaf34d8db129bebe09ee3b64eb2f1945758f7daca1a33a40e228ae.jsonl",
+      "sha256": "0a0d698b8cbaf34d8db129bebe09ee3b64eb2f1945758f7daca1a33a40e228ae",
+      "bytes": 9026,
+      "count": 48,
+      "files_bytes": 255943
+    },
+    {
+      "run": "local/research/codex/n1rb-proxy-native-r1",
+      "path": "local/evidence-manifests/048c2d97acb3cfeba0d9eb7b95e232d5bc02625ca37850e43f3ef98781621a7f.jsonl",
+      "sha256": "048c2d97acb3cfeba0d9eb7b95e232d5bc02625ca37850e43f3ef98781621a7f",
+      "bytes": 481,
+      "count": 2,
+      "files_bytes": 114764296
+    },
+    {
+      "run": "local/research/codex/n1rb-proxy-native-r2",
+      "path": "local/evidence-manifests/1d52a118b25d7f58acda904fddddfe3149832c3360162fa890efe4144121a217.jsonl",
+      "sha256": "1d52a118b25d7f58acda904fddddfe3149832c3360162fa890efe4144121a217",
+      "bytes": 50828,
+      "count": 240,
+      "files_bytes": 453163041
+    },
+    {
+      "run": "local/research/codex/n1rb-proxy-native-r3",
+      "path": "local/evidence-manifests/9e6cc30862482c7dbbb7f5185bc30c2a07fce4d246c06830cd6f2c73dad4d61a.jsonl",
+      "sha256": "9e6cc30862482c7dbbb7f5185bc30c2a07fce4d246c06830cd6f2c73dad4d61a",
+      "bytes": 50828,
+      "count": 240,
+      "files_bytes": 453163364
+    },
+    {
+      "run": "local/research/codex/n1rb-proxy-native-r4",
+      "path": "local/evidence-manifests/24a47bd9382a7a05e84ef9c481f2d61dcf0ca3d1ca5fb0efeb7045d4730f3a37.jsonl",
+      "sha256": "24a47bd9382a7a05e84ef9c481f2d61dcf0ca3d1ca5fb0efeb7045d4730f3a37",
+      "bytes": 69500,
+      "count": 327,
+      "files_bytes": 460820528
+    },
+    {
+      "run": "local/research/codex/n1rb-proxy-native-r5",
+      "path": "local/evidence-manifests/6bfe0eb673364346dfeba6e06152b6933f241e69950085991d671fafdf5a96be.jsonl",
+      "sha256": "6bfe0eb673364346dfeba6e06152b6933f241e69950085991d671fafdf5a96be",
+      "bytes": 69711,
+      "count": 328,
+      "files_bytes": 462557262
+    },
+    {
+      "run": "local/research/codex/n1rb-source-r1",
+      "path": "local/evidence-manifests/ce16f7a5fec5177017ac4f6a74f7c310f1c81707a9696379baecccd4c3de4b72.jsonl",
+      "sha256": "ce16f7a5fec5177017ac4f6a74f7c310f1c81707a9696379baecccd4c3de4b72",
+      "bytes": 1065,
+      "count": 5,
+      "files_bytes": 16249
+    }
   ]
 }

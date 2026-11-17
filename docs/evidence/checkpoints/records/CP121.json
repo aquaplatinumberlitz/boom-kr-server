@@ -107,15 +107,6 @@
       "limits": "Mechanical consistency/manual scoped UI observation only, no gate or automatic semantic approval."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP121-rescue-two-results.json",
-      "bytes": 577885,
-      "sha256": "32752ded878bb4c33e83f577ccd3a25bae899ab1ddcd8706ab371704255ce2bd",
-      "count": 2294
-    }
-  ],
   "delta": {
     "added": [
       "Same-run two rescue epochs/two chosen results/secondreturn actualReadyB/native joins and UI."
@@ -206,6 +197,132 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP121 two rescue/result/return/actualBReady and explicit limits, CP120 merged; next recursive chain per PLAN; no oldrecord/gate change."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "TWO-00001",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/actor-fields.json",
+      "bytes": 504218,
+      "sha256": "89d9b5d3f588bdd8c8461019ca73fdf5e47d9f022317f1d03de44570e16e4a5d"
+    },
+    {
+      "id": "TWO-00008",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "TWO-02157",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/cycles/run.json",
+      "bytes": 216327,
+      "sha256": "32191e0eab3c5168d9383b1f2df0e15a86b52f568c7cb6a85b5f514b6fa9093c"
+    },
+    {
+      "id": "TWO-02170",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/docs-check2.txt",
+      "bytes": 175,
+      "sha256": "b0894df1ed3ed03cf7505113de77a1a398c39d5ad7a0ede8015fc050bedea8c3"
+    },
+    {
+      "id": "TWO-02171",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/fields-check.txt",
+      "bytes": 32,
+      "sha256": "e03a3960e5c6a056518750dee9b3e898e2541ad324f190bcd53564c25dc0c138"
+    },
+    {
+      "id": "TWO-02184",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/issues-snapshot-check.txt",
+      "bytes": 130,
+      "sha256": "7c500df678d7e224ddcb7ae1966933318c3701d60b80c28fb4565f4ddc95c29f"
+    },
+    {
+      "id": "TWO-02186",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/native-reports-check.txt",
+      "bytes": 29,
+      "sha256": "78e92107e4944f7e61f7ef7ec03fbdaa3ffc7231559ee86007a7347bdbc1b9c2"
+    },
+    {
+      "id": "TWO-02188",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/native153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "TWO-02196",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/profile.json",
+      "bytes": 12746,
+      "sha256": "5485d9d4afb0f3f2214301d6ed7b124bb3beaa96106b8f27d6e5142e818b6912"
+    },
+    {
+      "id": "TWO-02227",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/runtime-preflight.json",
+      "bytes": 9030,
+      "sha256": "bf41ec8635f109ad992394f4926a5267d1bf9498f3434f3ffb7d4b2e2226a64e"
+    },
+    {
+      "id": "TWO-02266",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/two-result-check.txt",
+      "bytes": 54,
+      "sha256": "07b037fc2c7d42a506608617034f24dfe64051ee90f57adcface50de17566a18"
+    },
+    {
+      "id": "TWO-02267",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/two-result-verification.json",
+      "bytes": 639331,
+      "sha256": "35df70a1424029b9ac7b6fd822924dd5a556ac38771399084c7c7d712b3c5cb3"
+    },
+    {
+      "id": "TWO-02289",
+      "kind": "local",
+      "path": "local/research/codex/rescue-two-results-r1/visual-review.json",
+      "bytes": 559,
+      "sha256": "bf1fa513a8e53b773857aab95ead88a5c0f6b48f6e874fb55ae412c48bc75c0f"
+    },
+    {
+      "id": "TWO-02294",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/server-tests.txt",
+      "bytes": 291,
+      "sha256": "09d483bec50aa52bb61c63c8fb6926c78fd85e547f381b90d870b6e3a0ada3ee"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/rescue-two-results-r1",
+      "path": "local/evidence-manifests/32c0359f0fa5593a9322d1b44f7ec1279f86e4a55521dbd11582ac08640ecbc6.jsonl",
+      "sha256": "32c0359f0fa5593a9322d1b44f7ec1279f86e4a55521dbd11582ac08640ecbc6",
+      "bytes": 459723,
+      "count": 2276,
+      "files_bytes": 54598198
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/6d8cd703013ffea911235517a984af9eaaaa05869ce2492a71800918f8695317.jsonl",
+      "sha256": "6d8cd703013ffea911235517a984af9eaaaa05869ce2492a71800918f8695317",
+      "bytes": 432,
+      "count": 2,
+      "files_bytes": 63310
+    },
+    {
+      "run": "local/research/codex/rescue-R2-feedback-r2",
+      "path": "local/evidence-manifests/6468d120d8f1101fddb6b7dd2c379bdb1654c53b3aefbd6c03e290370c0aeee4.jsonl",
+      "sha256": "6468d120d8f1101fddb6b7dd2c379bdb1654c53b3aefbd6c03e290370c0aeee4",
+      "bytes": 472,
+      "count": 2,
+      "files_bytes": 510
     }
   ]
 }

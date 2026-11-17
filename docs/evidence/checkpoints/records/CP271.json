@@ -64,15 +64,6 @@
       "limits": "Unit lock test is not native DB-queue evidence."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP271-r1g-ci-correction.json",
-      "bytes": 6483,
-      "sha256": "4c779043bf5053b1a4daa3b1523a560b1bae7556e72868e71b597d8ab41f621b",
-      "count": 27
-    }
-  ],
   "delta": {
     "added": [
       "Redacted outcomes; settled duplicate-login denial; deterministic bounded Busy and post-lock denial test."
@@ -186,6 +177,117 @@
       "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
       "state": "unchanged",
       "reason": "No wire/policy/feature acceptance change; existing R1g source/TCP and native gaps remain authoritative."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "R1GCIC271-001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 4380,
+      "sha256": "6ecdf23efc2a337a001482607f1ed374bef54e037323266ab0fcf94ef7217b89"
+    },
+    {
+      "id": "R1GCIC271-002",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 71065,
+      "sha256": "5bdf309d307e741c41a5210eb353fb38dfe8dbc363b0090af3c773f713cfc28f"
+    },
+    {
+      "id": "R1GCIC271-003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 139730,
+      "sha256": "4d11a110779ed7979365d8267786e4961c2325f1c65210f3ad72331902081654"
+    },
+    {
+      "id": "R1GCIC271-004",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 875077,
+      "sha256": "ce760970ea69ca267c69934a01144a98df08ba5eea36949cb43f4dedb4ced1f4"
+    },
+    {
+      "id": "R1GCIC271-005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 56806,
+      "sha256": "92bf6e9405e40d795584f80952fd3bee158b8d97fcd40f34e6b52afe98dfef40"
+    },
+    {
+      "id": "R1GCIC271-006",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 65258,
+      "sha256": "507a8f9a0a3fb45104415615263501f9f296a1777008ef7caab477f2c5bf2cb1"
+    },
+    {
+      "id": "R1GCIC271-007",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1g-ci-correction.json",
+      "bytes": 3315,
+      "sha256": "740710f72404cf1e49211cefbafe703bec10ada3e5ad107cee7f13b6776bbd24"
+    },
+    {
+      "id": "R1GCIC271-009",
+      "kind": "local",
+      "path": "local/research/codex/cp270-ci-docs-failure.txt",
+      "bytes": 19569,
+      "sha256": "8b10a6564e9c2709d423eb7be9bf7bbbe35fbff684260575327bd552b1e6da82"
+    },
+    {
+      "id": "R1GCIC271-012",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/accounts-tests.rs",
+      "bytes": 24425,
+      "sha256": "1efc122aba3061a85b23b33d4c47925bd06439cc0b5254665a437e56d84ce3c3"
+    },
+    {
+      "id": "R1GCIC271-013",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/clippy.txt",
+      "bytes": 166,
+      "sha256": "4cccdf8187e4fc3c834d8761a2724945e8260e87431ca84eb8988560c6a5b36d"
+    },
+    {
+      "id": "R1GCIC271-015",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/fmt.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R1GCIC271-026",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/tests.txt",
+      "bytes": 11867,
+      "sha256": "cbe94a74cd337eaaac4bf9862c8360476695d343fb1185aace9bee45e0486bff"
+    },
+    {
+      "id": "R1GCIC271-027",
+      "kind": "local",
+      "path": "local/research/codex/cp271-ci-repair-r1/verification.json",
+      "bytes": 962,
+      "sha256": "c6ef4db34cb9803c725f3384e304957f6db77cae39f7994f08bb79d6fcbb36d1"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a3b6ccf8de24b0b1fb5405bb4762f351d9ceab968de560fe4d93a01e226a1205.jsonl",
+      "sha256": "a3b6ccf8de24b0b1fb5405bb4762f351d9ceab968de560fe4d93a01e226a1205",
+      "bytes": 611,
+      "count": 3,
+      "files_bytes": 133288
+    },
+    {
+      "run": "local/research/codex/cp271-ci-repair-r1",
+      "path": "local/evidence-manifests/6fbb8a5dc068105d074a941ef63280f9f0286e33bed68acb6fc321aeed211d16.jsonl",
+      "sha256": "6fbb8a5dc068105d074a941ef63280f9f0286e33bed68acb6fc321aeed211d16",
+      "bytes": 2322,
+      "count": 11,
+      "files_bytes": 66097155
     }
   ]
 }

@@ -81,113 +81,6 @@
       "limits": "Absence of assertion is run-scoped; no semantics or login proof."
     }
   ],
-  "evidence": [
-    {
-      "id": "E001",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/plain-null-audio/run.json",
-      "bytes": 4087,
-      "sha256": "84ce0e375e7e1ae8c842cf123e3d80cfb8088c5fb63e683308b01b3367f5cd7b"
-    },
-    {
-      "id": "E002",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/plain-null-audio/client.log",
-      "bytes": 151171,
-      "sha256": "48bcf80b30d99c3c1f26b1173d2a2d142859554d6a4bbc477562d73ae2fd5c4a"
-    },
-    {
-      "id": "E003",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/plain-screenpoint/run.json",
-      "bytes": 4088,
-      "sha256": "1c44d395c29532f58a459ed8250afc0daca799acaa0e3c654396064dc5fc5b60"
-    },
-    {
-      "id": "E004",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/plain-screenpoint/client.log",
-      "bytes": 151475,
-      "sha256": "ec5e5a26bf2c7e0ef22271515d88e708c878dc852129d7e28587463abb995e5c"
-    },
-    {
-      "id": "E005",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/plain-windowrect/run.json",
-      "bytes": 4089,
-      "sha256": "90903be3146a855be72f2b741adefdb03c3d86c5d1e56f21bc25483b1ddd93bc"
-    },
-    {
-      "id": "E006",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/plain-windowrect/client.log",
-      "bytes": 155459,
-      "sha256": "106d26458a208fcdbc7fe084162d773d8003c488401ccf25fb285bc5d0f1b0b5"
-    },
-    {
-      "id": "E007",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/clienttoscreen-import-patch.json",
-      "bytes": 522,
-      "sha256": "241ea2de08e711bb012fbc50d1a1b5b3945fa4cf2793a99a6662a4520ec9e719"
-    },
-    {
-      "id": "E008",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/windowrect-import-patch.json",
-      "bytes": 524,
-      "sha256": "f8539a3327018bba9128863fa09df55c28dab2666c57d180ae917d2369ad93e6"
-    },
-    {
-      "id": "E009",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/patch-clienttoscreen-import.py",
-      "bytes": 1787,
-      "sha256": "1dc4b64c9e773ced3c94c29579aa6acb0277016cc437eafa6e54d28ab19ebdd4"
-    },
-    {
-      "id": "E010",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/patch-windowrect-import.py",
-      "bytes": 1783,
-      "sha256": "4c721310ddccc86f20653e21564e1d1e4bbe4bdbb1f80ab3e805eb45c9e5cff8"
-    },
-    {
-      "id": "E011",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/verify-import-patches.py",
-      "bytes": 2017,
-      "sha256": "1122e427786857595a18704e4b293170126560797c79d9bdb68d0613d75f23d6"
-    },
-    {
-      "id": "E012",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/import-diffs.json",
-      "bytes": 7277,
-      "sha256": "065c252ad76fa682c128bcc57bf077159ee59824b546a294ee1e8f9c0e89126d"
-    },
-    {
-      "id": "E013",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/verify-cp008.py",
-      "bytes": 1798,
-      "sha256": "4be19c3440a77d8fa284b79f9887f3f55e6d89b9b0035571bdd886661c4fc7ab"
-    },
-    {
-      "id": "E014",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/verification-cp008.json",
-      "bytes": 871,
-      "sha256": "8e288b31b0432779ebda0d3ca797fe40bd032b0ff6afd57c771f4633aed2b52d"
-    },
-    {
-      "id": "E015",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/review-report.md",
-      "bytes": 5333,
-      "sha256": "0ebc9609cfe074d472fa4c1f01563c2b426629c118bb57ab48d524c879ac0e7d"
-    }
-  ],
   "delta": {
     "added": [
       "Three non-debug audio/render runs, two candidate import mappings, 5 exact import diffs, independent review feedback and periodic audit AUD003."
@@ -261,6 +154,109 @@
       "path": "docs/evidence/checkpoints/audits/AUD003.json",
       "state": "updated",
       "reason": "Periodic manual audit at CP008."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-null-audio/run.json",
+      "bytes": 4087,
+      "sha256": "84ce0e375e7e1ae8c842cf123e3d80cfb8088c5fb63e683308b01b3367f5cd7b"
+    },
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-null-audio/client.log",
+      "bytes": 151171,
+      "sha256": "48bcf80b30d99c3c1f26b1173d2a2d142859554d6a4bbc477562d73ae2fd5c4a"
+    },
+    {
+      "id": "E003",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-screenpoint/run.json",
+      "bytes": 4088,
+      "sha256": "1c44d395c29532f58a459ed8250afc0daca799acaa0e3c654396064dc5fc5b60"
+    },
+    {
+      "id": "E004",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-screenpoint/client.log",
+      "bytes": 151475,
+      "sha256": "ec5e5a26bf2c7e0ef22271515d88e708c878dc852129d7e28587463abb995e5c"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-windowrect/run.json",
+      "bytes": 4089,
+      "sha256": "90903be3146a855be72f2b741adefdb03c3d86c5d1e56f21bc25483b1ddd93bc"
+    },
+    {
+      "id": "E006",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/plain-windowrect/client.log",
+      "bytes": 155459,
+      "sha256": "106d26458a208fcdbc7fe084162d773d8003c488401ccf25fb285bc5d0f1b0b5"
+    },
+    {
+      "id": "E007",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/clienttoscreen-import-patch.json",
+      "bytes": 522,
+      "sha256": "241ea2de08e711bb012fbc50d1a1b5b3945fa4cf2793a99a6662a4520ec9e719"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/windowrect-import-patch.json",
+      "bytes": 524,
+      "sha256": "f8539a3327018bba9128863fa09df55c28dab2666c57d180ae917d2369ad93e6"
+    },
+    {
+      "id": "E011",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verify-import-patches.py",
+      "bytes": 2017,
+      "sha256": "1122e427786857595a18704e4b293170126560797c79d9bdb68d0613d75f23d6"
+    },
+    {
+      "id": "E012",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/import-diffs.json",
+      "bytes": 7277,
+      "sha256": "065c252ad76fa682c128bcc57bf077159ee59824b546a294ee1e8f9c0e89126d"
+    },
+    {
+      "id": "E013",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verify-cp008.py",
+      "bytes": 1798,
+      "sha256": "4be19c3440a77d8fa284b79f9887f3f55e6d89b9b0035571bdd886661c4fc7ab"
+    },
+    {
+      "id": "E014",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verification-cp008.json",
+      "bytes": 871,
+      "sha256": "8e288b31b0432779ebda0d3ca797fe40bd032b0ff6afd57c771f4633aed2b52d"
+    },
+    {
+      "id": "E015",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/review-report.md",
+      "bytes": 5333,
+      "sha256": "0ebc9609cfe074d472fa4c1f01563c2b426629c118bb57ab48d524c879ac0e7d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/nmco-identity-r1",
+      "path": "local/evidence-manifests/7f0d311d369bc52520e18d53e423cf10359af42e4f2a9e75c08488f64a001c14.jsonl",
+      "sha256": "7f0d311d369bc52520e18d53e423cf10359af42e4f2a9e75c08488f64a001c14",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 3570
     }
   ]
 }

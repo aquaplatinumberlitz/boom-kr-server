@@ -128,15 +128,6 @@
       "limits": "Review độc lập được miễn; audit nhóm không đóng milestone G1."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP305-mixed-map-spawns.json",
-      "bytes": 899393,
-      "sha256": "299564d3d223f79d728d879d5e583c54005750a09abe13ba744b703cff8b62d7",
-      "count": 3211
-    }
-  ],
   "delta": {
     "added": [
       "Mixed8/6spawn catalog/admission design và sparse6 native Start/two-cycle proof."
@@ -264,5 +255,297 @@
   ],
   "completed_feature_groups": [
     "rust-mixed-map-spawn-admission-and-sparse-start"
+  ],
+  "evidence": [
+    {
+      "id": "SPAWN305-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 14007,
+      "sha256": "97ff5aaf2b1e0a39917df5e7b459cd09d9c2e8aad5d3c35efb20bea18b69e04f"
+    },
+    {
+      "id": "SPAWN305-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3560,
+      "sha256": "99dc167bd2e11bd9480775cb700a4039805c8c291359d9bc39c96decbf28108c"
+    },
+    {
+      "id": "SPAWN305-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 261148,
+      "sha256": "80f989f7008cb3c1710fa1a25318d662c79f83aa04e6e66d890188f98dc3fadb"
+    },
+    {
+      "id": "SPAWN305-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 155672,
+      "sha256": "75934aaa8ad602fd413d6703c64e2b0010228c789be559d4fc27975365f856ba"
+    },
+    {
+      "id": "SPAWN305-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82552,
+      "sha256": "867443022d0492ed6639edae4516a60c7c8978f8326c0b9f7093313442f0b9e0"
+    },
+    {
+      "id": "SPAWN305-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 67766,
+      "sha256": "bcf2108803137f6c9e9f5cced2a551acbe81f633771e4c9b8ab9a1225a99653a"
+    },
+    {
+      "id": "SPAWN305-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 42277,
+      "sha256": "9d2fa2a4ac33908bec06c842ae2fbc8c946c1d0855441b7b562f038ac2ac1bbc"
+    },
+    {
+      "id": "SPAWN305-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD119.json",
+      "bytes": 4787,
+      "sha256": "bd602069c1a1b103c94ae6317cd2c73c40a7e99c96beb884331581c9554bdb61"
+    },
+    {
+      "id": "SPAWN305-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-map-selection.json",
+      "bytes": 9398,
+      "sha256": "3cf9aea960df8de9fd6cac8f74a89d95f6412ec64515b94f8b970dcfe3a97f38"
+    },
+    {
+      "id": "SPAWN305-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-mixed-map-spawns.json",
+      "bytes": 6775,
+      "sha256": "4307838f066bddd104585ae35de4d46b0aba0fa044e243d70e43521a2b92d872"
+    },
+    {
+      "id": "SPAWN305-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-village10-terrain.json",
+      "bytes": 9384,
+      "sha256": "c1402127c878a19ff0e4bdd05572a2fb2e784391da304fafbdcdd663dd3d9c7f"
+    },
+    {
+      "id": "SPAWN305-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 273860,
+      "sha256": "5e91b12761d63fb7ec06cdf83143933071774b0de7c9ef7820c98ecc5e615dfe"
+    },
+    {
+      "id": "SPAWN305-00013",
+      "kind": "repository",
+      "path": "docs/protocol/load-phase.md",
+      "bytes": 66958,
+      "sha256": "0c5c7a66ccdb118e2d2efe3ac29ac5210027b9b93ca2db4d7b16646a57737a23"
+    },
+    {
+      "id": "SPAWN305-00014",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 53792,
+      "sha256": "08f592dbcdf3bdbc008bfa361f19892043ada452d2c31ef29bcbc29d49d7169f"
+    },
+    {
+      "id": "SPAWN305-00034",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-modal-attribution-r1/queue-expiry-chronology.json",
+      "bytes": 695,
+      "sha256": "d36801af81f7e9dc3d444ae2554e3b9b5177abad46137a3fbcfd53b9e9d20106"
+    },
+    {
+      "id": "SPAWN305-00045",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-modal-attribution-r1/static-summary.json",
+      "bytes": 2125,
+      "sha256": "18674767addacf6141a45360c678593c2a5f4eca37619c6dcafe1397bb173827"
+    },
+    {
+      "id": "SPAWN305-02382",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/cache-verification.json",
+      "bytes": 4387,
+      "sha256": "9a5d3eb06d8812c5a087c78a984692c01b960a6a4ae606c813209bdc7f8cc87e"
+    },
+    {
+      "id": "SPAWN305-03059",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/native/raw-seal.json",
+      "bytes": 143212,
+      "sha256": "fde991c597e9fe3d329fd92d1f97e79ea3a95e6ca710d6627f349f9353ae9f19"
+    },
+    {
+      "id": "SPAWN305-03066",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/native-contact.png",
+      "bytes": 153135,
+      "sha256": "1140b26c6817f0396d6f648eb74807408950aa7131e436068c71e33eabbae335"
+    },
+    {
+      "id": "SPAWN305-03068",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/postrun-telemetry-debugger-review.json",
+      "bytes": 1327,
+      "sha256": "66e771b11772f075e988750148d4c7c2086c7b7b05dca6a968fe2aa4b627b204"
+    },
+    {
+      "id": "SPAWN305-03082",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/verification-r4-bounded-terrain.txt",
+      "bytes": 45,
+      "sha256": "e0c5f12efe911b036800789a0cc791deb8137d7973bebb23c55f47ba155c33b8"
+    },
+    {
+      "id": "SPAWN305-03083",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/verification-r4.txt",
+      "bytes": 5229,
+      "sha256": "ac6a294236114374cfd328538161597c02d1fef495bcd175d2eaa39046961fc9"
+    },
+    {
+      "id": "SPAWN305-03085",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/village10-terrain-getter-verification.json",
+      "bytes": 609,
+      "sha256": "8e91ee8430f0e43cec955b44703aa3ea184a8db8231c58dfadc22a41ee56ebca"
+    },
+    {
+      "id": "SPAWN305-03086",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-sparse-native-r4/village10-terrain-native-verification.json",
+      "bytes": 12236570,
+      "sha256": "66f84a2944cba2dc06c6535d9638f09ce0c984d05c41393dc24c9d5f22a38514"
+    },
+    {
+      "id": "SPAWN305-03087",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-spawn-docs-precheck.txt",
+      "bytes": 198,
+      "sha256": "8a1c5bdc54d9f59783ef9e2e5e2911d069f453fb9a1efd5fe9e061a0a8991ea2"
+    },
+    {
+      "id": "SPAWN305-03172",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-spawn-source-r1/post-main-checks.txt",
+      "bytes": 24167,
+      "sha256": "c4cc5a23cf4e7e43a7a221c3cd9795fd9868b31bcce77ee4b5b64c41206efb1d"
+    },
+    {
+      "id": "SPAWN305-03178",
+      "kind": "local",
+      "path": "local/research/codex/g1-mixed-map-spawn-source-r1/validation/legacy-fixed-r2.json",
+      "bytes": 384,
+      "sha256": "ce7643dc786de4eb5fc66519b896d0b8d2f504ebe7fc3f982c5f1ee63931fa87"
+    },
+    {
+      "id": "SPAWN305-03207",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 65434,
+      "sha256": "ea599c739509eb0e97ece3178a085dfebe92205aa5f6e107d72cd8d752636cbf"
+    },
+    {
+      "id": "SPAWN305-03208",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "bytes": 11562,
+      "sha256": "ba84f2a2cd6ae6cd6babcee6b3bcf0f12307388ef469475268014d2c08a4c5e9"
+    },
+    {
+      "id": "SPAWN305-03209",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 186310,
+      "sha256": "157ca5511fc500eda6dc962013461fa9973bb99df1f68fdd6ed9757c751e7661"
+    },
+    {
+      "id": "SPAWN305-03210",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 30253,
+      "sha256": "d98f61776730e79cd87db55badf6fbd82f53657ed580890541a38d20a82b848f"
+    },
+    {
+      "id": "SPAWN305-03211",
+      "kind": "repository",
+      "path": "tools/rust_map_profile.py",
+      "bytes": 9812,
+      "sha256": "3803cf290dde2f783b383db8a5d9cda05687fba3b132806e730b6bd8da675925"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b59418e8401af61c80d591ffb94b75d6ae7b82dddd45b4bc3ae2f5adef627830.jsonl",
+      "sha256": "b59418e8401af61c80d591ffb94b75d6ae7b82dddd45b4bc3ae2f5adef627830",
+      "bytes": 5412,
+      "count": 28,
+      "files_bytes": 242654
+    },
+    {
+      "run": "local/research/codex/g1-map-modal-attribution-r1",
+      "path": "local/evidence-manifests/9cac8bc3f1ca89e659f25c3411e469663bbafa4cfd83bf891e1ba688daa324b0.jsonl",
+      "sha256": "9cac8bc3f1ca89e659f25c3411e469663bbafa4cfd83bf891e1ba688daa324b0",
+      "bytes": 5101,
+      "count": 25,
+      "files_bytes": 37144
+    },
+    {
+      "run": "local/research/codex/g1-mixed-map-sparse-native-r1",
+      "path": "local/evidence-manifests/9eb7801194e0005aa4c47ee03889e07df240284c3f9c0948c31d11d2fce2739f.jsonl",
+      "sha256": "9eb7801194e0005aa4c47ee03889e07df240284c3f9c0948c31d11d2fce2739f",
+      "bytes": 466613,
+      "count": 1976,
+      "files_bytes": 25511610444
+    },
+    {
+      "run": "local/research/codex/g1-mixed-map-sparse-native-r2",
+      "path": "local/evidence-manifests/a94dc8e9a614770d8700ce41ab290e426d43219283cf1f178ecf8b5c8acd220b.jsonl",
+      "sha256": "a94dc8e9a614770d8700ce41ab290e426d43219283cf1f178ecf8b5c8acd220b",
+      "bytes": 37116,
+      "count": 173,
+      "files_bytes": 268286656
+    },
+    {
+      "run": "local/research/codex/g1-mixed-map-sparse-native-r3",
+      "path": "local/evidence-manifests/dc96f41fe32acb063ce0290420395a56797859c35c34d184281fd04641b045d2.jsonl",
+      "sha256": "dc96f41fe32acb063ce0290420395a56797859c35c34d184281fd04641b045d2",
+      "bytes": 37326,
+      "count": 174,
+      "files_bytes": 268520092
+    },
+    {
+      "run": "local/research/codex/g1-mixed-map-sparse-native-r4",
+      "path": "local/evidence-manifests/e91870977977577f64765cfb1272ce19a97692a6c3452399322d961fdc982199.jsonl",
+      "sha256": "e91870977977577f64765cfb1272ce19a97692a6c3452399322d961fdc982199",
+      "bytes": 161955,
+      "count": 710,
+      "files_bytes": 415644854
+    },
+    {
+      "run": "local/research/codex/g1-mixed-map-spawn-input-r2",
+      "path": "local/evidence-manifests/a1cfd61a0113024c6e560ce525c78300fdfa4cd615f48491e83d3a90559366cb.jsonl",
+      "sha256": "a1cfd61a0113024c6e560ce525c78300fdfa4cd615f48491e83d3a90559366cb",
+      "bytes": 6330,
+      "count": 31,
+      "files_bytes": 73691
+    },
+    {
+      "run": "local/research/codex/g1-mixed-map-spawn-source-r1",
+      "path": "local/evidence-manifests/441c9cdd8fba039f375b8c8c8eba4d9dfa23342bd583e14d5f57b7c506cac757.jsonl",
+      "sha256": "441c9cdd8fba039f375b8c8c8eba4d9dfa23342bd583e14d5f57b7c506cac757",
+      "bytes": 13558,
+      "count": 62,
+      "files_bytes": 92081687
+    }
   ]
 }

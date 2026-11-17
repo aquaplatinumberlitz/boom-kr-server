@@ -141,15 +141,6 @@
       "limits": "Exact committed head/full local-history/CI trước merge. Source service không đổi, không cần lặp nativebaseline hoặc cargo suite chỉ vì metadata."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP306-camp08-boundary.json",
-      "bytes": 106450,
-      "sha256": "6ecfe4adda05acefdd4e513b2ca1ed6ddac7d69ec9d02d953d7020c954663d6b",
-      "count": 412
-    }
-  ],
   "delta": {
     "added": [
       "Camp08 initial seed/native và target122 evidence, failed runs/limits rõ."
@@ -249,6 +240,233 @@
       "path": "docs/content/client-language.md",
       "state": "unchanged",
       "reason": "Chủ dự án giao Claude sở hữu L1; Codex không sửa hoặc tiếp RE L1."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "CAMP306-0001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 14227,
+      "sha256": "920f0d55e8efb0657693f507df02b6f1fdb9a88787835d57ee3410c3301e4262"
+    },
+    {
+      "id": "CAMP306-0002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3556,
+      "sha256": "1d1f707d265d348f7962a1e4e5af88cf6df2678225bc2b066d097c4620dde069"
+    },
+    {
+      "id": "CAMP306-0003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 261517,
+      "sha256": "f7fb7ff0e224d499cb460e03dc75fa9949c7490df821a774d73a1979fc48e920"
+    },
+    {
+      "id": "CAMP306-0004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 156103,
+      "sha256": "fedb40a7a8dcfbc61d6e93a8253d6d76299eadf1c3e7722170f5ada9b8a32baa"
+    },
+    {
+      "id": "CAMP306-0005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82917,
+      "sha256": "3fa60113d52c2c6cd7eddc27f2fd557de49e36b5438a16b7941e3fee10e38caa"
+    },
+    {
+      "id": "CAMP306-0006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 43479,
+      "sha256": "5755d47d565c0fc1661b16ff10ffcee21068d7b31529531797400d713357e763"
+    },
+    {
+      "id": "CAMP306-0007",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/l10n-claude-owner.json",
+      "bytes": 1105,
+      "sha256": "6f9739bd33d5ded92890dc594ca812d69011a81ad56c556f19d490a1e81b2fb1"
+    },
+    {
+      "id": "CAMP306-0008",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-camp08-boundary.json",
+      "bytes": 7594,
+      "sha256": "c8fbe9018eed3a5b97e5c7e67fc119e67bf41b4b1e0b4566fedf8bfeeab867c6"
+    },
+    {
+      "id": "CAMP306-0009",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 274256,
+      "sha256": "43885e0a7726595322ded7c19aa37630a1f83ae1b82b49798d8da327be7cc50d"
+    },
+    {
+      "id": "CAMP306-0010",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 55712,
+      "sha256": "4d7a2aa31ef9d975097a708dbe32e6a9f3cad5415475c0a45665cc580838ea2b"
+    },
+    {
+      "id": "CAMP306-0108",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-c2s122-native-r2/native/raw-seal.json",
+      "bytes": 15904,
+      "sha256": "898e2fbd6b07224b902efb4058d7de862142fe756481a0ca13a2998f737eaf89"
+    },
+    {
+      "id": "CAMP306-0115",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-c2s122-native-r2/native122-verification.json",
+      "bytes": 3645,
+      "sha256": "7328e5e4049fd0ce5423cdddef81296e558a22a75b16e042399b2910a6bf2924"
+    },
+    {
+      "id": "CAMP306-0123",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-c2s122-native-r2/writer-byte-control.json",
+      "bytes": 550,
+      "sha256": "bbced96afabc596f9ca085de7f7377f47ccd4ce89277e6f05c5f9ae9632ed4b1"
+    },
+    {
+      "id": "CAMP306-0139",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-c2s122-r1/next-batch-boundary.json",
+      "bytes": 788,
+      "sha256": "a23253168a09f2a007c72e056d2b5067f5c46954ea244c56918e818545cdb85f"
+    },
+    {
+      "id": "CAMP306-0141",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-c2s122-r1/reuse.json",
+      "bytes": 1685,
+      "sha256": "44275b800610708c00b8164d9b5e8ce019e9f81dd82eaadcea2ee8d892c99f7d"
+    },
+    {
+      "id": "CAMP306-0142",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-c2s122-r1/static-summary.json",
+      "bytes": 3235,
+      "sha256": "f3d03c5a932e3b9c6360f3a5d6f517ee1551347a759c527cd30be72a44955f0a"
+    },
+    {
+      "id": "CAMP306-0149",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-docs-precheck.txt",
+      "bytes": 198,
+      "sha256": "d28eb367221e71ae04870e61872844132a530e364113387bacbaa1d78cbbbc47"
+    },
+    {
+      "id": "CAMP306-0181",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-seed-native-r1/cache-verification.json",
+      "bytes": 1035,
+      "sha256": "e3991e3c609d68582db214310d6d2c29ea44f7abc69afff943c8ff39ae26c8f5"
+    },
+    {
+      "id": "CAMP306-0182",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-seed-native-r1/camp08-seed-getter-verification.json",
+      "bytes": 554,
+      "sha256": "8d64138e8cc29a2554b37357db751b6f39a843b455df3e0fa76f13022db9e9ba"
+    },
+    {
+      "id": "CAMP306-0183",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-seed-native-r1/camp08-seed-native-verification.json",
+      "bytes": 126399,
+      "sha256": "182f925920fc50dfbb8802ea467574ea37debed5aef31afbc2c25d93cfaf2a22"
+    },
+    {
+      "id": "CAMP306-0192",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-seed-native-r1/initial-unknown-flags.json",
+      "bytes": 5732,
+      "sha256": "c3b35603994a1370968aa24e7a79fe3ff7310be12a25e19ed04693762f7431af"
+    },
+    {
+      "id": "CAMP306-0256",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-seed-native-r1/native/raw-seal.json",
+      "bytes": 12625,
+      "sha256": "f30d8c13f1d0564a9e471750284bf68c0abec748368d274dbc072156a348949f"
+    },
+    {
+      "id": "CAMP306-0303",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-strongbox-native-r1/failed-native-observation.json",
+      "bytes": 1061,
+      "sha256": "00e2b96315c7509d3f93da3e48dce9746959239b5fe5491b8665e30275187daa"
+    },
+    {
+      "id": "CAMP306-0383",
+      "kind": "local",
+      "path": "local/research/codex/g1-camp08-strongbox-native-r1/native/raw-seal.json",
+      "bytes": 15909,
+      "sha256": "80bde3a6885d5b019bbfaa589b732798885231a20a93c0e82ae4d9ee3be6c07a"
+    },
+    {
+      "id": "CAMP306-0397",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-terrain-survey-r1/Camp08.json",
+      "bytes": 14847,
+      "sha256": "e04a8df312232ccd14cfe876f8151b6ec259475b5cb48044614fb2f5a5c032e5"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/f20dcd68a3c0c7621273ed514e8753de29d2bfd6067cd1ad908334ec9974f066.jsonl",
+      "sha256": "f20dcd68a3c0c7621273ed514e8753de29d2bfd6067cd1ad908334ec9974f066",
+      "bytes": 3611,
+      "count": 19,
+      "files_bytes": 156712
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-native-r2",
+      "path": "local/evidence-manifests/93f60e00bbc16e64a9f430eb5489dbae14134a7c363791936abadd69f03428cc.jsonl",
+      "sha256": "93f60e00bbc16e64a9f430eb5489dbae14134a7c363791936abadd69f03428cc",
+      "bytes": 22811,
+      "count": 107,
+      "files_bytes": 271877830
+    },
+    {
+      "run": "local/research/codex/g1-camp08-c2s122-r1",
+      "path": "local/evidence-manifests/419ad12477d25dcd48b8e6c78048106f22b8faf22d9e0073225b2d6151740c14.jsonl",
+      "sha256": "419ad12477d25dcd48b8e6c78048106f22b8faf22d9e0073225b2d6151740c14",
+      "bytes": 4193,
+      "count": 21,
+      "files_bytes": 113652
+    },
+    {
+      "run": "local/research/codex/g1-camp08-seed-native-r1",
+      "path": "local/evidence-manifests/db72747f49b4e59f8421d70014fcd7042ffb6947e0af7ab41142a53f52bb54e7.jsonl",
+      "sha256": "db72747f49b4e59f8421d70014fcd7042ffb6947e0af7ab41142a53f52bb54e7",
+      "bytes": 25769,
+      "count": 123,
+      "files_bytes": 269007625
+    },
+    {
+      "run": "local/research/codex/g1-camp08-source-r1",
+      "path": "local/evidence-manifests/420baf63ee80fe5a68968739ea0b44f9f4dfea26d53d43c64a572e4f5005f854.jsonl",
+      "sha256": "420baf63ee80fe5a68968739ea0b44f9f4dfea26d53d43c64a572e4f5005f854",
+      "bytes": 2472,
+      "count": 12,
+      "files_bytes": 91862107
+    },
+    {
+      "run": "local/research/codex/g1-camp08-strongbox-native-r1",
+      "path": "local/evidence-manifests/2aa5da3b2adceb4653808c7c6f30a5df1db1770821926d682195372d4d5c4428.jsonl",
+      "sha256": "2aa5da3b2adceb4653808c7c6f30a5df1db1770821926d682195372d4d5c4428",
+      "bytes": 22722,
+      "count": 105,
+      "files_bytes": 271825410
     }
   ]
 }

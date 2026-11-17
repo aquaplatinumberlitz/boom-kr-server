@@ -127,15 +127,6 @@
       "limits": "Auditnotgate; historymechanicalchecker notsemanticacceptance."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP164-mode-preset-blocker.json",
-      "bytes": 386501,
-      "sha256": "3b3756571bd409246993b7a27b33462c1d96004ad00fa780e8e1565721938636",
-      "count": 1546
-    }
-  ],
   "delta": {
     "added": [
       "Actualcommittedmodepresetfirstclock/guestBackrejoinnativeproof plus2explicitpartialinputblockers.",
@@ -242,6 +233,204 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP164twofailedpartialinputruns/nativeboundedproof/AUD049/PR234merge/currentmodepromotiongap/nextinputtrace syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r1/alignment-getter-verification.json",
+      "bytes": 419,
+      "sha256": "93b0c866a4c36150fe8f533318f62aa07984fbb87f84d414acbfebcc80df400f"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r1/alignment-snapshots.json",
+      "bytes": 30247,
+      "sha256": "aa24a27cbbed5f818d2dbedad2973f7f711dae7c99f82f34dab853c263cc9850"
+    },
+    {
+      "id": "RUN-00690",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r1/partial-native-verification.json",
+      "bytes": 5171,
+      "sha256": "7d2899979807d80807fa7d85bab3e16b7d01893b98c0acdef7c4da7e0308d575"
+    },
+    {
+      "id": "RUN-00691",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r1/partial-observation.json",
+      "bytes": 670,
+      "sha256": "5fbbf148b9362283e31bcff617d990865dbe471bb7d0be4b31bbde20f5b6b602"
+    },
+    {
+      "id": "RUN-00692",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r1/partial-verification.json",
+      "bytes": 1197,
+      "sha256": "d8f282e27dcb18a0f08e3f107a52f265865e46fc36d5bade6f6a0b4ac8bc370b"
+    },
+    {
+      "id": "RUN-00695",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r1/raw-seal.json",
+      "bytes": 136061,
+      "sha256": "d26a70f9161ef1e6e32282ff150a0e5f244707e0548680fa0fe5f936b09ba67f"
+    },
+    {
+      "id": "RUN-00749",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/alignment-getter-verification.json",
+      "bytes": 418,
+      "sha256": "130def5b5af93eefa74c6237d2be1f4a0764c19c747b819b391873f241d478fa"
+    },
+    {
+      "id": "RUN-00750",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/alignment-snapshots.json",
+      "bytes": 9133,
+      "sha256": "5d9407f2342b725915a5ca46c33eb36d1022845681b8a9dd14579a13c12c729c"
+    },
+    {
+      "id": "RUN-00751",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/analysis-corrections.json",
+      "bytes": 996,
+      "sha256": "3dd2d0791cb9dfa744c92c726af72f6886504183491a7371653a5b6f35db17c1"
+    },
+    {
+      "id": "RUN-00752",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00756",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/cp164-snapshot/docs/PLAN.md",
+      "bytes": 34031,
+      "sha256": "282a7d3d580a522f5013569320023a36c99e5e51584f2a2c59135735aeb095ab"
+    },
+    {
+      "id": "RUN-00757",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/cp164-snapshot/docs/PROTOCOL.md",
+      "bytes": 490082,
+      "sha256": "cbc46b721b5ddd546cb67daf3a6c31df2847e3a650209d367395cd45e9e8d943"
+    },
+    {
+      "id": "RUN-00758",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/cp164-snapshot/docs/RESEARCH.md",
+      "bytes": 31150,
+      "sha256": "f204396c145d7f515f98217a33acd166312f47ca2824043161100683e1f33ead"
+    },
+    {
+      "id": "RUN-00759",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/cp164-snapshot/docs/evidence/checkpoints/audits/AUD049.json",
+      "bytes": 6499,
+      "sha256": "28e441c2a1d665de3b2d831a2fca0b720ef7736701269db5ead96afdb2e24c61"
+    },
+    {
+      "id": "RUN-01459",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "944b2582db8545b5c5b654880d1c439e928578020ffec06e0d2108ab86569bad"
+    },
+    {
+      "id": "RUN-01470",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "546bc7a056238833c88e048d4e63662c474e99899055d5010ff8d2204fc3008b"
+    },
+    {
+      "id": "RUN-01473",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/partial-native-verification.json",
+      "bytes": 5171,
+      "sha256": "c675f0ab9d9e14a73c80d6e4cd9f55c4a88244f9ab3729277e262dc646647984"
+    },
+    {
+      "id": "RUN-01474",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/partial-observation.json",
+      "bytes": 1024,
+      "sha256": "5c35cb5248a5ce62f7c5a61afb03b2e5dc8f283e2af336e056b06323225497c7"
+    },
+    {
+      "id": "RUN-01475",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/partial-verification.json",
+      "bytes": 1202,
+      "sha256": "4dae06392ac71711b5cf727d19fd35c38587e2c387affdad8748df5890ef88c8"
+    },
+    {
+      "id": "RUN-01477",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/raw-seal.json",
+      "bytes": 139666,
+      "sha256": "f356196e07ef18af9a7e3533a6d55fb60b03ec55b12badc9130fde917201455b"
+    },
+    {
+      "id": "RUN-01484",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/runtime-source/server/probe_service.py",
+      "bytes": 99356,
+      "sha256": "b8208ba012fa5609942712f0d1c88de857f9527c3985c3dc41815dad6a6dda15"
+    },
+    {
+      "id": "RUN-01525",
+      "kind": "local",
+      "path": "local/research/codex/mode-preset-smoke-r2/server-source-reuse.json",
+      "bytes": 11373,
+      "sha256": "1e93c5b739b5a8370ca6a93a8e399474083d3ebaf214b045361c5b65ab6936f9"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/mode-preset-smoke-r1",
+      "path": "local/evidence-manifests/bb319037f6793e33c0fe0f2be51cbffbd0a030a51a54bbcae3037545cd8c30c7.jsonl",
+      "sha256": "bb319037f6793e33c0fe0f2be51cbffbd0a030a51a54bbcae3037545cd8c30c7",
+      "bytes": 148319,
+      "count": 741,
+      "files_bytes": 93214637
+    },
+    {
+      "run": "local/research/codex/mode-preset-smoke-r2",
+      "path": "local/evidence-manifests/e1862b1103f72c59fc737a55e539a64f904e386b8d5e103cb4f65943987dba3e.jsonl",
+      "sha256": "e1862b1103f72c59fc737a55e539a64f904e386b8d5e103cb4f65943987dba3e",
+      "bytes": 153588,
+      "count": 767,
+      "files_bytes": 93144229
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/f8487c64156d290badfa72dc673f27e27685dd303001a0113340dfc9bb7be4c3.jsonl",
+      "sha256": "f8487c64156d290badfa72dc673f27e27685dd303001a0113340dfc9bb7be4c3",
+      "bytes": 1860,
+      "count": 10,
+      "files_bytes": 197140
+    },
+    {
+      "run": "local/research/codex/balanced-eight-r1",
+      "path": "local/evidence-manifests/97fa0d8cecdb1fa5feacf599914e7b6211034c42a7f62cc78baa9dceeb362485.jsonl",
+      "sha256": "97fa0d8cecdb1fa5feacf599914e7b6211034c42a7f62cc78baa9dceeb362485",
+      "bytes": 454,
+      "count": 2,
+      "files_bytes": 495
+    },
+    {
+      "run": "local/research/codex/team-mode-reset-r4",
+      "path": "local/evidence-manifests/34af17b7a67c2e4ac9090d5faabe83bffb6f9b0293ba5a3d4892c7da1f2f9ffc.jsonl",
+      "sha256": "34af17b7a67c2e4ac9090d5faabe83bffb6f9b0293ba5a3d4892c7da1f2f9ffc",
+      "bytes": 864,
+      "count": 4,
+      "files_bytes": 254773
     }
   ]
 }

@@ -120,15 +120,6 @@
       "limits": "Không chứng nhận ngữ nghĩa hay gate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP310-l10n-949x.json",
-      "bytes": 14403,
-      "sha256": "3640105bbfed1360e04716c0787d70a73a5a79c559ab689ccb653c028463179b",
-      "count": 65
-    }
-  ],
   "delta": {
     "added": [
       "Bản vá 949x, công cụ chuyển dữ liệu/font, kết quả native ba ngôn ngữ, chữ trộn và nhập liệu."
@@ -213,6 +204,334 @@
       "path": "docs/HISTORY.md",
       "state": "unchanged",
       "reason": "README chỉ thay dòng mốc mới nhất; mốc CP309 của G1 vẫn nêu trong README."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "L1X310-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3880,
+      "sha256": "07a5a60fb04c128e78d1b323405b42ff401d7f3a9a16fe25e1d22f5ee97205df"
+    },
+    {
+      "id": "L1X310-0002",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 82892,
+      "sha256": "a16c0e42aff88f4232ab6d603b9e2509afd32fb241ad9842def67f1ef69711d6"
+    },
+    {
+      "id": "L1X310-0003",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 67847,
+      "sha256": "ca012bdd9f717e3ce7517c36bd7247a8b29326a2364fe523aaf8263983ac5dc3"
+    },
+    {
+      "id": "L1X310-0004",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 44255,
+      "sha256": "04acc7c812959d43516766c1853f87ea3f32dabdf41a05a0d22a4b53926b9a65"
+    },
+    {
+      "id": "L1X310-0005",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 262629,
+      "sha256": "c5019bcd67ef06f8dc914bf66ed750288baf0ba14e93f70ddeabfa20b3abb298"
+    },
+    {
+      "id": "L1X310-0006",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 275463,
+      "sha256": "335bdf75ce263c1150bc5a6b2cbd4abff59c8602bd4ee59b187f40bd09bfc1b1"
+    },
+    {
+      "id": "L1X310-0007",
+      "kind": "repository",
+      "path": "docs/content/client-language.md",
+      "bytes": 51069,
+      "sha256": "34122ceaefa4de30d761cfffd7fb76d60fcd45ff170579eca3c170725e2c16d3"
+    },
+    {
+      "id": "L1X310-0008",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-static.json",
+      "bytes": 3530,
+      "sha256": "87192bc86f3515b370d7ccdf994f85ac4259465907db501bd0ee9e8eb590653a"
+    },
+    {
+      "id": "L1X310-0009",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-mix-02.json",
+      "bytes": 3036,
+      "sha256": "89f457ad75aca506258af4a5065609112136308029a87569ad875dca82093262"
+    },
+    {
+      "id": "L1X310-0010",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-vi-04.json",
+      "bytes": 4471,
+      "sha256": "4e43ec652d10cef654d1a1fa2e9e9ab88b3f6d555c327ce42a0534bebb8515b2"
+    },
+    {
+      "id": "L1X310-0011",
+      "kind": "repository",
+      "path": "docs/evidence/l10n-utf8-949x-en-05.json",
+      "bytes": 3111,
+      "sha256": "3a20edc2620369f85de12fe3f9ab0dd6aa8f5df28b7af78db558a7389eea2904"
+    },
+    {
+      "id": "L1X310-0012",
+      "kind": "repository",
+      "path": "tools/l10n_949x.py",
+      "bytes": 14367,
+      "sha256": "94e62cdc5850b9045ba3ce13777e291c553c462ff19bc8957c5a74eb1a995f72"
+    },
+    {
+      "id": "L1X310-0013",
+      "kind": "repository",
+      "path": "tools/l10n_949x_hook.c",
+      "bytes": 10181,
+      "sha256": "776bda9e1c408d984a8c09c4d4720b426ce49ca0a996b4ffb859aed62af19d6b"
+    },
+    {
+      "id": "L1X310-0014",
+      "kind": "repository",
+      "path": "tools/l10n_949x_patch.py",
+      "bytes": 7843,
+      "sha256": "c7c21fe94b8427d24d8845c4add3e63a7fbb7c66e9570e2d8e384dab271d1529"
+    },
+    {
+      "id": "L1X310-0015",
+      "kind": "repository",
+      "path": "tools/l10n_unicode_input.c",
+      "bytes": 1537,
+      "sha256": "fc1f430ca5b9f17ff779e44c2a18d9eff5166e1fc0c1814af9965bc50414ef8d"
+    },
+    {
+      "id": "L1X310-0016",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/l10n-utf8-followup.json",
+      "bytes": 1572,
+      "sha256": "391b4656d56fa4d7ae965d6ccd585970cd2a9757e689d28e87bd0309073d1090"
+    },
+    {
+      "id": "L1X310-0017",
+      "kind": "local",
+      "path": "local/ida/createdlg.c",
+      "bytes": 36806,
+      "sha256": "216ecdb6d7a65c35faabc34147c8a38606a9b5cdb64571a32b3ce756d8cd3006"
+    },
+    {
+      "id": "L1X310-0018",
+      "kind": "local",
+      "path": "local/ida/createroom.c",
+      "bytes": 85528,
+      "sha256": "58c31b9d96388b745a5b399ea1279b1106448e3a9890c4318e48bcb24def2815"
+    },
+    {
+      "id": "L1X310-0019",
+      "kind": "local",
+      "path": "local/probe/t.c",
+      "bytes": 6596,
+      "sha256": "3c0d927d4ef029e1066307b683a2481c6698971b2e398b4f77a0e1725e4b1d07"
+    },
+    {
+      "id": "L1X310-0020",
+      "kind": "local",
+      "path": "local/probe/tin3.c",
+      "bytes": 10385,
+      "sha256": "1bbca4623f8d78c504f02258a367ce654949639ee32722bc6bf92d5f6141e0b0"
+    },
+    {
+      "id": "L1X310-0021",
+      "kind": "local",
+      "path": "local/probe/input-log.txt",
+      "bytes": 205,
+      "sha256": "298b8878375e194a8a2b37c40171336a419b78b4543494e68027216c8988feaa"
+    },
+    {
+      "id": "L1X310-0026",
+      "kind": "local",
+      "path": "local/runs/mix-02/native/run.json",
+      "bytes": 54265,
+      "sha256": "ea0aad3282cdf80c30743b224d8f34eb48f8584c5fddc03747cfed9b0be4fc30"
+    },
+    {
+      "id": "L1X310-0032",
+      "kind": "local",
+      "path": "local/patch-949x.v2/patch.json",
+      "bytes": 1181,
+      "sha256": "50104242a5fde730598bfb4963b5d7003f82a0e688e0318b30f8cd3f6b90a9b2"
+    },
+    {
+      "id": "L1X310-0035",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/run.json",
+      "bytes": 41035,
+      "sha256": "b0cfc51dd173d7da4c1334da8c6190dea897e6a8fcb1f31f1371ee55416d041d"
+    },
+    {
+      "id": "L1X310-0038",
+      "kind": "local",
+      "path": "local/runs/vi-04/native/B/room-late.png",
+      "bytes": 182770,
+      "sha256": "9a16697056cbd917c3d918fa1bbcc7e7a2618dbb4228a584f046a3743d17ab27"
+    },
+    {
+      "id": "L1X310-0045",
+      "kind": "local",
+      "path": "local/patch-949x/patch.json",
+      "bytes": 1399,
+      "sha256": "f39221ada74e669bd90274cf93369190809f7219a2fb742244628c26d9baf182"
+    },
+    {
+      "id": "L1X310-0046",
+      "kind": "local",
+      "path": "local/l10n-data3/vi-949x/convert-report.json",
+      "bytes": 896,
+      "sha256": "d380f3a7fb9fe2d9f6f20a71d7addbcabf8edd949423cabdb4e96d4e9cfc1260"
+    },
+    {
+      "id": "L1X310-0047",
+      "kind": "local",
+      "path": "local/l10n-data3/vi-utf8/build-report.json",
+      "bytes": 17878,
+      "sha256": "d67a646ce3176ca0ab67e82f89365effbd514e32c68b1ad77c8f5bc28006efd5"
+    },
+    {
+      "id": "L1X310-0048",
+      "kind": "local",
+      "path": "local/tools/c2s_frames.py",
+      "bytes": 2722,
+      "sha256": "ba5899b44d87dac0ae4b33ca00fe8117eaa1aa626aba9d918b546c4edfcf1298"
+    },
+    {
+      "id": "L1X310-0051",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/run.json",
+      "bytes": 40856,
+      "sha256": "24fdd6cc514f2a5e54bd8a57ddceea7cfd99c41aeb012ba7ce02be4b6df0a1c7"
+    },
+    {
+      "id": "L1X310-0054",
+      "kind": "local",
+      "path": "local/runs/en-05/native-raw-export/A/chat-typed.png",
+      "bytes": 178820,
+      "sha256": "d84db6a0dab0c1106129fe2d9a2623ab9aefe2c624fb7c4cc9f33b6a0d00c3b6"
+    },
+    {
+      "id": "L1X310-0058",
+      "kind": "local",
+      "path": "local/l10n-data3/en-949x/convert-report.json",
+      "bytes": 760,
+      "sha256": "f71604fc70589475f4f67721e29724a1acbd54ddcd0eb2581a9a515014942e11"
+    },
+    {
+      "id": "L1X310-0059",
+      "kind": "local",
+      "path": "local/l10n-data3/en-utf8/build-report.json",
+      "bytes": 6957,
+      "sha256": "d8b5508cfee6cca32604ea711bcb23fc75108944ccdb1793b86bbc0e2c7a5370"
+    },
+    {
+      "id": "L1X310-0060",
+      "kind": "local",
+      "path": "local/research/claude/append_cp310_l1.py",
+      "bytes": 10404,
+      "sha256": "30d3a27c919c4bd05d3306203cbe2e42445776b3c686a18e2ab5262dc7c575c3"
+    },
+    {
+      "id": "L1X310-0064",
+      "kind": "local",
+      "path": "local/runs/vi-01/native/run.json",
+      "bytes": 268093,
+      "sha256": "5f0c892362f04f7ac0e4e272342dd259a1713e2fbec6aff9794b7ad790dea7b2"
+    },
+    {
+      "id": "L1X310-0065",
+      "kind": "local",
+      "path": "local/runs/vi-01/native/A/dialog-ready.png",
+      "bytes": 226576,
+      "sha256": "019b3eeb5e9944209392ce522a3dd6df69a910fc2a40de5fc83c81c072aacbcd"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/fonts-949x",
+      "path": "local/evidence-manifests/cbec630d37714226101d64b284d90329339e3ad310c599cf3fcb0a448ad228ab.jsonl",
+      "sha256": "cbec630d37714226101d64b284d90329339e3ad310c599cf3fcb0a448ad228ab",
+      "bytes": 400,
+      "count": 2,
+      "files_bytes": 5898214
+    },
+    {
+      "run": "local/runs/mix-02",
+      "path": "local/evidence-manifests/4650c2521d239f0006f4d8f5f9c3e95b16711a44a38eb5eef500ff81efcfac3f.jsonl",
+      "sha256": "4650c2521d239f0006f4d8f5f9c3e95b16711a44a38eb5eef500ff81efcfac3f",
+      "bytes": 564,
+      "count": 3,
+      "files_bytes": 31283
+    },
+    {
+      "run": "local/runs/mix-02/native",
+      "path": "local/evidence-manifests/43cca2d81546c192669e09dcbf03f353f0051668f19b70a2462bbea67d6bd7fd.jsonl",
+      "sha256": "43cca2d81546c192669e09dcbf03f353f0051668f19b70a2462bbea67d6bd7fd",
+      "bytes": 768,
+      "count": 4,
+      "files_bytes": 762025
+    },
+    {
+      "run": "local/runs/vi-04",
+      "path": "local/evidence-manifests/3b825d720d8290cffac8bba7c01ec94b94bd5954dff4342cad23a7abbc8ee04a.jsonl",
+      "sha256": "3b825d720d8290cffac8bba7c01ec94b94bd5954dff4342cad23a7abbc8ee04a",
+      "bytes": 560,
+      "count": 3,
+      "files_bytes": 33843
+    },
+    {
+      "run": "local/runs/vi-04/native",
+      "path": "local/evidence-manifests/628e7e2b243db041ebbc4162b6f6a060600a5109d804e8c90ba54b184b14138d.jsonl",
+      "sha256": "628e7e2b243db041ebbc4162b6f6a060600a5109d804e8c90ba54b184b14138d",
+      "bytes": 948,
+      "count": 5,
+      "files_bytes": 530820
+    },
+    {
+      "run": "local/runs/vi-04/r1",
+      "path": "local/evidence-manifests/da5ed234e7191f8ac33ab7cde7e652d4f331b43434d4bc407adaeac83408d687.jsonl",
+      "sha256": "da5ed234e7191f8ac33ab7cde7e652d4f331b43434d4bc407adaeac83408d687",
+      "bytes": 410,
+      "count": 2,
+      "files_bytes": 331667
+    },
+    {
+      "run": "local/runs/en-05",
+      "path": "local/evidence-manifests/93a6d3d83595df2cf32743876d873f1fd127554b807bbee281a863b5afb0d487.jsonl",
+      "sha256": "93a6d3d83595df2cf32743876d873f1fd127554b807bbee281a863b5afb0d487",
+      "bytes": 575,
+      "count": 3,
+      "files_bytes": 32927
+    },
+    {
+      "run": "local/runs/en-05/native-raw-export",
+      "path": "local/evidence-manifests/b55fe800ab9ca442874c8cdf0ab2d18778a6b3ea5ffb515337e18479ff0676e9.jsonl",
+      "sha256": "b55fe800ab9ca442874c8cdf0ab2d18778a6b3ea5ffb515337e18479ff0676e9",
+      "bytes": 823,
+      "count": 4,
+      "files_bytes": 378317
+    },
+    {
+      "run": "local/runs",
+      "path": "local/evidence-manifests/a95ae1e7577c2f216d297ed776ecfae21c447919eca4ec8d4368e9bfa5c9ce06.jsonl",
+      "sha256": "a95ae1e7577c2f216d297ed776ecfae21c447919eca4ec8d4368e9bfa5c9ce06",
+      "bytes": 545,
+      "count": 3,
+      "files_bytes": 11117
     }
   ]
 }

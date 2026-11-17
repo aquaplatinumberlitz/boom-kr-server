@@ -134,15 +134,6 @@
       "limits": "No semantic/gatecertification bycheckers."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP134-shared-cascade-cycles.json",
-      "bytes": 339287,
-      "sha256": "da0998582a988db4772d45d80cfd2c2c11bf320b7e86ac299600ea3da3966638",
-      "count": 1330
-    }
-  ],
   "delta": {
     "added": [
       "Same-runactualsharedcascade+bothdeath/result/return/resettwoepochs/currentIDskeys/seed/stats, notcrossruncomposition."
@@ -222,6 +213,160 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP134twoactualsharedcycles/nativeoutcomes/reset/scope/currentloadstallgap/issue/catalog synced, oldcomplete/gatesunchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/actor-fields.json",
+      "bytes": 3439382,
+      "sha256": "778a3d7c45639d7f28f7e0e147d727e08fd3e0fb0ddebf769e1c962a39ef1ab0"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/cp134-snapshot/docs/PLAN.md",
+      "bytes": 32591,
+      "sha256": "781f88604de766d60eeeaad53bc7e1f174aa233a8885144af49a3fbf8fd1fa31"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/cp134-snapshot/docs/PROTOCOL.md",
+      "bytes": 404494,
+      "sha256": "268d104f1d3e24412baf2df0dc8377fa3ed8d4eb31741493a5a222a1af933ad8"
+    },
+    {
+      "id": "RUN-01219",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/cycles/run.json",
+      "bytes": 901322,
+      "sha256": "76f9fd1d4e3dc4b26e6e5b44952bd4d44c0b404b805ea7d82591e1e99d55d672"
+    },
+    {
+      "id": "RUN-01227",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/cycles-check.txt",
+      "bytes": 55,
+      "sha256": "5e1fe0bf4408df2cb8f3c04891dcb38279fbea5dd7d580f97db75f3fae87a0b9"
+    },
+    {
+      "id": "RUN-01229",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/cycles-verification.json",
+      "bytes": 117348,
+      "sha256": "7c568f48fe9a2cd6c4fb2e607ed5d3645838c55e15728ae2041aca62c07a49c0"
+    },
+    {
+      "id": "RUN-01231",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "f83b54c9b7a362a0c6e7d4c731efb7e7ab306f68e3db62d1f1b289540655803a"
+    },
+    {
+      "id": "RUN-01232",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/fields-check.txt",
+      "bytes": 33,
+      "sha256": "074546651af6df24f52bcce4d3445d907a1e7fd7990e094f0516ee67cebe6e3f"
+    },
+    {
+      "id": "RUN-01233",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/flag-check.txt",
+      "bytes": 54,
+      "sha256": "a106b241d6494a01ff31a35320e53f302a61c7b29b5998cf2bd427b7168d0f02"
+    },
+    {
+      "id": "RUN-01240",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "fb563b07a5d49ab207b1b12dc18c6d5aeba33649217af158ca04a39f17eb788b"
+    },
+    {
+      "id": "RUN-01241",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/native-153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "RUN-01243",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/native-packet-check.txt",
+      "bytes": 29,
+      "sha256": "56637eb762a4c67e1902bfaac3569810f081ddbfd3090963d9ff10a87dfdb729"
+    },
+    {
+      "id": "RUN-01250",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/raw-seal.json",
+      "bytes": 250568,
+      "sha256": "508bacb27d6567d0ff76ff94223ec83b51a19fe74a6ef32aa12445bfd0c948cf"
+    },
+    {
+      "id": "RUN-01282",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/runtime-preflight.json",
+      "bytes": 16366,
+      "sha256": "90cbb0bf2318bcd76cfe160503518d6aad6bebc98ae7030279abf8ba63fcd186"
+    },
+    {
+      "id": "RUN-01321",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/stat-reset-verification.json",
+      "bytes": 3384,
+      "sha256": "3cfe39aca873247d407498e1c86d4510cbcce87aad2cf4f353a08fcb8c807754"
+    },
+    {
+      "id": "RUN-01325",
+      "kind": "local",
+      "path": "local/research/codex/shared-cascade-cycles-r1/visual-review.json",
+      "bytes": 832,
+      "sha256": "447b8f57dc3323d65c28ed7c022f344bf7cd302889275e0c9b7b6bf1e4235c76"
+    },
+    {
+      "id": "RUN-01330",
+      "kind": "local",
+      "path": "local/research/codex/host-battle-exit-control-r1/server-tests.txt",
+      "bytes": 320,
+      "sha256": "6d5c33bc7edcf4050e4882f6ce2251bdd976b63c39e96333d3ca739c84d11ce4"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/shared-cascade-cycles-r1",
+      "path": "local/evidence-manifests/9cf335cd26274a2164455356a9052f21426bb3e2d9b059add2d1ffa8801ac1cb.jsonl",
+      "sha256": "9cf335cd26274a2164455356a9052f21426bb3e2d9b059add2d1ffa8801ac1cb",
+      "bytes": 268465,
+      "count": 1308,
+      "files_bytes": 62385841
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9044792cbf9a4776998b7bda60386a13f977a35603a82091e4307690e2433ec8.jsonl",
+      "sha256": "9044792cbf9a4776998b7bda60386a13f977a35603a82091e4307690e2433ec8",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 69865
+    },
+    {
+      "run": "local/research/codex/shared-cell-state-r1",
+      "path": "local/evidence-manifests/1b995fe80419a8c5caf725952c12456f5efafac0af5945310f4376a0a22797f9.jsonl",
+      "sha256": "1b995fe80419a8c5caf725952c12456f5efafac0af5945310f4376a0a22797f9",
+      "bytes": 481,
+      "count": 2,
+      "files_bytes": 480
     }
   ]
 }

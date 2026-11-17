@@ -32,6 +32,8 @@ jobs:
           tools.test_checkpoint_source_history
           tools.test_checkpoint_store
           tools.test_checkpoints
+          tools.test_checkpoint_evidence_lean
+          tools.test_local_retention
           tools.test_export_preset
           tools.test_four_bundle
           tools.test_issue_links

@@ -147,15 +147,6 @@
       "limits": "Receiverbranchblocked/newobservableonly;independentsourcefirsttwoaccountpositive/wrongbindingnext."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP220-auth-transport-controls.json",
-      "bytes": 52124,
-      "sha256": "05c2691c1fb7db7b3e35e4285ca45bbc7d2f48eae5acfeedc973b61368a35626",
-      "count": 200
-    }
-  ],
   "delta": {
     "added": [
       "2boundednativefollowups/no selectionobservable andindependentkernelTCPownershiptransportexperimentin2cases,102newrawpins.",
@@ -268,6 +259,148 @@
       "path": "docs/evidence/checkpoints/audits/AUD064.json",
       "state": "updated",
       "reason": "CP220batchfacts/limits/blockedreceiverandindependentnexttest/audit224/canonicalbacklinks synced;CP217–219records/audit history immutable."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH220-00002",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/getter-prefix.json",
+      "bytes": 1294,
+      "sha256": "2e958597bd21203df43d4ee68a25237390dda92a05730f3a4581ef71b4cde45a"
+    },
+    {
+      "id": "AUTH220-00003",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/receiver-assignment-candidates.json",
+      "bytes": 1519,
+      "sha256": "8676a703ee8d709769c839d2198e7a0f48f965284a20c2faefcf624fd153fa36"
+    },
+    {
+      "id": "AUTH220-00014",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-r1/verification.json",
+      "bytes": 2700,
+      "sha256": "eadc4b755ab7383bfdf2322e3531a0319c53ff50574486514ddecf40e27f50e6"
+    },
+    {
+      "id": "AUTH220-00071",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-receiver-watch-r1/verification.json",
+      "bytes": 1289,
+      "sha256": "143b11ea30046fd1a070edc3652cf39a3379f4d4a73f2c5b178048ab6a2078f8"
+    },
+    {
+      "id": "AUTH220-00128",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/driver-correction.json",
+      "bytes": 601,
+      "sha256": "e1fd0c86a8589cb1690694b1e6621e9c40f0e8f85fbfa1e3212da553b749c224"
+    },
+    {
+      "id": "AUTH220-00137",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/kernel-replay-r2/raw-seal.json",
+      "bytes": 1375,
+      "sha256": "12a8ce002b5543cc676da764f0b976977c5c379cafbafdcfc2305aa15af3f315"
+    },
+    {
+      "id": "AUTH220-00155",
+      "kind": "local",
+      "path": "local/research/codex/auth-tcp-replay-r1/verification.json",
+      "bytes": 7743,
+      "sha256": "00d462209b7708600a878cf1d349ece0509f0ee57e34d8eae0900498a7234dc0"
+    },
+    {
+      "id": "AUTH220-00160",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/RESEARCH.md",
+      "bytes": 43818,
+      "sha256": "bef0ce0425ee61be12fc107feac368e4f591fb7f8331d10894090490d276f414"
+    },
+    {
+      "id": "AUTH220-00161",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/cp220-snapshot/docs/evidence/checkpoints/audits/AUD064.json",
+      "bytes": 4845,
+      "sha256": "4733646d136ccbc262a999aa89ac06abf95d31cec686c1f3fd16eae5245bf0c2"
+    },
+    {
+      "id": "AUTH220-00167",
+      "kind": "local",
+      "path": "local/research/codex/auth-transport-controls-r1/manual-review.json",
+      "bytes": 2310,
+      "sha256": "eda4c0ac0101fd839cfb36643cec7ea14f5d0abaab8d4b33dd886fed1f1c9366"
+    },
+    {
+      "id": "AUTH220-00175",
+      "kind": "local",
+      "path": "local/research/codex/cp220-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH220-00176",
+      "kind": "local",
+      "path": "local/research/codex/cp220-docs-pre-audit.txt",
+      "bytes": 175,
+      "sha256": "0a23daeb52f1525231b86f1e4d61bb7cde4407afac5af906f11ca0f993563254"
+    },
+    {
+      "id": "AUTH220-00183",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue14-updated.json",
+      "bytes": 37017,
+      "sha256": "09ace2ed6c9f80aa391880ac3f66f3780146b59f862bcfaee432a156a3705d2d"
+    },
+    {
+      "id": "AUTH220-00186",
+      "kind": "local",
+      "path": "local/research/codex/cp220-issue285-updated.json",
+      "bytes": 10343,
+      "sha256": "bf0eb61e187c0a51c1cdaae0cbc0d3b0ddd78adae6c70ff42c5df03331f75bc4"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/dac07607764d55db9f1d8a1c373b8544ace1f1828d6f01ed9fa00752b0863e92.jsonl",
+      "sha256": "dac07607764d55db9f1d8a1c373b8544ace1f1828d6f01ed9fa00752b0863e92",
+      "bytes": 5556,
+      "count": 30,
+      "files_bytes": 6822264
+    },
+    {
+      "run": "local/research/codex/auth-channel-receiver-r1",
+      "path": "local/evidence-manifests/cfb5b1260c58ec4ecc2cbdf77304ad745dab014638f894ffdd4467486bd1554f.jsonl",
+      "sha256": "cfb5b1260c58ec4ecc2cbdf77304ad745dab014638f894ffdd4467486bd1554f",
+      "bytes": 13495,
+      "count": 62,
+      "files_bytes": 3870749
+    },
+    {
+      "run": "local/research/codex/auth-channel-receiver-watch-r1",
+      "path": "local/evidence-manifests/69d24f3701779a6200a730f29533d0a314328fcb13c65219708f9ec98c7f7f9c.jsonl",
+      "sha256": "69d24f3701779a6200a730f29533d0a314328fcb13c65219708f9ec98c7f7f9c",
+      "bytes": 12817,
+      "count": 58,
+      "files_bytes": 2698436
+    },
+    {
+      "run": "local/research/codex/auth-tcp-replay-r1",
+      "path": "local/evidence-manifests/c36f070f9c01cdcba8d5f50f39a6b0fb1ba246c902de8017b98c1404464e63b8.jsonl",
+      "sha256": "c36f070f9c01cdcba8d5f50f39a6b0fb1ba246c902de8017b98c1404464e63b8",
+      "bytes": 5623,
+      "count": 27,
+      "files_bytes": 338793
+    },
+    {
+      "run": "local/research/codex/auth-transport-controls-r1",
+      "path": "local/evidence-manifests/a07be63cd54b9f8d3e97d1b1a6666238590e784c15444a2cac292d60f0015122.jsonl",
+      "sha256": "a07be63cd54b9f8d3e97d1b1a6666238590e784c15444a2cac292d60f0015122",
+      "bytes": 2162,
+      "count": 9,
+      "files_bytes": 1508285
     }
   ]
 }

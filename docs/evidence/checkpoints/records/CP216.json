@@ -140,15 +140,6 @@
       "limits": "Field36echoonly; backendpolicyfuture, nofullauth/gateclosure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP216-auth-channel-echo.json",
-      "bytes": 121970,
-      "sha256": "1981991c73398d40b1a0fb26bb2bc551b4f5de2d4ef151729a7feff1624cbb9f",
-      "count": 443
-    }
-  ],
   "delta": {
     "added": [
       "C2S6producer/count1layout/nativeauthfield36echo throughsameplayercache and26nativefieldreads/controlframes.",
@@ -265,6 +256,173 @@
       "path": "docs/evidence/checkpoints/audits/AUD063.json",
       "state": "updated",
       "reason": "CP216sourcefield36echo/layout/limits andnextpolicy/backlinks/readiness/periodicAUD063through216,next220 syncedbeforecomplete; immutablehistory/rawkept."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH216-00068",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/aux-marker/delta.json",
+      "bytes": 854,
+      "sha256": "666673e6d0b6b6772be9a731c989116058969a8069a7ea8b9a4c171c07eb5e11"
+    },
+    {
+      "id": "AUTH216-00071",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/aux-marker/raw-seal.json",
+      "bytes": 13041,
+      "sha256": "33ac18034283f6cc2ae5ae923712c7a2e6b32693677be549af507832ba16f321"
+    },
+    {
+      "id": "AUTH216-00186",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/aux-static-locators.json",
+      "bytes": 1493,
+      "sha256": "3e0b9704b5824725b0f3131044c00c2791780bef333ba2d84e102002c3fd9afa"
+    },
+    {
+      "id": "AUTH216-00187",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/bounded-analysis-notes.json",
+      "bytes": 776,
+      "sha256": "d91a2ef9d4c7ff32ece65136dbb221a6c5c5ec08d0dbd02df33af04934119c24"
+    },
+    {
+      "id": "AUTH216-00188",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/channel-callsite-locator.json",
+      "bytes": 833,
+      "sha256": "2c4fecc6dfc9b4ba155d4981db771f4c80ecb6a9f85e9e0f2f4146263eedcf3e"
+    },
+    {
+      "id": "AUTH216-00191",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/cp216-snapshot/docs/PLAN.md",
+      "bytes": 85755,
+      "sha256": "879245e8eb90de645b9d4bff8226ebbb850e1027f1ad3bf32de89314d6d34fe6"
+    },
+    {
+      "id": "AUTH216-00193",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/cp216-snapshot/docs/RESEARCH.md",
+      "bytes": 43666,
+      "sha256": "0fdabe2d4b7d7df8557dcb4fe34c350bef765331069859517c3f0964bc74bb04"
+    },
+    {
+      "id": "AUTH216-00195",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/cp216-snapshot/docs/evidence/checkpoints/audits/AUD063.json",
+      "bytes": 5332,
+      "sha256": "15beded2e8ca8bcc2bb4bcc163675036c99c11c48d5d8035c26df8c266f1416c"
+    },
+    {
+      "id": "AUTH216-00201",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/echo-verification.json",
+      "bytes": 13075,
+      "sha256": "7ffef66ba94aa055f45dc73afb7d69333d88c0af83dcfa845145bd243ae8c80d"
+    },
+    {
+      "id": "AUTH216-00204",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/manual-review.json",
+      "bytes": 2234,
+      "sha256": "44a59d519f626541521bf69dbe52b4c8649ebb72fec5c21168d188f2b89ce7b7"
+    },
+    {
+      "id": "AUTH216-00212",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/native-request6-verification.json",
+      "bytes": 2075,
+      "sha256": "8c8cf9d5fbf95cb83d933c4c0b1d24679815bd33238a7bdb6c99b47abb02c81c"
+    },
+    {
+      "id": "AUTH216-00276",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/producer-baseline/raw-seal.json",
+      "bytes": 13456,
+      "sha256": "700944b3d64caa3f71f087ef16389cec732707ad129c9d9199fe9341c64e7d2d"
+    },
+    {
+      "id": "AUTH216-00389",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/producer-fill-locator.json",
+      "bytes": 2269,
+      "sha256": "447b7493a010a554bbfafe6040a9cd4d71f37b29f8b3e4eb99a43d60f158d7c6"
+    },
+    {
+      "id": "AUTH216-00390",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/producer-static-locators.json",
+      "bytes": 3405,
+      "sha256": "77df8538b068f9718e70091515405f2f58cd963f0640a7c9aea906f81684fb8e"
+    },
+    {
+      "id": "AUTH216-00393",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/retained-request6-comparison.json",
+      "bytes": 1595,
+      "sha256": "7206526a7bf03751eff04f24f51fc424da2cd73178b9ee82a0fbe39aa06dbccd"
+    },
+    {
+      "id": "AUTH216-00394",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/source-first-supplement.json",
+      "bytes": 754,
+      "sha256": "b5644ab53bdce50bd79e5906d92dd92f2115d5c201e9a0ac134487d370602f9d"
+    },
+    {
+      "id": "AUTH216-00395",
+      "kind": "local",
+      "path": "local/research/codex/auth-channel-binding-r1/source-first.json",
+      "bytes": 6038,
+      "sha256": "d2064fa6c1ffb651ac39ecb0ce31b235944d3b51f134b1bfd1759e8969202bca"
+    },
+    {
+      "id": "AUTH216-00424",
+      "kind": "local",
+      "path": "local/research/codex/cp216-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH216-00426",
+      "kind": "local",
+      "path": "local/research/codex/cp216-docs-pre-record.txt",
+      "bytes": 175,
+      "sha256": "97e824164212fbe6d9474dd7f8d77ba5af6039ca03fbeee2c66c8a03599948bc"
+    },
+    {
+      "id": "AUTH216-00431",
+      "kind": "local",
+      "path": "local/research/codex/cp216-issue14-updated.json",
+      "bytes": 36667,
+      "sha256": "4995f6dfab8c1c6ea44f45d43c6c5a125fa1c46360ecfe9b9169d743e81397ea"
+    },
+    {
+      "id": "AUTH216-00434",
+      "kind": "local",
+      "path": "local/research/codex/cp216-issue285-updated.json",
+      "bytes": 9993,
+      "sha256": "9f805e418e83533f419db42176f5eaeff2b989c3e8f09b0967fac40fe2c70b60"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/96406412a15049a5e3f7a104995c9bdcca14b0fcab881710ab24c717b21b3938.jsonl",
+      "sha256": "96406412a15049a5e3f7a104995c9bdcca14b0fcab881710ab24c717b21b3938",
+      "bytes": 5206,
+      "count": 28,
+      "files_bytes": 6761525
+    },
+    {
+      "run": "local/research/codex/auth-channel-binding-r1",
+      "path": "local/evidence-manifests/d7e0a1b02cd2aae3ea08916e9bb08a85f3ad2b2114318aa5af3ecb3271a2c703.jsonl",
+      "sha256": "d7e0a1b02cd2aae3ea08916e9bb08a85f3ad2b2114318aa5af3ecb3271a2c703",
+      "bytes": 90399,
+      "count": 394,
+      "files_bytes": 8270197
     }
   ]
 }

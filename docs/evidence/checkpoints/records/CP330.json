@@ -65,15 +65,6 @@
       "limits": "AUD138 closes no extra feature group; CP329 native scope unchanged and task453/G1/phase1 remain open."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP330-docs-correction.json",
-      "bytes": 5986,
-      "sha256": "d5d569dec6bf710949b0f98450136bd8ce6436e5902ef2ecd8e7260ed6c42ee8",
-      "count": 26
-    }
-  ],
   "delta": {
     "added": [
       "Correction CP330/AUD138 cho doc precheck khai sai và issue453 navigation."
@@ -180,6 +171,123 @@
       "path": "rust/crates/kr-service/src/bombs.rs",
       "state": "unchanged",
       "reason": "Không đổi runtime/code/binary đã nghiệm thu ở CP329."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "DOC330-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3663,
+      "sha256": "380528d7ff2f338e372c875ae21b034b825040838ece62f840f144b9eb5ccf42"
+    },
+    {
+      "id": "DOC330-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 269411,
+      "sha256": "3a8be5a66a0fc2af2b54f40f8816d83d8f8cb56d25ed83ac4fb55054a9dba7be"
+    },
+    {
+      "id": "DOC330-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 166261,
+      "sha256": "21994285a568eb8fb0cf0dd2f529c666f48b3c547ce4d4665cb19e6c7bbc625b"
+    },
+    {
+      "id": "DOC330-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 85563,
+      "sha256": "e5e7d95a319c74a64232949db0d952f3538c6a1d2ab0e3885152e0f08ff666dd"
+    },
+    {
+      "id": "DOC330-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45530,
+      "sha256": "94948a292c4014c95c838ff7780c8663b21a3f3362caaadcadc58579f5e08ae1"
+    },
+    {
+      "id": "DOC330-0006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD138.json",
+      "bytes": 2594,
+      "sha256": "7ed7f5df9cbdea96ed16ad1a4fa8df59acb091aae2667431b1f9d0781547b787"
+    },
+    {
+      "id": "DOC330-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+      "bytes": 2576,
+      "sha256": "99479e6afa98006ce2afbc994530889f27259fe40c1236e016b6e29d15f00404"
+    },
+    {
+      "id": "DOC330-0008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 333950,
+      "sha256": "923ac378f87bf25b352c95f78a4686b227a9f4d5892fd81860c7db220ce8a2f2"
+    },
+    {
+      "id": "DOC330-0009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 40613,
+      "sha256": "4cf993e23c5de1cb39c473d0a630fb1369b4f5bb9a41ec1c3a4e56ff1b514a19"
+    },
+    {
+      "id": "DOC330-0010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 281949,
+      "sha256": "7a32c6f49b2c2113803e5a31deb52264f1d871d5feda50f4ac3d15876cf90107"
+    },
+    {
+      "id": "DOC330-0011",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 74692,
+      "sha256": "afd67334a3c76b00c7a9e7451d68387e6abf4eb0181bc55906577fa8842cb00a"
+    },
+    {
+      "id": "DOC330-0013",
+      "kind": "local",
+      "path": "local/research/codex/cp329-docs-precheck-v2.txt",
+      "bytes": 63,
+      "sha256": "9def19f9c1072a897f88420bbc9dff11a053f09e92aec0fb3465c9e15993532c"
+    },
+    {
+      "id": "DOC330-0014",
+      "kind": "local",
+      "path": "local/research/codex/cp329-docs-precheck.txt",
+      "bytes": 210,
+      "sha256": "ed2d7cdebd5d1c129f4a69036b7d5407ad47161292ea2f61a3f717d502198d43"
+    },
+    {
+      "id": "DOC330-0015",
+      "kind": "local",
+      "path": "local/research/codex/cp330-catalog-check-v2.txt",
+      "bytes": 246,
+      "sha256": "3d19a2b9d9bdbfa07fef68c6f33b081ab05ee4508901dd53bee08e964a772a3c"
+    },
+    {
+      "id": "DOC330-0020",
+      "kind": "local",
+      "path": "local/research/codex/cp330-final-docs-check.txt",
+      "bytes": 274,
+      "sha256": "f4183667db4f2fa945043f9c92df9df1336f94af3afbf5def567a0832e911ade"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b0c26e9a1020dc0062e9ad1db8ac8d1d7cbd93685e8ae3f098ab0f5e032083dd.jsonl",
+      "sha256": "b0c26e9a1020dc0062e9ad1db8ac8d1d7cbd93685e8ae3f098ab0f5e032083dd",
+      "bytes": 2098,
+      "count": 11,
+      "files_bytes": 371847
     }
   ]
 }

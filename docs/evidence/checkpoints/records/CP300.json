@@ -69,15 +69,6 @@
       "limits": "Independent review waived; exact-head docs/history và CI phải đạt trước merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP300-l10n-probe.json",
-      "bytes": 301572,
-      "sha256": "80c515e91f1f2c2eae985e8766281226a2c25d9f8212cd9f0b87294e3840efa9",
-      "count": 1197
-    }
-  ],
   "delta": {
     "added": [
       "Năm native original startup observations và independent build/corrupt/hash verification."
@@ -171,5 +162,203 @@
   ],
   "completed_feature_groups": [
     "l10n-original-five-run-diagnostic"
+  ],
+  "evidence": [
+    {
+      "id": "LPROBE300-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "LPROBE300-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3684,
+      "sha256": "a384de9e53b21cad888823d0f58d547f10c4caacaa4780df466944e8e7271ccc"
+    },
+    {
+      "id": "LPROBE300-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 259744,
+      "sha256": "ea940b142bc5beebf232444c1ea42277bdc6ae7ab306311c8877baa82447419b"
+    },
+    {
+      "id": "LPROBE300-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 80827,
+      "sha256": "313752ea4fe77ae82fa923dbc4fc5e7d303fec5bfecc73bc8d1d2b6d8085639a"
+    },
+    {
+      "id": "LPROBE300-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 67135,
+      "sha256": "e32dc80cddbf32e1278701e331dfb8d8f9df9037569d9716478bd3f0038d7e09"
+    },
+    {
+      "id": "LPROBE300-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 39654,
+      "sha256": "22265a437c97c5671eef048c9ca3c769fab455502512fecbcafe0ad723db421b"
+    },
+    {
+      "id": "LPROBE300-00007",
+      "kind": "repository",
+      "path": "docs/content/client-language.md",
+      "bytes": 24582,
+      "sha256": "54d649627f17fa8bf97799ba1275c4270cb3d7abd9dc2e1009c8ddfed45b0e8f"
+    },
+    {
+      "id": "LPROBE300-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "bytes": 17679,
+      "sha256": "7e21f03a7ee7d48d65b906728e1416bc7aab20e10fb2538c9dc31c2a62b7299f"
+    },
+    {
+      "id": "LPROBE300-00009",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD116.json",
+      "bytes": 3661,
+      "sha256": "2a3262f533cbcb75a9855e368e0f4d8c0d4a6d491a11c73eb2510328830e68b8"
+    },
+    {
+      "id": "LPROBE300-00010",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 325865,
+      "sha256": "4b2bfca65d2a2671902d1fe12ada6b4dc2c8f0f082f9eb2f2a1e0c3698c15ce1"
+    },
+    {
+      "id": "LPROBE300-00011",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 38576,
+      "sha256": "a4536c93f599cdfdb209186bf0f81440729652ec8a4878163e360b67c6050a06"
+    },
+    {
+      "id": "LPROBE300-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 272514,
+      "sha256": "c92f3f69c52b499fba21ce8bfeae636ad549798ccebae3ad7912bcee7fabe2d6"
+    },
+    {
+      "id": "LPROBE300-00046",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/manual-ui-review.json",
+      "bytes": 1282,
+      "sha256": "61e3edaa8b190593a7ead4cb7e8d7f6a0e4cab7ed9c8ed88996df2d2debcb063"
+    },
+    {
+      "id": "LPROBE300-00048",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/preparation.json",
+      "bytes": 41586,
+      "sha256": "29c52baf8c014a9241a18c24c728b54f9fc1b1148100fbe336a2b6c5bbcefa9d"
+    },
+    {
+      "id": "LPROBE300-00049",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/results.json",
+      "bytes": 20922,
+      "sha256": "4b99c8704541be9634ec2af8dccc454aaf8ba71962fe11cd9eed38bbe5b7bedd"
+    },
+    {
+      "id": "LPROBE300-00285",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/run-0/raw-seal.json",
+      "bytes": 11909,
+      "sha256": "f5183a1c81346799884e788f12048648e3af4e348c3a2344667e930c38ae796c"
+    },
+    {
+      "id": "LPROBE300-00512",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/run-1/raw-seal.json",
+      "bytes": 9791,
+      "sha256": "787001f27b83f9ae446d93515bcfefee02c421f3be48ba6bf09b3538f89253fe"
+    },
+    {
+      "id": "LPROBE300-00745",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/run-2/raw-seal.json",
+      "bytes": 11203,
+      "sha256": "dc647a94ab67c222506b9372ffad2bf9f0ef2fa6f05f4bbfeb143b16b4d548ed"
+    },
+    {
+      "id": "LPROBE300-00963",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/run-3/raw-seal.json",
+      "bytes": 7673,
+      "sha256": "d6bbc93574193e6a0e5961143c1b54c1bb41cb41d613eb081f330ce085ea8885"
+    },
+    {
+      "id": "LPROBE300-01191",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/run-4/raw-seal.json",
+      "bytes": 10019,
+      "sha256": "d4ca3218b1abcbcde5f3f55eae0ea8d71ef89326abc95c405cc9722795fb64a9"
+    },
+    {
+      "id": "LPROBE300-01193",
+      "kind": "local",
+      "path": "local/research/codex/l10n-probe-r1/source-provenance.json",
+      "bytes": 383,
+      "sha256": "47752fe1255e2fcdacc363f9e4c78108173d03a413e3e6c1d7c69f657cc840f7"
+    },
+    {
+      "id": "LPROBE300-01197",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e0d6e04c76875b31e2ee96304436b5ac661e5af42e3c15a4ab5c952ed4ff66d7.jsonl",
+      "sha256": "e0d6e04c76875b31e2ee96304436b5ac661e5af42e3c15a4ab5c952ed4ff66d7",
+      "bytes": 965,
+      "count": 5,
+      "files_bytes": 24829
+    },
+    {
+      "run": "local/research/codex/g1-patrit-2-native-r1",
+      "path": "local/evidence-manifests/9426d1560d046447507f49a59c9b1aba60cdcdf338e5258e36afd180d5195681.jsonl",
+      "sha256": "9426d1560d046447507f49a59c9b1aba60cdcdf338e5258e36afd180d5195681",
+      "bytes": 691,
+      "count": 3,
+      "files_bytes": 4150043
+    },
+    {
+      "run": "local/research/codex/l10n-probe-build-en-r1",
+      "path": "local/evidence-manifests/7f7be984acf51700b9e76afac2656caf7c1749c20ccfe3eb432904d6430c3ef4.jsonl",
+      "sha256": "7f7be984acf51700b9e76afac2656caf7c1749c20ccfe3eb432904d6430c3ef4",
+      "bytes": 2059,
+      "count": 10,
+      "files_bytes": 55524446
+    },
+    {
+      "run": "local/research/codex/l10n-probe-build-ko-r1",
+      "path": "local/evidence-manifests/a34fea73bfdc28f2b89603360a1fad07c4ce88e662a43f17435d3887815b6a32.jsonl",
+      "sha256": "a34fea73bfdc28f2b89603360a1fad07c4ce88e662a43f17435d3887815b6a32",
+      "bytes": 2059,
+      "count": 10,
+      "files_bytes": 54591015
+    },
+    {
+      "run": "local/research/codex/l10n-probe-r1",
+      "path": "local/evidence-manifests/4b28db6734bc7118f90ea4d57f5787f532afef2b672a6c47259c9423c5744481.jsonl",
+      "sha256": "4b28db6734bc7118f90ea4d57f5787f532afef2b672a6c47259c9423c5744481",
+      "bytes": 232329,
+      "count": 1147,
+      "files_bytes": 9121638608
+    }
   ]
 }

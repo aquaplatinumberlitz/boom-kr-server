@@ -122,15 +122,6 @@
       "limits": "Independent review waived; full/history checker and CI pending before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP302-village10-terrain.json",
-      "bytes": 488610,
-      "sha256": "0e0139461b138a85efac0d529cd1563e1a521193bb5266acf8669861690d9ceb",
-      "count": 1771
-    }
-  ],
   "delta": {
     "added": [
       "Village10 bounded terrain/item native contiguous2/4/6, two cycles and independent all-cell checks."
@@ -238,5 +229,304 @@
   ],
   "completed_feature_groups": [
     "rust-village10-bounded-terrain-basic-items"
+  ],
+  "evidence": [
+    {
+      "id": "G1VILL302-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 14007,
+      "sha256": "97ff5aaf2b1e0a39917df5e7b459cd09d9c2e8aad5d3c35efb20bea18b69e04f"
+    },
+    {
+      "id": "G1VILL302-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3629,
+      "sha256": "cacf46168273e465801f38a7c536441e5a3bb18c3d563d89fa65dad3321f20f0"
+    },
+    {
+      "id": "G1VILL302-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 260361,
+      "sha256": "4aef90db8a1d459706d818bc443317118dbac53202c591f35d3600481a83dcf6"
+    },
+    {
+      "id": "G1VILL302-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 154181,
+      "sha256": "2a6a7e6671a6cf59e9c091aef3426fb8768ec1e691bc9dd6b0838e61cb7434b1"
+    },
+    {
+      "id": "G1VILL302-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 81839,
+      "sha256": "f6dc82a955eae42dfce9ad9e579a19f41e7705380cffb02356507c312e27b82c"
+    },
+    {
+      "id": "G1VILL302-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 67135,
+      "sha256": "e32dc80cddbf32e1278701e331dfb8d8f9df9037569d9716478bd3f0038d7e09"
+    },
+    {
+      "id": "G1VILL302-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 40168,
+      "sha256": "de5bc46bec9c7851cd80d425f5da450cf3f173baa5dc3455a568d0bac724a011"
+    },
+    {
+      "id": "G1VILL302-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD118.json",
+      "bytes": 5712,
+      "sha256": "d794b7b770a0a23c2b555692c69cf33370e1fdb543cb7f3dc88a85b678a7aef2"
+    },
+    {
+      "id": "G1VILL302-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-terrain-players.json",
+      "bytes": 11004,
+      "sha256": "5ddd731142c565af9f265fe0cdc2fec29cbe40bb6a74c562c0639229d102a8ce"
+    },
+    {
+      "id": "G1VILL302-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-village10-herb.json",
+      "bytes": 7056,
+      "sha256": "dae5723df9454a91f32bb623ccfb56d95ef98601e10876c2bf1229e24f4e7478"
+    },
+    {
+      "id": "G1VILL302-00011",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-village10-terrain.json",
+      "bytes": 9384,
+      "sha256": "c1402127c878a19ff0e4bdd05572a2fb2e784391da304fafbdcdd663dd3d9c7f"
+    },
+    {
+      "id": "G1VILL302-00012",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 273163,
+      "sha256": "a36cd25c97d0ac0b420b48800b2415297d232d65c7a9688fe0749898afc3254b"
+    },
+    {
+      "id": "G1VILL302-00013",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 57563,
+      "sha256": "f373d53abb6db05cc09d25fbf8a8ea35eaa2376d739cd13382dbe2404e7b6889"
+    },
+    {
+      "id": "G1VILL302-00014",
+      "kind": "repository",
+      "path": "docs/protocol/terrain.md",
+      "bytes": 53514,
+      "sha256": "4e0078758b4ad6d394c8b8c006d6f5793496e25322da6ba7ea940fa16f659fdd"
+    },
+    {
+      "id": "G1VILL302-00020",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-hidden-policy-r1/failed-native-observation.json",
+      "bytes": 6022,
+      "sha256": "f1471faec70809015b77dea2be4eb46318f6b3079833e1e6383c2d6d3c455097"
+    },
+    {
+      "id": "G1VILL302-00021",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-hidden-policy-r1/four-observer-timeout.json",
+      "bytes": 1355,
+      "sha256": "1a62ad855cecd131c86769dd5872a662138adbff382cd0272e4fd2e9d25834d5"
+    },
+    {
+      "id": "G1VILL302-00022",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-hidden-policy-r1/reuse-and-policy.json",
+      "bytes": 4555,
+      "sha256": "f418dfb6675e20c3b536fe99ebbe427a7d0e64d872a2dd98f934ce7ff3fbcbd7"
+    },
+    {
+      "id": "G1VILL302-00023",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-hidden-policy-r1/source-checks.json",
+      "bytes": 730,
+      "sha256": "e05ff5f96dd5ad99b8d7f64201ebc26d1101d6fc194050eade463c2c1cdf0da3"
+    },
+    {
+      "id": "G1VILL302-00024",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain-docs-before-checkpoint.txt",
+      "bytes": 198,
+      "sha256": "4f1f38e57db3b08c92d2a64a229545a1154f52a9ac5a07cd747a460f5fe3ffb3"
+    },
+    {
+      "id": "G1VILL302-00033",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain2-native-r1/cache-verification.json",
+      "bytes": 1125,
+      "sha256": "ad7c31030657d39c96d82ac576178d0c47f87c56d63c15013f9f14094827a6cb"
+    },
+    {
+      "id": "G1VILL302-00227",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain2-native-r1/native/raw-seal.json",
+      "bytes": 34571,
+      "sha256": "c38fb46b86cd7c97482aab42bba2847901f2f68c59f33cde61b0355773419515"
+    },
+    {
+      "id": "G1VILL302-00246",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-getter-verification.json",
+      "bytes": 609,
+      "sha256": "434cac9588d7d10e67ec26a349434746c6335cf7d09c5f3049382b5f69f1b25c"
+    },
+    {
+      "id": "G1VILL302-00247",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain2-native-r1/village10-terrain-native-verification.json",
+      "bytes": 3315541,
+      "sha256": "5ed017e34cd6ce57f198d93ba4b45aa8fb2d32ffffab17ebc37935d1a3e65144"
+    },
+    {
+      "id": "G1VILL302-00609",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain4-native-r4/cache-verification.json",
+      "bytes": 1943,
+      "sha256": "6408431b54e896ab267bea61c94500f5248c56e67e04c76f3ca86ea27b80bad1"
+    },
+    {
+      "id": "G1VILL302-00964",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain4-native-r4/native/raw-seal.json",
+      "bytes": 71658,
+      "sha256": "2292c3551febb9ba53acf106d70f5862a1ee0bc68111fa645a122650e66df884"
+    },
+    {
+      "id": "G1VILL302-00987",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-getter-verification.json",
+      "bytes": 609,
+      "sha256": "2969ecf549601fbc61ff8f995a274ede7a6b4bb8c41fea770179d1207211611e"
+    },
+    {
+      "id": "G1VILL302-00988",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain4-native-r4/village10-terrain-native-verification.json",
+      "bytes": 7555881,
+      "sha256": "542b76e7c6108eee6141c7492a4df1e5e134ebafc57e4071214faee0faf6500d"
+    },
+    {
+      "id": "G1VILL302-01301",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain6-native-r2/cache-verification.json",
+      "bytes": 2811,
+      "sha256": "a93ba3b62bda7484369a0fb1c80684daa43c83702a254581f60d3927353ea006"
+    },
+    {
+      "id": "G1VILL302-01715",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain6-native-r2/native/raw-seal.json",
+      "bytes": 85057,
+      "sha256": "165c67d328c1ff259e151365f8f171995e1e1591a7ae48b72510bcf4adc73162"
+    },
+    {
+      "id": "G1VILL302-01736",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-getter-verification.json",
+      "bytes": 609,
+      "sha256": "be6cceba1dbf8ce77348467b3fe6d16eb9ea442a0915f6ae99d5a56cebde5c2a"
+    },
+    {
+      "id": "G1VILL302-01737",
+      "kind": "local",
+      "path": "local/research/codex/g1-village10-terrain6-native-r2/village10-terrain-native-verification.json",
+      "bytes": 8184232,
+      "sha256": "9ae4a7dffb2c24ed6bf8b7d705475481af96ccbdb079fffa469f84e111537324"
+    },
+    {
+      "id": "G1VILL302-01770",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 184391,
+      "sha256": "a881a7770fa20180dc52538a327b122714143fa3efadcca1d75a0b40dbaced1d"
+    },
+    {
+      "id": "G1VILL302-01771",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 27162,
+      "sha256": "fad484dcc806794d0ac371558718226f524937d6b5308c039fc69771983c4ed3"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/c59befad73e95317b2669746500000551d60726301d72b88fa522ff99e139fe1.jsonl",
+      "sha256": "c59befad73e95317b2669746500000551d60726301d72b88fa522ff99e139fe1",
+      "bytes": 9044,
+      "count": 46,
+      "files_bytes": 349620
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain2-native-r1",
+      "path": "local/evidence-manifests/0bf42543e3457ec1e9feeb7bbe79a42cdcb39c99089b5e34d8cd3ce271f955ae.jsonl",
+      "sha256": "0bf42543e3457ec1e9feeb7bbe79a42cdcb39c99089b5e34d8cd3ce271f955ae",
+      "bytes": 49875,
+      "count": 218,
+      "files_bytes": 384577576
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain4-native-r1",
+      "path": "local/evidence-manifests/4ae150d6e3aeb8ec57e0f8570e9ea3ceecf799438616f13c7c411b1294b1c7b0.jsonl",
+      "sha256": "4ae150d6e3aeb8ec57e0f8570e9ea3ceecf799438616f13c7c411b1294b1c7b0",
+      "bytes": 50018,
+      "count": 223,
+      "files_bytes": 388006892
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain4-native-r2",
+      "path": "local/evidence-manifests/896b4b025065f15738ed4ea69f518d4d129bb2d64db8c35abb49ca6d4a17e311.jsonl",
+      "sha256": "896b4b025065f15738ed4ea69f518d4d129bb2d64db8c35abb49ca6d4a17e311",
+      "bytes": 12657,
+      "count": 59,
+      "files_bytes": 355457213
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain4-native-r3",
+      "path": "local/evidence-manifests/d0d73994a6d60fc2787255152d088952d488fd81f3af70e637d97d4d350ab05b.jsonl",
+      "sha256": "d0d73994a6d60fc2787255152d088952d488fd81f3af70e637d97d4d350ab05b",
+      "bytes": 14369,
+      "count": 67,
+      "files_bytes": 355933216
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain4-native-r4",
+      "path": "local/evidence-manifests/e89ead008b710a4262552a6acd21cb18aedefa3cabe7abee1fc11f978d0dda6e.jsonl",
+      "sha256": "e89ead008b710a4262552a6acd21cb18aedefa3cabe7abee1fc11f978d0dda6e",
+      "bytes": 89331,
+      "count": 385,
+      "files_bytes": 434174721
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain6-native-r1",
+      "path": "local/evidence-manifests/8423a0862ba4459b20c4ef7f2935fc02ba5e8cf62fec7349aaf8f396b22da7a2.jsonl",
+      "sha256": "8423a0862ba4459b20c4ef7f2935fc02ba5e8cf62fec7349aaf8f396b22da7a2",
+      "bytes": 66361,
+      "count": 296,
+      "files_bytes": 400331696
+    },
+    {
+      "run": "local/research/codex/g1-village10-terrain6-native-r2",
+      "path": "local/evidence-manifests/04cae82ee5fb65e3d194391c376019adeaff2fa52623d68f1442f2164d0800f2.jsonl",
+      "sha256": "04cae82ee5fb65e3d194391c376019adeaff2fa52623d68f1442f2164d0800f2",
+      "bytes": 102545,
+      "count": 444,
+      "files_bytes": 440320066
+    }
   ]
 }

@@ -97,15 +97,6 @@
       "limits": "Startup8 không támclientnative; không gameplay proof."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP277-room-population.json",
-      "bytes": 123331,
-      "sha256": "892074a7a497f0d4e021f92ea176eb6cf516c319ae9e90089b19aaad86c3b4db",
-      "count": 477
-    }
-  ],
   "delta": {
     "added": [
       "Measured current/capacity projection and native occupancy delta proof."
@@ -205,5 +196,266 @@
   ],
   "completed_feature_groups": [
     "rust-managed-room-population"
+  ],
+  "evidence": [
+    {
+      "id": "M7B277-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13422,
+      "sha256": "80b42ea1ec9c7d34767572dfafbae0e97faea1d402a3cdbcfa22dd30781cd7a3"
+    },
+    {
+      "id": "M7B277-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3860,
+      "sha256": "076fb6a1a0f500e1472d39f8fb56e77d7ea1dd68767e7b2e6e9ae020ffd84335"
+    },
+    {
+      "id": "M7B277-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 240113,
+      "sha256": "6d88c41c0c16943a88a5c8d938b082f63762c9ae3229ae1aeef3e4291d2365d9"
+    },
+    {
+      "id": "M7B277-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 138102,
+      "sha256": "e057713ea87dc52439786f12f3e1a928a1a321c355bd76db488133dc247564e0"
+    },
+    {
+      "id": "M7B277-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 64710,
+      "sha256": "bd42e543881a5d794910dc949d06512d6522c50a4901ecf7de977067684d01d8"
+    },
+    {
+      "id": "M7B277-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "M7B277-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 29625,
+      "sha256": "6a9c573ee78492cbcab973e50b17ae6d28b7cc5c2ae3032ffa57ae434b60b771"
+    },
+    {
+      "id": "M7B277-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD093.json",
+      "bytes": 3233,
+      "sha256": "972b1a7ace165f380e887a1481bfe7f51cb3df51651cc7bb609c040cc033093c"
+    },
+    {
+      "id": "M7B277-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m7b-room-population.json",
+      "bytes": 2258,
+      "sha256": "1a2cac4b3eb4f8c3bd90a211ce483977f7bf536c10df53fc44fbc0befdf8b544"
+    },
+    {
+      "id": "M7B277-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 251797,
+      "sha256": "ae3754b57d34d8e34422f5811a5de18bed191f53c9b3d3f782f47429d8eb2b4f"
+    },
+    {
+      "id": "M7B277-00011",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 106783,
+      "sha256": "5af7a95d259ecc30caa7b9f1bcf6a88d2b329e4e8c3fb16758796027359c2ce9"
+    },
+    {
+      "id": "M7B277-00013",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/D9D720.asm",
+      "bytes": 23811,
+      "sha256": "b078ba7e28d9ddea18ea7c3544ee7561d7deb694768181c222347cf49b39069b"
+    },
+    {
+      "id": "M7B277-00021",
+      "kind": "local",
+      "path": "local/research/codex/m7b-eight-prototype-startup-r1/verification.json",
+      "bytes": 147,
+      "sha256": "fb0cf627ee7fbfeb9a345116bed1f2c43c4d1847b4ddf8fee8cd12df6d05c11b"
+    },
+    {
+      "id": "M7B277-00024",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/export-seal.json",
+      "bytes": 19211,
+      "sha256": "b324225bdfe49e8b4ecc05945d67f6920bb001acd08f27211aedc38b90bb77a7"
+    },
+    {
+      "id": "M7B277-00113",
+      "kind": "local",
+      "path": "local/research/codex/m7b-managed-regression-r1/result.json",
+      "bytes": 806,
+      "sha256": "4649174f4a4f120fc53011f36492151a92bd25b47b96560762b4c7ac1147ed67"
+    },
+    {
+      "id": "M7B277-00117",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-build-r1.txt",
+      "bytes": 172,
+      "sha256": "0c9284fb88b7953346bfc18389e6600e121d7ce0897fad70d91b679d827ef209"
+    },
+    {
+      "id": "M7B277-00118",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-clippy-r1.txt",
+      "bytes": 1508,
+      "sha256": "0a11a57f455e127684ab9c4119d1d51cfd762efa5077186d8477a18816c9ae1e"
+    },
+    {
+      "id": "M7B277-00119",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-source-r1/reader-byte-match.json",
+      "bytes": 461,
+      "sha256": "693a0d448ab34228fe20b609a05357896ba48c8976eb96f9887d8bd5e7882fd5"
+    },
+    {
+      "id": "M7B277-00120",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-source-r1/source-survey.json",
+      "bytes": 2428,
+      "sha256": "04ad9806698b5abccc2b3af6401227525c07ac77dc189831f78dd4f50a75a02b"
+    },
+    {
+      "id": "M7B277-00121",
+      "kind": "local",
+      "path": "local/research/codex/m7b-occupancy-tests-r1.txt",
+      "bytes": 15186,
+      "sha256": "e0962f1ac022ee6e379914d4c80f83660da7c65164c36af22356f674e3e93107"
+    },
+    {
+      "id": "M7B277-00122",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "M7B277-00123",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-docs-final.txt",
+      "bytes": 274,
+      "sha256": "d719933d54c96b1aff1aed6aa53ce8916267a4af914aca964ef63feedf0ea931"
+    },
+    {
+      "id": "M7B277-00124",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-fmt-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7B277-00361",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/raw-seal.json",
+      "bytes": 17987,
+      "sha256": "2ed1056f8f0a3f1d02cd5572a08d0a72bf438b66dd79054473d39d81fc1f800b"
+    },
+    {
+      "id": "M7B277-00363",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/native/runtime-preflight.json",
+      "bytes": 191083,
+      "sha256": "e172c44928c5a76ee74ac76f15eb30047d34c40aac508db7196a56db08cbdf68"
+    },
+    {
+      "id": "M7B277-00371",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-native-r1/verification.json",
+      "bytes": 7067,
+      "sha256": "25879e1ea38ec93cea5e98af05d4e528b8143ceba9cb3af31bd20b2df1b24c4e"
+    },
+    {
+      "id": "M7B277-00378",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/export-seal.json",
+      "bytes": 19261,
+      "sha256": "b89780ccdab83a73f23a56df264b2662b80083c0100f7610f3d8bd4494028e83"
+    },
+    {
+      "id": "M7B277-00468",
+      "kind": "local",
+      "path": "local/research/codex/m7b-population-synthetic-r1/verification.json",
+      "bytes": 5839,
+      "sha256": "2ca0a3bf09bb642748230820971026602f1f3776b3dafe116f5c79ddecb381a3"
+    },
+    {
+      "id": "M7B277-00471",
+      "kind": "local",
+      "path": "local/research/codex/room-two-rows-r1/source-first.json",
+      "bytes": 2955,
+      "sha256": "29089af8f332300268ab5ffaac4444cbf9fbcc11b30ac40154f1b9ae45d3f852"
+    },
+    {
+      "id": "M7B277-00476",
+      "kind": "repository",
+      "path": "tools/test_rust_managed_rooms.py",
+      "bytes": 10266,
+      "sha256": "56e192a283fe7a0a2a8591e12d96fb8c2e1a32b3791df8782bc372e4648c898e"
+    },
+    {
+      "id": "M7B277-00477",
+      "kind": "repository",
+      "path": "tools/test_rust_room_population.py",
+      "bytes": 8319,
+      "sha256": "2515b91eae74fb249472e4538ec19c0bed25cf2cfed2b4a13fd04300abc43c80"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/1bbe9c365b00c597b7cdafa82d8f85ce7abb8180c7c8a56611d329d7b907e3d0.jsonl",
+      "sha256": "1bbe9c365b00c597b7cdafa82d8f85ce7abb8180c7c8a56611d329d7b907e3d0",
+      "bytes": 2294,
+      "count": 12,
+      "files_bytes": 64182
+    },
+    {
+      "run": "local/research/codex/m7b-eight-prototype-startup-r1",
+      "path": "local/evidence-manifests/9b7607392d9a84b7a25beb4fc0f48c5624709bf3a2fd46b4a519d3ce6801733a.jsonl",
+      "sha256": "9b7607392d9a84b7a25beb4fc0f48c5624709bf3a2fd46b4a519d3ce6801733a",
+      "bytes": 1529,
+      "count": 7,
+      "files_bytes": 115906
+    },
+    {
+      "run": "local/research/codex/m7b-managed-regression-r1",
+      "path": "local/evidence-manifests/becd695009e739a299c080ee84a5b60a9a29e178ae388fadb850361af9a5a3fe.jsonl",
+      "sha256": "becd695009e739a299c080ee84a5b60a9a29e178ae388fadb850361af9a5a3fe",
+      "bytes": 19091,
+      "count": 92,
+      "files_bytes": 108537498
+    },
+    {
+      "run": "local/research/codex/m7b-population-native-r1",
+      "path": "local/evidence-manifests/c4d1c65acd09e415140293f805cb798024e98f211dc2654f216f64ab817b814d.jsonl",
+      "sha256": "c4d1c65acd09e415140293f805cb798024e98f211dc2654f216f64ab817b814d",
+      "bytes": 52217,
+      "count": 244,
+      "files_bytes": 223685004
+    },
+    {
+      "run": "local/research/codex/m7b-population-synthetic-r1",
+      "path": "local/evidence-manifests/71f6fe730158ea3e53ab92e69fedad6f68f75bc77116239658065ae6f466bb43.jsonl",
+      "sha256": "71f6fe730158ea3e53ab92e69fedad6f68f75bc77116239658065ae6f466bb43",
+      "bytes": 19063,
+      "count": 91,
+      "files_bytes": 108502894
+    }
   ]
 }

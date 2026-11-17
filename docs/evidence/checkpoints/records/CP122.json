@@ -122,15 +122,6 @@
       "limits": "Mechanical consistency/manual selectedUI only; no automatic semantics/gate approval."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP122-recursive-chain.json",
-      "bytes": 221703,
-      "sha256": "5c9ff78ade6c09387eaa2dedec74d32bcbf8a4cee1f761b065f15e5439be5ea9",
-      "count": 889
-    }
-  ],
   "delta": {
     "added": [
       "Deep chain outside root rays observed in real KRcopy2views with full195flags/modelagreement/laterownnoop."
@@ -221,6 +212,146 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP122 scopeddeepchain/195flags/limits, CP121merged, currentterrain survivor next solelyPLAN; oldrecords/raw/gates unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "DEEP-00004",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "DEEP-00005",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/chain-summary.json",
+      "bytes": 48371,
+      "sha256": "bf4f388035498ba8a941616b31265a225def13c6bdbfd42e3145bdeaa6875d1f"
+    },
+    {
+      "id": "DEEP-00782",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/cycles/run.json",
+      "bytes": 229474,
+      "sha256": "78e096db889dd3f9ae80d9d61758802bc4bcc9b1ca15c09ef45b735209b41b9e"
+    },
+    {
+      "id": "DEEP-00793",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "d66b17cfe4d30c4694e30045957a65c23c22692e253ceb2fd64c949e046145e1"
+    },
+    {
+      "id": "DEEP-00794",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/fields-check.txt",
+      "bytes": 32,
+      "sha256": "0e1a71be9f7fcd0928b18390c9aa7a1cc1e9b768567b1b48df69be3c7d8685e3"
+    },
+    {
+      "id": "DEEP-00796",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/flags-check.txt",
+      "bytes": 54,
+      "sha256": "ded0fc7210312146dac59167ccdfe3040e0704cded480eeb4e1a36764294b198"
+    },
+    {
+      "id": "DEEP-00802",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "c2661df6870296f89ce01459c8f6d927a16afe149f46605282fcb1a43d38ffe4"
+    },
+    {
+      "id": "DEEP-00804",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/native-reports-check.txt",
+      "bytes": 29,
+      "sha256": "d363789e470bbdaade29aace2fd57ece4919f63adbe135b2b8da44dc44f15387"
+    },
+    {
+      "id": "DEEP-00806",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/native153-check.txt",
+      "bytes": 22,
+      "sha256": "ccd17ab225f185be8f6f969644e409ad9041beea1919b7944f3ddb40fbbb024c"
+    },
+    {
+      "id": "DEEP-00816",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/profile.json",
+      "bytes": 13581,
+      "sha256": "a088f1f5883eea3dcf23848b362b8dec4da4dec2eb8a18c23ab1553f64e8cede"
+    },
+    {
+      "id": "DEEP-00817",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/raw-seal.json",
+      "bytes": 155227,
+      "sha256": "a13b5b22f92650f9724ba2f41c2c034d2f4c921c1b1691b9256fa910f909a431"
+    },
+    {
+      "id": "DEEP-00818",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/recursive-check.txt",
+      "bytes": 86,
+      "sha256": "7e516fa2e53e53b566353a2b6bfac4a6fd083905e122d81c52a8c65ed7ae3df3"
+    },
+    {
+      "id": "DEEP-00819",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/recursive-verification.json",
+      "bytes": 74045,
+      "sha256": "2a83a8659eb90f8ac4e6eda2eb2293d992ce0c2cbe5a8f44d3821d19d764a419"
+    },
+    {
+      "id": "DEEP-00841",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/runtime-reuse.json",
+      "bytes": 3634,
+      "sha256": "d2a085cc80d6aec02cc522cb42405dec355266cad3e6295d1feb6dfa3bad15c0"
+    },
+    {
+      "id": "DEEP-00883",
+      "kind": "local",
+      "path": "local/research/codex/recursive-chain-r1/visual-review.json",
+      "bytes": 706,
+      "sha256": "4fe8d544ba8078017eae068841da02e7a6de29222d3b9fa5d28c8a8eb0f72822"
+    },
+    {
+      "id": "DEEP-00889",
+      "kind": "local",
+      "path": "local/research/codex/rescue-slot-refresh-r1/server-tests.txt",
+      "bytes": 291,
+      "sha256": "09d483bec50aa52bb61c63c8fb6926c78fd85e547f381b90d870b6e3a0ada3ee"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/recursive-chain-r1",
+      "path": "local/evidence-manifests/384325073cb214dbb89ec71547f19933460b8875410cef79d1ded194cb239c73.jsonl",
+      "sha256": "384325073cb214dbb89ec71547f19933460b8875410cef79d1ded194cb239c73",
+      "bytes": 173456,
+      "count": 869,
+      "files_bytes": 38707815
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/d3634a04583d93c866e2ec84dbc4e2631b21aef221c3985b791c18c0e64e674f.jsonl",
+      "sha256": "d3634a04583d93c866e2ec84dbc4e2631b21aef221c3985b791c18c0e64e674f",
+      "bytes": 428,
+      "count": 2,
+      "files_bytes": 68291
+    },
+    {
+      "run": "local/research/codex/rescue-two-results-r1",
+      "path": "local/evidence-manifests/f1c96f9a41e9b7f06552d0d823d8e41c0bd3d4853b385551dbbcfd0420d868f3.jsonl",
+      "sha256": "f1c96f9a41e9b7f06552d0d823d8e41c0bd3d4853b385551dbbcfd0420d868f3",
+      "bytes": 474,
+      "count": 2,
+      "files_bytes": 429
     }
   ]
 }

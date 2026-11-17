@@ -157,15 +157,6 @@
       "limits": "NEXT-K6C-NAT-EOF active; CP196manualauditrequired."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP195-UDP-netem.json",
-      "bytes": 440328,
-      "sha256": "54d1f4354d53c16867dee84d0a803fb00c958b34345a6746a8621fbda198f029",
-      "count": 1712
-    }
-  ],
   "delta": {
     "added": [
       "ActualKR2normalcycles/reset/Start3/currentpeer/PCAPconsistency underprelaunchUDP40ms±5/loss5%seed194/TCPbaseline.",
@@ -259,6 +250,692 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP195actualUDPimpairmentcontrols/integration/limits/sourcefirst/nextNATEOF+CP196audit synchronizedbeforecomplete; nogate/auditcounterreset."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "NETEM195-00008",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "NETEM195-00015",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "NETEM195-00019",
+      "kind": "local",
+      "path": "local/research/codex/cp193-checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "ae6be4c349d91c7ecd453d9eefd293317446b83ec573a30322d0f6ff6481db26"
+    },
+    {
+      "id": "NETEM195-00020",
+      "kind": "local",
+      "path": "local/research/codex/cp193-server-tests.txt",
+      "bytes": 394,
+      "sha256": "6e7558883fe8d7d328687d56c578079f072298119de13273ab82384392e75832"
+    },
+    {
+      "id": "NETEM195-00022",
+      "kind": "local",
+      "path": "local/research/codex/cp194-exact-head-results.json",
+      "bytes": 632,
+      "sha256": "4e0273526d2c43040fcc7060b37d66c30a454c798a18e5d49307cb56020e2efd"
+    },
+    {
+      "id": "NETEM195-00023",
+      "kind": "local",
+      "path": "local/research/codex/cp194-pr-merged.json",
+      "bytes": 123,
+      "sha256": "d8e73f499ede21823153fa589834f2c795c5e9d4420a11a3fa05b18e103f3558"
+    },
+    {
+      "id": "NETEM195-00030",
+      "kind": "local",
+      "path": "local/research/codex/cp195-docs-check.txt",
+      "bytes": 175,
+      "sha256": "6078b74fb8caeb1032ff9d731cec8044f75f7f519e24820456eb9f8eb7d6b7bc"
+    },
+    {
+      "id": "NETEM195-00042",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "NETEM195-00046",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/B-winner-reset-verification.json",
+      "bytes": 3346,
+      "sha256": "d28b9355bd003aa8e01dc29e76123c2df09821857488f2aa5772c7c80894aaad"
+    },
+    {
+      "id": "NETEM195-00047",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/NAT-cycles-endpoint-verification.json",
+      "bytes": 10573,
+      "sha256": "c9a1c2796621ef0e002549fcec24f86f935ca2439d08aed74d018d9fe5fddb9a"
+    },
+    {
+      "id": "NETEM195-00053",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/contest-reset-verification.json",
+      "bytes": 1269,
+      "sha256": "bcd5da4297ec706fa0e2dc4ac12ba0ea4e2e6af25cc4f044aa9634c6fc3c1f30"
+    },
+    {
+      "id": "NETEM195-00056",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/cp195-snapshot/docs/PLAN.md",
+      "bytes": 53312,
+      "sha256": "28d704027df00d92168adaab155a7957d6bcde191ee4f2dfc39d09529611c816"
+    },
+    {
+      "id": "NETEM195-01448",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/cycles/virtual-network.json",
+      "bytes": 50447,
+      "sha256": "c271e40ccd70f2ad3c252db9342da0f4756f7541b67f5c51877755d7a87a606f"
+    },
+    {
+      "id": "NETEM195-01466",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/life-agreement-verification.json",
+      "bytes": 6792,
+      "sha256": "07599ec694db2d045e8b72e2e1d6c52c9febf27b2bcc9135e984cc0b9367a690"
+    },
+    {
+      "id": "NETEM195-01471",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/netem-native-verification.json",
+      "bytes": 3057,
+      "sha256": "f4f5ce3fcac640d59d4a4202daec5a3abf14951d249acf126d9dd780a8ffc831"
+    },
+    {
+      "id": "NETEM195-01491",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/runtime-preflight.json",
+      "bytes": 48886,
+      "sha256": "6376eaf772e8210614c29ce2aac3ab07a3f50169c5050488237dbe02497824db"
+    },
+    {
+      "id": "NETEM195-01543",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/source-first.json",
+      "bytes": 2494,
+      "sha256": "0a59c7b67a209fbabd1612e425671006c28991086307cff56a995fd6af9efba1"
+    },
+    {
+      "id": "NETEM195-01544",
+      "kind": "local",
+      "path": "local/research/codex/netem-KR-two-cycles-r1/test-reuse.json",
+      "bytes": 12189,
+      "sha256": "0eedfbd12a07aa3e17ddd1025ac0b79ef7d8485c986ec91669a562abad112f7d"
+    },
+    {
+      "id": "NETEM195-01567",
+      "kind": "local",
+      "path": "local/research/codex/netem-transport-r1/raw-seal.json",
+      "bytes": 3965,
+      "sha256": "ed451becd539637ccdff997c2684b87a74ce9529d926c556640868637bf8c08d"
+    },
+    {
+      "id": "NETEM195-01568",
+      "kind": "local",
+      "path": "local/research/codex/netem-transport-r1/report.json",
+      "bytes": 23683,
+      "sha256": "42b8a0e6a8de3ff71cc1bbb527fdd15ca7db5f5c16bf438167748c06262eda55"
+    },
+    {
+      "id": "NETEM195-01571",
+      "kind": "local",
+      "path": "local/research/codex/netem-transport-r1/verification.json",
+      "bytes": 1222,
+      "sha256": "f978e66dd2aa972526710d88ab69ab781a9867b8bf7765e03cf84d2de10f4936"
+    },
+    {
+      "id": "NETEM195-01576",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "NETEM195-01646",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "NETEM195-01647",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "NETEM195-01648",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "NETEM195-01655",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "NETEM195-01660",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "NETEM195-01662",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "NETEM195-01663",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "NETEM195-01664",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "NETEM195-01665",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "NETEM195-01666",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "NETEM195-01667",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "NETEM195-01668",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "NETEM195-01669",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "NETEM195-01670",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "NETEM195-01671",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "NETEM195-01672",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "NETEM195-01673",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "NETEM195-01674",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "NETEM195-01675",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "NETEM195-01676",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "NETEM195-01677",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "NETEM195-01678",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "NETEM195-01679",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "NETEM195-01680",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "NETEM195-01681",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "NETEM195-01682",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "NETEM195-01683",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "NETEM195-01684",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "NETEM195-01685",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "NETEM195-01686",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "NETEM195-01687",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "NETEM195-01688",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "NETEM195-01689",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "NETEM195-01690",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "NETEM195-01691",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "NETEM195-01692",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "NETEM195-01693",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "NETEM195-01694",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "NETEM195-01695",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "NETEM195-01696",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "NETEM195-01697",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "NETEM195-01698",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "NETEM195-01699",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "NETEM195-01700",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "NETEM195-01701",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "NETEM195-01702",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "NETEM195-01703",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "NETEM195-01704",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "NETEM195-01705",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "NETEM195-01706",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "NETEM195-01707",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "NETEM195-01708",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "NETEM195-01709",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "NETEM195-01710",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "NETEM195-01711",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "NETEM195-01712",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/f283b5ea8b4862627a96e06380232b654a00f9b5efb55f7dd83fa8588195325e.jsonl",
+      "sha256": "f283b5ea8b4862627a96e06380232b654a00f9b5efb55f7dd83fa8588195325e",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/5eeb0eed166b9499a8b3bd1ecaa3bcee4a061bc1701880aff9eb735618e69d97.jsonl",
+      "sha256": "5eeb0eed166b9499a8b3bd1ecaa3bcee4a061bc1701880aff9eb735618e69d97",
+      "bytes": 4664,
+      "count": 25,
+      "files_bytes": 6138856
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/d865dd2f6b8e599d464879097f38a234b1f9a335320d96e207c8dab93a3a6031.jsonl",
+      "sha256": "d865dd2f6b8e599d464879097f38a234b1f9a335320d96e207c8dab93a3a6031",
+      "bytes": 648,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/11cc945cbe5e00b79baa1980a8a48b2457bc022b44457218e8d83adde585a69b.jsonl",
+      "sha256": "11cc945cbe5e00b79baa1980a8a48b2457bc022b44457218e8d83adde585a69b",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/b25fa2c731cd4b9001147078ce9403909c646e773d937b8b7b66e8a687476f38.jsonl",
+      "sha256": "b25fa2c731cd4b9001147078ce9403909c646e773d937b8b7b66e8a687476f38",
+      "bytes": 650,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/89cc39d964964129855ba53f8a62e1992547bbc03c2e36c9fe570d6434b8bee7.jsonl",
+      "sha256": "89cc39d964964129855ba53f8a62e1992547bbc03c2e36c9fe570d6434b8bee7",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/a7783bee644c36371322b3bf1e34e8b45ab33cb119cbcc13ae588dcc4a208234.jsonl",
+      "sha256": "a7783bee644c36371322b3bf1e34e8b45ab33cb119cbcc13ae588dcc4a208234",
+      "bytes": 1026,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/009b97e19ae11de8160390c74aae6d2fb45393abeba60da3f95c8428035db67e.jsonl",
+      "sha256": "009b97e19ae11de8160390c74aae6d2fb45393abeba60da3f95c8428035db67e",
+      "bytes": 508,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/1c6a6902f058b89528bfe22c8a6284909737b91ed27450bf7950d6ab396ff880.jsonl",
+      "sha256": "1c6a6902f058b89528bfe22c8a6284909737b91ed27450bf7950d6ab396ff880",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/netem-KR-two-cycles-r1",
+      "path": "local/evidence-manifests/6aec30112bfaa5e91ad1298ca8db769394d7ab7c6a7958fa0d9b428621d532af.jsonl",
+      "sha256": "6aec30112bfaa5e91ad1298ca8db769394d7ab7c6a7958fa0d9b428621d532af",
+      "bytes": 311150,
+      "count": 1498,
+      "files_bytes": 69691926
+    },
+    {
+      "run": "local/research/codex/netem-transport-r1",
+      "path": "local/evidence-manifests/546a2cf5ce2845a9f0dc4c6a8adff551a1510e69679751ca64b4443e7690d064.jsonl",
+      "sha256": "546a2cf5ce2845a9f0dc4c6a8adff551a1510e69679751ca64b4443e7690d064",
+      "bytes": 3136,
+      "count": 16,
+      "files_bytes": 110404
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/7286780fd0285eeadc4edd06ed3d6e388515abe4a0e94326f7fcb27c49b6aa4d.jsonl",
+      "sha256": "7286780fd0285eeadc4edd06ed3d6e388515abe4a0e94326f7fcb27c49b6aa4d",
+      "bytes": 447,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/portable-bundle-r1",
+      "path": "local/evidence-manifests/12b3e627d109e299013a6980f03cb641415856dd37f6c23a2576ab4944d94057.jsonl",
+      "sha256": "12b3e627d109e299013a6980f03cb641415856dd37f6c23a2576ab4944d94057",
+      "bytes": 15366,
+      "count": 60,
+      "files_bytes": 175668
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/f83ee4ffeeffbfccccc0c3d6ff23a5cd9a700f8f54efdbf44a6ab99a028f64b6.jsonl",
+      "sha256": "f83ee4ffeeffbfccccc0c3d6ff23a5cd9a700f8f54efdbf44a6ab99a028f64b6",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/3a84ba997d7f45c2302d58b78c0790a2b0ec17f6f2560bfaef68acb57f5493e8.jsonl",
+      "sha256": "3a84ba997d7f45c2302d58b78c0790a2b0ec17f6f2560bfaef68acb57f5493e8",
+      "bytes": 991,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/bfbf806119a326590d61340a4929abbab9b0d68749c48c576259f6045cfe99bf.jsonl",
+      "sha256": "bfbf806119a326590d61340a4929abbab9b0d68749c48c576259f6045cfe99bf",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/392d83ec8bf52bc86fece53cc32acc5139129a6398320598be7cf49ab7c06e5a.jsonl",
+      "sha256": "392d83ec8bf52bc86fece53cc32acc5139129a6398320598be7cf49ab7c06e5a",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

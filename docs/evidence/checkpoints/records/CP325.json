@@ -107,15 +107,6 @@
       "limits": "R6 failed beforeWine; retained separate failure proof. Full exact-head local/history and CI still required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP325-bomb-retirement.json",
-      "bytes": 1934617,
-      "sha256": "4d751808d85f39648192a6131ff14463af6047ae4e24e650e98059737f5fe070",
-      "count": 7242
-    }
-  ],
   "delta": {
     "added": [
       "Reference retirement policy có next118 và hai kết quả/reset, đủ làm đầu vào port lát Punch đã đo."
@@ -208,6 +199,503 @@
       "path": "rust/crates/kr-service/src/room_io.rs",
       "state": "unchanged",
       "reason": "Chưa bật119 hoặc item3/4; chưa đủ acceptance Rust để công bố hỗ trợ."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RET325-00001",
+      "kind": "artifact",
+      "path": "/etc/nsswitch.conf",
+      "bytes": 359,
+      "sha256": "c8ee7a9faf798caab178ec51afae4146f1efd8a716b7acedf28345b6c75f9697"
+    },
+    {
+      "id": "RET325-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3619,
+      "sha256": "b8e4d929e615ed97409b549b650dc2d0b065a2048b697014627adecf8f5c3ee0"
+    },
+    {
+      "id": "RET325-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 268612,
+      "sha256": "8b9e8679fbdf50f9d32c8287f76dc3b68b53c83261451f5a38c20fa87f423665"
+    },
+    {
+      "id": "RET325-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 163892,
+      "sha256": "193744751251308c79acb0f6d1ff8acec4b50551be7aa5a1209b8e252f691e93"
+    },
+    {
+      "id": "RET325-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 84737,
+      "sha256": "61edf1fce7219d7d8b16efffcb660af5cbd24488abc598a0e1c693d1c3fa7a48"
+    },
+    {
+      "id": "RET325-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45135,
+      "sha256": "471ecbf1beab477372c4baee78d873600f21a8d509646d8cba56378300189518"
+    },
+    {
+      "id": "RET325-00007",
+      "kind": "repository",
+      "path": "docs/evidence/item-families/bomb-retirement.json",
+      "bytes": 9333,
+      "sha256": "d3b27023b253ad2d154334278f7ee49ac64c3512c150b8865cececad4837a303"
+    },
+    {
+      "id": "RET325-00008",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 281540,
+      "sha256": "e6db7f464153322139e7c6a05cc07f0b39d7f6743a8115e93c6c1cb10f24ed57"
+    },
+    {
+      "id": "RET325-00009",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 66940,
+      "sha256": "c677ac44873b3a36c5aad6cb47bbdcec6f22e5f21208b60b25fda802c1e18895"
+    },
+    {
+      "id": "RET325-00018",
+      "kind": "local",
+      "path": "local/research/codex/bomb-serial-r1/B37FC0.asm",
+      "bytes": 1118,
+      "sha256": "97c423f6da8cb0dd37dd160dfec5c702042d350719491eb594b1cc45266338a6"
+    },
+    {
+      "id": "RET325-00023",
+      "kind": "local",
+      "path": "local/research/codex/collision-r1/overlap121.bin",
+      "bytes": 167,
+      "sha256": "2fd71d091341990f3becfbe240f9fef2dc7069d20228216c4e974bf30afdf851"
+    },
+    {
+      "id": "RET325-00031",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-flags-native-r2/floor582-abilities.bin",
+      "bytes": 74,
+      "sha256": "a7cc0f351d3a3c016b441afff10778b42b364d15d65b388fbc4bcd55b93e046e"
+    },
+    {
+      "id": "RET325-00037",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r5/frozen-input-postrun-verification.json",
+      "bytes": 130,
+      "sha256": "90b4305d73ca5cf3ab062fe2d7f89812d4114fefe39d90bb26e6fb3335b4fce9"
+    },
+    {
+      "id": "RET325-01401",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r6/failure-verification.json",
+      "bytes": 482,
+      "sha256": "0b9c3667505eb3a49d472707541f0d40b57147957d0b78cd4b6a1190c07b6142"
+    },
+    {
+      "id": "RET325-01416",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r7/frozen-input-postrun-verification.json",
+      "bytes": 137,
+      "sha256": "0fe2a49712b2384fdc1ba656e677edbc48c5466b560b0eebd44904a44af561a1"
+    },
+    {
+      "id": "RET325-01417",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r7/landing-cleanup-verification.json",
+      "bytes": 2266,
+      "sha256": "7d8e5359c81bf6905984c89110499e16067829c4eeb92708dd0a7f12ef952766"
+    },
+    {
+      "id": "RET325-02770",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-pool-source-native-r8/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "39c9357b623373be939474492dab0eee3458744dbf2049fc1e6070cff1b43a25"
+    },
+    {
+      "id": "RET325-02773",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-pool-source-native-r8/pool-partial-verification.json",
+      "bytes": 1925,
+      "sha256": "213e8ee546ac84599b848126445f464e6558fab280bf012280dada5236069a70"
+    },
+    {
+      "id": "RET325-03599",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-pool-source-native-r9/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "56a0d6d2b041d94c659f985533f4ecd2010e7e225ec1d1d528154c2e9e2f9e8c"
+    },
+    {
+      "id": "RET325-03602",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-pool-source-native-r9/pool-return-later-verification.json",
+      "bytes": 2040,
+      "sha256": "c2d9f20816037a817b96a8bb50a84404b971bda5d3d5b3a71595b3e3850c02fb"
+    },
+    {
+      "id": "RET325-04404",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-rebind-source-native-r10/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "920f68a3828a0ea10c6fdfa5ba39ca2df547c751868f10e670c1cb680202557b"
+    },
+    {
+      "id": "RET325-04409",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-rebind-source-native-r10/rebind-lifecycle-verification.json",
+      "bytes": 2004,
+      "sha256": "094cee399925a6bdbb75c29e933467075c4244d24510d11d2068ccbdbd645232"
+    },
+    {
+      "id": "RET325-05238",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/actor-fields-final.json",
+      "bytes": 483981,
+      "sha256": "f7500cec2eec413a36990b71d57e0f6719cda2899471b4adba884b2475eb748d"
+    },
+    {
+      "id": "RET325-05241",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/frozen-input-postrun-verification.json",
+      "bytes": 61,
+      "sha256": "a6a4504e80ae833dd275c6780f069e571969a629f7e6bff36054abab6596cc16"
+    },
+    {
+      "id": "RET325-05246",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/prelaunch-source-review.json",
+      "bytes": 537,
+      "sha256": "97f3e24c1710f62415f0580440ab0694151dd4f8334adebf5a36c0664c5b12f4"
+    },
+    {
+      "id": "RET325-05247",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/raw-seal.json",
+      "bytes": 224985,
+      "sha256": "eeecb8ba553019a45ed9cb4a19d8412ee53cc9dc36d02a08675615b600be503f"
+    },
+    {
+      "id": "RET325-06653",
+      "kind": "local",
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/two-round-rebind-verification.json",
+      "bytes": 4125,
+      "sha256": "ea6a55082d95e4af537ac1f8fbd84eaddee7a471856ef3125145344007b996b2"
+    },
+    {
+      "id": "RET325-06654",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r1/private-db-copy.json",
+      "bytes": 427,
+      "sha256": "f6306faf2879d0cde94afd7f2a77f656f94c68b92f875b89b163526f1e2529e3"
+    },
+    {
+      "id": "RET325-06663",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r10/pool-guard-correction.json",
+      "bytes": 1128,
+      "sha256": "c0469bfd761c3f2e0eac74da0d690ce94585808ae14b78682330bb25f4b31c4d"
+    },
+    {
+      "id": "RET325-06669",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r10/runtime-chunk-binding.json",
+      "bytes": 3369,
+      "sha256": "ba8c19429660dbc2307072048c7d1be49277e9289adbf9f527dc38b66cff7628"
+    },
+    {
+      "id": "RET325-06709",
+      "kind": "local",
+      "path": "local/research/codex/g1-shoe-punch-reuse-r8/runtime-chunk-binding.json",
+      "bytes": 3198,
+      "sha256": "c61b8963dd365217148019f561f27cb9ff4fa2ccac1bf7b716d760e341bcc60f"
+    },
+    {
+      "id": "RET325-07190",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "RET325-07191",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "RET325-07195",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "RET325-07205",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "RET325-07208",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "RET325-07224",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "RET325-07237",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 20225,
+      "sha256": "f94e0b81ca68114c95f39fc1e212b5eb4d182ccdc548f61766de2cb3f665f504"
+    },
+    {
+      "id": "RET325-07238",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 16489,
+      "sha256": "e02cb22baae5d48f662ac55f738dddcaa794fb91e2d08401704ce318f90f3b13"
+    },
+    {
+      "id": "RET325-07239",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 188655,
+      "sha256": "218a3ea09bfa7a6b94c9d2718bdc78c22fb538d6e6c7aae75f4f034256261006"
+    },
+    {
+      "id": "RET325-07240",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 22774,
+      "sha256": "77773d5525f2065e10f0b6a3de5a2b418f2cb1aef1e5620e6a09f9540198b05a"
+    },
+    {
+      "id": "RET325-07241",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+      "bytes": 2958,
+      "sha256": "ca1432d6b778e4d723f2aa91c69492c0d533456b0f5297b4cd09890d515fa1ea"
+    },
+    {
+      "id": "RET325-07242",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/eb13ebb25b2434e8b01b0de55c3f9cd92f4a21f74d7e4eef3ada586a68d92754.jsonl",
+      "sha256": "eb13ebb25b2434e8b01b0de55c3f9cd92f4a21f74d7e4eef3ada586a68d92754",
+      "bytes": 5494,
+      "count": 29,
+      "files_bytes": 811865
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/885aa82f76350eecdc0313037c1dbec2463513981e8b66a6aa5dd8d48ce23d19.jsonl",
+      "sha256": "885aa82f76350eecdc0313037c1dbec2463513981e8b66a6aa5dd8d48ce23d19",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/06eaacb944ee59360cf9af7777eff4fab12a1f2dbafbf6ebec4c2ecae2454867.jsonl",
+      "sha256": "06eaacb944ee59360cf9af7777eff4fab12a1f2dbafbf6ebec4c2ecae2454867",
+      "bytes": 1017,
+      "count": 5,
+      "files_bytes": 21900
+    },
+    {
+      "run": "local/research/codex/chain-r1",
+      "path": "local/evidence-manifests/a86bc5414d42b9d3e7337dc6153f75bcdf8442849ad6a0550e242d51168ea90c.jsonl",
+      "sha256": "a86bc5414d42b9d3e7337dc6153f75bcdf8442849ad6a0550e242d51168ea90c",
+      "bytes": 600,
+      "count": 3,
+      "files_bytes": 35441
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/9a30ba66b24ffec75d389ca2db127d1bae6d5307bcb881b1649848132d4575f5.jsonl",
+      "sha256": "9a30ba66b24ffec75d389ca2db127d1bae6d5307bcb881b1649848132d4575f5",
+      "bytes": 1016,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/g1-ability-lifecycle-source-native-r5",
+      "path": "local/evidence-manifests/5e80bff5414d33770022367d222187a18e8b76182380abe85bfe3249d2c1fa63.jsonl",
+      "sha256": "5e80bff5414d33770022367d222187a18e8b76182380abe85bfe3249d2c1fa63",
+      "bytes": 301102,
+      "count": 1366,
+      "files_bytes": 62100910
+    },
+    {
+      "run": "local/research/codex/g1-ability-lifecycle-source-native-r6",
+      "path": "local/evidence-manifests/a0ee7a740289bc54701e2cadd6fc0d57565dd9e991128f026653837c6a3639f2.jsonl",
+      "sha256": "a0ee7a740289bc54701e2cadd6fc0d57565dd9e991128f026653837c6a3639f2",
+      "bytes": 2434,
+      "count": 11,
+      "files_bytes": 149561
+    },
+    {
+      "run": "local/research/codex/g1-ability-lifecycle-source-native-r7",
+      "path": "local/evidence-manifests/c4fba19ea8c1a2b0351a801d93cc0c7e1d626d15708095da6a6c9b451a71c8ea.jsonl",
+      "sha256": "c4fba19ea8c1a2b0351a801d93cc0c7e1d626d15708095da6a6c9b451a71c8ea",
+      "bytes": 298652,
+      "count": 1355,
+      "files_bytes": 61135030
+    },
+    {
+      "run": "local/research/codex/g1-ability-pool-source-native-r8",
+      "path": "local/evidence-manifests/839d646e6224f8eea00a18d0e4439f6687dc12c5c39a14ba98760e3475f743e1.jsonl",
+      "sha256": "839d646e6224f8eea00a18d0e4439f6687dc12c5c39a14ba98760e3475f743e1",
+      "bytes": 177869,
+      "count": 827,
+      "files_bytes": 37196883
+    },
+    {
+      "run": "local/research/codex/g1-ability-pool-source-native-r9",
+      "path": "local/evidence-manifests/1361b604e6c6c2be9cfb3a0fc495be454a8e1b19af56fa778431e61363ce2ecd.jsonl",
+      "sha256": "1361b604e6c6c2be9cfb3a0fc495be454a8e1b19af56fa778431e61363ce2ecd",
+      "bytes": 172685,
+      "count": 803,
+      "files_bytes": 36172977
+    },
+    {
+      "run": "local/research/codex/g1-ability-rebind-source-native-r10",
+      "path": "local/evidence-manifests/ed59d4bad96196127dac52b03d3bbb3e340e251f599e041ec1ae040bea93f0b7.jsonl",
+      "sha256": "ed59d4bad96196127dac52b03d3bbb3e340e251f599e041ec1ae040bea93f0b7",
+      "bytes": 181684,
+      "count": 833,
+      "files_bytes": 37732241
+    },
+    {
+      "run": "local/research/codex/g1-ability-rebind-source-native-r11",
+      "path": "local/evidence-manifests/98d77fb5c102abf167271ad8b6d8edc2386c17e7e7048be7db13b52d8e067a2c.jsonl",
+      "sha256": "98d77fb5c102abf167271ad8b6d8edc2386c17e7e7048be7db13b52d8e067a2c",
+      "bytes": 308615,
+      "count": 1412,
+      "files_bytes": 70803534
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r10",
+      "path": "local/evidence-manifests/6d1a03588505e91a5d81819cf816bcff140c34a9c7fdf32b30158c3aed574cea.jsonl",
+      "sha256": "6d1a03588505e91a5d81819cf816bcff140c34a9c7fdf32b30158c3aed574cea",
+      "bytes": 2897,
+      "count": 14,
+      "files_bytes": 35500
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r7",
+      "path": "local/evidence-manifests/dc4f7b35b4ffc6795bd30203bac928faeb0d10e37dd7a47bb769b992c12dd71d.jsonl",
+      "sha256": "dc4f7b35b4ffc6795bd30203bac928faeb0d10e37dd7a47bb769b992c12dd71d",
+      "bytes": 3894,
+      "count": 19,
+      "files_bytes": 60843
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r8",
+      "path": "local/evidence-manifests/4ca86580f7a9033bc8522561f29b3cb91fceb051b783d0dd200d0c1bf786eb60.jsonl",
+      "sha256": "4ca86580f7a9033bc8522561f29b3cb91fceb051b783d0dd200d0c1bf786eb60",
+      "bytes": 4722,
+      "count": 23,
+      "files_bytes": 62031
+    },
+    {
+      "run": "local/research/codex/g1-shoe-punch-reuse-r9",
+      "path": "local/evidence-manifests/58045f1e60c9900bf886f8635ba0c8d1f88b1192e267f0e14baf1a648249b57b.jsonl",
+      "sha256": "58045f1e60c9900bf886f8635ba0c8d1f88b1192e267f0e14baf1a648249b57b",
+      "bytes": 2087,
+      "count": 10,
+      "files_bytes": 96614
+    },
+    {
+      "run": "local/research/codex/g1-shoe-source-native-r1",
+      "path": "local/evidence-manifests/b237412b9208a985e2d6e3d1283ab15958af4335887dbd57edb2b43232ba068f.jsonl",
+      "sha256": "b237412b9208a985e2d6e3d1283ab15958af4335887dbd57edb2b43232ba068f",
+      "bytes": 96959,
+      "count": 464,
+      "files_bytes": 6574126522
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/0c4eca80926f2c2ba9a261d938b1941d16bfd83a3d074580501a8217ce4a6425.jsonl",
+      "sha256": "0c4eca80926f2c2ba9a261d938b1941d16bfd83a3d074580501a8217ce4a6425",
+      "bytes": 434,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/1908cb756f31358c2111231040da0255271a4c523139d4296c0d8fa8b4363add.jsonl",
+      "sha256": "1908cb756f31358c2111231040da0255271a4c523139d4296c0d8fa8b4363add",
+      "bytes": 622,
+      "count": 3,
+      "files_bytes": 449
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/d49a6fb6b524d14dd06a03c54869fddb668cdd66483ff377811e695acf2d5a07.jsonl",
+      "sha256": "d49a6fb6b524d14dd06a03c54869fddb668cdd66483ff377811e695acf2d5a07",
+      "bytes": 641,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/room-player-r1",
+      "path": "local/evidence-manifests/3cd511a0f3842577733fb78cc8d45234b4137e01b35ab6e6582865ab90273eee.jsonl",
+      "sha256": "3cd511a0f3842577733fb78cc8d45234b4137e01b35ab6e6582865ab90273eee",
+      "bytes": 460,
+      "count": 2,
+      "files_bytes": 286
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/7290f30365072bb5ff9afc1dbe57dcc97a4cb98a2d46723b44fbd4e1ec5f8eaa.jsonl",
+      "sha256": "7290f30365072bb5ff9afc1dbe57dcc97a4cb98a2d46723b44fbd4e1ec5f8eaa",
+      "bytes": 796,
+      "count": 4,
+      "files_bytes": 22817
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/36b1fb28ca4b791735db48a8aeb7678aa8a31157be1e907f176ac971190c2c28.jsonl",
+      "sha256": "36b1fb28ca4b791735db48a8aeb7678aa8a31157be1e907f176ac971190c2c28",
+      "bytes": 453,
+      "count": 2,
+      "files_bytes": 384
+    },
+    {
+      "run": "local/research/codex/start-reply-r1",
+      "path": "local/evidence-manifests/7d9c83041e3ec97879c92fd5c88e6218cab6cd9972f5bdba293e5532d6c00f4c.jsonl",
+      "sha256": "7d9c83041e3ec97879c92fd5c88e6218cab6cd9972f5bdba293e5532d6c00f4c",
+      "bytes": 460,
+      "count": 2,
+      "files_bytes": 314
     }
   ]
 }

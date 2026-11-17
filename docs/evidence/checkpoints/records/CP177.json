@@ -149,14 +149,6 @@
       "limits": "Modified KR00967 Wine copies/private virtual hosts/samephysicalhost only; one freshC first-round bomb per positive run, two different vacancies. No originalWindows/fullauth/general membership/account resume/LANInternet8clients/gates; no new survival/peer/result/reset/capacityexhaustion. Maxima1/10and2/7 remain operatorpolicy. CP176twoACnormalcycles separate. C0startupSIGSEGV and preparation failure retained; passing control does not fix/explain startup. Reviewwaived/selfcheck, no independentapproval."
     }
   ],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP177-replacement-profile.json",
-      "bytes": 452736,
-      "sha256": "d4a9778e5a17b6af4c928c5747021ae1d4088120422e256afb83d551aeb3edf3",
-      "count": 1775
-    }
-  ],
   "delta": {
     "added": [
       "Reusableoptional47pinreplacementpreset, explicitvacancyCcapacity and minimum actual C0/C1native118159158 controls."
@@ -258,5 +250,188 @@
       "reason": "Workflow/store/cadence unchanged; audit notdue untilCP180."
     }
   ],
-  "evidence": []
+  "evidence": [
+    {
+      "id": "RUN-00026",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C1-r1/profile-delta-verification.json",
+      "bytes": 10409,
+      "sha256": "2936bc0d91dcd216d3a28df80d2f261c004e4f3679c1d90b82a74547716c3f29"
+    },
+    {
+      "id": "RUN-00027",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C1-r1/profile.json",
+      "bytes": 15535,
+      "sha256": "69ad6ba7eb0ab89f8cc49f23cd3ca3ad3003666c5379f55c5d28eee5dcc6822b"
+    },
+    {
+      "id": "RUN-00028",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C1-r1/raw-seal.json",
+      "bytes": 130827,
+      "sha256": "2c9dc2baf124300e6117ecbb99e0033250afad9c12102384273ecf8196d2b459"
+    },
+    {
+      "id": "RUN-00029",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C1-r1/reuse-question.json",
+      "bytes": 2784,
+      "sha256": "1c7add6aa9acabc2ff0e11db544754c1c34c0defdb1b040424a66cc08172546d"
+    },
+    {
+      "id": "RUN-00733",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C0-r1/preparation-only-report.json",
+      "bytes": 662,
+      "sha256": "f60776f1747ff8752ae635a995fcef6883a484fde5bfb2eb1f324361a9632e8a"
+    },
+    {
+      "id": "RUN-00752",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C0-r2/raw-seal.json",
+      "bytes": 44702,
+      "sha256": "83c48d253d531bf9c86c7b13e69d71148afcc6c52a4e8fb0d4178a16f1acde27"
+    },
+    {
+      "id": "RUN-00755",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C0-r2/startup-failure-verification.json",
+      "bytes": 1142,
+      "sha256": "3dde0418756df819777496f21c2af9002bd55c47ce10dbee99d30082a7d24815"
+    },
+    {
+      "id": "RUN-01050",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C0-r3/profile-delta-verification.json",
+      "bytes": 10410,
+      "sha256": "28818cbdbc1642d9b520e0ba56d8407e0fb887d361626d93406b96ca61b4146a"
+    },
+    {
+      "id": "RUN-01052",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C0-r3/raw-seal.json",
+      "bytes": 128339,
+      "sha256": "ac703df071bfa86ba65677183ca5f2ca084483e4058599d404418e1fc47d85c6"
+    },
+    {
+      "id": "RUN-01053",
+      "kind": "local",
+      "path": "local/research/codex/replacement-profile-C0-r3/reuse-question.json",
+      "bytes": 2783,
+      "sha256": "af21aa1e7b652cabf35c1e711ffaad1c9532ecd0a0b44882514d80eadd033c72"
+    },
+    {
+      "id": "RUN-01761",
+      "kind": "local",
+      "path": "local/research/codex/cp177-server-tests.txt",
+      "bytes": 384,
+      "sha256": "1411b3b2c9f732e09a258658a972359c020adee8b4c474b27ba20239dc7ce5df"
+    },
+    {
+      "id": "RUN-01762",
+      "kind": "local",
+      "path": "local/research/codex/cp177-export-tests-final.txt",
+      "bytes": 8576,
+      "sha256": "9030b06f8c96de341e2f42dbaf7b4b834e88aca440875afad666ebd822a244b9"
+    },
+    {
+      "id": "RUN-01763",
+      "kind": "local",
+      "path": "local/research/codex/cp177-docs-check.txt",
+      "bytes": 175,
+      "sha256": "03eafe66d551d9a5c0687fa23b4cac325162a952c08a0a38b8965cf4f05bbf16"
+    },
+    {
+      "id": "RUN-01764",
+      "kind": "local",
+      "path": "local/research/codex/cp177-catalog-check.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUN-01765",
+      "kind": "local",
+      "path": "local/research/codex/cp177-issue-live-check.txt",
+      "bytes": 130,
+      "sha256": "1d5b989af28f3bdfee7efe31f5af6a62858b202f004407863c5422299382f39f"
+    },
+    {
+      "id": "RUN-01771",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 106121,
+      "sha256": "96c1a56837b28ea25daeade2d048f96016805188d2c8d1e90ffa2afdc01a4690"
+    },
+    {
+      "id": "RUN-01772",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "RUN-01773",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "RUN-01774",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 8943,
+      "sha256": "b52057483e83f3a8ec2f96ad8ad6c6bac1f2131ca12760ebe3b34c453f5ddb43"
+    },
+    {
+      "id": "RUN-01775",
+      "kind": "repository",
+      "path": "tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/replacement-profile-C1-r1",
+      "path": "local/evidence-manifests/c292880a654ee622663bcbd48b30e4a7102d7c7dff51e203e873fcf62e48ca4b.jsonl",
+      "sha256": "c292880a654ee622663bcbd48b30e4a7102d7c7dff51e203e873fcf62e48ca4b",
+      "bytes": 147253,
+      "count": 717,
+      "files_bytes": 118000174
+    },
+    {
+      "run": "local/research/codex/replacement-profile-C0-r1",
+      "path": "local/evidence-manifests/d3c7122c61712c24afa0fed277cae4cea6d0fc8a416bd7dd1a1b879fdfd7bd95.jsonl",
+      "sha256": "d3c7122c61712c24afa0fed277cae4cea6d0fc8a416bd7dd1a1b879fdfd7bd95",
+      "bytes": 2631,
+      "count": 13,
+      "files_bytes": 95719
+    },
+    {
+      "run": "local/research/codex/replacement-profile-C0-r2",
+      "path": "local/evidence-manifests/d777325e91905b9e27a0603998899536fc7f499d8ebaed04984a7793902bc79b.jsonl",
+      "sha256": "d777325e91905b9e27a0603998899536fc7f499d8ebaed04984a7793902bc79b",
+      "bytes": 59521,
+      "count": 288,
+      "files_bytes": 103649389
+    },
+    {
+      "run": "local/research/codex/replacement-profile-C0-r3",
+      "path": "local/evidence-manifests/6f91ca2cd7f7fe2a8be6967cb70a45d867605b93b67325c695d06d717f9c7428.jsonl",
+      "sha256": "6f91ca2cd7f7fe2a8be6967cb70a45d867605b93b67325c695d06d717f9c7428",
+      "bytes": 147646,
+      "count": 718,
+      "files_bytes": 118835216
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/67b7fa077cf9853873ae53e226d8635767505c0e69bfcdfb747ac47cc7ac8419.jsonl",
+      "sha256": "67b7fa077cf9853873ae53e226d8635767505c0e69bfcdfb747ac47cc7ac8419",
+      "bytes": 3541,
+      "count": 19,
+      "files_bytes": 542013
+    }
+  ]
 }
