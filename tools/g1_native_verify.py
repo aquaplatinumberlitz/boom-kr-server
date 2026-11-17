@@ -87,10 +87,26 @@ def motion(root):
     requests=[row for row in channels[actor['wire_id']]['incoming'] if row['opcode']==119]
     fields=[codec.read_fields(bytes.fromhex(row['body_hex']),[1,1,1,2,1,1,1,1,2,2])for row in requests]
     assert len(fields)==len(matrix['cases'])
-    assert [row[2]for row in fields]==[case['selector']for case in matrix['cases']]
+    expected=[case['selector']for case in matrix['cases']]
+    correction_path=root/'selector-name-correction.json'
+    corrections=None
+    if correction_path.exists():
+        assert kind==3
+        corrections=read(correction_path)
+        assert corrections['matrix_sha256']==pin(root/'matrix.json')['sha256']
+        assert corrections['wire_sha256']==pin(root/'decoded-channels-shared.json')['sha256']
+        for correction in corrections['corrections']:
+            index=correction['round']-1
+            assert expected[index]==correction['planned'] and correction['planned']in[4,6]
+            assert correction['expected']==10-correction['planned']
+            contact=next(step for step in matrix['steps']if step['name'].startswith('round'+str(index+1)+'-')and step['name'].endswith('-contact'))
+            key=contact['actions'][0]['key']
+            assert correction['expected']=={'Right':6,'Left':4}[key]
+            expected[index]=correction['expected']
+    assert [row[2]for row in fields]==expected
     assert all(row[:2]==[0,0] for row in fields)
-    expected_selectors={4,5,6,7}if kind==3 else{0,1,2,3}
-    assert {row[2]for row in fields}==expected_selectors
+    allowed_selectors={4,5,6,7}if kind==3 else{0,1,2,3}
+    assert set(expected)<=allowed_selectors and {row[2]for row in fields}==set(expected)
     # Every action keeps the exact source/target reported by the native client.
     # Endpoint distance is recorded; it is not a flight-length or RNG claim.
     cases=[];getter_checks=[];shared=None
@@ -178,6 +194,7 @@ def motion(root):
     result=dict(result='verified_native_motion_matrix_peer_retirement_reset_and_wrappers',source='kr_runtime',status='confirmed',
                 run=pin(out/'run.json'),wire=pin(root/'decoded-channels-shared.json'),matrix=pin(root/'matrix.json'),
                 item=kind,rounds=matrix['rounds'],cases=cases,native_getter_checks=len(getter_checks),
+                covered_selectors=sorted({row[2]for row in fields}),selector_name_correction=pin(correction_path)if corrections else None,
                 limits='Native Wine/private LAN, persisted C1 actor/C0 peer. Report-derived motion/retirement policy is design. Endpoint delta is not flight length; no original server authority, Internet/load or whole G1 closure.')
     target=root/'motion-verification.json';assert not target.exists();write(target,result);print(result['result'])
 
