@@ -12,11 +12,57 @@ from server import probe_codec as codec
 from g1_native_harness import check_pins, matches, pin, read, tagged, write
 
 
+
+def check_runtime_inputs(root, rows):
+    changes=[(row,pin(row['path']))for row in rows if pin(row['path'])!=row]
+    if not changes:
+        return
+    # KR rewrites this known metadata cache from actual S2C238. Every other
+    # pin remains strict; preserve preflight and prove both before/after bytes.
+    import shutil
+    import zlib
+    from tools.rust_map_profile import blob
+    config=read(root/'config.json');run=read(root/'native/cycles/run.json')
+    wire=read(root/'decoded-channels-shared.json')
+    assert wire['run_sha256']==pin(root/'native/cycles/run.json')['sha256']
+    expected={str(Path(config['roles'][role]['game_dir'])/'fxdynmapinfo.ssd'):role for role in ['A','B']}
+    assert len(changes)==2 and {row['path']for row,_ in changes}==set(expected)
+    source_inputs=read(root/'vi-client-inputs.json')['files']
+    folder=root/'cache-evidence';folder.mkdir(exist_ok=True);proof=[]
+    for before,after in changes:
+        role=expected[before['path']]
+        source=next(row['source']for row in source_inputs if row['role']==role and row['target']['path']==before['path'])
+        assert source['bytes']==before['bytes'] and source['sha256']==before['sha256']
+        check_pins([source])
+        old=folder/(role+'-before.ssd');new=folder/(role+'-after.ssd')
+        for src,dst in [(Path(source['path']),old),(Path(after['path']),new)]:
+            if dst.exists():assert dst.read_bytes()==src.read_bytes()
+            else:shutil.copy2(src,dst)
+        data=new.read_bytes()
+        assert data[:4]==b'ssi1' and data[8]==24 and data[13]==1
+        assert int.from_bytes(data[4:8],'little')==zlib.adler32(data[8:],0)&0xffffffff
+        assert int.from_bytes(data[9:13],'little')==len(data)-13
+        dec=zlib.decompressobj();plain=dec.decompress(data[18:],65537)
+        assert dec.eof and not dec.unused_data and not dec.unconsumed_tail
+        assert len(plain)==int.from_bytes(data[14:18],'little')
+        identity=run['account_launches'][role]['response']['player']['wire_id']
+        channel=next(row for row in wire['channels']if row['identity']==identity)
+        tables=[row for row in channel['out']if row['opcode']==238];assert tables
+        for table in tables:
+            inner,end,_=blob(bytes.fromhex(table['body_hex']))
+            assert end==table['bytes'] and inner==plain
+        proof.append(dict(role=role,before=before,after=after,retained_before=pin(old),retained_after=pin(new),actual238_count=len(tables),cache_plain_equals_actual238=True))
+    result=dict(result='verified_only_two_client_metadata_cache_outputs',run=pin(root/'native/cycles/run.json'),wire=pin(root/'decoded-channels-shared.json'),mutations=proof,all_other_requested_inputs_unchanged=True,preflight_frozen=False,noncache_inputs_frozen=True,limits='Retained original preflight and postrun mismatch failure. Known fxdynmapinfo cache outputs equal actual238 exactly; no general mutable-input exemption or L1 closure.')
+    target=root/'cache-verification.json'
+    if target.exists():assert read(target)==result
+    else:write(target,result)
+
+
 def lifecycle(root):
     matrix = read(root/'matrix.json')
     out = root/'native/cycles'
     assert read(root/'native/launch-exit.json')['returncode'] == 0
-    check_pins(read(root/'native/runtime-preflight.json')['files'])
+    check_runtime_inputs(root,read(root/'native/runtime-preflight.json')['files'])
     run = read(out/'run.json')
     assert not run.get('error') and not run.get('cleanup_errors') and run['service_stopped']
     assert run['owned_orphan_cleanup']['result'] == 'all_owned_namespace_descendants_reaped'
@@ -48,7 +94,11 @@ def lifecycle(root):
             assert sum(matches(row,expected['match'])for row in rows) == expected['count'], (role,expected)
     with sqlite3.connect('file:'+str(out/'account-db/accounts.sqlite')+'?mode=ro',uri=True) as db:
         seed = sqlite3.connect('file:'+str(root/'previous-accounts.sqlite')+'?mode=ro',uri=True)
-        first = seed.execute('select coalesce(max(id),0)from matches').fetchone()[0]
+        if seed.execute("select count(*)from sqlite_master where type='table'and name='matches'").fetchone()[0]:
+            first = seed.execute('select coalesce(max(id),0)from matches').fetchone()[0]
+        else:
+            assert seed.execute('pragma user_version').fetchone()[0]==2
+            first = 0  # The measured schema2 seed predates the schema3 match journal.
         seed.close()
         matches_db = db.execute('select id,map_name,state,start_json from matches where id>?order by id',(first,)).fetchall()
         assert len(matches_db) == matrix['rounds']
@@ -246,13 +296,13 @@ def vi_smoke(root):
     inputs=read(root/'vi-client-inputs.json');out=root/'native/cycles'
     expected='37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84'
     assert inputs['exe']['sha256']==expected
-    check_pins([row['target']for row in inputs['files']])
+    check_runtime_inputs(root,[row['target']for row in inputs['files']])
     wire=read(root/'decoded-channels-shared.json')
     assert wire['run_sha256']==pin(out/'run.json')['sha256']
     run=read(out/'run.json');matrix=read(root/'matrix.json')
     assert matrix['map']=='Factory07' and matrix['rounds']==2
     events=[json.loads(line)for line in (out/'rust-events.jsonl').read_text().splitlines()]
-    pickups=[row for row in events if row.get('pickup',{}).get('accepted')]
+    pickups=[row for row in events if (row.get('pickup')or{}).get('accepted')]
     assert [row['pickup']['index']for row in pickups]==[701,701]
     views={}
     for role in matrix['roster']:
