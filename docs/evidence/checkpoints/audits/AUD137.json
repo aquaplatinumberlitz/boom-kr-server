@@ -1,0 +1,83 @@
+{
+  "id": "AUD137",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-rust-owner-shoe-selector5-up-three-slice"
+  ],
+  "completed_through": "CP329",
+  "recorded_utc": "2026-11-17T06:03:46.318655+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/rust-service/g1-shoe.json",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/pickups.rs",
+    "rust/crates/kr-service/src/room.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "rust/crates/kr-service/src/terrain.rs",
+    "rust/crates/kr-service/src/four_results.rs",
+    "local/research/codex/g1-shoe-build-r2/verification.json",
+    "local/research/codex/g1-shoe-build-r2/source-commit-binding.json",
+    "local/research/codex/g1-shoe-rust-native-r1/native/failure-verification.json",
+    "local/research/codex/g1-shoe-rust-native-r2/native/partial-verification.json",
+    "local/research/codex/g1-shoe-rust-native-r3/shoe-native-verification.json",
+    "local/research/codex/g1-shoe-rust-native-r3/decoded-channels-shared.json",
+    "local/research/codex/g1-shoe-rust-native-r3/native-actor-field-checks.json",
+    "local/research/codex/g1-shoe-rust-native-r3/native/raw-seal.json",
+    "local/research/codex/g1-shoe-rust-native-r3/native/cycles/rust-events.jsonl"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH rồi đối chiếu nguồn Rust, source/cache binding và raw native. Rà policy cũ không đổi, catalog floor/hidden và Shoe flag theo member/vòng. Kiểm current transport/slot/round/owner/non-reused allocation, eligibility, geometry up-three và terrain/cancellation/path constraints. Rà ledger/terrain cùng clone, reserve mọi queue trước publish, owner/quota/fuse giữ nguyên; giữ corridor tới all-recipient deadline completion hoặc departure. Kiểm mixed motion gồm nguồn cũ của Punch còn active, trước/sau retire và round reset. Đối chiếu independent captured C2S/S2C với native reader162, state3→4/rebind/active0/next118, hai kết quả/về phòng/reset và journalDB đúng hai account/nhân vật C1/C0. Kiểm full build/fmt/clippy/tests,85 source inputs khớp commit, failure/partial/control giữ riêng. Không dùng test regression làm native authority; không nâng toàn Shoe/Punch hoặc G1.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Shoe reference đã có contract nhưng service vẫn thiếu capability, admission và terrain/corridor lifecycle.",
+      "correction": "Thêm policy opt-in report_derived_shoe_punch, member-round Shoe, selector5/up-three owner-only, terrain path và finite terminal obstruction. Cũ Basic/Punch không mở Shoe. Chỉ khai nghiệm thu route có native Rust evidence.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/pickups.rs",
+        "rust/crates/kr-service/src/room.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/terrain.rs"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Chỉ giữ root mới không đủ tránh placement/motion giao hành lang khi bom chưa được native xác nhận dừng. Rà tiếp thấy một Shoe có thể đi vào nguồn cũ của Punch còn active.",
+      "correction": "Giữ Shoe corridor gồm nguồn/đích tới retirement; Shoe admission kiểm cả nguồn/đích Punch active. Guard chỉ phục vụ policy mới, không thay placement trong preset Punch cũ. Kiểm peer delivery sau actor departure và release khi allocation kết thúc.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Initial negative bom có thể phá terminal box, khiến actual target dài hơn geometry đã mở. Đổi vị trí peer bằng Down chưa đưa peer ra khỏi ô bom kết thúc.",
+      "correction": "Giữ R1 ba request đích2,3 bị từ chối và R2 một admitted action/retirement nhưng không result/reset. R3 giữ binary corrected, negative bomb3,4 và feedback peer9,5 bằng phím thường, không sửa packet hoặc state client.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-shoe.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Ca cả hai cùng report chết không kết thúc ở managed player result. Tránh ca này trong phép thử Shoe không giải giới hạn dịch vụ.",
+      "correction": "Đọc four_results::winner xác nhận all-dead cố ý chưa hỗ trợ; ghi gap và task453 ngay sau lát Shoe. Không tự ghép tieenum hoặc gọi toàn bộ phase1 đã hoàn tất.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/g1-shoe.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Chỉ hoàn tất owner Shoe selector5/up-three với hai account trên ExVillage01; toàn Shoe/Punch, hướng/khoảng cách khác và G1 chưa đóng.",
+    "Native thiếu foreign bomb, motion lặp/late/inflight, mọi nhân vật/map/roster và mixed-motion/queued-departure fault injection. Server regressions được ghi đúng loại.",
+    "Corridor lease tới retirement, owner-only, up-three, >=3s và158 ordering là policy design, không phục hồi server gốc hoặc bảo đảm mọi độ trễ.",
+    "Task453 còn all-dead managed player; M8 còn Internet cho transport mới, tải50/8phòng, chạy dài và vận hành. L1 thuộc Claude.",
+    "CI và full exact-head local/history vẫn phải qua trước merge; waiver không là review độc lập. Không đưa raw/binary/decompile hoặc thông tin VPS/OCI lên GitHub."
+  ]
+}

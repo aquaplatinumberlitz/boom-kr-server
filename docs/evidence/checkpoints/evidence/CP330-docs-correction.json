@@ -1,0 +1,187 @@
+{
+  "schema": "kre-evidence-manifest-v1",
+  "evidence": [
+    {
+      "id": "DOC330-0001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3663,
+      "sha256": "380528d7ff2f338e372c875ae21b034b825040838ece62f840f144b9eb5ccf42"
+    },
+    {
+      "id": "DOC330-0002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 269411,
+      "sha256": "3a8be5a66a0fc2af2b54f40f8816d83d8f8cb56d25ed83ac4fb55054a9dba7be"
+    },
+    {
+      "id": "DOC330-0003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 166261,
+      "sha256": "21994285a568eb8fb0cf0dd2f529c666f48b3c547ce4d4665cb19e6c7bbc625b"
+    },
+    {
+      "id": "DOC330-0004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 85563,
+      "sha256": "e5e7d95a319c74a64232949db0d952f3538c6a1d2ab0e3885152e0f08ff666dd"
+    },
+    {
+      "id": "DOC330-0005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45530,
+      "sha256": "94948a292c4014c95c838ff7780c8663b21a3f3362caaadcadc58579f5e08ae1"
+    },
+    {
+      "id": "DOC330-0006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD138.json",
+      "bytes": 2594,
+      "sha256": "7ed7f5df9cbdea96ed16ad1a4fa8df59acb091aae2667431b1f9d0781547b787"
+    },
+    {
+      "id": "DOC330-0007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+      "bytes": 2576,
+      "sha256": "99479e6afa98006ce2afbc994530889f27259fe40c1236e016b6e29d15f00404"
+    },
+    {
+      "id": "DOC330-0008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 333950,
+      "sha256": "923ac378f87bf25b352c95f78a4686b227a9f4d5892fd81860c7db220ce8a2f2"
+    },
+    {
+      "id": "DOC330-0009",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 40613,
+      "sha256": "4cf993e23c5de1cb39c473d0a630fb1369b4f5bb9a41ec1c3a4e56ff1b514a19"
+    },
+    {
+      "id": "DOC330-0010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 281949,
+      "sha256": "7a32c6f49b2c2113803e5a31deb52264f1d871d5feda50f4ac3d15876cf90107"
+    },
+    {
+      "id": "DOC330-0011",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 74692,
+      "sha256": "afd67334a3c76b00c7a9e7451d68387e6abf4eb0181bc55906577fa8842cb00a"
+    },
+    {
+      "id": "DOC330-0012",
+      "kind": "local",
+      "path": "local/research/codex/append_cp330_docs_correction.py",
+      "bytes": 6491,
+      "sha256": "dab9879c18b11e774216f0cf955ef91f79e012907484db4ffa30b8d7433b287b"
+    },
+    {
+      "id": "DOC330-0013",
+      "kind": "local",
+      "path": "local/research/codex/cp329-docs-precheck-v2.txt",
+      "bytes": 63,
+      "sha256": "9def19f9c1072a897f88420bbc9dff11a053f09e92aec0fb3465c9e15993532c"
+    },
+    {
+      "id": "DOC330-0014",
+      "kind": "local",
+      "path": "local/research/codex/cp329-docs-precheck.txt",
+      "bytes": 210,
+      "sha256": "ed2d7cdebd5d1c129f4a69036b7d5407ad47161292ea2f61a3f717d502198d43"
+    },
+    {
+      "id": "DOC330-0015",
+      "kind": "local",
+      "path": "local/research/codex/cp330-catalog-check-v2.txt",
+      "bytes": 246,
+      "sha256": "3d19a2b9d9bdbfa07fef68c6f33b081ab05ee4508901dd53bee08e964a772a3c"
+    },
+    {
+      "id": "DOC330-0016",
+      "kind": "local",
+      "path": "local/research/codex/cp330-catalog-check.txt",
+      "bytes": 246,
+      "sha256": "3d19a2b9d9bdbfa07fef68c6f33b081ab05ee4508901dd53bee08e964a772a3c"
+    },
+    {
+      "id": "DOC330-0017",
+      "kind": "local",
+      "path": "local/research/codex/cp330-docs-check-v2.txt",
+      "bytes": 99,
+      "sha256": "86b6d872d7a075bf09f93405871af85db9b53eea8685ca1851b37458289dac88"
+    },
+    {
+      "id": "DOC330-0018",
+      "kind": "local",
+      "path": "local/research/codex/cp330-docs-check-v3.txt",
+      "bytes": 274,
+      "sha256": "e60ccb2d604a0e4819d380d485f365c277055bcb8b38a2071650d68a9ae1ce4d"
+    },
+    {
+      "id": "DOC330-0019",
+      "kind": "local",
+      "path": "local/research/codex/cp330-docs-check.txt",
+      "bytes": 99,
+      "sha256": "86b6d872d7a075bf09f93405871af85db9b53eea8685ca1851b37458289dac88"
+    },
+    {
+      "id": "DOC330-0020",
+      "kind": "local",
+      "path": "local/research/codex/cp330-final-docs-check.txt",
+      "bytes": 274,
+      "sha256": "f4183667db4f2fa945043f9c92df9df1336f94af3afbf5def567a0832e911ade"
+    },
+    {
+      "id": "DOC330-0021",
+      "kind": "local",
+      "path": "local/research/codex/cp330-github-snapshot-full.json",
+      "bytes": 356249,
+      "sha256": "5ea842df4c747707663f28cb0f1fb34589e80e6ba1f286097a5f8afb02b51e9f"
+    },
+    {
+      "id": "DOC330-0022",
+      "kind": "local",
+      "path": "local/research/codex/cp330-issue-snapshot-candidate-validation.txt",
+      "bytes": 350,
+      "sha256": "ed7cc0153ecace0df89d8fde4cea9daad114221832c5fde3addb21797073cf18"
+    },
+    {
+      "id": "DOC330-0023",
+      "kind": "local",
+      "path": "local/research/codex/cp330-issue-snapshot-refresh-local.txt",
+      "bytes": 65,
+      "sha256": "b117985a3df4d5c60925e8e0aad76783a84af92412839d0da66e882ab07a5e62"
+    },
+    {
+      "id": "DOC330-0024",
+      "kind": "local",
+      "path": "local/research/codex/cp330-issue-snapshot-refresh.txt",
+      "bytes": 628,
+      "sha256": "d8672227f356446c41e0e08ac698defbb348964b43dea9c7c70b8c048b99e7c7"
+    },
+    {
+      "id": "DOC330-0025",
+      "kind": "local",
+      "path": "local/research/codex/issue453-body-with-navigation.md",
+      "bytes": 2151,
+      "sha256": "ad16e2642de2fcf666836b96ba7ed39def9894e644209886fb8271598da52fad"
+    },
+    {
+      "id": "DOC330-0026",
+      "kind": "local",
+      "path": "local/research/codex/write_cp330_docs_correction.py",
+      "bytes": 5195,
+      "sha256": "f182540a4874db016b1c4a4a4833d829a9c20627d70587453dfd7c1ee7a1d855"
+    }
+  ]
+}

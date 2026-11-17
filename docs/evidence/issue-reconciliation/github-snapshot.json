@@ -2,7 +2,7 @@
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
   "captured_utc": "2026-11-14T14:41:00.456824+00:00",
-  "limits": "State as of capture only; body/declarations are not semantic acceptance; no GitHub mutation.",
+  "limits": "Base state as of captured_utc retained. Issue453 alone appended at incremental_updates timestamp; no full current-state or completeness claim. Bodies/declarations are not acceptance; no other issue/PR updated.",
   "issues": [
     {
       "body": "KRE-074 / L1 UTF-8. Baseline main a610ebc (PR413), chủ dự án ngày14/11 yêu cầu giao một sub-agent Terra high thực hiện ba lát UTF-8 hiện hành: L1a tĩnh, L1b patch/native, L1c nhập liệu. Parent Codex tích hợp/tự kiểm; independent review waived, không gọi worker khác. Chỉ đạo trực tiếp mới này thay giới hạn solo đối với task này.\n\nOwner source riêng: sub-agent l10n_utf8 tại worktree research/l10n-utf8. File: tools/l10n_utf8_* hoặc helper riêng, docs/content/client-language.md#utf8 hoặc file con, metadata/raw riêng. Không sửa gameplay Rust, exporter hoặc source translation repo. Parent giữ PLAN, catalog, checkpoint/audit counters, exact-head verification và merge/CI.\n\nAcceptance: L1a xác minh bằng IDA trên copy cơ chế chữ PopTag và mapping00967/codepage/cắt/duyệt/đo/vẽ/font/IME/hardcoded949, chọn thiết kế có evidence và giới hạn. L1b patch runtime/private copy, native ko/en/vi UTF8 qua login→sảnh→shop→phòng, ảnh và raw/hash/rollback. L1c nhập Việt/Hàn chat/title và đối chiếu byte; server UTF8 integration nếu chưa được phục hồi phải ghi gap, không đổi wire cho client chưa vá. Mỗi lát chỉ complete khi evidence/docs đủ; không suy static/model/encoder thành native.\n\nFeature KR-B001; không mở lại gate K1 hoặc tự nâng scope giai đoạn1. Không1258. Không sửa client/pack/IDA DB nguồn; PopTag chỉ copy trong namespace loopback/no routes, không updater/installer. Không commit binary/pack/decompile/mã PopTag hoặc dữ liệu hạ tầng riêng. Một runtime lease dùng chung, không Wine/PopTag/KR đồng thời G1. Hoàn tất/export/seal/cleanup trước đổi source/config/input. Raw chỉ local; source/status/build/hash/locator và unknown rõ ràng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md), [UTF8](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/content/client-language.md#utf8). Đề bài local/research/claude/codex-prompt-l10n-utf8.md; Terra static WIP là candidate cần xác minh, không là contract.\n",
@@ -750,6 +750,15 @@
       "title": "[KRE-001] Khóa artifact KR và dựng harness bootstrap control",
       "updatedAt": "2026-11-06T21:00:29Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1"
+    },
+    {
+      "body": "KRE-G1-PLAYER-ALL-DEAD — luồng kết thúc trận managed player round khi không còn người sống.\n\nBaseline: `73fd780` trên nhánh Shoe (Rust source hiện hành trước correction overlap); main CP328 / PR #452. Owner/reviewer: Codex solo, review độc lập waived theo AGENTS. Dependency: hoàn tất lát Shoe đang làm ở #445 trước implementation này; thứ tự chuẩn ở docs/PLAN.md.\n\nKhoảng trống: `four_results::winner` trả None khi số đội sống khác 1 và cố ý chưa hỗ trợ all-dead/tie. Managed player round dùng cùng nhánh. Native Shoe control R2 có hai slot cùng report17/19 và không có175 trước timeout. Điều khiển peer ra khỏi tia giúp kiểm Shoe, nhưng không giải khoảng trống dịch vụ này. Bằng chứng hai người all-dead cũ và builder175 roster hiện hành phải được tái dùng trước RE thêm; không suy tie enum server gốc.\n\nPhạm vi: result policy/encoder vừa đủ cho current managed player roster, delivery/round fences và journal; native cho toàn bộ participant cùng bị loại, reset và trận tiếp. Nếu còn wire unknown, phép đo reference đúng gap trước Rust. Không đổi thưởng0 hoặc quyết định mode/map/item; không sửa L1, exporter hay nguồn client/pack/DB.\n\nAcceptance: kết thúc hữu hạn thay vì giữ Armed vô hạn; policy rank/unranked có provenance và không invent winner; native đúng identity/roster ở cả hai view, report/queue/EOF cũ không tác động vòng mới, journal thưởng0 đúng trận, hai vòng/reset và Start kế trong phạm vi đã chọn. Regression và build/docs/catalog; exact-head local/history và mọi CI xanh trước merge. M7/full tie rộng hơn chỉ được claim theo evidence thực.\n\n\nFeature: KR-X001. Nguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-managed-all-dead).\n",
+      "closedAt": null,
+      "number": 453,
+      "state": "OPEN",
+      "title": "G1: đóng vòng managed player khi tất cả participant bị loại",
+      "updatedAt": "2026-11-17T06:10:47Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453"
     }
   ],
   "pull_requests": [
@@ -4393,6 +4402,13 @@
       "state": "MERGED",
       "title": "Clarify independent KR server scope and artifact provenance",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/4"
+    }
+  ],
+  "incremental_updates": [
+    {
+      "issue": 453,
+      "captured_utc": "2026-11-17T06:09:34.727624+00:00",
+      "method": "gh issue view453 only; base snapshot and every other issue/PR remain as originally captured."
     }
   ]
 }

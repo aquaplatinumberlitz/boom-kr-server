@@ -1,0 +1,277 @@
+{
+  "schema": "kre-rust-shoe-slice-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "source_commit": "be8ca23680b9fd4277ce6f137189d4a22e6d912a",
+  "scope": "Lát Rust Shoe selector5/up-three/current owner, cùng policy Punch đã đo. Không phải toàn bộ Shoe/Punch hoặc G1.",
+  "clients": [
+    {
+      "role": "A",
+      "identity": 1,
+      "slot": 0,
+      "character": 1,
+      "native": [
+        {
+          "round": 1,
+          "object": 1668980104,
+          "root": [
+            3,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "round": 2,
+          "object": 1613996744,
+          "root": [
+            3,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        }
+      ],
+      "ranks": 2,
+      "returns": 2,
+      "clocks": 2,
+      "pickup165": 2,
+      "only_Shoe3_no_Punch4": true,
+      "wire_motion": 2,
+      "short_rebind158": 2
+    },
+    {
+      "role": "B",
+      "identity": 2,
+      "slot": 1,
+      "character": 0,
+      "native": [
+        {
+          "round": 1,
+          "object": 1604012280,
+          "root": [
+            3,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "round": 2,
+          "object": 1601948040,
+          "root": [
+            3,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        }
+      ],
+      "ranks": 2,
+      "returns": 2,
+      "clocks": 2,
+      "pickup165": 2,
+      "only_Shoe3_no_Punch4": true,
+      "wire_motion": 2,
+      "short_rebind158": 2
+    }
+  ],
+  "native_actor_field_checks": 216,
+  "policy": {
+    "source": "design",
+    "status": "design",
+    "description": "Opt-in report_derived_shoe_punch; owner-only selector5, three rows upward in same column, clear corridor ending immediately before obstacle, one motion per bomb and remaining deadline>=3s. Reserve full source-to-target corridor until all current recipients finish deadline or depart. Preserve owner/quota/6s fuse; short158 then blast is measured design, not original server order."
+  },
+  "negative_control": "Each round starts with Shoe/Punch flags0; ordinary bomb then natural Right/Left contact input before pickup, actual118 and no119. Synthetic server tests separately check missingitem, wrongmember/owner/dead/round/queue/terrain/deadline and crossing placement/motion.",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-shoe-build-r1/verification.json",
+      "bytes": 2573,
+      "sha256": "f5a6f631581251e0ed937f4abf96bf75c290b5d79369cde7842c82a04b9427f2"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-build-r1/workspace-source-identity.json",
+      "bytes": 28006,
+      "sha256": "6365a273d927550e756a4d18bb6f2abe4ec11f09be81a8ee6b85598066cdd94e"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-build-r1/source-commit-binding.json",
+      "bytes": 13381,
+      "sha256": "eddd437f818f949630e3d9dd9b35bd2021fcf793d81ffbc825339d699fab8234"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-build-r2/verification.json",
+      "bytes": 2573,
+      "sha256": "437ca04e12c541696a2d0b292b43c1d38a06f2a29299dad966aa57d9ea27c268"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-build-r2/workspace-source-identity.json",
+      "bytes": 28006,
+      "sha256": "fb26dd4dadb315beb828d8f963a14bac6b551570a914f21c7642a194679a7a3f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-build-r2/source-commit-binding.json",
+      "bytes": 13346,
+      "sha256": "305ff35952337d76182ef0cbbd7ca3d2b1f20204210cc7fe36099027fc03c021"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r1/native/failure-verification.json",
+      "bytes": 1558,
+      "sha256": "bae169e4f461744355650882443c58d801adcd49647df155f07bdd14e66dd842"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r1/decoded-channels-shared.json",
+      "bytes": 48497,
+      "sha256": "418484fde2b7e5bee14f4a3ef2bbfbcd7b416256efb5ca238b9e8583dbbcd76c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r1/native/raw-seal.json",
+      "bytes": 10259,
+      "sha256": "841cebf580c24e021b6ce5bd9f6a479fb39386d8c2647b43b43c8b60019e67bc"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r1/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "67c7775fa3044d283ddb2c5009f0d4dc1dd7021f75d630a82ba3472c8bd5ad38"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r1/shoe-source-chunk-binding.json",
+      "bytes": 1327,
+      "sha256": "01920f2ad15e34cc947116dd7011ca952751dda63bf66ebf08d804d1f9fe7e89"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r2/native/partial-verification.json",
+      "bytes": 1538,
+      "sha256": "3a849fbad34ea389e8447e8e63e6bcd234ed81e99f4ec09fa64eaeee09a87025"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r2/decoded-channels-shared.json",
+      "bytes": 61005,
+      "sha256": "9d047fa9052c3e0c76d594194b0a833dcb320cb2d388cd056fc0a70cfcf030b8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r2/native/raw-seal.json",
+      "bytes": 10936,
+      "sha256": "eba5e20aa7b7ea348157ae23c70989d6fa007717b0a8b384bc08c5891478d514"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r2/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "5e74cc32df8803ab00b3a0d5b011f0b2d45dedc0e22ba9f7d4b44cb160ddf8e7"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/shoe-native-verification.json",
+      "bytes": 5303,
+      "sha256": "03a42879f81b6f1c06a68c3960e2e3429684c24b5f258194921a0b50c131ad9c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "c385a0c578075ee5bc2c774da4c0e91f9b93e64402efbcc71da60cfdedeb9210"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/decoded-channels-shared.json",
+      "bytes": 117555,
+      "sha256": "6201bad74e8cfe6b8002ab913c43eee31425bc2f4958eb947084cafd7b2a1fc2"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/native/runtime-preflight.json",
+      "bytes": 383762,
+      "sha256": "8c33b277180b75a5b0f570a4771fbf067b4f9e3456e0536f325fa9d5f293fd17"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/native/raw-seal.json",
+      "bytes": 12509,
+      "sha256": "f4470bcdf3df3d9996b7ac2e4248493517579550a537b1fc90f506c65dc9da94"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "6b8e52a6dbc5cd4a50053e1ca43b088a226da270a85c1e1a54d35f28bdf082e3"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "c75cb98d04334e2d0960140ac9b77f826328be204438887c03e3eed247a0f231"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r3/verification-stdout.txt",
+      "bytes": 1002,
+      "sha256": "3a878df616bd759e170ce03d287e910e3745a8b420e7a8c1551beb503cf3abeb"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-design-r1.json",
+      "bytes": 1751,
+      "sha256": "ccb696b9a2f37d1d069a254a084112134b8726d89849061a94120f13581dd10e"
+    },
+    {
+      "path": "local/research/codex/g1-player-all-dead-gap-r1.json",
+      "bytes": 1118,
+      "sha256": "0083405b077e49449221c1ad869e12e0c2079fd93d6623063b4a52722a266394"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-focused-tests-r1.txt",
+      "bytes": 734,
+      "sha256": "e6ceaf12f86321fe06687baa6cc17537485fc5d6a53c58be1f0aca2ce7eb02dd"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-focused-tests-r2.txt",
+      "bytes": 1949,
+      "sha256": "f74d748cf17dbaf110b65f5d489c06a624cabc0f5d9902d6959f827969836848"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-focused-tests-r3.txt",
+      "bytes": 1701,
+      "sha256": "19c096cd632d0c5e953d951cab8080d2aeaf76f4a77fe637d38a15ee19a0a7f9"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-focused-tests-r4.txt",
+      "bytes": 1788,
+      "sha256": "f65094fec765e3d2e7c7e7b55c2dc009ac974c65a5f7dd2fc5a11f641ebcbacc"
+    }
+  ],
+  "retained_partials": [
+    "R1 nhận ba119 selector5/target2,3 thay vì target3,3 và từ chối đúng unmeasured_motion_geometry; không đổi admission để nhận.",
+    "R2 đổi initial control bomb sang3,4: đã có admitted motion/peer/retirement/next118 nhưng cả hai actor đứng ở ô bom kết thúc và cùng report17/19, không175 trước timeout. Source result intentionally unsupported all-dead; theo #453, không xóa giới hạn bằng đổi recipe.",
+    "R3 đưa peer ra9,5 bằng feedback chỉ đọc; binary sửa thêm guard tránh nguồn cũ của Punch còn active. Regression riêng, không claim native mixed-motion race.",
+    "Build/test đầu có fixture kind3 cũ phải đổi thành supported/unsupported controls, nhầm tên channel sender trong test và kỳ vọng single-survivor placement trong fixture vốn cần hai người; các log cũ giữ riêng."
+  ],
+  "limits": [
+    "Native actor is persisted characterC1, receiver peerC0, two accounts on isolated virtualLAN/Wine; referenceC0 separate. Not Internet/load/allcharacters or all map/roster support.",
+    "Only selector5 three rows upward and current owner bomb. No late/inflight/repeated/foreignbomb action, arbitrary target, other direction or general collision law. Conservative corridor reservation is design, not a KR stop-time claim.",
+    "Actor-departure and crossing/queue windows are server regressions, not native delayed162/EOF/network fault injection. Before-pickup no119 observes client eligibility, not original server authority.",
+    "G1, M8, whole Shoe/Punch and phase1 remain open. No modified original client/pack/source database.",
+    "Không đổi preset phục vụ hiện hành. ReportDerivedBasic vẫn tắt Shoe/Punch; ReportDerivedPunch vẫn tắt Shoe. Policy mới cần opt-in rõ.",
+    "Initial negative control có thể đổi terrain của route positive; raw thất bại giữ để chỉ rõ giới hạn. Không suy native all-dead đã được hỗ trợ; #453 giữ bước tiếp."
+  ]
+}

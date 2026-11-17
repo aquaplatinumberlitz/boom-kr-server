@@ -1,0 +1,196 @@
+{
+  "id": "CP331",
+  "previous": "CP330",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T06:45:21.568654+00:00",
+  "context_commit": "8ec9525dab17594b2d170b1934b1fe9f4a093ebe",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Sửa classification documentary identity cho note correction JSON đã pin mà không sửa CP330 hoặc hạ kiểm artifact/hash/history cho claim runtime/test.",
+  "scope": "Checker/tests/documentation only; no Rust serving, binary, native or gameplay change.",
+  "artifacts": [
+    {
+      "name": "tools/check_checkpoints.py",
+      "sha256": "6af168f6efeb73c3758b1d580935ff809423a9208ab663d0b1afb898debe1de6"
+    },
+    {
+      "name": "tools/test_checkpoints.py",
+      "sha256": "05fb3d2e6f459d5d859ee7db026d0a7198c9058c54b9d5eb17ef33c4701a56e0"
+    }
+  ],
+  "locators": [
+    "docs/evidence/checkpoints/README.md",
+    "docs/evidence/checkpoints/documentary-json-identity-correction.json",
+    "tools/check_checkpoints.py::documentation_identity"
+  ],
+  "findings": [
+    {
+      "summary": "CP330 artifacts=[] với canonical JSON không thỏa quy tắc documentary identity Markdown-only lúc công bố. Full exact-head xác minh563397file/0missing/historytrue nhưng lỗi identity; giữ record/audit/evidence/failreceipt, chưa merge hoặc chạy native tiếp.",
+      "source": "design",
+      "status": "design",
+      "method": "documentation",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "ID331-0007",
+        "ID331-0009",
+        "ID331-0010"
+      ],
+      "limits": "Đây là khai báo documentary không phù hợp, không phải thiếu native artifact. Không gọi receipt fail thành pass."
+    },
+    {
+      "summary": "Bổ sung đúng schema correction-note dưới docs/evidence/checkpoints, pin bytes/hash hiện hành, source/statusdesign và checkpoint/previous khớp. Mọi finding vẫn documentary design/nonconfirmed; canonical/evidence được pin. JSON khác hoặc native/static/test/confirmed không dùng ngoại lệ; common verifier/history không đổi.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/evidence/checkpoints/README.md",
+      "evidence": [
+        "ID331-0016",
+        "ID331-0017",
+        "ID331-0013"
+      ],
+      "limits": "75schema/history/source/store/audit tests; wrongschema/lineage/hash/location/kind/claimtype/unreferencedpin negatives giữ strict. Phân loại identity, không chứng nhận semantics/native."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Checkpoint/source/history/store/audit unit suite and structured-note negative guards",
+      "result": "pass",
+      "evidence": [
+        "ID331-0013"
+      ],
+      "limits": "75tests; synthetic fixtures, no native client certification."
+    },
+    {
+      "check": "Canonical docs/catalog/diff after explicit identity extension",
+      "result": "pass",
+      "evidence": [
+        "ID331-0014",
+        "ID331-0011",
+        "ID331-0006"
+      ],
+      "limits": "Append reruns docs/catalog/diff with check=True; full exact-head local/history and every CI still needed."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP331-documentary-identity.json",
+      "bytes": 3852,
+      "sha256": "525e155f482a29ed51f5e09fdd30684bc7b6f76534b1cd9da136c17b02d198f5",
+      "count": 17
+    }
+  ],
+  "delta": {
+    "added": [
+      "Structured correction-note documentary classification with lineage/hash/schema and negative tests."
+    ],
+    "corrected": [
+      "CP330 documentary declaration incompatibility and prior statement that no validator extension was required."
+    ],
+    "superseded": [
+      "Use only corrected-head fullgate/CI, never the failed CP330 receipt."
+    ]
+  },
+  "blockers": [
+    "Full exact-head local/history and all CI required before merge; old failed gate preserved.",
+    "No native or feature acceptance expanded; all-dead453/G1/M8/phase1 remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-MANAGED-ALL-DEAD",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN xử lý task453 all-dead managedplayer: reuse contract/native2 và builder175 roster, đo phần thiếu rồi Rust/result/journal/reset/Start tiếp. Giữ hướng/khoảng cách Shoe/Punch và nhóm G1 còn lại; không làm L1.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T06:45:21.568654+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo manual correction audit AUD139; review độc lập waived. Explicit narrow validator extension, no old record/raw rewrite.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "docs/evidence/checkpoints/README.md",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "docs/evidence/checkpoints/documentary-json-identity-correction.json",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD139.json",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "tools/check_checkpoints.py",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "tools/test_checkpoints.py",
+      "state": "updated",
+      "reason": "Đồng bộ documentary identity correction và kiểm âm, giữ lịch sử và giới hạn runtime."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Không đổi contract/runtime hoặc question all-dead; chỉ identity tool correction."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Không đổi contract/runtime hoặc question all-dead; chỉ identity tool correction."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Không đổi contract/runtime hoặc question all-dead; chỉ identity tool correction."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "unchanged",
+      "reason": "Không đổi contract/runtime hoặc question all-dead; chỉ identity tool correction."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "unchanged",
+      "reason": "Không đổi contract/runtime hoặc question all-dead; chỉ identity tool correction."
+    }
+  ]
+}

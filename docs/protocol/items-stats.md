@@ -55,7 +55,7 @@ catalog/fuse6s/rank/first-arrival là policy emulator, không luật server gố
   expiration trong cùng vòng. Không gán “vĩnh viễn” từ việc giữ qua các mốc hoặc table tail0.
 
 <a id="shoe-punch-source"></a>
-### Shoe/Punch: pickup đã đo, hành động còn thiếu contract
+### Shoe/Punch: pickup, hành động và giới hạn đã đo
 
 [Metadata và giới hạn](../evidence/item-families/shoe-punch.json) bổ sung nguồn KR cho hai item có trọng số dương
 trong Tomb12. Shoe 3/effect 4 gọi `B48670`, ghi secure field `actor+5F4`; Punch 4/effect 5 gọi `B48710`, ghi
@@ -78,13 +78,13 @@ Shoe có nhánh `E6F510→E6F8F0→E6F9C0` dẫn tới cùng pending-record path
 [ca dùng reference selector 5](#rust-bomb-motion-codec) đã có hai vòng trong phạm vi ghi bên dưới. Reader 160 đọc 8 byte và gọi các nhánh entity/counter; chưa có bằng chứng nó
 là reply cho 119 hoặc là gói dịch chuyển bom. Hai lượt không gửi ACK cho hành động này.
 
-**Shoe vẫn bị từ chối trên Rust; Punch có lát opt-in giới hạn** ở [contract bên dưới](#rust-bomb-motion-codec).
+**Shoe/Punch có các lát Rust opt-in giới hạn** ở [contract bên dưới](#rust-bomb-motion-codec).
 Pickup/reset và phát request riêng lẻ chưa đủ để mở toàn bộ hành động: mỗi lát cần consumer, lifecycle bom, peer,
 ca không đủ điều kiện và guard membership/vòng hiện hành. Không coi các run Python RE là bằng chứng account,
 Internet hoặc vận hành trên Rust.
 
 <a id="rust-bomb-motion-codec"></a>
-### Rust 119/162 và lát Punch có giới hạn
+### Rust 119/162 và lát Shoe/Punch có giới hạn
 
 [Metadata nguồn và codec](../evidence/item-families/bomb-motion-codec.json) bổ sung reader 162 `E5EFC0`:
 body **9 byte**, widths `u8,u8,u8,u16,u8,u8,u8,u8`. Reader kiểm context, tìm actor và wire ID của bom;
@@ -107,8 +107,9 @@ body, chọn root đã dịch chuyển và ghi active về 0 trước cleanup. S
 khác, rồi kết quả/về phòng; phép lặp có hai vòng hoàn tất và reset cờ pickup ở đầu vòng sau.
 
 Đây là **emu_choice/design đã kiểm trên reference**, không phải thứ tự server gốc được phục hồi. Phạm vi
-hiện là Punch của C0, selector 3, một hành động mỗi vòng và bom đã hạ cánh trước deadline. Shoe, selector
-khác, hành động sát deadline/khi đang bay, lặp hoặc nhắm cell tùy ý và ca không đủ điều kiện vẫn chưa đo.
+của lượt retirement reference này là Punch C0, selector 3, một hành động mỗi vòng và bom đã hạ cánh trước
+deadline. Shoe selector 5 có phép đo riêng bên dưới; các selector khác, hành động sát deadline/khi đang bay,
+lặp hoặc nhắm cell tùy ý và ca không đủ điều kiện vẫn cần bằng chứng tương ứng.
 Các lượt lỗi wineboot, collector, recipe và giới hạn probe được giữ trong metadata, không tính là ca âm gameplay.
 
 Rust `kr-wire` có `BombAction119::decode` cho đúng 13 byte, giữ hai `u16` cuối bằng `opaque_tail`, và
@@ -117,7 +118,7 @@ và cell đích; codec không cấp quyền cho các giá trị này. Regression
 và body 162 đã qua native reader, kiểm cả gói thiếu/thừa và nhầm độ dài. Không dùng roundtrip tự sinh làm oracle.
 
 [Lát Rust Punch đã nghiệm thu](../evidence/rust-service/g1-punch.json) có handler 119 và policy opt-in
-`report_derived_punch`. Policy nền `report_derived_basic` vẫn từ chối floor 4; Shoe 3 chưa được mở. Chỉ nhận
+`report_derived_punch`. Policy nền `report_derived_basic` vẫn từ chối floor 4; policy Punch này không mở Shoe 3. Chỉ nhận
 actor thuộc membership/slot/vòng đang chạy, đã nhặt Punch và chưa có report trap/death. Bom phải thuộc người
 thao tác, có wire ID hiện hành chưa tái sử dụng, source cell khớp ledger; selector 3 chỉ đi từ hàng nguồn sang
 hàng nguồn trừ 1, cùng cột. Cell đích phải trống theo terrain và ngoài cell hủy bom của map. Một bom chỉ được
@@ -160,8 +161,33 @@ mở các hướng khác, bom người khác, hành động lặp/sát deadline/
 Lượt control đầu chỉ có một hành động/kết quả và clock vòng hai; nó được giữ là partial. Mẫu EAX từ
 `FinishBreakpoint` của lượt đó không chứng minh giá trị trả về boolean. Control mới chờ placement hiện hành,
 đổi nhịp nhập và đặt breakpoint ở lệnh `ret` đã có trong body được đối chiếu byte; không sửa raw cũ hoặc
-khẳng định nguyên nhân của lượt thiếu hành động. Shoe vẫn tắt trên Rust; cần guard path/terrain/placement,
-queue và membership/vòng cùng native ca dùng, không đủ điều kiện, peer và reset trước khi mở.
+khẳng định nguyên nhân của lượt thiếu hành động. Reference không tự cấp quyền bật Shoe; lát Rust với guard
+path/terrain/placement, queue và membership/vòng được nghiệm thu riêng dưới đây.
+
+[Lát Rust Shoe selector 5](../evidence/rust-service/g1-shoe.json) dùng policy mới `report_derived_shoe_punch`.
+Policy này giữ lát Punch selector 3 và mở riêng Shoe 3; hai preset `report_derived_basic`/`report_derived_punch`
+giữ phạm vi cũ. Shoe là cờ theo membership/vòng, về 0 ở begin, không phải inventory bền vững. Chỉ nhận actor
+đã nhặt item, chưa trap/death, slot/transport hiện hành, bom của chính actor và wire ID chưa tái sử dụng.
+Geometry ban đầu là ba hàng phía trên cùng cột; đường từ nguồn tới đích phải trống, có vật cản ngay sau đích,
+không có bom khác, ray barrier hoặc cell hủy bom. Đây là giới hạn **design**, không phải toàn luật đá bom KR.
+
+Ledger giữ reservation cho toàn hành lang Shoe, gồm ô nguồn, đến khi mọi recipient hiện hành hoàn thành
+158 hoặc rời allocation. Placement mới hoặc motion giao đường bị từ chối. Khi kiểm một Shoe mới, nguồn và
+đích của Punch còn active cũng là vùng có thể đang chuyển động; không chỉ kiểm root mới. Thời gian giữ
+reservation là policy bảo thủ vì không có wire báo dừng đã xác nhận, không phải thời gian KR được đo.
+Clone, reserve mọi queue, deadline tối thiểu 3 giây, owner/quota/fuse 6 giây và chuỗi short158→blast giữ như
+lát Punch. Motion đã nhận còn phục vụ survivor sau actor departure; lệnh từ membership cũ và batch của
+allocation/vòng/recipient cũ vẫn bị chặn. Test server kiểm rollback, corridor, deadline và cửa sổ rời phòng;
+chưa có native fault injection cho những race này.
+
+Native Wine/LAN cô lập trên Rust có hai account: A là C1 đã lưu, B là C0, floor chỉ có Shoe 3. Mỗi vòng
+contact trước pickup không có 119; sau pickup actual119 selector5 chuyển `(6,3)→(3,3)` trong cả hai view,
+state 3→4 trước rebind/blast và active 0 trước cleanup. Có bom tiếp, hai kết quả/về phòng, reset cờ, hai journal
+thưởng 0 đúng account/player/character. Ca chỉ phát đích `(2,3)` đã bị từ chối theo geometry; không chuẩn hóa
+request đó thành đích hỗ trợ. Ca khác dừng khi cả hai report chết được giữ partial, không tính thành nghiệm thu.
+Các hướng/khoảng cách khác, foreign bomb, motion lặp/sát deadline/khi đang chạy, mọi nhân vật/map/roster vẫn mở.
+
+[Correction đồng bộ tài liệu](../evidence/checkpoints/shoe-docs-sync-correction.json) giữ lỗi kiểm link/catalog của CP329; không sửa record hoặc raw và không thay nghiệm thu runtime.
 
 **Correction nguồn phụ:** `B486B0` nhận interface `actor+584`, cộng `70` tới wrapper `actor+5F4`, đúng bằng
 interface `actor+58C` cộng `68` của setter. Câu `+5F4+8` trong ghi chép phụ trước là lỗi tính offset; sidecar correction

@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP328",
+  "as_of": "CP331",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -3766,7 +3766,8 @@
           "docs/evidence/item-families/bomb-retirement.json",
           "docs/evidence/rust-service/g1-punch.json",
           "docs/evidence/rust-service/g1-punch-departure.json",
-          "docs/evidence/item-families/shoe-action.json"
+          "docs/evidence/item-families/shoe-action.json",
+          "docs/evidence/rust-service/g1-shoe.json"
         ]
       },
       "coverage": {
@@ -3823,7 +3824,7 @@
             "docs/protocol/items-stats.md#rust-bomb-motion-codec",
             "rust/crates/kr-service/src/bombs.rs"
           ],
-          "delivery": "baseline_merged"
+          "delivery": "branch_pending"
         },
         "integration": {
           "state": "unknown",
@@ -4396,7 +4397,8 @@
           "docs/evidence/rust-service/README.md#cp252",
           "docs/evidence/rust-service/m7e-selected-rosters.json",
           "docs/evidence/rust-service/m6-match-store.json",
-          "docs/evidence/rust-service/m6-journal-serving.json"
+          "docs/evidence/rust-service/m6-journal-serving.json",
+          "docs/evidence/rust-service/g1-shoe.json"
         ]
       },
       "coverage": {
@@ -4603,7 +4605,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/176",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/371",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453"
       ]
     },
     {

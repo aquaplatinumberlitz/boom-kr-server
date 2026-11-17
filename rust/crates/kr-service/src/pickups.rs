@@ -18,16 +18,27 @@ pub(crate) enum Policy {
     ReportDerivedBasic,
     /// Candidate Punch selector3 slice; requires its native acceptance before use.
     ReportDerivedPunch,
+    /// Candidate Shoe selector5/up-three slice plus the measured Punch slice.
+    ReportDerivedShoePunch,
 }
 impl Policy {
     pub(crate) fn enabled(self) -> bool {
         self != Self::Disabled
     }
     pub(crate) fn allows(self, kind: u16) -> bool {
-        self.enabled() && (matches!(kind, 0..=2 | 5) || (self.punch() && kind == 4))
+        self.enabled()
+            && (matches!(kind, 0..=2 | 5)
+                || (self.punch() && kind == 4)
+                || (self.shoe() && kind == 3))
     }
     pub(crate) fn punch(self) -> bool {
-        self == Self::ReportDerivedPunch
+        matches!(
+            self,
+            Self::ReportDerivedPunch | Self::ReportDerivedShoePunch
+        )
+    }
+    pub(crate) fn shoe(self) -> bool {
+        self == Self::ReportDerivedShoePunch
     }
 }
 
@@ -68,6 +79,15 @@ impl Catalog {
             return Err(io::Error::other(
                 "Punch floor requires measured Punch policy",
             ));
+        }
+        if !policy.shoe()
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| item.kind == 3)
+        {
+            return Err(io::Error::other("Shoe floor requires measured Shoe policy"));
         }
         Ok(())
     }
@@ -123,7 +143,7 @@ impl Catalog {
                 // Only measured stat items and the separate needle policy.
                 if row[4] >= 13
                     || row[5] >= 15
-                    || !matches!(kind, 0..=2 | 4 | 5 | 145)
+                    || !matches!(kind, 0..=5 | 145)
                     || !indices.insert(index)
                     || indices.len() > 64
                 {
@@ -339,6 +359,44 @@ pub(crate) mod tests {
         assert!(Policy::ReportDerivedPunch.allows(4));
         assert!(!Policy::ReportDerivedPunch.allows(3));
     }
+    pub(crate) fn shoe_catalog() -> Catalog {
+        Catalog {
+            floor: BTreeMap::from([(
+                17,
+                Item {
+                    index: 17,
+                    row: 4,
+                    column: 3,
+                    kind: 3,
+                },
+            )]),
+            hidden: BTreeMap::new(),
+        }
+    }
+    #[test]
+    fn shoe_floor_and_hidden_require_opt_in_without_changing_existing_policies() {
+        let mut catalog = shoe_catalog();
+        for hidden in [false, true] {
+            if hidden {
+                catalog.hidden = std::mem::take(&mut catalog.floor);
+            }
+            for policy in [
+                Policy::Disabled,
+                Policy::ReportDerivedBasic,
+                Policy::ReportDerivedPunch,
+            ] {
+                assert!(!policy.allows(3));
+                assert!(catalog.validate_stat_policy(policy).is_err());
+            }
+            assert!(Policy::ReportDerivedShoePunch.allows(3));
+            assert!(Policy::ReportDerivedShoePunch.allows(4));
+            assert!(
+                catalog
+                    .validate_stat_policy(Policy::ReportDerivedShoePunch)
+                    .is_ok()
+            );
+        }
+    }
     pub(crate) fn catalog() -> Catalog {
         Catalog {
             floor: BTreeMap::from([(
@@ -518,11 +576,28 @@ pub(crate) mod tests {
                     .is_ok()
             );
         }
+        for groups in [
+            [vec![(17, 4, 3, 3)], vec![], vec![]],
+            [vec![], vec![(17, 4, 3, 3)], vec![]],
+        ] {
+            let shoe = Catalog::from_floor(&packet(groups)).unwrap();
+            assert!(
+                shoe.validate_stat_policy(Policy::ReportDerivedBasic)
+                    .is_err()
+            );
+            assert!(
+                shoe.validate_stat_policy(Policy::ReportDerivedPunch)
+                    .is_err()
+            );
+            assert!(
+                shoe.validate_stat_policy(Policy::ReportDerivedShoePunch)
+                    .is_ok()
+            );
+        }
         for p in [
             packet([vec![(17, 4, 3, 2), (17, 4, 4, 2)], vec![], vec![]]),
             packet([vec![(17, 13, 3, 2)], vec![], vec![]]),
             packet([vec![(17, 4, 3, 999)], vec![], vec![]]),
-            packet([vec![(17, 4, 3, 3)], vec![], vec![]]),
             packet([vec![(17, 4, 3, 6)], vec![], vec![]]),
             packet([vec![], vec![], vec![(17, 4, 3, 2)]]),
         ] {

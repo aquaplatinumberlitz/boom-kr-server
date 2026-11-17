@@ -1,0 +1,53 @@
+{
+  "id": "AUD138",
+  "trigger": "serious_contradiction",
+  "completed_through": "CP330",
+  "recorded_utc": "2026-11-17T06:10:34.777769+00:00",
+  "auditor": "Codex manual correction audit; independent review waived",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/COVERAGE.md",
+    "docs/features.json",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/issue-reconciliation/github-snapshot.json",
+    "docs/evidence/issue-reconciliation/review.json",
+    "docs/evidence/checkpoints/records/CP329.json",
+    "docs/evidence/checkpoints/audits/AUD137.json",
+    "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+    "local/research/codex/cp329-docs-precheck.txt",
+    "local/research/codex/cp329-docs-precheck-v2.txt",
+    "local/research/codex/cp330-catalog-check-v2.txt",
+    "local/research/codex/cp330-docs-check-v3.txt"
+  ],
+  "method": "Đối chiếu CP329 với stdout; tách native verified khỏi docs gate còn lỗi. Kiểm grammar research_rows, locator aliases, generated coverage và metadata issue453. Giữ CP329 record/audit/evidence cùng original commit/blob/hash; không sửa Rust/raw hoặc đóng thêm nhóm.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP329 verification khai pass nhưng v2 log lỗi; đường ghi checkpoint không fail fast sau shell check thất bại.",
+      "correction": "CP330 nêu khai sai; giữ toàn bộ log/record/audit cũ, kiểm exit và stdout trước append mới. Không dùng precheck cũ làm pass.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/shoe-docs-sync-correction.json",
+        "docs/evidence/checkpoints/records/CP330.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Hai anchor trước KR-X001 làm catalog bỏ row; COVERAGE chứa fragment sai và snapshot cũ chưa biết issue453.",
+      "correction": "Một canonical anchor trước ID, alias trong gap cell; regenerate coverage. Targeted issue453 snapshot có ngày riêng, manual disposition/backlink. Không sửa L1 hoặc refresh trạng thái issue khác.",
+      "fixed_in": [
+        "docs/RESEARCH.md",
+        "docs/features.json",
+        "docs/COVERAGE.md",
+        "docs/evidence/issue-reconciliation/github-snapshot.json",
+        "docs/evidence/issue-reconciliation/review.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Native Shoe scope của CP329 không đổi; G1/phase1, all-dead453, M8 và L1 vẫn mở.",
+    "CP330 exact-head local/history và CI cần qua trước merge; waiver không là review độc lập."
+  ]
+}

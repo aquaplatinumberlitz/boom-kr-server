@@ -5,6 +5,27 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP330: đã sửa đồng bộ link/catalog của lát Shoe Rust tại CP329.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) giữ hai vòng native Shoe selector 5,
+account/peer/reset và journal thưởng 0. Record CP329 và raw giữ nguyên; correction tài liệu không mở rộng runtime.
+Tiếp [all-dead managed player](RESEARCH.md#gap-managed-all-dead), rồi coverage G1 theo
+[Bảng điều hành](PLAN.md#dashboard). G1, M8 và L1 của Claude còn mở.
+
+
+**CP329: Shoe selector 5 đã chạy hai vòng trên Rust với hai account.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có corridor, motion/thu hồi,
+bom tiếp, peer/reset và journal thưởng 0; preset cũ giữ nguyên. Các lượt bị từ chối/partial được giữ riêng.
+Tiếp [all-dead managed player](RESEARCH.md#gap-managed-all-dead), rồi coverage Shoe/Punch và G1 theo
+[Bảng điều hành](PLAN.md#dashboard). G1, M8 và L1 của Claude còn mở.
+
+
+**CP328: Shoe selector 5 đã có hai vòng hành động trên reference KR.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có dừng chuyển động, thu hồi bom,
+bom tiếp, peer và reset; lượt partial và correction probe được giữ riêng. Shoe chưa được mở trên Rust.
+Punch opt-in và correction rời phòng đã merge; tiếp nối lát Shoe trên Rust theo
+[Bảng điều hành](PLAN.md#dashboard). G1, M8 và L1 của Claude còn mở.
+
+
 **CP327: đã sửa guard motion khi actor rời player round trước peer.**
 [Correction và kiểm hồi quy](protocol/items-stats.md#rust-bomb-motion-codec) giữ motion đã chấp nhận
 đồng bộ với bom hiện hành; phiên cũ không gửi được lệnh mới. Binary sửa đã qua lại hai vòng account/peer/reset

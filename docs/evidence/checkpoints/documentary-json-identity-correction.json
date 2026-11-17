@@ -1,0 +1,38 @@
+{
+  "schema": "kre-documentary-json-identity-correction-v1",
+  "source": "design",
+  "status": "design",
+  "previous_checkpoint": "CP330",
+  "correction_checkpoint": "CP331",
+  "failure": "CP330 exact-head gate:563397 evidence verified,0unavailable,history verified,1error:artifact identity and locators/run IDs required. Record had artifacts=[] and documentary findings whose canonical is a structured JSON correction note; prior documentation identity accepted only canonical Markdown.",
+  "cause": "CP330 declaration did not satisfy the then-current Markdown-only identity rule. It was not a native artifact failure or missingraw; gate correctly blocked merge and native launch. Keep original record, audit, evidence and receipt immutable.",
+  "change": "Add narrow structured-note documentary identity: repository path docs/evidence/checkpoints/*-correction.json, exact pinned current bytes/hash, schema kre-documentation-sync-correction-v1, source/status design, checkpoint/previous equal the record. Every finding remains design/documentation with nonconfirmed status and canonical/evidence references. Other JSON, runtime/static/test/confirmed claims still need artifacts; common hashes/history unchanged.",
+  "tests": "75 checkpoint/source/store/audit tests, including wrongschema/lineage/hash/location/kind/claimtype and unreferencedpin negatives.",
+  "evidence": [
+    {
+      "path": "local/research/codex/cp330-exact-head-exit.json",
+      "bytes": 381,
+      "sha256": "ed9d767f7e8ce63a311e4bc8c446d1ad9eb51e8db5426c99cfed56b89c26c0ac"
+    },
+    {
+      "path": "local/research/codex/cp330-exact-head-full.txt",
+      "bytes": 255220,
+      "sha256": "2b8377954a132785155ded4f85efba57e77a53f1df690fcebf6f57b32209134e"
+    },
+    {
+      "path": "local/research/codex/cp331-checkpoint-tool-tests-r1.txt",
+      "bytes": 129,
+      "sha256": "73c5d2e21c5c0a85013f4ddf3ebc3426e9639c075c263e4940e9795aab7270d5"
+    },
+    {
+      "path": "local/research/codex/cp331-checkpoint-tool-tests-r2.txt",
+      "bytes": 174,
+      "sha256": "f8fa9aa4ef2c90ac2c6ed018ed18e8d7f331b73f9a998d847fb13db2de7bf3ea"
+    }
+  ],
+  "limits": [
+    "This extends the documentary identity classification; CP330 statement that no validator extension was needed is superseded here. No old record or raw changed.",
+    "No new native or gameplay acceptance. Shoe scope CP329 unchanged; all-dead task453, G1/M8/phase1 still open.",
+    "Full exact-head local/history and every CI required before merge."
+  ]
+}

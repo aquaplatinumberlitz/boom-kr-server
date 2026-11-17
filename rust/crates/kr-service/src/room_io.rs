@@ -2983,15 +2983,37 @@ impl Session {
                 let member = r.member(self.identity, self.connection)?;
                 let request = wire::BombAction119::decode(body)?;
                 let motion = request.motion;
-                let result = if !r.rules.item_policy.punch() {
+                let shoe = motion.selector > 3;
+                let result = if if shoe {
+                    !r.rules.item_policy.shoe()
+                } else {
+                    !r.rules.item_policy.punch()
+                } {
                     Err("motion_disabled")
-                } else if !member.punch {
+                } else if shoe && !member.shoe {
+                    Err("missing_shoe")
+                } else if !shoe && !member.punch {
                     Err("missing_punch")
                 } else if member.life.blocked_pickup() {
                     Err("report_ineligible")
                 } else if let Phase::Armed { round } = next.phase {
-                    next.bombs
-                        .move_punch(round, member.key, member.slot, request, Instant::now())
+                    if shoe {
+                        next.bombs.move_shoe(
+                            round,
+                            member.key,
+                            member.slot,
+                            request,
+                            Instant::now(),
+                        )
+                    } else {
+                        next.bombs.move_punch(
+                            round,
+                            member.key,
+                            member.slot,
+                            request,
+                            Instant::now(),
+                        )
+                    }
                 } else {
                     Err("inactive_round")
                 };
@@ -3006,18 +3028,22 @@ impl Session {
                     Ok(ticket) => {
                         let target = (motion.target_row, motion.target_column);
                         let forbidden = r.bomb_cancellation_cells().is_some_and(|cells| {
-                            cells.contains(u16::from(target.0), u16::from(target.1))
+                            if shoe {
+                                (motion.target_row..=motion.source_row)
+                                    .any(|row| cells.contains(u16::from(row), u16::from(target.1)))
+                            } else {
+                                cells.contains(u16::from(target.0), u16::from(target.1))
+                            }
                         });
                         if forbidden
                             || next.terrain.as_mut().is_none_or(|terrain| {
-                                terrain
-                                    .move_bomb(
-                                        ticket.round,
-                                        ticket.id,
-                                        (motion.source_row, motion.source_column),
-                                        target,
-                                    )
-                                    .is_err()
+                                let source = (motion.source_row, motion.source_column);
+                                if shoe {
+                                    terrain.move_shoe(ticket.round, ticket.id, source, target)
+                                } else {
+                                    terrain.move_bomb(ticket.round, ticket.id, source, target)
+                                }
+                                .is_err()
                             })
                         {
                             // Discard the candidate ledger change together with terrain.
@@ -3174,6 +3200,8 @@ impl Session {
                             .ok_or_else(|| err("missing current item stats"))?;
                         if request.kind() == 4 {
                             member.punch = true;
+                        } else if request.kind() == 3 {
+                            member.shoe = true;
                         } else {
                             stats.basic_pickup(request.kind())?;
                         }
