@@ -1,0 +1,213 @@
+{
+  "id": "CP325",
+  "previous": "CP324",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T03:25:49.944698+00:00",
+  "context_commit": "b36a2146f75601bbabfb38f954ae3e7c680b17bd",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Khép retirement/quota reference sau119/162 để tháo blocker hiện hành cho implementation Rust; giữ rõ giới hạn trước khi bật item.",
+  "scope": "Đo trạng thái bom, pool callback, landing/cleanup và policy158 loại1 rồi loại0; hai vòng native reference cùng reset và peer. Không thay runtime Rust, client/pack/DB nguồn hoặc L1.",
+  "artifacts": [
+    {
+      "name": "native-reference-client",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/item-families/bomb-retirement.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445"
+  ],
+  "findings": [
+    {
+      "summary": "Chỉ162 rồi158 loại0: bom đã hạ cánh trước158, CC0/E40 và active1 tại cleanup; R9 còn thấy cùng object active ở update hơn2s sau đó. AEF700 trả bom ở nhận159 trước motion, không phải callback thu hồi trong lượt này.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "RET325-01417",
+        "RET325-02773",
+        "RET325-03602"
+      ],
+      "limits": "Không có nguyên nhân tổng quát hoặc permanent leak. R8 pool probe dừng do count25 vượt cap16; R9 sửa probe, không sửa raw cũ."
+    },
+    {
+      "summary": "Policy158 loại1/body4 trước loại0/body13 trên bomb hiện hành đã dịch chuyển khôi phụcCC1, root được chọn và active về0 trướccleanup. R11 có hai vòng, mỗi vòng action119/162, next118 vớiID khác, rank/return/refresh; hai view reset pickup flags ở clock.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "RET325-04409",
+        "RET325-06653",
+        "RET325-05247"
+      ],
+      "limits": "Chỉ reference Python, C0/Punch/selector3, một motion mỗi vòng và đã hạ cánh. Không chứng nhận Rust hoặc Shoe/selector khác/late/inflight/ca âm."
+    },
+    {
+      "summary": "Thứ tự hai158 tại deadline6s là emu_choice/design đã kiểm, không phục hồi server gốc. Giữ owner/quota/deadline, không gửi160 hoặc dùng haiu16tail119 làm epoch.",
+      "source": "emu_choice",
+      "status": "design",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "RET325-00007",
+        "RET325-05246"
+      ],
+      "limits": "Nối Rust phải kiểm current membership/round/wireID, ledger và terrain nhất quán, queue atomicity, action eligibility cùng native acceptance."
+    },
+    {
+      "summary": "Sửa ghi chú local đọc ngược guard pool: assembly là CC==0 hoặcE4!=0. B378F0 ghiE4, không phải flagsACK;14body mới đã bind complete chunks vào hai copy runtime. Giữ R5collectorNaN, R6recipe nhầm, R7verifierSyntaxError và bản sửa; derivation R11 ban đầu đọc log đang chạy được thay bằng filefinal mới.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "RET325-06709",
+        "RET325-06669",
+        "RET325-06663",
+        "RET325-01401",
+        "RET325-05238"
+      ],
+      "limits": "Correction không sửa raw/record/sidecar đã chốt. Flattened pseudocode không đủ xác định this adjustment; dùng assembly. R10/R11later_update không dùng kết luận vì pointer có thể tái sử dụng."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Native reference two action/next118/rank/return cycles with peer and pickup reset",
+      "result": "pass",
+      "evidence": [
+        "RET325-06653"
+      ],
+      "limits": "712 native getter checks; Rust service action remains disabled."
+    },
+    {
+      "check": "Complete source-chunk binding and original source database preservation",
+      "result": "pass",
+      "evidence": [
+        "RET325-06709",
+        "RET325-06669"
+      ],
+      "limits": "16+12 comparisons; original source DB hash unchanged, private DB may change."
+    },
+    {
+      "check": "Frozen inputs unchanged in completed runtime runs",
+      "result": "pass",
+      "evidence": [
+        "RET325-00037",
+        "RET325-01416",
+        "RET325-02770",
+        "RET325-03599",
+        "RET325-04404",
+        "RET325-05241"
+      ],
+      "limits": "R6 failed beforeWine; retained separate failure proof. Full exact-head local/history and CI still required before merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP325-bomb-retirement.json",
+      "bytes": 1934617,
+      "sha256": "4d751808d85f39648192a6131ff14463af6047ae4e24e650e98059737f5fe070",
+      "count": 7242
+    }
+  ],
+  "delta": {
+    "added": [
+      "Reference retirement policy có next118 và hai kết quả/reset, đủ làm đầu vào port lát Punch đã đo."
+    ],
+    "corrected": [
+      "Guard pool trong local R9, phân biệt spawn callback với retirement, và giữ giới hạn collector/recipe/derivation."
+    ],
+    "superseded": [
+      "Blocker reference chưa có thu hồi/next118/kết quả đã được tháo trong phạm vi policy và selector đo; phần nativeRust/ca âm vẫn mở."
+    ]
+  },
+  "blockers": [
+    "Two completed reference rounds with one Punch selector3 action each; not native acceptance on Rust.",
+    "No Shoe action, other selectors, missing-item/dead/trapped negatives, repeated motion, late/inflight expiry, arbitrary target geometry or packet-loss proof.",
+    "No original server ACK/order, no160, no changed client/pack/source database. G1 and phase1 remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-RUST-FIRST-SLICE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Chuyển policy/admission119/162 và retirement158 sang Rust với membership/round/wireID, ledger/terrain/deadline/queue; đo ca âm và native use/peer/reset trước mở. Shoe/selector khác/late vẫn theo PLAN.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T03:25:49.944698+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo tự kiểm, review độc lập waived; chưa hoàn tất nhóm Shoe/Punch nên không tạo audit hoặc đổi AUD134.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/evidence/item-families/bomb-retirement.json",
+      "state": "updated",
+      "reason": "Đồng bộ policy retirement reference đã đo, correction và phần Rust/native acceptance còn thiếu."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index đã trỏ đúng anchor items-stats; sửa nội dung tại nguồn chuẩn, không thêm knowledge song song."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Waiver, ownerL1 và audit theo nhóm không đổi."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "unchanged",
+      "reason": "Chưa bật119 hoặc item3/4; chưa đủ acceptance Rust để công bố hỗ trợ."
+    }
+  ]
+}

@@ -3762,7 +3762,8 @@
           "docs/evidence/item-families/README.md",
           "docs/evidence/rust-service/g1-maxpower.json",
           "docs/evidence/item-families/shoe-punch.json",
-          "docs/evidence/item-families/bomb-motion-codec.json"
+          "docs/evidence/item-families/bomb-motion-codec.json",
+          "docs/evidence/item-families/bomb-retirement.json"
         ]
       },
       "coverage": {

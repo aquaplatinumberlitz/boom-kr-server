@@ -33,10 +33,10 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP324: Rust đã có codec 119/162 từ packet và reader KR đã đo.**
-[Native chuyển root và giới hạn lifecycle](docs/protocol/items-stats.md#rust-bomb-motion-codec) đã có bằng chứng
-hai view; service vẫn tắt Shoe/Punch vì retirement/quota và acceptance hành động còn thiếu.
-G1 tiếp theo [Bảng điều hành](docs/PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
+**CP325: reference đã khép vòng đời Punch với policy 158 loại 1 trước gói nổ.**
+[Native thu hồi bom, next118 và hai kết quả/reset](docs/protocol/items-stats.md#rust-bomb-motion-codec) đã có
+bằng chứng hai view; Rust hiện có codec, service vẫn tắt Shoe/Punch. Tiếp nối admission, terrain, deadline và
+hàng đợi cùng ca âm trên Rust theo [Bảng điều hành](docs/PLAN.md#dashboard). G1, M8 và L1 của Claude vẫn mở.
 
 ## Bắt đầu
 
