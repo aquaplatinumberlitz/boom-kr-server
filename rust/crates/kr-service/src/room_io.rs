@@ -3038,7 +3038,11 @@ impl Session {
                                 0,
                                 vec![("bomb162".into(), reply.clone())],
                             );
-                            batch.subject = Some(member.key);
+                            // In player rounds an admitted bomb remains in the
+                            // current allocation after its actor departs, just as
+                            // spawn159/deadline158 do. Dropping only motion162
+                            // would leave the peer at the old terrain root.
+                            batch.subject = (!next.player_round()).then_some(member.key);
                             // Even if the actor remains, a retired allocation cannot
                             // deliver an old motion to a recipient or later round.
                             batch.guard = Guard::Bomb {

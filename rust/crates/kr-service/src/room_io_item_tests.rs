@@ -1649,3 +1649,59 @@ fn queued_punch_cannot_survive_actor_departure_or_a_new_membership_visit() {
     assert!(c.shared.lock().unwrap().model.current(replacement));
     assert!(c.sessions[0].packet(119, &punch_body(0, id, 6)).is_err());
 }
+
+#[test]
+fn admitted_punch_and_deadline_survive_actor_departure_in_current_player_round_only() {
+    let mut c = punch_case();
+    punch_pickup(&mut c);
+    let (id, mut deadlines) = punch_place(&mut c, 6);
+    assert!(
+        c.sessions[0]
+            .packet(119, &punch_body(0, id, 6))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    let motion = c.sessions[1].inbox.try_recv().unwrap();
+    let actor = c.keys[0];
+    {
+        let mut r = c.shared.lock().unwrap();
+        assert_eq!(
+            r.model.depart_player(actor, Instant::now()).unwrap(),
+            c.round
+        );
+        assert!(!r.model.current(actor));
+        assert_eq!(r.model.phase, Phase::Armed { round: c.round });
+    }
+    // This is already-admitted work for a current bomb, not a new command
+    // from the departed account. Both162 and its deadline must still agree.
+    assert!(c.sessions[1].valid(&motion));
+    assert!(c.sessions[0].packet(119, &punch_body(0, id, 6)).is_err());
+    assert!(!c.sessions[0].valid(&deadlines[0]));
+    assert!(c.sessions[1].prepare_delivery(&mut deadlines[1]).unwrap());
+    assert_eq!(
+        deadlines[1].packets[0].1.payload,
+        wire::rebind158(id).unwrap()
+    );
+    c.sessions[1].finish(&deadlines[1]).unwrap();
+    {
+        let r = c.shared.lock().unwrap();
+        assert!(
+            r.model
+                .terrain
+                .as_ref()
+                .unwrap()
+                .clearance(c.round, 5, 4)
+                .is_some()
+        );
+    }
+    assert!(!c.sessions[1].valid(&motion)); // retired allocation, no replay
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.end(c.round).unwrap();
+        r.model.refreshed(c.keys[1], c.round).unwrap();
+    }
+    assert!(!c.sessions[1].valid(&motion));
+    assert!(!c.sessions[1].valid(&deadlines[1]));
+}
