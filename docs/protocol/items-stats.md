@@ -272,6 +272,24 @@ Các hướng/khoảng cách khác, foreign bomb, motion lặp/sát deadline/khi
 
 [Correction đồng bộ tài liệu](../evidence/checkpoints/shoe-docs-sync-correction.json) giữ lỗi kiểm link/catalog của CP329; không sửa record hoặc raw và không thay nghiệm thu runtime.
 
+**Shoe hiện hành theo ma trận nhóm.** [Bằng chứng nhóm](../evidence/rust-service/g1-shoe-matrix.json)
+thay giới hạn chỉ up-three của lát lịch sử trên. Native contact phát selector **4/trái, 5/lên, 6/phải, 7/xuống**;
+Rust kiểm cùng trục, đúng dấu, khác nguồn, trong map và toàn corridor không bị terrain/allocation khác chặn.
+Nguồn và corridor giữ reservation đến mọi retirement receipt, kể cả khi actor đã rời nhưng allocation còn thuộc
+vòng hiện hành. Giữ các fences item/life/transport/member/vòng/deadline/quota/queue, không nhận report cũ cho
+membership hoặc vòng kế. Không buộc một wall nằm ngay sau target: target do native báo sau kiểm collision/occupancy,
+policy này không khôi phục toàn vật lý hay authority server gốc.
+
+Ma trận tám vòng trên Rust có đủ bốn hướng, hai peer/kết quả/reset và các endpoint dọc dài 2/3/6 ô, ngang một ô.
+Hai vòng bổ sung ngang có `(6,3)→(6,5)` và `(6,5)→(6,3)`, sau bom thường trước pickup mở ô tiếp cận.
+Mỗi vòng có ca trước pickup/no119, Shoe duy nhất, exact119/162, landing/state4/rebind/cleanup và journal đúng
+hai account C1/C0, thưởng 0. Probe EAB1C0 đọc giới hạn lời gọi **13 dọc, 15 ngang** trong các ca này; không gọi
+đó là stat nhân vật. Snapshot protected field kiểm bằng getter native riêng, không lấy Rust log làm oracle.
+Raw/matrix gốc giữ nguyên: nhãn selector ngang của batch8 bị đảo và count8 kế thừa ở batch2 có correction
+riêng gắn hash, kiểm phím/source/target/reader; không biến deviation của input thành input nguyên bản đạt.
+Các run Factory07 không cho thêm acceptance: hai cấu hình bị từ chối trước ready, một route gặp tường đã giữ
+lỗi. Không suy mọi ô/roster/nhân vật, native queued EOF/late/inflight hoặc Internet từ ma trận này.
+
 **Correction nguồn phụ:** `B486B0` nhận interface `actor+584`, cộng `70` tới wrapper `actor+5F4`, đúng bằng
 interface `actor+58C` cộng `68` của setter. Câu `+5F4+8` trong ghi chép phụ trước là lỗi tính offset; sidecar correction
 mới giữ nguyên ghi chép cũ. Contract, byte binding và snapshot runtime trước đã dùng `+5F4` đúng.

@@ -4,7 +4,7 @@
   "status": "candidate",
   "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
   "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
-  "scope": "Ma trận Shoe tám vòng trên Rust, bốn hướng, ca trước pickup/peer/retirement/reset. Đang bổ sung hành lang dài trên Factory07; chưa đóng nhóm.",
+  "scope": "Ma trận Shoe tám vòng trên Rust, bốn hướng, ca trước pickup/peer/retirement/reset; đang bổ sung khoảng cách ngang trên cùng ExVillage01, chưa đóng nhóm.",
   "native": {
     "rounds": 8,
     "clients": 2,
@@ -202,9 +202,9 @@
     }
   },
   "implementation": {
-    "geometry": "Selector4/6 cùng hàng,5/7 cùng cột, endpoint khác nguồn, toàn corridor passable và không có allocation khác.",
+    "geometry": "Selector4/left,5/up,6/right,7/down: cùng trục và đúng dấu, endpoint khác nguồn và trong map. Toàn corridor passable, không có allocation khác; không yêu cầu vật cản liền ngay sau endpoint.",
     "reservation": "Nguồn và toàn corridor giữ đến mọi retirement receipt; giữ owner/member/vòng, life/item, deadline, clone/queue và rollback.",
-    "authority": "Report-derived design; endpoint và actor-supplied range được đọc trực tiếp, không original server physics."
+    "authority": "Report-derived design; giới hạn lời gọi EAB1C0 quan sát13 theo trục dọc,15 theo trục ngang; không suy đó là stat nhân vật hoặc vật lý server gốc."
   },
   "evidence": [
     {
@@ -239,11 +239,80 @@
     }
   ],
   "remaining": [
-    "Hoàn tất ca range/biên hành lang dài Factory07 rồi audit/checkpoint/gate một lần cho nhóm.",
+    "Hoàn tất hai ca khoảng cách ngang trên ExVillage01 rồi audit/checkpoint/gate một lần cho nhóm.",
     "Không suy native duplicate/late/inflight/foreign bomb/queued EOF hoặc Internet/tải/M8."
   ],
   "limits": [
     "Nhãn selector ngang của input gốc bị đảo: Right thực phát6, Left phát4. Raw và matrix giữ nguyên; correction riêng gắn SHA matrix/wire, verifier kiểm exact selector, phím, endpoints và consumer. Không gọi matrix nguyên bản khớp mọi nhãn kế hoạch.",
-    "Chỉ Wine/private LAN và hai account C1/C0; không mọi roster/nhân vật/map hoặc G1 đã đóng."
-  ]
+    "Chỉ Wine/private LAN và hai account C1/C0; không mọi roster/nhân vật/map hoặc G1 đã đóng.",
+    "Batch ngang hai vòng giữ expectation8 kế thừa input cũ: correction riêng gắn hash matrix yêu cầu rounds=cases=effective readers=2. Exact119/162/native/account/journal vẫn kiểm, không gọi input nguyên bản khớp mọi nhãn."
+  ],
+  "failed_factory_range": [
+    "Các cấu hình Factory07 r1/r2 bị từ chối trước ready do profile packet set/size không khớp; không có gameplay acceptance.",
+    "R3 có setup nhưng route row0 bị tường cột3 chặn; dữ liệu map đã đối chiếu lại. Không gọi Factory07 có hành lang ngang trống."
+  ],
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/472",
+  "horizontal_distance_native": {
+    "rounds": 2,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 6,
+        "bomb_id": 2,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          2
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 4,
+        "bomb_id": 4,
+        "source": [
+          6,
+          5
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -2
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      }
+    ],
+    "getter_checks": 216,
+    "semantic": {
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/motion-verification.json",
+      "bytes": 1826,
+      "sha256": "23698492cc5fa3e541d7c9608bae68ca972ec6ac1e1e9fc98049f4c0dba50fe8"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/matrix-verification.json",
+      "bytes": 969,
+      "sha256": "f70a1ec1032b25638a89e8240964180112fe86e1488631aaad2b9fafb47fd3db"
+    },
+    "inherited_expectation_deviation": {
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/matrix-count-correction.json",
+      "bytes": 552,
+      "sha256": "9f2a4bd154b111984220accd5ec4eb848699ab761564f66e2d79a9fe00c0e020"
+    }
+  }
 }

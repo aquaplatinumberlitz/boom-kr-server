@@ -42,7 +42,15 @@ def lifecycle(root):
             assert clock['ns'] < rank['ns'] < returned['ns'], (role,index)
             if index:
                 assert returns[index-1]['ns'] < clock['ns'], (role,index)
-        for expected in matrix.get('native_expectations',[]):
+        expectations=matrix.get('native_expectations',[])
+        correction_path=root/'matrix-count-correction.json'
+        if correction_path.exists():
+            correction=read(correction_path)
+            assert correction['matrix_sha256']==pin(root/'matrix.json')['sha256']
+            assert expectations==correction['original']==[dict(tag='ABILITY_MOTION',match={'kind':'162_end'},count=8)]
+            assert matrix['rounds']==len(matrix['cases'])==correction['corrected_count']==2
+            expectations=[dict(expectations[0],count=2)]
+        for expected in expectations:
             if expected.get('role') not in [None,role]:continue
             rows = tagged(text,expected['tag'])
             assert sum(matches(row,expected['match'])for row in rows) == expected['count'], (role,expected)
@@ -64,6 +72,7 @@ def lifecycle(root):
     # and wrapper assertions, which must be supplied explicitly, never inferred.
     result = dict(result='verified_matrix_lifecycle_identity_and_declared_native_controls',
                   matrix=pin(root/'matrix.json'),run=pin(out/'run.json'),
+                  count_correction=pin(root/'matrix-count-correction.json')if(root/'matrix-count-correction.json').exists()else None,
                   limits='Lifecycle/identity/declared controls only. Geometry, wire, effects and G1 closure require group evidence.')
     with (root/'matrix-verification.json').open('x') as stream:
         json.dump(result,stream,ensure_ascii=False,indent=2);stream.write('\n')

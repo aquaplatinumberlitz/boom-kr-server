@@ -1019,10 +1019,10 @@
       "features": [
         "KR-R002"
       ],
-      "classification": "in_progress",
-      "known": "Đã có code/test tập trung TCP/SQLite giữ phiên và current110 khi key chưa đo. Native đang kiểm bằng harness ma trận; chưa đóng G1.",
-      "remaining": "Native same transport, chọn hợp lệ sau từ chối, hai vòng/reset, audit/checkpoint và gate nhóm trước merge.",
-      "next_test": "Native #457 và kiểm hàm từ chối/current profile trước Start.",
+      "classification": "completed",
+      "known": "PR #466 đã merge: bảng rơi và nhân vật giữ phiên.",
+      "remaining": "Phạm vi nhóm đã tích hợp; G1 còn Shoe và kiểm client Việt/ma trận acceptance.",
+      "next_test": "Tiếp Shoe/client Việt theo PLAN, không mở lại nhóm đã tích hợp.",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "reason": "Chủ dự án đưa đường ngắn issue457 vào G1; roster mở rộng vẫn để sau.",
       "sources": [
@@ -1033,8 +1033,11 @@
       "evidence": [
         "docs/evidence/owner-directives/g1-item-scope-cut.json"
       ],
-      "prs": [],
-      "successors": []
+      "prs": [
+        466
+      ],
+      "successors": [],
+      "reviewed_utc": "2026-11-17T17:56:20.061803+00:00"
     },
     {
       "number": 460,
@@ -1068,10 +1071,10 @@
       "features": [
         "KR-F010"
       ],
-      "classification": "in_progress",
-      "known": "Native Rust selector2 hai vòng và hai ma trận mới bốn vòng/bốn selector, 864 getter checks, exact wire/peer/retirement/reset/journal; policy axial và full-axis quarantine đã có code/test.",
-      "remaining": "Audit/checkpoint tinh gọn, full workspace/exact-head local-history và CI trước merge một PR cho nhóm Punch.",
-      "next_test": "Hoàn tất gate nhóm Punch; Shoe và client vi smoke độc lập theo PLAN.",
+      "classification": "completed",
+      "known": "PR #471 đã merge: ma trận Punch và full-axis quarantine, native/gate/CI đã đạt.",
+      "remaining": "Phạm vi nhóm đã tích hợp; G1 còn Shoe và kiểm client Việt/ma trận acceptance.",
+      "next_test": "Tiếp Shoe/client Việt theo PLAN, không mở lại nhóm đã tích hợp.",
       "acceptance": "docs/PLAN.md#phase1-acceptance",
       "reason": "Chủ dự án gộp mọi hướng/khoảng cách thành một nhóm; không mở PR riêng selector2.",
       "sources": [
@@ -1082,9 +1085,35 @@
       "evidence": [
         "docs/evidence/rust-service/g1-punch-matrix.json"
       ],
+      "prs": [
+        471
+      ],
+      "successors": [],
+      "reviewed_utc": "2026-11-17T17:56:20.061803+00:00"
+    },
+    {
+      "number": 472,
+      "kre": "KRE-G1-SHOE-MATRIX",
+      "features": [
+        "KR-F010"
+      ],
+      "classification": "in_progress",
+      "known": "Tám vòng native bốn hướng và hai vòng khoảng cách ngang đã kiểm; raw/input deviations có correction riêng. Guard hướng đúng dấu đã có test tập trung; lượt bốn hướng trên final build đang chạy.",
+      "remaining": "Hoàn tất final native, audit/checkpoint tinh gọn, gate đúng head và CI trước merge một PR cho cả nhóm.",
+      "next_test": "Final Shoe matrix và kiểm ghép client Việt/acceptance G1 theo PLAN.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Chủ dự án yêu cầu nghiệm thu theo nhóm; #445 giữ lịch sử lát up-three đã đóng.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md#gap-ability-debuff"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-shoe-matrix.json"
+      ],
       "prs": [],
       "successors": [],
-      "reviewed_utc": "2026-11-17T17:19:41.120285+00:00"
+      "reviewed_utc": "2026-11-17T17:56:20.061803+00:00"
     }
   ],
   "as_of_utc": "2026-11-17T12:35:05.125317+00:00",

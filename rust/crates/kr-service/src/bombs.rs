@@ -354,7 +354,7 @@ impl Ledger {
     ) -> Result<Ticket, &'static str> {
         self.move_action(round, actor, slot, request, now, false)
     }
-    /// CP328 measured three-cell upward contact; all further geometry stays off.
+    /// G1 measured all four directions and variable straight corridors.
     pub(crate) fn move_shoe(
         &mut self,
         round: u64,
@@ -389,12 +389,27 @@ impl Ledger {
         let horizontal = !shoe && matches!(motion.selector, 0 | 2);
         let vertical = !shoe && matches!(motion.selector, 1 | 3);
         let geometry = if shoe {
-            (matches!(motion.selector, 4 | 6)
-                && motion.source_row == motion.target_row
-                && motion.source_column != motion.target_column)
-                || (matches!(motion.selector, 5 | 7)
-                    && motion.source_column == motion.target_column
-                    && motion.source_row != motion.target_row)
+            // Measured native contact: 4 left, 5 up, 6 right, 7 down.
+            // Shoe has a straight corridor; unlike Punch it does not wrap.
+            match motion.selector {
+                4 => {
+                    motion.source_row == motion.target_row
+                        && motion.target_column < motion.source_column
+                }
+                5 => {
+                    motion.source_column == motion.target_column
+                        && motion.target_row < motion.source_row
+                }
+                6 => {
+                    motion.source_row == motion.target_row
+                        && motion.target_column > motion.source_column
+                }
+                7 => {
+                    motion.source_column == motion.target_column
+                        && motion.target_row > motion.source_row
+                }
+                _ => false,
+            }
         } else {
             (horizontal && motion.source_row == motion.target_row)
                 || (vertical && motion.source_column == motion.target_column)
@@ -521,6 +536,61 @@ mod tests {
             power: 1,
         }
     }
+    #[test]
+    fn shoe_rejects_reversed_direction_without_consuming_the_native_action() {
+        use kr_wire::kr00967::{BombAction119, BombMotion162};
+        let a = member(70000, 11);
+        let b = member(80000, 22);
+        // Endpoints are taken from the native Shoe matrix, not synthesized goldens.
+        for (selector, row, col, target_row, target_col) in [
+            (4, 6, 4, 6, 3),
+            (5, 8, 4, 2, 4),
+            (6, 6, 4, 6, 5),
+            (7, 6, 3, 9, 3),
+        ] {
+            let mut ledger = Ledger::default();
+            ledger.begin(1);
+            let own = Request {
+                row,
+                column: col,
+                ..request(0)
+            };
+            let ticket = ledger.place(1, a, 0, &own, &[a, b], 1).unwrap().unwrap();
+            let action = BombAction119 {
+                motion: BombMotion162 {
+                    context: 0,
+                    slot: 0,
+                    selector,
+                    bomb_id: ticket.id,
+                    source_row: row,
+                    source_column: col,
+                    target_row,
+                    target_column: target_col,
+                },
+                opaque_tail: [1000, 3],
+            };
+            let mut reversed = action;
+            reversed.motion.selector = match selector {
+                4 => 6,
+                5 => 7,
+                6 => 4,
+                7 => 5,
+                _ => unreachable!(),
+            };
+            assert_eq!(
+                ledger
+                    .move_shoe(1, a, 0, reversed, Instant::now())
+                    .unwrap_err(),
+                "unmeasured_motion_geometry"
+            );
+            assert_eq!(ledger.active[&ticket.id].request, own);
+            assert!(ledger.active[&ticket.id].motion.is_none());
+            assert!(ledger.move_shoe(1, a, 0, action, Instant::now()).is_ok());
+            assert_eq!(ledger.active.len(), 1);
+            assert_eq!(ledger.active[&ticket.id].motion, Some(action.motion));
+        }
+    }
+
     #[test]
     fn shoe_corridor_blocks_peer_placement_and_crossing_punch_until_all_receipts() {
         use kr_wire::kr00967::{BombAction119, BombMotion162};
