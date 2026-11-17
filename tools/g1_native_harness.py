@@ -178,6 +178,11 @@ def prepare(args):
     for source in base.iterdir():
         if source.suffix in ['.py', '.gdb']:
             (out/source.name).write_text(source.read_text().replace(str(base), str(out)))
+    feedback_probe = ROOT/'tools/g1_native_feedback_probe.py'
+    observer = out/'room-observer.py'
+    if observer.exists() and 'g1-feedback-lifetime' not in observer.read_text():
+        with observer.open('a') as stream:
+            stream.write('\nexec(compile(Path('+repr(str(feedback_probe))+').read_text(),"g1-feedback-lifetime","exec"))\n')
     shutil.copy2(base/'previous-accounts.sqlite', out/'previous-accounts.sqlite')
     reused = {}
     for role, data in config['roles'].items():
@@ -205,7 +210,7 @@ def prepare(args):
                           ('--commands',config['commands_by_role']['A']),('--pair-config',str(out/'config.json'))]:
         recipe[recipe.index(option)+1] = value
     write(out/'native/recipe.json',recipe)
-    inputs = {ROOT/'tools/g1_native_harness.py', ROOT/'tools/g1_native_runtime.py', args.matrix.resolve()}
+    inputs = {ROOT/'tools/g1_native_harness.py', ROOT/'tools/g1_native_runtime.py', feedback_probe, args.matrix.resolve()}
     inputs.update(p for p in out.iterdir() if p.is_file())
     inputs.update((out/'binary').iterdir())
     inputs.update((ROOT/'rust').rglob('*.rs'))
