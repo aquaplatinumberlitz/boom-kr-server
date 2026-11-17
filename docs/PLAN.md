@@ -46,6 +46,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, n
    | Hoàn tất ma trận Shoe cho mọi hướng và lớp khoảng cách/corridor còn thiếu, ca bị chặn/không đủ điều kiện, peer và hai vòng/reset. | 2–3 lượt Rust; một PR cho cả nhóm Shoe |
    | [#457](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457) đã có native C4 bị từ chối, C0→C1 hợp lệ trên cùng socket, hai vòng/reset/journal; TCP/SQLite kiểm revision/revoke/stale. Chờ gate/tích hợp nhóm. | 0 lượt bổ sung |
    | Đối chiếu sáu map với tiêu chí 5 và dữ liệu drop mới: spawn, thùng vỡ, item giữ lại rơi/nhặt, hai vòng/reset và ca âm; chỉ chạy lại ô còn thiếu trong ma trận acceptance. | 0–3 lượt gộp nhiều map/roster; không đo lại từng tile hoặc toàn bộ roster đã đạt |
+   | Kiểm ghép client L1 `vi` hiện hành trên Rust theo tiêu chí 8 mới: một map G1, item giữ lại, đăng nhập/phòng/trận và hai vòng/reset. Giữ KR không vá chữ làm chuẩn các phép đo gameplay. | 1 lượt; ghép với kiểm map cuối G1 nếu đủ điều kiện |
    | Chốt ma trận G1, đồng bộ contract/catalog và audit/checkpoint/issue reconciliation một lần cho mỗi nhóm hoàn chỉnh; gate toàn kho một lần trước merge nhóm. | 0 lượt riêng; chỉ bổ sung native khi ma trận chỉ ra thiếu bằng chứng cụ thể |
 
    Đo trực tiếp trên Rust có instrumentation; Python reference chỉ dùng để tách sai khác cụ thể. Không mở thêm PR theo
