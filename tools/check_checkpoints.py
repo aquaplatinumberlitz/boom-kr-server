@@ -224,7 +224,7 @@ def verify_evidence_item(item, root=ROOT, require_local=False, where="evidence")
     return errors, warnings, checked, unavailable
 
 
-def documentation_identity(record, evidence):
+def documentation_identity(record, evidence, root=ROOT):
     """A documentation-only checkpoint has pinned canonical documents, not a binary.
 
     This is declaration validation only. The common evidence verifier still
@@ -240,6 +240,31 @@ def documentation_identity(record, evidence):
         and item["path"].endswith(".md") and SHA.fullmatch(str(item.get("sha256", "")))
         and isinstance(item.get("bytes"), int) and item["bytes"] > 0
     }
+    # A structured correction note can be the canonical document too. Unlike
+    # arbitrary JSON/runtime metadata, its schema and checkpoint lineage must
+    # explicitly identify this documentary correction, and its exact pinned
+    # bytes must be present. Common evidence verification still runs unchanged.
+    for item in evidence:
+        if not isinstance(item, dict):
+            continue
+        value = item.get("path")
+        if item.get("kind") != "repository" or not isinstance(value, str) \
+                or not re.fullmatch(r"docs/evidence/checkpoints/[a-z0-9-]+-correction\.json", value):
+            continue
+        try:
+            path = store.target(Path(root).resolve(), value)
+            data = path.read_bytes()
+            if len(data) != item.get("bytes") or hashlib.sha256(data).hexdigest() != item.get("sha256"):
+                continue
+            note = json.loads(data)
+            if not isinstance(note, dict) or note.get("schema") != "kre-documentation-sync-correction-v1" \
+                    or note.get("source") != "design" or note.get("status") != "design" \
+                    or note.get("checkpoint") != record.get("id") \
+                    or note.get("previous") != record.get("previous"):
+                continue
+            docs[value] = item.get("id")
+        except (OSError, ValueError, TypeError):
+            continue
     for finding in findings:
         if not isinstance(finding, dict) or finding.get("source") != "design" \
                 or finding.get("method") != "documentation" \
@@ -333,7 +358,7 @@ def validate(manifest, root=ROOT, require_local=False):
             if not isinstance(artifact, dict) or not SHA.fullmatch(str(artifact.get("sha256", ""))):
                 errors.append(f"{where}: invalid artifact identity")
         declared_evidence = list(store.evidence(record, root)) if not record.get("artifacts") else None
-        doc_identity = declared_evidence is not None and documentation_identity(record, declared_evidence)
+        doc_identity = declared_evidence is not None and documentation_identity(record, declared_evidence, root)
         if (not record.get("artifacts") and not doc_identity) or not record.get("locators"):
             errors.append(f"{where}: artifact identity and locators/run IDs required")
         if doc_identity:
