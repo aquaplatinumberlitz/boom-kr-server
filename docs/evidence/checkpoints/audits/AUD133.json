@@ -1,0 +1,86 @@
+{
+  "id": "AUD133",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-maxpower-measured-character-policy"
+  ],
+  "completed_through": "CP322",
+  "recorded_utc": "2026-11-16T23:35:54.355731+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/item-families/README.md",
+    "docs/evidence/rust-service/g1-maxpower.json",
+    "rust/crates/kr-service/src/characters.rs",
+    "rust/crates/kr-service/src/map_profile.rs",
+    "rust/crates/kr-service/src/pickups.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "local/research/codex/g1-maxpower-reuse-r1/reuse.json",
+    "local/research/codex/g1-maxpower-reuse-r1/current-exe-byte-binding.json",
+    "local/research/codex/g1-maxpower-build-r1/source-identity.json",
+    "local/research/codex/g1-maxpower-build-r1/prepublication-source-verification.json",
+    "local/research/codex/g1-maxpower-native-r1/maxpower-verification.json",
+    "local/research/codex/g1-maxpower-native-r1/native/raw-export-seal.json",
+    "local/research/codex/g1-maxpower-native-r1/export-verifier-scope.json",
+    "local/research/codex/g1-maxpower-native-r1/wire159-verifier-correction.json",
+    "local/research/codex/g1-maxpower-native-r1/manual-image-review.json",
+    "local/research/codex/g1-maxpower-native-r1/journal-identity-verification.json",
+    "local/research/codex/g1-maxpower-prebind-negative-r3/verification.json"
+  ],
+  "method": "Đọc nguồn chuẩn và CP045, byte-bind ba vùng dispatcher/endpoint trên diagnostic copy hiện tại. Rà code kind 5, max theo character, guard initial/map choices và current member/round, clone-before-queue-commit, power validator và reset. Đối chiếu raw sealed export: actual 124/165 tuple, native 165 đọc đủ 12 byte, không lỗi và tìm thấy item, sáu secure stat của cả hai actor trong cả hai view, power 1→7/9 rồi Fire/secondMax tại cap không đổi; actual 118 và 159 power 7/9. Toàn bộ 195 cờ/1D24 trước/sau 6 bom, hai rank/return, ba clock reset. Join journal với launcher account/player/character/team/outcome/thưởng 0; xem ảnh rank/clock. Đối chiếu source/binary snapshot 83 file đúng source sẽ publish; clippy/lockedtests/build output quan sát qua tool, không giả log stdout đã lưu. Kiểm binary thật khi policy stat tắt guard sau khi giữ hai lỗi setup của ca âm. Giữ overall exit 1 do output unmount busy, verify từ export đã so bytes; không run lại chỉ để ép exit 0 hoặc suy M8.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Rust floor/claim chỉ 0/1/2 dù MaxPower 5 có CP045 native effect/max/reset.",
+      "correction": "Mở đúng kind 5 trong policy stat đã có; current power bằng max của character, không đổi capacity/speed. Floor và hidden MaxPower thiếu stat policy bị từ chối trước bind, các kind khác chưa đo vẫn fail. Không thêm cờ theo capacity.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/characters.rs",
+        "rust/crates/kr-service/src/pickups.rs",
+        "rust/crates/kr-service/src/map_profile.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/protocol/items-stats.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "C0 max 7 có thể bị hardcode sang C1 hoặc suy cap no-op từ model.",
+      "correction": "Native C0/C1 có 7/9 ở cả hai view, Fire/Max tiếp không tăng, mọi stat khác giữ nguyên; clock kế reset. Chỉ root có blocker gần, không claim mọi ray dài hoặc mode/TTL.",
+      "fixed_in": [
+        "docs/protocol/items-stats.md",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/rust-service/g1-maxpower.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Output unmount busy hoặc frozen verifier sai locator có thể bị gọi nativefail hoặc cleanup pass.",
+      "correction": "Giữ exit 1/export seal và original thiếu locator chuẩn failure. Bản export v2 còn wire ID 159 dùng nhầm field 2 thay vì 11, giữ failure và sửa v3 từ contract cũ. Không sửa raw/wire/runtime input hoặc claim graceful output unmount/M8.",
+      "fixed_in": [
+        "docs/protocol/items-stats.md",
+        "docs/evidence/rust-service/g1-maxpower.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Ca config âm thiếu DB path và sai quyền parent có thể bị gọi đã test guard MaxPower.",
+      "correction": "Hai setup failures giữ nguyên, ca mới dùng parent 0700 và DB copy đã đóng mới có error đúng guard và không ready. Không gán ca âm native client cho test config.",
+      "fixed_in": [
+        "docs/protocol/items-stats.md",
+        "docs/evidence/rust-service/g1-maxpower.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "MaxPower native chỉ hai nhân vật/hai account, cap no-op; dead/trapped native và mọi roster còn thiếu, source tests không thay native acceptance.",
+    "Nhóm item khác của sáu map, coverage gameplay/roster và nhân vật G1 theo PLAN; không mở ability từ chung group1.",
+    "M8 còn Internet transport mới, 50 người/8 phòng, đóng gói, giám sát, budgets, backup/restore; raw export/DB tmpfs không chứng nhận độ bền.",
+    "L1 thuộc Claude; tools/export_map_profile.py và source client/pack/IDA DB không sửa, không đưa hạ tầng VPS/OCI lên GitHub."
+  ]
+}

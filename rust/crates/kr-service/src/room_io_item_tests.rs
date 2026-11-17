@@ -388,6 +388,166 @@ fn confirmations(c: &mut Case) {
     }
 }
 #[test]
+fn maxpower_claim_is_atomic_current_member_owned_and_gates_actual_power_until_reset() {
+    // CP045 floor582-kind5.bin, SHA256 9a2e4a18fc34e082357956c960c4b4635
+    // 91a95592b9ac8839c68803103e21b34, decoded body at sequence73.
+    let catalog = pickups::Catalog::from_floor(&bytes(
+        "96ca538396ca428d96cb539596ca538496cf509196ca5395a569",
+    ))
+    .unwrap();
+    let characters = crate::characters::Catalog::measured(&[0, 1]).unwrap();
+    // Identity/slot/capacity do not select either the character or the effect.
+    for character in [0, 1] {
+        let mut c = case(3);
+        let slot = 2;
+        let seed = characters.get(character).unwrap();
+        {
+            let mut r = c.shared.lock().unwrap();
+            r.floor_catalog = catalog.clone();
+            r.model.pickups = pickups::Round::begin(c.round, &catalog).unwrap();
+            r.model
+                .members
+                .get_mut(&c.keys[slot].identity)
+                .unwrap()
+                .item_stats = Some(seed);
+        }
+        let key = crate::room::wire_key(c.round).unwrap();
+        let claim = pickup(slot as u8, 4, 3, 17, 5, key);
+        c.sessions[slot].connection += 1;
+        assert!(c.sessions[slot].packet(124, &claim).is_err());
+        c.sessions[slot].connection -= 1;
+        assert!(
+            !c.sessions[slot]
+                .packet(124, &pickup(slot as u8, 4, 3, 17, 5, key.wrapping_sub(1)))
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+        {
+            c.shared
+                .lock()
+                .unwrap()
+                .model
+                .members
+                .get_mut(&c.keys[slot].identity)
+                .unwrap()
+                .life
+                .death = Some(Instant::now());
+        }
+        assert!(
+            !c.sessions[slot]
+                .packet(124, &claim)
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+        c.shared
+            .lock()
+            .unwrap()
+            .model
+            .members
+            .get_mut(&c.keys[slot].identity)
+            .unwrap()
+            .life
+            .begin();
+        // A full peer queue must not consume the item or publish the new power.
+        {
+            let r = c.shared.lock().unwrap();
+            for _ in 0..8 {
+                r.channels[&c.keys[0].identity]
+                    .sender
+                    .try_send(Runtime::member_batch(c.keys[0], Some(c.round), 0, vec![]))
+                    .unwrap_or_else(|_| panic!("fill bounded queue"));
+            }
+        }
+        assert!(c.sessions[slot].packet(124, &claim).is_err());
+        assert_eq!(
+            c.shared.lock().unwrap().model.members[&c.keys[slot].identity].item_stats,
+            Some(seed)
+        );
+        for _ in 0..8 {
+            c.sessions[0].inbox.try_recv().unwrap();
+        }
+        assert!(
+            c.sessions[slot]
+                .packet(124, &claim)
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+        confirmations(&mut c);
+        {
+            let r = c.shared.lock().unwrap();
+            let mut capped = seed;
+            capped.power = seed.maximum_power;
+            assert_eq!(
+                r.model.members[&c.keys[slot].identity].item_stats,
+                Some(capped)
+            );
+            assert_eq!(
+                r.model.members[&c.keys[0].identity].item_stats,
+                Some(characters.get(0).unwrap())
+            );
+        }
+        assert!(
+            !c.sessions[slot]
+                .packet(124, &claim)
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+        assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+        assert!(
+            !c.sessions[slot]
+                .packet(118, &bomb(slot as u8, 1, 1, key))
+                .unwrap()
+                .bomb
+                .unwrap()
+                .accepted
+        );
+        assert!(
+            c.sessions[slot]
+                .packet(118, &bomb(slot as u8, 1, seed.maximum_power, key))
+                .unwrap()
+                .bomb
+                .unwrap()
+                .accepted
+        );
+        for s in &mut c.sessions {
+            s.inbox.try_recv().unwrap();
+            s.inbox.try_recv().unwrap();
+        }
+        let next = {
+            let mut r = c.shared.lock().unwrap();
+            r.model.end(c.round).unwrap();
+            for key in &c.keys {
+                r.model.refreshed(*key, c.round).unwrap();
+            }
+            for key in &c.keys[1..] {
+                r.model.ready(*key).unwrap();
+            }
+            let next = r.model.begin(c.keys[0]).unwrap();
+            assert!(r.model.members.values().all(|m| m.item_stats.is_none()));
+            r.model.pickups = pickups::Round::begin(next, &catalog).unwrap();
+            next
+        };
+        assert_ne!(crate::room::wire_key(next).unwrap(), key);
+        assert!(
+            !c.sessions[slot]
+                .packet(124, &claim)
+                .unwrap()
+                .pickup
+                .unwrap()
+                .accepted
+        );
+        assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+    }
+}
+#[test]
 fn captured_patrit167_is_bounded_current_observation_without_item_or_reply_effects() {
     // Actual Patrit8-r1 PCAP, identity1/channel167/body52/sequence352.
     let body = bytes(

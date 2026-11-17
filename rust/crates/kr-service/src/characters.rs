@@ -13,12 +13,15 @@ pub(crate) struct Stats {
     pub maximum_speed: u8,
 }
 impl Stats {
-    /// Measured Bomb/Fire/Roller levels; never physical movement authority.
+    /// Measured Bomb/Fire/Roller/MaxPower levels; never movement authority.
     pub(crate) fn basic_pickup(&mut self, kind: u16) -> io::Result<()> {
         match kind {
             0 => self.capacity = self.capacity.saturating_add(1).min(self.maximum_capacity),
             1 => self.power = self.power.saturating_add(1).min(self.maximum_power),
             2 => self.speed = self.speed.saturating_add(1).min(self.maximum_speed),
+            // KR CP045: effect6 changes current power to that character's max.
+            // Capacity and speed retain their current values.
+            5 => self.power = self.maximum_power,
             _ => return Err(io::Error::other("unmeasured basic item effect")),
         }
         Ok(())
@@ -103,6 +106,30 @@ mod tests {
             assert!(stats.basic_pickup(145).is_err());
             assert_eq!(stats, prior);
             assert_eq!(catalog.get(key).unwrap(), initial);
+        }
+    }
+    #[test]
+    fn maxpower_uses_each_character_cap_without_changing_other_levels_or_seed() {
+        let catalog = Catalog::measured(&[0, 1]).unwrap();
+        for (key, maximum) in [(0, 7), (1, 9)] {
+            let seed = catalog.get(key).unwrap();
+            let mut stats = seed;
+            stats.basic_pickup(0).unwrap();
+            stats.basic_pickup(2).unwrap();
+            let before = stats;
+            stats.basic_pickup(5).unwrap();
+            assert_eq!(stats.power, maximum);
+            assert_eq!(
+                (stats.capacity, stats.speed, stats.maximum_power),
+                (before.capacity, before.speed, before.maximum_power)
+            );
+            let capped = stats;
+            for kind in [5, 1, 5] {
+                stats.basic_pickup(kind).unwrap();
+                assert_eq!(stats, capped);
+            }
+            assert_eq!(catalog.get(key).unwrap(), seed);
+            assert_eq!(seed.power, 1);
         }
     }
 }
