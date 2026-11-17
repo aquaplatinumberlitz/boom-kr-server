@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, CP331 / AUD139**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, CP332 / AUD140**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -31,7 +31,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, C
 **Thứ tự việc:**
 
 1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
-   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; catalog tám/sáu spawn và sparse6 đã có lát native; [policy hủy bom và route thùng/item ẩn Camp08 đã qua hai vòng/reset](protocol/terrain.md#rust-camp08-boundary). Herb đã có positive di chuyển, Line02 có direct getter native chặn nhân vật và tia đi xuyên; initializer/footprint và ray MissileBase/PinPillar đã đo, gồm covered-cell và tám recipient. Line01 đã có ray tới thùng và route StrongBox/Bomb/Fire roster 2/4/8 đã qua hai vòng/reset, Start kế. Tomb12 đã có route 2/4/6, Waterway âm, bridge di chuyển/ray, Fire/Bomb ẩn và hai vòng/reset; Factory07 đã có route 2/4/8, bốn loại thùng, native Fire/Bomb stat, static và Glass movement/ray trên Rust; các route có hai vòng/reset và Start kế, Glass có control riêng với giới hạn debugger. MaxPower đã port theo contract CP045, native C0/C1 power 7/9, cap no-op và hai vòng/reset; chưa mọi roster hoặc native dead/trapped claim. [Punch đã có lát Rust opt-in selector 3](protocol/items-stats.md#rust-bomb-motion-codec), lifecycle/quota, hai vòng account/peer/reset và correction queued motion sau khi actor rời phòng. Shoe selector 5/up-three đã có lát Rust opt-in với corridor, ca dùng/contact trước pickup, hai vòng account/peer/reset và journal. Tiếp [gap all-dead managed player](RESEARCH.md#gap-managed-all-dead) ở #453 để trận luôn có đường kết thúc, rồi các hướng/khoảng cách còn thiếu theo acceptance. Sau đó tiếp [coverage Factory07 còn thiếu](RESEARCH.md#gap-factory07-terrain), [coverage nội dung còn lại](RESEARCH.md#gap-tomb12-terrain), coverage roster và nhóm item theo acceptance; không đụng `tools/export_map_profile.py`.
+   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; catalog tám/sáu spawn và sparse6 đã có lát native; [policy hủy bom và route thùng/item ẩn Camp08 đã qua hai vòng/reset](protocol/terrain.md#rust-camp08-boundary). Herb đã có positive di chuyển, Line02 có direct getter native chặn nhân vật và tia đi xuyên; initializer/footprint và ray MissileBase/PinPillar đã đo, gồm covered-cell và tám recipient. Line01 đã có ray tới thùng và route StrongBox/Bomb/Fire roster 2/4/8 đã qua hai vòng/reset, Start kế. Tomb12 đã có route 2/4/6, Waterway âm, bridge di chuyển/ray, Fire/Bomb ẩn và hai vòng/reset; Factory07 đã có route 2/4/8, bốn loại thùng, native Fire/Bomb stat, static và Glass movement/ray trên Rust; các route có hai vòng/reset và Start kế, Glass có control riêng với giới hạn debugger. MaxPower đã port theo contract CP045, native C0/C1 power 7/9, cap no-op và hai vòng/reset; chưa mọi roster hoặc native dead/trapped claim. [Punch đã có lát Rust opt-in selector 3](protocol/items-stats.md#rust-bomb-motion-codec), lifecycle/quota, hai vòng account/peer/reset và correction queued motion sau khi actor rời phòng. Shoe selector 5/up-three đã có lát Rust opt-in với corridor, ca dùng/contact trước pickup, hai vòng account/peer/reset và journal. [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có native 2/4/8, journal Draw/thưởng 0, hai vòng/reset và roster 4/8 Start/clock kế; 4/8 dùng độ trễ LAN giả lập rõ ràng. Tiếp các hướng/khoảng cách Shoe/Punch còn thiếu theo acceptance. Sau đó tiếp [coverage Factory07 còn thiếu](RESEARCH.md#gap-factory07-terrain), [coverage nội dung còn lại](RESEARCH.md#gap-tomb12-terrain), coverage roster và nhóm item theo acceptance; không đụng `tools/export_map_profile.py`.
    Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
    **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json);
    [Claude được chủ dự án giao tiếp L1](evidence/owner-directives/l10n-claude-owner.json), mốc trước của Codex ở
@@ -48,9 +48,9 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 
 **Blocker và việc tồn:**
 
-- Managed player round chưa xử lý all-dead; native control có hai participant cùng report chết và không175 trước
-  timeout. Tiếp [#453](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453) sau lát Shoe, tái dùng contract
-  hai người và đo roster hiện hành trước khi port. Không coi việc tránh cùng chết trong ca Shoe là đã sửa gap này.
+- [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
+  contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite
+  đã có control departure, DB ticket và old-round. Giữ fixed-team legacy; không suy tie enum server gốc.
 
 - Direct UDP âm ở hai NAT đổi cổng; N1b không retry. Relay xác thực đã đạt hành vi N1R-b bằng native và runtime
   controls theo ma trận, với [preset phục vụ và ngân sách cổng](OPERATIONS.md). Native mới dùng Wine/LAN cô lập;

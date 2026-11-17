@@ -27,7 +27,15 @@ pub fn rank175(teams: &[u8], winner: u8) -> io::Result<Vec<u8>> {
 /// Slot-indexed rank rows for an explicit current roster. Service decides the
 /// outcome. Sparse/variable native acceptance is independent of serialization.
 pub fn rank175_players(players: &[(u8, u8)], winner: u8) -> io::Result<Vec<u8>> {
-    if !(2..=8).contains(&players.len()) || winner > 31 {
+    player_rank_rows(players, Some(winner))
+}
+/// CP083 measured rank2 for each eliminated player, without a new tie enum.
+/// The general roster service policy and native acceptance are separate.
+pub fn rank175_all_dead_players(players: &[(u8, u8)]) -> io::Result<Vec<u8>> {
+    player_rank_rows(players, None)
+}
+fn player_rank_rows(players: &[(u8, u8)], winner: Option<u8>) -> io::Result<Vec<u8>> {
+    if !(2..=8).contains(&players.len()) || winner.is_some_and(|team| team > 31) {
         return Err(io::Error::other("invalid player rank roster"));
     }
     let mut slots = std::collections::BTreeMap::new();
@@ -38,7 +46,7 @@ pub fn rank175_players(players: &[(u8, u8)], winner: u8) -> io::Result<Vec<u8>> 
         }
         teams.insert(team);
     }
-    if teams.len() < 2 || !teams.contains(&winner) {
+    if teams.len() < 2 || winner.is_some_and(|team| !teams.contains(&team)) {
         return Err(io::Error::other(
             "rank requires two teams and a current winner",
         ));
@@ -49,7 +57,7 @@ pub fn rank175_players(players: &[(u8, u8)], winner: u8) -> io::Result<Vec<u8>> 
         if let Some(team) = slots.get(&slot) {
             let mut row = vec![0; 131];
             row[0] = 1;
-            row[5] = if *team == winner { 1 } else { 2 };
+            row[5] = if Some(*team) == winner { 1 } else { 2 };
             inner.extend(row);
         } else {
             inner.push(0);

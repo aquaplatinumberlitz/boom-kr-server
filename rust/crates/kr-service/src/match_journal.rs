@@ -276,13 +276,22 @@ impl Owner {
         }
     }
     pub(crate) fn finish(&mut self, winner: u8) -> io::Result<()> {
+        self.finish_result(Some(winner))
+    }
+    /// Backend Draw is the explicit no-winner policy; KR wire still uses rank2.
+    pub(crate) fn all_dead(&mut self) -> io::Result<()> {
+        self.finish_result(None)
+    }
+    fn finish_result(&mut self, winner: Option<u8>) -> io::Result<()> {
         let Some(round) = &self.current else {
             return Err(err("match journal has no start"));
         };
         if round.finished {
             return Err(err("match journal duplicate transition"));
         }
-        let reason = if round.exits.is_empty() {
+        let reason = if winner.is_none() {
+            MatchEndReason::AllDead
+        } else if round.exits.is_empty() {
             MatchEndReason::Elimination
         } else {
             MatchEndReason::Forfeit
@@ -296,10 +305,10 @@ impl Owner {
                 .iter()
                 .map(|p| MatchPlayerFinish {
                     slot: p.slot,
-                    outcome: if p.team == winner {
-                        MatchOutcome::Win
-                    } else {
-                        MatchOutcome::Loss
+                    outcome: match winner {
+                        None => MatchOutcome::Draw,
+                        Some(team) if p.team == team => MatchOutcome::Win,
+                        Some(_) => MatchOutcome::Loss,
                     },
                     exit: *round.exits.get(&p.slot).unwrap_or(&MatchExit::Present),
                 })
@@ -483,6 +492,48 @@ mod tests {
         assert_eq!(finish.reason, MatchEndReason::Forfeit);
         assert_eq!(finish.players[1].exit, MatchExit::Left);
         assert_eq!(records[0].reward_per_player, 0);
+        manager
+            .factory()
+            .submit(Event::Finish(start.key, finish.clone()))
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert_eq!(history(&temp), records);
+        manager.shutdown().await.unwrap();
+        worker.shutdown().await.unwrap();
+    }
+    #[tokio::test]
+    async fn all_dead_persists_only_draws_and_zero_reward_with_original_sparse_roster_and_exits() {
+        let (temp, worker, manager, start) = setup().await;
+        let mut owner = manager.factory().owner();
+        owner.begin(start.clone()).unwrap();
+        owner.ticket().unwrap().wait().await.unwrap();
+        owner.departed(6, MatchExit::Left);
+        owner.all_dead().unwrap();
+        owner.ticket().unwrap().wait().await.unwrap();
+        assert!(owner.all_dead().is_err());
+        let records = history(&temp);
+        assert_eq!(records.len(), 1);
+        let record = &records[0];
+        assert_eq!(record.start, start);
+        assert_eq!(record.reward_per_player, 0);
+        let finish = record.finish.as_ref().unwrap();
+        assert_eq!(finish.reason, MatchEndReason::AllDead);
+        assert!(
+            finish
+                .players
+                .iter()
+                .all(|p| p.outcome == MatchOutcome::Draw)
+        );
+        assert_eq!(
+            finish
+                .players
+                .iter()
+                .map(|p| (p.slot, p.exit))
+                .collect::<Vec<_>>(),
+            [(0, MatchExit::Present), (6, MatchExit::Left)]
+        );
         manager
             .factory()
             .submit(Event::Finish(start.key, finish.clone()))
