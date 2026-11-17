@@ -108,7 +108,7 @@ struct Active {
 impl Active {
     /// Occupancy checked by new actions includes the complete path of a
     /// prior Punch, whose original source may still contain its moving sprite.
-    /// Placement reserves Shoe corridors and an entire horizontal Punch row. Stop
+    /// Placement reserves Shoe corridors and an entire Punch axis. Stop
     /// has no wire acknowledgement; conservatively retain until retirement.
     fn reserves(&self, cell: (u8, u8)) -> bool {
         (self.request.row, self.request.column) == cell
@@ -116,7 +116,8 @@ impl Active {
                 // Horizontal Punch may wrap; endpoint delta is not its path.
                 // Conservatively reserve the entire row until retirement.
                 (matches!(m.selector, 0 | 2) && m.source_row == cell.0)
-                    || (matches!(m.selector, 1 | 3 | 5)
+                    || (matches!(m.selector, 1 | 3) && m.source_column == cell.1)
+                    || (m.selector == 5
                         && m.source_column == cell.1
                         && (m.source_row.min(m.target_row)..=m.source_row.max(m.target_row))
                             .contains(&cell.0))
@@ -276,8 +277,7 @@ impl Ledger {
         {
             Some("owner_capacity_reserved")
         } else if self.active.values().any(|a| {
-            a.motion.is_some_and(|m| matches!(m.selector, 0 | 2 | 5))
-                && a.reserves((request.row, request.column))
+            a.motion.is_some_and(|m| m.selector <= 5) && a.reserves((request.row, request.column))
         }) {
             Some("motion_path_reserved")
         } else if self
@@ -375,24 +375,20 @@ impl Ledger {
         if motion.context != 0 || motion.slot != slot {
             return Err("action_actor_mismatch");
         }
-        // Reference endpoints: selector0/+two columns, selector2/-one column.
-        // Service evidence is separate in #460/#462. Never normalize targets.
+        // B38A80 scans and wraps before selecting an endpoint. A fixed delta
+        // cannot represent its report. This report-derived DESIGN admits bounded
+        // axial endpoints; the room also requires a free terrain destination.
+        // It reserves the entire possible axis until retirement, never claiming
+        // that endpoint distance describes the native flight or server physics.
         let horizontal = !shoe && matches!(motion.selector, 0 | 2);
-        let geometry = if horizontal {
-            let target_column = match motion.selector {
-                0 => motion.source_column.checked_add(2),
-                2 => motion.source_column.checked_sub(1),
-                _ => None,
-            };
-            motion.source_row == motion.target_row && target_column == Some(motion.target_column)
+        let vertical = !shoe && matches!(motion.selector, 1 | 3);
+        let geometry = if shoe {
+            motion.selector == 5
+                && motion.source_row.checked_sub(3) == Some(motion.target_row)
+                && motion.source_column == motion.target_column
         } else {
-            let target_row = match (shoe, motion.selector) {
-                (true, 5) => motion.source_row.checked_sub(3),
-                (false, 3) => motion.source_row.checked_sub(1),
-                (false, 1) => motion.source_row.checked_add(1),
-                _ => None,
-            };
-            target_row == Some(motion.target_row) && motion.source_column == motion.target_column
+            (horizontal && motion.source_row == motion.target_row)
+                || (vertical && motion.source_column == motion.target_column)
         };
         if !geometry
             || motion.source_row >= 13
@@ -408,13 +404,13 @@ impl Ledger {
                     // No path claim from an endpoint delta: reject even a bomb
                     // beyond the target while reserving the full possible row.
                     (0..15).any(|column| other.reserves((motion.source_row, column)))
+                } else if vertical {
+                    (0..13).any(|row| other.reserves((row, motion.source_column)))
                 } else if shoe {
                     (motion.target_row..=motion.source_row)
                         .any(|row| other.reserves((row, motion.target_column)))
                 } else {
-                    other
-                        .motion
-                        .is_some_and(|m| matches!(m.selector, 0 | 2 | 5))
+                    other.motion.is_some_and(|m| m.selector <= 5)
                         && (other.reserves((motion.source_row, motion.source_column))
                             || other.reserves((motion.target_row, motion.target_column)))
                 }
@@ -613,7 +609,7 @@ mod tests {
         );
     }
     #[test]
-    fn shoe_cannot_enter_the_vacated_source_of_a_still_active_punch() {
+    fn vertical_punch_quarantines_the_entire_column_through_all_retirement_receipts() {
         use kr_wire::kr00967::{BombAction119, BombMotion162};
         let a = member(70000, 11);
         let b = member(80000, 22);
@@ -634,64 +630,58 @@ mod tests {
             )
             .unwrap()
             .unwrap();
+        let peer_request = Request {
+            row: 9,
+            owner: 1,
+            ..request(0)
+        };
         let second = ledger
-            .place(
-                1,
-                b,
-                1,
-                &Request {
-                    row: 9,
-                    owner: 1,
-                    ..request(0)
-                },
-                &roster,
-                2,
-            )
+            .place(1, b, 1, &peer_request, &roster, 2)
             .unwrap()
-            .unwrap();
-        ledger
-            .move_punch(
-                1,
-                a,
-                0,
-                BombAction119 {
-                    motion: BombMotion162 {
-                        context: 0,
-                        slot: 0,
-                        selector: 3,
-                        bomb_id: first.id,
-                        source_row: 6,
-                        source_column: 3,
-                        target_row: 5,
-                        target_column: 3,
-                    },
-                    opaque_tail: [1715, 1],
-                },
-                Instant::now(),
-            )
             .unwrap();
         let action = BombAction119 {
             motion: BombMotion162 {
                 context: 0,
-                slot: 1,
-                selector: 5,
-                bomb_id: second.id,
-                source_row: 9,
+                slot: 0,
+                selector: 3,
+                bomb_id: first.id,
+                source_row: 6,
                 source_column: 3,
-                target_row: 6,
+                target_row: 5,
                 target_column: 3,
             },
-            opaque_tail: [1000, 3],
+            opaque_tail: [1715, 1],
         };
         assert_eq!(
             ledger
-                .move_shoe(1, b, 1, action, Instant::now())
+                .move_punch(1, a, 0, action, Instant::now())
                 .unwrap_err(),
             "motion_path_occupied"
         );
+        assert!(ledger.delivered(&second, a));
+        assert!(ledger.delivered(&second, b));
+        ledger.move_punch(1, a, 0, action, Instant::now()).unwrap();
+        let next = Request {
+            serial: 1,
+            ..peer_request
+        };
+        assert_eq!(
+            ledger
+                .place(1, b, 1, &next, &roster, 2)
+                .unwrap()
+                .unwrap_err(),
+            "motion_path_reserved"
+        );
         assert!(ledger.delivered(&first, a));
+        assert_eq!(
+            ledger
+                .place(1, b, 1, &next, &roster, 2)
+                .unwrap()
+                .unwrap_err(),
+            "motion_path_reserved"
+        );
         assert!(ledger.delivered(&first, b));
-        assert!(ledger.move_shoe(1, b, 1, action, Instant::now()).is_ok());
+        assert!(ledger.place(1, b, 1, &next, &roster, 2).unwrap().is_ok());
     }
     #[test]
     fn horizontal_punch_reserves_entire_row_and_releases_after_all_receipts() {
@@ -719,10 +709,7 @@ mod tests {
             opaque_tail: [1790, 1],
         };
         for (selector, sr, sc, tr, tc) in [
-            (0, 6, 3, 6, 4),
-            (0, 6, 3, 6, 6),
             (0, 6, 3, 7, 5),
-            (2, 6, 3, 6, 5),
             (0, 6, 14, 6, 16),
             (0, 6, 255, 6, 1),
             (0, 13, 3, 13, 5),
@@ -857,11 +844,7 @@ mod tests {
             opaque_tail: [2045, 1],
         };
         for (selector, sr, sc, tr, tc) in [
-            (0, 6, 3, 6, 4),
-            (0, 6, 3, 6, 6),
             (0, 6, 3, 7, 5),
-            (2, 6, 3, 6, 5),
-            (2, 6, 4, 6, 2),
             (2, 6, 0, 6, 255),
             (2, 6, 4, 7, 3),
             (0, 6, 14, 6, 16),
@@ -1006,7 +989,7 @@ mod tests {
             opaque_tail: [1715, 1],
         };
         for (selector, source, target) in
-            [(1, 12, 13), (1, 255, 0), (1, 6, 8), (0, 6, 7), (2, 6, 7)]
+            [(1, 12, 13), (1, 255, 0), (4, 6, 8), (0, 6, 7), (2, 6, 7)]
         {
             let mut invalid = action;
             invalid.motion.selector = selector;
@@ -1020,23 +1003,30 @@ mod tests {
             );
         }
         ledger.move_punch(1, a, 0, action, Instant::now()).unwrap();
-        // Source6 is now free in the ledger root projection; a new Shoe may not
-        // enter it while the previous Punch could still be crossing it.
-        let second = ledger
-            .place(
-                1,
-                b,
-                1,
-                &Request {
-                    row: 6,
-                    owner: 1,
-                    ..request(0)
-                },
-                &[a, b],
-                2,
-            )
-            .unwrap()
-            .unwrap();
+        // Entire-column quarantine includes the vacated source and every
+        // possible wrapped cell. A peer cannot allocate a Shoe bomb there.
+        let peer = Request {
+            row: 6,
+            owner: 1,
+            ..request(0)
+        };
+        assert_eq!(
+            ledger
+                .place(1, b, 1, &peer, &[a, b], 2)
+                .unwrap()
+                .unwrap_err(),
+            "motion_path_reserved"
+        );
+        assert!(ledger.delivered(&ticket, a));
+        assert_eq!(
+            ledger
+                .place(1, b, 1, &peer, &[a, b], 2)
+                .unwrap()
+                .unwrap_err(),
+            "motion_path_reserved"
+        );
+        assert!(ledger.delivered(&ticket, b));
+        let second = ledger.place(1, b, 1, &peer, &[a, b], 2).unwrap().unwrap();
         let shoe = BombAction119 {
             motion: BombMotion162 {
                 context: 0,
@@ -1050,16 +1040,6 @@ mod tests {
             },
             opaque_tail: [1000, 3],
         };
-        assert_eq!(
-            ledger.move_shoe(1, b, 1, shoe, Instant::now()).unwrap_err(),
-            "motion_path_occupied"
-        );
-        assert!(ledger.delivered(&ticket, a));
-        assert_eq!(
-            ledger.move_shoe(1, b, 1, shoe, Instant::now()).unwrap_err(),
-            "motion_path_occupied"
-        );
-        assert!(ledger.delivered(&ticket, b));
         assert!(ledger.move_shoe(1, b, 1, shoe, Instant::now()).is_ok());
     }
     #[test]
