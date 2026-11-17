@@ -106,17 +106,20 @@ struct Active {
     preparing: BTreeSet<Membership>,
 }
 impl Active {
-    /// Occupancy checked by new Shoe actions includes the complete path of a
+    /// Occupancy checked by new actions includes the complete path of a
     /// prior Punch, whose original source may still contain its moving sprite.
-    /// Placement uses this corridor only for Shoe allocations below. Native stop
+    /// Placement reserves Shoe corridors and an entire horizontal Punch row. Stop
     /// has no wire acknowledgement; conservatively retain until retirement.
     fn reserves(&self, cell: (u8, u8)) -> bool {
         (self.request.row, self.request.column) == cell
             || self.motion.is_some_and(|m| {
-                matches!(m.selector, 1 | 3 | 5)
-                    && m.source_column == cell.1
-                    && (m.source_row.min(m.target_row)..=m.source_row.max(m.target_row))
-                        .contains(&cell.0)
+                // Horizontal Punch may wrap; endpoint delta is not its path.
+                // Conservatively reserve the entire row until retirement.
+                (m.selector == 0 && m.source_row == cell.0)
+                    || (matches!(m.selector, 1 | 3 | 5)
+                        && m.source_column == cell.1
+                        && (m.source_row.min(m.target_row)..=m.source_row.max(m.target_row))
+                            .contains(&cell.0))
             })
     }
 }
@@ -273,7 +276,8 @@ impl Ledger {
         {
             Some("owner_capacity_reserved")
         } else if self.active.values().any(|a| {
-            a.motion.is_some_and(|m| m.selector == 5) && a.reserves((request.row, request.column))
+            a.motion.is_some_and(|m| matches!(m.selector, 0 | 5))
+                && a.reserves((request.row, request.column))
         }) {
             Some("motion_path_reserved")
         } else if self
@@ -330,9 +334,9 @@ impl Ledger {
         );
         Ok(Ok(Placement::Allocated(ticket)))
     }
-    /// Scoped owner-only vertical Punch policy, not original KR authority.
+    /// Scoped owner-only Punch policy, not original KR authority.
     /// Selector1 emission was captured at CP327; down-one native execution
-    /// and retirement were checked in KRE-G1-PUNCH-DOWN (#456).
+    /// and retirement were checked in #456. Horizontal #460 reserves its whole row.
     /// Wire119 has no epoch: current non-reused ID and Membership fence it.
     pub(crate) fn move_punch(
         &mut self,
@@ -371,30 +375,42 @@ impl Ledger {
         if motion.context != 0 || motion.slot != slot {
             return Err("action_actor_mismatch");
         }
-        // Explicit captured direction/cell relationships only. The down-one
-        // branch has matching scoped native execution and retirement evidence.
-        let target_row = match (shoe, motion.selector) {
-            (true, 5) => motion.source_row.checked_sub(3),
-            (false, 3) => motion.source_row.checked_sub(1),
-            (false, 1) => motion.source_row.checked_add(1),
-            _ => None,
+        // Horizontal selector0/+two columns is a native reference geometry;
+        // Service compatibility needs separate evidence in #460. Never normalize targets.
+        let horizontal = !shoe && motion.selector == 0;
+        let geometry = if horizontal {
+            motion.source_row == motion.target_row
+                && motion.source_column.checked_add(2) == Some(motion.target_column)
+        } else {
+            let target_row = match (shoe, motion.selector) {
+                (true, 5) => motion.source_row.checked_sub(3),
+                (false, 3) => motion.source_row.checked_sub(1),
+                (false, 1) => motion.source_row.checked_add(1),
+                _ => None,
+            };
+            target_row == Some(motion.target_row) && motion.source_column == motion.target_column
         };
-        if target_row != Some(motion.target_row)
-            || motion.source_column != motion.target_column
+        if !geometry
             || motion.source_row >= 13
             || motion.target_row >= 13
             || motion.source_column >= 15
+            || motion.target_column >= 15
         {
             return Err("unmeasured_motion_geometry");
         }
         if self.active.values().any(|other| {
             other.ticket.id != motion.bomb_id
-                && if shoe {
+                && if horizontal {
+                    // No path claim from an endpoint delta: reject even a bomb
+                    // beyond the target while reserving the full possible row.
+                    (0..15).any(|column| other.reserves((motion.source_row, column)))
+                } else if shoe {
                     (motion.target_row..=motion.source_row)
                         .any(|row| other.reserves((row, motion.target_column)))
                 } else {
-                    other.motion.is_some_and(|m| m.selector == 5)
-                        && other.reserves((motion.target_row, motion.target_column))
+                    other.motion.is_some_and(|m| matches!(m.selector, 0 | 5))
+                        && (other.reserves((motion.source_row, motion.source_column))
+                            || other.reserves((motion.target_row, motion.target_column)))
                 }
         }) {
             return Err("motion_path_occupied");
@@ -670,6 +686,143 @@ mod tests {
         assert!(ledger.delivered(&first, a));
         assert!(ledger.delivered(&first, b));
         assert!(ledger.move_shoe(1, b, 1, action, Instant::now()).is_ok());
+    }
+    #[test]
+    fn horizontal_punch_reserves_entire_row_and_releases_after_all_receipts() {
+        use kr_wire::kr00967::{BombAction119, BombMotion162};
+        let a = member(70000, 11);
+        let b = member(80000, 22);
+        let mut ledger = Ledger::default();
+        ledger.begin(1);
+        let source = Request {
+            row: 6,
+            ..request(0)
+        };
+        let moved = ledger.place(1, a, 0, &source, &[a, b], 2).unwrap().unwrap();
+        let action = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 0,
+                selector: 0,
+                bomb_id: moved.id,
+                source_row: 6,
+                source_column: 3,
+                target_row: 6,
+                target_column: 5,
+            },
+            opaque_tail: [1790, 1],
+        };
+        for (selector, sr, sc, tr, tc) in [
+            (0, 6, 3, 6, 4),
+            (0, 6, 3, 6, 6),
+            (0, 6, 3, 7, 5),
+            (2, 6, 3, 6, 5),
+            (0, 6, 14, 6, 16),
+            (0, 6, 255, 6, 1),
+            (0, 13, 3, 13, 5),
+        ] {
+            let mut bad = action;
+            bad.motion.selector = selector;
+            bad.motion.source_row = sr;
+            bad.motion.source_column = sc;
+            bad.motion.target_row = tr;
+            bad.motion.target_column = tc;
+            assert_eq!(
+                ledger.move_punch(1, a, 0, bad, Instant::now()).unwrap_err(),
+                "unmeasured_motion_geometry"
+            );
+        }
+        // Even a distant ordinary bomb on the same row blocks admission: the
+        // measured endpoint does not prove a local two-cell airborne corridor.
+        let distant = Request {
+            owner: 1,
+            row: 6,
+            column: 11,
+            ..request(0)
+        };
+        let other = ledger
+            .place(1, b, 1, &distant, &[a, b], 2)
+            .unwrap()
+            .unwrap();
+        assert_eq!(
+            ledger
+                .move_punch(1, a, 0, action, Instant::now())
+                .unwrap_err(),
+            "motion_path_occupied"
+        );
+        assert!(ledger.delivered(&other, a));
+        assert!(ledger.delivered(&other, b));
+        ledger.move_punch(1, a, 0, action, Instant::now()).unwrap();
+        for column in [0, 3, 4, 5, 11, 14] {
+            let next = Request {
+                serial: 1,
+                column,
+                ..distant.clone()
+            };
+            assert_eq!(
+                ledger
+                    .place(1, b, 1, &next, &[a, b], 2)
+                    .unwrap()
+                    .unwrap_err(),
+                "motion_path_reserved"
+            );
+        }
+        let vertical = ledger
+            .place(
+                1,
+                b,
+                1,
+                &Request {
+                    row: 7,
+                    column: 11,
+                    serial: 1,
+                    ..distant.clone()
+                },
+                &[a, b],
+                2,
+            )
+            .unwrap()
+            .unwrap();
+        let crosses = BombAction119 {
+            motion: BombMotion162 {
+                context: 0,
+                slot: 1,
+                selector: 3,
+                bomb_id: vertical.id,
+                source_row: 7,
+                source_column: 11,
+                target_row: 6,
+                target_column: 11,
+            },
+            opaque_tail: [1000, 1],
+        };
+        assert_eq!(
+            ledger
+                .move_punch(1, b, 1, crosses, Instant::now())
+                .unwrap_err(),
+            "motion_path_occupied"
+        );
+        let shoe = BombAction119 {
+            motion: BombMotion162 {
+                selector: 5,
+                target_row: 4,
+                ..crosses.motion
+            },
+            opaque_tail: [1000, 3],
+        };
+        assert_eq!(
+            ledger.move_shoe(1, b, 1, shoe, Instant::now()).unwrap_err(),
+            "motion_path_occupied"
+        );
+        assert!(ledger.delivered(&moved, a));
+        assert_eq!(
+            ledger
+                .move_punch(1, b, 1, crosses, Instant::now())
+                .unwrap_err(),
+            "motion_path_occupied"
+        );
+        assert!(ledger.delivered(&moved, b));
+        ledger.move_punch(1, b, 1, crosses, Instant::now()).unwrap();
     }
     #[test]
     fn downward_punch_keeps_vacated_source_reserved_for_new_shoe_and_rejects_outside_map() {

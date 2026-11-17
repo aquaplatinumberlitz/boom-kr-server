@@ -1,0 +1,279 @@
+{
+  "id": "CP334",
+  "previous": "CP333",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T13:02:54.257671+00:00",
+  "context_commit": "72e8bce59defcbbf4396810494a90cef5fd03f9e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Nối lát Punch ngang selector 0 theo endpoint thực đã đo, giữ identity/transport/member/vòng và kiểm explicit failure/recovery của native harness.",
+  "scope": "Reference C0 và Rust hai account C1/C0, source (6,3)→6,5, hai vòng/reset/zero journal. Whole-row reservation là policy bảo thủ; original exit 1 sau unmount busy giữ nguyên, dùng bytes export được phục hồi và kiểm riêng.",
+  "artifacts": [
+    {
+      "name": "reference-client",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "native-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "native-service",
+      "sha256": "686806e527233f34e37e530232ea058bb7ea3c1df28c6401369163fdda52ece5"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/rust-service/g1-punch-horizontal.json",
+    "docs/evidence/item-families/punch-horizontal-action.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460"
+  ],
+  "findings": [
+    {
+      "summary": "Reference có hai actual 119 selector 0, source (6,3)→target (6,5), hai view đọc đủ 162, landing trước short 158/rebind, active 0 trước cleanup; có actual 118 mới và hai rank/return/reset. 712 wrapper khớp native getter; luồng chunk TCP/CRC và exact 162 prefix kiểm độc lập.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "HORIZ334-05472",
+        "HORIZ334-05473",
+        "HORIZ334-03522"
+      ],
+      "limits": "Reference C0 nhặt cả Shoe/Punch, không Rust account. Hai endpoint không chứng minh toàn đường bay hoặc original authority."
+    },
+    {
+      "summary": "Rust opt-in nhận selector0 cùng hàng/đích cộng hai cột trong map; giữ current owner/member/vòng, life/item/deadline và clone/queue/retirement. Reservation giữ cả hàng đến mọi receipt, chặn allocation/path/placement giao hàng và mọi cancellation cell trên hàng. Test kiểm distant bomb, vertical/Shoe, biên, queue rollback/quota và cancellation ngoài endpoint.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "HORIZ334-06738",
+        "HORIZ334-06739",
+        "HORIZ334-06740",
+        "HORIZ334-06741",
+        "HORIZ334-02739"
+      ],
+      "limits": "Full-row quarantine là design vì path còn unknown; không phải luật KR hoặc mở mọi geometry/capacity/identity alias."
+    },
+    {
+      "summary": "Native Rust có actor C1 đã lưu/peer C0, floor chỉ Punch 4: Space trước pickup sinh118/no119, hai exact 119/162 cùng geometry, landing/rebind/active 0 rồi bom tiếp trong cả hai view. Hai kết quả/về phòng/reset và hai journal thưởng 0 đúng account/player/character; rank TCP khớp outcomes DB, 216 getter checks.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "HORIZ334-06035",
+        "HORIZ334-05489",
+        "HORIZ334-06029",
+        "HORIZ334-06018"
+      ],
+      "limits": "Wine/private LAN, native 2 và ExVillage01; recovered bytes bounded at export cutoff. Không Internet/tải/mọi map/roster/character, native fault injection hoặc full G1."
+    },
+    {
+      "summary": "Gameplay hoàn tất nhưng launcher exit 1: output tmpfs unmount busy sau same-byte export, diagnostic thấy B gdb giữ output fd. Namespace exit xong, không còn owned process/mount; 70 exported files phục hồi đúng size/SHA. Recovery verifier kiểm admission failure/recovery riêng và giữ mọi gameplay/wire/identity/DB/frozen-input assertion; raw/exit/log/archive cũ bất biến.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "HORIZ334-06019",
+        "HORIZ334-06021",
+        "HORIZ334-06025",
+        "HORIZ334-06026",
+        "HORIZ334-06035"
+      ],
+      "limits": "Original unmount không thành công; không đổi exit 1 thành pass 0 hoặc suy crash-durable evidence logging. Cleanup sâu hơn ngoài diagnostic không được khẳng định."
+    },
+    {
+      "summary": "Giữ lỗi R1 fixed-source assumption, nhầm invocation wire verifier R1, test dùng nhầm wall và archival relativepath. R2 lấy source từ actual 118 và giữ exact 119 source/current bomb; đúng verifier R2 kiểm wire, không normalize target hoặc rerun native để sửa verifier.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "HORIZ334-02743",
+        "HORIZ334-06074",
+        "HORIZ334-02631",
+        "HORIZ334-02731"
+      ],
+      "limits": "Các failure không cộng thành acceptance; source/direction claims chỉ theo raw đã kiểm. Không broad RE hoặc thêm function-body request."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt/clippy-Dwarnings/full locked workspace tests/build và native source binding; sau native chỉ thêm một cfg(test), mọi runtime ELF section khớp native binary",
+      "result": "pass",
+      "evidence": [
+        "HORIZ334-02639",
+        "HORIZ334-02739"
+      ],
+      "limits": "Production code không đổi; build không tự chứng nhận native hoặc original authority."
+    },
+    {
+      "check": "Reference và Rust two-cycle motion/retirement/peer/reset/account/journal; independent wire/getters, original exit 1 và recovered same-byte admission",
+      "result": "pass",
+      "evidence": [
+        "HORIZ334-05472",
+        "HORIZ334-05473",
+        "HORIZ334-06035",
+        "HORIZ334-06026"
+      ],
+      "limits": "Semantic check trên restored export, không là process/unmount success hoặc mọi lifecycle."
+    },
+    {
+      "check": "Canonical docs/catalog/diff và manual feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "HORIZ334-00032",
+        "HORIZ334-00031",
+        "HORIZ334-00007"
+      ],
+      "limits": "Exact-head local/history và mọi CI còn bắt buộc trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP334-punch-horizontal.json",
+      "bytes": 1789023,
+      "sha256": "fae706cb73ec4d71429ecf9f443e837daf8cd50869945a3ce7547304cc73a4a2",
+      "count": 6742
+    }
+  ],
+  "delta": {
+    "added": [
+      "Punch selector0/endpoint ngang +2 cột, full-row reservation, native reference và Rust hai account/two-cycle/zero journal."
+    ],
+    "corrected": [
+      "Giữ rõ launcher exit 1/unmount busy, recovery exact bytes và bounded semantic acceptance; test bổ sung cancellation ngoài endpoint."
+    ],
+    "superseded": [
+      "Trạng thái candidate horizontal service của #460; selector2, Shoe coverage và full G1/M8/phase 1 vẫn mở."
+    ]
+  },
+  "blockers": [
+    "Wine/private LAN, hai account với C1 đã lưu/peer C0, ExVillage01, hai vòng native. Không Internet/load/mọi map/roster/nhân vật.",
+    "Reference C0 nhặt cả Shoe/Punch; Rust floor chỉ Punch 4 có kiểm riêng. Same-row endpoint delta 2 không chứng minh hai-cell trajectory hoặc original server authority. Whole-row reservation là policy bảo thủ, không luật KR đã phục hồi.",
+    "Selector 2 và Shoe các hướng/khoảng cách khác chưa mở; arbitrary target, foreign bomb, repeated/late/inflight motion vẫn từ chối hoặc ngoài nghiệm thu. Không full G1/M8/giai đoạn 1 hoặc L1.",
+    "R1 source 6 assumption failure, wrong R1 wire-verifier invocation, initial wrong test-wall assumption và archival relative-path failure giữ lại. Original native exit 1/cleanup failure không ghi thành pass 0."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-G1-BOMB-MOTION-COVERAGE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN tiếp selector2 và các hướng/khoảng cách Shoe còn thiếu bằng source-first/native use/ineligible/peer/reset. Sau đó coverage Factory07/Tomb12/content; không L1 hoặc exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T13:02:54.257671+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo manual self-audit AUD142, Punchselector0/endpoint +two columns only. Independent review waived, no full G1/phase 1 closure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index trỏ đúng topic hiện hành, không cần anchor theo checkpoint."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/evidence/item-families/punch-horizontal-action.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-punch-horizontal.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD142.json",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "state": "updated",
+      "reason": "Đồng bộ scoped horizontal native/account/guard/reservation, explicit cleanup failure/recovery và giới hạn."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo/audit nhóm/privacy/L1 owner không đổi."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-punch-selector0-horizontal-endpoint-plus2"
+  ]
+}

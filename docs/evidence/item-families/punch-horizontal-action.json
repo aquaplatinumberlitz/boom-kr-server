@@ -1,0 +1,221 @@
+{
+  "schema": "kre-punch-horizontal-reference-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Reference C0, selector0/source6,3→6,5 in two cycles, native two views and retirement/reset. Rust native pending.",
+  "requests119": [
+    [
+      0,
+      0,
+      0,
+      1,
+      6,
+      3,
+      6,
+      5,
+      1790,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      3,
+      6,
+      3,
+      6,
+      5,
+      1790,
+      1
+    ]
+  ],
+  "clients": [
+    {
+      "role": "A",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    },
+    {
+      "role": "B",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    }
+  ],
+  "native_secure_field_checks": 712,
+  "client_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/two-round-horizontal-reference-verification.json",
+      "bytes": 4225,
+      "sha256": "30839daeaac96926d43d0e37f331647f22ad7a0d2ed0b3e7184d336e3df41c52"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/wire-reassembly-verification.json",
+      "bytes": 2556,
+      "sha256": "daaeed38027a8e103f98465022e0446d2947d5a5595fc29aefd274e231d61588"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/actor-fields-final.json",
+      "bytes": 481834,
+      "sha256": "40bbb41681ade77ed121f6619db4a26bb88a1acd298d4f7f0af562f9573ebbe9"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/raw-seal.json",
+      "bytes": 252209,
+      "sha256": "d57b301128bfe04d5dfbc6718a301fd8b6d2eb64c18d50aa68ebac3a40ac3779"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/frozen-input-postrun-verification.json",
+      "bytes": 61,
+      "sha256": "902c9998e1dcee762385793078aa365c8838c0d6f4599c56b93051504e643e3e"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/runtime-preflight.json",
+      "bytes": 686020,
+      "sha256": "baad4a168f8f26420c8c9f9c7581b42892e81ac789acbef7d359891ab5121f50"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/reference-inputs.json",
+      "bytes": 8915,
+      "sha256": "b908cffc14a9dff9a43fa84e14c71df94b24db4d34bd1d2c538fb79354dcde35"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/runtime/run.json",
+      "bytes": 234070,
+      "sha256": "14810adcfe62e2dc8283f710145b6013ea17925ef6d3e8675994826a370a9f96"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r1/failure-verification.json",
+      "bytes": 965,
+      "sha256": "c3bbfb3ea42cf700fd82a34ff543f6b8eb0e78508bd7b3d431ca4fb4702f007c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-sequence-r2/wire-invocation-correction.json",
+      "bytes": 1074,
+      "sha256": "24b494448c07cac954af86ece830e4dd21b618797916d198932d649321e7f28a"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reuse-r1/reuse.json",
+      "bytes": 5526,
+      "sha256": "09f7c3b75b9f75169c5e88c12f623f07625e30e48cf4e6a6232b5af6ff85bb3b"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reuse-r1/geometry-safety-followup.json",
+      "bytes": 1076,
+      "sha256": "b2ce088aa2e07e420dee023f93e485794da45aacb3491bd52363b0b224385e1c"
+    }
+  ],
+  "limits": [
+    "Left ordinary input emitted selector0 with positive-column endpoint delta2, not a one-cell direction assumption. Full intermediate/wrapped trajectory not established by begin/end samples.",
+    "Both reference pickup flags enabled; Rust must separately use floorPunch4 only, two accounts, native use/ineligible/peer/reset and zero journal.",
+    "Original authority/order unknown. Short158→blast6s remains emulator design. R1 source assumption failure and wrong-R1-wire-verifier invocation preserved, not counted as native passes."
+  ]
+}

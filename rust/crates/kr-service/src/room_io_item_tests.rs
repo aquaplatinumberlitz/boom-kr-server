@@ -2164,3 +2164,208 @@ fn admitted_shoe_corridor_and_peer_motion_survive_actor_departure_but_not_alloca
         "unsupported_roster"
     );
 }
+
+#[test]
+fn punch_horizontal_queue_rollback_keeps_row_reservation_and_original_deadline() {
+    let mut c = punch_case();
+    punch_pickup(&mut c);
+    let (id, mut deadlines) = punch_place(&mut c, 6);
+    let original_due = deadlines.iter().map(|batch| batch.due).collect::<Vec<_>>();
+    let mut request = punch_body(0, id, 6);
+    request[2] = write_uint(0, Width::U8).unwrap()[0];
+    request[7] = write_uint(6, Width::U8).unwrap()[0];
+    request[8] = write_uint(5, Width::U8).unwrap()[0];
+    {
+        let r = c.shared.lock().unwrap();
+        for _ in 0..8 {
+            r.channels[&c.keys[1].identity]
+                .sender
+                .try_send(Runtime::member_batch(c.keys[1], Some(c.round), 0, vec![]))
+                .unwrap();
+        }
+    }
+    assert!(c.sessions[0].packet(119, &request).is_err());
+    assert!(c.sessions[0].inbox.try_recv().is_err());
+    for _ in 0..8 {
+        c.sessions[1].inbox.try_recv().unwrap();
+    }
+    assert!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for session in &mut c.sessions {
+        let batch = session.inbox.try_recv().unwrap();
+        assert!(session.valid(&batch));
+        assert_eq!(batch.packets[0].1.opcode, 162);
+        assert_eq!(batch.packets[0].1.payload, request[..9]);
+    }
+    {
+        let r = c.shared.lock().unwrap();
+        let terrain = r.model.terrain.as_ref().unwrap();
+        let probe = crate::terrain::Bomb {
+            id: id + 1,
+            owner: 0,
+            row: 6,
+            column: 5,
+            power: 1,
+        };
+        assert!(terrain.clone().place(probe.clone()).is_err());
+        assert!(
+            terrain
+                .clone()
+                .place(crate::terrain::Bomb { column: 3, ..probe })
+                .is_ok()
+        );
+    }
+    let key = crate::room::wire_key(c.round).unwrap();
+    assert_eq!(
+        c.sessions[0]
+            .packet(118, &bomb(0, 2, 1, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .reason,
+        "owner_capacity_reserved"
+    );
+    for (index, session) in c.sessions.iter().enumerate() {
+        assert!(session.prepare_delivery(&mut deadlines[index]).unwrap());
+        assert_eq!(deadlines[index].due, original_due[index]);
+        assert_eq!(
+            deadlines[index].packets[0].1.payload,
+            wire::rebind158(id).unwrap()
+        );
+        session.finish(&deadlines[index]).unwrap();
+        if index == 0 {
+            assert_eq!(
+                c.sessions[0]
+                    .packet(118, &bomb(0, 2, 1, key))
+                    .unwrap()
+                    .bomb
+                    .unwrap()
+                    .reason,
+                "owner_capacity_reserved"
+            );
+        }
+    }
+    assert!(
+        c.sessions[0]
+            .packet(118, &bomb(0, 2, 1, key))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    let mut blocked = punch_case();
+    punch_pickup(&mut blocked);
+    // The independent test terrain marks (5,4) static. Place at (5,2)
+    // so the +two-column landing, rather than a fabricated wall, is blocked.
+    let key = crate::room::wire_key(blocked.round).unwrap();
+    let mut placement = bomb(0, 1, 1, key);
+    placement[10] = write_uint(5, Width::U8).unwrap()[0];
+    placement[11] = write_uint(2, Width::U8).unwrap()[0];
+    let id = blocked.sessions[0]
+        .packet(118, &placement)
+        .unwrap()
+        .bomb
+        .unwrap()
+        .id
+        .unwrap();
+    for session in &mut blocked.sessions {
+        session.inbox.try_recv().unwrap();
+        session.inbox.try_recv().unwrap();
+    }
+    let mut request = wire::BombMotion162 {
+        context: 0,
+        slot: 0,
+        selector: 0,
+        bomb_id: id,
+        source_row: 5,
+        source_column: 2,
+        target_row: 5,
+        target_column: 4,
+    }
+    .encode()
+    .unwrap();
+    request.extend(encoded(&[(1790, Width::U16), (1, Width::U16)]));
+    for _ in 0..2 {
+        assert_eq!(
+            blocked.sessions[0]
+                .packet(119, &request)
+                .unwrap()
+                .bomb
+                .unwrap()
+                .reason,
+            "motion_terrain"
+        );
+        assert!(
+            blocked
+                .sessions
+                .iter_mut()
+                .all(|session| session.inbox.try_recv().is_err())
+        );
+    }
+}
+
+#[test]
+fn horizontal_punch_cancellation_anywhere_on_row_rejects_without_partial_motion() {
+    let mut c = punch_case();
+    spawn_choices(&mut c, &[8]);
+    {
+        let mut r = c.shared.lock().unwrap();
+        let mut maps = Arc::try_unwrap(r.maps.take().unwrap()).ok().unwrap();
+        // The cancellation cell is behind the source, outside source3..target5.
+        // The full-row policy must inspect it rather than assume a short path.
+        let cfg: rules::BombCancellationConfig = serde_json::from_value(serde_json::json!({
+            "map_sha256": "a".repeat(64), "cells": [[6, 2]]
+        }))
+        .unwrap();
+        maps.choices[0].bomb_cancellation = Some(cfg.validate(&"a".repeat(64)).unwrap());
+        r.maps = Some(Arc::new(maps));
+        r.rules.map_bomb_cancellation = true;
+    }
+    punch_pickup(&mut c);
+    let (id, _) = punch_place(&mut c, 6);
+    let mut request = wire::BombMotion162 {
+        context: 0,
+        slot: 0,
+        selector: 0,
+        bomb_id: id,
+        source_row: 6,
+        source_column: 3,
+        target_row: 6,
+        target_column: 5,
+    }
+    .encode()
+    .unwrap();
+    request.extend(encoded(&[(1790, Width::U16), (1, Width::U16)]));
+    for _ in 0..2 {
+        assert_eq!(
+            c.sessions[0]
+                .packet(119, &request)
+                .unwrap()
+                .bomb
+                .unwrap()
+                .reason,
+            "motion_terrain"
+        );
+        assert!(c.sessions.iter_mut().all(|s| s.inbox.try_recv().is_err()));
+    }
+    c.shared.lock().unwrap().rules.map_bomb_cancellation = false;
+    assert!(
+        c.sessions[0]
+            .packet(119, &request)
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for session in &mut c.sessions {
+        let batch = session.inbox.try_recv().unwrap();
+        assert_eq!(batch.packets[0].1.opcode, 162);
+        assert_eq!(batch.packets[0].1.payload, request[..9]);
+    }
+}

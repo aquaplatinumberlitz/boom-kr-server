@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP333: Punch hướng xuống một ô đã chạy hai vòng trên Rust với hai account.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có exact selector 1,
+landing/thu hồi, bom tiếp, peer/reset và journal thưởng 0 đúng identity/nhân vật; policy vẫn opt-in.
+Reference có hai vòng riêng; các lượt lỗi/partial giữ nguyên. Tiếp hướng/khoảng cách Shoe/Punch còn thiếu,
+coverage G1 rồi M8 theo [Bảng điều hành](PLAN.md#dashboard). G1, giai đoạn 1 và L1 của Claude còn mở.
+
+
 **CP332: managed player all-dead đã có native 2/4/8 và journal Draw/thưởng 0.**
 [Contract và phạm vi](protocol/life-results.md#rust-managed-all-dead) có hai vòng/result/reset;
 roster 4/8 có Start/clock kế trên LAN cô lập với độ trễ được khai báo. TCP/SQLite kiểm departure, DB lock

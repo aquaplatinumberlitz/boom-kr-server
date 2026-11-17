@@ -1,0 +1,86 @@
+{
+  "id": "AUD142",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-punch-selector0-horizontal-endpoint-plus2"
+  ],
+  "completed_through": "CP334",
+  "recorded_utc": "2026-11-17T12:58:31.693364+00:00",
+  "auditor": "Codex manual self-audit; independent review waived",
+  "read_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/evidence/item-families/punch-horizontal-action.json",
+    "docs/evidence/rust-service/g1-punch-horizontal.json",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "rust/crates/kr-service/src/room_io_item_tests.rs",
+    "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+    "local/research/codex/g1-punch-horizontal-reference-r2/two-round-horizontal-reference-verification.json",
+    "local/research/codex/g1-punch-horizontal-reference-r2/wire-reassembly-verification.json",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/punch-horizontal-native-verification.json",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/decoded-channels-shared.json",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native-actor-field-checks.json",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native/cycles/A/client.log",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native/cycles/B/client.log",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native/cycles/account-db/accounts.sqlite",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native/launch-exit.json",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native/output-unmount-busy.json",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native/storage-export-before-unmount.json",
+    "local/research/codex/g1-punch-horizontal-rust-native-r1/native/storage-export-recovered.json",
+    "local/research/codex/g1-punch-horizontal-final-build-r1/verification.json"
+  ],
+  "method": "Đọc README→PLAN→PROTOCOL→RESEARCH, source guard, native log và raw nhận qua TCP rồi DB. Không suy full trajectory từ hai endpoint hoặc tên hướng nhập. Ghép object đúng vòng/thời điểm, state4 trước rebind và cleanup active 0 trong cả hai view, actual 118 tiếp; đối chiếu 119/162, nhân vật và account/player snapshot, rank TCP và outcomes/thưởng 0, hai reset. Phân biệt nguyên nhân process exit 1 với semantics của bytes đã export. Đối chiếu every exported file size/hash, original failure và namespace cleanup trước dùng recovered verifier, không sửa raw hoặc launch exit. Kiểm nguồn final chỉ nối test cfg(test), binary ELF/runtime sections khớp native build.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Geometry ngang chưa biết; không thể áp một ô của hai lát dọc.",
+      "correction": "Reference và Rust selector0/source (6,3)→6,5 có hai vòng. Contract chỉ nêu endpoint cùng hàng/+2 cột đã đo, original path và selector2 còn mở.",
+      "fixed_in": [
+        "docs/protocol/items-stats.md",
+        "docs/RESEARCH.md",
+        "docs/evidence/item-families/punch-horizontal-action.json",
+        "docs/evidence/rust-service/g1-punch-horizontal.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Endpoint delta không đủ xác định vùng có thể bị motion ngang chiếm, nhất là khi target code có wrap.",
+      "correction": "Reserve cả hàng đến mọi retirement receipt, chặn mọi allocation/path/placement giao hàng và mọi cancellation cell trên hàng. Test kiểm distant bomb, vertical/Shoe, queue rollback/quota và cancellation phía sau source ngoài endpoint segment.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "rust/crates/kr-service/src/room_io_item_tests.rs"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Native hoàn tất hai vòng nhưng unmount tmpfs bị busy sau export; không được đổi exit 1 thành pass 0 hoặc bỏ raw.",
+      "correction": "Giữ original log/receipt/diagnostic có B gdb mở output fd. Namespace exit xong, không còn owned process/mount; phục hồi 70 files cùng bytes theo receipt trước unmount. Recovered verifier kiểm admission recovery chặt và giữ mọi gameplay/identity/DB/wire/getter assertion. Không suy logging crash-durable hoặc nguyên nhân sâu hơn.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-punch-horizontal.json",
+        "docs/protocol/items-stats.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Harness fixed source6 sai với một lượt118source7; continuation từng gọi nhầm verifier R1; test từng chọn nhầm ô trống thành wall; archival relativepath lỗi.",
+      "correction": "Giữ các lỗi. Actual118 làm source oracle cho horizontal reference, không normalize actual119target; đúng verifier R2 kiểm độc lập. Test dùng ô static hiện có5,4 và thêm cancellation ngoài segment; mọi runtime ELF section giữ nguyên. Tài liệu đã bỏ câu stale nói toàn hướng ngang chưa mở.",
+      "fixed_in": [
+        "docs/evidence/item-families/punch-horizontal-action.json",
+        "docs/evidence/rust-service/g1-punch-horizontal.json",
+        "docs/protocol/items-stats.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Selector2, Shoe hướng/khoảng cách khác, mọi trajectory/late/repeated/inflight và mọi map/roster/nhân vật vẫn mở theo PLAN.",
+    "Whole-row reservation và short 158→blast là emulator policy; không original authority hoặc tốc độ/độ dài đường bay đã phục hồi.",
+    "Original harness unmount không thành công; artifact phục hồi có giới hạn cutoff. Không biến lỗi đó thành pass process hoặc nghiệm thu durability/vận hành.",
+    "Full G1, M8/giai đoạn1 và L1 của Claude chưa đóng. Exact-head local/history và mọi CI xanh bắt buộc trước merge. Raw/binary/decompile và hạ tầng thật chỉ local."
+  ]
+}
