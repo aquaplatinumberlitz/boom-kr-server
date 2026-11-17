@@ -775,11 +775,11 @@ Dependency: [KR-F006](#kr-f006).
 
 Khoảng trống (trích bảng RESEARCH): [Rust MaxPower](protocol/items-stats.md#rust-maxpower) đã có C0/C1 và cap/reset. [Shoe/Punch](protocol/items-stats.md#rust-bomb-motion-codec) có pickup/reset, actual 119 và native chuyển root qua 162; Rust mới có codec, service vẫn từ chối.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Đo retirement/quota sau 162/158: lượt chuyển root chưa có next118 hoặc kết quả; control escape timeout wineboot trước client. Không đoán ACK 160. Sau đó nối admission/terrain/timer/queue theo membership/round và đo use/negative/peer/reset; Shoe, selector khác và debuff/TTL vẫn mở.
+Phép kiểm tối thiểu (trích cùng nguồn): Reference đã có policy 158 loại 1 ngắn trước loại 0: thu hồi bom, next118, hai kết quả/reset. Chuyển admission/terrain/deadline/queue sang Rust theo membership và wire ID hiện hành; kiểm native use/negative/peer/reset trước mở. Hành động sát deadline/khi đang bay, lặp, geometry, Shoe và selector khác vẫn cần đo; không đoán ACK 160 hoặc dùng tail119 làm epoch.
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285).
 
-Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json).
+Bằng chứng/build/hash/recipe: [item-families](evidence/item-families/README.md), [rust-service](evidence/rust-service/g1-maxpower.json), [item-families](evidence/item-families/shoe-punch.json), [item-families](evidence/item-families/bomb-motion-codec.json), [item-families](evidence/item-families/bomb-retirement.json).
 
 | Chiều chứng minh | Khai báo | Nguồn/phạm vi áp dụng |
 |---|---|---|

@@ -1,0 +1,278 @@
+{
+  "schema": "kre-bomb-retirement-reference-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/445",
+  "scope": "Native reference retirement after Punch selector3 and a tested two-packet158 policy; Rust service remains disabled.",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "target_sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef",
+  "policy": {
+    "source": "emu_choice",
+    "status": "design",
+    "short158": {
+      "widths": [
+        1,
+        2,
+        1
+      ],
+      "values": [
+        "count1",
+        "current wireID",
+        "variant1"
+      ],
+      "body_bytes": 4
+    },
+    "ordering": "Short158 variant1 immediately before existing13byte variant0 at the unchanged6s deadline, only for a moved bomb. No160.",
+    "original_server_order": "unknown"
+  },
+  "observations": [
+    {
+      "role": "A",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    },
+    {
+      "role": "B",
+      "rounds": [
+        {
+          "round": 1,
+          "wire_id": 1,
+          "next_wire_id": 2,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        },
+        {
+          "round": 2,
+          "wire_id": 3,
+          "next_wire_id": 4,
+          "short158_reader": {
+            "cursor": 4,
+            "size": 4,
+            "errors": [
+              0,
+              0
+            ]
+          },
+          "CC_before": 0,
+          "CC_after": 1,
+          "active_at_cleanup": 0,
+          "pickup_flags_at_clock": [
+            0,
+            0
+          ],
+          "pickup_flags_after": [
+            1,
+            1
+          ],
+          "landing_before_rebind": true
+        }
+      ],
+      "native_clocks": 2,
+      "ranks": 2,
+      "returns": 2
+    }
+  ],
+  "corrections": [
+    "The local R9 boundary note inverted the first pool guard. Actual assembly permits CC==0 OR E4!=0; separate correction preserves original note.",
+    "B378F0 writes secureE4, shown by assembly; flattened pseudocode omits receiver adjustment.",
+    "R10 later_update may observe a reused object after another118; excluded from lifecycle conclusions."
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r8/runtime-chunk-binding.json",
+      "bytes": 3198,
+      "sha256": "c61b8963dd365217148019f561f27cb9ff4fa2ccac1bf7b716d760e341bcc60f"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r8/batch-boundary.json",
+      "bytes": 1069,
+      "sha256": "588437e18be6ba4765b79e3c4e88f5d68cb1346b60ac66fe6d81d2b2b473a4d3"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r10/runtime-chunk-binding.json",
+      "bytes": 3369,
+      "sha256": "ba8c19429660dbc2307072048c7d1be49277e9289adbf9f527dc38b66cff7628"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r10/pool-guard-correction.json",
+      "bytes": 1128,
+      "sha256": "c0469bfd761c3f2e0eac74da0d690ce94585808ae14b78682330bb25f4b31c4d"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-punch-reuse-r10/retirement-edge-ida-cli.json",
+      "bytes": 1182,
+      "sha256": "027ebfe2059217f6bcfdbad6802c9aa7501df4d632164d5f7b716c226447931a"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r5/partial-lifecycle-verification.json",
+      "bytes": 3820,
+      "sha256": "97f07f17112666f544183fffd90819ad3fc7ee50a501edf0d4a6a62be88242d2"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r5/frozen-input-postrun-verification.json",
+      "bytes": 130,
+      "sha256": "90b4305d73ca5cf3ab062fe2d7f89812d4114fefe39d90bb26e6fb3335b4fce9"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r5/raw-seal.json",
+      "bytes": 216673,
+      "sha256": "4d8ac2143a689b76f0e17cda427a5fc10cbe30578659095de434e0dd18cb58e4"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r6/failure-verification.json",
+      "bytes": 482,
+      "sha256": "0b9c3667505eb3a49d472707541f0d40b57147957d0b78cd4b6a1190c07b6142"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r7/landing-cleanup-verification.json",
+      "bytes": 2266,
+      "sha256": "7d8e5359c81bf6905984c89110499e16067829c4eeb92708dd0a7f12ef952766"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r7/frozen-input-postrun-verification.json",
+      "bytes": 137,
+      "sha256": "0fe2a49712b2384fdc1ba656e677edbc48c5466b560b0eebd44904a44af561a1"
+    },
+    {
+      "path": "local/research/codex/g1-ability-lifecycle-source-native-r7/raw-seal.json",
+      "bytes": 214884,
+      "sha256": "33a3db5d6b95a0ce6f437f9e20b17d1aafda2849e87125270a7c092bc624c424"
+    },
+    {
+      "path": "local/research/codex/g1-ability-pool-source-native-r8/pool-partial-verification.json",
+      "bytes": 1925,
+      "sha256": "213e8ee546ac84599b848126445f464e6558fab280bf012280dada5236069a70"
+    },
+    {
+      "path": "local/research/codex/g1-ability-pool-source-native-r8/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "39c9357b623373be939474492dab0eee3458744dbf2049fc1e6070cff1b43a25"
+    },
+    {
+      "path": "local/research/codex/g1-ability-pool-source-native-r8/raw-seal.json",
+      "bytes": 130815,
+      "sha256": "a932e6239ff5998809924f2c29ec993053c0d245b579365708723406ad81e294"
+    },
+    {
+      "path": "local/research/codex/g1-ability-pool-source-native-r9/pool-return-later-verification.json",
+      "bytes": 2040,
+      "sha256": "c2d9f20816037a817b96a8bb50a84404b971bda5d3d5b3a71595b3e3850c02fb"
+    },
+    {
+      "path": "local/research/codex/g1-ability-pool-source-native-r9/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "56a0d6d2b041d94c659f985533f4ecd2010e7e225ec1d1d528154c2e9e2f9e8c"
+    },
+    {
+      "path": "local/research/codex/g1-ability-pool-source-native-r9/raw-seal.json",
+      "bytes": 126952,
+      "sha256": "0a73b71e964b5d81e84f93988d31cb9126e01d75e726d8efaf399f6a9d945738"
+    },
+    {
+      "path": "local/research/codex/g1-ability-rebind-source-native-r10/rebind-lifecycle-verification.json",
+      "bytes": 2004,
+      "sha256": "094cee399925a6bdbb75c29e933467075c4244d24510d11d2068ccbdbd645232"
+    },
+    {
+      "path": "local/research/codex/g1-ability-rebind-source-native-r10/frozen-input-postrun-verification.json",
+      "bytes": 60,
+      "sha256": "920f68a3828a0ea10c6fdfa5ba39ca2df547c751868f10e670c1cb680202557b"
+    },
+    {
+      "path": "local/research/codex/g1-ability-rebind-source-native-r10/raw-seal.json",
+      "bytes": 131784,
+      "sha256": "9078c5512517407e77808965c62c0da1c48924e575f8872231faa3354eee6ba7"
+    },
+    {
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/two-round-rebind-verification.json",
+      "bytes": 4125,
+      "sha256": "ea6a55082d95e4af537ac1f8fbd84eaddee7a471856ef3125145344007b996b2"
+    },
+    {
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/frozen-input-postrun-verification.json",
+      "bytes": 61,
+      "sha256": "a6a4504e80ae833dd275c6780f069e571969a629f7e6bff36054abab6596cc16"
+    },
+    {
+      "path": "local/research/codex/g1-ability-rebind-source-native-r11/raw-seal.json",
+      "bytes": 224985,
+      "sha256": "eeecb8ba553019a45ed9cb4a19d8412ee53cc9dc36d02a08675615b600be503f"
+    }
+  ],
+  "limits": [
+    "Two completed reference rounds with one Punch selector3 action each; not native acceptance on Rust.",
+    "No Shoe action, other selectors, missing-item/dead/trapped negatives, repeated motion, late/inflight expiry, arbitrary target geometry or packet-loss proof.",
+    "No original server ACK/order, no160, no changed client/pack/source database. G1 and phase1 remain open."
+  ]
+}

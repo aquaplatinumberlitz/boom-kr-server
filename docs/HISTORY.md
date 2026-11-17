@@ -5,6 +5,12 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP324: Rust đã có codec 119/162 từ packet và reader KR đã đo.**
+[Native chuyển root và giới hạn lifecycle](protocol/items-stats.md#rust-bomb-motion-codec) đã có bằng chứng
+hai view; service vẫn tắt Shoe/Punch vì retirement/quota và acceptance hành động còn thiếu.
+G1 tiếp theo [Bảng điều hành](PLAN.md#dashboard); M8 và L1 của Claude vẫn mở.
+
+
 **CP323: KR đã có bằng chứng pickup/reset Shoe/Punch và request hành động 119.**
 [Contract nguồn và giới hạn](protocol/items-stats.md#shoe-punch-source) tách phần đã đo khỏi consumer
 hành động còn thiếu; Rust vẫn tắt hai item. MaxPower đã có trên Rust; G1 tiếp theo

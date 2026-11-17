@@ -90,11 +90,25 @@ body **9 byte**, widths `u8,u8,u8,u16,u8,u8,u8,u8`. Reader kiểm context, tìm 
 selector `≤3` gọi virtual `+94` của `CGOGameBomb`, nhánh còn lại gọi `+90`. Không suy mọi selector đã hỗ trợ
 trên server từ việc tìm được các nhánh này.
 
-Python reference trả candidate 162 từ prefix của một actual 119. Cả hai view đọc `9/9`, errors 0 và gọi
-`B37A00` trên cùng wire ID 1. Secure root `+1AC/+1B8` đổi `(6,3)→(5,3)`; tại consumer 158, root vẫn là
-`(5,3)` và pixel `(120,239)`. Đây là bằng chứng chuyển root trong hai view. Lượt này chỉ có một vòng, không có
-kết quả/về phòng hoặc actual 118 tiếp, nên **lifecycle và quota chưa đạt**, dù helper kết thúc với exit 0.
-Control escape/reposition sau đó timeout ở `wineboot` trước khi mở client; không có so sánh gameplay từ control đó.
+Python reference trả candidate 162 từ prefix của actual 119. Cả hai view đọc `9/9`, errors 0 và gọi
+`B37A00` trên cùng wire ID. Secure root `+1AC/+1B8` đổi từ cell nguồn sang cell đích; nhánh này cũng đặt
+secure `CC=0`. Ở các lượt chỉ gửi 162 rồi 158 loại 0, bom đã hạ cánh trước 158 nhưng vẫn active tại cleanup;
+một lượt còn thấy cùng bom active ở update hơn hai giây sau đó, không có actual 118 tiếp. Vì vậy tăng fuse
+không phải cách sửa được bằng chứng đó hỗ trợ. Callback pool `AEF700` quan sát được thuộc nhận bom 159,
+trả đúng pointer trước 162; không gọi nó là callback thu hồi. Guard đầu của nhánh pool thường là
+`CC == 0 || E4 != 0`, rồi mới kiểm serial và điều kiện nhánh. `B378F0` ghi secure `E4`, không phải ACK.
+
+[Policy reference đã đo](../evidence/item-families/bomb-retirement.json) gửi **158 loại 1 ngắn**, widths
+`u8,u16,u8` với count 1, wire ID hiện hành, loại 1, dài **4 byte**; ngay sau đó mới gửi 158 loại 0 dài
+13 byte để nổ tại deadline 6 giây đang dùng. Nguồn `E14360` cho thấy loại 1 căn lại pixel/root, đăng ký
+footprint khi phù hợp và gọi `B37880(-1)`, đặt lại `CC=1`; nó không phải gói nổ. Hai view đọc đủ cả hai
+body, chọn root đã dịch chuyển và ghi active về 0 trước cleanup. Sau hành động có actual 118 mới với ID
+khác, rồi kết quả/về phòng; phép lặp có hai vòng hoàn tất và reset cờ pickup ở đầu vòng sau.
+
+Đây là **emu_choice/design đã kiểm trên reference**, không phải thứ tự server gốc được phục hồi. Phạm vi
+hiện là Punch của C0, selector 3, một hành động mỗi vòng và bom đã hạ cánh trước deadline. Shoe, selector
+khác, hành động sát deadline/khi đang bay, lặp hoặc nhắm cell tùy ý và ca không đủ điều kiện vẫn chưa đo.
+Các lượt lỗi wineboot, collector, recipe và giới hạn probe được giữ trong metadata, không tính là ca âm gameplay.
 
 Rust `kr-wire` có `BombAction119::decode` cho đúng 13 byte, giữ hai `u16` cuối bằng `opaque_tail`, và
 `BombMotion162::{decode,encode}` cho đúng 9 byte. Các trường gồm context, slot, selector, wire ID, cell nguồn
@@ -102,7 +116,7 @@ và cell đích; codec không cấp quyền cho các giá trị này. Regression
 và body 162 đã qua native reader, kiểm cả gói thiếu/thừa và nhầm độ dài. Không dùng roundtrip tự sinh làm oracle.
 
 Service chưa nối handler 119, chưa bật floor Shoe/Punch và chưa thay vị trí terrain hoặc timer. Trước khi mở cần
-đo retirement/quota sau 162/158, ca dùng/không đủ điều kiện, peer và reset, rồi kiểm current membership/round,
+chuyển policy retirement đã đo sang Rust, kiểm ca dùng/không đủ điều kiện, peer và reset, cùng current membership/round,
 wire ID hiện hành, hàng đợi và ledger bom. Chưa biết reply 160 có vai trò gì trong toàn luồng; không gửi ACK giả.
 
 **Correction nguồn phụ:** `B486B0` nhận interface `actor+584`, cộng `70` tới wrapper `actor+5F4`, đúng bằng
