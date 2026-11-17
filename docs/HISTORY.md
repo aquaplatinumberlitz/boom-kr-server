@@ -5,6 +5,14 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP334: Punch ngang selector 0 đã có hai vòng Rust account/peer/reset và journal thưởng 0.**
+[Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) giữ endpoint `(6,3)→(6,5)` đã đo,
+reservation cả hàng và ownership/round/delivery fences. Gameplay có native riêng; launcher exit 1 do unmount
+busy sau same-byte export, bằng chứng phục hồi đã kiểm và lỗi gốc giữ nguyên. Không suy toàn đường bay.
+Tiếp selector 2, các hướng/khoảng cách Shoe và coverage G1 rồi M8 theo [Bảng điều hành](PLAN.md#dashboard).
+G1, giai đoạn 1 và L1 của Claude còn mở.
+
+
 **CP333: Punch hướng xuống một ô đã chạy hai vòng trên Rust với hai account.**
 [Contract và giới hạn](protocol/items-stats.md#rust-bomb-motion-codec) có exact selector 1,
 landing/thu hồi, bom tiếp, peer/reset và journal thưởng 0 đúng identity/nhân vật; policy vẫn opt-in.

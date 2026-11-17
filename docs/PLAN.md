@@ -9,10 +9,10 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, CP334 / AUD142**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, nhóm phạm vi G1 / CP335 / AUD143**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
-đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với item của các map đó. Sau giai đoạn 1: gameplay đầy đủ theo
+đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
 [lộ trình sáu đợt F1–F6](#full-game-roadmap), chưa mở việc nào.
 
 | Mốc | Trạng thái | Còn lại |
@@ -23,16 +23,36 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **17/11, C
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map ladder và item | Adapter/UI, kim/cứu, item nền ExVillage01 và terrain theo map đã có từng lát; [Forest07](protocol/terrain.md#rust-selected-map-terrain) và [Patrit14 roster2/4/8](protocol/terrain.md#rust-patrit-terrain) đạt các route đã đo | [Village10](protocol/terrain.md#rust-village10-herb) có contiguous2/4/6 và [catalog tám/sáu spawn, sparse6](protocol/load-phase.md#rust-map-spawn-capacity), hai vòng/reset và Fire/Roller; [Camp08 có policy hủy bom, Line01 ray và route StrongBox/item ẩn roster 2/4/8 hai vòng/reset](protocol/terrain.md#rust-camp08-boundary); Tomb12 đã có route 2/4/6 với bridge, Fire/Bomb ẩn và hai vòng/reset (lượt 6 giữ lỗi capture/cleanup); [Factory07 có route 2/4/8, native Fire/Bomb stat, bốn loại thùng và static/Glass đã đo](protocol/terrain.md#rust-factory07-terrain); còn coverage gameplay; [MaxPower có C0/C1, cap no-op và hai vòng/reset trên Rust](protocol/items-stats.md#rust-maxpower); [Punch Rust opt-in có owner, selector0 endpoint ngang +2 cột, selector1/down-one và selector3/up-one, hai vòng account/peer/reset và journal; queued motion sau actor departure đã có correction và regression; Shoe đã có lát opt-in selector5/up-three với corridor, hai vòng account/peer/reset và journal; các hướng/khoảng cách khác và gameplay rộng hơn vẫn mở](protocol/items-stats.md#rust-bomb-motion-codec); coverage terrain/roster/item và nhân vật vẫn theo acceptance |
+| [G1](#rust-g1) sáu map và tập item đã cắt | Đã có adapter/UI, kim/cứu, item nền, MaxPower và các route native của sáu map trong phạm vi đã ghi; Shoe/Punch có các lát đầu đã merge | Đã có code/test cho bảng rơi đã cắt và native từ chối nhân vật giữ phiên; chờ tích hợp nhóm. Còn ma trận Punch/Shoe theo nhóm và đối chiếu acceptance map. Danh sách cùng ước lượng native ở bên dưới; không mở thêm nhóm item ngoài chỉ đạo mới |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance; [Codex đã bàn giao WIP cho Claude](evidence/owner-directives/l10n-claude-owner.json) | Chưa chốt xử lý đủ literal949, consumer/capacity và render/IME; L1b/L1c chưa đạt. Không đổi wire của client chưa vá |
 | M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
 
 **Thứ tự việc:**
 
-1. **G1.** M6 thu hẹp đã đạt acceptance tại [ma trận bằng chứng](evidence/rust-service/m6-journal-serving.json). N1R-b đã đạt các tiêu chí hành vi trong [ma trận bằng chứng](evidence/rust-service/n1rb-controls-acceptance.json).
-   Adapter, UI chọn Factory07/Village10, kim/cứu và terrain/item nền roster2/4/8 đã đạt lát 1–4 trong phạm vi đã ghi. Terrain theo map và route Forest07/Patrit14 roster2/4/8 đã có lát native; catalog tám/sáu spawn và sparse6 đã có lát native; [policy hủy bom và route thùng/item ẩn Camp08 đã qua hai vòng/reset](protocol/terrain.md#rust-camp08-boundary). Herb đã có positive di chuyển, Line02 có direct getter native chặn nhân vật và tia đi xuyên; initializer/footprint và ray MissileBase/PinPillar đã đo, gồm covered-cell và tám recipient. Line01 đã có ray tới thùng và route StrongBox/Bomb/Fire roster 2/4/8 đã qua hai vòng/reset, Start kế. Tomb12 đã có route 2/4/6, Waterway âm, bridge di chuyển/ray, Fire/Bomb ẩn và hai vòng/reset; Factory07 đã có route 2/4/8, bốn loại thùng, native Fire/Bomb stat, static và Glass movement/ray trên Rust; các route có hai vòng/reset và Start kế, Glass có control riêng với giới hạn debugger. MaxPower đã port theo contract CP045, native C0/C1 power 7/9, cap no-op và hai vòng/reset; chưa mọi roster hoặc native dead/trapped claim. [Punch đã có lát Rust opt-in selector 0 ngang/endpoint +2 cột, selector 1/down-one và selector 3/up-one](protocol/items-stats.md#rust-bomb-motion-codec), lifecycle/quota, hai vòng account/peer/reset và correction queued motion sau khi actor rời phòng. Shoe selector 5/up-three đã có lát Rust opt-in với corridor, ca dùng/contact trước pickup, hai vòng account/peer/reset và journal. [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có native 2/4/8, journal Draw/thưởng 0, hai vòng/reset và roster 4/8 Start/clock kế; 4/8 dùng độ trễ LAN giả lập rõ ràng. Punch ngang giữ reservation cả hàng; lỗi unmount sau gameplay có export cùng byte và recovery được ghi rõ. Tiếp selector 2 và các hướng/khoảng cách Shoe còn thiếu theo acceptance. Sau đó tiếp [coverage Factory07 còn thiếu](RESEARCH.md#gap-factory07-terrain), [coverage nội dung còn lại](RESEARCH.md#gap-tomb12-terrain), coverage roster và nhóm item theo acceptance; không đụng `tools/export_map_profile.py`.
-   Không lặp M6 đã nghiệm thu, native4/8, roster, account/DB hoặc baseline N1b đã có. M8 theo thứ tự bên dưới.
+1. **G1 theo [chỉ đạo cắt phạm vi item](evidence/owner-directives/g1-item-scope-cut.json).** Chỉ giữ Bomb/Fire/Roller,
+   MaxPower, kim/cứu, Shoe và Punch; mọi nhóm khác trong bảng rơi sáu map phải có trọng số 0 trong dữ liệu server Rust.
+   M6 và N1R-b đã đạt phạm vi đã ghi. Dùng lại bằng chứng map/item/roster/account hiện có; không yêu cầu đo từng ô map,
+   thêm nhân vật hoặc lặp N1b. Danh sách dưới là phần còn lại để đóng G1, thay cho lịch từng selector trước đây.
+
+   **Việc còn lại để đóng G1 và số lượt native dự kiến:** một lượt là một lần chạy server Rust cùng client KR,
+   có thể chứa nhiều ca và hai vòng/reset. Đây là ước lượng để gom việc, không phải cam kết hoặc điều kiện giảm acceptance.
+
+   | Việc còn lại | Lượt KR native dự kiến |
+   |---|---|
+   | Harness tham số hóa đã chạy hai vòng #457 với state waits, hover mới khi về phòng và cleanup sạch; tiếp dùng ma trận cho Shoe/Punch. | 0 lượt riêng; ghép mọi kiểm mới với nhóm item |
+   | Bảng rơi Rust đã cắt: 62 row có trọng số dương ngoài tập giữ về 0, giữ mọi row nguồn; floor/list2 kiểm kind trước bind. Chờ gate/tích hợp nhóm. | 0 lượt riêng |
+   | Hoàn tất ma trận Punch cho bốn hướng và các lớp khoảng cách/biên/wrap còn thiếu, ca không đủ điều kiện, peer và hai vòng/reset; gộp kết quả selector 2 đang làm. | 1–3 lượt Rust, gồm lượt selector 2 hiện tại; một PR cho cả nhóm Punch |
+   | Hoàn tất ma trận Shoe cho mọi hướng và lớp khoảng cách/corridor còn thiếu, ca bị chặn/không đủ điều kiện, peer và hai vòng/reset. | 2–3 lượt Rust; một PR cho cả nhóm Shoe |
+   | [#457](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457) đã có native C4 bị từ chối, C0→C1 hợp lệ trên cùng socket, hai vòng/reset/journal; TCP/SQLite kiểm revision/revoke/stale. Chờ gate/tích hợp nhóm. | 0 lượt bổ sung |
+   | Đối chiếu sáu map với tiêu chí 5 và dữ liệu drop mới: spawn, thùng vỡ, item giữ lại rơi/nhặt, hai vòng/reset và ca âm; chỉ chạy lại ô còn thiếu trong ma trận acceptance. | 0–3 lượt gộp nhiều map/roster; không đo lại từng tile hoặc toàn bộ roster đã đạt |
+   | Kiểm ghép client L1 `vi` hiện hành trên Rust theo tiêu chí 8 mới: một map G1, item giữ lại, đăng nhập/phòng/trận và hai vòng/reset. Giữ KR không vá chữ làm chuẩn các phép đo gameplay. | 1 lượt; ghép với kiểm map cuối G1 nếu đủ điều kiện |
+   | Chốt ma trận G1, đồng bộ contract/catalog và audit/checkpoint/issue reconciliation một lần cho mỗi nhóm hoàn chỉnh; gate toàn kho một lần trước merge nhóm. | 0 lượt riêng; chỉ bổ sung native khi ma trận chỉ ra thiếu bằng chứng cụ thể |
+
+   Đo trực tiếp trên Rust có instrumentation; Python reference chỉ dùng để tách sai khác cụ thể. Không mở thêm PR theo
+   từng selector/hướng/khoảng cách. Raw lớn giữ ở `local/`, repo giữ hash và tóm tắt. Gate chạy ở checkout riêng;
+   trong lúc gate chạy vẫn làm phần tĩnh và native của nhóm sau trong worktree riêng, giữ lease Wine luân phiên với L1.
+   Không sửa `tools/check_checkpoints.py` khi Claude đang làm PR cache hash. Không đụng `tools/export_map_profile.py`.
    **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json);
    [Claude được chủ dự án giao tiếp L1](evidence/owner-directives/l10n-claude-owner.json), mốc trước của Codex ở
    [partial/blocker](evidence/l10n-utf8-l1a-review.json)). L1 **đạt một phần** (CP310): chọn
@@ -550,7 +570,7 @@ restart không được suy đạt từ hồi quy này. Không đổi source ho�
 **RUST-G1 — gameplay mở rộng cho giai đoạn 1.**
 Phạm vi: (1) kim và cứu trên Rust theo contract đã đo ở Python; (2) terrain và item nền cho phòng 4 và 8 người, hiện
 bị từ chối ở cấu hình; (3) sáu map ladder đã chốt 11/11 (Camp08, Factory07, Forest07, Village10, Tomb12, Patrit14)
-và các item trong bảng item của chúng, xem [quyết định](#delivery-target). Mỗi map cần đúng dữ liệu và consumer của nó; mỗi nhóm item cần consumer cùng một ca dùng, một ca
+và tập item giữ lại theo [tiêu chí G1 hiện hành](#phase1-acceptance). Mỗi map cần đúng dữ liệu và consumer của nó; mỗi nhóm item cần consumer cùng một ca dùng, một ca
 không đủ điều kiện, hết hạn/tiêu thụ, peer thấy đúng và reset — theo đúng yêu cầu đã ghi ở
 [kiến trúc](RUST_SERVICE_ARCHITECTURE.md). Luật đặt trong `RoomRules` và dữ liệu map/item, không thêm nhánh theo sức chứa.
 Đầu vào để chọn danh sách: [kiểm kê nội dung](CONTENT.md) sinh từ pack (map theo họ, item được map dùng, script).
@@ -599,8 +619,8 @@ chẩn đoán và hồi quy. Phải có:
 
 Không thuộc mốc: tự dò NAT để đi thẳng, relay trên nhiều instance, kiểm tải (thuộc M8).
 
-**G1 — sáu map ladder, item và nhân vật.** Phạm vi và dữ liệu tĩnh ở [RUST-G1](#rust-g1). Làm theo lát, mỗi lát một
-checkpoint:
+**G1 — sáu map ladder, item và nhân vật.** Phạm vi và dữ liệu tĩnh ở [RUST-G1](#rust-g1). Shoe/Punch làm theo
+ma trận và nghiệm thu theo nhóm theo tiêu chí 6; các checkpoint/PR cũ giữ nguyên lịch sử:
 
 1. **Adapter dữ liệu map.** Tên map, dữ liệu Start và các packet vào trận sinh từ profile xuất từ pack. ExVillage01
    qua adapter phải cho đúng byte của fixture hiện hành; sau đó Factory07 chạy một trận.

@@ -1,0 +1,122 @@
+{
+  "schema": "kre-g1-character-short-refusal-v1",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/auth-session.md#rust-persistent-character",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "scope": "C4 bị từ chối bằng current110 trên cùng socket, C0 rồi C1 hợp lệ, hai vòng/kết quả/reset đúng account/profile; không mở roster mới.",
+  "native": {
+    "choices": [
+      4,
+      0,
+      1
+    ],
+    "rounds": 2,
+    "clients": 2,
+    "source_commit": "a741809",
+    "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+    "service_sha256": "39511f98de1d895fe38861a13d3ec86fe16a127b75d605ca85f4821d0365649a",
+    "preference_revision": [
+      1,
+      3
+    ],
+    "peer_preference_unchanged": true,
+    "channel_bindings_per_account": 1,
+    "cleanup": "all_owned_namespace_descendants_reaped",
+    "returncode": 0
+  },
+  "policy": {
+    "source": "design",
+    "status": "design",
+    "description": "Validate well-formed92/current Idle/setup/membership first. Unsupported key returns current subject110 only to owner, no DB write/Ready clear/member mutation or invented error packet. Supported CAS/authorization/revoke/expiry and queue guards unchanged. Not an original server response claim."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/matrix-verification.json",
+      "bytes": 684,
+      "sha256": "58e0129fa728861428cc078f23efea883dfdf039d179419ac11e31443fa2f9d0"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/character-verification.json",
+      "bytes": 1295,
+      "sha256": "ce0bc0d7cc3c7d967c77d63171656f3677232f3b5ef853e720f0a327dd954e86"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/decoded-channels-shared.json",
+      "bytes": 88813,
+      "sha256": "f5639f1fa56eb8691ef802bb9c05c2cb988197eefa047d16a95f403e434298d9"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/runtime-preflight.json",
+      "bytes": 128689,
+      "sha256": "0c20de9f4891bc6a05118c4111d43086737088eb78eee5af4860a981a9618b08"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/recipe.json",
+      "bytes": 1212,
+      "sha256": "b063651483ee9943529df25703e62984bf63e2dd042be4eebc4b709bf379a856"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/native/storage-export.json",
+      "bytes": 11918,
+      "sha256": "0ea01121f0d0dc767da1e39b0c705b462dca5d430bce25e8168effa271758e36"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r4/matrix.json",
+      "bytes": 10247,
+      "sha256": "a7329458755e240587f612dd847be8d8e6d91a25a33526f22f56352aeeef1cd4"
+    },
+    {
+      "path": "local/research/codex/g1-scope-serving-tcp-r3/result.json",
+      "bytes": 1199,
+      "sha256": "c25ab38bb3857fa058b5fb65c8e999b613f4f86dbb8d5c7afe5105ce1be11959"
+    },
+    {
+      "path": "local/research/codex/g1-character-persistence-tcp-r1/result.json",
+      "bytes": 695,
+      "sha256": "1525b6c69e77004fad5f9cd294a8bde156f6cba1cf2947c6d2881480a5b12922"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r2/native/cycles/run.json",
+      "bytes": 31660,
+      "sha256": "5abf9421a1ae7eb751f921aa7926da6b35f700162c298d1022525a931e7b0ad6"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r2/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "932d6cdbf5e61780805bd4d00042298697db0b1f4cd85cd1506ebd6c548af56e"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r3/native/cycles/run.json",
+      "bytes": 97109,
+      "sha256": "b7b491df0d825d928291dbe36a2be6dda47de11a007ef71cc933516c152d9eef"
+    },
+    {
+      "path": "local/research/codex/g1-character-native-matrix-r3/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "932d6cdbf5e61780805bd4d00042298697db0b1f4cd85cd1506ebd6c548af56e"
+    },
+    {
+      "path": "local/research/codex/g1-character-room-choices-tcp-r1/verification.json",
+      "bytes": 737,
+      "sha256": "74ab4b2c57290863c2dbc1359e061220e95aaffaa6d892cb99d89e90ee6df3f0"
+    }
+  ],
+  "retained_failures": [
+    "R1 prepare từ chối thiếu kr-companion trước runtime.",
+    "R2 native phục hồi C1 nhưng bấm lại C1 không sinh92, controller timeout hữu hạn; cleanup sạch.",
+    "R3 có C4→C0→C1, vòng1 đủ nhưng Ready2 không nhận hover sau return; controller timeout hữu hạn, cleanup sạch.",
+    "R4 generic mouse move-out/re-enter/hold và state waits đạt hai vòng; raw các lượt trước giữ nguyên."
+  ],
+  "limits": [
+    "Wine/private LAN chỉ C0/C1 và well-formed C4; TCP kiểm thêm key2/26/65535, malformed/stale và revoke dưới DB writer lock.",
+    "Current110 là design dựa consumer đã đo; không suy server gốc hoặc entitlement/thống kê roster chưa đo.",
+    "G1 và giai đoạn1 còn mở cho ma trận Shoe/Punch, đối chiếu map và M8."
+  ]
+}

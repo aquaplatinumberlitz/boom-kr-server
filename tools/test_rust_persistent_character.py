@@ -92,7 +92,8 @@ def main():
         assert dbpref(account.players[0]['player_id'])==(1,1)and dbpref(account.players[1]['player_id'])is None
         cases.append('current account choice persisted before room110; peer account preference untouched')
         # Unsupported character must never reach the persistence API.
-        a.send(92,codec.pack_fields([0,4],[1,2]));closed(a);receive(b,107);receive(b,110)
+        a.send(92,codec.pack_fields([0,4],[1,2]));receive(a,110);a.quiet();b.quiet()
+        a.close();clients.remove(a);receive(b,107);receive(b,110)
         assert dbpref(account.players[0]['player_id'])==(1,1)
         time.sleep(.1);a=connect(0);join(a,key);restored=setup(a)
         assert restored[account.players[0]['wire_id']]==1

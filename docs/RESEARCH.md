@@ -212,7 +212,7 @@ chạy fallback, lượt tool gốc sau đó đạt; chưa xác lập nguyên nh
 
 [Journal serving và native relogin](protocol/life-results.md#rust-match-journal-serving) đã kiểm snapshot account/
 room/round, commit-before-Start/result, retry/DB bận, duplicate/conflict, active departure, kill sau121/175 và CLI.
-[Lựa chọn0/1](protocol/auth-session.md#rust-persistent-character) có persistence/relogin riêng. Không RE lại hoặc lặp
+[Lựa chọn0/1](protocol/auth-session.md#rust-persistent-character) có persistence/relogin riêng; G1 #457 đã đo từ chối C4 bằng current110, giữ socket rồi chọn C0→C1 và chơi hai vòng/reset. Mở thêm nhân vật vẫn để sau. Không RE lại hoặc lặp
 baseline đã đủ chỉ vì schema/codec giống nhau. Chỉ mở phép đo nhỏ nếu G1/M8 làm lệch current ownership, projection,
 result hoặc rollback. Queue/journal latency dưới tải và vận hành/recovery theo acceptance M8; match restore và economy
 là scope sau. Native kết quả không tự giải timeout setup/Back cũ, nguyên nhân vẫn chưa xác định.

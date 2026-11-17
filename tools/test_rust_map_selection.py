@@ -106,19 +106,33 @@ def main():
         receive(a,110);receive(a,110);receive(b,110);receive(b,110)
         assert dbpref(account.players[0]['player_id'])==(1,1)and dbpref(account.players[1]['player_id'])is None
         cases.append('current account choice persisted before room110; peer account preference untouched')
-        # Unsupported character must never reach the persistence API.
-        a.send(92,codec.pack_fields([0,4],[1,2]));closed(a);receive(b,107);receive(b,110)
-        assert dbpref(account.players[0]['player_id'])==(1,1)
-        time.sleep(.1);a=connect(0);join(a,key);restored=setup(a)
+        # Unsupported choices restore the current selection on this connection.
+        # Peer, identity, membership, Ready and persisted revision must survive.
+        authoritative_slot=next(bytes.fromhex(row['body_hex'])for row in reversed(frames)if row['role']==0 and row['opcode']==110 and codec.read_fields(bytes.fromhex(row['body_hex'])[:1],[1])==[0])
+        for unsupported_key in [2, 4, 26, 65535]:
+            a.send(92,codec.pack_fields([0,unsupported_key],[1,2]))
+            body=receive(a,110)
+            assert body==authoritative_slot
+            a.quiet();b.quiet()
+            assert dbpref(account.players[0]['player_id'])==(1,1)
+        a.send(92,codec.pack_fields([0,0],[1,2]))
+        for client in clients:receive(client,110);receive(client,110)
+        assert dbpref(account.players[0]['player_id'])==(0,2)
+        a.send(92,codec.pack_fields([0,1],[1,2]))
+        for client in clients:receive(client,110);receive(client,110)
+        assert dbpref(account.players[0]['player_id'])==(1,3)
+        cases.append('unsupported keys2/4/26/65535 restore current character110 on same socket; peer stays quiet, DB unchanged, valid choices still persist')
+        a.close();clients.remove(a);receive(b,107);receive(b,110)
+        a=connect(0);join(a,key);restored=setup(a)
         assert restored[account.players[0]['wire_id']]==1
         b.receive(106);a.quiet();b.quiet()
-        cases.append('unsupported key rejected without DB write; fresh owned channel restores character from DB before setup106')
+        cases.append('fresh owned channel after voluntary close restores character from DB before setup106')
         # Hold real writer lock while choice reaches normal persistence worker.
         writer=sqlite3.connect(account.database,isolation_level=None);writer.execute('BEGIN IMMEDIATE')
         a.send(92,codec.pack_fields([0,0],[1,2]));time.sleep(.1)
         writer.execute('UPDATE sessions SET revoked_at=? WHERE account_id=? AND revoked_at IS NULL',(int(time.time()),account.players[0]['account_id']));writer.execute('COMMIT');writer.close()
         closed(a);receive(b,107);receive(b,110)
-        assert dbpref(account.players[0]['player_id'])==(1,1)
+        assert dbpref(account.players[0]['player_id'])==(1,3)
         b.send(92,codec.pack_fields([0,1],[1,2]));receive(b,110)
         assert dbpref(account.players[1]['player_id'])==(1,1)
         cases.append('revocation committed under DB pressure prevents old pending choice mutation; surviving account current choice persists')

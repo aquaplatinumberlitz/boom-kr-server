@@ -1014,15 +1014,38 @@
       "reviewed_utc": "2026-11-17T12:35:05.125317+00:00"
     },
     {
+      "number": 457,
+      "kre": "KRE-G1-CHARACTER-REJECTION",
+      "features": [
+        "KR-R002"
+      ],
+      "classification": "in_progress",
+      "known": "Đã có code/test tập trung TCP/SQLite giữ phiên và current110 khi key chưa đo. Native đang kiểm bằng harness ma trận; chưa đóng G1.",
+      "remaining": "Native same transport, chọn hợp lệ sau từ chối, hai vòng/reset, audit/checkpoint và gate nhóm trước merge.",
+      "next_test": "Native #457 và kiểm hàm từ chối/current profile trước Start.",
+      "acceptance": "docs/PLAN.md#phase1-acceptance",
+      "reason": "Chủ dự án đưa đường ngắn issue457 vào G1; roster mở rộng vẫn để sau.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md"
+      ],
+      "evidence": [
+        "docs/evidence/owner-directives/g1-item-scope-cut.json"
+      ],
+      "prs": [],
+      "successors": []
+    },
+    {
       "number": 460,
       "kre": "KRE-G1-PUNCH-HORIZONTAL",
       "features": [
         "KR-F010"
       ],
-      "classification": "in_progress",
-      "known": "Reference R2 có selector0/source6,3→6,5 hai vòng, native landing/retirement/bom tiếp/peer/reset,712 securefields và independent wire. Candidate Rust giữ whole-row reservation/ownership/deadline/queue.",
-      "remaining": "Full supervised Rust checks/build, native account với floor chỉPunch, peer/reset/journal, audit/checkpoint/exact-head/CI trước tích hợp.",
-      "next_test": "Chạy native Rust candidate hai account theo contract; selector0/same-row/+two columns cần actual request, không normalize target. Mismatch/failure giữ nguyên.",
+      "classification": "completed",
+      "known": "CP334/AUD142: native Rust horizontal hai account/hai vòng, journal thưởng0 và guards; PR461 đã merge.",
+      "remaining": "Phạm vi selector0 đã tích hợp; ma trận Punch còn các khoảng cách/biên theo chỉ đạo mới.",
+      "next_test": "Gộp kết quả cũ vào ma trận Punch, không mở PR theo selector.",
       "acceptance": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
       "reason": "Theo coverage Shoe/Punch còn thiếu trong PLAN, không thêm scope ngoài G1 hoặc mở toàn geometry từ endpoint.",
       "sources": [
@@ -1033,7 +1056,9 @@
       "evidence": [
         "docs/evidence/item-families/punch-horizontal-action.json"
       ],
-      "prs": [],
+      "prs": [
+        461
+      ],
       "successors": [],
       "reviewed_utc": "2026-11-17T12:35:05.125317+00:00"
     }

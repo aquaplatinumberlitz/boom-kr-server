@@ -204,9 +204,8 @@ def main():
         while c.receive()[0]!=117:pass
         d.receive(106)
         cases.append('full87_rejects_without_ghost_slot_and_account_can_join_other_room')
-        # Unmeasured character4 must fail closed; current other room still serves.
-        a.send(92,bytes.fromhex('5aa56d'));assert a.sock.recv(1)==b'';a.close();clients.remove(a)
-        b.receive(107);b.receive(110)
+        # Unmeasured character4 restores the current slot on the same connection.
+        a.send(92,bytes.fromhex('5aa56d'));assert a.receive()[0]==110;a.quiet();b.quiet()
         c.send(92,bytes.fromhex('5aa568'));selected(groups[1],{0:0x10000,1:0x22});b.quiet()
         cases.append('unmeasured_character_does_not_publish_choice_and_other_room_stays_usable')
         c.send(92,codec.pack_fields([1,0],[1,2]));assert c.sock.recv(1)==b'';c.close();clients.remove(c)
