@@ -461,19 +461,134 @@
     "Bomb_Fire_Roller": "existing native route/stat controls",
     "MaxPower": "docs/evidence/rust-service/g1-maxpower.json",
     "Needle_rescue": "docs/evidence/rust-service/g1-life-actions.json",
-    "Punch": "pending group boundary matrix and integration",
-    "Shoe": "pending group native matrix and integration"
+    "Punch": "docs/evidence/rust-service/g1-punch-matrix.json",
+    "Shoe": "pending final native/group integration, then docs/evidence/rust-service/g1-shoe-matrix.json"
   },
   "character": "docs/evidence/rust-service/g1-character-rejection.json",
   "drop_scope": "docs/evidence/rust-service/g1-item-scope-data.json",
-  "vi_client": "prepared; native smoke pending",
+  "vi_client": {
+    "status": "confirmed_integration_smoke",
+    "language": "vi",
+    "runtime_client_sha256": "37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84",
+    "rounds": 2,
+    "map": "Factory07",
+    "item": "Bomb",
+    "semantic": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/vi-smoke-verification.json",
+      "bytes": 1364,
+      "sha256": "1ae81e17c2d9923a02b76610d699b66c61c4aaca7f4eb697fb5855140c7c89fb"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/matrix-verification.json",
+      "bytes": 668,
+      "sha256": "1f75f14287a3beb6d05bf6465605bd57bc8bc745ea8bb471f3af84a9ad25f932"
+    },
+    "cache": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/cache-verification.json",
+      "bytes": 3179,
+      "sha256": "a64f95b47a089cf3f87233d05a827c0eb62ad19621981cc08e3bf5e9cf670d41"
+    },
+    "images": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/manual-image-review.json",
+      "bytes": 1856,
+      "sha256": "7c44865a4ddb54f32e4b87402ac4bce0deb29e27a50e3935c153f0a9ef65e3d5"
+    },
+    "wrapper_limit": {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/wrapper-cache-guard-observation.json",
+      "bytes": 1148,
+      "sha256": "08619b6d6ffdee166b7e7ba3a1f0eef4becc388d88041627dd6a207de955f1d5"
+    },
+    "limits": "Current produced L1 vi outputs only; original wrapper rejected two observed cache changes. Exact actual238 join validates them, all other pins frozen. No L1 or M8 closure."
+  },
   "remaining": [
-    "Hoàn tất/integrate nhóm scope+character, Punch, Shoe và client vi smoke.",
-    "Audit các metadata/verification đã pin; không suy mọi occupancy, mọi ô hoặc native cleanup sạch từ route cũ."
+    "Shoe final native/group integration; join acceptance after it passes.",
+    "Final G1 audit and exact-head/CI gate; all map/roster and native cleanup limits retained."
   ],
   "limits": [
     "Chỉ tái dùng các route và môi trường đã ghi; không đo lại phân phối drop gốc.",
     "Roster trung gian dùng admission/spawn ordinal tổng quát; native có các roster đã liệt kê, không từng số người hoặc từng sparse slot.",
     "Không đóng M8: Internet transport mới, tải50/8phòng, backup/restore/đóng gói/soak còn riêng."
+  ],
+  "criteria": [
+    {
+      "number": 1,
+      "requirement": "Adapter map",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-adapter.json"
+      ]
+    },
+    {
+      "number": 2,
+      "requirement": "Chọn map và đồng bộ peer/Start",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-selection.json",
+        "docs/evidence/rust-service/g1-mixed-map-spawns.json"
+      ]
+    },
+    {
+      "number": 3,
+      "requirement": "Kim và cứu trên Rust",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-life-actions.json"
+      ]
+    },
+    {
+      "number": 4,
+      "requirement": "Terrain/item nền và roster đại diện2/4/8",
+      "state": "existing_confirmed",
+      "evidence": [
+        "docs/evidence/rust-service/g1-terrain-players.json"
+      ],
+      "limits": "Native các roster đã liệt kê, không từng count/sparse slot; capacity/membership/spawn ordinal tổng quát có controls riêng."
+    },
+    {
+      "number": 5,
+      "requirement": "Sáu map: spawn, thùng, item giữ lại, peer, hai vòng/reset, ca âm",
+      "state": "existing_measured_routes",
+      "evidence": [
+        "docs/evidence/rust-service/g1-map-terrain.json",
+        "docs/evidence/rust-service/g1-patrit-terrain.json",
+        "docs/evidence/rust-service/g1-village10-terrain.json",
+        "docs/evidence/rust-service/g1-factory07-roster-routes.json",
+        "docs/evidence/rust-service/g1-camp08-roster-routes.json",
+        "docs/evidence/rust-service/g1-tomb12-serving-rosters.json"
+      ],
+      "limits": "Áp dụng owner scope-cut: không mỗi tile. Giữ các lỗi debugger/capture/export của run cũ; không coi exit1 là cleanup sạch."
+    },
+    {
+      "number": 6,
+      "requirement": "Tập item giữ lại và tắt drop các nhóm ngoài phạm vi",
+      "state": "pending_shoe_final_join",
+      "evidence": [
+        "docs/evidence/rust-service/g1-item-scope-data.json",
+        "docs/evidence/rust-service/g1-maxpower.json",
+        "docs/evidence/rust-service/g1-life-actions.json",
+        "docs/evidence/rust-service/g1-punch-matrix.json",
+        "docs/evidence/rust-service/g1-shoe-matrix.json"
+      ]
+    },
+    {
+      "number": 7,
+      "requirement": "Từ chối nhân vật chưa đo, giữ socket/profile/Ready/member/DB",
+      "state": "confirmed_and_merged_pr466",
+      "evidence": [
+        "docs/evidence/rust-service/g1-character-rejection.json"
+      ]
+    },
+    {
+      "number": 8,
+      "requirement": "Client vi hiện hành trên Rust, một map/item G1, hai vòng/reset",
+      "state": "confirmed_integration_smoke",
+      "evidence": [
+        "local/research/codex/g1-vi-client-smoke-r1/vi-smoke-verification.json",
+        "local/research/codex/g1-vi-client-smoke-r1/matrix-verification.json",
+        "local/research/codex/g1-vi-client-smoke-r1/manual-image-review.json",
+        "local/research/codex/g1-vi-client-smoke-r1/cache-verification.json"
+      ],
+      "limits": "Original wrapper cache guard failed; two known cache outputs independently match actual238, all other inputs frozen. Not L1 closure or language-client gameplay oracle."
+    }
   ]
 }
