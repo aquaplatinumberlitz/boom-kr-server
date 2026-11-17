@@ -132,6 +132,24 @@ def drive_matrix(matrix, config, out, states, record, topology, click, press, al
                     (out/'feedback-on').write_text('Read-only actor positions; ordinary keys only')
                 else:
                     (out/'feedback-on').unlink(missing_ok=True)
+            elif operation == 'settle':
+                deadline=time.monotonic()+8
+                seen=time.monotonic_ns();stable=[]
+                slot=str(matrix['roster'].index(role))
+                while time.monotonic()<deadline:
+                    sample=read(out/('live-'+role+'.json'))
+                    if sample['monotonic_ns']>seen:
+                        seen=sample['monotonic_ns'];actor=sample['actors'][slot]
+                        point=(actor['0x4c'],actor['0x58'])
+                        stable=stable+[point] if not stable or stable[-1]==point else [point]
+                        if len(stable)>=3:
+                            if action.get('cell'):
+                                row,column=action['cell']
+                                assert abs(point[0]-40*column)<=16 and abs(point[1]-(40*row+39))<=16, 'facing moved outside planned cell'
+                            record.setdefault('settled_positions',[]).append(dict(step=step['name'],role=role,ns=seen,point=point))
+                            break
+                    time.sleep(.02)
+                else:raise TimeoutError('position did not settle: '+label)
             elif operation == 'snapshot':
                 snap(label)
             else:
