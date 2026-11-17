@@ -135,15 +135,6 @@
       "limits": "Mechanicalchecks/sourcehashreuse notsemantic/gatecertification; fullcheckpointlocal/historycheckedbeforecommit."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP155-direct-oldUDP-contest-EOF.json",
-      "bytes": 637239,
-      "sha256": "5b75ce6f7ffa9784a62fd0f88fe78da276904a16e45e3e242a49c9cfc8626cf6",
-      "count": 2468
-    }
-  ],
   "delta": {
     "added": [
       "Fullsame-runcurrentrecipeoldUDPnegative/currentpositive/2contests/native2viewlife/195flagreset/2normaloutcomes/Ready/EOF3; no repeatedconsumerRE."
@@ -235,6 +226,267 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP155combinedr2proof/r1partial/analysislimits/PR225merge/closedoldUDPstep/manualK6aacceptance/AUD156next synchronizedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00006",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r1/contest-verification.json",
+      "bytes": 3169,
+      "sha256": "40b1e3f73fe6ab79ef6c5470050bbc788e7eba37c09b11778c3c8ef3adf1cefe"
+    },
+    {
+      "id": "RUN-00996",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r1/exact-old-verification.json",
+      "bytes": 11674,
+      "sha256": "f7fe3c79da0a67de994f01b2fe7779b38cdeb634216983f303d583a6dce0136d"
+    },
+    {
+      "id": "RUN-01009",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r1/partial-observation.json",
+      "bytes": 1016,
+      "sha256": "685ba86f6a13a8a10dba35779e27a71cfc4f615f0e714b9dd2e8767852d1b947"
+    },
+    {
+      "id": "RUN-01011",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r1/raw-seal.json",
+      "bytes": 207407,
+      "sha256": "d1c72ff206fd62e9613f1af9e8641d1c55d7f28819d14c110db288f3d0fe2d86"
+    },
+    {
+      "id": "RUN-01063",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/actor-fields.json",
+      "bytes": 2137616,
+      "sha256": "9f4585c3165c3fa956f4bc571bbb70b568baf1af97ef3e626840cdabc30b10cd"
+    },
+    {
+      "id": "RUN-01064",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/analysis-corrections.json",
+      "bytes": 577,
+      "sha256": "15698265f0472053c7de52d04a3d5f6cefbe4adac5c2792d6e3dc50d1093c603"
+    },
+    {
+      "id": "RUN-01067",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-01068",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/capture-claim-verification.json",
+      "bytes": 2706,
+      "sha256": "8a0e921bfc7b5b71cc5e49009ca0c7caf42187ae9782b3fb028850eb41e2c195"
+    },
+    {
+      "id": "RUN-01071",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/contest-verification.json",
+      "bytes": 3169,
+      "sha256": "65c7aa563bde3a0c3989a52f7772080743f52dac6930e3c80794cafb6923f9c4"
+    },
+    {
+      "id": "RUN-01081",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/cycle-boundary-verification.json",
+      "bytes": 2503,
+      "sha256": "6c69ffdb08769f3b283b1ac188f81f066a69cfc8c89a40064741b03496c4ba68"
+    },
+    {
+      "id": "RUN-02344",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/cycles/udp-A.jsonl",
+      "bytes": 67315,
+      "sha256": "9f861b7b0741a5a82127a990db9d9691be01d649fe8c2cefc4767d854731aacf"
+    },
+    {
+      "id": "RUN-02358",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/direct-eof-verification.json",
+      "bytes": 1577,
+      "sha256": "e79feed2c385a6d9f8f11320a9898a8f2c5cc9e5475a7ae80d76619b267de9be"
+    },
+    {
+      "id": "RUN-02359",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "cd1f37676709111e7fd95ac5767f41ac7cbdbeae23f564abea97d7d3ec95f590"
+    },
+    {
+      "id": "RUN-02360",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/endpoint-peer-verification.json",
+      "bytes": 179951,
+      "sha256": "796b78e7cee9e26cb51187c27bab1db609cd9d99b5666d815e314080044994ad"
+    },
+    {
+      "id": "RUN-02361",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/exact-old-verification.json",
+      "bytes": 14998,
+      "sha256": "2bbb5e574caf65c94669641ee71c043d5f64c81f14f082b4c9e57e4f7851d024"
+    },
+    {
+      "id": "RUN-02362",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/flag-reader-verification.json",
+      "bytes": 1702307,
+      "sha256": "79bcb5f7c1ec9c76496e12f7c6ce6d06438c8372044871d7096262f75b14e89c"
+    },
+    {
+      "id": "RUN-02372",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/hot-gate-verification.json",
+      "bytes": 7800,
+      "sha256": "33627df12ebb29cd4d2c2082fa54cd30b6f1f03c3707deb9f19e55bf0550b7e1"
+    },
+    {
+      "id": "RUN-02375",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "aeefce92799c175d9bb0c74c2ae20c9abdb718850593b9a23981228075eca3da"
+    },
+    {
+      "id": "RUN-02378",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/life-agreement-verification.json",
+      "bytes": 6828,
+      "sha256": "1eeecd255004ec6b6d20670c3dd1f6522deb0b2b55ec14eef620c772f761fe0b"
+    },
+    {
+      "id": "RUN-02379",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "3a13cde5247d3d31f32c5c5d4c18e825d505aa989baade2b3ba4cddbf6b5d5d5"
+    },
+    {
+      "id": "RUN-02380",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/life-source-reuse.json",
+      "bytes": 2117,
+      "sha256": "e9276e680e9095695bcd54d3955546b33b64adb32275625b3f0d2463bdf9351b"
+    },
+    {
+      "id": "RUN-02381",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/loading-milestones.json",
+      "bytes": 28677,
+      "sha256": "270561e3da8235b77a17cc069e75e7d08499e9688365f8402f616e998e6f181b"
+    },
+    {
+      "id": "RUN-02382",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/native-getters.json",
+      "bytes": 685,
+      "sha256": "978c468fbc61a2f6e1ff6f0c1628f925bbea00b696ab1fdb4bb76a15bf0c1644"
+    },
+    {
+      "id": "RUN-02386",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "0ecc1176ab11fd706b8e1bdb5e1185be7499c16bf3834e2b0877bd6df1364ae1"
+    },
+    {
+      "id": "RUN-02388",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/raw-seal.json",
+      "bytes": 268040,
+      "sha256": "74372522eafb27f655edb7ff667e2221e33e4139e06f97642dc4da719ffbfe4f"
+    },
+    {
+      "id": "RUN-02389",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/reuse-question.json",
+      "bytes": 2853,
+      "sha256": "21d61fb3d45a968050472bae97d4ac4b0e4ef771b59e319a78ae31c0cced7763"
+    },
+    {
+      "id": "RUN-02390",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/runtime-preflight.json",
+      "bytes": 19432,
+      "sha256": "2fb0c42447634d9b99f81b1d924bdaa2f85ac893fbcf11e2ae94050fb3adbf3a"
+    },
+    {
+      "id": "RUN-02434",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/server-source-reuse.json",
+      "bytes": 7043,
+      "sha256": "4ba7a6ff768dd81fab208b510a7d4168cabe5b0e86d1813d09c5f09e21ffee10"
+    },
+    {
+      "id": "RUN-02448",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/visual-review.json",
+      "bytes": 1078,
+      "sha256": "247af1d4984f536e744ca1d16766540bd5a30e999db8b0bfe6696a402d6b7212"
+    },
+    {
+      "id": "RUN-02449",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/world-reset-verification.json",
+      "bytes": 1098,
+      "sha256": "59f588aaee87096658b9337c354c099a9bd7e611dfefb250cd8fd196c452dadb"
+    },
+    {
+      "id": "RUN-02464",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/server-tests.txt",
+      "bytes": 337,
+      "sha256": "279e571a9c544630e0633f5bc5d621da7503699017783630d834afc8545ada31"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/direct-contest-oldudp-eof-r1",
+      "path": "local/evidence-manifests/ea9ae89f251655d6de687bb6816acc6e461d3faf0c63872df1827607b3cd07e0.jsonl",
+      "sha256": "ea9ae89f251655d6de687bb6816acc6e461d3faf0c63872df1827607b3cd07e0",
+      "bytes": 220733,
+      "count": 1060,
+      "files_bytes": 109867655
+    },
+    {
+      "run": "local/research/codex/direct-contest-oldudp-eof-r2",
+      "path": "local/evidence-manifests/fa570b659f1d4ccae68d079291ac2e78333574fcab04d9bc33b5d0dbef21fb0f.jsonl",
+      "sha256": "fa570b659f1d4ccae68d079291ac2e78333574fcab04d9bc33b5d0dbef21fb0f",
+      "bytes": 284209,
+      "count": 1363,
+      "files_bytes": 123062178
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/c0f0fb7a9f945387bb0e4948f262e1d5292d38494b0e7aa775e73c55fcfeda6d.jsonl",
+      "sha256": "c0f0fb7a9f945387bb0e4948f262e1d5292d38494b0e7aa775e73c55fcfeda6d",
+      "bytes": 1319,
+      "count": 7,
+      "files_bytes": 189129
+    },
+    {
+      "run": "local/research/codex/direct-contest-pending-eof-r1",
+      "path": "local/evidence-manifests/214eeb4d942efdaa24196edc37ae613a1952fd0eabe719f3cb543c328f3a17da.jsonl",
+      "sha256": "214eeb4d942efdaa24196edc37ae613a1952fd0eabe719f3cb543c328f3a17da",
+      "bytes": 490,
+      "count": 2,
+      "files_bytes": 530
+    },
+    {
+      "run": "local/research/codex/virtual-old-udp-r2",
+      "path": "local/evidence-manifests/aa4b44650640dd4fbbe804eab1e08a79b706ed8548b73a3c51724c90719ed836.jsonl",
+      "sha256": "aa4b44650640dd4fbbe804eab1e08a79b706ed8548b73a3c51724c90719ed836",
+      "bytes": 1039,
+      "count": 5,
+      "files_bytes": 35848
     }
   ]
 }

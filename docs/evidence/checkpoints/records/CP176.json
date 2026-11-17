@@ -154,15 +154,6 @@
       "limits": "Modified KR00967 Wine copies/private samephysicalhost virtual namespaces; localfixture IDs. CP175production/profile/binary unchanged; C2/7declared/nativeinitial2, max7/reservations2 untested. Two normalACepochs/noABgame/forfeit; no thirdStart/outcome, noACcontest/oldUDP/disconnectinthisrun. Nativeperviewlife notglobalsametick; primitive/getterUnicornmodels separatefromWine. Chosenfuse/drop/claims/rank notoriginalserverauthority. CpreReady/returnbeforefocusblack retained; finalReadybothroomrendernotrootcause orStart3proof. Fullauth/Windows/LANInternet8clients/K0–K7/K5K6a/fullmatch remainopen."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP176-AC-basic-cycles.json",
-      "bytes": 485305,
-      "sha256": "4bd73e5b3e07f203acd1eb2b3e91528b5372fcd0372ebc1eee84024846a77fc0",
-      "count": 1993
-    }
-  ],
   "delta": {
     "added": [
       "ActualCslot1bomb/nativeA/Centity-blast then2ACnormalbasiccycles/4peerwindows/6bombs/3effects/life/results/reset/Ready2.",
@@ -270,6 +261,174 @@
       "path": "docs/evidence/checkpoints/audits/AUD052.json",
       "state": "updated",
       "reason": "CP176ACnative2cycles/peer/life/reset/limits/nextprofile/CP175merge/AUD052 syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/A-C-bomb-r1/C-bomb-verification.json",
+      "bytes": 12169,
+      "sha256": "a58890663fef827fc29d5f07c68e8e25c01662b22400101ceb4838527a5ebc98"
+    },
+    {
+      "id": "RUN-00036",
+      "kind": "local",
+      "path": "local/research/codex/A-C-bomb-r1/raw-seal.json",
+      "bytes": 120819,
+      "sha256": "363376c57e78426ce59577241fa9a006929ab70f4f3ae13769f89b5ab741ad10"
+    },
+    {
+      "id": "RUN-00728",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/actor-fields.json",
+      "bytes": 558968,
+      "sha256": "536cafbf92b20df4f97e1f1793941834ab25115c68c8bff9dc70f8af403b7fb7"
+    },
+    {
+      "id": "RUN-00733",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00734",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/audit-before-index.json",
+      "bytes": 2552,
+      "sha256": "a04e44299cea7446bd245fe342b9604513c0d99e3303851734bc72ca3716925e"
+    },
+    {
+      "id": "RUN-00735",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/basic-cycle-verification.json",
+      "bytes": 2294,
+      "sha256": "899a3b36cb56a89ab9f21caa6fc284b012083d5df794961f524fc7e96f45da78"
+    },
+    {
+      "id": "RUN-00741",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/diff-check.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUN-00742",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "e759b2fa05b6b760e3067b8e012cc60a65bf003362d0b799b5062d9f5eb22582"
+    },
+    {
+      "id": "RUN-00743",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/endpoint-peer-verification.json",
+      "bytes": 209228,
+      "sha256": "2663ebd0ecdb6d22c59ba9d252c162c344f60c52096c8d03098344545b4e9212"
+    },
+    {
+      "id": "RUN-00754",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "5d7588d25908b28af9b4eeeecc4fc3742bf83b5d2d624bdabef9895a3c655b42"
+    },
+    {
+      "id": "RUN-00757",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/life-agreement-verification.json",
+      "bytes": 6780,
+      "sha256": "9296e547039b036141e364c88db9f475edc7d14c0b8bea5e2d79ccc747b387e6"
+    },
+    {
+      "id": "RUN-00758",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "b0be8444b81e84ee09accf512fd97e5ebe41ef4033bb9f97122ec924b7baa34e"
+    },
+    {
+      "id": "RUN-00760",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/native-actual.json",
+      "bytes": 89181,
+      "sha256": "20ea0942c5da4ebb5b3a1c374ac24ed39174b93e1e4605f7268e5d83056820a8"
+    },
+    {
+      "id": "RUN-00766",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/oracle-reuse-comparison.json",
+      "bytes": 1047,
+      "sha256": "da1c9eb2cad62e97c7832525356249160e64b74660ee63bea2f0619e82704685"
+    },
+    {
+      "id": "RUN-00773",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "81aead00a1aa8dfcbcf88ad336ddea8887b59cc6ff423aaa95e3e53703462ae7"
+    },
+    {
+      "id": "RUN-00775",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/raw-seal.json",
+      "bytes": 212285,
+      "sha256": "5f2b8d457a1229b24efad33d3c1182f007480e3a3bc82ea7ed1ee16d99a2ae5a"
+    },
+    {
+      "id": "RUN-00778",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/server-test-reuse.json",
+      "bytes": 12844,
+      "sha256": "0de8e7a0c0636d26ec2c4f85595053216df942039d15641990e487553849d919"
+    },
+    {
+      "id": "RUN-00791",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/visual-review.json",
+      "bytes": 2140,
+      "sha256": "e906164be7320b46bcc7fbaa5984e6514adff740eb8f892aeee3659f6e794b2d"
+    },
+    {
+      "id": "RUN-00802",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/cp176-snapshot/docs/PLAN.md",
+      "bytes": 37204,
+      "sha256": "99f6b78aace5fea6e3f0feff376294761561b969af0dbeb6c096317c6be45b70"
+    },
+    {
+      "id": "RUN-00807",
+      "kind": "local",
+      "path": "local/research/codex/A-C-cycles-r1/cp176-snapshot/docs/evidence/checkpoints/audits/AUD052.json",
+      "bytes": 6827,
+      "sha256": "8a6916359d5fff34b9b60b4777bc497b0e98a6b64b76546c8d00aee1854683ae"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/A-C-bomb-r1",
+      "path": "local/evidence-manifests/066be32ac789b8024e8b195ea92476f4b6f12eb0f780eb2ffccf9f83402b75d2.jsonl",
+      "sha256": "066be32ac789b8024e8b195ea92476f4b6f12eb0f780eb2ffccf9f83402b75d2",
+      "bytes": 138494,
+      "count": 724,
+      "files_bytes": 116815246
+    },
+    {
+      "run": "local/research/codex/A-C-cycles-r1",
+      "path": "local/evidence-manifests/98a13e464f478583b562e4668df7128f6f7aacee589dfcd9448dea69a3376b34.jsonl",
+      "sha256": "98a13e464f478583b562e4668df7128f6f7aacee589dfcd9448dea69a3376b34",
+      "bytes": 240776,
+      "count": 1234,
+      "files_bytes": 156142898
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/3898fe813ccf463108de45c690ba67482102bff547af3696643225495b4a24ee.jsonl",
+      "sha256": "3898fe813ccf463108de45c690ba67482102bff547af3696643225495b4a24ee",
+      "bytes": 2699,
+      "count": 15,
+      "files_bytes": 472991
     }
   ]
 }

@@ -106,15 +106,6 @@
       "limits": "FinalR1native2/4/8/account afterremainingR1steps; no inheritednativegate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP262-r1b-policies.json",
-      "bytes": 679049,
-      "sha256": "6e1fc57bd3e0e153506100dc6b4c2c3517d5dc5843e73d65adc38be961209323",
-      "count": 2400
-    }
-  ],
   "delta": {
     "added": [
       "Typedroompolicyselection/refactor +negativefixture-authorityunit.",
@@ -269,5 +260,241 @@
   ],
   "completed_feature_groups": [
     "r1b-typed-room-policies"
+  ],
+  "evidence": [
+    {
+      "id": "R1BCP262-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 67536,
+      "sha256": "9c2f36274524771f8adb74f3a8070368460362819a7f680b65320d24a7b3ef6c"
+    },
+    {
+      "id": "R1BCP262-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 218350,
+      "sha256": "d60a87d91a4e3f85d648bc02ea6983f660e3d69b9b6c60598b5e48db4f851181"
+    },
+    {
+      "id": "R1BCP262-00003",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 126507,
+      "sha256": "22d118ee0d44710b19a673b0ad0dca2b71a66c399e370daec679d3c7f4ef59b4"
+    },
+    {
+      "id": "R1BCP262-00004",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 848731,
+      "sha256": "d61e5448dcf60fa17a5d792c011bf1e70bceb9c2ce91ef4e3e981d538861d974"
+    },
+    {
+      "id": "R1BCP262-00005",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 53962,
+      "sha256": "51dec5ad0051f65909e2b449e9300227fa0a6184a4b2c139b8392571039fd3b0"
+    },
+    {
+      "id": "R1BCP262-00006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD079.json",
+      "bytes": 4299,
+      "sha256": "a112f5b3307eee568883687a84d8eb37a6a2ce4e66726c716dedf29776952c55"
+    },
+    {
+      "id": "R1BCP262-00007",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 283689,
+      "sha256": "d62701a4feb889f15a483a5ac6ddf4f50f905668e91e2e172264bf616e2d7b6f"
+    },
+    {
+      "id": "R1BCP262-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 42841,
+      "sha256": "117aa93335e966d3f29e89ca494ed43a7b5e0ba46a5a76c3b177c4b4348a7394"
+    },
+    {
+      "id": "R1BCP262-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/README.md",
+      "bytes": 59240,
+      "sha256": "839a27aaf3c0b4ec426d35218e5dd1c409c0e36239a671ce1729ff08a6168672"
+    },
+    {
+      "id": "R1BCP262-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/r1b-policies.json",
+      "bytes": 2995,
+      "sha256": "a8f94ef94e5945ed0e13325436c7e418f1c169c74b1fa307a13fb528ed88cb36"
+    },
+    {
+      "id": "R1BCP262-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 230051,
+      "sha256": "54bc4a2ad47aecfb342b176d0ad1b258df0e434212dc98849ee09310c604d2f6"
+    },
+    {
+      "id": "R1BCP262-00449",
+      "kind": "local",
+      "path": "local/research/codex/r1b-policies-account-r4/candidate/verification.json",
+      "bytes": 8124,
+      "sha256": "0c4e2de8127428f154f9c4c806ddfb45087967074d370415a9eeea4b7264dab7"
+    },
+    {
+      "id": "R1BCP262-00451",
+      "kind": "local",
+      "path": "local/research/codex/r1b-policies-delivery-r1/selfcheck.json",
+      "bytes": 2269,
+      "sha256": "f24abc287ea935e8735ce4ff81fe6b4f9a6c8edcc2ca65c535734ca9a1309d7f"
+    },
+    {
+      "id": "R1BCP262-00463",
+      "kind": "local",
+      "path": "local/research/codex/r1b-policies-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 100386,
+      "sha256": "5e912071bd5d6b7940d610486210d19839aa47273b09c28128381a9c9dbed929"
+    },
+    {
+      "id": "R1BCP262-00464",
+      "kind": "local",
+      "path": "local/research/codex/r1b-policies-delivery-r1/snapshot/rust/crates/kr-service/src/rules.rs",
+      "bytes": 6801,
+      "sha256": "909bee5dd8318818d3c390009575e5ccf438e7c29683e73f2f3a85830529a429"
+    },
+    {
+      "id": "R1BCP262-02372",
+      "kind": "local",
+      "path": "local/research/codex/r1b-policies-regression-r4/initial-wire-comparison-failure.json",
+      "bytes": 986,
+      "sha256": "8882fd45565969e7015c89bf58bb47b4408bb89732f52e369e2c1f16eabe33ba"
+    },
+    {
+      "id": "R1BCP262-02373",
+      "kind": "local",
+      "path": "local/research/codex/r1b-policies-regression-r4/ninth-initial-tail-mismatch.json",
+      "bytes": 1629,
+      "sha256": "98468ce7fb7ab98752471bac840f5b367e3c25e3e4c54a1e0447a8de907aedef"
+    },
+    {
+      "id": "R1BCP262-02374",
+      "kind": "local",
+      "path": "local/research/codex/r1b-policies-regression-r4/wire-comparison-r6.json",
+      "bytes": 4406,
+      "sha256": "eeb2736c80b707d48033b052cc7fc4f0c38d0d7ce8efb21b86b7208fc70fa0ef"
+    },
+    {
+      "id": "R1BCP262-02384",
+      "kind": "local",
+      "path": "local/research/codex/r1b-recovery-r2/candidate-build.json",
+      "bytes": 799,
+      "sha256": "f7770fe0d5596c8e0690aafacfda911bfc200cc3f0a9f8b6206ecd7a4d2e92a6"
+    },
+    {
+      "id": "R1BCP262-02391",
+      "kind": "local",
+      "path": "local/research/codex/r1b-recovery-r2-build.txt",
+      "bytes": 166,
+      "sha256": "3e50151d5593bba3e728d1fe69d740cf71a347dd447c53e3aacbd50b46ae27d9"
+    },
+    {
+      "id": "R1BCP262-02392",
+      "kind": "local",
+      "path": "local/research/codex/r1b-recovery-r2-clippy.txt",
+      "bytes": 166,
+      "sha256": "7692544d9ccc07109144dc85822c865998836c2a169ea6a469fa64de9ce5c071"
+    },
+    {
+      "id": "R1BCP262-02394",
+      "kind": "local",
+      "path": "local/research/codex/r1b-recovery-r2-test.txt",
+      "bytes": 10067,
+      "sha256": "2353e652dcb60fc31f2e03553e63cbcbf5154cd933c9c81dca634cf20b666dce"
+    },
+    {
+      "id": "R1BCP262-02399",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 30452,
+      "sha256": "d3a9be67441705ef7159d546e0e1a4ed9cc3df9e32a21831fe70b0e6e3e206c2"
+    },
+    {
+      "id": "R1BCP262-02400",
+      "kind": "repository",
+      "path": "tools/README.md",
+      "bytes": 25486,
+      "sha256": "2fb0e4360b19f0a2dc1cd0c3724eb255b0850dbbcb7a1e7843150180e132130b"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/c105057b154842dc62b38e523ba56994e0b116c5eecb1ff472c7070ffd088f35.jsonl",
+      "sha256": "c105057b154842dc62b38e523ba56994e0b116c5eecb1ff472c7070ffd088f35",
+      "bytes": 3559,
+      "count": 19,
+      "files_bytes": 78443
+    },
+    {
+      "run": "local/research/codex/r1b-eight-boundary-r5",
+      "path": "local/evidence-manifests/2f32b72be8a3dc5b16fdf801ebc5cf376eaa619dd6ea2af73349839f6e81cd84.jsonl",
+      "sha256": "2f32b72be8a3dc5b16fdf801ebc5cf376eaa619dd6ea2af73349839f6e81cd84",
+      "bytes": 43985,
+      "count": 199,
+      "files_bytes": 107741976
+    },
+    {
+      "run": "local/research/codex/r1b-ninth-boundary-r6",
+      "path": "local/evidence-manifests/bae78b1e5cc86e5bbd39d4227f3e3c37e0007a5515c84b6d2ef35171047af148.jsonl",
+      "sha256": "bae78b1e5cc86e5bbd39d4227f3e3c37e0007a5515c84b6d2ef35171047af148",
+      "bytes": 45332,
+      "count": 205,
+      "files_bytes": 107396845
+    },
+    {
+      "run": "local/research/codex/r1b-policies-account-r4",
+      "path": "local/evidence-manifests/5e9c6b91df108c5f7e6f4e201113e701841bfaf15ed1e953cccc92098c93abd4.jsonl",
+      "sha256": "5e9c6b91df108c5f7e6f4e201113e701841bfaf15ed1e953cccc92098c93abd4",
+      "bytes": 4298,
+      "count": 20,
+      "files_bytes": 373947
+    },
+    {
+      "run": "local/research/codex/r1b-policies-delivery-r1",
+      "path": "local/evidence-manifests/d7df37de9c37d756bdf204961fd8754066f44c5febf9f268f849ba33072da5e3.jsonl",
+      "sha256": "d7df37de9c37d756bdf204961fd8754066f44c5febf9f268f849ba33072da5e3",
+      "bytes": 3388,
+      "count": 15,
+      "files_bytes": 2026343
+    },
+    {
+      "run": "local/research/codex/r1b-policies-regression-r4",
+      "path": "local/evidence-manifests/5b235be0f4d3742994f2deebac06b6eeac545b8aabe78da204526e6d2c74fd41.jsonl",
+      "sha256": "5b235be0f4d3742994f2deebac06b6eeac545b8aabe78da204526e6d2c74fd41",
+      "bytes": 451415,
+      "count": 1903,
+      "files_bytes": 1074183227
+    },
+    {
+      "run": "local/research/codex/r1b-policies-source-r1",
+      "path": "local/evidence-manifests/427631f5986bbded81e02f0ea7eb216bc9f3ccf5f5fed202df8902ff81cc3e8d.jsonl",
+      "sha256": "427631f5986bbded81e02f0ea7eb216bc9f3ccf5f5fed202df8902ff81cc3e8d",
+      "bytes": 480,
+      "count": 2,
+      "files_bytes": 2075
+    },
+    {
+      "run": "local/research/codex/r1b-recovery-r2",
+      "path": "local/evidence-manifests/6d2c9d6f4040646de98768d442c0ba8ca44b882a658ea6e5729512c71c73b4ba.jsonl",
+      "sha256": "6d2c9d6f4040646de98768d442c0ba8ca44b882a658ea6e5729512c71c73b4ba",
+      "bytes": 2707,
+      "count": 13,
+      "files_bytes": 196824082
+    }
   ]
 }

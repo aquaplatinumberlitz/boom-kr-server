@@ -146,15 +146,6 @@
       "limits": "Unchangedserver testsreusedexacthash; historycheckafterappendbeforecommit; mechanicalchecker notsemanticgate. No source/configduringrunchanges."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP169-current-basic-hidden.json",
-      "bytes": 962504,
-      "sha256": "674df801e5513effe504f6674665bce85750255159a311ceb57c31097f278529",
-      "count": 3801
-    }
-  ],
   "delta": {
     "added": [
       "Knownbasic582composition/nativepreflightcurrentmodecopyprofile;actualfirstepochnativeFixedBox→reveal27/28/124165/samepointer/3effects bothviews.",
@@ -251,6 +242,240 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP169copybasicfirstepoch/partials/startupnonreach/native3effects/CP168PR239merge/nextsameprofile2cycles syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r1/composition-verification.json",
+      "bytes": 672,
+      "sha256": "e46c7dd3232c4367c861f5cde0b5dbbc25e6f9ee53f350a36c0e876febe43dcb"
+    },
+    {
+      "id": "RUN-00756",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r1/hidden-integration-verification.json",
+      "bytes": 4628,
+      "sha256": "13e0c0cae55585608852f0ec0527edc463d4479664a7e247f756a0cfb1c5623a"
+    },
+    {
+      "id": "RUN-00761",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r1/native-fixture.json",
+      "bytes": 1454,
+      "sha256": "544f477ea7e3c026729afacb00661a3b567d5f7884b3287173c172286c28963c"
+    },
+    {
+      "id": "RUN-00767",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r1/partial-effect-summary.json",
+      "bytes": 1173,
+      "sha256": "7cb7c1a8de5ce3d6e551f0825d6034bb578e6315952a726dbc44a715240e411a"
+    },
+    {
+      "id": "RUN-00769",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r1/raw-seal.json",
+      "bytes": 152386,
+      "sha256": "b4f30adb42cc6e5c2f76c5fef5a7231a30f7aea74a0caac581ae580c61e65354"
+    },
+    {
+      "id": "RUN-00770",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r1/reuse-question.json",
+      "bytes": 3764,
+      "sha256": "b757a5bb9010fdfe16b37f68fa537cf5feba3274998ad1eb85a3028ada249256"
+    },
+    {
+      "id": "RUN-01559",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r2/hidden-integration-verification.json",
+      "bytes": 4628,
+      "sha256": "2166edcfc52f5774f4c0f15c4a5f9fbd91ab4effba1691887cf07776ac773ce5"
+    },
+    {
+      "id": "RUN-01572",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r2/partial-effect-summary.json",
+      "bytes": 919,
+      "sha256": "c148e1091dc0492e5dbd1bf3032507f893e60acadfe7541e410a9e8d88e40589"
+    },
+    {
+      "id": "RUN-01574",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r2/raw-seal.json",
+      "bytes": 148455,
+      "sha256": "3b64519abecd47fceeed364dc2b130d20453989515564174112e316d3ec1b964"
+    },
+    {
+      "id": "RUN-01583",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r2/runtime-preflight.json",
+      "bytes": 21911,
+      "sha256": "dc692516ae668a60f6c185409c268916f81bbad38ae89da1710838287a63e870"
+    },
+    {
+      "id": "RUN-02902",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r3/raw-seal.json",
+      "bytes": 256645,
+      "sha256": "d5963d993c1a3b33c2d2c42f09d033f76f320cc45b8bda4df637b05b3b584353"
+    },
+    {
+      "id": "RUN-02951",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r3/startup-observation.json",
+      "bytes": 1603,
+      "sha256": "10517dadfc9e86e14aba4b12352c88ec56e42a2a1aab5316b9679b18c721eb6f"
+    },
+    {
+      "id": "RUN-02955",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/actor-fields.json",
+      "bytes": 142515,
+      "sha256": "eb0275d1cb86029b0f1112fa987e93c810a05147b4f0ef458ea245e34917d4d5"
+    },
+    {
+      "id": "RUN-02956",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/alignment-verification.json",
+      "bytes": 1320,
+      "sha256": "ca05de0312087cec9f641dbe53c9fa25a225df67d19ffe865d0081205c599385"
+    },
+    {
+      "id": "RUN-02958",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-02962",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/cp169-snapshot/docs/PLAN.md",
+      "bytes": 35288,
+      "sha256": "b3520a181ef8816ffc181d30ee680158070c4c2b58abf7ab4f3ea7e88f999a77"
+    },
+    {
+      "id": "RUN-03693",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/docs-check.txt",
+      "bytes": 175,
+      "sha256": "0bf4913cf9ca11a6f9539159cfaff2c0d2a4c808facd7f8bfc662ce1d343af94"
+    },
+    {
+      "id": "RUN-03703",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/hidden-effects-verification.json",
+      "bytes": 3412,
+      "sha256": "dadfcd99436a2e6b74327a4e0dcf07ff83ab01060875f91b9d48534060c1dc37"
+    },
+    {
+      "id": "RUN-03704",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/hidden-integration-verification.json",
+      "bytes": 4940,
+      "sha256": "b870a72c10c9de5867476e908567687c066ec7047856623a2fa5810d94f4200a"
+    },
+    {
+      "id": "RUN-03706",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/issues-check.txt",
+      "bytes": 130,
+      "sha256": "b6c33ef477c3c5cfb32b7b1b0e016704bb2b8160674e62a1d005975cfc0a2868"
+    },
+    {
+      "id": "RUN-03710",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/native-actual.json",
+      "bytes": 24392,
+      "sha256": "7395eadc27286b2c921f04fd7a9a3ecdb73abc01c3dd6227e3c9084f9c2e79e3"
+    },
+    {
+      "id": "RUN-03718",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/raw-seal.json",
+      "bytes": 148094,
+      "sha256": "9bd5b3c0f820783a0c4f0d13df27d6a800816360a8d9c9ab09e446c3f99cf199"
+    },
+    {
+      "id": "RUN-03727",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/reuse-question.json",
+      "bytes": 3077,
+      "sha256": "c18dbbd4d9c86a1eb32c72f399490f74728e12033f2e7f4a38527099c1b72abb"
+    },
+    {
+      "id": "RUN-03728",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/runtime-preflight.json",
+      "bytes": 21630,
+      "sha256": "018846cd596d1c00d9a4aa99916257851fb78c4db1c184ff24bcb4d4f040fbea"
+    },
+    {
+      "id": "RUN-03775",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/server-source-reuse.json",
+      "bytes": 7626,
+      "sha256": "8e2527426872ebd0359338b398c3db5bfb062121620d202b739eb81ab9bec9f3"
+    },
+    {
+      "id": "RUN-03777",
+      "kind": "local",
+      "path": "local/research/codex/current-basic-hidden-r4/visual-review.json",
+      "bytes": 978,
+      "sha256": "cbb2109a60679a9691a2620a613823155df8a8bf5833fecdd34e48056013c6de"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/current-basic-hidden-r1",
+      "path": "local/evidence-manifests/0f342fdb64567376bdbc0742095c77da7733a07a7970d4c2cfd9e81d18367f31.jsonl",
+      "sha256": "0f342fdb64567376bdbc0742095c77da7733a07a7970d4c2cfd9e81d18367f31",
+      "bytes": 165696,
+      "count": 814,
+      "files_bytes": 96446710
+    },
+    {
+      "run": "local/research/codex/current-basic-hidden-r2",
+      "path": "local/evidence-manifests/bd8e5fcd7ce901dc7353d08698dc35f412bf728b1a93e1b4cc7b9c2f78356c9f.jsonl",
+      "sha256": "bd8e5fcd7ce901dc7353d08698dc35f412bf728b1a93e1b4cc7b9c2f78356c9f",
+      "bytes": 164483,
+      "count": 808,
+      "files_bytes": 95202577
+    },
+    {
+      "run": "local/research/codex/current-basic-hidden-r3",
+      "path": "local/evidence-manifests/76d26e79b17df32aae75ff56dbb5cf078349825639a785b133ea90789d1470b7.jsonl",
+      "sha256": "76d26e79b17df32aae75ff56dbb5cf078349825639a785b133ea90789d1470b7",
+      "bytes": 267960,
+      "count": 1320,
+      "files_bytes": 176570208
+    },
+    {
+      "run": "local/research/codex/current-basic-hidden-r4",
+      "path": "local/evidence-manifests/2870c83f1efc11bf7d37498f790dfadf43f55147532e0edcc42c8fdc991d3c47.jsonl",
+      "sha256": "2870c83f1efc11bf7d37498f790dfadf43f55147532e0edcc42c8fdc991d3c47",
+      "bytes": 165297,
+      "count": 811,
+      "files_bytes": 97752724
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/afceda1996bb76d43bfb91bdd2aae64f403d1afe04b61eb72e60ff6926f29bfc.jsonl",
+      "sha256": "afceda1996bb76d43bfb91bdd2aae64f403d1afe04b61eb72e60ff6926f29bfc",
+      "bytes": 3755,
+      "count": 20,
+      "files_bytes": 541529
+    },
+    {
+      "run": "local/research/codex/mode-host-rejoin-fixed-r2",
+      "path": "local/evidence-manifests/f6edc5e7d5dd4c7a41e909c9264aebe0868ea5f80cfcbac13658b1b48f2d8cc9.jsonl",
+      "sha256": "f6edc5e7d5dd4c7a41e909c9264aebe0868ea5f80cfcbac13658b1b48f2d8cc9",
+      "bytes": 478,
+      "count": 2,
+      "files_bytes": 467
     }
   ]
 }

@@ -133,15 +133,6 @@
       "limits": "Mechanical counters notrerunallCP157fullbaselinegetters; fullcheckpointlocal/historybeforecommit. No gate/authoritysemanticcertification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP158-trap-counter-controls.json",
-      "bytes": 1644541,
-      "sha256": "c5c296f2341b0e5c618d9c661b4443791cae1fbe4b0065fc1eb0e4d395ceca8f",
-      "count": 6545
-    }
-  ],
   "delta": {
     "added": [
       "Runtimecorroboration ofknownsameepochcounterheuristic: smallgap4drop/largegap17admit/protected56to0/fresh56restore withactualframe/source/key/stack.",
@@ -236,6 +227,199 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP158groupedcontrols/negativeblindspots/countercausallimits/naturalunknown/PR228merge/productionbaselinepriority syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-01552",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-window-r1/trap-window-verification.json",
+      "bytes": 8843,
+      "sha256": "df3a3a3055ed2ccd3224bfb9acd3d6ef03c1a2a2704f218e9bdb9c91366ade63"
+    },
+    {
+      "id": "RUN-03108",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-preroll-r2/trap-window-verification.json",
+      "bytes": 17290,
+      "sha256": "46db3c4b36cfea3e6890a4620b3b79d4687ba1b4e6d950091669e24967dc0e3b"
+    },
+    {
+      "id": "RUN-04592",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-current-replay-r3/cycles/peer-B.jsonl",
+      "bytes": 245163,
+      "sha256": "83a9ca5f1a0cc4263f3ab249a256014b4340b80973bd1d71cf4d3ca91807479d"
+    },
+    {
+      "id": "RUN-04594",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-current-replay-r3/cycles/run.json",
+      "bytes": 525096,
+      "sha256": "dcbb49ce4981ef8bf584715316483860b8c4ab334860acd119cc7c1c614beae5"
+    },
+    {
+      "id": "RUN-04670",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-r4/counter-control-verification.json",
+      "bytes": 7280,
+      "sha256": "256cb314b19c6964b7334aa3051cb709f265c2bbd38e74820db43c497697e448"
+    },
+    {
+      "id": "RUN-05592",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-05594",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/counter-control-verification.json",
+      "bytes": 17495,
+      "sha256": "e50389908737d3755fdbb7ec7412065120da2cbf517e7929e47c24a060c84c15"
+    },
+    {
+      "id": "RUN-05595",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/counter-getter-verification.json",
+      "bytes": 418,
+      "sha256": "b5038539d6651a0847eca068a02e5949647771d14dc6d161ed1d8cf22ebb0b01"
+    },
+    {
+      "id": "RUN-05598",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/cp158-snapshot/docs/PLAN.md",
+      "bytes": 33731,
+      "sha256": "fc9f28f652dd2ae0764f1e26268137bd9b750ff82b3dd4f7a14243d4a53f4129"
+    },
+    {
+      "id": "RUN-05600",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/cp158-snapshot/docs/RESEARCH.md",
+      "bytes": 30707,
+      "sha256": "efea1d1704c2122ea86dc138fd8fbf19ef7660891c67529059ef8feb937e23a2"
+    },
+    {
+      "id": "RUN-06424",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/cycles/chronology-B.jsonl",
+      "bytes": 106011,
+      "sha256": "4ae975822fb38ec3c5654aac8ddcc13ea854d9393f91fc0155c334bfedbbd670"
+    },
+    {
+      "id": "RUN-06459",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/docs-check.txt",
+      "bytes": 175,
+      "sha256": "3b638ee06c8e7e1444a51cbf2b211be59a5e41044f098af3a25b2a761a104492"
+    },
+    {
+      "id": "RUN-06468",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/grouped-run-summary.json",
+      "bytes": 3499,
+      "sha256": "4b9ce082422ed68082732ba8dc9241ce83859bce65cfa5e84b6b8f5fdbd56a61"
+    },
+    {
+      "id": "RUN-06471",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/issues-check.txt",
+      "bytes": 130,
+      "sha256": "701a881b5d619abc44199c4403c03596e5ce464646c7202d42c55745b68232b1"
+    },
+    {
+      "id": "RUN-06535",
+      "kind": "local",
+      "path": "local/research/codex/verify_trap_counter_controls-initial.py",
+      "bytes": 7355,
+      "sha256": "732cf9fb8f186ac864e4e5330c85f5046d28ce062c57a1f7c5cb3ea40a2375d7"
+    },
+    {
+      "id": "RUN-06540",
+      "kind": "local",
+      "path": "local/research/codex/udp-freshness-r1/E66680-prefix.asm",
+      "bytes": 14629,
+      "sha256": "881f2fbff332eaf3b863931dfcdee82f78b62b26a3cb542abb65d1f9bb86f633"
+    },
+    {
+      "id": "RUN-06541",
+      "kind": "local",
+      "path": "local/research/codex/current-peer-target-r1/B4E6F0.asm",
+      "bytes": 15734,
+      "sha256": "477ae2b6751d7b04fc24181df1f0743882e85577f5efc0e5ae9adc12bae97494"
+    },
+    {
+      "id": "RUN-06544",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-ui-r2/life-boundary-observation.json",
+      "bytes": 8511,
+      "sha256": "ecce926a807c3dd1abab8a4580d4ce6b2c5c9e98cc0c30dcb678a7cc207879af"
+    },
+    {
+      "id": "RUN-06545",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-ui-r2/verify_life_agreement.py.log",
+      "bytes": 1187,
+      "sha256": "aa0832693f5a607caee47b41448fe7be77f86c3fe545794f9fb40b1fa234591f"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/trap-udp-window-r1",
+      "path": "local/evidence-manifests/4d2cd3e6828ca2c4ec742fd63e01101b2e305045ad2bee9d7a859ad4379c7ddf.jsonl",
+      "sha256": "4d2cd3e6828ca2c4ec742fd63e01101b2e305045ad2bee9d7a859ad4379c7ddf",
+      "bytes": 308535,
+      "count": 1555,
+      "files_bytes": 130164904
+    },
+    {
+      "run": "local/research/codex/trap-udp-preroll-r2",
+      "path": "local/evidence-manifests/92084e2a1c3d5994ff9246a49a2d6d50d502d91fdfbb1b8f63e7a6c41fdc864e.jsonl",
+      "sha256": "92084e2a1c3d5994ff9246a49a2d6d50d502d91fdfbb1b8f63e7a6c41fdc864e",
+      "bytes": 309899,
+      "count": 1554,
+      "files_bytes": 131586416
+    },
+    {
+      "run": "local/research/codex/trap-udp-current-replay-r3",
+      "path": "local/evidence-manifests/5c8697c49dfb438d632023e312db7a4f09a33215584979d842e3fc68147da9ea.jsonl",
+      "sha256": "5c8697c49dfb438d632023e312db7a4f09a33215584979d842e3fc68147da9ea",
+      "bytes": 320987,
+      "count": 1555,
+      "files_bytes": 129323155
+    },
+    {
+      "run": "local/research/codex/trap-udp-counter-r4",
+      "path": "local/evidence-manifests/6fb701e68d15fe3b451db71dd0bd841410d90417fa921250ad7d6488fe9ec66a.jsonl",
+      "sha256": "6fb701e68d15fe3b451db71dd0bd841410d90417fa921250ad7d6488fe9ec66a",
+      "bytes": 183643,
+      "count": 922,
+      "files_bytes": 100206921
+    },
+    {
+      "run": "local/research/codex/trap-udp-counter-gap-r5",
+      "path": "local/evidence-manifests/a5eaf944bd5d6be6f2fd4b8f631a9a763369ad8f0cd720c912810e9d333b5ba4.jsonl",
+      "sha256": "a5eaf944bd5d6be6f2fd4b8f631a9a763369ad8f0cd720c912810e9d333b5ba4",
+      "bytes": 187674,
+      "count": 923,
+      "files_bytes": 102104323
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/834604393e284f4a4ed26c490223316cb8d3ba1b1e54f7d6bb2b1d3b511c3c93.jsonl",
+      "sha256": "834604393e284f4a4ed26c490223316cb8d3ba1b1e54f7d6bb2b1d3b511c3c93",
+      "bytes": 2757,
+      "count": 15,
+      "files_bytes": 444506
+    },
+    {
+      "run": "local/research/codex/direct-contest-host-ui-r2",
+      "path": "local/evidence-manifests/16036192ccbf4c9a4630745d549107d7043b350879cf56dece5232326f890ee1.jsonl",
+      "sha256": "16036192ccbf4c9a4630745d549107d7043b350879cf56dece5232326f890ee1",
+      "bytes": 478,
+      "count": 2,
+      "files_bytes": 510
     }
   ]
 }

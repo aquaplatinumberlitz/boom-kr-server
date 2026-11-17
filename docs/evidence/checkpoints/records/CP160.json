@@ -146,15 +146,6 @@
       "limits": "Mechanical checker notsemanticgate; fullcheckpointlocal/history beforecommit. OldCP157failure preserved."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP160-exported-preset-audit.json",
-      "bytes": 381299,
-      "sha256": "3b22733d15c88c5490bc73b91d5b5f3ff3e4d64ba4c385a213af2a847a64b02a",
-      "count": 1498
-    }
-  ],
   "delta": {
     "added": [
       "Actualcommittedpreset/profilepath nativeproduction2normaloutcomes/Ready→Start3/clocks/render8s.",
@@ -254,6 +245,272 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP160presetactualStart3/AUD048/authoritycurrentlinks/PR230merge/titlemismatchnext/cleanupandclaimcountanalysislimits syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/actor-fields.json",
+      "bytes": 1537972,
+      "sha256": "eebd9d451c1da92f1d48f5f37554e98064f2646fd1ca104f45954f8c2e0c77c6"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/analysis-corrections.json",
+      "bytes": 630,
+      "sha256": "4d131f882a16abe11b9a71566835650fb37f4c23b5d867c92c43dbeb0c93b540"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/capture-claim-verification.json",
+      "bytes": 1858,
+      "sha256": "6c8d8aaaf086c124c337b7fc64bf33d355d202334b022dead93eb372ccca66b3"
+    },
+    {
+      "id": "RUN-00015",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/cp160-snapshot/docs/PLAN.md",
+      "bytes": 33647,
+      "sha256": "31571c7e85edb07714ce00e3b98f65807627711c841a550b1383d26d1819d150"
+    },
+    {
+      "id": "RUN-00016",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/cp160-snapshot/docs/PROTOCOL.md",
+      "bytes": 479822,
+      "sha256": "6ddec8d1c1111fbd34c25f9e81ac00607784cf689c266599967b6bb76e03f971"
+    },
+    {
+      "id": "RUN-00018",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/cp160-snapshot/docs/evidence/checkpoints/audits/AUD048.json",
+      "bytes": 5874,
+      "sha256": "889b2ac28a594e8b7305735e716f00cb9f3276bd504d7088f58f275a595785cb"
+    },
+    {
+      "id": "RUN-00024",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/cycle-boundary-verification.json",
+      "bytes": 2519,
+      "sha256": "d9dddb9d8a37cefc828f80284887ad651ec8ab6a7fc0fd7b11a9a064b1ae836c"
+    },
+    {
+      "id": "RUN-01340",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "0148fbf9ac930e3f8c37133ae0f98a6aaa2160d8816a367e9886da990ab902a4"
+    },
+    {
+      "id": "RUN-01341",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/endpoint-peer-verification.json",
+      "bytes": 208657,
+      "sha256": "b63c8aa709f5cf2a3c197cda42f3cf4df5e44fbe517f7ea4232f61d62c26d284"
+    },
+    {
+      "id": "RUN-01342",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/exported-runtime-verification.json",
+      "bytes": 1647,
+      "sha256": "55a06184cf25b610cafea40042d247155a51a91b76c54f48e73a97eacc1b88ab"
+    },
+    {
+      "id": "RUN-01343",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/flag-reader-verification.json",
+      "bytes": 1680355,
+      "sha256": "b35213245e5467ad1fc590c7d323533825e41807a45dbf8d55caeb62abff3d07"
+    },
+    {
+      "id": "RUN-01352",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/hot-gate-verification.json",
+      "bytes": 7798,
+      "sha256": "fd97c4524a13307ba0988a1ff072b774ef8354dbb8c31a6f740342128d8a4110"
+    },
+    {
+      "id": "RUN-01355",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "f074c66bda765618c389d1f954caac5fba32fa1a351d4033c554093b5af99efa"
+    },
+    {
+      "id": "RUN-01358",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/life-agreement-verification.json",
+      "bytes": 6824,
+      "sha256": "e1a8d5356bf7901efd0119651942afa02932e2e35bccd06058d90bba54a95c48"
+    },
+    {
+      "id": "RUN-01359",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "621ed26e458f68edea1512a259b5481b1fdffbe768f35536273c6a081133c5e2"
+    },
+    {
+      "id": "RUN-01361",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/native-exit-packets.json",
+      "bytes": 134917,
+      "sha256": "8d870e08f4edcbb3b41469592bbcc3bc5607905dfc0670db08a7886dff5102cc"
+    },
+    {
+      "id": "RUN-01368",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "1dbf8470357aa94405b65b23dd81a07d78cfb2d7a9a5b90ed7378a07406d7c3f"
+    },
+    {
+      "id": "RUN-01369",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/production-pickup-verification.json",
+      "bytes": 1032,
+      "sha256": "cc63e347e27eaa034f7d89c97e62a3a8749f20de8c63c0c6695919776858a531"
+    },
+    {
+      "id": "RUN-01371",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/raw-seal.json",
+      "bytes": 270933,
+      "sha256": "f798b5a32f7047a17fd00ec856526a47304d89c1b7a923e0e90871dcf5aae70f"
+    },
+    {
+      "id": "RUN-01413",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/room-title-native-verification.json",
+      "bytes": 2079,
+      "sha256": "c7bc548c750674dd66cd83d2a2b4d71ab97e4c47e6678976c5afe0c25cd590a9"
+    },
+    {
+      "id": "RUN-01414",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/room-title-observation.json",
+      "bytes": 1336,
+      "sha256": "b369f8641fe822054747dd8de3260e3720cb364809bbc0157178afe151bf2be0"
+    },
+    {
+      "id": "RUN-01415",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/runtime-preflight.json",
+      "bytes": 19287,
+      "sha256": "896760a64d4e18ffcbff126aab8dc468be318805aa5b1f3be2d9b2e02cb48768"
+    },
+    {
+      "id": "RUN-01457",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/server-source-reuse.json",
+      "bytes": 6904,
+      "sha256": "9cd4a398be9462374073205c06f775827ca982f0bb9291c69d3c85fd51552bcd"
+    },
+    {
+      "id": "RUN-01463",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/verify_exported_runtime-initial.py",
+      "bytes": 4547,
+      "sha256": "1cd04c8926f11c61d644565d0b64719dcbdc8d7b40dfab5df3b4c85608220842"
+    },
+    {
+      "id": "RUN-01475",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/verify_production_pickup-inherited.py",
+      "bytes": 3893,
+      "sha256": "4e60f5f4c6fb7987c8e9d69847392e236d6f71224d61285573a749d253bb6b72"
+    },
+    {
+      "id": "RUN-01477",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/verify_production_pickup.py.log",
+      "bytes": 1342,
+      "sha256": "8344c340f46e1de5d78f52e9c839f6fd34e79b5a39def495be2acfded07ef963"
+    },
+    {
+      "id": "RUN-01481",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/visual-review.json",
+      "bytes": 1552,
+      "sha256": "bde0192fd5a844d80b7ecae076607a28179db9ffbb66854e2ac4f28acaa7ec08"
+    },
+    {
+      "id": "RUN-01482",
+      "kind": "local",
+      "path": "local/research/codex/exported-preset-smoke-r1/world-reset-verification.json",
+      "bytes": 963,
+      "sha256": "bff6c7fd40f29e295983da18a773e671c5f4095ca339c5a6f86e7c5176d35a4d"
+    },
+    {
+      "id": "RUN-01494",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/create81-native-fields.json",
+      "bytes": 622,
+      "sha256": "e34639d334725e73aeca3ac9ac29f3c7d77b2f3371b681515d6f585ed8648fa1"
+    },
+    {
+      "id": "RUN-01495",
+      "kind": "local",
+      "path": "local/research/codex/back86-membership-r1/native_packets.py",
+      "bytes": 5693,
+      "sha256": "955472a6fb577956122147435b4604f96c8ba61167b742e1d1824256c52115b3"
+    },
+    {
+      "id": "RUN-01496",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/native_fields.py",
+      "bytes": 4663,
+      "sha256": "b1b202aadfe4c502829d854f6ea16ae970facbf5dc3abf5009c14ded4fdb1206"
+    },
+    {
+      "id": "RUN-01497",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-ui-r2/life-boundary-observation.json",
+      "bytes": 8511,
+      "sha256": "ecce926a807c3dd1abab8a4580d4ce6b2c5c9e98cc0c30dcb678a7cc207879af"
+    },
+    {
+      "id": "RUN-01498",
+      "kind": "local",
+      "path": "local/research/codex/trap-udp-counter-gap-r5/counter-control-verification.json",
+      "bytes": 17495,
+      "sha256": "e50389908737d3755fdbb7ec7412065120da2cbf517e7929e47c24a060c84c15"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/exported-preset-smoke-r1",
+      "path": "local/evidence-manifests/90f0d75c4baf9228ffbf6238ac975019a17ffa5b3cf8be4cf7ace6324c8ba84e.jsonl",
+      "sha256": "90f0d75c4baf9228ffbf6238ac975019a17ffa5b3cf8be4cf7ace6324c8ba84e",
+      "bytes": 297798,
+      "count": 1455,
+      "files_bytes": 122482529
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/697156ecc74d8187695eddcf07be824fe3e8bcae81f8fb6567a7576fe385de3a.jsonl",
+      "sha256": "697156ecc74d8187695eddcf07be824fe3e8bcae81f8fb6567a7576fe385de3a",
+      "bytes": 1302,
+      "count": 7,
+      "files_bytes": 113862
+    },
+    {
+      "run": "local/research/codex/production-baseline-r1",
+      "path": "local/evidence-manifests/c95dbf7126ac396e25ff2af7bf2a8fd2d225dfc77ac8afd224e3089bf593c6f4.jsonl",
+      "sha256": "c95dbf7126ac396e25ff2af7bf2a8fd2d225dfc77ac8afd224e3089bf593c6f4",
+      "bytes": 469,
+      "count": 2,
+      "files_bytes": 510
     }
   ]
 }

@@ -140,15 +140,6 @@
       "limits": "Fullserver237 reused not rerun; semantic/manual audit separate, checkpoint fullhistory/local check beforecommit."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP156-host-EOF-acceptance.json",
-      "bytes": 640985,
-      "sha256": "b6aab737fd768d5f30d392dd3b5d92ba47b80531bf65881b3846dc1057ca3968",
-      "count": 2502
-    }
-  ],
   "delta": {
     "added": [
       "Actual current direct pending host EOF/B native cleanup/promotion after two normal contested cycles.",
@@ -246,6 +237,273 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP156 hostEOF/partial/acceptance/AUD047/PR226merge/export implementation/current UI integration next; synced before complete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-01010",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r1/partial-observation.json",
+      "bytes": 689,
+      "sha256": "223eb4d946d3311c5fca489c337b0ece62746e914ac77b763607a47f17a8f60f"
+    },
+    {
+      "id": "RUN-01012",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r1/raw-seal.json",
+      "bytes": 206249,
+      "sha256": "d12b4056c6c382a372f58a9fd85ceb8db66968dfbb08a113ef9bcaeee90e62b1"
+    },
+    {
+      "id": "RUN-01071",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/actor-fields.json",
+      "bytes": 1736468,
+      "sha256": "754f4c6ed87ba004c2456610ebbfcfca4e002778f5e20458b0632e4810e747d3"
+    },
+    {
+      "id": "RUN-01074",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-01078",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/contest-verification.json",
+      "bytes": 3169,
+      "sha256": "21299e952b2b56172eb3187eee007a3f5303caf45815113010735d24972971fc"
+    },
+    {
+      "id": "RUN-01082",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/cp156-snapshot/docs/PROTOCOL.md",
+      "bytes": 465829,
+      "sha256": "ccbb6dfe036f20af322459241e4179cd88e1281a971f7be44be7258668a0c37b"
+    },
+    {
+      "id": "RUN-01089",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/cycle-boundary-verification.json",
+      "bytes": 2504,
+      "sha256": "d87c40c56e2c914495131192bdf04158b63f1e57a675e9982eb83bb630a2eace"
+    },
+    {
+      "id": "RUN-02387",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/direct-eof-verification.json",
+      "bytes": 1593,
+      "sha256": "12662eb9370537b22c4fc8e6104aa63761458060ff845b5e2db5506ee8f392f9"
+    },
+    {
+      "id": "RUN-02388",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "f1dbb993466d3ce07316e7dc9b7dca6cc415bc0549f2c653b01f36ede575ba9c"
+    },
+    {
+      "id": "RUN-02389",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/endpoint-peer-verification.json",
+      "bytes": 181585,
+      "sha256": "772eb1a980559e260d7bed91b1fbe77181e1bc2df194fa6f4c896a84e35052b1"
+    },
+    {
+      "id": "RUN-02390",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/exact-old-verification.json",
+      "bytes": 20375,
+      "sha256": "dce6525bd1f929528a5ed96adb37af516090ef6afc2f21bfb0d79aff1d4e64d9"
+    },
+    {
+      "id": "RUN-02392",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/export-tests.txt",
+      "bytes": 100,
+      "sha256": "20e1f38a959c3ad8fac03671d7c55eccd9e71f7e7cd225e3b10babb3f5a32d23"
+    },
+    {
+      "id": "RUN-02393",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/export-validation.json",
+      "bytes": 1894,
+      "sha256": "33cd703442913803298626e9da01177a2479ade019df7f94594c25c9bba2f369"
+    },
+    {
+      "id": "RUN-02395",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/final-tool-source/tools/export_probe_profile.py",
+      "bytes": 6815,
+      "sha256": "44f24f970b9dfb68fee98fa6ba987dac74646367611eb28f2e9a0eecefda6914"
+    },
+    {
+      "id": "RUN-02396",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/final-tool-source/tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "RUN-02397",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/flag-reader-verification.json",
+      "bytes": 1691331,
+      "sha256": "42087344754894da9be229158f2e920f2f59f4926623a1cf8f66cbd609e8f5e3"
+    },
+    {
+      "id": "RUN-02407",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/host-policy-tests.txt",
+      "bytes": 123,
+      "sha256": "bfffb1d40679de2506a9846159e550bba2373c83cd4c1c81e017c22976bc2d2b"
+    },
+    {
+      "id": "RUN-02408",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/hot-gate-verification.json",
+      "bytes": 7800,
+      "sha256": "cc8c62b5b44ef26f45f201c5fe23016c27f630d4c7fa222d7708b1b513a8d538"
+    },
+    {
+      "id": "RUN-02411",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "46410d17f8261861855d20950fae9146c477c1feceaa8931020cf1ae6acc7d85"
+    },
+    {
+      "id": "RUN-02414",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/life-agreement-verification.json",
+      "bytes": 6820,
+      "sha256": "a652d6a76ab22a61ff919cf0460e9ae251e05a485cd13d48db81580b33214642"
+    },
+    {
+      "id": "RUN-02415",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "00f0a94bc6a55ec9baa77078b1596faeb006275f4978e1772f6750af33c42da6"
+    },
+    {
+      "id": "RUN-02416",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/loading-milestones.json",
+      "bytes": 28669,
+      "sha256": "9f8ab4cf7abadb8dfe483ef4c04fae96eedbd16b3cb97f2baef550804c139c00"
+    },
+    {
+      "id": "RUN-02417",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/native-getters.json",
+      "bytes": 681,
+      "sha256": "d9503db6a2b4179b19886c78de25e1976f5a0b31a9683628ee5f6859f83730d3"
+    },
+    {
+      "id": "RUN-02421",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "d1baf7c894f3a8713a676983ae2138f57362d32bd8ee7c7668c63e9872bf002b"
+    },
+    {
+      "id": "RUN-02423",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/raw-seal.json",
+      "bytes": 269848,
+      "sha256": "1afeb81bb86c7d9bd4ea2e05e38f5b97a6835858e2fe9ebd9dac3414e5bfed09"
+    },
+    {
+      "id": "RUN-02424",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/reuse-question.json",
+      "bytes": 2375,
+      "sha256": "6647efd899711be782c7b47465aec5ecbd4dcede1fb88595208fc3a044962ce6"
+    },
+    {
+      "id": "RUN-02425",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/runtime-preflight.json",
+      "bytes": 19280,
+      "sha256": "66ba86cb97cf5d00d141bacfec8a748378567b1650bcf2086b6339234d99950b"
+    },
+    {
+      "id": "RUN-02469",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/server-source-reuse.json",
+      "bytes": 7169,
+      "sha256": "d8358259bac94f9e9490630d377141eac09e52d4d78fa6c8fc6e49066ff0135a"
+    },
+    {
+      "id": "RUN-02483",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/visual-review.json",
+      "bytes": 1116,
+      "sha256": "1c21858f2269b84058aaa8b47067e752f2f190fc72859918ef71475c92228101"
+    },
+    {
+      "id": "RUN-02484",
+      "kind": "local",
+      "path": "local/research/codex/direct-contest-host-eof-r2/world-reset-verification.json",
+      "bytes": 940,
+      "sha256": "dc7651236f11a2aea60e0dc19d029a3afa1340c07300efe7fe48d51e84a04ef2"
+    },
+    {
+      "id": "RUN-02485",
+      "kind": "local",
+      "path": "local/research/codex/k6a-acceptance-audit-r1/initial-read.json",
+      "bytes": 3248,
+      "sha256": "2d5a6cb0f4d13dbd2ab1c610ca6049b4c9b7e513b1d48abf7d28745a1e9d53da"
+    },
+    {
+      "id": "RUN-02486",
+      "kind": "local",
+      "path": "local/research/codex/k6a-acceptance-audit-r1/manual-criteria-read.json",
+      "bytes": 5346,
+      "sha256": "3f81d344605f3093f0918c5d6dc56b887028bc260a51f910d129c19a884ba67c"
+    },
+    {
+      "id": "RUN-02487",
+      "kind": "local",
+      "path": "local/research/codex/k6a-acceptance-audit-r1/normal-host-exit-gap.json",
+      "bytes": 1302,
+      "sha256": "664737cad485addc5fb901dcd6be48858819b0d2ee31b8f5c8347e2b2d9dfd0d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/direct-contest-host-eof-r1",
+      "path": "local/evidence-manifests/5411b1d6416feb68ff2f212107cad1cd1890ef8886bbb5bee10fca97036b052e.jsonl",
+      "sha256": "5411b1d6416feb68ff2f212107cad1cd1890ef8886bbb5bee10fca97036b052e",
+      "bytes": 220618,
+      "count": 1070,
+      "files_bytes": 107247672
+    },
+    {
+      "run": "local/research/codex/direct-contest-host-eof-r2",
+      "path": "local/evidence-manifests/f14a3e703c7e9df3963b11f9330855c6efb6dbc5d7726281a635173aeb5a08fb.jsonl",
+      "sha256": "f14a3e703c7e9df3963b11f9330855c6efb6dbc5d7726281a635173aeb5a08fb",
+      "bytes": 286608,
+      "count": 1388,
+      "files_bytes": 121929235
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/94cc753e328c9a4def016fad9530a07d241287b7b021225a1dcd0ff32fc79fc5.jsonl",
+      "sha256": "94cc753e328c9a4def016fad9530a07d241287b7b021225a1dcd0ff32fc79fc5",
+      "bytes": 1659,
+      "count": 9,
+      "files_bytes": 202973
+    },
+    {
+      "run": "local/research/codex/direct-contest-oldudp-eof-r2",
+      "path": "local/evidence-manifests/139864db5ee455f041241a1bf18f66455f1daf56b34dfafd906d70da9d3f77bc.jsonl",
+      "sha256": "139864db5ee455f041241a1bf18f66455f1daf56b34dfafd906d70da9d3f77bc",
+      "bytes": 487,
+      "count": 2,
+      "files_bytes": 530
     }
   ]
 }

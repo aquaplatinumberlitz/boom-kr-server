@@ -166,15 +166,6 @@
       "limits": "NextactivePLANtask; oldroom/load/startproof reused but not silently upgraded to final291integration."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP186-k3-scoped-acceptance.json",
-      "bytes": 162631,
-      "sha256": "8d3e9de843a4fc34f66b38578b31078eaf8d52ec6f7b5216e4171e29ea57b55c",
-      "count": 621
-    }
-  ],
   "delta": {
     "added": [
       "Namedchannelcache coldroute/warm/native row/name policy, actualbootstrapinvalid+ordinarymismatch errorpropagation, 8native-valid AF_UNIX negative/positive cases.",
@@ -272,6 +263,181 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP186 nativecontrols/coldroute/nameguard/limits/manualK3scope andnextK4 syncedbeforecomplete; AUD055/nextCP188 unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "K3SCOPE-00002",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "K3SCOPE-00047",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-cold-r1/raw-seal.json",
+      "bytes": 18290,
+      "sha256": "e97ad7f30d832394f2a41dcae55c4f887d11dc9bd596a9340e229fc24b1d684d"
+    },
+    {
+      "id": "K3SCOPE-00101",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-row-byte-reuse.json",
+      "bytes": 687,
+      "sha256": "ba83bcd617434c276b2a2aa892f471584c0082551d2c6e0797960a52d5f57c5a"
+    },
+    {
+      "id": "K3SCOPE-00139",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/raw-seal.json",
+      "bytes": 18073,
+      "sha256": "28c4dcb7bc69dac98dc2547020927826d4b277954264ad8e7792517824958e24"
+    },
+    {
+      "id": "K3SCOPE-00165",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/channel-warm-r1/verification.json",
+      "bytes": 2074,
+      "sha256": "a493caa455b0f901dbd745358c96cf274dd541727c230a9bc9a05e20677e6f64"
+    },
+    {
+      "id": "K3SCOPE-00198",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/PLAN.md",
+      "bytes": 48121,
+      "sha256": "4ec765c260a0cd5cbad04dbbcab9504e0a279f2b486ff494f0f18ce56e9f9ba7"
+    },
+    {
+      "id": "K3SCOPE-00203",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/cp186-snapshot/docs/evidence/lobby-identity/k3-acceptance.json",
+      "bytes": 4447,
+      "sha256": "3714dff9a404718ddf8afe54ea4c99ddd96ad5e719b2e040be28d563ce329db4"
+    },
+    {
+      "id": "K3SCOPE-00222",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/server-tests.txt",
+      "bytes": 394,
+      "sha256": "81d544ba2b6277b6eb75a9ed4de496c709ee1a811c37777183b3b53825d92fc6"
+    },
+    {
+      "id": "K3SCOPE-00229",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/verification.json",
+      "bytes": 151849,
+      "sha256": "37560569b86b99eb47d4af081b53abd0ea9b2e8515e113d666d1b7b768767d95"
+    },
+    {
+      "id": "K3SCOPE-00280",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r1/verification.json",
+      "bytes": 1058,
+      "sha256": "d3c6daa0615c7b0ab1e3c0b670dcb843ce0cd06c5a56f68cf92620945567ab1c"
+    },
+    {
+      "id": "K3SCOPE-00325",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-invalid-r2/raw-seal.json",
+      "bytes": 13198,
+      "sha256": "f0024743b847218e9206fce43d6a5c1ba7e0039ee32a4146c61f903f3cfb8c63"
+    },
+    {
+      "id": "K3SCOPE-00394",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r1/raw-seal.json",
+      "bytes": 13214,
+      "sha256": "623c3271278e1c9cf62546c9f68d7326eb62df547036507c756be200494d7619"
+    },
+    {
+      "id": "K3SCOPE-00465",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r2/verification.json",
+      "bytes": 1940,
+      "sha256": "39efc58b03fc794d265ad9b2803d2a02860e1abd7d3647e402b13a2306da299e"
+    },
+    {
+      "id": "K3SCOPE-00505",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/version-mismatch-r3/raw-seal.json",
+      "bytes": 13213,
+      "sha256": "37ce72ab74fc97d5fc7484d5b77aecd072b5d63ea5f0bf0c4031ce3b4e12a8c1"
+    },
+    {
+      "id": "K3SCOPE-00558",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r1/failure.json",
+      "bytes": 548,
+      "sha256": "406da9f94f7625a134b630d98a4b2eb61f4aecd7f0ce4cc4e8fd7060051234a1"
+    },
+    {
+      "id": "K3SCOPE-00566",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r2/failure.json",
+      "bytes": 365,
+      "sha256": "ffe3d1f38e8de50228b23368cf0cd4079ae562c3723f84ec8d3027ba264c0c52"
+    },
+    {
+      "id": "K3SCOPE-00586",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/raw-seal.json",
+      "bytes": 6132,
+      "sha256": "f2e6c239a1aa8742160e10e4eae657b24f4620e6d56068b7853b7b0c4e14a66b"
+    },
+    {
+      "id": "K3SCOPE-00605",
+      "kind": "local",
+      "path": "local/research/codex/k3-channel-version-r1/wire-guards-r3/verification.json",
+      "bytes": 15501,
+      "sha256": "c910f982ceea2b48b2da3eedd37e313c94649669b0ca8f0690ce166adb2a5935"
+    },
+    {
+      "id": "K3SCOPE-00619",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "K3SCOPE-00620",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 109744,
+      "sha256": "12362a460ade30fbd48f14dd8bada6a3126e330c8058b71dc7bee5d63e2d9584"
+    },
+    {
+      "id": "K3SCOPE-00621",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/k3-channel-version-r1",
+      "path": "local/evidence-manifests/deee55b472ac47acb31bfdaec46b586ae4dfda61fc2723aec88634a3147d0d47.jsonl",
+      "sha256": "deee55b472ac47acb31bfdaec46b586ae4dfda61fc2723aec88634a3147d0d47",
+      "bytes": 125832,
+      "count": 592,
+      "files_bytes": 11713688
+    },
+    {
+      "run": "local/research/codex/room-input-r1",
+      "path": "local/evidence-manifests/d6bfb15d666a1ba146aa68495dda5c4dd25c5f1b15204d8e7d42d3701c88e7b3.jsonl",
+      "sha256": "d6bfb15d666a1ba146aa68495dda5c4dd25c5f1b15204d8e7d42d3701c88e7b3",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 13409
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/85bf97b45c6ac988d7a6df9ecddce6b52a05ca770adb597804a0c4571530e33c.jsonl",
+      "sha256": "85bf97b45c6ac988d7a6df9ecddce6b52a05ca770adb597804a0c4571530e33c",
+      "bytes": 1179,
+      "count": 6,
+      "files_bytes": 106732
     }
   ]
 }

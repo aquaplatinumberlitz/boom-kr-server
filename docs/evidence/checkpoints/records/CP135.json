@@ -121,14 +121,6 @@
       "limits": "Policy regression and measurable consistency, not native semantics or gate certification."
     }
   ],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP135-loading-timeout.json",
-      "bytes": 431926,
-      "sha256": "776ca09288b35b2c5d1d198a525dc4eec49144ad1a36135a82e81268619e2ab2",
-      "count": 1725
-    }
-  ],
   "delta": {
     "added": [
       "Connected service barrier control and optional pinned-channel deadline with native survivor recovery."
@@ -214,5 +206,166 @@
       "reason": "CP135 scoped control/fixed deadline native recovery, new policy contract/limits, positive next step and issue/catalog navigation synced before completion."
     }
   ],
-  "evidence": []
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/control-check.txt",
+      "bytes": 601,
+      "sha256": "7ca5e87ad82d609cf2b3b89ac3f51acb75277386a55a611be601ed3c39ee98a0"
+    },
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/control-verification.json",
+      "bytes": 76243,
+      "sha256": "c5a16f9768ea8cb7676c75e78c521e25eede9551a87a77afbfd10138ccf5adc2"
+    },
+    {
+      "id": "RUN-00776",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/cycles/run.json",
+      "bytes": 59300,
+      "sha256": "5e87eaa428cb52c0c992dde8c43e1cb57483cb7245a5e8a91ffac3d3738b7e07"
+    },
+    {
+      "id": "RUN-00792",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/native-packet-check.txt",
+      "bytes": 28,
+      "sha256": "0b741cc3c21fe143bda101d6ce6bc2b3b43c2bf5a28ca1856658ec654f4a3233"
+    },
+    {
+      "id": "RUN-00797",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/raw-seal.json",
+      "bytes": 159699,
+      "sha256": "42e33d136a5d7d34b079b70369f61731aaac751319339c2ab04b0efb16b7fd33"
+    },
+    {
+      "id": "RUN-00845",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/server-tests.txt",
+      "bytes": 326,
+      "sha256": "f28b95e479069101d2aec9e3c4074164e368ada7e65cef0671c89402aab651a0"
+    },
+    {
+      "id": "RUN-00846",
+      "kind": "local",
+      "path": "local/research/codex/connected-load-stall-r1/tcp-live-observations.jsonl",
+      "bytes": 44090,
+      "sha256": "b56ffd0a6fcc0c724ca9ddb13d532967b15b8ecc8955529045e93629bb987232"
+    },
+    {
+      "id": "RUN-00849",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-01632",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/cycles/client.log",
+      "bytes": 20020,
+      "sha256": "422825c7a05e6bffd87c7200fb4572e83467b0628d078c151aa75bbaf6fc8cc0"
+    },
+    {
+      "id": "RUN-01649",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "c66c7cccdc22c862ed277f638a44a8cbba60a145eafba85dc48ef7deb8ea824e"
+    },
+    {
+      "id": "RUN-01650",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/fixed-check.txt",
+      "bytes": 583,
+      "sha256": "2053a2cfbeb122d4b609cc4167c8389a62f9544424173fbbb3399a4335857cb7"
+    },
+    {
+      "id": "RUN-01651",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/fixed-verification.json",
+      "bytes": 69789,
+      "sha256": "c90d1e7a370c46750b56aa4c6d877009f9983218692f14af86f169bde80ab625"
+    },
+    {
+      "id": "RUN-01658",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "63d958660caaece1f7c7a8efc085f75b462f20288a1494c2c1afd389bfd135cf"
+    },
+    {
+      "id": "RUN-01662",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/native-packet-check.txt",
+      "bytes": 28,
+      "sha256": "3b6f3c640c0324d2e0c92702fb074c9a3436070f3c34b6a5e6bb5ae802051694"
+    },
+    {
+      "id": "RUN-01667",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/raw-seal.json",
+      "bytes": 156969,
+      "sha256": "711b3261e75fdf9e08f58725a6c63663f9f28cecd78b90b4230fcd36d031d0c2"
+    },
+    {
+      "id": "RUN-01682",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/runtime-source/server/probe_service.py",
+      "bytes": 87456,
+      "sha256": "6e3f386cb58faf8edf18e84f0f8b6b9dd27021f874149f602bb401bf759a5a43"
+    },
+    {
+      "id": "RUN-01700",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/runtime-source/server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "RUN-01719",
+      "kind": "local",
+      "path": "local/research/codex/loading-timeout-r1/visual-review.json",
+      "bytes": 1631,
+      "sha256": "305329777edad84798a2f21aa234d4825a0ad92ad1426b71a8900e0804eb37a2"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/connected-load-stall-r1",
+      "path": "local/evidence-manifests/afabdd33aca35e5d5be31e4b7d741043b126199509c41b7a5ca56979d4b4d173.jsonl",
+      "sha256": "afabdd33aca35e5d5be31e4b7d741043b126199509c41b7a5ca56979d4b4d173",
+      "bytes": 170547,
+      "count": 840,
+      "files_bytes": 33737045
+    },
+    {
+      "run": "local/research/codex/loading-timeout-r1",
+      "path": "local/evidence-manifests/32b6b5f018e51a95d993e0e8188cfd2a872c4ceaa1c799e514674748b020e9cd.jsonl",
+      "sha256": "32b6b5f018e51a95d993e0e8188cfd2a872c4ceaa1c799e514674748b020e9cd",
+      "bytes": 170581,
+      "count": 861,
+      "files_bytes": 33013177
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/839e97fcdaa203f99ad4ae59a7b71251986b99a93532f1d707cfebcafc4e7fe0.jsonl",
+      "sha256": "839e97fcdaa203f99ad4ae59a7b71251986b99a93532f1d707cfebcafc4e7fe0",
+      "bytes": 800,
+      "count": 4,
+      "files_bytes": 107923
+    },
+    {
+      "run": "local/research/codex/shared-cascade-cycles-r1",
+      "path": "local/evidence-manifests/94eb06fa9412d223ad1e7f27eaa261c5336cb5dbe3a259d579d682264721dc69.jsonl",
+      "sha256": "94eb06fa9412d223ad1e7f27eaa261c5336cb5dbe3a259d579d682264721dc69",
+      "bytes": 475,
+      "count": 2,
+      "files_bytes": 577
+    }
+  ]
 }

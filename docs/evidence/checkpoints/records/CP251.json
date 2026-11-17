@@ -166,15 +166,6 @@
       "limits": "PLANindependentnative9next; FreepreRoomblocked; M5backendexists/nativebridge separate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP251-rust-eight-teams.json",
-      "bytes": 468389,
-      "sha256": "f6fbbfc6facb1ed170687a4ad0f9fd0c418057cf94d1b9a32632139a98a20f63",
-      "count": 1725
-    }
-  ],
   "delta": {
     "added": [
       "Fixed8layout1v7/Rustsharedteamfields-rank/currentguard/71tests35TCP8prebind32fourTCP.",
@@ -300,6 +291,323 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "CP251fixed1v7code-TCP/nativeMannernegative8d/FreepreRoomblocker/native9independentnext/PythonPR322/AUD071next252/scopedlimits."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST251-00001",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/eight-teams.json",
+      "bytes": 3379,
+      "sha256": "8b4c826682176ea0f52db22ee5c0c864af01013a4a06970c739f5b52ed97dd6a"
+    },
+    {
+      "id": "RUST251-00005",
+      "kind": "local",
+      "path": "local/research/codex/cp251-docs-final.txt",
+      "bytes": 251,
+      "sha256": "be0730c6b9cb9558c712bf8f523532f499d5d58b33b814dc6888d6e48857e89d"
+    },
+    {
+      "id": "RUST251-00067",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-config-guards-r2/verification.json",
+      "bytes": 2437,
+      "sha256": "cc7a98b8ac629b9d783a2a0e2fb0d7d49a3fc616548b50cbabec21372d65d8cf"
+    },
+    {
+      "id": "RUST251-00431",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-free-guard-r2/native-eight/raw-seal.json",
+      "bytes": 15435,
+      "sha256": "ba6e5ff308d92ddae4d4037e57db4bcff1eb33a6a6eb007a59b9316dfdabc887"
+    },
+    {
+      "id": "RUST251-00799",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-free-r1/native-eight/raw-seal.json",
+      "bytes": 14811,
+      "sha256": "377e896c97234577ef97818eeaa7d4bd324a4e492b4113b9dd8d872b7ddb38ae"
+    },
+    {
+      "id": "RUST251-01000",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-kernel-free-r2/tcp/verification.json",
+      "bytes": 21340,
+      "sha256": "b1f720ec2440f3721728a4a32238dbd43cbf5c9f83af27006e6dbfc129a4fc5f"
+    },
+    {
+      "id": "RUST251-01094",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-kernel-manner-r2/tcp/verification.json",
+      "bytes": 21510,
+      "sha256": "241b36f1a45241d42ba510a2c1015cf7768991eaaa28bd979d850e291b8d0dba"
+    },
+    {
+      "id": "RUST251-01188",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-kernel-negative-r2/tcp/verification.json",
+      "bytes": 20997,
+      "sha256": "4accec0a2b08fbdf54b25b5fa22ceaac135e5c14c70f8c3a92513d87e3d2435c"
+    },
+    {
+      "id": "RUST251-01575",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-manner-negative-r1/native-eight/raw-seal.json",
+      "bytes": 21341,
+      "sha256": "c4bfef0896d8c52d9d9802689692d0c03ab6d1925a25e93664ef94841287a18d"
+    },
+    {
+      "id": "RUST251-01579",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-manner-negative-r1/negative-controls.json",
+      "bytes": 854,
+      "sha256": "1cd90ad4677ee3d55e81e7f59a36f9b12335fa69f68680bdd9d5a470668ee25a"
+    },
+    {
+      "id": "RUST251-01580",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-teams-manner-negative-r1/negative-verification.json",
+      "bytes": 141771,
+      "sha256": "38e652ef1a5afc13c14aa6ffae73848e893be0beb3e25f6ae1476708ae96c7e5"
+    },
+    {
+      "id": "RUST251-01593",
+      "kind": "local",
+      "path": "local/research/codex/rust-team-free-kernel-r1.txt",
+      "bytes": 414,
+      "sha256": "b8d95717a0c73e54be2b6232f3164ab23e45bb4f553556a4569e2b6b29eb05e8"
+    },
+    {
+      "id": "RUST251-01602",
+      "kind": "local",
+      "path": "local/research/codex/rust-team-profile-guards-r1.txt",
+      "bytes": 499,
+      "sha256": "9525ded8cca3e39b38ab1e12eb8bc244ca015fe38a6a1f955abfc9458813f71a"
+    },
+    {
+      "id": "RUST251-01604",
+      "kind": "local",
+      "path": "local/research/codex/rust-team-rank-oracles.json",
+      "bytes": 844,
+      "sha256": "5af536cef069b60acef86d892ef52068994d879af9c7f452eb8adbca0cb43541"
+    },
+    {
+      "id": "RUST251-01605",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-build-r1.txt",
+      "bytes": 166,
+      "sha256": "c70db290d349f389ba73ec3973bf74f34f00538bae10c7bc29ba5c0fb25fdd40"
+    },
+    {
+      "id": "RUST251-01606",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-clippy-r1.txt",
+      "bytes": 166,
+      "sha256": "f1301b7ab8cff0dc8762b3c2ffec1eeccc7c93ed123979c6d39e74663040fe3d"
+    },
+    {
+      "id": "RUST251-01607",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-delivery-r1/manual-acceptance.json",
+      "bytes": 3047,
+      "sha256": "9d07a95a57ed54f4c5fae1445da36e58953ce080fed0e08a14c9fdb0a3d35cf4"
+    },
+    {
+      "id": "RUST251-01610",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-delivery-r1/snapshot/docs/PLAN.md",
+      "bytes": 99517,
+      "sha256": "b23a471cf16f9ef6c25b2f32bcfc116c910b1c1619690392a4aa830bb4ae0a3c"
+    },
+    {
+      "id": "RUST251-01619",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-delivery-r1/snapshot/rust/crates/kr-service/src/four_results.rs",
+      "bytes": 10708,
+      "sha256": "9cc9d325a1e8c70ac559f865b55bcfd477f3c569e53e5776d0a40c686fe82971"
+    },
+    {
+      "id": "RUST251-01621",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-delivery-r1/snapshot/rust/crates/kr-service/src/room.rs",
+      "bytes": 26538,
+      "sha256": "f2dbcf7ee9b801650738b73619fb9db5e75fd55c7caf8847592209d777b0112c"
+    },
+    {
+      "id": "RUST251-01622",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 94646,
+      "sha256": "d575820814d7481e0f61189cc773a020c32fb71c7fb6d3629154b3af560ade01"
+    },
+    {
+      "id": "RUST251-01623",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-delivery-r1/snapshot/rust/crates/kr-service/src/room_wire.rs",
+      "bytes": 11852,
+      "sha256": "c8e1ebaf60e112629978fc71f31c5af3680d4118c96c9d35eebf70b8be7901cd"
+    },
+    {
+      "id": "RUST251-01709",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-four-regression-r1/verification.json",
+      "bytes": 18877,
+      "sha256": "871643b54dd0970fa49850d7791a22a5cdda7989e012ad84ba5914fa81abc7ea"
+    },
+    {
+      "id": "RUST251-01710",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-source-r1/harness-failure-r1.json",
+      "bytes": 595,
+      "sha256": "cdf01f89916ced5f2be85843125104d8e215a303f7dd40989811d6c7565a521a"
+    },
+    {
+      "id": "RUST251-01711",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-source-r1/native-free-guard-r2-failure.json",
+      "bytes": 762,
+      "sha256": "f527c2d231812f599e02c07d68b8e7b46ed1a1cd1bf11eaf47a14ffd7370db04"
+    },
+    {
+      "id": "RUST251-01712",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-source-r1/native-free-r1-failure.json",
+      "bytes": 651,
+      "sha256": "6efdf8840db9a318b45e01e83d3b4d3fe29f72cb98dfa9ae9ed6ab2d8656a6a2"
+    },
+    {
+      "id": "RUST251-01713",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-source-r1/reuse.json",
+      "bytes": 2999,
+      "sha256": "284fc86e19a5c052a2b6fe3f34405bb572a23df5a3e76097fd97e251ba7d79c0"
+    },
+    {
+      "id": "RUST251-01714",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-source-r1/udp-supervision-control.json",
+      "bytes": 450,
+      "sha256": "d6e8989e321c02aabcd92369c207810423fe69e171f45ea1a988fc404e2d9509"
+    },
+    {
+      "id": "RUST251-01715",
+      "kind": "local",
+      "path": "local/research/codex/rust-teams-tests-r1.txt",
+      "bytes": 8253,
+      "sha256": "75e6bfce3ddc7ce621e66d2eee087eee98b60b7b6661f38db3281114b9d555db"
+    },
+    {
+      "id": "RUST251-01724",
+      "kind": "repository",
+      "path": "tools/export_rust_profile.py",
+      "bytes": 24468,
+      "sha256": "78c0f9ba7ddfb0d3aa1460c76781fa596c6655e4654b82ce950e707a809c69f1"
+    },
+    {
+      "id": "RUST251-01725",
+      "kind": "repository",
+      "path": "tools/test_rust_eight_room.py",
+      "bytes": 11908,
+      "sha256": "638147b2fcaf01efc97aae1d8e4dda35ca98689fd0f20e3d307ed7288aa5c226"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a5bf76353c6f9f93fbc0ce7355548105a1e2ed93ea53c7236ce158a6bb89a66d.jsonl",
+      "sha256": "a5bf76353c6f9f93fbc0ce7355548105a1e2ed93ea53c7236ce158a6bb89a66d",
+      "bytes": 8276,
+      "count": 44,
+      "files_bytes": 333726
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-config-guards-r1",
+      "path": "local/evidence-manifests/9b02e659d5ff732374b2afd7701c45567b66d37dae0bfc89311bc02f081a5eb6.jsonl",
+      "sha256": "9b02e659d5ff732374b2afd7701c45567b66d37dae0bfc89311bc02f081a5eb6",
+      "bytes": 3324,
+      "count": 15,
+      "files_bytes": 181049
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-config-guards-r2",
+      "path": "local/evidence-manifests/526340585dd628445f0e6b3e9129a2e6b62b48f991ea8621f6ced9a2d04f77ea.jsonl",
+      "sha256": "526340585dd628445f0e6b3e9129a2e6b62b48f991ea8621f6ced9a2d04f77ea",
+      "bytes": 5254,
+      "count": 24,
+      "files_bytes": 282962
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-free-guard-r2",
+      "path": "local/evidence-manifests/17d7461668474a6983f546b6f6be79d8762f019e52b3e4b7ce06b401497e8c3e.jsonl",
+      "sha256": "17d7461668474a6983f546b6f6be79d8762f019e52b3e4b7ce06b401497e8c3e",
+      "bytes": 83641,
+      "count": 376,
+      "files_bytes": 735408229
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-free-r1",
+      "path": "local/evidence-manifests/486824b760bfc735d1d1e717011b03c3180c5307c0c929424fcfa29f501ab505.jsonl",
+      "sha256": "486824b760bfc735d1d1e717011b03c3180c5307c0c929424fcfa29f501ab505",
+      "bytes": 79234,
+      "count": 367,
+      "files_bytes": 480214910
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-kernel-free-r1",
+      "path": "local/evidence-manifests/605d122a6857e24cbbed1173b1a43c5649b359f8a1b8686f9a755aa27854ef86.jsonl",
+      "sha256": "605d122a6857e24cbbed1173b1a43c5649b359f8a1b8686f9a755aa27854ef86",
+      "bytes": 21120,
+      "count": 94,
+      "files_bytes": 45734753
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-kernel-free-r2",
+      "path": "local/evidence-manifests/0a58146bec1376140461c1072463a08fd1a42cf77be6dd5027702caf999ac13c.jsonl",
+      "sha256": "0a58146bec1376140461c1072463a08fd1a42cf77be6dd5027702caf999ac13c",
+      "bytes": 20908,
+      "count": 93,
+      "files_bytes": 45973536
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-kernel-manner-r2",
+      "path": "local/evidence-manifests/efed421760f4eed020c3cad9c79ebc83fd8984fa65de581ac7cc56b067772f5d.jsonl",
+      "sha256": "efed421760f4eed020c3cad9c79ebc83fd8984fa65de581ac7cc56b067772f5d",
+      "bytes": 21086,
+      "count": 93,
+      "files_bytes": 45973796
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-kernel-negative-r2",
+      "path": "local/evidence-manifests/e60f8b8f0cfb6b9a51e60746a4a30cef768e8141486f6a1aadeb9d77d843dbbd.jsonl",
+      "sha256": "e60f8b8f0cfb6b9a51e60746a4a30cef768e8141486f6a1aadeb9d77d843dbbd",
+      "bytes": 21283,
+      "count": 93,
+      "files_bytes": 45785926
+    },
+    {
+      "run": "local/research/codex/rust-eight-teams-manner-negative-r1",
+      "path": "local/evidence-manifests/f1964a827b6be9472291f8d2f58bdc8fd6f169482e939e45ed1983d7bcbc67fa.jsonl",
+      "sha256": "f1964a827b6be9472291f8d2f58bdc8fd6f169482e939e45ed1983d7bcbc67fa",
+      "bytes": 91140,
+      "count": 399,
+      "files_bytes": 740107622
+    },
+    {
+      "run": "local/research/codex/rust-teams-delivery-r1",
+      "path": "local/evidence-manifests/4c1773827df299d833ec389deb36a183eda23433aadc32f82e4e207999794a5d.jsonl",
+      "sha256": "4c1773827df299d833ec389deb36a183eda23433aadc32f82e4e207999794a5d",
+      "bytes": 3136,
+      "count": 14,
+      "files_bytes": 1842349
+    },
+    {
+      "run": "local/research/codex/rust-teams-four-regression-r1",
+      "path": "local/evidence-manifests/b6d524c7fa4d287d8523b1336ec845dbed8966ff904aac4aab98e87ce975bf12.jsonl",
+      "sha256": "b6d524c7fa4d287d8523b1336ec845dbed8966ff904aac4aab98e87ce975bf12",
+      "bytes": 18486,
+      "count": 82,
+      "files_bytes": 45772322
     }
   ]
 }

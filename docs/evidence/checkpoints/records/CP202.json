@@ -131,15 +131,6 @@
       "limits": "Normal2v2milestonenotgateclosure; nextdeadowner118guardthenremainingPLAN."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP202-four-two-team-cycles.json",
-      "bytes": 424587,
-      "sha256": "b24d6dfcdad400af4db7936d6f5526a08914ff4eea3528ecc3da4562a613af08",
-      "count": 1697
-    }
-  ],
   "delta": {
     "added": [
       "Samefouractualnormal2v2oppositeoutcomes/native175fourrows/180/reset/Ready2Start2/Start3.",
@@ -230,6 +221,998 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP202sourcefirst/current4normal2v2resultreset/observerlimits/remaininghardening synchronizedbeforecomplete; audit204unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "TEAM202-00007",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "TEAM202-00016",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "TEAM202-00021",
+      "kind": "local",
+      "path": "local/research/codex/cp201-pr-merged.json",
+      "bytes": 123,
+      "sha256": "c872a42530f52599056348581026a178686cc09838c8139bcae3af28b1db0316"
+    },
+    {
+      "id": "TEAM202-00028",
+      "kind": "local",
+      "path": "local/research/codex/cp202-artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "TEAM202-00029",
+      "kind": "local",
+      "path": "local/research/codex/cp202-docs-check.txt",
+      "bytes": 175,
+      "sha256": "a88fb6275228f59b8da15f0809c4c663afc27e80b76b2d36111e99b6ede3ad86"
+    },
+    {
+      "id": "TEAM202-00032",
+      "kind": "local",
+      "path": "local/research/codex/cp202-issue14-updated.json",
+      "bytes": 16064,
+      "sha256": "56e410d90a4f5d42fd4e5fb4be7d8195233762c03ac54a950aedf13065bdb4b4"
+    },
+    {
+      "id": "TEAM202-00039",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/bundle-tests.txt",
+      "bytes": 9511,
+      "sha256": "318b40d74a3bcf9d5303f3ab47050f03d2c1101eaff42611f7b904c1ae82c854"
+    },
+    {
+      "id": "TEAM202-00041",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "5d25436b821f90f5edf40a7de3f279f73d82f74224309082257ad90a66348213"
+    },
+    {
+      "id": "TEAM202-00044",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/cp202-snapshot/docs/PLAN.md",
+      "bytes": 56268,
+      "sha256": "c3f190272d6dd9ac456039d892410abb45c1b985519e6aeab25216f4df541672"
+    },
+    {
+      "id": "TEAM202-00130",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/cycles/A/four-rank-r2.png",
+      "bytes": 168477,
+      "sha256": "957a50e8d584dd09345da0abda462aafd11039aed10ead0ab22b2d90ec7ea6dc"
+    },
+    {
+      "id": "TEAM202-00469",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/cycles/B/four-rank-r1.png",
+      "bytes": 168187,
+      "sha256": "eb3f69706731a00c34cbf07088c285534ae69aeaf3bf039299c9f03793cc3b32"
+    },
+    {
+      "id": "TEAM202-01238",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/cycles/service-state.json",
+      "bytes": 369153,
+      "sha256": "00dccc0f4e5243253d593e20c299a30622b6fa32908a04641fba65d04722d021"
+    },
+    {
+      "id": "TEAM202-01253",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/gdb_bombs.py",
+      "bytes": 1832,
+      "sha256": "a7f4564fa9558962c4a4913c9d5d55c08774725882923765b445c8e4aa746222"
+    },
+    {
+      "id": "TEAM202-01255",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/gdb_life_rank.py",
+      "bytes": 2266,
+      "sha256": "26e5206fc0077d91ff666e63a28a815cdc3d105219819d5fdf34df038abf76c2"
+    },
+    {
+      "id": "TEAM202-01262",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/getter-verification.json",
+      "bytes": 379,
+      "sha256": "b9fe8d4a11cc74417aeff3c705c4d4a493df83b205de422f3b3e763fd6e9eedf"
+    },
+    {
+      "id": "TEAM202-01265",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/native-reports.json",
+      "bytes": 9504,
+      "sha256": "217ace8fd91f71dd21715101d5e85fa924e90b95d745ffb4cbf44ec69ebdb8fd"
+    },
+    {
+      "id": "TEAM202-01266",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/native_rank4.py",
+      "bytes": 2391,
+      "sha256": "b848fd01731562fabc5d022323c287e6146e6305eb9fa31344dfd57418d23e27"
+    },
+    {
+      "id": "TEAM202-01276",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/rank4-native-records.json",
+      "bytes": 26567,
+      "sha256": "5f255fe4e88efeb103a3d72a682d679a23c8b2222bf404817e4558c223ec23fa"
+    },
+    {
+      "id": "TEAM202-01277",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/raw-seal.json",
+      "bytes": 238829,
+      "sha256": "34e138eba4232163f2989d6608cf63e90566b64a9278552a82709884cf8d43d4"
+    },
+    {
+      "id": "TEAM202-01278",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/real-tcp-r1-metadata-failed.log",
+      "bytes": 288,
+      "sha256": "78fc87a114a165129e60ef0f44a6c79aeffedb3b46f4803f2eff21092fa642c8"
+    },
+    {
+      "id": "TEAM202-01279",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/real-tcp-verification.json",
+      "bytes": 803,
+      "sha256": "e9ff07d6a3b49c122ac52cdb59f2f2bce76a60a0fd452b2eb496325e77ef5f4a"
+    },
+    {
+      "id": "TEAM202-01375",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/server-tests.txt",
+      "bytes": 423,
+      "sha256": "51e9274e41e643be8089eaedb9384ac317edaf62913f4e3e33edb5ad6875c244"
+    },
+    {
+      "id": "TEAM202-01376",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/service-pre-metadata-fix.py",
+      "bytes": 27849,
+      "sha256": "86181fbb5b13fdc5a9675aea1e475c69d805a4cb9bd28c005e4033140bbb5d8a"
+    },
+    {
+      "id": "TEAM202-01377",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/source-first.json",
+      "bytes": 3784,
+      "sha256": "ba52286117772c88ede6bc8321466954f1d52880b5f1b0aca8455e12dff42eb8"
+    },
+    {
+      "id": "TEAM202-01569",
+      "kind": "local",
+      "path": "local/research/codex/four-life-rank-r1/verification.json",
+      "bytes": 109042,
+      "sha256": "5afbdb482bbab769b6f7635e80422180c27451bf0e29ce1b14dcfdf4a067d938"
+    },
+    {
+      "id": "TEAM202-01572",
+      "kind": "local",
+      "path": "local/research/codex/four-owner-bombs-r1/raw-seal.json",
+      "bytes": 130610,
+      "sha256": "5e7b0459766ebef7e0ae38b4f1ff41b581da0f02673b8670e1f8a595e633c172"
+    },
+    {
+      "id": "TEAM202-01579",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "TEAM202-01582",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "TEAM202-01592",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "TEAM202-01593",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "TEAM202-01594",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "TEAM202-01603",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "TEAM202-01605",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "TEAM202-01607",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "TEAM202-01608",
+      "kind": "repository",
+      "path": "server/four_battle_policy.py",
+      "bytes": 5868,
+      "sha256": "47149ea6362640f2179b05401554cbef7a837c9443115938265804dd9ee41142"
+    },
+    {
+      "id": "TEAM202-01609",
+      "kind": "repository",
+      "path": "server/four_bomb_policy.py",
+      "bytes": 3690,
+      "sha256": "0688e4a0cdd410b04f98ab22fb7948f71beb4f3c2cfa0bab31ef86e3077e6b19"
+    },
+    {
+      "id": "TEAM202-01610",
+      "kind": "repository",
+      "path": "server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "TEAM202-01611",
+      "kind": "repository",
+      "path": "server/four_player_service.py",
+      "bytes": 27876,
+      "sha256": "3ce97becb89ff74c432506d1a7679bef1aec3a65b34b70c4888077a329cd79c5"
+    },
+    {
+      "id": "TEAM202-01612",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "TEAM202-01613",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "TEAM202-01614",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "TEAM202-01615",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "TEAM202-01616",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "TEAM202-01617",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "TEAM202-01618",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "TEAM202-01619",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "TEAM202-01620",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "TEAM202-01621",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "TEAM202-01622",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "TEAM202-01623",
+      "kind": "repository",
+      "path": "server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "TEAM202-01624",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "TEAM202-01625",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "TEAM202-01626",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "TEAM202-01627",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "TEAM202-01628",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "TEAM202-01629",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "TEAM202-01630",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "TEAM202-01631",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "TEAM202-01632",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "TEAM202-01633",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "TEAM202-01634",
+      "kind": "repository",
+      "path": "server/test_four_battle_policy.py",
+      "bytes": 4627,
+      "sha256": "ffc60236e8c9cdbb14f3bdf173af7ce1b5b2a469c52befb9250d72e061552ff6"
+    },
+    {
+      "id": "TEAM202-01635",
+      "kind": "repository",
+      "path": "server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "TEAM202-01636",
+      "kind": "repository",
+      "path": "server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "TEAM202-01637",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "TEAM202-01638",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "TEAM202-01639",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "TEAM202-01640",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "TEAM202-01641",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "TEAM202-01642",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "TEAM202-01643",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "TEAM202-01644",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "TEAM202-01645",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "TEAM202-01646",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "TEAM202-01647",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "TEAM202-01648",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "TEAM202-01649",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "TEAM202-01650",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "TEAM202-01651",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "TEAM202-01652",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "TEAM202-01653",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "TEAM202-01654",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "TEAM202-01655",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "TEAM202-01656",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "TEAM202-01657",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "TEAM202-01658",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "TEAM202-01659",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "TEAM202-01660",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "TEAM202-01661",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "TEAM202-01662",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "TEAM202-01663",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "TEAM202-01664",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "TEAM202-01665",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "TEAM202-01666",
+      "kind": "repository",
+      "path": "tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "TEAM202-01667",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "TEAM202-01668",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "TEAM202-01669",
+      "kind": "repository",
+      "path": "tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "TEAM202-01670",
+      "kind": "repository",
+      "path": "tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "TEAM202-01671",
+      "kind": "repository",
+      "path": "tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "TEAM202-01672",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "TEAM202-01673",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 9863,
+      "sha256": "20d90106996dd866af4d3d0fe5824812bb63c6e4f376f6013eb55e9ea67adcb3"
+    },
+    {
+      "id": "TEAM202-01674",
+      "kind": "repository",
+      "path": "tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "TEAM202-01675",
+      "kind": "repository",
+      "path": "tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "TEAM202-01676",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "TEAM202-01677",
+      "kind": "repository",
+      "path": "tools/probe_bundle.py",
+      "bytes": 5536,
+      "sha256": "a4b03a71afb418bc76b328486c32fa25a464996b0b991ac98b9e3c24487e56be"
+    },
+    {
+      "id": "TEAM202-01678",
+      "kind": "repository",
+      "path": "tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "TEAM202-01679",
+      "kind": "repository",
+      "path": "tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "TEAM202-01680",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "TEAM202-01681",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "TEAM202-01682",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "TEAM202-01683",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "TEAM202-01684",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "TEAM202-01685",
+      "kind": "repository",
+      "path": "tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "TEAM202-01686",
+      "kind": "repository",
+      "path": "tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "TEAM202-01687",
+      "kind": "repository",
+      "path": "tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "TEAM202-01688",
+      "kind": "repository",
+      "path": "tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "TEAM202-01689",
+      "kind": "repository",
+      "path": "tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "TEAM202-01690",
+      "kind": "repository",
+      "path": "tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "TEAM202-01691",
+      "kind": "repository",
+      "path": "tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "TEAM202-01692",
+      "kind": "repository",
+      "path": "tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "TEAM202-01693",
+      "kind": "repository",
+      "path": "tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "TEAM202-01694",
+      "kind": "repository",
+      "path": "tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "TEAM202-01695",
+      "kind": "repository",
+      "path": "tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "TEAM202-01696",
+      "kind": "repository",
+      "path": "tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "TEAM202-01697",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/297b3cc33c2ad8b0fc0edf44c6b95c6b424e283ae0d834a452e61b14609b6444.jsonl",
+      "sha256": "297b3cc33c2ad8b0fc0edf44c6b95c6b424e283ae0d834a452e61b14609b6444",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/99a76921e9b3abcea899559390633b4e6a923d72bf16c636dff631f2c0b449e0.jsonl",
+      "sha256": "99a76921e9b3abcea899559390633b4e6a923d72bf16c636dff631f2c0b449e0",
+      "bytes": 3528,
+      "count": 19,
+      "files_bytes": 6267441
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/9c04e162ba72a96a254f396d2fcc203236d5e4e46d7c0051f0c7c443ae88271a.jsonl",
+      "sha256": "9c04e162ba72a96a254f396d2fcc203236d5e4e46d7c0051f0c7c443ae88271a",
+      "bytes": 645,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/50c4d571ffd8f45d318a7d40996b59bd1b8fc3edb8af3376233a2d6af82a0f42.jsonl",
+      "sha256": "50c4d571ffd8f45d318a7d40996b59bd1b8fc3edb8af3376233a2d6af82a0f42",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/af0fb2f0abccb9211da4c01083fc1fa23abab21c40230c08696d1064d4d7d843.jsonl",
+      "sha256": "af0fb2f0abccb9211da4c01083fc1fa23abab21c40230c08696d1064d4d7d843",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/ca7c5bbda70975de5dabc14944e3872e37a53f092525ec1cbf777d6c6a52528b.jsonl",
+      "sha256": "ca7c5bbda70975de5dabc14944e3872e37a53f092525ec1cbf777d6c6a52528b",
+      "bytes": 463,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/c8b539496e334cda0956d5f220ee79deea2c8bbf4a6a8324afd953743c623a7a.jsonl",
+      "sha256": "c8b539496e334cda0956d5f220ee79deea2c8bbf4a6a8324afd953743c623a7a",
+      "bytes": 1021,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/four-life-rank-r1",
+      "path": "local/evidence-manifests/8f1141523c9a0154eba5197fa674acfc337634c9f2bf5f7dd65ce0e5e0cf9b62.jsonl",
+      "sha256": "8f1141523c9a0154eba5197fa674acfc337634c9f2bf5f7dd65ce0e5e0cf9b62",
+      "bytes": 307022,
+      "count": 1515,
+      "files_bytes": 63341233
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/ea73a535d7a56b18d672639d7a4280df2b8eade9fe3492dcda1fa8372d36fbe5.jsonl",
+      "sha256": "ea73a535d7a56b18d672639d7a4280df2b8eade9fe3492dcda1fa8372d36fbe5",
+      "bytes": 932,
+      "count": 4,
+      "files_bytes": 127498240
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/8a8a2abecaeaca50f0e17415b1f47566eb6e9b5ccc68d6e39e9c9e733f7111c1.jsonl",
+      "sha256": "8a8a2abecaeaca50f0e17415b1f47566eb6e9b5ccc68d6e39e9c9e733f7111c1",
+      "bytes": 436,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/c02a4b26bc97a84dda975d96a0e729876c1b8c97a5db8d94c626afb140191bfd.jsonl",
+      "sha256": "c02a4b26bc97a84dda975d96a0e729876c1b8c97a5db8d94c626afb140191bfd",
+      "bytes": 445,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/2ae7fda4ab62a433423c523fcd7b17aa5beca8f21321f82986f1319e85c114ba.jsonl",
+      "sha256": "2ae7fda4ab62a433423c523fcd7b17aa5beca8f21321f82986f1319e85c114ba",
+      "bytes": 644,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/02ea87a5134e2b2da78c51ab04dbddc55d93c2a3f86d8bb74aad5fe14b8753e7.jsonl",
+      "sha256": "02ea87a5134e2b2da78c51ab04dbddc55d93c2a3f86d8bb74aad5fe14b8753e7",
+      "bytes": 986,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/0759759755239c9c241c19b107b166bcad197e0f2b48f1b3b90cba1fd2314bf1.jsonl",
+      "sha256": "0759759755239c9c241c19b107b166bcad197e0f2b48f1b3b90cba1fd2314bf1",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/ec8a5ab5636bbd64f410acd787d4f929dcdfea88046316878a336baa730b71cf.jsonl",
+      "sha256": "ec8a5ab5636bbd64f410acd787d4f929dcdfea88046316878a336baa730b71cf",
+      "bytes": 853,
+      "count": 4,
+      "files_bytes": 3851
     }
   ]
 }

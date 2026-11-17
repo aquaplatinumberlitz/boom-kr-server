@@ -143,15 +143,6 @@
       "limits": "Serverfencealoneisnotclientrecovery; nextguestDpendingEOF/180107/UIroom, noABrankclone/normalwin."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP204-four-transport-bounds.json",
-      "bytes": 686889,
-      "sha256": "d39de924c97406331e13b99f32d1de7b08c7429a7af48ddfefe7591fb94182d9",
-      "count": 2602
-    }
-  ],
   "delta": {
     "added": [
       "Recipient-safe3ownerentrypoints/partialreportreject/currentfence/default2sactualkernelqueue/oneBfollowup/actualD-C170CRCreads.",
@@ -248,6 +239,1044 @@
       "path": "docs/evidence/checkpoints/audits/AUD060.json",
       "state": "updated",
       "reason": "CP204recipient/budget/nativepositive/actualpartialTCP/manualAUD060stalesyncbeforecomplete; next3survivorEOF, audit208."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "BOUND204-00001",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD060.json",
+      "bytes": 6966,
+      "sha256": "8e8e43469e85d26363b19b69359dec069aea3c1e1b1e995a230472846a28a708"
+    },
+    {
+      "id": "BOUND204-00008",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "BOUND204-00015",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "BOUND204-00027",
+      "kind": "local",
+      "path": "local/research/codex/cp204-artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "BOUND204-00028",
+      "kind": "local",
+      "path": "local/research/codex/cp204-docs-check.txt",
+      "bytes": 175,
+      "sha256": "15ac2d19e905ce874fb40de407cc18b961f1fbd7885ffa0734f636c35852d5bb"
+    },
+    {
+      "id": "BOUND204-00031",
+      "kind": "local",
+      "path": "local/research/codex/cp204-issue14-updated.json",
+      "bytes": 20449,
+      "sha256": "f93a777ab66d4885375ece886baeb9a7ea0c7e4d8407a197676591a9a6becc93"
+    },
+    {
+      "id": "BOUND204-00422",
+      "kind": "local",
+      "path": "local/research/codex/four-backpressure-r3-before/verification.json",
+      "bytes": 853,
+      "sha256": "138f404ac34b2aef0fb5d572a2cd892a740c4de8e76f239644aa4b750283fb1c"
+    },
+    {
+      "id": "BOUND204-00557",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/bundle-tests.txt",
+      "bytes": 13026,
+      "sha256": "6a38c8a21d15e666a3e945572fc7c2d8f4f9d48b7898367d2f39ef57d96ba486"
+    },
+    {
+      "id": "BOUND204-00559",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "d85c1d8df827f8d4ed78c63244d607b37d2dbd1fc92dacd1b049e96ac1255a9b"
+    },
+    {
+      "id": "BOUND204-00562",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/cp204-snapshot/docs/PLAN.md",
+      "bytes": 57309,
+      "sha256": "ef95e063e61c0ccdf60d928e46e07b9a60924b95ceecc10c2aac0c8dd3c6c51a"
+    },
+    {
+      "id": "BOUND204-00649",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/cycles/A/four-rank-r2.png",
+      "bytes": 168668,
+      "sha256": "abe2c126e8c0f3b4cb66f083f4d13a350fba89aef31746d165db1912b3790b62"
+    },
+    {
+      "id": "BOUND204-00988",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/cycles/B/four-rank-r1.png",
+      "bytes": 168197,
+      "sha256": "ee54d4ce6a7bed598f9847b908621524c6dd75aed0dba42d4ba3ca19f68d049b"
+    },
+    {
+      "id": "BOUND204-01748",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/cycles/service-state.json",
+      "bytes": 374053,
+      "sha256": "2b4860391b547902bb327feae9dbef08247c9e36a6864b65a3a7ce3f058bc0a9"
+    },
+    {
+      "id": "BOUND204-01762",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/delivery-tcp-verification.json",
+      "bytes": 1211,
+      "sha256": "3ae897520043cd097f2ba218b7b05118e658f4b4054d7970585e964e461253f4"
+    },
+    {
+      "id": "BOUND204-01774",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/getter-verification.json",
+      "bytes": 379,
+      "sha256": "558acd9098e8bdad2329b0fc0c784cf4b1652bcfd075427c30aee026c1b6e172"
+    },
+    {
+      "id": "BOUND204-01980",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/guard-tcp-verification.json",
+      "bytes": 840,
+      "sha256": "32093c2322299b8630c7ee527d07c56e34f4345de609c4158f4987a396b2cfeb"
+    },
+    {
+      "id": "BOUND204-01986",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/raw-seal.json",
+      "bytes": 245360,
+      "sha256": "89cfc56b9106163791770e5753e06be97535a0f4f01051e8194faef9a62dcb43"
+    },
+    {
+      "id": "BOUND204-01987",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/relocated/service/bundle.json",
+      "bytes": 13025,
+      "sha256": "571ac1c45f682b281335671662f7f21c775cc3800c48f3582a36f04230c5ac59"
+    },
+    {
+      "id": "BOUND204-02150",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/server-tests.txt",
+      "bytes": 435,
+      "sha256": "fd38430614ca6a3adce4873f57b815cf76d72e00751c66b22ea510e77ade10e8"
+    },
+    {
+      "id": "BOUND204-02276",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/unlisted-source-before.json",
+      "bytes": 493,
+      "sha256": "62ef2cd05e60b99fc6be1a4fc492f5e4dbcb79220ce7da202d32060f89adf441"
+    },
+    {
+      "id": "BOUND204-02344",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-bounds-r1/verification.json",
+      "bytes": 114197,
+      "sha256": "7358ca0b5505e82e657762b1945ca69393e86444ed8a74ec5f2c5a06febc9f25"
+    },
+    {
+      "id": "BOUND204-02471",
+      "kind": "local",
+      "path": "local/research/codex/four-transport-partial-read-r1/verification.json",
+      "bytes": 1522,
+      "sha256": "112a3017480b7eca7ae2a7f9c7d7ed7d7b080158d005f94193b488ef3e763b9a"
+    },
+    {
+      "id": "BOUND204-02478",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "BOUND204-02481",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "BOUND204-02491",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "BOUND204-02492",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "BOUND204-02493",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "BOUND204-02500",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "BOUND204-02504",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "BOUND204-02506",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "BOUND204-02507",
+      "kind": "repository",
+      "path": "server/four_battle_policy.py",
+      "bytes": 5868,
+      "sha256": "47149ea6362640f2179b05401554cbef7a837c9443115938265804dd9ee41142"
+    },
+    {
+      "id": "BOUND204-02508",
+      "kind": "repository",
+      "path": "server/four_bomb_policy.py",
+      "bytes": 3690,
+      "sha256": "0688e4a0cdd410b04f98ab22fb7948f71beb4f3c2cfa0bab31ef86e3077e6b19"
+    },
+    {
+      "id": "BOUND204-02509",
+      "kind": "repository",
+      "path": "server/four_input_limits.py",
+      "bytes": 2900,
+      "sha256": "c1e90e924680d0106665d765c9d382124731929e7a4c084f691b96e40baa71e4"
+    },
+    {
+      "id": "BOUND204-02510",
+      "kind": "repository",
+      "path": "server/four_player_profile.py",
+      "bytes": 5978,
+      "sha256": "61690446f375fc71f5709f786c19d069a1ffe2f9dcd4491410dbc3e8d13cef11"
+    },
+    {
+      "id": "BOUND204-02511",
+      "kind": "repository",
+      "path": "server/four_player_service.py",
+      "bytes": 31559,
+      "sha256": "a64c90e2c1a7e1a8b43194deacda02b8093938864884b5f804ee60ae0420964a"
+    },
+    {
+      "id": "BOUND204-02512",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "BOUND204-02513",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "BOUND204-02514",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "BOUND204-02515",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "BOUND204-02516",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "BOUND204-02517",
+      "kind": "repository",
+      "path": "server/profiles/four-client-battle.json",
+      "bytes": 14357,
+      "sha256": "945b5677dc4e1c6e99604d78f7c1be49aa336dea93c54c7010c1c500980262c0"
+    },
+    {
+      "id": "BOUND204-02518",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "BOUND204-02519",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "BOUND204-02520",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "BOUND204-02521",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "BOUND204-02522",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "BOUND204-02523",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "BOUND204-02524",
+      "kind": "repository",
+      "path": "server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "BOUND204-02525",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "BOUND204-02526",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "BOUND204-02527",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "BOUND204-02528",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "BOUND204-02529",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "BOUND204-02530",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "BOUND204-02531",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "BOUND204-02532",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "BOUND204-02533",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "BOUND204-02534",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "BOUND204-02535",
+      "kind": "repository",
+      "path": "server/test_four_battle_policy.py",
+      "bytes": 4627,
+      "sha256": "ffc60236e8c9cdbb14f3bdf173af7ce1b5b2a469c52befb9250d72e061552ff6"
+    },
+    {
+      "id": "BOUND204-02536",
+      "kind": "repository",
+      "path": "server/test_four_bomb_policy.py",
+      "bytes": 6771,
+      "sha256": "88a7a17b394980589d9c8de2c16e3ab465878204a91ec919158d4c7dca951534"
+    },
+    {
+      "id": "BOUND204-02537",
+      "kind": "repository",
+      "path": "server/test_four_delivery.py",
+      "bytes": 3050,
+      "sha256": "41020e3376ca6c4f170e010f5d9ee3ea280f490dde39bae7342fc63259d5dbd4"
+    },
+    {
+      "id": "BOUND204-02538",
+      "kind": "repository",
+      "path": "server/test_four_input_guards.py",
+      "bytes": 2610,
+      "sha256": "8d669e8a08ec99faee7d02fa43afbf4e9a9585db374c8e54addc9380af7fce81"
+    },
+    {
+      "id": "BOUND204-02539",
+      "kind": "repository",
+      "path": "server/test_four_input_limits.py",
+      "bytes": 4946,
+      "sha256": "b7a6600f6721b26aa758e3a2ac345fba04f3385940c8cc9d5793e734f037aa03"
+    },
+    {
+      "id": "BOUND204-02540",
+      "kind": "repository",
+      "path": "server/test_four_player_service.py",
+      "bytes": 10154,
+      "sha256": "50faf857e110ad0a5b5b5f45d9d41429b8ccb73c6d880cfd766e7d8847126a6d"
+    },
+    {
+      "id": "BOUND204-02541",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "BOUND204-02542",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "BOUND204-02543",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "BOUND204-02544",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "BOUND204-02545",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "BOUND204-02546",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "BOUND204-02547",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "BOUND204-02548",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "BOUND204-02549",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "BOUND204-02550",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "BOUND204-02551",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "BOUND204-02552",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "BOUND204-02553",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "BOUND204-02554",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "BOUND204-02555",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "BOUND204-02556",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "BOUND204-02557",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "BOUND204-02558",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "BOUND204-02559",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "BOUND204-02560",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "BOUND204-02561",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "BOUND204-02562",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "BOUND204-02563",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "BOUND204-02564",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "BOUND204-02565",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "BOUND204-02566",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "BOUND204-02567",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "BOUND204-02568",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "BOUND204-02569",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "BOUND204-02570",
+      "kind": "repository",
+      "path": "tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "BOUND204-02571",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "BOUND204-02572",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "BOUND204-02573",
+      "kind": "repository",
+      "path": "tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "BOUND204-02574",
+      "kind": "repository",
+      "path": "tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "BOUND204-02575",
+      "kind": "repository",
+      "path": "tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "BOUND204-02576",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "BOUND204-02577",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 10120,
+      "sha256": "796cf2505471d2aeace2563dc5eddc79498ffe15c563a6ef3d716448c7644f0d"
+    },
+    {
+      "id": "BOUND204-02578",
+      "kind": "repository",
+      "path": "tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "BOUND204-02579",
+      "kind": "repository",
+      "path": "tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "BOUND204-02580",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "BOUND204-02581",
+      "kind": "repository",
+      "path": "tools/probe_bundle.py",
+      "bytes": 7224,
+      "sha256": "db47ae7090cf3a34a73ff4266aeed79b567977697548a058f04ff76f85e9ca24"
+    },
+    {
+      "id": "BOUND204-02582",
+      "kind": "repository",
+      "path": "tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "BOUND204-02583",
+      "kind": "repository",
+      "path": "tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "BOUND204-02584",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "BOUND204-02585",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "BOUND204-02586",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "BOUND204-02587",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "BOUND204-02588",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "BOUND204-02589",
+      "kind": "repository",
+      "path": "tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "BOUND204-02590",
+      "kind": "repository",
+      "path": "tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "BOUND204-02591",
+      "kind": "repository",
+      "path": "tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "BOUND204-02592",
+      "kind": "repository",
+      "path": "tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "BOUND204-02593",
+      "kind": "repository",
+      "path": "tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "BOUND204-02594",
+      "kind": "repository",
+      "path": "tools/test_four_bundle.py",
+      "bytes": 3856,
+      "sha256": "c95bb6de407d7998282d3a1b9381014f3ebc196bb3d04ca695e5188b5328a6cc"
+    },
+    {
+      "id": "BOUND204-02595",
+      "kind": "repository",
+      "path": "tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "BOUND204-02596",
+      "kind": "repository",
+      "path": "tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "BOUND204-02597",
+      "kind": "repository",
+      "path": "tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "BOUND204-02598",
+      "kind": "repository",
+      "path": "tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "BOUND204-02599",
+      "kind": "repository",
+      "path": "tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "BOUND204-02600",
+      "kind": "repository",
+      "path": "tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "BOUND204-02601",
+      "kind": "repository",
+      "path": "tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "BOUND204-02602",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/8ed8c93b391aef3810cdd5e2bdfedf6b0063b7066167e0543818bec04c239060.jsonl",
+      "sha256": "8ed8c93b391aef3810cdd5e2bdfedf6b0063b7066167e0543818bec04c239060",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/dc6e9be5c63a0d426ad77c6e18d8475d0c0f187e3d0dc0ee41321e7acabe1e32.jsonl",
+      "sha256": "dc6e9be5c63a0d426ad77c6e18d8475d0c0f187e3d0dc0ee41321e7acabe1e32",
+      "bytes": 3764,
+      "count": 20,
+      "files_bytes": 6348740
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/f23294f4b4380d4c26e41baf6713576ffaadb3a255ac8479b2058555a4010dfa.jsonl",
+      "sha256": "f23294f4b4380d4c26e41baf6713576ffaadb3a255ac8479b2058555a4010dfa",
+      "bytes": 648,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/f181099ea2be3bcd2efb099a293c8e3d84bb3e8b2c62484300445ca338b81794.jsonl",
+      "sha256": "f181099ea2be3bcd2efb099a293c8e3d84bb3e8b2c62484300445ca338b81794",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/e25f813520f38e93c7ab09bcb87e89b15f8a2b1a3c755d1cb65cea8da397109e.jsonl",
+      "sha256": "e25f813520f38e93c7ab09bcb87e89b15f8a2b1a3c755d1cb65cea8da397109e",
+      "bytes": 650,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/4d8d75e5d0ab04a80968932d85406ae9d9bda87c42535bc93103128ef2bfe407.jsonl",
+      "sha256": "4d8d75e5d0ab04a80968932d85406ae9d9bda87c42535bc93103128ef2bfe407",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/87cfa2031a344537e3849081d3c37b4b8475c4e79936aaf561f21dc8ef88cdfc.jsonl",
+      "sha256": "87cfa2031a344537e3849081d3c37b4b8475c4e79936aaf561f21dc8ef88cdfc",
+      "bytes": 1026,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/four-backpressure-r2",
+      "path": "local/evidence-manifests/65cf77c1e153543bc2822b0a180b8b107b5f6be1fe1751c8fc7ed889c0db80ee.jsonl",
+      "sha256": "65cf77c1e153543bc2822b0a180b8b107b5f6be1fe1751c8fc7ed889c0db80ee",
+      "bytes": 57600,
+      "count": 260,
+      "files_bytes": 321358
+    },
+    {
+      "run": "local/research/codex/four-backpressure-r3-before",
+      "path": "local/evidence-manifests/70d48b356b6c4b748c3ad2582e685ba4da693f298435b465d6e4f400406611eb.jsonl",
+      "sha256": "70d48b356b6c4b748c3ad2582e685ba4da693f298435b465d6e4f400406611eb",
+      "bytes": 27151,
+      "count": 125,
+      "files_bytes": 134352
+    },
+    {
+      "run": "local/research/codex/four-backpressure-r4-default",
+      "path": "local/evidence-manifests/b59a18a3e961c9d3d2148031a57c911e8fb934d3ebbb9ab0762ae85896be4a6e.jsonl",
+      "sha256": "b59a18a3e961c9d3d2148031a57c911e8fb934d3ebbb9ab0762ae85896be4a6e",
+      "bytes": 27688,
+      "count": 127,
+      "files_bytes": 140438
+    },
+    {
+      "run": "local/research/codex/four-transport-bounds-r1",
+      "path": "local/evidence-manifests/693611d54549b3a33e7e41588a9b05013e02649fb3198bd4e6d7b35b43e59004.jsonl",
+      "sha256": "693611d54549b3a33e7e41588a9b05013e02649fb3198bd4e6d7b35b43e59004",
+      "bytes": 384064,
+      "count": 1782,
+      "files_bytes": 64369931
+    },
+    {
+      "run": "local/research/codex/four-transport-partial-read-r1",
+      "path": "local/evidence-manifests/8c48015c632d0640479bff53dd1763dd30a3c4ec2c44fb2e6724bb6bd0d6fa5a.jsonl",
+      "sha256": "8c48015c632d0640479bff53dd1763dd30a3c4ec2c44fb2e6724bb6bd0d6fa5a",
+      "bytes": 27530,
+      "count": 125,
+      "files_bytes": 141913
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/6284ea0e361bfe8cf6842ad4f7f1336d6e09e42cd3e5fe09716fb2853a864cff.jsonl",
+      "sha256": "6284ea0e361bfe8cf6842ad4f7f1336d6e09e42cd3e5fe09716fb2853a864cff",
+      "bytes": 936,
+      "count": 4,
+      "files_bytes": 127498240
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/0f5a4f865c0ab6eecbd4ce0988c9e1a2b681748c95f2f093e42d90b9498300b4.jsonl",
+      "sha256": "0f5a4f865c0ab6eecbd4ce0988c9e1a2b681748c95f2f093e42d90b9498300b4",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/27a7161489b95f8e9ad29943dad57c7c9a01db111bca086e50b0009f9e207fb5.jsonl",
+      "sha256": "27a7161489b95f8e9ad29943dad57c7c9a01db111bca086e50b0009f9e207fb5",
+      "bytes": 447,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/cd3a5f1f96231219c60d93d75e7db435e44339eeeb8d740a09082ff1eb8f72ee.jsonl",
+      "sha256": "cd3a5f1f96231219c60d93d75e7db435e44339eeeb8d740a09082ff1eb8f72ee",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/c2cedeb2e7c0d51788c48743a056691cb8272f2b7df7d704bddc4b38a2128204.jsonl",
+      "sha256": "c2cedeb2e7c0d51788c48743a056691cb8272f2b7df7d704bddc4b38a2128204",
+      "bytes": 991,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/8e57800d7f73792c736b32ae10a14e750612247dc2d7777b6561a69a6ae73d28.jsonl",
+      "sha256": "8e57800d7f73792c736b32ae10a14e750612247dc2d7777b6561a69a6ae73d28",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/0eadd228e743ee049a904076cb9ddff5b3643bf30cf4409a1683d6244b3cfe40.jsonl",
+      "sha256": "0eadd228e743ee049a904076cb9ddff5b3643bf30cf4409a1683d6244b3cfe40",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

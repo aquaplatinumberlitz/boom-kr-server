@@ -151,15 +151,6 @@
       "limits": "Ownerauthorizednextbatch, noRustcode/acceptanceyetatrecord; proceedimmediately."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP230-shared-room-cleanup.json",
-      "bytes": 225354,
-      "sha256": "47cf5d48ed580d08cf46e7bbd232dc9d726042b9a73ec404673c8bfce3565284",
-      "count": 858
-    }
-  ],
   "delta": {
     "added": [
       "Native currentrecipient107/IDclear/110UI underguestBack/EOF/hostBack;3positive565raw/9routingpolicycases.",
@@ -289,6 +280,133 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP230sharedcleanup731raw/corrections/limits andowneropensRustM0→M1first/AGENTS-PLAN-architecture-issues synced beforecomplete;oldcomplete/AUD066immutable."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ROOM230-00027",
+      "kind": "local",
+      "path": "local/research/codex/cp230-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "ROOM230-00028",
+      "kind": "local",
+      "path": "local/research/codex/cp230-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "e860882e0a159ed6f680c30d0dcf22ccd42e73fe53c437c542f7cb5bfa57b40f"
+    },
+    {
+      "id": "ROOM230-00245",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r1/guest-back/ui-review.json",
+      "bytes": 842,
+      "sha256": "54174ea7fa3b167c1ef851c871476a310fb6e6e0396fa083ca7584d40aaeff88"
+    },
+    {
+      "id": "ROOM230-00246",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r1/guest-back/verification.json",
+      "bytes": 10840,
+      "sha256": "d0fd675a8341a85e733c874277c0008e0516f4314d214305ac68bb79eef9ca6a"
+    },
+    {
+      "id": "ROOM230-00248",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r1/guest-eof/controller-failure.json",
+      "bytes": 860,
+      "sha256": "dffd5c84d65f271622162cb2c1c3ecae1a95a2d64e2295ac02f934edcb695eb7"
+    },
+    {
+      "id": "ROOM230-00612",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r1/host-back/measurement-correction.json",
+      "bytes": 860,
+      "sha256": "67deeed7e41aa7fd671164f43978d45789161d38063ea4755de6976b4fa2aef2"
+    },
+    {
+      "id": "ROOM230-00616",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r1/host-back/ui-review.json",
+      "bytes": 810,
+      "sha256": "971af76e931a781c957046e41f3d570c7c1286f68a833d2e9217d5de2b7de831"
+    },
+    {
+      "id": "ROOM230-00617",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r1/host-back/verification.json",
+      "bytes": 10345,
+      "sha256": "c05b22c0fb46e704589551f9dc5765cff38032e4aaa3441ab645d053f19e3c3e"
+    },
+    {
+      "id": "ROOM230-00622",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r1/routing-model-verification.json",
+      "bytes": 815,
+      "sha256": "676f4369f76fb98dd6b6ba90b0879f8803771b373f11299ac1263dbe4f834861"
+    },
+    {
+      "id": "ROOM230-00821",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r2/guest-eof/ui-review.json",
+      "bytes": 527,
+      "sha256": "4d2d74039d76cb6df802ff8a3be4dfcf5d848b16da4c1f0982ff151a4b2a75b8"
+    },
+    {
+      "id": "ROOM230-00822",
+      "kind": "local",
+      "path": "local/research/codex/room-shared-cleanup-r2/guest-eof/verification.json",
+      "bytes": 10254,
+      "sha256": "eb5052d013f88dc0f13b95372e282711474fe429edb9b690f55d6439dbbdabfb"
+    },
+    {
+      "id": "ROOM230-00843",
+      "kind": "local",
+      "path": "local/research/codex/shared-cleanup-delivery-r1/cp230-snapshot/docs/evidence/owner-directives/rust-implementation.json",
+      "bytes": 1084,
+      "sha256": "7aada979a4e52b8750353ea104d4ac34d83548de7afe08615c9e0cc5f64de64a"
+    },
+    {
+      "id": "ROOM230-00847",
+      "kind": "local",
+      "path": "local/research/codex/shared-cleanup-delivery-r1/manual-review.json",
+      "bytes": 2898,
+      "sha256": "dfeaab19b170072d96228730674dafaed37bd9969799699f5427e3e01431d82c"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/316acf7b51c13a30634e84d2edfd039a748c6e42b5e0b71e49aca0fd0e2799bd.jsonl",
+      "sha256": "316acf7b51c13a30634e84d2edfd039a748c6e42b5e0b71e49aca0fd0e2799bd",
+      "bytes": 10848,
+      "count": 58,
+      "files_bytes": 21237099
+    },
+    {
+      "run": "local/research/codex/room-shared-cleanup-r1",
+      "path": "local/evidence-manifests/da1edae4eb488841cbe357ec82b9eacb1aa37a4bbea56abc13374fb61c81e952.jsonl",
+      "sha256": "da1edae4eb488841cbe357ec82b9eacb1aa37a4bbea56abc13374fb61c81e952",
+      "bytes": 122891,
+      "count": 572,
+      "files_bytes": 26773860
+    },
+    {
+      "run": "local/research/codex/room-shared-cleanup-r2",
+      "path": "local/evidence-manifests/75c1f42607a640dccf5e835d1f6431159b204fb514f8ccddc4640e24f92e43a0.jsonl",
+      "sha256": "75c1f42607a640dccf5e835d1f6431159b204fb514f8ccddc4640e24f92e43a0",
+      "bytes": 43461,
+      "count": 203,
+      "files_bytes": 8694257
+    },
+    {
+      "run": "local/research/codex/shared-cleanup-delivery-r1",
+      "path": "local/evidence-manifests/b57be8861dd76c1f81cac11ec88f616223db29d0fe7052c9765af34b52950164.jsonl",
+      "sha256": "b57be8861dd76c1f81cac11ec88f616223db29d0fe7052c9765af34b52950164",
+      "bytes": 2810,
+      "count": 12,
+      "files_bytes": 1665432
     }
   ]
 }

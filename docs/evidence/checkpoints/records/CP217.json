@@ -125,15 +125,6 @@
       "limits": "StillremaininginPLAN/RESEARCH; do notpromotegatefromprivateprototype."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP217-auth-admission-prototype.json",
-      "bytes": 114246,
-      "sha256": "677a14459bdba4e9128d984d01b2785e325b22ef65eebd42f91d64df52a03ab2",
-      "count": 419
-    }
-  ],
   "delta": {
     "added": [
       "Native32charconfigtoken andprivateREvalid/invalidcredential→channelleaseecho/admission vsnativeresult1/nochannel measured.",
@@ -231,6 +222,145 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP217privatepolicy/nativevalid-invalidinput/limits/model-vs-native/nextlease-negatives/backlinks syncedbeforecomplete; AUD063through216/next220 unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH217-00005",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/admission_policy.py",
+      "bytes": 6218,
+      "sha256": "b63664745f7b12a8bfe95400eacb86b97b90bc962a325f1afe793a72f9ad2625"
+    },
+    {
+      "id": "AUTH217-00006",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/admission_service.py",
+      "bytes": 4686,
+      "sha256": "151cb801c0bcff51e89b3e11cdc0ca42999b87e5a962733a752e51f937e32ad6"
+    },
+    {
+      "id": "AUTH217-00007",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/check-policy.py",
+      "bytes": 5697,
+      "sha256": "fd37e2e0b27342e827e0890858ae1d3e62552f1efdfc26325e3400e00aef1372"
+    },
+    {
+      "id": "AUTH217-00010",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/cp217-snapshot/docs/PLAN.md",
+      "bytes": 85639,
+      "sha256": "7638917cdf0af3a5bd6b669bcc910ad2a8d4720f8b5c22defbc6bfc5b51e7e23"
+    },
+    {
+      "id": "AUTH217-00012",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/cp217-snapshot/docs/RESEARCH.md",
+      "bytes": 43681,
+      "sha256": "2559b8e446ba9c64ed0eb8c5d2e61810499f52b40fa35ca8b2af1cfdb5749390"
+    },
+    {
+      "id": "AUTH217-00018",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/manual-review.json",
+      "bytes": 2191,
+      "sha256": "32f5ac08b8071b83739bed4ce03efe53289bca26557a580e74b50a76cd7741a2"
+    },
+    {
+      "id": "AUTH217-00082",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/native-bad-token/raw-seal.json",
+      "bytes": 13042,
+      "sha256": "3901ff8d5c173d505dc6fdf4d0dc3961aeba8da0d2503ec354987013e090811d"
+    },
+    {
+      "id": "AUTH217-00260",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/native-positive/raw-seal.json",
+      "bytes": 12985,
+      "sha256": "5b473ff264427e96bcf0bc7af202bff09d2f8705e4ffb134bec43778cfc7f101"
+    },
+    {
+      "id": "AUTH217-00373",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/native-verification.json",
+      "bytes": 12135,
+      "sha256": "3a493e6a3ce9aece46be58a812de33c1586e6b97148a3ac250af59b0928a4f3c"
+    },
+    {
+      "id": "AUTH217-00374",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/policy-verification.json",
+      "bytes": 4183,
+      "sha256": "973353faf08d9c12b9d70d169060c145ca726fc4f80d99ad711f9acf4655d8cc"
+    },
+    {
+      "id": "AUTH217-00375",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/shared-source-verification.json",
+      "bytes": 410,
+      "sha256": "88cb1985f45e92c5392311baa56f833ddb35fdd0d2de24c188b1d8d0e9914f1d"
+    },
+    {
+      "id": "AUTH217-00376",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/source-first.json",
+      "bytes": 4990,
+      "sha256": "4bb00a0950652e324152bbcfee33fea07039cfbfde0ae31c2481ea2fea32380d"
+    },
+    {
+      "id": "AUTH217-00390",
+      "kind": "local",
+      "path": "local/research/codex/auth-admission-r1/token-transform-reuse.json",
+      "bytes": 4705,
+      "sha256": "0b53d969a3065b680fd1df49492482355edf4a8c913642bff98cefcf3b6f5f79"
+    },
+    {
+      "id": "AUTH217-00401",
+      "kind": "local",
+      "path": "local/research/codex/cp217-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH217-00402",
+      "kind": "local",
+      "path": "local/research/codex/cp217-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "c6bcb36149f57a9a821230cac91a0831ee278d6a2562a9e2f573dc5ba1b90940"
+    },
+    {
+      "id": "AUTH217-00408",
+      "kind": "local",
+      "path": "local/research/codex/cp217-issue14-updated.json",
+      "bytes": 36582,
+      "sha256": "c2952ec1a060343bef5bef16af3ef4a24d51f9810c1cb00916f9648f82199617"
+    },
+    {
+      "id": "AUTH217-00411",
+      "kind": "local",
+      "path": "local/research/codex/cp217-issue285-updated.json",
+      "bytes": 9908,
+      "sha256": "0e8405064160b4c732e0620638b7b18d5651ce5e2cfa8f1bd69052248f400b67"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/43dbf3cb1d00b07e81513fc6b783b865a9b50b76726d89b107d617483dff3e51.jsonl",
+      "sha256": "43dbf3cb1d00b07e81513fc6b783b865a9b50b76726d89b107d617483dff3e51",
+      "bytes": 5034,
+      "count": 27,
+      "files_bytes": 6759807
+    },
+    {
+      "run": "local/research/codex/auth-admission-r1",
+      "path": "local/evidence-manifests/e0e564fc55e8101775bd7ba6d3b8c8b7987b246854e2194b00916a3fc7ad4479.jsonl",
+      "sha256": "e0e564fc55e8101775bd7ba6d3b8c8b7987b246854e2194b00916a3fc7ad4479",
+      "bytes": 85006,
+      "count": 375,
+      "files_bytes": 10449103
     }
   ]
 }

@@ -134,15 +134,6 @@
       "limits": "Reports127stillreject; NEXT-EIGHT-OUTCOME-RESET sourcefirst/controlbeforenativerank8; K6cdependencyopen."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP209-eight-mesh-owner-bombs.json",
-      "bytes": 706113,
-      "sha256": "2e55f3d252e72eda8aa58bf78e8ff855375c08d8ba3f42b903b7c3367a8bd1fc",
-      "count": 2754
-    }
-  ],
   "delta": {
     "added": [
       "Eightactual56orderedremoteprogress/native8stats/8actual118/4610joins704getters/PCAP14Aedges.",
@@ -248,6 +239,341 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP209mesh/stat/request/bombmechanismreuse/limits/next8report-rank-reset/issue14 syncedbeforecomplete; auditnext212unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EIGHT209-00007",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "EIGHT209-00014",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "EIGHT209-00026",
+      "kind": "local",
+      "path": "local/research/codex/cp209-bundle-tests.txt",
+      "bytes": 16727,
+      "sha256": "d8192648de2722bcc0a1332b4498c94698d03af1b6668703e8d1a772c95fc8ea"
+    },
+    {
+      "id": "EIGHT209-00030",
+      "kind": "local",
+      "path": "local/research/codex/cp209-server-tests.txt",
+      "bytes": 460,
+      "sha256": "fbd40f895922b1a16aac179dfb6598b0d52a07f1906c1341911e34da4604db01"
+    },
+    {
+      "id": "EIGHT209-00936",
+      "kind": "local",
+      "path": "local/research/codex/eight-mesh-stats-r1/getter-verification.json",
+      "bytes": 409,
+      "sha256": "e894d9c9b2cd9965ac16f7f9f42ceaad38bf9b06248402b01ec751d144ddea59"
+    },
+    {
+      "id": "EIGHT209-00939",
+      "kind": "local",
+      "path": "local/research/codex/eight-mesh-stats-r1/prepare-failure.txt",
+      "bytes": 260,
+      "sha256": "187d46bc0c2cb6b07c70cfe961fa73fe6e3c6c501207a2bfdd29449823708599"
+    },
+    {
+      "id": "EIGHT209-00941",
+      "kind": "local",
+      "path": "local/research/codex/eight-mesh-stats-r1/raw-seal.json",
+      "bytes": 178883,
+      "sha256": "2943231329b64a58f896ad04e2fa50310ac606be9632785939e97450fec879ef"
+    },
+    {
+      "id": "EIGHT209-01049",
+      "kind": "local",
+      "path": "local/research/codex/eight-mesh-stats-r1/source-first.json",
+      "bytes": 3285,
+      "sha256": "8a32a7dab472e924a59c1329ae3f205bafc5a2ef724c16d34ae5865ab814801c"
+    },
+    {
+      "id": "EIGHT209-01051",
+      "kind": "local",
+      "path": "local/research/codex/eight-mesh-stats-r1/verification.json",
+      "bytes": 371319,
+      "sha256": "dd17f7433e98b13e2bb7d247bfd93c0884da4a45d5941fcab1491d0c1104e922"
+    },
+    {
+      "id": "EIGHT209-01057",
+      "kind": "local",
+      "path": "local/research/codex/eight-owner-bombs-r1/cp209-snapshot/docs/PLAN.md",
+      "bytes": 61740,
+      "sha256": "8ce9de4fda07ea409936b5af92dc30152df6f2b026a118ac3cadcad93955de6b"
+    },
+    {
+      "id": "EIGHT209-02174",
+      "kind": "local",
+      "path": "local/research/codex/eight-owner-bombs-r1/gdb_bombs.py",
+      "bytes": 1800,
+      "sha256": "c583237bf2d4d3a1ccbfd5469fd2cbf786e0df4c7e0a34a2a4473d30614b92e6"
+    },
+    {
+      "id": "EIGHT209-02181",
+      "kind": "local",
+      "path": "local/research/codex/eight-owner-bombs-r1/getter-verification.json",
+      "bytes": 399,
+      "sha256": "c70ed6b388ae75c497dd1ac1cc2c8fe825c556a2428155972ec75e39e2c5e7fe"
+    },
+    {
+      "id": "EIGHT209-02185",
+      "kind": "local",
+      "path": "local/research/codex/eight-owner-bombs-r1/raw-seal.json",
+      "bytes": 225061,
+      "sha256": "10e0a50696bc1d3b3d317f958c31a2ceb0f85b05e7377773d0af2daad74cb640"
+    },
+    {
+      "id": "EIGHT209-02294",
+      "kind": "local",
+      "path": "local/research/codex/eight-owner-bombs-r1/source-first.json",
+      "bytes": 3675,
+      "sha256": "7545f3ac820af3a3e296107888f424d06f095573d06f0ae7f98a5e8b0c1390ec"
+    },
+    {
+      "id": "EIGHT209-02699",
+      "kind": "local",
+      "path": "local/research/codex/eight-owner-bombs-r1/tcp-verification.json",
+      "bytes": 463,
+      "sha256": "c5f07fc132f768e129a488a42194c7f6ccbfa3fcd56c84ca5e3ac437cc5b91c4"
+    },
+    {
+      "id": "EIGHT209-02702",
+      "kind": "local",
+      "path": "local/research/codex/eight-owner-bombs-r1/verification.json",
+      "bytes": 115511,
+      "sha256": "31eb0e1a73148dad90cc97e17b3c50aa3dda6165d0973da583ededfe8b0b31e4"
+    },
+    {
+      "id": "EIGHT209-02715",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "EIGHT209-02718",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "EIGHT209-02729",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "EIGHT209-02730",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "EIGHT209-02731",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "EIGHT209-02739",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "EIGHT209-02746",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "EIGHT209-02749",
+      "kind": "repository",
+      "path": "server/eight_bomb_policy.py",
+      "bytes": 557,
+      "sha256": "10bb1656892b7057b2907733f554e5c14c7634cab8040117712756a1d4f6f529"
+    },
+    {
+      "id": "EIGHT209-02750",
+      "kind": "repository",
+      "path": "server/eight_player_service.py",
+      "bytes": 3834,
+      "sha256": "6123393ad72badd41bc89faf07efec9a4afc988eea3f7bac527953580a8ba8a9"
+    },
+    {
+      "id": "EIGHT209-02751",
+      "kind": "repository",
+      "path": "server/four_bomb_policy.py",
+      "bytes": 3753,
+      "sha256": "9a011fe86d522a1c543230b3480fe571c0663722a79c2fad47fe6c4340442369"
+    },
+    {
+      "id": "EIGHT209-02752",
+      "kind": "repository",
+      "path": "server/four_observability.py",
+      "bytes": 5881,
+      "sha256": "21490fbb02196731c0de8e2cf597895505df0687a191597a7309110e9a5c2cf7"
+    },
+    {
+      "id": "EIGHT209-02753",
+      "kind": "repository",
+      "path": "server/test_eight_bomb_policy.py",
+      "bytes": 2904,
+      "sha256": "9460855d9c745dd915c68dab57d5641696ac94711f98b9dd2ff28efabb31ccda"
+    },
+    {
+      "id": "EIGHT209-02754",
+      "kind": "repository",
+      "path": "tools/test_four_bundle.py",
+      "bytes": 4918,
+      "sha256": "85fcc7f605e2806780067028b7a4fe3f4fa26b71c8a99a487cb261220130a894"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/02f12200919f035d7023976247362fab0eec323b69c782f28d940aecdce602aa.jsonl",
+      "sha256": "02f12200919f035d7023976247362fab0eec323b69c782f28d940aecdce602aa",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/8bdc71c47483243926a15549eb28e08dbad8e59aff7717909974bd51521294e1.jsonl",
+      "sha256": "8bdc71c47483243926a15549eb28e08dbad8e59aff7717909974bd51521294e1",
+      "bytes": 5398,
+      "count": 29,
+      "files_bytes": 6604366
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/5e247b3a7529a5841eebc55e7204933d0ba8980092b1bbbaddea4c1038061e2a.jsonl",
+      "sha256": "5e247b3a7529a5841eebc55e7204933d0ba8980092b1bbbaddea4c1038061e2a",
+      "bytes": 648,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/46a8e1e825120d76fa469893d48412802114622e89541135301b0dfc42937443.jsonl",
+      "sha256": "46a8e1e825120d76fa469893d48412802114622e89541135301b0dfc42937443",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/deb19d195d08b77ee7fc8087835fbc4433ed41beef9a8e63574877d2cd1970e5.jsonl",
+      "sha256": "deb19d195d08b77ee7fc8087835fbc4433ed41beef9a8e63574877d2cd1970e5",
+      "bytes": 650,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/0c22af7a86fe552788e9310541f796f632d8bb1c201fc71dec70520e3504c145.jsonl",
+      "sha256": "0c22af7a86fe552788e9310541f796f632d8bb1c201fc71dec70520e3504c145",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/df1188bb26bed12e432796173e8a83ad3e9e7bfdce472965baeabec99ab11843.jsonl",
+      "sha256": "df1188bb26bed12e432796173e8a83ad3e9e7bfdce472965baeabec99ab11843",
+      "bytes": 1026,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/eight-mesh-stats-r1",
+      "path": "local/evidence-manifests/8d88d1b660de8b9c4dd57fea0b8c1f56bea694ae48feb9267ad9b811217c648a.jsonl",
+      "sha256": "8d88d1b660de8b9c4dd57fea0b8c1f56bea694ae48feb9267ad9b811217c648a",
+      "bytes": 207555,
+      "count": 1012,
+      "files_bytes": 63093770
+    },
+    {
+      "run": "local/research/codex/eight-owner-bombs-r1",
+      "path": "local/evidence-manifests/e0f6afe333f7b8837f861fbd39c69ed36799811a428d57428b2bcccbffba9ff6.jsonl",
+      "sha256": "e0f6afe333f7b8837f861fbd39c69ed36799811a428d57428b2bcccbffba9ff6",
+      "bytes": 342203,
+      "count": 1643,
+      "files_bytes": 78599639
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/44ca8676151aedaa2c4d961f099f5b7ead9f5b236808d97dab54449f308ddd98.jsonl",
+      "sha256": "44ca8676151aedaa2c4d961f099f5b7ead9f5b236808d97dab54449f308ddd98",
+      "bytes": 1792,
+      "count": 8,
+      "files_bytes": 254996480
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/b5ea32a2621f961f80ecbcda2ddbfae014c5f13928f3d3b0da0a5cd20b5f2643.jsonl",
+      "sha256": "b5ea32a2621f961f80ecbcda2ddbfae014c5f13928f3d3b0da0a5cd20b5f2643",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/48568a9be078a19353cfa00d5c0c0e713bfd3468619b53ec457d4fac640babab.jsonl",
+      "sha256": "48568a9be078a19353cfa00d5c0c0e713bfd3468619b53ec457d4fac640babab",
+      "bytes": 447,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/6c188c97b158b9128ae2a77d6722955b98de8aa0060aada4dde630e85596ae31.jsonl",
+      "sha256": "6c188c97b158b9128ae2a77d6722955b98de8aa0060aada4dde630e85596ae31",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/821487312fbd421b3d13414d328f93588c4f089404a1af0c869650fdaf88912f.jsonl",
+      "sha256": "821487312fbd421b3d13414d328f93588c4f089404a1af0c869650fdaf88912f",
+      "bytes": 991,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/299add493507a77d62fc04a84c40f0e50835224928a71f70f74daf34fb59d705.jsonl",
+      "sha256": "299add493507a77d62fc04a84c40f0e50835224928a71f70f74daf34fb59d705",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/a33d6adc9e9d39389921ff272d37a45d2947688a530ab4aed8d54b5210a0aae6.jsonl",
+      "sha256": "a33d6adc9e9d39389921ff272d37a45d2947688a530ab4aed8d54b5210a0aae6",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

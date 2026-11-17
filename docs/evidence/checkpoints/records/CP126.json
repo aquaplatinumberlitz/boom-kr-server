@@ -119,15 +119,6 @@
       "limits": "Models/manualscopedobservation/mechanicalconsistency, notautoauthority/gate."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP126-Battle-exit-rejoin.json",
-      "bytes": 302707,
-      "sha256": "af0cc369ac5aa8818dcaea0f6b9e953b007476c6deec906d6ad6cfa7fc2958ab",
-      "count": 1191
-    }
-  ],
   "delta": {
     "added": [
       "NormalBattleexit/resultreturn→sameTCPBnormalrejoin/Ready/AStart2/freshkey/nativeclocks actualpositive."
@@ -207,6 +198,125 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP126samechannelexitrejoin/ReadyStart2/R2active/limits/chronologycorrection/nextpendingBombexit; oldcomplete/raw/gates unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "REJOIN-00001",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/analysis-correction.json",
+      "bytes": 844,
+      "sha256": "271e661622b75e969bbe5fcf05fec7cd75320f6b98cd0c3f022d7299e4666908"
+    },
+    {
+      "id": "REJOIN-00003",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "REJOIN-01100",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/cycles/run.json",
+      "bytes": 104099,
+      "sha256": "f322ffef3377e8ef0c122a0355d9434b41a683c7150bfd5c67fc36c9873aa432"
+    },
+    {
+      "id": "REJOIN-01110",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "9f4d8b409206da62d3c03c8f07b406533011e159e3a8c08e6287e9ffc1ecab4b"
+    },
+    {
+      "id": "REJOIN-01116",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "292cfe30cf54e694270f8c7597c96004edfd0d28dee94458e6060616f0749fe3"
+    },
+    {
+      "id": "REJOIN-01118",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/native-exit-check.txt",
+      "bytes": 29,
+      "sha256": "e16c751e5f3db25c1f7c4ca9d760a3dcd96d8380fe6fcdd0f0115c4eac413411"
+    },
+    {
+      "id": "REJOIN-01120",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/native153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "REJOIN-01126",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/raw-seal.json",
+      "bytes": 222122,
+      "sha256": "d7bc1c78de7f7ac69e9165d10d118250461dc55fd5c1a7a902b122c2a6d2f402"
+    },
+    {
+      "id": "REJOIN-01127",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/rejoin-check.txt",
+      "bytes": 1211,
+      "sha256": "46a8c7e96e13d4a9e69b815ceea958a8ca5eb449c06cdd8410589a316bfcb13a"
+    },
+    {
+      "id": "REJOIN-01128",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/rejoin-chrono-check.txt",
+      "bytes": 109,
+      "sha256": "53e165a3555c6e0c7585336ba17c8c07d87691f06c2f64d78501823b0390b310"
+    },
+    {
+      "id": "REJOIN-01129",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/rejoin-verification.json",
+      "bytes": 104077,
+      "sha256": "f241bf9282e6394512c4a50ecd7afaf8264e29fccd20cc5df91b0bbf22d9257f"
+    },
+    {
+      "id": "REJOIN-01186",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-rejoin-r1/visual-review.json",
+      "bytes": 531,
+      "sha256": "b1855cb3dedf3d5f15c29a371be8c11b0afa723958f95974138438f3b19936c2"
+    },
+    {
+      "id": "REJOIN-01191",
+      "kind": "local",
+      "path": "local/research/codex/active-exit-r1/server-tests.txt",
+      "bytes": 311,
+      "sha256": "549e90f5817041920a3fb0efd4555bb6adf91e120c479dd601b5f2e3a16b4ded"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/active-exit-rejoin-r1",
+      "path": "local/evidence-manifests/2697b471b543d54a88360f892ef0458f26f276a18d8bdc428a36f12b76ff105b.jsonl",
+      "sha256": "2697b471b543d54a88360f892ef0458f26f276a18d8bdc428a36f12b76ff105b",
+      "bytes": 239883,
+      "count": 1174,
+      "files_bytes": 48932344
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/d5c3c276da7a64233b8bcc9edc364501825d811999bfd046eadd19fa10e1eeb4.jsonl",
+      "sha256": "d5c3c276da7a64233b8bcc9edc364501825d811999bfd046eadd19fa10e1eeb4",
+      "bytes": 424,
+      "count": 2,
+      "files_bytes": 60147
+    },
+    {
+      "run": "local/research/codex/active-exit-r1",
+      "path": "local/evidence-manifests/bcb5c771a5f8d781130fa0425698e3340c11f9b1198b5ac4a111f4679fcc1e87.jsonl",
+      "sha256": "bcb5c771a5f8d781130fa0425698e3340c11f9b1198b5ac4a111f4679fcc1e87",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 429
     }
   ]
 }

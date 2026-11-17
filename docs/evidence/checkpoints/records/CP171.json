@@ -150,15 +150,6 @@
       "limits": "8positive pairs prove current positive compatibility feasibility, not unimplemented guard/original authority/full142freshness."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP171-basic-preset-start3.json",
-      "bytes": 411583,
-      "sha256": "bd5a7119e9ab980a1522d6ae76975a935cb29e37a28784bc4a995ae6d5127b81",
-      "count": 1628
-    }
-  ],
   "delta": {
     "added": [
       "Optional pinned basic preset PR242 and six exporter tests/real production preflight.",
@@ -255,6 +246,237 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP171 actual optional basic export two cycles/Start3/limits, merged241242 and next terrain-cell142 gap synced beforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/actor-fields-initial.json",
+      "bytes": 383417,
+      "sha256": "1957bfd16e9245b25b7f8cc4ddf4cfb01f8298f1030e9e4430f847d64f0516a3"
+    },
+    {
+      "id": "RUN-00002",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/actor-fields.json",
+      "bytes": 384029,
+      "sha256": "b0ea08eff66b00046613598e9d48a12e54ec0fa491e0e6cfc1ad80e755223bfe"
+    },
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/analysis-corrections.json",
+      "bytes": 961,
+      "sha256": "0b94606ecb927647c0acb748ef3899940bacded21868b4e55ddd0aecfa150c95"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/analysis-driver-cleanup-boundary.txt",
+      "bytes": 819,
+      "sha256": "9993de7bad83f69c1221ceccd19cf968dcd898b8a5e85c2df065e356ca9bc15d"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/analysis-driver-third-final.txt",
+      "bytes": 86,
+      "sha256": "6b15fb6abd6d6f37042f960894ad743659f91d709c8883524d857c7598f8c5ed"
+    },
+    {
+      "id": "RUN-00015",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00016",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/basic-cycle-verification.json",
+      "bytes": 2363,
+      "sha256": "7602ba0c9daa9009c764059f68839e1af4870f7f396c488adfb44f0cce3b0114"
+    },
+    {
+      "id": "RUN-00018",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/catalog-check.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "RUN-00019",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/chain-summary.json",
+      "bytes": 64577,
+      "sha256": "9e3ecd67307e69df356a24c380696934a6469ab7b9546cec7e3aa9828b0bda01"
+    },
+    {
+      "id": "RUN-00022",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/cp171-snapshot/docs/PLAN.md",
+      "bytes": 35574,
+      "sha256": "1dc1dbce764f7e11ec99e588a44551d44ae715485ef4d9ec527b9c468ff3302f"
+    },
+    {
+      "id": "RUN-01475",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/diff-check.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "RUN-01476",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/docs-check.txt",
+      "bytes": 175,
+      "sha256": "0c4aa743fb690f1faa2e932abcd19006ba3fbf64042d0595c387b3587f14bf16"
+    },
+    {
+      "id": "RUN-01477",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/exported-start3-verification.json",
+      "bytes": 1870,
+      "sha256": "39209a656146aa891227c80c8a68fe74858dd8ecc3ddb619009a6fef8136076f"
+    },
+    {
+      "id": "RUN-01486",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/hidden-cell-admission-reuse.json",
+      "bytes": 5362,
+      "sha256": "acc98cd2f5fab270db99ac4e4a3aefc6c9c0a9f30b2ca1bd148305c06e767897"
+    },
+    {
+      "id": "RUN-01488",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/issues-check.txt",
+      "bytes": 130,
+      "sha256": "176af8f66de5668424f1522860bf8012f3cebcd51764a4c9ca1d46c0aa3db521"
+    },
+    {
+      "id": "RUN-01491",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/life-agreement-verification.json",
+      "bytes": 6816,
+      "sha256": "e67c1876b4bc36238a068286ad5b64b74a06c78a42a504bf76ebe8e33b9cdee5"
+    },
+    {
+      "id": "RUN-01492",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/life-getter-verification.json",
+      "bytes": 418,
+      "sha256": "1b24620d54af472faa17150108540d73dc1c0f10cdc1fd591cae54f3e7d2324b"
+    },
+    {
+      "id": "RUN-01493",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/loading-milestones.json",
+      "bytes": 28664,
+      "sha256": "902cbaf1f9a73705f9e18edbc8e792952656d0a5ccc53e300c0b7a0b10ae2533"
+    },
+    {
+      "id": "RUN-01494",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/mode-gating-verification.json",
+      "bytes": 1596,
+      "sha256": "a8e590485a71e4132f6def0f1d4ffcd29450e60d513b004ac6f530452d360baa"
+    },
+    {
+      "id": "RUN-01496",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/mode180-native.json",
+      "bytes": 4686,
+      "sha256": "6e2b655d7dd5303596119ab66f1b4b110eae89ae0247403fe74b8930047e24fe"
+    },
+    {
+      "id": "RUN-01497",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/native-actual.json",
+      "bytes": 72546,
+      "sha256": "b9acd27f5d28a0aa14c26d2742e1e021e1303ecb865b893cda4410a91dac2a6c"
+    },
+    {
+      "id": "RUN-01516",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/profile.json",
+      "bytes": 15445,
+      "sha256": "bf1f99989e45a4b5e47e831165ad1f43f296418253388d8ba8338532d665afee"
+    },
+    {
+      "id": "RUN-01517",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/raw-seal.json",
+      "bytes": 295545,
+      "sha256": "78632732b341ad396757f03454c242694ef762b7fe83d68ba76ea8a8761d2868"
+    },
+    {
+      "id": "RUN-01544",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/reuse-question.json",
+      "bytes": 2986,
+      "sha256": "7670e8a194bf8cf726121b659ca2aaebe47bb4a82137a51ffafa1fd1ae943fbd"
+    },
+    {
+      "id": "RUN-01545",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/runtime-preflight.json",
+      "bytes": 31688,
+      "sha256": "27154e38df189a23726326cc2eae07b0f9b4e41532c8266b6e479bbfbe515aaf"
+    },
+    {
+      "id": "RUN-01592",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/server-source-reuse.json",
+      "bytes": 7794,
+      "sha256": "17fc3b060e7aa5f49c1822e03370e178077f44baabee90971269710b0eda48d8"
+    },
+    {
+      "id": "RUN-01594",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/verify_first_two_basic-initial.log",
+      "bytes": 1264,
+      "sha256": "8dd95d1c80c005c17c8f13faa1ec079b39b80acdc1a236210e2262d0fbcc56e7"
+    },
+    {
+      "id": "RUN-01595",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/verify_first_two_basic-initial.py",
+      "bytes": 10863,
+      "sha256": "c873f3e18ff0f5a0ff6ba3a60bb98fe7303e723ad2ff7a2bf825e1d59e6d4228"
+    },
+    {
+      "id": "RUN-01603",
+      "kind": "local",
+      "path": "local/research/codex/basic-preset-start3-r1/visual-review.json",
+      "bytes": 952,
+      "sha256": "eb4bdb690eaf0c0ce1d5b5a614bd2bf0edbac00664f10251acdcbdca863562d8"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/basic-preset-start3-r1",
+      "path": "local/evidence-manifests/f8309bfcac2a4468a73b183e18a4d0bdf4430eab9f1da982ceef3594874ea493.jsonl",
+      "sha256": "f8309bfcac2a4468a73b183e18a4d0bdf4430eab9f1da982ceef3594874ea493",
+      "bytes": 320154,
+      "count": 1576,
+      "files_bytes": 129573760
+    },
+    {
+      "run": "local/research/codex/basic-preset-delivery",
+      "path": "local/evidence-manifests/da1e21f6a2fe7a77df55446a29dedd38fdf45b53a5d3aadc71315e11e8069998.jsonl",
+      "sha256": "da1e21f6a2fe7a77df55446a29dedd38fdf45b53a5d3aadc71315e11e8069998",
+      "bytes": 2189,
+      "count": 11,
+      "files_bytes": 56877
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/b7c75f3acbb14ad08e36a60e385c76fd7040ae895a3abd43401ce9cef01868bd.jsonl",
+      "sha256": "b7c75f3acbb14ad08e36a60e385c76fd7040ae895a3abd43401ce9cef01868bd",
+      "bytes": 2197,
+      "count": 12,
+      "files_bytes": 350167
     }
   ]
 }

@@ -87,15 +87,6 @@
       "limits": "Independent review waived; exact-head primary/local-history and CI remain required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP285-native-db-recovery.json",
-      "bytes": 134016,
-      "sha256": "0869994e14b9c82baa94d37d3105bbc655059d502c64125a3d7328b3bbcc54ea",
-      "count": 510
-    }
-  ],
   "delta": {
     "added": [
       "Native new-process login after DB/queue recovery.",
@@ -193,5 +184,165 @@
   ],
   "completed_feature_groups": [
     "rust-db-account-profiles"
+  ],
+  "evidence": [
+    {
+      "id": "M5B285-00001",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3934,
+      "sha256": "7b19f4efbb018a2b0982c4b243306b81116a5d6ad66f5011ffcfb510a66ed5e8"
+    },
+    {
+      "id": "M5B285-00002",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 250422,
+      "sha256": "fc900484509a804c9ccb63ad6d4849887ed058210ff366a83b0576bcf39a4a75"
+    },
+    {
+      "id": "M5B285-00003",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 143709,
+      "sha256": "33b772694e1ec703d5688dc66038f968fe6d743d57ddd4720498d4a43a9955aa"
+    },
+    {
+      "id": "M5B285-00004",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 77228,
+      "sha256": "949ae467aaa9def61cfa5a2fb78189c2ac4ba0145a322ed3e5309f736adc1683"
+    },
+    {
+      "id": "M5B285-00005",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66021,
+      "sha256": "1c6ee141bac71a4597f88804255a41ad5676841abc4022e4ec6d90a90249380e"
+    },
+    {
+      "id": "M5B285-00006",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 32244,
+      "sha256": "68a6c3609279d1660393a5e802e18d8c22ed13243bca35ea85b271fd30575f94"
+    },
+    {
+      "id": "M5B285-00007",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD101.json",
+      "bytes": 3544,
+      "sha256": "fc4268cf6d87cf018859c0a4dcdb4778b490db928f310af2d3af99e6b5903b96"
+    },
+    {
+      "id": "M5B285-00008",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 29378,
+      "sha256": "a16f405232269d2fbd507232a86afee4f212a34415112c39b9378ba5036a2e06"
+    },
+    {
+      "id": "M5B285-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m5b-dynamic-accounts.json",
+      "bytes": 6415,
+      "sha256": "05e3e7c4a8a44b87d3fe2203866867e4d2938060ed8085b6730d7b77df85c2c6"
+    },
+    {
+      "id": "M5B285-00010",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m5b-native-recovery.json",
+      "bytes": 3559,
+      "sha256": "5340652283132d892c3973ccd2eaeceb5afd76378377ab1b63bb7748793712ee"
+    },
+    {
+      "id": "M5B285-00011",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 262803,
+      "sha256": "46f7333f6266ced7ab987282bcdaeb802d5caa2878ade5efb3f3cb89263b7b63"
+    },
+    {
+      "id": "M5B285-00012",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 78712,
+      "sha256": "46f0cb1775e7b8aa3827e641d605a7d2a44e4e247d4265edc4ef20c3b0478c5d"
+    },
+    {
+      "id": "M5B285-00020",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/decoded-channels.json",
+      "bytes": 146874,
+      "sha256": "b7d115719bb71290f48d3fc10d770f2b9f5b722d04831aeb88bc913a7e2d22e7"
+    },
+    {
+      "id": "M5B285-00277",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/lifecycle-addendum.json",
+      "bytes": 916,
+      "sha256": "657d51e560d6a504a5816a8d31133af3763607770cf1104aee0a0b6962f2bb39"
+    },
+    {
+      "id": "M5B285-00364",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/cycles/run.json",
+      "bytes": 104327,
+      "sha256": "839ac891a011a82cffb06db86404c677540fa5b17c8a453c48a780f0f8792d10"
+    },
+    {
+      "id": "M5B285-00486",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/raw-seal.json",
+      "bytes": 22130,
+      "sha256": "5c7309848679c21ea933ffd7b64e1f62258ce1ec7376762b4b1cee961520ec8a"
+    },
+    {
+      "id": "M5B285-00490",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/native/storage-recovery.json",
+      "bytes": 860,
+      "sha256": "d1db62ee5b1a7d12e5870822b8616b219c7a5324aed5ad584f3ce95f78990b87"
+    },
+    {
+      "id": "M5B285-00494",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/recovery-verification.json",
+      "bytes": 2074,
+      "sha256": "8edb1a65046846cb3487d14f2a6544be24210387ec3d9ad3bfb2874bd834a292"
+    },
+    {
+      "id": "M5B285-00495",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/results-verification.json",
+      "bytes": 3373,
+      "sha256": "f1c8366d871770c0e107da87a6a9d218f8917d5bf3e5f4be6f684abc39f2de3a"
+    },
+    {
+      "id": "M5B285-00502",
+      "kind": "local",
+      "path": "local/research/codex/m5b-recovery-native-r1/udp-getter-verification.json",
+      "bytes": 716,
+      "sha256": "194ca0c5758b8a648a38d1d22e4364f01aa60dbad60df4f47fb1dd38beaebd76"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/e45145947f6551e9e8fceeaa54a92adc34b81bbb7ee8ab9030895daefb4ac013.jsonl",
+      "sha256": "e45145947f6551e9e8fceeaa54a92adc34b81bbb7ee8ab9030895daefb4ac013",
+      "bytes": 1708,
+      "count": 9,
+      "files_bytes": 72970
+    },
+    {
+      "run": "local/research/codex/m5b-recovery-native-r1",
+      "path": "local/evidence-manifests/694ce162166e4fe400f0bd456a1e27f0b3e8a544d1ce9d93de4bbc1a828084ed.jsonl",
+      "sha256": "694ce162166e4fe400f0bd456a1e27f0b3e8a544d1ce9d93de4bbc1a828084ed",
+      "bytes": 103230,
+      "count": 481,
+      "files_bytes": 254798829
+    }
   ]
 }

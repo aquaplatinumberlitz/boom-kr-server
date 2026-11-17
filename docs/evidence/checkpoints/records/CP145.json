@@ -169,15 +169,6 @@
       "limits": "Mechanicalconsistencyonly; nogateorsemanticcertification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP145-virtual-old-udp.json",
-      "bytes": 1017178,
-      "sha256": "da9d295a601c9a5072a1ca4af040cff43d76ae5590303f4aed0d377f3b01a09c",
-      "count": 4088
-    }
-  ],
   "delta": {
     "added": [
       "Directvirtualexactoldmatchedtuple/keybranch/nooldapply/currentfreshpositive nowinsame2guardcycles.",
@@ -258,6 +249,259 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP145exactoldUDPnativekeydrop/currentpositive/transportpartialcontrol/limits/currentTCPchain/issue14 syncedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00003",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r1/checksum-observation.json",
+      "bytes": 2223,
+      "sha256": "ed6ae72b81adc5b5cbd3710f4bbb5f85c954666c15d97b5839cb3e8aba62b18c"
+    },
+    {
+      "id": "RUN-01919",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r1/offload-control-01/outer.json",
+      "bytes": 654,
+      "sha256": "aa3bf417184323cfff0c2e7e2b8de64277f57f73df752701208d38dcce81173c"
+    },
+    {
+      "id": "RUN-01920",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r1/offload-control-01/report.json",
+      "bytes": 9022,
+      "sha256": "dda7bd5fe6c8bf92642b53f6fe27f7dc75f898cf5ea7bca25c3bfc28f83631e2"
+    },
+    {
+      "id": "RUN-01924",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r1/offload_control.py",
+      "bytes": 4561,
+      "sha256": "4930b46614e9e03569d0364fb2575112c74fba801c695ab7c65e475fde7d95e2"
+    },
+    {
+      "id": "RUN-01928",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r1/partial-verification.json",
+      "bytes": 976,
+      "sha256": "7d19f865d482f28ecda20b6cf6e08611c773f54937436b030d58c666fd60b520"
+    },
+    {
+      "id": "RUN-01930",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r1/raw-seal.json",
+      "bytes": 380537,
+      "sha256": "5502c39b9636ac049c6334612e8307db5c79508d3a8f502c5ba64ac793804053"
+    },
+    {
+      "id": "RUN-01989",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/153-check.txt",
+      "bytes": 23,
+      "sha256": "c78b0c88107aa4deac39d540ca3f97a944aa1706fe598478526d29ae3875f2a1"
+    },
+    {
+      "id": "RUN-01992",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/address-ready-verification.json",
+      "bytes": 4436,
+      "sha256": "3d176b751bd30c22dafdc06f0d5c9b58d810c41fb182ce8fdaf98c8df6e78c14"
+    },
+    {
+      "id": "RUN-01995",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-01997",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/basic-verification.json",
+      "bytes": 225668,
+      "sha256": "bd460c2a168a34571a0a378f692f245bc2996006b066d2d7544fa353d3eb86a9"
+    },
+    {
+      "id": "RUN-02003",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/cp145-snapshot/docs/PLAN.md",
+      "bytes": 33275,
+      "sha256": "7d483faabd43965d6a31d7ed73d3f64b2e18a5421dfb99a5161c7f1f583a2bf1"
+    },
+    {
+      "id": "RUN-02010",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/crc-check.txt",
+      "bytes": 33,
+      "sha256": "c3c2710a65d834af5e7a19974c98f58d5fc5d525f1ab9b940e5078b4075f9799"
+    },
+    {
+      "id": "RUN-03904",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/cycles/udp-A.jsonl",
+      "bytes": 80664,
+      "sha256": "4af9e0295c6bd27da8a10ae16afc2b89ae5f5076a769160d5ad83f7116993184"
+    },
+    {
+      "id": "RUN-03909",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/cycles/udp-virtual.pcap",
+      "bytes": 47199,
+      "sha256": "0f3ba4f447ba3a74b8cf8244164effc34d58472256f92b0b8a90123823c0f316"
+    },
+    {
+      "id": "RUN-03911",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/cycles/virtual-network.json",
+      "bytes": 25236,
+      "sha256": "482e75fe9179729c19ed807b5ceda544a4ebc8067e2eda9e67cc3b3b2ce6a6f0"
+    },
+    {
+      "id": "RUN-03918",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/docs-check.txt",
+      "bytes": 175,
+      "sha256": "750d8ed4b8131a75b2fd90453673e17945572af0c4295dc87f182a79d375e697"
+    },
+    {
+      "id": "RUN-03921",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/exact-old-check.txt",
+      "bytes": 705,
+      "sha256": "283a11e1e47a35fbcee5c8c3eb686eb955d6fe8639aafc0cb8f029b3d232f47a"
+    },
+    {
+      "id": "RUN-03922",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/exact-old-verification.json",
+      "bytes": 18074,
+      "sha256": "e88f6b38998c55431232ad644ab527a988f17633d6faf14ac469c6c0fe7789bc"
+    },
+    {
+      "id": "RUN-03923",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/fields-check.txt",
+      "bytes": 33,
+      "sha256": "6022c39770bc3e72e4505fc323ec9a3c6d3353bac5e7c241b46a3b52554effe5"
+    },
+    {
+      "id": "RUN-03925",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/flags-check.txt",
+      "bytes": 54,
+      "sha256": "5b68529c65f7ed72126b0ff3ac5d3abad3848404f844e2330874da205e7c83b3"
+    },
+    {
+      "id": "RUN-03941",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/guard-integration-verification.json",
+      "bytes": 10522,
+      "sha256": "8bd1e7edc929c045333d75027be41e97f1db7e6b909ad80a87116d077c088974"
+    },
+    {
+      "id": "RUN-03943",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "2ca94ea38c61b55254db465255e2ee6c0322ff7e20197ada55c8cbe15cb59e99"
+    },
+    {
+      "id": "RUN-03949",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/movement-wire-verification.json",
+      "bytes": 43062,
+      "sha256": "470140a6025fae57b80b85ca6ed22fab693bae14b34ba08c2335876b0f89f94c"
+    },
+    {
+      "id": "RUN-03960",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/peer-getter-check.txt",
+      "bytes": 38,
+      "sha256": "eb8ba45fb145c271c9864d4aea967acdaeab65310c8b1c0e6eb69655d0f499ff"
+    },
+    {
+      "id": "RUN-03963",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/pickup-verification.json",
+      "bytes": 2988,
+      "sha256": "2626895962aa541ede7c3b52b7cbd26141e1505b354a4d4e608029671fb0fecc"
+    },
+    {
+      "id": "RUN-03965",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/raw-seal.json",
+      "bytes": 382364,
+      "sha256": "7f3725fabbc6516716662cf2b6de767b19b020280997d1cdc99603ab630c36c8"
+    },
+    {
+      "id": "RUN-03968",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/reports-check.txt",
+      "bytes": 29,
+      "sha256": "90f5c7a55f0183f74893184cdcff8ba871caa43410fd8ec7533bd6bec0bca180"
+    },
+    {
+      "id": "RUN-04017",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/reuse-question.json",
+      "bytes": 4522,
+      "sha256": "9cd47601b83f6bd92ed9c20d9b6649405f6f4ab27220300e3cacc7bf744e2b08"
+    },
+    {
+      "id": "RUN-04066",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/udp-getter-check.txt",
+      "bytes": 37,
+      "sha256": "fd3b9573eb7e9d7ba4ab707874799057ee1837f4aa28bf98d3a4e29a662d6d85"
+    },
+    {
+      "id": "RUN-04081",
+      "kind": "local",
+      "path": "local/research/codex/virtual-old-udp-r2/visual-review.json",
+      "bytes": 1199,
+      "sha256": "17bbc7a198d03e0e91b7158dda3bce906bb82adf0fd846ae8208ca5372580398"
+    },
+    {
+      "id": "RUN-04088",
+      "kind": "local",
+      "path": "local/research/codex/service-peer-address-r1/server-tests.txt",
+      "bytes": 331,
+      "sha256": "f68f879ad1b4c2f0d7adb4e0654a2b23d9b55110f5c2b4631e4f84c77cadbbeb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/virtual-old-udp-r1",
+      "path": "local/evidence-manifests/b06645d21d6d4bd4a2274009679eeca393ca8eaaf97032c5b4b5fc210ee4fc5a.jsonl",
+      "sha256": "b06645d21d6d4bd4a2274009679eeca393ca8eaaf97032c5b4b5fc210ee4fc5a",
+      "bytes": 394045,
+      "count": 1982,
+      "files_bytes": 52469659
+    },
+    {
+      "run": "local/research/codex/virtual-old-udp-r2",
+      "path": "local/evidence-manifests/88c8bdd0ffc6b4590e857e0aa591b0f0e9a739e1f16693d87bbad3de9f7bed23.jsonl",
+      "sha256": "88c8bdd0ffc6b4590e857e0aa591b0f0e9a739e1f16693d87bbad3de9f7bed23",
+      "bytes": 411699,
+      "count": 2069,
+      "files_bytes": 58642139
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/6f74cf554bc42bac8c27e28a73c176137278efee1b1aa504f6e2a50384de5832.jsonl",
+      "sha256": "6f74cf554bc42bac8c27e28a73c176137278efee1b1aa504f6e2a50384de5832",
+      "bytes": 796,
+      "count": 4,
+      "files_bytes": 148351
+    },
+    {
+      "run": "local/research/codex/virtual-pending-eof-r1",
+      "path": "local/evidence-manifests/7cdaccfc75d3bfe6f7fd607bdf1e8814978f56566a1859334e459b0b73d7bbe3.jsonl",
+      "sha256": "7cdaccfc75d3bfe6f7fd607bdf1e8814978f56566a1859334e459b0b73d7bbe3",
+      "bytes": 469,
+      "count": 2,
+      "files_bytes": 418
     }
   ]
 }

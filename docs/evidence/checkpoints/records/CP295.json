@@ -108,15 +108,6 @@
       "limits": "This new exact-head/raw/history and CI still required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP295-map-selection.json",
-      "bytes": 789824,
-      "sha256": "1c69d75bf895ce0efed965494b4e42881e66950e1dd8a5f2c83d950ccce749f4",
-      "count": 2987
-    }
-  ],
   "delta": {
     "added": [
       "Data-driven current host map catalog/96→117/Ready clear and selected Start/play/floor/journal.",
@@ -222,5 +213,390 @@
   ],
   "completed_feature_groups": [
     "rust-g1-ui-map-selection"
+  ],
+  "evidence": [
+    {
+      "id": "G1SELECT295-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "G1SELECT295-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3756,
+      "sha256": "35385404bd6242282a65a5770f1da47747af226f226e243036e282a81f8aebb9"
+    },
+    {
+      "id": "G1SELECT295-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 255152,
+      "sha256": "5fc10b75584dfc1db5cd0c639767e5e6c495b063b2eb8362f0a280610e85140d"
+    },
+    {
+      "id": "G1SELECT295-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 150826,
+      "sha256": "9be3d05594cd9b3b431a8713e758f2aadd7fd157269e638898c5dfc871f97303"
+    },
+    {
+      "id": "G1SELECT295-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 79572,
+      "sha256": "f11d2c9bfb9d5cf3b53a7895ecb416e0a48a33027e4c3cab8de821f708500c50"
+    },
+    {
+      "id": "G1SELECT295-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66731,
+      "sha256": "c983861a463426463f41c15e161c25c5b57580ee77bba7627e346bc9709d84c4"
+    },
+    {
+      "id": "G1SELECT295-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 35828,
+      "sha256": "efc99b4edf716e6497158392d88ee1f3e7fefe4f793ea2261340f73a1b91be76"
+    },
+    {
+      "id": "G1SELECT295-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD111.json",
+      "bytes": 5769,
+      "sha256": "8d0128fded022ffa8d0baf8152a1d0797573dc8addda5014a8d09f47ed0ecac3"
+    },
+    {
+      "id": "G1SELECT295-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-map-selection.json",
+      "bytes": 9398,
+      "sha256": "3cf9aea960df8de9fd6cac8f74a89d95f6412ec64515b94f8b970dcfe3a97f38"
+    },
+    {
+      "id": "G1SELECT295-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 267805,
+      "sha256": "09a53cc80c58ff628034bf5edcb58fedce89ece0be267b7fd4ffcd881ad6fddd"
+    },
+    {
+      "id": "G1SELECT295-00011",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 104937,
+      "sha256": "e97a5007b36043c405e489e1294c2d962ef31b03af6cf9444a6823d841822cda"
+    },
+    {
+      "id": "G1SELECT295-00012",
+      "kind": "repository",
+      "path": "docs/protocol/load-phase.md",
+      "bytes": 64586,
+      "sha256": "55e61c684c8e4360cdeeb3e39d17000b813a1daa65f9f02f3574a28977645dd0"
+    },
+    {
+      "id": "G1SELECT295-00017",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-build-final-r2.txt",
+      "bytes": 170,
+      "sha256": "f64765a316f7c6e51b397a329a3ee76f1ba1d92215e863a3254f74c1b6781721"
+    },
+    {
+      "id": "G1SELECT295-00060",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-catalog-r3/native-rows-verification.json",
+      "bytes": 3378,
+      "sha256": "5274439f80310a5187d224c3411446000d6f1deca555e2db79c9444593352944"
+    },
+    {
+      "id": "G1SELECT295-00068",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-clippy-final-r2.txt",
+      "bytes": 358,
+      "sha256": "aa1e64935dcf06b43071f492458461cf9adc84aaa8dacc69caab2efce3914464"
+    },
+    {
+      "id": "G1SELECT295-00105",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-config-negatives-r2/verification.json",
+      "bytes": 813,
+      "sha256": "f72e01418831aed12ed35b52a6b5d6ab79a5701e6d6753ca4ef2074cd7c13b66"
+    },
+    {
+      "id": "G1SELECT295-00124",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-fmt-final-r2.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "G1SELECT295-00645",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-native-r1/native/raw-seal.json",
+      "bytes": 17093,
+      "sha256": "c7d5870034c8b14a3ec3ef70254e2e13a447dda2b6fe6cd4ab095c5513f9a68e"
+    },
+    {
+      "id": "G1SELECT295-00658",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-native-r1/selection-native-verification.json",
+      "bytes": 237092,
+      "sha256": "e36136e236077cb931ea3b799649adffe0b4d84f48fbcec8da6d16c035163b86"
+    },
+    {
+      "id": "G1SELECT295-01181",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-native-r2/native/raw-seal.json",
+      "bytes": 19653,
+      "sha256": "ce8040c3429782ee26e21898b6bf9a8837699b34f48c259f86115f81314664ec"
+    },
+    {
+      "id": "G1SELECT295-01193",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-native-r2/selection-getter-verification.json",
+      "bytes": 608,
+      "sha256": "93a17aa2ff99d546c97b84be2fdef5df8a817f2bfe5b4444245533ee57abd4d9"
+    },
+    {
+      "id": "G1SELECT295-01194",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-native-r2/selection-native-verification.json",
+      "bytes": 237408,
+      "sha256": "2a056235adcec5d110c34a36b9b34511aecae99eb722700c831c1b5c98a5037e"
+    },
+    {
+      "id": "G1SELECT295-01199",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-profiles-r1/Village10.json",
+      "bytes": 10412,
+      "sha256": "6009c62e4e0aa6186291b4bf3b91440aa386eadd6be6500a5c49ff285339d9b2"
+    },
+    {
+      "id": "G1SELECT295-01217",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-survey-r1/failure-analysis.json",
+      "bytes": 544,
+      "sha256": "2a8559129f1acb24297cd1572ac390a4f1c28d0445dfcee65a55af461b202e48"
+    },
+    {
+      "id": "G1SELECT295-02817",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-tcp-r5/tcp/result.json",
+      "bytes": 247,
+      "sha256": "d77446b6fa4274660b182bc30993f94b5ad7128c3ccdf10c1d271166e251fc17"
+    },
+    {
+      "id": "G1SELECT295-02947",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-tcp-r6/tcp/result.json",
+      "bytes": 1079,
+      "sha256": "6eb4d8f05ac456ac20d61468324a9ba57385effd9f832405ae7f57d52d2f2831"
+    },
+    {
+      "id": "G1SELECT295-02953",
+      "kind": "local",
+      "path": "local/research/codex/g1-selection-workspace-final-r2.txt",
+      "bytes": 20949,
+      "sha256": "d810ab0adf0748586c17a20d82b57cb2757920fbf8dd8917764f9dba0c562f8b"
+    },
+    {
+      "id": "G1SELECT295-02954",
+      "kind": "local",
+      "path": "local/research/codex/m6-journal-delivery-receipt.json",
+      "bytes": 1084,
+      "sha256": "3817dbda057143fafd92aeb5609c22255dfd39c7d5953c9b58f299a63d33d8f0"
+    },
+    {
+      "id": "G1SELECT295-02981",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 35609,
+      "sha256": "b4cbd4579b77bc5273e1708c8d6cd8f005115d7e2c8d4e4d8b51a1730a047b77"
+    },
+    {
+      "id": "G1SELECT295-02982",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "bytes": 10480,
+      "sha256": "eb0dd01d7b27041af2be9809603d6ea07b25b6eabae3108f87ce81670022c617"
+    },
+    {
+      "id": "G1SELECT295-02983",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 54729,
+      "sha256": "6632c7d91924791e7fb0e8f8df528bee6dbffcc78b9e7063329993841a4ab604"
+    },
+    {
+      "id": "G1SELECT295-02984",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 172924,
+      "sha256": "a736608af4852d376a6724d67fddf6def8e718e4c7c8018ae2479fb858832c24"
+    },
+    {
+      "id": "G1SELECT295-02985",
+      "kind": "repository",
+      "path": "tools/README.md",
+      "bytes": 29849,
+      "sha256": "3b37efff1ff13f8ba2e2a94d2660344a8ade5dfd7648038e540d76d109782903"
+    },
+    {
+      "id": "G1SELECT295-02986",
+      "kind": "repository",
+      "path": "tools/rust_map_catalog.py",
+      "bytes": 4628,
+      "sha256": "1dd309b9991f57a3f2ab7b8a24b24a6e73547cc3f580f85c2a85323263573c24"
+    },
+    {
+      "id": "G1SELECT295-02987",
+      "kind": "repository",
+      "path": "tools/test_rust_map_selection.py",
+      "bytes": 10309,
+      "sha256": "7fddb677ae9f58d63126723e5ef5f3551de9a36e284c8f2909414587d391486b"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/17fcffced1446a86471aac301f27689891ea88ccf282938ee47ece62a67386d2.jsonl",
+      "sha256": "17fcffced1446a86471aac301f27689891ea88ccf282938ee47ece62a67386d2",
+      "bytes": 13484,
+      "count": 69,
+      "files_bytes": 181233560
+    },
+    {
+      "run": "local/research/codex/g1-selection-catalog-r2",
+      "path": "local/evidence-manifests/789151c55c5fccc22a9db402e7b4d5d5e42c92916cc7e279b4339ce939373c6e.jsonl",
+      "sha256": "789151c55c5fccc22a9db402e7b4d5d5e42c92916cc7e279b4339ce939373c6e",
+      "bytes": 2516,
+      "count": 12,
+      "files_bytes": 3140
+    },
+    {
+      "run": "local/research/codex/g1-selection-catalog-r3",
+      "path": "local/evidence-manifests/6c89c755168dc8df9f5a41cf85977a2d3c07aef0230160b1d2072457a436215d.jsonl",
+      "sha256": "6c89c755168dc8df9f5a41cf85977a2d3c07aef0230160b1d2072457a436215d",
+      "bytes": 6708,
+      "count": 33,
+      "files_bytes": 56013
+    },
+    {
+      "run": "local/research/codex/g1-selection-config-negatives-r1",
+      "path": "local/evidence-manifests/d6a2275e4d5e844872989f105ef268eb8221056932966e560b0895e25be8902b.jsonl",
+      "sha256": "d6a2275e4d5e844872989f105ef268eb8221056932966e560b0895e25be8902b",
+      "bytes": 5577,
+      "count": 25,
+      "files_bytes": 194795
+    },
+    {
+      "run": "local/research/codex/g1-selection-config-negatives-r2",
+      "path": "local/evidence-manifests/17a8203f4d7511626063a16d70fd6d4522df98f1f8adc0a6d399dff77e1a0884.jsonl",
+      "sha256": "17a8203f4d7511626063a16d70fd6d4522df98f1f8adc0a6d399dff77e1a0884",
+      "bytes": 6045,
+      "count": 27,
+      "files_bytes": 222082
+    },
+    {
+      "run": "local/research/codex/g1-selection-load-input-r1",
+      "path": "local/evidence-manifests/de9ab3862231f69d8d0da29a0a97ad3c6b805ed92cbf08d22dd714c4917c69e5.jsonl",
+      "sha256": "de9ab3862231f69d8d0da29a0a97ad3c6b805ed92cbf08d22dd714c4917c69e5",
+      "bytes": 694,
+      "count": 3,
+      "files_bytes": 138382
+    },
+    {
+      "run": "local/research/codex/g1-selection-native-r1",
+      "path": "local/evidence-manifests/ffc0699d964ca15200045634b01a54f08b7aaea178f66d8ea4412e3636526306.jsonl",
+      "sha256": "ffc0699d964ca15200045634b01a54f08b7aaea178f66d8ea4412e3636526306",
+      "bytes": 113068,
+      "count": 519,
+      "files_bytes": 534592873
+    },
+    {
+      "run": "local/research/codex/g1-selection-native-r2",
+      "path": "local/evidence-manifests/7875d856c3c80c43a48a6355ca6b7f65992ea8bbc4bf99f247949be02b98e896.jsonl",
+      "sha256": "7875d856c3c80c43a48a6355ca6b7f65992ea8bbc4bf99f247949be02b98e896",
+      "bytes": 116192,
+      "count": 533,
+      "files_bytes": 536507171
+    },
+    {
+      "run": "local/research/codex/g1-selection-source-r1",
+      "path": "local/evidence-manifests/600f95222c9fbc8117fe7bbf9284e33728167866a8da0f48596125c36ccaeabe.jsonl",
+      "sha256": "600f95222c9fbc8117fe7bbf9284e33728167866a8da0f48596125c36ccaeabe",
+      "bytes": 681,
+      "count": 3,
+      "files_bytes": 3268
+    },
+    {
+      "run": "local/research/codex/g1-selection-survey-r1",
+      "path": "local/evidence-manifests/f5f6c10ed2a1fd4b8226dac3a053369a8bc3fba5f235cd5f0886d23bf0740b95.jsonl",
+      "sha256": "f5f6c10ed2a1fd4b8226dac3a053369a8bc3fba5f235cd5f0886d23bf0740b95",
+      "bytes": 102630,
+      "count": 471,
+      "files_bytes": 526728801
+    },
+    {
+      "run": "local/research/codex/g1-selection-survey-r2",
+      "path": "local/evidence-manifests/06d87cf54659936cb177a600298b4d3b6a2a7e402a9349e0ccbebd8d3d9129e0.jsonl",
+      "sha256": "06d87cf54659936cb177a600298b4d3b6a2a7e402a9349e0ccbebd8d3d9129e0",
+      "bytes": 104359,
+      "count": 479,
+      "files_bytes": 527567498
+    },
+    {
+      "run": "local/research/codex/g1-selection-tcp-r1",
+      "path": "local/evidence-manifests/7b5c1842c6141b12e081a1cf6c4738ed8e12e46d62766022747c24925f42a4f5.jsonl",
+      "sha256": "7b5c1842c6141b12e081a1cf6c4738ed8e12e46d62766022747c24925f42a4f5",
+      "bytes": 27279,
+      "count": 130,
+      "files_bytes": 204555658
+    },
+    {
+      "run": "local/research/codex/g1-selection-tcp-r2",
+      "path": "local/evidence-manifests/88a013a80bd63018fc073ce03c50dade6b79497387bb33d9ea5f3b897dbe4342.jsonl",
+      "sha256": "88a013a80bd63018fc073ce03c50dade6b79497387bb33d9ea5f3b897dbe4342",
+      "bytes": 27294,
+      "count": 130,
+      "files_bytes": 204590647
+    },
+    {
+      "run": "local/research/codex/g1-selection-tcp-r3",
+      "path": "local/evidence-manifests/8efd129b24a1b7e9027a0aecdd3e395367e777febb2cec684047c62f697256b0.jsonl",
+      "sha256": "8efd129b24a1b7e9027a0aecdd3e395367e777febb2cec684047c62f697256b0",
+      "bytes": 27297,
+      "count": 130,
+      "files_bytes": 204604117
+    },
+    {
+      "run": "local/research/codex/g1-selection-tcp-r4",
+      "path": "local/evidence-manifests/a997475360068272381b5fa87d8aa287085e7da855908fbc3edc88a519a5e13f.jsonl",
+      "sha256": "a997475360068272381b5fa87d8aa287085e7da855908fbc3edc88a519a5e13f",
+      "bytes": 27303,
+      "count": 130,
+      "files_bytes": 204608623
+    },
+    {
+      "run": "local/research/codex/g1-selection-tcp-r5",
+      "path": "local/evidence-manifests/3be38f99d572e070bb98d8baecc21a3a24929fd8a5e4c1e0b377be056a9346db.jsonl",
+      "sha256": "3be38f99d572e070bb98d8baecc21a3a24929fd8a5e4c1e0b377be056a9346db",
+      "bytes": 27104,
+      "count": 129,
+      "files_bytes": 204582148
+    },
+    {
+      "run": "local/research/codex/g1-selection-tcp-r6",
+      "path": "local/evidence-manifests/de46c50602bb02657bf26b53c21c71e3b402ee4b7a06aff027a63bbe3b0bd906.jsonl",
+      "sha256": "de46c50602bb02657bf26b53c21c71e3b402ee4b7a06aff027a63bbe3b0bd906",
+      "bytes": 27096,
+      "count": 129,
+      "files_bytes": 204629217
+    }
   ]
 }

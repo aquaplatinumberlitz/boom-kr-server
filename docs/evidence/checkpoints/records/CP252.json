@@ -178,15 +178,6 @@
       "limits": "Selfaudit/reviewwaived/notindependentapproval orM4closure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP252-rust-ninth-admission.json",
-      "bytes": 333189,
-      "sha256": "26f7d7405aca739b877bc489bc55a9709fdfd6abda0fabcf0efd93322c051bdb",
-      "count": 1270
-    }
-  ],
   "delta": {
     "added": [
       "Explicitninthdiagnosticlobbyfixture/Room8full87guard/noGrant; native1KR+8synthetic/19raw/73tests6TCP4prebind.",
@@ -320,6 +311,300 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "CP252native9limitedscope/argvcorrection+Freecontrolnegative/M4OPEN/M5independentnext/AUD073next256/historykept."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST252-00001",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD072.json",
+      "bytes": 1810,
+      "sha256": "514c1ae7e073e0c15748724a2d5964c268bad0c51b9bf27ffda951cd070e7be5"
+    },
+    {
+      "id": "RUST252-00002",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD073.json",
+      "bytes": 4983,
+      "sha256": "f505c717d957efe8e2ab67c4309234ebf4a734f751308d63392dd87132edf506"
+    },
+    {
+      "id": "RUST252-00003",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/argv-provenance.json",
+      "bytes": 10552,
+      "sha256": "fb824c41d78a2b313ce07ad879c03d4edf268fe8b11f75b0d9528648c0937c3e"
+    },
+    {
+      "id": "RUST252-00004",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/ninth-admission.json",
+      "bytes": 4519,
+      "sha256": "3c2267740ad4b1cae7225f1ed86aa96cc6f3cac1308eb88d5e6f9b774023ee08"
+    },
+    {
+      "id": "RUST252-00009",
+      "kind": "local",
+      "path": "local/research/codex/cp252-docs-final.txt",
+      "bytes": 251,
+      "sha256": "978aedd06713868a4c19eb3c9dd195753426fd2d8b42574fa3f2d961000dc59e"
+    },
+    {
+      "id": "RUST252-00026",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-free-argv32-r1/actual-CA-argv-verification.json",
+      "bytes": 3611,
+      "sha256": "a03131832b76dc4aa2f050e14521576df1de76bdc99d8431aa5796ce56b21a9a"
+    },
+    {
+      "id": "RUST252-00380",
+      "kind": "local",
+      "path": "local/research/codex/rust-eight-free-argv32-r1/native-eight/raw-seal.json",
+      "bytes": 14875,
+      "sha256": "e06137669d03bd72e9e54b4d65b593291af29b68f46a812c5757aba158856d14"
+    },
+    {
+      "id": "RUST252-00395",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-build-r2.txt",
+      "bytes": 166,
+      "sha256": "7dd97974613f9952118aa46daf92433bac9132153ceef87f8e92b82f5bd7a385"
+    },
+    {
+      "id": "RUST252-00399",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-clippy-r2.txt",
+      "bytes": 166,
+      "sha256": "9b2c78cb7bb6a485cf17743badb491f36228528d876ca5b0b3b856e2bc550e67"
+    },
+    {
+      "id": "RUST252-00409",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-config-guards-r1/verification.json",
+      "bytes": 694,
+      "sha256": "3e36a50b9c348d59ef224d854fca8f7e21fc2ca3d704e27c516a142d718c5e19"
+    },
+    {
+      "id": "RUST252-00413",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-delivery-r1/manual-acceptance.json",
+      "bytes": 3697,
+      "sha256": "c0e402c084331810ecc09265d47c6a2283db4d566e9f2b7b6b4485fb5c70960f"
+    },
+    {
+      "id": "RUST252-00426",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-delivery-r1/snapshot/rust/crates/kr-service/src/lib.rs",
+      "bytes": 35764,
+      "sha256": "4369dead8fb8dedc6982c2945633b68a357656be89413c173a82210a59a303c9"
+    },
+    {
+      "id": "RUST252-00427",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-delivery-r1/snapshot/rust/crates/kr-service/src/room_io.rs",
+      "bytes": 101178,
+      "sha256": "a36b7775841d595db51fdda13f789981a9bec5adfcbbd16320ff2721628d9652"
+    },
+    {
+      "id": "RUST252-00429",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-delivery-r1/snapshot/tools/export_rust_profile.py",
+      "bytes": 28199,
+      "sha256": "12ab2a24e577d1f77a050f1092e0523f42ca3ed59a4671bee084a272ec451f9b"
+    },
+    {
+      "id": "RUST252-00530",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-kernel-r1/tcp/verification.json",
+      "bytes": 19578,
+      "sha256": "6100af8a6b96b5f31bfb92171083b62de9965b0ec17a1ca4744df115825ecd47"
+    },
+    {
+      "id": "RUST252-00628",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-kernel-r2/tcp/verification.json",
+      "bytes": 20361,
+      "sha256": "1f03065d0785c26b1b5647901e35ebb5da25e23a1b624d54c570a18f62eeac6f"
+    },
+    {
+      "id": "RUST252-00929",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-native-r1/native-ninth/raw-seal.json",
+      "bytes": 4153,
+      "sha256": "bc03df14a3b1c77e3ad2510409cdb806a15b16a5db6af1f89f7acb51bad4748f"
+    },
+    {
+      "id": "RUST252-00938",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-native-r2/actual-CA-argv-verification.json",
+      "bytes": 610,
+      "sha256": "ffdbe41064f8b8f166a9b43c5cfa8ff83914434c434ee7e7d65f20555b3778a6"
+    },
+    {
+      "id": "RUST252-01239",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-native-r2/native-ninth/raw-seal.json",
+      "bytes": 4618,
+      "sha256": "75ab6a7d9fed9d1781fd26503342436df7a99ecc82cb0bcd4f6c7f888059434d"
+    },
+    {
+      "id": "RUST252-01243",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-native-r2/ninth-verification.json",
+      "bytes": 10935,
+      "sha256": "b4741a9eb6b1e4aca3cafc3e2982599c5cecb33502f3419a5da167964fc7b57b"
+    },
+    {
+      "id": "RUST252-01247",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-native-r2/ui-review.json",
+      "bytes": 833,
+      "sha256": "0b9ec009e2f1ca07a64b9b47d5f10eb7850c9828dab90464e3b8c648e99898ba"
+    },
+    {
+      "id": "RUST252-01248",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-native-verifier-r2.txt",
+      "bytes": 395,
+      "sha256": "ec52df57cc1b99a5a02f617b91932a2957dd823f3aff5b2ec66a0d0a532bebc4"
+    },
+    {
+      "id": "RUST252-01249",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-native-verifier-r3.txt",
+      "bytes": 65,
+      "sha256": "0ccc39198baa4ff3b09509e693c5b014459eaf25b9e194baf49b6a681974bf15"
+    },
+    {
+      "id": "RUST252-01255",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-source-r1/free-argv32-result.json",
+      "bytes": 1268,
+      "sha256": "ac612a80ef54c0fbbb05de08f1db8b8532745e74e1835e03828cd39f52aa74ca"
+    },
+    {
+      "id": "RUST252-01257",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-source-r1/native-r1-modal-control.json",
+      "bytes": 693,
+      "sha256": "d1adcd493275bbec3fcfbb8de894cb617857d0a0630037ff49f84e2c3d1190f6"
+    },
+    {
+      "id": "RUST252-01258",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-source-r1/old-CA-argv-proof.json",
+      "bytes": 7181,
+      "sha256": "d902988d1b7f7a10058b77b37c605351b66bd55b080435b1833035bd53d29e7c"
+    },
+    {
+      "id": "RUST252-01261",
+      "kind": "local",
+      "path": "local/research/codex/rust-ninth-tests-r2.txt",
+      "bytes": 8466,
+      "sha256": "db5e6c13f73267728421cf0f45b8c5c787804eb04574f367a42143ea0cadf3f3"
+    },
+    {
+      "id": "RUST252-01268",
+      "kind": "repository",
+      "path": "tools/export_rust_profile.py",
+      "bytes": 28199,
+      "sha256": "12ab2a24e577d1f77a050f1092e0523f42ca3ed59a4671bee084a272ec451f9b"
+    },
+    {
+      "id": "RUST252-01269",
+      "kind": "repository",
+      "path": "tools/rust_ninth_probe.py",
+      "bytes": 3669,
+      "sha256": "bc427a33dd5266541aa7c4700e83b414deaeaea6781e02005ea9037ba20dd910"
+    },
+    {
+      "id": "RUST252-01270",
+      "kind": "repository",
+      "path": "tools/test_rust_ninth_admission.py",
+      "bytes": 6327,
+      "sha256": "7be05df022a0c9a208ca9ace459b7c7d16c3b7af41b4f76745adcf40540d17bc"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/976be199b861a286c9aa259e2b7bd92eafc91129b30be215dbe2bb3976465474.jsonl",
+      "sha256": "976be199b861a286c9aa259e2b7bd92eafc91129b30be215dbe2bb3976465474",
+      "bytes": 6851,
+      "count": 37,
+      "files_bytes": 220771
+    },
+    {
+      "run": "local/research/codex/rust-eight-free-argv32-r1",
+      "path": "local/evidence-manifests/afbb7702dd5ab32bea329ffe77b434e846c4df7b30eb1007794e836587e555f5.jsonl",
+      "sha256": "afbb7702dd5ab32bea329ffe77b434e846c4df7b30eb1007794e836587e555f5",
+      "bytes": 79615,
+      "count": 367,
+      "files_bytes": 480198884
+    },
+    {
+      "run": "local/research/codex/rust-ninth-config-guards-r1",
+      "path": "local/evidence-manifests/44f15dc1ec5568f801196cfa751b39e15cd71396626e2ad41decc13b1f6f4295.jsonl",
+      "sha256": "44f15dc1ec5568f801196cfa751b39e15cd71396626e2ad41decc13b1f6f4295",
+      "bytes": 2612,
+      "count": 12,
+      "files_bytes": 170361
+    },
+    {
+      "run": "local/research/codex/rust-ninth-delivery-r1",
+      "path": "local/evidence-manifests/c83ece78536721e6a95c278ebd48b7d20a032a3b2f712658c10bbaa8bc09ef8e.jsonl",
+      "sha256": "c83ece78536721e6a95c278ebd48b7d20a032a3b2f712658c10bbaa8bc09ef8e",
+      "bytes": 3358,
+      "count": 15,
+      "files_bytes": 1913169
+    },
+    {
+      "run": "local/research/codex/rust-ninth-kernel-r1",
+      "path": "local/evidence-manifests/1cf6d9b91ee54367c6e2c01a21f5982fc5bda142de6ebb9bba52e726b4d77828.jsonl",
+      "sha256": "1cf6d9b91ee54367c6e2c01a21f5982fc5bda142de6ebb9bba52e726b4d77828",
+      "bytes": 20101,
+      "count": 94,
+      "files_bytes": 45735196
+    },
+    {
+      "run": "local/research/codex/rust-ninth-kernel-r2",
+      "path": "local/evidence-manifests/59e8d02e726e20759702afb52332786d027851c24e268daffba26cdd416a1bc2.jsonl",
+      "sha256": "59e8d02e726e20759702afb52332786d027851c24e268daffba26cdd416a1bc2",
+      "bytes": 20515,
+      "count": 96,
+      "files_bytes": 45825913
+    },
+    {
+      "run": "local/research/codex/rust-ninth-native-r1",
+      "path": "local/evidence-manifests/76859714d3542965f60efe8f6ee1b1b06807f6431dd3e0909795295ac7eccad3.jsonl",
+      "sha256": "76859714d3542965f60efe8f6ee1b1b06807f6431dd3e0909795295ac7eccad3",
+      "bytes": 64735,
+      "count": 305,
+      "files_bytes": 434330878
+    },
+    {
+      "run": "local/research/codex/rust-ninth-native-r2",
+      "path": "local/evidence-manifests/fb0d61a2691180b6b8f9304ece80e783e4c3acb4b58cf30b36c7d600355ad9a0.jsonl",
+      "sha256": "fb0d61a2691180b6b8f9304ece80e783e4c3acb4b58cf30b36c7d600355ad9a0",
+      "bytes": 65214,
+      "count": 307,
+      "files_bytes": 434586828
+    },
+    {
+      "run": "local/research/codex/rust-ninth-profile-r1",
+      "path": "local/evidence-manifests/f6c5627f81f880447f66fe5ab22d7f5b48166d60322f5fad601f20872b6139c4.jsonl",
+      "sha256": "f6c5627f81f880447f66fe5ab22d7f5b48166d60322f5fad601f20872b6139c4",
+      "bytes": 1089,
+      "count": 5,
+      "files_bytes": 44475
+    },
+    {
+      "run": "local/research/codex/rust-ninth-source-r1",
+      "path": "local/evidence-manifests/0ce4e7f15cb9146db273300f09d74647300e66180e0d74f7010b3e5e0349ce71.jsonl",
+      "sha256": "0ce4e7f15cb9146db273300f09d74647300e66180e0d74f7010b3e5e0349ce71",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 4672
     }
   ]
 }

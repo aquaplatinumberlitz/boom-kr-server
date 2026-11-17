@@ -100,15 +100,6 @@
       "limits": "216 native getter checks. Full exact-head local/history and CI remain required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP327-punch-departure.json",
-      "bytes": 291405,
-      "sha256": "750d8956e82d0f5cf4c6228b448f5de3c58ce65868ec0a45fbe38ec62a050136",
-      "count": 1096
-    }
-  ],
   "delta": {
     "added": [
       "Correction actor-departure guard và regression đúng nhánh tiếp tục trận."
@@ -211,6 +202,953 @@
       "path": "AGENTS.md",
       "state": "unchanged",
       "reason": "Waiver, audit policy và owner L1 không đổi."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "DEP327-00001",
+      "kind": "artifact",
+      "path": "/etc/nsswitch.conf",
+      "bytes": 359,
+      "sha256": "c8ee7a9faf798caab178ec51afae4146f1efd8a716b7acedf28345b6c75f9697"
+    },
+    {
+      "id": "DEP327-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3611,
+      "sha256": "498bf520f4ab8abaf1a772a30959385665e3a5480f52c97b4402accb85c0a0b5"
+    },
+    {
+      "id": "DEP327-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 268730,
+      "sha256": "f0677e80b89f90d52c7223e20fd468f730122559779d6cb940589ec4117ebb7e"
+    },
+    {
+      "id": "DEP327-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 164790,
+      "sha256": "538652c4dd673af892539d60c30bd8c5920fecff5a7cd6a75edf7f0c880b2a15"
+    },
+    {
+      "id": "DEP327-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 84792,
+      "sha256": "f725651f0d24109131d8b2c9fbb0fa87cea4f6dc7e21473bf93001c86cf2d9e3"
+    },
+    {
+      "id": "DEP327-00006",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD136.json",
+      "bytes": 3169,
+      "sha256": "e73f44013013bdd31f038b12764922d50e949ebc6646f0e9b7a2b91e1a5d138f"
+    },
+    {
+      "id": "DEP327-00007",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/g1-punch-departure.json",
+      "bytes": 8073,
+      "sha256": "fa53e0184a8affe233327c8d6dbb29a9adcca596ebe6ba50c8deff04d524d9cf"
+    },
+    {
+      "id": "DEP327-00008",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 281709,
+      "sha256": "0b028ae9f8a1ddfe78b3e2d0ba8715c7d0b38810ceeb1ebe99c613c8c42d7f88"
+    },
+    {
+      "id": "DEP327-00009",
+      "kind": "repository",
+      "path": "docs/protocol/items-stats.md",
+      "bytes": 69695,
+      "sha256": "76479f65f266420a2ba7cb49e6fab2d16cab79ae8f55fefa308f66256e920e39"
+    },
+    {
+      "id": "DEP327-00018",
+      "kind": "local",
+      "path": "local/research/codex/cp326-check-aborted-for-departure-correction.json",
+      "bytes": 978,
+      "sha256": "835043a0001331eaba9e23ab745917914944d63d17e92ce998138fca5cc4a7c6"
+    },
+    {
+      "id": "DEP327-00021",
+      "kind": "local",
+      "path": "local/research/codex/cp327-docs-precheck.txt",
+      "bytes": 274,
+      "sha256": "c59ee4928a35a8b5536b996f7fd13356fe2846140d135c51811805757547c6fa"
+    },
+    {
+      "id": "DEP327-00022",
+      "kind": "local",
+      "path": "local/research/codex/duo-round-r1/reply87-slot1-session1.bin",
+      "bytes": 45,
+      "sha256": "67905f20ea19c1102b923ce7e77bbce637820f1673cbe33313ec4f3ce381904f"
+    },
+    {
+      "id": "DEP327-00023",
+      "kind": "local",
+      "path": "local/research/codex/four-native-r6/gdb_own291.py",
+      "bytes": 1889,
+      "sha256": "7f6aa529926118072230987d325a7215ebb1185260defe70e1c8c665714c1f1f"
+    },
+    {
+      "id": "DEP327-00025",
+      "kind": "local",
+      "path": "local/research/codex/g1-map-adapter-r1/profiles/ExVillage01.json",
+      "bytes": 9939,
+      "sha256": "d1f604c04fc1ec24e8ab0617dc7e57bbd6df7c679df452ef53e15d434f2648ea"
+    },
+    {
+      "id": "DEP327-00122",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-build-r4/incomplete-execution.json",
+      "bytes": 531,
+      "sha256": "b0e59bcdd35be211c6c06218ee486b2a059d87109cb45b786e7bf881fa7e49b1"
+    },
+    {
+      "id": "DEP327-00298",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-build-r5/verification.json",
+      "bytes": 2577,
+      "sha256": "13c9eb5a0cb39b5c4d1edad2c5012e52fc4c5cf76d6994a12df6436f99871203"
+    },
+    {
+      "id": "DEP327-00299",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-build-r5/workspace-source-identity.json",
+      "bytes": 28091,
+      "sha256": "2ae2cbde898fdd2a328246be918ad9fc4ce1e6631b1721d5665b337f76feb74c"
+    },
+    {
+      "id": "DEP327-00302",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-departure-correction.json",
+      "bytes": 1021,
+      "sha256": "d05013d568d692e2abc9a9899b911d33db66bae9c1839d8d62cf8be39e72cfc3"
+    },
+    {
+      "id": "DEP327-00303",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-departure-regression.txt",
+      "bytes": 3271,
+      "sha256": "e03987bcc950ff65560c58694bb037d8358c8343220efab38839e7d7914fe2a0"
+    },
+    {
+      "id": "DEP327-00946",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-rust-native-r5/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "6b8e52a6dbc5cd4a50053e1ca43b088a226da270a85c1e1a54d35f28bdf082e3"
+    },
+    {
+      "id": "DEP327-00949",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-rust-native-r5/native/raw-seal.json",
+      "bytes": 12510,
+      "sha256": "7048fba275dc4dba3d920cc7be75ed230ca9aa994d756149079b2cdfe8d645b4"
+    },
+    {
+      "id": "DEP327-00956",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-rust-native-r5/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "66d5e73a8f7b8d24711d36ffe6aa7654e8f0048da862dcf6ac483ad4ed802003"
+    },
+    {
+      "id": "DEP327-00962",
+      "kind": "local",
+      "path": "local/research/codex/g1-punch-rust-native-r5/punch-native-verification.json",
+      "bytes": 5102,
+      "sha256": "961b77143f3a93a30fb02d24a3b9a791a484fedb7286a4208fe7a73eade32c31"
+    },
+    {
+      "id": "DEP327-00971",
+      "kind": "local",
+      "path": "local/research/codex/k2-auth-retry-r1/login-error1-key43.bin",
+      "bytes": 39,
+      "sha256": "9aeae7b7937ad0c54d968297c48fffb4d506087f7826b2e9fdde35d84ed3ac19"
+    },
+    {
+      "id": "DEP327-00972",
+      "kind": "local",
+      "path": "local/research/codex/k2-live-stream-r1/native_probe.py",
+      "bytes": 2427,
+      "sha256": "5f9266d6a3949732673d1151cf50cd126bdbe16e80e1d92b570841414285dcad"
+    },
+    {
+      "id": "DEP327-00973",
+      "kind": "local",
+      "path": "local/research/codex/leave-r1/channel14-kind1.bin",
+      "bytes": 82,
+      "sha256": "0ed72929c552e5bc5a8e492d2d3ca877e2bbc1ec8d5343c81f4b7844d54fe88b"
+    },
+    {
+      "id": "DEP327-00974",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "DEP327-00975",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "DEP327-00982",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "DEP327-00983",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "DEP327-00984",
+      "kind": "local",
+      "path": "local/research/codex/round-go-r1/go197-time30.bin",
+      "bytes": 52,
+      "sha256": "1e3437fc0f52910e218c69570a4e7e6c83f73a66ba11f5313ac6ad0d50b34881"
+    },
+    {
+      "id": "DEP327-01002",
+      "kind": "local",
+      "path": "local/research/codex/rust-room-r1/listing91.bin",
+      "bytes": 90,
+      "sha256": "bd2ee027f5ec45a715f42ffb636ee44be7224f4fc734f75bc235f33286edb936"
+    },
+    {
+      "id": "DEP327-01003",
+      "kind": "local",
+      "path": "local/research/codex/rust-two-lobby-r2/redirect7-private.bin",
+      "bytes": 52,
+      "sha256": "665f13adcfa329c6f5511906cab76083a42bce714946a296a415113f94769609"
+    },
+    {
+      "id": "DEP327-01004",
+      "kind": "local",
+      "path": "local/research/codex/ui-handler-r1/oracle-dependencies/boomproto.py",
+      "bytes": 7779,
+      "sha256": "e9642ec10e53cfed6c24c0c5ade07b34a46ce02073a8d316f724776686855bbd"
+    },
+    {
+      "id": "DEP327-01006",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "DEP327-01011",
+      "kind": "repository",
+      "path": "rust/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "id": "DEP327-01012",
+      "kind": "repository",
+      "path": "rust/Cargo.lock",
+      "bytes": 32227,
+      "sha256": "c8d313f8974c53ca76402d50fd198a3a5fb4367b11ad78d62effa2dc3ee1c1ef"
+    },
+    {
+      "id": "DEP327-01013",
+      "kind": "repository",
+      "path": "rust/Cargo.toml",
+      "bytes": 1015,
+      "sha256": "2cd782a9e37bed9289d0466bd6bb11eca396a986d14813d696db6c384c81999a"
+    },
+    {
+      "id": "DEP327-01014",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 37010,
+      "sha256": "6360808a8e6aac67333ece95af2b97600666d786ad1eb3444dea34582e3b4907"
+    },
+    {
+      "id": "DEP327-01015",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/Cargo.toml",
+      "bytes": 495,
+      "sha256": "2bcb5406c96ca745eb66242be31a77f30d152ab8766ea6f6fe5171b8048071f8"
+    },
+    {
+      "id": "DEP327-01016",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/examples/check_account_bridge_wire.rs",
+      "bytes": 2429,
+      "sha256": "31b99814c095dc0410df0dc3303dd3fdbd57a6d588dc3e536be5f31865badf61"
+    },
+    {
+      "id": "DEP327-01017",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0001_accounts.sql",
+      "bytes": 2315,
+      "sha256": "e2509c3b20ecd51e99fd4ab33c393f42a5eed78804fa3efd1d096d305b55f631"
+    },
+    {
+      "id": "DEP327-01018",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0002_session_idle.sql",
+      "bytes": 520,
+      "sha256": "8dd0e245546a2d43f9692634296a097971da5855fc7015e7c284841f91bcb089"
+    },
+    {
+      "id": "DEP327-01019",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/migrations/0003_match_history.sql",
+      "bytes": 2234,
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    {
+      "id": "DEP327-01020",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/tests.rs",
+      "bytes": 69436,
+      "sha256": "38767406e765fbfb4c27a38dfe8500ba9c3e9309c5fbd7c6f23b55ebb987adac"
+    },
+    {
+      "id": "DEP327-01021",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge/wire.rs",
+      "bytes": 2758,
+      "sha256": "63adab044276a3ca481d4a96da84eef1c9ce00bce2caff189360f0f601c0d512"
+    },
+    {
+      "id": "DEP327-01022",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_bridge.rs",
+      "bytes": 23208,
+      "sha256": "2b3ec0077c44d641ab43e5ff94eff3ad90afee2984211291a0f36e5f5b872915"
+    },
+    {
+      "id": "DEP327-01023",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 25541,
+      "sha256": "c80b68104d0be0d724809336ef9c84826b18734cb4239404507a3c0ad3ed8c34"
+    },
+    {
+      "id": "DEP327-01024",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/rate.rs",
+      "bytes": 4519,
+      "sha256": "b3fff8bcf67dce113a74841c79103dd1b4509dcb6eba151afc717a67c4c02d5b"
+    },
+    {
+      "id": "DEP327-01025",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker/tests.rs",
+      "bytes": 26717,
+      "sha256": "665c54e468fa7b4a0543a071f519b84ed9ea7f95d356110d027a9f3d2075456d"
+    },
+    {
+      "id": "DEP327-01026",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_worker.rs",
+      "bytes": 21117,
+      "sha256": "1aaba49120b9dc8b44f1543cecc3c5b0c56b4bfa43ef2254728fd6236bd54d31"
+    },
+    {
+      "id": "DEP327-01027",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/matches.rs",
+      "bytes": 26137,
+      "sha256": "2acc8e55b8860fe1a162a3614ddf84809c11822b0b6d27bd488a82fdcf1527e5"
+    },
+    {
+      "id": "DEP327-01028",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/preferences.rs",
+      "bytes": 6557,
+      "sha256": "683f80eedaf95b89497ab65a8b6c33a719b5ff06bda0ac23f02eb34cb889c95c"
+    },
+    {
+      "id": "DEP327-01029",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts/tests.rs",
+      "bytes": 30740,
+      "sha256": "6e89d881d49ea0b55aaa508d1a7899590f45677fb10c8fb7491b406508db3490"
+    },
+    {
+      "id": "DEP327-01030",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/accounts.rs",
+      "bytes": 30489,
+      "sha256": "846a9e45ac02c533fdb3252382e5ea624f57d609bef7f0f070977e1cd243e59e"
+    },
+    {
+      "id": "DEP327-01031",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_peer.rs",
+      "bytes": 15838,
+      "sha256": "3663bce2a04987376caedeeb8d785805c6d4b10915d55ce9e4cd009740c558d2"
+    },
+    {
+      "id": "DEP327-01032",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/authenticated_room_relay.rs",
+      "bytes": 7030,
+      "sha256": "e1a618a5847153e4ee0ce2980f3d4cb695ea8398ff1ed31694954095b0a84f4f"
+    },
+    {
+      "id": "DEP327-01033",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bin/kr-admin.rs",
+      "bytes": 4971,
+      "sha256": "0b061cc7333634492db151aacfc6cc800e12a3b25395c7661f1002925081197a"
+    },
+    {
+      "id": "DEP327-01034",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/binding.rs",
+      "bytes": 6781,
+      "sha256": "5915ef46f6d2fc680336ee754b4b94b7b0b4659982ae209ba5170e237f9a0b6c"
+    },
+    {
+      "id": "DEP327-01035",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "bytes": 25703,
+      "sha256": "fb11ec9693a610cfbf57cdc092f12b05ab6aa73f0dc806c2f3fe208764f0576a"
+    },
+    {
+      "id": "DEP327-01036",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/characters.rs",
+      "bytes": 5149,
+      "sha256": "537553e061d26053761af9893e727b4a0a5240dc76a05ca349df638cef98bd65"
+    },
+    {
+      "id": "DEP327-01037",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/diagnostic59.rs",
+      "bytes": 5656,
+      "sha256": "344211d25aada48b4b49f9017ed752f15a1f9f7ef06332922cc9af7a944991d9"
+    },
+    {
+      "id": "DEP327-01038",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "bytes": 10769,
+      "sha256": "26c1c50fc8791534c965dfa39f6d61c0cf712c085ff09d3081688a4763886af6"
+    },
+    {
+      "id": "DEP327-01039",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 65534,
+      "sha256": "3a06f7bdb999fd5e08a72134f38faee2ee779f0879f6013d8575bbb95ee2434f"
+    },
+    {
+      "id": "DEP327-01040",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life.rs",
+      "bytes": 17859,
+      "sha256": "36d9c7c43fea4ea4c307f28610e3483b22cc74ed408e3e6b76ec8f3cc89ea61d"
+    },
+    {
+      "id": "DEP327-01041",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/life_actions.rs",
+      "bytes": 16860,
+      "sha256": "95836e1322a74072ed8ce7e8a546382e61ba2041c760fa0ba62247f095e1ac23"
+    },
+    {
+      "id": "DEP327-01042",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lobby.rs",
+      "bytes": 8470,
+      "sha256": "2db6cd887e2a0762b2b5ecba7ba4fb88dedc6a161f0c20b375c0ba24f00abc8e"
+    },
+    {
+      "id": "DEP327-01043",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/logging.rs",
+      "bytes": 5580,
+      "sha256": "98dc548a5cf5844e24461cb15853487ce13871c1c3fa9858d57541afdd7bef1e"
+    },
+    {
+      "id": "DEP327-01044",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/main.rs",
+      "bytes": 502,
+      "sha256": "5339c6de11d8cad40ce2fd0392742971f34edc3d1e2489348cc5f820ed8c9019"
+    },
+    {
+      "id": "DEP327-01045",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/map_profile.rs",
+      "bytes": 12026,
+      "sha256": "69cebe9cc645663688eb0aad8b3b2212ad76cfd537fdc69f6b995f76fcf5f30f"
+    },
+    {
+      "id": "DEP327-01046",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/match_journal.rs",
+      "bytes": 20860,
+      "sha256": "88d6b2c58f3742cda01c87956148d85796e77a22464d8470f697137d3f5d938f"
+    },
+    {
+      "id": "DEP327-01047",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/network.rs",
+      "bytes": 3780,
+      "sha256": "f2c20456affd3681c97ff203483458cb2f1321b16ffe428921b539d6e91847ba"
+    },
+    {
+      "id": "DEP327-01048",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/peer_routes.rs",
+      "bytes": 4631,
+      "sha256": "221075ff3e89110f636020c43a4e98099a8ffc3b02d204e12f03acd77ebb950b"
+    },
+    {
+      "id": "DEP327-01049",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/pickups.rs",
+      "bytes": 17984,
+      "sha256": "fac76f88f62ef5938b7732449127cd20e9fd0c9c094fa926f781ab1f92491b4c"
+    },
+    {
+      "id": "DEP327-01050",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/player_template.rs",
+      "bytes": 110,
+      "sha256": "9be5c38b02f02228127912a7af36814700e7acfb96006c104a35fc243e1c19ec"
+    },
+    {
+      "id": "DEP327-01051",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 59013,
+      "sha256": "68f72c338e6997e3df29b73865c0409e9ebf2ea9ce8a92e1528aabb20d2bbc5e"
+    },
+    {
+      "id": "DEP327-01052",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 194065,
+      "sha256": "7b25f0055c498ce88bf94288099b23ddf93a00a1091df9d89843c05db14086aa"
+    },
+    {
+      "id": "DEP327-01053",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "bytes": 55117,
+      "sha256": "528c6eea32c7160a54e5539e8cfa3cdcf732a4df48b5f0ed274f0daa13480c25"
+    },
+    {
+      "id": "DEP327-01054",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io_life_tests.rs",
+      "bytes": 8988,
+      "sha256": "12d8b94e551d2bd08569d639b0c87ef58fe887feccaff1539fd78868dd04a060"
+    },
+    {
+      "id": "DEP327-01055",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_packets.rs",
+      "bytes": 2051,
+      "sha256": "2f00fd14ace454dadc8a6e3148f6ab1686b6812cb09e43a26d6b0319774c2932"
+    },
+    {
+      "id": "DEP327-01056",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_registry.rs",
+      "bytes": 5471,
+      "sha256": "ae9c78bd68060d5cb9db64538deaf348b2f6e081b8f63d4fa822eabd653df123"
+    },
+    {
+      "id": "DEP327-01057",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_relay.rs",
+      "bytes": 7327,
+      "sha256": "631f41d14e6c7c4d54099f099ecdf5cf3448e30c8789bc274286bb8e14ba0807"
+    },
+    {
+      "id": "DEP327-01058",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 11937,
+      "sha256": "1fa5def859fc7ac0297c7b7a7b47fa060bad6edb3706ca448513e7a3135c999e"
+    },
+    {
+      "id": "DEP327-01059",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_wire.rs",
+      "bytes": 2201,
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    {
+      "id": "DEP327-01060",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/round_epochs.rs",
+      "bytes": 2527,
+      "sha256": "18eb735293835939bbcc6da8e28a070f9e6ea54b5e1e0a99d95640e82cfea5ac"
+    },
+    {
+      "id": "DEP327-01061",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 14527,
+      "sha256": "4342cfbbffffc58c1e8e34c8e2da561f061c7ef5166bc4a1f76c04a7f2275507"
+    },
+    {
+      "id": "DEP327-01062",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/terrain.rs",
+      "bytes": 24143,
+      "sha256": "c56ff72d93346f4ade84e9fdf65434ab26ea278ff325a8dd700b3e0df65961b9"
+    },
+    {
+      "id": "DEP327-01063",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/sockets.rs",
+      "bytes": 14760,
+      "sha256": "dd37312b7e4e8ec1dbdeca1fce7d6b59a3b2beaac3b3e5d4027f48a1ff7f67e8"
+    },
+    {
+      "id": "DEP327-01064",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay/tests.rs",
+      "bytes": 12591,
+      "sha256": "511839625ae7fc784f1cad3d2a7faca0a13a4ecdfaa1db60b6a78d9d410dab19"
+    },
+    {
+      "id": "DEP327-01065",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/udp_relay.rs",
+      "bytes": 13684,
+      "sha256": "5d2bf013cef6dedd8feb3f40ab784cbd2754e94ceccae938f1c6b10b1e1a7af7"
+    },
+    {
+      "id": "DEP327-01066",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/Cargo.toml",
+      "bytes": 368,
+      "sha256": "2a712a65b842e5e8335687427e386c31ff8e898428c54ff446bfda74e6827bb6"
+    },
+    {
+      "id": "DEP327-01067",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/examples/native_proxy_lab.rs",
+      "bytes": 8929,
+      "sha256": "2158ddad71c2098be428cabb272ae45869f3f2789554fc0ad329eb9008531528"
+    },
+    {
+      "id": "DEP327-01068",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/bin/kr-companion.rs",
+      "bytes": 3882,
+      "sha256": "776b14648a15079fcf3c9434917300fb4e0cc955f007d3da7d8332062814976c"
+    },
+    {
+      "id": "DEP327-01069",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion.rs",
+      "bytes": 5076,
+      "sha256": "3d17300083a41d4c17deafd3918467c033a821f4ff187048d93bc20530caee94"
+    },
+    {
+      "id": "DEP327-01070",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/companion_tests.rs",
+      "bytes": 4584,
+      "sha256": "fd34096e5a53ba8ede24eb0da5484482de55c69917fea6f9dfd8b1d15ca9533e"
+    },
+    {
+      "id": "DEP327-01071",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/control.rs",
+      "bytes": 1769,
+      "sha256": "d1af56c5d1ad870124ccc7ad1fb67100e930bbdbfdb1e9cb0520124c466749b6"
+    },
+    {
+      "id": "DEP327-01072",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/lib.rs",
+      "bytes": 11418,
+      "sha256": "c277af6de7501946f7376aa168dae10d2803cecc3d6f1b9531645bd7526ee77f"
+    },
+    {
+      "id": "DEP327-01073",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/proxy.rs",
+      "bytes": 7621,
+      "sha256": "dfc45ff6566f6f4917217b147f6f8e9b6fd82a729653164eb749ac01cf8ef500"
+    },
+    {
+      "id": "DEP327-01074",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router/tests.rs",
+      "bytes": 6217,
+      "sha256": "72940ed32c8e0b41c9abd97bd4bbe05c3b1ea1b12f45be3ecc35b07c4f8da1c7"
+    },
+    {
+      "id": "DEP327-01075",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/router.rs",
+      "bytes": 15276,
+      "sha256": "492134cc47c473f86534501defd80d6a4369658b87e147d1c89872b33b3d955c"
+    },
+    {
+      "id": "DEP327-01076",
+      "kind": "repository",
+      "path": "rust/crates/kr-tunnel/src/tests.rs",
+      "bytes": 6171,
+      "sha256": "b424a582ab60c99bbc17d2878b6aec232c2521c6a0f01f75cd587d29b4d40dec"
+    },
+    {
+      "id": "DEP327-01077",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/Cargo.toml",
+      "bytes": 132,
+      "sha256": "394295a04ed6a1aa2ebfc1dee76455347a56b750c6f379dbf38249fdb0904c49"
+    },
+    {
+      "id": "DEP327-01078",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "bytes": 5253,
+      "sha256": "5ffe9e3a9a01a8b4cbb5ed951523201f56951170723532f7b8ee813869734859"
+    },
+    {
+      "id": "DEP327-01079",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/battle.rs",
+      "bytes": 8805,
+      "sha256": "997eeb698225b0f63692dcbc97555476bc05eb635f32cd41608c35a9c22171af"
+    },
+    {
+      "id": "DEP327-01080",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/bomb_motion.rs",
+      "bytes": 3504,
+      "sha256": "31671965131eb46b9fc2217394b6ef0d42f404f78ee1c864b327d083530ae907"
+    },
+    {
+      "id": "DEP327-01081",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/player.rs",
+      "bytes": 7967,
+      "sha256": "5dca3e46e0a9735208175ac500df7f8854b12e369c2dd000d407ca7229722a16"
+    },
+    {
+      "id": "DEP327-01082",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 25562,
+      "sha256": "89888fae749c82e9708ae2149cd2dc655f6fd3b64d5465baa1a220a69c371e6e"
+    },
+    {
+      "id": "DEP327-01083",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room_selection.rs",
+      "bytes": 5578,
+      "sha256": "56ebfdef63192cb8d9bcddb4f1c81b575398042a6b6b22ad7a2d85b0bc6a8bec"
+    },
+    {
+      "id": "DEP327-01084",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "bytes": 4080,
+      "sha256": "651c8948e6c95aafe8ae8b46e8691ad6de8dae47d53bd312f1f5bdbd0b78b64e"
+    },
+    {
+      "id": "DEP327-01085",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/lib.rs",
+      "bytes": 5842,
+      "sha256": "03311fa6f48b18b4282e86d0ffd02ff4a9ac3ca4dae31f958bca4632fcca7aca"
+    },
+    {
+      "id": "DEP327-01086",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/README.md",
+      "bytes": 1454,
+      "sha256": "775ff1c406378240213ced8834202e242755e8c8a76a85a861894fb4e39b627d"
+    },
+    {
+      "id": "DEP327-01087",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_account_profiles.rs",
+      "bytes": 3073,
+      "sha256": "4054a9d8affab3eebe8c77a30e76f0947a1d60843bda15a71e6fa991c2696023"
+    },
+    {
+      "id": "DEP327-01088",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "bytes": 2609,
+      "sha256": "fd99deed353254f10534af382511798ca459d1ba08ddf4c52d17676508b1e67e"
+    },
+    {
+      "id": "DEP327-01089",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_bomb_report122.rs",
+      "bytes": 1218,
+      "sha256": "c1306a89e0f86d61341addbc1105484dc8de9c28b0b614ef38953cfefdbf7d6c"
+    },
+    {
+      "id": "DEP327-01090",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_room_choices.rs",
+      "bytes": 1722,
+      "sha256": "d527c228dcc86ec11057e1c8c5037ced0e44d2ae03f27da5e8884ad49f41e80d"
+    },
+    {
+      "id": "DEP327-01091",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_roster.rs",
+      "bytes": 1121,
+      "sha256": "62501ed78735f409edac88f0828fbbb89451734dc17a706bf622b4e2085c8859"
+    },
+    {
+      "id": "DEP327-01092",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_selected_start.rs",
+      "bytes": 3067,
+      "sha256": "c09cd6f51c35e32b029d21cff7a1e3ae9c3ee65f8075ecd9ed60852b15a00b09"
+    },
+    {
+      "id": "DEP327-01093",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_start_vectors.rs",
+      "bytes": 5035,
+      "sha256": "aa73f205ddb467bf7eabac52ef442e449d40eefac8b1b2a608044759511c176d"
+    },
+    {
+      "id": "DEP327-01094",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_vectors.rs",
+      "bytes": 4477,
+      "sha256": "6ae394a5c5ab8c8110a0677244745ffe13fde8a50636b4a6c309a97aeb7bd0a7"
+    },
+    {
+      "id": "DEP327-01095",
+      "kind": "repository",
+      "path": "rust/rust-toolchain.toml",
+      "bytes": 86,
+      "sha256": "2ad6f15416572b4836585087f1d4abc53b8fa2dbd616f8dacfaa587ed6714228"
+    },
+    {
+      "id": "DEP327-01096",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/de094f6e990f8d208e24b345c90021f892adf9b1c5fe80e716a1ac159de9efd4.jsonl",
+      "sha256": "de094f6e990f8d208e24b345c90021f892adf9b1c5fe80e716a1ac159de9efd4",
+      "bytes": 4106,
+      "count": 22,
+      "files_bytes": 184186
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/ed580910afed720d137c2ed2a98ebbce1fe42f2a5e0b330538d9c207b20a4217.jsonl",
+      "sha256": "ed580910afed720d137c2ed2a98ebbce1fe42f2a5e0b330538d9c207b20a4217",
+      "bytes": 455,
+      "count": 2,
+      "files_bytes": 91
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/3c0ae664ba973b12a2fe2be6977c6d5147fefcfb1682af66fe023c8c66594ffe.jsonl",
+      "sha256": "3c0ae664ba973b12a2fe2be6977c6d5147fefcfb1682af66fe023c8c66594ffe",
+      "bytes": 461,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r2",
+      "path": "local/evidence-manifests/9385d124b2b2ec8bd5f8709bc5d592b595eb7aea2eb2ba21b37e2c15a8afdfb6.jsonl",
+      "sha256": "9385d124b2b2ec8bd5f8709bc5d592b595eb7aea2eb2ba21b37e2c15a8afdfb6",
+      "bytes": 458,
+      "count": 2,
+      "files_bytes": 30631
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r3",
+      "path": "local/evidence-manifests/2f0b72895530f7ed91db9e6b21c687c8d51c208be09c323759a3ab070acb82df.jsonl",
+      "sha256": "2f0b72895530f7ed91db9e6b21c687c8d51c208be09c323759a3ab070acb82df",
+      "bytes": 23451,
+      "count": 91,
+      "files_bytes": 1247145
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r4",
+      "path": "local/evidence-manifests/653911a5c11924dc22d4c0cc118fd480443ff04416ba659a2801a90b52acfd0f.jsonl",
+      "sha256": "653911a5c11924dc22d4c0cc118fd480443ff04416ba659a2801a90b52acfd0f",
+      "bytes": 23075,
+      "count": 89,
+      "files_bytes": 1246943
+    },
+    {
+      "run": "local/research/codex/g1-punch-build-r5",
+      "path": "local/evidence-manifests/97c9b35a5d45d30c5f9a8b60c02df895e156226d1eeba747c6fe5555a57a1723.jsonl",
+      "sha256": "97c9b35a5d45d30c5f9a8b60c02df895e156226d1eeba747c6fe5555a57a1723",
+      "bytes": 23053,
+      "count": 89,
+      "files_bytes": 1218827
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r1",
+      "path": "local/evidence-manifests/fd9f3113c813e33971d212630cc1e00756df66382fd71e190c12d473a1f57776.jsonl",
+      "sha256": "fd9f3113c813e33971d212630cc1e00756df66382fd71e190c12d473a1f57776",
+      "bytes": 102600,
+      "count": 495,
+      "files_bytes": 6956907487
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r4",
+      "path": "local/evidence-manifests/e164d0fc2475021c890ad41637808f96198d8b75b2f143cf2b435a052fc96677.jsonl",
+      "sha256": "e164d0fc2475021c890ad41637808f96198d8b75b2f143cf2b435a052fc96677",
+      "bytes": 8207,
+      "count": 41,
+      "files_bytes": 265482729
+    },
+    {
+      "run": "local/research/codex/g1-punch-rust-native-r5",
+      "path": "local/evidence-manifests/d3705f191338a3d5579d574d82e1aaa60a11d8f3c6856bb56c982c6b0e4a7b73.jsonl",
+      "sha256": "d3705f191338a3d5579d574d82e1aaa60a11d8f3c6856bb56c982c6b0e4a7b73",
+      "bytes": 26199,
+      "count": 126,
+      "files_bytes": 282125748
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/e1050e56987cc2ea26ae12b3d21a2b9301ab5ec78c9490a531bf817c76db0461.jsonl",
+      "sha256": "e1050e56987cc2ea26ae12b3d21a2b9301ab5ec78c9490a531bf817c76db0461",
+      "bytes": 452,
+      "count": 2,
+      "files_bytes": 116
+    },
+    {
+      "run": "local/research/codex/rust-four-startup-inputs-r1",
+      "path": "local/evidence-manifests/f6fea44c61fcb65dae62a97e7c747548e37e0d1eb843aaae8cd78db2768e0303.jsonl",
+      "sha256": "f6fea44c61fcb65dae62a97e7c747548e37e0d1eb843aaae8cd78db2768e0303",
+      "bytes": 2809,
+      "count": 14,
+      "files_bytes": 2562
     }
   ]
 }

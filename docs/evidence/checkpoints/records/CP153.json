@@ -120,15 +120,6 @@
       "limits": "Productionunchanged/testlogreuse notrerun; fullrequiredlocal/history beforecommit; nosemanticgatecertification."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP153-hot-loading-contest.json",
-      "bytes": 308991,
-      "sha256": "2cc8743cdeefd5c6881970820d0845f95493d9c7705361fb9e7302f1bbc3725e",
-      "count": 1239
-    }
-  ],
   "delta": {
     "added": [
       "Same-runcurrent2keycontestedFire/singlewinner/nativeeffect/reset/2outcomes/Ready/fourpeerwindows withloading-onlyobservergate."
@@ -228,6 +219,146 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP1532keycontest/loadinggate/nativeeffect/outcome/reset/Ready/scope/PR223merge/closednarrowsteps/currentdirectEOFnext synchronizedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00001",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/actor-fields.json",
+      "bytes": 1738295,
+      "sha256": "2472d3ee153fa49d73eb1d8ed83cc0d4c09c0d30b84862fd61beef457d338d77"
+    },
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00005",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/capture-claim-verification.json",
+      "bytes": 2706,
+      "sha256": "3329ef3495baecc1e9b91880cb247cb23d60ceb25c4c664e6ad71ab224ddb7ce"
+    },
+    {
+      "id": "RUN-00007",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/contest-verification.json",
+      "bytes": 3169,
+      "sha256": "971cbc9273266dda0364fa7d4e0fa9ec268d9201fff6535689583bc6649436fd"
+    },
+    {
+      "id": "RUN-00017",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/cycle-boundary-verification.json",
+      "bytes": 2421,
+      "sha256": "9d5e41b9ac291e3b531bd1e5c9c4702067c474a942f1969292cc1f28f9130f35"
+    },
+    {
+      "id": "RUN-01152",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/docs-check.txt",
+      "bytes": 175,
+      "sha256": "09effe0f29b8fbe5e10ca5524e199d7e103f6c39f22e0d0a175e2c4bdd651a8a"
+    },
+    {
+      "id": "RUN-01154",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/endpoint-peer-verification.json",
+      "bytes": 155307,
+      "sha256": "782e72edabbbf30f705e5530ccd9f5366d2db56c662b857e3acb46f1b1a3f7ea"
+    },
+    {
+      "id": "RUN-01163",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/hot-gate-verification.json",
+      "bytes": 5411,
+      "sha256": "73848471ff45b47f760b7f6e5978052133fce872fb41962c8aee7fff4443e12c"
+    },
+    {
+      "id": "RUN-01166",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/issues-check.txt",
+      "bytes": 130,
+      "sha256": "8acd0cf6e5a506d2b2b133f335a1834849a0fb1e16f9882169a9bb9dc0246d95"
+    },
+    {
+      "id": "RUN-01169",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/loading-milestones.json",
+      "bytes": 19332,
+      "sha256": "e8214ef5da6ea4fd4e6603da2336c8686da07b44698fb4c3653fae24626234d8"
+    },
+    {
+      "id": "RUN-01173",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "c2dcb95bccc85ffd5e15d7333eb566b19b7ce1e3da7980075ba3f818682157d1"
+    },
+    {
+      "id": "RUN-01176",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/raw-seal.json",
+      "bytes": 227947,
+      "sha256": "2e5a3af7b7336d040bad92eb2a1fb324fa3b503393c469f01e055e0060828118"
+    },
+    {
+      "id": "RUN-01178",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/runtime-preflight.json",
+      "bytes": 18745,
+      "sha256": "f4a30c9df8658e4b3c8fde958d75468ed8f460b92ed4996b0b71341ab783be17"
+    },
+    {
+      "id": "RUN-01221",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/server-source-reuse.json",
+      "bytes": 7089,
+      "sha256": "bbcda4cbab90e8a42e4b979af417431adda51c0b613039298cfdb91f594b9ef7"
+    },
+    {
+      "id": "RUN-01228",
+      "kind": "local",
+      "path": "local/research/codex/loading-hot-gate-r5/visual-review.json",
+      "bytes": 965,
+      "sha256": "c4f8259cb0d2a95389dd5d587ae1a560aae413e51961517c1d1f9958242be69f"
+    },
+    {
+      "id": "RUN-01237",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/server-tests.txt",
+      "bytes": 337,
+      "sha256": "279e571a9c544630e0633f5bc5d621da7503699017783630d834afc8545ada31"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/loading-hot-gate-r5",
+      "path": "local/evidence-manifests/2419b91843d7ec89256859e97a3796a08bea8e9dc660c088fef291b88a0753ff.jsonl",
+      "sha256": "2419b91843d7ec89256859e97a3796a08bea8e9dc660c088fef291b88a0753ff",
+      "bytes": 242426,
+      "count": 1215,
+      "files_bytes": 118484910
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/744d67d258080491f027744c5733e7f726f10406e164a0d58898712577854b0e.jsonl",
+      "sha256": "744d67d258080491f027744c5733e7f726f10406e164a0d58898712577854b0e",
+      "bytes": 942,
+      "count": 5,
+      "files_bytes": 100909
+    },
+    {
+      "run": "local/research/codex/loading-observer-control-r4",
+      "path": "local/evidence-manifests/8decc15e964afc5ddfd0deac19279f79e3aa7003a699df48141bd2176bc9e5ce.jsonl",
+      "sha256": "8decc15e964afc5ddfd0deac19279f79e3aa7003a699df48141bd2176bc9e5ce",
+      "bytes": 693,
+      "count": 3,
+      "files_bytes": 61134
     }
   ]
 }

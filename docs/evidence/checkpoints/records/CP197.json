@@ -157,15 +157,6 @@
       "limits": "NEXT-K7-NATIVE-INTERLEAVE active; noK6c/K7closure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP197-incoming-admission.json",
-      "bytes": 459550,
-      "sha256": "421ad31aa85682bf668a12acd577800849032dbcdad7b5869fb27ba763f694f0",
-      "count": 1768
-    }
-  ],
   "delta": {
     "added": [
       "Opt-inincomingABsourceIPv4/perroletransportcounter/defaultlegacyretained/configandunknownexhaustionnegativecontrols.",
@@ -264,6 +255,916 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP197optinoperatorbinding/controls/nativecompatibility/limits/nextactualinterleave synchronizedbeforecomplete, audit200unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ADMIT197-00007",
+      "kind": "local",
+      "path": "local/research/codex/admission-KR-two-cycles-r1/B-winner-reset-verification.json",
+      "bytes": 3368,
+      "sha256": "06e44d9ce376973e8b2b17d7eab3d9a6d13f337ae765f36135c5e183bc57c8c6"
+    },
+    {
+      "id": "ADMIT197-00008",
+      "kind": "local",
+      "path": "local/research/codex/admission-KR-two-cycles-r1/NAT-cycles-endpoint-verification.json",
+      "bytes": 10579,
+      "sha256": "81b223db7dbe9cccaaaf9760428a629de6906143f77b45ce0f402a8343b7a990"
+    },
+    {
+      "id": "ADMIT197-00010",
+      "kind": "local",
+      "path": "local/research/codex/admission-KR-two-cycles-r1/admission-native-verification.json",
+      "bytes": 1354,
+      "sha256": "697b61f8348e17f1079f317608f410e21fb00ea7a5305714dcf974d3140c958c"
+    },
+    {
+      "id": "ADMIT197-00015",
+      "kind": "local",
+      "path": "local/research/codex/admission-KR-two-cycles-r1/contest-reset-verification.json",
+      "bytes": 1269,
+      "sha256": "5d70ec496021f5886ef3dd53b65f42d693151c8cd01af7af4add1be0ba03df73"
+    },
+    {
+      "id": "ADMIT197-00018",
+      "kind": "local",
+      "path": "local/research/codex/admission-KR-two-cycles-r1/cp197-snapshot/docs/PLAN.md",
+      "bytes": 54648,
+      "sha256": "d0fe2e687cdfa60f56143c7b38d1067439718e455d2a17ce0f9eca05f93c1fea"
+    },
+    {
+      "id": "ADMIT197-01440",
+      "kind": "local",
+      "path": "local/research/codex/admission-KR-two-cycles-r1/raw-seal.json",
+      "bytes": 289286,
+      "sha256": "71e6c8d2ffef784ea2261902c41bdeb68c0d53300ffb12013c66457c5e03006a"
+    },
+    {
+      "id": "ADMIT197-01538",
+      "kind": "local",
+      "path": "local/research/codex/admission-KR-two-cycles-r1/source-first.json",
+      "bytes": 2936,
+      "sha256": "b69b388f637d7ae25b3ca650faba5393c7c8593ab796049e50b854909a81c414"
+    },
+    {
+      "id": "ADMIT197-01548",
+      "kind": "local",
+      "path": "local/research/codex/admission-bundle-r1/bundle.json",
+      "bytes": 12008,
+      "sha256": "d1d48a33bac8abe11dcbf92a6135b44a501abcb9c60a199de3c7cfe147a1ddcc"
+    },
+    {
+      "id": "ADMIT197-01608",
+      "kind": "local",
+      "path": "local/research/codex/admission-bundle-tests-r2.txt",
+      "bytes": 9516,
+      "sha256": "160ea6ec040d039dbcbd207bc86b4a8d9e90cdacbb387ade990520b21ed930b5"
+    },
+    {
+      "id": "ADMIT197-01609",
+      "kind": "local",
+      "path": "local/research/codex/admission-bundle-tests.txt",
+      "bytes": 1419,
+      "sha256": "634cace5de08af78f2b57fd052aac0f0a064b5a3c72e8ef068bbd928d9d89533"
+    },
+    {
+      "id": "ADMIT197-01610",
+      "kind": "local",
+      "path": "local/research/codex/admission-checkpoint-tests.txt",
+      "bytes": 142,
+      "sha256": "f797e82a52c95e00fea042e1fb649d9fbcf65b26724da569ead3e2fc6f28e8a1"
+    },
+    {
+      "id": "ADMIT197-01615",
+      "kind": "local",
+      "path": "local/research/codex/admission-realTCP-r1/raw-seal.json",
+      "bytes": 947,
+      "sha256": "691a80a18580f498036a537b00fb8c543bc899a11c2f0d9a6adf0ee4e6ae7364"
+    },
+    {
+      "id": "ADMIT197-01616",
+      "kind": "local",
+      "path": "local/research/codex/admission-realTCP-r1/verification.json",
+      "bytes": 7265,
+      "sha256": "f287e788dd2066223c929a363bb56924228a6c6cf99bbf8d424ff4be6576e12e"
+    },
+    {
+      "id": "ADMIT197-01617",
+      "kind": "local",
+      "path": "local/research/codex/admission-server-tests-r2.txt",
+      "bytes": 402,
+      "sha256": "b71582ddff846964537fc741325b4fdafcff5a9e6c441635127dd858c69dc4b3"
+    },
+    {
+      "id": "ADMIT197-01625",
+      "kind": "local",
+      "path": "local/research/codex/basic-battle-r1/basic582.bin",
+      "bytes": 84,
+      "sha256": "d943860a44868af75ee63d10e206e67aa016a284dffdaf9f1827221fad28fb63"
+    },
+    {
+      "id": "ADMIT197-01632",
+      "kind": "local",
+      "path": "local/research/codex/bothdead-result-r1/rank175-all-dead.bin",
+      "bytes": 340,
+      "sha256": "434d70c09ed609d55ca2e59401c78eb32cbd27a303de2986985f3c527d6d7510"
+    },
+    {
+      "id": "ADMIT197-01637",
+      "kind": "local",
+      "path": "local/research/codex/cp196-exact-head-results.json",
+      "bytes": 707,
+      "sha256": "c1afa3721477caa4cf5e7c4d8b254ab00b249c8d4adb50d952896798920a4258"
+    },
+    {
+      "id": "ADMIT197-01638",
+      "kind": "local",
+      "path": "local/research/codex/cp196-pr-merged.json",
+      "bytes": 123,
+      "sha256": "c9ee95506d950334d0182707cb5aa22300b7d571ebb34da9a9d9b9cdf550cd34"
+    },
+    {
+      "id": "ADMIT197-01645",
+      "kind": "local",
+      "path": "local/research/codex/cp197-docs-check.txt",
+      "bytes": 175,
+      "sha256": "7010154734ebae3f174fdbd5b44023fa7f86e94a931a236ce51e7384daa0b5e5"
+    },
+    {
+      "id": "ADMIT197-01657",
+      "kind": "local",
+      "path": "local/research/codex/login-runtime-r1/login-netinfo-candidate.bin",
+      "bytes": 69,
+      "sha256": "b40615efdf3d4b8a6d530a43c3a1e425cb88eeb76304d88601a70b48ca72abe6"
+    },
+    {
+      "id": "ADMIT197-01660",
+      "kind": "local",
+      "path": "local/research/codex/peer-events-r1/rank175-Awin-Blose.bin",
+      "bytes": 340,
+      "sha256": "2252ad693d8a7fd8280f223189849edd5c131b6a6c2809b783dd253d4c0e4dce"
+    },
+    {
+      "id": "ADMIT197-01670",
+      "kind": "local",
+      "path": "local/research/codex/room-input-r1/room-list91-empty.bin",
+      "bytes": 40,
+      "sha256": "66192f9ab8be8c609a0989a16e5403968aa8c6087caa43775920efd3ea78ec2e"
+    },
+    {
+      "id": "ADMIT197-01671",
+      "kind": "local",
+      "path": "local/research/codex/room-player-r1/slot110-team0.bin",
+      "bytes": 44,
+      "sha256": "d571c6b47965e1d5ed04df838818ce9e5f7de1fcac720a71d5a811137405f9d9"
+    },
+    {
+      "id": "ADMIT197-01672",
+      "kind": "local",
+      "path": "local/research/codex/room-reply-r1/reply86.bin",
+      "bytes": 49,
+      "sha256": "f7d21cf19f44a9d4c2a17d55c1090af1e2145689fc17e39c2e0e299574c2a4e2"
+    },
+    {
+      "id": "ADMIT197-01679",
+      "kind": "local",
+      "path": "local/research/codex/start-reply-r1/player106-id1-team0.bin",
+      "bytes": 242,
+      "sha256": "f2c9caf15bf008d8df6dcf33ce10da603dc7c8f7335cf413f0454692ce7f9934"
+    },
+    {
+      "id": "ADMIT197-01683",
+      "kind": "local",
+      "path": "local/research/codex/wcp-fields-r1/eight-v2-responses.bin",
+      "bytes": 317,
+      "sha256": "5930ad297fc2c1540d8cbd894e88d3c1d2831bd4565dfb8ad96644568b87ad38"
+    },
+    {
+      "id": "ADMIT197-01685",
+      "kind": "repository",
+      "path": "server/chain_capacity.py",
+      "bytes": 2990,
+      "sha256": "7c84dfaf1800ee3d7a150c76ad81b439fbe0f5daa6a91da9755b818a14460fae"
+    },
+    {
+      "id": "ADMIT197-01686",
+      "kind": "repository",
+      "path": "server/item_claims.py",
+      "bytes": 3340,
+      "sha256": "7990ae9195e9f8bba56b04101f352506194dbd0252793183993ce101a8674a2e"
+    },
+    {
+      "id": "ADMIT197-01687",
+      "kind": "repository",
+      "path": "server/own_profile.py",
+      "bytes": 3503,
+      "sha256": "eb790c85b60d04734a1b31a68c205f9f27815eb0b31b8c902acaf8339ed4c59b"
+    },
+    {
+      "id": "ADMIT197-01688",
+      "kind": "repository",
+      "path": "server/probe_codec.py",
+      "bytes": 3227,
+      "sha256": "23ba54e6940953a52ff737e7e06b2761a8eb22eab444310b49b1d96efa12411d"
+    },
+    {
+      "id": "ADMIT197-01689",
+      "kind": "repository",
+      "path": "server/probe_room.py",
+      "bytes": 1468,
+      "sha256": "91292494d492c7851bd5432649adf528e1b07290316dc56ba1478f8a209a08bc"
+    },
+    {
+      "id": "ADMIT197-01690",
+      "kind": "repository",
+      "path": "server/probe_service.py",
+      "bytes": 112770,
+      "sha256": "d6fa4c1ed3513d6a2fcb974a5b202f5cb2ecab9b99ba8a4464f82d7ada0b4a5c"
+    },
+    {
+      "id": "ADMIT197-01691",
+      "kind": "repository",
+      "path": "server/replacement_slots.py",
+      "bytes": 2664,
+      "sha256": "17b42200f6d79b2858d83c515b172a2785fb5d5ac78240dd497d9ddbfc3d583d"
+    },
+    {
+      "id": "ADMIT197-01692",
+      "kind": "repository",
+      "path": "server/room_team_mode.py",
+      "bytes": 1489,
+      "sha256": "fb69ea8d4b93c1d602aefb538970efbb7496a7bb178cca2f301f520b72ae16ec"
+    },
+    {
+      "id": "ADMIT197-01693",
+      "kind": "repository",
+      "path": "server/room_title.py",
+      "bytes": 3353,
+      "sha256": "0295a9c0cf25294c09bebb4133a84c4b3e151fc91b485d95048bdacc74ad487a"
+    },
+    {
+      "id": "ADMIT197-01694",
+      "kind": "repository",
+      "path": "server/round_fence.py",
+      "bytes": 2339,
+      "sha256": "aabcc7f1d623573fc217de8df05403f83d82425bbe5d6e78872b3096a2d46708"
+    },
+    {
+      "id": "ADMIT197-01695",
+      "kind": "repository",
+      "path": "server/terrain_model.py",
+      "bytes": 4232,
+      "sha256": "2de9d0048dbe03ca134e9d49d32596f49b7415538227a8966577c21f45f88e05"
+    },
+    {
+      "id": "ADMIT197-01696",
+      "kind": "repository",
+      "path": "server/terrain_profile.py",
+      "bytes": 1866,
+      "sha256": "1f0dbe2191b9fc4f1b6cc0e8d34f7965f37a2abb19801b41537e14f60150d390"
+    },
+    {
+      "id": "ADMIT197-01697",
+      "kind": "repository",
+      "path": "server/test_admission_ip.py",
+      "bytes": 7753,
+      "sha256": "15c72110195d48bd4165684a098232f56be8e78f261f454911e796b90a192a76"
+    },
+    {
+      "id": "ADMIT197-01698",
+      "kind": "repository",
+      "path": "server/test_all_dead_result.py",
+      "bytes": 6245,
+      "sha256": "bd4380acb2dd5e12a4f7b89310b554c79fb486f1a782ab47c1ad1808ef9cac10"
+    },
+    {
+      "id": "ADMIT197-01699",
+      "kind": "repository",
+      "path": "server/test_battle_exit.py",
+      "bytes": 7390,
+      "sha256": "5ce10120e0881caaaf87303d71a8474e678db9133ac992f87accb3327c1dfbe3"
+    },
+    {
+      "id": "ADMIT197-01700",
+      "kind": "repository",
+      "path": "server/test_battle_exit_pending.py",
+      "bytes": 4096,
+      "sha256": "713c561dc4a00e706f0a51c1dd7b90bf2c8bc5a737bc9d85704a26112b8adc8f"
+    },
+    {
+      "id": "ADMIT197-01701",
+      "kind": "repository",
+      "path": "server/test_bomb_admission.py",
+      "bytes": 5720,
+      "sha256": "7e00660a7a4800de4ec1c8b27fd6b162692a4f3c8177ebbd9d19769a245befee"
+    },
+    {
+      "id": "ADMIT197-01702",
+      "kind": "repository",
+      "path": "server/test_capacity_reservations.py",
+      "bytes": 6771,
+      "sha256": "2a94f711b693dd0a5cf39d292af2f5c0b18f190325305f78c411b19d6f11da24"
+    },
+    {
+      "id": "ADMIT197-01703",
+      "kind": "repository",
+      "path": "server/test_chain_capacity.py",
+      "bytes": 6576,
+      "sha256": "583e2942d9732dd2680d8240a25fdcb5fc41f142b87d7ec70beff72bc96d075b"
+    },
+    {
+      "id": "ADMIT197-01704",
+      "kind": "repository",
+      "path": "server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "ADMIT197-01705",
+      "kind": "repository",
+      "path": "server/test_death_envelope.py",
+      "bytes": 4695,
+      "sha256": "c7762c9faeb220dc81d49976a763f23aa57fa82ac4c9d90109f926b02506f8a6"
+    },
+    {
+      "id": "ADMIT197-01706",
+      "kind": "repository",
+      "path": "server/test_death_lifecycle.py",
+      "bytes": 6815,
+      "sha256": "6fc82097a1b50ad54cbd64feaf567153c8555eb4abbc6506811e09d045c76ac4"
+    },
+    {
+      "id": "ADMIT197-01707",
+      "kind": "repository",
+      "path": "server/test_departure_send_failure.py",
+      "bytes": 8675,
+      "sha256": "16670b0a677895ce7d09ae3bfd555e474acc83dc623f4f96123ffac772f5da7d"
+    },
+    {
+      "id": "ADMIT197-01708",
+      "kind": "repository",
+      "path": "server/test_guest_rejoin.py",
+      "bytes": 5981,
+      "sha256": "58a7ead0829a69896a88409ca7f6cd7410cb60cabb054d28e8adbfefef87f873"
+    },
+    {
+      "id": "ADMIT197-01709",
+      "kind": "repository",
+      "path": "server/test_hidden_items.py",
+      "bytes": 6368,
+      "sha256": "962f389dd22fd6cfa90b032b8c66f189bee30555e444fa29ef35cca9c2c68986"
+    },
+    {
+      "id": "ADMIT197-01710",
+      "kind": "repository",
+      "path": "server/test_hidden_terrain_admission.py",
+      "bytes": 5549,
+      "sha256": "594ad8ea105bf35d10b9481cd944e6ecd7acf5d8549eb0778b8ce0989f24040d"
+    },
+    {
+      "id": "ADMIT197-01711",
+      "kind": "repository",
+      "path": "server/test_host_back_rejoin.py",
+      "bytes": 7956,
+      "sha256": "9f16c503d4065c70f0064d76fafcab6ed9ac0e548d94211e261f7785f8fc4e4f"
+    },
+    {
+      "id": "ADMIT197-01712",
+      "kind": "repository",
+      "path": "server/test_host_battle_exit.py",
+      "bytes": 5912,
+      "sha256": "6ae9acbdbf5cd7af9bffabb914d4ec4dc529f34859f0730e1872f65e4d888bfe"
+    },
+    {
+      "id": "ADMIT197-01713",
+      "kind": "repository",
+      "path": "server/test_item_claims.py",
+      "bytes": 2832,
+      "sha256": "63d68da46f91bcc9d4d3517bfd4ebc0d8f0a08c283a83715ac5b14a6efb71eea"
+    },
+    {
+      "id": "ADMIT197-01714",
+      "kind": "repository",
+      "path": "server/test_loading_timeout.py",
+      "bytes": 5446,
+      "sha256": "f097692abec1b682d0bee59d1b207f20a46cc94e508c65a1b6e743e3d540c5de"
+    },
+    {
+      "id": "ADMIT197-01715",
+      "kind": "repository",
+      "path": "server/test_mode_host_rejoin.py",
+      "bytes": 6296,
+      "sha256": "3eec3af510794461354caee609c625adc95abca97595a5a482d1383dd742d892"
+    },
+    {
+      "id": "ADMIT197-01716",
+      "kind": "repository",
+      "path": "server/test_needle_escape.py",
+      "bytes": 12165,
+      "sha256": "2ce054abdaae7f6c8eb11d5eddec0bc42b0390d9b761a037c253709341b29c38"
+    },
+    {
+      "id": "ADMIT197-01717",
+      "kind": "repository",
+      "path": "server/test_network_config.py",
+      "bytes": 5843,
+      "sha256": "538bf81adc50c4bcfda25fb75ed3a82ec2cdc57cdb93faa7ea4e4751d6dec900"
+    },
+    {
+      "id": "ADMIT197-01718",
+      "kind": "repository",
+      "path": "server/test_own_profile.py",
+      "bytes": 11986,
+      "sha256": "a7370f1a1ec59dade6d0baf644ab45252da8daa2817701f65089eabd3aff42d9"
+    },
+    {
+      "id": "ADMIT197-01719",
+      "kind": "repository",
+      "path": "server/test_pickup_state.py",
+      "bytes": 4222,
+      "sha256": "8dc4ef39983417d0cbf961b5419bd2e4b7e91f4a8f4da8d3d5577ec5634ed8f9"
+    },
+    {
+      "id": "ADMIT197-01720",
+      "kind": "repository",
+      "path": "server/test_probe_codec.py",
+      "bytes": 1366,
+      "sha256": "ddb2cd6303aaf99af43d7add3735fec1b7c41461deb38f482d4a1b113a21367c"
+    },
+    {
+      "id": "ADMIT197-01721",
+      "kind": "repository",
+      "path": "server/test_probe_eof.py",
+      "bytes": 9629,
+      "sha256": "6456b237ce138fc179f9acf23436af18eefae96c2babb0d677682df66102a018"
+    },
+    {
+      "id": "ADMIT197-01722",
+      "kind": "repository",
+      "path": "server/test_probe_replacement.py",
+      "bytes": 7893,
+      "sha256": "25e30eaac70b8e2a1715c259aeb2511d2fbb52df49a323f58e33217eba3f36b7"
+    },
+    {
+      "id": "ADMIT197-01723",
+      "kind": "repository",
+      "path": "server/test_probe_room.py",
+      "bytes": 1605,
+      "sha256": "4ace7f5828661d891fa2006731f0aceed081a527c09be335bbee47e9a721e783"
+    },
+    {
+      "id": "ADMIT197-01724",
+      "kind": "repository",
+      "path": "server/test_probe_service.py",
+      "bytes": 4835,
+      "sha256": "055eeb3ed6431e0503468ee392c8f29a6c661db8cdc4bd1e402a9f748a434a6e"
+    },
+    {
+      "id": "ADMIT197-01725",
+      "kind": "repository",
+      "path": "server/test_replacement_slots.py",
+      "bytes": 14542,
+      "sha256": "6921dcdf792253140b5c92478df99931a1e3e8dbc7f0872156a84f9c313bf262"
+    },
+    {
+      "id": "ADMIT197-01726",
+      "kind": "repository",
+      "path": "server/test_report127_freshness.py",
+      "bytes": 6855,
+      "sha256": "bc884f7ca75935462eb4aabbd09fd915c905d39c762bef2e3fcfadf0a79d6bc7"
+    },
+    {
+      "id": "ADMIT197-01727",
+      "kind": "repository",
+      "path": "server/test_rescue_contact.py",
+      "bytes": 10792,
+      "sha256": "a5bdd661fe5b945efdb08c7f387ac6dda482c95e2cf88b68da3401235fd40afb"
+    },
+    {
+      "id": "ADMIT197-01728",
+      "kind": "repository",
+      "path": "server/test_result21_peer.py",
+      "bytes": 5268,
+      "sha256": "364364d96ea1671a60e33149f3fa2bd54ceb6862e749729f228decb0323925ef"
+    },
+    {
+      "id": "ADMIT197-01729",
+      "kind": "repository",
+      "path": "server/test_result_freshness.py",
+      "bytes": 16181,
+      "sha256": "96c84c6f586adaf88f72339fd76270ef3d8316762465d658aebaea94a4585137"
+    },
+    {
+      "id": "ADMIT197-01730",
+      "kind": "repository",
+      "path": "server/test_room_reentry.py",
+      "bytes": 8691,
+      "sha256": "e254dfb07e2522f408dbbe6b53df6d8962c90130893cee4d7e2d3550132df433"
+    },
+    {
+      "id": "ADMIT197-01731",
+      "kind": "repository",
+      "path": "server/test_room_team_mode.py",
+      "bytes": 6025,
+      "sha256": "111c6fcbac9ee2708dd68017de7cda12942b7ad075a5d4d9950d259644d0f503"
+    },
+    {
+      "id": "ADMIT197-01732",
+      "kind": "repository",
+      "path": "server/test_room_title.py",
+      "bytes": 7332,
+      "sha256": "00812f31a7a834dbb8969aa0b599f82a71ff7292187b577ba52150100beb3826"
+    },
+    {
+      "id": "ADMIT197-01733",
+      "kind": "repository",
+      "path": "server/test_round_fence.py",
+      "bytes": 2455,
+      "sha256": "6923d90f30636dfe05b09d45f5bbaceaf3ef32223d48eba0213a6c3cc40b037a"
+    },
+    {
+      "id": "ADMIT197-01734",
+      "kind": "repository",
+      "path": "server/test_terrain_policy.py",
+      "bytes": 8653,
+      "sha256": "7661f22c06f76e8dbb8859665fa06ef5febe0d824a0a430b6948db6afa52d34d"
+    },
+    {
+      "id": "ADMIT197-01735",
+      "kind": "repository",
+      "path": "server/test_udp_round_keys.py",
+      "bytes": 1224,
+      "sha256": "cfb36ee95d48c79b1800081a73b54498242f366eb08a2e3be850ff4a3503ce96"
+    },
+    {
+      "id": "ADMIT197-01736",
+      "kind": "repository",
+      "path": "server/udp_round_keys.py",
+      "bytes": 1187,
+      "sha256": "db58ae1f25bcbeb52c2d25c7db6afbf1021ddd3af29702e756f5f41886530a0d"
+    },
+    {
+      "id": "ADMIT197-01737",
+      "kind": "repository",
+      "path": "tools/artifacts.py",
+      "bytes": 1089,
+      "sha256": "3806dc33d23db39ce591eb6fc3d2d9638c177a1a08862c474b4bb1d6614188d3"
+    },
+    {
+      "id": "ADMIT197-01738",
+      "kind": "repository",
+      "path": "tools/build_wine_copy.py",
+      "bytes": 10700,
+      "sha256": "bd8b35b2922905660b16fb6dadd93d4b26a419c79de0080965956c677c743cc6"
+    },
+    {
+      "id": "ADMIT197-01739",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 30165,
+      "sha256": "a91a1868b8da8870818fa11e6c38f81fb5c36a284610a60fb47f041b7891bd94"
+    },
+    {
+      "id": "ADMIT197-01740",
+      "kind": "repository",
+      "path": "tools/check_docs.py",
+      "bytes": 2385,
+      "sha256": "f279d369b80b9aa0c588f362e4ee54b072a7f67276b465a2d9338e3f8846e678"
+    },
+    {
+      "id": "ADMIT197-01741",
+      "kind": "repository",
+      "path": "tools/check_issue_links.py",
+      "bytes": 8290,
+      "sha256": "7b0090890ef00dd3a984d9945d0a4a2ba2ad11a3ebbe2d53e792f637b35127b5"
+    },
+    {
+      "id": "ADMIT197-01742",
+      "kind": "repository",
+      "path": "tools/checkpoint_store.py",
+      "bytes": 5681,
+      "sha256": "3f3c9b30e73127601832f38c0d7eb118254671020112ad19ccc5dd3c2e92ec8c"
+    },
+    {
+      "id": "ADMIT197-01743",
+      "kind": "repository",
+      "path": "tools/checkpoints.py",
+      "bytes": 4689,
+      "sha256": "cd25124cd5583c23ff20f6bb6cbe891526b2594a2af0ae34347ac38b23baade2"
+    },
+    {
+      "id": "ADMIT197-01744",
+      "kind": "repository",
+      "path": "tools/export_probe_profile.py",
+      "bytes": 9863,
+      "sha256": "20d90106996dd866af4d3d0fe5824812bb63c6e4f376f6013eb55e9ea67adcb3"
+    },
+    {
+      "id": "ADMIT197-01745",
+      "kind": "repository",
+      "path": "tools/feature_catalog.py",
+      "bytes": 15672,
+      "sha256": "765658526f6efccf218e7387d309cc263846ef72c0a1090b87f3d2cc5d3181c0"
+    },
+    {
+      "id": "ADMIT197-01746",
+      "kind": "repository",
+      "path": "tools/migrate_checkpoints.py",
+      "bytes": 7076,
+      "sha256": "29e864a5a7ef546b331381be8a23a127993319a931d4ff9688a8bf1346e116e3"
+    },
+    {
+      "id": "ADMIT197-01747",
+      "kind": "repository",
+      "path": "tools/patch_wine_compare.py",
+      "bytes": 3828,
+      "sha256": "7ad075d26a90029381ca25a8eae1768cfe96ecd8878828e43a918e108f7e3768"
+    },
+    {
+      "id": "ADMIT197-01748",
+      "kind": "repository",
+      "path": "tools/probe_bundle.py",
+      "bytes": 5536,
+      "sha256": "a4b03a71afb418bc76b328486c32fa25a464996b0b991ac98b9e3c24487e56be"
+    },
+    {
+      "id": "ADMIT197-01749",
+      "kind": "repository",
+      "path": "tools/probe_channel_identity.py",
+      "bytes": 981,
+      "sha256": "b4dbf4c9b827007fa9bcb441db26e0230fb4654e5480f5b242157d2d32c3f68b"
+    },
+    {
+      "id": "ADMIT197-01750",
+      "kind": "repository",
+      "path": "tools/terrain_shadow.py",
+      "bytes": 334,
+      "sha256": "71856e537954ab963ce27a6d057913974b7bb8b1dea863764961ed9846d2addc"
+    },
+    {
+      "id": "ADMIT197-01751",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_absolute_local.py",
+      "bytes": 3145,
+      "sha256": "b6c2b85fb4b315101435dfbc95ea41ffe4a5a8fa3c2eec2c7d4f3c769b86c737"
+    },
+    {
+      "id": "ADMIT197-01752",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_audit_order.py",
+      "bytes": 1350,
+      "sha256": "157b9b99bf25383da498239b5627739962251b25f2c67925730663775e76f9e9"
+    },
+    {
+      "id": "ADMIT197-01753",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 4619,
+      "sha256": "5775b465b96441e7eb6919f7b9dc8e19b6c965055b12fb73083aaffb7b21402d"
+    },
+    {
+      "id": "ADMIT197-01754",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_store.py",
+      "bytes": 12900,
+      "sha256": "927bd9bac21d1bd7c4adccfbebf4f7b5748165a0e67479dc6a48d4c5e1bc743b"
+    },
+    {
+      "id": "ADMIT197-01755",
+      "kind": "repository",
+      "path": "tools/test_checkpoints.py",
+      "bytes": 14329,
+      "sha256": "541952fd575741a70e1dcc9490fe11d8e990e6dfc9c05012d531d5bd930c5cd6"
+    },
+    {
+      "id": "ADMIT197-01756",
+      "kind": "repository",
+      "path": "tools/test_export_all_dead.py",
+      "bytes": 2472,
+      "sha256": "9181544944d5e72d3d7137b763fbb42fcb554b6efd687e17b241c88cc0116c19"
+    },
+    {
+      "id": "ADMIT197-01757",
+      "kind": "repository",
+      "path": "tools/test_export_host_back.py",
+      "bytes": 2713,
+      "sha256": "0759e4f55ceebe5330a0402c5d0ee9aad962de842253c691854af2e8b0c16845"
+    },
+    {
+      "id": "ADMIT197-01758",
+      "kind": "repository",
+      "path": "tools/test_export_preset.py",
+      "bytes": 2108,
+      "sha256": "c5a076ae3e5750ee4490cc296d4b6fd3c0ae980508ef0f6187a8199530333666"
+    },
+    {
+      "id": "ADMIT197-01759",
+      "kind": "repository",
+      "path": "tools/test_export_preset_selection.py",
+      "bytes": 5147,
+      "sha256": "e4fb7cd61a4db647e82f484456b8ba7fb05b80175a008d62fa2e29ba8cf6f309"
+    },
+    {
+      "id": "ADMIT197-01760",
+      "kind": "repository",
+      "path": "tools/test_feature_catalog.py",
+      "bytes": 3154,
+      "sha256": "124f62bc87c67e669751600dc2be4d2cd5e7f9e28ef16c7906fbc37ec6f63883"
+    },
+    {
+      "id": "ADMIT197-01761",
+      "kind": "repository",
+      "path": "tools/test_issue_links.py",
+      "bytes": 4175,
+      "sha256": "b6025c8c6e11b2b179a4b58e20e73f48edf989a0749ef968c5409c1d3fd5d764"
+    },
+    {
+      "id": "ADMIT197-01762",
+      "kind": "repository",
+      "path": "tools/test_probe_bundle.py",
+      "bytes": 6511,
+      "sha256": "017fd0ffe987a82ef6219d4530f91a77cac6f27da9c5ee0b7aeafa2a77828a94"
+    },
+    {
+      "id": "ADMIT197-01763",
+      "kind": "repository",
+      "path": "tools/test_probe_channel_identity.py",
+      "bytes": 1989,
+      "sha256": "a7c8c05a66c959ec521aa391f6bc5ea0b4d8444ced130e260281b48d40737cf5"
+    },
+    {
+      "id": "ADMIT197-01764",
+      "kind": "repository",
+      "path": "tools/test_terrain_shadow.py",
+      "bytes": 2384,
+      "sha256": "6aaf971b9e95fc2d77a908f6927ae5c5dc00718151602d5009b3255adde18048"
+    },
+    {
+      "id": "ADMIT197-01765",
+      "kind": "repository",
+      "path": "tools/verify_bootstrap.py",
+      "bytes": 11740,
+      "sha256": "6356574e528252480c54d5ef2972fd3d88b94ba2658aa1814b8f0fc22f2deb74"
+    },
+    {
+      "id": "ADMIT197-01766",
+      "kind": "repository",
+      "path": "tools/verify_primitives.py",
+      "bytes": 5272,
+      "sha256": "5cef1ce63e7895e89e3899252a78e958f59218247ac81a1b86f517ed5ddcf6dd"
+    },
+    {
+      "id": "ADMIT197-01767",
+      "kind": "repository",
+      "path": "tools/windows_console.py",
+      "bytes": 1820,
+      "sha256": "3cc762507cceb37acee58d138e574834b5969630bf9c58430df9de738d328283"
+    },
+    {
+      "id": "ADMIT197-01768",
+      "kind": "repository",
+      "path": "tools/wine_probe.py",
+      "bytes": 16512,
+      "sha256": "a1e7abeaaf4a4def11fe56845dc5d5d7c05d86813786f4024188d7902032e0fb"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/abort-rejoin-r1",
+      "path": "local/evidence-manifests/6e18f8a60345a04c72d43d012567a1389e81ffb873309f09f607d730a78e13a2.jsonl",
+      "sha256": "6e18f8a60345a04c72d43d012567a1389e81ffb873309f09f607d730a78e13a2",
+      "bytes": 467,
+      "count": 2,
+      "files_bytes": 484
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/5501a56f16e120ca558ba8d5e5131a53eb1e761c1437d2dd36b1b36c39a43060.jsonl",
+      "sha256": "5501a56f16e120ca558ba8d5e5131a53eb1e761c1437d2dd36b1b36c39a43060",
+      "bytes": 5048,
+      "count": 27,
+      "files_bytes": 6190898
+    },
+    {
+      "run": "local/research/codex/admission-KR-two-cycles-r1",
+      "path": "local/evidence-manifests/a0804419d4b4b3ea5b3fe67b527b9eeef7b6869519d3ef0a51f3fbafe7ee30fb.jsonl",
+      "sha256": "a0804419d4b4b3ea5b3fe67b527b9eeef7b6869519d3ef0a51f3fbafe7ee30fb",
+      "bytes": 325337,
+      "count": 1534,
+      "files_bytes": 69205637
+    },
+    {
+      "run": "local/research/codex/admission-bundle-r1",
+      "path": "local/evidence-manifests/d48ed77b6b5a950b60656641d78aba4f744ad022579fde02b04bb6be30c233e6.jsonl",
+      "sha256": "d48ed77b6b5a950b60656641d78aba4f744ad022579fde02b04bb6be30c233e6",
+      "bytes": 14216,
+      "count": 59,
+      "files_bytes": 166762
+    },
+    {
+      "run": "local/research/codex/admission-realTCP-r1",
+      "path": "local/evidence-manifests/14674271c52e0e738d36645930cb0ebe39fbbcd59ef96b2738113d20b3cf22bb.jsonl",
+      "sha256": "14674271c52e0e738d36645930cb0ebe39fbbcd59ef96b2738113d20b3cf22bb",
+      "bytes": 732,
+      "count": 3,
+      "files_bytes": 67200
+    },
+    {
+      "run": "local/research/codex/auth-profile-r1",
+      "path": "local/evidence-manifests/4864d5d9bb43a6065b07ef433df266c1b9e25442bd6c5957e9f4cc27b5b46a96.jsonl",
+      "sha256": "4864d5d9bb43a6065b07ef433df266c1b9e25442bd6c5957e9f4cc27b5b46a96",
+      "bytes": 648,
+      "count": 3,
+      "files_bytes": 523
+    },
+    {
+      "run": "local/research/codex/bomb-calc-r1",
+      "path": "local/evidence-manifests/0ffcf62024aa105135e655b4d1d423a33c272a5e75766226953cf117b25f6fff.jsonl",
+      "sha256": "0ffcf62024aa105135e655b4d1d423a33c272a5e75766226953cf117b25f6fff",
+      "bytes": 442,
+      "count": 2,
+      "files_bytes": 92
+    },
+    {
+      "run": "local/research/codex/bomb-position-r1",
+      "path": "local/evidence-manifests/fd6da80e3ffad1e00b83676e7fec879c00cbcfff80e4da89bfdf737291e38554.jsonl",
+      "sha256": "fd6da80e3ffad1e00b83676e7fec879c00cbcfff80e4da89bfdf737291e38554",
+      "bytes": 650,
+      "count": 3,
+      "files_bytes": 258
+    },
+    {
+      "run": "local/research/codex/cache-boundary-r1",
+      "path": "local/evidence-manifests/2d7e375afd5e91e0a4338caa60a7277246988d83032b1b8363af73fb4df3555c.jsonl",
+      "sha256": "2d7e375afd5e91e0a4338caa60a7277246988d83032b1b8363af73fb4df3555c",
+      "bytes": 465,
+      "count": 2,
+      "files_bytes": 179
+    },
+    {
+      "run": "local/research/codex/duo-round-r1",
+      "path": "local/evidence-manifests/e6395435dd429915bc69a277ff67f13c33c24f4a0ccd6fa230bd6962282d3505.jsonl",
+      "sha256": "e6395435dd429915bc69a277ff67f13c33c24f4a0ccd6fa230bd6962282d3505",
+      "bytes": 1026,
+      "count": 5,
+      "files_bytes": 661
+    },
+    {
+      "run": "local/research/codex/k4-current-291-r1",
+      "path": "local/evidence-manifests/e47206f31e0a00bdd71e88b57cbe30260b21fa4a8743901bbea96e84c262c237.jsonl",
+      "sha256": "e47206f31e0a00bdd71e88b57cbe30260b21fa4a8743901bbea96e84c262c237",
+      "bytes": 508,
+      "count": 2,
+      "files_bytes": 63749120
+    },
+    {
+      "run": "local/research/codex/leave-r1",
+      "path": "local/evidence-manifests/f7e284adfae6061253395063ec39eb42edeb6a8aea14dad97611c357d4326375.jsonl",
+      "sha256": "f7e284adfae6061253395063ec39eb42edeb6a8aea14dad97611c357d4326375",
+      "bytes": 438,
+      "count": 2,
+      "files_bytes": 126
+    },
+    {
+      "run": "local/research/codex/peer-duo-r1",
+      "path": "local/evidence-manifests/baa1579d585d6e421646ca9be4cb6eb1ee287bd98e8c2b7273665d7b581c52ba.jsonl",
+      "sha256": "baa1579d585d6e421646ca9be4cb6eb1ee287bd98e8c2b7273665d7b581c52ba",
+      "bytes": 447,
+      "count": 2,
+      "files_bytes": 377
+    },
+    {
+      "run": "local/research/codex/postwait-r1",
+      "path": "local/evidence-manifests/090e5a8d398a3dacdc9e1360f5ee7d84fefd99b759e4cf8c303a68bb50d0a143.jsonl",
+      "sha256": "090e5a8d398a3dacdc9e1360f5ee7d84fefd99b759e4cf8c303a68bb50d0a143",
+      "bytes": 647,
+      "count": 3,
+      "files_bytes": 168
+    },
+    {
+      "run": "local/research/codex/rejoin-r1",
+      "path": "local/evidence-manifests/aa758bcffe119c4a2ba7155001ad380a761b0600cde4f6e619770be629491a09.jsonl",
+      "sha256": "aa758bcffe119c4a2ba7155001ad380a761b0600cde4f6e619770be629491a09",
+      "bytes": 991,
+      "count": 5,
+      "files_bytes": 617
+    },
+    {
+      "run": "local/research/codex/round-go-r1",
+      "path": "local/evidence-manifests/9a8ab8fd1e76f26a84ad15aa08fbe1b8006f6c5810fae9c128f9cd5c7873911a.jsonl",
+      "sha256": "9a8ab8fd1e76f26a84ad15aa08fbe1b8006f6c5810fae9c128f9cd5c7873911a",
+      "bytes": 440,
+      "count": 2,
+      "files_bytes": 129
+    },
+    {
+      "run": "local/research/codex/round-repeat-r1",
+      "path": "local/evidence-manifests/9ad77e0cd58c60a9ab8df0a8ee93313705d7d01cad9a3587f70abbb146341b70.jsonl",
+      "sha256": "9ad77e0cd58c60a9ab8df0a8ee93313705d7d01cad9a3587f70abbb146341b70",
+      "bytes": 457,
+      "count": 2,
+      "files_bytes": 384
     }
   ]
 }

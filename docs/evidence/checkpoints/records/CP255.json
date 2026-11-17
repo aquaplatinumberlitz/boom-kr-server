@@ -134,15 +134,6 @@
       "limits": "No gateclosure; nextperPLAN."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP255-rust-account-native-lifecycle.json",
-      "bytes": 160021,
-      "sha256": "d7d2c5849db24af2b696739cb848bec09af63774f5fb937a699d7cfa8c201441",
-      "count": 592
-    }
-  ],
   "delta": {
     "added": [
       "Three native account negative/lifecycle cases on sameCP254server."
@@ -267,6 +258,150 @@
       "path": "docs/evidence/issue-reconciliation/review.json",
       "state": "updated",
       "reason": "CP255three scopednativeaccountnegative-lifecycle/limits/remainingfreshlogin-projector-roomgame; no oldcomplete/audit/raw changes."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUST255-00001",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/account-native-lifecycle.json",
+      "bytes": 4203,
+      "sha256": "d8b80a5fe26499a840951db6f9e96068ce7ad3d5b2c9c6b73d3b09882866200e"
+    },
+    {
+      "id": "RUST255-00008",
+      "kind": "local",
+      "path": "local/research/codex/cp255-issue-updated.json",
+      "bytes": 9364,
+      "sha256": "f7e85626735ef4f2ab78a69a5a13c21499de125497186663c3d99d461902a39f"
+    },
+    {
+      "id": "RUST255-00090",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-expire-native-r1/lifecycle-verification.json",
+      "bytes": 5759,
+      "sha256": "afa7cccbb8357517ffeaadb862732bd79271724435defc0970d28c641a045dde"
+    },
+    {
+      "id": "RUST255-00223",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-expire-native-r1/ui-review.json",
+      "bytes": 1028,
+      "sha256": "805e259939dab41072600425d4abfc33fb988931a43804963c21ec7996b983e5"
+    },
+    {
+      "id": "RUST255-00239",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-negative-delivery-r2/manual-acceptance.json",
+      "bytes": 2574,
+      "sha256": "9f5572ee3d57f13376bf5e7fd36def329164bede229674c47e3542263e9dd897"
+    },
+    {
+      "id": "RUST255-00242",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-negative-delivery-r2/snapshot/docs/PLAN.md",
+      "bytes": 104004,
+      "sha256": "dd592aaad3d8e61921792e7e4c1713dd083c060bc11d4b521943a4592e72b4fa"
+    },
+    {
+      "id": "RUST255-00322",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-revoke-native-r1/lifecycle-verification.json",
+      "bytes": 5824,
+      "sha256": "3870c12b5da16a219ebbdfdeb7186049a23293b0f4e0224d345c54e3ebc469bf"
+    },
+    {
+      "id": "RUST255-00411",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-revoke-native-r1/ui-review.json",
+      "bytes": 1028,
+      "sha256": "2e784bc8c1245195f5beb4c5aaf94581978a13a1fe229da8c3b7af1b8e47aa7a"
+    },
+    {
+      "id": "RUST255-00577",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-swap-r1/negative-verification.json",
+      "bytes": 5853,
+      "sha256": "ddd0fd0b9933ef7dcf7d274fd7d5baceca300feeb1ca0bf757ea802e92aee0e0"
+    },
+    {
+      "id": "RUST255-00579",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-swap-r1/ui-review.json",
+      "bytes": 1107,
+      "sha256": "3196c66837e00210b60bdf76bdaf7009bd7d77b7166865318f89cdcd04ad789c"
+    },
+    {
+      "id": "RUST255-00584",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-swap-verifier-r1.txt",
+      "bytes": 462,
+      "sha256": "b76de44c80fa1af42deebc36092192b9262b1df395625831a9f0137eb76f3c71"
+    },
+    {
+      "id": "RUST255-00585",
+      "kind": "local",
+      "path": "local/research/codex/rust-account-swap-verifier-r2.txt",
+      "bytes": 151,
+      "sha256": "c0d25c8ee7f5b371a4dd281ed6abade5af2b4be372dd8433e45cb59b1fa1c880"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/d0a8c2855ae90369ba469cc97e3606c7373e50b579524feb6581b01591f4055e.jsonl",
+      "sha256": "d0a8c2855ae90369ba469cc97e3606c7373e50b579524feb6581b01591f4055e",
+      "bytes": 5701,
+      "count": 30,
+      "files_bytes": 226998
+    },
+    {
+      "run": "local/research/codex/rust-account-expire-native-r1",
+      "path": "local/evidence-manifests/382e73bb7c5f0035c4a83623632092939e2fd2661f46893c5046824fe757bc83.jsonl",
+      "sha256": "382e73bb7c5f0035c4a83623632092939e2fd2661f46893c5046824fe757bc83",
+      "bytes": 45911,
+      "count": 202,
+      "files_bytes": 174782713
+    },
+    {
+      "run": "local/research/codex/rust-account-negative-delivery-r1",
+      "path": "local/evidence-manifests/cfa1a430e392b3f65087a2b7264e079bf1413a6b0fc5f4b299dd7f1dd1d11d2a.jsonl",
+      "sha256": "cfa1a430e392b3f65087a2b7264e079bf1413a6b0fc5f4b299dd7f1dd1d11d2a",
+      "bytes": 2851,
+      "count": 12,
+      "files_bytes": 1927413
+    },
+    {
+      "run": "local/research/codex/rust-account-negative-delivery-r2",
+      "path": "local/evidence-manifests/88d55d535caa6acfd369a3d1bb038e62310422f1b5f0767904f0df24fdf206e2.jsonl",
+      "sha256": "88d55d535caa6acfd369a3d1bb038e62310422f1b5f0767904f0df24fdf206e2",
+      "bytes": 2636,
+      "count": 11,
+      "files_bytes": 1823409
+    },
+    {
+      "run": "local/research/codex/rust-account-revoke-native-r1",
+      "path": "local/evidence-manifests/42fafeabb77ef34b97385a952418df6a890346ba4c8a1ed4b1bb0a17e3bdbccd.jsonl",
+      "sha256": "42fafeabb77ef34b97385a952418df6a890346ba4c8a1ed4b1bb0a17e3bdbccd",
+      "bytes": 35569,
+      "count": 158,
+      "files_bytes": 168362530
+    },
+    {
+      "run": "local/research/codex/rust-account-swap-r1",
+      "path": "local/evidence-manifests/73dc9d9562de045b937b728843fd800e534784e42672fe283b8d9080bda34fd5.jsonl",
+      "sha256": "73dc9d9562de045b937b728843fd800e534784e42672fe283b8d9080bda34fd5",
+      "bytes": 34970,
+      "count": 163,
+      "files_bytes": 169625954
+    },
+    {
+      "run": "local/research/codex/rust-account-swap-source-r1",
+      "path": "local/evidence-manifests/32b4ad576f0b2f3eea4e527e7ce870d311b8e83a3dbd9808cf6d5606788bc4e2.jsonl",
+      "sha256": "32b4ad576f0b2f3eea4e527e7ce870d311b8e83a3dbd9808cf6d5606788bc4e2",
+      "bytes": 910,
+      "count": 4,
+      "files_bytes": 164643
     }
   ]
 }

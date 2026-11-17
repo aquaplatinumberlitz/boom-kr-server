@@ -106,15 +106,6 @@
       "limits": "New head/docs/raw/history and CI still required before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP293-character-serving.json",
-      "bytes": 385687,
-      "sha256": "abe37b51a298865274372983c5c38fd5b051f191d33fc67491fbcd13a76f72a2",
-      "count": 1493
-    }
-  ],
   "delta": {
     "added": [
       "Opt-in owned preference serving with DB-before110 and current-membership fence.",
@@ -223,5 +214,304 @@
   ],
   "completed_feature_groups": [
     "rust-m6-character-serving"
+  ],
+  "evidence": [
+    {
+      "id": "M6CHAR293-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13616,
+      "sha256": "5c332776130532db75b46fb0b5d2ed6928a9b9cf55c55d904bdd00e909a3de97"
+    },
+    {
+      "id": "M6CHAR293-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3770,
+      "sha256": "3adc0de863d10078dc119a595f42263c2faacb9f781e51857704b106b003c898"
+    },
+    {
+      "id": "M6CHAR293-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 253836,
+      "sha256": "0b55dda85dc6098a37f1fb6cfd1b25422a0bbbaee93ba7b5e797e86e6cb2108a"
+    },
+    {
+      "id": "M6CHAR293-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 149625,
+      "sha256": "88378ded6b68194a4544113119542f3818ffd27bddbbec5c4ee928cbb687ec5b"
+    },
+    {
+      "id": "M6CHAR293-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 79254,
+      "sha256": "bf9f7c0a7af3791885ba1eda926a7f1386fefe568c1564e29358e517781021be"
+    },
+    {
+      "id": "M6CHAR293-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 66425,
+      "sha256": "88735cfbcb5b810e0a453aaf82092b7283eae36294e09f82cfda3aef20e10645"
+    },
+    {
+      "id": "M6CHAR293-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 36004,
+      "sha256": "f7ecd6f8ee842f9e5a764c67ba6d356c6ebea72b5f330d654cb0e9716ec6ecfb"
+    },
+    {
+      "id": "M6CHAR293-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD109.json",
+      "bytes": 4683,
+      "sha256": "56bead4ca3de9c6a7c4f0ace47b42e8484537caf013a9aaff17d90a651122b7f"
+    },
+    {
+      "id": "M6CHAR293-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m6-character-serving.json",
+      "bytes": 5958,
+      "sha256": "747ac9e9cd5a2928e36e2f31d7ca7d473a8f86a21dd9ade52a037179cee9f73a"
+    },
+    {
+      "id": "M6CHAR293-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 266429,
+      "sha256": "916d995db1b0373df736403f8f9a936abfe2d121846d582071ad1a127d61fb18"
+    },
+    {
+      "id": "M6CHAR293-00011",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 81025,
+      "sha256": "d3bcdf8fce96b22775c0280f15fa8ff7ad842a09af31e26f87651853b77509ea"
+    },
+    {
+      "id": "M6CHAR293-00012",
+      "kind": "repository",
+      "path": "docs/protocol/life-results.md",
+      "bytes": 102059,
+      "sha256": "addc171e9173e72236fad612f55ab5ccbe984ebb4cb75510dcaf224406cb0b7a"
+    },
+    {
+      "id": "M6CHAR293-00471",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-native-r1/native/raw-seal.json",
+      "bytes": 15458,
+      "sha256": "4db00d471fd7b1d301a96be56d0aae81ac9bb42f18d85757fc5acd0d624d198a"
+    },
+    {
+      "id": "M6CHAR293-00479",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-native-r1/preference-getter-verification.json",
+      "bytes": 608,
+      "sha256": "a53d5b1d6bd0b4439da62ddc5d38a4cf4f5d027614afae91959853bcbf58b998"
+    },
+    {
+      "id": "M6CHAR293-00480",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-native-r1/preference-native-verification.json",
+      "bytes": 239915,
+      "sha256": "22b435f3d5655e3e08de81f9739c833929c94a31a3aef4dd7896f035c955ec2e"
+    },
+    {
+      "id": "M6CHAR293-00970",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-native-r3/native/raw-seal.json",
+      "bytes": 15458,
+      "sha256": "27d27a492906b08a17ddae0eaacba10cc17bdf9cb4360089f19cdf63f0cd7caa"
+    },
+    {
+      "id": "M6CHAR293-00978",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-native-r3/preference-getter-verification.json",
+      "bytes": 608,
+      "sha256": "d79ae9baea56e4cbc4c5237df1398eed3edfb49d4c9fb2f4c3bd9f598dfccbb0"
+    },
+    {
+      "id": "M6CHAR293-00979",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-native-r3/preference-native-verification.json",
+      "bytes": 242159,
+      "sha256": "53b5d258b3052303be24f288655a32d6ef3c46bc98a6f9223a435d4eba62629b"
+    },
+    {
+      "id": "M6CHAR293-00990",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-serving-build-final-r1.txt",
+      "bytes": 72,
+      "sha256": "8c233a54790c4800d3dd585436af679aa838da259bfdb129412e2d51cdb75cdc"
+    },
+    {
+      "id": "M6CHAR293-00992",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-serving-clippy-final-r1.txt",
+      "bytes": 72,
+      "sha256": "8c233a54790c4800d3dd585436af679aa838da259bfdb129412e2d51cdb75cdc"
+    },
+    {
+      "id": "M6CHAR293-00994",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-serving-fmt-final-r1.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M6CHAR293-01347",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-serving-tcp-r3/raw-seal.json",
+      "bytes": 23871,
+      "sha256": "8101a99abd420fc2a2586f9719044e4facc0b48a6f2beb959567c8b0ceba96a0"
+    },
+    {
+      "id": "M6CHAR293-01348",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-serving-tcp-r3/result.json",
+      "bytes": 695,
+      "sha256": "1525b6c69e77004fad5f9cd294a8bde156f6cba1cf2947c6d2881480a5b12922"
+    },
+    {
+      "id": "M6CHAR293-01351",
+      "kind": "local",
+      "path": "local/research/codex/m6-pref-serving-workspace-final-r1.txt",
+      "bytes": 20277,
+      "sha256": "f891aefde1209857d4cab0e07444ec6aacb1bc925364411394e09a841c1796b0"
+    },
+    {
+      "id": "M6CHAR293-01472",
+      "kind": "local",
+      "path": "local/research/codex/m6-store-delivery-receipt.json",
+      "bytes": 1084,
+      "sha256": "f873092e7b6c4f9b139103b6c0a1640488722683954504b95cca829f4e66b3b6"
+    },
+    {
+      "id": "M6CHAR293-01486",
+      "kind": "repository",
+      "path": "rust/README.md",
+      "bytes": 34811,
+      "sha256": "289b3e682b78426ce63d7556b3494d10c000329ae62d4a3d03e99afc19629685"
+    },
+    {
+      "id": "M6CHAR293-01487",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 24334,
+      "sha256": "f5e89034bb952928f7ad2f98b607d752d02e47156cdb11dea2db853a20914e1a"
+    },
+    {
+      "id": "M6CHAR293-01488",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/lib.rs",
+      "bytes": 62753,
+      "sha256": "40cde967d9b51a130da2b82fc4e2bad49a3430f69f3c4ffca46ab8717a351811"
+    },
+    {
+      "id": "M6CHAR293-01489",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 53052,
+      "sha256": "19b696258643214130ec773f7240d20de8ceec82ad983e3d6066738d042d2dc2"
+    },
+    {
+      "id": "M6CHAR293-01490",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 160162,
+      "sha256": "1d4715b2ee644565a7a23459e297542b06533b703c505ad417a5df4b9fe09d0e"
+    },
+    {
+      "id": "M6CHAR293-01491",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 10677,
+      "sha256": "5f7f974413a90ea5451eec30968fa99a3372c0763262e286ad15072557465396"
+    },
+    {
+      "id": "M6CHAR293-01492",
+      "kind": "repository",
+      "path": "tools/README.md",
+      "bytes": 28597,
+      "sha256": "b5f3304a3476b3ce14ad7333cc244f5faab36138ccc03a686facfe5467eb430b"
+    },
+    {
+      "id": "M6CHAR293-01493",
+      "kind": "repository",
+      "path": "tools/test_rust_persistent_character.py",
+      "bytes": 8631,
+      "sha256": "82628b2705d49384046fba7990dac7d3696a1bbfa5c64f5687b1d9673ea7d644"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/0bf36aba5fea74d6fb98c32592e17a4e9f130d7633fbbff0b5e76cb794b59e0c.jsonl",
+      "sha256": "0bf36aba5fea74d6fb98c32592e17a4e9f130d7633fbbff0b5e76cb794b59e0c",
+      "bytes": 6094,
+      "count": 32,
+      "files_bytes": 346439
+    },
+    {
+      "run": "local/research/codex/m6-pref-native-r1",
+      "path": "local/evidence-manifests/5ff2e1f02b10935be12959f50cfe8843be951fa7646927ff65c23309c0be087f.jsonl",
+      "sha256": "5ff2e1f02b10935be12959f50cfe8843be951fa7646927ff65c23309c0be087f",
+      "bytes": 97720,
+      "count": 464,
+      "files_bytes": 523096863
+    },
+    {
+      "run": "local/research/codex/m6-pref-native-r2",
+      "path": "local/evidence-manifests/b043e1b6c1131630a55070bbdd80bb52ecfa61b5a4977942dfe4338dc38a5445.jsonl",
+      "sha256": "b043e1b6c1131630a55070bbdd80bb52ecfa61b5a4977942dfe4338dc38a5445",
+      "bytes": 3961,
+      "count": 20,
+      "files_bytes": 255575177
+    },
+    {
+      "run": "local/research/codex/m6-pref-native-r3",
+      "path": "local/evidence-manifests/90e7ac7daf7debc6e36453dbab3cfff1031ceb86fb5e0ef9e5f3b3e90ac16aae.jsonl",
+      "sha256": "90e7ac7daf7debc6e36453dbab3cfff1031ceb86fb5e0ef9e5f3b3e90ac16aae",
+      "bytes": 100464,
+      "count": 477,
+      "files_bytes": 523239207
+    },
+    {
+      "run": "local/research/codex/m6-pref-serving-tcp-r1",
+      "path": "local/evidence-manifests/9c0652d1d33a55e101e707d38bbebef21a9cfe1853ed56f576e6592a25afe0f4.jsonl",
+      "sha256": "9c0652d1d33a55e101e707d38bbebef21a9cfe1853ed56f576e6592a25afe0f4",
+      "bytes": 24296,
+      "count": 117,
+      "files_bytes": 199504653
+    },
+    {
+      "run": "local/research/codex/m6-pref-serving-tcp-r2",
+      "path": "local/evidence-manifests/c5b0e23be1cd8cde96956694514e4a46ec37e2710681a83352bfa457344901df.jsonl",
+      "sha256": "c5b0e23be1cd8cde96956694514e4a46ec37e2710681a83352bfa457344901df",
+      "bytes": 24497,
+      "count": 118,
+      "files_bytes": 199490916
+    },
+    {
+      "run": "local/research/codex/m6-pref-serving-tcp-r3",
+      "path": "local/evidence-manifests/2809a9228b71214836423b173003a692bf104a2b2a794efbce425e6690eb4bc4.jsonl",
+      "sha256": "2809a9228b71214836423b173003a692bf104a2b2a794efbce425e6690eb4bc4",
+      "bytes": 23906,
+      "count": 115,
+      "files_bytes": 199480602
+    },
+    {
+      "run": "local/research/codex/m6-silent-setup-wakeup-r2",
+      "path": "local/evidence-manifests/d36eb8168cc575f847a05e3505d23ea307d3080b99cb6ceb37a89a6fec2cd0fe.jsonl",
+      "sha256": "d36eb8168cc575f847a05e3505d23ea307d3080b99cb6ceb37a89a6fec2cd0fe",
+      "bytes": 24651,
+      "count": 117,
+      "files_bytes": 199506403
+    }
   ]
 }

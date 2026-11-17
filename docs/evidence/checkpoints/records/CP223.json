@@ -165,15 +165,6 @@
       "limits": "Nextscopedentry-return/cachequestion;oldEOFbefore17blockerremains,CP224auditrequired."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP223-auth-session-lifecycle.json",
-      "bytes": 337998,
-      "sha256": "a82d99061ab61816a4bd66aed2b05a4b55ea447fce4cce4ce537e2a080f1e5cf",
-      "count": 1271
-    }
-  ],
   "delta": {
     "added": [
       "Nativeaccountidentityfollowsvalidtokenunderendpointpermutation/orderinversion;sealedpositivecontrolfromafterCP222.",
@@ -282,6 +273,170 @@
       "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
       "state": "updated",
       "reason": "CP223facts/limits/phase-specificnativeerror-vs-failedretry/corrections/currentconsumerquestion/canonicalbacklinks synced;oldcompletehistory/AUD064unchanged,nextCP224auditdue."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "AUTH223-00304",
+      "kind": "local",
+      "path": "local/research/codex/auth-admitted-lifecycle-r1/eof-r2-verification.json",
+      "bytes": 2088,
+      "sha256": "18ba2b93fbfca06a37e7eaf0890fbd07adb96c56b3890098c8c65cf8af771068"
+    },
+    {
+      "id": "AUTH223-00308",
+      "kind": "local",
+      "path": "local/research/codex/auth-admitted-lifecycle-r1/observation-correction.json",
+      "bytes": 1633,
+      "sha256": "5137059833885bf3e3a1b93f1348787156b5f52ed388f50c88ae93a102c087c5"
+    },
+    {
+      "id": "AUTH223-00751",
+      "kind": "local",
+      "path": "local/research/codex/auth-admitted-retry-r1/retry-r1-verification.json",
+      "bytes": 2543,
+      "sha256": "73e2419522125c052069c9f5eef98b797bed626e5e8d245392652356178e43a3"
+    },
+    {
+      "id": "AUTH223-00752",
+      "kind": "local",
+      "path": "local/research/codex/auth-admitted-retry-r1/retry-r2-verification.json",
+      "bytes": 1301,
+      "sha256": "a1c1fb3e9b024d600baa46ee83871243c15d13f7747962428a91a5fbf228ef38"
+    },
+    {
+      "id": "AUTH223-00876",
+      "kind": "local",
+      "path": "local/research/codex/auth-endpoint-account-r1/swapped-positive/raw-seal.json",
+      "bytes": 22580,
+      "sha256": "e8cd6469a65e3c2e15eddd94f28249a8fc957055bceeac7e27346eddc076e98c"
+    },
+    {
+      "id": "AUTH223-00880",
+      "kind": "local",
+      "path": "local/research/codex/auth-endpoint-account-r1/verification.json",
+      "bytes": 14315,
+      "sha256": "bf4637b0589888fbafd3fc57ee1300aab9dccddb7f02ce2333ce029228701ad5"
+    },
+    {
+      "id": "AUTH223-01040",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-connect-r1/connect-path-r2/raw-seal.json",
+      "bytes": 33893,
+      "sha256": "e5192b5e8f5035ce78b7a973b2631d5ee6d0eee59e60b106ed769924cb4e237c"
+    },
+    {
+      "id": "AUTH223-01211",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-connect-r1/verification-r2.json",
+      "bytes": 3071,
+      "sha256": "9543c62a957b36aab3ff952af27a6da8fde8f92ef392e9045af9b88499d0c712"
+    },
+    {
+      "id": "AUTH223-01212",
+      "kind": "local",
+      "path": "local/research/codex/auth-retry-connect-r1/verification.json",
+      "bytes": 2553,
+      "sha256": "a99f6a4101b6d0df387e9bff4b46273fbf20bc8b7224e8da98806d700e1fe42c"
+    },
+    {
+      "id": "AUTH223-01213",
+      "kind": "local",
+      "path": "local/research/codex/auth-session-delivery-r1/batch-verification.json",
+      "bytes": 4388,
+      "sha256": "af88c3bceebb869292cdecdb50ae82674d4cf9284fc7cb09b953450e7466bdb3"
+    },
+    {
+      "id": "AUTH223-01218",
+      "kind": "local",
+      "path": "local/research/codex/auth-session-delivery-r1/cp223-snapshot/docs/RESEARCH.md",
+      "bytes": 43793,
+      "sha256": "3b2c0dc1fb31d7ab9c06d14b0ff1500e6bc3d3a86a9372cd68ec24a722c88bd9"
+    },
+    {
+      "id": "AUTH223-01224",
+      "kind": "local",
+      "path": "local/research/codex/auth-session-delivery-r1/manual-review.json",
+      "bytes": 2985,
+      "sha256": "75cfcf8c8ab7195a5cb831d3f8ad2763319f1aa6f9385fb0daff584aa6a1fed0"
+    },
+    {
+      "id": "AUTH223-01233",
+      "kind": "local",
+      "path": "local/research/codex/cp223-catalog.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "AUTH223-01234",
+      "kind": "local",
+      "path": "local/research/codex/cp223-docs-pre-record-final.txt",
+      "bytes": 175,
+      "sha256": "2a6ddba69b872b9449445de921a16497c2199182a984d1a355ab161866b9ee8f"
+    },
+    {
+      "id": "AUTH223-01240",
+      "kind": "local",
+      "path": "local/research/codex/cp223-issue14-updated.json",
+      "bytes": 37362,
+      "sha256": "c2b69be686dae77daa6526221d90eeb132a07d03b653e70701efb5b89eb5891f"
+    },
+    {
+      "id": "AUTH223-01243",
+      "kind": "local",
+      "path": "local/research/codex/cp223-issue285-updated.json",
+      "bytes": 10688,
+      "sha256": "d98913851064211e64312084222399056790f22594bda5a8771a739a5cf8677e"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/d4277808b6f228d366a21cac525b9ad5dc7480a93034b2e17c53dd4773faf6ae.jsonl",
+      "sha256": "d4277808b6f228d366a21cac525b9ad5dc7480a93034b2e17c53dd4773faf6ae",
+      "bytes": 8244,
+      "count": 44,
+      "files_bytes": 7043162
+    },
+    {
+      "run": "local/research/codex/auth-admitted-lifecycle-r1",
+      "path": "local/evidence-manifests/f506c17fef289fb700c0b3681832603228325a4e5fe5d5748b2a87f40c3149a0.jsonl",
+      "sha256": "f506c17fef289fb700c0b3681832603228325a4e5fe5d5748b2a87f40c3149a0",
+      "bytes": 70316,
+      "count": 316,
+      "files_bytes": 23079729
+    },
+    {
+      "run": "local/research/codex/auth-admitted-retry-r1",
+      "path": "local/evidence-manifests/7ba7ce26e3883c6bf0cb243a9ed8e251552dfb8319a6258b32b3de5c70f0ffa2.jsonl",
+      "sha256": "7ba7ce26e3883c6bf0cb243a9ed8e251552dfb8319a6258b32b3de5c70f0ffa2",
+      "bytes": 93656,
+      "count": 439,
+      "files_bytes": 18979233
+    },
+    {
+      "run": "local/research/codex/auth-endpoint-account-r1",
+      "path": "local/evidence-manifests/182b79b9592137918287ab89b2543ade4c2f92232f748ea8ba217708a4bd24cf.jsonl",
+      "sha256": "182b79b9592137918287ab89b2543ade4c2f92232f748ea8ba217708a4bd24cf",
+      "bytes": 26121,
+      "count": 118,
+      "files_bytes": 4563673
+    },
+    {
+      "run": "local/research/codex/auth-retry-connect-r1",
+      "path": "local/evidence-manifests/ae577dd911aa0b218ed8ee97ad03b2e24c3fff347597e35a3cec313402e1aefe.jsonl",
+      "sha256": "ae577dd911aa0b218ed8ee97ad03b2e24c3fff347597e35a3cec313402e1aefe",
+      "bytes": 71189,
+      "count": 329,
+      "files_bytes": 12077086
+    },
+    {
+      "run": "local/research/codex/auth-session-delivery-r1",
+      "path": "local/evidence-manifests/8e32af1bfaea08caac34b5a13993a85fa1b93e131b6841665b682c805c43358c.jsonl",
+      "sha256": "8e32af1bfaea08caac34b5a13993a85fa1b93e131b6841665b682c805c43358c",
+      "bytes": 2141,
+      "count": 9,
+      "files_bytes": 1553777
     }
   ]
 }

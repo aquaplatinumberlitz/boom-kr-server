@@ -48,7 +48,7 @@ Bytes guard/getter được đối chiếu nguyên với modO/static. REA `analy
 **Hash/build:** sourceCA `a52545c1…` bất biến; runtime `CA-r2-room-keystate.exe`
 `94ee93dc7978a1ab22f25ec877e29ddcab254ca761f2eac22534421e2dd628e8` dùng lại CP018/019;
 static copy `660447c2…`, modO `a08950c8…`, map dump `49727b4d…` đều có locator/hash đầy đủ ở
-[manifest evidence CP147](../checkpoints/evidence/CP147-eight-player.json).
+[record CP147](../checkpoints/records/CP147.json) (tra cứu: `python3 tools/evidence_lookup.py cp CP147`).
 `raw-seal.json` hash **296 output files** sau `run.json`/end/cleanup; game/prefix loại khỏi raw index,
 executable pin riêng. Cleanup wineserver đúng prefix rồi process groups và exit namespace của recipe;
 không process của run còn lại. Không binary/asset/decompile được đưa vào Git.

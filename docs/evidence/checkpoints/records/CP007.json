@@ -133,372 +133,6 @@
       "limits": "Structural check cannot establish original protocol or semantic success."
     }
   ],
-  "evidence": [
-    {
-      "id": "E001",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug/run.json",
-      "bytes": 3263,
-      "sha256": "74abf17880667bba5655753226f19d0565bc560073a11569ec2a41f6e6daa19b"
-    },
-    {
-      "id": "E002",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug/client.log",
-      "bytes": 125863,
-      "sha256": "dd24e9a4a0ae55f07f77e4d34f2bfd74b88e68e89aeace3ee82860dc97cbb9af"
-    },
-    {
-      "id": "E003",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug/debug-commands.txt",
-      "bytes": 576,
-      "sha256": "b88f74a16c632cddf4267b803ceee3441d5d5338fe29f1ac9e0f87bc035aac10"
-    },
-    {
-      "id": "E004",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-heap/run.json",
-      "bytes": 3270,
-      "sha256": "48bbc3769000fcc5ac2a2bf0cae536b3b9e5d694463c9b3951e23963adad9718"
-    },
-    {
-      "id": "E005",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-heap/client.log",
-      "bytes": 76433,
-      "sha256": "ceaa038005d4601b5d145fdcf443496d6dbee626de369e6cfaa513f25e5a9646"
-    },
-    {
-      "id": "E006",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-heap/debug-commands.txt",
-      "bytes": 148,
-      "sha256": "15280356b05c4fdce85f58f967b23b9dd28e4445016463f7dfc0f95f7426c3e5"
-    },
-    {
-      "id": "E007",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-heap-progress/run.json",
-      "bytes": 3265,
-      "sha256": "243e45cf27bbb0268f6ff81a2dca7e6946b32372bdc5bee7aa50b40db253a5ba"
-    },
-    {
-      "id": "E008",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-heap-progress/client.log",
-      "bytes": 69324,
-      "sha256": "af3336d673d92e2c90c60c34ee49f2717f1334ebff18696d5a92dbc52c7a33f5"
-    },
-    {
-      "id": "E009",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-heap-progress/debug-commands.txt",
-      "bytes": 123,
-      "sha256": "b440b4cc3f470f7d3735d63dc8a51dfe6574834eec9240a9eda96460da2a8754"
-    },
-    {
-      "id": "E010",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-no-info/run.json",
-      "bytes": 3265,
-      "sha256": "38c6cfab620c3af05f625dfa3e70cb00fa3241981ea3470064559f3d3c210f6c"
-    },
-    {
-      "id": "E011",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-no-info/client.log",
-      "bytes": 78130,
-      "sha256": "a3d0ea359e68356c9a757b9ed111d2afa7fc7bc82fb4c5db1be69ff8ef963797"
-    },
-    {
-      "id": "E012",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-no-info/debug-commands.txt",
-      "bytes": 174,
-      "sha256": "4e33e0109c3091f3478de03092e2a0f9a637ce0f9caa68e17ff13504cdba2029"
-    },
-    {
-      "id": "E013",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-host/run.json",
-      "bytes": 3488,
-      "sha256": "7f0897b51317b3f3c169f29bb33f06e00a664c483527582150ecf99d8e4a949c"
-    },
-    {
-      "id": "E014",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-host/client.log",
-      "bytes": 111384,
-      "sha256": "031da34d7fadd1e380efad7e2cf72a20ce53db735d39eb5815396bd7bb97c4f8"
-    },
-    {
-      "id": "E015",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-host/debug-commands.txt",
-      "bytes": 191,
-      "sha256": "6a83850fcf3ffb9548b4860a41b57981d55a497fc525e997e21703fb9319a1f0"
-    },
-    {
-      "id": "E016",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-window/run.json",
-      "bytes": 3490,
-      "sha256": "3ae5c792e812b30479f60853b7ff6302deff1fbe6e74a51b956be8786df83565"
-    },
-    {
-      "id": "E017",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-window/client.log",
-      "bytes": 104836,
-      "sha256": "680b98ee26932b96a15a4436dd5397be8502ca15a07e824bb94d30a11e6aceda"
-    },
-    {
-      "id": "E018",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-window/debug-commands.txt",
-      "bytes": 185,
-      "sha256": "99ed199cb68d1c212a1cea7537cf6eee8dd57ec9271c6c988e631554512cafd8"
-    },
-    {
-      "id": "E019",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-metrics/run.json",
-      "bytes": 3491,
-      "sha256": "0c6ab9d6ea5c5f2e2e72217f8788b7fc22351515603afe92169b33253ca7b7e9"
-    },
-    {
-      "id": "E020",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-metrics/client.log",
-      "bytes": 107679,
-      "sha256": "a4a295c36451bf6fd62586e4699fed53e07848d5257c55264772bf47b66329b4"
-    },
-    {
-      "id": "E021",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-metrics/debug-commands.txt",
-      "bytes": 220,
-      "sha256": "146d2da2b22bad7df14a5eefd600832a00eba7bc93748fc716d2c75c6060dfff"
-    },
-    {
-      "id": "E022",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-overlay/run.json",
-      "bytes": 3494,
-      "sha256": "bb6ddaec8e8ba3e7ff78cb90865c3f4546b56d65432dc316977c02d7e6f1a0bd"
-    },
-    {
-      "id": "E023",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-overlay/client.log",
-      "bytes": 115955,
-      "sha256": "5a7b079127610475e7b48d50be29cd0286531980aedee46b009e89ba37b63777"
-    },
-    {
-      "id": "E024",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-overlay/debug-commands.txt",
-      "bytes": 205,
-      "sha256": "6d67dcfed27841a4aa87bc3ad003ff09318f7c56c1f301bf52da24e21b08abac"
-    },
-    {
-      "id": "E025",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-clientrect/run.json",
-      "bytes": 3494,
-      "sha256": "3ec86ea68e3b6b928e91068f16fdbc4b16df7086419def7ee3d00414f81d1702"
-    },
-    {
-      "id": "E026",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-clientrect/client.log",
-      "bytes": 94144,
-      "sha256": "5c25961b46da6156cc8c791ca1c92b610b361730da7792f0ce20c7cee6d896ec"
-    },
-    {
-      "id": "E027",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-clientrect/debug-commands.txt",
-      "bytes": 165,
-      "sha256": "d7cb52b08974e9a10426cc7947afa64272836897d1e63c2c27235d01bb30469a"
-    },
-    {
-      "id": "E028",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-null-audio/run.json",
-      "bytes": 3494,
-      "sha256": "3070a8d362e057f6cd03bb20cb38eed335469885d5c9f3d181e9037af2b70282"
-    },
-    {
-      "id": "E029",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-null-audio/client.log",
-      "bytes": 110463,
-      "sha256": "54a0852fef0ad601ea84bd2498de3ed990a55333682a0566775d2ca6219a65a3"
-    },
-    {
-      "id": "E030",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/debug-null-audio/debug-commands.txt",
-      "bytes": 165,
-      "sha256": "d7cb52b08974e9a10426cc7947afa64272836897d1e63c2c27235d01bb30469a"
-    },
-    {
-      "id": "E031",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/patch.json",
-      "bytes": 564,
-      "sha256": "908aae41d8f28a8d648564b39b6d9f274f3edd9b194dc4aea6df0077641dc622"
-    },
-    {
-      "id": "E032",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/no-name-patch.json",
-      "bytes": 575,
-      "sha256": "4f8cb5d8f8dbec6e06d5056ea7e7fa72c27625acb03bb5d4fdbe489538bda7df"
-    },
-    {
-      "id": "E033",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/heap-guards-patch.json",
-      "bytes": 739,
-      "sha256": "e283df2bde233378d92e8c2e5e0bb8d0de288fbb49ca1c8fdbfe3c127c5f2d61"
-    },
-    {
-      "id": "E034",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/no-info-patch.json",
-      "bytes": 533,
-      "sha256": "63ac3dc8793acf35675d2a6f1d2fe923183bd77a6b67cba587817172b20c270f"
-    },
-    {
-      "id": "E035",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/window-imports-patch.json",
-      "bytes": 598,
-      "sha256": "8b99ce2cf46873d0cb589a4b170d1f7cb49ae1d040deae79ed0b4af7b07311ba"
-    },
-    {
-      "id": "E036",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/metrics-import-patch.json",
-      "bytes": 513,
-      "sha256": "4bb43e30072fd49956fddb821c388124c5d983d1bc9d6fbeb6cc2f60c705524f"
-    },
-    {
-      "id": "E037",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/overlay-init-patch.json",
-      "bytes": 696,
-      "sha256": "be514580cff8fd0653b20dcea64f34c0abbf2d8fc06cd53a935f047dc215b8e4"
-    },
-    {
-      "id": "E038",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/clientrect-import-patch.json",
-      "bytes": 457,
-      "sha256": "fa060e75934fefe4f401c01ed9347fb4d5099418bd262258d0bb4900d4e38273"
-    },
-    {
-      "id": "E039",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/patch-window-imports.py",
-      "bytes": 2152,
-      "sha256": "3230917d1cdf07e0747410edb24c0ede2724f50d5503dd5966574841c93aec26"
-    },
-    {
-      "id": "E040",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/patch-metrics-import.py",
-      "bytes": 1784,
-      "sha256": "0426bd3aad74cf9d5454394824714802bb266e024e039da5cdc3c12b9a2d668e"
-    },
-    {
-      "id": "E041",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/patch-overlay-init.py",
-      "bytes": 1167,
-      "sha256": "5f40d4bb46495f6c7d89b6917c3e6044fd643b28c584947dfd141f62d8ffb4ef"
-    },
-    {
-      "id": "E042",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/patch-clientrect-import.py",
-      "bytes": 1730,
-      "sha256": "64bf009ac1d5da9e5d851e256b4e7930e507c5b9e0b367e9c64241480f7fb79a"
-    },
-    {
-      "id": "E043",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
-      "bytes": 27,
-      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
-    },
-    {
-      "id": "E044",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/verify-cp007.py",
-      "bytes": 3742,
-      "sha256": "53290d1a72ef6bd6ab1a2e43b9780f47c40601eabb265c1a931bd205c7e09b9b"
-    },
-    {
-      "id": "E045",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/verification.json",
-      "bytes": 2377,
-      "sha256": "64a6a36819710894e22c68272011236ead7a0dd06c1b103c77a3ecbd10b2e89f"
-    },
-    {
-      "id": "E046",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/13ca1a0.asm",
-      "bytes": 3126,
-      "sha256": "6415549900b752f97ba8ad25fbc7427fb7277406f0afb9c5d2f2345650cac500"
-    },
-    {
-      "id": "E047",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/13ca340.asm",
-      "bytes": 2022,
-      "sha256": "8bfad3b49e4e425f0cee710f36bf90847effa6ba1e45d7154ca310c030c107de"
-    },
-    {
-      "id": "E048",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/476040.asm",
-      "bytes": 3103,
-      "sha256": "28bb0787037e4112d2735772fd0c1a812bd7908e94005d62b60ad627460d0fe7"
-    },
-    {
-      "id": "E049",
-      "kind": "local",
-      "path": "local/research/codex/nmco-identity-r1/476490.asm",
-      "bytes": 3459,
-      "sha256": "a07becaeb56e7f2d08223b84b7c46649b172bdcc14904182970d97e994f024ea"
-    },
-    {
-      "id": "E050",
-      "kind": "local",
-      "path": "local/research/codex/wine_probe_wcp_next.py",
-      "bytes": 18064,
-      "sha256": "1b209968953551e8dd8a35ef4ba927d1ec8adda088daae539868b804a5ebdbe5"
-    },
-    {
-      "id": "E051",
-      "kind": "local",
-      "path": "local/research/codex/wine_probe_null_audio.py",
-      "bytes": 18183,
-      "sha256": "446eabcbfe98622c4eb54faa41b073ec7f7318a71324b9e0c7b0cb3584e38a21"
-    },
-    {
-      "id": "E052",
-      "kind": "repository",
-      "path": "docs/evidence/nmco-identity/verification.json",
-      "bytes": 180,
-      "sha256": "1e4a0a9c11bf93d8a6dd7ab5dbb8a5703fb663d9880749c10815396c5d0be852"
-    }
-  ],
   "delta": {
     "added": [
       "Local ID/name experiments, heap guard comparison, USER32 candidates and Wine audio blocker with ALSA null comparison."
@@ -571,6 +205,159 @@
       "path": "docs/evidence/nmco-identity/verification.json",
       "state": "updated",
       "reason": "Recorded verification summary."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E002",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug/client.log",
+      "bytes": 125863,
+      "sha256": "dd24e9a4a0ae55f07f77e4d34f2bfd74b88e68e89aeace3ee82860dc97cbb9af"
+    },
+    {
+      "id": "E005",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug-heap/client.log",
+      "bytes": 76433,
+      "sha256": "ceaa038005d4601b5d145fdcf443496d6dbee626de369e6cfaa513f25e5a9646"
+    },
+    {
+      "id": "E008",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug-heap-progress/client.log",
+      "bytes": 69324,
+      "sha256": "af3336d673d92e2c90c60c34ee49f2717f1334ebff18696d5a92dbc52c7a33f5"
+    },
+    {
+      "id": "E017",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug-window/client.log",
+      "bytes": 104836,
+      "sha256": "680b98ee26932b96a15a4436dd5397be8502ca15a07e824bb94d30a11e6aceda"
+    },
+    {
+      "id": "E020",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug-metrics/client.log",
+      "bytes": 107679,
+      "sha256": "a4a295c36451bf6fd62586e4699fed53e07848d5257c55264772bf47b66329b4"
+    },
+    {
+      "id": "E023",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug-overlay/client.log",
+      "bytes": 115955,
+      "sha256": "5a7b079127610475e7b48d50be29cd0286531980aedee46b009e89ba37b63777"
+    },
+    {
+      "id": "E026",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug-clientrect/client.log",
+      "bytes": 94144,
+      "sha256": "5c25961b46da6156cc8c791ca1c92b610b361730da7792f0ce20c7cee6d896ec"
+    },
+    {
+      "id": "E029",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/debug-null-audio/client.log",
+      "bytes": 110463,
+      "sha256": "54a0852fef0ad601ea84bd2498de3ed990a55333682a0566775d2ca6219a65a3"
+    },
+    {
+      "id": "E031",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/patch.json",
+      "bytes": 564,
+      "sha256": "908aae41d8f28a8d648564b39b6d9f274f3edd9b194dc4aea6df0077641dc622"
+    },
+    {
+      "id": "E032",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/no-name-patch.json",
+      "bytes": 575,
+      "sha256": "4f8cb5d8f8dbec6e06d5056ea7e7fa72c27625acb03bb5d4fdbe489538bda7df"
+    },
+    {
+      "id": "E033",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/heap-guards-patch.json",
+      "bytes": 739,
+      "sha256": "e283df2bde233378d92e8c2e5e0bb8d0de288fbb49ca1c8fdbfe3c127c5f2d61"
+    },
+    {
+      "id": "E035",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/window-imports-patch.json",
+      "bytes": 598,
+      "sha256": "8b99ce2cf46873d0cb589a4b170d1f7cb49ae1d040deae79ed0b4af7b07311ba"
+    },
+    {
+      "id": "E036",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/metrics-import-patch.json",
+      "bytes": 513,
+      "sha256": "4bb43e30072fd49956fddb821c388124c5d983d1bc9d6fbeb6cc2f60c705524f"
+    },
+    {
+      "id": "E037",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/overlay-init-patch.json",
+      "bytes": 696,
+      "sha256": "be514580cff8fd0653b20dcea64f34c0abbf2d8fc06cd53a935f047dc215b8e4"
+    },
+    {
+      "id": "E038",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/clientrect-import-patch.json",
+      "bytes": 457,
+      "sha256": "fa060e75934fefe4f401c01ed9347fb4d5099418bd262258d0bb4900d4e38273"
+    },
+    {
+      "id": "E043",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/alsa-null.conf",
+      "bytes": 27,
+      "sha256": "d4451aaf42879c7ace71e5262265e76943efe5179d9d4b62470486a1851a2cf7"
+    },
+    {
+      "id": "E044",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verify-cp007.py",
+      "bytes": 3742,
+      "sha256": "53290d1a72ef6bd6ab1a2e43b9780f47c40601eabb265c1a931bd205c7e09b9b"
+    },
+    {
+      "id": "E045",
+      "kind": "local",
+      "path": "local/research/codex/nmco-identity-r1/verification.json",
+      "bytes": 2377,
+      "sha256": "64a6a36819710894e22c68272011236ead7a0dd06c1b103c77a3ecbd10b2e89f"
+    },
+    {
+      "id": "E052",
+      "kind": "repository",
+      "path": "docs/evidence/nmco-identity/verification.json",
+      "bytes": 180,
+      "sha256": "1e4a0a9c11bf93d8a6dd7ab5dbb8a5703fb663d9880749c10815396c5d0be852"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/nmco-identity-r1",
+      "path": "local/evidence-manifests/e3307ab39a308c86a346ad56c792fe56be44ef5433460188dc10456ee4fa4039.jsonl",
+      "sha256": "e3307ab39a308c86a346ad56c792fe56be44ef5433460188dc10456ee4fa4039",
+      "bytes": 5949,
+      "count": 31,
+      "files_bytes": 244756
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/62f798efc0993be1501b7cc8eafc99279b3b6f310fa8c03a6534d1c441de543e.jsonl",
+      "sha256": "62f798efc0993be1501b7cc8eafc99279b3b6f310fa8c03a6534d1c441de543e",
+      "bytes": 408,
+      "count": 2,
+      "files_bytes": 36247
     }
   ]
 }

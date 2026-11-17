@@ -114,15 +114,6 @@
       "limits": "Exact-head full local/history checker and CI separately before merge."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP280-managed-team-rosters.json",
-      "bytes": 1922122,
-      "sha256": "b11da43d5f7c99bb82ab33f5bba75ce0c4cb150d3ab0d26f9faaa0c869ab8284",
-      "count": 7443
-    }
-  ],
   "delta": {
     "added": [
       "Typed managed measured team profiles, roster-size projection, native integration and bounded account queue policy."
@@ -223,5 +214,625 @@
   ],
   "completed_feature_groups": [
     "rust-managed-team-rosters"
+  ],
+  "evidence": [
+    {
+      "id": "M7T280-00001",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 13422,
+      "sha256": "80b42ea1ec9c7d34767572dfafbae0e97faea1d402a3cdbcfa22dd30781cd7a3"
+    },
+    {
+      "id": "M7T280-00002",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3842,
+      "sha256": "5fd06fc9d402cb514ec7750935b5b5d87f394566bc1b144a43909c9047e98e58"
+    },
+    {
+      "id": "M7T280-00003",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 243207,
+      "sha256": "13c8f151c75209bc2fa9da56fd1b222d7e1094e92bc63f5f76c74d3759066891"
+    },
+    {
+      "id": "M7T280-00004",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 139980,
+      "sha256": "1a210b1015435d6546942928a2e3b25e0f6efdbf5aeabf9a6787e230dc65a10e"
+    },
+    {
+      "id": "M7T280-00005",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 65179,
+      "sha256": "30780cab7c6966032e27b49b757fcf84b9b183dfd13bff827652ca49d8005040"
+    },
+    {
+      "id": "M7T280-00006",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 65941,
+      "sha256": "1f61f3fea7e6d8d34348cb9ea5a8135e6903bb6c253a5430798598e5200def95"
+    },
+    {
+      "id": "M7T280-00007",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 30326,
+      "sha256": "329bcbf4a5a4f0e4fbaca15d564d69e0408a9b32d60034cb8c068482261ce5eb"
+    },
+    {
+      "id": "M7T280-00008",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD096.json",
+      "bytes": 5806,
+      "sha256": "e231682b99cc23ade55cebfc28c6b76ec78b0ed00d20aa9f25c7e87bbbed9de5"
+    },
+    {
+      "id": "M7T280-00009",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m7b-team-rosters.json",
+      "bytes": 7188,
+      "sha256": "e64cca57a66413bfba77d56adc8f779a4e582831f0142f822a4e1de4980b3b8c"
+    },
+    {
+      "id": "M7T280-00010",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 255303,
+      "sha256": "73785c6a8c870d5603b9845b99298ec085f339c940087617add3ba417cb06bcf"
+    },
+    {
+      "id": "M7T280-00011",
+      "kind": "repository",
+      "path": "docs/protocol/room-membership.md",
+      "bytes": 117293,
+      "sha256": "a8a4fe9d1b6adacd793ee110dd274696e3d50ab68285957f36d881e36339bea1"
+    },
+    {
+      "id": "M7T280-00015",
+      "kind": "local",
+      "path": "local/research/codex/m7b-round-catalog-final.txt",
+      "bytes": 283,
+      "sha256": "35325207d79acde351c1a6c6c55650008720d3662dac6affd2372b0878ad4046"
+    },
+    {
+      "id": "M7T280-00017",
+      "kind": "local",
+      "path": "local/research/codex/m7b-round-docs-final.txt",
+      "bytes": 274,
+      "sha256": "3027bbe7bf75481963a32e43be06cce1a46c54e54063158019f41e389729a3cb"
+    },
+    {
+      "id": "M7T280-00026",
+      "kind": "local",
+      "path": "local/research/codex/m7b-round-profile-build-r8.txt",
+      "bytes": 171,
+      "sha256": "05f7240e4d5516bdc6d0e748fb8627116c7429e37982c3f6fcecc58ba1d5af1f"
+    },
+    {
+      "id": "M7T280-00035",
+      "kind": "local",
+      "path": "local/research/codex/m7b-round-profile-final-clippy-r4.txt",
+      "bytes": 171,
+      "sha256": "77faf82385d2b1a42cb5c9682924bcbcdbd5cccc5bc3ad5821ff16eb644063d0"
+    },
+    {
+      "id": "M7T280-00037",
+      "kind": "local",
+      "path": "local/research/codex/m7b-round-profile-final-fmt-r4.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "M7T280-00041",
+      "kind": "local",
+      "path": "local/research/codex/m7b-round-profile-final-tests-r4.txt",
+      "bytes": 14560,
+      "sha256": "89538b36724a8fa27ba860e6fd6e39eb4221a1d1777541e883ac82730c9dd89f"
+    },
+    {
+      "id": "M7T280-00066",
+      "kind": "local",
+      "path": "local/research/codex/m7b-signal-export-control-r3/control-log.txt",
+      "bytes": 1012,
+      "sha256": "e72363265709d983121ba1c242a10d85b850251d7dcb0a2eb19f7362fc957bd9"
+    },
+    {
+      "id": "M7T280-00099",
+      "kind": "local",
+      "path": "local/research/codex/m7b-team-acceptance.json",
+      "bytes": 3809,
+      "sha256": "49c6e5c3d83519ee3ea0fd3322c3e3e8e4be8669518e78aa490abd50a6ffbf72"
+    },
+    {
+      "id": "M7T280-00533",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams-duel-tmpfs-r4/export-seal.json",
+      "bytes": 26246,
+      "sha256": "ce694fa9096d1e472fcad77b56e3ee410e2a221bffd3c38dd76e77fb7e131a5d"
+    },
+    {
+      "id": "M7T280-01911",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams4-native-r10/verification.json",
+      "bytes": 93681,
+      "sha256": "9018586dbddb5a942c75247cb8887cf15862ff391b2625c39d81bf73f189ffd1"
+    },
+    {
+      "id": "M7T280-02191",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams4-native-r2/native/failure-seal.json",
+      "bytes": 1858,
+      "sha256": "e1843033c4011950ee52507da968b4222305102fcce17d5842b865233437c949"
+    },
+    {
+      "id": "M7T280-03691",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams4-native-r7/142-analysis.json",
+      "bytes": 4334,
+      "sha256": "ef6eb7aee5faf41c0bda7b9436b72cf2860cf949afc6b2ee22856c746780b13d"
+    },
+    {
+      "id": "M7T280-04162",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams4-native-r8/142-analysis.json",
+      "bytes": 4285,
+      "sha256": "5140f8d35c387305949815c752791f3a06fe3629d20a2c1e646750ea5081d9a9"
+    },
+    {
+      "id": "M7T280-05122",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams4-native-r9/native/export-recovery-seal.json",
+      "bytes": 48226,
+      "sha256": "8758e769245e07042d58c8f793e8c73711afd2db9cb372a3712c8908609f9249"
+    },
+    {
+      "id": "M7T280-05141",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams4-native-r9/verification.json",
+      "bytes": 186665,
+      "sha256": "10779999c32984c4c926e09cdfb26150e7abbaba7da3b259e8471054a1e82613"
+    },
+    {
+      "id": "M7T280-05419",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams4-tmpfs-r4/export-seal.json",
+      "bytes": 32580,
+      "sha256": "0afa027d063b5a8e7a4b5c1967c83d1ae0c6810d28a8d04271a5efb5d01783f9"
+    },
+    {
+      "id": "M7T280-05925",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams8-native-r3/167-analysis.json",
+      "bytes": 1224,
+      "sha256": "0501b0c275fb723dd6177124e125d7f8a3fd704032619d9d70b7391259df2fab"
+    },
+    {
+      "id": "M7T280-06858",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams8-native-r4/verification.json",
+      "bytes": 358487,
+      "sha256": "b0fb54c0b8348296aeef3bf16b640fa5fdbd45c7e2e1b80c18ca339b595d9d23"
+    },
+    {
+      "id": "M7T280-07255",
+      "kind": "local",
+      "path": "local/research/codex/m7b-teams8-tmpfs-r4/export-seal.json",
+      "bytes": 31157,
+      "sha256": "9c5042db02d93fad3c8e464c0536f7ef46b90cd7a0c6d063907d9650202ef25c"
+    },
+    {
+      "id": "M7T280-07434",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "bytes": 19080,
+      "sha256": "1fceed0e1a8f0b6ddfd5c27739e342d6d803af0053bc41f3eab2c0a44501f87f"
+    },
+    {
+      "id": "M7T280-07435",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/four_results.rs",
+      "bytes": 10575,
+      "sha256": "afdb40680954b1be6754e227248272fa5b0783b32693fba455429bd7e0430057"
+    },
+    {
+      "id": "M7T280-07436",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room.rs",
+      "bytes": 35470,
+      "sha256": "efd1e3660634aae20bb461f90ef0ef1432001c1b66a406c6bbcadf75c63eb366"
+    },
+    {
+      "id": "M7T280-07437",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_io.rs",
+      "bytes": 135626,
+      "sha256": "fb54c74703a82199860b1f2f72d8551b042ba194c20cf0d7822825890546c426"
+    },
+    {
+      "id": "M7T280-07438",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/room_service.rs",
+      "bytes": 7901,
+      "sha256": "493549bfb6111e533eaf772aba75bc01c11ad4cbe7dbe314f8f9c0bc90e65604"
+    },
+    {
+      "id": "M7T280-07439",
+      "kind": "repository",
+      "path": "rust/crates/kr-service/src/rules.rs",
+      "bytes": 8844,
+      "sha256": "8da4126fec019b8a3305a7fd604257a32eae6bcf53ed9fe74a776a8b5fb74fa1"
+    },
+    {
+      "id": "M7T280-07440",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "bytes": 17125,
+      "sha256": "d35612e02180d02097f16be996291a070d8c3a572215e68b943f115b75e1b744"
+    },
+    {
+      "id": "M7T280-07441",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/README.md",
+      "bytes": 1454,
+      "sha256": "775ff1c406378240213ced8834202e242755e8c8a76a85a861894fb4e39b627d"
+    },
+    {
+      "id": "M7T280-07442",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_start_vectors.rs",
+      "bytes": 2882,
+      "sha256": "3bfff9199f2fd8abd1acdbc82e6a0484b80c5a9d0865404c64c0b64b53404021"
+    },
+    {
+      "id": "M7T280-07443",
+      "kind": "repository",
+      "path": "tools/test_rust_managed_team_rosters.py",
+      "bytes": 16487,
+      "sha256": "0679342103a8f48a7558e2fa1ebc2e483629e2bdb97fb650c1f4b5366c4967c3"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/20a81eddd25b9828f57bbae610cfa7bdfe3a7f0c7515df0ca81ff30f786c2bdb.jsonl",
+      "sha256": "20a81eddd25b9828f57bbae610cfa7bdfe3a7f0c7515df0ca81ff30f786c2bdb",
+      "bytes": 22396,
+      "count": 120,
+      "files_bytes": 831638
+    },
+    {
+      "run": "local/research/codex/m7b-roster-source-r1",
+      "path": "local/evidence-manifests/48f1ac5a4f205eff937dd7e8b8449bb08b89fdfbc42e7d3d870eef4440e8e0a6.jsonl",
+      "sha256": "48f1ac5a4f205eff937dd7e8b8449bb08b89fdfbc42e7d3d870eef4440e8e0a6",
+      "bytes": 461,
+      "count": 2,
+      "files_bytes": 42023
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r1",
+      "path": "local/evidence-manifests/27835f9755136bfe42f3b9fef800a233bfe066c1e6d513811a4b2c054ee26320.jsonl",
+      "sha256": "27835f9755136bfe42f3b9fef800a233bfe066c1e6d513811a4b2c054ee26320",
+      "bytes": 1098,
+      "count": 5,
+      "files_bytes": 1570
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r10",
+      "path": "local/evidence-manifests/b59872d7c9501e468091c46f4967b0d218062d2cccd7f769fc88853acf397d5c.jsonl",
+      "sha256": "b59872d7c9501e468091c46f4967b0d218062d2cccd7f769fc88853acf397d5c",
+      "bytes": 1324,
+      "count": 6,
+      "files_bytes": 2313
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r11",
+      "path": "local/evidence-manifests/7c416b8ace0e9f5f039868324525293fc417726ec9882f2271bd8c68d0705bef.jsonl",
+      "sha256": "7c416b8ace0e9f5f039868324525293fc417726ec9882f2271bd8c68d0705bef",
+      "bytes": 1324,
+      "count": 6,
+      "files_bytes": 2314
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r2",
+      "path": "local/evidence-manifests/34e807af6a5549aecbccffe93df71dd53801ddcb043ef20dc57a7a71bed4cfea.jsonl",
+      "sha256": "34e807af6a5549aecbccffe93df71dd53801ddcb043ef20dc57a7a71bed4cfea",
+      "bytes": 1098,
+      "count": 5,
+      "files_bytes": 1570
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r4",
+      "path": "local/evidence-manifests/b96369e49726116d62355af843a7f3653eae6c67e04060866d47b2e5e749d5bf.jsonl",
+      "sha256": "b96369e49726116d62355af843a7f3653eae6c67e04060866d47b2e5e749d5bf",
+      "bytes": 1098,
+      "count": 5,
+      "files_bytes": 1570
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r5",
+      "path": "local/evidence-manifests/578e7f5172fe6d7717902394f0050a6a2d8b63146e215a0d5f6a7d8cf4056317.jsonl",
+      "sha256": "578e7f5172fe6d7717902394f0050a6a2d8b63146e215a0d5f6a7d8cf4056317",
+      "bytes": 1098,
+      "count": 5,
+      "files_bytes": 1570
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r6",
+      "path": "local/evidence-manifests/033abe36915ca68891c518b9ac45bb1ee4ea941caf16f35987ad7f4d7b0536f1.jsonl",
+      "sha256": "033abe36915ca68891c518b9ac45bb1ee4ea941caf16f35987ad7f4d7b0536f1",
+      "bytes": 1098,
+      "count": 5,
+      "files_bytes": 1570
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r7",
+      "path": "local/evidence-manifests/e034f7a8c3aa83d7606a36640293405d80bfb434d41b239cd3195d6474bb98b4.jsonl",
+      "sha256": "e034f7a8c3aa83d7606a36640293405d80bfb434d41b239cd3195d6474bb98b4",
+      "bytes": 1098,
+      "count": 5,
+      "files_bytes": 1570
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r8",
+      "path": "local/evidence-manifests/84d51820a227de57ceb6af883baf7e0e39a0eac4d3ffa921a0897a89aa01f31f.jsonl",
+      "sha256": "84d51820a227de57ceb6af883baf7e0e39a0eac4d3ffa921a0897a89aa01f31f",
+      "bytes": 1317,
+      "count": 6,
+      "files_bytes": 2308
+    },
+    {
+      "run": "local/research/codex/m7b-signal-export-control-r9",
+      "path": "local/evidence-manifests/f3b743e60129c00138d19d6b6876fbcb8e1f3297b7d1b8cf9e2c4dbc317ebf80.jsonl",
+      "sha256": "f3b743e60129c00138d19d6b6876fbcb8e1f3297b7d1b8cf9e2c4dbc317ebf80",
+      "bytes": 1317,
+      "count": 6,
+      "files_bytes": 2308
+    },
+    {
+      "run": "local/research/codex/m7b-teams-duel-regression-r1",
+      "path": "local/evidence-manifests/b9d8b3b3a5ed8f7c5e7dfad5edf215ce2aa797697a0563684ede5a03f8fde650.jsonl",
+      "sha256": "b9d8b3b3a5ed8f7c5e7dfad5edf215ce2aa797697a0563684ede5a03f8fde650",
+      "bytes": 21922,
+      "count": 104,
+      "files_bytes": 109262876
+    },
+    {
+      "run": "local/research/codex/m7b-teams-duel-tmpfs-r1",
+      "path": "local/evidence-manifests/4c3a65f191fee0a98816e2394d5a0ef8b1598f719f0e5f12d500f2aae1f1f48a.jsonl",
+      "sha256": "4c3a65f191fee0a98816e2394d5a0ef8b1598f719f0e5f12d500f2aae1f1f48a",
+      "bytes": 22587,
+      "count": 108,
+      "files_bytes": 109282068
+    },
+    {
+      "run": "local/research/codex/m7b-teams-duel-tmpfs-r2",
+      "path": "local/evidence-manifests/e798393258068554a8d05c09aaff74f0220c5c9bc0d5dd8141467e42b8d0a1a6.jsonl",
+      "sha256": "e798393258068554a8d05c09aaff74f0220c5c9bc0d5dd8141467e42b8d0a1a6",
+      "bytes": 22587,
+      "count": 108,
+      "files_bytes": 109282235
+    },
+    {
+      "run": "local/research/codex/m7b-teams-duel-tmpfs-r3",
+      "path": "local/evidence-manifests/f98e6843bd58b2222caf21ce640b46fcfdf954fba12035137f1997bf181d4c8a.jsonl",
+      "sha256": "f98e6843bd58b2222caf21ce640b46fcfdf954fba12035137f1997bf181d4c8a",
+      "bytes": 22587,
+      "count": 108,
+      "files_bytes": 109275497
+    },
+    {
+      "run": "local/research/codex/m7b-teams-duel-tmpfs-r4",
+      "path": "local/evidence-manifests/541f8ed1bf21980b71caaf88c78337970ffd47e3b60203e59ddb4c9ec06955a9.jsonl",
+      "sha256": "541f8ed1bf21980b71caaf88c78337970ffd47e3b60203e59ddb4c9ec06955a9",
+      "bytes": 22389,
+      "count": 107,
+      "files_bytes": 109249256
+    },
+    {
+      "run": "local/research/codex/m7b-teams-synthetic4-r1",
+      "path": "local/evidence-manifests/a00c6bb565d5913a7f30c4a5e433c3db2da079ef12a916b07f743dab05635519.jsonl",
+      "sha256": "a00c6bb565d5913a7f30c4a5e433c3db2da079ef12a916b07f743dab05635519",
+      "bytes": 23191,
+      "count": 113,
+      "files_bytes": 109296328
+    },
+    {
+      "run": "local/research/codex/m7b-teams-synthetic4-r2",
+      "path": "local/evidence-manifests/bed62ed2cbb6fca54df8624ceadca2f1015c662ceaf96c6d0090cec595a1808e.jsonl",
+      "sha256": "bed62ed2cbb6fca54df8624ceadca2f1015c662ceaf96c6d0090cec595a1808e",
+      "bytes": 23389,
+      "count": 114,
+      "files_bytes": 109335320
+    },
+    {
+      "run": "local/research/codex/m7b-teams-synthetic4-r3",
+      "path": "local/evidence-manifests/7a950e79c825a1c0ada777faea7e3c7ce8979726f56c8d58f92be60c8c46e9f8.jsonl",
+      "sha256": "7a950e79c825a1c0ada777faea7e3c7ce8979726f56c8d58f92be60c8c46e9f8",
+      "bytes": 23390,
+      "count": 114,
+      "files_bytes": 109405297
+    },
+    {
+      "run": "local/research/codex/m7b-teams-synthetic8-r1",
+      "path": "local/evidence-manifests/213cb501c7a458fe253e1b3612a645a72530e89fa3fb1c8c0059e207541d883f.jsonl",
+      "sha256": "213cb501c7a458fe253e1b3612a645a72530e89fa3fb1c8c0059e207541d883f",
+      "bytes": 26119,
+      "count": 127,
+      "files_bytes": 109920075
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r1",
+      "path": "local/evidence-manifests/2b2cd2cc19650032cbaba428e4f23d10cd6885e04d45d43fb68784197898699e.jsonl",
+      "sha256": "2b2cd2cc19650032cbaba428e4f23d10cd6885e04d45d43fb68784197898699e",
+      "bytes": 69939,
+      "count": 334,
+      "files_bytes": 219768963
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r10",
+      "path": "local/evidence-manifests/1dc158d6953a7e8edeb3e35de6e2c41132e85ccc38ea62ee778756b19b2c3520.jsonl",
+      "sha256": "1dc158d6953a7e8edeb3e35de6e2c41132e85ccc38ea62ee778756b19b2c3520",
+      "bytes": 97336,
+      "count": 461,
+      "files_bytes": 237441477
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r2",
+      "path": "local/evidence-manifests/6a6e7146a4853335e37886019f0548ba22f18e97c7299103f528bc0c86c56e69.jsonl",
+      "sha256": "6a6e7146a4853335e37886019f0548ba22f18e97c7299103f528bc0c86c56e69",
+      "bytes": 60824,
+      "count": 290,
+      "files_bytes": 219022716
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r3",
+      "path": "local/evidence-manifests/d1060e386f8dd7ef19294144962a0ab3cd3cf2d1202febcf3316f2d5b4a51e1f.jsonl",
+      "sha256": "d1060e386f8dd7ef19294144962a0ab3cd3cf2d1202febcf3316f2d5b4a51e1f",
+      "bytes": 60229,
+      "count": 287,
+      "files_bytes": 219020987
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r4",
+      "path": "local/evidence-manifests/f98adc6c8565080e6155175f1e70833cac35036a8ec61d0491852b0a22e3fc80.jsonl",
+      "sha256": "f98adc6c8565080e6155175f1e70833cac35036a8ec61d0491852b0a22e3fc80",
+      "bytes": 74921,
+      "count": 358,
+      "files_bytes": 221470180
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r5",
+      "path": "local/evidence-manifests/c7d04491322939d772b0d0ba54b7b18b1bc8cd1d9f080160eefe72e14be2ccd0.jsonl",
+      "sha256": "c7d04491322939d772b0d0ba54b7b18b1bc8cd1d9f080160eefe72e14be2ccd0",
+      "bytes": 75793,
+      "count": 362,
+      "files_bytes": 221068472
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r6",
+      "path": "local/evidence-manifests/22981a0b586ad654c587e55fa05045d54f429f406b1b585d0e3d2cfc27f65e8f.jsonl",
+      "sha256": "22981a0b586ad654c587e55fa05045d54f429f406b1b585d0e3d2cfc27f65e8f",
+      "bytes": 97930,
+      "count": 467,
+      "files_bytes": 236784355
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r7",
+      "path": "local/evidence-manifests/b8820151851d9d719fe4c4f05c943a30160e0a72ad5e7b2585c04672a0570382.jsonl",
+      "sha256": "b8820151851d9d719fe4c4f05c943a30160e0a72ad5e7b2585c04672a0570382",
+      "bytes": 98145,
+      "count": 468,
+      "files_bytes": 238727328
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r8",
+      "path": "local/evidence-manifests/bf0cf6955b7e0daf60212b651a64445729e059a9f4ce787a4060b8a97f11d998.jsonl",
+      "sha256": "bf0cf6955b7e0daf60212b651a64445729e059a9f4ce787a4060b8a97f11d998",
+      "bytes": 98146,
+      "count": 468,
+      "files_bytes": 238697834
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-native-r9",
+      "path": "local/evidence-manifests/7b834e1f3161278ddeaec6884fca294d219a6c69d94db6717d7d966bddd9eafe.jsonl",
+      "sha256": "7b834e1f3161278ddeaec6884fca294d219a6c69d94db6717d7d966bddd9eafe",
+      "bytes": 108834,
+      "count": 507,
+      "files_bytes": 246361861
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-tmpfs-r2",
+      "path": "local/evidence-manifests/10883d4288f5346dbd7c39a34c2033889d54c9f11cefd8c41e63f8fa04552b8f.jsonl",
+      "sha256": "10883d4288f5346dbd7c39a34c2033889d54c9f11cefd8c41e63f8fa04552b8f",
+      "bytes": 27873,
+      "count": 136,
+      "files_bytes": 109902596
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-tmpfs-r3",
+      "path": "local/evidence-manifests/185a5d3b593975f78cf917ce27e888b6870be7ae8afe17ade603b6bea617bce4.jsonl",
+      "sha256": "185a5d3b593975f78cf917ce27e888b6870be7ae8afe17ade603b6bea617bce4",
+      "bytes": 27873,
+      "count": 136,
+      "files_bytes": 109896552
+    },
+    {
+      "run": "local/research/codex/m7b-teams4-tmpfs-r4",
+      "path": "local/evidence-manifests/d4d29e999c0bb7f66602c99fe78dd4344d7f7306b5469a4c530d581440157632.jsonl",
+      "sha256": "d4d29e999c0bb7f66602c99fe78dd4344d7f7306b5469a4c530d581440157632",
+      "bytes": 27679,
+      "count": 135,
+      "files_bytes": 109864728
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-native-r1",
+      "path": "local/evidence-manifests/c5da9d05bb75d201c8753bf7c6f78675cc8d5c311f8a522dd8a93111e9783a89.jsonl",
+      "sha256": "c5da9d05bb75d201c8753bf7c6f78675cc8d5c311f8a522dd8a93111e9783a89",
+      "bytes": 5265,
+      "count": 27,
+      "files_bytes": 108455061
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-native-r2",
+      "path": "local/evidence-manifests/af6c72c0be308d5553f8526cb5458a3a7f6c55f87075875573eb27274e5c3ad9.jsonl",
+      "sha256": "af6c72c0be308d5553f8526cb5458a3a7f6c55f87075875573eb27274e5c3ad9",
+      "bytes": 71004,
+      "count": 339,
+      "files_bytes": 220109689
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-native-r3",
+      "path": "local/evidence-manifests/26d499e9e71fc5041e893e24d86ff0c6b6094845b53c6c3e09daa36cba6b7dc8.jsonl",
+      "sha256": "26d499e9e71fc5041e893e24d86ff0c6b6094845b53c6c3e09daa36cba6b7dc8",
+      "bytes": 93029,
+      "count": 444,
+      "files_bytes": 238790309
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-native-r4",
+      "path": "local/evidence-manifests/b0bfc75ede91d2eb71b497fd2bb5f95040c22f74bcea9b7a030fe001bd46fba9.jsonl",
+      "sha256": "b0bfc75ede91d2eb71b497fd2bb5f95040c22f74bcea9b7a030fe001bd46fba9",
+      "bytes": 101987,
+      "count": 486,
+      "files_bytes": 247394060
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-tmpfs-r1",
+      "path": "local/evidence-manifests/a2ea783289b39f45de53580c583402dc8ab3e1266bd3578cb010b60ffb526443.jsonl",
+      "sha256": "a2ea783289b39f45de53580c583402dc8ab3e1266bd3578cb010b60ffb526443",
+      "bytes": 26672,
+      "count": 130,
+      "files_bytes": 109948003
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-tmpfs-r2",
+      "path": "local/evidence-manifests/e8480aac11afb1820579aab7e39be7745a22652cab108e091c484383e412d713.jsonl",
+      "sha256": "e8480aac11afb1820579aab7e39be7745a22652cab108e091c484383e412d713",
+      "bytes": 26672,
+      "count": 130,
+      "files_bytes": 109948589
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-tmpfs-r3",
+      "path": "local/evidence-manifests/7fe5c5fbc00d3e02e3fd7a77aac56719c5d04b059610900cb6dcb9728c4175c3.jsonl",
+      "sha256": "7fe5c5fbc00d3e02e3fd7a77aac56719c5d04b059610900cb6dcb9728c4175c3",
+      "bytes": 26672,
+      "count": 130,
+      "files_bytes": 109942561
+    },
+    {
+      "run": "local/research/codex/m7b-teams8-tmpfs-r4",
+      "path": "local/evidence-manifests/e7b65a20793db0f08e85d248c833861ac14e7822bb83d89b6518f6d8c68906de.jsonl",
+      "sha256": "e7b65a20793db0f08e85d248c833861ac14e7822bb83d89b6518f6d8c68906de",
+      "bytes": 26478,
+      "count": 129,
+      "files_bytes": 109911946
+    }
   ]
 }

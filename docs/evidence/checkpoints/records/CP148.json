@@ -160,15 +160,6 @@
       "limits": "Mechanicalconsistencyonly; fullrequiredlocal/history checkedbeforecommit. Reviewwaived, nosemanticgateclosure."
     }
   ],
-  "evidence": [],
-  "evidence_manifests": [
-    {
-      "path": "docs/evidence/checkpoints/evidence/CP148-service-channel-endpoint.json",
-      "bytes": 568311,
-      "sha256": "257c5394f2168bef24e5cb1a1f83a56f1c4ec5713e6386cfee1a9553e5c42b3e",
-      "count": 2203
-    }
-  ],
   "delta": {
     "added": [
       "ProductionchannelendpointAPI/CLI/defaultfixturepreserve/preselectorvalidation andsame-run restoredUDPcapture/native2cycles/resetReady.",
@@ -266,6 +257,315 @@
       "path": "server/README.md",
       "state": "updated",
       "reason": "CP148endpoint/capture scopedresults/limits/nextdirectchannel/audit148→152/PR218merge synchronizedbeforecomplete."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "RUN-00004",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r1/channel-tests.txt",
+      "bytes": 1168,
+      "sha256": "61db847646abd150a1b0b9cf8d3a56d1a27ce3ddbd9f5742435c798628b57c58"
+    },
+    {
+      "id": "RUN-00008",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r1/cycles/run.json",
+      "bytes": 8578,
+      "sha256": "c3f95e9d5555df1acb7b2aaea3267befb81c904cd544e090df48d330c2a902a0"
+    },
+    {
+      "id": "RUN-00009",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r1/cycles/service.log",
+      "bytes": 1079,
+      "sha256": "9ff9b5b2fcd128724c2d94629fa4aab51ce563f1249185056eb8995245cb57cd"
+    },
+    {
+      "id": "RUN-00033",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r1/raw-seal.json",
+      "bytes": 2357,
+      "sha256": "fe7ccd354213770631a3b15aae626a33514d0ccb468cd6206bbd797d5596ac39"
+    },
+    {
+      "id": "RUN-00081",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r1/server-tests-legacy-fixed.txt",
+      "bytes": 337,
+      "sha256": "10a4eb2093af6fb56bf8f0fdeeeb23151facaa376e75001c351e878def79a5a1"
+    },
+    {
+      "id": "RUN-00098",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/actor-fields.json",
+      "bytes": 945491,
+      "sha256": "946be589beeddf823d0c0929ad5ab9b3e00901a719a0ea9e2926d1f346c8bd92"
+    },
+    {
+      "id": "RUN-00099",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/address-ready-verification.json",
+      "bytes": 4436,
+      "sha256": "97e939138d7338d799786fa88356b54428b67b481b1b6f6fe4207ebf7a4b95b2"
+    },
+    {
+      "id": "RUN-00103",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/artifacts-check.txt",
+      "bytes": 253,
+      "sha256": "649c6624aa6d317dfc1db5e16fea683cfbc9d9cf4dd3df11c0d70e57409054a0"
+    },
+    {
+      "id": "RUN-00104",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/basic-verification.json",
+      "bytes": 237466,
+      "sha256": "70f6737bbe33c6cbb2afe9aff31bab41f463384549534169b3b568fabec9bed3"
+    },
+    {
+      "id": "RUN-00109",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/cp148-snapshot/docs/PLAN.md",
+      "bytes": 33534,
+      "sha256": "eadfb0f670130096e24113a6ac9b5537af3de9e3b6f2f48c49bd09f3c5a4be13"
+    },
+    {
+      "id": "RUN-00111",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/cp148-snapshot/docs/RESEARCH.md",
+      "bytes": 30674,
+      "sha256": "6ba792cc385e1dd88edb59cbf2440d7b4f50f46a951b8ee85f7bc33e8c3b510b"
+    },
+    {
+      "id": "RUN-01402",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/cycles/client-B.log",
+      "bytes": 174123,
+      "sha256": "02b2d43a328dc1d8d063c041efb7ea83bc7585e40b31614c51bc4f6a7d267ffd"
+    },
+    {
+      "id": "RUN-01403",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/cycles/client.log",
+      "bytes": 192741,
+      "sha256": "07fe256f81eaa0a3bf9e9eaaef654e353939c91d6d8b626bfe27ab3707d0d8a2"
+    },
+    {
+      "id": "RUN-01997",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/cycles/run.json",
+      "bytes": 389428,
+      "sha256": "0d883b150487a4a0ce4b8c8c5dfa254da9b493211853573b7db30337332c4986"
+    },
+    {
+      "id": "RUN-02016",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/direct-verification.json",
+      "bytes": 13071,
+      "sha256": "e1f630d901c780730b59e8fc87a69e6baa81356bca1525005352d4a10d3b1c47"
+    },
+    {
+      "id": "RUN-02018",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/docs-final.txt",
+      "bytes": 175,
+      "sha256": "42b02f92c3686bc1e3714bf4585d505a6d86ab090307341d446fa3a90794087c"
+    },
+    {
+      "id": "RUN-02019",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/endpoint-peer-verification.json",
+      "bytes": 168368,
+      "sha256": "c5b4ab288e37c25b8efaa3fa48d2310062e80abd7a2be133df280539f4705f0f"
+    },
+    {
+      "id": "RUN-02020",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/flag-reader-verification.json",
+      "bytes": 1456859,
+      "sha256": "41363cc48b2cd6111dd8fefa866363899edecbd8a7e3e3dd78a95656faefcad1"
+    },
+    {
+      "id": "RUN-02033",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/guard-integration-verification.json",
+      "bytes": 10522,
+      "sha256": "5cd8ff7468c0fe606f24a7fd6edaf1c946d6647bcb9ebe87b37eb298765a0218"
+    },
+    {
+      "id": "RUN-02036",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/issues-check.txt",
+      "bytes": 130,
+      "sha256": "2592b8a7e79370be9555774e02abe2d711aef31a187e0ed614bfac97fde73d6f"
+    },
+    {
+      "id": "RUN-02040",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/movement-wire-verification.json",
+      "bytes": 41081,
+      "sha256": "911b491bd2e142c9dc483b9cf97142ef132d754be18a205c09f13d4de0560147"
+    },
+    {
+      "id": "RUN-02041",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/native-153.json",
+      "bytes": 13723,
+      "sha256": "29aeeeb82245fdbd922670575e62a3a3a9ca469a6c45ec80dd55325378611b0a"
+    },
+    {
+      "id": "RUN-02042",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/native-packets.json",
+      "bytes": 138493,
+      "sha256": "d12e66c5162d55839c538f801157d728e630683e19492304f3bb67eac191f8e1"
+    },
+    {
+      "id": "RUN-02043",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/native-reports.json",
+      "bytes": 139519,
+      "sha256": "1d3bd150f5a27a87912994848ef308375a7fbe03990825e480da5a26e4dc13ac"
+    },
+    {
+      "id": "RUN-02058",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/peer-crc-verification.json",
+      "bytes": 9188,
+      "sha256": "38ada0e1c52ec0d3cafc1e18fa7a0f992854cb72c181d1f0ec9a07e367202c40"
+    },
+    {
+      "id": "RUN-02059",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/peer-getter-verification.json",
+      "bytes": 419,
+      "sha256": "50d653614b09fe25c41e0e4347dbbce728010aac4ebcb0a6b8c9e6749c552b74"
+    },
+    {
+      "id": "RUN-02060",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/pickup-verification.json",
+      "bytes": 2988,
+      "sha256": "dc797c950f7e83c54783e71806f1d0ff3b99c65d7a9742da1d785359f4fd3bd0"
+    },
+    {
+      "id": "RUN-02064",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/raw-seal.json",
+      "bytes": 397184,
+      "sha256": "963cf83efff2340216ffda8838e4bdcf4b8622b85241343d40b922399fdda539"
+    },
+    {
+      "id": "RUN-02067",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/redirect-native-model.json",
+      "bytes": 816,
+      "sha256": "63266a097a0d58ac8dbc4879ae805e718e6223e4f8b413ce47e09026fd9406bb"
+    },
+    {
+      "id": "RUN-02122",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/runtime-preflight.json",
+      "bytes": 19419,
+      "sha256": "00a5b892c6a2008b4efbc61f4db02c60a006ae8fc97b911944d9542218ff6a29"
+    },
+    {
+      "id": "RUN-02127",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/runtime-source/server/probe_service.py",
+      "bytes": 92517,
+      "sha256": "cefa4d4370b00c92a214798e783c5879a515362d14a749dd8c6e561c3742296e"
+    },
+    {
+      "id": "RUN-02137",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/runtime-source/server/test_channel_endpoint.py",
+      "bytes": 7936,
+      "sha256": "f8c7f54bed12c49bf75c2119b17923a67dd8f4f09c093929c81998207ab03600"
+    },
+    {
+      "id": "RUN-02165",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/server-tests.txt",
+      "bytes": 337,
+      "sha256": "279e571a9c544630e0633f5bc5d621da7503699017783630d834afc8545ada31"
+    },
+    {
+      "id": "RUN-02192",
+      "kind": "local",
+      "path": "local/research/codex/service-channel-endpoint-r2/visual-review.json",
+      "bytes": 1537,
+      "sha256": "01d3d84f36c2f40244d05fb6758db8e0ee7c9c77073a0b2bc0a62edcf16b248e"
+    },
+    {
+      "id": "RUN-02197",
+      "kind": "local",
+      "path": "local/research/codex/postwait-r1/redirect7-loopback.bin",
+      "bytes": 52,
+      "sha256": "b514742b5e0feb58f64f6f8b1427ca1c34c7494202607b7fb8ee78e02d0caa15"
+    },
+    {
+      "id": "RUN-02198",
+      "kind": "local",
+      "path": "local/research/codex/virtual-tcp-guard-r1/profile.json",
+      "bytes": 13790,
+      "sha256": "fef960b3bbb1a62ef87c2711264cfb2e69468132c541ca2a0b7613226a5a2ef0"
+    },
+    {
+      "id": "RUN-02201",
+      "kind": "artifact",
+      "path": "/home/admin/boom/clients/kr-00967/CA.exe",
+      "bytes": 10141152,
+      "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"
+    },
+    {
+      "id": "RUN-02202",
+      "kind": "artifact",
+      "path": "/home/admin/boom/repos/boomkr-re/out/modO.bin",
+      "bytes": 31858688,
+      "sha256": "a08950c833d3acab8281049def7b3dc96b221f107eeda01da3a548e34b91dce5"
+    },
+    {
+      "id": "RUN-02203",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD045.json",
+      "bytes": 5698,
+      "sha256": "62b209d5fc326e98ea4f15db13fbfa8309bdd66f7843095baafd3db0b0fa677a"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/service-channel-endpoint-r1",
+      "path": "local/evidence-manifests/41e1425c074edf4456ea0a95dceaa559f7e5f9c540c603f28244b7de384f8b78.jsonl",
+      "sha256": "41e1425c074edf4456ea0a95dceaa559f7e5f9c540c603f28244b7de384f8b78",
+      "bytes": 19516,
+      "count": 92,
+      "files_bytes": 522024
+    },
+    {
+      "run": "local/research/codex/service-channel-endpoint-r2",
+      "path": "local/evidence-manifests/4517b7b1e9d38ba4325d631c48a663e4c33e0f15578e30116af41d3232b28c97.jsonl",
+      "sha256": "4517b7b1e9d38ba4325d631c48a663e4c33e0f15578e30116af41d3232b28c97",
+      "bytes": 430090,
+      "count": 2068,
+      "files_bytes": 117894752
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/9d140b2bd9b10788b1dd7b2f9b6434334afe30f8521d174ab6c088642d356366.jsonl",
+      "sha256": "9d140b2bd9b10788b1dd7b2f9b6434334afe30f8521d174ab6c088642d356366",
+      "bytes": 451,
+      "count": 2,
+      "files_bytes": 132056
+    },
+    {
+      "run": "local/research/codex/eight-player-r1",
+      "path": "local/evidence-manifests/11f44492e5336961569f742f43c6c1c2016496fc2afde093db96ec004961c193.jsonl",
+      "sha256": "11f44492e5336961569f742f43c6c1c2016496fc2afde093db96ec004961c193",
+      "bytes": 448,
+      "count": 2,
+      "files_bytes": 486
     }
   ]
 }
