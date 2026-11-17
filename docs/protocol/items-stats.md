@@ -188,6 +188,13 @@ Giữ nguyên lỗi/receipt/archive, không gọi unmount gốc thành công ho�
 cancellation ngoài endpoint; production binary giữ nguyên. Hướng selector 2, Shoe các hướng/khoảng cách khác,
 motion lặp/inflight/late và mọi map/roster/nhân vật còn theo acceptance G1.
 
+[Reference selector 2](../evidence/item-families/punch-selector2-action.json) có hai vòng actual 119
+`(6,4)→(6,3)`, landing/rebind/active 0 trước cleanup, bom tiếp và hai kết quả/về phòng/reset trong cả hai view;
+712 field khớp native getter và wire/CRC kiểm độc lập. Không áp đối xứng +2 cột của selector 0: selector 2 ở ca
+này có endpoint trừ một cột. Nhánh [#462](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462) có guard/test
+Rust nháp cho cùng hàng, đích trừ một cột và cùng reservation cả hàng; native Rust account/floor chỉ Punch,
+peer/reset/journal vẫn chờ kiểm. Reference không tự mở compatibility service hoặc toàn đường bay.
+
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target
 `(3,3)`; prefix 9 byte được trả bằng candidate 162. Hai view đọc đủ, gọi `B37910`, đổi root, vào state 3 rồi

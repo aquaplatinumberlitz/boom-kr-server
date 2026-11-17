@@ -3040,7 +3040,7 @@ impl Session {
                             if shoe {
                                 (motion.target_row..=motion.source_row)
                                     .any(|row| cells.contains(u16::from(row), u16::from(target.1)))
-                            } else if motion.selector == 0 {
+                            } else if matches!(motion.selector, 0 | 2) {
                                 // Horizontal Punch reserves every possible column
                                 // while its wrapped native path remains unmeasured.
                                 (0..15).any(|column| cells.contains(u16::from(target.0), column))
