@@ -25,6 +25,34 @@ WANT = {'MultiByteToWideChar': 'IAT_MB2WC', 'WideCharToMultiByte': 'IAT_WC2MB', 
         'RegisterClassExA': 'IAT_REGISTERCLASSEXA', 'TranslateMessage': 'IAT_TRANSLATEMESSAGE'}
 
 
+# Vá layout cho bộ font VN (CxUni/CxUniBold 12x16 nâng 2 hàng, Gulim 12x12 gọn) của bản --lang vi. Mỗi mục:
+# (VA, byte cũ, byte mới, lý do); byte cũ được kiểm trước khi ghi. Đọc tĩnh trên bản sao IDA (kr-full.exe = PE nguồn).
+VI_LAYOUT = [
+    # Tab lọc chat sảnh/phòng (sub_D357E0): y chữ = đỉnh tab + 7 ([ebp-154h]). Chữ Việt có đuôi (g, y, dấu nặng)
+    # xuống tới hàng viền dưới; +5 đặt mực chữ ở 2..15 trong lòng tab 17 hàng, không chạm viền trên lẫn dưới.
+    (0xD35AD5, '83c007', '83c005', 'ChatFilterNotice y +7 -> +5'),
+    (0xD35C06, '83c207', '83c205', 'ChatFilterWhole y +7 -> +5'),
+    (0xD35CE8, '83c207', '83c205', 'ChatFilterGuild y +7 -> +5'),
+    # Dòng chạy chữ (CChatStage, vẽ ở sub_D39490): DrawText kiểu 2 (chữ có viền), họ font 1 (CxUniGulim) ở y=1 trong
+    # khung clip cao 12. Gulim 12x12 gọn gộp dấu chồng vào 2 hàng và khung 12 cắt hàng đuôi chữ. Đổi sang họ font 0
+    # (CxUni VN 12x16, đủ dấu chồng) và khung clip cao 16 (14 hàng mực + viền 1 điểm mỗi phía).
+    # Độ rộng ước tính len*6 của exe (đặt lại vị trí cuộn) vẫn lớn hơn bề rộng CxUni của mọi dòng loại 2.
+    (0xD395B6, '6a01', '6a00', 'marquee font family 1 (CxUniGulim) -> 0 (CxUni)'),
+    *[(va, '6a0c', '6a10', 'marquee clip h 12 -> 16') for va in (
+        0x6E41C7, 0x71C678, 0xD55E1D, 0xDA70E3, 0xDC34D9, 0xE58722, 0xE58F11, 0xE5932C,
+        0x106EC22, 0x10E0287, 0x111ACE3, 0x1129E20, 0x11545B3)],
+]
+# Tab chat phòng (sub_D364D0): y chữ = đỉnh khung (call sub_149BEF0, không cộng hằng nào để sửa tại chỗ), dấu nặng của
+# `Hội` chạm viền dưới tab. Lời gọi được chuyển sang stub trong .l10n: gọi hàm cũ rồi trừ 2.
+VI_LAYOUT_CALLS = [(0xD365C8, 0x149BEF0, 2, 'PreparePreTab ChatFilterWhole y -2'),
+                   (0xD36898, 0x149BEF0, 2, 'PreparePreTab ChatFilterGuild y -2')]
+
+
+def call_stub(stub_va, target, sub):
+    """call target; sub eax, imm8; ret (thiscall không đối số, giữ ecx)."""
+    return b'\xe8' + struct.pack('<i', target - (stub_va + 5)) + bytes((0x83, 0xE8, sub, 0xC3))
+
+
 def literal_blob(base_va, catalog, lang):
     """Chuỗi cứng của exe theo ngôn ngữ dựng: trả (bytes, [(operand_va, old_va, new_va)], báo cáo)."""
     import csv
@@ -46,7 +74,7 @@ def literal_blob(base_va, catalog, lang):
     return bytes(blob), patches, report
 
 
-def build(src, out, lang=None, catalog=None, trace=False):
+def build(src, out, lang=None, catalog=None, trace=False, vi_layout=True):
     data = src.read_bytes()
     digest = hashlib.sha256(data).hexdigest()
     if digest != SOURCE_SHA256:
@@ -97,6 +125,14 @@ def build(src, out, lang=None, catalog=None, trace=False):
     if lang:
         lit, patches, literal_report = literal_blob(va + len(code), catalog, lang)
         code += lit
+    calls = []
+    if lang == 'vi' and vi_layout:
+        code += b'\0' * (-len(code) % 16)
+        for site, target, sub, why in VI_LAYOUT_CALLS:
+            stub = va + len(code)
+            code += call_stub(stub, target, sub)
+            code += b'\xcc' * (-len(code) % 4)
+            calls.append((site, target, stub, why))
     vsize = len(code)
     rsize = (vsize + falign - 1) // falign * falign
     # Thêm section header mới.
@@ -115,6 +151,17 @@ def build(src, out, lang=None, catalog=None, trace=False):
         if struct.unpack_from('<I', image, off)[0] != old:
             raise SystemExit('operand %#x không trỏ chuỗi %#x' % (operand, old))
         struct.pack_into('<I', image, off, new)
+    layout = VI_LAYOUT if lang == 'vi' and vi_layout else []
+    for va, old, new, _ in layout:
+        off = pe.get_offset_from_rva(va - base)
+        if image[off:off + len(old) // 2].hex() != old:
+            raise SystemExit('byte layout tại %#x không phải %s' % (va, old))
+        image[off:off + len(new) // 2] = bytes.fromhex(new)
+    for site, target, stub, _ in calls:
+        off = pe.get_offset_from_rva(site - base)
+        if image[off] != 0xE8 or struct.unpack_from('<i', image, off + 1)[0] != target - (site + 5):
+            raise SystemExit('lời gọi tại %#x không tới %#x' % (site, target))
+        struct.pack_into('<i', image, off + 1, stub - (site + 5))
     image += b'\0' * (raw_ptr - len(image))
     image += code + b'\0' * (rsize - vsize)
     tag = ('-' + lang if lang else '') + ('-trace' if trace else '')
@@ -130,7 +177,10 @@ def build(src, out, lang=None, catalog=None, trace=False):
             'hook_c_sha256': hashlib.sha256((HERE / 'l10n_949x_hook.c').read_bytes()).hexdigest(),
             'exe_literals': {'lang': lang, 'catalog': str(catalog) if catalog else None,
                              'catalog_sha256': hashlib.sha256(catalog.read_bytes()).hexdigest() if catalog else None,
-                             'strings': literal_report, 'operands_patched': len(patches)}}
+                             'strings': literal_report, 'operands_patched': len(patches)},
+            'layout': [{'va': hex(va), 'old': old, 'new': new, 'why': why} for va, old, new, why in layout] +
+                      [{'va': hex(site), 'call': hex(target), 'stub': hex(stub), 'why': why}
+                       for site, target, stub, why in calls]}
     (out / ('patch%s.json' % tag)).write_text(json.dumps(meta, indent=2) + '\n')
     return meta
 
@@ -142,9 +192,14 @@ def main():
     ap.add_argument('--lang', choices=('vi', 'en'), help='thay chuỗi cứng của exe bằng bản dịch (949x)')
     ap.add_argument('--trace', action='store_true', help='bản chẩn đoán ghi l10n-trace.log')
     ap.add_argument('--catalog', type=Path, default=Path('/home/admin/boom/repos/boom-re-l10n/l10n/catalog_en.csv'))
+    ap.add_argument('--no-vi-layout', action='store_true',
+                    help='bản vi không vá layout cho font VN (VI_LAYOUT, VI_LAYOUT_CALLS)')
     a = ap.parse_args()
-    meta = build(a.src.resolve(), a.out.resolve(), a.lang, a.catalog.resolve() if a.lang else None, a.trace)
-    print(json.dumps({k: v for k, v in meta.items() if k != 'exe_literals'}, indent=2))
+    meta = build(a.src.resolve(), a.out.resolve(), a.lang, a.catalog.resolve() if a.lang else None, a.trace,
+                 not a.no_vi_layout)
+    print(json.dumps({k: v for k, v in meta.items() if k not in ('exe_literals', 'layout')}, indent=2))
+    if meta['layout']:
+        print('layout patches:', len(meta['layout']))
     if a.lang:
         print('exe literals:', len(meta['exe_literals']['strings']), 'strings,', meta['exe_literals']['operands_patched'], 'operands')
 
