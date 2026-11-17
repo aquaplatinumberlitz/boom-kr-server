@@ -6027,7 +6027,8 @@
           "docs/protocol/room-membership.md#rust-r1f-session-binding",
           "docs/evidence/rust-service/r1f-session-binding.json",
           "docs/protocol/rust-boundary.md#rust-r1g-admission",
-          "docs/evidence/rust-service/r1g-admission.json"
+          "docs/evidence/rust-service/r1g-admission.json",
+          "docs/evidence/rust-service/m8-server-package.json"
         ]
       },
       "coverage": {
@@ -6124,7 +6125,11 @@
             "docs/protocol/life-results.md#rust-return-cleanup",
             "docs/protocol/rust-boundary.md#rust-m3-acceptance",
             "docs/protocol/auth-session.md#rust-account-worker",
-            "docs/protocol/auth-session.md#rust-account-idle-rate"
+            "docs/protocol/auth-session.md#rust-account-idle-rate",
+            "tools/rust_service_package.py",
+            "tools/rust_package_runtime.py",
+            "tools/smoke_rust_service_package.py",
+            "tools/test_rust_service_package.py"
           ],
           "delivery": "via_pr"
         },
@@ -6169,7 +6174,8 @@
       },
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474"
       ]
     }
   ]

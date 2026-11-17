@@ -26,7 +26,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, S
 | [G1](#rust-g1) sáu map và tập item đã cắt | **Đạt acceptance giai đoạn 1** theo [ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json): sáu map/roster trong phạm vi, kim/cứu, item nền/MaxPower, ma trận Shoe/Punch, drop đã cắt, từ chối nhân vật giữ phiên và client Việt hai vòng trên Rust | Giữ giới hạn từng route/native và raw cleanup; không whole gameplay, every-tile hoặc L1 closure. Vận hành còn M8 |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance; [Codex đã bàn giao WIP cho Claude](evidence/owner-directives/l10n-claude-owner.json) | Chưa chốt xử lý đủ literal949, consumer/capacity và render/IME; L1b/L1c chưa đạt. Không đổi wire của client chưa vá |
-| M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
+| M8 vận hành | CI đã có; [nền gói Linux](evidence/rust-service/m8-server-package.json) đã có manifest/state riêng và smoke x86/ARM tách repo, gồm kiểm chạy trùng và từ chối ghi đè DB | Xuất dữ liệu từ pack, launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 24 giờ chạy dài |
 
 **Thứ tự việc:**
 
@@ -36,6 +36,13 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, S
    Các giới hạn native, wrapper cache, capture/debugger/cleanup cũ giữ tại evidence; không đổi exit 1 thành exit 0.
    Việc M8 gồm Internet thật cho companion xác thực hiện hành, cấu hình/đóng gói, 50 người/8 phòng, giám sát,
    backup/restore và chạy dài. N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet.
+
+   | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
+   |---|---|
+   | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
+   | Launcher public và gói người chơi | Nối account/companion qua TLS, thử Windows VM sớm và Wine qua Internet transport hiện hành; không mở lại các gate cũ trên Windows. |
+   | Tải/giám sát/soak | Chốt tần suất UDP từ client thật và ngưỡng trước đo, 50 người/8 phòng cùng hai phòng native, rồi 24 giờ tải nền; đo startup failure, bộ nhớ/cổng/phòng. |
+   | Admin/backup/rollback | Audit thao tác admin, snapshot khi live và restore vào máy sạch/native trận mới, kill/restart và nâng cấp/quay lại binary. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
    [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ.
    Checkpoint mới dùng `pack_evidence`/`evidence_runs`; dọn `local/` chỉ bằng plan/hash được chủ dự án duyệt.

@@ -1114,6 +1114,29 @@
       "prs": [],
       "successors": [],
       "reviewed_utc": "2026-11-17T17:56:20.061803+00:00"
+    },
+    {
+      "number": 474,
+      "kre": "KRE-M8-SERVER-PACKAGE",
+      "as_of": "2026-11-17T19:10:59.931256+00:00",
+      "classification": "in_progress",
+      "features": [
+        "KR-S002"
+      ],
+      "known": "Nền gói Linux đã kiểm hash/path/mode, fixture relocation, DB/state riêng, smoke x86 và ARM tách repo, từ chối init lại/chạy trùng, readiness/dừng sạch.",
+      "remaining": "Audit/checkpoint và PR/gate/CI trước tích hợp. Export từ pack, cài máy sạch đầy đủ, gói người chơi, Internet/tải/restore/soak còn ở M8.",
+      "next_test": "Gate exact-head local/history sau registry dọn evidence lịch sử; tiếp launcher public và player package theo PLAN.",
+      "acceptance": "Phạm vi nền builder/runner riêng của issue474; không dùng service readiness thay native/gameplay hoặc toàn M8.",
+      "reason": "Codex tự kiểm công cụ và hai môi trường Linux; root-owned ARM harness và failure trước giữ riêng, không lộ thông tin hạ tầng.",
+      "sources": [
+        "docs/PLAN.md#phase1-acceptance",
+        "docs/OPERATIONS.md#gói-linux-và-state-riêng"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/m8-server-package.json"
+      ],
+      "prs": [],
+      "successors": []
     }
   ],
   "as_of_utc": "2026-11-17T12:35:05.125317+00:00",

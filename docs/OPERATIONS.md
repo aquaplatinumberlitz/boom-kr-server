@@ -4,6 +4,42 @@
 nâng cấp/rollback còn theo [acceptance M8](PLAN.md#phase1-acceptance); không coi trang này là nghiệm thu vận hành.
 Contract xác thực, route và giới hạn ở [UDP/companion](protocol/udp-peer.md#rust-authenticated-serving-relay).
 
+## Gói Linux và state riêng
+
+[Builder](../tools/rust_service_package.py) nhận binary cùng kiến trúc ELF64 và recipe đã pin, gom fixture/profile
+thành đường dẫn tương đối và ghi manifest. Nó không copy DB/session, không tự đổi endpoint/budget và không tự xuất
+lại toàn bộ dữ liệu từ pack. Bước này chưa thay acceptance build-from-pack, Linux sạch hoặc gói người chơi của M8.
+Đầu ra chứa cấu hình hạ tầng và dữ liệu client, chỉ dựng trong `local/`, không commit hoặc phát hành lên GitHub.
+
+```bash
+python3 tools/rust_service_package.py --base "$BASE_CONFIG" --binary-dir "$BINARY_DIR" \
+  --target "$BUILD_TARGET" --out local/operator/package-new
+```
+
+Giữ `manifest_sha256` từ kết quả builder làm hash bàn giao độc lập với gói. Chuyển thư mục nguyên mode sang đường
+cài mới; target và Linux ABI phải tương thích, Python dùng standard library. State thuộc người chạy, quyền `0700`,
+ở ngoài thư mục gói; socket cần đường dẫn ngắn. Runner kiểm manifest, file/mode và từ chối symlink/path escape.
+
+```bash
+python3 "$PACKAGE/kr-package.py" verify --manifest-sha256 "$EXPECTED_MANIFEST_SHA256"
+python3 "$PACKAGE/kr-package.py" init-db --manifest-sha256 "$EXPECTED_MANIFEST_SHA256" --state "$PRIVATE_STATE"
+python3 "$PACKAGE/kr-package.py" run --manifest-sha256 "$EXPECTED_MANIFEST_SHA256" --state "$PRIVATE_STATE"
+```
+
+`init-db` chỉ dùng cho DB mới; restore có quy trình riêng, không ghi đè DB bằng init. `run` re-root DB/socket vào
+state, khóa instance của runner rồi exec service với cwd gói để fixture không cần repo/local. Admin dùng JSON qua
+stdin của `bin/kr-admin`, không đặt mật khẩu/token trên argv. Kiểm namespace bằng
+[smoke tool](../tools/smoke_rust_service_package.py) chỉ chứng minh repo bị che trên cùng kernel/thư viện host;
+không gọi nó là máy Linux sạch, Internet/native client, restore, tải hoặc soak.
+
+[Bằng chứng nền đóng gói](evidence/rust-service/m8-server-package.json) có kiểm x86 và ARM trên hai Linux độc lập.
+Smoke cần `unshare`, `ip`, `mount`, `bwrap` và namespace được kernel cho phép; mỗi lượt chỉ mở loopback trong
+network namespace riêng. Trên máy ARM, lượt dùng user namespace với tài khoản thường vướng quyền đọc
+`/proc/self/mountinfo` của `bwrap`; bản smoke đạt dùng thư mục riêng do root sở hữu và `sudo`. Đây là giới hạn
+của harness, chưa là quy trình chạy production bằng tài khoản service. Giữ raw lỗi trước, không thay cấu hình bảo
+mật host để vượt lỗi. Smoke kiểm DB mới, từ chối init lại mà không đổi DB, từ chối runner thứ hai khi instance đầu
+còn ready, rồi dừng có trật tự. Không suy client đăng nhập hoặc Internet từ readiness.
+
 ## Chọn cấu hình phục vụ
 
 Giai đoạn 1 dùng **`AuthenticatedRelay`**. `LegacyDirect` và relay UDP prototype giữ làm cấu hình chẩn đoán riêng.

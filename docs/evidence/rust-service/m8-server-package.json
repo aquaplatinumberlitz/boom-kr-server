@@ -1,0 +1,69 @@
+{
+  "schema": "kre-m8-server-package-v1",
+  "source": "design",
+  "status": "design",
+  "canonical": "docs/OPERATIONS.md#gói-linux-và-state-riêng",
+  "scope": "Nền đóng gói từ recipe/fixture/profile đã pin, không phải acceptance toàn bộ M8.",
+  "implementation": [
+    "tools/rust_service_package.py",
+    "tools/rust_package_runtime.py",
+    "tools/smoke_rust_service_package.py",
+    "tools/test_rust_service_package.py"
+  ],
+  "build": {
+    "path": "local/research/codex/m8-server-package-group-r1/arm-build-verification.json",
+    "bytes": 1011,
+    "sha256": "c81faab7242a426d7870d51192bffef5d12a59563db8e2adfde081c289d5f04d"
+  },
+  "artifacts": [
+    {
+      "target": "x86_64-unknown-linux-gnu",
+      "manifest": {
+        "path": "local/research/codex/m8-server-package-r2/manifest.json",
+        "bytes": 12456,
+        "sha256": "08149394cfbf5568cd8d557cec65fd26fee2198b13dfc49fac4c540c88244d31"
+      }
+    },
+    {
+      "target": "aarch64-unknown-linux-gnu",
+      "manifest": {
+        "path": "local/research/codex/m8-server-package-arm-r1/manifest.json",
+        "bytes": 12454,
+        "sha256": "c47e2653f8bd4a1b074f2cdb55cc856afb6c1c20e4e869b41a2ab00e20f7a57f"
+      }
+    }
+  ],
+  "verification": [
+    {
+      "path": "local/research/codex/m8-server-package-smoke-r4/verification.json",
+      "bytes": 587,
+      "sha256": "ca77c6e0dc0d4571bbb729b808a28dabd134a7f833f542a0ebe3627cc2b2e505"
+    },
+    {
+      "path": "local/research/codex/m8-server-package-arm-smoke-r2.json",
+      "bytes": 710,
+      "sha256": "a684df0cf8110a64707f32e21cff6ea8eda318add7bdb45579d5a7f529356a00"
+    }
+  ],
+  "observations": {
+    "path": "local/research/codex/m8-server-package-group-r1/harness-observations.json",
+    "bytes": 1026,
+    "sha256": "04a5fd66f9b450775e0aef18ae84de9d19f50072389b73cd395b757456bb7ba8"
+  },
+  "acceptance": {
+    "hash_path_and_mode_integrity": true,
+    "fixture_copy_and_deduplication": true,
+    "no_account_database_or_session_in_bundle": true,
+    "private_relocated_state": true,
+    "existing_database_refused": true,
+    "concurrent_runner_refused": true,
+    "repository_and_local_hidden": true,
+    "readiness_and_graceful_stop": true
+  },
+  "limits": [
+    "Input là recipe hiện có; chưa một lệnh xuất dữ liệu từ pack.",
+    "Smoke x86 dùng host runtime libraries; ARM trên Linux độc lập cũng dùng thư viện host và root-owned task directory. Chưa quy trình provision/cài sạch đầy đủ hoặc service account production.",
+    "Không native KR/gameplay, Internet, Windows/Wine player package, tải50/8phòng, restore/rollback hoặc soak24h.",
+    "Không sửa source client, L1, exporter map, checker checkpoint hoặc registry dọn local."
+  ]
+}

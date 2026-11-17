@@ -98,6 +98,15 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 
 ## Module và dòng dữ liệu
 
+Đường đóng gói M8 dùng `tools/rust_service_package.py` và runner Python standard library riêng, không nhập code
+repo khi chạy bản đã cài. Fixture/profile giữ nguyên bytes đã pin, gom theo hash vào gói; manifest ràng buộc path,
+size, SHA-256 và mode. DB/session không nằm trong artifact; runner re-root DB/socket vào state riêng và giữ khóa
+instance qua exec. Cấu hình endpoint/budget giữ input operator, không lấy giá trị mặc định từ hạ tầng phát triển.
+Smoke namespace đã có x86 trên máy phát triển và ARM trên Linux độc lập; cả hai che repo/local, kiểm DB init,
+từ chối init lại/chạy trùng, readiness và dừng sạch. Các lượt vẫn dùng thư viện host; ARM harness đạt với file
+do root sở hữu. Acceptance cài máy sạch đầy đủ, export từ pack, launcher public, Wine/Windows, Internet, tải và
+restore vẫn theo PLAN. Hash và giới hạn ở [evidence](evidence/rust-service/m8-server-package.json).
+
 Cấu trúc sau R1a–R1g và relay prototype; native hồi quy profile hiện hành đã đạt. Tính năng mới có acceptance riêng.
 
 **Cấu trúc thực tế:**
