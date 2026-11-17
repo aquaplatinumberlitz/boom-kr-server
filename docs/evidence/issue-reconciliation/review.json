@@ -983,6 +983,30 @@
       "prs": [],
       "successors": [],
       "reviewed_utc": "2026-11-17T06:09:34.739882+00:00"
+    },
+    {
+      "number": 456,
+      "kre": "KRE-G1-PUNCH-DOWN",
+      "features": [
+        "KR-F010"
+      ],
+      "classification": "in_progress",
+      "known": "CP327 có actual119 selector1 từ6,3 tới7,3 nhưng Rust từ chối trước162. Nhánh nghiên cứu có guard/test candidate; native execution chưa đạt.",
+      "remaining": "Reference và Rust native cho direction1, landing/retirement/bom tiếp/hai kết quả/reset; không suy các hướng hoặc biến thể khác.",
+      "next_test": "Chờ CP332 exact-head lease và tích hợp #453, rồi chạy reference mới bằng phím thường; guard Rust chỉ nghiệm thu khi đủ evidence.",
+      "acceptance": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "reason": "Theo thứ tự Shoe/Punch còn thiếu trong PLAN. Bản nháp không tự mở contract đã xác nhận hoặc đóng G1.",
+      "sources": [
+        "docs/PLAN.md#dashboard",
+        "docs/PROTOCOL.md",
+        "docs/RESEARCH.md#gap-ability-debuff"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/g1-punch.json"
+      ],
+      "prs": [],
+      "successors": [],
+      "reviewed_utc": "2026-11-17T10:03:31.869924+00:00"
     }
   ],
   "as_of_utc": "2026-11-14T14:43:14.236502+00:00",

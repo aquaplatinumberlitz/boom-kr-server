@@ -761,12 +761,12 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/453"
     },
     {
-      "body": "KRE-G1-PUNCH-DOWN — bổ sung lát Punch selector 1/hướng xuống dựa trên bằng chứng KR, theo gap Shoe/Punch trong PLAN.\n\nBaseline: `3f2a10bfaacc69ae33f26cc8be563b59873580d3` (PR #455/CP332 đang qua gate; implementation sau tích hợp). Owner/reviewer: Codex solo, review độc lập waived theo AGENTS. Feature: KR-F010. Dependency: #453/PR #455; giữ L1 thuộc Claude và không sửa `tools/export_map_profile.py`.\n\nĐã biết: CP327 có request native 119 selector 1, source (6,3) → target (7,3), bị từ chối đúng policy Rust chỉ mở selector 3. Layout 119/162, nhánh virtual +94 và rebind 158 đã có nguồn; không đủ chứng minh native thực thi/thu hồi cho hướng mới. Nguồn chuẩn: `docs/protocol/items-stats.md#rust-bomb-motion-codec`, `docs/evidence/rust-service/g1-punch.json`. Không mở lại RE toàn client hoặc nhập luật VN.\n\nPhạm vi file: Rust bomb/terrain/action admission và regression nếu đã đủ contract, tools phục vụ phép đo, docs/contract/catalog/evidence/checkpoint liên quan. Raw và copy client/prefix giữ local; không sửa binary/pack/DB nguồn hoặc VPS/OCI.\n\nAcceptance: source-first đối chiếu cache/current docs và repo tham chiếu; reference native actual 119 selector 1 và 162 cả hai view, root/landing/rebind/active0 rồi bom tiếp, hai kết quả/reset. Khi đủ mới mở lát Rust, giữ current account/member/round/owner, terrain/corridor/deadline, queue rollback và retirement; native dùng/không đủ điều kiện/peer/reset và journal thưởng 0. Giữ mọi failure/partial và giới hạn, không suy selector khác/foreign bomb/repeated/inflight hoặc original server authority. Docs/catalog, kiểm Rust/tool thích hợp, checkpoint/audit theo nhóm, exact-head local/history và CI xanh trước merge.\n\nĐây là task theo thứ tự PLAN, không thay acceptance G1 hoặc tự chốt map/item/thưởng.\n",
+      "body": "KRE-G1-PUNCH-DOWN — bổ sung lát Punch selector 1/hướng xuống dựa trên bằng chứng KR, theo gap Shoe/Punch trong PLAN.\n\nBaseline: `3f2a10bfaacc69ae33f26cc8be563b59873580d3` (PR #455/CP332 đang qua gate; implementation sau tích hợp). Owner/reviewer: Codex solo, review độc lập waived theo AGENTS. Feature: KR-F010. Dependency: #453/PR #455; giữ L1 thuộc Claude và không sửa `tools/export_map_profile.py`.\n\nĐã biết: CP327 có request native 119 selector 1, source (6,3) → target (7,3), bị từ chối đúng policy Rust chỉ mở selector 3. Layout 119/162, nhánh virtual +94 và rebind 158 đã có nguồn; không đủ chứng minh native thực thi/thu hồi cho hướng mới. Nguồn chuẩn: `docs/protocol/items-stats.md#rust-bomb-motion-codec`, `docs/evidence/rust-service/g1-punch.json`. Không mở lại RE toàn client hoặc nhập luật VN.\n\nPhạm vi file: Rust bomb/terrain/action admission và regression nếu đã đủ contract, tools phục vụ phép đo, docs/contract/catalog/evidence/checkpoint liên quan. Raw và copy client/prefix giữ local; không sửa binary/pack/DB nguồn hoặc VPS/OCI.\n\nAcceptance: source-first đối chiếu cache/current docs và repo tham chiếu; reference native actual 119 selector 1 và 162 cả hai view, root/landing/rebind/active0 rồi bom tiếp, hai kết quả/reset. Khi đủ mới mở lát Rust, giữ current account/member/round/owner, terrain/corridor/deadline, queue rollback và retirement; native dùng/không đủ điều kiện/peer/reset và journal thưởng 0. Giữ mọi failure/partial và giới hạn, không suy selector khác/foreign bomb/repeated/inflight hoặc original server authority. Docs/catalog, kiểm Rust/tool thích hợp, checkpoint/audit theo nhóm, exact-head local/history và CI xanh trước merge.\n\nĐây là task theo thứ tự PLAN, không thay acceptance G1 hoặc tự chốt map/item/thưởng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-ability-debuff).\n",
       "closedAt": null,
       "number": 456,
       "state": "OPEN",
       "title": "G1: Punch selector 1 hướng xuống, native rồi lát Rust",
-      "updatedAt": "2026-11-17T09:39:44Z",
+      "updatedAt": "2026-11-17T10:03:49Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456"
     }
   ],
@@ -4423,6 +4423,11 @@
       "issue": 456,
       "captured_utc": "2026-11-17T10:00:26.353906+00:00",
       "method": "gh issue view456 only; base snapshot and other issue/PR entries unchanged."
+    },
+    {
+      "issue": 456,
+      "captured_utc": "2026-11-17T10:03:31.869924+00:00",
+      "method": "Refresh only issue456 after adding canonical links; no other state changed."
     }
   ]
 }
