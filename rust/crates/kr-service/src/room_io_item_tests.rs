@@ -1471,7 +1471,7 @@ fn punch_keeps_deadline_quota_and_owner_then_commits_terrain_at_moved_root() {
             .accepted
     );
 }
-// Candidate down-one server controls; native execution still awaits #456.
+// Down-one server controls; scoped native execution is recorded in #456.
 #[test]
 fn punch_down_queue_rollback_reserves_target_and_keeps_owner_quota_until_all_receipts() {
     let mut c = punch_case();

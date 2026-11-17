@@ -1,0 +1,244 @@
+{
+  "schema": "kre-rust-punch-down-v1",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "source_commit": "f9e5d33bcb2db7a578eb3d175be0b785ab3cc1a9",
+  "scope": "Lát Rust opt-in Punch selector 1 xuống một ô cùng cột, bổ sung selector 3 đã đo. Không mở hướng ngang, toàn nhóm item hoặc toàn G1.",
+  "client_sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed",
+  "native_service_sha256": "d45a3d0ba9abc97938f9d718b767ef383bca6c623b296e23a8c96b9b80f796e1",
+  "run_sha256": "3a5db8d3482115ebce8284c2da7c89dfe26b322b87968f660abaa4981739f0bd",
+  "clients": [
+    {
+      "role": "A",
+      "identity": 1,
+      "slot": 0,
+      "character": 1,
+      "native": [
+        {
+          "round": 1,
+          "object": 1639601664,
+          "root": [
+            7,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "round": 2,
+          "object": 1667549208,
+          "root": [
+            7,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        }
+      ],
+      "ranks": 2,
+      "returns": 2,
+      "clocks": 2,
+      "pickup165": 2,
+      "only_Punch4_no_Shoe3": true,
+      "wire_motion": 2,
+      "short_rebind158": 2
+    },
+    {
+      "role": "B",
+      "identity": 2,
+      "slot": 1,
+      "character": 0,
+      "native": [
+        {
+          "round": 1,
+          "object": 1652449216,
+          "root": [
+            7,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        },
+        {
+          "round": 2,
+          "object": 1621028672,
+          "root": [
+            7,
+            3
+          ],
+          "active_at_cleanup": 0,
+          "CC_after_rebind": 1,
+          "landed_before_rebind": true,
+          "reader162": [
+            9,
+            9,
+            0,
+            0
+          ]
+        }
+      ],
+      "ranks": 2,
+      "returns": 2,
+      "clocks": 2,
+      "pickup165": 2,
+      "only_Punch4_no_Shoe3": true,
+      "wire_motion": 2,
+      "short_rebind158": 2
+    }
+  ],
+  "native_actor_field_checks": 216,
+  "matches": [
+    {
+      "id": 7,
+      "round": 256,
+      "map": "ExVillage01",
+      "state": "complete",
+      "reason": "elimination"
+    },
+    {
+      "id": 8,
+      "round": 512,
+      "map": "ExVillage01",
+      "state": "complete",
+      "reason": "elimination"
+    }
+  ],
+  "policy": {
+    "source": "design",
+    "status": "design",
+    "description": "Giữ report_derived_punch/report_derived_shoe_punch. Punch selector 1 đi source_row+1, selector 3 đi source_row-1; cùng cột, current owner/membership/round, một motion mỗi bom, còn tối thiểu 3 giây và chưa bắt đầu blast. Đích trống/không hủy bom. Quota, owner, fuse 6 giây và short158→blast tại deadline giữ nguyên."
+  },
+  "negative_control": "Mỗi vòng hai Space trước pickup sinh bom thường118, không119; sau pickup floor chỉ Punch4, không Shoe3. Test server kiểm rollback queue, terrain bị chặn, biên đích, source reservation khi có Shoe mới, ownership/quota/deadline/round/delivery.",
+  "final_source_binding": "Sau native chỉ sửa chú thích pending, giữ số dòng. Build/test lại và mọi section ELF có SHF_ALLOC trừ build-ID note khớp byte với binary native; không suy bằng chứng runtime từ debug metadata.",
+  "retained_runs": [
+    "R2 reference chỉ một119 source4→7 và không pickup Punch vòng2; không tính hai-cycle/down-one.",
+    "R3 dao động căn phím trước119; R4 căn sai offset dẫn tới actual118source5; R5 có một exactdown-one nhưng route tự kết thúc bị chặn. Raw/hash/failed verifier giữ nguyên.",
+    "R6 sửa riêng route tự kết thúc bằng phím thường, có hai vòng reference đầy đủ. Lượt Rust dùng controller đo trước đó và qua hai vòng ngay, không sửa packet hoặc state."
+  ],
+  "limits": [
+    "Native Rust Wine/LAN cô lập, hai account, actorC1 đã lưu/peerC0, ExVillage01. Reference C0 có cả pickupShoe/Punch; Rust floor chỉ Punch. Không Internet, tải, mọi nhân vật/map/roster.",
+    "Một motion/bom, same-column down-one/up-one; Shoe vẫn chỉ selector5/up-three theo evidence riêng. Hướng ngang, arbitrarytarget, foreignbomb, repeated/late/inflight motion chưa mở.",
+    "Short158→blast và deadline/quota là policy emulator đã kiểm, originalserverauthority và luật toàn bộ quỹ đạo chưa phục hồi.",
+    "Các race ownership/queue/DB còn dùng regression server, không native fault injection. Không đóng toàn G1, M8/giai đoạn1 hoặc L1 của Claude."
+  ],
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/punch-down-native-verification.json",
+      "bytes": 5274,
+      "sha256": "96730e4b52d818803036f0b43af4217da9021ae641f0e0ce3cb8ea8d12623193"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/decoded-channels-shared.json",
+      "bytes": 111247,
+      "sha256": "e84d7aa82b71d4e67a6c718fbc2dd1c3682192f4bc2b11baa9cb1519471e0440"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native-actor-field-checks.json",
+      "bytes": 67609,
+      "sha256": "34b1100e844cfa208f2c06a81562b02923ef33872a71cef80616125100fa9695"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/raw-seal.json",
+      "bytes": 12177,
+      "sha256": "c5e5362476952758e5b71a34da0d555f6c142e6db97dd96c217729c924f706ba"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/frozen-input-postrun-verification.json",
+      "bytes": 59,
+      "sha256": "b8bc153e8b420db9fd4f7df298721b30caf2d675b9cb94e815c7a8d112f3d833"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/runtime-preflight.json",
+      "bytes": 312569,
+      "sha256": "31c2866277c0f737e0567505a04cf4d731792051dc8feb3a7f6a76a9a831fff7"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/recipe.json",
+      "bytes": 1232,
+      "sha256": "c6c34c3f9db209d5a3362c8aa18bd76963ce45552b1142e10cad80e989b0a989"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/launch-exit.json",
+      "bytes": 255,
+      "sha256": "284495e6a4b496a0da8e6c463db945e727268bca868eeaf4e88273bc649b64b2"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/storage-export.json",
+      "bytes": 17938,
+      "sha256": "8c5b3e1a3905195abbeab45e09417331b42225acbb6d5a7756f98216c403fd33"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/native/cycles/run.json",
+      "bytes": 232106,
+      "sha256": "3a5db8d3482115ebce8284c2da7c89dfe26b322b87968f660abaa4981739f0bd"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-build-r1/verification.json",
+      "bytes": 2444,
+      "sha256": "93369031e962ff5208f6f9cf00d29a8549daaa58c28adf78af9d749c73e45d3d"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-build-r1/source-inputs.json",
+      "bytes": 15220,
+      "sha256": "187eddf55cc045b002e94f0bc84e59883ffd0c36facf6935dd0d7365068f1f74"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-build-r1/test-r2-with-exit.json",
+      "bytes": 657,
+      "sha256": "ef26755669fc21771cb265dd3723dc98651571b58c8174b24065085883181be9"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-build-r1/source-selfcheck-r1.json",
+      "bytes": 3616,
+      "sha256": "5c17867ad516fb7b75a0d140e3b2f575aae2c00cd97e1fd462bcdb7d317efc1e"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-build-r1/pre-native-docs-source-binding.json",
+      "bytes": 688,
+      "sha256": "903af215c7d30f6d4bc94b56d25d6de9576c34f11d3fbe228b099994e0e35f0e"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-final-build-r2/verification.json",
+      "bytes": 18686,
+      "sha256": "2d8abb4af7fa7cd6eedd766e035a92c9b7d860b08c234f29864d100f79dcfae9"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/two-round-down-reference-verification.json",
+      "bytes": 4179,
+      "sha256": "d360461ccb3e78d0ccf85c7de2b8062c28e268b4ace9cf07a7dae93429ebafd1"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/wire-reassembly-verification.json",
+      "bytes": 2532,
+      "sha256": "2f52a9fe0dccce07792baf0aad4d1e4db0f009fc17de32c99d863ae967abb386"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-external-inputs-r1/mapping.json",
+      "bytes": 29214,
+      "sha256": "43d06a7041e6a685dfd67798a250d2a0d0465ab096a5b9b40b356a4910f2853f"
+    }
+  ]
+}

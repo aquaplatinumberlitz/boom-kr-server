@@ -330,9 +330,9 @@ impl Ledger {
         );
         Ok(Ok(Placement::Allocated(ticket)))
     }
-    /// Candidate owner-only vertical Punch policy, not original KR authority.
-    /// Selector1 emission was captured at CP327; native execution acceptance
-    /// for down-one remains pending in KRE-G1-PUNCH-DOWN (#456).
+    /// Scoped owner-only vertical Punch policy, not original KR authority.
+    /// Selector1 emission was captured at CP327; down-one native execution
+    /// and retirement were checked in KRE-G1-PUNCH-DOWN (#456).
     /// Wire119 has no epoch: current non-reused ID and Membership fence it.
     pub(crate) fn move_punch(
         &mut self,
@@ -372,7 +372,7 @@ impl Ledger {
             return Err("action_actor_mismatch");
         }
         // Explicit captured direction/cell relationships only. The down-one
-        // branch is a candidate until the matching native execution is accepted.
+        // branch has matching scoped native execution and retirement evidence.
         let target_row = match (shoe, motion.selector) {
             (true, 5) => motion.source_row.checked_sub(3),
             (false, 3) => motion.source_row.checked_sub(1),

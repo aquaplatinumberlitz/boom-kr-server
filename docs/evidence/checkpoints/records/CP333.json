@@ -1,0 +1,249 @@
+{
+  "id": "CP333",
+  "previous": "CP332",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T11:46:40.474913+00:00",
+  "context_commit": "51f7f2b77c3498bad7db55b24438ff21c81f5c6e",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Mở thêm lát Punch selector1/down-one với actual 119/162, lifecycle bom, peer và account/reset/journal; giữ ownership/transport/membership trong vòng đời.",
+  "scope": "Reference C0 hai vòng và Rust hai account C1/C0 trên ExVillage01, hai vòng/reset, missing-item input control và zero-reward journal. Không toàn Shoe/Punch/G1/Internet.",
+  "artifacts": [
+    {
+      "name": "reference-client",
+      "sha256": "e9bb476652a5f428c3bbf2f4e20587bc8eeffca5d6bee7d2d58f7823cf089cef"
+    },
+    {
+      "name": "native-client",
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    {
+      "name": "native-service",
+      "sha256": "d45a3d0ba9abc97938f9d718b767ef383bca6c623b296e23a8c96b9b80f796e1"
+    }
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/evidence/rust-service/g1-punch-down.json",
+    "docs/evidence/item-families/punch-down-action.json",
+    "docs/RESEARCH.md#gap-ability-debuff",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456"
+  ],
+  "findings": [
+    {
+      "summary": "Reference có hai actual 119 selector 1/source (6,3)→(7,3), cả hai view reader 9/9, errors 0, root đích, landing trước short 158/rebind, active 0 trước cleanup rồi actual 118 mới, hai rank/return/reset. 712 wrapper được replay qua native getter; độc lập ghép chunk TCP/CRC và exact 162 prefix.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH333-06645",
+        "PUNCH333-06646",
+        "PUNCH333-04673"
+      ],
+      "limits": "Reference C0 nhặt cả Shoe/Punch, identity diagnostic; không thay Rust account acceptance. Short158→blast6s vẫn là emulator policy."
+    },
+    {
+      "summary": "Rust opt-in mở Punch selector 1/down-one bên cạnh selector 3/up-one, giữ owner/current membership/round, deadline/quota/fuse và clone/queue publish. Kiểm biên hàng đích và reserve source/target min..max cho Shoe mới qua vùng Punch active. Không cờ capacity hoặc alias identity.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH333-07857",
+        "PUNCH333-07858",
+        "PUNCH333-07859",
+        "PUNCH333-00249"
+      ],
+      "limits": "Server guard/regression là policy hẹp, không original authority hoặc mọi quỹ đạo; malformed/ownership/queue tests không native fault injection."
+    },
+    {
+      "summary": "Rust Wine/LAN hai account, actorC1 đã lưu/peerC0 và floor chỉ Punch 4: trước pickup có 118/no119; hai actual 119 và exact 162 xuống1ô, landing/rebind/cleanup active 0 trong mọi view, actual 118 tiếp, hai kết quả/về phòng/reset và hai journal đúng account/player/character thưởng 0. TCP rank rows khớp DB outcomes.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH333-07135",
+        "PUNCH333-07129",
+        "PUNCH333-06660",
+        "PUNCH333-07119"
+      ],
+      "limits": "216 getter snapshots, native 2 only, ExVillage01/Wine/privateLAN; không Internet/tải/mọi nhân vật/map/roster, không hết các hướng/khoảng cách."
+    },
+    {
+      "summary": "Giữ R2 source4→7/one action, R3 căn phím dao động, R4 offset mất 39/118 source 5 và R5 one exact motion nhưng route finish chặn. Mỗi follow-up có cạnh đo rõ, phím thường và strict actual 119/geometry vẫn giữ; R6 đổi riêng finish route và đạt hai vòng. Empty AssertionError/exit 0 không coi pass.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+      "evidence": [
+        "PUNCH333-00826",
+        "PUNCH333-02242",
+        "PUNCH333-03028",
+        "PUNCH333-04175",
+        "PUNCH333-05048"
+      ],
+      "limits": "Không sửa raw/old inputs, không nới geometry hoặc original collision law. 90 external inputs giữ bản copy exact trong local."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Candidate fmt/clippy/locked build và full workspace test có exit receipt 0; final source đổi chỉ comments, mọi section ELF allocated trừ build ID khớp native build",
+      "result": "pass",
+      "evidence": [
+        "PUNCH333-00252",
+        "PUNCH333-00249",
+        "PUNCH333-00351"
+      ],
+      "limits": "Final native binary remains pinned independently; final annotations do not create new runtime evidence."
+    },
+    {
+      "check": "Reference và Rust native hai vòng, wire/native getter, retirement, account/journal/reset và frozeninputs",
+      "result": "pass",
+      "evidence": [
+        "PUNCH333-06645",
+        "PUNCH333-06646",
+        "PUNCH333-07135"
+      ],
+      "limits": "Không toàn G1 hoặc mọi hướng/lifecycle."
+    },
+    {
+      "check": "Canonical docs/catalog/diff và manual feature-group audit",
+      "result": "pass",
+      "evidence": [
+        "PUNCH333-00032",
+        "PUNCH333-00031",
+        "PUNCH333-00007"
+      ],
+      "limits": "Exact-head local/history và all CI còn bắt buộc trước merge."
+    }
+  ],
+  "evidence": [],
+  "evidence_manifests": [
+    {
+      "path": "docs/evidence/checkpoints/evidence/CP333-punch-down.json",
+      "bytes": 2058156,
+      "sha256": "79ec7d545862879bb69a320820ba6afb2e63b3ab695e24825c0d49e502c14fb7",
+      "count": 7860
+    }
+  ],
+  "delta": {
+    "added": [
+      "Lát Punch selector 1/down-one, native reference và Rust2account/two cycles/reset/journal."
+    ],
+    "corrected": [
+      "Bổ sung targetbounds/source reservation cho chiều dọc xuống; ghi rõ controller failure/partial và emptyAssertionError; mọi evidence cũ giữ nguyên."
+    ],
+    "superseded": [
+      "Trạng thái draft down-one/pending native của #456; full G1/phase 1 vẫn mở."
+    ]
+  },
+  "blockers": [
+    "Native Rust Wine/LAN cô lập, hai account, actorC1 đã lưu/peerC0, ExVillage01. Reference C0 có cả pickupShoe/Punch; Rust floor chỉ Punch. Không Internet, tải, mọi nhân vật/map/roster.",
+    "Một motion/bom, same-column down-one/up-one; Shoe vẫn chỉ selector5/up-three theo evidence riêng. Hướng ngang, arbitrarytarget, foreignbomb, repeated/late/inflight motion chưa mở.",
+    "Short158→blast và deadline/quota là policy emulator đã kiểm, originalserverauthority và luật toàn bộ quỹ đạo chưa phục hồi.",
+    "Các race ownership/queue/DB còn dùng regression server, không native fault injection. Không đóng toàn G1, M8/giai đoạn1 hoặc L1 của Claude."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-G1-BOMB-MOTION-COVERAGE",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Theo PLAN tiếp các hướng/khoảng cách Shoe/Punch còn thiếu bằng source-first/native use/ineligible/peer/reset; sau đó coverage Factory07/Tomb12/content. Không L1 hoặc exporter.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T11:46:40.474913+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo self-audit AUD141, Punch selector 1/down-one measured scope. Independent review waived; no full G1/phase 1 closure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Owner chỉ đạo solo; không gọi worker/reviewer."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Index trỏ topic items-stats hiện hành, không cần thêm anchor theo checkpoint."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/protocol/items-stats.md",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/evidence/item-families/punch-down-action.json",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/evidence/rust-service/g1-punch-down.json",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD141.json",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/bombs.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-service/src/room_io_item_tests.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "rust/crates/kr-wire/tests/native_bomb_motion.rs",
+      "state": "updated",
+      "reason": "Đồng bộ Punch xuống một ô, reference/Rust native, guard/lifecycle/account/reset/journal và giới hạn."
+    },
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Solo, audit nhóm, privacy và L1 owner không đổi."
+    }
+  ],
+  "completed_feature_groups": [
+    "g1-punch-selector1-down-one"
+  ]
+}

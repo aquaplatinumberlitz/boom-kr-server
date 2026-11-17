@@ -152,12 +152,19 @@ Luồng chunk TCP được ghép lại và kiểm CRC độc lập; 712 snapshot
 Shoe/Punch, chỉ phát hành động Punch này. Short 158 trước blast tại deadline 6 giây vẫn là policy reference,
 không phải thứ tự server gốc. Các lượt sai geometry/căn phím hoặc chỉ một chuyển động giữ nguyên là partial/lỗi.
 
-Nhánh [#456](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456) có bản nháp Rust cho selector 1,
-cùng cột và một hàng phía dưới. CP327 đã có request này nhưng bị từ chối; ca cũ chỉ là emission/codec.
-Bản nháp giữ owner/round/deadline/queue, kiểm biên đích và reservation ô nguồn cũ cho cả hai chiều dọc.
-Rust native account, floor chỉ có Punch, landing/retirement/bom tiếp/hai vòng/reset và journal vẫn chờ kiểm;
-reference và test server chưa thay acceptance đó. Hướng ngang, bom người khác, motion lặp/khi đang chạy/sát
-deadline vẫn chưa mở.
+[Lát Rust Punch hướng xuống](../evidence/rust-service/g1-punch-down.json) đã qua native hai account trên
+Wine/LAN cô lập. Policy opt-in `report_derived_punch` và `report_derived_shoe_punch` nhận thêm selector 1,
+source row cộng 1, cùng cột; selector 3 vẫn đi một hàng phía trên. Giữ toàn bộ guard owner, membership/vòng,
+item/life, deadline, terrain và queue đã nêu. Biên hàng đích được kiểm riêng để không ra ngoài map. Reservation
+cho Shoe mới giữ cả ô nguồn cũ của Punch đang active ở cả hai chiều dọc đến khi allocation hoàn tất.
+
+Actor A là C1 đã lưu, peer B là C0; floor chỉ có Punch 4. Mỗi vòng Space trước pickup chỉ tạo bom thường,
+không phát 119. Sau pickup có exact 119/162 `(6,3)→(7,3)`, reader `9/9`, errors 0, landing trước rebind và
+active 0 trước cleanup trong cả hai view. Có actual 118 mới, hai kết quả/về phòng/reset và hai journal đúng
+account/player/character, thưởng 0; rank rows nhận qua TCP khớp outcome DB. Test server giữ các ca sai quyền,
+queue rollback, biên/terrain bị chặn, quota đến mọi receipt và source reservation. Các ca lỗi/partial của
+reference không thay nghiệm thu này. Hướng ngang, bom người khác, motion lặp/khi đang chạy/sát deadline,
+mọi nhân vật/map/roster vẫn chưa mở; đây không phải toàn bộ luật server gốc hoặc toàn G1.
 
 [Hành động Shoe trên reference](../evidence/item-families/shoe-action.json) dùng floor chỉ có Shoe 3, C0,
 bom của người thao tác và va chạm tự nhiên từ bên dưới. Actual 119 có selector **5**, source `(6,3)` và target

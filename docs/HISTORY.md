@@ -5,6 +5,13 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP332: managed player all-dead đã có native 2/4/8 và journal Draw/thưởng 0.**
+[Contract và phạm vi](protocol/life-results.md#rust-managed-all-dead) có hai vòng/result/reset;
+roster 4/8 có Start/clock kế trên LAN cô lập với độ trễ được khai báo. TCP/SQLite kiểm departure, DB lock
+và old-round riêng; failed/partial giữ nguyên. Fixed-team legacy và tie enum gốc chưa mở rộng.
+Tiếp coverage Shoe/Punch rồi G1 theo [Bảng điều hành](PLAN.md#dashboard); G1, M8, giai đoạn 1 và L1 của Claude còn mở.
+
+
 **CP331: đã sửa identity của note correction và giữ fail receipt CP330.**
 [Contract Shoe](protocol/items-stats.md#rust-bomb-motion-codec) tại CP329 giữ hai vòng native account/peer/reset
 và journal thưởng 0. [Correction checker](evidence/checkpoints/documentary-json-identity-correction.json)
