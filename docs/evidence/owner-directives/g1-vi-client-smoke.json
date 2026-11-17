@@ -1,0 +1,16 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-17T17:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 17/11/2026, sau đề xuất chạy thử client bản vá L1 tiếng Việt trên server Rust ở cuối G1, chủ dự án trả lời “Ghi vào”.",
+  "decision": "Thêm tiêu chí G1: trước khi đóng G1, chạy một trận native hai vòng bằng client 00967 bản vá L1 vi (exe 949x vi, dữ liệu dịch và font hiện hành) trên service Rust, với một map G1 và item thuộc nhóm giữ.",
+  "pass_condition": "Đăng nhập, phòng, chọn map, trận, kết quả và reset vòng hai không lỗi; không đổi gói tin giai đoạn 1.",
+  "constraints": [
+    "Các phép đo và bằng chứng gameplay G1 vẫn dùng client KR không vá chữ làm chuẩn.",
+    "Lượt chạy theo luân phiên runtime với Codex; Claude hoặc Codex chạy khi runtime rảnh.",
+    "Không sửa client gốc; dùng bản sao do tools/l10n_949x_patch.py tạo."
+  ],
+  "scope": "Chỉ thêm một ca kiểm ghép client tiếng Việt với service Rust; không chứng nhận L1 hoặc G1 đạt.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}
