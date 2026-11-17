@@ -609,11 +609,15 @@ checkpoint:
 3. **Kim và cứu** trên Rust theo contract đã đo ở Python.
 4. **Terrain và item nền cho mọi cỡ phòng**; [lát ExVillage01 roster2/4/8 đã đạt](protocol/terrain.md#rust-player-terrain). Native power1→2 và ba item nền không chứng minh mọi item/tầm nổ/map đã tương thích.
 5. **Các map còn lại** theo thứ tự Forest07, Patrit14, Village10, Camp08, Tomb12. Mỗi map một trận hai vòng: spawn
-   đúng, thùng vỡ đúng, item rơi và nhặt được. Loại ô chưa đo phải đo trước; chưa đo thì map đó chưa được mở.
-6. **Nhóm item của sáu map.** Mỗi nhóm một ca dùng, một ca không đủ điều kiện, peer thấy đúng, reset đúng. Nhóm chưa
-   đo bị tắt khỏi bảng rơi.
-7. **Nhân vật.** M7e chỉ có chỉ số cho hai nhân vật đã đo. Mọi nhân vật mà account mới chọn được trong phòng chờ phải
-   có chỉ số lấy từ `BomberAttr`; nhân vật chưa hỗ trợ bị từ chối rõ ràng.
+   đúng, thùng vỡ đúng, item rơi và nhặt được. Loại ô chưa đo phải đo trước; chưa đo thì map đó chưa được mở. Không
+   yêu cầu chứng minh từng ô của map ngoài các tiêu chí này.
+6. **Nhóm item của sáu map.** Theo [quyết định cắt phạm vi item](evidence/owner-directives/g1-item-scope-cut.json),
+   G1 chỉ giữ item nền Bomb/Fire/Roller, MaxPower, kim/cứu, Shoe và Punch. Mỗi nhóm giữ có một ca dùng, một ca không
+   đủ điều kiện, peer thấy đúng, reset đúng; Shoe/Punch nghiệm thu gộp một ma trận hướng/khoảng cách, một PR mỗi nhóm.
+   Mọi nhóm khác trong bảng rơi sáu map có trọng số 0 và chuyển sang sau giai đoạn 1.
+7. **Nhân vật.** M7e chỉ có chỉ số cho hai nhân vật đã đo. Nhân vật chưa hỗ trợ bị từ chối rõ ràng, không đóng kết
+   nối (issue 457); đo thêm nhân vật từ `BomberAttr`
+   không là điều kiện đóng G1.
 
 Map được mở từng cái. Theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json), G1 đạt khi
 Village10 và Tomb12 chơi được trong phòng **2–6 người**, còn Camp08, Factory07, Forest07 và Patrit14 trong phòng
