@@ -327,10 +327,17 @@ def main():
         def click(role,x,y,label,double=False):
             st=states[role];ee=st['_env'];ids=subprocess.check_output(['xdotool','search','--onlyvisible','--name','^Crazy Arcade$'],env=ee,text=True).split();assert len(ids)==1,ids;wid=ids[0]
             focus=subprocess.run(['xdotool','windowfocus','--sync',wid],env=ee,capture_output=True,timeout=3)
-            cmd=['xdotool','mousemove','--window',wid,str(x),str(y),'click']
-            if double:cmd+=['--repeat','2','--delay','100']
-            cmd+=['1'];inp=subprocess.run(cmd,env=ee,capture_output=True,timeout=3);actions[label]=dict(role=role,window=wid,x=x,y=y,ns=time.monotonic_ns(),returncode=inp.returncode,focus_returncode=focus.returncode);return wid
-        def rows(text,tag):return [json.loads(x.partition(tag+' ')[2])for x in text.splitlines()if tag+' {'in x]
+            # Leave and re-enter the button: the native UI derives hover from
+            # mouse motion, including after returning from the result screen.
+            cmd=['xdotool','mousemove','--window',wid,'10','10','sleep','.15',
+                 'mousemove','--window',wid,str(x),str(y),'sleep','.15']
+            if double:
+                cmd+=['click','--repeat','2','--delay','150','1']
+            else:
+                cmd+=['mousedown','1','sleep','.2','mouseup','1']
+            inp=subprocess.run(cmd,env=ee,capture_output=True,timeout=4)
+            inp.check_returncode()
+            actions[label]=dict(role=role,window=wid,x=x,y=y,ns=time.monotonic_ns(),returncode=inp.returncode)
         def press(role,key,seconds):
             st=states[role];wid=subprocess.check_output(['xdotool','search','--onlyvisible','--name','^Crazy Arcade$'],env=st['_env'],text=True).split();assert len(wid)==1
             subprocess.run(['xdotool','windowfocus','--sync',wid[0],'keydown',key],env=st['_env'],check=True,timeout=3);before=time.monotonic_ns()
@@ -361,10 +368,15 @@ def main():
             align_role(role,slot,'0x4c',40*col,label+'-column')
             align_role(role,slot,'0x58',40*row+39,label+'-row')
         from g1_native_harness import drive_matrix
+        record['actions']=actions
         matrix=json.loads(Path(config['matrix']).read_text())
         drive_matrix(matrix,config,args.out,states,record,topology,click,press,align_role,snap,args.seconds)
 
-    except Exception as error:record['error']=repr(error)
+    except Exception as error:
+        record['error']=repr(error)
+        if 'snap' in locals():
+            try:snap('matrix-failure')
+            except Exception as snapshot_error:record['failure_snapshot_error']=repr(snapshot_error)
     finally:
         if observer_stop is not None:
             observer_stop.set();observer_thread.join(timeout=12)

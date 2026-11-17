@@ -2,7 +2,7 @@
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
   "captured_utc": "2026-11-14T14:41:00.456824+00:00",
-  "limits": "Base state as of captured_utc retained. Only issue/PR entries in incremental_updates were individually added or updated at their listed times. No full current-state or completeness claim; bodies/declarations are not acceptance.",
+  "limits": "Snapshot gốc theo captured_utc; chỉ cập nhật #457/#460 và PR461 từ lần đọc 2026-11-17T14:41:27.506138+00:00. Các issue khác giữ mốc cũ. Không là snapshot toàn GitHub hiện hành hoặc nghiệm thu ngữ nghĩa.",
   "issues": [
     {
       "body": "KRE-074 / L1 UTF-8. Baseline main a610ebc (PR413), chủ dự án ngày14/11 yêu cầu giao một sub-agent Terra high thực hiện ba lát UTF-8 hiện hành: L1a tĩnh, L1b patch/native, L1c nhập liệu. Parent Codex tích hợp/tự kiểm; independent review waived, không gọi worker khác. Chỉ đạo trực tiếp mới này thay giới hạn solo đối với task này.\n\nOwner source riêng: sub-agent l10n_utf8 tại worktree research/l10n-utf8. File: tools/l10n_utf8_* hoặc helper riêng, docs/content/client-language.md#utf8 hoặc file con, metadata/raw riêng. Không sửa gameplay Rust, exporter hoặc source translation repo. Parent giữ PLAN, catalog, checkpoint/audit counters, exact-head verification và merge/CI.\n\nAcceptance: L1a xác minh bằng IDA trên copy cơ chế chữ PopTag và mapping00967/codepage/cắt/duyệt/đo/vẽ/font/IME/hardcoded949, chọn thiết kế có evidence và giới hạn. L1b patch runtime/private copy, native ko/en/vi UTF8 qua login→sảnh→shop→phòng, ảnh và raw/hash/rollback. L1c nhập Việt/Hàn chat/title và đối chiếu byte; server UTF8 integration nếu chưa được phục hồi phải ghi gap, không đổi wire cho client chưa vá. Mỗi lát chỉ complete khi evidence/docs đủ; không suy static/model/encoder thành native.\n\nFeature KR-B001; không mở lại gate K1 hoặc tự nâng scope giai đoạn1. Không1258. Không sửa client/pack/IDA DB nguồn; PopTag chỉ copy trong namespace loopback/no routes, không updater/installer. Không commit binary/pack/decompile/mã PopTag hoặc dữ liệu hạ tầng riêng. Một runtime lease dùng chung, không Wine/PopTag/KR đồng thời G1. Hoàn tất/export/seal/cleanup trước đổi source/config/input. Raw chỉ local; source/status/build/hash/locator và unknown rõ ràng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md), [UTF8](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/content/client-language.md#utf8). Đề bài local/research/claude/codex-prompt-l10n-utf8.md; Terra static WIP là candidate cần xác minh, không là contract.\n",
@@ -770,12 +770,21 @@
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456"
     },
     {
-      "body": "KRE-G1-PUNCH-HORIZONTAL — KR-F010\n\nMục tiêu: tiếp hướng Punch ngang còn thiếu theo Bảng điều hành, dùng actual 119 và reader 162, lifecycle bom, peer/reset để chốt geometry có bằng chứng rồi mới mở lát Rust tương ứng. Không giả định hướng ngang chỉ đi một ô hoặc chuẩn hóa target.\n\nBaseline: `b1ce9fea3e8b800a3c4b7b634d1ca9ecf8713f44` / PR #459 đang kiểm exact-head. Chỉ chạy runtime mới sau khi dependency #456/PR #459 tích hợp và lease Wine/gate rảnh. Owner/self-check: Codex solo, independent review waived theo AGENTS. L1 thuộc Claude.\n\nNguồn dùng lại: docs/protocol/items-stats.md#rust-bomb-motion-codec; CP333 reference/Rust xuống một ô; B76730→B38A80→E2CC10 và dispatcher E5EFC0 đã có cache/byte binding. B38A80 có scan/wrap, vì vậy delta ngang và khoảng cách phải lấy actual request, không suy từ mẫu dọc. Không mở broad RE hoặc đọc lại body đã có nếu chưa có cạnh khác biệt.\n\nFile được sửa khi implementation mở: `rust/crates/kr-service/src/bombs.rs`, `room_io_item_tests.rs`, `rust/crates/kr-wire/tests/native_bomb_motion.rs`, các topic docs/catalog/evidence và checkpoint hiện hành. Raw/copy/harness trong local/. Không đụng tools/export_map_profile.py, L1 hoặc client/pack/DB nguồn.\n\nAcceptance: source-first đúng build/hash và geometry; native reference hai vòng dùng/landing/rebind/active0/actual118 tiếp/kết quả/reset ở cả hai view; Rust hai account với identity/character đúng, ca trước pickup, peer/reset và journal thưởng0. Giữ owner/transport/membership/vòng/quota/deadline/queue/terrain/delivery fences; unsupported geometry bị từ chối. Kiểm Rust/docs/catalog phù hợp, audit nhóm, checkpoint, full exact-head local/history và CI xanh trước merge. Không đóng toàn G1 hoặc original server authority từ một route.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [contract](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/protocol/items-stats.md#rust-bomb-motion-codec), [gap](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-ability-debuff).\n\n[PROTOCOL index](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md).\n",
+      "body": "KRE-G1-CHARACTER-REJECTION — KR-R002.\n\nChọn nhân vật chưa có hồ sơ đo làm client mất kết nối (issue gốc phát hiện khi duyệt L1). Theo chỉ đạo chủ dự án 17/11, đường ngắn này thuộc G1 tiêu chí 7: từ chối lựa chọn chưa hỗ trợ nhưng giữ kết nối, nhân vật hiện tại, identity và membership; sau đó vẫn chọn nhân vật hợp lệ và chơi tiếp. Mở thêm roster nhân vật và đo chỉ số thuộc giai đoạn sau.\n\nBaseline `9eef9ca`, owner/self-check Codex; review độc lập được miễn theo AGENTS. File: Rust character selection, kiểm TCP/SQLite và harness native tham số hóa, docs/evidence liên quan. Không sửa L1 hoặc exporter map.\n\nAcceptance: well-formed C2S92 cho nhân vật chưa đo không ghi DB/revision, không clear Ready hoặc đổi membership; phản hồi 110 hiện hành phục hồi lựa chọn trong client, peer giữ nguyên. Chọn nhân vật đã đo vẫn persist và dùng đúng profile khi Start. Native KR/Wine hai vòng/kết quả/reset trên cùng transport; kiểm lỗi/stale/revoke, queue rollback và cleanup. Chưa gọi 110 này là phản hồi server gốc; đó là policy design dùng consumer đã đo. Mọi kiểm nhóm/CI cần đạt trước merge.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md). Raw lớn chỉ ở local; không thông tin hạ tầng riêng.\n",
       "closedAt": null,
-      "number": 460,
+      "number": 457,
       "state": "OPEN",
+      "title": "G1: từ chối nhân vật chưa đo và giữ phiên/phòng hiện hành",
+      "updatedAt": "2026-11-17T14:42:35Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457"
+    },
+    {
+      "body": "KRE-G1-PUNCH-HORIZONTAL — KR-F010\n\nMục tiêu: tiếp hướng Punch ngang còn thiếu theo Bảng điều hành, dùng actual 119 và reader 162, lifecycle bom, peer/reset để chốt geometry có bằng chứng rồi mới mở lát Rust tương ứng. Không giả định hướng ngang chỉ đi một ô hoặc chuẩn hóa target.\n\nBaseline: `b1ce9fea3e8b800a3c4b7b634d1ca9ecf8713f44` / PR #459 đang kiểm exact-head. Chỉ chạy runtime mới sau khi dependency #456/PR #459 tích hợp và lease Wine/gate rảnh. Owner/self-check: Codex solo, independent review waived theo AGENTS. L1 thuộc Claude.\n\nNguồn dùng lại: docs/protocol/items-stats.md#rust-bomb-motion-codec; CP333 reference/Rust xuống một ô; B76730→B38A80→E2CC10 và dispatcher E5EFC0 đã có cache/byte binding. B38A80 có scan/wrap, vì vậy delta ngang và khoảng cách phải lấy actual request, không suy từ mẫu dọc. Không mở broad RE hoặc đọc lại body đã có nếu chưa có cạnh khác biệt.\n\nFile được sửa khi implementation mở: `rust/crates/kr-service/src/bombs.rs`, `room_io_item_tests.rs`, `rust/crates/kr-wire/tests/native_bomb_motion.rs`, các topic docs/catalog/evidence và checkpoint hiện hành. Raw/copy/harness trong local/. Không đụng tools/export_map_profile.py, L1 hoặc client/pack/DB nguồn.\n\nAcceptance: source-first đúng build/hash và geometry; native reference hai vòng dùng/landing/rebind/active0/actual118 tiếp/kết quả/reset ở cả hai view; Rust hai account với identity/character đúng, ca trước pickup, peer/reset và journal thưởng0. Giữ owner/transport/membership/vòng/quota/deadline/queue/terrain/delivery fences; unsupported geometry bị từ chối. Kiểm Rust/docs/catalog phù hợp, audit nhóm, checkpoint, full exact-head local/history và CI xanh trước merge. Không đóng toàn G1 hoặc original server authority từ một route.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [contract](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/protocol/items-stats.md#rust-bomb-motion-codec), [gap](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-ability-debuff).\n\n[PROTOCOL index](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md).\n",
+      "closedAt": "2026-11-17T13:41:15Z",
+      "number": 460,
+      "state": "CLOSED",
       "title": "G1: đo geometry Punch ngang rồi nối Rust native account",
-      "updatedAt": "2026-11-17T12:36:19Z",
+      "updatedAt": "2026-11-17T13:41:15Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460"
     }
   ],
@@ -4442,6 +4451,17 @@
       "state": "MERGED",
       "title": "G1: Punch xuống một ô với native account/reset/journal (CP333)",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/459"
+    },
+    {
+      "headRefOid": "21eeb7b26b0faf538ac9fe948f13689a1d0eb0dc",
+      "mergeCommit": {
+        "oid": "0eb2ccad5045e333aa1f82964b501e5d5740ffeb"
+      },
+      "mergedAt": "2026-11-17T13:41:14Z",
+      "number": 461,
+      "state": "MERGED",
+      "title": "G1: scoped horizontal Punch và full-row reservation (CP334)",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/461"
     }
   ],
   "incremental_updates": [
