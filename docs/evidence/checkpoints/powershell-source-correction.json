@@ -1,0 +1,38 @@
+{
+  "schema": "kre-powershell-source-history-correction-v1",
+  "source": "design",
+  "status": "confirmed",
+  "detected_commit": "ba31cfbd3e0331fb468b652d35a5d14952615db1",
+  "failure": "Full local/history gate verified580117 evidence rows, unavailable0 and history true, but one error: CP339 evidence size/hash mismatch tools/native_windows_multilang.ps1.",
+  "failed_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r4/exit.json",
+    "bytes": 447,
+    "sha256": "4e31708b8a6e9b5aa7e93950a856fb117709c5b0317aba1df5988a801100ac99"
+  },
+  "failed_stderr": {
+    "path": "local/research/codex/m8-login-full-gate-r4/gate.stderr",
+    "bytes": 77,
+    "sha256": "bb9c3c6942e49332f7b2dcaaeab9535a92044e9954ef9e1717c222abc18a86b7"
+  },
+  "publication": {
+    "path": "local/research/codex/m8-powershell-history-correction-r1/publication-witness.json",
+    "bytes": 508,
+    "sha256": "0858b0f434e4890b6444de9ee899648e1aa5d641299b6ef5a583bf87d642f8a4"
+  },
+  "correction": "Treat only tools/*.ps1 source as publication-bound executable source. Require exact declaration, evidence-manifest hash and source blob at first complete v2 publication. No later-blob rescue; raw/local, artifact and other PowerShell/binary paths remain strict.",
+  "tests": {
+    "command": "env PYTHONPATH=tools python3 -m unittest tools.test_checkpoint_source_history tools.test_checkpoints",
+    "exit": 0,
+    "tests": 70,
+    "negative_cases": [
+      "later matching source",
+      "wrong SHA",
+      "wrong checkpoint",
+      "artifact kind",
+      "broken external manifest",
+      "local/data/traversal/binary paths"
+    ]
+  },
+  "preserved": "All completed records, run manifests and original raw remain byte-identical. No native/client/auth acceptance inferred.",
+  "full_gate": "pending on corrected frozen head"
+}

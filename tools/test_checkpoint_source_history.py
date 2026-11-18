@@ -85,6 +85,37 @@ class SourceHistoryTests(unittest.TestCase):
         self.assertEqual((errors, checked, missing), ([], 1, 0))
         self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
 
+    def test_powershell_tool_source_requires_exact_publication(self):
+        item, path = self.fixture('tools/native_windows_multilang.ps1', external=True)
+        later = b'later PowerShell source\n'
+        path.write_bytes(later)
+        self.commit()
+        path.write_text('current PowerShell source\n')
+        errors, warnings, checked, missing = self.verify(item)
+        self.assertEqual((errors, checked, missing), ([], 1, 0))
+        self.assertTrue(any('HISTORICAL SOURCE VERIFIED' in w for w in warnings))
+        later_pin = item | dict(bytes=len(later), sha256=hashlib.sha256(later).hexdigest())
+        self.assertTrue(self.verify(later_pin)[0])
+        self.assertTrue(self.verify(item | dict(sha256='f' * 64))[0])
+        self.assertTrue(checker.verify_evidence_item(item, self.root, True, 'CP002')[0])
+        self.assertTrue(self.verify(item | dict(kind='artifact'))[0])
+
+    def test_powershell_tool_source_rejects_broken_manifest(self):
+        item, path = self.fixture('tools/native_windows_multilang.ps1', external=True,
+                                  broken_reference=True)
+        path.write_text('current PowerShell source\n')
+        self.assertTrue(self.verify(item)[0])
+
+    def test_powershell_history_does_not_cover_local_data_or_binary(self):
+        item, path = self.fixture('local/run.ps1')
+        path.write_text('current private raw script\n')
+        self.assertTrue(self.verify(item)[0])
+        for relative in ['local/run.ps1', 'server/run.ps1', 'docs/evidence/run.ps1',
+                         'tools/../run.ps1', 'tools/./run.ps1', 'tools/run.exe',
+                         'tools/run.psm1', 'rust/target/run.ps1']:
+            self.assertIsNone(checker.historical_checkpoint_source(
+                self.root, relative, item['sha256'], item['bytes'], 'CP001'))
+
     def test_rust_source_requires_its_original_external_publication_and_exact_blob(self):
         item, path = self.fixture('rust/crates/kr-service/src/room.rs', external=True)
         later = b'later Rust source\n'

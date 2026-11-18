@@ -122,6 +122,10 @@ có đoạn `.`/`..`, file local, artifact, DLL/EXE/object vẫn giữ kiểm st
 và blob phải khớp tại publication gốc, không nhận source ở commit muộn để cứu pin sai.
 [Đối chứng C source](c-tool-source-correction.json) giữ lỗi phát hiện sau L1 PR433, kiểm âm và giới hạn.
 
+Source PowerShell `.ps1` dưới `tools/` dùng cùng kiểm blob tại publication gốc. Không áp dụng cho script raw
+trong `local/`, dữ liệu, đường dẫn traversal, artifact/binary hoặc `.psm1`. [Đối chứng PowerShell](powershell-source-correction.json)
+giữ pin CP339 khớp chính xác source lúc công bố và lỗi gate trước sửa; blob muộn không cứu được pin sai.
+
 `rust/Cargo.toml`, `rust/Cargo.lock` và `rust/crates/<crate>/Cargo.toml` là đầu vào source của build,
 cũng được đối chiếu đúng blob và declaration tại publication gốc khi file hiện hành đã thay đổi.
 Không mở fallback cho TOML dữ liệu, lockfile khác, output hoặc file local/artifact. Hash sai, manifest
