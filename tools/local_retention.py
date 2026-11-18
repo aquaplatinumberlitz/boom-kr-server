@@ -102,6 +102,17 @@ def checkpoint_references(root, warn):
             if path:
                 refs[path].add(record['id'])
                 hashes[path] = row.get('sha256')
+    # Audits link host-local files in read_files; the gate requires them, so they are references too.
+    for audit_path in sorted((root / 'docs/evidence/checkpoints/audits').glob('AUD*.json')):
+        try:
+            audit = json.loads(audit_path.read_text(encoding='utf-8'))
+        except (OSError, ValueError) as error:
+            warn(f'{audit_path.name}: {error}')
+            continue
+        for name in audit.get('read_files', []) if isinstance(audit, dict) else []:
+            path = normalize(root, name) if isinstance(name, str) else None
+            if path:
+                refs[path].add(audit_path.stem)
     return refs, hashes
 
 
