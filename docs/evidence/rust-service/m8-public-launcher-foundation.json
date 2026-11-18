@@ -639,7 +639,7 @@
       "sha256": "d05be5b0dbf2ae1da18576b6aaadb3fe329d55a721e7830a4c5cdf44cabf1818"
     },
     "scope": "Two distinct vi/ko launcher grants in one Windows VM; no shared room acceptance.",
-    "limits": "Static byte-matched mutex rejection branch is present. Paired ko cleanup fault matches vi baked pointer; initial-head reset reaches unresolved encoded callback trap. No directly observed singleton branch, clean UI exit, same-room cross-language or final package acceptance.",
+    "limits": "Secondary debugger observation r42 confirms existing mutex/error183/wait258 and rejection entry1253D29 while vi remains room. Later ko cleanup hits22614AC. No mutex bypass, native clean UI exit, same-room cross-language or final package acceptance.",
     "standalone_ko_comparison": {
       "path": "local/research/codex/m8-pair-controller-control-r4/ko-alone-control-r39.json",
       "bytes": 2449,
@@ -649,6 +649,16 @@
       "path": "local/research/codex/m8-windows-pair-startup-r5/pair-snapshot-progress.json",
       "bytes": 6251,
       "sha256": "c8f881c17b9166e650dccfa7404a46e7dfe708c79758318b51b5a5fedd2a5384"
+    },
+    "singleton_runtime_observation": {
+      "path": "local/research/codex/m8-multilang-windows-native-pair-guard-r42/guard-verification.json",
+      "bytes": 2800,
+      "sha256": "fa5abb25fd5b3837a106dcee328bd559ad686a8d0907030e6baf940fbdfee050"
     }
+  },
+  "wine_pair_progress": {
+    "path": "local/research/codex/m8-wine-pair-control-r1/wine-pair-progress.json",
+    "bytes": 10900,
+    "sha256": "742133216263d4489634e655319f86780cd5e1e447a6afcdf4e4e31eea147bb6"
   }
 }

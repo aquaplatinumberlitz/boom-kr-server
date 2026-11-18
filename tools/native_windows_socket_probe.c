@@ -20,11 +20,13 @@ typedef struct { DWORD thread; int point; } Step;
 static HANDLE process;
 static FILE *output;
 static ULONGLONG began;
-static Point points[17];
+#define POINT_COUNT 21
+static Point points[POINT_COUNT];
 static Step steps[64];
 static unsigned calls;
 static WORD wait_timeout_control;
 static int ui_exit_probe;
+static int startup_guard_probe;
 
 static int read_u32(DWORD address, DWORD *value) {
     SIZE_T count=0;
@@ -57,6 +59,11 @@ static int install(int index, DWORD address, const char *name) {
     if(!address || !ReadProcessMemory(process,(const void *)(uintptr_t)address,&points[index].original,1,&count) || count!=1) return 0;
     points[index].address=address; points[index].name=name; points[index].active=1;
     return byte_at(address,0xcc);
+}
+static int install_expected(int index, DWORD address, const char *name, const BYTE *expected, SIZE_T size) {
+    BYTE actual[8];SIZE_T count=0;
+    return size<=sizeof(actual) && ReadProcessMemory(process,(const void *)(uintptr_t)address,actual,size,&count)
+        && count==size && !memcmp(actual,expected,size) && install(index,address,name);
 }
 /* Candidate return sites only, never raw stack values or string contents.
  * A matching call opcode is not a validated unwind; optimized code can omit
@@ -118,6 +125,11 @@ int wmain(int argc, wchar_t **argv) {
         if(ui_size!=1 || ui_probe[0]!=L'1') { fclose(output);return 2; }
         ui_exit_probe=1;
     }
+    wchar_t guard_probe[4]={0};DWORD guard_size=GetEnvironmentVariableW(L"KR_M8_STARTUP_GUARD_PROBE",guard_probe,4);
+    if(guard_size) {
+        if(guard_size!=1 || guard_probe[0]!=L'1' || ui_exit_probe || wait_timeout_control) { fclose(output);return 2; }
+        startup_guard_probe=1;
+    }
     fprintf(output,"{\"event\":\"probe_start\",\"wait_timeout_control_ms\":%u,\"limits\":\"Owned x86 child; software breakpoints and selected UI-thread debug-register observation; explicit zero-only timing control if nonzero; possible concurrent-step omissions; no native acceptance inferred\"}\n",(unsigned)wait_timeout_control);
     wchar_t *command=calloc(32768,sizeof(wchar_t));size_t used=0;
     if(!command) { fclose(output);return 4; }
@@ -145,11 +157,21 @@ int wmain(int argc, wchar_t **argv) {
             if(!thread || !GetThreadContext(thread,&context)) { if(thread) CloseHandle(thread);done=1; }
             else {
                 int which=-1;
-                for(int i=0;i<17;i++) if(points[i].active && context.Eip-1==points[i].address) which=i;
+                for(int i=0;i<POINT_COUNT;i++) if(points[i].active && context.Eip-1==points[i].address) which=i;
                 if(code==EXCEPTION_BREAKPOINT && which>=0) {
                     Point *point=&points[which];byte_at(point->address,point->original);context.Eip=point->address;
                     if(which==0) {
                         points[0].active=0;
+                        if(startup_guard_probe) {
+                            /* Exact current vi/ko WinMain bytes are pinned by
+                             * the caller. Observe returns and rejection entry;
+                             * never replace results or bypass the mutex. */
+                            if(!install_expected(17,0x1253cfd,"startup_mutex_return",(const BYTE *)"\x89\x45\xe4",3)
+                               || !install_expected(18,0x1253d0c,"startup_last_error_return",(const BYTE *)"\x3d\xb7\x00\x00\x00",5)
+                               || !install_expected(19,0x1253d22,"startup_wait_return",(const BYTE *)"\x3d\x02\x01\x00\x00",5)
+                               || !install_expected(20,0x1253d29,"startup_multi_execute_rejected",(const BYTE *)"\x68\x3c\x21\x79\x01",5)) done=1;
+                            fprintf(output,"{\"event\":\"startup_guard_probes_installed\",\"result_mutation\":false}\n");
+                        } else {
                         DWORD a=0;const DWORD slots[]={0x16ea778,0x16ea790,0x16ea79c,0x16ea740};
                         const char *names[]={"connect","shutdown","closesocket","WSAAsyncSelect"};
                         for(int i=0;i<4;i++) if(!read_u32(slots[i],&a) || !install(i+1,a,names[i])) done=1;
@@ -175,6 +197,7 @@ int wmain(int argc, wchar_t **argv) {
                                || !install(16,0xbeac7a,"exit_virtual328_return")) done=1;
                         }
                         fprintf(output,"{\"event\":\"winsock_probes_installed\"}\n");
+                        }
                     } else {
                         DWORD caller=0,socket=0,second=0;read_u32(context.Esp,&caller);read_u32(context.Esp+4,&socket);read_u32(context.Esp+8,&second);
                         if(which>=5) {
@@ -187,7 +210,8 @@ int wmain(int argc, wchar_t **argv) {
                                 if(context.Ecx>=172 && read_u32(context.Ecx-172,&table))
                                     fprintf(output,",\"dialog_vtable\":\"0x%lx\"",table);
                             }
-                            if(which>=11) {
+                            if(which>=17) fprintf(output,",\"eax\":%lu",context.Eax);
+                            if(which>=11 && which<=16) {
                                 DWORD object=0,flags=0,table=0,target=0;
                                 fprintf(output,",\"eax\":%lu",context.Eax);
                                 if(read_u32(context.Ebp-0xe,&flags))

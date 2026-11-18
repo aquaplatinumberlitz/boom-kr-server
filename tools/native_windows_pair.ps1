@@ -65,6 +65,15 @@ try{
  if($control.language -ne 'vi' -or $control.paired.language -ne 'ko' -or $control.observe_seconds -lt 30 -or $control.observe_seconds -gt 240){throw 'Pair declaration bounds'}
  $primary=Prepare-Client 'vi' $control.runtime_name 'CA-control.exe' $pins.'CA-control.exe' 'language-inputs.json' 'credentials.json'
  $secondary=Prepare-Client 'ko' $control.paired.runtime_name 'CA-paired-control.exe' $control.paired.exe_sha256 'paired-language-inputs.json' 'paired-credentials.json'
+ if($control.PSObject.Properties.Name -contains 'paired_startup_probe_sha256'){
+  $probe=Join-Path $seed 'socket-probe.exe'
+  if($control.paired_startup_probe_sha256 -notmatch '^[a-f0-9]{64}$' -or (Get-FileHash -LiteralPath $probe -Algorithm SHA256).Hash.ToLowerInvariant() -ne $control.paired_startup_probe_sha256){throw 'Paired startup observer identity mismatch'}
+  $config=Get-Content -LiteralPath $secondary.config -Raw|ConvertFrom-Json
+  $config.native_arguments=@((Join-Path $seed 'native-socket-probe.jsonl'),$config.native_program)+@($config.native_arguments)
+  $config.native_program=$probe
+  [IO.File]::WriteAllText($secondary.config,($config|ConvertTo-Json -Depth 8))
+  $report.startup_guard_observer='Secondary only, software breakpoint observation; results untouched. Debugger control, not uninstrumented native acceptance.'
+ }
  [void]$clients.Add($primary);[void]$clients.Add($secondary)
  if($control.crash_dump){
   if(Test-Path -LiteralPath $werKey){throw 'Pair WER destination already exists'}
@@ -91,7 +100,12 @@ try{
   if(Test-Path -LiteralPath (Join-Path $seed 'pair.end')){$report.finish_requested=$true;break}
   if($primary.process.HasExited){$report.primary_ended_before_deadline=$true;break}
   if($null -eq $secondary.process -and (Test-Path -LiteralPath (Join-Path $seed 'pair.go'))){
-   Start-Client $secondary;$report.pair_stage='both_launchers_started';$report.paired_start_utc=[DateTime]::UtcNow.ToString('o')
+   $oldGuard=$env:KR_M8_STARTUP_GUARD_PROBE
+   try{
+    if($control.PSObject.Properties.Name -contains 'paired_startup_probe_sha256'){$env:KR_M8_STARTUP_GUARD_PROBE='1'}
+    Start-Client $secondary
+   }finally{$env:KR_M8_STARTUP_GUARD_PROBE=$oldGuard}
+   $report.pair_stage='both_launchers_started';$report.paired_start_utc=[DateTime]::UtcNow.ToString('o')
   }
   $report.clients=@($clients|ForEach-Object {Observe-Client $_})
   $fingerprint=$report.clients|ConvertTo-Json -Depth 10 -Compress

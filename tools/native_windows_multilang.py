@@ -197,10 +197,14 @@ def main():
                         help='Private JSON pinning an explicitly declared diagnostic launcher copy')
     parser.add_argument('--paired-control', type=Path,
                         help='Private ko input/account declaration; start second client after vi room is observed')
+    parser.add_argument('--paired-startup-probe', action='store_true',
+                        help='Observe only the secondary native mutex branch under a declared debugger control')
     parser.add_argument('--resume-stage', action='store_true', help='Resume an already completed private remote staging operation, never repeat it')
     parser.add_argument('--wait-timeout-control-ms', type=int, default=0,
                         help='Explicit debugger-only zero-limit timing control; not a final client patch')
     args = parser.parse_args()
+    if args.paired_startup_probe and (not args.paired_control or args.crash_dump or args.socket_probe):
+        parser.error('Paired startup observer requires paired control without WER or socket observer')
     local = (ROOT / 'local').resolve(strict=True)
     paired = None
     if args.paired_control:
@@ -475,12 +479,13 @@ if($parseErrors.Count -gt 0){
             control['ui_exit_probe'] = True
         if args.wait_timeout_control_ms:
             control['wait_timeout_control_ms'] = args.wait_timeout_control_ms
-        if args.socket_probe:
+        if args.socket_probe or args.paired_startup_probe:
             shutil.copy2(ROOT / 'tools/native_windows_socket_probe.c', output / 'socket-probe-source.c')
             subprocess.run(['i686-w64-mingw32-gcc', '-municode', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror',
                             str(output / 'socket-probe-source.c'), '-o', str(output / 'socket-probe.exe')],
                            check=True, capture_output=True, timeout=60)
-            control['socket_probe_sha256'] = digest(output / 'socket-probe.exe')
+            field = 'paired_startup_probe_sha256' if args.paired_startup_probe else 'socket_probe_sha256'
+            control[field] = digest(output / 'socket-probe.exe')
             subprocess.run(['mcopy', '-i', str(output / 'seed.img'), str(output / 'socket-probe.exe'), '::socket-probe.exe'],
                            check=True, capture_output=True, timeout=30)
         (output / 'multilang-run.json').write_text(json.dumps(control) + '\n')
