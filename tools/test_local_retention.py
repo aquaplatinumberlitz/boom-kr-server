@@ -141,6 +141,58 @@ class RetentionTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'keep_recent_days'):
             retention.apply(self.root, path, retention.sha256_file(path))
 
+    def bulk(self, runs, files):
+        """Referenced runs: one kept log plus many disposable intermediates, so every file is its own action."""
+        for run in range(runs):
+            for number in range(files):
+                self.write(f'local/research/codex/bulk-{run}/sub{number % 5}/f{number}.bin', f'x{number}\n')
+            self.write(f'local/research/codex/bulk-{run}/keep.txt', 'kept\n')
+            for sub in range(5):  # small tooling in each subdirectory stops directory collapse
+                self.write(f'local/research/codex/bulk-{run}/sub{sub}/tool.py', 'pass\n')
+        for run in range(runs):
+            row = self.fixture.row(f"B{run}", 'local', f'local/research/codex/bulk-{run}/keep.txt')
+            record = self.fixture.record(f"CP9{run:02d}", 'origin', [row])
+            self.fixture.put(record)
+        self.fixture.commit("bulk records")
+
+    def test_apply_scans_once_and_deletes_exactly_disposable(self):
+        self.bulk(3, 60)
+        path, digest, report = self.dry_run()
+        self.assertGreater(len([a for a in report['actions'] if 'bulk-' in a['path']]), 150)
+        calls = {'activity': 0, 'refs': 0}
+        real_activity, real_refs = retention.unit_activity, retention.checkpoint_references
+
+        def counting_activity(*args):
+            calls['activity'] += 1
+            return real_activity(*args)
+
+        def counting_refs(*args):
+            calls['refs'] += 1
+            return real_refs(*args)
+        retention.unit_activity, retention.checkpoint_references = counting_activity, counting_refs
+        self.addCleanup(setattr, retention, 'unit_activity', real_activity)
+        self.addCleanup(setattr, retention, 'checkpoint_references', real_refs)
+        result = retention.apply(self.root, path, digest)
+        units = {retention.unit_of(a['path']) for a in report['actions']}
+        self.assertEqual(calls['refs'], 1)
+        self.assertEqual(calls['activity'], len(units))  # once per unit, not once per action
+        self.assertEqual(result['deleted'], len(report['actions']))
+        for run in range(3):
+            base = self.root / f'local/research/codex/bulk-{run}'
+            self.assertEqual(sorted(p.name for p in base.rglob('*') if p.is_file()), ['keep.txt'] + ['tool.py'] * 5)
+        self.assertTrue((self.root / 'local/research/codex/fixture-r1/frame.bin').exists())
+        self.assertFalse((self.root / 'local/research/codex/unused-r1').exists())
+
+    def test_apply_skips_unit_when_referenced_file_deletion_is_not_allowed(self):
+        # An action whose target covers a pinned path must be skipped, not deleted (O(1) ancestor check).
+        path, digest, report = self.dry_run()
+        report['actions'].append({'path': 'local/research/codex/fixture-r1', 'class': 'disposable_copy',
+                                  'action': 'delete', 'files': 2, 'apparent_bytes': 1})
+        path.write_text(json.dumps(report))
+        result = retention.apply(self.root, path, retention.sha256_file(path))
+        self.assertTrue((self.root / 'local/research/codex/fixture-r1/frame.bin').exists())
+        self.assertTrue(any(s['reason'] == 'not an allowed delete action' for s in result['skipped']))
+
 
 def summary_exists(plan_path):
     return Path(str(plan_path)[:-5] + '.md').exists()
