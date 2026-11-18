@@ -2,7 +2,7 @@
   "schema": "kre-m8-account-name-encoding-v1",
   "source": "design",
   "status": "design",
-  "scope": "WIP issue476, UTF8 storage to patched949x wire; not native display acceptance",
+  "scope": "WIP issue476, UTF8 storage to patched949x wire; one Windows vi name/lobby/room observed; cross-language acceptance open",
   "canonical": "docs/protocol/auth-session.md#rust-patched-account-names",
   "policy": {
     "storage": "UTF-8, exact codepoints",
@@ -25,15 +25,31 @@
       "path": "local/research/codex/m8-player-names-949x-r1/summary.json",
       "bytes": 7078,
       "sha256": "dd1f19e70c8574bc7b6870373172f59cc710fb4436237cfb6e1622b34cda15fa"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
     }
   ],
   "limits": [
-    "No native client used in name tests. Windows vi baseline still channel6/17 then EOF; no native Unicode/profile/title/chat acceptance.",
+    "Initial TCP/reference name tests used no native. New native vi evidence is separately scoped to one current Rust ARM account/lobby/room; no shared vi/ko or native chat acceptance.",
     "Chat forwarding and native vi/ko same room remain open.",
     "No NFC normalization or automatic encoding negotiation/fallback. Only explicitly patched deployment may enable949x names."
   ],
   "retained_failures": [
     "Initial Clippy failed chunks_exact_to_as_chunks lint; changed to as_chunks and final Clippy passed.",
     "First TCP assertions completed but outer exit1 from source guard: concurrent test-source edit. Inner early pass is not accepted. Raw preserved; harness now writes source guard into result before serialization; second run exit0 and changed_sources[]."
-  ]
+  ],
+  "native_vi": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
+    },
+    "scope": "Single Việt01 DB-owned profile in Windows vi lobby/room and leave return over Internet",
+    "limits": "Native UI exit failed on unserved literal lobby79; no ko/cross-language/match/final package closure."
+  }
 }

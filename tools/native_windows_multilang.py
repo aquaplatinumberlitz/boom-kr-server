@@ -52,6 +52,23 @@ class RoomLifecycle:
                 if len(regions) < 2:
                     raise ValueError('UI state needs two independent regions')
                 self.references[state] = regions
+        # UI exit opens a confirmation modal on the measured vi client.
+        # It remains optional for older reference sets, never blindly clicked.
+        if 'exit' in data:
+            row = data['exit']
+            path = Path(row['path']).resolve(strict=True)
+            if not path.is_relative_to(local) or digest(path) != row['sha256']:
+                raise ValueError('Exit UI reference identity mismatch')
+            with Image.open(path) as screen:
+                if screen.size != (1024, 768) or len(row['regions']) < 2:
+                    raise ValueError('Exit UI reference shape')
+                regions = []
+                for box in row['regions']:
+                    x, y, right, bottom = box
+                    if not (0 <= x < right <= 1024 and 0 <= y < bottom <= 768):
+                        raise ValueError('Exit UI crop bounds')
+                    regions.append((box, screen.crop(box).convert('RGB')))
+                self.references['exit'] = regions
         self.step = 0
         self.observations = []
 
@@ -59,6 +76,8 @@ class RoomLifecycle:
         from PIL import Image, ImageChops, ImageStat
         stages = [('lobby', [394, 173]), ('create', [453, 573]),
                   ('room', [229, 679]), ('lobby', [876, 679])]
+        if 'exit' in self.references:
+            stages.append(('exit', [571, 491]))
         if self.step >= len(stages):
             return
         state, coordinate = stages[self.step]
@@ -97,12 +116,27 @@ def main():
     parser.add_argument('--socket-probe', action='store_true', help='Declared owned debugger control; not native acceptance')
     parser.add_argument('--crash-dump', action='store_true', help='Owned Windows WER minidump on native failure, without debugger')
     parser.add_argument('--room-lifecycle', type=Path, help='Pinned local language screenshots for bounded create/leave/UI exit control')
+    parser.add_argument('--service-build', type=Path, help='Private JSON pinning three already built remote binaries and patched949x test account name')
     parser.add_argument('--resume-stage', action='store_true', help='Resume an already completed private remote staging operation, never repeat it')
     parser.add_argument('--wait-timeout-control-ms', type=int, default=0,
                         help='Explicit debugger-only zero-limit timing control; not a final client patch')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
     lifecycle = RoomLifecycle(args.room_lifecycle, local, args.language) if args.room_lifecycle else None
+    service_build = None
+    if args.service_build:
+        if not args.service_build.resolve(strict=True).is_relative_to(local):
+            parser.error('Service build declaration must be local')
+        service_build = json.loads(args.service_build.read_text())
+        if (not Path(service_build['build']).is_absolute()
+                or set(service_build['binaries']) != {'kr-service', 'kr-admin', 'kr-companion'}
+                or not isinstance(service_build['account_display_name'], str)):
+            parser.error('Service build declaration shape')
+        for pin in service_build['binaries'].values():
+            if (type(pin['bytes']) is not int or not 0 < pin['bytes'] < 64 * 1024 * 1024
+                    or len(pin['sha256']) != 64
+                    or any(char not in '0123456789abcdef' for char in pin['sha256'])):
+                parser.error('Service binary pin')
     paths = {name: getattr(args, name.replace('-', '_')).resolve()
              for name in ['previous', 'out', 'deployment', 'manifest', 'native-control', 'windows-credentials']}
     if any(path == local or not path.is_relative_to(local) for path in paths.values()):
@@ -157,6 +191,7 @@ p=json.loads((old/'private-provision.json').read_text());p['root']=str(new)
 observed=str(ipaddress.IPv4Address(os.environ['SSH_CONNECTION'].split()[0]))
 previous_source=p['source'];source_changed=observed!=previous_source
 config_path=new/'package/config.template.json';config=json.loads(config_path.read_text())
+# SERVICE_BUILD_CONFIG
 assert previous_source in config['allowed_peers'], 'Previous source is absent from package allowlist'
 config['allowed_peers']=[observed if peer==previous_source else peer for peer in config['allowed_peers']]
 for actor in config.get('diagnostic_two_lobby',{}).get('actors',[]):
@@ -164,6 +199,7 @@ for actor in config.get('diagnostic_two_lobby',{}).get('actors',[]):
 assert observed in config['allowed_peers']
 config_path.chmod(0o600);config_path.write_text(json.dumps(config,ensure_ascii=False,indent=2)+chr(10));config_path.chmod(0o400)
 manifest_path=new/'package/manifest.json';manifest=json.loads(manifest_path.read_text())
+# SERVICE_BUILD_BINARIES
 rows=[row for row in manifest['files'] if row['path']=='config.template.json'];assert len(rows)==1
 rows[0].update(bytes=config_path.stat().st_size,sha256=hashlib.sha256(config_path.read_bytes()).hexdigest())
 manifest_path.chmod(0o600);manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+chr(10));manifest_path.chmod(0o400)
@@ -172,6 +208,16 @@ subprocess.run([sys.executable,str(new/'package/kr-package.py'),'verify','--mani
 (new/'private-provision.json').write_text(json.dumps(p,indent=2)+chr(10))
 print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed=source_changed,service_allowlist_refreshed=True,package_verified=True)))
 '''
+    if service_build:
+        recipe = recipe.replace('# SERVICE_BUILD_CONFIG',
+            'build_spec=' + repr(service_build) + "\nconfig['diagnostic_two_lobby']['account_admission']['patched_949x_names']=True\np['account']['name']=build_spec['account_display_name']")
+        recipe = recipe.replace('# SERVICE_BUILD_BINARIES', '''for name,pin in build_spec['binaries'].items():
+ source=Path(build_spec['build'])/name
+ assert source.is_file() and source.stat().st_size==pin['bytes'] and hashlib.sha256(source.read_bytes()).hexdigest()==pin['sha256'], 'Service build identity mismatch'
+ target=new/'package/bin'/name;target.chmod(0o700);shutil.copyfile(source,target);target.chmod(0o500)
+ binary_rows=[row for row in manifest['files'] if row['path']=='bin/'+name];assert len(binary_rows)==1
+ binary_rows[0].update(pin)
+''')
     expected_stage = dict(suffix=suffix, remote_root=str(new_remote), previous=str(previous), language=args.language,
                           manifest_sha256=args.manifest_sha256, native_control_sha256=args.native_control_sha256,
                           recipe_sha256=hashlib.sha256(recipe.encode()).hexdigest())

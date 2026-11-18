@@ -834,7 +834,7 @@ theo IP. Channel6 vẫn kiểm name/wire ID/echo trước claim. Room card, slot
 giữ membership/connection/visit; không thêm alias theo identity hoặc luật theo sức chứa.
 
 <a id="rust-patched-account-names"></a>
-**Tên account cho client đã vá 949x — design M8, chưa native acceptance.** DB lưu chuỗi UTF-8 nguyên văn,
+**Tên account cho client đã vá 949x — policy design M8, native vi trong phạm vi hẹp.** DB lưu chuỗi UTF-8 nguyên văn,
 không normalize hoặc thay ký tự không biểu diễn được. Login account vẫn ASCII như trước. Tên hiển thị nhận
 chữ/số Unicode, gạch dưới và dấu kết hợp sau ký tự cơ sở, dài 3–15 **byte 949x**; từ chối whitespace, control,
 bidi, ký tự ngoài bảng và tên vượt giới hạn. Bảng 949x VERSION=1 dùng CP949 cộng extension của chủ dự án;
@@ -844,8 +844,9 @@ codec Rust strict đối chiếu toàn bộ reference bằng [tool](../../tools/
 Mặc định false từ chối cấp frontend cho tên ngoài ASCII; không tự đổi encoding theo IP/ngôn ngữ/identity.
 Auth4, own291, cả hai tên trong card106, Flow và kiểm tên channel6 dùng cùng byte 949x; độ dài/offset theo byte
 đã mã hóa. Channel vẫn so sánh đúng wire ID, name, echo và session owner; tên không cấp quyền cho account khác.
-Test SQLite/bridge giữ đúng revoke, một lần claim và generation cũ không xóa launch mới. Đó là kiểm code,
-chưa chứng minh native hiển thị tên Việt/Hàn hoặc tên phòng/chat xuyên suốt. [Metadata](../evidence/rust-service/m8-account-name-encoding.json)
+Test SQLite/bridge giữ đúng revoke, một lần claim và generation cũ không xóa launch mới. Windows vi đã nhận đúng
+account DB `Việt01` trong sảnh và card chủ phòng qua Internet trên dịch vụ ARM hiện hành, rồi rời về sảnh.
+Đây là một account; chưa chứng minh vi/ko cùng phòng hoặc tên phòng/chat xuyên suốt. [Metadata](../evidence/rust-service/m8-account-name-encoding.json)
 giữ kiểm và giới hạn; không sửa wire cho deployment client chưa vá.
 
 **Làn kiểm quyền trong trận.** Khi dùng profile DB, service mở một worker WAL riêng, queue 64 và TTL hàng đợi 1 giây,
@@ -952,6 +953,10 @@ Tên lịch sử `UninstallDWK` vẫn candidate. Policy offline trên copy riên
 UI exit đụng deadline nên chỉ có harness cancellation/exit1, logout1/session chưa revoke0; chưa UI logout sạch.
 Không biết semantics SDK gốc và không bỏ failure từ lượt đối chứng. Controller ảnh pin/hash/hai vùng chỉ gửi mỗi input
 một lần khi đúng trạng thái; lượt kiểm kế lỗi launch_grant trước native và không gửi input, cause unknown.
+Dịch vụ ARM mới đã chiếu đúng `Việt01` tới Windows vi, tạo/rời phòng bằng controller. UI exit có modal xác nhận riêng;
+request79/body `5b5f` ở sảnh đã được PCAP/CRC kiểm nhưng service cũ từ chối, khiến companion dừng/exit1.
+Control mới chỉ cho một body literal này ở sảnh account managed, không còn Session phòng, sau authorize(false);
+không gia hạn idle, ACK, đổi stage hoặc mutation. Chưa nghiệm thu native control và không đặt tên trường theo giả định.
 Hai lượt trước còn session chưa revoke/logout0 dù VM/rule đã dọn; không gọi cleanup đó là logout sạch.
 Harness mới đọc stdout/stderr bất đồng bộ và gửi `cancel_file` riêng khi hết hạn; lượt ko đã có report finished,
 exit1 do harness cancellation, logout1 và session chưa revoke0. Đây không là ca native UI logout.

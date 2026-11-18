@@ -19,6 +19,7 @@ pub struct Flow {
     ignored: usize,
     identity: u32,
     name: Vec<u8>,
+    observed_exit79: bool,
 }
 impl Flow {
     pub fn login() -> Self {
@@ -37,11 +38,22 @@ impl Flow {
             ignored: 0,
             identity,
             name: name.to_vec(),
+            observed_exit79: false,
         }
     }
 
     pub fn identity(&self) -> u32 {
         self.identity
+    }
+    /// M8 Windows capture r23: one opaque79/body5b5f after UI exit in the
+    /// lobby. No ACK or recovered general state-change semantics. The serving
+    /// caller must independently authorize the current account without activity.
+    pub(crate) fn observe_lobby_exit79(&mut self, body: &[u8]) -> io::Result<()> {
+        if self.stage != Stage::Lobby || self.observed_exit79 || body != [0x5b, 0x5f] {
+            return Err(io::Error::other("unsupported lobby exit79 observation"));
+        }
+        self.observed_exit79 = true;
+        Ok(())
     }
     pub fn packet(&mut self, opcode: u32, body: &[u8]) -> io::Result<Vec<&'static str>> {
         let (next, responses) = match (self.stage, opcode) {
@@ -127,6 +139,28 @@ pub(crate) fn decode_bytes(mut encoded: &[u8]) -> io::Result<Vec<u8>> {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn measured_lobby_exit79_is_exact_once_and_preserves_stage() {
+        use super::{Flow, Stage};
+        let mut flow = Flow::for_identity(true, 9, b"Current");
+        for stage in [Stage::Channel, Stage::Ready, Stage::Login, Stage::Info] {
+            flow.stage = stage;
+            assert!(flow.observe_lobby_exit79(&[0x5b, 0x5f]).is_err());
+        }
+        flow.stage = Stage::Lobby;
+        for body in [
+            &[][..],
+            &[0x5b][..],
+            &[0x5b, 0x5b][..],
+            &[0x5b, 0x5f, 0][..],
+        ] {
+            assert!(flow.observe_lobby_exit79(body).is_err());
+        }
+        // Independently CRC-verified actual frame617e395a…/sequence268.
+        flow.observe_lobby_exit79(&[0x5b, 0x5f]).unwrap();
+        assert_eq!(flow.stage, Stage::Lobby);
+        assert!(flow.observe_lobby_exit79(&[0x5b, 0x5f]).is_err());
+    }
     use super::*;
     use kr_wire::write_uint;
     #[test]

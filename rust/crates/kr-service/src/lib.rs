@@ -930,6 +930,32 @@ async fn local_lobby_connection(
                 send_sequence = send_sequence.wrapping_add(3);
                 continue;
             }
+            if packet.opcode == 79
+                && managed_channel.is_some()
+                && room_session.is_none()
+                && flow.stage == lobby::Stage::Lobby
+            {
+                let Some(owner) = &mut account else {
+                    return Err(io::Error::other(
+                        "lobby exit observation has no account owner",
+                    ));
+                };
+                // Opaque observation only: no idle renewal, room mutation,
+                // cancellation or invented ACK. Keep Loading79's own guards.
+                tokio::select! { _=stop.changed()=>return Ok(()), value=owner.authorize(false)=>value? };
+                flow.observe_lobby_exit79(&packet.payload)?;
+                emit(
+                    &log,
+                    stamp(
+                        start,
+                        json!({"event":"observed_lobby_exit79","connection":id,
+                    "identity":flow.identity(),"sequence":packet.sequence,"payload_bytes":2,
+                    "policy":"exact_once_no_ack_no_activity"}),
+                    ),
+                )
+                .await?;
+                continue;
+            }
             let aliases = match flow.packet(packet.opcode, &packet.payload) {
                 Ok(aliases) => aliases,
                 Err(error) => {

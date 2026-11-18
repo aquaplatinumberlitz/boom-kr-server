@@ -334,6 +334,16 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-offline-cleanup-r21.json",
       "bytes": 3036,
       "sha256": "9677bbb2d4a81621425d010eaf93f746bef11c1bcb5a1616e37d1a86ff168518"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-verification-r1.json",
+      "bytes": 669,
+      "sha256": "4037453f1764af50ff70b02a352f6288b551ffd61f30c6eb2766a6c03df9e88e"
     }
   ],
   "limits": [
@@ -482,5 +492,27 @@
     },
     "reached": "Uninstrumented vi lobby→create/default title→rendered room→86→lobby",
     "limits": "Explicit offline copy policies; final UI exit collided with harness deadline. r22 launch_grant failure before native/no UI action, cause unknown. No current service/name/chat/match/final package claim."
+  },
+  "native_current_arm_name": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
+    },
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "scope": "Single Windows vi Việt01 profile/room and return lobby",
+    "limits": "Literal lobby79 closes service channel; companion_stopped exit1 retained; exact no-ACK observation control not yet native verified."
+  },
+  "lobby_exit79_control": {
+    "source": "design",
+    "status": "design",
+    "scope": "Once per current account managed lobby; literal5b5f, no room Session, authorize(false), no ACK/activity/state mutation",
+    "native_status": "pending",
+    "verification": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-verification-r1.json",
+      "bytes": 669,
+      "sha256": "4037453f1764af50ff70b02a352f6288b551ffd61f30c6eb2766a6c03df9e88e"
+    }
   }
 }
