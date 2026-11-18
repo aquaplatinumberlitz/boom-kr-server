@@ -221,6 +221,15 @@ def sha256_file(path):
     return digest.hexdigest()
 
 
+def path_closure(paths):
+    """Set of every path in `paths` plus all its ancestor directories (down to two components)."""
+    closure = set()
+    for path in paths:
+        parts = path.split('/')
+        closure.update('/'.join(parts[:end]) for end in range(1, len(parts) + 1))
+    return closure
+
+
 def covered(path, prefixes):
     parts = path.split('/')
     return any('/'.join(parts[:end]) in prefixes for end in range(len(parts), 1, -1))
@@ -475,6 +484,10 @@ def apply(root, plan_file, expected, now=None):
     known = {entry['path'] for entry in registry['entries']}
     refs, _ = checkpoint_references(root, lambda message: None)
     keep = set(report['pinned']['configs']) | set(report['pinned']['fixture_pins']) | set(report['pinned']['code_references'])
+    # O(1) per-action checks: every path and each of its ancestor directories, so
+    # `target in keep_covered` == "some pinned/referenced path equals or lies under target".
+    keep_covered, ref_covered = path_closure(keep), path_closure(refs)
+    unit_touched = {}  # unit -> latest activity, scanned once per unit (no deletion can lower it for a kept unit)
     today = datetime.date.today().isoformat()
     deleted, skipped, skipped_recent = 0, [], []
     for action in report['actions']:
@@ -482,14 +495,16 @@ def apply(root, plan_file, expected, now=None):
         path = root / target
         if (action.get('action') != 'delete' or not klass.startswith('disposable') or not target.startswith('local/')
                 or '..' in target.split('/') or covered(target, set(ALWAYS_KEEP))
-                or any(p == target or p.startswith(target + '/') for p in keep)):
+                or target in keep_covered):
             skipped.append({'path': target, 'reason': 'not an allowed delete action'})
             continue
         if not os.path.lexists(path):
             skipped.append({'path': target, 'reason': 'already absent'})
             continue
         unit = unit_of(target)
-        touched = unit_activity(root, unit)
+        if unit not in unit_touched:
+            unit_touched[unit] = unit_activity(root, unit)
+        touched = unit_touched[unit]
         if is_recent(touched, now_ts, guard_days):
             row = {'path': target, 'reason': f'unit {unit} has activity within {guard_days} days at apply time',
                    'latest_activity_utc': datetime.datetime.fromtimestamp(
@@ -497,7 +512,7 @@ def apply(root, plan_file, expected, now=None):
             skipped.append(row)
             skipped_recent.append(row)
             continue
-        referenced = any(p == target or p.startswith(target + '/') for p in refs)
+        referenced = target in ref_covered
         if path.is_dir() and not path.is_symlink():
             shutil.rmtree(path)
         else:
