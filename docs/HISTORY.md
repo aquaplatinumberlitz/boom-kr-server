@@ -1703,3 +1703,13 @@ chưa nghiệm thu bản vá hoặc nhập liệu; G1 tiếp catalog sáu/tám s
 [Start/spawn, identity/slot và giới hạn](evidence/rust-service/g1-mixed-map-spawns.json) ghi native sparse6,
 Fire/Roller, hai kết quả/reset và thiếu cặp flags cuối do budget probe. G1 còn nội dung/roster theo
 [Bảng điều hành](PLAN.md#dashboard); UTF-8 vẫn partial, M8 chưa nghiệm thu.
+
+### Nền gói server Linux trước CP339
+
+**CP338: nền gói server Linux đã có manifest, state riêng và smoke x86/ARM.**
+[Builder/runner và bằng chứng](evidence/rust-service/m8-server-package.json) gom fixture/profile đã pin,
+kiểm hash/path/mode, tách DB/session khỏi gói và re-root state khi cài. Hai Linux đã có readiness/dừng sạch khi
+repo/local bị che, từ chối init lại mà không đổi DB và từ chối chạy trùng. ARM harness dùng thư mục do root sở hữu;
+raw lỗi trước được giữ. Đây là nền đóng gói từ recipe hiện có; xuất dữ liệu từ pack, cài máy sạch đầy đủ, launcher
+Internet, gói Windows/Wine, tải 50 người/8 phòng, restore và 24 giờ chạy dài còn theo [Bảng điều hành](PLAN.md#dashboard).
+G1 đã đủ bằng chứng trong CP337; tích hợp vẫn chờ gate local với registry dọn evidence lịch sử và CI hiện hành.

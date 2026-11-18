@@ -6160,7 +6160,9 @@
             "tools/native_run_cleanup.py",
             "tools/test_native_run_cleanup.py",
             "tools/native_windows_pair.ps1",
-            "tools/native_wine_pair.py"
+            "tools/native_wine_pair.py",
+            "tools/native_login_capture.cs",
+            "docs/protocol/auth-session.md#rust-ingame-login-feasibility"
           ],
           "delivery": "via_pr"
         },

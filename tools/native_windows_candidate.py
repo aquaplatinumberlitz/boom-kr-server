@@ -248,7 +248,8 @@ def main():
             except Exception as error:
                 record['cleanup_errors'].append('Container stop verification: ' + type(error).__name__)
             for filename in ['native-windows-install.json', 'windows-firstboot-error.txt',
-                             'native-startup-diagnostic.json', 'native-windows-crash.json', 'native-socket-probe.jsonl']:
+                             'native-startup-diagnostic.json', 'native-windows-crash.json', 'native-socket-probe.jsonl',
+                             'native-login-capture.jsonl']:
                 try:
                     result = subprocess.run(['mcopy', '-i', str(out / 'seed.img'), '::' + filename, str(out / filename)],
                                             capture_output=True, timeout=30)

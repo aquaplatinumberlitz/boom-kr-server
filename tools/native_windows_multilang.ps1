@@ -9,6 +9,7 @@ $report=[ordered]@{schema='kre-m8-multilang-windows-native-v2';start_utc=[DateTi
 function Save-Report {[IO.File]::WriteAllText($reportPath,($report|ConvertTo-Json -Depth 12))}
 $werKey='HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\CA.exe'
 $ownedWer=$false
+$localCapture=$null
 try{
  $game=Join-Path 'C:\' $control.runtime_name;if(Test-Path -LiteralPath $game){throw 'Owned native runtime already exists'}
  New-Item -ItemType Directory -Path $game|Out-Null
@@ -31,7 +32,45 @@ try{
  }
  $deploy=Get-Content -LiteralPath (Join-Path $seed 'deployment-private.json') -Raw|ConvertFrom-Json
  $hosts=Join-Path $env:SystemRoot 'System32\drivers\etc\hosts'
- [IO.File]::AppendAllText($hosts,"`r`n"+$deploy.server+" lslist.crazyarcade.com dream-login-ca.nexon.com happy-login-ca.nexon.com`r`n")
+ $nativeHost=$deploy.server
+ if($control.ingame_local_capture){
+  if(-not $control.ingame_login_probe){throw 'Local capture requires no-token mode'}
+  $nativeHost='127.0.0.1'
+  foreach($name in @('login-bootstrap.bin','login-wcp.bin')){
+   $expected=$control.($name+'_sha256')
+   if((Get-FileHash -LiteralPath (Join-Path $seed $name) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expected){throw 'Local login fixture mismatch'}
+  }
+  $source=Join-Path $seed 'native-login-capture.cs'
+  if((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant() -ne $control.capture_source_sha256){throw 'Local login capture source mismatch'}
+  Add-Type -Path $source
+  $localCapture=New-Object M8LoginCapture((Join-Path $seed 'native-login-capture.jsonl'),[IO.File]::ReadAllBytes((Join-Path $seed 'login-bootstrap.bin')),[IO.File]::ReadAllBytes((Join-Path $seed 'login-wcp.bin')))
+  $report.local_capture='Loopback only; pinned bootstrap/WCP, no auth replies, bounded raw synthetic input. No production auth change.'
+ }
+ if($control.ingame_local_capture){
+  $ownedNames=@('lslist.crazyarcade.com','dream-login-ca.nexon.com','happy-login-ca.nexon.com')
+  $kept=New-Object Collections.Generic.List[string]
+  foreach($line in [IO.File]::ReadAllLines($hosts)){
+   $parts=($line -split '#',2)[0].Trim() -split '\s+'
+   if($parts.Count -gt 1){
+    $aliases=@($parts|Select-Object -Skip 1|Where-Object {$_ -notin $ownedNames})
+    if($aliases.Count -ne ($parts.Count-1)){
+     if($aliases.Count -gt 0){$kept.Add($parts[0]+' '+($aliases -join ' '))}
+     continue
+    }
+   }
+   $kept.Add($line)
+  }
+  [IO.File]::WriteAllLines($hosts,$kept)
+ }
+ [IO.File]::AppendAllText($hosts,"`r`n"+$nativeHost+" lslist.crazyarcade.com dream-login-ca.nexon.com happy-login-ca.nexon.com`r`n")
+ if($control.ingame_local_capture){
+  $null=& ipconfig.exe /flushdns
+  $report.local_host_resolution=@($ownedNames|ForEach-Object {
+   $name=$_;$values=@([Net.Dns]::GetHostAddresses($name)|ForEach-Object {$_.IPAddressToString})
+   if($values.Count -eq 0 -or @($values|Where-Object {$_ -ne '127.0.0.1'}).Count -ne 0){throw 'Feasibility hostname is not loopback only'}
+   [ordered]@{name=$name;addresses=$values}
+  })
+ }
  $address=Get-NetIPAddress -AddressFamily IPv4|Where-Object {$_.IPAddress -ne '127.0.0.1' -and $_.IPAddress -notlike '169.254.*'}|Select-Object -First 1
  $cancel=Join-Path $game 'harness-cancel.request'
  $config=[ordered]@{server=($deploy.server+':'+$deploy.tls_port);certificate=(Join-Path $game 'certificate.der');reported_login_ipv4=$address.IPAddress;native_ip='127.0.0.1';companion=(Join-Path $game 'kr-companion.exe');native_program=(Join-Path $game 'CA.exe');native_arguments=@('multiserveridx:0');native_directory=$game;port_budget=100;peer_diagnostics=$true;udp_backend='portable';cancel_file=$cancel}
@@ -63,6 +102,13 @@ try{
  # This is a harness timing control, not an auth retry or relaxed deadline.
  $report.prelogin_probe_drain_ms=2200;Save-Report;Start-Sleep -Milliseconds 2200
  $start=New-Object Diagnostics.ProcessStartInfo;$start.FileName=Join-Path $game 'kr-launch.exe';$start.Arguments=$path;$start.WorkingDirectory=$game;$start.UseShellExecute=$false;$start.RedirectStandardInput=$true;$start.RedirectStandardOutput=$true;$start.RedirectStandardError=$true
+ if($control.ingame_login_probe){
+  $start.FileName=Join-Path $game 'CA.exe';$start.Arguments='multiserveridx:0'
+  $report.execution_mode='direct_native_no_token_no_launcher_credentials'
+  $report.client_arguments=@('multiserveridx:0')
+  if($control.ingame_empty_arguments){$start.Arguments='';$report.client_arguments=@()}
+  $report.feasibility_limit='Observe existing LoginStage only. No launcher, companion session or credential submission; not account/gameplay acceptance.'
+ }
  if($control.PSObject.Properties.Name -contains 'wait_timeout_control_ms'){
   if(-not ($control.PSObject.Properties.Name -contains 'socket_probe_sha256') -or $control.wait_timeout_control_ms -lt 1 -or $control.wait_timeout_control_ms -gt 60000){throw 'Wait timing control bounds'}
   $start.EnvironmentVariables['KR_M8_WAIT_TIMEOUT_MS']=[string]$control.wait_timeout_control_ms
@@ -77,13 +123,25 @@ try{
  # Drain both pipes while the process runs. A native/debug child can inherit
  # their handles, so EOF and process exit are separate bounded observations.
  $stdoutTask=$p.StandardOutput.ReadToEndAsync();$stderrTask=$p.StandardError.ReadToEndAsync()
- $p.StandardInput.Write([IO.File]::ReadAllText((Join-Path $seed 'credentials.json')));$p.StandardInput.Close()
+ if(-not $control.ingame_login_probe){$p.StandardInput.Write([IO.File]::ReadAllText((Join-Path $seed 'credentials.json')))}
+ $p.StandardInput.Close()
  $report.launcher_pid=$p.Id;$report.phase='launcher_running';$report.native_attempt_utc=[DateTime]::UtcNow.ToString('o');Save-Report
- if(-not $p.WaitForExit(([int]$control.observe_seconds*1000))){
+ $deadline=[DateTime]::UtcNow.AddSeconds([int]$control.observe_seconds)
+ while(-not $p.HasExited -and [DateTime]::UtcNow -lt $deadline){
+  if($control.ingame_login_probe){
+   $report.native_windows=@(Get-Process -Name CA,CALauncher -ErrorAction SilentlyContinue|Where-Object {$_.Path -and $_.Path.StartsWith($game+'\')}|Select-Object Id,ProcessName,MainWindowTitle,MainWindowHandle,Responding)
+   Save-Report
+  }
+  [void]$p.WaitForExit(1000)
+ }
+ if(-not $p.HasExited){
   $report.observation_deadline=$true;$report.termination='harness_cancellation';Save-Report
   # Use the launcher's owned-child cancellation path, including debug children.
   # This is a harness cancellation, never a native UI logout acceptance.
-  [IO.File]::WriteAllText($cancel,'observation_deadline')
+  if($control.ingame_login_probe){
+   $report.termination='direct_native_harness_cancellation'
+   $null=& taskkill.exe /PID $p.Id /T /F 2>&1
+  }else{[IO.File]::WriteAllText($cancel,'observation_deadline')}
   $report.cancel_requested_utc=[DateTime]::UtcNow.ToString('o');Save-Report
   if(-not $p.WaitForExit(15000)){
    $report.forced_launcher_stop=$true;Save-Report
@@ -104,6 +162,7 @@ try{
  $report.phase='finished';$report.ended_utc=[DateTime]::UtcNow.ToString('o');Save-Report
 }catch{$report.error=($_|Out-String);$report.phase='failed';Save-Report}
 finally{
+ if($null -ne $localCapture){$localCapture.Dispose();$report.local_capture_stopped=$true;Save-Report}
  if($ownedWer){
   Remove-Item -LiteralPath $werKey -Recurse -Force
   $report.owned_wer_removed=-not (Test-Path -LiteralPath $werKey);Save-Report

@@ -150,6 +150,22 @@ reviewwaived/Codexselfcheck, checker không xác nhận ngữ nghĩa/gate. M5 v�
 worker-to-serving thiếu; inventory/reward/restore/load riêng. M3nativebaselineCP242 giữ, rootbuild mới chưa nativecertified.
 [PLAN](../PLAN.md#current-order) tiếp M4four/eight và M5bridge theo gap thực tế; audit kếCP248. Internet thật chưa kiểm.
 
+<a id="rust-ingame-login-feasibility"></a>
+### LoginStage không token: kiểm khả thi M8
+
+Theo [chỉ đạo chủ dự án](../evidence/owner-directives/m8-ingame-login.json), phải đo đường nhập 1P/2P và
+chơi thử trước khi đổi launcher. [CP339 và bằng chứng](../evidence/rust-service/m8-ingame-login-feasibility.json)
+đã mở được LoginStage trên Windows VM, bản ko949x có các control tương thích đã khai báo, không truyền token.
+Cấu hình loopback đã xác minh chỉ thu được WCP và keepalive có CRC/sequence hợp lệ; chưa có gói ID/mật khẩu.
+Nhập ID và chọn 2P chưa có thay đổi giao diện được xác nhận; chơi thử chưa đo được. Argv rỗng rơi về
+CALauncher với lỗi locale 2000:0, không chứng minh locale là nguyên nhân của main. Các hàm đọc một/hai cặp
+credential có đối chiếu byte tĩnh, nhưng chưa là contract wire. Không lấy layout VN làm schema KR.
+
+**Chưa đạt kiểm khả thi.** Dừng các thay đổi phụ thuộc về auth trong game, guest, prelogin tunnel và launcher;
+giữ đường token hiện có. Không có patch exe mới trong nhóm này, không thay guard xác thực production.
+Bộ thu loopback chỉ phục vụ chẩn đoán với dữ liệu giả và không gửi auth success. Chưa chứng nhận 1P/2P,
+chơi thử, cài sạch hoặc Internet của đường mới. Lượt VM đã dừng, xuất bằng chứng và tự dọn overlay/seed.
+
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
 

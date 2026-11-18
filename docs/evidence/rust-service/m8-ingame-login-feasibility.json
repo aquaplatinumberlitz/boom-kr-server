@@ -1,0 +1,55 @@
+{
+  "schema": "kre-m8-ingame-login-feasibility-v1",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "authorization": "docs/evidence/owner-directives/m8-ingame-login.json",
+  "checkpoint": "CP339",
+  "verdict": "not_established_stop_before_launcher_changes",
+  "summary": {
+    "path": "local/research/codex/m8-ingame-login-feasibility-r1/feasibility-result.json",
+    "bytes": 14993,
+    "sha256": "8a02553a5846c7843df096683472cb0c7ad0c71fbecd0123dd3bd50025ae5740"
+  },
+  "scope": "Existing ko949x derived copy on Windows VM, no token; configuration and loopback-only synthetic input. No native executable patch in this group.",
+  "acceptance": {
+    "open_existing_login_stage_without_token": "observed_on_Windows_VM",
+    "native_1p_id_password_packet": "not_observed",
+    "native_2p_id_password_packet": "not_observed",
+    "trial_button_packet": "not_observed",
+    "native_account_authentication": "not_implemented"
+  },
+  "observations": [
+    "LoginStage visible without token using multiserveridx:0; server token-first guard is unsuitable for idle no-token request15. Production guard preserved.",
+    "Corrected guest hostname overrides make three aliases resolve loopback. Capture validates oneWCP0 and sixkeepalive15 frames with CRC/sequence; no opcode1 credential request.",
+    "Observed ordinary ID typing and2P selection cause no visible field/selection change. Trial control and packet are not established. Last Tab/Return input rejected after bounded runtime end.",
+    "Exact empty argument vector falls back to auxiliaryCALauncher locale error2000:0 and existing cleanup trap. Popup is not proof of main-client locale root cause.",
+    "Static current-byte matches show existing1P/2P credential-read route1101BA0, empty-token route11041A0 and configuration route11010F0. Static presence does not prove UI or packet behavior."
+  ],
+  "deferred": [
+    "Server DB authentication from in-game1P/2P packets",
+    "Guest accounts and prelogin companion admission",
+    "Launcher account-management screens and password removal",
+    "Visual cherry-picks3dc9927/9f2b5a1 and screenshots in all languages",
+    "In-game login error translations including Invalid Login!"
+  ],
+  "preserved": "Existing production launcher/token path remains; no source client, pack, L1 output or original analysis DB changed.",
+  "limits": [
+    "Current private repaired/patched949x ko executable inherits declared compatibility controls; no new native patch for these runs. Not original packed-client behavior.",
+    "Control art/static credential functions do not prove a working input path. Neither the exact1P/2P credential schema nor trial opcode is claimed.",
+    "r45 ID typing and2P button produced no visible entry/selection change; raw trace contains only WCP and keepalives. Last Tab/Return attempt arrived after bounded owner completion and was rejected; not a native input result.",
+    "Locale popup belongs to auxiliaryCALauncher. r44 mixed routing and r43 account-first-opcode rejection are harness/server differences, not proof locale is main cause.",
+    "Stop per owner direction; keep production token path and existing launcher unchanged. Do not cherry-pick3dc9927/9f2b5a1, implement pending-auth transport, account screens or login error translations on this incomplete proof."
+  ],
+  "storage": {
+    "deleted_apparent_bytes": 5332729856,
+    "before": {
+      "observed_epoch": 1795014702.1539056,
+      "available_bytes": 403164676096
+    },
+    "after": {
+      "observed_epoch": 1795015801.9261494,
+      "available_bytes": 402811072512
+    },
+    "limits": "Per-run disposable image apparent bytes; before/after includes unrelated/shared build and private analysis DB allocation, not net disk reclaimed."
+  }
+}

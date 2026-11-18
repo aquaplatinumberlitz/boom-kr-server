@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, nền gói Linux / CP338 / AUD146**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, CP339: kiểm khả thi LoginStage chưa đạt**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -40,7 +40,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, n
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), đang làm | Pack chung KR + đuôi vi data11, idx/exe/font/video riêng và GUI arcade ba ngôn ngữ đã có controls Linux/Windows; en còn ảnh nối và video Bắc Mỹ. [Account949x](evidence/rust-service/m8-account-name-encoding.json) đã có TCP/SQLite và một Windows vi hiển thị đúng tên, tạo/rời phòng trên ARM qua Internet thật. [Chat phòng chờ opt-in](evidence/rust-service/m8-room-chat-contract.json) đã có guards source/recipient DB, visit/round/queue, hồi quy Rust và một native vi hiển thị `Việt01 : M8 chat test`. Đây vẫn là bản copy có policy tương thích được khai báo; lỗi native cleanup C0000005 còn mở, standard UDP Windows còn WSAEMSGSIZE10040, portable backend đã có scope Internet riêng. Harness đã cấp hai account/launcher trong một VM, nhưng ko lỗi C0000005 trước native TCP; cùng bản ko chạy riêng đã vào sảnh và hiện `Việt01`. Paired WER đã xác nhận cùng con trỏ cleanup từ snapshot; reset riêng head ban đầu đi tiếp tới import giải mã callback chưa khôi phục. Probe ko đã ghi trực tiếp mutex có sẵn, lỗi 183, wait 258 và nhánh từ chối tiến trình thứ hai khi vi còn trong phòng; sau đó ko mới lỗi cleanup callback. Không xóa callback hoặc vượt mutex. Wine cô lập đã có hai launcher/companion và logout sạch, nhưng còn màn đen, chưa có TCP game; giữ lỗi/capture và chưa tính ca cùng phòng đạt. Theo chỉ đạo mới PR #488, tiếp kiểm khả thi LoginStage không token trước khi đổi launcher. Còn hai bản vi/ko cùng phòng đọc đúng tên phòng/player/chat của nhau, nội dung chat trộn, gói cuối/cài sạch/Wine và trận Internet/reset trên gói mới; không suy acceptance từ stub hoặc media cũ. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), dừng lát chuyển auth | [CP339](evidence/rust-service/m8-ingame-login-feasibility.json): không token đã hiện LoginStage trên Windows VM; loopback chỉ có WCP/keepalive, chưa nhập được 1P/2P và đo chơi thử. Argv rỗng rơi về CALauncher/lỗi locale. Theo PR #488, dừng thay đổi auth/guest/prelogin tunnel, màn quản lý account, giao diện và dịch lỗi phụ thuộc khả thi; giữ launcher/token hiện có. Các controls trước về gói đa ngôn ngữ, tên/chat vi và singleton Windows giữ scope ở [evidence M8](evidence/rust-service/m8-public-launcher-foundation.json). Còn gói cuối/cài sạch/Wine, vi/ko cùng phòng, trận Internet/reset; không suy đạt từ art, hàm tĩnh hoặc stub. |
    | Tải/giám sát/soak | Chốt tần suất UDP từ client thật và ngưỡng trước đo, 50 người/8 phòng cùng hai phòng native, rồi 24 giờ tải nền; đo startup failure, bộ nhớ/cổng/phòng. |
    | Admin/backup/rollback | Audit thao tác admin, snapshot khi live và restore vào máy sạch/native trận mới, kill/restart và nâng cấp/quay lại binary. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
@@ -96,7 +96,6 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
   Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.
 - Điều phối Rust ở [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285); #14 đã được thay thế,
   #369 đã giao. #2, #3 và #9 giữ làm backlog ngoài giai đoạn 1; lỗi khởi động Wine ở #9 được xem lại trong M8.
-
 
 **Quy ước:**
 

@@ -33,13 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP338: nền gói server Linux đã có manifest, state riêng và smoke x86/ARM.**
-[Builder/runner và bằng chứng](docs/evidence/rust-service/m8-server-package.json) gom fixture/profile đã pin,
-kiểm hash/path/mode, tách DB/session khỏi gói và re-root state khi cài. Hai Linux đã có readiness/dừng sạch khi
-repo/local bị che, từ chối init lại mà không đổi DB và từ chối chạy trùng. ARM harness dùng thư mục do root sở hữu;
-raw lỗi trước được giữ. Đây là nền đóng gói từ recipe hiện có; xuất dữ liệu từ pack, cài máy sạch đầy đủ, launcher
-Internet, gói Windows/Wine, tải 50 người/8 phòng, restore và 24 giờ chạy dài còn theo [Bảng điều hành](docs/PLAN.md#dashboard).
-G1 đã đủ bằng chứng trong CP337; tích hợp vẫn chờ gate local với registry dọn evidence lịch sử và CI hiện hành.
+**CP339: kiểm khả thi đăng nhập trong game chưa đạt.**
+[Thử không token trên Windows VM](docs/evidence/rust-service/m8-ingame-login-feasibility.json) đã hiện
+LoginStage; capture loopback chỉ có WCP/keepalive, chưa xác nhận nhập 1P/2P hoặc chơi thử phát gói.
+Argv rỗng rơi về CALauncher với lỗi locale; không có patch exe mới. Theo chỉ đạo PR #488, dừng phần chuyển auth
+và thay launcher phụ thuộc, giữ đường token hiện có. Các lượt đã xuất bằng chứng, dừng và tự dọn VM scratch.
+M8 và các acceptance còn lại vẫn mở theo [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 

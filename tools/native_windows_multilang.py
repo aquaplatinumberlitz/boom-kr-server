@@ -199,12 +199,25 @@ def main():
                         help='Private ko input/account declaration; start second client after vi room is observed')
     parser.add_argument('--paired-startup-probe', action='store_true',
                         help='Observe only the secondary native mutex branch under a declared debugger control')
+    parser.add_argument('--ingame-login-probe', action='store_true',
+                        help='Launch the declared native copy directly without token or launcher credentials; feasibility only')
+    parser.add_argument('--ingame-local-capture', action='store_true',
+                        help='Loopback-only no-auth fixture/capture for manual1P/2P/trial synthetic input')
+    parser.add_argument('--ingame-empty-arguments', action='store_true',
+                        help='No-token configuration control: omit automatic multiserveridx selection too')
     parser.add_argument('--resume-stage', action='store_true', help='Resume an already completed private remote staging operation, never repeat it')
     parser.add_argument('--wait-timeout-control-ms', type=int, default=0,
                         help='Explicit debugger-only zero-limit timing control; not a final client patch')
     args = parser.parse_args()
     if args.paired_startup_probe and (not args.paired_control or args.crash_dump or args.socket_probe):
         parser.error('Paired startup observer requires paired control without WER or socket observer')
+    if args.ingame_login_probe and any([args.paired_control, args.socket_probe, args.room_lifecycle,
+                                       args.room_chat_message, args.launcher_control]):
+        parser.error('In-game feasibility requires direct native without paired/token/debug launcher controls')
+    if args.ingame_local_capture and not args.ingame_login_probe:
+        parser.error('Local credential capture requires explicit no-token feasibility mode')
+    if args.ingame_empty_arguments and not args.ingame_login_probe:
+        parser.error('Empty arguments require explicit no-token feasibility mode')
     local = (ROOT / 'local').resolve(strict=True)
     paired = None
     if args.paired_control:
@@ -475,6 +488,22 @@ if($parseErrors.Count -gt 0){
             paired_files = ['paired-run.ps1', 'CA-paired-control.exe', 'paired-language-inputs.json', 'paired-credentials.json']
         if args.crash_dump:
             control['crash_dump'] = True
+        if args.ingame_login_probe:
+            control['ingame_login_probe'] = True
+        if args.ingame_empty_arguments:
+            control['ingame_empty_arguments'] = True
+        if args.ingame_local_capture:
+            control['ingame_local_capture'] = True
+            shutil.copy2(ROOT / 'tools/native_login_capture.cs', output / 'native-login-capture.cs')
+            fixtures = {
+                'login-bootstrap.bin': local / 'research/codex/bootstrap-reply-r1.bin',
+                'login-wcp.bin': local / 'research/codex/wcp-fields-r1/eight-v2-responses.bin',
+            }
+            for name, source in fixtures.items():
+                shutil.copy2(source, output / name)
+                control[name + '_sha256'] = digest(output / name)
+            control['capture_source_sha256'] = digest(output / 'native-login-capture.cs')
+            paired_files += ['native-login-capture.cs', *fixtures]
         if args.ui_exit_probe:
             control['ui_exit_probe'] = True
         if args.wait_timeout_control_ms:

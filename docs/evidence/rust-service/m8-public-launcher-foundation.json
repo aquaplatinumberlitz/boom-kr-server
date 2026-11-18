@@ -660,5 +660,11 @@
     "path": "local/research/codex/m8-wine-pair-control-r1/wine-pair-progress.json",
     "bytes": 10900,
     "sha256": "742133216263d4489634e655319f86780cd5e1e447a6afcdf4e4e31eea147bb6"
+  },
+  "ingame_login_owner_transition": {
+    "authorization": "docs/evidence/owner-directives/m8-ingame-login.json",
+    "feasibility": "docs/evidence/rust-service/m8-ingame-login-feasibility.json",
+    "status": "feasibility_not_established",
+    "policy": "Stop dependent launcher/auth changes; preserve token path. Older M8 launcher/name/chat controls retain their exact scope."
   }
 }
