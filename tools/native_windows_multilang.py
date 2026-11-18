@@ -14,6 +14,8 @@ import subprocess
 import sys
 import time
 
+import native_run_cleanup
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -114,6 +116,7 @@ def main():
     parser.add_argument('--observe-seconds', type=int, default=90)
     parser.add_argument('--run', action='store_true')
     parser.add_argument('--socket-probe', action='store_true', help='Declared owned debugger control; not native acceptance')
+    parser.add_argument('--ui-exit-probe', action='store_true', help='Observe pinned exit button/modal/predicate sites; requires socket probe')
     parser.add_argument('--crash-dump', action='store_true', help='Owned Windows WER minidump on native failure, without debugger')
     parser.add_argument('--room-lifecycle', type=Path, help='Pinned local language screenshots for bounded create/leave/UI exit control')
     parser.add_argument('--service-build', type=Path, help='Private JSON pinning three already built remote binaries and patched949x test account name')
@@ -141,12 +144,15 @@ def main():
              for name in ['previous', 'out', 'deployment', 'manifest', 'native-control', 'windows-credentials']}
     if any(path == local or not path.is_relative_to(local) for path in paths.values()):
         parser.error('Every input/output must be under local/')
+    native_run_cleanup.require_storage()
     if not 30 <= args.observe_seconds <= 240:
         parser.error('Observation budget is 30..240 seconds')
     if args.wait_timeout_control_ms and (not args.socket_probe or not 1 <= args.wait_timeout_control_ms <= 60000):
         parser.error('Wait timing control requires socket probe and1..60000ms')
     if args.crash_dump and args.socket_probe:
         parser.error('WER control must run without a debugger')
+    if args.ui_exit_probe and not args.socket_probe:
+        parser.error('UI exit observer requires declared socket probe')
     previous, output, stage = paths['previous'], paths['out'], paths['deployment']
     if output == stage:
         parser.error('Output and deployment must be distinct')
@@ -187,6 +193,13 @@ old=Path(sys.argv[1]);new=Path(sys.argv[2]);assert not new.exists()
 new.mkdir(mode=0o700);shutil.copytree(old/'package',new/'package');(new/'state').mkdir(mode=0o700)
 shutil.copy2(old/'state/launcher.pk8',new/'state/launcher.pk8');(new/'state/launcher.pk8').chmod(0o600)
 for name in ['guarded-runner.py','cloud-list.json']:shutil.copy2(old/name,new/name)
+runner_path=new/'guarded-runner.py';runner=runner_path.read_text()
+old_signals='for sig in [signal.SIGTERM,signal.SIGINT]'
+new_signals='for sig in [signal.SIGTERM,signal.SIGINT,signal.SIGHUP]'
+if old_signals in runner:
+ assert runner.count(old_signals)==1
+ runner_path.write_text(runner.replace(old_signals,new_signals))
+else:assert new_signals in runner, 'Owned runner signal cleanup declaration differs'
 p=json.loads((old/'private-provision.json').read_text());p['root']=str(new)
 observed=str(ipaddress.IPv4Address(os.environ['SSH_CONNECTION'].split()[0]))
 previous_source=p['source'];source_changed=observed!=previous_source
@@ -206,7 +219,7 @@ manifest_path.chmod(0o600);manifest_path.write_text(json.dumps(manifest,ensure_a
 p['manifest_sha256']=hashlib.sha256(manifest_path.read_bytes()).hexdigest();p['source']=observed
 subprocess.run([sys.executable,str(new/'package/kr-package.py'),'verify','--manifest-sha256',p['manifest_sha256']],check=True,capture_output=True,timeout=30)
 (new/'private-provision.json').write_text(json.dumps(p,indent=2)+chr(10))
-print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed=source_changed,service_allowlist_refreshed=True,package_verified=True)))
+print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed=source_changed,service_allowlist_refreshed=True,package_verified=True,owned_runner_handles_hup=True)))
 '''
     if service_build:
         recipe = recipe.replace('# SERVICE_BUILD_CONFIG',
@@ -251,109 +264,134 @@ print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed
     config.update(out=str(output), vps_plan=str(stage / 'private-provision.json'),
                   container='kr-m8-native-' + args.language + '-' + suffix)
     (output / 'private-owner-config.json').write_text(json.dumps(config, indent=2) + '\n')
-    subprocess.run(['qemu-img', 'create', '-f', 'qcow2', '-F', 'qcow2', '-b', config['vm_base'],
-                    str(output / 'native-system.qcow2')], check=True, capture_output=True, timeout=30)
-    with (output / 'seed.img').open('xb') as stream:
-        stream.truncate(128 * 1024 * 1024)
-    subprocess.run(['mkfs.vfat', '-n', 'M8SETUP', str(output / 'seed.img')], check=True, capture_output=True, timeout=30)
-    shutil.copy2(previous / 'start-vm.sh', output / 'start-vm.sh')
-    for name in ['kr-launch.exe', 'kr-companion.exe', 'certificate.der', 'deployment-private.json', 'credentials.json']:
-        shutil.copy2(previous / name, output / name)
-    shutil.copy2(paths['native-control'], output / 'CA-control.exe')
-    shutil.copy2(ROOT / 'tools/native_windows_multilang.ps1', output / 'run.ps1')
-    pins = {name: digest(output / name) for name in ['kr-launch.exe', 'kr-companion.exe', 'certificate.der', 'CA-control.exe']}
-    (output / 'control-pins.json').write_text(json.dumps(pins) + '\n')
-    control = dict(language=args.language, runtime_name='M8Native' + args.language.capitalize() + suffix[-10:],
-                   observe_seconds=args.observe_seconds)
-    if args.crash_dump:
-        control['crash_dump'] = True
-    if args.wait_timeout_control_ms:
-        control['wait_timeout_control_ms'] = args.wait_timeout_control_ms
-    if args.socket_probe:
-        shutil.copy2(ROOT / 'tools/native_windows_socket_probe.c', output / 'socket-probe-source.c')
-        subprocess.run(['i686-w64-mingw32-gcc', '-municode', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror',
-                        str(output / 'socket-probe-source.c'), '-o', str(output / 'socket-probe.exe')],
-                       check=True, capture_output=True, timeout=60)
-        control['socket_probe_sha256'] = digest(output / 'socket-probe.exe')
-        subprocess.run(['mcopy', '-i', str(output / 'seed.img'), str(output / 'socket-probe.exe'), '::socket-probe.exe'],
-                       check=True, capture_output=True, timeout=30)
-    (output / 'multilang-run.json').write_text(json.dumps(control) + '\n')
-    (output / 'language-inputs.json').write_text(json.dumps(files, indent=2) + '\n')
-    (output / 'input-summary.json').write_text(json.dumps(dict(files=len(files) + 1,
-        exe_sha256=args.native_control_sha256, launcher_sha256=pins['kr-launch.exe'],
-        manifest_sha256=args.manifest_sha256, language=args.language,
-        scope='Existing verified language installation with separate loader-control runtime; no acceptance inferred')) + '\n')
-    for name in ['run.ps1', 'multilang-run.json', 'language-inputs.json', 'control-pins.json', 'kr-launch.exe',
-                 'kr-companion.exe', 'CA-control.exe', 'certificate.der', 'deployment-private.json', 'credentials.json']:
-        subprocess.run(['mcopy', '-i', str(output / 'seed.img'), str(output / name), '::' + name],
-                       check=True, capture_output=True, timeout=30)
-    if not args.run:
-        print('Prepared private inputs; no VM/service/rules started.')
-        return
-    record = dict(started_epoch=time.time(), language=args.language,
-                  source_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip())
-    with (output / 'owner.stdout').open('xb') as stdout, (output / 'owner.stderr').open('xb') as stderr:
-        owner = subprocess.Popen([sys.executable, str(ROOT / 'tools/native_windows_candidate.py'),
-                                  '--config', str(output / 'private-owner-config.json')],
-                                 stdout=stdout, stderr=stderr, start_new_session=True)
-    (output / 'owner-process.json').write_text(json.dumps(dict(pid=owner.pid,
-        start_ticks=Path('/proc/' + str(owner.pid) + '/stat').read_text().split()[21],
-        source_sha256=digest(ROOT / 'tools/native_windows_candidate.py'))) + '\n')
+    owner = None
+    prepared_only = False
     try:
-        subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_bootstrap.py'), '--run', str(output),
-                        '--out', str(output / 'bootstrap-r1'), '--windows-credentials', str(paths['windows-credentials'])],
-                       check=True, timeout=420)
-        subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_ready_service.py'), '--run', str(output),
-                        '--input-summary', str(output / 'input-summary.json')], check=True, timeout=640)
-        ready_deadline = time.monotonic() + 75
-        while True:
-            status = json.loads((output / 'owner-status.json').read_text())
-            if status.get('remote_ready_epoch'):
-                break
-            if owner.poll() is not None or status.get('error') or time.monotonic() >= ready_deadline:
-                raise RuntimeError('Remote service readiness deadline; no native acceptance')
-            time.sleep(.5)
-        deadline = time.monotonic() + args.observe_seconds + 60
-        capture = 0
-        while time.monotonic() < deadline:
-            if owner.poll() is not None:
-                raise RuntimeError('Owner ended during observation; inspect status')
-            result = subprocess.run(['mtype', '-i', str(output / 'seed.img'), '::native-windows-install.json'],
-                                    capture_output=True, text=True, timeout=5)
-            try:
-                guest = json.loads(result.stdout.lstrip('\ufeff')) if result.returncode == 0 else {}
-            except json.JSONDecodeError:
-                guest = {}  # Live FAT read can race a report write; not final evidence.
-            phase = guest.get('phase')
-            if capture < 48 or phase in ['finished', 'failed']:
-                actions = output / ('observe-' + str(capture) + '.json')
-                actions.write_text(json.dumps([dict(op='capture')]) + '\n')
-                subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_input.py'), '--run', str(output),
-                                '--actions', str(actions), '--out', str(output / ('observe-' + str(capture)))],
-                               check=True, capture_output=True, timeout=45)
-                if lifecycle and phase not in ['finished', 'failed']:
-                    lifecycle.observe(output / ('observe-' + str(capture)) / 'capture-0.png', output)
-                capture += 1
-            if phase in ['finished', 'failed']:
-                record.update(guest_phase=phase, live_launcher_exit=guest.get('launcher_exit'))
-                break
-            time.sleep(2)
-        else:
-            record['observation_deadline'] = True
-    except BaseException as error:
-        record['error'] = type(error).__name__
-        raise
-    finally:
-        (output / 'stop-requested').touch()
+        subprocess.run(['qemu-img', 'create', '-f', 'qcow2', '-F', 'qcow2', '-b', config['vm_base'],
+                        str(output / 'native-system.qcow2')], check=True, capture_output=True, timeout=30)
+        with (output / 'seed.img').open('xb') as stream:
+            stream.truncate(128 * 1024 * 1024)
+        subprocess.run(['mkfs.vfat', '-n', 'M8SETUP', str(output / 'seed.img')], check=True, capture_output=True, timeout=30)
+        shutil.copy2(previous / 'start-vm.sh', output / 'start-vm.sh')
+        for name in ['kr-launch.exe', 'kr-companion.exe', 'certificate.der', 'deployment-private.json', 'credentials.json']:
+            shutil.copy2(previous / name, output / name)
+        shutil.copy2(paths['native-control'], output / 'CA-control.exe')
+        shutil.copy2(ROOT / 'tools/native_windows_multilang.ps1', output / 'run.ps1')
+        pins = {name: digest(output / name) for name in ['kr-launch.exe', 'kr-companion.exe', 'certificate.der', 'CA-control.exe']}
+        (output / 'control-pins.json').write_text(json.dumps(pins) + '\n')
+        control = dict(language=args.language, runtime_name='M8Native' + args.language.capitalize() + suffix[-10:],
+                       observe_seconds=args.observe_seconds)
+        if args.crash_dump:
+            control['crash_dump'] = True
+        if args.ui_exit_probe:
+            control['ui_exit_probe'] = True
+        if args.wait_timeout_control_ms:
+            control['wait_timeout_control_ms'] = args.wait_timeout_control_ms
+        if args.socket_probe:
+            shutil.copy2(ROOT / 'tools/native_windows_socket_probe.c', output / 'socket-probe-source.c')
+            subprocess.run(['i686-w64-mingw32-gcc', '-municode', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror',
+                            str(output / 'socket-probe-source.c'), '-o', str(output / 'socket-probe.exe')],
+                           check=True, capture_output=True, timeout=60)
+            control['socket_probe_sha256'] = digest(output / 'socket-probe.exe')
+            subprocess.run(['mcopy', '-i', str(output / 'seed.img'), str(output / 'socket-probe.exe'), '::socket-probe.exe'],
+                           check=True, capture_output=True, timeout=30)
+        (output / 'multilang-run.json').write_text(json.dumps(control) + '\n')
+        (output / 'language-inputs.json').write_text(json.dumps(files, indent=2) + '\n')
+        (output / 'input-summary.json').write_text(json.dumps(dict(files=len(files) + 1,
+            exe_sha256=args.native_control_sha256, launcher_sha256=pins['kr-launch.exe'],
+            manifest_sha256=args.manifest_sha256, language=args.language,
+            scope='Existing verified language installation with separate loader-control runtime; no acceptance inferred')) + '\n')
+        for name in ['run.ps1', 'multilang-run.json', 'language-inputs.json', 'control-pins.json', 'kr-launch.exe',
+                     'kr-companion.exe', 'CA-control.exe', 'certificate.der', 'deployment-private.json', 'credentials.json']:
+            subprocess.run(['mcopy', '-i', str(output / 'seed.img'), str(output / name), '::' + name],
+                           check=True, capture_output=True, timeout=30)
+        if not args.run:
+            prepared_only = True
+            print('Prepared private inputs; no VM/service/rules started.')
+            return
+        record = dict(started_epoch=time.time(), language=args.language,
+                      source_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip())
+        with (output / 'owner.stdout').open('xb') as stdout, (output / 'owner.stderr').open('xb') as stderr:
+            owner = subprocess.Popen([sys.executable, str(ROOT / 'tools/native_windows_candidate.py'),
+                                      '--config', str(output / 'private-owner-config.json')],
+                                     stdout=stdout, stderr=stderr, start_new_session=True)
         try:
-            record['owner_exit'] = owner.wait(timeout=120)
-        except subprocess.TimeoutExpired:
-            record['owner_cleanup_deadline'] = True
-        record['ended_epoch'] = time.time()
-        if lifecycle:
-            record['ordinary_ui_steps_sent'] = lifecycle.step
-        (output / 'controller-result.json').write_text(json.dumps(record, indent=2) + '\n')
-    print('Bounded language control ended; verify exported native and cleanup evidence.')
+            (output / 'owner-process.json').write_text(json.dumps(dict(pid=owner.pid,
+                start_ticks=Path('/proc/' + str(owner.pid) + '/stat').read_text().split()[21],
+                source_sha256=digest(ROOT / 'tools/native_windows_candidate.py'))) + '\n')
+            subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_bootstrap.py'), '--run', str(output),
+                            '--out', str(output / 'bootstrap-r1'), '--windows-credentials', str(paths['windows-credentials'])],
+                           check=True, timeout=420)
+            subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_ready_service.py'), '--run', str(output),
+                            '--input-summary', str(output / 'input-summary.json')], check=True, timeout=640)
+            ready_deadline = time.monotonic() + 75
+            while True:
+                status = json.loads((output / 'owner-status.json').read_text())
+                if status.get('remote_ready_epoch'):
+                    break
+                if owner.poll() is not None or status.get('error') or time.monotonic() >= ready_deadline:
+                    raise RuntimeError('Remote service readiness deadline; no native acceptance')
+                time.sleep(.5)
+            deadline = time.monotonic() + args.observe_seconds + 60
+            capture = 0
+            while time.monotonic() < deadline:
+                if owner.poll() is not None:
+                    raise RuntimeError('Owner ended during observation; inspect status')
+                result = subprocess.run(['mtype', '-i', str(output / 'seed.img'), '::native-windows-install.json'],
+                                        capture_output=True, text=True, timeout=5)
+                try:
+                    guest = json.loads(result.stdout.lstrip('\ufeff')) if result.returncode == 0 else {}
+                except json.JSONDecodeError:
+                    guest = {}  # Live FAT read can race a report write; not final evidence.
+                phase = guest.get('phase')
+                if capture < 48 or phase in ['finished', 'failed']:
+                    actions = output / ('observe-' + str(capture) + '.json')
+                    actions.write_text(json.dumps([dict(op='capture')]) + '\n')
+                    subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_input.py'), '--run', str(output),
+                                    '--actions', str(actions), '--out', str(output / ('observe-' + str(capture)))],
+                                   check=True, capture_output=True, timeout=45)
+                    if lifecycle and phase not in ['finished', 'failed']:
+                        lifecycle.observe(output / ('observe-' + str(capture)) / 'capture-0.png', output)
+                    capture += 1
+                if phase in ['finished', 'failed']:
+                    record.update(guest_phase=phase, live_launcher_exit=guest.get('launcher_exit'))
+                    break
+                time.sleep(2)
+            else:
+                record['observation_deadline'] = True
+        except BaseException as error:
+            record['error'] = type(error).__name__
+            raise
+        finally:
+            (output / 'stop-requested').touch()
+            try:
+                record['owner_exit'] = owner.wait(timeout=180)
+            except subprocess.TimeoutExpired:
+                record['owner_cleanup_deadline'] = True
+            record['ended_epoch'] = time.time()
+            if lifecycle:
+                record['ordinary_ui_steps_sent'] = lifecycle.step
+            (output / 'controller-result.json').write_text(json.dumps(record, indent=2) + '\n')
+        print('Bounded language control ended; verify exported native and cleanup evidence.')
+    finally:
+        # No VM was started if preparation failed before Popen. Successful
+        # prepare-only output is an explicit input for a later owned run.
+        if owner is None and not prepared_only:
+            native_run_cleanup.cleanup(ROOT, output, stopped=True, exports_complete=True,
+                inputs=[config['vm_base'], config['player_media'],
+                        *config.get('additional_readonly_backing', [])])
+        elif (owner is not None and owner.poll() is not None
+              and not (output / 'run-cleanup-manifest.json').exists()):
+            # The owner can fail before its try/finally (for example a busy
+            # runtime lease). Only absence of its unique container proves no
+            # guest could have produced unexported observations.
+            state = subprocess.run(['docker', 'inspect', config['container']],
+                                   capture_output=True, timeout=10)
+            absent = state.returncode != 0 and b'No such object' in state.stderr
+            native_run_cleanup.cleanup(ROOT, output, stopped=absent, exports_complete=absent,
+                inputs=[config['vm_base'], config['player_media'],
+                        *config.get('additional_readonly_backing', [])])
+
 
 
 if __name__ == '__main__':

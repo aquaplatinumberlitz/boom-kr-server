@@ -68,6 +68,11 @@ try{
   $start.EnvironmentVariables['KR_M8_WAIT_TIMEOUT_MS']=[string]$control.wait_timeout_control_ms
   $report.wait_timeout_control=[ordered]@{milliseconds=$control.wait_timeout_control_ms;limits='Debugger-only finite control applied only if measured dialog limit is zero. No source file, server deadline or success result is changed.'}
  }
+ if($control.ui_exit_probe){
+  if(-not ($control.PSObject.Properties.Name -contains 'socket_probe_sha256')){throw 'UI exit observer requires debugger control'}
+  $start.EnvironmentVariables['KR_M8_UI_EXIT_PROBE']='1'
+  $report.ui_exit_probe='Read-only numeric exit-button/modal/predicate observation; no forced result or native acceptance'
+ }
  $p=New-Object Diagnostics.Process;$p.StartInfo=$start;if(-not $p.Start()){throw 'Native launcher did not start'}
  # Drain both pipes while the process runs. A native/debug child can inherit
  # their handles, so EOF and process exit are separate bounded observations.

@@ -99,12 +99,21 @@ def main():
                     x, y = action['xy']
                     if not (0 <= x < width <= 8192 and 0 <= y < height <= 8192):
                         raise ValueError('Click coordinate bound')
+                    settle_ms = action.get('move_settle_ms', 150)
+                    if type(settle_ms) is not int or not 0 <= settle_ms <= 1000:
+                        raise ValueError('Mouse movement settle bound')
+                    # Let the guest/game consume the new pointer position
+                    # before delivering a button edge. A single QMP batch can
+                    # otherwise let frame-polled UI sample the prior position.
                     request('input-send-event', dict(events=[
                         dict(type='abs', data=dict(axis='x', value=round(x * 32767 / (width - 1)))),
-                        dict(type='abs', data=dict(axis='y', value=round(y * 32767 / (height - 1)))),
-                        dict(type='btn', data=dict(button='left', down=True))]))
-                    time.sleep(.12)
-                    request('input-send-event', dict(events=[dict(type='btn', data=dict(button='left', down=False))]))
+                        dict(type='abs', data=dict(axis='y', value=round(y * 32767 / (height - 1))))]))
+                    time.sleep(settle_ms / 1000)
+                    try:
+                        request('input-send-event', dict(events=[dict(type='btn', data=dict(button='left', down=True))]))
+                        time.sleep(.12)
+                    finally:
+                        request('input-send-event', dict(events=[dict(type='btn', data=dict(button='left', down=False))]))
                 elif operation == 'capture':
                     basename = output.name + '-' + str(index) + '.png'
                     request('screendump', dict(filename='/task/' + basename, format='png'))

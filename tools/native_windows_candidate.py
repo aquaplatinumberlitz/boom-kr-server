@@ -15,6 +15,8 @@ import socket
 import subprocess
 import time
 
+import native_run_cleanup
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -35,10 +37,12 @@ def main():
             parser.error('Input phải ở local/')
     lease = (local / 'research/codex/.kr-wine-runtime.lock').open('a+')
     fcntl.flock(lease, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    native_run_cleanup.require_storage()
     connection = json.loads(Path(config['ssh_connection']).read_text())
     plan = json.loads(Path(config['vps_plan']).read_text())
     remote_root = Path(plan['root'])
-    ssh = ['ssh', '-i', config['ssh_identity'], '-p', str(connection['port']),
+    ssh = ['ssh', '-o', 'ConnectTimeout=8', '-o', 'ServerAliveInterval=5',
+           '-o', 'ServerAliveCountMax=2', '-i', config['ssh_identity'], '-p', str(connection['port']),
            '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=' + config['ssh_known_hosts'],
            connection['user'] + '@' + connection['host']]
     name = config['container']
@@ -53,6 +57,7 @@ def main():
                   started_epoch=time.time(), scope='Native Windows candidate; no success inferred', cleanup_errors=[])
     remote = None
     container = False
+    vm_was_started = False
     stopped = False
 
     def stop(signum, _frame):
@@ -62,6 +67,7 @@ def main():
 
     signal.signal(signal.SIGTERM, stop)
     signal.signal(signal.SIGINT, stop)
+    signal.signal(signal.SIGHUP, stop)
 
     def save():
         (out / 'owner-status.json').write_text(json.dumps(record, indent=2) + '\n')
@@ -101,7 +107,11 @@ def main():
     try:
         existing = subprocess.run(['docker', 'inspect', name], capture_output=True, timeout=10)
         if existing.returncode == 0:
+            record['container_name_collision'] = True
             raise RuntimeError('Owned candidate name already exists; use a fresh run')
+        if b'No such object' not in existing.stderr:
+            record['container_status_unknown'] = True
+            raise RuntimeError('Container absence not confirmed; no runtime mutation allowed')
         # Register ownership before a potentially slow Docker create/start so
         # timeout cleanup also covers a container left in Created state.
         container = True
@@ -122,6 +132,9 @@ def main():
         (out / 'docker-start.stderr').write_text(result.stderr)
         if result.returncode:
             raise RuntimeError('Owned VM container failed to start')
+        # A timeout can leave the VM running. Register the attempt first so
+        # failed exports still preserve its scratch for recovery.
+        vm_was_started = True
         result = subprocess.run(['docker', 'start', name], capture_output=True, text=True, timeout=90)
         (out / 'docker-run.stdout').write_text(result.stdout)
         (out / 'docker-run.stderr').write_text(result.stderr)
@@ -166,8 +179,18 @@ def main():
                                       stdout=stdout, stderr=stderr)
         deadline = time.monotonic() + 60
         while time.monotonic() < deadline:
-            result = subprocess.run(ssh + ['cat ' + shlex.quote(str(remote_root / 'status.json'))],
-                                    capture_output=True, timeout=15)
+            # Repeat only this read-only readiness query within the original
+            # overall deadline. Never restart the remote producer after an
+            # uncertain SSH result: its service/rules may already be live.
+            try:
+                result = subprocess.run(ssh + ['cat ' + shlex.quote(str(remote_root / 'status.json'))],
+                                        capture_output=True, timeout=min(15, max(.1, deadline-time.monotonic())))
+            except subprocess.TimeoutExpired:
+                record.setdefault('remote_status_timeouts', []).append(time.time())
+                save()
+                if remote.poll() is not None:
+                    raise RuntimeError('Remote SSH owner ended during readiness query')
+                continue
             if result.returncode == 0:
                 status = json.loads(result.stdout)
                 if status.get('error') or status.get('ended_epoch'):
@@ -219,7 +242,8 @@ def main():
                 inspected = subprocess.run(['docker', 'inspect', '--format', '{{.State.Running}}', name],
                                            capture_output=True, text=True, timeout=10)
                 record['owned_container_stopped'] = inspected.returncode == 0 and inspected.stdout.strip() == 'false'
-                if not record['owned_container_stopped']:
+                record['owned_container_absent'] = inspected.returncode != 0 and 'No such object' in inspected.stderr
+                if not record['owned_container_stopped'] and not record['owned_container_absent']:
                     record['cleanup_errors'].append('Owned container stop not confirmed')
             except Exception as error:
                 record['cleanup_errors'].append('Container stop verification: ' + type(error).__name__)
@@ -247,11 +271,20 @@ def main():
                 except Exception as error:
                     record['cleanup_errors'].append('Startup case export: ' + type(error).__name__)
         if remote is not None:
-            try:
-                subprocess.run(ssh + ['touch ' + shlex.quote(str(remote_root / 'stop-requested'))],
-                               capture_output=True, timeout=20)
-            except Exception as error:
-                record['cleanup_errors'].append('Remote stop request: ' + type(error).__name__)
+            # This one owned stop marker is idempotent, unlike starting a run.
+            # Preserve failed attempts and never infer success from a returned
+            # subprocess when SSH itself failed (for example exit255).
+            for attempt in range(2):
+                try:
+                    result = subprocess.run(ssh + ['touch ' + shlex.quote(str(remote_root / 'stop-requested'))],
+                                            capture_output=True, timeout=20)
+                    record.setdefault('remote_stop_attempts', []).append(dict(attempt=attempt+1, exit=result.returncode))
+                    if result.returncode == 0:
+                        break
+                except Exception as error:
+                    record.setdefault('remote_stop_attempts', []).append(dict(attempt=attempt+1, error=type(error).__name__))
+            else:
+                record['cleanup_errors'].append('Owned remote stop marker was not confirmed')
             try:
                 record['remote_process_exit'] = remote.wait(timeout=60)
             except subprocess.TimeoutExpired:
@@ -266,11 +299,31 @@ def main():
                     record['cleanup_errors'].append('Remote export: ' + type(error).__name__)
             path = out / 'remote-status.json'
             if path.exists():
-                status = json.loads(path.read_text())
-                record['remote_cleanup'] = {key: status.get(key) for key in [
-                    'service_exit', 'cloud_append_status', 'cloud_cleanup_status',
-                    'owned_cloud_rules_absent', 'cleanup_errors', 'error']}
+                try:
+                    status = json.loads(path.read_text())
+                    record['remote_cleanup'] = {key: status.get(key) for key in [
+                        'service_exit', 'cloud_append_status', 'cloud_cleanup_status',
+                        'owned_cloud_rules_absent', 'cleanup_errors', 'error']}
+                except (ValueError, OSError) as error:
+                    record['cleanup_errors'].append('Remote status parse: ' + type(error).__name__)
         record['ended_epoch'] = time.time()
+        save()
+        try:
+            stopped_confirmed = (record.get('owned_container_stopped') or record.get('owned_container_absent')
+                                 or (not container and not record.get('container_name_collision')
+                                     and not record.get('container_status_unknown')))
+            reports = record.get('guest_reports', [])
+            exports_complete = not vm_was_started or 'native-windows-install.json' in reports
+            exports_complete = exports_complete and all(
+                record.get('startup_case_exports', {}).get(case) == 0 for case in startup_cases)
+            crash = out / 'native-windows-crash.json'
+            if crash.exists() and json.loads(crash.read_text(encoding='utf-8-sig')).get('dump_files'):
+                exports_complete = exports_complete and record.get('startup_dump_export_exit') == 0
+            inputs = [config['vm_base'], config['player_media'], *config.get('additional_readonly_backing', [])]
+            record['local_artifact_cleanup'] = native_run_cleanup.cleanup(
+                ROOT, out, stopped=bool(stopped_confirmed), exports_complete=exports_complete, inputs=inputs)
+        except Exception as error:
+            record['cleanup_errors'].append('Local artifact cleanup: ' + type(error).__name__ + ': ' + str(error))
         save()
         print('Candidate owner finished; check private cleanup and native evidence.', flush=True)
 

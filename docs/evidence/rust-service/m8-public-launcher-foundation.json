@@ -349,6 +349,26 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-noack-r24.json",
       "bytes": 4076,
       "sha256": "0a5dd5ccc9593c10ac4876e996e3532384889bff918ce98a9766f1c6e0e4e8c1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit-ui-input-r25.json",
+      "bytes": 4490,
+      "sha256": "bb9fe9341868d496806bc986fd06b68883a813200f3871b08040aef71791de69"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/owner-ssh-recovery-r26.json",
+      "bytes": 2885,
+      "sha256": "02b74193bb97e522e8b5425cb081023abb4073d8eb8589959a237d010f1e70d1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/exit-dispatch-progress-r29.json",
+      "bytes": 12060,
+      "sha256": "e0f02f5c38f265884c8410d3c523b2bc696056d0be97c96c9c2ac57ce2b0cade"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/offline-exit-controls-r32.json",
+      "bytes": 8497,
+      "sha256": "0044f3df957efa4ff98d20d01de08c08efd9cfbfa8eb8f9e69d40643ab97a469"
     }
   ],
   "limits": [
@@ -524,6 +544,75 @@
       "bytes": 4076,
       "sha256": "0a5dd5ccc9593c10ac4876e996e3532384889bff918ce98a9766f1c6e0e4e8c1"
     },
-    "native_scope": "Once authorized observation retained channel, but native remains lobby until harness cancellation; no ACK guessed."
+    "native_scope": "Once authorized observation retained channel, but native remains lobby until harness cancellation; no ACK guessed.",
+    "input_control": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit-ui-input-r25.json",
+      "bytes": 4490,
+      "sha256": "bb9fe9341868d496806bc986fd06b68883a813200f3871b08040aef71791de69"
+    },
+    "next": "Observe native modal button1236/result4 and callerD7C450 gate, before changing protocol or executable."
+  },
+  "owner_ssh_recovery": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/owner-ssh-recovery-r26.json",
+      "bytes": 2885,
+      "sha256": "02b74193bb97e522e8b5425cb081023abb4073d8eb8589959a237d010f1e70d1"
+    },
+    "source": "design",
+    "status": "confirmed",
+    "limits": "r26 stopped before native; original failed cleanup preserved. Recovery confirms owned service/rules gone. Bounded query/stop fix not native acceptance."
+  },
+  "exit_dispatch_observation": {
+    "source": "kr_runtime",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/exit-dispatch-progress-r29.json",
+      "bytes": 12060,
+      "sha256": "e0f02f5c38f265884c8410d3c523b2bc696056d0be97c96c9c2ac57ce2b0cade"
+    },
+    "scope": "Correct button/result/predicate/virtual call measured; repaired quit import mismatch; r29 C++empty content failure retained",
+    "limits": "No clean exit. PostQuitMessage and empty-onlyCP201 controls are explicit private ABI policies, native validation pending."
+  },
+  "offline_exit_controls_progress": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/offline-exit-controls-r33.json",
+      "bytes": 1845,
+      "sha256": "d2ee0a24173ec949ee2218eaee7acc8d538402518ff6739b4957a89b41c5f5f4"
+    },
+    "source": "kr_runtime",
+    "status": "candidate",
+    "limits": "All five pinned UI steps sent with declared offline compatibility controls; companion stops before launcher observes native process exit. Not clean UI logout or final package acceptance."
+  },
+  "run_storage_cleanup": {
+    "source": "design",
+    "status": "confirmed",
+    "authorization": "docs/evidence/owner-directives/run-cleanup.json",
+    "old_runs_receipt": {
+      "path": "local/retention/m8-cleanup-authorized-r2/cleanup-receipt.json",
+      "bytes": 1687,
+      "sha256": "d1d150411471398cb8f3532b82ce111933fe8fcaee289a58316a74ec3a8a0cbf"
+    },
+    "harness_control": {
+      "path": "local/research/codex/m8-cleanup-harness-control-r1/control-result.json",
+      "bytes": 1316,
+      "sha256": "16915a6756608c6a6e06d1637ca19ca4edfa4b16cf4739214fbed90426960b56"
+    },
+    "scope": "477 disposable files in 80 old M8 runs; exact-plan apply via 3d724dc. Automatic scratch cleanup wired after stop/export with durable manifest and reference guards.",
+    "verification": "11 deletion safety tests; real qcow2/FAT preparation/export/deletion control, backing input unchanged.",
+    "limits": "Filesystem control only, no new Windows VM/native run. Unextracted dumps remain evidence pending extraction; failed stop/export preserves scratch for recovery.",
+    "verification_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/auto-cleanup-verification-r1.json",
+      "bytes": 1934,
+      "sha256": "2ddcc19549bc60719ca9139a9c24806962ef4e5ec0abd9828df50b7f2d775124"
+    },
+    "checkpoint_gate": {
+      "status": "failed",
+      "reason": "Checker rejects shared local symlink targets as outside repository; this attempt cannot establish the evidence gate. Do not infer raw evidence deletion from path-boundary errors.",
+      "result": {
+        "path": "local/research/codex/m8-player-launcher-preparation-r1/post-cleanup-checkpoints-r1-result.json",
+        "bytes": 970,
+        "sha256": "40c13e3a0c7e418a33897cf998f0363cc80f54895541a27de376e95adbf98921"
+      }
+    }
   }
 }

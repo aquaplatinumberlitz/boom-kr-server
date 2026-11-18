@@ -959,7 +959,17 @@ Control mới chỉ cho một body literal này ở sảnh account managed, khô
 không gia hạn idle, ACK, đổi stage hoặc mutation. Native control đã quan sát đúng một request, giữ channel và keepalive, nhưng client vẫn ở sảnh đến harness cancellation.
 Đây là kết quả âm cho clean UI exit; không retry control không ACK nếu chưa có giả thuyết mới. Consumer80/D41930
 đọc byte, byte, int, byte count và strings trong đường chat, khớp code vi/ko; không dùng80 làm ACK thoát giả định.
-Semantics của79/đường thoát tiếp còn unknown; không đặt tên trường theo giả định.
+Semantics của79 vẫn opaque. Probe UI đã xác nhận nút1236/result4, predicateD7C450=1, relogin0 và
+virtual exit328=D75B70 từBEAC7A; tách di chuyển chuột không tự chữa thoát. Hàm exit gọi16EA59C với một đối số0,
+nhưng import dựng lại là `win32u!NtUserCallOneParam` hai đối số. Control copy retarget riêng slot đó sang
+`user32!PostQuitMessage` giữ nguyên code exit/L1; đây là candidate ABI, không khẳng định tên API gốc.
+Lượt không debugger đi tiếp rồi WER báoC0000005. SEH trước đó giữ C++E06D7363/expected value từ JSON96A480
+với input size0/cap15; handler1254610 sau đó chủ động raiseC0000005. Code/constructor khớpCP201, nên control kế
+chỉ trả native empty output khi input rỗng; nonempty giữ parser. Control này đi tiếp tới trap cleanup ngoài tại 22638D4,
+qua slot 16EA4EC/caller 806B30; semantics SDK gốc vẫn unknown. Bản copy chỉ cho entry chưa phục hồi đó trả về
+đã gửi đủ năm thao tác UI nhưng companion kết thúc với exit 1 khi native exit code còn null. Launcher nguồn hiện
+trả lỗi rồi kill owned child còn sống; khả năng đua teardown là candidate, chưa là root cause runtime.
+Chưa có clean UI exit, không coi WER synthetic là lỗi truy cập bộ nhớ gốc hoặc bỏ failure cũ.
 Hai lượt trước còn session chưa revoke/logout0 dù VM/rule đã dọn; không gọi cleanup đó là logout sạch.
 Harness mới đọc stdout/stderr bất đồng bộ và gửi `cancel_file` riêng khi hết hạn; lượt ko đã có report finished,
 exit1 do harness cancellation, logout1 và session chưa revoke0. Đây không là ca native UI logout.
