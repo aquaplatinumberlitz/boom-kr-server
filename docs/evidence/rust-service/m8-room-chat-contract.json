@@ -2,7 +2,7 @@
   "schema": "kre-m8-room-chat-contract-v1",
   "source": "kr_static",
   "status": "candidate",
-  "scope": "M8 minimum cross-language room chat contract; not serving/native reply acceptance and not L1 work",
+  "scope": "M8 minimum patched949x waiting-room chat; Rust forwarding implemented, native reply acceptance pending",
   "canonical": "docs/protocol/lobby-profile.md#rust-patched-room-chat",
   "source_reuse": {
     "current": "Owner L1 CP310/captures show real incoming chat18, Rust rejects; no existing KR28 output acceptance found.",
@@ -127,7 +127,7 @@
     "status": "design",
     "request_budget_bytes": 192,
     "reply_budget_bytes": 224,
-    "scope": "Strict949x single-string18 parser and literal28 encoder only; forwarding disabled/unimplemented. Budgets are company policy, not recovered original limits.",
+    "scope": "Strict949x single-string18 parser and literal28 encoder. Forwarding only in explicitly patched deployment, idle managed room; budgets are company policy.",
     "verification": [
       {
         "path": "local/research/codex/m8-chat-contract-r1/codec-verification.json",
@@ -150,5 +150,22 @@
         "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
       }
     ]
+  },
+  "serving": {
+    "source": "design",
+    "status": "design",
+    "opt_in": "account_admission.patched_949x_names=true",
+    "scope": "Managed waiting room with completed setup only; no lobby/gameplay/team/whisper/guild chat.",
+    "sender": "Current DB-backed authority supplies display_name; client supplies only literal text.",
+    "reply": "28 style0: authenticated name + \" : \" + strict949x text; no replacements/truncation.",
+    "rate": "Company policy at most 2 accepted messages per second per connection; violation closes connection.",
+    "queue": "Reserve all recipient entries before publish. Per-batch room scope, source+recipient channel/connection/visit, Idle and round-generation fences. Reinspect source DB at recipient write boundary, then reauthorize recipient and recheck keys; revoke/expiry cannot revive queued messages.",
+    "verification": "Three real SQLite/bridge + synthetic room queue tests pass: mixed names, malformed data, source revoke/expiry/disconnect, destination revoke, full queue atomicity, old visit/round and foreign room scope.",
+    "limits": "No native reply28 or vi+ko same-room acceptance yet. Initial check used private module spelling, corrected to existing public reexports; first test DB directory lacked0700, corrected fixture and retained failure log.",
+    "verification_summary": {
+      "path": "local/research/codex/m8-chat-serving-r2/verification.json",
+      "bytes": 2130,
+      "sha256": "160cc338b840cf6d8a5b57f1d722098105697ca29c0ed53581f9bc95bd2281f7"
+    }
   }
 }

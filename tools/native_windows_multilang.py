@@ -29,7 +29,7 @@ class RoomLifecycle:
     A failed/uncertain input is never repeated. Screenshots and wire/lifecycle
     receipts, rather than this controller's state, establish client behavior.
     """
-    def __init__(self, reference_path, local, language):
+    def __init__(self, reference_path, local, language, chat_message=None):
         from PIL import Image
         if not reference_path.resolve(strict=True).is_relative_to(local):
             raise ValueError('UI references must be local')
@@ -73,11 +73,14 @@ class RoomLifecycle:
                 self.references['exit'] = regions
         self.step = 0
         self.observations = []
+        self.chat_message = chat_message
 
     def observe(self, capture, run):
         from PIL import Image, ImageChops, ImageStat
         stages = [('lobby', [394, 173]), ('create', [453, 573]),
                   ('room', [229, 679]), ('lobby', [876, 679])]
+        if self.chat_message:
+            stages.insert(2, ('room', None))
         if 'exit' in self.references:
             stages.append(('exit', [571, 491]))
         if self.step >= len(stages):
@@ -99,7 +102,10 @@ class RoomLifecycle:
             step = self.step
             self.step += 1  # Never retry this input, including uncertain QMP failure.
             actions = run / ('room-lifecycle-input-' + str(step) + '.json')
-            actions.write_text(json.dumps([dict(op='click', xy=coordinate)]) + '\n')
+            inputs = ([dict(op='click', xy=[400, 629]),
+                       dict(op='type', text=self.chat_message), dict(op='key', key='ret')]
+                      if coordinate is None else [dict(op='click', xy=coordinate)])
+            actions.write_text(json.dumps(inputs) + '\n')
             subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_input.py'),
                 '--run', str(run), '--actions', str(actions),
                 '--out', str(run / ('room-lifecycle-input-' + str(step)))],
@@ -119,6 +125,7 @@ def main():
     parser.add_argument('--ui-exit-probe', action='store_true', help='Observe pinned exit button/modal/predicate sites; requires socket probe')
     parser.add_argument('--crash-dump', action='store_true', help='Owned Windows WER minidump on native failure, without debugger')
     parser.add_argument('--room-lifecycle', type=Path, help='Pinned local language screenshots for bounded create/leave/UI exit control')
+    parser.add_argument('--room-chat-message', help='Declared ASCII test text typed in the measured vi waiting-room chat box')
     parser.add_argument('--service-build', type=Path, help='Private JSON pinning three already built remote binaries and patched949x test account name')
     parser.add_argument('--launcher-control', type=Path,
                         help='Private JSON pinning an explicitly declared diagnostic launcher copy')
@@ -137,7 +144,12 @@ def main():
         if (not binary.is_relative_to(local) or not isinstance(launcher_control.get('limits'), str)
                 or digest(binary) != launcher_control['sha256']):
             parser.error('Launcher control identity or scope mismatch')
-    lifecycle = RoomLifecycle(args.room_lifecycle, local, args.language) if args.room_lifecycle else None
+    if args.room_chat_message and (args.language != 'vi' or not args.room_lifecycle
+            or not 1 <= len(args.room_chat_message) <= 96
+            or any(not (c.isascii() and (c.isalnum() or c == ' ')) for c in args.room_chat_message)):
+        parser.error('Chat control needs vi room references and 1..96 ASCII letters/digits/spaces')
+    lifecycle = (RoomLifecycle(args.room_lifecycle, local, args.language, args.room_chat_message)
+                 if args.room_lifecycle else None)
     service_build = None
     if args.service_build:
         if not args.service_build.resolve(strict=True).is_relative_to(local):

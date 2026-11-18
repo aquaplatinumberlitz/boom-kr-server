@@ -752,6 +752,13 @@ async fn local_lobby_connection(
         .and_then(|c| c.account_admission.as_ref())
         .is_some_and(|c| c.persist_character);
     let mut preference = None;
+    let patched_room_chat = profile
+        .config
+        .diagnostic_two_lobby
+        .as_ref()
+        .and_then(|c| c.account_admission.as_ref())
+        .is_some_and(|c| c.patched_949x_names);
+    let mut last_room_chat: Option<Instant> = None;
     let mut account_opaque87 = 0usize;
     let mut lobby_map_requests = 0usize;
     let mut next_auth_check = Instant::now() + Duration::from_secs(1);
@@ -843,6 +850,32 @@ async fn local_lobby_connection(
                 }
                 pending.clear();
                 emit(&log,stamp(start,json!({"event":"managed_room_selection","connection":id,"identity":flow.identity(),"opcode":packet.opcode}))).await?;
+                continue;
+            }
+            if packet.opcode == 18
+                && patched_room_chat
+                && let Some(session) = &room_session
+            {
+                // Company policy: at most two waiting-room messages/second
+                // per connection. Not an original-server rate or command set.
+                if last_room_chat.is_some_and(|at| at.elapsed() < Duration::from_millis(500)) {
+                    return Err(io::Error::other("room chat rate bound"));
+                }
+                let Some(owner) = &mut account else {
+                    return Err(io::Error::other("room chat has no account lease"));
+                };
+                tokio::select! { _=stop.changed()=>return Ok(()), value=owner.authorize(true)=>value? };
+                session.room_chat(&packet.payload)?;
+                last_room_chat = Some(Instant::now());
+                emit(
+                    &log,
+                    stamp(
+                        start,
+                        json!({"event":"room_chat_accepted","connection":id,
+                    "identity":flow.identity(),"opcode":18,"payload_bytes":packet.payload.len()}),
+                    ),
+                )
+                .await?;
                 continue;
             }
             if let Some(session) = &room_session
@@ -1096,6 +1129,18 @@ async fn local_lobby_connection(
                 continue;
             }
             for (alias, reply) in &batch.packets {
+                if !tokio::select! { _=stop.changed()=>return Ok(()), value=session.authorize_batch_source(&batch)=>value? }
+                {
+                    emit(&log,stamp(start,json!({"event":"room_queued_dropped","connection":id,"reason":"chat_source_authority"}))).await?;
+                    break;
+                }
+                if matches!(batch.guard, room_io::Guard::RoomChat { .. })
+                    && let Some(account) = &mut account
+                {
+                    // Source DB inspection can await a worker. Revalidate
+                    // the recipient after that wait, then recheck both keys.
+                    tokio::select! { _=stop.changed()=>return Ok(()), value=account.authorize(false)=>value? };
+                }
                 if !session.valid(&batch) {
                     return Err(io::Error::other("room membership changed during batch"));
                 }

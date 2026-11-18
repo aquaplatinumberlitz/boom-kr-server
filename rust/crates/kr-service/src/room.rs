@@ -436,6 +436,10 @@ impl Room {
                 }
             }
     }
+    /// Local lifecycle generation, including Idle after a completed/aborted round.
+    pub(crate) fn round_generation(&self) -> u64 {
+        self.round
+    }
     pub fn setup(&mut self, key: Membership) -> io::Result<()> {
         if !self.current(key) || self.phase != Phase::Idle {
             return Err(io::Error::other("stale or loading setup"));

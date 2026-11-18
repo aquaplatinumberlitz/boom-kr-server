@@ -612,12 +612,12 @@
     },
     "checkpoint_gate": {
       "status": "failed",
-      "reason": "Checker rejects shared local symlink targets as outside repository; this attempt cannot establish the evidence gate. Do not infer raw evidence deletion from path-boundary errors.",
       "result": {
-        "path": "local/research/codex/m8-player-launcher-preparation-r1/post-cleanup-checkpoints-r1-result.json",
-        "bytes": 970,
-        "sha256": "40c13e3a0c7e418a33897cf998f0363cc80f54895541a27de376e95adbf98921"
-      }
+        "path": "local/research/codex/m8-player-launcher-preparation-r1/post-cleanup-checkpoints-r2-result.json",
+        "bytes": 1345,
+        "sha256": "09c44dad3a012348c68d944994df9171b35f73bde8b768486d279ab4d46fe1f2"
+      },
+      "reason": "579499 evidence rows verified; history verified, but 6437 unavailable host evidence,95 outside path aliases and40 mismatches/other errors remain. Container omitted legacy external mounts; no evidence gate claimed."
     },
     "native_receipt": {
       "path": "local/research/codex/m8-multilang-windows-native-vi-exit-observation-r35/run-cleanup-result.json",
