@@ -2,8 +2,9 @@
 
 The repaired Wine diagnostic image declares imports through OriginalFirstThunk
 but stores zero in every FirstThunk slot. This experiment copies only declared
-lookup values to their corresponding IAT slots. It is not a native acceptance
-claim or a distributable game binary.
+lookup values to their corresponding IAT slots. An explicit second control can
+reset the inherited bootstrap data flag already reset by the Wine recipe.
+Neither control is a native acceptance claim or a distributable game binary.
 """
 import argparse
 import hashlib
@@ -21,6 +22,8 @@ def main():
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--source-sha256', required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--reset-bootstrap-global', action='store_true',
+                        help='Control for inherited 1A966FC flag, already reset in the measured Wine recipe')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
     source = args.source.resolve(strict=True)
@@ -75,17 +78,30 @@ def main():
             offset = pe.get_offset_from_rva(imp.address - pe.OPTIONAL_HEADER.ImageBase)
             if struct.unpack_from('<I', image, offset)[0] != name_rva:
                 raise ValueError('Lookup-to-IAT mapping changed')
+    inherited_reset = None
+    if args.reset_bootstrap_global:
+        if args.source_sha256 != '37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84':
+            parser.error('Bootstrap reset locator requires the measured vi source identity')
+        offset = pe.get_offset_from_rva(0x1A966FC - pe.OPTIONAL_HEADER.ImageBase)
+        if struct.unpack_from('<I', before, offset)[0] != 1:
+            parser.error('Inherited bootstrap flag is not the expected 1')
+        struct.pack_into('<I', image, offset, 0)
+        inherited_reset = dict(va='0x1a966fc', file_offset=offset, old=1, new=0,
+                               provenance='Inherited copied-image state reset in CP012/G1 Wine recipe; '
+                                          'file initialization control requires separate native verification')
     out.mkdir(parents=False, mode=0o700)
     target = out / 'CA-windows-import-control.exe'
     target.write_bytes(image)
     report = dict(schema='kre-native-pe-import-control-v1', source_sha256=args.source_sha256,
                   result_sha256=hashlib.sha256(image).hexdigest(), bytes=len(image),
                   descriptor_count=len(pe.DIRECTORY_ENTRY_IMPORT), changes=changes,
+                  inherited_bootstrap_reset=inherited_reset,
                   changed_bytes=sum(a != b for a, b in zip(before, image)),
                   parser_limit='Sparse adjacent IAT makes eager pefile reparse exceed its '
                                '8192-import cap. Declaration bytes/INT remain identical; '
                                'this is not native Windows loader verification.',
-                  limits='Local PE loader experiment only. No hook/code/language/data patch; '
+                  limits='Local PE loader experiment only. No hook/code/language patch; '
+                         'the optional inherited bootstrap data reset is declared separately. '
                          'Windows startup and gameplay must be measured separately. '
                          'Rollback uses the unchanged source bytes.')
     (out / 'import-control.json').write_text(json.dumps(report, indent=2) + '\n')

@@ -66,7 +66,7 @@ fn termination_signal() -> io::Result<impl std::future::Future<Output = ()>> {
         }
     })
 }
-async fn run() -> io::Result<()> {
+async fn run(stage: &mut &'static str) -> io::Result<()> {
     if std::env::args_os().len() != 1 {
         return Err(io::Error::other("private launcher stdin only"));
     }
@@ -91,13 +91,22 @@ async fn run() -> io::Result<()> {
     {
         return Err(io::Error::other("private launcher transport bounds"));
     }
+    *stage = "endpoint_setup";
     let endpoint = client(
         SocketAddrV4::new(Ipv4Addr::UNSPECIFIED, 0).into(),
         offer.certificate_der.into(),
     )?;
-    let link = Link::connect(&endpoint, offer.endpoint.into(), &offer.capability.0).await?;
+    *stage = "transport_authentication";
+    let link = Link::connect_observed(
+        &endpoint,
+        offer.endpoint.into(),
+        &offer.capability.0,
+        |label| *stage = label,
+    )
+    .await?;
     drop(offer.capability);
     let (stop, stopped) = watch::channel(false);
+    *stage = "termination_setup";
     let terminate = termination_signal()?;
     tokio::pin!(terminate);
     let task = companion::run(link, request.native_ip, request.port_budget, stopped);
@@ -106,6 +115,7 @@ async fn run() -> io::Result<()> {
     // separately on the control stream before the service builds native 153.
     writeln!(io::stdout(), "{{\"event\":\"transport_ready\"}}")?;
     io::stdout().flush()?;
+    *stage = "transport_running";
     let result = tokio::select! {
         result=&mut task=>result,
         result=tokio::signal::ctrl_c()=>{result?;let _=stop.send(true);task.await},
@@ -116,8 +126,15 @@ async fn run() -> io::Result<()> {
 }
 #[tokio::main]
 async fn main() {
-    if let Err(error) = run().await {
-        eprintln!("companion stopped: {error}");
+    let mut stage = "installation";
+    if let Err(error) = run(&mut stage).await {
+        // Do not forward arbitrary QUIC/I/O errors, endpoints or capabilities.
+        let os_error = error
+            .raw_os_error()
+            .map_or("null".to_owned(), |code| code.to_string());
+        eprintln!(
+            "{{\"event\":\"companion_failed\",\"stage\":\"{stage}\",\"os_error\":{os_error}}}"
+        );
         std::process::exit(1);
     }
 }

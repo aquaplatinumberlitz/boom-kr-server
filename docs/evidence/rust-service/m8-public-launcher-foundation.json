@@ -84,6 +84,71 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-import-startup-positive-r1.json",
       "bytes": 1905,
       "sha256": "c8cd1326ae006ec83bbdb38e30d6cca302e3d0e2450ab6f38a1ed7d9004c11d1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-import-startup-pair-r1.json",
+      "bytes": 1689,
+      "sha256": "35ed4e6dd5733af0482cb61412702b4d97d6cfc503ef8c59a03fc89a8551f06b"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-iat-internet-attempt-r9.json",
+      "bytes": 2614,
+      "sha256": "4b0791b109cec48b0f59bda6d02f2f23499d3dcc6064267c61b2b268e705bc90"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-prechild-failure-r10.json",
+      "bytes": 1628,
+      "sha256": "cd9c1790576788f78d791c387218e3744c6d7436984226c5fd44694bd135503a"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r9/verification.json",
+      "bytes": 1465,
+      "sha256": "a9bb402ba75d61323e96cfae886ef3d2b7c3b7a4496e2e0262937bf49b6743df"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-native-auth-attempt-r15.json",
+      "bytes": 3436,
+      "sha256": "c7997fb7a2628cbd5ab8b7f040cd0243de9396f41671e4a0e2f161ab0e91e96c"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-harness-controls-r1.json",
+      "bytes": 3286,
+      "sha256": "30eae265fcc7e0dc330a144c3d22d735ee213c847f73facf3d2a77d7087ba9cd"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-channel-control-r17.json",
+      "bytes": 2868,
+      "sha256": "f765ce52dbeb4d6ac8fee416a089a7f3e9aa4aecf23eedf7562779d995f3df73"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r11/verification.json",
+      "bytes": 1645,
+      "sha256": "3e4bd9c1579c6d79cd848d543675f91aee92606657e6105369b87c1abc9e0537"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-peer-stop-r20.json",
+      "bytes": 2589,
+      "sha256": "9f9a3022da3d96ac40325d1c255f7f9bdcc3aa62ffef5653a642e85ee267569f"
+    },
+    {
+      "bytes": 2288,
+      "sha256": "f69d850a93b1f28d877c61a35bb4bdf6e9bd289f20c3c2760812971832393f36",
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-channel-fin-r21.json"
+    },
+    {
+      "bytes": 3399,
+      "sha256": "c2d97988e279da0953fe9b4138bf7f853af71dd7a8f6ef9d7904e97bc0033077",
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-guest-fin-r22.json"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-controls-r23-r25.json",
+      "bytes": 3954,
+      "sha256": "78a6fd491335d9cd3563bfb54dab3b34858d7f69014a6bee689925e1653e8846"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r13/verification.json",
+      "bytes": 1686,
+      "sha256": "c28972165295af20f5793d0b56e19bc1cd7a5cdd88dee21ba36bbc5f5a4908ac"
     }
   ],
   "limits": [
@@ -94,7 +159,8 @@
     "Raw lỗi admin response assumption, socket parent permission và pending registry sau logout giữ ở local; run pass không thay failure.",
     "Windows native preparation has explicit failed/corrected candidates; readonly input config and original-exe selection corrected before any KR launch. Do not infer Windows native acceptance from installer/hash or old binary-control receipts.",
     "Run6 verified173 files and corrected CP337 vi executable in the dedicated Windows installation; owner expired before service start. Run7 is a continuation of the same installed VM, not a second clean installation. No native KR claim from these installation receipts.",
-    "Windows run7: BEX/0xc0000005 at zero, nguyên nhân chưa xác định; session đã logout và tài nguyên VM/VPS/rule được thu hồi. Dump offline tiếp theo không dùng VPS. Smoke mới có native failure exit và IP login khác nguồn UDP loopback, không chứng minh native gameplay."
+    "Windows run7: BEX/0xc0000005 at zero, nguyên nhân chưa xác định; session đã logout và tài nguyên VM/VPS/rule được thu hồi. Dump offline tiếp theo không dùng VPS. Smoke mới có native failure exit và IP login khác nguồn UDP loopback, không chứng minh native gameplay.",
+    "Native KR trên Windows đã tới channel6/17 sau IAT và reset dữ liệu global; chưa tới67/UI profile/sảnh/phòng/trận. Các nhãn peer và trạng thái exit mới là instrumentation, không proof nguyên nhân trước khi có run đối chiếu."
   ],
   "native_preparation": {
     "path": "local/research/codex/m8-player-launcher-preparation-r1/native-preparation-observations.json",

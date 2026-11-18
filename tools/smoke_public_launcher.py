@@ -125,6 +125,8 @@ def main():
             (out / 'launcher-failure.stdout').write_text(failed.stdout)
             (out / 'launcher-failure.stderr').write_text(failed.stderr)
             assert failed.returncode == 1
+            assert json.loads(failed.stderr.splitlines()[0]) == dict(
+                event='launcher_failed', stage='native_running')
             assert [json.loads(line) for line in failed.stdout.splitlines()] == [
                 dict(event='client_started', player_id=expected_player),
                 dict(event='client_failed', exit_code=1)]
@@ -173,6 +175,51 @@ def main():
             with sqlite3.connect(database) as db:
                 assert db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0] == 0
                 assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 4
+            # A transport ending while the native stub is still alive must
+            # report that ordering and retire both children/exact session.
+            transport_pid = out / 'transport-native.pid'
+            transport_stub = out / 'transport-native.py'
+            transport_stub.write_text('from pathlib import Path\nimport os,time\n'
+                                      f'Path({str(transport_pid)!r}).write_text(str(os.getpid()))\n'
+                                      'time.sleep(60)\n')
+            value['native_arguments'] = [str(transport_stub)]
+            transport_config = out / 'player-transport-failure.json'
+            transport_config.write_text(json.dumps(value) + '\n')
+            with (out / 'launcher-transport.stdout').open('x') as stdout, \
+                 (out / 'launcher-transport.stderr').open('x') as stderr:
+                parent = subprocess.Popen([str(binaries / 'kr-launch'), str(transport_config)],
+                                          stdin=subprocess.PIPE, stdout=stdout, stderr=stderr, text=True)
+                try:
+                    parent.stdin.write(json.dumps(dict(login='SmokePlayer', password=password)))
+                    parent.stdin.close()
+                    deadline = time.monotonic() + 15
+                    while not transport_pid.exists():
+                        if parent.poll() is not None or time.monotonic() > deadline:
+                            raise RuntimeError('Transport failure control did not start native stub')
+                        time.sleep(.05)
+                    # Rust starts children from spawn_blocking, so Linux lists
+                    # them on that thread's children file, not the main task.
+                    owned = {pid for task in Path(f'/proc/{parent.pid}/task').iterdir()
+                             for pid in (task / 'children').read_text().split()}
+                    companions = [int(pid) for pid in owned
+                                  if os.readlink(f'/proc/{pid}/exe') == str(binaries / 'kr-companion')]
+                    assert len(companions) == 1
+                    os.kill(companions[0], signal.SIGTERM)
+                    assert parent.wait(timeout=15) == 1
+                    assert not Path('/proc/' + transport_pid.read_text()).exists()
+                    assert not Path(f'/proc/{companions[0]}').exists()
+                finally:
+                    if parent.poll() is None:
+                        parent.kill()
+                        parent.wait(timeout=5)
+            events = [json.loads(line) for line in (out / 'launcher-transport.stdout').read_text().splitlines()]
+            assert events == [dict(event='client_started', player_id=expected_player),
+                              dict(event='companion_stopped', exit_code=0, native_exit_code=None)]
+            assert json.loads((out / 'launcher-transport.stderr').read_text().splitlines()[0]) == dict(
+                event='launcher_failed', stage='companion_stopped')
+            with sqlite3.connect(database) as db:
+                assert db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0] == 0
+                assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 5
             service.send_signal(signal.SIGTERM)
             assert service.wait(timeout=15) == 0
             assert json.loads(state.read_text())['stopped']
@@ -186,11 +233,13 @@ def main():
                   native_failure=dict(exit=1, reported_native_exit=1, active_sessions_after_exit=0,
                                       audited_logouts=3),
                   address_roles=dict(reported_login_ipv4='192.0.2.173', native_udp_source='127.0.0.1'),
+                  companion_stop=dict(exit=0, native_running_at_stop=True, native_gone_after_launcher=True,
+                                      active_sessions_after_exit=0, audited_logouts=5),
                   launcher_sigterm=dict(exit=1, owned_native_gone=True, owned_companion_gone=True,
                                         active_sessions_after_exit=0, audited_logouts=4),
                   service_graceful_exit=0, binaries=[dict(name=name, sha256=hashlib.sha256((binaries / name).read_bytes()).hexdigest())
                   for name in ['kr-service', 'kr-admin', 'kr-launch', 'kr-companion']],
-                  limits='Linux isolated namespace, local loopback TLS and real QUIC companion. Native program is /bin/true. No original KR login/gameplay, Windows, Internet, load, restore or soak acceptance.')
+                  limits='Linux isolated namespace, local loopback TLS and real QUIC companion. Native programs are /bin/true, /bin/false and Python lifecycle stubs. No original KR login/gameplay, Windows, Internet, load, restore or soak acceptance.')
     (out / 'verification.json').write_text(json.dumps(report, indent=2) + '\n')
     print(report['result'])
 

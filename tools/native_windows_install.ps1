@@ -1,4 +1,4 @@
-param([ValidateRange(30,600)][int]$WaitSeconds=300,[switch]$Resume)
+param([ValidateRange(30,600)][int]$WaitSeconds=300,[switch]$Resume,[switch]$DiagnosticLauncher,[switch]$SocketProbe,[switch]$NetworkControl)
 # Private native candidate installer; no native success inferred from readiness.
 $ErrorActionPreference='Stop'
 $report=[ordered]@{schema='kre-m8-native-windows-install-v2';start_utc=[DateTime]::UtcNow.ToString('o');phase='starting';limits='Installation/process observations only. KR login/gameplay needs native window/wire/account/journal evidence.'}
@@ -50,7 +50,7 @@ try {
  }
  $deploy=Get-Content -LiteralPath (Join-Path $seed 'scripts\deployment-private.json') -Raw | ConvertFrom-Json
  $hosts=Join-Path $env:SystemRoot 'System32\drivers\etc\hosts'
- [IO.File]::AppendAllText($hosts,"`r`n"+$deploy.server+" lslist.crazyarcade.com happy-login-ca.nexon.com`r`n")
+ [IO.File]::AppendAllText($hosts,"`r`n"+$deploy.server+" lslist.crazyarcade.com dream-login-ca.nexon.com happy-login-ca.nexon.com`r`n")
  $report.install=[ordered]@{files_checked=$checked;exe_sha256=(Get-FileHash -LiteralPath (Join-Path $root 'game\CA.exe') -Algorithm SHA256).Hash.ToLowerInvariant();launcher_sha256=(Get-FileHash -LiteralPath (Join-Path $root 'kr-launch.exe') -Algorithm SHA256).Hash.ToLowerInvariant()}
  $address=Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.IPAddress -ne '127.0.0.1' -and $_.IPAddress -notlike '169.254.*'} | Select-Object -First 1
  if(-not $address){throw 'Guest IPv4 missing'}
@@ -60,6 +60,32 @@ try {
  # packets on loopback. These addresses have different ownership and purpose.
  $config | Add-Member -NotePropertyName reported_login_ipv4 -NotePropertyValue $address.IPAddress -Force
  $config.native_ip='127.0.0.1'
+ if($DiagnosticLauncher){
+  $controlRoot=$output.DriveLetter+':\'
+  $control=Get-Content -LiteralPath (Join-Path $controlRoot 'launcher-control.json') -Raw | ConvertFrom-Json
+  if($control.PSObject.Properties.Name -contains 'companion_sha256'){
+   $companionPath=Join-Path $controlRoot 'kr-companion-control.exe'
+   $companionHash=(Get-FileHash -LiteralPath $companionPath -Algorithm SHA256).Hash.ToLowerInvariant()
+   if($control.companion_sha256 -notmatch '^[a-f0-9]{64}$' -or $companionHash -ne $control.companion_sha256){throw 'Diagnostic companion identity mismatch'}
+   $config.companion=$companionPath
+   $report.diagnostic_companion=[ordered]@{sha256=$companionHash;installed_companion_unchanged=$true}
+  }
+ }
+ if($SocketProbe){
+  $controlRoot=$output.DriveLetter+':\'
+  $probe=Get-Content -LiteralPath (Join-Path $controlRoot 'socket-probe-control.json') -Raw | ConvertFrom-Json
+  $probePath=Join-Path $controlRoot 'socket-probe.exe'
+  $probeHash=(Get-FileHash -LiteralPath $probePath -Algorithm SHA256).Hash.ToLowerInvariant()
+  if($probe.sha256 -notmatch '^[a-f0-9]{64}$' -or $probeHash -ne $probe.sha256 -or $probe.native_sha256 -ne $report.install.exe_sha256){throw 'Socket probe input identity mismatch'}
+  # The debugger owns the native child and kills it if the launcher stops the
+  # probe. No installed binary or game manifest is changed by this control.
+  $nativePath=$config.native_program
+  if(-not [IO.Path]::IsPathRooted($nativePath)){$nativePath=Join-Path $root $nativePath}
+  $nativePath=(Resolve-Path -LiteralPath $nativePath).Path
+  $config.native_arguments=@((Join-Path $controlRoot 'native-socket-probe.jsonl'),$nativePath)+@($config.native_arguments)
+  $config.native_program=$probePath
+  $report.socket_probe=[ordered]@{sha256=$probeHash;limits='Owned debug child; software breakpoints may perturb behavior. Not installed launcher/native acceptance.'}
+ }
  [IO.File]::WriteAllText($configPath,($config | ConvertTo-Json -Depth 5))
  $report.phase='install_ready';Save-Report
  Write-Output ('M8_INSTALL_READY files='+$checked)
@@ -75,8 +101,30 @@ try {
   Start-Sleep -Milliseconds 600
  }
  if(-not $online){throw 'Bounded launcher service wait expired before native start'}
+ if($NetworkControl){
+  # One plaintext reachability marker, never an account capability or native
+  # packet. The peer service should reject it; captures establish delivery only.
+  $udp=New-Object Net.Sockets.UdpClient
+  try {
+   $bytes=[Text.Encoding]::ASCII.GetBytes('KRM8-UDP-CONTROL1')
+   $sent=$udp.Send($bytes,$bytes.Length,$deploy.server,[int]$deploy.udp_ports[-1])
+   $report.network_control=[ordered]@{udp_bytes_sent=$sent;limits='UDP API return is not packet delivery or QUIC authentication.'}
+  } finally {$udp.Close()}
+ }
  $start=New-Object Diagnostics.ProcessStartInfo
  $start.FileName=Join-Path $root 'kr-launch.exe';$start.Arguments='player-config.json';$start.WorkingDirectory=$root
+ if($DiagnosticLauncher){
+  # Explicit measurement binary from writable seed; installed launcher stays
+  # unchanged. This diagnostic cannot certify the installed player package.
+  $controlRoot=$output.DriveLetter+':\'
+  $control=Get-Content -LiteralPath (Join-Path $controlRoot 'launcher-control.json') -Raw | ConvertFrom-Json
+  $controlPath=Join-Path $controlRoot 'kr-launch-control.exe'
+  $controlHash=(Get-FileHash -LiteralPath $controlPath -Algorithm SHA256).Hash.ToLowerInvariant()
+  if($control.sha256 -notmatch '^[a-f0-9]{64}$' -or $controlHash -ne $control.sha256){throw 'Diagnostic launcher identity mismatch'}
+  $start.FileName=$controlPath
+  $start.Arguments='C:\KRM8Player\player-config.json'
+  $report.diagnostic_launcher=[ordered]@{sha256=$controlHash;installed_launcher_unchanged=$true;limits='Measurement binary from seed; not installed package acceptance'}
+ }
  $start.UseShellExecute=$false;$start.RedirectStandardInput=$true;$start.RedirectStandardOutput=$true;$start.RedirectStandardError=$true
  $process=New-Object Diagnostics.Process;$process.StartInfo=$start
  if(-not $process.Start()){throw 'Player launcher did not start'}

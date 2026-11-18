@@ -891,7 +891,10 @@ tới được, expiry vẫn giới hạn session; không hứa xác nhận logo
 riêng bằng `kr-launch-identity`; key private thuộc state server, không nằm trong package hoặc gói người chơi.
 Config launcher khai riêng `reported_login_ipv4` cho địa chỉ NIC mà native dùng khi login và `native_ip` cho
 địa chỉ nguồn UDP được companion chấp nhận tại các listener loopback. Không dùng địa chỉ NIC làm bộ lọc nguồn
-loopback theo ngầm định. Khi native thoát lỗi, launcher chỉ xuất mã exit dạng số, không argv/token.
+loopback theo ngầm định. Khi native thoát lỗi, launcher chỉ xuất mã exit dạng số, không argv/token. Lỗi launcher
+khai nhãn bước cố định (`installation`, `account_login`, `launch_grant`, companion, native hoặc logout), không
+xuất chuỗi lỗi tùy ý chứa endpoint/path hay credential. Binary chẩn đoán từ seed được khai hash riêng; không
+được dùng để chứng nhận launcher đã cài mà chưa được thay đổi.
 
 [Bằng chứng nền đang làm](../evidence/rust-service/m8-public-launcher-foundation.json): TLS pin/wrong pin,
 plaintext/deadline/framing, SQLite identity và wrong password; hai lượt launcher→companion QUIC→child stub→logout,
@@ -900,8 +903,18 @@ TLS/account/companion/logout, packet capture TCP/UDP, DB không còn session act
 là `/bin/true`. Windows đã có control binary không NIC, kiểm bản cài 173 file và một lần launcher qua Internet
 xác thực account/companion rồi mở đúng executable KR `vi`; native lỗi `0xc0000005` trước game login. VM/container,
 dịch vụ và rule test đã dừng/gỡ; DB còn 0 session active với một logout audit. Dump startup không NIC xác nhận
-entry shim gọi qua ô IAT `GetModuleHandleA` bằng 0. Chưa chứng minh nguyên nhân loader; phép đối chứng chỉ khởi tạo
-IAT trên bản copy, giữ nguyên hook ngôn ngữ và asset. Đây không là KR login/gameplay qua Internet hoặc gói Windows/Wine
-đã nghiệm thu; nhóm M8 vẫn mở theo PLAN. Các run lỗi trước giữ riêng, không đổi thành pass.
+entry shim gọi qua ô IAT `GetModuleHandleA` bằng 0. Đối chứng cùng media/working directory tái hiện lỗi ở bản chưa
+sửa; bản copy chỉ khởi tạo 484 ô IAT từ lookup đã khai báo tiến tới `ErrCannotLogin` khi không có NIC. Hook ngôn ngữ
+và asset giữ nguyên. Lượt copy này hết thời gian quan sát và bị dừng cưỡng bức, không là native exit sạch. Chưa chứng
+minh nhánh loader gây khác biệt. Trên Internet, IAT-only đã gửi KR auth1 và được bind đúng Player1, server trả
+profile4 rồi native gửi60; sau đó transport dừng ở bước `native_running`. Chưa có identity/profile trên UI,
+opcode9/5/channel/sảnh/phòng/trận từ lượt IAT-only. Bản đối chứng thêm reset dữ liệu `1A966FC=0` như recipe Wine,
+giữ hook ngôn ngữ/asset, đã tới9 → redirect5/7 → channel6/17 trên Internet nhưng đóng trước67. Log native có
+`CALauncher Process!!`; chưa chứng minh nguyên nhân đóng. Companion exit1 khi native còn chạy; server ghi
+`account_lease_ended` và validation báo `registry_lookup` sau channel EOF. Capture VPS thấy FIN tới trước
+payload request6, nhưng sequence FIN đã tính đủ 83 byte request; thứ tự tới không chứng minh thứ tự phát ở guest.
+Chưa có bằng chứng lỗi DB. Lượt capture guest/VPS tiếp chỉ thấy Windows phát FIN sau greeting login trước request1,
+chưa tái hiện channel6/17. Phép đo tiếp dùng debugger trên bản copy để lấy caller đóng socket; phải đối chiếu
+cùng protocol stage trước khi suy nguyên nhân channel. Không tự bỏ fencing hoặc coi đây là expiry đã đo. Nhóm M8 vẫn mở; các run lỗi trước giữ riêng, không đổi thành pass.
 
 <!-- protocol-topic-content-end -->

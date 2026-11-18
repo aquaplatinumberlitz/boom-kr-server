@@ -222,7 +222,20 @@ impl Hub {
                     jobs.spawn(async move {
                         let _permit=permit;
                         let connection=tokio::time::timeout(Duration::from_secs(3),incoming).await.ok().and_then(Result::ok);
-                        if let Some(connection)=connection {let _=hub.peer(connection,bridge,stop).await;}
+                        if let Some(connection)=connection
+                            && let Err(error)=hub.peer(connection,bridge,stop).await {
+                                let reason=match error.to_string().as_str() {
+                                    "companion account lease ended"=>"account_lease_ended",
+                                    "peer readiness stream closed"=>"readiness_closed",
+                                    "peer readiness rejected"=>"readiness_rejected",
+                                    "peer control write failed"=>"control_write_failed",
+                                    "stale authenticated peer owner"=>"stale_owner",
+                                    _=>"transport_error",
+                                };
+                                // Only fixed categories; never log a capability,
+                                // packet, peer address or arbitrary QUIC error text.
+                                eprintln!("{{\"event\":\"authenticated_peer_ended\",\"reason\":\"{reason}\"}}");
+                        }
                     });
                 }
             }

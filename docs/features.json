@@ -6139,7 +6139,8 @@
             "tools/native_windows_install.ps1",
             "tools/native_windows_startup_diagnostic.ps1",
             "tools/native_pe_import_control.py",
-            "tools/native_windows_bootstrap.py"
+            "tools/native_windows_bootstrap.py",
+            "tools/native_windows_ready_service.py"
           ],
           "delivery": "via_pr"
         },

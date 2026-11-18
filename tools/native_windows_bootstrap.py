@@ -23,6 +23,12 @@ def main():
     choice = parser.add_mutually_exclusive_group()
     choice.add_argument('--resume', action='store_true')
     choice.add_argument('--case')
+    parser.add_argument('--diagnostic-launcher', action='store_true')
+    parser.add_argument('--socket-probe', action='store_true')
+    parser.add_argument('--network-control', action='store_true')
+    parser.add_argument('--keep-console', action='store_true', help='Retain PowerShell output for script failure diagnosis')
+    parser.add_argument('--windows-credentials', type=Path,
+                        help='Optional private local VM login/password; never project account input')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
     run = args.run.resolve(strict=True)
@@ -31,6 +37,15 @@ def main():
         parser.error('Run/output phải ở local/')
     if out.exists() or (args.case and not re.fullmatch('[a-z0-9-]{1,32}', args.case)):
         parser.error('Output phải mới; case phải là tên ASCII hữu hạn')
+    windows = None
+    if args.windows_credentials:
+        private = args.windows_credentials.resolve(strict=True)
+        if private == local or not private.is_relative_to(local):
+            parser.error('Windows credentials phải ở local/')
+        windows = json.loads(private.read_text())
+        if (not isinstance(windows.get('login'), str) or not windows['login']
+                or not isinstance(windows.get('password'), str) or not windows['password']):
+            parser.error('Private VM login/password missing')
     out.mkdir(mode=0o700)
     record = dict(scope='Observed Run/UAC input only; native acceptance requires independent receipts',
                   started_epoch=time.time(), steps=[])
@@ -88,10 +103,36 @@ def main():
             if time.monotonic() > deadline:
                 raise TimeoutError('Candidate VM preflight not observed')
             time.sleep(.5)
-        deadline = time.monotonic() + 45
+        deadline = time.monotonic() + 180
         index = 0
+        signin_attempts = 0
         while True:
-            image = step('open-run-' + str(index), [dict(op='key', key='meta_l-r', wait_seconds=2),
+            if windows:
+                image = step('signin-observe-' + str(index), [dict(op='key', key='esc', wait_seconds=1),
+                                                              dict(op='capture')])
+                text = observed(image, (400, 350, 630, 430), 'signin-' + str(index), mode=7)
+                desktop = observed(image, (0, 0, 180, 210), 'desktop-' + str(index), mode=11)
+                if windows['login'].lower() in text:
+                    if signin_attempts >= 2:
+                        raise RuntimeError('Dedicated VM sign-in did not reach desktop')
+                    # The observed dedicated account sign-in field. Input records
+                    # stay in this private local run, including the VM password.
+                    step('signin-' + str(index), [dict(op='click', xy=[468, 468]),
+                                                 dict(op='key', key='ctrl-a'),
+                                                 dict(op='type', text=windows['password']),
+                                                 dict(op='key', key='ret', wait_seconds=3), dict(op='capture')])
+                    record['vm_signin_attempted'] = True
+                    signin_attempts += 1
+                    index += 1
+                    continue
+                if 'recyclebin' not in re.sub(r'\s+', '', desktop):
+                    if time.monotonic() > deadline:
+                        raise TimeoutError('Dedicated Windows desktop not observed')
+                    step('boot-wait-' + str(index), [dict(op='capture', wait_seconds=2)])
+                    index += 1
+                    continue
+            image = step('open-run-' + str(index), [dict(op='click', xy=[800, 300]),
+                                                   dict(op='key', key='meta_l-r', wait_seconds=2),
                                                    dict(op='capture')])
             text = observed(image, (16, 511, 415, 719), 'run-' + str(index))
             if 'open' in text and 'windows will open' in text and 'type the name' in text:
@@ -99,21 +140,36 @@ def main():
             if time.monotonic() > deadline:
                 raise TimeoutError('Run dialog not observed')
             index += 1
-        command = 'powershell -ep bypass -file d:\\run.ps1'
+        # Keep the complete command visible in the measured Run field. These
+        # unambiguous PowerShell parameter prefixes avoid horizontal clipping.
+        command = 'powershell -ep bypass -f d:\\run.ps1'
+        if args.keep_console:
+            command = 'powershell -noe -ep bypass -f d:\\run.ps1'
         if args.resume:
-            command += ' -resume'
+            command += ' -r'
         if args.case:
             command += ' -case ' + args.case
-        image = step('command', [dict(op='click', xy=[229, 622]), dict(op='key', key='ctrl-a'),
-                                  dict(op='type', text=command, wait_seconds=2), dict(op='capture')])
-        text = observed(image, (16, 511, 415, 719), 'command')
-        compact = re.sub(r'\s+', '', text)
-        wanted = ['powershell', 'run.ps1']
-        if args.resume:
-            wanted.append('-resume')
-        if args.case:
-            wanted.append('-case' + args.case)
-        if not all(value in compact for value in wanted):
+        if args.diagnostic_launcher:
+            command += ' -d'
+        if args.socket_probe:
+            command += ' -s'
+        if args.network_control:
+            command += ' -n'
+        image = step('clear-command', [dict(op='click', xy=[229, 622], wait_seconds=1),
+                                        dict(op='key', key='home', hold_ms=200, wait_seconds=1),
+                                        dict(op='key', key='shift-end', hold_ms=200, wait_seconds=1),
+                                        dict(op='key', key='backspace', hold_ms=200, wait_seconds=1),
+                                        dict(op='click', xy=[200, 526], wait_seconds=1), dict(op='capture')])
+        # OCR mistakes a blinking caret or I-beam pointer for a letter. Move the
+        # pointer to the title and inspect the inner white text area, excluding
+        # the initial caret and combo-box border/arrow.
+        blank = Image.open(image).crop((90, 616, 380, 629)).convert('L')
+        blank.save(out / 'cleared-command-pixels.png')
+        if any(pixel < 128 for pixel in blank.tobytes()):
+            raise RuntimeError('Run input was not observed empty; no typing attempted')
+        image = step('command', [dict(op='type', text=command, wait_seconds=2), dict(op='capture')])
+        text = observed(image, (80, 612, 388, 635), 'command', mode=7)
+        if re.sub('[^a-z0-9]', '', text) != re.sub('[^a-z0-9]', '', command):
             raise RuntimeError('Declared command not observed in Run input')
         image = step('elevate', [dict(op='key', key='ctrl-shift-ret', hold_ms=200, wait_seconds=3),
                                 dict(op='capture')])

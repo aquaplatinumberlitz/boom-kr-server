@@ -388,7 +388,12 @@ impl Bridge {
                     e.generation == generation
                         && e.player.as_ref().is_some_and(|p| p.wire_id == player)
                 })
-                .ok_or(Error::Denied)?;
+                .ok_or_else(|| {
+                    eprintln!(
+                        "{{\"event\":\"transport_authority_failed\",\"stage\":\"registry_lookup\"}}"
+                    );
+                    Error::Denied
+                })?;
             (
                 copy_token(&entry.token)?,
                 entry.player.clone().ok_or(Error::Denied)?,
@@ -399,10 +404,18 @@ impl Bridge {
             .as_ref()
             .unwrap_or(&self.client)
             .try_inspect_current(&token, expected.player_id)
-            .map_err(Error::Backend)?
+            .map_err(|error| {
+                eprintln!("{{\"event\":\"transport_authority_failed\",\"stage\":\"backend_submit\",\"error\":\"{error:?}\"}}");
+                Error::Backend(error)
+            })?
             .wait()
             .await
-            .map_err(Error::Backend)?;
+            .map_err(|error| {
+                // Worker/storage errors are closed, redacted enums; no SQL,
+                // token, endpoint, credential or player fields are printed.
+                eprintln!("{{\"event\":\"transport_authority_failed\",\"stage\":\"backend_inspect\",\"error\":\"{error:?}\"}}");
+                Error::Backend(error)
+            })?;
         let mut r = lock(&self.shared)?;
         r.sweep();
         if actual != expected
@@ -410,6 +423,12 @@ impl Bridge {
                 .get(&expected.player_id)
                 .is_none_or(|e| e.generation != generation || e.player.as_ref() != Some(&expected))
         {
+            let stage = if actual != expected {
+                "player_changed"
+            } else {
+                "registry_recheck"
+            };
+            eprintln!("{{\"event\":\"transport_authority_failed\",\"stage\":\"{stage}\"}}");
             return Err(Error::Denied);
         }
         Ok(())

@@ -108,18 +108,30 @@ impl Link {
         address: SocketAddr,
         secret: &Secret,
     ) -> io::Result<Self> {
+        Self::connect_observed(endpoint, address, secret, |_| {}).await
+    }
+    /// Fixed local progress labels only; no addresses, capability or peer data.
+    /// Observation does not retry or change the authentication deadline.
+    pub async fn connect_observed(
+        endpoint: &Endpoint,
+        address: SocketAddr,
+        secret: &Secret,
+        mut progress: impl FnMut(&'static str),
+    ) -> io::Result<Self> {
         tokio::time::timeout(Duration::from_secs(5), async {
-            let connection = endpoint
-                .connect(address, NAME)
-                .map_err(io::Error::other)?
-                .await
-                .map_err(io::Error::other)?;
+            progress("quic_connect_setup");
+            let connection = endpoint.connect(address, NAME).map_err(io::Error::other)?;
+            progress("quic_handshake");
+            let connection = connection.await.map_err(io::Error::other)?;
+            progress("control_open");
             let (mut send, mut recv) = connection.open_bi().await.map_err(io::Error::other)?;
+            progress("capability_send");
             send.write_all(AUTH_TAG).await.map_err(io::Error::other)?;
             send.write_all(secret.expose())
                 .await
                 .map_err(io::Error::other)?;
             let mut accepted = [0; 1];
+            progress("authority_reply");
             recv.read_exact(&mut accepted)
                 .await
                 .map_err(io::Error::other)?;

@@ -96,7 +96,9 @@ fn launch(
     player: i64,
     session: &Secret,
     stop: &AtomicBool,
+    stage: &mut &'static str,
 ) -> io::Result<()> {
+    *stage = "launch_grant";
     if stop.load(Ordering::Acquire) {
         return Err(io::Error::other("launcher cancelled"));
     }
@@ -109,6 +111,7 @@ fn launch(
     let launch: Launch = serde_json::from_slice(&response)
         .map_err(|_| io::Error::other("invalid launcher response"))?;
     if !launch.ok {
+        *stage = "launch_denied";
         return Err(io::Error::other("launch denied or busy"));
     }
     let frontend = launch
@@ -135,11 +138,12 @@ fn launch(
         "{{\"peer_transport\":{{\"endpoint\":\"{}\",\"certificate_der\":{certificate_der},\"capability\":{}}},\"native_ip\":\"{}\",\"port_budget\":{}}}",
         offer.endpoint, *capability, config.native_ip, config.port_budget
     ));
+    *stage = "companion_start";
     let mut companion = OwnedChild(
         Command::new(&config.companion)
             .stdin(Stdio::piped())
             .stdout(Stdio::piped())
-            .stderr(Stdio::null())
+            .stderr(Stdio::inherit())
             .spawn()?,
     );
     {
@@ -155,6 +159,7 @@ fn launch(
         let result = launch_tls::read_frame(&mut stream, 256);
         let _ = send.send(result);
     });
+    *stage = "companion_authentication";
     let readiness = recv.recv_timeout(Duration::from_secs(8));
     if readiness.is_err() {
         drop(companion);
@@ -171,6 +176,7 @@ fn launch(
     if stop.load(Ordering::Acquire) {
         return Err(io::Error::other("launcher cancelled"));
     }
+    *stage = "native_start";
     let mut native = OwnedChild(
         Command::new(&config.native_program)
             .args(&config.native_arguments)
@@ -182,6 +188,7 @@ fn launch(
             .spawn()?,
     );
     println!("{{\"event\":\"client_started\",\"player_id\":{player}}}");
+    *stage = "native_running";
     loop {
         if stop.load(Ordering::Acquire) {
             return Err(io::Error::other("launcher cancelled"));
@@ -203,13 +210,24 @@ fn launch(
                 Err(io::Error::other("native client exited with failure"))
             };
         }
-        if companion.0.try_wait()?.is_some() {
+        if let Some(status) = companion.0.try_wait()? {
+            *stage = "companion_stopped";
+            let native_status = native.0.try_wait()?;
+            println!(
+                "{{\"event\":\"companion_stopped\",\"exit_code\":{},\"native_exit_code\":{}}}",
+                status
+                    .code()
+                    .map_or("null".to_owned(), |code| code.to_string()),
+                native_status
+                    .and_then(|status| status.code())
+                    .map_or("null".to_owned(), |code| code.to_string())
+            );
             return Err(io::Error::other("authenticated transport stopped"));
         }
         std::thread::sleep(Duration::from_millis(100));
     }
 }
-fn run(stop: &AtomicBool) -> io::Result<()> {
+fn run(stop: &AtomicBool, stage: &mut &'static str) -> io::Result<()> {
     let args: Vec<_> = std::env::args_os().collect();
     if args.len() != 2 {
         return Err(io::Error::other(
@@ -277,6 +295,7 @@ fn run(stop: &AtomicBool) -> io::Result<()> {
         "{{\"op\":\"login\",\"login\":{login},\"password\":{}}}\n",
         *password
     ));
+    *stage = "account_login";
     let response = request(&config, &certificate, query.as_bytes())?;
     drop(query);
     drop(password);
@@ -284,6 +303,7 @@ fn run(stop: &AtomicBool) -> io::Result<()> {
     let login: Login = serde_json::from_slice(&response)
         .map_err(|_| io::Error::other("invalid login response"))?;
     if !login.ok {
+        *stage = "account_denied";
         return Err(io::Error::other("login denied or busy"));
     }
     let player = login
@@ -293,7 +313,7 @@ fn run(stop: &AtomicBool) -> io::Result<()> {
     let session = login
         .session
         .ok_or_else(|| io::Error::other("missing session"))?;
-    let result = launch(&config, &certificate, player, &session, stop);
+    let result = launch(&config, &certificate, player, &session, stop, stage);
     let encoded = encoded_secret(&session)?;
     let query = Zeroizing::new(format!(
         "{{\"op\":\"logout\",\"session\":{},\"player_id\":{player}}}\n",
@@ -301,6 +321,7 @@ fn run(stop: &AtomicBool) -> io::Result<()> {
     ));
     let logout = request(&config, &certificate, query.as_bytes());
     if result.is_ok() {
+        *stage = "session_logout";
         let frame = logout?;
         let response: serde_json::Value =
             serde_json::from_slice(&frame).map_err(io::Error::other)?;
@@ -339,7 +360,16 @@ async fn main() {
     };
     let cancelled = Arc::new(AtomicBool::new(false));
     let stop = cancelled.clone();
-    let mut task = tokio::task::spawn_blocking(move || run(&stop));
+    let mut task = tokio::task::spawn_blocking(move || {
+        let mut stage = "installation";
+        let result = run(&stop, &mut stage);
+        if result.is_err() {
+            // Only fixed stage labels; never print arbitrary I/O errors,
+            // endpoint paths, command lines or authentication bodies.
+            eprintln!("{{\"event\":\"launcher_failed\",\"stage\":\"{stage}\"}}");
+        }
+        result
+    });
     tokio::pin!(terminate);
     let finished = tokio::select! {
         result=&mut task=>Some(result),
