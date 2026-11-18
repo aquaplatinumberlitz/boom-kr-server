@@ -269,6 +269,21 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-vi-r1.json",
       "bytes": 2900,
       "sha256": "cf64b76b478625ca92d2e214f2b95d2a98a6071277bbe6b1df866ffb856fcf6a"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-ko-r3.json",
+      "bytes": 3672,
+      "sha256": "19d5c8b79acba447fdda9eb25124f28b513b661ba638eb1b83e5381585f94a20"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-channel-close-r4.json",
+      "bytes": 3411,
+      "sha256": "37332436717408944d24044e7aba4b7a5fbe470e9f0e6b5087cb0ff2760c676f"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-close-entry-r5.json",
+      "bytes": 4954,
+      "sha256": "d50433449f8953a56bb0e89046bd2f40105098456a0f15a9e55833a21db81174"
     }
   ],
   "limits": [
@@ -302,5 +317,31 @@
     "source": "kr_runtime",
     "reached": "auth1/profile4/9/15/62/5/7/channel6/17; no request67",
     "limits": "Derived loader-control exe in separate runtime folder; no room/gameplay. Popup locale cause unknown. VM/service/rules cleaned; active sessions0, logout1."
+  },
+  "multilang_native_ko": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-ko-r3.json",
+      "bytes": 3672,
+      "sha256": "19d5c8b79acba447fdda9eb25124f28b513b661ba638eb1b83e5381585f94a20"
+    },
+    "status": "candidate",
+    "source": "kr_runtime",
+    "reached": "Korean logo/video/login/loading, auth/channel6/17 then EOF before67",
+    "limits": "Same failing channel stage as vi; cause unknown. No native Unicode account/room/chat or match acceptance. Cleanup VM/service/rules and DB0/logout1."
+  },
+  "windows_channel_close_candidate": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-channel-close-r4.json",
+      "bytes": 3411,
+      "sha256": "37332436717408944d24044e7aba4b7a5fbe470e9f0e6b5087cb0ff2760c676f"
+    },
+    "source": "kr_runtime",
+    "status": "candidate",
+    "limits": "Direct1107A10 entry from11074B0 observed before shutdown; static path compares dialog return2, numeric value and cause not yet observed. Next before/after dialog call measurement.",
+    "direct_entry_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-close-entry-r5.json",
+      "bytes": 4954,
+      "sha256": "d50433449f8953a56bb0e89046bd2f40105098456a0f15a9e55833a21db81174"
+    }
   }
 }

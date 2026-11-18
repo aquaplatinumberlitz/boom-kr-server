@@ -1,5 +1,6 @@
 /* Owned x86 Windows debug control for the pinned KR diagnostic copy.
- * Trace only connect/shutdown/closesocket/WSAAsyncSelect handles and callers.
+ * Trace connect/shutdown/closesocket/WSAAsyncSelect handles and callers, plus
+ * entry at the measured candidate LoginStage cleanup function (not a cause claim).
  * No packet bodies, credentials, forced returns or source-file modifications.
  * Software breakpoints temporarily replace one byte in the owned process;
  * single-step restores it. Concurrent calls during that step may be missed.
@@ -16,7 +17,7 @@ typedef struct { DWORD thread; int point; } Step;
 static HANDLE process;
 static FILE *output;
 static ULONGLONG began;
-static Point points[5];
+static Point points[8];
 static Step steps[64];
 static unsigned calls;
 
@@ -113,7 +114,7 @@ int wmain(int argc, wchar_t **argv) {
             if(!thread || !GetThreadContext(thread,&context)) { if(thread) CloseHandle(thread);done=1; }
             else {
                 int which=-1;
-                for(int i=0;i<5;i++) if(points[i].active && context.Eip-1==points[i].address) which=i;
+                for(int i=0;i<8;i++) if(points[i].active && context.Eip-1==points[i].address) which=i;
                 if(code==EXCEPTION_BREAKPOINT && which>=0) {
                     Point *point=&points[which];byte_at(point->address,point->original);context.Eip=point->address;
                     if(which==0) {
@@ -121,10 +122,23 @@ int wmain(int argc, wchar_t **argv) {
                         DWORD a=0;const DWORD slots[]={0x16ea778,0x16ea790,0x16ea79c,0x16ea740};
                         const char *names[]={"connect","shutdown","closesocket","WSAAsyncSelect"};
                         for(int i=0;i<4;i++) if(!read_u32(slots[i],&a) || !install(i+1,a,names[i])) done=1;
+                        if(!install(5,0x1107a10,"login_stage_close_candidate")) done=1;
+                        if(!install(6,0x110740f,"login_dialog_call") || !install(7,0x1107412,"login_dialog_return")) done=1;
                         fprintf(output,"{\"event\":\"winsock_probes_installed\"}\n");
                     } else {
                         DWORD caller=0,socket=0,second=0;read_u32(context.Esp,&caller);read_u32(context.Esp+4,&socket);read_u32(context.Esp+8,&second);
-                        fprintf(output,"{\"event\":\"winsock_call\",\"elapsed_ms\":%llu,\"api\":\"%s\",\"thread\":%lu,\"socket\":%lu,\"caller\":\"0x%lx\",\"second\":%lu",GetTickCount64()-began,point->name,event.dwThreadId,socket,caller,second);
+                        if(which>=5) {
+                            fprintf(output,"{\"event\":\"%s\",\"elapsed_ms\":%llu,\"function\":\"%s\",\"thread\":%lu,\"point\":\"0x%lx\"",which==5?"native_candidate_entry":"native_point",GetTickCount64()-began,point->name,event.dwThreadId,point->address);
+                            if(which==5) fprintf(output,",\"caller\":\"0x%lx\"",caller);
+                            if(which==6) {
+                                DWORD target=0;
+                                if(read_u32(context.Ebp-0x20,&target) && target>=0x400000 && target<0x225e000)
+                                    fprintf(output,",\"dialog_target\":\"0x%lx\"",target);
+                            }
+                            if(which==7) fprintf(output,",\"dialog_result\":%lu",context.Eax);
+                        } else {
+                            fprintf(output,"{\"event\":\"winsock_call\",\"elapsed_ms\":%llu,\"api\":\"%s\",\"thread\":%lu,\"socket\":%lu,\"caller\":\"0x%lx\",\"second\":%lu",GetTickCount64()-began,point->name,event.dwThreadId,socket,caller,second);
+                        }
                         return_candidates(context.Esp);
                         DWORD state=0,error=0;
                         if(read_u32(0x1a966fc,&state) && read_u32(0x1a3398c,&error))

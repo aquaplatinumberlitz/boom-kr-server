@@ -97,7 +97,12 @@ server không tới được thì báo lỗi và giữ TTL, không giả logout 
 còn theo acceptance M8; không dùng `/bin/true` trong smoke làm bằng chứng chơi trận.
 
 Harness Windows hiện dùng [owner](../tools/native_windows_candidate.py), [input QMP tham số hóa](../tools/native_windows_input.py)
-và [installer](../tools/native_windows_install.ps1). Mọi cấu hình, media, credential test, overlay và raw chỉ ở local;
+và [installer](../tools/native_windows_install.ps1). Ca đa ngôn ngữ dùng [controller tham số hóa](../tools/native_windows_multilang.py)
+và [guest script](../tools/native_windows_multilang.ps1), nhận vi/en/ko, manifest/hash và executable control đã khai.
+Nó kiểm input đã cài trong runtime folder riêng, chụp trạng thái có hạn, dừng owner và xuất evidence; không coi
+thư mục runtime này là ca cài sạch hoặc gói cuối. Lượt có `--socket-probe` là đối chứng debugger riêng.
+Nếu nguồn Internet đổi, staging lấy đúng IPv4 quan sát từ SSH để thay `/32` ở kế hoạch rule và allowlist gói,
+pin lại config/manifest rồi verify trước chạy; không mở rộng ACL để né lỗi. Mọi cấu hình, media, credential test, overlay và raw chỉ ở local;
 owner giữ lease chung, VM/egress riêng và chờ bản cài kiểm hash xong mới bật runner VPS có hạn và rule test riêng.
 Chọn executable theo hash đã đo, không mặc định tên `CA.exe` trong cây nhiều probe; bản copy từ ISO phải bỏ
 ReadOnly trước khi ghi config/cache. Các lỗi chuẩn bị và sửa tương ứng ở metadata nền launcher, chưa là nghiệm thu KR.

@@ -449,4 +449,23 @@ chưa Battle/UDP/DB/accountauthentication/generalroom/fullM2/fullservice/product
 [PLAN](../PLAN.md#current-order) tiếp portfixedroom, không thêm broadRE; Pythonserving/reference và8WIP byteexact.
 CP232PR303merge5b3ef81, AUD067qua232/audit kếCP236. **Internet thật chưa kiểm**.
 
+<a id="rust-patched-room-chat"></a>
+### Chat tối thiểu cho ca chữ có dấu M8 — chưa serving
+
+[Đối chiếu KR/VN và metadata](../evidence/rust-service/m8-room-chat-contract.json) giữ khoảng trống này riêng
+với L1 do Claude sở hữu. Hai request KR thật trong capture L1 đã giữ có opcode18, sequence/CRC hợp lệ:
+payload là **u16 độ dài + chuỗi mã hóa theo field codec hiện hành**, lần lượt 33 và 28 byte 949x. Không có
+flag/count ở đầu hai body này. VN có request18 flag/count/danh sách chuỗi; không áp layout VN lên KR.
+
+Consumer KR của opcode28 được dispatch từ `CChatStage` vtable51 tại `0xD3B6F0` sang `0xD41DF0` (case21 sau
+trừ7). Nó đọc một string qua packet vtable+76 rồi một u8 qua +60. Style0 đi qua chuỗi nguyên văn và gọi hàm
+hiển thị ở stage vtable+308. Code consumer và hàm hiển thị `0xD45080` khớp nguyên byte giữa image KR đã giữ
+và bản ko949x dùng trong M8. Decompiler có cảnh báo stack ở dispatcher; metadata giữ locator và byte hash,
+không coi pseudocode là runtime hoặc client gốc đã hiển thị một reply do server mới gửi.
+
+Đường triển khai tiếp chỉ cần chat thường trong phòng cho ca M8: tên người gửi từ owner account hiện hành,
+đổi 949x tại biên, recipient/source giữ đúng membership/connection/visit và round khi queue phát. Giới hạn
+byte/tần suất là policy công ty phải ghi rõ; không suy từ hai chuỗi mẫu. Chưa có chuyển tiếp, native đọc chat
+chéo, hoặc acceptance thì thầm/chat sảnh/team/guild. Những phần xã hội đầy đủ vẫn thuộc giai đoạn sau.
+
 <!-- protocol-topic-content-end -->

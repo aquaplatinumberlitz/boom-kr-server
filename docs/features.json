@@ -6034,7 +6034,8 @@
           "docs/evidence/rust-service/r1g-admission.json",
           "docs/evidence/rust-service/m8-server-package.json",
           "docs/evidence/rust-service/m8-public-launcher-foundation.json",
-          "docs/evidence/rust-service/m8-multilang-player-package.json"
+          "docs/evidence/rust-service/m8-multilang-player-package.json",
+          "docs/evidence/rust-service/m8-room-chat-contract.json"
         ]
       },
       "coverage": {

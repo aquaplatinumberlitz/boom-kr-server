@@ -1,0 +1,124 @@
+{
+  "schema": "kre-m8-room-chat-contract-v1",
+  "source": "kr_static",
+  "status": "candidate",
+  "scope": "M8 minimum cross-language room chat contract; not serving/native reply acceptance and not L1 work",
+  "canonical": "docs/protocol/lobby-profile.md#rust-patched-room-chat",
+  "source_reuse": {
+    "current": "Owner L1 CP310/captures show real incoming chat18, Rust rejects; no existing KR28 output acceptance found.",
+    "kr": "Private copy of historical boomkr-re KR00967 extracted-image database; bound input SHA and unchanged function bytes checked against owner ko949x control.",
+    "vn": "boom-re/docs/lobby.md update17: VN18 flag/count/strings,28 string/style. Output consumer hypothesis verified statically on KR; VN request layout differs from measured KR."
+  },
+  "builds": {
+    "database_input_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "owner_ko_exe_sha256": "eb441bb15eac488bdb43fe6fecf0309d97f4063a92132212c14869fb22e7da6b"
+  },
+  "incoming18": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "scope": "Two captured single-string requests only",
+    "layout": "u16 byte length then field-encoded949x bytes, no flag/count in measured body",
+    "samples": [
+      {
+        "run": "y9",
+        "sequence": 133,
+        "payload_bytes": 35,
+        "first_u16": 33,
+        "packet_frame_sha256": "165fbc28821310ca338933d9d51ec15b0ccce59d8156fe95c80e1bed5158731f"
+      },
+      {
+        "run": "y10",
+        "sequence": 136,
+        "payload_bytes": 30,
+        "first_u16": 28,
+        "packet_frame_sha256": "2fd471ca5da0ef5cf3e18b003be834a1f58ddb7cc2fcffb7863486442bd360db"
+      }
+    ]
+  },
+  "reply28": {
+    "source": "kr_static",
+    "status": "candidate",
+    "dispatcher": "0xD3B6F0, CChatStage vtable51, subtract7/case21",
+    "consumer": "0xD41DF0, packet string slot+76 then u8 slot+60",
+    "style0": "literal text to stage slot+308; default0xD45080 drawing function",
+    "functions": [
+      {
+        "name": "chat28-consumer",
+        "address": "0xd41df0",
+        "end": "0xd422db",
+        "bytes": 1259,
+        "database_function_sha256": "731ca7d1a7387a2358fbc691205a319041411e7b8583ac86a701b65af99fe205",
+        "owner_ko_function_sha256": "731ca7d1a7387a2358fbc691205a319041411e7b8583ac86a701b65af99fe205",
+        "exact_code_match": true
+      },
+      {
+        "name": "chat-send",
+        "address": "0xd45080",
+        "end": "0xd45231",
+        "bytes": 433,
+        "database_function_sha256": "a12adc3a01df6527e433fc40baf069ca9ba7302debb8442a86a6e8ccaa71be81",
+        "owner_ko_function_sha256": "a12adc3a01df6527e433fc40baf069ca9ba7302debb8442a86a6e8ccaa71be81",
+        "exact_code_match": true
+      }
+    ],
+    "limits": "Not yet sent by new Rust service to native client; dispatcher decompiler warns bad SP. No original-server routing/rate policy implied."
+  },
+  "verification": [
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/source-reuse.json",
+      "bytes": 990,
+      "sha256": "b21ce031e957965937ac23e2dba21618f7a9bcf2396a7c5918586c2f6d3b1987"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/ida-chat-names.json",
+      "bytes": 16785,
+      "sha256": "c3c8d228d258b1294cc87fc7b2012614ca12cc684370b7ac8b61e0eae5477d35"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-vtable-slots.json",
+      "bytes": 295,
+      "sha256": "ca637bd9bb4833a959a13c165f656a54c31db6fedacdad06c64475a38862c30c"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-onpacket.c",
+      "bytes": 10127,
+      "sha256": "50a719b7ae42613e22674b67bd2d23bb215f735bbe15a746009a2f834367e3cb"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat28-consumer.c",
+      "bytes": 5138,
+      "sha256": "2ab90488e2697a46c2de6155b2fd94ab7c790a946bf29024fc71197c84f1cf80"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-send.c",
+      "bytes": 1714,
+      "sha256": "07cd58a22151a61fe44065a235258329f632f4cc3634b3aad532abae0b37d9f6"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-functions.json",
+      "bytes": 3601,
+      "sha256": "607ffb1427e30bf8adc1a2cdf47eb7094d625ad08799ab9f631a900bd34e89de"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-function-correspondence.json",
+      "bytes": 917,
+      "sha256": "4b510be5da08731f9bf11e076f0662871fc691c520cd7f06f8871d69de469d75"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat18-native-frames-r2.json",
+      "bytes": 1547,
+      "sha256": "3a945ff0ff879b7e1f0cd798a64c70ded7cdf883ed695f8fbc92b3ff45282d7d"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/mcp-open-error.json",
+      "bytes": 2667,
+      "sha256": "ca9955fbbbd69d4a251f9cceb8994caf871144c36b31f4f26d163d7408e50b34"
+    }
+  ],
+  "limits": [
+    "IDA MCP failed missing ida_nexus; no configuration changed. Existing IDA batch ran read-only queries on private DB copy, all observed worker processes exited.",
+    "Initial packet selector assumed fixture header69 and found none; corrected native headerAF request selection, checksum/sequence verified, source captures unchanged.",
+    "Room chat serving must fence source and recipients through membership/visit/round and current account. Names come from current owner, never request text.",
+    "Whisper/team/guild/lobby chat and full social features are outside this minimum M8 slice; no native cross-client chat acceptance yet."
+  ]
+}

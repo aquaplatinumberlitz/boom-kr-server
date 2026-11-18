@@ -933,6 +933,10 @@ So sánh chưa xác định ancillary field nào gây lỗi, không nới deadli
 Bản cài vi/en/ko mới có kiểm file và GUI Windows riêng. Lượt vi data11 với loader control và portable UDP đã
 xác thực QUIC rồi qua auth1/profile4/netinfo9/redirect5/7/channel6/17 trên Internet; channel EOF trước request67.
 Ảnh sau lượt có popup locale2000:0 nhưng chưa chứng minh quan hệ nhân quả. VM/dịch vụ/rule đã dọn, DB0/logout1.
+Đối chứng ko949x sau khi cập nhật đúng `/32` và allowlist gói cũng xác thực QUIC, hiện video/login/loading,
+rồi channel6/17/EOF trước67; không bắt được popup locale trong lượt ko. Probe đã tái hiện cùng stage và đo trực tiếp
+entry1107A10 từ11074B0 trước shutdown. Static path so dialog return với2 rồi gọi nhánh close; giá trị trả về
+và nguyên nhân phát sinh chưa đo trực tiếp. Không nới fencing account hoặc coi cleanup là lỗi DB.
 Chưa có cùng phòng, tên có dấu hoặc trận Internet trên gói này; không dùng media cũ/control stub thay acceptance.
 
 GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).
