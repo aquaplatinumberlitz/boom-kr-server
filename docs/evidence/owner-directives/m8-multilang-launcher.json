@@ -26,6 +26,36 @@
       "Exe, file chữ (.ssd/.ini), font .fft và video nm.bik theo ngôn ngữ để trong thư mục riêng của từng ngôn ngữ; file không đổi dùng chung bằng hard link hoặc thư mục chung.",
       "Client không ghi vào pack; ba bản chạy song song trên cùng pack chung phải được thử trong ca Windows/Wine của M8."
     ],
-    "expected_size": "Khoảng 1,9 GB khi cài đủ ba ngôn ngữ (client KR khoảng 1,8 GB)."
+    "expected_size": "Khoảng 1,9 GB khi cài đủ ba ngôn ngữ (client KR khoảng 1,8 GB).",
+    "release_data": {
+      "recorded_utc": "2026-11-18T13:30:00+00:00",
+      "note": "Dữ liệu L1 dùng cho gói M8 (thay l10n-data10). Nằm ngoài Git, trong worktree của Claude; Codex đọc trực tiếp hoặc chép ra, không sửa tại chỗ.",
+      "location": "/home/admin/boom/work/claude/l10n-utf8-opus/local/l10n-data11/",
+      "layout": {
+        "shared/<Pack>.idd": "7 pack chung (KR + đuôi vi + đuôi en)",
+        "shared/{ko,vi,en}/<Pack>.idx": "chỉ mục theo ngôn ngữ; ko là .idx KR gốc",
+        "vi-949x/, en-949x/": "file chữ .ssd/.ini và nm.bik theo ngôn ngữ (bỏ .idd/.idx ở đây, dùng shared/)",
+        "shared/share-report.json": "offset từng đuôi và sha256 các .idx"
+      },
+      "idd_sha256": {
+        "fx.idd": "9a3d8b80c45d94e6294c11425a3ae375587dd60fab73360d18091f4353b4b224",
+        "FxContents.idd": "54efb3701a32e86f191a5b0ece218479203a0a7d88ce98c0b1d2ba39acab3f3d",
+        "FxDesktop.idd": "316fb0be5cbd81ace98d8bad2ea495c9712df80e09c39ce2f07b29d5348b5314",
+        "FxHiddenCatch.idd": "ea6ab44f76a4c1fbee4f41846c808050981a231c87294c7587848ee01ea99d18",
+        "FxMap.idd": "fe792eeec646274335ac8b1ba902b2d199ee118e3a7d90ee08f4c375b9bae0c8",
+        "FxMonster.idd": "18b6a2e7ee54db03f8c8cc94d120ea0c1ce2d867112b6b4b9d4e7b18b48c01c6",
+        "FxStage.idd": "f5ae74e658f8637fc9749ff9b60eadb056db3a8fd9dfaf83e4615b68bb965627"
+      },
+      "rebuild": [
+        "cd /home/admin/boom/repos/boom-re-l10n (nhánh claude/l10n-kr-vi)",
+        "python3 tools/l10n_build.py --out OUT/vi-utf8 --lang vi --encoding utf-8 --images --image-dir /home/admin/boom/work/claude/l10n-utf8-opus/local/image-build-vi4 --allow-shape-change",
+        "python3 tools/l10n_build.py --out OUT/en-utf8 --lang en --encoding utf-8 --images --image-dir /home/admin/boom/work/claude/l10n-utf8-opus/local/image-build-en1 --allow-shape-change",
+        "python3 <boom-kr-server>/tools/l10n_949x.py convert --src OUT/vi-utf8 --out OUT/vi-949x (en tương tự)",
+        "python3 tools/l10n_share_pack.py --out OUT/shared vi=OUT/vi-949x en=OUT/en-949x (thứ tự vi rồi en)"
+      ],
+      "verified": "Native Wine 18/11 trên bộ chung: en và vi tới sảnh, tạo phòng, phòng chờ, không crash; video mở đầu đúng ngôn ngữ.",
+      "keep": "Ảnh do chủ dự án vẽ chỉ có trên đĩa: /home/admin/boom/work/claude/l10n-utf8-opus/local/image-edit, /home/admin/boom/work/claude/l10n-utf8-opus/local/image-edit-en (nguồn) và image-build-vi4, image-build-en1 (đầu vào dựng). Không xóa, không đưa vào dọn dẹp.",
+      "font": "Font VN như gói hiện hành (fonts-vn3) cho bản vi và en."
+    }
   }
 }
