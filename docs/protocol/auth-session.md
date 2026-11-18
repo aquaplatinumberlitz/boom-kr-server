@@ -935,8 +935,27 @@ xác thực QUIC rồi qua auth1/profile4/netinfo9/redirect5/7/channel6/17 trên
 Ảnh sau lượt có popup locale2000:0 nhưng chưa chứng minh quan hệ nhân quả. VM/dịch vụ/rule đã dọn, DB0/logout1.
 Đối chứng ko949x sau khi cập nhật đúng `/32` và allowlist gói cũng xác thực QUIC, hiện video/login/loading,
 rồi channel6/17/EOF trước67; không bắt được popup locale trong lượt ko. Probe đã tái hiện cùng stage và đo trực tiếp
-entry1107A10 từ11074B0 trước shutdown. Static path so dialog return với2 rồi gọi nhánh close; giá trị trả về
-và nguyên nhân phát sinh chưa đo trực tiếp. Không nới fencing account hoặc coi cleanup là lỗi DB.
+entry1107A10 từ11074B0 trước shutdown. Đo trực tiếp target15037F7 trả2, fieldC0 đổi0→2 và D4 đổi0→1 trong lời gọi rồi đi nhánh close;
+không phải result2 có sẵn ở biên gọi. Hardware watchpoint đã thấy1503C82 ghi0 rồi2 vào fieldC0 trên UI thread. Caller trực tiếp11139F0 là timer: giới hạn chờ u16 bằng0, tick đầu đo được268 ms nên tự đặt result2.
+Nguồn giới hạn0 chưa xác định. Đối chứng runtime riêng chỉ đổi giới hạn0 thành30 giây,
+không ép result hoặc nới deadline server. Với đối chứng này, native tự trả1, gửi67, server trả241/14/291 rồi client tiếp tục
+keepalive qua Internet. Probe đầu chạm trần log nên overall exit1; lượt sau đã thấy UI sảnh và profile `WinNative`.
+Bản copy riêng dùng trampoline tại110740C chỉ thay giới hạn0 thành30000 ms, gọi nguyên hàm cũ và giữ result tự nhiên;
+ko đã vào cùng sảnh trên Windows không debugger hoặc ghi bộ nhớ runtime. Đây là policy tương thích design,
+chưa là gói cuối hoặc hành vi nguyên bản. IAT thực tại11139F9 là `winmm!timeGetTime`, không sửa import theo tên decompiler.
+UI tạo phòng đã mở; sửa tiêu đề gặp thông báo đăng ký email, phù hợp giới hạn M7 đã ghi. Bản vi đã tạo bằng tiêu đề mặc định: một lượt không debugger thoát C000001D khi chuyển màn; lượt có probe đã render
+phòng/WinNative/Factory07 và gửi585/96/266. Probe180s và companion kết thúc gần thao tác UI exit nên không chứng minh
+thoát UI sạch hoặc hết lỗi. WER không debugger đã xác nhận C000001D tại trap `UD2`2260DF8 trong `.repair`. ReturnD66A6D là direct call1494A0E,
+thunk nhảy qua16EA064; static D66980 gọi khi checkD95D90 và virtual+520 trả nonzero, khớp byte bản đang chạy.
+Tên lịch sử `UninstallDWK` vẫn candidate. Policy offline trên copy riêng thay đúng byte đầu trap bằng RET, sau kiểm slot/thunk/trap. Bản vi không debugger
+đã tạo phòng, gửi585/96/266, render đúng profile/map rồi gửi86 và trở về sảnh. Không ép result của stage hoặc đổi server.
+UI exit đụng deadline nên chỉ có harness cancellation/exit1, logout1/session chưa revoke0; chưa UI logout sạch.
+Không biết semantics SDK gốc và không bỏ failure từ lượt đối chứng. Controller ảnh pin/hash/hai vùng chỉ gửi mỗi input
+một lần khi đúng trạng thái; lượt kiểm kế lỗi launch_grant trước native và không gửi input, cause unknown.
+Hai lượt trước còn session chưa revoke/logout0 dù VM/rule đã dọn; không gọi cleanup đó là logout sạch.
+Harness mới đọc stdout/stderr bất đồng bộ và gửi `cancel_file` riêng khi hết hạn; lượt ko đã có report finished,
+exit1 do harness cancellation, logout1 và session chưa revoke0. Đây không là ca native UI logout.
+Các địa chỉ còn trên stack không phải unwind đã xác minh. Không nới fencing account hoặc coi cleanup là lỗi DB.
 Chưa có cùng phòng, tên có dấu hoặc trận Internet trên gói này; không dùng media cũ/control stub thay acceptance.
 
 GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).

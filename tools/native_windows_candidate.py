@@ -224,7 +224,7 @@ def main():
             except Exception as error:
                 record['cleanup_errors'].append('Container stop verification: ' + type(error).__name__)
             for filename in ['native-windows-install.json', 'windows-firstboot-error.txt',
-                             'native-startup-diagnostic.json', 'native-socket-probe.jsonl']:
+                             'native-startup-diagnostic.json', 'native-windows-crash.json', 'native-socket-probe.jsonl']:
                 try:
                     result = subprocess.run(['mcopy', '-i', str(out / 'seed.img'), '::' + filename, str(out / filename)],
                                             capture_output=True, timeout=30)
@@ -232,7 +232,7 @@ def main():
                         record.setdefault('guest_reports', []).append(filename)
                 except Exception as error:
                     record['cleanup_errors'].append('Guest export: ' + type(error).__name__)
-            if (out / 'native-startup-diagnostic.json').exists():
+            if (out / 'native-startup-diagnostic.json').exists() or (out / 'native-windows-crash.json').exists():
                 try:
                     result = subprocess.run(['mcopy', '-s', '-i', str(out / 'seed.img'),
                                              '::dumps', str(out)], capture_output=True, timeout=60)

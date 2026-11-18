@@ -6146,7 +6146,13 @@
             "tools/native_windows_startup_diagnostic.ps1",
             "tools/native_pe_import_control.py",
             "tools/native_windows_bootstrap.py",
-            "tools/native_windows_ready_service.py"
+            "tools/native_windows_ready_service.py",
+            "rust/crates/kr-wire/src/kr00967/chat.rs",
+            "tools/native_windows_multilang.py",
+            "tools/native_windows_multilang.ps1",
+            "tools/native_windows_socket_probe.c",
+            "tools/native_pe_wait_compat.py",
+            "tools/test_native_pe_wait_compat.py"
           ],
           "delivery": "via_pr"
         },

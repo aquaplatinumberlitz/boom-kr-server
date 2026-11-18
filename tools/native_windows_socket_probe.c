@@ -2,6 +2,9 @@
  * Trace connect/shutdown/closesocket/WSAAsyncSelect handles and callers, plus
  * entry at the measured candidate LoginStage cleanup function (not a cause claim).
  * No packet bodies, credentials, forced returns or source-file modifications.
+ * Default observers do not change dialog state. Explicit KR_M8_WAIT_TIMEOUT_MS
+ * permits one finite zero-limit timing control in the owned runtime object;
+ * the previous/new values are recorded, and source installation stays intact.
  * Software breakpoints temporarily replace one byte in the owned process;
  * single-step restores it. Concurrent calls during that step may be missed.
  */
@@ -17,13 +20,28 @@ typedef struct { DWORD thread; int point; } Step;
 static HANDLE process;
 static FILE *output;
 static ULONGLONG began;
-static Point points[8];
+static Point points[10];
 static Step steps[64];
 static unsigned calls;
+static WORD wait_timeout_control;
 
 static int read_u32(DWORD address, DWORD *value) {
     SIZE_T count=0;
     return ReadProcessMemory(process,(const void *)(uintptr_t)address,value,4,&count) && count==4;
+}
+/* Scalar dialog state selected from the measured DoModal consumer, not a raw
+ * object dump. Offsets/numeric values retain unknown semantics until measured. */
+static void dialog_fields(DWORD object) {
+    const DWORD offsets[]={0xc0,0xcc,0xd4,0xd8};
+    DWORD value=0,table=0,target=0;
+    for(unsigned i=0;i<4;i++) if(read_u32(object+offsets[i],&value))
+        fprintf(output,",\"dialog_offset_%lx\":%lu",offsets[i],value);
+    if(read_u32(object,&table) && read_u32(table+168,&target) && target>=0x400000 && target<0x225e000)
+        fprintf(output,",\"dialog_slot168\":\"0x%lx\"",target);
+    if(read_u32(object+0x460,&value)) fprintf(output,",\"wait_limit_u16\":%lu",value & 0xffffUL);
+    if(read_u32(object+0x464,&value)) fprintf(output,",\"wait_start_u32\":%lu",value);
+    if(read_u32(object+0x468,&value)) fprintf(output,",\"wait_interval_u32\":%lu",value);
+    if(read_u32(object+0x46c,&value)) fprintf(output,",\"wait_flag_u8\":%lu",value & 0xffUL);
 }
 static int byte_at(DWORD address, BYTE value) {
     DWORD old=0, ignored=0; SIZE_T count=0;
@@ -87,7 +105,14 @@ int wmain(int argc, wchar_t **argv) {
     CloseHandle(file); output=_wfopen(argv[1],L"wb");
     if(!output) return 3;
     setvbuf(output,NULL,_IONBF,0); began=GetTickCount64();
-    fprintf(output,"{\"event\":\"probe_start\",\"limits\":\"Owned x86 child; software breakpoints; possible concurrent-step omissions; no native acceptance inferred\"}\n");
+    wchar_t timing[16]={0};DWORD timing_size=GetEnvironmentVariableW(L"KR_M8_WAIT_TIMEOUT_MS",timing,16);
+    if(timing_size) {
+        if(timing_size>=16) { fclose(output);return 2; }
+        wchar_t *end=NULL;unsigned long value=wcstoul(timing,&end,10);
+        if(!end || *end || !value || value>60000) { fclose(output);return 2; }
+        wait_timeout_control=(WORD)value;
+    }
+    fprintf(output,"{\"event\":\"probe_start\",\"wait_timeout_control_ms\":%u,\"limits\":\"Owned x86 child; software breakpoints and selected UI-thread debug-register observation; explicit zero-only timing control if nonzero; possible concurrent-step omissions; no native acceptance inferred\"}\n",(unsigned)wait_timeout_control);
     wchar_t *command=calloc(32768,sizeof(wchar_t));size_t used=0;
     if(!command) { fclose(output);return 4; }
     for(int i=2;i<argc;i++) if(!append(command,&used,argv[i])) { SecureZeroMemory(command,32768*sizeof(wchar_t));free(command);fclose(output);return 4; }
@@ -110,11 +135,11 @@ int wmain(int argc, wchar_t **argv) {
         } else if(event.dwDebugEventCode==EXCEPTION_DEBUG_EVENT) {
             DWORD code=event.u.Exception.ExceptionRecord.ExceptionCode;
             HANDLE thread=OpenThread(THREAD_GET_CONTEXT|THREAD_SET_CONTEXT,FALSE,event.dwThreadId);
-            CONTEXT context={0};context.ContextFlags=CONTEXT_CONTROL|CONTEXT_INTEGER;
+            CONTEXT context={0};context.ContextFlags=CONTEXT_CONTROL|CONTEXT_INTEGER|CONTEXT_DEBUG_REGISTERS;
             if(!thread || !GetThreadContext(thread,&context)) { if(thread) CloseHandle(thread);done=1; }
             else {
                 int which=-1;
-                for(int i=0;i<8;i++) if(points[i].active && context.Eip-1==points[i].address) which=i;
+                for(int i=0;i<10;i++) if(points[i].active && context.Eip-1==points[i].address) which=i;
                 if(code==EXCEPTION_BREAKPOINT && which>=0) {
                     Point *point=&points[which];byte_at(point->address,point->original);context.Eip=point->address;
                     if(which==0) {
@@ -123,19 +148,64 @@ int wmain(int argc, wchar_t **argv) {
                         const char *names[]={"connect","shutdown","closesocket","WSAAsyncSelect"};
                         for(int i=0;i<4;i++) if(!read_u32(slots[i],&a) || !install(i+1,a,names[i])) done=1;
                         if(!install(5,0x1107a10,"login_stage_close_candidate")) done=1;
-                        if(!install(6,0x110740f,"login_dialog_call") || !install(7,0x1107412,"login_dialog_return")) done=1;
+                        /* A static wait trampoline occupies the whole six-byte
+                         * call site. Never plant a breakpoint in its rel32.
+                         * The pinned executable and copied probe source remain
+                         * the authority for each declared run. */
+                        BYTE wait_call[6]={0};SIZE_T wait_read=0;
+                        if(!ReadProcessMemory(process,(void *)(uintptr_t)0x110740c,wait_call,6,&wait_read) || wait_read!=6) done=1;
+                        else if(!memcmp(wait_call,"\x8b\x4d\xe4\xff\x55\xe0",6)) {
+                            if(!install(6,0x110740f,"login_dialog_call")) done=1;
+                        } else if(wait_call[0]==0xe9 && wait_call[5]==0x90 && !wait_timeout_control) {
+                            fprintf(output,"{\"event\":\"static_wait_hook_observed\",\"call_probe_disabled\":true}\n");
+                        } else done=1;
+                        if(!install(7,0x1107412,"login_dialog_return")) done=1;
                         fprintf(output,"{\"event\":\"winsock_probes_installed\"}\n");
                     } else {
                         DWORD caller=0,socket=0,second=0;read_u32(context.Esp,&caller);read_u32(context.Esp+4,&socket);read_u32(context.Esp+8,&second);
                         if(which>=5) {
-                            fprintf(output,"{\"event\":\"%s\",\"elapsed_ms\":%llu,\"function\":\"%s\",\"thread\":%lu,\"point\":\"0x%lx\"",which==5?"native_candidate_entry":"native_point",GetTickCount64()-began,point->name,event.dwThreadId,point->address);
-                            if(which==5) fprintf(output,",\"caller\":\"0x%lx\"",caller);
+                            fprintf(output,"{\"event\":\"%s\",\"elapsed_ms\":%llu,\"function\":\"%s\",\"thread\":%lu,\"point\":\"0x%lx\"",(which==5 || which==8)?"native_candidate_entry":"native_point",GetTickCount64()-began,point->name,event.dwThreadId,point->address);
+                            if(which==5 || which==8) fprintf(output,",\"caller\":\"0x%lx\"",caller);
+                            if(which==8) fprintf(output,",\"argument1\":%lu,\"argument2\":%lu",socket,second);
+                            if(which==9) {
+                                DWORD object=0;
+                                fprintf(output,",\"native_now_u32\":%lu",context.Eax);
+                                if(read_u32(context.Ebp-4,&object)) dialog_fields(object);
+                            }
                             if(which==6) {
                                 DWORD target=0;
                                 if(read_u32(context.Ebp-0x20,&target) && target>=0x400000 && target<0x225e000)
                                     fprintf(output,",\"dialog_target\":\"0x%lx\"",target);
+                                dialog_fields(context.Ecx);
+                                if(!points[8].active && !install(8,0xd66b80,"stage_notify_candidate")) done=1;
+                                if(!points[9].active && !install(9,0x11139ff,"wait_timer_now")) done=1;
+                                if(wait_timeout_control) {
+                                    DWORD old=0;SIZE_T changed=0;
+                                    if(!read_u32(context.Ecx+0x460,&old) || (old & 0xffffUL)!=0
+                                       || !WriteProcessMemory(process,(void *)(uintptr_t)(context.Ecx+0x460),&wait_timeout_control,2,&changed) || changed!=2) {
+                                        fputs(",\"wait_timing_control_failed\":true",output);done=1;
+                                    } else {
+                                        fprintf(output,",\"wait_timing_control_ms\":%u,\"previous_limit\":0",(unsigned)wait_timeout_control);
+                                    }
+                                }
+                                /* Observe writes to the measured numeric result
+                                 * on this owned UI thread only; no value is forced. */
+                                context.Dr0=context.Ecx+0xc0;
+                                context.Dr6=0;
+                                context.Dr7=(context.Dr7 & ~0xf0003UL) | 0xd0001UL;
                             }
-                            if(which==7) fprintf(output,",\"dialog_result\":%lu",context.Eax);
+                            if(which==7) {
+                                DWORD object=0;
+                                fprintf(output,",\"dialog_result\":%lu",context.Eax);
+                                if(read_u32(context.Ebp-0x1c,&object)) dialog_fields(object);
+                                context.Dr0=0;
+                                context.Dr6=0;
+                                context.Dr7&=~0xf0003UL;
+                                for(int index=8;index<10;index++) if(points[index].active) {
+                                    if(!byte_at(points[index].address,points[index].original)) done=1;
+                                    points[index].active=0;
+                                }
+                            }
                         } else {
                             fprintf(output,"{\"event\":\"winsock_call\",\"elapsed_ms\":%llu,\"api\":\"%s\",\"thread\":%lu,\"socket\":%lu,\"caller\":\"0x%lx\",\"second\":%lu",GetTickCount64()-began,point->name,event.dwThreadId,socket,caller,second);
                         }
@@ -151,13 +221,28 @@ int wmain(int argc, wchar_t **argv) {
                     if(!SetThreadContext(thread,&context)) done=1;
                 } else if(code==EXCEPTION_SINGLE_STEP) {
                     int found=0;
+                    if(context.Dr6 & 1) {
+                        DWORD value=0;found=1;
+                        fprintf(output,"{\"event\":\"dialog_result_write\",\"elapsed_ms\":%llu,\"thread\":%lu,\"instruction_after_write\":\"0x%lx\"",GetTickCount64()-began,event.dwThreadId,context.Eip);
+                        if(read_u32(context.Dr0,&value)) fprintf(output,",\"value\":%lu",value);
+                        if(context.Eip==0x1503c8e && read_u32(context.Ebp+4,&value) && value>=0x400000 && value<0x225e000)
+                            fprintf(output,",\"setter_frame_return\":\"0x%lx\"",value);
+                        return_candidates(context.Esp);fputs("}\n",output);
+                        context.Dr6=0;
+                    }
                     for(int i=0;i<64;i++) if(steps[i].thread==event.dwThreadId) {
-                        found=1;byte_at(points[steps[i].point].address,0xcc);steps[i].thread=0;
+                        found=1;
+                        if(points[steps[i].point].active) byte_at(points[steps[i].point].address,0xcc);
+                        steps[i].thread=0;
                     }
                     if(found) { context.EFlags&=~0x100UL;if(!SetThreadContext(thread,&context)) done=1; }
                     else continuation=DBG_EXCEPTION_NOT_HANDLED;
                 } else if(code==EXCEPTION_BREAKPOINT && !initial_break) initial_break=1;
-                else { continuation=DBG_EXCEPTION_NOT_HANDLED;fprintf(output,"{\"event\":\"exception\",\"code\":%lu,\"address\":\"0x%lx\",\"first_chance\":%lu}\n",code,(DWORD)(uintptr_t)event.u.Exception.ExceptionRecord.ExceptionAddress,event.u.Exception.dwFirstChance); }
+                else {
+                    continuation=DBG_EXCEPTION_NOT_HANDLED;
+                    fprintf(output,"{\"event\":\"exception\",\"code\":%lu,\"address\":\"0x%lx\",\"first_chance\":%lu,\"eip\":\"0x%lx\",\"ebp\":\"0x%lx\",\"esp\":\"0x%lx\"",code,(DWORD)(uintptr_t)event.u.Exception.ExceptionRecord.ExceptionAddress,event.u.Exception.dwFirstChance,context.Eip,context.Ebp,context.Esp);
+                    return_candidates(context.Esp);fputs("}\n",output);
+                }
                 CloseHandle(thread);
             }
         } else if(event.dwDebugEventCode==EXIT_PROCESS_DEBUG_EVENT) {

@@ -284,6 +284,56 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-close-entry-r5.json",
       "bytes": 4954,
       "sha256": "d50433449f8953a56bb0e89046bd2f40105098456a0f15a9e55833a21db81174"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-result-r7.json",
+      "bytes": 8082,
+      "sha256": "cc62e6b5f936f916b1f4838a8d1bc4b6e3947721723c7f8d360cbdeb67f81919"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-write-r9.json",
+      "bytes": 5847,
+      "sha256": "bb894ab218c9be02fd12338d8cbef56a4017a91799f57cc88896ae8b779cde9b"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-zero-wait-limit-r11.json",
+      "bytes": 5454,
+      "sha256": "153883da22712485df7c645ba52cf453f47117099822f7867f8fd5c0b65d8ecf"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-wait-control-progress-r12.json",
+      "bytes": 3746,
+      "sha256": "46857c8f3ee3fe96a7de36ed1ca3e892cd409d430bf0c6ddd51402a3f446e6af"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-wait-compat-r15.json",
+      "bytes": 11858,
+      "sha256": "1523cef3a658384ed31453de17aa533c4cb6f11e9b0608086b4e9aa4610af9d2"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-create-r16.json",
+      "bytes": 2681,
+      "sha256": "9fa83866e75f69564d0dffb752a83240c9ffa152368e6fd6007281c61507c495"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-room-probe-r18.json",
+      "bytes": 3130,
+      "sha256": "bfa27933e84785db90b9ce20f8266e668126dc3bd0caac977b5524c48e1e0934"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/wait-compat-checks-r1/verification.json",
+      "bytes": 1096,
+      "sha256": "8d94b347d1fc7a0e62730c5b132870a32cdaf5bafbf6f82f168f2d10795c746d"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-room-trap-r20.json",
+      "bytes": 4955,
+      "sha256": "e671651059b73840ae006e777663e00482df6894cd50cfe43556920f1df6519c"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-offline-cleanup-r21.json",
+      "bytes": 3036,
+      "sha256": "9677bbb2d4a81621425d010eaf93f746bef11c1bcb5a1616e37d1a86ff168518"
     }
   ],
   "limits": [
@@ -337,11 +387,100 @@
     },
     "source": "kr_runtime",
     "status": "candidate",
-    "limits": "Direct1107A10 entry from11074B0 observed before shutdown; static path compares dialog return2, numeric value and cause not yet observed. Next before/after dialog call measurement.",
+    "limits": "Direct setter return1113AA0 and current/start/limit identify immediate timer expiry against zero limit. Why zero remains unknown; runtime/static zero-only30s controls reach lobby without forcing success. Final package acceptance pending.",
     "direct_entry_summary": {
       "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-close-entry-r5.json",
       "bytes": 4954,
       "sha256": "d50433449f8953a56bb0e89046bd2f40105098456a0f15a9e55833a21db81174"
+    },
+    "dialog_result_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-result-r7.json",
+      "bytes": 8082,
+      "sha256": "cc62e6b5f936f916b1f4838a8d1bc4b6e3947721723c7f8d360cbdeb67f81919"
+    },
+    "result_writer_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-write-r9.json",
+      "bytes": 5847,
+      "sha256": "bb894ab218c9be02fd12338d8cbef56a4017a91799f57cc88896ae8b779cde9b"
+    },
+    "zero_wait_limit_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-zero-wait-limit-r11.json",
+      "bytes": 5454,
+      "sha256": "153883da22712485df7c645ba52cf453f47117099822f7867f8fd5c0b65d8ecf"
     }
+  },
+  "integration_gate": {
+    "status": "failed",
+    "summary": {
+      "path": "local/research/codex/m8-player-names-949x-r1/checkpoint-gate-isolated-summary.json",
+      "bytes": 3102,
+      "sha256": "d6287353ea422804aa40e41d1a058c033a4cd34c5c96cb59153f43444ab90ef2"
+    },
+    "limits": "Task local symlink cannot pass path fence. Isolated exact-head view also has6150 unique missing host paths,95 canonical absolute aliases outside view,23 source hash mismatches and2 AUD015 missing linked screenshots. Prune registry still empty; no recovery/deletion/checker bypass performed. Not a passing group gate."
+  },
+  "windows_zero_wait_control": {
+    "source": "kr_runtime",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-wait-control-progress-r12.json",
+      "bytes": 3746,
+      "sha256": "46857c8f3ee3fe96a7de36ed1ca3e892cd409d430bf0c6ddd51402a3f446e6af"
+    },
+    "reached": "Explicit zero-only30s runtime control: natural dialog result1, native67,241/14/291, keepalives",
+    "limits": "r12 exit1 from probe2048-call bound retained. r13 rendered lobby confirmed; unrevoked1/logout0 and stale launcher_running report prevent lifecycle acceptance. Static/cancellation controls are recorded separately."
+  },
+  "windows_wait_compatibility": {
+    "source": "design",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-wait-compat-r15.json",
+      "bytes": 11858,
+      "sha256": "1523cef3a658384ed31453de17aa533c4cb6f11e9b0608086b4e9aa4610af9d2"
+    },
+    "reached": "No-debugger ko lobby/backend profile; ordinary create dialog. Edited-title email gate; default title pending.",
+    "lifecycle": "r13/r14 unrevoked1/logout0 retained. r15 bounded harness cancellation: report finished/exit1, unrevoked0/logout1.",
+    "limits": "Private runtime copy, older ARM service. No current Unicode/native match/final package acceptance.",
+    "vi": {
+      "source": "kr_runtime",
+      "status": "candidate",
+      "summary": {
+        "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-create-r16.json",
+        "bytes": 2681,
+        "sha256": "9fa83866e75f69564d0dffb752a83240c9ffa152368e6fd6007281c61507c495"
+      },
+      "reached": "Vietnamese lobby/profile and managed default-title create81; C000001D transition failure before room render.",
+      "lifecycle": "Report finished/exit1; logout1/unrevoked0, VM/service/rules cleaned."
+    },
+    "instrumented_vi_room": {
+      "summary": {
+        "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-room-probe-r18.json",
+        "bytes": 3130,
+        "sha256": "bfa27933e84785db90b9ce20f8266e668126dc3bd0caac977b5524c48e1e0934"
+      },
+      "reached": "vi default title/create81/585/96/266 and rendered room/WinNative/Factory07",
+      "limits": "r16 C000001D not reproduced; probe180s bound and companion_stopped exit1 retained. No uninstrumented stability or clean UI logout."
+    }
+  },
+  "windows_room_cleanup_trap": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-room-trap-r20.json",
+      "bytes": 4955,
+      "sha256": "e671651059b73840ae006e777663e00482df6894cd50cfe43556920f1df6519c"
+    },
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "condition": "WER2260DF8/UD2, direct callerD66A6D→1494A0E→16EA064",
+    "limits": "External slot name candidateUninstallDWK. Optional offline omission pending native; not original behavior or a server error diagnosis."
+  },
+  "windows_offline_cleanup_control": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-offline-cleanup-r21.json",
+      "bytes": 3036,
+      "sha256": "9677bbb2d4a81621425d010eaf93f746bef11c1bcb5a1616e37d1a86ff168518"
+    },
+    "reached": "Uninstrumented vi lobby→create/default title→rendered room→86→lobby",
+    "limits": "Explicit offline copy policies; final UI exit collided with harness deadline. r22 launch_grant failure before native/no UI action, cause unknown. No current service/name/chat/match/final package claim."
   }
 }

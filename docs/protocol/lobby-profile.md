@@ -463,6 +463,10 @@ hiển thị ở stage vtable+308. Code consumer và hàm hiển thị `0xD45080
 và bản ko949x dùng trong M8. Decompiler có cảnh báo stack ở dispatcher; metadata giữ locator và byte hash,
 không coi pseudocode là runtime hoặc client gốc đã hiển thị một reply do server mới gửi.
 
+Codec Rust đã có parser18 và builder28 style0, kiểm hai body KR thật cùng input cắt cụt/sai độ dài. Ngân sách
+192 byte request/224 byte reply là policy công ty; từ chối control/bidi override/ký tự không mã hóa được,
+không replace hoặc truncate. Chưa nối listener/phòng và chưa có native reply28.
+
 Đường triển khai tiếp chỉ cần chat thường trong phòng cho ca M8: tên người gửi từ owner account hiện hành,
 đổi 949x tại biên, recipient/source giữ đúng membership/connection/visit và round khi queue phát. Giới hạn
 byte/tần suất là policy công ty phải ghi rõ; không suy từ hai chuỗi mẫu. Chưa có chuyển tiếp, native đọc chat

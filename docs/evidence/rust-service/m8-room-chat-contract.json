@@ -120,5 +120,35 @@
     "Initial packet selector assumed fixture header69 and found none; corrected native headerAF request selection, checksum/sequence verified, source captures unchanged.",
     "Room chat serving must fence source and recipients through membership/visit/round and current account. Names come from current owner, never request text.",
     "Whisper/team/guild/lobby chat and full social features are outside this minimum M8 slice; no native cross-client chat acceptance yet."
-  ]
+  ],
+  "codec": {
+    "path": "rust/crates/kr-wire/src/kr00967/chat.rs",
+    "source": "design",
+    "status": "design",
+    "request_budget_bytes": 192,
+    "reply_budget_bytes": 224,
+    "scope": "Strict949x single-string18 parser and literal28 encoder only; forwarding disabled/unimplemented. Budgets are company policy, not recovered original limits.",
+    "verification": [
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/codec-verification.json",
+        "bytes": 882,
+        "sha256": "852ce1a3dd9dfef4a77051b82da8261c395b4dea3022884ac78598ade6d552db"
+      },
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/wire-chat-tests.log",
+        "bytes": 2423,
+        "sha256": "6305f1444da02b6f78431a041f17deb6bea982d3c1cabf73c497a0adb6207b7e"
+      },
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/wire-chat-clippy.log",
+        "bytes": 166,
+        "sha256": "34b5b6cdbc1da93103698f9fc7836f75b09ceb12bb1e4c07b74e4d1d955b80b7"
+      },
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/wire-chat-fmt.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  }
 }

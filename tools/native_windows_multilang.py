@@ -21,6 +21,70 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+class RoomLifecycle:
+    """Ordinary UI control gated by pinned, previously observed screen crops.
+
+    A failed/uncertain input is never repeated. Screenshots and wire/lifecycle
+    receipts, rather than this controller's state, establish client behavior.
+    """
+    def __init__(self, reference_path, local, language):
+        from PIL import Image
+        if not reference_path.resolve(strict=True).is_relative_to(local):
+            raise ValueError('UI references must be local')
+        data = json.loads(reference_path.read_text())
+        if data['language'] != language:
+            raise ValueError('UI reference language mismatch')
+        self.references = {}
+        for state in ['lobby', 'create', 'room']:
+            row = data[state]
+            path = Path(row['path']).resolve(strict=True)
+            if not path.is_relative_to(local) or digest(path) != row['sha256']:
+                raise ValueError('UI reference identity mismatch')
+            with Image.open(path) as screen:
+                if screen.size != (1024, 768):
+                    raise ValueError('UI reference viewport mismatch')
+                regions = []
+                for box in row['regions']:
+                    x, y, right, bottom = box
+                    if not (0 <= x < right <= 1024 and 0 <= y < bottom <= 768):
+                        raise ValueError('UI crop bounds')
+                    regions.append((box, screen.crop(box).convert('RGB')))
+                if len(regions) < 2:
+                    raise ValueError('UI state needs two independent regions')
+                self.references[state] = regions
+        self.step = 0
+        self.observations = []
+
+    def observe(self, capture, run):
+        from PIL import Image, ImageChops, ImageStat
+        stages = [('lobby', [394, 173]), ('create', [453, 573]),
+                  ('room', [229, 679]), ('lobby', [876, 679])]
+        if self.step >= len(stages):
+            return
+        state, coordinate = stages[self.step]
+        with Image.open(capture) as screen:
+            if screen.size != (1024, 768):
+                raise ValueError('Observed UI viewport mismatch')
+            errors = [max(ImageStat.Stat(ImageChops.difference(
+                screen.crop(box).convert('RGB'), reference)).mean)
+                for box, reference in self.references[state]]
+        matched = all(value <= 8 for value in errors)
+        self.observations.append(dict(capture=str(capture), step=self.step,
+                                      expected=state, channel_mean_errors=errors, matched=matched))
+        result = run / 'room-lifecycle-controller.json'
+        result.write_text(json.dumps(dict(step=self.step, observations=self.observations,
+            limits='Pinned screen matching gates ordinary input only; no native success or clean logout inferred'), indent=2) + '\n')
+        if matched:
+            step = self.step
+            self.step += 1  # Never retry this input, including uncertain QMP failure.
+            actions = run / ('room-lifecycle-input-' + str(step) + '.json')
+            actions.write_text(json.dumps([dict(op='click', xy=coordinate)]) + '\n')
+            subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_input.py'),
+                '--run', str(run), '--actions', str(actions),
+                '--out', str(run / ('room-lifecycle-input-' + str(step)))],
+                check=True, capture_output=True, timeout=45)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['previous', 'out', 'deployment', 'manifest', 'native-control', 'windows-credentials']:
@@ -31,17 +95,31 @@ def main():
     parser.add_argument('--observe-seconds', type=int, default=90)
     parser.add_argument('--run', action='store_true')
     parser.add_argument('--socket-probe', action='store_true', help='Declared owned debugger control; not native acceptance')
+    parser.add_argument('--crash-dump', action='store_true', help='Owned Windows WER minidump on native failure, without debugger')
+    parser.add_argument('--room-lifecycle', type=Path, help='Pinned local language screenshots for bounded create/leave/UI exit control')
+    parser.add_argument('--resume-stage', action='store_true', help='Resume an already completed private remote staging operation, never repeat it')
+    parser.add_argument('--wait-timeout-control-ms', type=int, default=0,
+                        help='Explicit debugger-only zero-limit timing control; not a final client patch')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
+    lifecycle = RoomLifecycle(args.room_lifecycle, local, args.language) if args.room_lifecycle else None
     paths = {name: getattr(args, name.replace('-', '_')).resolve()
              for name in ['previous', 'out', 'deployment', 'manifest', 'native-control', 'windows-credentials']}
     if any(path == local or not path.is_relative_to(local) for path in paths.values()):
         parser.error('Every input/output must be under local/')
     if not 30 <= args.observe_seconds <= 240:
         parser.error('Observation budget is 30..240 seconds')
+    if args.wait_timeout_control_ms and (not args.socket_probe or not 1 <= args.wait_timeout_control_ms <= 60000):
+        parser.error('Wait timing control requires socket probe and1..60000ms')
+    if args.crash_dump and args.socket_probe:
+        parser.error('WER control must run without a debugger')
     previous, output, stage = paths['previous'], paths['out'], paths['deployment']
-    if output.exists() or stage.exists() or output == stage:
+    if output == stage:
+        parser.error('Output and deployment must be distinct')
+    if not args.resume_stage and (output.exists() or stage.exists()):
         parser.error('Output and deployment must be distinct and new')
+    if args.resume_stage and (not output.is_dir() or not stage.is_dir() or any(output.iterdir())):
+        parser.error('Resume is only for completed remote staging before any local VM/owner inputs')
     if digest(paths['manifest']) != args.manifest_sha256 or digest(paths['native-control']) != args.native_control_sha256:
         parser.error('Input identity mismatch')
     old = json.loads((previous / 'owner-status.json').read_text())
@@ -53,8 +131,9 @@ def main():
     files = [dict(path=row['path'], bytes=row['bytes'], sha256=row['sha256']) for row in manifest['packs']]
     files += [dict(path=row['path'], bytes=row['payload']['bytes'], sha256=row['payload']['sha256'])
               for row in manifest['common'] + manifest['languages'][args.language]['files'] if row['path'] != 'CA.exe']
-    output.mkdir(mode=0o700)
-    stage.mkdir(mode=0o700)
+    if not args.resume_stage:
+        output.mkdir(mode=0o700)
+        stage.mkdir(mode=0o700)
     config = json.loads((previous / 'private-owner-config.json').read_text())
     connection = json.loads(Path(config['ssh_connection']).read_text())
     plan = json.loads(Path(config['vps_plan']).read_text())
@@ -62,7 +141,11 @@ def main():
            '-o', 'UserKnownHostsFile=' + config['ssh_known_hosts'], connection['user'] + '@' + connection['host']]
     old_remote = Path(plan['root'])
     # Unique remote staging only; runner creates fresh DB and only its own rules.
-    suffix = str(time.time_ns())
+    stage_record = stage / 'remote-stage.json'
+    saved = json.loads(stage_record.read_text()) if args.resume_stage else None
+    suffix = saved['suffix'] if saved else str(time.time_ns())
+    if not suffix.isdecimal():
+        parser.error('Invalid stage identity')
     new_remote = old_remote.with_name('boom-m8-multilang-' + args.language + '-' + suffix)
     recipe = '''from pathlib import Path
 import hashlib,ipaddress,json,os,shutil,subprocess,sys
@@ -89,17 +172,34 @@ subprocess.run([sys.executable,str(new/'package/kr-package.py'),'verify','--mani
 (new/'private-provision.json').write_text(json.dumps(p,indent=2)+chr(10))
 print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed=source_changed,service_allowlist_refreshed=True,package_verified=True)))
 '''
-    (stage / 'staging-recipe.py').write_text(recipe)
-    result = subprocess.run(ssh + ['python3 - ' + shlex.quote(str(old_remote)) + ' ' + shlex.quote(str(new_remote))],
-                            input=recipe, capture_output=True, text=True, timeout=60)
-    (stage / 'staging.stdout').write_text(result.stdout)
-    (stage / 'staging.stderr').write_text(result.stderr)
-    result.check_returncode()
+    expected_stage = dict(suffix=suffix, remote_root=str(new_remote), previous=str(previous), language=args.language,
+                          manifest_sha256=args.manifest_sha256, native_control_sha256=args.native_control_sha256,
+                          recipe_sha256=hashlib.sha256(recipe.encode()).hexdigest())
+    if args.resume_stage:
+        if any(saved.get(key) != value for key, value in expected_stage.items()):
+            parser.error('Resume inputs differ from the declared stage')
+        receipt = json.loads((stage / 'staging.stdout').read_text())
+        if not receipt.get('package_verified') or receipt.get('service_started') or receipt.get('cloud_changes'):
+            parser.error('Remote staging is not confirmed complete without service/rule mutations')
+    else:
+        stage_record.write_text(json.dumps(expected_stage, indent=2) + '\n')
+        (stage / 'staging-recipe.py').write_text(recipe)
+        result = subprocess.run(ssh + ['python3 - ' + shlex.quote(str(old_remote)) + ' ' + shlex.quote(str(new_remote))],
+                                input=recipe, capture_output=True, text=True, timeout=60)
+        (stage / 'staging.stdout').write_text(result.stdout)
+        (stage / 'staging.stderr').write_text(result.stderr)
+        result.check_returncode()
     plan['root'] = str(new_remote)
     # Fetch the exact staged plan, including its freshly observed /32 source.
     # Never widen the ACL or publish the private source to stdout.
-    staged = subprocess.run(ssh + ['cat ' + shlex.quote(str(new_remote / 'private-provision.json'))],
-                            capture_output=True, text=True, check=True, timeout=30)
+    for attempt in range(2):
+        try:
+            staged = subprocess.run(ssh + ['cat ' + shlex.quote(str(new_remote / 'private-provision.json'))],
+                                    capture_output=True, text=True, check=True, timeout=30)
+            break
+        except subprocess.TimeoutExpired:
+            if attempt:
+                raise
     plan = json.loads(staged.stdout)
     (stage / 'private-provision.json').write_text(json.dumps(plan, indent=2) + '\n')
     config.update(out=str(output), vps_plan=str(stage / 'private-provision.json'),
@@ -119,9 +219,14 @@ print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed
     (output / 'control-pins.json').write_text(json.dumps(pins) + '\n')
     control = dict(language=args.language, runtime_name='M8Native' + args.language.capitalize() + suffix[-10:],
                    observe_seconds=args.observe_seconds)
+    if args.crash_dump:
+        control['crash_dump'] = True
+    if args.wait_timeout_control_ms:
+        control['wait_timeout_control_ms'] = args.wait_timeout_control_ms
     if args.socket_probe:
+        shutil.copy2(ROOT / 'tools/native_windows_socket_probe.c', output / 'socket-probe-source.c')
         subprocess.run(['i686-w64-mingw32-gcc', '-municode', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror',
-                        str(ROOT / 'tools/native_windows_socket_probe.c'), '-o', str(output / 'socket-probe.exe')],
+                        str(output / 'socket-probe-source.c'), '-o', str(output / 'socket-probe.exe')],
                        check=True, capture_output=True, timeout=60)
         control['socket_probe_sha256'] = digest(output / 'socket-probe.exe')
         subprocess.run(['mcopy', '-i', str(output / 'seed.img'), str(output / 'socket-probe.exe'), '::socket-probe.exe'],
@@ -174,12 +279,14 @@ print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed
             except json.JSONDecodeError:
                 guest = {}  # Live FAT read can race a report write; not final evidence.
             phase = guest.get('phase')
-            if capture < 12 or phase in ['finished', 'failed']:
+            if capture < 48 or phase in ['finished', 'failed']:
                 actions = output / ('observe-' + str(capture) + '.json')
                 actions.write_text(json.dumps([dict(op='capture')]) + '\n')
                 subprocess.run([sys.executable, str(ROOT / 'tools/native_windows_input.py'), '--run', str(output),
                                 '--actions', str(actions), '--out', str(output / ('observe-' + str(capture)))],
                                check=True, capture_output=True, timeout=45)
+                if lifecycle and phase not in ['finished', 'failed']:
+                    lifecycle.observe(output / ('observe-' + str(capture)) / 'capture-0.png', output)
                 capture += 1
             if phase in ['finished', 'failed']:
                 record.update(guest_phase=phase, live_launcher_exit=guest.get('launcher_exit'))
@@ -197,6 +304,8 @@ print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed
         except subprocess.TimeoutExpired:
             record['owner_cleanup_deadline'] = True
         record['ended_epoch'] = time.time()
+        if lifecycle:
+            record['ordinary_ui_steps_sent'] = lifecycle.step
         (output / 'controller-result.json').write_text(json.dumps(record, indent=2) + '\n')
     print('Bounded language control ended; verify exported native and cleanup evidence.')
 
