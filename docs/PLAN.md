@@ -670,7 +670,8 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
 - **Gói cho người chơi:** chạy client trên Wine; thử trên Wine và Windows trong máy ảo theo
   [quyết định 12/11](evidence/owner-directives/player-environments.json). Gói gồm hướng dẫn, phiên bản Wine đã nghiệm thu,
   cách dựng prefix và cấu hình trỏ tới server. Trên mỗi môi trường, từ máy sạch không phải máy phát triển: cài, đăng nhập,
-  vào phòng, chơi hết một trận qua server Internet thật; kiểm transport companion trên gói triển khai; lượt Windows làm sớm.
+  vào phòng, chơi hết một trận qua server trên VPS Internet thật, client ở ít nhất hai mạng khác nhau, một mạng 4G/CGNAT
+  ([quyết định 18/11](evidence/owner-directives/release-real-network.json)); kiểm transport companion trên gói triển khai; lượt Windows làm sớm.
   Theo [quyết định 18/11](evidence/owner-directives/m8-multilang-launcher.json): ba bản đã vá `vi`/`en`/`ko` ở thư mục riêng
   (chữ, ảnh, video `nm.bik` theo ngôn ngữ); launcher đồ họa đẹp, hiện đại, chất arcade, chọn ngôn ngữ; thử hai bản song song cùng phòng.
 - **Kiểm tải:** 50 người đồng thời và 8 phòng cùng chơi qua relay. Trước khi đo phải có tần suất gói UDP của một
