@@ -13,5 +13,19 @@
   ],
   "scope": "Bổ sung yêu cầu cho mục Gói cho người chơi của M8; không đổi các tiêu chí M8 khác và không chứng nhận M8 đạt.",
   "plan": "docs/PLAN.md#phase1-acceptance",
-  "owner": "Chủ dự án quyết định; Claude ghi lại"
+  "owner": "Chủ dự án quyết định; Claude ghi lại",
+  "packaging": {
+    "recorded_utc": "2026-11-18T04:00:00+00:00",
+    "source": "Chủ dự án chốt: “chốt cách Pack chung, mỗi ngôn ngữ một .idx”.",
+    "decision": "Ba ngôn ngữ dùng chung một bộ file pack .idd; mỗi ngôn ngữ chỉ có file chỉ mục .idx riêng trỏ tới ảnh của mình.",
+    "facts": "Bản dựng ảnh vi giữ nguyên pack KR gốc ở phần đầu và chỉ nối ảnh mới vào cuối 7 pack (fx, FxContents, FxDesktop, FxHiddenCatch, FxMap, FxMonster, FxStage); phần nối của vi khoảng 40 MB kể cả .idx (đo 18/11 trên l10n-data11).",
+    "requirements": [
+      "Pack chung = pack KR gốc + phần đuôi vi + phần đuôi en nối tiếp; công cụ dựng phải dựng ngôn ngữ sau trên pack đã có phần đuôi của ngôn ngữ trước, để offset trong .idx của mỗi ngôn ngữ đúng với pack chung.",
+      "Bản ko dùng .idx gốc (hoặc .idx ko đã vá nếu có) trên cùng pack chung.",
+      "Trình cài ráp pack chung từ pack gốc và các phần đuôi, kiểm sha256 từng pack sau khi ráp; sai hash thì dừng, không chạy client.",
+      "Exe, file chữ (.ssd/.ini), font .fft và video nm.bik theo ngôn ngữ để trong thư mục riêng của từng ngôn ngữ; file không đổi dùng chung bằng hard link hoặc thư mục chung.",
+      "Client không ghi vào pack; ba bản chạy song song trên cùng pack chung phải được thử trong ca Windows/Wine của M8."
+    ],
+    "expected_size": "Khoảng 1,9 GB khi cài đủ ba ngôn ngữ (client KR khoảng 1,8 GB)."
+  }
 }
