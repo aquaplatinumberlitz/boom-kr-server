@@ -344,6 +344,11 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-verification-r1.json",
       "bytes": 669,
       "sha256": "4037453f1764af50ff70b02a352f6288b551ffd61f30c6eb2766a6c03df9e88e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-noack-r24.json",
+      "bytes": 4076,
+      "sha256": "0a5dd5ccc9593c10ac4876e996e3532384889bff918ce98a9766f1c6e0e4e8c1"
     }
   ],
   "limits": [
@@ -426,7 +431,7 @@
       "bytes": 3102,
       "sha256": "d6287353ea422804aa40e41d1a058c033a4cd34c5c96cb59153f43444ab90ef2"
     },
-    "limits": "Task local symlink cannot pass path fence. Isolated exact-head view also has6150 unique missing host paths,95 canonical absolute aliases outside view,23 source hash mismatches and2 AUD015 missing linked screenshots. Prune registry still empty; no recovery/deletion/checker bypass performed. Not a passing group gate."
+    "limits": "Task local symlink cannot pass path fence. Isolated exact-head view also has6150 unique missing host paths,95 canonical absolute aliases outside view,23 source hash mismatches and2 AUD015 missing linked screenshots. Prune registry still empty; no recovery/deletion/checker bypass performed. Not a passing group gate. Later native controls and source commits do not repair this failed history/raw gate."
   },
   "windows_zero_wait_control": {
     "source": "kr_runtime",
@@ -508,11 +513,17 @@
     "source": "design",
     "status": "design",
     "scope": "Once per current account managed lobby; literal5b5f, no room Session, authorize(false), no ACK/activity/state mutation",
-    "native_status": "pending",
+    "native_status": "negative_for_clean_UI_exit",
     "verification": {
       "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-verification-r1.json",
       "bytes": 669,
       "sha256": "4037453f1764af50ff70b02a352f6288b551ffd61f30c6eb2766a6c03df9e88e"
-    }
+    },
+    "native_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-noack-r24.json",
+      "bytes": 4076,
+      "sha256": "0a5dd5ccc9593c10ac4876e996e3532384889bff918ce98a9766f1c6e0e4e8c1"
+    },
+    "native_scope": "Once authorized observation retained channel, but native remains lobby until harness cancellation; no ACK guessed."
   }
 }

@@ -956,7 +956,10 @@ một lần khi đúng trạng thái; lượt kiểm kế lỗi launch_grant tr�
 Dịch vụ ARM mới đã chiếu đúng `Việt01` tới Windows vi, tạo/rời phòng bằng controller. UI exit có modal xác nhận riêng;
 request79/body `5b5f` ở sảnh đã được PCAP/CRC kiểm nhưng service cũ từ chối, khiến companion dừng/exit1.
 Control mới chỉ cho một body literal này ở sảnh account managed, không còn Session phòng, sau authorize(false);
-không gia hạn idle, ACK, đổi stage hoặc mutation. Chưa nghiệm thu native control và không đặt tên trường theo giả định.
+không gia hạn idle, ACK, đổi stage hoặc mutation. Native control đã quan sát đúng một request, giữ channel và keepalive, nhưng client vẫn ở sảnh đến harness cancellation.
+Đây là kết quả âm cho clean UI exit; không retry control không ACK nếu chưa có giả thuyết mới. Consumer80/D41930
+đọc byte, byte, int, byte count và strings trong đường chat, khớp code vi/ko; không dùng80 làm ACK thoát giả định.
+Semantics của79/đường thoát tiếp còn unknown; không đặt tên trường theo giả định.
 Hai lượt trước còn session chưa revoke/logout0 dù VM/rule đã dọn; không gọi cleanup đó là logout sạch.
 Harness mới đọc stdout/stderr bất đồng bộ và gửi `cancel_file` riêng khi hết hạn; lượt ko đã có report finished,
 exit1 do harness cancellation, logout1 và session chưa revoke0. Đây không là ca native UI logout.
