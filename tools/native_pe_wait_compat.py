@@ -26,6 +26,7 @@ ORIGINAL = bytes.fromhex('8b4de4ff55e0')
 CLEANUP_REPLACEMENT = b'\xc3'
 CONTENT_ENTRY = 0x96a480
 CONTENT_PREFIX = bytes.fromhex('558bec6aff')
+SNAPSHOT_EXIT_HEAD = 0x1a7d474
 KNOWN = {
     '348d26ed491f82788ab76342118831e0e9f8001a62e239047cd026890b0648a7': 'vi',
     'eb441bb15eac488bdb43fe6fecf0309d97f4063a92132212c14869fb22e7da6b': 'ko',
@@ -100,7 +101,7 @@ def quit_descriptor(pe):
 
 
 def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore_quit_message=False,
-                guard_empty_content=False, omit_unavailable_exit_cleanup=False):
+                guard_empty_content=False, omit_unavailable_exit_cleanup=False, reset_snapshot_exit_list=False):
     actual = hashlib.sha256(source).hexdigest()
     if actual != expected_sha256 or actual not in KNOWN:
         raise ValueError('Expected pinned Windows import/bootstrap control identity')
@@ -112,6 +113,12 @@ def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore
     if pe.OPTIONAL_HEADER.DATA_DIRECTORY[4].Size:
         raise ValueError('Certificate overlay is outside this copy-only recipe')
     quit_fields = quit_descriptor(pe) if restore_quit_message else None
+    snapshot_exit_offset = None
+    if reset_snapshot_exit_list:
+        if (pe.get_data(SNAPSHOT_EXIT_HEAD - 0x400000, 16) != struct.pack('<IIII', 0x25cdf40, 0, 0, 1)
+                or 0x25cdf40 < 0x400000 + pe.OPTIONAL_HEADER.SizeOfImage):
+            raise ValueError('Measured baked snapshot exit-list head differs')
+        snapshot_exit_offset = pe.get_offset_from_rva(SNAPSHOT_EXIT_HEAD - 0x400000)
     if guard_empty_content:
         for address, size, expected in [
             (CONTENT_ENTRY, 256, '55a2272d9f099afc3d9fa623d16ebd9044272302ab2ef350724c05323a261fab'),
@@ -189,6 +196,9 @@ def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore
     if exit_cleanup_offset is not None:
         image[exit_cleanup_offset:exit_cleanup_offset + 1] = CLEANUP_REPLACEMENT
         changed.append((exit_cleanup_offset, 1))
+    if snapshot_exit_offset is not None:
+        image[snapshot_exit_offset:snapshot_exit_offset + 4] = bytes(4)
+        changed.append((snapshot_exit_offset, 4))
     if quit_fields:
         descriptor, lookup, slot = quit_fields
         dll_rva, name_rva = quit_names
@@ -248,6 +258,12 @@ def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore
             old_bytes='0f0b', new_bytes='c30b',
             policy='Omit only this unrecovered external cleanup on the private offline copy; no explicit stack arguments, registers/flags unchanged',
             limits='Original external symbol and side effects unknown; preserves ECX but does not emulate the missing library. Requires independent native process/lifecycle evidence.')
+    if snapshot_exit_offset is not None:
+        report['snapshot_exit_list_reset'] = dict(source='design', status='candidate',
+            address=hex(SNAPSHOT_EXIT_HEAD), old='0x25cdf40', new='0', bytes=4,
+            evidence='r35 vi exit and r40 paired ko stop fault at14398AE reading this exact unmapped baked pointer; same initial head in both PE files',
+            preserved='Cleanup/registration/destructor code, adjacent control words and all later native list registrations remain untouched',
+            limits='Explicit snapshot-initialization policy on a derived copy; not a runtime invalid-pointer bypass, original initialization proof or native clean-exit acceptance.')
     return result, report
 
 
@@ -264,6 +280,8 @@ def main():
                         help='Reuse the CP201 empty-only offline content guard after current input/code comparison')
     parser.add_argument('--omit-unavailable-exit-cleanup', action='store_true',
                         help='Explicit offline copy control for measured final16EA4EC repair trap only')
+    parser.add_argument('--reset-snapshot-exit-list', action='store_true',
+                        help='Reset only the measured baked exit-list head before startup on a pinned derived copy')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
     source, output = args.source.resolve(strict=True), args.out.resolve()
@@ -272,7 +290,7 @@ def main():
     before = source.read_bytes()
     result, report = patch_bytes(before, args.source_sha256, args.omit_unavailable_dwk_cleanup,
                                  args.restore_quit_message, args.guard_empty_content,
-                                 args.omit_unavailable_exit_cleanup)
+                                 args.omit_unavailable_exit_cleanup, args.reset_snapshot_exit_list)
     output.mkdir(mode=0o700)
     (output / 'CA-windows-wait-compat.exe').write_bytes(result)
     (output / 'wait-compat.json').write_text(json.dumps(report, indent=2) + '\n')

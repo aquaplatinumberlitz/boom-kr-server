@@ -581,11 +581,16 @@
     },
     "source": "kr_runtime",
     "status": "candidate",
-    "limits": "Native fails independently during registered CRT cleanup after UI exit. Five-second observation preserves auth failure and immediately logs out. Not successful logout UI, not proof of use-after-free or allocator cause.",
+    "limits": "Native r40 confirms baked initial-list pointer; optional four-byte head reset r41 passes this fault then hits unrecovered encoded-callback import16EA12C. Encoder/decoder API identity and full native cleanup remain unknown. No runtime callback suppression or clean exit claimed.",
     "dump_pending_node_lifetime": {
       "path": "local/research/codex/m8-multilang-windows-native-vi-exit-observation-r35/dumps/CA.exe.5984.dmp",
       "bytes": 34172558,
       "sha256": "9155f46f6681b44a231c2aeaae232aac0a5895180ccc77881f3b86822b493806"
+    },
+    "current_investigation": {
+      "path": "local/research/codex/m8-windows-pair-startup-r5/pair-snapshot-progress.json",
+      "bytes": 6251,
+      "sha256": "c8f881c17b9166e650dccfa7404a46e7dfe708c79758318b51b5a5fedd2a5384"
     }
   },
   "run_storage_cleanup": {
@@ -623,6 +628,27 @@
       "path": "local/research/codex/m8-multilang-windows-native-vi-exit-observation-r35/run-cleanup-result.json",
       "bytes": 693,
       "sha256": "d4dd303390289e8dccca0b2673a0dc826fb1ef1684c11872d0eba97fda62fb98"
+    }
+  },
+  "paired_native_progress": {
+    "source": "kr_runtime",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-pair-controller-control-r4/native-pair-progress-r38.json",
+      "bytes": 3702,
+      "sha256": "d05be5b0dbf2ae1da18576b6aaadb3fe329d55a721e7830a4c5cdf44cabf1818"
+    },
+    "scope": "Two distinct vi/ko launcher grants in one Windows VM; no shared room acceptance.",
+    "limits": "Static byte-matched mutex rejection branch is present. Paired ko cleanup fault matches vi baked pointer; initial-head reset reaches unresolved encoded callback trap. No directly observed singleton branch, clean UI exit, same-room cross-language or final package acceptance.",
+    "standalone_ko_comparison": {
+      "path": "local/research/codex/m8-pair-controller-control-r4/ko-alone-control-r39.json",
+      "bytes": 2449,
+      "sha256": "f9747935c583480d982264ad07ab1baa18e169a4fc689d610c7ea4b4f1bccd10"
+    },
+    "snapshot_cleanup_investigation": {
+      "path": "local/research/codex/m8-windows-pair-startup-r5/pair-snapshot-progress.json",
+      "bytes": 6251,
+      "sha256": "c8f881c17b9166e650dccfa7404a46e7dfe708c79758318b51b5a5fedd2a5384"
     }
   }
 }

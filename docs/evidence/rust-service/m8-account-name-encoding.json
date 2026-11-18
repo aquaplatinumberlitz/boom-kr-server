@@ -2,7 +2,7 @@
   "schema": "kre-m8-account-name-encoding-v1",
   "source": "design",
   "status": "design",
-  "scope": "WIP issue476, UTF8 storage to patched949x wire; one Windows vi name/lobby/room observed; cross-language acceptance open",
+  "scope": "WIP issue476, UTF8 to patched949x; single Windows vi room and ko lobby names observed, same-room cross-language acceptance open",
   "canonical": "docs/protocol/auth-session.md#rust-patched-account-names",
   "policy": {
     "storage": "UTF-8, exact codepoints",
@@ -33,8 +33,8 @@
     }
   ],
   "limits": [
-    "Initial TCP/reference name tests used no native. New native vi evidence is separately scoped to one current Rust ARM account/lobby/room; no shared vi/ko or native chat acceptance.",
-    "Chat forwarding and native vi/ko same room remain open.",
+    "Initial TCP/reference name tests used no native. Native vi account/room and waiting-room chat are separately observed; standalone ko lobby rendersViệt01. No same-room vi/ko cross-language acceptance.",
+    "Waiting-room chat forwarding and one native vi rendering are recorded in m8-room-chat-contract.json; native cross-language same-room chat remains open.",
     "No NFC normalization or automatic encoding negotiation/fallback. Only explicitly patched deployment may enable949x names."
   ],
   "retained_failures": [
@@ -51,5 +51,10 @@
     },
     "scope": "Single Việt01 DB-owned profile in Windows vi lobby/room and leave return over Internet",
     "limits": "Native UI exit failed on unserved literal lobby79; no ko/cross-language/match/final package closure."
+  },
+  "standalone_ko_name_observation": {
+    "path": "local/research/codex/m8-pair-controller-control-r4/ko-alone-control-r39.json",
+    "bytes": 2449,
+    "sha256": "f9747935c583480d982264ad07ab1baa18e169a4fc689d610c7ea4b4f1bccd10"
   }
 }

@@ -303,7 +303,7 @@ def main():
                     status = json.loads(path.read_text())
                     record['remote_cleanup'] = {key: status.get(key) for key in [
                         'service_exit', 'cloud_append_status', 'cloud_cleanup_status',
-                        'owned_cloud_rules_absent', 'cleanup_errors', 'error']}
+                        'owned_cloud_rules_absent', 'owned_account_cleanup', 'cleanup_errors', 'error']}
                 except (ValueError, OSError) as error:
                     record['cleanup_errors'].append('Remote status parse: ' + type(error).__name__)
         if container and record.get('owned_container_stopped'):

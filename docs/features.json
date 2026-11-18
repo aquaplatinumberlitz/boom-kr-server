@@ -6158,7 +6158,8 @@
             "docs/protocol/lobby-profile.md#rust-patched-room-chat",
             "rust/crates/kr-service/src/room_io_chat_tests.rs",
             "tools/native_run_cleanup.py",
-            "tools/test_native_run_cleanup.py"
+            "tools/test_native_run_cleanup.py",
+            "tools/native_windows_pair.ps1"
           ],
           "delivery": "via_pr"
         },
