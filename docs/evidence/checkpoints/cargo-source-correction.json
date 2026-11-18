@@ -51,5 +51,25 @@
     "Data TOML, other lockfiles, binary/artifact/local remain strict",
     "M8 LoginStage feasibility stop and token fallback remain unchanged"
   ],
-  "limits": "Verifier maintenance only; no native runtime, authentication, feature or M8 acceptance certified. Full gate after source fix pending."
+  "limits": "Verifier maintenance only; full local/history gate passed on tested_commit after exact first-publication Cargo fix. No native runtime, authentication, feature or M8 acceptance certified.",
+  "after": {
+    "tested_commit": "99c62b9234f38159fa533184a5044b17c57b0a7b",
+    "result": {
+      "ok": true,
+      "completed": 339,
+      "evidence_verified": 579978,
+      "evidence_unavailable": 0,
+      "evidence_pruned": 6154,
+      "next_audit": null,
+      "audit_mode": "feature_group",
+      "history_verified": true,
+      "warnings": 2174,
+      "errors": 0
+    },
+    "receipt": {
+      "path": "local/research/codex/m8-login-full-gate-r3/result.json",
+      "bytes": 1908,
+      "sha256": "22df6442483653be078e5a15c1280b79fd8cf1f9441386e07d622cde82437619"
+    }
+  }
 }

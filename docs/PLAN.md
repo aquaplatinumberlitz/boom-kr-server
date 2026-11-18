@@ -65,9 +65,9 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 
 **Blocker và việc tồn:**
 
-- PR G1 đã xanh CI nhưng gate local còn thiếu hai executable lịch sử đang trong đợt dọn được duyệt. Chờ registry
-  prune hợp lệ được công bố rồi tích hợp và kiểm lại exact head; không tự khôi phục file đang bị dọn hoặc khai
-  registry thay người dọn. Toàn bộ 619 evidence CP337 không nằm trong plan xóa. M8 tiếp phần độc lập.
+- Gate local/history đã đạt trên `99c62b9`: 579.978 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
+  lịch sử Git đạt và 0 lỗi. [Đối chứng Cargo](evidence/checkpoints/cargo-source-correction.json) giữ lỗi trước sửa,
+  publication gốc và giới hạn. Kết quả này không thay CI của từng PR hoặc đóng M8; lát LoginStage vẫn dừng ở CP339.
 
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite
