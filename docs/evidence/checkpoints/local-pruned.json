@@ -815,6 +815,20 @@
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
     },
     {
+      "path": "local/research/codex/probe-service-r1/integrated-r2-visual.png",
+      "class": "disposable_intermediate",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_intermediate (screenshot linked only by audit AUD015 read_files; audit links were not counted as references before this fix)",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/probe-service-r1/integrated-r3-visual.png",
+      "class": "disposable_intermediate",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_intermediate (screenshot linked only by audit AUD015 read_files; audit links were not counted as references before this fix)",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
       "path": "local/research/codex/production-baseline-r1/game-A",
       "class": "disposable_copy",
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",

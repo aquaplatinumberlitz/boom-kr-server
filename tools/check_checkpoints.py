@@ -393,7 +393,11 @@ def validate(manifest, root=ROOT, require_local=False):
         try:
             path = local_target(root, value)
             if not path.is_file():
-                errors.append(f"{where}: missing linked file {value}")
+                entry = pruned.match(value) if isinstance(value, str) else None
+                if entry:
+                    warnings.append(f"{where}: PRUNED linked file {value} per {lean.PRUNED} ({entry['reason']})")
+                else:
+                    errors.append(f"{where}: missing linked file {value}")
             return path
         except (ValueError, TypeError) as error:
             errors.append(f"{where}: {error}")
