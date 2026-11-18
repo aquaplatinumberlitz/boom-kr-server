@@ -1,0 +1,55 @@
+{
+  "schema": "kre-checkpoint-cargo-publication-correction-v1",
+  "source": "design",
+  "status": "confirmed",
+  "baseline": "73df5d292d6d8d7acb5443968b1264ad9e41418d",
+  "trigger": "Full local/history gate on canonical mounted checkout verified579978 rows, historytrue, unavailable0 and pruned6154; remaining23 errors were historicalCargo pins.",
+  "before": {
+    "ok": false,
+    "completed": 339,
+    "evidence_verified": 579978,
+    "evidence_unavailable": 0,
+    "evidence_pruned": 6154,
+    "next_audit": null,
+    "audit_mode": "feature_group",
+    "history_verified": true,
+    "warnings": 2150,
+    "errors": 23
+  },
+  "publication_comparison": {
+    "path": "local/research/codex/m8-login-full-gate-r1/cargo-publication-comparison.json",
+    "bytes": 7292,
+    "sha256": "dd5b65fbe6319f81b6e158bea49d7db623ae579063e511dc7ab058d708fa5320"
+  },
+  "verifier_control": {
+    "path": "local/research/codex/m8-login-full-gate-r1/cargo-verifier-control.json",
+    "bytes": 4635,
+    "sha256": "773311ee2a2f877977d312f6f82953905348002482c66969157eaacf16ceaada"
+  },
+  "gate_logs": [
+    {
+      "path": "local/research/codex/m8-login-full-gate-r1/gate.stdout",
+      "bytes": 312305,
+      "sha256": "abfb7127da923e1862feb7f72fbc22f3ea966f83cf79c447af4db7e13b2049e5"
+    },
+    {
+      "path": "local/research/codex/m8-login-full-gate-r1/gate.stderr",
+      "bytes": 1494,
+      "sha256": "9f5018d96af09bf59d5d7d6e9b3db6549a9bffdff1e09818a0fbda86db03502b"
+    },
+    {
+      "path": "local/research/codex/m8-login-full-gate-r1/exit.json",
+      "bytes": 446,
+      "sha256": "5f5aee93a8d6b55c49c80af392b4f80703256ce961cecf9c694a09dfaa803cfc"
+    }
+  ],
+  "policy": "Only rust/Cargo.toml,rust/Cargo.lock,rust/crates/<crate>/Cargo.toml may reuse the existing exact first-publication helper. Same repository declaration, authenticated evidence manifest, blob byte count andSHA are mandatory.",
+  "verification": "91 checkpoint/store/lean/source-history tests pass. New tests cover workspace manifests/lock, crate manifest, later blobs, wrong SHA, wrong checkpoint, artifact kind, corrupted publication manifest and excluded TOML/lock/output/local paths.",
+  "unchanged": [
+    "No checkpoint/audit/run evidence manifests modified",
+    "No historic raw/source/build files restored or replaced to force a match",
+    "Data TOML, other lockfiles, binary/artifact/local remain strict",
+    "M8 LoginStage feasibility stop and token fallback remain unchanged"
+  ],
+  "limits": "Verifier maintenance only; no native runtime, authentication, feature or M8 acceptance certified. Full gate after source fix pending."
+}

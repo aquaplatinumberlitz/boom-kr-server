@@ -122,6 +122,12 @@ có đoạn `.`/`..`, file local, artifact, DLL/EXE/object vẫn giữ kiểm st
 và blob phải khớp tại publication gốc, không nhận source ở commit muộn để cứu pin sai.
 [Đối chứng C source](c-tool-source-correction.json) giữ lỗi phát hiện sau L1 PR433, kiểm âm và giới hạn.
 
+`rust/Cargo.toml`, `rust/Cargo.lock` và `rust/crates/<crate>/Cargo.toml` là đầu vào source của build,
+cũng được đối chiếu đúng blob và declaration tại publication gốc khi file hiện hành đã thay đổi.
+Không mở fallback cho TOML dữ liệu, lockfile khác, output hoặc file local/artifact. Hash sai, manifest
+bằng chứng sai và blob chỉ xuất hiện ở commit muộn vẫn bị từ chối; không sửa record đã khóa.
+[Đối chứng Cargo](cargo-source-correction.json) giữ 23 pin khớp publication, lỗi gate trước sửa và kiểm âm.
+
 ## Kho checkpoint v2 và cách đọc chọn lọc
 
 Từ CP118, `manifest.json` là **index nhỏ** (`kre-checkpoints-v2`, version2): counter, audit,
