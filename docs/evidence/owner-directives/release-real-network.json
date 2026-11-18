@@ -1,0 +1,17 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-18T15:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 18/11/2026. Chủ dự án hỏi: “trước khi phát hành phải test cả wan lẫn internet thật, test trên wine lẫn windows... theo mày có nên vậy ko”. Sau khi Claude đề xuất cổng phát hành có Windows thật và Internet thật, chủ dự án trả lời: “tao ko có win thật, dùng windows được ko, còn internet thì có vps rồi”.",
+  "decision": "Trước khi phát hành, gói người chơi M8 được thử trên cả Wine và Windows trong máy ảo, qua Internet thật với server chạy trên VPS của chủ dự án. Không yêu cầu máy Windows vật lý.",
+  "requirements": [
+    "Server chạy từ gói server M8 trên VPS, không trên máy phát triển.",
+    "Client ở ít nhất hai mạng khác nhau, trong đó một mạng là 4G/CGNAT (ví dụ phát từ điện thoại); có cả client Wine và client Windows trong máy ảo.",
+    "Mỗi môi trường: cài từ gói, đăng nhập, vào chung phòng, chơi hết trận, chat có dấu, ngắt kết nối rồi vào lại.",
+    "Ghi phiên bản Wine và Windows, loại mạng và nhà mạng, độ trễ đo được, log server. Địa chỉ VPS và thông tin truy cập chỉ để trong local/ theo private-infrastructure.json."
+  ],
+  "unchanged": "Trong lúc phát triển vẫn nghiệm thu bằng Wine (wine-accepted.json), WAN và LAN giả lập (emulated-wan.json, emulated-lan.json); không chạy lại gate cũ. Kết quả trên máy ảo không được ghi thành kết quả trên Windows máy thật.",
+  "scope": "Làm rõ yêu cầu Internet thật và môi trường của mục Gói cho người chơi ở M8; không đổi tiêu chí M8 khác.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}

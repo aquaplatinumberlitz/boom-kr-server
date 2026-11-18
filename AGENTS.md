@@ -152,5 +152,7 @@ lịch sử hoặc mô tả sai môi trường run chưa chạy. [LAN giả lậ
 cũng được chủ dự án chấp nhận thay hai máy vật lý; giữ rõ topology/interface/IP/capture/giới hạn.
 Theo [chỉ đạo WAN giả lập](docs/evidence/owner-directives/emulated-wan.json), K6c giữ ID và nghiệm thu bằng
 WAN giả lập thay Internet thật; các tiêu chí hành vi giữ nguyên. **Internet thật chưa kiểm**; kiểm Internet/ISP/CGNAT
-thực tế là backlog riêng, không dependency K6c/K7. Không suy chỉ đạo môi trường tự đóng gate.
+thực tế là backlog riêng, không dependency K6c/K7. Riêng gói người chơi M8 phải chạy qua Internet thật (server trên VPS, client
+Wine và Windows máy ảo ở hai mạng, một mạng 4G/CGNAT) theo [quyết định 18/11](docs/evidence/owner-directives/release-real-network.json).
+Không suy chỉ đạo môi trường tự đóng gate.
 Bàn giao nêu commit/file, nguồn đã đọc, lệnh kiểm+kết quả, evidence và blocker/bước tiếp.
