@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import stat
 import time
 
@@ -24,6 +25,13 @@ def require_storage():
         raise RuntimeError('Below 80 GB free on /home; no new native runtime allowed')
     if available < 150_000_000_000:
         raise RuntimeError('Below 150 GB free on /home; clean own old runs before preparing a new run')
+
+
+def container_absent(returncode, stderr):
+    """Recognize only Docker's explicit missing-object result, never a daemon failure."""
+    if isinstance(stderr, bytes):
+        stderr = stderr.decode('utf-8', errors='replace')
+    return returncode != 0 and 'no such object:' in stderr.casefold()
 
 
 def write_json(path, value):
@@ -68,7 +76,7 @@ def reference_guards(root):
     return protected, directories
 
 
-def cleanup(root, run, *, stopped, exports_complete, inputs=()):
+def cleanup(root, run, *, stopped, exports_complete, inputs=(), receipt_suffix=''):
     """Delete only this run's known VM scratch files, after exports and stop.
 
     Dumps stay until a separate extraction receipt exists; this function never
@@ -80,8 +88,10 @@ def cleanup(root, run, *, stopped, exports_complete, inputs=()):
     run = Path(run).resolve(strict=True)
     if not run.is_relative_to(local / 'research/codex') or not run.name.startswith('m8-'):
         raise ValueError('Cleanup is restricted to one owned M8 run')
-    receipt_path = run / 'run-cleanup-result.json'
-    manifest_path = run / 'run-cleanup-manifest.json'
+    if receipt_suffix and not re.fullmatch('-recovery-r[1-9][0-9]*', receipt_suffix):
+        raise ValueError('Only a numbered recovery receipt suffix is allowed')
+    receipt_path = run / ('run-cleanup-result' + receipt_suffix + '.json')
+    manifest_path = run / ('run-cleanup-manifest' + receipt_suffix + '.json')
     if receipt_path.exists() or manifest_path.exists():
         raise ValueError('Cleanup receipt already exists; never overwrite prior observations')
     receipt = dict(schema='kre-native-run-cleanup-v1',

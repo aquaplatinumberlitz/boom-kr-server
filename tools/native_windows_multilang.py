@@ -120,11 +120,23 @@ def main():
     parser.add_argument('--crash-dump', action='store_true', help='Owned Windows WER minidump on native failure, without debugger')
     parser.add_argument('--room-lifecycle', type=Path, help='Pinned local language screenshots for bounded create/leave/UI exit control')
     parser.add_argument('--service-build', type=Path, help='Private JSON pinning three already built remote binaries and patched949x test account name')
+    parser.add_argument('--launcher-control', type=Path,
+                        help='Private JSON pinning an explicitly declared diagnostic launcher copy')
     parser.add_argument('--resume-stage', action='store_true', help='Resume an already completed private remote staging operation, never repeat it')
     parser.add_argument('--wait-timeout-control-ms', type=int, default=0,
                         help='Explicit debugger-only zero-limit timing control; not a final client patch')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
+    launcher_control = None
+    if args.launcher_control:
+        declaration = args.launcher_control.resolve(strict=True)
+        if not declaration.is_relative_to(local):
+            parser.error('Launcher control declaration must be local')
+        launcher_control = json.loads(declaration.read_text())
+        binary = Path(launcher_control['path']).resolve(strict=True)
+        if (not binary.is_relative_to(local) or not isinstance(launcher_control.get('limits'), str)
+                or digest(binary) != launcher_control['sha256']):
+            parser.error('Launcher control identity or scope mismatch')
     lifecycle = RoomLifecycle(args.room_lifecycle, local, args.language) if args.room_lifecycle else None
     service_build = None
     if args.service_build:
@@ -275,6 +287,9 @@ print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed
         shutil.copy2(previous / 'start-vm.sh', output / 'start-vm.sh')
         for name in ['kr-launch.exe', 'kr-companion.exe', 'certificate.der', 'deployment-private.json', 'credentials.json']:
             shutil.copy2(previous / name, output / name)
+        if launcher_control:
+            shutil.copy2(launcher_control['path'], output / 'kr-launch.exe')
+            (output / 'launcher-control.json').write_text(json.dumps(launcher_control, indent=2) + '\n')
         shutil.copy2(paths['native-control'], output / 'CA-control.exe')
         shutil.copy2(ROOT / 'tools/native_windows_multilang.ps1', output / 'run.ps1')
         pins = {name: digest(output / name) for name in ['kr-launch.exe', 'kr-companion.exe', 'certificate.der', 'CA-control.exe']}
@@ -387,7 +402,7 @@ print(json.dumps(dict(service_started=False,cloud_changes=False,source_refreshed
             # guest could have produced unexported observations.
             state = subprocess.run(['docker', 'inspect', config['container']],
                                    capture_output=True, timeout=10)
-            absent = state.returncode != 0 and b'No such object' in state.stderr
+            absent = native_run_cleanup.container_absent(state.returncode, state.stderr)
             native_run_cleanup.cleanup(ROOT, output, stopped=absent, exports_complete=absent,
                 inputs=[config['vm_base'], config['player_media'],
                         *config.get('additional_readonly_backing', [])])

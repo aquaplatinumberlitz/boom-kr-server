@@ -575,13 +575,18 @@
   },
   "offline_exit_controls_progress": {
     "summary": {
-      "path": "local/research/codex/m8-player-launcher-preparation-r1/offline-exit-controls-r33.json",
-      "bytes": 1845,
-      "sha256": "d2ee0a24173ec949ee2218eaee7acc8d538402518ff6739b4957a89b41c5f5f4"
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/bounded-exit-observation-r35.json",
+      "bytes": 3917,
+      "sha256": "dce2cd012eac0bf2ae4564655aa3d8cc59ee2dd3a6d7312727ad9d80f4ef736d"
     },
     "source": "kr_runtime",
     "status": "candidate",
-    "limits": "All five pinned UI steps sent with declared offline compatibility controls; companion stops before launcher observes native process exit. Not clean UI logout or final package acceptance."
+    "limits": "Native fails independently during registered CRT cleanup after UI exit. Five-second observation preserves auth failure and immediately logs out. Not successful logout UI, not proof of use-after-free or allocator cause.",
+    "dump_pending_node_lifetime": {
+      "path": "local/research/codex/m8-multilang-windows-native-vi-exit-observation-r35/dumps/CA.exe.5984.dmp",
+      "bytes": 34172558,
+      "sha256": "9155f46f6681b44a231c2aeaae232aac0a5895180ccc77881f3b86822b493806"
+    }
   },
   "run_storage_cleanup": {
     "source": "design",
@@ -598,12 +603,12 @@
       "sha256": "16915a6756608c6a6e06d1637ca19ca4edfa4b16cf4739214fbed90426960b56"
     },
     "scope": "477 disposable files in 80 old M8 runs; exact-plan apply via 3d724dc. Automatic scratch cleanup wired after stop/export with durable manifest and reference guards.",
-    "verification": "11 deletion safety tests; real qcow2/FAT preparation/export/deletion control, backing input unchanged.",
-    "limits": "Filesystem control only, no new Windows VM/native run. Unextracted dumps remain evidence pending extraction; failed stop/export preserves scratch for recovery.",
+    "verification": "13 deletion safety tests; qcow2/FAT control and Windows r35 automatic overlay/seed removal with logs/capture/dump retained.",
+    "limits": "Windows r35 cleanup confirmed; native exit remains failing. Dump retained for unresolved cleanup node lifetime. Uncertain stop/export preserves scratch; r34 original guard failure and recovery remain separately recorded.",
     "verification_summary": {
-      "path": "local/research/codex/m8-player-launcher-preparation-r1/auto-cleanup-verification-r1.json",
-      "bytes": 1934,
-      "sha256": "2ddcc19549bc60719ca9139a9c24806962ef4e5ec0abd9828df50b7f2d775124"
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native-cleanup-verification-r2.json",
+      "bytes": 1370,
+      "sha256": "363b84bc21e36f573731746569da64fb7c552599b29caf3e999d0a46dfa3255a"
     },
     "checkpoint_gate": {
       "status": "failed",
@@ -613,6 +618,11 @@
         "bytes": 970,
         "sha256": "40c13e3a0c7e418a33897cf998f0363cc80f54895541a27de376e95adbf98921"
       }
+    },
+    "native_receipt": {
+      "path": "local/research/codex/m8-multilang-windows-native-vi-exit-observation-r35/run-cleanup-result.json",
+      "bytes": 693,
+      "sha256": "d4dd303390289e8dccca0b2673a0dc826fb1ef1684c11872d0eba97fda62fb98"
     }
   }
 }

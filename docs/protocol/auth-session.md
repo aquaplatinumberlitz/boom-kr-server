@@ -968,7 +968,10 @@ với input size0/cap15; handler1254610 sau đó chủ động raiseC0000005. Co
 chỉ trả native empty output khi input rỗng; nonempty giữ parser. Control này đi tiếp tới trap cleanup ngoài tại 22638D4,
 qua slot 16EA4EC/caller 806B30; semantics SDK gốc vẫn unknown. Bản copy chỉ cho entry chưa phục hồi đó trả về
 đã gửi đủ năm thao tác UI nhưng companion kết thúc với exit 1 khi native exit code còn null. Launcher nguồn hiện
-trả lỗi rồi kill owned child còn sống; khả năng đua teardown là candidate, chưa là root cause runtime.
+trả lỗi rồi kill owned child còn sống. Control riêng logout ngay sau companion stop, quan sát native tối đa 5 giây
+và vẫn trả lỗi đã thấy native tự kết thúc C0000005 tại14398AE, đọc `[esi]` với ESI=25CDF40 từ cleanup list1A7D474.
+Tail cleanup qua CRT callback đã so byte với đúng exe copy; lifetime node/destructor order vẫn unknown.
+Không suy use-after-free hoặc sửa server/revoke từ phép đo này.
 Chưa có clean UI exit, không coi WER synthetic là lỗi truy cập bộ nhớ gốc hoặc bỏ failure cũ.
 Hai lượt trước còn session chưa revoke/logout0 dù VM/rule đã dọn; không gọi cleanup đó là logout sạch.
 Harness mới đọc stdout/stderr bất đồng bộ và gửi `cancel_file` riêng khi hết hạn; lượt ko đã có report finished,

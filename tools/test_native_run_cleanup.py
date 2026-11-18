@@ -135,6 +135,19 @@ class RunCleanupTests(unittest.TestCase):
         with patch.object(cleanup, 'storage', return_value={'available_bytes': 150_000_000_000}):
             cleanup.require_storage()
 
+    def test_docker_absence_variants_do_not_accept_daemon_errors(self):
+        self.assertTrue(cleanup.container_absent(1, b'error: no such object: owned-run'))
+        self.assertTrue(cleanup.container_absent(1, 'Error: No such object: owned-run'))
+        self.assertFalse(cleanup.container_absent(0, 'No such object: owned-run'))
+        self.assertFalse(cleanup.container_absent(1, 'Cannot connect to the Docker daemon'))
+
+    def test_recovery_preserves_original_receipts(self):
+        cleanup.cleanup(self.root, self.run, stopped=False, exports_complete=False)
+        original = (self.run / 'run-cleanup-result.json').read_bytes()
+        result = self.clean(receipt_suffix='-recovery-r1')
+        self.assertEqual(set(result['deleted']), {'seed.img', 'native-system.qcow2'})
+        self.assertEqual(original, (self.run / 'run-cleanup-result.json').read_bytes())
+
 
 if __name__ == '__main__':
     unittest.main()

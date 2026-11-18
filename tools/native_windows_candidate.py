@@ -109,7 +109,7 @@ def main():
         if existing.returncode == 0:
             record['container_name_collision'] = True
             raise RuntimeError('Owned candidate name already exists; use a fresh run')
-        if b'No such object' not in existing.stderr:
+        if not native_run_cleanup.container_absent(existing.returncode, existing.stderr):
             record['container_status_unknown'] = True
             raise RuntimeError('Container absence not confirmed; no runtime mutation allowed')
         # Register ownership before a potentially slow Docker create/start so
@@ -242,7 +242,7 @@ def main():
                 inspected = subprocess.run(['docker', 'inspect', '--format', '{{.State.Running}}', name],
                                            capture_output=True, text=True, timeout=10)
                 record['owned_container_stopped'] = inspected.returncode == 0 and inspected.stdout.strip() == 'false'
-                record['owned_container_absent'] = inspected.returncode != 0 and 'No such object' in inspected.stderr
+                record['owned_container_absent'] = native_run_cleanup.container_absent(inspected.returncode, inspected.stderr)
                 if not record['owned_container_stopped'] and not record['owned_container_absent']:
                     record['cleanup_errors'].append('Owned container stop not confirmed')
             except Exception as error:
@@ -306,6 +306,20 @@ def main():
                         'owned_cloud_rules_absent', 'cleanup_errors', 'error']}
                 except (ValueError, OSError) as error:
                     record['cleanup_errors'].append('Remote status parse: ' + type(error).__name__)
+        if container and record.get('owned_container_stopped'):
+            try:
+                label = subprocess.run(['docker', 'inspect', '--format',
+                                        '{{index .Config.Labels "boom.task"}}', name],
+                                       capture_output=True, text=True, timeout=10)
+                if label.returncode == 0 and label.stdout.strip() == 'm8-native-windows':
+                    removed = subprocess.run(['docker', 'rm', name], capture_output=True, timeout=20)
+                    record['owned_container_remove_exit'] = removed.returncode
+                    if removed.returncode:
+                        record['cleanup_errors'].append('Owned stopped container removal failed')
+                else:
+                    record['cleanup_errors'].append('Container ownership label not confirmed for removal')
+            except Exception as error:
+                record['cleanup_errors'].append('Container removal: ' + type(error).__name__)
         record['ended_epoch'] = time.time()
         save()
         try:
