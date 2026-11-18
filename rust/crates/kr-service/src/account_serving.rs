@@ -70,6 +70,10 @@ pub struct Config {
     pub worker_queue_capacity: usize,
     #[serde(default)]
     pub profile_mode: ProfileMode,
+    /// All clients in this deployment must carry the owner's 949x patch.
+    /// Default false retains ASCII-only native admission for unpatched clients.
+    #[serde(default)]
+    pub patched_949x_names: bool,
     #[serde(default)]
     pub max_sessions: Option<usize>,
     /// Diagnostic test accounts only, keyed by display name: value written into the
@@ -89,6 +93,9 @@ fn default_worker_queue_capacity() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
+        if self.patched_949x_names && self.profile_mode != ProfileMode::DatabaseZero {
+            return Err(io::Error::other("949x names require database profiles"));
+        }
         if let Some(public) = &self.public_launcher {
             if self.profile_mode != ProfileMode::DatabaseZero {
                 return Err(io::Error::other(
@@ -258,6 +265,7 @@ impl Owner {
         } else {
             None
         };
+        bridge = bridge.with_patched_949x_names(config.patched_949x_names);
         Ok(Self {
             public_launcher,
             boot_epoch,
@@ -394,12 +402,13 @@ pub(crate) async fn prepare_launch(
     };
     // Fixed mode keeps its fixture fence. Database mode uses the authenticated
     // player's bounded zero-profile template, never an IP-selected identity.
+    let launch_name = kr_wire::kr00967::text949x::encode_name(&launch.player.display_name)?;
     if active.projection.is_none()
         && (launch.player.profile_version != 1
             || active
                 .projections
                 .get(&launch.player.wire_id)
-                .is_none_or(|name| name.as_slice() != launch.player.display_name.as_bytes()))
+                .is_none_or(|name| name.as_slice() != launch_name))
     {
         return Err(io::Error::other("unsupported account profile projection"));
     }
@@ -493,7 +502,8 @@ pub(crate) async fn connection(
                     v=active.bridge.login_for_profile(&packet.payload, peer, id, |player| {
                         if active.projection.is_some() { return Some(peer); }
                         bound.actors.get(&player.wire_id)
-                            .filter(|actor| actor.name == player.display_name.as_bytes())
+                            .filter(|actor| kr_wire::kr00967::text949x::encode_name(&player.display_name)
+                                .is_ok_and(|name| actor.name == name))
                             .map(|actor| actor.reported_login_ipv4.unwrap_or(peer))
                     })=>v
                 };
@@ -540,15 +550,14 @@ pub(crate) async fn connection(
             } else {
                 return Err(io::Error::other("account first opcode/endpoint rejected"));
             };
+            let owned_name = kr_wire::kr00967::text949x::encode_name(&owned.display_name)?;
             let actor = if active.projection.is_some() {
                 bound.actors.values().min_by_key(|actor| actor.identity)
             } else {
                 bound
                     .actors
                     .values()
-                    .find(|a| {
-                        a.identity == owned.wire_id && a.name == owned.display_name.as_bytes()
-                    })
+                    .find(|a| a.identity == owned.wire_id && a.name == owned_name)
                     .filter(|_| owned.profile_version == 1)
             }
             .ok_or_else(|| io::Error::other("unsupported owned account profile"))?;
@@ -556,7 +565,7 @@ pub(crate) async fn connection(
             // remains a transport restriction, never a selector for room ownership.
             let mut packets = actor.packets.clone();
             if let Some(template) = &active.projection {
-                let rendered = template.project(owned.wire_id, owned.display_name.as_bytes(), 0)?;
+                let rendered = template.project(owned.wire_id, &owned_name, 0)?;
                 packets
                     .get_mut("auth_A")
                     .expect("validated auth template")
@@ -574,7 +583,7 @@ pub(crate) async fn connection(
                 let auth = packets.get_mut("auth_A").expect("validated auth reply");
                 auth.payload = kr_wire::kr00967::with_identity_string(
                     &auth.payload,
-                    owned.display_name.len(),
+                    owned_name.len(),
                     id.as_bytes(),
                 )?;
             }
@@ -593,11 +602,7 @@ pub(crate) async fn connection(
                     );
             }
             crate::emit(&log,crate::stamp(start,serde_json::json!({"event":"account_binding","connection":id,"player_id":owned.player_id,"identity":owned.wire_id,"profile_version":owned.profile_version,"transport":if echo{"login"}else{"channel"},"policy":"backend_owned_fixed_zero_profile"}))).await?;
-            let flow = crate::lobby::Flow::for_identity(
-                !echo,
-                owned.wire_id,
-                owned.display_name.as_bytes(),
-            );
+            let flow = crate::lobby::Flow::for_identity(!echo, owned.wire_id, &owned_name);
             return crate::local_lobby_connection(
                 socket,
                 id,

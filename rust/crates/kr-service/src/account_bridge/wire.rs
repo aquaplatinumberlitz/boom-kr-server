@@ -43,7 +43,9 @@ pub struct ChannelIdentity {
     pub echo: u32,
 }
 
-/// Bounded backend ASCII name3..15, count1/no-optional profile projection.
+/// Bounded name3..15 native bytes, count1/no-optional profile projection.
+/// 949x validates the bytes; the bridge separately fences them to the issued
+/// name and its configured ASCII/patched-client policy.
 /// The optional-string flag must be off; the other 23 trailing bytes stay opaque.
 pub fn channel_identity(body: &[u8]) -> Result<ChannelIdentity> {
     if body.len() < 4 || field(&body[..1], Width::U8)? != 1 || field(&body[1..2], Width::U8)? != 255
@@ -58,9 +60,7 @@ pub fn channel_identity(body: &[u8]) -> Result<ChannelIdentity> {
         return Err(Error::UnsupportedWire);
     }
     let name = decode_bytes(&body[4..4 + size]).map_err(|_| Error::UnsupportedWire)?;
-    if !name.iter().all(|b| b.is_ascii_alphanumeric() || *b == b'_') {
-        return Err(Error::UnsupportedWire);
-    }
+    kr_wire::kr00967::text949x::validate_name(&name).map_err(|_| Error::UnsupportedWire)?;
     Ok(ChannelIdentity {
         wire_id: field(&body[4 + size..8 + size], Width::U32)? as u32,
         name,

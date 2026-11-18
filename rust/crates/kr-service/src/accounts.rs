@@ -199,13 +199,11 @@ fn login_name(login: &str) -> Result<String> {
     Ok(login.to_ascii_lowercase())
 }
 fn display_name(name: &str) -> Result<()> {
-    // Backend policy only; native dynamic profile/name encoding is a separate adapter.
-    if !(3..=15).contains(&name.len())
-        || !name.bytes().all(|c| c.is_ascii_alphanumeric() || c == b'_')
-    {
-        return Err(Error::InvalidInput);
-    }
-    Ok(())
+    // Store the original UTF-8. The game adapter encodes at each wire boundary;
+    // legacy admission still denies non-ASCII unless explicitly configured.
+    kr_wire::kr00967::text949x::encode_name(name)
+        .map(|_| ())
+        .map_err(|_| Error::InvalidInput)
 }
 
 pub struct Store {

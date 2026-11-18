@@ -535,6 +535,50 @@ fn profile_edit_is_persistent_versioned_and_does_not_change_ownership() {
 }
 
 #[test]
+fn names_persist_utf8_but_limits_are_949x_bytes_and_login_stays_ascii() {
+    let _serial = SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let mut store = temp.store();
+    store.begin_instance(&admin(), 100).unwrap();
+    let name = "Việt한국";
+    let player = store
+        .create_account(&admin(), "viet_user", name, PASSWORD, 100)
+        .unwrap();
+    assert_eq!(player.display_name, name);
+    let stored: String = store
+        .db
+        .query_row(
+            "SELECT display_name FROM players WHERE id=?1",
+            [player.player_id],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert_eq!(stored.as_bytes(), name.as_bytes());
+    for bad in ["ệ".repeat(8), "a\0b".into(), "a b".into(), "a😀b".into()] {
+        assert_eq!(
+            store.rename_player(&admin(), player.account_id, &bad, 1, 101),
+            Err(Error::InvalidInput)
+        );
+    }
+    assert!(
+        store
+            .create_account(&admin(), "việt", name, PASSWORD, 101)
+            .is_err()
+    );
+    let renamed = store
+        .rename_player(&admin(), player.account_id, &"ệ".repeat(7), 1, 101)
+        .unwrap();
+    assert_eq!(renamed.player_id, player.player_id);
+    assert_eq!(renamed.wire_id, player.wire_id);
+    assert_eq!(renamed.profile_version, 2);
+    drop(store);
+    let mut store = temp.store();
+    assert_eq!(store.lookup("VIET_USER").unwrap(), renamed);
+    let grant = store.login("viet_user", PASSWORD, 60, 102).unwrap();
+    assert_eq!(grant.player, renamed);
+}
+
+#[test]
 fn credential_reset_wins_after_hash_before_session_commit_and_live_schema_is_checked() {
     let _serial = SERIAL.lock().unwrap();
     let (temp, mut s, p) = fresh();

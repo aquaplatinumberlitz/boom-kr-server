@@ -76,6 +76,12 @@ sau lỗi xác thực. `peer_diagnostics` trên CLI chỉ xuất counters/mã OS
 Wine có prefix riêng từng ngôn ngữ dưới state. Cài máy sạch, prefix hoàn chỉnh và vi/ko cùng phòng đọc chữ có dấu
 vẫn cần native acceptance M8; ảnh GUI hay kiểm hash không thay ca này.
 
+Server cho ba client đã vá có thể khai `account_admission.patched_949x_names: true` cùng `profile_mode: database_zero`.
+DB giữ tên UTF-8, adapter đổi đúng 949x khi phát profile và kiểm channel; giới hạn là 3–15 byte trên wire.
+Đây là opt-in theo deployment, không chọn encoding từ ngôn ngữ launcher hoặc IP. Để false/mặc định cho client chưa vá:
+tên ngoài ASCII bị từ chối cấp frontend. Không tự sửa DB/đổi tên khi chuyển policy. [Contract biên tên](protocol/auth-session.md#rust-patched-account-names)
+chưa có native acceptance cho tên Việt/Hàn; chat và tên phòng có ca riêng.
+
 Giao diện [public launcher](protocol/auth-session.md#rust-public-launcher) opt-in của M8 hiện có kiểm loopback,
 chưa là gói Internet/Wine/Windows đã nghiệm thu. Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
 command từ chối directory có sẵn. Giữ `private.pk8` trên server trong parent `0700`, file `0600`; phát certificate

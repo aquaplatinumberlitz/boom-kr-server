@@ -359,6 +359,7 @@ pub struct Bridge {
     shared: Shared,
     ttl: Duration,
     random: fn(&mut [u8]) -> Result<()>,
+    patched_949x_names: bool,
 }
 impl Bridge {
     /// After an exact-token DB logout, retire only a registry entry belonging
@@ -451,7 +452,14 @@ impl Bridge {
             })),
             ttl,
             random: entropy,
+            patched_949x_names: false,
         })
+    }
+    /// Only enable for a deployment whose clients all carry the owner's 949x
+    /// patch. Defaults to the historical ASCII admission policy.
+    pub fn with_patched_949x_names(mut self, enabled: bool) -> Self {
+        self.patched_949x_names = enabled;
+        self
     }
     pub(crate) fn with_live_authorization(mut self, client: Client) -> Self {
         self.live = Some(client);
@@ -513,12 +521,9 @@ impl Bridge {
             }
         };
         let player = self.authorize(&guard).await?;
-        if !(3..=15).contains(&player.display_name.len())
-            || player.wire_id == 0
-            || !player
-                .display_name
-                .bytes()
-                .all(|b| b.is_ascii_alphanumeric() || b == b'_')
+        if player.wire_id == 0
+            || (!self.patched_949x_names && !player.display_name.is_ascii())
+            || kr_wire::kr00967::text949x::encode_name(&player.display_name).is_err()
         {
             return Err(Error::UnsupportedWire);
         }
@@ -681,7 +686,9 @@ impl Bridge {
             if entry.phase != Phase::Redirect
                 || entry.peer != peer
                 || owned.wire_id != identity.wire_id
-                || owned.display_name.as_bytes() != identity.name
+                || kr_wire::kr00967::text949x::encode_name(&owned.display_name)
+                    .map_err(|_| Error::UnsupportedWire)?
+                    != identity.name
             {
                 return Err(Error::Denied);
             }

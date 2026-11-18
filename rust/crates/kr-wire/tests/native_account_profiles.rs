@@ -57,3 +57,39 @@ fn candidate_new_names_and_wire_ids_are_consistent_across_all_three_packets() {
         assert_eq!(p.project_account(70000, name).unwrap(), q.player106);
     }
 }
+
+#[test]
+fn patched_names_use_native_lengths_and_identical_bytes_in_all_projections() {
+    use kr_wire::kr00967::{decode_bytes, text949x};
+    let t = AccountTemplate::parse(&hex(AUTH), &hex(OWN), &hex(PLAYER)).unwrap();
+    for text in ["Việt01", "한국02", "Việt한국", "ệệệệệệệ"] {
+        let name = text949x::encode_name(text).unwrap();
+        let n = name.len();
+        let q = t.project(70000, &name, 0x12345678).unwrap();
+        assert_eq!(read_uint(&q.auth[29..31], Width::U16).unwrap() as usize, n);
+        assert_eq!(decode_bytes(&q.auth[31..31 + n]).unwrap(), name);
+        assert_eq!(
+            read_uint(&q.auth[86 + n..90 + n], Width::U32).unwrap(),
+            0x12345678
+        );
+        let own = decode_bytes(&q.own291[5..5 + 108 + n]).unwrap();
+        assert_eq!(
+            u32::from_le_bytes(own[6..10].try_into().unwrap()) as usize,
+            n
+        );
+        assert_eq!(&own[10..10 + n], &name);
+        let profile = decode_bytes(&q.player106[20..20 + 108 + n]).unwrap();
+        assert_eq!(profile, own);
+        let outer = 20 + 108 + n + 3;
+        assert_eq!(
+            read_uint(&q.player106[outer..outer + 2], Width::U16).unwrap() as usize,
+            n
+        );
+        assert_eq!(
+            decode_bytes(&q.player106[outer + 2..outer + 2 + n]).unwrap(),
+            name
+        );
+        let parsed = PlayerTemplate::parse_account(&q.player106).unwrap();
+        assert_eq!(parsed.project_account(70000, &name).unwrap(), q.player106);
+    }
+}

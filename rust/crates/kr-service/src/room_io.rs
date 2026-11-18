@@ -906,8 +906,10 @@ impl Runtime {
             .ok_or_else(|| err("missing current player projection"))?
             .clone();
         let body = if let Some(authority) = owner {
-            crate::player_template::PlayerTemplate::parse(&reply.payload)?
-                .project_account(m.key.identity, authority.player().display_name.as_bytes())?
+            crate::player_template::PlayerTemplate::parse(&reply.payload)?.project_account(
+                m.key.identity,
+                &kr_wire::kr00967::text949x::encode_name(&authority.player().display_name)?,
+            )?
         } else {
             reply.payload
         };

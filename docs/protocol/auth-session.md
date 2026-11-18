@@ -43,7 +43,7 @@ CP235 baseline transport. Không import VN wire/accountserver hoặc suy diagnos
   (tables/indexes/triggers), quickcheck/FK/startupallocator; từ chối foreign/future/checksum/schema hỏng, không downgrade.
   Parent phải là directory riêng mode0700 dưới đường dẫn admin tin cậy, DBregular/nosymlink/mode0600; WAL/FULL,
   FK on/trusted_schema off, busy250ms. Không chống admin sửa DB/ancestorpath hoặc mã hóa DB.
-- Login backend ASCII3..32 alnum/underscore, lowercaseunique; displayname ASCII3..15 là policy nội bộ, chưa nativeprojection.
+- Login backend ASCII3..32 alnum/underscore, lowercaseunique; tên hiển thị giữ UTF-8 theo [policy biên tên](#rust-patched-account-names), admission native mặc định ASCII.
   Account→player1:1/FK, wireID allocator1..u32MAX riêng slot/accountID, không tái cấp qua reopen; tên đổi theo version CAS.
   Chưa character/XP/inventory. CLI account lookup/rename là admin, không quyền client tự khaiaccountID.
 - Password12..128bytes, randomsalt16bytes, Argon2id v19/m19456KiB/t2/p1/output32, PHC atrest; chỉ nhận đúng PHCparams/length
@@ -824,13 +824,29 @@ Nguồn: [M5b](../evidence/rust-service/m5b-dynamic-accounts.json) và
 **Contract và policy được giữ.** `account_admission.profile_mode=database_zero` lấy player ID, wire ID và tên từ DB
 sau xác thực session của chính account. Mỗi account mới không cần fixture, sửa config hoặc restart. Auth4, own291
 và card106 sinh từ một bộ template zero-profile đã đo; tên nằm ở cả hai vị trí card106, 98 byte hồ sơ ban đầu bằng 0.
-Tên ASCII chữ/số/gạch dưới dài 3–15 byte là policy backend; không suy nhánh Unicode, trang bị hoặc profile khác.
+Admission mặc định giữ tên ASCII chữ/số/gạch dưới dài 3–15 byte. Bản vá 949x có [policy biên tên riêng](#rust-patched-account-names);
+không suy trang bị hoặc profile khác.
 Mode `fixed` mặc định giữ fence cũ. `max_sessions` hữu hạn độc lập số fixture. Không dùng IP để chọn identity.
 
 Launcher riêng cấp frontend một lần từ session và player đã kiểm. Địa chỉ nguồn transport và địa chỉ client báo
 được lưu riêng theo chính owner; metadata báo khác phải do launcher có session cấp, không lookup một account khác
 theo IP. Channel6 vẫn kiểm name/wire ID/echo trước claim. Room card, slot, host, Ready, Start, round và hàng đợi gửi
 giữ membership/connection/visit; không thêm alias theo identity hoặc luật theo sức chứa.
+
+<a id="rust-patched-account-names"></a>
+**Tên account cho client đã vá 949x — design M8, chưa native acceptance.** DB lưu chuỗi UTF-8 nguyên văn,
+không normalize hoặc thay ký tự không biểu diễn được. Login account vẫn ASCII như trước. Tên hiển thị nhận
+chữ/số Unicode, gạch dưới và dấu kết hợp sau ký tự cơ sở, dài 3–15 **byte 949x**; từ chối whitespace, control,
+bidi, ký tự ngoài bảng và tên vượt giới hạn. Bảng 949x VERSION=1 dùng CP949 cộng extension của chủ dự án;
+codec Rust strict đối chiếu toàn bộ reference bằng [tool](../../tools/text949x_reference.py), không thay bằng UTF-8.
+
+`account_admission.patched_949x_names=true` chỉ được dùng với `database_zero` và toàn bộ client đã vá.
+Mặc định false từ chối cấp frontend cho tên ngoài ASCII; không tự đổi encoding theo IP/ngôn ngữ/identity.
+Auth4, own291, cả hai tên trong card106, Flow và kiểm tên channel6 dùng cùng byte 949x; độ dài/offset theo byte
+đã mã hóa. Channel vẫn so sánh đúng wire ID, name, echo và session owner; tên không cấp quyền cho account khác.
+Test SQLite/bridge giữ đúng revoke, một lần claim và generation cũ không xóa launch mới. Đó là kiểm code,
+chưa chứng minh native hiển thị tên Việt/Hàn hoặc tên phòng/chat xuyên suốt. [Metadata](../evidence/rust-service/m8-account-name-encoding.json)
+giữ kiểm và giới hạn; không sửa wire cho deployment client chưa vá.
 
 **Làn kiểm quyền trong trận.** Khi dùng profile DB, service mở một worker WAL riêng, queue 64 và TTL hàng đợi 1 giây,
 tách khỏi queue đăng nhập/admin. Mỗi kiểm vẫn đọc session/account hiện đã commit: revoke, disabled, credential,
@@ -914,8 +930,10 @@ không forward log có endpoint/error text. Mã gửi Winsock10040 đã đo; NIC
 Adapter client `portable` dùng Tokio send_to/recv_from, một datagram, không ancillary ECN/GSO; đã xác thực QUIC,
 chạy no-op child và logout trên Windows/Internet với DB0. `native` vẫn là mặc định; không tự fallback khi denied.
 So sánh chưa xác định ancillary field nào gây lỗi, không nới deadline hoặc bỏ fencing.
-Bản cài vi/en/ko mới có kiểm file và GUI Windows riêng; chưa có native identity, cùng phòng, chữ có dấu hoặc
-trận Internet trên gói này. Không dùng media cũ hoặc control stub làm acceptance gói mới.
+Bản cài vi/en/ko mới có kiểm file và GUI Windows riêng. Lượt vi data11 với loader control và portable UDP đã
+xác thực QUIC rồi qua auth1/profile4/netinfo9/redirect5/7/channel6/17 trên Internet; channel EOF trước request67.
+Ảnh sau lượt có popup locale2000:0 nhưng chưa chứng minh quan hệ nhân quả. VM/dịch vụ/rule đã dọn, DB0/logout1.
+Chưa có cùng phòng, tên có dấu hoặc trận Internet trên gói này; không dùng media cũ/control stub thay acceptance.
 
 GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).
 Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-tls-đang-triển-khai); không suy ca hai client có dấu đã đạt từ file.

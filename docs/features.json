@@ -483,7 +483,8 @@
           "docs/evidence/rust-service/r1g-admission.json",
           "docs/evidence/rust-service/m7d-account-ownership.json",
           "docs/evidence/rust-service/m5b-dynamic-accounts.json",
-          "docs/evidence/rust-service/m5b-native-recovery.json"
+          "docs/evidence/rust-service/m5b-native-recovery.json",
+          "docs/evidence/rust-service/m8-account-name-encoding.json"
         ]
       },
       "coverage": {
@@ -606,7 +607,10 @@
             "rust/crates/kr-service/src/account_serving.rs",
             "docs/protocol/auth-session.md#rust-account-serving",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/auth-session.md#rust-db-account-profiles"
+            "docs/protocol/auth-session.md#rust-db-account-profiles",
+            "docs/protocol/auth-session.md#rust-patched-account-names",
+            "rust/crates/kr-wire/src/kr00967/text949x.rs",
+            "tools/text949x_reference.py"
           ],
           "delivery": "via_pr"
         },

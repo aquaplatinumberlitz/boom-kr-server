@@ -6,12 +6,14 @@ import socket
 import subprocess
 import tempfile
 from server import probe_codec as codec
-from server.room_title import _encode_bytes
+from server.room_title import _encode_bytes, _decode_bytes
+from tools.l10n_949x import encode as encode949x
 
 
 class AccountFixture:
-    def __init__(self, admin, out, config):
+    def __init__(self, admin, out, config, patched_names=False):
         self.admin = admin.resolve()
+        self.patched_names = patched_names
         self.out = out.resolve()
         os.chmod(self.out, 0o700)
         self.database = self.out / 'accounts.sqlite'
@@ -39,6 +41,11 @@ class AccountFixture:
             self.sessions.append(grant['token'])
         config['diagnostic_two_lobby']['account_admission'] = dict(
             database=str(self.database), launch_socket=str(self.socket), launch_ttl_seconds=60)
+        if patched_names:
+            config['diagnostic_two_lobby']['account_admission']['patched_949x_names'] = True
+
+    def wire_name(self, player):
+        return encode949x(player['display_name']) if self.patched_names else player['display_name'].encode('ascii')
 
     def command(self, command):
         request = dict(actor='account-basic-synthetic', reason='isolated ownership regression', command=command)
@@ -53,6 +60,7 @@ class AccountFixture:
     def connect(self, role, login_port, channel_port, header, hello, client_type):
         peer = self.peers[role]
         player = self.players[role]
+        name = self.wire_name(player)
         request = dict(session=self.sessions[role], player_id=player['player_id'], peer=peer)
         with socket.socket(socket.AF_UNIX) as control:
             control.settimeout(4)
@@ -74,9 +82,11 @@ class AccountFixture:
                     +codec.pack_fields([0, int.from_bytes(socket.inet_aton(self.reported_peers[role]), 'little'), 0], [4, 4, 1]))
             login.send(1, body)
             _, auth = login.receive(4)
-            assert len(auth) == 130 + len(player['display_name'].encode()) and codec.read_fields(auth[:1], [1]) == [0]
+            assert len(auth) == 130 + len(name) and codec.read_fields(auth[:1], [1]) == [0]
             assert codec.read_fields(auth[25:29], [4]) == [player['wire_id']]
-            echo_offset = 86 + len(player['display_name'].encode())
+            assert codec.read_fields(auth[29:31], [2]) == [len(name)]
+            assert _decode_bytes(auth[31:31+len(name)]) == name
+            echo_offset = 86 + len(name)
             echo = codec.read_fields(auth[echo_offset:echo_offset+4], [4])[0]
             login.send(9, bytes(8))
             login.receive(15)
@@ -86,7 +96,6 @@ class AccountFixture:
         finally:
             login.close()
         channel = client_type(role, channel_port, header, hello)
-        name = player['display_name'].encode()
         body = (codec.pack_fields([1, 255, len(name)], [1, 1, 2])+_encode_bytes(name)
                 +codec.pack_fields([player['wire_id'], echo], [4, 4])
                 +codec.pack_fields([0]*8, [8, 1, 1, 1, 4, 4, 1, 4]))

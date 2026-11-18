@@ -163,11 +163,12 @@ fn login_body(secret: &str, peer: Ipv4Addr) -> Vec<u8> {
     out
 }
 fn channel_body(player: &Player, echo: u32) -> Vec<u8> {
+    let wire_name = kr_wire::kr00967::text949x::encode(&player.display_name).unwrap();
     let mut out = vec![];
     out.extend(write_uint(1, Width::U8).unwrap());
     out.extend(write_uint(255, Width::U8).unwrap());
-    out.extend(write_uint(player.display_name.len() as u64, Width::U16).unwrap());
-    let mut name = player.display_name.as_bytes();
+    out.extend(write_uint(wire_name.len() as u64, Width::U16).unwrap());
+    let mut name = wire_name.as_slice();
     while !name.is_empty() {
         let (n, w) = if name.len() >= 4 {
             (4, Width::U32)
@@ -184,8 +185,93 @@ fn channel_body(player: &Player, echo: u32) -> Vec<u8> {
     out.extend(write_uint(player.wire_id as u64, Width::U32).unwrap());
     out.extend(write_uint(echo as u64, Width::U32).unwrap());
     out.extend([0x8c; 24]);
-    out[31 + player.display_name.len()] = write_uint(0, Width::U8).unwrap()[0];
+    out[31 + wire_name.len()] = write_uint(0, Width::U8).unwrap()[0];
     out
+}
+
+#[test]
+fn patched_names_keep_exact_backend_owner_and_revoke_fences() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, a, b) = Temp::new();
+    let a = temp
+        .store()
+        .rename_player(&admin(), a.account_id, "Việt01", 1, now())
+        .unwrap();
+    let b = temp
+        .store()
+        .rename_player(&admin(), b.account_id, "한국02", 1, now())
+        .unwrap();
+    rt().block_on(async {
+        let w = worker(&temp).await;
+        let ga = grant(&w, "Alice").await;
+        let gb = grant(&w, "Bob").await;
+        let legacy = Bridge::new(w.client(), 2, Duration::from_secs(10)).unwrap();
+        assert!(matches!(
+            legacy.issue(&ga.token, a.player_id, PEER).await,
+            Err(Error::UnsupportedWire)
+        ));
+        assert!(lock(&legacy.shared).unwrap().entries.is_empty());
+        let bridge = Bridge::new(w.client(), 2, Duration::from_secs(10))
+            .unwrap()
+            .with_patched_949x_names(true);
+        let la = bridge.issue(&ga.token, a.player_id, PEER).await.unwrap();
+        let lb = bridge.issue(&gb.token, b.player_id, PEER).await.unwrap();
+        let login_a = bridge
+            .login(&login_body(la.token().expose_secret(), PEER), PEER, 1)
+            .await
+            .unwrap();
+        let login_b = bridge
+            .login(&login_body(lb.token().expose_secret(), PEER), PEER, 2)
+            .await
+            .unwrap();
+        let ca = channel_body(&a, login_a.echo);
+        let cb = channel_body(&b, login_b.echo);
+        let mut forged = a.clone();
+        forged.display_name = b.display_name.clone();
+        let wrong_name = channel_body(&forged, login_a.echo);
+        assert_eq!(
+            wire::channel_identity(&ca).unwrap().name,
+            [0x56, 0x69, 0xd2, 0x84, 0x74, 0x30, 0x31]
+        );
+        assert_ne!(
+            wire::channel_identity(&ca).unwrap().name,
+            a.display_name.as_bytes()
+        );
+        login_a.redirected().unwrap();
+        login_b.redirected().unwrap();
+        assert!(bridge.channel(&wrong_name, PEER, 3).await.is_err());
+        let mut ch_a = bridge.channel(&ca, PEER, 3).await.unwrap();
+        let mut ch_b = bridge.channel(&cb, PEER, 4).await.unwrap();
+        assert_eq!(ch_a.player, a);
+        assert_eq!(ch_b.player, b);
+        assert!(bridge.channel(&ca, PEER, 5).await.is_err());
+        temp.store().revoke(&admin(), a.account_id, now()).unwrap();
+        assert!(ch_a.check().await.is_err());
+        ch_b.check().await.unwrap();
+        drop(ch_a);
+        let fresh = grant(&w, "Alice").await;
+        let new_launch = bridge.issue(&fresh.token, a.player_id, PEER).await.unwrap();
+        drop(la); // Old generation cannot remove the fresh Unicode owner's issue.
+        assert!(bridge.channel(&ca, PEER, 6).await.is_err());
+        let new_login = bridge
+            .login(
+                &login_body(new_launch.token().expose_secret(), PEER),
+                PEER,
+                5,
+            )
+            .await
+            .unwrap();
+        let new_body = channel_body(&a, new_login.echo);
+        new_login.redirected().unwrap();
+        let mut new_channel = bridge.channel(&new_body, PEER, 6).await.unwrap();
+        new_channel.check().await.unwrap();
+        ch_b.check().await.unwrap();
+        drop(new_channel);
+        drop(ch_b);
+        drop(new_launch);
+        drop(lb);
+        w.shutdown().await.unwrap();
+    });
 }
 
 #[test]

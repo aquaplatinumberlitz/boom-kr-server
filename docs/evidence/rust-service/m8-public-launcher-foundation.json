@@ -264,6 +264,11 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/portable-workspace-tests-r1.log",
       "bytes": 33618,
       "sha256": "c5788281af8a724c4735bdcc6f2c0462310daa1b303889ffd975711477b5fee9"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-vi-r1.json",
+      "bytes": 2900,
+      "sha256": "cf64b76b478625ca92d2e214f2b95d2a98a6071277bbe6b1df866ffb856fcf6a"
     }
   ],
   "limits": [
@@ -286,5 +291,16 @@
     "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-install-ready-r6.json",
     "bytes": 1936,
     "sha256": "4f0c33acd75143e13f736e8137673e9ac8302da6a59b027a0a05b20932dcef6a"
+  },
+  "multilang_native_vi": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-vi-r1.json",
+      "bytes": 2900,
+      "sha256": "cf64b76b478625ca92d2e214f2b95d2a98a6071277bbe6b1df866ffb856fcf6a"
+    },
+    "status": "candidate",
+    "source": "kr_runtime",
+    "reached": "auth1/profile4/9/15/62/5/7/channel6/17; no request67",
+    "limits": "Derived loader-control exe in separate runtime folder; no room/gameplay. Popup locale cause unknown. VM/service/rules cleaned; active sessions0, logout1."
   }
 }

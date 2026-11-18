@@ -31,6 +31,12 @@ Adapter client `portable` opt-in giữ QUIC/TLS hiện hành nhưng gửi một 
 hoặc ancillary source-address. Capability/wire/owner không đổi; `native` vẫn mặc định. Windows control đã có
 positive riêng, chưa chứng minh mọi NIC/route hoặc native game.
 
+Biên tên account dùng `kr-wire::kr00967::text949x`, không đưa byte UTF-8 của DB thẳng vào profile KR.
+Dependency `encoding_rs =0.8.35` giữ bảng CP949/UHC thay vì tự viết bảng Hàn; phần mở rộng 949x VERSION=1
+lấy đúng thứ tự từ reference của chủ dự án. Codec strict đã đối chiếu toàn bộ 19.451 ký tự mà reference mã hóa
+được. DB giữ UTF-8 nguyên văn; admission mặc định vẫn ASCII. Chỉ deployment có toàn bộ client đã vá mới bật
+`patched_949x_names`. Đây là policy của công ty, không là profile Unicode của server KR gốc.
+
 ## Tra nhanh cho quyết định của công ty
 
 | Câu hỏi | Kết luận của đợt nghiên cứu |

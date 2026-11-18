@@ -9,6 +9,7 @@ mod bomb_motion;
 mod player;
 mod room;
 mod room_selection;
+pub mod text949x;
 pub use account::{AccountPackets, AccountTemplate, own291, with_identity_string};
 pub use battle::*;
 pub use bomb_motion::{BombAction119, BombMotion162, rebind158};
