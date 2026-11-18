@@ -153,26 +153,38 @@ worker-to-serving thiếu; inventory/reward/restore/load riêng. M3nativebaselin
 <a id="rust-ingame-login-feasibility"></a>
 ### LoginStage không token: kiểm khả thi M8
 
-Theo [chỉ đạo chủ dự án](../evidence/owner-directives/m8-ingame-login.json), phải đo đường nhập 1P/2P và
-chơi thử trước khi đổi launcher. [CP339](../evidence/rust-service/m8-ingame-login-feasibility.json) đã mở được
-LoginStage không token trên bản ko949x có control tương thích; đó chưa là kết luận không khả thi hoặc cần vá lớn.
-[Đối chứng input](../evidence/rust-service/m8-login-input-controls.json) giữ cả cấu hình âm và bản thử mới.
+Theo [chỉ đạo chủ dự án](../evidence/owner-directives/m8-ingame-login.json), bước kiểm khả thi phải đi trước
+thay đổi launcher. [Bằng chứng native CP341](../evidence/rust-service/m8-login-stage-manual.json) đã đạt bước này
+trên **bản tương thích riêng ko949x**, không chứng nhận DB, gameplay hoặc client KR nguyên bản.
 
-`kr_static/confirmed` trên bytes hiện hành: sự có mặt của `multiserveridx` đặt cờ qua `122AE30(1)`;
-nhánh web trong constructor đặt `stage+2FE4=1`, khóa edit và roster. Không có tham số đảo cờ trong setter đã đo;
-chưa chứng minh mọi đường cấu hình mã hóa. `kr_runtime/confirmed`: nút Xác nhận trên bản cũ gọi được handler
-thủ công và phát opcode 60, nhưng chưa có opcode 1; dòng lệnh rỗng hoặc marker cùng fallback trước LoginStage.
-Lỗi locale của CALauncher không chứng minh nguyên nhân lỗi main.
+[Đối chứng CP340](../evidence/rust-service/m8-login-input-controls.json) phục hồi cờ web: có `multiserveridx`
+thì đặt cờ global qua `122AE30(1)` và constructor khóa edit/roster ở `stage+2FE4`. Bỏ tham số hoặc dùng marker
+cùng fallback trước LoginStage; popup locale thuộc CALauncher không là cause main đã xác nhận.
+Copy thử đổi một byte khóa UI đã nhập được 1P, nhưng builder web vẫn tìm token rỗng và hiện “Invalid Login!”.
+Bytes hiện hành `13ADE40` nối đúng literal và nhánh token/manual, giữ cả lỗi native khi đóng hộp.
 
-Bản thử **đổi đúng một byte** immediate của khóa UI từ 1 về 0, giữ startup/global web flag, code đọc field và
-xác thực server. `kr_runtime/confirmed` riêng trên bản đã sửa: UI nhận ID giả và mật khẩu được che, thao tác edit
-bật Xác nhận rồi gọi handler thủ công. Client hiện “Invalid Login!” trước opcode 1; đóng hộp rồi lỗi native
-`E06D7363`. Chưa có gói credential 1P/2P hoặc chơi thử, không lấy layout VN làm schema KR và không gọi đây là
-hành vi client gốc. Nhánh web/manual của builder là giả thuyết tiếp, chưa là cause đã xác nhận.
+Copy manual kế tiếp giữ startup/server selection, chọn **hai nhánh manual đã có** của builder; tổng bảy byte khác
+baseline trước nhóm. Copy hiện trial thêm sáu byte ở branch policy hiển thị; handler và UI có sẵn, không thêm màn
+đăng nhập, serializer hoặc giả kết quả server. Recipe/source/result SHA và rollback giữ tại evidence. Đây là lựa chọn
+tương thích `design`, không suy mọi đường cấu hình mã hóa đã được loại trừ hoặc bản gốc có UI trial như vậy.
 
-**Chưa đạt kiểm khả thi.** Tiếp quan sát có mục tiêu, giữ các thay đổi phụ thuộc về auth, guest, prelogin tunnel,
-launcher và dịch lỗi chưa mở; đường token hiện có vẫn được giữ. Bộ thu loopback chỉ gửi hello/WCP, không gửi
-kết quả xác thực. Tất cả lượt đã dừng, xuất bằng chứng và tự dọn overlay/seed; raw/failure CP339 giữ bất biến.
+`kr_runtime/confirmed`, riêng các input ASCII dài 8 byte đã đo:
+
+| Thao tác UI gốc | Request client đã thu và kiểm CRC/sequence |
+|---|---|
+| Nhập ID/mật khẩu 1P rồi Xác nhận | Opcode 1, frame 85/body 47, typed u8 đầu `0,1`; một cặp chuỗi |
+| Chọn 2P, nhập hai cặp rồi Xác nhận | Opcode 1, frame 105/body 67, typed u8 đầu `0,2`; hai cặp chuỗi |
+| Bấm chơi thử 1P hoặc 2P | Opcode 62, frame 63/body 25; typed u8 đầu `1` hoặc `2`, còn 24 byte giống nhau trong lượt đo |
+
+Mỗi chuỗi credential bắt đầu bằng typed u16 length; native string codec đã có dùng key `11223344` cho ID,
+`44332211` cho password. Giải mã độc lập khớp đủ field giả đã gõ. Sau các cặp còn 25 byte trong opcode 1;
+chưa có grammar/authority đầy đủ cho đuôi, độ dài khác, Unicode credential hoặc mọi lỗi/retry. Opcode 62 là request
+trial quan sát được, chưa chứng minh account khách, đáp ứng server hay vào phòng.
+
+**Bước khả thi đạt trong phạm vi copy đã khai báo.** Mở tiếp parser/DB M5 cho 1P/2P, guest và companion TLS
+prelogin có bounds theo owner; giữ token dự phòng cho tới khi có native xuyên suốt. Bộ thu chỉ gửi hello/WCP,
+không gửi kết quả xác thực. Lượt gộp giữ receipt collector stopped và VM/service cleanup; hai lượt dừng owner sớm
+thiếu receipt cuối được khai riêng, không nâng thành clean native logout. CP339/CP340/raw/manifests giữ bất biến.
 
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014

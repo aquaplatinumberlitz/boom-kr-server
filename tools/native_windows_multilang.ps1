@@ -156,7 +156,13 @@ try{
   # This is a harness cancellation, never a native UI logout acceptance.
   if($control.ingame_login_probe){
    $report.termination='direct_native_harness_cancellation'
-   $null=& taskkill.exe /PID $p.Id /T /F 2>&1
+   # The debugger can exit at its own bound between HasExited and taskkill.
+   # Keep this outcome visible without PowerShell's native stderr exception
+   # skipping the subsequent owned-process wait and cleanup.
+   $killOutput=& $env:ComSpec /d /s /c ('taskkill.exe /PID '+$p.Id+' /T /F 2>&1')
+   $report.native_taskkill_exit=$LASTEXITCODE
+   $report.native_taskkill_output=($killOutput|Out-String)
+   $report.native_exited_after_taskkill=$p.HasExited
   }else{[IO.File]::WriteAllText($cancel,'observation_deadline')}
   $report.cancel_requested_utc=[DateTime]::UtcNow.ToString('o');Save-Report
   if(-not $p.WaitForExit(15000)){

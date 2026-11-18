@@ -34,5 +34,13 @@
     ]
   },
   "preserved": "All completed records, run manifests and original raw remain byte-identical. No native/client/auth acceptance inferred.",
-  "full_gate": "pending on corrected frozen head"
+  "full_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r5/result.json",
+    "bytes": 1753,
+    "sha256": "045f518b600054898ee529bc57ee24486638d4ac00993e03423d8d40dc47ba65",
+    "tested_commit": "1790cce0d2121a7a90ce6052539ede8315a91919",
+    "ok": true,
+    "evidence_verified": 580117,
+    "errors": 0
+  }
 }

@@ -20,7 +20,7 @@ typedef struct { DWORD thread; int point; } Step;
 static HANDLE process;
 static FILE *output;
 static ULONGLONG began;
-#define POINT_COUNT 27
+#define POINT_COUNT 31
 static Point points[POINT_COUNT];
 static Step steps[64];
 static unsigned calls;
@@ -174,7 +174,11 @@ int wmain(int argc, wchar_t **argv) {
                                || !install_expected(23,0x1101b70,"roster_select",(const BYTE *)"\x55\x8b\xec\x51\x89\x4d\xfc\x8b",8)
                                || !install_expected(24,0x1101690,"controls_enable",(const BYTE *)"\x55\x8b\xec\x83\xec\x0c\x89\x4d",8)
                                || !install_expected(25,0x1101e20,"manual_confirm",(const BYTE *)"\x55\x8b\xec\x83\xec\x08\x89\x4d",8)
-                               || !install_expected(26,0x1104090,"trial_confirm",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x2c\x23",8)) done=1;
+                               || !install_expected(26,0x1104090,"trial_confirm",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x2c\x23",8)
+                               || !install_expected(27,0x13adf3b,"builder_web_selection",(const BYTE *)"\x85\xc0",2)
+                               || !install_expected(28,0x13ae224,"record_web_selection",(const BYTE *)"\x85\xc0",2)
+                               || !install_expected(29,0x13ae24a,"manual_record_writer",(const BYTE *)"\xe8\x91\xe5\x1a\xff\x89\x45\x94",8)
+                               || !install_expected(30,0x13ae109,"invalid_login_notice",(const BYTE *)"\x68\x84\x8f\x78\x01\x6a\x00\xff",8)) done=1;
                             fprintf(output,"{\"event\":\"login_input_probes_installed\",\"result_mutation\":false,\"secret_reads\":false}\n");
                         } else if(startup_guard_probe) {
                             /* Exact current vi/ko WinMain bytes are pinned by
@@ -225,7 +229,7 @@ int wmain(int argc, wchar_t **argv) {
                                     fprintf(output,",\"dialog_vtable\":\"0x%lx\"",table);
                             }
                             if(which>=17 && which<=20) fprintf(output,",\"eax\":%lu",context.Eax);
-                            if(which>=21) {
+                            if(which>=21 && which<=26) {
                                 DWORD selected=0;
                                 if(context.Ecx>=0x2000000 && context.Ecx<0x70000000
                                    && read_u32(context.Ecx+0x1270,&selected) && selected<=2)
@@ -236,6 +240,13 @@ int wmain(int argc, wchar_t **argv) {
                                     fprintf(output,",\"automatic_input_lock_2fe4\":%lu",automatic);
                                 if((which==23 || which==24) && socket<=2)
                                     fprintf(output,",\"argument1\":%lu",socket);
+                            }
+                            if(which>=27) {
+                                DWORD count=0;
+                                if(read_u32(context.Ebp-0x24,&count) && count<=2)
+                                    fprintf(output,",\"credential_count\":%lu",count);
+                                if((which==27 || which==28) && context.Eax<=1)
+                                    fprintf(output,",\"web_selection\":%lu",context.Eax);
                             }
                             if(which>=11 && which<=16) {
                                 DWORD object=0,flags=0,table=0,target=0;

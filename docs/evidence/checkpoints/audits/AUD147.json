@@ -1,0 +1,75 @@
+{
+  "id": "AUD147",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "m8-ingame-login-feasibility"
+  ],
+  "completed_through": "CP341",
+  "recorded_utc": "2026-11-18T17:09:01.996131+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/protocol/auth-session.md",
+    "docs/RESEARCH.md",
+    "docs/evidence/rust-service/m8-login-stage-manual.json",
+    "docs/evidence/owner-directives/m8-ingame-login.json",
+    "docs/evidence/rust-service/m8-login-input-controls.json",
+    "local/research/codex/m8-ingame-login-builder-r1/feasibility-result.json",
+    "local/research/codex/m8-ingame-login-builder-r1/current-builder-code-comparison.json",
+    "local/research/codex/m8-ingame-login-builder-r1/manual-route-control.json",
+    "local/research/codex/m8-ingame-login-builder-r1/trial-ui-control.json",
+    "local/research/codex/m8-multilang-windows-native-login-manual-route-r51/native-login-capture.jsonl",
+    "local/research/codex/m8-multilang-windows-native-login-grouped-r54/native-login-capture.jsonl",
+    "local/research/codex/m8-multilang-windows-native-login-grouped-r54/native-windows-install.json"
+  ],
+  "method": "Codex tự audit nhóm owner step1: đối chiếu điều kiện no-token/cấu hình trước và tránh vá lớn, UI gốc/input records, exact code bytes/recipe branch và native count/writer; độc lập CRC và giải mã từng field giả. Đối chiếu positive2P r51 và grouped1P/trial r54 với failure gốc và final collector/VM/service cleanup. Không độc lập review, không đóng implementation M8.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "CP339/CP340 thiếu gói được diễn giải quá rộng thành phải chờ owner hoặc cần vá lớn.",
+      "correction": "Khôi phục scope feasibility đã được cấp; đo cờ khóaUI và builder web-token, chọn đúng nhánh manual đã có bằng thay đổi nhỏ trên copy. Giữ bất biến record/raw cũ và các failure.",
+      "fixed_in": [
+        "docs/protocol/auth-session.md",
+        "docs/PLAN.md",
+        "docs/evidence/rust-service/m8-login-stage-manual.json"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Gửi input hoặc thấy handler không chứng minh credential/trial packet.",
+      "correction": "Giữ input/capture trước confirm, numeric roster/count/writer và actual bytes. Hai cặp2P và cặp1P giải mã khớp đúng input giả; opcode62 native1P/2P có count tương ứng và CRC. Không suy auth success từ collector.",
+      "fixed_in": [
+        "docs/protocol/auth-session.md",
+        "docs/evidence/rust-service/m8-login-stage-manual.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "Dừng owner sớm có VMstop nhưng thiếu collector stopped; debugger/taskkill race làm reportfailed.",
+      "correction": "Giữ hai failure receipt; groupedr54 để guest150s kết thúc trước debugger180s, thu exit/outputtaskkill, finalphasefinished/collector stopped rồi export/stoppedVM/service và cleanup. Native exit1 do harness cancellation, không cleanlogout.",
+      "fixed_in": [
+        "tools/native_windows_multilang.ps1",
+        "docs/evidence/rust-service/m8-login-stage-manual.json"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "PowerShell tool source đã pin CP339 đổi hợp lệ nhưng checker chưa có publication support.",
+      "correction": "Đối chiếu đúng source/blob/declaration lúc công bố; kiểm âm laterblob/wrongSHA/manifestbroken/artifact/local strict. Gate1790cce đạt580117 evidence/history và0errors; không sửa CP339.",
+      "fixed_in": [
+        "tools/check_checkpoints.py",
+        "tools/test_checkpoint_source_history.py",
+        "docs/evidence/checkpoints/powershell-source-correction.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Exact publication gate cho CP341 và CI trước merge; các kiểm17/70/CWerror đã có, không là native oracle.",
+    "Chưa có DBauth cho1P/2P, hai account trên một transport, guestaccount/reply, TLSprelogin/rate/expiry/revoke. Không thaylaunchertrước các nền này.",
+    "Bounds native ngoài chuỗiASCII8byte, đuôi request, authreplycount2 và guestreply cần native/RE đúng câu hỏi; không nhập schemaVN.",
+    "Launcher account-management/visual cherry-picks/lỗi3ngôn ngữ, gói cuối và mọi M8Internet/load/restore/soak acceptance còn mở.",
+    "Raw và binaries private chỉ ởlocal; source/L1/exporter/VPSconfig không đổi hoặc public."
+  ]
+}

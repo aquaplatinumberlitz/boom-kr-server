@@ -33,12 +33,12 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP340: đã mở nhập liệu LoginStage trên bản thử một byte; gói đăng nhập còn vướng.**
-[Đối chứng cấu hình và UI](docs/evidence/rust-service/m8-login-input-controls.json) xác định cờ tự đăng nhập
-khóa ô nhập và roster. Bản sao riêng đổi một byte đã nhận ID/mật khẩu 1P qua UI gốc, nhưng Xác nhận hiện
-“Invalid Login!” trước opcode 1; đóng hộp dẫn tới lỗi native. Chưa đo được gói 2P hoặc chơi thử.
-Tiếp kiểm nhánh dựng gói theo [Bảng điều hành](docs/PLAN.md#dashboard); chưa thay auth hoặc launcher, giữ token.
-Các lượt đã xuất bằng chứng, dừng VM/service và tự dọn scratch; bản gốc và evidence CP339 được giữ.
+**CP341: kiểm khả thi LoginStage đạt trên bản tương thích riêng; chưa xác thực DB.**
+[Bằng chứng native](docs/evidence/rust-service/m8-login-stage-manual.json): UI gốc nhận ID/mật khẩu 1P/2P,
+phát opcode 1 và giải mã khớp toàn bộ dữ liệu giả đã gõ; nút chơi thử 1P/2P phát opcode 62.
+Bản sao dùng các thay đổi nhỏ có recipe/rollback để chọn đường manual sẵn có và hiện nút trial; không suy
+hành vi bản gốc hoặc đăng nhập thành công. Tiếp xác thực DB, khách và prelogin TLS theo [Bảng điều hành](docs/PLAN.md#dashboard),
+rồi mới thay launcher. Đường token được giữ; mọi VM/service đã dừng và scratch được dọn, lỗi lượt cũ giữ nguyên.
 M8 và các acceptance còn lại vẫn mở theo [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
