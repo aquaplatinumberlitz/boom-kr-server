@@ -35,15 +35,26 @@ MUTABLE_METADATA_DOCS = {
 
 
 def audit_core_read_order(read_files):
-    """Rules may be read first; core audit docs must still be contiguous/in order.
+    """Keep the core pass ordered, including chapters of the protocol index.
 
     Immutable AUD057 explicitly records AGENTS before the required core pass.
-    Do not reorder the retained audit merely to satisfy the checker.
+    PROTOCOL.md is an index after the documentation split. Its canonical
+    topic chapters may be read immediately after it, before RESEARCH.md.
+    Other interleaved files and reordered/missing core docs remain invalid.
+    Do not reorder retained audits merely to satisfy the checker.
     """
     if not isinstance(read_files, list):
         return False
     offset = 1 if read_files[:1] == ['AGENTS.md'] else 0
-    return read_files[offset:offset + 4] == list(CORE_DOCS)
+    for expected in CORE_DOCS:
+        if offset >= len(read_files) or read_files[offset] != expected:
+            return False
+        offset += 1
+        if expected == 'docs/PROTOCOL.md':
+            while (offset < len(read_files) and isinstance(read_files[offset], str)
+                   and re.fullmatch(r'docs/protocol/[a-z0-9-]+\.md', read_files[offset])):
+                offset += 1
+    return True
 
 
 HASH_CACHE_PATH = Path("local/cache/checkpoint-digest-cache.json")

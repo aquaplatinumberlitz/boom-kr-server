@@ -54,6 +54,11 @@ findings/sửa ở đâu và remaining. Checkpoint hoàn tất nhóm khai `compl
 một audit cùng checkpoint cho nhóm đã khai hoàn tất. PLAN vẫn là nguồn scope/thứ tự, không nhân bản thành plan nhóm riêng.
 Không dùng chạy script thay audit thủ công; checker không tự biết nhóm đã hoàn tất về mặt ngữ nghĩa.
 
+Khi đọc PROTOCOL là chỉ mục, có thể đọc ngay các chương chuẩn `docs/protocol/*.md` liên quan trước khi chuyển
+sang RESEARCH; đó vẫn là một pha đọc PROTOCOL. README, PLAN, PROTOCOL và RESEARCH phải đủ và đúng thứ tự;
+file ngoài chương protocol chen giữa vẫn lỗi. [Đối chứng thứ tự](audit-protocol-order-correction.json) giữ audit
+đã công bố và lỗi validator cũ; không sắp xếp lại audit bất biến để làm kiểm qua.
+
 Mâu thuẫn nghiêm trọng vẫn audit ngay bằng `serious_contradiction`, không tự coi đó là audit hoàn tất nhóm chưa kiểm.
 AUD001 initial và mọi audit/record/raw lịch sử giữ nguyên. `audit_policy` pin chỉ đạo/chuyển tiếp sauCP256;
 `audit_interval`/`next_periodic_audit` hiện là null, `last_periodic_audit=256` chỉ là counter lịch sử.
