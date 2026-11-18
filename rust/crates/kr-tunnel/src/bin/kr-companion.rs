@@ -132,8 +132,21 @@ async fn main() {
         let os_error = error
             .raw_os_error()
             .map_or("null".to_owned(), |code| code.to_string());
+        let transport_error = error
+            .get_ref()
+            .and_then(|inner| inner.downcast_ref::<quinn::ConnectionError>())
+            .map_or("unclassified", |error| match error {
+                quinn::ConnectionError::VersionMismatch => "version_mismatch",
+                quinn::ConnectionError::TransportError(_) => "transport",
+                quinn::ConnectionError::ConnectionClosed(_) => "connection_closed",
+                quinn::ConnectionError::ApplicationClosed(_) => "application_closed",
+                quinn::ConnectionError::Reset => "reset",
+                quinn::ConnectionError::TimedOut => "timed_out",
+                quinn::ConnectionError::LocallyClosed => "locally_closed",
+                quinn::ConnectionError::CidsExhausted => "cids_exhausted",
+            });
         eprintln!(
-            "{{\"event\":\"companion_failed\",\"stage\":\"{stage}\",\"os_error\":{os_error}}}"
+            "{{\"event\":\"companion_failed\",\"stage\":\"{stage}\",\"os_error\":{os_error},\"transport_error\":\"{transport_error}\"}}"
         );
         std::process::exit(1);
     }

@@ -66,6 +66,19 @@ def main():
     def save():
         (out / 'owner-status.json').write_text(json.dumps(record, indent=2) + '\n')
 
+    def container_running():
+        # Retry only a read-only status query, never Docker create/start or
+        # guest input. A transient daemon timeout does not prove VM exit.
+        for attempt in range(2):
+            try:
+                state = subprocess.run(['docker', 'inspect', '--format', '{{.State.Running}}', name],
+                                       capture_output=True, text=True, timeout=5)
+                return state.returncode == 0 and state.stdout.strip() == 'true'
+            except subprocess.TimeoutExpired:
+                record.setdefault('container_status_timeouts', []).append(dict(epoch=time.time(), attempt=attempt + 1))
+                save()
+        raise TimeoutError('Owned container status unavailable after two bounded observations')
+
     def qmp(command):
         previous = Path.cwd()
         try:
@@ -141,9 +154,7 @@ def main():
                     raise RuntimeError('Candidate stopped before service start')
                 if time.monotonic() >= deadline:
                     raise TimeoutError('Installation readiness deadline')
-                state = subprocess.run(['docker', 'inspect', '--format', '{{.State.Running}}', name],
-                                       capture_output=True, text=True, timeout=5)
-                if state.stdout.strip() != 'true':
+                if not container_running():
                     raise RuntimeError('VM stopped before installation readiness')
                 time.sleep(.5)
             record['waiting_for_install_ready'] = False
@@ -175,9 +186,7 @@ def main():
         while not stopped and not (out / 'stop-requested').exists() and time.monotonic() < deadline:
             if remote.poll() is not None:
                 raise RuntimeError('Remote candidate ended')
-            result = subprocess.run(['docker', 'inspect', '--format', '{{.State.Running}}', name],
-                                    capture_output=True, text=True, timeout=5)
-            if result.returncode or result.stdout.strip() != 'true':
+            if not container_running():
                 raise RuntimeError('Owned VM container ended')
             time.sleep(.5)
     except Exception as error:
