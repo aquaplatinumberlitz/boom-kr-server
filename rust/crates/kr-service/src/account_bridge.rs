@@ -1,6 +1,7 @@
 //! Company-designed backend→KR admission seam, NOT recovered KR authentication.
 //! Library only: no listener, launcher API, dynamic profile writer or socket adapter.
 //! Source: docs/PROTOCOL.md#rust-account-bridge. Field36 is only a correlator.
+pub mod ingame_wire;
 pub mod wire;
 use crate::{
     account_worker::{self, Client},

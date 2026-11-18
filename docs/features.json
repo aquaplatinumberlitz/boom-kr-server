@@ -6166,7 +6166,8 @@
             "tools/native_windows_pair.ps1",
             "tools/native_wine_pair.py",
             "tools/native_login_capture.cs",
-            "docs/protocol/auth-session.md#rust-ingame-login-feasibility"
+            "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
+            "rust/crates/kr-service/src/account_bridge/ingame_wire.rs"
           ],
           "delivery": "via_pr"
         },

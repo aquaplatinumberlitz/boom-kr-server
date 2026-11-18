@@ -181,6 +181,13 @@ Mỗi chuỗi credential bắt đầu bằng typed u16 length; native string cod
 chưa có grammar/authority đầy đủ cho đuôi, độ dài khác, Unicode credential hoặc mọi lỗi/retry. Opcode 62 là request
 trial quan sát được, chưa chứng minh account khách, đáp ứng server hay vào phòng.
 
+Parser thư viện `account_bridge::ingame_wire` đọc hai loại request này với giới hạn `design`: tối đa hai người,
+ID tối đa 32 byte ASCII chữ/số/underscore và password tối đa 128 byte ASCII in được. Đây không phải giới hạn
+edit control đã đo. Secret dùng zeroize và không có Debug/Clone/Serialize; tail 16 byte giữ opaque, địa chỉ báo
+là metadata không tin cậy. Các vector native record và kiểm âm truncation/count/length/byte điều khiển đã đạt;
+parser **chưa nối listener**, không cấp session hoặc thay policy password tối thiểu của DB M5. Caller phải xóa
+buffer nguồn và chỉ mở route password sau khi admission TLS prelogin có bounds được kiểm.
+
 **Bước khả thi đạt trong phạm vi copy đã khai báo.** Mở tiếp parser/DB M5 cho 1P/2P, guest và companion TLS
 prelogin có bounds theo owner; giữ token dự phòng cho tới khi có native xuyên suốt. Bộ thu chỉ gửi hello/WCP,
 không gửi kết quả xác thực. Lượt gộp giữ receipt collector stopped và VM/service cleanup; hai lượt dừng owner sớm
