@@ -190,7 +190,8 @@ buffer nguồn và chỉ mở route password sau khi admission TLS prelogin có 
 
 **Bước khả thi đạt trong phạm vi copy đã khai báo.** Mở tiếp parser/DB M5 cho 1P/2P, guest và companion TLS
 prelogin có bounds theo owner; giữ token dự phòng cho tới khi có native xuyên suốt. Bộ thu chỉ gửi hello/WCP,
-không gửi kết quả xác thực. Lượt gộp giữ receipt collector stopped và VM/service cleanup; hai lượt dừng owner sớm
+không gửi kết quả xác thực. [Receipt kiểm/source và lưu trữ](../evidence/rust-service/m8-login-step1-verification.json) giữ head gate và giới hạn.
+Lượt gộp giữ receipt collector stopped và VM/service cleanup; hai lượt dừng owner sớm
 thiếu receipt cuối được khai riêng, không nâng thành clean native logout. CP339/CP340/raw/manifests giữ bất biến.
 
 <a id="login-auth"></a>

@@ -25,5 +25,14 @@
     "tests": 105,
     "limits": "Schema/order/history regression only, no audit semantic or native certification."
   },
-  "full_gate": "pending corrected frozen head"
+  "full_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r8/result.json",
+    "bytes": 2417,
+    "sha256": "43e1f43ec7928884d8400adc91cc9a0169f8aba8f0a961676cb1c93ca62d6a4f",
+    "tested_commit": "ffc2ec113d4e46e4659ea12b9e550d652f912eef",
+    "ok": true,
+    "evidence_verified": 580279,
+    "history_verified": true,
+    "errors": 0
+  }
 }
