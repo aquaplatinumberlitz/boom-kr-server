@@ -1,4 +1,4 @@
-param([ValidateRange(30,600)][int]$WaitSeconds=300,[switch]$Resume,[switch]$DiagnosticLauncher,[switch]$SocketProbe,[switch]$NetworkControl)
+param([ValidateRange(30,600)][int]$WaitSeconds=300,[switch]$Resume,[switch]$DiagnosticLauncher,[switch]$SocketProbe,[switch]$NetworkControl,[switch]$WarmCompanion)
 # Private native candidate installer; no native success inferred from readiness.
 $ErrorActionPreference='Stop'
 $report=[ordered]@{schema='kre-m8-native-windows-install-v2';start_utc=[DateTime]::UtcNow.ToString('o');phase='starting';limits='Installation/process observations only. KR login/gameplay needs native window/wire/account/journal evidence.'}
@@ -55,7 +55,9 @@ try {
  $address=Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.IPAddress -ne '127.0.0.1' -and $_.IPAddress -notlike '169.254.*'} | Select-Object -First 1
  if(-not $address){throw 'Guest IPv4 missing'}
  $configPath=Join-Path $root 'player-config.json'
- $config=Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
+ # Derive every resume from the pinned media config. Diagnostic wrappers must
+ # not accumulate in an installed config left by an earlier measurement.
+ $config=Get-Content -LiteralPath (Join-Path $seed 'scripts\player-config.json') -Raw | ConvertFrom-Json
  # Login metadata describes the guest NIC; companion receives the native
  # packets on loopback. These addresses have different ownership and purpose.
  $config | Add-Member -NotePropertyName reported_login_ipv4 -NotePropertyValue $address.IPAddress -Force
@@ -87,6 +89,21 @@ try {
   $report.socket_probe=[ordered]@{sha256=$probeHash;limits='Owned debug child; software breakpoints may perturb behavior. Not installed launcher/native acceptance.'}
  }
  [IO.File]::WriteAllText($configPath,($config | ConvertTo-Json -Depth 5))
+ if($WarmCompanion){
+  $warm=New-Object Diagnostics.ProcessStartInfo
+  $warm.FileName=$config.companion
+  if(-not [IO.Path]::IsPathRooted($warm.FileName)){$warm.FileName=Join-Path $root $warm.FileName}
+  $warm.WorkingDirectory=$root;$warm.UseShellExecute=$false
+  $warm.RedirectStandardInput=$true;$warm.RedirectStandardOutput=$true;$warm.RedirectStandardError=$true
+  $child=New-Object Diagnostics.Process;$child.StartInfo=$warm
+  $watch=[Diagnostics.Stopwatch]::StartNew()
+  if(-not $child.Start()){throw 'Companion startup control did not start'}
+  $child.StandardInput.Write('{}');$child.StandardInput.Close()
+  if(-not $child.WaitForExit(45000)){$child.Kill();$child.WaitForExit();throw 'Companion startup control deadline'}
+  $watch.Stop();$stdout=$child.StandardOutput.ReadToEnd();$stderr=$child.StandardError.ReadToEnd()
+  $report.companion_startup_control=[ordered]@{elapsed_ms=$watch.ElapsedMilliseconds;exit=$child.ExitCode;stdout=$stdout;stderr=$stderr;limits='Malformed-input startup only; no network authentication or native acceptance.'}
+  if($child.ExitCode -ne 1 -or $stdout -ne '' -or ($stderr | ConvertFrom-Json).stage -ne 'installation'){throw 'Companion startup control unexpected result'}
+ }
  $report.phase='install_ready';Save-Report
  Write-Output ('M8_INSTALL_READY files='+$checked)
  $deadline=[DateTime]::UtcNow.AddSeconds($WaitSeconds)

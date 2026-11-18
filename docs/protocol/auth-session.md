@@ -913,8 +913,11 @@ giữ hook ngôn ngữ/asset, đã tới9 → redirect5/7 → channel6/17 trên 
 `CALauncher Process!!`; chưa chứng minh nguyên nhân đóng. Companion exit1 khi native còn chạy; server ghi
 `account_lease_ended` và validation báo `registry_lookup` sau channel EOF. Capture VPS thấy FIN tới trước
 payload request6, nhưng sequence FIN đã tính đủ 83 byte request; thứ tự tới không chứng minh thứ tự phát ở guest.
-Chưa có bằng chứng lỗi DB. Lượt capture guest/VPS tiếp chỉ thấy Windows phát FIN sau greeting login trước request1,
-chưa tái hiện channel6/17. Phép đo tiếp dùng debugger trên bản copy để lấy caller đóng socket; phải đối chiếu
-cùng protocol stage trước khi suy nguyên nhân channel. Không tự bỏ fencing hoặc coi đây là expiry đã đo. Nhóm M8 vẫn mở; các run lỗi trước giữ riêng, không đổi thành pass.
+Chưa có bằng chứng lỗi DB. Capture guest/VPS và service events tiếp chỉ thấy Windows đóng các socket
+khởi động/WCP, chưa có auth1; port được dùng lại không tự phân biệt startup và auth. Control UDP tới được VPS.
+Companion có lỗi khi mở executable lần đầu; lượt executable đã được đọc vào cache xác thực được và chạy probe KR,
+đo shutdown1 qua wrapper teardown `14F46B0` rồi cleanup/UD2, chưa tái hiện channel6/17. Probe là can thiệp debugger,
+chưa có return chain cao hơn hoặc nguyên nhân. Phép đo tiếp lấy startup companion có giới hạn, return-site
+candidates và inherited flag/error; phải đối chiếu cùng protocol stage trước khi suy nguyên nhân channel. Không tự bỏ fencing hoặc coi đây là expiry đã đo. Nhóm M8 vẫn mở; các run lỗi trước giữ riêng, không đổi thành pass.
 
 <!-- protocol-topic-content-end -->

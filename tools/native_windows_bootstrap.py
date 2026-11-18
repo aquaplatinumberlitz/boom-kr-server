@@ -26,6 +26,7 @@ def main():
     parser.add_argument('--diagnostic-launcher', action='store_true')
     parser.add_argument('--socket-probe', action='store_true')
     parser.add_argument('--network-control', action='store_true')
+    parser.add_argument('--warm-companion', action='store_true')
     parser.add_argument('--keep-console', action='store_true', help='Retain PowerShell output for script failure diagnosis')
     parser.add_argument('--windows-credentials', type=Path,
                         help='Optional private local VM login/password; never project account input')
@@ -155,6 +156,9 @@ def main():
             command += ' -s'
         if args.network_control:
             command += ' -n'
+        if args.warm_companion:
+            # -w is ambiguous with WaitSeconds in the seed script.
+            command += ' -warm'
         image = step('clear-command', [dict(op='click', xy=[229, 622], wait_seconds=1),
                                         dict(op='key', key='home', hold_ms=200, wait_seconds=1),
                                         dict(op='key', key='shift-end', hold_ms=200, wait_seconds=1),

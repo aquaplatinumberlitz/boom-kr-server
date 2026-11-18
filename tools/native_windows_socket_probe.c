@@ -38,8 +38,32 @@ static int install(int index, DWORD address, const char *name) {
     points[index].address=address; points[index].name=name; points[index].active=1;
     return byte_at(address,0xcc);
 }
+/* Candidate return sites only, never raw stack values or string contents.
+ * A matching call opcode is not a validated unwind; optimized code can omit
+ * frames and coincidental stack values can still match these filters.
+ */
+static void return_candidates(DWORD esp) {
+    fputs(",\"return_candidates\":[",output);unsigned count=0;
+    for(unsigned i=0;i<64 && count<12;i++) {
+        DWORD address=0;BYTE code[6];SIZE_T got=0;
+        if(!read_u32(esp+i*4,&address) || address<0x401006 || address>=0x225e000) continue;
+        if(!ReadProcessMemory(process,(const void *)(uintptr_t)(address-6),code,6,&got) || got!=6) continue;
+        if(code[1]!=0xe8 && !(code[0]==0xff && code[1]==0x15)) continue;
+        fprintf(output,"%s{\"stack_offset\":%u,\"return\":\"0x%lx\"}",count?",":"",i*4,address);count++;
+    }
+    fputc(']',output);
+}
 /* CommandLineToArgvW-compatible quoting; the legacy native token is never logged. */
 static int append(wchar_t *dest, size_t *used, const wchar_t *arg) {
+    /* Match ordinary CreateProcess argument spelling for simple legacy KR
+     * switches. The game may inspect GetCommandLine instead of a CRT argv. */
+    if(*arg && !wcspbrk(arg,L" \t\"")) {
+        size_t length=wcslen(arg);
+        if(*used+length+2>=32768) return 0;
+        if(*used) dest[(*used)++]=L' ';
+        memcpy(dest+*used,arg,length*sizeof(wchar_t));*used+=length;dest[*used]=0;
+        return 1;
+    }
     if(*used) dest[(*used)++]=L' ';
     dest[(*used)++]=L'"';
     while(*arg) {
@@ -100,7 +124,12 @@ int wmain(int argc, wchar_t **argv) {
                         fprintf(output,"{\"event\":\"winsock_probes_installed\"}\n");
                     } else {
                         DWORD caller=0,socket=0,second=0;read_u32(context.Esp,&caller);read_u32(context.Esp+4,&socket);read_u32(context.Esp+8,&second);
-                        fprintf(output,"{\"event\":\"winsock_call\",\"elapsed_ms\":%llu,\"api\":\"%s\",\"thread\":%lu,\"socket\":%lu,\"caller\":\"0x%lx\",\"second\":%lu}\n",GetTickCount64()-began,point->name,event.dwThreadId,socket,caller,second);
+                        fprintf(output,"{\"event\":\"winsock_call\",\"elapsed_ms\":%llu,\"api\":\"%s\",\"thread\":%lu,\"socket\":%lu,\"caller\":\"0x%lx\",\"second\":%lu",GetTickCount64()-began,point->name,event.dwThreadId,socket,caller,second);
+                        return_candidates(context.Esp);
+                        DWORD state=0,error=0;
+                        if(read_u32(0x1a966fc,&state) && read_u32(0x1a3398c,&error))
+                            fprintf(output,",\"bootstrap_flag\":%lu,\"error_word\":%lu",state,error);
+                        fputs("}\n",output);
                         if(++calls>2048) done=1;
                         int slot=-1;for(int i=0;i<64;i++) if(!steps[i].thread) { slot=i;break; }
                         if(slot<0) done=1;else { steps[slot].thread=event.dwThreadId;steps[slot].point=which;context.EFlags|=0x100; }

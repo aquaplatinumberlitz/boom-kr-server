@@ -149,6 +149,36 @@
       "path": "local/research/codex/m8-public-launcher-smoke-r13/verification.json",
       "bytes": 1686,
       "sha256": "c28972165295af20f5793d0b56e19bc1cd7a5cdd88dee21ba36bbc5f5a4908ac"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/workspace-tests-r3.log",
+      "bytes": 31955,
+      "sha256": "fa31e6c1605d8c35258a3283f6b5e7e237769c064216023be52be7a83d48dd05"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/workspace-clippy-r3.log",
+      "bytes": 270,
+      "sha256": "7e5e607cacbe5cdb22d6bd4d69f2388b3aefc879b11ee61886f66f171aa47203"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/companion-redaction-control-r2.json",
+      "bytes": 310,
+      "sha256": "ef54654c8e0175edf27b9f6845f61807322bf12fe336b60a211b291f25683430"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r14/verification.json",
+      "bytes": 1686,
+      "sha256": "cf40f549f305f525759df4e2207895c0aeaf6cc8c48899ec24a2c7dbe1e25edd"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-socket-caller-r27.json",
+      "bytes": 5903,
+      "sha256": "a9cb54a1cc08cbd18fe4d24e7242336c5185a42cb9d7c96178a2e552c780307e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-bootstrap-shutdown-r28.json",
+      "bytes": 4225,
+      "sha256": "7ba525e78dc2586f1646e506210c2b69d11465fffe1484061b249037758ea9cd"
     }
   ],
   "limits": [
