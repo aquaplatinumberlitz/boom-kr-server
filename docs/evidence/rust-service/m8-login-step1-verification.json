@@ -55,7 +55,8 @@
       "Pinned compatibility-control executables and reused source fixtures",
       "Original source client, pack and database inputs"
     ],
-    "limits": "Apparent sparse/reflink file sizes are not net disk reclaimed. Free-space delta includes shared builds and unrelated activity; all owned native VMs/services stopped."
+    "limits": "Apparent sparse/reflink file sizes are not net disk reclaimed. Free-space delta includes shared builds and unrelated activity; all owned native VMs/services stopped.",
+    "correction": "Receipt writer reused a temporary text-offset variable for before_available_bytes; corrected from7697 to the retained r47 pre-cleanup sample403022295040. No raw or checkpoint evidence changed."
   },
   "next": "Measure count2 profile/channel reply candidate before complete two-account serving; implement DB/guest/prelogin TLS then owner launcher changes. Token fallback retained."
 }

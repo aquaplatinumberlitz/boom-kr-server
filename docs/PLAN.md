@@ -66,10 +66,8 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 **Blocker và việc tồn:**
 
 - Gate local/history đã đạt trên `ffc2ec1`: 580.279 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
-  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json)
-  giữ head kiểm, giới hạn và dọn scratch. Các correction Cargo/PowerShell/audit giữ lỗi gốc và pin publication,
-  không sửa checkpoint/audit/raw đã khóa. CP341 đạt bước khả thi trên bản tương thích riêng; parser chưa nối listener,
-  đăng nhập DB/guest/prelogin TLS và M8 vẫn mở.
+  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP341 đạt bước khả thi
+  trên bản tương thích riêng; parser chưa nối listener, đăng nhập DB/guest/prelogin TLS và M8 vẫn mở.
 
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite
