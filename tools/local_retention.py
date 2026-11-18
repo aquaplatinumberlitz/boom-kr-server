@@ -12,6 +12,10 @@ Classes (docs/evidence/owner-directives/local-retention.json):
   disposable_dump    memory/core dumps (derived facts are kept elsewhere)
   disposable_intermediate     unreferenced file inside a checkpoint-referenced run
   disposable_unreferenced_run run/file with no checkpoint, docs or code reference (incl. aborted runs)
+  keep_recent        every file of a unit (run directory) holding any file whose mtime or ctime is within the
+                     last N days (`--keep-recent-days`, default 7, 0 disables): in-progress work that no
+                     checkpoint references yet; never deleted or compressed. Pinned files stay keep_pinned.
+                     The plan records the guard and `--apply` re-checks it per unit at apply time.
 
 Dry run writes local/retention/plan-<UTC>.json (actions + per-unit report) and a short Markdown summary.
 `--apply` needs `--plan FILE --plan-sha256 HEX` of an owner-approved plan; it deletes only listed paths,
@@ -47,6 +51,8 @@ LOCAL_REF = re.compile(r'local/[A-Za-z0-9_.@+-][A-Za-z0-9_./@+-]*')
 BRACE_REF = re.compile(r'(local/[A-Za-z0-9_./@+-]*)\{([A-Za-z0-9_.,@+-]+)\}([A-Za-z0-9_./@+-]*)')
 IDA_DB = {'.i64', '.idb', '.id0', '.id1', '.id2', '.nam', '.til'}
 SMALL = 1 << 20
+DEFAULT_KEEP_RECENT_DAYS = 7
+DAY = 86400.0
 CONFIG_LIMIT = 65536
 
 
@@ -158,7 +164,7 @@ def config_pins(root, json_files):
 
 
 def walk_local(root):
-    """Yield (relative path, size, is_symlink) for every non-directory entry under local/."""
+    """Yield (relative path, size, is_symlink, latest activity = max(mtime, ctime)) for every non-directory entry."""
     base = root / 'local'
     for directory, dirs, files in os.walk(base, followlinks=False):
         dirs.sort()
@@ -169,7 +175,31 @@ def walk_local(root):
                 info = os.lstat(path)
             except OSError:
                 continue
-            yield f'{rel_dir}/{name}', info.st_size, os.path.islink(path)
+            yield f'{rel_dir}/{name}', info.st_size, os.path.islink(path), max(info.st_mtime, info.st_ctime)
+
+
+def unit_activity(root, unit):
+    """Latest mtime/ctime (epoch seconds) of any entry under a unit, or None when the unit is absent."""
+    base = root / unit
+    if not os.path.lexists(base):
+        return None
+    paths = [str(base)]
+    if base.is_dir() and not base.is_symlink():
+        paths = [os.path.join(directory, name)
+                 for directory, dirs, files in os.walk(base, followlinks=False)
+                 for name in list(files) + [d for d in dirs if os.path.islink(os.path.join(directory, d))]]
+    latest = None
+    for path in paths:
+        try:
+            info = os.lstat(path)
+        except OSError:
+            continue
+        latest = max(latest or 0.0, info.st_mtime, info.st_ctime)
+    return latest
+
+
+def is_recent(latest, now, days):
+    return bool(days) and days > 0 and latest is not None and now - latest < days * DAY
 
 
 def sha256_file(path):
@@ -248,13 +278,17 @@ def btrfs_exclusive(root, targets):
     return result
 
 
-def plan(root, use_btrfs, hash_images, out_dir):
+def plan(root, use_btrfs, hash_images, out_dir, keep_recent_days=DEFAULT_KEEP_RECENT_DAYS, now=None):
+    now_ts = datetime.datetime.now(datetime.timezone.utc).timestamp() if now is None else now
     notes = []
     refs, hashes = checkpoint_references(root, notes.append)
     code_refs, doc_refs = tracked_references(root)
     entries, json_files = [], []
-    for relative, size, link in walk_local(root):
+    activity = {}
+    for relative, size, link, touched in walk_local(root):
         entries.append((relative, size, link))
+        unit = unit_of(relative)
+        activity[unit] = max(activity.get(unit, 0.0), touched)
         if relative.endswith('.json') and size <= CONFIG_LIMIT and not link:
             json_files.append(relative)
     configs, fixture_pins = config_pins(root, json_files)
@@ -272,6 +306,7 @@ def plan(root, use_btrfs, hash_images, out_dir):
     for path, names in doc_refs.items():
         doc_units[unit_of(path)].update(names)
     pinned_units = {unit_of(p) for p in pinned}
+    recent_units = {u for u, touched in activity.items() if is_recent(touched, now_ts, keep_recent_days)}
     file_class, units = {}, collections.defaultdict(lambda: collections.Counter())
     unit_bytes = collections.defaultdict(lambda: collections.Counter())
     images = collections.defaultdict(list)
@@ -279,6 +314,8 @@ def plan(root, use_btrfs, hash_images, out_dir):
         unit = unit_of(relative)
         run_ref = unit in referenced_units or unit in doc_units or unit in pinned_units
         klass = 'keep' if link else classify(relative, size, refs, pinned, pinned_dirs, run_ref)
+        if unit in recent_units and klass != 'keep_pinned':
+            klass = 'keep_recent'
         file_class[relative] = klass
         if Path(relative).suffix.lower() in IMAGE and klass == 'keep_compressed':
             images[(unit, size)].append(relative)
@@ -327,21 +364,32 @@ def plan(root, use_btrfs, hash_images, out_dir):
         totals[klass]['exclusive_bytes'] += exclusive.get(target) or 0
     unit_rows = []
     for unit in sorted(units):
+        if unit in recent_units and use_btrfs:
+            totals['keep_recent']['exclusive_bytes'] += unit_exclusive.get(unit) or 0
         unit_rows.append({'unit': unit, 'classes': dict(units[unit]), 'bytes': dict(unit_bytes[unit]),
                           'exclusive_bytes': unit_exclusive.get(unit),
+                          'latest_activity_utc': datetime.datetime.fromtimestamp(
+                              activity[unit], datetime.timezone.utc).isoformat(timespec='seconds'),
+                          'recent': unit in recent_units,
                           'referenced_by': sorted(referenced_units.get(unit, ())),
                           'doc_references': sorted(doc_units.get(unit, ()))[:10],
                           'action': ('keep' if not any(k.startswith('disposable') for k in units[unit]) else
                                      'delete' if all(k.startswith('disposable') for k in units[unit]) else
                                      'partial')})
-    now = datetime.datetime.now(datetime.timezone.utc)
+    now = datetime.datetime.fromtimestamp(now_ts, datetime.timezone.utc)
     report = {'schema': SCHEMA, 'created_utc': now.isoformat(timespec='seconds'), 'root': str(root),
+              'keep_recent_days': keep_recent_days,
               'btrfs_exclusive': use_btrfs, 'image_duplicates_hashed': hash_images,
               'totals': {k: dict(v) for k, v in sorted(totals.items())},
               'pinned': {'configs': sorted(configs), 'fixture_pins': sorted(fixture_pins & existing),
                          'missing_fixture_pins': sorted(fixture_pins - existing),
                          'code_references': sorted(p for p in code_refs if p in existing),
                          'directories': sorted(pinned_dirs)},
+              'keep_recent_units': [{'unit': u['unit'], 'files': sum(u['classes'].values()),
+                                     'apparent_bytes': sum(u['bytes'].values()),
+                                     'exclusive_bytes': u['exclusive_bytes'],
+                                     'latest_activity_utc': u['latest_activity_utc']}
+                                    for u in unit_rows if u['recent']],
               'dedupe_candidates': dict(dedupe), 'notes': notes[:200], 'actions': action_rows, 'units': unit_rows}
     out_dir = root / out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -370,9 +418,15 @@ def markdown(report, plan_path, digest):
              '|---|---:|---:|---:|---:|']
     for klass, row in report['totals'].items():
         lines.append(f'| {klass} | {row.get("files", 0)} | {human(row.get("apparent_bytes"))} | '
-                     f'{human(row.get("exclusive_bytes")) if report["btrfs_exclusive"] and klass.startswith("disposable") else "-"} | '
+                     f'{human(row.get("exclusive_bytes")) if report["btrfs_exclusive"] and klass.startswith(("disposable", "keep_recent")) else "-"} | '
                      f'{row.get("checkpoint_referenced_files", 0)} |')
     pinned = report['pinned']
+    lines += ['', f'Guard keep_recent: unit có file mtime/ctime trong {report["keep_recent_days"]} ngày gần nhất '
+              f'(0 = tắt) không bị dọn; apply kiểm lại. {len(report["keep_recent_units"])} unit.']
+    for row in report['keep_recent_units']:
+        lines.append(f'- `{row["unit"]}`: {row["files"]} file, {human(row["apparent_bytes"])} biểu kiến, '
+                     f'{human(row["exclusive_bytes"]) if row["exclusive_bytes"] is not None else "-"} exclusive, '
+                     f'hoạt động cuối {row["latest_activity_utc"]}')
     lines += ['', f'Pinned: {len(pinned["configs"])} config `kr-rust-*`, {len(pinned["fixture_pins"])} fixture pin, '
               f'{len(pinned["code_references"])} đường dẫn do code/tools nhắc; thiếu {len(pinned["missing_fixture_pins"])} fixture pin.',
               '', f'Ảnh giữ lại trùng byte trong cùng run (không xóa, có thể dedupe reflink): '
@@ -389,7 +443,7 @@ def markdown(report, plan_path, digest):
     return '\n'.join(lines)
 
 
-def apply(root, plan_file, expected):
+def apply(root, plan_file, expected, now=None):
     plan_path = Path(plan_file)
     if not plan_path.is_absolute():
         plan_path = root / plan_path
@@ -398,6 +452,10 @@ def apply(root, plan_file, expected):
     report = json.loads(plan_path.read_bytes())
     if report.get('schema') != SCHEMA:
         raise ValueError('not a retention plan')
+    if 'keep_recent_days' not in report:
+        raise ValueError('plan has no keep_recent_days guard; regenerate it with the current tool')
+    guard_days = report['keep_recent_days']
+    now_ts = datetime.datetime.now(datetime.timezone.utc).timestamp() if now is None else now
     registry_path = root / lean.PRUNED
     registry = (json.loads(registry_path.read_bytes()) if registry_path.exists() else
                 {'schema': lean.PRUNED_SCHEMA,
@@ -407,7 +465,7 @@ def apply(root, plan_file, expected):
     refs, _ = checkpoint_references(root, lambda message: None)
     keep = set(report['pinned']['configs']) | set(report['pinned']['fixture_pins']) | set(report['pinned']['code_references'])
     today = datetime.date.today().isoformat()
-    deleted, skipped = 0, []
+    deleted, skipped, skipped_recent = 0, [], []
     for action in report['actions']:
         target, klass = action['path'], action['class']
         path = root / target
@@ -418,6 +476,15 @@ def apply(root, plan_file, expected):
             continue
         if not os.path.lexists(path):
             skipped.append({'path': target, 'reason': 'already absent'})
+            continue
+        unit = unit_of(target)
+        touched = unit_activity(root, unit)
+        if is_recent(touched, now_ts, guard_days):
+            row = {'path': target, 'reason': f'unit {unit} has activity within {guard_days} days at apply time',
+                   'latest_activity_utc': datetime.datetime.fromtimestamp(
+                       touched, datetime.timezone.utc).isoformat(timespec='seconds')}
+            skipped.append(row)
+            skipped_recent.append(row)
             continue
         referenced = any(p == target or p.startswith(target + '/') for p in refs)
         if path.is_dir() and not path.is_symlink():
@@ -433,6 +500,7 @@ def apply(root, plan_file, expected):
     registry['entries'].sort(key=lambda entry: entry['path'])
     registry_path.write_bytes(store.encoded(registry))
     return {'deleted': deleted, 'skipped': skipped[:50], 'skipped_count': len(skipped),
+            'skipped_recent_count': len(skipped_recent), 'skipped_recent': skipped_recent[:50],
             'pruned_entries': len(registry['entries']), 'registry': lean.PRUNED}
 
 
@@ -442,6 +510,8 @@ def main(argv=None):
     parser.add_argument('--out-dir', default='local/retention')
     parser.add_argument('--btrfs', action='store_true', help='measure exclusive bytes with btrfs filesystem du')
     parser.add_argument('--no-image-hash', action='store_true', help='skip counting byte-identical kept images')
+    parser.add_argument('--keep-recent-days', type=float, default=DEFAULT_KEEP_RECENT_DAYS, metavar='N',
+                        help='units with a file touched (mtime/ctime) within N days are keep_recent; 0 disables')
     parser.add_argument('--apply', action='store_true', help='delete per an approved plan (needs --plan/--plan-sha256)')
     parser.add_argument('--plan')
     parser.add_argument('--plan-sha256')
@@ -452,7 +522,7 @@ def main(argv=None):
             parser.error('--apply requires --plan FILE and --plan-sha256 of the owner-approved plan')
         print(json.dumps(apply(root, args.plan, args.plan_sha256), ensure_ascii=False, indent=2))
         return 0
-    plan_path, digest, summary, report = plan(root, args.btrfs, not args.no_image_hash, args.out_dir)
+    plan_path, digest, summary, report = plan(root, args.btrfs, not args.no_image_hash, args.out_dir, args.keep_recent_days)
     print(json.dumps({'plan': str(plan_path), 'plan_sha256': digest, 'summary': str(summary),
                       'totals': report['totals']}, ensure_ascii=False, indent=2))
     return 0

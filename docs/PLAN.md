@@ -669,7 +669,7 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
 - **Kiểm tải:** 50 người đồng thời và 8 phòng cùng chơi qua relay. Trước khi đo phải có tần suất gói UDP của một
   client thật và ngưỡng CPU, RAM, độ trễ chuyển tiếp, tỉ lệ rơi gói. Tải tổng hợp phát lại traffic đã thu; cùng
   lúc có ít nhất hai phòng client thật để xác nhận client thật không bị ảnh hưởng.
-- **Chạy dài:** 24 giờ có tải nền, không rò bộ nhớ, cổng relay hay phòng ma.
+- **Chạy dài:** 24 giờ có tải nền tổng hợp, chạy không người trông song song việc M8 khác ([quyết định](evidence/owner-directives/m8-soak-3h.json)); RAM/fd/cổng relay/phòng không tăng theo thời gian, về mức nền sau tải; không phòng ma.
 - **Giám sát:** log có ID phiên, phòng và trận, không lộ mật khẩu hay token; số người online, số phòng, số trận, số
   cổng relay đang dùng, lỗi DB; có điểm kiểm tra sức khỏe.
 - **Admin:** tạo, khóa, mở khóa, đặt lại mật khẩu, ngắt một người chơi, đóng một phòng; mọi thao tác có audit.

@@ -261,6 +261,10 @@ def convert(src, out):
         for path in (idx, idx.with_suffix('.idd')):
             shutil.copyfile(path, out / path.name)
         report['files'][idx.stem] = {'copied': 'image pack, unchanged'}
+    # Video mở đầu thay theo ngôn ngữ (nm.bik của client cùng ngôn ngữ): chép nguyên.
+    if (src / 'nm.bik').exists():
+        shutil.copyfile(src / 'nm.bik', out / 'nm.bik')
+        report['files']['nm.bik'] = {'copied': 'intro video, unchanged'}
     (out / 'convert-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     return report
 
