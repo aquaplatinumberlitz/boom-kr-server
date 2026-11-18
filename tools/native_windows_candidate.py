@@ -151,7 +151,9 @@ def main():
             deadline = time.monotonic() + install_wait
             while not (out / 'start-service-requested').exists():
                 if stopped or (out / 'stop-requested').exists():
-                    raise RuntimeError('Candidate stopped before service start')
+                    record['stopped_before_service'] = True
+                    save()
+                    return
                 if time.monotonic() >= deadline:
                     raise TimeoutError('Installation readiness deadline')
                 if not container_running():

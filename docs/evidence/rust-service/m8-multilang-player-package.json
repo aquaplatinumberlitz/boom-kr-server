@@ -1,0 +1,143 @@
+{
+  "schema": "kre-m8-multilang-player-package-v1",
+  "source": "design",
+  "status": "design",
+  "scope": "WIP issue476, owner vi/en/ko payload/installer/GUI foundation, not M8 closure",
+  "canonical": "docs/OPERATIONS.md#launcher-tls-đang-triển-khai",
+  "owner_directive": "docs/evidence/owner-directives/m8-multilang-launcher.json",
+  "implementation": {
+    "builder": "tools/player_package.py",
+    "installer": "rust/crates/kr-player/src/lib.rs",
+    "gui": "rust/crates/kr-player/src/main.rs",
+    "transport_owner": "rust/crates/kr-tunnel/src/bin/kr-launch.rs",
+    "server_status": "rust/crates/kr-service/src/public_launcher.rs"
+  },
+  "inputs": {
+    "vi": {
+      "encoding": "949x",
+      "executable_sha256": "37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84",
+      "video_sha256": "ae7fbad76fe69de527b4131e78c3026d20e597271c677e6f77d7a9924a092da4",
+      "images": "vi-data11-616",
+      "index_stage": "vi"
+    },
+    "ko": {
+      "encoding": "949x",
+      "executable_sha256": "1c47afe38fdfbb69d5cf1e2687482a3993ba4cf6fc9e341caf27cddef9c0c2e0",
+      "video_sha256": "f09de31a9b2e41e782bb606884ad4f2f6e5fa70e4665f3367f1f98b51ca18ba3",
+      "images": "kr",
+      "index_stage": "base"
+    },
+    "en": {
+      "encoding": "949x",
+      "executable_sha256": "9bd14e2257224d71ee606cdc3bdb30c18662659b2b125e04a1bc0d29e26b92bd",
+      "video_sha256": "f09de31a9b2e41e782bb606884ad4f2f6e5fa70e4665f3367f1f98b51ca18ba3",
+      "images": "pending-en-art",
+      "index_stage": "base"
+    }
+  },
+  "pack_summary": {
+    "packs": 13,
+    "appended_packs": 7,
+    "vi_append_bytes": 41887733,
+    "manifest_sha256": "f58b263288b7151019a831a80acb9686a6ee529681da72e5075e94ce898874ae"
+  },
+  "verified_scope": [
+    "KR → vi → en synthetic prefix/idx controls; independent English-on-original layout rejected.",
+    "Actual KR + owner-selected vi data11 prefixes, separate patched949x vi/en/ko exe/text/font/video inputs,13 shared packs built and verified.",
+    "Linux actual installer completed and verified all three game directories and shared pack hardlinks; interrupted earlier debug install has no completion receipt and was preserved.",
+    "GUI software-rendered vi/en/ko preview, language choice persisted and restored after restart on Linux; preview does not use native game.",
+    "Workspace tests and Linux/Windows release builds from bounded verification producer passed; later selected-language integrity guards have targeted tests and checks.",
+    "Real SQLite/TLS/QUIC loopback launcher smoke includes cancellation file cleanup, zero active sessions and six audited logouts. Earlier sixth-login test hit intentional per-principal rate budget; corrected control uses separate declared account without relaxing limiter.",
+    "Offline Windows new game directory assembled and all three languages verified before GUI start; Vietnamese UI rendered with accents, initial oversized window retained as known issue pending fitting GUI control.",
+    "Fitting1000x680 centered GUI measured in1024x768 Windows VM; all three language buttons changed actual visible text and persisted selections, including Vietnamese accents and Korean. GUI closed before isolated VM shutdown; no game or service started."
+  ],
+  "verification": [
+    {
+      "path": "local/research/codex/m8-multilang-package-r1/build.stdout",
+      "bytes": 163,
+      "sha256": "be533f87cdd0faf167ab326784998ed5a09806feb16231750e4931a82526fb76"
+    },
+    {
+      "path": "local/research/codex/m8-multilang-package-r1/input-limitations.json",
+      "bytes": 708,
+      "sha256": "9faef5b0ed14cba98326ddcad9bbbfd7956e3d892f1b3842d3303c0aca50a472"
+    },
+    {
+      "path": "local/research/codex/m8-multilang-verification-r1/status.json",
+      "bytes": 673,
+      "sha256": "5d11517f88a8d587795df08bee9ba0e90cd3420df7eef36f21974ebb541e481d"
+    },
+    {
+      "path": "local/research/codex/m8-launcher-gui-preview-r2/preview.json",
+      "bytes": 179,
+      "sha256": "cf50d305d9cb35b516f7a58215573c3dba293c3867fa4c5d6cb3ea6ea3cc1b1b"
+    },
+    {
+      "path": "local/research/codex/m8-launcher-gui-preferences-r1/verification.json",
+      "bytes": 397,
+      "sha256": "42ec18d21c4c5ad1c498e029bff606a20276732e97a2ab824bdacdd19b2c9373"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r17/verification.json",
+      "bytes": 1816,
+      "sha256": "c899ddbfe2408d3e56224893b298964881103f82ca8faac9ac02dce1544c2c6b"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/player-tests-r2.log",
+      "bytes": 1533,
+      "sha256": "f574fb1db70f463680d75281a8a749ea8b28952cb4add50c9096700b636f2951"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-clippy-r3.log",
+      "bytes": 170,
+      "sha256": "5753641f95c51ec52a88294e18cbd9f598410aad603c22005bfa1b9374e2f560"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-multilang-install-r1.json",
+      "bytes": 2260,
+      "sha256": "4b4de1b05fadd20f68ba42c55a3f369371cbd4bc9e3dc60608bf613efcfa6079"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r18/verification.json",
+      "bytes": 1952,
+      "sha256": "c70f88e53917a05ae558161008c980b9f5e2b685705f4ef5fd26a66bb530ff0b"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-clippy-r4.log",
+      "bytes": 268,
+      "sha256": "9808c4ab8f47bc0f20a8e6f10eb340b0072fcb7a55d089cd26ab23545386ed47"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-multilang-gui-r2.json",
+      "bytes": 2781,
+      "sha256": "d18f890c84d149657d57672a1ac8a2761155773a0319fb6e8aa5d4b55cc18c81"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/player-tests-r3.log",
+      "bytes": 1533,
+      "sha256": "fd9b833646f03981293a73f85646e47acd1c6e15a90362c9d54a16664193d08f"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/player-builder-tests-r1.log",
+      "bytes": 542,
+      "sha256": "91b280246997492152a1cba286eefc29525944c158d5913beba778f3eb8795a7"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-clippy-r5.log",
+      "bytes": 170,
+      "sha256": "7f1e3d3bfa821c3ec22ac8aa32b9aeb6e083aff1305313131a3fefbe0cf91e07"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-check-windows-r2.log",
+      "bytes": 268,
+      "sha256": "4810e2a5f38bcee2b970f693a00307fc947930033a4ebd48456dcb8c4528b02d"
+    }
+  ],
+  "limits": [
+    "No native Windows/Wine runtime or two clients in same room on new package. Offline Windows installer/GUI has observations only, not accented room/player/chat acceptance.",
+    "English current text is included with original KR images; sequential English art tail and North America nm.bik still unavailable in selected inputs. KR video is explicitly provisional for en.",
+    "L1 outputs are consumed, no L1 source/patch work resumed. ko uses patched949x executable, not original KR executable.",
+    "Historical Windows IAT/global controls and transport failures stay in separate foundation metadata; current language executables need their own Windows startup controls if discrepancy recurs.",
+    "GUI network status is pinned TLS/admission only, not a DB or gameplay readiness guarantee. No checkpoint/audit/PR completion claimed."
+  ]
+}

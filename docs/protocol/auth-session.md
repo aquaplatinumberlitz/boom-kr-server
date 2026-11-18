@@ -920,4 +920,14 @@ Companion có lỗi khi mở executable lần đầu; lượt executable đã đ
 chưa có return chain cao hơn hoặc nguyên nhân. Phép đo tiếp lấy startup companion có giới hạn, return-site
 candidates và inherited flag/error; phải đối chiếu cùng protocol stage trước khi suy nguyên nhân channel. Không tự bỏ fencing hoặc coi đây là expiry đã đo. Nhóm M8 vẫn mở; các run lỗi trước giữ riêng, không đổi thành pass.
 
+
+GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).
+Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-tls-đang-triển-khai); không suy ca hai client có dấu đã đạt từ file.
+GUI không tự cấp identity: gọi `kr-launch` hiện hành bằng stdin, native giữ frontend token riêng. Cancel file riêng của
+mỗi launch cho phép GUI yêu cầu dừng mà vẫn đi qua join child/logout; file cũ không dùng cho launch tiếp.
+Heartbeat file riêng được GUI cập nhật mỗi nửa giây; nội dung không đổi quá 10 giây hoặc mất/không đọc được
+thì owner kết thúc launch qua cleanup/logout. Đây là lifetime GUI riêng, không thay expiry/revoke/fencing backend.
+API TLS thêm request `status` không credential, chỉ trả `ok`/`ready` theo admission còn mở. Nó không tạo session,
+không trả player/config hay chứng nhận DB/gameplay. GUI kiểm pin TLS, không gửi password để hỏi status.
+
 <!-- protocol-topic-content-end -->

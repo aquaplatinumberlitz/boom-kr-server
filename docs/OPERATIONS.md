@@ -42,6 +42,37 @@ còn ready, rồi dừng có trật tự. Không suy client đăng nhập hoặc
 
 ## Launcher TLS đang triển khai
 
+GUI mới ở `kr-player` theo [chỉ đạo vi/en/ko](evidence/owner-directives/m8-multilang-launcher.json); bản ko phải là
+exe đã vá 949x. [Builder người chơi](../tools/player_package.py) nhận recipe local có `base` là client KR gốc,
+`pack_stages` theo thứ tự vi rồi en, và ba phần `languages`. Mỗi phần khai `encoding: 949x`, `data`, `fonts`,
+`executable` và `video` được pin path/bytes/sha256, `index_stage` là base/vi/en và trạng thái `images`. Không lấy
+idx en đã dựng riêng trên pack KR rồi ghép vào sau vi; builder từ chối khi prefix không khớp. Khi chưa có ảnh en,
+phải khai rõ ảnh tạm và giữ giới hạn chưa đạt, không ghi thành gói cuối.
+
+```bash
+python3 tools/player_package.py --recipe "$PRIVATE_PLAYER_RECIPE" --out local/operator/player-payload-new
+```
+
+Giữ hash manifest độc lập với payload. Bộ cài Rust ráp pack, kiểm hash từng phần và toàn pack, dùng hard link
+cho pack readonly/file chung, rồi copy exe/chữ/font/video/idx vào ba thư mục. Chỉ bản cài đủ hash mới có receipt;
+thư mục cài dở hoặc có sẵn bị từ chối ghi đè. Có thể kiểm cùng installer không GUI:
+
+```bash
+kr-player-install install "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
+kr-player-install verify "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
+```
+
+`kr-player "$GUI_CONFIG"` nhận config local gồm `server` (TLS endpoint), `certificate`, `launcher` (kr-launch),
+`companion`, `bundle` (payload), `manifest_sha256`, `installation`, `state`, `port_budget`; Wine thêm `wine` là
+path executable Wine. Path tương đối tính từ config. GUI kiểm/cài payload, nhớ ngôn ngữ trong state và hỏi status
+qua pin TLS mỗi năm giây. Status chỉ là endpoint TLS và admission còn mở, không chứng nhận DB/trận khỏe.
+Trước mỗi launch, GUI kiểm lại file của ngôn ngữ đã chọn; password chỉ truyền stdin cho owner `kr-launch`.
+Đóng GUI hoặc nút dừng tạo cancel file riêng, owner dừng/join hai child rồi logout; không dùng kill để giả logout.
+GUI cập nhật heartbeat file riêng mỗi nửa giây; nếu GUI chết hoặc heartbeat lỗi/không đổi quá 10 giây, owner
+chạy cùng cleanup/logout. Mỗi launch có thư mục riêng nên heartbeat/cancel cũ không tác động launch kế.
+Wine có prefix riêng từng ngôn ngữ dưới state. Cài máy sạch, prefix hoàn chỉnh và vi/ko cùng phòng đọc chữ có dấu
+vẫn cần native acceptance M8; ảnh GUI hay kiểm hash không thay ca này.
+
 Giao diện [public launcher](protocol/auth-session.md#rust-public-launcher) opt-in của M8 hiện có kiểm loopback,
 chưa là gói Internet/Wine/Windows đã nghiệm thu. Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
 command từ chối directory có sẵn. Giữ `private.pk8` trên server trong parent `0700`, file `0600`; phát certificate

@@ -214,6 +214,11 @@
       "path": "local/research/codex/m8-public-launcher-smoke-r15/verification.json",
       "bytes": 1686,
       "sha256": "3d949e366427d45628edbc57c97da83ece4ed73c40e6a0476b2ebd0021f6e5a6"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-handshake-category-r31.json",
+      "bytes": 1634,
+      "sha256": "22270d1723f394a52b258b0d3b87358089ca7664d1f602053d4f3a9184438068"
     }
   ],
   "limits": [

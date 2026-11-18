@@ -84,6 +84,7 @@ pub(crate) struct Opened {
 #[derive(Deserialize)]
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
 enum Request {
+    Status,
     Logout {
         session: Secret,
         player_id: i64,
@@ -115,6 +116,16 @@ fn handle(
         .map_err(|_| io::Error::other("invalid public launcher request"))?;
     drop(input);
     match request {
+        Request::Status => {
+            // TLS endpoint + admission health only; no player/session data and
+            // no database or native-match health claim.
+            let response = if active.client.is_closed() {
+                b"{\"ok\":true,\"ready\":false}\n".as_slice()
+            } else {
+                b"{\"ok\":true,\"ready\":true}\n".as_slice()
+            };
+            launch_tls::write_frame(&mut stream, response, launch_tls::RESPONSE_LIMIT)
+        }
         Request::Logout { session, player_id } => {
             let token = crate::accounts::Token::parse(&session.0)
                 .map_err(|_| io::Error::other("invalid public session"))?;
@@ -326,6 +337,13 @@ mod tests {
             let opened = Opened { listener, tls: launch_tls::server_config(certificate.clone(), key.to_vec()).unwrap() };
             let (halt, stop) = watch::channel(false);
             let server = tokio::spawn(serve(opened, config, active, vec![Ipv4Addr::LOCALHOST], stop));
+            let status_certificate = certificate.clone();
+            let status = tokio::task::spawn_blocking(move || {
+                let mut tls = launch_tls::connect(TcpStream::connect(address).unwrap(), status_certificate, Duration::from_secs(3)).unwrap();
+                launch_tls::write_frame(&mut tls, b"{\"op\":\"status\"}\n", launch_tls::REQUEST_LIMIT).unwrap();
+                serde_json::from_slice::<serde_json::Value>(&launch_tls::read_frame(&mut tls, launch_tls::RESPONSE_LIMIT).unwrap()).unwrap()
+            }).await.unwrap();
+            assert_eq!(status, serde_json::json!({"ok":true,"ready":true}));
             for correct in [false, true] {
                 let certificate = certificate.clone();
                 let response = tokio::task::spawn_blocking(move || {

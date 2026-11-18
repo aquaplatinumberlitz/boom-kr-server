@@ -35,6 +35,10 @@ struct Config {
     native_arguments: Vec<String>,
     native_directory: PathBuf,
     port_budget: usize,
+    #[serde(default)]
+    cancel_file: Option<PathBuf>,
+    #[serde(default)]
+    owner_heartbeat: Option<PathBuf>,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -90,6 +94,37 @@ impl Drop for OwnedChild {
         let _ = self.0.wait();
     }
 }
+struct Heartbeat {
+    previous: Vec<u8>,
+    changed: std::time::Instant,
+}
+fn cancelled(config: &Config, stop: &AtomicBool, heartbeat: &mut Heartbeat) -> io::Result<bool> {
+    if stop.load(Ordering::Acquire) {
+        return Ok(true);
+    }
+    if let Some(path) = &config.owner_heartbeat {
+        let metadata = std::fs::symlink_metadata(path)?;
+        if !metadata.is_file() || metadata.file_type().is_symlink() || metadata.len() > 32 {
+            return Ok(true);
+        }
+        let bytes = std::fs::read(path)?;
+        if bytes != heartbeat.previous {
+            heartbeat.previous = bytes;
+            heartbeat.changed = std::time::Instant::now();
+        }
+        if heartbeat.changed.elapsed() > Duration::from_secs(10) {
+            return Ok(true);
+        }
+    }
+    if let Some(path) = &config.cancel_file {
+        match std::fs::symlink_metadata(path) {
+            Ok(_) => return Ok(true),
+            Err(error) if error.kind() == io::ErrorKind::NotFound => {}
+            Err(error) => return Err(error),
+        }
+    }
+    Ok(false)
+}
 fn launch(
     config: &Config,
     certificate: &[u8],
@@ -98,8 +133,12 @@ fn launch(
     stop: &AtomicBool,
     stage: &mut &'static str,
 ) -> io::Result<()> {
+    let mut heartbeat = Heartbeat {
+        previous: Vec::new(),
+        changed: std::time::Instant::now(),
+    };
     *stage = "launch_grant";
-    if stop.load(Ordering::Acquire) {
+    if cancelled(config, stop, &mut heartbeat)? {
         return Err(io::Error::other("launcher cancelled"));
     }
     let encoded = encoded_secret(session)?;
@@ -129,7 +168,7 @@ fn launch(
         .peer_transport
         .ok_or_else(|| io::Error::other("missing authenticated peer offer"))?;
     let capability = encoded_secret(&offer.capability)?;
-    if stop.load(Ordering::Acquire) {
+    if cancelled(config, stop, &mut heartbeat)? {
         return Err(io::Error::other("launcher cancelled"));
     }
     let certificate_der =
@@ -173,7 +212,7 @@ fn launch(
         return Err(io::Error::other("companion did not authenticate"));
     }
     let native_token = Zeroizing::new(format!("token_1:{}", *frontend.0));
-    if stop.load(Ordering::Acquire) {
+    if cancelled(config, stop, &mut heartbeat)? {
         return Err(io::Error::other("launcher cancelled"));
     }
     *stage = "native_start";
@@ -190,7 +229,7 @@ fn launch(
     println!("{{\"event\":\"client_started\",\"player_id\":{player}}}");
     *stage = "native_running";
     loop {
-        if stop.load(Ordering::Acquire) {
+        if cancelled(config, stop, &mut heartbeat)? {
             return Err(io::Error::other("launcher cancelled"));
         }
         if let Some(status) = native.0.try_wait()? {
@@ -244,6 +283,33 @@ fn run(stop: &AtomicBool, stage: &mut &'static str) -> io::Result<()> {
     }
     let mut config: Config = serde_json::from_slice(&config_bytes)
         .map_err(|_| io::Error::other("invalid player config"))?;
+    if let Some(path) = &mut config.cancel_file {
+        if !path.is_absolute() {
+            *path = config_root.join(&*path);
+        }
+        let name = path
+            .file_name()
+            .ok_or_else(|| io::Error::other("cancel file name"))?
+            .to_owned();
+        *path = std::fs::canonicalize(
+            path.parent()
+                .ok_or_else(|| io::Error::other("cancel parent"))?,
+        )?
+        .join(name);
+        if path.exists() {
+            return Err(io::Error::other("player launch already cancelled"));
+        }
+    }
+    if let Some(path) = &mut config.owner_heartbeat {
+        if !path.is_absolute() {
+            *path = config_root.join(&*path);
+        }
+        let metadata = std::fs::symlink_metadata(&*path)?;
+        if !metadata.is_file() || metadata.file_type().is_symlink() || metadata.len() > 32 {
+            return Err(io::Error::other("owner heartbeat bounds"));
+        }
+        *path = std::fs::canonicalize(&*path)?;
+    }
     // Resolve at installation/config location, before changing the native
     // child's working directory. Relative executable paths differ by platform
     // when combined with Command::current_dir.

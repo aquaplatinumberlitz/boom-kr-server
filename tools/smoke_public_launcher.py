@@ -220,6 +220,79 @@ def main():
             with sqlite3.connect(database) as db:
                 assert db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0] == 0
                 assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 5
+            # GUI cancellation uses an owned per-launch file on both platforms.
+            # It must use normal launcher cleanup and logout, not kill the CLI.
+            # The preceding five controls exhaust this principal's intentional
+            # login window. Use a distinct declared control account, never
+            # relax the production limiter or retry denied login.
+            admin(dict(op='create', login='GuiControl', name='GuiControl', password=password))
+            gui_pid = out / 'gui-native.pid'
+            gui_stub = out / 'gui-native.py'
+            gui_stub.write_text('from pathlib import Path\nimport os,time\n'
+                                f'Path({str(gui_pid)!r}).write_text(str(os.getpid()))\n'
+                                'time.sleep(60)\n')
+            cancel_file = out / 'gui-cancel'
+            value['native_arguments'] = [str(gui_stub)]
+            value['cancel_file'] = str(cancel_file)
+            gui_config = out / 'player-gui-cancel.json'
+            gui_config.write_text(json.dumps(value) + '\n')
+            with (out / 'launcher-gui.stdout').open('x') as stdout, (out / 'launcher-gui.stderr').open('x') as stderr:
+                parent = subprocess.Popen([str(binaries / 'kr-launch'), str(gui_config)],
+                                          stdin=subprocess.PIPE, stdout=stdout, stderr=stderr, text=True)
+                try:
+                    parent.stdin.write(json.dumps(dict(login='GuiControl', password=password)))
+                    parent.stdin.close()
+                    deadline = time.monotonic() + 15
+                    while not gui_pid.exists():
+                        if parent.poll() is not None or time.monotonic() > deadline:
+                            raise RuntimeError('GUI cancellation control did not start native stub')
+                        time.sleep(.05)
+                    cancel_file.touch(exist_ok=False)
+                    assert parent.wait(timeout=15) == 1
+                    assert not Path('/proc/' + gui_pid.read_text()).exists()
+                finally:
+                    if parent.poll() is None:
+                        parent.kill()
+                        parent.wait(timeout=5)
+            with sqlite3.connect(database) as db:
+                assert db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0] == 0
+                assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 6
+            # A crashed GUI no longer updates its private per-launch heartbeat.
+            # The CLI must still own cleanup/logout, with no GUI process left
+            # to write the cancellation file.
+            admin(dict(op='create', login='GuiHeartbeat', name='GuiHeartbeat', password=password))
+            heartbeat_pid = out / 'heartbeat-native.pid'
+            heartbeat_stub = out / 'heartbeat-native.py'
+            heartbeat_stub.write_text('from pathlib import Path\nimport os,time\n'
+                                      f'Path({str(heartbeat_pid)!r}).write_text(str(os.getpid()))\n'
+                                      'time.sleep(60)\n')
+            heartbeat = out / 'gui-heartbeat'
+            heartbeat.write_text('0')
+            value['native_arguments'] = [str(heartbeat_stub)]
+            value['cancel_file'] = str(out / 'unused-gui-cancel')
+            value['owner_heartbeat'] = str(heartbeat)
+            heartbeat_config = out / 'player-gui-heartbeat.json'
+            heartbeat_config.write_text(json.dumps(value) + '\n')
+            with (out / 'launcher-heartbeat.stdout').open('x') as stdout, (out / 'launcher-heartbeat.stderr').open('x') as stderr:
+                parent = subprocess.Popen([str(binaries / 'kr-launch'), str(heartbeat_config)],
+                                          stdin=subprocess.PIPE, stdout=stdout, stderr=stderr, text=True)
+                try:
+                    parent.stdin.write(json.dumps(dict(login='GuiHeartbeat', password=password)))
+                    parent.stdin.close()
+                    deadline = time.monotonic() + 15
+                    while not heartbeat_pid.exists():
+                        if parent.poll() is not None or time.monotonic() > deadline:
+                            raise RuntimeError('Heartbeat control did not start native stub')
+                        time.sleep(.05)
+                    assert parent.wait(timeout=20) == 1
+                    assert not Path('/proc/' + heartbeat_pid.read_text()).exists()
+                finally:
+                    if parent.poll() is None:
+                        parent.kill()
+                        parent.wait(timeout=5)
+            with sqlite3.connect(database) as db:
+                assert db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0] == 0
+                assert db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0] == 7
             service.send_signal(signal.SIGTERM)
             assert service.wait(timeout=15) == 0
             assert json.loads(state.read_text())['stopped']
@@ -237,6 +310,8 @@ def main():
                                       active_sessions_after_exit=0, audited_logouts=5),
                   launcher_sigterm=dict(exit=1, owned_native_gone=True, owned_companion_gone=True,
                                         active_sessions_after_exit=0, audited_logouts=4),
+                  gui_cancel_file=dict(exit=1, native_gone=True, active_sessions_after_exit=0, audited_logouts=6),
+                  gui_heartbeat_stopped=dict(exit=1, native_gone=True, active_sessions_after_exit=0, audited_logouts=7),
                   service_graceful_exit=0, binaries=[dict(name=name, sha256=hashlib.sha256((binaries / name).read_bytes()).hexdigest())
                   for name in ['kr-service', 'kr-admin', 'kr-launch', 'kr-companion']],
                   limits='Linux isolated namespace, local loopback TLS and real QUIC companion. Native programs are /bin/true, /bin/false and Python lifecycle stubs. No original KR login/gameplay, Windows, Internet, load, restore or soak acceptance.')

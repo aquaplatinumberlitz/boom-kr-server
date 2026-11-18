@@ -8,6 +8,20 @@ Trạng thái/thứ tự hiện hành chỉ ở PLAN; readiness bên dưới gi�
 [PROTOCOL](PROTOCOL.md#authority) giữ contract/authority; [RESEARCH](RESEARCH.md#rust-service-gaps) giữ unknown/phép RE.
 Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, không là current-status hoặc plan thứ hai.
 
+### Gói người chơi M8 và launcher đồ họa
+
+`kr-player` giữ installer và GUI riêng, gọi `kr-launch` hiện hành qua stdin để account/session và hai child vẫn có
+một owner. Iced `0.14.0` được pin với renderer phần mềm `tiny-skia`, X11 và Tokio; không thêm GPU backend vào
+server. Dependency GUI chỉ thuộc crate người chơi; binary server không liên kết Iced. Lựa chọn này phục vụ Wine
+và Windows VM không có GPU chuyên dụng, giao diện ba ngôn ngữ và vector arcade riêng của dự án.
+
+Installer ráp pack KR với phần đuôi vi rồi en đã kiểm nguyên prefix, giữ idx từng ngôn ngữ, kiểm hash toàn file và
+chỉ ghi receipt khi hoàn tất. Pack chung readonly được hard link vào ba thư mục; exe/chữ/font/video riêng. GUI
+kiểm lại ngôn ngữ chọn trước khi launch, dùng pin TLS để hỏi trạng thái admission và giữ password trong bộ nhớ
+có zeroize, truyền stdin, không ghi ra config. Đóng GUI tạo cancel file riêng của launch; `kr-launch` dừng/join
+native và companion rồi logout session theo đường hiện hành. Heartbeat riêng có budget 10 giây để GUI chết
+không bỏ lại owner/child; đo bằng Instant, không dựa clock của file. Đây là thiết kế; trạng thái nghiệm thu ở PLAN.
+
 ## Tra nhanh cho quyết định của công ty
 
 | Câu hỏi | Kết luận của đợt nghiên cứu |
