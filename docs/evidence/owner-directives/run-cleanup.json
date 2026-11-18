@@ -1,0 +1,25 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-18T14:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 18/11/2026: ổ /home tăng khoảng 110 GB trong nửa ngày; riêng các file lớn hơn 500 MB của Codex dưới local/research/codex đã thêm 51 GB trong 10 giờ, phần lớn là ảnh đĩa máy ảo Windows của M8.",
+  "quote": "thêm quy định prompt cho codex tự dọn dẹp xong khi chạy, tránh để chiếm dung lượng ổ cứng quá nhiều",
+  "relates_to": "docs/evidence/owner-directives/local-retention.json",
+  "decision": "Agent nào chạy runtime (Wine, Xvfb, máy ảo, bản sao game) thì tự dọn phần dùng một lần của chính lượt đó ngay khi lượt kết thúc, trước khi bàn giao. Chủ dự án duyệt trước việc xóa này; không cần kế hoạch retention riêng cho từng lượt.",
+  "rules": [
+    "Xóa khi lượt kết thúc, kể cả lượt lỗi hoặc hủy: bản sao thư mục game, Wine prefix, ảnh đĩa máy ảo dạng overlay hoặc bản sao (qcow2/img/vhdx), ISO dựng tạm, memory dump đã trích xong, file tạm và bản dựng trung gian tạo lại được từ recipe.",
+    "Giữ lại phần làm bằng chứng: log, capture, trace, ảnh chụp chính, manifest, hash, cùng mọi file mà checkpoint, docs, code hay tools trỏ tới. Ghi checkpoint hoặc run manifest trước khi xóa.",
+    "Máy ảo M8: giữ một ảnh đĩa gốc (base) đã cài sẵn cho mỗi loại máy và tạo overlay qcow2 hoặc reflink cho từng lượt; không chép đầy đủ ảnh đĩa hay ISO cho mỗi lượt. Chỉ giữ overlay của lượt mới nhất còn cần dùng tiếp.",
+    "Bản sao game và prefix tạo bằng cp --reflink=always từ template; không chép đầy đủ.",
+    "Trước khi chạy, kiểm chỗ trống trên /home: dưới 150 GB thì dọn lượt cũ của chính mình trước; dưới 80 GB thì không chạy lượt mới.",
+    "Lượt cũ đã kết thúc của chính agent mà không còn được tham chiếu thì được xóa theo các lớp disposable của local-retention.json, qua tools/local_retention.py: chạy dry run, rồi --apply với plan_sha256 của đúng kế hoạch đó. Chủ dự án duyệt trước cho các lớp disposable.",
+    "Bàn giao ghi dung lượng đã dọn, các đường dẫn còn giữ kèm lý do, và chỗ trống /home trước và sau khi chạy."
+  ],
+  "constraints": [
+    "Không xóa file keep_pinned, keep_compressed, run manifest, local/tools hay mục có trong local-pruned.json; không xóa file mà checkpoint hoặc audit còn trỏ tới.",
+    "Không xóa dữ liệu của agent khác đang chạy. Không xóa ảnh chủ dự án vẽ (image-edit, image-edit-en) và đầu vào dựng ảnh ghi trong m8-multilang-launcher.json.",
+    "Không đụng /home/admin/boom/clients/, pack, exe hay IDA DB gốc."
+  ],
+  "scope": "Quy tắc dọn sau mỗi lượt chạy; mở rộng local-retention.json cho phần dùng một lần của chính lượt. Không đổi lớp giữ, gate hay kết luận RE.",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}

@@ -135,6 +135,10 @@ checkpoint mới gọi `checkpoint_evidence.pack_evidence`, tra cứu bằng `py
 ([cách dùng](docs/evidence/checkpoints/README.md#lean-evidence)).
 Dọn `local/` theo [quy tắc lưu giữ](docs/evidence/owner-directives/local-retention.json): chỉ qua kế hoạch dry run của
 `tools/local_retention.py`; `--apply` cần hash kế hoạch chủ dự án đã duyệt, không tự xóa raw ngoài kế hoạch.
+**Tự dọn sau mỗi lượt chạy** theo [quy định 18/11](docs/evidence/owner-directives/run-cleanup.json). Ai chạy Wine,
+máy ảo hay bản sao game thì khi lượt kết thúc (kể cả lỗi) tự xóa bản sao game, prefix, overlay/ảnh đĩa máy ảo, ISO
+tạm và dump. Giữ log, capture, ảnh chính và file đang được trỏ tới. Máy ảo dùng một base cộng overlay, không chép
+nguyên ảnh đĩa. /home còn dưới 150 GB thì dọn trước khi chạy, dưới 80 GB thì không chạy. Bàn giao ghi dung lượng đã dọn.
 Tool/codec/server: chạy kiểm phù hợp hành vi thay đổi; không mặc định phải build client Rust cũ.
 Rust server: `cargo fmt --manifest-path rust/Cargo.toml --all --check`, `cargo clippy --manifest-path rust/Cargo.toml
 --workspace --all-targets --locked -- -D warnings`, `cargo test --manifest-path rust/Cargo.toml --workspace --locked`;
