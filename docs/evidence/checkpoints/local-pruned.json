@@ -1,5 +1,1273 @@
 {
   "schema": "kre-local-pruned-v1",
   "authorization": "docs/evidence/owner-directives/local-retention.json",
-  "entries": []
+  "entries": [
+    {
+      "path": "local/research/bootstrap-runtime/reply/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-C-bomb-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-C-bomb-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-C-bomb-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-C-cycles-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-C-cycles-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-C-cycles-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-control-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-control-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-control-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-control-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-control-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-control-r2/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r2/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-positive-r3/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-prestart-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-prestart-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/A-survivor-prestart-r2/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/auth-two-actual-r1/prefix-input-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/auth-two-actual-r1/prefix-input-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/balanced-eight-r1/ready-four-four/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/balanced-eight-r1/ready-one-seven/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-bidirectional-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-bidirectional-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-bidirectional-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-bidirectional-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-bidirectional-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-bidirectional-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-host-b-eof-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-host-b-eof-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-host-b-eof-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-host-b-eof-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-preset-start3-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/basic-preset-start3-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/contact-race-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/contest-loading-milestones-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/contest-loading-milestones-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/contest-loading-staging-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/contest-loading-staging-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/contest-loading-trace-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/contest-loading-trace-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-cycles-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-cycles-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r4/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/current-basic-hidden-r4/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-channel-positive-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-channel-positive-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-eof-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-eof-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-eof-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-eof-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-ui-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-ui-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-ui-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-host-ui-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-oldudp-eof-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-oldudp-eof-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-pending-eof-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contest-pending-eof-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contested-pickup-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-contested-pickup-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-item-feedback-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/direct-item-feedback-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/eight-player-r1/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/eight-player-r1/ready-four-four/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/eight-player-r1/ready-nine/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/eight-player-r1/ready-one-seven/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/exported-preset-smoke-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/exported-preset-smoke-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/hidden-cell-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/hidden-cell-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/input-lite-probe-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/input-lite-probe-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/input-step-probe-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/input-step-probe-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/k2-auth-retry-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/k2-retry-reset-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/k3-identity-cache-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/k3-ownrecord-producer-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/loading-hot-gate-r5/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/loading-hot-gate-r5/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/loading-observer-control-r4/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/loading-observer-control-r4/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-host-rejoin-control-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-host-rejoin-control-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-host-rejoin-fixed-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-host-rejoin-fixed-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-preset-smoke-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-preset-smoke-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-preset-smoke-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-preset-smoke-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-preset-smoke-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-preset-smoke-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-cycles-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-cycles-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-cycles-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-cycles-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-start3-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-start3-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-start3-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-start3-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-start3-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/mode-promoted-start3-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/production-baseline-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/production-baseline-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C0-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C0-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C0-r2/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C0-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C0-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C0-r3/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C1-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C1-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/replacement-profile-C1-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/room-title-echo-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/room-title-echo-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/room-title-integrated-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/room-title-integrated-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/service-channel-endpoint-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/service-channel-endpoint-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-free-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-free-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-integrated-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-integrated-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-manner-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-manner-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-reset-r4/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/team-mode-reset-r4/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-counter-gap-r5/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-counter-gap-r5/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-counter-r4/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-counter-r4/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-current-replay-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-current-replay-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-preroll-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-preroll-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-window-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/trap-udp-window-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/.update-timestamp",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/drive_c/Program Files",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/drive_c/Program Files (x86)",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/drive_c/ProgramData",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/drive_c/users/admin/AppData/Local",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/drive_c/windows",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/system.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/user.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-01/prefix/userdef.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/.update-timestamp",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/drive_c/Program Files",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/drive_c/Program Files (x86)",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/drive_c/ProgramData",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/drive_c/users/admin/AppData/Local",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/drive_c/windows",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/system.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/user.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/control-02/prefix/userdef.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/winprobe-01/prefix/.update-timestamp",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/winprobe-01/prefix/drive_c/Program Files",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/winprobe-01/prefix/drive_c/Program Files (x86)",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/winprobe-01/prefix/drive_c/windows",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/winprobe-01/prefix/system.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/winprobe-01/prefix/user.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/l10n-utf8-codex/winprobe-01/prefix/userdef.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/wine-r2/defproc-1/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/wine-r2/final-cold-2/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/wine-r2/final-cold-3/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
+      "date": "2026-11-18",
+      "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    }
+  ]
 }
