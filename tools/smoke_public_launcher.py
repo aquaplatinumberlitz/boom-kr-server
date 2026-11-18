@@ -99,8 +99,16 @@ def main():
                     raise RuntimeError('Service readiness failed; raw retained')
                 time.sleep(.05)
             launches = []
+            diagnostic_launcher = out / 'player-socket-diagnostic.json'
+            diagnostic_value = json.loads(launcher.read_text())
+            diagnostic_value['peer_diagnostics'] = True
+            diagnostic_launcher.write_text(json.dumps(diagnostic_value) + '\n')
+            portable_launcher=out/'player-portable-udp.json'
+            portable_value=json.loads(launcher.read_text())
+            portable_value['udp_backend']='portable'
+            portable_launcher.write_text(json.dumps(portable_value)+'\n')
             for index in range(2):
-                result = subprocess.run([str(binaries / 'kr-launch'), str(launcher)],
+                result = subprocess.run([str(binaries / 'kr-launch'), str(diagnostic_launcher if index == 0 else portable_launcher)],
                                         input=json.dumps(dict(login='SmokePlayer', password=password)),
                                         text=True, capture_output=True, timeout=20)
                 (out / f'launcher-{index}.stdout').write_text(result.stdout)
@@ -108,6 +116,13 @@ def main():
                 assert result.returncode == 0, ('launcher exit', result.returncode)
                 event = json.loads(result.stdout)
                 assert event == dict(event='client_started', player_id=expected_player)
+                if index == 0:
+                    socket_event = next(json.loads(line) for line in result.stderr.splitlines()
+                                        if json.loads(line).get('phase') == 'authenticated')
+                    assert socket_event['event'] == 'companion_udp_counters'
+                    assert socket_event['counters']['send_ok'] > 0
+                    assert socket_event['counters']['recv_batches'] > 0
+                    assert socket_event['counters']['io_errors'] == 0
                 with sqlite3.connect(database) as db:
                     active = db.execute('SELECT count(*) FROM sessions WHERE revoked_at IS NULL').fetchone()[0]
                     count = db.execute("SELECT count(*) FROM admin_audit WHERE operation='logout'").fetchone()[0]
@@ -303,6 +318,7 @@ def main():
     logs = ''.join(path.read_text() for path in out.glob('launcher-*'))
     assert password not in logs and 'capability' not in logs and 'token_1:' not in logs
     report = dict(result='tls_sqlite_companion_logout_smoke_passed', runs=launches,
+                  udp_socket_control=socket_event,
                   native_failure=dict(exit=1, reported_native_exit=1, active_sessions_after_exit=0,
                                       audited_logouts=3),
                   address_roles=dict(reported_login_ipv4='192.0.2.173', native_udp_source='127.0.0.1'),

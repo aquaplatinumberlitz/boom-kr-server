@@ -22,6 +22,15 @@ có zeroize, truyền stdin, không ghi ra config. Đóng GUI tạo cancel file 
 native và companion rồi logout session theo đường hiện hành. Heartbeat riêng có budget 10 giây để GUI chết
 không bỏ lại owner/child; đo bằng Instant, không dựa clock của file. Đây là thiết kế; trạng thái nghiệm thu ở PLAN.
 
+Chẩn đoán socket của companion opt-in bằng `peer_diagnostics`; mặc định không thêm trường vào input của child cũ.
+Wrapper chỉ đếm lời gọi/kết quả và delegate I/O; Quinn có thể che lỗi gửi ở lớp dưới, nên `send_ok` không chứng minh
+Winsock hoặc NIC đã gửi. `tracing 0.1.44` được pin làm dependency trực tiếp để giữ duy nhất mã OS từ log lỗi gửi
+của quinn-udp đã pin; subscriber không chuyển tiếp endpoint, packet hay chuỗi lỗi tùy ý. Đây là instrumentation
+phục vụ gap Windows, không thay deadline, authentication, retry hoặc fencing.
+Adapter client `portable` opt-in giữ QUIC/TLS hiện hành nhưng gửi một UDP datagram qua Tokio, không ECN/GSO
+hoặc ancillary source-address. Capability/wire/owner không đổi; `native` vẫn mặc định. Windows control đã có
+positive riêng, chưa chứng minh mọi NIC/route hoặc native game.
+
 ## Tra nhanh cho quyết định của công ty
 
 | Câu hỏi | Kết luận của đợt nghiên cứu |

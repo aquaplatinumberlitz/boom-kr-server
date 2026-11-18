@@ -39,6 +39,10 @@ struct Config {
     cancel_file: Option<PathBuf>,
     #[serde(default)]
     owner_heartbeat: Option<PathBuf>,
+    #[serde(default)]
+    peer_diagnostics: bool,
+    #[serde(default)]
+    udp_backend: kr_tunnel::UdpBackend,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -173,8 +177,18 @@ fn launch(
     }
     let certificate_der =
         serde_json::to_string(&offer.certificate_der).map_err(io::Error::other)?;
+    let diagnostics = if config.peer_diagnostics {
+        ",\"diagnostics\":true"
+    } else {
+        ""
+    };
+    let backend = if config.udp_backend == kr_tunnel::UdpBackend::Portable {
+        ",\"udp_backend\":\"portable\""
+    } else {
+        ""
+    };
     let input = Zeroizing::new(format!(
-        "{{\"peer_transport\":{{\"endpoint\":\"{}\",\"certificate_der\":{certificate_der},\"capability\":{}}},\"native_ip\":\"{}\",\"port_budget\":{}}}",
+        "{{\"peer_transport\":{{\"endpoint\":\"{}\",\"certificate_der\":{certificate_der},\"capability\":{}}},\"native_ip\":\"{}\",\"port_budget\":{}{diagnostics}{backend}}}",
         offer.endpoint, *capability, config.native_ip, config.port_budget
     ));
     *stage = "companion_start";

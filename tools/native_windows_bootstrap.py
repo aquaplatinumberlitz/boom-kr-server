@@ -171,11 +171,15 @@ def main():
         blank.save(out / 'cleared-command-pixels.png')
         if any(pixel < 128 for pixel in blank.tobytes()):
             raise RuntimeError('Run input was not observed empty; no typing attempted')
-        image = step('command', [dict(op='type', text=command, wait_seconds=2), dict(op='capture')])
+        # Move focus away from the edit box so its caret cannot merge with the
+        # final "1" in ps1 during OCR. Refocus without changing text before Run.
+        image = step('command', [dict(op='type', text=command, wait_seconds=2),
+                                 dict(op='key', key='tab', wait_seconds=1), dict(op='capture')])
         text = observed(image, (80, 612, 388, 635), 'command', mode=7)
         if re.sub('[^a-z0-9]', '', text) != re.sub('[^a-z0-9]', '', command):
             raise RuntimeError('Declared command not observed in Run input')
-        image = step('elevate', [dict(op='key', key='ctrl-shift-ret', hold_ms=200, wait_seconds=3),
+        image = step('elevate', [dict(op='click', xy=[229, 622], wait_seconds=1),
+                                dict(op='key', key='ctrl-shift-ret', hold_ms=200, wait_seconds=3),
                                 dict(op='capture')])
         deadline = time.monotonic() + 30
         index = 0

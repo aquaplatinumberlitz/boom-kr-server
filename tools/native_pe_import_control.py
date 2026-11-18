@@ -80,13 +80,22 @@ def main():
                 raise ValueError('Lookup-to-IAT mapping changed')
     inherited_reset = None
     if args.reset_bootstrap_global:
-        if args.source_sha256 != '37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84':
-            parser.error('Bootstrap reset locator requires the measured vi source identity')
+        # Same KR00967 copied-image baseline and data locator; language hooks
+        # remain byte-identical. ko/en reset is a candidate control until native
+        # verification, not a new L1 patch or proved Windows compatibility.
+        known = {
+            '37655a36d11b94dbe18bcfdcaaf68ec92c9271743d8e3fdf919492e8f0edaa84': 'vi',
+            '1c47afe38fdfbb69d5cf1e2687482a3993ba4cf6fc9e341caf27cddef9c0c2e0': 'ko',
+            '9bd14e2257224d71ee606cdc3bdb30c18662659b2b125e04a1bc0d29e26b92bd': 'en',
+        }
+        if args.source_sha256 not in known:
+            parser.error('Bootstrap reset requires an exact declared L1 input identity')
         offset = pe.get_offset_from_rva(0x1A966FC - pe.OPTIONAL_HEADER.ImageBase)
         if struct.unpack_from('<I', before, offset)[0] != 1:
             parser.error('Inherited bootstrap flag is not the expected 1')
         struct.pack_into('<I', image, offset, 0)
         inherited_reset = dict(va='0x1a966fc', file_offset=offset, old=1, new=0,
+                               language=known[args.source_sha256], status='candidate',
                                provenance='Inherited copied-image state reset in CP012/G1 Wine recipe; '
                                           'file initialization control requires separate native verification')
     out.mkdir(parents=False, mode=0o700)

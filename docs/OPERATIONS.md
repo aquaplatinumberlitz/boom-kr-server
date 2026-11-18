@@ -70,6 +70,9 @@ Trước mỗi launch, GUI kiểm lại file của ngôn ngữ đã chọn; pass
 Đóng GUI hoặc nút dừng tạo cancel file riêng, owner dừng/join hai child rồi logout; không dùng kill để giả logout.
 GUI cập nhật heartbeat file riêng mỗi nửa giây; nếu GUI chết hoặc heartbeat lỗi/không đổi quá 10 giây, owner
 chạy cùng cleanup/logout. Mỗi launch có thư mục riêng nên heartbeat/cancel cũ không tác động launch kế.
+Cấu hình GUI/CLI có `udp_backend` tùy chọn: `native` mặc định, `portable` dùng UDP một datagram qua Tokio,
+bỏ ECN/GSO/ancillary cho adapter Windows đang gặp10040. Chọn rõ trong config riêng; không tự retry/fallback
+sau lỗi xác thực. `peer_diagnostics` trên CLI chỉ xuất counters/mã OS đã lọc, không endpoint/token.
 Wine có prefix riêng từng ngôn ngữ dưới state. Cài máy sạch, prefix hoàn chỉnh và vi/ko cùng phòng đọc chữ có dấu
 vẫn cần native acceptance M8; ảnh GUI hay kiểm hash không thay ca này.
 

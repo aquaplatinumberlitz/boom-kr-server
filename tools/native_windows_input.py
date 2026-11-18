@@ -82,7 +82,8 @@ def main():
             symbols = {' ': 'spc', '\\': 'backslash', '/': 'slash', '.': 'dot', '-': 'minus',
                        '_': 'shift-minus', ':': 'shift-semicolon', '"': 'shift-apostrophe',
                        "'": 'apostrophe', '(': 'shift-9', ')': 'shift-0', '&': 'shift-7',
-                       '+': 'shift-equal', '=': 'equal', '$': 'shift-4', ';': 'semicolon'}
+                       '+': 'shift-equal', '=': 'equal', '$': 'shift-4', ';': 'semicolon',
+                       '[': 'bracket_left', ']': 'bracket_right', '|': 'shift-backslash', ',': 'comma'}
             for index, action in enumerate(actions):
                 operation = action['op']
                 if operation == 'key':

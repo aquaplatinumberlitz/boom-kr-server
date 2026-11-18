@@ -219,6 +219,51 @@
       "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-handshake-category-r31.json",
       "bytes": 1634,
       "sha256": "22270d1723f394a52b258b0d3b87358089ca7664d1f602053d4f3a9184438068"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/status-internet-control-r1.json",
+      "bytes": 1489,
+      "sha256": "0873ce9eba862434e1cd43a6d973d841ebaebd67e2991c7f455d1077a555071e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-quic-socket-observation-r1.json",
+      "bytes": 3121,
+      "sha256": "4c8efced40d47e8dfa3ba575040033b2c889338bd3877eee88bc4d7566cee710"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-sendmsg-error-r3.json",
+      "bytes": 3108,
+      "sha256": "6f4f0971f5b84f9fec42bb4fcbb5d64660432399768d604bc936ce3e0ba97e04"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-portable-udp-positive-r4.json",
+      "bytes": 2742,
+      "sha256": "8a313e3f77a55e41abfa6f1fed5cf1954317cf9a63dfbb67d7be5f7267ce681f"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/portable-clippy-r3.log",
+      "bytes": 170,
+      "sha256": "2f225ee9943cf87b770b105bb0a4beff48fdfb15462aedce7f36462e725e1b99"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/socket-error-redaction-test-r1.log",
+      "bytes": 1481,
+      "sha256": "0f7cb0a1e46aed2c3c0df0952efb9eaba4eadf8645d4ecb9ed4aca32f8be7095"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/portable-tunnel-tests-r1.log",
+      "bytes": 2534,
+      "sha256": "58e4ddd4677943275ffd5a7ef26df766bbc6549cd529d6b8c42c8cb1a8b8d38a"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r22/verification.json",
+      "bytes": 2326,
+      "sha256": "b417d74377a7748657581a4a4fb6c3ce8c31bcce9126fea73368d0a92f69a13e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/portable-workspace-tests-r1.log",
+      "bytes": 33618,
+      "sha256": "c5788281af8a724c4735bdcc6f2c0462310daa1b303889ffd975711477b5fee9"
     }
   ],
   "limits": [

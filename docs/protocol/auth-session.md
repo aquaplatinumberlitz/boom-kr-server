@@ -896,30 +896,26 @@ khai nhãn bước cố định (`installation`, `account_login`, `launch_grant`
 xuất chuỗi lỗi tùy ý chứa endpoint/path hay credential. Binary chẩn đoán từ seed được khai hash riêng; không
 được dùng để chứng nhận launcher đã cài mà chưa được thay đổi.
 
-[Bằng chứng nền đang làm](../evidence/rust-service/m8-public-launcher-foundation.json): TLS pin/wrong pin,
-plaintext/deadline/framing, SQLite identity và wrong password; hai lượt launcher→companion QUIC→child stub→logout,
-và SIGTERM launcher không để lại child/session. Hai lượt Linux tới VPS ARM qua Internet thật cũng đã có
-TLS/account/companion/logout, packet capture TCP/UDP, DB không còn session active và thu hồi rule test; child vẫn
-là `/bin/true`. Windows đã có control binary không NIC, kiểm bản cài 173 file và một lần launcher qua Internet
-xác thực account/companion rồi mở đúng executable KR `vi`; native lỗi `0xc0000005` trước game login. VM/container,
-dịch vụ và rule test đã dừng/gỡ; DB còn 0 session active với một logout audit. Dump startup không NIC xác nhận
-entry shim gọi qua ô IAT `GetModuleHandleA` bằng 0. Đối chứng cùng media/working directory tái hiện lỗi ở bản chưa
-sửa; bản copy chỉ khởi tạo 484 ô IAT từ lookup đã khai báo tiến tới `ErrCannotLogin` khi không có NIC. Hook ngôn ngữ
-và asset giữ nguyên. Lượt copy này hết thời gian quan sát và bị dừng cưỡng bức, không là native exit sạch. Chưa chứng
-minh nhánh loader gây khác biệt. Trên Internet, IAT-only đã gửi KR auth1 và được bind đúng Player1, server trả
-profile4 rồi native gửi60; sau đó transport dừng ở bước `native_running`. Chưa có identity/profile trên UI,
-opcode9/5/channel/sảnh/phòng/trận từ lượt IAT-only. Bản đối chứng thêm reset dữ liệu `1A966FC=0` như recipe Wine,
-giữ hook ngôn ngữ/asset, đã tới9 → redirect5/7 → channel6/17 trên Internet nhưng đóng trước67. Log native có
-`CALauncher Process!!`; chưa chứng minh nguyên nhân đóng. Companion exit1 khi native còn chạy; server ghi
-`account_lease_ended` và validation báo `registry_lookup` sau channel EOF. Capture VPS thấy FIN tới trước
-payload request6, nhưng sequence FIN đã tính đủ 83 byte request; thứ tự tới không chứng minh thứ tự phát ở guest.
-Chưa có bằng chứng lỗi DB. Capture guest/VPS và service events tiếp chỉ thấy Windows đóng các socket
-khởi động/WCP, chưa có auth1; port được dùng lại không tự phân biệt startup và auth. Control UDP tới được VPS.
-Companion có lỗi khi mở executable lần đầu; lượt executable đã được đọc vào cache xác thực được và chạy probe KR,
-đo shutdown1 qua wrapper teardown `14F46B0` rồi cleanup/UD2, chưa tái hiện channel6/17. Probe là can thiệp debugger,
-chưa có return chain cao hơn hoặc nguyên nhân. Phép đo tiếp lấy startup companion có giới hạn, return-site
-candidates và inherited flag/error; phải đối chiếu cùng protocol stage trước khi suy nguyên nhân channel. Không tự bỏ fencing hoặc coi đây là expiry đã đo. Nhóm M8 vẫn mở; các run lỗi trước giữ riêng, không đổi thành pass.
+[Bằng chứng nền đang làm](../evidence/rust-service/m8-public-launcher-foundation.json) giữ kiểm TLS pin, SQLite,
+companion, child lỗi, SIGTERM/cancel/heartbeat, logout và các control Internet. API `status` đã trả ba reply qua pin
+TLS trên Internet; hai lượt launcher→companion→child `/bin/true`→logout trên ARM mới có DB0 và cleanup rule.
+Đó là control Linux, không proof client KR, phòng hoặc trận.
 
+Windows native media trước đã có control crash startup do IAT0, rồi bản copy khởi tạo IAT và reset dữ liệu
+`1A966FC=0` theo recipe Wine đã tới auth1/profile4/netinfo9/redirect5/7/channel6/17 nhưng chưa67. Các bản copy,
+hash, crash, thời hạn quan sát và giới hạn nằm trong metadata nền; không suy hành vi bản nguồn chưa sửa.
+Companion từng dừng trước native với `registry_lookup` sau channel EOF, chưa có bằng chứng lỗi DB. FIN tới VPS
+trước payload request6 nhưng sequence đã tính đủ payload83; thứ tự tới không chứng minh thứ tự phát ở guest.
+Các probe sau chỉ tái hiện socket bootstrap/WCP, không là cùng protocol stage để quy nguyên nhân channel.
+
+Control transport Windows gần nhất tới deadline handshake. Wrapper Quinn trả `send_ok` nhưng quinn-udp có thể
+che lỗi gửi Winsock; chưa quan sát UDP QUIC ở guest/VPS trong selection đã ghi. Chẩn đoán opt-in giữ riêng mã OS,
+không forward log có endpoint/error text. Mã gửi Winsock10040 đã đo; NIC MTU1500 và .NET UDP/DF1200 trả thành công.
+Adapter client `portable` dùng Tokio send_to/recv_from, một datagram, không ancillary ECN/GSO; đã xác thực QUIC,
+chạy no-op child và logout trên Windows/Internet với DB0. `native` vẫn là mặc định; không tự fallback khi denied.
+So sánh chưa xác định ancillary field nào gây lỗi, không nới deadline hoặc bỏ fencing.
+Bản cài vi/en/ko mới có kiểm file và GUI Windows riêng; chưa có native identity, cùng phòng, chữ có dấu hoặc
+trận Internet trên gói này. Không dùng media cũ hoặc control stub làm acceptance gói mới.
 
 GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).
 Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-tls-đang-triển-khai); không suy ca hai client có dấu đã đạt từ file.
@@ -929,5 +925,6 @@ Heartbeat file riêng được GUI cập nhật mỗi nửa giây; nội dung kh
 thì owner kết thúc launch qua cleanup/logout. Đây là lifetime GUI riêng, không thay expiry/revoke/fencing backend.
 API TLS thêm request `status` không credential, chỉ trả `ok`/`ready` theo admission còn mở. Nó không tạo session,
 không trả player/config hay chứng nhận DB/gameplay. GUI kiểm pin TLS, không gửi password để hỏi status.
+
 
 <!-- protocol-topic-content-end -->

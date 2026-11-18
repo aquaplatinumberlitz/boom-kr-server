@@ -1,6 +1,6 @@
 //! Private launcher child. Capabilities arrive only on stdin, never argv/logs.
 #![forbid(unsafe_code)]
-use kr_tunnel::{Link, Secret, client, companion};
+use kr_tunnel::{Link, Secret, companion};
 use serde::Deserialize;
 use std::{
     io::{self, Read, Write},
@@ -45,6 +45,10 @@ struct Request {
     peer_transport: Offer,
     native_ip: IpAddr,
     port_budget: usize,
+    #[serde(default)]
+    diagnostics: bool,
+    #[serde(default)]
+    udp_backend: kr_tunnel::UdpBackend,
 }
 #[cfg(unix)]
 fn termination_signal() -> io::Result<impl std::future::Future<Output = ()>> {
@@ -66,7 +70,10 @@ fn termination_signal() -> io::Result<impl std::future::Future<Output = ()>> {
         }
     })
 }
-async fn run(stage: &mut &'static str) -> io::Result<()> {
+async fn run(
+    stage: &mut &'static str,
+    diagnostics: &mut Option<std::sync::Arc<kr_tunnel::udp_diagnostics::Counters>>,
+) -> io::Result<()> {
     if std::env::args_os().len() != 1 {
         return Err(io::Error::other("private launcher stdin only"));
     }
@@ -92,10 +99,17 @@ async fn run(stage: &mut &'static str) -> io::Result<()> {
         return Err(io::Error::other("private launcher transport bounds"));
     }
     *stage = "endpoint_setup";
-    let endpoint = client(
-        SocketAddrV4::new(Ipv4Addr::UNSPECIFIED, 0).into(),
+    let address = SocketAddrV4::new(Ipv4Addr::UNSPECIFIED, 0).into();
+    let (endpoint, counters) = kr_tunnel::client_configured(
+        address,
         offer.certificate_der.into(),
+        request.udp_backend,
+        request.diagnostics,
     )?;
+    if let Some(counters) = &counters {
+        kr_tunnel::udp_diagnostics::install_redacted_log(counters.clone())?;
+    }
+    *diagnostics = counters;
     *stage = "transport_authentication";
     let link = Link::connect_observed(
         &endpoint,
@@ -104,6 +118,9 @@ async fn run(stage: &mut &'static str) -> io::Result<()> {
         |label| *stage = label,
     )
     .await?;
+    if let Some(counters) = diagnostics.as_ref() {
+        report_counters(counters, "authenticated");
+    }
     drop(offer.capability);
     let (stop, stopped) = watch::channel(false);
     *stage = "termination_setup";
@@ -127,7 +144,12 @@ async fn run(stage: &mut &'static str) -> io::Result<()> {
 #[tokio::main]
 async fn main() {
     let mut stage = "installation";
-    if let Err(error) = run(&mut stage).await {
+    let mut diagnostics = None;
+    let result = run(&mut stage, &mut diagnostics).await;
+    if let Some(counters) = diagnostics {
+        report_counters(&counters, "stopped");
+    }
+    if let Err(error) = result {
         // Do not forward arbitrary QUIC/I/O errors, endpoints or capabilities.
         let os_error = error
             .raw_os_error()
@@ -135,19 +157,33 @@ async fn main() {
         let transport_error = error
             .get_ref()
             .and_then(|inner| inner.downcast_ref::<quinn::ConnectionError>())
-            .map_or("unclassified", |error| match error {
-                quinn::ConnectionError::VersionMismatch => "version_mismatch",
-                quinn::ConnectionError::TransportError(_) => "transport",
-                quinn::ConnectionError::ConnectionClosed(_) => "connection_closed",
-                quinn::ConnectionError::ApplicationClosed(_) => "application_closed",
-                quinn::ConnectionError::Reset => "reset",
-                quinn::ConnectionError::TimedOut => "timed_out",
-                quinn::ConnectionError::LocallyClosed => "locally_closed",
-                quinn::ConnectionError::CidsExhausted => "cids_exhausted",
-            });
+            .map_or(
+                if error.kind() == io::ErrorKind::TimedOut {
+                    "local_deadline"
+                } else {
+                    "unclassified"
+                },
+                |error| match error {
+                    quinn::ConnectionError::VersionMismatch => "version_mismatch",
+                    quinn::ConnectionError::TransportError(_) => "transport",
+                    quinn::ConnectionError::ConnectionClosed(_) => "connection_closed",
+                    quinn::ConnectionError::ApplicationClosed(_) => "application_closed",
+                    quinn::ConnectionError::Reset => "reset",
+                    quinn::ConnectionError::TimedOut => "timed_out",
+                    quinn::ConnectionError::LocallyClosed => "locally_closed",
+                    quinn::ConnectionError::CidsExhausted => "cids_exhausted",
+                },
+            );
         eprintln!(
             "{{\"event\":\"companion_failed\",\"stage\":\"{stage}\",\"os_error\":{os_error},\"transport_error\":\"{transport_error}\"}}"
         );
         std::process::exit(1);
+    }
+}
+fn report_counters(counters: &kr_tunnel::udp_diagnostics::Counters, phase: &'static str) {
+    if let Ok(encoded) = serde_json::to_string(&counters.snapshot()) {
+        eprintln!(
+            "{{\"event\":\"companion_udp_counters\",\"phase\":\"{phase}\",\"counters\":{encoded}}}"
+        );
     }
 }

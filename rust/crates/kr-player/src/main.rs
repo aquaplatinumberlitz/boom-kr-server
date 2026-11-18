@@ -145,6 +145,8 @@ struct Config {
     port_budget: usize,
     #[serde(default)]
     wine: Option<PathBuf>,
+    #[serde(default)]
+    udp_backend: kr_tunnel::UdpBackend,
 }
 #[derive(Clone)]
 enum Message {
@@ -247,7 +249,7 @@ fn start(
     arguments.push("multiserveridx:0".into());
     let value = serde_json::json!({"server":config.server,"certificate":config.certificate,"reported_login_ipv4":reported,
         "native_ip":"127.0.0.1","companion":config.companion,"native_program":native_program,"native_arguments":arguments,
-        "native_directory":game,"port_budget":config.port_budget,"cancel_file":cancel,"owner_heartbeat":heartbeat});
+        "native_directory":game,"port_budget":config.port_budget,"cancel_file":cancel,"owner_heartbeat":heartbeat,"udp_backend":config.udp_backend});
     let path = run.join("launch.json");
     fs::write(&path, serde_json::to_vec(&value).map_err(|_| ())?).map_err(|_| ())?;
     #[derive(Serialize)]
