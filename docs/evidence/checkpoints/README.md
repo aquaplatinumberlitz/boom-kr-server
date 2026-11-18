@@ -132,6 +132,13 @@ Không mở fallback cho TOML dữ liệu, lockfile khác, output hoặc file lo
 bằng chứng sai và blob chỉ xuất hiện ở commit muộn vẫn bị từ chối; không sửa record đã khóa.
 [Đối chứng Cargo](cargo-source-correction.json) giữ 23 pin khớp publication, lỗi gate trước sửa và kiểm âm.
 
+### Sửa tham chiếu audit đã công bố
+
+Manifest hiện hành chỉ giữ audit `{id,path,sha256}`. [Đối chứng migration audit](audit-storage-correction.json)
+ghi lỗi writer CP341 đã nhúng toàn AUD147. Kiểm lịch sử chỉ chuẩn hóa được dạng nhúng khi toàn object bằng đúng
+file audit chuẩn trong chính revision đó; file thiếu hoặc khác nội dung vẫn lỗi, không mượn file xuất hiện muộn.
+Tham chiếu vẫn kiểm SHA từng byte và lịch sử vẫn cấm xóa/đổi thứ tự/thay audit. Không sửa record hoặc raw đã công bố.
+
 ## Kho checkpoint v2 và cách đọc chọn lọc
 
 Từ CP118, `manifest.json` là **index nhỏ** (`kre-checkpoints-v2`, version2): counter, audit,

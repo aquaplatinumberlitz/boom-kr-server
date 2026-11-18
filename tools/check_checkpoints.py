@@ -748,6 +748,44 @@ def record_signature(record, root, read, memo):
             "content": content, "review": record.get("review")}
 
 
+def historical_audit_references(manifest, root=ROOT, read=None, blob=None, memo=None):
+    """Normalize only storage, preserving the exact audit file at each revision.
+
+    A mistakenly embedded complete audit may migrate to a reference only when
+    its canonical audit file exists in that same revision and equals the entire
+    embedded object. Existing references always require their pinned raw hash.
+    Current manifests still require references in check_manifest.
+    """
+    read = read or store.file_reader(root)
+    result = []
+    for row in manifest.get('audits', []):
+        if not isinstance(row, dict) or not re.fullmatch(r'AUD[0-9]{3,}', str(row.get('id', ''))):
+            raise ValueError('invalid historical audit identity')
+        inline = not any(key in row for key in ('path', 'sha256', 'bytes'))
+        path = f'docs/evidence/checkpoints/audits/{row["id"]}.json' if inline else row.get('path')
+        store.target(root, path)
+        oid = blob(path) if blob else None
+        key = ('audit-reference', store.object_digest(row), oid) if oid else None
+        if memo is not None and key is not None and key in memo:
+            result.append(memo[key])
+            continue
+        raw = read(path)
+        audit = json.loads(raw)
+        digest = hashlib.sha256(raw).hexdigest()
+        if inline:
+            if audit != row:
+                raise ValueError(f'embedded audit differs from same-revision file: {path}')
+        elif digest != row.get('sha256') or ('bytes' in row and len(raw) != row['bytes']):
+            raise ValueError(f'audit hash mismatch: {path}')
+        if not isinstance(audit, dict) or audit.get('id') != row['id']:
+            raise ValueError(f'audit identity mismatch: {path}')
+        normalized = dict(id=row['id'], path=path, sha256=digest)
+        if memo is not None and key is not None:
+            memo[key] = normalized
+        result.append(normalized)
+    return result
+
+
 def history_signature(manifest, root=ROOT, read=None, blob=None, memo=None):
     """Logical record identities across inline/ref/packed storage; never normalize stored records.
 
@@ -781,7 +819,8 @@ def history_signature(manifest, root=ROOT, read=None, blob=None, memo=None):
     if (manifest.get('last_id') != (entries[-1]['id'] if entries else None)
             or manifest.get('completed_count') != completed):
         raise ValueError('checkpoint counter reset/count mismatch in history')
-    return {"checkpoints": entries, "audits": manifest.get("audits", [])}
+    return {"checkpoints": entries,
+            "audits": historical_audit_references(manifest, root, read, blob, memo)}
 
 
 def signature_continuity(previous, current):
@@ -904,7 +943,7 @@ def check_history(root, relative_manifest, current, availability=None):
                 snapshot = json.loads(content)
                 signature = history_signature(snapshot, root, read, blob, memo)
                 # Audit bodies are pinned, even on commits changing only an audit file.
-                for audit in snapshot.get('audits', []):
+                for audit in signature['audits']:
                     oid = blob(audit['path'])
                     if oid and memo.get(('audit', oid)) == audit['sha256']:
                         continue
