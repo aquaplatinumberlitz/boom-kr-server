@@ -6035,7 +6035,8 @@
           "docs/evidence/rust-service/m8-server-package.json",
           "docs/evidence/rust-service/m8-public-launcher-foundation.json",
           "docs/evidence/rust-service/m8-multilang-player-package.json",
-          "docs/evidence/rust-service/m8-room-chat-contract.json"
+          "docs/evidence/rust-service/m8-room-chat-contract.json",
+          "docs/evidence/rust-service/m8-login-input-controls.json"
         ]
       },
       "coverage": {
@@ -6092,7 +6093,8 @@
           "internet": {
             "state": "observed",
             "refs": [
-              "docs/evidence/rust-service/m8-room-chat-contract.json"
+              "docs/evidence/rust-service/m8-room-chat-contract.json",
+              "docs/evidence/rust-service/m8-login-input-controls.json"
             ]
           }
         },

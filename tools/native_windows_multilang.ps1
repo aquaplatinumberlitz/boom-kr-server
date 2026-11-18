@@ -107,7 +107,23 @@ try{
   $report.execution_mode='direct_native_no_token_no_launcher_credentials'
   $report.client_arguments=@('multiserveridx:0')
   if($control.ingame_empty_arguments){$start.Arguments='';$report.client_arguments=@()}
+  if($control.ingame_marker_argument){
+   if($control.ingame_empty_arguments){throw 'Conflicting no-token argument controls'}
+   $start.Arguments='m8probe:1';$report.client_arguments=@('m8probe:1')
+  }
   $report.feasibility_limit='Observe existing LoginStage only. No launcher, companion session or credential submission; not account/gameplay acceptance.'
+  if($control.PSObject.Properties.Name -contains 'ingame_input_probe_sha256'){
+   if(-not $control.ingame_local_capture){throw 'Input observer needs no-token loopback control'}
+   $probe=Join-Path $seed 'socket-probe.exe'
+   if((Get-FileHash -LiteralPath $probe -Algorithm SHA256).Hash.ToLowerInvariant() -ne $control.ingame_input_probe_sha256){throw 'Input observer identity mismatch'}
+   $nativeArguments=$start.Arguments
+   $start.FileName=$probe
+   $start.Arguments='"'+(Join-Path $seed 'native-socket-probe.jsonl')+'" "'+(Join-Path $game 'CA.exe')+'"'
+   if($nativeArguments){$start.Arguments+=' '+$nativeArguments}
+   $start.EnvironmentVariables['KR_M8_LOGIN_INPUT_PROBE']='1'
+   $report.execution_mode='no_token_read_only_input_observer'
+   $report.feasibility_limit='Declared debugger control of existing handlers. Software breakpoints perturb timing; no secret reads, forced results or authentication acceptance.'
+  }
  }
  if($control.PSObject.Properties.Name -contains 'wait_timeout_control_ms'){
   if(-not ($control.PSObject.Properties.Name -contains 'socket_probe_sha256') -or $control.wait_timeout_control_ms -lt 1 -or $control.wait_timeout_control_ms -gt 60000){throw 'Wait timing control bounds'}

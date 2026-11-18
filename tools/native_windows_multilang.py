@@ -205,6 +205,10 @@ def main():
                         help='Loopback-only no-auth fixture/capture for manual1P/2P/trial synthetic input')
     parser.add_argument('--ingame-empty-arguments', action='store_true',
                         help='No-token configuration control: omit automatic multiserveridx selection too')
+    parser.add_argument('--ingame-marker-argument', action='store_true',
+                        help='No-token configuration control: nonempty inert m8probe:1 instead of automatic selection')
+    parser.add_argument('--ingame-input-observer', action='store_true',
+                        help='No-token loopback debugger observation of manual/roster/control handlers, no secret reads')
     parser.add_argument('--resume-stage', action='store_true', help='Resume an already completed private remote staging operation, never repeat it')
     parser.add_argument('--wait-timeout-control-ms', type=int, default=0,
                         help='Explicit debugger-only zero-limit timing control; not a final client patch')
@@ -218,6 +222,10 @@ def main():
         parser.error('Local credential capture requires explicit no-token feasibility mode')
     if args.ingame_empty_arguments and not args.ingame_login_probe:
         parser.error('Empty arguments require explicit no-token feasibility mode')
+    if args.ingame_marker_argument and (not args.ingame_login_probe or args.ingame_empty_arguments):
+        parser.error('Marker argument requires no-token feasibility mode without empty arguments')
+    if args.ingame_input_observer and (not args.ingame_local_capture or args.crash_dump or args.socket_probe):
+        parser.error('Login input observer requires no-token loopback capture without WER/socket observer')
     local = (ROOT / 'local').resolve(strict=True)
     paired = None
     if args.paired_control:
@@ -490,6 +498,8 @@ if($parseErrors.Count -gt 0){
             control['crash_dump'] = True
         if args.ingame_login_probe:
             control['ingame_login_probe'] = True
+            if args.ingame_marker_argument:
+                control['ingame_marker_argument'] = True
         if args.ingame_empty_arguments:
             control['ingame_empty_arguments'] = True
         if args.ingame_local_capture:
@@ -508,12 +518,13 @@ if($parseErrors.Count -gt 0){
             control['ui_exit_probe'] = True
         if args.wait_timeout_control_ms:
             control['wait_timeout_control_ms'] = args.wait_timeout_control_ms
-        if args.socket_probe or args.paired_startup_probe:
+        if args.socket_probe or args.paired_startup_probe or args.ingame_input_observer:
             shutil.copy2(ROOT / 'tools/native_windows_socket_probe.c', output / 'socket-probe-source.c')
             subprocess.run(['i686-w64-mingw32-gcc', '-municode', '-std=c11', '-O2', '-Wall', '-Wextra', '-Werror',
                             str(output / 'socket-probe-source.c'), '-o', str(output / 'socket-probe.exe')],
                            check=True, capture_output=True, timeout=60)
-            field = 'paired_startup_probe_sha256' if args.paired_startup_probe else 'socket_probe_sha256'
+            field = ('ingame_input_probe_sha256' if args.ingame_input_observer else
+                     'paired_startup_probe_sha256' if args.paired_startup_probe else 'socket_probe_sha256')
             control[field] = digest(output / 'socket-probe.exe')
             subprocess.run(['mcopy', '-i', str(output / 'seed.img'), str(output / 'socket-probe.exe'), '::socket-probe.exe'],
                            check=True, capture_output=True, timeout=30)

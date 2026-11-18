@@ -103,6 +103,9 @@ def main():
                     settle_ms = action.get('move_settle_ms', 150)
                     if type(settle_ms) is not int or not 0 <= settle_ms <= 1000:
                         raise ValueError('Mouse movement settle bound')
+                    hold_ms = action.get('hold_ms', 120)
+                    if type(hold_ms) is not int or not 20 <= hold_ms <= 1000:
+                        raise ValueError('Mouse button hold bound')
                     # Let the guest/game consume the new pointer position
                     # before delivering a button edge. A single QMP batch can
                     # otherwise let frame-polled UI sample the prior position.
@@ -112,7 +115,7 @@ def main():
                     time.sleep(settle_ms / 1000)
                     try:
                         request('input-send-event', dict(events=[dict(type='btn', data=dict(button='left', down=True))]))
-                        time.sleep(.12)
+                        time.sleep(hold_ms / 1000)
                     finally:
                         request('input-send-event', dict(events=[dict(type='btn', data=dict(button='left', down=False))]))
                 elif operation == 'capture':

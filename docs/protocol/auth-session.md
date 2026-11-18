@@ -154,17 +154,25 @@ worker-to-serving thiếu; inventory/reward/restore/load riêng. M3nativebaselin
 ### LoginStage không token: kiểm khả thi M8
 
 Theo [chỉ đạo chủ dự án](../evidence/owner-directives/m8-ingame-login.json), phải đo đường nhập 1P/2P và
-chơi thử trước khi đổi launcher. [CP339 và bằng chứng](../evidence/rust-service/m8-ingame-login-feasibility.json)
-đã mở được LoginStage trên Windows VM, bản ko949x có các control tương thích đã khai báo, không truyền token.
-Cấu hình loopback đã xác minh chỉ thu được WCP và keepalive có CRC/sequence hợp lệ; chưa có gói ID/mật khẩu.
-Nhập ID và chọn 2P chưa có thay đổi giao diện được xác nhận; chơi thử chưa đo được. Argv rỗng rơi về
-CALauncher với lỗi locale 2000:0, không chứng minh locale là nguyên nhân của main. Các hàm đọc một/hai cặp
-credential có đối chiếu byte tĩnh, nhưng chưa là contract wire. Không lấy layout VN làm schema KR.
+chơi thử trước khi đổi launcher. [CP339](../evidence/rust-service/m8-ingame-login-feasibility.json) đã mở được
+LoginStage không token trên bản ko949x có control tương thích; đó chưa là kết luận không khả thi hoặc cần vá lớn.
+[Đối chứng input](../evidence/rust-service/m8-login-input-controls.json) giữ cả cấu hình âm và bản thử mới.
 
-**Chưa đạt kiểm khả thi.** Dừng các thay đổi phụ thuộc về auth trong game, guest, prelogin tunnel và launcher;
-giữ đường token hiện có. Không có patch exe mới trong nhóm này, không thay guard xác thực production.
-Bộ thu loopback chỉ phục vụ chẩn đoán với dữ liệu giả và không gửi auth success. Chưa chứng nhận 1P/2P,
-chơi thử, cài sạch hoặc Internet của đường mới. Lượt VM đã dừng, xuất bằng chứng và tự dọn overlay/seed.
+`kr_static/confirmed` trên bytes hiện hành: sự có mặt của `multiserveridx` đặt cờ qua `122AE30(1)`;
+nhánh web trong constructor đặt `stage+2FE4=1`, khóa edit và roster. Không có tham số đảo cờ trong setter đã đo;
+chưa chứng minh mọi đường cấu hình mã hóa. `kr_runtime/confirmed`: nút Xác nhận trên bản cũ gọi được handler
+thủ công và phát opcode 60, nhưng chưa có opcode 1; dòng lệnh rỗng hoặc marker cùng fallback trước LoginStage.
+Lỗi locale của CALauncher không chứng minh nguyên nhân lỗi main.
+
+Bản thử **đổi đúng một byte** immediate của khóa UI từ 1 về 0, giữ startup/global web flag, code đọc field và
+xác thực server. `kr_runtime/confirmed` riêng trên bản đã sửa: UI nhận ID giả và mật khẩu được che, thao tác edit
+bật Xác nhận rồi gọi handler thủ công. Client hiện “Invalid Login!” trước opcode 1; đóng hộp rồi lỗi native
+`E06D7363`. Chưa có gói credential 1P/2P hoặc chơi thử, không lấy layout VN làm schema KR và không gọi đây là
+hành vi client gốc. Nhánh web/manual của builder là giả thuyết tiếp, chưa là cause đã xác nhận.
+
+**Chưa đạt kiểm khả thi.** Tiếp quan sát có mục tiêu, giữ các thay đổi phụ thuộc về auth, guest, prelogin tunnel,
+launcher và dịch lỗi chưa mở; đường token hiện có vẫn được giữ. Bộ thu loopback chỉ gửi hello/WCP, không gửi
+kết quả xác thực. Tất cả lượt đã dừng, xuất bằng chứng và tự dọn overlay/seed; raw/failure CP339 giữ bất biến.
 
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014

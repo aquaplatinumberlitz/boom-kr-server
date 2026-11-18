@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, CP339: kiểm khả thi LoginStage chưa đạt**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, CP340: nhập liệu LoginStage đã đo trên bản thử; packet còn vướng**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -40,7 +40,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, C
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), dừng lát chuyển auth | [CP339](evidence/rust-service/m8-ingame-login-feasibility.json): không token đã hiện LoginStage trên Windows VM; loopback chỉ có WCP/keepalive, chưa nhập được 1P/2P và đo chơi thử. Argv rỗng rơi về CALauncher/lỗi locale. Theo PR #488, dừng thay đổi auth/guest/prelogin tunnel, màn quản lý account, giao diện và dịch lỗi phụ thuộc khả thi; giữ launcher/token hiện có. Các controls trước về gói đa ngôn ngữ, tên/chat vi và singleton Windows giữ scope ở [evidence M8](evidence/rust-service/m8-public-launcher-foundation.json). Còn gói cuối/cài sạch/Wine, vi/ko cùng phòng, trận Internet/reset; không suy đạt từ art, hàm tĩnh hoặc stub. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), tiếp kiểm khả thi | [Đối chứng CP340](evidence/rust-service/m8-login-input-controls.json): `multiserveridx` bật cờ tự đăng nhập và khóa input/roster; bỏ tham số hoặc dùng marker đều fallback trước LoginStage. Bản sao riêng đổi một byte khóa UI đã nhận ID/mật khẩu 1P, nhưng Xác nhận hiện “Invalid Login!” trước opcode 1 và đóng hộp dẫn tới lỗi native. Tiếp kiểm nhánh token/manual trong builder và caller lỗi, chỉ đọc số; đo 2P trước lần gửi gây fatal và đo nút chơi thử. Chưa mở DB auth, guest, prelogin tunnel, quản lý account, giao diện hoặc dịch lỗi; giữ launcher/token hiện có. CP339 chưa chứng minh cần vá lớn. Còn gói cuối/cài sạch/Wine, vi/ko cùng phòng và trận Internet/reset; các controls gói trước giữ ở [evidence M8](evidence/rust-service/m8-public-launcher-foundation.json). |
    | Tải/giám sát/soak | Chốt tần suất UDP từ client thật và ngưỡng trước đo, 50 người/8 phòng cùng hai phòng native, rồi 24 giờ tải nền; đo startup failure, bộ nhớ/cổng/phòng. |
    | Admin/backup/rollback | Audit thao tác admin, snapshot khi live và restore vào máy sạch/native trận mới, kill/restart và nâng cấp/quay lại binary. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
@@ -67,7 +67,7 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 
 - Gate local/history đã đạt trên `99c62b9`: 579.978 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
   lịch sử Git đạt và 0 lỗi. [Đối chứng Cargo](evidence/checkpoints/cargo-source-correction.json) giữ lỗi trước sửa,
-  publication gốc và giới hạn. Kết quả này không thay CI của từng PR hoặc đóng M8; lát LoginStage vẫn dừng ở CP339.
+  publication gốc và giới hạn. Kết quả này không thay CI của từng PR hoặc đóng M8; lát LoginStage tiếp kiểm builder theo CP340, chưa đạt feasibility.
 
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite

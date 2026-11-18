@@ -5,6 +5,11 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP339: kiểm khả thi đăng nhập trong game chưa đạt.**
+[Thử không token trên Windows VM](evidence/rust-service/m8-ingame-login-feasibility.json) đã hiện LoginStage;
+loopback chỉ có WCP/keepalive, chưa xác nhận nhập 1P/2P hoặc chơi thử phát gói. Argv rỗng rơi về CALauncher;
+không có patch exe mới trong nhóm. CP340 sửa cách diễn giải dừng quá rộng, giữ nguyên quan sát và raw CP339.
+
 **CP337: Shoe đủ ma trận và G1 đạt acceptance giai đoạn 1 đã thu hẹp.**
 [Ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json) nối sáu map/roster đã đo với
 kim/cứu, item nền/MaxPower, Shoe/Punch, bảng rơi đã cắt và từ chối nhân vật trên cùng phiên.

@@ -20,13 +20,14 @@ typedef struct { DWORD thread; int point; } Step;
 static HANDLE process;
 static FILE *output;
 static ULONGLONG began;
-#define POINT_COUNT 21
+#define POINT_COUNT 27
 static Point points[POINT_COUNT];
 static Step steps[64];
 static unsigned calls;
 static WORD wait_timeout_control;
 static int ui_exit_probe;
 static int startup_guard_probe;
+static int login_input_probe;
 
 static int read_u32(DWORD address, DWORD *value) {
     SIZE_T count=0;
@@ -106,7 +107,7 @@ static int append(wchar_t *dest, size_t *used, const wchar_t *arg) {
     dest[(*used)++]=L'"'; dest[*used]=0; return 1;
 }
 int wmain(int argc, wchar_t **argv) {
-    if(argc<4) { fputs("usage: socket-probe <local-log> <native-exe> <native-args...>\n",stderr);return 2; }
+    if(argc<3) { fputs("usage: socket-probe <local-log> <native-exe> [native-args...]\n",stderr);return 2; }
     HANDLE file=CreateFileW(argv[1],GENERIC_WRITE,FILE_SHARE_READ,NULL,CREATE_NEW,FILE_ATTRIBUTE_NORMAL,NULL);
     if(file==INVALID_HANDLE_VALUE) return 3;
     /* Keep the CRT stream independent of the raw handle. */
@@ -129,6 +130,11 @@ int wmain(int argc, wchar_t **argv) {
     if(guard_size) {
         if(guard_size!=1 || guard_probe[0]!=L'1' || ui_exit_probe || wait_timeout_control) { fclose(output);return 2; }
         startup_guard_probe=1;
+    }
+    wchar_t input_probe[4]={0};DWORD input_size=GetEnvironmentVariableW(L"KR_M8_LOGIN_INPUT_PROBE",input_probe,4);
+    if(input_size) {
+        if(input_size!=1 || input_probe[0]!=L'1' || ui_exit_probe || startup_guard_probe || wait_timeout_control) { fclose(output);return 2; }
+        login_input_probe=1;
     }
     fprintf(output,"{\"event\":\"probe_start\",\"wait_timeout_control_ms\":%u,\"limits\":\"Owned x86 child; software breakpoints and selected UI-thread debug-register observation; explicit zero-only timing control if nonzero; possible concurrent-step omissions; no native acceptance inferred\"}\n",(unsigned)wait_timeout_control);
     wchar_t *command=calloc(32768,sizeof(wchar_t));size_t used=0;
@@ -162,7 +168,15 @@ int wmain(int argc, wchar_t **argv) {
                     Point *point=&points[which];byte_at(point->address,point->original);context.Eip=point->address;
                     if(which==0) {
                         points[0].active=0;
-                        if(startup_guard_probe) {
+                        if(login_input_probe) {
+                            if(!install_expected(21,0x1101ba0,"manual_credentials",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x08\x21",8)
+                               || !install_expected(22,0x11041a0,"trial_empty_credentials",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x4d\x23",8)
+                               || !install_expected(23,0x1101b70,"roster_select",(const BYTE *)"\x55\x8b\xec\x51\x89\x4d\xfc\x8b",8)
+                               || !install_expected(24,0x1101690,"controls_enable",(const BYTE *)"\x55\x8b\xec\x83\xec\x0c\x89\x4d",8)
+                               || !install_expected(25,0x1101e20,"manual_confirm",(const BYTE *)"\x55\x8b\xec\x83\xec\x08\x89\x4d",8)
+                               || !install_expected(26,0x1104090,"trial_confirm",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x2c\x23",8)) done=1;
+                            fprintf(output,"{\"event\":\"login_input_probes_installed\",\"result_mutation\":false,\"secret_reads\":false}\n");
+                        } else if(startup_guard_probe) {
                             /* Exact current vi/ko WinMain bytes are pinned by
                              * the caller. Observe returns and rejection entry;
                              * never replace results or bypass the mutex. */
@@ -210,7 +224,19 @@ int wmain(int argc, wchar_t **argv) {
                                 if(context.Ecx>=172 && read_u32(context.Ecx-172,&table))
                                     fprintf(output,",\"dialog_vtable\":\"0x%lx\"",table);
                             }
-                            if(which>=17) fprintf(output,",\"eax\":%lu",context.Eax);
+                            if(which>=17 && which<=20) fprintf(output,",\"eax\":%lu",context.Eax);
+                            if(which>=21) {
+                                DWORD selected=0;
+                                if(context.Ecx>=0x2000000 && context.Ecx<0x70000000
+                                   && read_u32(context.Ecx+0x1270,&selected) && selected<=2)
+                                    fprintf(output,",\"roster_field_1270\":%lu",selected);
+                                DWORD automatic=0;
+                                if(context.Ecx>=0x2000000 && context.Ecx<0x70000000
+                                   && read_u32(context.Ecx+0x2fe4,&automatic) && automatic<=1)
+                                    fprintf(output,",\"automatic_input_lock_2fe4\":%lu",automatic);
+                                if((which==23 || which==24) && socket<=2)
+                                    fprintf(output,",\"argument1\":%lu",socket);
+                            }
                             if(which>=11 && which<=16) {
                                 DWORD object=0,flags=0,table=0,target=0;
                                 fprintf(output,",\"eax\":%lu",context.Eax);
