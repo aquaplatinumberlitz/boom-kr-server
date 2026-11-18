@@ -450,7 +450,7 @@ chưa Battle/UDP/DB/accountauthentication/generalroom/fullM2/fullservice/product
 CP232PR303merge5b3ef81, AUD067qua232/audit kếCP236. **Internet thật chưa kiểm**.
 
 <a id="rust-patched-room-chat"></a>
-### Chat tối thiểu cho ca chữ có dấu M8 — serving opt-in, chờ native
+### Chat tối thiểu cho ca chữ có dấu M8 — một native vi, chờ chat chéo
 
 [Đối chiếu KR/VN và metadata](../evidence/rust-service/m8-room-chat-contract.json) giữ khoảng trống này riêng
 với L1 do Claude sở hữu. Hai request KR thật trong capture L1 đã giữ có opcode18, sequence/CRC hợp lệ:
@@ -465,7 +465,7 @@ không coi pseudocode là runtime hoặc client gốc đã hiển thị một re
 
 Codec Rust đã có parser18 và builder28 style0, kiểm hai body KR thật cùng input cắt cụt/sai độ dài. Ngân sách
 192 byte request/224 byte reply là policy công ty; từ chối control/bidi override/ký tự không mã hóa được,
-không replace hoặc truncate. Chưa có native reply28.
+không replace hoặc truncate.
 
 Serving mới chỉ bật khi `account_admission.patched_949x_names=true`, trong phòng managed ở trạng thái Idle
 và người gửi đã setup. Server lấy display name từ authority account hiện hành, nối `tên : nội dung` rồi dựng
@@ -474,7 +474,14 @@ Publisher reserve đủ chỗ ở mọi queue trước khi phát. Mỗi batch gi
 của source và recipient, cùng round generation và trạng thái Idle; tin cũ không sống lại khi vòng trở về Idle.
 Trước socket write, serving kiểm lại source DB, rồi recipient DB và cả hai key sau await. Không log nội dung chat.
 Các ca SQLite thật/room queue tổng hợp đã kiểm tên Việt/Hàn, revoke/expiry/disconnect, queue đầy, vòng/visit cũ
-và scope phòng khác. Đây là kiểm implementation, chưa chứng minh client đọc reply hoặc chat chéo đã đạt.
+và scope phòng khác. Đây là kiểm implementation riêng với ca native dưới đây.
+
+Windows vi trên dịch vụ ARM hiện hành qua Internet thật đã gửi request18 (sequence112), nhận reply28
+(sequence79) và hiển thị `Việt01 : M8 chat test` trong phòng chờ. Hai frame hoàn chỉnh trong capture đã kiểm
+CRC và field bytes bằng Python reference; không coi phép kiểm packet-local là TCP reassembly toàn luồng.
+Ảnh native đã đối chiếu với account owner và sự kiện serving. Đây là một client, nội dung tin ASCII có tiền tố
+account Việt; chưa chứng minh nội dung trộn Việt/Hàn hoặc chat giữa hai bản. Client vẫn lỗi C0000005 khi
+thoát ở cleanup đã ghi; launcher1 giữ nguyên, DB logout1/session0, VM/seed/overlay và rule đã dọn.
 
 Tiếp theo đo reply28 trên client thật và hai bản vi/ko cùng phòng. Byte/tần suất là policy công ty, không suy
 từ hai chuỗi mẫu. Chat sảnh/team/whisper/guild và giao thức xã hội đầy đủ vẫn thuộc giai đoạn sau.

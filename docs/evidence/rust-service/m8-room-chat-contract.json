@@ -2,7 +2,7 @@
   "schema": "kre-m8-room-chat-contract-v1",
   "source": "kr_static",
   "status": "candidate",
-  "scope": "M8 minimum patched949x waiting-room chat; Rust forwarding implemented, native reply acceptance pending",
+  "scope": "Minimum M8 patched949x waiting-room chat serving; one native vi reply28 observed; cross-language acceptance pending",
   "canonical": "docs/protocol/lobby-profile.md#rust-patched-room-chat",
   "source_reuse": {
     "current": "Owner L1 CP310/captures show real incoming chat18, Rust rejects; no existing KR28 output acceptance found.",
@@ -61,7 +61,8 @@
         "exact_code_match": true
       }
     ],
-    "limits": "Not yet sent by new Rust service to native client; dispatcher decompiler warns bad SP. No original-server routing/rate policy implied."
+    "limits": "One current Windows vi native reply28 style0 observed with Unicode account prefix; no original-server routing/rate policy, other styles or cross-client acceptance.",
+    "native_status": "confirmed_for_literal_style0_on_one_vi_copy"
   },
   "verification": [
     {
@@ -119,7 +120,7 @@
     "IDA MCP failed missing ida_nexus; no configuration changed. Existing IDA batch ran read-only queries on private DB copy, all observed worker processes exited.",
     "Initial packet selector assumed fixture header69 and found none; corrected native headerAF request selection, checksum/sequence verified, source captures unchanged.",
     "Room chat serving must fence source and recipients through membership/visit/round and current account. Names come from current owner, never request text.",
-    "Whisper/team/guild/lobby chat and full social features are outside this minimum M8 slice; no native cross-client chat acceptance yet."
+    "Whisper/team/guild/lobby chat and full social features are outside this minimum M8 slice; one native vi literal reply observed; cross-client acceptance remains open."
   ],
   "codec": {
     "path": "rust/crates/kr-wire/src/kr00967/chat.rs",
@@ -161,11 +162,22 @@
     "rate": "Company policy at most 2 accepted messages per second per connection; violation closes connection.",
     "queue": "Reserve all recipient entries before publish. Per-batch room scope, source+recipient channel/connection/visit, Idle and round-generation fences. Reinspect source DB at recipient write boundary, then reauthorize recipient and recheck keys; revoke/expiry cannot revive queued messages.",
     "verification": "Three real SQLite/bridge + synthetic room queue tests pass: mixed names, malformed data, source revoke/expiry/disconnect, destination revoke, full queue atomicity, old visit/round and foreign room scope.",
-    "limits": "No native reply28 or vi+ko same-room acceptance yet. Initial check used private module spelling, corrected to existing public reexports; first test DB directory lacked0700, corrected fixture and retained failure log.",
+    "limits": "One native vi literal reply confirmed; vi/ko same-room/peer chat remains open. Initial implementation fixture/check failures retained in verification summary.",
     "verification_summary": {
       "path": "local/research/codex/m8-chat-serving-r2/verification.json",
       "bytes": 2130,
       "sha256": "160cc338b840cf6d8a5b57f1d722098105697ca29c0ed53581f9bc95bd2281f7"
+    },
+    "native": {
+      "path": "local/research/codex/m8-chat-serving-r2/native-vi-chat-r36.json",
+      "bytes": 3868,
+      "sha256": "39a3e339ace93f097ee16dbd7cd1cbcc399d2f67306e75fed9223f0273407fa5"
+    },
+    "exit_dump_pending_classification": {
+      "path": "local/research/codex/m8-multilang-windows-native-vi-chat-r36/dumps/CA.exe.1584.dmp",
+      "bytes": 34184014,
+      "sha256": "5d84fa0002597352a6a5eadeafa9fba93c69c2843557448f65a0da8ee2f451d5",
+      "reason": "Retain until exact native cleanup fault/register state is extracted; no clean-exit acceptance."
     }
   }
 }
