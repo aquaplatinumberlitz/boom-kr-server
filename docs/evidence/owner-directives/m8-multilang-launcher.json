@@ -1,0 +1,17 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-18T03:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 18/11/2026, chủ dự án nói: “ghi vào tiêu chí M8 đi, thiết kế launcher đẹp, hiện đại, arcade game chút”, sau khi hỏi về chọn ngôn ngữ ở launcher, video mở đầu theo ngôn ngữ và chạy song song bản Việt với bản Hàn.",
+  "decision": "Gói người chơi M8 có ba bản client đã vá L1 (vi, en, ko) và một launcher đồ họa cho chọn ngôn ngữ.",
+  "requirements": [
+    "Ba bản dùng cùng exe vá 949x theo ngôn ngữ (tools/l10n_949x_patch.py) và dữ liệu dựng từ boom-re-l10n; bản ko là bản đã vá (đọc được chữ Việt/Anh của người chơi khác), không phải client KR gốc.",
+    "Mỗi ngôn ngữ một thư mục game riêng: dữ liệu chữ, pack ảnh, font và video mở đầu nm.bik riêng (vi: video client VN, en: video client Bắc Mỹ, ko: video gốc). Được phép dùng chung file không đổi khi cài để tiết kiệm dung lượng, miễn mỗi bản chạy như bản độc lập.",
+    "Launcher có giao diện đồ họa đẹp, hiện đại, phong cách game arcade; chọn ngôn ngữ Tiếng Việt / English / 한국어 và nhớ lựa chọn; hiện trạng thái server; nút chơi rõ ràng. Chuỗi của launcher có đủ ba ngôn ngữ.",
+    "Thiết kế launcher là thiết kế riêng của dự án; không sao chép giao diện launcher của Nexon, VNG hay nhà phát hành khác.",
+    "Ca thử trên Windows trong máy ảo: cài cả hai bản vi và ko, mở song song (hoặc ghi rõ giới hạn nếu client chặn hai tiến trình), hai người vào chung phòng, đọc đúng tên phòng, tên nhân vật và chat có dấu của nhau."
+  ],
+  "scope": "Bổ sung yêu cầu cho mục Gói cho người chơi của M8; không đổi các tiêu chí M8 khác và không chứng nhận M8 đạt.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}
