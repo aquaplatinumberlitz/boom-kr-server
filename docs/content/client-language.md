@@ -150,7 +150,7 @@ Lý do chọn, so với UTF-8 thuần trong client:
 - **Dữ liệu vẫn là UTF-8.** Bản dựng phát hành là UTF-8 (`boom-re-l10n`, `tools/l10n_build.py --encoding utf-8`); trình mở
   game đổi sang 949x khi chuẩn bị thư mục game (`tools/l10n_949x.py convert`). Đổi bộ Hàn UTF-8 sang 949x cho ra đúng
   từng byte dữ liệu giải nén của bảy file `ssi1` gốc. Từ bản dựng ghi `csysfxmg.ssd` (dòng chạy chữ và mẹo chat,
-  `u16 số dòng` rồi từng `u8 loại` + chuỗi), `convert` đổi thêm file đó nếu bộ nguồn có; bộ nguồn cũ không có thì bỏ qua. Video mở đầu `nm.bik` (logo và màn GRB chữ Hàn dựng sẵn trong video) được bản dựng vi/en thay bằng video của client VN/Bắc Mỹ (không chữ); `convert` chép nguyên, bản ko giữ video gốc.
+  `u16 số dòng` rồi từng `u8 loại` + chuỗi), `convert` đổi thêm file đó nếu bộ nguồn có; bộ nguồn cũ không có thì bỏ qua. Video mở đầu `nm.bik` (logo và màn GRB chữ Hàn dựng sẵn trong video) được bản dựng vi/en thay bằng video của client VN/Bắc Mỹ (không chữ); `convert` chép nguyên, bản ko giữ video gốc. Phát hành dùng pack chung: `tools/l10n_share_pack.py` (boom-re-l10n) ghép `.idd` = KR + đuôi vi + đuôi en, mỗi ngôn ngữ một `.idx` (ko dùng `.idx` KR); 7 pack còn 506 MB so với 814 MB nếu tách vi/en, cả vi và en đã chạy tới sảnh/phòng trên bộ chung (18/11).
 
 Server muốn lưu chữ người chơi dưới dạng UTF-8 thì đổi 949x sang UTF-8 bằng cùng bảng ở biên lưu trữ; việc này chưa làm.
 
@@ -302,6 +302,12 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   (`DefaultRoomTitle1`, `DefaultRoomTitle2`); khi client chọn ngẫu nhiên trúng hai tên này, nút xác nhận tắt (lượt vi-01).
   Dữ liệu cần câu ngắn hơn. Nhãn `ChatToAll`/`ChatToOurTeam` tiếng Việt vượt giới hạn 14 byte của ô người nhận (mục trên).
 - **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
+- **Ảnh bản en (18/11, để sau theo chủ dự án).** Bản en dựng ngày 18/11 có 520 ảnh thay: ảnh Bắc Mỹ và 179 mục
+  chủ dự án vẽ, gồm nền phòng `FxMap/Prepare/CAStage_Custom`. Khoảng 170 mục bản vi lấy từ client VN mà client Bắc Mỹ
+  không có bản tương ứng nên vẫn tiếng Hàn ở bản en. Các mục này thuộc nội dung ngoài giai đoạn 1: RPG, Couple, câu cá,
+  Shop, sự kiện, LobbySquare. Bốn nút `fx/CustomMap` cũng vậy. Danh sách tính lại được bằng cách so entry nằm ở
+  phần đuôi pack giữa bản vi và bản en. Không làm: hai ô Săn quái/Hợp sức của hộp tạo phòng (`몬스터 SEASON2`, `시즌2`;
+  cả vi lẫn en) và frame mờ của `FxMap/Prepare/BookMark_Tooltip_Icon`.
 - **Chữ do server gửi và chữ cứng trong exe** (thông báo chạy chữ, nhắc trong ô chat phòng) vẫn tiếng Hàn. Tên map ở phòng
   lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là `Factory07`.
 - **Nhãn tràn**: sửa bằng câu ngắn trong catalog (mục layout phía trên); các câu đã đo chờ cập nhật trong boom-re-l10n.

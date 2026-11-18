@@ -1,0 +1,28 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-18T16:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 18/11/2026. Chủ dự án chỉ ra client KR có màn đăng nhập trong game (ảnh FxDesktop/LoginStage: chọn server, 1PLAYER/2PLAYER, ô ID và mật khẩu, nút 크아체험하기 – chơi thử không cần ID) và chốt: “chuyển đăng nhập vào game đúng với game gốc, có cả 2P và nút chơi thử. Launcher khi đó chỉ còn chọn ngôn ngữ, quản lý tài khoản và nút \"Vào game\".” Trước đó chủ dự án muốn launcher dùng để “chọn ngôn ngữ, đăng ký account, lấy lại mật khẩu, xoá mk”.",
+  "decision": "Người chơi đăng nhập 1P, 2P và chơi thử ở màn đăng nhập có sẵn trong game, như game gốc. Launcher chỉ còn chọn ngôn ngữ, quản lý tài khoản và nút \"Vào game\"; launcher không nhận mật khẩu để vào game.",
+  "requirements": [
+    "Dùng màn LoginStage có sẵn của client KR. Không tự thêm màn đăng nhập mới (giữ quy định M5 trong PLAN). Ưu tiên cấu hình; chỉ vá exe khi chứng minh không có cách khác, ghi lý do và giữ nguyên exe gốc.",
+    "Bước kiểm khả thi, làm trước khi đổi launcher: (a) mở client không kèm token_1 tới màn LoginStage; lượt thử trước dừng ở lỗi SetLocaleAndRegion của nmcogame.dll (Region Error); (b) gõ ID/mật khẩu 1P và 2P, thu gói client gửi; client VN gửi opcode 1 gồm số người chơi, ID, mật khẩu có lớp mã hoá riêng (boom-re docs/protocol.md), chỉ dùng làm gợi ý, phải đo trên KR; (c) nút chơi thử gửi gì. Ghi kết quả thành checkpoint.",
+    "Nếu không tới được màn LoginStage hoặc phải vá exe lớn: dừng, báo chủ dự án; trong lúc chờ giữ đường đăng nhập ở launcher (token_1) đang có.",
+    "Server xác thực ID/mật khẩu từ gói đăng nhập trong game bằng DB tài khoản M5; 2P là hai tài khoản trong một client; báo sai tài khoản hoặc mật khẩu bằng một thông báo chung, không lộ tài khoản có tồn tại; giới hạn số lần thử.",
+    "Chơi thử: tài khoản khách tạm, tên tự sinh, không lưu tiến trình lâu dài; giới hạn số khách; tắt được bằng cấu hình server.",
+    "Mật khẩu gõ trong game chỉ đi qua đường hầm TLS của companion, không đi thẳng ra Internet. Launcher mở đường hầm trước khi đăng nhập; kết nối chưa đăng nhập bị giới hạn số kết nối mỗi IP, thời gian chờ đăng nhập và tốc độ.",
+    "Launcher: chọn ngôn ngữ và nhớ lựa chọn, trạng thái server, nút \"Vào game\". Quản lý tài khoản qua kênh TLS của launcher: đăng ký (giới hạn theo IP, chống tạo hàng loạt), đổi mật khẩu, xoá tài khoản (xác nhận bằng mật khẩu), lấy lại mật khẩu bằng mã khôi phục cấp một lần lúc đăng ký. Không dùng email, không thu dữ liệu cá nhân.",
+    "Chuỗi launcher và hộp lỗi đăng nhập trong game có đủ ba ngôn ngữ, gồm hộp \"Invalid Login!\" đang là tiếng Anh.",
+    "Gói người chơi chỉ tạo lối tắt tới launcher; hướng dẫn ghi rõ mở game bằng launcher.",
+    "Giao diện launcher theo thiết kế của Claude trên nhánh claude/launcher-redesign: commit 3dc9927 (bố cục, chữ giữ nguyên) và 9f2b5a1 (màu xanh da trời và cam vàng). Màn quản lý tài khoản dùng cùng kiểu trong look.rs.",
+    "Ca thử M8 theo release-real-network.json thêm: đăng nhập 1P và 2P trong game, chơi thử, đăng ký, đổi mật khẩu, lấy lại mật khẩu, xoá tài khoản."
+  ],
+  "defaults_pending_owner": [
+    "“xoá mk” chưa rõ là đổi mật khẩu hay xoá tài khoản; tạm làm cả hai.",
+    "Màu launcher chủ dự án chưa chọn; tạm dùng xanh da trời và cam vàng theo đề xuất của Claude (khớp màu sảnh trong game)."
+  ],
+  "supersedes": "Phần đăng nhập bằng tài khoản và mật khẩu trong launcher của M8 WIP (launcher gửi thông tin đăng nhập rồi mở game bằng token_1). Đường token_1 giữ làm đường chẩn đoán và đường dự phòng cho tới khi bước kiểm khả thi đạt.",
+  "scope": "Bổ sung yêu cầu cho mục Gói cho người chơi của M8; không đổi tiêu chí M5 đã đạt và không chứng nhận M8 đạt.",
+  "plan": "docs/PLAN.md#phase1-acceptance",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}

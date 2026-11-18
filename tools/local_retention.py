@@ -102,6 +102,17 @@ def checkpoint_references(root, warn):
             if path:
                 refs[path].add(record['id'])
                 hashes[path] = row.get('sha256')
+    # Audits link host-local files in read_files; the gate requires them, so they are references too.
+    for audit_path in sorted((root / 'docs/evidence/checkpoints/audits').glob('AUD*.json')):
+        try:
+            audit = json.loads(audit_path.read_text(encoding='utf-8'))
+        except (OSError, ValueError) as error:
+            warn(f'{audit_path.name}: {error}')
+            continue
+        for name in audit.get('read_files', []) if isinstance(audit, dict) else []:
+            path = normalize(root, name) if isinstance(name, str) else None
+            if path:
+                refs[path].add(audit_path.stem)
     return refs, hashes
 
 
@@ -208,6 +219,15 @@ def sha256_file(path):
         for block in iter(lambda: stream.read(1 << 20), b''):
             digest.update(block)
     return digest.hexdigest()
+
+
+def path_closure(paths):
+    """Set of every path in `paths` plus all its ancestor directories (down to two components)."""
+    closure = set()
+    for path in paths:
+        parts = path.split('/')
+        closure.update('/'.join(parts[:end]) for end in range(1, len(parts) + 1))
+    return closure
 
 
 def covered(path, prefixes):
@@ -464,6 +484,10 @@ def apply(root, plan_file, expected, now=None):
     known = {entry['path'] for entry in registry['entries']}
     refs, _ = checkpoint_references(root, lambda message: None)
     keep = set(report['pinned']['configs']) | set(report['pinned']['fixture_pins']) | set(report['pinned']['code_references'])
+    # O(1) per-action checks: every path and each of its ancestor directories, so
+    # `target in keep_covered` == "some pinned/referenced path equals or lies under target".
+    keep_covered, ref_covered = path_closure(keep), path_closure(refs)
+    unit_touched = {}  # unit -> latest activity, scanned once per unit (no deletion can lower it for a kept unit)
     today = datetime.date.today().isoformat()
     deleted, skipped, skipped_recent = 0, [], []
     for action in report['actions']:
@@ -471,14 +495,16 @@ def apply(root, plan_file, expected, now=None):
         path = root / target
         if (action.get('action') != 'delete' or not klass.startswith('disposable') or not target.startswith('local/')
                 or '..' in target.split('/') or covered(target, set(ALWAYS_KEEP))
-                or any(p == target or p.startswith(target + '/') for p in keep)):
+                or target in keep_covered):
             skipped.append({'path': target, 'reason': 'not an allowed delete action'})
             continue
         if not os.path.lexists(path):
             skipped.append({'path': target, 'reason': 'already absent'})
             continue
         unit = unit_of(target)
-        touched = unit_activity(root, unit)
+        if unit not in unit_touched:
+            unit_touched[unit] = unit_activity(root, unit)
+        touched = unit_touched[unit]
         if is_recent(touched, now_ts, guard_days):
             row = {'path': target, 'reason': f'unit {unit} has activity within {guard_days} days at apply time',
                    'latest_activity_utc': datetime.datetime.fromtimestamp(
@@ -486,7 +512,7 @@ def apply(root, plan_file, expected, now=None):
             skipped.append(row)
             skipped_recent.append(row)
             continue
-        referenced = any(p == target or p.startswith(target + '/') for p in refs)
+        referenced = target in ref_covered
         if path.is_dir() and not path.is_symlink():
             shutil.rmtree(path)
         else:
