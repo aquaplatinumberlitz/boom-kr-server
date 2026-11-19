@@ -35,8 +35,13 @@ pub struct Config {
     pub max_unauthenticated: usize,
     pub max_per_ip: usize,
     pub prelogin_seconds: u64,
+    #[serde(default = "default_admissions_per_ip_per_minute")]
+    pub admissions_per_ip_per_minute: usize,
     pub session_ttl_seconds: i64,
     pub session_idle_seconds: i64,
+}
+const fn default_admissions_per_ip_per_minute() -> usize {
+    5
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
@@ -47,6 +52,7 @@ impl Config {
             || !(1..=16).contains(&self.max_unauthenticated)
             || self.max_unauthenticated > self.max_connections
             || !(1..=8).contains(&self.max_per_ip)
+            || !(1..=120).contains(&self.admissions_per_ip_per_minute)
             || !(10..=180).contains(&self.prelogin_seconds)
             || !(1..=86400).contains(&self.session_ttl_seconds)
             || !(1..=self.session_ttl_seconds).contains(&self.session_idle_seconds)
@@ -100,6 +106,7 @@ impl Admission {
         shared: &Arc<Mutex<Self>>,
         peer: IpAddr,
         max: usize,
+        attempts: usize,
         now: Instant,
     ) -> io::Result<Permit> {
         let mut table = shared
@@ -120,7 +127,7 @@ impl Admission {
             row.since = now;
             row.attempts = 0;
         }
-        if row.active >= max || row.attempts >= 5 {
+        if row.active >= max || row.attempts >= attempts {
             return Err(io::Error::other("prelogin peer bound"));
         }
         row.active += 1;
@@ -458,14 +465,22 @@ async fn connection(
         tokio::select!{
             _=stop.changed()=>return Ok(()),
             _=connection.closed()=>return Ok(()),
-            _=&mut until,if unauthenticated.is_some()=>return Err(io::Error::other("prelogin lifetime bound")),
+            _=&mut until,if unauthenticated.is_some()=>{
+                let has_roster = resources.owner.lock().await.as_ref()
+                    .is_some_and(Driver::has_roster);
+                if has_roster { unauthenticated.take(); }
+                else {
+                    connection.close(prelogin::PRELOGIN_EXPIRED.into(), b"prelogin deadline");
+                    return Err(io::Error::other("prelogin lifetime bound"));
+                }
+            },
             _=health.tick()=>{
                 if resources.lobby.lock().await.as_ref().is_some_and(|lobby|!lobby.current()){
                     return Err(io::Error::other("native lobby owner retired"));
                 }
                 if let Some(driver)=resources.owner.lock().await.as_mut(){
                     driver.inspect().await?;
-                    if !driver.authorities().is_empty(){unauthenticated.take();}
+                    if driver.has_roster(){unauthenticated.take();}
                 }
             },
             stream=connection.accept_bi()=>{
@@ -535,7 +550,7 @@ pub(crate) async fn serve(
                 let Some(incoming)=validated(incoming) else{continue;};
                 let Ok(total_permit)=total.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(unauth)=unauthenticated.clone().try_acquire_owned()else{incoming.refuse();continue;};
-                let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,Instant::now())else{incoming.refuse();continue;};
+                let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,config.admissions_per_ip_per_minute,Instant::now())else{incoming.refuse();continue;};
                 let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:Mutex::new(prelogin::TrafficBudget::new(prelogin::BYTE_LIMIT,64*1024)),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone())});
                 let stop=stop.clone();let events=events.clone();owners.spawn(async move{
                     let _total=total_permit;let _peer=peer_permit;

@@ -1,7 +1,7 @@
 //! Typed bounded account queue; blocking SQLite/KDF work stays off Tokio tasks.
 //! No KR socket adapter. Queue expiry is checked before execution, not a timeout
 //! or rollback guarantee for an operation already running in SQLite/Argon2.
-mod rate;
+pub(crate) mod rate;
 use crate::accounts::{self, Grant, Player, Store, Token};
 pub use rate::RatePolicy;
 use std::{
@@ -173,6 +173,12 @@ enum LocalLoginRequest {
     Guests(u8),
 }
 enum Command {
+    Manage {
+        login: String,
+        operation: accounts::Management,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<Option<Zeroizing<String>>>>,
+    },
     EndLocal {
         grants: Vec<Grant>,
         reply: oneshot::Sender<Result<()>>,
@@ -465,6 +471,43 @@ impl Client {
     pub(crate) fn try_begin_instance(&self) -> Result<Pending<i64>> {
         let (reply, rx) = oneshot::channel();
         self.submit(Command::BeginInstance { reply })?;
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: None,
+        })
+    }
+    pub(crate) fn try_manage(
+        &self,
+        login: String,
+        operation: accounts::Management,
+    ) -> Result<Pending<Option<Zeroizing<String>>>> {
+        if !(3..=32).contains(&login.len())
+            || !login
+                .bytes()
+                .all(|b| b.is_ascii_alphanumeric() || b == b'_')
+        {
+            return Err(Error::InvalidInput);
+        }
+        let key = rate::Limiter::key(&login);
+        let (reply, rx) = oneshot::channel();
+        let now = Instant::now();
+        let mut guard = self.gate.lock().map_err(|_| Error::Closed)?;
+        guard.limiter.check(key, now)?;
+        guard
+            .sender
+            .as_ref()
+            .ok_or(Error::Closed)?
+            .try_send(Command::Manage {
+                login,
+                operation,
+                reply,
+                deadline: now + self.queue_ttl,
+            })
+            .map_err(|e| match e {
+                mpsc::error::TrySendError::Full(_) => Error::Busy,
+                mpsc::error::TrySendError::Closed(_) => Error::Closed,
+            })?;
+        guard.limiter.commit(key, now);
         Ok(Pending {
             reply: Some(rx),
             handoff: None,
@@ -763,6 +806,24 @@ fn deliver_login(
 fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
+            Command::Manage {
+                login,
+                operation,
+                deadline,
+                reply,
+            } => {
+                if reply.is_closed() {
+                    continue;
+                }
+                let result = if live {
+                    Err(Error::InvalidInput)
+                } else if Instant::now() >= deadline {
+                    Err(Error::QueueExpired)
+                } else {
+                    store.manage(&login, operation).map_err(Error::Backend)
+                };
+                let _ = reply.send(result);
+            }
             Command::EndLocal { grants, reply } => {
                 // Cleanup must execute even if the waiter disappeared. Its
                 // exact-token transaction is also safe after the queue deadline.

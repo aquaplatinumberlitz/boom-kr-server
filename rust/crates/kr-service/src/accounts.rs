@@ -17,7 +17,9 @@ use zeroize::Zeroizing;
 
 mod guests;
 mod local_login;
+mod management;
 mod matches;
+pub(crate) use management::Management;
 mod preferences;
 pub use matches::*;
 pub use preferences::CharacterPreference;
@@ -26,7 +28,8 @@ const MIGRATION: &str = include_str!("../migrations/0001_accounts.sql");
 const MIGRATION_IDLE: &str = include_str!("../migrations/0002_session_idle.sql");
 const MIGRATION_MATCHES: &str = include_str!("../migrations/0003_match_history.sql");
 const MIGRATION_GUESTS: &str = include_str!("../migrations/0004_guest_accounts.sql");
-pub const SCHEMA_VERSION: i32 = 4;
+const MIGRATION_RECOVERY: &str = include_str!("../migrations/0005_account_recovery.sql");
+pub const SCHEMA_VERSION: i32 = 5;
 const APPLICATION_ID: i32 = 0x4b524143;
 const TTL_MAX: i64 = 86_400;
 static HASH_WORK: AtomicUsize = AtomicUsize::new(0);
@@ -267,6 +270,7 @@ impl Store {
             MIGRATION_IDLE,
             MIGRATION_MATCHES,
             MIGRATION_GUESTS,
+            MIGRATION_RECOVERY,
         ];
         let digests: Vec<_> = scripts
             .iter()
@@ -441,30 +445,41 @@ impl Store {
         let phc = password_hash(password, &self.random::<16>()?)?;
         let request = hex(&self.random::<32>()?);
         self.at(now, |tx| {
-            let wire: i64 = tx.query_row(
-                "SELECT next_wire_id FROM runtime_state WHERE id=1",
-                [],
-                |r| r.get(0),
-            )?;
-            if wire > i64::from(u32::MAX) {
-                return Err(Error::Exhausted);
-            }
-            tx.execute(
-                "INSERT INTO accounts(login,password_phc,created_at) VALUES(?1,?2,?3)",
-                params![login, phc, now],
-            )?;
-            let account = tx.last_insert_rowid();
-            tx.execute(
-                "INSERT INTO players(account_id,wire_id,display_name) VALUES(?1,?2,?3)",
-                params![account, wire, name],
-            )?;
-            tx.execute(
-                "UPDATE runtime_state SET next_wire_id=next_wire_id+1 WHERE id=1",
-                [],
-            )?;
-            Self::audit(tx, &request, admin, "create_account", Some(account), now)?;
-            Self::player(tx, account)
+            Self::insert_account(tx, &login, name, &phc, admin, &request, now)
         })
+    }
+    fn insert_account(
+        tx: &Transaction<'_>,
+        login: &str,
+        name: &str,
+        phc: &str,
+        actor: &Admin<'_>,
+        request: &str,
+        now: i64,
+    ) -> Result<Player> {
+        let wire: i64 = tx.query_row(
+            "SELECT next_wire_id FROM runtime_state WHERE id=1",
+            [],
+            |r| r.get(0),
+        )?;
+        if wire > i64::from(u32::MAX) {
+            return Err(Error::Exhausted);
+        }
+        tx.execute(
+            "INSERT INTO accounts(login,password_phc,created_at) VALUES(?1,?2,?3)",
+            params![login, phc, now],
+        )?;
+        let account = tx.last_insert_rowid();
+        tx.execute(
+            "INSERT INTO players(account_id,wire_id,display_name) VALUES(?1,?2,?3)",
+            params![account, wire, name],
+        )?;
+        tx.execute(
+            "UPDATE runtime_state SET next_wire_id=next_wire_id+1 WHERE id=1",
+            [],
+        )?;
+        Self::audit(tx, request, actor, "create_account", Some(account), now)?;
+        Self::player(tx, account)
     }
     fn player(db: &Connection, account: i64) -> Result<Player> {
         db.query_row("SELECT account_id,id,wire_id,display_name,profile_version FROM players WHERE account_id=?1", [account], |r| Ok(Player {

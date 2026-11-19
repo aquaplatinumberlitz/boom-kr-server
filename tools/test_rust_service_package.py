@@ -59,15 +59,18 @@ class PackageTests(unittest.TestCase):
         public = self.config['diagnostic_two_lobby']['account_admission']['public_launcher'] = dict(
             private_key=str(secret), certificate=dict(path=str(self.fixture),
             bytes=self.fixture.stat().st_size, sha256=digest(self.fixture)))
+        native = self.config['diagnostic_two_lobby']['account_admission']['prelogin_tls'] = dict(public, certificate=dict(public['certificate']))
         expected = self.package()
         template = json.loads((self.out / 'config.template.json').read_text())
-        self.assertEqual(template['diagnostic_two_lobby']['account_admission']['public_launcher']['private_key'],
-                         '@STATE@/launcher.pk8')
         config, _, _ = prepare(self.out, self.root / 'operator-state')
         runtime = json.loads(config.read_text())
-        self.assertEqual(runtime['diagnostic_two_lobby']['account_admission']['public_launcher']['private_key'],
-                         str(self.root / 'operator-state/launcher.pk8'))
+        for section, name in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
+            self.assertEqual(template['diagnostic_two_lobby']['account_admission'][section]['private_key'],
+                             '@STATE@/' + name)
+            self.assertEqual(runtime['diagnostic_two_lobby']['account_admission'][section]['private_key'],
+                             str(self.root / 'operator-state' / name))
         self.assertEqual(public['private_key'], str(secret))
+        self.assertEqual(native['private_key'], str(secret))
         for path in self.out.rglob('*'):
             if path.is_file():
                 self.assertNotIn(secret.read_bytes(), path.read_bytes())

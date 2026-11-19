@@ -10,6 +10,12 @@ struct Config {
     certificate: PathBuf,
     ports: Vec<u16>,
     cancel_file: PathBuf,
+    #[serde(default)]
+    ready_file: Option<PathBuf>,
+    #[serde(default)]
+    owner_heartbeat: Option<PathBuf>,
+    #[serde(default)]
+    udp_backend: kr_tunnel::UdpBackend,
 }
 #[tokio::main]
 async fn main() -> io::Result<()> {
@@ -31,25 +37,46 @@ async fn main() -> io::Result<()> {
     {
         return Err(io::Error::other("prelogin configuration bounds"));
     }
-    let mut endpoint = quinn::Endpoint::client("0.0.0.0:0".parse().expect("constant bind"))?;
-    endpoint.set_default_client_config(kr_tunnel::prelogin::client_config(std::fs::read(
-        config.certificate,
-    )?)?);
-    let connection = kr_tunnel::prelogin::connect(&endpoint, config.server.into()).await?;
+    let endpoint =
+        kr_tunnel::prelogin::endpoint(std::fs::read(config.certificate)?, config.udp_backend)?;
     let listeners = kr_tunnel::prelogin::bind(&config.ports).await?;
+    if let Some(path) = config.ready_file {
+        std::fs::OpenOptions::new()
+            .create_new(true)
+            .write(true)
+            .open(path)?;
+    }
     println!("{{\"event\":\"prelogin_ready\"}}");
     let (halt, stop) = watch::channel(false);
     let cancel = config.cancel_file;
+    let heartbeat = config.owner_heartbeat;
     let task = tokio::spawn(async move {
+        let mut ticker = tokio::time::interval(std::time::Duration::from_millis(100));
+        let signal = tokio::signal::ctrl_c();
+        tokio::pin!(signal);
         loop {
             tokio::select! {
-                _=tokio::signal::ctrl_c()=>break,
-                _=tokio::time::sleep(std::time::Duration::from_millis(100))=>if cancel.exists(){break;}
+                _ = &mut signal => break,
+                _ = ticker.tick() => {
+                    if cancel.exists() || heartbeat.as_ref().is_some_and(|p|
+                        std::fs::metadata(p).and_then(|m| m.modified()).ok()
+                            .and_then(|t| t.elapsed().ok())
+                            .is_none_or(|age| age >= std::time::Duration::from_secs(10))) {
+                        break;
+                    }
+                }
             }
         }
         halt.send_replace(true);
     });
-    let result = kr_tunnel::prelogin::companion(connection, listeners, stop).await;
+    let result = kr_tunnel::prelogin::companion_on_demand(
+        endpoint.clone(),
+        config.server.into(),
+        listeners,
+        stop,
+        config.udp_backend,
+    )
+    .await;
     task.abort();
     let _ = task.await;
     endpoint.close(0u8.into(), b"companion stopped");

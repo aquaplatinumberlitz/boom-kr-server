@@ -206,22 +206,69 @@ pub async fn bind(ports: &[u16]) -> io::Result<Vec<TcpListener>> {
     }
     Ok(listeners)
 }
-/// One pinned TLS connection owns all WCP/login/channel streams. Closing it
-/// tears down every local socket; a replacement connection gets a fresh owner.
-pub async fn companion(
+/// Application close sent only when the server's pre-login timer expires.
+pub const PRELOGIN_EXPIRED: u32 = 1;
+
+fn expired(error: quinn::ConnectionError) -> bool {
+    matches!(error, quinn::ConnectionError::ApplicationClosed(close)
+        if close.error_code == PRELOGIN_EXPIRED.into())
+}
+
+pub fn endpoint(certificate: Vec<u8>, backend: crate::UdpBackend) -> io::Result<Endpoint> {
+    let mut endpoint = crate::client_configured(
+        "0.0.0.0:0".parse().expect("fixed bind"),
+        certificate.clone().into(),
+        backend,
+        false,
+    )?
+    .0;
+    endpoint.set_default_client_config(client_config(certificate)?);
+    Ok(endpoint)
+}
+
+/// Listeners outlive a pre-login timeout. Dial on demand, without replaying
+/// any bytes from an old socket or reattaching an authenticated roster.
+pub async fn companion_on_demand(
+    endpoint: Endpoint,
+    address: SocketAddr,
+    listeners: Vec<TcpListener>,
+    stop: watch::Receiver<bool>,
+    backend: crate::UdpBackend,
+) -> io::Result<()> {
+    run_companion(None, Some((endpoint, address)), listeners, stop, backend).await
+}
+
+#[cfg(test)]
+async fn companion(
     connection: Connection,
     listeners: Vec<TcpListener>,
-    mut stop: watch::Receiver<bool>,
+    stop: watch::Receiver<bool>,
 ) -> io::Result<()> {
-    let _close = Close(connection.clone());
+    run_companion(
+        Some(connection),
+        None,
+        listeners,
+        stop,
+        crate::UdpBackend::Native,
+    )
+    .await
+}
+
+async fn run_companion(
+    mut connection: Option<Connection>,
+    dial: Option<(Endpoint, SocketAddr)>,
+    listeners: Vec<TcpListener>,
+    mut stop: watch::Receiver<bool>,
+    backend: crate::UdpBackend,
+) -> io::Result<()> {
     let (tx, mut rx) = tokio::sync::mpsc::channel(4);
     let mut accepts = JoinSet::new();
     for listener in listeners {
         let tx = tx.clone();
         accepts.spawn(async move {
+            let port = listener.local_addr()?.port();
             loop {
                 let (socket, _) = listener.accept().await?;
-                let port = listener.local_addr()?.port();
                 let _ = tx.try_send((socket, port));
             }
             #[allow(unreachable_code)]
@@ -229,39 +276,82 @@ pub async fn companion(
         });
     }
     drop(tx);
-    let mut streams = JoinSet::new();
-    let mut peer_tasks = JoinSet::new();
-    let bound = Arc::new(AtomicBool::new(false));
-    peer_tasks.spawn(peers(connection.clone(), stop.clone(), bound.clone()));
-    let mut total = 0;
-    let result=async{loop{
-        if *stop.borrow(){return Ok(());}
-        tokio::select!{
-            _=stop.changed()=>return Ok(()),
-            _=connection.closed()=>return Err(io::Error::other("native TLS ended")),
-            result=peer_tasks.join_next()=>return result.ok_or_else(||io::Error::other("native peer task absent"))?.map_err(io::Error::other)?,
-            result=streams.join_next(),if !streams.is_empty()=>{
-                if let Some(Err(error))=result{return Err(io::Error::other(error));}
-            },
-            accepted=rx.recv()=>{
-                let Some((mut socket,port))=accepted else{return Err(io::Error::other("native listeners ended"));};
-                total+=1;
-                if total>STREAM_TOTAL||streams.len()>=STREAM_LIMIT as usize{return Err(io::Error::other("native companion stream bound"));}
-                let tls=connection.clone();let bound=bound.clone();streams.spawn(async move{
-                    let (mut send,mut recv)=open(&tls,port).await?;
-                    let (mut read,mut write)=socket.split();
-                    tokio::try_join!(copy_secret(&mut read,&mut send,&bound),copy_secret(&mut recv,&mut write,&bound)).map(|_|())
-                });
+    let result = async {
+        loop {
+            if *stop.borrow() { return Ok(()); }
+            let initial = if connection.is_none() {
+                let ticket = tokio::select! {
+                    _ = stop.changed() => return Ok(()),
+                    ticket = rx.recv() => ticket.ok_or_else(|| io::Error::other("native listeners ended"))?,
+                };
+                let (endpoint, address) = dial.as_ref().ok_or_else(|| io::Error::other("native TLS ended"))?;
+                let tls = tokio::select! {
+                    _ = stop.changed() => return Ok(()),
+                    result = connect(endpoint, *address) => result?,
+                };
+                connection = Some(tls);
+                Some(ticket)
+            } else {
+                None
+            };
+            let tls = connection.take().expect("connection was established");
+            let _close = Close(tls.clone());
+            let bound = Arc::new(AtomicBool::new(false));
+            let mut streams = JoinSet::new();
+            let mut total = 0;
+            let peer = peers(tls.clone(), stop.clone(), bound.clone(), backend);
+            tokio::pin!(peer);
+            let mut initial = initial;
+            loop {
+                tokio::select! {
+                    biased;
+                    _ = stop.changed() => return Ok(()),
+                    error = tls.closed() => {
+                        if dial.is_some() && expired(error) && !bound.load(Ordering::Acquire) {
+                            break;
+                        }
+                        return Err(io::Error::other("native TLS ended"));
+                    }
+                    result = &mut peer => {
+                        if dial.is_some() && !bound.load(Ordering::Acquire)
+                            && tls.close_reason().is_some_and(expired) {
+                            break;
+                        }
+                        return result;
+                    }
+                    result = streams.join_next(), if !streams.is_empty() => {
+                        if let Some(Err(error)) = result { return Err(io::Error::other(error)); }
+                    }
+                    accepted = async {
+                        match initial.take() {
+                            Some(ticket) => Some(ticket),
+                            None => rx.recv().await,
+                        }
+                    } => {
+                        let Some((mut socket, port)) = accepted else {
+                            return Err(io::Error::other("native listeners ended"));
+                        };
+                        total += 1;
+                        if total > STREAM_TOTAL || streams.len() >= STREAM_LIMIT as usize {
+                            return Err(io::Error::other("native companion stream bound"));
+                        }
+                        let tls = tls.clone();
+                        let bound = bound.clone();
+                        streams.spawn(async move {
+                            let (mut send, mut recv) = open(&tls, port).await?;
+                            let (mut read, mut write) = socket.split();
+                            tokio::try_join!(
+                                copy_secret(&mut read, &mut send, &bound),
+                                copy_secret(&mut recv, &mut write, &bound)
+                            ).map(|_| ())
+                        });
+                    }
+                }
             }
+            streams.shutdown().await;
         }
-    }}.await;
-    accepts.abort_all();
-    while accepts.join_next().await.is_some() {}
-    streams.abort_all();
-    while streams.join_next().await.is_some() {}
-    peer_tasks.abort_all();
-    while peer_tasks.join_next().await.is_some() {}
-    connection.close(0u8.into(), b"native owner ended");
+    }.await;
+    accepts.shutdown().await;
     result
 }
 
@@ -272,6 +362,7 @@ async fn peers(
     connection: Connection,
     stop: watch::Receiver<bool>,
     bound: Arc<AtomicBool>,
+    backend: crate::UdpBackend,
 ) -> io::Result<()> {
     let mut recv = connection.accept_uni().await.map_err(io::Error::other)?;
     let offers = tokio::time::timeout(Duration::from_secs(2), async {
@@ -315,8 +406,13 @@ async fn peers(
     for (address, certificate, secret) in offers {
         let stop = stop.clone();
         tasks.spawn(async move {
-            let endpoint =
-                crate::client("0.0.0.0:0".parse().expect("fixed bind"), certificate.into())?;
+            let endpoint = crate::client_configured(
+                "0.0.0.0:0".parse().expect("fixed bind"),
+                certificate.into(),
+                backend,
+                false,
+            )?
+            .0;
             let link = crate::Link::connect(&endpoint, address.into(), &secret).await?;
             let result =
                 crate::companion::run(link, std::net::Ipv4Addr::LOCALHOST.into(), 8192, stop).await;
