@@ -739,20 +739,6 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         client.set_default_client_config(prelogin::client_config(cert).unwrap());
         let endpoint = server.clone();
         let mut authority = resources(worker.client());
-        let hub = crate::room_service::Hub::new(
-            &crate::room_service::Config {
-                max_rooms: 8,
-                round_profile: None,
-                player_choices: true,
-                capacity: None,
-                player_round: None,
-            },
-            crate::room_io::registry_foundation_tests::local_setup_prototype(),
-            None,
-            None,
-        )
-        .unwrap();
-        Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
         let held = std::net::UdpSocket::bind("127.0.0.1:0").unwrap();
         let std::net::SocketAddr::V4(address) = held.local_addr().unwrap() else {
             unreachable!()
@@ -769,6 +755,22 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             lease_seconds: 60,
         })
         .unwrap();
+        let hub = crate::room_service::Hub::new(
+            &crate::room_service::Config {
+                max_rooms: 8,
+                round_profile: None,
+                player_choices: true,
+                capacity: None,
+                player_round: Some(crate::room_io::PlayerRoundConfig {
+                    characters: vec![0, 1],
+                }),
+            },
+            crate::room_io::registry_foundation_tests::player_round_prototype(),
+            None,
+            Some(relay.clone()),
+        )
+        .unwrap();
+        Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
         Arc::get_mut(&mut authority).unwrap().authenticated = Some(relay.clone());
         let peer_endpoint = relay.bind().unwrap();
         let bridge =
@@ -916,6 +918,9 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             teams[slot] = Some((state >> 5) & 0x1f);
         }
         assert_eq!(teams, [Some(0), Some(3)]);
+        // While shared-client loading is unsupported, Start cannot publish
+        // a round or close the two valid sessions. Both can return together.
+        send(&mut channel, &mut channel_tx, 104, &[0; 20]).await;
         send(&mut channel, &mut channel_tx, 86, &[]).await;
         assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 241);
         assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 91);
