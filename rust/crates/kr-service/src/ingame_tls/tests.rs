@@ -409,11 +409,11 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             &crate::room_service::Config {
                 max_rooms: 8,
                 round_profile: None,
-                player_choices: false,
+                player_choices: true,
                 capacity: None,
                 player_round: None,
             },
-            crate::room_io::registry_foundation_tests::empty(0x77),
+            crate::room_io::registry_foundation_tests::local_setup_prototype(),
             None,
             None,
         )
@@ -493,9 +493,10 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         send(&mut channel, &mut 40, 6, &claims).await;
         let mut channel_rx = 43;
         assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 17);
+        let mut channel_tx = 43;
         send(
             &mut channel,
-            &mut 43,
+            &mut channel_tx,
             67,
             &write_uint(0, Width::U16).unwrap(),
         )
@@ -553,6 +554,59 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             peer_links.push(link);
             endpoints.push(endpoint);
         }
+        send(&mut channel, &mut channel_tx, 81, &create_room()).await;
+        assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 86);
+        send(
+            &mut channel,
+            &mut channel_tx,
+            585,
+            &write_uint(0, Width::U32).unwrap(),
+        )
+        .await;
+        for (slot, player) in [&a, &b].into_iter().enumerate() {
+            let profile = receive(&mut reply, &mut channel_rx).await;
+            assert_eq!(profile.opcode, 106);
+            assert_eq!(
+                read_uint(&profile.payload[..1], Width::U8).unwrap(),
+                slot as u64
+            );
+            assert_eq!(
+                read_uint(&profile.payload[1..5], Width::U32).unwrap(),
+                u64::from(player.wire_id)
+            );
+            assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 110);
+        }
+        for opcode in [238, 117] {
+            assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, opcode);
+        }
+        send(&mut channel, &mut channel_tx, 92, &[0x5b, 0xa5, 0x68]).await;
+        let mut chars = [None; 2];
+        for _ in 0..2 {
+            let choice = receive(&mut reply, &mut channel_rx).await;
+            assert_eq!(choice.opcode, 110);
+            let slot = read_uint(&choice.payload[..1], Width::U8).unwrap() as usize;
+            let state = read_uint(&choice.payload[1..5], Width::U32).unwrap();
+            chars[slot] = Some((state >> 16) & 0x1fff);
+        }
+        assert_eq!(chars, [Some(0), Some(1)]);
+        send(&mut channel, &mut channel_tx, 97, &[0x49]).await;
+        let mut teams = [None; 2];
+        for _ in 0..2 {
+            let choice = receive(&mut reply, &mut channel_rx).await;
+            assert_eq!(choice.opcode, 110);
+            let slot = read_uint(&choice.payload[..1], Width::U8).unwrap() as usize;
+            let state = read_uint(&choice.payload[1..5], Width::U32).unwrap();
+            teams[slot] = Some((state >> 5) & 0x1f);
+        }
+        assert_eq!(teams, [Some(0), Some(3)]);
+        send(&mut channel, &mut channel_tx, 86, &[]).await;
+        assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 241);
+        assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 91);
+        send(&mut channel, &mut channel_tx, 81, &create_room()).await;
+        let recreated = receive(&mut reply, &mut channel_rx).await;
+        assert_eq!(recreated.opcode, 86);
+        assert_eq!(read_uint(&recreated.payload[1..3], Width::U16).unwrap(), 2);
+
         let now = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()

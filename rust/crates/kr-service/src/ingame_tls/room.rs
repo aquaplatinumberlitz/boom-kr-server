@@ -4,12 +4,39 @@ use super::*;
 use crate::{accounts::CharacterPreference, room_io, room_service};
 use std::collections::BTreeSet;
 
+/// Choices name a local ordinal, never a DB or room identity. Translate only
+/// the typed selector before passing the measured single-member envelope to
+/// the existing policy/authority checks.
+fn local_command(opcode: u32, body: &[u8], count: usize) -> io::Result<(usize, Option<Vec<u8>>)> {
+    if count == 1 {
+        return Ok((0, None));
+    }
+    use kr_wire::{Width, kr00967 as wire, write_uint};
+    match opcode {
+        92 => {
+            let (index, character) = wire::local_character92(body, count)?;
+            let mut body = write_uint(0, Width::U8).map_err(io::Error::other)?;
+            body.extend(write_uint(character.into(), Width::U16).map_err(io::Error::other)?);
+            Ok((index, Some(body)))
+        }
+        97 => {
+            let (index, team) = wire::local_team97(body, count)?;
+            Ok((
+                index,
+                Some(write_uint(team.into(), Width::U8).map_err(io::Error::other)?),
+            ))
+        }
+        86 | 96 | 104 | 266 | 528 | 585 => Ok((0, None)),
+        _ => Err(io::Error::other("unmeasured multi-local room command")),
+    }
+}
+
 #[derive(Default)]
 pub(super) struct State {
-    session: Option<room_io::Session>,
-    pending: Vec<room_io::Batch>,
+    sessions: Vec<room_io::Session>,
+    pending: Vec<(usize, room_io::Batch)>,
     known: BTreeSet<(u16, u32)>,
-    preference: Option<CharacterPreference>,
+    preferences: Vec<Option<CharacterPreference>>,
     last_chat: Option<Instant>,
 }
 impl State {
@@ -29,39 +56,36 @@ impl State {
         }
         let opcode = input.opcode;
         if matches!(opcode, 81 | 82) {
-            if self.session.is_some() {
+            if !self.sessions.is_empty() {
                 return Err(io::Error::other("native selection before completed return"));
             }
             driver.inspect().await?;
-            // Multi-local room bodies need their own measured command/consumer
-            // mapping; never silently admit just the first account of a pair.
-            if driver.authorities().len() != 1 {
-                return Err(io::Error::other("unmeasured multi-local room layout"));
+            self.preferences.clear();
+            for owner in driver.authorities() {
+                owner
+                    .authorize_activity()
+                    .await
+                    .map_err(|_| io::Error::other("native activity denied"))?;
+                self.preferences.push(if resources.persist_character {
+                    Some(
+                        owner
+                            .character_preference(None)
+                            .await
+                            .map_err(|_| io::Error::other("native preference denied"))?,
+                    )
+                } else {
+                    None
+                });
             }
-            let owner = &driver.authorities()[0];
-            owner
-                .authorize_activity()
-                .await
-                .map_err(|_| io::Error::other("native activity denied"))?;
-            self.preference = if resources.persist_character {
-                Some(
-                    owner
-                        .character_preference(None)
-                        .await
-                        .map_err(|_| io::Error::other("native preference denied"))?,
-                )
-            } else {
-                None
-            };
             let selection = resources
                 .lobby
                 .lock()
                 .await
                 .as_ref()
                 .ok_or_else(|| io::Error::other("native lobby absent"))?
-                .select(opcode, input.body(), Ipv4Addr::LOCALHOST)?;
+                .select_roster(opcode, input.body(), Ipv4Addr::LOCALHOST)?;
             match selection {
-                room_service::Selection::Full => {
+                room_service::LocalSelection::Full => {
                     driver
                         .lobby_reply(
                             lane,
@@ -72,33 +96,46 @@ impl State {
                         )
                         .await?;
                 }
-                room_service::Selection::Joined(session) => {
-                    if let Some(preference) = &self.preference {
-                        session.restore_character(preference.character_key)?;
+                room_service::LocalSelection::Joined(sessions) => {
+                    for (session, preference) in sessions.iter().zip(&self.preferences) {
+                        if let Some(preference) = preference {
+                            session.restore_character(preference.character_key)?;
+                        }
                     }
-                    self.session = Some(session);
+                    self.sessions = sessions;
+                    let _ = resources.events.try_send(serde_json::json!({
+                        "event": "native_tls_room_selected", "opcode": opcode, "players": self.sessions.len()
+                    }));
                 }
             }
             return Ok(true);
         }
-        let Some(session) = &self.session else {
-            return Ok(false);
-        };
-        if opcode != 18 && !room_io::Session::handles(opcode) {
+        let count = self.sessions.len();
+        if count == 0 || (opcode != 18 && !room_io::Session::handles(opcode)) {
             return Ok(false);
         }
+        let (index, normalized) = local_command(opcode, input.body(), count)?;
+        let body = normalized.as_deref().unwrap_or(input.body());
+        let session = &self.sessions[index];
         session.wait_journal().await?;
         driver.inspect().await?;
-        let owner = driver
-            .authorities()
-            .first()
-            .cloned()
-            .ok_or_else(|| io::Error::other("native room owner absent"))?;
-        if !matches!(opcode, 59 | 79) {
+        let owner = driver.authorities()[index].clone();
+        if !matches!(opcode, 59 | 79 | 528) {
             owner
                 .authorize_activity()
                 .await
                 .map_err(|_| io::Error::other("native activity denied"))?;
+        }
+        if count == 2 && matches!(opcode, 585 | 86) {
+            driver.authorities()[1]
+                .authorize_activity()
+                .await
+                .map_err(|_| io::Error::other("native activity denied"))?;
+            session.local_waiting_room(opcode, body)?;
+            let _ = resources.events.try_send(serde_json::json!({
+                "event": "native_tls_room_request", "opcode": opcode, "players": count
+            }));
+            return Ok(true);
         }
         if opcode == 18 {
             if self
@@ -107,7 +144,7 @@ impl State {
             {
                 return Err(io::Error::other("native room chat rate bound"));
             }
-            session.room_chat(input.body())?;
+            session.room_chat(body)?;
             self.last_chat = Some(Instant::now());
         } else {
             if opcode == 99 {
@@ -115,9 +152,8 @@ impl State {
                 driver.inspect().await?;
             }
             if opcode == 92 && resources.persist_character {
-                if let Some((membership, character)) = session.prepare_character(input.body())? {
-                    let expected = self
-                        .preference
+                if let Some((membership, character)) = session.prepare_character(body)? {
+                    let expected = self.preferences[index]
                         .as_ref()
                         .ok_or_else(|| io::Error::other("native character preference absent"))?
                         .revision;
@@ -142,13 +178,13 @@ impl State {
                             }
                         }
                     };
-                    self.preference = Some(stored);
-                    session.persisted_character(membership, input.body())?;
+                    self.preferences[index] = Some(stored);
+                    session.persisted_character(membership, body)?;
                 } else {
-                    session.packet(opcode, input.body())?;
+                    session.packet(opcode, body)?;
                 }
             } else {
-                session.packet(opcode, input.body())?;
+                session.packet(opcode, body)?;
             }
         }
         let _ = resources
@@ -164,31 +200,35 @@ impl State {
         send: &mut quinn::SendStream,
         resources: &Resources,
     ) -> io::Result<()> {
-        if let Some(session) = &mut self.session {
+        let queue_bound = 16 * self.sessions.len();
+        if let Some(primary) = self.sessions.first() {
             driver.inspect().await?;
-            if !session.channel_current() {
+            if self
+                .sessions
+                .iter()
+                .any(|session| !session.channel_current())
+            {
                 return Err(io::Error::other("native room channel retired"));
             }
-            session.tick()?;
-            session.pump_relay().await?;
-            while let Ok(batch) = session.inbox.try_recv() {
-                if self.pending.len() >= 16 {
-                    return Err(io::Error::other("native room timer queue bound"));
+            primary.tick()?;
+            primary.pump_relay().await?;
+            for (index, session) in self.sessions.iter_mut().enumerate() {
+                while let Ok(batch) = session.inbox.try_recv() {
+                    if self.pending.len() >= queue_bound {
+                        return Err(io::Error::other("native room timer queue bound"));
+                    }
+                    self.pending.push((index, batch));
                 }
-                self.pending.push(batch);
             }
         }
-        self.pending.sort_by_key(|batch| batch.due);
+        self.pending.sort_by_key(|(_, batch)| batch.due);
         while self
             .pending
             .first()
-            .is_some_and(|batch| batch.due <= Instant::now())
+            .is_some_and(|(_, batch)| batch.due <= Instant::now())
         {
-            let mut batch = self.pending.remove(0);
-            let session = self
-                .session
-                .as_ref()
-                .ok_or_else(|| io::Error::other("native room session absent"))?;
+            let (index, mut batch) = self.pending.remove(0);
+            let session = &self.sessions[index];
             driver.inspect().await?;
             if !session.valid(&batch) {
                 continue;
@@ -222,8 +262,13 @@ impl State {
                     .await?;
             }
             session.finish(&batch)?;
+            if batch.setup.is_some() {
+                let _ = resources.events.try_send(serde_json::json!({
+                    "event": "native_tls_room_setup_written", "players": self.sessions.len()
+                }));
+            }
             if batch.packets.iter().any(|(alias, _)| alias == "return241") {
-                self.session.take();
+                self.sessions.clear();
                 self.pending.clear();
                 resources
                     .lobby
@@ -234,7 +279,7 @@ impl State {
                     .returned()?;
             }
         }
-        if self.session.is_none() {
+        if self.sessions.is_empty() {
             let mut lobby = resources.lobby.lock().await;
             let lobby = lobby
                 .as_mut()

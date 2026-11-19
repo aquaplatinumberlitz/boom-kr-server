@@ -353,6 +353,7 @@ pub struct Batch {
     pub due: Instant,
     pub packets: Vec<(String, Reply)>,
     pub setup: Option<Membership>,
+    setup_partner: Option<Membership>,
     pub subject: Option<Membership>,
     pub bomb_complete: Option<(bombs::Ticket, Membership)>,
     pub life_complete: Option<(Membership, u64, String, Membership)>,
@@ -843,6 +844,45 @@ pub(crate) fn listing_row(shared: &Shared) -> io::Result<wire::ListingRow> {
     Ok(row)
 }
 impl Runtime {
+    fn transport_representatives<'a>(members: impl Iterator<Item = &'a Member>) -> Vec<&'a Member> {
+        let mut representatives = std::collections::BTreeMap::new();
+        for member in members {
+            let entry = representatives
+                .entry(member.key.connection)
+                .or_insert(member);
+            if member.key.visit < entry.key.visit {
+                *entry = member;
+            }
+        }
+        representatives.into_values().collect()
+    }
+
+    fn local_members(&self, primary: Membership) -> io::Result<Vec<Member>> {
+        let mut members: Vec<_> = self
+            .model
+            .members
+            .values()
+            .filter(|member| member.key.connection == primary.connection)
+            .cloned()
+            .collect();
+        members.sort_by_key(|member| member.key.visit);
+        if members.len() != 2
+            || members[0].key != primary
+            || members.iter().any(|member| {
+                self.channels
+                    .get(&member.key.identity)
+                    .is_none_or(|channel| {
+                        channel.connection != primary.connection
+                            || channel.relay_authority.as_ref().is_none_or(|owner| {
+                                !owner.owns(member.key.identity, primary.connection)
+                            })
+                    })
+            })
+        {
+            return Err(err("local room roster retired"));
+        }
+        Ok(members)
+    }
     fn admission_capacity(&self) -> usize {
         self.maps.as_ref().map_or(self.model.capacity(), |maps| {
             self.model
@@ -948,6 +988,7 @@ impl Runtime {
             due: Instant::now() + Duration::from_millis(delay),
             packets,
             setup: None,
+            setup_partner: None,
             subject: None,
             bomb_complete: None,
             life_complete: None,
@@ -977,6 +1018,7 @@ impl Runtime {
             due: Instant::now() + Duration::from_millis(delay),
             packets,
             setup: None,
+            setup_partner: None,
             subject: None,
             bomb_complete: None,
             life_complete: None,
@@ -1114,18 +1156,18 @@ impl Runtime {
             .ok_or_else(|| err("missing departure"))?;
         let remove = packet(107, room_wire::removal(departed)?);
         let mut effects = Vec::new();
-        for peer in next.members.values() {
+        for peer in Self::transport_representatives(next.members.values()) {
+            let mut packets = vec![("remove107".into(), remove.clone())];
+            for member in next
+                .members
+                .values()
+                .filter(|m| m.key.connection == peer.key.connection)
+            {
+                packets.push(("survivor110".into(), self.slot(member, next.host)?));
+            }
             effects.push((
                 peer.key.identity,
-                Self::member_batch(
-                    peer.key,
-                    None,
-                    0,
-                    vec![
-                        ("remove107".into(), remove.clone()),
-                        ("survivor110".into(), self.slot(peer, next.host)?),
-                    ],
-                ),
+                Self::member_batch(peer.key, None, 0, packets),
             ));
         }
         Ok(effects)
@@ -1874,6 +1916,9 @@ impl Session {
         if batch.subject.is_some_and(|key| !r.model.current(key)) {
             return false;
         }
+        if batch.setup_partner.is_some_and(|key| !r.model.current(key)) {
+            return false;
+        }
         match batch.guard {
             Guard::Channel => true,
             Guard::RoomChat {
@@ -2066,11 +2111,15 @@ impl Session {
         }
 
         if let Some(key) = batch.setup {
-            self.shared
-                .lock()
-                .map_err(|_| err("room unavailable"))?
-                .model
-                .setup(key)?;
+            let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            if let Some(partner) = batch.setup_partner {
+                let mut next = r.model.clone();
+                next.setup(key)?;
+                next.setup(partner)?;
+                r.model = next;
+            } else {
+                r.model.setup(key)?;
+            }
         }
         Ok(())
     }
@@ -2140,6 +2189,118 @@ impl Session {
             return Err(err("invalid local room selection"));
         }
         self.packet_owned(opcode, body, None, Some(roster))
+    }
+    /// Room-wide native commands on the waiting-room transport. The two
+    /// accounts are checked and mutated together before any batch is visible.
+    pub(crate) fn local_waiting_room(&self, opcode: u32, body: &[u8]) -> io::Result<()> {
+        let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        let primary = r.member(self.identity, self.connection)?.key;
+        let members = r.local_members(primary)?;
+        if r.model.phase != Phase::Idle {
+            return Err(err("local waiting room command outside idle phase"));
+        }
+        match opcode {
+            585 if wire::zero585_setup(body)?
+                && members.iter().all(|m| !r.requested.contains(&m.key)) =>
+            {
+                let mut effects = Vec::new();
+                let mut pairs = Vec::new();
+                let mut roster: Vec<_> = r.model.members.values().collect();
+                roster.sort_by_key(|m| m.slot);
+                for member in roster {
+                    let mut batch = Runtime::member_batch(
+                        primary,
+                        None,
+                        0,
+                        vec![
+                            ("local106".into(), r.player(member, r.model.host)?),
+                            ("local110".into(), r.slot(member, r.model.host)?),
+                        ],
+                    );
+                    batch.subject = Some(member.key);
+                    effects.push((primary.identity, batch));
+                    if member.key != primary {
+                        pairs.push((primary, member.key));
+                    }
+                }
+                for peer in Runtime::transport_representatives(r.model.members.values()) {
+                    if peer.key.connection == primary.connection || !r.requested.contains(&peer.key)
+                    {
+                        continue;
+                    }
+                    for member in &members {
+                        let mut batch = Runtime::member_batch(
+                            peer.key,
+                            None,
+                            0,
+                            vec![("peer106".into(), r.player(member, r.model.host)?)],
+                        );
+                        batch.subject = Some(member.key);
+                        effects.push((peer.key.identity, batch));
+                        pairs.push((peer.key, member.key));
+                    }
+                }
+                let mut final_batch = Runtime::member_batch(
+                    primary,
+                    None,
+                    0,
+                    vec![
+                        ("table238".into(), r.reply(Template::Table238, None)),
+                        ("map117".into(), r.reply(Template::Map117, None)),
+                    ],
+                );
+                final_batch.setup = Some(primary);
+                final_batch.setup_partner = Some(members[1].key);
+                effects.push((primary.identity, final_batch));
+                let model = r.model.clone();
+                r.publish(model, effects)?;
+                r.requested.extend(members.iter().map(|member| member.key));
+                r.rostered.extend(pairs);
+            }
+            86 if body.is_empty() => {
+                let mut next = r.model.clone();
+                for member in &members {
+                    next.leave(member.key)?;
+                }
+                let mut effects = Vec::new();
+                for peer in Runtime::transport_representatives(next.members.values()) {
+                    let mut packets = Vec::new();
+                    for member in &members {
+                        packets
+                            .push(("remove107".into(), packet(107, room_wire::removal(member)?)));
+                    }
+                    for member in next
+                        .members
+                        .values()
+                        .filter(|m| m.key.connection == peer.key.connection)
+                    {
+                        packets.push(("survivor110".into(), r.slot(member, next.host)?));
+                    }
+                    effects.push((
+                        peer.key.identity,
+                        Runtime::member_batch(peer.key, None, 0, packets),
+                    ));
+                }
+                effects.push((
+                    primary.identity,
+                    r.lobby_batch(
+                        primary.identity,
+                        self.connection,
+                        1000,
+                        vec![("return241".into(), r.ready.clone())],
+                    ),
+                ));
+                r.publish(next, effects)?;
+                for member in &members {
+                    r.requested.remove(&member.key);
+                    r.rostered.retain(|(recipient, subject)| {
+                        *recipient != member.key && *subject != member.key
+                    });
+                }
+            }
+            _ => return Err(err("unsupported local waiting-room request")),
+        }
+        Ok(())
     }
     /// Opt-in patched949x room-waiting chat. Caller authorizes account and rate;
     /// sender identity comes only from its current DB-backed channel owner.
@@ -2450,31 +2611,32 @@ impl Session {
                     ),
                 ));
                 for peer in next.members.values() {
-                    if peer.key != m.key {
-                        if !r.rostered.contains(&(m.key, peer.key)) {
-                            let mut batch = Runtime::member_batch(
-                                m.key,
-                                None,
-                                3000,
-                                vec![("peer106".into(), r.player(peer, next.host)?)],
-                            );
-                            batch.subject = Some(peer.key);
-                            effects.push((self.identity, batch));
-                            roster_pairs.push((m.key, peer.key));
-                        }
-                        if r.requested.contains(&peer.key)
-                            && !r.rostered.contains(&(peer.key, m.key))
-                        {
-                            let mut batch = Runtime::member_batch(
-                                peer.key,
-                                None,
-                                3000,
-                                vec![("peer106".into(), r.player(&m, next.host)?)],
-                            );
-                            batch.subject = Some(m.key);
-                            roster_pairs.push((peer.key, m.key));
-                            effects.push((peer.key.identity, batch));
-                        }
+                    if peer.key != m.key && !r.rostered.contains(&(m.key, peer.key)) {
+                        let mut batch = Runtime::member_batch(
+                            m.key,
+                            None,
+                            3000,
+                            vec![("peer106".into(), r.player(peer, next.host)?)],
+                        );
+                        batch.subject = Some(peer.key);
+                        effects.push((self.identity, batch));
+                        roster_pairs.push((m.key, peer.key));
+                    }
+                }
+                for peer in Runtime::transport_representatives(next.members.values()) {
+                    if peer.key != m.key
+                        && r.requested.contains(&peer.key)
+                        && !r.rostered.contains(&(peer.key, m.key))
+                    {
+                        let mut batch = Runtime::member_batch(
+                            peer.key,
+                            None,
+                            3000,
+                            vec![("peer106".into(), r.player(&m, next.host)?)],
+                        );
+                        batch.subject = Some(m.key);
+                        roster_pairs.push((peer.key, m.key));
+                        effects.push((peer.key.identity, batch));
                     }
                 }
                 let mut final_batch = Runtime::member_batch(
@@ -2564,7 +2726,9 @@ impl Session {
                     next.choose(member.key, character, team)?;
                     // Reserve all recipient queues before publishing any choice or
                     // Ready clear. Each batch carries the current subject fence.
-                    for peer in next.members.values().filter(|peer| peer.setup) {
+                    for peer in Runtime::transport_representatives(
+                        next.members.values().filter(|peer| peer.setup),
+                    ) {
                         let slots = next
                             .members
                             .values()
@@ -2600,7 +2764,7 @@ impl Session {
                 }
                 next.ready(m.key)?;
                 let member = next.members[&self.identity].clone();
-                for peer in next.members.values() {
+                for peer in Runtime::transport_representatives(next.members.values()) {
                     effects.push((
                         peer.key.identity,
                         Runtime::member_batch(
@@ -2616,6 +2780,14 @@ impl Session {
                 let m = r.member(self.identity, self.connection)?;
                 if !(20..=8192).contains(&body.len()) {
                     return Err(err("unsupported Start104 envelope"));
+                }
+                if Runtime::transport_representatives(next.members.values()).len()
+                    != next.members.len()
+                {
+                    return Ok(Observation {
+                        start_rejection: Some("multi_local_loading_unmeasured"),
+                        ..Observation::default()
+                    });
                 }
                 if r.rules.teams == TeamPolicy::BalancedManner
                     && r.selector == 1
@@ -4672,6 +4844,19 @@ pub(crate) mod registry_foundation_tests {
                 vec![0x5a, 0x5a, 0xa5, 0x68, 0x5a, 0x5a, 0x5a],
             );
         }
+        shared
+    }
+    pub(crate) fn local_setup_prototype() -> Shared {
+        let shared = selection_prototype();
+        let mut runtime = shared.lock().unwrap();
+        let template = crate::account_bridge::local::native::fixtures::PLAYER;
+        let body = (0..template.len())
+            .step_by(2)
+            .map(|i| u8::from_str_radix(&template[i..i + 2], 16).unwrap())
+            .collect();
+        runtime.players.insert(1, packet(106, body));
+        runtime.bodies.insert(Template::Map117, vec![0x5a]);
+        drop(runtime);
         shared
     }
     #[test]

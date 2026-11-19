@@ -63,17 +63,6 @@ pub(crate) struct LocalLobby {
     authorities: Vec<RelayAuthority>,
 }
 impl LocalLobby {
-    pub(crate) fn select(&self, opcode: u32, body: &[u8], peer: Ipv4Addr) -> io::Result<Selection> {
-        if !self.current() || self.channels.len() != 1 {
-            return Err(err(
-                "native room selection requires measured single-local layout",
-            ));
-        }
-        match self.select_roster(opcode, body, peer)? {
-            LocalSelection::Joined(mut sessions) => Ok(Selection::Joined(sessions.remove(0))),
-            LocalSelection::Full => Ok(Selection::Full),
-        }
-    }
     pub(crate) fn select_roster(
         &self,
         opcode: u32,
@@ -706,7 +695,7 @@ mod local_tests {
             let lobby = hub.register_local(&handles).unwrap();
             assert!(lobby.current());
             assert_eq!(hub.state.lock().unwrap().owners.len(), 2);
-            assert!(lobby.select(81, &[], Ipv4Addr::LOCALHOST).is_err());
+            assert!(lobby.select_roster(81, &[], Ipv4Addr::LOCALHOST).is_err());
             assert!(
                 hub.state
                     .lock()
