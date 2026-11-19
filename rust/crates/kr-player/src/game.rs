@@ -219,12 +219,6 @@ fn ready(child: &mut Child, signal: &Path) -> io::Result<()> {
 }
 
 fn start_inner(config: Config, language: Language) -> io::Result<Session> {
-    kr_player::verify_language(
-        &config.bundle,
-        &config.manifest_sha256,
-        &config.installation,
-        language.id(),
-    )?;
     let run = config.state.join(format!(
         "run-{}-{}",
         std::process::id(),
@@ -293,8 +287,25 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
     Ok(Session(Arc::new(Mutex::new(owned))))
 }
 
-pub(crate) fn start(config: Config, language: Language) -> Result<Session, ()> {
-    start_inner(config, language).map_err(|_| ())
+#[derive(Clone, Copy)]
+pub(crate) enum StartError {
+    Integrity,
+    WritableFiles,
+    Launch,
+}
+
+pub(crate) fn start(config: Config, language: Language) -> Result<Session, StartError> {
+    kr_player::prepare_language(
+        &config.bundle,
+        &config.manifest_sha256,
+        &config.installation,
+        language.id(),
+    )
+    .map_err(|error| match error {
+        kr_player::PreparationError::Integrity => StartError::Integrity,
+        kr_player::PreparationError::WritableFiles => StartError::WritableFiles,
+    })?;
+    start_inner(config, language).map_err(|_| StartError::Launch)
 }
 
 #[cfg(test)]

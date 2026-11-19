@@ -2,7 +2,7 @@
 #![cfg_attr(target_os = "windows", windows_subsystem = "windows")]
 mod game;
 mod look;
-use game::{Config, Session, start};
+use game::{Config, Session, StartError, start};
 use iced::{
     Alignment, Color, Element, Font, Length, Subscription, Task, Theme,
     widget::{Space, button, canvas, column, container, row, stack, text, text_input},
@@ -36,7 +36,7 @@ impl Language {
         }
     }
     fn line(self, key: usize) -> &'static str {
-        const VI: [&str; 34] = [
+        const VI: [&str; 35] = [
             "VÀO TRẬN.\nBÙNG NỔ.",
             "Một căn phòng. Những người bạn. Vô vàn ván mới.",
             "Chào mừng bạn",
@@ -71,8 +71,9 @@ impl Language {
             "Sao chép mã",
             "Mật khẩu: 12–128 ký tự ASCII in được.",
             "Xác nhận xoá tài khoản",
+            "Không thể ghi tệp trò chơi. Kiểm tra quyền ghi của thư mục cài đặt.",
         ];
-        const EN: [&str; 34] = [
+        const EN: [&str; 35] = [
             "ONE MORE\nROUND.",
             "One room. Your friends. A whole new round.",
             "Welcome",
@@ -107,8 +108,9 @@ impl Language {
             "Copy code",
             "Password: 12–128 printable ASCII characters.",
             "Confirm account deletion",
+            "Could not write game files. Check write access to the installation folder.",
         ];
-        const KO: [&str; 34] = [
+        const KO: [&str; 35] = [
             "다시 한 판,\n함께 즐겨요.",
             "하나의 방. 반가운 친구들. 새로운 한 판.",
             "환영합니다",
@@ -143,6 +145,7 @@ impl Language {
             "코드 복사",
             "비밀번호: 인쇄 가능한 ASCII 문자 12~128자.",
             "계정 삭제 확인",
+            "게임 파일에 쓸 수 없습니다. 설치 폴더의 쓰기 권한을 확인해 주세요.",
         ];
         match self {
             Self::Vi => VI[key],
@@ -167,7 +170,7 @@ enum Message {
     Status(bool),
     Prepared(bool),
     Play,
-    Started(Result<Session, ()>),
+    Started(Result<Session, StartError>),
     Close,
     Stop,
 }
@@ -454,7 +457,7 @@ impl Player {
                         async move {
                             tokio::task::spawn_blocking(move || start(config, language))
                                 .await
-                                .unwrap_or(Err(()))
+                                .unwrap_or(Err(StartError::Launch))
                         },
                         Message::Started,
                     );
@@ -469,7 +472,13 @@ impl Player {
                             return self.update(Message::Stop);
                         }
                     }
-                    Err(()) => self.notice = Some(12),
+                    Err(error) => {
+                        self.notice = Some(match error {
+                            StartError::Integrity => 11,
+                            StartError::WritableFiles => 34,
+                            StartError::Launch => 12,
+                        })
+                    }
                 }
             }
             Message::Stop => {
@@ -756,7 +765,7 @@ impl Player {
         } else {
             label(notice)
                 .size(13)
-                .color(if matches!(notice, 11 | 12 | 16 | 24) {
+                .color(if matches!(notice, 11 | 12 | 16 | 24 | 34) {
                     look::CORAL
                 } else {
                     look::MUTED

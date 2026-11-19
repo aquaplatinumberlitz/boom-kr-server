@@ -59,6 +59,15 @@ fn fixture(root: &Path) -> String {
     let full = payload(root, "expected-pack", b"KRVIEN");
     let common = payload(root, "common", b"unchanged library");
     let mut languages = BTreeMap::new();
+    let settings = payload(root, "settings", b"seed settings");
+    let cache = payload(root, "cache", b"seed dynamic map");
+    let log = payload(root, "native-log", b"seed log");
+    for name in ["settings", "cache", "native-log", "common"] {
+        let path = root.join(name);
+        let mut mode = fs::metadata(&path).unwrap().permissions();
+        mode.set_readonly(true);
+        fs::set_permissions(path, mode).unwrap();
+    }
     for id in ["vi", "en", "ko"] {
         let exe = payload(
             root,
@@ -80,6 +89,14 @@ fn fixture(root: &Path) -> String {
                         path: "fx.idx".into(),
                         payload: idx,
                     },
+                    Entry {
+                        path: "FxDynMapInfo.ssd".into(),
+                        payload: cache.clone(),
+                    },
+                    Entry {
+                        path: "settings/game.INI".into(),
+                        payload: settings.clone(),
+                    },
                 ],
             },
         );
@@ -92,10 +109,16 @@ fn fixture(root: &Path) -> String {
             bytes: full.bytes,
             sha256: full.sha256,
         }],
-        common: vec![Entry {
-            path: "support.dll".into(),
-            payload: common,
-        }],
+        common: vec![
+            Entry {
+                path: "support.dll".into(),
+                payload: common,
+            },
+            Entry {
+                path: "CALog.log".into(),
+                payload: log,
+            },
+        ],
         languages,
         limits: "Synthetic integrity regression, not native evidence".into(),
     };
@@ -169,4 +192,60 @@ fn post_install_replacement_and_platform_unsafe_paths_are_rejected() {
     ] {
         assert!(kr_player::relative(name).is_err(), "{name}");
     }
+}
+
+#[test]
+fn installed_game_files_are_writable_and_runtime_changes_reseed_from_pinned_inputs() {
+    let dir = Directory::new();
+    let hash = fixture(&dir.0);
+    let target = dir.0.join("install");
+    kr_player::install(&dir.0, &hash, &target).unwrap();
+    let mutable = ["FxDynMapInfo.ssd", "settings/game.INI", "CALog.log"];
+    for lang in ["vi", "en", "ko"] {
+        for name in mutable.into_iter().chain(["fx.idd", "support.dll"]) {
+            let installed = target.join(lang).join(name);
+            assert!(!fs::metadata(installed).unwrap().permissions().readonly());
+        }
+    }
+    for name in mutable {
+        let installed = target.join("ko").join(name);
+        fs::write(&installed, b"native updated").unwrap();
+        let mut mode = fs::metadata(&installed).unwrap().permissions();
+        mode.set_readonly(true);
+        fs::set_permissions(&installed, mode).unwrap();
+    }
+    // The game may delete a cache; the next launch must still be possible.
+    fs::remove_file(target.join("ko/FxDynMapInfo.ssd"))
+        .or_else(|_| {
+            let f = target.join("ko/FxDynMapInfo.ssd");
+            #[cfg(windows)]
+            {
+                let mut mode = fs::metadata(&f)?.permissions();
+                mode.set_readonly(false);
+                fs::set_permissions(&f, mode)?;
+            }
+            fs::remove_file(f)
+        })
+        .unwrap();
+    kr_player::verify_install(&dir.0, &hash, &target).unwrap();
+    kr_player::prepare_language(&dir.0, &hash, &target, "ko").unwrap();
+    assert_eq!(
+        fs::read(target.join("ko/FxDynMapInfo.ssd")).unwrap(),
+        b"seed dynamic map"
+    );
+    assert_eq!(
+        fs::read(target.join("ko/settings/game.INI")).unwrap(),
+        b"seed settings"
+    );
+    assert_eq!(
+        fs::read(target.join("ko/CALog.log")).unwrap(),
+        b"native updated"
+    );
+    for name in mutable {
+        fs::write(target.join("ko").join(name), b"second native update").unwrap();
+    }
+    assert_eq!(fs::read(target.join("en/CALog.log")).unwrap(), b"seed log");
+    assert_eq!(fs::read(dir.0.join("native-log")).unwrap(), b"seed log");
+    let error = kr_player::prepare_language(&dir.0, &hash, &target, "wrong").unwrap_err();
+    assert!(matches!(error, kr_player::PreparationError::Integrity));
 }
