@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP346: hai ván 1P qua TLS và relay UDP đạt test tự động; client Windows 2P vào phòng chờ nhưng chưa qua tải trận.** [Giới hạn và bằng chứng](docs/evidence/checkpoints/records/CP346.json). M8 còn mở.
+**CP347: Windows 2P qua TLS đã hiện kết quả và trở về phòng; Start ván kế đạt trong test tự động.** [Giới hạn và bằng chứng](docs/evidence/checkpoints/records/CP347.json). M8 còn mở.
 
 ## Bắt đầu
 

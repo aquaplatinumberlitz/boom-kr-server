@@ -5,6 +5,9 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP346: hai ván 1P qua TLS và relay UDP đạt test tự động; client Windows 2P vào phòng chờ nhưng chưa qua tải trận.**
+[Giới hạn và bằng chứng](evidence/checkpoints/records/CP346.json). M8 còn mở.
+
 **CP340: đã mở nhập liệu LoginStage trên bản thử một byte; gói đăng nhập còn vướng.**
 [Đối chứng cấu hình và UI](evidence/rust-service/m8-login-input-controls.json) xác định cờ tự đăng nhập
 khóa ô nhập và roster. Bản sao riêng đổi một byte đã nhận ID/mật khẩu 1P qua UI gốc, nhưng Xác nhận hiện

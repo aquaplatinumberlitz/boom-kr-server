@@ -1195,7 +1195,9 @@ All-dead dùng policy rank2 riêng, đợi latest death8s; không suy tie enum/l
 cho hai recipient trước publish Ending:175 ngay,180 sau5s, hai110 refresh sau3s nữa. Complete refresh đủ roster mới Idle;
 Ready/Start/late callbacks có membership/round fences. Full TCP write không là native execution ACK/atomic delivery.
 
-Native post-result202/22 chỉ current Ending/closed member, prefix0/1 và budget; không active Battle-exit implementation.
+Sau kết quả, 202 có prefix u8 `0/count` và một hàng opaque 20 byte cho mỗi thành viên thuộc transport:
+22 byte cho 1P, 42 byte cho 2P. Số hàng phải khớp roster hiện hành; giữ điều kiện Ending/closed và ngân
+sách. 202 không cấp quyền tính kết quả hoặc rời trận đang chơi.
 Native180 gửi lại585/zero: bounded no-response khi kết quả đã chọn/closed, giữ110 refresh, không cấp visit/setup mới.
 167 body16 đã thấy ở run lỗi R1; chỉ thêm đúng envelope này vào4/32 bounded opaque policy, **semantics vẫn unknown**.
 Polling result dùng100ms; idle read deadline tuyệt đối giữ từ lần đọc bytes, không bị poll reset.
