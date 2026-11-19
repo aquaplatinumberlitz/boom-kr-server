@@ -34,6 +34,13 @@ MUTABLE_METADATA_DOCS = {
 }
 
 
+def record_line_budget(number, raw):
+    """Owner directive #489: grandfather CP001–342, cap new records at 120 lines."""
+    lines = len(raw.splitlines())
+    return ([f"{cp_id(number)}: record has {lines} lines; maximum is 120 after CP342"]
+            if number > 342 and lines > 120 else [])
+
+
 def audit_core_read_order(read_files):
     """Keep the core pass ordered, including chapters of the protocol index.
 
@@ -438,6 +445,10 @@ def validate(manifest, root=ROOT, require_local=False):
     ids, current_steps = [], {}
     for index, record in enumerate(records, 1):
         where = cp_id(index)
+        if index > 342:
+            raw = (store.file_reader(root)(manifest["checkpoints"][index - 1]["path"])
+                   if manifest.get("schema") == store.V2 else store.encoded(record))
+            errors.extend(record_line_budget(index, raw))
         if not require_fields(record, (
             "id", "previous", "lifecycle", "recorded_utc", "question", "scope",
             "context_commit", "artifacts", "locators", "findings", "verification",
