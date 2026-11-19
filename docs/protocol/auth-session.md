@@ -219,6 +219,35 @@ phòng, gameplay và lifecycle DB/TLS vẫn chưa được nghiệm thu.
 Collector chẩn đoán chỉ nghe loopback, chỉ gửi reply sau đủ frame và continuation theo request đã khai báo.
 Nó giữ nguồn collector mặc định nguyên vẹn và không nối vào listener production.
 
+<a id="rust-ingame-db-publication"></a>
+### Cấp session DB nguyên tử cho một client có hai account
+
+[API cấp session DB](../../rust/crates/kr-service/src/accounts/local_login.rs) và worker bổ sung nhóm 1P/2P
+để dùng với thư viện parser; chưa bật route mật khẩu trên listener. `Store::login_local` và worker tương ứng nhận một hoặc hai
+principal khác nhau sau chuẩn hóa tên. Policy mật khẩu 12–128 byte và KDF M5 giữ nguyên. Đối chứng native cho thấy bản manual trước đó cắt
+mật khẩu về 8 byte; tăng capacity riêng vẫn bị validator tắt nút Xác nhận. Bản thử sửa capacity và bounds có
+recipe/hash/rollback riêng: bốn byte bổ sung giúp UI gửi đúng mật khẩu 12 và 16 byte; không là đăng nhập DB
+trên serving. Biên 128 byte chưa xác minh vì lượt nhập dài lỗi QMP; log lỗi và cleanup phục hồi giữ ở local.
+Validator ID của nhánh KR hiện hành còn giới hạn
+4–12 byte theo tĩnh, chưa đồng nhất với toàn bộ miền ID 3–32 của backend. Backend thực hiện KDF
+cho mọi principal hợp lệ về cú pháp, kể cả tên không tồn tại; sai credential hoặc account bị khóa trả lỗi credential chung.
+
+`design`: tất cả session được insert trong một transaction SQLite sau khi kiểm lại credential version/PHC/disabled
+và phiên đang hoạt động. Lỗi ở người thứ hai, reset trong khoảng KDF hoặc lỗi insert làm rollback cả nhóm;
+không để session người thứ nhất tồn tại riêng. Token của từng account riêng biệt; đây chưa là ownership transport.
+Worker dùng một queue slot và một handoff cho cả nhóm; kiểm giới hạn từng principal và sức chứa bảng rate trước
+khi nhận việc. Password/credential được giữ trong buffer zeroize và bỏ trước khi đợi caller nhận kết quả.
+
+Nếu caller hủy hoặc hết hạn handoff, worker thu hồi cả nhóm trong một transaction bằng đúng token/account;
+cleanup cũ không thu hồi session thay thế. Idle/expiry của từng identity vẫn được kiểm riêng theo DB M5.
+Các kiểm SQLite thật có lỗi người thứ hai, credential reset, lỗi ghi, stale cleanup, rate capacity, caller hủy và
+handoff hết hạn; không dùng kết quả đó làm bằng chứng native đăng nhập DB hoặc membership.
+
+Parser `local_channel_identities` đọc một/hai record theo request kênh đã đo, giữ thứ tự, chặn ID 0/trùng,
+length/count/truncation và optional string chưa hỗ trợ. Echo và đuôi opaque không là credential. Caller còn phải
+so khớp toàn bộ roster với admission TLS và generation đã cấp, rồi gắn lifecycle login/channel/room cho cả hai.
+Guest, generic denial trên wire, giới hạn IP/prelogin, transport fencing và ca native xuyên suốt vẫn mở.
+
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
 

@@ -194,6 +194,16 @@ enum Command {
         handoff: Arc<Handoff>,
         handoff_ttl: Duration,
     },
+    LocalLogin {
+        credentials: Vec<(Zeroizing<String>, Zeroizing<Vec<u8>>)>,
+        ttl: i64,
+        idle: Option<i64>,
+        now: AuthorizationTime,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<Vec<Grant>>>,
+        handoff: Arc<Handoff>,
+        handoff_ttl: Duration,
+    },
     Authorize {
         token: Token,
         player: i64,
@@ -386,6 +396,98 @@ impl Client {
     ) -> Result<Pending<Grant>> {
         self.submit_login(login, password, ttl, None, AuthorizationTime::Supplied(now))
     }
+    /// One/two-account DB publication only. The transport adapter must bind
+    /// both grants to its exact TLS admission before granting membership.
+    pub fn try_login_local_current(
+        &self,
+        credentials: &[(&str, &[u8])],
+        ttl: i64,
+        idle: Option<i64>,
+    ) -> Result<Pending<Vec<Grant>>> {
+        self.submit_local_login(credentials, ttl, idle, AuthorizationTime::ExecutionUtc)
+    }
+    pub fn try_login_local(
+        &self,
+        credentials: &[(&str, &[u8])],
+        ttl: i64,
+        idle: Option<i64>,
+        now: i64,
+    ) -> Result<Pending<Vec<Grant>>> {
+        self.submit_local_login(credentials, ttl, idle, AuthorizationTime::Supplied(now))
+    }
+    fn submit_local_login(
+        &self,
+        credentials: &[(&str, &[u8])],
+        ttl: i64,
+        idle: Option<i64>,
+        now: AuthorizationTime,
+    ) -> Result<Pending<Vec<Grant>>> {
+        if !(1..=2).contains(&credentials.len())
+            || !(1..=86400).contains(&ttl)
+            || idle.is_some_and(|idle| !(1..=86400).contains(&idle))
+            || matches!(now, AuthorizationTime::Supplied(value) if value < 0)
+        {
+            return Err(Error::InvalidInput);
+        }
+        let mut keys = Vec::with_capacity(credentials.len());
+        for (login, password) in credentials {
+            if !(3..=32).contains(&login.len())
+                || !login
+                    .bytes()
+                    .all(|b| b.is_ascii_alphanumeric() || b == b'_')
+                || !(12..=128).contains(&password.len())
+            {
+                return Err(Error::InvalidInput);
+            }
+            let key = rate::Limiter::key(login);
+            if keys.contains(&key) {
+                return Err(Error::InvalidInput);
+            }
+            keys.push(key);
+        }
+        let (reply, rx) = oneshot::channel();
+        let handoff = Handoff::new();
+        let command = Command::LocalLogin {
+            credentials: credentials
+                .iter()
+                .map(|(name, password)| {
+                    (
+                        Zeroizing::new((*name).to_owned()),
+                        Zeroizing::new(password.to_vec()),
+                    )
+                })
+                .collect(),
+            ttl,
+            idle,
+            now,
+            deadline: Instant::now() + self.queue_ttl,
+            reply,
+            handoff: handoff.clone(),
+            handoff_ttl: self.queue_ttl,
+        };
+        let mut guard = self.gate.lock().map_err(|_| Error::Closed)?;
+        if guard.sender.as_ref().is_none_or(mpsc::Sender::is_closed) {
+            return Err(Error::Closed);
+        }
+        let now = Instant::now();
+        guard.limiter.check_group(&keys, now)?;
+        guard
+            .sender
+            .as_ref()
+            .ok_or(Error::Closed)?
+            .try_send(command)
+            .map_err(|error| match error {
+                mpsc::error::TrySendError::Full(_) => Error::Busy,
+                mpsc::error::TrySendError::Closed(_) => Error::Closed,
+            })?;
+        for key in keys {
+            guard.limiter.commit(key, now);
+        }
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: Some(handoff),
+        })
+    }
     pub fn try_login_with_idle(
         &self,
         login: &str,
@@ -558,6 +660,75 @@ fn deliver_login(
 fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
+            Command::LocalLogin {
+                credentials,
+                ttl,
+                idle,
+                now,
+                deadline,
+                reply,
+                handoff,
+                handoff_ttl,
+            } => {
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                if reply.is_closed() {
+                    continue;
+                }
+                if Instant::now() >= deadline {
+                    let _ = reply.send(Err(Error::QueueExpired));
+                    continue;
+                }
+                let borrowed: Vec<_> = credentials
+                    .iter()
+                    .map(|(name, password)| (name.as_str(), password.as_slice()))
+                    .collect();
+                let result = match now {
+                    AuthorizationTime::Supplied(time) => {
+                        store.login_local(&borrowed, ttl, idle, time)
+                    }
+                    AuthorizationTime::ExecutionUtc => {
+                        store.login_local_current(&borrowed, ttl, idle)
+                    }
+                }
+                .map_err(Error::Backend);
+                // Secrets are no longer needed while waiting for a consumer.
+                drop(borrowed);
+                drop(credentials);
+                let grants = match result {
+                    Ok(grants) => grants,
+                    Err(error) => {
+                        let _ = reply.send(Err(error));
+                        continue;
+                    }
+                };
+                let retained = grants
+                    .iter()
+                    .map(|grant| {
+                        Ok(Grant {
+                            player: grant.player.clone(),
+                            token: Token::parse(grant.token.expose_secret())
+                                .map_err(Error::Backend)?,
+                            expires_at: grant.expires_at,
+                        })
+                    })
+                    .collect::<Result<Vec<_>>>()?;
+                let accepted = if reply.send(Ok(grants)).is_ok() {
+                    handoff.accepted(handoff_ttl)
+                } else {
+                    Ok(false)
+                };
+                if !matches!(accepted, Ok(true)) {
+                    // The DB compensator clamps to the durable watermark;
+                    // a later admin timestamp must not prevent cleanup.
+                    store
+                        .release_local_undelivered(&retained, 0)
+                        .map_err(Error::Backend)?;
+                }
+                accepted?;
+            }
             Command::Logout {
                 token,
                 player,

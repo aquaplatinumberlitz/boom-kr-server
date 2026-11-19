@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP342: native đọc hai hồ sơ và tự mở kết nối kênh; chưa xác thực DB.**
+**M8 đang nối DB 1P/2P và ownership; mốc native CP342 đã tự mở kết nối kênh.**
 [Bằng chứng và giới hạn](docs/evidence/rust-service/m8-login-local-profiles.json): cùng bản tương thích riêng
 đã có UI đăng nhập 2P, callback đọc đủ hai hồ sơ và set hai ID. Thông báo trạng thái cho cả hai slot làm client
 phát yêu cầu kênh, mở kết nối mới và gửi đúng hai ID/tên. Rust đã có projection reply ở thư viện; listener,

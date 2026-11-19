@@ -15,6 +15,7 @@ use std::{
 };
 use zeroize::Zeroizing;
 
+mod local_login;
 mod matches;
 mod preferences;
 pub use matches::*;

@@ -86,6 +86,31 @@ impl Limiter {
         }
         w.attempts += 1;
     }
+
+    /// Reserve checks for a distinct local roster under the caller's admission
+    /// mutex. Checking two new keys independently could overflow table capacity.
+    pub(super) fn check_group(&mut self, keys: &[[u8; 32]], now: Instant) -> Result<()> {
+        self.entries.retain(|_, w| {
+            now.checked_duration_since(w.since)
+                .is_none_or(|elapsed| elapsed < self.policy.interval)
+        });
+        let mut new = 0;
+        for key in keys {
+            if let Some(w) = self.entries.get(key) {
+                if now.checked_duration_since(w.since).is_none()
+                    || w.attempts >= self.policy.attempts
+                {
+                    return Err(Error::RateLimited);
+                }
+            } else {
+                new += 1;
+            }
+        }
+        if self.entries.len() + new > self.policy.principals {
+            return Err(Error::RateLimited);
+        }
+        Ok(())
+    }
 }
 #[cfg(test)]
 mod tests {
