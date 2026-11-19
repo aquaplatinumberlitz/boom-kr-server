@@ -169,6 +169,81 @@ struct Resources {
     authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
 }
 
+/// The log schema contains only service-chosen labels and numeric protocol
+/// metadata. Never serialize an underlying error's text or packet body.
+#[derive(Debug)]
+struct NativeFailure {
+    guard: &'static str,
+    opcode: Option<u32>,
+    subtype: Option<u8>,
+}
+impl std::fmt::Display for NativeFailure {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(self.guard)
+    }
+}
+impl std::error::Error for NativeFailure {}
+
+fn native_failure(
+    error: io::Error,
+    fallback: &'static str,
+    opcode: Option<u32>,
+    subtype: Option<u8>,
+) -> io::Error {
+    if error.get_ref().is_some_and(|e| e.is::<NativeFailure>()) {
+        return error;
+    }
+    let guard = match error.to_string().as_str() {
+        "room slot does not belong to this transport" => "foreign_room_slot",
+        "native owner byte bound" => "native_byte_budget",
+        "native ancillary bound" => "native_ancillary_budget",
+        "native read deadline" => "native_frame_deadline",
+        "native checksum" => "native_frame_checksum",
+        "native frame bound" => "native_frame_size",
+        "native owner denied" | "native activity denied" => "account_authority",
+        "native lobby owner retired" | "native room channel retired" => "retired_membership",
+        "report observation phase" => "life_report_phase",
+        "unsupported closed-result202 envelope" => "result_tail_shape",
+        "active battle exit202 not ported" => "result_tail_phase",
+        "incomplete life recipient roster" => "life_recipient_roster",
+        "room recipient queue unavailable" => "room_recipient_queue",
+        "unsupported Start104 envelope" => "start_shape",
+        "unsupported result selector" | "unsupported room selector" => "result_selector",
+        "journal missing current outcome" => "journal_missing_outcome",
+        "match journal duplicate transition" => "journal_duplicate_finish",
+        "match journal round not retired" => "journal_round_not_retired",
+        "no pending outcome" | "duplicate/stale outcome completion" => "result_completion",
+        "missing validated life170 body" | "missing current life clear" => "life_publication",
+        "native room timer queue bound" => "room_timer_queue",
+        "native room batch retired" => "retired_room_batch",
+        "prelogin lifetime bound" => "prelogin_deadline",
+        "native stream admission bound" => "stream_admission",
+        _ if error.kind() == io::ErrorKind::UnexpectedEof => "native_stream_eof",
+        _ => fallback,
+    };
+    io::Error::new(
+        error.kind(),
+        NativeFailure {
+            guard,
+            opcode,
+            subtype,
+        },
+    )
+}
+
+fn owner_ended(result: &io::Result<()>) -> serde_json::Value {
+    let mut event = serde_json::json!({"event":"native_tls_owner_ended","ok":result.is_ok()});
+    if let Err(error) = result {
+        let failure = error
+            .get_ref()
+            .and_then(|e| e.downcast_ref::<NativeFailure>());
+        event["guard"] = serde_json::json!(failure.map_or("owner_lifecycle", |f| f.guard));
+        event["opcode"] = serde_json::json!(failure.and_then(|f| f.opcode));
+        event["subtype"] = serde_json::json!(failure.and_then(|f| f.subtype));
+    }
+    event
+}
+
 async fn stream(
     mut send: quinn::SendStream,
     mut recv: quinn::RecvStream,
@@ -176,7 +251,9 @@ async fn stream(
     resources: Arc<Resources>,
     transport: quinn::Connection,
 ) -> io::Result<()> {
-    prelogin::accept_header(&mut recv, &resources.ports).await?;
+    prelogin::accept_header(&mut recv, &resources.ports)
+        .await
+        .map_err(|e| native_failure(e, "native_stream_header", None, None))?;
     tokio::time::timeout(Duration::from_secs(2), send.write_all(&resources.hello))
         .await
         .map_err(|_| io::Error::other("native hello deadline"))?
@@ -184,7 +261,7 @@ async fn stream(
     let mut sequence = 40;
     let first = match native::read(&mut recv, &mut sequence).await {
         Err(error) if error.kind() == io::ErrorKind::UnexpectedEof => return Ok(()),
-        result => result?,
+        result => result.map_err(|e| native_failure(e, "native_frame_read", None, None))?,
     };
     if first.opcode == 0 {
         tokio::time::timeout(Duration::from_secs(2), send.write_all(&resources.wcp))
@@ -198,12 +275,20 @@ async fn stream(
     let mut lane = match first.opcode {
         1 | 62 => Lane::login(id)?,
         6 => Lane::channel(id)?,
-        _ => return Err(io::Error::other("native first opcode")),
+        _ => {
+            return Err(native_failure(
+                io::Error::other("native first opcode"),
+                "native_first_opcode",
+                Some(first.opcode),
+                None,
+            ));
+        }
     };
     let mut pending = Some(first);
     let mut map_requests = 0;
     let mut room = room::State::default();
     let mut clock = tokio::time::interval(Duration::from_millis(100));
+    let mut last = (None, None);
     let result = async {
         loop {
             let input = if let Some(input) = pending.take() {
@@ -215,15 +300,24 @@ async fn stream(
                 tokio::pin!(read);
                 loop {
                     tokio::select! {
-                        input = &mut read => break input?,
+                        input = &mut read => break input.map_err(|e|
+                            native_failure(e, "native_frame_read", None, None))?,
                         _ = clock.tick(), if lane.in_lobby() => {
                             let mut owner = resources.owner.lock().await;
                             let driver = owner.as_mut().ok_or_else(|| io::Error::other("native owner absent"))?;
-                            room.poll(driver, &mut lane, &mut send, &resources).await?;
+                            room.poll(driver, &mut lane, &mut send, &resources).await.map_err(|e|
+                                native_failure(e, "room_poll", None, None))?;
                         }
                     }
                 }
             };
+            let subtype = if input.opcode == 127 {
+                input.body().get(..1).and_then(|body|
+                    kr_wire::read_uint(body, kr_wire::Width::U8).ok()).map(|v| v as u8)
+            } else {
+                None
+            };
+            last = (Some(input.opcode), subtype);
             let size = input.payload_len() + kr_wire::FRAME_OVERHEAD;
             if !resources.bytes.lock().map_err(|_| io::Error::other("native byte budget unavailable"))?
                 .allow(size, lane.in_lobby(), Instant::now()) {
@@ -241,7 +335,8 @@ async fn stream(
                 .as_mut()
                 .ok_or_else(|| io::Error::other("native owner absent"))?;
             let opcode = input.opcode;
-            if room.packet(&input, driver, &mut lane, &mut send, &resources).await? {
+            if room.packet(&input, driver, &mut lane, &mut send, &resources).await.map_err(|e|
+                native_failure(e, "room_request", last.0, last.1))? {
                 continue;
             }
             if opcode == 528 {
@@ -325,9 +420,16 @@ async fn stream(
             }
         }
     }
-    .await;
+    .await
+    .map_err(|e| native_failure(e, "native_stage_guard", last.0, last.1));
     if let Some(driver) = resources.owner.lock().await.as_mut() {
-        let retired = driver.disconnected(&lane).await?;
+        let retired = match driver.disconnected(&lane).await {
+            Ok(retired) => retired,
+            Err(e) if result.is_ok() => {
+                return Err(native_failure(e, "account_cleanup", None, None));
+            }
+            Err(_) => return result,
+        };
         if !retired
             && result
                 .as_ref()
@@ -372,10 +474,10 @@ async fn connection(
                 let id=crate::transport_ids::next()?;let resources=resources.clone();let transport=connection.clone();streams.spawn(async move{self::stream(send,recv,id,resources,transport).await});
             },
             result=streams.join_next(),if !streams.is_empty()=>{
-                match result{Some(Ok(Ok(())))=>{},Some(Ok(Err(_)))=>return Err(io::Error::other("native stream denied")),Some(Err(_))=>return Err(io::Error::other("native stream task ended")),None=>{}}
+                match result{Some(Ok(Ok(())))=>{},Some(Ok(Err(error)))=>return Err(native_failure(error,"native_stream",None,None)),Some(Err(_))=>return Err(io::Error::other("native stream task ended")),None=>{}}
             }
         }
-    }}.await;
+    }}.await.map_err(|e| native_failure(e,"owner_lifecycle",None,None));
     connection.close(0u8.into(), b"native owner ended");
     streams.abort_all();
     while streams.join_next().await.is_some() {}
@@ -386,7 +488,11 @@ async fn connection(
                 hub.retire_local(&owner.relay_authority());
             }
         }
-        driver.finish().await?;
+        let cleanup = driver
+            .finish()
+            .await
+            .map_err(|e| native_failure(e, "account_cleanup", None, None));
+        return outcome.and(cleanup);
     }
     outcome
 }
@@ -436,7 +542,7 @@ pub(crate) async fn serve(
                     let result=tokio::time::timeout(Duration::from_secs(3),incoming).await;
                     if let Ok(Ok(tls))=result{
                         let result=connection(tls,resources,stop,unauth).await;
-                        let _=events.try_send(serde_json::json!({"event":"native_tls_owner_ended","ok":result.is_ok()}));
+                        let _=events.try_send(owner_ended(&result));
                     }
                 });
             }

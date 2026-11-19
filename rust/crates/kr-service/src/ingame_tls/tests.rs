@@ -709,6 +709,100 @@ fn unvalidated_initial_gets_retry_before_any_admission() {
     });
 }
 
+// Windows r2 c2s-60420, sequences 148–232. Only the two 118 round keys
+// are rebound to the fixture's fresh 153 key. No login bytes are retained.
+const WINDOWS_R2_GAMEPLAY: &[(u32, u32, &str)] = &[
+    (
+        148,
+        127,
+        "7d5aa57da57196ca505496ca53915b5b96ca531796ca2e8d940752954cb25395d6a947f6fa82df908f4d73dcf6f8e0dd0cee15979868521c244b3551c6a631d4964baca03edc0f48f30631cf5b4101d70ce005b9119f5250b2ec7f5e2f303fec20c123bd44cbb46551501779b5d4371574aa8da171241b79c9d9e0d58e5a9869e8823f6aa12a71761c0941acd771dc98a8b853954848",
+    ),
+    (
+        151,
+        127,
+        "7d5ba72da57196ca505496ca53915b5b96ca538296ca418d969752954cb2539536a947f69eca5388a5cb42",
+    ),
+    (
+        154,
+        15,
+        "916469f696ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (157, 190, ""),
+    (160, 190, ""),
+    (
+        163,
+        15,
+        "91641e6096ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (
+        166,
+        15,
+        "9164321496ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (
+        169,
+        15,
+        "9164269e96ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (
+        172,
+        15,
+        "9164db0d96ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (
+        175,
+        15,
+        "9164cfb296ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (178, 118, "96ca62ac5a5a96ca53955a5a5b5a5a5a5b96ca53945a"),
+    (181, 118, "96ca62ac5a5b96ca53945a545b5a5a5a5b96ca53945a"),
+    (
+        184,
+        15,
+        "9164fc2c96ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (
+        187,
+        127,
+        "4b5aa569a54e96ca5bf396ca539096ca539b96ca5a8d96c8539596ca5395a569",
+    ),
+    (
+        190,
+        15,
+        "916490d796ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (193, 127, "725ba759a54e96ca5b1596ca539796ca53975a"),
+    (
+        196,
+        127,
+        "4b5ba759a54e96ca5b1596ca539096ca539b96ca5a8d96c8539596ca5395a569",
+    ),
+    (
+        199,
+        15,
+        "9164854396ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (202, 167, "a569a56f"),
+    (205, 167, "a569a561"),
+    (
+        208,
+        127,
+        "495aa569a54e96ca5ad196ca539596ca539e96ca558d693553955a965a",
+    ),
+    (211, 127, "4f5ba759a54e96ca5ad196ca5393"),
+    (214, 127, "4f5ba759a54e96ca5afd96ca5397"),
+    (217, 127, "4f5ba759a54e96ca5a1f96ca5397"),
+    (220, 127, "4f5ba759a54e96ca5a3996ca5397"),
+    (
+        223,
+        15,
+        "9164b9fc96ca539596ca539596ca539596ca539596ca539296ca518da5695a",
+    ),
+    (226, 127, "4f5ba759a54e96ca5a5b96ca5397"),
+    (229, 127, "4f5ba759a54e96ca5a6596ca5397"),
+    (232, 127, "4f5ba759a54e96ca598796ca5397"),
+];
+
 #[test]
 fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_every_stream() {
     let _serial = TEST_SERIAL.lock().unwrap();
@@ -949,20 +1043,41 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
                 stale[5] = 0x5b;
                 send(&mut channel, &mut channel_tx, 118, &stale).await;
             }
-            let mut placement = bomb(k, 3);
-            placement[5] = 0x5b; // second account uses room slot 1
-            send(&mut channel, &mut channel_tx, 118, &placement).await;
-            let p = receive(&mut reply, &mut channel_rx).await;
-            assert_eq!(p.opcode, 159);
-            assert_eq!(read_uint(&p.payload[17..18], Width::U8).unwrap(), 3);
-            let p = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(10)).await;
-            assert_eq!(p.opcode, 158);
-            let tick = n * 100;
-            send(&mut channel, &mut channel_tx, 127, &report(1, 17, tick)).await;
-            assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 170);
-            send(&mut channel, &mut channel_tx, 127, &report(1, 19, tick + 1)).await;
-            assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 170);
-            send(&mut channel, &mut channel_tx, 127, &report(0, 21, tick + 2)).await;
+            if n == 1 {
+                for &(sequence, opcode, raw_body) in WINDOWS_R2_GAMEPLAY {
+                    let mut body = hex(raw_body);
+                    if opcode == 118 {
+                        body[..4].copy_from_slice(&write_uint(k, Width::U32).unwrap());
+                    }
+                    send(&mut channel, &mut channel_tx, opcode, &body).await;
+                    if sequence == 181 {
+                        for opcode in [159, 159, 158, 158] {
+                            let packet = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(10)).await;
+                            assert_eq!(packet.opcode, opcode);
+                        }
+                    }
+                }
+                for subtype in [17, 17, 19, 21] {
+                    let packet = receive(&mut reply, &mut channel_rx).await;
+                    assert_eq!(packet.opcode, 170);
+                    assert_eq!(read_uint(&packet.payload[..1], Width::U8).unwrap(), subtype);
+                }
+            } else {
+                let mut placement = bomb(k, 3);
+                placement[5] = 0x5b; // second account uses room slot 1
+                send(&mut channel, &mut channel_tx, 118, &placement).await;
+                let p = receive(&mut reply, &mut channel_rx).await;
+                assert_eq!(p.opcode, 159);
+                assert_eq!(read_uint(&p.payload[17..18], Width::U8).unwrap(), 3);
+                let p = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(10)).await;
+                assert_eq!(p.opcode, 158);
+                let tick = n * 3000;
+                send(&mut channel, &mut channel_tx, 127, &report(1, 17, tick)).await;
+                assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 170);
+                send(&mut channel, &mut channel_tx, 127, &report(1, 19, tick + 1)).await;
+                assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 170);
+                send(&mut channel, &mut channel_tx, 127, &report(0, 21, tick + 2)).await;
+            }
             let rank = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(12)).await;
             assert_eq!(rank.opcode, 175);
             // Exact trailing 202 body from the shared-client Windows capture.
@@ -976,12 +1091,13 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
                 assert_eq!(p.opcode, opcode);
             }
             let db = rusqlite::Connection::open(temp.db()).unwrap();
-            for (account, outcome) in [(&a, "win"), (&b, "loss")] {
+            let outcomes = if n == 1 { ["loss", "win"] } else { ["win", "loss"] };
+            for (account, outcome) in [&a, &b].into_iter().zip(outcomes) {
                 let count: u32 = db.query_row(
                     "SELECT count(*) FROM match_players WHERE account_id=?1 AND player_id=?2 AND outcome=?3",
                     (account.account_id, account.player_id, outcome), |r| r.get(0)
                 ).unwrap();
-                assert_eq!(count, n);
+                assert_eq!(count, 1);
             }
         }
         send(&mut channel, &mut channel_tx, 86, &[]).await;
@@ -1262,5 +1378,35 @@ fn peer_admission_is_bounded_and_releases_active_slots_without_resetting_rate() 
             now + Duration::from_secs(120)
         )
         .is_ok()
+    );
+}
+
+#[test]
+fn owner_end_event_keeps_safe_guard_and_opcode_without_underlying_error_text() {
+    let slot = native_failure(
+        io::Error::other("room slot does not belong to this transport"),
+        "room_request",
+        Some(127),
+        Some(21),
+    );
+    assert_eq!(
+        owner_ended(&Err(slot)),
+        serde_json::json!({
+            "event": "native_tls_owner_ended", "ok": false, "guard": "foreign_room_slot",
+            "opcode": 127, "subtype": 21,
+        })
+    );
+    let untrusted = native_failure(
+        io::Error::other("private data must not appear in logs"),
+        "room_request",
+        Some(118),
+        None,
+    );
+    assert_eq!(
+        owner_ended(&Err(untrusted)),
+        serde_json::json!({
+            "event": "native_tls_owner_ended", "ok": false, "guard": "room_request",
+            "opcode": 118, "subtype": null,
+        })
     );
 }
