@@ -687,6 +687,29 @@ fn resources(client: Client) -> Arc<Resources> {
 }
 
 #[test]
+fn unvalidated_initial_gets_retry_before_any_admission() {
+    runtime().block_on(async {
+        let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+        let server = quinn::Endpoint::server(
+            prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
+            "127.0.0.1:0".parse().unwrap(),
+        )
+        .unwrap();
+        let mut client = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+        client.set_default_client_config(prelogin::client_config(cert).unwrap());
+        let address = server.local_addr().unwrap();
+        let dial = tokio::spawn(async move { prelogin::connect(&client, address).await });
+        let first = server.accept().await.unwrap();
+        assert!(!first.remote_address_validated());
+        assert!(validated(first).is_none());
+        let second = server.accept().await.unwrap();
+        let tls = validated(second).expect("Retry token validates the source");
+        let _accepted = tls.await.unwrap();
+        dial.await.unwrap().unwrap();
+    });
+}
+
+#[test]
 fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_every_stream() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let temp = Temp::new();

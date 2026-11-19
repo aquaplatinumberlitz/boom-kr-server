@@ -293,6 +293,10 @@ qua companion Linux khởi động trước game, nhận hai hồ sơ DB và chu
 Lượt này dùng namespace không route ngoài; chưa kiểm Internet hoặc binary companion Windows. Request sau kênh
 chưa nối sảnh/phòng/trận nên đóng transport. Gói launcher và vòng phòng/trận còn là các phần kế tiếp.
 
+Review chủ dự án: Initial chưa xác minh địa chỉ chỉ nhận Retry, chưa lấy permit hay tính rate IP. Bước launcher phải
+cho companion kết nối lại (hoặc kết nối khi game mở socket đầu) để chờ màn đăng nhập quá `prelogin_seconds` vẫn
+đăng nhập được, và đưa rate 5 admission/phút/IP vào config (quán net chung IP) trước lượt thử Internet.
+
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
 
