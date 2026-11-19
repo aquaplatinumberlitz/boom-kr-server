@@ -17,6 +17,10 @@ fn hex(s: &str) -> Vec<u8> {
 }
 fn templates() -> Templates {
     Templates {
+        lobby: Some(crate::account_bridge::local::native::LobbyTemplates {
+            ready: vec![0x5a],
+            channel_list: vec![0x5a],
+        }),
         account: Arc::new(
             kr_wire::kr00967::AccountTemplate::parse(
                 &hex(fixtures::AUTH),
@@ -37,9 +41,12 @@ fn templates() -> Templates {
 }
 const PASSWORD: &[u8] = b"private-test-password";
 fn credentials() -> Vec<u8> {
+    credentials_for(2)
+}
+fn credentials_for(count: u8) -> Vec<u8> {
     let mut body = write_uint(0, Width::U8).unwrap();
-    body.extend(write_uint(2, Width::U8).unwrap());
-    for login in ["AlphaOne", "BetaTwo"] {
+    body.extend(write_uint(u64::from(count), Width::U8).unwrap());
+    for login in ["AlphaOne", "BetaTwo"].into_iter().take(count as usize) {
         for (bytes, key) in [(login.as_bytes(), 0x11223344), (PASSWORD, 0x44332211)] {
             body.extend(write_uint(bytes.len() as u64, Width::U16).unwrap());
             body.extend(kr_wire::crypt(bytes, key, false));
@@ -74,10 +81,16 @@ async fn receive(recv: &mut quinn::RecvStream, sequence: &mut u32) -> kr_wire::P
     .unwrap()
 }
 fn channel(auth: &[u8]) -> Vec<u8> {
-    let mut result = write_uint(2, Width::U8).unwrap();
+    channel_for(auth, 2)
+}
+fn channel_for(auth: &[u8], count: u8) -> Vec<u8> {
+    let mut result = write_uint(u64::from(count), Width::U8).unwrap();
     result.extend(write_uint(255, Width::U8).unwrap());
     let mut start = 13;
-    for expected in [b"DBUserA".as_slice(), b"DBUserB".as_slice()] {
+    for expected in [b"DBUserA".as_slice(), b"DBUserB".as_slice()]
+        .into_iter()
+        .take(count as usize)
+    {
         let id = read_uint(&auth[start + 12..start + 16], Width::U32).unwrap();
         let n = read_uint(&auth[start + 16..start + 18], Width::U16).unwrap() as usize;
         let name = kr_wire::kr00967::decode_bytes(&auth[start + 18..start + 18 + n]).unwrap();
@@ -148,6 +161,9 @@ fn resources(client: Client) -> Arc<Resources> {
         ports: vec![3838, 3938],
         bytes: AtomicUsize::new(0),
         events,
+        hub: None,
+        lobby: AsyncMutex::new(None),
+        persist_character: false,
         config: Config {
             bind: "127.0.0.1:50000".parse().unwrap(),
             certificate: FixturePin {
@@ -195,7 +211,21 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         let mut client = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
         client.set_default_client_config(prelogin::client_config(cert).unwrap());
         let endpoint = server.clone();
-        let authority = resources(worker.client());
+        let mut authority = resources(worker.client());
+        let hub = crate::room_service::Hub::new(
+            &crate::room_service::Config {
+                max_rooms: 8,
+                round_profile: None,
+                player_choices: false,
+                capacity: None,
+                player_round: None,
+            },
+            crate::room_io::registry_foundation_tests::empty(0x77),
+            None,
+            None,
+        )
+        .unwrap();
+        Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
         let observed = authority.clone();
         let foreign = resources(worker.client());
         let (halt, stop) = watch::channel(false);
@@ -245,7 +275,25 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         let (mut channel, mut reply) = prelogin::open(&conn, 3938).await.unwrap();
         reply.read_exact(&mut hello).await.unwrap();
         send(&mut channel, &mut 40, 6, &claims).await;
-        assert_eq!(receive(&mut reply, &mut 43).await.opcode, 17);
+        let mut channel_rx = 43;
+        assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 17);
+        send(
+            &mut channel,
+            &mut 43,
+            67,
+            &write_uint(0, Width::U16).unwrap(),
+        )
+        .await;
+        for opcode in [241, 91, 14] {
+            assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, opcode);
+        }
+        let own = receive(&mut reply, &mut channel_rx).await;
+        assert_eq!(own.opcode, 291);
+        let expected = kr_wire::kr00967::local_own291(&[b"DBUserA", b"DBUserB"]).unwrap();
+        assert_eq!(own.payload, expected);
+        assert!(observed.lobby.lock().await.as_ref().unwrap().current());
+        assert!(hub.register(a.wire_id, 77).is_err());
+        assert!(hub.register(b.wire_id, 77).is_err());
         let handles = observed
             .owner
             .lock()
@@ -265,11 +313,152 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             .await
             .unwrap();
         let _ = task.await.unwrap();
+        assert!(observed.lobby.lock().await.is_none());
+        drop(hub.register(a.wire_id, 77).unwrap());
+        drop(hub.register(b.wire_id, 77).unwrap());
         assert!(handles.iter().all(|h| !h.current()));
         assert_eq!(temp.active(), 0);
         halt.send_replace(true);
         server.close(0u8.into(), b"done");
         client.close(0u8.into(), b"done");
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn tls_single_account_can_select_return_and_select_fresh_room_then_revoke_cleans_membership() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let admin = Admin {
+        actor: "test",
+        reason: "native TLS managed room ownership",
+    };
+    let mut store = Store::open(&temp.db()).unwrap();
+    store.begin_instance(&admin, 100).unwrap();
+    let player = store
+        .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
+        .unwrap();
+    runtime().block_on(async {
+        let worker = crate::account_worker::Worker::open(temp.db(), 8, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let hub = crate::room_service::Hub::new(
+            &crate::room_service::Config {
+                max_rooms: 8,
+                round_profile: None,
+                player_choices: false,
+                capacity: None,
+                player_round: None,
+            },
+            crate::room_io::registry_foundation_tests::selection_prototype(),
+            None,
+            None,
+        )
+        .unwrap();
+        let mut authority = resources(worker.client());
+        Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
+        let observed = authority.clone();
+        let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+        let server = quinn::Endpoint::server(
+            prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
+            "127.0.0.1:0".parse().unwrap(),
+        )
+        .unwrap();
+        let mut client = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+        client.set_default_client_config(prelogin::client_config(cert).unwrap());
+        let endpoint = server.clone();
+        let (_halt, stop) = watch::channel(false);
+        let permit = Arc::new(Semaphore::new(1)).acquire_owned().await.unwrap();
+        let task = tokio::spawn(async move {
+            let tls = endpoint.accept().await.unwrap().await.unwrap();
+            connection(tls, authority, stop, permit).await
+        });
+        let conn = prelogin::connect(&client, server.local_addr().unwrap())
+            .await
+            .unwrap();
+        let (mut login, mut replies) = prelogin::open(&conn, 3838).await.unwrap();
+        let mut hello = [0; 15];
+        replies.read_exact(&mut hello).await.unwrap();
+        let (mut tx, mut rx) = (40, 43);
+        send(&mut login, &mut tx, 1, &credentials_for(1)).await;
+        let auth = receive(&mut replies, &mut rx).await;
+        let claims = channel_for(&auth.payload, 1);
+        send(&mut login, &mut tx, 9, &[0; 8]).await;
+        for opcode in [15, 62] {
+            assert_eq!(receive(&mut replies, &mut rx).await.opcode, opcode);
+        }
+        send(&mut login, &mut tx, 5, &[0; 9]).await;
+        assert_eq!(receive(&mut replies, &mut rx).await.opcode, 7);
+        login.finish().unwrap();
+        let (mut channel, mut replies) = prelogin::open(&conn, 3938).await.unwrap();
+        replies.read_exact(&mut hello).await.unwrap();
+        let (mut tx, mut rx) = (40, 43);
+        send(&mut channel, &mut tx, 6, &claims).await;
+        assert_eq!(receive(&mut replies, &mut rx).await.opcode, 17);
+        send(
+            &mut channel,
+            &mut tx,
+            67,
+            &write_uint(0, Width::U16).unwrap(),
+        )
+        .await;
+        for opcode in [241, 91, 14, 291] {
+            assert_eq!(receive(&mut replies, &mut rx).await.opcode, opcode);
+        }
+        let title = b"OwnedRoom";
+        let mut create = write_uint(title.len() as u64, Width::U16).unwrap();
+        create.extend(kr_wire::kr00967::encode_bytes(title).unwrap());
+        create.extend(write_uint(0, Width::U16).unwrap());
+        for value in [0, 0, 5, 8191, 0, 0, 0, u32::MAX, 0, 0, 0, 0] {
+            create.extend(write_uint(u64::from(value), Width::U32).unwrap());
+        }
+        for _ in 0..4 {
+            create.extend(write_uint(0, Width::U8).unwrap());
+        }
+        for room in 1..=2 {
+            send(&mut channel, &mut tx, 81, &create).await;
+            let reply = receive(&mut replies, &mut rx).await;
+            assert_eq!(reply.opcode, 86);
+            assert_eq!(read_uint(&reply.payload[1..3], Width::U16).unwrap(), room);
+            assert!(hub.register(player.wire_id, 99).is_err());
+            send(&mut channel, &mut tx, 86, &[]).await;
+            assert_eq!(receive(&mut replies, &mut rx).await.opcode, 241);
+            let catalog = receive(&mut replies, &mut rx).await;
+            assert_eq!(catalog.opcode, 91);
+            assert!(
+                kr_wire::kr00967::listing91_parse_rows(&catalog.payload)
+                    .unwrap()
+                    .is_empty()
+            );
+            assert_eq!(temp.active(), 1);
+        }
+        // Keep a third room owned when the DB session is revoked: dropping the
+        // TLS owner must remove both room membership and account lobby owner.
+        send(&mut channel, &mut tx, 81, &create).await;
+        assert_eq!(receive(&mut replies, &mut rx).await.opcode, 86);
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_secs() as i64;
+        store.revoke(&admin, player.account_id, now).unwrap();
+        tokio::time::timeout(Duration::from_secs(3), conn.closed())
+            .await
+            .unwrap();
+        let _ = task.await.unwrap();
+        assert!(observed.lobby.lock().await.is_none());
+        let mut replacement = hub.register(player.wire_id, 99).unwrap();
+        let catalog = replacement
+            .catalog(&std::collections::BTreeSet::new())
+            .unwrap();
+        assert!(
+            kr_wire::kr00967::listing91_parse_rows(&catalog.packets.last().unwrap().1)
+                .unwrap()
+                .is_empty()
+        );
+        drop(replacement);
+        assert_eq!(temp.active(), 0);
+        client.close(0u8.into(), b"done");
+        server.close(0u8.into(), b"done");
         worker.shutdown().await.unwrap();
     });
 }

@@ -4556,10 +4556,10 @@ mod ninth_probe_tests {
 }
 
 #[cfg(test)]
-mod registry_foundation_tests {
+pub(crate) mod registry_foundation_tests {
     use super::*;
     use crate::room_registry::{Registry, RoomId, RoomKey};
-    fn empty(marker: u8) -> Shared {
+    pub(crate) fn empty(marker: u8) -> Shared {
         Arc::new(Mutex::new(Runtime {
             maps: None,
             selected_map: 0,
@@ -4586,6 +4586,35 @@ mod registry_foundation_tests {
             rules: RoomRules::default(),
             abort: None,
         }))
+    }
+    /// Selection/return regression fixture only; no native gameplay oracle.
+    pub(crate) fn selection_prototype() -> Shared {
+        let shared = empty(0x77);
+        {
+            let mut runtime = shared.lock().unwrap();
+            runtime.bodies.insert(
+                Template::Listing91,
+                wire::listing91_from_rows(&[wire::ListingRow {
+                    session: 1,
+                    room_id: 1,
+                    title: b"Template".to_vec(),
+                    opaque: [0; 22],
+                }])
+                .unwrap(),
+            );
+            // Existing measured success envelopes; opaque bytes remain zero.
+            runtime.bodies.insert(
+                Template::Create86,
+                vec![
+                    0x5a, 0xa5, 0x68, 0x96, 0xca, 0x53, 0x95, 0x5a, 0x5a, 0x5a, 0x5a,
+                ],
+            );
+            runtime.bodies.insert(
+                Template::Join87,
+                vec![0x5a, 0x5a, 0xa5, 0x68, 0x5a, 0x5a, 0x5a],
+            );
+        }
+        shared
     }
     #[test]
     fn managed_team_config_rejects_unmeasured_modes_limits_and_teams_before_serving() {

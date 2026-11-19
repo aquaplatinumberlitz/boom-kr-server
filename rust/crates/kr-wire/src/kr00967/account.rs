@@ -138,6 +138,21 @@ pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
     Ok(out)
 }
 
+/// D2FEB0 loops over the authenticated local roster and reads one active/blob
+/// record for each slot; there is no count field in291 itself. CP183 measured
+/// the single-slot record. Multi-slot native acceptance remains separate from
+/// this projection of the cached consumer contract.
+pub fn local_own291(names: &[&[u8]]) -> io::Result<Vec<u8>> {
+    if !(1..=2).contains(&names.len()) {
+        return Err(io::Error::other("unsupported local own-profile roster"));
+    }
+    let mut out = Vec::new();
+    for name in names {
+        out.extend(own291(name)?);
+    }
+    Ok(out)
+}
+
 #[cfg(test)]
 mod identity_string_tests {
     use super::*;

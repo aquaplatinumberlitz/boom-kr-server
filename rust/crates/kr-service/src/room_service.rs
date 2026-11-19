@@ -56,6 +56,62 @@ pub(crate) struct Channel {
     connection: u64,
     pub changes: watch::Receiver<u64>,
 }
+/// One native transport can own two independent accounts. Admission must
+/// validate the complete roster before publishing any lobby owner.
+pub(crate) struct LocalLobby {
+    channels: Vec<Channel>,
+    authorities: Vec<RelayAuthority>,
+}
+impl LocalLobby {
+    pub(crate) fn select(&self, opcode: u32, body: &[u8], peer: Ipv4Addr) -> io::Result<Selection> {
+        if !self.current() || self.channels.len() != 1 {
+            return Err(err(
+                "native room selection requires measured single-local layout",
+            ));
+        }
+        self.channels[0].select(opcode, body, peer, self.authorities[0].clone(), None)
+    }
+    pub(crate) fn returned(&self) -> io::Result<()> {
+        if !self.current() {
+            return Err(err("local lobby owner retired"));
+        }
+        for channel in &self.channels {
+            channel.returned()?;
+        }
+        Ok(())
+    }
+    pub(crate) fn map_table(&self) -> io::Result<crate::Reply> {
+        if !self.current() {
+            return Err(err("local lobby owner retired"));
+        }
+        self.channels[0].map_table()
+    }
+    pub(crate) fn catalog(&mut self) -> io::Result<Catalog> {
+        self.catalog_since(&BTreeSet::new())
+    }
+    pub(crate) fn changed(&self) -> io::Result<bool> {
+        self.channels[0]
+            .changes
+            .has_changed()
+            .map_err(|_| err("local lobby catalog closed"))
+    }
+    pub(crate) fn catalog_since(&mut self, known: &BTreeSet<(u16, u32)>) -> io::Result<Catalog> {
+        if !self.current() {
+            return Err(err("local lobby owner retired"));
+        }
+        self.channels[0].catalog(known)
+    }
+    pub(crate) fn current(&self) -> bool {
+        self.authorities.iter().all(RelayAuthority::current)
+            && self.channels.iter().all(|channel| {
+                channel
+                    .hub
+                    .state
+                    .lock()
+                    .is_ok_and(|state| channel.owner(&state).is_ok())
+            })
+    }
+}
 pub(crate) struct Catalog {
     pub tuples: BTreeSet<(u16, u32)>,
     pub packets: Vec<(u32, Vec<u8>)>,
@@ -68,6 +124,58 @@ fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
 }
 impl Hub {
+    pub(crate) fn register_local(
+        self: &Arc<Self>,
+        roster: &[crate::account_bridge::local::LocalAuthority],
+    ) -> io::Result<LocalLobby> {
+        if !(1..=2).contains(&roster.len()) {
+            return Err(err("invalid local lobby roster"));
+        }
+        let connection = roster[0].connection();
+        let authorities: Vec<_> = roster.iter().map(|owner| owner.relay_authority()).collect();
+        let mut identities = std::collections::HashSet::new();
+        if connection == 0
+            || roster.iter().any(|owner| {
+                owner.connection() != connection
+                    || !owner.current()
+                    || !identities.insert(owner.player().wire_id)
+            })
+        {
+            return Err(err("local lobby roster has no common current transport"));
+        }
+        let mut state = self
+            .state
+            .lock()
+            .map_err(|_| err("room service unavailable"))?;
+        if identities
+            .iter()
+            .any(|identity| state.owners.contains_key(identity))
+        {
+            return Err(err("duplicate account lobby channel"));
+        }
+        // No await or fallible operation after the first insertion.
+        let mut channels = Vec::with_capacity(roster.len());
+        for owner in roster {
+            let identity = owner.player().wire_id;
+            state.owners.insert(
+                identity,
+                Owner {
+                    connection,
+                    selected: None,
+                },
+            );
+            channels.push(Channel {
+                hub: self.clone(),
+                identity,
+                connection,
+                changes: self.changes.subscribe(),
+            });
+        }
+        Ok(LocalLobby {
+            channels,
+            authorities,
+        })
+    }
     pub(crate) fn new(
         cfg: &Config,
         prototype: room_io::Shared,
@@ -349,5 +457,85 @@ impl Drop for Channel {
         {
             s.owners.remove(&self.identity);
         }
+    }
+}
+
+#[cfg(test)]
+mod local_tests {
+    use super::*;
+    use crate::account_bridge::tests::{Temp, admin, now, rt, worker};
+    use crate::account_bridge::{
+        local::LocalSession,
+        local::tests::{channel, login},
+    };
+    use crate::accounts::TEST_SERIAL;
+    #[test]
+    fn local_lobby_admission_is_atomic_and_retired_handles_cannot_reclaim_reused_connections() {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let (temp, a, b) = Temp::new();
+        rt().block_on(async {
+            let worker = worker(&temp).await;
+            let hub = Hub::new(
+                &Config {
+                    max_rooms: 8,
+                    round_profile: None,
+                    player_choices: false,
+                    capacity: None,
+                    player_round: None,
+                },
+                crate::room_io::registry_foundation_tests::empty(0x77),
+                None,
+                None,
+            )
+            .unwrap();
+            let mut owner = LocalSession::new(worker.client(), 11).unwrap();
+            let rows = owner
+                .login(&login(&["Alice", "Bob"]), 60, None)
+                .await
+                .unwrap();
+            owner.redirected(11).unwrap();
+            let handles = owner.channel(&channel(&rows), 22).await.unwrap();
+            let conflict = hub.register(b.wire_id, 99).unwrap();
+            assert!(hub.register_local(&handles).is_err());
+            assert!(!hub.state.lock().unwrap().owners.contains_key(&a.wire_id));
+            assert_eq!(hub.state.lock().unwrap().owners.len(), 1);
+            drop(conflict);
+            let lobby = hub.register_local(&handles).unwrap();
+            assert!(lobby.current());
+            assert_eq!(hub.state.lock().unwrap().owners.len(), 2);
+            assert!(lobby.select(81, &[], Ipv4Addr::LOCALHOST).is_err());
+            assert!(
+                hub.state
+                    .lock()
+                    .unwrap()
+                    .owners
+                    .values()
+                    .all(|owner| owner.selected.is_none())
+            );
+            assert_eq!(hub.state.lock().unwrap().rooms.entries().count(), 0);
+            let generation = handles[0].relay_authority().generation();
+            temp.store().revoke(&admin(), b.account_id, now()).unwrap();
+            assert!(handles[0].inspect().await.is_err());
+            assert!(!lobby.current());
+            owner.finish().await.unwrap();
+            drop(lobby);
+            assert!(hub.state.lock().unwrap().owners.is_empty());
+            let mut next = LocalSession::new(worker.client(), 11).unwrap();
+            let rows = next
+                .login(&login(&["Alice", "Bob"]), 60, None)
+                .await
+                .unwrap();
+            next.redirected(11).unwrap();
+            let fresh = next.channel(&channel(&rows), 22).await.unwrap();
+            assert_ne!(generation, fresh[0].relay_authority().generation());
+            assert!(hub.register_local(&handles).is_err());
+            assert!(hub.state.lock().unwrap().owners.is_empty());
+            let fresh_lobby = hub.register_local(&fresh).unwrap();
+            assert!(fresh_lobby.current());
+            assert!(handles.iter().all(|old| !old.relay_authority().current()));
+            drop(fresh_lobby);
+            next.finish().await.unwrap();
+            worker.shutdown().await.unwrap();
+        });
     }
 }

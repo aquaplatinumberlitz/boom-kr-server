@@ -26,6 +26,7 @@ use tokio::{
     sync::{Mutex as AsyncMutex, Semaphore, mpsc, watch},
     task::JoinSet,
 };
+mod room;
 
 #[derive(Clone, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -165,6 +166,9 @@ struct Resources {
     config: Config,
     bytes: AtomicUsize,
     events: mpsc::Sender<serde_json::Value>,
+    hub: Option<Arc<crate::room_service::Hub>>,
+    lobby: AsyncMutex<Option<crate::room_service::LocalLobby>>,
+    persist_character: bool,
 }
 
 async fn stream(
@@ -198,12 +202,28 @@ async fn stream(
         _ => return Err(io::Error::other("native first opcode")),
     };
     let mut pending = Some(first);
+    let mut map_requests = 0;
+    let mut room = room::State::default();
+    let mut clock = tokio::time::interval(Duration::from_millis(100));
     let result = async {
         loop {
             let input = if let Some(input) = pending.take() {
                 input
             } else {
-                native::read(&mut recv, &mut sequence).await?
+                // Retain this read future across ticks so fragmented native
+                // headers are never lost by cancellation and a fresh read.
+                let read = native::read(&mut recv, &mut sequence);
+                tokio::pin!(read);
+                loop {
+                    tokio::select! {
+                        input = &mut read => break input?,
+                        _ = clock.tick(), if lane.in_lobby() => {
+                            let mut owner = resources.owner.lock().await;
+                            let driver = owner.as_mut().ok_or_else(|| io::Error::other("native owner absent"))?;
+                            room.poll(driver, &mut lane, &mut send, &resources).await?;
+                        }
+                    }
+                }
             };
             let size = input.payload_len() + kr_wire::FRAME_OVERHEAD;
             if resources.bytes.fetch_add(size, Ordering::Relaxed) + size > prelogin::BYTE_LIMIT {
@@ -221,6 +241,44 @@ async fn stream(
                 .as_mut()
                 .ok_or_else(|| io::Error::other("native owner absent"))?;
             let opcode = input.opcode;
+            if room.packet(&input, driver, &mut lane, &mut send, &resources).await? {
+                continue;
+            }
+            if opcode == 528 {
+                map_requests += 1;
+                if input.payload_len() != 0 || map_requests > 16 {
+                    return Err(io::Error::other("native map request shape/budget"));
+                }
+                let reply = resources
+                    .lobby
+                    .lock()
+                    .await
+                    .as_ref()
+                    .ok_or_else(|| io::Error::other("native lobby admission absent"))?
+                    .map_table()?;
+                driver
+                    .lobby_reply(&mut lane, &mut send, reply.opcode, &reply.payload)
+                    .await?;
+                continue;
+            }
+            if opcode == 67 {
+                if !input.lobby_ready() {
+                    return Err(io::Error::other("native lobby request shape"));
+                }
+                let mut lobby = resources.lobby.lock().await;
+                let catalog = lobby
+                    .as_mut()
+                    .ok_or_else(|| io::Error::other("native lobby admission absent"))?
+                    .catalog()?;
+                driver
+                    .enter_lobby(&mut lane, &mut send, &catalog.packets)
+                    .await?;
+                room.admitted(&catalog);
+                let _ = resources
+                    .events
+                    .try_send(serde_json::json!({"event":"native_local_lobby_ready"}));
+                continue;
+            }
             driver
                 .packet(
                     &mut lane,
@@ -231,6 +289,10 @@ async fn stream(
                 )
                 .await?;
             if opcode == 6 {
+                if let Some(hub) = &resources.hub {
+                    let lobby = hub.register_local(driver.authorities())?;
+                    *resources.lobby.lock().await = Some(lobby);
+                }
                 let players: Vec<_> = driver
                     .authorities()
                     .iter()
@@ -275,6 +337,9 @@ async fn connection(
             _=connection.closed()=>return Ok(()),
             _=&mut until,if unauthenticated.is_some()=>return Err(io::Error::other("prelogin lifetime bound")),
             _=health.tick()=>{
+                if resources.lobby.lock().await.as_ref().is_some_and(|lobby|!lobby.current()){
+                    return Err(io::Error::other("native lobby owner retired"));
+                }
                 if let Some(driver)=resources.owner.lock().await.as_mut(){
                     driver.inspect().await?;
                     if !driver.authorities().is_empty(){unauthenticated.take();}
@@ -293,6 +358,7 @@ async fn connection(
     connection.close(0u8.into(), b"native owner ended");
     streams.abort_all();
     while streams.join_next().await.is_some() {}
+    resources.lobby.lock().await.take();
     if let Some(driver) = resources.owner.lock().await.take() {
         driver.finish().await?;
     }
@@ -326,7 +392,7 @@ pub(crate) async fn serve(
                 let Ok(total_permit)=total.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(unauth)=unauthenticated.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,Instant::now())else{incoming.refuse();continue;};
-                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:AtomicUsize::new(0),events:events.clone()});
+                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:AtomicUsize::new(0),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character)});
                 let stop=stop.clone();let events=events.clone();owners.spawn(async move{
                     let _total=total_permit;let _peer=peer_permit;
                     let result=tokio::time::timeout(Duration::from_secs(3),incoming).await;

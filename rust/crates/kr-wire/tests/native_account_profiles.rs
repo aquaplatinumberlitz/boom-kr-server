@@ -128,3 +128,19 @@ fn two_local_auth_matches_independently_native_accepted_profile() {
             .is_err()
     );
 }
+
+#[test]
+fn local_own_profiles_keep_independent_record_boundaries_and_slot_order() {
+    use kr_wire::kr00967::{decode_bytes, local_own291};
+    assert_eq!(local_own291(&[b"KRLocal"]).unwrap(), hex(OWN));
+    let body = local_own291(&[b"KRLocal", b"GuestTwo"]).unwrap();
+    assert_eq!(&body[..128], hex(OWN));
+    let second = &body[128..];
+    assert_eq!(second.len(), 129);
+    assert_eq!(read_uint(&second[..1], Width::U8).unwrap(), 1);
+    assert_eq!(read_uint(&second[1..5], Width::U32).unwrap(), 116);
+    let blob = decode_bytes(&second[5..121]).unwrap();
+    assert_eq!(&blob[10..18], b"GuestTwo");
+    assert!(local_own291(&[]).is_err());
+    assert!(local_own291(&[b"KRLocal", b"GuestTwo", b"Third"]).is_err());
+}

@@ -3,7 +3,7 @@ use crate::account_bridge::tests::{PASSWORD, Temp, admin, now, rt, worker};
 use crate::accounts::TEST_SERIAL;
 use kr_wire::{Width, write_uint};
 
-pub(super) fn login(names: &[&str]) -> Vec<u8> {
+pub(crate) fn login(names: &[&str]) -> Vec<u8> {
     let mut body = write_uint(0, Width::U8).unwrap();
     body.extend(write_uint(names.len() as u64, Width::U8).unwrap());
     for name in names {
@@ -18,14 +18,14 @@ pub(super) fn login(names: &[&str]) -> Vec<u8> {
     body.extend(write_uint(0, Width::U8).unwrap());
     body
 }
-pub(super) fn trial(count: u8) -> Vec<u8> {
+pub(crate) fn trial(count: u8) -> Vec<u8> {
     let mut body = write_uint(count.into(), Width::U8).unwrap();
     body.extend([0; 16]);
     body.extend(write_uint(0, Width::U32).unwrap());
     body.extend(write_uint(0x0200007f, Width::U32).unwrap());
     body
 }
-pub(super) fn channel(rows: &[(Player, u32)]) -> Vec<u8> {
+pub(crate) fn channel(rows: &[(Player, u32)]) -> Vec<u8> {
     let mut body = write_uint(rows.len() as u64, Width::U8).unwrap();
     body.extend(write_uint(255, Width::U8).unwrap());
     for (player, echo) in rows {
@@ -49,7 +49,7 @@ pub(super) fn channel(rows: &[(Player, u32)]) -> Vec<u8> {
     }
     body
 }
-pub(super) fn active(temp: &Temp) -> i64 {
+pub(crate) fn active(temp: &Temp) -> i64 {
     rusqlite::Connection::open(temp.db())
         .unwrap()
         .query_row(
@@ -131,7 +131,32 @@ fn two_identities_own_one_channel_and_old_handles_never_gain_a_reused_socket() {
         assert!(!handles[0].owns(a.wire_id, 23));
         handles[0].inspect().await.unwrap();
         handles[1].authorize_activity().await.unwrap();
+        let first = handles[0].character_preference(None).await.unwrap();
+        let second = handles[1].character_preference(None).await.unwrap();
+        assert_eq!(
+            (first.player_id, second.player_id),
+            (a.player_id, b.player_id)
+        );
+        let changed = handles[0]
+            .character_preference(Some((1, first.revision)))
+            .await
+            .unwrap();
+        assert_eq!(changed.character_key, 1);
+        assert_eq!(
+            handles[1]
+                .character_preference(None)
+                .await
+                .unwrap()
+                .character_key,
+            second.character_key
+        );
         assert!(session.disconnected(22).await.unwrap());
+        assert!(
+            handles[0]
+                .character_preference(Some((0, changed.revision)))
+                .await
+                .is_err()
+        );
         session.finish().await.unwrap();
         assert_eq!(active(&temp), 0);
         assert!(
