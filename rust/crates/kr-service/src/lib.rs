@@ -12,6 +12,7 @@ mod bombs;
 mod characters;
 mod diagnostic59;
 mod four_results;
+pub mod ingame_tls;
 mod item_scope;
 mod life;
 mod life_actions;
@@ -1505,6 +1506,25 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     }
     drop(accept_tx);
     if let Some(owner) = &mut account_owner {
+        if let Some(endpoint) = owner.prelogin_tls.take() {
+            let config = profile
+                .config
+                .diagnostic_two_lobby
+                .as_ref()
+                .and_then(|two| two.account_admission.as_ref())
+                .and_then(|account| account.prelogin_tls.as_ref())
+                .expect("opened prelogin TLS")
+                .clone();
+            listeners.spawn(ingame_tls::serve(
+                endpoint,
+                config,
+                profile.clone(),
+                owner.active.client.clone(),
+                profile.config.allowed_peers.clone(),
+                stop.clone(),
+                log.clone(),
+            ));
+        }
         if let (Some(hub), Some(endpoint)) = (&owner.active.authenticated, peer_endpoint) {
             listeners.spawn(
                 hub.clone()
@@ -1587,7 +1607,18 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     while let Ok(pair) = accepted.try_recv() {
         drop(pair);
     }
-    if timeout(Duration::from_secs(3), async {
+    let listener_stop_seconds = if profile
+        .config
+        .diagnostic_two_lobby
+        .as_ref()
+        .and_then(|two| two.account_admission.as_ref())
+        .is_some_and(|account| account.prelogin_tls.is_some())
+    {
+        10
+    } else {
+        3
+    };
+    if timeout(Duration::from_secs(listener_stop_seconds), async {
         while listeners.join_next().await.is_some() {}
         while workers.join_next().await.is_some() {}
     })

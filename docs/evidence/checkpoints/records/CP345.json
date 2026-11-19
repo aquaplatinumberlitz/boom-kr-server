@@ -1,0 +1,115 @@
+{
+  "id": "CP345",
+  "previous": "CP344",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T04:24:19.343870+00:00",
+  "context_commit": "c810c3c5c70d32fbf14c2564ac1888c45466d586",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Có thể mở companion TLS trước credential, giới hạn peer/handshake/stream/byte/lifetime và giữ hai account trên đúng transport qua native handoff không?",
+  "scope": "TLS trước đăng nhập nối worker DB của service; phần phòng/trận và launcher còn mở.",
+  "artifacts": [
+    {
+      "sha256": "0a069cc362b44a5b3241c326ebe1c6d8398b32fdd2e19b56d4a9f89a7661231d"
+    }
+  ],
+  "locators": [
+    "local/research/codex/m8-prelogin-windows-r2"
+  ],
+  "findings": [
+    {
+      "summary": "Companion pin TLS13/ALPN riêng và không0RTT trước game. Một TLS connection sở hữu cả roster, không lookup theo IP/echo; giới hạn Initial, connection/peer, stream, byte và timeout trước auth.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-db-publication",
+      "evidence": [
+        "LOCAL345-0001"
+      ],
+      "limits": "Thiết kế công ty; chưa nối phòng/trận hoặc launcher và chưa kiểm Internet/companion Windows."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt/Clippy và toàn workspace đạt; TLS thật/SQLite kiểm foreign connection, revoke, pin sai, slow/corrupt/idle và companion stop. Native Windows qua companion Linux chuyển kênh DB3/4; dừng/xuất/dọn đầy đủ.",
+      "result": "pass",
+      "evidence": [
+        "LOCAL345-0001"
+      ],
+      "limits": "Native trên3aef855; giới hạn Initial c810c3c kiểm tự động. Request sau kênh đóng TLS; companion exit lỗi được giữ. Native dừng theo bound, không clean logout."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Prelogin TLS và companion có giới hạn, worker DB chung và test âm."
+    ],
+    "corrected": [],
+    "superseded": []
+  },
+  "blockers": [
+    "Báo chủ dự án rà TLS; tiếp phòng/trận/ván mới rồi launcher. Companion Windows và Internet thật còn acceptance M8."
+  ],
+  "next_steps": [],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-19T04:24:19.343870+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex tự kiểm; nhóm xác thực M8 chưa đóng.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Chủ dự án miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Contract/chủ đề ở auth-session; tài liệu này không đổi."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Contract/chủ đề ở auth-session; tài liệu này không đổi."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    },
+    {
+      "path": "docs/evidence/checkpoints/records/CP345.json",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LOCAL345-0001",
+      "kind": "local",
+      "path": "local/research/codex/m8-prelogin-transport-final-r1/tls-summary.json",
+      "bytes": 15754,
+      "sha256": "ef0a0d7b22ab5579e35273352ee8806cfa9c09e3f6796ac1417dc1f94048bda0"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/m8-prelogin-transport-final-r1",
+      "path": "local/evidence-manifests/5e0dd07b4f4f35b68fa85ec7dea120b309cadb2b43f7dc60e4f7db3ca0fac927.jsonl",
+      "sha256": "5e0dd07b4f4f35b68fa85ec7dea120b309cadb2b43f7dc60e4f7db3ca0fac927",
+      "bytes": 502,
+      "count": 2,
+      "files_bytes": 132314
+    }
+  ]
+}

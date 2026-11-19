@@ -16,6 +16,7 @@ pub mod companion;
 pub mod control;
 pub mod launch_tls;
 mod portable_udp;
+pub mod prelogin;
 pub mod proxy;
 pub mod router;
 pub mod udp_diagnostics;

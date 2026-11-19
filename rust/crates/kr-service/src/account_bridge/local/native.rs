@@ -12,6 +12,9 @@ pub struct Input {
     payload: Zeroizing<Vec<u8>>,
 }
 impl Input {
+    pub(crate) fn payload_len(&self) -> usize {
+        self.payload.len()
+    }
     pub fn new(opcode: u32, payload: Zeroizing<Vec<u8>>) -> io::Result<Self> {
         if payload.len() > 512 {
             return Err(io::Error::other("native input bound"));
@@ -369,5 +372,8 @@ impl Driver {
     }
 }
 
+#[cfg(test)]
+#[path = "native/fixtures.rs"]
+pub(crate) mod fixtures;
 #[cfg(test)]
 mod tests;
