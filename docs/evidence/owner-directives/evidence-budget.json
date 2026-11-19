@@ -1,0 +1,24 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-19T03:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 19/11/2026. Claude đo 12 commit gần nhất trên nhánh rust/m8-player-launcher: khoảng 2.740 dòng tài liệu/bằng chứng, 840 dòng công cụ (phần lớn để kiểm chính bằng chứng) và 310 dòng mã Rust; bước kiểm khả thi LoginStage thành bốn checkpoint CP339–CP342; một nửa số commit chỉ để bảo trì bộ bằng chứng. Chủ dự án hỏi “phần bằng chứng theo mày nên tối giản thêm ko?”, Claude đề xuất các mức dưới đây, chủ dự án trả lời: “đồng ý”.",
+  "decision": "Từ checkpoint sau CP342, bằng chứng làm theo ngân sách: mỗi phần việc một checkpoint ngắn, test tự động là bằng chứng chính cho mã, không đầu tư thêm vào công cụ kiểm bằng chứng.",
+  "requirements": [
+    "Một checkpoint cho mỗi phần việc hoàn thành hoặc mỗi blocker thật, không cho mỗi lượt thử. Phần còn lại của M8 dự kiến khoảng năm checkpoint: đăng nhập DB 1P/2P (gồm sở hữu hai account trên một kết nối, hết hạn, thu hồi, mất kết nối), tài khoản khách, TLS trước đăng nhập, launcher mới, lượt phát hành qua Internet thật. Lượt thử trung gian chỉ để trong local/ và commit message.",
+    "Record checkpoint mới khoảng 80 dòng, tối đa 120 dòng JSON đã định dạng: câu hỏi, việc đã làm, lệnh hoặc test đã chạy, kết quả, giới hạn, con trỏ run manifest. Không liệt kê từng frame, từng lượt chạy hay từng file; chi tiết đó nằm trong run manifest ở local/.",
+    "Test tự động (cargo test, test Python) là bằng chứng chính cho mã server và launcher. Chạy máy ảo hoặc game thật một lần khi kết thúc mỗi phần việc; chỉ chạy thêm khi cần đo giao thức chưa biết.",
+    "Không mở rộng công cụ kiểm bằng chứng. Record, audit và manifest cũ đã chốt; không thêm phép kiểm lại lịch sử lúc công bố checkpoint (input Cargo cũ, mã PowerShell cũ, chỉ mục audit…). Chỉ sửa checker khi CI đỏ hoặc director/chủ dự án yêu cầu; nếu sửa tốn hơn một commit nhỏ thì báo director trước.",
+    "Mỗi checkpoint chỉ sửa tài liệu chủ đề của phần việc, một dòng Bảng điều hành PLAN và dòng mốc README; các tài liệu lõi khác khai unchanged trong docs_sync. HISTORY tối đa năm dòng mỗi checkpoint. features.json và COVERAGE chỉ sửa khi trạng thái tính năng thật sự đổi.",
+    "Mục tiêu mỗi PR: số dòng tài liệu và bằng chứng không vượt số dòng mã và test, trừ PR chỉ tài liệu do chủ dự án hoặc director yêu cầu.",
+    "Codex thêm kiểm trần 120 dòng cho record checkpoint mới (sau CP342) vào tools/check_checkpoints.py trong PR kế tiếp; record cũ không bị kiểm."
+  ],
+  "unchanged": [
+    "Phần bảo mật (mật khẩu, TLS trước đăng nhập, quyền sở hữu tài khoản) vẫn cần test âm đầy đủ.",
+    "Lượt thử phát hành qua Internet thật theo release-real-network.json.",
+    "Log thô, record và manifest đã hoàn tất giữ bất biến; quy định private-infrastructure.json, run-cleanup.json và local-retention.json giữ nguyên.",
+    "Không nâng gate khi thiếu bằng chứng; ghi unknown khi chưa đo."
+  ],
+  "scope": "Áp dụng cho mọi checkpoint và PR từ sau CP342; bổ sung cho checkpoint-evidence-lean.json (chỉ chuyển danh sách file sang local/) bằng giới hạn khối lượng.",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}
