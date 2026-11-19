@@ -1,6 +1,6 @@
 //! Own the game and its loopback TLS companion for one launcher session.
 use crate::Language;
-use kr_tunnel::prelogin::trace::LOG_NAME;
+use kr_tunnel::prelogin::{heartbeat, trace::LOG_NAME};
 use serde::Deserialize;
 use std::{
     fs,
@@ -109,6 +109,7 @@ pub(crate) struct OwnedSession {
     run: PathBuf,
     stopping: bool,
     exit: Option<(&'static str, Option<i32>)>,
+    generation: u64,
 }
 impl OwnedSession {
     pub fn request_stop(&mut self) {
@@ -119,7 +120,8 @@ impl OwnedSession {
         let _ = fs::write(self.run.join("cancel"), []);
     }
     pub fn poll(&mut self) -> Option<bool> {
-        if fs::write(self.run.join("beat"), []).is_err() {
+        self.generation = self.generation.saturating_add(1);
+        if heartbeat::publish(&self.run.join("beat"), self.generation).is_err() {
             return Some(false);
         }
         match self.game.as_mut()?.try_wait() {
@@ -236,7 +238,7 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
     let path = run.join("prelogin.json");
     let mut owned = (|| {
         let beat = run.join("beat");
-        fs::write(&beat, [])?;
+        heartbeat::publish(&beat, 0)?;
         let value = serde_json::json!({
             "server": config.prelogin_server, "certificate": config.prelogin_certificate,
             "ports": config.ports, "udp_backend": config.udp_backend,
@@ -261,6 +263,7 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
             run: run.clone(),
             stopping: false,
             exit: None,
+            generation: 0,
         })
     })()
     .inspect_err(|_| {

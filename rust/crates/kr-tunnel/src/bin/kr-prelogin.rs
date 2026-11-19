@@ -1,5 +1,6 @@
 //! Company companion starts before the game and accepts no account password.
 #![forbid(unsafe_code)]
+use kr_tunnel::prelogin::heartbeat::Heartbeat;
 use kr_tunnel::prelogin::trace::{Startup, StopCause, Trace};
 use serde::Deserialize;
 use std::{io, net::SocketAddrV4, path::PathBuf};
@@ -70,15 +71,14 @@ async fn main() -> io::Result<()> {
         let mut ticker = tokio::time::interval(std::time::Duration::from_millis(100));
         let signal = tokio::signal::ctrl_c();
         tokio::pin!(signal);
+        let mut progress = Heartbeat::new(std::time::Instant::now());
         let cause = loop {
             tokio::select! {
                 _ = &mut signal => break StopCause::Interrupt,
                 _ = ticker.tick() => {
                     if cancel.exists() { break StopCause::Cancel; }
                     if heartbeat.as_ref().is_some_and(|p|
-                        std::fs::metadata(p).and_then(|m| m.modified()).ok()
-                            .and_then(|t| t.elapsed().ok())
-                            .is_none_or(|age| age >= std::time::Duration::from_secs(10))) {
+                        progress.expired(p, std::time::Instant::now())) {
                         break StopCause::Heartbeat;
                     }
                 }

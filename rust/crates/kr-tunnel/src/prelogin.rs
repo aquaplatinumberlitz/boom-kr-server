@@ -24,6 +24,7 @@ use tokio::{
 };
 use zeroize::Zeroizing;
 
+pub mod heartbeat;
 pub mod trace;
 use trace::Trace;
 
