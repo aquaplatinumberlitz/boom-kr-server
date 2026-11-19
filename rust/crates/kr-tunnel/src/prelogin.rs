@@ -7,7 +7,15 @@ use rustls::{
     RootCertStore,
     pki_types::{CertificateDer, PrivatePkcs8KeyDer},
 };
-use std::{io, net::SocketAddr, sync::Arc, time::Duration};
+use std::{
+    io,
+    net::SocketAddr,
+    sync::{
+        Arc,
+        atomic::{AtomicBool, Ordering},
+    },
+    time::{Duration, Instant},
+};
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     net::TcpListener,
@@ -22,6 +30,44 @@ const OPEN: &[u8; 8] = b"KRNAT001";
 pub const STREAM_LIMIT: u32 = 4;
 pub const STREAM_TOTAL: usize = 32;
 pub const BYTE_LIMIT: usize = 32 * 1024;
+
+/// Login uses a lifetime allowance. Only a verified live owner may switch to
+/// the separate one-second allowance; active traffic cannot reset pre-login.
+pub struct TrafficBudget {
+    initial: usize,
+    per_second: usize,
+    spent: usize,
+    active: Option<(Instant, usize)>,
+}
+impl TrafficBudget {
+    pub const fn new(initial: usize, per_second: usize) -> Self {
+        Self {
+            initial,
+            per_second,
+            spent: 0,
+            active: None,
+        }
+    }
+    pub fn allow(&mut self, units: usize, active: bool, now: Instant) -> bool {
+        let (spent, limit) = if active {
+            let (from, count) = self.active.get_or_insert((now, 0));
+            if now.saturating_duration_since(*from) >= Duration::from_secs(1) {
+                *from = now;
+                *count = 0;
+            }
+            (count, self.per_second)
+        } else {
+            (&mut self.spent, self.initial)
+        };
+        match spent.checked_add(units) {
+            Some(next) if next <= limit => {
+                *spent = next;
+                true
+            }
+            _ => false,
+        }
+    }
+}
 struct Close(Connection);
 impl Drop for Close {
     fn drop(&mut self) {
@@ -131,17 +177,17 @@ pub async fn accept_header(recv: &mut RecvStream, ports: &[u16]) -> io::Result<u
 async fn copy_secret<R: tokio::io::AsyncRead + Unpin, W: tokio::io::AsyncWrite + Unpin>(
     reader: &mut R,
     writer: &mut W,
+    bound: &AtomicBool,
 ) -> io::Result<()> {
     let mut buffer = Zeroizing::new(vec![0; 1024]);
-    let mut total = 0;
+    let mut budget = TrafficBudget::new(BYTE_LIMIT, 128 * 1024);
     loop {
         let size = reader.read(&mut buffer).await?;
         if size == 0 {
             writer.shutdown().await?;
             return Ok(());
         }
-        total += size;
-        if total > BYTE_LIMIT {
+        if !budget.allow(size, bound.load(Ordering::Acquire), Instant::now()) {
             return Err(io::Error::other("native stream byte bound"));
         }
         writer.write_all(&buffer[..size]).await?;
@@ -185,7 +231,8 @@ pub async fn companion(
     drop(tx);
     let mut streams = JoinSet::new();
     let mut peer_tasks = JoinSet::new();
-    peer_tasks.spawn(peers(connection.clone(), stop.clone()));
+    let bound = Arc::new(AtomicBool::new(false));
+    peer_tasks.spawn(peers(connection.clone(), stop.clone(), bound.clone()));
     let mut total = 0;
     let result=async{loop{
         if *stop.borrow(){return Ok(());}
@@ -200,10 +247,10 @@ pub async fn companion(
                 let Some((mut socket,port))=accepted else{return Err(io::Error::other("native listeners ended"));};
                 total+=1;
                 if total>STREAM_TOTAL||streams.len()>=STREAM_LIMIT as usize{return Err(io::Error::other("native companion stream bound"));}
-                let tls=connection.clone();streams.spawn(async move{
+                let tls=connection.clone();let bound=bound.clone();streams.spawn(async move{
                     let (mut send,mut recv)=open(&tls,port).await?;
                     let (mut read,mut write)=socket.split();
-                    tokio::try_join!(copy_secret(&mut read,&mut send),copy_secret(&mut recv,&mut write)).map(|_|())
+                    tokio::try_join!(copy_secret(&mut read,&mut send,&bound),copy_secret(&mut recv,&mut write,&bound)).map(|_|())
                 });
             }
         }
@@ -221,7 +268,11 @@ pub async fn companion(
 /// Server offers are carried only inside the pinned original TLS connection.
 /// They delegate the existing DB owner to the existing authenticated UDP hub;
 /// no capability enters the native KR stream, argv, disk or logs.
-async fn peers(connection: Connection, stop: watch::Receiver<bool>) -> io::Result<()> {
+async fn peers(
+    connection: Connection,
+    stop: watch::Receiver<bool>,
+    bound: Arc<AtomicBool>,
+) -> io::Result<()> {
     let mut recv = connection.accept_uni().await.map_err(io::Error::other)?;
     let offers = tokio::time::timeout(Duration::from_secs(2), async {
         let count = recv.read_u8().await?;
@@ -257,6 +308,9 @@ async fn peers(connection: Connection, stop: watch::Receiver<bool>) -> io::Resul
     })
     .await
     .map_err(|_| io::Error::other("native peer offer deadline"))??;
+    // The pinned service sends an offer only after the DB roster has taken
+    // ownership of its native channel. This affects copying limits, not auth.
+    bound.store(true, Ordering::Release);
     let mut tasks = JoinSet::new();
     for (address, certificate, secret) in offers {
         let stop = stop.clone();

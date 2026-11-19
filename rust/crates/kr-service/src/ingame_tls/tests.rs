@@ -69,7 +69,14 @@ async fn send(send: &mut quinn::SendStream, sequence: &mut u32, opcode: u32, bod
     *sequence += 3;
 }
 async fn receive(recv: &mut quinn::RecvStream, sequence: &mut u32) -> kr_wire::Packet {
-    tokio::time::timeout(Duration::from_secs(3), async {
+    receive_for(recv, sequence, Duration::from_secs(3)).await
+}
+async fn receive_for(
+    recv: &mut quinn::RecvStream,
+    sequence: &mut u32,
+    wait: Duration,
+) -> kr_wire::Packet {
+    tokio::time::timeout(wait, async {
         let mut header = [0; 37];
         recv.read_exact(&mut header).await.unwrap();
         let n = u32::from_le_bytes(header[13..17].try_into().unwrap()) as usize;
@@ -198,10 +205,89 @@ impl NativeClient {
         }
         panic!("Expected reply absent");
     }
+    async fn send(&mut self, opcode: u32, body: &[u8]) {
+        send(&mut self.send, &mut self.tx, opcode, body).await;
+    }
+    async fn expect(&mut self, opcode: u32) -> kr_wire::Packet {
+        let packet = receive_for(&mut self.recv, &mut self.rx, Duration::from_secs(12)).await;
+        assert_eq!(packet.opcode, opcode);
+        packet
+    }
+}
+
+async fn connect_peer_offer(offers: &mut quinn::RecvStream) -> (quinn::Endpoint, kr_tunnel::Link) {
+    let mut ip = [0; 4];
+    offers.read_exact(&mut ip).await.unwrap();
+    let address = SocketAddrV4::new(ip.into(), offers.read_u16().await.unwrap());
+    let size = offers.read_u16().await.unwrap() as usize;
+    assert!(size <= 4096);
+    let mut certificate = vec![0; size];
+    offers.read_exact(&mut certificate).await.unwrap();
+    let mut secret = zeroize::Zeroizing::new([0; 32]);
+    offers.read_exact(secret.as_mut()).await.unwrap();
+    let endpoint = kr_tunnel::client("127.0.0.1:0".parse().unwrap(), certificate.into()).unwrap();
+    let link = kr_tunnel::Link::connect(
+        &endpoint,
+        address.into(),
+        &kr_tunnel::Secret::from_bytes(*secret),
+    )
+    .await
+    .unwrap();
+    (endpoint, link)
+}
+
+fn fields(items: &[(u64, Width)]) -> Vec<u8> {
+    items
+        .iter()
+        .flat_map(|&(value, width)| write_uint(value, width).unwrap())
+        .collect()
+}
+
+fn report(slot: u8, subtype: u8, tick: u32) -> Vec<u8> {
+    use Width::*;
+    let mut body = fields(&[
+        (subtype.into(), U8),
+        (slot.into(), U8),
+        (120, U16),
+        (159, U16),
+        (tick.into(), U32),
+        (0, U32),
+    ]);
+    if matches!(subtype, 17 | 19) {
+        let size = if subtype == 17 { 14 } else { 11 };
+        let mut blob = vec![0; size];
+        blob[0] = 24;
+        blob[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
+        if subtype == 17 {
+            blob[10..14].copy_from_slice(&7u32.to_le_bytes());
+        }
+        body.extend(fields(&[(size as u64, U32)]));
+        body.extend(kr_wire::kr00967::encode_bytes(&blob).unwrap());
+    }
+    body
+}
+
+fn bomb(key: u64, column: u8) -> Vec<u8> {
+    use Width::*;
+    fields(&[
+        (key, U32),
+        (0, U8),
+        (0, U8),
+        (1, U32),
+        (3, U8),
+        (column.into(), U8),
+        (1, U8),
+        (0, U8),
+        (0, U8),
+        (0, U8),
+        (1, U8),
+        (1, U32),
+        (0, U8),
+    ])
 }
 
 #[test]
-fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() {
+fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let temp = Temp::new();
     let admin = Admin {
@@ -209,7 +295,7 @@ fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() 
         reason: "distinct native streams across TLS owners",
     };
     let mut store = Store::open(&temp.db()).unwrap();
-    store.begin_instance(&admin, 100).unwrap();
+    let epoch = store.begin_instance(&admin, 100).unwrap();
     let a = store
         .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
         .unwrap();
@@ -220,19 +306,45 @@ fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() 
         let worker = crate::account_worker::Worker::open(temp.db(), 8, Duration::from_secs(5))
             .await
             .unwrap();
+        let held = std::net::UdpSocket::bind("127.0.0.1:0").unwrap();
+        let std::net::SocketAddr::V4(address) = held.local_addr().unwrap() else {
+            unreachable!()
+        };
+        drop(held);
+        let relay = crate::authenticated_peer::Hub::new(&crate::authenticated_peer::Config {
+            bind: address,
+            advertise: address,
+            max_peers: 4,
+            route_capacity: 4,
+            queue_messages: 4,
+            send_budget: 4,
+            pending_ms: 500,
+            lease_seconds: 120,
+        })
+        .unwrap();
+        let peer_endpoint = relay.bind().unwrap();
+        let bridge =
+            crate::account_bridge::Bridge::new(worker.client(), 4, Duration::from_secs(30))
+                .unwrap();
+        let (peer_halt, peer_stop) = watch::channel(false);
+        let peer_task = tokio::spawn(relay.clone().run(peer_endpoint, bridge, peer_stop));
         let hub = crate::room_service::Hub::new(
             &crate::room_service::Config {
                 max_rooms: 8,
                 round_profile: None,
-                player_choices: false,
+                player_choices: true,
                 capacity: None,
-                player_round: None,
+                player_round: Some(crate::room_io::PlayerRoundConfig {
+                    characters: vec![0, 1],
+                }),
             },
-            crate::room_io::registry_foundation_tests::selection_prototype(),
+            crate::room_io::registry_foundation_tests::player_round_prototype(),
             None,
-            None,
+            Some(relay.clone()),
         )
         .unwrap();
+        let journal = crate::match_journal::Manager::open(worker.client(), epoch);
+        hub.install_journal(journal.factory()).unwrap();
         let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
         let server = quinn::Endpoint::server(
             prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
@@ -245,9 +357,16 @@ fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() 
         let mut tasks = Vec::new();
         let mut halts = Vec::new();
         let mut observed = Vec::new();
+        let (proxy_halt, proxy_stop) = watch::channel(false);
+        let mut proxies = Vec::new();
+        let mut native = Vec::new();
         for (login, name) in [("AlphaOne", b"DBUserA"), ("BetaTwo", b"DBUserB")] {
             let mut authority = resources(worker.client());
-            Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
+            let settings = Arc::get_mut(&mut authority).unwrap();
+            settings.hub = Some(hub.clone());
+            settings.authenticated = Some(relay.clone());
+            settings.config.session_ttl_seconds = 120;
+            settings.config.session_idle_seconds = 90;
             observed.push(authority.clone());
             let endpoint = server.clone();
             let (halt, stop) = watch::channel(false);
@@ -260,7 +379,22 @@ fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() 
             let connection = prelogin::connect(&client, server.local_addr().unwrap())
                 .await
                 .unwrap();
-            clients.push(NativeClient::login(connection, login, name).await);
+            let attached = NativeClient::login(connection, login, name).await;
+            let mut offers = tokio::time::timeout(Duration::from_secs(3), attached.connection.accept_uni())
+                .await
+                .unwrap()
+                .unwrap();
+            assert_eq!(offers.read_u8().await.unwrap(), 1);
+            let (endpoint, link) = connect_peer_offer(&mut offers).await;
+            assert_eq!(offers.read(&mut [0; 1]).await.unwrap(), None);
+            let stop = proxy_stop.clone();
+            proxies.push(tokio::spawn(async move {
+                let result = kr_tunnel::companion::run(link, Ipv4Addr::LOCALHOST.into(), 26, stop).await;
+                endpoint.close(0u8.into(), b"done");
+                result
+            }));
+            clients.push(attached);
+            native.push(tokio::net::UdpSocket::bind("127.0.0.1:0").await.unwrap());
         }
         let mut keys = Vec::new();
         for authority in &observed {
@@ -288,6 +422,177 @@ fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() 
         assert_eq!(temp.active(), 2);
         assert!(hub.register(a.wire_id, tcp_key).is_err());
         assert!(hub.register(b.wire_id, tcp_key).is_err());
+        for client in &mut clients {
+            client.send(585, &fields(&[(0, Width::U32)])).await;
+        }
+        for client in &mut clients {
+            // The room already exists when B enters; skip only catalog frames
+            // before setup, and require exactly two projected DB profiles.
+            let mut ids = Vec::new();
+            loop {
+                let packet =
+                    receive_for(&mut client.recv, &mut client.rx, Duration::from_secs(8)).await;
+                match packet.opcode {
+                    106 => ids.push(read_uint(&packet.payload[1..5], Width::U32).unwrap()),
+                    117 => break,
+                    90 | 91 | 110 | 238 => {}
+                    opcode => panic!("unexpected setup opcode {opcode}"),
+                }
+            }
+            ids.sort_unstable();
+            assert_eq!(ids, [u64::from(a.wire_id), u64::from(b.wire_id)]);
+        }
+        clients[1].send(97, &[0x59]).await;
+        for client in &mut clients {
+            client.expect(110).await;
+            client.expect(110).await;
+        }
+        let mut last_key = None;
+        let mut last_routes = None;
+        let mut played = Vec::new();
+        for round in 1..=2 {
+            let mut ready = fields(&[(6, Width::U32)]);
+            ready.extend([0; 6]);
+            ready.extend(fields(&[(1, Width::U8), (0, Width::U32)]));
+            clients[1].send(95, &ready).await;
+            for client in &mut clients {
+                client.expect(110).await;
+            }
+            clients[0].send(104, &[0; 20]).await;
+            for client in &mut clients {
+                client.expect(582).await;
+                client.expect(121).await;
+            }
+            for (slot, client) in clients.iter_mut().enumerate() {
+                use Width::*;
+                let load = fields(&[
+                    (0, U32),
+                    (0, U32),
+                    (native[slot].local_addr().unwrap().port().into(), U16),
+                    (0, U32),
+                    (0, U16),
+                    (0, U8),
+                    (0, U8),
+                    (0, U8),
+                    (0, U32),
+                ]);
+                client.send(99, &load).await;
+            }
+            let mut wire_keys = Vec::new();
+            let mut routes = Vec::new();
+            for (slot, client) in clients.iter_mut().enumerate() {
+                client.expect(197).await;
+                client.expect(196).await;
+                let packet = client.expect(153).await;
+                wire_keys.push(read_uint(&packet.payload[15..19], Width::U32).unwrap());
+                // The other occupied row follows the 35-byte header. Each
+                // occupied row has a presence byte and three six-byte endpoints.
+                let at = 36 + 19 * (1 - slot);
+                assert_eq!(
+                    read_uint(&packet.payload[at..at + 4], Width::U32).unwrap(),
+                    u64::from(u32::from(Ipv4Addr::LOCALHOST))
+                );
+                let port = read_uint(&packet.payload[at + 4..at + 6], Width::U16).unwrap() as u16;
+                assert_ne!(port, native[1 - slot].local_addr().unwrap().port());
+                routes.push(SocketAddrV4::new(Ipv4Addr::LOCALHOST, port));
+            }
+            assert_eq!(wire_keys[0], wire_keys[1]);
+            assert_ne!(Some(wire_keys[0]), last_key);
+            if let Some(old) = last_key {
+                clients[0].send(118, &bomb(old, 4)).await;
+            }
+            last_key = Some(wire_keys[0]);
+            played.push(wire_keys[0]);
+            if let Some(old) = last_routes.replace(routes.clone()) {
+                assert_ne!(old, routes);
+                native[0].send_to(b"previous round", old[0]).await.unwrap();
+            }
+            for (slot, socket) in native.iter().enumerate() {
+                socket.send_to(&[round as u8, slot as u8], routes[slot]).await.unwrap();
+            }
+            for (slot, socket) in native.iter().enumerate() {
+                let mut data = [0; 32];
+                let (size, source) = tokio::time::timeout(Duration::from_secs(3), socket.recv_from(&mut data))
+                    .await.unwrap().unwrap();
+                assert_eq!(source, routes[slot].into());
+                assert_eq!(&data[..size], &[round as u8, (1 - slot) as u8]);
+            }
+            if round == 2 {
+                let mut unexpected = [0; 32];
+                assert!(
+                    tokio::time::timeout(
+                        Duration::from_millis(350),
+                        native[1].recv_from(&mut unexpected)
+                    )
+                    .await
+                    .is_err(),
+                    "the previous round's UDP port must not forward a late datagram"
+                );
+            }
+            clients[0].send(118, &bomb(wire_keys[0], 3)).await;
+            for client in &mut clients {
+                let spawn = client.expect(159).await;
+                assert_eq!(read_uint(&spawn.payload[17..18], Width::U8).unwrap(), 3);
+                assert_eq!(
+                    read_uint(&spawn.payload[24..26], Width::U16).unwrap(),
+                    round as u64
+                );
+            }
+            for client in &mut clients {
+                client.expect(158).await;
+            }
+            let tick = round as u32 * 100;
+            clients[1].send(127, &report(1, 17, tick)).await;
+            clients[0].expect(170).await;
+            clients[1].send(127, &report(1, 19, tick + 1)).await;
+            clients[0].expect(170).await;
+            clients[0].send(127, &report(0, 21, tick + 2)).await;
+            for client in &mut clients {
+                client.expect(175).await;
+                client.expect(180).await;
+                client.expect(110).await;
+                client.expect(110).await;
+            }
+            let db = rusqlite::Connection::open(temp.db()).unwrap();
+            let rows = db
+                .prepare(
+                    "SELECT m.round, m.state, m.reason, p.slot, p.account_id, p.player_id, p.outcome, p.exit_kind
+                     FROM matches m JOIN match_players p ON p.match_id = m.id
+                     ORDER BY m.round, p.slot",
+                )
+                .unwrap()
+                .query_map([], |row| {
+                    Ok((
+                        row.get::<_, i64>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, String>(2)?,
+                        row.get::<_, i64>(3)?,
+                        row.get::<_, i64>(4)?,
+                        row.get::<_, i64>(5)?,
+                        row.get::<_, String>(6)?,
+                        row.get::<_, String>(7)?,
+                    ))
+                })
+                .unwrap()
+                .collect::<Result<Vec<_>, _>>()
+                .unwrap();
+            assert_eq!(rows.len(), 2 * round as usize);
+            for (n, row) in rows.iter().enumerate() {
+                let slot = n % 2;
+                let (player, outcome) = if slot == 0 { (&a, "win") } else { (&b, "loss") };
+                assert_eq!(
+                    u64::from(crate::room::wire_key(row.0.try_into().unwrap()).unwrap()),
+                    played[n / 2]
+                );
+                assert_eq!((&*row.1, &*row.2), ("complete", "elimination"));
+                assert_eq!((row.3, row.4, row.5), (slot as i64, player.account_id, player.player_id));
+                assert_eq!((&*row.6, &*row.7), (outcome, "present"));
+            }
+        }
+        proxy_halt.send_replace(true);
+        for proxy in proxies {
+            proxy.await.unwrap().unwrap();
+        }
         for client in &clients {
             client.connection.close(0u8.into(), b"test EOF");
         }
@@ -305,6 +610,9 @@ fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() 
                 .is_empty()
         );
         drop(replacement);
+        peer_halt.send_replace(true);
+        peer_task.await.unwrap().unwrap();
+        journal.shutdown().await.unwrap();
         server.close(0u8.into(), b"done");
         client.close(0u8.into(), b"done");
         worker.shutdown().await.unwrap();
@@ -351,7 +659,10 @@ fn resources(client: Client) -> Arc<Resources> {
         hello: vec![0; 15],
         wcp: vec![1; 15],
         ports: vec![3838, 3938],
-        bytes: AtomicUsize::new(0),
+        bytes: Mutex::new(prelogin::TrafficBudget::new(
+            prelogin::BYTE_LIMIT,
+            64 * 1024,
+        )),
         events,
         hub: None,
         lobby: AsyncMutex::new(None),
@@ -529,24 +840,7 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         let mut peer_links = Vec::new();
         let mut endpoints = Vec::new();
         for handle in &handles {
-            let mut ip = [0; 4];
-            offers.read_exact(&mut ip).await.unwrap();
-            let address = SocketAddrV4::new(ip.into(), offers.read_u16().await.unwrap());
-            let size = offers.read_u16().await.unwrap() as usize;
-            assert!(size <= 4096);
-            let mut certificate = vec![0; size];
-            offers.read_exact(&mut certificate).await.unwrap();
-            let mut secret = zeroize::Zeroizing::new([0; 32]);
-            offers.read_exact(secret.as_mut()).await.unwrap();
-            let endpoint =
-                kr_tunnel::client("127.0.0.1:0".parse().unwrap(), certificate.into()).unwrap();
-            let link = kr_tunnel::Link::connect(
-                &endpoint,
-                address.into(),
-                &kr_tunnel::Secret::from_bytes(*secret),
-            )
-            .await
-            .unwrap();
+            let (endpoint, link) = connect_peer_offer(&mut offers).await;
             assert!(relay.connected(kr_tunnel::router::Owner {
                 player: handle.player().wire_id,
                 session: handle.generation(),

@@ -4859,6 +4859,61 @@ pub(crate) mod registry_foundation_tests {
         drop(runtime);
         shared
     }
+    fn synthetic_start() -> Vec<u8> {
+        let mut stream = vec![0; 54 + 26 * 8];
+        stream[0] = 24;
+        let size = stream.len();
+        stream[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
+        stream[28..32].copy_from_slice(&11_u32.to_le_bytes());
+        stream[32..43].copy_from_slice(b"ExVillage01");
+        stream[49] = 8;
+        for slot in 0..8 {
+            let at = 54 + 26 * slot;
+            stream[at] = slot as u8;
+            stream[at + 2] = slot as u8;
+            stream[at + 3..at + 5].copy_from_slice(&(slot as u16).to_le_bytes());
+            stream[at + 5] = (slot % 2) as u8;
+            stream[at + 8] = 255;
+            stream[at + 13..at + 17].fill(255);
+        }
+        let mut start = kr_wire::write_uint(0, Width::U8).unwrap();
+        start.extend(kr_wire::write_uint(size as u64, Width::U32).unwrap());
+        let mut pos = 0;
+        while pos < size {
+            let (n, width) = if size - pos >= 4 {
+                (4, Width::U32)
+            } else if size - pos >= 2 {
+                (2, Width::U16)
+            } else {
+                (1, Width::U8)
+            };
+            let mut raw = [0; 8];
+            raw[..n].copy_from_slice(&stream[pos..pos + n]);
+            start.extend(kr_wire::write_uint(u64::from_le_bytes(raw), width).unwrap());
+            pos += n;
+        }
+        start.extend([0; 18]);
+        start
+    }
+    /// Synthetic packet fixture for exercising the real TLS/SQLite round
+    /// adapter. It is not a native room or gameplay oracle.
+    pub(crate) fn player_round_prototype() -> Shared {
+        let shared = local_setup_prototype();
+        {
+            let mut runtime = shared.lock().unwrap();
+            runtime.rules.endpoint = rules::EndpointPolicy::AuthenticatedRelay;
+            runtime.bodies.insert(Template::Start121, synthetic_start());
+            for (key, body) in [
+                (Template::Floor582, vec![0x5a]),
+                (Template::Go197, vec![0; 14]),
+                (Template::Play196, vec![0; 7]),
+                (Template::Peer153, vec![0; 35]),
+            ] {
+                runtime.bodies.insert(key, body);
+            }
+        }
+        shared
+    }
     #[test]
     fn retired_recipient_channels_still_cleanup_exact_members_without_removing_replacements() {
         let shared = empty(0x77);
@@ -4888,37 +4943,7 @@ pub(crate) mod registry_foundation_tests {
     #[test]
     fn managed_team_config_rejects_unmeasured_modes_limits_and_teams_before_serving() {
         let prototype = empty(0x77);
-        let mut stream = vec![0; 54 + 26 * 8];
-        stream[0] = 24;
-        let size = stream.len();
-        stream[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
-        stream[28..32].copy_from_slice(&11_u32.to_le_bytes());
-        stream[32..43].copy_from_slice(b"ExVillage01");
-        stream[49] = 8;
-        for slot in 0..8 {
-            let at = 54 + 26 * slot;
-            stream[at] = slot as u8;
-            stream[at + 2] = slot as u8;
-            stream[at + 3..at + 5].copy_from_slice(&(slot as u16).to_le_bytes());
-            stream[at + 5] = (slot % 2) as u8;
-        }
-        let mut start = kr_wire::write_uint(0, Width::U8).unwrap();
-        start.extend(kr_wire::write_uint(size as u64, Width::U32).unwrap());
-        let mut pos = 0;
-        while pos < size {
-            let (n, width) = if size - pos >= 4 {
-                (4, Width::U32)
-            } else if size - pos >= 2 {
-                (2, Width::U16)
-            } else {
-                (1, Width::U8)
-            };
-            let mut raw = [0; 8];
-            raw[..n].copy_from_slice(&stream[pos..pos + n]);
-            start.extend(kr_wire::write_uint(u64::from_le_bytes(raw), width).unwrap());
-            pos += n;
-        }
-        start.extend([0; 18]);
+        let start = synthetic_start();
         {
             let mut source = prototype.lock().unwrap();
             source.model = Room::with_allocation(8, rules::SlotAllocation::FirstVacant).unwrap();

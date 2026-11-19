@@ -16,10 +16,7 @@ use std::{
     net::{IpAddr, Ipv4Addr, SocketAddrV4},
     os::unix::fs::PermissionsExt,
     path::PathBuf,
-    sync::{
-        Arc, Mutex,
-        atomic::{AtomicUsize, Ordering},
-    },
+    sync::{Arc, Mutex},
     time::{Duration, Instant},
 };
 use tokio::{
@@ -164,7 +161,7 @@ struct Resources {
     wcp: Vec<u8>,
     ports: Vec<u16>,
     config: Config,
-    bytes: AtomicUsize,
+    bytes: Mutex<prelogin::TrafficBudget>,
     events: mpsc::Sender<serde_json::Value>,
     hub: Option<Arc<crate::room_service::Hub>>,
     lobby: AsyncMutex<Option<crate::room_service::LocalLobby>>,
@@ -228,7 +225,8 @@ async fn stream(
                 }
             };
             let size = input.payload_len() + kr_wire::FRAME_OVERHEAD;
-            if resources.bytes.fetch_add(size, Ordering::Relaxed) + size > prelogin::BYTE_LIMIT {
+            if !resources.bytes.lock().map_err(|_| io::Error::other("native byte budget unavailable"))?
+                .allow(size, lane.in_lobby(), Instant::now()) {
                 return Err(io::Error::other("native owner byte bound"));
             }
             let mut owner = resources.owner.lock().await;
@@ -420,7 +418,7 @@ pub(crate) async fn serve(
                 let Ok(total_permit)=total.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(unauth)=unauthenticated.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,Instant::now())else{incoming.refuse();continue;};
-                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:AtomicUsize::new(0),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone())});
+                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:Mutex::new(prelogin::TrafficBudget::new(prelogin::BYTE_LIMIT,64*1024)),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone())});
                 let stop=stop.clone();let events=events.clone();owners.spawn(async move{
                     let _total=total_permit;let _peer=peer_permit;
                     let result=tokio::time::timeout(Duration::from_secs(3),incoming).await;

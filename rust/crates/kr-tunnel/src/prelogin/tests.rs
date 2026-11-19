@@ -7,6 +7,18 @@ fn runtime() -> tokio::runtime::Runtime {
 }
 
 #[test]
+fn active_traffic_renews_only_its_own_allowance_and_never_renews_preauth() {
+    let now = Instant::now();
+    let mut budget = TrafficBudget::new(BYTE_LIMIT, 64 * 1024);
+    assert!(budget.allow(BYTE_LIMIT, false, now));
+    assert!(!budget.allow(1, false, now + Duration::from_secs(30)));
+    assert!(budget.allow(64 * 1024, true, now));
+    assert!(!budget.allow(1, true, now + Duration::from_millis(999)));
+    assert!(budget.allow(64 * 1024, true, now + Duration::from_secs(1)));
+    assert!(!budget.allow(1, false, now + Duration::from_secs(60)));
+}
+
+#[test]
 fn two_peer_offers_stay_inside_original_tls_and_stop_closes_both_udp_owners() {
     runtime().block_on(async {
         let identity = crate::Identity::ephemeral().unwrap();

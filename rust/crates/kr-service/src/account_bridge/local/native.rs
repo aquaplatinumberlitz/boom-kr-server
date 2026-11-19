@@ -2,7 +2,11 @@
 //! No listener is opened here. TLS admission is a separate required layer.
 use super::{Cancel, LocalAuthority, LocalSession};
 use kr_wire::{HEADER_LEN, Width, kr00967::AccountTemplate, write_uint};
-use std::{io, sync::Arc, time::Duration};
+use std::{
+    io,
+    sync::Arc,
+    time::{Duration, Instant},
+};
 use tokio::io::{AsyncRead, AsyncReadExt, AsyncWrite, AsyncWriteExt};
 use zeroize::Zeroizing;
 
@@ -168,7 +172,7 @@ pub struct Lane {
     connection: u64,
     phase: Phase,
     send_sequence: u32,
-    ignored: usize,
+    ancillary: kr_tunnel::prelogin::TrafficBudget,
 }
 impl Lane {
     pub(crate) fn in_lobby(&self) -> bool {
@@ -188,7 +192,7 @@ impl Lane {
             connection,
             phase,
             send_sequence: 43,
-            ignored: 0,
+            ancillary: kr_tunnel::prelogin::TrafficBudget::new(64, 64),
         })
     }
 }
@@ -452,7 +456,10 @@ impl Driver {
                                 .is_ok_and(|name| body.len() == 3 + name.len())
                         }))) =>
             {
-                if lane.ignored >= 64 {
+                if !lane
+                    .ancillary
+                    .allow(1, lane.phase == Phase::Lobby, Instant::now())
+                {
                     return Err(io::Error::other("native ancillary bound"));
                 }
                 // Pre-auth or foreign lanes cannot use ancillary traffic to
@@ -469,7 +476,6 @@ impl Driver {
                     .inspect()
                     .await
                     .map_err(|_| io::Error::other("native owner denied"))?;
-                lane.ignored += 1;
             }
             _ => return Err(io::Error::other("native stage or shape denied")),
         }
