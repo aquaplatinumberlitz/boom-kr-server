@@ -70,6 +70,67 @@ fn admin() -> Admin<'static> {
 }
 
 #[test]
+fn trial_cancellation_and_abandoned_delivery_cannot_leave_active_guest_sessions() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 4, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let held = client
+            .try_trial_local_current(1, 60, None)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        let cancelled = client.try_trial_local_current(2, 60, None).unwrap();
+        drop(cancelled);
+        let first = held.accept().unwrap();
+        let second = client
+            .try_trial_local_current(2, 60, None)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert_eq!(temp.active(), 3);
+        assert_eq!(
+            temp.sql()
+                .query_row("SELECT count(*) FROM guest_accounts", [], |r| r
+                    .get::<_, i64>(0))
+                .unwrap(),
+            3
+        );
+        client.try_end_local(&first).unwrap().wait().await.unwrap();
+        client.try_end_local(&second).unwrap().wait().await.unwrap();
+        assert_eq!(temp.active(), 0);
+        let abandoned = client
+            .try_trial_local_current(2, 60, None)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        let old: Vec<_> = abandoned
+            .value()
+            .iter()
+            .map(|g| g.player.player_id)
+            .collect();
+        drop(abandoned);
+        let next = client
+            .try_trial_local_current(1, 60, None)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert_eq!(temp.active(), 1);
+        assert!(!old.contains(&next[0].player.player_id));
+        client.try_end_local(&next).unwrap().wait().await.unwrap();
+        assert_eq!(temp.active(), 0);
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
 fn local_roster_handoff_accepts_both_or_compensates_both() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let temp = Temp::new();

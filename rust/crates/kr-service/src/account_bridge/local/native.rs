@@ -253,8 +253,13 @@ impl Driver {
     ) -> io::Result<()> {
         let body = &input.payload;
         match (lane.phase, input.opcode) {
-            (Phase::Login, 1) if lane.connection == self.login_connection => {
-                let rows = match self.session.login(body, ttl, idle).await {
+            (Phase::Login, opcode @ (1 | 62)) if lane.connection == self.login_connection => {
+                let admitted = if opcode == 1 {
+                    self.session.login(body, ttl, idle).await
+                } else {
+                    self.session.trial(body, ttl, idle).await
+                };
+                let rows = match admitted {
                     Ok(rows) => rows,
                     Err(_) => {
                         lane.phase = Phase::Denied;

@@ -15,6 +15,7 @@ use std::{
 };
 use zeroize::Zeroizing;
 
+mod guests;
 mod local_login;
 mod matches;
 mod preferences;
@@ -24,7 +25,8 @@ pub use preferences::CharacterPreference;
 const MIGRATION: &str = include_str!("../migrations/0001_accounts.sql");
 const MIGRATION_IDLE: &str = include_str!("../migrations/0002_session_idle.sql");
 const MIGRATION_MATCHES: &str = include_str!("../migrations/0003_match_history.sql");
-pub const SCHEMA_VERSION: i32 = 3;
+const MIGRATION_GUESTS: &str = include_str!("../migrations/0004_guest_accounts.sql");
+pub const SCHEMA_VERSION: i32 = 4;
 const APPLICATION_ID: i32 = 0x4b524143;
 const TTL_MAX: i64 = 86_400;
 static HASH_WORK: AtomicUsize = AtomicUsize::new(0);
@@ -260,7 +262,12 @@ impl Store {
         let tx = db.transaction_with_behavior(TransactionBehavior::Immediate)?;
         let app: i32 = tx.pragma_query_value(None, "application_id", |r| r.get(0))?;
         let mut version: i32 = tx.pragma_query_value(None, "user_version", |r| r.get(0))?;
-        let scripts = [MIGRATION, MIGRATION_IDLE, MIGRATION_MATCHES];
+        let scripts = [
+            MIGRATION,
+            MIGRATION_IDLE,
+            MIGRATION_MATCHES,
+            MIGRATION_GUESTS,
+        ];
         let digests: Vec<_> = scripts
             .iter()
             .map(|script| hex(&Sha256::digest(script.as_bytes())))
@@ -549,7 +556,7 @@ impl Store {
         let row: Option<(i64, String, i64, bool)> = self
             .db
             .query_row(
-                "SELECT id,password_phc,credential_version,disabled FROM accounts WHERE login=?1",
+                "SELECT id,password_phc,credential_version,disabled FROM accounts WHERE login=?1 AND NOT EXISTS(SELECT 1 FROM guest_accounts WHERE account_id=accounts.id)",
                 [&login],
                 |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)),
             )
