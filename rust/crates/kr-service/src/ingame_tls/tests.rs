@@ -2,6 +2,7 @@ use super::*;
 use crate::account_bridge::local::native::fixtures;
 use crate::accounts::{Admin, Store, TEST_SERIAL};
 use kr_wire::{Width, read_uint, write_uint};
+use tokio::io::AsyncReadExt;
 
 fn runtime() -> tokio::runtime::Runtime {
     tokio::runtime::Builder::new_current_thread()
@@ -164,6 +165,7 @@ fn resources(client: Client) -> Arc<Resources> {
         hub: None,
         lobby: AsyncMutex::new(None),
         persist_character: false,
+        authenticated: None,
         config: Config {
             bind: "127.0.0.1:50000".parse().unwrap(),
             certificate: FixturePin {
@@ -226,6 +228,29 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         )
         .unwrap();
         Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
+        let held = std::net::UdpSocket::bind("127.0.0.1:0").unwrap();
+        let std::net::SocketAddr::V4(address) = held.local_addr().unwrap() else {
+            unreachable!()
+        };
+        drop(held);
+        let relay = crate::authenticated_peer::Hub::new(&crate::authenticated_peer::Config {
+            bind: address,
+            advertise: address,
+            max_peers: 4,
+            route_capacity: 4,
+            queue_messages: 4,
+            send_budget: 4,
+            pending_ms: 500,
+            lease_seconds: 60,
+        })
+        .unwrap();
+        Arc::get_mut(&mut authority).unwrap().authenticated = Some(relay.clone());
+        let peer_endpoint = relay.bind().unwrap();
+        let bridge =
+            crate::account_bridge::Bridge::new(worker.client(), 4, Duration::from_secs(30))
+                .unwrap();
+        let (peer_halt, peer_stop) = watch::channel(false);
+        let peer_task = tokio::spawn(relay.clone().run(peer_endpoint, bridge, peer_stop));
         let observed = authority.clone();
         let foreign = resources(worker.client());
         let (halt, stop) = watch::channel(false);
@@ -304,6 +329,39 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             .to_vec();
         assert_eq!(handles[0].player(), &a);
         assert_eq!(handles[1].player(), &b);
+        let mut offers = tokio::time::timeout(Duration::from_secs(2), conn.accept_uni())
+            .await
+            .unwrap()
+            .unwrap();
+        assert_eq!(offers.read_u8().await.unwrap(), 2);
+        let mut peer_links = Vec::new();
+        let mut endpoints = Vec::new();
+        for handle in &handles {
+            let mut ip = [0; 4];
+            offers.read_exact(&mut ip).await.unwrap();
+            let address = SocketAddrV4::new(ip.into(), offers.read_u16().await.unwrap());
+            let size = offers.read_u16().await.unwrap() as usize;
+            assert!(size <= 4096);
+            let mut certificate = vec![0; size];
+            offers.read_exact(&mut certificate).await.unwrap();
+            let mut secret = zeroize::Zeroizing::new([0; 32]);
+            offers.read_exact(secret.as_mut()).await.unwrap();
+            let endpoint =
+                kr_tunnel::client("127.0.0.1:0".parse().unwrap(), certificate.into()).unwrap();
+            let link = kr_tunnel::Link::connect(
+                &endpoint,
+                address.into(),
+                &kr_tunnel::Secret::from_bytes(*secret),
+            )
+            .await
+            .unwrap();
+            assert!(relay.connected(kr_tunnel::router::Owner {
+                player: handle.player().wire_id,
+                session: handle.generation(),
+            }));
+            peer_links.push(link);
+            endpoints.push(endpoint);
+        }
         let now = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
@@ -314,6 +372,18 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             .unwrap();
         let _ = task.await.unwrap();
         assert!(observed.lobby.lock().await.is_none());
+        for handle in &handles {
+            assert!(!relay.connected(kr_tunnel::router::Owner {
+                player: handle.player().wire_id,
+                session: handle.generation(),
+            }));
+        }
+        peer_halt.send_replace(true);
+        peer_task.await.unwrap().unwrap();
+        drop(peer_links);
+        for endpoint in endpoints {
+            endpoint.close(0u8.into(), b"done");
+        }
         drop(hub.register(a.wire_id, 77).unwrap());
         drop(hub.register(b.wire_id, 77).unwrap());
         assert!(handles.iter().all(|h| !h.current()));

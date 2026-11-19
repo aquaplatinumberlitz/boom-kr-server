@@ -169,6 +169,7 @@ struct Resources {
     hub: Option<Arc<crate::room_service::Hub>>,
     lobby: AsyncMutex<Option<crate::room_service::LocalLobby>>,
     persist_character: bool,
+    authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
 }
 
 async fn stream(
@@ -176,6 +177,7 @@ async fn stream(
     mut recv: quinn::RecvStream,
     id: u64,
     resources: Arc<Resources>,
+    transport: quinn::Connection,
 ) -> io::Result<()> {
     prelogin::accept_header(&mut recv, &resources.ports).await?;
     tokio::time::timeout(Duration::from_secs(2), send.write_all(&resources.hello))
@@ -293,6 +295,27 @@ async fn stream(
                     let lobby = hub.register_local(driver.authorities())?;
                     *resources.lobby.lock().await = Some(lobby);
                 }
+                if let Some(hub) = &resources.authenticated {
+                    // Only the authenticated channel roster can receive UDP
+                    // capabilities, on a separate server TLS stream.
+                    let offers = driver.authorities().iter().map(|owner| {
+                        hub.offer_local(owner.relay_authority(), Duration::from_secs(30))
+                    }).collect::<io::Result<Vec<_>>>()?;
+                    tokio::time::timeout(Duration::from_secs(2), async {
+                        let mut bytes = zeroize::Zeroizing::new(vec![offers.len() as u8]);
+                        for offer in offers {
+                            bytes.extend(offer.endpoint.ip().octets());
+                            bytes.extend(offer.endpoint.port().to_be_bytes());
+                            bytes.extend((offer.certificate_der.len() as u16).to_be_bytes());
+                            bytes.extend(offer.certificate_der);
+                            bytes.extend(offer.capability.expose());
+                        }
+                        let mut control = transport.open_uni().await.map_err(io::Error::other)?;
+                        control.write_all(&bytes).await.map_err(io::Error::other)?;
+                        control.finish().map_err(io::Error::other)?;
+                        Ok::<_, io::Error>(())
+                    }).await.map_err(|_| io::Error::other("native peer offer delivery deadline"))??;
+                }
                 let players: Vec<_> = driver
                     .authorities()
                     .iter()
@@ -348,7 +371,7 @@ async fn connection(
             stream=connection.accept_bi()=>{
                 let (send,recv)=stream.map_err(io::Error::other)?;number+=1;
                 if number>prelogin::STREAM_TOTAL||streams.len()>=prelogin::STREAM_LIMIT as usize{return Err(io::Error::other("native stream admission bound"));}
-                let resources=resources.clone();streams.spawn(async move{self::stream(send,recv,number as u64,resources).await});
+                let resources=resources.clone();let transport=connection.clone();streams.spawn(async move{self::stream(send,recv,number as u64,resources,transport).await});
             },
             result=streams.join_next(),if !streams.is_empty()=>{
                 match result{Some(Ok(Ok(())))=>{},Some(Ok(Err(_)))=>return Err(io::Error::other("native stream denied")),Some(Err(_))=>return Err(io::Error::other("native stream task ended")),None=>{}}
@@ -360,6 +383,11 @@ async fn connection(
     while streams.join_next().await.is_some() {}
     resources.lobby.lock().await.take();
     if let Some(driver) = resources.owner.lock().await.take() {
+        if let Some(hub) = &resources.authenticated {
+            for owner in driver.authorities() {
+                hub.retire_local(&owner.relay_authority());
+            }
+        }
         driver.finish().await?;
     }
     outcome
@@ -392,7 +420,7 @@ pub(crate) async fn serve(
                 let Ok(total_permit)=total.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(unauth)=unauthenticated.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,Instant::now())else{incoming.refuse();continue;};
-                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:AtomicUsize::new(0),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character)});
+                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:AtomicUsize::new(0),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone())});
                 let stop=stop.clone();let events=events.clone();owners.spawn(async move{
                     let _total=total_permit;let _peer=peer_permit;
                     let result=tokio::time::timeout(Duration::from_secs(3),incoming).await;

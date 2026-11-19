@@ -32,7 +32,7 @@ impl Drop for Close {
 fn transport() -> Arc<TransportConfig> {
     let mut cfg = TransportConfig::default();
     cfg.max_concurrent_bidi_streams(STREAM_LIMIT.into());
-    cfg.max_concurrent_uni_streams(0u8.into());
+    cfg.max_concurrent_uni_streams(1u8.into());
     cfg.stream_receive_window((8 * 1024u32).into());
     cfg.receive_window((32 * 1024u32).into());
     cfg.send_window(32 * 1024);
@@ -184,12 +184,15 @@ pub async fn companion(
     }
     drop(tx);
     let mut streams = JoinSet::new();
+    let mut peer_tasks = JoinSet::new();
+    peer_tasks.spawn(peers(connection.clone(), stop.clone()));
     let mut total = 0;
     let result=async{loop{
         if *stop.borrow(){return Ok(());}
         tokio::select!{
             _=stop.changed()=>return Ok(()),
             _=connection.closed()=>return Err(io::Error::other("native TLS ended")),
+            result=peer_tasks.join_next()=>return result.ok_or_else(||io::Error::other("native peer task absent"))?.map_err(io::Error::other)?,
             result=streams.join_next(),if !streams.is_empty()=>{
                 if let Some(Err(error))=result{return Err(io::Error::other(error));}
             },
@@ -209,7 +212,73 @@ pub async fn companion(
     while accepts.join_next().await.is_some() {}
     streams.abort_all();
     while streams.join_next().await.is_some() {}
+    peer_tasks.abort_all();
+    while peer_tasks.join_next().await.is_some() {}
     connection.close(0u8.into(), b"native owner ended");
+    result
+}
+
+/// Server offers are carried only inside the pinned original TLS connection.
+/// They delegate the existing DB owner to the existing authenticated UDP hub;
+/// no capability enters the native KR stream, argv, disk or logs.
+async fn peers(connection: Connection, stop: watch::Receiver<bool>) -> io::Result<()> {
+    let mut recv = connection.accept_uni().await.map_err(io::Error::other)?;
+    let offers = tokio::time::timeout(Duration::from_secs(2), async {
+        let count = recv.read_u8().await?;
+        if !(1..=2).contains(&count) {
+            return Err(io::Error::other("native peer roster bound"));
+        }
+        let mut offers = Vec::new();
+        for _ in 0..count {
+            let mut ip = [0; 4];
+            recv.read_exact(&mut ip).await.map_err(io::Error::other)?;
+            let address = std::net::SocketAddrV4::new(ip.into(), recv.read_u16().await?);
+            let size = recv.read_u16().await? as usize;
+            if address.port() == 0
+                || address.ip().is_unspecified()
+                || address.ip().is_multicast()
+                || address.ip().is_broadcast()
+                || size == 0
+                || size > 4096
+            {
+                return Err(io::Error::other("native peer offer bounds"));
+            }
+            let mut certificate = vec![0; size];
+            recv.read_exact(&mut certificate)
+                .await
+                .map_err(io::Error::other)?;
+            let mut secret = Zeroizing::new([0; 32]);
+            recv.read_exact(secret.as_mut())
+                .await
+                .map_err(io::Error::other)?;
+            offers.push((address, certificate, crate::Secret::from_bytes(*secret)));
+        }
+        Ok::<_, io::Error>(offers)
+    })
+    .await
+    .map_err(|_| io::Error::other("native peer offer deadline"))??;
+    let mut tasks = JoinSet::new();
+    for (address, certificate, secret) in offers {
+        let stop = stop.clone();
+        tasks.spawn(async move {
+            let endpoint =
+                crate::client("0.0.0.0:0".parse().expect("fixed bind"), certificate.into())?;
+            let link = crate::Link::connect(&endpoint, address.into(), &secret).await?;
+            let result =
+                crate::companion::run(link, std::net::Ipv4Addr::LOCALHOST.into(), 8192, stop).await;
+            endpoint.close(0u8.into(), b"native peer ended");
+            result
+        });
+    }
+    // JoinSet aborts all peer owners on cancellation. A stopped peer makes the
+    // whole native transport fail, keeping the 1P/2P roster lifetime atomic.
+    let result = tasks
+        .join_next()
+        .await
+        .ok_or_else(|| io::Error::other("native peer roster empty"))?
+        .map_err(io::Error::other)?;
+    tasks.abort_all();
+    while tasks.join_next().await.is_some() {}
     result
 }
 

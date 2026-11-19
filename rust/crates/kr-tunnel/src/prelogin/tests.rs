@@ -5,6 +5,130 @@ fn runtime() -> tokio::runtime::Runtime {
         .build()
         .unwrap()
 }
+
+#[test]
+fn two_peer_offers_stay_inside_original_tls_and_stop_closes_both_udp_owners() {
+    runtime().block_on(async {
+        let identity = crate::Identity::ephemeral().unwrap();
+        let certificate = identity.certificate.as_ref().to_vec();
+        let peer = identity.listen("127.0.0.1:0".parse().unwrap()).unwrap();
+        let address = peer.local_addr().unwrap();
+        let secret = crate::Secret::random().unwrap();
+        let bytes = Zeroizing::new(*secret.expose());
+        let (accepted, mut incoming) = tokio::sync::mpsc::channel(2);
+        let endpoint = peer.clone();
+        let peer_server = tokio::spawn(async move {
+            let mut owners = JoinSet::new();
+            for _ in 0..2 {
+                let connection = endpoint.accept().await.unwrap().await.unwrap();
+                let secret = crate::Secret::from_bytes(*bytes);
+                let accepted = accepted.clone();
+                owners.spawn(async move {
+                    let (link, ()) = crate::Link::accept_with_async(
+                        connection.clone(),
+                        |candidate| async move { candidate.accepts(secret.expose()).then_some(()) },
+                    )
+                    .await
+                    .unwrap();
+                    accepted.send(()).await.unwrap();
+                    connection.closed().await;
+                    drop(link);
+                });
+            }
+            while let Some(result) = owners.join_next().await {
+                result.unwrap();
+            }
+        });
+        let (cert, key) = crate::launch_tls::generate_identity().unwrap();
+        let server = Endpoint::server(
+            server_config(cert.clone(), key.to_vec()).unwrap(),
+            "127.0.0.1:0".parse().unwrap(),
+        )
+        .unwrap();
+        let mut client = Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+        client.set_default_client_config(client_config(cert).unwrap());
+        let connect = connect(&client, server.local_addr().unwrap());
+        let accept = async { server.accept().await.unwrap().await.unwrap() };
+        let (connected, remote) = tokio::join!(connect, accept);
+        let connection = connected.unwrap();
+        let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let (halt, stop) = watch::channel(false);
+        let task = tokio::spawn(companion(connection, vec![listener], stop));
+        let mut send = remote.open_uni().await.unwrap();
+        send.write_u8(2).await.unwrap();
+        for _ in 0..2 {
+            send.write_all(&[127, 0, 0, 1]).await.unwrap();
+            send.write_u16(address.port()).await.unwrap();
+            send.write_u16(certificate.len() as u16).await.unwrap();
+            send.write_all(&certificate).await.unwrap();
+            send.write_all(secret.expose()).await.unwrap();
+        }
+        send.finish().unwrap();
+        for _ in 0..2 {
+            tokio::time::timeout(Duration::from_secs(3), incoming.recv())
+                .await
+                .unwrap()
+                .unwrap();
+        }
+        halt.send_replace(true);
+        task.await.unwrap().unwrap();
+        tokio::time::timeout(Duration::from_secs(3), peer_server)
+            .await
+            .unwrap()
+            .unwrap();
+        let _rebound = TcpListener::bind((std::net::Ipv4Addr::LOCALHOST, port))
+            .await
+            .unwrap();
+        server.close(0u8.into(), b"done");
+        client.close(0u8.into(), b"done");
+        peer.close(0u8.into(), b"done");
+    });
+}
+
+#[test]
+fn malformed_or_partial_peer_offers_close_the_whole_native_transport() {
+    runtime().block_on(async {
+        for bytes in [
+            vec![0],
+            vec![3],
+            vec![1],
+            vec![1, 127, 0, 0, 1, 0, 1, 0x10, 1],
+        ] {
+            let (cert, key) = crate::launch_tls::generate_identity().unwrap();
+            let server = Endpoint::server(
+                server_config(cert.clone(), key.to_vec()).unwrap(),
+                "127.0.0.1:0".parse().unwrap(),
+            )
+            .unwrap();
+            let mut client = Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+            client.set_default_client_config(client_config(cert).unwrap());
+            let (connected, remote) =
+                tokio::join!(connect(&client, server.local_addr().unwrap()), async {
+                    server.accept().await.unwrap().await.unwrap()
+                });
+            let connection = connected.unwrap();
+            let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let port = listener.local_addr().unwrap().port();
+            let (_halt, stop) = watch::channel(false);
+            let task = tokio::spawn(companion(connection, vec![listener], stop));
+            let mut send = remote.open_uni().await.unwrap();
+            send.write_all(&bytes).await.unwrap();
+            // Keep truncated offers open: the offer deadline, rather than EOF,
+            // must end the native owner and release its loopback sockets.
+            let result = tokio::time::timeout(Duration::from_secs(3), task)
+                .await
+                .unwrap()
+                .unwrap();
+            assert!(result.is_err());
+            let _rebound = TcpListener::bind((std::net::Ipv4Addr::LOCALHOST, port))
+                .await
+                .unwrap();
+            server.close(0u8.into(), b"done");
+            client.close(0u8.into(), b"done");
+        }
+    });
+}
 #[test]
 fn companion_starts_before_login_and_stop_releases_every_local_socket() {
     runtime().block_on(async {

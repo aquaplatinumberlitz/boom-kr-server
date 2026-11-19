@@ -61,6 +61,100 @@ pub(crate) fn active(temp: &Temp) -> i64 {
 }
 
 #[test]
+fn in_game_udp_capabilities_bind_both_original_accounts_and_close_on_group_revoke() {
+    use crate::{account_bridge::Bridge, authenticated_peer};
+    use kr_tunnel::{Link, Secret, router::Owner};
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, _, b) = Temp::new();
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        // Intentionally empty launcher registry: an in-game owner must never
+        // need a second launcher login/grant or an IP-based registry lookup.
+        let bridge = Bridge::new(worker.client(), 4, Duration::from_secs(30)).unwrap();
+        let held = std::net::UdpSocket::bind("127.0.0.1:0").unwrap();
+        let std::net::SocketAddr::V4(address) = held.local_addr().unwrap() else {
+            unreachable!()
+        };
+        drop(held);
+        let hub = authenticated_peer::Hub::new(&authenticated_peer::Config {
+            bind: address,
+            advertise: address,
+            max_peers: 4,
+            route_capacity: 4,
+            queue_messages: 4,
+            send_budget: 4,
+            pending_ms: 500,
+            lease_seconds: 60,
+        })
+        .unwrap();
+        let endpoint = hub.bind().unwrap();
+        let (halt, stop) = watch::channel(false);
+        let task = tokio::spawn(hub.clone().run(endpoint, bridge, stop));
+        let mut session = LocalSession::new(worker.client(), 1).unwrap();
+        let rows = session
+            .login(&login(&["Alice", "Bob"]), 60, None)
+            .await
+            .unwrap();
+        session.redirected(1).unwrap();
+        let handles = session.channel(&channel(&rows), 2).await.unwrap();
+        let mut links = Vec::new();
+        let mut endpoints = Vec::new();
+        let mut owners = Vec::new();
+        for handle in &handles {
+            let authority = handle.relay_authority();
+            let owner = Owner {
+                player: handle.player().wire_id,
+                session: authority.generation(),
+            };
+            let offer = hub
+                .offer_local(authority.clone(), Duration::from_secs(30))
+                .unwrap();
+            assert!(hub.offer_local(authority, Duration::from_secs(30)).is_err());
+            let endpoint =
+                kr_tunnel::client("127.0.0.1:0".parse().unwrap(), offer.certificate_der.into())
+                    .unwrap();
+            assert!(
+                Link::connect(&endpoint, address.into(), &Secret::from_bytes([9; 32]))
+                    .await
+                    .is_err()
+            );
+            let link = Link::connect(&endpoint, address.into(), &offer.capability)
+                .await
+                .unwrap();
+            assert!(
+                Link::connect(&endpoint, address.into(), &offer.capability)
+                    .await
+                    .is_err()
+            );
+            assert!(hub.connected(owner));
+            links.push(link);
+            endpoints.push(endpoint);
+            owners.push(owner);
+        }
+        temp.store().revoke(&admin(), b.account_id, now()).unwrap();
+        assert!(handles[0].inspect().await.is_err());
+        assert!(handles.iter().all(|owner| !owner.current()));
+        for handle in &handles {
+            assert!(
+                hub.offer_local(handle.relay_authority(), Duration::from_secs(30))
+                    .is_err()
+            );
+            hub.retire_local(&handle.relay_authority());
+        }
+        assert!(owners.iter().all(|owner| !hub.connected(*owner)));
+        session.finish().await.unwrap();
+        assert_eq!(active(&temp), 0);
+        halt.send_replace(true);
+        task.await.unwrap().unwrap();
+        drop(links);
+        for endpoint in endpoints {
+            endpoint.close(0u8.into(), b"done");
+        }
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
 fn trial_roster_uses_the_same_revoke_expiry_and_replacement_fences() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let (temp, _, _) = Temp::new();
