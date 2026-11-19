@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP344: khách 1P/2P dùng identity DB riêng và cùng lifecycle transport; native Windows chơi thử 2P chuyển kênh đúng hai khách mới, cleanup đủ.** [Phạm vi](docs/protocol/auth-session.md#rust-ingame-db-publication); tiếp TLS trước đăng nhập, rồi phòng/trận và launcher. M8 còn mở.
+**CP345: TLS trước đăng nhập đã nối worker DB, có giới hạn và test âm; native Windows qua companion Linux chuyển kênh đúng hai account DB, cleanup đủ.** [Phạm vi để rà mã](docs/protocol/auth-session.md#rust-ingame-db-publication); tiếp phòng → trận → ván mới, rồi launcher. Chưa nghiệm thu Internet hoặc companion Windows; M8 còn mở.
 
 ## Bắt đầu
 

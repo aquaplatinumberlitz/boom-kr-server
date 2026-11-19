@@ -273,6 +273,26 @@ peer và toàn kết nối chưa đăng nhập thuộc phần TLS tiếp theo. T
 nâng schema và fencing. Native Windows trên copy đã hiện nút trial gửi 2P, nhận hai khách mới ID 5/6 rồi chuyển
 kênh đúng roster; cả hai session được thu hồi. Request sau kênh ngoài adapter vẫn đóng kết nối; chưa là phòng/trận.
 
+**TLS trước đăng nhập:** cấu hình `account_admission.prelogin_tls` mở ingress QUIC/TLS 1.3, dùng worker và epoch
+DB của chính service. `kr-prelogin` kết nối bằng pin chứng thư trước khi mở các cổng TCP loopback cho client;
+launcher hiện hành chưa đổi. ALPN `kre-native/1` tách khỏi API launcher và relay, không nhận 0-RTT. Mỗi TLS
+connection có owner roster riêng; các stream login/kênh mới không tìm owner bằng IP, tên, ID hoặc echo. Selector
+cổng phải nằm trong danh sách cấu hình; server không làm TCP proxy tới địa chỉ do client chỉ định.
+
+Giới hạn `design`: tối đa 16 Initial đang chờ, buffer 8 KiB mỗi Initial/128 KiB tổng; handshake 3 giây; 4 stream
+đồng thời và 32 stream trong vòng đời; native frame 512 byte, đọc/ghi 2 giây; tổng input account 32 KiB. Cấu hình
+giới hạn tổng connection, connection chưa xác thực, số active theo peer, TTL/idle và thời gian chưa đăng nhập
+10–180 giây. Rate theo IP từ socket là 5 admission/phút, bảng tối đa 256 peer; worker vẫn kiểm rate account/khách.
+Keepalive không gia hạn idle account. EOF sau redirect chỉ kết thúc login stream; mất TLS, lỗi stream sở hữu,
+expiry/revoke hoặc hủy task kết thúc toàn roster, giữ cleanup theo đúng token. Listener dừng và join các task trước
+khi worker DB dừng. Buffer của companion và credential được zeroize; event chỉ ghi loại thao tác và ID đã xác thực.
+
+Test TLS thật với SQLite kiểm hai account, request kênh từ TLS connection khác bị từ chối, revoke, frame chậm/hỏng,
+lifetime chưa đăng nhập, pin chứng thư sai, giới hạn peer và đóng socket companion. Native Windows ko949x đã đi
+qua companion Linux khởi động trước game, nhận hai hồ sơ DB và chuyển kênh đúng ID 3/4; cleanup thu hồi cả hai.
+Lượt này dùng namespace không route ngoài; chưa kiểm Internet hoặc binary companion Windows. Request sau kênh
+chưa nối sảnh/phòng/trận nên đóng transport. Gói launcher và vòng phòng/trận còn là các phần kế tiếp.
+
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
 
