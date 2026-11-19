@@ -1,0 +1,111 @@
+{
+  "id": "CP346",
+  "previous": "CP345",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T11:45:13.125291+00:00",
+  "context_commit": "06a391d94cabb1919416b67942d99992d1226286",
+  "owner": "Codex",
+  "reviewer": "Claude",
+  "question": "Luồng đăng nhập trong game qua TLS sở hữu phòng, kết quả và reset qua hai ván ở mức nào?",
+  "scope": "Phần 4 M8: ghi kết quả tự động cho hai client 1P và điểm dừng Windows 2P; không đóng nghiệm thu.",
+  "artifacts": [
+    {
+      "sha256": "a8a6f6a78c5c192683b7651291b5c42fb8b0a0db9bcee41f79d84d181a084880"
+    }
+  ],
+  "locators": [
+    "local/research/codex/m8-room-tls-rounds-r1",
+    "local/research/codex/m8-room-windows-loading-r3"
+  ],
+  "findings": [
+    {
+      "summary": "Hai client kiểm thử 1P chơi hai ván qua TLS/UDP và lưu đúng tài khoản trong SQLite; Windows 2P hiển thị hai hồ sơ DB trong phòng nhưng đối chứng Start thoát trước 99.",
+      "source": "kr_runtime",
+      "status": "candidate",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-db-publication",
+      "evidence": [
+        "LOCAL346-0001"
+      ],
+      "limits": "Windows dùng client ko949x và companion Linux trong VM cô lập. Đối chứng sửa team/readiness và chỉ xuất 582/121; không xác nhận gameplay hoặc layout 99 cho 2P."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt, Clippy, test workspace sau merge; ca riêng chặn Start 2P, quay sảnh và thu hồi roster. Hai ván 1P kiểm gói bom/cổng UDP cũ và kết quả đúng DB. Windows gửi 104, nhận 582/121, chưa gửi 99.",
+      "result": "observed",
+      "evidence": [
+        "LOCAL346-0001"
+      ],
+      "limits": "WER ghi C000001D tại RVA 1E60DF0 (.repair, slot 16EA060), rồi C0000005 tại RVA A299FB. Đã dừng VM, xóa overlay/seed, dump sau trích và binary dựng lại được."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Sảnh/phòng dùng roster DB của TLS; chạy hai ván 1P qua relay trong test, chặn Start của transport chung chưa đo."
+    ],
+    "corrected": [],
+    "superseded": []
+  },
+  "blockers": [
+    "Cần director chọn bản client Windows có import tương thích để đo gói 2P báo tải xong, sau đó mới nối và thử hai ván thật."
+  ],
+  "next_steps": [],
+  "review": {
+    "status": "pending",
+    "as_of_utc": "2026-11-19T11:45:13.125291+00:00",
+    "reference": "docs/PLAN.md#dashboard",
+    "scope": "Director quyết định bước runtime tiếp; chưa push, mở PR hoặc duyệt phần 4."
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Mốc hiện hành và giới hạn."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Cập nhật dòng phần 4 trong Bảng điều hành."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Chỉ mục không đổi; contract tại auth-session."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Giữ blocker trong checkpoint này."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Phòng, ngân sách phiên và giới hạn native."
+    },
+    {
+      "path": "docs/evidence/checkpoints/records/CP346.json",
+      "state": "updated",
+      "reason": "Ghi kết quả và bằng chứng giới hạn."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LOCAL346-0001",
+      "kind": "local",
+      "path": "local/research/codex/m8-room-tls-rounds-r1/summary.json",
+      "bytes": 9765,
+      "sha256": "424e365cd14eb5cdae49d2eef113a5c62f56f44d7ad388ef0009c621cb566434"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/m8-room-tls-rounds-r1",
+      "path": "local/evidence-manifests/27a547a17b1a35f1d14fde2a3001dbbb9f44af980cc5f02f521d7e8c026ab367.jsonl",
+      "sha256": "27a547a17b1a35f1d14fde2a3001dbbb9f44af980cc5f02f521d7e8c026ab367",
+      "bytes": 491,
+      "count": 2,
+      "files_bytes": 41722
+    }
+  ]
+}

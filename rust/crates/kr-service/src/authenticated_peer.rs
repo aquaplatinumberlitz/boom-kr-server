@@ -1,6 +1,6 @@
 //! Company companion endpoint. Native packets never carry these capabilities
 //! or route identifiers. Room owner revalidates account/member state per pump.
-use crate::account_bridge::Bridge;
+use crate::account_bridge::{Bridge, RelayAuthority};
 use kr_tunnel::{
     Identity, Link, Secret, control,
     router::{Assignment, Limits, Member, Owner, Router, Scope},
@@ -78,6 +78,7 @@ fn digest(bytes: &[u8; 32]) -> [u8; 32] {
 struct Pending {
     owner: Owner,
     until: Instant,
+    local: Option<RelayAuthority>,
 }
 struct Peer {
     id: u64,
@@ -95,6 +96,7 @@ struct Registration {
     owner: Owner,
     id: u64,
     connection: quinn::Connection,
+    local: Option<RelayAuthority>,
 }
 impl Drop for Registration {
     fn drop(&mut self) {
@@ -152,6 +154,28 @@ impl Hub {
             .map_err(|_| io::Error::other("authenticated peer owner unavailable"))
     }
     pub(crate) fn offer(&self, owner: Owner, ttl: Duration) -> io::Result<Offer> {
+        self.offer_owned(owner, ttl, None)
+    }
+    pub(crate) fn offer_local(
+        &self,
+        authority: RelayAuthority,
+        ttl: Duration,
+    ) -> io::Result<Offer> {
+        if !matches!(authority, RelayAuthority::InGame(_)) || !authority.current() {
+            return Err(io::Error::other("in-game companion owner retired"));
+        }
+        let owner = Owner {
+            player: authority.player().wire_id,
+            session: authority.generation(),
+        };
+        self.offer_owned(owner, ttl, Some(authority))
+    }
+    fn offer_owned(
+        &self,
+        owner: Owner,
+        ttl: Duration,
+        local: Option<RelayAuthority>,
+    ) -> io::Result<Offer> {
         if owner.player == 0
             || owner.session == 0
             || ttl == Duration::ZERO
@@ -180,6 +204,7 @@ impl Hub {
             Pending {
                 owner,
                 until: now + ttl,
+                local,
             },
         );
         Ok(Offer {
@@ -191,6 +216,23 @@ impl Hub {
     pub(crate) fn connected(&self, owner: Owner) -> bool {
         self.lock()
             .is_ok_and(|state| state.peers.contains_key(&owner))
+    }
+    pub(crate) fn retire_local(&self, authority: &RelayAuthority) {
+        if !matches!(authority, RelayAuthority::InGame(_)) {
+            return;
+        }
+        let owner = Owner {
+            player: authority.player().wire_id,
+            session: authority.generation(),
+        };
+        if let Ok(mut state) = self.lock() {
+            state.pending.retain(|_, pending| pending.owner != owner);
+            if let Some(peer) = state.peers.remove(&owner) {
+                peer.data
+                    .close(0u8.into(), b"native account transport retired");
+            }
+            state.router.disconnect(owner);
+        }
     }
     /// Bind before the game service publishes readiness; the future is an owned
     /// listener job and shutdown closes/join every peer worker.
@@ -269,13 +311,17 @@ impl Hub {
                     pending
                 };
                 let owner=pending.owner;
-                register_bridge.validate_transport(owner.player,owner.session).await.ok()?;
+                if let Some(local) = &pending.local {
+                    local.check_idle().await.ok()?;
+                } else {
+                    register_bridge.validate_transport(owner.player,owner.session).await.ok()?;
+                }
                 let id={let mut state=register_hub.lock().ok()?;
-                    if Instant::now()>=pending.until||state.peers.contains_key(&owner){return None;}
+                    if Instant::now()>=pending.until||state.peers.contains_key(&owner)||pending.local.as_ref().is_some_and(|owner|!owner.current()){return None;}
                     state.next_peer=state.next_peer.checked_add(1)?;let id=state.next_peer;
                     state.peers.insert(owner,Peer {id,data:register_connection.clone(),control:commands});id
                 };
-                Some(Registration {hub:register_hub,owner,id,connection:register_connection})
+                Some(Registration {hub:register_hub,owner,id,connection:register_connection,local:pending.local})
             })=>value?
         };
         let owner = registration.owner;
@@ -296,7 +342,9 @@ impl Hub {
                 _=stop.changed()=>break Ok(()),
                 result=&mut reader=>{reader_finished=true;break result.map_err(io::Error::other).and_then(|v|v);},
                 _=health.tick()=>{
-                    let valid=tokio::select! {_=stop.changed()=>break Ok(()),value=bridge.validate_transport(owner.player,owner.session)=>value};
+                    let valid=tokio::select! {_=stop.changed()=>break Ok(()),value=async {
+                        if let Some(local) = &registration.local {local.check_idle().await}else{bridge.validate_transport(owner.player,owner.session).await}
+                    }=>value};
                     if valid.is_err(){break Err(io::Error::other("companion account lease ended"));}
                 },
                 command=control_rx.recv()=>{

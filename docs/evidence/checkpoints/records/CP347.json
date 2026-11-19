@@ -1,0 +1,68 @@
+{
+  "id": "CP347",
+  "previous": "CP346",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T13:11:29.332787+00:00",
+  "owner": "Codex",
+  "reviewer": null,
+  "question": "Windows 2P qua TLS có hiện kết quả, về phòng và Start ván kế trên cùng kết nối không?",
+  "scope": "M8 phần 4, bản ko949x đã vá trong Windows VM cô lập; server Rust, không khảo sát mã client.",
+  "context_commit": "a498737e41df9a116f38be0e9f8d97dc3ac9c2e1",
+  "artifacts": [
+    {"sha256": "718f9e4663e49977ba682db7c7553b1c2d6b07e044b8bed0fd8e6f1e891283e0"},
+    {"sha256": "41d8eb9e41efa524394ae96e1f4a471b4fdc75eb082b35093d6c69dbc5e1759e"},
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"}
+  ],
+  "locators": [
+    "local/research/codex/m8-room-windows-final-2p-r2",
+    "local/research/codex/m8-room-windows-final-2p-r3",
+    "local/research/codex/m8-room-windows-final-2p-r5",
+    "local/research/codex/m8-room-windows-final-2p-r6",
+    "local/research/codex/m8-room-windows-final-2p-r7"
+  ],
+  "findings": [
+    {"summary": "Phát lại 29 body của r2 qua TLS nhận đủ chuỗi 127/21 theo freshness hiện hành, kết thúc và Start ván hai.", "source": "design", "status": "design", "method": "test", "canonical": "docs/protocol/auth-session.md#rust-ingame-db-publication", "evidence": ["R2-WIRE", "TESTS"], "limits": "Giữ thứ tự body; key bom lấy từ 153 mới. Test chờ 158, không tái tạo timing Windows. Chưa xác định nguyên nhân kết thúc r2."},
+    {"summary": "r3 nhận 175 rồi gửi 202 dài 42 byte có prefix 0/2; guard 22 byte cũ từ chối trước 180.", "source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/life-results.md#rust-life-results", "evidence": ["R3-WIRE"], "limits": "Hai hàng opaque chỉ ràng theo roster khi đóng kết quả; không cấp hành vi rời trận."},
+    {"summary": "r5 hiện kết quả cho hai hồ sơ và về phòng; r5/r6 mỗi lượt có một 175/180, 202/42 và SQLite một thắng, một thua.", "source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/auth-session.md#rust-ingame-db-publication", "evidence": ["WINDOWS-ROOM", "WINDOWS-UI"], "limits": "Một client 2P, map Factory07, companion Linux; không đo peer từ xa, Wine hoặc Internet thật."}
+  ],
+  "verification": [
+    {"check": "Fmt, Clippy -D warnings và 325 test workspace; replay r2, nhãn lỗi TLS không chứa credential và hai kết quả DB trên cùng transport.", "result": "pass", "evidence": ["TESTS"], "limits": "Test tự động không xác nhận UI Windows."},
+    {"check": "Start ván hai trên Windows sau khi về phòng.", "result": "not_run", "evidence": ["WINDOWS-ROOM", "WINDOWS-UI", "R7-STOP"], "limits": "r5 sai vùng nhận diện; r6 owner đã kết thúc trước tiếp quản; r7 dừng trước khi mở script điều khiển. Không mở thêm VM."},
+    {"check": "Xuất bằng chứng và dọn VM r6/r7.", "result": "pass", "evidence": ["WINDOWS-ROOM", "R7-STOP"], "limits": "r6 xuất capture; r7 có inventory rỗng vì client chưa chạy. Không động tới VM đang dùng cho việc khác."}
+  ],
+  "delta": {"added": ["Phòng dùng slot thuộc roster TLS cho 118/127 và gửi một cặp 175/180 cho mỗi transport.", "Nhận 202 hai hàng sau kết quả; sự kiện kết thúc TLS ghi nhãn guard cố định và metadata số."], "corrected": ["CP346: chặn Start của transport chung đã được thay bằng kiểm quyền ván và roster. Chưa xác nhận Start ván kế trên Windows."], "superseded": []},
+  "blockers": [
+    "Chưa có lượt Windows chứng minh Start ván hai trên cùng kết nối."
+  ],
+  "next_steps": [],
+  "review": {"status": "waived", "as_of_utc": "2026-11-19T13:11:29.332787+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm, mở PR và để director xử lý tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Đổi mốc hiện hành."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi kết quả và giới hạn ở dòng M8."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục không đổi; hai tài liệu chủ đề giữ contract."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Giới hạn lượt chạy thuộc record; không mở khảo sát client."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển mốc CP346 từ README."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi roster, kết quả và nhãn lỗi TLS."},
+    {"path": "docs/protocol/life-results.md", "state": "updated", "reason": "Ghi 202 theo số thành viên của transport."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm link tới code và contract TLS hiện hành."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại theo catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP347.json", "state": "updated", "reason": "Ghi nguồn và giới hạn của phần 4."}
+  ],
+  "evidence": [
+    {"id": "WINDOWS-ROOM", "kind": "local", "path": "local/research/codex/m8-room-r2-tls-replay-audit/windows-acceptance-summary.json", "bytes": 3419, "sha256": "9797cdee3f299c93134965aef00a3c4c0df999a7b377005dfef6c52eb6300ffd"},
+    {"id": "WINDOWS-UI", "kind": "local", "path": "local/research/codex/m8-room-r2-tls-replay-audit/r5-room-view.json", "bytes": 1139, "sha256": "3acaa824d0f8b9c28313389aa5d24dcc855b8b3294d21f818cc8e02c5ccadd19"},
+    {"id": "R2-WIRE", "kind": "local", "path": "local/research/codex/m8-room-windows-final-2p-r2/guest-export/c2s-60420.bin", "bytes": 3639, "sha256": "3b6298a26e0bdacc4a19b93f93b771236da0683f52cf2dc3db2b127b6cad1e7e"},
+    {"id": "R3-WIRE", "kind": "local", "path": "local/research/codex/m8-room-windows-final-2p-r3/guest-export/c2s-62529.bin", "bytes": 3343, "sha256": "410f6d1503186c46209df9bafdd2809362e3fe641b0f7d700054385e106ae019"},
+    {"id": "R7-STOP", "kind": "local", "path": "local/research/codex/m8-room-windows-final-2p-r7/empty-export-proof.json", "bytes": 208, "sha256": "52c01f5a2d177cd881f80236962bb578e3314dab9e046ef5554831f91c087c5f"},
+    {"id": "TESTS", "kind": "local", "path": "local/research/codex/m8-room-r2-tls-replay-audit/final-workspace-tests.log", "bytes": 41181, "sha256": "7461957aa04027591a9ff0327f82677780fa7d1361dc3c5df723ff2fe216e6d9"},
+    {"id": "CLIPPY", "kind": "local", "path": "local/research/codex/m8-room-r2-tls-replay-audit/final-clippy.log", "bytes": 173, "sha256": "ddf1946d47fc3e579068f53c46b9887b73ee4506725a213cb51c40ec50f8712d"},
+    {"id": "R2-EVENTS", "kind": "local", "path": "local/research/codex/m8-room-windows-final-2p-r2/service/rust-events.jsonl", "bytes": 2007, "sha256": "3dcf42c7cf1d96a2fa1d0ae570d590a0cabc147ee223303796691c440a63c81a"},
+    {"id": "R7-CONTROLLER", "kind": "local", "path": "local/research/codex/m8-room-final-2p-control-r7/controller.log", "bytes": 174, "sha256": "97966ae93ee405ddc59a1ea38f1c9947c3fe0f28c1e03b02e8418ad71e4ee218"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-room-windows-final-2p-r3", "path": "local/evidence-manifests/0aede925167af6496790eee6dc3f09311b756b375390d6890d35bcf0b37d7e57.jsonl", "sha256": "0aede925167af6496790eee6dc3f09311b756b375390d6890d35bcf0b37d7e57", "bytes": 495, "count": 2, "files_bytes": 3873},
+    {"run": "local/research/codex/m8-room-windows-final-2p-r5", "path": "local/evidence-manifests/a01f09d870ab6779c16df7e6bb55228403506b0da5613522cc5c30978930b9a4.jsonl", "sha256": "a01f09d870ab6779c16df7e6bb55228403506b0da5613522cc5c30978930b9a4", "bytes": 1322, "count": 6, "files_bytes": 401758},
+    {"run": "local/research/codex/m8-room-windows-final-2p-r6", "path": "local/evidence-manifests/910eae03830f87162e5937e49d446d135b5bc4d2bdee3f87ec79e76fd04514f9.jsonl", "sha256": "910eae03830f87162e5937e49d446d135b5bc4d2bdee3f87ec79e76fd04514f9", "bytes": 912, "count": 4, "files_bytes": 11214},
+    {"run": "local/research/codex/m8-room-windows-final-2p-r7", "path": "local/evidence-manifests/ae8633b4266b2102b682463e82cc2779a52e5b6936491f9df2310d430e86627d.jsonl", "sha256": "ae8633b4266b2102b682463e82cc2779a52e5b6936491f9df2310d430e86627d", "bytes": 505, "count": 2, "files_bytes": 1536}
+  ]
+}

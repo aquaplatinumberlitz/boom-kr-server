@@ -251,13 +251,16 @@ fn source_and_recipient_revoke_expiry_and_disconnect_fence_queued_chat() {
                         .unwrap();
                 }
                 "source-expiry" => {
-                    rusqlite::Connection::open(c.path.join("accounts.sqlite"))
+                    // Both operations can fall in the same wall-clock second.
+                    // Keep the expired fixture within the session schema.
+                    let changed = rusqlite::Connection::open(c.path.join("accounts.sqlite"))
                         .unwrap()
                         .execute(
-                            "UPDATE sessions SET expires_at=?1 WHERE account_id=?2",
+                            "UPDATE sessions SET issued_at=min(issued_at, ?1-1), expires_at=?1 WHERE account_id=?2",
                             rusqlite::params![now(), c.owners[0].player.account_id],
                         )
                         .unwrap();
+                    assert_eq!(changed, 1);
                 }
                 "source-disconnect" => {
                     c.owners.remove(0);

@@ -17,6 +17,7 @@ struct Lease {
     scope: Scope,
     participants: Vec<Participant>,
     active: bool,
+    local_only: bool,
 }
 pub(crate) struct Owner {
     hub: Arc<Hub>,
@@ -70,14 +71,21 @@ impl Owner {
             room_generation: self.room.generation,
             round,
         };
-        self.hub.prepare(
-            scope,
-            &participants.iter().map(|p| p.member).collect::<Vec<_>>(),
-        )?;
+        let local_only = participants.len() > 1
+            && participants
+                .iter()
+                .all(|p| p.key.connection == participants[0].key.connection);
+        if !local_only {
+            self.hub.prepare(
+                scope,
+                &participants.iter().map(|p| p.member).collect::<Vec<_>>(),
+            )?;
+        }
         self.lease = Some(Lease {
             scope,
             participants,
             active: false,
+            local_only,
         });
         Ok(())
     }
@@ -91,7 +99,7 @@ impl Owner {
                 .ok_or_else(invalid)?;
             // Committed account denial invalidates its bridge generation even
             // before TCP teardown removes membership. It cannot keep a UDP route.
-            if p.authority.current() && hub.connected(p.member.owner) {
+            if p.authority.current() && (lease.local_only || hub.connected(p.member.owner)) {
                 members.push(p.member);
             }
         }
@@ -112,6 +120,12 @@ impl Owner {
             return Ok(());
         }
         let current = Self::current(&self.hub, lease, model)?;
+        if lease.local_only {
+            if current.len() != lease.participants.len() {
+                return Err(invalid());
+            }
+            return Ok(());
+        }
         if matches!(model.phase, Phase::Loading { .. }) {
             if current.len() != lease.participants.len() {
                 self.invalidate();
@@ -132,7 +146,7 @@ impl Owner {
     pub(crate) fn ready(&self) -> bool {
         self.lease
             .as_ref()
-            .is_some_and(|lease| self.hub.ready(lease.scope))
+            .is_some_and(|lease| lease.local_only || self.hub.ready(lease.scope))
     }
     pub(crate) fn decorate(
         &self,

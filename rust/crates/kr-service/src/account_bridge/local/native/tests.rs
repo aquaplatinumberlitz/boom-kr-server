@@ -12,6 +12,10 @@ fn hex(s: &str) -> Vec<u8> {
 }
 fn templates() -> Templates {
     Templates {
+        lobby: Some(LobbyTemplates {
+            ready: vec![0x5a],
+            channel_list: vec![0x5a],
+        }),
         account: Arc::new(
             AccountTemplate::parse(
                 &hex(fixtures::AUTH),
@@ -137,6 +141,48 @@ fn one_or_two_db_principals_follow_native_reply_sequence_into_the_same_owned_cha
                         .all(|h| h.current() && h.connection() == 2)
                 );
                 let handles = driver.authorities().to_vec();
+                let request = input(67, write_uint(0, Width::U16).unwrap());
+                assert!(request.lobby_ready());
+                assert!(!input(67, vec![0; 2]).lobby_ready());
+                assert!(!input(67, write_uint(1, Width::U16).unwrap()).lobby_ready());
+                driver
+                    .enter_lobby(&mut channel_lane, &mut out, &[(91, vec![0x5a])])
+                    .await
+                    .unwrap();
+                for opcode in [241, 91, 14] {
+                    assert_eq!(
+                        receive(&mut remote, &mut fresh_sequence).await.opcode,
+                        opcode
+                    );
+                }
+                let own = receive(&mut remote, &mut fresh_sequence).await;
+                assert_eq!(own.opcode, 291);
+                let names: Vec<_> = rows
+                    .iter()
+                    .map(|(player, _)| {
+                        kr_wire::kr00967::text949x::encode_name(&player.display_name).unwrap()
+                    })
+                    .collect();
+                let refs: Vec<_> = names.iter().map(Vec::as_slice).collect();
+                assert_eq!(
+                    own.payload.as_slice(),
+                    kr_wire::kr00967::local_own291(&refs).unwrap()
+                );
+                driver
+                    .packet(
+                        &mut channel_lane,
+                        input(87, write_uint(0, Width::U16).unwrap()),
+                        &mut out,
+                        60,
+                        None,
+                    )
+                    .await
+                    .unwrap();
+                driver
+                    .lobby_reply(&mut channel_lane, &mut out, 238, &[0x5a])
+                    .await
+                    .unwrap();
+                assert_eq!(receive(&mut remote, &mut fresh_sequence).await.opcode, 238);
                 assert!(driver.disconnected(&channel_lane).await.unwrap());
                 assert!(handles.iter().all(|h| !h.current()));
                 assert_eq!(active(&temp), 0);
@@ -268,5 +314,32 @@ fn delivery_failure_retires_the_roster_and_crc_failure_never_advances_secret_rea
         assert_eq!(read(&mut peer, &mut sequence).await.unwrap().opcode, 1);
         assert_eq!(sequence, 43);
         sender.await.unwrap();
+    });
+}
+
+#[test]
+fn idle_socket_uses_owner_lifetime_but_partial_frame_keeps_its_read_deadline() {
+    rt().block_on(async {
+        let frame = kr_wire::encode(&[0; HEADER_LEN], 67, &[0x5a, 0x5a], 40).unwrap();
+        let (mut writer, mut peer) = tokio::io::duplex(1024);
+        let sender = tokio::spawn(async move {
+            tokio::time::sleep(Duration::from_millis(2200)).await;
+            writer.write_all(&frame).await.unwrap();
+        });
+        let mut sequence = 40;
+        assert_eq!(read(&mut peer, &mut sequence).await.unwrap().opcode, 67);
+        assert_eq!(sequence, 43);
+        sender.await.unwrap();
+
+        let (mut writer, mut peer) = tokio::io::duplex(1024);
+        writer.write_all(&[0]).await.unwrap();
+        let mut sequence = 40;
+        let failure = tokio::time::timeout(Duration::from_secs(3), read(&mut peer, &mut sequence))
+            .await
+            .unwrap()
+            .err()
+            .unwrap();
+        assert_eq!(failure.to_string(), "native read deadline");
+        assert_eq!(sequence, 40);
     });
 }

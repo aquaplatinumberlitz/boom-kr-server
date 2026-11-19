@@ -20,6 +20,18 @@ struct Active {
     stop: watch::Sender<bool>,
     task: JoinHandle<io::Result<crate::proxy::Stats>>,
 }
+struct AbortReader(tokio::task::AbortHandle);
+impl Drop for AbortReader {
+    fn drop(&mut self) {
+        self.0.abort();
+    }
+}
+impl Drop for Active {
+    fn drop(&mut self) {
+        self.stop.send_replace(true);
+        self.task.abort();
+    }
+}
 impl Active {
     async fn finish(mut self) -> io::Result<()> {
         let _ = self.stop.send(true);
@@ -27,7 +39,7 @@ impl Active {
             Ok(result) => result.map_err(io::Error::other)?.map(|_| ()),
             Err(_) => {
                 self.task.abort();
-                let _ = self.task.await;
+                let _ = (&mut self.task).await;
                 Err(io::Error::other("companion snapshot stop deadline"))
             }
         }
@@ -54,6 +66,7 @@ pub async fn run(
             tokio::select! {_=reader_stop.changed()=>return Ok(()),result=commands.send(command)=>if result.is_err(){return Ok(())}}
         }
     });
+    let _reader_guard = AbortReader(reader.abort_handle());
     let mut active: Option<Active> = None;
     let mut retired: Vec<Quarantine> = Vec::new();
     let mut used = 0;

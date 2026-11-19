@@ -287,11 +287,23 @@ Keepalive không gia hạn idle account. EOF sau redirect chỉ kết thúc logi
 expiry/revoke hoặc hủy task kết thúc toàn roster, giữ cleanup theo đúng token. Listener dừng và join các task trước
 khi worker DB dừng. Buffer của companion và credential được zeroize; event chỉ ghi loại thao tác và ID đã xác thực.
 
-Test TLS thật với SQLite kiểm hai account, request kênh từ TLS connection khác bị từ chối, revoke, frame chậm/hỏng,
-lifetime chưa đăng nhập, pin chứng thư sai, giới hạn peer và đóng socket companion. Native Windows ko949x đã đi
-qua companion Linux khởi động trước game, nhận hai hồ sơ DB và chuyển kênh đúng ID 3/4; cleanup thu hồi cả hai.
-Lượt này dùng namespace không route ngoài; chưa kiểm Internet hoặc binary companion Windows. Request sau kênh
-chưa nối sảnh/phòng/trận nên đóng transport. Gói launcher và vòng phòng/trận còn là các phần kế tiếp.
+Đường TLS dùng roster DB hiện hành để chiếu hồ sơ sảnh và vào phòng; không cấp quyền mới theo ID trong gói. Hai
+client 1P chạy hai ván trong test tự động qua TLS, relay UDP xác thực và SQLite: kết quả đúng tài khoản, khóa TCP
+và cổng UDP cũ không chuyển dữ liệu vào ván mới. Trước khi vào sảnh, giữ hạn mức input 32 KiB như cũ; lane sở
+hữu đã vào sảnh dùng ngân sách riêng theo giây. Transport mất quyền thì dọn cả roster và membership cũ.
+
+Windows ko949x qua companion Linux đã hiển thị hai hồ sơ DB trong phòng chờ. Recipe bản sao sửa trap
+ghi tại [CP346](../evidence/checkpoints/records/CP346.json) cho client gửi 99 với 24 byte và một cổng UDP
+chung. Hai hàng của 99 có cùng giá trị u16; chúng không cấp identity hoặc slot. Bản tin 153 đánh dấu cả hai
+slot là cục bộ và đặt endpoint của chúng bằng 0.
+
+Đường phục vụ theo [CP347](../evidence/checkpoints/records/CP347.json) gắn owner của 118 và slot của 127
+với slot phòng thuộc roster đã xác thực của transport. Slot ngoài roster bị từ chối. Report 127/21 vẫn
+theo cursor và ngân sách hiện hành; gói lặp không tạo thêm lần clear đã chuyển. Mỗi transport nhận một
+cặp 175/180; refresh giữ cả hai thành viên và journal ghi kết quả theo từng hồ sơ. Event
+`native_tls_owner_ended` ghi nhãn guard cố định cùng opcode và subtype khi có gói liên quan; không ghi
+nội dung gói hoặc chuỗi lỗi gốc. Test phát lại đi qua hai ván; bằng chứng Windows giới hạn ở phòng
+Factory07 trên bản sao đã vá và mạng cô lập. Chưa kiểm roster 2P cùng peer từ xa, Wine hoặc Internet thật.
 
 Review chủ dự án: Initial chưa xác minh địa chỉ chỉ nhận Retry, chưa lấy permit hay tính rate IP. Bước launcher phải
 cho companion kết nối lại (hoặc kết nối khi game mở socket đầu) để chờ màn đăng nhập quá `prelogin_seconds` vẫn

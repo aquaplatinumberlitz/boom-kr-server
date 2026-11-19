@@ -11,7 +11,7 @@ mod player;
 mod room;
 mod room_selection;
 pub mod text949x;
-pub use account::{AccountPackets, AccountTemplate, own291, with_identity_string};
+pub use account::{AccountPackets, AccountTemplate, local_own291, own291, with_identity_string};
 pub use battle::*;
 pub use bomb_motion::{BombAction119, BombMotion162, rebind158};
 pub use chat::{MAX_ROOM_CHAT_BYTES, MAX_ROOM_CHAT_REPLY_BYTES, room_chat18, room_chat28_literal};

@@ -22,6 +22,7 @@ enum Phase {
 }
 
 struct State {
+    generation: u64,
     phase: Phase,
     grants: Vec<Grant>,
     echoes: Vec<u32>,
@@ -65,6 +66,15 @@ pub struct LocalAuthority {
 }
 
 impl LocalAuthority {
+    pub(crate) fn generation(&self) -> u64 {
+        self.shared
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .generation
+    }
+    pub(crate) fn relay_authority(&self) -> super::RelayAuthority {
+        super::RelayAuthority::InGame(self.clone())
+    }
     pub fn player(&self) -> &Player {
         &self.player
     }
@@ -128,6 +138,42 @@ impl LocalAuthority {
         }
         self.inspect().await
     }
+    pub(crate) async fn character_preference(
+        &self,
+        selection: Option<(u16, i64)>,
+    ) -> Result<crate::accounts::CharacterPreference> {
+        use crate::account_worker::{PersistenceJob, PersistenceResult};
+        self.inspect().await?;
+        let token = {
+            let state = self.shared.lock().map_err(|_| Error::Unavailable)?;
+            copy_token(&state.grants.get(self.slot).ok_or(Error::Stale)?.token)?
+        };
+        let player = self.player.player_id;
+        let job = match selection {
+            Some((character, expected_revision)) => PersistenceJob::SelectCharacter {
+                token,
+                player,
+                character,
+                expected_revision,
+            },
+            None => PersistenceJob::Character { token, player },
+        };
+        let result = self
+            .client
+            .try_persist(job)
+            .map_err(Error::Backend)?
+            .wait()
+            .await
+            .map_err(Error::Backend)?;
+        self.inspect().await?;
+        let PersistenceResult::Character(preference) = result else {
+            return Err(Error::Unavailable);
+        };
+        if preference.player_id != player {
+            return Err(Error::Denied);
+        }
+        Ok(preference)
+    }
 }
 
 async fn inspect_roster(client: &Client, shared: &Shared) -> Result<()> {
@@ -189,6 +235,7 @@ impl LocalSession {
         Ok(Self {
             client,
             shared: Arc::new(Mutex::new(State {
+                generation: super::fresh_generation()?,
                 phase: Phase::Empty,
                 grants: Vec::new(),
                 echoes: Vec::new(),
@@ -394,17 +441,23 @@ impl LocalSession {
     /// Login EOF after a delivered redirect is expected; channel EOF and
     /// pre-redirect login EOF retire both principals. Foreign stream events
     /// cannot cancel this transport's roster.
-    pub async fn disconnected(&mut self, connection: u64) -> Result<bool> {
+    pub(crate) fn retire_disconnected(&mut self, connection: u64) -> Result<bool> {
         let owned = {
             let state = self.shared.lock().map_err(|_| Error::Unavailable)?;
             state.channel == Some(connection)
                 || (state.login == connection
                     && matches!(state.phase, Phase::CheckingLogin | Phase::Login))
         };
-        if !owned {
+        if owned {
+            retire(&self.shared);
+        }
+        Ok(owned)
+    }
+
+    pub async fn disconnected(&mut self, connection: u64) -> Result<bool> {
+        if !self.retire_disconnected(connection)? {
             return Ok(false);
         }
-        retire(&self.shared);
         let grants =
             std::mem::take(&mut self.shared.lock().map_err(|_| Error::Unavailable)?.grants);
         end_grants(self.client.clone(), grants).await?;
@@ -446,4 +499,4 @@ impl Drop for LocalSession {
 }
 
 #[cfg(test)]
-mod tests;
+pub(crate) mod tests;

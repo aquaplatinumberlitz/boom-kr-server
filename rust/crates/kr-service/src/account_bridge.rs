@@ -12,7 +12,10 @@ use sha2::{Digest, Sha256};
 use std::{
     collections::{HashMap, HashSet},
     net::Ipv4Addr,
-    sync::{Arc, Mutex, MutexGuard},
+    sync::{
+        Arc, Mutex, MutexGuard,
+        atomic::{AtomicU64, Ordering},
+    },
     time::{Duration, Instant},
 };
 use zeroize::Zeroizing;
@@ -54,6 +57,17 @@ fn copy_token(token: &Token) -> Result<Token> {
 fn entropy(out: &mut [u8]) -> Result<()> {
     getrandom::fill(out).map_err(|_| Error::Entropy)
 }
+// Launcher and in-game transports share a generation namespace. A retired
+// launcher route must not collide with a later in-game login for the same DB
+// player while the relay service itself is still running.
+static NEXT_GENERATION: AtomicU64 = AtomicU64::new(1);
+fn fresh_generation() -> Result<u64> {
+    NEXT_GENERATION
+        .try_update(Ordering::AcqRel, Ordering::Acquire, |value| {
+            value.checked_add(1)
+        })
+        .map_err(|_| Error::Exhausted)
+}
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Phase {
     Issuing,
@@ -78,7 +92,6 @@ struct Entry {
 }
 struct Registry {
     entries: HashMap<i64, Entry>,
-    generation: u64,
     seen_echo: HashSet<u32>,
     capacity: usize,
 }
@@ -180,14 +193,14 @@ pub struct Channel {
 /// Token-free handle to an existing bound channel; never issues a session.
 /// Relay must inspect all participants, then recheck their generations before I/O.
 #[derive(Clone)]
-pub(crate) struct RelayAuthority {
+pub(crate) struct LauncherAuthority {
     shared: Shared,
     player: Player,
     generation: u64,
     connection: u64,
     client: Client,
 }
-impl RelayAuthority {
+impl LauncherAuthority {
     pub(crate) fn player(&self) -> &Player {
         &self.player
     }
@@ -246,15 +259,54 @@ impl RelayAuthority {
         Ok(())
     }
 }
+/// Room/relay consumers keep checking the original account transport owner.
+/// Converting the handle creates no new grant, registry entry or session.
+#[derive(Clone)]
+pub(crate) enum RelayAuthority {
+    Launcher(LauncherAuthority),
+    InGame(local::LocalAuthority),
+}
+impl RelayAuthority {
+    pub(crate) fn player(&self) -> &Player {
+        match self {
+            Self::Launcher(owner) => owner.player(),
+            Self::InGame(owner) => owner.player(),
+        }
+    }
+    pub(crate) fn generation(&self) -> u64 {
+        match self {
+            Self::Launcher(owner) => owner.generation(),
+            Self::InGame(owner) => owner.generation(),
+        }
+    }
+    pub(crate) fn owns(&self, identity: u32, connection: u64) -> bool {
+        match self {
+            Self::Launcher(owner) => owner.owns(identity, connection),
+            Self::InGame(owner) => owner.owns(identity, connection),
+        }
+    }
+    pub(crate) fn current(&self) -> bool {
+        match self {
+            Self::Launcher(owner) => owner.current(),
+            Self::InGame(owner) => owner.current(),
+        }
+    }
+    pub(crate) async fn check_idle(&self) -> Result<()> {
+        match self {
+            Self::Launcher(owner) => owner.check_idle().await,
+            Self::InGame(owner) => owner.inspect().await,
+        }
+    }
+}
 impl Channel {
     pub(crate) fn relay_authority(&self) -> RelayAuthority {
-        RelayAuthority {
+        RelayAuthority::Launcher(LauncherAuthority {
             shared: self.guard.shared.clone(),
             player: self.player.clone(),
             generation: self.guard.generation,
             connection: self.connection,
             client: self.client.clone(),
-        }
+        })
     }
     /// Load a DB preference only for this current frontend/channel generation.
     /// This is an internal seam, not a KR profile field or character entitlement.
@@ -448,7 +500,6 @@ impl Bridge {
             live: None,
             shared: Arc::new(Mutex::new(Registry {
                 entries: HashMap::new(),
-                generation: 0,
                 seen_echo: HashSet::new(),
                 capacity,
             })),
@@ -497,8 +548,7 @@ impl Bridge {
             if r.entries.len() >= r.capacity {
                 return Err(Error::Capacity);
             }
-            r.generation = r.generation.checked_add(1).ok_or(Error::Exhausted)?;
-            let generation = r.generation;
+            let generation = fresh_generation()?;
             r.entries.insert(
                 player,
                 Entry {
@@ -718,4 +768,4 @@ impl Bridge {
 }
 
 #[cfg(test)]
-mod tests;
+pub(crate) mod tests;

@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP345: TLS trước đăng nhập đã nối worker DB, có giới hạn và test âm; native Windows qua companion Linux chuyển kênh đúng hai account DB, cleanup đủ.** [Phạm vi để rà mã](docs/protocol/auth-session.md#rust-ingame-db-publication); tiếp phòng → trận → ván mới, rồi launcher. Chưa nghiệm thu Internet hoặc companion Windows; M8 còn mở.
+**CP347: Windows 2P qua TLS đã hiện kết quả và trở về phòng; Start ván kế đạt trong test tự động.** [Giới hạn và bằng chứng](docs/evidence/checkpoints/records/CP347.json). M8 còn mở.
 
 ## Bắt đầu
 

@@ -12,21 +12,37 @@ fn supported_player_body(body: &[u8]) -> bool {
 /// Actual KR room UI producers:92/u8+u16 and97/u8. One local player
 /// only; this does not establish multi-local-player or entitlement support.
 pub fn character92(body: &[u8]) -> io::Result<u16> {
-    if body.len() != 3 || uint(&body[..1], Width::U8)? != 0 {
+    local_character92(body, 1).map(|(_, character)| character)
+}
+/// Current KR D61990 writes its local ordinal as u8 and character as u16.
+/// Multi-local serving remains separately gated until native room acceptance.
+pub fn local_character92(body: &[u8], count: usize) -> io::Result<(usize, u16)> {
+    if !(1..=2).contains(&count) || body.len() != 3 {
         return Err(io::Error::other("unsupported character92 envelope"));
     }
-    Ok(uint(&body[1..], Width::U16)? as u16)
+    let local = uint(&body[..1], Width::U8)? as usize;
+    if local >= count {
+        return Err(io::Error::other("unsupported character92 local player"));
+    }
+    Ok((local, uint(&body[1..], Width::U16)? as u16))
 }
 
 pub fn team97(body: &[u8]) -> io::Result<u8> {
-    if body.len() != 1 {
+    local_team97(body, 1).map(|(_, team)| team)
+}
+/// D61890 calls678F10(local, team): high/low four bits, then typed u8.
+/// This retains the existing supported team choices, not all possible modes.
+pub fn local_team97(body: &[u8], count: usize) -> io::Result<(usize, u8)> {
+    if !(1..=2).contains(&count) || body.len() != 1 {
         return Err(io::Error::other("unsupported team97 envelope"));
     }
-    let team = uint(body, Width::U8)? as u8;
-    if !matches!(team, 0 | 3) {
+    let packed = uint(body, Width::U8)? as u8;
+    let local = usize::from(packed >> 4);
+    let team = packed & 15;
+    if local >= count || !matches!(team, 0 | 3) {
         return Err(io::Error::other("unsupported team97/local player"));
     }
-    Ok(team)
+    Ok((local, team))
 }
 
 /// Native DC6700 reads character from bits16..28 of the slot state.
@@ -332,6 +348,20 @@ pub fn start121_teams(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
     Ok(out)
 }
 
+/// Read the UDP port shared by the native process. One local actor uses
+/// the 23-byte shape; two actors use 24 bytes. The per-actor words do not
+/// identify a DB owner or room slot (both were zero in the 2P capture).
+pub fn loading99_port(body: &[u8], local_count: usize) -> io::Result<u16> {
+    if !matches!((local_count, body.len()), (1, 23) | (2, 24)) {
+        return Err(io::Error::other("unsupported loading99 size"));
+    }
+    let port = uint(&body[8..10], Width::U16)? as u16;
+    if port == 0 {
+        return Err(io::Error::other("loading UDP port zero"));
+    }
+    Ok(port)
+}
+
 pub fn peer153(
     template: &[u8],
     key: u32,
@@ -378,16 +408,35 @@ pub fn peer153_players(
     recipient: u8,
     players: &[(u8, u32, u16)],
 ) -> io::Result<Vec<u8>> {
+    peer153_for_local_slots(template, key, &[recipient], players)
+}
+
+/// Keep each local actor present with zero endpoints so the client retains
+/// both actors. A Windows 2P diagnostic with two occupied local rows and no
+/// remote peers reached the running game clock. Mixed routing is separate.
+pub fn peer153_for_local_slots(
+    template: &[u8],
+    key: u32,
+    local_slots: &[u8],
+    players: &[(u8, u32, u16)],
+) -> io::Result<Vec<u8>> {
+    let local_pair = match local_slots {
+        [_] => false,
+        [a, b] if a != b => true,
+        _ => return Err(io::Error::other("invalid local peer slots")),
+    };
     if template.len() < 35 || !(2..=8).contains(&players.len()) {
         return Err(io::Error::other("unsupported player peer roster"));
     }
     let mut slots = std::collections::BTreeMap::new();
     for &(slot, ip, port) in players {
-        if slot >= 8 || ip == 0 || port == 0 || slots.insert(slot, (ip, port)).is_some() {
+        let valid_endpoint = (ip != 0 && port != 0)
+            || (local_pair && local_slots.contains(&slot) && ip == 0 && port == 0);
+        if slot >= 8 || !valid_endpoint || slots.insert(slot, (ip, port)).is_some() {
             return Err(io::Error::other("invalid player peer slot/endpoint"));
         }
     }
-    if !slots.contains_key(&recipient) {
+    if local_slots.iter().any(|slot| !slots.contains_key(slot)) {
         return Err(io::Error::other("peer recipient outside roster"));
     }
     let mut out = template[..35].to_vec();
@@ -395,7 +444,7 @@ pub fn peer153_players(
     for slot in 0..26 {
         out.extend(put(u64::from(slots.contains_key(&slot)), Width::U8)?);
         if let Some(&(ip, port)) = slots.get(&slot) {
-            let (ip, port) = if slot == recipient {
+            let (ip, port) = if local_slots.contains(&slot) {
                 (0, 0)
             } else {
                 (ip, port)
@@ -607,6 +656,29 @@ pub fn listing91_parse_rows(body: &[u8]) -> io::Result<Vec<ListingRow>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn local_choice_selectors_preserve_single_player_and_reject_foreign_ordinals() {
+        // Raw bytes follow the current static D61890/D61990 writers and
+        // 678F10 packer. Second-local vectors are not native runtime evidence.
+        for (raw, local, team) in [(0x5a, 0, 0), (0x59, 0, 3), (0x4a, 1, 0), (0x49, 1, 3)] {
+            assert_eq!(local_team97(&[raw], 2).unwrap(), (local, team));
+            if local == 0 {
+                assert_eq!(team97(&[raw]).unwrap(), team);
+            } else {
+                assert!(team97(&[raw]).is_err());
+            }
+        }
+        assert_eq!(local_character92(&[0x5a, 0xa5, 0x68], 2).unwrap(), (0, 1));
+        assert_eq!(local_character92(&[0x5b, 0xa5, 0x68], 2).unwrap(), (1, 1));
+        assert!(character92(&[0x5b, 0xa5, 0x68]).is_err());
+        for count in [0, 1, 2, 3] {
+            assert!(local_team97(&[0x79], count).is_err()); // foreign local ordinal2
+            assert!(local_character92(&[0x58, 0xa5, 0x68], count).is_err());
+        }
+        assert!(local_team97(&[0x48], 2).is_err()); // unsupported team2
+        assert!(local_team97(&[0x49, 0], 2).is_err());
+        assert!(local_character92(&[0x5b, 0xa5], 2).is_err());
+    }
     #[test]
     fn native_six_player_start_retains_map_and_rejects_inconsistent_count() {
         // CP283 native run eca76a98, not an encoder-generated oracle.

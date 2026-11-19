@@ -6170,6 +6170,8 @@
             "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
             "rust/crates/kr-service/src/account_bridge/ingame_wire.rs",
             "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+            "docs/protocol/auth-session.md#rust-ingame-db-publication",
+            "rust/crates/kr-service/src/ingame_tls.rs",
             "rust/crates/kr-wire/src/kr00967/account.rs",
             "tools/native_login_profile_control.py",
             "tools/test_native_login_profile_control.py"

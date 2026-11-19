@@ -345,14 +345,59 @@ impl Room {
         connection: u64,
         create: bool,
     ) -> io::Result<Membership> {
+        self.enter_member(identity, connection, create, false)
+    }
+    /// Atomic admission of the already authenticated principals on one native
+    /// transport. Their account IDs and room slots remain independent. Ordinary
+    /// single-principal admission still rejects borrowing an occupied stream.
+    pub fn enter_local_roster(
+        &mut self,
+        identities: &[PlayerId],
+        connection: u64,
+        create: bool,
+    ) -> io::Result<Vec<Membership>> {
+        if !(1..=2).contains(&identities.len())
+            || connection == 0
+            || identities
+                .iter()
+                .enumerate()
+                .any(|(i, id)| identities[..i].contains(id))
+            || self
+                .members
+                .values()
+                .any(|member| member.key.connection == connection)
+        {
+            return Err(io::Error::other("invalid local room roster"));
+        }
+        let mut next = self.clone();
+        let mut keys = Vec::with_capacity(identities.len());
+        for (index, identity) in identities.iter().enumerate() {
+            keys.push(next.enter_member(
+                *identity,
+                connection,
+                create && index == 0,
+                index != 0,
+            )?);
+        }
+        *self = next;
+        Ok(keys)
+    }
+    fn enter_member(
+        &mut self,
+        identity: PlayerId,
+        connection: u64,
+        create: bool,
+        shared_transport: bool,
+    ) -> io::Result<Membership> {
         if self.sealed_abort
             || identity == 0
             || self.phase != Phase::Idle
             || self.members.contains_key(&identity)
-            || self
-                .members
-                .values()
-                .any(|m| m.key.connection == connection)
+            || (!shared_transport
+                && self
+                    .members
+                    .values()
+                    .any(|m| m.key.connection == connection))
         {
             return Err(io::Error::other(
                 "identity/connection already in room or room not idle",
@@ -561,6 +606,16 @@ impl Room {
         Ok(self.members.values().cloned().collect())
     }
     pub fn begin(&mut self, key: Membership) -> io::Result<u64> {
+        self.begin_with_local_host(key, None)
+    }
+    pub(crate) fn begin_with_local_host(
+        &mut self,
+        key: Membership,
+        partner: Option<Membership>,
+    ) -> io::Result<u64> {
+        if partner.is_some_and(|p| p == key || p.connection != key.connection || !self.current(p)) {
+            return Err(io::Error::other("stale local host roster"));
+        }
         if self.sealed_abort
             || !self.current(key)
             || self.host != Some(key.identity)
@@ -569,7 +624,7 @@ impl Room {
             || !self
                 .members
                 .values()
-                .all(|m| m.setup && (m.key.identity == key.identity || m.ready))
+                .all(|m| m.setup && (m.key == key || Some(m.key) == partner || m.ready))
         {
             return Err(io::Error::other(
                 "Start requires current host and all configured loaded-room ready members",
@@ -1069,6 +1124,47 @@ mod tests {
         assert!(room.ack(creator, round).is_err());
         assert!(!room.ack(replacement, round).unwrap());
         assert!(room.ack(guest, round).unwrap());
+    }
+    #[test]
+    fn local_roster_admission_is_atomic_and_never_aliases_accounts_or_streams() {
+        let mut room = Room::with_allocation(4, SlotAllocation::FirstVacant).unwrap();
+        let first = room.enter_local_roster(&[70000, 42], 11, true).unwrap();
+        assert_eq!(room.host, Some(70000));
+        assert_eq!(
+            first
+                .iter()
+                .map(|key| (key.identity, key.connection))
+                .collect::<Vec<_>>(),
+            vec![(70000, 11), (42, 11)]
+        );
+        assert_ne!(first[0].visit, first[1].visit);
+        assert_eq!((room.members[&70000].slot, room.members[&42].slot), (0, 1));
+        let visit = room.visit;
+        assert!(room.enter(99, 11, false).is_err());
+        for roster in [&[][..], &[99, 99], &[99, 42], &[99, 0], &[99, 100, 101]] {
+            assert!(room.enter_local_roster(roster, 22, false).is_err());
+            assert_eq!(room.visit, visit);
+            assert_eq!(room.members.len(), 2);
+        }
+        assert!(room.enter_local_roster(&[99], 11, false).is_err());
+        assert!(room.enter_local_roster(&[99], 0, false).is_err());
+        let single = room.enter(99, 22, false).unwrap();
+        let visit = room.visit;
+        assert!(room.enter_local_roster(&[100, 101], 33, false).is_err());
+        assert_eq!(room.visit, visit);
+        assert_eq!(room.members.len(), 3);
+        room.leave(single).unwrap();
+        let second = room.enter_local_roster(&[100, 101], 33, false).unwrap();
+        assert_eq!((room.members[&100].slot, room.members[&101].slot), (2, 3));
+        for key in &first {
+            room.leave(*key).unwrap();
+        }
+        let fresh = room.enter_local_roster(&[70000, 42], 44, false).unwrap();
+        for key in first {
+            assert!(!room.current(key));
+            assert!(room.leave(key).is_err());
+        }
+        assert!(fresh.iter().chain(&second).all(|key| room.current(*key)));
     }
     #[test]
     fn legacy_allocation_keeps_identity_slots_and_rejects_out_of_range_atomically() {

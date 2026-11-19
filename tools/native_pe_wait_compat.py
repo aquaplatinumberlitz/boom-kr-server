@@ -100,8 +100,52 @@ def quit_descriptor(pe):
     return address, lookup, slot
 
 
+DWK_BASE = 0x400000
+DWK_INSTALL_SLOT = 0x16EA060
+DWK_INSTALL_TRAP = 0x2260DF0
+DWK_INSTALL_INPUTS = {
+    'a8a6f6a78c5c192683b7651291b5c42fb8b0a0db9bcee41f79d84d181a084880',  # manual login
+    '1c47afe38fdfbb69d5cf1e2687482a3993ba4cf6fc9e341caf27cddef9c0c2e0',  # L1 ko949x
+    'eb441bb15eac488bdb43fe6fecf0309d97f4063a92132212c14869fb22e7da6b',  # M8 ko input
+}
+
+
+def dwk_install_trap_offset(pe):
+    rva = DWK_INSTALL_TRAP - DWK_BASE
+    section = pe.get_section_by_rva(rva)
+    if (pe.FILE_HEADER.Machine != 0x14c or pe.OPTIONAL_HEADER.Magic != 0x10b
+            or pe.OPTIONAL_HEADER.ImageBase != DWK_BASE or section is None
+            or section.Name.rstrip(b'\0') != b'.repair'
+            or pe.get_data(DWK_INSTALL_SLOT - DWK_BASE, 4) != struct.pack('<I', DWK_INSTALL_TRAP)
+            or pe.get_data(rva, 8) != bytes.fromhex('0f0b60a06e01cccc')):
+        raise ValueError('Measured offline keyboard-hook import slot/trap differs')
+    return pe.get_offset_from_rva(rva)
+
+
+def dwk_install_report(offset):
+    return dict(source='design', status='candidate', symbol='DWK.dll!InstallDWK',
+                slot_va=hex(DWK_INSTALL_SLOT), target_va=hex(DWK_INSTALL_TRAP),
+                call_va='0xd803d0', offset=offset, old_bytes='0f', new_bytes='c3',
+                reason='CP346 WER hits the generated trap for an unavailable local keyboard hook at Start.',
+                policy='Offline copy only: caller cleans the stack and ignores the return value; do not load DWK.dll.',
+                limits='No network or game-state changes; native match acceptance requires a separate Windows run.')
+
+
+def patch_dwk_install_only(source, expected_sha256):
+    actual = hashlib.sha256(source).hexdigest()
+    if actual != expected_sha256 or actual not in DWK_INSTALL_INPUTS:
+        raise ValueError('Expected pinned ko949x or manual-login build identity')
+    pe = pefile.PE(data=source, fast_load=True)
+    offset = dwk_install_trap_offset(pe)
+    result = source[:offset] + CLEANUP_REPLACEMENT + source[offset + 1:]
+    return result, dict(schema='kre-m8-offline-dwk-install-v1', language='ko',
+                        source_sha256=actual, result_sha256=hashlib.sha256(result).hexdigest(),
+                        bytes=len(result), unavailable_dwk_install=dwk_install_report(offset))
+
+
 def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore_quit_message=False,
-                guard_empty_content=False, omit_unavailable_exit_cleanup=False, reset_snapshot_exit_list=False):
+                guard_empty_content=False, omit_unavailable_exit_cleanup=False, reset_snapshot_exit_list=False,
+                omit_unavailable_dwk_install=False):
     actual = hashlib.sha256(source).hexdigest()
     if actual != expected_sha256 or actual not in KNOWN:
         raise ValueError('Expected pinned Windows import/bootstrap control identity')
@@ -146,6 +190,7 @@ def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore
                 or pe.get_data(0x2260df8 - 0x400000, 8) != bytes.fromhex('0f0b64a06e01cccc')):
             raise ValueError('Measured unavailable cleanup slot/thunk/trap differ')
         cleanup_offset = pe.get_offset_from_rva(0x2260df8 - 0x400000)
+    dwk_offset = dwk_install_trap_offset(pe) if omit_unavailable_dwk_install else None
     section_header = pe.sections[0].get_file_offset() + pe.FILE_HEADER.NumberOfSections * 40
     if section_header + 40 > min(section.PointerToRawData for section in pe.sections):
         raise ValueError('No unused section-header space')
@@ -190,6 +235,9 @@ def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore
     replacement = b'\xe9' + struct.pack('<i', (0x400000 + rva) - (HOOK + 5)) + b'\x90'
     image[hook_offset:hook_offset + 6] = replacement
     changed.append((hook_offset, 6))
+    if dwk_offset is not None:
+        image[dwk_offset:dwk_offset + 1] = CLEANUP_REPLACEMENT
+        changed.append((dwk_offset, 1))
     if cleanup_offset is not None:
         image[cleanup_offset:cleanup_offset + 1] = CLEANUP_REPLACEMENT
         changed.append((cleanup_offset, 1))
@@ -232,6 +280,8 @@ def patch_bytes(source, expected_sha256, omit_unavailable_cleanup=False, restore
                   wait_limit_ms=30000, condition='Only if existing native u16 wait limit is zero',
                   preserved='Original language entry/imports/assets; native call/result, flags and nonzero limits',
                   limits='Private derived executable requires new Windows native acceptance; not original KR behavior or a published binary.')
+    if dwk_offset is not None:
+        report['unavailable_dwk_install'] = dwk_install_report(dwk_offset)
     if cleanup_offset is not None:
         report['unavailable_cleanup'] = dict(source='design', status='candidate',
             slot_va='0x16ea064', thunk_va='0x1494a0e', target_va='0x2260df8',
@@ -272,6 +322,10 @@ def main():
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--source-sha256', required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--omit-unavailable-dwk-install', action='store_true',
+                        help='Omit only the offline keyboard-hook import trap when building the wait copy')
+    parser.add_argument('--dwk-install-only', action='store_true',
+                        help='Apply only that one-byte change to a pinned ko or manual-login input')
     parser.add_argument('--omit-unavailable-dwk-cleanup', action='store_true',
                         help='Explicit offline copy control for the measured16EA064 repair trap')
     parser.add_argument('--restore-quit-message', action='store_true',
@@ -288,11 +342,21 @@ def main():
     if any(path == local or not path.is_relative_to(local) for path in [source, output]) or output.exists():
         parser.error('Pinned input and new output must be under local/')
     before = source.read_bytes()
-    result, report = patch_bytes(before, args.source_sha256, args.omit_unavailable_dwk_cleanup,
-                                 args.restore_quit_message, args.guard_empty_content,
-                                 args.omit_unavailable_exit_cleanup, args.reset_snapshot_exit_list)
+    if args.dwk_install_only:
+        if any((args.omit_unavailable_dwk_install, args.omit_unavailable_dwk_cleanup,
+                args.restore_quit_message, args.guard_empty_content,
+                args.omit_unavailable_exit_cleanup, args.reset_snapshot_exit_list)):
+            parser.error('--dwk-install-only cannot be combined with controls for the wait copy')
+        result, report = patch_dwk_install_only(before, args.source_sha256)
+        name = 'CA-windows-dwk-install-compat.exe'
+    else:
+        result, report = patch_bytes(before, args.source_sha256, args.omit_unavailable_dwk_cleanup,
+                                     args.restore_quit_message, args.guard_empty_content,
+                                     args.omit_unavailable_exit_cleanup, args.reset_snapshot_exit_list,
+                                     args.omit_unavailable_dwk_install)
+        name = 'CA-windows-wait-compat.exe'
     output.mkdir(mode=0o700)
-    (output / 'CA-windows-wait-compat.exe').write_bytes(result)
+    (output / name).write_bytes(result)
     (output / 'wait-compat.json').write_text(json.dumps(report, indent=2) + '\n')
     if source.read_bytes() != before:
         raise RuntimeError('Source identity changed during copy operation')

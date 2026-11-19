@@ -128,3 +128,58 @@ fn two_local_auth_matches_independently_native_accepted_profile() {
             .is_err()
     );
 }
+
+#[test]
+fn local_own_profiles_keep_independent_record_boundaries_and_slot_order() {
+    use kr_wire::kr00967::{decode_bytes, local_own291};
+    assert_eq!(local_own291(&[b"KRLocal"]).unwrap(), hex(OWN));
+    let body = local_own291(&[b"KRLocal", b"GuestTwo"]).unwrap();
+    assert_eq!(&body[..128], hex(OWN));
+    let second = &body[128..];
+    assert_eq!(second.len(), 129);
+    assert_eq!(read_uint(&second[..1], Width::U8).unwrap(), 1);
+    assert_eq!(read_uint(&second[1..5], Width::U32).unwrap(), 116);
+    let blob = decode_bytes(&second[5..121]).unwrap();
+    assert_eq!(&blob[10..18], b"GuestTwo");
+    assert!(local_own291(&[]).is_err());
+    assert!(local_own291(&[b"KRLocal", b"GuestTwo", b"Third"]).is_err());
+}
+
+#[test]
+fn captured_shared_loading99_has_one_port_and_requires_the_two_local_shape() {
+    use kr_wire::{Width, kr00967::loading99_port, write_uint};
+
+    // Windows 2P body; endpoint addresses/port replaced with test values.
+    let mut body = [
+        0x96, 0xca, 0x53, 0x95, 0x96, 0xca, 0x53, 0x95, 0x80, 0x23, 0x57, 0x64, 0xe4, 0xf6, 0xa5,
+        0x69, 0x5b, 0x5b, 0x5f, 0xa5, 0x69, 0x5b, 0x5b, 0x5f,
+    ];
+    body[8..10].copy_from_slice(&write_uint(32101, Width::U16).unwrap());
+    assert_eq!(loading99_port(&body, 2).unwrap(), 32101);
+    assert!(loading99_port(&body, 1).is_err());
+    assert!(loading99_port(&body[..23], 2).is_err());
+    assert!(loading99_port(&body, 0).is_err());
+    body[8..10].copy_from_slice(&write_uint(0, Width::U16).unwrap());
+    assert!(loading99_port(&body, 2).is_err());
+}
+
+#[test]
+fn two_local_peer153_matches_the_windows_running_clock_capture() {
+    use kr_wire::kr00967::peer153_for_local_slots;
+
+    // This server-to-client body reached Factory07 with two local actors.
+    let captured = hex(concat!(
+        "96ca539296ca518da5695a96ca539596ca63af96ca532196ca53215a96ca5395a5695a",
+        "5b96ca5395a56996ca5395a56996ca5395a569",
+        "5b96ca5395a56996ca5395a56996ca5395a569",
+        "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a"
+    ));
+    let local = [(0, 0, 0), (1, 0, 0)];
+    assert_eq!(
+        peer153_for_local_slots(&captured[..35], 12346, &[0, 1], &local).unwrap(),
+        captured
+    );
+    assert!(peer153_for_local_slots(&captured[..35], 12346, &[0, 0], &local).is_err());
+    assert!(peer153_for_local_slots(&captured[..35], 12346, &[0, 2], &local).is_err());
+    assert!(peer153_for_local_slots(&captured[..35], 12346, &[0], &local).is_err());
+}
