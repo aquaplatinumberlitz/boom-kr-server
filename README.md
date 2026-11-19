@@ -33,13 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**M8 đang nối DB 1P/2P và ownership; mốc native CP342 đã tự mở kết nối kênh.**
-[Bằng chứng và giới hạn](docs/evidence/rust-service/m8-login-local-profiles.json): cùng bản tương thích riêng
-đã có UI đăng nhập 2P, callback đọc đủ hai hồ sơ và set hai ID. Thông báo trạng thái cho cả hai slot làm client
-phát yêu cầu kênh, mở kết nối mới và gửi đúng hai ID/tên. Rust đã có projection reply ở thư viện; listener,
-quyền account, profile kênh 2P, khách và prelogin TLS còn theo [Bảng điều hành](docs/PLAN.md#dashboard).
-Đường token được giữ. Sáu lượt VM đã xuất capture, dừng collector/service và dọn overlay/seed;
-147 frame được kiểm CRC/sequence. Đây chưa là đăng nhập DB, vào phòng hay nghiệm thu M8.
+**CP343: đăng nhập DB 1P/2P và ownership đã qua test; native Windows 2P tới kênh đúng hai hồ sơ DB, cleanup cả hai session.** [Phạm vi và giới hạn](docs/protocol/auth-session.md#rust-ingame-db-publication); tiếp khách → TLS trước đăng nhập → phòng/trận → launcher. M8 còn mở.
 
 ## Bắt đầu
 

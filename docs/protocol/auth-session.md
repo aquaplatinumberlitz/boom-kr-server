@@ -257,8 +257,11 @@ thúc quyền; callback phía phòng vẫn phải kiểm handle ngay trước I/
 Adapter `local::native` giữ buffer credential trong `Zeroizing`, giới hạn frame 512 byte và deadline đọc/ghi
 hai giây, trả cùng lỗi opcode 4 cho mọi ca đăng nhập thất bại. Test tự động dùng DB thật kiểm chuỗi reply 1P/2P,
 ownership, cancellation, expiry/revoke và EOF. Example `ingame_local` chỉ mở loopback để kiểm tới request kênh;
-chưa bật listener mật khẩu public, TLS trước đăng nhập, guest hay membership phòng. Lượt Wine hiện chưa tới
-LoginStage; kiểm native với DB trên Windows VM vẫn đang thực hiện. Không coi test thư viện là native acceptance.
+chưa bật listener mật khẩu public, TLS trước đăng nhập, guest hay membership phòng. Native Windows dùng bản
+ko949x đã khai báo gửi hai credential từ UI, nhận hai hồ sơ DB và tự mở kênh mang đúng ID 3/4, tên DBUserA/DBUserB
+và echo của owner. Sau opcode 6, request ngoài adapter làm đóng kênh; DB thu hồi cả hai session và ghi hai audit
+`local_disconnect`. Đây là nghiệm thu đăng nhập tới chuyển kênh, chưa là sảnh đầy đủ, phòng hoặc trận. Wine chưa
+tới LoginStage trong đối chứng hiện hành; không suy kết quả Windows cho Wine hoặc client KR chưa vá.
 
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
