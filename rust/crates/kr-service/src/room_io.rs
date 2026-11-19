@@ -2921,13 +2921,7 @@ impl Session {
             }
             99 => {
                 let m = r.member(self.identity, self.connection)?;
-                if body.len() != 23 {
-                    return Err(err("unsupported loading99 size"));
-                }
-                let port = read_uint(&body[8..10], Width::U16).map_err(io::Error::other)? as u16;
-                if port == 0 {
-                    return Err(err("loading UDP port zero"));
-                }
+                let port = wire::loading99_port(body, 1)?;
                 if next.phase == Phase::Idle {
                     next.observe_after_abort(m.key)?;
                     dropped_after_abort = true;

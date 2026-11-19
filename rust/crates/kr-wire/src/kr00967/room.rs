@@ -348,6 +348,20 @@ pub fn start121_teams(body: &[u8], teams: &[u8]) -> io::Result<Vec<u8>> {
     Ok(out)
 }
 
+/// Read the UDP port shared by the native process. One local actor uses
+/// the 23-byte shape; two actors use 24 bytes. The per-actor words do not
+/// identify a DB owner or room slot (both were zero in the 2P capture).
+pub fn loading99_port(body: &[u8], local_count: usize) -> io::Result<u16> {
+    if !matches!((local_count, body.len()), (1, 23) | (2, 24)) {
+        return Err(io::Error::other("unsupported loading99 size"));
+    }
+    let port = uint(&body[8..10], Width::U16)? as u16;
+    if port == 0 {
+        return Err(io::Error::other("loading UDP port zero"));
+    }
+    Ok(port)
+}
+
 pub fn peer153(
     template: &[u8],
     key: u32,
@@ -394,16 +408,35 @@ pub fn peer153_players(
     recipient: u8,
     players: &[(u8, u32, u16)],
 ) -> io::Result<Vec<u8>> {
+    peer153_for_local_slots(template, key, &[recipient], players)
+}
+
+/// Keep each local actor present with zero endpoints so the client retains
+/// both actors. A Windows 2P diagnostic with two occupied local rows and no
+/// remote peers reached the running game clock. Mixed routing is separate.
+pub fn peer153_for_local_slots(
+    template: &[u8],
+    key: u32,
+    local_slots: &[u8],
+    players: &[(u8, u32, u16)],
+) -> io::Result<Vec<u8>> {
+    let local_pair = match local_slots {
+        [_] => false,
+        [a, b] if a != b => true,
+        _ => return Err(io::Error::other("invalid local peer slots")),
+    };
     if template.len() < 35 || !(2..=8).contains(&players.len()) {
         return Err(io::Error::other("unsupported player peer roster"));
     }
     let mut slots = std::collections::BTreeMap::new();
     for &(slot, ip, port) in players {
-        if slot >= 8 || ip == 0 || port == 0 || slots.insert(slot, (ip, port)).is_some() {
+        let valid_endpoint = (ip != 0 && port != 0)
+            || (local_pair && local_slots.contains(&slot) && ip == 0 && port == 0);
+        if slot >= 8 || !valid_endpoint || slots.insert(slot, (ip, port)).is_some() {
             return Err(io::Error::other("invalid player peer slot/endpoint"));
         }
     }
-    if !slots.contains_key(&recipient) {
+    if local_slots.iter().any(|slot| !slots.contains_key(slot)) {
         return Err(io::Error::other("peer recipient outside roster"));
     }
     let mut out = template[..35].to_vec();
@@ -411,7 +444,7 @@ pub fn peer153_players(
     for slot in 0..26 {
         out.extend(put(u64::from(slots.contains_key(&slot)), Width::U8)?);
         if let Some(&(ip, port)) = slots.get(&slot) {
-            let (ip, port) = if slot == recipient {
+            let (ip, port) = if local_slots.contains(&slot) {
                 (0, 0)
             } else {
                 (ip, port)

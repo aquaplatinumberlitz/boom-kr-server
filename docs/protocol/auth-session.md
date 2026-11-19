@@ -292,10 +292,12 @@ client 1P chạy hai ván trong test tự động qua TLS, relay UDP xác thực
 và cổng UDP cũ không chuyển dữ liệu vào ván mới. Trước khi vào sảnh, giữ hạn mức input 32 KiB như cũ; lane sở
 hữu đã vào sảnh dùng ngân sách riêng theo giây. Transport mất quyền thì dọn cả roster và membership cũ.
 
-Windows ko949x qua companion Linux đã hiển thị hai hồ sơ DB trong phòng chờ. Start 2P chung một client vẫn
-bị chặn trên nhánh phục vụ. Trong đối chứng chẩn đoán cô lập, client gửi 104, nhận phản hồi và thoát trước 99:
-WER ghi C000001D ở import ngoại tuyến chưa có của bản copy, sau đó C0000005. Chưa xác minh layout 99 cho
-2P, chưa nghiệm thu vòng trận nguyên vẹn trên Windows hoặc Internet. [Chi tiết phép đo và bước tiếp](../evidence/checkpoints/records/CP346.json).
+Windows ko949x qua companion Linux đã hiển thị hai hồ sơ DB trong phòng chờ. [CP346](../evidence/checkpoints/records/CP346.json)
+ghi lỗi trước 99 ở trap của hook bàn phím ngoại tuyến. Recipe bản sao sửa một byte đã cho client 2P gửi 99
+với 24 byte và một cổng UDP chung. Hai hàng của 99 có cùng giá trị u16, nên không dùng chúng để xác định
+identity hoặc slot. Đối chứng với cả hai slot cục bộ bật nhưng endpoint bằng 0 trong 153 đã tới đồng hồ
+Factory07; chưa nghiệm thu 2P có peer từ xa, hành động theo từng account hoặc kết quả và reset. Start 2P
+vẫn bị chặn trên đường phục vụ.
 
 Review chủ dự án: Initial chưa xác minh địa chỉ chỉ nhận Retry, chưa lấy permit hay tính rate IP. Bước launcher phải
 cho companion kết nối lại (hoặc kết nối khi game mở socket đầu) để chờ màn đăng nhập quá `prelogin_seconds` vẫn
