@@ -298,6 +298,17 @@ async fn connection(
     }
     outcome
 }
+/// A spoofed source cannot hold connection permits or spend another IP's
+/// admission rate: unvalidated Initials only get a stateless Retry.
+fn validated(incoming: quinn::Incoming) -> Option<quinn::Incoming> {
+    if incoming.remote_address_validated() {
+        return Some(incoming);
+    }
+    if let Err(error) = incoming.retry() {
+        error.into_incoming().refuse();
+    }
+    None
+}
 pub(crate) async fn serve(
     endpoint: quinn::Endpoint,
     config: Config,
@@ -323,6 +334,7 @@ pub(crate) async fn serve(
                 let Some(incoming)=incoming else{return Err(io::Error::other("prelogin TLS endpoint ended"));};
                 let peer=incoming.remote_address().ip();
                 if !matches!(peer,IpAddr::V4(ip) if peers.contains(&ip)){incoming.refuse();continue;}
+                let Some(incoming)=validated(incoming) else{continue;};
                 let Ok(total_permit)=total.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(unauth)=unauthenticated.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,Instant::now())else{incoming.refuse();continue;};
