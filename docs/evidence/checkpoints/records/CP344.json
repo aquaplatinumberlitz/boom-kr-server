@@ -1,0 +1,115 @@
+{
+  "id": "CP344",
+  "previous": "CP343",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T03:30:16.102069+00:00",
+  "context_commit": "7dcba29ef4d819bdb57f263587a53aa914df0bec",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Nút chơi thử 1P/2P có cấp principal DB mới, giới hạn tài nguyên và giữ cùng lifecycle transport mà không cấp mật khẩu không?",
+  "scope": "Phần account khách qua kênh native; nhóm xác thực M8 còn TLS và phòng/trận.",
+  "artifacts": [
+    {
+      "sha256": "c463982a6974f0a04808d9833b0c719c1086745580badc97237e7de6bf9b5ced"
+    }
+  ],
+  "locators": [
+    "local/research/codex/m8-guest-windows-r2"
+  ],
+  "findings": [
+    {
+      "summary": "Khách cấp nguyên tử bằng identity DB mới và token riêng; không xác thực bằng password. Schema4 giữ record journal, worker rate chung và cap64 active; mọi fence transport được dùng lại.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-db-publication",
+      "evidence": [
+        "LOCAL344-0001"
+      ],
+      "limits": "Thiết kế công ty; chưa có giới hạn mạng/TLS hoặc phòng/trận."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Fmt, Clippy và toàn workspace đạt; native nút trial2 gửi62, mở kênh đúng khách5/6; DB còn0 session, VM dừng/xuất/dọn đầy đủ.",
+      "result": "pass",
+      "evidence": [
+        "LOCAL344-0001"
+      ],
+      "limits": "Ko949x copy riêng; native binary trước bổ sung rate bucket, test cuối kiểm bucket. Request sau kênh chưa hỗ trợ; native bị dừng theo bound, không clean logout."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Principal khách, migration, worker/transport và test âm."
+    ],
+    "corrected": [],
+    "superseded": []
+  },
+  "blockers": [
+    "Prelogin TLS có giới hạn (báo chủ dự án rà mã) → phòng/trận/ván mới → launcher; M8 chưa hoàn tất."
+  ],
+  "next_steps": [],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-19T03:30:16.102069+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex tự kiểm; nhóm xác thực M8 chưa đóng.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Chủ dự án miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Contract/chủ đề ở auth-session; tài liệu này không đổi."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "unchanged",
+      "reason": "Contract/chủ đề ở auth-session; tài liệu này không đổi."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    },
+    {
+      "path": "docs/evidence/checkpoints/records/CP344.json",
+      "state": "updated",
+      "reason": "Cập nhật đúng chủ đề và mốc; nguồn còn lại không đổi."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LOCAL344-0001",
+      "kind": "local",
+      "path": "local/research/codex/m8-guest-transport-final-r1/guest-summary.json",
+      "bytes": 3365,
+      "sha256": "001dfd26c48964a582752dac7df586f2289f9eff19b91612afec97efd9902504"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/m8-guest-transport-final-r1",
+      "path": "local/evidence-manifests/069e1cab7915ad3e5cc5fae607f01453e207e9ca4ec440a1fbf80459edf79f7a.jsonl",
+      "sha256": "069e1cab7915ad3e5cc5fae607f01453e207e9ca4ec440a1fbf80459edf79f7a",
+      "bytes": 494,
+      "count": 2,
+      "files_bytes": 102251
+    }
+  ]
+}

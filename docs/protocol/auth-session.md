@@ -263,6 +263,16 @@ và echo của owner. Sau opcode 6, request ngoài adapter làm đóng kênh; DB
 `local_disconnect`. Đây là nghiệm thu đăng nhập tới chuyển kênh, chưa là sảnh đầy đủ, phòng hoặc trận. Wine chưa
 tới LoginStage trong đối chứng hiện hành; không suy kết quả Windows cho Wine hoặc client KR chưa vá.
 
+**Khách từ nút chơi thử:** opcode 62 cấp nguyên tử một/hai principal DB mới, tên `Guest` kèm giá trị ngẫu nhiên,
+token riêng và cùng lifecycle transport như account đăng ký. Schema 4 thêm quan hệ `guest_accounts`; nâng cấp từ
+schema 3 giữ account và session hiện có. Hai đường xác thực bằng mật khẩu loại khách khỏi truy vấn, kể cả sau reset
+mật khẩu bằng admin. Identity khách không được tái cấp; giữ record để tham chiếu journal, không tự xóa lịch sử trận.
+Expiry/idle, revoke, instance restart, EOF và hủy handoff/reply vẫn mất quyền như account thường. Worker dùng một
+bucket rate riêng cho khách trên mọi clone; DB giới hạn 64 khách hoạt động. Đây là giới hạn `design`; giới hạn theo
+peer và toàn kết nối chưa đăng nhập thuộc phần TLS tiếp theo. Test SQLite/worker kiểm rollback nhóm, hủy, rate,
+nâng schema và fencing. Native Windows trên copy đã hiện nút trial gửi 2P, nhận hai khách mới ID 5/6 rồi chuyển
+kênh đúng roster; cả hai session được thu hồi. Request sau kênh ngoài adapter vẫn đóng kết nối; chưa là phòng/trận.
+
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
 
