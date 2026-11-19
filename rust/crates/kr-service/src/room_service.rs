@@ -69,15 +69,118 @@ impl LocalLobby {
                 "native room selection requires measured single-local layout",
             ));
         }
-        self.channels[0].select(opcode, body, peer, self.authorities[0].clone(), None)
+        match self.select_roster(opcode, body, peer)? {
+            LocalSelection::Joined(mut sessions) => Ok(Selection::Joined(sessions.remove(0))),
+            LocalSelection::Full => Ok(Selection::Full),
+        }
+    }
+    pub(crate) fn select_roster(
+        &self,
+        opcode: u32,
+        body: &[u8],
+        peer: Ipv4Addr,
+    ) -> io::Result<LocalSelection> {
+        if !self.current() {
+            return Err(err("local lobby owner retired"));
+        }
+        let hub = &self.channels[0].hub;
+        let mut state = hub
+            .state
+            .lock()
+            .map_err(|_| err("room service unavailable"))?;
+        for channel in &self.channels {
+            if channel.owner(&state)?.selected.is_some() {
+                return Err(err("local account already selected a room"));
+            }
+        }
+        let key = hub.selection_key(&mut state, opcode, body)?;
+        if room_io::full_idle_roster(state.rooms.get(key)?, self.channels.len())? {
+            if opcode == 81 {
+                let _ = state.rooms.remove_if(key, room_io::removable);
+            }
+            return Ok(LocalSelection::Full);
+        }
+        let attempt = (|| {
+            let sessions = self
+                .channels
+                .iter()
+                .zip(&self.authorities)
+                .map(|(channel, authority)| {
+                    room_io::Session::open_with_authority(
+                        state.rooms.get(key)?,
+                        channel.identity,
+                        channel.connection,
+                        Some(peer),
+                        Some(authority.clone()),
+                    )
+                })
+                .collect::<io::Result<Vec<_>>>()?;
+            let identities: Vec<_> = self
+                .channels
+                .iter()
+                .map(|channel| channel.identity)
+                .collect();
+            sessions[0].select_local_roster(opcode, body, &identities)?;
+            Ok(sessions)
+        })();
+        match attempt {
+            Ok(sessions) => {
+                for channel in &self.channels {
+                    state
+                        .owners
+                        .get_mut(&channel.identity)
+                        .expect("current local account")
+                        .selected = Some(key);
+                }
+                hub.changed();
+                Ok(LocalSelection::Joined(sessions))
+            }
+            Err(error) => {
+                if opcode == 81 {
+                    let _ = state.rooms.remove_if(key, room_io::removable);
+                }
+                Err(error)
+            }
+        }
     }
     pub(crate) fn returned(&self) -> io::Result<()> {
         if !self.current() {
             return Err(err("local lobby owner retired"));
         }
+        self.release_rooms()
+    }
+    fn release_rooms(&self) -> io::Result<()> {
+        let hub = &self.channels[0].hub;
+        let mut state = hub
+            .state
+            .lock()
+            .map_err(|_| err("room service unavailable"))?;
+        let mut keys = Vec::new();
         for channel in &self.channels {
-            channel.returned()?;
+            if let Some(key) = channel.owner(&state)?.selected {
+                keys.push(key);
+            }
         }
+        for channel in &self.channels {
+            if let Some(key) = channel.owner(&state)?.selected {
+                if let Ok(shared) = state.rooms.get(key) {
+                    room_io::detach(shared, channel.identity, channel.connection)?;
+                }
+                state
+                    .owners
+                    .get_mut(&channel.identity)
+                    .expect("current local owner")
+                    .selected = None;
+            }
+        }
+        // A room shared by both principals is retired only after both owned
+        // selections have been cleared under the same hub lock.
+        for key in keys {
+            if state.rooms.get(key).is_ok_and(room_io::removable) {
+                state.rooms.remove(key)?;
+            }
+        }
+        hub.changed();
         Ok(())
     }
     pub(crate) fn map_table(&self) -> io::Result<crate::Reply> {
@@ -112,6 +215,21 @@ impl LocalLobby {
             })
     }
 }
+impl Drop for LocalLobby {
+    fn drop(&mut self) {
+        // Revocation removes authority before cleanup; exact connection keys
+        // still own their old membership and lobby registry slots for removal.
+        let _ = self.release_rooms();
+        let hub = &self.channels[0].hub;
+        if let Ok(mut state) = hub.state.lock() {
+            for channel in &self.channels {
+                if channel.owner(&state).is_ok() {
+                    state.owners.remove(&channel.identity);
+                }
+            }
+        }
+    }
+}
 pub(crate) struct Catalog {
     pub tuples: BTreeSet<(u16, u32)>,
     pub packets: Vec<(u32, Vec<u8>)>,
@@ -120,10 +238,60 @@ pub(crate) enum Selection {
     Joined(room_io::Session),
     Full,
 }
+pub(crate) enum LocalSelection {
+    Joined(Vec<room_io::Session>),
+    Full,
+}
 fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
 }
 impl Hub {
+    fn selection_key(&self, s: &mut State, opcode: u32, body: &[u8]) -> io::Result<RoomKey> {
+        let create = opcode == 81;
+        let key = if create {
+            wire::create81_title(body)?;
+            wire::create81_selector(body)?;
+            if s.rooms.entries().count() >= self.max_rooms || s.next == 0 {
+                return Err(err("room allocation exhausted"));
+            }
+            let session = s.next;
+            s.next = session.checked_add(1).unwrap_or(0);
+            s.rooms
+                .insert_with(session, RoomId(u32::from(session)), |key| {
+                    let shared = room_io::fork(
+                        &self.prototype,
+                        key,
+                        self.epochs.clone(),
+                        self.round_profile.clone(),
+                        self.player_choices,
+                        self.capacity,
+                    )?;
+                    if let Some(factory) = &*self
+                        .journal
+                        .lock()
+                        .map_err(|_| err("journal factory unavailable"))?
+                    {
+                        room_io::install_journal(&shared, factory.owner())?;
+                    }
+                    if let Some(factory) = &self.relay {
+                        room_io::install_relay(&shared, factory.owner(key))?;
+                    }
+                    if let Some(hub) = &self.authenticated {
+                        room_io::install_authenticated(
+                            &shared,
+                            crate::authenticated_room_relay::Owner::new(hub.clone(), key),
+                        )?;
+                    }
+                    Ok(shared)
+                })?
+        } else if opcode == 82 {
+            let choice = wire::join82_selection(body)?;
+            s.rooms.selection(choice.session, RoomId(choice.room_id))?
+        } else {
+            return Err(err("invalid selection opcode"));
+        };
+        Ok(key)
+    }
     pub(crate) fn register_local(
         self: &Arc<Self>,
         roster: &[crate::account_bridge::local::LocalAuthority],
@@ -312,49 +480,7 @@ impl Channel {
             return Err(err("account already selected a room"));
         }
         let create = opcode == 81;
-        let key = if create {
-            wire::create81_title(body)?;
-            wire::create81_selector(body)?;
-            if s.rooms.entries().count() >= self.hub.max_rooms || s.next == 0 {
-                return Err(err("room allocation exhausted"));
-            }
-            let session = s.next;
-            s.next = session.checked_add(1).unwrap_or(0);
-            s.rooms
-                .insert_with(session, RoomId(u32::from(session)), |key| {
-                    let shared = room_io::fork(
-                        &self.hub.prototype,
-                        key,
-                        self.hub.epochs.clone(),
-                        self.hub.round_profile.clone(),
-                        self.hub.player_choices,
-                        self.hub.capacity,
-                    )?;
-                    if let Some(factory) = &*self
-                        .hub
-                        .journal
-                        .lock()
-                        .map_err(|_| err("journal factory unavailable"))?
-                    {
-                        room_io::install_journal(&shared, factory.owner())?;
-                    }
-                    if let Some(factory) = &self.hub.relay {
-                        room_io::install_relay(&shared, factory.owner(key))?;
-                    }
-                    if let Some(hub) = &self.hub.authenticated {
-                        room_io::install_authenticated(
-                            &shared,
-                            crate::authenticated_room_relay::Owner::new(hub.clone(), key),
-                        )?;
-                    }
-                    Ok(shared)
-                })?
-        } else if opcode == 82 {
-            let choice = wire::join82_selection(body)?;
-            s.rooms.selection(choice.session, RoomId(choice.room_id))?
-        } else {
-            return Err(err("invalid selection opcode"));
-        };
+        let key = self.hub.selection_key(&mut s, opcode, body)?;
         // Hub -> room lock order serializes this check with every selection.
         // No channel, membership, visit, tuple or round is allocated on failure.
         if !create && room_io::full_idle(s.rooms.get(key)?)? {
@@ -469,6 +595,83 @@ mod local_tests {
         local::tests::{channel, login},
     };
     use crate::accounts::TEST_SERIAL;
+    #[test]
+    fn both_local_accounts_select_atomically_and_a_full_room_never_admits_half_a_pair() {
+        use crate::account_bridge::tests::PASSWORD;
+        use kr_wire::{Width, write_uint};
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let (temp, a, b) = Temp::new();
+        let c = temp
+            .store()
+            .create_account(&admin(), "Charlie", "Third", PASSWORD, now())
+            .unwrap();
+        let d = temp
+            .store()
+            .create_account(&admin(), "Delta", "Fourth", PASSWORD, now())
+            .unwrap();
+        rt().block_on(async {
+            let worker = worker(&temp).await;
+            let hub = Hub::new(&Config { max_rooms: 8, round_profile: None, player_choices: false, capacity: None, player_round: None },
+                crate::room_io::registry_foundation_tests::selection_prototype(), None, None).unwrap();
+            let mut first = LocalSession::new(worker.client(), 11).unwrap();
+            let rows = first.login(&login(&["Alice", "Bob"]), 60, None).await.unwrap();
+            first.redirected(11).unwrap();
+            let handles = first.channel(&channel(&rows), 22).await.unwrap();
+            let lobby = hub.register_local(&handles).unwrap();
+            // Actual modified KR two-local create81 from isolated Windows r2;
+            // this is an input fixture, not proof of native room rendering.
+            let raw = "a5796d7ca955561ee3b52b059446e81ae952a56996ca539596ca539496ca539096ca539096ca539596ca539596ca53956935ac6a96ca539596ca539596ca539596ca53955a5a5a5a";
+            let create: Vec<u8> = (0..raw.len()).step_by(2).map(|i| u8::from_str_radix(&raw[i..i+2], 16).unwrap()).collect();
+            let LocalSelection::Joined(mut sessions) = lobby.select_roster(81, &create, Ipv4Addr::LOCALHOST).unwrap() else { panic!("pair denied"); };
+            assert_eq!(sessions.len(), 2);
+            assert!(sessions.iter().all(room_io::Session::channel_current));
+            assert!(sessions.iter().all(|session| !session.in_lobby()));
+            let reply = sessions[0].inbox.try_recv().unwrap();
+            assert_eq!(reply.packets[0].1.opcode, 86);
+            assert!(sessions[0].valid(&reply));
+            assert!(!sessions[1].valid(&reply));
+            assert!(sessions[1].inbox.try_recv().is_err());
+            let key = {
+                let state = hub.state.lock().unwrap();
+                let key = state.owners[&a.wire_id].selected.unwrap();
+                assert_eq!(state.owners[&b.wire_id].selected, Some(key));
+                key
+            };
+            assert!(lobby.select_roster(81, &create, Ipv4Addr::LOCALHOST).is_err());
+            let mut other = LocalSession::new(worker.client(), 33).unwrap();
+            let rows = other.login(&login(&["Charlie", "Delta"]), 60, None).await.unwrap();
+            other.redirected(33).unwrap();
+            let handles = other.channel(&channel(&rows), 44).await.unwrap();
+            let other_lobby = hub.register_local(&handles).unwrap();
+            let join: Vec<_> = [(u64::from(key.session), Width::U16), (u64::from(key.id.0), Width::U32), (0, Width::U16), (1, Width::U8), (5, Width::U16)]
+                .into_iter().flat_map(|(value,width)| write_uint(value,width).unwrap()).collect();
+            assert!(matches!(other_lobby.select_roster(82, &join, Ipv4Addr::LOCALHOST).unwrap(), LocalSelection::Full));
+            {
+                let state = hub.state.lock().unwrap();
+                assert!(state.owners[&c.wire_id].selected.is_none());
+                assert!(state.owners[&d.wire_id].selected.is_none());
+                assert_eq!(state.rooms.entries().count(), 1);
+            }
+            drop(sessions);
+            lobby.returned().unwrap();
+            assert_eq!(hub.state.lock().unwrap().rooms.entries().count(), 0);
+            assert!(lobby.current() && other_lobby.current());
+            let LocalSelection::Joined(stale_sessions) = lobby.select_roster(81, &create, Ipv4Addr::LOCALHOST).unwrap() else { panic!("pair denied after return"); };
+            temp.store().revoke(&admin(), b.account_id, now()).unwrap();
+            assert!(first.inspect().await.is_err());
+            assert!(!lobby.current());
+            drop(lobby);
+            assert!(stale_sessions.iter().all(|session| !session.channel_current()));
+            assert_eq!(hub.state.lock().unwrap().rooms.entries().count(), 0);
+            drop(stale_sessions);
+            assert!(other_lobby.current());
+            drop(other_lobby);
+            assert!(hub.state.lock().unwrap().owners.is_empty());
+            first.finish().await.unwrap();
+            other.finish().await.unwrap();
+            worker.shutdown().await.unwrap();
+        });
+    }
     #[test]
     fn local_lobby_admission_is_atomic_and_retired_handles_cannot_reclaim_reused_connections() {
         let _serial = TEST_SERIAL.lock().unwrap();

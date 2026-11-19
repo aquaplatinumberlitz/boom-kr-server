@@ -784,9 +784,12 @@ pub(crate) fn validate_admission_capacity(
     Ok(())
 }
 pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
+    full_idle_roster(shared, 1)
+}
+pub(crate) fn full_idle_roster(shared: &Shared, local_count: usize) -> io::Result<bool> {
     let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
     Ok(runtime.model.phase == Phase::Idle
-        && runtime.model.members.len() >= runtime.admission_capacity())
+        && runtime.model.members.len().saturating_add(local_count) > runtime.admission_capacity())
 }
 pub(crate) fn map_table_source(shared: &Shared) -> io::Result<Reply> {
     let runtime = shared
@@ -2119,10 +2122,24 @@ impl Session {
         member: Membership,
         body: &[u8],
     ) -> io::Result<Observation> {
-        self.packet_owned(92, body, Some(member))
+        self.packet_owned(92, body, Some(member), None)
     }
     pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<Observation> {
-        self.packet_owned(opcode, body, None)
+        self.packet_owned(opcode, body, None, None)
+    }
+    pub(crate) fn select_local_roster(
+        &self,
+        opcode: u32,
+        body: &[u8],
+        roster: &[u32],
+    ) -> io::Result<Observation> {
+        if !matches!(opcode, 81 | 82)
+            || !(1..=2).contains(&roster.len())
+            || roster.first() != Some(&self.identity)
+        {
+            return Err(err("invalid local room selection"));
+        }
+        self.packet_owned(opcode, body, None, Some(roster))
     }
     /// Opt-in patched949x room-waiting chat. Caller authorizes account and rate;
     /// sender identity comes only from its current DB-backed channel owner.
@@ -2187,6 +2204,7 @@ impl Session {
         opcode: u32,
         body: &[u8],
         expected: Option<Membership>,
+        selection_roster: Option<&[u32]>,
     ) -> io::Result<Observation> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
         if r.channels
@@ -2211,7 +2229,7 @@ impl Session {
         }
         let mut next = r.model.clone();
         let mut effects = Vec::new();
-        let mut new_key = None;
+        let mut new_keys = Vec::new();
         let mut map_choice = None;
         let mut character_rejection = None;
         let mut requested = None;
@@ -2289,10 +2307,29 @@ impl Session {
                         ..Observation::default()
                     });
                 }
-                if next.members.len() >= r.admission_capacity() {
+                let roster = selection_roster.unwrap_or(std::slice::from_ref(&self.identity));
+                if next.members.len() + roster.len() > r.admission_capacity() {
                     return Err(err("selected map admission capacity exhausted"));
                 }
-                let key = next.enter(self.identity, self.connection, opcode == 81)?;
+                let key = if selection_roster.is_some() {
+                    for identity in roster {
+                        if r.channels.get(identity).is_none_or(|channel| {
+                            channel.connection != self.connection
+                                || channel
+                                    .relay_authority
+                                    .as_ref()
+                                    .is_none_or(|owner| !owner.owns(*identity, self.connection))
+                        }) {
+                            return Err(err("local room roster has no current account owner"));
+                        }
+                    }
+                    new_keys = next.enter_local_roster(roster, self.connection, opcode == 81)?;
+                    new_keys[0]
+                } else {
+                    let key = next.enter(self.identity, self.connection, opcode == 81)?;
+                    new_keys.push(key);
+                    key
+                };
                 let m = next.members[&self.identity].clone();
                 let reply = if opcode == 81 {
                     r.reply(
@@ -2360,7 +2397,6 @@ impl Session {
                     }
                 }
                 room_choice = Some((title, selector));
-                new_key = Some(key);
             }
             585 => {
                 if !wire::zero585_setup(body)? {
@@ -3558,8 +3594,8 @@ impl Session {
                 .floor
                 .clone();
         }
-        if let Some(key) = new_key {
-            r.last_visits.insert(self.identity, key.visit);
+        for key in new_keys {
+            r.last_visits.insert(key.identity, key.visit);
         }
         if let Some(key) = requested {
             r.requested.insert(key);
