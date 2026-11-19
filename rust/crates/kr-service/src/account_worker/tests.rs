@@ -70,6 +70,45 @@ fn admin() -> Admin<'static> {
 }
 
 #[test]
+fn trial_admission_shares_one_rate_bucket_across_worker_clones() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open_with_rate(
+            temp.db(),
+            4,
+            Duration::from_secs(5),
+            RatePolicy {
+                attempts: 1,
+                interval: Duration::from_secs(60),
+                principals: 2,
+            },
+        )
+        .await
+        .unwrap();
+        let one = worker.client();
+        let two = one.clone();
+        let grants = one
+            .try_trial_local_current(2, 60, None)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert!(matches!(
+            two.try_trial_local_current(1, 60, None),
+            Err(Error::RateLimited)
+        ));
+        one.try_end_local(&grants).unwrap().wait().await.unwrap();
+        assert!(matches!(
+            two.try_trial_local_current(1, 60, None),
+            Err(Error::RateLimited)
+        ));
+        assert_eq!(temp.active(), 0);
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
 fn trial_cancellation_and_abandoned_delivery_cannot_leave_active_guest_sessions() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let temp = Temp::new();

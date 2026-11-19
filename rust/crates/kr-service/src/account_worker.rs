@@ -370,7 +370,7 @@ impl Client {
         }
         let (reply, rx) = oneshot::channel();
         let handoff = Handoff::new();
-        self.submit(Command::LocalLogin {
+        let command = Command::LocalLogin {
             request: LocalLoginRequest::Guests(count),
             ttl,
             idle,
@@ -379,7 +379,27 @@ impl Client {
             reply,
             handoff: handoff.clone(),
             handoff_ttl: self.queue_ttl,
-        })?;
+        };
+        // A fixed separate bucket bounds guest creation even when every request
+        // would otherwise supply a fresh principal. The network owner adds its
+        // peer/prelogin limits; no attacker-chosen metadata keys this table.
+        let mut guard = self.gate.lock().map_err(|_| Error::Closed)?;
+        if guard.sender.as_ref().is_none_or(mpsc::Sender::is_closed) {
+            return Err(Error::Closed);
+        }
+        let key = rate::Limiter::key("native-trial-admission");
+        let admitted = Instant::now();
+        guard.limiter.check(key, admitted)?;
+        guard
+            .sender
+            .as_ref()
+            .ok_or(Error::Closed)?
+            .try_send(command)
+            .map_err(|error| match error {
+                mpsc::error::TrySendError::Full(_) => Error::Busy,
+                mpsc::error::TrySendError::Closed(_) => Error::Closed,
+            })?;
+        guard.limiter.commit(key, admitted);
         Ok(Pending {
             reply: Some(rx),
             handoff: Some(handoff),
