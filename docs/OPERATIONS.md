@@ -54,8 +54,9 @@ python3 tools/player_package.py --recipe "$PRIVATE_PLAYER_RECIPE" --out local/op
 ```
 
 Giữ hash manifest độc lập với payload. Bộ cài Rust ráp pack, kiểm hash từng phần và toàn pack, dùng hard link
-cho pack readonly/file chung, rồi copy exe/chữ/font/video/idx vào ba thư mục. Chỉ bản cài đủ hash mới có receipt;
-thư mục cài dở hoặc có sẵn bị từ chối ghi đè. Có thể kiểm cùng installer không GUI:
+cho pack và tệp dùng chung không cần ghi. Tệp cấu hình, cache và CALog có bản riêng theo ngôn ngữ. Bộ cài bỏ
+thuộc tính chỉ đọc trong cây game của cả ba ngôn ngữ. Chỉ bản cài đủ hash mới có receipt; thư mục cài dở hoặc có
+sẵn bị từ chối ghi đè. Có thể kiểm cùng installer không GUI:
 
 ```bash
 kr-player-install install "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
@@ -78,7 +79,10 @@ Giải nén vào thư mục ghi được trên NTFS, mở `kr-player.exe` hoặc
 Lối tắt chỉ mở launcher. Chọn ngôn ngữ, bấm **Vào game**, rồi đăng nhập hoặc chơi thử trong game.
 
 `launcher.json` khai các đường dẫn tương đối với file cấu hình. GUI kiểm và cài payload, lưu ngôn ngữ
-trong state và hỏi status qua TLS. Trước khi chơi nó kiểm lại bản đã chọn, đợi companion sẵn sàng rồi mở game.
+trong state và hỏi status qua TLS. Trước khi chơi nó kiểm lại bản đã chọn, thử mở ghi các tệp `.ssd`, `.ini` và
+CALog. Tệp cấu hình hoặc cache đã đổi được khôi phục từ payload có hash; CALog đang có được giữ. Launcher báo
+lỗi quyền ghi trước khi mở game; quy trình không sửa ACL. Nếu kiểm tra đạt, launcher đợi companion sẵn sàng rồi
+mở game.
 Nút dừng hoặc đóng cửa sổ dừng hai tiến trình. Companion tự đóng đường TLS nếu bộ đếm heartbeat của
 launcher không tăng trong 10 giây. Companion viết log tối đa 32 KiB trong thư mục của lượt chạy; launcher giữ tối đa bốn log
 đã kết thúc dưới `state/prelogin-logs`. Log ghi cổng loopback, mốc TLS, số byte chuyển và nhãn kết thúc;

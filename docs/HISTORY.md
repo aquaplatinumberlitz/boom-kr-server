@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP351: Windows nhận đúng dữ liệu sảnh như CP347 đến hết phản hồi 238, rồi vẫn đóng luồng.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP351.json). M8 còn mở.
+
 **CP350: Đã sửa lỗi heartbeat khiến game thoát sau splash; Windows đăng nhập 2P qua TLS nhưng dừng trước khi hiện sảnh.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP350.json). M8 còn mở.
 
 **CP349: Gói Windows có đủ pack như CP347 vẫn thoát trước LoginStage.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP349.json). M8 còn mở.
