@@ -49,7 +49,7 @@ async fn connection(
         return Ok(());
     }
     let mut lane = match first.opcode {
-        1 => Lane::login(id)?,
+        1 | 62 => Lane::login(id)?,
         6 => Lane::channel(id)?,
         _ => return Err(io::Error::other("first opcode")),
     };
@@ -59,7 +59,7 @@ async fn connection(
             let input=if let Some(input)=pending.take(){input}else{native::read(&mut socket,&mut sequence).await?};
             let opcode=input.opcode;
             let mut state=driver.lock().await;
-            if state.is_none() && opcode==1 {*state=Some(Driver::new(LocalSession::new(client.clone(),id).map_err(|_|io::Error::other("owner creation"))?,templates.clone())?);}
+            if state.is_none() && matches!(opcode,1|62) {*state=Some(Driver::new(LocalSession::new(client.clone(),id).map_err(|_|io::Error::other("owner creation"))?,templates.clone())?);}
             let owned=state.as_mut().ok_or_else(||io::Error::other("no account owner"))?;
             // The account slice intentionally ends at the first lobby request.
             if opcode==67 {

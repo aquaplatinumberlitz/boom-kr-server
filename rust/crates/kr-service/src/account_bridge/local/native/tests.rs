@@ -1,5 +1,5 @@
 use super::*;
-use crate::account_bridge::local::tests::{active, channel, login};
+use crate::account_bridge::local::tests::{active, channel, login, trial};
 use crate::account_bridge::tests::{Temp, rt, worker};
 use crate::accounts::TEST_SERIAL;
 use tokio::io::DuplexStream;
@@ -45,91 +45,105 @@ fn one_or_two_db_principals_follow_native_reply_sequence_into_the_same_owned_cha
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let worker = worker(&temp).await;
-        for names in [&["Alice"][..], &["Alice", "Bob"][..]] {
-            let session = LocalSession::new(worker.client(), 1).unwrap();
-            let mut driver = Driver::new(session, templates()).unwrap();
-            let mut login_lane = Lane::login(1).unwrap();
-            let (mut writer, mut peer) = tokio::io::duplex(4096);
-            let mut sequence = 43;
-            driver
-                .packet(
-                    &mut login_lane,
-                    input(1, login(names)),
-                    &mut writer,
-                    60,
-                    None,
-                )
-                .await
-                .unwrap();
-            let auth = receive(&mut peer, &mut sequence).await;
-            assert_eq!(auth.opcode, 4);
-            assert_eq!(
-                kr_wire::read_uint(&auth.payload[4..5], Width::U8).unwrap(),
-                names.len() as u64
-            );
-            let rows = {
-                let state = driver.session.shared.lock().unwrap();
-                state
-                    .grants
-                    .iter()
-                    .zip(&state.echoes)
-                    .map(|(g, e)| (g.player.clone(), *e))
-                    .collect::<Vec<_>>()
-            };
-            assert_eq!(
-                rows.iter().map(|r| &r.0).collect::<Vec<_>>(),
-                vec![&a, &b][..names.len()]
-            );
-            assert_eq!(active(&temp), names.len() as i64);
-            driver
-                .packet(&mut login_lane, input(9, vec![0; 8]), &mut writer, 60, None)
-                .await
-                .unwrap();
-            assert_eq!(receive(&mut peer, &mut sequence).await.opcode, 15);
-            for slot in 0..names.len() as u64 {
-                let flags = receive(&mut peer, &mut sequence).await;
-                assert_eq!(flags.opcode, 62);
-                assert_eq!(
-                    kr_wire::read_uint(&flags.payload[1..2], Width::U8).unwrap(),
-                    slot
-                );
-                assert_eq!(
-                    kr_wire::read_uint(&flags.payload[2..3], Width::U8).unwrap(),
-                    2
-                );
-            }
-            driver
-                .packet(&mut login_lane, input(5, vec![0; 9]), &mut writer, 60, None)
-                .await
-                .unwrap();
-            assert_eq!(receive(&mut peer, &mut sequence).await.opcode, 7);
-            assert_eq!(sequence, 43 + 3 * (3 + names.len() as u32));
-            assert!(!driver.disconnected(&login_lane).await.unwrap());
-            let mut channel_lane = Lane::channel(2).unwrap();
-            let (mut out, mut remote) = tokio::io::duplex(4096);
-            driver
-                .packet(
-                    &mut channel_lane,
-                    input(6, channel(&rows)),
-                    &mut out,
-                    60,
-                    None,
-                )
-                .await
-                .unwrap();
-            let mut fresh_sequence = 43;
-            assert_eq!(receive(&mut remote, &mut fresh_sequence).await.opcode, 17);
-            assert!(
+        for guest in [false, true] {
+            for names in [&["Alice"][..], &["Alice", "Bob"][..]] {
+                let session = LocalSession::new(worker.client(), 1).unwrap();
+                let mut driver = Driver::new(session, templates()).unwrap();
+                let mut login_lane = Lane::login(1).unwrap();
+                let (mut writer, mut peer) = tokio::io::duplex(4096);
+                let mut sequence = 43;
                 driver
-                    .authorities()
-                    .iter()
-                    .all(|h| h.current() && h.connection() == 2)
-            );
-            let handles = driver.authorities().to_vec();
-            assert!(driver.disconnected(&channel_lane).await.unwrap());
-            assert!(handles.iter().all(|h| !h.current()));
-            assert_eq!(active(&temp), 0);
-            driver.finish().await.unwrap();
+                    .packet(
+                        &mut login_lane,
+                        if guest {
+                            input(62, trial(names.len() as u8))
+                        } else {
+                            input(1, login(names))
+                        },
+                        &mut writer,
+                        60,
+                        None,
+                    )
+                    .await
+                    .unwrap();
+                let auth = receive(&mut peer, &mut sequence).await;
+                assert_eq!(auth.opcode, 4);
+                assert_eq!(
+                    kr_wire::read_uint(&auth.payload[4..5], Width::U8).unwrap(),
+                    names.len() as u64
+                );
+                let rows = {
+                    let state = driver.session.shared.lock().unwrap();
+                    state
+                        .grants
+                        .iter()
+                        .zip(&state.echoes)
+                        .map(|(g, e)| (g.player.clone(), *e))
+                        .collect::<Vec<_>>()
+                };
+                if guest {
+                    assert!(
+                        rows.iter()
+                            .all(|r| r.0.account_id != a.account_id
+                                && r.0.account_id != b.account_id)
+                    );
+                } else {
+                    assert_eq!(
+                        rows.iter().map(|r| &r.0).collect::<Vec<_>>(),
+                        vec![&a, &b][..names.len()]
+                    );
+                }
+                assert_eq!(active(&temp), names.len() as i64);
+                driver
+                    .packet(&mut login_lane, input(9, vec![0; 8]), &mut writer, 60, None)
+                    .await
+                    .unwrap();
+                assert_eq!(receive(&mut peer, &mut sequence).await.opcode, 15);
+                for slot in 0..names.len() as u64 {
+                    let flags = receive(&mut peer, &mut sequence).await;
+                    assert_eq!(flags.opcode, 62);
+                    assert_eq!(
+                        kr_wire::read_uint(&flags.payload[1..2], Width::U8).unwrap(),
+                        slot
+                    );
+                    assert_eq!(
+                        kr_wire::read_uint(&flags.payload[2..3], Width::U8).unwrap(),
+                        2
+                    );
+                }
+                driver
+                    .packet(&mut login_lane, input(5, vec![0; 9]), &mut writer, 60, None)
+                    .await
+                    .unwrap();
+                assert_eq!(receive(&mut peer, &mut sequence).await.opcode, 7);
+                assert_eq!(sequence, 43 + 3 * (3 + names.len() as u32));
+                assert!(!driver.disconnected(&login_lane).await.unwrap());
+                let mut channel_lane = Lane::channel(2).unwrap();
+                let (mut out, mut remote) = tokio::io::duplex(4096);
+                driver
+                    .packet(
+                        &mut channel_lane,
+                        input(6, channel(&rows)),
+                        &mut out,
+                        60,
+                        None,
+                    )
+                    .await
+                    .unwrap();
+                let mut fresh_sequence = 43;
+                assert_eq!(receive(&mut remote, &mut fresh_sequence).await.opcode, 17);
+                assert!(
+                    driver
+                        .authorities()
+                        .iter()
+                        .all(|h| h.current() && h.connection() == 2)
+                );
+                let handles = driver.authorities().to_vec();
+                assert!(driver.disconnected(&channel_lane).await.unwrap());
+                assert!(handles.iter().all(|h| !h.current()));
+                assert_eq!(active(&temp), 0);
+                driver.finish().await.unwrap();
+            }
         }
         worker.shutdown().await.unwrap();
     });

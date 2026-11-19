@@ -18,6 +18,13 @@ pub(super) fn login(names: &[&str]) -> Vec<u8> {
     body.extend(write_uint(0, Width::U8).unwrap());
     body
 }
+pub(super) fn trial(count: u8) -> Vec<u8> {
+    let mut body = write_uint(count.into(), Width::U8).unwrap();
+    body.extend([0; 16]);
+    body.extend(write_uint(0, Width::U32).unwrap());
+    body.extend(write_uint(0x0200007f, Width::U32).unwrap());
+    body
+}
 pub(super) fn channel(rows: &[(Player, u32)]) -> Vec<u8> {
     let mut body = write_uint(rows.len() as u64, Width::U8).unwrap();
     body.extend(write_uint(255, Width::U8).unwrap());
@@ -51,6 +58,44 @@ pub(super) fn active(temp: &Temp) -> i64 {
             |r| r.get(0),
         )
         .unwrap()
+}
+
+#[test]
+fn trial_roster_uses_the_same_revoke_expiry_and_replacement_fences() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, _, _) = Temp::new();
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let mut retired = Vec::new();
+        for expire in [false, true] {
+            let mut session = LocalSession::new(worker.client(), 1).unwrap();
+            let rows = session
+                .trial(&trial(2), if expire { 1 } else { 60 }, None)
+                .await
+                .unwrap();
+            assert!(retired.iter().all(|old: &LocalAuthority| {
+                rows.iter()
+                    .all(|row| row.0.player_id != old.player().player_id)
+            }));
+            session.redirected(1).unwrap();
+            let handles = session.channel(&channel(&rows), 2).await.unwrap();
+            assert!(retired.iter().all(|old| !old.current()));
+            handles[0].inspect().await.unwrap();
+            if expire {
+                tokio::time::sleep(Duration::from_millis(1200)).await;
+            } else {
+                temp.store()
+                    .revoke(&admin(), rows[1].0.account_id, now())
+                    .unwrap();
+            }
+            assert!(handles[0].inspect().await.is_err());
+            assert!(handles.iter().all(|h| !h.current()));
+            session.finish().await.unwrap();
+            assert_eq!(active(&temp), 0);
+            retired.extend(handles);
+        }
+        worker.shutdown().await.unwrap();
+    });
 }
 
 #[test]

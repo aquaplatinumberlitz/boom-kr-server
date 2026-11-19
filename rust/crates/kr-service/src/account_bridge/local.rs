@@ -200,6 +200,38 @@ impl LocalSession {
         })
     }
 
+    /// The native trial button supplies only a local roster count. The DB
+    /// creates fresh passwordless principals; reported metadata grants nothing.
+    pub async fn trial(
+        &mut self,
+        body: &[u8],
+        ttl: i64,
+        idle: Option<i64>,
+    ) -> Result<Vec<(Player, u32)>> {
+        let request = ingame_wire::parse(62, body)?;
+        let ingame_wire::Players::Trial { count } = request.players else {
+            return Err(Error::UnsupportedWire);
+        };
+        {
+            let mut state = self.shared.lock().map_err(|_| Error::Unavailable)?;
+            if state.phase != Phase::Empty {
+                return Err(Error::Stale);
+            }
+            state.phase = Phase::CheckingLogin;
+        }
+        let mut cancel = Cancel(self.shared.clone(), true);
+        let received = self
+            .client
+            .try_trial_local_current(count, ttl, idle)
+            .map_err(Error::Backend)?
+            .receive()
+            .await
+            .map_err(Error::Backend)?;
+        let rows = self.accept_roster(received)?;
+        cancel.1 = false;
+        Ok(rows)
+    }
+
     /// Native credentials produce DB principals, never fixture identities. The
     /// outer adapter must enable this only on its trusted prelogin transport.
     pub async fn login(
@@ -233,6 +265,15 @@ impl LocalSession {
             .map_err(Error::Backend)?;
         drop(borrowed);
         drop(credentials);
+        let rows = self.accept_roster(received)?;
+        cancel.1 = false;
+        Ok(rows)
+    }
+
+    fn accept_roster(
+        &self,
+        received: crate::account_worker::Received<Vec<Grant>>,
+    ) -> Result<Vec<(Player, u32)>> {
         let mut echoes = Vec::with_capacity(received.value().len());
         for grant in received.value() {
             kr_wire::kr00967::text949x::encode_name(&grant.player.display_name)
@@ -256,7 +297,6 @@ impl LocalSession {
         state.grants = received.accept().map_err(Error::Backend)?;
         state.echoes = echoes;
         state.phase = Phase::Login;
-        cancel.1 = false;
         Ok(state
             .grants
             .iter()

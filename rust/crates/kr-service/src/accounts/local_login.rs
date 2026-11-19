@@ -66,7 +66,7 @@ impl Store {
         // including unknown users. No first player's session is issued yet.
         for (name, (_, password)) in names.iter().zip(credentials) {
             let row: Option<(i64, String, i64, bool)> = self.db.query_row(
-                "SELECT id,password_phc,credential_version,disabled FROM accounts WHERE login=?1",
+                "SELECT id,password_phc,credential_version,disabled FROM accounts WHERE login=?1 AND NOT EXISTS(SELECT 1 FROM guest_accounts WHERE account_id=accounts.id)",
                 [name], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)),
             ).optional()?;
             let valid = verify(password, row.as_ref().map(|r| r.1.as_str()))?;

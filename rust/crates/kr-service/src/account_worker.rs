@@ -168,6 +168,10 @@ pub enum PersistenceResult {
     Character(accounts::CharacterPreference),
 }
 
+enum LocalLoginRequest {
+    Accounts(Vec<(Zeroizing<String>, Zeroizing<Vec<u8>>)>),
+    Guests(u8),
+}
 enum Command {
     EndLocal {
         grants: Vec<Grant>,
@@ -199,7 +203,7 @@ enum Command {
         handoff_ttl: Duration,
     },
     LocalLogin {
-        credentials: Vec<(Zeroizing<String>, Zeroizing<Vec<u8>>)>,
+        request: LocalLoginRequest,
         ttl: i64,
         idle: Option<i64>,
         now: AuthorizationTime,
@@ -331,6 +335,76 @@ impl Drop for Worker {
     }
 }
 impl Client {
+    /// One passwordless roster per trusted native transport; public network
+    /// admission belongs to the bounded prelogin TLS owner.
+    pub fn try_trial_local_current(
+        &self,
+        count: u8,
+        ttl: i64,
+        idle: Option<i64>,
+    ) -> Result<Pending<Vec<Grant>>> {
+        self.submit_trial(count, ttl, idle, AuthorizationTime::ExecutionUtc)
+    }
+    pub fn try_trial_local(
+        &self,
+        count: u8,
+        ttl: i64,
+        idle: Option<i64>,
+        now: i64,
+    ) -> Result<Pending<Vec<Grant>>> {
+        self.submit_trial(count, ttl, idle, AuthorizationTime::Supplied(now))
+    }
+    fn submit_trial(
+        &self,
+        count: u8,
+        ttl: i64,
+        idle: Option<i64>,
+        now: AuthorizationTime,
+    ) -> Result<Pending<Vec<Grant>>> {
+        if !(1..=2).contains(&count)
+            || !(1..=86400).contains(&ttl)
+            || idle.is_some_and(|idle| !(1..=86400).contains(&idle))
+            || matches!(now, AuthorizationTime::Supplied(value) if value < 0)
+        {
+            return Err(Error::InvalidInput);
+        }
+        let (reply, rx) = oneshot::channel();
+        let handoff = Handoff::new();
+        let command = Command::LocalLogin {
+            request: LocalLoginRequest::Guests(count),
+            ttl,
+            idle,
+            now,
+            deadline: Instant::now() + self.queue_ttl,
+            reply,
+            handoff: handoff.clone(),
+            handoff_ttl: self.queue_ttl,
+        };
+        // A fixed separate bucket bounds guest creation even when every request
+        // would otherwise supply a fresh principal. The network owner adds its
+        // peer/prelogin limits; no attacker-chosen metadata keys this table.
+        let mut guard = self.gate.lock().map_err(|_| Error::Closed)?;
+        if guard.sender.as_ref().is_none_or(mpsc::Sender::is_closed) {
+            return Err(Error::Closed);
+        }
+        let key = rate::Limiter::key("native-trial-admission");
+        let admitted = Instant::now();
+        guard.limiter.check(key, admitted)?;
+        guard
+            .sender
+            .as_ref()
+            .ok_or(Error::Closed)?
+            .try_send(command)
+            .map_err(|error| match error {
+                mpsc::error::TrySendError::Full(_) => Error::Busy,
+                mpsc::error::TrySendError::Closed(_) => Error::Closed,
+            })?;
+        guard.limiter.commit(key, admitted);
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: Some(handoff),
+        })
+    }
     /// Trusted transport teardown only. Exact tokens cannot revoke a newer
     /// login, and queue rejection leaves the caller's originals available.
     pub(crate) fn try_end_local(&self, grants: &[Grant]) -> Result<Pending<()>> {
@@ -475,15 +549,17 @@ impl Client {
         let (reply, rx) = oneshot::channel();
         let handoff = Handoff::new();
         let command = Command::LocalLogin {
-            credentials: credentials
-                .iter()
-                .map(|(name, password)| {
-                    (
-                        Zeroizing::new((*name).to_owned()),
-                        Zeroizing::new(password.to_vec()),
-                    )
-                })
-                .collect(),
+            request: LocalLoginRequest::Accounts(
+                credentials
+                    .iter()
+                    .map(|(name, password)| {
+                        (
+                            Zeroizing::new((*name).to_owned()),
+                            Zeroizing::new(password.to_vec()),
+                        )
+                    })
+                    .collect(),
+            ),
             ttl,
             idle,
             now,
@@ -705,7 +781,7 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                 let _ = reply.send(result);
             }
             Command::LocalLogin {
-                credentials,
+                request,
                 ttl,
                 idle,
                 now,
@@ -725,22 +801,33 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                     let _ = reply.send(Err(Error::QueueExpired));
                     continue;
                 }
-                let borrowed: Vec<_> = credentials
-                    .iter()
-                    .map(|(name, password)| (name.as_str(), password.as_slice()))
-                    .collect();
-                let result = match now {
-                    AuthorizationTime::Supplied(time) => {
-                        store.login_local(&borrowed, ttl, idle, time)
+                let result = match request {
+                    LocalLoginRequest::Accounts(credentials) => {
+                        let borrowed: Vec<_> = credentials
+                            .iter()
+                            .map(|(name, password)| (name.as_str(), password.as_slice()))
+                            .collect();
+                        // All credential allocations are erased before awaiting
+                        // group delivery, for either accepted or abandoned work.
+                        match now {
+                            AuthorizationTime::Supplied(time) => {
+                                store.login_local(&borrowed, ttl, idle, time)
+                            }
+                            AuthorizationTime::ExecutionUtc => {
+                                store.login_local_current(&borrowed, ttl, idle)
+                            }
+                        }
                     }
-                    AuthorizationTime::ExecutionUtc => {
-                        store.login_local_current(&borrowed, ttl, idle)
-                    }
+                    LocalLoginRequest::Guests(count) => match now {
+                        AuthorizationTime::Supplied(time) => {
+                            store.trial_local(count, ttl, idle, time)
+                        }
+                        AuthorizationTime::ExecutionUtc => {
+                            store.trial_local_current(count, ttl, idle)
+                        }
+                    },
                 }
                 .map_err(Error::Backend);
-                // Secrets are no longer needed while waiting for a consumer.
-                drop(borrowed);
-                drop(credentials);
                 let grants = match result {
                     Ok(grants) => grants,
                     Err(error) => {
