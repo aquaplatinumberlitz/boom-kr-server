@@ -15,6 +15,15 @@ checker = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(checker)
 
 
+class RecordLineBudgetTest(unittest.TestCase):
+    def test_old_records_are_exempt_and_new_records_have_exact_120_line_limit(self):
+        self.assertEqual(checker.record_line_budget(342, b"x\n" * 500), [])
+        self.assertEqual(checker.record_line_budget(343, b"x\n" * 120), [])
+        self.assertEqual(checker.record_line_budget(344, b"x\r\n" * 120), [])
+        self.assertIn("maximum is 120", checker.record_line_budget(343, b"x\n" * 121)[0])
+        self.assertIn("121 lines", checker.record_line_budget(343, b"x\n" * 120 + b"x")[0])
+
+
 class HashCacheTest(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
