@@ -3182,7 +3182,7 @@ impl Session {
                 let count = next
                     .members
                     .values()
-                    .filter(|peer| peer.key.connection == m.key.connection)
+                    .filter(|peer| peer.key.connection == member.key.connection)
                     .count();
                 if !matches!(count, 1 | 2)
                     || body.len() != 2 + 20 * count
