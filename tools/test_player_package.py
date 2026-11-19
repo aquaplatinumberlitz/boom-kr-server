@@ -5,7 +5,7 @@ import struct
 import tempfile
 import unittest
 
-from player_package import build, digest
+from player_package import build, digest, windows_runtime
 
 
 def index(offset, size):
@@ -69,6 +69,32 @@ class PackageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'prefix'):
             build(self.recipe, self.root / 'output')
         self.assertFalse((self.root / 'output/manifest.json').exists())
+
+    def test_windows_bundle_pins_companion_and_rejects_a_non_pe_binary(self):
+        def pin(path):
+            return dict(path=str(path), bytes=path.stat().st_size, sha256=digest(path))
+        program = self.root / 'first-party.exe'
+        header = bytearray(64)
+        header[:2] = b'MZ'
+        struct.pack_into('<I', header, 60, 64)
+        program.write_bytes(header + b'PE\0\0\x64\x86')
+        cert = self.root / 'public.der'
+        cert.write_bytes(b'test-only-public-certificate')
+        output = self.root / 'windows'
+        summary = build(self.recipe, output)
+        recipe = dict(launcher=pin(program), companion=pin(cert), certificate=pin(cert),
+                      prelogin_certificate=pin(cert), server='127.0.0.1:2000',
+                      prelogin_server='127.0.0.1:2001', ports=[3838, 3938])
+        with self.assertRaisesRegex(ValueError, 'PE x86-64'):
+            windows_runtime(recipe, output, summary['manifest_sha256'])
+        self.assertFalse((output / 'kr-player.exe').exists())
+        recipe['companion'] = pin(program)
+        runtime = windows_runtime(recipe, output, summary['manifest_sha256'])
+        config = json.loads((output / 'launcher.json').read_text())
+        self.assertEqual(config['companion'], 'kr-prelogin.exe')
+        self.assertEqual(config['udp_backend'], 'portable')
+        self.assertEqual(runtime['kr-prelogin.exe'], digest(program))
+        self.assertEqual(config['manifest_sha256'], digest(output / 'manifest.json'))
 
     def test_wrong_executable_pin_and_unpatched_korean_are_rejected(self):
         self.recipe['languages']['ko']['encoding'] = 'cp949'

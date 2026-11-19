@@ -3,6 +3,8 @@
 use crate::{
     FixturePin,
     account_serving::{Active, LaunchRequest, Secret},
+    account_worker::rate::{Limiter, RatePolicy},
+    accounts::Management,
 };
 use kr_tunnel::launch_tls::{self, ServerTls};
 use serde::Deserialize;
@@ -11,7 +13,7 @@ use std::{
     net::{Ipv4Addr, SocketAddrV4, TcpStream},
     os::unix::fs::PermissionsExt,
     path::PathBuf,
-    sync::Arc,
+    sync::{Arc, Mutex},
     time::Duration,
 };
 use tokio::{
@@ -85,6 +87,10 @@ pub(crate) struct Opened {
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
 enum Request {
     Status,
+    Account {
+        login: String,
+        action: Management,
+    },
     Logout {
         session: Secret,
         player_id: i64,
@@ -101,12 +107,30 @@ enum Request {
     },
 }
 
+struct Access {
+    peers: Vec<Ipv4Addr>,
+    registration: Mutex<Limiter>,
+}
+impl Access {
+    fn register(&self, peer: Ipv4Addr) -> bool {
+        let key = Limiter::key(&peer.to_string());
+        let now = std::time::Instant::now();
+        if let Ok(mut table) = self.registration.lock()
+            && table.check(key, now).is_ok()
+        {
+            table.commit(key, now);
+            return true;
+        }
+        false
+    }
+}
+
 fn handle(
     socket: TcpStream,
     tls: ServerTls,
     config: &Config,
     active: &Active,
-    peers: &[Ipv4Addr],
+    access: &Access,
     peer: Ipv4Addr,
     runtime: &tokio::runtime::Handle,
 ) -> io::Result<()> {
@@ -125,6 +149,27 @@ fn handle(
                 b"{\"ok\":true,\"ready\":true}\n".as_slice()
             };
             launch_tls::write_frame(&mut stream, response, launch_tls::RESPONSE_LIMIT)
+        }
+        Request::Account { login, action } => {
+            let result = if matches!(&action, Management::Register { .. }) && !access.register(peer)
+            {
+                None
+            } else {
+                let remaining = stream.sock.remaining()?;
+                match active.client.try_manage(login, action) {
+                    Ok(pending) => runtime
+                        .block_on(async { tokio::time::timeout(remaining, pending.wait()).await })
+                        .ok()
+                        .and_then(Result::ok),
+                    Err(_) => None,
+                }
+            };
+            let response = Zeroizing::new(match result {
+                Some(Some(code)) => format!("{{\"ok\":true,\"recovery_code\":\"{}\"}}\n", *code),
+                Some(None) => "{\"ok\":true}\n".into(),
+                None => "{\"ok\":false,\"error\":\"denied_or_busy\"}\n".into(),
+            });
+            launch_tls::write_frame(&mut stream, response.as_bytes(), launch_tls::RESPONSE_LIMIT)
         }
         Request::Logout { session, player_id } => {
             let token = crate::accounts::Token::parse(&session.0)
@@ -207,7 +252,7 @@ fn handle(
                 .block_on(async {
                     tokio::time::timeout(
                         remaining,
-                        crate::account_serving::prepare_launch(request, active, peers),
+                        crate::account_serving::prepare_launch(request, active, &access.peers),
                     )
                     .await
                 })
@@ -239,7 +284,17 @@ pub(crate) async fn serve(
     let quota = Arc::new(Semaphore::new(config.max_connections));
     let mut jobs = JoinSet::new();
     let config = Arc::new(config);
-    let peers = Arc::new(peers);
+    let access = Arc::new(Access {
+        peers,
+        registration: Mutex::new(
+            Limiter::new(RatePolicy {
+                attempts: 3,
+                principals: 256,
+                interval: Duration::from_secs(60),
+            })
+            .map_err(|_| io::Error::other("registration rate policy"))?,
+        ),
+    });
     let runtime = tokio::runtime::Handle::current();
     loop {
         if *stop.borrow() {
@@ -258,14 +313,14 @@ pub(crate) async fn serve(
             incoming = opened.listener.accept() => {
                 let (socket, address) = incoming?;
                 let std::net::IpAddr::V4(peer) = address.ip() else { continue; };
-                if !peers.contains(&peer) { continue; }
+                if !access.peers.contains(&peer) { continue; }
                 let Ok(permit) = quota.clone().try_acquire_owned() else { continue; };
                 let socket = socket.into_std()?;
                 socket.set_nonblocking(false)?;
-                let (tls, config, active, peers, runtime) = (opened.tls.clone(), config.clone(), active.clone(), peers.clone(), runtime.clone());
+                let (tls, config, active, access, runtime) = (opened.tls.clone(), config.clone(), active.clone(), access.clone(), runtime.clone());
                 jobs.spawn_blocking(move || {
                     let _permit = permit;
-                    handle(socket, tls, &config, &active, &peers, peer, &runtime)
+                    handle(socket, tls, &config, &active, &access, peer, &runtime)
                 });
             },
         }
@@ -363,6 +418,21 @@ mod tests {
                     assert_eq!(worker.client().try_authorize(&token, player.player_id, now).unwrap().wait().await,
                         Ok(player.clone()));
                     assert!(worker.client().try_authorize(&token, player.player_id + 1, now).unwrap().wait().await.is_err());
+                }
+            }
+            for index in 0..4 {
+                let cert = certificate.clone();
+                let response = tokio::task::spawn_blocking(move || {
+                    let mut tls = launch_tls::connect(TcpStream::connect(address).unwrap(), cert, Duration::from_secs(3)).unwrap();
+                    let request = format!("{{\"op\":\"account\",\"login\":\"New{index}\",\"action\":{{\"kind\":\"register\",\"display_name\":\"New{index}\",\"password\":\"self-service-test-only\"}}}}\n");
+                    launch_tls::write_frame(&mut tls, request.as_bytes(), launch_tls::REQUEST_LIMIT).unwrap();
+                    serde_json::from_slice::<serde_json::Value>(&launch_tls::read_frame(&mut tls, launch_tls::RESPONSE_LIMIT).unwrap()).unwrap()
+                }).await.unwrap();
+                if index < 3 {
+                    assert_eq!(response["ok"], true);
+                    assert_eq!(response["recovery_code"].as_str().unwrap().len(), 64);
+                } else {
+                    assert_eq!(response, serde_json::json!({"ok":false,"error":"denied_or_busy"}));
                 }
             }
             halt.send(true).unwrap();

@@ -65,10 +65,10 @@ def build(config, binaries, out, target, source_root=None):
         raise ValueError('Gói yêu cầu account database và relay xác thực hiện hành')
     assets(value)
     admission.update(database='@STATE@/accounts.sqlite', launch_socket='@STATE@/launch.sock')
-    if admission.get('public_launcher') is not None:
-        # The certificate is public and hash-pinned by assets(); its matching
-        # private key is provisioned separately, never copied into the bundle.
-        admission['public_launcher']['private_key'] = '@STATE@/launcher.pk8'
+    # Public TLS pins are assets; matching private keys are provisioned separately.
+    for section, key in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
+        if admission.get(section) is not None:
+            admission[section]['private_key'] = '@STATE@/' + key
     architecture = None
     for name in ['kr-service', 'kr-admin', 'kr-companion']:
         source = Path(binaries) / name

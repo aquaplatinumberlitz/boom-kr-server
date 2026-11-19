@@ -40,7 +40,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, C
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), nối đăng nhập trong game | [CP347](evidence/checkpoints/records/CP347.json) kiểm tự động hai ván 2P trên cùng TLS và lưu kết quả cho cả hai hồ sơ. Windows 2P đã hiện kết quả và về phòng; Start ván kế trên Windows chưa xác nhận. Launcher, companion Windows/Wine, cài sạch, Internet thật, tải và vận hành còn mở. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), nối đăng nhập trong game | [CP352](evidence/checkpoints/records/CP352.json) sửa quyền ghi, gói Windows vào sảnh, chơi hết ván 2P và về phòng. Start ván kế chưa tạo ván mới; còn kiểm Wine và Internet thật. |
    | Tải/giám sát/soak | Chốt tần suất UDP từ client thật và ngưỡng trước đo, 50 người/8 phòng cùng hai phòng native, rồi 24 giờ tải nền; đo startup failure, bộ nhớ/cổng/phòng. |
    | Admin/backup/rollback | Audit thao tác admin, snapshot khi live và restore vào máy sạch/native trận mới, kill/restart và nâng cấp/quay lại binary. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;

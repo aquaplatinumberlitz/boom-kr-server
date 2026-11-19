@@ -1,5 +1,7 @@
 //! Company companion starts before the game and accepts no account password.
 #![forbid(unsafe_code)]
+use kr_tunnel::prelogin::heartbeat::Heartbeat;
+use kr_tunnel::prelogin::trace::{Startup, StopCause, Trace};
 use serde::Deserialize;
 use std::{io, net::SocketAddrV4, path::PathBuf};
 use tokio::sync::watch;
@@ -10,6 +12,14 @@ struct Config {
     certificate: PathBuf,
     ports: Vec<u16>,
     cancel_file: PathBuf,
+    #[serde(default)]
+    ready_file: Option<PathBuf>,
+    #[serde(default)]
+    owner_heartbeat: Option<PathBuf>,
+    #[serde(default)]
+    udp_backend: kr_tunnel::UdpBackend,
+    #[serde(default)]
+    diagnostics: bool,
 }
 #[tokio::main]
 async fn main() -> io::Result<()> {
@@ -31,25 +41,61 @@ async fn main() -> io::Result<()> {
     {
         return Err(io::Error::other("prelogin configuration bounds"));
     }
-    let mut endpoint = quinn::Endpoint::client("0.0.0.0:0".parse().expect("constant bind"))?;
-    endpoint.set_default_client_config(kr_tunnel::prelogin::client_config(std::fs::read(
-        config.certificate,
-    )?)?);
-    let connection = kr_tunnel::prelogin::connect(&endpoint, config.server.into()).await?;
-    let listeners = kr_tunnel::prelogin::bind(&config.ports).await?;
+    let trace = if config.diagnostics {
+        let path = std::path::Path::new(&args[1]);
+        Trace::create(
+            path.parent()
+                .ok_or_else(|| io::Error::other("prelogin run directory"))?,
+        )?
+    } else {
+        Trace::default()
+    };
+    let endpoint = std::fs::read(config.certificate)
+        .and_then(|cert| kr_tunnel::prelogin::endpoint(cert, config.udp_backend));
+    trace.startup(Startup::Endpoint, endpoint.is_ok());
+    let endpoint = endpoint?;
+    let listeners = kr_tunnel::prelogin::bind_traced(&config.ports, &trace).await?;
+    if let Some(path) = config.ready_file {
+        std::fs::OpenOptions::new()
+            .create_new(true)
+            .write(true)
+            .open(path)?;
+    }
+    trace.startup(Startup::Ready, true);
     println!("{{\"event\":\"prelogin_ready\"}}");
     let (halt, stop) = watch::channel(false);
     let cancel = config.cancel_file;
+    let heartbeat = config.owner_heartbeat;
+    let lifecycle = trace.clone();
     let task = tokio::spawn(async move {
-        loop {
+        let mut ticker = tokio::time::interval(std::time::Duration::from_millis(100));
+        let signal = tokio::signal::ctrl_c();
+        tokio::pin!(signal);
+        let mut progress = Heartbeat::new(std::time::Instant::now());
+        let cause = loop {
             tokio::select! {
-                _=tokio::signal::ctrl_c()=>break,
-                _=tokio::time::sleep(std::time::Duration::from_millis(100))=>if cancel.exists(){break;}
+                _ = &mut signal => break StopCause::Interrupt,
+                _ = ticker.tick() => {
+                    if cancel.exists() { break StopCause::Cancel; }
+                    if heartbeat.as_ref().is_some_and(|p|
+                        progress.expired(p, std::time::Instant::now())) {
+                        break StopCause::Heartbeat;
+                    }
+                }
             }
-        }
+        };
+        lifecycle.stop(cause);
         halt.send_replace(true);
     });
-    let result = kr_tunnel::prelogin::companion(connection, listeners, stop).await;
+    let result = kr_tunnel::prelogin::companion_traced(
+        endpoint.clone(),
+        config.server.into(),
+        listeners,
+        stop,
+        config.udp_backend,
+        trace,
+    )
+    .await;
     task.abort();
     let _ = task.await;
     endpoint.close(0u8.into(), b"companion stopped");

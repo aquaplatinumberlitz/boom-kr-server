@@ -35,6 +35,7 @@ jobs:
           tools.test_checkpoint_evidence_lean
           tools.test_local_retention
           tools.test_rust_service_package
+          tools.test_player_package
           tools.test_export_preset
           tools.test_four_bundle
           tools.test_issue_links

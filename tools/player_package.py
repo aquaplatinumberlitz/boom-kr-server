@@ -5,9 +5,11 @@ Recipe local khai base, pack_stages theo thứ tự nối và ba languages. Khô
 """
 import argparse
 import hashlib
+import ipaddress
 import json
 from pathlib import Path, PurePosixPath
 import shutil
+import struct
 
 from content_census import decrypt_idx, parse_idx
 
@@ -149,16 +151,84 @@ def build(recipe, out):
                 languages=list(languages), packs=len(packs))
 
 
+def windows_runtime(recipe, output, manifest_sha256):
+    """Stage only pinned first-party programs, public certificates and launch settings."""
+    if set(recipe) != {'launcher', 'companion', 'certificate', 'prelogin_certificate',
+                       'server', 'prelogin_server', 'ports'}:
+        raise ValueError('Recipe Windows có trường thiếu hoặc không hỗ trợ')
+    if digest(output / 'manifest.json') != manifest_sha256:
+        raise ValueError('Manifest game không khớp pin')
+    for key in ('server', 'prelogin_server'):
+        host, port = recipe[key].rsplit(':', 1)
+        ip = ipaddress.IPv4Address(host)
+        if ip.is_unspecified or ip.is_multicast or int(ip) == 0xffffffff or not 1 <= int(port) <= 65535:
+            raise ValueError('Endpoint launcher không hợp lệ')
+    ports = recipe['ports']
+    if (not isinstance(ports, list) or not 1 <= len(ports) <= 32
+            or any(type(port) is not int or not 1 <= port <= 65535 for port in ports)
+            or len(set(ports)) != len(ports)):
+        raise ValueError('Cổng loopback không hợp lệ')
+
+    def windows_exe(path):
+        with path.open('rb') as f:
+            header = f.read(64)
+            if len(header) != 64 or header[:2] != b'MZ':
+                raise ValueError('Binary không phải PE x86-64')
+            offset, = struct.unpack_from('<I', header, 60)
+            f.seek(offset)
+            if f.read(6) != b'PE\0\0\x64\x86':
+                raise ValueError('Binary không phải PE x86-64')
+
+    files = {
+        'kr-player.exe': checked_pin(recipe['launcher']),
+        'kr-prelogin.exe': checked_pin(recipe['companion']),
+        'account.der': checked_pin(recipe['certificate']),
+        'prelogin.der': checked_pin(recipe['prelogin_certificate']),
+        'Tao-loi-tat.ps1': ROOT / 'tools/player_shortcut.ps1',
+    }
+    for name, source in files.items():
+        if name.endswith('.exe'):
+            windows_exe(source)
+        if name.endswith('.der') and not 0 < source.stat().st_size <= 8192:
+            raise ValueError('Chứng thư công khai vượt giới hạn')
+    for name, source in files.items():
+        with source.open('rb') as src, (output / name).open('xb') as dst:
+            shutil.copyfileobj(src, dst)
+    config = dict(server=recipe['server'], prelogin_server=recipe['prelogin_server'],
+                  ports=ports, certificate='account.der', prelogin_certificate='prelogin.der',
+                  companion='kr-prelogin.exe', bundle='.', manifest_sha256=manifest_sha256,
+                  installation='game', state='state', udp_backend='portable')
+    with (output / 'launcher.json').open('x') as file:
+        json.dump(config, file, indent=2)
+        file.write('\n')
+    (output / 'MO-GAME.txt').write_text(
+        'Giải nén vào thư mục có quyền ghi trên ổ NTFS. Mở kr-player.exe.\n'
+        'Có thể chạy Tao-loi-tat.ps1 sau khi giải nén để tạo lối tắt Boom Play.\n'
+        'Chọn ngôn ngữ, bấm Vào game, rồi đăng nhập hoặc chơi thử trong game.\n'
+        'Đừng mở CA.exe trực tiếp: game cần đường TLS do launcher mở.\n',
+        encoding='utf-8-sig',
+    )
+    return {
+        name: digest(output / name)
+        for name in (*files, 'launcher.json', 'MO-GAME.txt')
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--recipe', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--windows-runtime', type=Path, help='Recipe local chứa launcher, companion và certificate đã pin')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
     output = args.out.resolve()
     if output == local or not output.is_relative_to(local):
         parser.error('Gói và tài sản client phải ở local/')
-    print(json.dumps(build(json.loads(args.recipe.read_text()), output)))
+    summary = build(json.loads(args.recipe.read_text()), output)
+    if args.windows_runtime:
+        summary['windows_runtime'] = windows_runtime(
+            json.loads(args.windows_runtime.read_text()), output, summary['manifest_sha256'])
+    print(json.dumps(summary))
 
 
 if __name__ == '__main__':

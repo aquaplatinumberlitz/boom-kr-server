@@ -1,0 +1,70 @@
+{
+  "id": "CP351",
+  "previous": "CP350",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T20:05:25.444994+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Tệp cache, quyền ghi hay byte qua companion giải thích EOF sau phản hồi 238 trên Windows?",
+  "scope": "M8 phần 5, #476. Một Windows VM cô lập, hai ca A/B cùng cây ko. B chỉ tách CALog thành bản ghi được; không thay cache.",
+  "context_commit": "ae39e96114a9a3dfbf45c01b039624565a30e932",
+  "artifacts": [
+    {"sha256": "0ac1861acf11ee5cc84647eac8030d488b241dc6ebb0f6cb9fec2990cec4b468"},
+    {"sha256": "6cca2a1e04d641c5ae9fb37e8a82ef319cb0d59ca87d8406fe450e866f4b6087"},
+    {"sha256": "0e80e41dd322fa2a033de2bd46e3be82accea8d46581bd4df1dca253d2e6824b"},
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "be2435153a1f52f9acabb5a6e6422c7c3f8cbcdf6e24e9b715b0c6635435b27b"}
+  ],
+  "locators": [
+    "local/research/codex/m8-launcher-part5-channel-diag"
+  ],
+  "findings": [
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/RESEARCH.md", "summary": "Cả 10 tệp .ssd ko trên gói trùng hash đầu vào của CP347, gồm cache động và stage map.", "evidence": ["SEED-SSD"], "limits": "Đối chiếu hash trước khi chạy; không suy trạng thái file sau khi client dùng."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/lobby-profile.md", "summary": "A và B nhận 752 byte trùng CP347 đến hết phản hồi 238. Game đóng luồng trước khi vào sảnh. CALog mới của B ghi 528/715/715, không thấy thông báo lỗi ghi.", "evidence": ["WIRE-COMPARE", "B-CALOG", "CONTROL", "GUEST", "SERVER"], "limits": "Luồng lên khác byte từ offset 52; không suy toàn bộ hai chiều giống nhau. B chỉ sửa quyền CALog và vẫn tái hiện."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md", "summary": "FxDynMapInfo.ssd và FxStageMap.ssd chỉ đọc, mở ghi bị từ chối và hash sau chạy không đổi.", "evidence": ["ACL", "A-BEFORE", "A-AFTER", "B-BEFORE", "B-AFTER"], "limits": "Chưa có đối chứng đổi riêng quyền cache hay log của thao tác ghi trong handler; quan hệ với EOF chưa rõ."}
+  ],
+  "verification": [
+    {"check": "Hash .ssd đầu vào và so từng byte luồng kênh CP347.", "result": "pass", "evidence": ["SEED-SSD", "WIRE-COMPARE", "BUILD"], "limits": "Build chẩn đoán chỉ ghi cổng 3858, hai hướng tối đa 4096 byte mỗi stream. Không ghi cổng đăng nhập, không nằm trong bản phát hành."},
+    {"check": "Windows chẩn đoán từ launcher qua 2P tới UI sảnh.", "result": "fail", "evidence": ["GUEST", "CONTROL", "SERVER", "B-CALOG"], "limits": "Hai ca trong một VM cùng gói. Chưa dùng lượt nghiệm thu, không sửa khi chưa phân lập được nguyên nhân."},
+    {"check": "Xuất dữ liệu và dọn VM riêng.", "result": "pass", "evidence": ["CLEAN-VM", "CLEAN-SCRATCH", "SUMMARY"], "limits": "Dọn 6,52 GB theo kích thước biểu kiến; giữ log và con trỏ hash, không động tới VM khác."}
+  ],
+  "delta": {"added": ["So byte luồng kênh và trạng thái tệp trước/sau."], "corrected": ["Nội dung .ssd đầu vào và byte nhận đến 238 không khác ca dương CP347 trong phạm vi đã đo."], "superseded": []},
+  "blockers": [
+    "Chưa xác định lý do game đóng luồng sau 238; lượt nghiệm thu chưa chạy."
+  ],
+  "next_steps": [
+    {"id": "M8-476-startup", "task": "M8-476", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Nếu mở ca tiếp, phân lập riêng quyền ghi của cache động và đo kết quả xử lý 238; không suy nguyên nhân từ cờ ReadOnly."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-19T20:05:25.444994+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; director xử lý tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi mốc đối chứng."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi giới hạn ở dòng gói người chơi."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi hợp đồng native."},
+    {"path": "docs/protocol/lobby-profile.md", "state": "unchanged", "reason": "Đối chứng không đổi ngữ nghĩa handler đã đo."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Thu hẹp câu hỏi EOF sau 238."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP350 từ README."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm con trỏ evidence."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP351.json", "state": "updated", "reason": "Ghi đo file và byte trên Windows."}
+  ],
+  "evidence": [
+    {"id": "SUMMARY", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/result-summary.json", "bytes": 3477, "sha256": "b69065712fb1fd3a398d67bcc5739d92b12592fae22a051cab3b760c7b673a22"},
+    {"id": "SEED-SSD", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/ssd-before-compare.json", "bytes": 2479, "sha256": "53bccca419c027ce84088e9904d2f39335c7b008ca19d401715067869ce8c258"},
+    {"id": "WIRE-COMPARE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/channel-compare.json", "bytes": 14379, "sha256": "5c7c5c1d0b20463d62edffd326f089a4b5ca4b3e6a1f5c25c55929e22475c246"},
+    {"id": "ACL", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/guest-export/acl.txt", "bytes": 1803, "sha256": "a3c012387550de51977328aa7836a214abfe15867dc3fabf71df18cafe9e96d7"},
+    {"id": "A-BEFORE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/guest-export/a-before.json", "bytes": 4621, "sha256": "a0e52c668b33c10c5669bfc576b4b2bf6dc31c45e65f6eac53c069f2ff6076ae"},
+    {"id": "A-AFTER", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/guest-export/a-after.json", "bytes": 2476, "sha256": "4274ccd80e7e288c300e122e10f4fac4ea07c43d577f3e661b5780c04973658f"},
+    {"id": "B-BEFORE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/guest-export/b-before.json", "bytes": 4782, "sha256": "0cc9c4a99325945723ae82ced4171d5f457de9c4990c5ff2a9ee64829d5f1398"},
+    {"id": "B-AFTER", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/guest-export/b-after.json", "bytes": 2466, "sha256": "590b7532a6eaace7d3a1328865acda3036f371d71d30cea931830e03b4f38f73"},
+    {"id": "B-CALOG", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/guest-export/b-calog.log", "bytes": 2487, "sha256": "9bd25f0b6c0b617532d87bdf7abe7f5653c15380140977f4cc3f548b0100397b"},
+    {"id": "GUEST", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/guest-export/result.json", "bytes": 1001, "sha256": "82d0344095b16edc146b1c3a0ae82aaa57729c521b7fd24b8fa6f028689a4071"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/service/rust-events.jsonl", "bytes": 1111, "sha256": "6497c6f681f8cbda8e73cf22c5fbc3edcc824035876ea4e3fa18f298628c2a40"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/diag-build.log", "bytes": 2233, "sha256": "a873d545bd6d934b61300002398f8b614bfc22e1862838d6986cfa3f2ea9c377"},
+    {"id": "CLEAN-VM", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/run-cleanup-result.json", "bytes": 661, "sha256": "7be1efe5aab0fca9f3d98412181fbd6dc855dfe241eac714210d5f244eed6c2f"},
+    {"id": "CLEAN-SCRATCH", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/scratch-delete-manifest.json", "bytes": 641, "sha256": "0ac941dd8225881b61fb2ccd1fee9b88a6b4a7a89a8fbae4ccda061a2323c674"},
+    {"id": "CONTROL", "kind": "local", "path": "local/research/codex/m8-launcher-part5-channel-diag/controller.json", "bytes": 263, "sha256": "75ccb0e58acc0fbb16f5f01981aaf60eb701779d213a58e1e1aa8621e2b350bf"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-launcher-part5-channel-diag", "path": "local/evidence-manifests/d73c5fda6c8573f1e671bee41370052365aaa5a73e23a7da2bbaae018c172522.jsonl", "sha256": "d73c5fda6c8573f1e671bee41370052365aaa5a73e23a7da2bbaae018c172522", "bytes": 3165, "count": 15, "files_bytes": 31902}
+  ]
+}

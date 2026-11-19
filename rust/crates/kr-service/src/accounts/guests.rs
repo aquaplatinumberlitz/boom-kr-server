@@ -102,7 +102,7 @@ mod tests {
         let grant = store
             .login("Alice", b"test-only-password-one", 60, 101)
             .unwrap();
-        store.db.execute_batch("DROP INDEX guest_account_expiry; DROP TABLE guest_accounts; DELETE FROM schema_migrations WHERE version=4; PRAGMA user_version=3;").unwrap();
+        store.db.execute_batch("DROP TABLE account_recovery; DROP INDEX guest_account_expiry; DROP TABLE guest_accounts; DELETE FROM schema_migrations WHERE version>=4; PRAGMA user_version=3;").unwrap();
         drop(store);
         let mut reopened = temp.store();
         assert_eq!(
@@ -117,7 +117,7 @@ mod tests {
                 .db
                 .pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))
                 .unwrap(),
-            4
+            super::SCHEMA_VERSION
         );
         let guests = reopened.trial_local(2, 30, None, 103).unwrap();
         assert!(

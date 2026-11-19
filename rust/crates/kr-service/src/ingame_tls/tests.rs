@@ -680,6 +680,7 @@ fn resources(client: Client) -> Arc<Resources> {
             max_unauthenticated: 2,
             max_per_ip: 2,
             prelogin_seconds: 10,
+            admissions_per_ip_per_minute: 5,
             session_ttl_seconds: 60,
             session_idle_seconds: 30,
         },
@@ -1340,14 +1341,14 @@ fn peer_admission_is_bounded_and_releases_active_slots_without_resetting_rate() 
     let shared = Arc::new(Mutex::new(Admission::default()));
     let now = Instant::now();
     let ip = "127.0.0.1".parse().unwrap();
-    let one = Admission::admit(&shared, ip, 1, now).unwrap();
-    assert!(Admission::admit(&shared, ip, 1, now).is_err());
+    let one = Admission::admit(&shared, ip, 1, 7, now).unwrap();
+    assert!(Admission::admit(&shared, ip, 1, 7, now).is_err());
     drop(one);
-    for _ in 0..4 {
-        drop(Admission::admit(&shared, ip, 1, now).unwrap());
+    for _ in 0..6 {
+        drop(Admission::admit(&shared, ip, 1, 7, now).unwrap());
     }
-    assert!(Admission::admit(&shared, ip, 1, now).is_err());
-    drop(Admission::admit(&shared, ip, 1, now + Duration::from_secs(60)).unwrap());
+    assert!(Admission::admit(&shared, ip, 1, 7, now).is_err());
+    drop(Admission::admit(&shared, ip, 1, 7, now + Duration::from_secs(60)).unwrap());
     let mut retained = Vec::new();
     for n in 1..=255 {
         retained.push(
@@ -1355,6 +1356,7 @@ fn peer_admission_is_bounded_and_releases_active_slots_without_resetting_rate() 
                 &shared,
                 IpAddr::V4(Ipv4Addr::new(10, 0, 0, n)),
                 1,
+                5,
                 now + Duration::from_secs(60),
             )
             .unwrap(),
@@ -1365,6 +1367,7 @@ fn peer_admission_is_bounded_and_releases_active_slots_without_resetting_rate() 
             &shared,
             "10.1.0.1".parse().unwrap(),
             1,
+            5,
             now + Duration::from_secs(60)
         )
         .is_err()
@@ -1375,6 +1378,7 @@ fn peer_admission_is_bounded_and_releases_active_slots_without_resetting_rate() 
             &shared,
             "10.1.0.1".parse().unwrap(),
             1,
+            5,
             now + Duration::from_secs(120)
         )
         .is_ok()
@@ -1409,4 +1413,106 @@ fn owner_end_event_keeps_safe_guard_and_opcode_without_underlying_error_text() {
             "opcode": 118, "subtype": null,
         })
     );
+}
+
+#[test]
+fn companion_reopens_expired_wcp_owner_and_authenticates_two_accounts_on_next_socket() {
+    use tokio::io::AsyncWriteExt;
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let mut store = Store::open(&temp.db()).unwrap();
+    let admin = Admin {
+        actor: "test",
+        reason: "lazy companion regression",
+    };
+    store.begin_instance(&admin, 100).unwrap();
+    for name in ["AlphaOne", "BetaTwo"] {
+        store
+            .create_account(&admin, name, name, PASSWORD, 100)
+            .unwrap();
+    }
+    drop(store);
+    runtime().block_on(async {
+        tokio::time::timeout(Duration::from_secs(15), async {
+            let worker = crate::account_worker::Worker::open(temp.db(), 4, Duration::from_secs(3))
+                .await
+                .unwrap();
+            let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let local = listener.local_addr().unwrap();
+            let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+            let endpoint = quinn::Endpoint::server(
+                prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
+                "127.0.0.1:0".parse().unwrap(),
+            )
+            .unwrap();
+            let server = endpoint.local_addr().unwrap();
+            let backend = kr_tunnel::UdpBackend::Portable;
+            let client_endpoint = prelogin::endpoint(cert, backend).unwrap();
+            let (halt, stop) = watch::channel(false);
+            let companion = tokio::spawn(prelogin::companion_on_demand(
+                client_endpoint,
+                server,
+                vec![listener],
+                stop.clone(),
+                backend,
+            ));
+            assert!(
+                tokio::time::timeout(Duration::from_millis(150), endpoint.accept())
+                    .await
+                    .is_err()
+            );
+            let worker_client = worker.client();
+            let server = tokio::spawn(async move {
+                for time in [1, 10] {
+                    let mut resource = resources(worker_client.clone());
+                    Arc::get_mut(&mut resource).unwrap().ports = vec![local.port()];
+                    Arc::get_mut(&mut resource).unwrap().config.prelogin_seconds = time;
+                    let tls = endpoint.accept().await.unwrap().await.unwrap();
+                    let permit = Arc::new(Semaphore::new(1)).acquire_owned().await.unwrap();
+                    let result = connection(tls, resource, stop.clone(), permit).await;
+                    if time == 1 {
+                        assert_eq!(owner_ended(&result)["guard"], "prelogin_deadline");
+                    }
+                }
+            });
+            let mut wcp = tokio::net::TcpStream::connect(local).await.unwrap();
+            let mut hello = [0; 15];
+            wcp.read_exact(&mut hello).await.unwrap();
+            wcp.write_all(&kr_wire::encode(&[0; 37], 0, &[], 40).unwrap())
+                .await
+                .unwrap();
+            wcp.read_exact(&mut hello).await.unwrap();
+            assert_eq!(hello, [1; 15]);
+            match wcp.read(&mut hello).await {
+                Ok(0) => (),
+                Err(e) if e.kind() == io::ErrorKind::ConnectionReset => (),
+                other => panic!("expired WCP socket still open: {other:?}"),
+            }
+            assert_eq!(temp.active(), 0);
+            let mut login = tokio::net::TcpStream::connect(local).await.unwrap();
+            login.read_exact(&mut hello).await.unwrap();
+            login
+                .write_all(&kr_wire::encode(&[0; 37], 1, &credentials(), 40).unwrap())
+                .await
+                .unwrap();
+            let mut header = [0; 37];
+            login.read_exact(&mut header).await.unwrap();
+            let n = u32::from_le_bytes(header[13..17].try_into().unwrap()) as usize;
+            assert!((2..=512).contains(&n));
+            let mut packet = header.to_vec();
+            packet.resize(38 + n, 0);
+            login.read_exact(&mut packet[37..]).await.unwrap();
+            let auth = kr_wire::decode(&packet, 43).unwrap();
+            assert_eq!(auth.opcode, 4);
+            assert_eq!(read_uint(&auth.payload[..1], Width::U8).unwrap(), 0);
+            assert_eq!(temp.active(), 2);
+            halt.send_replace(true);
+            companion.await.unwrap().unwrap();
+            server.await.unwrap();
+            worker.shutdown().await.unwrap();
+            assert_eq!(temp.active(), 0);
+        })
+        .await
+        .unwrap();
+    });
 }

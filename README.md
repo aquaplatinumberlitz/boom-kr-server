@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP347: Windows 2P qua TLS đã hiện kết quả và trở về phòng; Start ván kế đạt trong test tự động.** [Giới hạn và bằng chứng](docs/evidence/checkpoints/records/CP347.json). M8 còn mở.
+**CP352: Gói Windows ghi được cache, chơi hết ván 2P và trở về phòng. Start ván kế chưa đạt.** [Nghiệm thu và giới hạn](docs/evidence/checkpoints/records/CP352.json). M8 còn mở.
 
 ## Bắt đầu
 

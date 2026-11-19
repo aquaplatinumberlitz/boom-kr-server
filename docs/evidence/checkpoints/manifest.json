@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP347",
-  "completed_count": 347,
+  "last_id": "CP352",
+  "completed_count": 352,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1187,6 +1187,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414"
+    },
+    {
+      "id": "M8-476",
+      "state": "open",
+      "canonical": "docs/PLAN.md",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476"
     }
   ],
   "version": 2,
@@ -3966,6 +3972,46 @@
       "path": "docs/evidence/checkpoints/records/CP347.json",
       "bytes": 8596,
       "sha256": "93fc5ad8fa41c85a7dc512c7ee36159a7ea1492aa8098ad128a58edce5c4d9ce"
+    },
+    {
+      "id": "CP348",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-19T18:37:02.618150+00:00",
+      "path": "docs/evidence/checkpoints/records/CP348.json",
+      "bytes": 9681,
+      "sha256": "137cb7d783fafe78d9e93c48221333ee939e67aa1fe7a9a2040e716fb3ee45a3"
+    },
+    {
+      "id": "CP349",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-19T19:09:06.964171+00:00",
+      "path": "docs/evidence/checkpoints/records/CP349.json",
+      "bytes": 6559,
+      "sha256": "737f4de73be35ce46f42f223ab24564b3843ed7f8ebb7405b16111b80f3246e1"
+    },
+    {
+      "id": "CP350",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-19T19:42:28.594657+00:00",
+      "path": "docs/evidence/checkpoints/records/CP350.json",
+      "bytes": 9947,
+      "sha256": "40d513d5629dd46aecd05fc41074602860cca4c051782e227d93544b08d552e4"
+    },
+    {
+      "id": "CP351",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-19T20:05:25.444994+00:00",
+      "path": "docs/evidence/checkpoints/records/CP351.json",
+      "bytes": 8903,
+      "sha256": "9ee89c89b82ce6b685be2171dd9d38da2fa8578616ba7b95f704cd8019537e9b"
+    },
+    {
+      "id": "CP352",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-19T20:30:49.501983+00:00",
+      "path": "docs/evidence/checkpoints/records/CP352.json",
+      "bytes": 9012,
+      "sha256": "50a4d05a075b4fa0577829e20bda03a904c83a156e8120eba868bc1c5744e92b"
     }
   ],
   "audit_policy": {

@@ -302,6 +302,9 @@ impl Driver {
             authorities: Vec::new(),
         })
     }
+    pub fn has_roster(&self) -> bool {
+        self.local_count != 0
+    }
     pub fn authorities(&self) -> &[LocalAuthority] {
         &self.authorities
     }

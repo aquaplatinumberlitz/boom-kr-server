@@ -1,0 +1,61 @@
+{
+  "id": "CP349",
+  "previous": "CP348",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T19:09:06.964171+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Khôi phục phần đuôi pack về đúng CP347 có đưa gói launcher qua splash tới LoginStage và Start ván hai không?",
+  "scope": "Đối chứng M8 phần 5, #476. Một lượt Windows VM cô lập; giữ nguyên exe tương thích, launcher, companion và dữ liệu ngoài pack.",
+  "context_commit": "7e5317b0295075f50dacd318c88e9327480f41d0",
+  "artifacts": [
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "be2435153a1f52f9acabb5a6e6422c7c3f8cbcdf6e24e9b715b0c6635435b27b"},
+    {"sha256": "e613147b82213d897673c4471c20c8128fbde72c019d42fddaf2da3ebcd376fe"},
+    {"sha256": "637f22d0c5c991e467176307cabb591808b309edd55e83a7f736f6ff0dcbef6d"},
+    {"sha256": "0ac1861acf11ee5cc84647eac8030d488b241dc6ebb0f6cb9fec2990cec4b468"},
+    {"sha256": "d5f784c811a65f811fa11ecca3c5e4211a237edda35e06686624c85475b44427"}
+  ],
+  "locators": [
+    "local/research/codex/m8-launcher-part5-pack-windows"
+  ],
+  "findings": [
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/RESEARCH.md", "summary": "Khôi phục bảy phần đuôi; 13/13 pack khớp CP347. Payload ngoài pack và binary khớp CP348.", "evidence": ["COMPARE", "RUN"], "limits": "51467 entry của 13 file chỉ mục ko nằm trong kích thước pack CP348 theo parser hiện hành; không suy cách client đọc."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md", "summary": "Windows mở launcher, companion và game. Gói hiện splash rồi thoát trước LoginStage dù đã khôi phục pack.", "evidence": ["GUEST", "UI", "SERVICE", "RUN"], "limits": "Chưa thấy roster hoặc trận. Service ghi owner_lifecycle; CALog cũ không đổi và không có mục WER liên quan trong cửa sổ đã xem. Chưa xác định nguyên nhân."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu build với 13 pack CP347 và byte ngoài pack CP348.", "result": "pass", "evidence": ["COMPARE", "GUEST"], "limits": "Chỉ xác nhận đúng đầu vào của phép đối chứng."},
+    {"check": "Windows từ launcher đến Start ván hai.", "result": "fail", "evidence": ["GUEST", "UI", "SERVICE"], "limits": "Một lần chạy; dừng trước LoginStage, không sửa builder theo điều kiện đã chốt."},
+    {"check": "Dừng VM, dọn overlay, seed và ISO.", "result": "pass", "evidence": ["VM-CLEAN", "ISO-CLEAN"], "limits": "6,24 GB theo kích thước biểu kiến; giữ bằng chứng và không động vào VM khác."}
+  ],
+  "delta": {"added": ["Đối chứng với đủ 13 pack khớp CP347."], "corrected": ["Khôi phục đuôi pack riêng không khắc phục lỗi khởi động ở lát đã thử."], "superseded": []},
+  "blockers": [
+    "Gói Windows vẫn thoát sau splash. Chưa có 2P và Start ván hai trên gói."
+  ],
+  "next_steps": [
+    {"id": "M8-476-startup", "task": "M8-476", "state": "active", "action": "Claude đối chiếu cách khởi động và quyền ghi của cây CP347 với bản cài; tách phép thử đó khỏi khác biệt companion. Không mở thêm lượt trong checkpoint này.", "owner": "Claude", "reviewer": "waived"}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-19T19:09:06.964171+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; director xử lý tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi mốc đối chứng."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi blocker ở dòng gói người chơi."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi hợp đồng launcher, TLS hoặc gameplay."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Thu hẹp câu hỏi khởi động và ghi phép phân biệt tiếp."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP348 từ README."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm con trỏ bằng chứng đối chứng."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP349.json", "state": "updated", "reason": "Ghi hash, lượt đối chứng và dọn VM."}
+  ],
+  "evidence": [
+    {"id": "COMPARE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-pack-windows/verification.json", "bytes": 1220, "sha256": "835bd7fde387c2b0678596c56d3e481674bca8e4eb7a3d7a80b433f83d719165"},
+    {"id": "RUN", "kind": "local", "path": "local/research/codex/m8-launcher-part5-pack-windows/control-result.json", "bytes": 3024, "sha256": "ea3c40730cda96a0530a0d7bb63ad6a10994c05caf067fe79c76de79e3beed85"},
+    {"id": "GUEST", "kind": "local", "path": "local/research/codex/m8-launcher-part5-pack-windows/guest-export/result.json", "bytes": 523, "sha256": "6843971563e6b6055992d1fa141345c1a7a6fb40225fcab17ccac16c3271b26b"},
+    {"id": "UI", "kind": "local", "path": "local/research/codex/m8-launcher-part5-pack-windows/contact-sheet.png", "bytes": 141833, "sha256": "b68d5a410612c7682e5236388be22f013aee7fafbdbde2c50ba4b8de5780688c"},
+    {"id": "SERVICE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-pack-windows/service/rust-events.jsonl", "bytes": 626, "sha256": "f4973ab16e5061e3eff95dc140268bc8b5a6ffb2d1aeea267903d3b20b48ba06"},
+    {"id": "VM-CLEAN", "kind": "local", "path": "local/research/codex/m8-launcher-part5-pack-windows/run-cleanup-result.json", "bytes": 661, "sha256": "652f4a1abc5360df007e4ae08bee0382f0ac87ffa9a76ef6e30e5325ba55f7b2"},
+    {"id": "ISO-CLEAN", "kind": "local", "path": "local/research/codex/m8-launcher-part5-pack-windows/iso-cleanup.json", "bytes": 159, "sha256": "0653c8ec03731ed236bd29f5b3adc042b0c74ebe9db3445507a196486c30432e"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-launcher-part5-pack-windows", "path": "local/evidence-manifests/55d547cc6dde2dd3b4e7b444150183ea9205b3000d7a5e7929d28d332acf87fd.jsonl", "sha256": "55d547cc6dde2dd3b4e7b444150183ea9205b3000d7a5e7929d28d332acf87fd", "bytes": 1678, "count": 8, "files_bytes": 88159}
+  ]
+}

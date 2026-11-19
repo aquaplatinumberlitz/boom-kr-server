@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::{
     collections::HashSet,
-    fs::{self, File},
+    fs::{self, File, OpenOptions},
     io::{self, Read, Write},
     path::{Path, PathBuf},
 };
@@ -68,23 +68,90 @@ pub fn relative(value: &str) -> io::Result<PathBuf> {
     }
     Ok(PathBuf::from(value))
 }
-fn ordinary(root: &Path, name: &str) -> io::Result<PathBuf> {
+fn reparse(metadata: &fs::Metadata) -> bool {
+    #[cfg(windows)]
+    {
+        use std::os::windows::fs::MetadataExt;
+        // FILE_ATTRIBUTE_REPARSE_POINT also covers directory junctions.
+        metadata.file_attributes() & 0x400 != 0
+    }
+    #[cfg(not(windows))]
+    metadata.file_type().is_symlink()
+}
+
+fn managed_file(root: &Path, name: &str, missing_allowed: bool) -> io::Result<PathBuf> {
     let metadata = fs::symlink_metadata(root)?;
-    if !metadata.is_dir() || metadata.file_type().is_symlink() {
+    if !metadata.is_dir() || reparse(&metadata) {
         return Err(invalid());
     }
+    let name = relative(name)?;
     let mut path = root.to_path_buf();
-    for component in relative(name)?.components() {
+    let mut components = name.components().peekable();
+    while let Some(component) = components.next() {
         path.push(component);
-        if fs::symlink_metadata(&path)?.file_type().is_symlink() {
-            return Err(invalid());
+        let leaf = components.peek().is_none();
+        match fs::symlink_metadata(&path) {
+            Ok(meta) if !reparse(&meta) && (if leaf { meta.is_file() } else { meta.is_dir() }) => {}
+            Err(e) if leaf && missing_allowed && e.kind() == io::ErrorKind::NotFound => (),
+            _ => return Err(invalid()),
         }
-    }
-    if !fs::symlink_metadata(&path)?.is_file() {
-        return Err(invalid());
     }
     Ok(path)
 }
+
+fn ordinary(root: &Path, name: &str) -> io::Result<PathBuf> {
+    managed_file(root, name, false)
+}
+
+fn runtime_log(name: &str) -> bool {
+    name.rsplit('/')
+        .next()
+        .is_some_and(|name| name.eq_ignore_ascii_case("calog.log"))
+}
+
+fn runtime_file(name: &str) -> bool {
+    runtime_log(name)
+        || Path::new(name)
+            .extension()
+            .and_then(|ext| ext.to_str())
+            .is_some_and(|ext| ext.eq_ignore_ascii_case("ssd") || ext.eq_ignore_ascii_case("ini"))
+}
+
+fn make_writable(path: &Path, meta: &fs::Metadata) -> io::Result<()> {
+    let mut permissions = meta.permissions();
+    #[cfg(windows)]
+    {
+        if !permissions.readonly() {
+            return Ok(());
+        }
+        permissions.set_readonly(false);
+    }
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        let wanted = if meta.is_dir() { 0o700 } else { 0o200 };
+        if permissions.mode() & wanted == wanted {
+            return Ok(());
+        }
+        permissions.set_mode(permissions.mode() | wanted);
+    }
+    fs::set_permissions(path, permissions)
+}
+
+fn normalize_game_tree(path: &Path) -> io::Result<()> {
+    let meta = fs::symlink_metadata(path)?;
+    if reparse(&meta) || !(meta.is_dir() || meta.is_file()) {
+        return Err(invalid());
+    }
+    make_writable(path, &meta)?;
+    if meta.is_dir() {
+        for entry in fs::read_dir(path)? {
+            normalize_game_tree(&entry?.path())?;
+        }
+    }
+    Ok(())
+}
+
 pub fn sha256(path: &Path) -> io::Result<String> {
     let mut hash = Sha256::new();
     let mut file = File::open(path)?;
@@ -173,9 +240,6 @@ pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
         if fs::metadata(&path)?.len() != pack.bytes || sha256(&path)? != pack.sha256 {
             return Err(invalid());
         }
-        let mut permissions = fs::metadata(&path)?.permissions();
-        permissions.set_readonly(true);
-        fs::set_permissions(&path, permissions)?;
     }
     for entry in &manifest.common {
         let path = destination(&shared, &entry.path)?;
@@ -187,21 +251,24 @@ pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
                 ..entry.payload.clone()
             },
         )?;
-        let mut permissions = fs::metadata(&path)?.permissions();
-        permissions.set_readonly(true);
-        fs::set_permissions(path, permissions)?;
     }
     for (id, language) in &manifest.languages {
         let game = target.join(id);
         fs::create_dir(&game)?;
-        for name in manifest
-            .packs
-            .iter()
-            .map(|p| &p.path)
-            .chain(manifest.common.iter().map(|e| &e.path))
-        {
-            // Packs and unchanged files share actual storage, not just hashes.
-            fs::hard_link(shared.join(relative(name)?), destination(&game, name)?)?;
+        for pack in &manifest.packs {
+            fs::hard_link(
+                shared.join(relative(&pack.path)?),
+                destination(&game, &pack.path)?,
+            )?;
+        }
+        for entry in &manifest.common {
+            let source = shared.join(relative(&entry.path)?);
+            let output = destination(&game, &entry.path)?;
+            if runtime_file(&entry.path) {
+                fs::copy(source, output)?;
+            } else {
+                fs::hard_link(source, output)?;
+            }
         }
         for entry in &language.files {
             fs::copy(
@@ -216,53 +283,45 @@ pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
                 },
             )?;
         }
+        normalize_game_tree(&game)?;
     }
     // Only a fully checked installation gets a completion marker.
     let mut receipt = File::create_new(target.join("installation.sha256"))?;
     writeln!(receipt, "{expected}")?;
     receipt.sync_all()
 }
-pub fn verify_install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
-    let manifest = read_manifest(bundle, expected)?;
+fn check_receipt(target: &Path, expected: &str) -> io::Result<()> {
     if fs::read_to_string(ordinary(target, "installation.sha256")?)?.trim() != expected {
         return Err(invalid());
-    }
-    for (id, language) in manifest.languages {
-        let game = target.join(id);
-        for pack in &manifest.packs {
-            checked(
-                &game,
-                &Pin {
-                    path: pack.path.clone(),
-                    bytes: pack.bytes,
-                    sha256: pack.sha256.clone(),
-                },
-            )?;
-        }
-        for entry in manifest.common.iter().chain(&language.files) {
-            checked(
-                &game,
-                &Pin {
-                    path: entry.path.clone(),
-                    bytes: entry.payload.bytes,
-                    sha256: entry.payload.sha256.clone(),
-                },
-            )?;
-        }
     }
     Ok(())
 }
 
-pub fn verify_language(
+fn verify_entry(bundle: &Path, game: &Path, entry: &Entry) -> io::Result<()> {
+    if runtime_file(&entry.path) {
+        // A client may update or remove these files. Keep the trusted inputs
+        // pinned; the launch preparation restores them without trusting edits.
+        checked(bundle, &entry.payload)?;
+        managed_file(game, &entry.path, true)?;
+    } else {
+        checked(
+            game,
+            &Pin {
+                path: entry.path.clone(),
+                bytes: entry.payload.bytes,
+                sha256: entry.payload.sha256.clone(),
+            },
+        )?;
+    }
+    Ok(())
+}
+
+fn verify_tree(
     bundle: &Path,
-    expected: &str,
     target: &Path,
     language: &str,
+    manifest: &Manifest,
 ) -> io::Result<()> {
-    let manifest = read_manifest(bundle, expected)?;
-    if fs::read_to_string(ordinary(target, "installation.sha256")?)?.trim() != expected {
-        return Err(invalid());
-    }
     let selected = manifest.languages.get(language).ok_or_else(invalid)?;
     let game = target.join(language);
     for pack in &manifest.packs {
@@ -276,14 +335,80 @@ pub fn verify_language(
         )?;
     }
     for entry in manifest.common.iter().chain(&selected.files) {
-        checked(
-            &game,
-            &Pin {
-                path: entry.path.clone(),
-                bytes: entry.payload.bytes,
-                sha256: entry.payload.sha256.clone(),
-            },
-        )?;
+        verify_entry(bundle, &game, entry)?;
+    }
+    Ok(())
+}
+
+pub fn verify_install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
+    let manifest = read_manifest(bundle, expected)?;
+    check_receipt(target, expected)?;
+    for language in manifest.languages.keys() {
+        verify_tree(bundle, target, language, &manifest)?;
+    }
+    Ok(())
+}
+
+pub fn verify_language(
+    bundle: &Path,
+    expected: &str,
+    target: &Path,
+    language: &str,
+) -> io::Result<()> {
+    let manifest = read_manifest(bundle, expected)?;
+    check_receipt(target, expected)?;
+    verify_tree(bundle, target, language, &manifest)
+}
+
+#[derive(Clone, Copy, Debug)]
+pub enum PreparationError {
+    Integrity,
+    WritableFiles,
+}
+
+/// Restore mutable settings and cache to verified inputs before starting the
+/// client, while retaining the client's log. Change attributes without
+/// replacing existing files or altering ACLs.
+pub fn prepare_language(
+    bundle: &Path,
+    expected: &str,
+    target: &Path,
+    language: &str,
+) -> Result<(), PreparationError> {
+    let manifest = read_manifest(bundle, expected).map_err(|_| PreparationError::Integrity)?;
+    check_receipt(target, expected).map_err(|_| PreparationError::Integrity)?;
+    verify_tree(bundle, target, language, &manifest).map_err(|_| PreparationError::Integrity)?;
+    let selected = &manifest.languages[language];
+    let game = target.join(language);
+    for entry in manifest.common.iter().chain(&selected.files) {
+        if runtime_file(&entry.path) {
+            prepare_runtime_file(bundle, &game, entry)
+                .map_err(|_| PreparationError::WritableFiles)?;
+        }
+    }
+    Ok(())
+}
+
+fn prepare_runtime_file(bundle: &Path, game: &Path, entry: &Entry) -> io::Result<()> {
+    let output = managed_file(game, &entry.path, true)?;
+    let unchanged = match fs::symlink_metadata(&output) {
+        Ok(metadata) => {
+            make_writable(&output, &metadata)?;
+            runtime_log(&entry.path)
+                || (metadata.len() == entry.payload.bytes
+                    && sha256(&output)? == entry.payload.sha256)
+        }
+        Err(e) if e.kind() == io::ErrorKind::NotFound => false,
+        Err(e) => return Err(e),
+    };
+    let mut open = OpenOptions::new();
+    open.write(true);
+    if unchanged {
+        open.open(output)?;
+    } else {
+        let source = checked(bundle, &entry.payload)?;
+        let mut writer = open.create(true).truncate(true).open(output)?;
+        io::copy(&mut File::open(source)?, &mut writer)?;
     }
     Ok(())
 }

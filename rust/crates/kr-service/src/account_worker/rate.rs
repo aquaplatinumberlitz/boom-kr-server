@@ -26,12 +26,12 @@ struct Window {
     since: Instant,
     attempts: u32,
 }
-pub(super) struct Limiter {
+pub(crate) struct Limiter {
     policy: RatePolicy,
     entries: HashMap<[u8; 32], Window>,
 }
 impl Limiter {
-    pub(super) fn new(policy: RatePolicy) -> Result<Self> {
+    pub(crate) fn new(policy: RatePolicy) -> Result<Self> {
         if !(1..=1000).contains(&policy.attempts)
             || !(1..=4096).contains(&policy.principals)
             || !(Duration::from_secs(1)..=Duration::from_secs(3600)).contains(&policy.interval)
@@ -43,12 +43,12 @@ impl Limiter {
             entries: HashMap::new(),
         })
     }
-    pub(super) fn key(name: &str) -> [u8; 32] {
+    pub(crate) fn key(name: &str) -> [u8; 32] {
         Sha256::digest(name.to_ascii_lowercase().as_bytes()).into()
     }
     // Called under the shared admission mutex. Expired entries may be dropped;
     // active principals are never evicted just to admit new attacker keys.
-    pub(super) fn check(&mut self, key: [u8; 32], now: Instant) -> Result<()> {
+    pub(crate) fn check(&mut self, key: [u8; 32], now: Instant) -> Result<()> {
         if let Some(w) = self.entries.get(&key) {
             let elapsed = now
                 .checked_duration_since(w.since)
@@ -75,7 +75,7 @@ impl Limiter {
     }
     // Commit only once a command is actually queued. Full/closed queue consumes
     // no attempt; later caller cancellation still consumes admitted work.
-    pub(super) fn commit(&mut self, key: [u8; 32], now: Instant) {
+    pub(crate) fn commit(&mut self, key: [u8; 32], now: Instant) {
         let w = self.entries.entry(key).or_insert(Window {
             since: now,
             attempts: 0,
@@ -89,7 +89,7 @@ impl Limiter {
 
     /// Reserve checks for a distinct local roster under the caller's admission
     /// mutex. Checking two new keys independently could overflow table capacity.
-    pub(super) fn check_group(&mut self, keys: &[[u8; 32]], now: Instant) -> Result<()> {
+    pub(crate) fn check_group(&mut self, keys: &[[u8; 32]], now: Instant) -> Result<()> {
         self.entries.retain(|_, w| {
             now.checked_duration_since(w.since)
                 .is_none_or(|elapsed| elapsed < self.policy.interval)

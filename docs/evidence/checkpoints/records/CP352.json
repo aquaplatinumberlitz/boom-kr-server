@@ -1,0 +1,71 @@
+{
+  "id": "CP352",
+  "previous": "CP351",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T20:30:49.501983+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Bỏ chỉ đọc có cho gói Windows ghi cache và hoàn tất luồng 2P tới Start ván hai không?",
+  "scope": "Một Windows VM cô lập, shortcut và launcher phát hành, bản ko. Wine chỉ chạy test bộ cài.",
+  "context_commit": "b22c389eec5927d3534874c3f9cb0a1ddbae8345",
+  "artifacts": [
+    {"sha256": "0ac1861acf11ee5cc84647eac8030d488b241dc6ebb0f6cb9fec2990cec4b468"},
+    {"sha256": "704fcd822b4cdfae70de9d531d437215505c6ec8da2d59f81cbaf1044fdf0048"},
+    {"sha256": "7dbee384052a7501e94c8cf8e15bea51a2b582fc91d9cb0fffdf2e4d6997d81e"},
+    {"sha256": "be2435153a1f52f9acabb5a6e6422c7c3f8cbcdf6e24e9b715b0c6635435b27b"},
+    {"sha256": "7a4bb95705bccc9146cc69a74c97b94987e20ec50775368877694031cd01144e"}
+  ],
+  "locators": [
+    "local/research/codex/m8-launcher-part5-writable"
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/OPERATIONS.md#launcher-tls-đang-triển-khai", "summary": "Ba mẫu chỉ đọc trên ISO và sau robocopy /COPY:DT; cả chín bản mẫu vi/en/ko mở ghi được sau bộ cài mới.", "evidence": ["PROVENANCE"], "limits": "Builder Python chỉ sao chép byte; bộ cài Rust cũ đặt chỉ đọc với tệp dùng chung và sao chép thuộc tính từ payload. Không đổi ACL."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Cache động đổi từ 14.173 xuống 91 byte, UI hiện sảnh. Hai hồ sơ chơi hết ván, SQLite ghi một thắng/một thua và UI về phòng.", "evidence": ["CACHE", "SUMMARY", "LOBBY", "ROOM", "SERVER"], "limits": "Một VM và map Factory07. Không thấy EOF ở điểm cũ."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md", "summary": "Không có Start thứ hai trong log hay ván thứ hai trong SQLite; phiên kết thúc với account_authority tại hạn idle.", "evidence": ["NATIVE-UI", "START-2", "START-2-LATE", "SUMMARY", "SERVER"], "limits": "Trình điều khiển giả định sai ID ván đầu. Lần bấm đầu sau khi về phòng trước hạn idle không thấy yêu cầu; lần bấm sau trùng hạn. Không quy lần đầu cho idle."}
+  ],
+  "verification": [
+    {"check": "Fmt, Clippy và 332 test workspace; build/check Windows GNU; bốn test installer dưới Wine.", "result": "pass", "evidence": ["TESTS", "WINBUILD", "WINE-TESTS"], "limits": "Check Windows cho binary/test; ví dụ native_proxy_lab phụ thuộc Unix, không thuộc gói. Wine không chạy game."},
+    {"check": "Shortcut → launcher → 2P → sảnh → phòng → trận → kết quả → về phòng.", "result": "pass", "evidence": ["GUEST", "NATIVE-UI", "SERVER", "ROOM", "SUMMARY"], "limits": "Một ván hoàn tất."},
+    {"check": "Start ván hai.", "result": "fail", "evidence": ["START-2", "START-2-LATE", "SUMMARY"], "limits": "Không có ván mới; không chạy lại."},
+    {"check": "Xuất bằng chứng và dọn VM riêng.", "result": "pass", "evidence": ["CLEAN-VM", "CLEAN-ISO", "SUMMARY"], "limits": "Dọn 6,28 GB theo kích thước biểu kiến; VM khác giữ nguyên."}
+  ],
+  "delta": {"added": ["Bộ cài chuẩn hóa quyền ghi trong ba cây game. Launcher kiểm khả năng ghi, giữ CALog và khôi phục cache/cấu hình từ payload đã pin."], "corrected": ["Không còn EOF sau 238 trong ca gói đã sửa."], "superseded": []},
+  "blockers": [
+    "Chưa xác nhận Start ván hai trên gói Windows."
+  ],
+  "next_steps": [
+    {"id": "M8-476-startup", "task": "M8-476", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Nếu có lượt kế, lấy ván vừa hoàn tất theo khóa phòng, không giả định round=1; quan sát nút Start và opcode 104 trước khi hết hạn idle."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-19T20:30:49.501983+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; director xử lý tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi kết quả Windows."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi phần đã đạt và Start còn mở."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi gói native."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Đóng câu hỏi quyền ghi của CP351 và ghi giới hạn Start."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP351 từ README."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi cách chuẩn bị tệp ghi được."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm bằng chứng CP352."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP352.json", "state": "updated", "reason": "Ghi quyền ghi, hash cache và kết quả Windows."}
+  ],
+  "evidence": [
+    {"id": "SUMMARY", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/run-summary.json", "bytes": 1567, "sha256": "e468f6950fbaed298d42fc0ae2f6a57fbd33e2c68c4ba4caa55d0626d228dc66"},
+    {"id": "PROVENANCE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/guest-export/file-provenance.json", "bytes": 5081, "sha256": "e01617dab42bfc72e1f35bee1dff76e9507a86f0a3de781eac66b8d27ab71b15"},
+    {"id": "CACHE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/guest-export/cache-watch.json", "bytes": 781, "sha256": "6414c0ea19b1f81a2b5ff9a2c78b46f74972eb8b88eeec2ce7c4271a04ffa20b"},
+    {"id": "GUEST", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/guest-export/result.json", "bytes": 523, "sha256": "7c870c8ce37c1f562211366f4bfcb2c23d998e0c492a427b69f2426e7be4e0dd"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/service/rust-events.jsonl", "bytes": 2228, "sha256": "e8e85cd185a77ac09b3fe9c6246b5b89d2e3c66d2e949e2d845878762862b47f"},
+    {"id": "ROOM", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/ending-first-47/capture-0.png", "bytes": 261068, "sha256": "7628ce8ab76e200678db7e8c29d2e616010fdb6ad031395beccdd019491643f8"},
+    {"id": "LOBBY", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/lobby-1/capture-0.png", "bytes": 232637, "sha256": "c9c72e9a7bd7de8611499dc48ba02e49a5b9fd7b5d728d1975277a4b56fdcaac"},
+    {"id": "START-2", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/second-start-summary.json", "bytes": 318, "sha256": "62d1c23647f8eaa027fa584138cb91e41d788bdda5f3ba2ccbe01b3e5cc5d901"},
+    {"id": "START-2-LATE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/second-start-center-summary.json", "bytes": 325, "sha256": "d55e97963af67dc6a87d86a94d56634feb8fa02b2592bbd1a49ca974f238d00b"},
+    {"id": "TESTS", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/workspace-final.log", "bytes": 43591, "sha256": "020be11407ed08fdd1a5b1cb3e6eab33c33064077354f0928a893540996a4a25"},
+    {"id": "WINBUILD", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/windows.log", "bytes": 232, "sha256": "5efc4f3600bccee30288d194da30f0889288a355b48d5783fb013b9b17f36d57"},
+    {"id": "WINE-TESTS", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/wine-tests.log", "bytes": 502, "sha256": "bd76363ec9e2ea39c458989aad44a453631a16eddd8769428a8fb9a1eea66f21"},
+    {"id": "CLEAN-VM", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/run-cleanup-result.json", "bytes": 660, "sha256": "8896002b8f1f78e94d34cffbbe0bfd36f6ff60a8a81ce336ecb5474696996b1d"},
+    {"id": "CLEAN-ISO", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/iso-cleanup.json", "bytes": 149, "sha256": "c43a17c09a080f9118565ea66210fd1e02b045cdedc3d9666abb660fbfb643fe"},
+    {"id": "NATIVE-UI", "kind": "local", "path": "local/research/codex/m8-launcher-part5-writable/native-summary.json", "bytes": 1261, "sha256": "fb913fe60e062281d28c55b77a2fe26b2356c66362ff6a75a60d11f5603809d4"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-launcher-part5-writable", "path": "local/evidence-manifests/2444a069462efd9071df3bea2e1e708fa74b000fdb175f5daa77a41bd41375d0.jsonl", "sha256": "2444a069462efd9071df3bea2e1e708fa74b000fdb175f5daa77a41bd41375d0", "bytes": 2276, "count": 11, "files_bytes": 645136}
+  ]
+}

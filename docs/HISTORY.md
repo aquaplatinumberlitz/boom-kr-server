@@ -5,6 +5,16 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP351: Windows nhận đúng dữ liệu sảnh như CP347 đến hết phản hồi 238, rồi vẫn đóng luồng.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP351.json). M8 còn mở.
+
+**CP350: Đã sửa lỗi heartbeat khiến game thoát sau splash; Windows đăng nhập 2P qua TLS nhưng dừng trước khi hiện sảnh.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP350.json). M8 còn mở.
+
+**CP349: Gói Windows có đủ pack như CP347 vẫn thoát trước LoginStage.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP349.json). M8 còn mở.
+
+**CP348: Launcher mở game qua companion Windows; ca gói dừng trước LoginStage.** [Kiểm tự động và giới hạn](evidence/checkpoints/records/CP348.json). M8 còn mở.
+
+**CP347: Windows 2P qua TLS đã hiện kết quả và trở về phòng; Start ván kế đạt trong test tự động.** [Giới hạn và bằng chứng](evidence/checkpoints/records/CP347.json). M8 còn mở.
+
 **CP346: hai ván 1P qua TLS và relay UDP đạt test tự động; client Windows 2P vào phòng chờ nhưng chưa qua tải trận.**
 [Giới hạn và bằng chứng](evidence/checkpoints/records/CP346.json). M8 còn mở.
 
