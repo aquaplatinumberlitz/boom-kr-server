@@ -26,7 +26,10 @@ fn local_command(opcode: u32, body: &[u8], count: usize) -> io::Result<(usize, O
                 Some(write_uint(team.into(), Width::U8).map_err(io::Error::other)?),
             ))
         }
-        86 | 96 | 104 | 266 | 528 | 585 => Ok((0, None)),
+        // Room-wide control and bounded observations without an actor index.
+        59 | 86 | 96 | 99 | 104 | 122 | 123 | 142 | 167 | 190 | 202 | 266 | 528 | 585 => {
+            Ok((0, None))
+        }
         _ => Err(io::Error::other("unmeasured multi-local room command")),
     }
 }
@@ -40,6 +43,17 @@ pub(super) struct State {
     last_chat: Option<Instant>,
 }
 impl State {
+    fn owned_slot(&self, slot: u8) -> io::Result<usize> {
+        for (i, session) in self.sessions.iter().enumerate() {
+            if session.owns_slot(slot)? {
+                return Ok(i);
+            }
+        }
+        Err(io::Error::other(
+            "room slot does not belong to this transport",
+        ))
+    }
+
     pub(super) fn admitted(&mut self, catalog: &room_service::Catalog) {
         self.known = catalog.tuples.clone();
     }
@@ -114,7 +128,25 @@ impl State {
         if count == 0 || (opcode != 18 && !room_io::Session::handles(opcode)) {
             return Ok(false);
         }
-        let (index, normalized) = local_command(opcode, input.body(), count)?;
+        driver.inspect().await?;
+        let (index, normalized) = match (count, opcode) {
+            (2, 118) => {
+                let slot = crate::bombs::Request::parse(input.body())?.owner_slot();
+                (self.owned_slot(slot)?, None)
+            }
+            (2, 124 | 127) => {
+                let slot = kr_wire::read_uint(
+                    input
+                        .body()
+                        .get(1..2)
+                        .ok_or_else(|| io::Error::other("missing room slot"))?,
+                    kr_wire::Width::U8,
+                )
+                .map_err(io::Error::other)? as u8;
+                (self.owned_slot(slot)?, None)
+            }
+            _ => local_command(opcode, input.body(), count)?,
+        };
         let body = normalized.as_deref().unwrap_or(input.body());
         let session = &self.sessions[index];
         session.wait_journal().await?;
@@ -126,16 +158,18 @@ impl State {
                 .await
                 .map_err(|_| io::Error::other("native activity denied"))?;
         }
-        if count == 2 && matches!(opcode, 585 | 86) {
+        if count == 2 && matches!(opcode, 585 | 86 | 99 | 104) {
             driver.authorities()[1]
                 .authorize_activity()
                 .await
                 .map_err(|_| io::Error::other("native activity denied"))?;
-            session.local_waiting_room(opcode, body)?;
-            let _ = resources.events.try_send(serde_json::json!({
-                "event": "native_tls_room_request", "opcode": opcode, "players": count
-            }));
-            return Ok(true);
+            if matches!(opcode, 585 | 86) {
+                session.local_waiting_room(opcode, body)?;
+                let _ = resources.events.try_send(serde_json::json!({
+                    "event": "native_tls_room_request", "opcode": opcode, "players": count
+                }));
+                return Ok(true);
+            }
         }
         if opcode == 18 {
             if self

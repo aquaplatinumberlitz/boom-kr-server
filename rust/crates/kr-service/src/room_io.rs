@@ -356,8 +356,10 @@ pub struct Batch {
     setup_partner: Option<Membership>,
     pub subject: Option<Membership>,
     pub bomb_complete: Option<(bombs::Ticket, Membership)>,
+    bomb_partner: Option<Membership>,
     pub life_complete: Option<(Membership, u64, String, Membership)>,
     pub outcome_complete: Option<(Membership, u64)>,
+    outcome_partner: Option<Membership>,
     pub abort_return_complete: Option<(Membership, u64)>,
     pub departure_complete: Option<(Membership, Membership, u64)>,
 }
@@ -991,8 +993,10 @@ impl Runtime {
             setup_partner: None,
             subject: None,
             bomb_complete: None,
+            bomb_partner: None,
             life_complete: None,
             outcome_complete: None,
+            outcome_partner: None,
             abort_return_complete: None,
             departure_complete: None,
         }
@@ -1021,8 +1025,10 @@ impl Runtime {
             setup_partner: None,
             subject: None,
             bomb_complete: None,
+            bomb_partner: None,
             life_complete: None,
             outcome_complete: None,
+            outcome_partner: None,
             abort_return_complete: None,
             departure_complete: None,
         }
@@ -1833,7 +1839,7 @@ impl Session {
                 .enumerate()
                 .map(|(i, p)| (format!("refresh110-{i}"), p.clone())),
         );
-        for peer in next.members.values() {
+        for peer in Runtime::transport_representatives(next.members.values()) {
             for (delay, packets, complete) in [
                 (0, vec![("rank175".into(), rank.clone())], false),
                 (5000, vec![("return180".into(), returning.clone())], false),
@@ -1843,6 +1849,11 @@ impl Session {
                 batch.guard = Guard::Outcome(peer.key, round);
                 if complete {
                     batch.outcome_complete = Some((peer.key, round));
+                    batch.outcome_partner = next
+                        .members
+                        .values()
+                        .find(|m| m.key != peer.key && m.key.connection == peer.key.connection)
+                        .map(|m| m.key);
                 }
                 effects.push((peer.key.identity, batch));
             }
@@ -2017,7 +2028,15 @@ impl Session {
             {
                 return Ok(false);
             }
-            if runtime.model.bombs.prepare_blast(ticket, *recipient)? {
+            let rebind = runtime.model.bombs.prepare_blast(ticket, *recipient)?;
+            if let Some(partner) = batch.bomb_partner
+                && (!runtime.model.deliverable(partner, Some(ticket.round))
+                    || !runtime.model.bombs.deliverable(ticket, partner)
+                    || runtime.model.bombs.prepare_blast(ticket, partner)? != rebind)
+            {
+                return Err(err("invalid shared-client blast delivery"));
+            }
+            if rebind {
                 batch.packets.insert(
                     0,
                     (
@@ -2091,7 +2110,12 @@ impl Session {
         }
         if let Some((recipient, round)) = batch.outcome_complete {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
-            runtime.model.refreshed(recipient, round)?;
+            let mut next = runtime.model.clone();
+            next.refreshed(recipient, round)?;
+            if let Some(partner) = batch.outcome_partner {
+                next.refreshed(partner, round)?;
+            }
+            runtime.model = next;
             if runtime.model.phase == Phase::Idle
                 && let Some(job) = runtime.abort.as_mut()
             {
@@ -2100,7 +2124,11 @@ impl Session {
         }
         if let Some((ticket, recipient)) = &batch.bomb_complete {
             let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
-            if !runtime.model.bombs.delivered(ticket, *recipient) {
+            if !runtime.model.bombs.delivered(ticket, *recipient)
+                || batch
+                    .bomb_partner
+                    .is_some_and(|p| !runtime.model.bombs.delivered(ticket, p))
+            {
                 return Err(err("stale bomb delivery completion"));
             }
             if !runtime.model.bombs.active(ticket) {
@@ -2176,6 +2204,10 @@ impl Session {
     pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<Observation> {
         self.packet_owned(opcode, body, None, None)
     }
+    pub(crate) fn owns_slot(&self, slot: u8) -> io::Result<bool> {
+        let runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        Ok(runtime.member(self.identity, self.connection)?.slot == slot)
+    }
     pub(crate) fn select_local_roster(
         &self,
         opcode: u32,
@@ -2196,6 +2228,10 @@ impl Session {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
         let primary = r.member(self.identity, self.connection)?.key;
         let members = r.local_members(primary)?;
+        if opcode == 585 && members.iter().all(|m| r.requested.contains(&m.key)) {
+            drop(r);
+            return self.packet(585, body).map(|_| ());
+        }
         if r.model.phase != Phase::Idle {
             return Err(err("local waiting room command outside idle phase"));
         }
@@ -2395,7 +2431,7 @@ impl Session {
         let mut character_rejection = None;
         let mut requested = None;
         let mut remove_requested = None;
-        let mut loaded_endpoint = None;
+        let mut loaded_endpoints = Vec::new();
         let mut roster_pairs = Vec::new();
         let mut room_choice = None;
         let mut dropped_after_abort = false;
@@ -2781,14 +2817,21 @@ impl Session {
                 if !(20..=8192).contains(&body.len()) {
                     return Err(err("unsupported Start104 envelope"));
                 }
-                if Runtime::transport_representatives(next.members.values()).len()
-                    != next.members.len()
+                let transport_count =
+                    Runtime::transport_representatives(next.members.values()).len();
+                let local_partner = if transport_count == next.members.len() {
+                    None
+                } else if transport_count == 1
+                    && next.player_round()
+                    && r.rules.endpoint == rules::EndpointPolicy::AuthenticatedRelay
                 {
+                    Some(r.local_members(m.key)?[1].key)
+                } else {
                     return Ok(Observation {
-                        start_rejection: Some("multi_local_loading_unmeasured"),
+                        start_rejection: Some("mixed_local_remote_round_unmeasured"),
                         ..Observation::default()
                     });
-                }
+                };
                 if r.rules.teams == TeamPolicy::BalancedManner
                     && r.selector == 1
                     && !next.balanced_teams()
@@ -2831,7 +2874,11 @@ impl Session {
                 } else {
                     None
                 };
-                let round = next.begin(m.key)?;
+                let round = if local_partner.is_some() {
+                    next.begin_with_local_host(m.key, local_partner)?
+                } else {
+                    next.begin(m.key)?
+                };
                 next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
                 if let Some(profile) = &r.managed_round {
                     for member in next.members.values() {
@@ -2901,7 +2948,7 @@ impl Session {
                         relay.install(reservation);
                     }
                 }
-                for peer in next.members.values() {
+                for peer in Runtime::transport_representatives(next.members.values()) {
                     effects.push((
                         peer.key.identity,
                         Runtime::member_batch(
@@ -2921,7 +2968,17 @@ impl Session {
             }
             99 => {
                 let m = r.member(self.identity, self.connection)?;
-                let port = wire::loading99_port(body, 1)?;
+                let local = if Runtime::transport_representatives(next.members.values()).len() == 1
+                    && next.members.len() > 1
+                {
+                    r.local_members(m.key)?
+                        .into_iter()
+                        .map(|p| p.key)
+                        .collect::<Vec<_>>()
+                } else {
+                    vec![m.key]
+                };
+                let port = wire::loading99_port(body, local.len())?;
                 if next.phase == Phase::Idle {
                     next.observe_after_abort(m.key)?;
                     dropped_after_abort = true;
@@ -2929,12 +2986,15 @@ impl Session {
                     let Phase::Loading { round, .. } = next.phase else {
                         return Err(err("no loading barrier"));
                     };
-                    let complete = next.ack(m.key, round)?;
-                    loaded_endpoint = Some((m.key, port));
+                    let mut complete = false;
+                    for &member in &local {
+                        complete = next.ack(member, round)?;
+                        loaded_endpoints.push((member, port));
+                    }
                     if complete {
                         let mut endpoint_rows = Vec::with_capacity(next.round_size());
                         for peer in next.members.values() {
-                            let p = if peer.key == m.key {
+                            let p = if local.contains(&peer.key) {
                                 port
                             } else {
                                 *r.ports
@@ -2962,7 +3022,7 @@ impl Session {
                             )?
                         };
                         let key = crate::room::wire_key(round)?;
-                        for peer in next.members.values() {
+                        for peer in Runtime::transport_representatives(next.members.values()) {
                             effects.push((
                                 peer.key.identity,
                                 Runtime::member_batch(
@@ -2991,7 +3051,17 @@ impl Session {
                                         "peer153".into(),
                                         r.reply(
                                             Template::Peer153,
-                                            Some(if next.player_round() {
+                                            Some(if local.len() == 2 {
+                                                let rows = plan.for_player(round, peer.key)?;
+                                                let own: Vec<_> =
+                                                    rows.iter().map(|row| row.0).collect();
+                                                wire::peer153_for_local_slots(
+                                                    r.body(Template::Peer153),
+                                                    key,
+                                                    &own,
+                                                    &rows,
+                                                )?
+                                            } else if next.player_round() {
                                                 wire::peer153_players(
                                                     r.body(Template::Peer153),
                                                     key,
@@ -3302,7 +3372,7 @@ impl Session {
                         }
                         let spawn = packet(159, request.spawn159(ticket.id)?);
                         let blast = packet(158, bombs::explode158(ticket.id)?);
-                        for peer in next.members.values() {
+                        for peer in Runtime::transport_representatives(next.members.values()) {
                             let mut immediate = Runtime::member_batch(
                                 peer.key,
                                 Some(ticket.round),
@@ -3323,6 +3393,13 @@ impl Session {
                             };
                             due.subject = (!next.player_round()).then_some(member.key);
                             due.bomb_complete = Some((ticket.clone(), peer.key));
+                            due.bomb_partner = next
+                                .members
+                                .values()
+                                .find(|m| {
+                                    m.key != peer.key && m.key.connection == peer.key.connection
+                                })
+                                .map(|m| m.key);
                             effects.push((peer.key.identity, due));
                         }
                         bomb = Some(BombObservation {
@@ -3783,7 +3860,7 @@ impl Session {
             r.rostered
                 .retain(|(recipient, subject)| *recipient != key && *subject != key);
         }
-        if let Some((key, port)) = loaded_endpoint {
+        for (key, port) in loaded_endpoints {
             r.ports.insert(key, port);
         }
         Ok(Observation {

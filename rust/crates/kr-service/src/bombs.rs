@@ -22,6 +22,9 @@ impl Request {
     pub(crate) fn cell(&self) -> (u16, u16) {
         (u16::from(self.row), u16::from(self.column))
     }
+    pub(crate) fn owner_slot(&self) -> u8 {
+        self.owner
+    }
     pub fn power(&self) -> u8 {
         self.power
     }

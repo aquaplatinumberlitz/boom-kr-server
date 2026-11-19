@@ -606,6 +606,16 @@ impl Room {
         Ok(self.members.values().cloned().collect())
     }
     pub fn begin(&mut self, key: Membership) -> io::Result<u64> {
+        self.begin_with_local_host(key, None)
+    }
+    pub(crate) fn begin_with_local_host(
+        &mut self,
+        key: Membership,
+        partner: Option<Membership>,
+    ) -> io::Result<u64> {
+        if partner.is_some_and(|p| p == key || p.connection != key.connection || !self.current(p)) {
+            return Err(io::Error::other("stale local host roster"));
+        }
         if self.sealed_abort
             || !self.current(key)
             || self.host != Some(key.identity)
@@ -614,7 +624,7 @@ impl Room {
             || !self
                 .members
                 .values()
-                .all(|m| m.setup && (m.key.identity == key.identity || m.ready))
+                .all(|m| m.setup && (m.key == key || Some(m.key) == partner || m.ready))
         {
             return Err(io::Error::other(
                 "Start requires current host and all configured loaded-room ready members",

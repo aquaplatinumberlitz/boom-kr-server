@@ -718,7 +718,7 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         reason: "prelogin TLS real DB controls",
     };
     let mut store = Store::open(&temp.db()).unwrap();
-    store.begin_instance(&admin, 100).unwrap();
+    let epoch = store.begin_instance(&admin, 100).unwrap();
     let a = store
         .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
         .unwrap();
@@ -770,8 +770,13 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             Some(relay.clone()),
         )
         .unwrap();
-        Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
-        Arc::get_mut(&mut authority).unwrap().authenticated = Some(relay.clone());
+        let journal = crate::match_journal::Manager::open(worker.client(), epoch);
+        hub.install_journal(journal.factory()).unwrap();
+        let config = Arc::get_mut(&mut authority).unwrap();
+        config.hub = Some(hub.clone());
+        config.authenticated = Some(relay.clone());
+        config.config.session_ttl_seconds = 150;
+        config.config.session_idle_seconds = 100;
         let peer_endpoint = relay.bind().unwrap();
         let bridge =
             crate::account_bridge::Bridge::new(worker.client(), 4, Duration::from_secs(30))
@@ -918,9 +923,59 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             teams[slot] = Some((state >> 5) & 0x1f);
         }
         assert_eq!(teams, [Some(0), Some(3)]);
-        // While shared-client loading is unsupported, Start cannot publish
-        // a round or close the two valid sessions. Both can return together.
-        send(&mut channel, &mut channel_tx, 104, &[0; 20]).await;
+        let mut key = None;
+        for n in 1..=2 {
+            send(&mut channel, &mut channel_tx, 104, &[0; 20]).await;
+            for opcode in [582, 121] {
+                assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, opcode);
+            }
+            let mut loading = [0; 24];
+            loading[8..10].copy_from_slice(&write_uint(31337, Width::U16).unwrap());
+            send(&mut channel, &mut channel_tx, 99, &loading).await;
+            for opcode in [197, 196] {
+                assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, opcode);
+            }
+            let p = receive(&mut reply, &mut channel_rx).await;
+            assert_eq!(p.opcode, 153);
+            let k = read_uint(&p.payload[15..19], Width::U32).unwrap();
+            for at in [35, 54] {
+                assert_eq!(read_uint(&p.payload[at..at + 1], Width::U8).unwrap(), 1);
+                assert_eq!(read_uint(&p.payload[at + 1..at + 5], Width::U32).unwrap(), 0);
+                assert_eq!(read_uint(&p.payload[at + 5..at + 7], Width::U16).unwrap(), 0);
+            }
+            if let Some(old) = key.replace(k) {
+                assert_ne!(old, k);
+                let mut stale = bomb(old, 4);
+                stale[5] = 0x5b;
+                send(&mut channel, &mut channel_tx, 118, &stale).await;
+            }
+            let mut placement = bomb(k, 3);
+            placement[5] = 0x5b; // second account uses room slot 1
+            send(&mut channel, &mut channel_tx, 118, &placement).await;
+            let p = receive(&mut reply, &mut channel_rx).await;
+            assert_eq!(p.opcode, 159);
+            assert_eq!(read_uint(&p.payload[17..18], Width::U8).unwrap(), 3);
+            let p = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(10)).await;
+            assert_eq!(p.opcode, 158);
+            let tick = n * 100;
+            send(&mut channel, &mut channel_tx, 127, &report(1, 17, tick)).await;
+            assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 170);
+            send(&mut channel, &mut channel_tx, 127, &report(1, 19, tick + 1)).await;
+            assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 170);
+            send(&mut channel, &mut channel_tx, 127, &report(0, 21, tick + 2)).await;
+            for opcode in [175, 180, 110, 110] {
+                let p = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(12)).await;
+                assert_eq!(p.opcode, opcode);
+            }
+            let db = rusqlite::Connection::open(temp.db()).unwrap();
+            for (account, outcome) in [(&a, "win"), (&b, "loss")] {
+                let count: u32 = db.query_row(
+                    "SELECT count(*) FROM match_players WHERE account_id=?1 AND player_id=?2 AND outcome=?3",
+                    (account.account_id, account.player_id, outcome), |r| r.get(0)
+                ).unwrap();
+                assert_eq!(count, n);
+            }
+        }
         send(&mut channel, &mut channel_tx, 86, &[]).await;
         assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 241);
         assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 91);
@@ -958,6 +1013,7 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
         halt.send_replace(true);
         server.close(0u8.into(), b"done");
         client.close(0u8.into(), b"done");
+        journal.shutdown().await.unwrap();
         worker.shutdown().await.unwrap();
     });
 }
