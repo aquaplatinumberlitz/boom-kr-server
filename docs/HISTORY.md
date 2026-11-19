@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP350: Đã sửa lỗi heartbeat khiến game thoát sau splash; Windows đăng nhập 2P qua TLS nhưng dừng trước khi hiện sảnh.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP350.json). M8 còn mở.
+
 **CP349: Gói Windows có đủ pack như CP347 vẫn thoát trước LoginStage.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP349.json). M8 còn mở.
 
 **CP348: Launcher mở game qua companion Windows; ca gói dừng trước LoginStage.** [Kiểm tự động và giới hạn](evidence/checkpoints/records/CP348.json). M8 còn mở.

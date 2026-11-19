@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP350: Đã sửa lỗi heartbeat khiến game thoát sau splash; Windows đăng nhập 2P qua TLS nhưng dừng trước khi hiện sảnh.** [Đối chứng và giới hạn](docs/evidence/checkpoints/records/CP350.json). M8 còn mở.
+**CP351: Windows nhận đúng dữ liệu sảnh như CP347 đến hết phản hồi 238, rồi vẫn đóng luồng.** [Đối chứng và giới hạn](docs/evidence/checkpoints/records/CP351.json). M8 còn mở.
 
 ## Bắt đầu
 
