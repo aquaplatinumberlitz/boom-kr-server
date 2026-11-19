@@ -75,6 +75,10 @@ Mỗi checkpoint phải đồng bộ docs bị ảnh hưởng trước khi compl
 hội thoại/report worker/checkpoint local. README current state,PLAN task/gate/thứ tự,PROTOCOL
 contract/limits,RESEARCH câu hỏi/phép kiểm tiếp,evidence metadata/recipe/hash; raw ở local.
 Tóm tắt delta và link nguồn chuẩn,không tạo plan/contract theo phiên.
+**Ngân sách bằng chứng** theo [quyết định 19/11](docs/evidence/owner-directives/evidence-budget.json): mỗi phần việc
+hoặc blocker thật một checkpoint, record mới tối đa 120 dòng; test tự động là bằng chứng chính cho mã, chạy game thật
+một lần cuối mỗi phần việc; không mở rộng công cụ kiểm bằng chứng hay kiểm lại lịch sử; mỗi checkpoint chỉ sửa tài liệu
+chủ đề, một dòng PLAN và dòng README; tài liệu trong một PR không vượt số dòng mã và test.
 **Mỗi thông tin một chỗ, không nối theo checkpoint:** docs không đổi nội dung thì khai `unchanged` trong `docs_sync`,
 không thêm đoạn cho có. PLAN: ghi đè Bảng điều hành. README: thay dòng mốc mới nhất. PROTOCOL: chỉ sửa khi
 contract/giới hạn đổi, sửa tại mục theo chủ đề sẵn có thay vì thêm mục `— CPxxx` mới. RESEARCH: chỉ sửa khi mở/đóng
