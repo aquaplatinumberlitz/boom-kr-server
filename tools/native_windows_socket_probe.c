@@ -20,7 +20,7 @@ typedef struct { DWORD thread; int point; } Step;
 static HANDLE process;
 static FILE *output;
 static ULONGLONG began;
-#define POINT_COUNT 31
+#define POINT_COUNT 45
 static Point points[POINT_COUNT];
 static Step steps[64];
 static unsigned calls;
@@ -28,6 +28,9 @@ static WORD wait_timeout_control;
 static int ui_exit_probe;
 static int startup_guard_probe;
 static int login_input_probe;
+static int login_profile_probe;
+static DWORD profile_packet;
+static unsigned profile_poll_samples;
 
 static int read_u32(DWORD address, DWORD *value) {
     SIZE_T count=0;
@@ -136,6 +139,11 @@ int wmain(int argc, wchar_t **argv) {
         if(input_size!=1 || input_probe[0]!=L'1' || ui_exit_probe || startup_guard_probe || wait_timeout_control) { fclose(output);return 2; }
         login_input_probe=1;
     }
+    wchar_t profile_probe[4]={0};DWORD profile_size=GetEnvironmentVariableW(L"KR_M8_LOGIN_PROFILE_PROBE",profile_probe,4);
+    if(profile_size) {
+        if(profile_size!=1 || profile_probe[0]!=L'1' || !login_input_probe) { fclose(output);return 2; }
+        login_profile_probe=1;
+    }
     fprintf(output,"{\"event\":\"probe_start\",\"wait_timeout_control_ms\":%u,\"limits\":\"Owned x86 child; software breakpoints and selected UI-thread debug-register observation; explicit zero-only timing control if nonzero; possible concurrent-step omissions; no native acceptance inferred\"}\n",(unsigned)wait_timeout_control);
     wchar_t *command=calloc(32768,sizeof(wchar_t));size_t used=0;
     if(!command) { fclose(output);return 4; }
@@ -180,6 +188,22 @@ int wmain(int argc, wchar_t **argv) {
                                || !install_expected(29,0x13ae24a,"manual_record_writer",(const BYTE *)"\xe8\x91\xe5\x1a\xff\x89\x45\x94",8)
                                || !install_expected(30,0x13ae109,"invalid_login_notice",(const BYTE *)"\x68\x84\x8f\x78\x01\x6a\x00\xff",8)) done=1;
                             fprintf(output,"{\"event\":\"login_input_probes_installed\",\"result_mutation\":false,\"secret_reads\":false}\n");
+                            if(login_profile_probe) {
+                                if(!install_expected(31,0x10fd540,"auth_profile_entry",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x46\x1c",8)
+                                   || !install_expected(32,0x10fed80,"auth_profile_return",(const BYTE *)"\x8b\x4d\xf4\x64\x89\x0d\x00\x00",8)
+                                   || !install_expected(33,0x13b09e0,"auth_local_id_set",(const BYTE *)"\x55\x8b\xec\x51\x89\x4d\xfc\x8b",8)
+                                   || !install_expected(34,0x1100590,"netinfo_profile_entry",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\xa9\x1e",8)
+                                   || !install_expected(7,0x1107412,"login_wait_return",(const BYTE *)"\x89\x45\xdc\x83\x7d\xdc\x02\x75",8)
+                                   || !install_expected(35,0x1104410,"manual_wait_entry",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x7c\x23",8)
+                                   || !install_expected(36,0x11044a7,"manual_wait_return",(const BYTE *)"\x89\x45\xec\x8b\x4d\xf0\xc7\x81",8)
+                                   || !install_expected(37,0x1103bb0,"after_login_entry",(const BYTE *)"\x55\x8b\xec\x83\xec\x1c\x89\x4d",8)
+                                   || !install_expected(38,0x1103c47,"after_login_feature",(const BYTE *)"\x0f\xb6\xd0\x85\xd2\x74\x0b\x8b",8)
+                                   || !install_expected(39,0x1107b27,"special_init_return",(const BYTE *)"\x0f\xb6\xc0\x85\xc0\x75\x07\x32",8)
+                                   || !install_expected(40,0x1107c7e,"special_init_success",(const BYTE *)"\xb0\x01\x8b\x4d\xf4\x64\x89\x0d",8)
+                                   || !install_expected(42,0xd88280,"flags62_entry",(const BYTE *)"\x55\x8b\xec\x83\xec\x0c\x89\x4d",8)
+                                   || !install_expected(43,0x13b27e0,"flags62_set",(const BYTE *)"\x55\x8b\xec\x51\x89\x4d\xfc\x0f",8)
+                                   || !install_expected(44,0x1107c90,"channel_request_entry",(const BYTE *)"\x55\x8b\xec\x6a\xff\x68\x56\x26",8)) done=1;
+                            }
                         } else if(startup_guard_probe) {
                             /* Exact current vi/ko WinMain bytes are pinned by
                              * the caller. Observe returns and rejection entry;
@@ -241,13 +265,63 @@ int wmain(int argc, wchar_t **argv) {
                                 if((which==23 || which==24) && socket<=2)
                                     fprintf(output,",\"argument1\":%lu",socket);
                             }
-                            if(which>=27) {
+                            if(which>=27 && which<=30) {
                                 DWORD count=0;
                                 if(read_u32(context.Ebp-0x24,&count) && count<=2)
                                     fprintf(output,",\"credential_count\":%lu",count);
                                 if((which==27 || which==28) && context.Eax<=1)
                                     fprintf(output,",\"web_selection\":%lu",context.Eax);
                             }
+                            if(which==31) read_u32(context.Esp+4,&profile_packet);
+                            if(which==31 || which==32) {
+                                DWORD cursor=0,size=0,error54=0,error58=0;
+                                if(profile_packet && read_u32(profile_packet+0x48,&cursor)
+                                   && read_u32(profile_packet+0x44,&size)
+                                   && read_u32(profile_packet+0x54,&error54)
+                                   && read_u32(profile_packet+0x58,&error58))
+                                    fprintf(output,",\"cursor\":%lu,\"payload_bytes\":%lu,\"error54\":%lu,\"error58\":%lu",cursor,size,error54,error58);
+                                if(which==32) profile_packet=0;
+                            }
+                            if(which==33) {
+                                DWORD slot=0,identity=0;
+                                if(read_u32(context.Esp+4,&slot) && slot<=1
+                                   && read_u32(context.Esp+8,&identity) && identity<=0x7fffffffUL)
+                                    fprintf(output,",\"local_slot\":%lu,\"wire_identity\":%lu",slot,identity);
+                            }
+                            if(which==34 || which==35 || which==36) {
+                                DWORD stage=context.Ecx,waiting=0,table=0,target=0;
+                                if(which==36) {
+                                    read_u32(context.Ebp-0x10,&stage);
+                                    fprintf(output,",\"manual_wait_result\":%lu",context.Eax);
+                                }
+                                if(stage>=0x2000000 && stage<0x70000000) {
+                                    if(read_u32(stage+0x2fd8,&waiting) && waiting<=1)
+                                        fprintf(output,",\"wait_owned_2fd8\":%lu",waiting);
+                                    if(read_u32(stage+0x2c04,&table) && read_u32(table+152,&target)
+                                       && target>=0x400000 && target<0x2300000)
+                                        fprintf(output,",\"manual_wait_target\":\"0x%lx\"",target);
+                                }
+                            }
+                            if(which==38 || which==39)
+                                fprintf(output,",\"result_u8\":%lu",context.Eax & 255UL);
+                            if(which==40) {
+                                /* Install only after successful stage setup. The
+                                 * first sixteen samples bound debugger overhead. */
+                                if(!install_expected(41,0x11076a9,"handoff_predicate_return",
+                                    (const BYTE *)"\x83\xc4\x08\x0f\xb6\xc8\x85\xc9",8)) done=1;
+                            }
+                            if(which==41) {
+                                DWORD a=0,b=0,slot=0;
+                                if(read_u32(context.Ebp-0x20,&a) && read_u32(context.Ebp-0x1c,&b))
+                                    fprintf(output,",\"predicate_a\":%lu,\"predicate_b\":%lu,\"result_u8\":%lu",a,b,context.Eax & 255UL);
+                                if(read_u32(context.Ebp-8,&slot) && slot<=1)
+                                    fprintf(output,",\"local_slot\":%lu",slot);
+                                if(++profile_poll_samples>=16) point->active=0;
+                            }
+                            if(which==43 && socket<=1)
+                                fprintf(output,",\"local_slot\":%lu,\"status\":%lu",socket,second);
+                            if(which==44)
+                                fprintf(output,",\"channel_argument\":%lu",socket);
                             if(which>=11 && which<=16) {
                                 DWORD object=0,flags=0,table=0,target=0;
                                 fprintf(output,",\"eax\":%lu",context.Eax);

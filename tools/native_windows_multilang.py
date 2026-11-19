@@ -16,6 +16,7 @@ import sys
 import time
 
 import native_run_cleanup
+import native_login_profile_control
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -209,6 +210,8 @@ def main():
                         help='No-token configuration control: nonempty inert m8probe:1 instead of automatic selection')
     parser.add_argument('--ingame-input-observer', action='store_true',
                         help='No-token loopback debugger observation of manual/roster/control handlers, no secret reads')
+    parser.add_argument('--ingame-profile-reply', type=Path,
+                        help='Private pinned diagnostic profile reply; loopback consumer test, never DB authentication')
     parser.add_argument('--resume-stage', action='store_true', help='Resume an already completed private remote staging operation, never repeat it')
     parser.add_argument('--wait-timeout-control-ms', type=int, default=0,
                         help='Explicit debugger-only zero-limit timing control; not a final client patch')
@@ -226,6 +229,8 @@ def main():
         parser.error('Marker argument requires no-token feasibility mode without empty arguments')
     if args.ingame_input_observer and (not args.ingame_local_capture or args.crash_dump or args.socket_probe):
         parser.error('Login input observer requires no-token loopback capture without WER/socket observer')
+    if args.ingame_profile_reply and not (args.ingame_input_observer and args.ingame_local_capture):
+        parser.error('Diagnostic profile requires explicit loopback input observer')
     local = (ROOT / 'local').resolve(strict=True)
     paired = None
     if args.paired_control:
@@ -505,6 +510,14 @@ if($parseErrors.Count -gt 0){
         if args.ingame_local_capture:
             control['ingame_local_capture'] = True
             shutil.copy2(ROOT / 'tools/native_login_capture.cs', output / 'native-login-capture.cs')
+            if args.ingame_profile_reply:
+                reply, pin = native_login_profile_control.load_reply(args.ingame_profile_reply, ROOT)
+                flow, flow_pins = native_login_profile_control.load_continuations(args.ingame_profile_reply, ROOT)
+                source = output / 'native-login-capture.cs'
+                source.write_text(native_login_profile_control.capture_source(source.read_text(), reply, flow))
+                control['diagnostic_profile_reply'] = pin
+                if flow_pins:
+                    control['diagnostic_profile_continuations'] = flow_pins
             fixtures = {
                 'login-bootstrap.bin': local / 'research/codex/bootstrap-reply-r1.bin',
                 'login-wcp.bin': local / 'research/codex/wcp-fields-r1/eight-v2-responses.bin',

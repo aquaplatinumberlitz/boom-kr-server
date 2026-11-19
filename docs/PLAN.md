@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, CP341: LoginStage khả thi trên bản tương thích riêng; tiếp DB và prelogin TLS**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, CP342: client đã đọc hai hồ sơ và tự chuyển kết nối kênh; tiếp quyền DB và prelogin TLS**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -40,7 +40,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, C
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), nối đăng nhập trong game | [CP341](evidence/rust-service/m8-login-stage-manual.json) đạt bước kiểm khả thi trên bản tương thích riêng: UI gốc nhập 1P/2P gửi opcode 1 với field giải mã đúng; nút chơi thử 1P/2P gửi opcode 62. Thay đổi nhỏ chọn route manual và hiển thị nút có recipe/rollback, không vá lớn hoặc giả kết quả xác thực. Parser thư viện đã có bounds/zeroize và vector native/kiểm âm, chưa nối listener. Tiếp DB M5 cho hai identity trong một transport, native reply count2, lỗi chung/rate limit; sau đó khách và companion prelogin TLS có giới hạn. Khi đường này đủ mới bỏ password launcher, thêm quản lý account, cherry-pick giao diện và dịch lỗi theo owner. Giữ token dự phòng. Còn cài sạch/Wine, vi/ko cùng phòng, trận Internet/reset và các acceptance gói cuối. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), nối đăng nhập trong game | [CP341](evidence/rust-service/m8-login-stage-manual.json) đạt bước kiểm khả thi trên bản tương thích riêng: UI gốc nhập 1P/2P gửi opcode 1 với field giải mã đúng; nút chơi thử 1P/2P gửi opcode 62. Thay đổi nhỏ chọn route manual và hiển thị nút có recipe/rollback, không vá lớn hoặc giả kết quả xác thực. [CP342](evidence/rust-service/m8-login-local-profiles.json) có reply hai hồ sơ được native đọc đủ, trạng thái cả hai slot giải phóng yêu cầu kênh và opcode 6 mang đúng hai ID/tên. Parser/projection còn ở thư viện, chưa nối listener. Tiếp DB M5 cho hai identity trong một transport, reply/profile kênh 2P, lỗi chung/rate limit; sau đó khách và companion prelogin TLS có giới hạn. Khi đường này đủ mới bỏ password launcher, thêm quản lý account, cherry-pick giao diện và dịch lỗi theo owner. Giữ token dự phòng. Còn cài sạch/Wine, vi/ko cùng phòng, trận Internet/reset và các acceptance gói cuối. |
    | Tải/giám sát/soak | Chốt tần suất UDP từ client thật và ngưỡng trước đo, 50 người/8 phòng cùng hai phòng native, rồi 24 giờ tải nền; đo startup failure, bộ nhớ/cổng/phòng. |
    | Admin/backup/rollback | Audit thao tác admin, snapshot khi live và restore vào máy sạch/native trận mới, kill/restart và nâng cấp/quay lại binary. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
@@ -66,8 +66,8 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 **Blocker và việc tồn:**
 
 - Gate local/history đã đạt trên `ffc2ec1`: 580.279 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
-  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP341 đạt bước khả thi
-  trên bản tương thích riêng; parser chưa nối listener, đăng nhập DB/guest/prelogin TLS và M8 vẫn mở.
+  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP342 có hai hồ sơ và chuyển kết nối kênh
+  trên bản tương thích riêng; gate công bố mới chờ chạy. Parser/projection chưa nối listener, DB/guest/prelogin TLS và M8 vẫn mở.
 
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite

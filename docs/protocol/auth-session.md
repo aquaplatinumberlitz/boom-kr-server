@@ -189,10 +189,35 @@ parser **chưa nối listener**, không cấp session hoặc thay policy passwor
 buffer nguồn và chỉ mở route password sau khi admission TLS prelogin có bounds được kiểm.
 
 **Bước khả thi đạt trong phạm vi copy đã khai báo.** Mở tiếp parser/DB M5 cho 1P/2P, guest và companion TLS
-prelogin có bounds theo owner; giữ token dự phòng cho tới khi có native xuyên suốt. Bộ thu chỉ gửi hello/WCP,
-không gửi kết quả xác thực. [Receipt kiểm/source và lưu trữ](../evidence/rust-service/m8-login-step1-verification.json) giữ head gate và giới hạn.
+prelogin có bounds theo owner; giữ token dự phòng cho tới khi có native xuyên suốt. Bộ thu mặc định chỉ gửi hello/WCP;
+phép kiểm hồ sơ riêng bên dưới có phản hồi tổng hợp, không phải kết quả xác thực DB. [Receipt kiểm/source và lưu trữ](../evidence/rust-service/m8-login-step1-verification.json) giữ head gate và giới hạn.
 Lượt gộp giữ receipt collector stopped và VM/service cleanup; hai lượt dừng owner sớm
 thiếu receipt cuối được khai riêng, không nâng thành clean native logout. CP339/CP340/raw/manifests giữ bất biến.
+
+<a id="rust-ingame-local-profiles"></a>
+### Hai hồ sơ cục bộ sau đăng nhập tay
+
+[Bằng chứng và giới hạn](../evidence/rust-service/m8-login-local-profiles.json) dùng cùng bản tương thích riêng
+đã đạt kiểm khả thi. `kr_runtime/confirmed`: sau request 1 từ UI 2P, callback `10FD540` đọc trọn 242 byte,
+cursor bằng size và hai error field bằng 0; setter `13B09E0` nhận slot 0/1 và ID 1/2. Client gửi request 9.
+Đây là hai hồ sơ tổng hợp lấy từ fixture đã đo; ID không được xác thực hoặc suy từ credential người dùng nhập.
+
+Layout nhánh đã đo có prefix chung 13 byte, mỗi player 105 byte khi tên dài 7 byte và tail chung 19 byte.
+`AccountTemplate::project_local_auth` dựng reply cho một hoặc hai identity khác 0, không trùng; không định nghĩa
+channel request/reply, own291 hoặc membership nhiều account. Kiểm Rust khớp đúng input mà native đã tiêu thụ;
+source/cache được đối chiếu đúng bytes của copy hiện hành. Không suy mọi biến thể profile đã được đo.
+
+Netinfo tiếp theo đi qua `1100590` khi `stage+2FD8=1`; modal đăng nhập tay `1104410` gọi target `15037F7`
+và trả 3 tại `11044A7`. Đây là modal khác site chờ tự động `1107412`. Sau khởi tạo thành công, client kiểm
+trạng thái từng slot. Chỉ thông báo slot 0 để slot 1 ở predicate `0,0`; gửi subtype 1/status 2 của opcode 62 cho cả
+hai slot thì client tự gửi opcode 5, nhận redirect và mở kết nối kênh mới. Giá trị status giữ provenance design.
+
+Request kênh opcode 6 có sequence 40 riêng, frame 107/body 69: count 2, hai record tên `KRLocal`/ID 1 và
+`KRGuest`/ID 2, mỗi echo bằng 0. Khớp serializer đã có tại [producer C→S6](#auth-channel-echo), chỉ nhánh tên
+ASCII 7 byte và optional-string-off. Không suy các ID/echo này là quyền account; reply kênh cho 2P, vào sảnh,
+phòng, gameplay và lifecycle DB/TLS vẫn chưa được nghiệm thu.
+Collector chẩn đoán chỉ nghe loopback, chỉ gửi reply sau đủ frame và continuation theo request đã khai báo.
+Nó giữ nguồn collector mặc định nguyên vẹn và không nối vào listener production.
 
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014

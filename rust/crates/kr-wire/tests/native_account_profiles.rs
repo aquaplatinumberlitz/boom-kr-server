@@ -93,3 +93,38 @@ fn patched_names_use_native_lengths_and_identical_bytes_in_all_projections() {
         assert_eq!(parsed.project_account(70000, &name).unwrap(), q.player106);
     }
 }
+
+// r55: synthetic count2 profile was consumed242/242, errors54/58=0,
+// native local slots0/1 set IDs1/2. Retained input, not a generated Rust golden.
+const LOCAL_TWO_AUTH: &str = "5a5aa568580000000071b1858996ca539596ca5395a569a56996ca5394a56ef98601dec40a365aa569a5695a0000000071b1858996ca539596ca53955a96ca53955a5aa5695a5a96ca539596ca53955a5a5a5a5aa569a5695a96ca539596ca53955a5a96ca53955a5a96ca53955a5aa56996ca53955a96ca539596ca5395a569a56996ca5397a56ee38d01ded60c2e5aa569a5695a0000000071b1858996ca539596ca53955a96ca53955a5aa5695a5a96ca539596ca53955a5a5a5a5aa569a5695a96ca539596ca53955a5a96ca53955a5a96ca53955a5aa56996ca53955a5a5a5aa5695a5a96ca539596ca539596ca5395";
+
+#[test]
+fn two_local_auth_matches_independently_native_accepted_profile() {
+    let template = AccountTemplate::parse(&hex(AUTH), &hex(OWN), &hex(PLAYER)).unwrap();
+    assert_eq!(
+        template
+            .project_local_auth(&[(1, b"KRLocal", 0), (2, b"KRGuest", 0)])
+            .unwrap(),
+        hex(LOCAL_TWO_AUTH)
+    );
+    assert_eq!(
+        template.project_local_auth(&[(1, b"KRLocal", 0)]).unwrap(),
+        hex(AUTH)
+    );
+    assert!(template.project_local_auth(&[]).is_err());
+    assert!(
+        template
+            .project_local_auth(&[(1, b"KRLocal", 0), (1, b"KRGuest", 0)])
+            .is_err()
+    );
+    assert!(
+        template
+            .project_local_auth(&[(1, b"KRLocal", 0), (2, b"KRGuest", 0), (3, b"KRNew", 0)])
+            .is_err()
+    );
+    assert!(
+        template
+            .project_local_auth(&[(1, b"KRLocal", 0), (0, b"KRGuest", 0)])
+            .is_err()
+    );
+}

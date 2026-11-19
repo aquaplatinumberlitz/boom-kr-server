@@ -1725,3 +1725,14 @@ repo/local bị che, từ chối init lại mà không đổi DB và từ chối
 raw lỗi trước được giữ. Đây là nền đóng gói từ recipe hiện có; xuất dữ liệu từ pack, cài máy sạch đầy đủ, launcher
 Internet, gói Windows/Wine, tải 50 người/8 phòng, restore và 24 giờ chạy dài còn theo [Bảng điều hành](PLAN.md#dashboard).
 G1 đã đủ bằng chứng trong CP337; tích hợp vẫn chờ gate local với registry dọn evidence lịch sử và CI hiện hành.
+
+
+### Kiểm khả thi trước CP342
+
+**CP341: kiểm khả thi LoginStage đạt trên bản tương thích riêng; chưa xác thực DB.**
+[Bằng chứng native](evidence/rust-service/m8-login-stage-manual.json): UI gốc nhận ID/mật khẩu 1P/2P,
+phát opcode 1 và giải mã khớp toàn bộ dữ liệu giả đã gõ; nút chơi thử 1P/2P phát opcode 62.
+Bản sao dùng các thay đổi nhỏ có recipe/rollback để chọn đường manual sẵn có và hiện nút trial; không suy
+hành vi bản gốc hoặc đăng nhập thành công. Tiếp xác thực DB, khách và prelogin TLS theo [Bảng điều hành](PLAN.md#dashboard),
+rồi mới thay launcher. Đường token được giữ; mọi VM/service đã dừng và scratch được dọn, lỗi lượt cũ giữ nguyên.
+M8 và các acceptance còn lại vẫn mở theo [Bảng điều hành](PLAN.md#dashboard).

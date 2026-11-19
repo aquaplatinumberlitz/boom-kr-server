@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP334",
+  "as_of": "CP342",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -6037,7 +6037,8 @@
           "docs/evidence/rust-service/m8-multilang-player-package.json",
           "docs/evidence/rust-service/m8-room-chat-contract.json",
           "docs/evidence/rust-service/m8-login-input-controls.json",
-          "docs/evidence/rust-service/m8-login-stage-manual.json"
+          "docs/evidence/rust-service/m8-login-stage-manual.json",
+          "docs/evidence/rust-service/m8-login-local-profiles.json"
         ]
       },
       "coverage": {
@@ -6167,7 +6168,11 @@
             "tools/native_wine_pair.py",
             "tools/native_login_capture.cs",
             "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
-            "rust/crates/kr-service/src/account_bridge/ingame_wire.rs"
+            "rust/crates/kr-service/src/account_bridge/ingame_wire.rs",
+            "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+            "rust/crates/kr-wire/src/kr00967/account.rs",
+            "tools/native_login_profile_control.py",
+            "tools/test_native_login_profile_control.py"
           ],
           "delivery": "via_pr"
         },

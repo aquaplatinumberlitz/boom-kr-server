@@ -45,6 +45,10 @@ try{
   Add-Type -Path $source
   $localCapture=New-Object M8LoginCapture((Join-Path $seed 'native-login-capture.jsonl'),[IO.File]::ReadAllBytes((Join-Path $seed 'login-bootstrap.bin')),[IO.File]::ReadAllBytes((Join-Path $seed 'login-wcp.bin')))
   $report.local_capture='Loopback only; pinned bootstrap/WCP, no auth replies, bounded raw synthetic input. No production auth change.'
+  if($control.diagnostic_profile_reply){
+   $report.local_capture='Loopback diagnostic profile consumer test; pinned synthetic reply after complete opcode1. Not DB authentication or account ownership.'
+   $report.diagnostic_profile_reply=$control.diagnostic_profile_reply
+  }
  }
  if($control.ingame_local_capture){
   $ownedNames=@('lslist.crazyarcade.com','dream-login-ca.nexon.com','happy-login-ca.nexon.com')
@@ -121,6 +125,7 @@ try{
    $start.Arguments='"'+(Join-Path $seed 'native-socket-probe.jsonl')+'" "'+(Join-Path $game 'CA.exe')+'"'
    if($nativeArguments){$start.Arguments+=' '+$nativeArguments}
    $start.EnvironmentVariables['KR_M8_LOGIN_INPUT_PROBE']='1'
+   if($control.diagnostic_profile_reply){$start.EnvironmentVariables['KR_M8_LOGIN_PROFILE_PROBE']='1'}
    $report.execution_mode='no_token_read_only_input_observer'
    $report.feasibility_limit='Declared debugger control of existing handlers. Software breakpoints perturb timing; no secret reads, forced results or authentication acceptance.'
   }
