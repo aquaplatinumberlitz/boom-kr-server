@@ -306,7 +306,12 @@ fn account(config: &Config, screen: Screen, form: Form) -> Result<Option<Zeroizi
     {
         return Err(());
     }
-    if response.ok && (code.is_some() == (screen == Screen::Register)) {
+    let code_matches = match screen {
+        Screen::Register | Screen::Recover => code.is_some(),
+        Screen::Change => true,
+        _ => code.is_none(),
+    };
+    if response.ok && code_matches {
         Ok(code)
     } else {
         Err(())

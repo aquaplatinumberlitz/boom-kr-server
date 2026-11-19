@@ -1,8 +1,10 @@
 //! Own the game and its loopback TLS companion for one launcher session.
 use crate::Language;
+use kr_tunnel::prelogin::trace::LOG_NAME;
 use serde::Deserialize;
 use std::{
-    fs, io,
+    fs,
+    io::{self, Write},
     net::SocketAddrV4,
     path::{Path, PathBuf},
     process::{Child, Command, Stdio},
@@ -106,6 +108,7 @@ pub(crate) struct OwnedSession {
     game: Option<Child>,
     run: PathBuf,
     stopping: bool,
+    exit: Option<(&'static str, Option<i32>)>,
 }
 impl OwnedSession {
     pub fn request_stop(&mut self) {
@@ -120,11 +123,24 @@ impl OwnedSession {
             return Some(false);
         }
         match self.game.as_mut()?.try_wait() {
-            Ok(Some(status)) => Some(status.success() || self.stopping),
-            Err(_) => Some(false),
+            Ok(Some(status)) => {
+                self.exit = Some(("game", status.code()));
+                Some(status.success() || self.stopping)
+            }
+            Err(_) => {
+                self.exit = Some(("game_wait", None));
+                Some(false)
+            }
             Ok(None) => match self.companion.try_wait() {
                 Ok(None) => None,
-                _ => Some(self.stopping),
+                Ok(Some(status)) => {
+                    self.exit = Some(("companion", status.code()));
+                    Some(self.stopping)
+                }
+                Err(_) => {
+                    self.exit = Some(("companion_wait", None));
+                    Some(self.stopping)
+                }
             },
         }
     }
@@ -141,8 +157,50 @@ impl Drop for OwnedSession {
         }
         let _ = self.companion.kill();
         let _ = self.companion.wait();
+        let log = self.run.join(LOG_NAME);
+        if let Ok(mut file) = fs::OpenOptions::new().append(true).open(&log) {
+            let (first, exit_code) = self.exit.unwrap_or(("launcher_stop", None));
+            let _ = writeln!(
+                file,
+                "event=launcher_end first={first} exit_code={exit_code:?}"
+            );
+            drop(file);
+            let _ = retain_log(&log, self.run.parent().expect("run parent"));
+        }
         let _ = fs::remove_dir_all(&self.run);
     }
+}
+
+// Fixed slots also bound storage if more than one launcher instance completes.
+const RETAINED_LOGS: usize = 4;
+
+fn retain_log(source: &Path, state: &Path) -> io::Result<()> {
+    let directory = state.join("prelogin-logs");
+    match fs::create_dir(&directory) {
+        Ok(()) => (),
+        Err(error) if error.kind() == io::ErrorKind::AlreadyExists => (),
+        Err(error) => return Err(error),
+    }
+    if !fs::symlink_metadata(&directory)?.is_dir() {
+        return Err(io::Error::other("invalid prelogin log directory"));
+    }
+    let mut oldest = None;
+    for n in 0..RETAINED_LOGS {
+        let slot = directory.join(format!("prelogin-{n}.log"));
+        let modified = match fs::symlink_metadata(&slot) {
+            Ok(meta) if meta.is_file() => meta.modified()?,
+            Ok(_) => continue,
+            Err(error) if error.kind() == io::ErrorKind::NotFound => {
+                return fs::rename(source, slot);
+            }
+            Err(error) => return Err(error),
+        };
+        if oldest.as_ref().is_none_or(|(_, time)| modified < *time) {
+            oldest = Some((slot, modified));
+        }
+    }
+    let (slot, _) = oldest.ok_or_else(|| io::Error::other("prelogin log slots unavailable"))?;
+    fs::rename(source, slot)
 }
 
 fn ready(child: &mut Child, signal: &Path) -> io::Result<()> {
@@ -183,6 +241,7 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
             "server": config.prelogin_server, "certificate": config.prelogin_certificate,
             "ports": config.ports, "udp_backend": config.udp_backend,
             "cancel_file": run.join("cancel"), "ready_file": signal, "owner_heartbeat": beat,
+            "diagnostics": true,
         });
         fs::write(&path, serde_json::to_vec(&value).map_err(io::Error::other)?)?;
         let mut command = Command::new(config.companion);
@@ -201,6 +260,7 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
             game: None,
             run: run.clone(),
             stopping: false,
+            exit: None,
         })
     })()
     .inspect_err(|_| {
@@ -232,4 +292,39 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
 
 pub(crate) fn start(config: Config, language: Language) -> Result<Session, ()> {
     start_inner(config, language).map_err(|_| ())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn completed_log_rotation_is_bounded_and_preserves_latest_log() {
+        let root = std::env::temp_dir().join(format!(
+            "kr-player-logs-{}-{:x}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&root).unwrap();
+        let log = root.join(LOG_NAME);
+        for n in 0..RETAINED_LOGS + 3 {
+            fs::write(&log, n.to_string()).unwrap();
+            retain_log(&log, &root).unwrap();
+            assert!(!log.exists());
+        }
+        let archive = fs::read_dir(root.join("prelogin-logs"))
+            .unwrap()
+            .collect::<io::Result<Vec<_>>>()
+            .unwrap();
+        assert_eq!(archive.len(), RETAINED_LOGS);
+        assert!(
+            archive
+                .iter()
+                .any(|e| fs::read_to_string(e.path()).unwrap() == (RETAINED_LOGS + 2).to_string())
+        );
+        fs::remove_dir_all(root).unwrap();
+    }
 }

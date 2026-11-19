@@ -1,5 +1,6 @@
 //! Company companion starts before the game and accepts no account password.
 #![forbid(unsafe_code)]
+use kr_tunnel::prelogin::trace::{Startup, StopCause, Trace};
 use serde::Deserialize;
 use std::{io, net::SocketAddrV4, path::PathBuf};
 use tokio::sync::watch;
@@ -16,6 +17,8 @@ struct Config {
     owner_heartbeat: Option<PathBuf>,
     #[serde(default)]
     udp_backend: kr_tunnel::UdpBackend,
+    #[serde(default)]
+    diagnostics: bool,
 }
 #[tokio::main]
 async fn main() -> io::Result<()> {
@@ -37,44 +40,60 @@ async fn main() -> io::Result<()> {
     {
         return Err(io::Error::other("prelogin configuration bounds"));
     }
-    let endpoint =
-        kr_tunnel::prelogin::endpoint(std::fs::read(config.certificate)?, config.udp_backend)?;
-    let listeners = kr_tunnel::prelogin::bind(&config.ports).await?;
+    let trace = if config.diagnostics {
+        let path = std::path::Path::new(&args[1]);
+        Trace::create(
+            path.parent()
+                .ok_or_else(|| io::Error::other("prelogin run directory"))?,
+        )?
+    } else {
+        Trace::default()
+    };
+    let endpoint = std::fs::read(config.certificate)
+        .and_then(|cert| kr_tunnel::prelogin::endpoint(cert, config.udp_backend));
+    trace.startup(Startup::Endpoint, endpoint.is_ok());
+    let endpoint = endpoint?;
+    let listeners = kr_tunnel::prelogin::bind_traced(&config.ports, &trace).await?;
     if let Some(path) = config.ready_file {
         std::fs::OpenOptions::new()
             .create_new(true)
             .write(true)
             .open(path)?;
     }
+    trace.startup(Startup::Ready, true);
     println!("{{\"event\":\"prelogin_ready\"}}");
     let (halt, stop) = watch::channel(false);
     let cancel = config.cancel_file;
     let heartbeat = config.owner_heartbeat;
+    let lifecycle = trace.clone();
     let task = tokio::spawn(async move {
         let mut ticker = tokio::time::interval(std::time::Duration::from_millis(100));
         let signal = tokio::signal::ctrl_c();
         tokio::pin!(signal);
-        loop {
+        let cause = loop {
             tokio::select! {
-                _ = &mut signal => break,
+                _ = &mut signal => break StopCause::Interrupt,
                 _ = ticker.tick() => {
-                    if cancel.exists() || heartbeat.as_ref().is_some_and(|p|
+                    if cancel.exists() { break StopCause::Cancel; }
+                    if heartbeat.as_ref().is_some_and(|p|
                         std::fs::metadata(p).and_then(|m| m.modified()).ok()
                             .and_then(|t| t.elapsed().ok())
                             .is_none_or(|age| age >= std::time::Duration::from_secs(10))) {
-                        break;
+                        break StopCause::Heartbeat;
                     }
                 }
             }
-        }
+        };
+        lifecycle.stop(cause);
         halt.send_replace(true);
     });
-    let result = kr_tunnel::prelogin::companion_on_demand(
+    let result = kr_tunnel::prelogin::companion_traced(
         endpoint.clone(),
         config.server.into(),
         listeners,
         stop,
         config.udp_backend,
+        trace,
     )
     .await;
     task.abort();

@@ -24,6 +24,9 @@ use tokio::{
 };
 use zeroize::Zeroizing;
 
+pub mod trace;
+use trace::Trace;
+
 const ALPN: &[u8] = b"kre-native/1";
 const NAME: &str = "kr-launch.local";
 const OPEN: &[u8; 8] = b"KRNAT001";
@@ -178,38 +181,62 @@ async fn copy_secret<R: tokio::io::AsyncRead + Unpin, W: tokio::io::AsyncWrite +
     reader: &mut R,
     writer: &mut W,
     bound: &AtomicBool,
+    count: &mut u64,
+    end: &mut &'static str,
 ) -> io::Result<()> {
     let mut buffer = Zeroizing::new(vec![0; 1024]);
     let mut budget = TrafficBudget::new(BYTE_LIMIT, 128 * 1024);
     loop {
+        *end = "read";
         let size = reader.read(&mut buffer).await?;
         if size == 0 {
+            *end = "shutdown";
             writer.shutdown().await?;
+            *end = "eof";
             return Ok(());
         }
         if !budget.allow(size, bound.load(Ordering::Acquire), Instant::now()) {
+            *end = "byte_bound";
             return Err(io::Error::other("native stream byte bound"));
         }
-        writer.write_all(&buffer[..size]).await?;
+        *end = "write";
+        let mut rest = &buffer[..size];
+        while !rest.is_empty() {
+            let n = writer.write(rest).await?;
+            if n == 0 {
+                return Err(io::ErrorKind::WriteZero.into());
+            }
+            *count = count.saturating_add(n as u64);
+            rest = &rest[n..];
+        }
         buffer.fill(0);
     }
 }
 /// Bind listeners before reporting companion readiness. These sockets are
 /// loopback only; no direct native connection to a public password port exists.
 pub async fn bind(ports: &[u16]) -> io::Result<Vec<TcpListener>> {
+    bind_traced(ports, &Trace::default()).await
+}
+
+pub async fn bind_traced(ports: &[u16], trace: &Trace) -> io::Result<Vec<TcpListener>> {
     if ports.is_empty() || ports.len() > 32 || ports.contains(&0) {
         return Err(io::Error::other("native local endpoint bounds"));
     }
     let mut listeners = Vec::with_capacity(ports.len());
     for port in ports {
-        listeners.push(TcpListener::bind((std::net::Ipv4Addr::LOCALHOST, *port)).await?);
+        let listener = TcpListener::bind((std::net::Ipv4Addr::LOCALHOST, *port)).await;
+        trace.event(
+            "listener_bind",
+            format_args!(" port={port} ok={}", listener.is_ok()),
+        );
+        listeners.push(listener?);
     }
     Ok(listeners)
 }
 /// Application close sent only when the server's pre-login timer expires.
 pub const PRELOGIN_EXPIRED: u32 = 1;
 
-fn expired(error: quinn::ConnectionError) -> bool {
+fn expired(error: &quinn::ConnectionError) -> bool {
     matches!(error, quinn::ConnectionError::ApplicationClosed(close)
         if close.error_code == PRELOGIN_EXPIRED.into())
 }
@@ -226,6 +253,88 @@ pub fn endpoint(certificate: Vec<u8>, backend: crate::UdpBackend) -> io::Result<
     Ok(endpoint)
 }
 
+fn tls_reason(error: &quinn::ConnectionError) -> &'static str {
+    match error {
+        e if expired(e) => "prelogin_expired",
+        quinn::ConnectionError::VersionMismatch => "version_mismatch",
+        quinn::ConnectionError::TransportError(_) => "transport_error",
+        quinn::ConnectionError::ConnectionClosed(_) => "peer_transport_close",
+        quinn::ConnectionError::ApplicationClosed(_) => "peer_application_close",
+        quinn::ConnectionError::Reset => "reset",
+        quinn::ConnectionError::TimedOut => "timeout",
+        quinn::ConnectionError::LocallyClosed => "local_close",
+        quinn::ConnectionError::CidsExhausted => "connection_id_bound",
+    }
+}
+
+#[derive(Default)]
+struct StreamProgress {
+    up: u64,
+    down: u64,
+    up_end: &'static str,
+    down_end: &'static str,
+}
+
+struct StreamTrace {
+    trace: Trace,
+    id: usize,
+    port: u16,
+    result: &'static str,
+    progress: StreamProgress,
+}
+impl Drop for StreamTrace {
+    fn drop(&mut self) {
+        let StreamProgress {
+            up,
+            down,
+            up_end,
+            down_end,
+        } = self.progress;
+        self.trace.event("stream_close", format_args!(
+            " id={} port={} reason={} up={up} down={down} up_stage={up_end} down_stage={down_end}",
+            self.id, self.port, self.result
+        ));
+    }
+}
+
+async fn forward(
+    tls: Connection,
+    mut socket: tokio::net::TcpStream,
+    bound: Arc<AtomicBool>,
+    mut record: StreamTrace,
+) -> io::Result<()> {
+    record.trace.event(
+        "stream_open_start",
+        format_args!(" id={} port={}", record.id, record.port),
+    );
+    let (mut send, mut recv) = open(&tls, record.port).await.inspect_err(|_| {
+        record.result = "open_error";
+    })?;
+    record.trace.event(
+        "stream_open_ok",
+        format_args!(" id={} port={}", record.id, record.port),
+    );
+    let (mut read, mut write) = socket.split();
+    let p = &mut record.progress;
+    let result = tokio::try_join!(
+        copy_secret(&mut read, &mut send, &bound, &mut p.up, &mut p.up_end),
+        copy_secret(&mut recv, &mut write, &bound, &mut p.down, &mut p.down_end)
+    );
+    record.result = match &result {
+        Ok(_) => "eof",
+        Err(e) => match e.kind() {
+            io::ErrorKind::ConnectionReset => "reset",
+            io::ErrorKind::ConnectionAborted => "aborted",
+            io::ErrorKind::BrokenPipe => "broken_pipe",
+            io::ErrorKind::UnexpectedEof => "unexpected_eof",
+            io::ErrorKind::TimedOut => "timeout",
+            io::ErrorKind::WriteZero => "write_zero",
+            _ => "io_error",
+        },
+    };
+    result.map(|_| ())
+}
+
 /// Listeners outlive a pre-login timeout. Dial on demand, without replaying
 /// any bytes from an old socket or reattaching an authenticated roster.
 pub async fn companion_on_demand(
@@ -235,7 +344,34 @@ pub async fn companion_on_demand(
     stop: watch::Receiver<bool>,
     backend: crate::UdpBackend,
 ) -> io::Result<()> {
-    run_companion(None, Some((endpoint, address)), listeners, stop, backend).await
+    companion_traced(
+        endpoint,
+        address,
+        listeners,
+        stop,
+        backend,
+        Trace::default(),
+    )
+    .await
+}
+
+pub async fn companion_traced(
+    endpoint: Endpoint,
+    address: SocketAddr,
+    listeners: Vec<TcpListener>,
+    stop: watch::Receiver<bool>,
+    backend: crate::UdpBackend,
+    trace: Trace,
+) -> io::Result<()> {
+    run_companion(
+        None,
+        Some((endpoint, address)),
+        listeners,
+        stop,
+        backend,
+        trace,
+    )
+    .await
 }
 
 #[cfg(test)]
@@ -250,6 +386,7 @@ async fn companion(
         listeners,
         stop,
         crate::UdpBackend::Native,
+        Trace::default(),
     )
     .await
 }
@@ -260,23 +397,35 @@ async fn run_companion(
     listeners: Vec<TcpListener>,
     mut stop: watch::Receiver<bool>,
     backend: crate::UdpBackend,
+    trace: Trace,
 ) -> io::Result<()> {
     let (tx, mut rx) = tokio::sync::mpsc::channel(4);
     let mut accepts = JoinSet::new();
     for listener in listeners {
         let tx = tx.clone();
+        let trace = trace.clone();
         accepts.spawn(async move {
             let port = listener.local_addr()?.port();
             loop {
-                let (socket, _) = listener.accept().await?;
-                let _ = tx.try_send((socket, port));
+                match listener.accept().await {
+                    Ok((socket, _)) => {
+                        let queued = tx.try_send((socket, port)).is_ok();
+                        trace.event("tcp_accept", format_args!(" port={port} queued={queued}"));
+                    }
+                    Err(error) => {
+                        trace.event(
+                            "listener_end",
+                            format_args!(" port={port} reason=accept_error"),
+                        );
+                        return Err::<(), io::Error>(error);
+                    }
+                }
             }
-            #[allow(unreachable_code)]
-            Ok::<(), io::Error>(())
         });
     }
     drop(tx);
-    let result = async {
+    let mut id = 0;
+    let outcome = async {
         loop {
             if *stop.borrow() { return Ok(()); }
             let initial = if connection.is_none() {
@@ -285,42 +434,68 @@ async fn run_companion(
                     ticket = rx.recv() => ticket.ok_or_else(|| io::Error::other("native listeners ended"))?,
                 };
                 let (endpoint, address) = dial.as_ref().ok_or_else(|| io::Error::other("native TLS ended"))?;
-                let tls = tokio::select! {
-                    _ = stop.changed() => return Ok(()),
-                    result = connect(endpoint, *address) => result?,
+                trace.event("tls_connect_start", format_args!(" port={}", ticket.1));
+                let result = tokio::select! {
+                    _ = stop.changed() => {
+                        trace.event("tls_connect_end", format_args!(" reason=stop"));
+                        return Ok(());
+                    }
+                    result = connect(endpoint, *address) => result,
                 };
-                connection = Some(tls);
+                connection = Some(match result {
+                    Ok(tls) => {
+                        trace.event("tls_connect_ok", format_args!(" port={}", ticket.1));
+                        tls
+                    }
+                    Err(error) => {
+                        let reason = error.get_ref()
+                            .and_then(|e| e.downcast_ref::<quinn::ConnectionError>())
+                            .map_or("connect_error_or_deadline", tls_reason);
+                        trace.event("tls_connect_error", format_args!(" reason={reason}"));
+                        return Err(error);
+                    }
+                });
                 Some(ticket)
             } else {
                 None
             };
             let tls = connection.take().expect("connection was established");
-            let _close = Close(tls.clone());
+            let close = Close(tls.clone());
             let bound = Arc::new(AtomicBool::new(false));
             let mut streams = JoinSet::new();
             let mut total = 0;
             let peer = peers(tls.clone(), stop.clone(), bound.clone(), backend);
             tokio::pin!(peer);
             let mut initial = initial;
-            loop {
+            let result = loop {
                 tokio::select! {
                     biased;
-                    _ = stop.changed() => return Ok(()),
+                    _ = stop.changed() => {
+                        trace.event("tls_close", format_args!(" reason=stop"));
+                        break Some(Ok(()));
+                    }
                     error = tls.closed() => {
-                        if dial.is_some() && expired(error) && !bound.load(Ordering::Acquire) {
-                            break;
+                        trace.event("tls_close", format_args!(" reason={}", tls_reason(&error)));
+                        if dial.is_some() && expired(&error) && !bound.load(Ordering::Acquire) {
+                            break None;
                         }
-                        return Err(io::Error::other("native TLS ended"));
+                        break Some(Err(io::Error::other("native TLS ended")));
                     }
                     result = &mut peer => {
+                        let closed = tls.close_reason();
+                        let reason = closed.as_ref().map_or("peer_task_end", tls_reason);
+                        trace.event("tls_close", format_args!(" reason={reason}"));
                         if dial.is_some() && !bound.load(Ordering::Acquire)
-                            && tls.close_reason().is_some_and(expired) {
-                            break;
+                            && closed.as_ref().is_some_and(expired) {
+                            break None;
                         }
-                        return result;
+                        break Some(result);
                     }
                     result = streams.join_next(), if !streams.is_empty() => {
-                        if let Some(Err(error)) = result { return Err(io::Error::other(error)); }
+                        if let Some(Err(error)) = result {
+                            trace.event("tls_close", format_args!(" reason=stream_task_failure"));
+                            break Some(Err(io::Error::other(error)));
+                        }
                     }
                     accepted = async {
                         match initial.take() {
@@ -328,31 +503,30 @@ async fn run_companion(
                             None => rx.recv().await,
                         }
                     } => {
-                        let Some((mut socket, port)) = accepted else {
-                            return Err(io::Error::other("native listeners ended"));
+                        let Some((socket, port)) = accepted else {
+                            trace.event("tls_close", format_args!(" reason=listeners_ended"));
+                            break Some(Err(io::Error::other("native listeners ended")));
                         };
                         total += 1;
                         if total > STREAM_TOTAL || streams.len() >= STREAM_LIMIT as usize {
-                            return Err(io::Error::other("native companion stream bound"));
+                            trace.event("tls_close", format_args!(" reason=stream_bound"));
+                            break Some(Err(io::Error::other("native companion stream bound")));
                         }
-                        let tls = tls.clone();
-                        let bound = bound.clone();
-                        streams.spawn(async move {
-                            let (mut send, mut recv) = open(&tls, port).await?;
-                            let (mut read, mut write) = socket.split();
-                            tokio::try_join!(
-                                copy_secret(&mut read, &mut send, &bound),
-                                copy_secret(&mut recv, &mut write, &bound)
-                            ).map(|_| ())
-                        });
+                        id += 1;
+                        streams.spawn(forward(tls.clone(), socket, bound.clone(), StreamTrace {
+                            trace: trace.clone(), id, port, progress: StreamProgress::default(), result: "cancelled",
+                        }));
                     }
                 }
-            }
+            };
             streams.shutdown().await;
+            drop(close);
+            if let Some(result) = result { return result; }
         }
     }.await;
     accepts.shutdown().await;
-    result
+    trace.event("companion_end", format_args!(" ok={}", outcome.is_ok()));
+    outcome
 }
 
 /// Server offers are carried only inside the pinned original TLS connection.

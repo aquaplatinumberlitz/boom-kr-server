@@ -40,6 +40,12 @@ fn utc() -> Result<i64> {
 }
 
 impl Store {
+    fn new_recovery_code(&self) -> Result<Zeroizing<String>> {
+        let random = Zeroizing::new(self.random::<32>()?);
+        Ok(Zeroizing::new(hex(random.as_ref())))
+    }
+}
+impl Store {
     pub(crate) fn manage(
         &mut self,
         login: &str,
@@ -58,8 +64,7 @@ impl Store {
         {
             display_name(&name)?;
             let new = password_hash(native_password(&password)?, &self.random::<16>()?)?;
-            let random = Zeroizing::new(self.random::<32>()?);
-            let code = Zeroizing::new(hex(random.as_ref()));
+            let code = self.new_recovery_code()?;
             let digest = Sha256::digest(code.as_bytes());
             self.at_clock(&mut utc, |tx, now| {
                 let player = Self::insert_account(tx, &login, &name, &new, &actor, &request, now)?;
@@ -125,12 +130,30 @@ impl Store {
         let Some((account, _, version, false)) = row else {
             return Err(Error::InvalidCredentials);
         };
-        self.at_clock(&mut utc, |tx, now| {
-            if let Some(digest) = recovery
-                && tx.execute("DELETE FROM account_recovery WHERE account_id=?1 AND digest=?2", params![account, digest])? != 1
-            {
-                return Err(Error::InvalidCredentials);
-            }
+        let replacement = if op == "delete_account" {
+            None
+        } else {
+            Some(self.new_recovery_code()?)
+        };
+        let issued = self.at_clock(&mut utc, |tx, now| {
+            let issued = if let Some(digest) = recovery {
+                let new_digest = Sha256::digest(replacement.as_ref().expect("recovery can rotate").as_bytes());
+                if tx.execute(
+                    "UPDATE account_recovery SET digest=?1 WHERE account_id=?2 AND digest=?3",
+                    params![&new_digest[..], account, digest],
+                )? != 1 {
+                    return Err(Error::InvalidCredentials);
+                }
+                true
+            } else if let Some(code) = &replacement {
+                let digest = Sha256::digest(code.as_bytes());
+                tx.execute(
+                    "INSERT INTO account_recovery VALUES(?1,?2) ON CONFLICT(account_id) DO NOTHING",
+                    params![account, &digest[..]],
+                )? == 1
+            } else {
+                false
+            };
             if tx.execute(
                 "UPDATE accounts SET password_phc=?1, credential_version=credential_version+1
                  WHERE id=?2 AND credential_version=?3 AND disabled=0",
@@ -149,9 +172,10 @@ impl Store {
                 tx.execute("DELETE FROM player_preferences WHERE player_id=(SELECT id FROM players WHERE account_id=?1)", [account])?;
                 tx.execute("DELETE FROM account_recovery WHERE account_id=?1", [account])?;
             }
-            Self::audit(tx, &request, &actor, op, Some(account), now)
+            Self::audit(tx, &request, &actor, op, Some(account), now)?;
+            Ok(issued)
         })?;
-        Ok(None)
+        Ok(replacement.filter(|_| issued))
     }
 }
 
@@ -221,7 +245,7 @@ mod tests {
         let session = store
             .login_current("tester", second.as_bytes(), 60)
             .unwrap();
-        store
+        let next = store
             .manage(
                 "TESTER",
                 Management::Recover {
@@ -229,7 +253,9 @@ mod tests {
                     password: secret(third),
                 },
             )
+            .unwrap()
             .unwrap();
+        assert_ne!(*code, *next);
         assert!(
             store
                 .authorize(&session.token, player, utc().unwrap())
@@ -245,12 +271,24 @@ mod tests {
             ),
             Err(Error::InvalidCredentials)
         );
-        let session = store.login_current("tester", third.as_bytes(), 60).unwrap();
+        assert!(
+            store
+                .manage(
+                    "tester",
+                    Management::Recover {
+                        code: secret(&next),
+                        password: secret(first),
+                    }
+                )
+                .unwrap()
+                .is_some()
+        );
+        let session = store.login_current("tester", first.as_bytes(), 60).unwrap();
         store
             .manage(
                 "tester",
                 Management::Delete {
-                    current: secret(third),
+                    current: secret(first),
                 },
             )
             .unwrap();
@@ -270,5 +308,50 @@ mod tests {
             )
             .unwrap();
         assert_ne!(store.lookup("tester").unwrap().player_id, player);
+    }
+    #[test]
+    fn first_password_change_enrolls_an_existing_account_without_a_code() {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let (temp, mut store, player) = super::super::tests::fresh();
+        let login = "Alice";
+        let existing = "test-only-password-one";
+        let updated = "test-only-changed-password";
+        let code = store
+            .manage(
+                login,
+                Management::Change {
+                    current: secret(existing),
+                    password: secret(updated),
+                },
+            )
+            .unwrap()
+            .unwrap();
+        assert_eq!(store.lookup(login).unwrap().player_id, player.player_id);
+        drop(store);
+        let mut store = temp.store();
+        assert!(
+            store
+                .manage(
+                    login,
+                    Management::Change {
+                        current: secret(updated),
+                        password: secret(existing),
+                    }
+                )
+                .unwrap()
+                .is_none()
+        );
+        assert!(
+            store
+                .manage(
+                    login,
+                    Management::Recover {
+                        code: secret(&code),
+                        password: secret(updated),
+                    }
+                )
+                .unwrap()
+                .is_some()
+        );
     }
 }

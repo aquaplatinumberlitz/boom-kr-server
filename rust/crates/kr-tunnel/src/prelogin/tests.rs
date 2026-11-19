@@ -167,9 +167,25 @@ fn companion_starts_before_login_and_stop_releases_every_local_socket() {
             send.write_all(b"bound").await.unwrap();
             tls.closed().await;
         });
-        let connection = connect(&client, address).await.unwrap();
+        let run = std::env::temp_dir().join(format!(
+            "kr-tls-diagnostics-{}-{:x}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        std::fs::create_dir(&run).unwrap();
+        let trace = Trace::create(&run).unwrap();
         let (halt, stop) = watch::channel(false);
-        let companion = tokio::spawn(companion(connection, vec![local], stop));
+        let companion = tokio::spawn(companion_traced(
+            client.clone(),
+            address,
+            vec![local],
+            stop,
+            crate::UdpBackend::Native,
+            trace,
+        ));
         let mut socket = tokio::net::TcpStream::connect((std::net::Ipv4Addr::LOCALHOST, port))
             .await
             .unwrap();
@@ -181,6 +197,18 @@ fn companion_starts_before_login_and_stop_releases_every_local_socket() {
         assert_eq!(&hello, b"bound");
         halt.send_replace(true);
         companion.await.unwrap().unwrap();
+        let log = std::fs::read_to_string(run.join(trace::LOG_NAME)).unwrap();
+        for label in [
+            "event=tcp_accept",
+            "event=tls_connect_ok",
+            "event=stream_open_ok",
+            "up=5 down=10",
+            "reason=stop",
+        ] {
+            assert!(log.contains(label), "missing {label}");
+        }
+        assert!(!log.contains("login") && !log.contains("ready") && !log.contains("bound"));
+        std::fs::remove_dir_all(run).unwrap();
         match socket.read(&mut hello).await {
             Ok(0) => {}
             Err(error) if error.kind() == io::ErrorKind::ConnectionReset => {}
