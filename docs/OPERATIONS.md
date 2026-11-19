@@ -79,8 +79,11 @@ Lối tắt chỉ mở launcher. Chọn ngôn ngữ, bấm **Vào game**, rồi 
 
 `launcher.json` khai các đường dẫn tương đối với file cấu hình. GUI kiểm và cài payload, lưu ngôn ngữ
 trong state và hỏi status qua TLS. Trước khi chơi nó kiểm lại bản đã chọn, đợi companion sẵn sàng rồi mở game.
-Nút dừng hoặc đóng cửa sổ dừng hai tiến trình. Companion tự đóng đường TLS nếu heartbeat launcher mất quá
-10 giây. Gói Windows đặt `udp_backend: portable`. Wine khai `wine` và dùng prefix riêng theo ngôn ngữ.
+Nút dừng hoặc đóng cửa sổ dừng hai tiến trình. Companion tự đóng đường TLS nếu bộ đếm heartbeat của
+launcher không tăng trong 10 giây. Companion viết log tối đa 32 KiB trong thư mục của lượt chạy; launcher giữ tối đa bốn log
+đã kết thúc dưới `state/prelogin-logs`. Log ghi cổng loopback, mốc TLS, số byte chuyển và nhãn kết thúc;
+launcher thêm mã thoát tiến trình. Log không chứa địa chỉ máy chủ, credential hoặc nội dung gói.
+Gói Windows đặt `udp_backend: portable`. Wine khai `wine` và dùng prefix riêng theo ngôn ngữ.
 Hai đầu TLS cần certificate pin riêng (có thể dùng cùng chứng thư đã phân phối nếu hai đầu dùng cùng identity).
 
 Server cho ba client đã vá có thể khai `account_admission.patched_949x_names: true` cùng `profile_mode: database_zero`.

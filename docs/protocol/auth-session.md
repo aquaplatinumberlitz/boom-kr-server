@@ -1051,11 +1051,13 @@ handshake, đọc/ghi và chờ DB, với 1–64 handler hữu hạn; lỗi requ
 
 Request `account` nhận login và một action: `register`, `change`, `recover` hoặc `delete`. Đăng ký giới hạn
 3 lần/phút/IP; thao tác cũng qua hàng đợi và giới hạn theo tên tài khoản của worker. Không dùng email. Đăng ký
-trả mã khôi phục ngẫu nhiên 256 bit một lần; DB chỉ lưu SHA-256. Khôi phục tiêu thụ mã trong cùng giao dịch
-đổi mật khẩu. Đổi mật khẩu và xoá yêu cầu mật khẩu hiện tại. Đổi, khôi phục và xoá thu hồi các phiên của
-chính tài khoản đó. Xoá bỏ thông tin đăng nhập, tên hiển thị, mã khôi phục và tuỳ chọn nhân vật; giữ ID nội bộ
-để bảo toàn lịch sử trận và audit. Nếu mất phản hồi lúc đăng ký, launcher không thể hiện lại mã. API trả lỗi
-chung `denied_or_busy` và không ghi credential. Đây là schema DB 5; chưa kiểm hạ cấp schema.
+trả mã khôi phục ngẫu nhiên 256 bit một lần; DB chỉ lưu SHA-256. Khôi phục thành công thay mã cũ bằng
+mã mới trong cùng giao dịch đổi mật khẩu và trả mã mới để launcher hiển thị. Đổi mật khẩu bằng mật khẩu
+hiện tại cấp mã cho tài khoản chưa có mã, giữ nguyên mã đã có. Xoá cũng yêu cầu mật khẩu hiện tại.
+Đổi, khôi phục và xoá thu hồi các phiên của chính tài khoản đó. Xoá bỏ thông tin đăng nhập, tên hiển thị,
+mã khôi phục và tuỳ chọn nhân vật; giữ ID nội bộ để bảo toàn lịch sử trận và audit. Nếu mất phản hồi
+khi cấp mã, launcher không thể hiện lại mã đã cấp. API trả lỗi chung `denied_or_busy` và không ghi
+credential. Đây là schema DB 5; chưa kiểm hạ cấp schema.
 
 Đường dự phòng giữ ba operation: `login` nhận login/password và trả đúng Player/session từ DB; `launch` nhận session/player_id,
 metadata `reported_login_ipv4` tùy chọn và cấp frontend/peer offer hiện hành; `logout` nhận session/player_id,

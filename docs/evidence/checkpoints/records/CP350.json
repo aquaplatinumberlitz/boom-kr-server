@@ -1,0 +1,77 @@
+{
+  "id": "CP350",
+  "previous": "CP349",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T19:42:28.594657+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Vì sao launcher làm game thoát sau splash, và bản sửa có đưa 2P tới Start ván hai không?",
+  "scope": "M8 phần 5, #476. Chẩn đoán A/B trong một Windows VM cô lập, rồi một lượt nghiệm thu; giữ exe ko và đủ pack CP349.",
+  "context_commit": "fe27176d5a8a8d99d686782526a1cbcb430fdd24",
+  "artifacts": [
+    {"sha256": "448068a9d2db5826b0da8b14ccf3c40e1ffad2528611ba00565f07d183a854cd"},
+    {"sha256": "1b992e6452732a8773d72905a2eaad214d25471d598a36634e814c1357ad429a"},
+    {"sha256": "6cca2a1e04d641c5ae9fb37e8a82ef319cb0d59ca87d8406fe450e866f4b6087"},
+    {"sha256": "7dbee384052a7501e94c8cf8e15bea51a2b582fc91d9cb0fffdf2e4d6997d81e"},
+    {"sha256": "0ac1861acf11ee5cc84647eac8030d488b241dc6ebb0f6cb9fec2990cec4b468"},
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "be2435153a1f52f9acabb5a6e6422c7c3f8cbcdf6e24e9b715b0c6635435b27b"}
+  ],
+  "locators": [
+    "local/research/codex/m8-launcher-part5-diag-r2",
+    "local/research/codex/m8-launcher-part5-accept"
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/OPERATIONS.md#launcher-tls-đang-triển-khai", "summary": "A mở TLS và chuyển WCP rồi companion tự dừng vì heartbeat, launcher thấy companion thoát trước. B cùng cấu hình TLS với heartbeat có cập nhật giữ game chạy hết cửa sổ 75 giây.", "limits": "B dùng Start-Process và heartbeat nội dung, nên không là phép cô lập riêng cách spawn. Lượt launcher sau bản sửa xác nhận đã qua splash.", "evidence": ["DIAG", "A-LOG", "B-LOG", "B-UI", "FIXED-LOG"]},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/protocol/auth-session.md#rust-public-launcher", "summary": "Heartbeat đếm theo tiến độ. Log companion giới hạn 32 KiB, launcher giữ bốn log. Khôi phục thay mã trong giao dịch; đổi mật khẩu cấp mã cho tài khoản chưa có.", "limits": "Không đổi schema hoặc gói native; mã chỉ hiển thị khi nhận được phản hồi.", "evidence": ["ATEST", "WINBUILD"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md", "summary": "Qua LoginStage, chờ TLS đầu hết hạn và đăng nhập hai hồ sơ trên kết nối mới. Service gửi dữ liệu sảnh rồi nhận EOF trước khi UI hiện.", "limits": "Không có phòng hoặc trận; chưa biết lý do đóng luồng. CALog và WER không chứng minh nguyên nhân.", "evidence": ["LOGIN-UI", "GAME", "FIXED-LOG", "SERVER", "FIXED-WER", "FIXED-CALOG"]}
+  ],
+  "verification": [
+    {"check": "Fmt, Clippy, 331 test workspace và build/check Windows GNU.", "result": "pass", "evidence": ["ATEST", "WINBUILD"], "limits": "Bao gồm hồi quy heartbeat, log và cấp lại mã."},
+    {"check": "Shortcut → launcher → 2P → phòng/trận → Start ván hai.", "result": "fail", "evidence": ["FIXED", "GAME", "SERVER"], "limits": "Dừng sau dữ liệu sảnh; không chạy lại."},
+    {"check": "Dừng VM riêng, xuất bằng chứng và dọn scratch.", "result": "pass", "evidence": ["CLEANUP", "DIAG-CLEANUP", "FIXED-CLEANUP", "PREFLIGHT"], "limits": "Dọn 12,59 GB kích thước biểu kiến. Lỗi quyền QMP lần chuẩn bị không mở launcher. Không động tới runtime khác."}
+  ],
+  "delta": {"added": ["Log companion có giới hạn và vòng lưu.", "Luồng cấp lại mã khôi phục."], "corrected": ["Heartbeat dùng nội dung tăng dần, không lấy mtime của tệp rỗng."], "superseded": []},
+  "blockers": [
+    "EOF của luồng native Windows sau dữ liệu sảnh, chưa tới phòng hoặc Start ván hai."
+  ],
+  "next_steps": [
+    {"id": "M8-476-startup", "task": "M8-476", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "So đuôi luồng kênh với ca CP347 để xác định vì sao game chưa hiện sảnh. Không mở thêm lượt CP350."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-19T19:42:28.594657+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; director xử lý tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi mốc đã xác nhận."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi giới hạn của gói Windows."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục không đổi."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Mở câu hỏi EOF sau dữ liệu sảnh."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP349 từ README."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi cách cấp lại mã khôi phục."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi heartbeat và giới hạn log."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm mốc bằng chứng và nguồn mã."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP350.json", "state": "updated", "reason": "Ghi đối chứng, nghiệm thu và dọn VM."}
+  ],
+  "evidence": [
+    {"id": "ATEST", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/workspace.log", "bytes": 43409, "sha256": "30c97277824e9a2a62ea14370827917a37de364e88ee4b205d12fec26ba7cd48"},
+    {"id": "WINBUILD", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/windows.log", "bytes": 526, "sha256": "3d0ee407d24fa66a69312e920ef0e2e50ce7104eb9bf5d99b9abaee2b0cc4e5c"},
+    {"id": "DIAG", "kind": "local", "path": "local/research/codex/m8-launcher-part5-diag-r2/guest-export/result.json", "bytes": 847, "sha256": "2af6b12cb460be900b8c866408ec79e99d06957b6e7a89d769f39fd94785df5a"},
+    {"id": "A-LOG", "kind": "local", "path": "local/research/codex/m8-launcher-part5-diag-r2/guest-export/a-prelogin.log", "bytes": 1659, "sha256": "76afa8bbb2c7cf1b57a2df526861e0f14f50bc25671be6d7cc78123c182a7a45"},
+    {"id": "B-LOG", "kind": "local", "path": "local/research/codex/m8-launcher-part5-diag-r2/guest-export/b-prelogin.log", "bytes": 1608, "sha256": "b9bc8ff0b1649fba6e90567b14a390395398f3d9d4569e9ea87ce6bdcd42e2dc"},
+    {"id": "B-UI", "kind": "local", "path": "local/research/codex/m8-launcher-part5-diag-r2/ab-contact.png", "bytes": 65376, "sha256": "c2b4f7a36e19026fb1ac1d575be61ef79a3b1610da68e8ea6eaecc6372cfe725"},
+    {"id": "FIXED", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/guest-export/result.json", "bytes": 523, "sha256": "d18a2020359e177f0a27ea7a2ce273967cfa93075981910fbfbfe8898292d4fc"},
+    {"id": "FIXED-LOG", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/guest-export/a-prelogin.log", "bytes": 2272, "sha256": "1e0d82ba5d5f46e85289c47d802ec79d908aea0dd68b5a0f1fd56af7d48e8cd9"},
+    {"id": "GAME", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/native-summary.json", "bytes": 490, "sha256": "a9ce6fe9e2f19eb13f85accae51f063b95336237c2ebec9e0f317c567fe29741"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/service/rust-events.jsonl", "bytes": 818, "sha256": "e180135e3f1d06311b3403d93685e54b01055f8e5c45270cc446d8d4a8231799"},
+    {"id": "LOGIN-UI", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/login-stage-29/capture-0.png", "bytes": 588289, "sha256": "76bdcf30cdc523941030671bc4252ec640caeb1e513c773379bcc19252f5c249"},
+    {"id": "FIXED-WER", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/guest-export/appev.json", "bytes": 6, "sha256": "b423bb45501e0fa49d3b77e635f800a29f1fdcf5a58e00c7e04a7ff7833045f2"},
+    {"id": "FIXED-CALOG", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/guest-export/calog.log", "bytes": 1237, "sha256": "cefed9635f2b9c4de729b5d2ed61784f3698e2b3bb8f34bcd48bae3af0125f83"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/cleanup-total.json", "bytes": 88, "sha256": "7f0606246fe80e62b99513f914cbf685f6062928986612b680747a735767525b"},
+    {"id": "DIAG-CLEANUP", "kind": "local", "path": "local/research/codex/m8-launcher-part5-diag-r2/run-cleanup-result.json", "bytes": 661, "sha256": "75c4922adfe6391cd2b93c2fc62d86107bba2ac4239e0ee906356485d554e5f7"},
+    {"id": "FIXED-CLEANUP", "kind": "local", "path": "local/research/codex/m8-launcher-part5-accept/run-cleanup-result.json", "bytes": 660, "sha256": "86deed23750cb165914ec7149ff2bd7a500a49fd347087dd114dfbf05800aa13"},
+    {"id": "PREFLIGHT", "kind": "local", "path": "local/research/codex/m8-launcher-part5-diag/preflight-no-client.json", "bytes": 112, "sha256": "f7e223efb27bd587d233b9229fae1bfb6a015bd29131b6297c8ab642083c064c"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-launcher-part5-diag-r2", "path": "local/evidence-manifests/03f3c3b34ac7796d3e4c937ef48057ff23c149240e22b593293fdda4bb8b90c0.jsonl", "sha256": "03f3c3b34ac7796d3e4c937ef48057ff23c149240e22b593293fdda4bb8b90c0", "bytes": 1264, "count": 6, "files_bytes": 9595},
+    {"run": "local/research/codex/m8-launcher-part5-accept", "path": "local/evidence-manifests/ade26656dd5f759228d249e5c58ae7f41e0d554138e2b300b45203de0d97f2ce.jsonl", "sha256": "ade26656dd5f759228d249e5c58ae7f41e0d554138e2b300b45203de0d97f2ce", "bytes": 843, "count": 4, "files_bytes": 17077}
+  ]
+}

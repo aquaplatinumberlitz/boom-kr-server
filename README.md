@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP349: Gói Windows có đủ pack như CP347 vẫn thoát trước LoginStage.** [Đối chứng và giới hạn](docs/evidence/checkpoints/records/CP349.json). M8 còn mở.
+**CP350: Đã sửa lỗi heartbeat khiến game thoát sau splash; Windows đăng nhập 2P qua TLS nhưng dừng trước khi hiện sảnh.** [Đối chứng và giới hạn](docs/evidence/checkpoints/records/CP350.json). M8 còn mở.
 
 ## Bắt đầu
 
