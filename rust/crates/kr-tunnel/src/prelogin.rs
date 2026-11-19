@@ -60,6 +60,11 @@ pub fn server_config(certificate: Vec<u8>, key: Vec<u8>) -> io::Result<ServerCon
         quinn::crypto::rustls::QuicServerConfig::try_from(tls).map_err(io::Error::other)?;
     let mut server = ServerConfig::with_crypto(Arc::new(crypto));
     server.transport_config(transport());
+    // Bound Initial packets before the service can acquire its task/peer
+    // permits; application admission alone does not cap Quinn's pending queue.
+    server.max_incoming(16);
+    server.incoming_buffer_size(8 * 1024);
+    server.incoming_buffer_size_total(128 * 1024);
     Ok(server)
 }
 pub fn client_config(certificate: Vec<u8>) -> io::Result<ClientConfig> {
