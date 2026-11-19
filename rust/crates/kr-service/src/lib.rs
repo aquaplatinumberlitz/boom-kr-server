@@ -35,6 +35,7 @@ mod room_wire;
 mod round_epochs;
 mod rules;
 mod terrain;
+mod transport_ids;
 pub mod udp_relay;
 
 use kr_wire::{HEADER_LEN, Receiver, decode, encode};
@@ -1588,7 +1589,7 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
                 let permitted=matches!(peer.ip(),IpAddr::V4(ip) if profile.config.allowed_peers.contains(&ip));
                 let Ok(permit)=quota.clone().try_acquire_owned() else {drop(socket);emit(&log,stamp(start,json!({"event":"admission_rejected","reason":"connection_limit"}))).await?;continue;};
                 if !permitted {drop(socket);drop(permit);emit(&log,stamp(start,json!({"event":"admission_rejected","reason":"peer_not_allowed"}))).await?;continue;}
-                next_id+=1;let id=next_id;let local=socket.local_addr()?;
+                next_id+=1;let id=transport_ids::next()?;let local=socket.local_addr()?;
                 emit(&log,stamp(start,json!({"event":"accepted","connection":id,"peer":peer.to_string(),"local":local.to_string(),"receive_sequence":40}))).await?;
                 let profile=profile.clone();let log=log.clone();let stop=stop.clone();
                 workers.spawn(async move {let _permit=permit;let result=connection(socket,id,profile,log.clone(),stop,start).await;emit(&log,stamp(start,json!({"event":"closed","connection":id,"reason":result.as_ref().err().map(ToString::to_string).unwrap_or_else(||"eof_or_shutdown".into())}))).await});

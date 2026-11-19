@@ -166,6 +166,9 @@ impl State {
     ) -> io::Result<()> {
         if let Some(session) = &mut self.session {
             driver.inspect().await?;
+            if !session.channel_current() {
+                return Err(io::Error::other("native room channel retired"));
+            }
             session.tick()?;
             session.pump_relay().await?;
             while let Ok(batch) = session.inbox.try_recv() {

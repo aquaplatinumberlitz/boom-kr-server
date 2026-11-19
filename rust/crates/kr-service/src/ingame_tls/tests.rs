@@ -45,9 +45,12 @@ fn credentials() -> Vec<u8> {
     credentials_for(2)
 }
 fn credentials_for(count: u8) -> Vec<u8> {
+    credentials_named(&["AlphaOne", "BetaTwo"][..count as usize])
+}
+fn credentials_named(names: &[&str]) -> Vec<u8> {
     let mut body = write_uint(0, Width::U8).unwrap();
-    body.extend(write_uint(u64::from(count), Width::U8).unwrap());
-    for login in ["AlphaOne", "BetaTwo"].into_iter().take(count as usize) {
+    body.extend(write_uint(names.len() as u64, Width::U8).unwrap());
+    for login in names {
         for (bytes, key) in [(login.as_bytes(), 0x11223344), (PASSWORD, 0x44332211)] {
             body.extend(write_uint(bytes.len() as u64, Width::U16).unwrap());
             body.extend(kr_wire::crypt(bytes, key, false));
@@ -85,17 +88,20 @@ fn channel(auth: &[u8]) -> Vec<u8> {
     channel_for(auth, 2)
 }
 fn channel_for(auth: &[u8], count: u8) -> Vec<u8> {
-    let mut result = write_uint(u64::from(count), Width::U8).unwrap();
+    channel_named(
+        auth,
+        &[b"DBUserA".as_slice(), b"DBUserB".as_slice()][..count as usize],
+    )
+}
+fn channel_named(auth: &[u8], names: &[&[u8]]) -> Vec<u8> {
+    let mut result = write_uint(names.len() as u64, Width::U8).unwrap();
     result.extend(write_uint(255, Width::U8).unwrap());
     let mut start = 13;
-    for expected in [b"DBUserA".as_slice(), b"DBUserB".as_slice()]
-        .into_iter()
-        .take(count as usize)
-    {
+    for expected in names {
         let id = read_uint(&auth[start + 12..start + 16], Width::U32).unwrap();
         let n = read_uint(&auth[start + 16..start + 18], Width::U16).unwrap() as usize;
         let name = kr_wire::kr00967::decode_bytes(&auth[start + 18..start + 18 + n]).unwrap();
-        assert_eq!(name, expected);
+        assert_eq!(&name, expected);
         let echo = read_uint(&auth[start + 73 + n..start + 77 + n], Width::U32).unwrap();
         assert_ne!(echo, 0);
         result.extend(write_uint(n as u64, Width::U16).unwrap());
@@ -118,7 +124,192 @@ fn channel_for(auth: &[u8], count: u8) -> Vec<u8> {
     }
     result
 }
+fn create_room() -> Vec<u8> {
+    let title = b"OwnedRoom";
+    let mut create = write_uint(title.len() as u64, Width::U16).unwrap();
+    create.extend(kr_wire::kr00967::encode_bytes(title).unwrap());
+    create.extend(write_uint(0, Width::U16).unwrap());
+    for value in [0, 0, 5, 8191, 0, 0, 0, u32::MAX, 0, 0, 0, 0] {
+        create.extend(write_uint(u64::from(value), Width::U32).unwrap());
+    }
+    for _ in 0..4 {
+        create.extend(write_uint(0, Width::U8).unwrap());
+    }
+    create
+}
+
 struct Temp(PathBuf);
+
+struct NativeClient {
+    connection: quinn::Connection,
+    send: quinn::SendStream,
+    recv: quinn::RecvStream,
+    tx: u32,
+    rx: u32,
+}
+impl NativeClient {
+    async fn login(connection: quinn::Connection, login: &str, name: &[u8]) -> Self {
+        let (mut outgoing, mut incoming) = prelogin::open(&connection, 3838).await.unwrap();
+        let mut hello = [0; 15];
+        incoming.read_exact(&mut hello).await.unwrap();
+        let (mut tx, mut rx) = (40, 43);
+        send(&mut outgoing, &mut tx, 1, &credentials_named(&[login])).await;
+        let auth = receive(&mut incoming, &mut rx).await;
+        assert_eq!(auth.opcode, 4);
+        let claims = channel_named(&auth.payload, &[name]);
+        send(&mut outgoing, &mut tx, 9, &[0; 8]).await;
+        for opcode in [15, 62] {
+            assert_eq!(receive(&mut incoming, &mut rx).await.opcode, opcode);
+        }
+        send(&mut outgoing, &mut tx, 5, &[0; 9]).await;
+        assert_eq!(receive(&mut incoming, &mut rx).await.opcode, 7);
+        outgoing.finish().unwrap();
+        let (mut outgoing, mut incoming) = prelogin::open(&connection, 3938).await.unwrap();
+        incoming.read_exact(&mut hello).await.unwrap();
+        let (mut tx, mut rx) = (40, 43);
+        send(&mut outgoing, &mut tx, 6, &claims).await;
+        assert_eq!(receive(&mut incoming, &mut rx).await.opcode, 17);
+        send(
+            &mut outgoing,
+            &mut tx,
+            67,
+            &write_uint(0, Width::U16).unwrap(),
+        )
+        .await;
+        for opcode in [241, 91, 14, 291] {
+            assert_eq!(receive(&mut incoming, &mut rx).await.opcode, opcode);
+        }
+        Self {
+            connection,
+            send: outgoing,
+            recv: incoming,
+            tx,
+            rx,
+        }
+    }
+    async fn request(&mut self, opcode: u32, body: &[u8], expected: u32) -> kr_wire::Packet {
+        send(&mut self.send, &mut self.tx, opcode, body).await;
+        for _ in 0..8 {
+            let packet = receive(&mut self.recv, &mut self.rx).await;
+            if packet.opcode == expected {
+                return packet;
+            }
+            assert!(matches!(packet.opcode, 90 | 91));
+        }
+        panic!("Expected reply absent");
+    }
+}
+
+#[test]
+fn two_tls_owners_have_distinct_native_connection_keys_and_can_share_one_room() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let admin = Admin {
+        actor: "test",
+        reason: "distinct native streams across TLS owners",
+    };
+    let mut store = Store::open(&temp.db()).unwrap();
+    store.begin_instance(&admin, 100).unwrap();
+    let a = store
+        .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
+        .unwrap();
+    let b = store
+        .create_account(&admin, "BetaTwo", "DBUserB", PASSWORD, 100)
+        .unwrap();
+    runtime().block_on(async {
+        let worker = crate::account_worker::Worker::open(temp.db(), 8, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let hub = crate::room_service::Hub::new(
+            &crate::room_service::Config {
+                max_rooms: 8,
+                round_profile: None,
+                player_choices: false,
+                capacity: None,
+                player_round: None,
+            },
+            crate::room_io::registry_foundation_tests::selection_prototype(),
+            None,
+            None,
+        )
+        .unwrap();
+        let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+        let server = quinn::Endpoint::server(
+            prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
+            "127.0.0.1:0".parse().unwrap(),
+        )
+        .unwrap();
+        let mut client = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+        client.set_default_client_config(prelogin::client_config(cert).unwrap());
+        let mut clients = Vec::new();
+        let mut tasks = Vec::new();
+        let mut halts = Vec::new();
+        let mut observed = Vec::new();
+        for (login, name) in [("AlphaOne", b"DBUserA"), ("BetaTwo", b"DBUserB")] {
+            let mut authority = resources(worker.client());
+            Arc::get_mut(&mut authority).unwrap().hub = Some(hub.clone());
+            observed.push(authority.clone());
+            let endpoint = server.clone();
+            let (halt, stop) = watch::channel(false);
+            halts.push(halt);
+            let permit = Arc::new(Semaphore::new(1)).acquire_owned().await.unwrap();
+            tasks.push(tokio::spawn(async move {
+                let tls = endpoint.accept().await.unwrap().await.unwrap();
+                connection(tls, authority, stop, permit).await
+            }));
+            let connection = prelogin::connect(&client, server.local_addr().unwrap())
+                .await
+                .unwrap();
+            clients.push(NativeClient::login(connection, login, name).await);
+        }
+        let mut keys = Vec::new();
+        for authority in &observed {
+            keys.push(authority.owner.lock().await.as_ref().unwrap().authorities()[0].connection());
+        }
+        assert_ne!(keys[0], keys[1]);
+        // Raw legacy TCP uses this same allocator. It cannot borrow either
+        // authenticated native channel key even while both TLS owners live.
+        let tcp_key = crate::transport_ids::next().unwrap();
+        assert!(!keys.contains(&tcp_key));
+        let created = clients[0].request(81, &create_room(), 86).await;
+        let room = read_uint(&created.payload[1..3], Width::U16).unwrap();
+        let join: Vec<_> = [
+            (room, Width::U16),
+            (room, Width::U32),
+            (0, Width::U16),
+            (1, Width::U8),
+            (5, Width::U16),
+        ]
+        .into_iter()
+        .flat_map(|(value, width)| write_uint(value, width).unwrap())
+        .collect();
+        let joined = clients[1].request(82, &join, 87).await;
+        assert_eq!(read_uint(&joined.payload[1..2], Width::U8).unwrap(), 1);
+        assert_eq!(temp.active(), 2);
+        assert!(hub.register(a.wire_id, tcp_key).is_err());
+        assert!(hub.register(b.wire_id, tcp_key).is_err());
+        for client in &clients {
+            client.connection.close(0u8.into(), b"test EOF");
+        }
+        for task in tasks {
+            let _ = task.await.unwrap();
+        }
+        assert_eq!(temp.active(), 0);
+        let mut replacement = hub.register(a.wire_id, tcp_key).unwrap();
+        let catalog = replacement
+            .catalog(&std::collections::BTreeSet::new())
+            .unwrap();
+        assert!(
+            kr_wire::kr00967::listing91_parse_rows(&catalog.packets.last().unwrap().1)
+                .unwrap()
+                .is_empty()
+        );
+        drop(replacement);
+        server.close(0u8.into(), b"done");
+        client.close(0u8.into(), b"done");
+        worker.shutdown().await.unwrap();
+    });
+}
 impl Temp {
     fn new() -> Self {
         use std::os::unix::fs::DirBuilderExt;
@@ -475,16 +666,7 @@ fn tls_single_account_can_select_return_and_select_fresh_room_then_revoke_cleans
         for opcode in [241, 91, 14, 291] {
             assert_eq!(receive(&mut replies, &mut rx).await.opcode, opcode);
         }
-        let title = b"OwnedRoom";
-        let mut create = write_uint(title.len() as u64, Width::U16).unwrap();
-        create.extend(kr_wire::kr00967::encode_bytes(title).unwrap());
-        create.extend(write_uint(0, Width::U16).unwrap());
-        for value in [0, 0, 5, 8191, 0, 0, 0, u32::MAX, 0, 0, 0, 0] {
-            create.extend(write_uint(u64::from(value), Width::U32).unwrap());
-        }
-        for _ in 0..4 {
-            create.extend(write_uint(0, Width::U8).unwrap());
-        }
+        let create = create_room();
         for room in 1..=2 {
             send(&mut channel, &mut tx, 81, &create).await;
             let reply = receive(&mut replies, &mut rx).await;

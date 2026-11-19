@@ -371,7 +371,7 @@ async fn connection(
             stream=connection.accept_bi()=>{
                 let (send,recv)=stream.map_err(io::Error::other)?;number+=1;
                 if number>prelogin::STREAM_TOTAL||streams.len()>=prelogin::STREAM_LIMIT as usize{return Err(io::Error::other("native stream admission bound"));}
-                let resources=resources.clone();let transport=connection.clone();streams.spawn(async move{self::stream(send,recv,number as u64,resources,transport).await});
+                let id=crate::transport_ids::next()?;let resources=resources.clone();let transport=connection.clone();streams.spawn(async move{self::stream(send,recv,id,resources,transport).await});
             },
             result=streams.join_next(),if !streams.is_empty()=>{
                 match result{Some(Ok(Ok(())))=>{},Some(Ok(Err(_)))=>return Err(io::Error::other("native stream denied")),Some(Err(_))=>return Err(io::Error::other("native stream task ended")),None=>{}}

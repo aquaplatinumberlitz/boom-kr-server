@@ -1223,6 +1223,20 @@ impl Runtime {
             .get(&id)
             .is_none_or(|c| c.connection != connection)
         {
+            // A failed departure publication can retire all recipient channels
+            // before their owning tasks drop. Exact old membership keys still
+            // need removal; they must not leave a ghost room indefinitely.
+            if !self.channels.contains_key(&id)
+                && let Ok(member) = self.member(id, connection)
+            {
+                self.journal_departed(member.key, crate::accounts::MatchExit::Disconnected);
+                let _ = self.model.leave(member.key);
+                self.requested.remove(&member.key);
+                self.rostered.retain(|(recipient, subject)| {
+                    *recipient != member.key && *subject != member.key
+                });
+                self.ports.remove(&member.key);
+            }
             return;
         }
         if let Some(relay) = &mut self.relay {
@@ -1635,6 +1649,14 @@ impl Session {
             inbox,
             identity,
             connection,
+        })
+    }
+    pub(crate) fn channel_current(&self) -> bool {
+        self.shared.lock().is_ok_and(|runtime| {
+            runtime
+                .channels
+                .get(&self.identity)
+                .is_some_and(|channel| channel.connection == self.connection)
         })
     }
     /// Ancillary lobby observations must not be accepted during room/Battle.
@@ -4615,6 +4637,32 @@ pub(crate) mod registry_foundation_tests {
             );
         }
         shared
+    }
+    #[test]
+    fn retired_recipient_channels_still_cleanup_exact_members_without_removing_replacements() {
+        let shared = empty(0x77);
+        let a = Session::open(&shared, 1, 11).unwrap();
+        let b = Session::open(&shared, 2, 22).unwrap();
+        {
+            let mut runtime = shared.lock().unwrap();
+            runtime.model.enter(1, 11, true).unwrap();
+            runtime.model.enter(2, 22, false).unwrap();
+            // Existing fail-closed publication paths retire recipient channels.
+            runtime.channels.clear();
+            runtime.detach(1, 99);
+            assert_eq!(runtime.model.members.len(), 2);
+        }
+        assert!(!a.channel_current() && !b.channel_current());
+        drop(a);
+        drop(b);
+        assert!(removable(&shared));
+        let replacement = Session::open(&shared, 1, 33).unwrap();
+        let key = shared.lock().unwrap().model.enter(1, 33, true).unwrap();
+        shared.lock().unwrap().detach(1, 11);
+        assert!(replacement.channel_current());
+        assert!(shared.lock().unwrap().model.current(key));
+        drop(replacement);
+        assert!(removable(&shared));
     }
     #[test]
     fn managed_team_config_rejects_unmeasured_modes_limits_and_teams_before_serving() {
