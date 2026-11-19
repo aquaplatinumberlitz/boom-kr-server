@@ -3177,9 +3177,17 @@ impl Session {
             }
             202 => {
                 let member = r.member(self.identity, self.connection)?;
-                if body.len() != 22
+                // C2S202 after rank has one opaque five-word row per
+                // authenticated local actor. It grants no result or exit authority.
+                let count = next
+                    .members
+                    .values()
+                    .filter(|peer| peer.key.connection == m.key.connection)
+                    .count();
+                if !matches!(count, 1 | 2)
+                    || body.len() != 2 + 20 * count
                     || read_uint(&body[..1], Width::U8).map_err(io::Error::other)? != 0
-                    || read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? != 1
+                    || read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? != count as u64
                 {
                     return Err(err("unsupported closed-result202 envelope"));
                 }

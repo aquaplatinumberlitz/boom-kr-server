@@ -963,7 +963,15 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
             send(&mut channel, &mut channel_tx, 127, &report(1, 19, tick + 1)).await;
             assert_eq!(receive(&mut reply, &mut channel_rx).await.opcode, 170);
             send(&mut channel, &mut channel_tx, 127, &report(0, 21, tick + 2)).await;
-            for opcode in [175, 180, 110, 110] {
+            let rank = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(12)).await;
+            assert_eq!(rank.opcode, 175);
+            // Exact trailing 202 body from the shared-client Windows capture.
+            let post_rank = hex(concat!(
+                "5a5896ca5e1b96ca539596ca539596ca539596ca5394",
+                "96ca5e1b96ca539596ca539596ca539596ca5395"
+            ));
+            send(&mut channel, &mut channel_tx, 202, &post_rank).await;
+            for opcode in [180, 110, 110] {
                 let p = receive_for(&mut reply, &mut channel_rx, Duration::from_secs(12)).await;
                 assert_eq!(p.opcode, opcode);
             }
