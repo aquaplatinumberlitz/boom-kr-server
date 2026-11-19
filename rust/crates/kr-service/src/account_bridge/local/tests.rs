@@ -244,7 +244,11 @@ fn two_identities_own_one_channel_and_old_handles_never_gain_a_reused_socket() {
                 .character_key,
             second.character_key
         );
-        assert!(session.disconnected(22).await.unwrap());
+        // The TLS stream may disappear immediately after retirement. The
+        // roster loses authority now, while its owner still owns DB cleanup.
+        assert!(session.retire_disconnected(22).unwrap());
+        assert!(handles.iter().all(|handle| !handle.current()));
+        assert_eq!(active(&temp), 2);
         assert!(
             handles[0]
                 .character_preference(Some((0, changed.revision)))

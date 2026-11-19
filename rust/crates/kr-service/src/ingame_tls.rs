@@ -423,7 +423,7 @@ async fn stream(
     .await
     .map_err(|e| native_failure(e, "native_stage_guard", last.0, last.1));
     if let Some(driver) = resources.owner.lock().await.as_mut() {
-        let retired = match driver.disconnected(&lane).await {
+        let retired = match driver.retire_disconnected(&lane) {
             Ok(retired) => retired,
             Err(e) if result.is_ok() => {
                 return Err(native_failure(e, "account_cleanup", None, None));

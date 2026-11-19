@@ -441,17 +441,23 @@ impl LocalSession {
     /// Login EOF after a delivered redirect is expected; channel EOF and
     /// pre-redirect login EOF retire both principals. Foreign stream events
     /// cannot cancel this transport's roster.
-    pub async fn disconnected(&mut self, connection: u64) -> Result<bool> {
+    pub(crate) fn retire_disconnected(&mut self, connection: u64) -> Result<bool> {
         let owned = {
             let state = self.shared.lock().map_err(|_| Error::Unavailable)?;
             state.channel == Some(connection)
                 || (state.login == connection
                     && matches!(state.phase, Phase::CheckingLogin | Phase::Login))
         };
-        if !owned {
+        if owned {
+            retire(&self.shared);
+        }
+        Ok(owned)
+    }
+
+    pub async fn disconnected(&mut self, connection: u64) -> Result<bool> {
+        if !self.retire_disconnected(connection)? {
             return Ok(false);
         }
-        retire(&self.shared);
         let grants =
             std::mem::take(&mut self.shared.lock().map_err(|_| Error::Unavailable)?.grants);
         end_grants(self.client.clone(), grants).await?;

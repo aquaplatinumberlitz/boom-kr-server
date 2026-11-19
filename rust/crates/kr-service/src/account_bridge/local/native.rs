@@ -487,6 +487,13 @@ impl Driver {
             .await
             .map_err(|_| io::Error::other("native cleanup failed"))
     }
+    /// A TLS stream can be aborted while the connection is closing. Retire
+    /// its authority now and leave the exact-token cleanup to Driver::finish.
+    pub(crate) fn retire_disconnected(&mut self, lane: &Lane) -> io::Result<bool> {
+        self.session
+            .retire_disconnected(lane.connection)
+            .map_err(|_| io::Error::other("native cleanup failed"))
+    }
     pub async fn finish(self) -> io::Result<()> {
         self.session
             .finish()
