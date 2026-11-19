@@ -58,6 +58,8 @@ pub(crate) fn validate_projection(
 #[serde(deny_unknown_fields)]
 pub struct Config {
     #[serde(default)]
+    pub prelogin_tls: Option<crate::ingame_tls::Config>,
+    #[serde(default)]
     pub public_launcher: Option<crate::public_launcher::Config>,
     #[serde(default)]
     pub persist_character: bool,
@@ -93,6 +95,12 @@ fn default_worker_queue_capacity() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
+        if let Some(tls) = &self.prelogin_tls {
+            if self.profile_mode != ProfileMode::DatabaseZero || !self.patched_949x_names {
+                return Err(io::Error::other("in-game TLS requires patched DB profiles"));
+            }
+            tls.validate()?;
+        }
         if self.patched_949x_names && self.profile_mode != ProfileMode::DatabaseZero {
             return Err(io::Error::other("949x names require database profiles"));
         }
@@ -185,6 +193,7 @@ impl Active {
     }
 }
 pub(crate) struct Owner {
+    pub(crate) prelogin_tls: Option<quinn::Endpoint>,
     pub(crate) public_launcher: Option<crate::public_launcher::Opened>,
     pub(crate) boot_epoch: Option<i64>,
     worker: Worker,
@@ -217,6 +226,11 @@ impl Owner {
             Some(public) => Some(public.open().await?),
             None => None,
         };
+        let prelogin_tls = config
+            .prelogin_tls
+            .as_ref()
+            .map(crate::ingame_tls::Config::open)
+            .transpose()?;
         let worker = Worker::open(
             config.database.clone(),
             config.worker_queue_capacity,
@@ -267,6 +281,7 @@ impl Owner {
         };
         bridge = bridge.with_patched_949x_names(config.patched_949x_names);
         Ok(Self {
+            prelogin_tls,
             public_launcher,
             boot_epoch,
             active: Active {

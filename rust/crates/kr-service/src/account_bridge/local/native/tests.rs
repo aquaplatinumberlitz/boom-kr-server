@@ -3,8 +3,6 @@ use crate::account_bridge::local::tests::{active, channel, login, trial};
 use crate::account_bridge::tests::{Temp, rt, worker};
 use crate::accounts::TEST_SERIAL;
 use tokio::io::DuplexStream;
-#[path = "fixtures.rs"]
-mod fixtures;
 
 fn hex(s: &str) -> Vec<u8> {
     (0..s.len())
