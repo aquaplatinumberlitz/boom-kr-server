@@ -274,15 +274,16 @@ nâng schema và fencing. Native Windows trên copy đã hiện nút trial gửi
 kênh đúng roster; cả hai session được thu hồi. Request sau kênh ngoài adapter vẫn đóng kết nối; chưa là phòng/trận.
 
 **TLS trước đăng nhập:** cấu hình `account_admission.prelogin_tls` mở ingress QUIC/TLS 1.3, dùng worker và epoch
-DB của chính service. `kr-prelogin` kết nối bằng pin chứng thư trước khi mở các cổng TCP loopback cho client;
-launcher hiện hành chưa đổi. ALPN `kre-native/1` tách khỏi API launcher và relay, không nhận 0-RTT. Mỗi TLS
+DB của chính service. `kr-prelogin` mở các cổng TCP loopback rồi báo sẵn sàng; nó kết nối bằng pin chứng thư
+khi game mở socket đầu. ALPN `kre-native/1` tách khỏi API launcher và relay, không nhận 0-RTT. Mỗi TLS
 connection có owner roster riêng; các stream login/kênh mới không tìm owner bằng IP, tên, ID hoặc echo. Selector
 cổng phải nằm trong danh sách cấu hình; server không làm TCP proxy tới địa chỉ do client chỉ định.
 
 Giới hạn `design`: tối đa 16 Initial đang chờ, buffer 8 KiB mỗi Initial/128 KiB tổng; handshake 3 giây; 4 stream
 đồng thời và 32 stream trong vòng đời; native frame 512 byte, đọc/ghi 2 giây; tổng input account 32 KiB. Cấu hình
 giới hạn tổng connection, connection chưa xác thực, số active theo peer, TTL/idle và thời gian chưa đăng nhập
-10–180 giây. Rate theo IP từ socket là 5 admission/phút, bảng tối đa 256 peer; worker vẫn kiểm rate account/khách.
+10–180 giây. `admissions_per_ip_per_minute` mặc định 5, cho phép 1–120; tính theo IP từ socket, bảng tối đa
+256 peer. Worker vẫn kiểm rate account/khách.
 Keepalive không gia hạn idle account. EOF sau redirect chỉ kết thúc login stream; mất TLS, lỗi stream sở hữu,
 expiry/revoke hoặc hủy task kết thúc toàn roster, giữ cleanup theo đúng token. Listener dừng và join các task trước
 khi worker DB dừng. Buffer của companion và credential được zeroize; event chỉ ghi loại thao tác và ID đã xác thực.
@@ -305,9 +306,10 @@ cặp 175/180; refresh giữ cả hai thành viên và journal ghi kết quả t
 nội dung gói hoặc chuỗi lỗi gốc. Test phát lại đi qua hai ván; bằng chứng Windows giới hạn ở phòng
 Factory07 trên bản sao đã vá và mạng cô lập. Chưa kiểm roster 2P cùng peer từ xa, Wine hoặc Internet thật.
 
-Review chủ dự án: Initial chưa xác minh địa chỉ chỉ nhận Retry, chưa lấy permit hay tính rate IP. Bước launcher phải
-cho companion kết nối lại (hoặc kết nối khi game mở socket đầu) để chờ màn đăng nhập quá `prelogin_seconds` vẫn
-đăng nhập được, và đưa rate 5 admission/phút/IP vào config (quán net chung IP) trước lượt thử Internet.
+Initial chưa xác minh địa chỉ chỉ nhận Retry, chưa lấy permit hay tính rate IP. Nếu hết `prelogin_seconds` khi
+chưa xác thực, server đóng owner bằng mã hết hạn riêng. Companion đóng các socket cũ và giữ listener để lần
+mở TCP tiếp theo tạo TLS mới. Không thử lại theo đồng hồ, không phát lại dữ liệu cũ và không khôi phục roster
+đã xác thực sau khi mất transport. Có thể điều chỉnh rate cho quán net dùng chung IP; giới hạn đồng thời tách riêng.
 
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
@@ -1047,7 +1049,15 @@ opt-in với profile DB và authenticated relay, bind trước readiness. TLS 1.
 frame kết thúc newline, request tối đa 4096 byte, response 8192 byte. Deadline tuyệt đối 250–2000 ms bao gồm
 handshake, đọc/ghi và chờ DB, với 1–64 handler hữu hạn; lỗi request không log body hoặc credential.
 
-Ba operation: `login` nhận login/password và trả đúng Player/session từ DB; `launch` nhận session/player_id,
+Request `account` nhận login và một action: `register`, `change`, `recover` hoặc `delete`. Đăng ký giới hạn
+3 lần/phút/IP; thao tác cũng qua hàng đợi và giới hạn theo tên tài khoản của worker. Không dùng email. Đăng ký
+trả mã khôi phục ngẫu nhiên 256 bit một lần; DB chỉ lưu SHA-256. Khôi phục tiêu thụ mã trong cùng giao dịch
+đổi mật khẩu. Đổi mật khẩu và xoá yêu cầu mật khẩu hiện tại. Đổi, khôi phục và xoá thu hồi các phiên của
+chính tài khoản đó. Xoá bỏ thông tin đăng nhập, tên hiển thị, mã khôi phục và tuỳ chọn nhân vật; giữ ID nội bộ
+để bảo toàn lịch sử trận và audit. Nếu mất phản hồi lúc đăng ký, launcher không thể hiện lại mã. API trả lỗi
+chung `denied_or_busy` và không ghi credential. Đây là schema DB 5; chưa kiểm hạ cấp schema.
+
+Đường dự phòng giữ ba operation: `login` nhận login/password và trả đúng Player/session từ DB; `launch` nhận session/player_id,
 metadata `reported_login_ipv4` tùy chọn và cấp frontend/peer offer hiện hành; `logout` nhận session/player_id,
 thu hồi đúng token trong một transaction có audit. Peer authoritative lấy từ socket đã accept và phải thuộc
 allowlist; client không được gửi field `peer` hoặc tự chọn identity bằng địa chỉ IP. Timestamp login được lấy khi
@@ -1140,10 +1150,10 @@ Chưa có cùng phòng, tên có dấu hoặc trận Internet trên gói này; k
 
 GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).
 Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-tls-đang-triển-khai); không suy ca hai client có dấu đã đạt từ file.
-GUI không tự cấp identity: gọi `kr-launch` hiện hành bằng stdin, native giữ frontend token riêng. Cancel file riêng của
-mỗi launch cho phép GUI yêu cầu dừng mà vẫn đi qua join child/logout; file cũ không dùng cho launch tiếp.
-Heartbeat file riêng được GUI cập nhật mỗi nửa giây; nội dung không đổi quá 10 giây hoặc mất/không đọc được
-thì owner kết thúc launch qua cleanup/logout. Đây là lifetime GUI riêng, không thay expiry/revoke/fencing backend.
+GUI chỉ chọn ngôn ngữ, quản lý tài khoản và mở game. Nó đợi `kr-prelogin` bind xong trước khi mở
+bản tương thích manual. GUI không thu mật khẩu để chơi và không gửi token cho lần mở này. Đăng nhập 1P,
+2P và chơi thử dùng UI trong game. Kết quả xác thực sai giữ opcode 4 / result 1 của client; chuỗi trong
+exe của nhánh web `Invalid Login!` thuộc L1. Đường `kr-launch` / `token_1` vẫn dùng chẩn đoán riêng.
 API TLS thêm request `status` không credential, chỉ trả `ok`/`ready` theo admission còn mở. Nó không tạo session,
 không trả player/config hay chứng nhận DB/gameplay. GUI kiểm pin TLS, không gửi password để hỏi status.
 

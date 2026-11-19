@@ -1,0 +1,76 @@
+{
+  "id": "CP348",
+  "previous": "CP347",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T18:37:02.618150+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Launcher mới, companion Windows và cấu hình rate có phục vụ đăng nhập trong game rồi Start ván hai không?",
+  "scope": "M8 phần 5, #476. Gói ba ngôn ngữ, Windows VM cô lập, chạy game một lần với bản ko949x đã vá.",
+  "context_commit": "04529fff92990764e6ea894fd047ddfe00018e00",
+  "artifacts": [
+    {"sha256": "e613147b82213d897673c4471c20c8128fbde72c019d42fddaf2da3ebcd376fe"},
+    {"sha256": "637f22d0c5c991e467176307cabb591808b309edd55e83a7f736f6ff0dcbef6d"},
+    {"sha256": "be2435153a1f52f9acabb5a6e6422c7c3f8cbcdf6e24e9b715b0c6635435b27b"},
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "078c2dcf6834bdf4e6c0964467367fd92573decb1ec5de75a5cd961a21ed75bd"}
+  ],
+  "locators": [
+    "local/research/codex/m8-launcher-part5",
+    "local/research/codex/m8-launcher-part5-final"
+  ],
+  "findings": [
+    {"summary": "Launcher chọn ngôn ngữ, quản lý tài khoản và mở game sau khi companion báo sẵn sàng.", "source": "design", "status": "design", "method": "test", "canonical": "docs/protocol/auth-session.md#rust-public-launcher", "evidence": ["TESTS", "PACKAGE-TESTS", "PACKAGE"], "limits": "Đường token_1 giữ cho chẩn đoán. Không dùng email."},
+    {"summary": "TLS chỉ dial khi có socket; WCP hết hạn không làm mất listener. Test qua socket mới xác thực 2P.", "source": "design", "status": "design", "method": "test", "canonical": "docs/protocol/auth-session.md#rust-ingame-db-publication", "evidence": ["TESTS"], "limits": "Rate riêng theo IP mặc định 5, cho phép 1–120; không nối lại roster đã xác thực."},
+    {"summary": "Windows mở launcher, companion và game; game hiện video rồi thoát trước LoginStage.", "source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/auth-session.md#rust-public-launcher", "evidence": ["GUEST", "SUMMARY", "UI", "SPLASH", "DESKTOP", "SERVICE"], "limits": "Chưa xác định nguyên nhân. Bảy pack chung khác hash so với bản ko chạy trước; đây chỉ là khác biệt đầu vào."}
+  ],
+  "verification": [
+    {"check": "Fmt, Clippy, workspace và cargo check Windows.", "result": "pass", "evidence": ["TESTS", "FMT-CLIPPY", "WINDOWS-CHECK"], "limits": "327 test Rust; công cụ server chỉ build Linux."},
+    {"check": "Hai binary Windows x86-64 và kiểm đóng gói.", "result": "pass", "evidence": ["PACKAGE", "PACKAGE-TESTS", "MANIFEST", "GUEST"], "limits": "13 test Python; bản vi/en trong gói chưa chạy."},
+    {"check": "Launcher → Đăng nhập 2P → trận/kết quả → trở lại phòng → Start ván hai.", "result": "fail", "evidence": ["NATIVE-LOG", "GUEST", "SERVICE", "APP-EVENTS"], "limits": "Dừng sau splash, chưa có roster hoặc trận. Không chạy lại sau lỗi."},
+    {"check": "Dừng VM riêng, xuất log và dọn scratch.", "result": "pass", "evidence": ["CLEANUP", "SCRATCH", "PREFLIGHT", "SUMMARY"], "limits": "Đã dọn 8,21 GB theo kích thước biểu kiến. Không đổi runtime khác."}
+  ],
+  "delta": {"added": ["Launcher vi/en/ko và quản lý tài khoản.", "Companion Windows và gói có shortcut tới launcher."], "corrected": ["Tách rate IP khỏi trần đồng thời."], "superseded": ["GUI đăng nhập bằng mật khẩu trước khi mở game."]},
+  "blockers": [
+    "Windows gói mới thoát sau splash trước LoginStage. Chưa chốt nguyên nhân hoặc Start ván hai."
+  ],
+  "next_steps": [
+    {"id": "M8-476-startup", "task": "M8-476", "state": "active", "action": "Đối chiếu gói ko với bản CP347, bắt đầu từ bảy pack khác hash; Claude xử lý chuỗi exe nhánh web 13ADE40. Lỗi chung 1P/2P giữ opcode 4/result 1, khóa chuỗi locale chưa xác định.", "owner": "Claude", "reviewer": "waived"}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-19T18:37:02.618150+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; director quyết định tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Đổi mốc hiện hành."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi giới hạn ở dòng gói người chơi."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục không đổi."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở khảo sát client."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP347 từ README."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi hợp đồng prelogin và API tài khoản."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi cách build và dùng gói."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm link mã và công cụ."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại theo catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP348.json", "state": "updated", "reason": "Ghi phép kiểm và giới hạn."}
+  ],
+  "evidence": [
+    {"id": "TESTS", "kind": "local", "path": "local/research/codex/m8-launcher-part5/final-workspace-tests.log", "bytes": 42969, "sha256": "1235c96f809ea0d4a9016fed7138fdc530c91a5139eb8ffdd505cbcf6c569af0"},
+    {"id": "FMT-CLIPPY", "kind": "local", "path": "local/research/codex/m8-launcher-part5/fmt-clippy.log", "bytes": 72, "sha256": "3819f5a7ceecd9222e0fbd258fbc5b3461b920ebd412d521eff393866d195f71"},
+    {"id": "WINDOWS-CHECK", "kind": "local", "path": "local/research/codex/m8-launcher-part5/windows-checks.log", "bytes": 4817, "sha256": "77cd03b6dbc20f11688a78dad03ce2ab677de94ed22285c9a11633edd949428c"},
+    {"id": "PACKAGE-TESTS", "kind": "local", "path": "local/research/codex/m8-launcher-part5/package-checks.log", "bytes": 209, "sha256": "19321f1fcb4265efd226c0ff5f4c5643db3889c442cbfb8353755c285d02608f"},
+    {"id": "PACKAGE", "kind": "local", "path": "local/research/codex/m8-launcher-part5/package.json", "bytes": 778, "sha256": "b26e4cb36c3c0a9d58d654b90fcef02bb4d3bc390c429d8bb373629faf64d6e0"},
+    {"id": "SUMMARY", "kind": "local", "path": "local/research/codex/m8-launcher-part5/run-summary.json", "bytes": 1101, "sha256": "86ea8b55addf3f3d8dc54befec095054e0762b659b2c5f73211b87cc4fbd93ff"},
+    {"id": "MANIFEST", "kind": "local", "path": "local/research/codex/m8-launcher-part5/player-manifest.json", "bytes": 67746, "sha256": "078c2dcf6834bdf4e6c0964467367fd92573decb1ec5de75a5cd961a21ed75bd"},
+    {"id": "GUEST", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/guest-export/result.json", "bytes": 523, "sha256": "affb57060ceb518025369f762a233020120af84c6c0be60649f7faecdd81946c"},
+    {"id": "UI", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/launcher-observe-3/capture-0.png", "bytes": 256282, "sha256": "36d5d4bbc669cf5d3f90545cb6423c555cf20247a1cab39f1e0c756255a043b9"},
+    {"id": "SPLASH", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/login-stage-29/capture-0.png", "bytes": 229648, "sha256": "7753db5d56fb0d64af30902cb8d166aeff124a2cbd88eeeb10bb505f310e6515"},
+    {"id": "DESKTOP", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/login-stage-33/capture-0.png", "bytes": 207944, "sha256": "922111253beafac825cf985868579eea0a1b29bffc4fdb931c8ace185984a62d"},
+    {"id": "SERVICE", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/service/rust-events.jsonl", "bytes": 570, "sha256": "516f3d4a22049e7c3e4ab7ecef35731361df00664a8d9213b6ccee02823db120"},
+    {"id": "NATIVE-LOG", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/calog.log", "bytes": 1237, "sha256": "cefed9635f2b9c4de729b5d2ed61784f3698e2b3bb8f34bcd48bae3af0125f83"},
+    {"id": "APP-EVENTS", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/appev.txt", "bytes": 2814, "sha256": "1769ed8d7d5137f57914a5b085623471c62ad2898c9113b184d0e1cec0f919dd"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/run-cleanup-result.json", "bytes": 661, "sha256": "343a5025b9ac55c3ed1e1035cc5878b517d7ade219804dbbdd0abecc2afe6930"},
+    {"id": "SCRATCH", "kind": "local", "path": "local/research/codex/m8-launcher-part5-final/scratch-release-result.json", "bytes": 545, "sha256": "757701b29ea8030a7bc9f7dd7a3bae8eb8f3525c12fc43d30a36f41e68b59031"},
+    {"id": "PREFLIGHT", "kind": "local", "path": "local/research/codex/m8-launcher-part5/preflight-empty-guest.json", "bytes": 102, "sha256": "547c8558f199f5f2a32f5d403c41f20834d941c30fd7c9a69502172d58034b3d"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-launcher-part5-final", "path": "local/evidence-manifests/3afaade8ce78d7fd9a721f872b1b7d0926c98d6404d7a9794313bb2ee02ae831.jsonl", "sha256": "3afaade8ce78d7fd9a721f872b1b7d0926c98d6404d7a9794313bb2ee02ae831", "bytes": 857, "count": 4, "files_bytes": 275230},
+    {"run": "local/research/codex/m8-launcher-part5", "path": "local/evidence-manifests/0df8db25a00f1baa87664b6ea977f1308239c15d5dbcd8968a1127f1e97ff5a7.jsonl", "sha256": "0df8db25a00f1baa87664b6ea977f1308239c15d5dbcd8968a1127f1e97ff5a7", "bytes": 659, "count": 3, "files_bytes": 7224}
+  ]
+}

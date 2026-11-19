@@ -62,19 +62,26 @@ kr-player-install install "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATIO
 kr-player-install verify "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
 ```
 
-`kr-player "$GUI_CONFIG"` nhận config local gồm `server` (TLS endpoint), `certificate`, `launcher` (kr-launch),
-`companion`, `bundle` (payload), `manifest_sha256`, `installation`, `state`, `port_budget`; Wine thêm `wine` là
-path executable Wine. Path tương đối tính từ config. GUI kiểm/cài payload, nhớ ngôn ngữ trong state và hỏi status
-qua pin TLS mỗi năm giây. Status chỉ là endpoint TLS và admission còn mở, không chứng nhận DB/trận khỏe.
-Trước mỗi launch, GUI kiểm lại file của ngôn ngữ đã chọn; password chỉ truyền stdin cho owner `kr-launch`.
-Đóng GUI hoặc nút dừng tạo cancel file riêng, owner dừng/join hai child rồi logout; không dùng kill để giả logout.
-GUI cập nhật heartbeat file riêng mỗi nửa giây; nếu GUI chết hoặc heartbeat lỗi/không đổi quá 10 giây, owner
-chạy cùng cleanup/logout. Mỗi launch có thư mục riêng nên heartbeat/cancel cũ không tác động launch kế.
-Cấu hình GUI/CLI có `udp_backend` tùy chọn: `native` mặc định, `portable` dùng UDP một datagram qua Tokio,
-bỏ ECN/GSO/ancillary cho adapter Windows đang gặp10040. Chọn rõ trong config riêng; không tự retry/fallback
-sau lỗi xác thực. `peer_diagnostics` trên CLI chỉ xuất counters/mã OS đã lọc, không endpoint/token.
-Wine có prefix riêng từng ngôn ngữ dưới state. Cài máy sạch, prefix hoàn chỉnh và vi/ko cùng phòng đọc chữ có dấu
-vẫn cần native acceptance M8; ảnh GUI hay kiểm hash không thay ca này.
+Gói Windows dùng hai binary x86-64 từ target `x86_64-pc-windows-gnu`:
+
+```bash
+cargo build --manifest-path rust/Cargo.toml --release --locked --target x86_64-pc-windows-gnu \
+  -p kr-player -p kr-tunnel --bin kr-player --bin kr-prelogin
+python3 tools/player_package.py --recipe "$PRIVATE_PLAYER_RECIPE" \
+  --windows-runtime "$PRIVATE_WINDOWS_RECIPE" --out local/operator/player-windows-new
+```
+
+Recipe Windows khai hai endpoint IPv4 có cổng (`server` cho API tài khoản, `prelogin_server` cho QUIC),
+`ports` là danh sách cổng native loopback, và bốn pin path/bytes/sha256: `launcher`, `companion`, `certificate`,
+`prelogin_certificate`. Dùng các exe tương thích LoginStage manual đã được kiểm ở ngôn ngữ định phát hành.
+Giải nén vào thư mục ghi được trên NTFS, mở `kr-player.exe` hoặc chạy `Tao-loi-tat.ps1` để tạo lối tắt.
+Lối tắt chỉ mở launcher. Chọn ngôn ngữ, bấm **Vào game**, rồi đăng nhập hoặc chơi thử trong game.
+
+`launcher.json` khai các đường dẫn tương đối với file cấu hình. GUI kiểm và cài payload, lưu ngôn ngữ
+trong state và hỏi status qua TLS. Trước khi chơi nó kiểm lại bản đã chọn, đợi companion sẵn sàng rồi mở game.
+Nút dừng hoặc đóng cửa sổ dừng hai tiến trình. Companion tự đóng đường TLS nếu heartbeat launcher mất quá
+10 giây. Gói Windows đặt `udp_backend: portable`. Wine khai `wine` và dùng prefix riêng theo ngôn ngữ.
+Hai đầu TLS cần certificate pin riêng (có thể dùng cùng chứng thư đã phân phối nếu hai đầu dùng cùng identity).
 
 Server cho ba client đã vá có thể khai `account_admission.patched_949x_names: true` cùng `profile_mode: database_zero`.
 DB giữ tên UTF-8, adapter đổi đúng 949x khi phát profile và kiểm channel; giới hạn là 3–15 byte trên wire.
@@ -86,12 +93,11 @@ Giao diện [public launcher](protocol/auth-session.md#rust-public-launcher) opt
 chưa là gói Internet/Wine/Windows đã nghiệm thu. Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
 command từ chối directory có sẵn. Giữ `private.pk8` trên server trong parent `0700`, file `0600`; phát certificate
 qua kênh/gói tin cậy. Không tự tải pin từ cùng endpoint chưa xác thực hoặc ghi private key vào bundle. Khi đóng
-gói config có launcher, builder gom certificate đã pin và đặt key thành `@STATE@/launcher.pk8`; operator cấp key
-khớp riêng vào state trước chạy service. DB và key không được đổi/copy từ raw thí nghiệm đang dùng.
+gói config có launcher và prelogin, builder gom certificate đã pin. Operator cấp key khớp vào
+`launcher.pk8` và `prelogin.pk8` trong state trước khi chạy service. DB và key không được đổi/copy từ raw thí nghiệm đang dùng.
 
-Player config khai endpoint TLS, certificate path, native IP, companion path, native program/arguments/directory
-và port budget; toàn bộ config triển khai giữ local. `kr-launch "$PLAYER_CONFIG"` đọc JSON login/password qua stdin,
-không qua argv; dùng wrapper nhập mật khẩu riêng trước khi bàn giao người chơi. Client mở companion bằng stdin,
+Đường dự phòng cho chẩn đoán dùng cấu hình riêng trong local. `kr-launch "$PLAYER_CONFIG"` đọc JSON
+login/password qua stdin; không có trong gói Windows mới. Client mở companion bằng stdin,
 đợi transport ready rồi mở native với frontend token hiện hành. Kết thúc/lỗi/signal dọn hai child rồi thử logout;
 server không tới được thì báo lỗi và giữ TTL, không giả logout đã xác nhận. Gói Wine/Windows và Internet native
 còn theo acceptance M8; không dùng `/bin/true` trong smoke làm bằng chứng chơi trận.
