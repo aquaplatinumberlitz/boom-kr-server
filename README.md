@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP348: Launcher mở game qua companion Windows; ca gói dừng trước LoginStage.** [Kiểm tự động và giới hạn](docs/evidence/checkpoints/records/CP348.json). M8 còn mở.
+**CP349: Gói Windows có đủ pack như CP347 vẫn thoát trước LoginStage.** [Đối chứng và giới hạn](docs/evidence/checkpoints/records/CP349.json). M8 còn mở.
 
 ## Bắt đầu
 
