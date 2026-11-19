@@ -1,0 +1,62 @@
+{
+  "schema": "kre-m8-login-step1-verification-v1",
+  "source": "design",
+  "status": "confirmed",
+  "checkpoint": "CP341",
+  "audit": "AUD147",
+  "native_evidence": "docs/evidence/rust-service/m8-login-stage-manual.json",
+  "full_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r8/result.json",
+    "bytes": 2417,
+    "sha256": "43e1f43ec7928884d8400adc91cc9a0169f8aba8f0a961676cb1c93ca62d6a4f"
+  },
+  "gate_tested_commit": "ffc2ec113d4e46e4659ea12b9e550d652f912eef",
+  "result": {
+    "ok": true,
+    "completed": 341,
+    "evidence_verified": 580279,
+    "evidence_unavailable": 0,
+    "evidence_pruned": 6154,
+    "next_audit": null,
+    "audit_mode": "feature_group",
+    "history_verified": true,
+    "warnings": 2215,
+    "errors": 0
+  },
+  "parser": {
+    "commit": "91c3ad6",
+    "source": "rust/crates/kr-service/src/account_bridge/ingame_wire.rs",
+    "verification": {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/parser-verification.json",
+      "bytes": 1294,
+      "sha256": "ef05304b152e581139ba1682a18dd075ff96e01a397e6ab2c2fb68caa107183a"
+    },
+    "scope": "Library only; no live credential admission or DB authentication"
+  },
+  "storage": {
+    "authorization": "docs/evidence/owner-directives/run-cleanup.json",
+    "runs": [
+      "r47",
+      "r48",
+      "r49",
+      "r50",
+      "r51",
+      "r52",
+      "r53",
+      "r54"
+    ],
+    "vm_deleted_apparent_bytes": 10670637056,
+    "analysis_deleted_apparent_bytes": 4930514948,
+    "before_available_bytes": 403022295040,
+    "after_available_bytes": 403835568128,
+    "before_scope": "First retained /home sample before r47 cleanup; original r47 launch sample was in prior context.",
+    "preserved": [
+      "Raw/capture/trace/screenshots/recipes and lean evidence manifests",
+      "Pinned compatibility-control executables and reused source fixtures",
+      "Original source client, pack and database inputs"
+    ],
+    "limits": "Apparent sparse/reflink file sizes are not net disk reclaimed. Free-space delta includes shared builds and unrelated activity; all owned native VMs/services stopped.",
+    "correction": "Receipt writer reused a temporary text-offset variable for before_available_bytes; corrected from7697 to the retained r47 pre-cleanup sample403022295040. No raw or checkpoint evidence changed."
+  },
+  "next": "Measure count2 profile/channel reply candidate before complete two-account serving; implement DB/guest/prelogin TLS then owner launcher changes. Token fallback retained."
+}

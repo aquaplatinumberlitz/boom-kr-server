@@ -120,14 +120,7 @@ impl PlayerTemplate {
 }
 
 pub(super) fn account_name(name: &[u8]) -> io::Result<()> {
-    if !(3..=15).contains(&name.len())
-        || !name.iter().all(|b| b.is_ascii_alphanumeric() || *b == b'_')
-    {
-        return Err(io::Error::other(
-            "account name must be ASCII alphanumeric/underscore3..15",
-        ));
-    }
-    Ok(())
+    super::text949x::validate_name(name)
 }
 
 #[cfg(test)]

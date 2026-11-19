@@ -18,6 +18,7 @@ from server.room_title import _encode_bytes, _decode_bytes
 from tools.rust_account_fixture import AccountFixture
 from tools.test_rust_foundation import free_port
 from tools.test_rust_managed_ownership import TraceClient as Client
+from tools.l10n_949x import encode as encode949x
 
 
 def population(body):
@@ -48,11 +49,13 @@ def main():
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--active-departure', action='store_true')
     parser.add_argument('--database-accounts', action='store_true', help='Create new DB accounts after readiness; use one transport IP and no per-account config')
+    parser.add_argument('--patched-names', action='store_true', help='Explicit 949x deployment; mixed Vietnamese/Korean account names and room title, same lifecycle controls')
     parser.add_argument("--persist-matches", action="store_true", help="DB-owned match journal serving, with writer barriers before Start and result")
     parser.add_argument('--all-dead', action='store_true', help='No survivor report; every remaining member dies, with all-rank2 and durable Draw outcomes')
     args = parser.parse_args()
     assert not args.persist_matches or args.database_accounts, "journal requires DB account mode"
     assert not args.all_dead or args.persist_matches, 'all-dead acceptance checks the durable journal'
+    assert not args.patched_names or args.database_accounts, '949x names require DB accounts'
     root = args.out.resolve()
     root.mkdir(parents=True, exist_ok=False, mode=0o700)
     cfg = json.loads(args.config.read_text())
@@ -68,14 +71,14 @@ def main():
                channel_port=channel, managed_rooms=dict(max_rooms=2, player_choices=True, player_round=dict(characters=[0,1])))
     for actor, peer in zip(two['actors'], cfg['allowed_peers']):
         actor['peer'] = peer
-    account = AccountFixture(args.admin, root, cfg)
+    account = AccountFixture(args.admin, root, cfg, patched_names=args.patched_names)
     if args.database_accounts:
         two['account_admission'].update(profile_mode='database_zero', max_sessions=16)
     if args.persist_matches:
         two['account_admission']['persist_matches']=True
     config = root/'config.json'
     config.write_text(json.dumps(cfg, indent=2)+'\n')
-    files = [args.binary, args.admin, config, args.config, args.baseline, Path(__file__), Path('tools/rust_account_fixture.py'), Path('tools/test_rust_managed_ownership.py'),
+    files = [args.binary, args.admin, config, args.config, args.baseline, Path(__file__), Path('tools/rust_account_fixture.py'), Path('tools/l10n_949x.py'), Path('tools/test_rust_managed_ownership.py'),
              *Path('rust/crates').rglob('*.rs'), *Path('rust/crates').rglob('*.sql'), Path('rust/Cargo.lock')]
     def fixtures(value):
         if isinstance(value, dict):
@@ -135,7 +138,8 @@ def main():
             raise AssertionError('startup timeout')
         if args.database_accounts:
             account.players=[];account.sessions=[];account.peers=['127.0.0.2']*4;account.reported_peers=account.peers[:]
-            for i,name in enumerate(['FirstNew_1','B9x','ThirdAccount_55']):
+            names = ['Việt01','한국02','Việt한국'] if args.patched_names else ['FirstNew_1','B9x','ThirdAccount_55']
+            for i,name in enumerate(names):
                 login_name=f'new_runtime_{i}'
                 player=account.command(dict(op='create',login=login_name,name=name,password='account-basic-test-password'))['player']
                 grant=account.command(dict(op='login',login=login_name,password='account-basic-test-password',ttl_seconds=1200))
@@ -148,11 +152,14 @@ def main():
             if args.database_accounts:
                 own=codec.frame_body(bytes.fromhex(trace[-1]['frame_hex']),trace[-1]['sequence'])
                 size=codec.read_fields(own[1:5],[4])[0];decoded=_decode_bytes(own[5:5+size]);n=int.from_bytes(decoded[6:10],'little')
-                assert decoded[10:10+n]==account.players[index]['display_name'].encode()and decoded[10+n:]==bytes(98)
+                assert decoded[10:10+n]==account.wire_name(account.players[index])and decoded[10+n:]==bytes(98)
         if args.database_accounts:cases.append('three_new_names_and_wire_ids_projected_from_DB_on_one_transport_IP')
         a,b,c=clients
-        room=create(a,b'Players')
-        b.receive(91);c.receive(91)
+        title=encode949x('Phòng Việt 한국') if args.patched_names else b'Players'
+        room=create(a,title)
+        for client in [b,c]:
+            _, listing_body=client.receive(91)
+            assert any(row[2]==title.hex() for row in population(listing_body).values())
         def join(client):
             client.send(82,codec.pack_fields([room,room,0,1,5],[2,4,2,1,2]));client.receive(87)
         join(b);c.receive(91);join(c)
@@ -161,10 +168,18 @@ def main():
             ids=[]
             while True:
                 op,body=client.receive()
-                if op==106:ids.append(codec.read_fields(body[1:5],[4])[0])
+                if op==106:
+                    identity=codec.read_fields(body[1:5],[4])[0];ids.append(identity)
+                    if args.patched_names:
+                        expected=next(account.wire_name(player)for player in account.players if player['wire_id']==identity)
+                        size=codec.read_fields(body[16:20],[4])[0];profile=_decode_bytes(body[20:20+size]);n=int.from_bytes(profile[6:10],'little')
+                        assert profile[10:10+n]==expected
+                        at=20+size+3;outer_size=codec.read_fields(body[at:at+2],[2])[0]
+                        assert _decode_bytes(body[at+2:at+2+outer_size])==expected
                 if op==117:break
             assert sorted(ids)==sorted(p['wire_id']for p in account.players[:3])
         cases.append('three_current_members_in_capacity4_not_identity_aliases')
+        if args.patched_names:cases.append('949x names match auth/own291/both106 fields and mixed room title reaches both peers; DB remains UTF8')
         def choose(client,op,value,current):
             body=codec.pack_fields([0,value],[1,2]) if op==92 else codec.pack_fields([value],[1])
             client.send(op,body)
@@ -326,10 +341,16 @@ def main():
                 process.wait(timeout=3)
         log.close()
         (root/'tcp-trace.json').write_text(json.dumps(trace,indent=2)+'\n')
+        changed_sources = [p['path'] for p in pins if not Path(p['path']).is_file()
+            or Path(p['path']).stat().st_size != p['bytes']
+            or hashlib.sha256(Path(p['path']).read_bytes()).hexdigest() != p['sha256']]
+        if changed_sources:
+            error = error or 'Source stability guard failed; see changed_sources'
         (root/'verification.json').write_text(json.dumps(dict(result='pass' if error is None else 'fail',
             cases=cases, observations=observations, error=error, returncode=None if process is None else process.returncode,
+            changed_sources=changed_sources,
             limits='Synthetic TCP with real SQLite/private launcher and decoded Start/peer/rank invariants. No native client/runtime or UDP compatibility proof.'), indent=2)+'\n')
-        assert all(Path(p['path']).stat().st_size == p['bytes'] and hashlib.sha256(Path(p['path']).read_bytes()).hexdigest() == p['sha256'] for p in pins)
+        assert not changed_sources, 'Source stability guard failed; raw retained'
 
 
 if __name__ == '__main__':

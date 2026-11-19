@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP336",
-  "completed_count": 336,
+  "last_id": "CP343",
+  "completed_count": 343,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
-  "last_manual_audit": "AUD144",
+  "last_manual_audit": "AUD147",
   "audits": [
     {
       "id": "AUD001",
@@ -738,6 +738,21 @@
       "id": "AUD144",
       "path": "docs/evidence/checkpoints/audits/AUD144.json",
       "sha256": "a7d87be94a7ecc06e6cf79356863d213c72ec34c8d04332b83092ee9fb905ade"
+    },
+    {
+      "id": "AUD145",
+      "path": "docs/evidence/checkpoints/audits/AUD145.json",
+      "sha256": "ea48b84e9316694f5fa029f59753624a94b39560344dd888760e14d28ab1f69f"
+    },
+    {
+      "id": "AUD146",
+      "path": "docs/evidence/checkpoints/audits/AUD146.json",
+      "sha256": "062be4893548615e5ca304c4cd6105a562164c7e7b578fc63705ef423ae58cb4"
+    },
+    {
+      "id": "AUD147",
+      "path": "docs/evidence/checkpoints/audits/AUD147.json",
+      "sha256": "7c6c9be87827cd4fa213c1b5e695c64a0e13daf1e7db313b0e9aa6540974783a"
     }
   ],
   "task_states": [
@@ -3863,6 +3878,62 @@
       "path": "docs/evidence/checkpoints/records/CP336.json",
       "bytes": 20611,
       "sha256": "3da25a406ebe8bf257a5b8b305ef6811ef3b6810916ef6034fdc0f82e9ab76c7"
+    },
+    {
+      "id": "CP337",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-17T18:06:51.556312+00:00",
+      "path": "docs/evidence/checkpoints/records/CP337.json",
+      "bytes": 39226,
+      "sha256": "64ed673c49229aa1bf41a0b79b28f82e818a913fe883073f7f86159de938d593"
+    },
+    {
+      "id": "CP338",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-17T19:13:09.197661+00:00",
+      "path": "docs/evidence/checkpoints/records/CP338.json",
+      "bytes": 16281,
+      "sha256": "e8be2a82cb79b7cd3ccb7458c61a5d8e51e242c03de7b11c18591b8a4b4cc1dc"
+    },
+    {
+      "id": "CP339",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-18T15:35:37.227374+00:00",
+      "path": "docs/evidence/checkpoints/records/CP339.json",
+      "bytes": 14804,
+      "sha256": "11aa0d33bc4b8af2ba0f64df3fca138df65929150ec7474c8459adfb7050aa2a"
+    },
+    {
+      "id": "CP340",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-18T16:36:40.743206+00:00",
+      "path": "docs/evidence/checkpoints/records/CP340.json",
+      "bytes": 17855,
+      "sha256": "58c4b62a3fd02a5e2cb67b72cafbcaea87fde9e9bf8d5591c855bb8e11aa7587"
+    },
+    {
+      "id": "CP341",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-18T17:09:01.996131+00:00",
+      "path": "docs/evidence/checkpoints/records/CP341.json",
+      "bytes": 18789,
+      "sha256": "369b8adff468436d9ef1b6842e6434b4185cb81ad17dcc0283d32b7d38d89c23"
+    },
+    {
+      "id": "CP342",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-19T01:28:19.455616+00:00",
+      "path": "docs/evidence/checkpoints/records/CP342.json",
+      "bytes": 17875,
+      "sha256": "56a61c033f14600ec79240b3049b80ef8b609dc0456e7b3abd4f7158cdc22fe3"
+    },
+    {
+      "id": "CP343",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-19T02:59:55.448615+00:00",
+      "path": "docs/evidence/checkpoints/records/CP343.json",
+      "bytes": 4272,
+      "sha256": "71209a08762ed74e1f0b8cf9ae55a116b253133cecece71f78b55b6292710a10"
     }
   ],
   "audit_policy": {

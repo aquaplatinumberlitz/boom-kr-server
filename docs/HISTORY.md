@@ -5,6 +5,33 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP340: đã mở nhập liệu LoginStage trên bản thử một byte; gói đăng nhập còn vướng.**
+[Đối chứng cấu hình và UI](evidence/rust-service/m8-login-input-controls.json) xác định cờ tự đăng nhập
+khóa ô nhập và roster. Bản sao riêng đổi một byte đã nhận ID/mật khẩu 1P qua UI gốc, nhưng Xác nhận hiện
+“Invalid Login!” trước opcode 1; đóng hộp dẫn tới lỗi native. Chưa đo được gói 2P hoặc chơi thử.
+Tiếp kiểm nhánh dựng gói theo [Bảng điều hành](PLAN.md#dashboard); chưa thay auth hoặc launcher, giữ token.
+Các lượt đã xuất bằng chứng, dừng VM/service và tự dọn scratch; bản gốc và evidence CP339 được giữ.
+
+**CP339: kiểm khả thi đăng nhập trong game chưa đạt.**
+[Thử không token trên Windows VM](evidence/rust-service/m8-ingame-login-feasibility.json) đã hiện LoginStage;
+loopback chỉ có WCP/keepalive, chưa xác nhận nhập 1P/2P hoặc chơi thử phát gói. Argv rỗng rơi về CALauncher;
+không có patch exe mới trong nhóm. CP340 sửa cách diễn giải dừng quá rộng, giữ nguyên quan sát và raw CP339.
+
+**CP337: Shoe đủ ma trận và G1 đạt acceptance giai đoạn 1 đã thu hẹp.**
+[Ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json) nối sáu map/roster đã đo với
+kim/cứu, item nền/MaxPower, Shoe/Punch, bảng rơi đã cắt và từ chối nhân vật trên cùng phiên.
+Client L1 `vi` hiện hành đã có Factory07/Bomb, hai vòng/kết quả/reset và journal trên Rust; hai cache metadata
+thay đổi được đối chiếu đúng bảng 238, giữ lỗi wrapper ban đầu. Không suy every-tile, physics/authority đầy đủ,
+L1 closure hoặc Internet/tải từ các lượt Wine/LAN. [Bảng điều hành](PLAN.md#dashboard) chuyển sang M8:
+Internet transport mới, 50 người/8 phòng, backup/restore, đóng gói và chạy dài.
+
+**CP336: ma trận nhóm Punch đã có native Rust cho cả bốn hướng và endpoint biên/quét.**
+[Contract và bằng chứng](protocol/items-stats.md#rust-bomb-motion-codec) giữ source/target thực,
+exact 119→162 và reservation toàn hàng/cột theo policy report-derived. Hai batch mới có bốn vòng mỗi batch,
+peer/landing/retirement/reset, journal đúng account/thưởng 0 và 864 getter checks; selector 2 trước đó gộp vào nhóm.
+Nhóm còn qua gate/PR trước tích hợp; Shoe và kiểm ghép client Việt còn làm tiếp. Bảng rơi đã cắt và từ chối nhân vật
+trên cùng socket đã tích hợp qua PR #466. [Bảng điều hành](PLAN.md#dashboard) giữ việc còn lại và ước lượng native.
+
 **CP335: bảng rơi G1 đã cắt và từ chối nhân vật chưa đo giữ phiên đã có native hai vòng.**
 [Dữ liệu item](protocol/items-stats.md#g1-scoped-drops) giữ mọi row nguồn sáu map, đặt 62 row dương ngoài tập giữ về 0.
 [Nhân vật #457](protocol/auth-session.md#rust-persistent-character): C4 bị từ chối, C0→C1 hợp lệ trên cùng socket,
@@ -1688,3 +1715,24 @@ chưa nghiệm thu bản vá hoặc nhập liệu; G1 tiếp catalog sáu/tám s
 [Start/spawn, identity/slot và giới hạn](evidence/rust-service/g1-mixed-map-spawns.json) ghi native sparse6,
 Fire/Roller, hai kết quả/reset và thiếu cặp flags cuối do budget probe. G1 còn nội dung/roster theo
 [Bảng điều hành](PLAN.md#dashboard); UTF-8 vẫn partial, M8 chưa nghiệm thu.
+
+### Nền gói server Linux trước CP339
+
+**CP338: nền gói server Linux đã có manifest, state riêng và smoke x86/ARM.**
+[Builder/runner và bằng chứng](evidence/rust-service/m8-server-package.json) gom fixture/profile đã pin,
+kiểm hash/path/mode, tách DB/session khỏi gói và re-root state khi cài. Hai Linux đã có readiness/dừng sạch khi
+repo/local bị che, từ chối init lại mà không đổi DB và từ chối chạy trùng. ARM harness dùng thư mục do root sở hữu;
+raw lỗi trước được giữ. Đây là nền đóng gói từ recipe hiện có; xuất dữ liệu từ pack, cài máy sạch đầy đủ, launcher
+Internet, gói Windows/Wine, tải 50 người/8 phòng, restore và 24 giờ chạy dài còn theo [Bảng điều hành](PLAN.md#dashboard).
+G1 đã đủ bằng chứng trong CP337; tích hợp vẫn chờ gate local với registry dọn evidence lịch sử và CI hiện hành.
+
+
+### Kiểm khả thi trước CP342
+
+**CP341: kiểm khả thi LoginStage đạt trên bản tương thích riêng; chưa xác thực DB.**
+[Bằng chứng native](evidence/rust-service/m8-login-stage-manual.json): UI gốc nhận ID/mật khẩu 1P/2P,
+phát opcode 1 và giải mã khớp toàn bộ dữ liệu giả đã gõ; nút chơi thử 1P/2P phát opcode 62.
+Bản sao dùng các thay đổi nhỏ có recipe/rollback để chọn đường manual sẵn có và hiện nút trial; không suy
+hành vi bản gốc hoặc đăng nhập thành công. Tiếp xác thực DB, khách và prelogin TLS theo [Bảng điều hành](PLAN.md#dashboard),
+rồi mới thay launcher. Đường token được giữ; mọi VM/service đã dừng và scratch được dọn, lỗi lượt cũ giữ nguyên.
+M8 và các acceptance còn lại vẫn mở theo [Bảng điều hành](PLAN.md#dashboard).

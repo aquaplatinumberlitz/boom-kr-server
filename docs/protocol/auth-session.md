@@ -43,7 +43,7 @@ CP235 baseline transport. Không import VN wire/accountserver hoặc suy diagnos
   (tables/indexes/triggers), quickcheck/FK/startupallocator; từ chối foreign/future/checksum/schema hỏng, không downgrade.
   Parent phải là directory riêng mode0700 dưới đường dẫn admin tin cậy, DBregular/nosymlink/mode0600; WAL/FULL,
   FK on/trusted_schema off, busy250ms. Không chống admin sửa DB/ancestorpath hoặc mã hóa DB.
-- Login backend ASCII3..32 alnum/underscore, lowercaseunique; displayname ASCII3..15 là policy nội bộ, chưa nativeprojection.
+- Login backend ASCII3..32 alnum/underscore, lowercaseunique; tên hiển thị giữ UTF-8 theo [policy biên tên](#rust-patched-account-names), admission native mặc định ASCII.
   Account→player1:1/FK, wireID allocator1..u32MAX riêng slot/accountID, không tái cấp qua reopen; tên đổi theo version CAS.
   Chưa character/XP/inventory. CLI account lookup/rename là admin, không quyền client tự khaiaccountID.
 - Password12..128bytes, randomsalt16bytes, Argon2id v19/m19456KiB/t2/p1/output32, PHC atrest; chỉ nhận đúng PHCparams/length
@@ -149,6 +149,119 @@ AUD070 quaCP244 đối chiếu CP241–244, sửa PLAN/RESEARCH còn gợi M3 ch
 reviewwaived/Codexselfcheck, checker không xác nhận ngữ nghĩa/gate. M5 vẫn partial: nativeKRbridge/transportownership/
 worker-to-serving thiếu; inventory/reward/restore/load riêng. M3nativebaselineCP242 giữ, rootbuild mới chưa nativecertified.
 [PLAN](../PLAN.md#current-order) tiếp M4four/eight và M5bridge theo gap thực tế; audit kếCP248. Internet thật chưa kiểm.
+
+<a id="rust-ingame-login-feasibility"></a>
+### LoginStage không token: kiểm khả thi M8
+
+Theo [chỉ đạo chủ dự án](../evidence/owner-directives/m8-ingame-login.json), bước kiểm khả thi phải đi trước
+thay đổi launcher. [Bằng chứng native CP341](../evidence/rust-service/m8-login-stage-manual.json) đã đạt bước này
+trên **bản tương thích riêng ko949x**, không chứng nhận DB, gameplay hoặc client KR nguyên bản.
+
+[Đối chứng CP340](../evidence/rust-service/m8-login-input-controls.json) phục hồi cờ web: có `multiserveridx`
+thì đặt cờ global qua `122AE30(1)` và constructor khóa edit/roster ở `stage+2FE4`. Bỏ tham số hoặc dùng marker
+cùng fallback trước LoginStage; popup locale thuộc CALauncher không là cause main đã xác nhận.
+Copy thử đổi một byte khóa UI đã nhập được 1P, nhưng builder web vẫn tìm token rỗng và hiện “Invalid Login!”.
+Bytes hiện hành `13ADE40` nối đúng literal và nhánh token/manual, giữ cả lỗi native khi đóng hộp.
+
+Copy manual kế tiếp giữ startup/server selection, chọn **hai nhánh manual đã có** của builder; tổng bảy byte khác
+baseline trước nhóm. Copy hiện trial thêm sáu byte ở branch policy hiển thị; handler và UI có sẵn, không thêm màn
+đăng nhập, serializer hoặc giả kết quả server. Recipe/source/result SHA và rollback giữ tại evidence. Đây là lựa chọn
+tương thích `design`, không suy mọi đường cấu hình mã hóa đã được loại trừ hoặc bản gốc có UI trial như vậy.
+
+`kr_runtime/confirmed`, riêng các input ASCII dài 8 byte đã đo:
+
+| Thao tác UI gốc | Request client đã thu và kiểm CRC/sequence |
+|---|---|
+| Nhập ID/mật khẩu 1P rồi Xác nhận | Opcode 1, frame 85/body 47, typed u8 đầu `0,1`; một cặp chuỗi |
+| Chọn 2P, nhập hai cặp rồi Xác nhận | Opcode 1, frame 105/body 67, typed u8 đầu `0,2`; hai cặp chuỗi |
+| Bấm chơi thử 1P hoặc 2P | Opcode 62, frame 63/body 25; typed u8 đầu `1` hoặc `2`, còn 24 byte giống nhau trong lượt đo |
+
+Mỗi chuỗi credential bắt đầu bằng typed u16 length; native string codec đã có dùng key `11223344` cho ID,
+`44332211` cho password. Giải mã độc lập khớp đủ field giả đã gõ. Sau các cặp còn 25 byte trong opcode 1;
+chưa có grammar/authority đầy đủ cho đuôi, độ dài khác, Unicode credential hoặc mọi lỗi/retry. Opcode 62 là request
+trial quan sát được, chưa chứng minh account khách, đáp ứng server hay vào phòng.
+
+Parser thư viện `account_bridge::ingame_wire` đọc hai loại request này với giới hạn `design`: tối đa hai người,
+ID tối đa 32 byte ASCII chữ/số/underscore và password tối đa 128 byte ASCII in được. Đây không phải giới hạn
+edit control đã đo. Secret dùng zeroize và không có Debug/Clone/Serialize; tail 16 byte giữ opaque, địa chỉ báo
+là metadata không tin cậy. Các vector native record và kiểm âm truncation/count/length/byte điều khiển đã đạt;
+parser **chưa nối listener**, không cấp session hoặc thay policy password tối thiểu của DB M5. Caller phải xóa
+buffer nguồn và chỉ mở route password sau khi admission TLS prelogin có bounds được kiểm.
+
+**Bước khả thi đạt trong phạm vi copy đã khai báo.** Mở tiếp parser/DB M5 cho 1P/2P, guest và companion TLS
+prelogin có bounds theo owner; giữ token dự phòng cho tới khi có native xuyên suốt. Bộ thu mặc định chỉ gửi hello/WCP;
+phép kiểm hồ sơ riêng bên dưới có phản hồi tổng hợp, không phải kết quả xác thực DB. [Receipt kiểm/source và lưu trữ](../evidence/rust-service/m8-login-step1-verification.json) giữ head gate và giới hạn.
+Lượt gộp giữ receipt collector stopped và VM/service cleanup; hai lượt dừng owner sớm
+thiếu receipt cuối được khai riêng, không nâng thành clean native logout. CP339/CP340/raw/manifests giữ bất biến.
+
+<a id="rust-ingame-local-profiles"></a>
+### Hai hồ sơ cục bộ sau đăng nhập tay
+
+[Bằng chứng và giới hạn](../evidence/rust-service/m8-login-local-profiles.json) dùng cùng bản tương thích riêng
+đã đạt kiểm khả thi. `kr_runtime/confirmed`: sau request 1 từ UI 2P, callback `10FD540` đọc trọn 242 byte,
+cursor bằng size và hai error field bằng 0; setter `13B09E0` nhận slot 0/1 và ID 1/2. Client gửi request 9.
+Đây là hai hồ sơ tổng hợp lấy từ fixture đã đo; ID không được xác thực hoặc suy từ credential người dùng nhập.
+
+Layout nhánh đã đo có prefix chung 13 byte, mỗi player 105 byte khi tên dài 7 byte và tail chung 19 byte.
+`AccountTemplate::project_local_auth` dựng reply cho một hoặc hai identity khác 0, không trùng; không định nghĩa
+channel request/reply, own291 hoặc membership nhiều account. Kiểm Rust khớp đúng input mà native đã tiêu thụ;
+source/cache được đối chiếu đúng bytes của copy hiện hành. Không suy mọi biến thể profile đã được đo.
+
+Netinfo tiếp theo đi qua `1100590` khi `stage+2FD8=1`; modal đăng nhập tay `1104410` gọi target `15037F7`
+và trả 3 tại `11044A7`. Đây là modal khác site chờ tự động `1107412`. Sau khởi tạo thành công, client kiểm
+trạng thái từng slot. Chỉ thông báo slot 0 để slot 1 ở predicate `0,0`; gửi subtype 1/status 2 của opcode 62 cho cả
+hai slot thì client tự gửi opcode 5, nhận redirect và mở kết nối kênh mới. Giá trị status giữ provenance design.
+
+Request kênh opcode 6 có sequence 40 riêng, frame 107/body 69: count 2, hai record tên `KRLocal`/ID 1 và
+`KRGuest`/ID 2, mỗi echo bằng 0. Khớp serializer đã có tại [producer C→S6](#auth-channel-echo), chỉ nhánh tên
+ASCII 7 byte và optional-string-off. Không suy các ID/echo này là quyền account; reply kênh cho 2P, vào sảnh,
+phòng, gameplay và lifecycle DB/TLS vẫn chưa được nghiệm thu.
+Collector chẩn đoán chỉ nghe loopback, chỉ gửi reply sau đủ frame và continuation theo request đã khai báo.
+Nó giữ nguồn collector mặc định nguyên vẹn và không nối vào listener production.
+
+<a id="rust-ingame-db-publication"></a>
+### Cấp session DB nguyên tử cho một client có hai account
+
+[API cấp session DB](../../rust/crates/kr-service/src/accounts/local_login.rs) và worker bổ sung nhóm 1P/2P
+để dùng với thư viện parser; chưa bật route mật khẩu trên listener. `Store::login_local` và worker tương ứng nhận một hoặc hai
+principal khác nhau sau chuẩn hóa tên. Policy mật khẩu 12–128 byte và KDF M5 giữ nguyên. Đối chứng native cho thấy bản manual trước đó cắt
+mật khẩu về 8 byte; tăng capacity riêng vẫn bị validator tắt nút Xác nhận. Bản thử sửa capacity và bounds có
+recipe/hash/rollback riêng: bốn byte bổ sung giúp UI gửi đúng mật khẩu 12 và 16 byte; không là đăng nhập DB
+trên serving. Biên 128 byte chưa xác minh vì lượt nhập dài lỗi QMP; log lỗi và cleanup phục hồi giữ ở local.
+Validator ID của nhánh KR hiện hành còn giới hạn
+4–12 byte theo tĩnh, chưa đồng nhất với toàn bộ miền ID 3–32 của backend. Backend thực hiện KDF
+cho mọi principal hợp lệ về cú pháp, kể cả tên không tồn tại; sai credential hoặc account bị khóa trả lỗi credential chung.
+
+`design`: tất cả session được insert trong một transaction SQLite sau khi kiểm lại credential version/PHC/disabled
+và phiên đang hoạt động. Lỗi ở người thứ hai, reset trong khoảng KDF hoặc lỗi insert làm rollback cả nhóm;
+không để session người thứ nhất tồn tại riêng. Token của từng account riêng biệt.
+Worker dùng một queue slot và một handoff cho cả nhóm; kiểm giới hạn từng principal và sức chứa bảng rate trước
+khi nhận việc. Password/credential được giữ trong buffer zeroize và bỏ trước khi đợi caller nhận kết quả.
+
+Nếu caller hủy hoặc hết hạn handoff, worker thu hồi cả nhóm trong một transaction bằng đúng token/account;
+cleanup cũ không thu hồi session thay thế. Idle/expiry của từng identity vẫn được kiểm riêng theo DB M5.
+Các kiểm SQLite thật có lỗi người thứ hai, credential reset, lỗi ghi, stale cleanup, rate capacity, caller hủy và
+handoff hết hạn; không dùng kết quả đó làm bằng chứng native đăng nhập DB hoặc membership.
+
+Parser `local_channel_identities` đọc một/hai record theo request kênh đã đo, giữ thứ tự, chặn ID 0/trùng,
+length/count/truncation và optional string chưa hỗ trợ. Echo và đuôi opaque không là credential. Caller còn phải
+so khớp toàn bộ roster với admission TLS và generation đã cấp, rồi gắn lifecycle phòng cho cả hai.
+
+Lớp `account_bridge::local` gắn cả nhóm với một owner transport và hai handle identity riêng. Kênh mới phải
+khớp toàn bộ ID, tên, echo và thứ tự slot, trong 10 giây sau khi gửi redirect thành công. EOF login sau redirect
+là chuyển kênh bình thường; EOF trước redirect hoặc EOF kênh hiện hành kết thúc cả nhóm. Kiểm DB của một
+thành viên thất bại do expiry, revoke hoặc đổi hồ sơ làm mọi handle mất hiệu lực. Cleanup theo đúng token
+không ảnh hưởng phiên thay thế, kể cả khi số socket được dùng lại. Hủy future trong lúc gửi reply cũng kết
+thúc quyền; callback phía phòng vẫn phải kiểm handle ngay trước I/O.
+
+Adapter `local::native` giữ buffer credential trong `Zeroizing`, giới hạn frame 512 byte và deadline đọc/ghi
+hai giây, trả cùng lỗi opcode 4 cho mọi ca đăng nhập thất bại. Test tự động dùng DB thật kiểm chuỗi reply 1P/2P,
+ownership, cancellation, expiry/revoke và EOF. Example `ingame_local` chỉ mở loopback để kiểm tới request kênh;
+chưa bật listener mật khẩu public, TLS trước đăng nhập, guest hay membership phòng. Native Windows dùng bản
+ko949x đã khai báo gửi hai credential từ UI, nhận hai hồ sơ DB và tự mở kênh mang đúng ID 3/4, tên DBUserA/DBUserB
+và echo của owner. Sau opcode 6, request ngoài adapter làm đóng kênh; DB thu hồi cả hai session và ghi hai audit
+`local_disconnect`. Đây là nghiệm thu đăng nhập tới chuyển kênh, chưa là sảnh đầy đủ, phòng hoặc trận. Wine chưa
+tới LoginStage trong đối chứng hiện hành; không suy kết quả Windows cho Wine hoặc client KR chưa vá.
 
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014
@@ -824,13 +937,30 @@ Nguồn: [M5b](../evidence/rust-service/m5b-dynamic-accounts.json) và
 **Contract và policy được giữ.** `account_admission.profile_mode=database_zero` lấy player ID, wire ID và tên từ DB
 sau xác thực session của chính account. Mỗi account mới không cần fixture, sửa config hoặc restart. Auth4, own291
 và card106 sinh từ một bộ template zero-profile đã đo; tên nằm ở cả hai vị trí card106, 98 byte hồ sơ ban đầu bằng 0.
-Tên ASCII chữ/số/gạch dưới dài 3–15 byte là policy backend; không suy nhánh Unicode, trang bị hoặc profile khác.
+Admission mặc định giữ tên ASCII chữ/số/gạch dưới dài 3–15 byte. Bản vá 949x có [policy biên tên riêng](#rust-patched-account-names);
+không suy trang bị hoặc profile khác.
 Mode `fixed` mặc định giữ fence cũ. `max_sessions` hữu hạn độc lập số fixture. Không dùng IP để chọn identity.
 
 Launcher riêng cấp frontend một lần từ session và player đã kiểm. Địa chỉ nguồn transport và địa chỉ client báo
 được lưu riêng theo chính owner; metadata báo khác phải do launcher có session cấp, không lookup một account khác
 theo IP. Channel6 vẫn kiểm name/wire ID/echo trước claim. Room card, slot, host, Ready, Start, round và hàng đợi gửi
 giữ membership/connection/visit; không thêm alias theo identity hoặc luật theo sức chứa.
+
+<a id="rust-patched-account-names"></a>
+**Tên account cho client đã vá 949x — policy design M8, native vi trong phạm vi hẹp.** DB lưu chuỗi UTF-8 nguyên văn,
+không normalize hoặc thay ký tự không biểu diễn được. Login account vẫn ASCII như trước. Tên hiển thị nhận
+chữ/số Unicode, gạch dưới và dấu kết hợp sau ký tự cơ sở, dài 3–15 **byte 949x**; từ chối whitespace, control,
+bidi, ký tự ngoài bảng và tên vượt giới hạn. Bảng 949x VERSION=1 dùng CP949 cộng extension của chủ dự án;
+codec Rust strict đối chiếu toàn bộ reference bằng [tool](../../tools/text949x_reference.py), không thay bằng UTF-8.
+
+`account_admission.patched_949x_names=true` chỉ được dùng với `database_zero` và toàn bộ client đã vá.
+Mặc định false từ chối cấp frontend cho tên ngoài ASCII; không tự đổi encoding theo IP/ngôn ngữ/identity.
+Auth4, own291, cả hai tên trong card106, Flow và kiểm tên channel6 dùng cùng byte 949x; độ dài/offset theo byte
+đã mã hóa. Channel vẫn so sánh đúng wire ID, name, echo và session owner; tên không cấp quyền cho account khác.
+Test SQLite/bridge giữ đúng revoke, một lần claim và generation cũ không xóa launch mới. Windows vi đã nhận đúng
+account DB `Việt01` trong sảnh và card chủ phòng qua Internet trên dịch vụ ARM hiện hành, rồi rời về sảnh.
+Đây là một account; chưa chứng minh vi/ko cùng phòng hoặc tên phòng/chat xuyên suốt. [Metadata](../evidence/rust-service/m8-account-name-encoding.json)
+giữ kiểm và giới hạn; không sửa wire cho deployment client chưa vá.
 
 **Làn kiểm quyền trong trận.** Khi dùng profile DB, service mở một worker WAL riêng, queue 64 và TTL hàng đợi 1 giây,
 tách khỏi queue đăng nhập/admin. Mỗi kiểm vẫn đọc session/account hiện đã commit: revoke, disabled, credential,
@@ -861,5 +991,115 @@ lượt recipe lỗi và GDB remote-disconnect lúc teardown giữ nguyên trong
 busy sau export: 103 file raw được phục hồi nguyên byte chỉ sau khi namespace kết thúc, rồi seal; exit1 và lỗi
 helper được giữ nguyên. C đóng debugger sau frame107 đã capture hơn 118ms sau completion. Không gọi teardown sạch.
 Shared-NAT relay, reuse/restart và mọi topology Internet không suy từ ca chung nguồn TCP. Python vẫn giữ RE/reference.
+
+<a id="rust-public-launcher"></a>
+### Launcher TLS của công ty — M8 đang triển khai
+
+Adapter `account_admission.public_launcher` là protocol của công ty, **design**, không là xác thực gốc KR. Nó
+opt-in với profile DB và authenticated relay, bind trước readiness. TLS 1.3 dùng ALPN `kre-launch/1`, tên kiểm
+`kr-launch.local`, certificate pin từ gói người chơi; không 0-RTT hoặc nhận plaintext. Mỗi kết nối chỉ một JSON
+frame kết thúc newline, request tối đa 4096 byte, response 8192 byte. Deadline tuyệt đối 250–2000 ms bao gồm
+handshake, đọc/ghi và chờ DB, với 1–64 handler hữu hạn; lỗi request không log body hoặc credential.
+
+Ba operation: `login` nhận login/password và trả đúng Player/session từ DB; `launch` nhận session/player_id,
+metadata `reported_login_ipv4` tùy chọn và cấp frontend/peer offer hiện hành; `logout` nhận session/player_id,
+thu hồi đúng token trong một transaction có audit. Peer authoritative lấy từ socket đã accept và phải thuộc
+allowlist; client không được gửi field `peer` hoặc tự chọn identity bằng địa chỉ IP. Timestamp login được lấy khi
+worker thực thi và publish sau KDF; không dùng giờ cũ của queue admission. Kết quả login được giữ chưa claim tới
+khi write TLS hoàn tất; lỗi/timeout trước handoff thu hồi đúng session vừa cấp, không session mới hơn.
+
+Logout xóa entry launcher chỉ nếu backend token khớp. Session cũ gửi lại không thu hồi DB hoặc registry của lần
+login mới; generation và membership/transport checks cũ vẫn áp dụng. Backend busy/failure không tự biến thành
+logout thành công. Companion/socket đã bound bị tháo theo kiểm quyền sống; pending grant còn lại không được dùng
+sau revoke/expiry. Không suy rằng mọi ca native lifecycle đã được kiểm từ các test này.
+
+`kr-launch` nhận config qua một path và credential JSON qua stdin, không password/session/capability trên argv
+hoặc log. Nó login, cấp launch, đưa peer offer qua stdin cho companion rồi mở native process bằng đường gọi
+không qua shell. Native frontend `token_1:` vẫn đi qua seam argv KR đã đo; đó là ngoại lệ legacy đã biết, không
+backend token. Owner giữ hai child, dừng/join khi lỗi hoặc signal, rồi thử logout đúng session. Nếu server không
+tới được, expiry vẫn giới hạn session; không hứa xác nhận logout hoặc retry vô hạn. Certificate/key được tạo
+riêng bằng `kr-launch-identity`; key private thuộc state server, không nằm trong package hoặc gói người chơi.
+Config launcher khai riêng `reported_login_ipv4` cho địa chỉ NIC mà native dùng khi login và `native_ip` cho
+địa chỉ nguồn UDP được companion chấp nhận tại các listener loopback. Không dùng địa chỉ NIC làm bộ lọc nguồn
+loopback theo ngầm định. Khi native thoát lỗi, launcher chỉ xuất mã exit dạng số, không argv/token. Lỗi launcher
+khai nhãn bước cố định (`installation`, `account_login`, `launch_grant`, companion, native hoặc logout), không
+xuất chuỗi lỗi tùy ý chứa endpoint/path hay credential. Binary chẩn đoán từ seed được khai hash riêng; không
+được dùng để chứng nhận launcher đã cài mà chưa được thay đổi.
+
+[Bằng chứng nền đang làm](../evidence/rust-service/m8-public-launcher-foundation.json) giữ kiểm TLS pin, SQLite,
+companion, child lỗi, SIGTERM/cancel/heartbeat, logout và các control Internet. API `status` đã trả ba reply qua pin
+TLS trên Internet; hai lượt launcher→companion→child `/bin/true`→logout trên ARM mới có DB0 và cleanup rule.
+Đó là control Linux, không proof client KR, phòng hoặc trận.
+
+Windows native media trước đã có control crash startup do IAT0, rồi bản copy khởi tạo IAT và reset dữ liệu
+`1A966FC=0` theo recipe Wine đã tới auth1/profile4/netinfo9/redirect5/7/channel6/17 nhưng chưa67. Các bản copy,
+hash, crash, thời hạn quan sát và giới hạn nằm trong metadata nền; không suy hành vi bản nguồn chưa sửa.
+Companion từng dừng trước native với `registry_lookup` sau channel EOF, chưa có bằng chứng lỗi DB. FIN tới VPS
+trước payload request6 nhưng sequence đã tính đủ payload83; thứ tự tới không chứng minh thứ tự phát ở guest.
+Các probe sau chỉ tái hiện socket bootstrap/WCP, không là cùng protocol stage để quy nguyên nhân channel.
+
+Control transport Windows gần nhất tới deadline handshake. Wrapper Quinn trả `send_ok` nhưng quinn-udp có thể
+che lỗi gửi Winsock; chưa quan sát UDP QUIC ở guest/VPS trong selection đã ghi. Chẩn đoán opt-in giữ riêng mã OS,
+không forward log có endpoint/error text. Mã gửi Winsock10040 đã đo; NIC MTU1500 và .NET UDP/DF1200 trả thành công.
+Adapter client `portable` dùng Tokio send_to/recv_from, một datagram, không ancillary ECN/GSO; đã xác thực QUIC,
+chạy no-op child và logout trên Windows/Internet với DB0. `native` vẫn là mặc định; không tự fallback khi denied.
+So sánh chưa xác định ancillary field nào gây lỗi, không nới deadline hoặc bỏ fencing.
+Bản cài vi/en/ko mới có kiểm file và GUI Windows riêng. Lượt vi data11 với loader control và portable UDP đã
+xác thực QUIC rồi qua auth1/profile4/netinfo9/redirect5/7/channel6/17 trên Internet; channel EOF trước request67.
+Ảnh sau lượt có popup locale2000:0 nhưng chưa chứng minh quan hệ nhân quả. VM/dịch vụ/rule đã dọn, DB0/logout1.
+Đối chứng ko949x sau khi cập nhật đúng `/32` và allowlist gói cũng xác thực QUIC, hiện video/login/loading,
+rồi channel6/17/EOF trước67; không bắt được popup locale trong lượt ko. Probe đã tái hiện cùng stage và đo trực tiếp
+entry1107A10 từ11074B0 trước shutdown. Đo trực tiếp target15037F7 trả2, fieldC0 đổi0→2 và D4 đổi0→1 trong lời gọi rồi đi nhánh close;
+không phải result2 có sẵn ở biên gọi. Hardware watchpoint đã thấy1503C82 ghi0 rồi2 vào fieldC0 trên UI thread. Caller trực tiếp11139F0 là timer: giới hạn chờ u16 bằng0, tick đầu đo được268 ms nên tự đặt result2.
+Nguồn giới hạn0 chưa xác định. Đối chứng runtime riêng chỉ đổi giới hạn0 thành30 giây,
+không ép result hoặc nới deadline server. Với đối chứng này, native tự trả1, gửi67, server trả241/14/291 rồi client tiếp tục
+keepalive qua Internet. Probe đầu chạm trần log nên overall exit1; lượt sau đã thấy UI sảnh và profile `WinNative`.
+Bản copy riêng dùng trampoline tại110740C chỉ thay giới hạn0 thành30000 ms, gọi nguyên hàm cũ và giữ result tự nhiên;
+ko đã vào cùng sảnh trên Windows không debugger hoặc ghi bộ nhớ runtime. Đây là policy tương thích design,
+chưa là gói cuối hoặc hành vi nguyên bản. IAT thực tại11139F9 là `winmm!timeGetTime`, không sửa import theo tên decompiler.
+UI tạo phòng đã mở; sửa tiêu đề gặp thông báo đăng ký email, phù hợp giới hạn M7 đã ghi. Bản vi đã tạo bằng tiêu đề mặc định: một lượt không debugger thoát C000001D khi chuyển màn; lượt có probe đã render
+phòng/WinNative/Factory07 và gửi585/96/266. Probe180s và companion kết thúc gần thao tác UI exit nên không chứng minh
+thoát UI sạch hoặc hết lỗi. WER không debugger đã xác nhận C000001D tại trap `UD2`2260DF8 trong `.repair`. ReturnD66A6D là direct call1494A0E,
+thunk nhảy qua16EA064; static D66980 gọi khi checkD95D90 và virtual+520 trả nonzero, khớp byte bản đang chạy.
+Tên lịch sử `UninstallDWK` vẫn candidate. Policy offline trên copy riêng thay đúng byte đầu trap bằng RET, sau kiểm slot/thunk/trap. Bản vi không debugger
+đã tạo phòng, gửi585/96/266, render đúng profile/map rồi gửi86 và trở về sảnh. Không ép result của stage hoặc đổi server.
+UI exit đụng deadline nên chỉ có harness cancellation/exit1, logout1/session chưa revoke0; chưa UI logout sạch.
+Không biết semantics SDK gốc và không bỏ failure từ lượt đối chứng. Controller ảnh pin/hash/hai vùng chỉ gửi mỗi input
+một lần khi đúng trạng thái; lượt kiểm kế lỗi launch_grant trước native và không gửi input, cause unknown.
+Dịch vụ ARM mới đã chiếu đúng `Việt01` tới Windows vi, tạo/rời phòng bằng controller. UI exit có modal xác nhận riêng;
+request79/body `5b5f` ở sảnh đã được PCAP/CRC kiểm nhưng service cũ từ chối, khiến companion dừng/exit1.
+Control mới chỉ cho một body literal này ở sảnh account managed, không còn Session phòng, sau authorize(false);
+không gia hạn idle, ACK, đổi stage hoặc mutation. Native control đã quan sát đúng một request, giữ channel và keepalive, nhưng client vẫn ở sảnh đến harness cancellation.
+Đây là kết quả âm cho clean UI exit; không retry control không ACK nếu chưa có giả thuyết mới. Consumer80/D41930
+đọc byte, byte, int, byte count và strings trong đường chat, khớp code vi/ko; không dùng80 làm ACK thoát giả định.
+Semantics của79 vẫn opaque. Probe UI đã xác nhận nút1236/result4, predicateD7C450=1, relogin0 và
+virtual exit328=D75B70 từBEAC7A; tách di chuyển chuột không tự chữa thoát. Hàm exit gọi16EA59C với một đối số0,
+nhưng import dựng lại là `win32u!NtUserCallOneParam` hai đối số. Control copy retarget riêng slot đó sang
+`user32!PostQuitMessage` giữ nguyên code exit/L1; đây là candidate ABI, không khẳng định tên API gốc.
+Lượt không debugger đi tiếp rồi WER báoC0000005. SEH trước đó giữ C++E06D7363/expected value từ JSON96A480
+với input size0/cap15; handler1254610 sau đó chủ động raiseC0000005. Code/constructor khớpCP201, nên control kế
+chỉ trả native empty output khi input rỗng; nonempty giữ parser. Control này đi tiếp tới trap cleanup ngoài tại 22638D4,
+qua slot 16EA4EC/caller 806B30; semantics SDK gốc vẫn unknown. Bản copy chỉ cho entry chưa phục hồi đó trả về
+đã gửi đủ năm thao tác UI nhưng companion kết thúc với exit 1 khi native exit code còn null. Launcher nguồn hiện
+trả lỗi rồi kill owned child còn sống. Control riêng logout ngay sau companion stop, quan sát native tối đa 5 giây
+và vẫn trả lỗi đã thấy native tự kết thúc C0000005 tại14398AE, đọc `[esi]` với ESI=25CDF40 từ cleanup list1A7D474.
+Tail cleanup qua CRT callback đã so byte với đúng exe copy; lifetime node/destructor order vẫn unknown.
+Không suy use-after-free hoặc sửa server/revoke từ phép đo này.
+Chưa có clean UI exit, không coi WER synthetic là lỗi truy cập bộ nhớ gốc hoặc bỏ failure cũ.
+Hai lượt trước còn session chưa revoke/logout0 dù VM/rule đã dọn; không gọi cleanup đó là logout sạch.
+Harness mới đọc stdout/stderr bất đồng bộ và gửi `cancel_file` riêng khi hết hạn; lượt ko đã có report finished,
+exit1 do harness cancellation, logout1 và session chưa revoke0. Đây không là ca native UI logout.
+Các địa chỉ còn trên stack không phải unwind đã xác minh. Không nới fencing account hoặc coi cleanup là lỗi DB.
+Chưa có cùng phòng, tên có dấu hoặc trận Internet trên gói này; không dùng media cũ/control stub thay acceptance.
+
+GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).
+Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-tls-đang-triển-khai); không suy ca hai client có dấu đã đạt từ file.
+GUI không tự cấp identity: gọi `kr-launch` hiện hành bằng stdin, native giữ frontend token riêng. Cancel file riêng của
+mỗi launch cho phép GUI yêu cầu dừng mà vẫn đi qua join child/logout; file cũ không dùng cho launch tiếp.
+Heartbeat file riêng được GUI cập nhật mỗi nửa giây; nội dung không đổi quá 10 giây hoặc mất/không đọc được
+thì owner kết thúc launch qua cleanup/logout. Đây là lifetime GUI riêng, không thay expiry/revoke/fencing backend.
+API TLS thêm request `status` không credential, chỉ trả `ok`/`ready` theo admission còn mở. Nó không tạo session,
+không trả player/config hay chứng nhận DB/gameplay. GUI kiểm pin TLS, không gửi password để hỏi status.
+
 
 <!-- protocol-topic-content-end -->

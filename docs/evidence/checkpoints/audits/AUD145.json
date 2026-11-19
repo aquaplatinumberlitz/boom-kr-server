@@ -1,0 +1,81 @@
+{
+  "id": "AUD145",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "g1-shoe-direction-distance-matrix",
+    "g1-final-scoped-acceptance"
+  ],
+  "completed_through": "CP337",
+  "recorded_utc": "2026-11-17T18:04:10.954554+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/RESEARCH.md",
+    "docs/protocol/items-stats.md",
+    "docs/PLAN.md#phase1-acceptance",
+    "docs/evidence/owner-directives/g1-item-scope-cut.json",
+    "docs/evidence/rust-service/g1-shoe-matrix.json",
+    "docs/evidence/rust-service/g1-acceptance-matrix.json",
+    "rust/crates/kr-service/src/bombs.rs",
+    "rust/crates/kr-service/src/terrain.rs",
+    "rust/crates/kr-service/src/room_io.rs",
+    "tools/g1_native_verify.py",
+    "local/research/codex/g1-shoe-native-matrix-r5/motion-verification.json",
+    "local/research/codex/g1-shoe-horizontal-distance-native-r2/motion-verification.json",
+    "local/research/codex/g1-shoe-final-four-native-r1/motion-verification.json",
+    "local/research/codex/g1-vi-client-smoke-r1/vi-smoke-verification.json",
+    "local/research/codex/g1-vi-client-smoke-r1/cache-verification.json",
+    "local/research/codex/g1-vi-client-smoke-r1/manual-image-review.json"
+  ],
+  "method": "Một audit cho nhóm Shoe và lần đối chiếu G1 cuối. Đối chiếu tám tiêu chí với các route map cũ, decoded119/162/165, native landing/rebind/cleanup/getter/reset, account/journal, client vi hashes/ảnh và cache actual238. Giữ lớp runtime/static/test/design và mọi failure/deviation/cleanup limit; không coi review waived là approved.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Shoe chỉ mở up-three và từng selector.",
+      "correction": "Mở corridor biến đổi cho4/trái5/lên6/phải7/xuống; kiểm đúng dấu/cùng trục/in-bounds/passable/reservation, old round/member/delivery/queue/quota giữ fences. Native8+2+4 vòng, final binary có đủ bốn hướng; duplicate/late/inflight/foreign/queued EOF không được suy native từ test.",
+      "fixed_in": [
+        "rust/crates/kr-service/src/bombs.rs",
+        "rust/crates/kr-service/src/terrain.rs",
+        "rust/crates/kr-service/src/room_io.rs",
+        "docs/protocol/items-stats.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Nhãn selector ngang/count trong input kế thừa bị sai; một route Factory giả định hành lang trống.",
+      "correction": "Giữ nguyên input/raw, correction riêng gắn SHA kiểm actual keys/selector/source/target/readers. Final matrix đã sửa đầu vào trước chạy; r1/r2 Factory pre-ready và r3 wall/route cùng horizontal pickup-destroy failure giữ riêng. Không chạy lại native để sửa verifier hoặc gọi input gốc khớp hoàn toàn.",
+      "fixed_in": [
+        "tools/g1_native_verify.py",
+        "docs/evidence/rust-service/g1-shoe-matrix.json"
+      ]
+    },
+    {
+      "id": "F3",
+      "stale": "G1 chưa có join acceptance theo scope đã cắt và client Việt.",
+      "correction": "Ma trận tám tiêu chí dùng lại sáu map/roster với đúng giới hạn; scope/drop/character của466 và Punch471 đã merge. Vi Factory07/Bomb/hai vòng/reset/wire/stat/journal và ảnh đã kiểm; không takeover L1.",
+      "fixed_in": [
+        "docs/evidence/rust-service/g1-acceptance-matrix.json",
+        "docs/PLAN.md",
+        "docs/RESEARCH.md"
+      ]
+    },
+    {
+      "id": "F4",
+      "stale": "Wrapper immutable-input guard báo fail với cache vi được client ghi lại.",
+      "correction": "Process runtime exit0 nhưng giữ wrapper failure. Hai fxdynmapinfo outputs có SSI checksum/length/zlib đúng và plain bằng mọi actual238; before/after giữ riêng, all other inputs frozen. Schema2 seed chưa có matches được kiểm version2, journal target schema3 có đúng hai complete/thưởng0.",
+      "fixed_in": [
+        "tools/g1_native_verify.py",
+        "local/research/codex/g1-vi-client-smoke-r1/cache-verification.json",
+        "local/research/codex/g1-vi-client-smoke-r1/wrapper-cache-guard-observation.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Exact-head local/history và mọi CI trước merge PR nhóm; CP complete không thay gate/integration.",
+    "M8: Internet transport xác thực mới, tải50/8phòng, backup/restore, đóng gói, giám sát và soak.",
+    "L1 do Claude; smoke vi không chứng nhận mọi chữ/ảnh/font/IME hoặc L1 closure.",
+    "Các giới hạn native/roster/cleanup lịch sử trong acceptance matrix vẫn giữ; không full gameplay hay nguyên server authority."
+  ]
+}

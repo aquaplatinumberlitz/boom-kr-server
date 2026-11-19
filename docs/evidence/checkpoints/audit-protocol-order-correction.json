@@ -1,0 +1,38 @@
+{
+  "schema": "kre-audit-protocol-order-correction-v1",
+  "source": "design",
+  "status": "confirmed",
+  "failure": "Gatee063f8f verified580279 evidence/history,0unavailable, but one error: AUD147 core-doc order. Audit read PROTOCOL index and its auth-session chapter before RESEARCH; checker expected four adjacent top-level paths.",
+  "failed_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r7/exit.json",
+    "bytes": 447,
+    "sha256": "0776a34a123f4d2510cb9b394b5f55c4498359e16a827efd519d33a68dc3c35a"
+  },
+  "failed_stderr": {
+    "path": "local/research/codex/m8-login-full-gate-r7/gate.stderr",
+    "bytes": 69,
+    "sha256": "e5634d8fa1d384167556c6d28ae9390379cacab5f602bb33561b3a16dca583a7"
+  },
+  "witness": {
+    "path": "local/research/codex/m8-audit-order-correction-r1/read-order-witness.json",
+    "bytes": 553,
+    "sha256": "3008683ba6e7c8d78629883b39bcda4ca4ff150b12c9d1694fed8f1b3ee3d6a0"
+  },
+  "correction": "Recognize only canonical docs/protocol/<lowercase-topic>.md immediately after docs/PROTOCOL.md as part of its existing index pass. README/PLAN/PROTOCOL/RESEARCH order and presence remain mandatory; other interleaved files, traversal and reordered/missing core paths fail. file_link still checks chapter existence. No audit, checkpoint or raw rewrite.",
+  "tests": {
+    "command": "env PYTHONPATH=tools python3 -m unittest tools.test_checkpoint_audit_order tools.test_checkpoint_audit_storage tools.test_checkpoint_source_history tools.test_checkpoints tools.test_checkpoint_evidence_lean tools.test_checkpoint_store",
+    "exit": 0,
+    "tests": 105,
+    "limits": "Schema/order/history regression only, no audit semantic or native certification."
+  },
+  "full_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r8/result.json",
+    "bytes": 2417,
+    "sha256": "43e1f43ec7928884d8400adc91cc9a0169f8aba8f0a961676cb1c93ca62d6a4f",
+    "tested_commit": "ffc2ec113d4e46e4659ea12b9e550d652f912eef",
+    "ok": true,
+    "evidence_verified": 580279,
+    "history_verified": true,
+    "errors": 0
+  }
+}

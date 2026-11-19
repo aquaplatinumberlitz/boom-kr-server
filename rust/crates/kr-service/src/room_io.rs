@@ -315,6 +315,11 @@ struct Channel {
 #[derive(Clone)]
 pub enum Guard {
     Channel,
+    RoomChat {
+        recipient: Membership,
+        source: Membership,
+        round: u64,
+    },
     Departure {
         recipient: Membership,
         source: Membership,
@@ -906,8 +911,10 @@ impl Runtime {
             .ok_or_else(|| err("missing current player projection"))?
             .clone();
         let body = if let Some(authority) = owner {
-            crate::player_template::PlayerTemplate::parse(&reply.payload)?
-                .project_account(m.key.identity, authority.player().display_name.as_bytes())?
+            crate::player_template::PlayerTemplate::parse(&reply.payload)?.project_account(
+                m.key.identity,
+                &kr_wire::kr00967::text949x::encode_name(&authority.player().display_name)?,
+            )?
         } else {
             reply.payload
         };
@@ -1844,6 +1851,24 @@ impl Session {
         }
         match batch.guard {
             Guard::Channel => true,
+            Guard::RoomChat {
+                recipient,
+                source,
+                round,
+            } => {
+                r.model.phase == Phase::Idle
+                    && r.model.round_generation() == round
+                    && r.model.current(recipient)
+                    && r.model.current(source)
+                    && [recipient, source].iter().all(|key| {
+                        r.channels.get(&key.identity).is_some_and(|channel| {
+                            channel.connection == key.connection
+                                && channel.relay_authority.as_ref().is_some_and(|authority| {
+                                    authority.owns(key.identity, key.connection)
+                                })
+                        })
+                    })
+            }
             Guard::Departure {
                 recipient,
                 source,
@@ -2076,6 +2101,64 @@ impl Session {
     }
     pub fn packet(&self, opcode: u32, body: &[u8]) -> io::Result<Observation> {
         self.packet_owned(opcode, body, None)
+    }
+    /// Opt-in patched949x room-waiting chat. Caller authorizes account and rate;
+    /// sender identity comes only from its current DB-backed channel owner.
+    pub(crate) fn room_chat(&self, body: &[u8]) -> io::Result<()> {
+        let text = wire::room_chat18(body)?;
+        let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if r.public_key.is_none() || r.model.phase != Phase::Idle {
+            return Err(err("room chat requires managed waiting room"));
+        }
+        let source = r.member(self.identity, self.connection)?;
+        if !source.setup {
+            return Err(err("room chat before setup"));
+        }
+        let authority = r
+            .channels
+            .get(&self.identity)
+            .filter(|channel| channel.connection == self.connection)
+            .and_then(|channel| channel.relay_authority.as_ref())
+            .filter(|authority| authority.owns(self.identity, self.connection))
+            .ok_or_else(|| err("room chat has no current account owner"))?;
+        let literal = format!("{} : {text}", authority.player().display_name);
+        let reply = packet(28, wire::room_chat28_literal(&literal)?);
+        let mut effects = Vec::new();
+        for recipient in r.model.members.values().filter(|member| member.setup) {
+            let mut batch = Runtime::member_batch(
+                recipient.key,
+                None,
+                0,
+                vec![("room-chat28".into(), reply.clone())],
+            );
+            batch.guard = Guard::RoomChat {
+                recipient: recipient.key,
+                source: source.key,
+                round: r.model.round_generation(),
+            };
+            effects.push((recipient.key.identity, batch));
+        }
+        let next = r.model.clone();
+        r.publish(next, effects)
+    }
+    /// Source revocation/expiry is checked at the recipient's write boundary.
+    /// No room lock crosses the database wait. The ordinary serving loop also
+    /// reauthorizes the recipient and rechecks the complete membership guard.
+    pub(crate) async fn authorize_batch_source(&self, batch: &Batch) -> io::Result<bool> {
+        let Guard::RoomChat { source, .. } = batch.guard else {
+            return Ok(true);
+        };
+        if !self.valid(batch) {
+            return Ok(false);
+        }
+        let authority = {
+            let r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+            r.channels
+                .get(&source.identity)
+                .and_then(|channel| channel.relay_authority.clone())
+                .ok_or_else(|| err("chat source channel unavailable"))?
+        };
+        Ok(authority.check_idle().await.is_ok() && self.valid(batch))
     }
     fn packet_owned(
         &self,
@@ -3076,8 +3159,11 @@ impl Session {
                         let target = (motion.target_row, motion.target_column);
                         let forbidden = r.bomb_cancellation_cells().is_some_and(|cells| {
                             if shoe {
-                                (motion.target_row..=motion.source_row)
-                                    .any(|row| cells.contains(u16::from(row), u16::from(target.1)))
+                                bombs::motion_cells(motion)
+                                    .into_iter()
+                                    .any(|(row, column)| {
+                                        cells.contains(u16::from(row), u16::from(column))
+                                    })
                             } else if matches!(motion.selector, 0 | 2) {
                                 // Horizontal Punch reserves every possible column
                                 // while its wrapped native path remains unmeasured.
@@ -4835,3 +4921,7 @@ mod life_action_integration_tests;
 #[cfg(test)]
 #[path = "room_io_item_tests.rs"]
 mod item_policy_integration_tests;
+
+#[cfg(test)]
+#[path = "room_io_chat_tests.rs"]
+mod chat_integration_tests;

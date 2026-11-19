@@ -1,6 +1,6 @@
 //! Private launcher child. Capabilities arrive only on stdin, never argv/logs.
 #![forbid(unsafe_code)]
-use kr_tunnel::{Link, Secret, client, companion};
+use kr_tunnel::{Link, Secret, companion};
 use serde::Deserialize;
 use std::{
     io::{self, Read, Write},
@@ -45,8 +45,35 @@ struct Request {
     peer_transport: Offer,
     native_ip: IpAddr,
     port_budget: usize,
+    #[serde(default)]
+    diagnostics: bool,
+    #[serde(default)]
+    udp_backend: kr_tunnel::UdpBackend,
 }
-async fn run() -> io::Result<()> {
+#[cfg(unix)]
+fn termination_signal() -> io::Result<impl std::future::Future<Output = ()>> {
+    let mut signal = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    Ok(async move {
+        signal.recv().await;
+    })
+}
+#[cfg(windows)]
+fn termination_signal() -> io::Result<impl std::future::Future<Output = ()>> {
+    let mut close = tokio::signal::windows::ctrl_close()?;
+    let mut shutdown = tokio::signal::windows::ctrl_shutdown()?;
+    let mut interrupt = tokio::signal::windows::ctrl_break()?;
+    Ok(async move {
+        tokio::select! {
+            _ = close.recv() => {},
+            _ = shutdown.recv() => {},
+            _ = interrupt.recv() => {},
+        }
+    })
+}
+async fn run(
+    stage: &mut &'static str,
+    diagnostics: &mut Option<std::sync::Arc<kr_tunnel::udp_diagnostics::Counters>>,
+) -> io::Result<()> {
     if std::env::args_os().len() != 1 {
         return Err(io::Error::other("private launcher stdin only"));
     }
@@ -71,32 +98,92 @@ async fn run() -> io::Result<()> {
     {
         return Err(io::Error::other("private launcher transport bounds"));
     }
-    let endpoint = client(
-        SocketAddrV4::new(Ipv4Addr::UNSPECIFIED, 0).into(),
+    *stage = "endpoint_setup";
+    let address = SocketAddrV4::new(Ipv4Addr::UNSPECIFIED, 0).into();
+    let (endpoint, counters) = kr_tunnel::client_configured(
+        address,
         offer.certificate_der.into(),
+        request.udp_backend,
+        request.diagnostics,
     )?;
-    let link = Link::connect(&endpoint, offer.endpoint.into(), &offer.capability.0).await?;
+    if let Some(counters) = &counters {
+        kr_tunnel::udp_diagnostics::install_redacted_log(counters.clone())?;
+    }
+    *diagnostics = counters;
+    *stage = "transport_authentication";
+    let link = Link::connect_observed(
+        &endpoint,
+        offer.endpoint.into(),
+        &offer.capability.0,
+        |label| *stage = label,
+    )
+    .await?;
+    if let Some(counters) = diagnostics.as_ref() {
+        report_counters(counters, "authenticated");
+    }
     drop(offer.capability);
     let (stop, stopped) = watch::channel(false);
-    let mut terminate = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    *stage = "termination_setup";
+    let terminate = termination_signal()?;
+    tokio::pin!(terminate);
     let task = companion::run(link, request.native_ip, request.port_budget, stopped);
     tokio::pin!(task);
     // This means authenticated transport only. Round readiness is acknowledged
     // separately on the control stream before the service builds native 153.
     writeln!(io::stdout(), "{{\"event\":\"transport_ready\"}}")?;
     io::stdout().flush()?;
+    *stage = "transport_running";
     let result = tokio::select! {
         result=&mut task=>result,
         result=tokio::signal::ctrl_c()=>{result?;let _=stop.send(true);task.await},
-        _=terminate.recv()=>{let _=stop.send(true);task.await},
+        _=&mut terminate=>{let _=stop.send(true);task.await},
     };
     endpoint.close(0_u8.into(), b"launcher child ended");
     result
 }
 #[tokio::main]
 async fn main() {
-    if let Err(error) = run().await {
-        eprintln!("companion stopped: {error}");
+    let mut stage = "installation";
+    let mut diagnostics = None;
+    let result = run(&mut stage, &mut diagnostics).await;
+    if let Some(counters) = diagnostics {
+        report_counters(&counters, "stopped");
+    }
+    if let Err(error) = result {
+        // Do not forward arbitrary QUIC/I/O errors, endpoints or capabilities.
+        let os_error = error
+            .raw_os_error()
+            .map_or("null".to_owned(), |code| code.to_string());
+        let transport_error = error
+            .get_ref()
+            .and_then(|inner| inner.downcast_ref::<quinn::ConnectionError>())
+            .map_or(
+                if error.kind() == io::ErrorKind::TimedOut {
+                    "local_deadline"
+                } else {
+                    "unclassified"
+                },
+                |error| match error {
+                    quinn::ConnectionError::VersionMismatch => "version_mismatch",
+                    quinn::ConnectionError::TransportError(_) => "transport",
+                    quinn::ConnectionError::ConnectionClosed(_) => "connection_closed",
+                    quinn::ConnectionError::ApplicationClosed(_) => "application_closed",
+                    quinn::ConnectionError::Reset => "reset",
+                    quinn::ConnectionError::TimedOut => "timed_out",
+                    quinn::ConnectionError::LocallyClosed => "locally_closed",
+                    quinn::ConnectionError::CidsExhausted => "cids_exhausted",
+                },
+            );
+        eprintln!(
+            "{{\"event\":\"companion_failed\",\"stage\":\"{stage}\",\"os_error\":{os_error},\"transport_error\":\"{transport_error}\"}}"
+        );
         std::process::exit(1);
+    }
+}
+fn report_counters(counters: &kr_tunnel::udp_diagnostics::Counters, phase: &'static str) {
+    if let Ok(encoded) = serde_json::to_string(&counters.snapshot()) {
+        eprintln!(
+            "{{\"event\":\"companion_udp_counters\",\"phase\":\"{phase}\",\"counters\":{encoded}}}"
+        );
     }
 }

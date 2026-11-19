@@ -68,6 +68,35 @@ impl AccountTemplate {
             player106: self.player.project_account(identity, name)?,
         })
     }
+
+    /// Project only the login reply for one or two local accounts.
+    /// The two-player layout was consumed by the declared KR compatibility
+    /// copy in r55: common13-byte prefix, per-player record, common19-byte tail.
+    /// This does not authorize accounts or define multi-player291/channel data.
+    pub fn project_local_auth(&self, players: &[(u32, &[u8], u32)]) -> io::Result<Vec<u8>> {
+        if !(1..=2).contains(&players.len()) {
+            return Err(io::Error::other("unsupported local account count"));
+        }
+        let mut rows = Vec::with_capacity(players.len());
+        for (index, &(identity, name, echo)) in players.iter().enumerate() {
+            if players[..index].iter().any(|p| p.0 == identity) {
+                return Err(io::Error::other("duplicate local account identity"));
+            }
+            rows.push(self.project(identity, name, echo)?.auth);
+        }
+        let first = &rows[0];
+        let mut auth = first[..13].to_vec();
+        auth[4..5].copy_from_slice(&put(players.len() as u64, Width::U8)?);
+        let tail = &first[first.len() - 19..];
+        for row in &rows {
+            if row[..13] != first[..13] || row[row.len() - 19..] != *tail {
+                return Err(io::Error::other("inconsistent local account auth profile"));
+            }
+            auth.extend_from_slice(&row[13..row.len() - 19]);
+        }
+        auth.extend_from_slice(tail);
+        Ok(auth)
+    }
 }
 /// Diagnostic test accounts only: fill the empty per-player identity string that
 /// follows the name and one u8 in the auth reply (client 0x10FD540 stores it at

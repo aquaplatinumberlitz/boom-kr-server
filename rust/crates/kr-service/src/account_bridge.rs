@@ -1,6 +1,8 @@
 //! Company-designed backend→KR admission seam, NOT recovered KR authentication.
 //! Library only: no listener, launcher API, dynamic profile writer or socket adapter.
 //! Source: docs/PROTOCOL.md#rust-account-bridge. Field36 is only a correlator.
+pub mod ingame_wire;
+pub mod local;
 pub mod wire;
 use crate::{
     account_worker::{self, Client},
@@ -359,8 +361,23 @@ pub struct Bridge {
     shared: Shared,
     ttl: Duration,
     random: fn(&mut [u8]) -> Result<()>,
+    patched_949x_names: bool,
 }
 impl Bridge {
+    /// After an exact-token DB logout, retire only a registry entry belonging
+    /// to that same session. A delayed logout must not cancel a newer launch.
+    pub(crate) fn forget_session(&self, token: &Token, player: i64) -> Result<()> {
+        let digest = Sha256::digest(token.expose_secret().as_bytes());
+        let mut registry = lock(&self.shared)?;
+        if registry
+            .entries
+            .get(&player)
+            .is_some_and(|entry| Sha256::digest(entry.token.expose_secret().as_bytes()) == digest)
+        {
+            registry.entries.remove(&player);
+        }
+        Ok(())
+    }
     /// Companion capability possession is checked separately from current
     /// account authority. Recheck after DB await before registering a peer.
     pub(crate) async fn validate_transport(&self, player: u32, generation: u64) -> Result<()> {
@@ -374,7 +391,12 @@ impl Bridge {
                     e.generation == generation
                         && e.player.as_ref().is_some_and(|p| p.wire_id == player)
                 })
-                .ok_or(Error::Denied)?;
+                .ok_or_else(|| {
+                    eprintln!(
+                        "{{\"event\":\"transport_authority_failed\",\"stage\":\"registry_lookup\"}}"
+                    );
+                    Error::Denied
+                })?;
             (
                 copy_token(&entry.token)?,
                 entry.player.clone().ok_or(Error::Denied)?,
@@ -385,10 +407,18 @@ impl Bridge {
             .as_ref()
             .unwrap_or(&self.client)
             .try_inspect_current(&token, expected.player_id)
-            .map_err(Error::Backend)?
+            .map_err(|error| {
+                eprintln!("{{\"event\":\"transport_authority_failed\",\"stage\":\"backend_submit\",\"error\":\"{error:?}\"}}");
+                Error::Backend(error)
+            })?
             .wait()
             .await
-            .map_err(Error::Backend)?;
+            .map_err(|error| {
+                // Worker/storage errors are closed, redacted enums; no SQL,
+                // token, endpoint, credential or player fields are printed.
+                eprintln!("{{\"event\":\"transport_authority_failed\",\"stage\":\"backend_inspect\",\"error\":\"{error:?}\"}}");
+                Error::Backend(error)
+            })?;
         let mut r = lock(&self.shared)?;
         r.sweep();
         if actual != expected
@@ -396,6 +426,12 @@ impl Bridge {
                 .get(&expected.player_id)
                 .is_none_or(|e| e.generation != generation || e.player.as_ref() != Some(&expected))
         {
+            let stage = if actual != expected {
+                "player_changed"
+            } else {
+                "registry_recheck"
+            };
+            eprintln!("{{\"event\":\"transport_authority_failed\",\"stage\":\"{stage}\"}}");
             return Err(Error::Denied);
         }
         Ok(())
@@ -418,7 +454,14 @@ impl Bridge {
             })),
             ttl,
             random: entropy,
+            patched_949x_names: false,
         })
+    }
+    /// Only enable for a deployment whose clients all carry the owner's 949x
+    /// patch. Defaults to the historical ASCII admission policy.
+    pub fn with_patched_949x_names(mut self, enabled: bool) -> Self {
+        self.patched_949x_names = enabled;
+        self
     }
     pub(crate) fn with_live_authorization(mut self, client: Client) -> Self {
         self.live = Some(client);
@@ -480,12 +523,9 @@ impl Bridge {
             }
         };
         let player = self.authorize(&guard).await?;
-        if !(3..=15).contains(&player.display_name.len())
-            || player.wire_id == 0
-            || !player
-                .display_name
-                .bytes()
-                .all(|b| b.is_ascii_alphanumeric() || b == b'_')
+        if player.wire_id == 0
+            || (!self.patched_949x_names && !player.display_name.is_ascii())
+            || kr_wire::kr00967::text949x::encode_name(&player.display_name).is_err()
         {
             return Err(Error::UnsupportedWire);
         }
@@ -648,7 +688,9 @@ impl Bridge {
             if entry.phase != Phase::Redirect
                 || entry.peer != peer
                 || owned.wire_id != identity.wire_id
-                || owned.display_name.as_bytes() != identity.name
+                || kr_wire::kr00967::text949x::encode_name(&owned.display_name)
+                    .map_err(|_| Error::UnsupportedWire)?
+                    != identity.name
             {
                 return Err(Error::Denied);
             }

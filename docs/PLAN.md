@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, ma trận nhóm Punch / CP336 / AUD144**.
+theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, CP342: client đã đọc hai hồ sơ và tự chuyển kết nối kênh; tiếp quyền DB và prelogin TLS**.
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -23,50 +23,51 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **18/11, m
 | [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
 | [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map và tập item đã cắt | Đã có adapter/UI, kim/cứu, item nền, MaxPower và các route native của sáu map trong phạm vi đã ghi; Shoe/Punch có các lát đầu đã merge | Bảng rơi đã cắt và từ chối nhân vật giữ phiên đã tích hợp qua PR #466. Punch đã có ma trận native bốn hướng và endpoint biên; chờ gate/tích hợp nhóm. Còn ma trận Shoe, kiểm ghép client Việt và đối chiếu acceptance map. Danh sách cùng ước lượng native ở bên dưới; không mở thêm nhóm item ngoài chỉ đạo mới |
+| [G1](#rust-g1) sáu map và tập item đã cắt | **Đạt acceptance giai đoạn 1** theo [ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json): sáu map/roster trong phạm vi, kim/cứu, item nền/MaxPower, ma trận Shoe/Punch, drop đã cắt, từ chối nhân vật giữ phiên và client Việt hai vòng trên Rust | Giữ giới hạn từng route/native và raw cleanup; không whole gameplay, every-tile hoặc L1 closure. Vận hành còn M8 |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance; [Codex đã bàn giao WIP cho Claude](evidence/owner-directives/l10n-claude-owner.json) | Chưa chốt xử lý đủ literal949, consumer/capacity và render/IME; L1b/L1c chưa đạt. Không đổi wire của client chưa vá |
-| M8 vận hành | CI đã có (PR #334, #340) | Kiểm tải/budgets, giám sát, backup/restore cho 50 người/8 phòng |
+| M8 vận hành | CI đã có; [nền gói Linux](evidence/rust-service/m8-server-package.json) đã có manifest/state riêng và smoke x86/ARM tách repo, gồm kiểm chạy trùng và từ chối ghi đè DB | Xuất dữ liệu từ pack, launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 24 giờ chạy dài |
 
 **Thứ tự việc:**
 
-1. **G1 theo [chỉ đạo cắt phạm vi item](evidence/owner-directives/g1-item-scope-cut.json).** Chỉ giữ Bomb/Fire/Roller,
-   MaxPower, kim/cứu, Shoe và Punch; mọi nhóm khác trong bảng rơi sáu map phải có trọng số 0 trong dữ liệu server Rust.
-   M6 và N1R-b đã đạt phạm vi đã ghi. Dùng lại bằng chứng map/item/roster/account hiện có; không yêu cầu đo từng ô map,
-   thêm nhân vật hoặc lặp N1b. Danh sách dưới là phần còn lại để đóng G1, thay cho lịch từng selector trước đây.
+1. **M8 vận hành**, sau G1 đã đủ bằng chứng trong [ma trận acceptance](evidence/rust-service/g1-acceptance-matrix.json).
+   G1 không còn lịch native/PR theo selector. Sáu map dùng lại các route 2/4/8 hoặc 2/4/6 đã đo theo scope owner;
+   Shoe/Punch có ma trận chung, và client L1 `vi` hiện hành có Factory07/Bomb/hai vòng/reset trên Rust.
+   Các giới hạn native, wrapper cache, capture/debugger/cleanup cũ giữ tại evidence; không đổi exit 1 thành exit 0.
+   Việc M8 gồm Internet thật cho companion xác thực hiện hành, cấu hình/đóng gói, 50 người/8 phòng, giám sát,
+   backup/restore và chạy dài. N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet.
 
-   **Việc còn lại để đóng G1 và số lượt native dự kiến:** một lượt là một lần chạy server Rust cùng client KR,
-   có thể chứa nhiều ca và hai vòng/reset. Đây là ước lượng để gom việc, không phải cam kết hoặc điều kiện giảm acceptance.
-
-   | Việc còn lại | Lượt KR native dự kiến |
+   | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
-   | Harness tham số hóa đã chạy hai vòng #457 với state waits, hover mới khi về phòng và cleanup sạch; tiếp dùng ma trận cho Shoe/Punch. | 0 lượt riêng; ghép mọi kiểm mới với nhóm item |
-   | Bảng rơi Rust đã cắt và tích hợp qua PR #466: 62 row dương ngoài tập giữ về 0, giữ mọi row nguồn; floor/list2 kiểm kind trước bind. | 0 lượt riêng |
-   | Ma trận Punch đã có bốn hướng, endpoint ngắn/dài/biên/quét về nguồn, ca trước pickup, peer, retirement và reset; selector 2 gộp vào nhóm. Chờ gate/tích hợp. | 0 lượt bổ sung dự kiến; một PR cho cả nhóm Punch |
-   | Hoàn tất ma trận Shoe cho mọi hướng và lớp khoảng cách/corridor còn thiếu, ca bị chặn/không đủ điều kiện, peer và hai vòng/reset. | 2–3 lượt Rust; một PR cho cả nhóm Shoe |
-   | [#457](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/457) đã có native C4 bị từ chối, C0→C1 hợp lệ trên cùng socket, hai vòng/reset/journal; TCP/SQLite kiểm revision/revoke/stale; đã tích hợp qua PR #466. | 0 lượt bổ sung |
-   | Đối chiếu sáu map với tiêu chí 5 và dữ liệu drop mới: spawn, thùng vỡ, item giữ lại rơi/nhặt, hai vòng/reset và ca âm; chỉ chạy lại ô còn thiếu trong ma trận acceptance. | 0–3 lượt gộp nhiều map/roster; không đo lại từng tile hoặc toàn bộ roster đã đạt |
-   | Kiểm ghép client L1 `vi` hiện hành trên Rust theo tiêu chí 8 mới: một map G1, item giữ lại, đăng nhập/phòng/trận và hai vòng/reset. Giữ KR không vá chữ làm chuẩn các phép đo gameplay. | 1 lượt; ghép với kiểm map cuối G1 nếu đủ điều kiện |
-   | Chốt ma trận G1, đồng bộ contract/catalog và audit/checkpoint/issue reconciliation một lần cho mỗi nhóm hoàn chỉnh; gate toàn kho một lần trước merge nhóm. | 0 lượt riêng; chỉ bổ sung native khi ma trận chỉ ra thiếu bằng chứng cụ thể |
+   | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), nối đăng nhập trong game | CP343 có DB M5 cấp session 1P/2P nguyên tử, hai identity trên cùng owner transport, test âm expiry/revoke/EOF/cancellation và native Windows 2P chuyển kênh với đúng hai hồ sơ DB mới. Cleanup thu hồi cả hai session. Adapter hiện dừng sau chuyển kênh; chưa là sảnh/phòng/trận hay listener public. Tiếp theo: khách → companion TLS trước đăng nhập có giới hạn (báo chủ dự án rà mã) → phòng/trận/ván mới → launcher, quản lý account và ba ngôn ngữ. Giữ token dự phòng; còn Wine, cài sạch và Internet thật/tải/vận hành. |
+   | Tải/giám sát/soak | Chốt tần suất UDP từ client thật và ngưỡng trước đo, 50 người/8 phòng cùng hai phòng native, rồi 24 giờ tải nền; đo startup failure, bộ nhớ/cổng/phòng. |
+   | Admin/backup/rollback | Audit thao tác admin, snapshot khi live và restore vào máy sạch/native trận mới, kill/restart và nâng cấp/quay lại binary. |
+   [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
+   [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ.
+   Checkpoint mới dùng `pack_evidence`/`evidence_runs`; dọn `local/` chỉ bằng plan/hash được chủ dự án duyệt.
+   Không đụng `tools/export_map_profile.py`.
 
-   Đo trực tiếp trên Rust có instrumentation; Python reference chỉ dùng để tách sai khác cụ thể. Không mở thêm PR theo
-   từng selector/hướng/khoảng cách. Raw lớn giữ ở `local/`, repo giữ hash và tóm tắt. Gate chạy ở checkout riêng;
-   trong lúc gate chạy vẫn làm phần tĩnh và native của nhóm sau trong worktree riêng, giữ lease Wine luân phiên với L1.
-   Checkpoint mới dùng `pack_evidence` và `evidence_runs` theo #468; không ghi danh sách raw vào repo. Dọn `local/` chỉ bằng plan/hash được chủ dự án duyệt theo #469. Không đụng `tools/export_map_profile.py`.
-   **Xen giữa các lát G1: L1 vá UTF-8** cho client 00967 ([quyết định](evidence/owner-directives/l10n-utf8-now.json);
-   [Claude được chủ dự án giao tiếp L1](evidence/owner-directives/l10n-claude-owner.json), mốc trước của Codex ở
-   [partial/blocker](evidence/l10n-utf8-l1a-review.json)). L1 **đạt một phần** (CP310): chọn
-   [mã nội bộ 949x](content/client-language.md#utf8), dữ liệu UTF-8 đổi sang 949x lúc mở game, hook IAT chuyển mã và nhập
-   liệu; native đã hiện Việt, Anh, Hàn, chữ trộn ở tên phòng và gõ được Việt/Hàn ở chat. Còn: tiệm và chat chuyển tiếp phía
-   server, sửa tên phòng cần cờ email, tên phòng tiếng Việt quá 22 byte, ảnh chưa dịch, IME Hàn thật. Chữ server gửi, chat
-   chuyển tiếp, tiệm và IME Hàn thật [để sau giai đoạn 1](evidence/owner-directives/l10n-utf8-followup.json); ảnh khác shape,
-   chuỗi cứng trong exe, chat bị cắt và gõ tên phòng làm tiếp ngay. Runtime Wine luân phiên với G1.
-2. **M8**: gồm đường triển khai Internet thật của companion xác thực, cấu hình/đóng gói, 50 người/8 phòng và chạy dài.
-   N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet. [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có actual native59 rồi hai vòng/reset. [Issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ; không gọi schema đã đo là toàn protocol59.
+   **Lưu trữ M8:** đã dọn 477 file dùng một lần thuộc 80 lượt cũ bằng công cụ sau PR #486 và đúng hash kế hoạch;
+   `/home` trống từ 270,12 GB lên 350,16 GB (tăng 80,04 GB). Bằng chứng, 2.397 evidence manifest, đầu vào dùng lại,
+   chuỗi backing và overlay mới nhất cần tiếp tục được giữ. Harness đã nối tự dọn overlay/seed sau xác nhận VM dừng
+   và xuất bằng chứng, có manifest/hash và guard tham chiếu; 13 ca kiểm an toàn cùng control qcow2/FAT thật đã đạt. Lượt Windows mới đã tự xóa overlay/seed, giữ log/capture
+   và dump cần truy lifetime; lỗi guard Docker trước VM có receipt thất bại và phục hồi riêng. Dump chưa trích thông tin hoặc stop/export chưa xác nhận được giữ để phục hồi.
+   Các lượt mới theo [quy định sau lượt chạy](evidence/owner-directives/run-cleanup.json).
+
+   **L1 vẫn do Claude phụ trách.** Codex chỉ dùng outputs `vi` đã tạo cho smoke G1, không tiếp RE/runtime L1.
+   Giới hạn L1 trước đây ở [chỉ đạo follow-up](evidence/owner-directives/l10n-utf8-followup.json) giữ provenance;
+   ca vi/ko cùng phòng đọc tên phòng/nhân vật/chat có dấu nay thuộc M8 theo [chỉ đạo mới](evidence/owner-directives/m8-multilang-launcher.json).
+   Tiệm và IME Hàn thật ngoài ca M8 vẫn giữ phạm vi sau. Codex dùng outputs L1 đã tạo, không tiếp nhánh RE L1 của Claude.
+   Runtime Wine tiếp tục dùng lease chung; smoke G1 không tự đóng L1.
 
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
+
+- Gate local/history đã đạt trên `ffc2ec1`: 580.279 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
+  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP342 có hai hồ sơ và chuyển kết nối kênh
+  trên bản tương thích riêng; gate công bố mới chờ chạy. Parser/projection chưa nối listener, DB/guest/prelogin TLS và M8 vẫn mở.
 
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite
@@ -80,7 +81,7 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
   active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
 - Factory07/Village10 đã có native chọn UI, basic hai ván/reset/ván tiếp và journal map. Các route terrain/item
-  đã đo có giới hạn tại contract từng map; Factory07 có route 2/4/8 và Glass control, còn coverage theo acceptance. Không suy map
+  đã đo có giới hạn tại contract từng map; Factory07 có route 2/4/8 và Glass control, acceptance G1 theo các route đã đo. Không suy map
   đã mở hoàn chỉnh từ UI/basic hoặc một route. Village10/Tomb12 có 6 spawn; theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json),
   nghiệm thu hai map này cho 2–6 người, bốn map còn lại cho 2–8 người. Gameplay và nội dung vẫn phải đo theo thứ tự đã chốt.
 - Một phép TCP diagnostic rộng có cache positive nhưng timeout ở idle Back/return241 và cleanup wait. Raw/failure
@@ -95,7 +96,6 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
   Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.
 - Điều phối Rust ở [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285); #14 đã được thay thế,
   #369 đã giao. #2, #3 và #9 giữ làm backlog ngoài giai đoạn 1; lỗi khởi động Wine ở #9 được xem lại trong M8.
-
 
 **Quy ước:**
 

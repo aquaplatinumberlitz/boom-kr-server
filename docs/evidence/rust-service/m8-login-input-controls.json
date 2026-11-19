@@ -1,0 +1,72 @@
+{
+  "schema": "kre-m8-login-input-controls-v1",
+  "checkpoint": "CP340",
+  "authorization": "docs/evidence/owner-directives/m8-ingame-login.json",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "summary": {
+    "path": "local/research/codex/m8-ingame-login-input-observer-r1/input-controls-result.json",
+    "bytes": 50588,
+    "sha256": "5a36b2a80ae09674386427d1bf0d8c7a3d18b14992cb4bf6747cad308a6176e2"
+  },
+  "scope": "Owned Windows VM, current ko949x compatibility copy, no token and loopback-only capture. Three configuration/observer controls plus explicit one-byte constructor input-lock copy.",
+  "acceptance": {
+    "existing_no_token_stage": "observed",
+    "ordinary_1p_fields": "observed_only_on_declared_one_byte_copy",
+    "native_1p_credential_packet": "not_observed",
+    "native_2p_credential_packet": "not_observed",
+    "trial_button_packet": "not_observed",
+    "native_db_authentication": "not_implemented"
+  },
+  "findings": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "r47: Return dismissed measured network notice; controls_enable(1), ordinary Confirm -> manual_confirm -> manual_credentials, roster0; valid opcode60 and keepalive15 emitted, no opcode1. Mouse field entry/2P did not change fields/roster."
+    },
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "claim": "Exact current-byte configuration setter1236010 calls122AE30(1) when multiserveridx is present. Constructor web branch sets stage+2FE4=1;1105DE0/10FA9B0 disable edit and roster when field nonzero. No inverse argument in measured setter path; not an exhaustive proof over encrypted configuration."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "r48 empty argv and r49 nonempty inert m8probe:1 both fall back before LoginStage, C000001D at22614AC; no observed input handler or credential frame. Popup auxiliary locale does not attribute main failure."
+    },
+    {
+      "source": "design",
+      "status": "candidate",
+      "claim": "r50 uses explicit one-byte constructor web-lock immediate1->0 on a disposable copy, leaves global web flag/startup/manual reader/auth code unchanged. This is modified-copy evidence, not original behavior."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "r50: automatic_input_lock_2FE4=0; existing1P field visibly accepts synthetic ID and masks password; edit events enable Confirm and ordinary Confirm invokes manual_credentials. Then native Invalid Login! modal appears before any opcode1; closing it is followed by unhandled E06D7363.2P click afterward cannot be counted as native selection."
+    },
+    {
+      "source": "design",
+      "status": "design",
+      "claim": "CP339 evidence did not establish infeasibility or a need for a large patch. Correct earlier overbroad stop interpretation; continue targeted feasibility while retaining production token fallback and deferring dependent launcher/auth changes."
+    }
+  ],
+  "next_hypothesis": "Reuse CP214 builder/body cache: manual fields are populated but global web flag122AE50 remains1 and builder has token/manual branches. Locate Invalid Login! caller/branch and measure numeric path/count without reading passwords or forcing results. Measure2P selection before any fatal1P submission. Do not implement server schema from VN or infer auth acceptance.",
+  "storage": {
+    "vm_deleted_apparent_bytes": 5326372864,
+    "temporary_analysis_cleanup": {
+      "path": "local/research/codex/m8-ingame-login-input-observer-r1/analysis-temporary-cleanup.json",
+      "bytes": 2702,
+      "sha256": "6889f9bbccecfafbba304a45a3b6cbde6473bc2954823e9e107efcc7a5b92a02"
+    },
+    "earliest_cleanup_available_bytes": 403022295040,
+    "final_available_bytes": 404177731584,
+    "limits": "Earliest snapshot is before r47 cleanup, not launch. Apparent file sizes include sparse/reflink data; free-space delta includes shared activity."
+  },
+  "limits": [
+    "Four owned Windows runs; loopback only, collector sends hello/WCP and no auth success. No production account/launcher/L1 source changes.",
+    "Read-only numeric observer includes software breakpoints and can perturb timing. One-byte copy mutation is separate, explicit and rollbackable.",
+    "r47 report failed at debugger/taskkill cancellation race; r50 native fatal preserved; no pass reclassification.",
+    "No complete1P/2P/trial feasibility, schema, original packed behavior, Internet acceptance or M8 closure."
+  ],
+  "preserved": "Production launcher/account authentication and original client/pack remain unchanged; keep token fallback. Prior CP339 and its raw/manifests are immutable."
+}

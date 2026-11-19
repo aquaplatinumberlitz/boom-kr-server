@@ -1,0 +1,60 @@
+{
+  "schema": "kre-m8-account-name-encoding-v1",
+  "source": "design",
+  "status": "design",
+  "scope": "WIP issue476, UTF8 to patched949x; single Windows vi room and ko lobby names observed, same-room cross-language acceptance open",
+  "canonical": "docs/protocol/auth-session.md#rust-patched-account-names",
+  "policy": {
+    "storage": "UTF-8, exact codepoints",
+    "wire": "949x VERSION=1, strict",
+    "native_default": "ASCII admission",
+    "patched_opt_in": "account_admission.patched_949x_names=true with database_zero",
+    "native_name_bytes": "3..15",
+    "login": "ASCII3..32 unchanged"
+  },
+  "verified_scope": [
+    "Strict encode/decode equals owner Python reference for all19451 encodable Unicode scalars; all2275 extension slots roundtrip, cp949 collisions absent.",
+    "Store persists UTF8; names bounded3..15 encoded bytes, invalid/unsupported/control/whitespace rejected; account login remains ASCII.",
+    "Default bridge denies nonASCII and drops failed issue; explicit patched policy accepts Vietnamese/Korean; channel name-only forgery, repeated claim, revoke, old/current generation fences retain exact owner.",
+    "Native byte lengths and both names preserved across auth4/own291/card106 projections using independently captured ASCII base templates; this is codec regression, not Unicode native acceptance.",
+    "Real TCP/SQLite with three newly created mixed names on one transport IP: room title/card106/character/team choices, journal under writer pressure, result/reset, sparse next round and old key rejection; final source guard passed.",
+    "Default ASCII same harness completed room/journal/reset/next-round regression with source guard unchanged."
+  ],
+  "verification": [
+    {
+      "path": "local/research/codex/m8-player-names-949x-r1/summary.json",
+      "bytes": 7078,
+      "sha256": "dd1f19e70c8574bc7b6870373172f59cc710fb4436237cfb6e1622b34cda15fa"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
+    }
+  ],
+  "limits": [
+    "Initial TCP/reference name tests used no native. Native vi account/room and waiting-room chat are separately observed; standalone ko lobby rendersViệt01. No same-room vi/ko cross-language acceptance.",
+    "Waiting-room chat forwarding and one native vi rendering are recorded in m8-room-chat-contract.json; native cross-language same-room chat remains open.",
+    "No NFC normalization or automatic encoding negotiation/fallback. Only explicitly patched deployment may enable949x names."
+  ],
+  "retained_failures": [
+    "Initial Clippy failed chunks_exact_to_as_chunks lint; changed to as_chunks and final Clippy passed.",
+    "First TCP assertions completed but outer exit1 from source guard: concurrent test-source edit. Inner early pass is not accepted. Raw preserved; harness now writes source guard into result before serialization; second run exit0 and changed_sources[]."
+  ],
+  "native_vi": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
+    },
+    "scope": "Single Việt01 DB-owned profile in Windows vi lobby/room and leave return over Internet",
+    "limits": "Native UI exit failed on unserved literal lobby79; no ko/cross-language/match/final package closure."
+  },
+  "standalone_ko_name_observation": {
+    "path": "local/research/codex/m8-pair-controller-control-r4/ko-alone-control-r39.json",
+    "bytes": 2449,
+    "sha256": "f9747935c583480d982264ad07ab1baa18e169a4fc689d610c7ea4b4f1bccd10"
+  }
+}

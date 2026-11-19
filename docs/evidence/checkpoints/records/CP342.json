@@ -1,0 +1,460 @@
+{
+  "id": "CP342",
+  "previous": "CP341",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-19T01:28:19.455616+00:00",
+  "context_commit": "3c7a2b86a230231650106776222db5767a28cc16",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Client có tiêu thụ đúng hai hồ sơ sau request đăng nhập tay và điều kiện từng slot nào chặn chuyển kênh?",
+  "scope": "Grouped count2 profile and bounded handoff investigation only; M8 authentication feature remains partial. No DB authority, room, guest or TLS admission certification.",
+  "artifacts": [
+    {
+      "name": "manual-route-private-ko949x",
+      "sha256": "e5d5fe75a5dabf3e2b702a76ef5702872a847759bd95d65b6732fda579e5b301"
+    }
+  ],
+  "locators": [
+    "10FD540/10FED80 reads242/242 with errors0;13B09E0 slots0/1 IDs1/2",
+    "1104410 manual modal target15037F7;11044A7 returns3 after1100590 ownedwait1",
+    "1103BB0/1107B00 setupsuccess;11075F0 loops local slots;D88280/13B27E0 per-slot status",
+    "r55..r60: ordinary UI2P, loopback diagnostic reply; unchanged seven-byte compatibility copy"
+  ],
+  "findings": [
+    {
+      "summary": "Two synthetic local profiles are consumed242/242/errors0 and set distinct native IDs; current-byte cache matches independently retained per-player layout.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+      "evidence": [
+        "LOCAL342-0001",
+        "LOCAL342-0002"
+      ],
+      "limits": "Declared modified copy and diagnostic profiles only; credentials are not authenticated or mapped to these IDs."
+    },
+    {
+      "summary": "Manual modal returns3 and stage setup succeeds; one slot0 notification leaves second player predicate0/0. Two-slot control and natural handoff results are retained separately.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+      "evidence": [
+        "LOCAL342-0001",
+        "LOCAL342-0003"
+      ],
+      "limits": "Per-run observations only; status historical meaning and complete channel/profile semantics remain unknown."
+    },
+    {
+      "summary": "Native request6 on fresh channel carries two measured names/IDs with69byte body and independent sequence40; cached serializer matches current executable.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+      "evidence": [
+        "LOCAL342-0004",
+        "LOCAL342-0001"
+      ],
+      "limits": "ASCII7 names and optional-string-off only; echo0 is not a credential or proof of account ownership."
+    },
+    {
+      "summary": "Rust projects bounded one/two login profiles with nonzero distinct identities; fixture matches the exact native-consumed reply. Diagnostic collector requires complete frames and pinned ordered continuations.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+      "evidence": [
+        "LOCAL342-0005",
+        "LOCAL342-0006",
+        "LOCAL342-0007",
+        "LOCAL342-0008"
+      ],
+      "limits": "Library and diagnostic tooling only; no listener or DB account grant is connected."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Retained native frames CRC/sequence checked, exact callback/IDs and collector stopped; VM/service/rules stop and overlay/seed cleanup confirmed for every grouped run.",
+      "result": "pass",
+      "evidence": [
+        "LOCAL342-0001"
+      ],
+      "limits": "Harness cancellation is not native logout; no backend or M8 closure inferred."
+    },
+    {
+      "check": "Full workspace fmt, Clippy -D warnings and tests passed for unchanged Rust projection source; final22 tool tests and C observer Wall/Wextra/Werror compile passed.",
+      "result": "pass",
+      "evidence": [
+        "LOCAL342-0005",
+        "LOCAL342-0006"
+      ],
+      "limits": "Source/regression verification, not native authentication acceptance."
+    },
+    {
+      "check": "Real isolated collector controls enforce fragmented first frame, no early redirect, ordered exact fixtures, no duplicates and final stopped receipt, including both slots.",
+      "result": "pass",
+      "evidence": [
+        "LOCAL342-0007"
+      ],
+      "limits": "Own loopback namespace with synthetic requests, independent of native execution."
+    },
+    {
+      "check": "Frozen publication local/history gate for CP342.",
+      "result": "pending",
+      "evidence": [
+        "LOCAL342-0008"
+      ],
+      "limits": "Run after commit; previous CP341 receipt does not verify this publication."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native two-profile consumer evidence, bounded per-slot handoff observations and reusable diagnostic controls.",
+      "Rust login-reply projection for one or two distinct identities."
+    ],
+    "corrected": [
+      "The automatic wait site1107412 is not the manual route wait; r58 measures actual11044A7.",
+      "The old single-slot status continuation cannot release both local players."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "No DB authentication or atomic two-account publication on one transport yet.",
+    "Count2 channel ownership/profile, guest reply, rate bounds, TLS prelogin and native full flow remain open."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-M8-INGAME-AUTH-SERVING",
+      "task": "KRE-074",
+      "state": "active",
+      "owner": "Codex",
+      "reviewer": "Codex",
+      "action": "Follow the measured count2 channel request; bind two DB principals atomically to one transport with revocation/expiry/disconnect fencing. Add guest and bounded prelogin TLS before launcher/account-management/redesign/translations."
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-19T01:28:19.455616+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo/self-check; authentication group incomplete, no new group audit claimed.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Chủ dự án cho Codex solo và miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Protocol index unchanged; topic contract updated."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    },
+    {
+      "path": "docs/evidence/rust-service/m8-login-local-profiles.json",
+      "state": "updated",
+      "reason": "Đồng bộ hồ sơ2P, bằng chứng chuyển kênh và giới hạn DB/TLS còn mở."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LOCAL342-0001",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/profile-native-verification.json",
+      "bytes": 60767,
+      "sha256": "1ce77d00784bfac7b46a8cd94789a4f8bc585cb44b0d91ca534a704a8fbb5bb1"
+    },
+    {
+      "id": "LOCAL342-0002",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/handoff-byte-comparison.json",
+      "bytes": 2205,
+      "sha256": "326411a36369510848223e47f5bf2862ffeed6875aa886a60c49562b8c32e50d"
+    },
+    {
+      "id": "LOCAL342-0003",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/two-slot-flags-source-reuse.json",
+      "bytes": 857,
+      "sha256": "89a4170fae1bf0e78bb665903100ef32fddbe54db0b905e4c79d6bd32b26cd0e"
+    },
+    {
+      "id": "LOCAL342-0004",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/channel-count2-observation.json",
+      "bytes": 1560,
+      "sha256": "c46bf95c6e5d7fd1818f0632781ddea85054c8af182e7a3846f76dd27f415596"
+    },
+    {
+      "id": "LOCAL342-0005",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/implementation-checks.json",
+      "bytes": 1834,
+      "sha256": "374caa4b0c05c4c41dd80b7dbd12431ac5d53351fd57db75fb6b5df21a177919"
+    },
+    {
+      "id": "LOCAL342-0006",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/final-profile-tool-checks.json",
+      "bytes": 1495,
+      "sha256": "047d642a71265a5276a24e606507f9b565f9f0dcb17a8e87320b6ee4d2fbe179"
+    },
+    {
+      "id": "LOCAL342-0007",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-profile-two-flags-control-r4/verification.json",
+      "bytes": 722,
+      "sha256": "e32e5613fc44a6f225af82eca947f77ddfc0341463f7d7fd54814bb2b319c7ae"
+    },
+    {
+      "id": "LOCAL342-0008",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m8-login-local-profiles.json",
+      "bytes": 5010,
+      "sha256": "cc90c5acb2d6d10cd91a18c8d9ccc9d4aa3240fda9cca2de84d301710b27a69c"
+    },
+    {
+      "id": "LOCAL342-0227",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 3980,
+      "sha256": "d77d9c7a9bd9075a83280f34440b2d517e50781394fe35a03868078b31899292"
+    },
+    {
+      "id": "LOCAL342-0228",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 88069,
+      "sha256": "59e9bceb2aa53dd56545190554332d8d01c13dcc6039e3d971d90b5563eca7f9"
+    },
+    {
+      "id": "LOCAL342-0229",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68646,
+      "sha256": "a15c17c05c5ed6e4d56fc249a3d9b8cb526b7dae0ab6ea01580e13fa23315311"
+    },
+    {
+      "id": "LOCAL342-0230",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 102898,
+      "sha256": "097a4263fb71a1beb1150b48e271662117b6da8f154ccc0d74eb24005047fb66"
+    },
+    {
+      "id": "LOCAL342-0231",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 47003,
+      "sha256": "bcaf323abde429d0ab7c356643468b56ff09e86efc095bef08c90517c504d173"
+    },
+    {
+      "id": "LOCAL342-0232",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 174536,
+      "sha256": "259168a5a27d93b7690ee7483b11f99381b4b06f119a0e01c5449c51434900b7"
+    },
+    {
+      "id": "LOCAL342-0233",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 285910,
+      "sha256": "13389414a3f5504428bf59765a746f71d097ea4cdb29b595022c100643cbde82"
+    },
+    {
+      "id": "LOCAL342-0234",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 273524,
+      "sha256": "a310d4ead6750e9ffe8bbf91ce89acbac06706308cb67a89bd3757557d013b24"
+    },
+    {
+      "id": "LOCAL342-0235",
+      "kind": "repository",
+      "path": "tools/native_windows_multilang.py",
+      "bytes": 43111,
+      "sha256": "44ca0489c887be92925b314d85a94a1c94c184216619a9e462cbce4aa47fc1c4"
+    },
+    {
+      "id": "LOCAL342-0236",
+      "kind": "repository",
+      "path": "tools/native_windows_multilang.ps1",
+      "bytes": 14970,
+      "sha256": "946e164087b540c06c080743a6c831791217ee179263a17b4b3a78a100b5395c"
+    },
+    {
+      "id": "LOCAL342-0237",
+      "kind": "repository",
+      "path": "tools/native_windows_socket_probe.c",
+      "bytes": 30996,
+      "sha256": "bd689b3c4affd67158aa9c8c36f1994d25816667ec04d7ea1529fa9c9f913884"
+    },
+    {
+      "id": "LOCAL342-0238",
+      "kind": "repository",
+      "path": "tools/native_login_profile_control.py",
+      "bytes": 7846,
+      "sha256": "6a4087cce8064e2859e71fc1b305917cbe3509599d496f908a219b73fd9c2ec3"
+    },
+    {
+      "id": "LOCAL342-0239",
+      "kind": "repository",
+      "path": "tools/test_native_login_profile_control.py",
+      "bytes": 4718,
+      "sha256": "6fbd21bb37779f12a521e574653efd596d602fd2621f85bb11c70936cc12a4b4"
+    },
+    {
+      "id": "LOCAL342-0240",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "bytes": 6697,
+      "sha256": "dd52e3c44339de702246560c5b255e02655ca64ad1d285b19968ddc5402c7e81"
+    },
+    {
+      "id": "LOCAL342-0241",
+      "kind": "repository",
+      "path": "rust/crates/kr-wire/tests/native_account_profiles.rs",
+      "bytes": 6185,
+      "sha256": "dea7aa0c96c84dc3654ca345523f3e0a71bec4af3c285d7a70205c03e5e263de"
+    },
+    {
+      "id": "LOCAL342-0242",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/m8-ingame-login.json",
+      "bytes": 4764,
+      "sha256": "966d5ca87d9d07e2191df94800c4440130e21fec9dacec978ac88ca1f0c352a0"
+    },
+    {
+      "id": "LOCAL342-0243",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/run-cleanup.json",
+      "bytes": 3287,
+      "sha256": "1ed6444c27654c10f9873b4615f10239d2056d41ed5575ba6558d3af80549a06"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/m8-ingame-auth-serving-r1",
+      "path": "local/evidence-manifests/67d008b858c359e9289ba2b2702029aaa9662741c0585a839329957bd60a0d81.jsonl",
+      "sha256": "67d008b858c359e9289ba2b2702029aaa9662741c0585a839329957bd60a0d81",
+      "bytes": 8348,
+      "count": 40,
+      "files_bytes": 94090
+    },
+    {
+      "run": "local/research/codex/m8-ingame-profile-capture-control-r2",
+      "path": "local/evidence-manifests/0580d1dcb3a119a5ca793fecb0ce6cfbadb825815a1e75c580704ba982b37e88.jsonl",
+      "sha256": "0580d1dcb3a119a5ca793fecb0ce6cfbadb825815a1e75c580704ba982b37e88",
+      "bytes": 1793,
+      "count": 8,
+      "files_bytes": 17242
+    },
+    {
+      "run": "local/research/codex/m8-ingame-profile-flow-control-r3",
+      "path": "local/evidence-manifests/b7e1312f8f7c28ab17fee3345814aa204b02048d7fa78f798279fb83a8f0b989.jsonl",
+      "sha256": "b7e1312f8f7c28ab17fee3345814aa204b02048d7fa78f798279fb83a8f0b989",
+      "bytes": 2359,
+      "count": 11,
+      "files_bytes": 20113
+    },
+    {
+      "run": "local/research/codex/m8-ingame-profile-two-flags-control-r4",
+      "path": "local/evidence-manifests/1969db594aa9b680b6f1a7deba7e1ded74a23b1ea809c2a2b1e034a7af5509b6.jsonl",
+      "sha256": "1969db594aa9b680b6f1a7deba7e1ded74a23b1ea809c2a2b1e034a7af5509b6",
+      "bytes": 2411,
+      "count": 11,
+      "files_bytes": 19833
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-profile2-r55",
+      "path": "local/evidence-manifests/787a1f4a81657f6daab7dffff0850e8b1fb0e7f30a6a5ad1aabdb20cb4c11a20.jsonl",
+      "sha256": "787a1f4a81657f6daab7dffff0850e8b1fb0e7f30a6a5ad1aabdb20cb4c11a20",
+      "bytes": 4038,
+      "count": 17,
+      "files_bytes": 82094
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/4a7d24ee65a90f461fbfb63e3ccb041d4e6fecb8e09598f889b75eb554c2970e.jsonl",
+      "sha256": "4a7d24ee65a90f461fbfb63e3ccb041d4e6fecb8e09598f889b75eb554c2970e",
+      "bytes": 4993,
+      "count": 22,
+      "files_bytes": 14561
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-profile2-flow-r56",
+      "path": "local/evidence-manifests/5ac754aebf0e84485a9b648631cfab61662ecc52d7360a43403f996196972735.jsonl",
+      "sha256": "5ac754aebf0e84485a9b648631cfab61662ecc52d7360a43403f996196972735",
+      "bytes": 4114,
+      "count": 17,
+      "files_bytes": 89481
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-profile2-wait-r57",
+      "path": "local/evidence-manifests/febac0ffdce6f7d7252b2c934b996bb9e96af860dd40eabce30bbab423ef2ccf.jsonl",
+      "sha256": "febac0ffdce6f7d7252b2c934b996bb9e96af860dd40eabce30bbab423ef2ccf",
+      "bytes": 4114,
+      "count": 17,
+      "files_bytes": 90204
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-manual-wait-r58",
+      "path": "local/evidence-manifests/2e66ffce398650858f683b91f5d306b13ea6494cb90614b188effa16c7ce74a5.jsonl",
+      "sha256": "2e66ffce398650858f683b91f5d306b13ea6494cb90614b188effa16c7ce74a5",
+      "bytes": 6126,
+      "count": 25,
+      "files_bytes": 1635564
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-after-wait-r59",
+      "path": "local/evidence-manifests/8b40ce25b4c30f8ca575d5d41efa068f287cecab93a46ffa9f6af44dd6c45f08.jsonl",
+      "sha256": "8b40ce25b4c30f8ca575d5d41efa068f287cecab93a46ffa9f6af44dd6c45f08",
+      "bytes": 6087,
+      "count": 25,
+      "files_bytes": 1644406
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-two-slot-flags-r60",
+      "path": "local/evidence-manifests/f1f6c76da674e9dd87cdecea4653db8ad12facb4d48f96017aba7b553a42f3d8.jsonl",
+      "sha256": "f1f6c76da674e9dd87cdecea4653db8ad12facb4d48f96017aba7b553a42f3d8",
+      "bytes": 6165,
+      "count": 25,
+      "files_bytes": 1687774
+    }
+  ]
+}

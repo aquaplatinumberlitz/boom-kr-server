@@ -1,0 +1,439 @@
+{
+  "id": "CP338",
+  "previous": "CP337",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-17T19:13:09.197661+00:00",
+  "context_commit": "52c0fa3717d685ac6d7abb3226e39ca63d47aa6d",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Dựng nền gói server Linux độc lập với repo/local, state riêng, integrity/relocation và runtime x86/ARM, giữ riêng toàn bộ acceptance M8 còn lại.",
+  "scope": "Issue474: package từ binary/recipe/fixture đã pin; không xuất pack, cài sạch đầy đủ, native/Internet hoặc toàn M8.",
+  "artifacts": [
+    {
+      "name": "ARM-release-kr-service",
+      "sha256": "5fc3fbd6878d84d061a9cd7fee5d8a5d43f534fb274a96d61e4594a36f0e406d"
+    }
+  ],
+  "locators": [
+    "docs/OPERATIONS.md#gói-linux-và-state-riêng",
+    "docs/PLAN.md#phase1-acceptance",
+    "docs/evidence/rust-service/m8-server-package.json",
+    "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474"
+  ],
+  "findings": [
+    {
+      "summary": "Builder kiểm ELF64/target Linux GNU cùng kiến trúc, fixture size/SHA, copy/deduplicate thành relative paths; manifest pin path/size/SHA/mode. Runtime kiểm external manifest SHA, tamper/extra file/symlink/traversal và state private ngoài bundle, không copy DB/session.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/OPERATIONS.md#gói-linux-và-state-riêng",
+      "evidence": [
+        "M8P338-0014",
+        "M8P338-0153",
+        "M8P338-0152",
+        "M8P338-0079"
+      ],
+      "limits": "Test/design của công cụ đóng gói; không KR original authority hoặc dữ liệu vừa export từ pack."
+    },
+    {
+      "summary": "Rust1.99.0 locked release build trên ARM thành công; ba binary fetch được kiểm SHA. X86 và ARM Linux độc lập chạy package trong filesystem/network namespace chỉ có host runtime libraries, không mount repo/build workspace/local gốc.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/OPERATIONS.md#gói-linux-và-state-riêng",
+      "evidence": [
+        "M8P338-0073",
+        "M8P338-0151",
+        "M8P338-0072"
+      ],
+      "limits": "ARM positive dùng root-owned task directory và sudo; chưa quy trình service-account production/cài máy sạch đầy đủ."
+    },
+    {
+      "summary": "Cả hai smoke init DB mới, từ chối init lại và giữ hash DB, từ chối runner thứ hai trong khi instance đầu vẫn ready, rồi dừng sạch exit0. Lỗi controller và quyền namespace ban đầu giữ riêng; không thay failure bằng positive.",
+      "source": "design",
+      "status": "design",
+      "method": "test",
+      "canonical": "docs/OPERATIONS.md#gói-linux-và-state-riêng",
+      "evidence": [
+        "M8P338-0151",
+        "M8P338-0072",
+        "M8P338-0077"
+      ],
+      "limits": "Readiness không chứng nhận đăng nhập, native gameplay, companion Internet, tải, restore hoặc soak."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Tám unittest về hash/path/dedupe/target/state/transport và source syntax; CI có thêm module kiểm gói.",
+      "result": "pass",
+      "evidence": [
+        "M8P338-0079",
+        "M8P338-0001"
+      ],
+      "limits": "Fake ELF trong unit tests chỉ kiểm policy; runtime binaries được kiểm riêng."
+    },
+    {
+      "check": "Hai smoke x86/ARM: hide workspaces, DB preservation/lock, readiness/graceful shutdown.",
+      "result": "pass",
+      "evidence": [
+        "M8P338-0151",
+        "M8P338-0072"
+      ],
+      "limits": "Host runtime libraries; ARM harness root-owned, không toàn M8."
+    },
+    {
+      "check": "Docs/catalog/generated coverage/diff và audit nhóm thủ công.",
+      "result": "pass",
+      "evidence": [
+        "M8P338-0074",
+        "M8P338-0011"
+      ],
+      "limits": "Exact-head local/history và CI sau checkpoint/commit vẫn cần trước merge."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Nền gói Linux/manifest/runner/private state, x86 và ARM isolated runtime smoke, tests CI và operations recipe."
+    ],
+    "corrected": [
+      "Readiness controller dùng state thực; ARM namespace positive có root-owned inputs, failure gốc giữ riêng."
+    ],
+    "superseded": []
+  },
+  "blockers": [
+    "G1 integration và exact-head local/history chờ registry dọn evidence lịch sử; không tự restore hoặc tạo prune entries.",
+    "Không còn blocker nội bộ cho nền gói đã đo; toàn M8 còn theo PLAN."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-M8-PLAYER-PACKAGE-INTERNET",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Tiếp launcher public/TLS và player package, Windows VM sớm/Wine qua transport Internet hiện hành; export-pack/cài sạch và tải/ops/soak theo PLAN. Tích hợp sau exact-head gate/CI.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-17T19:13:09.197661+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex self-audit AUD146 nền gói Linux, không M8 closure hoặc independent approval.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Chủ dự án cho Codex solo và miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "AGENTS.md",
+      "state": "unchanged",
+      "reason": "Quy tắc và wire contract không đổi."
+    },
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Quy tắc và wire contract không đổi."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/OPERATIONS.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/evidence/rust-service/m8-server-package.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": ".github/workflows/docs.yml",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "tools/rust_service_package.py",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "tools/rust_package_runtime.py",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "tools/smoke_rust_service_package.py",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "tools/test_rust_service_package.py",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    },
+    {
+      "path": "docs/evidence/checkpoints/audits/AUD146.json",
+      "state": "updated",
+      "reason": "Đồng bộ nền gói Linux, kiểm hai môi trường và giới hạn M8 chưa nghiệm thu."
+    }
+  ],
+  "completed_feature_groups": [
+    "m8-linux-package-foundation"
+  ],
+  "evidence": [
+    {
+      "id": "M8P338-0001",
+      "kind": "repository",
+      "path": ".github/workflows/docs.yml",
+      "bytes": 1234,
+      "sha256": "92e610001ca7f83abd568668124282bfa0993c0c04ed7192d41b02aa9af0fac4"
+    },
+    {
+      "id": "M8P338-0002",
+      "kind": "repository",
+      "path": "AGENTS.md",
+      "bytes": 14970,
+      "sha256": "7b7c572820a203815ea4f62fc7dcf70eb3fcbb7145329e87fe7e183d709960ae"
+    },
+    {
+      "id": "M8P338-0003",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 4067,
+      "sha256": "d2becaee4cd7df27391fd57b83ce8591cf6fc3a6b5f649834b0b9090891596b3"
+    },
+    {
+      "id": "M8P338-0004",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 271046,
+      "sha256": "9cd9a52a5726392227f0a34623a494bc15d2e91152cb0b94013c74b1fd35a69c"
+    },
+    {
+      "id": "M8P338-0005",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 171483,
+      "sha256": "bfc6c842c406fbf0ad9d38c6c182ef9dfa19692cbca338cd9fb4e5d920064f90"
+    },
+    {
+      "id": "M8P338-0006",
+      "kind": "repository",
+      "path": "docs/OPERATIONS.md",
+      "bytes": 7204,
+      "sha256": "4e3876109ebf94d4df19894750f42f6aa78f67fb3dd646c306ca426a4deee1b0"
+    },
+    {
+      "id": "M8P338-0007",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 84934,
+      "sha256": "030a3372eff934ee0e830b9c5ebde81817bbf7f4a55b7624ea1286e7bd012f67"
+    },
+    {
+      "id": "M8P338-0008",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68543,
+      "sha256": "212477cbaddfb0f05f075c7ad64769e1d51f4f5b8456b14b77435a2b1b4f3552"
+    },
+    {
+      "id": "M8P338-0009",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 45922,
+      "sha256": "b6e7cf51385d2cc3c5fe53f0fc74a884303535790dbd33bcab77b5c86710e58d"
+    },
+    {
+      "id": "M8P338-0010",
+      "kind": "repository",
+      "path": "docs/RUST_SERVICE_ARCHITECTURE.md",
+      "bytes": 46204,
+      "sha256": "0bad0d4b9a7453f5c9fc273f82ab617ce7100f51c531a10f5127f434e6443303"
+    },
+    {
+      "id": "M8P338-0011",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD146.json",
+      "bytes": 3163,
+      "sha256": "062be4893548615e5ca304c4cd6105a562164c7e7b578fc63705ef423ae58cb4"
+    },
+    {
+      "id": "M8P338-0012",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/github-snapshot.json",
+      "bytes": 356921,
+      "sha256": "9ddee60df7e41bb50056e81957a270c013d296de69fa0ffcc7a14e9934209d4d"
+    },
+    {
+      "id": "M8P338-0013",
+      "kind": "repository",
+      "path": "docs/evidence/issue-reconciliation/review.json",
+      "bytes": 47507,
+      "sha256": "53272eda6d11e59285137e2487792a26a7f21a9bf56525f0a552ed8f30bee4f1"
+    },
+    {
+      "id": "M8P338-0014",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m8-server-package.json",
+      "bytes": 2756,
+      "sha256": "3e571573e3554279389f1066114d34f8f3859008b2ae90e9e602acd8070b9fc2"
+    },
+    {
+      "id": "M8P338-0015",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 283371,
+      "sha256": "2815658fbb1e90514def94c18bf9322f8c43f36c89c20fdfe2d1b237ddd8845f"
+    },
+    {
+      "id": "M8P338-0072",
+      "kind": "local",
+      "path": "local/research/codex/m8-server-package-arm-smoke-r2.json",
+      "bytes": 710,
+      "sha256": "a684df0cf8110a64707f32e21cff6ea8eda318add7bdb45579d5a7f529356a00"
+    },
+    {
+      "id": "M8P338-0073",
+      "kind": "local",
+      "path": "local/research/codex/m8-server-package-group-r1/arm-build-verification.json",
+      "bytes": 1011,
+      "sha256": "c81faab7242a426d7870d51192bffef5d12a59563db8e2adfde081c289d5f04d"
+    },
+    {
+      "id": "M8P338-0074",
+      "kind": "local",
+      "path": "local/research/codex/m8-server-package-group-r1/docs-final-precheckpoint.log",
+      "bytes": 274,
+      "sha256": "1c9489e4c373c6b9b07af16ba916fa3ff59def4b363ff7aef1175e7ed8857b4f"
+    },
+    {
+      "id": "M8P338-0077",
+      "kind": "local",
+      "path": "local/research/codex/m8-server-package-group-r1/harness-observations.json",
+      "bytes": 1026,
+      "sha256": "04a5fd66f9b450775e0aef18ae84de9d19f50072389b73cd395b757456bb7ba8"
+    },
+    {
+      "id": "M8P338-0079",
+      "kind": "local",
+      "path": "local/research/codex/m8-server-package-group-r1/package-tests.log",
+      "bytes": 106,
+      "sha256": "489d8fec4214192d21ef621f802a943fb57007a29204410d590ff3ceb58c5003"
+    },
+    {
+      "id": "M8P338-0151",
+      "kind": "local",
+      "path": "local/research/codex/m8-server-package-smoke-r4/verification.json",
+      "bytes": 587,
+      "sha256": "ca77c6e0dc0d4571bbb729b808a28dabd134a7f833f542a0ebe3627cc2b2e505"
+    },
+    {
+      "id": "M8P338-0152",
+      "kind": "repository",
+      "path": "tools/rust_package_runtime.py",
+      "bytes": 5349,
+      "sha256": "0ac27c7429f4e9f621ec052105a2d732e7c6cb60434a9b0a33a7b5f9b55a5799"
+    },
+    {
+      "id": "M8P338-0153",
+      "kind": "repository",
+      "path": "tools/rust_service_package.py",
+      "bytes": 5809,
+      "sha256": "b49d9b1e566b5571b0b76dab8e91d9779bab8f924feb1f655e9ac3f088f3fef1"
+    },
+    {
+      "id": "M8P338-0154",
+      "kind": "repository",
+      "path": "tools/smoke_rust_service_package.py",
+      "bytes": 7677,
+      "sha256": "e7e1b22fb8061da3282598a4584a91e229149d1ac19bb837f3a64a0c01118d04"
+    },
+    {
+      "id": "M8P338-0155",
+      "kind": "repository",
+      "path": "tools/test_rust_service_package.py",
+      "bytes": 6132,
+      "sha256": "eead830c8ad45f3a071e13d6534770e9dbf1d5be72ba11d70733dc7da90f81c1"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/m8-server-package-arm-r1",
+      "path": "local/evidence-manifests/30c3599aa1eb9966725cbc827a680a947c93d9903045bbc0fe3d7f7ea2f6eec0.jsonl",
+      "sha256": "30c3599aa1eb9966725cbc827a680a947c93d9903045bbc0fe3d7f7ea2f6eec0",
+      "bytes": 13909,
+      "count": 56,
+      "files_bytes": 17133049
+    },
+    {
+      "run": "local/research/codex/m8-server-package-group-r1",
+      "path": "local/evidence-manifests/727424e6705365a72dcfd20742e987d00d5fa04bcb7398f2b0b3ad6c87411ec8.jsonl",
+      "sha256": "727424e6705365a72dcfd20742e987d00d5fa04bcb7398f2b0b3ad6c87411ec8",
+      "bytes": 690,
+      "count": 3,
+      "files_bytes": 2654
+    },
+    {
+      "run": "local/research/codex/m8-server-package-r2",
+      "path": "local/evidence-manifests/c7deb3ecbebe6377625e9a6e18747b800e9ab086b654d20151cf69e93809e139.jsonl",
+      "sha256": "c7deb3ecbebe6377625e9a6e18747b800e9ab086b654d20151cf69e93809e139",
+      "bytes": 13685,
+      "count": 56,
+      "files_bytes": 266451723
+    },
+    {
+      "run": "local/research/codex/m8-server-package-smoke-r4",
+      "path": "local/evidence-manifests/059b31df3088280184a1430147acb82e8ae2473becca22d05808215bb8edf7c2.jsonl",
+      "sha256": "059b31df3088280184a1430147acb82e8ae2473becca22d05808215bb8edf7c2",
+      "bytes": 3237,
+      "count": 15,
+      "files_bytes": 331438
+    }
+  ]
+}

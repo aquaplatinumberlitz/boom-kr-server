@@ -54,6 +54,11 @@ findings/sửa ở đâu và remaining. Checkpoint hoàn tất nhóm khai `compl
 một audit cùng checkpoint cho nhóm đã khai hoàn tất. PLAN vẫn là nguồn scope/thứ tự, không nhân bản thành plan nhóm riêng.
 Không dùng chạy script thay audit thủ công; checker không tự biết nhóm đã hoàn tất về mặt ngữ nghĩa.
 
+Khi đọc PROTOCOL là chỉ mục, có thể đọc ngay các chương chuẩn `docs/protocol/*.md` liên quan trước khi chuyển
+sang RESEARCH; đó vẫn là một pha đọc PROTOCOL. README, PLAN, PROTOCOL và RESEARCH phải đủ và đúng thứ tự;
+file ngoài chương protocol chen giữa vẫn lỗi. [Đối chứng thứ tự](audit-protocol-order-correction.json) giữ audit
+đã công bố và lỗi validator cũ; không sắp xếp lại audit bất biến để làm kiểm qua.
+
 Mâu thuẫn nghiêm trọng vẫn audit ngay bằng `serious_contradiction`, không tự coi đó là audit hoàn tất nhóm chưa kiểm.
 AUD001 initial và mọi audit/record/raw lịch sử giữ nguyên. `audit_policy` pin chỉ đạo/chuyển tiếp sauCP256;
 `audit_interval`/`next_periodic_audit` hiện là null, `last_periodic_audit=256` chỉ là counter lịch sử.
@@ -121,6 +126,23 @@ Source C và header dưới `tools/` cũng dùng đúng ranh giới publication 
 có đoạn `.`/`..`, file local, artifact, DLL/EXE/object vẫn giữ kiểm strict hiện tại. Declaration, external manifest
 và blob phải khớp tại publication gốc, không nhận source ở commit muộn để cứu pin sai.
 [Đối chứng C source](c-tool-source-correction.json) giữ lỗi phát hiện sau L1 PR433, kiểm âm và giới hạn.
+
+Source PowerShell `.ps1` dưới `tools/` dùng cùng kiểm blob tại publication gốc. Không áp dụng cho script raw
+trong `local/`, dữ liệu, đường dẫn traversal, artifact/binary hoặc `.psm1`. [Đối chứng PowerShell](powershell-source-correction.json)
+giữ pin CP339 khớp chính xác source lúc công bố và lỗi gate trước sửa; blob muộn không cứu được pin sai.
+
+`rust/Cargo.toml`, `rust/Cargo.lock` và `rust/crates/<crate>/Cargo.toml` là đầu vào source của build,
+cũng được đối chiếu đúng blob và declaration tại publication gốc khi file hiện hành đã thay đổi.
+Không mở fallback cho TOML dữ liệu, lockfile khác, output hoặc file local/artifact. Hash sai, manifest
+bằng chứng sai và blob chỉ xuất hiện ở commit muộn vẫn bị từ chối; không sửa record đã khóa.
+[Đối chứng Cargo](cargo-source-correction.json) giữ 23 pin khớp publication, lỗi gate trước sửa và kiểm âm.
+
+### Sửa tham chiếu audit đã công bố
+
+Manifest hiện hành chỉ giữ audit `{id,path,sha256}`. [Đối chứng migration audit](audit-storage-correction.json)
+ghi lỗi writer CP341 đã nhúng toàn AUD147. Kiểm lịch sử chỉ chuẩn hóa được dạng nhúng khi toàn object bằng đúng
+file audit chuẩn trong chính revision đó; file thiếu hoặc khác nội dung vẫn lỗi, không mượn file xuất hiện muộn.
+Tham chiếu vẫn kiểm SHA từng byte và lịch sử vẫn cấm xóa/đổi thứ tự/thay audit. Không sửa record hoặc raw đã công bố.
 
 ## Kho checkpoint v2 và cách đọc chọn lọc
 

@@ -1,0 +1,456 @@
+{
+  "id": "CP341",
+  "previous": "CP340",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-18T17:09:01.996131+00:00",
+  "context_commit": "1790cce0d2121a7a90ce6052539ede8315a91919",
+  "owner": "Codex",
+  "reviewer": "Codex",
+  "question": "Có thể dùng UI LoginStage gốc không token để nhập1P/2P và đo nút chơi thử bằng thay đổi nhỏ có đối chứng không?",
+  "scope": "Complete ownerPR488 step1 feasibility only on explicitly declared small compatibility copies, no large executable rewrite. Production token remains fallback; dependent server/launcher implementation now open but not completed.",
+  "artifacts": [
+    {
+      "name": "manual-route-private-ko949x",
+      "sha256": "e5d5fe75a5dabf3e2b702a76ef5702872a847759bd95d65b6732fda579e5b301"
+    },
+    {
+      "name": "trial-display-private-ko949x",
+      "sha256": "a5ea831dc877c1b47afa621aa5c54f61064fc6afdbebdaf7f5dd32de4bdbbddd"
+    }
+  ],
+  "locators": [
+    "Native r51 count2 manual fields/writer and opcode1; r52 count1; r53 trial1P/2P",
+    "Grouped r54 same native process: manual1P -> observed notice/Return -> trial1P -> observed notice/Return -> trial2P",
+    "13ADE40 web-token literal failure;13AE17C/tag0/manual13AE24A;1104090/11041A0/trialopcode62"
+  ],
+  "findings": [
+    {
+      "summary": "Existing13ADE40 literal Invalid Login! is the token-empty branch when web config is selected. Native manual username/password writer and tag0 branch already exist; no new serializer was implemented in the client.",
+      "source": "kr_static",
+      "status": "confirmed",
+      "method": "static",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
+      "evidence": [
+        "LOGIN341-0001",
+        "LOGIN341-0002",
+        "LOGIN341-0003"
+      ],
+      "limits": "Declared modified ko949x compatibility copies only. Synthetic8byte ASCII credentials/count1/2; packet emission and measured decoding, no DB authentication or M8 closure."
+    },
+    {
+      "summary": "Private copy changes one UI-lock byte plus six bytes in two builder branches to select existing manual route while preserving selected-server startup. Trial display additionally changes six bytes in an existing region display branch. Source/client/pack originals remain untouched; no large exe rewrite, native result forcing or server auth success.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
+      "evidence": [
+        "LOGIN341-0001",
+        "LOGIN341-0004",
+        "LOGIN341-0005"
+      ],
+      "limits": "Declared modified ko949x compatibility copies only. Synthetic8byte ASCII credentials/count1/2; packet emission and measured decoding, no DB authentication or M8 closure."
+    },
+    {
+      "summary": "Ordinary existing UI gives1P opcode1 frame85/body47/prefix0,1 and2P frame105/body67/prefix0,2. All declared8byte synthetic ID/password fields independently decode exactly; count2 uses two original manual-record writer calls. Each uses remaining25byte tail in these runs; semantic tail bounds unknown.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
+      "evidence": [
+        "LOGIN341-0001"
+      ],
+      "limits": "Declared modified ko949x compatibility copies only. Synthetic8byte ASCII credentials/count1/2; packet emission and measured decoding, no DB authentication or M8 closure."
+    },
+    {
+      "summary": "Existing trial1P/2P buttons invoke roster selector,1104090 and11041A0, then send opcode62 frame63/body25. First typed u8 is1/2; remaining24bytes identical within r53. No server authentication response was sent.",
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "method": "runtime",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
+      "evidence": [
+        "LOGIN341-0001"
+      ],
+      "limits": "Declared modified ko949x compatibility copies only. Synthetic8byte ASCII credentials/count1/2; packet emission and measured decoding, no DB authentication or M8 closure."
+    },
+    {
+      "summary": "Owner step1 feasibility achieved within declared modified-copy scope; open dependent server/guest/prelogin and launcher work in owner order. Keep token fallback until end-to-end acceptance; do not equate request emission with account login or M8 closure.",
+      "source": "design",
+      "status": "design",
+      "method": "design",
+      "canonical": "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
+      "evidence": [
+        "LOGIN341-0001",
+        "LOGIN341-0004",
+        "LOGIN341-0005"
+      ],
+      "limits": "Declared modified ko949x compatibility copies only. Synthetic8byte ASCII credentials/count1/2; packet emission and measured decoding, no DB authentication or M8 closure."
+    }
+  ],
+  "verification": [
+    {
+      "check": "Current-byte static builder/trial bodies match; guarded copy recipes keep exact source/result hashes and rollback; no originals changed.",
+      "result": "pass",
+      "evidence": [
+        "LOGIN341-0002",
+        "LOGIN341-0003",
+        "LOGIN341-0004",
+        "LOGIN341-0005"
+      ],
+      "limits": "Small modified-copy behavior, not proof all encrypted configuration paths exhausted or original KR native behavior."
+    },
+    {
+      "check": "Ordinary UI1P/2P opcode1 exact synthetic fields and trial1P/2P opcode62;59 complete frames independently CRC/sequence verified. No authsuccess reply.",
+      "result": "pass",
+      "evidence": [
+        "LOGIN341-0001"
+      ],
+      "limits": "Ownerstep1 feasibility only; length8ASCII/profile/tail limits retained. No DB/guest/account/room acceptance."
+    },
+    {
+      "check": "r51 and groupedr54 collector stopped; all four VM/service stops/export/cloud-rule cleanup confirmed and disposable images removed. r52/r53 missing finalcollector receipt kept explicitly.",
+      "result": "pass",
+      "evidence": [
+        "LOGIN341-0001"
+      ],
+      "limits": "Grouped control corrects finalization coverage, does not rewrite early-stop/failure historical runs; cancellation exit1 is not clean native logout."
+    },
+    {
+      "check": "17 cleanup/PE tests,70checkpoint/source-history tests, observerC compileWall/Wextra/Werror and finaldocs/catalog/diff.",
+      "result": "pass",
+      "evidence": [
+        "LOGIN341-0006"
+      ],
+      "limits": "Regression/tool correctness only; no native auth certification."
+    },
+    {
+      "check": "Previous full gate1790cce:340records,580117evidence,0unavailable,6154authorizedpruned,historytrue,0errors.",
+      "result": "pass",
+      "evidence": [
+        "LOGIN341-0007"
+      ],
+      "limits": "BeforeCP341/source changes; not exact current head or product acceptance."
+    },
+    {
+      "check": "Full repository local/history gate afterCP341 publication.",
+      "result": "pending",
+      "evidence": [
+        "LOGIN341-0001"
+      ],
+      "limits": "Run at frozen publication commit, no CP341 gate claim before result."
+    }
+  ],
+  "delta": {
+    "added": [
+      "Native1P/2P manual credential wire and1P/2P trial request on existing UI; grouped lifecycle control."
+    ],
+    "corrected": [
+      "Web-token builder and UI-lock are distinct; unlock alone not sufficient. Existing manual route selection avoids Invalid Login literal.",
+      "Explicit early owner stop omitted collector finalization in r52/r53; groupedr54 restores final receipt, old failures retained."
+    ],
+    "superseded": [
+      "NEXT-M8-MANUAL-CREDENTIAL-BUILDER: measured request path now supports bounded server implementation."
+    ]
+  },
+  "blockers": [
+    "Full authentication, correct two-account projection and shared transport lifecycle not implemented.",
+    "Guest reply and bounded prelogin companion TLS still missing; token retained until full native acceptance."
+  ],
+  "next_steps": [
+    {
+      "id": "NEXT-M8-INGAME-AUTH-SERVING",
+      "task": "KRE-074",
+      "state": "active",
+      "action": "Implement measured bounded credential/trial parsing; connect M5 DB and two-account ownership on one transport, generic rejection/rate limits; measure count2reply/guestreply gaps. Then bounded TLSprelogin before launcher account screens/redesign/translations.",
+      "owner": "Codex",
+      "reviewer": "Codex"
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-18T17:09:01.996131+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex solo/self-check; group audit is not independent review or M8 closure.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Chủ dự án cho Codex solo và miễn review độc lập."
+    }
+  },
+  "docs_sync": [
+    {
+      "path": "README.md",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    },
+    {
+      "path": "docs/PLAN.md",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "state": "unchanged",
+      "reason": "Topic index unchanged; auth-session contract updated."
+    },
+    {
+      "path": "docs/protocol/auth-session.md",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    },
+    {
+      "path": "docs/RESEARCH.md",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    },
+    {
+      "path": "docs/HISTORY.md",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    },
+    {
+      "path": "docs/features.json",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    },
+    {
+      "path": "docs/COVERAGE.md",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    },
+    {
+      "path": "docs/evidence/rust-service/m8-login-stage-manual.json",
+      "state": "updated",
+      "reason": "Ghi acceptance step1 trong phạm vi copy có patch nhỏ, bounds/failure/cleanup và việc server còn lại."
+    }
+  ],
+  "completed_feature_groups": [
+    "m8-ingame-login-feasibility"
+  ],
+  "evidence": [
+    {
+      "id": "LOGIN341-0001",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-login-builder-r1/feasibility-result.json",
+      "bytes": 146297,
+      "sha256": "a08fda3aeca2640cac033a08e69b2b33fda306295c856a9dba1db695c3906106"
+    },
+    {
+      "id": "LOGIN341-0002",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-login-builder-r1/current-builder-code-comparison.json",
+      "bytes": 917,
+      "sha256": "cb7a7830fe8f15af21a4d99fafbfa63904bd39e7116f848dbc926ca4ba237187"
+    },
+    {
+      "id": "LOGIN341-0003",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-login-builder-r1/current-trial-code-comparison.json",
+      "bytes": 576,
+      "sha256": "1b751adf0b9a11e8fd519b759dd1e15e387eaf73a0da65f434b30fa7c67b74ea"
+    },
+    {
+      "id": "LOGIN341-0004",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-login-builder-r1/manual-route-control.json",
+      "bytes": 1941,
+      "sha256": "00bf0ab0950d694868c243fd4fef47d9575c0614d148c7cb822895cc9a67c56b"
+    },
+    {
+      "id": "LOGIN341-0005",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-login-builder-r1/trial-ui-control.json",
+      "bytes": 1459,
+      "sha256": "bfd27afe729bca6054696cbc8b923a91ac46326ca5631a0840a25d2140e609ed"
+    },
+    {
+      "id": "LOGIN341-0006",
+      "kind": "local",
+      "path": "local/research/codex/m8-ingame-login-builder-r1/source-verification.json",
+      "bytes": 2116,
+      "sha256": "3df21bd51acc8d8a6e0dbee98d90ae3167eb48f040a334b8ad3613c5136b800b"
+    },
+    {
+      "id": "LOGIN341-0007",
+      "kind": "local",
+      "path": "local/research/codex/m8-login-full-gate-r5/result.json",
+      "bytes": 1753,
+      "sha256": "045f518b600054898ee529bc57ee24486638d4ac00993e03423d8d40dc47ba65"
+    },
+    {
+      "id": "LOGIN341-0145",
+      "kind": "repository",
+      "path": "README.md",
+      "bytes": 4021,
+      "sha256": "4c83e8c13d87a99bd331f35bba1fee2b7363b9919ffdd103eb5e480a01a95466"
+    },
+    {
+      "id": "LOGIN341-0146",
+      "kind": "repository",
+      "path": "docs/PLAN.md",
+      "bytes": 87822,
+      "sha256": "97710d2ecdfbc239a5d177e18e7fbaff0cb66e4feb888af5102a18ce3798a8dc"
+    },
+    {
+      "id": "LOGIN341-0147",
+      "kind": "repository",
+      "path": "docs/PROTOCOL.md",
+      "bytes": 68646,
+      "sha256": "a15c17c05c5ed6e4d56fc249a3d9b8cb526b7dae0ab6ea01580e13fa23315311"
+    },
+    {
+      "id": "LOGIN341-0148",
+      "kind": "repository",
+      "path": "docs/protocol/auth-session.md",
+      "bytes": 99635,
+      "sha256": "6d246e3b1eb7c3fa7435ef5a18b4d6a18a356e529554a5293bb8df53ac4cd5ab"
+    },
+    {
+      "id": "LOGIN341-0149",
+      "kind": "repository",
+      "path": "docs/RESEARCH.md",
+      "bytes": 46685,
+      "sha256": "ce968f966bd5c07f907b129154a6be663e7b67f4384d43d4797cc26b82d1254c"
+    },
+    {
+      "id": "LOGIN341-0150",
+      "kind": "repository",
+      "path": "docs/HISTORY.md",
+      "bytes": 173638,
+      "sha256": "8b4b8e9e7f27d50cd8dc6199c2803a3311b6127d8d11c0bf2b25f20d137e9f42"
+    },
+    {
+      "id": "LOGIN341-0151",
+      "kind": "repository",
+      "path": "docs/features.json",
+      "bytes": 285528,
+      "sha256": "e7c656ae762dcd6d2cf95819f58fae20894ee351ca4599d21a74573cfc862691"
+    },
+    {
+      "id": "LOGIN341-0152",
+      "kind": "repository",
+      "path": "docs/COVERAGE.md",
+      "bytes": 273141,
+      "sha256": "089f1db94d51e1f12978c8b0929a81cc26f19f4b02f4d0ecfeaccec6d00128e3"
+    },
+    {
+      "id": "LOGIN341-0153",
+      "kind": "repository",
+      "path": "docs/evidence/rust-service/m8-login-stage-manual.json",
+      "bytes": 6417,
+      "sha256": "cd80123cb792a702fca1f97cacd60496fd51152fed37a9d4225ca97b2992b217"
+    },
+    {
+      "id": "LOGIN341-0154",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/powershell-source-correction.json",
+      "bytes": 2080,
+      "sha256": "12171925de447ca366db810b9dfcbfdbac6353ec2eda53ebecb1d8b8b6476534"
+    },
+    {
+      "id": "LOGIN341-0155",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/README.md",
+      "bytes": 29082,
+      "sha256": "2b10cdfdcdf09257cb1c708342c053544e70e137f460e79b132b3b8437c037a6"
+    },
+    {
+      "id": "LOGIN341-0156",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/m8-ingame-login.json",
+      "bytes": 4764,
+      "sha256": "966d5ca87d9d07e2191df94800c4440130e21fec9dacec978ac88ca1f0c352a0"
+    },
+    {
+      "id": "LOGIN341-0157",
+      "kind": "repository",
+      "path": "docs/evidence/owner-directives/run-cleanup.json",
+      "bytes": 3287,
+      "sha256": "1ed6444c27654c10f9873b4615f10239d2056d41ed5575ba6558d3af80549a06"
+    },
+    {
+      "id": "LOGIN341-0158",
+      "kind": "repository",
+      "path": "tools/native_windows_multilang.ps1",
+      "bytes": 14591,
+      "sha256": "458418369c54c6344855bcc06039d348a3946d04f1f8010785c6494914fda6c8"
+    },
+    {
+      "id": "LOGIN341-0159",
+      "kind": "repository",
+      "path": "tools/native_windows_socket_probe.c",
+      "bytes": 24867,
+      "sha256": "a4c7214a789043c268815b036f8b8e0e1b3075e66cec15d0516b61bb5aad363f"
+    },
+    {
+      "id": "LOGIN341-0160",
+      "kind": "repository",
+      "path": "tools/check_checkpoints.py",
+      "bytes": 50496,
+      "sha256": "019d9b22b502f9449867a8b9ccaf1837beecb273b6e7b4831b1bbbd24c2a3a59"
+    },
+    {
+      "id": "LOGIN341-0161",
+      "kind": "repository",
+      "path": "tools/test_checkpoint_source_history.py",
+      "bytes": 22160,
+      "sha256": "2267ff0879b01a9938220269fd369b75a0b3a511cb4cdaec3d2a0a0801e2d0d6"
+    },
+    {
+      "id": "LOGIN341-0162",
+      "kind": "repository",
+      "path": "docs/evidence/checkpoints/audits/AUD147.json",
+      "bytes": 4578,
+      "sha256": "7c6c9be87827cd4fa213c1b5e695c64a0e13daf1e7db313b0e9aa6540974783a"
+    }
+  ],
+  "evidence_runs": [
+    {
+      "run": "local/research/codex/m8-ingame-login-builder-r1",
+      "path": "local/evidence-manifests/366fe10afb89e89a8765d262f843c13e37e73f81774446d09c007e883c181f5f.jsonl",
+      "sha256": "366fe10afb89e89a8765d262f843c13e37e73f81774446d09c007e883c181f5f",
+      "bytes": 5680,
+      "count": 27,
+      "files_bytes": 68274
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-manual-route-r51",
+      "path": "local/evidence-manifests/0e5d0773d371c7f601e6d63281b77e132bd337d58785e9a215db9cb1d150a681.jsonl",
+      "sha256": "0e5d0773d371c7f601e6d63281b77e132bd337d58785e9a215db9cb1d150a681",
+      "bytes": 5784,
+      "count": 24,
+      "files_bytes": 1592352
+    },
+    {
+      "run": "local/research/codex",
+      "path": "local/evidence-manifests/a1b2482d1cf661b8e460d031a30403f25d96b426223e6126e4dc35108d4441a7.jsonl",
+      "sha256": "a1b2482d1cf661b8e460d031a30403f25d96b426223e6126e4dc35108d4441a7",
+      "bytes": 2736,
+      "count": 12,
+      "files_bytes": 8223
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-manual1p-r52",
+      "path": "local/evidence-manifests/cbf5931d142fef4ccb44c8ca9a14ed2e461e46c51ddd03d1c0ae3b79808f3afd.jsonl",
+      "sha256": "cbf5931d142fef4ccb44c8ca9a14ed2e461e46c51ddd03d1c0ae3b79808f3afd",
+      "bytes": 5220,
+      "count": 22,
+      "files_bytes": 1581114
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-trial-r53",
+      "path": "local/evidence-manifests/8072de3aeaf620b8cf59130a03095dd9dc119185ad8ff5d5bf7d6f22528e3ce3.jsonl",
+      "sha256": "8072de3aeaf620b8cf59130a03095dd9dc119185ad8ff5d5bf7d6f22528e3ce3",
+      "bytes": 5064,
+      "count": 22,
+      "files_bytes": 1912190
+    },
+    {
+      "run": "local/research/codex/m8-multilang-windows-native-login-grouped-r54",
+      "path": "local/evidence-manifests/1ca89d044b8f83c4287352786d84356a31210d229cf41985adfb7bad69d2cdeb.jsonl",
+      "sha256": "1ca89d044b8f83c4287352786d84356a31210d229cf41985adfb7bad69d2cdeb",
+      "bytes": 7161,
+      "count": 30,
+      "files_bytes": 3963813
+    }
+  ]
+}

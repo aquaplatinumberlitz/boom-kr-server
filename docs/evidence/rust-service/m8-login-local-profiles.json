@@ -1,0 +1,96 @@
+{
+  "schema": "kre-m8-local-profiles-v1",
+  "checkpoint": "CP342",
+  "baseline": "3c7a2b86a230231650106776222db5767a28cc16",
+  "source": [
+    "kr_runtime",
+    "kr_static",
+    "design"
+  ],
+  "status": "partial",
+  "build": "KR00967 ko949x compatibility copy",
+  "native_sha256": "e5d5fe75a5dabf3e2b702a76ef5702872a847759bd95d65b6732fda579e5b301",
+  "contract": "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+  "authorization": "docs/evidence/owner-directives/m8-ingame-login.json",
+  "findings": [
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "UI2P opcode1 followed by synthetic S4 count2: callback reads242/242/errors0 and native slots0/1 receive IDs1/2. Layout13byte common prefix, two105byte player records and19byte shared tail for the measured7byte names."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "Manual modal1104410/target15037F7 returns3 at11044A7; netinfo1100590 sees ownedwait1. Setup1107B00 completes. Single-slot62 leaves second player predicate0/0; notifying both existing slots withstatus2 releases natural C2S5."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "r60 opens fresh channel connection and emits C2S6 seq40/frame107/body69: count2, KRLocal/ID1 and KRGuest/ID2, echo0 each. Cached producer/serializer byte hashes match current executable."
+    },
+    {
+      "source": "design",
+      "status": "design",
+      "claim": "Rust login reply projection supports one/two distinct nonzero identities. Explicit pinned loopback diagnostic collector sends profile only after complete request and ordered bounded continuation fixtures; default collector and production listener unchanged."
+    }
+  ],
+  "verification": {
+    "native_runs": 6,
+    "crc_sequence_verified_frames": 147,
+    "all_collectors_stopped": true,
+    "all_vm_service_rules_stopped": true,
+    "all_overlay_seed_cleaned": true,
+    "rust": "Workspace fmt, Clippy -D warnings and tests passed; unchanged Rust bytes since those checks.",
+    "tools": "22 regression tests and C observer Wall/Wextra/Werror compile passed; real isolated complete-frame/order/duplicate controls passed including second-slot notification.",
+    "publication_gate": "Pending frozen CP342 publication; prior CP341 full gate does not verify this head."
+  },
+  "storage": {
+    "overlay_seed_deleted_apparent_bytes": 8065449984,
+    "private_analysis_copy_deleted_bytes": 410902187,
+    "limits": "Apparent removed bytes differ from actual free-space change; sparse/shared extents and concurrent host work. Per-run before/after receipts retained."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/profile-native-verification.json",
+      "bytes": 60767,
+      "sha256": "1ce77d00784bfac7b46a8cd94789a4f8bc585cb44b0d91ca534a704a8fbb5bb1"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/handoff-byte-comparison.json",
+      "bytes": 2205,
+      "sha256": "326411a36369510848223e47f5bf2862ffeed6875aa886a60c49562b8c32e50d"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/channel-count2-observation.json",
+      "bytes": 1560,
+      "sha256": "c46bf95c6e5d7fd1818f0632781ddea85054c8af182e7a3846f76dd27f415596"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/two-slot-flags-source-reuse.json",
+      "bytes": 857,
+      "sha256": "89a4170fae1bf0e78bb665903100ef32fddbe54db0b905e4c79d6bd32b26cd0e"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/implementation-checks.json",
+      "bytes": 1834,
+      "sha256": "374caa4b0c05c4c41dd80b7dbd12431ac5d53351fd57db75fb6b5df21a177919"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/final-profile-tool-checks.json",
+      "bytes": 1495,
+      "sha256": "047d642a71265a5276a24e606507f9b565f9f0dcb17a8e87320b6ee4d2fbe179"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-auth-serving-r1/private-analysis-cleanup.json",
+      "bytes": 552,
+      "sha256": "6b523622405bd869d0eda866ed8a14cda32436e07a937dc1e94093a2d5beae62"
+    }
+  ],
+  "limits": [
+    "Diagnostic synthetic identities are not credential authentication or DB grants. No account password sent to a public native listener.",
+    "Modified seven-byte compatibility copy only; no original KR or L1 certification. Native cancelled by bounded harness, launcherexit1 is not clean native logout.",
+    "Actual count2 channel request observed only for ASCII7 names, optionalstringoff andzeroecho; complete count2 server profile/room/gameplay/retry and guest still unmeasured.",
+    "Atomic two-account session publication, shared transport lifecycle, expiry/revoke/disconnect fencing, generic denial/rate limits and TLS prelogin remain implementation work.",
+    "Launcher account screens, redesign/translations, final Windows/Wine/Internet/load/restore/soak acceptance remain open. VPS/OCI identifying data and raw stay local."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "kre-audit-storage-correction-v1",
+  "source": "design",
+  "status": "confirmed",
+  "failure": "CP341 writer embedded full AUD147 object instead of the required audit reference. Gate29ba7d0 verified580279 evidence/history but reported5 errors: missing audit path/hash, group audit due and historical missingpath.",
+  "failed_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r6/exit.json",
+    "bytes": 447,
+    "sha256": "7c998f57a80fc6a70c653ad3dbab6aa8fbb17d7b36369d8d3a15cbf7d8d9a07f"
+  },
+  "failed_stderr": {
+    "path": "local/research/codex/m8-login-full-gate-r6/gate.stderr",
+    "bytes": 210,
+    "sha256": "2725c112b018d88132eee08046bdaeb6eaabdbf452fcc0336ce83aad1cf7392d"
+  },
+  "publication": {
+    "path": "local/research/codex/m8-audit-storage-correction-r1/publication-witness.json",
+    "bytes": 368,
+    "sha256": "15032a9203c65cdca7ddea4bd5b4d690a2326f080d615284e01443f6d7982148"
+  },
+  "correction": "Replace current embedded entry with canonical audit id/path/SHA. Historical storage normalization accepts embedded content only when entire object equals its canonical audit file in that same revision, and computes exact raw SHA. References keep mandatory hash/size checks. Logical prefix comparison still forbids audit removal/reorder/body change. Current manifests still require references.",
+  "preserved": "CP341, AUD147 audit body, run manifests and original Git commits are unchanged; no rewritten history or ignored gate errors.",
+  "tests": {
+    "command": "env PYTHONPATH=tools python3 -m unittest tools.test_checkpoint_audit_storage tools.test_checkpoint_source_history tools.test_checkpoints tools.test_checkpoint_evidence_lean tools.test_checkpoint_store",
+    "result": "pass",
+    "negative_cases": [
+      "missing same-revision file cannot borrow later file",
+      "embedded object differs from file",
+      "bad reference SHA/size/partial reference",
+      "audit-file-only tampering",
+      "audit removal/reordering"
+    ]
+  },
+  "full_gate": {
+    "path": "local/research/codex/m8-login-full-gate-r8/result.json",
+    "bytes": 2417,
+    "sha256": "43e1f43ec7928884d8400adc91cc9a0169f8aba8f0a961676cb1c93ca62d6a4f",
+    "tested_commit": "ffc2ec113d4e46e4659ea12b9e550d652f912eef",
+    "ok": true,
+    "evidence_verified": 580279,
+    "history_verified": true,
+    "errors": 0
+  }
+}

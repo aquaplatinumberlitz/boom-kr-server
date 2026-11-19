@@ -42,15 +42,26 @@ def record_line_budget(number, raw):
 
 
 def audit_core_read_order(read_files):
-    """Rules may be read first; core audit docs must still be contiguous/in order.
+    """Keep the core pass ordered, including chapters of the protocol index.
 
     Immutable AUD057 explicitly records AGENTS before the required core pass.
-    Do not reorder the retained audit merely to satisfy the checker.
+    PROTOCOL.md is an index after the documentation split. Its canonical
+    topic chapters may be read immediately after it, before RESEARCH.md.
+    Other interleaved files and reordered/missing core docs remain invalid.
+    Do not reorder retained audits merely to satisfy the checker.
     """
     if not isinstance(read_files, list):
         return False
     offset = 1 if read_files[:1] == ['AGENTS.md'] else 0
-    return read_files[offset:offset + 4] == list(CORE_DOCS)
+    for expected in CORE_DOCS:
+        if offset >= len(read_files) or read_files[offset] != expected:
+            return False
+        offset += 1
+        if expected == 'docs/PROTOCOL.md':
+            while (offset < len(read_files) and isinstance(read_files[offset], str)
+                   and re.fullmatch(r'docs/protocol/[a-z0-9-]+\.md', read_files[offset])):
+                offset += 1
+    return True
 
 
 HASH_CACHE_PATH = Path("local/cache/checkpoint-digest-cache.json")
@@ -177,10 +188,16 @@ def historical_checkpoint_source(root, relative, expected_sha, expected_bytes, c
     python_source = Path(relative).parts[0] in {'server', 'tools'} and Path(relative).suffix == '.py'
     c_tool_source = (Path(relative).parts[0] == 'tools' and Path(relative).suffix in {'.c', '.h'}
                      and not any(part in {'.', '..'} for part in relative.split('/')))
+    powershell_tool_source = (Path(relative).parts[0] == 'tools' and Path(relative).suffix == '.ps1'
+                              and not any(part in {'.', '..'} for part in relative.split('/')))
     rust_source = (re.fullmatch(r'rust/crates/[^/]+/(?:src/(?:[^/]+/)*|tests/)[^/]+\.rs', relative)
                    and not any(part in {'.', '..'} for part in relative.split('/')))
+    cargo_source = (relative in {'rust/Cargo.toml', 'rust/Cargo.lock'}
+                    or re.fullmatch(r'rust/crates/[^/]+/Cargo\.toml', relative))
+    cargo_source = cargo_source and not any(part in {'.', '..'} for part in relative.split('/'))
     docs_workflow = relative == '.github/workflows/docs.yml'
-    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (python_source or c_tool_source or rust_source or docs_workflow):
+    if not re.fullmatch(r'CP[0-9]{3,}', checkpoint) or not (
+            python_source or c_tool_source or powershell_tool_source or rust_source or cargo_source or docs_workflow):
         return None
     return historical_checkpoint_publication(
         root, relative, expected_sha, expected_bytes, checkpoint)
@@ -753,6 +770,44 @@ def record_signature(record, root, read, memo):
             "content": content, "review": record.get("review")}
 
 
+def historical_audit_references(manifest, root=ROOT, read=None, blob=None, memo=None):
+    """Normalize only storage, preserving the exact audit file at each revision.
+
+    A mistakenly embedded complete audit may migrate to a reference only when
+    its canonical audit file exists in that same revision and equals the entire
+    embedded object. Existing references always require their pinned raw hash.
+    Current manifests still require references in check_manifest.
+    """
+    read = read or store.file_reader(root)
+    result = []
+    for row in manifest.get('audits', []):
+        if not isinstance(row, dict) or not re.fullmatch(r'AUD[0-9]{3,}', str(row.get('id', ''))):
+            raise ValueError('invalid historical audit identity')
+        inline = not any(key in row for key in ('path', 'sha256', 'bytes'))
+        path = f'docs/evidence/checkpoints/audits/{row["id"]}.json' if inline else row.get('path')
+        store.target(root, path)
+        oid = blob(path) if blob else None
+        key = ('audit-reference', store.object_digest(row), oid) if oid else None
+        if memo is not None and key is not None and key in memo:
+            result.append(memo[key])
+            continue
+        raw = read(path)
+        audit = json.loads(raw)
+        digest = hashlib.sha256(raw).hexdigest()
+        if inline:
+            if audit != row:
+                raise ValueError(f'embedded audit differs from same-revision file: {path}')
+        elif digest != row.get('sha256') or ('bytes' in row and len(raw) != row['bytes']):
+            raise ValueError(f'audit hash mismatch: {path}')
+        if not isinstance(audit, dict) or audit.get('id') != row['id']:
+            raise ValueError(f'audit identity mismatch: {path}')
+        normalized = dict(id=row['id'], path=path, sha256=digest)
+        if memo is not None and key is not None:
+            memo[key] = normalized
+        result.append(normalized)
+    return result
+
+
 def history_signature(manifest, root=ROOT, read=None, blob=None, memo=None):
     """Logical record identities across inline/ref/packed storage; never normalize stored records.
 
@@ -786,7 +841,8 @@ def history_signature(manifest, root=ROOT, read=None, blob=None, memo=None):
     if (manifest.get('last_id') != (entries[-1]['id'] if entries else None)
             or manifest.get('completed_count') != completed):
         raise ValueError('checkpoint counter reset/count mismatch in history')
-    return {"checkpoints": entries, "audits": manifest.get("audits", [])}
+    return {"checkpoints": entries,
+            "audits": historical_audit_references(manifest, root, read, blob, memo)}
 
 
 def signature_continuity(previous, current):
@@ -909,7 +965,7 @@ def check_history(root, relative_manifest, current, availability=None):
                 snapshot = json.loads(content)
                 signature = history_signature(snapshot, root, read, blob, memo)
                 # Audit bodies are pinned, even on commits changing only an audit file.
-                for audit in snapshot.get('audits', []):
+                for audit in signature['audits']:
                     oid = blob(audit['path'])
                     if oid and memo.get(('audit', oid)) == audit['sha256']:
                         continue

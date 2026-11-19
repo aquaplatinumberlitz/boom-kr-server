@@ -1,0 +1,106 @@
+{
+  "schema": "kre-m8-ingame-login-feasibility-followup-v1",
+  "checkpoint": "CP341",
+  "authorization": "docs/evidence/owner-directives/m8-ingame-login.json",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "verdict": "step1_feasible_on_declared_small_compatibility_copy",
+  "summary": {
+    "path": "local/research/codex/m8-ingame-login-builder-r1/feasibility-result.json",
+    "bytes": 146297,
+    "sha256": "a08fda3aeca2640cac033a08e69b2b33fda306295c856a9dba1db695c3906106"
+  },
+  "acceptance": {
+    "existing_no_token_login_stage": "observed",
+    "ordinary_1p_fields_and_native_packet": "observed_and_decoded",
+    "ordinary_2p_fields_and_native_packet": "observed_and_decoded",
+    "existing_trial_button_1p_2p_packet": "observed_and_decoded",
+    "native_db_authentication": "not_implemented",
+    "production_launcher_changes": "not_started"
+  },
+  "copy_controls": [
+    {
+      "path": "local/research/codex/m8-ingame-login-builder-r1/manual-route-control.json",
+      "bytes": 1941,
+      "sha256": "00bf0ab0950d694868c243fd4fef47d9575c0614d148c7cb822895cc9a67c56b"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-login-builder-r1/trial-ui-control.json",
+      "bytes": 1459,
+      "sha256": "bfd27afe729bca6054696cbc8b923a91ac46326ca5631a0840a25d2140e609ed"
+    }
+  ],
+  "static": [
+    {
+      "path": "local/research/codex/m8-ingame-login-builder-r1/current-builder-code-comparison.json",
+      "bytes": 917,
+      "sha256": "cb7a7830fe8f15af21a4d99fafbfa63904bd39e7116f848dbc926ca4ba237187"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-login-builder-r1/current-trial-code-comparison.json",
+      "bytes": 576,
+      "sha256": "1b751adf0b9a11e8fd519b759dd1e15e387eaf73a0da65f434b30fa7c67b74ea"
+    },
+    {
+      "path": "local/research/codex/m8-ingame-login-builder-r1/branch-sites.json",
+      "bytes": 3634,
+      "sha256": "ed3612fa6f0fbae36eb2af504a8cc616b815f2318ad251337d69859245ac0a78"
+    }
+  ],
+  "findings": [
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "claim": "Existing13ADE40 literal Invalid Login! is the token-empty branch when web config is selected. Native manual username/password writer and tag0 branch already exist; no new serializer was implemented in the client."
+    },
+    {
+      "source": "design",
+      "status": "design",
+      "claim": "Private copy changes one UI-lock byte plus six bytes in two builder branches to select existing manual route while preserving selected-server startup. Trial display additionally changes six bytes in an existing region display branch. Source/client/pack originals remain untouched; no large exe rewrite, native result forcing or server auth success."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "Ordinary existing UI gives1P opcode1 frame85/body47/prefix0,1 and2P frame105/body67/prefix0,2. All declared8byte synthetic ID/password fields independently decode exactly; count2 uses two original manual-record writer calls. Each uses remaining25byte tail in these runs; semantic tail bounds unknown."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "claim": "Existing trial1P/2P buttons invoke roster selector,1104090 and11041A0, then send opcode62 frame63/body25. First typed u8 is1/2; remaining24bytes identical within r53. No server authentication response was sent."
+    },
+    {
+      "source": "design",
+      "status": "design",
+      "claim": "Owner step1 feasibility achieved within declared modified-copy scope; open dependent server/guest/prelogin and launcher work in owner order. Keep token fallback until end-to-end acceptance; do not equate request emission with account login or M8 closure."
+    }
+  ],
+  "failures_preserved": [
+    "r51 initial controller resolved shared local symlink to canonical checkout with no tool; no UI input sent. Second controller fixed root but relative-path formatting failed before input. Ordinary measured input then completed2P; both original failures kept.",
+    "r51 debugger deadline/taskkill race marks guest failed; VM/service export and cleanup confirmed. r52/r53 explicit early owner stop left no collector stopped receipt; exported complete target frames exist and VM/service stopped, but collector finalization not certified. r54 grouped repeat uses guest150s bound before debugger180s and corrected taskkill, requires collector stopped receipt. These observations are not clean native logout or authentication success.",
+    "CP340 Invalid Login!/E06D7363 and earlier no-argument failures remain immutable.",
+    "Taskkill race corrected in future harness: collect exit/output through ComSpec, still wait/kill owned child. No reclassification of historical failures."
+  ],
+  "storage": {
+    "vm_deleted_apparent_bytes": 5344264192,
+    "analysis_cleanup": {
+      "path": "local/research/codex/m8-ingame-login-builder-r1/analysis-temporary-cleanup.json",
+      "bytes": 753,
+      "sha256": "40b66c62758ebb1b57cecdca6e37d1bde77457cbbc8e042f2b09f28afa98fcd6"
+    },
+    "before_available_bytes": 402775973888,
+    "after_available_bytes": 403301232640,
+    "limits": "Before is precleanup r51, not launch; free space includes shared activity and sparse/reflink sizes are apparent."
+  },
+  "next_steps": [
+    "Implement bounded native credential/trial parsing and DB M5 authentication including two identities per native transport, generic errors/rate limits; no VN schema import.",
+    "Add bounded guest admission and TLS prelogin companion tunnel before removing launcher password fields.",
+    "Then account-management UI and owner visual cherry-picks, language error strings and native/Internet acceptance."
+  ],
+  "limits": [
+    "Current ko949x declared compatibility copies and owned Windows VM only; no original packed-client behavior or Nexon traffic.",
+    "Measured credential length8/ASCII and count1/2 only; final name/password length policy, suffix grammar and retry/auth-error variants remain to verify.",
+    "No DB login, correct player/profile, room/gameplay/reset, guest identity, TLS prelogin security or new Internet acceptance measured.",
+    "Probe observes numeric count/flags/branches; it never reads native secret strings. Raw loopback synthetic credentials stay local."
+  ],
+  "preserved": "CP339/CP340 records, run manifests and raw remain unchanged. Production token path retained until new end-to-end acceptance."
+}

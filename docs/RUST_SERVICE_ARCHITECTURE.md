@@ -8,6 +8,35 @@ Trạng thái/thứ tự hiện hành chỉ ở PLAN; readiness bên dưới gi�
 [PROTOCOL](PROTOCOL.md#authority) giữ contract/authority; [RESEARCH](RESEARCH.md#rust-service-gaps) giữ unknown/phép RE.
 Tài liệu này giữ quyết định kiến trúc và ma trận sẵn sàng, không là current-status hoặc plan thứ hai.
 
+### Gói người chơi M8 và launcher đồ họa
+
+`kr-player` giữ installer và GUI riêng, gọi `kr-launch` hiện hành qua stdin để account/session và hai child vẫn có
+một owner. Iced `0.14.0` được pin với renderer phần mềm `tiny-skia`, X11 và Tokio; không thêm GPU backend vào
+server. Dependency GUI chỉ thuộc crate người chơi; binary server không liên kết Iced. Lựa chọn này phục vụ Wine
+và Windows VM không có GPU chuyên dụng, giao diện ba ngôn ngữ và vector arcade riêng của dự án.
+
+Installer ráp pack KR với phần đuôi vi rồi en đã kiểm nguyên prefix, giữ idx từng ngôn ngữ, kiểm hash toàn file và
+chỉ ghi receipt khi hoàn tất. Pack chung readonly được hard link vào ba thư mục; exe/chữ/font/video riêng. GUI
+kiểm lại ngôn ngữ chọn trước khi launch, dùng pin TLS để hỏi trạng thái admission và giữ password trong bộ nhớ
+có zeroize, truyền stdin, không ghi ra config. Đóng GUI tạo cancel file riêng của launch; `kr-launch` dừng/join
+native và companion rồi logout session theo đường hiện hành. Heartbeat riêng có budget 10 giây để GUI chết
+không bỏ lại owner/child; đo bằng Instant, không dựa clock của file. Đây là thiết kế; trạng thái nghiệm thu ở PLAN.
+
+Chẩn đoán socket của companion opt-in bằng `peer_diagnostics`; mặc định không thêm trường vào input của child cũ.
+Wrapper chỉ đếm lời gọi/kết quả và delegate I/O; Quinn có thể che lỗi gửi ở lớp dưới, nên `send_ok` không chứng minh
+Winsock hoặc NIC đã gửi. `tracing 0.1.44` được pin làm dependency trực tiếp để giữ duy nhất mã OS từ log lỗi gửi
+của quinn-udp đã pin; subscriber không chuyển tiếp endpoint, packet hay chuỗi lỗi tùy ý. Đây là instrumentation
+phục vụ gap Windows, không thay deadline, authentication, retry hoặc fencing.
+Adapter client `portable` opt-in giữ QUIC/TLS hiện hành nhưng gửi một UDP datagram qua Tokio, không ECN/GSO
+hoặc ancillary source-address. Capability/wire/owner không đổi; `native` vẫn mặc định. Windows control đã có
+positive riêng, chưa chứng minh mọi NIC/route hoặc native game.
+
+Biên tên account dùng `kr-wire::kr00967::text949x`, không đưa byte UTF-8 của DB thẳng vào profile KR.
+Dependency `encoding_rs =0.8.35` giữ bảng CP949/UHC thay vì tự viết bảng Hàn; phần mở rộng 949x VERSION=1
+lấy đúng thứ tự từ reference của chủ dự án. Codec strict đã đối chiếu toàn bộ 19.451 ký tự mà reference mã hóa
+được. DB giữ UTF-8 nguyên văn; admission mặc định vẫn ASCII. Chỉ deployment có toàn bộ client đã vá mới bật
+`patched_949x_names`. Đây là policy của công ty, không là profile Unicode của server KR gốc.
+
 ## Tra nhanh cho quyết định của công ty
 
 | Câu hỏi | Kết luận của đợt nghiên cứu |
@@ -97,6 +126,15 @@ KRE-002/#2 bootstrap rộng; KRE-074/#285 là epic triển khai theo PLAN; ma tr
 
 
 ## Module và dòng dữ liệu
+
+Đường đóng gói M8 dùng `tools/rust_service_package.py` và runner Python standard library riêng, không nhập code
+repo khi chạy bản đã cài. Fixture/profile giữ nguyên bytes đã pin, gom theo hash vào gói; manifest ràng buộc path,
+size, SHA-256 và mode. DB/session không nằm trong artifact; runner re-root DB/socket vào state riêng và giữ khóa
+instance qua exec. Cấu hình endpoint/budget giữ input operator, không lấy giá trị mặc định từ hạ tầng phát triển.
+Smoke namespace đã có x86 trên máy phát triển và ARM trên Linux độc lập; cả hai che repo/local, kiểm DB init,
+từ chối init lại/chạy trùng, readiness và dừng sạch. Các lượt vẫn dùng thư viện host; ARM harness đạt với file
+do root sở hữu. Acceptance cài máy sạch đầy đủ, export từ pack, launcher public, Wine/Windows, Internet, tải và
+restore vẫn theo PLAN. Hash và giới hạn ở [evidence](evidence/rust-service/m8-server-package.json).
 
 Cấu trúc sau R1a–R1g và relay prototype; native hồi quy profile hiện hành đã đạt. Tính năng mới có acceptance riêng.
 

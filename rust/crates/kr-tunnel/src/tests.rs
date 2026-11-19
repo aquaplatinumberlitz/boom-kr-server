@@ -103,11 +103,21 @@ fn replay_window_allows_bounded_reordering_without_duplicate_or_wrap() {
 
 #[tokio::test]
 async fn pinned_quic_roundtrip_preserves_bytes_and_denies_wrong_capability_same_ip() {
+    pinned_roundtrip(UdpBackend::Native).await;
+}
+
+#[tokio::test]
+async fn portable_quic_roundtrip_preserves_bytes_and_denies_wrong_capability_same_ip() {
+    pinned_roundtrip(UdpBackend::Portable).await;
+}
+
+async fn pinned_roundtrip(backend: UdpBackend) {
     let identity = Identity::ephemeral().unwrap();
     let certificate = identity.certificate.clone();
     let server = identity.listen("127.0.0.1:0".parse().unwrap()).unwrap();
     let address = server.local_addr().unwrap();
-    let endpoint = client("127.0.0.1:0".parse().unwrap(), certificate).unwrap();
+    let (endpoint, _) =
+        client_configured("127.0.0.1:0".parse().unwrap(), certificate, backend, false).unwrap();
     let expected = Secret::from_bytes([7; 32]);
     let task = tokio::spawn(async move {
         let bad = server.accept().await.unwrap().await.unwrap();

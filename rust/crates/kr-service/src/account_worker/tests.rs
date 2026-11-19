@@ -68,6 +68,198 @@ fn admin() -> Admin<'static> {
         reason: "bounded account worker tests",
     }
 }
+
+#[test]
+fn local_roster_handoff_accepts_both_or_compensates_both() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    Store::open(&temp.db())
+        .unwrap()
+        .create_account(&admin(), "Bobby", "Bobby", PASSWORD, 100)
+        .unwrap();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 4, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let pair = [("Alice", PASSWORD), ("Bobby", PASSWORD)];
+        let received = client
+            .try_login_local(&pair, 60, Some(10), 101)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        assert_eq!(received.value().len(), 2);
+        assert_eq!(temp.active(), 2);
+        drop(received);
+        // Barrier runs only after compensation, not a timing-based poll.
+        let resume = pause(&client).await;
+        assert_eq!(temp.active(), 0);
+        resume.send(()).unwrap();
+        let grants = client
+            .try_login_local(&pair, 60, Some(10), 102)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert_eq!(grants.len(), 2);
+        for grant in &grants {
+            assert_eq!(
+                client
+                    .try_authorize(&grant.token, grant.player.player_id, 103)
+                    .unwrap()
+                    .wait()
+                    .await
+                    .unwrap(),
+                grant.player
+            );
+        }
+        assert_eq!(temp.active(), 2);
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn native_long_password_records_authenticate_to_db_principals_as_one_roster() {
+    use crate::account_bridge::ingame_wire::{self, Players};
+    use kr_wire::{Width, write_uint};
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let mut store = Store::open(&temp.db()).unwrap();
+    let a = store
+        .create_account(&admin(), "M8ProbeA", "RosterA", b"M8PassWord12", 100)
+        .unwrap();
+    let b = store
+        .create_account(&admin(), "M8ProbeB", "RosterB", b"M8PassWord123456", 100)
+        .unwrap();
+    // Actual r63 native record bytes on the explicit password-policy copy;
+    // replace the opaque machine/address tail with declared synthetic data.
+    let record = "5a58a56195164730d7db79eda565c007567694d93cbdc6f21612a56195164730d7db79eea579c007567694d93cbdc6f21612a568a2ef";
+    let mut body: Vec<_> = (0..record.len())
+        .step_by(2)
+        .map(|i| u8::from_str_radix(&record[i..i + 2], 16).unwrap())
+        .collect();
+    body.extend([0; 16]);
+    body.extend(write_uint(0, Width::U32).unwrap());
+    body.extend(write_uint(u32::from_le_bytes([192, 0, 2, 1]).into(), Width::U32).unwrap());
+    body.extend(write_uint(0, Width::U8).unwrap());
+    let Players::Accounts(players) = ingame_wire::parse(1, &body).unwrap().players else {
+        panic!("account route")
+    };
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 4, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let denied = client
+            .try_login_local(
+                &[
+                    (players[0].login(), players[0].password()),
+                    (players[1].login(), b"wrong-password"),
+                ],
+                60,
+                None,
+                101,
+            )
+            .unwrap()
+            .wait()
+            .await;
+        assert!(matches!(
+            denied,
+            Err(Error::Backend(accounts::Error::InvalidCredentials))
+        ));
+        assert_eq!(temp.active(), 0);
+        let borrowed: Vec<_> = players.iter().map(|p| (p.login(), p.password())).collect();
+        let grants = client
+            .try_login_local(&borrowed, 60, None, 102)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert_eq!(
+            grants.iter().map(|g| &g.player).collect::<Vec<_>>(),
+            vec![&a, &b]
+        );
+        assert_ne!(a.wire_id, 1); // Existing Alice account owns ID1 in this DB.
+        assert_eq!(temp.active(), 2);
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn local_roster_admission_preserves_rate_capacity_and_queue_cancellation() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open_with_rate(
+            temp.db(),
+            2,
+            Duration::from_secs(5),
+            RatePolicy {
+                attempts: 1,
+                interval: Duration::from_secs(60),
+                principals: 1,
+            },
+        )
+        .await
+        .unwrap();
+        let client = worker.client();
+        assert!(matches!(
+            client.try_login_local(&[("Alice", PASSWORD), ("ALICE", PASSWORD)], 60, None, 101),
+            Err(Error::InvalidInput)
+        ));
+        assert!(matches!(
+            client.try_login_local(&[("Alice", PASSWORD), ("Bobby", PASSWORD)], 60, None, 101),
+            Err(Error::RateLimited)
+        ));
+        // The rejected pair consumed no attempt and cannot overflow one entry.
+        let resume = pause(&client).await;
+        let pending = client
+            .try_login_local(&[("Alice", PASSWORD)], 60, None, 101)
+            .unwrap();
+        drop(pending);
+        assert!(matches!(
+            client.try_login("ALICE", PASSWORD, 60, 101),
+            Err(Error::RateLimited)
+        ));
+        resume.send(()).unwrap();
+        let resume = pause(&client).await;
+        assert_eq!(temp.active(), 0);
+        resume.send(()).unwrap();
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn expired_local_roster_handoff_revokes_both_before_next_command() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    Store::open(&temp.db())
+        .unwrap()
+        .create_account(&admin(), "Bobby", "Bobby", PASSWORD, 100)
+        .unwrap();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 2, Duration::from_millis(100))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let received = client
+            .try_login_local(&[("Alice", PASSWORD), ("Bobby", PASSWORD)], 60, None, 101)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        assert_eq!(temp.active(), 2);
+        // Let the real worker handoff deadline run, then use its next-command
+        // barrier to prove compensation is complete before accepting stale data.
+        tokio::time::sleep(Duration::from_millis(150)).await;
+        let resume = pause(&client).await;
+        assert_eq!(temp.active(), 0);
+        assert!(matches!(received.accept(), Err(Error::QueueExpired)));
+        resume.send(()).unwrap();
+        worker.shutdown().await.unwrap();
+    });
+}
 fn rt() -> tokio::runtime::Runtime {
     tokio::runtime::Builder::new_current_thread()
         .enable_all()
@@ -207,7 +399,7 @@ fn admission_is_bounded_cancelled_and_queue_expired_work_never_issues_a_token() 
                 password: Zeroizing::new(PASSWORD.to_vec()),
                 ttl: 60,
                 idle: None,
-                now: 101,
+                now: AuthorizationTime::Supplied(101),
                 deadline: Instant::now() - Duration::from_secs(1),
                 reply,
                 handoff: handoff.clone(),
@@ -237,6 +429,57 @@ fn admission_is_bounded_cancelled_and_queue_expired_work_never_issues_a_token() 
         worker.shutdown().await.unwrap();
         assert!(client.is_closed());
         assert_eq!(authorized.wait().await, Ok(grant.player));
+    });
+}
+#[test]
+fn borrowed_login_delivery_failure_revokes_only_that_session_and_allows_fresh_login() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    rt().block_on(async {
+        let worker = Worker::open(temp.db(), 4, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let client = worker.client();
+        let received = client
+            .try_login("alice", PASSWORD, 60, 101)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        let old = Token::parse(received.value().token.expose_secret()).unwrap();
+        let player = received.value().player.player_id;
+        assert_eq!(temp.active(), 1);
+        // Response serialization may borrow the result; a failed TLS write must
+        // drop it before accepting the handoff, rather than orphaning a login.
+        drop(received);
+        let barrier = pause(&client).await;
+        assert_eq!(temp.active(), 0);
+        barrier.send(()).unwrap();
+        assert_eq!(
+            client
+                .try_authorize(&old, player, 102)
+                .unwrap()
+                .wait()
+                .await,
+            Err(Error::Backend(accounts::Error::InvalidSession))
+        );
+        let received = client
+            .try_login("alice", PASSWORD, 60, 103)
+            .unwrap()
+            .receive()
+            .await
+            .unwrap();
+        let current = received.accept().unwrap();
+        assert_eq!(
+            client
+                .try_authorize(&current.token, player, 104)
+                .unwrap()
+                .wait()
+                .await,
+            Ok(current.player)
+        );
+        assert_eq!(temp.active(), 1);
+        worker.shutdown().await.unwrap();
     });
 }
 #[test]

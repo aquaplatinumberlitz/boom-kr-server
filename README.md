@@ -33,12 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP336: ma trận nhóm Punch đã có native Rust cho cả bốn hướng và endpoint biên/quét.**
-[Contract và bằng chứng](docs/protocol/items-stats.md#rust-bomb-motion-codec) giữ source/target thực,
-exact 119→162 và reservation toàn hàng/cột theo policy report-derived. Hai batch mới có bốn vòng mỗi batch,
-peer/landing/retirement/reset, journal đúng account/thưởng 0 và 864 getter checks; selector 2 trước đó gộp vào nhóm.
-Nhóm còn qua gate/PR trước tích hợp; Shoe và kiểm ghép client Việt còn làm tiếp. Bảng rơi đã cắt và từ chối nhân vật
-trên cùng socket đã tích hợp qua PR #466. [Bảng điều hành](docs/PLAN.md#dashboard) giữ việc còn lại và ước lượng native.
+**CP343: đăng nhập DB 1P/2P và ownership đã qua test; native Windows 2P tới kênh đúng hai hồ sơ DB, cleanup cả hai session.** [Phạm vi và giới hạn](docs/protocol/auth-session.md#rust-ingame-db-publication); tiếp khách → TLS trước đăng nhập → phòng/trận → launcher. M8 còn mở.
 
 ## Bắt đầu
 

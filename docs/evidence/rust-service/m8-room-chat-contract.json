@@ -1,0 +1,183 @@
+{
+  "schema": "kre-m8-room-chat-contract-v1",
+  "source": "kr_static",
+  "status": "candidate",
+  "scope": "Minimum M8 patched949x waiting-room chat serving; one native vi reply28 observed; cross-language acceptance pending",
+  "canonical": "docs/protocol/lobby-profile.md#rust-patched-room-chat",
+  "source_reuse": {
+    "current": "Owner L1 CP310/captures show real incoming chat18, Rust rejects; no existing KR28 output acceptance found.",
+    "kr": "Private copy of historical boomkr-re KR00967 extracted-image database; bound input SHA and unchanged function bytes checked against owner ko949x control.",
+    "vn": "boom-re/docs/lobby.md update17: VN18 flag/count/strings,28 string/style. Output consumer hypothesis verified statically on KR; VN request layout differs from measured KR."
+  },
+  "builds": {
+    "database_input_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "owner_ko_exe_sha256": "eb441bb15eac488bdb43fe6fecf0309d97f4063a92132212c14869fb22e7da6b"
+  },
+  "incoming18": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "scope": "Two captured single-string requests only",
+    "layout": "u16 byte length then field-encoded949x bytes, no flag/count in measured body",
+    "samples": [
+      {
+        "run": "y9",
+        "sequence": 133,
+        "payload_bytes": 35,
+        "first_u16": 33,
+        "packet_frame_sha256": "165fbc28821310ca338933d9d51ec15b0ccce59d8156fe95c80e1bed5158731f"
+      },
+      {
+        "run": "y10",
+        "sequence": 136,
+        "payload_bytes": 30,
+        "first_u16": 28,
+        "packet_frame_sha256": "2fd471ca5da0ef5cf3e18b003be834a1f58ddb7cc2fcffb7863486442bd360db"
+      }
+    ]
+  },
+  "reply28": {
+    "source": "kr_static",
+    "status": "candidate",
+    "dispatcher": "0xD3B6F0, CChatStage vtable51, subtract7/case21",
+    "consumer": "0xD41DF0, packet string slot+76 then u8 slot+60",
+    "style0": "literal text to stage slot+308; default0xD45080 drawing function",
+    "functions": [
+      {
+        "name": "chat28-consumer",
+        "address": "0xd41df0",
+        "end": "0xd422db",
+        "bytes": 1259,
+        "database_function_sha256": "731ca7d1a7387a2358fbc691205a319041411e7b8583ac86a701b65af99fe205",
+        "owner_ko_function_sha256": "731ca7d1a7387a2358fbc691205a319041411e7b8583ac86a701b65af99fe205",
+        "exact_code_match": true
+      },
+      {
+        "name": "chat-send",
+        "address": "0xd45080",
+        "end": "0xd45231",
+        "bytes": 433,
+        "database_function_sha256": "a12adc3a01df6527e433fc40baf069ca9ba7302debb8442a86a6e8ccaa71be81",
+        "owner_ko_function_sha256": "a12adc3a01df6527e433fc40baf069ca9ba7302debb8442a86a6e8ccaa71be81",
+        "exact_code_match": true
+      }
+    ],
+    "limits": "One current Windows vi native reply28 style0 observed with Unicode account prefix; no original-server routing/rate policy, other styles or cross-client acceptance.",
+    "native_status": "confirmed_for_literal_style0_on_one_vi_copy"
+  },
+  "verification": [
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/source-reuse.json",
+      "bytes": 990,
+      "sha256": "b21ce031e957965937ac23e2dba21618f7a9bcf2396a7c5918586c2f6d3b1987"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/ida-chat-names.json",
+      "bytes": 16785,
+      "sha256": "c3c8d228d258b1294cc87fc7b2012614ca12cc684370b7ac8b61e0eae5477d35"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-vtable-slots.json",
+      "bytes": 295,
+      "sha256": "ca637bd9bb4833a959a13c165f656a54c31db6fedacdad06c64475a38862c30c"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-onpacket.c",
+      "bytes": 10127,
+      "sha256": "50a719b7ae42613e22674b67bd2d23bb215f735bbe15a746009a2f834367e3cb"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat28-consumer.c",
+      "bytes": 5138,
+      "sha256": "2ab90488e2697a46c2de6155b2fd94ab7c790a946bf29024fc71197c84f1cf80"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-send.c",
+      "bytes": 1714,
+      "sha256": "07cd58a22151a61fe44065a235258329f632f4cc3634b3aad532abae0b37d9f6"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-functions.json",
+      "bytes": 3601,
+      "sha256": "607ffb1427e30bf8adc1a2cdf47eb7094d625ad08799ab9f631a900bd34e89de"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat-function-correspondence.json",
+      "bytes": 917,
+      "sha256": "4b510be5da08731f9bf11e076f0662871fc691c520cd7f06f8871d69de469d75"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/chat18-native-frames-r2.json",
+      "bytes": 1547,
+      "sha256": "3a945ff0ff879b7e1f0cd798a64c70ded7cdf883ed695f8fbc92b3ff45282d7d"
+    },
+    {
+      "path": "local/research/codex/m8-chat-contract-r1/mcp-open-error.json",
+      "bytes": 2667,
+      "sha256": "ca9955fbbbd69d4a251f9cceb8994caf871144c36b31f4f26d163d7408e50b34"
+    }
+  ],
+  "limits": [
+    "IDA MCP failed missing ida_nexus; no configuration changed. Existing IDA batch ran read-only queries on private DB copy, all observed worker processes exited.",
+    "Initial packet selector assumed fixture header69 and found none; corrected native headerAF request selection, checksum/sequence verified, source captures unchanged.",
+    "Room chat serving must fence source and recipients through membership/visit/round and current account. Names come from current owner, never request text.",
+    "Whisper/team/guild/lobby chat and full social features are outside this minimum M8 slice; one native vi literal reply observed; cross-client acceptance remains open."
+  ],
+  "codec": {
+    "path": "rust/crates/kr-wire/src/kr00967/chat.rs",
+    "source": "design",
+    "status": "design",
+    "request_budget_bytes": 192,
+    "reply_budget_bytes": 224,
+    "scope": "Strict949x single-string18 parser and literal28 encoder. Forwarding only in explicitly patched deployment, idle managed room; budgets are company policy.",
+    "verification": [
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/codec-verification.json",
+        "bytes": 882,
+        "sha256": "852ce1a3dd9dfef4a77051b82da8261c395b4dea3022884ac78598ade6d552db"
+      },
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/wire-chat-tests.log",
+        "bytes": 2423,
+        "sha256": "6305f1444da02b6f78431a041f17deb6bea982d3c1cabf73c497a0adb6207b7e"
+      },
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/wire-chat-clippy.log",
+        "bytes": 166,
+        "sha256": "34b5b6cdbc1da93103698f9fc7836f75b09ceb12bb1e4c07b74e4d1d955b80b7"
+      },
+      {
+        "path": "local/research/codex/m8-chat-contract-r1/wire-chat-fmt.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "serving": {
+    "source": "design",
+    "status": "design",
+    "opt_in": "account_admission.patched_949x_names=true",
+    "scope": "Managed waiting room with completed setup only; no lobby/gameplay/team/whisper/guild chat.",
+    "sender": "Current DB-backed authority supplies display_name; client supplies only literal text.",
+    "reply": "28 style0: authenticated name + \" : \" + strict949x text; no replacements/truncation.",
+    "rate": "Company policy at most 2 accepted messages per second per connection; violation closes connection.",
+    "queue": "Reserve all recipient entries before publish. Per-batch room scope, source+recipient channel/connection/visit, Idle and round-generation fences. Reinspect source DB at recipient write boundary, then reauthorize recipient and recheck keys; revoke/expiry cannot revive queued messages.",
+    "verification": "Three real SQLite/bridge + synthetic room queue tests pass: mixed names, malformed data, source revoke/expiry/disconnect, destination revoke, full queue atomicity, old visit/round and foreign room scope.",
+    "limits": "One native vi literal reply confirmed; vi/ko same-room/peer chat remains open. Initial implementation fixture/check failures retained in verification summary.",
+    "verification_summary": {
+      "path": "local/research/codex/m8-chat-serving-r2/verification.json",
+      "bytes": 2130,
+      "sha256": "160cc338b840cf6d8a5b57f1d722098105697ca29c0ed53581f9bc95bd2281f7"
+    },
+    "native": {
+      "path": "local/research/codex/m8-chat-serving-r2/native-vi-chat-r36.json",
+      "bytes": 3868,
+      "sha256": "39a3e339ace93f097ee16dbd7cd1cbcc399d2f67306e75fed9223f0273407fa5"
+    },
+    "exit_dump_pending_classification": {
+      "path": "local/research/codex/m8-multilang-windows-native-vi-chat-r36/dumps/CA.exe.1584.dmp",
+      "bytes": 34184014,
+      "sha256": "5d84fa0002597352a6a5eadeafa9fba93c69c2843557448f65a0da8ee2f451d5",
+      "reason": "Retain until exact native cleanup fault/register state is extracted; no clean-exit acceptance."
+    }
+  }
+}

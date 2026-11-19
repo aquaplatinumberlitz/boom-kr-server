@@ -62,6 +62,39 @@ pub(super) fn fresh() -> (Temp, Store, Player) {
 }
 
 #[test]
+fn launcher_logout_revokes_only_authenticated_token_and_cannot_touch_a_newer_session() {
+    let _serial = SERIAL.lock().unwrap();
+    let (_temp, mut store, player) = fresh();
+    let old = store.login("alice", PASSWORD, 60, 101).unwrap();
+    assert_eq!(
+        store.logout(&old.token, player.player_id + 1, 102),
+        Err(Error::InvalidSession)
+    );
+    store.authorize(&old.token, player.player_id, 102).unwrap();
+    store.logout(&old.token, player.player_id, 103).unwrap();
+    assert_eq!(
+        store.authorize(&old.token, player.player_id, 104),
+        Err(Error::InvalidSession)
+    );
+    let current = store.login("alice", PASSWORD, 60, 105).unwrap();
+    assert_eq!(
+        store.logout(&old.token, player.player_id, 106),
+        Err(Error::InvalidSession)
+    );
+    store
+        .authorize(&current.token, player.player_id, 107)
+        .unwrap();
+    let audited: i64 = store
+        .db
+        .query_row(
+            "SELECT count(*) FROM admin_audit WHERE operation='logout'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert_eq!(audited, 1);
+}
+#[test]
 fn live_authorization_survives_writer_pressure_but_observes_committed_fences() {
     let _serial = SERIAL.lock().unwrap();
     let (temp, mut store, player) = fresh();
@@ -499,6 +532,50 @@ fn profile_edit_is_persistent_versioned_and_does_not_change_ownership() {
     let mut s = temp.store();
     assert_eq!(s.lookup("alice"), Ok(new.clone()));
     assert_eq!(s.authorize(&g.token, p.player_id, 103), Ok(new));
+}
+
+#[test]
+fn names_persist_utf8_but_limits_are_949x_bytes_and_login_stays_ascii() {
+    let _serial = SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let mut store = temp.store();
+    store.begin_instance(&admin(), 100).unwrap();
+    let name = "Việt한국";
+    let player = store
+        .create_account(&admin(), "viet_user", name, PASSWORD, 100)
+        .unwrap();
+    assert_eq!(player.display_name, name);
+    let stored: String = store
+        .db
+        .query_row(
+            "SELECT display_name FROM players WHERE id=?1",
+            [player.player_id],
+            |row| row.get(0),
+        )
+        .unwrap();
+    assert_eq!(stored.as_bytes(), name.as_bytes());
+    for bad in ["ệ".repeat(8), "a\0b".into(), "a b".into(), "a😀b".into()] {
+        assert_eq!(
+            store.rename_player(&admin(), player.account_id, &bad, 1, 101),
+            Err(Error::InvalidInput)
+        );
+    }
+    assert!(
+        store
+            .create_account(&admin(), "việt", name, PASSWORD, 101)
+            .is_err()
+    );
+    let renamed = store
+        .rename_player(&admin(), player.account_id, &"ệ".repeat(7), 1, 101)
+        .unwrap();
+    assert_eq!(renamed.player_id, player.player_id);
+    assert_eq!(renamed.wire_id, player.wire_id);
+    assert_eq!(renamed.profile_version, 2);
+    drop(store);
+    let mut store = temp.store();
+    assert_eq!(store.lookup("VIET_USER").unwrap(), renamed);
+    let grant = store.login("viet_user", PASSWORD, 60, 102).unwrap();
+    assert_eq!(grant.player, renamed);
 }
 
 #[test]

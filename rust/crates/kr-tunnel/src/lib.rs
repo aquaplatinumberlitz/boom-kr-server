@@ -14,8 +14,19 @@ pub const MAX_NATIVE: usize = 255;
 pub const MAX_PACKET: usize = 16 + 8 + MAX_NATIVE;
 pub mod companion;
 pub mod control;
+pub mod launch_tls;
+mod portable_udp;
 pub mod proxy;
 pub mod router;
+pub mod udp_diagnostics;
+
+#[derive(Clone, Copy, Default, serde::Deserialize, serde::Serialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum UdpBackend {
+    #[default]
+    Native,
+    Portable,
+}
 
 fn invalid(message: &'static str) -> io::Error {
     io::Error::other(message)
@@ -81,14 +92,61 @@ impl Identity {
     }
 }
 pub fn client(address: SocketAddr, certificate: CertificateDer<'static>) -> io::Result<Endpoint> {
+    let cfg = client_config(certificate)?;
+    let mut endpoint = Endpoint::client(address)?;
+    endpoint.set_default_client_config(cfg);
+    Ok(endpoint)
+}
+fn client_config(certificate: CertificateDer<'static>) -> io::Result<ClientConfig> {
     let mut roots = rustls::RootCertStore::empty();
     roots.add(certificate).map_err(io::Error::other)?;
     let mut cfg =
         ClientConfig::with_root_certificates(Arc::new(roots)).map_err(io::Error::other)?;
     cfg.transport_config(transport());
-    let mut endpoint = Endpoint::client(address)?;
+    Ok(cfg)
+}
+pub fn client_observed(
+    address: SocketAddr,
+    certificate: CertificateDer<'static>,
+) -> io::Result<(Endpoint, Arc<udp_diagnostics::Counters>)> {
+    let (endpoint, counters) = client_configured(address, certificate, UdpBackend::Native, true)?;
+    Ok((endpoint, counters.expect("requested observation")))
+}
+pub fn client_configured(
+    address: SocketAddr,
+    certificate: CertificateDer<'static>,
+    backend: UdpBackend,
+    observe: bool,
+) -> io::Result<(Endpoint, Option<Arc<udp_diagnostics::Counters>>)> {
+    if backend == UdpBackend::Native && !observe {
+        return client(address, certificate).map(|endpoint| (endpoint, None));
+    }
+    let cfg = client_config(certificate)?;
+    let runtime = quinn::default_runtime().ok_or_else(|| invalid("QUIC runtime unavailable"))?;
+    let inner = match backend {
+        UdpBackend::Native => runtime.wrap_udp_socket(std::net::UdpSocket::bind(address)?)?,
+        UdpBackend::Portable => portable_udp::Socket::bind(address)?,
+    };
+    let (socket, counters): (Arc<dyn quinn::AsyncUdpSocket>, _) = if observe {
+        let counters = Arc::new(udp_diagnostics::Counters::default());
+        (
+            Arc::new(udp_diagnostics::Observed {
+                inner,
+                counters: counters.clone(),
+            }),
+            Some(counters),
+        )
+    } else {
+        (inner, None)
+    };
+    let mut endpoint = Endpoint::new_with_abstract_socket(
+        quinn::EndpointConfig::default(),
+        None,
+        socket,
+        runtime,
+    )?;
     endpoint.set_default_client_config(cfg);
-    Ok(endpoint)
+    Ok((endpoint, counters))
 }
 
 /// Authenticated connection plus one ordered control stream. Data may arrive
@@ -107,18 +165,30 @@ impl Link {
         address: SocketAddr,
         secret: &Secret,
     ) -> io::Result<Self> {
+        Self::connect_observed(endpoint, address, secret, |_| {}).await
+    }
+    /// Fixed local progress labels only; no addresses, capability or peer data.
+    /// Observation does not retry or change the authentication deadline.
+    pub async fn connect_observed(
+        endpoint: &Endpoint,
+        address: SocketAddr,
+        secret: &Secret,
+        mut progress: impl FnMut(&'static str),
+    ) -> io::Result<Self> {
         tokio::time::timeout(Duration::from_secs(5), async {
-            let connection = endpoint
-                .connect(address, NAME)
-                .map_err(io::Error::other)?
-                .await
-                .map_err(io::Error::other)?;
+            progress("quic_connect_setup");
+            let connection = endpoint.connect(address, NAME).map_err(io::Error::other)?;
+            progress("quic_handshake");
+            let connection = connection.await.map_err(io::Error::other)?;
+            progress("control_open");
             let (mut send, mut recv) = connection.open_bi().await.map_err(io::Error::other)?;
+            progress("capability_send");
             send.write_all(AUTH_TAG).await.map_err(io::Error::other)?;
             send.write_all(secret.expose())
                 .await
                 .map_err(io::Error::other)?;
             let mut accepted = [0; 1];
+            progress("authority_reply");
             recv.read_exact(&mut accepted)
                 .await
                 .map_err(io::Error::other)?;
@@ -132,7 +202,7 @@ impl Link {
             })
         })
         .await
-        .map_err(|_| invalid("peer connect deadline"))?
+        .map_err(|_| io::Error::new(io::ErrorKind::TimedOut, "peer connect deadline"))?
     }
     /// The service must supply an already scoped one-use/owned capability and
     /// separately enforce connection admission, revoke/expiry and room ownership.

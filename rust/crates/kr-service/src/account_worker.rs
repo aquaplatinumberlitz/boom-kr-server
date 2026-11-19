@@ -32,20 +32,47 @@ pub struct Pending<T> {
     handoff: Option<Arc<Handoff>>,
 }
 impl<T> Pending<T> {
-    pub async fn wait(mut self) -> Result<T> {
-        let result = self
+    pub async fn wait(self) -> Result<T> {
+        self.receive().await?.accept()
+    }
+    /// Borrow a result for bounded network delivery before accepting its login
+    /// handoff. Dropping this value revokes only that undelivered session.
+    pub async fn receive(mut self) -> Result<Received<T>> {
+        let value = self
             .reply
             .take()
             .expect("reply owned once")
             .await
-            .map_err(|_| Error::Closed)?;
-        if result.is_ok()
-            && let Some(handoff) = &self.handoff
-        {
+            .map_err(|_| Error::Closed)??;
+        Ok(Received {
+            value: Some(value),
+            handoff: self.handoff.take(),
+        })
+    }
+}
+pub struct Received<T> {
+    value: Option<T>,
+    handoff: Option<Arc<Handoff>>,
+}
+impl<T> Received<T> {
+    pub fn value(&self) -> &T {
+        self.value.as_ref().expect("result owned until accepted")
+    }
+    /// Call only after the entire response has been delivered within the worker
+    /// handoff deadline. A late caller cannot resurrect an abandoned session.
+    pub fn accept(mut self) -> Result<T> {
+        if let Some(handoff) = &self.handoff {
             handoff.claim()?;
         }
         self.handoff = None;
-        result
+        Ok(self.value.take().expect("result accepted once"))
+    }
+}
+impl<T> Drop for Received<T> {
+    fn drop(&mut self) {
+        if let Some(handoff) = &self.handoff {
+            handoff.abandon();
+        }
     }
 }
 impl<T> Drop for Pending<T> {
@@ -142,6 +169,16 @@ pub enum PersistenceResult {
 }
 
 enum Command {
+    EndLocal {
+        grants: Vec<Grant>,
+        reply: oneshot::Sender<Result<()>>,
+    },
+    Logout {
+        token: Token,
+        player: i64,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<()>>,
+    },
     Persist {
         job: PersistenceJob,
         deadline: Instant,
@@ -155,9 +192,19 @@ enum Command {
         password: Zeroizing<Vec<u8>>,
         ttl: i64,
         idle: Option<i64>,
-        now: i64,
+        now: AuthorizationTime,
         deadline: Instant,
         reply: oneshot::Sender<Result<Grant>>,
+        handoff: Arc<Handoff>,
+        handoff_ttl: Duration,
+    },
+    LocalLogin {
+        credentials: Vec<(Zeroizing<String>, Zeroizing<Vec<u8>>)>,
+        ttl: i64,
+        idle: Option<i64>,
+        now: AuthorizationTime,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<Vec<Grant>>>,
         handoff: Arc<Handoff>,
         handoff_ttl: Duration,
     },
@@ -284,6 +331,47 @@ impl Drop for Worker {
     }
 }
 impl Client {
+    /// Trusted transport teardown only. Exact tokens cannot revoke a newer
+    /// login, and queue rejection leaves the caller's originals available.
+    pub(crate) fn try_end_local(&self, grants: &[Grant]) -> Result<Pending<()>> {
+        if !(1..=2).contains(&grants.len()) {
+            return Err(Error::InvalidInput);
+        }
+        let grants = grants
+            .iter()
+            .map(|grant| {
+                Ok(Grant {
+                    player: grant.player.clone(),
+                    token: Token::parse(grant.token.expose_secret()).map_err(Error::Backend)?,
+                    expires_at: grant.expires_at,
+                })
+            })
+            .collect::<Result<Vec<_>>>()?;
+        let (reply, rx) = oneshot::channel();
+        self.submit(Command::EndLocal { grants, reply })?;
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: None,
+        })
+    }
+    /// Revoke only the authenticated caller's token using execution-time UTC.
+    pub fn try_logout_current(&self, token: &Token, player: i64) -> Result<Pending<()>> {
+        if player < 1 {
+            return Err(Error::InvalidInput);
+        }
+        let token = Token::parse(token.expose_secret()).map_err(Error::Backend)?;
+        let (reply, rx) = oneshot::channel();
+        self.submit(Command::Logout {
+            token,
+            player,
+            deadline: Instant::now() + self.queue_ttl,
+            reply,
+        })?;
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: None,
+        })
+    }
     /// Bounded nonblocking admission. Blocking transactions run only on the
     /// dedicated normal worker, never on the live-authorization lane or room lock.
     /// Dropping queued work cancels it; an already committed event is durable and
@@ -333,7 +421,99 @@ impl Client {
         ttl: i64,
         now: i64,
     ) -> Result<Pending<Grant>> {
-        self.submit_login(login, password, ttl, None, now)
+        self.submit_login(login, password, ttl, None, AuthorizationTime::Supplied(now))
+    }
+    /// One/two-account DB publication only. The transport adapter must bind
+    /// both grants to its exact TLS admission before granting membership.
+    pub fn try_login_local_current(
+        &self,
+        credentials: &[(&str, &[u8])],
+        ttl: i64,
+        idle: Option<i64>,
+    ) -> Result<Pending<Vec<Grant>>> {
+        self.submit_local_login(credentials, ttl, idle, AuthorizationTime::ExecutionUtc)
+    }
+    pub fn try_login_local(
+        &self,
+        credentials: &[(&str, &[u8])],
+        ttl: i64,
+        idle: Option<i64>,
+        now: i64,
+    ) -> Result<Pending<Vec<Grant>>> {
+        self.submit_local_login(credentials, ttl, idle, AuthorizationTime::Supplied(now))
+    }
+    fn submit_local_login(
+        &self,
+        credentials: &[(&str, &[u8])],
+        ttl: i64,
+        idle: Option<i64>,
+        now: AuthorizationTime,
+    ) -> Result<Pending<Vec<Grant>>> {
+        if !(1..=2).contains(&credentials.len())
+            || !(1..=86400).contains(&ttl)
+            || idle.is_some_and(|idle| !(1..=86400).contains(&idle))
+            || matches!(now, AuthorizationTime::Supplied(value) if value < 0)
+        {
+            return Err(Error::InvalidInput);
+        }
+        let mut keys = Vec::with_capacity(credentials.len());
+        for (login, password) in credentials {
+            if !(3..=32).contains(&login.len())
+                || !login
+                    .bytes()
+                    .all(|b| b.is_ascii_alphanumeric() || b == b'_')
+                || !(12..=128).contains(&password.len())
+            {
+                return Err(Error::InvalidInput);
+            }
+            let key = rate::Limiter::key(login);
+            if keys.contains(&key) {
+                return Err(Error::InvalidInput);
+            }
+            keys.push(key);
+        }
+        let (reply, rx) = oneshot::channel();
+        let handoff = Handoff::new();
+        let command = Command::LocalLogin {
+            credentials: credentials
+                .iter()
+                .map(|(name, password)| {
+                    (
+                        Zeroizing::new((*name).to_owned()),
+                        Zeroizing::new(password.to_vec()),
+                    )
+                })
+                .collect(),
+            ttl,
+            idle,
+            now,
+            deadline: Instant::now() + self.queue_ttl,
+            reply,
+            handoff: handoff.clone(),
+            handoff_ttl: self.queue_ttl,
+        };
+        let mut guard = self.gate.lock().map_err(|_| Error::Closed)?;
+        if guard.sender.as_ref().is_none_or(mpsc::Sender::is_closed) {
+            return Err(Error::Closed);
+        }
+        let now = Instant::now();
+        guard.limiter.check_group(&keys, now)?;
+        guard
+            .sender
+            .as_ref()
+            .ok_or(Error::Closed)?
+            .try_send(command)
+            .map_err(|error| match error {
+                mpsc::error::TrySendError::Full(_) => Error::Busy,
+                mpsc::error::TrySendError::Closed(_) => Error::Closed,
+            })?;
+        for key in keys {
+            guard.limiter.commit(key, now);
+        }
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: Some(handoff),
+        })
     }
     pub fn try_login_with_idle(
         &self,
@@ -346,7 +526,31 @@ impl Client {
         if !(1..=86400).contains(&idle) {
             return Err(Error::InvalidInput);
         }
-        self.submit_login(login, password, ttl, Some(idle), now)
+        self.submit_login(
+            login,
+            password,
+            ttl,
+            Some(idle),
+            AuthorizationTime::Supplied(now),
+        )
+    }
+    pub fn try_login_with_idle_current(
+        &self,
+        login: &str,
+        password: &[u8],
+        ttl: i64,
+        idle: i64,
+    ) -> Result<Pending<Grant>> {
+        if !(1..=86400).contains(&idle) {
+            return Err(Error::InvalidInput);
+        }
+        self.submit_login(
+            login,
+            password,
+            ttl,
+            Some(idle),
+            AuthorizationTime::ExecutionUtc,
+        )
     }
     fn submit_login(
         &self,
@@ -354,7 +558,7 @@ impl Client {
         password: &[u8],
         ttl: i64,
         idle: Option<i64>,
-        now: i64,
+        now: AuthorizationTime,
     ) -> Result<Pending<Grant>> {
         // Bound all secret/name allocation before admission, including rejected jobs.
         if !(3..=32).contains(&login.len())
@@ -363,7 +567,7 @@ impl Client {
                 .all(|b| b.is_ascii_alphanumeric() || b == b'_')
             || !(12..=128).contains(&password.len())
             || !(1..=86400).contains(&ttl)
-            || now < 0
+            || matches!(now, AuthorizationTime::Supplied(value) if value < 0)
         {
             return Err(Error::InvalidInput);
         }
@@ -483,6 +687,118 @@ fn deliver_login(
 fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
+            Command::EndLocal { grants, reply } => {
+                // Cleanup must execute even if the waiter disappeared. Its
+                // exact-token transaction is also safe after the queue deadline.
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                let observed = std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .ok()
+                    .and_then(|time| i64::try_from(time.as_secs()).ok())
+                    .unwrap_or(0);
+                let result = store
+                    .end_local_session(&grants, observed)
+                    .map_err(Error::Backend);
+                let _ = reply.send(result);
+            }
+            Command::LocalLogin {
+                credentials,
+                ttl,
+                idle,
+                now,
+                deadline,
+                reply,
+                handoff,
+                handoff_ttl,
+            } => {
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                if reply.is_closed() {
+                    continue;
+                }
+                if Instant::now() >= deadline {
+                    let _ = reply.send(Err(Error::QueueExpired));
+                    continue;
+                }
+                let borrowed: Vec<_> = credentials
+                    .iter()
+                    .map(|(name, password)| (name.as_str(), password.as_slice()))
+                    .collect();
+                let result = match now {
+                    AuthorizationTime::Supplied(time) => {
+                        store.login_local(&borrowed, ttl, idle, time)
+                    }
+                    AuthorizationTime::ExecutionUtc => {
+                        store.login_local_current(&borrowed, ttl, idle)
+                    }
+                }
+                .map_err(Error::Backend);
+                // Secrets are no longer needed while waiting for a consumer.
+                drop(borrowed);
+                drop(credentials);
+                let grants = match result {
+                    Ok(grants) => grants,
+                    Err(error) => {
+                        let _ = reply.send(Err(error));
+                        continue;
+                    }
+                };
+                let retained = grants
+                    .iter()
+                    .map(|grant| {
+                        Ok(Grant {
+                            player: grant.player.clone(),
+                            token: Token::parse(grant.token.expose_secret())
+                                .map_err(Error::Backend)?,
+                            expires_at: grant.expires_at,
+                        })
+                    })
+                    .collect::<Result<Vec<_>>>()?;
+                let accepted = if reply.send(Ok(grants)).is_ok() {
+                    handoff.accepted(handoff_ttl)
+                } else {
+                    Ok(false)
+                };
+                if !matches!(accepted, Ok(true)) {
+                    // The DB compensator clamps to the durable watermark;
+                    // a later admin timestamp must not prevent cleanup.
+                    store
+                        .release_local_undelivered(&retained, 0)
+                        .map_err(Error::Backend)?;
+                }
+                accepted?;
+            }
+            Command::Logout {
+                token,
+                player,
+                deadline,
+                reply,
+            } => {
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                if reply.is_closed() {
+                    continue;
+                }
+                if Instant::now() >= deadline {
+                    let _ = reply.send(Err(Error::QueueExpired));
+                    continue;
+                }
+                let now = std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .ok()
+                    .and_then(|duration| i64::try_from(duration.as_secs()).ok())
+                    .ok_or(Error::Backend(accounts::Error::ClockRollback));
+                let result =
+                    now.and_then(|now| store.logout(&token, player, now).map_err(Error::Backend));
+                let _ = reply.send(result);
+            }
             Command::Persist {
                 job,
                 deadline,
@@ -573,12 +889,30 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                     let _ = reply.send(Err(Error::QueueExpired));
                     continue;
                 }
-                let result = match idle {
-                    Some(idle) => store.login_with_idle(&login, &password, ttl, idle, now),
-                    None => store.login(&login, &password, ttl, now),
+                let result = match (&now, idle) {
+                    (AuthorizationTime::Supplied(now), Some(idle)) => {
+                        store.login_with_idle(&login, &password, ttl, idle, *now)
+                    }
+                    (AuthorizationTime::Supplied(now), None) => {
+                        store.login(&login, &password, ttl, *now)
+                    }
+                    (AuthorizationTime::ExecutionUtc, Some(idle)) => {
+                        store.login_with_idle_current(&login, &password, ttl, idle)
+                    }
+                    (AuthorizationTime::ExecutionUtc, None) => {
+                        store.login_current(&login, &password, ttl)
+                    }
                 }
                 .map_err(Error::Backend);
-                deliver_login(store, reply, result, now, &handoff, handoff_ttl)?;
+                let delivered_at = match now {
+                    AuthorizationTime::Supplied(now) => now,
+                    AuthorizationTime::ExecutionUtc => std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .ok()
+                        .and_then(|time| i64::try_from(time.as_secs()).ok())
+                        .ok_or(Error::Backend(accounts::Error::ClockRollback))?,
+                };
+                deliver_login(store, reply, result, delivered_at, &handoff, handoff_ttl)?;
             }
             Command::Authorize {
                 token,

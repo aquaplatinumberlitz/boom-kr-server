@@ -1,0 +1,670 @@
+{
+  "schema": "kre-m8-public-launcher-foundation-v1",
+  "source": "design",
+  "status": "design",
+  "scope": "WIP issue476: first-party TLS/login/launch/logout và executable Windows; chưa hoàn tất nhóm player package hoặc acceptance M8.",
+  "canonical": "docs/protocol/auth-session.md#rust-public-launcher",
+  "verification": [
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r5/verification.json",
+      "bytes": 1225,
+      "sha256": "b01b2effe316688a08d070e59f9e1281e9168d52778c55cf073e90c8d7a05aec"
+    },
+    {
+      "path": "local/research/codex/m8-windows-vm-r2/windows-binary-control.json",
+      "bytes": 551,
+      "sha256": "a8344fe9468abe629a5addef86e3ea415ca3ac9e7854dc005931e474df87b553"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/public-launcher-tests-r1.log",
+      "bytes": 1323,
+      "sha256": "ec95b27a5bb715bb93ba35d9eb1252e09049cae2f1d84db4015b0806071f77d0"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launch-tls-tests-r1.log",
+      "bytes": 1011,
+      "sha256": "b6c67182a22438251a6a468fd02abd7aded521c94708178648d1a53c78a4aa57"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/logout-generation-tests-r1.log",
+      "bytes": 1248,
+      "sha256": "3def84f60959d43fd9e14cb11ac80d18454e108d8128751b1aeffb8909b362ba"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/public-launcher-clippy-r5.log",
+      "bytes": 170,
+      "sha256": "bc88ef43fb5c70617dcdeae8dc56d02855505befcd0e4be1e770ae2c7deb9497"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-build-windows-r2.log",
+      "bytes": 170,
+      "sha256": "79224f3fb386564854fafb32d84e15d47a17c36f4557de72705a7163fabb59c8"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/package-key-tests-r1.log",
+      "bytes": 107,
+      "sha256": "0b91efbf18bf599405ac2d4b15a2eefd01b926339e841af31a3da4aa2361e4f9"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-internet-transport-r1.json",
+      "bytes": 1370,
+      "sha256": "b49940c488ab4f4d2602e2c5fa75dcf45d8fe00cdd03f69b21d6690ea3388068"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r7/verification.json",
+      "bytes": 1465,
+      "sha256": "87dc5c8622493f0a0596cfcd0b141f6d0425a4601e221d9c34773a36cf07085e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-address-fmt-r1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-address-clippy-r1.log",
+      "bytes": 170,
+      "sha256": "7e671fa9561fa1431d12873b7a0c0d2ce81cb711e7882b03162f9f86c818ce90"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-address-windows-build-r2.log",
+      "bytes": 170,
+      "sha256": "e115afed3f92f4c2b4dae84e0db71102395d432f8b71b5ce1187c53e2b3b56c0"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-native-attempt-r7.json",
+      "bytes": 2479,
+      "sha256": "b817f5ee02fe9e1605909f4ae680cc47afe5f0251c99fa012264177f45d4eefb"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-startup-dump-r1.json",
+      "bytes": 1732,
+      "sha256": "1c2fbcab0ca6da848499dbd5dee25d7a38ff38f263e8933a7be9279b6d86d6b1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-import-startup-positive-r1.json",
+      "bytes": 1905,
+      "sha256": "c8cd1326ae006ec83bbdb38e30d6cca302e3d0e2450ab6f38a1ed7d9004c11d1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-import-startup-pair-r1.json",
+      "bytes": 1689,
+      "sha256": "35ed4e6dd5733af0482cb61412702b4d97d6cfc503ef8c59a03fc89a8551f06b"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-iat-internet-attempt-r9.json",
+      "bytes": 2614,
+      "sha256": "4b0791b109cec48b0f59bda6d02f2f23499d3dcc6064267c61b2b268e705bc90"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-prechild-failure-r10.json",
+      "bytes": 1628,
+      "sha256": "cd9c1790576788f78d791c387218e3744c6d7436984226c5fd44694bd135503a"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r9/verification.json",
+      "bytes": 1465,
+      "sha256": "a9bb402ba75d61323e96cfae886ef3d2b7c3b7a4496e2e0262937bf49b6743df"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-native-auth-attempt-r15.json",
+      "bytes": 3436,
+      "sha256": "c7997fb7a2628cbd5ab8b7f040cd0243de9396f41671e4a0e2f161ab0e91e96c"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-harness-controls-r1.json",
+      "bytes": 3286,
+      "sha256": "30eae265fcc7e0dc330a144c3d22d735ee213c847f73facf3d2a77d7087ba9cd"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-channel-control-r17.json",
+      "bytes": 2868,
+      "sha256": "f765ce52dbeb4d6ac8fee416a089a7f3e9aa4aecf23eedf7562779d995f3df73"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r11/verification.json",
+      "bytes": 1645,
+      "sha256": "3e4bd9c1579c6d79cd848d543675f91aee92606657e6105369b87c1abc9e0537"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-peer-stop-r20.json",
+      "bytes": 2589,
+      "sha256": "9f9a3022da3d96ac40325d1c255f7f9bdcc3aa62ffef5653a642e85ee267569f"
+    },
+    {
+      "bytes": 2288,
+      "sha256": "f69d850a93b1f28d877c61a35bb4bdf6e9bd289f20c3c2760812971832393f36",
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-channel-fin-r21.json"
+    },
+    {
+      "bytes": 3399,
+      "sha256": "c2d97988e279da0953fe9b4138bf7f853af71dd7a8f6ef9d7904e97bc0033077",
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-guest-fin-r22.json"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-controls-r23-r25.json",
+      "bytes": 3954,
+      "sha256": "78a6fd491335d9cd3563bfb54dab3b34858d7f69014a6bee689925e1653e8846"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r13/verification.json",
+      "bytes": 1686,
+      "sha256": "c28972165295af20f5793d0b56e19bc1cd7a5cdd88dee21ba36bbc5f5a4908ac"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/workspace-tests-r3.log",
+      "bytes": 31955,
+      "sha256": "fa31e6c1605d8c35258a3283f6b5e7e237769c064216023be52be7a83d48dd05"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/workspace-clippy-r3.log",
+      "bytes": 270,
+      "sha256": "7e5e607cacbe5cdb22d6bd4d69f2388b3aefc879b11ee61886f66f171aa47203"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/companion-redaction-control-r2.json",
+      "bytes": 310,
+      "sha256": "ef54654c8e0175edf27b9f6845f61807322bf12fe336b60a211b291f25683430"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r14/verification.json",
+      "bytes": 1686,
+      "sha256": "cf40f549f305f525759df4e2207895c0aeaf6cc8c48899ec24a2c7dbe1e25edd"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-socket-caller-r27.json",
+      "bytes": 5903,
+      "sha256": "a9cb54a1cc08cbd18fe4d24e7242336c5185a42cb9d7c96178a2e552c780307e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-bootstrap-shutdown-r28.json",
+      "bytes": 4225,
+      "sha256": "7ba525e78dc2586f1646e506210c2b69d11465fffe1484061b249037758ea9cd"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-release-handshake-r29.json",
+      "bytes": 2853,
+      "sha256": "49bff7bf9be25f32e76c373208910f8840328d0b3460011c59d2e1b5355615c8"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-controller-stop-r30.json",
+      "bytes": 1036,
+      "sha256": "92b4d26ae7b231843720bc68c3f5886531cb1f5c5f15613fa16e6ced2ad94fda"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/companion-redaction-control-r3.json",
+      "bytes": 349,
+      "sha256": "25fbcd114f3a8dd6cafcdae81a5d43026f75b8f138c603280625141c7996dd58"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/tunnel-tests-r4.log",
+      "bytes": 2331,
+      "sha256": "6020fc0dd9d67c3782d572f8a8b66d557e68eb82cef7cb4687b30c409d9af41d"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/workspace-clippy-r4.log",
+      "bytes": 170,
+      "sha256": "5a07b4c3b0805bf2fb337654896ff97ba0ad9cd473f7f367b487b1f33077f6f7"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/launcher-build-windows-release-r2.log",
+      "bytes": 160,
+      "sha256": "54a93775ba5e6112b0edfd7c2cc05a74e17cd6fd96a15a1b7a51cf758d54a09d"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r15/verification.json",
+      "bytes": 1686,
+      "sha256": "3d949e366427d45628edbc57c97da83ece4ed73c40e6a0476b2ebd0021f6e5a6"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-handshake-category-r31.json",
+      "bytes": 1634,
+      "sha256": "22270d1723f394a52b258b0d3b87358089ca7664d1f602053d4f3a9184438068"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/status-internet-control-r1.json",
+      "bytes": 1489,
+      "sha256": "0873ce9eba862434e1cd43a6d973d841ebaebd67e2991c7f455d1077a555071e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-quic-socket-observation-r1.json",
+      "bytes": 3121,
+      "sha256": "4c8efced40d47e8dfa3ba575040033b2c889338bd3877eee88bc4d7566cee710"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-sendmsg-error-r3.json",
+      "bytes": 3108,
+      "sha256": "6f4f0971f5b84f9fec42bb4fcbb5d64660432399768d604bc936ce3e0ba97e04"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-portable-udp-positive-r4.json",
+      "bytes": 2742,
+      "sha256": "8a313e3f77a55e41abfa6f1fed5cf1954317cf9a63dfbb67d7be5f7267ce681f"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/portable-clippy-r3.log",
+      "bytes": 170,
+      "sha256": "2f225ee9943cf87b770b105bb0a4beff48fdfb15462aedce7f36462e725e1b99"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/socket-error-redaction-test-r1.log",
+      "bytes": 1481,
+      "sha256": "0f7cb0a1e46aed2c3c0df0952efb9eaba4eadf8645d4ecb9ed4aca32f8be7095"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/portable-tunnel-tests-r1.log",
+      "bytes": 2534,
+      "sha256": "58e4ddd4677943275ffd5a7ef26df766bbc6549cd529d6b8c42c8cb1a8b8d38a"
+    },
+    {
+      "path": "local/research/codex/m8-public-launcher-smoke-r22/verification.json",
+      "bytes": 2326,
+      "sha256": "b417d74377a7748657581a4a4fb6c3ce8c31bcce9126fea73368d0a92f69a13e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/portable-workspace-tests-r1.log",
+      "bytes": 33618,
+      "sha256": "c5788281af8a724c4735bdcc6f2c0462310daa1b303889ffd975711477b5fee9"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-vi-r1.json",
+      "bytes": 2900,
+      "sha256": "cf64b76b478625ca92d2e214f2b95d2a98a6071277bbe6b1df866ffb856fcf6a"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-ko-r3.json",
+      "bytes": 3672,
+      "sha256": "19d5c8b79acba447fdda9eb25124f28b513b661ba638eb1b83e5381585f94a20"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-channel-close-r4.json",
+      "bytes": 3411,
+      "sha256": "37332436717408944d24044e7aba4b7a5fbe470e9f0e6b5087cb0ff2760c676f"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-close-entry-r5.json",
+      "bytes": 4954,
+      "sha256": "d50433449f8953a56bb0e89046bd2f40105098456a0f15a9e55833a21db81174"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-result-r7.json",
+      "bytes": 8082,
+      "sha256": "cc62e6b5f936f916b1f4838a8d1bc4b6e3947721723c7f8d360cbdeb67f81919"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-write-r9.json",
+      "bytes": 5847,
+      "sha256": "bb894ab218c9be02fd12338d8cbef56a4017a91799f57cc88896ae8b779cde9b"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-zero-wait-limit-r11.json",
+      "bytes": 5454,
+      "sha256": "153883da22712485df7c645ba52cf453f47117099822f7867f8fd5c0b65d8ecf"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-wait-control-progress-r12.json",
+      "bytes": 3746,
+      "sha256": "46857c8f3ee3fe96a7de36ed1ca3e892cd409d430bf0c6ddd51402a3f446e6af"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-wait-compat-r15.json",
+      "bytes": 11858,
+      "sha256": "1523cef3a658384ed31453de17aa533c4cb6f11e9b0608086b4e9aa4610af9d2"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-create-r16.json",
+      "bytes": 2681,
+      "sha256": "9fa83866e75f69564d0dffb752a83240c9ffa152368e6fd6007281c61507c495"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-room-probe-r18.json",
+      "bytes": 3130,
+      "sha256": "bfa27933e84785db90b9ce20f8266e668126dc3bd0caac977b5524c48e1e0934"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/wait-compat-checks-r1/verification.json",
+      "bytes": 1096,
+      "sha256": "8d94b347d1fc7a0e62730c5b132870a32cdaf5bafbf6f82f168f2d10795c746d"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-room-trap-r20.json",
+      "bytes": 4955,
+      "sha256": "e671651059b73840ae006e777663e00482df6894cd50cfe43556920f1df6519c"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-offline-cleanup-r21.json",
+      "bytes": 3036,
+      "sha256": "9677bbb2d4a81621425d010eaf93f746bef11c1bcb5a1616e37d1a86ff168518"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-verification-r1.json",
+      "bytes": 669,
+      "sha256": "4037453f1764af50ff70b02a352f6288b551ffd61f30c6eb2766a6c03df9e88e"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-noack-r24.json",
+      "bytes": 4076,
+      "sha256": "0a5dd5ccc9593c10ac4876e996e3532384889bff918ce98a9766f1c6e0e4e8c1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit-ui-input-r25.json",
+      "bytes": 4490,
+      "sha256": "bb9fe9341868d496806bc986fd06b68883a813200f3871b08040aef71791de69"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/owner-ssh-recovery-r26.json",
+      "bytes": 2885,
+      "sha256": "02b74193bb97e522e8b5425cb081023abb4073d8eb8589959a237d010f1e70d1"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/exit-dispatch-progress-r29.json",
+      "bytes": 12060,
+      "sha256": "e0f02f5c38f265884c8410d3c523b2bc696056d0be97c96c9c2ac57ce2b0cade"
+    },
+    {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/offline-exit-controls-r32.json",
+      "bytes": 8497,
+      "sha256": "0044f3df957efa4ff98d20d01de08c08efd9cfbfa8eb8f9e69d40643ab97a469"
+    }
+  ],
+  "limits": [
+    "TLS/SQLite/companion smoke loopback cô lập dùng /bin/true và stub Python làm child; không KR native wire hoặc gameplay.",
+    "Windows binary-control receipt đầu chỉ có invalid-input không NIC. Lượt Windows mới có account/companion Internet và mở KR đúng hash, nhưng native crash trước login game; không nâng thành native acceptance.",
+    "Hai lượt TLS/account/companion qua Internet thật đã có với child /bin/true và cleanup rule/DB. Native Windows/Wine player package, trận KR trên Internet, expiry/revoke/full cancellation matrix và operator installation còn phải kiểm.",
+    "Không checkpoint/audit hoàn tất nhóm hoặc PR riêng cho từng phép thử; phần WIP giữ một nhóm issue476.",
+    "Raw lỗi admin response assumption, socket parent permission và pending registry sau logout giữ ở local; run pass không thay failure.",
+    "Windows native preparation has explicit failed/corrected candidates; readonly input config and original-exe selection corrected before any KR launch. Do not infer Windows native acceptance from installer/hash or old binary-control receipts.",
+    "Run6 verified173 files and corrected CP337 vi executable in the dedicated Windows installation; owner expired before service start. Run7 is a continuation of the same installed VM, not a second clean installation. No native KR claim from these installation receipts.",
+    "Windows run7: BEX/0xc0000005 at zero, nguyên nhân chưa xác định; session đã logout và tài nguyên VM/VPS/rule được thu hồi. Dump offline tiếp theo không dùng VPS. Smoke mới có native failure exit và IP login khác nguồn UDP loopback, không chứng minh native gameplay.",
+    "Native KR trên Windows đã tới channel6/17 sau IAT và reset dữ liệu global; chưa tới67/UI profile/sảnh/phòng/trận. Các nhãn peer và trạng thái exit mới là instrumentation, không proof nguyên nhân trước khi có run đối chiếu."
+  ],
+  "native_preparation": {
+    "path": "local/research/codex/m8-player-launcher-preparation-r1/native-preparation-observations.json",
+    "bytes": 4125,
+    "sha256": "08c46c4f1bf43549d7a12ac65d75fc7385bb4d4cde99e3a9b65f601fdb2ae034"
+  },
+  "windows_install_ready": {
+    "path": "local/research/codex/m8-player-launcher-preparation-r1/windows-install-ready-r6.json",
+    "bytes": 1936,
+    "sha256": "4f0c33acd75143e13f736e8137673e9ac8302da6a59b027a0a05b20932dcef6a"
+  },
+  "multilang_native_vi": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-vi-r1.json",
+      "bytes": 2900,
+      "sha256": "cf64b76b478625ca92d2e214f2b95d2a98a6071277bbe6b1df866ffb856fcf6a"
+    },
+    "status": "candidate",
+    "source": "kr_runtime",
+    "reached": "auth1/profile4/9/15/62/5/7/channel6/17; no request67",
+    "limits": "Derived loader-control exe in separate runtime folder; no room/gameplay. Popup locale cause unknown. VM/service/rules cleaned; active sessions0, logout1."
+  },
+  "multilang_native_ko": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-native-ko-r3.json",
+      "bytes": 3672,
+      "sha256": "19d5c8b79acba447fdda9eb25124f28b513b661ba638eb1b83e5381585f94a20"
+    },
+    "status": "candidate",
+    "source": "kr_runtime",
+    "reached": "Korean logo/video/login/loading, auth/channel6/17 then EOF before67",
+    "limits": "Same failing channel stage as vi; cause unknown. No native Unicode account/room/chat or match acceptance. Cleanup VM/service/rules and DB0/logout1."
+  },
+  "windows_channel_close_candidate": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-channel-close-r4.json",
+      "bytes": 3411,
+      "sha256": "37332436717408944d24044e7aba4b7a5fbe470e9f0e6b5087cb0ff2760c676f"
+    },
+    "source": "kr_runtime",
+    "status": "candidate",
+    "limits": "Direct setter return1113AA0 and current/start/limit identify immediate timer expiry against zero limit. Why zero remains unknown; runtime/static zero-only30s controls reach lobby without forcing success. Final package acceptance pending.",
+    "direct_entry_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-close-entry-r5.json",
+      "bytes": 4954,
+      "sha256": "d50433449f8953a56bb0e89046bd2f40105098456a0f15a9e55833a21db81174"
+    },
+    "dialog_result_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-result-r7.json",
+      "bytes": 8082,
+      "sha256": "cc62e6b5f936f916b1f4838a8d1bc4b6e3947721723c7f8d360cbdeb67f81919"
+    },
+    "result_writer_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-dialog-write-r9.json",
+      "bytes": 5847,
+      "sha256": "bb894ab218c9be02fd12338d8cbef56a4017a91799f57cc88896ae8b779cde9b"
+    },
+    "zero_wait_limit_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-zero-wait-limit-r11.json",
+      "bytes": 5454,
+      "sha256": "153883da22712485df7c645ba52cf453f47117099822f7867f8fd5c0b65d8ecf"
+    }
+  },
+  "integration_gate": {
+    "status": "failed",
+    "summary": {
+      "path": "local/research/codex/m8-player-names-949x-r1/checkpoint-gate-isolated-summary.json",
+      "bytes": 3102,
+      "sha256": "d6287353ea422804aa40e41d1a058c033a4cd34c5c96cb59153f43444ab90ef2"
+    },
+    "limits": "Task local symlink cannot pass path fence. Isolated exact-head view also has6150 unique missing host paths,95 canonical absolute aliases outside view,23 source hash mismatches and2 AUD015 missing linked screenshots. Prune registry still empty; no recovery/deletion/checker bypass performed. Not a passing group gate. Later native controls and source commits do not repair this failed history/raw gate."
+  },
+  "windows_zero_wait_control": {
+    "source": "kr_runtime",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-ko-wait-control-progress-r12.json",
+      "bytes": 3746,
+      "sha256": "46857c8f3ee3fe96a7de36ed1ca3e892cd409d430bf0c6ddd51402a3f446e6af"
+    },
+    "reached": "Explicit zero-only30s runtime control: natural dialog result1, native67,241/14/291, keepalives",
+    "limits": "r12 exit1 from probe2048-call bound retained. r13 rendered lobby confirmed; unrevoked1/logout0 and stale launcher_running report prevent lifecycle acceptance. Static/cancellation controls are recorded separately."
+  },
+  "windows_wait_compatibility": {
+    "source": "design",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-wait-compat-r15.json",
+      "bytes": 11858,
+      "sha256": "1523cef3a658384ed31453de17aa533c4cb6f11e9b0608086b4e9aa4610af9d2"
+    },
+    "reached": "No-debugger ko lobby/backend profile; ordinary create dialog. Edited-title email gate; default title pending.",
+    "lifecycle": "r13/r14 unrevoked1/logout0 retained. r15 bounded harness cancellation: report finished/exit1, unrevoked0/logout1.",
+    "limits": "Private runtime copy, older ARM service. No current Unicode/native match/final package acceptance.",
+    "vi": {
+      "source": "kr_runtime",
+      "status": "candidate",
+      "summary": {
+        "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-create-r16.json",
+        "bytes": 2681,
+        "sha256": "9fa83866e75f69564d0dffb752a83240c9ffa152368e6fd6007281c61507c495"
+      },
+      "reached": "Vietnamese lobby/profile and managed default-title create81; C000001D transition failure before room render.",
+      "lifecycle": "Report finished/exit1; logout1/unrevoked0, VM/service/rules cleaned."
+    },
+    "instrumented_vi_room": {
+      "summary": {
+        "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-vi-windows-room-probe-r18.json",
+        "bytes": 3130,
+        "sha256": "bfa27933e84785db90b9ce20f8266e668126dc3bd0caac977b5524c48e1e0934"
+      },
+      "reached": "vi default title/create81/585/96/266 and rendered room/WinNative/Factory07",
+      "limits": "r16 C000001D not reproduced; probe180s bound and companion_stopped exit1 retained. No uninstrumented stability or clean UI logout."
+    }
+  },
+  "windows_room_cleanup_trap": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-room-trap-r20.json",
+      "bytes": 4955,
+      "sha256": "e671651059b73840ae006e777663e00482df6894cd50cfe43556920f1df6519c"
+    },
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "condition": "WER2260DF8/UD2, direct callerD66A6D→1494A0E→16EA064",
+    "limits": "External slot name candidateUninstallDWK. Optional offline omission pending native; not original behavior or a server error diagnosis."
+  },
+  "windows_offline_cleanup_control": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/multilang-windows-offline-cleanup-r21.json",
+      "bytes": 3036,
+      "sha256": "9677bbb2d4a81621425d010eaf93f746bef11c1bcb5a1616e37d1a86ff168518"
+    },
+    "reached": "Uninstrumented vi lobby→create/default title→rendered room→86→lobby",
+    "limits": "Explicit offline copy policies; final UI exit collided with harness deadline. r22 launch_grant failure before native/no UI action, cause unknown. No current service/name/chat/match/final package claim."
+  },
+  "native_current_arm_name": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native949x-name-vi-r23.json",
+      "bytes": 4314,
+      "sha256": "8d9320b61a2efafca748f41a8be1c7aeb00c6ec829b772f3e6d8ebb3ecfac082"
+    },
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "scope": "Single Windows vi Việt01 profile/room and return lobby",
+    "limits": "Literal lobby79 closes service channel; companion_stopped exit1 retained; exact no-ACK observation control not yet native verified."
+  },
+  "lobby_exit79_control": {
+    "source": "design",
+    "status": "design",
+    "scope": "Once per current account managed lobby; literal5b5f, no room Session, authorize(false), no ACK/activity/state mutation",
+    "native_status": "negative_for_clean_UI_exit",
+    "verification": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-verification-r1.json",
+      "bytes": 669,
+      "sha256": "4037453f1764af50ff70b02a352f6288b551ffd61f30c6eb2766a6c03df9e88e"
+    },
+    "native_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit79-noack-r24.json",
+      "bytes": 4076,
+      "sha256": "0a5dd5ccc9593c10ac4876e996e3532384889bff918ce98a9766f1c6e0e4e8c1"
+    },
+    "native_scope": "Once authorized observation retained channel, but native remains lobby until harness cancellation; no ACK guessed.",
+    "input_control": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/lobby-exit-ui-input-r25.json",
+      "bytes": 4490,
+      "sha256": "bb9fe9341868d496806bc986fd06b68883a813200f3871b08040aef71791de69"
+    },
+    "next": "Observe native modal button1236/result4 and callerD7C450 gate, before changing protocol or executable."
+  },
+  "owner_ssh_recovery": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/owner-ssh-recovery-r26.json",
+      "bytes": 2885,
+      "sha256": "02b74193bb97e522e8b5425cb081023abb4073d8eb8589959a237d010f1e70d1"
+    },
+    "source": "design",
+    "status": "confirmed",
+    "limits": "r26 stopped before native; original failed cleanup preserved. Recovery confirms owned service/rules gone. Bounded query/stop fix not native acceptance."
+  },
+  "exit_dispatch_observation": {
+    "source": "kr_runtime",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/exit-dispatch-progress-r29.json",
+      "bytes": 12060,
+      "sha256": "e0f02f5c38f265884c8410d3c523b2bc696056d0be97c96c9c2ac57ce2b0cade"
+    },
+    "scope": "Correct button/result/predicate/virtual call measured; repaired quit import mismatch; r29 C++empty content failure retained",
+    "limits": "No clean exit. PostQuitMessage and empty-onlyCP201 controls are explicit private ABI policies, native validation pending."
+  },
+  "offline_exit_controls_progress": {
+    "summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/bounded-exit-observation-r35.json",
+      "bytes": 3917,
+      "sha256": "dce2cd012eac0bf2ae4564655aa3d8cc59ee2dd3a6d7312727ad9d80f4ef736d"
+    },
+    "source": "kr_runtime",
+    "status": "candidate",
+    "limits": "Native r40 confirms baked initial-list pointer; optional four-byte head reset r41 passes this fault then hits unrecovered encoded-callback import16EA12C. Encoder/decoder API identity and full native cleanup remain unknown. No runtime callback suppression or clean exit claimed.",
+    "dump_pending_node_lifetime": {
+      "path": "local/research/codex/m8-multilang-windows-native-vi-exit-observation-r35/dumps/CA.exe.5984.dmp",
+      "bytes": 34172558,
+      "sha256": "9155f46f6681b44a231c2aeaae232aac0a5895180ccc77881f3b86822b493806"
+    },
+    "current_investigation": {
+      "path": "local/research/codex/m8-windows-pair-startup-r5/pair-snapshot-progress.json",
+      "bytes": 6251,
+      "sha256": "c8f881c17b9166e650dccfa7404a46e7dfe708c79758318b51b5a5fedd2a5384"
+    }
+  },
+  "run_storage_cleanup": {
+    "source": "design",
+    "status": "confirmed",
+    "authorization": "docs/evidence/owner-directives/run-cleanup.json",
+    "old_runs_receipt": {
+      "path": "local/retention/m8-cleanup-authorized-r2/cleanup-receipt.json",
+      "bytes": 1687,
+      "sha256": "d1d150411471398cb8f3532b82ce111933fe8fcaee289a58316a74ec3a8a0cbf"
+    },
+    "harness_control": {
+      "path": "local/research/codex/m8-cleanup-harness-control-r1/control-result.json",
+      "bytes": 1316,
+      "sha256": "16915a6756608c6a6e06d1637ca19ca4edfa4b16cf4739214fbed90426960b56"
+    },
+    "scope": "477 disposable files in 80 old M8 runs; exact-plan apply via 3d724dc. Automatic scratch cleanup wired after stop/export with durable manifest and reference guards.",
+    "verification": "13 deletion safety tests; qcow2/FAT control and Windows r35 automatic overlay/seed removal with logs/capture/dump retained.",
+    "limits": "Windows r35 cleanup confirmed; native exit remains failing. Dump retained for unresolved cleanup node lifetime. Uncertain stop/export preserves scratch; r34 original guard failure and recovery remain separately recorded.",
+    "verification_summary": {
+      "path": "local/research/codex/m8-player-launcher-preparation-r1/native-cleanup-verification-r2.json",
+      "bytes": 1370,
+      "sha256": "363b84bc21e36f573731746569da64fb7c552599b29caf3e999d0a46dfa3255a"
+    },
+    "checkpoint_gate": {
+      "status": "failed",
+      "result": {
+        "path": "local/research/codex/m8-player-launcher-preparation-r1/post-cleanup-checkpoints-r2-result.json",
+        "bytes": 1345,
+        "sha256": "09c44dad3a012348c68d944994df9171b35f73bde8b768486d279ab4d46fe1f2"
+      },
+      "reason": "579499 evidence rows verified; history verified, but 6437 unavailable host evidence,95 outside path aliases and40 mismatches/other errors remain. Container omitted legacy external mounts; no evidence gate claimed."
+    },
+    "native_receipt": {
+      "path": "local/research/codex/m8-multilang-windows-native-vi-exit-observation-r35/run-cleanup-result.json",
+      "bytes": 693,
+      "sha256": "d4dd303390289e8dccca0b2673a0dc826fb1ef1684c11872d0eba97fda62fb98"
+    }
+  },
+  "paired_native_progress": {
+    "source": "kr_runtime",
+    "status": "candidate",
+    "summary": {
+      "path": "local/research/codex/m8-pair-controller-control-r4/native-pair-progress-r38.json",
+      "bytes": 3702,
+      "sha256": "d05be5b0dbf2ae1da18576b6aaadb3fe329d55a721e7830a4c5cdf44cabf1818"
+    },
+    "scope": "Two distinct vi/ko launcher grants in one Windows VM; no shared room acceptance.",
+    "limits": "Secondary debugger observation r42 confirms existing mutex/error183/wait258 and rejection entry1253D29 while vi remains room. Later ko cleanup hits22614AC. No mutex bypass, native clean UI exit, same-room cross-language or final package acceptance.",
+    "standalone_ko_comparison": {
+      "path": "local/research/codex/m8-pair-controller-control-r4/ko-alone-control-r39.json",
+      "bytes": 2449,
+      "sha256": "f9747935c583480d982264ad07ab1baa18e169a4fc689d610c7ea4b4f1bccd10"
+    },
+    "snapshot_cleanup_investigation": {
+      "path": "local/research/codex/m8-windows-pair-startup-r5/pair-snapshot-progress.json",
+      "bytes": 6251,
+      "sha256": "c8f881c17b9166e650dccfa7404a46e7dfe708c79758318b51b5a5fedd2a5384"
+    },
+    "singleton_runtime_observation": {
+      "path": "local/research/codex/m8-multilang-windows-native-pair-guard-r42/guard-verification.json",
+      "bytes": 2800,
+      "sha256": "fa5abb25fd5b3837a106dcee328bd559ad686a8d0907030e6baf940fbdfee050"
+    }
+  },
+  "wine_pair_progress": {
+    "path": "local/research/codex/m8-wine-pair-control-r1/wine-pair-progress.json",
+    "bytes": 10900,
+    "sha256": "742133216263d4489634e655319f86780cd5e1e447a6afcdf4e4e31eea147bb6"
+  },
+  "ingame_login_owner_transition": {
+    "authorization": "docs/evidence/owner-directives/m8-ingame-login.json",
+    "feasibility": "docs/evidence/rust-service/m8-ingame-login-feasibility.json",
+    "status": "feasibility_not_established",
+    "policy": "Stop dependent launcher/auth changes; preserve token path. Older M8 launcher/name/chat controls retain their exact scope."
+  }
+}

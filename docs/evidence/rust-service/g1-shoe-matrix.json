@@ -1,0 +1,458 @@
+{
+  "schema": "kre-g1-shoe-matrix-v1",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+  "directive": "docs/evidence/owner-directives/g1-item-scope-cut.json",
+  "scope": "Nhóm Shoe: bốn hướng, corridor/khoảng cách và biên đã đo, hai peer/retirement/reset/account/journal. Policy report-derived, không toàn physics gốc.",
+  "native": {
+    "rounds": 8,
+    "clients": 2,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 5,
+        "bomb_id": 2,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          3,
+          3
+        ],
+        "endpoint_delta": [
+          -3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 7,
+        "bomb_id": 5,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          9,
+          3
+        ],
+        "endpoint_delta": [
+          3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 3,
+        "selector": 6,
+        "bomb_id": 8,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 4,
+        "selector": 4,
+        "bomb_id": 10,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 5,
+        "selector": 5,
+        "bomb_id": 12,
+        "source": [
+          8,
+          4
+        ],
+        "target": [
+          2,
+          4
+        ],
+        "endpoint_delta": [
+          -6,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 6,
+        "selector": 7,
+        "bomb_id": 15,
+        "source": [
+          7,
+          3
+        ],
+        "target": [
+          9,
+          3
+        ],
+        "endpoint_delta": [
+          2,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 7,
+        "selector": 6,
+        "bomb_id": 17,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 8,
+        "selector": 4,
+        "bomb_id": 19,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      }
+    ],
+    "getter_checks": 864,
+    "covered_selectors": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "semantic": {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/motion-verification.json",
+      "bytes": 3714,
+      "sha256": "990ea5f74a585dabdbc099a195b7223c5fd67929a9aa5c01e21955b8e32b1113"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/matrix-verification.json",
+      "bytes": 675,
+      "sha256": "3bb5f513081a0f3691399bea4e2b54465118ce5905da49aba85eea6911bf2952"
+    },
+    "selector_label_deviation": {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/selector-name-correction.json",
+      "bytes": 1519,
+      "sha256": "615903d758d723de865165994fc18c82e2d6226141ae0897329994ae763b69e4"
+    }
+  },
+  "implementation": {
+    "geometry": "Selector4/left,5/up,6/right,7/down: cùng trục và đúng dấu, endpoint khác nguồn và trong map. Toàn corridor passable, không có allocation khác; không yêu cầu vật cản liền ngay sau endpoint.",
+    "reservation": "Nguồn và toàn corridor giữ đến mọi retirement receipt; giữ owner/member/vòng, life/item, deadline, clone/queue và rollback.",
+    "authority": "Report-derived design; giới hạn lời gọi EAB1C0 quan sát13 theo trục dọc,15 theo trục ngang; không suy đó là stat nhân vật hoặc vật lý server gốc."
+  },
+  "evidence": [
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/matrix.json",
+      "bytes": 70192,
+      "sha256": "1b0223daba14f4153c93dc96d9091b0448e8c79bcfd64bbdf4a0efb5743f2a2a"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/decoded-channels-shared.json",
+      "bytes": 368332,
+      "sha256": "a581fee1e4ebd98414d0b8f363a27eb0f677ffa005b32178c4d20573d012ddf1"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/runtime-preflight.json",
+      "bytes": 81264,
+      "sha256": "928d2c4bff42e5fdb7277c4bd8c699abac4866bf8fefb47a6ed3dbe7507f6c20"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/storage-export.json",
+      "bytes": 11174,
+      "sha256": "9bc6857614133af5f10a195a42f90ad707d5092f775168b13d7718ab3a9bc8c9"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-native-matrix-r5/native/cycles/run.json",
+      "bytes": 1092892,
+      "sha256": "dc2b576b6fd745c73ece5d0c188d124c64a2451201db195524c20a97bf8e0383"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/matrix.json",
+      "bytes": 36467,
+      "sha256": "44a2a627ccb70fb94b80ade56789fd9e63402b6a08d3f5d7fca34989ab0ad52b"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/decoded-channels-shared.json",
+      "bytes": 193410,
+      "sha256": "c7c85e92fa9201798064fa37fe63a398d600d63ce066c5ebf3d29555dda7e19e"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/runtime-preflight.json",
+      "bytes": 81866,
+      "sha256": "5c672a6a45b7f22b078059d1eb5f837a6a0d20189265fc4518ebfcf0e8f88f51"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/launch-exit.json",
+      "bytes": 81,
+      "sha256": "5d0487b382d28b3f285763c7e679f60c8193927bec0b9847ef29327dc4c0b9e8"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/storage-export.json",
+      "bytes": 11345,
+      "sha256": "f275190da91e4db1ad40b6c380e1c3a5361cdf10072642c4f62e6b3fb2c93ff3"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/native/cycles/run.json",
+      "bytes": 535459,
+      "sha256": "3d8c73950c0edfef476c2baa0fd1fa1d245510d08e0e02efb5bdfa1b6160c74b"
+    }
+  ],
+  "remaining": [
+    "Không còn lát riêng theo hướng/khoảng cách trong nhóm G1; thao tác duplicate/late/inflight/foreign/queued EOF chỉ có mức kiểm đã ghi, không native fault injection.",
+    "Mọi roster/nhân vật/map và physics/authority đầy đủ không được suy từ ma trận. Vận hành/Internet transport mới/tải/backup/restore/soak thuộc M8."
+  ],
+  "limits": [
+    "Nhãn selector ngang của input gốc bị đảo: Right thực phát6, Left phát4. Raw và matrix giữ nguyên; correction riêng gắn SHA matrix/wire, verifier kiểm exact selector, phím, endpoints và consumer. Không gọi matrix nguyên bản khớp mọi nhãn kế hoạch.",
+    "Chỉ Wine/private LAN và hai account C1/C0; không mọi roster/nhân vật/map hoặc G1 đã đóng.",
+    "Batch ngang hai vòng giữ expectation8 kế thừa input cũ: correction riêng gắn hash matrix yêu cầu rounds=cases=effective readers=2. Exact119/162/native/account/journal vẫn kiểm, không gọi input nguyên bản khớp mọi nhãn."
+  ],
+  "failed_factory_range": [
+    "Các cấu hình Factory07 r1/r2 bị từ chối trước ready do profile packet set/size không khớp; không có gameplay acceptance.",
+    "R3 có setup nhưng route row0 bị tường cột3 chặn; dữ liệu map đã đối chiếu lại. Không gọi Factory07 có hành lang ngang trống."
+  ],
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/472",
+  "horizontal_distance_native": {
+    "rounds": 2,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 6,
+        "bomb_id": 2,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          2
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 4,
+        "bomb_id": 4,
+        "source": [
+          6,
+          5
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -2
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      }
+    ],
+    "getter_checks": 216,
+    "semantic": {
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/motion-verification.json",
+      "bytes": 1826,
+      "sha256": "23698492cc5fa3e541d7c9608bae68ca972ec6ac1e1e9fc98049f4c0dba50fe8"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/matrix-verification.json",
+      "bytes": 969,
+      "sha256": "f70a1ec1032b25638a89e8240964180112fe86e1488631aaad2b9fafb47fd3db"
+    },
+    "inherited_expectation_deviation": {
+      "path": "local/research/codex/g1-shoe-horizontal-distance-native-r2/matrix-count-correction.json",
+      "bytes": 552,
+      "sha256": "9f2a4bd154b111984220accd5ec4eb848699ab761564f66e2d79a9fe00c0e020"
+    }
+  },
+  "final_build_native": {
+    "rounds": 4,
+    "cases": [
+      {
+        "round": 1,
+        "selector": 5,
+        "bomb_id": 2,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          3,
+          3
+        ],
+        "endpoint_delta": [
+          -3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 2,
+        "selector": 7,
+        "bomb_id": 5,
+        "source": [
+          6,
+          3
+        ],
+        "target": [
+          9,
+          3
+        ],
+        "endpoint_delta": [
+          3,
+          0
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 3,
+        "selector": 6,
+        "bomb_id": 8,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          5
+        ],
+        "endpoint_delta": [
+          0,
+          1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      },
+      {
+        "round": 4,
+        "selector": 4,
+        "bomb_id": 10,
+        "source": [
+          6,
+          4
+        ],
+        "target": [
+          6,
+          3
+        ],
+        "endpoint_delta": [
+          0,
+          -1
+        ],
+        "opaque_tail": [
+          1000,
+          3
+        ]
+      }
+    ],
+    "getter_checks": 432,
+    "semantic": {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/motion-verification.json",
+      "bytes": 2373,
+      "sha256": "de35d7e7b8410a449ae692e07f7ca187cedf93392e28a78ce8e3066e611b83a0"
+    },
+    "lifecycle": {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/matrix-verification.json",
+      "bytes": 710,
+      "sha256": "9dce8410905e4d497f40f078c93f2dc72f6654273503e0be844937601b055c7e"
+    },
+    "service": {
+      "path": "local/research/codex/g1-shoe-final-four-native-r1/binary/kr-service",
+      "bytes": 115479408,
+      "sha256": "48eec8bc6c789062c6ae569b92e03d3786a6bb34279a0a671ec91cb04c0ecba3"
+    },
+    "client": {
+      "sha256": "4b781fbcea21e0f6294c729b63be86ab2953d60ad83b0d0c9219359f826107ed"
+    },
+    "source": "Direction-guard final build; all four positive selectors exercised with exact captured endpoints."
+  },
+  "group_checks": "Fmt/clippy/workspace tests đã đạt; một audit/checkpoint cùng lần đối chiếu G1 cuối, exact-head gate/CI trước merge."
+}

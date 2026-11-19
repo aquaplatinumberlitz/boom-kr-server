@@ -1,7 +1,7 @@
 {
   "schema": "kre-feature-index-v1",
   "build": "KR00967",
-  "as_of": "CP334",
+  "as_of": "CP342",
   "sources": {
     "plan": "docs/PLAN.md",
     "contract": "docs/PROTOCOL.md",
@@ -483,7 +483,8 @@
           "docs/evidence/rust-service/r1g-admission.json",
           "docs/evidence/rust-service/m7d-account-ownership.json",
           "docs/evidence/rust-service/m5b-dynamic-accounts.json",
-          "docs/evidence/rust-service/m5b-native-recovery.json"
+          "docs/evidence/rust-service/m5b-native-recovery.json",
+          "docs/evidence/rust-service/m8-account-name-encoding.json"
         ]
       },
       "coverage": {
@@ -606,7 +607,10 @@
             "rust/crates/kr-service/src/account_serving.rs",
             "docs/protocol/auth-session.md#rust-account-serving",
             "docs/protocol/room-membership.md#rust-managed-account-ownership",
-            "docs/protocol/auth-session.md#rust-db-account-profiles"
+            "docs/protocol/auth-session.md#rust-db-account-profiles",
+            "docs/protocol/auth-session.md#rust-patched-account-names",
+            "rust/crates/kr-wire/src/kr00967/text949x.rs",
+            "tools/text949x_reference.py"
           ],
           "delivery": "via_pr"
         },
@@ -3774,7 +3778,8 @@
           "docs/evidence/item-families/punch-horizontal-action.json",
           "docs/evidence/rust-service/g1-punch-horizontal.json",
           "docs/evidence/item-families/punch-selector2-action.json",
-          "docs/evidence/rust-service/g1-punch-matrix.json"
+          "docs/evidence/rust-service/g1-punch-matrix.json",
+          "docs/evidence/rust-service/g1-shoe-matrix.json"
         ]
       },
       "coverage": {
@@ -3850,7 +3855,8 @@
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/456",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/460",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/462",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/472"
       ]
     },
     {
@@ -6025,7 +6031,14 @@
           "docs/protocol/room-membership.md#rust-r1f-session-binding",
           "docs/evidence/rust-service/r1f-session-binding.json",
           "docs/protocol/rust-boundary.md#rust-r1g-admission",
-          "docs/evidence/rust-service/r1g-admission.json"
+          "docs/evidence/rust-service/r1g-admission.json",
+          "docs/evidence/rust-service/m8-server-package.json",
+          "docs/evidence/rust-service/m8-public-launcher-foundation.json",
+          "docs/evidence/rust-service/m8-multilang-player-package.json",
+          "docs/evidence/rust-service/m8-room-chat-contract.json",
+          "docs/evidence/rust-service/m8-login-input-controls.json",
+          "docs/evidence/rust-service/m8-login-stage-manual.json",
+          "docs/evidence/rust-service/m8-login-local-profiles.json"
         ]
       },
       "coverage": {
@@ -6080,8 +6093,12 @@
             ]
           },
           "internet": {
-            "state": "unknown",
-            "refs": []
+            "state": "observed",
+            "refs": [
+              "docs/evidence/rust-service/m8-room-chat-contract.json",
+              "docs/evidence/rust-service/m8-login-input-controls.json",
+              "docs/evidence/rust-service/m8-login-stage-manual.json"
+            ]
           }
         },
         "implementation": {
@@ -6122,7 +6139,40 @@
             "docs/protocol/life-results.md#rust-return-cleanup",
             "docs/protocol/rust-boundary.md#rust-m3-acceptance",
             "docs/protocol/auth-session.md#rust-account-worker",
-            "docs/protocol/auth-session.md#rust-account-idle-rate"
+            "docs/protocol/auth-session.md#rust-account-idle-rate",
+            "tools/rust_service_package.py",
+            "tools/rust_package_runtime.py",
+            "tools/smoke_rust_service_package.py",
+            "tools/test_rust_service_package.py",
+            "rust/crates/kr-service/src/public_launcher.rs",
+            "rust/crates/kr-tunnel/src/launch_tls.rs",
+            "rust/crates/kr-tunnel/src/bin/kr-launch.rs",
+            "tools/native_windows_candidate.py",
+            "tools/native_windows_input.py",
+            "tools/native_windows_install.ps1",
+            "tools/native_windows_startup_diagnostic.ps1",
+            "tools/native_pe_import_control.py",
+            "tools/native_windows_bootstrap.py",
+            "tools/native_windows_ready_service.py",
+            "rust/crates/kr-wire/src/kr00967/chat.rs",
+            "tools/native_windows_multilang.py",
+            "tools/native_windows_multilang.ps1",
+            "tools/native_windows_socket_probe.c",
+            "tools/native_pe_wait_compat.py",
+            "tools/test_native_pe_wait_compat.py",
+            "docs/protocol/lobby-profile.md#rust-patched-room-chat",
+            "rust/crates/kr-service/src/room_io_chat_tests.rs",
+            "tools/native_run_cleanup.py",
+            "tools/test_native_run_cleanup.py",
+            "tools/native_windows_pair.ps1",
+            "tools/native_wine_pair.py",
+            "tools/native_login_capture.cs",
+            "docs/protocol/auth-session.md#rust-ingame-login-feasibility",
+            "rust/crates/kr-service/src/account_bridge/ingame_wire.rs",
+            "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+            "rust/crates/kr-wire/src/kr00967/account.rs",
+            "tools/native_login_profile_control.py",
+            "tools/test_native_login_profile_control.py"
           ],
           "delivery": "via_pr"
         },
@@ -6167,7 +6217,9 @@
       },
       "issues": [
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
-        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369"
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474",
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476"
       ]
     }
   ]

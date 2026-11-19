@@ -58,6 +58,8 @@ pub(crate) fn validate_projection(
 #[serde(deny_unknown_fields)]
 pub struct Config {
     #[serde(default)]
+    pub public_launcher: Option<crate::public_launcher::Config>,
+    #[serde(default)]
     pub persist_character: bool,
     #[serde(default)]
     pub persist_matches: bool,
@@ -68,6 +70,10 @@ pub struct Config {
     pub worker_queue_capacity: usize,
     #[serde(default)]
     pub profile_mode: ProfileMode,
+    /// All clients in this deployment must carry the owner's 949x patch.
+    /// Default false retains ASCII-only native admission for unpatched clients.
+    #[serde(default)]
+    pub patched_949x_names: bool,
     #[serde(default)]
     pub max_sessions: Option<usize>,
     /// Diagnostic test accounts only, keyed by display name: value written into the
@@ -87,6 +93,17 @@ fn default_worker_queue_capacity() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
+        if self.patched_949x_names && self.profile_mode != ProfileMode::DatabaseZero {
+            return Err(io::Error::other("949x names require database profiles"));
+        }
+        if let Some(public) = &self.public_launcher {
+            if self.profile_mode != ProfileMode::DatabaseZero {
+                return Err(io::Error::other(
+                    "public launcher requires database profiles",
+                ));
+            }
+            public.validate()?;
+        }
         if ((self.persist_character || self.persist_matches)
             && self.profile_mode != ProfileMode::DatabaseZero)
             || !(30..=120).contains(&self.launch_ttl_seconds)
@@ -153,11 +170,22 @@ pub(crate) struct Active {
     projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
 }
 impl Active {
+    #[cfg(test)]
+    pub(crate) fn login_test_client(client: Client) -> Self {
+        Self {
+            authenticated: None,
+            bridge: Bridge::new(client.clone(), 4, Duration::from_secs(30)).unwrap(),
+            client,
+            projections: Arc::new(std::collections::HashMap::new()),
+            projection: None,
+        }
+    }
     pub(crate) fn bridge(&self) -> Bridge {
         self.bridge.clone()
     }
 }
 pub(crate) struct Owner {
+    pub(crate) public_launcher: Option<crate::public_launcher::Opened>,
     pub(crate) boot_epoch: Option<i64>,
     worker: Worker,
     live_worker: Option<Worker>,
@@ -185,6 +213,10 @@ impl Owner {
             inode: meta.ino(),
         };
         fs::set_permissions(&config.launch_socket, fs::Permissions::from_mode(0o600))?;
+        let public_launcher = match &config.public_launcher {
+            Some(public) => Some(public.open().await?),
+            None => None,
+        };
         let worker = Worker::open(
             config.database.clone(),
             config.worker_queue_capacity,
@@ -233,7 +265,9 @@ impl Owner {
         } else {
             None
         };
+        bridge = bridge.with_patched_949x_names(config.patched_949x_names);
         Ok(Self {
+            public_launcher,
             boot_epoch,
             active: Active {
                 authenticated: None,
@@ -260,7 +294,7 @@ impl Owner {
             .map_err(|e| io::Error::other(format!("account worker shutdown: {e:?}")))
     }
 }
-struct Secret(Zeroizing<String>);
+pub(crate) struct Secret(pub(crate) Zeroizing<String>);
 impl<'de> Deserialize<'de> for Secret {
     fn deserialize<D: serde::Deserializer<'de>>(d: D) -> Result<Self, D::Error> {
         String::deserialize(d).map(|s| Self(Zeroizing::new(s)))
@@ -268,12 +302,26 @@ impl<'de> Deserialize<'de> for Secret {
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
-struct LaunchRequest {
-    session: Secret,
-    player_id: i64,
-    peer: Ipv4Addr,
+pub(crate) struct LaunchRequest {
+    pub(crate) session: Secret,
+    pub(crate) player_id: i64,
+    pub(crate) peer: Ipv4Addr,
     #[serde(default)]
-    reported_login_ipv4: Option<Ipv4Addr>,
+    pub(crate) reported_login_ipv4: Option<Ipv4Addr>,
+}
+pub(crate) struct PreparedLaunch {
+    response: Zeroizing<String>,
+    launch: Option<crate::account_bridge::Launch>,
+}
+impl PreparedLaunch {
+    pub(crate) fn bytes(&self) -> &[u8] {
+        self.response.as_bytes()
+    }
+    pub(crate) fn delivered(self) {
+        if let Some(launch) = self.launch {
+            launch.delivered();
+        }
+    }
 }
 async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> io::Result<()> {
     let mut input = Zeroizing::new(Vec::new());
@@ -298,6 +346,16 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
     }
     let request: LaunchRequest = serde_json::from_slice(&input)
         .map_err(|_| io::Error::other("invalid private launch request"))?;
+    let prepared = prepare_launch(request, active, peers).await?;
+    stream.write_all(prepared.bytes()).await?;
+    prepared.delivered();
+    Ok(())
+}
+pub(crate) async fn prepare_launch(
+    request: LaunchRequest,
+    active: &Active,
+    peers: &[Ipv4Addr],
+) -> io::Result<PreparedLaunch> {
     if !peers.contains(&request.peer) {
         return Err(io::Error::other("launch peer outside allowlist"));
     }
@@ -329,13 +387,12 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
                 crate::account_worker::Error::QueueExpired => "account_queue_expired",
                 _ => "database_busy",
             };
-            stream
-                .write_all(
-                    format!("{{\"ok\":false,\"error\":\"busy_retry\",\"reason\":\"{reason}\"}}\n")
-                        .as_bytes(),
-                )
-                .await?;
-            return Ok(());
+            return Ok(PreparedLaunch {
+                response: Zeroizing::new(format!(
+                    "{{\"ok\":false,\"error\":\"busy_retry\",\"reason\":\"{reason}\"}}\n"
+                )),
+                launch: None,
+            });
         }
         Err(error) => {
             return Err(io::Error::other(format!(
@@ -345,12 +402,13 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
     };
     // Fixed mode keeps its fixture fence. Database mode uses the authenticated
     // player's bounded zero-profile template, never an IP-selected identity.
+    let launch_name = kr_wire::kr00967::text949x::encode_name(&launch.player.display_name)?;
     if active.projection.is_none()
         && (launch.player.profile_version != 1
             || active
                 .projections
                 .get(&launch.player.wire_id)
-                .is_none_or(|name| name.as_slice() != launch.player.display_name.as_bytes()))
+                .is_none_or(|name| name.as_slice() != launch_name))
     {
         return Err(io::Error::other("unsupported account profile projection"));
     }
@@ -382,9 +440,10 @@ async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> 
         launch.token().expose_secret(),
         *companion
     ));
-    stream.write_all(response.as_bytes()).await?;
-    launch.delivered();
-    Ok(())
+    Ok(PreparedLaunch {
+        response,
+        launch: Some(launch),
+    })
 }
 
 #[allow(clippy::too_many_arguments)]
@@ -443,7 +502,8 @@ pub(crate) async fn connection(
                     v=active.bridge.login_for_profile(&packet.payload, peer, id, |player| {
                         if active.projection.is_some() { return Some(peer); }
                         bound.actors.get(&player.wire_id)
-                            .filter(|actor| actor.name == player.display_name.as_bytes())
+                            .filter(|actor| kr_wire::kr00967::text949x::encode_name(&player.display_name)
+                                .is_ok_and(|name| actor.name == name))
                             .map(|actor| actor.reported_login_ipv4.unwrap_or(peer))
                     })=>v
                 };
@@ -490,15 +550,14 @@ pub(crate) async fn connection(
             } else {
                 return Err(io::Error::other("account first opcode/endpoint rejected"));
             };
+            let owned_name = kr_wire::kr00967::text949x::encode_name(&owned.display_name)?;
             let actor = if active.projection.is_some() {
                 bound.actors.values().min_by_key(|actor| actor.identity)
             } else {
                 bound
                     .actors
                     .values()
-                    .find(|a| {
-                        a.identity == owned.wire_id && a.name == owned.display_name.as_bytes()
-                    })
+                    .find(|a| a.identity == owned.wire_id && a.name == owned_name)
                     .filter(|_| owned.profile_version == 1)
             }
             .ok_or_else(|| io::Error::other("unsupported owned account profile"))?;
@@ -506,7 +565,7 @@ pub(crate) async fn connection(
             // remains a transport restriction, never a selector for room ownership.
             let mut packets = actor.packets.clone();
             if let Some(template) = &active.projection {
-                let rendered = template.project(owned.wire_id, owned.display_name.as_bytes(), 0)?;
+                let rendered = template.project(owned.wire_id, &owned_name, 0)?;
                 packets
                     .get_mut("auth_A")
                     .expect("validated auth template")
@@ -524,7 +583,7 @@ pub(crate) async fn connection(
                 let auth = packets.get_mut("auth_A").expect("validated auth reply");
                 auth.payload = kr_wire::kr00967::with_identity_string(
                     &auth.payload,
-                    owned.display_name.len(),
+                    owned_name.len(),
                     id.as_bytes(),
                 )?;
             }
@@ -543,11 +602,7 @@ pub(crate) async fn connection(
                     );
             }
             crate::emit(&log,crate::stamp(start,serde_json::json!({"event":"account_binding","connection":id,"player_id":owned.player_id,"identity":owned.wire_id,"profile_version":owned.profile_version,"transport":if echo{"login"}else{"channel"},"policy":"backend_owned_fixed_zero_profile"}))).await?;
-            let flow = crate::lobby::Flow::for_identity(
-                !echo,
-                owned.wire_id,
-                owned.display_name.as_bytes(),
-            );
+            let flow = crate::lobby::Flow::for_identity(!echo, owned.wire_id, &owned_name);
             return crate::local_lobby_connection(
                 socket,
                 id,

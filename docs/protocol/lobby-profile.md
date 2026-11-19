@@ -449,4 +449,41 @@ chưa Battle/UDP/DB/accountauthentication/generalroom/fullM2/fullservice/product
 [PLAN](../PLAN.md#current-order) tiếp portfixedroom, không thêm broadRE; Pythonserving/reference và8WIP byteexact.
 CP232PR303merge5b3ef81, AUD067qua232/audit kếCP236. **Internet thật chưa kiểm**.
 
+<a id="rust-patched-room-chat"></a>
+### Chat tối thiểu cho ca chữ có dấu M8 — một native vi, chờ chat chéo
+
+[Đối chiếu KR/VN và metadata](../evidence/rust-service/m8-room-chat-contract.json) giữ khoảng trống này riêng
+với L1 do Claude sở hữu. Hai request KR thật trong capture L1 đã giữ có opcode18, sequence/CRC hợp lệ:
+payload là **u16 độ dài + chuỗi mã hóa theo field codec hiện hành**, lần lượt 33 và 28 byte 949x. Không có
+flag/count ở đầu hai body này. VN có request18 flag/count/danh sách chuỗi; không áp layout VN lên KR.
+
+Consumer KR của opcode28 được dispatch từ `CChatStage` vtable51 tại `0xD3B6F0` sang `0xD41DF0` (case21 sau
+trừ7). Nó đọc một string qua packet vtable+76 rồi một u8 qua +60. Style0 đi qua chuỗi nguyên văn và gọi hàm
+hiển thị ở stage vtable+308. Code consumer và hàm hiển thị `0xD45080` khớp nguyên byte giữa image KR đã giữ
+và bản ko949x dùng trong M8. Decompiler có cảnh báo stack ở dispatcher; metadata giữ locator và byte hash,
+không coi pseudocode là runtime hoặc client gốc đã hiển thị một reply do server mới gửi.
+
+Codec Rust đã có parser18 và builder28 style0, kiểm hai body KR thật cùng input cắt cụt/sai độ dài. Ngân sách
+192 byte request/224 byte reply là policy công ty; từ chối control/bidi override/ký tự không mã hóa được,
+không replace hoặc truncate.
+
+Serving mới chỉ bật khi `account_admission.patched_949x_names=true`, trong phòng managed ở trạng thái Idle
+và người gửi đã setup. Server lấy display name từ authority account hiện hành, nối `tên : nội dung` rồi dựng
+reply28 style0. Policy công ty giới hạn hai tin mỗi giây trên một connection; vượt hạn thì đóng kết nối.
+Publisher reserve đủ chỗ ở mọi queue trước khi phát. Mỗi batch giữ room scope, membership/connection/visit
+của source và recipient, cùng round generation và trạng thái Idle; tin cũ không sống lại khi vòng trở về Idle.
+Trước socket write, serving kiểm lại source DB, rồi recipient DB và cả hai key sau await. Không log nội dung chat.
+Các ca SQLite thật/room queue tổng hợp đã kiểm tên Việt/Hàn, revoke/expiry/disconnect, queue đầy, vòng/visit cũ
+và scope phòng khác. Đây là kiểm implementation riêng với ca native dưới đây.
+
+Windows vi trên dịch vụ ARM hiện hành qua Internet thật đã gửi request18 (sequence112), nhận reply28
+(sequence79) và hiển thị `Việt01 : M8 chat test` trong phòng chờ. Hai frame hoàn chỉnh trong capture đã kiểm
+CRC và field bytes bằng Python reference; không coi phép kiểm packet-local là TCP reassembly toàn luồng.
+Ảnh native đã đối chiếu với account owner và sự kiện serving. Đây là một client, nội dung tin ASCII có tiền tố
+account Việt; chưa chứng minh nội dung trộn Việt/Hàn hoặc chat giữa hai bản. Client vẫn lỗi C0000005 khi
+thoát ở cleanup đã ghi; launcher1 giữ nguyên, DB logout1/session0, VM/seed/overlay và rule đã dọn.
+
+Tiếp theo đo reply28 trên client thật và hai bản vi/ko cùng phòng. Byte/tần suất là policy công ty, không suy
+từ hai chuỗi mẫu. Chat sảnh/team/whisper/guild và giao thức xã hội đầy đủ vẫn thuộc giai đoạn sau.
+
 <!-- protocol-topic-content-end -->
