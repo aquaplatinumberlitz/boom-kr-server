@@ -129,6 +129,30 @@ impl Store {
     /// Compensate a whole unaccepted roster in one writer transaction. Exact
     /// tokens fence this cleanup from a later login of either account.
     pub(crate) fn release_local_undelivered(&mut self, grants: &[Grant], now: i64) -> Result<()> {
+        self.retire_local(
+            grants,
+            now,
+            "abandoned_login",
+            "local roster login result not accepted",
+        )
+    }
+
+    pub(crate) fn end_local_session(&mut self, grants: &[Grant], now: i64) -> Result<()> {
+        self.retire_local(
+            grants,
+            now,
+            "local_disconnect",
+            "owned local transport ended",
+        )
+    }
+
+    fn retire_local(
+        &mut self,
+        grants: &[Grant],
+        now: i64,
+        operation: &str,
+        reason: &str,
+    ) -> Result<()> {
         if !(1..=2).contains(&grants.len()) || now < 0 {
             return Err(Error::InvalidInput);
         }
@@ -152,9 +176,9 @@ impl Store {
                     &request,
                     &Admin {
                         actor: "account-worker",
-                        reason: "local roster login result not accepted",
+                        reason,
                     },
-                    "abandoned_login",
+                    operation,
                     Some(grant.player.account_id),
                     now,
                 )?;

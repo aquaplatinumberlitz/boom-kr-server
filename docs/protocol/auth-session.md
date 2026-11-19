@@ -234,7 +234,7 @@ cho mọi principal hợp lệ về cú pháp, kể cả tên không tồn tại
 
 `design`: tất cả session được insert trong một transaction SQLite sau khi kiểm lại credential version/PHC/disabled
 và phiên đang hoạt động. Lỗi ở người thứ hai, reset trong khoảng KDF hoặc lỗi insert làm rollback cả nhóm;
-không để session người thứ nhất tồn tại riêng. Token của từng account riêng biệt; đây chưa là ownership transport.
+không để session người thứ nhất tồn tại riêng. Token của từng account riêng biệt.
 Worker dùng một queue slot và một handoff cho cả nhóm; kiểm giới hạn từng principal và sức chứa bảng rate trước
 khi nhận việc. Password/credential được giữ trong buffer zeroize và bỏ trước khi đợi caller nhận kết quả.
 
@@ -245,8 +245,20 @@ handoff hết hạn; không dùng kết quả đó làm bằng chứng native đ
 
 Parser `local_channel_identities` đọc một/hai record theo request kênh đã đo, giữ thứ tự, chặn ID 0/trùng,
 length/count/truncation và optional string chưa hỗ trợ. Echo và đuôi opaque không là credential. Caller còn phải
-so khớp toàn bộ roster với admission TLS và generation đã cấp, rồi gắn lifecycle login/channel/room cho cả hai.
-Guest, generic denial trên wire, giới hạn IP/prelogin, transport fencing và ca native xuyên suốt vẫn mở.
+so khớp toàn bộ roster với admission TLS và generation đã cấp, rồi gắn lifecycle phòng cho cả hai.
+
+Lớp `account_bridge::local` gắn cả nhóm với một owner transport và hai handle identity riêng. Kênh mới phải
+khớp toàn bộ ID, tên, echo và thứ tự slot, trong 10 giây sau khi gửi redirect thành công. EOF login sau redirect
+là chuyển kênh bình thường; EOF trước redirect hoặc EOF kênh hiện hành kết thúc cả nhóm. Kiểm DB của một
+thành viên thất bại do expiry, revoke hoặc đổi hồ sơ làm mọi handle mất hiệu lực. Cleanup theo đúng token
+không ảnh hưởng phiên thay thế, kể cả khi số socket được dùng lại. Hủy future trong lúc gửi reply cũng kết
+thúc quyền; callback phía phòng vẫn phải kiểm handle ngay trước I/O.
+
+Adapter `local::native` giữ buffer credential trong `Zeroizing`, giới hạn frame 512 byte và deadline đọc/ghi
+hai giây, trả cùng lỗi opcode 4 cho mọi ca đăng nhập thất bại. Test tự động dùng DB thật kiểm chuỗi reply 1P/2P,
+ownership, cancellation, expiry/revoke và EOF. Example `ingame_local` chỉ mở loopback để kiểm tới request kênh;
+chưa bật listener mật khẩu public, TLS trước đăng nhập, guest hay membership phòng. Lượt Wine hiện chưa tới
+LoginStage; kiểm native với DB trên Windows VM vẫn đang thực hiện. Không coi test thư viện là native acceptance.
 
 <a id="login-auth"></a>
 ### Login auth trên copy — CP014

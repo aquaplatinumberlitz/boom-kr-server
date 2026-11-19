@@ -11,23 +11,23 @@ use std::{
     sync::atomic::{AtomicU64, Ordering},
 };
 static NEXT: AtomicU64 = AtomicU64::new(0);
-const PASSWORD: &[u8] = b"bridge-test-password";
+pub(super) const PASSWORD: &[u8] = b"bridge-test-password";
 const PEER: Ipv4Addr = Ipv4Addr::new(127, 0, 0, 2);
-fn now() -> i64 {
+pub(super) fn now() -> i64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .unwrap()
         .as_secs() as i64
 }
-fn admin() -> Admin<'static> {
+pub(super) fn admin() -> Admin<'static> {
     Admin {
         actor: "bridge-test",
         reason: "M5 ownership seam tests",
     }
 }
-struct Temp(PathBuf, bool);
+pub(super) struct Temp(PathBuf, bool);
 impl Temp {
-    fn new() -> (Self, Player, Player) {
+    pub(super) fn new() -> (Self, Player, Player) {
         let retained = std::env::var_os("KR_ACCOUNT_BRIDGE_TEST_RAW").map(PathBuf::from);
         let retain = retained.is_some();
         let parent = retained.unwrap_or_else(std::env::temp_dir);
@@ -62,10 +62,10 @@ impl Temp {
             .unwrap();
         (temp, a, b)
     }
-    fn db(&self) -> PathBuf {
+    pub(super) fn db(&self) -> PathBuf {
         self.0.join("accounts.sqlite")
     }
-    fn store(&self) -> Store {
+    pub(super) fn store(&self) -> Store {
         Store::open(&self.db()).unwrap()
     }
 }
@@ -76,13 +76,13 @@ impl Drop for Temp {
         }
     }
 }
-fn rt() -> tokio::runtime::Runtime {
+pub(super) fn rt() -> tokio::runtime::Runtime {
     tokio::runtime::Builder::new_current_thread()
         .enable_all()
         .build()
         .unwrap()
 }
-async fn worker(temp: &Temp) -> Worker {
+pub(super) async fn worker(temp: &Temp) -> Worker {
     Worker::open(temp.db(), 4, Duration::from_secs(3))
         .await
         .unwrap()

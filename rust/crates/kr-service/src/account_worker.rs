@@ -169,6 +169,10 @@ pub enum PersistenceResult {
 }
 
 enum Command {
+    EndLocal {
+        grants: Vec<Grant>,
+        reply: oneshot::Sender<Result<()>>,
+    },
     Logout {
         token: Token,
         player: i64,
@@ -327,6 +331,29 @@ impl Drop for Worker {
     }
 }
 impl Client {
+    /// Trusted transport teardown only. Exact tokens cannot revoke a newer
+    /// login, and queue rejection leaves the caller's originals available.
+    pub(crate) fn try_end_local(&self, grants: &[Grant]) -> Result<Pending<()>> {
+        if !(1..=2).contains(&grants.len()) {
+            return Err(Error::InvalidInput);
+        }
+        let grants = grants
+            .iter()
+            .map(|grant| {
+                Ok(Grant {
+                    player: grant.player.clone(),
+                    token: Token::parse(grant.token.expose_secret()).map_err(Error::Backend)?,
+                    expires_at: grant.expires_at,
+                })
+            })
+            .collect::<Result<Vec<_>>>()?;
+        let (reply, rx) = oneshot::channel();
+        self.submit(Command::EndLocal { grants, reply })?;
+        Ok(Pending {
+            reply: Some(rx),
+            handoff: None,
+        })
+    }
     /// Revoke only the authenticated caller's token using execution-time UTC.
     pub fn try_logout_current(&self, token: &Token, player: i64) -> Result<Pending<()>> {
         if player < 1 {
@@ -660,6 +687,23 @@ fn deliver_login(
 fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
+            Command::EndLocal { grants, reply } => {
+                // Cleanup must execute even if the waiter disappeared. Its
+                // exact-token transaction is also safe after the queue deadline.
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                let observed = std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .ok()
+                    .and_then(|time| i64::try_from(time.as_secs()).ok())
+                    .unwrap_or(0);
+                let result = store
+                    .end_local_session(&grants, observed)
+                    .map_err(Error::Backend);
+                let _ = reply.send(result);
+            }
             Command::LocalLogin {
                 credentials,
                 ttl,
