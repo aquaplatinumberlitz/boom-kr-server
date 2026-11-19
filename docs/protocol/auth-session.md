@@ -287,11 +287,15 @@ Keepalive không gia hạn idle account. EOF sau redirect chỉ kết thúc logi
 expiry/revoke hoặc hủy task kết thúc toàn roster, giữ cleanup theo đúng token. Listener dừng và join các task trước
 khi worker DB dừng. Buffer của companion và credential được zeroize; event chỉ ghi loại thao tác và ID đã xác thực.
 
-Test TLS thật với SQLite kiểm hai account, request kênh từ TLS connection khác bị từ chối, revoke, frame chậm/hỏng,
-lifetime chưa đăng nhập, pin chứng thư sai, giới hạn peer và đóng socket companion. Native Windows ko949x đã đi
-qua companion Linux khởi động trước game, nhận hai hồ sơ DB và chuyển kênh đúng ID 3/4; cleanup thu hồi cả hai.
-Lượt này dùng namespace không route ngoài; chưa kiểm Internet hoặc binary companion Windows. Request sau kênh
-chưa nối sảnh/phòng/trận nên đóng transport. Gói launcher và vòng phòng/trận còn là các phần kế tiếp.
+Đường TLS dùng roster DB hiện hành để chiếu hồ sơ sảnh và vào phòng; không cấp quyền mới theo ID trong gói. Hai
+client 1P chạy hai ván trong test tự động qua TLS, relay UDP xác thực và SQLite: kết quả đúng tài khoản, khóa TCP
+và cổng UDP cũ không chuyển dữ liệu vào ván mới. Trước khi vào sảnh, giữ hạn mức input 32 KiB như cũ; lane sở
+hữu đã vào sảnh dùng ngân sách riêng theo giây. Transport mất quyền thì dọn cả roster và membership cũ.
+
+Windows ko949x qua companion Linux đã hiển thị hai hồ sơ DB trong phòng chờ. Start 2P chung một client vẫn
+bị chặn trên nhánh phục vụ. Trong đối chứng chẩn đoán cô lập, client gửi 104, nhận phản hồi và thoát trước 99:
+WER ghi C000001D ở import ngoại tuyến chưa có của bản copy, sau đó C0000005. Chưa xác minh layout 99 cho
+2P, chưa nghiệm thu vòng trận nguyên vẹn trên Windows hoặc Internet. [Chi tiết phép đo và bước tiếp](../evidence/checkpoints/records/CP346.json).
 
 Review chủ dự án: Initial chưa xác minh địa chỉ chỉ nhận Retry, chưa lấy permit hay tính rate IP. Bước launcher phải
 cho companion kết nối lại (hoặc kết nối khi game mở socket đầu) để chờ màn đăng nhập quá `prelogin_seconds` vẫn
