@@ -1159,6 +1159,31 @@
       ],
       "prs": [],
       "successors": []
+    },
+    {
+      "number": 520,
+      "kre": "KRE-M8-ADMIN-BACKUP",
+      "classification": "in_progress",
+      "as_of": "2026-11-20T23:08:33.194415+00:00",
+      "features": [
+        "KR-S002"
+      ],
+      "prs": [
+        521
+      ],
+      "known": "Audit, restore TLS tổng hợp và rollback Linux loopback đã kiểm trong phạm vi server.",
+      "remaining": "Tích hợp PR sau CI; nghiệm thu phục hồi trên môi trường triển khai M8 còn mở.",
+      "next_test": "Xác nhận CI và diễn tập restore bằng gói triển khai trong lượt M8 riêng.",
+      "acceptance": "Audit có kết quả, SQLite live có snapshot/retention, restore mở ván, dừng và rollback đã diễn tập.",
+      "reason": "Tự kiểm theo waiver; chưa merge và không chạy game, VM hay VPS trong lượt này.",
+      "sources": [
+        "docs/OPERATIONS.md#server-admin-backup-rollback",
+        "docs/PLAN.md#current-order",
+        "docs/RESEARCH.md#gap-service-hardening"
+      ],
+      "evidence": [
+        "docs/evidence/checkpoints/records/CP374.json"
+      ]
     }
   ],
   "as_of_utc": "2026-11-17T12:35:05.125317+00:00",

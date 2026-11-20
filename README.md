@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP373: Windows vi và Wine ko hoàn tất hai ván Factory07 liên tiếp trong cùng phòng qua TLS.** [Bằng chứng](docs/evidence/checkpoints/records/CP373.json).
+**CP374: Audit admin, phục hồi SQLite và rollback binary đạt kiểm phía server; hai client TLS tổng hợp mở được ván sau restore.** [Bằng chứng](docs/evidence/checkpoints/records/CP374.json).
 
 ## Bắt đầu
 

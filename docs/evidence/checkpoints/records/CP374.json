@@ -1,0 +1,58 @@
+{
+  "id": "CP374",
+  "previous": "CP373",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T23:07:18.256082+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Server Linux có audit quản trị, snapshot live và phục hồi khi dừng hoặc thay binary không?",
+  "scope": "KRE-M8-ADMIN-BACKUP / #520. SQLite và tiến trình loopback, hai client TLS tổng hợp. Không game, VM, VPS hoặc Internet.",
+  "context_commit": "19982f41e5e9b5c2a56fcc993b5d4a92f1f7b7d5",
+  "artifacts": [
+    {"sha256": "a4b7961682e6b26f864844b766ffdc24d33723669f4a0707c9b016e82db0cd48"},
+    {"sha256": "92a10d9c3534d5505347b7e00ec016458347db7835bfb4a0c2ffeade01f78d14"},
+    {"sha256": "7bb4f3d5c4938b6617187c6a38c52de42316f6ebcb7a0c402df4f16f6cbbff82"},
+    {"sha256": "3f15890200ac1d24b791505731f493a417be30f70acf8c7fbba2e9a37cd59b85"}
+  ],
+  "locators": ["local/research/codex/m8-admin-backup", "rust/crates/kr-service/src/ingame_tls/tests/operations.rs", "tools/test_m8_binary_rollback.py"],
+  "findings": [
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#server-admin-backup-rollback", "summary": "CLI ghi audit account cùng transaction, ghi lỗi có mã khi DB khả dụng; đóng phòng đối chiếu tiến trình và epoch, chờ journal và lưu kết quả.", "evidence": ["LOG_CLI", "LOG_LOOPBACK"], "limits": "Admin cục bộ theo quyền hệ điều hành. Actor do operator khai, không phải RBAC từ xa."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#server-admin-backup-rollback", "summary": "SQLite chụp bản đã commit khi có writer, giữ N bản; restore vào state mới và hai client TLS đăng nhập, chọn phòng, Start rồi vào ván.", "evidence": ["LOG_LOOPBACK"], "limits": "TLS và frame tổng hợp; không dùng làm oracle client KR hay nghiệm thu máy triển khai."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#server-admin-backup-rollback", "summary": "SIGTERM hủy ván đang chạy, SIGKILL để lại journal và boot sau dọn. Migration 5→6 giữ snapshot; binary cũ từ chối DB mới, chạy lại và đăng nhập trên bản phục hồi.", "evidence": ["LOG_LOOPBACK", "LOG_ROLLBACK"], "limits": "Hai binary thật dùng fixture gói Linux đã pin. Không có migration ngược tại chỗ."}
+  ],
+  "verification": [
+    {"check": "Rust fmt, workspace clippy -D warnings, test Rust locked cho CLI và hai TLS client, test Python gói.", "result": "pass", "evidence": ["LOG_CLI", "LOG_LOOPBACK", "LOG_CLIPPY", "LOG_PACKAGE-TEST"], "limits": "Kiểm trên host phát triển bằng client tổng hợp; không nghiệm thu game KR hoặc hệ điều hành triển khai."},
+    {"check": "Build locked từ baseline và bản mới; diễn tập nâng cấp và rollback bằng hai tiến trình service Linux loopback.", "result": "pass", "evidence": ["ROLLBACK_RECIPE", "LOG_ROLLBACK"], "limits": "Đo khởi động/dừng và đăng nhập bằng CLI cũ; chưa đo RTO triển khai với game thật."}
+  ],
+  "delta": {"added": ["Thêm audit vận hành, backup có kiểm/giữ bản, restore, migration có snapshot và runbook."], "corrected": ["Socket cũ sau SIGKILL chỉ dọn dưới khóa instance khi không có listener."], "superseded": []},
+  "blockers": ["Nghiệm thu máy triển khai/native, mạng thật, tải và soak thuộc các phần khác của M8."],
+  "completed_feature_groups": ["m8-server-admin-backup-rollback"],
+  "next_steps": [
+    {"id": "M8-520-deploy-restore", "task": "KRE-M8-ADMIN-BACKUP", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Tích hợp sau CI; dùng runbook để đo phục hồi trên môi trường triển khai của M8."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T23:07:18.256082+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; không tự merge.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển dòng CP373."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi kết quả và giới hạn lát cắt admin, backup và rollback."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi packet, wire hay authority KR."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Câu hỏi vận hành M8 toàn phần vẫn mở."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Runbook admin, backup, restore, SIGTERM và rollback."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm tham chiếu kiểm phía server cho KR-S002."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại bảng theo catalog."},
+    {"path": "docs/evidence/issue-reconciliation/github-snapshot.json", "state": "updated", "reason": "Thêm issue #520 và PR #521 theo lần đọc riêng."},
+    {"path": "docs/evidence/issue-reconciliation/review.json", "state": "updated", "reason": "Ghi đối chiếu thủ công và phần chưa tích hợp."},
+    {"path": "docs/evidence/checkpoints/records/CP374.json", "state": "updated", "reason": "Hash build, công thức kiểm và giới hạn."}
+  ],
+  "evidence": [
+    {"id": "ROLLBACK_RECIPE", "kind": "repository", "path": "tools/test_m8_binary_rollback.py", "bytes": 7853, "sha256": "8bf852610a23ceb0ca55f70eda16495339a069b011e6456c6b7a8a799da55fff"},
+    {"id": "LOG_CLI", "kind": "local", "path": "local/research/codex/m8-admin-backup/cli.log", "bytes": 452, "sha256": "16b9838062f383621faea2b6b11f2164eb8218cf6511a52477711b121a3aa28c"},
+    {"id": "LOG_LOOPBACK", "kind": "local", "path": "local/research/codex/m8-admin-backup/loopback.log", "bytes": 481, "sha256": "e7c8b0f552b17c8a76a831796f52cdf6e9d4e796cc57895f728447770ede59eb"},
+    {"id": "LOG_CLIPPY", "kind": "local", "path": "local/research/codex/m8-admin-backup/clippy.log", "bytes": 328, "sha256": "21594f09a163c81b84caa7d83f4782f631ee20181b1bb0062025c25a690707e6"},
+    {"id": "LOG_ROLLBACK", "kind": "local", "path": "local/research/codex/m8-admin-backup/rollback.log", "bytes": 198, "sha256": "6fc192265b10f7908f43944cd20a68d7897bba3195912ef9327ddc2ee439148a"},
+    {"id": "LOG_PACKAGE-TEST", "kind": "local", "path": "local/research/codex/m8-admin-backup/package-test.log", "bytes": 107, "sha256": "b44f2b6d4aa9239f43eae5142f8dd846789f06a2713a0f6c82b6f698c392d8be"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-admin-backup", "path": "local/evidence-manifests/bd926c1035fa5dabb39c837b542af2bbff97a95b4758e34fe7a3e3877e161ca9.jsonl", "sha256": "bd926c1035fa5dabb39c837b542af2bbff97a95b4758e34fe7a3e3877e161ca9", "bytes": 429, "count": 2, "files_bytes": 389}
+  ]
+}

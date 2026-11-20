@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP373: Windows vi và Wine ko hoàn tất hai ván Factory07 liên tiếp trong cùng phòng qua TLS.** [Bằng chứng](evidence/checkpoints/records/CP373.json).
+
 **CP372: Windows vi và Wine ko hoàn tất ván một qua bộ điều khiển chờ đồng hồ; Ready ván hai chưa tới server.** [Bằng chứng](evidence/checkpoints/records/CP372.json).
 
 **CP371: Hai ván cùng phòng qua TLS đã qua kiểm tự động; Start ván hai trên game vẫn mở ở #502.** [Bằng chứng](evidence/checkpoints/records/CP371.json).
