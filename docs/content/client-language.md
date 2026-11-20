@@ -306,8 +306,8 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 
 - **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
 - **Chat chuyển tiếp.** [CP355](../evidence/checkpoints/records/CP355.json) kiểm hai kết nối vi/ko mô phỏng qua TLS:
-  reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. Còn nghiệm thu hiển thị hai chiều trên gói Windows/Wine.
-- **Sửa tên phòng.** Đăng nhập trong game đã dùng cấu hình chẩn đoán để cấp chuỗi cục bộ cho account thử. Còn nghiệm thu thao tác gõ trên gói.
+  reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. [CP362](../evidence/checkpoints/records/CP362.json) xác nhận chat chéo trong phòng: ko gửi câu trộn Việt/Hàn, vi trả lời ASCII, cả hai hiện đúng người gửi. Chưa đo gửi chữ trộn từ vi hoặc chat chéo trong sảnh.
+- **Sửa tên phòng.** Đăng nhập trong game đã dùng cấu hình chẩn đoán để cấp chuỗi cục bộ cho account thử. Trên gói thử CP362, bản ko nhận thao tác gõ Unicode và hai bản hiện cùng tiêu đề `Phòng Việt 한국`; chưa đo chiều gõ từ bản vi.
 - **Giới hạn chuỗi UI.** Bộ dựng 949x từ chối tên phòng mặc định quá 22 byte và nhãn người nhận quá 14 byte
   trong cả `csysstr.ssd` và `ClientString`. Dữ liệu vi/en/ko đã qua kiểm; còn xác minh hiển thị trên gói.
 - **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
@@ -330,8 +330,10 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   gõ dấu mới, client ko nhận chữ hoặc một ván vi/ko. Gói en chưa chạy.
 - **Wine qua launcher mới.** Bản vi và ko ở CP360 thoát trước đăng nhập. [CP361](../evidence/checkpoints/records/CP361.json)
   giữ nguyên payload, bổ sung phân giải hostname trong namespace chỉ có loopback; bản ko đăng nhập 1P và hiện tên
-  `한국02` ở sảnh. Sau đó client báo ngắt mã 10. Companion dừng khi đường tới relay không có route trong lab.
-  Chưa kiểm lại với endpoint relay cục bộ, chưa có phòng hoặc trận Wine, và chưa chạy vi trong cấu hình này.
+  `한국02` ở sảnh. Sửa route relay trong lab giúp Wine ko vào cùng phòng Factory07 với Windows vi qua launcher mới
+  ở CP362. Hai bản cùng thấy `한국02`, `Việt01` và phần ảnh vi đã khôi phục hiện trên Windows. Ready và Start đầu tiên
+  tới server, nhưng cả hai ngắt trước khi thấy màn trận. Journal có ván ở trạng thái `running`, chưa có kết quả.
+  Chưa xác định nguyên nhân ngắt, chưa đạt nghiệm thu trận và chưa thử en.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,
