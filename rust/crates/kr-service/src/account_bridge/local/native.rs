@@ -3,6 +3,7 @@
 use super::{Cancel, LocalAuthority, LocalSession};
 use kr_wire::{HEADER_LEN, Width, kr00967::AccountTemplate, write_uint};
 use std::{
+    collections::BTreeMap,
     io,
     sync::Arc,
     time::{Duration, Instant},
@@ -71,6 +72,7 @@ pub async fn read<S: AsyncRead + Unpin>(stream: &mut S, sequence: &mut u32) -> i
 pub struct Templates {
     pub lobby: Option<LobbyTemplates>,
     pub account: Arc<AccountTemplate>,
+    pub room_title_identities: Arc<BTreeMap<String, String>>,
     pub header: [u8; HEADER_LEN],
     pub netinfo_header: [u8; HEADER_LEN],
     pub flags_header: [u8; HEADER_LEN],
@@ -146,6 +148,15 @@ impl Templates {
                 channel_list: get("channel_list")?.payload.clone(),
             }),
             account,
+            room_title_identities: Arc::new(
+                profile
+                    .config
+                    .diagnostic_two_lobby
+                    .as_ref()
+                    .and_then(|lobby| lobby.account_admission.as_ref())
+                    .map(|account| account.diagnostic_identity_strings.clone())
+                    .unwrap_or_default(),
+            ),
             header: get("auth_A")?.header,
             netinfo_header: get("netinfo")?.header,
             flags_header: get("flags")?.header,
@@ -399,7 +410,18 @@ impl Driver {
                     .zip(&names)
                     .map(|((player, echo), name)| (player.wire_id, name.as_slice(), *echo))
                     .collect::<Vec<_>>();
-                let reply = self.templates.account.project_local_auth(&roster)?;
+                let reply = self
+                    .templates
+                    .account
+                    .project_local_auth_with_identity_strings(&roster, |index| {
+                        if opcode != 1 {
+                            return None;
+                        }
+                        self.templates
+                            .room_title_identities
+                            .get(&rows[index].0.display_name)
+                            .map(String::as_bytes)
+                    })?;
                 self.write(lane, writer, 4, &reply).await?;
                 self.local_count = rows.len();
                 lane.phase = Phase::Info;

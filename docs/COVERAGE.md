@@ -234,7 +234,7 @@ Bằng chứng/build/hash/recipe: [bootstrap-wire](evidence/bootstrap-wire/READM
 |---|---|---|
 | presence | present | [nguồn1](protocol/bootstrap-codec.md#wcp) |
 | vn_reference | both | [nguồn1](REFERENCES.md) |
-| kr_static | partial | [nguồn1](protocol/bootstrap-codec.md#wcp), [nguồn2](content/client-language.md#utf8), [nguồn3](evidence/checkpoints/records/CP355.json), [nguồn4](evidence/checkpoints/records/CP357.json), [nguồn5](evidence/l10n-probe-b.json) |
+| kr_static | partial | [nguồn1](protocol/bootstrap-codec.md#wcp), [nguồn2](content/client-language.md#utf8), [nguồn3](evidence/checkpoints/records/CP355.json), [nguồn4](evidence/checkpoints/records/CP357.json), [nguồn5](evidence/checkpoints/records/CP358.json), [nguồn6](evidence/l10n-probe-b.json) |
 | emulation | checked | [nguồn1](evidence/bootstrap-wire/README.md) |
 | wine_diagnostic_copy | observed | [nguồn1](evidence/bootstrap-wire/README.md), [nguồn2](evidence/preclock-eof/README.md), [nguồn3](evidence/nmco-locale-stability/README.md), [nguồn4](evidence/wine-r2/README.md#cp179), [nguồn5](evidence/l10n-utf8-dialog-05.json), [nguồn6](content/client-language.md#data-files), [nguồn7](evidence/l10n-utf8-949x-en-05.json) |
 | windows_original | observed | [nguồn1](protocol/bootstrap-codec.md#original-windows-control), [nguồn2](evidence/peer-endpoints/README.md#cp178) |

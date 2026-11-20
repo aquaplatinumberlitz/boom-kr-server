@@ -74,6 +74,16 @@ impl AccountTemplate {
     /// copy in r55: common13-byte prefix, per-player record, common19-byte tail.
     /// This does not authorize accounts or define multi-player291/channel data.
     pub fn project_local_auth(&self, players: &[(u32, &[u8], u32)]) -> io::Result<Vec<u8>> {
+        self.project_local_auth_with_identity_strings(players, |_| None)
+    }
+
+    /// Reuse the measured optional local string within each individual profile
+    /// row before combining the roster. The echo and tail move with the row.
+    pub fn project_local_auth_with_identity_strings<'a>(
+        &self,
+        players: &[(u32, &[u8], u32)],
+        identity_string: impl Fn(usize) -> Option<&'a [u8]>,
+    ) -> io::Result<Vec<u8>> {
         if !(1..=2).contains(&players.len()) {
             return Err(io::Error::other("unsupported local account count"));
         }
@@ -82,7 +92,11 @@ impl AccountTemplate {
             if players[..index].iter().any(|p| p.0 == identity) {
                 return Err(io::Error::other("duplicate local account identity"));
             }
-            rows.push(self.project(identity, name, echo)?.auth);
+            let auth = self.project(identity, name, echo)?.auth;
+            rows.push(match identity_string(index) {
+                Some(tag) => with_identity_string(&auth, name.len(), tag)?,
+                None => auth,
+            });
         }
         let first = &rows[0];
         let mut auth = first[..13].to_vec();

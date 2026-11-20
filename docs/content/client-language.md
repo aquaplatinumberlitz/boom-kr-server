@@ -297,7 +297,7 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 - **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
 - **Chat chuyển tiếp.** [CP355](../evidence/checkpoints/records/CP355.json) kiểm hai kết nối vi/ko mô phỏng qua TLS:
   reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. Còn nghiệm thu hiển thị hai chiều trên gói Windows/Wine.
-- **Sửa tên phòng** cần chuỗi định danh của tài khoản; mới có cho tài khoản thử qua cấu hình chẩn đoán (mục trên).
+- **Sửa tên phòng.** Đăng nhập trong game đã dùng cấu hình chẩn đoán để cấp chuỗi cục bộ cho account thử. Còn nghiệm thu thao tác gõ trên gói.
 - **Giới hạn chuỗi UI.** Bộ dựng 949x từ chối tên phòng mặc định quá 22 byte và nhãn người nhận quá 14 byte
   trong cả `csysstr.ssd` và `ClientString`. Dữ liệu vi/en/ko đã qua kiểm; còn xác minh hiển thị trên gói.
 - **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.

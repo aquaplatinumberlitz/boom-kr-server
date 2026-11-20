@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP357: Bản dựng 949x kiểm giới hạn byte của tên phòng và nhãn nhận chat.** [Bằng chứng](docs/evidence/checkpoints/records/CP357.json). L1 còn mở.
+**CP358: Đăng nhập game nhận chuỗi cục bộ để thử gõ tiêu đề phòng.** [Bằng chứng](docs/evidence/checkpoints/records/CP358.json). L1 còn mở.
 
 ## Bắt đầu
 
