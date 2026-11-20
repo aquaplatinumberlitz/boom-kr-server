@@ -30,6 +30,7 @@ fn templates() -> Templates {
             )
             .unwrap(),
         ),
+        room_title_identities: Arc::default(),
         header: [0; 37],
         netinfo_header: [0; 37],
         flags_header: [0; 37],

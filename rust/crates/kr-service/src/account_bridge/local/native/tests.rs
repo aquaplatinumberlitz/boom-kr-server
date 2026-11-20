@@ -24,6 +24,7 @@ fn templates() -> Templates {
             )
             .unwrap(),
         ),
+        room_title_identities: Arc::default(),
         header: [0; HEADER_LEN],
         netinfo_header: [0; HEADER_LEN],
         flags_header: [0; HEADER_LEN],
@@ -50,7 +51,12 @@ fn one_or_two_db_principals_follow_native_reply_sequence_into_the_same_owned_cha
         for guest in [false, true] {
             for names in [&["Alice"][..], &["Alice", "Bob"][..]] {
                 let session = LocalSession::new(worker.client(), 1).unwrap();
-                let mut driver = Driver::new(session, templates()).unwrap();
+                let mut profile = templates();
+                profile.room_title_identities = Arc::new(BTreeMap::from([
+                    (a.display_name.clone(), "LocalRoomTitleA".into()),
+                    (b.display_name.clone(), "LocalB".into()),
+                ]));
+                let mut driver = Driver::new(session, profile).unwrap();
                 let mut login_lane = Lane::login(1).unwrap();
                 let (mut writer, mut peer) = tokio::io::duplex(4096);
                 let mut sequence = 43;
@@ -83,6 +89,43 @@ fn one_or_two_db_principals_follow_native_reply_sequence_into_the_same_owned_cha
                         .map(|(g, e)| (g.player.clone(), *e))
                         .collect::<Vec<_>>()
                 };
+                // Walk the measured row layout independently of the producer.
+                let mut start = 13;
+                for (i, (player, echo)) in rows.iter().enumerate() {
+                    let n = kr_wire::read_uint(&auth.payload[start + 16..start + 18], Width::U16)
+                        .unwrap() as usize;
+                    assert_eq!(
+                        kr_wire::kr00967::decode_bytes(&auth.payload[start + 18..start + 18 + n])
+                            .unwrap(),
+                        kr_wire::kr00967::text949x::encode_name(&player.display_name).unwrap(),
+                    );
+                    let at = start + 19 + n;
+                    let tag_length =
+                        kr_wire::read_uint(&auth.payload[at..at + 2], Width::U16).unwrap() as usize;
+                    let want = if guest {
+                        b"".as_slice()
+                    } else {
+                        [b"LocalRoomTitleA".as_slice(), b"LocalB".as_slice()][i]
+                    };
+                    assert_eq!(tag_length, want.len());
+                    if tag_length != 0 {
+                        assert_eq!(
+                            kr_wire::kr00967::decode_bytes(
+                                &auth.payload[at + 2..at + 2 + tag_length]
+                            )
+                            .unwrap(),
+                            want,
+                        );
+                    }
+                    let echo_at = start + 73 + n + tag_length;
+                    assert_eq!(
+                        kr_wire::read_uint(&auth.payload[echo_at..echo_at + 4], Width::U32)
+                            .unwrap(),
+                        u64::from(*echo),
+                    );
+                    start += 98 + n + tag_length;
+                }
+                assert_eq!(auth.payload.len() - start, 19);
                 if guest {
                     assert!(
                         rows.iter()
