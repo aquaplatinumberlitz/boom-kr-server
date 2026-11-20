@@ -88,6 +88,7 @@
         "question": "docs/RESEARCH.md#gap-process-patch",
         "plan": "docs/PLAN.md#current-order",
         "evidence": [
+          "docs/evidence/checkpoints/records/CP359.json",
           "docs/evidence/bootstrap-wire/README.md",
           "docs/evidence/probe-service/README.md",
           "docs/evidence/preclock-eof/README.md",

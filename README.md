@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP358: Đăng nhập game nhận chuỗi cục bộ để thử gõ tiêu đề phòng.** [Bằng chứng](docs/evidence/checkpoints/records/CP358.json). L1 còn mở.
+**CP359: Gói thử kiểm chuỗi exe và ảnh tự động.** [Bằng chứng](docs/evidence/checkpoints/records/CP359.json). L1 còn thiếu ảnh đã duyệt và nghiệm thu.
 
 ## Bắt đầu
 

@@ -1,0 +1,49 @@
+{
+  "id": "CP359",
+  "previous": "CP358",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T02:14:05.553870+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Chuỗi exe, dữ liệu và ảnh nào đã sẵn sàng để kiểm trong gói L1?",
+  "scope": "KRE-074 / #414: kiểm tĩnh 00967 trên bản sao và dựng gói thử vi/en/ko.",
+  "context_commit": "f19a6277461441444c543aac3c0227693c0b8d91",
+  "artifacts": [
+    {"sha256": "73f1d6f933b1310896a6419a7a559152922ac1d95f0e2406a815a3c580a69f13"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1", "local/research/codex/l1-data-preflight-r1"],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/client-language.md#utf8", "summary": "Bản sao IDA cho thấy 0x19A7590 nằm trong bảng tên cấm ở 0x19A7508. Loại operand này khỏi bản en; bản dựng vi/en còn 39 literal và 44 operand. Invalid Login bản vi vẫn đổi hai call.", "evidence": ["FILTER", "EXE"], "limits": "Kiểm byte của bản sao, chưa gọi hộp lỗi trên GUI."},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/client-language.md#utf8", "summary": "Ba mẹo ô chat phòng đã đo lấy từ csysfxmg.ssd (23, 25, 28); bản dựng hiện hành có bản dịch vi/en.", "evidence": ["ROOM-HINT", "ROOM-TEXT"], "limits": "Không chứng minh mọi nhắc ô chat hoặc cách xuống dòng khi render."},
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/content/client-language.md#utf8", "summary": "Gói thử dùng chuỗi tương thích đã đo: ko giống hash Windows, vi/en giữ phần .l10n. Dựng được 549 ảnh vi và 339 ảnh en theo nguồn sẵn có với index riêng.", "evidence": ["COMPOSE", "IMAGES", "PACKAGE"], "limits": "Gói thử còn thiếu ảnh vẽ đã duyệt. Kiểm PE, dựng dữ liệu và manifest không phải nghiệm thu đăng nhập hoặc hai client."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu copy IDA, build vi/en, byte gốc của bảng cấm và manifest gói thử.", "result": "pass", "evidence": ["FILTER", "EXE", "ROOM-TEXT", "IMAGES", "PACKAGE"], "limits": "Chưa nghiệm thu game."}
+  ],
+  "delta": {"added": ["Phân biệt ba mẹo dữ liệu và phần chuỗi cứng; dựng gói thử từ dữ liệu cùng nguồn đã kiểm."], "corrected": ["Giữ nguyên khách thể lọc tên 고객센터 ở bản en."], "superseded": []},
+  "blockers": ["Thiếu bộ ảnh vẽ đã duyệt cho vi/en; cần xác nhận gói trực tiếp trên Windows và Wine."],
+  "next_steps": [
+    {"id": "L1-414-release", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Ghép bộ ảnh đã duyệt và kiểm vi/ko cùng phòng bằng launcher, gõ title/chat, tên hiển thị và một ván."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T02:14:05.553870+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước của README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật L1 và tách Start ván hai thành #502."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không thay protocol hoặc wire."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Đồng bộ phép kiểm còn lại cho title, chat và IME."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Đồng bộ exe, nguồn chuỗi, ảnh và giới hạn gói."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Liên kết checkpoint."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP359.json", "state": "updated", "reason": "Pin locator và kết quả dựng."}
+  ],
+  "evidence": [
+    {"id": "FILTER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/filter-table.txt", "bytes": 1155, "sha256": "8130a7cafa5a8b17c1a1f9fe47e0b35daa028871c618f6cf727777c0aa6a91a3"},
+    {"id": "EXE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/filter-build-check.txt", "bytes": 270, "sha256": "73f1d6f933b1310896a6419a7a559152922ac1d95f0e2406a815a3c580a69f13"},
+    {"id": "COMPOSE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/composition.json", "bytes": 1054, "sha256": "77afc3f36bc38f6d8381e88da7f5c406696dc6372ee0c340d32985bae34b016e"},
+    {"id": "ROOM-HINT", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/room-hint-locators.json", "bytes": 606, "sha256": "56afddbbac5b8a938bbfad71ef9a14ddafc17943ffc873285d8f19933d3ee603"},
+    {"id": "ROOM-TEXT", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/current-build-room-chat-tips.json", "bytes": 1704, "sha256": "7d6c752a3d10b4d2fe148e2444d1047aa9537476b0f669a54408b4006a1e976d"},
+    {"id": "IMAGES", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/fresh-image-index-review.json", "bytes": 2486, "sha256": "3a0e7753ecf9be027404106b0334116eac9c247ac8734b59f8841ea2c366d76a"},
+    {"id": "PACKAGE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/package-build.json", "bytes": 615, "sha256": "846f0dffa4dc546ce015461998df8e6ddd02aafdad2e1cf7d192cb4b8fb8f811"}
+  ]
+}

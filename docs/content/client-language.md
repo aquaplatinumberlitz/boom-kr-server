@@ -242,18 +242,27 @@ từ; chèn xuống dòng `\n` ở ranh giới từ trong chuỗi `csysstr` (ví
 đúng chỗ. Trước/sau ở `local/review-fix/` ([evidence](../evidence/l10n-utf8-949x-layout-fix.json)).
 
 **Ảnh khác shape.** Dựng với `--allow-shape-change` thay được 549/549 ảnh Việt và 339 ảnh Anh (4 ảnh Anh không có bản Bắc
-Mỹ). Client không lỗi; các nút trước đây bị bỏ như `TẠO PHÒNG`, `ĐI TẮT`, `TÙY CHỌN`, `SIÊU THỊ`, `CREATE ROOM`,
+Mỹ). Các lượt chẩn đoán cũ không thấy lỗi tải ảnh; các nút trước đây bị bỏ như `TẠO PHÒNG`, `ĐI TẮT`, `TÙY CHỌN`, `SIÊU THỊ`, `CREATE ROOM`,
 `QUICK PLAY` đã hiện. Ảnh còn chữ Hàn trong các màn đã chụp, cần vẽ: `레벨` (vi), bong bóng `칭호 UPDATE` (en), nhãn ô
 người chơi `방 장`/`준 비`, tab nhân vật `전체`/`일반`/`럭셔리`/`슈퍼`, `팀선택`, `맵`, `크리에이터 맵`/`오리지널 맵` (vi),
-`자동준비`, banner `다오` và nút `시 작` của chủ phòng (en).
+`자동준비`, banner `다오` và nút `시 작` của chủ phòng (en). Bản dựng hiện tại đã lấy ảnh thay cho Start/Ready bằng vi/en.
+Cần lấy lại bộ ảnh đã duyệt để bổ sung `FxMap/Prepare/CAStage_Custom` (nhãn đội, map và tự sẵn sàng) cho vi/en,
+`fx/CustomMap/Btn_CustomMap` và `Btn_OriginalMap` cho vi; tìm ảnh hoặc vẽ `FxStage/Lobby/LB_UserTitle_Update_ToolTip`
+(79×75) cho en. Các nhãn cấp độ, ô người chơi, tab và banner còn cần xác định entry trên gói cuối.
+Không suy bản dựng 18/11 có bộ ảnh vẽ tay đã được đưa vào gói thử hiện tại.
 
 **Chuỗi cứng trong exe.** Catalog có 134 dòng `exe:kr-full.exe`; 81 dòng là tên cấm giữ tiếng Hàn. Bảng
-[`tools/l10n_949x_exe_literals.json`](../../tools/l10n_949x_exe_literals.json) ghi 40 chuỗi và 45 operand trỏ tới chúng
+[`tools/l10n_949x_exe_literals.json`](../../tools/l10n_949x_exe_literals.json) ghi 39 chuỗi và 44 operand trỏ tới chúng
 (xref IDA trên bản sao). `tools/l10n_949x_patch.py --lang vi|en` đặt bản dịch 949x vào section `.l10n` và sửa operand sau
 khi kiểm đúng địa chỉ cũ. Các tham chiếu đưa vào `0x409AD0` bị loại vì đó là danh sách tiêu đề cửa sổ của phần mềm tiệm
-net mà client so với chương trình khác, dịch sẽ làm hỏng phép so. Các consumer còn lại đã đọc tạo `std::string`, định dạng vào
+net mà client so với chương trình khác, dịch sẽ làm hỏng phép so. Bảng tên cấm tại `0x19A7508` cũng giữ nguyên:
+`sub_13A0870` lấy bảng tại `0x13A094C`; ô `0x19A7590` tiếp tục trỏ tới `고객센터` ở `0x17A1288` cho cả ba bản.
+Các consumer hiển thị đã đọc tạo `std::string`, định dạng vào
 chuỗi động, cấp phát theo `strlen` hoặc vẽ trực tiếp, nên chuỗi dài hơn không chép vào bộ đệm cố định. Các màn đã chụp không chứa chuỗi nào
-trong 40 chuỗi này, nên chưa thấy chúng trên màn hình.
+trong 39 chuỗi này, nên chưa thấy chúng trên màn hình. Bản vi thêm hai đường
+`MessageBoxW` cho “Invalid Login!” từ [CP353](../evidence/checkpoints/records/CP353.json). Ba mẹo đã đối chiếu ở ô
+chat phòng lấy từ `csysfxmg.ssd` (mục 23, 25, 28), không cần thêm literal vào exe. Bản dựng dữ liệu mới có lời dịch
+vi/en; còn kiểm cách trình bày trong game.
 
 **Gõ tên phòng.** Client chặn sửa tên khi chuỗi định danh của người chơi rỗng: handler đăng nhập `0x10FD540` đọc theo
 từng người chơi `u32 id`, tên, một `u8` rồi chuỗi định danh vào `CSelfInfo+0x21C`, và `0x13B2320` báo
@@ -277,7 +286,7 @@ thì không vào ô nên ô trống. `<To All>` 8 byte, `<모두에게>` 10, `<�
 của dự án `boom-re` dùng `<Mọi người>` và `<Đồng đội>`, đều 14 byte ở 949x, vừa giới hạn.
 
 **Tên phòng mặc định.** Exe VN có khoá `DefaultRoomTitle0`–`5` nhưng không có chữ: giá trị do server VN gửi và không còn
-nguồn. Bản Việt cần tối đa 22 byte ở 949x; hai câu đang vượt cần thay.
+nguồn. Bản Việt cần tối đa 22 byte ở 949x; bộ dữ liệu hiện tại đã qua kiểm 22 byte khi dựng.
 
 Evidence: [ảnh và chuỗi exe](../evidence/l10n-utf8-949x-images-r4.json), [tên phòng, font và chat](../evidence/l10n-utf8-949x-title-font.json).
 
@@ -304,20 +313,21 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 - **Ảnh bản en (18/11, để sau theo chủ dự án).** Bản en dựng ngày 18/11 có 520 ảnh thay: ảnh Bắc Mỹ và 179 mục
   chủ dự án vẽ, gồm nền phòng `FxMap/Prepare/CAStage_Custom`. Khoảng 170 mục bản vi lấy từ client VN mà client Bắc Mỹ
   không có bản tương ứng nên vẫn tiếng Hàn ở bản en. Các mục này thuộc nội dung ngoài giai đoạn 1: RPG, Couple, câu cá,
-  Shop, sự kiện, LobbySquare. Bốn nút `fx/CustomMap` cũng vậy. Danh sách tính lại được bằng cách so entry nằm ở
+  Shop, sự kiện, LobbySquare. Danh sách tính lại được bằng cách so entry nằm ở
   phần đuôi pack giữa bản vi và bản en. Không làm: hai ô Săn quái/Hợp sức của hộp tạo phòng (`몬스터 SEASON2`, `시즌2`;
   cả vi lẫn en) và frame mờ của `FxMap/Prepare/BookMark_Tooltip_Icon`.
-- **Chữ do server gửi và chữ cứng trong exe** (thông báo chạy chữ, nhắc trong ô chat phòng) vẫn tiếng Hàn. Tên map ở phòng
-  lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là `Factory07`.
-- **Nhãn tràn**: sửa bằng câu ngắn trong catalog (mục layout phía trên); các câu đã đo chờ cập nhật trong boom-re-l10n.
+- **Chữ do server gửi.** Tên map ở phòng lấy từ dữ liệu map server gửi (client ghi đè `fxdynmapinfo.ssd`), nên là
+  `Factory07`. Bản địa hóa thông báo do server gửi để sau giai đoạn 1.
 - **IME tiếng Hàn thật** (composition từng âm tiết) chưa thử trên Wine; đường đó đi `ImmGetCompositionStringW/A` sẵn có
   và qua hook khi không có ký tự tiêm.
 - **Server lưu UTF-8.** [CP356](../evidence/checkpoints/records/CP356.json) kiểm tên account giữ nguyên UTF-8 trong SQLite và codec hai chiều. Client chưa vá không nhận wire mới.
-- **Màn đăng nhập** không có trong recipe (đăng nhập bằng token); chưa chụp.
+- **Đăng nhập trên gói launcher mới.** CP354 xác nhận ko trên Windows; tiền kiểm [CP359](../evidence/checkpoints/records/CP359.json)
+  đã tách đối chứng ko theo hash và giữ phần bản địa hóa khi ghép các bước tương thích đăng nhập cho vi/en. Cần đo trực tiếp
+  vi/en và cặp vi/ko trên gói hiện hành.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,
-tiệm và gõ tiếng Hàn bằng IME thật. Chat chuyển tiếp sảnh/phòng thuộc giai đoạn 1. Làm ngay: ảnh bị bỏ vì khác shape, chuỗi cứng trong exe, chat bị cắt và gõ tên phòng.
+tiệm và gõ tiếng Hàn bằng IME thật. Chat chuyển tiếp sảnh/phòng thuộc giai đoạn 1. Còn ghép ảnh đã duyệt và kiểm trực tiếp đăng nhập, gõ tiêu đề, chat hai chiều và trận trên gói phát hành.
 
 ### Các lượt chẩn đoán trước (Codex, 14–15/11)
 
