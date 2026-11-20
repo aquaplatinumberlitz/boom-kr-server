@@ -1,0 +1,45 @@
+{
+  "id": "CP363",
+  "previous": "CP362",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T06:02:19.297780+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Log nào phân biệt điểm ngắt sau Start104 ở hai client?",
+  "scope": "KRE-074 / #414, chẩn đoán Rust và test hai kết nối. Không mở lại game.",
+  "context_commit": "f276f9d308a7cb1103f50c76d3023c31658243ee",
+  "artifacts": [
+    {"sha256": "923362001b4fa1b233c8b3002a609c205beac5f326ff3b54e92cc2433e221adb"}
+  ],
+  "locators": [
+    "local/research/codex/l1-release-preflight-r1/native-pair-followup"
+  ],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/RESEARCH.md#gap-client-utf8", "summary": "Log poll giữ guard cũ, thêm bước bị lỗi, mã gói nếu có và ID kết nối nội bộ theo lượt. Server ghi mốc riêng sau khi gửi Start121; mỗi client trong test có mốc riêng cho hai ván.", "evidence": ["FORMAT", "ROUND"], "limits": "Không ghi lỗi thô hoặc nội dung gói. Mốc 121 chỉ xác nhận ghi ở server; chưa biết nguyên nhân CP362."}
+  ],
+  "verification": [
+    {"check": "Test log giữ guard và không lộ lỗi thô; fixture Rust hai owner hoàn tất hai ván và nhận mốc Start121 mỗi phía.", "result": "pass", "evidence": ["FORMAT", "ROUND"], "limits": "Gói mô phỏng, không phải Windows/Wine thật."}
+  ],
+  "delta": {"added": ["Phân biệt poll ở bước quyền, thành viên, relay, journal, hàng đợi và batch; đối chiếu được với mốc gửi 121."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Chờ một lượt thật từ cùng gói sau khi tích hợp chẩn đoán."
+  ],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Dùng log poll và Start121 phân biệt lỗi đầu tiên, rồi xác nhận cả hai client vào và hoàn thành một ván."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T06:02:19.297780+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi phép kiểm sẵn sàng."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Ghi cách phân biệt lỗi khi tải."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi contract hoặc wire."},
+    {"path": "docs/evidence/checkpoints/records/CP363.json", "state": "updated", "reason": "Pin hai test."}
+  ],
+  "evidence": [
+    {"id": "FORMAT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/room-diag-test.log", "bytes": 3864, "sha256": "6021f0e1ad0dcfc240dc029e02d9f4e4d8c6a113ab065dffbcfd0fb2e5f51b4e"},
+    {"id": "ROUND", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/room-two-owners-diag-test.log", "bytes": 787, "sha256": "923362001b4fa1b233c8b3002a609c205beac5f326ff3b54e92cc2433e221adb"}
+  ],
+  "evidence_runs": [
+  ]
+}

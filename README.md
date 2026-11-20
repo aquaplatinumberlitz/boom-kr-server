@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP362: Windows vi và Wine ko cùng phòng, chat hai chiều; trận đầu chưa vào được.** [Bằng chứng](docs/evidence/checkpoints/records/CP362.json).
+**CP363: Có log xác định bước ngắt khi tải trận vi/ko.** [Bằng chứng](docs/evidence/checkpoints/records/CP363.json). Chưa biết nguyên nhân.
 
 ## Bắt đầu
 
