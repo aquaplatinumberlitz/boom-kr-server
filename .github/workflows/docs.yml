@@ -42,6 +42,7 @@ jobs:
           tools.test_l10n_utf8_codec
           tools.test_l10n_utf8_core
           tools.test_l10n_949x_patch
+          tools.test_l10n_949x_ui_limits
           tools.test_l10n_utf8_glyph_probe
           tools.test_probe_channel_identity
           tools.test_terrain_shadow

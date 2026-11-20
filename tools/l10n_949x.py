@@ -110,11 +110,45 @@ def u8(b, stats):
         return encode(text, 'replace')
 
 
+UI_TEXT_LIMITS = {**{f'DefaultRoomTitle{i}': 22 for i in range(6)},
+                  'ChatToAll': 14, 'ChatToOurTeam': 14}
+
+
+def checked_ui_text(key, text, source):
+    """Giữ giới hạn byte của control sau khi bỏ escape XML."""
+    limit = UI_TEXT_LIMITS.get(key)
+    if limit is None:
+        return
+    try:
+        size = len(encode(text))
+    except UnicodeEncodeError as exc:
+        raise ValueError(f'{source}: {key} có ký tự ngoài 949x') from exc
+    if size > limit:
+        raise ValueError(f'{source}: {key} dài {size} byte 949x, tối đa {limit}')
+
+
+def check_client_string_ui(text):
+    from xml.etree import ElementTree
+    for match in re.finditer(r'<Elem>(.*?)</Elem>', text, re.S):
+        block = match[1]
+        key = re.search(r'<key>(.*?)</key>', block, re.S)
+        if key is None or key[1] not in UI_TEXT_LIMITS:
+            continue
+        value = re.search(r'<string(?:\s*/>|>(.*?)</string>)', block, re.S)
+        if value is None:
+            raise ValueError(f'ClientString: thiếu chuỗi của {key[1]}')
+        literal = ''.join(ElementTree.fromstring(value[0]).itertext())
+        checked_ui_text(key[1], literal, 'ClientString')
+
+
 def conv_pair(raw, stats):
     n = struct.unpack_from('<H', raw)[0]
     out, p = bytearray(raw[:2]), 2
     for _ in range(n):
         k, p = lstr(raw, p); v, p = lstr(raw, p)
+        key = k.decode('utf-8')
+        if key in UI_TEXT_LIMITS:
+            checked_ui_text(key, v.decode('utf-8'), 'SSI')
         out += packed(u8(k, stats)) + packed(u8(v, stats)); stats['strings'] = stats.get('strings', 0) + 2
     if p != len(raw):
         raise ValueError('pair: dư dữ liệu')
@@ -216,6 +250,7 @@ def conv_pack(src, out, stats):
     blob = (src / 'FxDesktop.idd').read_bytes()[off:off + sz]
     assert int.from_bytes(blob[:4], 'little') == len(blob) - 4
     text = blob[4:].decode('utf-8')
+    check_client_string_ui(text)
     stats['chars'] = len(text)
     new = packed(encode(text, 'replace'))
     stats['unmapped'] = sorted({ch for ch in text if ch not in EXT_INDEX and not _in_cp949(ch)})
