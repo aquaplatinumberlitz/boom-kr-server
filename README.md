@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP370: Gói vi/ko đạt nghiệm thu L1 giai đoạn 1, gồm chat có dấu hai chiều và một ván tới kết quả.** [Bằng chứng](docs/evidence/checkpoints/records/CP370.json).
+**CP371: Hai ván cùng phòng qua TLS đã qua kiểm tự động; Start ván hai trên game vẫn mở ở #502.** [Bằng chứng](docs/evidence/checkpoints/records/CP371.json).
 
 ## Bắt đầu
 
