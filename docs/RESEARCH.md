@@ -80,7 +80,7 @@ chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
 - Tiệm: cần dịch vụ có tiệm; sau đó chụp tiệm ở cả ba bộ dữ liệu.
 - Sửa tên phòng: bật chuỗi định danh chẩn đoán đã nối vào auth4 cho tài khoản thử, gõ tiêu đề trộn và đối chiếu ở client nhận trên gói.
 - IME tiếng Hàn thật (composition từng âm tiết) chưa thử. Đường VK_PACKET đã sửa lỗi cắt trong bản chẩn đoán; kiểm lại trên gói.
-- Wine mới: tách bước sau bootstrap và trước LoginStage khi client vi/ko đều ngắt, so với Windows vi dùng cùng gói có kiểm hash.
+- Wine: CP361 đã tới sảnh ko. Ở lượt sau, kiểm trước route và endpoint relay do service công bố từ namespace của companion; đo kết nối peer rồi mới thử phòng vi/ko.
 - Consumer bỏ qua hai slot chuyển mã (bộ giải riêng, GDI) chưa được loại trừ; chưa thấy chỗ nào sai trong các màn đã chụp.
 - Tên account đã có [biên UTF-8/949x strict](protocol/auth-session.md#rust-patched-account-names) và TCP/reset; còn native. Tên phòng và chat chỉ đi qua phòng/sảnh; cần xác nhận xuyên suốt trên gói.
 
