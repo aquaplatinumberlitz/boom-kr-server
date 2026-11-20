@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP369: Windows vi và Wine ko đã vào cùng trận Factory07; chưa có kết quả.** [Bằng chứng](docs/evidence/checkpoints/records/CP369.json).
+**CP370: Gói vi/ko đạt nghiệm thu L1 giai đoạn 1, gồm chat có dấu hai chiều và một ván tới kết quả.** [Bằng chứng](docs/evidence/checkpoints/records/CP370.json).
 
 ## Bắt đầu
 

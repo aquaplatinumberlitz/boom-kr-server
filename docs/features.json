@@ -571,7 +571,8 @@
               "docs/protocol/auth-session.md#rust-account-fresh-login",
               "docs/protocol/auth-session.md#rust-account-basic",
               "docs/protocol/room-membership.md#rust-managed-account-ownership",
-              "docs/protocol/auth-session.md#rust-db-account-profiles"
+              "docs/protocol/auth-session.md#rust-db-account-profiles",
+              "docs/evidence/checkpoints/records/CP370.json"
             ]
           },
           "windows_original": {

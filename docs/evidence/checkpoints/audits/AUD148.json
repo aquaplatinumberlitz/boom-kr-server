@@ -1,0 +1,15 @@
+{
+  "id": "AUD148",
+  "trigger": "feature_group",
+  "feature_groups": ["l1-phase1-localization"],
+  "completed_through": "CP370",
+  "recorded_utc": "2026-11-20T12:18:53.674888+00:00",
+  "auditor": "Codex",
+  "read_files": ["README.md", "docs/PLAN.md", "docs/PROTOCOL.md", "docs/protocol/auth-session.md", "docs/protocol/lobby-profile.md", "docs/RESEARCH.md", "docs/content/client-language.md", "docs/evidence/owner-directives/l1-phase1.json", "docs/evidence/checkpoints/records/CP367.json", "docs/evidence/checkpoints/records/CP370.json", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/l1-final-r3-receipt.json", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/state-gate.jsonl", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/service/rust-events.jsonl", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/timeline.jsonl", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-receive-ko-0/capture-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-receive-vi-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/guest-export/unicode-steps.txt", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-battle-lit-0/capture-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-battle-lit-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-first-round-end-0/capture-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-first-round-end-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-returned-room-0/capture-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-returned-room-0.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-start-second.png", "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/cleanup.json"],
+  "method": "Đối chiếu scope L1 của Claude, ảnh bên nhận, đầu ra helper, UI hai client, log và SQLite. Tự kiểm theo waiver, không phải review độc lập.",
+  "findings": [
+    {"id": "F1", "stale": "Tài liệu nói chưa có chat có dấu vi → ko và ván đầu vi/ko.", "correction": "Ảnh phía nhận cho cả hai chiều; hai bảng kết quả và journal complete xác nhận một ván trọn vẹn.", "fixed_in": ["docs/PLAN.md", "docs/content/client-language.md", "docs/protocol/lobby-profile.md"]},
+    {"id": "F2", "stale": "Kết quả ván đầu có thể bị đọc thành đã đóng cả nhóm launcher M8.", "correction": "Giữ #502: Ready95 ván kế tới, nhưng Start104 không tới. Môi trường cô lập, chưa có nghiệm thu Internet thật.", "fixed_in": ["docs/PLAN.md", "docs/evidence/checkpoints/records/CP370.json"]}
+  ],
+  "remaining": ["En và ảnh bổ sung hoãn; không suy chat 2P, IME Hàn thật hoặc gõ tiêu đề từ vi.", "Hai lượt ngắt sớm không lặp ở lượt cuối; giữ câu hỏi nguyên nhân gốc để theo dõi nếu tái diễn."]
+}
