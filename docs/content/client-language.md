@@ -152,7 +152,7 @@ Lý do chọn, so với UTF-8 thuần trong client:
   từng byte dữ liệu giải nén của bảy file `ssi1` gốc. Từ bản dựng ghi `csysfxmg.ssd` (dòng chạy chữ và mẹo chat,
   `u16 số dòng` rồi từng `u8 loại` + chuỗi), `convert` đổi thêm file đó nếu bộ nguồn có; bộ nguồn cũ không có thì bỏ qua. Video mở đầu `nm.bik` (logo và màn GRB chữ Hàn dựng sẵn trong video) được bản dựng vi/en thay bằng video của client VN/Bắc Mỹ (không chữ); `convert` chép nguyên, bản ko giữ video gốc. Phát hành dùng pack chung: `tools/l10n_share_pack.py` (boom-re-l10n) ghép `.idd` = KR + đuôi vi + đuôi en, mỗi ngôn ngữ một `.idx` (ko dùng `.idx` KR); 7 pack còn 506 MB so với 814 MB nếu tách vi/en, cả vi và en đã chạy tới sảnh/phòng trên bộ chung (18/11).
 
-Server muốn lưu chữ người chơi dưới dạng UTF-8 thì đổi 949x sang UTF-8 bằng cùng bảng ở biên lưu trữ; việc này chưa làm.
+Server lưu tên hiển thị account bằng UTF-8 và đổi qua cùng bảng 949x ở biên wire. Tiêu đề phòng chưa lưu vào DB.
 
 ### Bản vá
 
@@ -313,7 +313,7 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 - **Nhãn tràn**: sửa bằng câu ngắn trong catalog (mục layout phía trên); các câu đã đo chờ cập nhật trong boom-re-l10n.
 - **IME tiếng Hàn thật** (composition từng âm tiết) chưa thử trên Wine; đường đó đi `ImmGetCompositionStringW/A` sẵn có
   và qua hook khi không có ký tự tiêm.
-- **Server lưu UTF-8**: chưa làm; server nhận và chuyển byte 949x. Client chưa vá thấy sai các ký tự mở rộng.
+- **Server lưu UTF-8.** [CP356](../evidence/checkpoints/records/CP356.json) kiểm tên account giữ nguyên UTF-8 trong SQLite và codec hai chiều. Client chưa vá không nhận wire mới.
 - **Màn đăng nhập** không có trong recipe (đăng nhập bằng token); chưa chụp.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 

@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP355: Chat 949x sảnh và phòng chờ qua test TLS vi/ko; còn nghiệm thu bằng game.** [Bằng chứng](docs/evidence/checkpoints/records/CP355.json). L1 còn mở.
+**CP356: Tên account lưu UTF-8 và codec 949x khớp toàn bộ bảng tham chiếu.** [Bằng chứng](docs/evidence/checkpoints/records/CP356.json). L1 còn mở.
 
 ## Bắt đầu
 

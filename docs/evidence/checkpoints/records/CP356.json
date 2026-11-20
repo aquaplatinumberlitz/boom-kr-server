@@ -1,0 +1,49 @@
+{
+  "id": "CP356",
+  "previous": "CP355",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T02:00:52.586728+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Rust có lưu tên UTF-8 và chiếu đúng cả 949x lẫn CP949 lên dây không?",
+  "scope": "KRE-074 / #414, tên hiển thị account và bảng mã; không lưu tiêu đề phòng.",
+  "context_commit": "93c721b8e1b8f9e351ae9ced0fa9e408796c4cd7",
+  "artifacts": [
+    {"sha256": "2a99cf47b3857427fe306fe0eacfc41fb6f2abe04ae68f7169e3748b8710132e"}
+  ],
+  "locators": [
+    "local/research/codex/l1-storage-utf8-r1"
+  ],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/protocol/auth-session.md#rust-patched-account-names", "summary": "SQLite giữ tên hiển thị UTF-8 nguyên văn. Tên đăng nhập vẫn ASCII; không đổi wire hoặc schema.", "evidence": ["DB"], "limits": "Tiêu đề phòng chỉ giữ trong bộ nhớ, không thêm lưu trữ hoặc đổi 949x ở đường đó."},
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/protocol/auth-session.md#rust-patched-account-names", "summary": "Bảng Rust sinh từ bản Python đã chọn. Đối chiếu hai chiều 19.451 ánh xạ, gồm 2.275 mã mở rộng và CP949.", "evidence": ["BUILD", "CODEC"], "limits": "Kiểm codec; không xác nhận hiển thị bằng game."}
+  ],
+  "verification": [
+    {"check": "Sinh bảng, round-trip Rust theo Python và tên UTF-8 trong SQLite.", "result": "pass", "evidence": ["BUILD", "CODEC", "DB"], "limits": "Dữ liệu oracle ở local; CI sinh riêng."}
+  ],
+  "delta": {"added": ["CI sinh oracle độc lập và kiểm bảng Rust."], "corrected": ["Tên DB đã là UTF-8; không cần migration."], "superseded": []},
+  "blockers": [
+    "Còn kiểm dữ liệu/ảnh và nghiệm thu vi/ko trên gói."
+  ],
+  "next_steps": [
+    {"id": "L1-414-data", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Tích hợp kiểm byte khi dựng, ảnh và gõ tên phòng; sau đó nghiệm thu gói thật."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T02:00:52.586728+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay dòng mốc mới."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP355."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi xác minh biên lưu trữ."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Router không đổi."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi sinh bảng và round-trip CI."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Đóng khoảng trống lưu UTF-8 cho tên account."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở câu hỏi runtime mới."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm bằng chứng."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP356.json", "state": "updated", "reason": "Ghi kết quả test và hash oracle."}
+  ],
+  "evidence": [
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/l1-storage-utf8-r1/oracle-build.json", "bytes": 360, "sha256": "b5b042d783f948deb69791f7b77b0497533957999e4b1a5592d2fa9ff3ad68c6"},
+    {"id": "CODEC", "kind": "local", "path": "local/research/codex/l1-storage-utf8-r1/wire-oracle-tests.log", "bytes": 2575, "sha256": "9cbee29618cebad6fec361de8c539c39a35144ad05bf83b5eba7de4d2fe561a4"},
+    {"id": "DB", "kind": "local", "path": "local/research/codex/l1-storage-utf8-r1/sqlite-name-test.log", "bytes": 971, "sha256": "04c3c488bdc5b1e09f720272fca7af3c5a8ba0c8c30bc2cb00a22e435aff952d"}
+  ]
+}
