@@ -224,7 +224,7 @@ Dependency: —.
 
 Khoảng trống (trích bảng RESEARCH): [CP179](PROTOCOL.md#bootstrap-recipe-scope): K1 đạt riêng offlineR2 từ3coldstart/API đúngPID/contract-controls; K0CP178 giữ. Không originalWindowsbootstrap hoặc3e9coldstart.
 
-Phép kiểm tối thiểu (trích cùng nguồn): Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. [L1 UTF-8](RESEARCH.md#gap-client-utf8): bản vá 949x đạt một phần trên client chẩn đoán (CP310), không suy từ gate K0/K1.
+Phép kiểm tối thiểu (trích cùng nguồn): Cold3R2 đã giải, không đo lại. WiderWCP/launcher/config còn ở #2; currente9input/state bridge và livecodec theo PLAN/#3, chỉ mở bootstrapcause nếu có trigger mới. [L1 UTF-8](RESEARCH.md#gap-client-utf8): Windows vi và Wine ko đã đọc tên, tiêu đề và chat chéo trong phòng; còn xác minh ván đầu, chat sảnh và bản en, không suy từ gate K0/K1.
 
 Issue/phạm vi công việc: [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285), [#1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/1), [#2](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/2), [#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9), [#407](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/407), [#414](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/414).
 

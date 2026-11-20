@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP363: Có log xác định bước ngắt khi tải trận vi/ko.** [Bằng chứng](docs/evidence/checkpoints/records/CP363.json). Chưa biết nguyên nhân.
+**CP364: Đã kiểm đầu vào cho lượt xác minh ván đầu vi/ko.** [Bằng chứng](docs/evidence/checkpoints/records/CP364.json). L1b/L1c còn mở; chưa có lượt chạy với log mới.
 
 ## Bắt đầu
 
