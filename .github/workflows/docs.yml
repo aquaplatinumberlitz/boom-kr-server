@@ -34,6 +34,7 @@ jobs:
           tools.test_checkpoints
           tools.test_checkpoint_evidence_lean
           tools.test_local_retention
+          tools.test_m8_udp_profile
           tools.test_rust_service_package
           tools.test_player_package
           tools.test_export_preset

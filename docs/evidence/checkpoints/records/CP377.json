@@ -1,0 +1,45 @@
+{
+  "id": "CP377",
+  "previous": "CP376",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T23:54:44.292468+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Capture đã lưu có cho nhịp UDP native làm đầu vào kiểm tải M8 không?",
+  "scope": "KRE-M8-MONITORING / #523. Đo offline từ CP287; đối chiếu ranh giới capture CP375. Không chạy game, VM hoặc VPS.",
+  "context_commit": "1f1e27c1151d7a72c2edd405a4b04e29e7debd2b",
+  "artifacts": [
+    {"sha256": "f4220acbe04f2ed9398c8885c68383f355b411b0da3a3b444733ea1820ffbee8"},
+    {"sha256": "18edd92132b8324691c89438238f146c82cb939a6fd6dcc8f8c8345f1f8d9d97"}
+  ],
+  "locators": ["local/research/codex/m8-udp-profile", "docs/evidence/checkpoints/records/CP287.json", "docs/evidence/checkpoints/records/CP375.json"],
+  "findings": [
+    {"source": "kr_runtime", "status": "candidate", "method": "test", "canonical": "docs/OPERATIONS.md#m8-udp-workload", "evidence": ["RATE", "TOOL"], "summary": "Tám cửa sổ từ đồng hồ đến trước kết quả: trung bình 11,554–14,489 datagram UDP gửi mỗi giây/client, trung vị 13,024, đỉnh trượt một giây 27 gói. Lọc chiều gửi và proxy của đúng vòng.", "limits": "Bốn client native ở build CP287, hai ván hoàn tất. Capture CP375 đo QUIC ngoài nên không đối chiếu được nhịp UDP native."}
+  ],
+  "verification": [
+    {"check": "Kiểm hash capture, sidecar, receipt và manifest CP287; chạy công cụ offline và hai test Python.", "result": "pass", "evidence": ["RATE", "TEST", "TOOL"], "limits": "Test tổng hợp kiểm loại bản sao loopback, chiều, cửa sổ, proxy cũ và từ chối dữ liệu cắt hoặc sai sidecar."}
+  ],
+  "delta": {"added": ["Recipe tái lập nhịp UDP lịch sử và giới hạn khi chọn workload."], "corrected": [], "superseded": []},
+  "blockers": ["Thiếu capture UDP trước mã hóa trên build đóng gói hiện hành; chưa khóa ngưỡng CPU/RAM/độ trễ/rơi gói."],
+  "next_steps": [
+    {"id": "M8-523-native-load-profile", "task": "KRE-M8-MONITORING", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Đối chiếu build đóng gói rồi chốt nhịp, workload và ngưỡng trước kiểm tải/soak."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T23:54:44.292468+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP376."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi mẫu ứng viên và blocker hiện hành."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi recipe offline và cách đối chiếu workload."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi giao thức."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Câu hỏi kiểm tải M8 vẫn mở."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Mức bằng chứng cho cả tính năng không đổi."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Catalog không đổi."},
+    {"path": "docs/evidence/checkpoints/records/CP377.json", "state": "updated", "reason": "Pin kết quả tái lập và test."}
+  ],
+  "evidence": [
+    {"id": "RATE", "path": "local/research/codex/m8-udp-profile/cp287-profile.json", "kind": "local", "bytes": 3354, "sha256": "6cc3958625b4cbb7feaf841e4bbefb13755c00e5fdaf351cc248439b15c93dea"},
+    {"id": "TEST", "path": "local/research/codex/m8-udp-profile/tests.log", "kind": "local", "bytes": 388, "sha256": "e4ca790ea3df9993cda8b9f737ebf407e0ee5f86160561a3cfc458977c170b4a"},
+    {"id": "TOOL", "path": "tools/m8_udp_profile.py", "kind": "repository", "bytes": 6650, "sha256": "92d3c253af5d262a593d4ebbd87a647ffd587c07baabc11a44734ef617e62506"}
+  ],
+  "evidence_runs": []
+}

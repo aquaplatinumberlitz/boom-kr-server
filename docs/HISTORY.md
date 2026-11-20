@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP376: Server có kiểm sức khỏe cục bộ và số đo lobby, phòng/ván, relay và SQLite.** [Bằng chứng](evidence/checkpoints/records/CP376.json).
+
 **CP375: Windows vi và Wine ko chơi hai ván qua gói VPS trên cùng đường 4G; WAN giả lập đã kiểm ngắt và đăng nhập lại.** [Bằng chứng](evidence/checkpoints/records/CP375.json).
 
 **CP374: Audit admin, phục hồi SQLite và rollback binary đạt kiểm phía server; hai client TLS tổng hợp mở được ván sau restore.** [Bằng chứng](evidence/checkpoints/records/CP374.json).
