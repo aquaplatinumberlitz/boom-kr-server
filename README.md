@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP354: Windows 2P về đúng phòng và bấm Start; chưa có ván hai.** [Nghiệm thu và giới hạn](docs/evidence/checkpoints/records/CP354.json). M8 còn mở.
+**CP355: Chat 949x sảnh và phòng chờ qua test TLS vi/ko; còn nghiệm thu bằng game.** [Bằng chứng](docs/evidence/checkpoints/records/CP355.json). L1 còn mở.
 
 ## Bắt đầu
 

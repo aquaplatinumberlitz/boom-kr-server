@@ -295,8 +295,8 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 ### Giới hạn và việc còn lại
 
 - **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
-- **Chat chưa chuyển tiếp.** Dịch vụ Rust từ chối opcode chat 18 (`lobby_request_denied`) và đóng kết nối sảnh, nên chưa
-  thấy chat chéo giữa hai client; chữ trộn đã thấy ở tên phòng và ô nhập.
+- **Chat chuyển tiếp.** [CP355](../evidence/checkpoints/records/CP355.json) kiểm hai kết nối vi/ko mô phỏng qua TLS:
+  reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. Còn nghiệm thu hiển thị hai chiều trên gói Windows/Wine.
 - **Sửa tên phòng** cần chuỗi định danh của tài khoản; mới có cho tài khoản thử qua cấu hình chẩn đoán (mục trên).
 - **Tên phòng tối đa 22 byte.** Hai trong sáu tên phòng mặc định tiếng Việt dài 26 và 27 byte trong 949x
   (`DefaultRoomTitle1`, `DefaultRoomTitle2`); khi client chọn ngẫu nhiên trúng hai tên này, nút xác nhận tắt (lượt vi-01).
@@ -317,10 +317,8 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 - **Màn đăng nhập** không có trong recipe (đăng nhập bằng token); chưa chụp.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
-**Để sau giai đoạn 1** theo [quyết định 15/11](../evidence/owner-directives/l10n-utf8-followup.json): chữ server gửi
-(thông báo chạy chữ: xác định nguồn, nếu do server gửi thì server giữ theo ba thứ tiếng), chat chuyển tiếp (chế độ thử
-nghiệm server chuyển nguyên byte chat 949x trong phòng), tiệm (server trả tiệm mẫu để mở màn hình) và gõ tiếng Hàn bằng
-IME thật. Làm ngay: ảnh bị bỏ vì khác shape, chuỗi cứng trong exe, chat bị cắt và gõ tên phòng.
+**Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,
+tiệm và gõ tiếng Hàn bằng IME thật. Chat chuyển tiếp sảnh/phòng thuộc giai đoạn 1. Làm ngay: ảnh bị bỏ vì khác shape, chuỗi cứng trong exe, chat bị cắt và gõ tên phòng.
 
 ### Các lượt chẩn đoán trước (Codex, 14–15/11)
 

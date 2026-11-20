@@ -483,7 +483,11 @@ CRC và field bytes bằng Python reference; không coi phép kiểm packet-loca
 account Việt; chưa chứng minh nội dung trộn Việt/Hàn hoặc chat giữa hai bản. Client vẫn lỗi C0000005 khi
 thoát ở cleanup đã ghi; launcher1 giữ nguyên, DB logout1/session0, VM/seed/overlay và rule đã dọn.
 
-Tiếp theo đo reply28 trên client thật và hai bản vi/ko cùng phòng. Byte/tần suất là policy công ty, không suy
-từ hai chuỗi mẫu. Chat sảnh/team/whisper/guild và giao thức xã hội đầy đủ vẫn thuộc giai đoạn sau.
+L1 mở chat sảnh trên launcher TLS khi `patched_949x_names=true`. [CP355](../evidence/checkpoints/records/CP355.json)
+đối chiếu đường nhận của `CLobbyStage`: slot 51 `0xDA1F30` chuyển opcode 28 qua `0xDA2335` vào
+`CChatStage` rồi consumer cũ. Cả sảnh và phòng chờ dựng reply28 từ tên account và giữ nguyên byte của tin 18 đã kiểm.
+Tin sảnh chỉ vào queue của các lượt sảnh hiện hành, tối đa 8 tin chờ mỗi kết nối; vào phòng bỏ queue sảnh.
+Kiểm lại account nguồn và đích trước gửi. Chung giới hạn 500 ms giữa hai tin trên cùng kết nối; không tạo ACK.
+Test TLS vi/ko kiểm byte và phạm vi. Còn nghiệm thu trên game thật; không suy routing Nexon, chat 2P, team, whisper hay guild.
 
 <!-- protocol-topic-content-end -->

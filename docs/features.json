@@ -119,6 +119,7 @@
           "refs": [
             "docs/protocol/bootstrap-codec.md#wcp",
             "docs/content/client-language.md#utf8",
+            "docs/evidence/checkpoints/records/CP355.json",
             "docs/evidence/l10n-probe-b.json"
           ]
         },
