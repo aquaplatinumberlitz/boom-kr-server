@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP353: Gói Windows 2P chơi xong ván đầu và hiện lại phòng; bộ điều khiển chưa bấm Start ván hai.** [Nghiệm thu và giới hạn](docs/evidence/checkpoints/records/CP353.json). M8 còn mở.
+**CP354: Windows 2P về đúng phòng và bấm Start; chưa có ván hai.** [Nghiệm thu và giới hạn](docs/evidence/checkpoints/records/CP354.json). M8 còn mở.
 
 ## Bắt đầu
 

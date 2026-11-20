@@ -1,0 +1,55 @@
+{
+  "id": "CP354",
+  "previous": "CP353",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T01:22:17.318111+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Gói Windows 2P có tạo ván hai sau khi nhận đúng phòng và bấm Start không?",
+  "scope": "M8 / #476. Một lượt r2, Windows cô lập, client ko, Factory07, bản dựng nội dung origin/main 1099470.",
+  "context_commit": "1099470e03560290102657bb6cada776dd56cded",
+  "artifacts": [
+    {"sha256": "a8fe82867f2721423f2a84cda03298b79156a2a94d9699002b0469c3525e7129"},
+    {"sha256": "18a5a614ae006e62d136b45320f028aec2106d4fdaf3037c3b3d749c40337ac9"}
+  ],
+  "locators": [
+    "local/research/codex/m8-launcher-close-r2"
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Có kết quả ván một, nhận đúng phòng và bấm Start một lần; log không tăng số Start104, SQLite chỉ có ván đã hoàn tất và không thấy màn trận hai.", "evidence": ["UI", "ROOM", "START", "EVENTS", "ACTIONS"], "limits": "Một lần bấm; không có lỗi account_authority hoặc account_session_ended trong cửa sổ đo. Không phân biệt được client chưa gửi với request chưa tới bộ xử lý."}
+  ],
+  "verification": [
+    {"check": "Start104, bản ghi mới cùng khóa phòng và màn trận hai.", "result": "fail", "evidence": ["UI", "START", "EVENTS"], "limits": "Dừng ở một lượt đã giao; không thử bấm lại."},
+    {"check": "Dọn VM, đĩa tạm và ISO; so danh tính tiến trình/container có sẵn.", "result": "pass", "evidence": ["CLEANUP", "PACKAGE"], "limits": "Không là nghiệm thu thoát game sạch."}
+  ],
+  "delta": {"added": ["Có chứng cứ đã nhận đúng phòng và bấm Start sau kết quả."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Start ván hai, Wine và Internet thật của gói hiện hành chưa nghiệm thu."
+  ],
+  "next_steps": [
+    {"id": "M8-476-second-start", "task": "M8-476", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Chỉ khi được giao tiếp, đo đường UI phát Start104 sau Result202/585 và điểm nhận server. Chưa lặp lượt cũ."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T01:22:17.318111+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc Windows mới."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP353."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật đúng dòng launcher."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Thu hẹp câu hỏi sau lần bấm thực."},
+    {"path": "docs/OPERATIONS.md", "state": "unchanged", "reason": "Giới hạn Windows vẫn giữ."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm liên kết bằng chứng."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP354.json", "state": "updated", "reason": "Ghi kết quả và pin bằng chứng lượt r2."}
+  ],
+  "evidence": [
+    {"id": "UI", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/native-summary.json", "sha256": "824fb539619a6228c58660664c1565e212b80d4bbec15efc44f0ea7ebf67cb8e", "bytes": 2015},
+    {"id": "ROOM", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/ending-first-47/capture-0.png", "sha256": "b62b41b8e00bfc3434b8ba2995ab1c91cbb0d37006b30f262fa8cca715937308", "bytes": 260216},
+    {"id": "START", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/start-second/capture-1.png", "sha256": "1eacca9adf62d986e250b532418622e1c944bc420b9a8a5834553d573786d40f", "bytes": 262854},
+    {"id": "EVENTS", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/service/rust-events.jsonl", "sha256": "79dd5d60c05262fdd7847e393c23fa2034acc493306bfd001551e4ffa59ec021", "bytes": 2170},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/run-cleanup-result.json", "sha256": "5d5c2b96c1a8d64b6f946c79a53cf11ecaa99104e43707b43d70c68d32066887", "bytes": 661},
+    {"id": "ACTIONS", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/start-second-actions.json", "sha256": "e3afbf871b1dcefb6f39f43dc20eca6957f8d06d0726864713c655232befc04e", "bytes": 111},
+    {"id": "PACKAGE", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/package.json", "sha256": "54f0f257a22516379373ba8d55c81103599ae9900044f31f88ed9f610d10523a", "bytes": 741},
+    {"id": "SOURCE", "kind": "local", "path": "local/research/codex/m8-launcher-close-r2/play.py", "sha256": "e2e3619be5bac8b8d08701580daad924840f368af8b00c4c10038d8058ab64c9", "bytes": 8975}
+  ],
+  "evidence_runs": []
+}
