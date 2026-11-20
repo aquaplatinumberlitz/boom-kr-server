@@ -1,0 +1,65 @@
+{
+  "id": "CP375",
+  "previous": "CP374",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T23:25:26.785487+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "#476: Gói launcher và relay xác thực có chạy qua VPS Internet thật và chịu được WAN giả lập không?",
+  "scope": "KRE-M8-PLAYER-LAUNCHER / #476; CP261/CP264 và CP373. Windows vi trên VM và Wine ko, cùng PC qua hotspot 4G; WAN giả lập tách riêng.",
+  "context_commit": "19982f41e5e9b5c2a56fcc993b5d4a92f1f7b7d5",
+  "artifacts": [
+    {"sha256": "f64c5d6a9f251f3eaf41ffbfe960d91fae4e420450a62e6657b20959e13c826e"},
+    {"sha256": "01ae2a9be9bd88f4295d10f3b4285280f40c54effbc9def660d14035f7e6a1fb"},
+    {"sha256": "3e21e53339e550712e6ed761b41e92b4931211597863faaf625e14f5a4e1c4e9"},
+    {"sha256": "584c05c35e8e14c643146d28f9b51e9e62e249509d88f803eff40cafef186762"},
+    {"sha256": "c70c86d9720810b0b635dbdfb3e36e7c4324447fbe155ee5c422a009022c2557"},
+    {"sha256": "9dc65d0fd30bc0c244528ed7bcaf567f95aedb5be479a2865de813e105410b75"}
+  ],
+  "locators": ["local/research/codex/m8-internet-package", "CP261/CP264: direct cũ; CP373: launcher và hai vòng Factory07 trong lab."],
+  "findings": [
+    {"source": "design", "status": "design", "method": "runtime", "canonical": "docs/OPERATIONS.md#nghiệm-thu-gói-qua-internet-và-wan-giả-lập", "summary": "ARM64 từ gói Linux qua kiểm manifest, state riêng, TTL 8 giờ và idle 30 phút. Mở ba cổng có giới hạn nguồn. Thêm nguồn vào allowlist service để TLS status và prelogin qua được.", "evidence": ["BUILD", "INT", "ROLL"], "limits": "Lượt một chỉ tới TCP; lượt hai tới sảnh rồi lỗi harness. VPS dừng và gỡ rule của lượt thử."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Windows vi và Wine ko đăng nhập, vào sảnh/phòng, nhận chat có dấu hai chiều, chạy hai đồng hồ, thấy hai kết quả và về cùng phòng. RTT kết nối TCP trung vị 51.1 ms; capture hai luồng QUIC relay hai chiều.", "evidence": ["INT", "GATE", "VI", "KO", "CAP"], "limits": "Cùng một uplink 4G, không chứng minh hai mạng Internet độc lập, CGNAT cụ thể hoặc đồng bộ từng payload. Không có đường ngang trong preset và allowlist của ca thử."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#nghiệm-thu-gói-qua-internet-và-wan-giả-lập", "summary": "Control WAN đổi cổng theo hai đích UDP, không có route ngoài đích, RTT trung vị 150.19 ms qua 75 ms mỗi chiều; mất gói cấu hình 3% mỗi chiều.", "evidence": ["NAT", "LAB"], "limits": "Control UDP tổng hợp; không phải native gameplay."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Hai client hoàn tất một ván trong WAN giả lập với Windows qua hai tầng NAT. Khi hạ link Windows 27 giây giữa ván sau, journal ghi forfeit và phiên cũ bị thu hồi. Wine còn hoạt động và về phòng. Windows lập phiên mới và về sảnh sau khi khôi phục link và route.", "evidence": ["LAB", "NAT"], "limits": "Windows đi qua NAT của QEMU và router namespace; chỉ đường Windows chịu netem."}
+  ],
+  "verification": [
+    {"check": "Build khóa dependency ba target, fmt, Clippy, workspace test và kiểm builder Python.", "result": "pass", "evidence": ["BUILD", "TEST", "CLIP", "PY"], "limits": "Không có sửa Rust."},
+    {"check": "Hai ván Factory07, chat có dấu và relay qua VPS thật; dừng runner và gỡ rule.", "result": "pass", "evidence": ["INT", "CAP", "GATE", "ROLL"], "limits": "Một đường Internet 4G dùng chung, Windows là VM."},
+    {"check": "WAN giả lập: relay khi chặn đường trực tiếp, mất mạng giữa ván, dọn phiên, survivor và đăng nhập lại.", "result": "pass", "evidence": ["NAT", "LAB"], "limits": "Không suy toàn bộ NAT hoặc mạng xấu ngoài profile đã đo."}
+  ],
+  "delta": {"added": ["Thêm bước cấu hình/kiểm TLS trước khi chạy và tool WAN namespace có NAT/netem."], "corrected": ["Phân biệt TCP tới được với launcher TLS đã qua allowlist."], "superseded": []},
+  "blockers": ["Chưa thử hai mạng Internet thực độc lập hoặc máy sạch ngoài PC phát triển; tải, soak và vận hành M8 còn riêng."],
+  "next_steps": [
+    {"id": "M8-476-independent-uplinks", "task": "M8-476", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Đo gói trên hai mạng Internet độc lập theo tiêu chí phát hành; tiếp tải, giám sát và vận hành theo PLAN."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T23:25:26.785487+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude điều phối tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP373."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật hàng launcher và Internet của M8."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi provisioning, allowlist, đo RTT và chạy WAN giả lập."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire hay contract."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở câu hỏi RE."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "M8 chưa đóng."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP375.json", "state": "updated", "reason": "Pin kết quả và giới hạn."}
+  ],
+  "evidence": [
+    {"id": "INT", "kind": "local", "path": "local/research/codex/m8-internet-package/internet-receipt.json", "bytes": 1397, "sha256": "6747d49424ec173ada4552db14fad4d4812bf4665fbcc05bbec2dce7d1639753"},
+    {"id": "NAT", "kind": "local", "path": "local/research/codex/m8-internet-package/wan-control.log", "bytes": 139, "sha256": "67ce240c82e7f69b5f607169879ac8cdf9c9482559d9794d68c46d7c3efa8026"},
+    {"id": "LAB", "kind": "local", "path": "local/research/codex/m8-internet-package/lab-receipt.json", "bytes": 2056, "sha256": "c45bb578af82cfffbc27d7ba8833c920084ca0af806321916bb6f85a985d1ec1"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/m8-internet-package/build-receipt.json", "bytes": 773, "sha256": "eb9bddc247c036635b20ed0ed3883e80c00fdd7bc0764c3c65894877a40a43b1"},
+    {"id": "CAP", "kind": "local", "path": "local/research/codex/m8-internet-package/real-r3/traffic.pcap", "bytes": 774529, "sha256": "266bf22ed7dca2834c61e086236e5d510ca314ef00e669dd32963b5e38db2546"},
+    {"id": "GATE", "kind": "local", "path": "local/research/codex/m8-internet-package/real-r3/state-gate.jsonl", "bytes": 77044, "sha256": "a5e2ea995d59dc5b5563a9c7ceee48e19d87c9102b518cac61a95c766f3e0313"},
+    {"id": "ROLL", "kind": "local", "path": "local/research/codex/m8-internet-package/real-r3/rollout-final.json", "bytes": 149, "sha256": "a2fe6e2cad29055c15e53d6c603eb625c22d85065b13e2790fadc2afac718846"},
+    {"id": "VI", "kind": "local", "path": "local/research/codex/m8-internet-package/real-r3/chat-to-vi.png", "bytes": 28385, "sha256": "7c7759c744f7e8de581770d2c1d97989a7661b1954946bab6306deed409e2973"},
+    {"id": "KO", "kind": "local", "path": "local/research/codex/m8-internet-package/real-r3/chat-to-ko.png", "bytes": 31288, "sha256": "57095bb400f8e6185aaf68747c89332daf0e4c1eb58d7cc2f5b59c7199d07391"},
+    {"id": "TEST", "kind": "local", "path": "local/research/codex/m8-internet-package/tests.log", "bytes": 48982, "sha256": "8c0a7e5781458b10d6ceef31c504aa84df5cd2e7759aba84c22faf50b16ab111"},
+    {"id": "PY", "kind": "local", "path": "local/research/codex/m8-internet-package/package-tests.log", "bytes": 112, "sha256": "1a3749a3d3fd8b608c60936eba4594f2494db9aa26be9248c6c5f4e9b3ec15a0"},
+    {"id": "CLIP", "kind": "local", "path": "local/research/codex/m8-internet-package/clippy-first.log", "bytes": 5606, "sha256": "7e44a13ba3f7f9418687d674e0300f9304946890b71ac0560d1dc7dbd025326a"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-internet-package", "path": "local/evidence-manifests/4587afe0b9cb1e84eae1122f323fb172db896434922aedba6ca5c5a279022c2e.jsonl", "sha256": "4587afe0b9cb1e84eae1122f323fb172db896434922aedba6ca5c5a279022c2e", "bytes": 5850, "count": 30, "files_bytes": 1088738}
+  ]
+}

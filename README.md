@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP374: Audit admin, phục hồi SQLite và rollback binary đạt kiểm phía server; hai client TLS tổng hợp mở được ván sau restore.** [Bằng chứng](docs/evidence/checkpoints/records/CP374.json).
+**CP375: Windows vi và Wine ko chơi hai ván qua gói VPS trên cùng đường 4G; WAN giả lập đã kiểm ngắt và đăng nhập lại.** [Bằng chứng](docs/evidence/checkpoints/records/CP375.json).
 
 ## Bắt đầu
 
