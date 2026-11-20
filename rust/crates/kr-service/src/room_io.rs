@@ -280,6 +280,25 @@ pub(crate) fn cancel_journal(shared: &Shared) -> io::Result<()> {
     }
     Ok(())
 }
+pub(crate) fn operator_close(shared: &Shared) -> io::Result<Option<crate::match_journal::Ticket>> {
+    let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    let ticket = if let Some(journal) = &mut runtime.journal {
+        journal.cancel(crate::accounts::MatchEndReason::AdminClosed)?;
+        journal.ticket()
+    } else {
+        None
+    };
+    if let Some(relay) = &mut runtime.relay {
+        relay.invalidate();
+    }
+    if let Some(relay) = &mut runtime.authenticated {
+        relay.invalidate();
+    }
+    // Dropping the senders also invalidates queued room batches on transports
+    // with an outstanding Session; no further packet owns this old room.
+    runtime.channels.clear();
+    Ok(ticket)
+}
 pub(crate) fn install_authenticated(
     shared: &Shared,
     owner: crate::authenticated_room_relay::Owner,

@@ -412,6 +412,24 @@ impl Hub {
         }
         Ok(())
     }
+    pub(crate) fn operator_rooms(&self) -> io::Result<Vec<RoomKey>> {
+        let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
+        Ok(state.rooms.entries().map(|entry| entry.key).collect())
+    }
+    pub(crate) fn operator_close(
+        &self,
+        key: RoomKey,
+    ) -> io::Result<Option<Option<crate::match_journal::Ticket>>> {
+        let mut state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
+        let Ok(room) = state.rooms.get(key) else {
+            return Ok(None);
+        };
+        let ticket = room_io::operator_close(room)?;
+        state.rooms.remove(key)?;
+        state.owners.retain(|_, owner| owner.selected != Some(key));
+        self.changed();
+        Ok(Some(ticket))
+    }
     pub(crate) fn register(
         self: &Arc<Self>,
         identity: u32,

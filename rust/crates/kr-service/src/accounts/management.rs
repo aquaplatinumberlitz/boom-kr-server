@@ -31,16 +31,8 @@ fn native_password(password: &Secret) -> Result<&[u8]> {
     Ok(bytes)
 }
 
-fn utc() -> Result<i64> {
-    std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .ok()
-        .and_then(|time| i64::try_from(time.as_secs()).ok())
-        .ok_or(Error::ClockRollback)
-}
-
 impl Store {
-    fn new_recovery_code(&self) -> Result<Zeroizing<String>> {
+    pub(super) fn new_recovery_code(&self) -> Result<Zeroizing<String>> {
         let random = Zeroizing::new(self.random::<32>()?);
         Ok(Zeroizing::new(hex(random.as_ref())))
     }
@@ -137,11 +129,17 @@ impl Store {
         };
         let issued = self.at_clock(&mut utc, |tx, now| {
             let issued = if let Some(digest) = recovery {
-                let new_digest = Sha256::digest(replacement.as_ref().expect("recovery can rotate").as_bytes());
+                let new_digest = Sha256::digest(
+                    replacement
+                        .as_ref()
+                        .expect("recovery can rotate")
+                        .as_bytes(),
+                );
                 if tx.execute(
                     "UPDATE account_recovery SET digest=?1 WHERE account_id=?2 AND digest=?3",
                     params![&new_digest[..], account, digest],
-                )? != 1 {
+                )? != 1
+                {
                     return Err(Error::InvalidCredentials);
                 }
                 true
@@ -158,19 +156,16 @@ impl Store {
                 "UPDATE accounts SET password_phc=?1, credential_version=credential_version+1
                  WHERE id=?2 AND credential_version=?3 AND disabled=0",
                 params![new, account, version],
-            )? != 1 {
+            )? != 1
+            {
                 return Err(Error::InvalidCredentials);
             }
-            tx.execute("UPDATE sessions SET revoked_at=?1 WHERE account_id=?2 AND revoked_at IS NULL",
-                params![now, account])?;
+            tx.execute(
+                "UPDATE sessions SET revoked_at=?1 WHERE account_id=?2 AND revoked_at IS NULL",
+                params![now, account],
+            )?;
             if op == "delete_account" {
-                // Keep FK identities for durable match and audit history. Remove
-                // the sign-in name, password, recovery code and active profile.
-                tx.execute("UPDATE accounts SET login=?1,disabled=1 WHERE id=?2",
-                    params![format!("~deleted_{account}"), account])?;
-                tx.execute("UPDATE players SET display_name='Deleted',profile_version=profile_version+1 WHERE account_id=?1", [account])?;
-                tx.execute("DELETE FROM player_preferences WHERE player_id=(SELECT id FROM players WHERE account_id=?1)", [account])?;
-                tx.execute("DELETE FROM account_recovery WHERE account_id=?1", [account])?;
+                Self::tombstone(tx, account)?;
             }
             Self::audit(tx, &request, &actor, op, Some(account), now)?;
             Ok(issued)

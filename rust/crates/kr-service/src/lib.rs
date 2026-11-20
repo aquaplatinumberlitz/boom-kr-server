@@ -21,6 +21,7 @@ mod logging;
 mod map_profile;
 mod match_journal;
 pub mod network;
+pub mod operations;
 mod peer_routes;
 mod pickups;
 mod player_template;
@@ -1389,6 +1390,7 @@ async fn bound_connection(
 }
 
 pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
+    let mut term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
     tokio::fs::create_dir_all(out).await?;
     let mut account_owner = if let Some(config) = profile
         .config
@@ -1428,6 +1430,25 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     }
     profile.accounts = account_owner.as_ref().map(|a| a.active.clone());
     let startup: io::Result<_> = async {
+        let admission = profile
+            .config
+            .diagnostic_two_lobby
+            .as_ref()
+            .and_then(|two| two.account_admission.as_ref());
+        let operator = match (
+            admission,
+            account_owner.as_ref().and_then(|o| o.boot_epoch),
+            profile.bound.as_ref().and_then(|b| b.managed.clone()),
+        ) {
+            (Some(config), Some(epoch), Some(hub)) => {
+                Some(operations::Listener::bind(&config.database, epoch, hub)?)
+            }
+            _ => None,
+        };
+        let backups = admission
+            .and_then(|a| a.backup.map(|schedule| (&a.database, schedule)))
+            .map(|(db, schedule)| operations::Scheduled::open(db, schedule))
+            .transpose()?;
         // Bind the whole configured set before readiness; startup failure drops all.
         let mut bound = Vec::new();
         for &port in &profile.config.ports {
@@ -1443,17 +1464,16 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             .duration_since(UNIX_EPOCH)
             .map_err(io::Error::other)?
             .as_nanos();
-        let term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
         let peer_endpoint = profile
             .bound
             .as_ref()
             .and_then(|bound| bound.authenticated.as_ref())
             .map(|hub| hub.bind())
             .transpose()?;
-        Ok((bound, file, start, boot, term, peer_endpoint))
+        Ok((bound, file, start, boot, peer_endpoint, operator, backups))
     }
     .await;
-    let (bound, file, start, boot, mut term, peer_endpoint) = match startup {
+    let (bound, file, start, boot, peer_endpoint, operator, backups) = match startup {
         Ok(resources) => resources,
         Err(error) => {
             if let Some(owner) = account_owner.take()
@@ -1493,6 +1513,13 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     let mut writer_result = None;
     let profile = Arc::new(profile);
     let (shutdown, stop) = watch::channel(false);
+    let mut maintenance = JoinSet::new();
+    if let Some(operator) = operator {
+        maintenance.spawn(operator.run(stop.clone()));
+    }
+    if let Some(backups) = backups {
+        maintenance.spawn(backups.run(stop.clone(), log.clone()));
+    }
     let (accept_tx, mut accepted) = mpsc::channel::<(TcpStream, SocketAddr)>(32);
     let mut listeners = JoinSet::new();
     for listener in bound {
@@ -1582,6 +1609,7 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
                 }
             },
             value=tokio::signal::ctrl_c()=>{if let Err(e)=value {failure=Some(e);}break;},
+            result=maintenance.join_next(),if !maintenance.is_empty()=>{failure=Some(io::Error::other(format!("maintenance stopped: {result:?}")));break;},
             result=listeners.join_next(),if !listeners.is_empty()=>{failure=Some(io::Error::other(format!("listener stopped: {result:?}")));break;},
             result=workers.join_next(),if !workers.is_empty()=>if let Some(result)=result {match result {Ok(Ok(()))=>{},other=>{failure=Some(io::Error::other(format!("worker stopped: {other:?}")));break;}}},
             pair=accepted.recv()=>{
@@ -1630,6 +1658,19 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
         workers.abort_all();
         while listeners.join_next().await.is_some() {}
         while workers.join_next().await.is_some() {}
+    }
+    // A queued close must finalize its audit, and an in-flight backup owns a
+    // private temporary file. Keep the service lock until both have finished.
+    while let Some(result) = maintenance.join_next().await {
+        match result {
+            Ok(Ok(())) => {}
+            Ok(Err(error)) => {
+                failure.get_or_insert(error);
+            }
+            Err(error) => {
+                failure.get_or_insert_with(|| io::Error::other(error));
+            }
+        }
     }
     if let Some(journal) = journal {
         if let Some(hub) = profile.bound.as_ref().and_then(|b| b.managed.as_ref())

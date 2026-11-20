@@ -21,7 +21,11 @@ mod management;
 mod matches;
 pub(crate) use management::Management;
 mod preferences;
+mod snapshots;
+pub use snapshots::{restore, snapshot, verify_snapshot};
+mod operator;
 pub use matches::*;
+pub use operator::{AuditFilter, AuditRow, utc};
 pub use preferences::CharacterPreference;
 
 const MIGRATION: &str = include_str!("../migrations/0001_accounts.sql");
@@ -29,7 +33,16 @@ const MIGRATION_IDLE: &str = include_str!("../migrations/0002_session_idle.sql")
 const MIGRATION_MATCHES: &str = include_str!("../migrations/0003_match_history.sql");
 const MIGRATION_GUESTS: &str = include_str!("../migrations/0004_guest_accounts.sql");
 const MIGRATION_RECOVERY: &str = include_str!("../migrations/0005_account_recovery.sql");
-pub const SCHEMA_VERSION: i32 = 5;
+const MIGRATION_AUDIT: &str = include_str!("../migrations/0006_operator_audit.sql");
+const SCRIPTS: [&str; 6] = [
+    MIGRATION,
+    MIGRATION_IDLE,
+    MIGRATION_MATCHES,
+    MIGRATION_GUESTS,
+    MIGRATION_RECOVERY,
+    MIGRATION_AUDIT,
+];
+pub const SCHEMA_VERSION: i32 = SCRIPTS.len() as i32;
 const APPLICATION_ID: i32 = 0x4b524143;
 const TTL_MAX: i64 = 86_400;
 static HASH_WORK: AtomicUsize = AtomicUsize::new(0);
@@ -180,7 +193,7 @@ pub struct Admin<'a> {
     pub reason: &'a str,
 }
 impl Admin<'_> {
-    fn validate(&self) -> Result<()> {
+    pub fn validate(&self) -> Result<()> {
         if !(1..=64).contains(&self.actor.len())
             || !(1..=256).contains(&self.reason.len())
             || self
@@ -221,20 +234,25 @@ impl Store {
     /// Parent must already be a private directory under a trusted administrator path.
     /// Opening the DB never starts a new instance or invalidates sessions.
     pub fn open(path: &Path) -> Result<Self> {
-        let parent = path.parent().ok_or(Error::InvalidInput)?;
-        let meta = fs::symlink_metadata(parent).map_err(|_| Error::Storage)?;
-        if !meta.is_dir() || meta.permissions().mode() & 0o077 != 0 {
-            return Err(Error::InvalidInput);
-        }
-        match OpenOptions::new()
-            .write(true)
-            .create_new(true)
-            .mode(0o600)
-            .open(path)
-        {
-            Ok(_) => (),
-            Err(e) if e.kind() == std::io::ErrorKind::AlreadyExists => (),
-            Err(_) => return Err(Error::Storage),
+        Self::open_mode(path, true)
+    }
+    /// Live operator commands must never create or migrate a database.
+    pub fn open_existing(path: &Path) -> Result<Self> {
+        Self::open_mode(path, false)
+    }
+    fn open_mode(path: &Path, allow_migration: bool) -> Result<Self> {
+        snapshots::private_parent(path)?;
+        if allow_migration {
+            match OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .mode(0o600)
+                .open(path)
+            {
+                Ok(_) => (),
+                Err(e) if e.kind() == std::io::ErrorKind::AlreadyExists => (),
+                Err(_) => return Err(Error::Storage),
+            }
         }
         let meta = fs::symlink_metadata(path).map_err(|_| Error::Storage)?;
         if !meta.is_file() || meta.permissions().mode() & 0o077 != 0 {
@@ -247,13 +265,23 @@ impl Store {
         db.busy_timeout(Duration::from_millis(250))?;
         db.pragma_update(None, "foreign_keys", true)?;
         db.pragma_update(None, "trusted_schema", false)?;
-        Self::migrate(&mut db)?;
-        db.pragma_update(None, "journal_mode", "WAL")?;
-        db.pragma_update(None, "synchronous", "FULL")?;
-        let quick: String = db.query_row("PRAGMA quick_check", [], |r| r.get(0))?;
-        let broken_fk = db.prepare("PRAGMA foreign_key_check")?.exists([])?;
-        if quick != "ok" || broken_fk {
+        if allow_migration {
+            Self::migrate(&mut db, path)?;
+        } else if db.pragma_query_value(None, "user_version", |r| r.get::<_, i32>(0))?
+            != SCHEMA_VERSION
+            || db.pragma_query_value(None, "application_id", |r| r.get::<_, i32>(0))?
+                != APPLICATION_ID
+        {
             return Err(Error::Schema);
+        }
+        db.pragma_update(None, "synchronous", "FULL")?;
+        if allow_migration {
+            db.pragma_update(None, "journal_mode", "WAL")?;
+            let quick: String = db.query_row("PRAGMA quick_check", [], |r| r.get(0))?;
+            let broken_fk = db.prepare("PRAGMA foreign_key_check")?.exists([])?;
+            if quick != "ok" || broken_fk {
+                return Err(Error::Schema);
+            }
         }
         Ok(Self {
             live_utc: 0,
@@ -261,22 +289,17 @@ impl Store {
             random: entropy,
         })
     }
-    fn migrate(db: &mut Connection) -> Result<()> {
+    fn migrate(db: &mut Connection, path: &Path) -> Result<()> {
+        let version = db.pragma_query_value(None, "user_version", |r| r.get::<_, i32>(0))?;
+        if version == SCHEMA_VERSION {
+            Self::validate_schema(db)?;
+            return Ok(());
+        }
         let tx = db.transaction_with_behavior(TransactionBehavior::Immediate)?;
         let app: i32 = tx.pragma_query_value(None, "application_id", |r| r.get(0))?;
-        let mut version: i32 = tx.pragma_query_value(None, "user_version", |r| r.get(0))?;
-        let scripts = [
-            MIGRATION,
-            MIGRATION_IDLE,
-            MIGRATION_MATCHES,
-            MIGRATION_GUESTS,
-            MIGRATION_RECOVERY,
-        ];
-        let digests: Vec<_> = scripts
-            .iter()
-            .map(|script| hex(&Sha256::digest(script.as_bytes())))
-            .collect();
-        if app == 0 && version == 0 {
+        let original: i32 = tx.pragma_query_value(None, "user_version", |r| r.get(0))?;
+        let fresh = app == 0 && original == 0;
+        if fresh {
             let count: i64 = tx.query_row(
                 "SELECT count(*) FROM sqlite_master WHERE name NOT LIKE 'sqlite_%'",
                 [],
@@ -286,54 +309,27 @@ impl Store {
                 return Err(Error::Schema);
             }
             tx.execute_batch(MIGRATION)?;
-            tx.execute("INSERT INTO schema_migrations VALUES(1,?1)", [&digests[0]])?;
+            tx.execute(
+                "INSERT INTO schema_migrations VALUES(1,?1)",
+                [hex(&Sha256::digest(MIGRATION.as_bytes()))],
+            )?;
             tx.pragma_update(None, "application_id", APPLICATION_ID)?;
             tx.pragma_update(None, "user_version", 1)?;
-            version = 1;
-        } else if app != APPLICATION_ID || !(1..=SCHEMA_VERSION).contains(&version) {
-            return Err(Error::Schema);
         }
-        let migrations: Vec<(i32, String)> = tx
-            .prepare("SELECT version,sha256 FROM schema_migrations ORDER BY version")?
-            .query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
-            .collect::<std::result::Result<_, _>>()?;
-        let wanted: Vec<_> = digests
-            .iter()
-            .take(version as usize)
-            .enumerate()
-            .map(|(i, s)| (i as i32 + 1, s.clone()))
-            .collect();
-        if migrations != wanted {
-            return Err(Error::Schema);
-        }
-        // Validate the old live schema BEFORE upgrading, so a migration cannot
-        // conceal a pre-existing missing index/foreign trigger/altered constraint.
-        let expected = Connection::open_in_memory()?;
-        for script in scripts.iter().take(version as usize) {
-            expected.execute_batch(script)?;
-        }
-        if Self::schema(&tx)? != Self::schema(&expected)? {
-            return Err(Error::Schema);
-        }
-        let state: (i64, i64, i64) = tx.query_row(
-            "SELECT epoch,last_utc,next_wire_id FROM runtime_state WHERE id=1",
-            [],
-            |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
-        )?;
-        let max_wire: i64 =
-            tx.query_row("SELECT coalesce(max(wire_id),0) FROM players", [], |r| {
-                r.get(0)
-            })?;
-        if state.0 < 0 || state.1 < 0 || state.2 <= max_wire || state.2 > 4_294_967_296 {
-            return Err(Error::Schema);
+        let (mut version, expected) = Self::validate_schema(&tx)?;
+        if !fresh && version < SCHEMA_VERSION {
+            // BEGIN IMMEDIATE excludes writers until both the backup and migration
+            // finish. A separate read-only connection sees the committed old DB.
+            snapshots::before_migration(path, version)?;
         }
         while version < SCHEMA_VERSION {
-            tx.execute_batch(scripts[version as usize])?;
+            let script = SCRIPTS[version as usize];
+            tx.execute_batch(script)?;
             tx.execute(
                 "INSERT INTO schema_migrations VALUES(?1,?2)",
-                params![version + 1, &digests[version as usize]],
+                params![version + 1, hex(&Sha256::digest(script.as_bytes()))],
             )?;
-            expected.execute_batch(scripts[version as usize])?;
+            expected.execute_batch(script)?;
             version += 1;
             tx.pragma_update(None, "user_version", version)?;
             if Self::schema(&tx)? != Self::schema(&expected)? {
@@ -342,6 +338,49 @@ impl Store {
         }
         tx.commit()?;
         Ok(())
+    }
+    fn validate_schema(db: &Connection) -> Result<(i32, Connection)> {
+        let app: i32 = db.pragma_query_value(None, "application_id", |r| r.get(0))?;
+        let version: i32 = db.pragma_query_value(None, "user_version", |r| r.get(0))?;
+        if app != APPLICATION_ID || !(1..=SCHEMA_VERSION).contains(&version) {
+            return Err(Error::Schema);
+        }
+        let migrations: Vec<(i32, String)> = db
+            .prepare("SELECT version,sha256 FROM schema_migrations ORDER BY version")?
+            .query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
+            .collect::<std::result::Result<_, _>>()?;
+        let wanted: Vec<_> = SCRIPTS
+            .iter()
+            .map(|script| hex(&Sha256::digest(script.as_bytes())))
+            .take(version as usize)
+            .enumerate()
+            .map(|(i, s)| (i as i32 + 1, s))
+            .collect();
+        if migrations != wanted {
+            return Err(Error::Schema);
+        }
+        // Validate the old live schema BEFORE upgrading, so a migration cannot
+        // conceal a pre-existing missing index/foreign trigger/altered constraint.
+        let expected = Connection::open_in_memory()?;
+        for script in SCRIPTS.iter().take(version as usize) {
+            expected.execute_batch(script)?;
+        }
+        if Self::schema(db)? != Self::schema(&expected)? {
+            return Err(Error::Schema);
+        }
+        let state: (i64, i64, i64) = db.query_row(
+            "SELECT epoch,last_utc,next_wire_id FROM runtime_state WHERE id=1",
+            [],
+            |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+        )?;
+        let max_wire: i64 =
+            db.query_row("SELECT coalesce(max(wire_id),0) FROM players", [], |r| {
+                r.get(0)
+            })?;
+        if state.0 < 0 || state.1 < 0 || state.2 <= max_wire || state.2 > 4_294_967_296 {
+            return Err(Error::Schema);
+        }
+        Ok((version, expected))
     }
     fn schema(db: &Connection) -> Result<Vec<(String, String, String)>> {
         Ok(db.prepare("SELECT type,name,coalesce(sql,'') FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY type,name")?
@@ -395,6 +434,16 @@ impl Store {
     fn at<T>(&mut self, now: i64, op: impl FnOnce(&Transaction<'_>) -> Result<T>) -> Result<T> {
         self.at_clock(&mut || Ok(now), |tx, _| op(tx))
     }
+    fn at_admin<T>(
+        &mut self,
+        now: impl Into<Option<i64>>,
+        op: impl FnOnce(&Transaction<'_>, i64) -> Result<T>,
+    ) -> Result<T> {
+        match now.into() {
+            Some(now) => self.at_clock(&mut || Ok(now), op),
+            None => self.at_clock(&mut utc, op),
+        }
+    }
     fn random<const N: usize>(&self) -> Result<[u8; N]> {
         let mut bytes = [0; N];
         (self.random)(&mut bytes)?;
@@ -408,7 +457,9 @@ impl Store {
         account: Option<i64>,
         now: i64,
     ) -> Result<()> {
-        tx.execute("INSERT INTO admin_audit(request_id,actor,operation,account_id,reason,at_utc,details) VALUES(?1,?2,?3,?4,?5,?6,'{}')",
+        tx.execute("INSERT INTO admin_audit(request_id,actor,operation,account_id,reason,at_utc,details,target_kind,target_id)
+            VALUES(?1,?2,?3,?4,?5,?6,'{}',CASE WHEN ?4 IS NOT NULL THEN 'account' WHEN ?3='begin_instance' THEN 'service' END,
+            CASE WHEN ?4 IS NOT NULL THEN CAST(?4 AS TEXT) WHEN ?3='begin_instance' THEN 'instance' END)",
             params![id,admin.actor,op,account,admin.reason,now])?;
         Ok(())
     }
@@ -427,6 +478,10 @@ impl Store {
                 [now],
             )?;
             matches::cancel_running(tx, now)?;
+            tx.execute(
+                "UPDATE admin_audit SET result='interrupted' WHERE result='pending'",
+                [],
+            )?;
             Self::audit(tx, &request, admin, "begin_instance", None, now)?;
             Ok(next)
         })
@@ -437,14 +492,14 @@ impl Store {
         login: &str,
         name: &str,
         password: &[u8],
-        now: i64,
+        now: impl Into<Option<i64>>,
     ) -> Result<Player> {
         admin.validate()?;
         let login = login_name(login)?;
         display_name(name)?;
         let phc = password_hash(password, &self.random::<16>()?)?;
         let request = hex(&self.random::<32>()?);
-        self.at(now, |tx| {
+        self.at_admin(now, |tx, now| {
             Self::insert_account(tx, &login, name, &phc, admin, &request, now)
         })
     }
@@ -783,10 +838,15 @@ impl Store {
         })
     }
     /// Administrative revocation; not a client logout wire/API claim.
-    pub fn revoke(&mut self, admin: &Admin<'_>, account: i64, now: i64) -> Result<()> {
+    pub fn revoke(
+        &mut self,
+        admin: &Admin<'_>,
+        account: i64,
+        now: impl Into<Option<i64>>,
+    ) -> Result<()> {
         admin.validate()?;
         let request = hex(&self.random::<32>()?);
-        self.at(now, |tx| {
+        self.at_admin(now, |tx, now| {
             Self::player(tx, account)?;
             tx.execute(
                 "UPDATE sessions SET revoked_at=?1 WHERE account_id=?2 AND revoked_at IS NULL",
@@ -800,13 +860,13 @@ impl Store {
         admin: &Admin<'_>,
         account: i64,
         disabled: bool,
-        now: i64,
+        now: impl Into<Option<i64>>,
     ) -> Result<()> {
         admin.validate()?;
         let request = hex(&self.random::<32>()?);
-        self.at(now, |tx| {
+        self.at_admin(now, |tx, now| {
             if tx.execute(
-                "UPDATE accounts SET disabled=?1 WHERE id=?2",
+                "UPDATE accounts SET disabled=?1 WHERE id=?2 AND login NOT GLOB '~deleted_*'",
                 params![disabled, account],
             )? != 1
             {
@@ -834,13 +894,13 @@ impl Store {
         account: i64,
         name: &str,
         expected_version: i64,
-        now: i64,
+        now: impl Into<Option<i64>>,
     ) -> Result<Player> {
         admin.validate()?;
         display_name(name)?;
         let request = hex(&self.random::<32>()?);
-        self.at(now, |tx| {
-            if tx.execute("UPDATE players SET display_name=?1,profile_version=profile_version+1 WHERE account_id=?2 AND profile_version=?3", params![name,account,expected_version])?!=1 { return Err(Error::Conflict); }
+        self.at_admin(now, |tx, now| {
+            if tx.execute("UPDATE players SET display_name=?1,profile_version=profile_version+1 WHERE account_id=?2 AND profile_version=?3 AND EXISTS(SELECT 1 FROM accounts WHERE id=?2 AND login NOT GLOB '~deleted_*')", params![name,account,expected_version])?!=1 { return Err(Error::Conflict); }
             Self::audit(tx,&request,admin,"rename_player",Some(account),now)?;
             Self::player(tx,account)
         })
@@ -850,15 +910,29 @@ impl Store {
         admin: &Admin<'_>,
         account: i64,
         password: &[u8],
-        now: i64,
+        now: impl Into<Option<i64>>,
     ) -> Result<()> {
         admin.validate()?;
         let phc = password_hash(password, &self.random::<16>()?)?;
         let request = hex(&self.random::<32>()?);
-        self.at(now, |tx| {
-            if tx.execute("UPDATE accounts SET password_phc=?1,credential_version=credential_version+1 WHERE id=?2", params![phc,account])?!=1 { return Err(Error::InvalidInput); }
-            tx.execute("UPDATE sessions SET revoked_at=?1 WHERE account_id=?2 AND revoked_at IS NULL", params![now,account])?;
-            Self::audit(tx,&request,admin,"reset_password",Some(account),now)
+        self.at_admin(now, |tx, now| {
+            if tx.execute(
+                "UPDATE accounts SET password_phc=?1,credential_version=credential_version+1
+                 WHERE id=?2 AND login NOT GLOB '~deleted_*'",
+                params![phc, account],
+            )? != 1
+            {
+                return Err(Error::InvalidInput);
+            }
+            tx.execute(
+                "UPDATE sessions SET revoked_at=?1 WHERE account_id=?2 AND revoked_at IS NULL",
+                params![now, account],
+            )?;
+            tx.execute(
+                "DELETE FROM account_recovery WHERE account_id=?1",
+                [account],
+            )?;
+            Self::audit(tx, &request, admin, "reset_password", Some(account), now)
         })
     }
 }
