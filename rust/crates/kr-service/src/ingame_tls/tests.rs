@@ -368,6 +368,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
         let mut tasks = Vec::new();
         let mut halts = Vec::new();
         let mut observed = Vec::new();
+        let mut event_logs = Vec::new();
         let (proxy_halt, proxy_stop) = watch::channel(false);
         let mut proxies = Vec::new();
         let mut native = Vec::new();
@@ -378,6 +379,9 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             settings.authenticated = Some(relay.clone());
             settings.config.session_ttl_seconds = 120;
             settings.config.session_idle_seconds = 90;
+            let (events, log) = mpsc::channel(64);
+            settings.events = events;
+            event_logs.push(log);
             observed.push(authority.clone());
             let endpoint = server.clone();
             let (halt, stop) = watch::channel(false);
@@ -486,6 +490,26 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                 client.expect(121).await;
             }
             assert!(temp.last_seen(&a) > stale, "Start must renew idle");
+            let mut markers = Vec::new();
+            for log in &mut event_logs {
+                let marker = tokio::time::timeout(Duration::from_secs(2), async {
+                    loop {
+                        let event = log.recv().await.expect("room event channel");
+                        if event["event"] == "native_tls_room_start_written" {
+                            break event;
+                        }
+                    }
+                })
+                .await
+                .expect("start write marker for each recipient");
+                let stream_id = marker["stream_id"].as_u64().expect("numeric stream id");
+                assert!(stream_id > 0);
+                assert_eq!(marker, serde_json::json!({
+                    "event": "native_tls_room_start_written", "stream_id": stream_id, "opcode": 121
+                }));
+                markers.push(stream_id);
+            }
+            assert_ne!(markers[0], markers[1]);
             for (slot, client) in clients.iter_mut().enumerate() {
                 use Width::*;
                 let load = fields(&[
@@ -1614,6 +1638,25 @@ fn owner_end_event_keeps_safe_guard_and_opcode_without_underlying_error_text() {
             "opcode": 118, "subtype": null,
         })
     );
+}
+
+#[test]
+fn room_poll_owner_event_keeps_stage_and_stream_without_renaming_known_guards() {
+    for (err, guard) in [
+        ("native room batch retired", "retired_room_batch"),
+        ("arbitrary private error", "room_poll"),
+    ] {
+        let error = room_poll_failure(io::Error::other(err), "write", Some(121));
+        let error = room_poll_stream(error, 24);
+        let error = native_failure(error, "outer", None, None);
+        assert_eq!(
+            owner_ended(&Err(error)),
+            serde_json::json!({
+                "event": "native_tls_owner_ended", "ok": false, "guard": guard,
+                "opcode": 121, "subtype": null, "stream_id": 24, "poll_stage": "write",
+            })
+        );
+    }
 }
 
 #[test]

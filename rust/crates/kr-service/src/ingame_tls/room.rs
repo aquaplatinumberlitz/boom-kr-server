@@ -269,23 +269,40 @@ impl State {
         lane: &mut Lane,
         send: &mut quinn::SendStream,
         resources: &Resources,
+        stream_id: u64,
     ) -> io::Result<()> {
         let queue_bound = 16 * self.sessions.len();
         if let Some(primary) = self.sessions.first() {
-            driver.inspect().await?;
+            driver
+                .inspect()
+                .await
+                .map_err(|error| room_poll_failure(error, "authority", None))?;
             if self
                 .sessions
                 .iter()
                 .any(|session| !session.channel_current())
             {
-                return Err(io::Error::other("native room channel retired"));
+                return Err(room_poll_failure(
+                    io::Error::other("native room channel retired"),
+                    "membership",
+                    None,
+                ));
             }
-            primary.tick()?;
-            primary.pump_relay().await?;
+            primary
+                .tick()
+                .map_err(|error| room_poll_failure(error, "tick", None))?;
+            primary
+                .pump_relay()
+                .await
+                .map_err(|error| room_poll_failure(error, "relay", None))?;
             for (index, session) in self.sessions.iter_mut().enumerate() {
                 while let Ok(batch) = session.inbox.try_recv() {
                     if self.pending.len() >= queue_bound {
-                        return Err(io::Error::other("native room timer queue bound"));
+                        return Err(room_poll_failure(
+                            io::Error::other("native room timer queue bound"),
+                            "queue",
+                            None,
+                        ));
                     }
                     self.pending.push((index, batch));
                 }
@@ -299,29 +316,55 @@ impl State {
         {
             let (index, mut batch) = self.pending.remove(0);
             let session = &self.sessions[index];
-            driver.inspect().await?;
+            driver
+                .inspect()
+                .await
+                .map_err(|error| room_poll_failure(error, "authority", None))?;
             if !session.valid(&batch) {
                 continue;
             }
             if let Some(ticket) = &batch.journal {
-                ticket.wait().await?;
-                driver.inspect().await?;
+                ticket
+                    .wait()
+                    .await
+                    .map_err(|error| room_poll_failure(error, "journal", None))?;
+                driver
+                    .inspect()
+                    .await
+                    .map_err(|error| room_poll_failure(error, "authority", None))?;
                 if !session.valid(&batch) {
                     continue;
                 }
             }
-            if !session.prepare_delivery(&mut batch)? {
+            if !session
+                .prepare_delivery(&mut batch)
+                .map_err(|error| room_poll_failure(error, "prepare_batch", None))?
+            {
                 continue;
             }
-            for (_, reply) in &batch.packets {
-                if !session.authorize_batch_source(&batch).await? {
+            for (label, reply) in &batch.packets {
+                if !session
+                    .authorize_batch_source(&batch)
+                    .await
+                    .map_err(|error| room_poll_failure(error, "batch_source", Some(reply.opcode)))?
+                {
                     break;
                 }
-                driver.inspect().await?;
+                driver
+                    .inspect()
+                    .await
+                    .map_err(|error| room_poll_failure(error, "authority", None))?;
                 if !session.valid(&batch) {
-                    return Err(io::Error::other("native room batch retired"));
+                    return Err(room_poll_failure(
+                        io::Error::other("native room batch retired"),
+                        "membership",
+                        Some(reply.opcode),
+                    ));
                 }
-                let Some(reply) = session.project(reply)? else {
+                let Some(reply) = session
+                    .project(reply)
+                    .map_err(|error| room_poll_failure(error, "project", Some(reply.opcode)))?
+                else {
                     continue;
                 };
                 if reply.opcode == 91 {
@@ -329,9 +372,19 @@ impl State {
                 }
                 driver
                     .lobby_reply(lane, send, reply.opcode, &reply.payload)
-                    .await?;
+                    .await
+                    .map_err(|error| room_poll_failure(error, "write", Some(reply.opcode)))?;
+                if reply.opcode == 121 && label == "start121" {
+                    let _ = resources.events.try_send(serde_json::json!({
+                        "event": "native_tls_room_start_written",
+                        "opcode": 121,
+                        "stream_id": stream_id,
+                    }));
+                }
             }
-            session.finish(&batch)?;
+            session
+                .finish(&batch)
+                .map_err(|error| room_poll_failure(error, "finish_batch", None))?;
             if batch.setup.is_some() {
                 let _ = resources.events.try_send(serde_json::json!({
                     "event": "native_tls_room_setup_written", "players": self.sessions.len()
@@ -359,7 +412,10 @@ impl State {
                         break;
                     };
                     if message.source_is_current().await {
-                        driver.inspect().await?;
+                        driver
+                            .inspect()
+                            .await
+                            .map_err(|error| room_poll_failure(error, "authority", None))?;
                         if message.source_still_current() {
                             driver.lobby_reply(lane, send, 28, &message.body).await?;
                         }

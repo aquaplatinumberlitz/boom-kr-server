@@ -186,6 +186,8 @@ struct NativeFailure {
     guard: &'static str,
     opcode: Option<u32>,
     subtype: Option<u8>,
+    poll_stage: Option<&'static str>,
+    stream_id: Option<u64>,
 }
 impl std::fmt::Display for NativeFailure {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -239,8 +241,32 @@ fn native_failure(
             guard,
             opcode,
             subtype,
+            poll_stage: None,
+            stream_id: None,
         },
     )
+}
+
+fn room_poll_failure(error: io::Error, stage: &'static str, opcode: Option<u32>) -> io::Error {
+    let mut error = native_failure(error, "room_poll", opcode, None);
+    if let Some(failure) = error
+        .get_mut()
+        .and_then(|error| error.downcast_mut::<NativeFailure>())
+    {
+        failure.poll_stage = Some(stage);
+    }
+    error
+}
+
+fn room_poll_stream(error: io::Error, id: u64) -> io::Error {
+    let mut error = native_failure(error, "room_poll", None, None);
+    if let Some(failure) = error
+        .get_mut()
+        .and_then(|error| error.downcast_mut::<NativeFailure>())
+    {
+        failure.stream_id = Some(id);
+    }
+    error
 }
 
 fn close_for_session_end(connection: &quinn::Connection, result: &io::Result<()>) {
@@ -264,6 +290,12 @@ fn owner_ended(result: &io::Result<()>) -> serde_json::Value {
         event["guard"] = serde_json::json!(failure.map_or("owner_lifecycle", |f| f.guard));
         event["opcode"] = serde_json::json!(failure.and_then(|f| f.opcode));
         event["subtype"] = serde_json::json!(failure.and_then(|f| f.subtype));
+        if let Some(stage) = failure.and_then(|f| f.poll_stage) {
+            event["poll_stage"] = serde_json::json!(stage);
+        }
+        if let Some(stream_id) = failure.and_then(|f| f.stream_id) {
+            event["stream_id"] = serde_json::json!(stream_id);
+        }
     }
     event
 }
@@ -329,8 +361,8 @@ async fn stream(
                         _ = clock.tick(), if lane.in_lobby() => {
                             let mut owner = resources.owner.lock().await;
                             let driver = owner.as_mut().ok_or_else(|| io::Error::other("native owner absent"))?;
-                            room.poll(driver, &mut lane, &mut send, &resources).await.map_err(|e|
-                                native_failure(e, "room_poll", None, None))?;
+                            room.poll(driver, &mut lane, &mut send, &resources, id).await
+                                .map_err(|error| room_poll_stream(error, id))?;
                         }
                     }
                 }
