@@ -1154,8 +1154,12 @@ GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo 
 Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-tls-đang-triển-khai); không suy ca hai client có dấu đã đạt từ file.
 GUI chỉ chọn ngôn ngữ, quản lý tài khoản và mở game. Nó đợi `kr-prelogin` bind xong trước khi mở
 bản tương thích manual. GUI không thu mật khẩu để chơi và không gửi token cho lần mở này. Đăng nhập 1P,
-2P và chơi thử dùng UI trong game. Kết quả xác thực sai giữ opcode 4 / result 1 của client; chuỗi trong
-exe của nhánh web `Invalid Login!` thuộc L1. Đường `kr-launch` / `token_1` vẫn dùng chẩn đoán riêng.
+2P và chơi thử dùng UI trong game. Xác thực sai giữ opcode 4 / result 1. Bản vi dịch hai đường gọi hộp thoại
+Windows `Invalid Login!` bằng `MessageBoxW`; các hộp khác dùng chung tiêu đề và bản en/ko giữ nguyên.
+Request phòng, Ready/Start và gói gameplay trên kênh phòng gia hạn idle theo quyền actor; keepalive và kiểm nền không gia hạn.
+Khi DB xác nhận phiên tài khoản mất hiệu lực, prelogin TLS đóng kết nối với application code 2; companion báo
+launcher hiển thị yêu cầu đăng nhập lại. Hạn chờ trước đăng nhập và lỗi transport thông thường giữ đường riêng.
+Không thêm opcode KR. Đường `kr-launch` / `token_1` vẫn dùng chẩn đoán riêng.
 API TLS thêm request `status` không credential, chỉ trả `ok`/`ready` theo admission còn mở. Nó không tạo session,
 không trả player/config hay chứng nhận DB/gameplay. GUI kiểm pin TLS, không gửi password để hỏi status.
 
