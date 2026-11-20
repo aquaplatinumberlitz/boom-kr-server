@@ -252,13 +252,16 @@ impl Owner {
     pub(crate) fn ready(&self) -> io::Result<bool> {
         self.ticket.as_ref().map_or(Ok(true), Ticket::ready)
     }
-    pub(crate) fn begin(&mut self, start: MatchStart) -> io::Result<()> {
+    pub(crate) fn begin(&mut self, mut start: MatchStart) -> io::Result<()> {
         if self.factory.stopping.load(Ordering::Acquire)
             || self.current.as_ref().is_some_and(|r| !r.finished)
             || !self.ready()?
         {
             return Err(err("match journal round not retired"));
         }
+        // Room membership is keyed by identity, while persistence reads the
+        // roster back in slot order. Submit and retain the same slot snapshot.
+        start.order_players_by_slot();
         let ticket = self.factory.submit(Event::Start(start.clone()))?;
         self.current = Some(Round {
             start,
@@ -500,6 +503,31 @@ mod tests {
             .await
             .unwrap();
         assert_eq!(history(&temp), records);
+        manager.shutdown().await.unwrap();
+        worker.shutdown().await.unwrap();
+    }
+    #[tokio::test]
+    async fn journal_accepts_membership_order_and_keeps_slot_order_through_finish() {
+        let (temp, worker, manager, mut start) = setup().await;
+        let mut owner = manager.factory().owner();
+        let expected = start.clone();
+        start.players.reverse(); // A larger-ID host can occupy the first slot.
+        owner.begin(start).unwrap();
+        owner.ticket().unwrap().wait().await.unwrap();
+        assert_eq!(history(&temp)[0].start, expected);
+        owner.finish(0).unwrap();
+        owner.ticket().unwrap().wait().await.unwrap();
+        assert_eq!(
+            history(&temp)[0]
+                .finish
+                .as_ref()
+                .unwrap()
+                .players
+                .iter()
+                .map(|p| (p.slot, p.outcome))
+                .collect::<Vec<_>>(),
+            [(0, MatchOutcome::Win), (6, MatchOutcome::Loss)]
+        );
         manager.shutdown().await.unwrap();
         worker.shutdown().await.unwrap();
     }

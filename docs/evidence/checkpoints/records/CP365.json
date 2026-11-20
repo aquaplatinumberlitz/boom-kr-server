@@ -1,0 +1,57 @@
+{
+  "id": "CP365",
+  "previous": "CP364",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T07:37:58.265047+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Journal chặn Start104 ván đầu vì điều kiện nào?",
+  "scope": "KRE-074 / #414. Hai lượt Windows vi + Wine ko và kiểm Rust; còn một lượt nghiệm thu.",
+  "context_commit": "3c6c06ce5f2c7fc3293a496abd78a32a8a6d4b33",
+  "artifacts": [
+    {"sha256": "2de1f8db706d17a8ba91a93a71db3b084eb6788d25daf16f001e177cfc0cea37"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r1", "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2"],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md#gap-client-utf8", "summary": "Lượt 1 cùng phòng nhưng bộ điều khiển Windows đóng launcher trước Ready; log companion ghi stop và cancelled.", "evidence": ["R1-GUEST", "R1-COMPANION", "R1-CLEAN"], "limits": "Không dùng lượt 1 suy nguyên nhân CP362."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md#gap-client-utf8", "summary": "Lượt 2 có Ready95, một Start104, journal có ván running, slot 0 có player ID lớn hơn slot 1. Luồng lỗi trước ở journal, chưa có mốc ghi 121; hai client báo mã 10.", "evidence": ["R2-EVENTS", "R2-CORRELATION", "R2-VI", "R2-KO", "R2-CLEAN"], "limits": "Bản dựng CP363; chưa chạy bản sửa hoặc Start ván hai."},
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/protocol/life-results.md#rust-match-journal-serving", "summary": "SQLite sắp roster theo slot; journal đối chiếu với thứ tự ID. Test thứ tự đảo thất bại trước sửa và qua sau khi sắp slot trước lúc submit; test TLS hai owner đảo ID host/guest vào và kết thúc hai ván.", "evidence": ["RED", "GREEN"], "limits": "Test TLS tự động, chưa xác nhận client thật tải trận sau sửa."},
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/content/client-language.md#utf8", "summary": "Bản xem trước sáu ảnh đăng nhập vi giữ pixel ngoài vùng, alpha và metadata frame. Nền phòng, tooltip bản en, sáu ảnh en và nghiệm thu en hoãn theo Claude.", "evidence": ["ART-RECEIPT", "ART-PREVIEW"], "limits": "Ảnh vi chưa duyệt, chưa ghép vào gói."}
+  ],
+  "verification": [
+    {"check": "Lượt đo đã tới Start104 và ghi bước journal; hai lượt dừng đúng VM/prefix, giữ Windows có sẵn.", "result": "pass", "evidence": ["R2-EVENTS", "R2-CORRELATION", "R1-CLEAN", "R2-CLEAN"], "limits": "Giữ overlay để dọn qua quy trình retention."},
+    {"check": "Test journal thứ tự đảo trước sửa.", "result": "fail", "evidence": ["RED"], "limits": "Lỗi tái hiện có chủ đích: match journal readback differs."},
+    {"check": "Kiểm Rust workspace; test journal và hai cặp TLS theo roster đảo ID.", "result": "pass", "evidence": ["GREEN"], "limits": "Không chứng nhận native."}
+  ],
+  "delta": {"added": ["Chốt nguyên nhân sai thứ tự roster và sửa ở journal.", "Ghi phạm vi ảnh và nghiệm thu vi/ko theo Claude."], "corrected": [], "superseded": []},
+  "blockers": ["Còn nghiệm thu thật một ván và chat có dấu hai chiều; sáu ảnh vi chờ duyệt."],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Sau CI, dùng lượt còn lại đo chat có dấu, tên phòng, Start121, tải trận và kết quả. Ghép sáu ảnh vi nếu đã duyệt."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T07:37:58.265047+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; không tự merge.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi mốc mới."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi nghiệm thu còn lại."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Khoanh lỗi journal."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Giữ chỉ mục; sửa chương journal."},
+    {"path": "docs/protocol/life-results.md", "state": "updated", "reason": "Ghi thứ tự roster trong journal."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Cập nhật ảnh, phạm vi en và ván đầu."},
+    {"path": "docs/evidence/checkpoints/records/CP365.json", "state": "updated", "reason": "Pin hai lượt, test và ảnh xem trước."}
+  ],
+  "evidence": [
+    {"id": "R1-GUEST", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r1/guest-export/result.json", "bytes": 488, "sha256": "43cddf9092dec917a2dbc542aa4d0f2c1f979aaf62b886b64a89f3308b9b3781"},
+    {"id": "R1-COMPANION", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r1/guest-export/a-prelogin.log", "bytes": 2281, "sha256": "6549420904f09c3af15748fd76d4fcbf52ac82f2ad38b7f4be53ddb7f2019ba7"},
+    {"id": "R1-CLEAN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r1/cleanup.json", "bytes": 170, "sha256": "df625ac02e2689b0bc36ad57c8b4b5e1678f6d4b985f092c78de9225502f6147"},
+    {"id": "R2-EVENTS", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2/service/rust-events.jsonl", "bytes": 1672, "sha256": "5a7bdad62eb44079ce6262de9b15c6bf171ee8653b94bc8ab3930d45ccaea6ba"},
+    {"id": "R2-CORRELATION", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2/journal-correlation.json", "bytes": 372, "sha256": "a9f7957102c2cd73149a6a12c0828e3f9136868c039d9a414de905d25b9b086c"},
+    {"id": "R2-VI", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2/guest-export/calog.log", "bytes": 9376, "sha256": "02dc653ff1ba204b591bd58115a64a81ecaf6b198a925c7718ea6e62899d1041"},
+    {"id": "R2-KO", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2/wine-client.log", "bytes": 8763, "sha256": "273653b469f51870113a7a8184ad91d5d2dc7b1f8c73f6aa9b696b025642d7b5"},
+    {"id": "R2-CLEAN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2/cleanup.json", "bytes": 170, "sha256": "df625ac02e2689b0bc36ad57c8b4b5e1678f6d4b985f092c78de9225502f6147"},
+    {"id": "RED", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2/journal-order-red.log", "bytes": 1732, "sha256": "6da6562cbc32cf3e13770d13a14bc835c4e740581cae54b719213fe87e7bbe44"},
+    {"id": "GREEN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-diagnostic-r2/journal-order-workspace.log", "bytes": 44686, "sha256": "59eb3de9f65e6e4456239155c4f2de0f09ab0c58d637ace6364d8ef92cd8b025"},
+    {"id": "ART-RECEIPT", "kind": "local", "path": "local/research/codex/l1-vi-login-art-r1/review-r1/receipt.json", "bytes": 5434, "sha256": "81ab42717a8e85274acb335912ef703fc425f86830ce00070c36dad4e29ec89f"},
+    {"id": "ART-PREVIEW", "kind": "local", "path": "local/research/codex/l1-vi-login-art-r1/review-r1/before-after.png", "bytes": 69513, "sha256": "cf8db98325a92959e1c2762b2b55fb98a57c7df6d6ecc3b59310d64551c9216d"}
+  ],
+  "evidence_runs": []
+}
