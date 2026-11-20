@@ -1,0 +1,58 @@
+{
+  "id": "CP361",
+  "previous": "CP360",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T03:55:27.844118+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Ánh xạ hostname giúp Wine đi qua bước thoát trước đăng nhập đến đâu?",
+  "scope": "L1 / #414 và M8 / #476. Một client ko, một lượt Wine cô lập, không chạy Windows hoặc Start ván hai.",
+  "context_commit": "f405d2728fb3673d34936c37a54b4d5ad970a323",
+  "artifacts": [
+    {"sha256": "e94b4ed6323122b6d27e5c58261a0fab0f71256b92f507097f05e0f655216702"}
+  ],
+  "locators": [
+    "local/research/codex/l1-release-preflight-r1/native-hostname-r1"
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Gói CP360 r3 khớp 280 mục. Wine ko dùng hostname IPv4 trong namespace loopback, hiện LoginStage, xác thực 1P và hiện 한국02 ở sảnh.", "evidence": ["PACKAGE", "PREFLIGHT", "RESOLVER", "LOGIN", "LOBBY", "SERVER"], "limits": "Rust dựng lại từ cùng nguồn, hash binary khác CP360; không cô lập tuyệt đối nguyên nhân và không đo bản vi."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Sau khi vào sảnh, companion dừng với peer_task_end khoảng 5,1 giây sau khi mở stream kênh; client báo ngắt mã 10.", "evidence": ["COMPANION", "CLIENT", "OUTCOME"], "limits": "Không ghi được kết nối peer thành công, phòng hoặc trận."},
+    {"source": "design", "status": "candidate", "method": "test", "canonical": "docs/content/client-language.md#utf8", "summary": "Địa chỉ relay công bố theo topology Windows không có đường đi trong namespace Wine chỉ có loopback; kiểm và đổi endpoint lab trước lượt kế tiếp.", "evidence": ["OUTCOME", "RESOLVER"], "limits": "Đã xác minh cấu hình và route; chưa chạy với endpoint relay đã sửa."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu payload, phân giải hostname, LoginStage, xác thực DB, sảnh và dọn lượt.", "result": "pass", "evidence": ["PACKAGE", "RESOLVER", "LOGIN", "SERVER", "LOBBY", "CLEANUP"], "limits": "Chỉ một client Wine ko."},
+    {"check": "Giữ kết nối sau đăng nhập.", "result": "fail", "evidence": ["OUTCOME", "COMPANION", "CLIENT"], "limits": "Không dùng lượt khác để đo lại."}
+  ],
+  "delta": {"added": ["Gói Wine ko tới LoginStage và sảnh sau khi ánh xạ hostname; ghi riêng giới hạn route relay."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Relay công bố địa chỉ không đi được từ namespace của Wine. Còn ảnh en, cặp vi/ko và trận."
+  ],
+  "next_steps": [
+    {"id": "L1-414-wine-relay", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Kiểm trước route tới endpoint relay mà server công bố, rồi nghiệm thu peer và phòng vi/ko trong lượt được cấp."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T03:55:27.844118+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi trạng thái L1 và launcher."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi contract hoặc wire."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Chuyển phép thử Wine sang relay."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi kết quả và giới hạn Wine."},
+    {"path": "docs/evidence/checkpoints/records/CP361.json", "state": "updated", "reason": "Pin bằng chứng lượt Wine."}
+  ],
+  "evidence": [
+    {"id": "PREFLIGHT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/preflight.json", "bytes": 627, "sha256": "6f5c4a5bc99539fd1019822dda1aa596e26373adaf48a574a31ccd74af38eb81"},
+    {"id": "PACKAGE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/payload-verification.json", "bytes": 198, "sha256": "e94b4ed6323122b6d27e5c58261a0fab0f71256b92f507097f05e0f655216702"},
+    {"id": "RESOLVER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/resolver-verification.json", "bytes": 130, "sha256": "b1e485e6e082aa9706bb430f6536e04a248f75352cff8d86885d9918c23ca956"},
+    {"id": "LOGIN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/login-ready.png", "bytes": 560026, "sha256": "f912d84fd14cbef1a7032430f1156b1071f86f6d0822e743299f1b42020e75fe"},
+    {"id": "LOBBY", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/after-account-login.png", "bytes": 201944, "sha256": "59c213b10d2765b7803e4b517120b641f184c5bf729d61ad4185113f93790c18"},
+    {"id": "COMPANION", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/companion.log", "bytes": 2255, "sha256": "8c436f3c802128bb84cf44de526b8b39b59341930690d7fc976181772f1cf416"},
+    {"id": "CLIENT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/client.log", "bytes": 3157, "sha256": "f689d294972174f421977649ec021341d8b8f8411ab735ebdf2e573aa9225c73"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/service/rust-events.jsonl", "bytes": 758, "sha256": "fd5607791cb473f3eb4db36103692ddb174fd9a37f92f3ceee2c86c2a6de771d"},
+    {"id": "OUTCOME", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/outcome.json", "bytes": 502, "sha256": "594bbec392fa35f82cfc75ecfef282747583633c4d58459d06e09e03e580547f"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-hostname-r1/cleanup.json", "bytes": 281, "sha256": "6c5b1d7c026752f6910f2e66bf7e233d4cb5f292f7fd5f631844069d06aebc90"},
+    {"id": "STATIC", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/wine-local-hostname-candidate.json", "bytes": 1934, "sha256": "ad56d32c0b7f58684f65f0616bac1c7d37e41dba5c29a47cf5939c2ba202cec7"}
+  ],
+  "evidence_runs": [
+  ]
+}
