@@ -1,0 +1,61 @@
+{
+  "id": "CP360",
+  "previous": "CP359",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T02:48:33.060450+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Hai client vi/ko có nghiệm thu gói với đăng nhập trong game và một trận không?",
+  "scope": "KRE-074 / #414, tối đa ba lượt Windows/Wine cô lập dùng launcher mới. Không thử lại Start ván hai.",
+  "context_commit": "dfee6011d838f8ce6de5efab10bb165d09b0ffbb",
+  "artifacts": [
+    {"sha256": "18889cf219a1f524fd37965d1ca15722bd08c41f28ba762ef17ca50a935d7a93"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1/native-r1", "local/research/codex/l1-release-preflight-r1/native-r2", "local/research/codex/l1-release-preflight-r1/native-r3"],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Lượt một không tới desktop Windows. Lượt hai trên QEMU 10.0.6 mở launcher, bản vi thoát C0000005 trước TCP native. Lượt ba thêm bước import/bootstrap đã đo và tới LoginStage có nút tiếng Việt.", "limits": "Ba lượt thử cô lập; chưa quy lỗi truy cập bộ nhớ về một hàm. Không kiểm hộp Invalid Login.", "evidence": ["WIN-R1", "WIN-R2", "COMPOSE", "BUILD", "LOGIN"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Windows vi đăng nhập 1P, hiện Việt01 ở sảnh và trong phòng Factory07; nút xác nhận tạo phòng nhận tiêu đề có dấu sau khi sửa phần cuối. Bản vi hiện tin ASCII do chính nó gửi; CALog có opcode 18.", "limits": "Tiêu đề sửa từ chữ có dấu sẵn bằng phím ASCII. Chỉ một client; chưa kiểm gõ dấu, tên và chat chéo, hoặc ván vi/ko.", "evidence": ["LOBBY", "TITLE", "ROOM", "CHAT", "CLIENT", "SERVER"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Wine vi và ko qua launcher mở TLS và hai stream bootstrap, rồi game thoát mã 0 trước LoginStage.", "limits": "Không xác định nguyên nhân từ thông báo thoát; chưa thử en hoặc Internet thật.", "evidence": ["WINE-VI", "WINE-KO"]}
+  ],
+  "verification": [
+    {"check": "Windows vi: màn login, sảnh, tên có dấu, tạo phòng và chat tự hiển thị.", "result": "pass", "evidence": ["LOGIN", "LOBBY", "TITLE", "ROOM", "CHAT", "SERVER", "CLIENT"], "limits": "Không đủ nghiệm thu L1b hoặc L1c."},
+    {"check": "Wine và vi/ko cùng phòng.", "result": "fail", "evidence": ["WINE-VI", "WINE-KO"], "limits": "Chưa tới LoginStage Wine, chưa chạy một ván chung."},
+    {"check": "Dừng hai runtime, giữ process/container có sẵn và dọn overlay.", "result": "pass", "evidence": ["PRELOGIN", "CLEANUP", "RECOVER"], "limits": "Xuất tự động Windows r3 bị cắt; đã đọc lại log chỉ đọc, không chạy lại."}
+  ],
+  "delta": {"added": ["Windows vi qua launcher mới tới phòng và hiện tên có dấu, giới hạn Wine được đo bằng cả vi và ko."], "corrected": ["Cấu hình companion Linux nhận udp_backend native; đường dẫn Wine ở trường wine."], "superseded": []},
+  "blockers": ["Wine thoát trước màn đăng nhập.", "Gói còn ảnh vẽ tay, nhãn KR và thiếu nghiệm thu en/vi/ko."],
+  "next_steps": [
+    {"id": "L1-414-native-pair", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Đối chiếu bootstrap Wine với Windows và bổ sung ảnh đã duyệt; nghiệm thu chat trộn, tên, tiêu đề và một ván vi/ko."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T02:48:33.060450+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi trạng thái L1 và M8."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Ghi phép kiểm Wine còn mở."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Cập nhật kết quả Windows và giới hạn."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Sửa tên trường cấu hình Wine và giá trị UDP."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Liên kết checkpoint."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP360.json", "state": "updated", "reason": "Pin kết quả, ảnh, log và cleanup."}
+  ],
+  "evidence": [
+    {"id": "WIN-R1", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r1/windows-boot-summary.json", "bytes": 208, "sha256": "98e23c3a2aa686a8d435133c01b19ce8b5706212f71e705f3a341d2a002ed9ac"},
+    {"id": "WIN-R2", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r2/guest-export/appev.json", "bytes": 1536, "sha256": "4b69821b1abd0b0edb7fd13a4bf90e90ae71be35b25abd6b8a67132d7d626299"},
+    {"id": "COMPOSE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/composition-with-import.json", "bytes": 1133, "sha256": "93b93e743700cde6f654908c6014d206252fb9a0b16ce1215f215d5ac0b58af0"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/preflight.json", "bytes": 532, "sha256": "18889cf219a1f524fd37965d1ca15722bd08c41f28ba762ef17ca50a935d7a93"},
+    {"id": "LOGIN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/win-r3-login/capture-0.png", "bytes": 755834, "sha256": "74874bd528cf66ab27ee614e45a62c10ebd1fa509dd2d00342222840a2595fc2"},
+    {"id": "LOBBY", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/win-vi-signin/capture-7.png", "bytes": 235663, "sha256": "f868567b294e3c44e8de6ff4829ee11abf075a28f5dc9712119aae6f73c12a39"},
+    {"id": "TITLE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/win-vi-title-edit/capture-4.png", "bytes": 302400, "sha256": "6a308e020ce6f38b93f5b2486703ac609287a9109a915536f290398057be1384"},
+    {"id": "ROOM", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/win-vi-room/capture-0.png", "bytes": 265853, "sha256": "aede58e01bb5354ad53b4dca55ea712eb1a87f7e0ca88135f487f25f422d8374"},
+    {"id": "CHAT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/win-vi-room-chat/capture-3.png", "bytes": 265299, "sha256": "1fe2a9dac2801bfca8f4ffb928b1108cf5b428acd8dd57a38c01f854d5ad6aff"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/service/rust-events.jsonl", "bytes": 1120, "sha256": "2df00026d99244486ff56ea0f56d29d013879c5375b1bd0137094a2f7af46e06"},
+    {"id": "CLIENT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/offline-export/vi-CALog.log", "bytes": 7700, "sha256": "49c097a868a0bc768578fc66586552fafaf2fe95835b79b0f5aaf7aaa1a97cfb"},
+    {"id": "PRELOGIN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/offline-export/vi-prelogin.log", "bytes": 1995, "sha256": "c001c243fcfdc78a1eba51112f843b25dd298e388189765a0783eddeae5548a7"},
+    {"id": "WINE-VI", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r2/wine-export/prelogin-0.log", "bytes": 1651, "sha256": "932c632ccfbea6146b56ba56264501b54f90f70c8ebbcc9365ee44fde8862dd9"},
+    {"id": "WINE-KO", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/wine-export/prelogin-0.log", "bytes": 1651, "sha256": "7c71893afdf440d014678e535fa2bf9d39a03f471946dcefe01e5c6036e44cf4"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/cleanup.json", "bytes": 486, "sha256": "f26589759e63dbf2e3745eba846fd40344105cef8bc6c2483da3a7d81844e0a6"},
+    {"id": "RECOVER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-r3/cleanup-recovery.json", "bytes": 183, "sha256": "473c779fb5100ca2a5776791f477ef6d6aaa25a1b210c9dde1c1f4285b6cd457"}
+  ]
+}

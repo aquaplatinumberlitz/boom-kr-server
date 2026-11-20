@@ -76,11 +76,11 @@ M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn gi
 
 [Bản vá 949x](content/client-language.md#utf8) (CP310) đã hiện chữ ba ngôn ngữ và nhận chữ Việt/Hàn ở chat trên client
 chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
-
 - [Chat L1](protocol/lobby-profile.md#rust-patched-room-chat): test TLS vi/ko giữ nguyên byte ở sảnh/phòng chờ. Còn nhìn tin Việt/Hàn ở client nhận trên gói Windows/Wine; không suy đường chat 2P, team, whisper hoặc guild.
 - Tiệm: cần dịch vụ có tiệm; sau đó chụp tiệm ở cả ba bộ dữ liệu.
 - Sửa tên phòng: bật chuỗi định danh chẩn đoán đã nối vào auth4 cho tài khoản thử, gõ tiêu đề trộn và đối chiếu ở client nhận trên gói.
 - IME tiếng Hàn thật (composition từng âm tiết) chưa thử. Đường VK_PACKET đã sửa lỗi cắt trong bản chẩn đoán; kiểm lại trên gói.
+- Wine mới: tách bước sau bootstrap và trước LoginStage khi client vi/ko đều ngắt, so với Windows vi dùng cùng gói có kiểm hash.
 - Consumer bỏ qua hai slot chuyển mã (bộ giải riêng, GDI) chưa được loại trừ; chưa thấy chỗ nào sai trong các màn đã chụp.
 - Tên account đã có [biên UTF-8/949x strict](protocol/auth-session.md#rust-patched-account-names) và TCP/reset; còn native. Tên phòng và chat chỉ đi qua phòng/sảnh; cần xác nhận xuyên suốt trên gói.
 
