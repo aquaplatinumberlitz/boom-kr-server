@@ -508,8 +508,8 @@ fn live_writer_backup_restore_two_tls_players_and_shutdown_recovery() {
         let list = admin(&db, LiveCommand::ListRooms).await.unwrap();
         let target: RoomTarget = serde_json::from_value(list["rooms"][0].clone()).unwrap();
         let stale = RoomTarget {
-            epoch: target.epoch - 1,
-            ..target
+            instance: "0".repeat(32),
+            ..target.clone()
         };
         assert!(
             admin(&db, LiveCommand::CloseRoom { target: stale })

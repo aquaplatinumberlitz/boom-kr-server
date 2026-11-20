@@ -105,26 +105,27 @@ fn socket_path(database: &Path) -> PathBuf {
     database.with_extension("admin.sock")
 }
 
-#[derive(Serialize, Deserialize, Clone, Copy)]
+#[derive(Serialize, Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct RoomTarget {
+    pub instance: String,
     pub epoch: i64,
     pub room_id: u32,
     pub session: u16,
     pub generation: u64,
 }
 impl RoomTarget {
-    fn key(self) -> RoomKey {
+    fn key(&self) -> RoomKey {
         RoomKey {
             id: RoomId(self.room_id),
             session: self.session,
             generation: self.generation,
         }
     }
-    fn audit_id(self) -> String {
+    fn audit_id(&self) -> String {
         format!(
-            "{}/{}/{}/{}",
-            self.epoch, self.room_id, self.session, self.generation
+            "{}/{}/{}/{}/{}",
+            self.instance, self.epoch, self.room_id, self.session, self.generation
         )
     }
 }
@@ -138,7 +139,15 @@ impl LiveCommand {
     fn audit_fields(&self) -> (&'static str, &'static str, String) {
         match self {
             Self::ListRooms => ("list_rooms", "service", "rooms".into()),
-            Self::CloseRoom { target } => ("close_room", "room", target.audit_id()),
+            Self::CloseRoom { target } => {
+                if target.instance.len() != 32
+                    || !target.instance.bytes().all(|b| b.is_ascii_hexdigit())
+                {
+                    ("close_room", "room", "invalid-instance".into())
+                } else {
+                    ("close_room", "room", target.audit_id())
+                }
+            }
         }
     }
 }
@@ -195,16 +204,21 @@ pub(crate) struct Listener {
     _owner: PrivateSocket,
     db: PathBuf,
     epoch: i64,
+    instance: String,
     hub: Arc<Hub>,
 }
 impl Listener {
     pub(crate) fn bind(db: &Path, epoch: i64, hub: Arc<Hub>) -> io::Result<Self> {
+        let mut nonce = [0; 16];
+        getrandom::fill(&mut nonce).map_err(io::Error::other)?;
+        let instance = format!("{:032x}", u128::from_be_bytes(nonce));
         let (listener, owner) = PrivateSocket::bind(&socket_path(db))?;
         Ok(Self {
             listener,
             _owner: owner,
             db: db.to_owned(),
             epoch,
+            instance,
             hub,
         })
     }
@@ -226,7 +240,7 @@ impl Listener {
             };
             let mut stream = socket.into_inner();
             let (db, hub, epoch) = (self.db.clone(), self.hub.clone(), self.epoch);
-            let result = handle(db, hub, epoch, request)
+            let result = handle(db, hub, epoch, self.instance.clone(), request)
                 .await
                 .unwrap_or_else(|e| json!({"error":e.to_string()}));
             let _ = timeout(CONTROL_IO, stream.write_all(&serde_json::to_vec(&result)?)).await;
@@ -238,6 +252,7 @@ async fn handle(
     db: PathBuf,
     hub: Arc<Hub>,
     epoch: i64,
+    instance: String,
     request: Request,
 ) -> accounts::Result<Value> {
     let (mut store, audit_id, response, ticket) = tokio::task::spawn_blocking(move || {
@@ -252,13 +267,13 @@ async fn handle(
             LiveCommand::ListRooms => match hub.operator_rooms() {
                 Ok(keys) => (
                     json!({"rooms":keys.into_iter().map(|key| RoomTarget {
-                    epoch, room_id: key.id.0, session: key.session, generation: key.generation,
+                    instance: instance.clone(), epoch, room_id: key.id.0, session: key.session, generation: key.generation,
                 }).collect::<Vec<_>>()}),
                     None,
                 ),
                 Err(_) => (json!({"error":"room service unavailable"}), None),
             },
-            LiveCommand::CloseRoom { target } if target.epoch == epoch => {
+            LiveCommand::CloseRoom { target } if target.epoch == epoch && target.instance == instance => {
                 match hub.operator_close(target.key()) {
                     Ok(Some(ticket)) => (json!({"ok":true}), ticket),
                     Ok(None) => (json!({"error":"room not found"}), None),
