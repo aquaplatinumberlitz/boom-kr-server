@@ -87,7 +87,8 @@ Nút dừng hoặc đóng cửa sổ dừng hai tiến trình. Companion tự đ
 launcher không tăng trong 10 giây. Companion viết log tối đa 32 KiB trong thư mục của lượt chạy; launcher giữ tối đa bốn log
 đã kết thúc dưới `state/prelogin-logs`. Log ghi cổng loopback, mốc TLS, số byte chuyển và nhãn kết thúc;
 launcher thêm mã thoát tiến trình. Log không chứa địa chỉ máy chủ, credential hoặc nội dung gói.
-Gói Windows đặt `udp_backend: portable`. Wine khai `wine` và dùng prefix riêng theo ngôn ngữ.
+Gói Windows đặt `udp_backend: portable`. Với launcher Linux gọi Wine, đặt `udp_backend: native` cho companion Linux,
+khai đường dẫn chương trình qua trường `wine` và dùng prefix riêng theo ngôn ngữ.
 Hai đầu TLS cần certificate pin riêng (có thể dùng cùng chứng thư đã phân phối nếu hai đầu dùng cùng identity).
 
 Server cho ba client đã vá có thể khai `account_admission.patched_949x_names: true` cùng `profile_mode: database_zero`.

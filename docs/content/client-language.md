@@ -126,7 +126,8 @@ Theo [quyết định 13/11](../evidence/owner-directives/l10n-utf8.json), dữ 
 UTF-8 và một bản vá chung cho phép Hàn, Việt, Anh hiện cùng lúc. Khác nhau giữa ba ngôn ngữ chỉ còn là dữ liệu: bảng
 chuỗi, ảnh có chữ và font. Trình mở game chọn bộ dữ liệu và áp bản vá; đổi ngôn ngữ có hiệu lực ở lần mở game sau.
 
-### Thiết kế đã chọn: mã nội bộ 949x (15/11)
+<a id="thiết-kế-đã-chọn-mã-nội-bộ-949x-1511"></a>
+### Thiết kế L1a đã chọn: mã nội bộ 949x (15/11)
 
 Client giữ bảng mã 949 bên trong, như cách client PopTag làm, và thêm một **bảng mở rộng tĩnh** cho ký tự ngoài 949.
 Ký tự có trong 949 giữ nguyên byte 949. Ký tự ngoài 949 thuộc các dải Latin mở rộng, dấu kết hợp, Hy Lạp, Kirin,
@@ -321,9 +322,14 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 - **IME tiếng Hàn thật** (composition từng âm tiết) chưa thử trên Wine; đường đó đi `ImmGetCompositionStringW/A` sẵn có
   và qua hook khi không có ký tự tiêm.
 - **Server lưu UTF-8.** [CP356](../evidence/checkpoints/records/CP356.json) kiểm tên account giữ nguyên UTF-8 trong SQLite và codec hai chiều. Client chưa vá không nhận wire mới.
-- **Đăng nhập trên gói launcher mới.** CP354 xác nhận ko trên Windows; tiền kiểm [CP359](../evidence/checkpoints/records/CP359.json)
-  đã tách đối chứng ko theo hash và giữ phần bản địa hóa khi ghép các bước tương thích đăng nhập cho vi/en. Cần đo trực tiếp
-  vi/en và cặp vi/ko trên gói hiện hành.
+- **Windows qua launcher mới.** [CP354](../evidence/checkpoints/records/CP354.json) có ko 2P. Với gói thử của
+  [CP360](../evidence/checkpoints/records/CP360.json), bản vi cần cả bước chuẩn bị bảng import và trạng thái bootstrap
+  đã có từ M8; sau đó đăng nhập 1P, hiện tên `Việt01`, tạo phòng sau khi sửa phần cuối tiêu đề Việt có sẵn, và hiện
+  tin ASCII tự gửi. Ba nút đăng nhập dưới màn hình hiện tiếng Việt; nhãn ID, mật khẩu và chọn máy chủ còn tiếng Hàn.
+  Các nhãn ảnh của phòng, tab nhân vật, banner và hộp tạo phòng còn chữ Hàn. Chưa kiểm hộp “Invalid Login!” thật,
+  gõ dấu mới, client ko nhận chữ hoặc một ván vi/ko. Gói en chưa chạy.
+- **Wine qua launcher mới.** Bản vi và ko kết nối TLS rồi thoát trước màn đăng nhập. Chưa xác định nguyên nhân;
+  cần tách bước từ bootstrap đến LoginStage với cùng gói và so với đối chứng Windows.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,
