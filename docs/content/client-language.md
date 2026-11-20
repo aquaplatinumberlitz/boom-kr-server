@@ -334,11 +334,12 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   tới server, nhưng cả hai ngắt trước khi thấy màn trận. Journal có ván ở trạng thái `running`, chưa có kết quả.
   [CP365](../evidence/checkpoints/records/CP365.json) xác định lỗi journal trước khi ghi 121 và sửa ở Rust.
   [CP366](../evidence/checkpoints/records/CP366.json) dùng bản sửa: hai client vào cùng phòng nhưng bộ điều khiển Windows
-  hết hạn trước Ready và Start. Chưa nghiệm thu trận. Claude hoãn nghiệm thu en sau giai đoạn 1.
+  hết hạn trước Ready và Start. [CP369](../evidence/checkpoints/records/CP369.json) xác nhận gói có sáu ảnh vi
+  vào Factory07 trên cả hai client; cả hai ngắt ở bước kiểm quyền trước kết quả. Claude hoãn nghiệm thu en sau giai đoạn 1.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,
-tiệm và gõ tiếng Hàn bằng IME thật. Chat chuyển tiếp sảnh/phòng thuộc giai đoạn 1. Còn ghép ảnh đã duyệt và kiểm trực tiếp đăng nhập, gõ tiêu đề, chat hai chiều và trận trên gói phát hành.
+tiệm và gõ tiếng Hàn bằng IME thật. Chat chuyển tiếp sảnh/phòng thuộc giai đoạn 1. Ảnh vi đã ghép vào gói và đã thấy ở màn đăng nhập Windows. Còn kiểm gõ tiêu đề từ bản vi, chat có dấu vi → ko và chơi trọn một ván trên gói.
 
 ### Các lượt chẩn đoán trước (Codex, 14–15/11)
 
