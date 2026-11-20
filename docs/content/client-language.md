@@ -244,13 +244,14 @@ từ; chèn xuống dòng `\n` ở ranh giới từ trong chuỗi `csysstr` (ví
 
 **Ảnh khác shape.** Dựng với `--allow-shape-change` thay được 549/549 ảnh Việt và 339 ảnh Anh (4 ảnh Anh không có bản Bắc
 Mỹ). Các lượt chẩn đoán cũ không thấy lỗi tải ảnh; các nút trước đây bị bỏ như `TẠO PHÒNG`, `ĐI TẮT`, `TÙY CHỌN`, `SIÊU THỊ`, `CREATE ROOM`,
-`QUICK PLAY` đã hiện. Ảnh còn chữ Hàn trong các màn đã chụp, cần vẽ: `레벨` (vi), bong bóng `칭호 UPDATE` (en), nhãn ô
-người chơi `방 장`/`준 비`, tab nhân vật `전체`/`일반`/`럭셔리`/`슈퍼`, `팀선택`, `맵`, `크리에이터 맵`/`오리지널 맵` (vi),
-`자동준비`, banner `다오` và nút `시 작` của chủ phòng (en). Bản dựng hiện tại đã lấy ảnh thay cho Start/Ready bằng vi/en.
-Cần lấy lại bộ ảnh đã duyệt để bổ sung `FxMap/Prepare/CAStage_Custom` (nhãn đội, map và tự sẵn sàng) cho vi/en,
-`fx/CustomMap/Btn_CustomMap` và `Btn_OriginalMap` cho vi; tìm ảnh hoặc vẽ `FxStage/Lobby/LB_UserTitle_Update_ToolTip`
-(79×75) cho en. Các nhãn cấp độ, ô người chơi, tab và banner còn cần xác định entry trên gói cuối.
-Không suy bản dựng 18/11 có bộ ảnh vẽ tay đã được đưa vào gói thử hiện tại.
+`QUICK PLAY` đã hiện. Bản dựng có ảnh thay cho Start/Ready vi/en. Gói Windows vi/Wine ko dùng lại 16 ảnh vi đã duyệt:
+nền sảnh, nền phòng, nhãn ô người chơi, tab nhân vật, banner và nút map ([CP362](../evidence/checkpoints/records/CP362.json)).
+Bản en cần Claude cung cấp nền phòng `FxMap/Prepare/CAStage_Custom` (nhãn đội, map và tự sẵn sàng) và tooltip danh hiệu
+`FxStage/Lobby/LB_UserTitle_Update_ToolTip` (79×75); các pack en còn giữ được không có hai bản thay này. Với vi/en,
+còn sáu ảnh màn đăng nhập trong
+`FxDesktop`: `LoginStage/LO_LogTable00` và `LO_LogTable01` (456×157 và 516×157, phải giữ hàng chọn máy chủ và vị trí
+ô 1P/2P); `LO_SerDre`, `LO_SerDre2P` (năm trạng thái); `LO_SerHa`, `LO_SerHa2P` (bốn trạng thái). Ảnh khung
+VN/Bắc Mỹ thiếu hàng chọn máy chủ; bốn mục nút máy chủ còn chữ Hàn trong cả hai nguồn. Cần ảnh đúng bố cục KR.
 
 **Chuỗi cứng trong exe.** Catalog có 134 dòng `exe:kr-full.exe`; 81 dòng là tên cấm giữ tiếng Hàn. Bảng
 [`tools/l10n_949x_exe_literals.json`](../../tools/l10n_949x_exe_literals.json) ghi 39 chuỗi và 44 operand trỏ tới chúng
@@ -333,7 +334,8 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   `한국02` ở sảnh. Sửa route relay trong lab giúp Wine ko vào cùng phòng Factory07 với Windows vi qua launcher mới
   ở CP362. Hai bản cùng thấy `한국02`, `Việt01` và phần ảnh vi đã khôi phục hiện trên Windows. Ready và Start đầu tiên
   tới server, nhưng cả hai ngắt trước khi thấy màn trận. Journal có ván ở trạng thái `running`, chưa có kết quả.
-  Chưa xác định nguyên nhân ngắt, chưa đạt nghiệm thu trận và chưa thử en.
+  [CP364](../evidence/checkpoints/records/CP364.json) đã kiểm hash gói và bản Rust có log mới. Chưa xác định nguyên nhân ngắt,
+  chưa đạt nghiệm thu trận và chưa thử en.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,

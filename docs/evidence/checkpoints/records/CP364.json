@@ -1,0 +1,49 @@
+{
+  "id": "CP364",
+  "previous": "CP363",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T06:28:37.401842+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Đầu vào có khớp sau khi tích hợp log ván đầu, và log cũ còn cho biết gì?",
+  "scope": "KRE-074 / #414. Kiểm hash và đọc lại log CP362; không khởi động Windows hoặc Wine.",
+  "context_commit": "674e181dc626403ff33d6b6b8dcf07b8a02b0ba0",
+  "artifacts": [
+    {"sha256": "a616a18c1ebf80b2b676ea35887aca64fd8ad1ec66b579c0af50b21a7f6625b3"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1/cp364-offline"],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/PLAN.md#dashboard", "summary": "Cây nguồn bản Rust dựng sẵn khớp main sau #509. Hash bản Rust, helper nhập Unicode, manifest và 275 file payload đều khớp.", "evidence": ["OFFLINE", "RECIPE"], "limits": "Gói thử CP362 được dùng lại; kiểm file không thay nghiệm thu."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md#gap-client-utf8", "summary": "Log CP362 ghi cả hai luồng kênh đóng do lỗi I/O sau khoảng 312 và 417 giây. Relay ghi hai transport_error.", "evidence": ["OFFLINE", "VI-STREAM", "KO-STREAM", "RELAY"], "limits": "Hai log companion dùng đồng hồ riêng. Log relay không có thời gian hay ID để xếp thứ tự. Khoảng đo ngắn hơn idle 1.800 giây; nguyên nhân ngắt chưa biết."},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/client-language.md#utf8", "summary": "Các pack en còn giữ chưa có bản thay nền phòng và tooltip danh hiệu; ghi sáu ảnh đăng nhập còn cần nguồn đúng bố cục KR.", "evidence": ["EN-ART", "ART-LIST"], "limits": "Chỉ kiểm các nguồn còn giữ và các mục đã xác định; có thể còn bản vẽ khác do Claude giữ."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu cây Git, hash binary, manifest và mọi file payload có trong manifest.", "result": "pass", "evidence": ["OFFLINE", "RECIPE"], "limits": "Không chạy game."}
+  ],
+  "delta": {"added": ["Chốt đầu vào để dùng log mới; đối chiếu log companion và relay; định danh ảnh còn thiếu."], "corrected": [], "superseded": []},
+  "blockers": ["Đã hết ngân sách lượt thật; chưa có kết quả ván đầu hoặc bản en trên gói. Cần nguồn ảnh đã duyệt."],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khi có ngân sách mới, dùng gói đã kiểm để đo chat sảnh, gõ tiếng Việt từ vi và ván đầu; đối chiếu 121, 99, 153 và kết quả. Start ván hai thuộc #502."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T06:28:37.401842+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi việc chưa đạt của L1 và giữ #502 riêng."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Ghi giới hạn log và phép kiểm kế tiếp."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi contract hoặc wire."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi ảnh đã có và còn thiếu."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Đồng bộ phép kiểm L1 còn mở."},
+    {"path": "docs/evidence/checkpoints/records/CP364.json", "state": "updated", "reason": "Pin biên nhận và log đọc lại."}
+  ],
+  "evidence": [
+    {"id": "OFFLINE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/cp364-offline/offline-receipt.json", "bytes": 1664, "sha256": "a616a18c1ebf80b2b676ea35887aca64fd8ad1ec66b579c0af50b21a7f6625b3"},
+    {"id": "RECIPE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/cp364-offline/verify.py", "bytes": 3445, "sha256": "25b18001fc16e5e01ebe0138413a27001eecdb4689d4e48fe76d4b8b610e016a"},
+    {"id": "VI-STREAM", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/guest-export/a-prelogin.log", "bytes": 2278, "sha256": "6d34854752f9ed18819367548e59bd7949d3cfb33c4957874ef2e3e496857ed1"},
+    {"id": "KO-STREAM", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/wine-companion.log", "bytes": 2265, "sha256": "94e33cb87a95129b1c590678d40e825bf5521ad7f921cc66a8816822ac486369"},
+    {"id": "RELAY", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/server.log", "bytes": 195, "sha256": "ad9ea7cd334730dab2431cc199cfbaa74f9aaa6a70d6ed825d6ff5da205fae34"},
+    {"id": "EN-ART", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/retained-en-overrides-audit.json", "bytes": 1782, "sha256": "a711269bc0e397cd2bc53fee2f3a25a6481f16e836558ead21758e928a5dbce1"},
+    {"id": "ART-LIST", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/image-handoff.md", "bytes": 6204, "sha256": "4309b1daada3f227a45d8e9da75e826c141905533b2b5e65e0618c0369d5ad56"}
+  ],
+  "evidence_runs": []
+}
