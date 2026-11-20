@@ -41,6 +41,7 @@ pub(super) struct State {
     known: BTreeSet<(u16, u32)>,
     preferences: Vec<Option<CharacterPreference>>,
     last_chat: Option<Instant>,
+    lobby_chat: Option<lobby_chat::Visit>,
 }
 impl State {
     fn owned_slot(&self, slot: u8) -> io::Result<usize> {
@@ -54,8 +55,25 @@ impl State {
         ))
     }
 
-    pub(super) fn admitted(&mut self, catalog: &room_service::Catalog) {
+    fn visit_lobby(&mut self, driver: &Driver, resources: &Resources) -> io::Result<()> {
+        // The measured envelope has no local actor selector. Two-principal
+        // transports need their own native chat evidence before enabling it.
+        if resources.patched_chat
+            && let [owner] = driver.authorities()
+        {
+            self.lobby_chat = Some(resources.lobby_chat.enter(owner.clone())?);
+        }
+        Ok(())
+    }
+
+    pub(super) fn admitted(
+        &mut self,
+        catalog: &room_service::Catalog,
+        driver: &Driver,
+        resources: &Resources,
+    ) -> io::Result<()> {
         self.known = catalog.tuples.clone();
+        self.visit_lobby(driver, resources)
     }
     pub(super) async fn packet(
         &mut self,
@@ -111,6 +129,7 @@ impl State {
                         .await?;
                 }
                 room_service::LocalSelection::Joined(sessions) => {
+                    self.lobby_chat = None;
                     for (session, preference) in sessions.iter().zip(&self.preferences) {
                         if let Some(preference) = preference {
                             session.restore_character(preference.character_key)?;
@@ -125,7 +144,37 @@ impl State {
             return Ok(true);
         }
         let count = self.sessions.len();
-        if count == 0 || (opcode != 18 && !room_io::Session::handles(opcode)) {
+        if opcode == 18 && resources.patched_chat {
+            if self
+                .last_chat
+                .is_some_and(|at| at.elapsed() < Duration::from_millis(500))
+            {
+                return Err(io::Error::other("native chat rate bound"));
+            }
+            driver.inspect().await?;
+            match &self.sessions[..] {
+                [] => {
+                    self.lobby_chat
+                        .as_ref()
+                        .ok_or_else(|| io::Error::other("native chat has no lobby visit"))?
+                        .send(input.body())
+                        .await?;
+                }
+                [session] => {
+                    session.wait_journal().await?;
+                    driver.inspect().await?;
+                    driver.authorities()[0]
+                        .authorize_activity()
+                        .await
+                        .map_err(Driver::authority_error)?;
+                    session.room_chat(input.body())?;
+                }
+                _ => return Err(io::Error::other("unmeasured multi-local chat")),
+            }
+            self.last_chat = Some(Instant::now());
+            return Ok(true);
+        }
+        if count == 0 || !room_io::Session::handles(opcode) {
             return Ok(false);
         }
         driver.inspect().await?;
@@ -171,55 +220,42 @@ impl State {
                 return Ok(true);
             }
         }
-        if opcode == 18 {
-            if self
-                .last_chat
-                .is_some_and(|at| at.elapsed() < Duration::from_millis(500))
-            {
-                return Err(io::Error::other("native room chat rate bound"));
-            }
-            session.room_chat(body)?;
-            self.last_chat = Some(Instant::now());
-        } else {
-            if opcode == 99 {
-                session.wait_peer_ready().await?;
-                driver.inspect().await?;
-            }
-            if opcode == 92 && resources.persist_character {
-                if let Some((membership, character)) = session.prepare_character(body)? {
-                    let expected = self.preferences[index]
-                        .as_ref()
-                        .ok_or_else(|| io::Error::other("native character preference absent"))?
-                        .revision;
-                    let deadline = Instant::now() + Duration::from_secs(2);
-                    let stored = loop {
-                        match owner
-                            .character_preference(Some((character, expected)))
-                            .await
-                        {
-                            Ok(stored) => break stored,
-                            Err(crate::account_bridge::Error::Backend(
-                                crate::account_worker::Error::Busy
-                                | crate::account_worker::Error::QueueExpired
-                                | crate::account_worker::Error::Backend(crate::accounts::Error::Busy),
-                            )) if Instant::now() < deadline => {
-                                tokio::time::sleep(Duration::from_millis(20)).await
-                            }
-                            Err(_) => {
-                                return Err(io::Error::other(
-                                    "native character persistence denied",
-                                ));
-                            }
+        if opcode == 99 {
+            session.wait_peer_ready().await?;
+            driver.inspect().await?;
+        }
+        if opcode == 92 && resources.persist_character {
+            if let Some((membership, character)) = session.prepare_character(body)? {
+                let expected = self.preferences[index]
+                    .as_ref()
+                    .ok_or_else(|| io::Error::other("native character preference absent"))?
+                    .revision;
+                let deadline = Instant::now() + Duration::from_secs(2);
+                let stored = loop {
+                    match owner
+                        .character_preference(Some((character, expected)))
+                        .await
+                    {
+                        Ok(stored) => break stored,
+                        Err(crate::account_bridge::Error::Backend(
+                            crate::account_worker::Error::Busy
+                            | crate::account_worker::Error::QueueExpired
+                            | crate::account_worker::Error::Backend(crate::accounts::Error::Busy),
+                        )) if Instant::now() < deadline => {
+                            tokio::time::sleep(Duration::from_millis(20)).await
                         }
-                    };
-                    self.preferences[index] = Some(stored);
-                    session.persisted_character(membership, body)?;
-                } else {
-                    session.packet(opcode, body)?;
-                }
+                        Err(_) => {
+                            return Err(io::Error::other("native character persistence denied"));
+                        }
+                    }
+                };
+                self.preferences[index] = Some(stored);
+                session.persisted_character(membership, body)?;
             } else {
                 session.packet(opcode, body)?;
             }
+        } else {
+            session.packet(opcode, body)?;
         }
         let _ = resources
             .events
@@ -311,9 +347,25 @@ impl State {
                     .as_ref()
                     .ok_or_else(|| io::Error::other("native lobby absent"))?
                     .returned()?;
+                self.visit_lobby(driver, resources)?;
             }
         }
         if self.sessions.is_empty() {
+            if let Some(visit) = self.lobby_chat.as_mut() {
+                // One tick drains at most the queue bound even if new
+                // messages arrive while checking the source and recipient.
+                for _ in 0..lobby_chat::QUEUE {
+                    let Some(message) = visit.receive() else {
+                        break;
+                    };
+                    if message.source_is_current().await {
+                        driver.inspect().await?;
+                        if message.source_still_current() {
+                            driver.lobby_reply(lane, send, 28, &message.body).await?;
+                        }
+                    }
+                }
+            }
             let mut lobby = resources.lobby.lock().await;
             let lobby = lobby
                 .as_mut()

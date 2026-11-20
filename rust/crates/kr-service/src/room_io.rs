@@ -2341,7 +2341,6 @@ impl Session {
     /// Opt-in patched949x room-waiting chat. Caller authorizes account and rate;
     /// sender identity comes only from its current DB-backed channel owner.
     pub(crate) fn room_chat(&self, body: &[u8]) -> io::Result<()> {
-        let text = wire::room_chat18(body)?;
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
         if r.public_key.is_none() || r.model.phase != Phase::Idle {
             return Err(err("room chat requires managed waiting room"));
@@ -2357,8 +2356,10 @@ impl Session {
             .and_then(|channel| channel.relay_authority.as_ref())
             .filter(|authority| authority.owns(self.identity, self.connection))
             .ok_or_else(|| err("room chat has no current account owner"))?;
-        let literal = format!("{} : {text}", authority.player().display_name);
-        let reply = packet(28, wire::room_chat28_literal(&literal)?);
+        let reply = packet(
+            28,
+            wire::chat28_from18(&authority.player().display_name, body)?,
+        );
         let mut effects = Vec::new();
         for recipient in r.model.members.values().filter(|member| member.setup) {
             let mut batch = Runtime::member_batch(

@@ -1,6 +1,6 @@
-//! Minimum patched949x room-chat adapter, not full social/chat protocol.
+//! Literal 949x chat shared by the normal room and lobby stages.
 //! Request18: CRC-verified owner y9/y10 captures, u16 string only (unlike VN).
-//! Reply28: KR CChatStage 0xD41DF0, string then u8 style0; native reply pending.
+//! Reply28: KR CChatStage 0xD41DF0, string then u8 style0.
 use super::{decode_bytes, encode_bytes, put, text949x, uint};
 use crate::Width;
 use std::io;
@@ -10,7 +10,7 @@ pub const MAX_ROOM_CHAT_BYTES: usize = 192;
 pub const MAX_ROOM_CHAT_REPLY_BYTES: usize = 224;
 
 fn invalid() -> io::Error {
-    io::Error::new(io::ErrorKind::InvalidInput, "unsupported normal room chat")
+    io::Error::new(io::ErrorKind::InvalidInput, "unsupported normal chat")
 }
 fn safe_literal(text: &str) -> bool {
     !text.is_empty()
@@ -23,7 +23,7 @@ fn safe_literal(text: &str) -> bool {
 
 /// Decode a single strict949x string. No flags, count, claimed sender, routing
 /// target, or trailing fields are admitted by this measured KR request branch.
-pub fn room_chat18(body: &[u8]) -> io::Result<String> {
+fn chat18(body: &[u8]) -> io::Result<(Vec<u8>, String)> {
     if !(3..=MAX_ROOM_CHAT_BYTES + 2).contains(&body.len()) {
         return Err(invalid());
     }
@@ -36,7 +36,21 @@ pub fn room_chat18(body: &[u8]) -> io::Result<String> {
     if !safe_literal(&text) || text949x::encode(&text)? != bytes {
         return Err(invalid());
     }
-    Ok(text)
+    Ok((bytes, text))
+}
+
+pub fn room_chat18(body: &[u8]) -> io::Result<String> {
+    chat18(body).map(|(_, text)| text)
+}
+
+/// Project the existing style-0 reply from the authenticated name and the
+/// validated original text bytes, with no conversion of the message itself.
+pub fn chat28_from18(name: &str, request: &[u8]) -> io::Result<Vec<u8>> {
+    let (text, _) = chat18(request)?;
+    let mut literal = text949x::encode_name(name)?;
+    literal.extend_from_slice(b" : ");
+    literal.extend(text);
+    reply28(&literal)
 }
 
 /// Builds only literal style0. Service supplies authenticated owner/routing;
@@ -45,12 +59,15 @@ pub fn room_chat28_literal(text: &str) -> io::Result<Vec<u8>> {
     if text.len() > MAX_ROOM_CHAT_REPLY_BYTES * 3 || !safe_literal(text) {
         return Err(invalid());
     }
-    let bytes = text949x::encode(text)?;
+    reply28(&text949x::encode(text)?)
+}
+
+fn reply28(bytes: &[u8]) -> io::Result<Vec<u8>> {
     if bytes.len() > MAX_ROOM_CHAT_REPLY_BYTES {
         return Err(invalid());
     }
     let mut body = put(bytes.len() as u64, Width::U16)?;
-    body.extend(encode_bytes(&bytes)?);
+    body.extend(encode_bytes(bytes)?);
     body.extend(put(0, Width::U8)?);
     Ok(body)
 }

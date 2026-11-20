@@ -208,6 +208,16 @@ impl NativeClient {
     async fn send(&mut self, opcode: u32, body: &[u8]) {
         send(&mut self.send, &mut self.tx, opcode, body).await;
     }
+    async fn requestless(&mut self, opcode: u32) -> kr_wire::Packet {
+        for _ in 0..32 {
+            let packet = receive(&mut self.recv, &mut self.rx).await;
+            if packet.opcode == opcode {
+                return packet;
+            }
+            assert!(matches!(packet.opcode, 90 | 91 | 106 | 110 | 238));
+        }
+        panic!("Expected unsolicited packet {opcode} absent");
+    }
     async fn expect(&mut self, opcode: u32) -> kr_wire::Packet {
         let packet = receive_for(&mut self.recv, &mut self.rx, Duration::from_secs(12)).await;
         assert_eq!(packet.opcode, opcode);
@@ -638,6 +648,158 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
         worker.shutdown().await.unwrap();
     });
 }
+fn chat_bytes(bytes: &[u8]) -> Vec<u8> {
+    let mut body = fields(&[(bytes.len() as u64, Width::U16)]);
+    body.extend(kr_wire::kr00967::encode_bytes(bytes).unwrap());
+    body
+}
+
+async fn expect_chat(client: &mut NativeClient, name: &[u8], bytes: &[u8]) {
+    let packet = client.requestless(28).await;
+    let mut literal = name.to_vec();
+    literal.extend_from_slice(b" : ");
+    literal.extend_from_slice(bytes);
+    let mut expected = chat_bytes(&literal);
+    expected.extend(fields(&[(0, Width::U8)]));
+    assert_eq!(packet.payload, expected);
+}
+
+#[test]
+fn vi_and_ko_chat_keeps_message_bytes_in_lobby_and_room_with_rate_and_scope() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let temp = Temp::new();
+    let admin = Admin {
+        actor: "test",
+        reason: "vi and ko chat scope",
+    };
+    let mut store = Store::open(&temp.db()).unwrap();
+    store.begin_instance(&admin, 100).unwrap();
+    store
+        .create_account(&admin, "AlphaOne", "Việt01", PASSWORD, 100)
+        .unwrap();
+    store
+        .create_account(&admin, "BetaTwo", "한국02", PASSWORD, 100)
+        .unwrap();
+    runtime().block_on(async {
+        let worker = crate::account_worker::Worker::open(temp.db(), 8, Duration::from_secs(5))
+            .await
+            .unwrap();
+        let hub = crate::room_service::Hub::new(
+            &crate::room_service::Config {
+                max_rooms: 4,
+                round_profile: None,
+                player_choices: true,
+                capacity: None,
+                player_round: Some(crate::room_io::PlayerRoundConfig {
+                    characters: vec![0, 1],
+                }),
+            },
+            crate::room_io::registry_foundation_tests::player_round_prototype(),
+            None,
+            None,
+        )
+        .unwrap();
+        let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+        let server = quinn::Endpoint::server(
+            prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
+            "127.0.0.1:0".parse().unwrap(),
+        )
+        .unwrap();
+        let mut endpoint = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+        endpoint.set_default_client_config(prelogin::client_config(cert).unwrap());
+        let directory = Arc::new(lobby_chat::Directory::default());
+        let (halt, stop) = watch::channel(false);
+        let (events, mut log) = mpsc::channel(32);
+        let mut clients = Vec::new();
+        let mut tasks = Vec::new();
+        let vi = b"Vi\xd2\x84t01".as_slice();
+        let ko = b"\xc7\xd1\xb1\xb902".as_slice();
+        for (login, name) in [("AlphaOne", vi), ("BetaTwo", ko)] {
+            let mut authority = resources(worker.client());
+            let cfg = Arc::get_mut(&mut authority).unwrap();
+            cfg.hub = Some(hub.clone());
+            cfg.patched_chat = true;
+            cfg.lobby_chat = directory.clone();
+            cfg.events = events.clone();
+            let listener = server.clone();
+            let stop = stop.clone();
+            let permit = Arc::new(Semaphore::new(1)).acquire_owned().await.unwrap();
+            tasks.push(tokio::spawn(async move {
+                let incoming = listener.accept().await.unwrap().await.unwrap();
+                connection(incoming, authority, stop, permit).await
+            }));
+            let tls = prelogin::connect(&endpoint, server.local_addr().unwrap())
+                .await
+                .unwrap();
+            clients.push(NativeClient::login(tls, login, name).await);
+            loop {
+                let event = tokio::time::timeout(Duration::from_secs(2), log.recv())
+                    .await
+                    .unwrap()
+                    .unwrap();
+                if event["event"] == "native_local_lobby_ready" {
+                    break;
+                }
+            }
+        }
+        let [a, b] = &mut clients[..] else {
+            unreachable!()
+        };
+        // The input messages mix independently pinned CP949 and extension bytes.
+        let vtext = b"Vi\xd2\x84t \xc7\xd1\xb1\xb9";
+        let ktext = b"\xc7\xd1\xb1\xb9 Vi\xd2\x84t";
+        a.send(18, &chat_bytes(vtext)).await;
+        expect_chat(a, vi, vtext).await;
+        expect_chat(b, vi, vtext).await;
+        b.send(18, &chat_bytes(ktext)).await;
+        expect_chat(a, ko, ktext).await;
+        expect_chat(b, ko, ktext).await;
+        let created = a.request(81, &create_room(), 86).await;
+        let room = read_uint(&created.payload[1..3], Width::U16).unwrap();
+        a.send(585, &fields(&[(0, Width::U32)])).await;
+        a.requestless(117).await;
+        tokio::time::sleep(Duration::from_millis(500)).await;
+        b.send(18, &chat_bytes(ktext)).await;
+        expect_chat(b, ko, ktext).await;
+        // Request a real room table reply as a stream barrier; receiving a
+        // lobby chat before it would fail rather than be silently skipped.
+        a.send(528, &[]).await;
+        a.expect(238).await;
+        let join = fields(&[
+            (room, Width::U16),
+            (room, Width::U32),
+            (0, Width::U16),
+            (1, Width::U8),
+            (5, Width::U16),
+        ]);
+        b.request(82, &join, 87).await;
+        b.send(585, &fields(&[(0, Width::U32)])).await;
+        b.requestless(117).await;
+        a.send(18, &chat_bytes(vtext)).await;
+        expect_chat(a, vi, vtext).await;
+        expect_chat(b, vi, vtext).await;
+        tokio::time::sleep(Duration::from_millis(500)).await;
+        b.send(18, &chat_bytes(ktext)).await;
+        expect_chat(a, ko, ktext).await;
+        expect_chat(b, ko, ktext).await;
+        b.send(18, &chat_bytes(ktext)).await;
+        tokio::time::timeout(Duration::from_secs(3), b.connection.closed())
+            .await
+            .unwrap();
+        let task = tasks.pop().unwrap();
+        assert_eq!(
+            task.await.unwrap().unwrap_err().to_string(),
+            "chat_rate_bound"
+        );
+        assert!(a.connection.close_reason().is_none());
+        halt.send_replace(true);
+        for task in tasks {
+            task.await.unwrap().unwrap();
+        }
+        worker.shutdown().await.unwrap();
+    });
+}
+
 impl Temp {
     fn new() -> Self {
         use std::os::unix::fs::DirBuilderExt;
@@ -702,6 +864,8 @@ fn resources(client: Client) -> Arc<Resources> {
         events,
         hub: None,
         lobby: AsyncMutex::new(None),
+        lobby_chat: Arc::new(lobby_chat::Directory::default()),
+        patched_chat: false,
         persist_character: false,
         authenticated: None,
         config: Config {
