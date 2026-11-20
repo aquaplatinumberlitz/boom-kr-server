@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP358: Đăng nhập game nhận chuỗi cục bộ để thử gõ tiêu đề phòng.** [Bằng chứng](evidence/checkpoints/records/CP358.json). L1 còn mở.
+
 **CP357: Bản dựng 949x kiểm giới hạn byte của tên phòng và nhãn nhận chat.** [Bằng chứng](evidence/checkpoints/records/CP357.json). L1 còn mở.
 
 **CP356: Tên account lưu UTF-8 và codec 949x khớp toàn bộ bảng tham chiếu.** [Bằng chứng](evidence/checkpoints/records/CP356.json). L1 còn mở.
