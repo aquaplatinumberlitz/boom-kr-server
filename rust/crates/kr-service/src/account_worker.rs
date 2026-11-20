@@ -1077,24 +1077,30 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                     let _ = reply.send(Err(Error::QueueExpired));
                     continue;
                 }
-                let now = match now {
-                    AuthorizationTime::Supplied(now) => Ok(now),
-                    AuthorizationTime::ExecutionUtc => std::time::SystemTime::now()
-                        .duration_since(std::time::UNIX_EPOCH)
-                        .ok()
-                        .and_then(|t| i64::try_from(t.as_secs()).ok())
-                        .ok_or(Error::Backend(accounts::Error::ClockRollback)),
+                let result = if live && matches!(now, AuthorizationTime::ExecutionUtc) {
+                    store
+                        .inspect_live_current(&token, player, renew_idle)
+                        .map_err(Error::Backend)
+                } else {
+                    let now = match now {
+                        AuthorizationTime::Supplied(now) => Ok(now),
+                        AuthorizationTime::ExecutionUtc => std::time::SystemTime::now()
+                            .duration_since(std::time::UNIX_EPOCH)
+                            .ok()
+                            .and_then(|t| i64::try_from(t.as_secs()).ok())
+                            .ok_or(Error::Backend(accounts::Error::ClockRollback)),
+                    };
+                    now.and_then(|now| {
+                        if live {
+                            store.inspect_live(&token, player, now, renew_idle)
+                        } else if renew_idle {
+                            store.authorize(&token, player, now)
+                        } else {
+                            store.inspect_session(&token, player, now)
+                        }
+                        .map_err(Error::Backend)
+                    })
                 };
-                let result = now.and_then(|now| {
-                    if live {
-                        store.inspect_live(&token, player, now, renew_idle)
-                    } else if renew_idle {
-                        store.authorize(&token, player, now)
-                    } else {
-                        store.inspect_session(&token, player, now)
-                    }
-                    .map_err(Error::Backend)
-                });
                 let _ = reply.send(result);
             }
             #[cfg(test)]

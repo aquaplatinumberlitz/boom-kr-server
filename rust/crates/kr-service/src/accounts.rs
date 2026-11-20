@@ -634,10 +634,32 @@ impl Store {
         now: i64,
         activity: bool,
     ) -> Result<Player> {
+        self.inspect_live_clock(token, expected_player, activity, &mut || Ok(now))
+    }
+
+    pub(crate) fn inspect_live_current(
+        &mut self,
+        token: &Token,
+        expected_player: i64,
+        activity: bool,
+    ) -> Result<Player> {
+        self.inspect_live_clock(token, expected_player, activity, &mut || {
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .ok()
+                .and_then(|time| i64::try_from(time.as_secs()).ok())
+                .ok_or(Error::ClockRollback)
+        })
+    }
+
+    fn inspect_live_clock(
+        &mut self,
+        token: &Token,
+        expected_player: i64,
+        activity: bool,
+        clock: &mut impl FnMut() -> Result<i64>,
+    ) -> Result<Player> {
         self.db.busy_timeout(Duration::ZERO)?;
-        if now < 0 || now < self.live_utc {
-            return Err(Error::ClockRollback);
-        }
         let digest = token.digest();
         let tx = self
             .db
@@ -645,7 +667,10 @@ impl Store {
         let last: i64 = tx.query_row("SELECT last_utc FROM runtime_state WHERE id=1", [], |r| {
             r.get(0)
         })?;
-        if now < last {
+        // Sample after the SELECT establishes the read snapshot; an independent
+        // worker may have just committed a newer UTC while we were queued.
+        let now = clock()?;
+        if now < 0 || now < last || now < self.live_utc {
             return Err(Error::ClockRollback);
         }
         // Denials also advance the in-process watermark: a later clock rollback
@@ -660,7 +685,19 @@ impl Store {
             let tx = self
                 .db
                 .transaction_with_behavior(TransactionBehavior::Immediate)?;
+            // The writer snapshot is separate: using the read timestamp here
+            // can reject a healthy connection at a clock tick across DB lanes.
+            let now = clock()?;
+            if now < self.live_utc {
+                return Err(Error::ClockRollback);
+            }
             Self::clock(&tx, now)?;
+            self.live_utc = now;
+            let account = Self::session_account(&tx, &digest, expected_player, now)?;
+            let current = Self::player(&tx, account)?;
+            if current != player {
+                return Err(Error::InvalidSession);
+            }
             if activity {
                 tx.execute("UPDATE sessions SET last_seen_at=?1 WHERE token_hash=?2 AND account_id=?3 AND idle_timeout_seconds IS NOT NULL AND revoked_at IS NULL AND expires_at>?1 AND last_seen_at<=?1",params![now,digest,player.account_id])?;
             }

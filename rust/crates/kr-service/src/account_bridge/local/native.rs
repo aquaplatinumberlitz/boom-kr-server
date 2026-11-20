@@ -320,10 +320,15 @@ impl Driver {
         &self.authorities
     }
     pub(crate) fn authority_error(error: super::Error) -> io::Error {
-        io::Error::other(if error == super::INVALID_SESSION {
-            "native session ended"
-        } else {
-            "native owner denied"
+        use super::Error::Backend;
+        use crate::{account_worker::Error as Worker, accounts::Error as Store};
+        io::Error::other(match error {
+            super::INVALID_SESSION => "native session ended",
+            Backend(Worker::Backend(Store::ClockRollback)) => "native account clock rollback",
+            Backend(Worker::Busy | Worker::Backend(Store::Busy)) => "native account worker busy",
+            Backend(Worker::QueueExpired) => "native account worker queue expired",
+            Backend(Worker::Closed | Worker::WorkerFault) => "native account worker unavailable",
+            _ => "native owner denied",
         })
     }
     pub async fn inspect(&mut self) -> io::Result<()> {

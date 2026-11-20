@@ -197,6 +197,50 @@ fn live_lane_preserves_absolute_idle_and_clock_deadlines_under_writer_lock() {
     drop(lock);
 }
 #[test]
+fn live_clock_resamples_after_a_second_worker_advances_the_watermark() {
+    let _serial = SERIAL.lock().unwrap();
+    let (temp, mut writer, player) = fresh();
+    let grant = writer
+        .login_with_idle("alice", PASSWORD, 60, 5, 101)
+        .unwrap();
+    let mut live = temp.store();
+    let mut calls = 0;
+    let mut clock = || {
+        calls += 1;
+        match calls {
+            1 => {
+                // The first read snapshot is already established. Advance the
+                // independent lane before the live check acquires its writer.
+                writer.observe(103).unwrap();
+                Ok(102)
+            }
+            2 => Ok(103),
+            _ => unreachable!(),
+        }
+    };
+    assert_eq!(
+        live.inspect_live_clock(&grant.token, player.player_id, true, &mut clock),
+        Ok(player.clone())
+    );
+    assert_eq!(calls, 2);
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 102, false),
+        Err(Error::ClockRollback)
+    );
+    let mut timestamps = [107, 108].into_iter();
+    assert_eq!(
+        live.inspect_live_clock(&grant.token, player.player_id, true, &mut || {
+            Ok(timestamps.next().unwrap())
+        }),
+        Err(Error::InvalidSession)
+    );
+    assert_eq!(
+        live.inspect_live(&grant.token, player.player_id, 107, false),
+        Err(Error::ClockRollback)
+    );
+}
+
+#[test]
 fn reopen_preserves_identity_and_session_until_explicit_instance_restart() {
     let _serial = SERIAL.lock().unwrap();
     let (temp, mut s, p) = fresh();

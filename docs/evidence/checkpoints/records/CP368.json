@@ -1,0 +1,50 @@
+{
+  "id": "CP368",
+  "previous": "CP367",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T11:27:13.957199+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Vì sao lần đầu gói có ảnh vi mới ngắt trước phòng; có lỗi UTC nào tái hiện được?",
+  "scope": "KRE-074 / #414, 1 trong 3 lượt thật mới được cấp; kiểm khô Win32 và test hai kết nối SQLite.",
+  "context_commit": "dad6fbc7d926c7beca3a098cb2ad69fb3725ce16",
+  "artifacts": [
+    {"sha256": "2bd6e9794d07ccdf2fd21c34192039c06c6e11e9061e6f94ccce2009d7faf284"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1/native-pair-next-control", "local/research/codex/l1-release-preflight-r1/next-controller-offline"],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/RESEARCH.md#gap-client-utf8", "summary": "Kiểm khô xác nhận không còn hạn đóng game trong script khách. Helper báo parse, focus, từng ký tự và exit; cửa sổ Win32 thử nhận đúng 5 ký tự.", "evidence": ["DRY", "HELPER"], "limits": "Cửa sổ thử dưới Wine, không đo SendInput trên game Windows."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Windows hiện nhãn đăng nhập vi mới; vi và ko đều đăng nhập và tới sảnh. Cả hai ngắt ở bước kiểm quyền trước tạo phòng; phiên bị thu hồi sau 145–149 giây, chưa tới idle 1.800 giây.", "evidence": ["LOGIN", "EVENTS", "RECEIPT"], "limits": "Bản cũ chỉ ghi account_authority, không xác định nguyên nhân con của chính lượt này."},
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/protocol/auth-session.md", "summary": "Test SQLite hai kết nối tái hiện ClockRollback do lần ghi dùng lại UTC từ giao dịch đọc. Lấy UTC trong mỗi giao dịch sửa lỗi này, vẫn từ chối rollback và idle thật. Log TLS thêm nhãn lỗi đồng hồ, hàng đợi và worker.", "evidence": ["RED", "GREEN"], "limits": "Đây là lỗi tái hiện riêng; chưa quy nguyên nhân của lượt thật cho UTC."}
+  ],
+  "verification": [
+    {"check": "So sánh test trước/sau đổi thời điểm lấy giờ.", "result": "pass", "evidence": ["RED", "GREEN"], "limits": "Test backend, chưa phải native."},
+    {"check": "Gói có ảnh vi mới và hai client tới sảnh.", "result": "pass", "evidence": ["LOGIN", "EVENTS", "RECEIPT"], "limits": "Không có Ready, Start hoặc ván."}
+  ],
+  "delta": {"added": ["Ghi lượt mất quyền trước phòng và sửa đọc giờ UTC trên live lane."], "corrected": [], "superseded": []},
+  "blockers": ["Chưa rõ nguyên nhân con của account_authority trong log cũ; cần đo bản mới."],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Dùng tối đa hai lượt còn lại; xác nhận trạng thái bằng log và ảnh trước input. Kiểm chat có dấu, trận và kết quả."}
+  ],
+  "review": {"status": "waived", "reference": "docs/evidence/checkpoints/review-waiver.json", "as_of_utc": "2026-11-20T11:27:13.957199+00:00", "scope": "Codex tự kiểm; không tự merge.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi kết quả gói mới."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi còn hai lượt."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Ghi khoảng trống kiểm phiên."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục giữ nguyên; sửa chương auth."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi xử lý thời gian kiểm quyền."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi nhãn đăng nhập vi đã thấy."},
+    {"path": "docs/evidence/checkpoints/records/CP368.json", "state": "updated", "reason": "Pin test, ảnh và log."}
+  ],
+  "evidence": [
+    {"id": "DRY", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/next-controller-offline/dry-controller.json", "bytes": 202, "sha256": "3bc308741fb95bc0a029f2724cf234eeabf7ec29b0d9a8d38a88e1cc5eade25c"},
+    {"id": "HELPER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/next-controller-offline/dry-retry/good-steps.txt", "bytes": 69, "sha256": "8ec6911ff26baee57408958cf0715d932131bf10a368c75f4c472290ac351966"},
+    {"id": "LOGIN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control/win-login-box.png", "bytes": 71856, "sha256": "3e2e0b4f0edf9f093fbe53781fe9386b1f2ce58c4a48d42cc08082313e2d5c84"},
+    {"id": "EVENTS", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control/service/rust-events.jsonl", "bytes": 1108, "sha256": "7149c4618d44727405c127c69360ae41230ba3b9082cfe9bd6e84eb250b63d48"},
+    {"id": "RECEIPT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control/l1-final-r1-receipt.json", "bytes": 463, "sha256": "cb09fd9b10571311d6fe3b81a9316d246276b0fbcced82df5d92b3c3e5800c3a"},
+    {"id": "RED", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control/live-clock-before.log", "bytes": 1248, "sha256": "36d97e7ba415721aaa11ff66af62f4335c33d8e36afd1a697b984bc92f6d10d9"},
+    {"id": "GREEN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control/live-clock-test.log", "bytes": 762, "sha256": "82873c11f8869affbb844131d63383cc6766b872b05043f2c2f1d10196556b9c"}
+  ],
+  "evidence_runs": []
+}

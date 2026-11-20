@@ -808,7 +808,7 @@ Không fresh server, sameprocessretry, accountresume hoặc matchrestore; revoke
 **Clock discrepancy và sửa:** Native R1/68raw42,544s sealed/cleanup0 dừng ở CLI re-login `ClockRollback`, không có fresh success.
 CLI từng giữ UTC trước KDF; worker inspect B có thể tiến DB high-water trong lúc hash, làm timestamp publication cũ bị reject.
 `Store::login_current` lấy UTC **sau khi giữ writer transaction**, cả initial observation và publication sau KDF/lock wait;
-TTL/issued_at tính từ publication. Vẫn durable high-water/clock rollback guard, credential-version/PHC/ban/one-active/entropy fences.
+TTL/issued_at tính từ publication. Vẫn kiểm mốc UTC bền vững, đồng hồ lùi, credential version, PHC, ban và phiên duy nhất. Kiểm quyền trực tiếp cũng lấy UTC trong từng giao dịch SQLite; lần đọc lại khi ghi giữ nguyên các điều kiện tài khoản, phiên và idle.
 Không clamp timestamp về max(last_utc,now), không sửa DB để test pass. API explicit supplied-time/worker login giữ semantics cũ.
 CLI chỉ command login chọn đường current; concurrent create/reset/admin clock contention chưa nghiệm thu từ ca này.
 Hai regression kiểm publication sau connection khác advance clock, TTL/identity/new token và actual backward/reset credential fences;

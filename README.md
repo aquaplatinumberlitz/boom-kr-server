@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP367: Sáu ảnh đăng nhập vi đã duyệt và ghép vào gói thử.** [Bằng chứng](docs/evidence/checkpoints/records/CP367.json). Vẫn còn nghiệm thu chat và ván đầu vi/ko.
+**CP368: Gói có ảnh đăng nhập vi chạy tới sảnh; còn nghiệm thu phòng và trận.** [Bằng chứng](docs/evidence/checkpoints/records/CP368.json).
 
 ## Bắt đầu
 
