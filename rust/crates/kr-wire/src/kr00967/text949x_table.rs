@@ -1,5 +1,5 @@
 // Generated from tools/l10n_949x.py VERSION=1; extension order is wire ABI.
-// Reference sha256: 7e2ecc5ab0b5ffd9e75380099c418d4ad77eb9ac55a8e014e0f7bcb43ebf2a1e
+// Reference sha256: 34e7f2f6355411a718747b62809a8cf72e0d877e33119745df1b13d139d26838
 // Regenerate with python3 tools/text949x_reference.py --generate.
 pub(super) const EXT: &[char] = &[
     '\u{a0}', '\u{a2}', '\u{a3}', '\u{a5}', '\u{a6}', '\u{a9}', '\u{ab}', '\u{ac}', '\u{af}',

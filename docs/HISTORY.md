@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP356: Tên account lưu UTF-8 và codec 949x khớp toàn bộ bảng tham chiếu.** [Bằng chứng](evidence/checkpoints/records/CP356.json). L1 còn mở.
+
 **CP355: Chat 949x sảnh và phòng chờ qua test TLS vi/ko; còn nghiệm thu bằng game.** [Bằng chứng](evidence/checkpoints/records/CP355.json). L1 còn mở.
 
 **CP354: Windows 2P về đúng phòng và bấm Start; chưa có ván hai.** [Nghiệm thu và giới hạn](evidence/checkpoints/records/CP354.json). M8 còn mở.
