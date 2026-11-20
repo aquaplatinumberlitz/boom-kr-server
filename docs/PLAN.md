@@ -721,13 +721,13 @@ thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (tr
 | F1 Trận thường đầy đủ | Mọi map đấu theo theme và biến thể; mọi item được map dùng; phương tiện; đủ nhân vật | 169 + 144 map; 105 item; 28 phương tiện; 63 nhân vật | Dựa trên G1 (map và item nạp từ dữ liệu). Giả thuyết phần lớn là loại A/B; map có script phải thử riêng |
 | F2 Mode đấu có luật riêng | Các kiểu đấu trên wiki (hồi sinh, nhím, bắt thủ lĩnh, bom hẹn giờ, đánh phối hợp), ConfusedFight, Ladder, ghép trận; xét lại Free 1v7 | 122 map nhiệm vụ và mode riêng | Chưa có mã mode trên wire và luật thắng từng mode; mỗi mode là một bộ `RoomRules` |
 | F3 Chơi với máy có script | Monster mode hai mùa, nhiệm vụ, RPG và CA Hero, Hidden Catch, màn thưởng, AIBattle, hướng dẫn | 368 + 124 + 37 + 43 map; 770 map có script | Ẩn số lớn nhất: chưa đo bên nào chạy trigger, quái và phần thưởng. Cần RE trước khi định cỡ |
-| F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá cửa hàng không có trong client: chủ dự án phải chọn chính sách |
+| F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá không có trong client: lấy wiki/boom-re, thiếu thì tự thiết kế, cấu hình đổi được |
 | F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
-| F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa, ưu đãi phòng máy | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
+| F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa (bỏ ưu đãi phòng máy Nexon) | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
 | L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
-Thứ tự đặt gameplay (F1–F3) trước hệ thống ngoài trận (F4–F6) vì yêu cầu dài hạn nêu item, map và mode; chủ dự án có
-thể đổi thứ tự. F4 có thể kéo lên trước F3 nếu cần phần thưởng và tiến trình sớm.
+**Thứ tự ([quyết định 20/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 xếp loại A/B/C và công cụ ghi/phát lại
+phiên thật, rồi F1 → F4 → F2 → F5 → F3 → F6. Màn trình duyệt nhúng (Dwarf/libcef) làm bằng web phía server; bỏ phần riêng Nexon.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
