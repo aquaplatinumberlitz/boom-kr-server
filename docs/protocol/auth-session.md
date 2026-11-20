@@ -999,7 +999,8 @@ giữ membership/connection/visit; không thêm alias theo identity hoặc luậ
 không normalize hoặc thay ký tự không biểu diễn được. Login account vẫn ASCII như trước. Tên hiển thị nhận
 chữ/số Unicode, gạch dưới và dấu kết hợp sau ký tự cơ sở, dài 3–15 **byte 949x**; từ chối whitespace, control,
 bidi, ký tự ngoài bảng và tên vượt giới hạn. Bảng 949x VERSION=1 dùng CP949 cộng extension của chủ dự án;
-codec Rust strict đối chiếu toàn bộ reference bằng [tool](../../tools/text949x_reference.py), không thay bằng UTF-8.
+[Tool](../../tools/text949x_reference.py) sinh bảng Rust từ Python; CI kiểm hai chiều mọi ánh xạ CP949/949x.
+Tiêu đề phòng chỉ giữ trong bộ nhớ; không thêm cột DB hoặc đổi wire.
 
 `account_admission.patched_949x_names=true` chỉ được dùng với `database_zero` và toàn bộ client đã vá.
 Mặc định false từ chối cấp frontend cho tên ngoài ASCII; không tự đổi encoding theo IP/ngôn ngữ/identity.

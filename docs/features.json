@@ -611,7 +611,8 @@
             "docs/protocol/auth-session.md#rust-db-account-profiles",
             "docs/protocol/auth-session.md#rust-patched-account-names",
             "rust/crates/kr-wire/src/kr00967/text949x.rs",
-            "tools/text949x_reference.py"
+            "tools/text949x_reference.py",
+            "docs/evidence/checkpoints/records/CP356.json"
           ],
           "delivery": "via_pr"
         },
