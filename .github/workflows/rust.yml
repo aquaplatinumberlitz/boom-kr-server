@@ -55,7 +55,7 @@ jobs:
           baseline=19982f41e5e9b5c2a56fcc993b5d4a92f1f7b7d5
           git fetch --no-tags --depth 1 origin "$baseline"
           previous=$(mktemp -d)
-          git archive "$baseline" rust | tar -x -C "$previous"
+          git -C .. archive "$baseline" rust | tar -x -C "$previous"
           CARGO_TARGET_DIR="$PWD/target/m8-schema5" cargo build --manifest-path "$previous/rust/Cargo.toml" --locked -p kr-service --bin kr-admin
           python3 ../tools/test_m8_binary_rollback.py --previous "$PWD/target/m8-schema5/debug" --current "$PWD/target/debug"
           rm -rf "$previous"
