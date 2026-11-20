@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP353: Gói Windows 2P chơi xong ván đầu và hiện lại phòng; bộ điều khiển chưa bấm Start ván hai.** [Nghiệm thu và giới hạn](evidence/checkpoints/records/CP353.json). M8 còn mở.
+
 **CP352: Gói Windows ghi được cache, chơi hết ván 2P và trở về phòng. Start ván kế chưa đạt.** [Nghiệm thu và giới hạn](evidence/checkpoints/records/CP352.json). M8 còn mở.
 
 **CP351: Windows nhận đúng dữ liệu sảnh như CP347 đến hết phản hồi 238, rồi vẫn đóng luồng.** [Đối chứng và giới hạn](evidence/checkpoints/records/CP351.json). M8 còn mở.
