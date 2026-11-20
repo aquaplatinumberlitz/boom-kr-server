@@ -36,7 +36,7 @@ impl Language {
         }
     }
     fn line(self, key: usize) -> &'static str {
-        const VI: [&str; 35] = [
+        const VI: [&str; 36] = [
             "VÀO TRẬN.\nBÙNG NỔ.",
             "Một căn phòng. Những người bạn. Vô vàn ván mới.",
             "Chào mừng bạn",
@@ -72,8 +72,9 @@ impl Language {
             "Mật khẩu: 12–128 ký tự ASCII in được.",
             "Xác nhận xoá tài khoản",
             "Không thể ghi tệp trò chơi. Kiểm tra quyền ghi của thư mục cài đặt.",
+            "Phiên chơi đã kết thúc. Hãy mở game và đăng nhập lại.",
         ];
-        const EN: [&str; 35] = [
+        const EN: [&str; 36] = [
             "ONE MORE\nROUND.",
             "One room. Your friends. A whole new round.",
             "Welcome",
@@ -109,8 +110,9 @@ impl Language {
             "Password: 12–128 printable ASCII characters.",
             "Confirm account deletion",
             "Could not write game files. Check write access to the installation folder.",
+            "Your game session has ended. Open the game and sign in again.",
         ];
-        const KO: [&str; 35] = [
+        const KO: [&str; 36] = [
             "다시 한 판,\n함께 즐겨요.",
             "하나의 방. 반가운 친구들. 새로운 한 판.",
             "환영합니다",
@@ -146,6 +148,7 @@ impl Language {
             "비밀번호: 인쇄 가능한 ASCII 문자 12~128자.",
             "계정 삭제 확인",
             "게임 파일에 쓸 수 없습니다. 설치 폴더의 쓰기 권한을 확인해 주세요.",
+            "게임 세션이 종료되었습니다. 게임을 열고 다시 로그인해 주세요.",
         ];
         match self {
             Self::Vi => VI[key],
@@ -503,8 +506,12 @@ impl Player {
                 let finished = self.session.as_ref().and_then(|s| s.0.lock().ok()?.poll());
                 if let Some(status) = finished {
                     self.session = None;
-                    if !status && !self.closing && !self.stopping {
-                        self.notice = Some(12);
+                    if !self.closing && !self.stopping {
+                        self.notice = match status {
+                            game::End::SessionEnded => Some(35),
+                            game::End::Failed => Some(12),
+                            game::End::Stopped => self.notice,
+                        };
                     }
                     self.stopping = false;
                 }

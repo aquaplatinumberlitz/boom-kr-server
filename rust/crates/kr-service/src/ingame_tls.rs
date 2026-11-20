@@ -207,7 +207,8 @@ fn native_failure(
         "native read deadline" => "native_frame_deadline",
         "native checksum" => "native_frame_checksum",
         "native frame bound" => "native_frame_size",
-        "native owner denied" | "native activity denied" => "account_authority",
+        "native owner denied" => "account_authority",
+        "native session ended" => "account_session_ended",
         "native lobby owner retired" | "native room channel retired" => "retired_membership",
         "report observation phase" => "life_report_phase",
         "unsupported closed-result202 envelope" => "result_tail_shape",
@@ -236,6 +237,18 @@ fn native_failure(
             subtype,
         },
     )
+}
+
+fn close_for_session_end(connection: &quinn::Connection, result: &io::Result<()>) {
+    if matches!(result, Err(error) if error.get_ref()
+        .and_then(|e| e.downcast_ref::<NativeFailure>())
+        .is_some_and(|f| f.guard == "account_session_ended"))
+    {
+        connection.close(
+            prelogin::ACCOUNT_SESSION_ENDED.into(),
+            b"account session ended",
+        );
+    }
 }
 
 fn owner_ended(result: &io::Result<()>) -> serde_json::Value {
@@ -475,12 +488,12 @@ async fn connection(
                 }
             },
             _=health.tick()=>{
-                if resources.lobby.lock().await.as_ref().is_some_and(|lobby|!lobby.current()){
-                    return Err(io::Error::other("native lobby owner retired"));
-                }
                 if let Some(driver)=resources.owner.lock().await.as_mut(){
                     driver.inspect().await?;
                     if driver.has_roster(){unauthenticated.take();}
+                }
+                if resources.lobby.lock().await.as_ref().is_some_and(|lobby|!lobby.current()){
+                    return Err(io::Error::other("native lobby owner retired"));
                 }
             },
             stream=connection.accept_bi()=>{
@@ -493,6 +506,7 @@ async fn connection(
             }
         }
     }}.await.map_err(|e| native_failure(e,"owner_lifecycle",None,None));
+    close_for_session_end(&connection, &outcome);
     connection.close(0u8.into(), b"native owner ended");
     streams.abort_all();
     while streams.join_next().await.is_some() {}

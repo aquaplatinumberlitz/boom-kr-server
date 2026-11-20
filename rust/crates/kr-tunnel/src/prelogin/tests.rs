@@ -224,6 +224,49 @@ fn companion_starts_before_login_and_stop_releases_every_local_socket() {
 }
 
 #[test]
+fn companion_preserves_account_session_end_from_the_pinned_service() {
+    runtime().block_on(async {
+        let (cert, key) = crate::launch_tls::generate_identity().unwrap();
+        let server = Endpoint::server(
+            server_config(cert.clone(), key.to_vec()).unwrap(),
+            "127.0.0.1:0".parse().unwrap(),
+        )
+        .unwrap();
+        let client = endpoint(cert, crate::UdpBackend::Native).unwrap();
+        for code in [0, ACCOUNT_SESSION_ENDED] {
+            let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let addr = listener.local_addr().unwrap();
+            let (halt, stop) = watch::channel(false);
+            let worker = tokio::spawn(companion_traced(
+                client.clone(),
+                server.local_addr().unwrap(),
+                vec![listener],
+                stop,
+                crate::UdpBackend::Native,
+                Trace::default(),
+            ));
+            let _game = tokio::net::TcpStream::connect(addr).await.unwrap();
+            let tls = server.accept().await.unwrap().await.unwrap();
+            let (_send, mut recv) = tls.accept_bi().await.unwrap();
+            accept_header(&mut recv, &[addr.port()]).await.unwrap();
+            tls.close(code.into(), b"test");
+            let error = tokio::time::timeout(Duration::from_secs(3), worker)
+                .await
+                .unwrap()
+                .unwrap()
+                .unwrap_err();
+            assert_eq!(
+                error
+                    .get_ref()
+                    .is_some_and(|e| e.is::<AccountSessionEnded>()),
+                code == ACCOUNT_SESSION_ENDED
+            );
+            drop(halt);
+        }
+    });
+}
+
+#[test]
 fn pinned_tls_opens_only_declared_endpoints_and_foreign_certificates_fail() {
     runtime().block_on(async {
         let (cert, key) = crate::launch_tls::generate_identity().unwrap();

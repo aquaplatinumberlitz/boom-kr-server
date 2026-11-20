@@ -69,6 +69,8 @@ def build(config, binaries, out, target, source_root=None):
     for section, key in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
         if admission.get(section) is not None:
             admission[section]['private_key'] = '@STATE@/' + key
+            admission[section].setdefault('session_ttl_seconds', 28_800)
+            admission[section].setdefault('session_idle_seconds', 1_800)
     architecture = None
     for name in ['kr-service', 'kr-admin', 'kr-companion']:
         source = Path(binaries) / name

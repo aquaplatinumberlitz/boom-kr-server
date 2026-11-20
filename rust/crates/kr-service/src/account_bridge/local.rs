@@ -30,11 +30,21 @@ struct State {
     channel: Option<u64>,
     redirect_until: Option<Instant>,
     stopped: watch::Sender<bool>,
+    invalid_session: bool,
 }
 type Shared = Arc<Mutex<State>>;
 
+const INVALID_SESSION: Error = Error::Backend(crate::account_worker::Error::Backend(
+    crate::accounts::Error::InvalidSession,
+));
+
 fn retire(shared: &Shared) {
+    retire_on(shared, Error::Stale);
+}
+
+fn retire_on(shared: &Shared, error: Error) {
     let mut state = shared.lock().unwrap_or_else(|e| e.into_inner());
+    state.invalid_session |= error == INVALID_SESSION;
     state.phase = Phase::Ended;
     state.channel = None;
     state.stopped.send_replace(true);
@@ -108,8 +118,8 @@ impl LocalAuthority {
             return Err(Error::Stale);
         }
         let result = inspect_roster(&self.client, &self.shared).await;
-        if result.is_err() {
-            retire(&self.shared);
+        if let Err(error) = result {
+            retire_on(&self.shared, error);
         }
         result?;
         if !self.current() {
@@ -132,9 +142,16 @@ impl LocalAuthority {
             Ok(pending) => pending.wait().await.map_err(Error::Backend),
             Err(error) => Err(Error::Backend(error)),
         };
-        if !result.as_ref().is_ok_and(|player| player == &self.player) {
-            retire(&self.shared);
-            return Err(Error::Denied);
+        let result = result.and_then(|player| {
+            if player == self.player {
+                Ok(())
+            } else {
+                Err(Error::Denied)
+            }
+        });
+        if let Err(error) = result {
+            retire_on(&self.shared, error);
+            return Err(error);
         }
         self.inspect().await
     }
@@ -179,6 +196,9 @@ impl LocalAuthority {
 async fn inspect_roster(client: &Client, shared: &Shared) -> Result<()> {
     let snapshot: Vec<(Token, Player)> = {
         let state = shared.lock().map_err(|_| Error::Unavailable)?;
+        if state.invalid_session {
+            return Err(INVALID_SESSION);
+        }
         if state.phase == Phase::Ended || state.grants.is_empty() {
             return Err(Error::Stale);
         }
@@ -243,6 +263,7 @@ impl LocalSession {
                 channel: None,
                 redirect_until: None,
                 stopped,
+                invalid_session: false,
             })),
         })
     }
@@ -432,8 +453,8 @@ impl LocalSession {
         } else {
             inspect_roster(&self.client, &self.shared).await
         };
-        if result.is_err() {
-            retire(&self.shared);
+        if let Err(error) = result {
+            retire_on(&self.shared, error);
         }
         result
     }

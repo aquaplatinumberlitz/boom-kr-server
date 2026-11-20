@@ -236,6 +236,22 @@ pub async fn bind_traced(ports: &[u16], trace: &Trace) -> io::Result<Vec<TcpList
 }
 /// Application close sent only when the server's pre-login timer expires.
 pub const PRELOGIN_EXPIRED: u32 = 1;
+pub const ACCOUNT_SESSION_ENDED: u32 = 2;
+pub const ACCOUNT_SESSION_ENDED_EXIT: i32 = 20;
+
+#[derive(Debug)]
+pub struct AccountSessionEnded;
+impl std::fmt::Display for AccountSessionEnded {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str("account session ended")
+    }
+}
+impl std::error::Error for AccountSessionEnded {}
+
+pub fn account_session_ended(error: &quinn::ConnectionError) -> bool {
+    matches!(error, quinn::ConnectionError::ApplicationClosed(close)
+        if close.error_code == ACCOUNT_SESSION_ENDED.into())
+}
 
 fn expired(error: &quinn::ConnectionError) -> bool {
     matches!(error, quinn::ConnectionError::ApplicationClosed(close)
@@ -257,6 +273,7 @@ pub fn endpoint(certificate: Vec<u8>, backend: crate::UdpBackend) -> io::Result<
 fn tls_reason(error: &quinn::ConnectionError) -> &'static str {
     match error {
         e if expired(e) => "prelogin_expired",
+        e if account_session_ended(e) => "account_session_ended",
         quinn::ConnectionError::VersionMismatch => "version_mismatch",
         quinn::ConnectionError::TransportError(_) => "transport_error",
         quinn::ConnectionError::ConnectionClosed(_) => "peer_transport_close",
@@ -480,7 +497,11 @@ async fn run_companion(
                         if dial.is_some() && expired(&error) && !bound.load(Ordering::Acquire) {
                             break None;
                         }
-                        break Some(Err(io::Error::other("native TLS ended")));
+                        break Some(Err(if account_session_ended(&error) {
+                            io::Error::other(AccountSessionEnded)
+                        } else {
+                            io::Error::other("native TLS ended")
+                        }));
                     }
                     result = &mut peer => {
                         let closed = tls.close_reason();
@@ -489,6 +510,9 @@ async fn run_companion(
                         if dial.is_some() && !bound.load(Ordering::Acquire)
                             && closed.as_ref().is_some_and(expired) {
                             break None;
+                        }
+                        if closed.as_ref().is_some_and(account_session_ended) {
+                            break Some(Err(io::Error::other(AccountSessionEnded)));
                         }
                         break Some(result);
                     }
