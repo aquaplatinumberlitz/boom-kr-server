@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP372: Windows vi và Wine ko hoàn tất ván một qua bộ điều khiển chờ đồng hồ; Ready ván hai chưa tới server.** [Bằng chứng](docs/evidence/checkpoints/records/CP372.json).
+**CP373: Windows vi và Wine ko hoàn tất hai ván Factory07 liên tiếp trong cùng phòng qua TLS.** [Bằng chứng](docs/evidence/checkpoints/records/CP373.json).
 
 ## Bắt đầu
 

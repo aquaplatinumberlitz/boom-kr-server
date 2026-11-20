@@ -1193,7 +1193,7 @@ marker chỉ complete sau TCP write;
 
 Result chọn sau death8s, survivor21 mới hơn death/trap/latest successful158 và hết pending bomb jobs.
 All-dead dùng policy rank2 riêng, đợi latest death8s; không suy tie enum/luật server gốc. Reserve đủ sáu queue entries
-cho hai recipient trước publish Ending:175 ngay,180 sau5s, hai110 refresh sau3s nữa. Complete refresh đủ roster mới Idle;
+cho hai recipient trước publish Ending:175 ngay,180 sau5s, hai110 refresh sau3s nữa. Gửi các 110 phục hồi theo thứ tự slot tăng dần, kể cả khi ID account không cùng thứ tự. Complete refresh đủ roster mới Idle;
 Ready/Start/late callbacks có membership/round fences. Full TCP write không là native execution ACK/atomic delivery.
 
 Sau kết quả, 202 có prefix u8 `0/count` và một hàng opaque 20 byte cho mỗi thành viên thuộc transport:
