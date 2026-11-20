@@ -217,8 +217,9 @@ kiểm listener đã nhả rồi gỡ các rule có nhãn của lượt đó ở
 [Tool WAN giả lập](../tools/m8_wan_namespace.sh) chạy lệnh kiểm trong namespace mới với server và Wine ở
 `M8_WAN_SERVER`, còn QEMU user networking phải được mở trong `M8_WAN_EDGE_NS` qua `nsenter --net`. Router chỉ
 chuyển các cổng của gói; prelogin và relay dùng hai dải cổng nguồn NAT riêng. Mỗi chiều đường Windows thêm 75 ms
-và mất 3% độc lập. Để thử mất kết nối, hạ rồi bật lại `wan0` trong namespace edge khi cả hai đồng hồ đã chạy;
-kiểm journal, phiên, UI người còn lại và đăng nhập mới sau khi đường trở lại.
+và mất 3% độc lập. Khi cả hai đồng hồ đã chạy, hạ `wan0` trong namespace edge. Lúc khôi phục, bật lại link và
+đặt lại route `M8_WAN_SERVER/32` qua router của namespace; hạ link có thể xóa route này. Kiểm journal, phiên,
+UI người còn lại và đăng nhập mới sau khi đường trở lại.
 
 ## Chọn cấu hình phục vụ
 
