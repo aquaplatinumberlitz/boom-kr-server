@@ -1,0 +1,44 @@
+{
+  "id": "CP367",
+  "previous": "CP366",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T09:00:39.179352+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Gói thử có đúng sáu ảnh vi đã duyệt và giữ nguyên en/ko không?",
+  "scope": "KRE-074 / #414. Ghép ảnh đã duyệt vào bản sao payload và kiểm cài ngoại tuyến.",
+  "context_commit": "dea1d1339b7feca465ca68e934dc8aeb4116f631",
+  "artifacts": [
+    {"sha256": "584c05c35e8e14c643146d28f9b51e9e62e249509d88f803eff40cafef186762"}
+  ],
+  "locators": ["local/research/codex/l1-vi-login-art-r1"],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/content/client-language.md#utf8", "summary": "Claude ghi chủ dự án duyệt ảnh r1; script boom-re #6 tái tạo đúng PNG. Ghép đủ sáu entry vào FxDesktop và chỉ đổi sáu hàng index vi; giữ nguyên byte pack cũ và index en/ko.", "evidence": ["APPROVAL", "PREVIEW", "COMPOSE", "PAYLOAD"], "limits": "Không commit ảnh, pack hoặc binary. Đây là gói thử local."}
+  ],
+  "verification": [
+    {"check": "Gói qua trình cài và verify của launcher; đối chiếu hash 127 file ngôn ngữ và pack chung.", "result": "pass", "evidence": ["PAYLOAD", "INSTALL"], "limits": "Không mở game hoặc nghiệm thu hiển thị."}
+  ],
+  "delta": {"added": ["Hoàn tất duyệt và ghép ngoại tuyến sáu ảnh đăng nhập vi."], "corrected": [], "superseded": []},
+  "blockers": ["Còn chat vi → ko có dấu và một ván thật; không còn lượt được cấp."],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khi có lượt mới, dùng gói có ảnh đã duyệt, helper có log và bộ điều khiển không tự đóng launcher trong lúc chuẩn bị."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T09:00:39.179352+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Waiver áp dụng checkpoint; ảnh đã có duyệt riêng của chủ dự án.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập cho checkpoint."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi đã duyệt và ghép ảnh; còn nghiệm thu trận."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không đóng câu hỏi runtime."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi duyệt, ghép và giới hạn cài offline."},
+    {"path": "docs/evidence/checkpoints/records/CP367.json", "state": "updated", "reason": "Pin phê duyệt, recipe và kết quả cài."}
+  ],
+  "evidence": [
+    {"id": "APPROVAL", "kind": "local", "path": "local/research/codex/l1-vi-login-art-r1/review-r1/APPROVED.md", "bytes": 197, "sha256": "0cd83ace456ad7d902db71119ef22815f1379eece9da0d0ea459bfea4aca70ec"},
+    {"id": "PREVIEW", "kind": "local", "path": "local/research/codex/l1-vi-login-art-r1/review-r1/before-after.png", "bytes": 69513, "sha256": "cf8db98325a92959e1c2762b2b55fb98a57c7df6d6ecc3b59310d64551c9216d"},
+    {"id": "COMPOSE", "kind": "local", "path": "local/research/codex/l1-vi-login-art-r1/compose-approved-vi.py", "bytes": 5683, "sha256": "cdc6429623c9e89481b217ed285bead187b9dde4624520e5037b11ea9222f8fc"},
+    {"id": "PAYLOAD", "kind": "local", "path": "local/research/codex/l1-vi-login-art-r1/approved-payload-receipt.json", "bytes": 677, "sha256": "414e9e81d741d38ebcffa1295446833fd8dc18bf20b50916e85fa4dd99401e8e"},
+    {"id": "INSTALL", "kind": "local", "path": "local/research/codex/l1-vi-login-art-r1/approved-install-receipt.json", "bytes": 236, "sha256": "9c7791aee8123de494e5f22eabfc5027f34e4481971ff2b6751ff9606c55999f"}
+  ],
+  "evidence_runs": []
+}
