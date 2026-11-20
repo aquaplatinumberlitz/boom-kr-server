@@ -307,12 +307,14 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
     };
     let mut store = Store::open(&temp.db()).unwrap();
     let epoch = store.begin_instance(&admin, 100).unwrap();
-    let a = store
-        .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
-        .unwrap();
+    // The host takes slot 0 even when the guest has the smaller account/player ID.
     let b = store
         .create_account(&admin, "BetaTwo", "DBUserB", PASSWORD, 100)
         .unwrap();
+    let a = store
+        .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
+        .unwrap();
+    assert!(a.wire_id > b.wire_id);
     runtime().block_on(async {
         let worker = crate::account_worker::Worker::open(temp.db(), 8, Duration::from_secs(5))
             .await
@@ -456,7 +458,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                 }
             }
             ids.sort_unstable();
-            assert_eq!(ids, [u64::from(a.wire_id), u64::from(b.wire_id)]);
+            assert_eq!(ids, [u64::from(b.wire_id), u64::from(a.wire_id)]);
         }
         assert!(temp.last_seen(&a) > stale, "room setup must renew idle");
         let stale = temp.age(&a, 30);

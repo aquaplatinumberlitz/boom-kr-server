@@ -99,9 +99,13 @@ fn label<T: Serialize>(value: &T) -> Result<String> {
         .ok_or(Error::InvalidInput)
 }
 impl MatchStart {
+    pub(crate) fn order_players_by_slot(&mut self) {
+        self.players.sort_by_key(|p| p.slot);
+    }
+
     fn normalize(&self, now: i64) -> Result<Self> {
         let mut value = self.clone();
-        value.players.sort_by_key(|p| p.slot);
+        value.order_players_by_slot();
         let key = &value.key;
         if key.boot_epoch <= 0
             || key.room_session == 0
