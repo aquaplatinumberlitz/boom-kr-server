@@ -77,7 +77,7 @@ M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn gi
 [Bản vá 949x](content/client-language.md#utf8) (CP310) đã hiện chữ ba ngôn ngữ và nhận chữ Việt/Hàn ở chat trên client
 chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
 
-- Chat chuyển tiếp M8: [KR18 request và consumer28](protocol/lobby-profile.md#rust-patched-room-chat) đã có đối chiếu tối thiểu; còn phục vụ với membership/queue guards rồi xem chữ trộn ở client kia.
+- [Chat L1](protocol/lobby-profile.md#rust-patched-room-chat): test TLS vi/ko giữ nguyên byte ở sảnh/phòng chờ. Còn nhìn tin Việt/Hàn ở client nhận trên gói Windows/Wine; không suy đường chat 2P, team, whisper hoặc guild.
 - Tiệm: cần dịch vụ có tiệm; sau đó chụp tiệm ở cả ba bộ dữ liệu.
 - Sửa tên phòng: tìm cờ "đã đăng ký ID email" trong profile tài khoản, bật cho tài khoản thử rồi gõ tên phòng trộn.
 - IME tiếng Hàn thật (composition từng âm tiết) chưa thử; ô chat vi-04 dừng ở 26 byte chưa rõ nguyên nhân.

@@ -1,0 +1,52 @@
+{
+  "id": "CP355",
+  "previous": "CP354",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T01:51:51.061641+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Dịch vụ launcher có giữ nguyên byte chat 949x giữa hai tài khoản, tách sảnh với phòng không?",
+  "scope": "KRE-074 / #414 phần chat L1. KR00967 chat18/28 literal; sảnh và phòng chờ trên TLS 1P.",
+  "context_commit": "03118221894f6f8294ac06dba107e961857063f0",
+  "artifacts": [
+    {"sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"}
+  ],
+  "locators": [
+    "local/research/codex/l1-chat-lobby-r1"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/lobby-profile.md#rust-patched-room-chat", "summary": "CLobbyStage tại DA1F30 chuyển opcode 28 qua DA2335 tới CChatStage D3B6F0 và consumer D41DF0 đã đo.", "evidence": ["STATIC", "IDA"], "limits": "Request 18 dùng mẫu KR cũ. Chưa bắt gói nhập ở sảnh trong lượt này; không suy luật phân phối của Nexon."},
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/protocol/lobby-profile.md#rust-patched-room-chat", "summary": "Hai tài khoản vi/ko trên TLS chuyển nguyên byte qua 18→28 trong sảnh và phòng chờ; không đưa chat sảnh vào phòng và đóng riêng luồng gửi quá nhanh.", "evidence": ["TLS", "TEST"], "limits": "Client giao thức mô phỏng. Tối đa 192 byte tin, 8 tin chờ mỗi lượt sảnh, cách ít nhất 500 ms. Không ACK giả."}
+  ],
+  "verification": [
+    {"check": "Fmt, Clippy, 334 test Rust và test TLS vi/ko với byte độc lập.", "result": "pass", "evidence": ["TEST", "TLS", "CLIPPY"], "limits": "Không chạy game L1, Windows hoặc Wine trong lát code chat."}
+  ],
+  "delta": {"added": ["Mở chat sảnh khi bật gói đã vá; phòng chờ dùng chung phép dựng reply theo byte gốc."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Còn nghiệm thu chat thật giữa vi/ko; chưa có selector actor chat 2P, team, whisper hoặc guild."
+  ],
+  "next_steps": [
+    {"id": "L1-414-storage", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Xác nhận bảng phát sinh và UTF-8 lưu trữ; sau khi tích hợp, tiếp gói và nghiệm thu chung M8/L1."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T01:51:51.061641+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay dòng mốc mới."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi phần chat L1 đã qua test."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Router giữ nguyên."},
+    {"path": "docs/protocol/lobby-profile.md", "state": "updated", "reason": "Ghi phạm vi chat sảnh và byte gốc."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi phần chat đã làm và nghiệm thu còn lại."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Giữ câu hỏi native vi/ko."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Link bằng chứng."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP355.json", "state": "updated", "reason": "Ghi và pin bằng chứng chat TLS."}
+  ],
+  "evidence": [
+    {"id": "STATIC", "kind": "local", "path": "local/research/codex/l1-chat-lobby-r1/lobby-evidence.json", "bytes": 1805, "sha256": "da10c146b3a58d005770997979bd6a2b856bc7c940c532ab207b5a21cd848454"},
+    {"id": "IDA", "kind": "local", "path": "local/research/codex/l1-chat-lobby-r1/lobby-routing.json", "bytes": 364, "sha256": "96068e68dfa5497d703f6c843f838af38362571e74787438667c6de387db0f07"},
+    {"id": "TEST", "kind": "local", "path": "local/research/codex/l1-chat-lobby-r1/workspace-tests.log", "bytes": 42334, "sha256": "b5a037b6fb718a3b3460f0bfe0d093bf16386bb71678d39243bad2b9c80dc0b3"},
+    {"id": "TLS", "kind": "local", "path": "local/research/codex/l1-chat-lobby-r1/tls-chat-test.log", "bytes": 477, "sha256": "9a653ec34ed7a7fd6d1f98e89ddaa170b0c765541963992c9900bf74edd71bcc"},
+    {"id": "CLIPPY", "kind": "local", "path": "local/research/codex/l1-chat-lobby-r1/clippy.log", "bytes": 450, "sha256": "d0172091f1557b73aa86d78477dc5c08e9e8d7a9a690d04442de9f1eb4cb27b0"}
+  ],
+  "evidence_runs": []
+}

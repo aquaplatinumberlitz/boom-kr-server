@@ -23,6 +23,7 @@ use tokio::{
     sync::{Mutex as AsyncMutex, Semaphore, mpsc, watch},
     task::JoinSet,
 };
+mod lobby_chat;
 mod room;
 
 #[derive(Clone, Deserialize)]
@@ -172,6 +173,8 @@ struct Resources {
     events: mpsc::Sender<serde_json::Value>,
     hub: Option<Arc<crate::room_service::Hub>>,
     lobby: AsyncMutex<Option<crate::room_service::LocalLobby>>,
+    lobby_chat: Arc<lobby_chat::Directory>,
+    patched_chat: bool,
     persist_character: bool,
     authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
 }
@@ -208,6 +211,7 @@ fn native_failure(
         "native checksum" => "native_frame_checksum",
         "native frame bound" => "native_frame_size",
         "native owner denied" => "account_authority",
+        "native chat rate bound" => "chat_rate_bound",
         "native session ended" => "account_session_ended",
         "native lobby owner retired" | "native room channel retired" => "retired_membership",
         "report observation phase" => "life_report_phase",
@@ -388,7 +392,7 @@ async fn stream(
                 driver
                     .enter_lobby(&mut lane, &mut send, &catalog.packets)
                     .await?;
-                room.admitted(&catalog);
+                room.admitted(&catalog, driver, &resources)?;
                 let _ = resources
                     .events
                     .try_send(serde_json::json!({"event":"native_local_lobby_ready"}));
@@ -552,6 +556,7 @@ pub(crate) async fn serve(
     let unauthenticated = Arc::new(Semaphore::new(config.max_unauthenticated));
     let admission = Arc::new(Mutex::new(Admission::default()));
     let mut owners = JoinSet::new();
+    let lobby_chat = Arc::new(lobby_chat::Directory::default());
     let result=async{loop{
         if *stop.borrow(){return Ok(());}
         tokio::select!{
@@ -565,7 +570,7 @@ pub(crate) async fn serve(
                 let Ok(total_permit)=total.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(unauth)=unauthenticated.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,config.admissions_per_ip_per_minute,Instant::now())else{incoming.refuse();continue;};
-                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:Mutex::new(prelogin::TrafficBudget::new(prelogin::BYTE_LIMIT,64*1024)),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone())});
+                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:Mutex::new(prelogin::TrafficBudget::new(prelogin::BYTE_LIMIT,64*1024)),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),lobby_chat:lobby_chat.clone(),patched_chat:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.patched_949x_names),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone())});
                 let stop=stop.clone();let events=events.clone();owners.spawn(async move{
                     let _total=total_permit;let _peer=peer_permit;
                     let result=tokio::time::timeout(Duration::from_secs(3),incoming).await;

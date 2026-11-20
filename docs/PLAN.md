@@ -25,7 +25,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, C
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
 | [G1](#rust-g1) sáu map và tập item đã cắt | **Đạt acceptance giai đoạn 1** theo [ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json): sáu map/roster trong phạm vi, kim/cứu, item nền/MaxPower, ma trận Shoe/Punch, drop đã cắt, từ chối nhân vật giữ phiên và client Việt hai vòng trên Rust | Giữ giới hạn từng route/native và raw cleanup; không whole gameplay, every-tile hoặc L1 closure. Vận hành còn M8 |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
-| L1 UTF-8, Claude phụ trách | [L1a có khảo sát tĩnh và primitive/controls](content/client-language.md#utf8), chưa đạt acceptance; [Codex đã bàn giao WIP cho Claude](evidence/owner-directives/l10n-claude-owner.json) | **Điều kiện đóng giai đoạn 1** ([quyết định 20/11](evidence/owner-directives/l1-phase1.json)): L1b/L1c trên gói phát hành, chuỗi cứng exe, ảnh, câu tràn, chat chuyển tiếp, server lưu UTF-8. Không đổi wire của client chưa vá |
+| L1 UTF-8, Claude phụ trách, Codex thực thi | [Thiết kế 949x](content/client-language.md#utf8) đã chọn; [CP355](evidence/checkpoints/records/CP355.json) có chat sảnh/phòng chờ qua test TLS vi/ko | **Điều kiện đóng giai đoạn 1** ([quyết định 20/11](evidence/owner-directives/l1-phase1.json)): xác minh lưu UTF-8, hoàn tất dữ liệu/ảnh và nghiệm thu L1b/L1c trên gói phát hành. Không đổi wire của client chưa vá. |
 | M8 vận hành | CI đã có; [nền gói Linux](evidence/rust-service/m8-server-package.json) đã có manifest/state riêng và smoke x86/ARM tách repo, gồm kiểm chạy trùng và từ chối ghi đè DB | Xuất dữ liệu từ pack, launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 24 giờ chạy dài |
 
 **Thứ tự việc:**
@@ -55,11 +55,9 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **19/11, C
    và dump cần truy lifetime; lỗi guard Docker trước VM có receipt thất bại và phục hồi riêng. Dump chưa trích thông tin hoặc stop/export chưa xác nhận được giữ để phục hồi.
    Các lượt mới theo [quy định sau lượt chạy](evidence/owner-directives/run-cleanup.json).
 
-   **L1 vẫn do Claude phụ trách.** Codex chỉ dùng outputs `vi` đã tạo cho smoke G1, không tiếp RE/runtime L1.
-   Giới hạn L1 trước đây ở [chỉ đạo follow-up](evidence/owner-directives/l10n-utf8-followup.json) giữ provenance;
-   ca vi/ko cùng phòng đọc tên phòng/nhân vật/chat có dấu nay thuộc M8 theo [chỉ đạo mới](evidence/owner-directives/m8-multilang-launcher.json).
-   Tiệm và IME Hàn thật ngoài ca M8 vẫn giữ phạm vi sau. Codex dùng outputs L1 đã tạo, không tiếp nhánh RE L1 của Claude.
-   Runtime Wine tiếp tục dùng lease chung; smoke G1 không tự đóng L1.
+   Claude điều phối L1; Codex thực thi cả RE và runtime. Ca vi/ko cùng phòng đọc tên phòng, tên nhân vật và chat
+   có dấu dùng chung nghiệm thu gói M8 theo [chỉ đạo mới](evidence/owner-directives/l1-phase1.json). Tiệm, chữ do
+   server gửi và IME Hàn thật giữ phạm vi sau giai đoạn 1. Runtime Wine dùng lease chung.
 
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
