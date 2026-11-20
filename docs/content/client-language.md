@@ -305,7 +305,7 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 
 - **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
 - **Chat chuyển tiếp.** [CP355](../evidence/checkpoints/records/CP355.json) kiểm hai kết nối vi/ko mô phỏng qua TLS:
-  reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. [CP362](../evidence/checkpoints/records/CP362.json) xác nhận chat chéo trong phòng: ko gửi câu trộn Việt/Hàn, vi trả lời ASCII, cả hai hiện đúng người gửi. Chưa đo gửi chữ trộn từ vi hoặc chat chéo trong sảnh.
+  reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. [CP362](../evidence/checkpoints/records/CP362.json) xác nhận chat chéo trong phòng: ko gửi câu trộn Việt/Hàn, vi trả lời ASCII, cả hai hiện đúng người gửi. [CP366](../evidence/checkpoints/records/CP366.json) xác nhận ko gửi câu có dấu sang vi trong sảnh. Helper Windows chưa đưa được chữ vào ô chat; chiều vi → ko có dấu còn mở.
 - **Sửa tên phòng.** Đăng nhập trong game đã dùng cấu hình chẩn đoán để cấp chuỗi cục bộ cho account thử. Trên gói thử CP362, bản ko nhận thao tác gõ Unicode và hai bản hiện cùng tiêu đề `Phòng Việt 한국`; chưa đo chiều gõ từ bản vi.
 - **Giới hạn chuỗi UI.** Bộ dựng 949x từ chối tên phòng mặc định quá 22 byte và nhãn người nhận quá 14 byte
   trong cả `csysstr.ssd` và `ClientString`. Dữ liệu vi/en/ko đã qua kiểm; còn xác minh hiển thị trên gói.
@@ -332,8 +332,9 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   `한국02` ở sảnh. Sửa route relay trong lab giúp Wine ko vào cùng phòng Factory07 với Windows vi qua launcher mới
   ở CP362. Hai bản cùng thấy `한국02`, `Việt01` và phần ảnh vi đã khôi phục hiện trên Windows. Ready và Start đầu tiên
   tới server, nhưng cả hai ngắt trước khi thấy màn trận. Journal có ván ở trạng thái `running`, chưa có kết quả.
-  [CP365](../evidence/checkpoints/records/CP365.json) xác định lỗi journal trước khi ghi 121 và sửa ở Rust. Còn nghiệm thu
-  bản sửa trên cặp Windows vi và Wine ko. Claude hoãn nghiệm thu en sau giai đoạn 1.
+  [CP365](../evidence/checkpoints/records/CP365.json) xác định lỗi journal trước khi ghi 121 và sửa ở Rust.
+  [CP366](../evidence/checkpoints/records/CP366.json) dùng bản sửa: hai client vào cùng phòng nhưng bộ điều khiển Windows
+  hết hạn trước Ready và Start. Chưa nghiệm thu trận. Claude hoãn nghiệm thu en sau giai đoạn 1.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,

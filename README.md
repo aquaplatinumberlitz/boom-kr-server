@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP365: Sửa lỗi journal chặn Start ván đầu khi ID chủ phòng lớn hơn ID khách.** [Bằng chứng](docs/evidence/checkpoints/records/CP365.json). Còn nghiệm thu trên gói Windows vi và Wine ko.
+**CP366: Chat có dấu đã đi từ Wine ko sang Windows vi trong sảnh.** [Bằng chứng](docs/evidence/checkpoints/records/CP366.json). Bộ điều khiển dừng Windows trước Start; chưa nghiệm thu ván đầu trên bản sửa.
 
 ## Bắt đầu
 

@@ -1,0 +1,52 @@
+{
+  "id": "CP366",
+  "previous": "CP365",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T08:14:30.768078+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Cặp Windows vi và Wine ko có chat có dấu và hoàn tất một ván trên bản sửa journal không?",
+  "scope": "KRE-074 / #414, lượt thật cuối trong ba lượt được cấp. Dùng gói ghim CP364 và Rust có bản sửa CP365.",
+  "context_commit": "13d2587c6d8e6cea950e3af1f10661cb6ad14dc2",
+  "artifacts": [
+    {"sha256": "2bd6e9794d07ccdf2fd21c34192039c06c6e11e9061e6f94ccce2009d7faf284"},
+    {"sha256": "0a57bba167cc97deffea43a6844052132dc23ee4f0e8050403b9fc0187dd3122"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3"],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Hai client đăng nhập 1P qua launcher, Wine ko gửi Chào bạn ở sảnh ạ; Windows vi hiện đủ chữ và tên người gửi. Wine ko tạo Phòng Việt 한국, Windows vi thấy và vào cùng phòng.", "evidence": ["PREF", "KO-LOBBY", "VI-LOBBY", "VI-ROOM", "RECEIPT"], "limits": "Lượt này chưa thấy chữ vi được helper nhập, không xác nhận chiều vi → ko có dấu."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md#gap-client-utf8", "summary": "Bộ điều khiển Windows ghi controller_deadline rồi kết thúc game. Server có chọn phòng, chưa có Ready95 hoặc Start104; bản sao DB có 0 ván.", "evidence": ["GUEST", "SERVER", "RECEIPT", "CLEAN"], "limits": "Không xác nhận journal, 121, trận hoặc kết quả trên bản sửa. Không thử Start ván hai."}
+  ],
+  "verification": [
+    {"check": "Tên phòng có dấu và chat sảnh ko → vi.", "result": "pass", "evidence": ["KO-LOBBY", "VI-LOBBY", "VI-ROOM"], "limits": "Chỉ chiều đã thấy ở client nhận."},
+    {"check": "Chat có dấu từ Windows vi và ván đầu đến kết quả.", "result": "fail", "evidence": ["VI-INPUT", "GUEST", "RECEIPT"], "limits": "Helper chưa hiện chữ trong ô; bộ điều khiển đóng Windows trước Ready."},
+    {"check": "Dừng VM và prefix đúng lượt, giữ process/container Windows có sẵn.", "result": "pass", "evidence": ["CLEAN"], "limits": "Giữ overlay cho quy trình retention."}
+  ],
+  "delta": {"added": ["Xác nhận chat sảnh ko → vi và ghi gián đoạn do bộ điều khiển trên bản sửa."], "corrected": [], "superseded": []},
+  "blockers": ["Đã dùng ba lượt thật; cần xử lý hạn bộ điều khiển và xác minh helper trước khi xin lượt mới. Sáu ảnh vi chưa duyệt."],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Bỏ hạn tính từ lúc cài gói, giữ watchdog an toàn; xác minh helper Unicode và xác nhận Ready trước Start. Chờ ngân sách chạy mới; Start ván hai thuộc #502."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T08:14:30.768078+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; không tự merge.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi phần còn thiếu và hết lượt thật."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Ghi giới hạn bộ điều khiển và câu hỏi helper."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire hoặc hành vi server."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi chat sảnh và giới hạn ván đầu."},
+    {"path": "docs/evidence/checkpoints/records/CP366.json", "state": "updated", "reason": "Pin log, ảnh và dọn runtime."}
+  ],
+  "evidence": [
+    {"id": "PREF", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/preflight.json", "bytes": 518, "sha256": "bb7acaac73c36a0a1dd06b2a3698172a9b08048eca749dfe5d865302bd990c11"},
+    {"id": "KO-LOBBY", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/wine-lobby-chat-out.png", "bytes": 202668, "sha256": "6862f431d5dc0fe71c02a2f2f58ef46544a66223eeb4dc50c7c5cb07281ca816"},
+    {"id": "VI-LOBBY", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/win-lobby-typed/capture-5.png", "bytes": 240181, "sha256": "97cf7939cc3126dab32e2dfdf4113dffdd8232ebd0adfe17a40a6aee2f183c68"},
+    {"id": "VI-ROOM", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/win-join/capture-2.png", "bytes": 279989, "sha256": "bc5f1cb92d9b7397b684e7c33a553009a8b08b27b44be1b927118fb616cc818d"},
+    {"id": "VI-INPUT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/win-lobby-after-type/capture-0.png", "bytes": 241439, "sha256": "a4d5e0c5a6ddc52c17d09aaddf0c5e6fb8fa1029b9b2c0b6b111870aea7c9c3b"},
+    {"id": "GUEST", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/guest-export/result.json", "bytes": 532, "sha256": "08d131172495ade3f09e1f6935dd088381da22d3464f5b05c4c7a57c8b93c692"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/service/rust-events.jsonl", "bytes": 1531, "sha256": "c7fe38aebfad980336e065d36b6e6a087f8e49f35766ac8845b1d74d40b00fb3"},
+    {"id": "RECEIPT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/acceptance-receipt.json", "bytes": 896, "sha256": "ab43c5209861340e1b007d0de803f8fccdf4de75b786ba17900a29acd04a03a9"},
+    {"id": "CLEAN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-acceptance-r3/cleanup.json", "bytes": 170, "sha256": "df625ac02e2689b0bc36ad57c8b4b5e1678f6d4b985f092c78de9225502f6147"}
+  ],
+  "evidence_runs": []
+}
