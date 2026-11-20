@@ -1017,6 +1017,9 @@ profile, boot epoch, absolute expiry và idle deadline. Không dùng grant cache
 để đọc WAL; cập nhật watermark/idle chỉ bỏ qua lỗi writer busy, còn lỗi lưu trữ khác vẫn fail closed. Nếu khóa kéo
 dài qua idle deadline thì session vẫn hết hạn, không hồi sinh. Instance profile DB tăng boot epoch trước readiness;
 restart là fresh server/fresh login, không account resume hoặc match restore.
+Khi một luồng kết thúc quyền native, các luồng còn lại giữ cùng nguyên nhân đầu tiên. Log chỉ ghi nhãn lỗi và giai đoạn
+kiểm hoặc mã lỗi luồng KR đã lọc. Session hết hạn hoặc bị thu hồi vẫn dùng mã đóng phiên riêng; không ghi token, nội
+dung gói tin hay lỗi SQL thô.
 
 Khi queue đăng nhập đầy, queue hết TTL hoặc DB bận, API launcher trả `busy_retry` và reason tương ứng; CLI báo `Busy`.
 Đây là lỗi rõ trước khi tạo process KR, không là bằng chứng modal lỗi DB trong KR. Lượt vượt admission của launcher

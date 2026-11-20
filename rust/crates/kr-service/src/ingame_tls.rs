@@ -216,6 +216,9 @@ fn native_failure(
         "native account worker busy" => "account_worker_busy",
         "native account worker queue expired" => "account_worker_queue_expired",
         "native account worker unavailable" => "account_worker_unavailable",
+        "native account storage" => "account_storage",
+        "native account owner stale" => "account_owner_stale",
+        "native account roster mismatch" => "account_roster_mismatch",
         "native owner denied" => "account_authority",
         "native chat rate bound" => "chat_rate_bound",
         "native session ended" => "account_session_ended",
@@ -490,6 +493,14 @@ async fn stream(
             }
             Err(_) => return result,
         };
+        if retired && result.is_err() {
+            // The health task may observe retirement before it joins this
+            // stream. Preserve its original redacted guard in that case.
+            let mut event = owner_ended(&result);
+            event["event"] = serde_json::json!("native_tls_owned_stream_ended");
+            event["stream_id"] = serde_json::json!(id);
+            let _ = resources.events.try_send(event);
+        }
         if !retired
             && result
                 .as_ref()

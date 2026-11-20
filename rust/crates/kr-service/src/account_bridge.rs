@@ -294,7 +294,7 @@ impl RelayAuthority {
     pub(crate) async fn check_idle(&self) -> Result<()> {
         match self {
             Self::Launcher(owner) => owner.check_idle().await,
-            Self::InGame(owner) => owner.inspect().await,
+            Self::InGame(owner) => owner.inspect_relay().await,
         }
     }
 }

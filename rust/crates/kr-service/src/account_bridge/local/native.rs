@@ -328,6 +328,9 @@ impl Driver {
             Backend(Worker::Busy | Worker::Backend(Store::Busy)) => "native account worker busy",
             Backend(Worker::QueueExpired) => "native account worker queue expired",
             Backend(Worker::Closed | Worker::WorkerFault) => "native account worker unavailable",
+            Backend(Worker::Backend(Store::Storage)) => "native account storage",
+            super::Error::Stale => "native account owner stale",
+            super::Error::Denied => "native account roster mismatch",
             _ => "native owner denied",
         })
     }

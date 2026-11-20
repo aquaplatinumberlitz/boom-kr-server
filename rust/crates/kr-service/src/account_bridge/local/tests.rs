@@ -132,7 +132,14 @@ fn in_game_udp_capabilities_bind_both_original_accounts_and_close_on_group_revok
             owners.push(owner);
         }
         temp.store().revoke(&admin(), b.account_id, now()).unwrap();
-        assert!(handles[0].inspect().await.is_err());
+        // Whichever lane spots the revocation first, other consumers must
+        // still be told it was a session denial rather than a stale handle.
+        assert_eq!(
+            handles[0].relay_authority().check_idle().await,
+            Err(INVALID_SESSION)
+        );
+        assert_eq!(handles[1].authorize_activity().await, Err(INVALID_SESSION));
+        assert_eq!(session.inspect().await, Err(INVALID_SESSION));
         assert!(handles.iter().all(|owner| !owner.current()));
         for handle in &handles {
             assert!(
@@ -386,6 +393,44 @@ fn cancelling_queued_login_never_publishes_accounts_or_membership() {
         let resume = crate::account_worker::tests::pause(&worker.client()).await;
         assert_eq!(active(&temp), 0);
         resume.send(()).unwrap();
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn first_retirement_keeps_a_redacted_backend_reason_across_cleanup() {
+    use crate::{account_worker::Error as Worker, accounts::Error as Store};
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, _, _) = Temp::new();
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let mut session = LocalSession::new(worker.client(), 1).unwrap();
+        let rows = session.trial(&trial(1), 60, None).await.unwrap();
+        session.redirected(1).unwrap();
+        let handles = session.channel(&channel(&rows), 2).await.unwrap();
+        let failure = Error::Backend(Worker::Backend(Store::Storage));
+        assert_eq!(
+            retire_on(&session.shared, failure, Some("relay_health")),
+            failure
+        );
+        assert_eq!(
+            retire_on(&session.shared, INVALID_SESSION, Some("session_inspect")),
+            failure
+        );
+        assert_eq!(handles[0].inspect().await, Err(failure));
+        assert_eq!(session.inspect().await, Err(failure));
+        assert_eq!(
+            authority_end_event(failure, "relay_health"),
+            serde_json::json!({
+                "event": "native_account_authority_ended",
+                "stage": "relay_health",
+                "reason": "storage"
+            })
+        );
+        assert!(!handles[0].current());
+        assert!(*handles[0].stopped().borrow());
+        session.finish().await.unwrap();
+        assert_eq!(active(&temp), 0);
         worker.shutdown().await.unwrap();
     });
 }

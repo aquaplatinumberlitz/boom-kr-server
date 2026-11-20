@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP368: Gói có ảnh đăng nhập vi chạy tới sảnh; còn nghiệm thu phòng và trận.** [Bằng chứng](docs/evidence/checkpoints/records/CP368.json).
+**CP369: Windows vi và Wine ko đã vào cùng trận Factory07; chưa có kết quả.** [Bằng chứng](docs/evidence/checkpoints/records/CP369.json).
 
 ## Bắt đầu
 

@@ -30,7 +30,7 @@ struct State {
     channel: Option<u64>,
     redirect_until: Option<Instant>,
     stopped: watch::Sender<bool>,
-    invalid_session: bool,
+    end_reason: Option<Error>,
 }
 type Shared = Arc<Mutex<State>>;
 
@@ -39,16 +39,44 @@ const INVALID_SESSION: Error = Error::Backend(crate::account_worker::Error::Back
 ));
 
 fn retire(shared: &Shared) {
-    retire_on(shared, Error::Stale);
+    retire_on(shared, Error::Stale, None);
 }
 
-fn retire_on(shared: &Shared, error: Error) {
+fn retire_on(shared: &Shared, error: Error, stage: Option<&'static str>) -> Error {
     let mut state = shared.lock().unwrap_or_else(|e| e.into_inner());
-    state.invalid_session |= error == INVALID_SESSION;
+    if let Some(first) = state.end_reason {
+        return first;
+    }
+    state.end_reason = Some(error);
     state.phase = Phase::Ended;
     state.channel = None;
     state.stopped.send_replace(true);
+    drop(state);
+    if let Some(stage) = stage {
+        eprintln!("{}", authority_end_event(error, stage));
+    }
+    error
 }
+
+fn authority_end_event(error: Error, stage: &'static str) -> serde_json::Value {
+    use crate::{account_worker::Error as Worker, accounts::Error as Store};
+    let reason = match error {
+        INVALID_SESSION => "session_invalid",
+        Error::Backend(Worker::Backend(Store::ClockRollback)) => "clock_rollback",
+        Error::Backend(Worker::Busy | Worker::Backend(Store::Busy)) => "worker_busy",
+        Error::Backend(Worker::QueueExpired) => "queue_expired",
+        Error::Backend(Worker::Closed | Worker::WorkerFault) => "worker_unavailable",
+        Error::Backend(Worker::Backend(Store::Storage)) => "storage",
+        Error::Backend(_) => "backend_denied",
+        Error::Denied => "roster_mismatch",
+        Error::Stale => "owner_stale",
+        _ => "authority_unavailable",
+    };
+    // The first retiring path reports only two static labels. No tokens,
+    // player fields, packet content or underlying error text cross this boundary.
+    serde_json::json!({"event": "native_account_authority_ended", "stage": stage, "reason": reason})
+}
+
 struct Cancel(Shared, bool);
 impl Drop for Cancel {
     fn drop(&mut self) {
@@ -91,15 +119,16 @@ impl LocalAuthority {
     pub fn connection(&self) -> u64 {
         self.connection
     }
+    fn matches(&self, state: &State) -> bool {
+        state.phase == Phase::Bound
+            && state.channel == Some(self.connection)
+            && state
+                .grants
+                .get(self.slot)
+                .is_some_and(|grant| grant.player == self.player)
+    }
     pub fn current(&self) -> bool {
-        self.shared.lock().is_ok_and(|state| {
-            state.phase == Phase::Bound
-                && state.channel == Some(self.connection)
-                && state
-                    .grants
-                    .get(self.slot)
-                    .is_some_and(|grant| grant.player == self.player)
-        })
+        self.ensure_current().is_ok()
     }
     pub fn owns(&self, identity: u32, connection: u64) -> bool {
         self.player.wire_id == identity && self.connection == connection && self.current()
@@ -111,21 +140,34 @@ impl LocalAuthority {
             .stopped
             .subscribe()
     }
+    fn ensure_current(&self) -> Result<()> {
+        let state = self.shared.lock().map_err(|_| Error::Unavailable)?;
+        if let Some(error) = state.end_reason {
+            return Err(error);
+        }
+        if self.matches(&state) {
+            Ok(())
+        } else {
+            Err(Error::Stale)
+        }
+    }
+
     /// Inspect both accounts without renewing idle TTL from a background timer.
     /// Any failed member check retires every handle on this transport.
     pub async fn inspect(&self) -> Result<()> {
-        if !self.current() {
-            return Err(Error::Stale);
-        }
-        let result = inspect_roster(&self.client, &self.shared).await;
-        if let Err(error) = result {
-            retire_on(&self.shared, error);
-        }
-        result?;
-        if !self.current() {
-            return Err(Error::Stale);
-        }
-        Ok(())
+        self.inspect_at("member_inspect").await
+    }
+
+    pub(super) async fn inspect_relay(&self) -> Result<()> {
+        self.inspect_at("relay_health").await
+    }
+
+    async fn inspect_at(&self, stage: &'static str) -> Result<()> {
+        self.ensure_current()?;
+        inspect_roster(&self.client, &self.shared)
+            .await
+            .map_err(|error| retire_on(&self.shared, error, Some(stage)))?;
+        self.ensure_current()
     }
     /// Player activity renews only that account after checking the whole roster.
     /// The task must still recheck current() immediately before room I/O.
@@ -149,10 +191,7 @@ impl LocalAuthority {
                 Err(Error::Denied)
             }
         });
-        if let Err(error) = result {
-            retire_on(&self.shared, error);
-            return Err(error);
-        }
+        result.map_err(|error| retire_on(&self.shared, error, Some("member_activity")))?;
         self.inspect().await
     }
     pub(crate) async fn character_preference(
@@ -196,10 +235,10 @@ impl LocalAuthority {
 async fn inspect_roster(client: &Client, shared: &Shared) -> Result<()> {
     let snapshot: Vec<(Token, Player)> = {
         let state = shared.lock().map_err(|_| Error::Unavailable)?;
-        if state.invalid_session {
-            return Err(INVALID_SESSION);
+        if let Some(error) = state.end_reason {
+            return Err(error);
         }
-        if state.phase == Phase::Ended || state.grants.is_empty() {
+        if state.grants.is_empty() {
             return Err(Error::Stale);
         }
         state
@@ -218,8 +257,8 @@ async fn inspect_roster(client: &Client, shared: &Shared) -> Result<()> {
         if actual != expected {
             return Err(Error::Denied);
         }
-        if shared.lock().map_err(|_| Error::Unavailable)?.phase == Phase::Ended {
-            return Err(Error::Stale);
+        if let Some(error) = shared.lock().map_err(|_| Error::Unavailable)?.end_reason {
+            return Err(error);
         }
     }
     Ok(())
@@ -263,7 +302,7 @@ impl LocalSession {
                 channel: None,
                 redirect_until: None,
                 stopped,
-                invalid_session: false,
+                end_reason: None,
             })),
         })
     }
@@ -453,10 +492,7 @@ impl LocalSession {
         } else {
             inspect_roster(&self.client, &self.shared).await
         };
-        if let Err(error) = result {
-            retire_on(&self.shared, error);
-        }
-        result
+        result.map_err(|error| retire_on(&self.shared, error, Some("session_inspect")))
     }
 
     /// Login EOF after a delivered redirect is expected; channel EOF and
@@ -470,7 +506,7 @@ impl LocalSession {
                     && matches!(state.phase, Phase::CheckingLogin | Phase::Login))
         };
         if owned {
-            retire(&self.shared);
+            retire_on(&self.shared, Error::Stale, Some("native_stream_ended"));
         }
         Ok(owned)
     }

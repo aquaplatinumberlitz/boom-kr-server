@@ -1,0 +1,52 @@
+{
+  "id": "CP369",
+  "previous": "CP368",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T11:56:42.270221+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Gói vi/ko với bản sửa UTC có vào trận không, và lý do mất quyền có còn thấy được qua hai luồng?",
+  "scope": "KRE-074 / #414, lượt thứ hai trong ba lượt nghiệm thu cuối; test thu hồi phiên qua relay và TLS.",
+  "context_commit": "4e4e74190774ba2698b1eaf6cf2748cc761b093d",
+  "artifacts": [
+    {"sha256": "584c05c35e8e14c643146d28f9b51e9e62e249509d88f803eff40cafef186762"},
+    {"sha256": "28472a3e18f392257dba1db4ad4b98094510a4e3758662f228b7582b3c96d598"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2"],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Windows vi và Wine ko vào cùng phòng Phòng Việt 한국. Server nhận Start104, ghi 121 cho cả hai và nhận 99 từ cả hai; ảnh cho thấy hai client đã tải Factory07.", "evidence": ["RECEIPT", "EVENTS", "WIN", "KO"], "limits": "Chưa đo chat có dấu, màn kết quả hoặc Start ván hai trong lượt này."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md#gap-client-utf8", "summary": "Hai phiên bị thu hồi sau 107–111 giây, trước giới hạn idle 1.800 giây và TTL 28.800 giây. Server ghi account_authority; journal hủy ván vì không còn người.", "evidence": ["RECEIPT", "EVENTS", "WIN-COMPANION", "KO-COMPANION"], "limits": "Log không đủ để quy ngắt cho DB, đồng hồ, relay hoặc luồng KR."},
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/protocol/auth-session.md", "summary": "Tái hiện relay thấy InvalidSession nhưng hoạt động kế tiếp nhận Stale. Giữ lỗi đầu tiên qua các luồng; log chỉ có nhãn giai đoạn và nguyên nhân, cùng mã lỗi luồng KR đã lọc.", "evidence": ["RED", "GREEN"], "limits": "Kiểm hồi quy đường báo lỗi. Chưa sửa hoặc kết luận nguyên nhân ngắt của lượt thật."}
+  ],
+  "verification": [
+    {"check": "Cùng phòng, Start104, hai 121, hai 99 và màn Factory07.", "result": "pass", "evidence": ["RECEIPT", "EVENTS", "WIN", "KO"], "limits": "Chưa tới kết quả."},
+    {"check": "Test relay thấy revoke trước, đường hoạt động và kiểm phiên tiếp tục nhận cùng lỗi.", "result": "pass", "evidence": ["RED", "GREEN"], "limits": "SQLite và relay thử, không phải lỗi runtime chưa rõ nguyên nhân."}
+  ],
+  "delta": {"added": ["Ghi ván L1 đã vào trận và giữ nguyên nhân kết thúc quyền trong log."], "corrected": [], "superseded": []},
+  "blockers": ["Chưa có ván vi/ko hoàn tất và chat có dấu vi → ko. Nguyên nhân thu hồi sớm chưa rõ."],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Dùng một lượt còn lại với log nguyên nhân đầu tiên. Đo chat có dấu hai chiều trước Start và theo dõi tới kết quả; chỉ thử Start kế sau khi đã đạt các tiêu chí L1."}
+  ],
+  "review": {"status": "waived", "reference": "docs/evidence/checkpoints/review-waiver.json", "as_of_utc": "2026-11-20T11:56:42.270221+00:00", "scope": "Codex tự kiểm; không tự merge.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi tiến độ vào trận."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi phạm vi đã đạt và còn một lượt."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục giữ nguyên; sửa chương auth."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Ghi câu hỏi nguyên nhân kết thúc quyền."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi cách phân biệt lỗi kết thúc quyền."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi màn trận và giới hạn chat/kết quả."},
+    {"path": "docs/evidence/checkpoints/records/CP369.json", "state": "updated", "reason": "Pin ảnh, log, test và xác nhận dọn VM."}
+  ],
+  "evidence": [
+    {"id": "RECEIPT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/l1-final-r2-receipt.json", "bytes": 1075, "sha256": "49eaecd4828b5bbf6000cad49c8214b48cb481bcda3f01cb60d326511b7eed36"},
+    {"id": "EVENTS", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/service/rust-events.jsonl", "bytes": 2205, "sha256": "b1fbbbc794e0871dbfd0367b3cb9037ed942d4a5ca6b6d23eddce207dacd4364"},
+    {"id": "WIN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/win-battle-first/capture-0.png", "bytes": 144902, "sha256": "698df6debf5f2d9111a9001066e3918a594278a6c79b29d6b728de719ea4e496"},
+    {"id": "KO", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/wine-battle-first.png", "bytes": 157241, "sha256": "fb9f528764f31b64ed4f23e22d32c57e6e9b1d4c0494bef54b3b30a417382344"},
+    {"id": "RED", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/end-reason-before.log", "bytes": 4409, "sha256": "35a9daa5f2a806fca3628fa14f07433b53f5828e8fc39941a5d8b867719050bc"},
+    {"id": "GREEN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/end-reason-test.log", "bytes": 1671, "sha256": "c2955afe3423af99c8127420c3ddd7e6cafb89321fbf93f2f0422ce41fce27e5"},
+    {"id": "WIN-COMPANION", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/guest-export/a-prelogin.log", "bytes": 2256, "sha256": "9e936260b407feeb0c9142dbd66c02d339cabd7ae276928c0914cc194de50bc2"},
+    {"id": "KO-COMPANION", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r2/guest-export/wine-prelogin-0.log", "bytes": 2286, "sha256": "cf9e04578bf474c1c703db578bc8cddb0e422ebce307a39b961572030f6f2d67"}
+  ],
+  "evidence_runs": []
+}

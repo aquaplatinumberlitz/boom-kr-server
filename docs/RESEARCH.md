@@ -80,7 +80,7 @@ chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
 - Tiệm: cần dịch vụ có tiệm; sau đó chụp tiệm ở cả ba bộ dữ liệu.
 - Sửa tên phòng: bật chuỗi định danh chẩn đoán đã nối vào auth4 cho tài khoản thử, gõ tiêu đề trộn và đối chiếu ở client nhận trên gói.
 - IME tiếng Hàn thật (composition từng âm tiết) chưa thử. Đường VK_PACKET đã sửa lỗi cắt trong bản chẩn đoán; kiểm lại trên gói.
-- [CP365](evidence/checkpoints/records/CP365.json) sửa sai thứ tự roster chặn 121 tại journal. Sau CP366, bộ điều khiển đã bỏ hạn đóng game và kiểm khô helper. [CP368](evidence/checkpoints/records/CP368.json) ngắt trước tạo phòng ở kiểm quyền phiên, chưa rõ lỗi con. Đo lại với nhãn lỗi cụ thể, rồi kiểm 121, báo tải 99, màn trận và kết quả.
+- [CP369](evidence/checkpoints/records/CP369.json) đã qua Start104, hai phản hồi 121, hai báo tải 99 và màn Factory07; hai client rời trước kết quả, sớm hơn idle/TTL. Chưa rõ thao tác nào kết thúc quyền trước. Đo nhãn nguyên nhân đầu tiên từ kiểm phiên, relay hoặc luồng KR và cùng lúc xác nhận chat có dấu cùng kết quả.
 - Consumer bỏ qua hai slot chuyển mã (bộ giải riêng, GDI) chưa được loại trừ; chưa thấy chỗ nào sai trong các màn đã chụp.
 - Tên account đã có [biên UTF-8/949x strict](protocol/auth-session.md#rust-patched-account-names) và TCP/reset; còn native. Tên phòng và chat chỉ đi qua phòng/sảnh; cần xác nhận xuyên suốt trên gói.
 
