@@ -477,8 +477,9 @@ async fn stream(
                     .iter()
                     .map(|authority| authority.player().wire_id)
                     .collect();
+                let connection_id = driver.authorities().first().map(|owner| owner.connection());
                 let _ = resources.events.try_send(
-                    serde_json::json!({"event":"native_tls_db_channel","players":players}),
+                    serde_json::json!({"event":"native_tls_db_channel","connection":connection_id,"players":players}),
                 );
             }
         }

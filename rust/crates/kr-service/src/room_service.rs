@@ -412,6 +412,35 @@ impl Hub {
         }
         Ok(())
     }
+    pub(crate) fn health(&self) -> io::Result<crate::monitoring::Lobby> {
+        let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
+        let rooms = state
+            .rooms
+            .entries()
+            .map(|entry| {
+                let (phase, round) = room_io::health(&entry.value)?;
+                Ok(crate::monitoring::Room {
+                    room_id: entry.key.id.0,
+                    room_session: entry.key.session,
+                    generation: entry.key.generation,
+                    phase,
+                    round,
+                })
+            })
+            .collect::<io::Result<Vec<_>>>()?;
+        let (mut active_rounds, mut loading_rounds) = (0, 0);
+        for room in &rooms {
+            active_rounds += usize::from(room.phase == "active");
+            loading_rounds += usize::from(room.phase == "loading");
+        }
+        Ok(crate::monitoring::Lobby {
+            online_players: state.owners.len(),
+            room_count: rooms.len(),
+            rooms,
+            active_rounds,
+            loading_rounds,
+        })
+    }
     pub(crate) fn operator_rooms(&self) -> io::Result<Vec<RoomKey>> {
         let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
         Ok(state.rooms.entries().map(|entry| entry.key).collect())

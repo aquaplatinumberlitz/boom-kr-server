@@ -1028,3 +1028,23 @@ fn schema2_upgrade_preserves_idle_sessions_identity_and_rejects_old_corruption_a
     );
     assert!(db.prepare("SELECT id FROM matches").is_err());
 }
+
+#[test]
+fn monitoring_epoch_is_read_only_and_returns_the_committed_value_during_a_writer() {
+    let _serial = SERIAL.lock().unwrap();
+    let (temp, mut store, _) = fresh();
+    assert_eq!(Store::probe_epoch(&temp.db()), Ok(1));
+    let writer = store
+        .db
+        .transaction_with_behavior(TransactionBehavior::Immediate)
+        .unwrap();
+    writer
+        .execute("UPDATE runtime_state SET epoch=2", [])
+        .unwrap();
+    assert_eq!(Store::probe_epoch(&temp.db()), Ok(1));
+    writer.commit().unwrap();
+    assert_eq!(Store::probe_epoch(&temp.db()), Ok(2));
+    let missing = temp.0.join("missing.sqlite");
+    assert_eq!(Store::probe_epoch(&missing), Err(Error::Storage));
+    assert!(!missing.exists());
+}

@@ -20,6 +20,7 @@ pub mod lobby;
 mod logging;
 mod map_profile;
 mod match_journal;
+pub mod monitoring;
 pub mod network;
 pub mod operations;
 mod peer_routes;
@@ -1520,6 +1521,28 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
     if let Some(backups) = backups {
         maintenance.spawn(backups.run(stop.clone(), log.clone()));
     }
+    if let Some(owner) = &account_owner
+        && let Some(epoch) = owner.boot_epoch
+        && let Some(bound) = profile.bound.as_ref()
+        && let Some(hub) = &bound.managed
+        && let Some(admission) = profile
+            .config
+            .diagnostic_two_lobby
+            .as_ref()
+            .and_then(|two| two.account_admission.as_ref())
+    {
+        let monitor = monitoring::Monitor {
+            out: out.to_owned(),
+            database: admission.database.clone(),
+            epoch,
+            hub: hub.clone(),
+            relay: bound.authenticated.clone(),
+            worker: owner.active.client.clone(),
+            start,
+            boot,
+        };
+        maintenance.spawn(monitor.run(stop.clone(), log.clone()));
+    }
     let (accept_tx, mut accepted) = mpsc::channel::<(TcpStream, SocketAddr)>(32);
     let mut listeners = JoinSet::new();
     for listener in bound {
@@ -1632,6 +1655,9 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
         journal.stopping();
     }
     let _ = shutdown.send(true);
+    if let Err(error) = state(out, false, false).await {
+        failure.get_or_insert(error);
+    }
     accepted.close();
     while let Ok(pair) = accepted.try_recv() {
         drop(pair);
