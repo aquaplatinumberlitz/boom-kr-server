@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP367: Sáu ảnh đăng nhập vi đã duyệt và ghép vào gói thử.** [Bằng chứng](evidence/checkpoints/records/CP367.json). Vẫn còn nghiệm thu chat và ván đầu vi/ko.
+
 **CP366: Chat có dấu đã đi từ Wine ko sang Windows vi trong sảnh.** [Bằng chứng](evidence/checkpoints/records/CP366.json). Bộ điều khiển dừng Windows trước Start; chưa nghiệm thu ván đầu trên bản sửa.
 
 **CP365: Sửa lỗi journal chặn Start ván đầu khi ID chủ phòng lớn hơn ID khách.** [Bằng chứng](evidence/checkpoints/records/CP365.json). Còn nghiệm thu trên gói Windows vi và Wine ko.
