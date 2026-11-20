@@ -79,7 +79,7 @@ impl State {
                 owner
                     .authorize_activity()
                     .await
-                    .map_err(|_| io::Error::other("native activity denied"))?;
+                    .map_err(Driver::authority_error)?;
                 self.preferences.push(if resources.persist_character {
                     Some(
                         owner
@@ -156,13 +156,13 @@ impl State {
             owner
                 .authorize_activity()
                 .await
-                .map_err(|_| io::Error::other("native activity denied"))?;
+                .map_err(Driver::authority_error)?;
         }
         if count == 2 && matches!(opcode, 585 | 86 | 99 | 104) {
             driver.authorities()[1]
                 .authorize_activity()
                 .await
-                .map_err(|_| io::Error::other("native activity denied"))?;
+                .map_err(Driver::authority_error)?;
             if matches!(opcode, 585 | 86) {
                 session.local_waiting_room(opcode, body)?;
                 let _ = resources.events.try_send(serde_json::json!({

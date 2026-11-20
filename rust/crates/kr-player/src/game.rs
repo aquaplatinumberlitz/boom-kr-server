@@ -1,6 +1,6 @@
 //! Own the game and its loopback TLS companion for one launcher session.
 use crate::Language;
-use kr_tunnel::prelogin::{heartbeat, trace::LOG_NAME};
+use kr_tunnel::prelogin::{ACCOUNT_SESSION_ENDED_EXIT, heartbeat, trace::LOG_NAME};
 use serde::Deserialize;
 use std::{
     fs,
@@ -110,6 +110,14 @@ pub(crate) struct OwnedSession {
     stopping: bool,
     exit: Option<(&'static str, Option<i32>)>,
     generation: u64,
+    game_ended_at: Option<Instant>,
+}
+
+#[derive(PartialEq, Eq)]
+pub(crate) enum End {
+    Stopped,
+    Failed,
+    SessionEnded,
 }
 impl OwnedSession {
     pub fn request_stop(&mut self) {
@@ -119,31 +127,58 @@ impl OwnedSession {
         }
         let _ = fs::write(self.run.join("cancel"), []);
     }
-    pub fn poll(&mut self) -> Option<bool> {
+    pub fn poll(&mut self) -> Option<End> {
         self.generation = self.generation.saturating_add(1);
         if heartbeat::publish(&self.run.join("beat"), self.generation).is_err() {
-            return Some(false);
+            return Some(End::Failed);
         }
-        match self.game.as_mut()?.try_wait() {
+        let game = self.game.as_mut()?.try_wait();
+        let companion = self.companion.try_wait();
+        if matches!(&companion, Ok(Some(status)) if status.code() == Some(ACCOUNT_SESSION_ENDED_EXIT))
+        {
+            self.exit = Some(("companion", Some(ACCOUNT_SESSION_ENDED_EXIT)));
+            return Some(if self.stopping {
+                End::Stopped
+            } else {
+                End::SessionEnded
+            });
+        }
+        match game {
             Ok(Some(status)) => {
+                // A native EOF can end the game before the companion exits.
+                if !self.stopping
+                    && matches!(companion, Ok(None))
+                    && self
+                        .game_ended_at
+                        .get_or_insert_with(Instant::now)
+                        .elapsed()
+                        < Duration::from_secs(1)
+                {
+                    return None;
+                }
                 self.exit = Some(("game", status.code()));
-                Some(status.success() || self.stopping)
+                Some(if status.success() || self.stopping {
+                    End::Stopped
+                } else {
+                    End::Failed
+                })
             }
             Err(_) => {
                 self.exit = Some(("game_wait", None));
-                Some(false)
+                Some(End::Failed)
             }
-            Ok(None) => match self.companion.try_wait() {
-                Ok(None) => None,
-                Ok(Some(status)) => {
-                    self.exit = Some(("companion", status.code()));
-                    Some(self.stopping)
-                }
-                Err(_) => {
-                    self.exit = Some(("companion_wait", None));
-                    Some(self.stopping)
-                }
-            },
+            Ok(None) => {
+                self.exit = match companion {
+                    Ok(None) => return None,
+                    Ok(Some(status)) => Some(("companion", status.code())),
+                    Err(_) => Some(("companion_wait", None)),
+                };
+                Some(if self.stopping {
+                    End::Stopped
+                } else {
+                    End::Failed
+                })
+            }
         }
     }
 }
@@ -258,6 +293,7 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
             stopping: false,
             exit: None,
             generation: 0,
+            game_ended_at: None,
         })
     })()
     .inspect_err(|_| {

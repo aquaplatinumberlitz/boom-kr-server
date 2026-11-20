@@ -308,11 +308,15 @@ impl Driver {
     pub fn authorities(&self) -> &[LocalAuthority] {
         &self.authorities
     }
+    pub(crate) fn authority_error(error: super::Error) -> io::Error {
+        io::Error::other(if error == super::INVALID_SESSION {
+            "native session ended"
+        } else {
+            "native owner denied"
+        })
+    }
     pub async fn inspect(&mut self) -> io::Result<()> {
-        self.session
-            .inspect()
-            .await
-            .map_err(|_| io::Error::other("native owner denied"))
+        self.session.inspect().await.map_err(Self::authority_error)
     }
     async fn write<S: AsyncWrite + Unpin>(
         &self,
@@ -404,7 +408,7 @@ impl Driver {
                 self.session
                     .inspect()
                     .await
-                    .map_err(|_| io::Error::other("native owner denied"))?;
+                    .map_err(Self::authority_error)?;
                 self.write(lane, writer, 15, &self.templates.netinfo)
                     .await?;
                 for slot in 0..self.local_count {
@@ -419,7 +423,7 @@ impl Driver {
                 self.session
                     .inspect()
                     .await
-                    .map_err(|_| io::Error::other("native owner denied"))?;
+                    .map_err(Self::authority_error)?;
                 self.write(lane, writer, 7, &self.templates.redirect)
                     .await?;
                 self.session
@@ -478,7 +482,7 @@ impl Driver {
                 self.session
                     .inspect()
                     .await
-                    .map_err(|_| io::Error::other("native owner denied"))?;
+                    .map_err(Self::authority_error)?;
             }
             _ => return Err(io::Error::other("native stage or shape denied")),
         }

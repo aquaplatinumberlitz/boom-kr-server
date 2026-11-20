@@ -60,6 +60,7 @@ class PackageTests(unittest.TestCase):
             private_key=str(secret), certificate=dict(path=str(self.fixture),
             bytes=self.fixture.stat().st_size, sha256=digest(self.fixture)))
         native = self.config['diagnostic_two_lobby']['account_admission']['prelogin_tls'] = dict(public, certificate=dict(public['certificate']))
+        public['session_ttl_seconds'], public['session_idle_seconds'] = 300, 120
         expected = self.package()
         template = json.loads((self.out / 'config.template.json').read_text())
         config, _, _ = prepare(self.out, self.root / 'operator-state')
@@ -69,6 +70,11 @@ class PackageTests(unittest.TestCase):
                              '@STATE@/' + name)
             self.assertEqual(runtime['diagnostic_two_lobby']['account_admission'][section]['private_key'],
                              str(self.root / 'operator-state' / name))
+        tls = runtime['diagnostic_two_lobby']['account_admission']
+        self.assertEqual((tls['prelogin_tls']['session_ttl_seconds'], tls['prelogin_tls']['session_idle_seconds']),
+                         (28_800, 1_800))
+        self.assertEqual((tls['public_launcher']['session_ttl_seconds'], tls['public_launcher']['session_idle_seconds']),
+                         (300, 120))
         self.assertEqual(public['private_key'], str(secret))
         self.assertEqual(native['private_key'], str(secret))
         for path in self.out.rglob('*'):

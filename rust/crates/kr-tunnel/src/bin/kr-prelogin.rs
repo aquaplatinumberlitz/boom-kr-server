@@ -87,6 +87,7 @@ async fn main() -> io::Result<()> {
         lifecycle.stop(cause);
         halt.send_replace(true);
     });
+    use kr_tunnel::prelogin::{ACCOUNT_SESSION_ENDED_EXIT, AccountSessionEnded};
     let result = kr_tunnel::prelogin::companion_traced(
         endpoint.clone(),
         config.server.into(),
@@ -99,6 +100,15 @@ async fn main() -> io::Result<()> {
     task.abort();
     let _ = task.await;
     endpoint.close(0u8.into(), b"companion stopped");
+    if result.as_ref().is_err_and(|error| {
+        error
+            .get_ref()
+            .is_some_and(|e| e.is::<AccountSessionEnded>())
+    }) {
+        // The remote peer already closed; forward the reason before the GUI can
+        // mistake the game exiting on EOF for a successful user quit.
+        std::process::exit(ACCOUNT_SESSION_ENDED_EXIT);
+    }
     tokio::time::timeout(std::time::Duration::from_secs(2), endpoint.wait_idle())
         .await
         .map_err(|_| io::Error::other("prelogin companion stop deadline"))?;

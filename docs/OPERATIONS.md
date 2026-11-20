@@ -96,12 +96,19 @@ DB giữ tên UTF-8, adapter đổi đúng 949x khi phát profile và kiểm cha
 tên ngoài ASCII bị từ chối cấp frontend. Không tự sửa DB/đổi tên khi chuyển policy. [Contract biên tên](protocol/auth-session.md#rust-patched-account-names)
 chưa có native acceptance cho tên Việt/Hàn; chat và tên phòng có ca riêng.
 
-Giao diện [public launcher](protocol/auth-session.md#rust-public-launcher) opt-in của M8 hiện có kiểm loopback,
-chưa là gói Internet/Wine/Windows đã nghiệm thu. Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
+Giao diện [public launcher](protocol/auth-session.md#rust-public-launcher) opt-in của M8 đã chạy một ván 2P
+trên gói Windows cô lập; Start ván kế, Wine và Internet thật còn mở. Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
 command từ chối directory có sẵn. Giữ `private.pk8` trên server trong parent `0700`, file `0600`; phát certificate
 qua kênh/gói tin cậy. Không tự tải pin từ cùng endpoint chưa xác thực hoặc ghi private key vào bundle. Khi đóng
 gói config có launcher và prelogin, builder gom certificate đã pin. Operator cấp key khớp vào
 `launcher.pk8` và `prelogin.pk8` trong state trước khi chạy service. DB và key không được đổi/copy từ raw thí nghiệm đang dùng.
+
+Gói Linux sinh `config.template.json` với `session_ttl_seconds: 28800` (8 giờ) và
+`session_idle_seconds: 1800` (30 phút) cho từng listener TLS đã bật nếu recipe không ghi giá trị.
+Giữ `1 ≤ idle ≤ TTL ≤ 86400` giây. Hoạt động trong phòng và trận gia hạn idle; keepalive và
+các lượt kiểm nền giữ nguyên hạn. TTL tuyệt đối vẫn tính từ lần đăng nhập. Với gói launcher hiện hành,
+khi phiên tài khoản hết hiệu lực, mở lại game từ launcher và đăng nhập lại khi thấy thông báo.
+Đổi mật khẩu hoặc thu hồi phiên cũng có thể kết thúc phiên đang chơi.
 
 Đường dự phòng cho chẩn đoán dùng cấu hình riêng trong local. `kr-launch "$PLAYER_CONFIG"` đọc JSON
 login/password qua stdin; không có trong gói Windows mới. Client mở companion bằng stdin,

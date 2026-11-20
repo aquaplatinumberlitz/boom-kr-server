@@ -12,8 +12,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-import pefile
-
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import l10n_949x as X  # noqa: E402
@@ -48,6 +46,27 @@ VI_LAYOUT_CALLS = [(0xD365C8, 0x149BEF0, 2, 'PreparePreTab ChatFilterWhole y -2'
                    (0xD36898, 0x149BEF0, 2, 'PreparePreTab ChatFilterGuild y -2')]
 
 
+# Hai đường MessageBoxA của cùng hộp lỗi; các caller caption dùng chung giữ nguyên.
+VI_LOGIN_DIALOG_SITES = (0x10FA74E, 0x13AE104)
+VI_LOGIN_DIALOG_PREIMAGE = bytes.fromhex('68748f7801 68848f7801 6a00 ff154ca66e01')
+
+
+def vi_login_dialog(base_va):
+    caption = 'Lỗi nghiêm trọng'.encode('utf-16le') + b'\0\0'
+    text = 'Đăng nhập không hợp lệ!'.encode('utf-16le') + b'\0\0'
+    replacement = (struct.pack('<BIBI', 0x68, base_va, 0x68, base_va + len(caption))
+                   + bytes.fromhex('6a00 ff1578a66e01'))
+    return caption + text, [(site, VI_LOGIN_DIALOG_PREIMAGE, replacement) for site in VI_LOGIN_DIALOG_SITES]
+
+
+def apply_checked(image, offset_for_va, patches):
+    for va, old, new in patches:
+        off = offset_for_va(va)
+        if len(old) != len(new) or image[off:off + len(old)] != old:
+            raise SystemExit('byte vá tại %#x không phải %s' % (va, old.hex()))
+        image[off:off + len(new)] = new
+
+
 def call_stub(stub_va, target, sub):
     """call target; sub eax, imm8; ret (thiscall không đối số, giữ ecx)."""
     return b'\xe8' + struct.pack('<i', target - (stub_va + 5)) + bytes((0x83, 0xE8, sub, 0xC3))
@@ -75,6 +94,8 @@ def literal_blob(base_va, catalog, lang):
 
 
 def build(src, out, lang=None, catalog=None, trace=False, vi_layout=True):
+    import pefile
+
     data = src.read_bytes()
     digest = hashlib.sha256(data).hexdigest()
     if digest != SOURCE_SHA256:
@@ -133,6 +154,16 @@ def build(src, out, lang=None, catalog=None, trace=False, vi_layout=True):
             code += call_stub(stub, target, sub)
             code += b'\xcc' * (-len(code) % 4)
             calls.append((site, target, stub, why))
+    login_dialog = []
+    if lang == 'vi':
+        message_box_slots = {(lib.dll.lower(), imp.name, imp.address)
+                             for lib in pe.DIRECTORY_ENTRY_IMPORT for imp in lib.imports}
+        if not {(b'user32.dll', b'MessageBoxA', 0x16EA64C),
+                (b'user32.dll', b'MessageBoxW', 0x16EA678)} <= message_box_slots:
+            raise SystemExit('IAT MessageBox không khớp bản KR đã đo')
+        code += b'\0' * (-len(code) % 4)
+        dialog, login_dialog = vi_login_dialog(va + len(code))
+        code += dialog
     vsize = len(code)
     rsize = (vsize + falign - 1) // falign * falign
     # Thêm section header mới.
@@ -151,6 +182,7 @@ def build(src, out, lang=None, catalog=None, trace=False, vi_layout=True):
         if struct.unpack_from('<I', image, off)[0] != old:
             raise SystemExit('operand %#x không trỏ chuỗi %#x' % (operand, old))
         struct.pack_into('<I', image, off, new)
+    apply_checked(image, lambda addr: pe.get_offset_from_rva(addr - base), login_dialog)
     layout = VI_LAYOUT if lang == 'vi' and vi_layout else []
     for va, old, new, _ in layout:
         off = pe.get_offset_from_rva(va - base)
@@ -178,6 +210,8 @@ def build(src, out, lang=None, catalog=None, trace=False, vi_layout=True):
             'exe_literals': {'lang': lang, 'catalog': str(catalog) if catalog else None,
                              'catalog_sha256': hashlib.sha256(catalog.read_bytes()).hexdigest() if catalog else None,
                              'strings': literal_report, 'operands_patched': len(patches)},
+            'vi_login_dialog': [{'va': hex(site), 'old': old.hex(), 'new': new.hex()}
+                                for site, old, new in login_dialog],
             'layout': [{'va': hex(va), 'old': old, 'new': new, 'why': why} for va, old, new, why in layout] +
                       [{'va': hex(site), 'call': hex(target), 'stub': hex(stub), 'why': why}
                        for site, target, stub, why in calls]}

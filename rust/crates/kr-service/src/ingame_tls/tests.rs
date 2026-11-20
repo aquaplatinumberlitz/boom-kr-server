@@ -422,6 +422,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
         assert_eq!(temp.active(), 2);
         assert!(hub.register(a.wire_id, tcp_key).is_err());
         assert!(hub.register(b.wire_id, tcp_key).is_err());
+        let stale = temp.age(&a, 30);
         for client in &mut clients {
             client.send(585, &fields(&[(0, Width::U32)])).await;
         }
@@ -442,6 +443,13 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             ids.sort_unstable();
             assert_eq!(ids, [u64::from(a.wire_id), u64::from(b.wire_id)]);
         }
+        assert!(temp.last_seen(&a) > stale, "room setup must renew idle");
+        let stale = temp.age(&a, 30);
+        clients[0].send(745, &[]).await;
+        // Table request shares the same channel and is itself read-only.
+        clients[0].send(528, &[]).await;
+        clients[0].expect(238).await;
+        assert_eq!(temp.last_seen(&a), stale, "keepalive must not renew idle");
         clients[1].send(97, &[0x59]).await;
         for client in &mut clients {
             client.expect(110).await;
@@ -454,15 +462,19 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             let mut ready = fields(&[(6, Width::U32)]);
             ready.extend([0; 6]);
             ready.extend(fields(&[(1, Width::U8), (0, Width::U32)]));
+            let stale = temp.age(&b, 30);
             clients[1].send(95, &ready).await;
             for client in &mut clients {
                 client.expect(110).await;
             }
+            assert!(temp.last_seen(&b) > stale, "Ready must renew idle");
+            let stale = temp.age(&a, 30);
             clients[0].send(104, &[0; 20]).await;
             for client in &mut clients {
                 client.expect(582).await;
                 client.expect(121).await;
             }
+            assert!(temp.last_seen(&a) > stale, "Start must renew idle");
             for (slot, client) in clients.iter_mut().enumerate() {
                 use Width::*;
                 let load = fields(&[
@@ -529,6 +541,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                     "the previous round's UDP port must not forward a late datagram"
                 );
             }
+            let stale = temp.age(&a, 30);
             clients[0].send(118, &bomb(wire_keys[0], 3)).await;
             for client in &mut clients {
                 let spawn = client.expect(159).await;
@@ -538,6 +551,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                     round as u64
                 );
             }
+            assert!(temp.last_seen(&a) > stale, "bomb placement must renew idle");
             for client in &mut clients {
                 client.expect(158).await;
             }
@@ -593,6 +607,12 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
         for proxy in proxies {
             proxy.await.unwrap().unwrap();
         }
+        temp.age(&a, 90);
+        let ended = tokio::time::timeout(Duration::from_secs(3), clients[0].connection.closed())
+            .await
+            .unwrap();
+        assert!(prelogin::account_session_ended(&ended));
+        assert!(clients[1].connection.close_reason().is_none());
         for client in &clients {
             client.connection.close(0u8.into(), b"test EOF");
         }
@@ -633,6 +653,22 @@ impl Temp {
     }
     fn db(&self) -> PathBuf {
         self.0.join("accounts.sqlite")
+    }
+    fn age(&self, player: &crate::accounts::Player, seconds: i64) -> i64 {
+        rusqlite::Connection::open(self.db()).unwrap().query_row(
+            "UPDATE sessions SET last_seen_at=unixepoch()-?2, issued_at=min(issued_at,unixepoch()-?2) WHERE account_id=?1 AND revoked_at IS NULL RETURNING last_seen_at",
+            (player.account_id, seconds), |r| r.get(0),
+        ).unwrap()
+    }
+    fn last_seen(&self, player: &crate::accounts::Player) -> i64 {
+        rusqlite::Connection::open(self.db())
+            .unwrap()
+            .query_row(
+                "SELECT last_seen_at FROM sessions WHERE account_id=?1 AND revoked_at IS NULL",
+                [player.account_id],
+                |r| r.get(0),
+            )
+            .unwrap()
     }
     fn active(&self) -> i64 {
         rusqlite::Connection::open(self.db())

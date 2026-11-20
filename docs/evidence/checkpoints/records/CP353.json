@@ -1,0 +1,76 @@
+{
+  "id": "CP353",
+  "previous": "CP352",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T01:03:42.587611+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Gói Windows có vào được ván hai khi dùng cấu hình idle vận hành và nhận đúng phòng sau kết quả không?",
+  "scope": "KRE-M8-PLAYER-LAUNCHER / #476. Một Windows VM cô lập, bản ko; bản vi đối chiếu byte ngoại tuyến.",
+  "context_commit": "51a3b17e0440133fd70919f64aeaeb472c5d08cf",
+  "artifacts": [
+    {"sha256": "a8fe82867f2721423f2a84cda03298b79156a2a94d9699002b0469c3525e7129"},
+    {"sha256": "04ae58446c1dbb8e4cbd47ec02b99c8df2ff4d50ff8dabf9484540f118749031"},
+    {"sha256": "75be9517b1835fd65696155bb7e4b6116597b4feaba482cf42cc5b739b0ad725"},
+    {"sha256": "a4f74ef00d9163faaa6a554eddcb863380e3dcfa769891481c22e62832ce62e0"},
+    {"sha256": "92bfd9a3fbe702cebb1c9df120d362408bf18f3077344aa7d386b062260e9e77"},
+    {"sha256": "f13c74db3f68c015b88ca46ecb45e34923fb56d7cc9e45830e4c3f7459242d04"}
+  ],
+  "locators": [
+    "local/research/codex/m8-launcher-close-r1"
+  ],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/protocol/auth-session.md#rust-public-launcher", "summary": "SQLite xác nhận request phòng, Ready95, Start104 và đặt bom gia hạn idle; keepalive không gia hạn. Idle quá hạn cho code 2, companion phân biệt đóng thường.", "evidence": ["IDLE-TEST", "COMPANION-TEST"], "limits": "Test lùi mốc thời gian trong SQLite; chưa buộc hết hạn qua GUI Windows."},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/auth-session.md#rust-public-launcher", "summary": "Bản vi 00967 chỉ đổi hai call tại 0x10FA74E và 0x13AE104 sang MessageBoxW và chuỗi UTF-16LE trong .l10n.", "evidence": ["VI-BYTES", "VI-IDA-NOTE", "VI-PATCH", "PY-TESTS"], "limits": "Theo xref IDA trên bản sao của Claude, đối chiếu PE và byte trước/sau. Không gọi hộp lỗi trong lượt Windows."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Windows đi từ shortcut qua launcher, 2P, sảnh, phòng, ván một, kết quả và về phòng. Bộ điều khiển từ chối nhầm nút Start đã hiện nên không gửi input ván hai; không thấy hết hạn phiên.", "evidence": ["RUN", "UI", "SERVER", "GUEST", "RESULT", "ROOM"], "limits": "Một VM, một client 2P, bản ko và map Factory07. Không kiểm Wine hoặc Internet thật."}
+  ],
+  "verification": [
+    {"check": "Fmt, Clippy, hai test tích hợp Rust, kiểm Python và build khóa Windows GNU.", "result": "pass", "evidence": ["IDLE-TEST", "COMPANION-TEST", "CLIPPY", "PY-TESTS", "BINARIES"], "limits": "Không thay bằng chứng UI native."},
+    {"check": "Gói Windows: shortcut, launcher, 2P, ván một, kết quả, phòng và Start ván hai.", "result": "fail", "evidence": ["RUN", "UI", "SERVER", "GUEST", "RESULT", "ROOM"], "limits": "Lệch ảnh nút Start vượt ngưỡng; đối chiếu lại ảnh chỉ là kiểm ngoại tuyến, chưa xác nhận Start ván hai."},
+    {"check": "Chạy lại điều kiện nhận diện Start trên ảnh lưu.", "result": "pass", "evidence": ["ROOM", "ROOM-GUARD-CONTROL", "ROOM-GUARD-RECIPE"], "limits": "Phân biệt 45 ảnh chưa về phòng và 20 ảnh đã về phòng; chưa thử bấm."},
+    {"check": "Dọn VM, giữ hai tiến trình sở hữu ngoài lượt.", "result": "pass", "evidence": ["CLEANUP", "RUN"], "limits": "VM/container riêng và ISO chỉ dùng cho lượt này."}
+  ],
+  "delta": {"added": ["Cấu hình mẫu 8 giờ/30 phút, thông báo phiên hết hiệu lực vi/en/ko và bản vá hộp thoại Invalid Login! cho vi."], "corrected": ["Đếm ván theo ID mới và cùng khóa phòng; chỉ bấm khi màn phòng và nút Start khớp."], "superseded": []},
+  "blockers": [
+    "Windows đi từ shortcut qua launcher, 2P, sảnh, phòng, ván một, kết quả và về phòng. Bộ điều khiển từ chối nhầm nút Start đã hiện nên không gửi input ván hai; không thấy hết hạn phiên.",
+    "Wine và Internet thật của gói hiện hành chưa nghiệm thu."
+  ],
+  "next_steps": [
+    {"id": "M8-476-native-environments", "task": "M8-476", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Nếu chốt lượt bổ sung, dùng điều kiện nhận diện đã kiểm ngoại tuyến, xác nhận Start104 và ván mới cùng khóa phòng. Còn Wine và Internet thật theo #476."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T01:03:42.587611+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude điều phối tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi kết quả Windows."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP352 từ README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi nghiệm thu Windows và phần còn lại của #476."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Router giữ nguyên; sửa chủ đề xác thực."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi điều kiện gia hạn và tín hiệu phiên mất hiệu lực."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Cập nhật câu hỏi Start ván hai."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi mặc định vận hành, thông báo và phạm vi kiểm."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Thêm bằng chứng CP353."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP353.json", "state": "updated", "reason": "Pin byte, test và kết quả Windows."}
+  ],
+  "evidence": [
+    {"id": "RUN", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/run-summary.json", "bytes": 1439, "sha256": "964cfac7732fbef3fcfd577b97ff40d798cf4ab1ed361e2b68e500bd65fe123c"},
+    {"id": "UI", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/native-summary.json", "bytes": 1211, "sha256": "c9c0bce366cc3f621291a707af5eb1dc0daf14362d8164f59e00579809dbb8c4"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/service/rust-events.jsonl", "bytes": 2170, "sha256": "d84b787de5a05924178fb8aa3d8fb1e608b2ebda5107247e641ecd3884857c34"},
+    {"id": "GUEST", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/guest-export/result.json", "bytes": 441, "sha256": "d2923be2b48224764bde69456115563604cb9b076f2b23811b3b1fe76ee3affd"},
+    {"id": "VI-BYTES", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/vi-byte-control.json", "bytes": 316, "sha256": "46e051ce91235ad1a0a4da201128cf866dfdd0b61b7d2878c92ee4fd89b4b6c8"},
+    {"id": "IDLE-TEST", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/idle-activity-test.log", "bytes": 478, "sha256": "eb33d4545166c850ec55cdfb789e96e6defd8bd97208cdcdac21cefe7742eb22"},
+    {"id": "COMPANION-TEST", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/companion-session-test.log", "bytes": 462, "sha256": "4e2db290b243c1f3f48a8b0fedd68908b1273f72f2c9afa4387466bd33d154ec"},
+    {"id": "VI-IDA-NOTE", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/claude-invalid-login.md", "bytes": 2038, "sha256": "cf9749ce6acad3d0ab820c140a1853d1d2403921147215b5cf592bd539ecb883"},
+    {"id": "VI-PATCH", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/vi-build/patch-vi.json", "bytes": 9269, "sha256": "9cb184eb5964aac91957a3a5621a914637afa715b176e63616237d0ce146e206"},
+    {"id": "PY-TESTS", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/python-tests.log", "bytes": 114, "sha256": "26d3445285032e5c7d91e0689fc3071c0048b6fe392c8b1655fe8efd2702de0b"},
+    {"id": "CLIPPY", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/clippy.log", "bytes": 513, "sha256": "90f17b0660fddc0dfba02ab252ae9bca0c61539cffac47171e8126d64d5af54c"},
+    {"id": "BINARIES", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/native-binaries.sha256", "bytes": 434, "sha256": "0a4ce6e4a51b29f5d7d44a2775bc25914389dc3a293027aa631028a646ee7f2d"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/run-cleanup-result.json", "bytes": 660, "sha256": "eb29c40e20658821468e786fd101640eef3fb64a3d62ac38e508147875fe71bc"},
+    {"id": "ROOM", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/ending-first-45/capture-0.png", "bytes": 258715, "sha256": "92df145b6097ff7eae877d26b3854a85271385356c968885b798f0db8957132e"},
+    {"id": "ROOM-GUARD-CONTROL", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/room-guard-control.json", "bytes": 198, "sha256": "97e8b79b2d86f8f3b74fc7802acb0c037eaed344d23f25d4965eb1358afe1e8c"},
+    {"id": "ROOM-GUARD-RECIPE", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/play-room-guard-v2.py", "bytes": 8975, "sha256": "e2e3619be5bac8b8d08701580daad924840f368af8b00c4c10038d8058ab64c9"},
+    {"id": "RESULT", "kind": "local", "path": "local/research/codex/m8-launcher-close-r1/ending-first-34/capture-0.png", "bytes": 241601, "sha256": "67faef26acf0ddfab8bf0ad330b16e8d8bdd58046202fcdcfbcc59659b1949c9"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-launcher-close-r1", "path": "local/evidence-manifests/33c5945edbf6129c23626e6c6c9aa50880e71344196ca920ef5b45b4bc7a0e60.jsonl", "sha256": "33c5945edbf6129c23626e6c6c9aa50880e71344196ca920ef5b45b4bc7a0e60", "bytes": 816, "count": 4, "files_bytes": 21109}
+  ]
+}
