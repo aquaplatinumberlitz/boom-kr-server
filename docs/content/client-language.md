@@ -249,7 +249,7 @@ nền sảnh, nền phòng, nhãn ô người chơi, tab nhân vật, banner và
 Nền phòng `FxMap/Prepare/CAStage_Custom` và tooltip danh hiệu `FxStage/Lobby/LB_UserTitle_Update_ToolTip` bản en
 hoãn theo Claude. Sáu ảnh vi ở `FxDesktop/LoginStage` đã dựng bằng [script và mô tả vùng chữ](https://github.com/aquaplatinumberlitz/boom-re/pull/6)
 với font CxUni VN: `LO_LogTable00/01`, `LO_SerDre/2P` và `LO_SerHa/2P`. Giữ hàng chọn máy chủ, ô 1P/2P, năm dòng
-Dream và bốn dòng Happy trong atlas. Ảnh đối chiếu ở local chờ Claude duyệt trước khi vào gói; sáu bản en hoãn.
+Dream và bốn dòng Happy trong atlas. Chủ dự án đã duyệt cả sáu ảnh vi qua Claude; [CP367](../evidence/checkpoints/records/CP367.json) xác nhận ghép vào gói và kiểm cài offline. Chưa mở game với gói ảnh mới; sáu bản en hoãn.
 
 **Chuỗi cứng trong exe.** Catalog có 134 dòng `exe:kr-full.exe`; 81 dòng là tên cấm giữ tiếng Hàn. Bảng
 [`tools/l10n_949x_exe_literals.json`](../../tools/l10n_949x_exe_literals.json) ghi 39 chuỗi và 44 operand trỏ tới chúng
@@ -325,7 +325,7 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   [CP360](../evidence/checkpoints/records/CP360.json), bản vi cần cả bước chuẩn bị bảng import và trạng thái bootstrap
   đã có từ M8; sau đó đăng nhập 1P, hiện tên `Việt01`, tạo phòng sau khi sửa phần cuối tiêu đề Việt có sẵn, và hiện
   tin ASCII tự gửi. Ba nút đăng nhập dưới màn hình hiện tiếng Việt; nhãn ID, mật khẩu và chọn máy chủ còn tiếng Hàn.
-  Các nhãn ảnh của phòng, tab nhân vật, banner và hộp tạo phòng còn chữ Hàn. Chưa kiểm hộp “Invalid Login!” thật,
+  Gói thử mới đã thay sáu ảnh đăng nhập sau ca này. Các nhãn ảnh của phòng, tab nhân vật, banner và hộp tạo phòng từng còn chữ Hàn. Chưa kiểm hộp “Invalid Login!” thật,
   gõ dấu mới, client ko nhận chữ hoặc một ván vi/ko. Gói en chưa chạy.
 - **Wine qua launcher mới.** Bản vi và ko ở CP360 thoát trước đăng nhập. [CP361](../evidence/checkpoints/records/CP361.json)
   giữ nguyên payload, bổ sung phân giải hostname trong namespace chỉ có loopback; bản ko đăng nhập 1P và hiện tên

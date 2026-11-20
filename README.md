@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP366: Chat có dấu đã đi từ Wine ko sang Windows vi trong sảnh.** [Bằng chứng](docs/evidence/checkpoints/records/CP366.json). Bộ điều khiển dừng Windows trước Start; chưa nghiệm thu ván đầu trên bản sửa.
+**CP367: Sáu ảnh đăng nhập vi đã duyệt và ghép vào gói thử.** [Bằng chứng](docs/evidence/checkpoints/records/CP367.json). Vẫn còn nghiệm thu chat và ván đầu vi/ko.
 
 ## Bắt đầu
 
