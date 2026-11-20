@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP361: Wine ko đăng nhập và tới sảnh; còn kiểm relay.** [Bằng chứng](docs/evidence/checkpoints/records/CP361.json). L1b/L1c còn mở.
+**CP362: Windows vi và Wine ko cùng phòng, chat hai chiều; trận đầu chưa vào được.** [Bằng chứng](docs/evidence/checkpoints/records/CP362.json).
 
 ## Bắt đầu
 
