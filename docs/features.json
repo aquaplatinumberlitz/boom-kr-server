@@ -6039,6 +6039,7 @@
           "docs/evidence/rust-service/r1f-session-binding.json",
           "docs/protocol/rust-boundary.md#rust-r1g-admission",
           "docs/evidence/rust-service/r1g-admission.json",
+          "docs/evidence/checkpoints/records/CP376.json",
           "docs/evidence/checkpoints/records/CP374.json",
           "docs/evidence/rust-service/m8-server-package.json",
           "docs/evidence/rust-service/m8-public-launcher-foundation.json",
@@ -6238,6 +6239,7 @@
         }
       },
       "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/369",

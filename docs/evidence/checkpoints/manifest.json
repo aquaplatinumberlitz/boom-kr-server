@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP375",
-  "completed_count": 375,
+  "last_id": "CP376",
+  "completed_count": 376,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
-  "last_manual_audit": "AUD149",
+  "last_manual_audit": "AUD150",
   "audits": [
     {
       "id": "AUD001",
@@ -763,6 +763,11 @@
       "id": "AUD149",
       "path": "docs/evidence/checkpoints/audits/AUD149.json",
       "sha256": "35d04f6682c1f6198946e6008560c6f0499576b145413c0efa6317ca9094b474"
+    },
+    {
+      "id": "AUD150",
+      "path": "docs/evidence/checkpoints/audits/AUD150.json",
+      "sha256": "5b98d3526c1757456252d4dcbbec66658aaf84a23fcd555e720a014b4fd365d2"
     }
   ],
   "task_states": [
@@ -1209,6 +1214,12 @@
       "state": "open",
       "canonical": "docs/OPERATIONS.md#server-admin-backup-rollback",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520"
+    },
+    {
+      "id": "KRE-M8-MONITORING",
+      "state": "open",
+      "canonical": "docs/OPERATIONS.md#server-health",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523"
     }
   ],
   "version": 2,
@@ -4212,6 +4223,14 @@
       "path": "docs/evidence/checkpoints/records/CP375.json",
       "bytes": 8895,
       "sha256": "61bcc384a24b078cf08c1d3dadcee34470766759e9c4272d26b33035d5d2b362"
+    },
+    {
+      "id": "CP376",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-20T23:43:32.140260+00:00",
+      "path": "docs/evidence/checkpoints/records/CP376.json",
+      "bytes": 5198,
+      "sha256": "c0f12d5a752f3e104cce696426a5870bb55d62c5f7a823cb928eb31305b2337b"
     }
   ],
   "audit_policy": {

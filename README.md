@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP375: Windows vi và Wine ko chơi hai ván qua gói VPS trên cùng đường 4G; WAN giả lập đã kiểm ngắt và đăng nhập lại.** [Bằng chứng](docs/evidence/checkpoints/records/CP375.json).
+**CP376: Server có kiểm sức khỏe cục bộ và số đo lobby, phòng/ván, relay và SQLite.** [Bằng chứng](docs/evidence/checkpoints/records/CP376.json).
 
 ## Bắt đầu
 

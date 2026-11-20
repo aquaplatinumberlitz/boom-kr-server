@@ -1184,6 +1184,27 @@
       "evidence": [
         "docs/evidence/checkpoints/records/CP374.json"
       ]
+    },
+    {
+      "number": 523,
+      "kre": "KRE-M8-MONITORING",
+      "classification": "in_progress",
+      "as_of": "2026-11-20T23:43:32.140260+00:00",
+      "features": [
+        "KR-S002"
+      ],
+      "known": "Điểm health và gauges đã được kiểm qua SQLite và hai client TLS tổng hợp.",
+      "remaining": "Chưa kiểm tải 50 người hoặc soak.",
+      "next_test": "Lấy nhịp UDP native và chốt ngưỡng trước tải.",
+      "acceptance": "Đọc health cục bộ, từ chối mẫu cũ và đối chiếu số đo trước/trong/sau ván.",
+      "reason": "Lát cắt server đã kiểm; workload và môi trường phát hành vẫn mở.",
+      "sources": [
+        "docs/OPERATIONS.md#server-health",
+        "docs/PLAN.md#phase1-acceptance"
+      ],
+      "evidence": [
+        "docs/evidence/checkpoints/records/CP376.json"
+      ]
     }
   ],
   "as_of_utc": "2026-11-17T12:35:05.125317+00:00",
