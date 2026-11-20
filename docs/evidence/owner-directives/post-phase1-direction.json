@@ -1,0 +1,19 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-20T01:30:00+00:00",
+  "authority": "project_owner",
+  "source": "Trong hội thoại với Claude (director) ngày 20/11/2026. Chủ dự án hỏi nên làm gì sau giai đoạn 1 để tiến tới gần đủ tính năng bản gốc; Claude đề xuất bước 0, thứ tự F1→F4→F2→F5→F3→F6 và ba điểm cần chủ dự án quyết. Chủ dự án trả lời: “1. Kinh tế: dùng số liệu wiki, boomre cái nào ko có thì tự thiết kế, có hỗ trợ thay đổi tuỳ chỉnh được sau. 2. Những màn đó cần dựng thêm phần web phía server. 3. Phần riêng của Nexon bỏ ko làm”.",
+  "decision": [
+    "Kinh tế (giá cửa hàng, rơi đồ, phần thưởng, tiền tệ): lấy số liệu từ wiki và từ boom-re/boomkr-re; giá trị không có nguồn thì tự thiết kế. Mọi giá trị nằm trong dữ liệu cấu hình, đổi được khi vận hành mà không sửa mã.",
+    "Màn dùng trình duyệt nhúng của client (Dwarf/libcef) được làm bằng phần web phía server.",
+    "Bỏ phần riêng của Nexon: ưu đãi phòng máy, NGM/launcher Nexon, analytics, chống gian lận của Nexon."
+  ],
+  "order": "Sau khi đóng giai đoạn 1 (gồm M8 và L1): bước 0 xếp loại A/B/C từng nhóm và làm công cụ ghi/phát lại phiên thật cùng bộ điều khiển client ổn định; rồi F1 → F4 → F2 → F5 → F3 → F6. Thứ tự do Claude đề xuất theo uỷ quyền điều hành; chủ dự án có thể đổi.",
+  "unchanged": [
+    "Không mở việc F1–F6 trước khi giai đoạn 1 bàn giao, trừ phép thử xếp loại rẻ.",
+    "Mỗi đợt có tiêu chí nghiệm thu bằng client thật; tính năng chưa hỗ trợ tắt rõ ràng, không ACK giả.",
+    "Ngân sách bằng chứng evidence-budget.json áp dụng cho mọi đợt."
+  ],
+  "canonical": "docs/PLAN.md#full-game-roadmap",
+  "owner": "Chủ dự án quyết định; Claude ghi lại và điều hành"
+}
