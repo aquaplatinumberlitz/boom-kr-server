@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP371: Hai ván cùng phòng qua TLS đã qua kiểm tự động; Start ván hai trên game vẫn mở ở #502.** [Bằng chứng](evidence/checkpoints/records/CP371.json).
+
 **CP370: Gói vi/ko đạt nghiệm thu L1 giai đoạn 1, gồm chat có dấu hai chiều và một ván tới kết quả.** [Bằng chứng](evidence/checkpoints/records/CP370.json).
 
 **CP369: Windows vi và Wine ko đã vào cùng trận Factory07; chưa có kết quả.** [Bằng chứng](evidence/checkpoints/records/CP369.json).

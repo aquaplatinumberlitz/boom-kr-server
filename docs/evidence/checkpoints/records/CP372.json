@@ -1,0 +1,60 @@
+{
+  "id": "CP372",
+  "previous": "CP371",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T13:33:36.624239+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "#502: Sau khi đồng hồ đã chạy và ván đầu hoàn tất, game có gửi Start104 ván hai không?",
+  "scope": "KRE-M8-PLAYER-LAUNCHER / #502. Ba lượt lab KR 00967, Windows vi và Wine ko làm chủ cùng một phòng 2P. Prefix và VM riêng, không đổi client hoặc wire.",
+  "context_commit": "40a776b45ec01ff6812e676a2dc7ccbea6bea017",
+  "artifacts": [
+    {"sha256": "179fba299874a80fac29bcbb8e1b5ca93918573b6c090275aa7261e8086fb96b"},
+    {"sha256": "584c05c35e8e14c643146d28f9b51e9e62e249509d88f803eff40cafef186762"}
+  ],
+  "locators": ["local/research/codex/m8-round2-followup", "VA DE0310, DCB744, DE03F3, DE0574 trên base 0x400000."],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md#gap-service-hardening", "summary": "Hai lượt gắn WineDbg gdb-stub sau khi sẵn sàng, trước lần bấm Start đối chứng. Có bốn báo đặt breakpoint. Lượt đầu dừng SIGSEGV tại 0xFFF40200; lượt sau cho tín hiệu đi tiếp và Wine báo tiến trình thoát 0xC0000005.", "evidence": ["OBS1", "OBS2", "STUB2"], "limits": "Chưa hit điểm vào, guard hay send. Không dùng lỗi debugger làm nguyên nhân Start ván hai."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Lượt không debugger nhận 104, hai 99 và hai 118 sau khi hai đồng hồ giảm. Ván 256 Factory07 hoàn tất, cả hai client hiện kết quả và về phòng, server ghi hai batch cập nhật phòng và hai 585 sau về.", "evidence": ["EVENTS", "GATES", "WIN_RESULT", "WINE_RESULT"], "limits": "Một ván, gói lab nội bộ. Dấu mốc TLS không là ACK thực thi."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/RESEARCH.md#gap-service-hardening", "summary": "Windows bấm Ready 100 ms sau khi hai client về phòng. Không có 95 lần hai trong log đã xử lý; bộ điều khiển hết thời hạn chờ trước khi bấm Start ván hai.", "evidence": ["READY_PRESS", "READY_UI", "GATES", "EVENTS"], "limits": "Khác CP354/CP370: chưa tới lần bấm Start. Không chứng minh lỗi focus hoặc client không ghi frame."}
+  ],
+  "verification": [
+    {"check": "cargo build --manifest-path rust/Cargo.toml -p kr-service --locked.", "result": "pass", "evidence": ["BUILD"], "limits": "Không đổi mã server."},
+    {"check": "Nghiệm thu hai ván cùng phòng trên binary đã dựng.", "result": "fail", "evidence": ["GATES", "EVENTS"], "limits": "Ván một và hai màn kết quả đạt; chưa ván hai."},
+    {"check": "Dừng Wine, QMP và VM sở hữu; so danh tính qemu và container có sẵn, giữ ảnh và trace.", "result": "pass", "evidence": ["CLEAN1", "CLEAN2", "CLEAN3"], "limits": "Không gọi đây là nghiệm thu exit trong game."}
+  ],
+  "delta": {"added": ["Clock gate đã đưa thao tác đặt bom vào lúc hai đồng hồ chạy. Ghi riêng lỗi gắn debugger và lần Ready thiếu 95."], "corrected": [], "superseded": []},
+  "blockers": ["Chưa nghiệm thu hai ván. Chưa có căn cứ sửa server; không lặp gắn WineDbg vào tiến trình đang chạy với cấu hình này."],
+  "next_steps": [
+    {"id": "M8-476-second-start", "task": "M8-476", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khi có lượt mới, chờ cập nhật phòng rồi dùng di chuột ra/vào và giữ nút Ready giống đối chứng CP080 trước Start. Kiểm một cơ chế quan sát khác trên control trước khi dùng vào game."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T13:33:36.624239+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển mốc CP371."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Giữ #502 mở và cập nhật điểm chặn."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire hoặc contract."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Đổi phép kiểm kế sau lỗi Ready và debugger."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Trạng thái nghiệm thu chưa đổi."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi catalog; câu hỏi M8 vẫn mở."},
+    {"path": "docs/evidence/checkpoints/records/CP372.json", "state": "updated", "reason": "Pin log, ảnh, thao tác và cleanup ba lượt."}
+  ],
+  "evidence": [
+    {"id": "OBS1", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r1/start-probe-r1.txt", "bytes": 762, "sha256": "96d059689d8d268d4395465761fd43f225ececc2f6b82d7c64d611bb5c1a60cb"},
+    {"id": "OBS2", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r2/start-probe-r1.txt", "bytes": 860, "sha256": "02907907a84a4d8ab3bf3610bd878af7c69fccd53221d5e0d1254a93d9f130e6"},
+    {"id": "STUB2", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r2/start-probe-r1.stub", "bytes": 6679, "sha256": "c1a28ddbe41f45a6caca64ffc11c5adf25898916a12523d49765c8bd3f5a95bb"},
+    {"id": "GATES", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r3/state-gate.jsonl", "bytes": 53753, "sha256": "edddd3fbc5c692edc2fd3bb2b9482334ad6262bbc43a0ca6f9aa31334f5d3294"},
+    {"id": "EVENTS", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r3/service/rust-events.jsonl", "bytes": 3613, "sha256": "74105cafbc66bc4dcaf54b0824d37249b751a7bf74a5d96c51c1a075f4a2be7d"},
+    {"id": "WIN_RESULT", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r3/win-result-1-241/capture-0.png", "bytes": 235592, "sha256": "8cd003699116c95b817220eacdc9fcee80433d49ef82a59c01a98552434c3f20"},
+    {"id": "WINE_RESULT", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r3/wine-result-1-240.png", "bytes": 201385, "sha256": "ca23a1f79420afbf31b81a0e4fca98f4f3951c4d65296426059d4ced7f292b1c"},
+    {"id": "READY_PRESS", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r3/win-ready-second/input-record.json", "bytes": 2010, "sha256": "7c19ebe3e3b4dcab4196b50a7213170fa9d2121d7c0efb324eb730d37747992a"},
+    {"id": "READY_UI", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r3/return-ready-review.png", "bytes": 83312, "sha256": "04fc46e9f661b2eea12ce13313d155052ac0614b117f13f8075aa2b06df53fda"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/m8-round2-followup/build-baseline.log", "bytes": 3124, "sha256": "b974c1abe5ad11b50ca7487010b4edb8fe94f77363708c78ed3a46359584da97"},
+    {"id": "CLEAN1", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r1/cleanup.json", "bytes": 1007, "sha256": "ee2991b0d70b6b01c179814b4aa2f22a7a612498504548b816db6eecf79adbdd"},
+    {"id": "CLEAN2", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r2/cleanup.json", "bytes": 1007, "sha256": "c918fe7dd5a853227acac88a119e9a449e56f4b564bff90f0e0358ff74eb5d47"},
+    {"id": "CLEAN3", "kind": "local", "path": "local/research/codex/m8-round2-followup/start-r3/cleanup.json", "bytes": 922, "sha256": "2e6bae1d5af156772aecaa3c4830a4e54b29702174f42eaa4092c4e0d0f227fe"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-round2-followup", "path": "local/evidence-manifests/f56f6a1ddff0773f05b66e4aea0daeb967a8acdae690bfb513067e6455d9e62d.jsonl", "sha256": "f56f6a1ddff0773f05b66e4aea0daeb967a8acdae690bfb513067e6455d9e62d", "bytes": 1657, "count": 8, "files_bytes": 23140}
+  ]
+}

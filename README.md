@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP371: Hai ván cùng phòng qua TLS đã qua kiểm tự động; Start ván hai trên game vẫn mở ở #502.** [Bằng chứng](docs/evidence/checkpoints/records/CP371.json).
+**CP372: Windows vi và Wine ko hoàn tất ván một qua bộ điều khiển chờ đồng hồ; Ready ván hai chưa tới server.** [Bằng chứng](docs/evidence/checkpoints/records/CP372.json).
 
 ## Bắt đầu
 
