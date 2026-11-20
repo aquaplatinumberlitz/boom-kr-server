@@ -228,13 +228,16 @@ impl NativeClient {
 
 // Compare the two slot snapshots the KR room receives, using the slot index
 // instead of assuming that delivery order follows the room's slot order.
-async fn waiting_slots(client: &mut NativeClient) -> [u64; 2] {
+async fn waiting_slots(client: &mut NativeClient, order: Option<[usize; 2]>) -> [u64; 2] {
     let mut state = [None; 2];
-    for _ in 0..2 {
+    for expected in order.map(|slots| slots.map(Some)).unwrap_or([None; 2]) {
         let update = client.expect(110).await;
         assert_eq!(update.payload.len(), 6);
         let slot = read_uint(&update.payload[..1], Width::U8).unwrap() as usize;
         assert_eq!(read_uint(&update.payload[5..], Width::U8).unwrap(), 0);
+        if let Some(expected) = expected {
+            assert_eq!(slot, expected, "return snapshot slot order");
+        }
         let packed = read_uint(&update.payload[1..5], Width::U32).unwrap();
         assert!(
             state[slot].replace(packed).is_none(),
@@ -499,8 +502,8 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
         clients[0].expect(238).await;
         assert_eq!(temp.last_seen(&a), stale, "keepalive must not renew idle");
         clients[1].send(97, &[0x59]).await;
-        let initial_slots = waiting_slots(&mut clients[0]).await;
-        assert_eq!(waiting_slots(&mut clients[1]).await, initial_slots);
+        let initial_slots = waiting_slots(&mut clients[0], None).await;
+        assert_eq!(waiting_slots(&mut clients[1], None).await, initial_slots);
         assert_eq!(initial_slots[0] & 0x1e, 2, "host retains chief bit");
         assert_eq!(initial_slots[1] & 0x1e, 0, "guest starts unready");
         let return_setup = fields(&[(0, Width::U32)]);
@@ -648,7 +651,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             for ((client, log), stream_id) in clients.iter_mut().zip(&mut event_logs).zip(markers) {
                 // The native return tail must preserve the room visit, then
                 // refresh the same slots with Ready cleared on both transports.
-                assert_eq!(waiting_slots(client).await, initial_slots);
+                assert_eq!(waiting_slots(client, Some([0, 1])).await, initial_slots);
                 let marker = room_marker(log, "native_tls_room_return_refreshed").await;
                 assert_eq!(marker, serde_json::json!({
                     "event": "native_tls_room_return_refreshed", "stream_id": stream_id

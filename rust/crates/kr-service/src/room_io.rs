@@ -1819,11 +1819,10 @@ impl Session {
                 )?),
             )
         };
-        let slots = next
-            .members
-            .values()
-            .map(|m| r.slot(m, next.host))
-            .collect::<io::Result<Vec<_>>>()?;
+        // Native return snapshots were observed in room slot order. Account
+        // IDs can be allocated in a different order than room admission.
+        let mut slots: Vec<_> = next.members.values().collect();
+        slots.sort_unstable_by_key(|member| member.slot);
         let mut refresh = Vec::new();
         if next.player_round() {
             for participant in next.participants.values().filter(|p| p.departed.is_some()) {
@@ -1833,12 +1832,9 @@ impl Session {
                 ));
             }
         }
-        refresh.extend(
-            slots
-                .iter()
-                .enumerate()
-                .map(|(i, p)| (format!("refresh110-{i}"), p.clone())),
-        );
+        for (i, member) in slots.into_iter().enumerate() {
+            refresh.push((format!("refresh110-{i}"), r.slot(member, next.host)?));
+        }
         for peer in Runtime::transport_representatives(next.members.values()) {
             for (delay, packets, complete) in [
                 (0, vec![("rank175".into(), rank.clone())], false),

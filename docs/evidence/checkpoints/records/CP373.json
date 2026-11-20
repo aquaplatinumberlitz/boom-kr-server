@@ -1,0 +1,60 @@
+{
+  "id": "CP373",
+  "previous": "CP372",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T22:34:19.357510+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "#502: Luồng cũ và TLS gửi gì sau kết quả, và bản sửa có chơi được hai ván liên tiếp không?",
+  "scope": "KRE-M8-PLAYER-LAUNCHER / #502. N1 CP261/264, M3 CP240, M5 CP258/284, TLS CP354/370/371/372 và test #517. Một lượt Windows vi + Wine ko làm chủ, Factory07, mạng lab, không debugger.",
+  "context_commit": "13e94e2db0ae6b43e47281e7877cef37d27443f0",
+  "artifacts": [
+    {"sha256": "60b4ffc3aa42a595c543f9a1015d5732848be4eb6cfe836a1dc9a64c9457bc02"},
+    {"sha256": "584c05c35e8e14c643146d28f9b51e9e62e249509d88f803eff40cafef186762"}
+  ],
+  "locators": ["local/research/codex/m8-round2-wire", "00967 IDA: DDE760/DDEAB7, DE0310/DCB744, E64950/E652C5, DC6700/DC69FF."],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/life-results.md#rust-life-results", "summary": "Capture cũ cho từng luồng: 175/302 → 202/22 → 180/3 → 585/4 → 110 theo slot → Ready110 → Start. Hash 175 cùng bên thắng trùng TLS; 180 khác selector, nhóm Ready và vai giữ theo profile.", "evidence": ["OLD", "CMP"], "limits": "CP284 có ba người; CP264 xác nhận lại CP261. 202 và 585 từ client; một số luồng còn 127. 582 và 121 nằm sau Start."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/protocol/life-results.md#rust-life-results", "summary": "TLS #517 phát 110 phục hồi slot 1→0 khi khách có ID nhỏ hơn chủ. Sửa hàng đợi kết quả để mọi luồng nhận slot tăng dần. Test hai ván bắt lỗi 1≠0 trước sửa và qua sau sửa.", "evidence": ["CMP", "TLS", "NEG", "TEST"], "limits": "Payload, lịch gửi và policy giữ nguyên. CP370/372 có ID ngược slot; CP354 không. Log native TLS cũ không giữ payload từng luồng."},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/room-membership.md#room-player", "summary": "Ready/Start kiểm pending +6224; 180 chuyển về stage 12; 110 ghi packed theo slot, nhánh own slot xóa pending và cập nhật nút. DCAD80 đọc nhóm Ready bits 2..4.", "evidence": ["IDA", "IDA_RETURN"], "limits": "Input IDA SHA cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b, bản sao. Không chứng minh thứ tự 110 là nguyên nhân duy nhất."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Hai client thật gửi hai 104, vào hai ván Factory07, thấy hai kết quả và về phòng hai lần. SQLite ghi ván 256 và 512 complete cùng khóa phòng.", "evidence": ["RUN", "RESULTS", "EVENTS"], "limits": "Dùng cả thứ tự 110 mới và di chuột/giữ nút, chưa có đối chứng tách hai yếu tố. Không suy CP354 hai actor chung luồng hoặc Internet thật."}
+  ],
+  "verification": [
+    {"check": "Locked build, fmt, clippy và workspace cargo test; đối chứng test TLS trước sửa.", "result": "pass", "evidence": ["BUILD", "CLIPPY", "TEST", "NEG"], "limits": "Đối chứng trước sửa phải fail thứ tự slot; test tự gửi 104."},
+    {"check": "Hai ván cùng phòng qua game, mỗi ván có kết quả trên cả hai client, về phòng; dọn tài nguyên riêng.", "result": "pass", "evidence": ["RUN", "RESULTS"], "limits": "Một lượt trong ngân sách hai. QEMU/container có sẵn không đổi."}
+  ],
+  "delta": {"added": ["Gửi 110 phục hồi theo slot và nghiệm thu hai ván cùng phòng qua TLS trong lab."], "corrected": [], "superseded": []},
+  "blockers": ["Chưa tách nhân quả giữa thứ tự 110 và thao tác nút trong ca game. Internet thật và ca hai actor Windows chung luồng chưa kiểm lại."],
+  "next_steps": [
+    {"id": "M8-476-second-start", "task": "M8-476", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Đã nghiệm thu hai ván trong phạm vi Windows vi/Wine ko; Claude tích hợp PR sau CI."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T22:34:19.357510+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP372."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi kết quả #502 và chờ tích hợp."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục không đổi."},
+    {"path": "docs/protocol/life-results.md", "state": "updated", "reason": "Ghi thứ tự phục hồi 110."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Giữ giới hạn của kết luận và Internet thật."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "M8 chưa đóng; không đổi trạng thái catalog."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP373.json", "state": "updated", "reason": "Pin so sánh raw và nghiệm thu."}
+  ],
+  "evidence": [
+    {"id": "OLD", "kind": "local", "path": "local/research/codex/m8-round2-wire/legacy-return-frames.json", "bytes": 31472, "sha256": "c2e223a1219502651d3d84cc15f5a9a2190573ec306279747df01b09411d26b4"},
+    {"id": "CMP", "kind": "local", "path": "local/research/codex/m8-round2-wire/compare-summary.md", "bytes": 2564, "sha256": "9caa8d1a8130e6a171c4b834b875edf45b4f93476d26f0b143a724cee73e608d"},
+    {"id": "TLS", "kind": "local", "path": "local/research/codex/m8-round2-wire/tls-517.log", "bytes": 8482, "sha256": "e4a0844a1682c0782f78a6f2f3b18ecdf7e59b67a17475ca9306cbd11101494a"},
+    {"id": "NEG", "kind": "local", "path": "local/research/codex/m8-round2-wire/negative.log", "bytes": 1101, "sha256": "2a2fd435d0e31221736d13919b6772bf148f28ceda3e1fcdc4b63fed88adb78d"},
+    {"id": "TEST", "kind": "local", "path": "local/research/codex/m8-round2-wire/test.log", "bytes": 46087, "sha256": "c30504100fc57ff17a392da46b800fd5d51fcfa2bea8905244e89b75455c46ac"},
+    {"id": "CLIPPY", "kind": "local", "path": "local/research/codex/m8-round2-wire/clippy.log", "bytes": 5640, "sha256": "cad9296bedb67eccc77e02b3928415aba684449ff210dfbad3df375ca15bfbae"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/m8-round2-wire/build-fixed.log", "bytes": 168, "sha256": "0103794af457d7de1d4a010dc6d5007a245218385331c8592110099c8f312b02"},
+    {"id": "IDA", "kind": "local", "path": "local/research/codex/m8-round2-wire/room-locators.txt", "bytes": 27322, "sha256": "9f0508c4013aaa19de1033972a24f8dc54747203f0c4290ad97044555686c299"},
+    {"id": "RUN", "kind": "local", "path": "local/research/codex/m8-round2-wire/start-r1/acceptance.json", "bytes": 2080, "sha256": "8f5a251cadcfd7df5a8aeb4975038d80bebf2d5354cf648ef5da7a19551a2086"},
+    {"id": "RESULTS", "kind": "local", "path": "local/research/codex/m8-round2-wire/start-r1/two-result-views.png", "bytes": 643699, "sha256": "f29f89699934a151924d09404cef25c8a3450dfbc71944ec1e8348651cf404f6"},
+    {"id": "EVENTS", "kind": "local", "path": "local/research/codex/m8-round2-wire/start-r1/service/rust-events.jsonl", "bytes": 5474, "sha256": "bab53c4d1c6e4a7f27b3bdef9f59225cb3329828b6a30d43e11d8100894025ad"},
+    {"id": "IDA_RETURN", "kind": "local", "path": "local/research/codex/m8-round2-wire/return-locators.txt", "bytes": 9583, "sha256": "0ea3dd2fade6332d4a6a88acf1f18b3fd2c38ff7fcd7868e43916325b8469cee"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-round2-wire", "path": "local/evidence-manifests/5af00524d7efbcaf3a6b24376148a4b3baac832c365ebc33c02b820cd8dc13c8.jsonl", "sha256": "5af00524d7efbcaf3a6b24376148a4b3baac832c365ebc33c02b820cd8dc13c8", "bytes": 1601, "count": 8, "files_bytes": 119852}
+  ]
+}
