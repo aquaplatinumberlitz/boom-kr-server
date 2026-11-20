@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP359: Gói thử kiểm chuỗi exe và ảnh tự động.** [Bằng chứng](docs/evidence/checkpoints/records/CP359.json). L1 còn thiếu ảnh đã duyệt và nghiệm thu.
+**CP360: Windows vi tới phòng; Wine thoát trước đăng nhập.** [Bằng chứng](docs/evidence/checkpoints/records/CP360.json). L1b/L1c còn mở.
 
 ## Bắt đầu
 
