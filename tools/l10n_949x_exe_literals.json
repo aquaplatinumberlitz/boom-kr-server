@@ -539,19 +539,6 @@
      "consumer": "sub_149C3B0"
     }
    ]
-  },
-  {
-   "id": "exe:kr-full.exe:0x15e7088",
-   "va": "0x17a1288",
-   "ko_cp949_len": 8,
-   "refs": [
-    {
-     "ref": "0x19a7590",
-     "operand": "0x19a7590",
-     "kind": "data",
-     "consumer": null
-    }
-   ]
   }
  ]
 }
