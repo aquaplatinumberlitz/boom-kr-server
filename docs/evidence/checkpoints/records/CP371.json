@@ -1,0 +1,55 @@
+{
+  "id": "CP371",
+  "previous": "CP370",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T12:49:17.095354+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Vì sao Start104 không tới server sau Ready95 ván hai ở #502?",
+  "scope": "KRE-M8-PLAYER-LAUNCHER / #502. KR 00967, Windows vi và Wine ko theo gói CP370, mạng lab cô lập. Giữ nguyên wire và client.",
+  "context_commit": "f89a5e6151ef4e75456d0cd6e644d00f0623eb5a",
+  "artifacts": [
+    {"sha256": "a5902e4126c36c7532f8f656a47a460eb29e6ac302ae4dd23e0cc6ef2d4093f7"},
+    {"sha256": "74a0db971f8f9fc596e049523898bc9397308464c2309158a0816dc2c196cac8"}
+  ],
+  "locators": ["VA DE0310, DE03F3, DE0463 và DCB744 (base 0x400000).", "local/research/codex/m8-round2-start"],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/life-results.md#round-finish", "summary": "IDA trên bản sao kr-full input cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b: DE0310 kiểm pending, gọi DCAD80 rồi mới dựng 104 tại DE0463; DCB744 đọc nhóm bit Ready của slot.", "evidence": ["GUARD"], "limits": "CP023 xác nhận 180 xóa bit Ready; CP080 có lỗi input trước callback trong ca khác. Chưa đo nhánh thực tế của #502. VN chỉ tham chiếu, không dùng wire/layout."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/RESEARCH.md#gap-service-hardening", "summary": "TLS xác minh 175/202/180/585, hai 110 cập nhật đúng chủ phòng và Ready đã xóa; Ready kế đặt lại bit 2 ở slot khách trên cả hai luồng. Hai trận cùng khóa phòng hoàn tất trong SQLite.", "evidence": ["TEST"], "limits": "Bài kiểm chủ động gửi 104, không thực thi nút Start. Hai dấu mốc TLS xác nhận ghi và hoàn tất batch, không phải ACK của client."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Lượt cuối vào Factory07 cả hai phía: một Start104, hai 121 ghi xong, hai 99. Hình trước input còn TIME 0; không bắt được 118 trong thời hạn. Hai lượt trước dừng ở launcher.", "evidence": ["EVENTS", "BOARD", "STOP1", "STOP2"], "limits": "Không tới kết quả hoặc nhánh Start ván hai. Chưa xác định vì sao thao tác đặt bom không tới server."}
+  ],
+  "verification": [
+    {"check": "cargo fmt --all --check, cargo clippy --workspace --all-targets --locked -- -D warnings, cargo test --workspace --locked, cargo build -p kr-service --locked.", "result": "pass", "evidence": ["TEST", "CLIPPY", "BUILD"], "limits": "Dùng manifest Rust của repo; test TLS có hai ván và dữ liệu cả hai client mô phỏng."},
+    {"check": "Hai client game chơi hai ván trong cùng phòng; dọn VM và Wine đã tạo.", "result": "fail", "evidence": ["EVENTS", "BOARD", "CLEANUP"], "limits": "Hết ba lượt, chưa đạt runtime hai ván. VM/QMP và Wine dừng, tài nguyên chạy sẵn không đổi; chỉ giữ ảnh, log, DB lab và snapshot kết quả chuẩn bị của guest."}
+  ],
+  "delta": {"added": ["Thêm dấu mốc gửi Ready110 và hoàn tất cập nhật phòng cho từng kết nối TLS, cùng kiểm hồi quy giá trị các slot và chuỗi về phòng."], "corrected": [], "superseded": []},
+  "blockers": ["Chưa đo được callback Start ván hai; chưa có căn cứ sửa hành vi server. Internet thật của gói hiện hành chưa kiểm."],
+  "next_steps": [
+    {"id": "M8-476-second-start", "task": "M8-476", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khi được mở thêm lượt, chờ đồng hồ trận chạy sau đếm ngược rồi mới đặt bom; dùng dấu mốc refresh/Ready110 và đọc DE0310/DCAD80 khi bấm Start kế."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T12:49:17.095354+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc CP370."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Giữ #502 mở, ghi bài TLS và giới hạn runtime."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire hay contract."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Thu hẹp phép đo cần chạy khi mở lại #502."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Trạng thái nghiệm thu tính năng chưa đổi."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi catalog; câu hỏi M8 vẫn mở."},
+    {"path": "docs/evidence/checkpoints/records/CP371.json", "state": "updated", "reason": "Pin bằng chứng server, IDA và ba lượt trong lab."}
+  ],
+  "evidence": [
+    {"id": "GUARD", "kind": "local", "path": "local/research/codex/m8-round2-start/ida-guard.txt", "bytes": 8123, "sha256": "45bf6dd7b53c8b57a56e390b2212a0d0546b24ec3e1951cc6b9c499d6ca2db00"},
+    {"id": "TEST", "kind": "local", "path": "local/research/codex/m8-round2-start/test.log", "bytes": 42729, "sha256": "09d5cfb55a2df57e8a2e87f0530a5d9c05423976ec5f3e0e8f7e68ccc4bdedf6"},
+    {"id": "CLIPPY", "kind": "local", "path": "local/research/codex/m8-round2-start/clippy.log", "bytes": 5644, "sha256": "9bb9a2b2b538ce1eabf70dbbafcd0a559db8caaaa05697e8077739efc165ffc5"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/m8-round2-start/build-observed.log", "bytes": 169, "sha256": "11b2e3e0aa7a0321ce71a63eebf0a9ca8f0a42e3b84e92a484154f1c10906e84"},
+    {"id": "STOP1", "kind": "local", "path": "local/research/codex/m8-round2-start/round2-r1/flow.log", "bytes": 553, "sha256": "7b6cc2728654072b23e29f02bc582f355a8a684ebfcdd90ac6a06ae53081a1e9"},
+    {"id": "STOP2", "kind": "local", "path": "local/research/codex/m8-round2-start/round2-r2/flow.log", "bytes": 1787, "sha256": "b01f74d47fcb669b498f00f89420a3c40e0b5f73c84b9f733cdce174a18a24be"},
+    {"id": "EVENTS", "kind": "local", "path": "local/research/codex/m8-round2-start/round2-r3/service/rust-events.jsonl", "bytes": 2582, "sha256": "6b82906763a8360147384bc0728c7c04e1d02acfe0e11e56f87306445070e2a4"},
+    {"id": "BOARD", "kind": "local", "path": "local/research/codex/m8-round2-start/round2-r3/round1-board.png", "bytes": 344549, "sha256": "647a0da2fdcab91799accc1167ad2bd29835847830bbaa35f2cecbcf09285e7d"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/m8-round2-start/round2-r3/cleanup.json", "bytes": 922, "sha256": "d05fd022ab786c5f9cded39b706136f1ef90c12d633f5deb5cd063768dc212f9"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-round2-start", "path": "local/evidence-manifests/3f04a7de140966a9ea09735c07152a6d76b57d5afac9d9e106096e0910a8ace8.jsonl", "sha256": "3f04a7de140966a9ea09735c07152a6d76b57d5afac9d9e106096e0910a8ace8", "bytes": 3116, "count": 16, "files_bytes": 435096}
+  ]
+}

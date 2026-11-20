@@ -374,10 +374,15 @@ impl State {
                     .lobby_reply(lane, send, reply.opcode, &reply.payload)
                     .await
                     .map_err(|error| room_poll_failure(error, "write", Some(reply.opcode)))?;
-                if reply.opcode == 121 && label == "start121" {
+                let event = match (reply.opcode, label.as_str()) {
+                    (110, "ready110") => Some("native_tls_room_ready_written"),
+                    (121, "start121") => Some("native_tls_room_start_written"),
+                    _ => None,
+                };
+                if let Some(event) = event {
                     let _ = resources.events.try_send(serde_json::json!({
-                        "event": "native_tls_room_start_written",
-                        "opcode": 121,
+                        "event": event,
+                        "opcode": reply.opcode,
                         "stream_id": stream_id,
                     }));
                 }
@@ -385,6 +390,14 @@ impl State {
             session
                 .finish(&batch)
                 .map_err(|error| room_poll_failure(error, "finish_batch", None))?;
+            if batch.outcome_complete.is_some() {
+                // Input drivers can wait for each recipient's room refresh
+                // instead of treating the result or the return packet as Idle.
+                let _ = resources.events.try_send(serde_json::json!({
+                    "event": "native_tls_room_return_refreshed",
+                    "stream_id": stream_id,
+                }));
+            }
             if batch.setup.is_some() {
                 let _ = resources.events.try_send(serde_json::json!({
                     "event": "native_tls_room_setup_written", "players": self.sessions.len()

@@ -226,6 +226,37 @@ impl NativeClient {
     }
 }
 
+// Compare the two slot snapshots the KR room receives, using the slot index
+// instead of assuming that delivery order follows the room's slot order.
+async fn waiting_slots(client: &mut NativeClient) -> [u64; 2] {
+    let mut state = [None; 2];
+    for _ in 0..2 {
+        let update = client.expect(110).await;
+        assert_eq!(update.payload.len(), 6);
+        let slot = read_uint(&update.payload[..1], Width::U8).unwrap() as usize;
+        assert_eq!(read_uint(&update.payload[5..], Width::U8).unwrap(), 0);
+        let packed = read_uint(&update.payload[1..5], Width::U32).unwrap();
+        assert!(
+            state[slot].replace(packed).is_none(),
+            "duplicate slot {slot}"
+        );
+    }
+    state.map(|slot| slot.expect("occupied slot"))
+}
+
+async fn room_marker(log: &mut mpsc::Receiver<serde_json::Value>, name: &str) -> serde_json::Value {
+    tokio::time::timeout(Duration::from_secs(2), async {
+        loop {
+            let event = log.recv().await.expect("room event channel");
+            if event["event"] == name {
+                return event;
+            }
+        }
+    })
+    .await
+    .unwrap_or_else(|_| panic!("missing room marker {name}"))
+}
+
 async fn connect_peer_offer(offers: &mut quinn::RecvStream) -> (quinn::Endpoint, kr_tunnel::Link) {
     let mut ip = [0; 4];
     offers.read_exact(&mut ip).await.unwrap();
@@ -468,10 +499,13 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
         clients[0].expect(238).await;
         assert_eq!(temp.last_seen(&a), stale, "keepalive must not renew idle");
         clients[1].send(97, &[0x59]).await;
-        for client in &mut clients {
-            client.expect(110).await;
-            client.expect(110).await;
-        }
+        let initial_slots = waiting_slots(&mut clients[0]).await;
+        assert_eq!(waiting_slots(&mut clients[1]).await, initial_slots);
+        assert_eq!(initial_slots[0] & 0x1e, 2, "host retains chief bit");
+        assert_eq!(initial_slots[1] & 0x1e, 0, "guest starts unready");
+        let return_setup = fields(&[(0, Width::U32)]);
+        let mut result_tail = fields(&[(0, Width::U8), (1, Width::U8)]);
+        result_tail.extend([0; 20]); // Opaque one-actor row.
         let mut last_key = None;
         let mut last_routes = None;
         let mut played = Vec::new();
@@ -482,7 +516,16 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             let stale = temp.age(&b, 30);
             clients[1].send(95, &ready).await;
             for client in &mut clients {
-                client.expect(110).await;
+                let update = client.expect(110).await;
+                assert_eq!(update.payload.len(), 6);
+                assert_eq!(read_uint(&update.payload[..1], Width::U8).unwrap(), 1);
+                // DCAD80 requires the guest's Ready group to equal one. No
+                // other slot flags, team or character may change on Ready95.
+                assert_eq!(
+                    read_uint(&update.payload[1..5], Width::U32).unwrap(),
+                    initial_slots[1] | 4
+                );
+                assert_eq!(read_uint(&update.payload[5..], Width::U8).unwrap(), 0);
             }
             assert!(temp.last_seen(&b) > stale, "Ready must renew idle");
             let stale = temp.age(&a, 30);
@@ -494,18 +537,13 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             assert!(temp.last_seen(&a) > stale, "Start must renew idle");
             let mut markers = Vec::new();
             for log in &mut event_logs {
-                let marker = tokio::time::timeout(Duration::from_secs(2), async {
-                    loop {
-                        let event = log.recv().await.expect("room event channel");
-                        if event["event"] == "native_tls_room_start_written" {
-                            break event;
-                        }
-                    }
-                })
-                .await
-                .expect("start write marker for each recipient");
+                let ready_marker = room_marker(log, "native_tls_room_ready_written").await;
+                let marker = room_marker(log, "native_tls_room_start_written").await;
                 let stream_id = marker["stream_id"].as_u64().expect("numeric stream id");
                 assert!(stream_id > 0);
+                assert_eq!(ready_marker, serde_json::json!({
+                    "event": "native_tls_room_ready_written", "stream_id": stream_id, "opcode": 110
+                }));
                 assert_eq!(marker, serde_json::json!({
                     "event": "native_tls_room_start_written", "stream_id": stream_id, "opcode": 121
                 }));
@@ -599,12 +637,32 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             clients[0].expect(170).await;
             clients[0].send(127, &report(0, 21, tick + 2)).await;
             for client in &mut clients {
-                client.expect(175).await;
-                client.expect(180).await;
-                client.expect(110).await;
-                client.expect(110).await;
+                assert_eq!(client.expect(175).await.payload.len(), 302);
+                client.send(202, &result_tail).await;
+            }
+            for client in &mut clients {
+                let returning = client.expect(180).await;
+                assert_eq!(returning.payload, fields(&[(0, Width::U8); 3]));
+                client.send(585, &return_setup).await;
+            }
+            for ((client, log), stream_id) in clients.iter_mut().zip(&mut event_logs).zip(markers) {
+                // The native return tail must preserve the room visit, then
+                // refresh the same slots with Ready cleared on both transports.
+                assert_eq!(waiting_slots(client).await, initial_slots);
+                let marker = room_marker(log, "native_tls_room_return_refreshed").await;
+                assert_eq!(marker, serde_json::json!({
+                    "event": "native_tls_room_return_refreshed", "stream_id": stream_id
+                }));
             }
             let db = rusqlite::Connection::open(temp.db()).unwrap();
+            let room_keys: i64 = db
+                .query_row(
+                    "SELECT count(*) FROM (SELECT DISTINCT room_id, room_session FROM matches)",
+                    [],
+                    |row| row.get(0),
+                )
+                .unwrap();
+            assert_eq!(room_keys, 1);
             let rows = db
                 .prepare(
                     "SELECT m.round, m.state, m.reason, p.slot, p.account_id, p.player_id, p.outcome, p.exit_kind
