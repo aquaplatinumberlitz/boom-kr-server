@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP369: Windows vi và Wine ko đã vào cùng trận Factory07; chưa có kết quả.** [Bằng chứng](evidence/checkpoints/records/CP369.json).
+
 **CP368: Gói có ảnh đăng nhập vi chạy tới sảnh; còn nghiệm thu phòng và trận.** [Bằng chứng](evidence/checkpoints/records/CP368.json).
 
 **CP367: Sáu ảnh đăng nhập vi đã duyệt và ghép vào gói thử.** [Bằng chứng](evidence/checkpoints/records/CP367.json). Vẫn còn nghiệm thu chat và ván đầu vi/ko.

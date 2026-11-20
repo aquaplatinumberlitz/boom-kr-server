@@ -76,13 +76,13 @@ M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn gi
 
 [Bản vá 949x](content/client-language.md#utf8) (CP310) đã hiện chữ ba ngôn ngữ và nhận chữ Việt/Hàn ở chat trên client
 chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
-- [Chat L1](protocol/lobby-profile.md#rust-patched-room-chat): test TLS vi/ko giữ nguyên byte ở sảnh/phòng chờ. CP362 thấy chat chéo trong phòng, CP366 thấy chat có dấu ko → vi trong sảnh. Còn gõ dấu từ Windows vi; không suy đường chat 2P, team, whisper hoặc guild.
+- [Chat L1](protocol/lobby-profile.md#rust-patched-room-chat): chat có dấu hai chiều đã thấy trong phòng trên gói vi/ko. Không suy đường chat 2P, team, whisper hoặc guild.
 - Tiệm: cần dịch vụ có tiệm; sau đó chụp tiệm ở cả ba bộ dữ liệu.
-- Sửa tên phòng: bật chuỗi định danh chẩn đoán đã nối vào auth4 cho tài khoản thử, gõ tiêu đề trộn và đối chiếu ở client nhận trên gói.
-- IME tiếng Hàn thật (composition từng âm tiết) chưa thử. Đường VK_PACKET đã sửa lỗi cắt trong bản chẩn đoán; kiểm lại trên gói.
-- [CP369](evidence/checkpoints/records/CP369.json) đã qua Start104, hai phản hồi 121, hai báo tải 99 và màn Factory07; hai client rời trước kết quả, sớm hơn idle/TTL. Chưa rõ thao tác nào kết thúc quyền trước. Đo nhãn nguyên nhân đầu tiên từ kiểm phiên, relay hoặc luồng KR và cùng lúc xác nhận chat có dấu cùng kết quả.
+- Sửa tên phòng: Wine ko đã gõ tiêu đề trộn và hai bản cùng thấy. Nếu mở rộng nhập liệu, thử gõ mới trực tiếp từ Windows vi; không đồng nhất với việc Windows vi đọc tiêu đề đã gửi.
+- IME tiếng Hàn thật (composition từng âm tiết) chưa thử. Hai bản đã nhận câu Unicode trên gói qua đường helper; ca này không dùng IME thật.
+- Hai lượt trước mất quyền phiên sớm hơn idle/TTL. [CP370](evidence/checkpoints/records/CP370.json) không lặp mất quyền trước kết quả. Nếu tái diễn, đối chiếu nguyên nhân đầu từ kiểm phiên, relay hoặc luồng KR; chưa biết nguyên nhân hai lượt trước.
 - Consumer bỏ qua hai slot chuyển mã (bộ giải riêng, GDI) chưa được loại trừ; chưa thấy chỗ nào sai trong các màn đã chụp.
-- Tên account đã có [biên UTF-8/949x strict](protocol/auth-session.md#rust-patched-account-names) và TCP/reset; còn native. Tên phòng và chat chỉ đi qua phòng/sảnh; cần xác nhận xuyên suốt trên gói.
+- Tên account có [biên UTF-8/949x strict](protocol/auth-session.md#rust-patched-account-names). Hai tên có dấu và tiêu đề trộn đã hiện đúng ở hai đầu cặp vi/ko.
 
 <a id="gap-room-occupancy"></a>
 ### Occupancy trong list và lifecycle phòng động

@@ -1,0 +1,70 @@
+{
+  "id": "CP370",
+  "previous": "CP369",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T12:18:53.674888+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Windows vi và Wine ko có chat có dấu và hoàn tất một ván trên gói đã duyệt không?",
+  "scope": "KRE-074 / #414, lượt cuối trong ba lượt nghiệm thu. Hai client đã vá 00967, mỗi client một account, mạng lab cô lập; thử thêm Start kế của #502.",
+  "context_commit": "c56df0b3797a301576728bafe336402cc5b77f2c",
+  "artifacts": [
+    {"sha256": "6edaa33e18221751773ed68a14403e53b4f53ad65760f0a4f2b794299f90ca09"},
+    {"sha256": "584c05c35e8e14c643146d28f9b51e9e62e249509d88f803eff40cafef186762"}
+  ],
+  "locators": ["local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3"],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Hai client đăng nhập qua launcher, đọc cùng tên Phòng Việt 한국 và hai tên nhân vật. Windows vi gửi “Việt gửi ạ” sang Wine ko; Wine ko gửi “Xin chào Việt Nam 안녕하세요 ạ” sang Windows vi.", "evidence": ["KO-CHAT", "VI-CHAT", "INPUT", "GATES"], "limits": "Ảnh bên nhận xác nhận nội dung; tiêu đề gõ từ ko qua Unicode helper. Chưa đo IME Hàn thật hoặc gõ mới tiêu đề từ vi."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Server nhận Start104, ghi hai 121, nhận hai 99 và hai 118. Cả hai hiện trận Factory07 rồi bảng kết quả; journal complete/elimination, ván 256. Hai client về cùng phòng.", "evidence": ["RECEIPT", "EVENTS", "VI-MATCH", "KO-MATCH", "VI-RESULT", "KO-RESULT", "VI-ROOM", "KO-ROOM"], "limits": "Một ván, mạng cô lập, không suy nguyên nhân hai lượt ngắt trước hoặc Internet thật."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/PLAN.md#current-order", "summary": "Sau khi về đúng phòng, Ready95 lần hai tới server. Nhấn Start từ client Wine chủ phòng, không thấy Start104 mới hay ván mới.", "evidence": ["START2", "TIMELINE", "RECEIPT", "GATES"], "limits": "Một lần nhấn có điều kiện trong lượt này; #502 của M8 vẫn mở."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu dữ liệu helper, ảnh bên nhận, màn trận/kết quả hai phía và SQLite.", "result": "pass", "evidence": ["INPUT", "VI-CHAT", "KO-CHAT", "VI-MATCH", "KO-MATCH", "VI-RESULT", "KO-RESULT", "RECEIPT"], "limits": "Khép L1b/L1c theo phạm vi giai đoạn 1 đã chốt; en hoãn."},
+    {"check": "Dọn VM và Wine; xác nhận tài nguyên chạy sẵn không đổi.", "result": "pass", "evidence": ["RECEIPT", "TIMELINE", "CLEANUP"], "limits": "Lỗi EOF khi dừng chủ động được giữ tách khỏi ván."}
+  ],
+  "delta": {"added": ["Nghiệm thu gói vi/ko, ghi âm tính của Start kế và audit đóng nhóm L1."], "corrected": ["Bỏ blocker chat vi → ko và kết quả ván đầu khỏi PLAN."], "superseded": []},
+  "blockers": ["Không còn blocker nghiệm thu L1; #502 và Internet thật thuộc M8. Hai lượt ngắt sớm trước đó chưa rõ nguyên nhân gốc."],
+  "next_steps": [
+    {"id": "L1-414-storage", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Biên lưu tên UTF-8 đã qua CP356 và tên còn hiển thị đúng trong lượt cuối."},
+    {"id": "L1-414-data", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Chuỗi UI và giới hạn byte đã qua kiểm; ảnh vi được duyệt và ghép ở CP367."},
+    {"id": "L1-414-limits", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Một gói có giới hạn byte và helper Unicode đã dùng để nghiệm thu vi/ko."},
+    {"id": "L1-414-title", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Tiêu đề trộn hiện giống nhau trên hai bản trong phòng."},
+    {"id": "L1-414-release", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Nghiệm thu lát cắt gói đã chốt; en để sau giai đoạn 1."},
+    {"id": "L1-414-native-pair", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Hai client qua launcher, đăng nhập, sảnh, phòng, trận và kết quả."},
+    {"id": "L1-414-wine-relay", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Hai client cùng trận qua relay lab và về lại phòng."},
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Đã ghi chat có dấu hai chiều và một ván trọn vẹn. Theo dõi Start kế qua #502."}
+  ],
+  "review": {"status": "waived", "reference": "docs/evidence/checkpoints/review-waiver.json", "as_of_utc": "2026-11-20T12:18:53.674888+00:00", "scope": "Codex tự kiểm; không tự merge.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Ghi kết quả L1."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Đóng lát cắt L1 và giữ #502."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục không đổi; cập nhật bằng chứng trong chương."},
+    {"path": "docs/protocol/lobby-profile.md", "state": "updated", "reason": "Ghi bằng chứng chat hai phía."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Bỏ khoảng trống gõ chat và kết quả ván đầu."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi acceptance, nhập liệu và phần hoãn."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Nối bằng chứng runtime vi/ko."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP370.json", "state": "updated", "reason": "Pin ảnh và log native."},
+    {"path": "docs/evidence/checkpoints/audits/AUD148.json", "state": "updated", "reason": "Ghi audit đóng nhóm L1."}
+  ],
+  "evidence": [
+    {"id": "RECEIPT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/l1-final-r3-receipt.json", "bytes": 5754, "sha256": "a801b3c83f6d7a2e354869074f6b430df98b685ef9bc86e51fcc3fb30e239317"},
+    {"id": "GATES", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/state-gate.jsonl", "bytes": 21899, "sha256": "bfb80383d234ad04929b1f8d3374f1a5980def9c2d4b485029200c356231172e"},
+    {"id": "EVENTS", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/service/rust-events.jsonl", "bytes": 4018, "sha256": "4e6788d48806d6df0be701eb5ba81338f07aa99fa7d9e938ad1e3a7598c069e3"},
+    {"id": "TIMELINE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/timeline.jsonl", "bytes": 89763, "sha256": "a6146ac9c9fe2faa29a1c4184c640631e4b12a2ab639d4555e0672b605cb411b"},
+    {"id": "VI-CHAT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-receive-ko-0/capture-0.png", "bytes": 286403, "sha256": "1f4ca48e5aa5111cbad4405c7021105b6d2e9df9cb034980829a85817ab32454"},
+    {"id": "KO-CHAT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-receive-vi-0.png", "bytes": 235254, "sha256": "6f79efdfc6e5dff40bb4701a7fa82c326b5c721ba480b54fc21b16074c099533"},
+    {"id": "INPUT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/guest-export/unicode-steps.txt", "bytes": 111, "sha256": "69166ec7e478a8f201c59efe0657ddfc1a5b3fd2c889988ae963979c204cc0f8"},
+    {"id": "VI-MATCH", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-battle-lit-0/capture-0.png", "bytes": 205548, "sha256": "722a58c537f73dbf4bf057fac4aeac49b6cabfb580b89d9168b759829c26d35e"},
+    {"id": "KO-MATCH", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-battle-lit-0.png", "bytes": 176576, "sha256": "32710cbb3cf04ec5de823e70eda7e092280a438ddc9024975f2ddee8bb1b0477"},
+    {"id": "VI-RESULT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-first-round-end-0/capture-0.png", "bytes": 237818, "sha256": "aca6e4b5da5affcf37bdf594752d2d400a2b47bba602bc276f364a51e9683971"},
+    {"id": "KO-RESULT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-first-round-end-0.png", "bytes": 203250, "sha256": "0a0c917af278a6cd1252374bd43f8c2808311ac3b111d4ce1867ca8eed4a7448"},
+    {"id": "VI-ROOM", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/win-returned-room-0/capture-0.png", "bytes": 284683, "sha256": "323702ebdff7ccfdaeb0302a1112d30bd063a7ebb08030e8e8a405358ba84cd2"},
+    {"id": "KO-ROOM", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-returned-room-0.png", "bytes": 234296, "sha256": "3b188a928969040f5fc045111db2ac0e04751c08131abd478ceb2b5c416b76ca"},
+    {"id": "START2", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/wine-start-second.png", "bytes": 235041, "sha256": "527f05c4aee85ddd4d9ff9c171485ba793c299ded97f7c8fc9f0a9e114952396"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-next-control-r3/cleanup.json", "bytes": 334, "sha256": "3c033fb9e026c1c1252522625748b2106361ab968082f95a882f39bd5d42ec79"}
+  ],
+  "evidence_runs": [],
+  "completed_feature_groups": ["l1-phase1-localization"]
+}

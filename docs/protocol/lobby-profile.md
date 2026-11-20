@@ -450,7 +450,7 @@ chưa Battle/UDP/DB/accountauthentication/generalroom/fullM2/fullservice/product
 CP232PR303merge5b3ef81, AUD067qua232/audit kếCP236. **Internet thật chưa kiểm**.
 
 <a id="rust-patched-room-chat"></a>
-### Chat tối thiểu cho ca chữ có dấu M8 — một native vi, chờ chat chéo
+### Chat sảnh và phòng chờ cho client vá 949x
 
 [Đối chiếu KR/VN và metadata](../evidence/rust-service/m8-room-chat-contract.json) giữ khoảng trống này riêng
 với L1 do Claude sở hữu. Hai request KR thật trong capture L1 đã giữ có opcode18, sequence/CRC hợp lệ:
@@ -488,6 +488,8 @@ L1 mở chat sảnh trên launcher TLS khi `patched_949x_names=true`. [CP355](..
 `CChatStage` rồi consumer cũ. Cả sảnh và phòng chờ dựng reply28 từ tên account và giữ nguyên byte của tin 18 đã kiểm.
 Tin sảnh chỉ vào queue của các lượt sảnh hiện hành, tối đa 8 tin chờ mỗi kết nối; vào phòng bỏ queue sảnh.
 Kiểm lại account nguồn và đích trước gửi. Chung giới hạn 500 ms giữa hai tin trên cùng kết nối; không tạo ACK.
-Test TLS vi/ko kiểm byte và phạm vi. Còn nghiệm thu trên game thật; không suy routing Nexon, chat 2P, team, whisper hay guild.
+Test TLS vi/ko kiểm byte và phạm vi. [CP370](../evidence/checkpoints/records/CP370.json) xác nhận hai phía xem đúng
+tên và câu có dấu trong phòng chờ trên Windows vi và Wine ko. Chat sảnh có ca ko → vi riêng. Không suy routing Nexon,
+chat 2P, team, whisper hay guild.
 
 <!-- protocol-topic-content-end -->

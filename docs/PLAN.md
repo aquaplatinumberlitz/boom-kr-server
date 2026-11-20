@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, CP369: cặp vi/ko đã vào trận; còn chat có dấu hai chiều và kết quả.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, CP370 / AUD148: đạt phạm vi L1 giai đoạn 1.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -25,7 +25,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
 | M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
 | [G1](#rust-g1) sáu map và tập item đã cắt | **Đạt acceptance giai đoạn 1** theo [ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json): sáu map/roster trong phạm vi, kim/cứu, item nền/MaxPower, ma trận Shoe/Punch, drop đã cắt, từ chối nhân vật giữ phiên và client Việt hai vòng trên Rust | Giữ giới hạn từng route/native và raw cleanup; không whole gameplay, every-tile hoặc L1 closure. Vận hành còn M8 |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
-| L1 UTF-8, Claude phụ trách, Codex thực thi | [L1a chọn 949x](content/client-language.md#utf8); Rust chuyển chat sảnh/phòng và lưu tên account UTF-8. [Sáu ảnh đăng nhập vi đã duyệt, ghép vào gói](evidence/checkpoints/records/CP367.json). Windows vi và Wine ko đã vào cùng phòng có dấu và [tải trận Factory07](evidence/checkpoints/records/CP369.json). | **Điều kiện đóng giai đoạn 1**. Cả hai ngắt ở bước kiểm quyền trước kết quả, sớm hơn giới hạn phiên. Còn nghiệm thu một ván trọn vẹn và chat có dấu vi → ko. Còn một lượt đã cấp. Ảnh bổ sung và nghiệm thu en hoãn. |
+| L1 UTF-8, Claude phụ trách, Codex thực thi | **Đạt phạm vi giai đoạn 1**. [L1a chọn 949x](content/client-language.md#utf8); Rust lưu tên account UTF-8 và chuyển chat sảnh/phòng. [CP370](evidence/checkpoints/records/CP370.json) xác nhận hai bản vi/ko cùng phòng có dấu, chat có dấu hai chiều và chơi một ván tới kết quả. [Sáu ảnh đăng nhập vi đã duyệt và ghép](evidence/checkpoints/records/CP367.json). | Ảnh bổ sung và nghiệm thu en hoãn. Start ván hai theo dõi riêng ở #502. |
 | M8 vận hành | CI đã có; [nền gói Linux](evidence/rust-service/m8-server-package.json) đã có manifest/state riêng và smoke x86/ARM tách repo, gồm kiểm chạy trùng và từ chối ghi đè DB | Xuất dữ liệu từ pack, launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 24 giờ chạy dài |
 
 **Thứ tự việc:**
@@ -40,7 +40,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), nối đăng nhập trong game | [CP354](evidence/checkpoints/records/CP354.json) xác nhận Windows 2P về đúng phòng sau kết quả và đã bấm Start. Chưa thấy Start104 mới, bản ghi ván mới hoặc màn trận hai. Theo dõi riêng Start ván hai ở #502. Wine ko đã vào phòng qua relay lab; lỗi Start ván đầu khi ghép Windows/Wine được theo dõi ở L1. Internet thật chưa kiểm. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), nối đăng nhập trong game | Windows 2P và cặp Windows vi/Wine ko đã chơi ván đầu tới kết quả rồi về đúng phòng ([CP354](evidence/checkpoints/records/CP354.json), [CP370](evidence/checkpoints/records/CP370.json)). Cặp vi/ko có Ready95 lần hai, nhưng Start104 mới chưa tới sau khi bấm Start. Theo dõi riêng ở #502. Internet thật của gói này chưa kiểm. |
    | Tải/giám sát/soak | Chốt tần suất UDP từ client thật và ngưỡng trước đo, 50 người/8 phòng cùng hai phòng native, rồi 24 giờ tải nền; đo startup failure, bộ nhớ/cổng/phòng. |
    | Admin/backup/rollback | Audit thao tác admin, snapshot khi live và restore vào máy sạch/native trận mới, kill/restart và nâng cấp/quay lại binary. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
@@ -55,9 +55,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
    và dump cần truy lifetime; lỗi guard Docker trước VM có receipt thất bại và phục hồi riêng. Dump chưa trích thông tin hoặc stop/export chưa xác nhận được giữ để phục hồi.
    Các lượt mới theo [quy định sau lượt chạy](evidence/owner-directives/run-cleanup.json).
 
-   Claude điều phối L1; Codex thực thi cả RE và runtime. Ca vi/ko cùng phòng đọc tên phòng, tên nhân vật và chat
-   có dấu dùng chung nghiệm thu gói M8 theo [chỉ đạo mới](evidence/owner-directives/l1-phase1.json). Tiệm, chữ do
-   server gửi và IME Hàn thật giữ phạm vi sau giai đoạn 1. Runtime Wine dùng lease chung.
+   L1 đã nghiệm thu trên cùng gói launcher với M8, theo [phạm vi nghiệm thu](evidence/owner-directives/l1-phase1.json).
+   Tiệm, chữ do server gửi và IME Hàn thật để sau giai đoạn 1. Runtime Wine dùng lease chung.
 
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
@@ -736,9 +735,9 @@ lấy từ [client PopTag 0.7.8](content/client-language.md#poptag) công ty c�
 tự giữ bảng mã, có sẵn mã ngôn ngữ cho Hàn, Việt, Anh, và font đã đủ chữ Việt. Theo
 [quyết định 13/11](evidence/owner-directives/l10n-utf8.json), đợt L **đưa mọi chữ về UTF-8**: một bản vá chung cho ba
 ngôn ngữ, người chơi khác ngôn ngữ đọc được chữ của nhau, server lưu và chuyển chữ UTF-8. Mẫu PopTag thực tế có lớp
-949/cache hai byte và wrapper J9 mang UTF-8, chưa là engine UTF-8 thuần. L1a đang đối chiếu boundary và literal949;
-controls diagnostic đã tới phòng với chữ gốc, nhưng chưa có nghiệm thu bản vá hoặc nhập liệu.
-Đặc tả ứng viên và giới hạn tại [tài liệu ngôn ngữ](content/client-language.md#utf8).
+949/cache hai byte và wrapper J9 mang UTF-8, chưa là engine UTF-8 thuần. L1 đã chọn 949x trong bộ nhớ và trên wire
+cho client đã vá, với UTF-8 ở biên lưu trữ của server. [Tài liệu ngôn ngữ](content/client-language.md#utf8) giữ kết quả
+nghiệm thu vi/ko và phạm vi hoãn.
 
 Người chơi chọn ngôn ngữ ở trình mở game (mỗi ngôn ngữ một bộ chuỗi, font và ảnh), không phải trong menu của client.
 Giai đoạn 1 vẫn dùng client gốc với bảng mã 949. Mọi thay đổi làm trên bản copy; client và pack gốc giữ nguyên.

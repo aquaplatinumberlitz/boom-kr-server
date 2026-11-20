@@ -301,11 +301,23 @@ cặp hằng 1024×768 hay tuỳ chọn tương tự. Câu "client VN dùng giao
 nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy native. Chi tiết VA ở
 [evidence tĩnh phóng to cửa sổ](../evidence/l10n-window-scale-static.json).
 
+### Nghiệm thu giai đoạn 1
+
+[CP370](../evidence/checkpoints/records/CP370.json) khép L1b và L1c theo phạm vi vi/ko do Claude chốt. Windows vi và
+Wine ko chạy gói có sáu ảnh đăng nhập vi đã duyệt. Hai client đăng nhập trong game, vào sảnh rồi cùng phòng
+`Phòng Việt 한국`, thấy đúng `Việt01` và `한국02`, đọc trọn chat có dấu từ phía kia. Windows vi dùng helper Unicode
+và phía ko đọc được “Việt gửi ạ”; phía vi đọc được “Xin chào Việt Nam 안녕하세요 ạ” từ Wine ko.
+
+Cả hai chơi một ván Factory07 tới bảng kết quả và trở về phòng. SQLite ghi ván hoàn tất. Khi thử ván kế, server nhận
+Ready95 nhưng không thấy Start104 mới sau khi bấm Start; #502
+theo dõi ở M8. Ca này dùng mạng cô lập; chưa đo Internet thật cho gói.
+
 ### Giới hạn và việc còn lại
 
 - **Tiệm chưa tới được.** Nút tiệm ở phòng chỉ hiện tooltip `Đến Siêu thị`; dịch vụ Rust chưa có tiệm.
 - **Chat chuyển tiếp.** [CP355](../evidence/checkpoints/records/CP355.json) kiểm hai kết nối vi/ko mô phỏng qua TLS:
-  reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. [CP362](../evidence/checkpoints/records/CP362.json) xác nhận chat chéo trong phòng: ko gửi câu trộn Việt/Hàn, vi trả lời ASCII, cả hai hiện đúng người gửi. [CP366](../evidence/checkpoints/records/CP366.json) xác nhận ko gửi câu có dấu sang vi trong sảnh. Helper Windows chưa đưa được chữ vào ô chat; chiều vi → ko có dấu còn mở.
+  reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. [CP362](../evidence/checkpoints/records/CP362.json) xác nhận chat chéo trong phòng: ko gửi câu trộn Việt/Hàn, vi trả lời ASCII, cả hai hiện đúng người gửi. [CP366](../evidence/checkpoints/records/CP366.json) xác nhận ko gửi câu có dấu sang vi trong sảnh; ca nghiệm thu trên
+  xác nhận cả hai chiều trong phòng chờ.
 - **Sửa tên phòng.** Đăng nhập trong game đã dùng cấu hình chẩn đoán để cấp chuỗi cục bộ cho account thử. Trên gói thử CP362, bản ko nhận thao tác gõ Unicode và hai bản hiện cùng tiêu đề `Phòng Việt 한국`; chưa đo chiều gõ từ bản vi.
 - **Giới hạn chuỗi UI.** Bộ dựng 949x từ chối tên phòng mặc định quá 22 byte và nhãn người nhận quá 14 byte
   trong cả `csysstr.ssd` và `ClientString`. Dữ liệu vi/en/ko đã qua kiểm; còn xác minh hiển thị trên gói.
@@ -325,8 +337,8 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   [CP360](../evidence/checkpoints/records/CP360.json), bản vi cần cả bước chuẩn bị bảng import và trạng thái bootstrap
   đã có từ M8; sau đó đăng nhập 1P, hiện tên `Việt01`, tạo phòng sau khi sửa phần cuối tiêu đề Việt có sẵn, và hiện
   tin ASCII tự gửi. Ba nút đăng nhập dưới màn hình hiện tiếng Việt; nhãn ID, mật khẩu và chọn máy chủ còn tiếng Hàn.
-  Gói thử mới đã thay sáu ảnh đăng nhập sau ca này. Các nhãn ảnh của phòng, tab nhân vật, banner và hộp tạo phòng từng còn chữ Hàn. Chưa kiểm hộp “Invalid Login!” thật,
-  gõ dấu mới, client ko nhận chữ hoặc một ván vi/ko. Gói en chưa chạy.
+  Gói thử mới đã thay sáu ảnh đăng nhập sau ca này. Một số nhãn ảnh của phòng, tab nhân vật, banner và hộp tạo phòng từng còn chữ Hàn. Chưa mở hộp “Invalid Login!” để
+  kiểm hiển thị trên Windows. Gói en chưa chạy.
 - **Wine qua launcher mới.** Bản vi và ko ở CP360 thoát trước đăng nhập. [CP361](../evidence/checkpoints/records/CP361.json)
   giữ nguyên payload, bổ sung phân giải hostname trong namespace chỉ có loopback; bản ko đăng nhập 1P và hiện tên
   `한국02` ở sảnh. Sửa route relay trong lab giúp Wine ko vào cùng phòng Factory07 với Windows vi qua launcher mới
@@ -335,11 +347,12 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   [CP365](../evidence/checkpoints/records/CP365.json) xác định lỗi journal trước khi ghi 121 và sửa ở Rust.
   [CP366](../evidence/checkpoints/records/CP366.json) dùng bản sửa: hai client vào cùng phòng nhưng bộ điều khiển Windows
   hết hạn trước Ready và Start. [CP369](../evidence/checkpoints/records/CP369.json) xác nhận gói có sáu ảnh vi
-  vào Factory07 trên cả hai client; cả hai ngắt ở bước kiểm quyền trước kết quả. Claude hoãn nghiệm thu en sau giai đoạn 1.
+  vào Factory07 trên cả hai client nhưng ngắt ở bước kiểm quyền trước kết quả. Lượt nghiệm thu trên không lặp lỗi này;
+  nguyên nhân hai lượt trước chưa rõ.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,
-tiệm và gõ tiếng Hàn bằng IME thật. Chat chuyển tiếp sảnh/phòng thuộc giai đoạn 1. Ảnh vi đã ghép vào gói và đã thấy ở màn đăng nhập Windows. Còn kiểm gõ tiêu đề từ bản vi, chat có dấu vi → ko và chơi trọn một ván trên gói.
+tiệm và gõ tiếng Hàn bằng IME thật. Chat chuyển tiếp sảnh/phòng thuộc giai đoạn 1. Ảnh và nghiệm thu en đã hoãn. Tên phòng có dấu được gõ từ Wine ko trong ca nghiệm thu; chưa đo gõ tiêu đề mới trực tiếp từ Windows vi.
 
 ### Các lượt chẩn đoán trước (Codex, 14–15/11)
 
