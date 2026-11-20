@@ -328,8 +328,10 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
   tin ASCII tự gửi. Ba nút đăng nhập dưới màn hình hiện tiếng Việt; nhãn ID, mật khẩu và chọn máy chủ còn tiếng Hàn.
   Các nhãn ảnh của phòng, tab nhân vật, banner và hộp tạo phòng còn chữ Hàn. Chưa kiểm hộp “Invalid Login!” thật,
   gõ dấu mới, client ko nhận chữ hoặc một ván vi/ko. Gói en chưa chạy.
-- **Wine qua launcher mới.** Bản vi và ko kết nối TLS rồi thoát trước màn đăng nhập. Chưa xác định nguyên nhân;
-  cần tách bước từ bootstrap đến LoginStage với cùng gói và so với đối chứng Windows.
+- **Wine qua launcher mới.** Bản vi và ko ở CP360 thoát trước đăng nhập. [CP361](../evidence/checkpoints/records/CP361.json)
+  giữ nguyên payload, bổ sung phân giải hostname trong namespace chỉ có loopback; bản ko đăng nhập 1P và hiện tên
+  `한국02` ở sảnh. Sau đó client báo ngắt mã 10. Companion dừng khi đường tới relay không có route trong lab.
+  Chưa kiểm lại với endpoint relay cục bộ, chưa có phòng hoặc trận Wine, và chưa chạy vi trong cấu hình này.
 - **Exe gốc `CA.exe`** vẫn chưa chạy trên Wine; bản vá áp trên exe runtime chẩn đoán.
 
 **Để sau giai đoạn 1** theo [quyết định 20/11](../evidence/owner-directives/l1-phase1.json): chữ server gửi,

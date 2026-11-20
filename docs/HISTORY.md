@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP360: Windows vi tới phòng; Wine thoát trước đăng nhập.** [Bằng chứng](evidence/checkpoints/records/CP360.json). L1b/L1c còn mở.
+
 **CP359: Gói thử kiểm chuỗi exe và ảnh tự động.** [Bằng chứng](evidence/checkpoints/records/CP359.json). L1 còn thiếu ảnh đã duyệt và nghiệm thu.
 
 **CP358: Đăng nhập game nhận chuỗi cục bộ để thử gõ tiêu đề phòng.** [Bằng chứng](evidence/checkpoints/records/CP358.json). L1 còn mở.
