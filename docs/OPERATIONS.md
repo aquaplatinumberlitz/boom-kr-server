@@ -165,8 +165,8 @@ DB giữ tên UTF-8, adapter đổi đúng 949x khi phát profile và kiểm cha
 tên ngoài ASCII bị từ chối cấp frontend. Không tự sửa DB/đổi tên khi chuyển policy. [Contract biên tên](protocol/auth-session.md#rust-patched-account-names)
 chưa có native acceptance cho tên Việt/Hàn; chat và tên phòng có ca riêng.
 
-Giao diện [public launcher](protocol/auth-session.md#rust-public-launcher) opt-in của M8 đã chạy một ván 2P
-trên gói Windows cô lập; Start ván kế, Wine và Internet thật còn mở. Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
+Trạng thái nghiệm thu của [public launcher](protocol/auth-session.md#rust-public-launcher) nằm ở
+[Bảng điều hành M8](PLAN.md#current-order). Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
 command từ chối directory có sẵn. Giữ `private.pk8` trên server trong parent `0700`, file `0600`; phát certificate
 qua kênh/gói tin cậy. Không tự tải pin từ cùng endpoint chưa xác thực hoặc ghi private key vào bundle. Khi đóng
 gói config có launcher và prelogin, builder gom certificate đã pin. Operator cấp key khớp vào
@@ -195,6 +195,30 @@ pin lại config/manifest rồi verify trước chạy; không mở rộng ACL �
 owner giữ lease chung, VM/egress riêng và chờ bản cài kiểm hash xong mới bật runner VPS có hạn và rule test riêng.
 Chọn executable theo hash đã đo, không mặc định tên `CA.exe` trong cây nhiều probe; bản copy từ ISO phải bỏ
 ReadOnly trước khi ghi config/cache. Các lỗi chuẩn bị và sửa tương ứng ở metadata nền launcher, chưa là nghiệm thu KR.
+
+## Nghiệm thu gói qua Internet và WAN giả lập
+
+Tạo recipe triển khai trước khi dựng manifest. Giữ các cổng KR nội bộ ở loopback VPS và loopback của companion;
+chỉ mở ba cổng từ IPv4 nguồn của lượt thử ở cả firewall máy và lớp mạng VPS: API launcher TCP/TLS, prelogin UDP/QUIC
+và relay UDP/QUIC. Dùng địa chỉ giao diện riêng cho bind của ba listener và địa chỉ client tới được cho relay
+advertise. Client nhận pin chứng thư và cổng API/prelogin qua payload; địa chỉ relay đến từ offer xác thực.
+
+Đặt `network_scope: controlled_internet` và thêm **IPv4 mà VPS quan sát** vào `allowed_peers`, đồng thời giữ các
+peer nội bộ của profile. API launcher và prelogin đều kiểm danh sách này; firewall mở và TCP kết nối được vẫn
+chưa đủ. Hai client chung IPv4 dùng chung hạn mức `max_per_ip` của prelogin. Giữ hạn phiên mặc định 8 giờ và idle
+30 phút; hai hạn này độc lập timeout im lặng của QUIC. Nếu địa chỉ đổi, cập nhật recipe và rule của lượt thử, tạo
+gói mới và kiểm manifest lại. Không sửa trực tiếp template đã có pin.
+
+Khởi tạo state riêng, cấp hai key và account thử nghiệm qua stdin riêng. Sau readiness, xác nhận launcher đã nhận
+`status` qua TLS và đợi prelogin TLS rồi mới thao tác trong game; chỉ chạy thao tác trận khi đồng hồ trên cả hai
+màn hình đang đếm. Ghi RTT tới VPS riêng với bằng chứng relay. Kết thúc lượt bằng tín hiệu dừng cho runner đã tạo,
+kiểm listener đã nhả rồi gỡ các rule có nhãn của lượt đó ở cả hai lớp.
+
+[Tool WAN giả lập](../tools/m8_wan_namespace.sh) chạy lệnh kiểm trong namespace mới với server và Wine ở
+`M8_WAN_SERVER`, còn QEMU user networking phải được mở trong `M8_WAN_EDGE_NS` qua `nsenter --net`. Router chỉ
+chuyển các cổng của gói; prelogin và relay dùng hai dải cổng nguồn NAT riêng. Mỗi chiều đường Windows thêm 75 ms
+và mất 3% độc lập. Để thử mất kết nối, hạ rồi bật lại `wan0` trong namespace edge khi cả hai đồng hồ đã chạy;
+kiểm journal, phiên, UI người còn lại và đăng nhập mới sau khi đường trở lại.
 
 ## Chọn cấu hình phục vụ
 
@@ -230,9 +254,10 @@ Chỉ công bố readiness sau khi TCP, launcher và UDP listener đã bind thà
 | Peer QUIC | Một connection mỗi companion; tối đa 64 khi mọi slot đều đầy |
 | Proxy tại một client | Bảy socket loopback mỗi snapshot tám người, ngoài socket UDP native và QUIC |
 | TCP game/bootstrap | Các cổng trong config đã chọn; độc lập số route logic |
-| Launcher hiện hành | Unix socket riêng; giao diện public/TLS và gói người chơi thuộc M8 |
+| Launcher hiện hành | Unix socket riêng; gói người chơi dùng thêm một listener TCP/TLS và một listener UDP/QUIC prelogin |
 
-Firewall chỉ cho inbound tới UDP listener và TCP game/bootstrap đã chọn, theo allowlist/phạm vi triển khai.
+Với gói launcher qua Internet, áp dụng ba cổng và allowlist ở mục trên. Nếu chạy một chế độ chẩn đoán riêng,
+chỉ cho inbound tới listener mà chế độ đó cần.
 Cho phép reply của flow hiện hành; không mở dải cổng proxy loopback hoặc dải 448 cổng public. Bind/advertise là hai
 vai trò riêng: địa chỉ listener cục bộ phải bind được, địa chỉ quảng bá phải tới được từ companion. Certificate pin
 và capability được phát qua launcher xác thực, không qua packet native hoặc argv.
