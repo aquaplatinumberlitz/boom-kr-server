@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP365: Sửa lỗi journal chặn Start ván đầu khi ID chủ phòng lớn hơn ID khách.** [Bằng chứng](evidence/checkpoints/records/CP365.json). Còn nghiệm thu trên gói Windows vi và Wine ko.
+
 **CP364: Đã kiểm đầu vào cho lượt xác minh ván đầu vi/ko.** [Bằng chứng](evidence/checkpoints/records/CP364.json). L1b/L1c còn mở; chưa có lượt chạy với log mới.
 
 **CP363: Có log xác định bước ngắt khi tải trận vi/ko.** [Bằng chứng](evidence/checkpoints/records/CP363.json). Chưa biết nguyên nhân.

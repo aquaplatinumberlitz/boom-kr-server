@@ -76,11 +76,11 @@ M4 Free 1v7 là giới hạn đã biết; M7/G1/M6/M8 và điều kiện bàn gi
 
 [Bản vá 949x](content/client-language.md#utf8) (CP310) đã hiện chữ ba ngôn ngữ và nhận chữ Việt/Hàn ở chat trên client
 chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
-- [Chat L1](protocol/lobby-profile.md#rust-patched-room-chat): test TLS vi/ko giữ nguyên byte ở sảnh/phòng chờ. CP362 thấy chat chéo trong phòng; còn chat chéo trong sảnh và nhập dấu từ bản vi; không suy đường chat 2P, team, whisper hoặc guild.
+- [Chat L1](protocol/lobby-profile.md#rust-patched-room-chat): test TLS vi/ko giữ nguyên byte ở sảnh/phòng chờ. CP362 thấy chat chéo trong phòng, CP366 thấy chat có dấu ko → vi trong sảnh. Còn gõ dấu từ Windows vi; không suy đường chat 2P, team, whisper hoặc guild.
 - Tiệm: cần dịch vụ có tiệm; sau đó chụp tiệm ở cả ba bộ dữ liệu.
 - Sửa tên phòng: bật chuỗi định danh chẩn đoán đã nối vào auth4 cho tài khoản thử, gõ tiêu đề trộn và đối chiếu ở client nhận trên gói.
 - IME tiếng Hàn thật (composition từng âm tiết) chưa thử. Đường VK_PACKET đã sửa lỗi cắt trong bản chẩn đoán; kiểm lại trên gói.
-- Cặp Windows vi/Wine ko tái hiện lỗi sau Start104 ở [CP365](evidence/checkpoints/records/CP365.json): poll dừng ở journal trước 121 khi chủ phòng có ID lớn hơn khách. Test SQLite tái hiện lệch thứ tự roster, bản sửa dùng cùng thứ tự slot. Cần đo 121, báo tải 99, hồi đáp 153, màn trận và kết quả trên cặp thật; mốc ghi 121 chỉ xác nhận server ghi xong.
+- [CP365](evidence/checkpoints/records/CP365.json) sửa sai thứ tự roster chặn 121 tại journal. [CP366](evidence/checkpoints/records/CP366.json) dừng trước Ready vì bộ điều khiển Windows hết hạn. Trước lượt kế, tách hạn của bộ điều khiển khỏi thời gian chuẩn bị; xác minh helper Unicode chạy cùng mức quyền và đúng ô chat. Đo 121, báo tải 99, hồi đáp 153, màn trận và kết quả.
 - Consumer bỏ qua hai slot chuyển mã (bộ giải riêng, GDI) chưa được loại trừ; chưa thấy chỗ nào sai trong các màn đã chụp.
 - Tên account đã có [biên UTF-8/949x strict](protocol/auth-session.md#rust-patched-account-names) và TCP/reset; còn native. Tên phòng và chat chỉ đi qua phòng/sảnh; cần xác nhận xuyên suốt trên gói.
 
