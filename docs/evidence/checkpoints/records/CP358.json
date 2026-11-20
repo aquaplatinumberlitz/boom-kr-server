@@ -1,0 +1,47 @@
+{
+  "id": "CP358",
+  "previous": "CP357",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T02:03:19.636756+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Đăng nhập game có cấp chuỗi điều kiện để tài khoản thử gõ tên phòng không?",
+  "scope": "L1 / #414, auth4 1P/2P; không tự cấp cho tài khoản thường hoặc khách ngoài cấu hình.",
+  "context_commit": "fd554f0bb547ab8937b277829012a10a9184a69e",
+  "artifacts": [
+    {"sha256": "a2b4bf71d192478539a02cc6a31cb0b194cc759f8c6e0ce9bf3a258ed63244f7"}
+  ],
+  "locators": [
+    "local/research/codex/l1-data-preflight-r1"
+  ],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/content/client-language.md#utf8", "summary": "Nối lại cấu hình diagnostic_identity_strings cho auth4 trong game. Test đi qua từng hàng 1P/2P và xác nhận echo giữ nguyên; khách giữ trường trống.", "evidence": ["AUTH", "WIRE"], "limits": "Đây là phép thử với account cục bộ được cấu hình; chưa chứng minh thao tác gõ qua UI gói."}
+  ],
+  "verification": [
+    {"check": "Kiểm các hành vi bao phủ trong phạm vi.", "result": "pass", "evidence": ["AUTH", "WIRE", "CLIPPY"], "limits": "Chưa nghiệm thu gói phát hành."}
+  ],
+  "delta": {"added": ["Đăng nhập game cấp chuỗi điều kiện sửa tên phòng cho các account thử được cấu hình, giữ mặc định rỗng."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Còn nghiệm thu vi/ko trên gói phát hành."
+  ],
+  "next_steps": [
+    {"id": "L1-414-title", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Đo thao tác gõ tiêu đề và chat hai chiều trên gói vi/ko cùng phòng."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T02:03:19.636756+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc gần nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển mốc cũ."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi hiện trạng L1."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở câu hỏi mới."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi thứ tự hay kiểu trường wire."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi giới hạn hiện có."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Liên kết checkpoint."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP358.json", "state": "updated", "reason": "Pin test và kết quả."}
+  ],
+  "evidence": [
+    {"id": "AUTH", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/title-login-stacked.log", "bytes": 591, "sha256": "a2b4bf71d192478539a02cc6a31cb0b194cc759f8c6e0ce9bf3a258ed63244f7"},
+    {"id": "WIRE", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/title-wire-stacked.log", "bytes": 953, "sha256": "1a48fd522f37d3a68e6f98e47d3c3e7a467158585fc8fb902a67e546bbc7e8ae"},
+    {"id": "CLIPPY", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/title-clippy-stacked.log", "bytes": 256, "sha256": "821e3be630f9cad62e8af7b752040ac56b56775c1b661a6531d201e7c936bbf8"}
+  ]
+}
