@@ -1,0 +1,63 @@
+{
+  "id": "CP362",
+  "previous": "CP361",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T05:44:43.594658+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Gói vi/ko có thể vào cùng phòng, chat và chơi một ván khi endpoint relay đi được không?",
+  "scope": "KRE-074 / #414, M8 / #476. Một cặp Windows vi và Wine ko cô lập, chạy qua launcher mới; không thử Start ván hai.",
+  "context_commit": "f258457786bcb97776b5c5bb5c5f218e2d5b59da",
+  "artifacts": [
+    {"sha256": "ff7081eab89884ef1afc6960603f9d89e249dfae57d41fa5174ab2620a4ee0dc"}
+  ],
+  "locators": [
+    "local/research/codex/l1-release-preflight-r1/native-pair-followup"
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Hai tài khoản đăng nhập 1P, ko gõ Phòng Việt 한국 và tạo phòng, vi thấy cùng tiêu đề khi chọn phòng; cả hai hiện 한국02 và Việt01 trong phòng Factory07.", "limits": "Thử qua đầu vào Unicode ở Wine, không phải IME Hàn thật; 16 ảnh vi đã khôi phục trong payload, ảnh en chưa chạy.", "evidence": ["INPUT", "ROUTE", "NSS", "SERVER", "WINE-TITLE", "WIN-LIST", "WIN-CHAT", "WINE-CHAT", "SHORTCUT"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Trong phòng, vi nhận trọn câu Xin chào Việt Nam 안녕하세요 ạ từ ko và ko nhận câu trả lời ASCII của vi, đúng tên người gửi.", "limits": "Đo qua ảnh hai client; chưa thử gửi dấu từ vi hoặc chat sảnh.", "evidence": ["WIN-CHAT", "WINE-CHAT", "RESULT"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/client-language.md#utf8", "summary": "Ready95 và một Start104 tới server; journal có ván running. Sau đó hai owner kết thúc với retired_membership và room_poll; không thấy màn trận hay kết quả.", "limits": "Hai log client báo ngắt mã 10. Chưa xác định guard nào là nguyên nhân gốc hoặc lý do poll thất bại.", "evidence": ["READY", "SERVER", "RESULT", "WIN-END", "WINE-END", "WIN-LOG", "WINE-LOG"]}
+  ],
+  "verification": [
+    {"check": "Lối tắt Windows, hai login, vào cùng phòng, tên/tiêu đề và chat.", "result": "pass", "evidence": ["SHORTCUT", "WIN-LIST", "WINE-TITLE", "WIN-CHAT", "WINE-CHAT", "SERVER"], "limits": "Chỉ nghiệm thu phạm vi phòng chờ."},
+    {"check": "Hoàn tất một ván và dọn lab.", "result": "fail", "evidence": ["RESULT", "SERVER", "CLEAN"], "limits": "Ván chưa hoàn tất; đã dừng và dọn riêng hai runtime, giữ Windows có sẵn."}
+  ],
+  "delta": {"added": ["Đo native vi/ko cùng phòng, tiêu đề trộn, tên hai account và chat chéo; tách lỗi ván đầu khỏi Start ván hai."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Ngắt sau Start104 đầu tiên; ảnh en và vài nhãn LoginStage chưa đủ; chưa kiểm chat sảnh và nhập dấu từ vi."
+  ],
+  "next_steps": [
+    {"id": "L1-414-pair-round", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khoanh vùng lỗi poll/phát batch đầu tiên sau Start104 của hai kết nối, sau đó kiểm một ván và chat sảnh trên gói."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T05:44:43.594658+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện hành."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc trước."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật L1 và launcher."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Ghi phép kiểm lỗi khi bắt đầu ván."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi contract hoặc wire."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi hành vi đã đo và phần còn thiếu."},
+    {"path": "docs/evidence/checkpoints/records/CP362.json", "state": "updated", "reason": "Pin kết quả và bằng chứng."}
+  ],
+  "evidence": [
+    {"id": "INPUT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/preflight.json", "bytes": 518, "sha256": "ff7081eab89884ef1afc6960603f9d89e249dfae57d41fa5174ab2620a4ee0dc"},
+    {"id": "ROUTE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/relay-route-ok.json", "bytes": 5, "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"},
+    {"id": "NSS", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/resolver-verification.json", "bytes": 130, "sha256": "b1e485e6e082aa9706bb430f6536e04a248f75352cff8d86885d9918c23ca956"},
+    {"id": "RESULT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/outcome.json", "bytes": 660, "sha256": "1ffbe0eca7b22b497d9703d9195ceed12969ae529bcdbe6444002055a9cd3c89"},
+    {"id": "WIN-LIST", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/win-room-list/capture-0.png", "bytes": 253179, "sha256": "4e51089644f7b1d3519eb62c79ae676d661379319bd6b89ff5fdb6607dc10162"},
+    {"id": "WIN-CHAT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/win-chat-received/capture-0.png", "bytes": 287016, "sha256": "9d651b14aa1a3a8efad1fe9b931c5f23fbd9215330b5c24d1648c90e370039b1"},
+    {"id": "WINE-TITLE", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/wine-title.png", "bytes": 267605, "sha256": "f1f4b48c5bd29876a44fa43d06f715847a551963d62367de1a3fdb27b90d2460"},
+    {"id": "WINE-CHAT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/wine-chat-received.png", "bytes": 235800, "sha256": "e6307a79647721bf320b8a0a3e1cc7735595c0928f80e40bea5ec2b8d76bff52"},
+    {"id": "READY", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/wine-ready-host.png", "bytes": 236851, "sha256": "1b98a6c372fd6562e9754957bf06320c9f0db18bb1e02c27bebe691d543b3dee"},
+    {"id": "WIN-END", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/win-first-observe/capture-0.png", "bytes": 207999, "sha256": "507e92b3046c8dcc2cb89613b702d6d913062260e43ccf3c33912445c334e322"},
+    {"id": "WINE-END", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/wine-start-first.png", "bytes": 197352, "sha256": "bec739f31b73cc8bdd3cb39950c1a637df30710fefb3a7002b88057e4798c2c4"},
+    {"id": "SERVER", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/service/rust-events.jsonl", "bytes": 1694, "sha256": "f6895f089f980d86b55ded3ca7c2ff8002bc0ec1ae9c78f0f25288e3e9b7cbc3"},
+    {"id": "WINE-LOG", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/wine-client.log", "bytes": 8031, "sha256": "6bd4498f49b5cfc36d4c24e5315f391e3d98ccc9c8e5ac596f872b1f7e4907de"},
+    {"id": "WIN-LOG", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/guest-export/calog.log", "bytes": 6779, "sha256": "8757dda8bdbce0722d37690e72778f672a628f035e11f39b7bcbda4c6d7e3f1a"},
+    {"id": "SHORTCUT", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/guest-export/result.json", "bytes": 488, "sha256": "10772f60fd6e41f6171978ebee613e50c1285f1615d3ca3687d8ae95f138c170"},
+    {"id": "CLEAN", "kind": "local", "path": "local/research/codex/l1-release-preflight-r1/native-pair-followup/cleanup.json", "bytes": 444, "sha256": "b3f5503bb9de217304805e8500cc593aa1069677945a1d2fb5027570f073b302"}
+  ],
+  "evidence_runs": [
+  ]
+}
