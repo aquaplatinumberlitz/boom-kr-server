@@ -44,7 +44,8 @@ Serving và acceptance M6 thu hẹp có [bằng chứng riêng](#rust-match-jour
 Opt-in `account_admission.persist_matches=true` yêu cầu `database_zero` và managed `player_round`; mặc định tắt để
 config cũ giữ hành vi. Bật cùng `persist_character` cho luồng giai đoạn 1. Instance lấy đúng epoch do DB cấp;
 khóa trận gồm epoch, room session/id/generation và round. Snapshot đóng băng account/player, slot, nhân vật, đội,
-map và thời gian, giữ cả người đã rời/rớt khi kết thúc. ID player không thay bằng slot hoặc source IP.
+map và thời gian, giữ cả người đã rời/rớt khi kết thúc. Journal sắp roster theo slot trước khi ghi và đối chiếu với DB.
+ID player không thay bằng slot hoặc source IP.
 
 Một actor journal hữu hạn giữ event/thời gian/khóa không đổi khi retry DB Busy/queue expiry, dùng normal worker.
 Không giữ room lock qua await. Batch mang ticket của đúng event; Start121 và kết quả175 chờ commit/readback DB,

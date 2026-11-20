@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP364: Đã kiểm đầu vào cho lượt xác minh ván đầu vi/ko.** [Bằng chứng](docs/evidence/checkpoints/records/CP364.json). L1b/L1c còn mở; chưa có lượt chạy với log mới.
+**CP365: Sửa lỗi journal chặn Start ván đầu khi ID chủ phòng lớn hơn ID khách.** [Bằng chứng](docs/evidence/checkpoints/records/CP365.json). Còn nghiệm thu trên gói Windows vi và Wine ko.
 
 ## Bắt đầu
 

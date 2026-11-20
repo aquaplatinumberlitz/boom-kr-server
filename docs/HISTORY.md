@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP364: Đã kiểm đầu vào cho lượt xác minh ván đầu vi/ko.** [Bằng chứng](evidence/checkpoints/records/CP364.json). L1b/L1c còn mở; chưa có lượt chạy với log mới.
+
 **CP363: Có log xác định bước ngắt khi tải trận vi/ko.** [Bằng chứng](evidence/checkpoints/records/CP363.json). Chưa biết nguyên nhân.
 
 **CP362: Windows vi và Wine ko cùng phòng, chat hai chiều; trận đầu chưa vào được.** [Bằng chứng](evidence/checkpoints/records/CP362.json).

@@ -80,7 +80,7 @@ chẩn đoán. Câu hỏi còn mở và phép kiểm tối thiểu:
 - Tiệm: cần dịch vụ có tiệm; sau đó chụp tiệm ở cả ba bộ dữ liệu.
 - Sửa tên phòng: bật chuỗi định danh chẩn đoán đã nối vào auth4 cho tài khoản thử, gõ tiêu đề trộn và đối chiếu ở client nhận trên gói.
 - IME tiếng Hàn thật (composition từng âm tiết) chưa thử. Đường VK_PACKET đã sửa lỗi cắt trong bản chẩn đoán; kiểm lại trên gói.
-- Cặp Windows/Wine ở CP362 ngắt sau Start104 đầu tiên. Log companion cho thấy cả hai luồng kênh kết thúc bằng lỗi I/O trước mốc TLS đóng theo peer. Hai sự kiện relay `transport_error` không có thời gian hoặc ID để biết nhánh nào lỗi trước; thời gian từ mở luồng kênh đến khi ngắt ngắn hơn idle tài khoản. Với ngân sách lượt thật mới, kiểm lần lượt: sự kiện ghi 121 và trường `poll_stage` theo `stream_id`; client gửi báo tải 99 và server trả 153; cuối cùng màn trận, kết quả và journal. Mốc ghi 121 chỉ xác nhận server ghi xong.
+- Cặp Windows vi/Wine ko tái hiện lỗi sau Start104 ở [CP365](evidence/checkpoints/records/CP365.json): poll dừng ở journal trước 121 khi chủ phòng có ID lớn hơn khách. Test SQLite tái hiện lệch thứ tự roster, bản sửa dùng cùng thứ tự slot. Cần đo 121, báo tải 99, hồi đáp 153, màn trận và kết quả trên cặp thật; mốc ghi 121 chỉ xác nhận server ghi xong.
 - Consumer bỏ qua hai slot chuyển mã (bộ giải riêng, GDI) chưa được loại trừ; chưa thấy chỗ nào sai trong các màn đã chụp.
 - Tên account đã có [biên UTF-8/949x strict](protocol/auth-session.md#rust-patched-account-names) và TCP/reset; còn native. Tên phòng và chat chỉ đi qua phòng/sảnh; cần xác nhận xuyên suốt trên gói.
 
