@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP356: Tên account lưu UTF-8 và codec 949x khớp toàn bộ bảng tham chiếu.** [Bằng chứng](docs/evidence/checkpoints/records/CP356.json). L1 còn mở.
+**CP357: Bản dựng 949x kiểm giới hạn byte của tên phòng và nhãn nhận chat.** [Bằng chứng](docs/evidence/checkpoints/records/CP357.json). L1 còn mở.
 
 ## Bắt đầu
 

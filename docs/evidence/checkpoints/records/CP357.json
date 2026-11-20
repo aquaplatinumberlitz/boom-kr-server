@@ -1,0 +1,48 @@
+{
+  "id": "CP357",
+  "previous": "CP356",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T02:02:20.517572+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Có chặn chuỗi UI quá dài tại bước đổi 949x không?",
+  "scope": "L1 / #414, csysstr và ClientString, vi/en/ko.",
+  "context_commit": "37d11c10ace4a90d5ad52aeadeaa5134a2588b12",
+  "artifacts": [
+    {"sha256": "1c63355c2835ae6b5e91aeaa4c11f9e5b604f5d9fe9646913e20e170f61ecd19"}
+  ],
+  "locators": [
+    "local/research/codex/l1-data-preflight-r1"
+  ],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "test", "canonical": "docs/content/client-language.md#utf8", "summary": "Dựng vi/en/ko đạt. Bộ dựng từ chối tên phòng quá 22 byte và nhãn nhận chat quá 14 byte sau giải escape XML.", "evidence": ["TEST", "BUILD"], "limits": "Kiểm dữ liệu; không là bằng chứng layout trong game."},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/client-language.md#utf8", "summary": "Catalog hiện tại và pack r2 đều đã trong giới hạn ở hai nguồn chuỗi.", "evidence": ["PACK"], "limits": "Chỉ tám khóa được đo trong mỗi nguồn và ngôn ngữ."}
+  ],
+  "verification": [
+    {"check": "Kiểm các hành vi bao phủ trong phạm vi.", "result": "pass", "evidence": ["TEST", "BUILD", "PACK"], "limits": "Chưa nghiệm thu gói phát hành."}
+  ],
+  "delta": {"added": ["Bộ dựng kiểm 22 byte cho tên phòng và 14 byte cho nhãn nhận chat sau khi đổi đúng 949x."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Còn nghiệm thu vi/ko trên gói phát hành."
+  ],
+  "next_steps": [
+    {"id": "L1-414-limits", "task": "KRE-074", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Nối chuỗi điều kiện sửa tên phòng vào đăng nhập game rồi nghiệm thu gói."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T02:02:20.517572+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc gần nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển mốc cũ."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi hiện trạng L1."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở câu hỏi mới."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi thứ tự hay kiểu trường wire."},
+    {"path": "docs/content/client-language.md", "state": "updated", "reason": "Ghi giới hạn hiện có."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Liên kết checkpoint."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh từ catalog."},
+    {"path": "docs/evidence/checkpoints/records/CP357.json", "state": "updated", "reason": "Pin test và kết quả."}
+  ],
+  "evidence": [
+    {"id": "TEST", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/ui-limit-tests.log", "bytes": 159, "sha256": "1c63355c2835ae6b5e91aeaa4c11f9e5b604f5d9fe9646913e20e170f61ecd19"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/build-ui-limits.json", "bytes": 1344, "sha256": "9508dd447efb52e4991dbcfc98237e91a17610003733f3215eaa755578c3f9a2"},
+    {"id": "PACK", "kind": "local", "path": "local/research/codex/l1-data-preflight-r1/packaged-ui-text-limits.json", "bytes": 6569, "sha256": "1330679bbaf4dd945141d273304b837622dc5a38b20615bb189c88ae8c16d7e3"}
+  ]
+}

@@ -298,9 +298,8 @@ nơi lưu giá trị Resolution, toạ độ chuột khi phóng, chưa chạy na
 - **Chat chuyển tiếp.** [CP355](../evidence/checkpoints/records/CP355.json) kiểm hai kết nối vi/ko mô phỏng qua TLS:
   reply28 giữ nguyên byte tin 949x trong sảnh và phòng chờ. Còn nghiệm thu hiển thị hai chiều trên gói Windows/Wine.
 - **Sửa tên phòng** cần chuỗi định danh của tài khoản; mới có cho tài khoản thử qua cấu hình chẩn đoán (mục trên).
-- **Tên phòng tối đa 22 byte.** Hai trong sáu tên phòng mặc định tiếng Việt dài 26 và 27 byte trong 949x
-  (`DefaultRoomTitle1`, `DefaultRoomTitle2`); khi client chọn ngẫu nhiên trúng hai tên này, nút xác nhận tắt (lượt vi-01).
-  Dữ liệu cần câu ngắn hơn. Nhãn `ChatToAll`/`ChatToOurTeam` tiếng Việt vượt giới hạn 14 byte của ô người nhận (mục trên).
+- **Giới hạn chuỗi UI.** Bộ dựng 949x từ chối tên phòng mặc định quá 22 byte và nhãn người nhận quá 14 byte
+  trong cả `csysstr.ssd` và `ClientString`. Dữ liệu vi/en/ko đã qua kiểm; còn xác minh hiển thị trên gói.
 - **Ảnh còn chữ Hàn**: danh sách cần vẽ ở mục bổ sung phía trên.
 - **Ảnh bản en (18/11, để sau theo chủ dự án).** Bản en dựng ngày 18/11 có 520 ảnh thay: ảnh Bắc Mỹ và 179 mục
   chủ dự án vẽ, gồm nền phòng `FxMap/Prepare/CAStage_Custom`. Khoảng 170 mục bản vi lấy từ client VN mà client Bắc Mỹ
