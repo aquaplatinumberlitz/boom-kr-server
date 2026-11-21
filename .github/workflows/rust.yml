@@ -67,7 +67,8 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('rust/Cargo.lock', 'rust/rust-toolchain.toml') }}
       - name: Install the toolchain pinned in rust-toolchain.toml
         run: rustup toolchain install 2>/dev/null || rustup show
-      - run: python3 ../tools/test_player_package.py
+      - name: Verify O1 exports the original player pack
+        run: python3 ../tools/test_player_package.py PackageTests.test_friends_uses_original_prefix_and_original_index
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Test Rust with the independent CP949 and 949x reference
