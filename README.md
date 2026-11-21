@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP384: Bước 0 đã qua cổng đăng nhập mới trên Wine và mở rộng mẫu F1 đã chơi đến kết quả; lớp A ở cấp họ vẫn cần đối chứng nội dung.** [Bằng chứng](docs/evidence/checkpoints/records/CP384.json).
+**CP385: Đã chốt xếp loại bước 0; việc kiểm sâu chuyển sang F1. Bộ điều khiển đã qua Wine, còn thiếu nghiệm thu Windows.** [Bằng chứng](docs/evidence/checkpoints/records/CP385.json).
 
 ## Bắt đầu
 
