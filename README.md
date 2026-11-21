@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP376: Server có kiểm sức khỏe cục bộ và số đo lobby, phòng/ván, relay và SQLite.** [Bằng chứng](docs/evidence/checkpoints/records/CP376.json).
+**CP377: Đã tái lập nhịp UDP từ capture CP287; cần đối chiếu build hiện hành trước khi chốt tải M8.** [Bằng chứng](docs/evidence/checkpoints/records/CP377.json).
 
 ## Bắt đầu
 

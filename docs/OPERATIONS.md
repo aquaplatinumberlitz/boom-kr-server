@@ -64,6 +64,27 @@ thái tiến trình của service manager để phát hiện sớm. Không mở 
 So sánh số phòng và route trước tải, trong tải và sau khi client ngắt. Đo CPU, RAM, FD, độ trễ và mất gói từ
 driver tải/OS; các chỉ số nội bộ ở trên không đóng acceptance 50 người/8 phòng hoặc soak 24 giờ.
 
+<a id="m8-udp-workload"></a>
+## Đầu vào UDP cho kiểm tải M8
+
+[Công cụ offline](../tools/m8_udp_profile.py) đọc capture loopback CP287 và bản ghi thời gian đi kèm, kiểm SHA-256
+theo checkpoint. Nó chỉ đếm bản sao hướng gửi tới proxy của đúng vòng, từ mốc đồng hồ trận đến trước kết quả.
+Trên bốn client và hai ván hoàn tất, trung bình từng cửa sổ nằm trong 11,55–14,49 gói/giây/client; trung vị 13,02,
+đỉnh cửa sổ trượt một giây là 27 gói/client. Đây là ứng viên lịch phát cho phép kiểm kỹ thuật, lấy từ build cũ.
+Không ghi raw hoặc payload vào kho mã.
+
+    python3 tools/m8_udp_profile.py --archive "$ARCHIVE_REPO" \
+      --out local/m8-cp287-profile.json
+
+CP375 giữ capture QUIC bên ngoài. Dữ liệu đã mã hóa có cả control và datagram, nên số gói quan sát được không
+thay mẫu UDP native. Cần đối chiếu trên build đóng gói hiện hành: giữ cùng mốc đồng hồ/kết quả, chiều gửi, cửa
+sổ đỉnh, kích thước và số đích theo mỗi client; ghi rõ map, roster, nhịp chơi và hash build.
+
+Một bố trí đề xuất cho đúng 50 người/8 phòng là một phòng 8 và bảy phòng 6, tương ứng 266 route có hướng khi
+đầy; chọn map và roster đã có profile phù hợp. Trước lượt đo, chốt phân bổ phòng native/tổng hợp và lưu profile phát, baseline phần cứng, ngưỡng CPU, RAM,
+độ trễ chuyển tiếp p95 và tỉ lệ rơi cùng recipe. Đối chiếu gói ở driver gửi và nhận để đo mất gói; không suy từ
+bộ đếm giao cho QUIC. Chưa chốt ngưỡng, chưa chạy tải 50 người hoặc soak 24 giờ.
+
 <a id="server-admin-backup-rollback"></a>
 ## Quản trị, snapshot và đổi phiên bản
 
