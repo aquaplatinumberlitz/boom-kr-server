@@ -1,0 +1,52 @@
+{
+  "id": "CP376",
+  "previous": "CP375",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-20T23:43:32.140260+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Operator có điểm kiểm tra sức khỏe và số đo nội bộ cho đợt kiểm tải M8 không?",
+  "scope": "KRE-M8-MONITORING / #523. Lấy mẫu phía server và hai client TLS tổng hợp trên loopback.",
+  "context_commit": "c459f9f38b11d912f97dca175b5c667d14f22769",
+  "artifacts": [
+    {"sha256": "573d17e44aff667085e803616232623c9d8ad8567bf95a994e08829cde536f31"},
+    {"sha256": "91d2c2292b0fa9966f6b1a11cbec476278b643d9de2aec8c52d58faf64cb3f1e"}
+  ],
+  "locators": ["local/research/codex/m8-monitoring", "rust/crates/kr-service/src/monitoring.rs", "rust/crates/kr-service/src/ingame_tls/tests/operations.rs"],
+  "findings": [
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#server-health", "summary": "CLI health từ chối mẫu cũ, lỗi hoặc server dừng. Dò DB chỉ đọc schema và epoch đã commit ngay khi có writer WAL.", "evidence": ["PROBE"], "limits": "Không kiểm khả năng ghi và không thay integrity check."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#server-health", "summary": "Hai client TLS tăng số owner, phòng, ván và route; đóng phòng trả phòng/route về nền. Bộ đếm chuyển tiếp đối chiếu datagram đã nhận ở phép kiểm riêng.", "evidence": ["TLS", "RELAY"], "limits": "Không đo tốc độ hay mất gói đầu cuối của client thật."}
+  ],
+  "verification": [
+    {"check": "Cargo fmt, workspace clippy và locked build; kiểm health, DB WAL, lifecycle và bộ đếm relay.", "result": "pass", "evidence": ["LINT", "PROBE", "TLS", "RELAY"], "limits": "Dùng server Linux và client tổng hợp."}
+  ],
+  "delta": {"added": ["Health JSON và sự kiện định kỳ theo lượt chạy; số đo phòng/ván, route và dò DB."], "corrected": [], "superseded": []},
+  "blockers": ["Kiểm 50 người/8 phòng và soak 24 giờ cần workload từ UDP client thật và ngưỡng trước chạy."],
+  "completed_feature_groups": ["m8-server-monitoring"],
+  "next_steps": [
+    {"id": "M8-523-native-load-profile", "task": "KRE-M8-MONITORING", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Chốt mẫu tần suất UDP từ bằng chứng native được phép và ngưỡng workload trước kiểm tải M8."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-20T23:43:32.140260+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP375."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi số đo cục bộ và phần tải/soak còn lại."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Runbook đọc health và giải nghĩa số đo."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi giao thức."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Câu hỏi vận hành toàn phần vẫn mở."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Liên kết issue và bằng chứng giám sát."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh theo catalog."},
+    {"path": "docs/evidence/issue-reconciliation/github-snapshot.json", "state": "updated", "reason": "Thêm issue mới."},
+    {"path": "docs/evidence/issue-reconciliation/review.json", "state": "updated", "reason": "Ghi đối chiếu trạng thái."},
+    {"path": "docs/evidence/checkpoints/records/CP376.json", "state": "updated", "reason": "Giữ hash build và log kiểm."}
+  ],
+  "evidence": [
+    {"id": "PROBE", "kind": "local", "path": "local/research/codex/m8-monitoring/probe.log", "bytes": 614, "sha256": "84044f854fcac54c9c949c6315fc9e3e083c40f44e405feeb1f1b7777a327817"},
+    {"id": "TLS", "kind": "local", "path": "local/research/codex/m8-monitoring/tls.log", "bytes": 3338, "sha256": "7437207469adb66292ef8ddb4c98c3036e50c9921858ca676a98d397877bdb59"},
+    {"id": "RELAY", "kind": "local", "path": "local/research/codex/m8-monitoring/relay.log", "bytes": 474, "sha256": "ef2a073e50c8cf597648c8224686cb244d1127447f787c53183ec8feaeb9a639"},
+    {"id": "LINT", "kind": "local", "path": "local/research/codex/m8-monitoring/workspace-clippy.log", "bytes": 167, "sha256": "b87c2a3f86762d037e1ae63bec8c93fee017be70b7eb45c0e9f474d0a940dc6f"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-monitoring", "path": "local/evidence-manifests/83d7166443bc7b5b97a41ac5a9e5343587a26fa5e6e7a965e9725e6b0d69fa1f.jsonl", "sha256": "83d7166443bc7b5b97a41ac5a9e5343587a26fa5e6e7a965e9725e6b0d69fa1f", "bytes": 415, "count": 2, "files_bytes": 198}
+  ]
+}

@@ -260,6 +260,20 @@ impl Server {
         .unwrap();
         server
     }
+    async fn health_when(&self, predicate: impl Fn(&Value) -> bool) -> Value {
+        timeout(Duration::from_secs(12), async {
+            loop {
+                if let Ok(sample) = crate::monitoring::check(&self.config.out)
+                    && predicate(&sample)
+                {
+                    return sample;
+                }
+                sleep(Duration::from_millis(40)).await;
+            }
+        })
+        .await
+        .unwrap()
+    }
     fn state(&self) -> Value {
         serde_json::from_slice(&fs::read(self.config.out.join("service-state.json")).unwrap())
             .unwrap()
@@ -285,6 +299,7 @@ impl Server {
         assert_eq!(status.success(), signal == "-TERM");
         if status.success() {
             assert_eq!(self.state()["stopped"], true);
+            assert!(crate::monitoring::check(&self.config.out).is_err());
         }
     }
     async fn start_round(&self) -> (quinn::Endpoint, Vec<NativeClient>) {
@@ -500,10 +515,25 @@ fn live_writer_backup_restore_two_tls_players_and_shutdown_recovery() {
         after_kill.stop("-TERM").await;
 
         let restored = Server::launch(&clean.db(), "restored", false).await;
+        let baseline = restored
+            .health_when(|sample| sample["lobby"]["online_players"] == 0)
+            .await;
+        assert_eq!(baseline["lobby"]["rooms"], json!([]));
+        assert_eq!(baseline["relay"]["reserved_routes"], 0);
+        assert_eq!(baseline["database_probe"], "ok");
         let (_restored_client, _restored_players) =
             timeout(Duration::from_secs(20), restored.start_round())
                 .await
                 .unwrap();
+        let live = restored
+            .health_when(|sample| sample["lobby"]["active_rounds"] == 1)
+            .await;
+        assert_eq!(live["lobby"]["online_players"], 2);
+        assert_eq!(live["relay"]["udp_listeners"], 1);
+        assert_eq!(live["relay"]["companions"], 2);
+        assert_eq!(live["relay"]["reserved_routes"], 2);
+        assert_eq!(live["lobby"]["rooms"][0]["phase"], "active");
+        assert!(live["lobby"]["rooms"][0]["round"].as_u64().unwrap() > 0);
         let db = clean.db();
         let list = admin(&db, LiveCommand::ListRooms).await.unwrap();
         let target: RoomTarget = serde_json::from_value(list["rooms"][0].clone()).unwrap();
@@ -541,6 +571,11 @@ fn live_writer_backup_restore_two_tls_players_and_shutdown_recovery() {
             audit.iter().map(|r| r.result.as_str()).collect::<Vec<_>>(),
             ["ok", "rejected"]
         );
+        let empty = restored
+            .health_when(|sample| sample["lobby"]["rooms"] == json!([]))
+            .await;
+        assert_eq!(empty["lobby"]["active_rounds"], 0);
+        assert_eq!(empty["relay"]["reserved_routes"], 0);
         restored.stop("-TERM").await;
     });
 }

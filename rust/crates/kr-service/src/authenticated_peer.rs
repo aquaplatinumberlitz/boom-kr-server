@@ -121,6 +121,8 @@ pub(crate) struct Hub {
     received: AtomicU64,
     accepted: AtomicU64,
     dropped: AtomicU64,
+    submitted: AtomicU64,
+    expired: AtomicU64,
 }
 impl Hub {
     pub(crate) fn new(config: &Config) -> io::Result<Arc<Self>> {
@@ -146,7 +148,22 @@ impl Hub {
             received: AtomicU64::new(0),
             accepted: AtomicU64::new(0),
             dropped: AtomicU64::new(0),
+            submitted: AtomicU64::new(0),
+            expired: AtomicU64::new(0),
         }))
+    }
+    pub(crate) fn health(&self) -> io::Result<crate::monitoring::Relay> {
+        let state = self.lock()?;
+        Ok(crate::monitoring::Relay {
+            udp_listeners: 1,
+            companions: state.peers.len(),
+            reserved_routes: self.config.route_capacity - state.router.remaining(),
+            received: self.received.load(Ordering::Relaxed),
+            admitted: self.accepted.load(Ordering::Relaxed),
+            rejected: self.dropped.load(Ordering::Relaxed),
+            expired_in_pump: self.expired.load(Ordering::Relaxed),
+            submitted_to_quic: self.submitted.load(Ordering::Relaxed),
+        })
     }
     fn lock(&self) -> io::Result<std::sync::MutexGuard<'_, State>> {
         self.state
@@ -451,6 +468,10 @@ impl Hub {
                 .map_err(io::Error::other)?;
             Ok(true)
         })?;
+        self.expired
+            .fetch_add(stats.expired as u64, Ordering::Relaxed);
+        self.submitted
+            .fetch_add(stats.sent as u64, Ordering::Relaxed);
         Ok(crate::udp_relay::PumpStats {
             received: 0,
             accepted: 0,

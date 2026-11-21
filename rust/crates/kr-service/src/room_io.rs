@@ -273,6 +273,15 @@ pub(crate) fn install_journal(
     runtime.journal = Some(owner);
     Ok(())
 }
+pub(crate) fn health(shared: &Shared) -> io::Result<(&'static str, Option<u64>)> {
+    let runtime = shared.lock().map_err(|_| err("room unavailable"))?;
+    Ok(match runtime.model.phase {
+        Phase::Idle => ("idle", None),
+        Phase::Loading { round, .. } => ("loading", Some(round)),
+        Phase::Armed { round } => ("active", Some(round)),
+        Phase::Ending { round, .. } => ("ending", Some(round)),
+    })
+}
 pub(crate) fn cancel_journal(shared: &Shared) -> io::Result<()> {
     let mut runtime = shared.lock().map_err(|_| err("room unavailable"))?;
     if let Some(journal) = &mut runtime.journal {

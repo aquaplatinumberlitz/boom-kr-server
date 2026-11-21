@@ -616,6 +616,10 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                 assert_eq!(source, routes[slot].into());
                 assert_eq!(&data[..size], &[round as u8, (1 - slot) as u8]);
             }
+            let relay_sample = relay.health().unwrap();
+            assert_eq!(relay_sample.reserved_routes, 2);
+            assert_eq!(relay_sample.admitted, 2 * round);
+            assert_eq!(relay_sample.submitted_to_quic, 2 * round);
             if round == 2 {
                 let mut unexpected = [0; 32];
                 assert!(
@@ -635,7 +639,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                 assert_eq!(read_uint(&spawn.payload[17..18], Width::U8).unwrap(), 3);
                 assert_eq!(
                     read_uint(&spawn.payload[24..26], Width::U16).unwrap(),
-                    round as u64
+                    round
                 );
             }
             assert!(temp.last_seen(&a) > stale, "bomb placement must renew idle");

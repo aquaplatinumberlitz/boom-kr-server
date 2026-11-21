@@ -2,8 +2,17 @@
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
   "captured_utc": "2026-11-14T14:41:00.456824+00:00",
-  "limits": "Snapshot gốc theo captured_utc; chỉ cập nhật #457/#460 và PR461 từ lần đọc 2026-11-17T14:41:27.506138+00:00. Các issue khác giữ mốc cũ. Không là snapshot toàn GitHub hiện hành hoặc nghiệm thu ngữ nghĩa. Issue #474 được đọc riêng 2026-11-17T19:09:57.524071+00:00; mục khác giữ mốc riêng, không suy snapshot toàn kho hiện hành. Issue #476 đọc riêng 2026-11-17T19:58:21.625771+00:00, không refresh toàn snapshot. Chỉ thêm issue #520 và PR #521 từ lần đọc 2026-11-20T23:08:33.194415+00:00.",
+  "limits": "Snapshot gốc theo captured_utc; chỉ cập nhật #457/#460 và PR461 từ lần đọc 2026-11-17T14:41:27.506138+00:00. Các issue khác giữ mốc cũ. Không là snapshot toàn GitHub hiện hành hoặc nghiệm thu ngữ nghĩa. Issue #474 được đọc riêng 2026-11-17T19:09:57.524071+00:00; mục khác giữ mốc riêng, không suy snapshot toàn kho hiện hành. Issue #476 đọc riêng 2026-11-17T19:58:21.625771+00:00, không refresh toàn snapshot. Chỉ thêm issue #520 và PR #521 từ lần đọc 2026-11-20T23:08:33.194415+00:00. Chỉ thêm issue #523 từ lần đọc 2026-11-20T23:43:32.140260+00:00.",
   "issues": [
+    {
+      "body": "KRE-M8-MONITORING — baseline `c459f9f` sau #521/#522. Codex tự kiểm theo waiver; Claude tích hợp. Dependency: managed rooms, account DB, relay xác thực. File: kr-service, ops test TLS, OPERATIONS và PLAN. Feature: KR-S002.\n\nNghiệm thu lát cắt: CLI sức khỏe cục bộ từ chối trạng thái cũ/lỗi/dừng; đo owner lobby, phòng/ván, relay và lỗi đọc DB, không ghi credential. Hai client TLS tổng hợp tạo phòng và ván, đóng phòng trả lại số đo nền. Không chạy game, VM/VPS, tải 50/8 hay soak.\n\nNguồn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-service-hardening).\n",
+      "closedAt": null,
+      "number": 523,
+      "state": "OPEN",
+      "title": "KRE-M8-MONITORING: kiểm sức khỏe và số đo server",
+      "updatedAt": "2026-11-20T23:40:28Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523"
+    },
     {
       "body": "Baseline `19982f4` từ origin/main, nhánh `rust/m8-admin-backup`. Codex phụ trách và tự kiểm; Claude điều phối, không tự merge. Phụ thuộc gói Linux #474 và backend SQLite/TLS hiện có. Phạm vi: kr-service, runner gói Linux, test TLS tổng hợp, OPERATIONS và PLAN. Nghiệm thu: audit CRUD/khôi phục/thu hồi/đóng phòng, snapshot live có integrity và retention, phục hồi state mới rồi vào ván qua hai client TLS, dừng/restart, migration có backup và rollback bằng binary cũ. Không game, VM hoặc VPS. Feature: KR-S002.\n\nNguồn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-service-hardening).\n",
       "closedAt": null,

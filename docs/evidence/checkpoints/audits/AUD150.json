@@ -1,0 +1,34 @@
+{
+  "id": "AUD150",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "m8-server-monitoring"
+  ],
+  "completed_through": "CP376",
+  "recorded_utc": "2026-11-20T23:43:32.140260+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/protocol/udp-peer.md",
+    "docs/RESEARCH.md",
+    "docs/OPERATIONS.md",
+    "docs/evidence/checkpoints/records/CP376.json"
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Readiness không có độ mới hoặc số đo cho phòng và relay.",
+      "correction": "CLI health kiểm độ mới và triệt readiness khi stop; test TLS đo tăng/giảm số phòng và route.",
+      "fixed_in": [
+        "docs/OPERATIONS.md",
+        "docs/PLAN.md",
+        "docs/evidence/checkpoints/records/CP376.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Tải 50 người/8 phòng và soak 24 giờ chưa chạy; không suy độ trễ/mất gói từ bộ đếm giao cho QUIC."
+  ]
+}

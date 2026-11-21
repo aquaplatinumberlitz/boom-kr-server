@@ -39,6 +39,31 @@ của harness, chưa là quy trình chạy production bằng tài khoản servic
 mật host để vượt lỗi. Smoke kiểm DB mới, từ chối init lại mà không đổi DB, từ chối runner thứ hai khi instance đầu
 còn ready, rồi dừng có trật tự. Không suy client đăng nhập hoặc Internet từ readiness.
 
+<a id="server-health"></a>
+## Kiểm sức khỏe server
+
+Với cấu hình account DB và phòng managed, dùng đường dẫn `service/` của đúng lượt chạy hiện hành:
+
+    "$PACKAGE/bin/kr-admin" health "$RUN_DIRECTORY"
+
+Lệnh trả JSON và exit 0 khi service đang ready và mẫu gần nhất báo khỏe, không quá 15 giây. Service ghi mẫu
+`health.json` mỗi 5 giây bằng đổi tên nguyên tử, đồng thời ghi sự kiện `health_sample` trong `rust-events.jsonl`.
+Khi bắt đầu dừng, readiness hạ ngay. Sau SIGKILL, mẫu cũ có thể còn hiệu lực tới khi quá 15 giây; kết hợp trạng
+thái tiến trình của service manager để phát hiện sớm. Không mở cổng giám sát ra mạng.
+
+- `lobby.online_players` đếm owner đang gắn vào hệ thống lobby managed (không gồm phiên chỉ đăng nhập xong nhưng
+  chưa gắn channel). `room_count`, `loading_rounds`, `active_rounds` và bảng phòng phân biệt chờ, nạp, đang chơi
+  và kết quả. Log gắn channel TLS có ID connection nội bộ, không chứa token. Ghép `epoch`, `room_session`, `room_id`, `generation`, `round` để đối chiếu journal theo lượt chạy.
+- `relay` phân biệt cổng UDP listener, số companion và số route có đặt chỗ. Bộ đếm datagram tính từ lúc boot;
+  `submitted_to_quic` là số được giao cho QUIC, không xác nhận tới client. Không tính packet loss đầu cuối từ
+  chênh lệch các bộ đếm này; route bị dọn cũng có thể bỏ gói còn chờ.
+- `database_probe` đọc SQLite qua WAL, không chờ KDF hoặc ghi thêm vào DB. Khi lỗi, kiểm mã
+  `busy`, `schema`, `epoch_mismatch` hoặc `unavailable` cùng `database_probe_errors` và log service.
+  Phép dò chỉ đọc schema/epoch, không thay `verify-backup` hoặc xác nhận DB có thể ghi.
+
+So sánh số phòng và route trước tải, trong tải và sau khi client ngắt. Đo CPU, RAM, FD, độ trễ và mất gói từ
+driver tải/OS; các chỉ số nội bộ ở trên không đóng acceptance 50 người/8 phòng hoặc soak 24 giờ.
+
 <a id="server-admin-backup-rollback"></a>
 ## Quản trị, snapshot và đổi phiên bản
 

@@ -14,7 +14,7 @@ pub(super) fn private_parent(path: &Path) -> Result<&Path> {
     }
     Ok(parent)
 }
-fn read_database(path: &Path) -> Result<Connection> {
+pub(super) fn read_database(path: &Path) -> Result<Connection> {
     private_parent(path)?;
     let meta = storage(fs::symlink_metadata(path))?;
     if !meta.is_file() || meta.permissions().mode() & 0o077 != 0 {

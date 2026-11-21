@@ -236,6 +236,21 @@ impl Store {
     pub fn open(path: &Path) -> Result<Self> {
         Self::open_mode(path, true)
     }
+    pub(crate) fn probe_epoch(path: &Path) -> Result<i64> {
+        let db = snapshots::read_database(path)?;
+        db.busy_timeout(Duration::from_millis(60))?;
+        if db.pragma_query_value(None, "user_version", |r| r.get::<_, i32>(0))? != SCHEMA_VERSION
+            || db.pragma_query_value(None, "application_id", |r| r.get::<_, i32>(0))?
+                != APPLICATION_ID
+        {
+            return Err(Error::Schema);
+        }
+        Ok(
+            db.query_row("SELECT epoch FROM runtime_state WHERE id=1", [], |row| {
+                row.get(0)
+            })?,
+        )
+    }
     /// Live operator commands must never create or migrate a database.
     pub fn open_existing(path: &Path) -> Result<Self> {
         Self::open_mode(path, false)
