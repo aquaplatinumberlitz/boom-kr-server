@@ -721,10 +721,11 @@ thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (tr
 | F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá không có trong client: lấy wiki/boom-re, thiếu thì tự thiết kế, cấu hình đổi được |
 | F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa (bỏ ưu đãi phòng máy Nexon) | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
+| O1 Offline mode with my friend ("Chơi offline với bạn bè") | Một nút trong launcher: không tài khoản, không VPS, không cấu hình. Máy người tạo tự chạy server ngầm và hiện mã phòng; bạn bè nhập mã (cùng LAN thì tự thấy). Qua Internet dùng thư viện P2P nhúng (iroh/QUIC, tự xuyên NAT, relay khi cần). Cờ "mở khoá tất cả": đủ nhân vật/item/trang phục, shop miễn phí | Server Rust chạy trên Windows; tên khách; dữ liệu lưu ở máy người tạo | Dùng chung bước "server đọc dữ liệu từ pack" của M8. Nội dung đầy đủ theo F1/F4 (cùng mã server, khác cấu hình). Rủi ro chính: chuyển server sang Windows. Người tạo phải mở game suốt buổi |
 | L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
 **Thứ tự ([quyết định 20/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 xếp loại A/B/C và công cụ ghi/phát lại
-phiên thật, rồi F1 → F4 → F2 → F5 → F3 → F6. Màn trình duyệt nhúng (Dwarf/libcef) làm bằng web phía server; bỏ phần riêng Nexon.
+phiên thật (làm sớm, song song cuối M8 theo chỉ đạo 21/11), rồi O1 ([quyết định 21/11](evidence/owner-directives/offline-friends.json)) → F1 → F4 → F2 → F5 → F3 → F6. Màn trình duyệt nhúng (Dwarf/libcef) làm bằng web phía server; bỏ phần riêng Nexon.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
