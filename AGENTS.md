@@ -8,12 +8,11 @@ Các quy tắc/scope V1 của `boom-rs` không tự áp dụng lên project này
 Đọc [Bảng điều hành](docs/PLAN.md#dashboard) ở đầu `docs/PLAN.md` trước; đó là hiện trạng, thứ tự việc và blocker.
 Phần còn lại của PLAN, `docs/PROTOCOL.md` và `docs/RESEARCH.md` chỉ tra theo anchor đúng task, không đọc nguyên file.
 Nhánh RE và gate K0–K7 trước chỉ đạo Rust đã chuyển sang `docs/PLAN_ARCHIVE.md` (chỉ là lịch sử, không thêm mới).
-Xong một bước thì **ghi đè** bảng trạng thái và danh sách việc trong Bảng điều hành; không nối dòng trạng thái theo
-checkpoint vào PLAN. README chỉ giữ mốc mới nhất, mốc cũ chuyển sang `docs/HISTORY.md`.
+Khi trạng thái hoặc blocker đổi, **ghi đè** dòng liên quan trong Bảng điều hành. Không nối dòng theo checkpoint.
 Chỉ `docs/PLAN.md` giữ lộ trình; không tạo plan theo phiên. Protocol/authority ở PROTOCOL, câu hỏi mở
 ở RESEARCH. `docs/features.json` chỉ mục ID/cây/dependency/mức bằng chứng, không là plan hoặc contract;
 `docs/COVERAGE.md` sinh bằng `python3 tools/feature_catalog.py --generate`, trích khoảng trống/phép đo từ RESEARCH.
-Khi đổi cơ chế/trạng thái/câu hỏi, đồng bộ catalog rồi sinh lại coverage; ID không xóa/repurpose (retired giữ lại).
+Khi đến kỳ cập nhật catalog theo quy định bên dưới, sinh lại COVERAGE; không xóa hoặc đổi nghĩa ID đã cấp.
 Nguồn cũ/migration ở REFERENCES, metadata bằng chứng ở `docs/evidence/`.
 Docs viết tiếng Việt; ID/API/type kỹ thuật giữ nguyên.
 
@@ -67,22 +66,20 @@ boomkr-re → boom-re; thêm boom-rs, boom-re-l10n và archive khi có nguồn l
 và migration tới nguồn thật; không dùng snapshot cũ làm scope của repo này. Ghi ngắn nguồn/build/
 hash/locator, điều đã biết cùng mức static/emulation/runtime/policy, phần dùng trực tiếp/phải đối chiếu
 KR, khoảng trống và phép đo tối thiểu. Chỉ RE phần khác biệt/còn thiếu. Bảng đối chiếu gọn ở PROTOCOL,
-phép thử tiếp ở RESEARCH, provenance/hash ở evidence; không tạo plan hay bản kiến thức độc lập theo phiên.
+provenance và hash ở evidence. Ghi phép thử tiếp vào RESEARCH khi đến mốc cập nhật bên dưới.
+Không tạo plan hoặc bản kiến thức độc lập theo phiên.
 
 Ưu tiên RE động dẫn đường và thử nghiệm tiếp khi có giả thuyết cụ thể; gom các phép đo liên quan
 thành một checkpoint tại mốc quan trọng hoặc blocker rõ ràng, không tạo checkpoint/PR cho mỗi phép thử.
-Mỗi checkpoint phải đồng bộ docs bị ảnh hưởng trước khi complete;không chỉ giữ kiến thức trong
-hội thoại/report worker/checkpoint local. README current state,PLAN task/gate/thứ tự,PROTOCOL
-contract/limits,RESEARCH câu hỏi/phép kiểm tiếp,evidence metadata/recipe/hash; raw ở local.
-Tóm tắt delta và link nguồn chuẩn,không tạo plan/contract theo phiên.
-**Ngân sách bằng chứng** theo [quyết định 19/11](docs/evidence/owner-directives/evidence-budget.json): mỗi phần việc
-hoặc blocker thật một checkpoint, record mới tối đa 120 dòng; test tự động là bằng chứng chính cho mã, chạy game thật
-một lần cuối mỗi phần việc; không mở rộng công cụ kiểm bằng chứng hay kiểm lại lịch sử; mỗi checkpoint chỉ sửa tài liệu
-chủ đề, một dòng PLAN và dòng README; tài liệu trong một PR không vượt số dòng mã và test.
-**Mỗi thông tin một chỗ, không nối theo checkpoint:** docs không đổi nội dung thì khai `unchanged` trong `docs_sync`,
-không thêm đoạn cho có. PLAN: ghi đè Bảng điều hành. README: thay dòng mốc mới nhất. PROTOCOL: chỉ sửa khi
-contract/giới hạn đổi, sửa tại mục theo chủ đề sẵn có thay vì thêm mục `— CPxxx` mới. RESEARCH: chỉ sửa khi mở/đóng
-câu hỏi. Diễn biến, số lượt chạy và số frame của từng checkpoint thuộc record checkpoint và evidence, không lặp vào docs.
+Theo [chỉ đạo 21/11](docs/evidence/owner-directives/lean-evidence.json), mỗi PR có bằng chứng runtime/RE mới
+chỉ cập nhật **một checkpoint** và dòng liên quan trong Bảng điều hành PLAN. PR chỉ sửa code có test thì không cần
+checkpoint. Chỉ cập nhật README, HISTORY, COVERAGE, RESEARCH và `features.json` khi đóng mốc lớn (milestone/đợt)
+hoặc khi nội dung của chính tài liệu đó sai.
+Giữ trần 120 dòng cho record mới, test tự động là bằng chứng chính cho mã và giữ các giới hạn còn hiệu lực của
+[ngân sách bằng chứng 19/11](docs/evidence/owner-directives/evidence-budget.json).
+Trước khi hoàn tất checkpoint, cập nhật mục PROTOCOL hiện có nếu contract hoặc giới hạn đổi, lưu metadata và công thức
+tái lập trong evidence, giữ raw ở `local/`. Trong `docs_sync`, ghi `unchanged` cho tài liệu không thay đổi.
+Số lượt chạy, số frame và diễn biến nằm trong record hoặc run manifest; không lặp sang tài liệu chủ đề.
 Tài liệu mới hoặc đoạn sửa viết bằng câu đầy đủ, có dấu cách giữa các từ; không dính chữ để tiết kiệm dòng
 (ví dụ `actualmatchinput`, `từngconsumer`). Người đọc là chủ dự án và agent phiên mới, chưa có ngữ cảnh của phiên viết.
 Theo [workflow](docs/evidence/checkpoints/README.md),lấy ID/counter tăng liên tục từ
@@ -126,14 +123,23 @@ hostname, tài khoản/đường dẫn truy cập, policy, ACL và topology th�
 Không đưa các chi tiết này vào file tracked, commit, PR, issue hoặc comment GitHub; kiểm cả
 diff và nội dung bàn giao trước khi gửi. Báo kết quả/nghiệm thu không kèm chi tiết hạ tầng riêng.
 
+## Token discipline
+
+- Chờ CI bằng một lệnh `gh pr checks <số> --watch` cho mỗi lần kiểm head; không poll riêng.
+- Dùng `tail`, `jq`, `grep` hoặc CLI có giới hạn khi đọc log và bằng chứng. Không in cả file lớn.
+- Không chạy kiểm toàn kho nhiều lần trong một lượt. Sau khi sửa, chỉ chạy lại phép kiểm bị ảnh hưởng.
+- Claude cấp ngân sách chạy thật trong brief. Tiếp tục theo brief khi còn ngân sách, không dừng xin thêm.
+
 ## Kiểm và bàn giao
 
-CI GitHub Actions (`.github/workflows/docs.yml`, `rust.yml`) chạy trên mọi PR; trước khi merge, `gh pr checks <số>`
-phải đạt. CI đỏ thì sửa, không merge. CI không thay các kiểm cần `local/` dưới đây.
-Docs/checkpoint: chạy python3 tools/check_docs.py,python3 tools/check_checkpoints.py --require-local
---require-history và git diff --check. Checker cache sha256 file host-local ở `local/cache/` (key path+size+mtime+inode);
-`--no-hash-cache` buộc hash lại toàn bộ khi cần kiểm sâu định kỳ. Thiếu raw/pending/unsynced phải báo rõ;checker không tự xác nhận
-ngữ nghĩa hoặc đóng gate.
+CI GitHub Actions (`.github/workflows/docs.yml`, `rust.yml`) chạy trên mọi PR. CI phải đạt trước khi merge;
+CI đỏ thì sửa. Giữ phạm vi kiểm CI hiện có; CI không thay kiểm cần `local/`.
+Kiểm local: chạy `python3 tools/check_docs.py` và `git diff --check` khi sửa docs/checkpoint. Nếu có checkpoint mới
+hoặc đổi, chạy `python3 tools/check_checkpoints.py --changed --require-local --require-history`, từ điểm chung với
+`origin/main`. Checker mặc định chỉ in lỗi và tổng kết; dùng `--verbose` khi cần chi tiết cảnh báo.
+Checker lưu cache SHA-256 của file host-local trong `local/cache/`. Khi cần kiểm sâu, bỏ `--changed` để kiểm toàn bộ
+và dùng `--no-hash-cache` nếu cần tính lại hash. Báo rõ raw thiếu, kiểm còn pending và docs chưa đồng bộ.
+Checker không tự xác nhận ngữ nghĩa hoặc đóng gate.
 Danh sách file local của checkpoint nằm trong run manifest `local/evidence-manifests/` (record chỉ giữ con trỏ run);
 checkpoint mới gọi `checkpoint_evidence.pack_evidence`, tra cứu bằng `python3 tools/evidence_lookup.py`
 ([cách dùng](docs/evidence/checkpoints/README.md#lean-evidence)).

@@ -68,8 +68,12 @@ Phần mềm không chứng minh người ghi đã đọc/thấu hiểu;reviewer
 
 ## Kiểm và giới hạn
 
-Trên host có raw: python3 tools/check_checkpoints.py --require-local --require-history,
-cùng python3 tools/check_docs.py và git diff --check. Checker dùng lại check_docs để kiểm Markdown.
+Trên host có raw, chạy `python3 tools/check_checkpoints.py --changed --require-local --require-history`,
+cùng `python3 tools/check_docs.py` và `git diff --check`. Chế độ `--changed` kiểm nội dung và bằng chứng
+của checkpoint mới hoặc đổi từ điểm chung với `origin/main`, kể cả thay đổi chưa commit. Chế độ này vẫn kiểm
+counter, audit, task và tính bất biến trên lịch sử nhánh. Cần fetch `origin/main` trước khi chạy.
+Checker mặc định chỉ in lỗi và tổng kết; thêm `--verbose` để xem từng cảnh báo.
+Chế độ đầy đủ (không có `--changed`) vẫn kiểm toàn bộ lịch sử và gọi `check_docs.py`.
 
 Kiểm ID/previous/counter,field/source/status,owner khác reviewer,docs_sync links,
 file/size/SHA,taskclosed/nextactive,audit theo policy chuyển tiếp và append-only qua mọi revision manifest trên
