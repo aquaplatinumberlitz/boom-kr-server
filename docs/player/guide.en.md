@@ -46,7 +46,11 @@
 4. At the game's login screen, choose **Play trial 1P**. The game uses your launcher name. You can leave the account and password fields blank. In the lobby, one player creates a game room and the others join it.
 5. If your package differs from the host's, use **Download latest** when the bundle provides a link. If the host closes the game or launcher, friends are told that the room closed.
 
-![Play with friends in the launcher](o1-launcher.jpg)
+![Host room in the launcher](o1-create-room.png)
+
+![Join by room code](o1-join-code.png)
+
+![Join from the LAN list](o1-join-lan.png)
 
 Playing across networks needs a bundle with a working room directory. If the room cannot be found, check the code and ask the host whether their game is still open.
 

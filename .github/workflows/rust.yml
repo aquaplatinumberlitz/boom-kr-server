@@ -100,9 +100,7 @@ jobs:
           cargo build --locked -p kr-service -p kr-tunnel
           --bin kr-service --bin kr-admin --bin kr-load --bin kr-companion --bin kr-launch-identity
       - name: Install, export fake pack, finish one TLS round, back up and stop
-        run: |
-          python3 tools/test_kr_pack_install.py --binaries rust/target/debug
-          python3 tools/test_kr_pack_install.py --binaries rust/target/debug --scope f1-a
+        run: python3 tools/test_kr_pack_install.py --binaries rust/target/debug
 
   windows-service:
     runs-on: ubuntu-latest

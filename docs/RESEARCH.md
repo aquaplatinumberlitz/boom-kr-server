@@ -192,12 +192,12 @@ Tiếp các hướng/roster và nội dung còn thiếu theo acceptance G1; khô
 journal đúng map. Không lặp ordinal-only, bảng2row hoặc chọn map khi không có discrepancy mới. Initial96 trước final
 setup được đo; không áp lại guard setup=true gây lỗi. Queued selection dùng revision, không dùng index làm epoch.
 
-G1 giữ [giới hạn roster đã chốt](evidence/owner-directives/g1-map-roster-limits.json): Village10/Tomb12 2–6;
-bốn map khác 2–8. Với [F1-a](PLAN.md#f1-normal-battle), đối chiếu spawn, đường đi cạnh vật cản, nổ sát thùng
-và pickup/reset trên map có placement hoặc drop; chỉ mở RE ở ô hoặc item khác biệt. [CaJJ_Clover đã qua đối chứng](evidence/rust-service/f1-pack-map-adapters.json);
-Cookie06/Xmas15 có pickup quan sát được, còn kiểm stat/reset; các họ khác vẫn cần đối chiếu ô và item riêng.
-Patrit22 có descriptor MastTileA và anchor row6/column6 trùng Patrit14 trong pack; [metadata candidate](evidence/rust-service/patrit22-adapter-candidate.json) giữ các kiểm âm.
-Cần client KR thật đi sát MastTileA và thử tia nổ từ cạnh thùng để xác nhận hoặc loại bỏ chiếu footprint. Ca `account_worker_queue_expired` giữ raw; lượt sau đã qua về phòng, chưa quy nguyên nhân.
+Còn terrain/drop/item và mọi roster theo acceptance G1; Forest07/Patrit14 mới có route2/4/8 giới hạn, không suy map mở đầy đủ. Phân loại tile tĩnh ngoài
+ExVillage01 giữ candidate. Village10/Tomb12 có 6 spawn; [chủ dự án đã chấp nhận](evidence/owner-directives/g1-map-roster-limits.json) nghiệm thu
+hai map này cho 2–6 người. Đo native filter/Start/spawn và gameplay tới giới hạn đó; không còn blocker yêu cầu
+8 người trên hai map này và không ép tọa độ/dùng chung spawn. Bốn map còn lại giữ acceptance 2–8 người.
+Nhóm item và biến thể kim/cứu chưa đo theo thứ tự PLAN, chỉ RE consumer còn chặn implementation/native. Unknown chưa đo bị tắt khỏi
+bảng rơi, không gọi map hoàn chỉnh từ floor rỗng/basic.
 
 Factory07 dùng bảng tám màu đội, khác bốn nút A/B/C/D của ExVillage01; click cũ phát đội2 bị guard0/3 từ chối.
 Chỉ chọn màu3 đã hỗ trợ trong lượt đạt; chưa có contract phục vụ đội2/4 hoặc mọi màu, không mở scope từ ảnh UI.

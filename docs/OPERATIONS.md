@@ -34,25 +34,6 @@ xem [gói Windows](#gói-server-windows) cho tài khoản và lệnh tương ứ
    Gói không chứa profile map, terrain, DB hay private key. Mặc định dùng sáu map G1. Dùng `--pack-scope f1` để chạy
    catalog mẫu CP382 ở phạm vi hai người, floor trống và tắt terrain. Trên Linux, dùng `--legacy-fixtures` để tái lập gói cũ khi rollback.
 
-<a id="pack-f1-a"></a>
-### Catalog thử F1-a
-
-Trên Linux, build gói với `--pack-scope f1-a`, rồi thêm `--f1-map <tên>` khi chạy lệnh `export` hoặc `run`
-cùng `--game-dir`. Lặp cờ cho 1–16 tên pack chính xác và giữ thứ tự khi dùng lại cache.
-Catalog thử dùng hai client, terrain từ pack và floor theo [policy F1-a](protocol/items-stats.md#g1-scoped-drops).
-Cache tách khỏi G1 và cấu hình thử CP382. Nếu một map không xuất được, chọn catalog khác; exporter không tự
-thay bằng floor rỗng hoặc map khác. Giữ cấu hình G1 cho bản phục vụ đã nghiệm thu.
-
-Để kiểm tự động một nhóm tối đa tám map qua TLS/relay, dùng:
-
-```bash
-python3 tools/test_kr_pack_install.py --binaries "$BINARY_DIR" --bwrap --scope f1-a \
-  --game-dir "$GAME_DIR" --f1-map CaJJ_Clover01 --f1-map CaJJ_Clover02
-```
-
-Test dùng cấu hình, tài khoản và replay cadence tổng hợp trong namespace riêng. Nó kiểm đúng map, kết quả và
-về phòng; vẫn cần client KR thật để kiểm hình, va chạm và nhặt item.
-
 ## Gói server Windows
 
 Lõi dùng chung cho **Play with friends / Chơi với bạn bè** (O1) và gói tự dựng (S1). Dùng cùng recipe, mẫu wire

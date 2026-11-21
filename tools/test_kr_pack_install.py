@@ -13,7 +13,6 @@ import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from server import probe_codec as codec
 from server.room_title import _encode_bytes as wire_bytes
-from content_census import Pack
 from kr_pack_export import ITEMS, sha
 from rust_map_profile import raw_blob
 from rust_package_runtime import digest, verify
@@ -75,7 +74,7 @@ def fake_game(root):
     })
     raw = '<Tiles>' + ''.join(
         f'<Tile Name="{name}" Data="{struct.pack("<18i", *attrib).hex()}" />'
-        for name, attrib in [('Ground', [0] * 6 + [1, 1, 0, 0, -1] + [0] * 7), ('Box', [2] + [0] * 17)]) + '</Tiles>'
+        for name, attrib in [('Ground', [0] * 18), ('Box', [2] + [0] * 17)]) + '</Tiles>'
     xml = raw.encode()
     fake_pair(root, 'fx', {
         'ObjectTable/ObjectTable': struct.pack('<I', 2) + string('Ground') + bytes(4) + string('Box') + bytes(4),
@@ -88,21 +87,10 @@ def fake_game(root):
         spawns = [1 + offset, 1, 13, 11]
         boxes = [int(i == (26 + offset)) for i in range(195)]
         cells = [v for box in boxes for v in (0, 1 if box else -1)]
-        item = 'Item/ItemFire' if offset else 'Item/ItemBomb'
-        maps['Map/' + name] = (
-            struct.pack('<' + 'i' * (len(header) + len(spawns) + len(cells) + 2),
-                        *header, *spawns, 0, *cells, 2)
-            + string('Tank') + struct.pack('<i', 9999) + string(item) + struct.pack('<i', 13)
-            + struct.pack('<2i', 100, 1) + string(item) + bytes((4 + offset, 2, 100))
-            + bytes(12)
-        )
+        maps['Map/' + name] = struct.pack('<' + 'i' * (len(header) + len(spawns) + len(cells) + 7),
+                                         *header, *spawns, 0, *cells, *([0] * 6))
         seeds[name] = sha(bytes(2 * box for box in boxes))
-    # The trailing entry has an unsupported ground/object pairing.
-    rejected = bytearray(maps['Map/SyntheticOne'])
-    struct.pack_into('<i', rejected, 100, 1)
-    order = dict(reversed(list(maps.items())))
-    order['Map/SyntheticReject'] = rejected
-    fake_pair(root, 'FxMap', order)
+    fake_pair(root, 'FxMap', dict(reversed(list(maps.items()))))
     return {p.name: digest(p) for p in sorted(root.iterdir())}, seeds
 
 
@@ -194,9 +182,8 @@ def fake_recipe(root):
                                          send_budget=64, pending_ms=500, lease_seconds=900))
 
 
-def test_bundle(root, binaries, scope, fake):
-    if fake:
-        pins, seeds = fake_game(root / 'game')
+def test_bundle(root, binaries):
+    pins, seeds = fake_game(root / 'game')
     config = fake_recipe(root / 'wire')
     # A pack-backed bundle must build even if an old map fixture is unavailable.
     room = config['diagnostic_two_lobby']['fixed_room']
@@ -204,16 +191,12 @@ def test_bundle(root, binaries, scope, fake):
     room['terrain'] = dict(kinds=[2] * 195)
     bundle = root / 'bundle'
     target = f'{platform.machine()}-unknown-linux-gnu'
-    build(config, binaries, bundle, target, pack_scope=scope)
+    build(config, binaries, bundle, target, pack_scope='g1')
     template = json.loads((bundle / 'config.template.json').read_bytes())
     room = template['diagnostic_two_lobby']['fixed_room']
     assert 'map_profile' not in room and 'terrain' not in room
-    if not fake:
-        return bundle, digest(bundle / 'manifest.json')
     # CI seals a different exporter policy with the fake pack. The production
     # runner has no environment, CLI or recipe override for pack hashes.
-    if scope == 'f1-a':
-        seeds = {}  # Exercise the simple descriptor adapter, not the measured seeds.
     source = bundle / 'kr_pack_export.py'
     patch = f'\nPACK_SHA256.clear()\nPACK_SHA256.update({pins!r})\nG1 = MAPS = {MAPS!r}\nTERRAIN_SEEDS = {seeds!r}\nfrom functools import partial\nexport = partial(export, maps=MAPS)\n'
     source.chmod(0o600)
@@ -237,26 +220,10 @@ def main():
     parser.add_argument('--binaries', type=Path, required=True)
     parser.add_argument('--image', default='python:3.12-slim-trixie')
     parser.add_argument('--bwrap', action='store_true', help='Thay Docker bằng bwrap trên máy Linux cục bộ')
-    parser.add_argument("--scope", choices=["g1", "f1-a"], default="g1")
-    parser.add_argument('--game-dir', type=Path, help='Pack KR gốc; bỏ qua để dùng pack giả của CI')
-    parser.add_argument('--f1-map', action='append')
     options = parser.parse_args()
-    if options.game_dir is not None:
-        if options.scope != 'f1-a' or not 1 <= len(options.f1_map or []) <= 8:
-            parser.error('--game-dir yêu cầu --scope f1-a và 1–8 tên --f1-map')
-        game = options.game_dir.resolve(strict=True)
-        order = [name for name, *_ in Pack(game, 'FxMap').order if name.startswith('Map/')]
-        expected = [(order.index('Map/' + name), name) for name in options.f1_map]
-    elif options.f1_map:
-        parser.error('--f1-map chỉ dùng với --game-dir')
-    else:
-        expected = [(0, 'SyntheticTwo'), (1, 'SyntheticOne')] if options.scope == 'f1-a' else []
     with tempfile.TemporaryDirectory(prefix='kr-pack-install-') as work:
         root = Path(work)
-        bundle, manifest_hash = test_bundle(root, options.binaries.resolve(), options.scope, options.game_dir is None)
-        game = game if options.game_dir else root / 'game'
-        expected_json = json.dumps(expected, separators=(',', ':'))
-        fake = options.scope if options.game_dir is None else ''
+        bundle, expected = test_bundle(root, options.binaries.resolve())
         result = root / 'result'
         result.mkdir(mode=0o700)
         if options.bwrap:
@@ -264,16 +231,16 @@ def main():
                        '--symlink', 'usr/lib', '/lib', '--symlink', 'usr/lib', '/lib64',
                        '--symlink', 'usr/bin', '/bin', '--proc', '/proc', '--dev', '/dev',
                        '--tmpfs', '/tmp', '--ro-bind', str(bundle), '/opt/kr',
-                       '--ro-bind', str(game), '/game', '--bind', str(result), '/result',
-                       '--setenv', 'KR_MANIFEST_SHA256', manifest_hash, '--setenv', 'KR_FAKE_PACK', fake, '--setenv', 'KR_F1_EXPECTED', expected_json, '--chdir', '/opt/kr', 'python3', '-']
+                       '--ro-bind', str(root / 'game'), '/game', '--bind', str(result), '/result',
+                       '--setenv', 'KR_MANIFEST_SHA256', expected, '--setenv', 'KR_FAKE_PACK', '1', '--chdir', '/opt/kr', 'python3', '-']
         else:
             command = ['docker', 'run', '--rm', '-i', '--network=none', '--read-only',
                        '--user', f'{os.getuid()}:{os.getgid()}', '--tmpfs', '/tmp',
-                       '--env', f'KR_MANIFEST_SHA256={manifest_hash}', '--env', f'KR_FAKE_PACK={fake}', '--env', f'KR_F1_EXPECTED={expected_json}', '--workdir', '/opt/kr',
-                       '--volume', f'{bundle}:/opt/kr:ro', '--volume', f'{game}:/game:ro',
+                       '--env', f'KR_MANIFEST_SHA256={expected}', '--env', 'KR_FAKE_PACK=1', '--workdir', '/opt/kr',
+                       '--volume', f'{bundle}:/opt/kr:ro', '--volume', f'{root / "game"}:/game:ro',
                        '--volume', f'{result}:/result:rw', options.image, 'python3', '-']
         with (ROOT / 'tools/smoke_kr_pack_install.py').open('rb') as script:
-            run = subprocess.run(command, stdin=script, timeout=300)
+            run = subprocess.run(command, stdin=script, timeout=120)
         if run.returncode:
             for path in [result / 'service.log', result / 'load.log',
                          *result.glob('state/runs/*/service/rust-events.jsonl')]:
