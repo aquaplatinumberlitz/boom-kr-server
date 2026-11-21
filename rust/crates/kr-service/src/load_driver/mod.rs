@@ -395,10 +395,9 @@ fn prelogin_endpoint(certificate: Vec<u8>) -> io::Result<quinn::Endpoint> {
 }
 
 fn private_config(path: &Path) -> io::Result<Config> {
-    use std::os::unix::fs::PermissionsExt as _;
-    let meta = fs::symlink_metadata(path)?;
-    if !meta.is_file() || meta.permissions().mode() & 0o077 != 0 || meta.len() > 32768 {
-        return Err(failure("configuration must be a private file (0600)"));
+    let meta = crate::platform::private_file(path)?;
+    if meta.len() > 32768 {
+        return Err(failure("configuration must be a private file"));
     }
     let raw = Zeroizing::new(fs::read(path)?);
     serde_json::from_slice::<Config>(&raw).map_err(|_| failure("invalid load configuration JSON"))

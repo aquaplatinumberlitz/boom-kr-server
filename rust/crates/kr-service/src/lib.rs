@@ -1,5 +1,5 @@
 //! Bounded KR00967 diagnostic transport and opt-in two-profile account lobby adapter.
-#![forbid(unsafe_code)]
+#![deny(unsafe_code)]
 
 pub mod account_bridge;
 pub mod account_serving;
@@ -26,6 +26,7 @@ pub mod network;
 pub mod operations;
 mod peer_routes;
 mod pickups;
+pub mod platform;
 mod player_template;
 pub mod public_launcher;
 pub mod room;
@@ -1392,7 +1393,7 @@ async fn bound_connection(
 }
 
 pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
-    let mut term = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
+    let mut shutdown_signal = platform::Shutdown::new()?;
     tokio::fs::create_dir_all(out).await?;
     let mut account_owner = if let Some(config) = profile
         .config
@@ -1626,13 +1627,12 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
                 writer_result=Some(logging::joined(result).and_then(|()|Err(io::Error::other("log writer stopped unexpectedly"))));
                 break;
             },
-            _=term.recv()=>break,
             _=account_health.tick(),if profile.accounts.is_some()=>{
                 if profile.accounts.as_ref().is_some_and(|a|a.client.is_closed()) || journal.as_ref().is_some_and(|j|!j.healthy()) {
                     failure=Some(io::Error::other("account worker unavailable"));break;
                 }
             },
-            value=tokio::signal::ctrl_c()=>{if let Err(e)=value {failure=Some(e);}break;},
+            value=shutdown_signal.recv()=>{if let Err(e)=value {failure=Some(e);}break;},
             result=maintenance.join_next(),if !maintenance.is_empty()=>{failure=Some(io::Error::other(format!("maintenance stopped: {result:?}")));break;},
             result=listeners.join_next(),if !listeners.is_empty()=>{failure=Some(io::Error::other(format!("listener stopped: {result:?}")));break;},
             result=workers.join_next(),if !workers.is_empty()=>if let Some(result)=result {match result {Ok(Ok(()))=>{},other=>{failure=Some(io::Error::other(format!("worker stopped: {other:?}")));break;}}},

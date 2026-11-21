@@ -1,4 +1,4 @@
-"""Đóng gói Linux; ở máy cài, xuất dữ liệu từ thư mục game KR 00967."""
+"""Đóng gói server; ở máy cài, xuất dữ liệu từ thư mục game KR 00967."""
 import argparse
 import copy
 import json
@@ -6,14 +6,17 @@ from pathlib import Path
 import shutil
 import struct
 
-from rust_package_runtime import digest, verify
+from rust_package_runtime import digest, executable, verify
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def build(config, binaries, out, target, source_root=None, *, pack_scope=None, external_tls=False):
-    if target not in {'x86_64-unknown-linux-gnu', 'aarch64-unknown-linux-gnu'}:
-        raise ValueError('Target Linux GNU không được hỗ trợ')
+    windows = target == 'x86_64-pc-windows-gnu'
+    if not windows and target not in {'x86_64-unknown-linux-gnu', 'aarch64-unknown-linux-gnu'}:
+        raise ValueError('Target Linux GNU hoặc Windows GNU không được hỗ trợ')
+    if windows and pack_scope is None:
+        raise ValueError('Gói Windows yêu cầu xuất pack ở máy cài')
     source_root = Path.cwd() if source_root is None else Path(source_root)
     out = Path(out)
     out.mkdir(mode=0o700, parents=False, exist_ok=False)
@@ -91,30 +94,47 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None, e
             admission[section].setdefault('session_ttl_seconds', 28_800)
             admission[section].setdefault('session_idle_seconds', 1_800)
     architecture = None
-    binary_names = ['kr-service', 'kr-admin', 'kr-companion']
+    binary_names = ['kr-service', 'kr-admin']
+    if not windows:
+        binary_names += ['kr-companion']
     if pack_scope is not None:
-        binary_names += ['kr-load', 'kr-launch-identity']
+        binary_names += ['kr-launch-identity']
+        if not windows:
+            binary_names += ['kr-load']
     for name in binary_names:
-        source = Path(binaries) / name
+        relative = executable(Path(), name, target)
+        source = Path(binaries) / relative.name
         with source.open('rb') as stream:
-            header = stream.read(20)
-        if len(header) != 20 or header[:6] != b'\x7fELF\x02\x01':
-            raise ValueError('Gói server yêu cầu binary ELF64 little-endian')
-        machine = struct.unpack_from('<H', header, 18)[0]
-        if machine not in [62, 183] or architecture not in [None, machine]:
-            raise ValueError('Các binary phải cùng kiến trúc Linux được hỗ trợ')
-        architecture = machine
-        save(source, 'bin/' + name, mode=0o500)
+            if windows:
+                dos = stream.read(64)
+                if len(dos) != 64 or dos[:2] != b'MZ':
+                    raise ValueError('Gói Windows yêu cầu binary PE x86-64')
+                stream.seek(struct.unpack_from('<I', dos, 60)[0])
+                # PE signature, IMAGE_FILE_MACHINE_AMD64, and PE32+ magic.
+                header = stream.read(26)
+                if (len(header) != 26 or header[:6] != b'PE\0\0\x64\x86'
+                        or header[24:] != b'\x0b\x02'):
+                    raise ValueError('Gói Windows yêu cầu binary PE x86-64')
+            else:
+                header = stream.read(20)
+                if len(header) != 20 or header[:6] != b'\x7fELF\x02\x01':
+                    raise ValueError('Gói server yêu cầu binary ELF64 little-endian')
+                machine = struct.unpack_from('<H', header, 18)[0]
+                if machine not in [62, 183] or architecture not in [None, machine]:
+                    raise ValueError('Các binary phải cùng kiến trúc Linux được hỗ trợ')
+                architecture = machine
+        save(source, relative.as_posix(), mode=0o500)
     if (architecture == 62 and not target.startswith('x86_64-')) or (architecture == 183 and not target.startswith('aarch64-')):
         raise ValueError('Target khai báo không khớp ELF machine')
     template = out / 'config.template.json'
-    template.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+    template.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     template.chmod(0o400)
     rows[template.name] = dict(path=template.name, bytes=template.stat().st_size, sha256=digest(template), mode=0o400)
     save(Path(__file__).with_name('rust_package_runtime.py'), 'kr-package.py', mode=0o500)
-    manifest = dict(schema='kre-service-package-v1', target=target, elf_machine=architecture,
+    manifest = dict(schema='kre-service-package-v1', target=target,
                     files=[rows[key] for key in sorted(rows)],
                     limits='Validated input recipe and fixture pins, not a fresh export from pack. Requires compatible Linux ABI and Python; Internet/native/load/restore/soak acceptance remains separate.')
+    manifest.update({'pe_machine': 0x8664} if windows else {'elf_machine': architecture})
     if pack_scope is not None:
         support = ('kr_pack_export.py', 'kr_pack_config.py', 'content_census.py',
                    'export_map_profile.py', 'rust_map_profile.py')
@@ -126,7 +146,7 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None, e
         manifest.update(pack_scope=pack_scope, files=[rows[key] for key in sorted(rows)],
                         limits='Pack KR 00967 được kiểm và xuất ở máy cài. Bundle chỉ giữ mẫu wire và cấu hình vận hành.')
     path = out / 'manifest.json'
-    path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     path.chmod(0o400)
     result = digest(path)
     verify(out, result)
@@ -150,7 +170,7 @@ def main():
     if out == local or not out.is_relative_to(local):
         parser.error('Cấu hình/fixture chỉ được đóng gói vào local/')
     try:
-        value = json.loads(args.base.read_text())
+        value = json.loads(args.base.read_text(encoding='utf-8'))
         result = build(value, args.binary_dir, out, args.target, args.base.resolve().parent,
                        pack_scope=None if args.legacy_fixtures else args.pack_scope, external_tls=args.external_tls)
     except (ValueError, OSError, KeyError, TypeError) as error:

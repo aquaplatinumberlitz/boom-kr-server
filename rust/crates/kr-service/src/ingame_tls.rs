@@ -14,7 +14,6 @@ use std::{
     collections::HashMap,
     fs, io,
     net::{IpAddr, Ipv4Addr, SocketAddrV4},
-    os::unix::fs::PermissionsExt,
     path::PathBuf,
     sync::{Arc, Mutex},
     time::{Duration, Instant},
@@ -66,20 +65,14 @@ impl Config {
         {
             return Err(io::Error::other("prelogin TLS bounds"));
         }
-        let file = fs::symlink_metadata(&self.private_key)?;
-        let parent = fs::symlink_metadata(
-            self.private_key
-                .parent()
-                .ok_or_else(|| io::Error::other("prelogin key parent"))?,
-        )?;
-        if !file.is_file()
-            || file.permissions().mode() & 0o077 != 0
-            || !parent.is_dir()
-            || parent.permissions().mode() & 0o077 != 0
-            || file.len() == 0
-            || file.len() > 8192
-        {
-            return Err(io::Error::other("prelogin key must be private"));
+        let parent = self
+            .private_key
+            .parent()
+            .ok_or_else(|| io::Error::other("prelogin key parent"))?;
+        crate::platform::private_dir(parent)?;
+        let file = crate::platform::private_file(&self.private_key)?;
+        if file.len() == 0 || file.len() > 8192 {
+            return Err(io::Error::other("prelogin key has invalid length"));
         }
         Ok(())
     }

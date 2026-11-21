@@ -1,5 +1,6 @@
 //! Company-owned account backend. No KR wire adapter or network authentication.
 //! Synchronous: call from an isolated bounded worker, never a Tokio room task.
+use crate::platform;
 use argon2::{Algorithm, Argon2, Params, PasswordHasher, PasswordVerifier, Version};
 use rusqlite::{
     Connection, OpenFlags, OptionalExtension, Transaction, TransactionBehavior, params,
@@ -7,8 +8,7 @@ use rusqlite::{
 use serde::Serialize;
 use sha2::{Digest, Sha256};
 use std::{
-    fs::{self, OpenOptions},
-    os::unix::fs::{OpenOptionsExt, PermissionsExt},
+    fs,
     path::Path,
     sync::atomic::{AtomicUsize, Ordering},
     time::Duration,
@@ -258,10 +258,9 @@ impl Store {
     fn open_mode(path: &Path, allow_migration: bool) -> Result<Self> {
         snapshots::private_parent(path)?;
         if allow_migration {
-            match OpenOptions::new()
+            match platform::private_options()
                 .write(true)
                 .create_new(true)
-                .mode(0o600)
                 .open(path)
             {
                 Ok(_) => (),
@@ -269,10 +268,7 @@ impl Store {
                 Err(_) => return Err(Error::Storage),
             }
         }
-        let meta = fs::symlink_metadata(path).map_err(|_| Error::Storage)?;
-        if !meta.is_file() || meta.permissions().mode() & 0o077 != 0 {
-            return Err(Error::InvalidInput);
-        }
+        snapshots::check_private(platform::private_file(path))?;
         let mut db = Connection::open_with_flags(
             path,
             OpenFlags::SQLITE_OPEN_READ_WRITE | OpenFlags::SQLITE_OPEN_NO_MUTEX,

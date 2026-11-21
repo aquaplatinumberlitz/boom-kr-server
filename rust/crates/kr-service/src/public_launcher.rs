@@ -11,7 +11,6 @@ use serde::Deserialize;
 use std::{
     fs, io,
     net::{Ipv4Addr, SocketAddrV4, TcpStream},
-    os::unix::fs::PermissionsExt,
     path::PathBuf,
     sync::{Arc, Mutex},
     time::Duration,
@@ -55,18 +54,10 @@ impl Config {
             .private_key
             .parent()
             .ok_or_else(|| io::Error::other("launcher key parent"))?;
-        let directory = fs::symlink_metadata(parent)?;
-        let file = fs::symlink_metadata(&self.private_key)?;
-        if !directory.is_dir()
-            || directory.permissions().mode() & 0o077 != 0
-            || !file.is_file()
-            || file.permissions().mode() & 0o077 != 0
-            || file.len() == 0
-            || file.len() > 8192
-        {
-            return Err(io::Error::other(
-                "launcher key must be a private regular file",
-            ));
+        crate::platform::private_dir(parent)?;
+        let file = crate::platform::private_file(&self.private_key)?;
+        if file.len() == 0 || file.len() > 8192 {
+            return Err(io::Error::other("launcher key has invalid length"));
         }
         Ok(())
     }
@@ -343,6 +334,7 @@ mod tests {
         account_worker::Worker,
         accounts::{Admin, Store, TEST_SERIAL, Token},
     };
+    use std::os::unix::fs::PermissionsExt;
     use std::time::{SystemTime, UNIX_EPOCH};
 
     #[test]

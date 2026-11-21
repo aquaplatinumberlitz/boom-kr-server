@@ -4,14 +4,12 @@ use crate::{
     account_bridge::{self, Bridge},
     account_worker::{Client, Worker},
     accounts::Token,
+    platform::{self, local_ipc},
 };
 use serde::Deserialize;
-use std::{
-    fs, io, net::Ipv4Addr, os::unix::fs::PermissionsExt, path::PathBuf, sync::Arc, time::Duration,
-};
+use std::{fs, io, net::Ipv4Addr, path::PathBuf, sync::Arc, time::Duration};
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
-    net::{UnixListener, UnixStream},
     sync::{Semaphore, watch},
     task::JoinSet,
     time::timeout,
@@ -136,17 +134,9 @@ impl Config {
             let parent = path
                 .parent()
                 .ok_or_else(|| io::Error::other("account parent missing"))?;
-            let meta = fs::symlink_metadata(parent)?;
-            if !meta.is_dir() || meta.permissions().mode() & 0o077 != 0 {
-                return Err(io::Error::other("account parent must be private directory"));
-            }
+            platform::private_dir(parent)?;
         }
-        let meta = fs::symlink_metadata(&self.database)?;
-        if !meta.is_file() || meta.permissions().mode() & 0o077 != 0 {
-            return Err(io::Error::other(
-                "account database must be private regular file",
-            ));
-        }
+        platform::private_file(&self.database)?;
         Ok(())
     }
 }
@@ -180,8 +170,7 @@ pub(crate) struct Owner {
     worker: Worker,
     live_worker: Option<Worker>,
     pub active: Active,
-    pub listener: Option<UnixListener>,
-    _socket: crate::operations::PrivateSocket,
+    pub listener: Option<local_ipc::Listener>,
     _instance: fs::File,
 }
 impl Owner {
@@ -197,7 +186,7 @@ impl Owner {
             ));
         }
         let instance = crate::operations::lock_database(&config.database)?;
-        let (listener, socket) = crate::operations::PrivateSocket::bind(&config.launch_socket)?;
+        let listener = local_ipc::Listener::bind(&config.launch_socket)?;
         let public_launcher = match &config.public_launcher {
             Some(public) => Some(public.open().await?),
             None => None,
@@ -270,7 +259,6 @@ impl Owner {
             worker,
             live_worker,
             listener: Some(listener),
-            _socket: socket,
             _instance: instance,
         })
     }
@@ -315,7 +303,11 @@ impl PreparedLaunch {
         }
     }
 }
-async fn issue(stream: &mut UnixStream, active: &Active, peers: &[Ipv4Addr]) -> io::Result<()> {
+async fn issue(
+    stream: &mut local_ipc::Stream,
+    active: &Active,
+    peers: &[Ipv4Addr],
+) -> io::Result<()> {
     let mut input = Zeroizing::new(Vec::new());
     let mut chunk = Zeroizing::new([0u8; 256]);
     loop {
@@ -622,11 +614,12 @@ pub(crate) async fn connection(
     }
 }
 pub(crate) async fn control(
-    listener: UnixListener,
+    listener: local_ipc::Listener,
     active: Active,
     peers: Vec<Ipv4Addr>,
     mut stop: watch::Receiver<bool>,
 ) -> io::Result<()> {
+    let listener = Arc::new(listener);
     let permits = Arc::new(Semaphore::new(4));
     let peers = Arc::new(peers);
     let mut jobs = JoinSet::new();
@@ -635,14 +628,18 @@ pub(crate) async fn control(
             _=stop.changed()=>break,
             result=jobs.join_next(), if !jobs.is_empty()=>{ result.expect("nonempty jobs").map_err(io::Error::other)?; },
             pair=listener.accept()=>{
-                let (mut stream,_)=pair?;
+                let mut stream=pair?;
                 let Ok(permit)=permits.clone().try_acquire_owned() else { drop(stream); continue; };
                 let active=active.clone();let peers=peers.clone();let mut stop=stop.clone();
+                let listener=listener.clone();
                 jobs.spawn(async move {
                     let _permit=permit;
                     let result=tokio::select! {
                         _=stop.changed()=>return,
-                        result=timeout(Duration::from_secs(3),issue(&mut stream,&active,&peers))=>result,
+                        result=timeout(Duration::from_secs(3),async {
+                            listener.authenticate(&mut stream).await?;
+                            issue(&mut stream,&active,&peers).await
+                        })=>result,
                     };
                     if !matches!(result,Ok(Ok(()))) {
                         let response:&[u8]=if result.is_err(){b"{\"ok\":false,\"error\":\"busy_retry\"}\n"}else{b"{\"ok\":false,\"error\":\"denied\"}\n"};
