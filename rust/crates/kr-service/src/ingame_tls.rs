@@ -308,6 +308,13 @@ fn owner_ended(result: &io::Result<()>) -> serde_json::Value {
     event
 }
 
+// accept_bi, the current native read and the owner health timer can
+// all become ready when the same peer closes QUIC. Match the typed
+// close disposition; never reinterpret protocol/DB failures as a close.
+fn peer_closed_normally(reason: &quinn::ConnectionError) -> bool {
+    matches!(reason, quinn::ConnectionError::ApplicationClosed(close) if close.error_code.into_inner() == 0)
+}
+
 async fn stream(
     mut send: quinn::SendStream,
     mut recv: quinn::RecvStream,
@@ -364,8 +371,20 @@ async fn stream(
                 tokio::pin!(read);
                 loop {
                     tokio::select! {
-                        input = &mut read => break input.map_err(|e|
-                            native_failure(e, "native_frame_read", None, None))?,
+                        input = &mut read => {
+                            match input {
+                                Err(e) if e.kind() == io::ErrorKind::NotConnected
+                                    && transport.close_reason().as_ref().is_some_and(peer_closed_normally) =>
+                                {
+                                    // Own the normal close at the connection level. Do
+                                    // not mark the DB roster stale here while its health
+                                    // poll can still be running.
+                                    return Ok(());
+                                }
+                                result => break result.map_err(|e|
+                                    native_failure(e, "native_frame_read", None, None))?,
+                            }
+                        }
                         _ = clock.tick(), if lane.in_lobby() => {
                             let mut owner = resources.owner.lock().await;
                             let driver = owner.as_mut().ok_or_else(|| io::Error::other("native owner absent"))?;
@@ -487,6 +506,14 @@ async fn stream(
     }
     .await
     .map_err(|e| native_failure(e, "native_stage_guard", last.0, last.1));
+    if result.is_ok()
+        && transport
+            .close_reason()
+            .as_ref()
+            .is_some_and(peer_closed_normally)
+    {
+        return result;
+    }
     if let Some(driver) = resources.owner.lock().await.as_mut() {
         let retired = match driver.retire_disconnected(&lane) {
             Ok(retired) => retired,
@@ -541,7 +568,11 @@ async fn connection(
                 }
             },
             _=health.tick()=>{
-                if let Some(driver)=resources.owner.lock().await.as_mut(){
+                let mut owner = resources.owner.lock().await;
+                if connection.close_reason().as_ref().is_some_and(peer_closed_normally) {
+                    return Ok(());
+                }
+                if let Some(driver)=owner.as_mut(){
                     driver.inspect().await?;
                     if driver.has_roster(){unauthenticated.take();}
                 }
@@ -550,7 +581,11 @@ async fn connection(
                 }
             },
             stream=connection.accept_bi()=>{
-                let (send,recv)=stream.map_err(io::Error::other)?;number+=1;
+                let (send,recv) = match stream {
+                    Err(e) if peer_closed_normally(&e) => return Ok(()),
+                    result => result.map_err(io::Error::other)?,
+                };
+                number+=1;
                 if number>prelogin::STREAM_TOTAL||streams.len()>=prelogin::STREAM_LIMIT as usize{return Err(io::Error::other("native stream admission bound"));}
                 let id=crate::transport_ids::next()?;let resources=resources.clone();let transport=connection.clone();streams.spawn(async move{self::stream(send,recv,id,resources,transport).await});
             },
