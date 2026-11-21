@@ -10,6 +10,8 @@ lab = ["iroh-relay/server", "dep:rcgen", "dep:rustls"]
 
 [dependencies]
 data-encoding = "=2.11.1"
+mdns-sd = { version = "=0.22.0", default-features = false, features = ["async"] }
+serde.workspace = true
 iroh = { version = "=1.5.0", default-features = false, features = ["tls-ring", "portmapper"] }
 iroh-relay = { version = "=1.5.0", default-features = false }
 rcgen = { workspace = true, optional = true }
