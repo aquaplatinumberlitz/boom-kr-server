@@ -9,11 +9,11 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP383 / AUD151: xuất pack và kiểm gói Linux.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP384 / AUD151: cập nhật xếp loại mẫu F1.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
 tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [Lộ trình F1–F6](#full-game-roadmap) chưa mở.
-[Bước 0](content/classification.md) đã xác nhận Patrit01 chơi đến kết quả và về phòng; lỗi đăng nhập Wine chặn các họ biến thể.
+[Bước 0](content/classification.md) đã qua đăng nhập có kiểm trạng thái và chu trình trận trên các mẫu F1 mới; còn đối chứng item, đồ rơi và địa hình để nâng lớp cả họ.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
