@@ -1,12 +1,14 @@
 //! First-party player installation and verification of optional launcher artwork.
 #![forbid(unsafe_code)]
+use same_file::Handle;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::{
-    collections::HashSet,
+    collections::{HashMap, HashSet},
     fs::{self, File, OpenOptions},
     io::{self, Read, Write},
     path::{Path, PathBuf},
+    time::UNIX_EPOCH,
 };
 
 #[derive(Clone, Deserialize, Serialize)]
@@ -168,12 +170,70 @@ pub fn sha256(path: &Path) -> io::Result<String> {
     Ok(digest_hex(&hash.finalize()))
 }
 
+#[derive(Eq, Hash, PartialEq)]
+struct FileIdentity {
+    handle: Handle,
+    length: u64,
+    modified: u128,
+}
+
+fn file_identity(path: &Path) -> io::Result<FileIdentity> {
+    let metadata = fs::metadata(path)?;
+    let modified = metadata
+        .modified()?
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_nanos();
+    Ok(FileIdentity {
+        handle: Handle::from_path(path)?,
+        length: metadata.len(),
+        modified,
+    })
+}
+
+/// Cache hashes only for the duration of one verification pass. Language trees
+/// intentionally hard-link the same immutable pack/common files; rehashing
+/// those aliases made a normal O1 launch scan several gigabytes repeatedly.
+/// Metadata is checked before and after hashing so a file changed during the
+/// read is never inserted into the cache.
+struct HashCache {
+    values: HashMap<FileIdentity, String>,
+}
+
+impl HashCache {
+    fn new() -> Self {
+        Self {
+            values: HashMap::new(),
+        }
+    }
+
+    fn digest(&mut self, path: &Path) -> io::Result<String> {
+        let identity = file_identity(path)?;
+        if let Some(value) = self.values.get(&identity) {
+            return Ok(value.clone());
+        }
+        let value = sha256(path)?;
+        if file_identity(path)? == identity {
+            self.values.insert(identity, value.clone());
+        }
+        Ok(value)
+    }
+}
+
 fn digest_hex(bytes: &[u8]) -> String {
     bytes.iter().map(|byte| format!("{byte:02x}")).collect()
 }
 fn checked(root: &Path, pin: &Pin) -> io::Result<PathBuf> {
     let path = ordinary(root, &pin.path)?;
     if fs::metadata(&path)?.len() != pin.bytes || sha256(&path)? != pin.sha256 {
+        return Err(invalid());
+    }
+    Ok(path)
+}
+
+fn checked_cached(root: &Path, pin: &Pin, cache: &mut HashCache) -> io::Result<PathBuf> {
+    let path = ordinary(root, &pin.path)?;
+    if fs::metadata(&path)?.len() != pin.bytes || cache.digest(&path)? != pin.sha256 {
         return Err(invalid());
     }
     Ok(path)
@@ -319,45 +379,51 @@ fn check_receipt(target: &Path, expected: &str) -> io::Result<()> {
     Ok(())
 }
 
-fn verify_entry(bundle: &Path, game: &Path, entry: &Entry) -> io::Result<()> {
+fn verify_entry_cached(
+    bundle: &Path,
+    game: &Path,
+    entry: &Entry,
+    cache: &mut HashCache,
+) -> io::Result<()> {
     if runtime_file(&entry.path) {
-        // A client may update or remove these files. Keep the trusted inputs
-        // pinned; the launch preparation restores them without trusting edits.
-        checked(bundle, &entry.payload)?;
+        checked_cached(bundle, &entry.payload, cache)?;
         managed_file(game, &entry.path, true)?;
     } else {
-        checked(
+        checked_cached(
             game,
             &Pin {
                 path: entry.path.clone(),
                 bytes: entry.payload.bytes,
                 sha256: entry.payload.sha256.clone(),
             },
+            cache,
         )?;
     }
     Ok(())
 }
 
-fn verify_tree(
+fn verify_tree_cached(
     bundle: &Path,
     target: &Path,
     language: &str,
     manifest: &Manifest,
+    cache: &mut HashCache,
 ) -> io::Result<()> {
     let selected = manifest.languages.get(language).ok_or_else(invalid)?;
     let game = target.join(language);
     for pack in &manifest.packs {
-        checked(
+        checked_cached(
             &game,
             &Pin {
                 path: pack.path.clone(),
                 bytes: pack.bytes,
                 sha256: pack.sha256.clone(),
             },
+            cache,
         )?;
     }
     for entry in manifest.common.iter().chain(&selected.files) {
-        verify_entry(bundle, &game, entry)?;
+        verify_entry_cached(bundle, &game, entry, cache)?;
     }
     Ok(())
 }
@@ -365,8 +431,9 @@ fn verify_tree(
 pub fn verify_install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
     let manifest = read_manifest(bundle, expected)?;
     check_receipt(target, expected)?;
+    let mut cache = HashCache::new();
     for language in manifest.languages.keys() {
-        verify_tree(bundle, target, language, &manifest)?;
+        verify_tree_cached(bundle, target, language, &manifest, &mut cache)?;
     }
     Ok(())
 }
@@ -458,7 +525,7 @@ pub fn verify_language(
 ) -> io::Result<()> {
     let manifest = read_manifest(bundle, expected)?;
     check_receipt(target, expected)?;
-    verify_tree(bundle, target, language, &manifest)
+    verify_tree_cached(bundle, target, language, &manifest, &mut HashCache::new())
 }
 
 #[derive(Clone, Copy, Debug)]
@@ -478,7 +545,9 @@ pub fn prepare_language(
 ) -> Result<(), PreparationError> {
     let manifest = read_manifest(bundle, expected).map_err(|_| PreparationError::Integrity)?;
     check_receipt(target, expected).map_err(|_| PreparationError::Integrity)?;
-    verify_tree(bundle, target, language, &manifest).map_err(|_| PreparationError::Integrity)?;
+    let mut cache = HashCache::new();
+    verify_tree_cached(bundle, target, language, &manifest, &mut cache)
+        .map_err(|_| PreparationError::Integrity)?;
     let selected = &manifest.languages[language];
     let game = target.join(language);
     for entry in manifest.common.iter().chain(&selected.files) {
