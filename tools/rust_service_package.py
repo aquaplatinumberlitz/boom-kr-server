@@ -67,8 +67,8 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None, e
             or value['diagnostic_two_lobby']['fixed_room'].get('endpoint_policy') != 'authenticated_relay'):
         raise ValueError('Gói yêu cầu account database và relay xác thực hiện hành')
     if pack_scope is not None:
-        if pack_scope not in ('g1', 'f1'):
-            raise ValueError('Phạm vi pack phải là g1 hoặc f1')
+        if pack_scope not in ('g1', 'f1', 'f1-a'):
+            raise ValueError('Phạm vi pack phải là g1, f1 hoặc f1-a')
         two = value['diagnostic_two_lobby']
         managed = two['managed_rooms']
         room = two['fixed_room']
@@ -159,7 +159,7 @@ def main():
     parser.add_argument('--binary-dir', type=Path, required=True)
     parser.add_argument('--target', required=True)
     parser.add_argument('--out', type=Path, required=True)
-    parser.add_argument('--pack-scope', choices=['g1', 'f1'], default='g1')
+    parser.add_argument('--pack-scope', choices=['g1', 'f1', 'f1-a'], default='g1')
     parser.add_argument('--external-tls', action='store_true',
                         help='Giữ pin TLS công khai hiện có; cấp private key qua state')
     parser.add_argument('--legacy-fixtures', action='store_true',

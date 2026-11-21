@@ -2,7 +2,7 @@
 
 Bảng sinh từ [kiểm kê pack](../CONTENT.md). **A**: chạy được với server hiện tại trong phạm vi ghi ở dòng
 tương ứng; **B**: cần thêm dữ liệu, wire hoặc luật đã hiểu; **C**: còn ẩn số cần RE.
-Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1–F6 vẫn chưa mở.
+Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1 đang mở; F2–F6 tiếp tục chờ.
 
 Nguồn: số liệu pack và wiki được định tuyến ở CONTENT; đối chiếu `boomkr-re/docs/kr-data.md` §2, §6, §12–13
 và `boom-re/docs/items.md`, `map.md` để định hướng, không nhập opcode/ID VN. IDA trên bản sao unpack 00967
@@ -21,6 +21,7 @@ Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; gi�
 | Hệ thống | 4 | 5 | 51 | 1 |
 
 Họ map F1: 0 A, 86 B, 22 C. Có 47 map đạt A ở cấp map.
+Bốn map trong số đó đã lặp lại trọn chu trình với cặp Windows/Wine ở [CP387](../evidence/checkpoints/records/CP387.json).
 
 ### Phép thử rẻ cho F1
 
@@ -64,11 +65,11 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | BSBigPatrit | F1 | C | 1 · `BSBigPatrit14` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | BSBigVillage | F1 | C | 1 · `BSBigVillage10` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | BSSmallCamp | F1 | B | 1 · `BSSmallCamp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **BSSmallCamp08 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dải lưới và thùng trong vùng đấu thu nhỏ. |
-| BSSmallPatrit | F1 | B | 1 · `BSSmallPatrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **BSSmallPatrit14 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy tường bao và cột trong vùng đấu. |
+| BSSmallPatrit | F1 | B | 1 · `BSSmallPatrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **BSSmallPatrit14 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy tường bao và cột trong vùng đấu. **BSSmallPatrit14 (A):** Windows VM và Wine tải map, tới kết quả và về phòng; chỉ xác nhận chu trình. |
 | BSSmallVillage | F1 | B | 1 · `BSSmallVillage10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **BSSmallVillage10 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy hàng cây bao quanh cụm nhà và thùng. |
 | CaJJ_CAPong | F1 | B | 5 · `CaJJ_CAPong01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_CAPong01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền lưới với chướng ngại hình vuông và tròn. |
 | CaJJ_Camp | F1 | B | 1 · `CaJJ_Camp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Camp08 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dải lưới và cột trong vùng đấu. |
-| CaJJ_Clover | F1 | B | 5 · `CaJJ_Clover01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Clover01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cụm chướng ngại hình cỏ bốn lá. |
+| CaJJ_Clover | F1 | B | 5 · `CaJJ_Clover01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Clover01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cụm chướng ngại hình cỏ bốn lá. **CaJJ_Clover01 (A):** Windows VM và Wine tải map, tới kết quả và về phòng; chỉ xác nhận chu trình. |
 | CaJJ_Factory | F1 | B | 1 · `CaJJ_Factory07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Factory07 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy lưới và cột có sọc trong vùng đấu. |
 | CaJJ_Forest | F1 | B | 1 · `CaJJ_Forest07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Forest07 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy ao ở góc dưới bên phải. |
 | CaJJ_Ocean | F1 | B | 1 · `CaJJ_Ocean24` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Ocean24 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền nước, cụm đá và các khối sáng. |
@@ -92,7 +93,7 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | ExFactory | F1 | B | 2 · `ExFactory01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExFactory01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy các cột có biểu tượng quanh vùng đấu. |
 | ExForest | F1 | B | 1 · `ExForest01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExForest01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy ao và cây lớn ở giữa. |
 | ExPatrit | F1 | B | 2 · `ExPatrit01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExPatrit01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cột tròn và công trình ở giữa. |
-| ExTomb | F1 | B | 2 · `ExTomb01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExTomb01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy rãnh tối và cầu ở giữa. |
+| ExTomb | F1 | B | 2 · `ExTomb01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExTomb01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy rãnh tối và cầu ở giữa. **ExTomb01 (A):** Windows VM và Wine tải map, tới kết quả và về phòng; chỉ xác nhận chu trình. |
 | ExVillage | F1 | B | 2 · `ExVillage01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExVillage02 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cụm nhà, thùng và cụm hình cây ở giữa. |
 | Fm_AIBtlDesert | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Fm_AIBtlForest | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
@@ -127,7 +128,7 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | NXCL_Forest | F1 | B | 1 · `NXCL_Forest07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | NXCL_Ice | F1 | B | 1 · `NXCL_Ice13` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | NXCL_Mine | F1 | B | 1 · `NXCL_Mine01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| NXCL_Ocean | F1 | B | 1 · `NXCL_Ocean02` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **NXCL_Ocean02 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền nước, các khối sáng và cụm đá giữa. |
+| NXCL_Ocean | F1 | B | 1 · `NXCL_Ocean02` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **NXCL_Ocean02 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền nước, các khối sáng và cụm đá giữa. **NXCL_Ocean02 (A):** Windows VM và Wine tải map, tới kết quả và về phòng; chỉ xác nhận chu trình. |
 | NXCL_PangLand | F1 | C | 1 · `NXCL_PangLand15` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | NXCL_Patrit | F1 | B | 1 · `NXCL_Patrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | NXCL_Tomb | F1 | B | 1 · `NXCL_Tomb12` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |

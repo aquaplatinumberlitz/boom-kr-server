@@ -11,8 +11,8 @@ Codex cập nhật bảng trạng thái và danh sách việc khi xong một bư
 theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP389.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
-tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [Lộ trình F1–F6](#full-game-roadmap) chưa mở.
-[Xếp loại bước 0](content/classification.md) đã chốt: 47 map đạt A ở cấp map; họ map F1 có 0 A, 86 B và 22 C. [Controller trên Windows và Wine](evidence/checkpoints/records/CP387.json) đã đạt bốn map trọn chu trình; bước 0 hoàn tất. Dùng lại controller cho lượt hai client có tải ở M8 sau soak.
+tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [F1](#f1-normal-battle) đã mở sớm song song với M8 và O1; F2–F6 tiếp tục chờ.
+[Bước 0](content/classification.md) hoàn tất; dùng lại [controller Windows/Wine](evidence/checkpoints/records/CP387.json) cho F1 và lượt hai client có tải M8 sau soak.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -58,14 +58,11 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
    L1 đã nghiệm thu trên cùng gói launcher với M8, theo [phạm vi nghiệm thu](evidence/owner-directives/l1-phase1.json).
    Tiệm, chữ do server gửi và IME Hàn thật để sau giai đoạn 1. Runtime Wine dùng lease chung.
 
-Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
+2. **[F1-a](#f1-normal-battle).** Adapter thử đã tách khỏi cấu hình G1; cần đối chứng native terrain, item và về phòng trước khi nâng lớp họ. Nghiệm thu giai đoạn 1 vẫn theo [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
 
-- Gate local/history đã đạt trên `ffc2ec1`: 580.279 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
-  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP342 có hai hồ sơ và chuyển kết nối kênh
-  trên bản tương thích riêng; gate công bố mới chờ chạy. Parser/projection chưa nối listener, DB/guest/prelogin TLS và M8 vẫn mở.
-
+- [Lịch sử và bằng chứng cục bộ](evidence/rust-service/m8-login-step1-verification.json) giữ giới hạn parser CP342 và lần đối chiếu nguồn; M8 chưa đóng.
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite
   đã có control departure, DB ticket và old-round. Giữ fixed-team legacy; không suy tie enum server gốc.
@@ -74,20 +71,10 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
   controls theo ma trận, với [preset phục vụ và ngân sách cổng](OPERATIONS.md). Native mới dùng Wine/LAN cô lập;
   Internet thật cho transport mới, tải, session budget và độ bền vận hành phải kiểm ở M8. Không mở lại K6c/K7.
   Native59 đã có [policy quan sát design và native positive](evidence/rust-service/g1-native59-observation.json) cho schema đã đo; không ACK hoặc đổi gameplay. Mã/giá trị record và server gốc vẫn unknown, M8 còn kiểm budget phiên dài; raw lỗi trước giữ nguyên.
-- M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
-  current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
-  active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
-- Factory07/Village10 đã có native chọn UI, basic hai ván/reset/ván tiếp và journal map. Các route terrain/item
-  đã đo có giới hạn tại contract từng map; Factory07 có route 2/4/8 và Glass control, acceptance G1 theo các route đã đo. Không suy map
-  đã mở hoàn chỉnh từ UI/basic hoặc một route. Village10/Tomb12 có 6 spawn; theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json),
-  nghiệm thu hai map này cho 2–6 người, bốn map còn lại cho 2–8 người. Gameplay và nội dung vẫn phải đo theo thứ tự đã chốt.
-- Một phép TCP diagnostic rộng có cache positive nhưng timeout ở idle Back/return241 và cleanup wait. Raw/failure
-  đã giữ, cause chưa xác định; test cache hẹp có negative/ownership/shutdown riêng đã đạt. Không gọi toàn bộ hồi quy
-  diagnostic rộng là pass; một lượt TCP setup cũng timeout trước peer106/117. Cause chưa rõ, theo dõi nếu cản G1/M6/M8. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
-- M6 ở [#391](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391) đạt phạm vi thu hẹp theo
-  [acceptance/evidence](evidence/rust-service/m6-journal-serving.json). Serving bật `persist_matches` và `persist_character`
-  cho luồng DB/managed player round; không tự thay hành vi config cũ. DB/schema downgrade, match restore và economy
-  không được suy từ nghiệm thu này; backup/restore, tải và đóng gói còn M8.
+- M7 đã có selection, roster và active EOF theo bảng; occupancy chỉ biết current/capacity. M5b chưa có progression hoặc inventory.
+- Map G1 giữ phạm vi [ma trận đã đo](evidence/rust-service/g1-acceptance-matrix.json); Village10/Tomb12 có 6 spawn, bốn map còn lại có 8.
+- [TCP diagnostic rộng](evidence/rust-service/g1-map-adapter.json) có cache positive và lỗi setup/idle Back/cleanup chưa rõ nguyên nhân; các đối chứng hẹp đã đạt.
+- [M6](evidence/rust-service/m6-journal-serving.json) bật lưu trận và nhân vật cho managed player; vận hành thuộc M8, economy thuộc F4.
 
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
   Máy cài gói Linux không cần repo/`local/`. Dữ liệu nội dung được xuất từ thư mục game, còn mẫu wire đi trong manifest gói.
@@ -710,7 +697,7 @@ inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ
 <a id="full-game-roadmap"></a>
 ### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
 
-Lộ trình tới đủ item, map và mode chưa cam kết thời gian. F1–F6 chưa mở; bước 0 được thực hiện song song phần cuối M8.
+Lộ trình tới đủ item, map và mode chưa cam kết thời gian. Bước 0 đã xong; chủ dự án cho mở F1 sớm.
 Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng còn chạy. Dùng [xếp loại A/B/C](content/classification.md) để chọn phép thử và ước lượng từng đợt.
 
 | Đợt | Nội dung | Số liệu kiểm kê | Phụ thuộc và điều chưa biết |
@@ -727,7 +714,20 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
-Việc nâng họ map lên A và thử sâu item, phương tiện, nhân vật, mode chuyển vào từng phần tương ứng của F1. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
+F1 mở song song với [O1](evidence/owner-directives/offline-friends.json) và S1; các đợt sau theo F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
+
+<a id="f1-normal-battle"></a>
+#### F1 — Trận thường đầy đủ
+
+Làm theo thứ tự; nếu một họ cần item hoặc script chưa biết, giữ lớp B/C và tiếp họ độc lập. Mỗi lượt dùng client KR thật trong mạng cô lập.
+| Phần | Việc và nghiệm thu native | Ngân sách lượt |
+|---|---|---:|
+| F1-a Họ map B | Ưu tiên họ có mẫu A: adapter ô đơn trước, tái dùng luật terrain đã pin cho map đối chứng, sau đó nhóm có footprint/cờ đặc biệt đủ bằng chứng. Export pack cho spawn/lưới/drop; kr-load kiểm nhiều map mỗi họ. Hai client chọn map, Load đúng spawn, đặt bom, thử ô/đồ rơi, nhận kết quả và về phòng. Chỉ nâng họ khi đủ mọi map và đối chứng nội dung. | Tối đa 4; ≥16 map/lượt |
+| F1-b Item theo map | Ưu tiên hàng placement/drop mà F1-a đã lọc; hai client thấy lộ, nhặt, hiệu ứng và reset; kiểm trường hợp từ chối hoặc hết giới hạn. | Tối đa 2 mỗi nhóm |
+| F1-c Nhân vật | Đối chiếu BomberAttr với chọn nhân vật trong phòng/Battle; native đo stat ban đầu, cap và chọn lại sau ván. | Tối đa 2 mỗi nhóm |
+| F1-d Phương tiện | Manh mối `local/hy4-vehicle-audit/`: nhặt item → lên phương tiện qua 124/165. Native kiểm hai phía thấy lên, di chuyển, xuống hoặc mất phương tiện và reset. | Tối đa 2 mỗi nhóm |
+| F1-e Script map | Tách trigger/quyền thực thi theo họ; native kiểm kích hoạt, tác động hai client, kết quả và reset với đối chứng không kích hoạt. | Tối đa 2 mỗi nhóm |
+Không mở lại RE ngoài khoảng trống cụ thể. Chỉ chạy khi còn chỗ host và lấy được lease Wine; không dùng tiến trình soak cho F1.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
