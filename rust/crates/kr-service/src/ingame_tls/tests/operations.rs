@@ -77,6 +77,7 @@ fn loopback_profile(input: &ServerConfig) -> crate::Validated {
             player_choices: true,
             capacity: None,
             player_round: Some(crate::room_io::PlayerRoundConfig {
+                pack_stats: None,
                 characters: vec![0, 1],
             }),
         },

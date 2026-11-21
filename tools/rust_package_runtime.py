@@ -8,6 +8,9 @@ import os
 from pathlib import Path, PurePosixPath
 import stat
 import subprocess
+import sys
+import struct
+import xml.etree.ElementTree as ET
 import time
 
 
@@ -75,7 +78,24 @@ def private_state(root, state):
     return state.resolve()
 
 
-def prepare(root, state):
+def package_tls(root, state):
+    config = json.loads((root / 'config.template.json').read_text())
+    admission = config['diagnostic_two_lobby']['account_admission']
+    return {key: state / (key + '-identity') for key in ('public_launcher', 'prelogin_tls')
+            if (admission.get(key) or {}).get('certificate') == '@INSTALL@'}
+
+
+def init_tls(root, state):
+    for destination in package_tls(root, state).values():
+        if not destination.exists():
+            subprocess.run([str(root / 'bin/kr-launch-identity'), str(destination)],
+                           check=True, cwd=state, stdout=subprocess.DEVNULL)
+        if destination.is_symlink() or not all((destination / name).is_file()
+                                                for name in ('private.pk8', 'certificate.der')):
+            raise ValueError('TLS identity chưa đầy đủ; cần provision lại trong state riêng')
+
+
+def prepare(root, state, cache=None, scope=None):
     state = private_state(root, state)
     socket = state / 'launch.sock'
     if max(len(os.fsencode(p)) for p in [socket, state / 'accounts.admin.sock']) > 100:
@@ -86,26 +106,40 @@ def prepare(root, state):
     for section, key in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
         if admission.get(section) is not None:
             admission[section]['private_key'] = str(state / key)
+    for section, directory in package_tls(root, state).items():
+        cert = directory / 'certificate.der'
+        admission[section].update(private_key=str(directory / 'private.pk8'),
+                                  certificate=dict(path=str(cert), bytes=cert.stat().st_size,
+                                                   sha256=digest(cert)))
     run = state / 'runs' / str(time.time_ns())
     run.mkdir(mode=0o700, parents=True)
+    if cache is not None:
+        from kr_pack_config import configure
+        from kr_pack_export import F1, G1
+        wire = run / 'wire'
+        wire.mkdir(mode=0o700)
+        configure(config, root, cache, wire, G1 if scope == 'g1' else F1, scope)
     runtime = run / 'config.json'
     fd = os.open(runtime, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, 'w') as stream:
-        json.dump(config, stream, ensure_ascii=False, indent=2)
+        json.dump(config, stream, ensure_ascii=False, separators=(',', ':'))
         stream.write('\n')
     return runtime, run / 'service', state / 'accounts.sqlite'
 
 
 def main():
+    # The verified package stays immutable even when owned by the runner.
+    sys.dont_write_bytecode = True
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['verify', 'init-db', 'restore-db', 'migrate-db', 'run'])
+    parser.add_argument('command', choices=['verify', 'init-db', 'init-tls', 'restore-db', 'migrate-db', 'export', 'run'])
     parser.add_argument('--manifest-sha256', required=True)
     parser.add_argument('--state', type=Path)
     parser.add_argument('--snapshot', type=Path)
+    parser.add_argument('--game-dir', type=Path, help='Thư mục game KR 00967, chỉ đọc')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
     try:
-        verify(root, args.manifest_sha256)
+        manifest = verify(root, args.manifest_sha256)
         if args.command == 'verify':
             print('Gói khớp manifest bàn giao.')
             return
@@ -113,6 +147,16 @@ def main():
             raise ValueError('Cần --state riêng')
         if (args.snapshot is not None) != (args.command == 'restore-db'):
             raise ValueError('Chỉ restore-db dùng và yêu cầu --snapshot')
+        scope = manifest.get('pack_scope')
+        if scope is not None and scope not in ('g1', 'f1'):
+            raise ValueError('Phạm vi pack trong gói không hợp lệ')
+        needs_game = scope is not None and args.command in ('export', 'run')
+        if needs_game != (args.game_dir is not None):
+            raise ValueError('Gói từ pack yêu cầu --game-dir khi export hoặc run')
+        if args.command == 'export' and scope is None:
+            raise ValueError('Gói này dùng fixture; cần gói Linux xuất từ pack')
+        if args.game_dir is not None and args.state.resolve().is_relative_to(args.game_dir.resolve()):
+            raise ValueError('State phải nằm ngoài thư mục game chỉ đọc')
         state = private_state(root, args.state)
         database = state / 'accounts.sqlite'
         lock_fd = os.open(state / 'service.lock', os.O_WRONLY | os.O_CREAT | os.O_NOFOLLOW, 0o600)
@@ -124,20 +168,31 @@ def main():
         if args.command == 'migrate-db':
             subprocess.run([admin, 'migrate', str(database)], check=True, cwd=root)
             return
+        if args.command == 'init-tls':
+            init_tls(root, state)
+            return
         if args.command == 'init-db':
             if database.exists():
                 raise ValueError('DB đã tồn tại; không ghi đè bằng init-db')
+            init_tls(root, state)
             request = dict(actor='package-init', reason='Initial package installation', command=dict(op='init'))
             subprocess.run([admin, str(database)],
                            input=json.dumps(request), text=True, check=True, cwd=root)
             return
+        cache = None
+        if needs_game:
+            from kr_pack_export import export
+            cache, reused = export(args.game_dir, state / 'pack-cache')
+            if args.command == 'export':
+                print(json.dumps(dict(cache=str(cache), reused=reused)))
+                return
         if not database.is_file():
             raise ValueError('Cần init-db hoặc restore DB trước khi chạy')
-        config, out, _ = prepare(root, state)
+        config, out, _ = prepare(root, state, cache, scope)
         os.set_inheritable(lock_fd, True)
         os.chdir(root)
         os.execv(str(root / 'bin/kr-service'), ['kr-service', '--config', str(config), '--out', str(out)])
-    except (ValueError, OSError, KeyError, subprocess.SubprocessError) as error:
+    except (ValueError, OSError, KeyError, IndexError, struct.error, ET.ParseError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Không thể sử dụng gói: {error}\n')
 
 

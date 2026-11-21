@@ -1,0 +1,36 @@
+{
+  "id": "AUD151",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "m8-server-pack-export"
+  ],
+  "completed_through": "CP383",
+  "recorded_utc": "2026-11-21T08:19:38.558019+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/protocol/load-phase.md",
+    "docs/protocol/items-stats.md",
+    "docs/RESEARCH.md",
+    "docs/OPERATIONS.md",
+    "docs/evidence/rust-service/m8-pack-export.json",
+    "docs/evidence/checkpoints/records/CP383.json"
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Đường cài gói cũ yêu cầu profile dựng sẵn.",
+      "correction": "Gói giữ mẫu wire, dữ liệu pack được dựng tại máy cài và đối chiếu trước bind.",
+      "fixed_in": [
+        "docs/OPERATIONS.md",
+        "docs/protocol/load-phase.md",
+        "docs/evidence/rust-service/m8-pack-export.json"
+      ]
+    }
+  ],
+  "remaining": [
+    "Unix socket/quyền file/tín hiệu cần port cho O1; chưa xác nhận Windows, ARM, native hoặc soak mới."
+  ]
+}

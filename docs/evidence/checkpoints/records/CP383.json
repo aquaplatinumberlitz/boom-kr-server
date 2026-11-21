@@ -1,0 +1,92 @@
+{
+  "id": "CP383",
+  "previous": "CP382",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T08:19:38.558019+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Gói Linux có thể xuất đúng dữ liệu KR 00967 từ thư mục game và chơi một ván TLS trên máy cài sạch không?",
+  "scope": "KRE-M8-SERVER-PACKAGE (https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474); nền cho O1/S1, không mở nhóm gameplay mới.",
+  "context_commit": "2ae5a17c90ee7d28b3e0b3ec27fecd358650adde",
+  "artifacts": [
+    {
+      "sha256": "a5a7d4dbc32b1cbbcee1dbae44f098a0b4b35b6e7af8a77174bf2ead62133a4d"
+    },
+    {
+      "sha256": "2dac8a6b171b9b2b3c0fc876311069377070d436acf1c0b7beb97b34a753f52c"
+    },
+    {
+      "sha256": "efcd697de1913f132ec9b24c61cb45f0bd523177153237e8b3cea66a1e67a980"
+    }
+  ],
+  "locators": [
+    "local/research/codex/m8-pack-export",
+    "local/research/codex/m8-pack-export/local-run.sh",
+    "local/research/codex/m8-pack-export/compare.py"
+  ],
+  "delta": {
+    "added": [
+      "Export pack chỉ đọc và cache; gói Linux hỗ trợ cài có TLS và dữ liệu mới."
+    ],
+    "corrected": [],
+    "superseded": []
+  },
+  "blockers": [
+    "Cổng Windows của kr-service và nghiệm thu native trên gói xuất pack là phạm vi riêng; soak đang chạy không bị thay đổi."
+  ],
+  "next_steps": [],
+  "completed_feature_groups": [
+    "m8-server-pack-export"
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-21T08:19:38.558019+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex tự kiểm; Claude quyết định tích hợp.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Chủ dự án miễn review độc lập."
+    }
+  },
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/load-phase.md#rust-map-profile-adapter", "summary": "Ba cặp pack gốc KR 00967 xuất được map, ItemAttr, BomberAttr, MapGroup và terrain phạm vi G1. Tất cả lớp terrain và hàng rơi G1 khớp đối chứng đã đo.", "evidence": ["CONTENT", "COMPARE", "EXPORT", "META"], "limits": "Không suy luật RNG, shop, mode hoặc hành vi client từ bảng tĩnh."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#gói-linux-và-state-riêng", "summary": "Cài từ gói tự cấp TLS, export với hash và cache, rồi khởi động trong namespace chỉ có gói và game. Hai client tổng hợp hoàn tất ván, backup SQLite hợp lệ và SIGTERM sạch ở mỗi preset.", "evidence": ["G1", "F1", "FAKE", "G1_LOG", "F1_LOG"], "limits": "Hai client tổng hợp trên Linux x86-64; chưa kiểm game native, ARM, Windows, Internet hoặc sức tải."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu pack thật, seed kind, hit count, lớp chặn tia, hủy bom và thứ tự hàng rơi trên sáu map G1.", "result": "pass", "evidence": ["CONTENT", "COMPARE"], "limits": "Đối chiếu dữ liệu, không chạy lại native."},
+    {"check": "Cài mới, cache miss/hit, pack thiếu/sai phiên bản và cache bị sửa, readiness, hai client TLS, kết quả và về sảnh, snapshot và SIGTERM.", "result": "pass", "evidence": ["G1", "F1", "FAKE", "SMOKE"], "limits": "Namespace Linux cục bộ dùng pack thật cho G1/F1; pack giả chạy cùng harness."},
+    {"check": "Cargo locked build, fmt và clippy workspace.", "result": "pass", "evidence": ["BUILD", "CLIPPY"], "limits": "Không thay acceptance native."}
+  ],
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện tại bằng kết quả cài gói Linux."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc bước 0 rời README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật nhóm M8 gói Linux và giới hạn."},
+    {"path": "docs/PROTOCOL.md", "state": "updated", "reason": "Định tuyến đường xuất pack vào hợp đồng nạp map/item."},
+    {"path": "docs/protocol/load-phase.md", "state": "updated", "reason": "Ghi nguồn profile, bảng và ràng buộc trước bind."},
+    {"path": "docs/protocol/items-stats.md", "state": "updated", "reason": "Ghi nguồn hàng rơi và ID item từ pack."},
+    {"path": "docs/RESEARCH.md", "state": "updated", "reason": "Đóng khoảng trống xuất pack và cài sạch trong phạm vi Linux tổng hợp."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Lệnh cài, export, chạy và cấp TLS."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Liên kết bằng chứng KR-S002."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog và câu hỏi."},
+    {"path": "docs/evidence/rust-service/m8-pack-export.json", "state": "updated", "reason": "Pin nguồn, recipe và phép đo gói."}
+  ],
+  "evidence": [
+    {"id": "G1", "kind": "local", "path": "local/research/codex/m8-pack-export/final-g1/verification.json", "bytes": 534, "sha256": "6ed4aaffc3b58d9cfbf2f41506f161b41e5af6233e183ae15c72f3be9ae8afd6"},
+    {"id": "F1", "kind": "local", "path": "local/research/codex/m8-pack-export/final-f1/verification.json", "bytes": 532, "sha256": "d85a61aa1b5abea17b045f3e2590863df5b041b4d8e88a4d71e6575f5251d171"},
+    {"id": "CONTENT", "kind": "local", "path": "local/research/codex/m8-pack-export/content-verification.json", "bytes": 2845, "sha256": "efcd697de1913f132ec9b24c61cb45f0bd523177153237e8b3cea66a1e67a980"},
+    {"id": "FAKE", "kind": "local", "path": "local/research/codex/m8-pack-export/fake-final.log", "bytes": 506, "sha256": "3697fb9cb9b2bbef2d9468306d0ca2fb994fd120e1665d7965b1aaf1f89d7e0e"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/m8-pack-export/build.log", "bytes": 168, "sha256": "b4cd38d2939cf9ebc2f8286d1cb04360b8a571b115cde8e14f32240fe74a81b6"},
+    {"id": "CLIPPY", "kind": "local", "path": "local/research/codex/m8-pack-export/clippy-final.log", "bytes": 168, "sha256": "3efa366aab14640fbe0e828c170496de5c9e163e6fac6374d240b7159cd0a647"},
+    {"id": "COMPARE", "kind": "local", "path": "local/research/codex/m8-pack-export/compare.py", "bytes": 2317, "sha256": "8f2cb9b9a1c9dabadb8c81f0ed934537084959e771c9c6e96740e09278a814e5"},
+    {"id": "EXPORT", "kind": "repository", "path": "tools/kr_pack_export.py", "bytes": 13174, "sha256": "96c6764668799c4956a776a6f44e1653f71a713f21f758c9e5900f0e5fe7009f"},
+    {"id": "SMOKE", "kind": "repository", "path": "tools/smoke_kr_pack_install.py", "bytes": 7476, "sha256": "64a33488fda93075a07792684614a23689c925e06aae42678effd75294686240"},
+    {"id": "FAKE_TOOL", "kind": "repository", "path": "tools/test_kr_pack_install.py", "bytes": 13441, "sha256": "a300014525f4ac6c95d3d7facb41f05b56cf2a830af152d108ddfbfb70ce4680"},
+    {"id": "G1_LOG", "kind": "local", "path": "local/research/codex/m8-pack-export/final-g1/load.log", "bytes": 684, "sha256": "d7dca22a25e6051fc7dc3eaa68ee8dc67b492216e00734ad25601455957ce796"},
+    {"id": "F1_LOG", "kind": "local", "path": "local/research/codex/m8-pack-export/final-f1/load.log", "bytes": 684, "sha256": "7b4841f1fb6277fb1e47b0a946465449fe2498338b558ad6255f8f050efde3f6"},
+    {"id": "META", "kind": "repository", "path": "docs/evidence/rust-service/m8-pack-export.json", "bytes": 4265, "sha256": "855c6c36c4e1dcb5dbcf7ac24dd7dd4946c908bb82d96ad78dde3290918210db"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-pack-export", "path": "local/evidence-manifests/fb877b80b65a18724d25e61a087b649eb8ea97ec5d34f25c32a0c007b3902fec.jsonl", "sha256": "fb877b80b65a18724d25e61a087b649eb8ea97ec5d34f25c32a0c007b3902fec", "bytes": 2164, "count": 10, "files_bytes": 303518}
+  ]
+}

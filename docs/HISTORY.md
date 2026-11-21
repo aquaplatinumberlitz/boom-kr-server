@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP382: Bước 0 xác nhận Patrit01 và các mẫu F1 khác chơi đến kết quả và về phòng qua TLS/relay trên Wine.** [Bằng chứng](evidence/checkpoints/records/CP382.json).
+
 **CP378: Có công cụ thu CPU, RAM, FD và trạng thái phòng/relay trước, trong và sau tải M8.** [Bằng chứng](evidence/checkpoints/records/CP378.json).
 
 **CP377: Đã tái lập nhịp UDP từ capture CP287; cần đối chiếu build hiện hành trước khi chốt tải M8.** [Bằng chứng](evidence/checkpoints/records/CP377.json).
