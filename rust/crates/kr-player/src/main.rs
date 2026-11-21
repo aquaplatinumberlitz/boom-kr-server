@@ -1,166 +1,77 @@
 #![forbid(unsafe_code)]
 #![cfg_attr(target_os = "windows", windows_subsystem = "windows")]
+mod account;
+mod desktop;
 mod game;
 mod look;
-use game::{Config, Session, StartError, start};
-use iced::{
-    Alignment, Color, Element, Font, Length, Subscription, Task, Theme,
-    widget::{Space, button, canvas, column, container, row, stack, text, text_input},
-};
+mod strings;
+mod ui;
+
+use game::{Config, Session, StartError};
+use iced::{Event, Subscription, Task, Theme, event, keyboard, widget::image, window};
 use kr_tunnel::launch_tls;
-use serde::{Deserialize, Serialize};
-use std::{fs, net::TcpStream, time::Duration};
+use serde::{Deserialize, Serialize, de::DeserializeOwned};
+use std::{
+    fs,
+    net::TcpStream,
+    path::Path,
+    time::{Duration, Instant},
+};
+use strings::{Copy, Language};
 use zeroize::Zeroizing;
 
-#[derive(Clone, Copy, Default, Serialize, Deserialize, PartialEq, Eq)]
-#[serde(rename_all = "lowercase")]
-enum Language {
+#[derive(Clone, Copy, Default, Debug, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+enum Mode {
     #[default]
-    Vi,
-    En,
-    Ko,
+    Online,
+    OfflineFriends,
 }
-impl Language {
-    fn id(self) -> &'static str {
-        match self {
-            Self::Vi => "vi",
-            Self::En => "en",
-            Self::Ko => "ko",
-        }
-    }
-    fn name(self) -> &'static str {
-        match self {
-            Self::Vi => "Tiếng Việt",
-            Self::En => "English",
-            Self::Ko => "한국어",
-        }
-    }
-    fn line(self, key: usize) -> &'static str {
-        const VI: [&str; 36] = [
-            "VÀO TRẬN.\nBÙNG NỔ.",
-            "Một căn phòng. Những người bạn. Vô vàn ván mới.",
-            "Chào mừng bạn",
-            "Đăng nhập hoặc chơi thử trong game.",
-            "Tài khoản",
-            "Mật khẩu",
-            "Vào game  →",
-            "Đang kiểm tra máy chủ",
-            "Máy chủ sẵn sàng",
-            "Chưa kết nối máy chủ",
-            "Đang chuẩn bị trò chơi…",
-            "Không thể kiểm tra bộ cài. Hãy kiểm tra lại gói trò chơi.",
-            "Không thể mở trò chơi. Hãy thử lại.",
-            "Trò chơi đang chạy",
-            "Đang đóng trò chơi…",
-            "DỪNG TRÒ CHƠI",
-            "Không thể lưu lựa chọn ngôn ngữ.",
-            "● CHƠI CÙNG NHAU",
-            "Quản lý tài khoản",
-            "Đăng ký",
-            "Đổi mật khẩu",
-            "Xoá tài khoản",
-            "Khôi phục mật khẩu",
-            "Quay lại",
-            "Không thực hiện được. Kiểm tra thông tin và thử lại.",
-            "Đã thực hiện.",
-            "Tên hiển thị",
-            "Mật khẩu hiện tại",
-            "Mật khẩu mới",
-            "Mã khôi phục một lần",
-            "Lưu mã này ở nơi an toàn. Mã chỉ hiện một lần.",
-            "Sao chép mã",
-            "Mật khẩu: 12–128 ký tự ASCII in được.",
-            "Xác nhận xoá tài khoản",
-            "Không thể ghi tệp trò chơi. Kiểm tra quyền ghi của thư mục cài đặt.",
-            "Phiên chơi đã kết thúc. Hãy mở game và đăng nhập lại.",
-        ];
-        const EN: [&str; 36] = [
-            "ONE MORE\nROUND.",
-            "One room. Your friends. A whole new round.",
-            "Welcome",
-            "Sign in or try the game from its login screen.",
-            "Account",
-            "Password",
-            "Play game  →",
-            "Checking server",
-            "Server online",
-            "Server unavailable",
-            "Preparing your game…",
-            "Game files could not be verified. Check your game package.",
-            "Could not start the game. Please try again.",
-            "Your game is running",
-            "Closing your game…",
-            "STOP GAME",
-            "Could not save your language choice.",
-            "● PLAY TOGETHER",
-            "Manage accounts",
-            "Register",
-            "Change password",
-            "Delete account",
-            "Recover password",
-            "Back",
-            "Request failed. Check your details and try again.",
-            "Done.",
-            "Display name",
-            "Current password",
-            "New password",
-            "One-time recovery code",
-            "Keep this code somewhere safe. It is shown only once.",
-            "Copy code",
-            "Password: 12–128 printable ASCII characters.",
-            "Confirm account deletion",
-            "Could not write game files. Check write access to the installation folder.",
-            "Your game session has ended. Open the game and sign in again.",
-        ];
-        const KO: [&str; 36] = [
-            "다시 한 판,\n함께 즐겨요.",
-            "하나의 방. 반가운 친구들. 새로운 한 판.",
-            "환영합니다",
-            "게임에서 로그인하거나 체험해 보세요.",
-            "계정",
-            "비밀번호",
-            "게임 시작  →",
-            "서버 확인 중",
-            "서버 접속 가능",
-            "서버에 연결할 수 없음",
-            "게임 준비 중…",
-            "게임 파일을 확인할 수 없습니다. 설치 파일을 확인해 주세요.",
-            "게임을 시작할 수 없습니다. 다시 시도해 주세요.",
-            "게임 실행 중",
-            "게임 종료 중…",
-            "게임 종료",
-            "언어 설정을 저장할 수 없습니다.",
-            "● 함께 즐겨요",
-            "계정 관리",
-            "가입",
-            "비밀번호 변경",
-            "계정 삭제",
-            "비밀번호 복구",
-            "뒤로",
-            "처리할 수 없습니다. 정보를 확인한 후 다시 시도해 주세요.",
-            "완료되었습니다.",
-            "표시 이름",
-            "현재 비밀번호",
-            "새 비밀번호",
-            "일회용 복구 코드",
-            "이 코드를 안전한 곳에 보관하세요. 한 번만 표시됩니다.",
-            "코드 복사",
-            "비밀번호: 인쇄 가능한 ASCII 문자 12~128자.",
-            "계정 삭제 확인",
-            "게임 파일에 쓸 수 없습니다. 설치 폴더의 쓰기 권한을 확인해 주세요.",
-            "게임 세션이 종료되었습니다. 게임을 열고 다시 로그인해 주세요.",
-        ];
-        match self {
-            Self::Vi => VI[key],
-            Self::En => EN[key],
-            Self::Ko => KO[key],
-        }
-    }
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum Screen {
+    Settings,
+    Help,
+    Menu,
+    Register,
+    Change,
+    Delete,
+    Recover,
+    AccountResult,
 }
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum Server {
+    Checking,
+    Ready(u32),
+    Offline,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum Files {
+    Checking,
+    Ready,
+    Error,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum PlayState {
+    Soon,
+    Checking,
+    Starting,
+    Running,
+    Error,
+    WaitingForServer,
+    Ready,
+}
+
 #[derive(Clone)]
 enum Message {
     Language(Language),
-    Account(Screen),
+    Mode(Mode),
+    Open(Screen),
+    Dismiss,
+    Tab(bool),
     Login(String),
     DisplayName(String),
     Password(Zeroizing<String>),
@@ -170,22 +81,19 @@ enum Message {
     AccountDone(Result<Option<Zeroizing<String>>, ()>),
     CopyCode,
     Tick,
-    Status(bool),
-    Prepared(bool),
+    Resize(iced::Size),
+    Status(Server),
+    CheckFiles(bool),
+    Retry,
+    RepairFromHome,
+    Prepared(Result<bool, ()>, bool),
     Play,
     Started(Result<Session, StartError>),
+    Desktop(desktop::Action),
+    DesktopDone(desktop::Action, bool),
     Close,
-    Stop,
 }
-#[derive(Clone, Copy, PartialEq, Eq)]
-enum Screen {
-    Home,
-    Menu,
-    Register,
-    Change,
-    Delete,
-    Recover,
-}
+
 #[derive(Default)]
 struct Form {
     login: String,
@@ -194,225 +102,301 @@ struct Form {
     current: Zeroizing<String>,
     code: Zeroizing<String>,
 }
+
+impl Form {
+    fn error(&self, screen: Screen) -> Option<Copy> {
+        let login = self.login.trim();
+        let password = |value: &str| {
+            (12..=128).contains(&value.len())
+                && value.bytes().all(|b| b == b' ' || b.is_ascii_graphic())
+        };
+        if !(3..=32).contains(&login.len())
+            || !login
+                .bytes()
+                .all(|b| b.is_ascii_alphanumeric() || b == b'_')
+        {
+            return Some(Copy::LoginHint);
+        }
+        if screen == Screen::Register && self.display_name.trim().is_empty() {
+            return Some(Copy::NameHint);
+        }
+        if matches!(screen, Screen::Change | Screen::Delete) && !password(&self.current) {
+            return Some(Copy::PasswordHint);
+        }
+        if screen == Screen::Recover {
+            let code = self.code.trim();
+            if code.len() != 64 || !code.bytes().all(|b| b.is_ascii_hexdigit()) {
+                return Some(Copy::CodeHint);
+            }
+        }
+        if screen != Screen::Delete && !password(&self.password) {
+            return Some(Copy::PasswordHint);
+        }
+        None
+    }
+}
+
 struct Player {
     config: Option<Config>,
+    art: Option<image::Handle>,
     language: Language,
-    screen: Screen,
+    mode: Mode,
+    screen: Option<Screen>,
     form: Form,
     submitting: bool,
     recovery: Option<Zeroizing<String>>,
-    online: Option<bool>,
-    checking: bool,
-    prepared: Option<bool>,
+    server: Server,
+    probing: bool,
+    files: Files,
     starting: bool,
     session: Option<Session>,
-    stopping: bool,
     closing: bool,
-    notice: Option<usize>,
-    ticks: usize,
+    launch_error: Option<Copy>,
+    preference_error: bool,
+    modal_notice: Option<(Copy, bool)>,
+    tick: usize,
+    size: iced::Size,
+    paint: u8,
 }
-fn probe(config: &Config) -> bool {
+
+fn play_state(
+    mode: Mode,
+    files: Files,
+    server: Server,
+    starting: bool,
+    running: bool,
+    failure: bool,
+) -> PlayState {
+    if mode == Mode::OfflineFriends {
+        PlayState::Soon
+    } else if running {
+        PlayState::Running
+    } else if starting {
+        PlayState::Starting
+    } else if files == Files::Checking {
+        PlayState::Checking
+    } else if files == Files::Error || failure {
+        PlayState::Error
+    } else if matches!(server, Server::Ready(_)) {
+        PlayState::Ready
+    } else {
+        PlayState::WaitingForServer
+    }
+}
+
+fn preference<T: Default + DeserializeOwned>(state: Option<&Path>, file: &str) -> T {
+    state
+        .and_then(|p| fs::read(p.join(file)).ok())
+        .and_then(|bytes| serde_json::from_slice(&bytes).ok())
+        .unwrap_or_default()
+}
+
+fn save_preference(state: Option<&Path>, file: &str, value: impl Serialize) -> bool {
+    state.is_none_or(|p| {
+        serde_json::to_vec(&value).is_ok_and(|bytes| fs::write(p.join(file), bytes).is_ok())
+    })
+}
+
+const ACCOUNT_LOGIN: &str = "account-login";
+const WINDOW_SIZE: iced::Size = iced::Size::new(1280.0, 720.0);
+
+fn probe(config: &Config) -> Server {
+    let start = Instant::now();
     let result = (|| -> std::io::Result<bool> {
-        let socket = TcpStream::connect_timeout(&config.server.into(), Duration::from_secs(2))?;
-        let mut stream = launch_tls::connect(
-            socket,
-            fs::read(&config.certificate)?,
-            Duration::from_secs(2),
-        )?;
+        let timeout = Duration::from_secs(2);
+        let socket = TcpStream::connect_timeout(&config.server.into(), timeout)?;
+        let mut stream = launch_tls::connect(socket, fs::read(&config.certificate)?, timeout)?;
         launch_tls::write_frame(
             &mut stream,
             b"{\"op\":\"status\"}\n",
             launch_tls::REQUEST_LIMIT,
         )?;
-        let value: serde_json::Value =
+        let reply: serde_json::Value =
             serde_json::from_slice(&launch_tls::read_frame(&mut stream, 256)?)
                 .map_err(std::io::Error::other)?;
-        Ok(value["ok"] == true && value["ready"] == true)
+        Ok(reply["ok"] == true && reply["ready"] == true)
     })();
-    result.unwrap_or(false)
-}
-fn account(config: &Config, screen: Screen, form: Form) -> Result<Option<Zeroizing<String>>, ()> {
-    #[derive(Serialize)]
-    #[serde(tag = "kind", rename_all = "snake_case")]
-    enum Action<'a> {
-        Register {
-            display_name: &'a str,
-            password: &'a str,
-        },
-        Change {
-            current: &'a str,
-            password: &'a str,
-        },
-        Delete {
-            current: &'a str,
-        },
-        Recover {
-            code: &'a str,
-            password: &'a str,
-        },
-    }
-    #[derive(Serialize)]
-    struct Request<'a> {
-        op: &'static str,
-        login: &'a str,
-        action: Action<'a>,
-    }
-    #[derive(Deserialize)]
-    struct Response {
-        ok: bool,
-        recovery_code: Option<String>,
-    }
-    let action = match screen {
-        Screen::Register => Action::Register {
-            display_name: &form.display_name,
-            password: &form.password,
-        },
-        Screen::Change => Action::Change {
-            current: &form.current,
-            password: &form.password,
-        },
-        Screen::Delete => Action::Delete {
-            current: &form.current,
-        },
-        Screen::Recover => Action::Recover {
-            code: form.code.trim(),
-            password: &form.password,
-        },
-        _ => return Err(()),
-    };
-    let mut data = Zeroizing::new(
-        serde_json::to_vec(&Request {
-            op: "account",
-            login: form.login.trim(),
-            action,
-        })
-        .map_err(|_| ())?,
-    );
-    data.push(b'\n');
-    let timeout = Duration::from_secs(3);
-    let socket = TcpStream::connect_timeout(&config.server.into(), timeout).map_err(|_| ())?;
-    let mut tls = launch_tls::connect(
-        socket,
-        fs::read(&config.certificate).map_err(|_| ())?,
-        timeout,
-    )
-    .map_err(|_| ())?;
-    launch_tls::write_frame(&mut tls, &data, launch_tls::REQUEST_LIMIT).map_err(|_| ())?;
-    drop(data);
-    let frame = launch_tls::read_frame(&mut tls, launch_tls::RESPONSE_LIMIT).map_err(|_| ())?;
-    let response: Response = serde_json::from_slice(&frame).map_err(|_| ())?;
-    let code = response.recovery_code.map(Zeroizing::new);
-    if response.ok
-        && code.as_ref().is_some_and(|s| {
-            s.len() != 64
-                || !s
-                    .bytes()
-                    .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
-        })
-    {
-        return Err(());
-    }
-    let code_matches = match screen {
-        Screen::Register | Screen::Recover => code.is_some(),
-        Screen::Change => true,
-        _ => code.is_none(),
-    };
-    if response.ok && code_matches {
-        Ok(code)
+    if matches!(result, Ok(true)) {
+        Server::Ready(u32::try_from(start.elapsed().as_millis()).unwrap_or(u32::MAX))
     } else {
-        Err(())
+        Server::Offline
     }
 }
+
 impl Player {
     fn boot() -> (Self, Task<Message>) {
         let preview = std::env::args_os()
             .nth(1)
             .is_some_and(|arg| arg == "--preview");
         let config = if preview { None } else { Config::load().ok() };
-        let language = config
-            .as_ref()
-            .and_then(|c| fs::read(c.state.join("language.json")).ok())
-            .and_then(|bytes| serde_json::from_slice(&bytes).ok())
-            .unwrap_or_default();
-        let task = config.clone().map_or_else(Task::none, |c| {
-            Task::perform(
-                async move {
-                    tokio::task::spawn_blocking(move || {
-                        if c.installation.exists() {
-                            kr_player::verify_install(
-                                &c.bundle,
-                                &c.manifest_sha256,
-                                &c.installation,
-                            )
-                        } else {
-                            kr_player::install(&c.bundle, &c.manifest_sha256, &c.installation)
-                        }
-                    })
-                    .await
-                    .is_ok_and(|result| result.is_ok())
-                },
-                Message::Prepared,
-            )
-        });
-        (
-            Self {
-                notice: if !preview && config.is_none() {
-                    Some(11)
-                } else {
-                    None
-                },
-                config,
-                language,
-                screen: Screen::Home,
-                form: Form::default(),
-                submitting: false,
-                recovery: None,
-                online: None,
-                checking: false,
-                prepared: None,
-                starting: false,
-                session: None,
-                stopping: false,
-                closing: false,
-                ticks: 0,
-            },
-            task,
+        let state = config.as_ref().map(|c| c.state.as_path());
+        let language = preference(state, "language.json");
+        let mode = preference(state, "mode.json");
+        let art = look::decode_art(config.as_ref().and_then(|c| {
+            kr_player::launcher_art(&c.bundle, &c.manifest_sha256)
+                .ok()
+                .flatten()
+        }));
+        let mut player = Self {
+            config,
+            art,
+            language,
+            mode,
+            screen: None,
+            form: Form::default(),
+            submitting: false,
+            recovery: None,
+            server: Server::Checking,
+            probing: false,
+            files: Files::Error,
+            starting: false,
+            session: None,
+            closing: false,
+            launch_error: None,
+            preference_error: false,
+            modal_notice: None,
+            tick: 0,
+            size: WINDOW_SIZE,
+            paint: 0,
+        };
+        let check = player.check_files(false);
+        let status = player.check_server();
+        (player, Task::batch([check, status]))
+    }
+
+    fn play_state(&self) -> PlayState {
+        play_state(
+            self.mode,
+            self.files,
+            self.server,
+            self.starting,
+            self.session.is_some(),
+            self.launch_error.is_some(),
         )
     }
+
+    fn check_server(&mut self) -> Task<Message> {
+        if !self.probing
+            && let Some(c) = self.config.clone()
+        {
+            self.probing = true;
+            return Task::perform(
+                async move {
+                    tokio::task::spawn_blocking(move || probe(&c))
+                        .await
+                        .unwrap_or(Server::Offline)
+                },
+                Message::Status,
+            );
+        }
+        if self.config.is_none() {
+            self.server = Server::Offline;
+        }
+        Task::none()
+    }
+
+    fn check_files(&mut self, repair: bool) -> Task<Message> {
+        if self.files == Files::Checking || self.starting || self.session.is_some() {
+            return Task::none();
+        }
+        let Some(c) = self.config.clone() else {
+            return Task::none();
+        };
+        self.files = Files::Checking;
+        self.launch_error = None;
+        self.modal_notice = None;
+        Task::perform(
+            async move {
+                tokio::task::spawn_blocking(move || {
+                    kr_player::maintain_install(
+                        &c.bundle,
+                        &c.manifest_sha256,
+                        &c.installation,
+                        repair,
+                    )
+                    .map_err(|_| ())
+                })
+                .await
+                .unwrap_or(Err(()))
+            },
+            move |result| Message::Prepared(result, repair),
+        )
+    }
+
+    fn show(&mut self, screen: Option<Screen>) {
+        self.screen = screen;
+        self.form = Form::default();
+        self.recovery = None;
+        self.modal_notice = None;
+    }
+
     fn update(&mut self, message: Message) -> Task<Message> {
+        if !matches!(message, Message::Tick) {
+            self.paint = self.paint.wrapping_add(1);
+        }
         match message {
+            Message::Resize(size) => self.size = size,
             Message::Language(language) => {
                 self.language = language;
-                if let Some(config) = &self.config
-                    && fs::write(
-                        config.state.join("language.json"),
-                        serde_json::to_vec(&language).unwrap_or_default(),
-                    )
-                    .is_err()
-                {
-                    self.notice = Some(16);
+                self.preference_error = !save_preference(
+                    self.config.as_ref().map(|c| c.state.as_path()),
+                    "language.json",
+                    language,
+                );
+            }
+            Message::Mode(mode)
+                if self.screen.is_none() && !self.starting && self.session.is_none() =>
+            {
+                self.mode = mode;
+                self.preference_error = !save_preference(
+                    self.config.as_ref().map(|c| c.state.as_path()),
+                    "mode.json",
+                    mode,
+                );
+            }
+            Message::Open(screen) if !self.submitting => {
+                self.show(Some(screen));
+                if matches!(
+                    screen,
+                    Screen::Register | Screen::Change | Screen::Delete | Screen::Recover
+                ) {
+                    return iced::widget::operation::focus(ACCOUNT_LOGIN);
                 }
             }
-            Message::Account(screen) if !self.submitting => {
-                self.form = Form::default();
-                self.recovery = None;
-                self.notice = None;
-                self.screen = screen;
+            Message::Tab(back) if self.screen.is_some() && !self.submitting => {
+                return if back {
+                    iced::widget::operation::focus_previous()
+                } else {
+                    iced::widget::operation::focus_next()
+                };
             }
+            Message::Dismiss if !self.submitting => self.show(None),
             Message::Login(login) => self.form.login = login,
             Message::DisplayName(name) => self.form.display_name = name,
             Message::Password(password) => self.form.password = password,
             Message::Current(current) => self.form.current = current,
             Message::Code(code) => self.form.code = code,
-            Message::Submit if !self.submitting && self.ready_to_submit() => {
-                if let Some(config) = self.config.clone() {
+            Message::Submit if !self.submitting => {
+                if let (
+                    Some(c),
+                    Some(
+                        screen @ (Screen::Register
+                        | Screen::Change
+                        | Screen::Delete
+                        | Screen::Recover),
+                    ),
+                ) = (self.config.clone(), self.screen)
+                    && matches!(self.server, Server::Ready(_))
+                    && self.form.error(screen).is_none()
+                {
                     self.submitting = true;
-                    self.notice = None;
-                    let screen = self.screen;
+                    self.modal_notice = None;
                     let form = std::mem::take(&mut self.form);
+                    self.form.login.clone_from(&form.login);
+                    self.form.display_name.clone_from(&form.display_name);
                     return Task::perform(
                         async move {
-                            tokio::task::spawn_blocking(move || account(&config, screen, form))
+                            tokio::task::spawn_blocking(move || account::account(&c, screen, form))
                                 .await
                                 .unwrap_or(Err(()))
                         },
@@ -424,41 +408,65 @@ impl Player {
                 self.submitting = false;
                 match result {
                     Ok(code) => {
-                        self.screen = Screen::Menu;
-                        self.notice = Some(25);
+                        self.screen = Some(Screen::AccountResult);
+                        self.form = Form::default();
                         self.recovery = code;
+                        self.modal_notice = Some((Copy::AccountOk, false));
                     }
-                    Err(()) => self.notice = Some(24),
+                    Err(()) => self.modal_notice = Some((Copy::AccountBad, true)),
                 }
             }
             Message::CopyCode => {
                 if let Some(code) = &self.recovery {
+                    self.modal_notice = Some((Copy::Copied, false));
                     return iced::clipboard::write(code.to_string());
                 }
             }
-            Message::Prepared(ready) => {
-                self.prepared = Some(ready);
-                if !ready {
-                    self.notice = Some(11);
+            Message::CheckFiles(repair) => return self.check_files(repair),
+            Message::RepairFromHome if self.screen.is_none() => {
+                self.show(Some(Screen::Settings));
+                return self.check_files(true);
+            }
+            Message::Retry
+                if self.screen.is_none() && self.play_state() == PlayState::WaitingForServer =>
+            {
+                if self.server == Server::Offline {
+                    self.server = Server::Checking;
+                    return self.check_server();
                 }
             }
-            Message::Status(online) => {
-                self.online = Some(online);
-                self.checking = false;
+            Message::Retry if self.screen.is_none() && self.play_state() == PlayState::Error => {
+                if self.files == Files::Error || matches!(self.launch_error, Some(Copy::FilesBad)) {
+                    return self.check_files(false);
+                }
+                self.launch_error = None;
+                return self.update(Message::Play);
             }
-            Message::Play
-                if self.prepared == Some(true)
-                    && self.online == Some(true)
-                    && self.session.is_none()
-                    && !self.starting =>
-            {
-                if let Some(config) = self.config.clone() {
+            Message::Prepared(result, requested_repair) => {
+                self.files = if result.is_ok() {
+                    Files::Ready
+                } else {
+                    Files::Error
+                };
+                if requested_repair {
+                    self.modal_notice = Some(match result {
+                        Ok(true) => (Copy::FilesRepaired, false),
+                        Ok(false) => (Copy::FilesOk, false),
+                        Err(()) => (Copy::FilesBad, true),
+                    });
+                }
+            }
+            Message::Status(status) => {
+                self.server = status;
+                self.probing = false;
+            }
+            Message::Play if self.screen.is_none() && self.play_state() == PlayState::Ready => {
+                if let Some(c) = self.config.clone() {
                     self.starting = true;
-                    self.notice = None;
                     let language = self.language;
                     return Task::perform(
                         async move {
-                            tokio::task::spawn_blocking(move || start(config, language))
+                            tokio::task::spawn_blocking(move || game::start(c, language))
                                 .await
                                 .unwrap_or(Err(StartError::Launch))
                         },
@@ -472,370 +480,256 @@ impl Player {
                     Ok(session) => {
                         self.session = Some(session);
                         if self.closing {
-                            return self.update(Message::Stop);
+                            self.stop_game();
                         }
                     }
                     Err(error) => {
-                        self.notice = Some(match error {
-                            StartError::Integrity => 11,
-                            StartError::WritableFiles => 34,
-                            StartError::Launch => 12,
+                        self.launch_error = Some(match error {
+                            StartError::Integrity => Copy::FilesBad,
+                            StartError::WritableFiles => Copy::WriteBad,
+                            StartError::Launch => Copy::StartBad,
                         })
                     }
                 }
             }
-            Message::Stop => {
-                if let Some(session) = &self.session {
-                    if let Ok(mut owned) = session.0.lock() {
-                        owned.request_stop();
-                    }
-                    self.stopping = true;
+            Message::Desktop(action) => {
+                if let Some(c) = self.config.clone() {
+                    self.modal_notice = None;
+                    return Task::perform(
+                        async move {
+                            tokio::task::spawn_blocking(move || desktop::run(c, action).is_ok())
+                                .await
+                                .unwrap_or(false)
+                        },
+                        move |ok| Message::DesktopDone(action, ok),
+                    );
+                }
+            }
+            Message::DesktopDone(_action, ok) => {
+                if !ok {
+                    self.modal_notice = Some((Copy::OpenBad, true));
+                }
+                #[cfg(windows)]
+                if ok && matches!(_action, desktop::Action::Shortcut) {
+                    self.modal_notice = Some((Copy::ShortcutOk, false));
                 }
             }
             Message::Close => {
                 self.closing = true;
-                if self.session.is_some() {
-                    return self.update(Message::Stop);
-                }
-                if !self.starting {
+                self.stop_game();
+                if !self.starting && self.session.is_none() && self.files != Files::Checking {
                     return iced::exit();
                 }
             }
             Message::Tick => {
-                self.ticks += 1;
+                self.tick = self.tick.wrapping_add(1);
                 let finished = self.session.as_ref().and_then(|s| s.0.lock().ok()?.poll());
-                if let Some(status) = finished {
+                if let Some(end) = finished {
                     self.session = None;
-                    if !self.closing && !self.stopping {
-                        self.notice = match status {
-                            game::End::SessionEnded => Some(35),
-                            game::End::Failed => Some(12),
-                            game::End::Stopped => self.notice,
+                    if !self.closing {
+                        self.launch_error = match end {
+                            game::End::SessionEnded => Some(Copy::SessionEnded),
+                            game::End::Failed => Some(Copy::StartBad),
+                            game::End::Stopped => None,
                         };
                     }
-                    self.stopping = false;
                 }
-                if self.closing && self.session.is_none() && !self.starting {
+                if self.closing
+                    && self.session.is_none()
+                    && !self.starting
+                    && self.files != Files::Checking
+                {
                     return iced::exit();
                 }
-                if self.ticks % 10 == 1
-                    && !self.checking
-                    && let Some(config) = self.config.clone()
-                {
-                    self.checking = true;
-                    return Task::perform(
-                        async move {
-                            tokio::task::spawn_blocking(move || probe(&config))
-                                .await
-                                .unwrap_or(false)
-                        },
-                        Message::Status,
-                    );
+                if self.tick.is_multiple_of(20) {
+                    return self.check_server();
                 }
             }
             _ => {}
         }
         Task::none()
     }
-    fn ready_to_submit(&self) -> bool {
-        let form = &self.form;
-        let password = |value: &str| (12..=128).contains(&value.len());
-        self.online == Some(true)
-            && (3..=32).contains(&form.login.trim().len())
-            && match self.screen {
-                Screen::Register => {
-                    !form.display_name.trim().is_empty() && password(&form.password)
-                }
-                Screen::Change => password(&form.current) && password(&form.password),
-                Screen::Delete => password(&form.current),
-                Screen::Recover => form.code.trim().len() == 64 && password(&form.password),
-                _ => false,
-            }
-    }
-    fn panel<'a>(
-        &'a self,
-        play: Element<'a, Message>,
-        notice: Element<'a, Message>,
-    ) -> Element<'a, Message> {
-        let l = self.language;
-        let title = |key| {
-            text(l.line(key))
-                .size(28)
-                .font(look::HEAVY)
-                .color(Color::WHITE)
-        };
-        let small = |key| text(l.line(key)).size(14).color(look::MUTED);
-        let menu_button = |key| {
-            button(
-                text(l.line(key))
-                    .size(14)
-                    .font(look::BOLD)
-                    .center()
-                    .width(Length::Fill),
-            )
-            .padding([8, 12])
-            .width(Length::Fill)
-            .style(look::segment(false))
-        };
-        let navigate = |key, page| {
-            menu_button(key).on_press_maybe((!self.submitting).then_some(Message::Account(page)))
-        };
-        let field = |key, value, secret, change: fn(String) -> Message| {
-            text_input(l.line(key), value)
-                .secure(secret)
-                .size(15)
-                .padding([9, 12])
-                .style(look::field)
-                .on_input_maybe((!self.submitting).then_some(change))
-        };
-        let body = match self.screen {
-            Screen::Home => column![
-                title(2),
-                small(3),
-                Space::new().height(10),
-                play,
-                navigate(18, Screen::Menu),
-                notice,
-            ],
-            Screen::Menu => {
-                if let Some(code) = &self.recovery {
-                    column![
-                        title(29),
-                        small(30),
-                        text(format!("{}\n{}", &code[..32], &code[32..]))
-                            .size(13)
-                            .font(Font::MONOSPACE)
-                            .color(Color::WHITE),
-                        menu_button(31).on_press(Message::CopyCode),
-                        navigate(23, Screen::Home),
-                    ]
-                } else {
-                    column![
-                        title(18),
-                        navigate(19, Screen::Register),
-                        navigate(20, Screen::Change),
-                        navigate(21, Screen::Delete),
-                        navigate(22, Screen::Recover),
-                        navigate(23, Screen::Home),
-                        notice,
-                    ]
-                }
-            }
-            screen => {
-                let key = match screen {
-                    Screen::Register => 19,
-                    Screen::Change => 20,
-                    Screen::Delete => 21,
-                    Screen::Recover => 22,
-                    _ => unreachable!(),
-                };
-                let mut form = column![
-                    title(key),
-                    field(4, &self.form.login, false, Message::Login)
-                ];
-                if screen == Screen::Register {
-                    form = form.push(field(
-                        26,
-                        &self.form.display_name,
-                        false,
-                        Message::DisplayName,
-                    ));
-                }
-                if matches!(screen, Screen::Change | Screen::Delete) {
-                    form = form.push(field(27, &self.form.current, true, |s| {
-                        Message::Current(Zeroizing::new(s))
-                    }));
-                }
-                if screen == Screen::Recover {
-                    form = form.push(field(29, &self.form.code, true, |s| {
-                        Message::Code(Zeroizing::new(s))
-                    }));
-                }
-                if screen != Screen::Delete {
-                    form = form
-                        .push(field(
-                            if screen == Screen::Register { 5 } else { 28 },
-                            &self.form.password,
-                            true,
-                            |s| Message::Password(Zeroizing::new(s)),
-                        ))
-                        .push(small(32));
-                }
-                form.push(
-                    button(
-                        text(l.line(if screen == Screen::Delete { 33 } else { key }))
-                            .center()
-                            .width(Length::Fill),
-                    )
-                    .padding([9, 12])
-                    .width(Length::Fill)
-                    .style(look::play(false))
-                    .on_press_maybe(
-                        (!self.submitting && self.ready_to_submit()).then_some(Message::Submit),
-                    ),
-                )
-                .push(navigate(23, Screen::Menu))
-                .push(notice)
-            }
-        };
-        body.spacing(9).into()
-    }
-    fn view(&self) -> Element<'_, Message> {
-        let language = self.language;
-        let label = |key| text(language.line(key));
-        let mut choices = row![].spacing(2);
-        for candidate in [Language::Vi, Language::En, Language::Ko] {
-            let selected = candidate == language;
-            choices = choices.push(
-                button(text(candidate.name()).size(13).font(if selected {
-                    look::BOLD
-                } else {
-                    Font::DEFAULT
-                }))
-                .padding([8, 16])
-                .style(look::segment(selected))
-                .on_press(Message::Language(candidate)),
-            );
+
+    fn stop_game(&self) {
+        if let Some(session) = &self.session
+            && let Ok(mut owned) = session.0.lock()
+        {
+            owned.request_stop();
         }
-        let header = row![
-            canvas::Canvas::new(look::Mark).width(34).height(36),
-            text("BOOM").size(28).font(look::HEAVY).color(Color::WHITE),
-            container(text("PLAY").size(11).font(look::BOLD))
-                .padding([3, 8])
-                .style(look::brand_tag),
-            Space::new().width(Length::Fill),
-            container(choices).padding(4).style(look::segmented)
-        ]
-        .spacing(10)
-        .align_y(Alignment::Center);
-        let mut headline = column![];
-        for (i, line) in language.line(0).split('\n').enumerate() {
-            headline = headline.push(
-                text(line)
-                    .size(58)
-                    .font(look::HEAVY)
-                    .line_height(1.08)
-                    .color(if i == 0 { Color::WHITE } else { look::SUN }),
-            );
-        }
-        let hero = column![
-            container(label(17).size(12).font(look::BOLD).color(look::SUN))
-                .padding([6, 14])
-                .style(look::pill(look::SUN)),
-            Space::new().height(4),
-            headline,
-            label(1).size(16).color(look::MUTED),
-            canvas::Canvas::new(look::Arcade { tick: self.ticks })
-                .width(Length::Fill)
-                .height(236)
-        ]
-        .spacing(14)
-        .width(Length::Fill);
-        let status_key = match self.online {
-            None => 7,
-            Some(true) => 8,
-            Some(false) => 9,
-        };
-        let busy = self.starting || self.session.is_some();
-        let stop = self.session.is_some();
-        let mut play = button(
-            label(if stop { 15 } else { 6 })
-                .size(17)
-                .font(look::HEAVY)
-                .width(Length::Fill)
-                .center(),
-        )
-        .padding([17, 24])
-        .width(Length::Fill)
-        .style(look::play(stop));
-        if stop && !self.stopping {
-            play = play.on_press(Message::Stop);
-        } else if !busy && self.prepared == Some(true) && self.online == Some(true) {
-            play = play.on_press(Message::Play);
-        }
-        let notice = if let Some(key) = self.notice {
-            key
-        } else if self.stopping {
-            14
-        } else if self.starting {
-            10
-        } else if busy {
-            13
-        } else if self.prepared.is_none() {
-            10
-        } else {
-            status_key
-        };
-        // Trạng thái máy chủ đã có ở chân trang; dưới nút chỉ hiện tiến trình hoặc lỗi.
-        let notice = if notice == status_key {
-            text(" ").size(13)
-        } else {
-            label(notice)
-                .size(13)
-                .color(if matches!(notice, 11 | 12 | 16 | 24 | 34) {
-                    look::CORAL
-                } else {
-                    look::MUTED
-                })
-        };
-        let card = container(self.panel(play.into(), notice.into()))
-            .padding(26)
-            .width(410)
-            .style(look::card);
-        let body = row![hero, Space::new().width(36), card].align_y(Alignment::Center);
-        let tint = match self.online {
-            None => look::SUN,
-            Some(true) => look::MINT,
-            Some(false) => look::CORAL,
-        };
-        let footer = row![
-            text("BOOM  /  PLAY").size(11).color(look::MUTED),
-            Space::new().width(Length::Fill),
-            container(
-                row![
-                    container(Space::new().width(8).height(8)).style(look::dot(tint)),
-                    label(status_key).size(12).color(Color::WHITE)
-                ]
-                .spacing(8)
-                .align_y(Alignment::Center)
-            )
-            .padding([6, 14])
-            .style(look::pill(tint))
-        ]
-        .align_y(Alignment::Center);
-        let content = container(column![
-            header,
-            container(body).center_y(Length::Fill),
-            footer
-        ])
-        .padding([26, 44])
-        .width(Length::Fill)
-        .height(Length::Fill);
-        container(stack![
-            canvas::Canvas::new(look::Backdrop)
-                .width(Length::Fill)
-                .height(Length::Fill),
-            content
-        ])
-        .width(Length::Fill)
-        .height(Length::Fill)
-        .style(look::window)
-        .into()
     }
 }
+
+fn keys(event: Event, status: event::Status, _: window::Id) -> Option<Message> {
+    if let Event::Keyboard(keyboard::Event::KeyPressed {
+        key: keyboard::Key::Named(key),
+        modifiers,
+        ..
+    }) = event
+    {
+        use keyboard::key::Named;
+        return match key {
+            Named::Enter if modifiers.is_empty() && status == event::Status::Ignored => {
+                Some(Message::Play)
+            }
+            Named::Escape if modifiers.is_empty() => Some(Message::Dismiss),
+            Named::Tab if modifiers.is_empty() || modifiers == keyboard::Modifiers::SHIFT => {
+                Some(Message::Tab(modifiers.shift()))
+            }
+            _ => None,
+        };
+    }
+    None
+}
+
 fn main() -> iced::Result {
     iced::application(Player::boot, Player::update, Player::view)
-        .title("BOOM PLAY")
+        .title(|player: &Player| player.language.get(Copy::Title).to_owned())
         .theme(Theme::Dark)
-        .window_size((1000.0, 680.0))
-        .centered()
-        .resizable(false)
-        .exit_on_close_request(false)
+        .style(|player: &Player, theme: &Theme| {
+            look::surface(theme, player.screen.is_some(), player.paint)
+        })
+        .window(window::Settings {
+            size: WINDOW_SIZE,
+            min_size: Some(iced::Size::new(960.0, 600.0)),
+            position: window::Position::Centered,
+            exit_on_close_request: false,
+            ..Default::default()
+        })
         .subscription(|_| {
             Subscription::batch([
-                iced::time::every(Duration::from_millis(500)).map(|_| Message::Tick),
-                iced::window::close_requests().map(|_| Message::Close),
+                iced::time::every(Duration::from_millis(250)).map(|_| Message::Tick),
+                window::close_requests().map(|_| Message::Close),
+                window::resize_events().map(|(_, size)| Message::Resize(size)),
+                event::listen_with(keys),
             ])
         })
         .run()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn play_is_enabled_only_for_ready_online_files_and_server() {
+        let states = [
+            (
+                Mode::Online,
+                Files::Ready,
+                Server::Ready(4),
+                false,
+                false,
+                false,
+                PlayState::Ready,
+            ),
+            (
+                Mode::OfflineFriends,
+                Files::Ready,
+                Server::Ready(4),
+                false,
+                false,
+                false,
+                PlayState::Soon,
+            ),
+            (
+                Mode::Online,
+                Files::Checking,
+                Server::Ready(4),
+                false,
+                false,
+                false,
+                PlayState::Checking,
+            ),
+            (
+                Mode::Online,
+                Files::Error,
+                Server::Ready(4),
+                false,
+                false,
+                false,
+                PlayState::Error,
+            ),
+            (
+                Mode::Online,
+                Files::Ready,
+                Server::Offline,
+                false,
+                false,
+                false,
+                PlayState::WaitingForServer,
+            ),
+            (
+                Mode::Online,
+                Files::Ready,
+                Server::Ready(4),
+                true,
+                false,
+                false,
+                PlayState::Starting,
+            ),
+            (
+                Mode::Online,
+                Files::Ready,
+                Server::Ready(4),
+                false,
+                true,
+                false,
+                PlayState::Running,
+            ),
+            (
+                Mode::Online,
+                Files::Ready,
+                Server::Ready(4),
+                false,
+                false,
+                true,
+                PlayState::Error,
+            ),
+        ];
+        for (mode, files, server, starting, running, error, expected) in states {
+            assert_eq!(
+                play_state(mode, files, server, starting, running, error),
+                expected
+            );
+        }
+    }
+
+    #[test]
+    fn remembers_both_choices_and_defaults_on_missing_or_bad_state() {
+        let path = std::env::temp_dir().join(format!(
+            "kr-player-choice-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::create_dir(&path).unwrap();
+        let root = Some(path.as_path());
+        assert_eq!(preference::<Language>(root, "language.json"), Language::Vi);
+        assert!(save_preference(root, "mode.json", Mode::OfflineFriends));
+        assert!(save_preference(root, "language.json", Language::Ko));
+        assert_eq!(preference::<Mode>(root, "mode.json"), Mode::OfflineFriends);
+        assert_eq!(preference::<Language>(root, "language.json"), Language::Ko);
+        fs::write(path.join("mode.json"), b"bad JSON").unwrap();
+        assert_eq!(preference::<Mode>(root, "mode.json"), Mode::Online);
+        fs::remove_dir_all(path).unwrap();
+    }
+    #[test]
+    fn account_form_supplies_inline_errors_until_the_request_is_complete() {
+        let mut form = Form::default();
+        assert!(matches!(
+            form.error(Screen::Register),
+            Some(Copy::LoginHint)
+        ));
+        form.login = "fixture_player".into();
+        assert!(matches!(form.error(Screen::Register), Some(Copy::NameHint)));
+        form.display_name = "Bạn ơi".into();
+        assert!(matches!(
+            form.error(Screen::Register),
+            Some(Copy::PasswordHint)
+        ));
+        form.password = Zeroizing::new("fixture-only-password".into());
+        assert!(form.error(Screen::Register).is_none());
+        assert!(matches!(form.error(Screen::Recover), Some(Copy::CodeHint)));
+        form.code = Zeroizing::new("ab".repeat(32));
+        assert!(form.error(Screen::Recover).is_none());
+    }
 }

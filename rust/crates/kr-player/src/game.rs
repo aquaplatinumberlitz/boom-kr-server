@@ -104,6 +104,7 @@ impl Config {
 #[derive(Clone)]
 pub(crate) struct Session(pub Arc<Mutex<OwnedSession>>);
 pub(crate) struct OwnedSession {
+    _installation_lock: fs::File,
     companion: Child,
     game: Option<Child>,
     run: PathBuf,
@@ -253,7 +254,11 @@ fn ready(child: &mut Child, signal: &Path) -> io::Result<()> {
     }
 }
 
-fn start_inner(config: Config, language: Language) -> io::Result<Session> {
+fn start_inner(
+    config: Config,
+    language: Language,
+    installation_lock: fs::File,
+) -> io::Result<Session> {
     let run = config.state.join(format!(
         "run-{}-{}",
         std::process::id(),
@@ -287,6 +292,7 @@ fn start_inner(config: Config, language: Language) -> io::Result<Session> {
             command.creation_flags(0x0800_0000);
         }
         Ok::<_, io::Error>(OwnedSession {
+            _installation_lock: installation_lock,
             companion: command.spawn()?,
             game: None,
             run: run.clone(),
@@ -331,6 +337,8 @@ pub(crate) enum StartError {
 }
 
 pub(crate) fn start(config: Config, language: Language) -> Result<Session, StartError> {
+    let lock = kr_player::lock_installation(&config.installation)
+        .map_err(|_| StartError::WritableFiles)?;
     kr_player::prepare_language(
         &config.bundle,
         &config.manifest_sha256,
@@ -341,7 +349,7 @@ pub(crate) fn start(config: Config, language: Language) -> Result<Session, Start
         kr_player::PreparationError::Integrity => StartError::Integrity,
         kr_player::PreparationError::WritableFiles => StartError::WritableFiles,
     })?;
-    start_inner(config, language).map_err(|_| StartError::Launch)
+    start_inner(config, language, lock).map_err(|_| StartError::Launch)
 }
 
 #[cfg(test)]
