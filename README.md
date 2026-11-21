@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP385: Đã chốt xếp loại bước 0; việc kiểm sâu chuyển sang F1. Bộ điều khiển đã qua Wine, còn thiếu nghiệm thu Windows.** [Bằng chứng](docs/evidence/checkpoints/records/CP385.json).
+**CP386: Launcher có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn tiếng Việt, Anh, Hàn xem ngay trong app.** [Bằng chứng](docs/evidence/checkpoints/records/CP386.json).
 
 ## Bắt đầu
 
