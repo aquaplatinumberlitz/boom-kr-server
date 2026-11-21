@@ -157,7 +157,16 @@ struct NativeClient {
 }
 impl NativeClient {
     async fn login(connection: quinn::Connection, login: &str, name: &[u8]) -> Self {
-        let (mut outgoing, mut incoming) = prelogin::open(&connection, 3838).await.unwrap();
+        Self::login_ports(connection, login, name, 3838, 3938).await
+    }
+    async fn login_ports(
+        connection: quinn::Connection,
+        login: &str,
+        name: &[u8],
+        login_port: u16,
+        channel_port: u16,
+    ) -> Self {
+        let (mut outgoing, mut incoming) = prelogin::open(&connection, login_port).await.unwrap();
         let mut hello = [0; 15];
         incoming.read_exact(&mut hello).await.unwrap();
         let (mut tx, mut rx) = (40, 43);
@@ -172,7 +181,7 @@ impl NativeClient {
         send(&mut outgoing, &mut tx, 5, &[0; 9]).await;
         assert_eq!(receive(&mut incoming, &mut rx).await.opcode, 7);
         outgoing.finish().unwrap();
-        let (mut outgoing, mut incoming) = prelogin::open(&connection, 3938).await.unwrap();
+        let (mut outgoing, mut incoming) = prelogin::open(&connection, channel_port).await.unwrap();
         incoming.read_exact(&mut hello).await.unwrap();
         let (mut tx, mut rx) = (40, 43);
         send(&mut outgoing, &mut tx, 6, &claims).await;
@@ -1823,3 +1832,5 @@ fn companion_reopens_expired_wcp_owner_and_authenticates_two_accounts_on_next_so
         .unwrap();
     });
 }
+
+mod operations;

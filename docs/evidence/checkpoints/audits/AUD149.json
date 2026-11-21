@@ -1,0 +1,44 @@
+{
+  "id": "AUD149",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "m8-server-admin-backup-rollback"
+  ],
+  "completed_through": "CP374",
+  "recorded_utc": "2026-11-20T23:07:18.256082+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/protocol/auth-session.md",
+    "docs/RESEARCH.md",
+    "docs/OPERATIONS.md",
+    "docs/evidence/rust-service/m8-server-package.json",
+    "docs/evidence/checkpoints/records/CP374.json"
+  ],
+  "method": "Đối chiếu phạm vi PLAN, contract quyền account, runbook và log kiểm phía server. Tự kiểm theo waiver.",
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Runbook chỉ có init, chưa có restore hoặc binary rollback.",
+      "correction": "Restore vào state sạch và schema cũ, kiểm binary cũ từ chối schema mới; có runbook rõ mất dữ liệu sau snapshot.",
+      "fixed_in": [
+        "docs/OPERATIONS.md",
+        "docs/PLAN.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "stale": "Nền đóng gói chỉ đạt readiness và dừng sạch khi chưa có ván.",
+      "correction": "Kiểm hai TLS client đã vào ván rồi SIGTERM/SIGKILL; giữ riêng giới hạn chưa chạy game và chưa dùng máy triển khai.",
+      "fixed_in": [
+        "docs/evidence/checkpoints/records/CP374.json",
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Claude tích hợp khi CI xanh; các mục môi trường triển khai, native, tải và Internet vẫn theo PLAN."
+  ]
+}

@@ -746,18 +746,25 @@ fn legacy_idle_fixture(db: &mut Connection) -> Token {
     token
 }
 fn old_idle_data(db: &Connection) -> Vec<Vec<Vec<rusqlite::types::Value>>> {
-    ["SELECT * FROM accounts ORDER BY id","SELECT * FROM players ORDER BY id","SELECT * FROM runtime_state","SELECT id,account_id,token_hash,boot_epoch,credential_version,issued_at,expires_at,revoked_at FROM sessions ORDER BY id","SELECT * FROM admin_audit ORDER BY id"]
+    ["SELECT * FROM accounts ORDER BY id","SELECT * FROM players ORDER BY id","SELECT * FROM runtime_state","SELECT id,account_id,token_hash,boot_epoch,credential_version,issued_at,expires_at,revoked_at FROM sessions ORDER BY id","SELECT id,request_id,actor,operation,account_id,reason,at_utc,details FROM admin_audit ORDER BY id"]
         .iter().map(|sql|{let mut stmt=db.prepare(sql).unwrap();let n=stmt.column_count();stmt.query_map([],|r|(0..n).map(|i|r.get(i)).collect::<std::result::Result<Vec<_>,_>>()).unwrap().collect::<std::result::Result<Vec<_>,_>>().unwrap()}).collect()
 }
 #[test]
 fn schema1_upgrade_preserves_all_old_account_session_profile_audit_data_and_old_absolute_ttl() {
     let _serial = SERIAL.lock().unwrap();
-    let mut db = Connection::open_in_memory().unwrap();
+    let temp = Temp::new();
+    let _file = OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(temp.db())
+        .unwrap();
+    let mut db = Connection::open(temp.db()).unwrap();
     let token = legacy_idle_fixture(&mut db);
     let before = old_idle_data(&db);
-    Store::migrate(&mut db).unwrap();
+    Store::migrate(&mut db, &temp.db()).unwrap();
     assert_eq!(old_idle_data(&db), before);
-    Store::migrate(&mut db).unwrap();
+    Store::migrate(&mut db, &temp.db()).unwrap();
     assert_eq!(old_idle_data(&db), before);
     let version: i64 = db
         .pragma_query_value(None, "user_version", |r| r.get(0))
@@ -786,10 +793,17 @@ fn schema1_upgrade_preserves_all_old_account_session_profile_audit_data_and_old_
 #[test]
 fn schema1_corruption_or_upgrade_full_rejects_without_partial_columns_or_version_bump() {
     let _serial = SERIAL.lock().unwrap();
-    let mut db = Connection::open_in_memory().unwrap();
+    let temp = Temp::new();
+    let _file = OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(temp.db())
+        .unwrap();
+    let mut db = Connection::open(temp.db()).unwrap();
     legacy_idle_fixture(&mut db);
     db.execute_batch("DROP INDEX session_expiry").unwrap();
-    assert_eq!(Store::migrate(&mut db), Err(Error::Schema));
+    assert_eq!(Store::migrate(&mut db, &temp.db()), Err(Error::Schema));
     let version: i64 = db
         .pragma_query_value(None, "user_version", |r| r.get(0))
         .unwrap();
@@ -798,14 +812,21 @@ fn schema1_corruption_or_upgrade_full_rejects_without_partial_columns_or_version
         db.prepare("SELECT idle_timeout_seconds FROM sessions")
             .is_err()
     );
-    let mut db = Connection::open_in_memory().unwrap();
+    let temp = Temp::new();
+    let _file = OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(temp.db())
+        .unwrap();
+    let mut db = Connection::open(temp.db()).unwrap();
     legacy_idle_fixture(&mut db);
     let before = old_idle_data(&db);
     let pages: i64 = db
         .pragma_query_value(None, "page_count", |r| r.get(0))
         .unwrap();
     db.pragma_update(None, "max_page_count", pages).unwrap();
-    assert_eq!(Store::migrate(&mut db), Err(Error::Storage));
+    assert_eq!(Store::migrate(&mut db, &temp.db()), Err(Error::Storage));
     assert_eq!(old_idle_data(&db), before);
     let version: i64 = db
         .pragma_query_value(None, "user_version", |r| r.get(0))
@@ -817,7 +838,7 @@ fn schema1_corruption_or_upgrade_full_rejects_without_partial_columns_or_version
     );
     db.pragma_update(None, "max_page_count", pages + 32)
         .unwrap();
-    Store::migrate(&mut db).unwrap();
+    Store::migrate(&mut db, &temp.db()).unwrap();
     assert_eq!(old_idle_data(&db), before);
 }
 
@@ -941,10 +962,17 @@ fn schema2_upgrade_preserves_idle_sessions_identity_and_rejects_old_corruption_a
         )
         .unwrap();
     }
-    let mut db = Connection::open_in_memory().unwrap();
+    let temp = Temp::new();
+    let _file = OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(temp.db())
+        .unwrap();
+    let mut db = Connection::open(temp.db()).unwrap();
     schema2(&mut db);
     let before = old_idle_data(&db);
-    Store::migrate(&mut db).unwrap();
+    Store::migrate(&mut db, &temp.db()).unwrap();
     assert_eq!(old_idle_data(&db), before);
     assert_eq!(
         db.query_row(
@@ -960,24 +988,38 @@ fn schema2_upgrade_preserves_idle_sessions_identity_and_rejects_old_corruption_a
             .unwrap(),
         SCHEMA_VERSION
     );
-    let mut db = Connection::open_in_memory().unwrap();
+    let temp = Temp::new();
+    let _file = OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(temp.db())
+        .unwrap();
+    let mut db = Connection::open(temp.db()).unwrap();
     schema2(&mut db);
     db.execute_batch("DROP INDEX session_idle_expiry").unwrap();
-    assert_eq!(Store::migrate(&mut db), Err(Error::Schema));
+    assert_eq!(Store::migrate(&mut db, &temp.db()), Err(Error::Schema));
     assert_eq!(
         db.pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))
             .unwrap(),
         2
     );
     assert!(db.prepare("SELECT id FROM matches").is_err());
-    let mut db = Connection::open_in_memory().unwrap();
+    let temp = Temp::new();
+    let _file = OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(temp.db())
+        .unwrap();
+    let mut db = Connection::open(temp.db()).unwrap();
     schema2(&mut db);
     let before = old_idle_data(&db);
     let pages: i64 = db
         .pragma_query_value(None, "page_count", |r| r.get(0))
         .unwrap();
     db.pragma_update(None, "max_page_count", pages).unwrap();
-    assert_eq!(Store::migrate(&mut db), Err(Error::Storage));
+    assert_eq!(Store::migrate(&mut db, &temp.db()), Err(Error::Storage));
     assert_eq!(old_idle_data(&db), before);
     assert_eq!(
         db.pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))

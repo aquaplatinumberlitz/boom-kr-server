@@ -7,12 +7,7 @@ use crate::{
 };
 use serde::Deserialize;
 use std::{
-    fs, io,
-    net::Ipv4Addr,
-    os::unix::fs::{FileTypeExt, MetadataExt, PermissionsExt},
-    path::PathBuf,
-    sync::Arc,
-    time::Duration,
+    fs, io, net::Ipv4Addr, os::unix::fs::PermissionsExt, path::PathBuf, sync::Arc, time::Duration,
 };
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
@@ -58,6 +53,8 @@ pub(crate) fn validate_projection(
 #[serde(deny_unknown_fields)]
 pub struct Config {
     #[serde(default)]
+    pub backup: Option<crate::operations::BackupSchedule>,
+    #[serde(default)]
     pub prelogin_tls: Option<crate::ingame_tls::Config>,
     #[serde(default)]
     pub public_launcher: Option<crate::public_launcher::Config>,
@@ -95,6 +92,9 @@ fn default_worker_queue_capacity() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
+        if let Some(backup) = &self.backup {
+            backup.validate()?;
+        }
         if let Some(tls) = &self.prelogin_tls {
             if self.profile_mode != ProfileMode::DatabaseZero || !self.patched_949x_names {
                 return Err(io::Error::other("in-game TLS requires patched DB profiles"));
@@ -147,26 +147,7 @@ impl Config {
                 "account database must be private regular file",
             ));
         }
-        match fs::symlink_metadata(&self.launch_socket) {
-            Err(e) if e.kind() == io::ErrorKind::NotFound => Ok(()),
-            _ => Err(io::Error::other("launch socket path already occupied")),
-        }
-    }
-}
-struct SocketOwner {
-    path: PathBuf,
-    device: u64,
-    inode: u64,
-}
-impl Drop for SocketOwner {
-    fn drop(&mut self) {
-        if let Ok(meta) = fs::symlink_metadata(&self.path)
-            && meta.file_type().is_socket()
-            && meta.dev() == self.device
-            && meta.ino() == self.inode
-        {
-            let _ = fs::remove_file(&self.path);
-        }
+        Ok(())
     }
 }
 #[derive(Clone)]
@@ -200,7 +181,8 @@ pub(crate) struct Owner {
     live_worker: Option<Worker>,
     pub active: Active,
     pub listener: Option<UnixListener>,
-    _socket: SocketOwner,
+    _socket: crate::operations::PrivateSocket,
+    _instance: fs::File,
 }
 impl Owner {
     pub async fn open(
@@ -214,14 +196,8 @@ impl Owner {
                 "account projection mode/template mismatch",
             ));
         }
-        let listener = UnixListener::bind(&config.launch_socket)?;
-        let meta = fs::symlink_metadata(&config.launch_socket)?;
-        let socket = SocketOwner {
-            path: config.launch_socket.clone(),
-            device: meta.dev(),
-            inode: meta.ino(),
-        };
-        fs::set_permissions(&config.launch_socket, fs::Permissions::from_mode(0o600))?;
+        let instance = crate::operations::lock_database(&config.database)?;
+        let (listener, socket) = crate::operations::PrivateSocket::bind(&config.launch_socket)?;
         let public_launcher = match &config.public_launcher {
             Some(public) => Some(public.open().await?),
             None => None,
@@ -295,6 +271,7 @@ impl Owner {
             live_worker,
             listener: Some(listener),
             _socket: socket,
+            _instance: instance,
         })
     }
     pub async fn shutdown(self) -> io::Result<()> {

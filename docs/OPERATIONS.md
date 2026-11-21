@@ -1,7 +1,6 @@
-# Vận hành server KR: cấu hình relay
+# Vận hành server KR
 
-Đây là phần cấu hình mạng của tài liệu vận hành. Đóng gói, cấp tài khoản từ xa, giám sát, chạy dài, backup/restore và
-nâng cấp/rollback còn theo [acceptance M8](PLAN.md#phase1-acceptance); không coi trang này là nghiệm thu vận hành.
+Runbook này dùng cho một instance Linux. Nghiệm thu gói người chơi, tải và chạy dài theo [acceptance M8](PLAN.md#phase1-acceptance).
 Contract xác thực, route và giới hạn ở [UDP/companion](protocol/udp-peer.md#rust-authenticated-serving-relay).
 
 ## Gói Linux và state riêng
@@ -39,6 +38,75 @@ network namespace riêng. Trên máy ARM, lượt dùng user namespace với tà
 của harness, chưa là quy trình chạy production bằng tài khoản service. Giữ raw lỗi trước, không thay cấu hình bảo
 mật host để vượt lỗi. Smoke kiểm DB mới, từ chối init lại mà không đổi DB, từ chối runner thứ hai khi instance đầu
 còn ready, rồi dừng có trật tự. Không suy client đăng nhập hoặc Internet từ readiness.
+
+<a id="server-admin-backup-rollback"></a>
+## Quản trị, snapshot và đổi phiên bản
+
+Chạy bằng tài khoản hệ điều hành quản lý service. Tách thư mục gói (đã kiểm manifest) khỏi state riêng `0700`.
+Giữ gói cũ, hash manifest, cấu hình và cặp chứng thư/khóa TLS tương ứng. Khóa TLS nằm ngoài DB; cấp lại đúng khóa
+khớp pin từ kho bí mật khi phục hồi. Cài lần đầu bằng `init-db`, phục hồi thì dùng `restore-db`.
+
+`kr-admin DATABASE` đọc một JSON từ stdin. Khai `actor` là tên operator, `reason` là lý do ngắn; quyền truy cập do
+hệ điều hành bảo vệ, còn actor là khai báo của operator. Không đưa mật khẩu, mã recovery hoặc token vào
+argv, lý do, shell history hay log.
+
+| `command.op` | Trường và hành vi |
+|---|---|
+| `create`, `lookup` | Tạo bằng `login`, `name`, `password`; tra cứu bằng `login`. |
+| `disable`, `enable`, `kick` | Dùng `account_id`; khóa thu hồi phiên, mở khóa cho đăng nhập lại, kick chỉ thu hồi phiên (alias `revoke`). |
+| `password-reset`, `recovery-reset` | Dùng `account_id`; reset mật khẩu cần thêm `password` và hủy mã recovery hiện có. Reset recovery phát mã mới qua stdout một lần. Cả hai thu hồi phiên. |
+| `delete` | Dùng `account_id`; xóa login cũ, thông tin hồ sơ, password/recovery đang dùng và thu hồi phiên. Giữ ID đã vô hiệu để bảo toàn lịch sử trận/audit. |
+| `list-rooms`, `close-room` | Liệt kê phòng hiện hành; truyền nguyên object đã chọn vào `target` gồm `instance`, `epoch`, `room_id`, `session`, `generation`. Close loại phòng khỏi danh sách, ngắt quyền phòng và hủy ván chưa kết thúc. Yêu cầu từ tiến trình cũ bị từ chối, kể cả khi restore dùng lại số epoch. |
+| `audit-list` | `filter` tùy chọn: `actor`, `operation`, `target_kind`, `target_id` (chuỗi), `result`, `since_utc`, `before_id`, `limit` (1–100, mặc định 50). Sắp từ ID mới nhất; dùng ID cuối làm `before_id` cho trang kế. |
+
+    printf '%s\n' '{"actor":"on-call","reason":"tra thao tác đóng phòng","command":{"op":"audit-list","filter":{"operation":"close_room","limit":20}}}' |
+      "$PACKAGE/bin/kr-admin" "$PRIVATE_STATE/accounts.sqlite"
+
+Audit account thành công commit cùng thay đổi, lỗi có mã riêng khi DB ghi được. Đóng phòng ghi `pending` trước
+khi tác động, rồi ghi `ok`, `rejected` hoặc `journal_unconfirmed`; boot kế chuyển yêu cầu còn treo thành `interrupted`.
+Nếu mất phản hồi, tra audit cùng khóa phòng trước khi thử lại. Khi DB không ghi được audit, sửa lỗi lưu trữ trước;
+không coi lỗi CLI là bằng chứng thao tác đã chạy. Đóng phòng không yêu cầu kick toàn bộ tài khoản.
+
+Đặt `"backup": {"interval_seconds": 3600, "keep": 24}` trong `diagnostic_two_lobby.account_admission` của recipe
+rồi dựng và kiểm lại manifest. Lượt đầu chạy sau một chu kỳ; chỉ một snapshot tự động chạy một lúc.
+Service ghi `backup_complete` hoặc `backup_failed` vào `rust-events.jsonl` và giữ N snapshot tự động mới nhất trong
+`accounts.backups/`. Chỉ dọn sau khi snapshot mới đã qua kiểm; file thủ công và bản trước migration nằm ngoài
+lịch dọn. Theo dõi dung lượng, tuổi bản cuối và sao chép bản snapshot đã kiểm sang nơi lưu riêng được phép.
+Snapshot có dữ liệu tài khoản nhạy cảm; giữ quyền `0600`, thư mục `0700` và không đưa vào gói.
+
+    "$PACKAGE/bin/kr-admin" backup "$PRIVATE_STATE/accounts.sqlite" "$PRIVATE_BACKUP/new.sqlite"
+    "$PACKAGE/bin/kr-admin" verify-backup "$PRIVATE_BACKUP/new.sqlite"
+    python3 "$PACKAGE/kr-package.py" restore-db --manifest-sha256 "$EXPECTED_MANIFEST_SHA256" \
+      --state "$NEW_PRIVATE_STATE" --snapshot "$PRIVATE_BACKUP/new.sqlite"
+
+Có thể backup khi service chạy. SQLite `VACUUM INTO` chỉ chụp dữ liệu đã commit, kể cả WAL; kiểm cả schema,
+`integrity_check` và khóa ngoại trước khi công bố file. Không copy file DB live bằng `cp`. Restore yêu cầu DB đích
+chưa tồn tại và không có sidecar; dùng state mới. Cài khóa TLS, khởi động với gói tương thích, kiểm readiness,
+đăng nhập mới và vào một ván. Restore không tiếp tục phiên hay trận trong bộ nhớ; các ván chạy dở trong snapshot
+được ghi hủy ở lần boot sau. Đo RPO từ thời điểm snapshot và RTO tới lúc có thể mở ván trên môi trường triển khai.
+
+Nâng cấp: ngừng nhận người chơi, gửi SIGTERM (hoặc dừng bằng service manager), chờ exit 0 và `stopped: true`.
+Trận đã hoàn tất giữ kết quả; trận dở được ghi hủy, không cấp thưởng. Nếu phải SIGKILL, xác nhận PID cũ đã hết rồi
+khởi động lại; boot thu hồi phiên, dọn socket chỉ khi không còn listener, và hủy journal còn `running`.
+Nếu không thấy readiness, kiểm exit status, `rust-events.jsonl`, quyền state, cổng bị chiếm và DB; giữ log trước khi
+thử lại. Không xóa lock/socket để vượt lỗi chạy trùng.
+
+1. Kiểm hash gói mới và cấu hình. Sau khi dừng bản cũ, tạo thêm snapshot thủ công và kiểm. Có thể chạy
+   `kr-package.py migrate-db --manifest-sha256 … --state …` dưới gói mới trước khi chạy `run`. Migrator tự giữ bản
+   `accounts.sqlite.before-v<old>-to-v<new>-*.sqlite` đã kiểm trước khi áp dụng thay đổi trong một transaction.
+   Nếu snapshot không tạo hoặc không kiểm được, migration dừng.
+2. Kiểm `ready: true`, đăng nhập mới và mở ván. Nếu thất bại, dừng bản mới và giữ DB, cấu hình và log của lần lỗi
+   để đối chiếu. Nếu schema không đổi, dùng lại gói/cấu hình cũ tương thích. Nếu schema đã tăng, dùng bản trước
+   migration để restore vào state mới và chạy gói cũ với cấu hình/khóa TLS tương ứng.
+3. Migration `0001`–`0006` không có chiều ngược tại chỗ. Cụ thể binary schema 5 từ chối DB đã qua
+   `0006_operator_audit` (schema 6). Dùng binary mới hơn để **restore**, sau đó dùng binary cũ để **run**;
+   không chạy `migrate-db` hoặc `run` của gói mới lên state rollback. Dữ liệu phát sinh sau snapshot không có
+   trong DB rollback; giữ state mới để xử lý riêng.
+
+Nếu `backup_failed` lặp lại, kiểm dung lượng và quyền, tạo/kiểm snapshot thủ công rồi theo dõi lượt kế. Khi
+nghi DB hỏng, giữ nguyên DB và sidecar để điều tra; phục hồi bản đã kiểm vào state khác. Luyện rollback bằng
+[script](../tools/test_m8_binary_rollback.py) với hai thư mục binary; tùy chọn `--package` và hash manifest kiểm
+thêm boot/dừng hai server loopback. Test Rust mở ván sau restore qua hai client TLS tổng hợp, không chạy game.
 
 ## Launcher TLS đang triển khai
 

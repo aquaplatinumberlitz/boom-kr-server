@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Kiểm và chạy gói Linux độc lập với repo; manifest hash lấy từ bản bàn giao."""
 import argparse
+import fcntl
 import hashlib
 import json
 import os
@@ -63,7 +64,7 @@ def verify(root, expected_sha256):
     return data
 
 
-def prepare(root, state):
+def private_state(root, state):
     root = Path(root).resolve(strict=True)
     state = Path(state)
     if not state.is_absolute() or state.resolve().is_relative_to(root):
@@ -71,10 +72,14 @@ def prepare(root, state):
     state.mkdir(mode=0o700, parents=True, exist_ok=True)
     if state.is_symlink() or state.stat().st_uid != os.getuid() or state.stat().st_mode & 0o077:
         raise ValueError('State phải thuộc người chạy và có quyền 0700')
-    state = state.resolve()
+    return state.resolve()
+
+
+def prepare(root, state):
+    state = private_state(root, state)
     socket = state / 'launch.sock'
-    if len(os.fsencode(socket)) > 100:
-        raise ValueError('Đường dẫn launch socket quá dài')
+    if max(len(os.fsencode(p)) for p in [socket, state / 'accounts.admin.sock']) > 100:
+        raise ValueError('Đường dẫn socket cục bộ quá dài')
     config = json.loads((root / 'config.template.json').read_text())
     admission = config['diagnostic_two_lobby']['account_admission']
     admission.update(database=str(state / 'accounts.sqlite'), launch_socket=str(socket))
@@ -93,9 +98,10 @@ def prepare(root, state):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['verify', 'init-db', 'run'])
+    parser.add_argument('command', choices=['verify', 'init-db', 'restore-db', 'migrate-db', 'run'])
     parser.add_argument('--manifest-sha256', required=True)
     parser.add_argument('--state', type=Path)
+    parser.add_argument('--snapshot', type=Path)
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
     try:
@@ -105,20 +111,30 @@ def main():
             return
         if args.state is None:
             raise ValueError('Cần --state riêng')
-        config, out, database = prepare(root, args.state)
-        import fcntl
-        lock = (database.parent / 'service.lock').open('a+')
-        fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        if (args.snapshot is not None) != (args.command == 'restore-db'):
+            raise ValueError('Chỉ restore-db dùng và yêu cầu --snapshot')
+        state = private_state(root, args.state)
+        database = state / 'accounts.sqlite'
+        lock_fd = os.open(state / 'service.lock', os.O_WRONLY | os.O_CREAT | os.O_NOFOLLOW, 0o600)
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        admin = str(root / 'bin/kr-admin')
+        if args.command == 'restore-db':
+            subprocess.run([admin, 'restore', str(args.snapshot.absolute()), str(database)], check=True, cwd=root)
+            return
+        if args.command == 'migrate-db':
+            subprocess.run([admin, 'migrate', str(database)], check=True, cwd=root)
+            return
         if args.command == 'init-db':
             if database.exists():
                 raise ValueError('DB đã tồn tại; không ghi đè bằng init-db')
             request = dict(actor='package-init', reason='Initial package installation', command=dict(op='init'))
-            subprocess.run([str(root / 'bin/kr-admin'), str(database)],
+            subprocess.run([admin, str(database)],
                            input=json.dumps(request), text=True, check=True, cwd=root)
             return
         if not database.is_file():
             raise ValueError('Cần init-db hoặc restore DB trước khi chạy')
-        os.set_inheritable(lock.fileno(), True)
+        config, out, _ = prepare(root, state)
+        os.set_inheritable(lock_fd, True)
         os.chdir(root)
         os.execv(str(root / 'bin/kr-service'), ['kr-service', '--config', str(config), '--out', str(out)])
     except (ValueError, OSError, KeyError, subprocess.SubprocessError) as error:

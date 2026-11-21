@@ -56,6 +56,7 @@ pub enum MatchEndReason {
     NoPlayers,
     ServerShutdown,
     ServerRestart,
+    AdminClosed,
 }
 impl MatchEndReason {
     fn cancelled(self) -> bool {

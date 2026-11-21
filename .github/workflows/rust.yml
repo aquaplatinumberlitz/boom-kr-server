@@ -7,6 +7,7 @@ on:
       - 'rust/**'
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
+      - 'tools/test_m8_binary_rollback.py'
       - '.github/workflows/rust.yml'
   push:
     branches: [main]
@@ -14,6 +15,7 @@ on:
       - 'rust/**'
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
+      - 'tools/test_m8_binary_rollback.py'
       - '.github/workflows/rust.yml'
 
 permissions:
@@ -48,3 +50,12 @@ jobs:
           mkdir -p ../local
           python3 ../tools/text949x_reference.py --oracle-out ../local/text949x-oracle.bin
           KR_TEXT949X_ORACLE="$PWD/../local/text949x-oracle.bin" cargo test --workspace --locked
+      - name: Test rollback with the previous schema-5 binary
+        run: |
+          baseline=19982f41e5e9b5c2a56fcc993b5d4a92f1f7b7d5
+          git fetch --no-tags --depth 1 origin "$baseline"
+          previous=$(mktemp -d)
+          git -C .. archive "$baseline" rust | tar -x -C "$previous"
+          CARGO_TARGET_DIR="$PWD/target/m8-schema5" cargo build --manifest-path "$previous/rust/Cargo.toml" --locked -p kr-service --bin kr-admin
+          python3 ../tools/test_m8_binary_rollback.py --previous "$PWD/target/m8-schema5/debug" --current "$PWD/target/debug"
+          rm -rf "$previous"

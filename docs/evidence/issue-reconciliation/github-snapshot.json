@@ -2,8 +2,17 @@
   "schema": "kre-github-snapshot-v1",
   "repo": "aquaplatinumberlitz/boom-kr-server",
   "captured_utc": "2026-11-14T14:41:00.456824+00:00",
-  "limits": "Snapshot gốc theo captured_utc; chỉ cập nhật #457/#460 và PR461 từ lần đọc 2026-11-17T14:41:27.506138+00:00. Các issue khác giữ mốc cũ. Không là snapshot toàn GitHub hiện hành hoặc nghiệm thu ngữ nghĩa. Issue #474 được đọc riêng 2026-11-17T19:09:57.524071+00:00; mục khác giữ mốc riêng, không suy snapshot toàn kho hiện hành. Issue #476 đọc riêng 2026-11-17T19:58:21.625771+00:00, không refresh toàn snapshot.",
+  "limits": "Snapshot gốc theo captured_utc; chỉ cập nhật #457/#460 và PR461 từ lần đọc 2026-11-17T14:41:27.506138+00:00. Các issue khác giữ mốc cũ. Không là snapshot toàn GitHub hiện hành hoặc nghiệm thu ngữ nghĩa. Issue #474 được đọc riêng 2026-11-17T19:09:57.524071+00:00; mục khác giữ mốc riêng, không suy snapshot toàn kho hiện hành. Issue #476 đọc riêng 2026-11-17T19:58:21.625771+00:00, không refresh toàn snapshot. Chỉ thêm issue #520 và PR #521 từ lần đọc 2026-11-20T23:08:33.194415+00:00.",
   "issues": [
+    {
+      "body": "Baseline `19982f4` từ origin/main, nhánh `rust/m8-admin-backup`. Codex phụ trách và tự kiểm; Claude điều phối, không tự merge. Phụ thuộc gói Linux #474 và backend SQLite/TLS hiện có. Phạm vi: kr-service, runner gói Linux, test TLS tổng hợp, OPERATIONS và PLAN. Nghiệm thu: audit CRUD/khôi phục/thu hồi/đóng phòng, snapshot live có integrity và retention, phục hồi state mới rồi vào ván qua hai client TLS, dừng/restart, migration có backup và rollback bằng binary cũ. Không game, VM hoặc VPS. Feature: KR-S002.\n\nNguồn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#phase1-acceptance), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-service-hardening).\n",
+      "closedAt": null,
+      "number": 520,
+      "state": "OPEN",
+      "title": "KRE-M8-ADMIN-BACKUP: audit, backup/restore và rollback server",
+      "updatedAt": "2026-11-20T23:09:28Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520"
+    },
     {
       "body": "KRE-074 / L1 UTF-8. Baseline main a610ebc (PR413), chủ dự án ngày14/11 yêu cầu giao một sub-agent Terra high thực hiện ba lát UTF-8 hiện hành: L1a tĩnh, L1b patch/native, L1c nhập liệu. Parent Codex tích hợp/tự kiểm; independent review waived, không gọi worker khác. Chỉ đạo trực tiếp mới này thay giới hạn solo đối với task này.\n\nOwner source riêng: sub-agent l10n_utf8 tại worktree research/l10n-utf8. File: tools/l10n_utf8_* hoặc helper riêng, docs/content/client-language.md#utf8 hoặc file con, metadata/raw riêng. Không sửa gameplay Rust, exporter hoặc source translation repo. Parent giữ PLAN, catalog, checkpoint/audit counters, exact-head verification và merge/CI.\n\nAcceptance: L1a xác minh bằng IDA trên copy cơ chế chữ PopTag và mapping00967/codepage/cắt/duyệt/đo/vẽ/font/IME/hardcoded949, chọn thiết kế có evidence và giới hạn. L1b patch runtime/private copy, native ko/en/vi UTF8 qua login→sảnh→shop→phòng, ảnh và raw/hash/rollback. L1c nhập Việt/Hàn chat/title và đối chiếu byte; server UTF8 integration nếu chưa được phục hồi phải ghi gap, không đổi wire cho client chưa vá. Mỗi lát chỉ complete khi evidence/docs đủ; không suy static/model/encoder thành native.\n\nFeature KR-B001; không mở lại gate K1 hoặc tự nâng scope giai đoạn1. Không1258. Không sửa client/pack/IDA DB nguồn; PopTag chỉ copy trong namespace loopback/no routes, không updater/installer. Không commit binary/pack/decompile/mã PopTag hoặc dữ liệu hạ tầng riêng. Một runtime lease dùng chung, không Wine/PopTag/KR đồng thời G1. Hoàn tất/export/seal/cleanup trước đổi source/config/input. Raw chỉ local; source/status/build/hash/locator và unknown rõ ràng.\n\nNguồn chuẩn: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#dashboard), [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md), [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md), [UTF8](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/content/client-language.md#utf8). Đề bài local/research/claude/codex-prompt-l10n-utf8.md; Terra static WIP là candidate cần xác minh, không là contract.\n",
       "closedAt": null,
@@ -825,6 +834,15 @@
     }
   ],
   "pull_requests": [
+    {
+      "headRefOid": "1992c267d3a50de073c7e0c4a759ae9ed4b9cc49",
+      "mergeCommit": null,
+      "mergedAt": null,
+      "number": 521,
+      "state": "OPEN",
+      "title": "M8: audit admin, snapshot SQLite và rollback server",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/521"
+    },
     {
       "headRefOid": "dc284812d2379b39e87637982f7ea83237e52919",
       "mergeCommit": {
