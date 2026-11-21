@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP390",
-  "completed_count": 390,
+  "last_id": "CP391",
+  "completed_count": 391,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1268,6 +1268,12 @@
     },
     {
       "id": "KRE-O1-LAUNCHER",
+      "state": "open",
+      "canonical": "docs/PLAN.md#full-game-roadmap",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558"
+    },
+    {
+      "id": "O1-NATIVE-RETRY",
       "state": "open",
       "canonical": "docs/PLAN.md#full-game-roadmap",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558"
@@ -4394,6 +4400,14 @@
       "path": "docs/evidence/checkpoints/records/CP390.json",
       "bytes": 8931,
       "sha256": "47902f41b5b7fc219e91e602ec1d5732dc7d270da5c59ffc5add1349d82175f2"
+    },
+    {
+      "id": "CP391",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-21T15:42:42.585096+00:00",
+      "path": "docs/evidence/checkpoints/records/CP391.json",
+      "bytes": 4234,
+      "sha256": "73548cc500174c8782da2cd8522958937a570a5fa7fbb52b4d58bb68d48ae1b8"
     }
   ],
   "audit_policy": {
@@ -4404,5 +4418,6 @@
       "bytes": 1068,
       "sha256": "3e18ec6ebc84c14cbc1d16686fed91e0405f3f1efe2a2d7b9f046ab1309ada6a"
     }
-  }
+  },
+  "record": "docs/evidence/checkpoints/records/CP391.json"
 }

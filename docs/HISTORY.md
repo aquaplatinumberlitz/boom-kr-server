@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP390: Launcher có luồng tạo/vào phòng O1 bằng tên khách, phát hiện LAN và ghép phiên bản gói.** [Bằng chứng](evidence/checkpoints/records/CP390.json).
+
 **CP388: Server Windows đọc pack KR 00967 dưới Wine, hoàn tất một ván loopback với hai client kr-load, kiểm backup và dừng sạch.** [Bằng chứng](evidence/checkpoints/records/CP388.json).
 
 **CP387: Bộ điều khiển đã qua bốn map trên Windows VM và Wine, từ Start đến kết quả và về lại phòng.** [Bằng chứng](evidence/checkpoints/records/CP387.json).
