@@ -39,7 +39,9 @@ pub(crate) struct Entry {
 
 impl Entry {
     pub fn bundled(config: &Config) -> std::io::Result<Self> {
-        let route = config.route();
+        let route = config
+            .route()
+            .ok_or_else(|| std::io::Error::other("no bundled server"))?;
         Ok(Self {
             id: route.id()?,
             name: config

@@ -1227,6 +1227,28 @@
       "evidence": [
         "docs/evidence/checkpoints/records/CP376.json"
       ]
+    },
+    {
+      "number": 558,
+      "kre": "KRE-O1-LAUNCHER",
+      "classification": "in_progress",
+      "features": [
+        "KR-S002"
+      ],
+      "known": "Launcher O1 đã có DNS-SD và guest; VM hiện mã, Wine thấy phòng qua LAN.",
+      "remaining": "Còn một ván native với đúng profile và Internet sau soak.",
+      "next_test": "Dùng recipe cổng client KR đã đo và kiểm host VM với guest Wine tới kết quả.",
+      "acceptance": "Phòng O1 không cần tài khoản, qua LAN và Internet đến kết quả; rời host thì phòng đóng.",
+      "reason": "CP390 xác nhận một phần, chưa đóng O1.",
+      "sources": [
+        "docs/PLAN.md#full-game-roadmap",
+        "docs/O1_S1_P2P.md"
+      ],
+      "evidence": [
+        "docs/evidence/checkpoints/records/CP390.json"
+      ],
+      "prs": [],
+      "successors": []
     }
   ],
   "as_of_utc": "2026-11-17T12:35:05.125317+00:00",

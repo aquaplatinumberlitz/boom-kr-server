@@ -162,6 +162,34 @@ fn in_game_udp_capabilities_bind_both_original_accounts_and_close_on_group_revok
 }
 
 #[test]
+fn friends_name_is_bound_to_the_passwordless_one_player_route() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, _, _) = Temp::new();
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let client = worker.client();
+        let name = "Việt01";
+        let new = || {
+            LocalSession::new(client.clone(), 1)
+                .unwrap()
+                .with_guest_name(Some(name.into()))
+        };
+        let mut session = new();
+        assert!(session.login(&[], 60, None).await.is_err());
+        assert!(new().trial(&trial(2), 60, None).await.is_err());
+        assert_eq!(active(&temp), 0);
+        let rows = session.trial(&trial(1), 60, None).await.unwrap();
+        assert_eq!(rows[0].0.display_name, name);
+        session.redirected(1).unwrap();
+        let owners = session.channel(&channel(&rows), 2).await.unwrap();
+        assert_eq!(owners[0].player().display_name, name);
+        session.finish().await.unwrap();
+        assert_eq!(active(&temp), 0);
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
 fn trial_roster_uses_the_same_revoke_expiry_and_replacement_fences() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let (temp, _, _) = Temp::new();

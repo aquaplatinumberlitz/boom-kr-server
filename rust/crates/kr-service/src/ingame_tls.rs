@@ -29,6 +29,8 @@ mod room;
 #[serde(deny_unknown_fields)]
 pub struct Config {
     pub bind: SocketAddrV4,
+    #[serde(default)]
+    pub friends_guest_only: bool,
     pub certificate: FixturePin,
     pub private_key: PathBuf,
     pub max_connections: usize,
@@ -46,7 +48,8 @@ const fn default_admissions_per_ip_per_minute() -> usize {
 }
 impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
-        if self.bind.port() == 0
+        if (self.friends_guest_only && !self.bind.ip().is_loopback())
+            || self.bind.port() == 0
             || self.bind.ip().is_multicast()
             || self.bind.ip().is_broadcast()
             || !(1..=128).contains(&self.max_connections)
@@ -314,6 +317,7 @@ async fn stream(
     id: u64,
     resources: Arc<Resources>,
     transport: quinn::Connection,
+    guest_name: Option<String>,
 ) -> io::Result<()> {
     prelogin::accept_header(&mut recv, &resources.ports)
         .await
@@ -403,7 +407,8 @@ async fn stream(
             if owner.is_none() && matches!(input.opcode, 1 | 62) {
                 *owner = Some(Driver::new(
                     LocalSession::new(resources.client.clone(), id)
-                        .map_err(|_| io::Error::other("native owner creation"))?,
+                        .map_err(|_| io::Error::other("native owner creation"))?
+                        .with_guest_name(guest_name.clone()),
                     resources.templates.clone(),
                 )?);
             }
@@ -541,6 +546,11 @@ async fn connection(
 ) -> io::Result<()> {
     let _close = Close(connection.clone());
     let mut unauthenticated = Some(unauthenticated);
+    let guest_name = if resources.config.friends_guest_only {
+        Some(prelogin::friends::read_name(&connection).await?)
+    } else {
+        None
+    };
     let mut streams = JoinSet::new();
     let mut number = 0;
     let mut health = tokio::time::interval(Duration::from_millis(250));
@@ -580,7 +590,7 @@ async fn connection(
                 };
                 number+=1;
                 if number>prelogin::STREAM_TOTAL||streams.len()>=prelogin::STREAM_LIMIT as usize{return Err(io::Error::other("native stream admission bound"));}
-                let id=crate::transport_ids::next()?;let resources=resources.clone();let transport=connection.clone();streams.spawn(async move{self::stream(send,recv,id,resources,transport).await});
+                let id=crate::transport_ids::next()?;let resources=resources.clone();let transport=connection.clone();let guest_name=guest_name.clone();streams.spawn(async move{self::stream(send,recv,id,resources,transport,guest_name).await});
             },
             result=streams.join_next(),if !streams.is_empty()=>{
                 match result{Some(Ok(Ok(())))=>{},Some(Ok(Err(error)))=>return Err(native_failure(error,"native_stream",None,None)),Some(Err(_))=>return Err(io::Error::other("native stream task ended")),None=>{}}

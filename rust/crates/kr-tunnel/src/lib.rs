@@ -198,7 +198,7 @@ pub struct Link {
 }
 impl Link {
     pub fn data(&self) -> Data {
-        Data(self.connection.clone())
+        Data::Quinn(self.connection.clone())
     }
     pub async fn connect(
         endpoint: &Endpoint,
@@ -327,15 +327,23 @@ impl Link {
 /// Cloned data handle does not own the authorization lifetime. Dropping Link
 /// closes its connection even when data pumps still have a clone.
 #[derive(Clone)]
-pub struct Data(Connection);
+pub enum Data {
+    Quinn(Connection),
+    Friends(kr_p2p::Connection),
+}
 impl Data {
     pub fn send(&self, packet: &Packet) -> io::Result<()> {
-        self.0
-            .send_datagram(packet.encode()?.into())
-            .map_err(io::Error::other)
+        let bytes = packet.encode()?.into();
+        match self {
+            Self::Quinn(c) => c.send_datagram(bytes).map_err(io::Error::other),
+            Self::Friends(c) => c.send_datagram(bytes).map_err(io::Error::other),
+        }
     }
     pub async fn receive(&self) -> io::Result<Packet> {
-        let bytes = self.0.read_datagram().await.map_err(io::Error::other)?;
+        let bytes = match self {
+            Self::Quinn(c) => c.read_datagram().await.map_err(io::Error::other)?,
+            Self::Friends(c) => c.read_datagram().await.map_err(io::Error::other)?,
+        };
         Packet::decode(&bytes)
     }
 }

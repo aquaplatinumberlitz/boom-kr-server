@@ -68,10 +68,11 @@ pub(crate) fn account(
     );
     data.push(b'\n');
     let timeout = Duration::from_secs(3);
-    let socket = TcpStream::connect_timeout(&config.server.into(), timeout).map_err(|_| ())?;
+    let socket =
+        TcpStream::connect_timeout(&config.server.ok_or(())?.into(), timeout).map_err(|_| ())?;
     let mut tls = launch_tls::connect(
         socket,
-        fs::read(&config.certificate).map_err(|_| ())?,
+        fs::read(config.certificate.as_ref().ok_or(())?).map_err(|_| ())?,
         timeout,
     )
     .map_err(|_| ())?;

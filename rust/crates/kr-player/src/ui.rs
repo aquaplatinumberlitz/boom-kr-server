@@ -1,4 +1,4 @@
-//! Views of the launcher state. Offline remains a selectable preview for O1.
+//! Views of the launcher state.
 use crate::guide::{self, Section};
 use crate::{
     Copy, Files, Language, Message, Mode, PlayState, Player, Screen, Server, desktop, look,
@@ -107,21 +107,11 @@ impl Player {
 
     fn modes(&self) -> Element<'_, Message> {
         let online = self.mode == Mode::Servers;
-        let selector = |mode, selected, label: &'static str, soon| {
-            let mut content = column![text(label).size(13).font(look::BOLD).center()]
-                .align_x(Alignment::Center)
-                .spacing(3);
-            if soon {
-                let color = if selected { look::DEEP } else { look::SUN };
-                let marker = text(self.t(Copy::Soon))
-                    .size(10)
-                    .font(look::BOLD)
-                    .color(color);
-                content = content.push(container(marker).padding([1, 7]).style(look::pill(color)));
-            }
+        let selector = |mode, selected, label: &'static str| {
+            let content = text(label).size(13).font(look::BOLD).center();
             button(container(content).center_x(Length::Fill).center_y(45))
                 .padding([1, 9])
-                .width(if soon {
+                .width(if mode == Mode::OfflineFriends {
                     Length::Fill
                 } else {
                     Length::Fixed(84.0)
@@ -133,13 +123,8 @@ impl Player {
         };
         container(
             row![
-                selector(Mode::Servers, online, self.t(Copy::Servers), false),
-                selector(
-                    Mode::OfflineFriends,
-                    !online,
-                    self.t(Copy::PlayFriends),
-                    true
-                ),
+                selector(Mode::Servers, online, self.t(Copy::Servers)),
+                selector(Mode::OfflineFriends, !online, self.t(Copy::PlayFriends),),
             ]
             .spacing(3),
         )
@@ -161,7 +146,127 @@ impl Player {
         .into()
     }
 
+    fn friends_panel(&self) -> Element<'_, Message> {
+        let enabled = self.can_friends();
+        let hosting = self
+            .config
+            .as_ref()
+            .is_some_and(|config| config.friends.is_some());
+        let name = text_input(self.t(Copy::FriendsName), &self.friends_name)
+            .padding(8)
+            .size(14)
+            .style(look::field)
+            .on_input_maybe(enabled.then_some(Message::FriendsName));
+        let code = text_input(self.t(Copy::FriendsCode), &self.friends_code)
+            .padding(8)
+            .size(14)
+            .style(look::field)
+            .on_input_maybe(enabled.then_some(Message::FriendsCode));
+        let action = |label, message: Option<Message>| {
+            button(text(self.t(label)).size(13))
+                .padding([7, 10])
+                .style(look::secondary)
+                .on_press_maybe(message)
+        };
+        let mut body = column![
+            self.modes(),
+            text(self.t(Copy::Friends)).size(13).color(look::MUTED),
+            name,
+            action(
+                Copy::FriendsHost,
+                (enabled && hosting).then_some(Message::FriendsHost)
+            ),
+            row![
+                code,
+                action(Copy::FriendsJoin, enabled.then_some(Message::FriendsJoin))
+            ]
+            .spacing(8),
+            row![
+                action(
+                    if self.friends_finding {
+                        Copy::FriendsSearching
+                    } else {
+                        Copy::FriendsFind
+                    },
+                    (enabled && !self.friends_finding).then_some(Message::FriendsFind)
+                ),
+                self.link(Copy::StartGuide, Screen::Help(Section::Friends)),
+            ]
+            .spacing(10),
+        ]
+        .spacing(8);
+        if let Some(host) = &self.friends_host {
+            body = body.push(
+                row![
+                    text(host.code())
+                        .size(15)
+                        .font(look::BOLD)
+                        .color(look::MINT),
+                    action(Copy::Clipboard, Some(Message::FriendsCopy)),
+                ]
+                .spacing(8)
+                .align_y(Alignment::Center),
+            );
+        } else if enabled && !self.friends_list.is_empty() {
+            let mut rooms = column![].spacing(4);
+            for route in &self.friends_list {
+                rooms = rooms.push(
+                    button(text(kr_p2p::Invite::room(route.node).to_string()).size(13))
+                        .style(look::secondary)
+                        .padding([5, 8])
+                        .on_press(Message::FriendsSelect(route.clone())),
+                );
+            }
+            body = body.push(iced::widget::scrollable(rooms).height(60));
+        }
+        if self.starting || self.files == Files::Checking {
+            let status = if self.starting {
+                Copy::Launching
+            } else {
+                Copy::Checking
+            };
+            body = body.push(text(self.t(status)).size(13).color(look::MUTED));
+        }
+        if self.files == Files::Error {
+            body = body.push(action(
+                Copy::Repair,
+                self.config.is_some().then_some(Message::RepairFromHome),
+            ));
+        }
+        if let Some(notice) = self
+            .friends_notice
+            .or((!hosting).then_some(Copy::FriendsNoHost))
+        {
+            body = body.push(text(self.t(notice)).size(13).color(
+                if matches!(notice, Copy::Copied) {
+                    look::MINT
+                } else {
+                    look::CORAL
+                },
+            ));
+            if matches!(notice, Copy::FriendsVersion)
+                && self
+                    .config
+                    .as_ref()
+                    .and_then(|cfg| cfg.release_url())
+                    .is_some()
+            {
+                body = body.push(action(
+                    Copy::Download,
+                    Some(Message::Desktop(desktop::Action::Release)),
+                ));
+            }
+        }
+        if self.preference_error {
+            body = body.push(text(self.t(Copy::PrefBad)).size(13).color(look::CORAL));
+        }
+        body.into()
+    }
+
     fn play_panel(&self) -> Element<'_, Message> {
+        if self.mode == Mode::OfflineFriends {
+            return self.friends_panel();
+        }
         let state = self.play_state();
         let description = match self.mode {
             Mode::Servers => Copy::ServersIntro,
@@ -216,7 +321,15 @@ impl Player {
         };
         body = body.push(self.link(Copy::StartGuide, Screen::Help(start_section)));
         if self.mode == Mode::Servers {
-            body = body.push(self.server_list());
+            body = body.push(self.server_list()).push(
+                text_input(self.t(Copy::ServerInvite), &self.server_invite)
+                    .padding(6)
+                    .size(13)
+                    .style(look::field)
+                    .on_input_maybe(
+                        (self.session.is_none() && !self.starting).then_some(Message::ServerInvite),
+                    ),
+            );
         }
         body = body
             .push(primary)

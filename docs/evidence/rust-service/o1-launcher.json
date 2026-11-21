@@ -1,0 +1,52 @@
+{
+  "schema": "kre-evidence-v1",
+  "checkpoint": "CP390",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558",
+  "context": "e2d15d4",
+  "source": "design",
+  "status": "design",
+  "baseline": [
+    "docs/evidence/checkpoints/records/CP388.json",
+    "docs/evidence/checkpoints/records/CP389.json",
+    "docs/evidence/rust-service/m8-pack-export.json",
+    "docs/evidence/rust-service/m8-public-launcher-foundation.json"
+  ],
+  "contract": "docs/O1_S1_P2P.md",
+  "tests": [
+    "Hai endpoint iroh headless: mDNS, mã sai, prefix sai phiên bản, manifest khác và đóng phòng.",
+    "Gateway TLS loopback: tên khách có dấu và stream native qua companion.",
+    "SQLite: khách O1 1P lấy tên từ transport, nhánh credential/2P bị từ chối và kết thúc session."
+  ],
+  "limits": [
+    "Lượt Windows VM đã hiện mã và Wine thấy đúng mã qua mDNS. Recipe khởi đầu dùng profile cổng kr-load CP388, thiếu cổng client mở trước LoginStage; builder O1 nay từ chối profile đó. Chưa tái nghiệm thu một ván bằng recipe native.",
+    "Không suy toàn bộ nội dung F1/F4 hoặc cách xử lý của server gốc từ luồng khách.",
+    "VPS đang chạy soak; chưa dùng cho O1. Kết nối Internet thật và khả năng giữ bản ghi của mailbox công cộng còn mở."
+  ],
+  "screenshot": "docs/player/o1-launcher.jpg",
+  "native": {
+    "summary": "Windows VM tạo phòng và hiện mã; Wine thấy cùng mã qua mDNS. CA.exe mở qua UAC nhưng báo ErrCannotLogin trước LoginStage. Recipe CP388 thiếu cổng client KR; builder nay từ chối recipe đó. Chưa có ván native.",
+    "limits": "Hai môi trường trên một host và trong namespace không có route mặc định; không suy Internet hay máy Windows sạch ngoài host."
+  },
+  "artifacts": [
+    {
+      "role": "kr-player Windows GNU",
+      "sha256": "ff4ecb3d2555203d1fdea39a1ea7028bf47f387e67a60e86b138aaaa8ef0c88c"
+    },
+    {
+      "role": "kr-prelogin Windows GNU",
+      "sha256": "cbec5f0a85fbe273eaf2c6c2a1829eb709a641bef9c23083394340a8fea3ae85"
+    },
+    {
+      "role": "kr-service Windows GNU",
+      "sha256": "d751bdb5e66f60299a50648d7d416d8cc87ff229742eddeb1156eacf230ec91d"
+    },
+    {
+      "role": "kr-admin Windows GNU",
+      "sha256": "b08d2c20faf45bf522cf53bca122f450315a0213ae564af5320cc5d0fdc1027a"
+    },
+    {
+      "role": "kr-launch-identity Windows GNU",
+      "sha256": "04a979c0a1c080d8dba8b68d1797bf6b2fc9cd81340ac6b910ab27f11459cc74"
+    }
+  ]
+}

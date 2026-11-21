@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP389",
-  "completed_count": 389,
+  "last_id": "CP390",
+  "completed_count": 390,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1265,6 +1265,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md#full-game-roadmap",
       "reference": "docs/evidence/owner-directives/offline-friends.json"
+    },
+    {
+      "id": "KRE-O1-LAUNCHER",
+      "state": "open",
+      "canonical": "docs/PLAN.md#full-game-roadmap",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558"
     }
   ],
   "version": 2,
@@ -4380,6 +4386,14 @@
       "path": "docs/evidence/checkpoints/records/CP389.json",
       "bytes": 6329,
       "sha256": "583c7681a0b73a8da0f7b81294b32e4a1c76faa1513f55c10efd46890875d9ff"
+    },
+    {
+      "id": "CP390",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-21T11:57:29.042245+00:00",
+      "path": "docs/evidence/checkpoints/records/CP390.json",
+      "bytes": 8931,
+      "sha256": "47902f41b5b7fc219e91e602ec1d5732dc7d270da5c59ffc5add1349d82175f2"
     }
   ],
   "audit_policy": {
