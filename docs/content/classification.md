@@ -24,7 +24,8 @@ Họ map F1: 86 B, 22 C.
 
 ### Phép thử rẻ cho F1
 
-Cột Mẫu chỉ định một map mỗi họ và chưa có lượt native mới. Ưu tiên họ không script hoặc cùng adapter;
+Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) xác nhận đối chứng
+Factory07 hoàn tất một ván và Patrit01 hiện trong menu. Các lớp theo họ chưa đổi. Ưu tiên họ không script;
 đo hai client vào cùng map, nhận Start/Load và journal, một tương tác ô hoặc item rồi về phòng. Dừng
 ca khi lỗi chọn map, thiếu profile hay không có mốc bắt đầu trong vài phút. Ca C có script chỉ đo
 load/trigger tối thiểu khi profile phù hợp. Gộp map trong cùng lượt; trần bốn lượt, các ca còn lại giữ
@@ -39,7 +40,7 @@ load/trigger tối thiểu khi profile phù hợp. Gộp map trong cùng lượt
 | Cemetery | F1 | B | 7 · `Cemetery01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | Cookie | F1 | B | 7 · `Cookie01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | Desert | F1 | B | 7 · `Desert00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Factory | F1 | B | 7 · `Factory00`; G1: Factory07 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Factory | F1 | B | 7 · `Factory00`; G1: Factory07 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Factory07:** Hai client Wine đặt bom, nhận kết quả và về phòng; journal complete. |
 | Forest | F1 | B | 12 · `Forest02`; G1: Forest07 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | Ice | F1 | B | 7 · `Ice00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | Island | F1 | B | 15 · `Island01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
@@ -49,7 +50,7 @@ load/trigger tối thiểu khi profile phù hợp. Gộp map trong cùng lượt
 | Ocean | F1 | B | 7 · `Ocean00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | PangLand | F1 | C | 10 · `PangLand00` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | Pangland | F1 | C | 1 · `Pangland14` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| Patrit | F1 | B | 8 · `Patrit01`; G1: Patrit14 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Patrit | F1 | B | 8 · `Patrit01`; G1: Patrit14 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Patrit01:** Có tên trong menu map; chưa nhận Start/Load native cho Patrit01. |
 | Space | F1 | C | 8 · `Space01` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | Tomb | F1 | B | 5 · `Tomb01`; G1: Tomb12 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | Village | F1 | B | 6 · `Village00`; G1: Village10 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |

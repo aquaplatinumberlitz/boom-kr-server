@@ -13,7 +13,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
-[lộ trình sáu đợt F1–F6](#full-game-roadmap); bước 0 có [xếp loại tĩnh](content/classification.md), thử native chờ host trống; F1–F6 chưa mở.
+[lộ trình sáu đợt F1–F6](#full-game-roadmap); bước 0 có [xếp loại](content/classification.md) và đối chứng native Factory07; mẫu Patrit01 còn thiếu Start/Load. F1–F6 chưa mở.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|

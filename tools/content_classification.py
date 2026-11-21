@@ -11,6 +11,18 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "docs/content"
 CENSUS = CONTENT / "census.json"
 G1 = "../evidence/rust-service/g1-acceptance-matrix.json"
+NATIVE_F1 = {
+    "Factory": {
+        "map": "Factory07", "source": "kr_runtime", "status": "confirmed",
+        "scope": "Hai client Wine đặt bom, nhận kết quả và về phòng; journal complete.",
+        "checkpoint": "CP381",
+    },
+    "Patrit": {
+        "map": "Patrit01", "source": "kr_runtime", "status": "confirmed",
+        "scope": "Có tên trong menu map; chưa nhận Start/Load native cho Patrit01.",
+        "checkpoint": "CP381",
+    },
+}
 MAPS = {"Forest07", "Patrit14", "Village10", "Camp08", "Tomb12", "Factory07"}
 BASIC_ITEMS = {"Item/ItemBomb", "Item/ItemFire", "Item/ItemRoller", "Item/ItemMaxPower"}
 ACTION_ITEMS = {"Item/ItemShoe", "Item/ItemPunch", "Item/ItemNiddle"}
@@ -90,6 +102,10 @@ def generate(data, digest):
                 (m["width"], m["height"]) != (15, 13), m["name"]))
             extra["probe"] = {"sample": candidates[0]["name"] if candidates else native[0],
                               "status": "pending" if candidates else "prior_g1"}
+        if f1 and family in NATIVE_F1:
+            observed = NATIVE_F1[family]
+            assert any(m["name"] == observed["map"] for m in maps)
+            extra["native_step0"] = observed
         add("map", family, wave, code, reason, category=category, base=base,
             map_count=len(maps), script_count=sum(m["scripted"] for m in maps),
             script_unknown=len(substantial), native_g1=native, **extra)
@@ -193,7 +209,8 @@ def markdown(data):
         "",
         "### Phép thử rẻ cho F1",
         "",
-        "Cột Mẫu chỉ định một map mỗi họ và chưa có lượt native mới. Ưu tiên họ không script hoặc cùng adapter;",
+        "Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) xác nhận đối chứng",
+        "Factory07 hoàn tất một ván và Patrit01 hiện trong menu. Các lớp theo họ chưa đổi. Ưu tiên họ không script;",
         "đo hai client vào cùng map, nhận Start/Load và journal, một tương tác ô hoặc item rồi về phòng. Dừng",
         "ca khi lỗi chọn map, thiếu profile hay không có mốc bắt đầu trong vài phút. Ca C có script chỉ đo",
         "load/trigger tối thiểu khi profile phù hợp. Gộp map trong cùng lượt; trần bốn lượt, các ca còn lại giữ",
@@ -212,7 +229,11 @@ def markdown(data):
                 count = f'{count} · `{row["probe"]["sample"]}`'
             if row.get("native_g1"):
                 count = f'{count}; G1: {", ".join(row["native_g1"])}'
-            lines.append(f'| {row["name"]} | {row["wave"]} | {row["classification"] or "—"} | {count} | {row["reason"]} |')
+            observed = row.get("native_step0")
+            reason = row["reason"]
+            if observed:
+                reason += f' **{observed["map"]}:** {observed["scope"]}'
+            lines.append(f'| {row["name"]} | {row["wave"]} | {row["classification"] or "—"} | {count} | {reason} |')
     return "\n".join(lines) + "\n"
 
 
