@@ -1,6 +1,10 @@
 use super::TEST_SERIAL as SERIAL;
 use super::*;
-use std::sync::atomic::AtomicU64;
+use std::{
+    fs::OpenOptions,
+    os::unix::fs::{OpenOptionsExt, PermissionsExt},
+    sync::atomic::AtomicU64,
+};
 static NEXT: AtomicU64 = AtomicU64::new(0);
 const PASSWORD: &[u8] = b"test-only-password-one";
 const OTHER: &[u8] = b"test-only-password-two";

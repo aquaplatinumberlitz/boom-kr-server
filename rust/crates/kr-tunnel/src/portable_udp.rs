@@ -1,4 +1,4 @@
-//! Single-datagram client socket without ECN/GSO ancillary messages.
+//! Single-datagram socket without ECN/GSO ancillary messages.
 use quinn::{
     AsyncUdpSocket, UdpPoller,
     udp::{RecvMeta, Transmit},
@@ -17,7 +17,7 @@ pub(crate) struct Socket {
 }
 impl fmt::Debug for Socket {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("PortableClientUdp")
+        f.write_str("PortableUdp")
     }
 }
 impl Socket {

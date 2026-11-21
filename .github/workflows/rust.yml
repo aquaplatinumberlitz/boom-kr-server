@@ -89,3 +89,22 @@ jobs:
           --bin kr-service --bin kr-admin --bin kr-load --bin kr-companion --bin kr-launch-identity
       - name: Install, export fake pack, finish one TLS round, back up and stop
         run: python3 tools/test_kr_pack_install.py --binaries rust/target/debug
+
+  windows-service:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: rust
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MinGW and the pinned Rust target
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-mingw-w64-x86-64
+          rustup toolchain install 2>/dev/null || rustup show
+          rustup target add x86_64-pc-windows-gnu
+      - name: Build Windows server, admin and TLS provisioning binaries
+        run: >
+          cargo build --locked --target x86_64-pc-windows-gnu -p kr-service -p kr-tunnel
+          --bin kr-service --bin kr-admin --bin kr-launch-identity

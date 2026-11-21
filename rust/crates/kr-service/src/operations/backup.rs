@@ -1,8 +1,7 @@
-use crate::accounts;
+use crate::{accounts, platform};
 use serde::Deserialize;
 use std::{
     fs, io,
-    os::unix::fs::{DirBuilderExt, PermissionsExt},
     path::{Path, PathBuf},
     time::{Duration, SystemTime, UNIX_EPOCH},
 };
@@ -41,15 +40,7 @@ impl Scheduled {
     pub(crate) fn open(db: &Path, schedule: BackupSchedule) -> io::Result<Self> {
         schedule.validate()?;
         let directory = db.with_extension("backups");
-        match fs::DirBuilder::new().mode(0o700).create(&directory) {
-            Ok(()) => {}
-            Err(e) if e.kind() == io::ErrorKind::AlreadyExists => {}
-            Err(e) => return Err(e),
-        }
-        let meta = fs::symlink_metadata(&directory)?;
-        if !meta.is_dir() || meta.permissions().mode() & 0o077 != 0 {
-            return Err(io::Error::other("backup directory must be private"));
-        }
+        platform::provision_private_dir(&directory)?;
         Ok(Self {
             db: db.to_owned(),
             directory,
@@ -86,7 +77,7 @@ impl Scheduled {
         for (_, path) in self.completed()?.into_iter().skip(self.schedule.keep) {
             fs::remove_file(path)?;
         }
-        fs::File::open(&self.directory)?.sync_all()?;
+        platform::sync_directory(&self.directory)?;
         Ok(version)
     }
     pub(crate) async fn run(

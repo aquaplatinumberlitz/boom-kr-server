@@ -251,6 +251,10 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
     Ok(match args {
+        [flag, dir] if flag == "private-dir" => {
+            kr_service::platform::provision_private_dir(Path::new(dir))?;
+            json!({"ok":true})
+        }
         [flag, run] if flag == "health" => kr_service::monitoring::check(Path::new(run))?,
         [flag, source, destination] if flag == "backup" =>
             json!({"schema": accounts::snapshot(Path::new(source), Path::new(destination))?}),
@@ -271,7 +275,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY".into()),
+        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY".into()),
     })
 }
 fn main() {

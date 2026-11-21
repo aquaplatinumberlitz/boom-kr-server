@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP387: Bộ điều khiển đã qua bốn map trên Windows VM và Wine, từ Start đến kết quả và về lại phòng.** [Bằng chứng](docs/evidence/checkpoints/records/CP387.json).
+**CP388: Server Windows đọc pack KR 00967 dưới Wine, hoàn tất một ván loopback với hai client kr-load, kiểm backup và dừng sạch.** [Bằng chứng](docs/evidence/checkpoints/records/CP388.json).
 
 ## Bắt đầu
 

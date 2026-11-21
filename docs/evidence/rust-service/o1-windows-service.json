@@ -1,0 +1,170 @@
+{
+  "schema": "kre-o1-windows-service-v1",
+  "source": "design",
+  "status": "design",
+  "baseline": "bbdfc7010d8511d942da97bc56258df26ba1105b",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/554",
+  "pr": "https://github.com/aquaplatinumberlitz/boom-kr-server/pull/555",
+  "checkpoint": "docs/evidence/checkpoints/records/CP388.json",
+  "canonical": "docs/OPERATIONS.md#gói-server-windows",
+  "binaries": [
+    {
+      "role": "kr-service.exe",
+      "sha256": "4e9e0181e5e59ae403b83a3e83ae7850482132e3e241d936d74fe0e6bfbdb693"
+    },
+    {
+      "role": "kr-admin.exe",
+      "sha256": "4f609f8d687c78ec142002ffa0bc48b0481fb93979cc24aa6711971895a030e7"
+    },
+    {
+      "role": "kr-launch-identity.exe",
+      "sha256": "8b1af7f6d619b5cfafb746a060c4386a3a728194f0c4cdc24ad9c542b960cfd4"
+    },
+    {
+      "role": "kr-load Linux",
+      "sha256": "103d8f9839f1b538fc0ca2a177dc200f8d2b9d0efd37d87e043cc6a47574fdfe"
+    }
+  ],
+  "recipe": {
+    "harness": "tools/smoke_kr_windows_service.py",
+    "fixture_baseline": "CP383 / PR #550, preset G1",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "state_umask": "077 (Wine)",
+    "python": "Python 3.13.9",
+    "python_zip_sha256": "91d828c2da3a029b41699e918674a0cb379c02cf20dab9c501306885f837402a",
+    "build": "cargo build --locked --target x86_64-pc-windows-gnu -p kr-service -p kr-tunnel --bin kr-service --bin kr-admin --bin kr-launch-identity",
+    "environment": "Prefix Wine riêng, Xvfb, bwrap chỉ có loopback. Thư mục game và gói được mount chỉ đọc."
+  },
+  "original_pack_sha256": {
+    "FxMap.idx": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+    "FxMap.idd": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+    "FxContents.idx": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+    "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
+    "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+    "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"
+  },
+  "result": {
+    "manifest_sha256": "4d0c4fe4059eb2767414dd3b97f82ea8a8d13400d45061502f08c86d237ba683",
+    "pack_cache": "43d958304a6a8e134508cef90da6c9d1a971d815a9cc45e1b5d448493cf6fa1c",
+    "export": true,
+    "cache_reused": true,
+    "round_returned": 1,
+    "map": "Forest07",
+    "players": 2,
+    "admin_ipc": true,
+    "launch_ticket": true,
+    "unauthenticated_refused": true,
+    "runner_lock": true,
+    "instance_lock": true,
+    "public_acl_refused": true,
+    "backup_verified": true,
+    "graceful_stop": "CTRL_C_EVENT",
+    "exit": 0
+  },
+  "controls": [
+    "Wine không kế thừa ACL cho file con trong lượt umask mặc định; lần dùng umask 077 giữ kiểm ACL và đi qua init.",
+    "Quinn UDP gốc trả 10045 dưới Wine; backend từng datagram giữ cấu hình QUIC/TLS và quyền như cũ.",
+    "Ctrl+Break dưới Wine không hoàn thành drain; Ctrl+C trên console riêng là đường đã kiểm."
+  ],
+  "evidence": {
+    "WINE_SUMMARY": {
+      "path": "local/research/codex/o1-windows-service/run-6/verification.json",
+      "bytes": 512,
+      "sha256": "2b59fb2c7ad328439f1009a7ff8e3f4cbdb570eba34e81e37c0a20c7528da8a7"
+    },
+    "WINE_VERSION": {
+      "path": "local/research/codex/o1-windows-service/run-6/wine-version.log",
+      "bytes": 29,
+      "sha256": "ec988aa41023a53ce8e042b65db6fad2dae08da90be9151dffd61cceb1f45739"
+    },
+    "PYTHON_VERSION": {
+      "path": "local/research/codex/o1-windows-service/run-6/python-version.log",
+      "bytes": 15,
+      "sha256": "829ac2581a6275b79e6369c6c1130807da7060f355fb83e37c8cb8ae5dc9b4cf"
+    },
+    "WIN_MANIFEST": {
+      "path": "local/research/codex/o1-windows-service/win-bundle-r3/manifest.json",
+      "bytes": 13191,
+      "sha256": "4d0c4fe4059eb2767414dd3b97f82ea8a8d13400d45061502f08c86d237ba683"
+    },
+    "STOP": {
+      "path": "local/research/codex/o1-windows-service/run-6/service.log",
+      "bytes": 157,
+      "sha256": "01e0cec55a62a6328dbf250e6b25f8335accc90e7496a009e5c2d479336b69d4"
+    },
+    "STATE": {
+      "path": "local/research/codex/o1-windows-service/run-6/state/runs/1795257126500761700/service/service-state.json",
+      "bytes": 91,
+      "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"
+    },
+    "MATCH": {
+      "path": "local/research/codex/o1-windows-service/run-6/load.log",
+      "bytes": 676,
+      "sha256": "0503107ec29a2490611aa9420c21cd5c9b3fc8777d6ca5083101c54c7a33ac92"
+    },
+    "SNAPSHOT": {
+      "path": "local/research/codex/o1-windows-service/run-6/state/smoke.sqlite",
+      "bytes": 131072,
+      "sha256": "ef315f8f15b96d35a98c18192f6871e679be219f2aada270d4563ac67720fcd6"
+    },
+    "LOCK": {
+      "path": "local/research/codex/o1-windows-service/run-6/instance-lock.log",
+      "bytes": 32,
+      "sha256": "8a1a4d749026f2483f842f1e0abf875374053811cf228f86914f4efbaeeec4e8"
+    },
+    "WIN_BUILD": {
+      "path": "local/research/codex/o1-windows-service/windows-build-r3.log",
+      "bytes": 639,
+      "sha256": "3593adbf7e94d459d668fcb6b235d58a0e8d2d6c45708c2e2134c73f794b73b6"
+    },
+    "LINUX_TESTS": {
+      "path": "local/research/codex/o1-windows-service/linux-tests.log",
+      "bytes": 52407,
+      "sha256": "b97fcfee016b329faa24c2ab87d46c8e97ea4f1cdeb7749544fc10f6daa9871d"
+    },
+    "LINUX_PACK": {
+      "path": "local/research/codex/o1-windows-service/linux-pack-test.log",
+      "bytes": 1174,
+      "sha256": "258e68979d446df931bc0f26ec07b79335511d325adc9b694ff24123a60e82af"
+    },
+    "ACL_NEGATIVE": {
+      "path": "local/research/codex/o1-windows-service/run-6/acl-refused.log",
+      "bytes": 74,
+      "sha256": "99d9dd3874cbf26a057561114b75113bd15ffb4261f193af5d13656401a7c88f"
+    },
+    "WINE_ACL_CONTROL": {
+      "path": "local/research/codex/o1-windows-service/acl-probe.log",
+      "bytes": 712,
+      "sha256": "bc24ef1395ec454cbdd448a2d2a5be99dbc4899ce3274c10a5f14384d234f166"
+    },
+    "WINE_NATIVE_UDP_CONTROL": {
+      "path": "local/research/codex/o1-windows-service/run-3/service.log",
+      "bytes": 588,
+      "sha256": "9188abf815b8b3f0a737b016e674eefd3aa25a1ec62d8abb06348f1e10a73819"
+    },
+    "CONSOLE_CONTROL": {
+      "path": "local/research/codex/o1-windows-service/run-5/service.log",
+      "bytes": 660,
+      "sha256": "9e419b87808866c6f8b1078e5cc9915589273e9306a4abcd7e9d2d8427b1a71e"
+    },
+    "RUN_RECIPE": {
+      "path": "local/research/codex/o1-windows-service/run.sh",
+      "bytes": 454,
+      "sha256": "5f4c5efee55e52580fb8230573761c29a6b28b2c9f63d41a49346d01bb79a2e2"
+    },
+    "ISOLATION_RECIPE": {
+      "path": "local/research/codex/o1-windows-service/isolated.sh",
+      "bytes": 581,
+      "sha256": "295408e2e0c5f35efdc4fdb71b7042b1e3f5cec2cdec1425dc1cb07e5449604c"
+    },
+    "RECIPE": {
+      "path": "tools/smoke_kr_windows_service.py",
+      "bytes": 10545,
+      "sha256": "9e6876aecb6f3587bf0775a1b41e1b8c2268caa6d3b2dfe5ef0a11a92013b6bc"
+    }
+  },
+  "limits": [
+    "Hai client tổng hợp của kr-load chạy trong một tiến trình Linux, server và admin là bản PE dưới Wine.",
+    "Không chạy client game KR, Windows VM, LAN/Internet hoặc VPS. Chưa nghiệm thu launcher O1/S1."
+  ]
+}

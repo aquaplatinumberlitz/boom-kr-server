@@ -6,25 +6,47 @@ fn storage<T>(value: std::io::Result<T>) -> Result<T> {
     value.map_err(|_| Error::Storage)
 }
 
+pub(super) fn check_private<T>(value: std::io::Result<T>) -> Result<T> {
+    value.map_err(|e| {
+        if e.kind() == std::io::ErrorKind::Other {
+            Error::InvalidInput
+        } else {
+            Error::Storage
+        }
+    })
+}
+
 pub(super) fn private_parent(path: &Path) -> Result<&Path> {
     let parent = path.parent().ok_or(Error::InvalidInput)?;
-    let meta = storage(fs::symlink_metadata(parent))?;
-    if !meta.is_dir() || meta.permissions().mode() & 0o077 != 0 {
-        return Err(Error::InvalidInput);
-    }
+    check_private(platform::private_dir(parent))?;
     Ok(parent)
 }
 pub(super) fn read_database(path: &Path) -> Result<Connection> {
     private_parent(path)?;
-    let meta = storage(fs::symlink_metadata(path))?;
-    if !meta.is_file() || meta.permissions().mode() & 0o077 != 0 {
-        return Err(Error::InvalidInput);
-    }
+    check_database_file(path)?;
     let read = Connection::open_with_flags(path, OpenFlags::SQLITE_OPEN_READ_ONLY)?;
     read.busy_timeout(Duration::from_secs(2))?;
     read.pragma_update(None, "trusted_schema", false)?;
     Ok(read)
 }
+pub(super) fn check_database_file(path: &Path) -> Result<()> {
+    check_private(platform::private_file(path))?;
+    // SQLite creates its sidecars in the parent. Check any left by an earlier
+    // run as well: Windows can traverse a private directory by a known name.
+    #[cfg(windows)]
+    for suffix in ["-wal", "-shm", "-journal"] {
+        let mut name = path.as_os_str().to_owned();
+        name.push(suffix);
+        match platform::private_file(Path::new(&name)) {
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => {}
+            result => {
+                check_private(result)?;
+            }
+        }
+    }
+    Ok(())
+}
+
 fn absent(path: &Path) -> Result<()> {
     match fs::symlink_metadata(path) {
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(()),
@@ -66,20 +88,20 @@ pub fn snapshot(source: &Path, destination: &Path) -> Result<i32> {
     let path = parent.join(format!(".snapshot-{}", hex(&random)));
     let temp_name = path.to_str().ok_or(Error::InvalidInput)?;
     let file = storage(
-        OpenOptions::new()
+        platform::private_options()
             .write(true)
             .create_new(true)
-            .mode(0o600)
             .open(&path),
     )?;
     let temp = Temp(path.clone());
     read.execute("VACUUM INTO ?1", [temp_name])?;
     let version = verify_snapshot(&temp.0)?;
     storage(file.sync_all())?;
-    // A hard link publishes the already verified file atomically without replacing a DB.
-    storage(fs::hard_link(&temp.0, destination))?;
+    drop(file);
+    // Publish the already verified file without overwriting another DB.
+    storage(platform::publish_snapshot(&temp.0, destination))?;
     drop(temp);
-    storage(storage(fs::File::open(parent))?.sync_all())?;
+    storage(platform::sync_directory(parent))?;
     Ok(version)
 }
 

@@ -19,3 +19,9 @@ rusqlite.workspace = true
 getrandom.workspace = true
 zeroize.workspace = true
 flate2.workspace = true
+[target.'cfg(windows)'.dependencies]
+ring = "=0.17.14"
+windows-sys = { version = "=0.61.2", features = ["Win32_Security_Authorization", "Win32_Storage_FileSystem", "Win32_System_SystemServices", "Win32_System_Threading"] }
+
+[dev-dependencies]
+ring = "=0.17.14"
