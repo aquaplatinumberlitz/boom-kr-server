@@ -288,140 +288,166 @@ pub async fn listen(
     settings: Settings,
     bind: SocketAddrV4,
     network: Network,
-    mut actions: mpsc::Receiver<Action>,
+    actions: mpsc::Receiver<Action>,
     status: watch::Sender<Status>,
 ) -> io::Result<()> {
     state_dir(&state)?;
     settings.validate()?;
     let _lock = platform::lock_private_file(&state.join("service.lock"))?;
-    let prep = prepare(&root, &state, &settings.game).await?;
-    let key = node_key(&state)?;
+    let mut prep = prepare(&root, &state, &settings.game).await?;
+    let mut key = node_key(&state)?;
     let certificate = cert(&state)?;
     let state_for_account = state.clone();
     tokio::task::spawn_blocking(move || first_account(&state_for_account))
         .await
         .map_err(io::Error::other)??;
-    let endpoint = network.endpoint(bind, Some(key)).await?;
     // Existing fixture paths in the manifest are rooted at the bundle.
     std::env::set_current_dir(&root)?;
-    let profile = crate::load_config(&prep.runtime)?;
-    let admission = profile
-        .config
-        .diagnostic_two_lobby
-        .as_ref()
-        .and_then(|c| c.account_admission.as_ref())
-        .ok_or_else(|| io::Error::other("S1 needs managed accounts"))?;
-    let services = Services {
-        prelogin: admission
-            .prelogin_tls
-            .as_ref()
-            .ok_or_else(|| io::Error::other("S1 needs prelogin TLS"))?
-            .bind,
-        relay: profile
-            .config
-            .authenticated_relay
-            .as_ref()
-            .ok_or_else(|| io::Error::other("S1 needs authenticated relay"))?
-            .bind,
-        launcher: admission.public_launcher.as_ref().map(|c| c.bind),
-        name: settings.name,
-        certificate,
+    let mut host = Host {
+        state,
+        settings,
+        bind,
+        network,
+        actions,
+        status,
     };
-    let (stop, stopped) = oneshot::channel();
-    let out = prep.out;
-    let mut service = std::pin::pin!(crate::serve_until(profile, &out, async {
-        let _ = stopped.await;
-        Ok(())
-    }));
-    let wait_ready = async {
-        loop {
-            if monitoring::check(&out).is_ok() {
-                return Ok::<_, io::Error>(());
-            }
-            sleep(Duration::from_millis(150)).await;
-        }
-    };
-    tokio::select! {
-        result = &mut service => return result,
-        result = timeout(Duration::from_secs(20), wait_ready) => {
-            if let Err(error) = result {
-                let _ = stop.send(());
-                service.await?;
-                return Err(error.into());
-            }
-        }
+    while host.serve_instance(prep, key, &certificate).await? {
+        // Reboot the inner transports too. Dropping the outer UDP bridge
+        // cannot deliver the inner QUIC CLOSE, and can otherwise leave an
+        // active account owner until its timeout.
+        let bytes = Zeroizing::new(random()?);
+        atomic_private(
+            &host.state,
+            &host.state.join("s1-node.key"),
+            bytes.as_ref(),
+            true,
+        )?;
+        key = SecretKey::from_bytes(&bytes);
+        prep = prepare(&root, &host.state, &host.settings.game).await?;
     }
-    let remote = async {
-        let mut endpoint = endpoint;
-        loop {
-            let (new_key, mut backups) = {
-                let relay_expected = !matches!(&network, Network::Local);
-                let mut server = std::pin::pin!(p2p::serve(&endpoint, services.clone()));
-                let advertised = Invite::server(endpoint.id(), &services.certificate).to_string();
-                status.send_modify(|s| {
-                    s.invite = advertised;
-                    s.ready = true;
-                    s.relay_expected = relay_expected;
-                    s.relay_online = false;
-                });
-                let mut timer = tokio::time::interval(Duration::from_secs(2));
-                let mut backups = tokio::task::JoinSet::new();
-                let new_key = loop {
-                    tokio::select! {
-                        ret = &mut server => return ret,
-                        _ = timer.tick() => {
-                            let relay_online = relay_expected && p2p::relay_connected(&endpoint);
-                            if let Ok(health) = monitoring::check(&out) {
-                                status.send_modify(|s| {
-                                    s.ready = true;
-                                    s.relay_online = relay_online;
-                                    s.players = health["lobby"]["online_players"].as_u64().unwrap_or(0);
-                                    s.rooms = health["lobby"]["room_count"].as_u64().unwrap_or(0);
-                                });
-                            } else {
-                                status.send_modify(|s| { s.ready = false; s.relay_online = relay_online; });
-                            }
-                        }
-                        action = actions.recv() => match action {
-                            Some(Action::Rotate) => {
-                                break Some(Zeroizing::new(random()?));
-                            }
-                            Some(Action::Backup) if backups.is_empty() => {
-                                let state = state.clone();
-                                backups.spawn(async move { backup(&state).await });
-                            }
-                            Some(Action::Backup) => {}
-                            Some(Action::Stop) | None => break None,
-                        },
-                        Some(result) = backups.join_next(), if !backups.is_empty() => {
-                            status.send_modify(|s| s.message = match result {
-                                Ok(Ok(path)) => path.display().to_string(),
-                                Ok(Err(error)) => error.to_string(),
-                                Err(error) => error.to_string(),
-                            });
-                        }
-                    }
-                };
-                (new_key, backups)
-            };
-            endpoint.close().await;
-            while backups.join_next().await.is_some() {}
-            let Some(bytes) = new_key else { return Ok(()) };
-            drop(endpoint);
-            endpoint = network
-                .endpoint(bind, Some(SecretKey::from_bytes(&bytes)))
-                .await?;
-            atomic_private(&state, &state.join("s1-node.key"), bytes.as_ref(), true)?;
+    Ok(())
+}
+
+struct Host {
+    state: PathBuf,
+    settings: Settings,
+    bind: SocketAddrV4,
+    network: Network,
+    actions: mpsc::Receiver<Action>,
+    status: watch::Sender<Status>,
+}
+
+impl Host {
+    async fn serve_instance(
+        &mut self,
+        prep: Prepared,
+        key: SecretKey,
+        certificate: &[u8],
+    ) -> io::Result<bool> {
+        let endpoint = self.network.endpoint(self.bind, Some(key)).await?;
+        let profile = crate::load_config(&prep.runtime)?;
+        let admission = profile
+            .config
+            .diagnostic_two_lobby
+            .as_ref()
+            .and_then(|c| c.account_admission.as_ref())
+            .ok_or_else(|| io::Error::other("S1 needs managed accounts"))?;
+        let services = Services {
+            prelogin: admission
+                .prelogin_tls
+                .as_ref()
+                .ok_or_else(|| io::Error::other("S1 needs prelogin TLS"))?
+                .bind,
+            relay: profile
+                .config
+                .authenticated_relay
+                .as_ref()
+                .ok_or_else(|| io::Error::other("S1 needs authenticated relay"))?
+                .bind,
+            launcher: admission.public_launcher.as_ref().map(|c| c.bind),
+            name: self.settings.name.clone(),
+            certificate: certificate.to_vec(),
+        };
+        let (stop, stopped) = oneshot::channel();
+        let out = prep.out;
+        let mut service = std::pin::pin!(crate::serve_until(profile, &out, async {
+            let _ = stopped.await;
+            Ok(())
+        }));
+        let wait_ready = async {
+            loop {
+                if monitoring::check(&out).is_ok() {
+                    return Ok::<_, io::Error>(());
+                }
+                sleep(Duration::from_millis(150)).await;
+            }
+        };
+        tokio::select! {
+            result = &mut service => return result.map(|()| false),
+            result = timeout(Duration::from_secs(20), wait_ready) => {
+                if let Err(error) = result {
+                    let _ = stop.send(());
+                    service.await?;
+                    return Err(error.into());
+                }
+            }
         }
-    };
-    tokio::pin!(remote);
-    let result = tokio::select! {
-        result = &mut service => return result,
-        result = &mut remote => result,
-    };
-    let _ = stop.send(());
-    let stopped = service.await;
-    result.and(stopped)
+        let relay_expected = !matches!(self.network, Network::Local);
+        let mut backups = tokio::task::JoinSet::new();
+        let mut timer = tokio::time::interval(Duration::from_secs(2));
+        self.status.send_replace(Status {
+            invite: Invite::server(endpoint.id(), certificate).to_string(),
+            ready: true,
+            relay_expected,
+            relay_online: p2p::relay_connected(&endpoint),
+            ..Status::default()
+        });
+        let result = {
+            let server = p2p::serve(&endpoint, services);
+            tokio::pin!(server);
+            loop {
+                tokio::select! {
+                    ret = &mut server => break ret.map(|()| false),
+                    ret = &mut service => return ret.map(|()| false),
+                    _ = timer.tick() => {
+                        let relay_online = relay_expected && p2p::relay_connected(&endpoint);
+                        self.status.send_modify(|s| {
+                            s.relay_online = relay_online;
+                            if let Ok(health) = monitoring::check(&out) {
+                                s.ready = true;
+                                s.players = health["lobby"]["online_players"].as_u64().unwrap_or(0);
+                                s.rooms = health["lobby"]["room_count"].as_u64().unwrap_or(0);
+                            } else {
+                                s.ready = false;
+                            }
+                        });
+                    }
+                    action = self.actions.recv() => match action {
+                        Some(Action::Rotate) => break Ok(true),
+                        Some(Action::Backup) if backups.is_empty() => {
+                            let state = self.state.clone();
+                            backups.spawn(async move { backup(&state).await });
+                        }
+                        Some(Action::Backup) => {}
+                        Some(Action::Stop) | None => break Ok(false),
+                    },
+                    Some(result) = backups.join_next(), if !backups.is_empty() => {
+                        self.status.send_modify(|s| s.message = match result {
+                            Ok(Ok(path)) => path.display().to_string(),
+                            Ok(Err(error)) => error.to_string(),
+                            Err(error) => error.to_string(),
+                        });
+                    }
+                }
+            }
+        };
+        self.status.send_replace(Status::default());
+        let _ = stop.send(());
+        let (stopped, ()) = tokio::join!(service, endpoint.close());
+        while backups.join_next().await.is_some() {}
+        stopped?;
+        result
+    }
 }
 
 pub async fn command_line_stop(actions: mpsc::Sender<Action>) -> io::Result<()> {

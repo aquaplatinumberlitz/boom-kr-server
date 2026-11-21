@@ -80,8 +80,14 @@ cleanup() {
     fi
     if [[ -n $state && -d $state/runs ]]; then
         mkdir -p "$out/state-observations"
-        find "$state/runs" -path '*/service/*' -type f \( -name 'health.json' -o -name 'rust-events.jsonl' -o -name 'service-state.json' \) \
-            -exec cp -t "$out/state-observations" -- {} +
+        for run in "$state"/runs/*/service; do
+            [[ -d "$run" ]] || continue
+            target="$out/state-observations/$(basename "$(dirname "$run")")"
+            mkdir -p "$target"
+            for name in health.json rust-events.jsonl service-state.json; do
+                [[ ! -f "$run/$name" ]] || cp -- "$run/$name" "$target/"
+            done
+        done
     fi
     if [[ -d $WINEPREFIX ]]; then
         timeout 15 wineserver -k || true
@@ -181,7 +187,10 @@ wait_for 150 rotated
 touch "$out/rotate-done"
 wait_for 450 test -f "$out/stop"
 click 56 206
-stopped() { find "$state/runs" -name service-state.json -exec grep -l '"stopped":true' {} + | grep -q .; }
+stopped() {
+    local files=("$state"/runs/*/service/service-state.json)
+    [[ ${#files[@]} -ge 2 && -f ${files[0]} ]] && ! grep -L '"stopped":true' "${files[@]}" | grep -q .
+}
 wait_for 180 stopped
 timeout 15 wine "$bundle/python/python.exe" "$clip" close
 for _ in {1..25}; do
@@ -194,4 +203,9 @@ if kill -0 "$service" 2>/dev/null; then
     exit 1
 fi
 wait "$service"
-printf 'S1 Wine: first boot, two-player NAT relay round, background restore, backup, rotation, second round, clean stop\n'
+if grep -q '"event":"load_complete".*"players":2' "$out/load-after-rotate.jsonl"; then
+    printf 'S1 Wine: first boot, two-player NAT relay round, background restore, backup, rotation, second round, clean stop\n'
+else
+    printf 'S1 Wine: clean stop after failed acceptance\n' >&2
+    exit 1
+fi

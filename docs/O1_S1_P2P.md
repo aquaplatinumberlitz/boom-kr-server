@@ -40,8 +40,8 @@ loopback UDP bridge.
 
 **Phần server S1.** `boom-kr/s1/1` là ALPN riêng cho server tự dựng. Server dùng khóa node bền vững,
 công bố riêng địa chỉ relay bằng Pkarr và trả tên máy cùng chứng chỉ qua stream đã được iroh xác thực.
-Client kiểm vân tay DER trong mã trước khi mở proxy cục bộ. Tạo lại mã đổi khóa node và đóng các kết nối cũ;
-chứng chỉ TLS, cơ sở dữ liệu và tài khoản giữ nguyên. Mã mời làm nhiệm vụ định tuyến và ghim danh tính;
+Client kiểm vân tay DER trong mã trước khi mở proxy cục bộ. Tạo lại mã dừng dịch vụ để thu hồi phiên cũ,
+đổi khóa node rồi khởi động lại; chứng chỉ TLS, cơ sở dữ liệu và tài khoản giữ nguyên. Mã mời làm nhiệm vụ định tuyến và ghim danh tính;
 đăng nhập và đăng ký vẫn theo cơ chế tài khoản.
 
 Launcher TCP/TLS đi qua stream. Phần prelogin và companion hiện có giữ nguyên xác thực inner QUIC.
