@@ -84,7 +84,7 @@ Máy chủ S1 lưu tài khoản và kết quả trên máy bạn. Máy bạn c�
 1. Giải nén cả gói server Windows vào một thư mục. Mở **BoomServer.exe**.
 2. Nhập tên máy chủ. Nếu ứng dụng đã tìm đúng thư mục game thì giữ nguyên; nếu chưa, bấm **Chọn…** và trỏ tới thư mục đã chuẩn bị. Bấm **Chạy** và chờ trạng thái **Đang chạy**.
 3. Bấm **Sao chép** cạnh **Mã mời S1** rồi gửi mã cho người chơi. Người chơi sẽ dùng **Máy chủ → Thêm máy chủ** khi bản launcher hỗ trợ S1.
-4. Đóng cửa sổ để máy chủ chạy nền. Bấm biểu tượng BoomServer ở khay hệ thống hoặc mở lại `BoomServer.exe` để xem trạng thái. Bấm **Dừng** trước khi tắt máy. **Sao lưu ngay** tạo bản sao cơ sở dữ liệu; **Mở thư mục dữ liệu** mở nơi chứa bản sao và thông tin tài khoản chủ máy. **Tạo lại mã mời** làm mã cũ hết hiệu lực và ngắt kết nối đang mở.
+4. Đóng cửa sổ để máy chủ chạy nền. Bấm biểu tượng BoomServer ở khay hệ thống hoặc mở lại `BoomServer.exe` để xem trạng thái. Bấm **Dừng** trước khi tắt máy. **Sao lưu ngay** tạo bản sao cơ sở dữ liệu; **Mở thư mục dữ liệu** mở nơi chứa bản sao và thông tin tài khoản chủ máy. **Tạo lại mã mời** khởi động lại máy chủ, làm mã cũ hết hiệu lực và ngắt người đang chơi.
 
 Khi Windows hỏi quyền cho kết nối trực tiếp, bạn có thể cho phép trên mạng **Riêng tư**. Nếu từ chối hoặc router không mở được cổng, BoomServer vẫn thử kết nối qua relay. Nếu người chơi chưa vào được ngay, chờ dòng trạng thái báo kết nối relay rồi thử lại.
 

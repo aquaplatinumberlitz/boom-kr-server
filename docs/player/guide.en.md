@@ -88,7 +88,7 @@ An S1 server stores accounts and match results on your computer. Keep it running
 1. Extract the entire Windows server package into one folder. Open **BoomServer.exe**.
 2. Name your server. Keep the detected game folder if it is correct, or choose **Browse…** to select your game folder. Click **Start** and wait for **Running**.
 3. Click **Copy** next to **S1 invite** and send the code to players. They can use **Servers → Add server** when their launcher supports S1.
-4. Close the window to keep hosting in the background. Click BoomServer in the system tray or open `BoomServer.exe` again to see its status. Click **Stop** before shutting down. **Back up now** saves a database snapshot; **Open data folder** opens the location of snapshots and the host account details. **Reset invite** invalidates the old code and disconnects current players.
+4. Close the window to keep hosting in the background. Click BoomServer in the system tray or open `BoomServer.exe` again to see its status. Click **Stop** before shutting down. **Back up now** saves a database snapshot; **Open data folder** opens the location of snapshots and the host account details. **Reset invite** restarts the server, invalidates the old code, and disconnects current players.
 
 If Windows asks to allow direct connections, you can allow them on **Private networks**. BoomServer will still try the relay if you decline or your router cannot open a port. If players cannot join immediately, wait for the relay connection and try again.
 
