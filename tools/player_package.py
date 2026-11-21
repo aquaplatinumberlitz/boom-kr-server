@@ -292,6 +292,10 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
         if source.stat().st_size != expected['bytes'] or digest(source) != expected['sha256']:
             raise ValueError(f'Ảnh hướng dẫn không khớp pin: {name}')
         guide_images[name] = save(source, f'player/{name}')
+    screenshot = ROOT / 'docs/player/o1-launcher.jpg'
+    screenshot_pin = save(screenshot, 'player/o1-launcher.jpg') if screenshot.is_file() else None
+    guide_image = 'player/images/boomserver-s1.png'
+    guide_assets = {guide_image: save(ROOT / 'docs' / guide_image, guide_image)} if (ROOT / 'docs' / guide_image).is_file() else {}
     manifest = dict(schema='kre-player-package-v1', packs=packs, common=common, languages=languages,
                     limits='Payload được dựng và kiểm hash; chưa chứng nhận cài sạch, client song song hoặc native Internet.')
     if guide_images:
@@ -301,7 +305,12 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
+<<<<<<< HEAD
                 languages=list(languages), packs=len(packs), guides=guides, guide_images=guide_images)
+=======
+                languages=list(languages), packs=len(packs), guides=guides,
+                guide_screenshot=screenshot_pin, guide_assets=guide_assets)
+>>>>>>> ed8c291 (Ship the BoomServer guide image and bound Wine test cleanup)
 
 
 def windows_runtime(recipe, output, manifest_sha256):

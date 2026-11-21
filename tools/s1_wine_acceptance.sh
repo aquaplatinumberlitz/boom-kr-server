@@ -52,6 +52,8 @@ config['s1']['invite'] = (out / 'new-invite.txt').read_text().strip()
 config['active_seconds'] = 2
 (out / 'load-after-rotate.json').write_text(json.dumps(config))
 PY
+    # Allow the new relay registration to settle before exercising TLS again.
+    sleep 3
     timeout 70 "$S1_LINUX_BIN/kr-load" "$out/load-after-rotate.json" | tee "$out/load-after-rotate.jsonl"
     grep -q '"event":"load_complete".*"players":2' "$out/load-after-rotate.jsonl"
     touch "$out/stop"
@@ -82,8 +84,8 @@ cleanup() {
             -exec cp -t "$out/state-observations" -- {} +
     fi
     if [[ -d $WINEPREFIX ]]; then
-        wineserver -k || true
-        wineserver -w || true
+        timeout 15 wineserver -k || true
+        timeout 15 wineserver -w || true
     fi
     if [[ -n $xvfb_pid ]]; then kill "$xvfb_pid" 2>/dev/null || true; fi
     du -sm "$scratch" | awk '{print $1}' > "$out/removed-mib.txt"
@@ -132,7 +134,8 @@ copy_invite() {
     click 460 164
     timeout 10 wine "$bundle/python/python.exe" "$clip" | tr -d '\r' > "$1"
 }
-wait_for 35 copy_invite "$out/invite.txt"
+copied() { copy_invite "$1" 2>>"$out/clipboard.log"; }
+wait_for 35 copied "$out/invite.txt"
 PYTHONPATH="$tools" python3 - "$out" <<'PY'
 import json
 from pathlib import Path
@@ -154,7 +157,7 @@ wait_for 450 online
 sleep 2
 # Verify the background lifecycle while the round is active. Opening the
 # executable again must restore the original window and leave sessions alive.
-xdotool windowfocus "$wid" key alt+F4
+timeout 15 wine "$bundle/python/python.exe" "$clip" close
 sleep .4
 wine "$bundle/BoomServer.exe" >>"$out/wine.log" 2>&1
 sleep .6
@@ -171,7 +174,7 @@ click 430 206
 sleep 1
 xdotool key Left Return
 rotated() {
-    copy_invite "$out/new-invite.txt" || return
+    copied "$out/new-invite.txt" || return
     ! cmp -s "$out/invite.txt" "$out/new-invite.txt"
 }
 wait_for 150 rotated
@@ -180,6 +183,15 @@ wait_for 450 test -f "$out/stop"
 click 56 206
 stopped() { find "$state/runs" -name service-state.json -exec grep -l '"stopped":true' {} + | grep -q .; }
 wait_for 180 stopped
-xdotool windowfocus "$wid" key alt+F4
+timeout 15 wine "$bundle/python/python.exe" "$clip" close
+for _ in {1..25}; do
+    kill -0 "$service" 2>/dev/null || break
+    sleep .2
+done
+if kill -0 "$service" 2>/dev/null; then
+    printf 'Wine desktop process did not exit after WM_CLOSE
+' >&2
+    exit 1
+fi
 wait "$service"
 printf 'S1 Wine: first boot, two-player NAT relay round, background restore, backup, rotation, second round, clean stop\n'
