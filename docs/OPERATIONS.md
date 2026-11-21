@@ -67,7 +67,7 @@ hai endpoint QUIC Windows dùng socket từng datagram; khi đó cần địa ch
 chạy cục bộ. Khi chạy dưới Wine, đặt `umask 077` trước lúc mở prefix riêng để file con có quyền riêng đúng
 kỳ vọng của ACL; server từ chối file có quyền rộng.
 
-Dừng bằng **Ctrl+C** trong console của runner hoặc gửi **Ctrl+Break** tới nhóm tiến trình console của runner.
+Dừng bằng **Ctrl+C** trong console của runner. Bản PE cũng đăng ký **Ctrl+Break** trên Windows; dưới Wine chỉ xác nhận Ctrl+C trong console riêng.
 Chờ exit 0 và `"stopped": true` trong `service-state.json` trước khi mở lại. Dùng `bin\kr-admin.exe` cho
 `health`, `backup` và `verify-backup` như trên Linux. Đặt snapshot trong thư mục riêng có ACL; có thể tạo
 thư mục bằng `kr-admin.exe private-dir <directory>`. Windows đồng bộ dữ liệu snapshot rồi công bố bằng thao

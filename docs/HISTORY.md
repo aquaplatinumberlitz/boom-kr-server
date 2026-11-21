@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP387: Bộ điều khiển đã qua bốn map trên Windows VM và Wine, từ Start đến kết quả và về lại phòng.** [Bằng chứng](evidence/checkpoints/records/CP387.json).
+
 **CP386: Launcher có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn tiếng Việt, Anh, Hàn xem ngay trong app.** [Bằng chứng](evidence/checkpoints/records/CP386.json).
 
 **CP385: Đã chốt xếp loại bước 0; việc kiểm sâu chuyển sang F1. Bộ điều khiển đã qua Wine, còn thiếu nghiệm thu Windows.** [Bằng chứng](evidence/checkpoints/records/CP385.json).

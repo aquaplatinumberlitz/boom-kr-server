@@ -1,0 +1,102 @@
+{
+  "id": "CP388",
+  "previous": "CP387",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T10:32:59.682705+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Server Rust cho O1/S1 có thể cài từ pack và vận hành trên Win32 không?",
+  "scope": "KRE-O1-WINDOWS (https://github.com/aquaplatinumberlitz/boom-kr-server/issues/554); Wine loopback, hai client tổng hợp, không mở gameplay mới.",
+  "context_commit": "bbdfc7010d8511d942da97bc56258df26ba1105b",
+  "artifacts": [
+    {
+      "role": "kr-service.exe",
+      "sha256": "4e9e0181e5e59ae403b83a3e83ae7850482132e3e241d936d74fe0e6bfbdb693"
+    },
+    {
+      "role": "kr-admin.exe",
+      "sha256": "4f609f8d687c78ec142002ffa0bc48b0481fb93979cc24aa6711971895a030e7"
+    },
+    {
+      "role": "kr-launch-identity.exe",
+      "sha256": "8b1af7f6d619b5cfafb746a060c4386a3a728194f0c4cdc24ad9c542b960cfd4"
+    },
+    {
+      "role": "kr-load Linux",
+      "sha256": "103d8f9839f1b538fc0ca2a177dc200f8d2b9d0efd37d87e043cc6a47574fdfe"
+    }
+  ],
+  "locators": [
+    "local/research/codex/o1-windows-service/run-6",
+    "docs/OPERATIONS.md#gói-server-windows"
+  ],
+  "delta": {
+    "added": [
+      "Build và runner Windows, ACL, IPC TCP xác thực cục bộ, khóa file và console stop."
+    ],
+    "corrected": [],
+    "superseded": []
+  },
+  "blockers": [
+    "Chưa nghiệm thu một nút trong launcher, kết nối LAN/Internet O1 hoặc gói Windows phát hành."
+  ],
+  "next_steps": [
+    {
+      "id": "O1-WINDOWS-INTEGRATE",
+      "task": "KRE-O1-WINDOWS",
+      "state": "active",
+      "owner": "Claude",
+      "reviewer": "waived",
+      "action": "Kiểm PR và tích hợp lõi Windows trước khi nối launcher O1/S1."
+    }
+  ],
+  "review": {
+    "status": "waived",
+    "as_of_utc": "2026-11-21T10:32:59.682705+00:00",
+    "reference": "docs/evidence/checkpoints/review-waiver.json",
+    "scope": "Codex tự kiểm; Claude tích hợp.",
+    "authorization": {
+      "by": "project_owner",
+      "reference": "docs/evidence/checkpoints/review-waiver.json",
+      "reason": "Chủ dự án miễn review độc lập."
+    }
+  },
+  "findings": [
+    {"source": "design", "status": "design", "method": "runtime", "canonical": "docs/OPERATIONS.md#gói-server-windows", "summary": "Server PE dùng pack thật KR 00967, hai client kr-load hoàn tất ván Forest07 và về sảnh. Snapshot có hai người, kết quả hoàn tất và thưởng 0.", "limits": "Wine trên Linux và loopback riêng. Không suy client native, tải, LAN/Internet hoặc Windows VM.", "evidence": ["WINE_SUMMARY", "MATCH", "SNAPSHOT", "META"]},
+    {"source": "design", "status": "design", "method": "runtime", "canonical": "docs/OPERATIONS.md#gói-server-windows", "summary": "Windows cấp ACL riêng, khóa runner/instance độc lập, chỉ nhận IPC có chứng thực. Sự kiện Ctrl+C cho exit 0, xóa endpoint và nhả khóa.", "limits": "Kiểm qua một tài khoản Wine. Chưa kiểm nhiều tài khoản Windows hoặc đóng cửa sổ console.", "evidence": ["WINE_SUMMARY", "LOCK", "STATE", "STOP"]}
+  ],
+  "verification": [
+    {"check": "Build có lockfile cho Windows GNU x86-64; test Linux workspace và kiểm gói Linux trong container.", "result": "pass", "limits": "Gói Linux chạy pack giả và giữ SIGTERM, không thay nghiệm thu native.", "evidence": ["WIN_BUILD", "LINUX_TESTS", "LINUX_PACK"]},
+    {"check": "Init, export/cache, readiness, hai client tổng hợp về sảnh, IPC, khóa, backup và console stop.", "result": "pass", "limits": "Môi trường Wine cô lập, chỉ loopback.", "evidence": ["WINE_SUMMARY", "RECIPE", "WIN_MANIFEST"]}
+  ],
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc hiện tại."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển mốc launcher đã rời README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật dòng O1 và ngày trong Bảng điều hành."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Giữ wire, opcode và authority KR."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở hoặc đóng câu hỏi RE."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Thêm lệnh vận hành và giới hạn ACL, IPC, backup, shutdown."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Gắn bằng chứng vào cơ chế triển khai."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại chỉ mục triển khai."},
+    {"path": "docs/evidence/rust-service/o1-windows-service.json", "state": "updated", "reason": "Pin build, recipe và đầu ra Wine."},
+    {"path": "docs/evidence/issue-reconciliation/github-snapshot.json", "state": "updated", "reason": "Ghi bản đọc riêng của issue #554."},
+    {"path": "docs/evidence/issue-reconciliation/review.json", "state": "updated", "reason": "Ghi phạm vi đã đo, phần còn mở và liên kết issue."}
+  ],
+  "evidence": [
+    {"id": "WINE_SUMMARY", "kind": "local", "path": "local/research/codex/o1-windows-service/run-6/verification.json", "bytes": 512, "sha256": "2b59fb2c7ad328439f1009a7ff8e3f4cbdb570eba34e81e37c0a20c7528da8a7"},
+    {"id": "WIN_MANIFEST", "kind": "local", "path": "local/research/codex/o1-windows-service/win-bundle-r3/manifest.json", "bytes": 13191, "sha256": "4d0c4fe4059eb2767414dd3b97f82ea8a8d13400d45061502f08c86d237ba683"},
+    {"id": "STOP", "kind": "local", "path": "local/research/codex/o1-windows-service/run-6/service.log", "bytes": 157, "sha256": "01e0cec55a62a6328dbf250e6b25f8335accc90e7496a009e5c2d479336b69d4"},
+    {"id": "STATE", "kind": "local", "path": "local/research/codex/o1-windows-service/run-6/state/runs/1795257126500761700/service/service-state.json", "bytes": 91, "sha256": "564948e5600d316a2480daa4bd96fd2c61a4afe3b25c778fc166077d854dbd08"},
+    {"id": "MATCH", "kind": "local", "path": "local/research/codex/o1-windows-service/run-6/load.log", "bytes": 676, "sha256": "0503107ec29a2490611aa9420c21cd5c9b3fc8777d6ca5083101c54c7a33ac92"},
+    {"id": "SNAPSHOT", "kind": "local", "path": "local/research/codex/o1-windows-service/run-6/state/smoke.sqlite", "bytes": 131072, "sha256": "ef315f8f15b96d35a98c18192f6871e679be219f2aada270d4563ac67720fcd6"},
+    {"id": "LOCK", "kind": "local", "path": "local/research/codex/o1-windows-service/run-6/instance-lock.log", "bytes": 32, "sha256": "8a1a4d749026f2483f842f1e0abf875374053811cf228f86914f4efbaeeec4e8"},
+    {"id": "WIN_BUILD", "kind": "local", "path": "local/research/codex/o1-windows-service/windows-build-r3.log", "bytes": 639, "sha256": "3593adbf7e94d459d668fcb6b235d58a0e8d2d6c45708c2e2134c73f794b73b6"},
+    {"id": "LINUX_TESTS", "kind": "local", "path": "local/research/codex/o1-windows-service/linux-tests.log", "bytes": 52407, "sha256": "b97fcfee016b329faa24c2ab87d46c8e97ea4f1cdeb7749544fc10f6daa9871d"},
+    {"id": "LINUX_PACK", "kind": "local", "path": "local/research/codex/o1-windows-service/linux-pack-test.log", "bytes": 1174, "sha256": "258e68979d446df931bc0f26ec07b79335511d325adc9b694ff24123a60e82af"},
+    {"id": "RECIPE", "kind": "repository", "path": "tools/smoke_kr_windows_service.py", "bytes": 10545, "sha256": "9e6876aecb6f3587bf0775a1b41e1b8c2268caa6d3b2dfe5ef0a11a92013b6bc"},
+    {"id": "META", "kind": "repository", "path": "docs/evidence/rust-service/o1-windows-service.json", "bytes": 7298, "sha256": "f4ee3159033df17d4d10c39003ddff810cb5b86138726adbe9cf548ff84476b3"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/o1-windows-service", "path": "local/evidence-manifests/339debdadb44d2efdc7e4757ea7fd42a8b1b29d88ab02cab1b3d0321d078b931.jsonl", "sha256": "339debdadb44d2efdc7e4757ea7fd42a8b1b29d88ab02cab1b3d0321d078b931", "bytes": 1631, "count": 8, "files_bytes": 3113}
+  ]
+}

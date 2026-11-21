@@ -15,15 +15,17 @@ import time
 
 
 def console(root, options):
-    """Run the packaged runner in its own Windows console process group."""
+    """Run the packaged runner in a private Windows console."""
     assert os.name == 'nt'
     kernel = ctypes.WinDLL('kernel32', use_last_error=True)
-    # Wine's attached headless console may not expose a code page. Win32
-    # returns ERROR_ACCESS_DENIED from AllocConsole when already attached.
-    if not kernel.AllocConsole() and ctypes.get_last_error() != 5:
+    # Wine's headless inherited console cannot deliver group events. Allocate
+    # a real, private console under Xvfb before creating the target group.
+    kernel.FreeConsole()
+    if not kernel.AllocConsole():
         raise ctypes.WinError(ctypes.get_last_error())
     root = Path(root)
-    child = subprocess.Popen(options, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
+    signal.signal(signal.SIGINT, lambda *_: None)
+    child = subprocess.Popen(options, stdout=sys.stdout, stderr=sys.stderr)
     try:
         deadline = time.monotonic() + 100
         stop = root / 'stop'
@@ -33,9 +35,9 @@ def console(root, options):
             raise RuntimeError(f'Runner exited before console event: {child.returncode}')
         if not stop.exists():
             raise TimeoutError('Console stop was never requested')
-        os.kill(child.pid, signal.CTRL_BREAK_EVENT)
-        assert child.wait(timeout=12) == 0
-        print('CTRL_BREAK_EVENT: runner exit 0', flush=True)
+        os.kill(0, signal.CTRL_C_EVENT)
+        assert (code := child.wait(timeout=12)) == 0, f'Ctrl+C runner exit {code:#x}'
+        print('CTRL_C_EVENT: runner exit 0', flush=True)
     finally:
         if child.poll() is None:
             child.terminate()
@@ -190,7 +192,7 @@ def main():
     result = dict(manifest_sha256=manifest_hash, pack_cache=Path(exported['cache'].split('\\')[-1]).name,
                   export=True, cache_reused=True, round_returned=1, map=matches[0][1], players=2,
                   admin_ipc=True, launch_ticket=True, unauthenticated_refused=True, runner_lock=True, instance_lock=True,
-                  public_acl_refused=True, backup_verified=True, graceful_stop='CTRL_BREAK_EVENT', exit=0)
+                  public_acl_refused=True, backup_verified=True, graceful_stop='CTRL_C_EVENT', exit=0)
     (out / 'verification.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result))
 

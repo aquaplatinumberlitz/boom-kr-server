@@ -5,6 +5,28 @@
   "method": "Codex manual acceptance review; native/static/model/design/merge/gate distinct; originalissuebodies archivedlocalbeforeedit, no completecheckpoint rewrite",
   "issues": [
     {
+      "number": 554,
+      "kre": "KRE-O1-WINDOWS",
+      "classification": "in_progress",
+      "features": [
+        "KR-S002"
+      ],
+      "known": "CP388 xác nhận gói Windows chạy một ván Forest07 dưới Wine và backup, dừng bằng Ctrl+C.",
+      "remaining": "Claude tích hợp PR #555; launcher, mã phòng và nghiệm thu LAN/Internet theo O1.",
+      "next_test": "Kiểm tích hợp lõi với launcher O1/S1 khi có luồng tạo phòng và mã mời.",
+      "acceptance": "Build GNU x86-64, hồi quy Linux, init/export pack thật, hai client khép ván, backup và dừng sạch dưới Wine.",
+      "reason": "Bằng chứng tổng hợp đã có; issue vẫn mở cho tới tích hợp.",
+      "sources": [
+        "docs/PLAN.md#full-game-roadmap",
+        "docs/OPERATIONS.md#gói-server-windows"
+      ],
+      "evidence": [
+        "docs/evidence/rust-service/o1-windows-service.json"
+      ],
+      "prs": [],
+      "successors": []
+    },
+    {
       "number": 1,
       "kre": "KRE-001",
       "classification": "completed",

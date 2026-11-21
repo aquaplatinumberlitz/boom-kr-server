@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP387",
-  "completed_count": 387,
+  "last_id": "CP388",
+  "completed_count": 388,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1253,6 +1253,12 @@
       "state": "closed",
       "canonical": "docs/content/native-client-controller.md",
       "reference": "docs/evidence/owner-directives/post-phase1-direction.json"
+    },
+    {
+      "id": "KRE-O1-WINDOWS",
+      "state": "open",
+      "canonical": "docs/OPERATIONS.md#gói-server-windows",
+      "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/554"
     }
   ],
   "version": 2,
@@ -4352,6 +4358,14 @@
       "path": "docs/evidence/checkpoints/records/CP387.json",
       "bytes": 10855,
       "sha256": "3b6ce4c0084e2e696d891d58117113e5c1be9f59467c0b35b18a2644c526b334"
+    },
+    {
+      "id": "CP388",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-21T10:32:59.682705+00:00",
+      "path": "docs/evidence/checkpoints/records/CP388.json",
+      "bytes": 7870,
+      "sha256": "f58550f642c9fe7b4b3b0c48aacd9e9a99e2e97c312af03a31ac36fe29a30767"
     }
   ],
   "audit_policy": {
