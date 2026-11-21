@@ -86,6 +86,7 @@ enum Message {
     CopyCode,
     Tick,
     Resize(iced::Size),
+    FitWindow(window::Id, iced::Size),
     Status(servers::Id, Server),
     CheckFiles(bool),
     Retry,
@@ -218,20 +219,17 @@ fn fitted_window(monitor: iced::Size) -> iced::Size {
 }
 
 fn fit_monitor() -> Task<Message> {
-    window::latest().and_then(|id| {
-        window::monitor_size(id).and_then(move |monitor| {
-            let size = fitted_window(monitor);
-            Task::batch([
-                window::set_min_size(
-                    id,
-                    Some(iced::Size::new(
-                        MINIMUM.width.min(size.width),
-                        MINIMUM.height.min(size.height),
-                    )),
-                ),
-                window::resize(id, size),
-            ])
-        })
+    // Query the monitor from an unmapped window, then create the visible
+    // window at the final size. This avoids a stale first X11 surface.
+    let (_, opened) = window::open(window::Settings {
+        size: iced::Size::new(1.0, 1.0),
+        position: window::Position::Centered,
+        visible: false,
+        ..Default::default()
+    });
+    opened.then(|id| {
+        window::monitor_size(id)
+            .map(move |monitor| Message::FitWindow(id, monitor.map_or(WINDOW_SIZE, fitted_window)))
     })
 }
 
@@ -411,6 +409,20 @@ impl Player {
             self.paint = self.paint.wrapping_add(1);
         }
         match message {
+            Message::FitWindow(probe, size) => {
+                self.size = size;
+                let (_, opened) = window::open(window::Settings {
+                    size,
+                    min_size: Some(iced::Size::new(
+                        MINIMUM.width.min(size.width),
+                        MINIMUM.height.min(size.height),
+                    )),
+                    position: window::Position::Centered,
+                    exit_on_close_request: false,
+                    ..Default::default()
+                });
+                return opened.then(move |_| window::close(probe));
+            }
             Message::Resize(size) => self.size = size,
             Message::Language(language) => {
                 self.language = language;
@@ -690,25 +702,16 @@ fn keys(event: Event, status: event::Status, _: window::Id) -> Option<Message> {
     None
 }
 
+fn window_view(player: &Player, _: window::Id) -> iced::Element<'_, Message> {
+    player.view()
+}
+
 fn main() -> iced::Result {
-    iced::application(Player::boot, Player::update, Player::view)
-        .title(|player: &Player| player.language.get(Copy::Title).to_owned())
-        .theme(Theme::Dark)
+    iced::daemon(Player::boot, Player::update, window_view)
+        .title(|player: &Player, _| player.language.get(Copy::Title).to_owned())
+        .theme(|_: &Player, _| Theme::Dark)
         .style(|player: &Player, theme: &Theme| {
             look::surface(theme, player.screen.is_some(), player.paint)
-        })
-        .window(window::Settings {
-            size: WINDOW_SIZE,
-            min_size: Some(MINIMUM),
-            position: window::Position::SpecificWith(|_, monitor| {
-                let size = fitted_window(monitor);
-                iced::Point::new(
-                    (monitor.width - size.width) / 2.0,
-                    (monitor.height - size.height) / 2.0,
-                )
-            }),
-            exit_on_close_request: false,
-            ..Default::default()
         })
         .subscription(|_| {
             Subscription::batch([
