@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP384: Bước 0 đã qua cổng đăng nhập mới trên Wine và mở rộng mẫu F1 đã chơi đến kết quả; lớp A ở cấp họ vẫn cần đối chứng nội dung.** [Bằng chứng](evidence/checkpoints/records/CP384.json).
+
 **CP383: Gói Linux đọc pack KR 00967 tại máy cài; hai client TLS tổng hợp hoàn tất một ván, rồi kiểm backup và dừng sạch.** [Cách cài](OPERATIONS.md#gói-linux-và-state-riêng) · [Bằng chứng](evidence/checkpoints/records/CP383.json).
 
 **CP382: Bước 0 xác nhận Patrit01 và các mẫu F1 khác chơi đến kết quả và về phòng qua TLS/relay trên Wine.** [Bằng chứng](evidence/checkpoints/records/CP382.json).

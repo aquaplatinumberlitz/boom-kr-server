@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP384: Bước 0 đã qua cổng đăng nhập mới trên Wine và mở rộng mẫu F1 đã chơi đến kết quả; lớp A ở cấp họ vẫn cần đối chứng nội dung.** [Bằng chứng](docs/evidence/checkpoints/records/CP384.json).
+**CP385: Launcher có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn tiếng Việt, Anh, Hàn xem ngay trong app.** [Bằng chứng](docs/evidence/checkpoints/records/CP385.json).
 
 ## Bắt đầu
 

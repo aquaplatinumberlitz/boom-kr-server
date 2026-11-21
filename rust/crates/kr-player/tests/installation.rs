@@ -121,6 +121,7 @@ fn fixture(root: &Path) -> String {
         ],
         languages,
         limits: "Synthetic integrity regression, not native evidence".into(),
+        launcher_art: None,
     };
     fs::write(
         root.join("manifest.json"),
@@ -248,4 +249,63 @@ fn installed_game_files_are_writable_and_runtime_changes_reseed_from_pinned_inpu
     assert_eq!(fs::read(dir.0.join("native-log")).unwrap(), b"seed log");
     let error = kr_player::prepare_language(&dir.0, &hash, &target, "wrong").unwrap_err();
     assert!(matches!(error, kr_player::PreparationError::Integrity));
+}
+
+#[test]
+fn decorative_art_requires_its_pin_but_can_be_missing_without_blocking_install() {
+    let dir = Directory::new();
+    let root = &dir.0;
+    let old_hash = fixture(root);
+    assert!(kr_player::launcher_art(root, &old_hash).unwrap().is_none());
+
+    let mut manifest = kr_player::read_manifest(root, &old_hash).unwrap();
+    manifest.launcher_art = Some(payload(root, "backdrop.jpg", b"pinned artwork"));
+    let path = root.join("manifest.json");
+    fs::write(&path, serde_json::to_vec(&manifest).unwrap()).unwrap();
+    let hash = kr_player::sha256(&path).unwrap();
+    assert_eq!(
+        kr_player::launcher_art(root, &hash).unwrap().unwrap(),
+        b"pinned artwork"
+    );
+    fs::write(root.join("backdrop.jpg"), b"wrong! artwork").unwrap();
+    assert!(kr_player::launcher_art(root, &hash).is_err());
+    fs::remove_file(root.join("backdrop.jpg")).unwrap();
+    assert!(kr_player::launcher_art(root, &hash).is_err());
+
+    let target = root.join("install");
+    kr_player::install(root, &hash, &target).unwrap();
+    kr_player::verify_install(root, &hash, &target).unwrap();
+}
+
+#[test]
+fn repair_preserves_old_tree_and_refuses_unknown_or_running_installations() {
+    let dir = Directory::new();
+    let root = &dir.0;
+    let hash = fixture(root);
+    let game = root.join("game");
+    assert!(!kr_player::maintain_install(root, &hash, &game, false).unwrap());
+    let exe = game.join("vi/CA.exe");
+    fs::write(&exe, b"damaged").unwrap();
+    let log = game.join("player-note.txt");
+    fs::write(&log, b"keep me").unwrap();
+    let lock = kr_player::lock_installation(&game).unwrap();
+    assert!(kr_player::maintain_install(root, &hash, &game, true).is_err());
+    drop(lock);
+    assert!(kr_player::maintain_install(root, &hash, &game, false).is_err());
+    assert!(kr_player::maintain_install(root, &hash, &game, true).unwrap());
+    kr_player::verify_install(root, &hash, &game).unwrap();
+    let previous = fs::read_dir(root)
+        .unwrap()
+        .flatten()
+        .map(|entry| entry.path().join("previous"))
+        .find(|p| p.is_dir())
+        .unwrap();
+    assert_eq!(
+        fs::read(previous.join("player-note.txt")).unwrap(),
+        b"keep me"
+    );
+    let unrelated = root.join("unrelated");
+    fs::create_dir(&unrelated).unwrap();
+    assert!(kr_player::maintain_install(root, &hash, &unrelated, true).is_err());
+    assert!(unrelated.is_dir());
 }
