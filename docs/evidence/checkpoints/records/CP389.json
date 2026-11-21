@@ -1,0 +1,57 @@
+{
+  "id": "CP389",
+  "previous": "CP388",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T10:48:31.506460+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Lõi O1/S1 có xác thực được node từ mã và giữ ranh giới gói UDP game khi iroh chuyển đường không?",
+  "scope": "KRE-O1-P2P / #553. Prototype độc lập, không đổi launcher, companion, service hoặc client KR.",
+  "context_commit": "a7788a9cab984363f353d273d22360af3c38c7fd",
+  "artifacts": [
+    {"role": "Binary udp_lab Linux, build khóa Cargo.lock với feature lab", "sha256": "669e6820e0495c243a73f46e327628698ac048baa337e20f7f7de85a94b9d8c3"}
+  ],
+  "locators": [
+    "local/research/codex/o1-p2p-final",
+    "rust/crates/kr-p2p",
+    "tools/o1_p2p_namespace.sh"
+  ],
+  "findings": [
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/O1_S1_P2P.md", "summary": "Mã O1 có cam kết khóa node; mã S1 mang node và SHA-256 chứng chỉ. Parser từ chối phiên bản sai; kết nối kiểm khóa và từ chối peer chưa được duyệt.", "limits": "Chưa nối chứng chỉ S1 vào TLS thật, discovery hoặc quy trình nhận khách của launcher.", "evidence": ["DESIGN", "TEST"]},
+    {"source": "design", "status": "design", "method": "runtime", "canonical": "docs/O1_S1_P2P.md", "summary": "NAT giữ cổng, chuyển từ relay sang trực tiếp: nhận 1182/1200 gói echo, RTT p50/p95/p99 41.79/46.01/47.28 ms, mất liên tiếp tối đa 2 gói, đảo thứ tự 1, trùng 0. NAT đổi cổng theo đích, giữ đường relay: nhận 1200/1200 gói echo, RTT p50/p95/p99 44.03/64.47/171.99 ms, mất liên tiếp tối đa 0 gói, đảo thứ tự 0, trùng 0.", "limits": "Hai namespace client qua hai router riêng, mỗi WAN egress netem 20 ms ±3 ms, mất 1%. Mỗi profile phát 1.200 gói 24–1.100 byte ở khoảng 60 Hz qua cầu UDP loopback hai đầu; phòng và route được trao qua file thử. Không có client KR, Internet thật, relay công cộng hoặc kiểm chạy dài.", "evidence": ["DIRECT", "RELAY", "ENV", "RECIPE", "LOCK"]}
+  ],
+  "verification": [
+    {"check": "cargo fmt --all --check; Clippy workspace và feature lab; cargo test -p kr-p2p --locked.", "result": "pass", "limits": "Integration cùng máy kiểm pin, từ chối peer, dữ liệu hai chiều và bỏ gói quá cỡ.", "evidence": ["TEST"]},
+    {"check": "Build udp_lab theo tài liệu rồi chạy tools/o1_p2p_namespace.sh ở hai profile NAT.", "result": "pass", "limits": "Xác nhận bằng bộ đếm QUIC DATAGRAM gửi/nhận theo đường và bộ đếm NAT/netem; không mở cổng, không chuyển qua đường còn lại trong đoạn đo.", "evidence": ["DIRECT", "RELAY", "RECIPE"]}
+  ],
+  "delta": {"added": ["Định dạng mã, crate kr-p2p, integration CI và lab NAT/netem."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Tra mã O1 qua Internet và privacy/độ sẵn sàng của rendezvous công cộng chưa kiểm; cần discovery, nối TLS/companion và nghiệm thu native O1."
+  ],
+  "next_steps": [
+    {"id": "O1-native-p2p", "task": "KRE-O1-P2P", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Điều phối discovery và nối companion sau M8; nghiệm thu LAN và Internet thật theo PLAN."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T10:48:31.506460+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm. Giao Claude quyết định tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng O1 hoặc S1."},
+    {"path": "docs/HISTORY.md", "state": "unchanged", "reason": "Không đổi mốc phát hành."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi đè Bảng điều hành cho lát cắt O1/S1."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không thay wire và authority KR."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa mở câu hỏi RE."},
+    {"path": "docs/O1_S1_P2P.md", "state": "updated", "reason": "Ghi thiết kế và lệnh tái lập prototype."},
+    {"path": "docs/evidence/checkpoints/records/CP389.json", "state": "updated", "reason": "Pin nguồn, build và lượt đo."}
+  ],
+  "evidence": [
+    {"id": "DESIGN", "path": "docs/O1_S1_P2P.md", "kind": "repository", "bytes": 2969, "sha256": "1626df94acb34cc2c317e8a89105b14e01bbcac31312ec457e122ce2e7ea5dc4"},
+    {"id": "RECIPE", "path": "tools/o1_p2p_namespace.sh", "kind": "repository", "bytes": 4080, "sha256": "1282ddd452b26464617aff08b6f9aa996bf8b362641396106f858e25796cb120"},
+    {"id": "LAB_SOURCE", "path": "rust/crates/kr-p2p/examples/udp_lab.rs", "kind": "repository", "bytes": 10846, "sha256": "951e00cb61601737eb5af17a7e4cfe3ec2a05db776f44701bcbe386f2398f05f"},
+    {"id": "LOCK", "path": "local/research/codex/o1-p2p-final/Cargo.lock.measured", "kind": "local", "bytes": 151439, "sha256": "e0e1baf1960b58c6d128820ea1cda29a97b445d185ae11a70d010d91178e642f"},
+    {"id": "ENV", "path": "local/research/codex/o1-p2p-final/environment.log", "kind": "local", "bytes": 364, "sha256": "a52dc8ffe5fdfcd1b809cb9a679438ea540f6975c319832c2b4b2a09009f159f"},
+    {"id": "DIRECT", "path": "local/research/codex/o1-p2p-final/direct/guest.log", "kind": "local", "bytes": 208, "sha256": "800845b12cac7602bd00aea6af4b614888d633d7738da43d06b0ab6b08f95b53"},
+    {"id": "RELAY", "path": "local/research/codex/o1-p2p-final/relay/guest.log", "kind": "local", "bytes": 209, "sha256": "f5a1d661f27563bd0de2dbd282b4667d6c5e758685300b5c8dd9906bd8482f6f"},
+    {"id": "TEST", "path": "local/research/codex/o1-p2p-final/p2p-test.log", "kind": "local", "bytes": 836, "sha256": "5f20e6a01c555a97b4b4524e156a792401fb2e8eba643e068138b74ddbaa1f40"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/o1-p2p-final", "path": "local/evidence-manifests/2892ae6978f96b586038be500c74f110b5eccd0775e2076d0c67e6398d397934.jsonl", "sha256": "2892ae6978f96b586038be500c74f110b5eccd0775e2076d0c67e6398d397934", "bytes": 3227, "count": 17, "files_bytes": 10778}
+  ]
+}
