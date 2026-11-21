@@ -1398,6 +1398,15 @@ pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
     serve_until(profile, out, signal.recv()).await
 }
 
+pub async fn serve_owned(
+    profile: Validated,
+    out: &Path,
+    _owner_heartbeat: Option<&Path>,
+) -> io::Result<()> {
+    let mut signal = platform::Shutdown::new()?;
+    serve_until(profile, out, signal.recv()).await
+}
+
 async fn serve_until(
     mut profile: Validated,
     out: &Path,

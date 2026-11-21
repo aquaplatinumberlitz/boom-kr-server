@@ -1,6 +1,7 @@
 //! O1 peer transport and the S1 self-hosted server tunnel.
 
 mod code;
+pub mod directory;
 pub mod room;
 
 pub use code::{CodeError, Invite, VERSION};
