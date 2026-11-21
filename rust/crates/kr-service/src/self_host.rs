@@ -9,6 +9,7 @@ use kr_p2p::{
 };
 use serde::{Deserialize, Serialize};
 use std::{
+    fmt::Write as _,
     fs,
     io::{self, Write},
     net::SocketAddrV4,
@@ -120,22 +121,26 @@ fn random() -> io::Result<[u8; 32]> {
     Ok(bytes)
 }
 
+fn read_node(path: &Path) -> io::Result<SecretKey> {
+    let invalid = || io::Error::other("invalid S1 node key length");
+    if platform::private_file(path)?.len() != 32 {
+        return Err(invalid());
+    }
+    let bytes = Zeroizing::new(fs::read(path)?);
+    Ok(SecretKey::from_bytes(
+        bytes.as_slice().try_into().map_err(|_| invalid())?,
+    ))
+}
+
 fn node_key(state: &Path) -> io::Result<SecretKey> {
     let path = state.join("s1-node.key");
-    match platform::private_file(&path) {
-        Ok(meta) if meta.len() == 32 => {
-            let bytes = Zeroizing::new(fs::read(path)?);
-            Ok(SecretKey::from_bytes(
-                bytes.as_slice().try_into().expect("32 bytes"),
-            ))
-        }
-        Ok(_) => Err(io::Error::other("invalid S1 node key length")),
+    match read_node(&path) {
         Err(error) if error.kind() == io::ErrorKind::NotFound => {
             let bytes = Zeroizing::new(random()?);
             atomic_private(state, &path, bytes.as_ref(), false)?;
             Ok(SecretKey::from_bytes(&bytes))
         }
-        Err(error) => Err(error),
+        result => result,
     }
 }
 
@@ -150,8 +155,11 @@ fn cert(state: &Path) -> io::Result<Vec<u8>> {
 pub fn invite(state: &Path) -> io::Result<String> {
     platform::private_dir(state)?;
     // Read-only: a command on a state never initialized must not create an identity.
-    platform::private_file(&state.join("s1-node.key"))?;
-    Ok(Invite::server(node_key(state)?.public(), &cert(state)?).to_string())
+    Ok(Invite::server(
+        read_node(&state.join("s1-node.key"))?.public(),
+        &cert(state)?,
+    )
+    .to_string())
 }
 
 pub fn settings(state: &Path) -> io::Result<Option<Settings>> {
@@ -176,6 +184,7 @@ pub fn save_settings(state: &Path, settings: &Settings) -> io::Result<()> {
 
 fn first_account(state: &Path) -> io::Result<()> {
     let db = state.join("accounts.sqlite");
+    let _instance = crate::operations::lock_database(&db)?;
     let mut store = if db.exists() {
         Store::open_existing(&db)
     } else {
@@ -200,12 +209,11 @@ fn first_account(state: &Path) -> io::Result<()> {
         }
         Ok(_) => return Err(io::Error::other("invalid local host account record")),
         Err(error) if error.kind() == io::ErrorKind::NotFound => {
-            let password = Zeroizing::new(
-                random()?
-                    .iter()
-                    .map(|b| format!("{b:02x}"))
-                    .collect::<String>(),
-            );
+            let entropy = Zeroizing::new(random()?);
+            let mut password = Zeroizing::new(String::with_capacity(64));
+            for byte in entropy.iter() {
+                write!(password, "{byte:02x}").expect("writing to a string");
+            }
             let record = serde_json::to_vec_pretty(&HostAccount {
                 login: LOGIN.into(),
                 password,
@@ -347,14 +355,13 @@ pub async fn listen(
         let mut endpoint = endpoint;
         loop {
             let (new_key, mut backups) = {
-                let mut online = matches!(&network, Network::Local);
-                let mut published = std::pin::pin!(endpoint.online());
+                let relay_expected = !matches!(&network, Network::Local);
                 let mut server = std::pin::pin!(p2p::serve(&endpoint, services.clone()));
                 let advertised = Invite::server(endpoint.id(), &services.certificate).to_string();
                 status.send_modify(|s| {
                     s.invite = advertised;
                     s.ready = true;
-                    s.relay_expected = !online;
+                    s.relay_expected = relay_expected;
                     s.relay_online = false;
                 });
                 let mut timer = tokio::time::interval(Duration::from_secs(2));
@@ -362,19 +369,17 @@ pub async fn listen(
                 let new_key = loop {
                     tokio::select! {
                         ret = &mut server => return ret,
-                        () = &mut published, if !online => {
-                            online = true;
-                            status.send_modify(|s| s.relay_online = true);
-                        }
                         _ = timer.tick() => {
+                            let relay_online = relay_expected && p2p::relay_connected(&endpoint);
                             if let Ok(health) = monitoring::check(&out) {
                                 status.send_modify(|s| {
                                     s.ready = true;
+                                    s.relay_online = relay_online;
                                     s.players = health["lobby"]["online_players"].as_u64().unwrap_or(0);
                                     s.rooms = health["lobby"]["room_count"].as_u64().unwrap_or(0);
                                 });
                             } else {
-                                status.send_modify(|s| s.ready = false);
+                                status.send_modify(|s| { s.ready = false; s.relay_online = relay_online; });
                             }
                         }
                         action = actions.recv() => match action {

@@ -17,6 +17,7 @@ use windows_sys::Win32::{
         DataExchange::{CloseClipboard, EmptyClipboard, OpenClipboard, SetClipboardData},
         LibraryLoader::GetModuleHandleW,
         Memory::{GMEM_MOVEABLE, GlobalAlloc, GlobalLock, GlobalUnlock},
+        SystemInformation::GetSystemDirectoryW,
     },
     UI::{Input::KeyboardAndMouse::EnableWindow, Shell::*, WindowsAndMessaging::*},
 };
@@ -331,7 +332,10 @@ impl App {
                 "개인 네트워크에서 직접 UDP 연결을 허용할까요? Windows가 관리자 권한을 요청합니다. 아니요를 선택해도 서버를 실행할 수 있습니다.",
             ])).as_ptr(), text("BoomServer").as_ptr(), MB_YESNO | MB_ICONQUESTION | MB_DEFBUTTON2) == IDYES
         };
-        if yes && let Ok(program) = std::env::current_exe() {
+        if yes
+            && let Ok(program) = std::env::current_exe()
+            && let Some(netsh) = unsafe { system_netsh() }
+        {
             let rule = format!(
                 "advfirewall firewall add rule name=\"BoomServer S1\" dir=in action=allow protocol=UDP localport={port} profile=private program=\"{}\"",
                 program.display()
@@ -340,7 +344,7 @@ impl App {
                 ShellExecuteW(
                     hwnd,
                     text("runas").as_ptr(),
-                    text("netsh.exe").as_ptr(),
+                    text(netsh.as_os_str()).as_ptr(),
                     text(rule).as_ptr(),
                     null(),
                     SW_HIDE,
@@ -511,16 +515,25 @@ unsafe fn read(hwnd: HWND) -> OsString {
     }
 }
 
+unsafe fn system_netsh() -> Option<PathBuf> {
+    let mut dir = vec![0; 32768];
+    let len = unsafe { GetSystemDirectoryW(dir.as_mut_ptr(), dir.len() as u32) } as usize;
+    (len > 0 && len < dir.len())
+        .then(|| PathBuf::from(OsString::from_wide(&dir[..len])).join("netsh.exe"))
+}
+
 unsafe fn pick_folder(hwnd: HWND, title: &str) -> Option<PathBuf> {
     unsafe {
         let title = text(title);
-        let mut info = BROWSEINFOW {
+        let mut display_name = [0; 260];
+        let info = BROWSEINFOW {
             hwndOwner: hwnd,
             lpszTitle: title.as_ptr(),
+            pszDisplayName: display_name.as_mut_ptr(),
             ulFlags: BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE,
             ..std::mem::zeroed()
         };
-        let item = SHBrowseForFolderW(&mut info);
+        let item = SHBrowseForFolderW(&info);
         if item.is_null() {
             return None;
         }

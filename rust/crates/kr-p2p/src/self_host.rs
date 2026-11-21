@@ -2,6 +2,7 @@
 use crate::{Connection, Endpoint, EndpointAddr, Invite, RelayMode, SecretKey};
 pub use iroh::{RelayConfig, RelayUrl, tls::CaTlsConfig};
 use iroh::{
+    Watcher,
     address_lookup::{DnsAddressLookup, PkarrPublisher},
     endpoint::{PortmapperConfig, QuicTransportConfig, RecvStream, SendStream},
 };
@@ -103,6 +104,14 @@ impl Network {
         }
         Ok(addr)
     }
+}
+
+pub fn relay_connected(endpoint: &Endpoint) -> bool {
+    endpoint
+        .home_relay_status()
+        .get()
+        .iter()
+        .any(|status| status.is_connected())
 }
 
 #[derive(Clone)]
