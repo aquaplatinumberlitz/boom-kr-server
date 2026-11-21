@@ -126,14 +126,15 @@ def action_args(action, plan_dir):
         hold = bounded_int(action.get("hold_ms", 100), 1, 2000)
         if operation == "click":
             x, y = [bounded_int(v, 0, 16383) for v in action["xy"]]
-            return [operation, str(x), str(y), str(hold)]
+            settle = bounded_int(action.get("settle_ms", 100), 0, 1000)
+            return [operation, str(x), str(y), str(hold), str(settle)]
         return [operation, str(bounded_int(action["vk"], 1, 254)), str(hold)]
     if operation == "unicode":
         text = (plan_dir / action["text_file"]).read_text(encoding="utf-8")
         data = text.encode("utf-16le")
         if not 0 < len(data) <= 128 or any(ord(c) < 32 for c in text):
             raise ValueError("Unicode input must be 1..64 non-control UTF-16 code units")
-        return [operation, data.hex(), str(bounded_int(action.get("delay_ms", 40), 0, 60))]
+        return [operation, data.hex(), str(bounded_int(action.get("delay_ms", 120), 0, 120))]
     raise ValueError("unknown input operation")
 
 
@@ -176,7 +177,7 @@ def send(command):
     try:
         result = subprocess.run(command, stdin=subprocess.DEVNULL,
                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                                timeout=8, check=False)
+                                timeout=12, check=False)
     except (OSError, subprocess.TimeoutExpired):
         raise ValueError("input helper could not complete") from None
     if result.returncode:

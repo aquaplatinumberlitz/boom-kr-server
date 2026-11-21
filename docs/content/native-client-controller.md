@@ -15,9 +15,10 @@ python tools/native_client_controller.py local/plan.json --service-run local/run
 ```
 
 On Linux add `--wine wine`; on Windows omit it. Use a separate log directory
-per server run and a read-only view of the live SQLite database (including its
-WAL when applicable). A remote Windows guest needs these server files exposed
-to its controller. The tool does not copy or share them for you.
+per server run and a local read-only view of SQLite. For a remote Windows guest,
+publish the health and event files and refresh a consistent SQLite backup on the
+guest, rather than opening a live WAL database on a network share. The tool does
+not copy or share these files for you.
 
 A scenario uses named steps and server gates:
 
@@ -53,6 +54,6 @@ log, so use an isolated room or a match filter for known stream IDs.
 
 Use `{"op":"unicode","text_file":"chat.txt"}` for a UTF-8 file beside the plan.
 Use test text only: the helper receives UTF-16 units as a process argument.
-Clicks and held keys are ordinary input. Server gates prove that server state
+Clicks accept `settle_ms` for hover after pointer movement. Clicks and held keys are ordinary input. Server gates prove that server state
 advanced; they cannot prove a client rendered the screen, accepted input, or
 showed its match clock. The next server gate can verify the resulting request.

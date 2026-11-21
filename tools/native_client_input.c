@@ -64,7 +64,7 @@ static int unicode(const char *text, DWORD ms, HWND window, DWORD pid) {
 }
 
 int main(int argc, char **argv) {
-    unsigned long pid, a, b, ms;
+    unsigned long pid, a, b, ms, settle;
     INPUT down = {0};
     if (argc == 2 && !strcmp(argv[1], "windows")) return EnumWindows(list_windows, 0) ? 0 : 1;
     if (argc < 3 || !number(argv[1], 1, MAXDWORD, &pid)) return 2;
@@ -74,13 +74,14 @@ int main(int argc, char **argv) {
         return 1;
     }
     if (argc == 3 && !strcmp(argv[2], "check")) return 0;
-    if (argc == 6 && !strcmp(argv[2], "click") &&
+    if (argc == 7 && !strcmp(argv[2], "click") &&
             number(argv[3], 0, 16383, &a) && number(argv[4], 0, 16383, &b) &&
-            number(argv[5], 1, 2000, &ms)) {
+            number(argv[5], 1, 2000, &ms) && number(argv[6], 0, 1000, &settle)) {
         RECT rc;
         POINT point = {(LONG)a, (LONG)b};
         if (!GetClientRect(window, &rc) || !PtInRect(&rc, point) ||
                 !ClientToScreen(window, &point) || !SetCursorPos(point.x, point.y)) return 1;
+        Sleep(settle);
         if (GetAncestor(WindowFromPoint(point), GA_ROOT) != GetAncestor(window, GA_ROOT)) return 1;
         down.type = INPUT_MOUSE;
         down.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
@@ -94,8 +95,8 @@ int main(int argc, char **argv) {
             down.ki.dwFlags = KEYEVENTF_EXTENDEDKEY;
         return hold(down, KEYEVENTF_KEYUP, (DWORD)ms, window, (DWORD)pid);
     }
-    if (argc == 5 && !strcmp(argv[2], "unicode") && number(argv[4], 0, 60, &ms))
+    if (argc == 5 && !strcmp(argv[2], "unicode") && number(argv[4], 0, 120, &ms))
         return unicode(argv[3], (DWORD)ms, window, (DWORD)pid);
-    fputs("Expected PID check|click X Y HOLD_MS|key VK HOLD_MS|unicode UTF16LE_HEX DELAY_MS.\n", stderr);
+    fputs("Expected PID check|click X Y HOLD_MS SETTLE_MS|key VK HOLD_MS|unicode UTF16LE_HEX DELAY_MS.\n", stderr);
     return 2;
 }

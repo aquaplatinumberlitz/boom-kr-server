@@ -69,7 +69,7 @@ class ControllerTest(unittest.TestCase):
             {"op": "unicode", "text_file": "text"}]}]}
         prefix = ["wine", "/example/input.exe", "55"]
         commands = prepare(plan, self.root, prefix)[0][3]
-        self.assertEqual(commands[0], prefix + ["click", "30", "41", "220"])
+        self.assertEqual(commands[0], prefix + ["click", "30", "41", "220", "100"])
         self.assertEqual(bytes.fromhex(commands[1][-2]).decode("utf-16le"), "Việt 한😀")
         plan["steps"][0]["actions"][0]["hold_ms"] = 2001
         with self.assertRaises(ValueError):
