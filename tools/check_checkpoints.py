@@ -383,7 +383,33 @@ def documentation_identity(record, evidence, root=ROOT):
     return True
 
 
-def validate(manifest, root=ROOT, require_local=False):
+def changed_scope(root, manifest):
+    """Find checkpoint storage changes since the PR's common base, including local edits."""
+    git = ['git', '-c', 'core.fsmonitor=false', '-C', str(root)]
+
+    def git_output(*args):
+        result = subprocess.run(git + list(args), capture_output=True, check=False)
+        if result.returncode:
+            raise ValueError(f"--changed cannot run git {' '.join(args)}; fetch origin/main and its history")
+        return result.stdout
+
+    base = git_output('merge-base', 'origin/main', 'HEAD').decode().strip()
+    paths = set(os.fsdecode(git_output('diff', '--name-only', '--no-renames', '-z', base,
+                                      '--', MANIFEST.parent.as_posix())).split('\0')) - {''}
+    if not paths:
+        return base, set(), paths
+    previous = json.loads(git_output('show', f'{base}:{MANIFEST.as_posix()}'))
+    changed = set()
+    for key, prefix in (('checkpoints', 'CP'), ('audits', 'AUD')):
+        old_rows = previous[key] if previous['schema'] == manifest['schema'] else []
+        for index, row in enumerate(manifest[key]):
+            if (index >= len(old_rows) or row != old_rows[index]
+                    or (isinstance(row, dict) and row.get('path') in paths)):
+                changed.add(f'{prefix}{index + 1:03d}')
+    return base, changed, paths
+
+
+def validate(manifest, root=ROOT, require_local=False, selected=None, changed_paths=()):
     errors, warnings = [], []
     checked, unavailable = 0, 0
     root = Path(root).resolve()
@@ -443,18 +469,26 @@ def validate(manifest, root=ROOT, require_local=False):
 
     completed, saw_draft = 0, False
     ids, current_steps = [], {}
+    checked_records = 0
     for index, record in enumerate(records, 1):
         where = cp_id(index)
-        if index > 342:
+        check_body = (selected is None or where in selected
+                      or (changed_paths and any(isinstance(ref, dict) and ref.get("path") in changed_paths
+                                                for ref in record.get("evidence_manifests", []))))
+        if check_body:
+            checked_records += 1
+        if check_body and index > 342:
             raw = (store.file_reader(root)(manifest["checkpoints"][index - 1]["path"])
                    if manifest.get("schema") == store.V2 else store.encoded(record))
             errors.extend(record_line_budget(index, raw))
-        if not require_fields(record, (
-            "id", "previous", "lifecycle", "recorded_utc", "question", "scope",
-            "context_commit", "artifacts", "locators", "findings", "verification",
-            "evidence", "delta", "blockers", "next_steps", "owner", "reviewer",
-            "review", "docs_sync",
-        ), where, errors):
+        fields = ("id", "previous", "lifecycle", "next_steps")
+        if check_body:
+            fields += (
+                "recorded_utc", "question", "scope", "context_commit", "artifacts", "locators",
+                "findings", "verification", "evidence", "delta", "blockers", "owner", "reviewer",
+                "review", "docs_sync",
+            )
+        if not require_fields(record, fields, where, errors):
             continue
         expected_previous = cp_id(index - 1) if index > 1 else "origin"
         if record.get("id") != where or record.get("previous") != expected_previous:
@@ -467,9 +501,18 @@ def validate(manifest, root=ROOT, require_local=False):
                 errors.append(f"{where}: complete record follows an incomplete record")
         elif lifecycle == "in_progress":
             saw_draft = True
-            warnings.append(f"{where}: INCOMPLETE; not a completed checkpoint")
+            if check_body:
+                warnings.append(f"{where}: INCOMPLETE; not a completed checkpoint")
         else:
             errors.append(f"{where}: invalid lifecycle")
+        for step in record.get("next_steps", []):
+            if not require_fields(step, ("id", "task", "state", "action", "owner", "reviewer"), where + ".next_steps", errors):
+                continue
+            if step.get("state") not in {"active", "closed", "superseded"}:
+                errors.append(f"{where}: invalid next-step state")
+            current_steps[step.get("id")] = step
+        if not check_body:
+            continue
         if record.get("owner") == record.get("reviewer") and record.get("review", {}).get("status") != "waived":
             errors.append(f"{where}: reviewer must differ from owner")
         if not isinstance(record.get("context_commit"), str) or not COMMIT.fullmatch(record["context_commit"]):
@@ -590,12 +633,6 @@ def validate(manifest, root=ROOT, require_local=False):
                 errors.append(f"{where}: invalid docs sync state")
         if not set(CORE_DOCS).issubset(sync_paths) or not any(x.startswith("docs/evidence/") for x in sync_paths):
             errors.append(f"{where}: docs_sync must cover all four core docs and evidence")
-        for step in record.get("next_steps", []):
-            if not require_fields(step, ("id", "task", "state", "action", "owner", "reviewer"), where + ".next_steps", errors):
-                continue
-            if step.get("state") not in {"active", "closed", "superseded"}:
-                errors.append(f"{where}: invalid next-step state")
-            current_steps[step.get("id")] = step
 
     if manifest.get("last_id") != (ids[-1] if ids else None):
         errors.append("manifest: last_id disagrees with sequence")
@@ -672,8 +709,9 @@ def validate(manifest, root=ROOT, require_local=False):
         read_files = audit.get("read_files", [])
         if not audit_core_read_order(read_files) or not any(str(x).startswith("docs/evidence/") for x in read_files):
             errors.append(f"{where}: record manual reading in core-doc order plus evidence")
-        for name in read_files:
-            file_link(name, where)
+        if selected is None or where in selected:
+            for name in read_files:
+                file_link(name, where)
         if audit.get("trigger") == "periodic":
             number = ids.index(audit.get("completed_through")) + 1 if audit.get("completed_through") in ids else 0
             if not number or number % 4:
@@ -727,6 +765,8 @@ def validate(manifest, root=ROOT, require_local=False):
         if step.get("task") not in seen_tasks:
             errors.append(f"{step.get('id')}: task has no explicit state")
     stats = {"completed": completed, "evidence_verified": checked, "evidence_unavailable": unavailable}
+    if selected is not None:
+        stats["checkpoints_checked"] = checked_records
     if pruned.hits:
         stats["evidence_pruned"] = pruned.hits
     return errors, warnings, stats | {"next_audit": next_audit,
@@ -900,7 +940,7 @@ class GitObjects:
         self.process.stdout.close()
 
 
-def check_history(root, relative_manifest, current, availability=None):
+def check_history(root, relative_manifest, current, availability=None, base=None, changed_paths=()):
     def unverified(message):
         if availability is None:
             raise ValueError(message)
@@ -908,25 +948,33 @@ def check_history(root, relative_manifest, current, availability=None):
 
     command = ['git', '-c', 'core.fsmonitor=false', '-C', str(root)]
     try:
-        shallow = subprocess.run(command + ['rev-parse', '--is-shallow-repository'], capture_output=True, text=True)
+        shallow = (None if base else
+                   subprocess.run(command + ['rev-parse', '--is-shallow-repository'],
+                                  capture_output=True, text=True))
         # Watch the entire checkpoint directory: record/audit/evidence-only
         # tampering must not escape detection when the index does not change.
         revisions = subprocess.run(command + ['log', '--first-parent', '--reverse', '--format=%H',
-                                              'HEAD', '--', relative_manifest.parent.as_posix()],
+                                              f'{base}..HEAD' if base else 'HEAD',
+                                              '--', relative_manifest.parent.as_posix()],
                                    capture_output=True, text=True)
     except OSError as error:
         raise ValueError(f'Git unavailable: {error}') from error
     if revisions.returncode:
         raise ValueError('Git history unavailable')
-    if shallow.returncode == 0 and shallow.stdout.strip() == 'true':
+    if shallow is not None and shallow.returncode == 0 and shallow.stdout.strip() == 'true':
         unverified('shallow Git history; earlier counter continuity UNVERIFIED')
-    if not revisions.stdout.strip():
+    revision_ids = revisions.stdout.splitlines()
+    if base:
+        if not revision_ids and not changed_paths:
+            return []
+        revision_ids.insert(0, base)
+    if not revision_ids:
         unverified('no committed manifest history; counter rollback UNVERIFIED')
     previous, errors, seen_manifest = None, [], False
     objects, memo = GitObjects(command), {}
     prefix = relative_manifest.parent.as_posix()
     try:
-        for revision in revisions.stdout.splitlines():
+        for revision in revision_ids:
             try:
                 tree = objects.tree(revision, prefix)
             except ValueError as error:
@@ -981,7 +1029,7 @@ def check_history(root, relative_manifest, current, availability=None):
             previous = signature
     finally:
         objects.close()
-    if not seen_manifest and revisions.stdout.strip():
+    if not seen_manifest and revision_ids:
         unverified('no committed manifest history; counter rollback UNVERIFIED')
     if previous is not None:
         try:
@@ -994,6 +1042,9 @@ def check_history(root, relative_manifest, current, availability=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--changed", action="store_true",
+                        help="Check changed checkpoints and branch history since the merge base with origin/main")
+    parser.add_argument("--verbose", action="store_true", help="Print individual warnings")
     parser.add_argument("--require-local", action="store_true", help="Fail on unavailable host-local evidence; otherwise report UNVERIFIED")
     parser.add_argument("--require-history", action="store_true", help="Fail if Git is unavailable; checked whenever available")
     parser.add_argument("--no-hash-cache", action="store_true", help="Re-hash every host-local file and do not read or write the persistent hash cache")
@@ -1002,23 +1053,27 @@ def main():
     HASH_CACHE = None if args.no_hash_cache else HashCache(ROOT / HASH_CACHE_PATH)
     try:
         manifest = read_json(ROOT / MANIFEST)
-        errors, warnings, stats = validate(manifest, ROOT, args.require_local)
+        base, selected, paths = changed_scope(ROOT, manifest) if args.changed else (None, None, set())
+        errors, warnings, stats = validate(manifest, ROOT, args.require_local, selected, paths)
+        stats["scope"] = "changed" if args.changed else "full"
         availability = []
         try:
-            errors.extend(check_history(ROOT, MANIFEST, manifest, availability))
+            errors.extend(check_history(ROOT, MANIFEST, manifest, availability, base, paths))
         except ValueError as error:
             availability.append(str(error) + "; counter rollback UNVERIFIED")
         (errors if args.require_history else warnings).extend(availability)
         stats["history_verified"] = not availability
-        links = subprocess.run([sys.executable, str(ROOT / "tools/check_docs.py")], capture_output=True, text=True)
-        if links.returncode:
-            errors.append(links.stdout + links.stderr)
+        if not args.changed:
+            links = subprocess.run([sys.executable, str(ROOT / "tools/check_docs.py")], capture_output=True, text=True)
+            if links.returncode:
+                errors.append(links.stdout + links.stderr)
     except (OSError, ValueError, TypeError, KeyError) as error:
         errors, warnings, stats = [f"invalid manifest: {error}"], [], {}
     if HASH_CACHE is not None:
         HASH_CACHE.save()
-    for warning in warnings:
-        print("WARNING:", warning)
+    if args.verbose:
+        for warning in warnings:
+            print("WARNING:", warning)
     for error in errors:
         print("ERROR:", error, file=sys.stderr)
     print(json.dumps({"ok": not errors, **stats, "warnings": len(warnings), "errors": len(errors)}, ensure_ascii=False))

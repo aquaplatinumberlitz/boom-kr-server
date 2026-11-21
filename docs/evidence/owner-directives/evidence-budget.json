@@ -4,6 +4,7 @@
   "authority": "project_owner",
   "source": "Trong hội thoại với Claude (director) ngày 19/11/2026. Claude đo 12 commit gần nhất trên nhánh rust/m8-player-launcher: khoảng 2.740 dòng tài liệu/bằng chứng, 840 dòng công cụ (phần lớn để kiểm chính bằng chứng) và 310 dòng mã Rust; bước kiểm khả thi LoginStage thành bốn checkpoint CP339–CP342; một nửa số commit chỉ để bảo trì bộ bằng chứng. Chủ dự án hỏi “phần bằng chứng theo mày nên tối giản thêm ko?”, Claude đề xuất các mức dưới đây, chủ dự án trả lời: “đồng ý”.",
   "decision": "Từ checkpoint sau CP342, bằng chứng làm theo ngân sách: mỗi phần việc một checkpoint ngắn, test tự động là bằng chứng chính cho mã, không đầu tư thêm vào công cụ kiểm bằng chứng.",
+  "superseded_in_part_by": "lean-evidence.json",
   "requirements": [
     "Một checkpoint cho mỗi phần việc hoàn thành hoặc mỗi blocker thật, không cho mỗi lượt thử. Phần còn lại của M8 dự kiến khoảng năm checkpoint: đăng nhập DB 1P/2P (gồm sở hữu hai account trên một kết nối, hết hạn, thu hồi, mất kết nối), tài khoản khách, TLS trước đăng nhập, launcher mới, lượt phát hành qua Internet thật. Lượt thử trung gian chỉ để trong local/ và commit message.",
     "Record checkpoint mới khoảng 80 dòng, tối đa 120 dòng JSON đã định dạng: câu hỏi, việc đã làm, lệnh hoặc test đã chạy, kết quả, giới hạn, con trỏ run manifest. Không liệt kê từng frame, từng lượt chạy hay từng file; chi tiết đó nằm trong run manifest ở local/.",

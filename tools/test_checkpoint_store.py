@@ -116,6 +116,21 @@ class StoreTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'hash mismatch'):
             list(store.evidence(cp, self.root))
 
+    def test_changed_selects_record_when_only_its_pinned_evidence_changes(self):
+        v2, _, path = self.external()
+        git = ['git', '-C', str(self.root), '-c', 'user.name=Test', '-c', 'user.email=test@example.invalid']
+        subprocess.run(git + ['init', '-q'], check=True)
+        subprocess.run(git + ['add', store.MANIFEST.parent.as_posix()], check=True)
+        subprocess.run(git + ['commit', '-qm', 'baseline'], check=True)
+        subprocess.run(git + ['update-ref', 'refs/remotes/origin/main', 'HEAD'], check=True)
+        path.write_text('{}')
+
+        _, selected, paths = checker.changed_scope(self.root, v2)
+        self.assertEqual(selected, set())  # The manifest and record index are unchanged.
+        self.assertEqual(paths, {path.relative_to(self.root).as_posix()})
+        with self.assertRaisesRegex(ValueError, 'hash mismatch'):
+            checker.validate(v2, self.root, True, selected, paths)
+
     def test_wrong_reference_metadata_paths_counts_and_duplicate_ids_detected(self):
         v2, cp, path = self.external()
         bad = copy.deepcopy(v2)
