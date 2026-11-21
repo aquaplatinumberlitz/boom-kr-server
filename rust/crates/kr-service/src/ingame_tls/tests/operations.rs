@@ -180,6 +180,43 @@ fn resources_config() -> Config {
 }
 
 #[test]
+fn config_allows_shared_nat_until_the_global_connection_budget() {
+    let temp = Temp::new();
+    let (certificate, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+    let cert_path = temp.0.join("cert.der");
+    fs::write(&cert_path, certificate).unwrap();
+    let private_key = temp.0.join("private.pk8");
+    OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(&private_key)
+        .unwrap()
+        .write_all(&key)
+        .unwrap();
+    let mut config = Config {
+        private_key,
+        max_connections: 64,
+        max_per_ip: 50,
+        ..resources_config()
+    };
+    assert!(config.validate().is_ok());
+    config.max_per_ip = 65;
+    assert!(config.validate().is_err());
+
+    let admission = Arc::new(Mutex::new(Admission::default()));
+    let ip = IpAddr::V4(Ipv4Addr::LOCALHOST);
+    let now = Instant::now();
+    let mut permits: Vec<_> = (0..50)
+        .map(|_| Admission::admit(&admission, ip, 50, 51, now).unwrap())
+        .collect();
+    assert!(Admission::admit(&admission, ip, 50, 51, now).is_err());
+    permits.pop();
+    drop(Admission::admit(&admission, ip, 50, 51, now).unwrap());
+    assert!(Admission::admit(&admission, ip, 50, 51, now).is_err());
+}
+
+#[test]
 fn server_process() {
     let Some(config) = std::env::var_os("KR_M8_TEST_CHILD") else {
         return;

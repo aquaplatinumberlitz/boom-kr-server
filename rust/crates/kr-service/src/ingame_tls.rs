@@ -34,6 +34,7 @@ pub struct Config {
     pub private_key: PathBuf,
     pub max_connections: usize,
     pub max_unauthenticated: usize,
+    /// Live owners sharing one allowlisted public IP (e.g. NAT).
     pub max_per_ip: usize,
     pub prelogin_seconds: u64,
     #[serde(default = "default_admissions_per_ip_per_minute")]
@@ -52,7 +53,7 @@ impl Config {
             || !(1..=128).contains(&self.max_connections)
             || !(1..=16).contains(&self.max_unauthenticated)
             || self.max_unauthenticated > self.max_connections
-            || !(1..=8).contains(&self.max_per_ip)
+            || !(1..=self.max_connections).contains(&self.max_per_ip)
             || !(1..=120).contains(&self.admissions_per_ip_per_minute)
             || !(10..=180).contains(&self.prelogin_seconds)
             || !(1..=86400).contains(&self.session_ttl_seconds)
