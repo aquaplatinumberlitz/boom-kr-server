@@ -86,12 +86,51 @@ impl Identity {
         })
     }
     pub fn listen(self, address: SocketAddr) -> io::Result<Endpoint> {
+        server_endpoint(self.server_config()?, address)
+    }
+    fn server_config(self) -> io::Result<ServerConfig> {
         let mut cfg = ServerConfig::with_single_cert(vec![self.certificate], self.key.into())
             .map_err(io::Error::other)?;
         cfg.transport_config(transport());
-        Endpoint::server(cfg, address)
+        Ok(cfg)
     }
 }
+
+/// Use Quinn's native UDP features where available. Wine and some Winsock
+/// stacks do not support the required ancillary socket options. An endpoint
+/// bound to a concrete address can use ordinary datagrams with the same TLS
+/// and transport configuration. Leave bind/address/permission failures intact.
+pub fn server_endpoint(config: ServerConfig, address: SocketAddr) -> io::Result<Endpoint> {
+    #[cfg(not(windows))]
+    {
+        Endpoint::server(config, address)
+    }
+    #[cfg(windows)]
+    match Endpoint::server(config.clone(), address) {
+        Err(error)
+            if error.kind() == io::ErrorKind::Unsupported
+                || matches!(error.raw_os_error(), Some(10042 | 10045)) =>
+        {
+            portable_server(config, address)
+        }
+        result => result,
+    }
+}
+
+#[cfg(any(windows, test))]
+fn portable_server(config: ServerConfig, address: SocketAddr) -> io::Result<Endpoint> {
+    if address.ip().is_unspecified() {
+        return Err(invalid("portable QUIC server requires a concrete bind IP"));
+    }
+    let runtime = quinn::default_runtime().ok_or_else(|| invalid("QUIC runtime unavailable"))?;
+    Endpoint::new_with_abstract_socket(
+        quinn::EndpointConfig::default(),
+        Some(config),
+        portable_udp::Socket::bind(address)?,
+        runtime,
+    )
+}
+
 pub fn client(address: SocketAddr, certificate: CertificateDer<'static>) -> io::Result<Endpoint> {
     let cfg = client_config(certificate)?;
     let mut endpoint = Endpoint::client(address)?;

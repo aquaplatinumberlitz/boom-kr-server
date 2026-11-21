@@ -18,7 +18,9 @@ def console(root, options):
     """Run the packaged runner in its own Windows console process group."""
     assert os.name == 'nt'
     kernel = ctypes.WinDLL('kernel32', use_last_error=True)
-    if not kernel.GetConsoleCP() and not kernel.AllocConsole():
+    # Wine's attached headless console may not expose a code page. Win32
+    # returns ERROR_ACCESS_DENIED from AllocConsole when already attached.
+    if not kernel.AllocConsole() and ctypes.get_last_error() != 5:
         raise ctypes.WinError(ctypes.get_last_error())
     root = Path(root)
     child = subprocess.Popen(options, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)

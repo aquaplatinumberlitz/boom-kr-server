@@ -62,7 +62,10 @@ Runner tạo ACL riêng có quyền kế thừa cho tài khoản chạy và SYST
 Server kiểm chủ sở hữu, ACL và reparse point cho state, DB và khóa TLS; không cấp quyền rộng thêm khi gặp state
 không hợp lệ. Các tệp `launch.sock` và `accounts.admin.sock` trên Windows là thông tin kết nối riêng chứa bí mật
 theo lượt chạy. Hai listener dùng TCP trên `127.0.0.1` và xác thực hai chiều; không chép các tệp này ra khỏi state.
-Trên Linux vẫn dùng socket Unix, mode POSIX và SIGTERM như trước.
+Trên Linux vẫn dùng socket Unix, mode POSIX và SIGTERM như trước. Nếu Winsock thiếu tùy chọn UDP của Quinn,
+hai endpoint QUIC Windows dùng socket từng datagram; khi đó cần địa chỉ bind cụ thể, ví dụ `127.0.0.1` cho
+chạy cục bộ. Khi chạy dưới Wine, đặt `umask 077` trước lúc mở prefix riêng để file con có quyền riêng đúng
+kỳ vọng của ACL; server từ chối file có quyền rộng.
 
 Dừng bằng **Ctrl+C** trong console của runner hoặc gửi **Ctrl+Break** tới nhóm tiến trình console của runner.
 Chờ exit 0 và `"stopped": true` trong `service-state.json` trước khi mở lại. Dùng `bin\kr-admin.exe` cho

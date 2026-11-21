@@ -114,7 +114,12 @@ async fn portable_quic_roundtrip_preserves_bytes_and_denies_wrong_capability_sam
 async fn pinned_roundtrip(backend: UdpBackend) {
     let identity = Identity::ephemeral().unwrap();
     let certificate = identity.certificate.clone();
-    let server = identity.listen("127.0.0.1:0".parse().unwrap()).unwrap();
+    let bind = "127.0.0.1:0".parse().unwrap();
+    let server = match backend {
+        UdpBackend::Native => identity.listen(bind),
+        UdpBackend::Portable => portable_server(identity.server_config().unwrap(), bind),
+    }
+    .unwrap();
     let address = server.local_addr().unwrap();
     let (endpoint, _) =
         client_configured("127.0.0.1:0".parse().unwrap(), certificate, backend, false).unwrap();

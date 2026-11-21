@@ -80,7 +80,7 @@ impl Config {
         self.validate()?;
         let server =
             prelogin::server_config(self.certificate.load()?, fs::read(&self.private_key)?)?;
-        quinn::Endpoint::server(server, self.bind.into())
+        kr_tunnel::server_endpoint(server, self.bind.into())
     }
 }
 struct Peer {
