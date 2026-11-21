@@ -1,0 +1,53 @@
+{
+  "id": "CP381",
+  "previous": "CP380",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T05:02:56.441224+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Đối chứng Factory07 và mẫu Patrit01 đi được đến đâu trong hai client Wine?",
+  "scope": "KRE-STEP0-A / #532. Bản sao KR00967, TLS companion, LAN ảo cô lập. Không mở F1–F6.",
+  "context_commit": "0ff192228e440eb2441e42cff510c36606ab511a",
+  "artifacts": [
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "d54aa367adb29749642afa894347b0b5fc065eeb29a02539faf39e402565341a"},
+    {"sha256": "719aad5f96629f4893ed52cd4c888a6a6b53a90eebc99d44016315f618fdb700"}
+  ],
+  "locators": [
+    "local/research/codex/step0-native",
+    "run-3: Factory07; run-4: menu có Patrit01; Wine 10.0-20260425."
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/classification.md", "summary": "Hai client Wine chơi Factory07, gửi đặt bom, nhận kết quả và về phòng; journal complete/elimination.", "evidence": ["REC", "FACTORY", "APP"], "limits": "Đối chứng trên profile thử; không đo pickup, từng ô hoặc phân phối drop."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/classification.md", "summary": "Menu chọn map của client hiện Patrit01 trong catalog Factory07/Patrit01.", "evidence": ["MENU"], "limits": "Chưa xác nhận chọn/Start/Load native cho Patrit01; giữ lớp B của họ."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu mốc TLS, input client, journal và ảnh Factory07.", "result": "pass", "evidence": ["REC", "FACTORY", "APP"], "limits": "Một ván, hai người."},
+    {"check": "Chọn, Start/Load và chơi Patrit01 trên client thật.", "result": "not_run", "evidence": ["MENU", "GUARD"], "limits": "Lượt cuối dừng ở native_stage_guard khi đăng nhập; hết ngân sách lượt."}
+  ],
+  "delta": {"added": ["Cập nhật hai quan sát native trong bảng xếp loại."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Patrit01 mới tới menu; Mẫu của các họ còn lại chưa có kết quả native đủ để đổi lớp. Candidate B/C giữ nguyên."
+  ],
+  "next_steps": [
+    {"id": "STEP0-A-native-samples", "task": "KRE-STEP0-A", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khi có ngân sách lượt tiếp, chạy Patrit01 từ chọn map đến Start/Load, trận và journal."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T05:02:56.441224+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng mốc."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi kết quả và giới hạn."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không đóng câu hỏi RE."},
+    {"path": "docs/content/classification.md", "state": "updated", "reason": "Phân biệt đối chứng và menu."},
+    {"path": "docs/evidence/checkpoints/records/CP381.json", "state": "updated", "reason": "Pin bằng chứng runtime."}
+  ],
+  "evidence": [
+    {"id": "REC", "kind": "local", "path": "local/research/codex/step0-native/receipt.json", "bytes": 1098, "sha256": "4373033782dbe3db34a778fe3aa488fcd059ed29c5f16f3660712687eaa70915"},
+    {"id": "FACTORY", "kind": "local", "path": "local/research/codex/step0-native/run-3/service/rust-events.jsonl", "bytes": 22664, "sha256": "cfd75285080e1468c200f02d1a1c43c2c7167a1c55005a70fabb3e841ed3676f"},
+    {"id": "APP", "kind": "local", "path": "local/research/codex/step0-native/run-3/factory-A.png", "bytes": 121695, "sha256": "fdb1691c64cad2d2ec8080e4761ea892178910628459ce3bf8fcf352c6bfd2b0"},
+    {"id": "MENU", "kind": "local", "path": "local/research/codex/step0-native/run-4/map-dialog-A.png", "bytes": 97706, "sha256": "99bd18428f5c9ea148e5d8d7f9b0a5c7a8e77018e592491ca4ddc385e39fc2e9"},
+    {"id": "GUARD", "kind": "local", "path": "local/research/codex/step0-native/run-5/service/rust-events.jsonl", "bytes": 4843, "sha256": "8b6b58b3ac05d447553d196bf5ba9d4bb80fe78d61305bb02f18e3bf032f1235"},
+    {"id": "RECIPE", "kind": "local", "path": "local/research/codex/step0-native/drive.sh", "bytes": 1346, "sha256": "21552b8dc9fab5521beddc89fa59c2d4f64d8641c80ae0f221cf1316a65b85d9"}
+  ],
+  "evidence_runs": []
+}
