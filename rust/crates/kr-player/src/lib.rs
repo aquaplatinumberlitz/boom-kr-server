@@ -1,4 +1,4 @@
-//! First-party player installation. No assets or native wire changes live here.
+//! First-party player installation and verification of optional launcher artwork.
 #![forbid(unsafe_code)]
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -45,6 +45,8 @@ pub struct Manifest {
     pub common: Vec<Entry>,
     pub languages: std::collections::BTreeMap<String, Language>,
     pub limits: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub launcher_art: Option<Pin>,
 }
 fn invalid() -> io::Error {
     io::Error::other("player installation integrity or path check failed")
@@ -163,11 +165,11 @@ pub fn sha256(path: &Path) -> io::Result<String> {
         }
         hash.update(&buffer[..count]);
     }
-    Ok(hash
-        .finalize()
-        .iter()
-        .map(|byte| format!("{byte:02x}"))
-        .collect())
+    Ok(digest_hex(&hash.finalize()))
+}
+
+fn digest_hex(bytes: &[u8]) -> String {
+    bytes.iter().map(|byte| format!("{byte:02x}")).collect()
 }
 fn checked(root: &Path, pin: &Pin) -> io::Result<PathBuf> {
     let path = ordinary(root, &pin.path)?;
@@ -218,6 +220,26 @@ pub fn read_manifest(bundle: &Path, expected: &str) -> io::Result<Manifest> {
     }
     Ok(manifest)
 }
+/// Return only the pinned bytes. Artwork is decorative; callers may fall back on any error.
+pub fn launcher_art(bundle: &Path, expected: &str) -> io::Result<Option<Vec<u8>>> {
+    const MAX_BYTES: u64 = 2 * 1024 * 1024;
+    let Some(pin) = read_manifest(bundle, expected)?.launcher_art else {
+        return Ok(None);
+    };
+    if pin.bytes == 0 || pin.bytes > MAX_BYTES {
+        return Err(invalid());
+    }
+    let path = ordinary(bundle, &pin.path)?;
+    let mut bytes = Vec::new();
+    File::open(path)?
+        .take(pin.bytes + 1)
+        .read_to_end(&mut bytes)?;
+    if bytes.len() as u64 != pin.bytes || digest_hex(&Sha256::digest(&bytes)) != pin.sha256 {
+        return Err(invalid());
+    }
+    Ok(Some(bytes))
+}
+
 fn destination(root: &Path, name: &str) -> io::Result<PathBuf> {
     let target = root.join(relative(name)?);
     fs::create_dir_all(target.parent().ok_or_else(invalid)?)?;

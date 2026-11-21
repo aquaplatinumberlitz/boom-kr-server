@@ -4,8 +4,11 @@ mod game;
 mod look;
 use game::{Config, Session, StartError, start};
 use iced::{
-    Alignment, Color, Element, Font, Length, Subscription, Task, Theme,
-    widget::{Space, button, canvas, column, container, row, stack, text, text_input},
+    Alignment, Color, ContentFit, Element, Font, Length, Size, Subscription, Task, Theme,
+    widget::{
+        Space, button, canvas, column, container, image, responsive, row, scrollable, stack, text,
+        text_input,
+    },
 };
 use kr_tunnel::launch_tls;
 use serde::{Deserialize, Serialize};
@@ -196,6 +199,7 @@ struct Form {
 }
 struct Player {
     config: Option<Config>,
+    art: Option<image::Handle>,
     language: Language,
     screen: Screen,
     form: Form,
@@ -334,6 +338,11 @@ impl Player {
             .and_then(|c| fs::read(c.state.join("language.json")).ok())
             .and_then(|bytes| serde_json::from_slice(&bytes).ok())
             .unwrap_or_default();
+        let art = look::decode_art(config.as_ref().and_then(|c| {
+            kr_player::launcher_art(&c.bundle, &c.manifest_sha256)
+                .ok()
+                .flatten()
+        }));
         let task = config.clone().map_or_else(Task::none, |c| {
             Task::perform(
                 async move {
@@ -362,6 +371,7 @@ impl Player {
                     None
                 },
                 config,
+                art,
                 language,
                 screen: Screen::Home,
                 form: Form::default(),
@@ -681,6 +691,9 @@ impl Player {
         body.spacing(9).into()
     }
     fn view(&self) -> Element<'_, Message> {
+        responsive(|size| self.layout(size)).into()
+    }
+    fn layout(&self, size: Size) -> Element<'_, Message> {
         let language = self.language;
         let label = |key| text(language.line(key));
         let mut choices = row![].spacing(2);
@@ -697,40 +710,45 @@ impl Player {
                 .on_press(Message::Language(candidate)),
             );
         }
-        let header = row![
-            canvas::Canvas::new(look::Mark).width(34).height(36),
-            text("BOOM").size(28).font(look::HEAVY).color(Color::WHITE),
-            container(text("PLAY").size(11).font(look::BOLD))
-                .padding([3, 8])
-                .style(look::brand_tag),
-            Space::new().width(Length::Fill),
-            container(choices).padding(4).style(look::segmented)
-        ]
-        .spacing(10)
-        .align_y(Alignment::Center);
-        let mut headline = column![];
-        for (i, line) in language.line(0).split('\n').enumerate() {
-            headline = headline.push(
-                text(line)
-                    .size(58)
-                    .font(look::HEAVY)
-                    .line_height(1.08)
-                    .color(if i == 0 { Color::WHITE } else { look::SUN }),
-            );
-        }
-        let hero = column![
-            container(label(17).size(12).font(look::BOLD).color(look::SUN))
-                .padding([6, 14])
-                .style(look::pill(look::SUN)),
-            Space::new().height(4),
-            headline,
-            label(1).size(16).color(look::MUTED),
-            canvas::Canvas::new(look::Arcade { tick: self.ticks })
-                .width(Length::Fill)
-                .height(236)
-        ]
-        .spacing(14)
-        .width(Length::Fill);
+        let choices = container(choices).padding(4).style(look::segmented);
+        let header = |choices| {
+            row![
+                canvas::Canvas::new(look::Mark).width(34).height(36),
+                text("BOOM").size(28).font(look::HEAVY).color(Color::WHITE),
+                container(text("PLAY").size(11).font(look::BOLD))
+                    .padding([3, 8])
+                    .style(look::brand_tag),
+                Space::new().width(Length::Fill),
+                choices
+            ]
+            .spacing(10)
+            .align_y(Alignment::Center)
+        };
+        let hero = || {
+            let mut headline = column![];
+            for (i, line) in language.line(0).split('\n').enumerate() {
+                headline = headline.push(
+                    text(line)
+                        .size(58)
+                        .font(look::HEAVY)
+                        .line_height(1.08)
+                        .color(if i == 0 { Color::WHITE } else { look::SUN }),
+                );
+            }
+            column![
+                container(label(17).size(12).font(look::BOLD).color(look::SUN))
+                    .padding([6, 14])
+                    .style(look::pill(look::SUN)),
+                Space::new().height(4),
+                headline,
+                label(1).size(16).color(look::MUTED),
+                canvas::Canvas::new(look::Arcade { tick: self.ticks })
+                    .width(Length::Fill)
+                    .height(236)
+            ]
+            .spacing(14)
+            .width(Length::Fill)
+        };
         let status_key = match self.online {
             None => 7,
             Some(true) => 8,
@@ -778,33 +796,86 @@ impl Player {
                     look::MUTED
                 })
         };
-        let card = container(self.panel(play.into(), notice.into()))
-            .padding(26)
-            .width(410)
-            .style(look::card);
-        let body = row![hero, Space::new().width(36), card].align_y(Alignment::Center);
         let tint = match self.online {
             None => look::SUN,
             Some(true) => look::MINT,
             Some(false) => look::CORAL,
         };
+        let status = container(
+            row![
+                container(Space::new().width(8).height(8)).style(look::dot(tint)),
+                label(status_key).size(12).color(Color::WHITE)
+            ]
+            .spacing(8)
+            .align_y(Alignment::Center),
+        )
+        .padding([6, 14])
+        .style(look::pill(tint));
+        let panel = self.panel(play.into(), notice.into());
+        if let Some(art) = &self.art {
+            let image::Handle::Rgba { width, height, .. } = art else {
+                unreachable!("decode_art creates an RGBA handle")
+            };
+            let aspect = *width as f32 / *height as f32;
+            let width = size.width.min(size.height * aspect);
+            let height = width / aspect;
+
+            // Keep controls inside the top of the artwork, including when a long form scrolls.
+            // The lowest 16% stays clear for the logo.
+            let controls = column![
+                container(choices).align_right(Length::Fill),
+                panel,
+                container(status).align_right(Length::Fill)
+            ]
+            .spacing(16);
+            let card = container(scrollable(controls).spacing(6))
+                .padding(18)
+                .width(348)
+                .max_width(width - 32.0)
+                .max_height(height * 0.84 - 20.0)
+                .style(look::art_panel);
+            let frame = stack![
+                image(art.clone())
+                    .width(Length::Fill)
+                    .height(Length::Fill)
+                    .content_fit(ContentFit::Contain),
+                container(container(card).align_right(Length::Fill))
+                    .padding([14, 16])
+                    .width(Length::Fill)
+                    .height(Length::Fill)
+            ]
+            .width(width)
+            .height(height);
+            return container(frame)
+                .center_x(Length::Fill)
+                .center_y(Length::Fill)
+                .style(look::art_matte)
+                .into();
+        }
+
+        let card = container(scrollable(panel).spacing(6))
+            .padding(26)
+            .width(410)
+            .max_height(size.height - 128.0)
+            .style(look::card);
+        let body = if size.width >= 900.0 {
+            row![hero(), Space::new().width(24), card].align_y(Alignment::Center)
+        } else {
+            row![
+                Space::new().width(Length::Fill),
+                card,
+                Space::new().width(Length::Fill)
+            ]
+            .align_y(Alignment::Center)
+        };
         let footer = row![
             text("BOOM  /  PLAY").size(11).color(look::MUTED),
             Space::new().width(Length::Fill),
-            container(
-                row![
-                    container(Space::new().width(8).height(8)).style(look::dot(tint)),
-                    label(status_key).size(12).color(Color::WHITE)
-                ]
-                .spacing(8)
-                .align_y(Alignment::Center)
-            )
-            .padding([6, 14])
-            .style(look::pill(tint))
+            status,
         ]
         .align_y(Alignment::Center);
         let content = container(column![
-            header,
+            header(choices),
             container(body).center_y(Length::Fill),
             footer
         ])
@@ -827,10 +898,13 @@ fn main() -> iced::Result {
     iced::application(Player::boot, Player::update, Player::view)
         .title("BOOM PLAY")
         .theme(Theme::Dark)
-        .window_size((1000.0, 680.0))
-        .centered()
-        .resizable(false)
-        .exit_on_close_request(false)
+        .window(iced::window::Settings {
+            size: Size::new(960.0, 720.0),
+            min_size: Some(Size::new(640.0, 520.0)),
+            position: iced::window::Position::Centered,
+            exit_on_close_request: false,
+            ..Default::default()
+        })
         .subscription(|_| {
             Subscription::batch([
                 iced::time::every(Duration::from_millis(500)).map(|_| Message::Tick),

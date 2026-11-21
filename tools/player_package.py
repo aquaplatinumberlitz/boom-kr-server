@@ -15,6 +15,7 @@ from content_census import decrypt_idx, parse_idx
 
 ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ('vi', 'en', 'ko')
+DEFAULT_LAUNCHER_ART = ROOT / 'local/assets/launcher/launch.png'
 LOCAL_EXTENSIONS = {'.ini', '.ssd', '.fft', '.bik'}
 
 
@@ -52,7 +53,22 @@ def prefix_equal(prefix, candidate):
                 raise ValueError('Pack stage mới không giữ nguyên prefix trước; không được tái dùng idx')
 
 
-def build(recipe, out):
+def stage_launcher_art(source, out):
+    # Pillow is needed only when a source image is present.
+    from PIL import Image, ImageOps
+
+    destination = 'payload/launcher/backdrop.jpg'
+    target = out / destination
+    target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    with Image.open(source) as original:
+        art = ImageOps.exif_transpose(original).convert('RGB')
+        art.thumbnail((960, 720), Image.Resampling.LANCZOS)
+        with target.open('xb') as stream:
+            art.save(stream, 'JPEG', quality=92, subsampling=0, optimize=True)
+    return dict(path=destination, bytes=target.stat().st_size, sha256=digest(target))
+
+
+def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     if set(recipe['languages']) != set(LANGUAGES):
         raise ValueError('Gói phải khai đủ vi/en/ko đã vá')
     base = Path(recipe['base']).resolve(strict=True)
@@ -74,6 +90,11 @@ def build(recipe, out):
         row = dict(path=destination, bytes=target.stat().st_size, sha256=digest(target))
         payload[destination] = row
         return row
+
+    art = (stage_launcher_art(launcher_art, out)
+           if launcher_art is not None and launcher_art.is_file() else None)
+    if art is not None:
+        payload[art['path']] = art
 
     packs = []
     originals = {name: p for name, p in files.items() if p.suffix.lower() == '.idd'}
@@ -145,6 +166,8 @@ def build(recipe, out):
         languages[language] = dict(encoding='949x', images=entry['images'], files=rows)
     manifest = dict(schema='kre-player-package-v1', packs=packs, common=common, languages=languages,
                     limits='Payload được dựng và kiểm hash; chưa chứng nhận cài sạch, client song song hoặc native Internet.')
+    if art is not None:
+        manifest['launcher_art'] = art
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
@@ -219,12 +242,14 @@ def main():
     parser.add_argument('--recipe', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--windows-runtime', type=Path, help='Recipe local chứa launcher, companion và certificate đã pin')
+    parser.add_argument('--launcher-art', type=Path, default=DEFAULT_LAUNCHER_ART,
+                        help='Ảnh nền launcher (mặc định: local/assets/launcher/launch.png)')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
     output = args.out.resolve()
     if output == local or not output.is_relative_to(local):
         parser.error('Gói và tài sản client phải ở local/')
-    summary = build(json.loads(args.recipe.read_text()), output)
+    summary = build(json.loads(args.recipe.read_text()), output, args.launcher_art)
     if args.windows_runtime:
         summary['windows_runtime'] = windows_runtime(
             json.loads(args.windows_runtime.read_text()), output, summary['manifest_sha256'])

@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP378: Có công cụ thu CPU, RAM, FD và trạng thái phòng/relay trước, trong và sau tải M8.** [Bằng chứng](docs/evidence/checkpoints/records/CP378.json).
+**CP381: Launcher có ảnh nền tùy chọn, kiểm pin SHA-256 và giữ nguyên logo khi đổi kích thước.** [Bằng chứng](docs/evidence/checkpoints/records/CP381.json).
 
 ## Bắt đầu
 

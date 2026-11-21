@@ -209,6 +209,21 @@ If a close-room reply is lost, check the audit and live room list before retryin
    rust/target/release/kr-player-install verify "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
    ```
 
+<a id="launcher-art"></a>
+### Ảnh nền tùy chọn của launcher
+
+Khi dựng gói, `tools/player_package.py` lấy ảnh từ `local/assets/launcher/launch.png` theo mặc định.
+Dùng `--launcher-art ĐƯỜNG_DẪN` để chỉ định ảnh khác. Khi có ảnh nguồn, máy dựng gói cần Python Pillow
+(CI dùng `Pillow==13.0.0`).
+Tool giữ tỉ lệ khi thu ảnh vào khung 960×720, ghi JPEG chất lượng 92 vào `payload/launcher/backdrop.jpg`,
+và pin kích thước byte cùng SHA-256 vào trường `launcher_art` của `manifest.json`.
+Khi phân phối gói có ảnh, dùng launcher dựng cùng phiên bản và giữ tệp JPEG tại vị trí trong payload.
+Ảnh nguồn và JPEG xuất ra đều ở `local/` trên máy dựng gói.
+
+Launcher giữ trọn ảnh khi đổi kích thước cửa sổ; các điều khiển cuộn trong panel phía trên logo.
+Launcher dùng nền gradient nếu manifest cũ không có ảnh hoặc ảnh bị thiếu, hỏng hay sai pin.
+Ảnh là phần trang trí; lỗi ảnh không chặn bước kiểm và cài dữ liệu game.
+
 ## Troubleshooting
 
 | Symptom | First checks |
