@@ -13,7 +13,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
-[lộ trình sáu đợt F1–F6](#full-game-roadmap), chưa mở việc nào.
+[lộ trình sáu đợt F1–F6](#full-game-roadmap); bước 0 có [xếp loại tĩnh](content/classification.md), thử native chờ host trống; F1–F6 chưa mở.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -710,10 +710,8 @@ inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ
 <a id="full-game-roadmap"></a>
 ### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
 
-Chủ dự án muốn dài hạn có đủ item, map và mode của game gốc. Mục này xếp **thứ tự các đợt**; nó chưa phải cam kết
-thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (trừ các phép thử xếp loại rẻ). Số liệu lấy từ
-[kiểm kê](CONTENT.md) sinh từ pack; có tài nguyên trong pack không chứng minh tính năng còn chạy. Cỡ từng đợt
-**chưa ước lượng được** cho tới khi các nhóm trong đợt được xếp loại A/B/C.
+Lộ trình tới đủ item, map và mode chưa cam kết thời gian. F1–F6 chưa mở; bước 0 chạy song song phần cuối M8.
+Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng còn chạy. Chỉ ước lượng sau khi xếp loại A/B/C.
 
 | Đợt | Nội dung | Số liệu kiểm kê | Phụ thuộc và điều chưa biết |
 |---|---|---|---|
@@ -726,8 +724,10 @@ thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (tr
 | O1 Offline mode with my friend ("Chơi offline với bạn bè") | Một nút trong launcher: không tài khoản, không VPS, không cấu hình. Máy người tạo tự chạy server ngầm và hiện mã phòng; bạn bè nhập mã (cùng LAN thì tự thấy). Qua Internet dùng thư viện P2P nhúng (iroh/QUIC, tự xuyên NAT, relay khi cần). Cờ "mở khoá tất cả": đủ nhân vật/item/trang phục, shop miễn phí | Server Rust chạy trên Windows; tên khách; dữ liệu lưu ở máy người tạo | Dùng chung bước "server đọc dữ liệu từ pack" của M8. Nội dung đầy đủ theo F1/F4 (cùng mã server, khác cấu hình). Rủi ro chính: chuyển server sang Windows. Người tạo phải mở game suốt buổi |
 | L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
-**Thứ tự ([quyết định 20/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 xếp loại A/B/C và công cụ ghi/phát lại
-phiên thật (làm sớm, song song cuối M8 theo chỉ đạo 21/11), rồi O1 ([quyết định 21/11](evidence/owner-directives/offline-friends.json)) → F1 → F4 → F2 → F5 → F3 → F6. Màn trình duyệt nhúng (Dwarf/libcef) làm bằng web phía server; bỏ phần riêng Nexon.
+**Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
+[bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
+Thử đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json)
+→ F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
@@ -747,17 +747,17 @@ Giai đoạn 1 vẫn dùng client gốc với bảng mã 949. Mọi thay đổi 
 
 Cách vào mỗi đợt, giống nhau cho mọi đợt:
 
-1. **Xếp loại trước khi ước lượng.** Mỗi họ map, nhóm item hoặc hệ thống chạy một phép thử ngắn trên client thật (tối đa
-   hai lượt native) để xếp A (chỉ cần dữ liệu), B (dùng packet đã có) hay C (cần packet hoặc trạng thái mới). Kết quả
-   ghi vào cột "server phải làm gì" của kiểm kê qua tool sinh, không sửa tay.
+1. **Xếp loại trước khi ước lượng.** Bắt đầu bằng kiểm kê tĩnh, rồi thử ngắn theo họ map, nhóm item hoặc hệ thống
+   (mặc định tối đa hai lượt native mỗi đợt). A là đã có hoặc chỉ cần dữ liệu, B cần wire/luật đã hiểu, C còn ẩn số cần RE.
+   Ghi kết quả qua tool sinh [bảng xếp loại](content/classification.md).
 2. **Chỉ RE cho loại C**, theo từng hệ thống; client KR không có bảng handler tĩnh theo opcode nên không RE trước hàng loạt.
 3. **Code theo dữ liệu:** map, item, nhân vật nạp từ file sinh từ pack; mode là bộ luật trong `RoomRules`; không thêm
    nhánh theo từng map hay từng item vào lõi phòng.
 4. **Nghiệm thu theo nhóm bằng client thật**, mỗi nhóm một checkpoint; tính năng chưa hỗ trợ phải tắt rõ ràng, không ACK giả.
 
 Phép thử Village10 đã xác nhận mã 1104 lookup đúng tên map trong build đang đo, đồng thời bác bỏ việc chỉ đổi mã
-đang chọn là đủ với profile cũ. [Contract và giới hạn](protocol/load-phase.md#village10-map-selection) giữ kết quả;
-chưa có geometry, spawn hoặc gameplay Village10. Kết luận này chỉ định hình adapter dữ liệu, không mở đợt F1.
+đang chọn là đủ với profile cũ. Xem [phép đo ban đầu](protocol/load-phase.md#village10-map-selection) và
+[route G1](evidence/rust-service/g1-acceptance-matrix.json). Kết quả theo route không mở đợt F1.
 
 <a id="issue-order"></a>
 ### Issue hiện hành và backlog theo nguồn chuẩn

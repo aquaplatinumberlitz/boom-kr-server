@@ -4,7 +4,7 @@ Sinh từ [census.json](content/census.json) bằng `python3 tools/content_censu
 
 Tài liệu này trả lời câu hỏi **"full game gồm những gì"** bằng dữ liệu tĩnh trong pack của client.
 Nó không chứng minh client hay server làm gì với từng mục. Cột nhóm nội dung và cột wiki là **suy từ tên**;
-cột "server phải làm gì" chỉ ghi kết quả có nguồn của ca chạy thử. Thứ tự công việc vẫn chỉ ở
+xem [bảng xếp loại A/B/C](content/classification.md) cho công việc phía server. Thứ tự công việc vẫn chỉ ở
 [PLAN](PLAN.md#delivery-target).
 
 ## Tóm tắt
@@ -1040,13 +1040,5 @@ tham gia (đồng bộ trigger, quái, phần thưởng) chưa được đo.
 
 ## Điền cột "server phải làm gì"
 
-Mỗi họ map và mỗi nhóm item cần một ca chạy thử trên client thật để xếp vào một trong ba loại:
-
-- **A — chỉ cần dữ liệu:** server gửi đúng ID và bảng item, client tự lo phần còn lại.
-- **B — dùng packet đã có:** cần đồng bộ metadata map hoặc dữ liệu/hành vi qua packet đã đo; ghi rõ phần chưa chạy.
-- **C — cần packet hoặc trạng thái mới:** phải RE trước khi làm.
-
-`Village` có phân loại B ở điều kiện chọn Village10: mã lookup đúng nhưng tên và dữ liệu map phải đồng bộ.
-Chưa load/chơi Village10; không suy toàn họ đã được hỗ trợ. `ExVillage01` có native trong phạm vi PLAN.
-Phân loại chỉ là điều hướng tới contract có nguồn; thứ tự thử tiếp do PLAN quyết định:
-map đấu thường không script trước, sau đó các item được nhiều map dùng nhất mà chưa đo.
+Xem [bảng xếp loại sinh tự động](content/classification.md) cho từng họ, nhóm và hệ thống.
+Bảng lưu lớp ứng viên từ pack, các route đã đo và phép thử còn thiếu. Thứ tự thử nằm trong PLAN.
