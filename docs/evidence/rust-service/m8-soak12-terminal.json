@@ -1,0 +1,49 @@
+{
+  "schema": "kre-m8-terminal-soak-v1",
+  "source": "kr_runtime",
+  "status": "candidate",
+  "run": "local/research/codex/m8-load-native-control/recovery-21/soak12/final-export",
+  "build": "pinned VPS package in CP380 soak run",
+  "duration_seconds": 32378.404,
+  "minimum_required_seconds": 43200,
+  "result": "fail",
+  "summary": {
+    "rounds_complete": 1132,
+    "rounds_cancelled": 2,
+    "delivery_failure": "room 3 delivery gate failed",
+    "service_exit": 0,
+    "driver_exit": 1,
+    "backup_complete": 9,
+    "verified_snapshots": 9,
+    "ttl_expired_and_relogged": 4,
+    "owner_lifecycle_errors": 14,
+    "database_probe_errors": 0,
+    "cpu_p95_one_core_percent": 23.4,
+    "rss_p95_bytes": 48025600,
+    "rss_peak_bytes": 48025600,
+    "fd_peak": 44,
+    "online_peak": 24,
+    "rooms_peak": 4,
+    "rounds_peak": 4,
+    "routes_peak": 120,
+    "final_online": 0,
+    "final_rooms": 0,
+    "final_active_rounds": 0,
+    "final_reserved_routes": 0,
+    "final_companions": 0,
+    "final_udp_listeners": 1
+  },
+  "limits": [
+    "Terminal run ended before 12 hours, so it cannot satisfy the duration, 12-backup, or five-TTL-cycle gates.",
+    "The exported soak contains no timed restore of a scheduled snapshot; backup/restore acceptance remains covered by CP374 only.",
+    "No native client was active in this run; native-under-load acceptance remains open."
+  ],
+  "evidence": {
+    "summary": "local/research/codex/m8-load-native-control/recovery-21/soak12/final-export/summary.json",
+    "status": "local/research/codex/m8-load-native-control/recovery-21/soak12/final-export/status.json",
+    "health": "local/research/codex/m8-load-native-control/recovery-21/soak12/final-export/health.json",
+    "manifest": "local/research/codex/m8-load-native-control/recovery-21/soak12/final-export/manifest.json",
+    "verifier": "local/research/codex/m8-load-capture-preflight/soak12-terminal-result.json",
+    "failure_analysis": "local/research/codex/m8-load-capture-preflight/soak12-failure-analysis.md"
+  }
+}

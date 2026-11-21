@@ -33,9 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP391: O1 headless hoàn tất round hai guest, route relay/LAN/mailbox và thu hồi session.** [Bằng chứng](docs/evidence/checkpoints/records/CP391.json).
-
-**F1-a: Adapter pack đã qua kr-load trên 45 map; họ CaJJ_Clover đạt lớp A trong phạm vi hai người.** [Bằng chứng](docs/evidence/rust-service/f1-pack-map-adapters.json).
+**CP392: M8 chưa đạt.** Soak terminal dừng ở 32.378 giây với 1.132 ván hoàn tất, 9 backup và 4 TTL/relogin; drain về 0 nhưng delivery room 3 lỗi và còn 14 owner lifecycle errors. Native client dưới tải chưa có bằng chứng. [Bằng chứng](docs/evidence/checkpoints/records/CP392.json).
 
 ## Bắt đầu
 

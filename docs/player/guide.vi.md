@@ -46,7 +46,11 @@
 4. Ở màn hình đăng nhập của game, chọn **Chơi thử 1P**. Game dùng tên đã nhập trong launcher; bạn không cần điền tài khoản hay mật khẩu. Vào sảnh, một người tạo phòng đấu và người còn lại vào phòng đó.
 5. Nếu launcher báo khác phiên bản, tải cùng gói với chủ phòng bằng **Tải bản mới** (nếu gói có liên kết). Khi chủ phòng thoát game hoặc launcher, mọi người nhận thông báo phòng đã đóng.
 
-![Tab Chơi với bạn bè](o1-launcher.jpg)
+![Launcher tạo phòng](o1-create-room.png)
+
+![Launcher vào phòng bằng mã](o1-join-code.png)
+
+![Launcher chọn phòng LAN](o1-join-lan.png)
 
 Khi chơi khác mạng, cần gói có dịch vụ tra mã đang hoạt động. Nếu không tìm thấy phòng, kiểm tra mã và hỏi chủ phòng xem game còn mở không.
 

@@ -1461,7 +1461,6 @@
               "docs/protocol/terrain.md#rust-patrit-terrain",
               "docs/protocol/terrain.md#rust-village10-herb",
               "docs/evidence/rust-service/g1-mixed-map-spawns.json",
-              "docs/evidence/rust-service/f1-pack-map-adapters.json",
               "docs/evidence/rust-service/g1-camp08-boundary.json",
               "docs/evidence/rust-service/g1-camp08-report122.json",
               "docs/evidence/rust-service/g1-camp08-cancellation.json",
@@ -1534,8 +1533,7 @@
             "docs/protocol/room-membership.md#rust-selected-player-rounds",
             "docs/protocol/load-phase.md#rust-map-profile-adapter",
             "docs/protocol/load-phase.md#rust-room-map-selection",
-            "docs/evidence/rust-service/g1-mixed-map-spawns.json",
-            "docs/OPERATIONS.md#pack-f1-a"
+            "docs/evidence/rust-service/g1-mixed-map-spawns.json"
           ]
         },
         "gate": {

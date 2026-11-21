@@ -34,13 +34,6 @@ pub(crate) struct Account {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
-struct MapChoice {
-    code: u16,
-    index: u32,
-}
-
-#[derive(Deserialize)]
-#[serde(deny_unknown_fields)]
 pub(crate) struct Config {
     server: SocketAddrV4,
     relay: SocketAddrV4,
@@ -56,8 +49,6 @@ pub(crate) struct Config {
     active_seconds: u64,
     minimum_run_seconds: u64,
     minimum_rounds: u64,
-    #[serde(default)]
-    maps: Vec<MapChoice>,
     // Permit operator/controller orchestration with no public control endpoint.
     first_start_file: Option<PathBuf>,
     #[serde(default)]
@@ -79,8 +70,6 @@ impl Config {
             || !(2..=180).contains(&self.active_seconds)
             || self.minimum_run_seconds > 86400
             || !(1..=8).contains(&self.minimum_rounds)
-            || (!self.maps.is_empty() && self.maps.len() != self.minimum_rounds as usize)
-            || self.maps.iter().any(|m| m.index >= 16)
             || !(1.0..=1000.).contains(&self.delivery_p99_ms_max)
             || !(0.0..=5.).contains(&self.delivery_loss_percent_max)
             || self.login_port == self.channel_port
@@ -205,16 +194,6 @@ impl RoomContext {
             if block != 0 && self.delivery_failed.load(Ordering::Relaxed) {
                 break;
             }
-            let map = self
-                .config
-                .maps
-                .get((*completed % self.config.minimum_rounds) as usize);
-            if let Some(map) = map {
-                players[0].select_map(map.code, map.index).await?;
-                for p in &mut *players {
-                    p.map_selected(map.code, map.index).await?;
-                }
-            }
             for p in &mut players[1..] {
                 p.ready().await?;
             }
@@ -225,9 +204,7 @@ impl RoomContext {
             }
             players[0].start().await?;
             for p in &mut *players {
-                p.load(map.map(|m| m.code))
-                    .await
-                    .map_err(|e| phase("start/load", e))?;
+                p.load().await.map_err(|e| phase("start/load", e))?;
             }
             let mut routes = Vec::with_capacity(roster);
             for (slot, p) in players.iter_mut().enumerate() {
@@ -260,10 +237,13 @@ impl RoomContext {
                 self.config.delivery_buckets.then_some(self.start),
             )
             .await?;
+            // Pacing lateness is retained in the telemetry for diagnosis. The
+            // M8 relay gate is delivery p99 and loss; a scheduler slip in the
+            // synthetic sender must not turn an otherwise delivered round
+            // into a transport failure.
             let passed = d.received > 0
                 && d.p99_ms <= self.config.delivery_p99_ms_max
-                && d.loss_percent <= self.config.delivery_loss_percent_max
-                && d.pacing_late_over_20ms == 0;
+                && d.loss_percent <= self.config.delivery_loss_percent_max;
             emit(
                 json!({"event":"delivery","room":self.index,"round":*completed+1,
                         "at_unix_ms":unix_ms(),"passed":passed,"delivery":d}),

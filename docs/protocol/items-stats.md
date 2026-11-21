@@ -13,13 +13,6 @@ Các item cố định và hidden list2 từ fixture được kiểm riêng trư
 sau đó kiểm policy MaxPower/Shoe/Punch/kim. Bảng rơi không tự cấp quyền bật hành động chưa nghiệm thu,
 không sinh lại item của nhóm bị tắt hoặc mở thêm nhóm item ngoài G1.
 
-**F1-a (design):** catalog thử riêng chỉ dùng Bomb, Fire, Roller và MaxPower. List1 của 582 lấy các
-placement có giá trị 100 ở ô trống hợp lệ, ngoài spawn; placement khác vẫn giữ trong profile nguồn. List2 có tối
-đa một drop ẩn mỗi map, chọn ô thùng và loại item bằng hash payload map cùng trọng số dương của nhóm hỗ trợ.
-Kết quả lặp lại mỗi ván. Policy có mục đích đối chứng terrain/pickup, chưa phục hồi RNG hoặc mật độ rơi gốc;
-không bật item còn thiếu. [Bằng chứng native](../evidence/rust-service/f1-pack-map-adapters.json) giữ từng ca
-placement và drop đã quan sát. Đường cài G1 giữ floor hiện hành.
-
 [Mục lục](../PROTOCOL.md) · [Câu hỏi đang mở](../RESEARCH.md) · [Thứ tự việc](../PLAN.md#dashboard).
 
 <a id="item-families"></a>
