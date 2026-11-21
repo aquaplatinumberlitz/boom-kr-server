@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP390: Launcher có luồng tạo/vào phòng O1 bằng tên khách, phát hiện LAN và ghép phiên bản gói.** [Bằng chứng](docs/evidence/checkpoints/records/CP390.json).
+**CP391: O1 headless hoàn tất round hai guest, route relay/LAN/mailbox và thu hồi session.** [Bằng chứng](docs/evidence/checkpoints/records/CP391.json).
 
 ## Bắt đầu
 
