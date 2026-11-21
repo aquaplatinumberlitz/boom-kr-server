@@ -5,8 +5,8 @@
   "base_commit": "03338fb2d0ffa06aed37eea9f27bae1026453298",
   "canonical": "docs/PLAN.md#f1-normal-battle",
   "checkpoint_reservations": [
-    "CP394",
-    "CP395"
+    "CP392",
+    "CP393"
   ],
   "checkpoint_registration": "pending_predecessors",
   "pack_sha256": {
