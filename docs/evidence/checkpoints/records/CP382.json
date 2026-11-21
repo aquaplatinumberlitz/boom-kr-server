@@ -1,0 +1,72 @@
+{
+  "id": "CP382",
+  "previous": "CP381",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T05:45:55.289242+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Đại diện F1 nào chơi và về phòng trên KR 00967 với server hiện tại, và bộ điều khiển #538 xác nhận được mốc nào?",
+  "scope": "KRE-STEP0-A (#532) và kiểm native KRE-STEP0-C (#534). Hai client KR 00967 trên Wine, TLS companion và relay xác thực trong LAN cô lập; không mở F1–F6.",
+  "context_commit": "aa5d9b34f66b098e26f7a5d00a0a5e6b0898ebed",
+  "artifacts": [
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "e5284ce172e6b9655583324d1116d00234980b1dd9c1b662b399b7a1b3d8eb87"},
+    {"sha256": "719aad5f96629f4893ed52cd4c888a6a6b53a90eebc99d44016315f618fdb700"},
+    {"sha256": "92f88684374fcb32231e33811f5799d3e59da36bb3fd65f7fb06dc2cabcfe8de"},
+    {"sha256": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b"},
+    {"sha256": "f5797a744797cd18ff524e42f7645bdecf8869d2462e7bb1245f1f7ddb6d1f98"}
+  ],
+  "locators": [
+    "local/research/codex/step0-native",
+    "Wine wine-10.0-20260425 (CachyOS); batch-1 đến batch-4; catalog và journal pin cùng từng run."
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/classification.md", "summary": "Patrit01 đi từ chọn map đến Start/Load, đặt bom, kết quả và về phòng. Có 15 map khác nhau hoàn tất cùng lát cắt.", "evidence": ["RECEIPT", "PATRIT_ARENA", "PATRIT_RETURN"], "limits": "Mỗi lần hai người trên bản sao tương thích; adapter dựng catalog từ pack, dùng floor trống và tắt terrain phía server."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/classification.md", "summary": "Các mốc health, TLS setup/Ready/Start/peer/result và SQLite xác nhận được thao tác chuột và giữ phím Win32 trên Wine.", "evidence": ["RECEIPT", "DRIVER", "CONTROLLER1"], "limits": "Input nhập Unicode và Windows thật không đo ở lượt này. kr-load hiện dựng phòng riêng nên dùng hai client thật."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/classification.md", "summary": "Lượt 3 và 4 dừng trước chọn map: server báo native_stage_guard ở opcode 1.", "evidence": ["LOGIN3", "LOGIN4", "RECOVERY4"], "limits": "Thử nối lại companion trong chính lượt 4 không thoát lỗi locale của client; chưa chốt nguyên nhân của guard, không tính map chưa chạy là lỗi tương thích."},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/classification.md", "summary": "Kiểm tra census và adapter hiện hành không tìm được map lớp C F1 phù hợp điều kiện profile cho phép thử này.", "evidence": ["PREFLIGHT"], "limits": "Giữ lớp C, không coi các mẫu chưa chạy là lỗi client."}
+  ],
+  "verification": [
+    {"check": "Bốn phiên, tính mẫu đã chọn/hoàn tất theo phiên; đối chiếu màn hình, yêu cầu 99/118/202, stream TLS và SQLite.", "result": "pass", "evidence": ["RECEIPT", "VERIFY", "PATRIT_ARENA", "PATRIT_RETURN"], "limits": "Mẫu thử/hoàn tất: 8/8, 8/8, 0/0, 0/0. 15 map khác nhau đã thử; 0 map chưa hoàn tất."},
+    {"check": "Vào phòng ở lượt 3 và 4 để thử các họ biến thể.", "result": "fail", "evidence": ["LOGIN3", "LOGIN4", "RECOVERY4"], "limits": "Không tới sảnh/phòng; không mở lượt thứ năm."},
+    {"check": "Quy trình cô lập và dọn bản sao/prefix thuộc lượt sau khi namespace đóng.", "result": "pass", "evidence": ["RECEIPT"], "limits": "18531985496 byte scratch đã dọn. Trình điều khiển lượt 1 và 2 được nối lại trong namespace đang chạy; mỗi lượt chỉ khởi động một cặp client."},
+    {"check": "Sinh bảng và kiểm phạm vi lớp A bằng đúng tên map trong pack.", "result": "pass", "evidence": ["CLASSIFIER"], "limits": "Mẫu A chỉ chứng minh chu trình đã đo; họ nhiều map còn giữ lớp khi chưa đủ từng map."}
+  ],
+  "delta": {"added": ["Ghi lớp A ở cấp map khi có chu trình native đủ; giữ lớp C và mẫu chưa thử."], "corrected": ["Patrit01 đã qua các mốc trước đây còn thiếu."], "superseded": []},
+  "blockers": [
+    "Đăng nhập native còn thiếu ổn định; lượt 3 và 4 chưa vào sảnh. Mẫu có script, kích thước khác chuẩn hoặc parser chưa đủ chưa có profile thích hợp; chưa đo item/drop/terrain và roster rộng."
+  ],
+  "next_steps": [
+    {"id": "STEP0-A-native-samples", "task": "KRE-STEP0-A", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Dùng kết quả xếp loại để định phạm vi F1 khi được mở; chỉ kiểm tiếp mẫu chưa đo khi có profile và ngân sách."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T05:45:55.289242+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất ở bước 0."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Giữ mốc rời README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi kết quả bước 0 và phần còn mở trên dashboard."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire, authority hoặc thiết lập phục vụ."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở hoặc đóng câu hỏi protocol; giới hạn thử nằm trong bảng xếp loại."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi tính năng hoặc gate."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Catalog và câu hỏi giữ nguyên."},
+    {"path": "docs/content/classification.md", "state": "updated", "reason": "Sinh lớp ở đúng phạm vi map hoặc họ."},
+    {"path": "docs/evidence/checkpoints/records/CP382.json", "state": "updated", "reason": "Pin journal, log mốc, ảnh, profile và receipt của cả bốn lượt."}
+  ],
+  "evidence": [
+    {"id": "RECEIPT", "kind": "local", "path": "local/research/codex/step0-native/batch-receipt.json", "bytes": 23456, "sha256": "90dd7c6bba88912d3481429a84b2763977b1c5573b0d89fcbbad9db823229a05"},
+    {"id": "PREFLIGHT", "kind": "local", "path": "local/research/codex/step0-native/batch-preflight.txt", "bytes": 750, "sha256": "b47d980ff1b499a9fe00dc346681a8c28a6bcb9d29610fb145737904329d4e55"},
+    {"id": "DRIVER", "kind": "local", "path": "local/research/codex/step0-native/drive_batch.py", "bytes": 5777, "sha256": "dde28e6ca4f7998e882194d6964e4e811bda00ff92dfcbeb5e14fb7c0cfc995e"},
+    {"id": "VERIFY", "kind": "local", "path": "local/research/codex/step0-native/verify_batch.py", "bytes": 4116, "sha256": "df2f587100771adfcd377d2a58c1a92681637f8d02adccea7b7a0efec8d1e459"},
+    {"id": "CONTROLLER1", "kind": "local", "path": "local/research/codex/step0-native/batch-1/controller.jsonl", "bytes": 6939, "sha256": "fb14a9227e80f7393364cb7b529b1a8ea87e286a0aa5f18d52d9211bc6a7a3b8"},
+    {"id": "PATRIT_ARENA", "kind": "local", "path": "local/research/codex/step0-native/batch-1/Patrit01-arena-A.png", "bytes": 213712, "sha256": "d727935569c234a526f63d3af074f5598954860532a661848224bebf894181fe"},
+    {"id": "PATRIT_RETURN", "kind": "local", "path": "local/research/codex/step0-native/batch-1/Patrit01-returned-A.png", "bytes": 178197, "sha256": "0044715360e12adff29e91dbd362f705040e94607c6cf0839d068562a9334f04"},
+    {"id": "CLASSIFIER", "kind": "repository", "path": "tools/content_classification.py", "bytes": 17949, "sha256": "559f6ef314ec3c263eeb91b4019bf6c8f36d7b2e306b3bda12701762b95c80e5"},
+    {"id": "LOGIN3", "kind": "local", "path": "local/research/codex/step0-native/batch-3/service/rust-events.jsonl", "bytes": 4845, "sha256": "9f77def42af156ac88f21f1a6845c13c17e200dc74543847d62f36ff7f26c56b"},
+    {"id": "LOGIN4", "kind": "local", "path": "local/research/codex/step0-native/batch-4/service/rust-events.jsonl", "bytes": 18146, "sha256": "767e196a0f9604a7ba2df266ee7717ca2e1db1d6ce8164568e2f46ce1bebfc38"},
+    {"id": "RECOVERY4", "kind": "local", "path": "local/research/codex/step0-native/batch-4/recovery-input-A.png", "bytes": 5555, "sha256": "f5124419b17b002a5234f934f6300179e8eadf78664e998178195b2c68cbb08c"},
+    {"id": "INPUT_TOOL", "kind": "repository", "path": "tools/native_client_input.c", "bytes": 4030, "sha256": "154fa801db994cf4b5ef9fcda7708f70683895817b8b45526deac0a83b7cf0d3"},
+    {"id": "SERVER_GATE_TOOL", "kind": "repository", "path": "tools/native_client_controller.py", "bytes": 9964, "sha256": "2fc52133521daf07904ebb610825ac0ca55de401a059ebff84a98f05fc9071bc"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/step0-native", "path": "local/evidence-manifests/2ed37761336a5467f3b93093f1e98dd318ce37873262fb690ac4bb9f40aee38b.jsonl", "sha256": "2ed37761336a5467f3b93093f1e98dd318ce37873262fb690ac4bb9f40aee38b", "bytes": 74736, "count": 380, "files_bytes": 23739215}
+  ]
+}

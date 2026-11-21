@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP378: Có công cụ thu CPU, RAM, FD và trạng thái phòng/relay trước, trong và sau tải M8.** [Bằng chứng](docs/evidence/checkpoints/records/CP378.json).
+**CP382: Bước 0 xác nhận Patrit01 và các mẫu F1 khác chơi đến kết quả và về phòng qua TLS/relay trên Wine.** [Bằng chứng](docs/evidence/checkpoints/records/CP382.json).
 
 ## Bắt đầu
 

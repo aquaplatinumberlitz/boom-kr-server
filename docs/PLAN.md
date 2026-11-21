@@ -9,11 +9,11 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, CP370 / AUD148: đạt phạm vi L1 giai đoạn 1.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP382 / AUD150: cập nhật xếp loại mẫu F1.**
 
-**Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
-đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
-[lộ trình sáu đợt F1–F6](#full-game-roadmap); bước 0 có [xếp loại](content/classification.md) và đối chứng native Factory07; mẫu Patrit01 còn thiếu Start/Load. F1–F6 chưa mở.
+**Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
+tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [Lộ trình F1–F6](#full-game-roadmap) chưa mở.
+[Bước 0](content/classification.md) đã xác nhận Patrit01 chơi đến kết quả và về phòng; lỗi đăng nhập Wine chặn các họ biến thể.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -727,7 +727,7 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
-Thử đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
+Đã thử đại diện F1 trên Wine; giữ lease và ngân sách khi kiểm tiếp. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
