@@ -1,0 +1,58 @@
+{
+  "schema": "kre-semantic-session-v1",
+  "map": "Factory07",
+  "source": {
+    "events": {
+      "sha256": "bab53c4d1c6e4a7f27b3bdef9f59225cb3329828b6a30d43e11d8100894025ad",
+      "bytes": 5474
+    },
+    "journal_markers": {
+      "sha256": "23ac53ed2dbc0ab38d8c7a1b227cd97f2ac55052afff6d25ed286d583c14eb1a",
+      "bytes": 82056
+    }
+  },
+  "rounds": [
+    {
+      "steps": [
+        "95",
+        "ready",
+        "ready",
+        "104",
+        "start",
+        "start",
+        "99",
+        "99",
+        "118",
+        "118",
+        "202",
+        "202",
+        "585",
+        "585",
+        "return",
+        "return"
+      ],
+      "result": "elimination"
+    },
+    {
+      "steps": [
+        "95",
+        "ready",
+        "ready",
+        "104",
+        "start",
+        "start",
+        "99",
+        "99",
+        "118",
+        "118",
+        "202",
+        "202",
+        "585",
+        "585",
+        "return",
+        "return"
+      ],
+      "result": "elimination"
+    }
+  ]
+}
