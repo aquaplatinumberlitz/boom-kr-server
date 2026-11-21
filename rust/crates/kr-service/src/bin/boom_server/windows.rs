@@ -58,6 +58,7 @@ struct App {
     run: Option<Run>,
     preparation_error: String,
     tray: bool,
+    exit_after_stop: bool,
     name: HWND,
     game: HWND,
     status: HWND,
@@ -135,6 +136,7 @@ impl App {
             run: None,
             preparation_error: String::new(),
             tray: false,
+            exit_after_stop: false,
             name: null_mut(),
             game: null_mut(),
             status: null_mut(),
@@ -600,7 +602,17 @@ unsafe extern "system" fn window(hwnd: HWND, msg: u32, w: WPARAM, l: LPARAM) -> 
                     let Some(app) = app.as_mut() else { return };
                     match msg {
                         WM_COMMAND => app.command(hwnd, (w & 0xffff) as i32),
-                        WM_TIMER => app.refresh(hwnd),
+                        WM_TIMER => {
+                            app.refresh(hwnd);
+                            if app.exit_after_stop && app.run.is_none() {
+                                DestroyWindow(hwnd);
+                            }
+                        }
+                        WM_CLOSE if app.run.as_ref().is_some_and(|run| run.stopping) => {
+                            // Stop then Close should exit when draining finishes, even
+                            // if Close arrives before the worker's completion message.
+                            app.exit_after_stop = true;
+                        }
                         WM_CLOSE if app.run.is_some() => {
                             if !app.tray {
                                 app.tray = tray(hwnd, NIM_ADD);
