@@ -1,10 +1,13 @@
 //! O1 peer transport and the S1 self-hosted server tunnel.
 
 mod code;
+pub mod room;
 
 pub use code::{CodeError, Invite, VERSION};
 use iroh::endpoint::{Builder, PortmapperConfig, presets};
-pub use iroh::{Endpoint, EndpointAddr, EndpointId, RelayMode, SecretKey, endpoint::Connection};
+pub use iroh::{
+    Endpoint, EndpointAddr, EndpointId, RelayMode, RelayUrl, SecretKey, endpoint::Connection,
+};
 use std::{io, net::SocketAddr};
 use tokio::net::UdpSocket;
 
