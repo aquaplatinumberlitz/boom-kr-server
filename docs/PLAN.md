@@ -727,9 +727,7 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
-Thử đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json)
-→ S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành bằng gói đầy đủ
-qua một link Google Drive do chủ dự án cập nhật; launcher chỉ hiện link đó, không có cơ chế tự cập nhật hay gói vá.
+Thử đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
