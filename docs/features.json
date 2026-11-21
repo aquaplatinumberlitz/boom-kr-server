@@ -6046,6 +6046,7 @@
           "docs/evidence/rust-service/m8-server-package.json",
           "docs/evidence/rust-service/m8-pack-export.json",
           "docs/evidence/rust-service/o1-windows-service.json",
+          "docs/evidence/rust-service/o1-launcher.json",
           "docs/evidence/rust-service/m8-public-launcher-foundation.json",
           "docs/evidence/checkpoints/records/CP349.json",
           "docs/evidence/checkpoints/records/CP350.json",
@@ -6245,6 +6246,7 @@
         }
       },
       "issues": [
+        "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/554",
         "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520",

@@ -68,6 +68,17 @@ python3 tools/rust_service_package.py --base "$SERVING_RECIPE" \
   --target x86_64-pc-windows-gnu --out local/operator/server-windows
 ```
 
+Để dựng gói người chơi O1, thêm `friends` vào recipe `--windows-runtime`: `package` là thư mục server
+Windows đã dựng, `manifest_sha256` là pin của nó và `python_files` là các file Python embeddable x64 đã pin.
+Dùng recipe client KR đã đo: WCP và candidate TCP 3808–3998 bước 10, login 3838, channel 3858. Recipe rút gọn
+CP388 chỉ dành cho kr-load và không đi tới LoginStage của client phát hành.
+Launcher sẽ gọi exporter trên phần pack KR gốc có trong payload, giữ SQLite, TLS và cache riêng trong
+`state/friends-data`. Runner bật nội dung nhân vật đã có trong catalog xuất, không thêm shop hoặc đồ chưa được
+server hỗ trợ. Gói Internet có thể cấu hình danh sách `friends_directory`; đặt `[]` cho bản chỉ LAN. Gói có
+script `Cai-dat-Windows.ps1` để thêm quy tắc UDP theo ứng dụng trong mạng nội bộ. Launcher và server O1 chạy
+bằng quyền thường; nếu bản game yêu cầu UAC, Windows hiện hộp thoại riêng cho game. Có thể bỏ cấu hình máy
+chủ cộng đồng khi phát hành gói chỉ có O1.
+
 Trên Windows x64, chạy bằng tài khoản thường, với Python 3.11+ và ổ đĩa cục bộ hỗ trợ ACL. Dùng thư mục state
 tuyệt đối nằm ngoài gói và game; thư mục cha đã tồn tại và do người vận hành tin cậy. Ví dụ PowerShell:
 

@@ -24,6 +24,7 @@ use tokio::{
 };
 use zeroize::Zeroizing;
 
+pub mod friends;
 pub mod heartbeat;
 pub mod trace;
 use trace::Trace;
@@ -557,14 +558,11 @@ async fn run_companion(
 /// Server offers are carried only inside the pinned original TLS connection.
 /// They delegate the existing DB owner to the existing authenticated UDP hub;
 /// no capability enters the native KR stream, argv, disk or logs.
-async fn peers(
-    connection: Connection,
-    stop: watch::Receiver<bool>,
-    bound: Arc<AtomicBool>,
-    backend: crate::UdpBackend,
-) -> io::Result<()> {
+async fn read_offers(
+    connection: &Connection,
+) -> io::Result<Vec<(std::net::SocketAddrV4, Vec<u8>, crate::Secret)>> {
     let mut recv = connection.accept_uni().await.map_err(io::Error::other)?;
-    let offers = tokio::time::timeout(Duration::from_secs(2), async {
+    tokio::time::timeout(Duration::from_secs(2), async {
         let count = recv.read_u8().await?;
         if !(1..=2).contains(&count) {
             return Err(io::Error::other("native peer roster bound"));
@@ -597,7 +595,16 @@ async fn peers(
         Ok::<_, io::Error>(offers)
     })
     .await
-    .map_err(|_| io::Error::other("native peer offer deadline"))??;
+    .map_err(|_| io::Error::other("native peer offer deadline"))?
+}
+
+async fn peers(
+    connection: Connection,
+    stop: watch::Receiver<bool>,
+    bound: Arc<AtomicBool>,
+    backend: crate::UdpBackend,
+) -> io::Result<()> {
+    let offers = read_offers(&connection).await?;
     // The pinned service sends an offer only after the DB roster has taken
     // ownership of its native channel. This affects copying limits, not auth.
     bound.store(true, Ordering::Release);

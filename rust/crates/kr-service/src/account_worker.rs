@@ -170,7 +170,7 @@ pub enum PersistenceResult {
 
 enum LocalLoginRequest {
     Accounts(Vec<(Zeroizing<String>, Zeroizing<Vec<u8>>)>),
-    Guests(u8),
+    Guests(u8, Option<String>),
 }
 enum Command {
     Manage {
@@ -349,7 +349,7 @@ impl Client {
         ttl: i64,
         idle: Option<i64>,
     ) -> Result<Pending<Vec<Grant>>> {
-        self.submit_trial(count, ttl, idle, AuthorizationTime::ExecutionUtc)
+        self.submit_trial(count, None, ttl, idle, AuthorizationTime::ExecutionUtc)
     }
     pub fn try_trial_local(
         &self,
@@ -358,11 +358,20 @@ impl Client {
         idle: Option<i64>,
         now: i64,
     ) -> Result<Pending<Vec<Grant>>> {
-        self.submit_trial(count, ttl, idle, AuthorizationTime::Supplied(now))
+        self.submit_trial(count, None, ttl, idle, AuthorizationTime::Supplied(now))
+    }
+    pub(crate) fn try_named_guest(
+        &self,
+        name: String,
+        ttl: i64,
+        idle: Option<i64>,
+    ) -> Result<Pending<Vec<Grant>>> {
+        self.submit_trial(1, Some(name), ttl, idle, AuthorizationTime::ExecutionUtc)
     }
     fn submit_trial(
         &self,
         count: u8,
+        name: Option<String>,
         ttl: i64,
         idle: Option<i64>,
         now: AuthorizationTime,
@@ -377,7 +386,7 @@ impl Client {
         let (reply, rx) = oneshot::channel();
         let handoff = Handoff::new();
         let command = Command::LocalLogin {
-            request: LocalLoginRequest::Guests(count),
+            request: LocalLoginRequest::Guests(count, name),
             ttl,
             idle,
             now,
@@ -879,12 +888,12 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                             }
                         }
                     }
-                    LocalLoginRequest::Guests(count) => match now {
+                    LocalLoginRequest::Guests(count, name) => match now {
                         AuthorizationTime::Supplied(time) => {
                             store.trial_local(count, ttl, idle, time)
                         }
                         AuthorizationTime::ExecutionUtc => {
-                            store.trial_local_current(count, ttl, idle)
+                            store.trial_local_current(count, name.as_deref(), ttl, idle)
                         }
                     },
                 }

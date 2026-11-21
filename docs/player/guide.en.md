@@ -5,12 +5,12 @@
 
 **Servers** is for communities that run their own server. You use an account for that server, which saves progress according to its settings.
 
-**Play with friends** (Coming soon) is for private sessions. One friend hosts the room, and nobody needs an account.
+**Play with friends** is for private sessions. One friend hosts the room, and nobody needs an account.
 
 <!-- compare -->
 ## Compare the two modes
 
-| Topic | Servers | Play with friends — Coming soon |
+| Topic | Servers | Play with friends |
 | --- | --- | --- |
 | Who hosts? | The community runs a PC or VPS. | The friend who creates the room. |
 | Account | A separate account for each server. | No account; just choose a name. |
@@ -18,12 +18,12 @@
 | Content | Depends on the server's settings and supported features. | All supported items unlocked. |
 | Connection | Bundled server today; LAN/Internet invites in S1 with no manual port forwarding for P2P. | Room codes over LAN or Internet in O1; no manual port forwarding. |
 | How long? | Can stay up long term. | The room closes when the host leaves. |
-| Players | Depends on the server and room limits. | Small groups; O1 limits will be published at launch. |
+| Players | Depends on the server and room limits. | Check the game room for available slots. |
 
 <!-- choose -->
 ## Which should I choose?
 
-- For a quick game with a few people, choose **Play with friends** when O1 launches.
+- For a quick game with a few people, choose **Play with friends**.
 - For a regular group that wants to keep items or progress, choose **Servers**.
 - For a long-running community, consider a VPS or a PC that stays on 24/7. S1 setup steps are coming soon.
 
@@ -40,7 +40,15 @@
 <!-- friends -->
 ## Get started with Play with friends
 
-**Coming soon — O1:** One person hosts a room and shares its code. Friends will enter the code over LAN or the Internet without an account or manual port forwarding. The room closes when the host leaves.
+1. Open the launcher, choose **Play with friends**, and enter a **Character name**. The launcher remembers it for next time.
+2. The host clicks **Host room**. When the code appears, click **Copy code** and share it privately with friends. The host's game opens automatically.
+3. Friends paste the code and click **Join room**, or select the room from **Find LAN rooms**. Keep the launcher open while playing.
+4. At the game's login screen, choose **Play trial 1P**. The game uses your launcher name. You can leave the account and password fields blank. In the lobby, one player creates a game room and the others join it.
+5. If your package differs from the host's, use **Download latest** when the bundle provides a link. If the host closes the game or launcher, friends are told that the room closed.
+
+![Play with friends in the launcher](o1-launcher.jpg)
+
+Playing across networks needs a bundle with a working room directory. If the room cannot be found, check the code and ask the host whether their game is still open.
 
 <!-- connection -->
 ## Can't connect
@@ -57,5 +65,6 @@
 <!-- firewall -->
 ## Windows Firewall
 
-- If Windows blocks the connection, check **Allow an app through Windows Firewall**. Allow the launcher and programs only from a bundle you trust, for the appropriate network type.
-- Don't turn off the firewall. Ask the server operator for help if you still can't play.
+- Run **Cai-dat-Windows.ps1** as administrator to allow inbound local network UDP for the launcher, companion and server.
+- If you do not have permission, ask an administrator to allow local network UDP for `kr-player.exe`, `kr-prelogin.exe` and `friends-server/bin/kr-service.exe`. Keep Windows Firewall on.
+- Start the launcher normally. Only the firewall setup needs administrator rights.

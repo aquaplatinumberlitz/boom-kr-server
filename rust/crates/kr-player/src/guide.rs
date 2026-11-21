@@ -99,6 +99,10 @@ fn render_markdown(body: &str) -> Element<'static, Message> {
     let mut content = column![].spacing(9).width(Length::Fill);
     let mut table_head = true;
     for line in body.lines().map(str::trim).filter(|line| !line.is_empty()) {
+        // The bundled Markdown displays the screenshot in document readers.
+        if line.starts_with("![") {
+            continue;
+        }
         if line.starts_with('|') {
             if !cells(line).all(|cell| cell.chars().all(|ch| matches!(ch, '-' | ':'))) {
                 content = content.push(rendered_table_line(line, table_head));

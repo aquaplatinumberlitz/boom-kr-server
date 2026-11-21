@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 from player_package import ROOT, build, digest, windows_runtime
+from rust_package_runtime import friends_pack
 
 
 def index(offset, size):
@@ -40,6 +41,24 @@ class PackageTests(unittest.TestCase):
                 return dict(path=str(path), bytes=path.stat().st_size, sha256=digest(path))
             self.recipe['languages'][language] = dict(encoding='949x', data=str(data), fonts=str(data),
                 video=pin(self.base / 'nm.bik'), executable=pin(data / 'CA.exe'), index_stage='base', images='pending')
+
+    def test_friends_uses_original_prefix_and_original_index(self):
+        stage = self.root / 'vi-pack'
+        stage.mkdir()
+        (stage / 'fx.idd').write_bytes(b'KRVI')
+        (stage / 'fx.idx').write_bytes(index(2, 2))
+        self.recipe['pack_stages'] = [dict(language='vi', root=str(stage))]
+        self.recipe['languages']['vi']['index_stage'] = 'vi'
+        output = self.root / 'output'
+        build(self.recipe, output, self.no_art)
+        manifest = digest(output / 'manifest.json')
+        pins = {name: digest(self.base / name) for name in ('fx.idx', 'fx.idd')}
+        chosen = friends_pack(output, manifest, pins)
+        self.assertEqual(chosen['fx.idd'].read_bytes(), b'KR')
+        self.assertEqual(chosen['fx.idx'].read_bytes(), index(0, 2))
+        self.assertNotEqual(chosen['fx.idx'], output / 'payload/languages/vi/fx.idx')
+        with self.assertRaisesRegex(ValueError, 'pack gốc'):
+            friends_pack(output, manifest, pins | {'fx.idx': '0' * 64})
 
     def test_sequential_shared_pack_and_distinct_indices(self):
         for language, data, offset in [('vi', b'KRVI', 2), ('en', b'KRVIEN', 4)]:

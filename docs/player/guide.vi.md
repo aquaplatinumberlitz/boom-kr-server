@@ -5,12 +5,12 @@
 
 **Máy chủ** dành cho cộng đồng có máy chạy riêng. Bạn dùng tài khoản của máy đó và giữ tiến trình theo cấu hình của họ.
 
-**Chơi với bạn bè** (Sắp có) dành cho những buổi chơi riêng. Máy của một người bạn tạo phòng, không cần tài khoản.
+**Chơi với bạn bè** dành cho những buổi chơi riêng. Máy của một người bạn tạo phòng, không cần tài khoản.
 
 <!-- compare -->
 ## So sánh hai chế độ
 
-| Tiêu chí | Máy chủ | Chơi với bạn bè — Sắp có |
+| Tiêu chí | Máy chủ | Chơi với bạn bè |
 | --- | --- | --- |
 | Ai chạy máy chủ? | Chủ cộng đồng chạy trên PC hoặc VPS. | Máy của người tạo phòng. |
 | Tài khoản | Tài khoản riêng cho từng máy chủ. | Không cần; chỉ đặt tên. |
@@ -18,12 +18,12 @@
 | Nội dung | Theo cấu hình và tính năng máy chủ hỗ trợ. | Mở khoá toàn bộ vật phẩm được hỗ trợ. |
 | Kết nối | Máy có sẵn trong gói; ở S1 dùng mã mời LAN/Internet, không cần tự mở cổng khi kết nối P2P. | Mã phòng qua LAN hoặc Internet ở O1, không cần tự mở cổng. |
 | Thời gian | Có thể chạy lâu dài. | Phòng đóng khi người tạo thoát. |
-| Số người | Theo giới hạn máy chủ và phòng. | Nhóm nhỏ; giới hạn O1 sẽ công bố khi mở. |
+| Số người | Theo giới hạn máy chủ và phòng. | Theo số chỗ trống hiển thị trong phòng. |
 
 <!-- choose -->
 ## Nên chọn chế độ nào?
 
-- Muốn chơi nhanh với vài người: chọn **Chơi với bạn bè** khi O1 mở.
+- Muốn chơi nhanh với vài người: chọn **Chơi với bạn bè**.
 - Nhóm chơi thường xuyên, muốn giữ đồ hoặc tiến trình: chọn **Máy chủ**.
 - Muốn phục vụ một cộng đồng lâu dài: cân nhắc VPS hay máy chạy 24/7. Quy trình tự dựng gói người chơi ở S1 vẫn sắp có.
 
@@ -40,7 +40,15 @@
 <!-- friends -->
 ## Bắt đầu chơi với bạn bè
 
-**Sắp có — O1:** Một người chọn tạo phòng rồi gửi mã. Bạn bè sẽ nhập mã để vào qua LAN hoặc Internet; không cần tài khoản hay tự mở cổng. Phòng đóng khi người tạo thoát.
+1. Mở launcher, chọn **Chơi với bạn bè** và nhập **Tên nhân vật**. Launcher nhớ tên này cho lần sau.
+2. Người tạo bấm **Tạo phòng**. Khi mã xuất hiện, bấm **Sao chép** và gửi mã riêng cho bạn bè. Game của người tạo tự mở.
+3. Người vào dán mã và bấm **Vào phòng**, hoặc chọn phòng trong danh sách **Tìm phòng LAN**. Giữ launcher mở trong lúc chơi.
+4. Ở màn hình đăng nhập của game, chọn **Chơi thử 1P**. Game dùng tên đã nhập trong launcher; bạn không cần điền tài khoản hay mật khẩu. Vào sảnh, một người tạo phòng đấu và người còn lại vào phòng đó.
+5. Nếu launcher báo khác phiên bản, tải cùng gói với chủ phòng bằng **Tải bản mới** (nếu gói có liên kết). Khi chủ phòng thoát game hoặc launcher, mọi người nhận thông báo phòng đã đóng.
+
+![Tab Chơi với bạn bè](o1-launcher.jpg)
+
+Khi chơi khác mạng, cần gói có dịch vụ tra mã đang hoạt động. Nếu không tìm thấy phòng, kiểm tra mã và hỏi chủ phòng xem game còn mở không.
 
 <!-- connection -->
 ## Không kết nối được
@@ -57,5 +65,6 @@
 <!-- firewall -->
 ## Tường lửa Windows
 
-- Nếu Windows chặn kết nối, kiểm tra mục **Cho phép ứng dụng qua tường lửa**. Chỉ cho phép launcher và các chương trình từ gói mà bạn tin cậy, trên loại mạng phù hợp.
-- Không tắt toàn bộ tường lửa. Hỏi người quản lý máy nếu vẫn không chơi được.
+- Chạy **Cai-dat-Windows.ps1** bằng quyền quản trị để cho phép launcher, companion và server nhận UDP trong mạng nội bộ.
+- Nếu không có quyền, nhờ quản trị viên cho phép `kr-player.exe`, `kr-prelogin.exe` và `friends-server/bin/kr-service.exe` nhận UDP từ mạng nội bộ. Không tắt tường lửa.
+- Mở launcher bằng tài khoản thường; chỉ bước thêm quy tắc tường lửa cần quyền quản trị.

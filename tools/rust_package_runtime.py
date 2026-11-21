@@ -136,7 +136,7 @@ def init_tls(root, state, target):
             raise ValueError('TLS identity chưa đầy đủ; cần provision lại trong state riêng')
 
 
-def prepare(root, state, cache=None, scope=None, f1_maps=None):
+def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False):
     state = private_state(root, state)
     socket = state / 'launch.sock'
     if os.name != 'nt' and max(len(os.fsencode(p)) for p in [socket, state / 'accounts.admin.sock']) > 100:
@@ -147,7 +147,11 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None):
     for section, key in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
         if admission.get(section) is not None:
             admission[section]['private_key'] = str(state / key)
+    if friends:
+        configure_friends(config)
     for section, directory in package_tls(root, state).items():
+        if friends and section != 'prelogin_tls':
+            continue
         cert = directory / 'certificate.der'
         admission[section].update(private_key=str(directory / 'private.pk8'),
                                   certificate=dict(path=str(cert), bytes=cert.stat().st_size,
@@ -159,7 +163,7 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None):
         from kr_pack_export import F1, G1
         wire = run / 'wire'
         wire.mkdir(mode=0o700)
-        configure(config, root, cache, wire, G1 if scope == 'g1' else F1 if scope == 'f1' else f1_maps, scope)
+        configure(config, root, cache, wire, G1 if scope == 'g1' else F1 if scope == 'f1' else f1_maps, scope, unlock_all=friends)
     runtime = run / 'config.json'
     fd = os.open(runtime, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, 'w', encoding='utf-8') as stream:
@@ -168,16 +172,64 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None):
     return runtime, run / 'service', state / 'accounts.sqlite'
 
 
+def friends_pack(player, expected_sha256, pins):
+    """Select the original prefix and original index; never export translated pack bytes."""
+    path = member(player, 'manifest.json')
+    if path.stat().st_size > 4 * 1024 * 1024 or digest(path) != expected_sha256:
+        raise ValueError('Manifest gói người chơi không khớp')
+    value = json.loads(path.read_bytes())
+    if value.get('schema') != 'kre-player-package-v1':
+        raise ValueError('Cần gói người chơi KR')
+    files = {}
+    for name, hash_value in pins.items():
+        if name.endswith('.idd'):
+            rows = (row['parts'][0] for row in value['packs'] if row['path'].casefold() == name.casefold())
+        else:
+            rows = (row['payload'] for language in value['languages'].values()
+                    for row in language['files'] if row['path'].casefold() == name.casefold())
+        pin = next((row for row in rows if row['sha256'] == hash_value), None)
+        if pin is None:
+            raise ValueError(f'Gói người chơi thiếu pack gốc: {name}')
+        files[name] = member(player, pin['path'])
+    return files
+
+
+def configure_friends(config):
+    import socket
+    two = config['diagnostic_two_lobby']
+    admission = two['account_admission']
+    tls = admission['prelogin_tls']
+    if tls.get('certificate') != '@INSTALL@' or not admission.get('patched_949x_names'):
+        raise ValueError('O1 yêu cầu TLS tự sinh và client 949x')
+    config.update(bind='127.0.0.1', allowed_peers=['127.0.0.1'], network_scope='private_lab')
+    config.pop('udp_relay', None)
+    for actor in two['actors']:
+        actor['peer'] = '127.0.0.1'
+        actor.pop('reported_login_ipv4', None)
+    admission.pop('public_launcher', None)
+    admission.pop('backup', None)
+    admission.pop('diagnostic_identity_strings', None)
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as login, socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as peer:
+        login.bind(('127.0.0.1', 0))
+        peer.bind(('127.0.0.1', 0))
+        tls.update(bind=f'127.0.0.1:{login.getsockname()[1]}', friends_guest_only=True,
+                   prelogin_seconds=180, admissions_per_ip_per_minute=60,
+                   max_connections=8, max_unauthenticated=8, max_per_ip=8)
+        relay = f'127.0.0.1:{peer.getsockname()[1]}'
+        config['authenticated_relay'].update(bind=relay, advertise=relay)
+
+
 def main():
     # The verified package stays immutable even when owned by the runner.
     sys.dont_write_bytecode = True
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['verify', 'init-db', 'init-tls', 'restore-db', 'migrate-db', 'export', 'run'])
+    parser.add_argument('command', choices=['verify', 'init-db', 'init-tls', 'restore-db', 'migrate-db', 'export', 'run', 'prepare-friends'])
     parser.add_argument('--manifest-sha256', required=True)
     parser.add_argument('--state', type=Path)
     parser.add_argument('--snapshot', type=Path)
-    parser.add_argument('--game-dir', type=Path, help='Thư mục game KR 00967, chỉ đọc')
+    parser.add_argument('--game-dir', type=Path, help='Thư mục game KR 00967; O1 dùng gốc gói người chơi')
     parser.add_argument('--f1-map', action='append', help='Tên map chính xác trong gói thử F1-a')
+    parser.add_argument('--player-manifest-sha256', help='Pin manifest gói người chơi, chỉ dùng với O1')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
     try:
@@ -185,13 +237,14 @@ def main():
         target = manifest['target']
         if (os.name == 'nt') != target.endswith('-windows-gnu'):
             raise ValueError('Gói không khớp với hệ điều hành đang chạy')
-        # Windows' embeddable Python does not include the script directory.
-        # Add it only once every member of the package has been verified.
-        if os.name == 'nt':
-            sys.path.insert(0, str(root))
+        # Isolated/embedded Python omits the script directory. Add it only
+        # once every member of the package has been verified.
+        sys.path.insert(0, str(root))
         if args.command == 'verify':
             print('Gói khớp manifest bàn giao.')
             return
+        if (args.command == 'prepare-friends') != (args.player_manifest_sha256 is not None):
+            raise ValueError('Chỉ prepare-friends yêu cầu pin manifest gói người chơi')
         if args.state is None:
             raise ValueError('Cần --state riêng')
         if (args.snapshot is not None) != (args.command == 'restore-db'):
@@ -199,14 +252,14 @@ def main():
         scope = manifest.get('pack_scope')
         if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
-        needs_game = scope is not None and args.command in ('export', 'run')
+        needs_game = scope is not None and args.command in ('export', 'run', 'prepare-friends')
         if (scope == 'f1-a' and needs_game) != bool(args.f1_map):
             raise ValueError('Gói F1-a yêu cầu --f1-map khi export hoặc run')
         if needs_game != (args.game_dir is not None):
             raise ValueError('Gói từ pack yêu cầu --game-dir khi export hoặc run')
-        if args.command == 'export' and scope is None:
+        if args.command in ('export', 'prepare-friends') and scope is None:
             raise ValueError('Gói này dùng fixture; cần gói xuất từ pack')
-        if args.game_dir is not None and args.state.resolve().is_relative_to(args.game_dir.resolve()):
+        if args.command != 'prepare-friends' and args.game_dir is not None and args.state.resolve().is_relative_to(args.game_dir.resolve()):
             raise ValueError('State phải nằm ngoài thư mục game chỉ đọc')
         admin = str(executable(root, 'kr-admin', target))
         state = private_state(root, args.state, admin)
@@ -231,12 +284,33 @@ def main():
                 return
             cache = None
             if needs_game:
-                from kr_pack_export import MAPS, export
-                cache, reused = export(args.game_dir, state / 'pack-cache',
-                                       maps=args.f1_map or MAPS, f1=bool(args.f1_map))
+                from kr_pack_export import MAPS, PACK_SHA256, export
+                if args.command == 'prepare-friends':
+                    files = friends_pack(args.game_dir, args.player_manifest_sha256, PACK_SHA256)
+                    # The installed game and payload are read-only inputs. O1
+                    # cache may live under the player root, separate from payload.
+                    cache, reused = export(args.game_dir / 'payload', state / 'pack-cache', pack_files=files)
+                else:
+                    cache, reused = export(args.game_dir, state / 'pack-cache', maps=args.f1_map or MAPS, f1=bool(args.f1_map))
                 if args.command == 'export':
                     print(json.dumps(dict(cache=str(cache), reused=reused)))
                     return
+            if args.command == 'prepare-friends':
+                command = [str(executable(root, 'kr-launch-identity', target)),
+                           str(state / 'prelogin_tls-identity')]
+                if not (state / 'prelogin_tls-identity').exists():
+                    subprocess.run(command, check=True, cwd=state, stdout=subprocess.DEVNULL)
+                if not database.exists():
+                    request = dict(actor='friends-init', reason='Local friends room', command=dict(op='init'))
+                    subprocess.run([admin, str(database)], input=json.dumps(request), text=True, check=True,
+                                   cwd=root, stdout=subprocess.DEVNULL)
+                config, out, _ = prepare(root, state, cache, scope, args.f1_map, friends=True)
+                value = json.loads(config.read_bytes())
+                tls = value['diagnostic_two_lobby']['account_admission']['prelogin_tls']
+                print(json.dumps(dict(config=str(config), out=str(out), address=tls['bind'],
+                                      certificate=tls['certificate']['path'], ports=value['ports']),
+                                 ensure_ascii=True))
+                return
             if not database.is_file():
                 raise ValueError('Cần init-db hoặc restore DB trước khi chạy')
             config, out, _ = prepare(root, state, cache, scope, args.f1_map)

@@ -849,6 +849,15 @@
       "title": "M8: launcher TLS và gói người chơi Wine/Windows qua transport Internet hiện hành",
       "updatedAt": "2026-11-17T19:20:11Z",
       "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476"
+    },
+    {
+      "body": "Nền: launcher #544, export pack #550, Windows #555, transport #556. Owner: Codex; miễn review độc lập theo chỉ đạo dự án, Claude tích hợp.\n\nPhạm vi: kr-player, kr-prelogin, guest của kr-service, gói Windows và hướng dẫn. Nghiệm thu: tạo phòng và vào bằng mã/LAN, tên khách qua LoginStage, thông báo phiên bản và đóng phòng; kiểm headless và một ván tới kết quả trên Windows VM + Wine. Internet thật sau soak. Bằng chứng: CP390.\n\nCơ chế KR-S002: [PLAN](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PLAN.md#full-game-roadmap) · [PROTOCOL](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/PROTOCOL.md) · [RESEARCH](https://github.com/aquaplatinumberlitz/boom-kr-server/blob/main/docs/RESEARCH.md#gap-real-internet).\n",
+      "closedAt": null,
+      "number": 558,
+      "state": "OPEN",
+      "title": "KRE-O1-LAUNCHER: Tạo và vào phòng bạn bè từ launcher",
+      "updatedAt": "2026-11-21T12:00:31Z",
+      "url": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558"
     }
   ],
   "pull_requests": [
@@ -4621,6 +4630,14 @@
         471
       ],
       "limits": "Chỉ refresh nhóm Shoe và hai dependency đã merge; snapshot khác giữ ngày/giới hạn."
+    },
+    {
+      "captured_utc": "2026-11-21T11:59:08.546157+00:00",
+      "issues": [
+        558
+      ],
+      "pull_requests": [],
+      "limits": "Chỉ thêm bản đọc riêng của issue O1; không đổi phạm vi snapshot cũ."
     }
   ]
 }

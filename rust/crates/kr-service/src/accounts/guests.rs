@@ -21,15 +21,16 @@ impl Store {
         idle: Option<i64>,
         now: i64,
     ) -> Result<Vec<Grant>> {
-        self.trial_local_clock(count, ttl, idle, &mut || Ok(now))
+        self.trial_local_clock(count, None, ttl, idle, &mut || Ok(now))
     }
     pub(crate) fn trial_local_current(
         &mut self,
         count: u8,
+        name: Option<&str>,
         ttl: i64,
         idle: Option<i64>,
     ) -> Result<Vec<Grant>> {
-        self.trial_local_clock(count, ttl, idle, &mut || {
+        self.trial_local_clock(count, name, ttl, idle, &mut || {
             std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
                 .ok()
@@ -40,6 +41,7 @@ impl Store {
     fn trial_local_clock(
         &mut self,
         count: u8,
+        name: Option<&str>,
         ttl: i64,
         idle: Option<i64>,
         clock: &mut impl FnMut() -> Result<i64>,
@@ -50,11 +52,20 @@ impl Store {
         {
             return Err(Error::InvalidInput);
         }
+        if let Some(name) = name {
+            if count != 1 {
+                return Err(Error::InvalidInput);
+            }
+            display_name(name)?;
+        }
         let guests = (0..count)
             .map(|_| {
                 Ok(NewGuest {
                     login: format!("g_{}", hex(&self.random::<12>()?)),
-                    name: format!("Guest{}", hex(&self.random::<3>()?)),
+                    name: match name {
+                        Some(name) => name.to_owned(),
+                        None => format!("Guest{}", hex(&self.random::<3>()?)),
+                    },
                     token: Token(Zeroizing::new(hex(&self.random::<32>()?))),
                     audit: hex(&self.random::<32>()?),
                 })

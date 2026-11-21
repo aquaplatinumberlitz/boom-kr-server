@@ -273,6 +273,12 @@ peer và toàn kết nối chưa đăng nhập thuộc phần TLS tiếp theo. T
 nâng schema và fencing. Native Windows trên copy đã hiện nút trial gửi 2P, nhận hai khách mới ID 5/6 rồi chuyển
 kênh đúng roster; cả hai session được thu hồi. Request sau kênh ngoài adapter vẫn đóng kết nối; chưa là phòng/trận.
 
+**Khách O1 có tên từ launcher:** gateway của phòng gửi tên đã kiểm qua stream riêng tới prelogin loopback
+và đóng stream trước khi chuyển request KR. Ở LoginStage, khách chọn Chơi thử 1P (opcode 62); worker cấp khách
+mới với tên đó, giữ `guest_accounts`, token và các fence như đường chơi thử hiện có. Cấu hình O1 chỉ nhận 1P
+và từ chối nhánh credential; không lấy tên từ gói KR. Nhánh online giữ cách đặt tên ngẫu nhiên. Đây là
+`design` cho O1, không đổi opcode hay suy hành vi server gốc.
+
 **TLS trước đăng nhập:** cấu hình `account_admission.prelogin_tls` mở ingress QUIC/TLS 1.3, dùng worker và epoch
 DB của chính service. `kr-prelogin` mở các cổng TCP loopback rồi báo sẵn sàng; nó kết nối bằng pin chứng thư
 khi game mở socket đầu. ALPN `kre-native/1` tách khỏi API launcher và relay, không nhận 0-RTT. Mỗi TLS

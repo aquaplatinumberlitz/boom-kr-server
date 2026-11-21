@@ -8,11 +8,11 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Tra các mục khác theo anchor; gate K0–K7 và RE cũ ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Checkpoint đã tích hợp gần nhất: **21/11, CP389.**
+theo quyết định của chủ dự án. Checkpoint đã tích hợp gần nhất: **21/11, CP390.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
 tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [F1](#f1-normal-battle) đã mở sớm song song với M8 và O1; F2–F6 tiếp tục chờ.
-[Bước 0](content/classification.md) hoàn tất; dùng lại [controller Windows/Wine](evidence/checkpoints/records/CP387.json) cho F1 và lượt hai client có tải M8 sau soak.
+[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) đã qua kr-load trên 45 map, CaJJ_Clover đạt A trong phạm vi hai người. Dùng lại controller Windows/Wine cho các lượt native kế.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -26,7 +26,7 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách, Codex thực thi | **Đạt phạm vi giai đoạn 1**. [L1a chọn 949x](content/client-language.md#utf8); Rust lưu tên account UTF-8 và chuyển chat sảnh/phòng. [CP370](evidence/checkpoints/records/CP370.json) xác nhận hai bản vi/ko cùng phòng có dấu, chat có dấu hai chiều và chơi một ván tới kết quả. [Sáu ảnh đăng nhập vi đã duyệt và ghép](evidence/checkpoints/records/CP367.json). | Ảnh bổ sung và nghiệm thu en hoãn. Start ván hai theo dõi riêng ở #502. |
 | M8 vận hành | CI đã có; [Gói Linux](OPERATIONS.md#gói-linux-và-state-riêng) đọc pack tại máy cài và kiểm được ván TLS tổng hợp, backup, dừng sạch | Launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 12 giờ chạy dài |
-| [O1 / S1](#full-game-roadmap) | [Prototype lõi P2P](O1_S1_P2P.md) đi trực tiếp hoặc qua relay với hai NAT giả lập | Sau M8, nối discovery và companion; nghiệm thu một ván trên hai máy thật qua LAN và Internet. Launcher chưa mở O1/S1. |
+| [O1 / S1](#full-game-roadmap) | [Launcher O1](O1_S1_P2P.md) tạo/vào phòng khách và ghép mã với LAN; kiểm headless qua discovery, khác phiên bản và đóng phòng | Windows VM công bố mã, Wine thấy phòng LAN; cần thử lại bằng profile cổng native. Internet thật và độ bền dịch vụ tra mã còn mở. S1 chưa lưu và kết nối máy mời. |
 
 **Thứ tự việc:**
 
@@ -36,33 +36,32 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
    Các giới hạn native, wrapper cache, capture/debugger/cleanup cũ giữ tại evidence; không đổi exit 1 thành exit 0.
    Việc M8 gồm Internet thật cho companion xác thực hiện hành, cấu hình/đóng gói, 50 người/8 phòng, giám sát,
    backup/restore và chạy dài. N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet.
-
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474) | Gói dùng thư mục game KR 00967 chỉ đọc, sinh cache map/item/nhân vật và bảng. [Đã kiểm cài sạch trong namespace Linux](evidence/rust-service/m8-pack-export.json): hai client TLS tổng hợp tới kết quả và về sảnh, backup hợp lệ, dừng sạch. Bản pack này chưa chạy ARM hoặc native; số đo ARM của nền gói cũ giữ riêng. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476) | [CP375](evidence/checkpoints/records/CP375.json) xác nhận Windows vi và Wine ko dùng gói launcher qua cùng hotspot 4G tới VPS: chat có dấu hai chiều, hai ván cùng phòng qua relay. WAN giả lập đã qua relay, mất đường giữa ván và đăng nhập lại. [Launcher](OPERATIONS.md#launcher-art) có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn vi/en/ko; thêm máy chờ S1, Chơi với bạn bè chờ O1. Nghiệm thu phát hành còn hai mạng Internet độc lập và máy sạch ngoài PC phát triển. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476) | [CP375](evidence/checkpoints/records/CP375.json) xác nhận Windows vi và Wine ko dùng gói launcher qua cùng hotspot 4G tới VPS: chat có dấu hai chiều, hai ván cùng phòng qua relay. WAN giả lập đã qua relay, mất đường giữa ván và đăng nhập lại. [Launcher](OPERATIONS.md#launcher-art) có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn vi/en/ko; thêm máy chờ S1, Chơi với bạn bè có lát O1 riêng. Nghiệm thu phát hành còn hai mạng Internet độc lập và máy sạch ngoài PC phát triển. |
    | [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) | [CP380](evidence/checkpoints/records/CP380.json): 50 client tổng hợp trong 8 phòng đạt ngưỡng relay nội VPS; số đo qua hotspot là quan sát. Chưa có trận native dưới tải. Soak 12 giờ đã bắt đầu với 24 client tổng hợp; chờ đủ thời lượng và kiểm backup, TTL, tài nguyên và dọn phòng. |
    | [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) | [CP374](evidence/checkpoints/records/CP374.json): audit account/phòng, snapshot live và mở ván sau restore vào state sạch qua hai client TLS tổng hợp; SIGTERM, SIGKILL/restart và rollback schema 6 về binary schema 5 đã kiểm loopback. Chờ tích hợp; còn nghiệm thu native trên máy triển khai theo M8. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
    [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ.
    Checkpoint mới dùng `pack_evidence`/`evidence_runs`; dọn `local/` chỉ bằng plan/hash được chủ dự án duyệt.
    Không đụng `tools/export_map_profile.py`.
-
    **Lưu trữ M8:** đã dọn 477 file dùng một lần thuộc 80 lượt cũ bằng công cụ sau PR #486 và đúng hash kế hoạch;
    `/home` trống từ 270,12 GB lên 350,16 GB (tăng 80,04 GB). Bằng chứng, 2.397 evidence manifest, đầu vào dùng lại,
    chuỗi backing và overlay mới nhất cần tiếp tục được giữ. Harness đã nối tự dọn overlay/seed sau xác nhận VM dừng
    và xuất bằng chứng, có manifest/hash và guard tham chiếu; 13 ca kiểm an toàn cùng control qcow2/FAT thật đã đạt. Lượt Windows mới đã tự xóa overlay/seed, giữ log/capture
    và dump cần truy lifetime; lỗi guard Docker trước VM có receipt thất bại và phục hồi riêng. Dump chưa trích thông tin hoặc stop/export chưa xác nhận được giữ để phục hồi.
    Các lượt mới theo [quy định sau lượt chạy](evidence/owner-directives/run-cleanup.json).
-
    L1 đã nghiệm thu trên cùng gói launcher với M8, theo [phạm vi nghiệm thu](evidence/owner-directives/l1-phase1.json).
    Tiệm, chữ do server gửi và IME Hàn thật để sau giai đoạn 1. Runtime Wine dùng lease chung.
-
-2. **[F1-a](#f1-normal-battle).** Adapter thử đã qua kr-load trên 45 map; [CaJJ_Clover](content/classification.md#họ-map) đạt lớp A cho hai client. Tiếp KRE-F1-A (#559) với họ B còn thiếu ô, item hoặc route native; ưu tiên Patrit22 theo descriptor MastTileA đã đối chiếu. Nghiệm thu giai đoạn 1 vẫn theo [mục riêng](#phase1-acceptance).
+Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
 
-- [Lịch sử và bằng chứng cục bộ](evidence/rust-service/m8-login-step1-verification.json) giữ giới hạn parser CP342 và lần đối chiếu nguồn; M8 chưa đóng.
+- Gate local/history đã đạt trên `ffc2ec1`: 580.279 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
+  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP342 có hai hồ sơ và chuyển kết nối kênh
+  trên bản tương thích riêng; gate công bố mới chờ chạy. Parser/projection chưa nối listener, DB/guest/prelogin TLS và M8 vẫn mở.
+
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite
   đã có control departure, DB ticket và old-round. Giữ fixed-team legacy; không suy tie enum server gốc.
@@ -71,10 +70,20 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
   controls theo ma trận, với [preset phục vụ và ngân sách cổng](OPERATIONS.md). Native mới dùng Wine/LAN cô lập;
   Internet thật cho transport mới, tải, session budget và độ bền vận hành phải kiểm ở M8. Không mở lại K6c/K7.
   Native59 đã có [policy quan sát design và native positive](evidence/rust-service/g1-native59-observation.json) cho schema đã đo; không ACK hoặc đổi gameplay. Mã/giá trị record và server gốc vẫn unknown, M8 còn kiểm budget phiên dài; raw lỗi trước giữ nguyên.
-- M7 đã có selection, roster và active EOF theo bảng; occupancy chỉ biết current/capacity. M5b chưa có progression hoặc inventory.
-- Map G1 giữ phạm vi [ma trận đã đo](evidence/rust-service/g1-acceptance-matrix.json); Village10/Tomb12 có 6 spawn, bốn map còn lại có 8.
-- [TCP diagnostic rộng](evidence/rust-service/g1-map-adapter.json) có cache positive và lỗi setup/idle Back/cleanup chưa rõ nguyên nhân; các đối chứng hẹp đã đạt.
-- [M6](evidence/rust-service/m6-journal-serving.json) bật lưu trận và nhân vật cho managed player; vận hành thuộc M8, economy thuộc F4.
+- M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
+  current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
+  active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
+- Factory07/Village10 đã có native chọn UI, basic hai ván/reset/ván tiếp và journal map. Các route terrain/item
+  đã đo có giới hạn tại contract từng map; Factory07 có route 2/4/8 và Glass control, acceptance G1 theo các route đã đo. Không suy map
+  đã mở hoàn chỉnh từ UI/basic hoặc một route. Village10/Tomb12 có 6 spawn; theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json),
+  nghiệm thu hai map này cho 2–6 người, bốn map còn lại cho 2–8 người. Gameplay và nội dung vẫn phải đo theo thứ tự đã chốt.
+- Một phép TCP diagnostic rộng có cache positive nhưng timeout ở idle Back/return241 và cleanup wait. Raw/failure
+  đã giữ, cause chưa xác định; test cache hẹp có negative/ownership/shutdown riêng đã đạt. Không gọi toàn bộ hồi quy
+  diagnostic rộng là pass; một lượt TCP setup cũng timeout trước peer106/117. Cause chưa rõ, theo dõi nếu cản G1/M6/M8. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
+- M6 ở [#391](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391) đạt phạm vi thu hẹp theo
+  [acceptance/evidence](evidence/rust-service/m6-journal-serving.json). Serving bật `persist_matches` và `persist_character`
+  cho luồng DB/managed player round; không tự thay hành vi config cũ. DB/schema downgrade, match restore và economy
+  không được suy từ nghiệm thu này; backup/restore, tải và đóng gói còn M8.
 
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
   Máy cài gói Linux không cần repo/`local/`. Dữ liệu nội dung được xuất từ thư mục game, còn mẫu wire đi trong manifest gói.
@@ -99,7 +108,6 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
 Yêu cầu chủ dự án 26/10/2026: dùng kiến thức RE VN `VBNB_116` để dựng server giả lập cho
 **chính `CA.exe` KR `00967`**. Đây là project độc lập `boom-kr-server`; không dùng scope, gate,
 registry hoặc tỷ lệ tiến độ V1 của bản viết lại `boom-rs` làm điều kiện của repo này.
-
 Baseline lịch sử **`KR-00967-EMU-1`**: K0–K7 đạt trong từng acceptance; K6c WAN giả lập ghi
 **Internet thật chưa kiểm** tại mốc nghiệm thu đó, full game nằm ngoài scope demo. Đích Rust hiện hành ở
 [giai đoạn 1](#delivery-target); Internet thật đã có kết luận riêng [N1/N1b](#rust-n1-result).
@@ -111,10 +119,8 @@ Các mốc nguồn được phân biệt rõ:
   các sửa sau migration nằm trong lịch sử của chính repo này.
 - **Nguồn RE:** `boom-re@9ac2075bbec0c16217741aaedea968cf685e39a9` và
   `boomkr-re@88e11ed30764c753a00f4f23a2f33dafadc4c890`.
-
 Hash client và ma trận tái sử dụng:
 [LEGACY_KR_PROTOCOL](PROTOCOL.md).
-
 Đích đầu: bản copy client KR → bootstrap offline → đăng nhập identity cục bộ → một kênh/sảnh →
 tạo/vào phòng → ready/start → Battle thường hai client → kết quả → về phòng → trận thứ hai.
 Một map thật của KR, ưu tiên Village00 sau khi xác nhận loader/mode cho phép; nhân vật cơ bản theo
@@ -174,7 +180,6 @@ trên client KR chưa có; rủi ro cao nghĩa là cỡ việc có thể tăng.
 
 RUST-M4 đã đủ cho đích ở phần đội hình cố định 2/4/8 và Manner; Free 1v7 còn kẹt ở lỗi khởi động client chưa rõ
 nguyên nhân và đã được chốt là giới hạn đã biết của giai đoạn 1. Thứ tự 5 có hai mốc chạy song song vì không phụ thuộc nhau.
-
 Vì sao thứ tự này: N1 đi sớm vì nếu cần relay thì cách trao đổi địa chỉ peer (packet 153) và kiến trúc mạng đổi theo.
 R1 đi trước M7, G1 và M6 vì cả ba đều sửa lõi phòng; làm R1 sau thì phải viết lại phần đã xây trên giả định phòng cố định.
 
@@ -191,7 +196,6 @@ R1 đi trước M7, G1 và M6 vì cả ba đều sửa lõi phòng; làm R1 sau 
 
 Nguồn: [chỉ đạo chủ dự án](evidence/owner-directives/phase1-scope-decisions.json). Ba quyết định này chỉ chốt phạm vi,
 không đóng gate hay milestone nào.
-
 1. **Map và item cho G1.** Sáu map trong `LadderMapGroup` của client: **Camp08, Factory07, Forest07, Village10,
    Tomb12, Patrit14**. Cả sáu không có script. Nhóm item của G1 lấy từ bảng item của chính sáu map này trong
    [kiểm kê](CONTENT.md): phần đã đo (Bomb, Fire, Roller, MaxPower, kim) cộng phần chưa đo (keo, phi tiêu, máy quét,
@@ -393,23 +397,19 @@ acceptance riêng; không suy mọi layout hoặc mọi failure đã đạt.
 
 **Kết quả M7a:** đã đạt trong phạm vi bốn profile cấu hình trên Wine/LAN giả lập; nguồn chuẩn ở
 [contract và giới hạn](protocol/room-membership.md#rust-managed-room-selection). Không đóng toàn M7 từ lát cắt này.
-
 Thứ tự triển khai bắt đầu M7a, sau đó nối lifecycle và lựa chọn theo khoảng trống thực. M5 có thể làm profile
 account tổng quát và native DB-queue fault song song về mặt dependency; phần nào thật sự chặn projection/ownership
 phải được đo và nối trước khi nhận M7 tích hợp, không gắn account bất kỳ vào profile của người khác. Lát cắt đầu
 có thể dùng các profile đã đo để tách lỗi routing khỏi lỗi projection; không được dùng giới hạn đó để đóng toàn M7
 hoặc đích dịch vụ nội bộ cho mọi account.
-
 Module giữ một process: lobby, room registry, room owner/recipient queues và account session. Một connection có
 owner chọn phòng rõ ràng; registry → room có thứ tự lock cố định, không giữ lock qua DB await hoặc I/O. Mỗi room,
 visit, round và callback mang generation; public tuple chưa có epoch trên wire không được tái dùng khi chưa có
 chính sách stale kiểm được. Danh sách, occupancy và quyền host phải lấy từ state hiện hành, không từ fixture đếm sẵn.
-
 Trong M7, relay route/resource ownership phải theo room và membership tổng quát, không theo profile hoặc số người.
 Không thêm cờ four_*/eight_*, alias theo identity hoặc nhánh `capacity() == N`. Không tự fallback từ relay sang direct.
 Nghiệm thu relay nhiều người, reuse/restart và spoof chung IP thuộc **N1R-b sau M7, trước G1** theo dashboard;
 M7 không tự tuyên bố đã đạt các ca đó. Tải 50 người/8 phòng có relay thuộc M8, không suy từ trần cấu hình.
-
 RE chỉ mở cho multirow list/create/join/full-error/character/team hoặc lifecycle mới đang chặn lát cắt. Dùng lại
 builder và consumer KR đã có; không copy wire VN hoặc mở toàn bộ mode. Hidden/password/private/spectator, chat,
 bạn bè, guild và nhiều kênh ngoài scope mốc này. Hành vi chưa được hỗ trợ phải bị vô hiệu hoặc từ chối, không ACK giả.
@@ -697,7 +697,7 @@ inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ
 <a id="full-game-roadmap"></a>
 ### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
 
-Lộ trình tới đủ item, map và mode chưa cam kết thời gian. Bước 0 đã xong; chủ dự án cho mở F1 sớm.
+Lộ trình tới đủ item, map và mode chưa cam kết thời gian. F1–F6 chưa mở; bước 0 được thực hiện song song phần cuối M8.
 Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng còn chạy. Dùng [xếp loại A/B/C](content/classification.md) để chọn phép thử và ước lượng từng đợt.
 
 | Đợt | Nội dung | Số liệu kiểm kê | Phụ thuộc và điều chưa biết |
@@ -708,13 +708,13 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 | F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá không có trong client: lấy wiki/boom-re, thiếu thì tự thiết kế, cấu hình đổi được |
 | F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa (bỏ ưu đãi phòng máy Nexon) | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
-| O1 Play with friends ("Chơi với bạn bè") | Một nút trong launcher: không tài khoản, không VPS, không cấu hình. Máy người tạo tự chạy server ngầm và hiện mã phòng; bạn bè nhập mã (cùng LAN thì tự thấy). Qua Internet dùng thư viện P2P nhúng (iroh/QUIC, tự xuyên NAT, relay khi cần). Cờ "mở khoá tất cả": đủ nhân vật/item/trang phục, shop miễn phí | [Lõi server Windows](evidence/rust-service/o1-windows-service.json) đã qua Wine: xuất pack, hai client kr-load hoàn tất một ván, backup và dừng sạch; còn tên khách và dữ liệu lưu tại máy người tạo | Dùng chung bước "server đọc dữ liệu từ pack" của M8. Nội dung đầy đủ theo F1/F4 (cùng mã server, khác cấu hình). Launcher một nút và nghiệm thu LAN/Internet còn mở. Người tạo phải mở game suốt buổi |
+| O1 Play with friends ("Chơi với bạn bè") | Một nút trong launcher: không tài khoản, không VPS, không cấu hình. Máy người tạo tự chạy server ngầm và hiện mã phòng; bạn bè nhập mã (cùng LAN thì tự thấy). Qua Internet dùng thư viện P2P nhúng (iroh/QUIC, tự xuyên NAT, relay khi cần). Cờ "mở khoá tất cả": đủ nhân vật/item/trang phục, shop miễn phí | [Launcher O1](O1_S1_P2P.md) và [gói Windows](OPERATIONS.md#gói-server-windows) chạy server riêng tại máy người tạo; game vào bằng Chơi thử 1P với tên do launcher cấp | Nội dung đầy đủ theo F1/F4. Còn nghiệm thu một ván native LAN với profile cổng đúng và Internet thật; người tạo giữ game mở suốt buổi |
 | S1 Máy chủ tự dựng | [Không có máy chủ chính thức](evidence/owner-directives/distribution.json). Thêm máy, xác minh chứng chỉ từ mã mời, nhớ danh sách và ID theo từng máy. Mã mời S1 và mã phòng O1 dùng chung P2P với tiền tố riêng, tự chuyển mục khi dán nhầm; tách dữ liệu offline. | Gói Windows dùng chung O1; Linux dùng gói hiện có. | Sau O1; khi O1/S1 xong, cập nhật [hướng dẫn](player/guide.vi.md) bằng bước thật và ảnh. |
 | L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
-F1 mở song song với [O1](evidence/owner-directives/offline-friends.json) và S1; các đợt sau theo F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
+Việc nâng họ map lên A và thử sâu item, phương tiện, nhân vật, mode chuyển vào từng phần tương ứng của F1. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
 
 <a id="f1-normal-battle"></a>
 #### F1 — Trận thường đầy đủ

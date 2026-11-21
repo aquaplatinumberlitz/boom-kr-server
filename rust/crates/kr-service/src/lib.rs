@@ -298,6 +298,22 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
         if let Some(account) = &two.account_admission {
+            if account
+                .prelogin_tls
+                .as_ref()
+                .is_some_and(|tls| tls.friends_guest_only)
+                && (config.bind != Ipv4Addr::LOCALHOST
+                    || config.allowed_peers.as_slice() != [Ipv4Addr::LOCALHOST]
+                    || config.udp_relay.is_some()
+                    || account.public_launcher.is_some()
+                    || config.authenticated_relay.as_ref().is_none_or(|relay| {
+                        !relay.bind.ip().is_loopback() || relay.bind != relay.advertise
+                    }))
+            {
+                return Err(io::Error::other(
+                    "O1 service must be local and passwordless",
+                ));
+            }
             if account.public_launcher.is_some() && config.authenticated_relay.is_none() {
                 return Err(io::Error::other(
                     "public launcher requires authenticated relay",
@@ -1392,7 +1408,17 @@ async fn bound_connection(
     }
 }
 
-pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
+pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
+    serve_owned(profile, out, None).await
+}
+
+pub async fn serve_owned(
+    mut profile: Validated,
+    out: &Path,
+    owner_heartbeat: Option<&Path>,
+) -> io::Result<()> {
+    let mut owner_tick = tokio::time::interval(Duration::from_millis(250));
+    let mut owner = kr_tunnel::prelogin::heartbeat::Heartbeat::new(Instant::now());
     let mut shutdown_signal = platform::Shutdown::new()?;
     tokio::fs::create_dir_all(out).await?;
     let mut account_owner = if let Some(config) = profile
@@ -1432,6 +1458,16 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             .and_then(|bound| bound.authenticated.clone());
     }
     profile.accounts = account_owner.as_ref().map(|a| a.active.clone());
+    let friends_only = profile
+        .config
+        .diagnostic_two_lobby
+        .as_ref()
+        .and_then(|two| two.account_admission.as_ref())
+        .and_then(|account| account.prelogin_tls.as_ref())
+        .is_some_and(|tls| tls.friends_guest_only);
+    if friends_only && owner_heartbeat.is_none() {
+        return Err(io::Error::other("O1 service requires an owning launcher"));
+    }
     let startup: io::Result<_> = async {
         let admission = profile
             .config
@@ -1454,8 +1490,10 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
             .transpose()?;
         // Bind the whole configured set before readiness; startup failure drops all.
         let mut bound = Vec::new();
-        for &port in &profile.config.ports {
-            bound.push(TcpListener::bind((profile.config.bind, port)).await?);
+        if !friends_only {
+            for &port in &profile.config.ports {
+                bound.push(TcpListener::bind((profile.config.bind, port)).await?);
+            }
         }
         let file = tokio::fs::OpenOptions::new()
             .write(true)
@@ -1632,11 +1670,12 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
                     failure=Some(io::Error::other("account worker unavailable"));break;
                 }
             },
+            _=owner_tick.tick(),if owner_heartbeat.is_some()=>{if owner_heartbeat.expect("enabled").with_extension("cancel").exists() || owner.expired(owner_heartbeat.expect("enabled"),Instant::now()){break;}},
             value=shutdown_signal.recv()=>{if let Err(e)=value {failure=Some(e);}break;},
             result=maintenance.join_next(),if !maintenance.is_empty()=>{failure=Some(io::Error::other(format!("maintenance stopped: {result:?}")));break;},
             result=listeners.join_next(),if !listeners.is_empty()=>{failure=Some(io::Error::other(format!("listener stopped: {result:?}")));break;},
             result=workers.join_next(),if !workers.is_empty()=>if let Some(result)=result {match result {Ok(Ok(()))=>{},other=>{failure=Some(io::Error::other(format!("worker stopped: {other:?}")));break;}}},
-            pair=accepted.recv()=>{
+            pair=accepted.recv(),if !friends_only=>{
                 let Some((socket,peer))=pair else {failure=Some(io::Error::other("all listeners stopped"));break;};
                 let permitted=matches!(peer.ip(),IpAddr::V4(ip) if profile.config.allowed_peers.contains(&ip));
                 let Ok(permit)=quota.clone().try_acquire_owned() else {drop(socket);emit(&log,stamp(start,json!({"event":"admission_rejected","reason":"connection_limit"}))).await?;continue;};

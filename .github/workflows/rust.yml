@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - 'rust/**'
+      - '.cargo/config.toml'
+      - 'tools/kr_windows_linker.py'
+      - 'tools/player_package.py'
+      - 'tools/test_player_package.py'
+      - 'tools/player_windows_setup.ps1'
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
       - 'tools/test_m8_binary_rollback.py'
@@ -20,6 +25,11 @@ on:
     branches: [main]
     paths:
       - 'rust/**'
+      - '.cargo/config.toml'
+      - 'tools/kr_windows_linker.py'
+      - 'tools/player_package.py'
+      - 'tools/test_player_package.py'
+      - 'tools/player_windows_setup.ps1'
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
       - 'tools/test_m8_binary_rollback.py'
@@ -57,6 +67,8 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('rust/Cargo.lock', 'rust/rust-toolchain.toml') }}
       - name: Install the toolchain pinned in rust-toolchain.toml
         run: rustup toolchain install 2>/dev/null || rustup show
+      - name: Verify O1 exports the original player pack
+        run: python3 ../tools/test_player_package.py PackageTests.test_friends_uses_original_prefix_and_original_index
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Test Rust with the independent CP949 and 949x reference
@@ -106,7 +118,7 @@ jobs:
           sudo apt-get install -y gcc-mingw-w64-x86-64
           rustup toolchain install 2>/dev/null || rustup show
           rustup target add x86_64-pc-windows-gnu
-      - name: Build Windows server, admin and TLS provisioning binaries
+      - name: Build Windows launcher, companion, server and provisioning binaries
         run: >
-          cargo build --locked --target x86_64-pc-windows-gnu -p kr-service -p kr-tunnel
-          --bin kr-service --bin kr-admin --bin kr-launch-identity
+          cargo build --locked --target x86_64-pc-windows-gnu -p kr-service -p kr-tunnel -p kr-player
+          --bin kr-service --bin kr-admin --bin kr-launch-identity --bin kr-player --bin kr-prelogin

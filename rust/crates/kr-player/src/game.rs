@@ -16,16 +16,16 @@ use std::{
 #[derive(Clone, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub(crate) struct Config {
-    pub server: SocketAddrV4,
-    pub certificate: PathBuf,
+    pub server: Option<SocketAddrV4>,
+    pub certificate: Option<PathBuf>,
     #[serde(default)]
     pub server_name: Option<String>,
     #[serde(default)]
     pub release_url: Option<String>,
-    prelogin_server: SocketAddrV4,
-    prelogin_certificate: PathBuf,
+    prelogin_server: Option<SocketAddrV4>,
+    prelogin_certificate: Option<PathBuf>,
     companion: PathBuf,
-    ports: Vec<u16>,
+    pub ports: Vec<u16>,
     pub bundle: PathBuf,
     pub manifest_sha256: String,
     pub installation: PathBuf,
@@ -33,23 +33,26 @@ pub(crate) struct Config {
     #[serde(default)]
     wine: Option<PathBuf>,
     #[serde(default)]
-    udp_backend: kr_tunnel::UdpBackend,
+    pub udp_backend: kr_tunnel::UdpBackend,
+    pub friends: Option<crate::friends::Config>,
+    #[serde(default)]
+    pub friends_directory: Vec<String>,
 }
 impl Config {
-    pub fn route(&self) -> crate::servers::Route {
-        crate::servers::Route {
-            account: self.server,
-            account_cert: self.certificate.clone(),
-            game: self.prelogin_server,
-            game_cert: self.prelogin_certificate.clone(),
-        }
+    pub fn route(&self) -> Option<crate::servers::Route> {
+        Some(crate::servers::Route {
+            account: self.server?,
+            account_cert: self.certificate.clone()?,
+            game: self.prelogin_server?,
+            game_cert: self.prelogin_certificate.clone()?,
+        })
     }
 
     pub fn with_route(mut self, route: &crate::servers::Route) -> Self {
-        self.server = route.account;
-        self.certificate = route.account_cert.clone();
-        self.prelogin_server = route.game;
-        self.prelogin_certificate = route.game_cert.clone();
+        self.server = Some(route.account);
+        self.certificate = Some(route.account_cert.clone());
+        self.prelogin_server = Some(route.game);
+        self.prelogin_certificate = Some(route.game_cert.clone());
         self
     }
 
@@ -70,8 +73,6 @@ impl Config {
             .ok_or_else(|| io::Error::other("launcher config root"))?;
         let mut cfg: Self = serde_json::from_slice(&fs::read(&path)?).map_err(io::Error::other)?;
         for path in [
-            &mut cfg.certificate,
-            &mut cfg.prelogin_certificate,
             &mut cfg.companion,
             &mut cfg.bundle,
             &mut cfg.installation,
@@ -87,15 +88,31 @@ impl Config {
             }
             *wine = wine.canonicalize()?;
         }
-        for path in [
-            &mut cfg.certificate,
-            &mut cfg.prelogin_certificate,
-            &mut cfg.companion,
-            &mut cfg.bundle,
-        ] {
+        for path in [&mut cfg.companion, &mut cfg.bundle] {
             *path = path.canonicalize()?;
         }
-        for address in [cfg.server, cfg.prelogin_server] {
+        for path in [&mut cfg.certificate, &mut cfg.prelogin_certificate]
+            .into_iter()
+            .flatten()
+        {
+            if !path.is_absolute() {
+                *path = root.join(&*path);
+            }
+            *path = path.canonicalize()?;
+        }
+        let configured = [
+            cfg.server.is_some(),
+            cfg.prelogin_server.is_some(),
+            cfg.certificate.is_some(),
+            cfg.prelogin_certificate.is_some(),
+        ];
+        if configured.iter().any(|&present| present) && !configured.iter().all(|&present| present) {
+            return Err(io::Error::other("incomplete online server route"));
+        }
+        if let Some(friends) = &mut cfg.friends {
+            friends.resolve(root)?;
+        }
+        for address in [cfg.server, cfg.prelogin_server].into_iter().flatten() {
             if address.port() == 0
                 || address.ip().is_unspecified()
                 || address.ip().is_multicast()
@@ -133,7 +150,7 @@ pub(crate) struct Session(pub Arc<Mutex<OwnedSession>>);
 pub(crate) struct OwnedSession {
     _installation_lock: fs::File,
     companion: Child,
-    game: Option<Child>,
+    game: Option<Game>,
     run: PathBuf,
     stopping: bool,
     exit: Option<(&'static str, Option<i32>)>,
@@ -141,11 +158,58 @@ pub(crate) struct OwnedSession {
     game_ended_at: Option<Instant>,
 }
 
+enum Game {
+    Process(Child),
+    #[cfg(windows)]
+    Shell(crate::windows_game::Game),
+}
+
+impl Game {
+    fn spawn(command: &mut Command, executable: &Path, directory: &Path) -> io::Result<Self> {
+        let result = command.spawn();
+        #[cfg(windows)]
+        if result
+            .as_ref()
+            .is_err_and(|error| error.raw_os_error() == Some(740))
+        {
+            return crate::windows_game::Game::open(executable, directory).map(Self::Shell);
+        }
+        #[cfg(not(windows))]
+        let _ = (executable, directory);
+        result.map(Self::Process)
+    }
+
+    fn try_wait(&mut self) -> io::Result<Option<std::process::ExitStatus>> {
+        match self {
+            Self::Process(game) => game.try_wait(),
+            #[cfg(windows)]
+            Self::Shell(game) => game.try_wait(),
+        }
+    }
+
+    fn kill(&mut self) -> io::Result<()> {
+        match self {
+            Self::Process(game) => game.kill(),
+            #[cfg(windows)]
+            Self::Shell(game) => game.kill(),
+        }
+    }
+
+    fn wait(&mut self) -> io::Result<std::process::ExitStatus> {
+        match self {
+            Self::Process(game) => game.wait(),
+            #[cfg(windows)]
+            Self::Shell(game) => game.wait(),
+        }
+    }
+}
+
 #[derive(PartialEq, Eq)]
 pub(crate) enum End {
     Stopped,
     Failed,
     SessionEnded,
+    RoomClosed,
 }
 impl OwnedSession {
     pub fn request_stop(&mut self) {
@@ -170,6 +234,11 @@ impl OwnedSession {
             } else {
                 End::SessionEnded
             });
+        }
+        if !self.stopping
+            && matches!(&companion, Ok(Some(status)) if status.code() == Some(kr_tunnel::prelogin::friends::ROOM_CLOSED_EXIT))
+        {
+            return Some(End::RoomClosed);
         }
         match game {
             Ok(Some(status)) => {
@@ -213,7 +282,9 @@ impl OwnedSession {
 impl Drop for OwnedSession {
     fn drop(&mut self) {
         self.request_stop();
-        if let Some(game) = self.game.as_mut() {
+        if let Some(game) = self.game.as_mut()
+            && game.kill().is_ok()
+        {
             let _ = game.wait();
         }
         let deadline = Instant::now() + Duration::from_secs(3);
@@ -268,11 +339,20 @@ fn retain_log(source: &Path, state: &Path) -> io::Result<()> {
     fs::rename(source, slot)
 }
 
-fn ready(child: &mut Child, signal: &Path) -> io::Result<()> {
-    let deadline = Instant::now() + Duration::from_secs(4);
+fn ready(child: &mut Child, signal: &Path) -> Result<(), StartError> {
+    let deadline = Instant::now() + Duration::from_secs(18);
     loop {
-        if child.try_wait()?.is_some() || Instant::now() >= deadline {
-            return Err(io::Error::other("prelogin companion not ready"));
+        if let Some(exit) = child.try_wait().map_err(|_| StartError::Launch)? {
+            return Err(
+                if exit.code() == Some(kr_tunnel::prelogin::friends::DIFFERENT_PACKAGE_EXIT) {
+                    StartError::Version
+                } else {
+                    StartError::Launch
+                },
+            );
+        }
+        if Instant::now() >= deadline {
+            return Err(StartError::Launch);
         }
         if signal.is_file() {
             return Ok(());
@@ -285,23 +365,26 @@ fn start_inner(
     config: Config,
     language: Language,
     installation_lock: fs::File,
-) -> io::Result<Session> {
+    friends: Option<kr_tunnel::prelogin::friends::Guest>,
+) -> Result<Session, StartError> {
     let run = config.state.join(format!(
         "run-{}-{}",
         std::process::id(),
         SystemTime::now()
             .duration_since(UNIX_EPOCH)
-            .map_err(io::Error::other)?
+            .map_err(|_| StartError::Launch)?
             .as_nanos()
     ));
-    fs::create_dir(&run)?;
+    fs::create_dir(&run).map_err(|_| StartError::Launch)?;
     let signal = run.join("ready");
     let path = run.join("prelogin.json");
     let mut owned = (|| {
         let beat = run.join("beat");
         heartbeat::publish(&beat, 0)?;
         let value = serde_json::json!({
-            "server": config.prelogin_server, "certificate": config.prelogin_certificate,
+            "server": config.prelogin_server.filter(|_| friends.is_none()),
+            "certificate": config.prelogin_certificate.filter(|_| friends.is_none()),
+            "friends": friends,
             "ports": config.ports, "udp_backend": config.udp_backend,
             "cancel_file": run.join("cancel"), "ready_file": signal, "owner_heartbeat": beat,
             "diagnostics": true,
@@ -331,7 +414,8 @@ fn start_inner(
     })()
     .inspect_err(|_| {
         let _ = fs::remove_dir_all(&run);
-    })?;
+    })
+    .map_err(|_| StartError::Launch)?;
     ready(&mut owned.companion, &signal)?;
     let directory = config.installation.join(language.id());
     let executable = directory.join("CA.exe");
@@ -343,16 +427,29 @@ fn start_inner(
         );
         game
     } else {
-        Command::new(executable)
+        Command::new(&executable)
     };
-    owned.game = Some(
-        game.arg("multiserveridx:0")
-            .current_dir(directory)
-            .stdin(Stdio::null())
-            .stdout(Stdio::null())
-            .stderr(Stdio::null())
-            .spawn()?,
-    );
+    game.arg("multiserveridx:0")
+        .current_dir(&directory)
+        .stdin(Stdio::null())
+        .stdout(Stdio::null())
+        .stderr(Stdio::null());
+    let (complete, done) = std::sync::mpsc::channel::<()>();
+    let beat = owned.run.join("beat");
+    let pulse = thread::spawn(move || {
+        let mut n = 0u64;
+        while done.recv_timeout(Duration::from_millis(250))
+            == Err(std::sync::mpsc::RecvTimeoutError::Timeout)
+        {
+            n += 1;
+            let _ = heartbeat::publish(&beat, n);
+        }
+        n
+    });
+    let child = Game::spawn(&mut game, &executable, &directory);
+    drop(complete);
+    owned.generation = pulse.join().unwrap_or_default();
+    owned.game = Some(child.map_err(|_| StartError::Launch)?);
     Ok(Session(Arc::new(Mutex::new(owned))))
 }
 
@@ -361,9 +458,18 @@ pub(crate) enum StartError {
     Integrity,
     WritableFiles,
     Launch,
+    Version,
 }
 
 pub(crate) fn start(config: Config, language: Language) -> Result<Session, StartError> {
+    start_mode(config, language, None)
+}
+
+pub(crate) fn start_mode(
+    config: Config,
+    language: Language,
+    friends: Option<kr_tunnel::prelogin::friends::Guest>,
+) -> Result<Session, StartError> {
     let lock = kr_player::lock_installation(&config.installation)
         .map_err(|_| StartError::WritableFiles)?;
     kr_player::prepare_language(
@@ -376,7 +482,7 @@ pub(crate) fn start(config: Config, language: Language) -> Result<Session, Start
         kr_player::PreparationError::Integrity => StartError::Integrity,
         kr_player::PreparationError::WritableFiles => StartError::WritableFiles,
     })?;
-    start_inner(config, language, lock).map_err(|_| StartError::Launch)
+    start_inner(config, language, lock, friends)
 }
 
 #[cfg(test)]

@@ -1,0 +1,77 @@
+{
+  "id": "CP390",
+  "previous": "CP389",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T11:57:29.042245+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Launcher Windows O1 có thể tạo phòng và đưa khách vào game KR bằng tên đã nhớ qua mã/LAN không?",
+  "scope": "KRE-O1-LAUNCHER / #558, nền #544/#550/#555/#556; chỉ O1 và chuyển ô mã S1, không triển khai kết nối S1.",
+  "context_commit": "e2d15d463c08f34e481c6941ef458bf07aeef22b",
+  "artifacts": [
+    {"role":"kr-player Windows GNU","sha256":"ff4ecb3d2555203d1fdea39a1ea7028bf47f387e67a60e86b138aaaa8ef0c88c"},
+    {"role":"kr-prelogin Windows GNU","sha256":"cbec5f0a85fbe273eaf2c6c2a1829eb709a641bef9c23083394340a8fea3ae85"},
+    {"role":"kr-service Windows GNU","sha256":"d751bdb5e66f60299a50648d7d416d8cc87ff229742eddeb1156eacf230ec91d"},
+    {"role":"kr-admin Windows GNU","sha256":"b08d2c20faf45bf522cf53bca122f450315a0213ae564af5320cc5d0fdc1027a"},
+    {"role":"kr-launch-identity Windows GNU","sha256":"04a979c0a1c080d8dba8b68d1797bf6b2fc9cd81340ac6b910ab27f11459cc74"}
+  ],
+  "locators": [
+    "docs/O1_S1_P2P.md",
+    "docs/OPERATIONS.md#gói-server-windows",
+    "docs/protocol/auth-session.md#rust-ingame-local-profiles",
+    "local/research/codex/o1-launcher"
+  ],
+  "findings": [
+    {"source":"design","status":"design","method":"test","canonical":"docs/O1_S1_P2P.md","summary":"Hai endpoint headless tìm cùng phòng qua DNS-SD; mã sai, version khác và manifest khác bị từ chối trước LoginStage; đóng endpoint tới peer.","limits":"Test local; không suy NAT thực, mailbox công cộng hoặc client native.","evidence":["HEADLESS"]},
+    {"source":"design","status":"design","method":"test","canonical":"docs/protocol/auth-session.md#rust-ingame-local-profiles","summary":"Tên có dấu đi qua gateway TLS cục bộ, gắn với guest 1P của SQLite; nhánh credential và 2P O1 bị từ chối.","limits":"Gateway test dùng luồng TCP tổng hợp; không thay ván KR native.","evidence":["HEADLESS","GUEST"]},
+    {"source":"design","status":"candidate","method":"runtime","canonical":"docs/PLAN.md#full-game-roadmap","summary":"Windows VM tạo phòng và hiện mã; Wine thấy cùng mã qua mDNS. CA.exe mở qua UAC nhưng báo ErrCannotLogin trước LoginStage. Recipe CP388 thiếu cổng client KR; builder nay từ chối recipe đó. Chưa có ván native.","limits":"Hai môi trường trên một host và trong namespace không có route mặc định; không suy Internet hay máy Windows sạch ngoài host.","evidence":["NATIVE","SCREEN"]}
+  ],
+  "verification": [
+    {"check":"Cargo fmt/Clippy, workspace khóa lockfile với oracle 949x, kiểm đích O1 và builder Python.","result":"pass","limits":"Workspace baseline chạy trước lượt sửa cuối; các test O1 liên quan chạy riêng.","evidence":["WS","CLIPPY","HEADLESS","GUEST","PYTHON"]},
+    {"check":"Build Windows GNU khóa lockfile; gói có runner, exporter và bản Python embeddable.","result":"pass","limits":"MinGW không cần DLL phụ iroh trong gói. Binary hash ghi trong artifacts.","evidence":["WINDOWS","STAGE"]},
+    {"check":"Luồng Windows VM tạo phòng, Wine vào bằng mã, chơi tới kết quả; dọn riêng VM/Wine.","result":"fail","limits":"Hai môi trường trên một host và trong namespace không có route mặc định; không suy Internet hay máy Windows sạch ngoài host.","evidence":["NATIVE","CLEAN"]}
+  ],
+  "delta": {"added":["Tab Chơi với bạn bè, nhớ tên, tạo/vào và tìm LAN, chuyển ô mã nhầm S1, sao chép mã và cảnh báo khác phiên bản.","Runner O1 riêng dùng pack đã pin, guest 1P, gateway P2P và firewall UDP từ LocalSubnet.","Mã Internet có mailbox ứng viên; gói đầy đủ dùng link phát hành đã cấu hình."],"corrected":["Nối giao thức transport prototype CP389 vào luồng prelogin và relay hiện có mà không đổi gói KR."],"superseded":[]},
+  "blockers": [
+    "Chưa nghiệm thu một ván Windows VM + Wine tới kết quả.",
+    "Chưa chạy Internet thật vì soak chưa kết thúc; còn đo khả dụng mailbox công cộng và đường relay."
+  ],
+  "next_steps": [
+    {"id":"O1-REAL-INTERNET","task":"KRE-O1-LAUNCHER","state":"active","owner":"Claude","reviewer":"waived","action":"Nghiệm thu qua hai mạng và kiểm mailbox/relay sau soak, trước khi phát hành O1."}
+  ],
+  "review": {"status":"waived","as_of_utc":"2026-11-21T11:57:29.042245+00:00","reference":"docs/evidence/checkpoints/review-waiver.json","scope":"Codex tự kiểm; Claude tích hợp.","authorization":{"by":"project_owner","reference":"docs/evidence/checkpoints/review-waiver.json","reason":"Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path":"README.md","state":"updated","reason":"Thay mốc hiện tại."},
+    {"path":"docs/HISTORY.md","state":"updated","reason":"Chuyển mốc server Windows cũ."},
+    {"path":"docs/PLAN.md","state":"updated","reason":"Ghi đè tiến độ và nghiệm thu O1 còn lại."},
+    {"path":"docs/PROTOCOL.md","state":"unchanged","reason":"Mục đăng nhập được đặt trong module auth-session hiện có."},
+    {"path":"docs/protocol/auth-session.md","state":"updated","reason":"Ghi guest 1P và nguồn tên từ launcher."},
+    {"path":"docs/RESEARCH.md","state":"updated","reason":"Giữ câu hỏi vận hành Internet thật và mailbox công cộng."},
+    {"path":"docs/O1_S1_P2P.md","state":"updated","reason":"Ghi cách discovery, admission, stream và datagram của O1."},
+    {"path":"docs/OPERATIONS.md","state":"updated","reason":"Ghi cách dựng gói người chơi từ pack Windows."},
+    {"path":"docs/features.json","state":"updated","reason":"Nối bằng chứng O1 vào KR-S002."},
+    {"path":"docs/COVERAGE.md","state":"updated","reason":"Sinh lại coverage từ catalog và câu hỏi."},
+    {"path":"docs/player/guide.vi.md","state":"updated","reason":"Ghi bước tạo/vào phòng khách và tường lửa."},
+    {"path":"docs/player/guide.en.md","state":"updated","reason":"Ghi bước tạo/vào phòng khách và tường lửa."},
+    {"path":"docs/player/guide.ko.md","state":"updated","reason":"Ghi bước tạo/vào phòng khách và tường lửa."},
+    {"path":"docs/player/o1-launcher.jpg","state":"updated","reason":"Ảnh giao diện launcher trên Windows VM."},
+    {"path":"docs/evidence/rust-service/o1-launcher.json","state":"updated","reason":"Ghi bằng chứng và giới hạn."},
+    {"path":"docs/evidence/issue-reconciliation/review.json","state":"updated","reason":"Ghi phạm vi đã đo và phép thử còn lại của issue O1."},
+    {"path":"docs/evidence/issue-reconciliation/github-snapshot.json","state":"updated","reason":"Ghi issue O1 do Codex mở."}
+  ],
+  "evidence": [
+    {"id":"SCREEN","kind":"repository","path":"docs/player/o1-launcher.jpg","bytes":71395,"sha256":"f1c164e022edf84d4d37b885167daa4b687063c71b4a092676078dfcc01cc1ce"},
+    {"id":"REPORT","kind":"repository","path":"docs/evidence/rust-service/o1-launcher.json","bytes":2563,"sha256":"bba693cc653035506ba3482ce34edb86f136b4ed32eeb3aa019b8e1bbc94ca2b"},
+    {"id":"WS","kind":"local","path":"local/research/codex/o1-launcher/workspace-tests.log","bytes":58965,"sha256":"0242be005dc479138d2e80106cc08cc938ed1b2f6fba5acf035d41b70d42eafe"},
+    {"id":"CLIPPY","kind":"local","path":"local/research/codex/o1-launcher/clippy.log","bytes":374,"sha256":"eb6396decca0e5d090d8361356fec6df686a184a7006fcbc2e59e7003de1f877"},
+    {"id":"HEADLESS","kind":"local","path":"local/research/codex/o1-launcher/o1-headless-r2.log","bytes":4574,"sha256":"1ae146966662ce4e17534978cb1f153bd3cf373e9e892c695cef444f5eb0b6cf"},
+    {"id":"GUEST","kind":"local","path":"local/research/codex/o1-launcher/named-guest.log","bytes":1606,"sha256":"6fecc18dba3071db2407f53a15e7f32bd3a33bf2edfa9d9246bff030519e9c55"},
+    {"id":"PYTHON","kind":"local","path":"local/research/codex/o1-launcher/python-tests.log","bytes":717,"sha256":"b04c61769c30c125312496322b24432ba3e2e8163c0426d65b01f511affb708c"},
+    {"id":"WINDOWS","kind":"local","path":"local/research/codex/o1-launcher/windows-build-uac.log","bytes":151,"sha256":"af30fde7951d1f12b1a2cacc437a09e3812d28565a73d8e0c929f279d45686b4"},
+    {"id":"STAGE","kind":"local","path":"local/research/codex/o1-launcher/stage-3.log","bytes":1264,"sha256":"6babb6ba5b827cbf55f1cb681b285166990afd13244f7be42aebaa014dd39353"},
+    {"id":"NATIVE","kind":"local","path":"local/research/codex/o1-launcher/native-summary.json","bytes":1147,"sha256":"458553faa14ab6950bc195994bacf7f1385f95c7a3bcd6e03df2a95b6a85c665"},
+    {"id":"CLEAN","kind":"local","path":"local/research/codex/o1-launcher/native-cleanup.json","bytes":249,"sha256":"3661028f1d2f0190b84fafa65b3bb2f1c761ee89a540771f09c7a5b10e47b0f0"}
+  ],
+  "evidence_runs": [
+  ]
+}

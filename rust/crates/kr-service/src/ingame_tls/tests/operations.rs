@@ -36,6 +36,7 @@ fn loopback_profile(input: &ServerConfig) -> crate::Validated {
     // config changes. Everything after fixture loading is the actual server.
     let path = input.db.with_file_name("cert.der");
     let tls = Config {
+        friends_guest_only: false,
         bind: input.tls,
         certificate: FixturePin {
             sha256: crate::sha256_hex(&fs::read(&path).unwrap()),
@@ -163,6 +164,7 @@ fn loopback_profile(input: &ServerConfig) -> crate::Validated {
 }
 fn resources_config() -> Config {
     Config {
+        friends_guest_only: false,
         bind: "127.0.0.1:1".parse().unwrap(),
         certificate: FixturePin {
             path: PathBuf::new(),
