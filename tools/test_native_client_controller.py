@@ -61,6 +61,20 @@ class ControllerTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "restarted"):
             self.server.ready()
 
+    def test_busy_server_tail_keeps_in_flight_row_and_rejects_replaced_log(self):
+        self.events.write_bytes(b'{"event":"old"}\n' * 50001 + b'{"event":"new"')
+        attached = Server(self.root, self.db, from_tail=True)
+        gate = {"events": [{"after": "begin", "match": {"event": "new"}}]}
+        self.assertFalse(attached.matches(gate, {"begin": 0}))
+        self.assertEqual(attached.events.rows, [])
+        with self.events.open("ab") as stream:
+            stream.write(b'}\n')
+        self.assertTrue(attached.matches(gate, {"begin": 0}))
+        self.events.rename(self.root / "old.jsonl")
+        self.events.write_bytes(b'{"event":"new"}\n')
+        with self.assertRaisesRegex(ValueError, "replaced"):
+            attached.ready()
+
     def test_unicode_and_holds_are_validated_before_input(self):
         payload = self.root / "text"
         payload.write_text("Việt 한😀", encoding="utf-8")

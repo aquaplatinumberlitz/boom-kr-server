@@ -9,11 +9,11 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP386 / AUD152.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP387 / AUD153.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
 tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [Lộ trình F1–F6](#full-game-roadmap) chưa mở.
-[Xếp loại bước 0](content/classification.md) đã chốt: 47 map đạt A ở cấp map; họ map F1 có 0 A, 86 B và 22 C. [Controller trên Windows](evidence/checkpoints/records/CP385.json) chưa đạt vì chưa xác nhận được cửa sổ game; #534 còn mở.
+[Xếp loại bước 0](content/classification.md) đã chốt: 47 map đạt A ở cấp map; họ map F1 có 0 A, 86 B và 22 C. [Controller trên Windows và Wine](evidence/checkpoints/records/CP387.json) đã đạt bốn map trọn chu trình; bước 0 hoàn tất. Dùng lại controller cho lượt hai client có tải ở M8 sau soak.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
