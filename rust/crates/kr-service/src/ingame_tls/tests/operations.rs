@@ -674,6 +674,7 @@ fn check_load_driver_drain(fail_delivery: bool) {
             "login_port":server.config.tcp[0],"channel_port":server.config.tcp[1],
             "rooms":rooms,"replay":replay,"ramp_ms":300,
             "active_seconds":2,"minimum_run_seconds":0,"minimum_rounds":2,
+            "delivery_buckets":fail_delivery,
             "delivery_p99_ms_max":if fail_delivery { 1 } else { 500 },
             "delivery_loss_percent_max":0
         });
