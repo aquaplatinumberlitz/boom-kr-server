@@ -1,0 +1,84 @@
+{
+  "id": "CP387",
+  "previous": "CP386",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T10:24:30.868539+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Bộ điều khiển có đưa một client Windows VM và một client Wine qua Start, kết quả và trở về phòng trên cùng bốn map không?",
+  "scope": "KRE-STEP0-C (#534). Tối đa ba lượt native. Dùng bản sao KR 00967 trong mạng cục bộ cô lập; không chạm VPS hoặc mở nghiệm thu M8 có tải.",
+  "context_commit": "a7788a9cab984363f353d273d22360af3c38c7fd",
+  "artifacts": [
+    {"sha256":"e704cc2cc30c882d25a64ce740d5928e9aa44b1f1cf4c7d730d2e3f9f7dc6ba7"},
+    {"sha256":"29ce02c479c3a9b89349261a35a79b4795087e7ea5e14242fac17d1ea948e185"},
+    {"sha256":"045c06eeef01a48a6addcc5588ecb8163eb82a4049aad2a1229bca3f7a892c2e"},
+    {"sha256":"e51a77207ed86172621209a259f086708866376dcf098b906925130def37db37"},
+    {"sha256":"063b8ae231a6afecc98b0d2e64753d930a0111238f41ba66f71010d6b9a91fa7"},
+    {"sha256":"045c06eeef01a48a6addcc5588ecb8163eb82a4049aad2a1229bca3f7a892c2e"},
+    {"sha256":"5bbbcab0a1a287825c5573282817b0b93b4c5b836ed8365b7f97a84e455cab3e"},
+    {"sha256":"302cad123a66f1fadceb03becc01ab77e6fb1413ed7b4fbe4364776bf8715b14"}
+  ],
+  "locators": [
+    "local/research/codex/c534",
+    "wine-10.0-20260425 (CachyOS)",
+    "Windows 10 trên VM QEMU riêng; gói launcher đã dùng trong CP373."
+  ],
+  "findings": [
+    {"source":"kr_runtime","status":"confirmed","method":"runtime","canonical":"docs/content/native-client-controller.md","summary":"Hai client mở qua launcher; helper nhận PID và vùng game của mỗi bên. Cả hai đăng nhập, vào cùng phòng, bắt đầu và tải bốn map, thấy đồng hồ chạy và trở về phòng sau kết quả. SQLite ghi bốn ván complete với khóa phòng và ván riêng; mỗi ván có hai yêu cầu 202, hai refresh và ảnh hai client đã về phòng.","evidence":["EVENT1","GUEST1","JOURNAL1","LIFETIME1","PCAP1","PHASE1","TRY1"],"limits":"Bảng điểm có ảnh hai phía trên ba map; CaJJ_Clover01 thiếu ảnh bảng điểm do chờ phản hồi helper, nhưng có journal, hai yêu cầu 202, hai refresh và ảnh hai client đã về phòng. Không suy nguyên nhân CP385, tương thích toàn bộ map, Internet thật, soak hoặc tải M8."},
+    {"source":"design","status":"design","method":"test","canonical":"docs/content/native-client-controller.md","summary":"Helper báo vùng game cho đúng PID foreground. Controller có chế độ bỏ qua log đã ghi trước khi gắn vào server đang chạy, vẫn giữ dòng chưa hoàn tất và từ chối log bị thay.","evidence":["TOOL","HELPER","UNIT","BUILDS"],"limits":"Chế độ gắn cuối log kiểm bằng đối chứng tự động; chạy có tải trên VPS là phép đo M8 riêng."}
+  ],
+  "verification": [
+    {"check":"Kiểm controller và helper nhập Wine; biên dịch Win32 với MinGW -Werror và đối chiếu hash service đã khóa của CP385.","result":"pass","evidence":["UNIT","WINEUNIT","BUILDS"],"limits":"Bốn test controller, ba test nhập Wine. Không thay Rust."},
+    {"check":"Hai client hoàn tất bốn map khác nhau; đối chiếu Start, load/peer, input, journal kết quả đúng khóa, hai stream về phòng và ảnh hai client đã về phòng.","result":"pass","evidence":["EVENT1","GUEST1","JOURNAL1","LIFETIME1","PCAP1","PHASE1","TRY1"],"limits":"Phân biệt cửa sổ, đăng nhập và ván đã hoàn tất; verifier không lấy cổng TCP mở làm thành công."},
+    {"check":"Nhập chuỗi Việt–Hàn bằng helper trên Windows và Wine.","result":"pass","evidence":["UNICODEWIN1","WIN_RETURN1_1","WINE_RETURN1_1"],"limits":"Windows hiện chuỗi trong ô chat, không gửi; Wine nhập tên phòng và cả hai nhìn thấy tên."},
+    {"check":"Giữ nguyên ba tiến trình thường trực; kiểm cách ly và dọn VM, prefix, file game và ISO thử.","result":"pass","evidence":["CLEAN1","CLEANER","DRYCLEAN1","DRYCLEAN2","IPV41","IPV61","NET1"],"limits":"Giữ raw cần để đối chiếu, không trỏ input chứa mật khẩu. Hai preflight lỗi dừng trước khi QEMU mở."}
+  ],
+  "delta": {"added":["Đo controller theo từng mốc game trên cặp Windows/Wine; giữ cấu hình map dùng lại."],"corrected":["Bổ sung tìm cửa sổ theo PID và vùng game; dùng gói launcher có đối chứng CP373."],"superseded":["CP385 là kết quả dừng trước đăng nhập, giữ nguyên làm đối chứng."]},
+  "blockers": [],
+  "next_steps": [
+    {"id":"STEP0-C-windows-acceptance","task":"KRE-STEP0-C","state":"closed","owner":"Codex","reviewer":"waived","action":"Đóng #534 với bằng chứng bốn map; giữ cấu hình để tái dùng ở M8."}
+  ],
+  "review": {"status":"waived","as_of_utc":"2026-11-21T10:24:30.868539+00:00","reference":"docs/evidence/checkpoints/review-waiver.json","scope":"Codex tự kiểm; Claude tích hợp qua PR.","authorization":{"by":"project_owner","reference":"docs/evidence/checkpoints/review-waiver.json","reason":"Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path":"README.md","state":"updated","reason":"Thay mốc mới nhất."},
+    {"path":"docs/HISTORY.md","state":"updated","reason":"Chuyển CP386 khỏi README."},
+    {"path":"docs/PLAN.md","state":"updated","reason":"Ghi kết quả #534 ở Bảng điều hành."},
+    {"path":"docs/PROTOCOL.md","state":"unchanged","reason":"Không đổi wire hoặc authority."},
+    {"path":"docs/RESEARCH.md","state":"unchanged","reason":"Nghiệm thu controller theo contract có sẵn; không mở câu hỏi RE."},
+    {"path":"docs/features.json","state":"unchanged","reason":"Không đổi tính năng gameplay, contract hoặc scope M8 của catalog."},
+    {"path":"docs/COVERAGE.md","state":"unchanged","reason":"Không đổi câu hỏi hoặc phép đo của catalog."},
+    {"path":"docs/content/native-client-controller.md","state":"updated","reason":"Ghi vùng game theo PID, chế độ gắn cuối log và cách tái dùng controller."},
+    {"path":"docs/evidence/checkpoints/records/CP387.json","state":"updated","reason":"Ghim receipt, journal, capture và raw liên quan."},
+    {"path":"docs/evidence/checkpoints/audits/AUD153.json","state":"updated","reason":"Audit sau khi hoàn tất nhóm controller Windows."}
+  ],
+  "completed_feature_groups": [
+    "step0-windows-controller"
+  ],
+  "evidence": [
+    {"id":"CLEANER","kind":"local","path":"local/research/codex/c534/finish.py","bytes":3138,"sha256":"b621258ebd169e4d207d3fc1e4695a6023a5a3acdb2996bdabbd6d8019d766fc"},
+    {"id":"BUILDS","kind":"local","path":"local/research/codex/c534/build-pins.txt","bytes":331,"sha256":"797e47265626368e1741eb883b034d1cc8899b902adfe338564c46e4108966b3"},
+    {"id":"UNIT","kind":"local","path":"local/research/codex/c534/unit-controller.log","bytes":786,"sha256":"122c6e06282e3e7d651107a953cf3cf8df66a9abbcb01d7a6e14b6aacc92b6c3"},
+    {"id":"WINEUNIT","kind":"local","path":"local/research/codex/c534/unit-wine.log","bytes":460,"sha256":"ec616296e82859a69ab0b149917eb6083546ecf32e49302570739fe8099aee6b"},
+    {"id":"TOOL","kind":"repository","path":"tools/native_client_controller.py","bytes":10953,"sha256":"e704cc2cc30c882d25a64ce740d5928e9aa44b1f1cf4c7d730d2e3f9f7dc6ba7"},
+    {"id":"HELPER","kind":"repository","path":"tools/native_client_input.c","bytes":4333,"sha256":"29ce02c479c3a9b89349261a35a79b4795087e7ea5e14242fac17d1ea948e185"},
+    {"id":"TRY1","kind":"local","path":"local/research/codex/c534/r1/verification.json","bytes":6525,"sha256":"c95738a34fdfca577bf4c14cd13c6cd0490d35fa694f131d7ae39d655a08b6e6"},
+    {"id":"CLEAN1","kind":"local","path":"local/research/codex/c534/r1/cleanup.json","bytes":477,"sha256":"3876210262f5d8174f2ebe0633dbb7465c857a5f24346c3c9e1c1d8a190f7910"},
+    {"id":"PHASE1","kind":"local","path":"local/research/codex/c534/r1/state-gate.jsonl","bytes":69301,"sha256":"cd47dca4a736abd9c4e946cdec6a17b4ad7b76d465edc5c45e209d00934cf6cb"},
+    {"id":"GUEST1","kind":"local","path":"local/research/codex/c534/r1/guest-export/result.json","bytes":732,"sha256":"2afe2b2b47c0af32d3ca3c840d570ccaede3e269ca5b70d24914046b8806e1b2"},
+    {"id":"LIFETIME1","kind":"local","path":"local/research/codex/c534/r1/win-lifetime.jsonl","bytes":504,"sha256":"d96b30d6ae752078862076ca52b00f60e2bb248f4e8291e1eb705e76a3744dc5"},
+    {"id":"EVENT1","kind":"local","path":"local/research/codex/c534/r1/service/rust-events.jsonl","bytes":98617,"sha256":"36d2f623b65a690e9b35b4d741e9ca565700a603b42e6d3fcf3e1f434a1764ad"},
+    {"id":"JOURNAL1","kind":"local","path":"local/research/codex/c534/r1/account.sqlite","bytes":131072,"sha256":"2c9fb5f473649aecc86f93e5a5d8b1e07acaaabee096e004400f308addda6aeb"},
+    {"id":"PCAP1","kind":"local","path":"local/research/codex/c534/r1/guest-net.pcap","bytes":1337863,"sha256":"835f485339cee11228db97cd56ce0b3ec90e9555583e5bd3271e42ed38b7244b"},
+    {"id":"UNICODEWIN1","kind":"local","path":"local/research/codex/c534/r1/win-unicode-input/capture-0.png","bytes":285093,"sha256":"d52ae59972666da0ed749bdeae275b500762d434ce7d5078a94a8627bc2a6f07"},
+    {"id":"IPV41","kind":"local","path":"local/research/codex/c534/r1/ipv4-routes.json","bytes":3,"sha256":"37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"},
+    {"id":"IPV61","kind":"local","path":"local/research/codex/c534/r1/ipv6-routes.json","bytes":3,"sha256":"37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"},
+    {"id":"NET1","kind":"local","path":"local/research/codex/c534/r1/loopback-only.json","bytes":5,"sha256":"a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"},
+    {"id":"WIN_RETURN1_1","kind":"local","path":"local/research/codex/c534/r1/win-room-1-2001/capture-0.png","bytes":286087,"sha256":"efcf96c564c0c4e0bdca7b519fb55c5222575678ce4fe86844bb5886af0a05ff"},
+    {"id":"WINE_RETURN1_1","kind":"local","path":"local/research/codex/c534/r1/wine-room-1-2002.png","bytes":234298,"sha256":"d6968a88b001c767ae34ab68dac00b3147faf5531b0f3acec417ec8421da6fd1"},
+    {"id":"DRYCLEAN1","kind":"local","path":"local/research/codex/c534/preflight-config-size/cleanup.json","bytes":211,"sha256":"085c4247a6a8e194bceb49c55638ae851118b6449da0536986bfd3a08f2a12f0"},
+    {"id":"DRYCLEAN2","kind":"local","path":"local/research/codex/c534/preflight-profile/cleanup.json","bytes":211,"sha256":"085c4247a6a8e194bceb49c55638ae851118b6449da0536986bfd3a08f2a12f0"}
+  ],
+  "evidence_runs": [
+    {"run":"local/research/codex/c534","path":"local/evidence-manifests/a748a6bd22aede827bba94c8db45b4a604bb309e13a014d38ebd90c5a2ae2f5d.jsonl","sha256":"a748a6bd22aede827bba94c8db45b4a604bb309e13a014d38ebd90c5a2ae2f5d","bytes":8060,"count":43,"files_bytes":6757943}
+  ]
+}

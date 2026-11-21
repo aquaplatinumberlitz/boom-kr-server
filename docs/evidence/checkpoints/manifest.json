@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP386",
-  "completed_count": 386,
+  "last_id": "CP387",
+  "completed_count": 387,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
-  "last_manual_audit": "AUD152",
+  "last_manual_audit": "AUD153",
   "audits": [
     {
       "id": "AUD001",
@@ -778,6 +778,11 @@
       "id": "AUD152",
       "path": "docs/evidence/checkpoints/audits/AUD152.json",
       "sha256": "73af6828db4e536963716e3fc7e3ae30977bf887829e36ed29739cd2adf773b3"
+    },
+    {
+      "id": "AUD153",
+      "path": "docs/evidence/checkpoints/audits/AUD153.json",
+      "sha256": "c30c52e2c88babc0781f08e27866b95cc5a7d494e4fd1000e8568fa42e1cd2b8"
     }
   ],
   "task_states": [
@@ -1245,7 +1250,7 @@
     },
     {
       "id": "KRE-STEP0-C",
-      "state": "open",
+      "state": "closed",
       "canonical": "docs/content/native-client-controller.md",
       "reference": "docs/evidence/owner-directives/post-phase1-direction.json"
     }
@@ -4339,6 +4344,14 @@
       "path": "docs/evidence/checkpoints/records/CP386.json",
       "bytes": 7218,
       "sha256": "6e1184576eaa965fff4885f3936fa3a11ce6847bebffe738ef338c0f3fba8568"
+    },
+    {
+      "id": "CP387",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-21T10:24:30.868539+00:00",
+      "path": "docs/evidence/checkpoints/records/CP387.json",
+      "bytes": 10855,
+      "sha256": "3b6ce4c0084e2e696d891d58117113e5c1be9f59467c0b35b18a2644c526b334"
     }
   ],
   "audit_policy": {

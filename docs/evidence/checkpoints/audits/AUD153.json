@@ -1,0 +1,33 @@
+{
+  "id": "AUD153",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "step0-windows-controller"
+  ],
+  "completed_through": "CP387",
+  "recorded_utc": "2026-11-21T10:24:30.868539+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/protocol/life-results.md",
+    "docs/RESEARCH.md",
+    "docs/content/native-client-controller.md",
+    "docs/evidence/checkpoints/records/CP387.json"
+  ],
+  "findings": [
+    {
+      "id": "STEP0-C",
+      "stale": "Bảng điều hành giữ blocker chưa thấy cửa sổ Windows.",
+      "correction": "Đối chiếu hai cửa sổ, bốn khóa journal, mốc Start/kết quả/return của cả hai stream và capture cùng lượt; cập nhật bước 0.",
+      "fixed_in": [
+        "docs/PLAN.md",
+        "README.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "Internet thật và lượt hai client chạy kèm tải là kiểm riêng của M8 sau soak."
+  ]
+}

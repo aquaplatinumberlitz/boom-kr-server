@@ -74,6 +74,13 @@ int main(int argc, char **argv) {
         return 1;
     }
     if (argc == 3 && !strcmp(argv[2], "check")) return 0;
+    if (argc == 3 && !strcmp(argv[2], "geometry")) {
+        RECT bounds;
+        POINT origin = {0};
+        if (!GetClientRect(window, &bounds) || !ClientToScreen(window, &origin)) return 1;
+        printf("%ld %ld %ld %ld\n", origin.x, origin.y, bounds.right, bounds.bottom);
+        return 0;
+    }
     if (argc == 7 && !strcmp(argv[2], "click") &&
             number(argv[3], 0, 16383, &a) && number(argv[4], 0, 16383, &b) &&
             number(argv[5], 1, 2000, &ms) && number(argv[6], 0, 1000, &settle)) {

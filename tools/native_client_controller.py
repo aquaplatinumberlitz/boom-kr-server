@@ -16,11 +16,30 @@ def bounded_int(value, low, high):
 
 
 class Events:
-    def __init__(self, path):
+    def __init__(self, path, *, from_tail=False):
         self.path = path
         self.position = 0
         self.identity = None
         self.rows = []
+        if from_tail:
+            self.anchor_at_tail()
+
+    def anchor_at_tail(self):
+        """Ignore complete rows already present when attaching to a busy server."""
+        try:
+            source = self.path.open("rb")
+        except FileNotFoundError:
+            return
+        with source:
+            stat = fstat(source.fileno())
+            start = max(0, stat.st_size - (1 << 16))
+            source.seek(start)
+            tail = source.read(stat.st_size - start)
+            newline = tail.rfind(b"\n")
+            if newline == -1 and start:
+                raise ValueError("event line too long at attach")
+            self.position = start + newline + 1
+            self.identity = (stat.st_dev, stat.st_ino)
 
     def poll(self):
         try:
@@ -54,10 +73,10 @@ class Events:
 
 
 class Server:
-    def __init__(self, run, db):
+    def __init__(self, run, db, *, from_tail=False):
         self.run = run
         self.db = db
-        self.events = Events(run / "rust-events.jsonl")
+        self.events = Events(run / "rust-events.jsonl", from_tail=from_tail)
         self.identity = None
 
     def ready(self):
@@ -210,13 +229,16 @@ def main():
     parser.add_argument("--helper", type=Path, required=True)
     parser.add_argument("--pid", type=int, required=True, help="Win32 client PID")
     parser.add_argument("--wine", help="Wine executable; inherit the owned WINEPREFIX and DISPLAY")
+    parser.add_argument("--from-tail", action="store_true",
+                        help="Ignore complete event rows already present when attaching")
     args = parser.parse_args()
     try:
         backend = ([args.wine] if args.wine else []) + [
             str(args.helper.resolve()), str(bounded_int(args.pid, 1, 2**32 - 1))]
         plan = json.loads(args.plan.read_text(encoding="utf-8"))
         steps = prepare(plan, args.plan.parent, backend)
-        run(Server(args.service_run, args.db), steps, lambda row: print(json.dumps(row), flush=True))
+        server = Server(args.service_run, args.db, from_tail=args.from_tail)
+        run(server, steps, lambda row: print(json.dumps(row), flush=True))
     except (KeyError, TypeError, ValueError, OSError, sqlite3.Error) as error:
         parser.exit(1, f"Controller stopped: {error}\n")
 
