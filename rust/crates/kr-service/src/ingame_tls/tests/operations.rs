@@ -708,7 +708,41 @@ fn check_load_driver_drain(fail_delivery: bool) {
         assert_eq!(health["lobby"]["active_rounds"], 0);
         assert_eq!(health["relay"]["reserved_routes"], 0);
         assert_eq!(health["database_probe_errors"], 0);
+        let log = server.config.out.join("rust-events.jsonl");
         server.stop("-TERM").await;
+        let rows: Vec<Value> = fs::read_to_string(log)
+            .unwrap()
+            .lines()
+            .map(|line| serde_json::from_str(line).unwrap())
+            .collect();
+        let key = |row: &Value| {
+            ["room_id", "room_session", "generation"].map(|field| {
+                let id = row[field].as_u64().unwrap();
+                assert!(id > 0);
+                id
+            })
+        };
+        let mut room_members = std::collections::BTreeMap::new();
+        let mut streams = std::collections::BTreeSet::new();
+        for (i, row) in rows.iter().enumerate() {
+            if row["event"] != "native_tls_room_selected" {
+                continue;
+            }
+            let room = key(row);
+            let stream = row["stream_id"].as_u64().unwrap();
+            assert!(streams.insert(stream));
+            assert_eq!(row["players"], 1);
+            let members: &mut Vec<u64> = room_members.entry(room).or_default();
+            members.push(row["opcode"].as_u64().unwrap());
+            assert!(rows[i + 1..].iter().any(|setup| {
+                setup["event"] == "native_tls_room_setup_written"
+                    && setup["stream_id"] == stream
+                    && key(setup) == room
+            }));
+        }
+        assert_eq!(room_members.len(), if fail_delivery { 2 } else { 1 });
+        assert_eq!(streams.len(), 2 * room_members.len());
+        assert!(room_members.values().all(|members| members == &[81, 82]));
     });
 }
 

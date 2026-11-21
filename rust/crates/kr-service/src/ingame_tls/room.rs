@@ -34,6 +34,24 @@ fn local_command(opcode: u32, body: &[u8], count: usize) -> io::Result<(usize, O
     }
 }
 
+// Preserve the original event fields while identifying the channel and the
+// exact managed room. The controller can then distinguish host-only setup
+// from two streams that actually joined the same room.
+fn emit_room_gate(
+    resources: &Resources,
+    session: &room_io::Session,
+    stream_id: u64,
+    mut event: serde_json::Value,
+) {
+    event["stream_id"] = serde_json::json!(stream_id);
+    if let Some(room) = session.public_room_key() {
+        event["room_id"] = serde_json::json!(room.id.0);
+        event["room_session"] = serde_json::json!(room.session);
+        event["generation"] = serde_json::json!(room.generation);
+    }
+    let _ = resources.events.try_send(event);
+}
+
 #[derive(Default)]
 pub(super) struct State {
     sessions: Vec<room_io::Session>,
@@ -82,6 +100,7 @@ impl State {
         lane: &mut Lane,
         send: &mut quinn::SendStream,
         resources: &Resources,
+        stream_id: u64,
     ) -> io::Result<bool> {
         if !lane.in_lobby() {
             return Ok(false);
@@ -136,9 +155,16 @@ impl State {
                         }
                     }
                     self.sessions = sessions;
-                    let _ = resources.events.try_send(serde_json::json!({
-                        "event": "native_tls_room_selected", "opcode": opcode, "players": self.sessions.len()
-                    }));
+                    if let Some(session) = self.sessions.first() {
+                        emit_room_gate(
+                            resources,
+                            session,
+                            stream_id,
+                            serde_json::json!({
+                                "event": "native_tls_room_selected", "opcode": opcode, "players": self.sessions.len()
+                            }),
+                        );
+                    }
                 }
             }
             return Ok(true);
@@ -400,9 +426,14 @@ impl State {
                 }));
             }
             if batch.setup.is_some() {
-                let _ = resources.events.try_send(serde_json::json!({
-                    "event": "native_tls_room_setup_written", "players": self.sessions.len()
-                }));
+                emit_room_gate(
+                    resources,
+                    session,
+                    stream_id,
+                    serde_json::json!({
+                        "event": "native_tls_room_setup_written", "players": self.sessions.len()
+                    }),
+                );
             }
             if batch.packets.iter().any(|(alias, _)| alias == "return241") {
                 self.sessions.clear();
