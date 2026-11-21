@@ -18,6 +18,10 @@ use std::{
 pub(crate) struct Config {
     pub server: SocketAddrV4,
     pub certificate: PathBuf,
+    #[serde(default)]
+    pub server_name: Option<String>,
+    #[serde(default)]
+    pub release_url: Option<String>,
     prelogin_server: SocketAddrV4,
     prelogin_certificate: PathBuf,
     companion: PathBuf,
@@ -32,6 +36,29 @@ pub(crate) struct Config {
     udp_backend: kr_tunnel::UdpBackend,
 }
 impl Config {
+    pub fn route(&self) -> crate::servers::Route {
+        crate::servers::Route {
+            account: self.server,
+            account_cert: self.certificate.clone(),
+            game: self.prelogin_server,
+            game_cert: self.prelogin_certificate.clone(),
+        }
+    }
+
+    pub fn with_route(mut self, route: &crate::servers::Route) -> Self {
+        self.server = route.account;
+        self.certificate = route.account_cert.clone();
+        self.prelogin_server = route.game;
+        self.prelogin_certificate = route.game_cert.clone();
+        self
+    }
+
+    pub fn release_url(&self) -> Option<&str> {
+        self.release_url
+            .as_deref()
+            .and_then(crate::desktop::drive_url)
+    }
+
     pub fn load() -> io::Result<Self> {
         let path = std::env::args_os()
             .nth(1)

@@ -4,6 +4,7 @@ Recipe local khai base, pack_stages theo thứ tự nối và ba languages. Khô
 đổi offset .idx: một stage mới phải chứa nguyên byte pack stage trước ở đầu.
 """
 import argparse
+import re
 import hashlib
 import ipaddress
 import json
@@ -176,9 +177,21 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
 
 def windows_runtime(recipe, output, manifest_sha256):
     """Stage only pinned first-party programs, public certificates and launch settings."""
-    if set(recipe) != {'launcher', 'companion', 'certificate', 'prelogin_certificate',
-                       'server', 'prelogin_server', 'ports'}:
+    required = {'launcher', 'companion', 'certificate', 'prelogin_certificate',
+                'server', 'prelogin_server', 'ports'}
+    if not required <= recipe.keys() <= required | {'server_name', 'release_url'}:
         raise ValueError('Recipe Windows có trường thiếu hoặc không hỗ trợ')
+    release_url = recipe.get('release_url', '')
+    if not isinstance(release_url, str):
+        raise ValueError('Link phát hành phải là chuỗi')
+    release_url = release_url.strip()
+    if release_url and (len(release_url) > 2048 or not re.fullmatch(
+            r"https://drive\.google\.com/[a-zA-Z0-9\-._~/%?&=+#:@!$',;()*]+", release_url)):
+        raise ValueError('Link phát hành phải là HTTPS Google Drive')
+    server_name = recipe.get('server_name', '')
+    if (not isinstance(server_name, str) or len(server_name) > 64
+            or any(not ch.isprintable() for ch in server_name)):
+        raise ValueError('Tên máy chủ không hợp lệ')
     if digest(output / 'manifest.json') != manifest_sha256:
         raise ValueError('Manifest game không khớp pin')
     for key in ('server', 'prelogin_server'):
@@ -221,13 +234,17 @@ def windows_runtime(recipe, output, manifest_sha256):
                   ports=ports, certificate='account.der', prelogin_certificate='prelogin.der',
                   companion='kr-prelogin.exe', bundle='.', manifest_sha256=manifest_sha256,
                   installation='game', state='state', udp_backend='portable')
+    if server_name.strip():
+        config['server_name'] = server_name.strip()
+    if release_url:
+        config['release_url'] = release_url
     with (output / 'launcher.json').open('x') as file:
         json.dump(config, file, indent=2)
         file.write('\n')
     (output / 'MO-GAME.txt').write_text(
         'Giải nén vào thư mục có quyền ghi trên ổ NTFS. Mở kr-player.exe.\n'
         'Có thể chạy Tao-loi-tat.ps1 sau khi giải nén để tạo lối tắt Boom Play.\n'
-        'Chọn ngôn ngữ, chọn Online, bấm CHƠI, rồi đăng nhập hoặc chơi thử trong game.\n'
+        'Chọn ngôn ngữ, chọn một máy chủ, bấm CHƠI, rồi đăng nhập hoặc chơi thử trong game.\n'
         'Đừng mở CA.exe trực tiếp: game cần đường TLS do launcher mở.\n',
         encoding='utf-8-sig',
     )

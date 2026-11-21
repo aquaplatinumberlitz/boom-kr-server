@@ -110,10 +110,18 @@ class PackageTests(unittest.TestCase):
             windows_runtime(recipe, output, summary['manifest_sha256'])
         self.assertFalse((output / 'kr-player.exe').exists())
         recipe['companion'] = pin(program)
+        recipe['release_url'] = 'https://drive.google.com.evil.invalid/drive/folders/example'
+        with self.assertRaisesRegex(ValueError, 'HTTPS Google Drive'):
+            windows_runtime(recipe, output, summary['manifest_sha256'])
+        self.assertFalse((output / 'kr-player.exe').exists())
+        recipe['release_url'] = 'https://drive.google.com/drive/folders/example?usp=sharing'
+        recipe['server_name'] = 'Máy chủ thử'
         runtime = windows_runtime(recipe, output, summary['manifest_sha256'])
         config = json.loads((output / 'launcher.json').read_text())
         self.assertEqual(config['companion'], 'kr-prelogin.exe')
         self.assertEqual(config['udp_backend'], 'portable')
+        self.assertEqual(config['server_name'], recipe['server_name'])
+        self.assertEqual(config['release_url'], recipe['release_url'])
         self.assertEqual(runtime['kr-prelogin.exe'], digest(program))
         self.assertEqual(config['manifest_sha256'], digest(output / 'manifest.json'))
 

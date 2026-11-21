@@ -30,8 +30,8 @@ impl Player {
             .into()
     }
 
-    fn server_status(&self) -> Element<'_, Message> {
-        let (key, tint, latency) = match self.server {
+    fn server_status(&self, server: Server) -> Element<'_, Message> {
+        let (key, tint, latency) = match server {
             Server::Ready(ms) => (Copy::ServerReady, look::MINT, Some(ms)),
             Server::Checking => (Copy::ServerChecking, look::SUN, None),
             Server::Offline => (Copy::ServerOffline, look::CORAL, None),
@@ -48,8 +48,64 @@ impl Player {
         line.into()
     }
 
+    fn server_list(&self) -> Element<'_, Message> {
+        let mut items = column![].spacing(5);
+        for entry in &self.catalog {
+            let selected = self.server_prefs.selected.as_ref() == Some(&entry.id);
+            let name = entry
+                .name
+                .as_deref()
+                .filter(|name| !name.trim().is_empty())
+                .unwrap_or_else(|| self.t(Copy::BundleServer));
+            let status = if selected {
+                self.server
+            } else {
+                Server::Checking
+            };
+            let check = if selected { "●" } else { "○" };
+            let item = row![
+                text(check)
+                    .size(12)
+                    .color(if selected { look::SUN } else { look::MUTED }),
+                column![
+                    text(name)
+                        .size(14)
+                        .font(look::BOLD)
+                        .wrapping(iced::widget::text::Wrapping::WordOrGlyph),
+                    self.server_status(status),
+                ]
+                .spacing(3)
+                .width(Length::Fill),
+            ]
+            .spacing(9)
+            .align_y(Alignment::Center);
+            items = items.push(
+                button(item)
+                    .padding([7, 10])
+                    .width(Length::Fill)
+                    .style(look::secondary)
+                    .on_press_maybe(
+                        (!self.starting && self.session.is_none())
+                            .then(|| Message::Select(entry.id.clone())),
+                    ),
+            );
+        }
+        if self.catalog.is_empty() {
+            items = items.push(text(self.t(Copy::NoServers)).size(13).color(look::MUTED));
+        }
+        let add = button(text(self.t(Copy::AddServer)).size(12))
+            .padding([4, 7])
+            .style(look::link);
+        let soon = container(text(self.t(Copy::Soon)).size(10).color(look::SUN))
+            .padding([1, 6])
+            .style(look::pill(look::SUN));
+        items
+            .push(row![add, soon].align_y(Alignment::Center).spacing(5))
+            .into()
+    }
+
     fn modes(&self) -> Element<'_, Message> {
-        let online = self.mode == Mode::Online;
+        let online = self.mode == Mode::Servers;
         let selector = |mode, selected, label: &'static str, soon| {
             let mut content = column![text(label).size(13).font(look::BOLD).center()]
                 .align_x(Alignment::Center)
@@ -76,7 +132,7 @@ impl Player {
         };
         container(
             row![
-                selector(Mode::Online, online, self.t(Copy::Online), false),
+                selector(Mode::Servers, online, self.t(Copy::Servers), false),
                 selector(Mode::OfflineFriends, !online, self.t(Copy::Offline), true),
             ]
             .spacing(3),
@@ -102,7 +158,7 @@ impl Player {
     fn play_panel(&self) -> Element<'_, Message> {
         let state = self.play_state();
         let description = match self.mode {
-            Mode::Online => Copy::NativeLogin,
+            Mode::Servers => Copy::NativeLogin,
             Mode::OfflineFriends => Copy::Friends,
         };
         let key = match state {
@@ -136,23 +192,28 @@ impl Player {
                 .font(look::BOLD)
                 .color(look::MUTED),
             self.modes(),
-            text(self.t(description)).size(14).color(look::MUTED),
-            primary,
-            text(self.t(key))
-                .size(13)
-                .font(look::BOLD)
-                .color(match state {
-                    PlayState::Ready => look::MINT,
-                    PlayState::Error => look::CORAL,
-                    _ => look::MUTED,
-                }),
         ]
-        .spacing(10);
+        .spacing(8);
+        if self.mode == Mode::Servers {
+            body = body.push(self.server_list());
+        }
+        body = body
+            .push(text(self.t(description)).size(14).color(look::MUTED))
+            .push(primary)
+            .push(
+                text(self.t(key))
+                    .size(13)
+                    .font(look::BOLD)
+                    .color(match state {
+                        PlayState::Ready => look::MINT,
+                        PlayState::Error => look::CORAL,
+                        _ => look::MUTED,
+                    }),
+            );
         if matches!(state, PlayState::Checking | PlayState::Starting) {
             body = body.push(self.loading());
         }
-        if self.mode == Mode::Online {
-            body = body.push(self.server_status());
+        if self.mode == Mode::Servers {
             if state == PlayState::WaitingForServer && self.server == Server::Offline {
                 body = body.push(
                     button(text(self.t(Copy::Retry)).size(13))
@@ -212,7 +273,18 @@ impl Player {
         );
         let info = text(version).size(11).color(look::MUTED);
         let help = self.link(Copy::Help, Screen::Help);
-        let summary: Element<'_, Message> = if self.size.width < 1100.0 {
+        let summary: Element<'_, Message> = if self
+            .config
+            .as_ref()
+            .and_then(|cfg| cfg.release_url())
+            .is_some()
+        {
+            let download = button(text(self.t(Copy::Download)).size(13))
+                .padding([6, 0])
+                .style(look::link)
+                .on_press(Message::Desktop(desktop::Action::Release));
+            column![info, row![help, download].spacing(12)].into()
+        } else if self.size.width < 1100.0 {
             column![info, help].into()
         } else {
             row![info, help]

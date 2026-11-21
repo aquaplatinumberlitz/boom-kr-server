@@ -4,6 +4,7 @@ mod account;
 mod desktop;
 mod game;
 mod look;
+mod servers;
 mod strings;
 mod ui;
 
@@ -24,7 +25,8 @@ use zeroize::Zeroizing;
 #[serde(rename_all = "snake_case")]
 enum Mode {
     #[default]
-    Online,
+    #[serde(alias = "online")]
+    Servers,
     OfflineFriends,
 }
 
@@ -69,6 +71,7 @@ enum PlayState {
 enum Message {
     Language(Language),
     Mode(Mode),
+    Select(servers::Id),
     Open(Screen),
     Dismiss,
     Tab(bool),
@@ -82,7 +85,7 @@ enum Message {
     CopyCode,
     Tick,
     Resize(iced::Size),
-    Status(Server),
+    Status(servers::Id, Server),
     CheckFiles(bool),
     Retry,
     RepairFromHome,
@@ -145,6 +148,8 @@ struct Player {
     form: Form,
     submitting: bool,
     recovery: Option<Zeroizing<String>>,
+    catalog: Vec<servers::Entry>,
+    server_prefs: servers::Preferences,
     server: Server,
     probing: bool,
     files: Files,
@@ -198,7 +203,36 @@ fn save_preference(state: Option<&Path>, file: &str, value: impl Serialize) -> b
 }
 
 const ACCOUNT_LOGIN: &str = "account-login";
-const WINDOW_SIZE: iced::Size = iced::Size::new(1280.0, 720.0);
+const WINDOW_SIZE: iced::Size = iced::Size::new(1100.0, 820.0);
+const MINIMUM: iced::Size = iced::Size::new(880.0, 660.0);
+
+fn fitted_window(monitor: iced::Size) -> iced::Size {
+    let scale = (monitor.width / WINDOW_SIZE.width)
+        .min((monitor.height - 72.0) / WINDOW_SIZE.height)
+        .clamp(0.4, 1.0);
+    iced::Size::new(
+        (WINDOW_SIZE.width * scale).round(),
+        (WINDOW_SIZE.height * scale).round(),
+    )
+}
+
+fn fit_monitor() -> Task<Message> {
+    window::latest().and_then(|id| {
+        window::monitor_size(id).and_then(move |monitor| {
+            let size = fitted_window(monitor);
+            Task::batch([
+                window::set_min_size(
+                    id,
+                    Some(iced::Size::new(
+                        MINIMUM.width.min(size.width),
+                        MINIMUM.height.min(size.height),
+                    )),
+                ),
+                window::resize(id, size),
+            ])
+        })
+    })
+}
 
 fn probe(config: &Config) -> Server {
     let start = Instant::now();
@@ -232,6 +266,18 @@ impl Player {
         let state = config.as_ref().map(|c| c.state.as_path());
         let language = preference(state, "language.json");
         let mode = preference(state, "mode.json");
+        let catalog: Vec<_> = config
+            .as_ref()
+            .and_then(|cfg| servers::Entry::bundled(cfg).ok())
+            .into_iter()
+            .collect();
+        let mut server_prefs: servers::Preferences = preference(state, "servers.json");
+        if !catalog
+            .iter()
+            .any(|entry| Some(&entry.id) == server_prefs.selected.as_ref())
+        {
+            server_prefs.selected = catalog.first().map(|entry| entry.id.clone());
+        }
         let art = look::decode_art(config.as_ref().and_then(|c| {
             kr_player::launcher_art(&c.bundle, &c.manifest_sha256)
                 .ok()
@@ -246,6 +292,8 @@ impl Player {
             form: Form::default(),
             submitting: false,
             recovery: None,
+            catalog,
+            server_prefs,
             server: Server::Checking,
             probing: false,
             files: Files::Error,
@@ -261,7 +309,7 @@ impl Player {
         };
         let check = player.check_files(false);
         let status = player.check_server();
-        (player, Task::batch([check, status]))
+        (player, Task::batch([check, status, fit_monitor()]))
     }
 
     fn play_state(&self) -> PlayState {
@@ -275,9 +323,28 @@ impl Player {
         )
     }
 
+    fn selected(&self) -> Option<&servers::Entry> {
+        let selected = self.server_prefs.selected.as_ref()?;
+        self.catalog.iter().find(|entry| &entry.id == selected)
+    }
+
+    fn selected_config(&self) -> Option<Config> {
+        Some(self.config.clone()?.with_route(&self.selected()?.route))
+    }
+
+    fn save_servers(&mut self) {
+        self.preference_error = !save_preference(
+            self.config.as_ref().map(|c| c.state.as_path()),
+            "servers.json",
+            &self.server_prefs,
+        );
+    }
+
     fn check_server(&mut self) -> Task<Message> {
         if !self.probing
-            && let Some(c) = self.config.clone()
+            && let Some((c, id)) = self
+                .selected_config()
+                .zip(self.server_prefs.selected.clone())
         {
             self.probing = true;
             return Task::perform(
@@ -286,10 +353,10 @@ impl Player {
                         .await
                         .unwrap_or(Server::Offline)
                 },
-                Message::Status,
+                move |status| Message::Status(id.clone(), status),
             );
         }
-        if self.config.is_none() {
+        if self.selected().is_none() {
             self.server = Server::Offline;
         }
         Task::none()
@@ -326,6 +393,14 @@ impl Player {
     fn show(&mut self, screen: Option<Screen>) {
         self.screen = screen;
         self.form = Form::default();
+        if matches!(
+            screen,
+            Some(Screen::Register | Screen::Change | Screen::Delete | Screen::Recover)
+        ) && let Some(id) = &self.server_prefs.selected
+            && let Some(login) = self.server_prefs.login(id)
+        {
+            self.form.login = login.to_owned();
+        }
         self.recovery = None;
         self.modal_notice = None;
     }
@@ -353,6 +428,22 @@ impl Player {
                     "mode.json",
                     mode,
                 );
+            }
+            Message::Select(id)
+                if self.mode == Mode::Servers
+                    && !self.starting
+                    && self.session.is_none()
+                    && self.screen.is_none()
+                    && self.catalog.iter().any(|entry| entry.id == id) =>
+            {
+                if self.server_prefs.selected.as_ref() != Some(&id) {
+                    self.server_prefs.selected = Some(id);
+                    self.server = Server::Checking;
+                    self.probing = false;
+                    self.launch_error = None;
+                    self.save_servers();
+                    return self.check_server();
+                }
             }
             Message::Open(screen) if !self.submitting => {
                 self.show(Some(screen));
@@ -385,7 +476,7 @@ impl Player {
                         | Screen::Delete
                         | Screen::Recover),
                     ),
-                ) = (self.config.clone(), self.screen)
+                ) = (self.selected_config(), self.screen)
                     && matches!(self.server, Server::Ready(_))
                     && self.form.error(screen).is_none()
                 {
@@ -408,6 +499,14 @@ impl Player {
                 self.submitting = false;
                 match result {
                     Ok(code) => {
+                        if let Some(id) = self.server_prefs.selected.clone() {
+                            self.server_prefs.remember(
+                                id,
+                                self.form.login.trim(),
+                                self.screen == Some(Screen::Delete),
+                            );
+                            self.save_servers();
+                        }
                         self.screen = Some(Screen::AccountResult);
                         self.form = Form::default();
                         self.recovery = code;
@@ -456,12 +555,12 @@ impl Player {
                     });
                 }
             }
-            Message::Status(status) => {
+            Message::Status(id, status) if self.server_prefs.selected.as_ref() == Some(&id) => {
                 self.server = status;
                 self.probing = false;
             }
             Message::Play if self.screen.is_none() && self.play_state() == PlayState::Ready => {
-                if let Some(c) = self.config.clone() {
+                if let Some(c) = self.selected_config() {
                     self.starting = true;
                     let language = self.language;
                     return Task::perform(
@@ -506,7 +605,10 @@ impl Player {
                 }
             }
             Message::DesktopDone(_action, ok) => {
-                if !ok {
+                if !ok && matches!(_action, desktop::Action::Release) {
+                    self.show(Some(Screen::Help));
+                    self.modal_notice = Some((Copy::ReleaseError, true));
+                } else if !ok {
                     self.modal_notice = Some((Copy::OpenBad, true));
                 }
                 #[cfg(windows)]
@@ -590,8 +692,14 @@ fn main() -> iced::Result {
         })
         .window(window::Settings {
             size: WINDOW_SIZE,
-            min_size: Some(iced::Size::new(960.0, 600.0)),
-            position: window::Position::Centered,
+            min_size: Some(MINIMUM),
+            position: window::Position::SpecificWith(|_, monitor| {
+                let size = fitted_window(monitor);
+                iced::Point::new(
+                    (monitor.width - size.width) / 2.0,
+                    (monitor.height - size.height) / 2.0,
+                )
+            }),
             exit_on_close_request: false,
             ..Default::default()
         })
@@ -611,10 +719,20 @@ mod tests {
     use super::*;
 
     #[test]
+    fn launcher_fits_short_monitors_without_changing_aspect() {
+        assert_eq!(fitted_window(iced::Size::new(1600.0, 1000.0)), WINDOW_SIZE);
+        let small = fitted_window(iced::Size::new(1024.0, 768.0));
+        assert_eq!(small.height, 696.0);
+        assert!(
+            (small.width / small.height - WINDOW_SIZE.width / WINDOW_SIZE.height).abs() < 0.002
+        );
+    }
+
+    #[test]
     fn play_is_enabled_only_for_ready_online_files_and_server() {
         let states = [
             (
-                Mode::Online,
+                Mode::Servers,
                 Files::Ready,
                 Server::Ready(4),
                 false,
@@ -632,7 +750,7 @@ mod tests {
                 PlayState::Soon,
             ),
             (
-                Mode::Online,
+                Mode::Servers,
                 Files::Checking,
                 Server::Ready(4),
                 false,
@@ -641,7 +759,7 @@ mod tests {
                 PlayState::Checking,
             ),
             (
-                Mode::Online,
+                Mode::Servers,
                 Files::Error,
                 Server::Ready(4),
                 false,
@@ -650,7 +768,7 @@ mod tests {
                 PlayState::Error,
             ),
             (
-                Mode::Online,
+                Mode::Servers,
                 Files::Ready,
                 Server::Offline,
                 false,
@@ -659,7 +777,7 @@ mod tests {
                 PlayState::WaitingForServer,
             ),
             (
-                Mode::Online,
+                Mode::Servers,
                 Files::Ready,
                 Server::Ready(4),
                 true,
@@ -668,7 +786,7 @@ mod tests {
                 PlayState::Starting,
             ),
             (
-                Mode::Online,
+                Mode::Servers,
                 Files::Ready,
                 Server::Ready(4),
                 false,
@@ -677,7 +795,7 @@ mod tests {
                 PlayState::Running,
             ),
             (
-                Mode::Online,
+                Mode::Servers,
                 Files::Ready,
                 Server::Ready(4),
                 false,
@@ -709,7 +827,7 @@ mod tests {
         assert_eq!(preference::<Mode>(root, "mode.json"), Mode::OfflineFriends);
         assert_eq!(preference::<Language>(root, "language.json"), Language::Ko);
         fs::write(path.join("mode.json"), b"bad JSON").unwrap();
-        assert_eq!(preference::<Mode>(root, "mode.json"), Mode::Online);
+        assert_eq!(preference::<Mode>(root, "mode.json"), Mode::Servers);
         fs::remove_dir_all(path).unwrap();
     }
     #[test]

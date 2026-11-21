@@ -200,7 +200,7 @@ If a close-room reply is lost, check the audit and live room list before retryin
 
    Omit `--windows-runtime` for payload only. For the Linux launcher with Wine, supply a native `kr-prelogin` companion and set `wine` and `udp_backend: native` in `launcher.json`. The launcher uses a Wine prefix per language. Windows uses `udp_backend: portable`.
 
-3. Deliver the bundle and manifest hash privately. On Windows, extract to writable NTFS and open `kr-player.exe` (optional shortcut script: `Tao-loi-tat.ps1`). Chọn ngôn ngữ, chọn Online, bấm **Chơi**, rồi đăng nhập hoặc chơi thử ở màn đăng nhập của game. The launcher verifies the installation and waits for the companion; starting `CA.exe` directly skips the tunnel.
+3. Deliver the bundle and manifest hash privately. On Windows, extract to writable NTFS and open `kr-player.exe` (optional shortcut script: `Tao-loi-tat.ps1`). Chọn ngôn ngữ, chọn một máy trong mục Máy chủ, bấm **Chơi**, rồi đăng nhập hoặc chơi thử ở màn đăng nhập của game. The launcher verifies the installation and waits for the companion; starting `CA.exe` directly skips the tunnel.
 4. For scripted payload verification, build the `kr-player-install` binary and use a new installation directory:
 
    ```bash
@@ -221,10 +221,13 @@ Khi phân phối gói có ảnh, dùng launcher dựng cùng phiên bản và gi
 Ảnh nguồn và JPEG xuất ra đều ở `local/` trên máy dựng gói.
 
 Launcher phủ kín cửa sổ khi đổi kích thước, cắt ưu tiên mép trên và trái để giữ hàng logo phía dưới.
-Panel điều khiển ở trái; thanh trên có ngôn ngữ và Cài đặt. Launcher nhớ ngôn ngữ và chế độ. Chế độ offline
-cho bạn bè chỉ có phần giới thiệu; nút Chơi bị tắt tới O1. Enter chỉ mở game khi Online đã sẵn sàng;
-Esc đóng hộp thoại. Tạo, đổi, xoá và khôi phục tài khoản dùng kênh TLS hiện hành. Số ms là thời gian của
-yêu cầu trạng thái qua cùng kết nối TLS, không phải RTT UDP của game.
+Cửa sổ mở ở khoảng 1100×820, tối thiểu khoảng 880×660; màn hình thấp dùng khung nhỏ hơn cùng tỉ lệ.
+Launcher nhớ ngôn ngữ và chế độ. Mục Máy chủ hiện máy trong cấu hình gói; đặt `server_name` nếu cần tên riêng.
+Nút thêm máy chờ S1, chế độ offline chờ O1. Enter mở game khi máy đã chọn sẵn sàng; Esc đóng hộp thoại.
+Tạo, đổi, xoá và khôi phục tài khoản dùng TLS của máy đã chọn. ID dùng thành công trong các form launcher được
+nhớ riêng theo máy; mật khẩu và mã khôi phục không được lưu. LoginStage trong game vẫn xử lý đăng nhập.
+Số ms là thời gian của yêu cầu trạng thái qua TLS. `release_url` là link HTTPS Google Drive tùy chọn trong recipe
+Windows hoặc `launcher.json`; để trống thì ẩn **Tải bản mới**. Bấm link mở trình duyệt, launcher không tải hay cập nhật tự động.
 
 Trong Cài đặt có đường dẫn thư mục game, đường mở log, nút kiểm tra và sửa tệp, và nút tạo lối tắt trên Windows.
 Sửa tệp chỉ thay thư mục cài có biên nhận khớp gói, sau khi dựng và xác minh bản thay thế. Bản cài trước được

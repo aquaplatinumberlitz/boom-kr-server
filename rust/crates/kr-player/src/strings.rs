@@ -43,7 +43,12 @@ strings! {
     Settings => "Cài đặt", "Settings", "설정";
     Lang => "Ngôn ngữ", "Language", "언어";
     Mode => "Chế độ chơi", "Play mode", "플레이 모드";
-    Online => "Online", "Online", "온라인";
+    Servers => "Máy chủ", "Servers", "서버";
+    BundleServer => "Máy chủ trong gói", "Bundled server", "패키지에 포함된 서버";
+    NoServers => "Gói chưa cấu hình máy chủ.", "No server configured in this bundle.", "이 패키지에 서버가 설정되지 않았습니다.";
+    AddServer => "Thêm máy chủ", "Add server", "서버 추가";
+    Download => "Tải bản mới", "Download latest", "최신 버전 받기";
+    ReleaseError => "Không thể mở liên kết tải.", "Could not open the download link.", "다운로드 링크를 열 수 없습니다.";
     Offline => "Chơi offline với bạn bè", "Offline mode with my friend", "친구와 오프라인 플레이";
     Soon => "Sắp có", "Coming soon", "출시 예정";
     Friends => "Chế độ này sẽ cho phép tạo phòng, mời bạn bằng mã hoặc tìm phòng trong mạng LAN.", "This mode will let you host a room, invite friends with a code, or find a room on LAN.", "방을 만들고 코드로 친구를 초대하거나 같은 네트워크의 방에 들어갈 수 있게 됩니다.";
@@ -67,7 +72,7 @@ strings! {
     Launcher => "Launcher", "Launcher", "런처";
     Package => "Gói", "Bundle", "패키지";
     Help => "Hướng dẫn", "Help", "이용 안내";
-    HelpBody => "Chọn Online rồi bấm Chơi. Đăng nhập, chọn 1P/2P hoặc chơi thử tại màn đăng nhập của game. Tạo và quản lý tài khoản bằng các liên kết bên dưới nút Chơi. Trong Cài đặt, bạn có thể kiểm tra tệp và mở thư mục log.", "Choose Online and press Play. Sign in, choose 1P/2P, or try the game from its login screen. Use the links below Play to create or manage an account. In Settings you can check game files and open the log folder.", "온라인 모드에서 게임 시작을 누르세요. 게임의 로그인 화면에서 1인 또는 2인 플레이, 체험 모드를 선택할 수 있습니다. 게임 시작 아래의 링크에서 계정을 만들거나 관리하고, 설정에서 파일을 확인하거나 로그 폴더를 열 수 있습니다.";
+    HelpBody => "Chọn một máy chủ rồi bấm Chơi. Đăng nhập, chọn 1P/2P hoặc chơi thử tại màn đăng nhập của game. Tạo và quản lý tài khoản bằng các liên kết bên dưới nút Chơi. Trong Cài đặt, bạn có thể kiểm tra tệp và mở thư mục log.", "Choose a server and press Play. Sign in, choose 1P/2P, or try the game from its login screen. Use the links below Play to create or manage an account. In Settings you can check game files and open the log folder.", "서버를 선택하고 게임 시작을 누르세요. 게임의 로그인 화면에서 1인 또는 2인 플레이, 체험 모드를 선택할 수 있습니다. 게임 시작 아래의 링크에서 계정을 만들거나 관리하고, 설정에서 파일을 확인하거나 로그 폴더를 열 수 있습니다.";
     Close => "Đóng", "Close", "닫기";
     Back => "Quay lại", "Back", "뒤로";
     Create => "Tạo tài khoản", "Create account", "계정 만들기";
