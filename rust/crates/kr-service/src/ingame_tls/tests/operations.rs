@@ -180,6 +180,43 @@ fn resources_config() -> Config {
 }
 
 #[test]
+fn config_allows_shared_nat_until_the_global_connection_budget() {
+    let temp = Temp::new();
+    let (certificate, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+    let cert_path = temp.0.join("cert.der");
+    fs::write(&cert_path, certificate).unwrap();
+    let private_key = temp.0.join("private.pk8");
+    OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(&private_key)
+        .unwrap()
+        .write_all(&key)
+        .unwrap();
+    let mut config = Config {
+        private_key,
+        max_connections: 64,
+        max_per_ip: 50,
+        ..resources_config()
+    };
+    assert!(config.validate().is_ok());
+    config.max_per_ip = 65;
+    assert!(config.validate().is_err());
+
+    let admission = Arc::new(Mutex::new(Admission::default()));
+    let ip = IpAddr::V4(Ipv4Addr::LOCALHOST);
+    let now = Instant::now();
+    let mut permits: Vec<_> = (0..50)
+        .map(|_| Admission::admit(&admission, ip, 50, 51, now).unwrap())
+        .collect();
+    assert!(Admission::admit(&admission, ip, 50, 51, now).is_err());
+    permits.pop();
+    drop(Admission::admit(&admission, ip, 50, 51, now).unwrap());
+    assert!(Admission::admit(&admission, ip, 50, 51, now).is_err());
+}
+
+#[test]
 fn server_process() {
     let Some(config) = std::env::var_os("KR_M8_TEST_CHILD") else {
         return;
@@ -577,5 +614,73 @@ fn live_writer_backup_restore_two_tls_players_and_shutdown_recovery() {
         assert_eq!(empty["lobby"]["active_rounds"], 0);
         assert_eq!(empty["relay"]["reserved_routes"], 0);
         restored.stop("-TERM").await;
+    });
+}
+
+#[test]
+fn load_driver_plays_twice_over_tls_and_companion_then_drains() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    runtime().block_on(async {
+        let temp = Temp::new();
+        let db = temp.db();
+        let mut store = Store::open(&db).unwrap();
+        let mut room = Vec::new();
+        for (login, name) in [("AlphaOne", "DBUserA"), ("BetaTwo", "DBUserB")] {
+            store
+                .create_account(&operator(), login, name, PASSWORD, None)
+                .unwrap();
+            room.push(json!({"login":login,"name":name,
+                             "password":std::str::from_utf8(PASSWORD).unwrap()}));
+        }
+        let server = Server::launch(&db, "driver", false).await;
+        // Small synthetic timing fixture; the runtime driver uses pinned CP287
+        // timestamps instead. Keep this test independent of local/ and a VPS.
+        let replay = temp.0.join("replay.json");
+        let packets: Vec<_> = (0..26)
+            .map(|i| (i * 75_000_000_u64, if i % 2 == 0 { 5 } else { 17 }))
+            .collect();
+        fs::write(
+            &replay,
+            serde_json::to_vec(&json!({
+                "schema":"kr-m8-replay-v1", "checkpoint":"CP287",
+                "windows": vec![json!({"duration_ns":2_000_000_000_u64,"packets":packets});8]
+            }))
+            .unwrap(),
+        )
+        .unwrap();
+        let config = temp.0.join("driver.json");
+        let input = json!({
+            "server":server.config.tls,"relay":server.config.relay,
+            "certificate":temp.0.join("cert.der"),
+            "login_port":server.config.tcp[0],"channel_port":server.config.tcp[1],
+            "rooms":[room],"replay":replay,"ramp_ms":300,
+            "active_seconds":2,"minimum_run_seconds":0,"minimum_rounds":2,
+            "delivery_p99_ms_max":500,"delivery_loss_percent_max":0
+        });
+        OpenOptions::new()
+            .create_new(true)
+            .write(true)
+            .mode(0o600)
+            .open(&config)
+            .unwrap()
+            .write_all(&serde_json::to_vec(&input).unwrap())
+            .unwrap();
+        timeout(
+            Duration::from_secs(75),
+            crate::load_driver::execute(&config),
+        )
+        .await
+        .unwrap()
+        .unwrap();
+        assert_eq!(matches(&db).len(), 2);
+        assert!(matches(&db).iter().all(|(status, _)| status == "complete"));
+        let health = server
+            .health_when(|h| h["lobby"]["online_players"] == 0 && h["relay"]["companions"] == 0)
+            .await;
+        assert_eq!(health["lobby"]["room_count"], 0);
+        assert_eq!(health["lobby"]["active_rounds"], 0);
+        assert_eq!(health["relay"]["reserved_routes"], 0);
+        assert_eq!(health["database_probe_errors"], 0);
+        server.stop("-TERM").await;
     });
 }

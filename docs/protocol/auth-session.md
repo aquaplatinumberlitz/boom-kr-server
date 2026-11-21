@@ -1155,7 +1155,7 @@ Các địa chỉ còn trên stack không phải unwind đã xác minh. Không n
 Chưa có cùng phòng, tên có dấu hoặc trận Internet trên gói này; không dùng media cũ/control stub thay acceptance.
 
 GUI `kr-player` là owner giao diện cho gói vi/en/ko 949x theo [chỉ đạo M8 mới](../evidence/owner-directives/m8-multilang-launcher.json).
-Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-tls-đang-triển-khai); không suy ca hai client có dấu đã đạt từ file.
+Cấu trúc gói/cách kiểm ở [vận hành](../OPERATIONS.md#launcher-and-player-package); không suy ca hai client có dấu đã đạt từ file.
 GUI chỉ chọn ngôn ngữ, quản lý tài khoản và mở game. Nó đợi `kr-prelogin` bind xong trước khi mở
 bản tương thích manual. GUI không thu mật khẩu để chơi và không gửi token cho lần mở này. Đăng nhập 1P,
 2P và chơi thử dùng UI trong game. Xác thực sai giữ opcode 4 / result 1. Bản vi dịch hai đường gọi hộp thoại

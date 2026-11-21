@@ -1,0 +1,19 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "decision_date": "2026-11-21",
+  "authority": "project_owner",
+  "source": "Chủ dự án chỉ đạo ngày 21/11/2026 qua Claude (director).",
+  "decision": "Giảm token dùng để cập nhật và kiểm bằng chứng, giữ tiêu chí nghiệm thu.",
+  "supersedes_in_part": "evidence-budget.json",
+  "superseded_rules": "Thay quy tắc checkpoint, cập nhật docs và ngân sách chạy thật của chỉ đạo 19/11. Thay đổi checker này do chủ dự án yêu cầu.",
+  "requirements": [
+    "Mỗi PR có bằng chứng runtime hoặc RE mới chỉ cập nhật một checkpoint và dòng PLAN liên quan. PR chỉ sửa code có test không cần checkpoint.",
+    "Chỉ cập nhật README, HISTORY, COVERAGE, RESEARCH và features.json khi đóng milestone hoặc đợt, hoặc khi nội dung của chính tài liệu đó sai.",
+    "Kiểm checkpoint local bằng --changed so với origin/main. Mặc định checker chỉ in lỗi và tổng kết. Phạm vi kiểm CI giữ nguyên.",
+    "Chờ CI bằng một lệnh gh pr checks --watch. Dùng tail, jq hoặc grep có giới hạn khi đọc log và bằng chứng. Không in cả file lớn hoặc chạy kiểm toàn kho nhiều lần trong một lượt.",
+    "Claude cấp ngân sách chạy thật trong brief. Tiếp tục theo brief khi còn ngân sách, không dừng xin thêm."
+  ],
+  "unchanged": [
+    "Trần 120 dòng cho record mới, tính bất biến của record và raw đã pin, tiêu chí xác minh và nghiệm thu vẫn giữ nguyên."
+  ]
+}

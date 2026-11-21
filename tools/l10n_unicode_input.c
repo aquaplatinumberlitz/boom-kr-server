@@ -4,6 +4,7 @@
  */
 #include <windows.h>
 #include <stdio.h>
+#include "native_unicode_input.h"
 
 static int hexval(char c) {
     if (c >= '0' && c <= '9') return c - '0';
@@ -13,7 +14,6 @@ static int hexval(char c) {
 }
 
 int main(int argc, char **argv) {
-    INPUT in[2];
     int i, n, sent = 0, delay = 120;
     if (argc < 2) return 2;
     if (argc > 2) delay = atoi(argv[2]);
@@ -24,12 +24,7 @@ int main(int argc, char **argv) {
         WORD ch;
         if (a < 0 || b < 0 || c < 0 || d < 0) return 2;
         ch = (WORD)((c << 12) | (d << 8) | (a << 4) | b); /* UTF-16LE */
-        ZeroMemory(in, sizeof in);
-        in[0].type = in[1].type = INPUT_KEYBOARD;
-        in[0].ki.wScan = in[1].ki.wScan = ch;
-        in[0].ki.dwFlags = KEYEVENTF_UNICODE;
-        in[1].ki.dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP;
-        sent += (int)SendInput(2, in, sizeof(INPUT));
+        sent += kre_unicode_unit(ch) ? 2 : 0;
         Sleep(delay);
     }
     printf("sent %d events for %d units, foreground %p\n", sent, n / 4, (void *)GetForegroundWindow());

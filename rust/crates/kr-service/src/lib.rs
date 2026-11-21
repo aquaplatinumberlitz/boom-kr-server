@@ -16,6 +16,7 @@ pub mod ingame_tls;
 mod item_scope;
 mod life;
 mod life_actions;
+pub mod load_driver;
 pub mod lobby;
 mod logging;
 mod map_profile;

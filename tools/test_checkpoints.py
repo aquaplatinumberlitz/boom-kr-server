@@ -1,7 +1,9 @@
 """Consistency tests use synthetic documentation fixtures, not protocol evidence."""
 import copy
+from contextlib import redirect_stderr, redirect_stdout
 import hashlib
 import importlib.util
+from io import StringIO
 import json
 import os
 from pathlib import Path
@@ -158,6 +160,106 @@ class CheckpointsTest(unittest.TestCase):
         self.manifest["audits"].append({"id": audit_id, "path": str(path.relative_to(self.root)),
                                        "sha256": checker.digest(path)})
         self.manifest["last_manual_audit"] = audit_id
+
+    def changed_fixture(self):
+        self.git = ["git", "-C", str(self.root), "-c", "user.name=Test",
+                    "-c", "user.email=test@example.invalid"]
+        self.baseline = self.root / checker.MANIFEST
+        self.baseline.parent.mkdir(parents=True)
+        self.save_manifest()
+        subprocess.run(self.git + ["init", "-q"], check=True)
+        subprocess.run(self.git + ["add", "docs/evidence"], check=True)
+        self.commit_manifest()
+        subprocess.run(self.git + ["update-ref", "refs/remotes/origin/main", "HEAD"], check=True)
+
+    def save_manifest(self):
+        self.baseline.write_text(json.dumps(self.manifest))
+
+    def commit_manifest(self):
+        subprocess.run(self.git + ["add", checker.MANIFEST.as_posix()], check=True)
+        subprocess.run(self.git + ["commit", "-qm", "fixture"], check=True)
+
+    def run_changed(self, *args):
+        stdout, stderr = StringIO(), StringIO()
+        argv = ["check", "--changed", "--require-history", "--require-local", "--no-hash-cache", *args]
+        with mock.patch.object(checker, "ROOT", self.root), mock.patch("sys.argv", argv), \
+                redirect_stdout(stdout), redirect_stderr(stderr):
+            status = checker.main()
+        lines = stdout.getvalue().splitlines()
+        return status, json.loads(lines[-1]), lines[:-1], stderr.getvalue()
+
+    def test_changed_checks_commits_and_worktree_but_skips_baseline_raw(self):
+        self.changed_fixture()
+        (self.root / "local/sample.txt").unlink()
+        self.append()
+        second = self.manifest["checkpoints"][-1]
+        second["evidence"][0]["path"] = "local/new.txt"
+        (self.root / "local/new.txt").write_text("synthetic schema test\n")
+        self.save_manifest()
+        self.commit_manifest()
+        self.append()
+        self.manifest["checkpoints"][-1]["evidence"][0]["path"] = "local/new.txt"
+        self.save_manifest()
+
+        status, summary, lines, errors = self.run_changed()
+        self.assertEqual((status, lines, errors), (0, [], ""))
+        self.assertEqual(summary["checkpoints_checked"], 2)
+        self.assertEqual(summary["evidence_verified"], 2)
+        self.assertEqual(summary["evidence_unavailable"], 0)
+        _, _, warnings, _ = self.run_changed("--verbose")
+        self.assertEqual(len([w for w in warnings if "REVIEW pending" in w]), 2)
+        self.assertFalse(any("CP001" in w for w in warnings))
+
+        (self.root / "local/new.txt").unlink()
+        status, summary, _, errors = self.run_changed()
+        self.assertEqual(status, 1)
+        self.assertEqual(summary["evidence_unavailable"], 2)
+        self.assertIn("CP002", errors)
+        self.assertIn("CP003", errors)
+        self.assertNotIn("CP001", errors)
+
+    def test_changed_keeps_branch_continuity_when_final_diff_is_empty(self):
+        self.changed_fixture()
+        self.record["question"] = "An illegal rewrite"
+        self.save_manifest()
+        self.commit_manifest()
+        self.record["question"] = "Check schema behavior"
+        self.save_manifest()
+        self.commit_manifest()
+        status, summary, _, errors = self.run_changed()
+        self.assertEqual(status, 1)
+        self.assertEqual(summary["checkpoints_checked"], 0)
+        self.assertIn("CP001: completed record changed", errors)
+
+    def test_changed_checks_new_audit_links_but_skips_baseline_audit_links(self):
+        self.audit("ad_hoc", "CP001")
+        self.add_raw_audit_link("AUD001")
+        self.changed_fixture()
+        (self.root / "local/sample.txt").unlink()
+        status, summary, _, errors = self.run_changed()
+        self.assertEqual((status, errors, summary["checkpoints_checked"]), (0, "", 0))
+
+        self.audit("ad_hoc", "CP001")
+        self.add_raw_audit_link("AUD002")
+        self.save_manifest()
+        status, _, _, errors = self.run_changed()
+        self.assertEqual(status, 1)
+        self.assertIn("AUD002: missing linked file local/sample.txt", errors)
+        self.assertNotIn("AUD001", errors)
+
+    def add_raw_audit_link(self, audit_id):
+        path = self.root / f"docs/evidence/{audit_id}.json"
+        audit = json.loads(path.read_bytes())
+        audit["read_files"].append("local/sample.txt")
+        path.write_text(json.dumps(audit))
+        self.manifest["audits"][-1]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+
+    def test_changed_without_origin_main_fails(self):
+        self.changed_fixture()
+        subprocess.run(self.git + ["update-ref", "-d", "refs/remotes/origin/main"], check=True)
+        status, _, _, errors = self.run_changed()
+        self.assertEqual(status, 1)
+        self.assertIn("fetch origin/main", errors)
 
     def test_valid_pending_is_explicit_warning(self):
         errors, warnings, stats = checker.validate(self.manifest, self.root, True)

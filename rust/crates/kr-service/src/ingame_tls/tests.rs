@@ -341,7 +341,38 @@ fn bomb(key: u64, column: u8) -> Vec<u8> {
 }
 
 #[test]
-fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
+fn cp373_replays_two_rounds_and_return_slot_order() {
+    replay_session(include_str!("tests/fixtures/cp373.json"));
+}
+
+#[test]
+fn cp375_replays_two_all_dead_rounds_and_relay() {
+    replay_session(include_str!("tests/fixtures/cp375.json"));
+}
+
+#[test]
+#[ignore = "pass a local semantic session with tools/session_replay.py replay"]
+fn replay_local_session() {
+    let path = std::env::var_os("KR_SEMANTIC_SESSION").expect("local replay fixture path");
+    replay_session(&std::fs::read_to_string(path).expect("local replay fixture"));
+}
+
+#[derive(serde::Deserialize)]
+struct ReplaySession {
+    schema: String,
+    rounds: Vec<ReplayRound>,
+}
+
+#[derive(serde::Deserialize)]
+struct ReplayRound {
+    steps: Vec<String>,
+    result: String,
+}
+
+fn replay_session(fixture: &str) {
+    let fixture: ReplaySession = serde_json::from_str(fixture).unwrap();
+    assert_eq!(fixture.schema, "kre-semantic-session-v1");
+    assert_eq!(fixture.rounds.len(), 2);
     let _serial = TEST_SERIAL.lock().unwrap();
     let temp = Temp::new();
     let admin = Admin {
@@ -521,14 +552,24 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
         let mut last_key = None;
         let mut last_routes = None;
         let mut played = Vec::new();
-        for round in 1..=2 {
+        for (index, trace) in fixture.rounds.iter().enumerate() {
+            let round = index as u64 + 1;
+            let all_dead = match trace.result.as_str() {
+                "elimination" => false,
+                "all_dead" => true,
+                _ => panic!("unknown replay outcome"),
+            };
+            let mut expected = trace.steps.iter().map(String::as_str);
+            let mut step = |got| assert_eq!(expected.next(), Some(got), "round {round}");
             let mut ready = fields(&[(6, Width::U32)]);
             ready.extend([0; 6]);
             ready.extend(fields(&[(1, Width::U8), (0, Width::U32)]));
             let stale = temp.age(&b, 30);
             clients[1].send(95, &ready).await;
+            step("95");
             for client in &mut clients {
                 let update = client.expect(110).await;
+                step("ready");
                 assert_eq!(update.payload.len(), 6);
                 assert_eq!(read_uint(&update.payload[..1], Width::U8).unwrap(), 1);
                 // DCAD80 requires the guest's Ready group to equal one. No
@@ -542,9 +583,11 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             assert!(temp.last_seen(&b) > stale, "Ready must renew idle");
             let stale = temp.age(&a, 30);
             clients[0].send(104, &[0; 20]).await;
+            step("104");
             for client in &mut clients {
                 client.expect(582).await;
                 client.expect(121).await;
+                step("start");
             }
             assert!(temp.last_seen(&a) > stale, "Start must renew idle");
             let mut markers = Vec::new();
@@ -576,6 +619,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                     (0, U32),
                 ]);
                 client.send(99, &load).await;
+                step("99");
             }
             let mut wire_keys = Vec::new();
             let mut routes = Vec::new();
@@ -594,6 +638,15 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                 let port = read_uint(&packet.payload[at + 4..at + 6], Width::U16).unwrap() as u16;
                 assert_ne!(port, native[1 - slot].local_addr().unwrap().port());
                 routes.push(SocketAddrV4::new(Ipv4Addr::LOCALHOST, port));
+            }
+            for (log, stream_id) in event_logs.iter_mut().zip(&markers) {
+                let marker = room_marker(log, "native_tls_room_peer_written").await;
+                assert_eq!(
+                    marker,
+                    serde_json::json!({
+                        "event": "native_tls_room_peer_written", "stream_id": stream_id, "opcode": 153
+                    })
+                );
             }
             assert_eq!(wire_keys[0], wire_keys[1]);
             assert_ne!(Some(wire_keys[0]), last_key);
@@ -634,6 +687,7 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             }
             let stale = temp.age(&a, 30);
             clients[0].send(118, &bomb(wire_keys[0], 3)).await;
+            step("118");
             for client in &mut clients {
                 let spawn = client.expect(159).await;
                 assert_eq!(read_uint(&spawn.payload[17..18], Width::U8).unwrap(), 3);
@@ -651,25 +705,41 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             clients[0].expect(170).await;
             clients[1].send(127, &report(1, 19, tick + 1)).await;
             clients[0].expect(170).await;
-            clients[0].send(127, &report(0, 21, tick + 2)).await;
+            if all_dead {
+                clients[0].send(127, &report(0, 17, tick + 2)).await;
+                clients[1].expect(170).await;
+                clients[0].send(127, &report(0, 19, tick + 3)).await;
+                clients[1].expect(170).await;
+            } else {
+                clients[0].send(127, &report(0, 21, tick + 2)).await;
+            }
+            // Logs preserve the second bomb request, but not its body.
+            // Only the first known bomb shape is reproduced in this test profile.
+            step("118");
             for client in &mut clients {
                 assert_eq!(client.expect(175).await.payload.len(), 302);
                 client.send(202, &result_tail).await;
+                step("202");
             }
+            let mut return_steps: Vec<_> = expected.collect();
+            return_steps.sort_unstable();
             for client in &mut clients {
                 let returning = client.expect(180).await;
                 assert_eq!(returning.payload, fields(&[(0, Width::U8); 3]));
                 client.send(585, &return_setup).await;
+                assert_eq!(return_steps.remove(0), "585");
             }
             for ((client, log), stream_id) in clients.iter_mut().zip(&mut event_logs).zip(markers) {
                 // The native return tail must preserve the room visit, then
                 // refresh the same slots with Ready cleared on both transports.
                 assert_eq!(waiting_slots(client, Some([0, 1])).await, initial_slots);
                 let marker = room_marker(log, "native_tls_room_return_refreshed").await;
+                assert_eq!(return_steps.remove(0), "return");
                 assert_eq!(marker, serde_json::json!({
                     "event": "native_tls_room_return_refreshed", "stream_id": stream_id
                 }));
             }
+            assert!(return_steps.is_empty());
             let db = rusqlite::Connection::open(temp.db()).unwrap();
             let room_keys: i64 = db
                 .query_row(
@@ -704,12 +774,14 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
             assert_eq!(rows.len(), 2 * round as usize);
             for (n, row) in rows.iter().enumerate() {
                 let slot = n % 2;
-                let (player, outcome) = if slot == 0 { (&a, "win") } else { (&b, "loss") };
+                let player = if slot == 0 { &a } else { &b };
+                let past_all_dead = fixture.rounds[n / 2].result == "all_dead";
+                let outcome = if past_all_dead { "draw" } else if slot == 0 { "win" } else { "loss" };
                 assert_eq!(
                     u64::from(crate::room::wire_key(row.0.try_into().unwrap()).unwrap()),
                     played[n / 2]
                 );
-                assert_eq!((&*row.1, &*row.2), ("complete", "elimination"));
+                assert_eq!((&*row.1, &*row.2), ("complete", fixture.rounds[n / 2].result.as_str()));
                 assert_eq!((row.3, row.4, row.5), (slot as i64, player.account_id, player.player_id));
                 assert_eq!((&*row.6, &*row.7), (outcome, "present"));
             }

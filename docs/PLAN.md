@@ -41,7 +41,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
    | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476) | [CP375](evidence/checkpoints/records/CP375.json) xác nhận Windows vi và Wine ko dùng gói launcher qua cùng hotspot 4G tới VPS: chat có dấu hai chiều, hai ván cùng phòng qua relay. WAN giả lập đã qua relay, mất đường giữa ván và đăng nhập lại. Nghiệm thu phát hành còn hai mạng Internet độc lập và máy sạch ngoài PC phát triển. |
-   | [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) | [Sức khỏe và số đo cục bộ](OPERATIONS.md#server-health) đã qua test TLS tổng hợp (CP376). [CP377](evidence/checkpoints/records/CP377.json) giữ nhịp ứng viên từ CP287; còn đối chiếu build hiện hành và chốt ngưỡng, đo 50 người/8 phòng với hai phòng native, rồi soak 24 giờ; đo startup failure, RAM/FD và độ trễ/rơi gói. |
+   | [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) | [Sức khỏe và số đo cục bộ](OPERATIONS.md#health-and-monitoring) đã qua test TLS tổng hợp (CP376). [CP377](evidence/checkpoints/records/CP377.json) giữ nhịp ứng viên từ CP287; còn đối chiếu build hiện hành và chốt ngưỡng, đo 50 người/8 phòng với hai phòng native, rồi soak 24 giờ; đo startup failure, RAM/FD và độ trễ/rơi gói. |
    | [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) | [CP374](evidence/checkpoints/records/CP374.json): audit account/phòng, snapshot live và mở ván sau restore vào state sạch qua hai client TLS tổng hợp; SIGTERM, SIGKILL/restart và rollback schema 6 về binary schema 5 đã kiểm loopback. Chờ tích hợp; còn nghiệm thu native trên máy triển khai theo M8. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
    [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ.
@@ -684,7 +684,7 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
   ma và DB nhất quán. Diễn tập một lần nâng cấp binary rồi quay lại bản cũ.
 - **Lỗi khởi động client** ([#9](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/9)): đếm tỉ lệ trong các
   lượt client thật của kiểm tải và chạy dài; tỉ lệ đáng kể thì mở lại.
-- [Tài liệu vận hành](OPERATIONS.md) một trang: phần cấu hình relay đã có, bổ sung các luồng M8 còn thiếu.
+- [Tài liệu vận hành tiếng Anh](OPERATIONS.md): cài đặt, giám sát, quản trị, khôi phục và gói người chơi.
 
 Không thuộc mốc: nhiều instance, nhiều kênh, HA, trực sự cố, chống gian lận ngoài phần đã có.
 
@@ -708,10 +708,8 @@ inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ
 <a id="full-game-roadmap"></a>
 ### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
 
-Chủ dự án muốn dài hạn có đủ item, map và mode của game gốc. Mục này xếp **thứ tự các đợt**; nó chưa phải cam kết
-thời gian. F1–F6 chưa mở; bước 0 được phép làm song song với phần cuối M8. Số liệu lấy từ
-[kiểm kê](CONTENT.md) sinh từ pack; có tài nguyên trong pack không chứng minh tính năng còn chạy. Cỡ từng đợt
-**chưa ước lượng được** cho tới khi các nhóm trong đợt được xếp loại A/B/C.
+Lộ trình tới đủ item, map và mode chưa cam kết thời gian. F1–F6 chưa mở; bước 0 chạy song song phần cuối M8.
+Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng còn chạy. Chỉ ước lượng sau khi xếp loại A/B/C.
 
 | Đợt | Nội dung | Số liệu kiểm kê | Phụ thuộc và điều chưa biết |
 |---|---|---|---|
@@ -721,12 +719,13 @@ thời gian. F1–F6 chưa mở; bước 0 được phép làm song song với p
 | F4 Hồ sơ, túi đồ, cửa hàng | Cấp và kinh nghiệm, chọn nhân vật, túi đồ, các nhóm trang trí, cảm xúc, bộ sưu tập, cửa hàng | Trang trí và cảm xúc: khoảng 19.800 mục tài nguyên | Dựa trên M6. Giá không có trong client: lấy wiki/boom-re, thiếu thì tự thiết kế, cấu hình đổi được |
 | F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa (bỏ ưu đãi phòng máy Nexon) | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
+| O1 Offline mode with my friend ("Chơi offline với bạn bè") | Một nút trong launcher: không tài khoản, không VPS, không cấu hình. Máy người tạo tự chạy server ngầm và hiện mã phòng; bạn bè nhập mã (cùng LAN thì tự thấy). Qua Internet dùng thư viện P2P nhúng (iroh/QUIC, tự xuyên NAT, relay khi cần). Cờ "mở khoá tất cả": đủ nhân vật/item/trang phục, shop miễn phí | Server Rust chạy trên Windows; tên khách; dữ liệu lưu ở máy người tạo | Dùng chung bước "server đọc dữ liệu từ pack" của M8. Nội dung đầy đủ theo F1/F4 (cùng mã server, khác cấu hình). Rủi ro chính: chuyển server sang Windows. Người tạo phải mở game suốt buổi |
 | L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
-**Thứ tự ([quyết định 20/11 và bổ sung 21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
-[bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển client theo trạng thái server.
-Làm tĩnh trước; chỉ thử nhanh đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt theo chỉ đạo 21/11.
-Sau giai đoạn 1 và bước 0: F1 → F4 → F2 → F5 → F3 → F6. Dựng web ở server cho Dwarf/libcef; bỏ phần riêng Nexon.
+**Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
+[bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
+Thử đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json)
+→ F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh

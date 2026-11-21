@@ -377,6 +377,7 @@ impl State {
                 let event = match (reply.opcode, label.as_str()) {
                     (110, "ready110") => Some("native_tls_room_ready_written"),
                     (121, "start121") => Some("native_tls_room_start_written"),
+                    (153, "peer153") => Some("native_tls_room_peer_written"),
                     _ => None,
                 };
                 if let Some(event) = event {

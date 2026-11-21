@@ -48,3 +48,4 @@ jobs:
           tools.test_l10n_utf8_glyph_probe
           tools.test_probe_channel_identity
           tools.test_terrain_shadow
+          tools.test_native_client_controller
