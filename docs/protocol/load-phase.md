@@ -98,7 +98,7 @@ Trong phạm vi thử F1-a, [gói pack](../OPERATIONS.md#pack-f1-a) xuất catal
 giữ thứ tự spawn theo pack. Adapter ô đơn dựa trên mẫu descriptor `ObjectTable/TileInfoList`; map G1 giữ seed
 terrain đã pin làm đối chứng. Không suy footprint đa ô, script, biến thể kích thước hoặc cờ chưa đo từ tên họ.
 Map ngoài adapter bị từ chối khi xuất. Descriptor đa ô `Tile04_Ground/TileA01 | Tile04_Static/MastTileA`
-được cho phép riêng ở ứng viên `Patrit22` vì trùng descriptor/anchor với `Patrit14`; đây là chiếu candidate,
+được cho phép riêng ở ứng viên `Patrit22` vì trùng descriptor/anchor với `Patrit14`; [metadata/hash](../evidence/rust-service/patrit22-adapter-candidate.json) giữ phép kiểm; đây là chiếu candidate,
 chưa là chứng nhận footprint hoặc native route. Các object khác vẫn bị từ chối. Floor dùng [chính sách thử F1-a](items-stats.md#g1-scoped-drops);
 Start/117/196 và checksum dùng contract hiện có. Việc chiếu ô F1-a là **design/candidate**, cần native xác nhận.
 
