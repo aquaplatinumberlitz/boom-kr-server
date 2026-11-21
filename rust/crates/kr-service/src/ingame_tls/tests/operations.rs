@@ -582,18 +582,37 @@ fn live_writer_backup_restore_two_tls_players_and_shutdown_recovery() {
 
 #[test]
 fn load_driver_plays_twice_over_tls_and_companion_then_drains() {
+    check_load_driver_drain(false);
+}
+
+#[test]
+fn load_driver_delivery_failure_drains_both_rooms_before_reporting_failure() {
+    check_load_driver_drain(true);
+}
+
+fn check_load_driver_drain(fail_delivery: bool) {
     let _serial = TEST_SERIAL.lock().unwrap();
     runtime().block_on(async {
         let temp = Temp::new();
         let db = temp.db();
         let mut store = Store::open(&db).unwrap();
-        let mut room = Vec::new();
-        for (login, name) in [("AlphaOne", "DBUserA"), ("BetaTwo", "DBUserB")] {
-            store
-                .create_account(&operator(), login, name, PASSWORD, None)
-                .unwrap();
-            room.push(json!({"login":login,"name":name,
-                             "password":std::str::from_utf8(PASSWORD).unwrap()}));
+        let mut rooms = Vec::new();
+        for names in [
+            [("AlphaOne", "DBUserA"), ("BetaTwo", "DBUserB")],
+            [("GammaThree", "DBUserC"), ("DeltaFour", "DBUserD")],
+        ]
+        .into_iter()
+        .take(if fail_delivery { 2 } else { 1 })
+        {
+            let mut room = Vec::new();
+            for (login, name) in names {
+                store
+                    .create_account(&operator(), login, name, PASSWORD, None)
+                    .unwrap();
+                room.push(json!({"login":login,"name":name,
+                                 "password":std::str::from_utf8(PASSWORD).unwrap()}));
+            }
+            rooms.push(room);
         }
         let server = Server::launch(&db, "driver", false).await;
         // Small synthetic timing fixture; the runtime driver uses pinned CP287
@@ -616,9 +635,10 @@ fn load_driver_plays_twice_over_tls_and_companion_then_drains() {
             "server":server.config.tls,"relay":server.config.relay,
             "certificate":temp.0.join("cert.der"),
             "login_port":server.config.tcp[0],"channel_port":server.config.tcp[1],
-            "rooms":[room],"replay":replay,"ramp_ms":300,
+            "rooms":rooms,"replay":replay,"ramp_ms":300,
             "active_seconds":2,"minimum_run_seconds":0,"minimum_rounds":2,
-            "delivery_p99_ms_max":500,"delivery_loss_percent_max":0
+            "delivery_p99_ms_max":if fail_delivery { 1 } else { 500 },
+            "delivery_loss_percent_max":0
         });
         OpenOptions::new()
             .create_new(true)
@@ -628,13 +648,20 @@ fn load_driver_plays_twice_over_tls_and_companion_then_drains() {
             .unwrap()
             .write_all(&serde_json::to_vec(&input).unwrap())
             .unwrap();
-        timeout(
+        let result = timeout(
             Duration::from_secs(75),
             crate::load_driver::execute(&config),
         )
         .await
-        .unwrap()
         .unwrap();
+        if fail_delivery {
+            assert_eq!(
+                result.unwrap_err().to_string(),
+                "delivery gate failed after room cleanup"
+            );
+        } else {
+            result.unwrap();
+        }
         assert_eq!(matches(&db).len(), 2);
         assert!(matches(&db).iter().all(|(status, _)| status == "complete"));
         let health = server
