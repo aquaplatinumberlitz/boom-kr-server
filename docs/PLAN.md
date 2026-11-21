@@ -722,12 +722,12 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 | F5 Xã hội | Chat và thì thầm, bạn bè, bang hội, cặp đôi, xếp hạng | Các nhóm Guild, Chatting, Messenger, Ranking | Dựa trên F4 và M8 (lưu bền, chống lạm dụng) |
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa (bỏ ưu đãi phòng máy Nexon) | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
 | O1 Offline mode with my friend ("Chơi offline với bạn bè") | Một nút trong launcher: không tài khoản, không VPS, không cấu hình. Máy người tạo tự chạy server ngầm và hiện mã phòng; bạn bè nhập mã (cùng LAN thì tự thấy). Qua Internet dùng thư viện P2P nhúng (iroh/QUIC, tự xuyên NAT, relay khi cần). Cờ "mở khoá tất cả": đủ nhân vật/item/trang phục, shop miễn phí | Server Rust chạy trên Windows; tên khách; dữ liệu lưu ở máy người tạo | Dùng chung bước "server đọc dữ liệu từ pack" của M8. Nội dung đầy đủ theo F1/F4 (cùng mã server, khác cấu hình). Rủi ro chính: chuyển server sang Windows. Người tạo phải mở game suốt buổi |
+| S1 Online máy chủ tự dựng | Không có server chính thức lâu dài ([quyết định 21/11](evidence/owner-directives/distribution.json)). Launcher thêm máy chủ bằng địa chỉ + mã mời (chứa dấu vân tay chứng chỉ), nhớ danh sách; gói server dễ dựng: Windows một cú nhấp (dùng chung server Windows của O1) và gói Linux hiện có | Bỏ địa chỉ/chứng chỉ ghép cứng lúc build | Sau O1 |
 | L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
-Thử đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json)
-→ F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon.
+Thử đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
