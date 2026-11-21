@@ -85,14 +85,18 @@ def generate(data, digest):
                 code, reason = "A", "Profile và route có native G1; giữ giới hạn trong ma trận."
         extra = {}
         if f1:
-            candidates = sorted(m["name"] for m in maps if m["name"] not in MAPS)
-            extra["probe"] = {"sample": (candidates or native)[0], "status": "pending" if candidates else "prior_g1"}
+            candidates = sorted((m for m in maps if m["name"] not in MAPS), key=lambda m: (
+                m["scripted"] if code != "C" else not m["scripted"],
+                (m["width"], m["height"]) != (15, 13), m["name"]))
+            extra["probe"] = {"sample": candidates[0]["name"] if candidates else native[0],
+                              "status": "pending" if candidates else "prior_g1"}
         add("map", family, wave, code, reason, category=category, base=base,
             map_count=len(maps), script_count=sum(m["scripted"] for m in maps),
             script_unknown=len(substantial), native_g1=native, **extra)
 
     by_group = defaultdict(list)
     lookup = {}
+    ship_keys = {key for ship in data["ships"] for key in item_keys(ship["name"])}
     for i in data["items"]:
         by_group[i["group"]].append(i)
         for key in item_keys(i["name"]) | {i["sprite"].lower()}:
@@ -103,7 +107,7 @@ def generate(data, digest):
                                                  sorted(item_keys(name)) if key in lookup), None)
         if item is not None:
             f1_items.add(item)
-        elif not item_keys(name) & {key for ship in data["ships"] for key in item_keys(ship["name"])}:
+        elif not item_keys(name) & ship_keys:
             add("item", name, "F1?", "C", "Tên được map F1 dùng nhưng chưa ghép được ItemAttr.", unmatched=True)
     for group, items in sorted(by_group.items()):
         names = {i["name"] for i in items}
@@ -173,6 +177,7 @@ def markdown(data):
         "(hash input/DB trong JSON) có xref `Attr/ItemAttr` tại VA `0x1196ABF`, `Attr/BomberAttr` tại",
         "VA `0x13501B6`; đây chỉ là dấu vết reader tĩnh, không xác định wire, drop hoặc quyền server.",
         "Tên trùng trong bảng Attr/Ship được giữ theo số dòng; wiki chỉ giúp ghép tên.",
+        "Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; giá trị/cap từng dòng vẫn cần đối chiếu KR.",
         "",
         "| Nhóm | A | B | C | Ngoài |",
         "|---|---:|---:|---:|---:|",
@@ -182,6 +187,9 @@ def markdown(data):
         n = Counter(r["classification"] for r in rows if r["kind"] == kind)
         lines.append(f"| {title} | {n['A']} | {n['B']} | {n['C']} | {n[None]} |")
     lines.extend([
+        "",
+        f"Họ map F1: {sum(r['kind'] == 'map' and r['wave'] == 'F1' and r['classification'] == 'B' for r in rows)} B, "
+        f"{sum(r['kind'] == 'map' and r['wave'] == 'F1' and r['classification'] == 'C' for r in rows)} C.",
         "",
         "### Phép thử rẻ cho F1",
         "",

@@ -13,7 +13,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
-[lộ trình sáu đợt F1–F6](#full-game-roadmap); bước 0 làm song song M8, F1–F6 chưa mở.
+[lộ trình sáu đợt F1–F6](#full-game-roadmap); bước 0 có [xếp loại tĩnh](content/classification.md), thử native chờ host trống; F1–F6 chưa mở.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -756,8 +756,9 @@ Cách vào mỗi đợt, giống nhau cho mọi đợt:
 4. **Nghiệm thu theo nhóm bằng client thật**, mỗi nhóm một checkpoint; tính năng chưa hỗ trợ phải tắt rõ ràng, không ACK giả.
 
 Phép thử Village10 đã xác nhận mã 1104 lookup đúng tên map trong build đang đo, đồng thời bác bỏ việc chỉ đổi mã
-đang chọn là đủ với profile cũ. [Contract và giới hạn](protocol/load-phase.md#village10-map-selection) giữ kết quả;
-chưa có geometry, spawn hoặc gameplay Village10. Kết luận này chỉ định hình adapter dữ liệu, không mở đợt F1.
+đang chọn là đủ với profile cũ. [Contract và giới hạn](protocol/load-phase.md#village10-map-selection) giữ phép
+đo ban đầu; các route G1 về sau có ở [ma trận nghiệm thu](evidence/rust-service/g1-acceptance-matrix.json).
+Kết quả theo route chỉ định hướng xếp loại họ, không mở F1.
 
 <a id="issue-order"></a>
 ### Issue hiện hành và backlog theo nguồn chuẩn

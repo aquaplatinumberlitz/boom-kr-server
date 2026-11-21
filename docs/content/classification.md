@@ -9,6 +9,7 @@ và `boom-re/docs/items.md`, `map.md` để định hướng, không nhập opco
 (hash input/DB trong JSON) có xref `Attr/ItemAttr` tại VA `0x1196ABF`, `Attr/BomberAttr` tại
 VA `0x13501B6`; đây chỉ là dấu vết reader tĩnh, không xác định wire, drop hoặc quyền server.
 Tên trùng trong bảng Attr/Ship được giữ theo số dòng; wiki chỉ giúp ghép tên.
+Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; giá trị/cap từng dòng vẫn cần đối chiếu KR.
 
 | Nhóm | A | B | C | Ngoài |
 |---|---:|---:|---:|---:|
@@ -18,6 +19,8 @@ Tên trùng trong bảng Attr/Ship được giữ theo số dòng; wiki chỉ gi
 | Nhân vật | 2 | 32 | 33 | 0 |
 | Mode | 1 | 0 | 31 | 0 |
 | Hệ thống | 4 | 5 | 51 | 1 |
+
+Họ map F1: 86 B, 22 C.
 
 ### Phép thử rẻ cho F1
 
