@@ -136,7 +136,7 @@ def init_tls(root, state, target):
             raise ValueError('TLS identity chưa đầy đủ; cần provision lại trong state riêng')
 
 
-def prepare(root, state, cache=None, scope=None, *, friends=False):
+def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False):
     state = private_state(root, state)
     socket = state / 'launch.sock'
     if os.name != 'nt' and max(len(os.fsencode(p)) for p in [socket, state / 'accounts.admin.sock']) > 100:
@@ -163,7 +163,7 @@ def prepare(root, state, cache=None, scope=None, *, friends=False):
         from kr_pack_export import F1, G1
         wire = run / 'wire'
         wire.mkdir(mode=0o700)
-        configure(config, root, cache, wire, G1 if scope == 'g1' else F1, scope, unlock_all=friends)
+        configure(config, root, cache, wire, G1 if scope == 'g1' else F1 if scope == 'f1' else f1_maps, scope, unlock_all=friends)
     runtime = run / 'config.json'
     fd = os.open(runtime, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, 'w', encoding='utf-8') as stream:
@@ -228,6 +228,7 @@ def main():
     parser.add_argument('--state', type=Path)
     parser.add_argument('--snapshot', type=Path)
     parser.add_argument('--game-dir', type=Path, help='Thư mục game KR 00967; O1 dùng gốc gói người chơi')
+    parser.add_argument('--f1-map', action='append', help='Tên map chính xác trong gói thử F1-a')
     parser.add_argument('--player-manifest-sha256', help='Pin manifest gói người chơi, chỉ dùng với O1')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
@@ -249,9 +250,13 @@ def main():
         if (args.snapshot is not None) != (args.command == 'restore-db'):
             raise ValueError('Chỉ restore-db dùng và yêu cầu --snapshot')
         scope = manifest.get('pack_scope')
-        if scope is not None and scope not in ('g1', 'f1'):
+        if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
         needs_game = scope is not None and args.command in ('export', 'run', 'prepare-friends')
+        if scope == 'f1-a' and args.command == 'prepare-friends':
+            raise ValueError('Catalog thử F1-a chỉ dùng với export hoặc run, không hỗ trợ O1')
+        if (scope == 'f1-a' and needs_game) != bool(args.f1_map):
+            raise ValueError('Gói F1-a yêu cầu --f1-map khi export hoặc run')
         if needs_game != (args.game_dir is not None):
             raise ValueError('Gói từ pack yêu cầu --game-dir khi export hoặc run')
         if args.command in ('export', 'prepare-friends') and scope is None:
@@ -281,14 +286,14 @@ def main():
                 return
             cache = None
             if needs_game:
-                from kr_pack_export import PACK_SHA256, export
+                from kr_pack_export import MAPS, PACK_SHA256, export
                 if args.command == 'prepare-friends':
                     files = friends_pack(args.game_dir, args.player_manifest_sha256, PACK_SHA256)
                     # The installed game and payload are read-only inputs. O1
                     # cache may live under the player root, separate from payload.
                     cache, reused = export(args.game_dir / 'payload', state / 'pack-cache', pack_files=files)
                 else:
-                    cache, reused = export(args.game_dir, state / 'pack-cache')
+                    cache, reused = export(args.game_dir, state / 'pack-cache', maps=args.f1_map or MAPS, f1=bool(args.f1_map))
                 if args.command == 'export':
                     print(json.dumps(dict(cache=str(cache), reused=reused)))
                     return
@@ -310,7 +315,7 @@ def main():
                 return
             if not database.is_file():
                 raise ValueError('Cần init-db hoặc restore DB trước khi chạy')
-            config, out, _ = prepare(root, state, cache, scope)
+            config, out, _ = prepare(root, state, cache, scope, args.f1_map)
             service = str(executable(root, 'kr-service', target))
             command = [service, '--config', str(config), '--out', str(out)]
             if os.name == 'nt':

@@ -1,0 +1,35 @@
+{
+  "schema": "kre-f1-patrit22-adapter-candidate-v1",
+  "source": "kr_static",
+  "status": "candidate",
+  "build": "KR00967",
+  "maps": {
+    "Patrit14": {
+      "map_sha256": "b76892c6c7bc83b8db60a05b26901ee0c54dbc8328acc4f606fd90a933b9a94f",
+      "spawn_count": 8,
+      "mast_descriptor": [1, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 1244184, 4461456, 18730216, 4274062, 18730216, 0, 0],
+      "mast_anchor": [6, 6],
+      "measured_seed_sha256": "5cda90d6e0b21a910352cddfc55c1c655ab60f8c167f044e967d92cf725e3dc9"
+    },
+    "Patrit22": {
+      "map_sha256": "e34ad514d036d5771e6e28aefce5354d9525cb307ac7921c99111e48a5d83bc4",
+      "spawn_count": 4,
+      "mast_descriptor": [1, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 1244184, 4461456, 18730216, 4274062, 18730216, 0, 0],
+      "mast_anchor": [6, 6],
+      "candidate_seed_sha256": "2ff572ac72c76f7fc0395dc9d128b01b18bd2d5531fd86e10a261db9a77f0bf2"
+    }
+  },
+  "adapter": {
+    "descriptor": "Tile04_Ground/TileA01 | Tile04_Static/MastTileA",
+    "covered_cells": [[6, 6], [7, 6], [8, 6]],
+    "controls": ["moved anchor", "occupied cover", "modified descriptor"],
+    "control_result": "all rejected",
+    "export_cache_reused": true
+  },
+  "limits": [
+    "Chỉ là đối chiếu pack và kiểm tra exporter; chưa có client KR native Patrit22.",
+    "Không suy footprint hoặc ray của object khác; không nâng lớp Patrit.",
+    "Hai lượt kr-load Patrit bị dừng vì phát hiện chạy chồng; không dùng làm evidence runtime."
+  ],
+  "next": "Khi lease Wine trống và ngân sách F1-a được cấp lại, chạy một lượt Patrit22 có controller hai client; yêu cầu ACK/Start/journal/return và route cạnh MastTileA."
+}

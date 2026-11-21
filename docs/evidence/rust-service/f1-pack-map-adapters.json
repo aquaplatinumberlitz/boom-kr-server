@@ -1,0 +1,731 @@
+{
+  "schema": "kre-f1-pack-map-adapters-v1",
+  "build": "KR00967",
+  "issue": 559,
+  "base_commit": "03338fb2d0ffa06aed37eea9f27bae1026453298",
+  "canonical": "docs/PLAN.md#f1-normal-battle",
+  "checkpoint_reservations": [
+    "CP392",
+    "CP393"
+  ],
+  "checkpoint_registration": "pending_predecessors",
+  "pack_sha256": {
+    "FxMap.idx": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+    "FxMap.idd": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+    "FxContents.idx": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+    "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
+    "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+    "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"
+  },
+  "pack_copy_control": {
+    "path": "local/research/codex/f1-pack-map-adapters/client-entry-controls-all.json",
+    "bytes": 5946,
+    "sha256": "2b08e32ed8baab3dce79380c95eafe63c8e3e7fb5fcf95fd81add06de9115528"
+  },
+  "export": {
+    "source": "kr_static",
+    "status": "candidate",
+    "survey_maps": 45,
+    "families": 17,
+    "outside_adapter": 127,
+    "modes": {
+      "simple": 38,
+      "measured-seed": 7
+    },
+    "recipe": "docs/OPERATIONS.md#pack-f1-a",
+    "receipt": {
+      "path": "local/research/codex/f1-pack-map-adapters/pack-receipt.json",
+      "bytes": 29410,
+      "sha256": "3ab833bceb85fd51f99b2db267cb75ce715939d1dafe73f88117f958d4cfd641"
+    }
+  },
+  "replay": {
+    "source": "design",
+    "status": "design",
+    "maps": 45,
+    "families": 17,
+    "scope": "Hai client tổng hợp, TLS/relay, 117/121, đúng map trong journal và về sảnh. Hai nhóm trễ pacing qua khi lặp lại.",
+    "replay_cases": [
+      "CP373",
+      "CP375"
+    ],
+    "evidence": [
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/f1-cargo-test.log",
+        "bytes": 55933,
+        "sha256": "f332e963e07c501fbe7656161079010237a2af89cd70f7cf9fca0fd73a6d70b0"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/g1-parent-cache-control.json",
+        "bytes": 158,
+        "sha256": "d43a1884330b25eadd4813e466f77ea24090d77453e05dcb692c263ca8365b3a"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-1.log",
+        "bytes": 744,
+        "sha256": "4a21726c50e9e301a35641457770bfbb8464de9d0be3199cad6d3bde8bdd6a2b"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-2.log",
+        "bytes": 728,
+        "sha256": "343806e9b4e8ebf859aeaafd7e8ca3d7756b4ae21fd2c323137f0516b39d01e8"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-3-repeat.log",
+        "bytes": 713,
+        "sha256": "2157920f5001dc8ecaf3d782759d63795caec069ebadd6f85ec230757711c42f"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-4.log",
+        "bytes": 707,
+        "sha256": "415731a9859993662f9e56e5f4e39afa9be0cdce1c3d19c55b23fd4a2cf6085d"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-5.log",
+        "bytes": 695,
+        "sha256": "a80e7cc4b5111cd2ba6dbc82111f429b5545179663e0df58f10c40946f2f9f62"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-6.log",
+        "bytes": 708,
+        "sha256": "b712330fadc7472ab5afd3c3a18469983e39667b64ac817d3bd075e971ae2f5e"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-7-repeat.log",
+        "bytes": 706,
+        "sha256": "5bb1b248d4244f4797d2c6c8960d25d097596a78605158668e9046bc273f16d7"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/kr-load-8.log",
+        "bytes": 610,
+        "sha256": "07784e9d54194d0fd75124b5448c0cd60add88b108aa97cce213b6c79af15698"
+      }
+    ]
+  },
+  "native_runs": [
+    {
+      "run": 1,
+      "catalog": [
+        "CaJJ_Clover01",
+        "CaJJ_Clover02",
+        "CaJJ_Clover03",
+        "CaJJ_Clover04",
+        "CaJJ_Clover05",
+        "BSSmallPatrit14",
+        "CaJJ_Factory07",
+        "Cookie01",
+        "Cookie03",
+        "Desert07",
+        "Forest18",
+        "Forest24",
+        "Ice06",
+        "Patrit17",
+        "Xmas03",
+        "Xmas06"
+      ],
+      "completed_maps": [],
+      "partial_maps": [
+        "CaJJ_Clover02"
+      ],
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "client_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+      "server_sha256": "b339521e844c6f96bed9a3ca978e2e5cf6e3ce1a5ac715a10162a35bd5afc973",
+      "cleanup_bytes": 4632980201,
+      "evidence": [
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-1/controller.jsonl",
+          "bytes": 1038,
+          "sha256": "296e15e73ce2cbb0b4a5bdc8974ceabf6cd9770b23c56cda4b76dac666ec6047"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-1/service/rust-events.jsonl",
+          "bytes": 12510,
+          "sha256": "6d09f646b840e1a4e5b69a94b66b21f2c708e811cdbe13e08966b224890171ad"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-1/accounts.sqlite",
+          "bytes": 131072,
+          "sha256": "0877cea1d883fd12bcd25ca75881e0c54eef58503ea217a945942c3c3df3c2f8"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-1/cleanup.json",
+          "bytes": 100,
+          "sha256": "d04749376119ebf4004bf689b29d59b5ce7a61ad3212de455d9060a0a8087a60"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-1/virtual-network.json",
+          "bytes": 22789,
+          "sha256": "17a034dcf17083c0b115519365f844cc596d6ee0a29123e8e666e5da56b65a89"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-1/identities.json",
+          "bytes": 380,
+          "sha256": "21d71a49afaa5f580aee17c0fde250cd2bb2f6c59df3c120a00b3a9ac5b7414d"
+        }
+      ],
+      "limits": "Hai client Load và đặt bom; journal complete nhưng thiếu refresh về phòng, có account_worker_queue_expired."
+    },
+    {
+      "run": 2,
+      "catalog": [
+        "CaJJ_Clover01",
+        "CaJJ_Clover02",
+        "CaJJ_Clover03",
+        "CaJJ_Clover04",
+        "CaJJ_Clover05",
+        "BSSmallPatrit14",
+        "CaJJ_Factory07",
+        "Cookie01",
+        "Cookie06",
+        "Desert07",
+        "Forest18",
+        "Forest24",
+        "Ice06",
+        "Patrit17",
+        "Xmas03",
+        "Xmas06"
+      ],
+      "completed_maps": [
+        "CaJJ_Clover02",
+        "CaJJ_Clover03",
+        "CaJJ_Clover04",
+        "CaJJ_Clover05",
+        "BSSmallPatrit14",
+        "CaJJ_Factory07",
+        "Cookie01",
+        "Cookie06",
+        "Desert07",
+        "Forest18",
+        "Forest24",
+        "Ice06",
+        "Patrit17",
+        "Xmas03",
+        "Xmas06",
+        "CaJJ_Clover01"
+      ],
+      "partial_maps": [],
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "client_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+      "server_sha256": "05ac771630c0b7933421eb7700e97285c0d1a7cb1417d04f8e1506dad8cbb452",
+      "cleanup_bytes": 4633024763,
+      "evidence": [
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-2/controller.jsonl",
+          "bytes": 15853,
+          "sha256": "945ad1b773cd33120675fbe00dff667599d219586f4589f1c655cbc48af88477"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-2/service/rust-events.jsonl",
+          "bytes": 115075,
+          "sha256": "e31d37d3f00c27d6299df1e8bf55b999ceb92c4126b362a15b76fd58195ab312"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-2/accounts.sqlite",
+          "bytes": 139264,
+          "sha256": "d3f6af8c6f19ac859cf17015bd24ebc9fe1b36c73e6c0072a293c18e53280983"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-2/cleanup.json",
+          "bytes": 264,
+          "sha256": "5b16e38d2a99f0136ef2147790bc9d665549ba1f775b209e5f7903ec9ed646a2"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-2/virtual-network.json",
+          "bytes": 22789,
+          "sha256": "58068510d155631a0cbc46f0dd41ab713205604bc78cdc60dbf9e5d360da9e66"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-2/identities.json",
+          "bytes": 380,
+          "sha256": "fccf6a631c220507ec553d58415e24e170416eca6ec605c16ce1096837cd94ea"
+        }
+      ],
+      "limits": "Đủ cả 16 map. Thiếu exit của wrapper sau khi phiên bị ngắt; namespace đã dừng và scratch đã được dọn riêng."
+    },
+    {
+      "run": 3,
+      "catalog": [
+        "Xmas15",
+        "CaJJ_Clover03",
+        "Cookie06",
+        "Patrit18",
+        "Forest25",
+        "Forest27",
+        "Ice14",
+        "Ice16",
+        "Patrit21",
+        "Patrit23",
+        "Patrit24",
+        "Xmas09",
+        "Xmas12",
+        "Xmas17",
+        "Xmas18",
+        "Xmas19"
+      ],
+      "completed_maps": [
+        "CaJJ_Clover03"
+      ],
+      "partial_maps": [
+        "Cookie06"
+      ],
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "client_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+      "server_sha256": "05ac771630c0b7933421eb7700e97285c0d1a7cb1417d04f8e1506dad8cbb452",
+      "cleanup_bytes": 4632997649,
+      "evidence": [
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-3/controller.jsonl",
+          "bytes": 3068,
+          "sha256": "a634b7545d5176d9d9966b24c5d61767967996300e55a44e7f548836d08cb610"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-3/service/rust-events.jsonl",
+          "bytes": 108081,
+          "sha256": "4a5790e88a7ab4e82b5a0c82bb184389b41bf8d027885b141ba15e1ca8101c2b"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-3/accounts.sqlite",
+          "bytes": 131072,
+          "sha256": "fb199e1fb6800e4ec287f984a2a373159cc842ab6928a94b11a5dbfc4a6bf124"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-3/cleanup.json",
+          "bytes": 256,
+          "sha256": "859b2042c9eef54bc2350f2ddcf8ebbda2ad3b2ea05812af1503845261487268"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-3/virtual-network.json",
+          "bytes": 22783,
+          "sha256": "7f65130cf6f5936585197b6fc6d67e70e426390dc23c10140cb0e28de9f27f17"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-3/identities.json",
+          "bytes": 380,
+          "sha256": "fccf6a631c220507ec553d58415e24e170416eca6ec605c16ce1096837cd94ea"
+        }
+      ],
+      "limits": "CaJJ_Clover03 có ảnh sau fuse. Controller dừng giữa Cookie06; không suy tiếp các map chưa thử."
+    },
+    {
+      "run": 4,
+      "catalog": [
+        "Village16",
+        "Xmas15",
+        "CaJJ_Clover02",
+        "CaJJ_RetroFactory07",
+        "Camp08",
+        "Cookie03",
+        "Cookie05",
+        "Desert14",
+        "ExPatrit02",
+        "ExVillage01",
+        "Factory07",
+        "Forest07",
+        "forest21",
+        "Patrit01",
+        "Patrit14",
+        "Tomb12"
+      ],
+      "completed_maps": [
+        "Xmas15",
+        "CaJJ_Clover02",
+        "CaJJ_RetroFactory07",
+        "Camp08",
+        "Cookie03",
+        "Cookie05",
+        "Desert14",
+        "ExPatrit02",
+        "ExVillage01",
+        "Factory07",
+        "Forest07",
+        "forest21",
+        "Patrit01",
+        "Patrit14",
+        "Tomb12",
+        "Village16"
+      ],
+      "partial_maps": [],
+      "wine": "wine-10.0-20260425 (CachyOS)",
+      "client_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+      "server_sha256": "05ac771630c0b7933421eb7700e97285c0d1a7cb1417d04f8e1506dad8cbb452",
+      "cleanup_bytes": 4633027948,
+      "evidence": [
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-4/controller.jsonl",
+          "bytes": 24237,
+          "sha256": "98cd4976a8fab8157b67af839f409fc3b12f4e211ced81391d942156e5d9e3d8"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-4/service/rust-events.jsonl",
+          "bytes": 122111,
+          "sha256": "6b74b1cd6136dadeb7e6f993b8832ed29320f2dbb6fa480e5fcdd88efa9a815d"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-4/accounts.sqlite",
+          "bytes": 139264,
+          "sha256": "75423d7c835b3a8793640ecb32e0c63e77293600a42a8517aefa2e536efb6663"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-4/cleanup.json",
+          "bytes": 100,
+          "sha256": "52a16fd1daa2063d8a816d7e4acc002773e03d6b9cba63b6b1d688e98e3101f6"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-4/virtual-network.json",
+          "bytes": 22785,
+          "sha256": "58cd967f305f75ae26c66fcf5e85b441c8fc5ee1b595d62a5f3f356e1a5a3b55"
+        },
+        {
+          "path": "local/research/codex/f1-pack-map-adapters/batch-4/identities.json",
+          "bytes": 380,
+          "sha256": "fccf6a631c220507ec553d58415e24e170416eca6ec605c16ce1096837cd94ea"
+        }
+      ],
+      "limits": "Đối chứng thùng, vật phẩm và các map còn lại trong ngân sách; số lượt thành công chỉ tính các vòng đủ cổng và ảnh hai client."
+    }
+  ],
+  "completed_rounds": 33,
+  "unique_native_maps": 31,
+  "accepted_families": [
+    {
+      "family": "CaJJ_Clover",
+      "maps": [
+        "CaJJ_Clover01",
+        "CaJJ_Clover02",
+        "CaJJ_Clover03",
+        "CaJJ_Clover04",
+        "CaJJ_Clover05"
+      ],
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "scope": "Cả 5 map qua trọn ván với hai client trong LAN cô lập. Hai client thấy thùng thường vỡ ở CaJJ_Clover03 và Movable00 vỡ ở CaJJ_Clover02. Pack không có placement hay hàng rơi trọng số dương. Giới hạn: hai người, không suy mọi ô hoặc roster 8.",
+      "terrain": {
+        "map": "CaJJ_Clover03",
+        "check": [
+          {
+            "view": "A",
+            "xy": [
+              1,
+              1
+            ],
+            "changed": true,
+            "arena_sha256": "6ab486b32d579b0f095455dde447020c0569e225f4e195794a6cc857eae8e62b",
+            "after_sha256": "2705443e56add8deef7f704c167f52221861140c849bd01dffd0f4f9e9c1f422"
+          },
+          {
+            "view": "A",
+            "xy": [
+              3,
+              1
+            ],
+            "changed": false,
+            "arena_sha256": "307e79ceac605643b8e8ac461e1cc59bb3224e235f53bee0f923e33e574cee7e",
+            "after_sha256": "307e79ceac605643b8e8ac461e1cc59bb3224e235f53bee0f923e33e574cee7e"
+          },
+          {
+            "view": "A",
+            "xy": [
+              5,
+              1
+            ],
+            "changed": true,
+            "arena_sha256": "ed2c459dfc82a7ca0788ef529e9e714082187981819b191b6b9577fe5f3f82d5",
+            "after_sha256": "2705443e56add8deef7f704c167f52221861140c849bd01dffd0f4f9e9c1f422"
+          },
+          {
+            "view": "B",
+            "xy": [
+              1,
+              1
+            ],
+            "changed": true,
+            "arena_sha256": "6ab486b32d579b0f095455dde447020c0569e225f4e195794a6cc857eae8e62b",
+            "after_sha256": "2705443e56add8deef7f704c167f52221861140c849bd01dffd0f4f9e9c1f422"
+          },
+          {
+            "view": "B",
+            "xy": [
+              3,
+              1
+            ],
+            "changed": false,
+            "arena_sha256": "307e79ceac605643b8e8ac461e1cc59bb3224e235f53bee0f923e33e574cee7e",
+            "after_sha256": "307e79ceac605643b8e8ac461e1cc59bb3224e235f53bee0f923e33e574cee7e"
+          },
+          {
+            "view": "B",
+            "xy": [
+              5,
+              1
+            ],
+            "changed": true,
+            "arena_sha256": "ed2c459dfc82a7ca0788ef529e9e714082187981819b191b6b9577fe5f3f82d5",
+            "after_sha256": "2705443e56add8deef7f704c167f52221861140c849bd01dffd0f4f9e9c1f422"
+          }
+        ],
+        "evidence": [
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-3/CaJJ_Clover03-arena-A.png",
+            "bytes": 110554,
+            "sha256": "56eec85d8745eb52b0fa8098737bdc3e2eacfdee7cbfdda022070832bbcd6c88"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-3/CaJJ_Clover03-arena-B.png",
+            "bytes": 110109,
+            "sha256": "f93d188c671285b540fe3fcc371482c0fd983f719ee4cceda7c8d3e79ecc6eac"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-3/CaJJ_Clover03-post-blast-A.png",
+            "bytes": 116139,
+            "sha256": "ba6816b9379c08b1b0b709dd9935b53558da5218c631553bb63f87372175ea4e"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-3/CaJJ_Clover03-post-blast-B.png",
+            "bytes": 116482,
+            "sha256": "f96e92c8e6caecd035b1775932748e97c476395e3e83a289b91e9f0163992f41"
+          }
+        ]
+      },
+      "pack_maps": [
+        {
+          "map": "CaJJ_Clover01",
+          "map_sha256": "3550d2633dd240b9c467d02023ff51681e06d88e4248320ddb270abfe4423e68",
+          "seed_sha256": "fae78a3efbbd106f507ab890c697caef5e1595baee349ca9cfc0e40a173d5c6d"
+        },
+        {
+          "map": "CaJJ_Clover02",
+          "map_sha256": "f529ae6e6d7f49390875d2572d2b30ae7b8ae531c225c64c23b16df405f993db",
+          "seed_sha256": "468694a63917120f38dcbfc3ee4395d4d2b8b7bdcb9b9200f805b985cc22ce76"
+        },
+        {
+          "map": "CaJJ_Clover03",
+          "map_sha256": "ff0fe60be5401df87b1edc463c35d1031f7cea38242f7fb3b4bf100031bc9781",
+          "seed_sha256": "33c87884122b8b98d634170e28a4cb5f3a2d88975f0907fd887bd6efba9a31b5"
+        },
+        {
+          "map": "CaJJ_Clover04",
+          "map_sha256": "85ef4d6b643738ce21cfb75b8036b9fe12c7e239c2fc19b6ddd9a4fdbfd2240d",
+          "seed_sha256": "80985b665c707ddded700002ef39c6863cc39679ea2930cd154a35eb066d3fa1"
+        },
+        {
+          "map": "CaJJ_Clover05",
+          "map_sha256": "497d977b9d7b44c3e68987fa26568d574d35444ac47150f90c901ca1b3439a07",
+          "seed_sha256": "113f62c8dcab6a0d0f8292ec8545d7c4d2559c6639fd24abc6b81f3b88aeefdf"
+        }
+      ],
+      "contact_check": {
+        "map": "CaJJ_Clover02",
+        "xy": [
+          9,
+          1
+        ],
+        "scope": "Khối cản nhân vật khi thử bước từ (9,0); ảnh không thấy khối di chuyển. Sau bom ô đó được mở. Không suy quy tắc đẩy ở hướng khác.",
+        "evidence": [
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-movable-before-A.png",
+            "bytes": 119667,
+            "sha256": "8f0e16f8a91fc84268f4f0c39481a4304b4547b6215d13a1483354d950854c10"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-movable-contact-A.png",
+            "bytes": 119973,
+            "sha256": "612fc49af906485180cd65ea457398b343178e02e9ecc403775ed07e69a366c2"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-movable-contact-B.png",
+            "bytes": 120000,
+            "sha256": "361f1992d5774d1912b32d8277f824262ce8c87a758ca0fb2a0d8b8ff16fd546"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-post-blast-A.png",
+            "bytes": 125327,
+            "sha256": "2daf91351835f83279fcf95d55d1aae1116aec6859ca2bb9aa94f19aee55d46e"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-post-blast-B.png",
+            "bytes": 128978,
+            "sha256": "bc5e026b96ef7136249896c94f03544cecf07dec2e22187bf228c58d83ea6c4c"
+          }
+        ]
+      },
+      "movable_control": {
+        "map": "CaJJ_Clover02",
+        "xy": [
+          9,
+          1
+        ],
+        "scope": "Tiếp cận Movable00 bằng bước đi thường: hình không đổi khi chạm, thùng biến mất trên hai client sau bom; hai ô xa giữ nguyên. Không suy quyền đẩy đồ bằng hành động khác.",
+        "check": [
+          {
+            "view": "A",
+            "xy": [
+              5,
+              1
+            ],
+            "changed": false,
+            "before_sha256": "57c1fd5adca8746f9cbc95a50a3a1f785ae69fc81fbd54c3506b6c1fa218ce60",
+            "after_sha256": "57c1fd5adca8746f9cbc95a50a3a1f785ae69fc81fbd54c3506b6c1fa218ce60"
+          },
+          {
+            "view": "A",
+            "xy": [
+              9,
+              1
+            ],
+            "changed": true,
+            "before_sha256": "57c1fd5adca8746f9cbc95a50a3a1f785ae69fc81fbd54c3506b6c1fa218ce60",
+            "after_sha256": "2705443e56add8deef7f704c167f52221861140c849bd01dffd0f4f9e9c1f422"
+          },
+          {
+            "view": "A",
+            "xy": [
+              13,
+              1
+            ],
+            "changed": false,
+            "before_sha256": "59044adfa9b90ca305d86c8ba1fc4d1423943b27d784bd8693abf70cbdd0d6d9",
+            "after_sha256": "59044adfa9b90ca305d86c8ba1fc4d1423943b27d784bd8693abf70cbdd0d6d9"
+          },
+          {
+            "view": "B",
+            "xy": [
+              5,
+              1
+            ],
+            "changed": false,
+            "before_sha256": "57c1fd5adca8746f9cbc95a50a3a1f785ae69fc81fbd54c3506b6c1fa218ce60",
+            "after_sha256": "57c1fd5adca8746f9cbc95a50a3a1f785ae69fc81fbd54c3506b6c1fa218ce60"
+          },
+          {
+            "view": "B",
+            "xy": [
+              9,
+              1
+            ],
+            "changed": true,
+            "before_sha256": "57c1fd5adca8746f9cbc95a50a3a1f785ae69fc81fbd54c3506b6c1fa218ce60",
+            "after_sha256": "2705443e56add8deef7f704c167f52221861140c849bd01dffd0f4f9e9c1f422"
+          },
+          {
+            "view": "B",
+            "xy": [
+              13,
+              1
+            ],
+            "changed": false,
+            "before_sha256": "59044adfa9b90ca305d86c8ba1fc4d1423943b27d784bd8693abf70cbdd0d6d9",
+            "after_sha256": "59044adfa9b90ca305d86c8ba1fc4d1423943b27d784bd8693abf70cbdd0d6d9"
+          }
+        ],
+        "evidence": [
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-movable-contact-A.png",
+            "bytes": 119973,
+            "sha256": "612fc49af906485180cd65ea457398b343178e02e9ecc403775ed07e69a366c2"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-movable-contact-B.png",
+            "bytes": 120000,
+            "sha256": "361f1992d5774d1912b32d8277f824262ce8c87a758ca0fb2a0d8b8ff16fd546"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-post-blast-A.png",
+            "bytes": 125327,
+            "sha256": "2daf91351835f83279fcf95d55d1aae1116aec6859ca2bb9aa94f19aee55d46e"
+          },
+          {
+            "path": "local/research/codex/f1-pack-map-adapters/batch-4/CaJJ_Clover02-post-blast-B.png",
+            "bytes": 128978,
+            "sha256": "bc5e026b96ef7136249896c94f03544cecf07dec2e22187bf228c58d83ea6c4c"
+          }
+        ]
+      },
+      "audit": {
+        "path": "local/research/codex/f1-pack-map-adapters/family-audit-CaJJ_Clover.md",
+        "bytes": 1098,
+        "sha256": "0e5973261f8014ee5ccd2f9d218a7f9f12b1f9dc42b0f05543c95baf0158599f"
+      }
+    }
+  ],
+  "fixed_pickup": {
+    "map": "Cookie06",
+    "xy": [
+      6,
+      2
+    ],
+    "kind": "Fire",
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "scope": "Thấy Fire từ placement ở ô đất, client đi sang trái gửi 124; ảnh sau cho thấy item mất. Chưa đo stat/165 trực tiếp.",
+    "evidence": [
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-2/Cookie06-arena-A.png",
+        "bytes": 195201,
+        "sha256": "dd4df9f971710aa9bf3bf33e580c56d941f9128e0c0afe6cf6a5923e5770d044"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-2/Cookie06-arena-B.png",
+        "bytes": 175360,
+        "sha256": "f48dd8ae41754e9708e97e05c255e8f437012d70b3a33ba3aa97e37aca548cb0"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-2/Cookie06-fire-after-A.png",
+        "bytes": 187083,
+        "sha256": "a0a4a7ace9da4d89387c409cf51730b7b8b93262fa8f6a576eac6e7d78663851"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-2/Cookie06-fire-after-B.png",
+        "bytes": 164972,
+        "sha256": "87b3223eae4ad6ffc022f9749e1d6d50fceafbb2519fae2ed53901d1a512f360"
+      }
+    ]
+  },
+  "limits": [
+    "Không dùng ảnh hay log phục vụ riêng lẻ làm chứng nhận mọi hành vi.",
+    "Không kiểm Nexon hoặc Internet thật. Chưa phục hồi quy tắc rơi server gốc hoặc triển khai phương tiện.",
+    "Lớp A ở đây áp dụng cho cấu hình thử F1-a và phạm vi từng họ nêu trên."
+  ],
+  "hidden_pickup": {
+    "map": "Xmas15",
+    "xy": [
+      1,
+      2
+    ],
+    "kind": "Bomb",
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "scope": "B thử đặt bom ở (1,1), rút khỏi tia. Thùng ở (1,2) vỡ và Bomb lộ trên hai màn hình; B tới ô, gửi 124 và item biến mất trước khi kết thúc ván. Chưa đo 165 trực tiếp hoặc RNG gốc.",
+    "evidence": [
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-4/Xmas15-arena-A.png",
+        "bytes": 194044,
+        "sha256": "91923a1307376403bf4c5e23ac03ecb4d578ef8e48360a6a627d1fcdae848c1f"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-4/Xmas15-arena-B.png",
+        "bytes": 194382,
+        "sha256": "ca6bd4110fa5945032f7b139df0f0f9e291e3b0b0d01bc7a5bffa5d0070c370e"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-4/Xmas15-hidden-reveal-A.png",
+        "bytes": 154364,
+        "sha256": "de0274a9d6e495c0c15cb8eed67a536b1f98d3e9c4befd7c6d91ad4a7486191b"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-4/Xmas15-hidden-reveal-B.png",
+        "bytes": 154356,
+        "sha256": "cd42898303bf7a6e707b5841392525b187696e65aff1bc987727a56232ca58b6"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-4/Xmas15-hidden-pickup-A.png",
+        "bytes": 154155,
+        "sha256": "929ed92cb11f82617751069d334eb81a2ec07c7a6a4e926d7c692942ae8ab7cd"
+      },
+      {
+        "path": "local/research/codex/f1-pack-map-adapters/batch-4/Xmas15-hidden-pickup-B.png",
+        "bytes": 154123,
+        "sha256": "1966fe7d14db0942d72acf8a3153e4075dd1addea038e168a55d8f3af85e9e71"
+      }
+    ]
+  }
+}

@@ -23,6 +23,11 @@ def main():
     bundle = [sys.executable, str(BUNDLE / 'kr-package.py')]
     options = ['--manifest-sha256', manifest_hash, '--state', str(STATE)]
     game = ['--game-dir', str(GAME)]
+    chosen = [(code, name) for code, name in json.loads(os.environ.get('KR_F1_EXPECTED', '[]'))]
+    f1 = bool(chosen)
+    catalog = list(reversed(chosen))
+    maps = [arg for _, name in catalog for arg in ('--f1-map', name)]
+    game += maps
 
     def run(*argv, **kwargs):
         result = subprocess.run(argv, text=True, capture_output=True, timeout=30, **kwargs)
@@ -42,7 +47,7 @@ def main():
             for stem in ('FxMap', 'FxContents', 'fx'):
                 for ext in ('idx', 'idd'):
                     (directory / f'{stem}.{ext}').write_bytes(b'wrong version')
-        result = subprocess.run([*bundle, 'export', *options, '--game-dir', str(directory)],
+        result = subprocess.run([*bundle, 'export', *options, '--game-dir', str(directory), *maps],
                                 text=True, capture_output=True, timeout=10)
         assert result.returncode == 1 and expected in result.stderr, result.stderr
         for member in directory.iterdir():
@@ -66,6 +71,18 @@ def main():
         rules = json.loads((cache / 'SyntheticOne.rules.json').read_bytes())
         assert rules['terrain']['kinds'][26] == 2 and sum(rules['terrain']['kinds']) == 2
         assert profile['map_code'] == 1
+        if f1:
+            before = set(cache.parent.iterdir())
+            invalid = subprocess.run([*bundle, 'export', *options, '--game-dir', str(GAME),
+                                      '--f1-map', 'SyntheticOne', '--f1-map', 'SyntheticReject'],
+                                     text=True, capture_output=True, timeout=10)
+            assert invalid.returncode == 1 and 'Ô ngoài adapter đơn' in invalid.stderr
+            assert set(cache.parent.iterdir()) == before
+            next_rules = json.loads((cache / 'SyntheticTwo.rules.json').read_bytes())
+            assert rules['floor']['fixed'] == [[2, 4, 0]]
+            assert rules['floor']['hidden'] == [[1, 11, 0]]
+            assert next_rules['floor']['fixed'] == [[2, 5, 1]]
+            assert next_rules['floor']['hidden'] == [[1, 12, 1]]
     pkg = json.loads((BUNDLE / 'config.template.json').read_text())
     two = pkg['diagnostic_two_lobby']
     relay = pkg['authenticated_relay']['advertise']
@@ -82,13 +99,15 @@ def main():
         run(admin, db, input=json.dumps(dict(actor='pack-smoke', reason='Synthetic TLS match',
                                              command=dict(op='create', **account))))
     cert = STATE / 'prelogin_tls-identity/certificate.der'
+    expected = chosen or [(1, 'SyntheticOne')]
+    selection = {'maps': [dict(code=code, index=len(expected)-1-i) for i, (code, _) in enumerate(expected)]} if f1 else {}
     load_config = OUTPUT / 'load.json'
     fd = os.open(load_config, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, 'w') as file:
         json.dump(dict(server=tls, relay=relay, certificate=str(cert), login_port=two['login_port'],
                        channel_port=two['channel_port'], replay=str(replay), rooms=[accounts],
-                       ramp_ms=225, active_seconds=2, minimum_run_seconds=0, minimum_rounds=1,
-                       delivery_p99_ms_max=500, delivery_loss_percent_max=0), file)
+                       ramp_ms=225, active_seconds=2, minimum_run_seconds=0, minimum_rounds=len(expected),
+                       delivery_p99_ms_max=500, delivery_loss_percent_max=0, **selection), file)
     with (OUTPUT / 'service.log').open('x') as log:
         service = subprocess.Popen([*bundle, 'run', *options, *game], stdout=log, stderr=subprocess.STDOUT)
         try:
@@ -107,19 +126,18 @@ def main():
             # A successful kr-load exit also checks return to lobby and delivery thresholds.
             with (OUTPUT / 'load.log').open('x') as load_log:
                 subprocess.run([str(BUNDLE / 'bin/kr-load'), str(load_config)], stdout=load_log,
-                               stderr=subprocess.STDOUT, timeout=60, check=True)
+                               stderr=subprocess.STDOUT, timeout=max(60, 30 * len(expected)), check=True)
             events = [json.loads(line) for line in (OUTPUT / 'load.log').read_text().splitlines()]
-            assert sum(event['event'] == 'round_returned' for event in events) == 1
+            assert sum(event['event'] == 'round_returned' for event in events) == len(expected)
             snapshot = OUTPUT / 'smoke.sqlite'
             run(admin, 'backup', db, str(snapshot))
             run(admin, 'verify-backup', str(snapshot))
             with sqlite3.connect(snapshot) as connection:
-                matches = connection.execute('SELECT state, map_code, map_name FROM matches').fetchall()
-                assert len(matches) == 1 and matches[0][0] == 'complete'
-                _, map_code, map_name = matches[0]
-                if os.environ.get('KR_FAKE_PACK'):
-                    assert (map_code, map_name) == (1, 'SyntheticOne')
-                assert connection.execute('SELECT count(*), sum(reward) FROM match_players').fetchone() == (2, 0)
+                matches = connection.execute('SELECT state, map_code, map_name FROM matches ORDER BY id').fetchall()
+                assert len(matches) == len(expected) and all(m[0] == 'complete' for m in matches)
+                if f1 or os.environ.get('KR_FAKE_PACK'):
+                    assert [m[1:] for m in matches] == expected
+                assert connection.execute('SELECT count(*), sum(reward) FROM match_players').fetchone() == (2 * len(expected), 0)
                 players = connection.execute('SELECT count(*) FROM accounts').fetchone()[0]
                 assert players == 2
             service.send_signal(signal.SIGTERM)
@@ -131,7 +149,8 @@ def main():
                 service.wait(timeout=5)
     result = dict(manifest_sha256=manifest_hash, pack_cache=cache.name, export=True, cache_reused=True,
                   pack_missing_rejected=True, pack_mismatch_rejected=True, cache_tamper_rejected=True,
-                  tls_players=players, rounds=1, map_code=map_code, map=map_name, backup_verified=True, graceful_stop=True,
+                  tls_players=players, rounds=len(matches), map_code=matches[0][1], map=matches[0][2],
+                  map_results=matches, backup_verified=True, graceful_stop=True,
                   scope='Synthetic kr-load in a filesystem and network namespace; no native client.')
     (OUTPUT / 'verification.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result))
