@@ -711,3 +711,62 @@ fn check_load_driver_drain(fail_delivery: bool) {
         server.stop("-TERM").await;
     });
 }
+
+#[test]
+fn quic_close_of_lobby_players_reports_success_and_retires_owners() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    runtime().block_on(async {
+        let temp = Temp::new();
+        let db = temp.db();
+        let mut store = Store::open(&db).unwrap();
+        for (login, name) in [("AlphaOne", "DBUserA"), ("BetaTwo", "DBUserB")] {
+            store
+                .create_account(&operator(), login, name, PASSWORD, None)
+                .unwrap();
+        }
+        let server = Server::launch(&db, "clean-close", false).await;
+        let mut endpoint = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+        endpoint.set_default_client_config(prelogin::client_config(server.cert.clone()).unwrap());
+        let events = server.config.out.join("rust-events.jsonl");
+        // Reconnect repeatedly to cover read, accept and health scheduling
+        // around close, while checking that exact account sessions are retired.
+        for n in 1..=6 {
+            let (login, name): (&str, &[u8]) = if n % 2 == 1 {
+                ("AlphaOne", b"DBUserA")
+            } else {
+                ("BetaTwo", b"DBUserB")
+            };
+            let conn = prelogin::connect(&endpoint, server.config.tls.into())
+                .await
+                .unwrap();
+            let client = NativeClient::login_ports(
+                conn,
+                login,
+                name,
+                server.config.tcp[0],
+                server.config.tcp[1],
+            )
+            .await;
+            client.connection.close(0u32.into(), b"operator test close");
+            timeout(Duration::from_secs(3), async {
+                loop {
+                    let owners: Vec<Value> = fs::read_to_string(&events)
+                        .unwrap()
+                        .lines()
+                        .filter_map(|line| serde_json::from_str::<Value>(line).ok())
+                        .filter(|event| event["event"] == "native_tls_owner_ended")
+                        .collect();
+                    if owners.len() == n {
+                        assert!(owners.iter().all(|e| e["ok"] == true), "{owners:?}");
+                        break;
+                    }
+                    sleep(Duration::from_millis(10)).await;
+                }
+            })
+            .await
+            .unwrap();
+            assert_eq!(temp.active(), 0);
+        }
+        server.stop("-TERM").await;
+    });
+}
