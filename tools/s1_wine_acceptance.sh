@@ -11,6 +11,7 @@ tools=$(dirname "$(realpath "$0")")
 relay=https://198.18.0.1:8443
 wait_for() {
     for ((attempt=0; attempt<$1; attempt++)); do
+        if [[ $role == guest && -e $out/host-failed ]]; then return 1; fi
         "${@:2}" && return
         sleep .2
     done
@@ -69,6 +70,12 @@ state=''
 cleanup() {
     result=$?
     trap - EXIT
+    if (( result != 0 )); then
+        touch "$out/host-failed"
+        if [[ -n ${DISPLAY:-} ]]; then
+            import -window root "$out/failure.png" 2>/dev/null || true
+        fi
+    fi
     if [[ -n $state && -d $state/runs ]]; then
         mkdir -p "$out/state-observations"
         find "$state/runs" -path '*/service/*' -type f \( -name 'health.json' -o -name 'rust-events.jsonl' -o -name 'service-state.json' \) \
@@ -120,7 +127,12 @@ ready() {
 wait_for 520 ready
 sidereal="${state#"$drive/"}"
 db="C:\\${sidereal//\//\\}\\accounts.sqlite"
-BOOM_STATE="$state" "$S1_LINUX_BIN/boom-server" invite > "$out/invite.txt"
+clip="Z:${tools//\//\\}\\s1_wine_clipboard.py"
+copy_invite() {
+    click 460 164
+    timeout 10 wine "$bundle/python/python.exe" "$clip" | tr -d '\r' > "$1"
+}
+wait_for 35 copy_invite "$out/invite.txt"
 PYTHONPATH="$tools" python3 - "$out" <<'PY'
 import json
 from pathlib import Path
@@ -152,13 +164,14 @@ click 165 206
 backup_present() { compgen -G "$state/manual-backups/*.sqlite" >/dev/null; }
 wait_for 90 backup_present
 backup=$(find "$state/manual-backups" -name '*.sqlite' -print -quit)
-"$S1_LINUX_BIN/kr-admin" verify-backup "$backup" > "$out/backup-verify.json"
+relative="${backup#"$drive/"}"
+timeout 20 wine "$bundle/bin/kr-admin.exe" verify-backup "C:\\${relative//\//\\}" > "$out/backup-verify.json"
 click 430 206
 # Yes/No dialog defaults to No. Move focus left and accept.
 sleep 1
 xdotool key Left Return
 rotated() {
-    BOOM_STATE="$state" "$S1_LINUX_BIN/boom-server" invite > "$out/new-invite.txt"
+    copy_invite "$out/new-invite.txt" || return
     ! cmp -s "$out/invite.txt" "$out/new-invite.txt"
 }
 wait_for 150 rotated

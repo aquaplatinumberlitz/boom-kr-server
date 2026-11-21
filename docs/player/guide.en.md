@@ -60,7 +60,10 @@
 - If Windows blocks the connection, check **Allow an app through Windows Firewall**. Allow the launcher and programs only from a bundle you trust, for the appropriate network type.
 - Don't turn off the firewall. Ask the server operator for help if you still can't play.
 
-## Host your own server (S1)
+<!-- Standalone guide appendix; the launcher embeds the sections above. -->
+
+Host your own server (S1)
+--------------------------
 
 An S1 server stores accounts and match results on your computer. Keep it running while people play. Have a KR 00967 game folder with the `FxMap`, `FxContents` and `fx` pairs (an `.idx` and an `.idd` file for each).
 

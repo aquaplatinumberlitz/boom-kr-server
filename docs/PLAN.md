@@ -26,7 +26,7 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách, Codex thực thi | **Đạt phạm vi giai đoạn 1**. [L1a chọn 949x](content/client-language.md#utf8); Rust lưu tên account UTF-8 và chuyển chat sảnh/phòng. [CP370](evidence/checkpoints/records/CP370.json) xác nhận hai bản vi/ko cùng phòng có dấu, chat có dấu hai chiều và chơi một ván tới kết quả. [Sáu ảnh đăng nhập vi đã duyệt và ghép](evidence/checkpoints/records/CP367.json). | Ảnh bổ sung và nghiệm thu en hoãn. Start ván hai theo dõi riêng ở #502. |
 | M8 vận hành | CI đã có; [Gói Linux](OPERATIONS.md#gói-linux-và-state-riêng) đọc pack tại máy cài và kiểm được ván TLS tổng hợp, backup, dừng sạch | Launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 12 giờ chạy dài |
-| [O1 / S1](#full-game-roadmap) | [Prototype lõi P2P](O1_S1_P2P.md) đi trực tiếp hoặc qua relay với hai NAT giả lập | Sau M8, nối discovery và companion; nghiệm thu một ván trên hai máy thật qua LAN và Internet. Launcher chưa mở O1/S1. |
+| [O1 / S1](#full-game-roadmap) | [Lõi O1 P2P](O1_S1_P2P.md) đi trực tiếp hoặc qua relay với hai NAT giả lập. Phần server S1 có BoomServer, Docker, gói systemd và mã mời ghim TLS; một ván hai người đã qua Docker với discovery công cộng trên cùng máy. | Nghiệm thu BoomServer qua NAT và một ván VPS qua 4G sau soak. Thêm máy chủ trong launcher theo sau O1. |
 
 **Thứ tự việc:**
 

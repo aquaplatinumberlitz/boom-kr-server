@@ -60,7 +60,10 @@
 - Nếu Windows chặn kết nối, kiểm tra mục **Cho phép ứng dụng qua tường lửa**. Chỉ cho phép launcher và các chương trình từ gói mà bạn tin cậy, trên loại mạng phù hợp.
 - Không tắt toàn bộ tường lửa. Hỏi người quản lý máy nếu vẫn không chơi được.
 
-## Tự dựng máy chủ (S1)
+<!-- Standalone guide appendix; the launcher embeds the sections above. -->
+
+Tự dựng máy chủ (S1)
+--------------------------
 
 Máy chủ S1 lưu tài khoản và kết quả trên máy bạn. Máy bạn cần chạy trong lúc mọi người chơi. Hãy chuẩn bị thư mục game KR 00967 có các cặp tệp `FxMap`, `FxContents` và `fx` (mỗi cặp gồm `.idx` và `.idd`).
 
