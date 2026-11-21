@@ -595,6 +595,15 @@ fn two_tls_owners_have_distinct_connection_keys_and_finish_two_owned_rounds() {
                 assert_ne!(port, native[1 - slot].local_addr().unwrap().port());
                 routes.push(SocketAddrV4::new(Ipv4Addr::LOCALHOST, port));
             }
+            for (log, stream_id) in event_logs.iter_mut().zip(&markers) {
+                let marker = room_marker(log, "native_tls_room_peer_written").await;
+                assert_eq!(
+                    marker,
+                    serde_json::json!({
+                        "event": "native_tls_room_peer_written", "stream_id": stream_id, "opcode": 153
+                    })
+                );
+            }
             assert_eq!(wire_keys[0], wire_keys[1]);
             assert_ne!(Some(wire_keys[0]), last_key);
             if let Some(old) = last_key {
