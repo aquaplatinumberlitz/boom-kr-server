@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP377: Đã tái lập nhịp UDP từ capture CP287; cần đối chiếu build hiện hành trước khi chốt tải M8.** [Bằng chứng](evidence/checkpoints/records/CP377.json).
+
 **CP376: Server có kiểm sức khỏe cục bộ và số đo lobby, phòng/ván, relay và SQLite.** [Bằng chứng](evidence/checkpoints/records/CP376.json).
 
 **CP375: Windows vi và Wine ko chơi hai ván qua gói VPS trên cùng đường 4G; WAN giả lập đã kiểm ngắt và đăng nhập lại.** [Bằng chứng](evidence/checkpoints/records/CP375.json).
