@@ -8,6 +8,7 @@ import os
 from pathlib import Path, PurePosixPath
 import stat
 import signal
+import socket
 import subprocess
 import sys
 import struct
@@ -75,6 +76,11 @@ def verify(root, expected_sha256, *, check_modes=None):
             raise ValueError('Gói không cho phép symlink hoặc reparse point')
         if path.is_file() and path != manifest:
             actual.add(path.relative_to(root).as_posix())
+    if data.get('self_host') is True:
+        sidecar = member(root, 'manifest.sha256')
+        if sidecar.read_text(encoding='ascii').strip() != expected_sha256:
+            raise ValueError('Mã SHA-256 của gói S1 không khớp bàn giao')
+        actual.remove('manifest.sha256')
     if actual != names:
         raise ValueError('Gói chứa file ngoài manifest')
     return data
@@ -136,26 +142,50 @@ def init_tls(root, state, target):
             raise ValueError('TLS identity chưa đầy đủ; cần provision lại trong state riêng')
 
 
-def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False):
+def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False, s1=False):
     state = private_state(root, state)
-    socket = state / 'launch.sock'
-    if os.name != 'nt' and max(len(os.fsencode(p)) for p in [socket, state / 'accounts.admin.sock']) > 100:
+    launch_socket = state / 'launch.sock'
+    if os.name != 'nt' and max(len(os.fsencode(p)) for p in [launch_socket, state / 'accounts.admin.sock']) > 100:
         raise ValueError('Đường dẫn socket cục bộ quá dài')
     config = json.loads((root / 'config.template.json').read_text(encoding='utf-8'))
     admission = config['diagnostic_two_lobby']['account_admission']
-    admission.update(database=str(state / 'accounts.sqlite'), launch_socket=str(socket))
+    admission.update(database=str(state / 'accounts.sqlite'), launch_socket=str(launch_socket))
     for section, key in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
         if admission.get(section) is not None:
             admission[section]['private_key'] = str(state / key)
-    if friends:
-        configure_friends(config)
     for section, directory in package_tls(root, state).items():
-        if friends and section != 'prelogin_tls':
-            continue
         cert = directory / 'certificate.der'
         admission[section].update(private_key=str(directory / 'private.pk8'),
                                   certificate=dict(path=str(cert), bytes=cert.stat().st_size,
                                                    sha256=digest(cert)))
+    if s1:
+        # Reserve all ports together so we never choose the same UDP port twice.
+        # Rust verifies the service is ready before accepting the first S1 session.
+        with (socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as prelogin,
+              socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as relay,
+              socket.socket(socket.AF_INET, socket.SOCK_STREAM) as launcher):
+            for listener in (prelogin, relay, launcher):
+                listener.bind(('127.0.0.1', 0))
+            prelogin_addr, relay_addr, launcher_addr = [
+                f'127.0.0.1:{listener.getsockname()[1]}' for listener in (prelogin, relay, launcher)
+            ]
+        config.update(bind='127.0.0.1', network_scope='private_lab')
+        for actor in config['diagnostic_two_lobby']['actors']:
+            actor.pop('reported_login_ipv4', None)
+            actor['peer'] = f"127.0.0.{1 + actor['identity']}"
+        config['allowed_peers'] = list(dict.fromkeys([
+            '127.0.0.1', *(actor['peer'] for actor in config['diagnostic_two_lobby']['actors'])
+        ]))
+        primary = admission['prelogin_tls']
+        primary.update(bind=prelogin_addr, max_per_ip=primary['max_connections'])
+        # Both HTTPS and prelogin use the single leaf pinned in the invite.
+        admission['public_launcher'] = {
+            'bind': launcher_addr, 'certificate': primary['certificate'], 'private_key': primary['private_key'],
+            'max_connections': 32, 'timeout_ms': 2000,
+            'session_ttl_seconds': primary['session_ttl_seconds'],
+            'session_idle_seconds': primary['session_idle_seconds']
+        }
+        config['authenticated_relay'].update(bind=relay_addr, advertise=relay_addr)
     run = state / 'runs' / str(time.time_ns())
     run.mkdir(mode=0o700, parents=True)
     if cache is not None:
@@ -172,58 +202,11 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False)
     return runtime, run / 'service', state / 'accounts.sqlite'
 
 
-def friends_pack(player, expected_sha256, pins):
-    """Select the original prefix and original index; never export translated pack bytes."""
-    path = member(player, 'manifest.json')
-    if path.stat().st_size > 4 * 1024 * 1024 or digest(path) != expected_sha256:
-        raise ValueError('Manifest gói người chơi không khớp')
-    value = json.loads(path.read_bytes())
-    if value.get('schema') != 'kre-player-package-v1':
-        raise ValueError('Cần gói người chơi KR')
-    files = {}
-    for name, hash_value in pins.items():
-        if name.endswith('.idd'):
-            rows = (row['parts'][0] for row in value['packs'] if row['path'].casefold() == name.casefold())
-        else:
-            rows = (row['payload'] for language in value['languages'].values()
-                    for row in language['files'] if row['path'].casefold() == name.casefold())
-        pin = next((row for row in rows if row['sha256'] == hash_value), None)
-        if pin is None:
-            raise ValueError(f'Gói người chơi thiếu pack gốc: {name}')
-        files[name] = member(player, pin['path'])
-    return files
-
-
-def configure_friends(config):
-    import socket
-    two = config['diagnostic_two_lobby']
-    admission = two['account_admission']
-    tls = admission['prelogin_tls']
-    if tls.get('certificate') != '@INSTALL@' or not admission.get('patched_949x_names'):
-        raise ValueError('O1 yêu cầu TLS tự sinh và client 949x')
-    config.update(bind='127.0.0.1', allowed_peers=['127.0.0.1'], network_scope='private_lab')
-    config.pop('udp_relay', None)
-    for actor in two['actors']:
-        actor['peer'] = '127.0.0.1'
-        actor.pop('reported_login_ipv4', None)
-    admission.pop('public_launcher', None)
-    admission.pop('backup', None)
-    admission.pop('diagnostic_identity_strings', None)
-    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as login, socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as peer:
-        login.bind(('127.0.0.1', 0))
-        peer.bind(('127.0.0.1', 0))
-        tls.update(bind=f'127.0.0.1:{login.getsockname()[1]}', friends_guest_only=True,
-                   prelogin_seconds=180, admissions_per_ip_per_minute=60,
-                   max_connections=8, max_unauthenticated=8, max_per_ip=8)
-        relay = f'127.0.0.1:{peer.getsockname()[1]}'
-        config['authenticated_relay'].update(bind=relay, advertise=relay)
-
-
 def main():
     # The verified package stays immutable even when owned by the runner.
     sys.dont_write_bytecode = True
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['verify', 'init-db', 'init-tls', 'restore-db', 'migrate-db', 'export', 'run', 'prepare-friends'])
+    parser.add_argument('command', choices=['verify', 'init-db', 'init-tls', 'restore-db', 'migrate-db', 'export', 'run', 'prepare-friends', 'prepare-s1'])
     parser.add_argument('--manifest-sha256', required=True)
     parser.add_argument('--state', type=Path)
     parser.add_argument('--snapshot', type=Path)
@@ -237,9 +220,10 @@ def main():
         target = manifest['target']
         if (os.name == 'nt') != target.endswith('-windows-gnu'):
             raise ValueError('Gói không khớp với hệ điều hành đang chạy')
-        # Isolated/embedded Python omits the script directory. Add it only
-        # once every member of the package has been verified.
-        sys.path.insert(0, str(root))
+        # Windows' embeddable Python does not include the script directory.
+        # Add it only once every member of the package has been verified.
+        if os.name == 'nt':
+            sys.path.insert(0, str(root))
         if args.command == 'verify':
             print('Gói khớp manifest bàn giao.')
             return
@@ -252,10 +236,10 @@ def main():
         scope = manifest.get('pack_scope')
         if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
-        needs_game = scope is not None and args.command in ('export', 'run', 'prepare-friends')
+        needs_game = scope is not None and args.command in ('export', 'run', 'prepare-friends', 'prepare-s1')
         if scope == 'f1-a' and args.command == 'prepare-friends':
             raise ValueError('Catalog thử F1-a chỉ dùng với export hoặc run, không hỗ trợ O1')
-        if (scope == 'f1-a' and needs_game) != bool(args.f1_map):
+        if (scope == 'f1-a' and args.command in ('export', 'run')) != bool(args.f1_map):
             raise ValueError('Gói F1-a yêu cầu --f1-map khi export hoặc run')
         if needs_game != (args.game_dir is not None):
             raise ValueError('Gói từ pack yêu cầu --game-dir khi export hoặc run')
@@ -266,6 +250,17 @@ def main():
         admin = str(executable(root, 'kr-admin', target))
         state = private_state(root, args.state, admin)
         database = state / 'accounts.sqlite'
+        if args.command == 'prepare-s1':
+            # The caller holds the runner lock for its entire lifetime. S1
+            # owns its TLS identity and never uses an externally installed key.
+            if not manifest.get('self_host') or not needs_game or 'prelogin_tls' not in package_tls(root, state):
+                raise ValueError('Cần gói S1 phát hành cùng cấu hình cấp chứng chỉ khi cài')
+            init_tls(root, state, target)
+            from kr_pack_export import export
+            cache, _ = export(args.game_dir, state / 'pack-cache')
+            runtime, out, _ = prepare(root, state, cache, scope, s1=True)
+            print(json.dumps({'runtime': str(runtime), 'out': str(out)}))
+            return
         with package_lock(state) as lock_fd:
             if args.command == 'restore-db':
                 subprocess.run([admin, 'restore', str(args.snapshot.absolute()), str(database)], check=True, cwd=root)
@@ -289,8 +284,6 @@ def main():
                 from kr_pack_export import MAPS, PACK_SHA256, export
                 if args.command == 'prepare-friends':
                     files = friends_pack(args.game_dir, args.player_manifest_sha256, PACK_SHA256)
-                    # The installed game and payload are read-only inputs. O1
-                    # cache may live under the player root, separate from payload.
                     cache, reused = export(args.game_dir / 'payload', state / 'pack-cache', pack_files=files)
                 else:
                     cache, reused = export(args.game_dir, state / 'pack-cache', maps=args.f1_map or MAPS, f1=bool(args.f1_map))

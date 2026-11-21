@@ -1,0 +1,14 @@
+# Use the packaged Linux server directory as the build context.
+**
+!bin
+!bin/**
+!data
+!data/**
+!deploy
+!deploy/**
+!server
+!server/**
+!*.py
+!config.template.json
+!manifest.json
+!manifest.sha256

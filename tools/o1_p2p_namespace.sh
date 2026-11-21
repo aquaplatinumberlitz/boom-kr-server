@@ -3,8 +3,8 @@
 set -euo pipefail
 
 if [[ ${1:-} != --inside ]]; then
-    if [[ $# != 3 || ! $1 =~ ^(direct|relay)$ || ! -x $2 || ! -d $3 ]]; then
-        printf 'Usage: %s direct|relay UDP_LAB_BINARY EMPTY_OUTPUT_DIR\n' "$0" >&2
+    if [[ $# != 3 || ! $1 =~ ^(direct|relay|s1)$ || ! -x $2 || ! -d $3 ]]; then
+        printf 'Usage: %s direct|relay|s1 UDP_LAB_BINARY EMPTY_OUTPUT_DIR\n' "$0" >&2
         exit 2
     fi
     output=$(realpath "$3")
@@ -67,13 +67,15 @@ for side in 2 3; do
     # SNAT changes the peer-bound source port only in the symmetric profile.
     # Stateful reverse translation requires the original destination tuple.
     peer_port=41600
-    [[ $mode != relay ]] || peer_port=42600
+    [[ $mode == direct ]] || peer_port=42600
+    wan_allow=''
+    if [[ $mode == s1 ]]; then wan_allow='ip daddr 198.18.0.1'; fi
     net "$router" nft -f - <<RULES
 table ip p2p {
     chain forward {
         type filter hook forward priority filter; policy drop;
         ct state established,related accept
-        iifname "lan0" oifname "wan0" accept
+        iifname "lan0" oifname "wan0" $wan_allow counter accept
     }
     chain post {
         type nat hook postrouting priority srcnat; policy accept;
@@ -97,10 +99,23 @@ for _ in {1..100}; do
     sleep .05
 done
 [[ -s $output/relay.der ]]
-net "$peer2" "$bin" host "$output" "$mode" >"$output/host.log" 2>&1 &
+if [[ $mode == s1 ]]; then
+    runner="$(dirname "$(realpath "$0")")/s1_wine_acceptance.sh"
+    host=("$runner" host "$output")
+    guest=("$runner" guest "$output")
+else
+    host=("$bin" host "$output" "$mode")
+    guest=("$bin" guest "$output" "$mode")
+fi
+net "$peer2" "${host[@]}" >"$output/host.log" 2>&1 &
 host_pid=$!
 result=0
-net "$peer3" "$bin" guest "$output" "$mode" >"$output/guest.log" 2>&1 || result=$?
+net "$peer3" "${guest[@]}" >"$output/guest.log" 2>&1 || result=$?
+if (( result != 0 )) && [[ $mode == s1 ]]; then
+    # Give the Windows test harness time to collect logs and remove its prefix.
+    touch "$output/stop"
+    wait "$host_pid" || true
+fi
 if (( result == 0 )); then
     wait "$host_pid" || result=$?
 fi
