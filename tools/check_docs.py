@@ -11,6 +11,7 @@ LINE_LIMITS = {
     'docs/PROTOCOL.md': (600, 'docs/protocol/; chỉ giữ mục lục và stub anchor tại PROTOCOL.md'),
     'docs/RESEARCH.md': (300, 'docs/HISTORY.md; chỉ giữ câu hỏi mở và khoảng trống theo cơ chế'),
 }
+OPTIONAL_PLAYER_IMAGES = {'o1-create-room.png', 'o1-join-code.png', 'o1-join-lan.png'}
 
 
 def without_code(text):
@@ -48,7 +49,11 @@ def link_errors(path, root, anchor_cache):
         name = unquote(name.split('?', 1)[0])
         resolved = (path.parent / name).resolve() if name else path.resolve()
         count += 1
-        if not resolved.is_relative_to(root.resolve()) or not resolved.is_file():
+        optional_player_image = (
+            path.parent == root / 'docs' / 'player'
+            and name in OPTIONAL_PLAYER_IMAGES
+        )
+        if not resolved.is_relative_to(root.resolve()) or (not resolved.is_file() and not optional_player_image):
             errors.append(f'{path.relative_to(root)}: invalid local link {target}')
         elif fragment and resolved.suffix == '.md':
             if resolved not in anchor_cache:
