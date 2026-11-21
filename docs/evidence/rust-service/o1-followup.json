@@ -1,0 +1,41 @@
+{
+  "schema": "kre-evidence-v1",
+  "checkpoint": "CP391",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558",
+  "context": "5b9cca50abf412442973193741f2579536f82623",
+  "source": "design",
+  "status": "candidate",
+  "contract": "docs/O1_S1_P2P.md",
+  "measurements": [
+    {
+      "id": "headless_match",
+      "summary": "Hai guest O1 có tên LocalWin/LocalWine qua companion, setup lobby, route hai peer, một ván Forest07 hòa và trở về phòng; SQLite không còn session hoạt động sau host close.",
+      "path": "local/research/codex/o1-launcher/headless-o1-match/journal-headless.json"
+    },
+    {
+      "id": "forced_relay",
+      "summary": "Ép route relay trong hai NAT lab: UDP hai chiều, direct frames bằng 0, relay frames có gửi/nhận và host close được quan sát.",
+      "path": "local/research/codex/o1-launcher/headless-forced-relay/result.log"
+    },
+    {
+      "id": "split_lan",
+      "summary": "Hai namespace Ethernet riêng tìm phòng qua mDNS, từ chối package sai, admit đúng code và nhận host close.",
+      "path": "local/research/codex/o1-launcher/headless-split-lan-r3/guest.log"
+    },
+    {
+      "id": "mailbox",
+      "summary": "Mailbox loopback giải mã record đúng code, route không có IP, sai code và ciphertext hết hạn bị từ chối.",
+      "path": "local/research/codex/o1-launcher/headless-mailbox/result.log"
+    },
+    {
+      "id": "guest_gateway",
+      "summary": "Gateway server thật cấp LocalWine qua LoginStage 1P tới managed lobby và dừng sạch, DB giữ guest nhưng thu hồi session.",
+      "path": "local/research/codex/o1-launcher/headless-real-guest/result.log"
+    }
+  ],
+  "limits": [
+    "Tất cả là client/headless hoặc synthetic trong namespace cô lập; chưa là game native.",
+    "Chưa dùng mailbox công cộng, Internet thật hoặc VPS; soak trước đó chưa được phép chạm.",
+    "Native VM/Wine CP390 dừng trước LoginStage do recipe cổng kr-load; builder đã chặn profile sai, cần lượt native mới với profile KR đầy đủ."
+  ]
+}
