@@ -3,13 +3,17 @@ mod client;
 mod replay;
 
 use client::Client;
+use kr_p2p::{
+    Endpoint, Invite,
+    self_host::{ClientSession, Network, RelayUrl},
+};
 use replay::Replay;
 use serde::Deserialize;
 use serde_json::json;
 use std::{
     collections::HashSet,
     fs, io,
-    net::SocketAddrV4,
+    net::{SocketAddr, SocketAddrV4},
     path::{Path, PathBuf},
     sync::{
         Arc,
@@ -35,12 +39,13 @@ pub(crate) struct Account {
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 pub(crate) struct Config {
-    server: SocketAddrV4,
-    relay: SocketAddrV4,
+    server: Option<SocketAddrV4>,
+    relay: Option<SocketAddrV4>,
+    s1: Option<S1>,
     // Loopback driver can use a local listener when the pinned offer still
     // advertises the public address for the native participants.
     relay_dial: Option<SocketAddrV4>,
-    certificate: PathBuf,
+    certificate: Option<PathBuf>,
     login_port: u16,
     channel_port: u16,
     replay: PathBuf,
@@ -55,6 +60,69 @@ pub(crate) struct Config {
     delivery_buckets: bool,
     delivery_p99_ms_max: f64,
     delivery_loss_percent_max: f64,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct S1 {
+    invite: String,
+    hint: Option<SocketAddr>,
+    #[serde(default)]
+    local_only: bool,
+    private_relay: Option<RelayUrl>,
+    relay_ca: Option<PathBuf>,
+    relay_quic_port: Option<u16>,
+}
+
+struct S1Dial {
+    endpoint: Endpoint,
+    network: Network,
+    invite: Invite,
+    hint: Option<SocketAddr>,
+}
+
+impl S1Dial {
+    async fn new(config: &S1) -> io::Result<Self> {
+        let invite = config.invite.parse().map_err(io::Error::other)?;
+        let ca_der = if let Some(path) = &config.relay_ca {
+            if fs::metadata(path)?.len() > 16384 {
+                return Err(failure("private relay CA exceeds size limit"));
+            }
+            fs::read(path)?
+        } else {
+            Vec::new()
+        };
+        let network = match &config.private_relay {
+            None if config.local_only
+                && config.hint.is_some()
+                && config.relay_ca.is_none()
+                && config.relay_quic_port.is_none() =>
+            {
+                Network::Local
+            }
+            _ if config.local_only => return Err(failure("local S1 requires only a direct hint")),
+            Some(relay) => Network::Private {
+                relay: relay.clone(),
+                quic_port: config.relay_quic_port.unwrap_or(7842),
+                ca_der,
+            },
+            None if config.relay_ca.is_none() && config.relay_quic_port.is_none() => {
+                Network::Public
+            }
+            None => return Err(failure("private relay options need a relay URL")),
+        };
+        let endpoint = network.endpoint("0.0.0.0:0".parse().unwrap(), None).await?;
+        Ok(Self {
+            endpoint,
+            network,
+            invite,
+            hint: config.hint,
+        })
+    }
+
+    async fn connect(&self) -> io::Result<ClientSession> {
+        ClientSession::open(&self.endpoint, &self.network, &self.invite, self.hint).await
+    }
 }
 
 fn failure(message: &'static str) -> io::Error {
@@ -75,7 +143,16 @@ impl Config {
             || self.login_port == self.channel_port
             || self.login_port == 0
             || self.channel_port == 0
-            || [self.server, self.relay].iter().any(|addr| {
+            || match &self.s1 {
+                Some(_) => {
+                    self.server.is_some()
+                        || self.relay.is_some()
+                        || self.certificate.is_some()
+                        || self.relay_dial.is_some()
+                }
+                None => self.server.is_none() || self.relay.is_none() || self.certificate.is_none(),
+            }
+            || [self.server, self.relay].into_iter().flatten().any(|addr| {
                 addr.port() == 0
                     || addr.ip().is_unspecified()
                     || addr.ip().is_broadcast()
@@ -108,6 +185,7 @@ struct RoomContext {
     config: Arc<Config>,
     replay: Arc<Replay>,
     endpoint: quinn::Endpoint,
+    s1: Option<Arc<S1Dial>>,
     index: usize,
     offset: usize,
     start: Instant,
@@ -134,6 +212,10 @@ impl RoomContext {
             } else if slot > 0 {
                 sleep(Duration::from_millis(self.config.ramp_ms)).await;
             }
+            let bridge = match &self.s1 {
+                Some(dial) => Some(dial.connect().await.map_err(|e| phase("S1 invite", e))?),
+                None => None,
+            };
             players.push(
                 Client::login(
                     &self.endpoint,
@@ -141,8 +223,10 @@ impl RoomContext {
                     account,
                     companions,
                     cancel.clone(),
+                    bridge,
                 )
-                .await?,
+                .await
+                .map_err(|e| phase("player login", e))?,
             );
         }
         let room = players[0].create(&format!("Load{:02}", self.index)).await?;
@@ -342,7 +426,7 @@ fn emit_clock_sample(start: Instant) {
     }));
 }
 
-async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Result<()> {
+async fn drive(config: Config, replay: Replay) -> io::Result<()> {
     config.validate()?;
     replay.validate()?;
     let start = Instant::now();
@@ -351,6 +435,22 @@ async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Resu
     }
     let first = Arc::new(Barrier::new(config.rooms.len()));
     let delivery_failed = Arc::new(AtomicBool::new(false));
+    let (s1, certificate) = if let Some(config) = &config.s1 {
+        let dial = S1Dial::new(config).await?;
+        let certificate = dial
+            .connect()
+            .await
+            .map_err(|e| phase("S1 TLS pin", e))?
+            .certificate
+            .clone();
+        (Some(Arc::new(dial)), certificate)
+    } else {
+        let path = config.certificate.as_ref().expect("validated");
+        if fs::metadata(path)?.len() > 8192 {
+            return Err(failure("oversized certificate"));
+        }
+        (None, fs::read(path)?)
+    };
     let endpoint = prelogin_endpoint(certificate)?;
     let config = Arc::new(config);
     let replay = Arc::new(replay);
@@ -361,6 +461,7 @@ async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Resu
             config: config.clone(),
             replay: replay.clone(),
             endpoint: endpoint.clone(),
+            s1: s1.clone(),
             index,
             offset,
             start,
@@ -405,13 +506,10 @@ fn private_config(path: &Path) -> io::Result<Config> {
 
 pub async fn execute(path: &Path) -> io::Result<()> {
     let config = private_config(path)?;
-    if fs::metadata(&config.replay)?.len() > 1_000_000
-        || fs::metadata(&config.certificate)?.len() > 8192
-    {
-        return Err(failure("oversized replay or certificate"));
+    if fs::metadata(&config.replay)?.len() > 1_000_000 {
+        return Err(failure("oversized replay"));
     }
     let replay = serde_json::from_slice(&fs::read(&config.replay)?)
         .map_err(|_| failure("invalid replay JSON"))?;
-    let certificate = fs::read(&config.certificate)?;
-    drive(config, replay, certificate).await
+    drive(config, replay).await
 }

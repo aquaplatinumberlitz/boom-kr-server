@@ -73,8 +73,32 @@ Chờ exit 0 và `"stopped": true` trong `service-state.json` trước khi mở 
 thư mục bằng `kr-admin.exe private-dir <directory>`. Windows đồng bộ dữ liệu snapshot rồi công bố bằng thao
 tác move có cờ write-through và không ghi đè.
 
-Đây là gói vận hành lõi. Launcher một nút, phòng/mã mời, cài đặt không cần Python và nghiệm thu LAN/Internet
-là các lát tiếp theo của O1/S1.
+For the S1 desktop host with bundled Python, see [Self-hosting](#self-hosting).
+
+## Self-hosting
+
+Build the Linux bundle with `--self-host --archive` and include `--bin boom-server` in the build. For Windows,
+prefix the cross-build command with `RUSTC_WRAPPER="$PWD/tools/windows_rustc_rlib.sh"` from the repository root
+(or use an absolute path from `rust/`). Add `--self-host --archive --windows-python python-3.13.9-embed-amd64.zip`
+to the Windows packager. Use the [embeddable x64 ZIP from python.org](https://www.python.org/downloads/release/python-3139/);
+the packager verifies the pinned hash. Ship the full archive, without a game directory or any server state.
+
+- **Windows:** Open `BoomServer.exe` and choose the local KR 00967 game folder. It uses `%LOCALAPPDATA%\BoomServer`.
+  Use Stop before shutting down and Back up now for a verified SQLite snapshot. The Windows firewall prompt can
+  allow direct IPv4 UDP on Private networks; iroh also tries UPnP when available and can use a relay.
+- **Docker:** From the extracted Linux bundle, set `BOOM_GAME_DIR` to a readable absolute game path and optionally
+  set `BOOM_NAME`. Run `docker compose -f deploy/compose.yaml up -d --build` and
+  `docker compose -f deploy/compose.yaml exec boom /opt/boom/bin/boom-server invite`. The image runs as UID 10001
+  with read-only game files and a named state volume. Preserve that volume across reinstalls. To back up on demand,
+  replace `invite` with `backup`.
+- **systemd:** Run `sudo ./deploy/install.sh /absolute/game/path "My Server"` from the Linux tarball.
+  Use `journalctl -u boom-server` for logs, and `sudo -u boom-server boom-server invite` or `backup` for local
+  operations. The service account must be able to read the game folder. Keep `/var/lib/boom-server` across upgrades.
+
+The invite pins the S1 node key and TLS leaf. Treat `host-account.json` as a private initial game account; OS
+permissions on the state directory protect local admin tools. Only iroh needs external connectivity. The optional UDP
+port for direct paths is 41600 by default; native game, admin, TCP/TLS, and inner QUIC listeners stay on loopback.
+Back up state including the S1 key and TLS identity separately from database snapshots if you need to preserve invites.
 
 ## First install
 

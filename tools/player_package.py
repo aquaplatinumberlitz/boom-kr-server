@@ -170,6 +170,8 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
                                            f'player/guide.{language}.md')
         for language in LANGUAGES
     }
+    guide_image = 'player/images/boomserver-s1.png'
+    guide_assets = {guide_image: save(ROOT / 'docs' / guide_image, guide_image)}
     manifest = dict(schema='kre-player-package-v1', packs=packs, common=common, languages=languages,
                     limits='Payload được dựng và kiểm hash; chưa chứng nhận cài sạch, client song song hoặc native Internet.')
     if art is not None:
@@ -177,7 +179,7 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
-                languages=list(languages), packs=len(packs), guides=guides)
+                languages=list(languages), packs=len(packs), guides=guides, guide_assets=guide_assets)
 
 
 def windows_runtime(recipe, output, manifest_sha256):

@@ -1,0 +1,27 @@
+services:
+  boom:
+    image: boom-server:s1
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    restart: unless-stopped
+    read_only: true
+    stop_grace_period: 30s
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      BOOM_NAME: "${BOOM_NAME:-Boom Server}"
+    ports:
+      - "41600:41600/udp"
+    tmpfs:
+      - /tmp
+    volumes:
+      - type: bind
+        source: "${BOOM_GAME_DIR:?Set BOOM_GAME_DIR to the absolute path of the KR 00967 game folder}"
+        target: /game
+        read_only: true
+        bind:
+          create_host_path: false
+      - boom-state:/state
+volumes:
+  boom-state:

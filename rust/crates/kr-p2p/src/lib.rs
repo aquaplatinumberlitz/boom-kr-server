@@ -1,9 +1,9 @@
-//! Experimental O1/S1 transport. Discovery and the native companion are separate.
+//! O1 peer transport and the S1 self-hosted server tunnel.
 
 mod code;
 
 pub use code::{CodeError, Invite, VERSION};
-use iroh::endpoint::{Builder, presets};
+use iroh::endpoint::{Builder, PortmapperConfig, presets};
 pub use iroh::{Endpoint, EndpointAddr, EndpointId, RelayMode, SecretKey, endpoint::Connection};
 use std::{io, net::SocketAddr};
 use tokio::net::UdpSocket;
@@ -12,7 +12,7 @@ const ALPN: &[u8] = b"boom-kr/p2p/1";
 /// Keep each game packet within one QUIC datagram, including on the relay.
 pub const MAX_GAME_PACKET: usize = 1100;
 
-/// No global address publication or UPnP. Discovery supplies routing hints separately.
+/// Base for O1 and S1. Callers choose address publication and port mapping.
 pub fn endpoint_builder(
     bind: SocketAddr,
     relay: RelayMode,
@@ -23,6 +23,7 @@ pub fn endpoint_builder(
         .bind_addr(bind)
         .map_err(io::Error::other)?
         .relay_mode(relay)
+        .portmapper_config(PortmapperConfig::Disabled)
         .alpns(vec![ALPN.to_vec()]);
     if let Some(key) = key {
         builder = builder.secret_key(key);
@@ -96,3 +97,5 @@ pub async fn bridge(connection: &Connection, udp: UdpSocket) -> io::Result<()> {
         }
     }
 }
+
+pub mod self_host;

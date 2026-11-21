@@ -8,6 +8,7 @@ publish.workspace = true
 
 [dependencies]
 kr-wire = { path = "../kr-wire" }
+kr-p2p = { path = "../kr-p2p" }
 kr-tunnel = { path = "../kr-tunnel" }
 quinn.workspace = true
 tokio.workspace = true
@@ -21,7 +22,7 @@ zeroize.workspace = true
 flate2.workspace = true
 [target.'cfg(windows)'.dependencies]
 ring = "=0.17.14"
-windows-sys = { version = "=0.61.2", features = ["Win32_Security_Authorization", "Win32_Storage_FileSystem", "Win32_System_SystemServices", "Win32_System_Threading"] }
+windows-sys = { version = "=0.61.2", features = ["Win32_Security_Authorization", "Win32_Storage_FileSystem", "Win32_System_SystemServices", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_Graphics_Gdi", "Win32_Globalization", "Win32_System_Com", "Win32_System_DataExchange", "Win32_System_LibraryLoader", "Win32_System_Memory", "Win32_UI_Shell", "Win32_UI_Shell_Common", "Win32_UI_Input_KeyboardAndMouse", "Win32_UI_WindowsAndMessaging"] }
 
 [dev-dependencies]
 ring = "=0.17.14"

@@ -38,6 +38,7 @@ mod room_service;
 mod room_wire;
 mod round_epochs;
 mod rules;
+pub mod self_host;
 mod terrain;
 mod transport_ids;
 pub mod udp_relay;
@@ -1392,8 +1393,17 @@ async fn bound_connection(
     }
 }
 
-pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
-    let mut shutdown_signal = platform::Shutdown::new()?;
+pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
+    let mut signal = platform::Shutdown::new()?;
+    serve_until(profile, out, signal.recv()).await
+}
+
+async fn serve_until(
+    mut profile: Validated,
+    out: &Path,
+    stop_request: impl Future<Output = io::Result<()>>,
+) -> io::Result<()> {
+    tokio::pin!(stop_request);
     tokio::fs::create_dir_all(out).await?;
     let mut account_owner = if let Some(config) = profile
         .config
@@ -1632,7 +1642,7 @@ pub async fn serve(mut profile: Validated, out: &Path) -> io::Result<()> {
                     failure=Some(io::Error::other("account worker unavailable"));break;
                 }
             },
-            value=shutdown_signal.recv()=>{if let Err(e)=value {failure=Some(e);}break;},
+            value=&mut stop_request=>{if let Err(e)=value {failure=Some(e);}break;},
             result=maintenance.join_next(),if !maintenance.is_empty()=>{failure=Some(io::Error::other(format!("maintenance stopped: {result:?}")));break;},
             result=listeners.join_next(),if !listeners.is_empty()=>{failure=Some(io::Error::other(format!("listener stopped: {result:?}")));break;},
             result=workers.join_next(),if !workers.is_empty()=>if let Some(result)=result {match result {Ok(Ok(()))=>{},other=>{failure=Some(io::Error::other(format!("worker stopped: {other:?}")));break;}}},
