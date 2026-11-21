@@ -35,6 +35,8 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 **CP390: Launcher có luồng tạo/vào phòng O1 bằng tên khách, phát hiện LAN và ghép phiên bản gói.** [Bằng chứng](docs/evidence/checkpoints/records/CP390.json).
 
+**F1-a: Adapter pack đã qua kr-load trên 45 map; họ CaJJ_Clover đạt lớp A trong phạm vi hai người.** [Bằng chứng](docs/evidence/rust-service/f1-pack-map-adapters.json).
+
 ## Bắt đầu
 
 Đọc [AGENTS](AGENTS.md), [PLAN](docs/PLAN.md), rồi [PROTOCOL](docs/PROTOCOL.md) và
