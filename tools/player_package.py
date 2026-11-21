@@ -170,6 +170,8 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
                                            f'player/guide.{language}.md')
         for language in LANGUAGES
     }
+    screenshot = ROOT / 'docs/player/o1-launcher.jpg'
+    screenshot_pin = save(screenshot, 'player/o1-launcher.jpg') if screenshot.is_file() else None
     manifest = dict(schema='kre-player-package-v1', packs=packs, common=common, languages=languages,
                     limits='Payload được dựng và kiểm hash; chưa chứng nhận cài sạch, client song song hoặc native Internet.')
     if art is not None:
@@ -177,15 +179,18 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
-                languages=list(languages), packs=len(packs), guides=guides)
+                languages=list(languages), packs=len(packs), guides=guides, guide_screenshot=screenshot_pin)
 
 
 def windows_runtime(recipe, output, manifest_sha256):
     """Stage only pinned first-party programs, public certificates and launch settings."""
-    required = {'launcher', 'companion', 'certificate', 'prelogin_certificate',
-                'server', 'prelogin_server', 'ports'}
-    if not required <= recipe.keys() <= required | {'server_name', 'release_url'}:
+    required = {'launcher', 'companion', 'ports'}
+    online = {'certificate', 'prelogin_certificate', 'server', 'prelogin_server'}
+    optional = {'server_name', 'release_url', 'friends', 'friends_directory'}
+    if not required <= recipe.keys() <= required | optional | online or (recipe.keys() & online not in (set(), online)):
         raise ValueError('Recipe Windows có trường thiếu hoặc không hỗ trợ')
+    if not online <= recipe.keys() and 'friends' not in recipe:
+        raise ValueError('Cần gói O1 hoặc cấu hình máy chủ')
     release_url = recipe.get('release_url', '')
     if not isinstance(release_url, str):
         raise ValueError('Link phát hành phải là chuỗi')
@@ -199,7 +204,7 @@ def windows_runtime(recipe, output, manifest_sha256):
         raise ValueError('Tên máy chủ không hợp lệ')
     if digest(output / 'manifest.json') != manifest_sha256:
         raise ValueError('Manifest game không khớp pin')
-    for key in ('server', 'prelogin_server'):
+    for key in ('server', 'prelogin_server') if online <= recipe.keys() else ():
         host, port = recipe[key].rsplit(':', 1)
         ip = ipaddress.IPv4Address(host)
         if ip.is_unspecified or ip.is_multicast or int(ip) == 0xffffffff or not 1 <= int(port) <= 65535:
@@ -223,10 +228,13 @@ def windows_runtime(recipe, output, manifest_sha256):
     files = {
         'kr-player.exe': checked_pin(recipe['launcher']),
         'kr-prelogin.exe': checked_pin(recipe['companion']),
-        'account.der': checked_pin(recipe['certificate']),
-        'prelogin.der': checked_pin(recipe['prelogin_certificate']),
         'Tao-loi-tat.ps1': ROOT / 'tools/player_shortcut.ps1',
     }
+    if online <= recipe.keys():
+        files.update({'account.der': checked_pin(recipe['certificate']),
+                      'prelogin.der': checked_pin(recipe['prelogin_certificate'])})
+    if 'friends' in recipe:
+        files['Cai-dat-Windows.ps1'] = ROOT / 'tools/player_windows_setup.ps1'
     for name, source in files.items():
         if name.endswith('.exe'):
             windows_exe(source)
@@ -235,10 +243,51 @@ def windows_runtime(recipe, output, manifest_sha256):
     for name, source in files.items():
         with source.open('rb') as src, (output / name).open('xb') as dst:
             shutil.copyfileobj(src, dst)
-    config = dict(server=recipe['server'], prelogin_server=recipe['prelogin_server'],
-                  ports=ports, certificate='account.der', prelogin_certificate='prelogin.der',
-                  companion='kr-prelogin.exe', bundle='.', manifest_sha256=manifest_sha256,
+    config = dict(ports=ports, companion='kr-prelogin.exe', bundle='.', manifest_sha256=manifest_sha256,
                   installation='game', state='state', udp_backend='portable')
+    if online <= recipe.keys():
+        config.update(server=recipe['server'], prelogin_server=recipe['prelogin_server'],
+                      certificate='account.der', prelogin_certificate='prelogin.der')
+    friends_files = {}
+    if 'friends' in recipe:
+        spec = recipe['friends']
+        if set(spec) != {'package', 'manifest_sha256', 'python_files'}:
+            raise ValueError('Recipe O1 yêu cầu gói server và Python embeddable đã pin')
+        from rust_package_runtime import friends_pack, verify
+        from kr_pack_export import PACK_SHA256
+        friends_pack(output, manifest_sha256, PACK_SHA256)
+        package = Path(spec['package']).resolve()
+        manifest = verify(package, spec['manifest_sha256'])
+        if manifest['target'] != 'x86_64-pc-windows-gnu' or manifest.get('pack_scope') not in ('g1', 'f1'):
+            raise ValueError('Cần gói server Windows xuất dữ liệu từ pack')
+        template = json.loads((package / 'config.template.json').read_bytes())
+        two = template['diagnostic_two_lobby']
+        expected_ports = set(range(3808, 4000, 10))
+        if (set(ports) != expected_ports or set(template['ports']) != expected_ports
+                or set(two['wcp_ports']) != expected_ports
+                or not expected_ports <= set(two['login_candidate_ports'])
+                or (two['login_port'], two['channel_port']) != (3838, 3858)):
+            raise ValueError('O1 yêu cầu profile cổng đã đo với client KR 00967, không dùng profile kr-load')
+        runtime = {f"friends-server/{row['path']}": package / row['path'] for row in manifest['files']}
+        runtime['friends-server/manifest.json'] = package / 'manifest.json'
+        for name, row in spec['python_files'].items():
+            if not re.fullmatch(r'[a-zA-Z0-9_.-]+', name) or name in ('.', '..'):
+                raise ValueError('Tên file Python embeddable không hợp lệ')
+            runtime[f'friends-python/{name}'] = checked_pin(row)
+        windows_exe(runtime['friends-python/python.exe'])
+        for name, source in runtime.items():
+            destination = output / name
+            destination.parent.mkdir(exist_ok=True, parents=True)
+            with source.open('rb') as src, destination.open('xb') as dst:
+                shutil.copyfileobj(src, dst)
+            friends_files[name] = digest(destination)
+        config['friends'] = dict(package='friends-server', manifest_sha256=spec['manifest_sha256'],
+                                 python='friends-python/python.exe')
+        directory = recipe.get('friends_directory', ['wss://relay.damus.io', 'wss://nostr.mom'])
+        if (not isinstance(directory, list) or len(directory) > 4
+                or any(not isinstance(url, str) or not re.fullmatch(r'wss://[a-zA-Z0-9./:-]{1,250}', url) for url in directory)):
+            raise ValueError('Danh sách relay tra cứu O1 không hợp lệ')
+        config['friends_directory'] = directory
     if server_name.strip():
         config['server_name'] = server_name.strip()
     if release_url:
@@ -249,11 +298,15 @@ def windows_runtime(recipe, output, manifest_sha256):
     (output / 'MO-GAME.txt').write_text(
         'Giải nén vào thư mục có quyền ghi trên ổ NTFS. Mở kr-player.exe.\n'
         'Có thể chạy Tao-loi-tat.ps1 sau khi giải nén để tạo lối tắt Boom Play.\n'
-        'Chọn ngôn ngữ, chọn một máy chủ, bấm CHƠI, rồi đăng nhập hoặc chơi thử trong game.\n'
+        + ('Chạy Cai-dat-Windows.ps1 để thêm quy tắc LAN nếu có quyền quản trị.\n'
+           'Mở Chơi với bạn bè, nhập tên, tạo hoặc vào phòng theo Hướng dẫn.\n'
+           if 'friends' in recipe else
+           'Chọn ngôn ngữ, chọn một máy chủ, bấm CHƠI, rồi đăng nhập hoặc chơi thử trong game.\n')
+        +
         'Đừng mở CA.exe trực tiếp: game cần đường TLS do launcher mở.\n',
         encoding='utf-8-sig',
     )
-    return {
+    return friends_files | {
         name: digest(output / name)
         for name in (*files, 'launcher.json', 'MO-GAME.txt')
     }

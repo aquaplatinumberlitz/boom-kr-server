@@ -218,7 +218,7 @@ def cache_identity(pins, maps, measured):
     return sha(encode(dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)))
 
 
-def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True):
+def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, pack_files=None):
     """Các tham số pins/maps khác chỉ được dùng qua API trong kiểm thử."""
     game = game.resolve(strict=True)
     if cache.is_symlink():
@@ -231,7 +231,7 @@ def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True):
     with ExitStack() as stack:
         files = {}
         for name, digest in pins.items():
-            path = game / name
+            path = game / name if pack_files is None else pack_files[name]
             if not path.is_file() or path.is_symlink():
                 raise ValueError(f'Thiếu pack KR 00967: {name}')
             stream = stack.enter_context(path.open('rb'))

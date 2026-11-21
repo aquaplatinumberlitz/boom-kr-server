@@ -1044,6 +1044,7 @@ fn resources(client: Client) -> Arc<Resources> {
         persist_character: false,
         authenticated: None,
         config: Config {
+            friends_guest_only: false,
             bind: "127.0.0.1:50000".parse().unwrap(),
             certificate: FixturePin {
                 path: PathBuf::new(),

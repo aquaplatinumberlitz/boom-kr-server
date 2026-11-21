@@ -6,6 +6,8 @@ rust-version.workspace = true
 publish.workspace = true
 
 [dependencies]
+kr-p2p = { path = "../kr-p2p" }
+kr-wire = { path = "../kr-wire" }
 tokio.workspace = true
 quinn.workspace = true
 rustls.workspace = true

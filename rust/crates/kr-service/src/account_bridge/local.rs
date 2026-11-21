@@ -92,6 +92,7 @@ impl Drop for Cancel {
 pub struct LocalSession {
     client: Client,
     shared: Shared,
+    guest_name: Option<String>,
 }
 
 #[derive(Clone)]
@@ -293,6 +294,7 @@ impl LocalSession {
         let (stopped, _) = watch::channel(false);
         Ok(Self {
             client,
+            guest_name: None,
             shared: Arc::new(Mutex::new(State {
                 generation: super::fresh_generation()?,
                 phase: Phase::Empty,
@@ -305,6 +307,11 @@ impl LocalSession {
                 end_reason: None,
             })),
         })
+    }
+
+    pub(crate) fn with_guest_name(mut self, name: Option<String>) -> Self {
+        self.guest_name = name;
+        self
     }
 
     /// The native trial button supplies only a local roster count. The DB
@@ -327,9 +334,12 @@ impl LocalSession {
             state.phase = Phase::CheckingLogin;
         }
         let mut cancel = Cancel(self.shared.clone(), true);
-        let received = self
-            .client
-            .try_trial_local_current(count, ttl, idle)
+        let pending = match &self.guest_name {
+            Some(name) if count == 1 => self.client.try_named_guest(name.clone(), ttl, idle),
+            Some(_) => return Err(Error::Denied),
+            None => self.client.try_trial_local_current(count, ttl, idle),
+        };
+        let received = pending
             .map_err(Error::Backend)?
             .receive()
             .await
@@ -347,6 +357,9 @@ impl LocalSession {
         ttl: i64,
         idle: Option<i64>,
     ) -> Result<Vec<(Player, u32)>> {
+        if self.guest_name.is_some() {
+            return Err(Error::Denied);
+        }
         let request = ingame_wire::parse(1, body)?;
         let ingame_wire::Players::Accounts(credentials) = request.players else {
             return Err(Error::UnsupportedWire);

@@ -7,7 +7,7 @@ from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
 
 
-def configure(config, bundle, cache, out, maps, scope):
+def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
     two = config['diagnostic_two_lobby']
     room = two['fixed_room']
     packets = room['packets']
@@ -130,6 +130,8 @@ def configure(config, bundle, cache, out, maps, scope):
     # Only pass the measured character fields, keyed exactly as in the serving recipe.
     chars = json.loads((cache / 'tables.json').read_bytes())['characters']
     round_config = two['managed_rooms']['player_round']
+    if unlock_all:
+        round_config['characters'] = sorted(map(int, chars))
     round_config['pack_stats'] = {str(key): chars[str(key)] for key in round_config['characters']}
     if scope == 'f1':
         two['managed_rooms']['capacity'] = 2

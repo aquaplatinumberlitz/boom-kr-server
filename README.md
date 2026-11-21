@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP388: Server Windows đọc pack KR 00967 dưới Wine, hoàn tất một ván loopback với hai client kr-load, kiểm backup và dừng sạch.** [Bằng chứng](docs/evidence/checkpoints/records/CP388.json).
+**CP390: Launcher có luồng tạo/vào phòng O1 bằng tên khách, phát hiện LAN và ghép phiên bản gói.** [Bằng chứng](docs/evidence/checkpoints/records/CP390.json).
 
 ## Bắt đầu
 

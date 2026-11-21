@@ -1,10 +1,14 @@
 //! Experimental O1/S1 transport. Discovery and the native companion are separate.
 
 mod code;
+pub mod directory;
+pub mod room;
 
 pub use code::{CodeError, Invite, VERSION};
 use iroh::endpoint::{Builder, presets};
-pub use iroh::{Endpoint, EndpointAddr, EndpointId, RelayMode, SecretKey, endpoint::Connection};
+pub use iroh::{
+    Endpoint, EndpointAddr, EndpointId, RelayMode, RelayUrl, SecretKey, endpoint::Connection,
+};
 use std::{io, net::SocketAddr};
 use tokio::net::UdpSocket;
 

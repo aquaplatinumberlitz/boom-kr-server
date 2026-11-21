@@ -52,12 +52,23 @@ pub async fn run(
     mut link: Link,
     native_ip: IpAddr,
     port_budget: usize,
+    stop: watch::Receiver<bool>,
+) -> io::Result<()> {
+    let (send, recv) = link.take_control()?;
+    run_parts(send, recv, link.data(), native_ip, port_budget, stop).await
+}
+
+pub(crate) async fn run_parts(
+    mut send: impl tokio::io::AsyncWrite + Unpin,
+    mut recv: impl tokio::io::AsyncRead + Unpin + Send + 'static,
+    data: crate::Data,
+    native_ip: IpAddr,
+    port_budget: usize,
     mut stop: watch::Receiver<bool>,
 ) -> io::Result<()> {
     if !(26..=32768).contains(&port_budget) {
         return Err(io::Error::other("companion local port budget"));
     }
-    let (mut send, mut recv) = link.take_control()?;
     let (commands, mut incoming) = mpsc::channel(4);
     let mut reader_stop = stop.clone();
     let reader = tokio::spawn(async move {
@@ -96,7 +107,7 @@ pub async fn run(
                     let rows:Vec<_>=routes.iter().map(|route|crate::proxy::Binding {route:route.route,address:SocketAddr::V4(SocketAddrV4::new(Ipv4Addr::LOCALHOST,0))}).collect();
                     let proxy=Proxy::bind(&rows,native_ip).await?;let bindings=proxy.bindings()?;
                     let quarantine=proxy.quarantine();used+=quarantine.len();retired.push(quarantine);scopes.insert(scope);
-                    let (halt,recv)=watch::channel(false);let data=link.data();let task=tokio::spawn(proxy.run_data(data,recv));active=Some(Active {scope,stop:halt,task});
+                    let (halt,recv)=watch::channel(false);let data=data.clone();let task=tokio::spawn(proxy.run_data(data,recv));active=Some(Active {scope,stop:halt,task});
                     let bindings=bindings.into_iter().map(|binding|match binding.address {SocketAddr::V4(address)=>Ok(Binding {route:binding.route,address}),_=>Err(io::Error::other("companion requires IPv4"))}).collect::<io::Result<Vec<_>>>()?;
                     tokio::time::timeout(Duration::from_secs(2),control::write(&mut send,&control::Client::Ready {scope,bindings})).await.map_err(|_|io::Error::other("companion readiness write deadline"))??;
                 }
@@ -112,7 +123,6 @@ pub async fn run(
     } else {
         Ok(())
     };
-    link.close();
     drop(retired);
     result.and(stopped)
 }
