@@ -51,7 +51,7 @@ def pcap_records(raw):
         yield (sec * SECOND + usec * 1_000), source, destination, length - 8
 
 
-def summarize(raw, decoded, clock):
+def summarize(raw, decoded, clock, *, replay=None):
     # The sidecar provides the monotonic clock and Linux capture direction.
     # A timestamp match for every row prevents accidental cross-run joins.
     observed = []
@@ -79,6 +79,9 @@ def summarize(raw, decoded, clock):
             while stamp - sent[left][0] >= SECOND:
                 left += 1
             peak = max(peak, right - left + 1)
+        if replay is not None:
+            replay.append(dict(duration_ns=stop - start,
+                               packets=[[stamp - start, size] for stamp, _, size in sent]))
         rounds.append(dict(round=number, duration_seconds=round(duration, 3), sent=len(sent),
                            packets_per_second=round(len(sent) / duration, 3),
                            peak_rolling_1s_packets=peak,
@@ -89,7 +92,7 @@ def summarize(raw, decoded, clock):
     return rounds
 
 
-def measure(archive):
+def measure(archive, *, replay=None):
     checkpoint = json.loads((ROOT / "docs/evidence/checkpoints/records/CP287.json").read_bytes())
     pointer, = (row for row in checkpoint["evidence_runs"] if row["run"] == RUN)
     header, *rows = pinned(archive, pointer).splitlines()
@@ -105,7 +108,8 @@ def measure(archive):
     for name in ACTORS:
         stem = f"{RUN}/native/cycles/loopback-{name}"
         clients[name] = summarize(read(stem + ".pcap"), json.loads(read(stem + ".json")),
-                                  verification["native"][name])
+                                  verification["native"][name],
+                                  replay=None if replay is None else replay.setdefault(name, []))
     windows = [r for rounds in clients.values() for r in rounds]
     rates = [r["packets_per_second"] for r in windows]
     return dict(schema="kr-m8-native-udp-profile-v1", source="kr_runtime", status="candidate", checkpoint="CP287",
@@ -121,11 +125,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--archive", type=Path, required=True, help="Repository root containing the archived local tree")
     parser.add_argument("--out", type=Path, required=True, help="New receipt under this checkout's local directory")
+    parser.add_argument("--replay", action="store_true",
+                        help="Export only timing and length for each native round (no payload or endpoints)")
     args = parser.parse_args()
     out = args.out.resolve()
-    if not out.is_relative_to(ROOT / "local"):
+    if not out.is_relative_to((ROOT / "local").resolve()):
         parser.error("--out must be inside this checkout's local directory")
-    result = measure(args.archive.resolve(strict=True))
+    replay = {} if args.replay else None
+    result = measure(args.archive.resolve(strict=True), replay=replay)
+    if replay is not None:
+        result = dict(schema="kr-m8-replay-v1", checkpoint="CP287",
+                      windows=[window for name in ACTORS for window in replay[name]])
     with out.open("x", encoding="utf-8") as file:
         json.dump(result, file, indent=2)
         file.write("\n")
