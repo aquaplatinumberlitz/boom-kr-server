@@ -12,6 +12,7 @@ relay=https://198.18.0.1:8443
 wait_for() {
     for ((attempt=0; attempt<$1; attempt++)); do
         if [[ $role == guest && -e $out/host-failed ]]; then return 1; fi
+        if [[ $role == host && -e $out/stop && ! -e $out/rotate-done ]]; then return 1; fi
         "${@:2}" && return
         sleep .2
     done

@@ -99,9 +99,24 @@ impl Monitor {
             crate::emit(&log, crate::stamp(self.start, event)).await?;
             let tmp = self.out.join("health.json.tmp");
             tokio::fs::write(&tmp, serde_json::to_vec(&snapshot)?).await?;
-            tokio::fs::rename(tmp, self.out.join("health.json")).await?;
+            replace_health(&tmp, &self.out.join("health.json")).await?;
         }
     }
+}
+
+async fn replace_health(source: &Path, destination: &Path) -> io::Result<()> {
+    // Windows can deny replacement while a monitor or another reader holds
+    // the current sample open. A short bounded retry preserves atomicity.
+    #[cfg(windows)]
+    for delay in [5, 10, 20, 40, 80] {
+        match tokio::fs::rename(source, destination).await {
+            Err(error) if matches!(error.raw_os_error(), Some(5 | 32)) => {
+                tokio::time::sleep(Duration::from_millis(delay)).await;
+            }
+            result => return result,
+        }
+    }
+    tokio::fs::rename(source, destination).await
 }
 
 /// Local probe for supervisors: both process readiness and a fresh, healthy
