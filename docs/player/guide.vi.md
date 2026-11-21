@@ -76,6 +76,8 @@ Máy chủ S1 lưu tài khoản và kết quả trên máy bạn. Máy bạn c�
 
 Khi Windows hỏi quyền cho kết nối trực tiếp, bạn có thể cho phép trên mạng **Riêng tư**. Nếu từ chối hoặc router không mở được cổng, BoomServer vẫn thử kết nối qua relay. Nếu người chơi chưa vào được ngay, chờ dòng trạng thái báo kết nối relay rồi thử lại.
 
+![Cửa sổ BoomServer khi hai người đang chơi; mã mời đã được rút gọn](images/boomserver-s1.png)
+
 **Linux**
 
 1. Giải nén gói server Linux. Với Docker Compose, mở terminal trong thư mục vừa giải nén, dùng đường dẫn tuyệt đối tới thư mục game mà container có thể đọc, rồi chạy:

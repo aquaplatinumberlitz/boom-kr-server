@@ -8,6 +8,8 @@
 !deploy/**
 !server
 !server/**
+!player
+!player/**
 !*.py
 !config.template.json
 !manifest.json

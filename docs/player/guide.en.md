@@ -76,6 +76,8 @@ An S1 server stores accounts and match results on your computer. Keep it running
 
 If Windows asks to allow direct connections, you can allow them on **Private networks**. BoomServer will still try the relay if you decline or your router cannot open a port. If players cannot join immediately, wait for the relay connection and try again.
 
+![BoomServer with two players online; the invite code is shortened](images/boomserver-s1.png)
+
 **Linux**
 
 1. Extract the Linux server package. For Docker Compose, open a terminal in the extracted directory. Use an absolute path to a game folder the container can read:

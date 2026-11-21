@@ -179,6 +179,9 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None,
             for name in DEPLOY_FILES:
                 save(ROOT / 'server' / 'self-host' / name, 'deploy/' + name,
                      mode=0o500 if name == 'install.sh' else 0o400)
+        (out / 'player' / 'images').mkdir(mode=0o700, parents=True)
+        for name in ('guide.vi.md', 'guide.en.md', 'guide.ko.md', 'images/boomserver-s1.png'):
+            save(ROOT / 'docs' / 'player' / name, 'player/' + name)
         manifest.update(self_host=True, files=[rows[key] for key in sorted(rows)])
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

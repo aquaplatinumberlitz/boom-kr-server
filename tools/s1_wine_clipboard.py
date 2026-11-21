@@ -29,7 +29,18 @@ def copied():
         user.CloseClipboard()
 
 
+def close_window():
+    user = ctypes.WinDLL('user32', use_last_error=True)
+    user.FindWindowW.argtypes = [wintypes.LPCWSTR, wintypes.LPCWSTR]
+    user.FindWindowW.restype = wintypes.HWND
+    user.PostMessageW.argtypes = [wintypes.HWND, wintypes.UINT, wintypes.WPARAM, wintypes.LPARAM]
+    window = user.FindWindowW('BoomServerS1', None)
+    return not window or bool(user.PostMessageW(window, 0x0010, 0, 0))  # WM_CLOSE
+
+
 if __name__ == '__main__':
+    if sys.argv[1:] == ['close']:
+        sys.exit(0 if close_window() else 1)
     code = copied()
     if not code.startswith('S1-1-') or len(code) != 91:
         sys.exit('The Copy button did not put an S1 code on the clipboard')

@@ -213,7 +213,7 @@ impl RoomContext {
                 sleep(Duration::from_millis(self.config.ramp_ms)).await;
             }
             let bridge = match &self.s1 {
-                Some(dial) => Some(dial.connect().await?),
+                Some(dial) => Some(dial.connect().await.map_err(|e| phase("S1 invite", e))?),
                 None => None,
             };
             players.push(
@@ -225,7 +225,8 @@ impl RoomContext {
                     cancel.clone(),
                     bridge,
                 )
-                .await?,
+                .await
+                .map_err(|e| phase("player login", e))?,
             );
         }
         let room = players[0].create(&format!("Load{:02}", self.index)).await?;
@@ -436,7 +437,12 @@ async fn drive(config: Config, replay: Replay) -> io::Result<()> {
     let delivery_failed = Arc::new(AtomicBool::new(false));
     let (s1, certificate) = if let Some(config) = &config.s1 {
         let dial = S1Dial::new(config).await?;
-        let certificate = dial.connect().await?.certificate.clone();
+        let certificate = dial
+            .connect()
+            .await
+            .map_err(|e| phase("S1 TLS pin", e))?
+            .certificate
+            .clone();
         (Some(Arc::new(dial)), certificate)
     } else {
         let path = config.certificate.as_ref().expect("validated");
