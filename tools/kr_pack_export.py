@@ -151,10 +151,28 @@ def f1_simple_rules(profile, table):
     if profile['rectangles']:
         raise ValueError(f"Vùng chữ nhật ngoài adapter đơn: {profile['name']}")
     kinds, _, unknown = classify_rules(profile['cells'], table)
-    if unknown:
-        raise ValueError(f"Ô ngoài adapter đơn của {profile['name']}: {', '.join(sorted(unknown)[:3])}")
     width, height = profile['width'], profile['height']
     names, tiles = table
+    # One measured multi-cell object is reusable only by exact KR descriptor.
+    # It is a candidate adapter, not a generic footprint inference.
+    special = "Tile04_Ground/TileA01 | Tile04_Static/MastTileA"
+    for index, cell in enumerate(profile['cells']):
+        label = " | ".join(names[code] if code >= 0 else "-" for code in cell)
+        if label != special:
+            continue
+        row, col = divmod(index, width)
+        obj = tiles[names[cell[1]]]
+        obj_width, obj_height = obj[6:8]
+        if (obj_width, obj_height) != (3, 1):
+            raise ValueError(f"Footprint MastTileA chưa đo của {profile['name']}")
+        for r in range(max(0, row - obj_height + 1), row + 1):
+            for c in range(col, min(width, col + obj_width)):
+                if kinds[r * width + c] not in (None, 0):
+                    raise ValueError(f"Footprint chồng ô của {profile['name']}")
+                kinds[r * width + c] = 1
+        unknown.pop(label, None)
+    if unknown:
+        raise ValueError(f"Ô ngoài adapter đơn của {profile['name']}: {', '.join(sorted(unknown)[:3])}")
     for ground, obj, *_ in profile['cells']:
         base = tiles[names[ground]]
         high15 = struct.unpack('<h', struct.pack('<i', base[15])[2:])[0]
@@ -162,6 +180,9 @@ def f1_simple_rules(profile, table):
             raise ValueError(f"Nền có cờ riêng: {profile['name']}")
         if obj >= 0:
             tile = tiles[names[obj]]
+            label = f"{names[ground]} | {names[obj]}"
+            if label == special:
+                continue
             if tile[12] != 0 or (tile[0] in (0, 2) and any(tile[11:15])):
                 raise ValueError(f"Vật thể có cờ riêng: {profile['name']}")
     if any(kinds[y * width + x] != 0 for x, y in profile['spawns']):

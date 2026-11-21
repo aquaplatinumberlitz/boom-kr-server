@@ -58,7 +58,7 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
    L1 đã nghiệm thu trên cùng gói launcher với M8, theo [phạm vi nghiệm thu](evidence/owner-directives/l1-phase1.json).
    Tiệm, chữ do server gửi và IME Hàn thật để sau giai đoạn 1. Runtime Wine dùng lease chung.
 
-2. **[F1-a](#f1-normal-battle).** Adapter thử đã qua kr-load trên 45 map; [CaJJ_Clover](content/classification.md#họ-map) đạt lớp A cho hai client. Tiếp KRE-F1-A (#559) với họ B còn thiếu ô, item hoặc route native. Nghiệm thu giai đoạn 1 vẫn theo [mục riêng](#phase1-acceptance).
+2. **[F1-a](#f1-normal-battle).** Adapter thử đã qua kr-load trên 45 map; [CaJJ_Clover](content/classification.md#họ-map) đạt lớp A cho hai client. Tiếp KRE-F1-A (#559) với họ B còn thiếu ô, item hoặc route native; ưu tiên Patrit22 theo descriptor MastTileA đã đối chiếu. Nghiệm thu giai đoạn 1 vẫn theo [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
 
