@@ -102,20 +102,14 @@ cat "$RUN_DIR/health.json"
 For load monitoring, measure relay latency and loss at the sender and receiver; `submitted_to_quic` is a handoff count. See the [offline UDP profiler](../tools/m8_udp_profile.py) for workload inputs.
 
 <a id="m8-soak-collector"></a>
-## Thu số đo server khi chạy dài
+## Collect load and soak metrics
 
-Bắt đầu [công cụ thu số đo](../tools/m8_soak_collect.py) trên cùng máy Linux, sau khi service ready, với quyền đọc
-`/proc` của tiến trình và thư mục run. Dùng file đầu ra mới trong thư mục riêng. Đồng bộ lịch phát của driver:
-trong ví dụ dưới, bắt đầu phát ở giây 60, ngừng sau 24 giờ và giữ server thêm 60 giây để đo phục hồi.
+Run the [collector](../tools/m8_soak_collect.py) on the same Linux host after readiness, with access to the service's `/proc` entry and run directory. Use a new private output file. Align the driver with the sample windows: start load after 60 seconds, sustain it for 12 hours, then stop the driver and leave the service up for 60 seconds of recovery.
 
-    python3 tools/m8_soak_collect.py --run "$RUN_DIRECTORY" --out "$PRIVATE_LOG/new-soak.jsonl" \
-      --interval 5 --baseline 60 --load 86400 --recovery 60
+    python3 tools/m8_soak_collect.py --run "$RUN_DIR" --out "$PRIVATE_LOG/new-soak.jsonl" \
+      --interval 5 --baseline 60 --load 43200 --recovery 60
 
-File JSONL ghi CPU tính theo một lõi, RSS, FD, số phòng/ván, listener, companion, route và lỗi dò DB theo từng
-giai đoạn. So đường tăng RSS/FD và mức nền sau tải; khi kết thúc, phòng và route phải quay lại mức nền.
-Kiểm file có dòng `finished` và đủ mẫu cả ba giai đoạn. Mẫu quá cũ, server dừng, đổi tiến trình hoặc bỏ một kỳ
-lấy mẫu sẽ làm lần thu thất bại. Dòng `finished` chỉ xác nhận thu được dữ liệu; cần so với ngưỡng đã chốt và log
-driver. Công cụ không phát traffic, không đo độ trễ hay mất gói đầu cuối.
+Check the `finished` row and samples from all three phases. Compare CPU per core, RSS, FD, rooms, companions, routes and DB errors against the planned limits and driver logs. The collector does not generate traffic or measure end-to-end delivery.
 
 <a id="server-admin-backup-rollback"></a>
 ## Accounts, rooms, and audit
