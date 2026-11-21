@@ -726,8 +726,7 @@ thời gian. F1–F6 chưa mở; bước 0 được phép làm song song với p
 **Thứ tự ([quyết định 20/11 và bổ sung 21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển client theo trạng thái server.
 Làm tĩnh trước; chỉ thử nhanh đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt theo chỉ đạo 21/11.
-Sau bàn giao giai đoạn 1 và bước 0: F1 → F4 → F2 → F5 → F3 → F6. Màn trình duyệt nhúng (Dwarf/libcef) làm
-bằng web phía server; bỏ phần riêng Nexon.
+Sau giai đoạn 1 và bước 0: F1 → F4 → F2 → F5 → F3 → F6. Dựng web ở server cho Dwarf/libcef; bỏ phần riêng Nexon.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
@@ -756,9 +755,8 @@ Cách vào mỗi đợt, giống nhau cho mọi đợt:
 4. **Nghiệm thu theo nhóm bằng client thật**, mỗi nhóm một checkpoint; tính năng chưa hỗ trợ phải tắt rõ ràng, không ACK giả.
 
 Phép thử Village10 đã xác nhận mã 1104 lookup đúng tên map trong build đang đo, đồng thời bác bỏ việc chỉ đổi mã
-đang chọn là đủ với profile cũ. [Contract và giới hạn](protocol/load-phase.md#village10-map-selection) giữ phép
-đo ban đầu; các route G1 về sau có ở [ma trận nghiệm thu](evidence/rust-service/g1-acceptance-matrix.json).
-Kết quả theo route chỉ định hướng xếp loại họ, không mở F1.
+đang chọn là đủ với profile cũ. Xem [phép đo ban đầu](protocol/load-phase.md#village10-map-selection) và
+[route G1](evidence/rust-service/g1-acceptance-matrix.json). Kết quả theo route không mở đợt F1.
 
 <a id="issue-order"></a>
 ### Issue hiện hành và backlog theo nguồn chuẩn
