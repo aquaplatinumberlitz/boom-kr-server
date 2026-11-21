@@ -15,6 +15,7 @@ tokio.workspace = true
 kr-tunnel = { path = "../kr-tunnel" }
 iced = { version = "=0.14.0", default-features = false, features = ["tiny-skia", "x11", "tokio", "canvas", "image-without-codecs", "advanced-shaping"] }
 image = { version = "0.25", default-features = false, features = ["jpeg"] }
+same-file = "=1.0.6"
 
 [target.'cfg(windows)'.dependencies]
 windows-sys = { version = "=0.61.2", features = ["Win32_Foundation", "Win32_System_Threading", "Win32_UI_Shell", "Win32_UI_WindowsAndMessaging", "Win32_System_Registry"] }
