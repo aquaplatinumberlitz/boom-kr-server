@@ -5,11 +5,10 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 <a id="dashboard"></a>
 ## Bảng điều hành
 
-**Mỗi phiên chỉ cần đọc mục này.** Phần còn lại của file là tham chiếu (đích, milestone Rust, acceptance), tra theo anchor
-khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
+**Mỗi phiên chỉ cần đọc mục này.** Tra các mục khác theo anchor; gate K0–K7 và RE cũ ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP388.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP389.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
 tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [Lộ trình F1–F6](#full-game-roadmap) chưa mở.
@@ -27,6 +26,7 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách, Codex thực thi | **Đạt phạm vi giai đoạn 1**. [L1a chọn 949x](content/client-language.md#utf8); Rust lưu tên account UTF-8 và chuyển chat sảnh/phòng. [CP370](evidence/checkpoints/records/CP370.json) xác nhận hai bản vi/ko cùng phòng có dấu, chat có dấu hai chiều và chơi một ván tới kết quả. [Sáu ảnh đăng nhập vi đã duyệt và ghép](evidence/checkpoints/records/CP367.json). | Ảnh bổ sung và nghiệm thu en hoãn. Start ván hai theo dõi riêng ở #502. |
 | M8 vận hành | CI đã có; [Gói Linux](OPERATIONS.md#gói-linux-và-state-riêng) đọc pack tại máy cài và kiểm được ván TLS tổng hợp, backup, dừng sạch | Launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 12 giờ chạy dài |
+| [O1 / S1](#full-game-roadmap) | [Prototype lõi P2P](O1_S1_P2P.md) đi trực tiếp hoặc qua relay với hai NAT giả lập | Sau M8, nối discovery và companion; nghiệm thu một ván trên hai máy thật qua LAN và Internet. Launcher chưa mở O1/S1. |
 
 **Thứ tự việc:**
 
