@@ -11,7 +11,10 @@ use std::{
     fs, io,
     net::SocketAddrV4,
     path::{Path, PathBuf},
-    sync::Arc,
+    sync::{
+        Arc,
+        atomic::{AtomicBool, Ordering},
+    },
     time::Duration,
 };
 use tokio::{
@@ -107,6 +110,7 @@ struct RoomContext {
     offset: usize,
     start: Instant,
     first: Arc<Barrier>,
+    delivery_failed: Arc<AtomicBool>,
 }
 
 impl RoomContext {
@@ -185,6 +189,9 @@ impl RoomContext {
             }
         }
         for _ in 0..8 {
+            if block != 0 && self.delivery_failed.load(Ordering::Relaxed) {
+                break;
+            }
             for p in &mut players[1..] {
                 p.ready().await?;
             }
@@ -227,6 +234,9 @@ impl RoomContext {
                 json!({"event":"delivery","room":self.index,"round":*completed+1,
                         "at_unix_ms":unix_ms(),"passed":passed,"delivery":d}),
             );
+            if !passed {
+                self.delivery_failed.store(true, Ordering::Relaxed);
+            }
             for (slot, p) in players.iter_mut().enumerate() {
                 p.die(slot, *completed + 1).await?;
             }
@@ -238,10 +248,7 @@ impl RoomContext {
             }
             *completed += 1;
             emit(json!({"event":"round_returned","room":self.index,"round":*completed}));
-            if !passed {
-                return Err(failure("delivery gate failed"));
-            }
-            if self.done(*completed, *began) {
+            if self.delivery_failed.load(Ordering::Relaxed) || self.done(*completed, *began) {
                 break;
             }
         }
@@ -287,7 +294,7 @@ impl RoomContext {
             emit(
                 json!({"event":"room_closed","room":self.index,"rounds":completed,"session_block":block}),
             );
-            if self.done(completed, began) {
+            if self.delivery_failed.load(Ordering::Relaxed) || self.done(completed, began) {
                 return Ok(());
             }
             block += 1;
@@ -315,6 +322,7 @@ async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Resu
     replay.validate()?;
     let start = Instant::now();
     let first = Arc::new(Barrier::new(config.rooms.len()));
+    let delivery_failed = Arc::new(AtomicBool::new(false));
     let endpoint = prelogin_endpoint(certificate)?;
     let config = Arc::new(config);
     let replay = Arc::new(replay);
@@ -329,6 +337,7 @@ async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Resu
             offset,
             start,
             first: first.clone(),
+            delivery_failed: delivery_failed.clone(),
         };
         jobs.spawn(async move {
             context
@@ -342,6 +351,9 @@ async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Resu
         result.map_err(io::Error::other)??;
     }
     endpoint.wait_idle().await;
+    if delivery_failed.load(Ordering::Relaxed) {
+        return Err(failure("delivery gate failed after room cleanup"));
+    }
     emit(json!({"event":"load_complete","at_unix_ms":unix_ms(),
                 "players":offset,"rooms":config.rooms.len()}));
     Ok(())
