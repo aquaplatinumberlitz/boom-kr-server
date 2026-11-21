@@ -1,9 +1,11 @@
 //! Scoped KR00967 character data. Source: BomberAttr keys0/1, cross-checked
 //! against native six-stat wrappers in CP282 and m7e-start-stat-probe-r2.
 //! These are client levels, never physical movement units or item authority.
+use serde::Deserialize;
 use std::{collections::BTreeMap, io};
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq)]
+#[serde(deny_unknown_fields)]
 pub(crate) struct Stats {
     pub capacity: usize,
     pub maximum_capacity: usize,
@@ -72,6 +74,14 @@ impl Catalog {
             if rows.insert(key, stats).is_some() {
                 return Err(io::Error::other("duplicate character profile"));
             }
+        }
+        Ok(Self(rows))
+    }
+    pub(crate) fn from_pack(keys: &[u16], rows: BTreeMap<u16, Stats>) -> io::Result<Self> {
+        if rows != Self::measured(keys)?.0 {
+            return Err(io::Error::other(
+                "pack character stats differ from measured KR00967 levels",
+            ));
         }
         Ok(Self(rows))
     }

@@ -1,7 +1,7 @@
 //! Owner-selected G1 drop data, not a reconstruction of original RNG rules.
 //! Keep every source row (including duplicates), with excluded weights zeroed.
 use serde::Deserialize;
-use std::io;
+use std::{collections::BTreeMap, io};
 
 #[derive(Deserialize)]
 struct Scope {
@@ -17,6 +17,44 @@ struct Row {
     name: String,
     source_weight: u32,
     weight: u32,
+}
+
+const G1_MAPS: [&str; 6] = [
+    "Forest07",
+    "Patrit14",
+    "Village10",
+    "Camp08",
+    "Tomb12",
+    "Factory07",
+];
+
+pub(crate) fn apply_pack(
+    map: &str,
+    drops: &mut [(String, u32)],
+    items: &BTreeMap<String, u32>,
+) -> io::Result<()> {
+    let expected = BTreeMap::from([
+        ("Item/ItemBomb".to_owned(), 0),
+        ("Item/ItemFire".to_owned(), 1),
+        ("Item/ItemRoller".to_owned(), 2),
+        ("Item/ItemShoe".to_owned(), 3),
+        ("Item/ItemPunch".to_owned(), 4),
+        ("Item/ItemMaxPower".to_owned(), 5),
+        ("Item/ItemNiddle".to_owned(), 145),
+    ]);
+    if *items != expected {
+        return Err(io::Error::other(
+            "pack item IDs differ from measured G1 catalog",
+        ));
+    }
+    if G1_MAPS.contains(&map) {
+        for (name, weight) in drops {
+            if !items.contains_key(name) {
+                *weight = 0;
+            }
+        }
+    }
+    Ok(())
 }
 
 pub(crate) fn kept_kind(kind: u32) -> bool {
@@ -77,6 +115,14 @@ mod tests {
                     disabled += usize::from(source.source_weight > 0);
                 }
             }
+            let mut pack_drops: Vec<_> = map
+                .rows
+                .iter()
+                .map(|row| (row.name.clone(), row.source_weight))
+                .collect();
+            let items = serde_json::from_value(data["kept"].clone()).unwrap();
+            apply_pack(&map.name, &mut pack_drops, &items).unwrap();
+            assert_eq!(pack_drops, drops);
             let scoped = drops.clone();
             apply(&map.name, &mut drops).unwrap();
             assert_eq!(drops, scoped);

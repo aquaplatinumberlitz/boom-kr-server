@@ -16,23 +16,27 @@ Run one KR 00967 service instance per private state directory. Run the commands 
    ```bash
    (cd rust && rustup target add "$BUILD_TARGET" &&
      cargo build --release --locked --target "$BUILD_TARGET" \
-       -p kr-service -p kr-tunnel --bin kr-service --bin kr-admin --bin kr-companion --bin kr-launch-identity)
+       -p kr-service -p kr-tunnel --bin kr-service --bin kr-admin --bin kr-companion --bin kr-load --bin kr-launch-identity)
    BINARY_DIR="$PWD/rust/target/$BUILD_TARGET/release"
    install -d -m 0700 local/operator
    ```
 
-2. Complete [first install steps 1–4](#first-install), then package the serving recipe. Keep the builder's `manifest_sha256` in the handoff record, separate from the bundle. Transfer the verified bundle privately, preserving file modes; use a new installation directory for each version.
+2. Chuẩn bị cấu hình và mẫu wire theo [bước 1–4](#first-install), rồi build gói. Ghi `manifest_sha256` từ builder
+   vào bàn giao riêng. Khi chuyển gói, giữ mode file và dùng thư mục cài riêng cho mỗi phiên bản.
 
    ```bash
    python3 tools/rust_service_package.py --base "$SERVING_RECIPE" --binary-dir "$BINARY_DIR" \
      --target "$BUILD_TARGET" --out local/operator/server-new
    ```
 
-   The builder packages pinned fixtures and profiles from the recipe. Relative fixture paths are resolved from the recipe's directory. The bundle contains no database, live sessions, or private TLS keys.
+   Builder chỉ lấy mẫu wire và cấu hình vận hành từ recipe; đường dẫn pin tương đối tính từ thư mục của recipe.
+   Gói không chứa profile map, terrain, DB hay private key. Mặc định dùng sáu map G1. Dùng `--pack-scope f1` để chạy
+   catalog mẫu CP382 ở phạm vi hai người, floor trống và tắt terrain. Dùng `--legacy-fixtures` để tái lập gói cũ khi rollback.
 
 ## First install
 
-1. Start with a pinned DB-backed managed-room recipe (`profile_mode: database_zero`, managed player rounds and choices enabled). Keep its supported maps, roster and fixtures. Select authenticated relay and set peer, route, queue, rate and lease budgets for the planned deployment.
+1. Chọn recipe wire đã pin dùng `profile_mode: database_zero`, bật managed player rounds và lựa chọn trong phòng.
+   Giữ relay xác thực và đặt giới hạn peer, route, hàng đợi, rate và lease cho máy triển khai.
 
    ```bash
    SERVING_RECIPE="$PWD/local/operator/service.json"
@@ -41,15 +45,15 @@ Run one KR 00967 service instance per private state directory. Run the commands 
      --database "$STATE/accounts.sqlite" --launch-socket "$STATE/launch.sock" --out "$SERVING_RECIPE"
    ```
 
-   Rebase any relative fixture paths when moving the recipe. The package runner sets DB and launch socket paths from `--state`. Make configuration changes in the recipe before building a new manifest.
+   Khi dời recipe, cập nhật đường dẫn mẫu wire tương đối. Runner đặt DB và socket theo `--state`.
+   Đổi thiết lập vận hành trên recipe trước khi build manifest mới.
 
-2. Provision TLS for `public_launcher` and `prelogin_tls` under `diagnostic_two_lobby.account_admission`. For a new identity, run the helper once per distinct certificate with a new destination under a private directory:
-
-   ```bash
-   "$BINARY_DIR/kr-launch-identity" "$NEW_TLS_DIR"
-   ```
-
-   Pin each `certificate.der` in the recipe with `path`, `bytes` and `sha256`; distribute the matching public pins in the trusted player package. Provision the two matching `private.pk8` files separately. Never put private keys in either bundle.
+2. Bật `prelogin_tls` và, nếu cần, `public_launcher` trong `diagnostic_two_lobby.account_admission`.
+   `init-db` tự tạo chứng chỉ và private key cho từng listener được bật trong state riêng, tại
+   `prelogin_tls-identity/` và `public_launcher-identity/`. Chỉ đưa `certificate.der` vào gói người chơi; giữ private key
+   trên máy chủ. Nếu phục hồi DB vào state mới, chạy `init-tls` để cấp danh tính mới. Để tiếp tục dùng danh tính hiện có,
+   build với `--external-tls`, giữ pin công khai trong recipe và cài private key tương ứng vào
+   `$STATE/prelogin.pk8` hoặc `$STATE/launcher.pk8` với mode `0600`.
 
 3. For Internet access, set `network_scope: controlled_internet` and add the **source IPv4 addresses seen by the server** to top-level `allowed_peers`, retaining local peers needed by the profile. Allow those sources only at both host and upstream firewalls:
 
@@ -63,23 +67,30 @@ Run one KR 00967 service instance per private state directory. Run the commands 
 
 4. For each enabled TLS listener, set `session_ttl_seconds` and `session_idle_seconds` if the package defaults (28,800 s absolute / 1,800 s idle) do not fit. Keep `1 ≤ idle ≤ TTL ≤ 86400`. Room and match activity refresh idle; keepalives do not. The absolute TTL starts at login and is separate from QUIC timeouts.
 
-5. Build the package, then set `PACKAGE` and `MANIFEST_SHA256` from the handoff. Initialize a new database once; for an existing deployment use the restore or upgrade steps.
+5. Ở máy cài, đặt `PACKAGE` và `MANIFEST_SHA256` theo bàn giao; `GAME_DIR` trỏ tới thư mục game KR 00967.
+   `STATE` là đường dẫn tuyệt đối ngắn nằm ngoài cả gói và thư mục game.
 
    ```bash
    python3 "$PACKAGE/kr-package.py" verify --manifest-sha256 "$MANIFEST_SHA256"
-   install -d -m 0700 "$STATE"
-   install -m 0600 "$LAUNCHER_KEY" "$STATE/launcher.pk8"
-   install -m 0600 "$PRELOGIN_KEY" "$STATE/prelogin.pk8"
    python3 "$PACKAGE/kr-package.py" init-db --manifest-sha256 "$MANIFEST_SHA256" --state "$STATE"
+   python3 "$PACKAGE/kr-package.py" export --manifest-sha256 "$MANIFEST_SHA256" --state "$STATE" --game-dir "$GAME_DIR"
    ```
+
+   Export mở chỉ đọc ba cặp `FxMap`, `FxContents` và `fx` (`.idx`/`.idd`) và kiểm SHA-256 đầy đủ của bản gốc.
+   Nếu thiếu hoặc không khớp, lấy lại đúng pack gốc 00967. Nếu cache báo sai hash, dừng service, bỏ riêng thư mục cache
+   bị lỗi dưới `$STATE/pack-cache` rồi chạy lại export. Cache dùng chung cho hai preset, được nhận dạng theo hash
+   pack và phiên bản exporter. Runner sẽ tự export khi chạy nếu cache chưa có. Giữ `init-db` cho DB mới; DB cũ dùng
+   quy trình restore hoặc nâng cấp bên dưới.
 
 ## Start, stop, and restart
 
 1. Run in the foreground under a process supervisor or in a dedicated terminal. The runner takes the state lock and replaces itself with the service.
 
    ```bash
-   python3 "$PACKAGE/kr-package.py" run --manifest-sha256 "$MANIFEST_SHA256" --state "$STATE"
+   python3 "$PACKAGE/kr-package.py" run --manifest-sha256 "$MANIFEST_SHA256" --state "$STATE" --game-dir "$GAME_DIR"
    ```
+
+   Với gói cũ từ `--legacy-fixtures`, bỏ `--game-dir`.
 
 2. Identify the current start's `$STATE/runs/<id>/service` directory as `RUN_DIR`. Wait for health to pass before admitting players.
 3. Schedule a maintenance window, stop new admissions at the perimeter, and let current rounds finish. Stop via the supervisor or send `kill -TERM "$SERVICE_PID"` to the current process. Wait for exit 0, `"stopped": true` in `service-state.json`, and listeners to release. Unfinished rounds are recorded as aborted.
@@ -154,7 +165,7 @@ If a close-room reply is lost, check the audit and live room list before retryin
    "$ADMIN" verify-backup "$SNAPSHOT"
    ```
 
-3. Stop the old instance before switching over. Restore into a new absolute `NEW_STATE` with no destination database or SQLite sidecars. Provision the keys matching the package pins, then start with `--state "$NEW_STATE"`.
+3. Stop the old instance before switching over. Restore into a new absolute `NEW_STATE` with no destination database or SQLite sidecars. Nếu dùng chứng chỉ do gói tạo, chạy `init-tls --state "$NEW_STATE"` sau khi restore; hoặc chuyển danh tính TLS hiện dùng vào state mới. Với pin ngoài gói, cấp đúng private key. Khi chạy, dùng state mới và cùng `--game-dir`.
 
    ```bash
    python3 "$PACKAGE/kr-package.py" restore-db --manifest-sha256 "$MANIFEST_SHA256" \
@@ -179,7 +190,7 @@ If a close-room reply is lost, check the audit and live room list before retryin
    python3 "$NEW_PACKAGE/kr-package.py" restore-db --manifest-sha256 "$NEW_MANIFEST_SHA256" \
      --state "$ROLLBACK_STATE" --snapshot "$PRE_UPGRADE_SNAPSHOT"
    # Provision keys matching the old package before starting.
-   python3 "$OLD_PACKAGE/kr-package.py" run --manifest-sha256 "$OLD_MANIFEST_SHA256" --state "$ROLLBACK_STATE"
+   python3 "$OLD_PACKAGE/kr-package.py" run --manifest-sha256 "$OLD_MANIFEST_SHA256" --state "$ROLLBACK_STATE" # thêm --game-dir nếu gói cũ xuất từ pack
    ```
 
    Repeat the health, login and round checks. Keep the upgraded state; post-snapshot changes are absent from the rollback database.

@@ -127,6 +127,12 @@ Village10/Tomb12 nghiệm thu2–6, bốn map còn lại2–8; không ép hoặc
 [Prototype theo giới hạn map và quan sát Herb](terrain.md#rust-village10-herb) có bằng chứng riêng. [Catalog tám/sáu spawn và sparse6](#rust-map-spawn-capacity) đã có lát native mới; terrain/drop/item, các map khác, mọi cỡ roster và Internet/load chưa được suy từ lát chọn map này. Lỗi synthetic
 setup/Back cũ còn unknown, giữ raw/failure và phép đo M8 riêng.
 
+Khi máy cài dùng [gói Linux xuất từ pack](../OPERATIONS.md#gói-linux-và-state-riêng), nguồn map là pack KR 00967
+được kiểm SHA-256. Gói dựng lại bảng 238, checksum Ready và các trường map của 117/121/196 từ thứ tự entry map;
+Rust vẫn kiểm nhất quán trước khi bind. Terrain G1 được tính từ ô map cùng ObjectTable/TileInfo và đối chiếu seed đã đo.
+Floor 582 vẫn theo policy server đã dùng, chỉ giữ cho đúng map gốc của mẫu; không suy xác suất rơi hay gameplay mới.
+Preset mẫu F1 giới hạn hai người, floor trống và tắt terrain như CP382.
+
 <a id="rust-map-spawn-capacity"></a>
 ### Catalog có số spawn khác nhau và roster thưa
 

@@ -8,6 +8,13 @@ on:
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
       - 'tools/test_m8_binary_rollback.py'
+      - 'tools/*kr_pack*.py'
+      - 'tools/rust*package*.py'
+      - 'tools/content_census.py'
+      - 'tools/export_map_profile.py'
+      - 'tools/rust_map_profile.py'
+      - 'server/probe_codec.py'
+      - 'server/room_title.py'
       - '.github/workflows/rust.yml'
   push:
     branches: [main]
@@ -16,6 +23,13 @@ on:
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
       - 'tools/test_m8_binary_rollback.py'
+      - 'tools/*kr_pack*.py'
+      - 'tools/rust*package*.py'
+      - 'tools/content_census.py'
+      - 'tools/export_map_profile.py'
+      - 'tools/rust_map_profile.py'
+      - 'server/probe_codec.py'
+      - 'server/room_title.py'
       - '.github/workflows/rust.yml'
 
 permissions:
@@ -59,3 +73,19 @@ jobs:
           CARGO_TARGET_DIR="$PWD/target/m8-schema5" cargo build --manifest-path "$previous/rust/Cargo.toml" --locked -p kr-service --bin kr-admin
           python3 ../tools/test_m8_binary_rollback.py --previous "$PWD/target/m8-schema5/debug" --current "$PWD/target/debug"
           rm -rf "$previous"
+
+  pack-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the pinned Rust toolchain
+        working-directory: rust
+        run: rustup toolchain install 2>/dev/null || rustup show
+      - name: Build Linux package binaries
+        working-directory: rust
+        run: >
+          cargo build --locked -p kr-service -p kr-tunnel
+          --bin kr-service --bin kr-admin --bin kr-load --bin kr-companion --bin kr-launch-identity
+      - name: Install, export fake pack, finish one TLS round, back up and stop
+        run: python3 tools/test_kr_pack_install.py --binaries rust/target/debug

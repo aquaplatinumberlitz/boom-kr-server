@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP382: Bước 0 xác nhận Patrit01 và các mẫu F1 khác chơi đến kết quả và về phòng qua TLS/relay trên Wine.** [Bằng chứng](docs/evidence/checkpoints/records/CP382.json).
+**CP383: Gói Linux đọc pack KR 00967 tại máy cài; hai client TLS tổng hợp hoàn tất một ván, rồi kiểm backup và dừng sạch.** [Cách cài](docs/OPERATIONS.md#gói-linux-và-state-riêng) · [Bằng chứng](docs/evidence/checkpoints/records/CP383.json).
 
 ## Bắt đầu
 

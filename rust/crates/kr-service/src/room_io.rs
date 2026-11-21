@@ -90,6 +90,8 @@ fn duel_teams() -> Vec<u8> {
 #[serde(deny_unknown_fields)]
 pub struct PlayerRoundConfig {
     pub characters: Vec<u16>,
+    #[serde(default)]
+    pub(crate) pack_stats: Option<std::collections::BTreeMap<u16, crate::characters::Stats>>,
 }
 pub(crate) struct ManagedRound {
     characters: Option<crate::characters::Catalog>,
@@ -214,7 +216,10 @@ pub(crate) fn load_player_round(
     cfg: &PlayerRoundConfig,
     prototype: &Shared,
 ) -> io::Result<Arc<ManagedRound>> {
-    let characters = crate::characters::Catalog::measured(&cfg.characters)?;
+    let characters = match &cfg.pack_stats {
+        Some(rows) => crate::characters::Catalog::from_pack(&cfg.characters, rows.clone())?,
+        None => crate::characters::Catalog::measured(&cfg.characters)?,
+    };
     let source = prototype
         .lock()
         .map_err(|_| err("room prototype unavailable"))?;

@@ -1,4 +1,4 @@
-"""Đóng gói binary/config/fixture đã pin; chỉ ghi artifact riêng dưới local/."""
+"""Đóng gói Linux; ở máy cài, xuất dữ liệu từ thư mục game KR 00967."""
 import argparse
 import copy
 import json
@@ -11,7 +11,7 @@ from rust_package_runtime import digest, verify
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def build(config, binaries, out, target, source_root=None):
+def build(config, binaries, out, target, source_root=None, *, pack_scope=None, external_tls=False):
     if target not in {'x86_64-unknown-linux-gnu', 'aarch64-unknown-linux-gnu'}:
         raise ValueError('Target Linux GNU không được hỗ trợ')
     source_root = Path.cwd() if source_root is None else Path(source_root)
@@ -63,6 +63,25 @@ def build(config, binaries, out, target, source_root=None):
             or not value.get('authenticated_relay')
             or value['diagnostic_two_lobby']['fixed_room'].get('endpoint_policy') != 'authenticated_relay'):
         raise ValueError('Gói yêu cầu account database và relay xác thực hiện hành')
+    if pack_scope is not None:
+        if pack_scope not in ('g1', 'f1'):
+            raise ValueError('Phạm vi pack phải là g1 hoặc f1')
+        two = value['diagnostic_two_lobby']
+        managed = two['managed_rooms']
+        room = two['fixed_room']
+        if not managed.get('player_round') or not managed.get('player_choices') or room.get('battle'):
+            raise ValueError('Xuất pack yêu cầu managed player round có lựa chọn và không dùng legacy Battle')
+        for key in ('terrain', 'bomb_cancellation', 'map_profile'):
+            room.pop(key, None)
+        room.setdefault('map_choices', [])
+        for choice in room['map_choices']:
+            for key in ('terrain', 'bomb_cancellation', 'map_profile'):
+                choice.pop(key, None)
+        managed['player_round'].pop('pack_stats', None)
+        if not external_tls:
+            for section in ('public_launcher', 'prelogin_tls'):
+                if admission.get(section) is not None:
+                    admission[section]['certificate'] = '@INSTALL@'
     assets(value)
     admission.update(database='@STATE@/accounts.sqlite', launch_socket='@STATE@/launch.sock')
     # Public TLS pins are assets; matching private keys are provisioned separately.
@@ -72,7 +91,10 @@ def build(config, binaries, out, target, source_root=None):
             admission[section].setdefault('session_ttl_seconds', 28_800)
             admission[section].setdefault('session_idle_seconds', 1_800)
     architecture = None
-    for name in ['kr-service', 'kr-admin', 'kr-companion']:
+    binary_names = ['kr-service', 'kr-admin', 'kr-companion']
+    if pack_scope is not None:
+        binary_names += ['kr-load', 'kr-launch-identity']
+    for name in binary_names:
         source = Path(binaries) / name
         with source.open('rb') as stream:
             header = stream.read(20)
@@ -93,6 +115,16 @@ def build(config, binaries, out, target, source_root=None):
     manifest = dict(schema='kre-service-package-v1', target=target, elf_machine=architecture,
                     files=[rows[key] for key in sorted(rows)],
                     limits='Validated input recipe and fixture pins, not a fresh export from pack. Requires compatible Linux ABI and Python; Internet/native/load/restore/soak acceptance remains separate.')
+    if pack_scope is not None:
+        support = ('kr_pack_export.py', 'kr_pack_config.py', 'content_census.py',
+                   'export_map_profile.py', 'rust_map_profile.py')
+        for name in support:
+            save(ROOT / 'tools' / name, name)
+        (out / 'server').mkdir(mode=0o700)
+        for name in ('probe_codec.py', 'room_title.py'):
+            save(ROOT / 'server' / name, 'server/' + name)
+        manifest.update(pack_scope=pack_scope, files=[rows[key] for key in sorted(rows)],
+                        limits='Pack KR 00967 được kiểm và xuất ở máy cài. Bundle chỉ giữ mẫu wire và cấu hình vận hành.')
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     path.chmod(0o400)
@@ -107,6 +139,11 @@ def main():
     parser.add_argument('--binary-dir', type=Path, required=True)
     parser.add_argument('--target', required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--pack-scope', choices=['g1', 'f1'], default='g1')
+    parser.add_argument('--external-tls', action='store_true',
+                        help='Giữ pin TLS công khai hiện có; cấp private key qua state')
+    parser.add_argument('--legacy-fixtures', action='store_true',
+                        help='Gói cũ từ fixture đã pin, dành cho tái lập/rollback')
     args = parser.parse_args()
     out = args.out.resolve()
     local = (ROOT / 'local').resolve()
@@ -114,7 +151,8 @@ def main():
         parser.error('Cấu hình/fixture chỉ được đóng gói vào local/')
     try:
         value = json.loads(args.base.read_text())
-        result = build(value, args.binary_dir, out, args.target, args.base.resolve().parent)
+        result = build(value, args.binary_dir, out, args.target, args.base.resolve().parent,
+                       pack_scope=None if args.legacy_fixtures else args.pack_scope, external_tls=args.external_tls)
     except (ValueError, OSError, KeyError, TypeError) as error:
         parser.exit(1, f'Không thể đóng gói: {error}\n')
     print(json.dumps(dict(result='package_built_and_verified', manifest_sha256=result)))

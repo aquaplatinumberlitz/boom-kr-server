@@ -1,0 +1,93 @@
+{
+  "schema": "kre-m8-pack-export-v1",
+  "source": "design",
+  "status": "design",
+  "baseline": "2ae5a17c90ee7d28b3e0b3ec27fecd358650adde",
+  "issue": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474",
+  "checkpoint": "docs/evidence/checkpoints/records/CP383.json",
+  "canonical": "docs/OPERATIONS.md#gói-linux-và-state-riêng",
+  "reuse": [
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "locator": "docs/content/census.json; docs/evidence/current-map-chain/README.md",
+      "build": "KR 00967",
+      "use": "Định dạng index/entry và thứ tự ordinal KR, header map 80 byte, Attr và TileInfo."
+    },
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "locator": "boomkr-re/rust/krpack; boomkr-re/docs/kr-data.md §1, §6",
+      "build": "KR 00967",
+      "use": "Reader tham chiếu; dùng reader nội bộ đã kiểm và đối chiếu hash pack gốc."
+    },
+    {
+      "source": "vn_static",
+      "status": "confirmed",
+      "locator": "boom-re/docs/assets.md, items.md, map.md",
+      "build": "VN VBNB_116",
+      "use": "Dùng tên bảng và định dạng chung làm đối chiếu, không dùng ID, header map hoặc opcode VN."
+    },
+    {
+      "source": "kr_runtime",
+      "status": "confirmed",
+      "locator": "docs/evidence/rust-service/g1-acceptance-matrix.json; docs/evidence/checkpoints/records/CP382.json",
+      "build": "KR 00967, các bản sao tương thích của từng lượt",
+      "use": "Giữ phạm vi terrain/item G1 và 15 mẫu F1; lần chạy này độc lập và không khởi động client KR."
+    }
+  ],
+  "original_pack_sha256": {
+    "FxMap.idx": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+    "FxMap.idd": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+    "FxContents.idx": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+    "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
+    "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+    "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"
+  },
+  "recipe": {
+    "build": "local/research/codex/m8-pack-export/local-build.py",
+    "namespace": "local/research/codex/m8-pack-export/local-run.sh",
+    "harness": "tools/smoke_kr_pack_install.py",
+    "fixtures": "Chỉ template wire, không dùng profile/terrain dựng sẵn tại máy cài.",
+    "environment": "Linux x86-64, bwrap unshare-all; thư mục gói và game chỉ đọc, không mount checkout, loopback riêng."
+  },
+  "observed": [
+    {
+      "path": "local/research/codex/m8-pack-export/final-g1/verification.json",
+      "bytes": 534,
+      "sha256": "6ed4aaffc3b58d9cfbf2f41506f161b41e5af6233e183ae15c72f3be9ae8afd6"
+    },
+    {
+      "path": "local/research/codex/m8-pack-export/final-f1/verification.json",
+      "bytes": 532,
+      "sha256": "d85a61aa1b5abea17b045f3e2590863df5b041b4d8e88a4d71e6575f5251d171"
+    },
+    {
+      "path": "local/research/codex/m8-pack-export/content-verification.json",
+      "bytes": 2845,
+      "sha256": "efcd697de1913f132ec9b24c61cb45f0bd523177153237e8b3cea66a1e67a980"
+    },
+    {
+      "path": "local/research/codex/m8-pack-export/fake-final.log",
+      "bytes": 506,
+      "sha256": "3697fb9cb9b2bbef2d9468306d0ca2fb994fd120e1665d7965b1aaf1f89d7e0e"
+    }
+  ],
+  "packages": [
+    {
+      "path": "local/research/codex/m8-pack-export/final-package-g1/manifest.json",
+      "bytes": 13523,
+      "sha256": "a5a7d4dbc32b1cbbcee1dbae44f098a0b4b35b6e7af8a77174bf2ead62133a4d"
+    },
+    {
+      "path": "local/research/codex/m8-pack-export/final-package-f1/manifest.json",
+      "bytes": 13523,
+      "sha256": "2dac8a6b171b9b2b3c0fc876311069377070d436acf1c0b7beb97b34a753f52c"
+    }
+  ],
+  "limits": [
+    "Mỗi preset chạy với hai client kr-load, một ván ở map đầu. Không chạy Wine, VM, Windows, ARM hay VPS.",
+    "So lớp terrain, hit count, chặn tia và hủy bom của sáu map với dữ liệu đã đo; không suy kiểm đầy đủ gameplay hoặc RNG.",
+    "MapGroup chỉ xuất metadata, không gán mode/wire. F1 giữ floor trống, không bật terrain và chưa mở F1 rộng."
+  ]
+}

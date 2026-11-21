@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP382 / AUD150: cập nhật xếp loại mẫu F1.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP383 / AUD151: xuất pack và kiểm gói Linux.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
 tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [Lộ trình F1–F6](#full-game-roadmap) chưa mở.
@@ -26,7 +26,7 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
 | [G1](#rust-g1) sáu map và tập item đã cắt | **Đạt acceptance giai đoạn 1** theo [ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json): sáu map/roster trong phạm vi, kim/cứu, item nền/MaxPower, ma trận Shoe/Punch, drop đã cắt, từ chối nhân vật giữ phiên và client Việt hai vòng trên Rust | Giữ giới hạn từng route/native và raw cleanup; không whole gameplay, every-tile hoặc L1 closure. Vận hành còn M8 |
 | M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
 | L1 UTF-8, Claude phụ trách, Codex thực thi | **Đạt phạm vi giai đoạn 1**. [L1a chọn 949x](content/client-language.md#utf8); Rust lưu tên account UTF-8 và chuyển chat sảnh/phòng. [CP370](evidence/checkpoints/records/CP370.json) xác nhận hai bản vi/ko cùng phòng có dấu, chat có dấu hai chiều và chơi một ván tới kết quả. [Sáu ảnh đăng nhập vi đã duyệt và ghép](evidence/checkpoints/records/CP367.json). | Ảnh bổ sung và nghiệm thu en hoãn. Start ván hai theo dõi riêng ở #502. |
-| M8 vận hành | CI đã có; [nền gói Linux](evidence/rust-service/m8-server-package.json) đã có manifest/state riêng và smoke x86/ARM tách repo, gồm kiểm chạy trùng và từ chối ghi đè DB | Xuất dữ liệu từ pack, launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 12 giờ chạy dài |
+| M8 vận hành | CI đã có; [Gói Linux](OPERATIONS.md#gói-linux-và-state-riêng) đọc pack tại máy cài và kiểm được ván TLS tổng hợp, backup, dừng sạch | Launcher Internet và gói Wine/Windows, tải 50 người/8 phòng, giám sát, backup/restore và 12 giờ chạy dài |
 
 **Thứ tự việc:**
 
@@ -39,7 +39,7 @@ tối thiểu 8 phòng và chế độ thường trên sáu map ladder với t�
 
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
-   | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
+   | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474) | Gói dùng thư mục game KR 00967 chỉ đọc, sinh cache map/item/nhân vật và bảng. [Đã kiểm cài sạch trong namespace Linux](evidence/rust-service/m8-pack-export.json): hai client TLS tổng hợp tới kết quả và về sảnh, backup hợp lệ, dừng sạch. Bản pack này chưa chạy ARM hoặc native; số đo ARM của nền gói cũ giữ riêng. |
    | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476) | [CP375](evidence/checkpoints/records/CP375.json) xác nhận Windows vi và Wine ko dùng gói launcher qua cùng hotspot 4G tới VPS: chat có dấu hai chiều, hai ván cùng phòng qua relay. WAN giả lập đã qua relay, mất đường giữa ván và đăng nhập lại. Nghiệm thu phát hành còn hai mạng Internet độc lập và máy sạch ngoài PC phát triển. |
    | [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) | [CP380](evidence/checkpoints/records/CP380.json): 50 client tổng hợp trong 8 phòng đạt ngưỡng relay nội VPS; số đo qua hotspot là quan sát. Chưa có trận native dưới tải. Soak 12 giờ đã bắt đầu với 24 client tổng hợp; chờ đủ thời lượng và kiểm backup, TTL, tài nguyên và dọn phòng. |
    | [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) | [CP374](evidence/checkpoints/records/CP374.json): audit account/phòng, snapshot live và mở ván sau restore vào state sạch qua hai client TLS tổng hợp; SIGTERM, SIGKILL/restart và rollback schema 6 về binary schema 5 đã kiểm loopback. Chờ tích hợp; còn nghiệm thu native trên máy triển khai theo M8. |
@@ -90,7 +90,7 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
   không được suy từ nghiệm thu này; backup/restore, tải và đóng gói còn M8.
 
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
-  Fixture mà server cần để chạy không được phụ thuộc `local/` khi bàn giao: đóng gói kèm manifest hash ở M8.
+  Máy cài gói Linux không cần repo/`local/`. Dữ liệu nội dung được xuất từ thư mục game, còn mẫu wire đi trong manifest gói.
 - Điều phối Rust ở [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285); #14 đã được thay thế,
   #369 đã giao. #2, #3 và #9 giữ làm backlog ngoài giai đoạn 1; lỗi khởi động Wine ở #9 được xem lại trong M8.
 
@@ -661,7 +661,7 @@ tiền, bảng xếp hạng, inventory. Schema chỉ giữ chỗ cho ledger và 
 
 **M8 — vận hành.** Phải có:
 
-- **Gói server:** binary, config, fixture runtime và dữ liệu map, nhân vật sinh từ pack, có manifest hash. Chạy được
+- **Gói server:** binary, config và mẫu wire có manifest hash; máy cài xuất nội dung map, item và nhân vật từ pack. Chạy được
   trên một máy Linux sạch, không có repo và không có `local/`. Dữ liệu trích từ client không commit; gói được dựng
   tại chỗ từ pack bằng một lệnh có tài liệu.
 - **Gói cho người chơi:** chạy client trên Wine; thử trên Wine và Windows trong máy ảo theo

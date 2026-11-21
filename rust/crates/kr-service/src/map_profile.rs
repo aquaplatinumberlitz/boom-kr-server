@@ -3,7 +3,10 @@
 use crate::{ActorProfile, FixturePin, Reply, room::PlayerId};
 use kr_wire::{Width, kr00967 as wire, read_uint};
 use serde::Deserialize;
-use std::{collections::HashMap, io};
+use std::{
+    collections::{BTreeMap, HashMap},
+    io,
+};
 
 #[derive(Deserialize)]
 pub(crate) struct Profile {
@@ -16,6 +19,8 @@ pub(crate) struct Profile {
     payload_sha256: String,
     #[serde(default)]
     drops: Vec<(String, u32)>,
+    #[serde(default)]
+    pack_items: Option<BTreeMap<String, u32>>,
 }
 fn error() -> io::Error {
     io::Error::other("inconsistent or unsupported pack map profile")
@@ -48,7 +53,11 @@ fn adler_zero(bytes: &[u8]) -> u32 {
 impl Profile {
     pub(crate) fn load(pin: &FixturePin) -> io::Result<Self> {
         let mut value: Self = serde_json::from_slice(&pin.load()?).map_err(io::Error::other)?;
-        crate::item_scope::apply(&value.name, &mut value.drops)?;
+        if let Some(items) = &value.pack_items {
+            crate::item_scope::apply_pack(&value.name, &mut value.drops, items)?;
+        } else {
+            crate::item_scope::apply(&value.name, &mut value.drops)?;
+        }
         if value.scripted
             || (value.width, value.height) != (15, 13)
             || !(2..=8).contains(&value.spawns.len())

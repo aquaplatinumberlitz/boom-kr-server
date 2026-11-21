@@ -422,6 +422,7 @@ fn replay_session(fixture: &str) {
                 player_choices: true,
                 capacity: None,
                 player_round: Some(crate::room_io::PlayerRoundConfig {
+                    pack_stats: None,
                     characters: vec![0, 1],
                 }),
             },
@@ -864,6 +865,7 @@ fn vi_and_ko_chat_keeps_message_bytes_in_lobby_and_room_with_rate_and_scope() {
                 player_choices: true,
                 capacity: None,
                 player_round: Some(crate::room_io::PlayerRoundConfig {
+                    pack_stats: None,
                     characters: vec![0, 1],
                 }),
             },
@@ -1230,6 +1232,7 @@ fn tls_group_handoff_cannot_be_claimed_by_a_second_connection_and_revoke_closes_
                 player_choices: true,
                 capacity: None,
                 player_round: Some(crate::room_io::PlayerRoundConfig {
+                    pack_stats: None,
                     characters: vec![0, 1],
                 }),
             },
