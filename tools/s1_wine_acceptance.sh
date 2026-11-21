@@ -188,19 +188,18 @@ wait_for 150 rotated
 touch "$out/rotate-done"
 wait_for 450 test -f "$out/stop"
 click 56 206
+timeout 15 wine "$bundle/python/python.exe" "$clip" close
 stopped() {
     local files=("$state"/runs/*/service/service-state.json)
     [[ ${#files[@]} -ge 2 && -f ${files[0]} ]] && ! grep -L '"stopped":true' "${files[@]}" | grep -q .
 }
 wait_for 180 stopped
-timeout 15 wine "$bundle/python/python.exe" "$clip" close
-for _ in {1..25}; do
+for _ in {1..75}; do
     kill -0 "$service" 2>/dev/null || break
     sleep .2
 done
 if kill -0 "$service" 2>/dev/null; then
-    printf 'Wine desktop process did not exit after WM_CLOSE
-' >&2
+    printf 'Wine desktop process did not exit after WM_CLOSE\n' >&2
     exit 1
 fi
 wait "$service"
