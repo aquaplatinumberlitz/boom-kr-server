@@ -1,11 +1,11 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP384",
-  "completed_count": 384,
+  "last_id": "CP385",
+  "completed_count": 385,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
-  "last_manual_audit": "AUD151",
+  "last_manual_audit": "AUD152",
   "audits": [
     {
       "id": "AUD001",
@@ -773,6 +773,11 @@
       "id": "AUD151",
       "path": "docs/evidence/checkpoints/audits/AUD151.json",
       "sha256": "b342b38c57931fe1d054f702d3c4b04b4ea7ce0a7a034cc5f082eb7b7978720f"
+    },
+    {
+      "id": "AUD152",
+      "path": "docs/evidence/checkpoints/audits/AUD152.json",
+      "sha256": "73af6828db4e536963716e3fc7e3ae30977bf887829e36ed29739cd2adf773b3"
     }
   ],
   "task_states": [
@@ -1230,13 +1235,19 @@
       "canonical": "docs/content/classification.md",
       "id": "KRE-STEP0-A",
       "reference": "docs/evidence/owner-directives/post-phase1-direction.json",
-      "state": "open"
+      "state": "closed"
     },
     {
       "id": "KRE-M8-SERVER-PACKAGE",
       "state": "open",
       "canonical": "docs/OPERATIONS.md#gói-linux-và-state-riêng",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474"
+    },
+    {
+      "id": "KRE-STEP0-C",
+      "state": "open",
+      "canonical": "docs/content/native-client-controller.md",
+      "reference": "docs/evidence/owner-directives/post-phase1-direction.json"
     }
   ],
   "version": 2,
@@ -4312,6 +4323,14 @@
       "path": "docs/evidence/checkpoints/records/CP384.json",
       "bytes": 11226,
       "sha256": "f20824bf7e93b49d83e914d9300d028920ae2f22011a8a09d5ba29edaa1ce062"
+    },
+    {
+      "id": "CP385",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-21T09:24:06.569664+00:00",
+      "path": "docs/evidence/checkpoints/records/CP385.json",
+      "bytes": 9076,
+      "sha256": "98d628020bf483982ef59e910db8db4e65277637a45a8845583e8b0984280ece"
     }
   ],
   "audit_policy": {

@@ -1,0 +1,33 @@
+{
+  "id": "AUD152",
+  "trigger": "feature_group",
+  "feature_groups": [
+    "step0-content-classification"
+  ],
+  "completed_through": "CP385",
+  "recorded_utc": "2026-11-21T09:24:06.569664+00:00",
+  "auditor": "Codex",
+  "read_files": [
+    "README.md",
+    "docs/PLAN.md",
+    "docs/PROTOCOL.md",
+    "docs/protocol/room-membership.md",
+    "docs/RESEARCH.md",
+    "docs/content/classification.md",
+    "docs/evidence/checkpoints/records/CP384.json",
+    "docs/evidence/checkpoints/records/CP385.json"
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "stale": "Việc thử thêm để nâng lớp cả họ còn gắn vào bước 0.",
+      "correction": "Đối chiếu bảng sinh và bằng chứng CP384: giữ lớp A ở đúng cấp map; chuyển việc nâng hạng họ và kiểm nội dung sang F1.",
+      "fixed_in": [
+        "docs/PLAN.md"
+      ]
+    }
+  ],
+  "remaining": [
+    "F1 chưa mở; chưa nâng cấp họ map hoặc khẳng định item, phương tiện, nhân vật hay mode đã chạy. #534 còn yêu cầu nghiệm thu Windows riêng."
+  ]
+}

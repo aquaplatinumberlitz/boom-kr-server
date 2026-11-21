@@ -9,11 +9,11 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP384 / AUD151: cập nhật xếp loại mẫu F1.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP385 / AUD152: chốt xếp loại bước 0; còn nghiệm thu controller trên Windows.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
 tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [Lộ trình F1–F6](#full-game-roadmap) chưa mở.
-[Bước 0](content/classification.md) đã qua đăng nhập có kiểm trạng thái và chu trình trận trên các mẫu F1 mới; còn đối chứng item, đồ rơi và địa hình để nâng lớp cả họ.
+[Xếp loại bước 0](content/classification.md) đã chốt: 47 map đạt A ở cấp map; họ map F1 có 0 A, 86 B và 22 C. [Controller trên Windows](evidence/checkpoints/records/CP385.json) chưa đạt vì chưa xác nhận được cửa sổ game; #534 còn mở.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -710,8 +710,8 @@ inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ
 <a id="full-game-roadmap"></a>
 ### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
 
-Lộ trình tới đủ item, map và mode chưa cam kết thời gian. F1–F6 chưa mở; bước 0 chạy song song phần cuối M8.
-Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng còn chạy. Chỉ ước lượng sau khi xếp loại A/B/C.
+Lộ trình tới đủ item, map và mode chưa cam kết thời gian. F1–F6 chưa mở; bước 0 được thực hiện song song phần cuối M8.
+Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng còn chạy. Dùng [xếp loại A/B/C](content/classification.md) để chọn phép thử và ước lượng từng đợt.
 
 | Đợt | Nội dung | Số liệu kiểm kê | Phụ thuộc và điều chưa biết |
 |---|---|---|---|
@@ -727,7 +727,7 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
-Đã thử đại diện F1 trên Wine; giữ lease và ngân sách khi kiểm tiếp. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
+Việc nâng họ map lên A và thử sâu item, phương tiện, nhân vật, mode chuyển vào từng phần tương ứng của F1. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh

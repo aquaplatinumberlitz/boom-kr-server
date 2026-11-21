@@ -1,0 +1,64 @@
+{
+  "id": "CP385",
+  "previous": "CP384",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T09:24:06.569664+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Có thể nghiệm thu bộ điều khiển theo mốc server với một client Windows và một client Wine qua bốn map không?",
+  "scope": "KRE-STEP0-A (#532) và KRE-STEP0-C (#534), theo chỉ đạo trực tiếp ngày 21/11. Tối đa hai lượt Windows thử bản sao KR 00967, mạng cục bộ cô lập, không dùng VPS. Chốt xếp loại bước 0 và chưa mở F1.",
+  "context_commit": "133a40025fda8974ae4b53eb2ecc6927a0964306",
+  "artifacts": [
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "62817aaae76bb27e870babbbb1c57815b09272c7086800cf1765a0b336766bb1"},
+    {"sha256": "48b1c50506b9c4c7a0e80acec4d7be76445488c5368c5177b8454380e495094b"},
+    {"sha256": "e51a77207ed86172621209a259f086708866376dcf098b906925130def37db37"},
+    {"sha256": "f444d9e859e4e2131200534d5dffa0b7a92cdc78fa9d314eb269217b641a7d7a"}
+  ],
+  "locators": ["local/research/codex/step0-windows-controller", "Windows 10 build 19045 trên QEMU 11.1.3; Wine wine-10.0-20260425 (CachyOS)."],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/native-client-controller.md", "summary": "Lượt đầu chưa chạy seed vì chọn sai ký tự ổ đĩa. Lượt hai chạy seed trong Windows, companion báo sẵn sàng nhưng helper không thấy cửa sổ game mong đợi trước khi script dừng.", "evidence": ["TRY1", "BOOT", "GUEST_ERROR", "TRY2"], "limits": "Chưa phân biệt được game thoát sớm hay không tạo cửa sổ mang tên dự kiến. Không có đăng nhập, vào phòng hoặc ván Windows để đánh giá controller."},
+    {"source": "design", "status": "design", "method": "design", "canonical": "docs/PLAN.md", "summary": "Chốt #532 theo bảng CP384: 47 map A cấp map; họ map F1 có 0 A, 86 B và 22 C. Nâng hạng họ và kiểm item, phương tiện, nhân vật, mode thuộc từng phần F1.", "evidence": ["CLASSIFICATION"], "limits": "Không đổi lớp của họ, không mở F1–F6 và không kéo dài xếp loại bước 0."}
+  ],
+  "verification": [
+    {"check": "Kiểm tự động controller và bộ nhập Wine; build khóa dependency cho service và companion Linux, MinGW với -Werror cho helper Windows.", "result": "pass", "evidence": ["TESTS", "WINE_LOGIN_TESTS", "BUILD", "INPUT_BIN", "CONTROLLER", "HELPER"], "limits": "Ba test controller và ba test nhập Wine. Không thay mã của bộ điều khiển."},
+    {"check": "Windows và Wine đăng nhập trong game, vào phòng và đi qua Start, kết quả và về phòng trên ít nhất bốn map.", "result": "fail", "evidence": ["TRY1", "TRY2", "GUEST_ERROR"], "limits": "Hết hai lượt; cả hai dừng trước đăng nhập game. Lượt hai có bằng chứng thử khởi động Windows mới."},
+    {"check": "Tắt hai VM thử, dừng Wine riêng và xóa overlay, ISO và bản sao thử sau khi namespace chấm dứt.", "result": "pass", "evidence": ["CLEAN1", "CLEAN2", "TRY1", "TRY2"], "limits": "Giữ log và capture. Ba tiến trình thường trực giữ nguyên."}
+  ],
+  "delta": {"added": ["Ghi kết quả thử Windows trước đăng nhập; chốt phạm vi xếp loại bước 0."], "corrected": [], "superseded": ["Dừng phép thử xếp loại sâu ở bước 0; chuyển vào từng phần F1."]},
+  "blockers": ["#534 chưa đạt nghiệm thu Windows; cần quan sát lifetime/exit code và cửa sổ client trước khi đo lại khi có ngân sách."],
+  "next_steps": [
+    {"id": "STEP0-A-native-samples", "task": "KRE-STEP0-A", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Đóng xếp loại bước 0; chuyển đối chứng sâu vào từng phần F1 theo PLAN."},
+    {"id": "STEP0-C-windows-acceptance", "task": "KRE-STEP0-C", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khi có lượt mới, dùng bản Windows đã qua boot trong CP373 làm đối chứng khởi động; xác nhận PID và cửa sổ trước khi chạy bốn map với cùng controller."}
+  ],
+  "completed_feature_groups": ["step0-content-classification"],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T09:24:06.569664+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp qua PR.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất và ghi Windows chưa đạt."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP384 khỏi README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Chốt xếp loại, dời kiểm sâu sang F1 và giữ #534 mở."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không có dữ liệu mới về wire hoặc authority."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Lỗi dừng ở bước khởi động client; chưa mở câu hỏi protocol."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không nâng trạng thái hoặc mức bằng chứng tính năng."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Catalog và câu hỏi mở không đổi."},
+    {"path": "docs/content/classification.md", "state": "unchanged", "reason": "Giữ kết quả sinh đã kiểm ở CP384."},
+    {"path": "docs/content/native-client-controller.md", "state": "unchanged", "reason": "Cách dùng và bộ điều khiển hiện hành không đổi."},
+    {"path": "docs/evidence/checkpoints/records/CP385.json", "state": "updated", "reason": "Ghim log, ảnh, capture, journal và biên nhận dọn của hai lượt."}
+  ],
+  "evidence": [
+    {"id": "TRY1", "kind": "local", "path": "local/research/codex/step0-windows-controller/run-1/verification.json", "bytes": 400, "sha256": "4fe971a9868df60f9a46bd57c50443e588776b8adbf159ff3b025a65a7b1d4b8"},
+    {"id": "TRY2", "kind": "local", "path": "local/research/codex/step0-windows-controller/run-2/verification.json", "bytes": 399, "sha256": "3c86b302961f15cea761506df548e08142862368c48bc9133bc4e2a4ba1cbae4"},
+    {"id": "BOOT", "kind": "local", "path": "local/research/codex/step0-windows-controller/run-2/windows-bootstrap.json", "bytes": 40, "sha256": "85060f9514217df467daacf2a6fbf6ff25af05c24394441b4746e718839f55ee"},
+    {"id": "GUEST_ERROR", "kind": "local", "path": "local/research/codex/step0-windows-controller/run-2/windows-error.json", "bytes": 31, "sha256": "866713436aced6bfceec6361d8c4f73cf6e447c98730cb0a6a204fe4967cbbb1"},
+    {"id": "CLEAN1", "kind": "local", "path": "local/research/codex/step0-windows-controller/run-1/vm-cleanup.json", "bytes": 52, "sha256": "b5fb00fd65b263366c0b9f28d8797c4f39d6a2a79843b09dece428b55ca75071"},
+    {"id": "CLEAN2", "kind": "local", "path": "local/research/codex/step0-windows-controller/run-2/vm-cleanup.json", "bytes": 52, "sha256": "b5fb00fd65b263366c0b9f28d8797c4f39d6a2a79843b09dece428b55ca75071"},
+    {"id": "INPUT_BIN", "kind": "local", "path": "local/research/codex/step0-windows-controller/run-2/windows-input-sha256.txt", "bytes": 229, "sha256": "d7b1bc5fd15ccfc5257e65772a1b91663317f34aa1cd9f017cced6dfc8efc4cf"},
+    {"id": "TESTS", "kind": "local", "path": "local/research/codex/step0-windows-controller/controller-unit.log", "bytes": 101, "sha256": "239573c1665ba0d20880d981ec7058ee3d44a42932e841724fdcee3ca672055d"},
+    {"id": "WINE_LOGIN_TESTS", "kind": "local", "path": "local/research/codex/step0-windows-controller/wine-login-unit.log", "bytes": 101, "sha256": "7ba600c131d14938fa296eb6eb208c575bf239a15b65439f37d0578df0fff9bf"},
+    {"id": "BUILD", "kind": "local", "path": "local/research/codex/step0-windows-controller/build.log", "bytes": 3372, "sha256": "369e96f9450fb3afd0ff76dba161678e7d55dfbe31eb8f219130aece82c8de3f"},
+    {"id": "CONTROLLER", "kind": "repository", "path": "tools/native_client_controller.py", "bytes": 9964, "sha256": "2fc52133521daf07904ebb610825ac0ca55de401a059ebff84a98f05fc9071bc"},
+    {"id": "HELPER", "kind": "repository", "path": "tools/native_client_input.c", "bytes": 4030, "sha256": "154fa801db994cf4b5ef9fcda7708f70683895817b8b45526deac0a83b7cf0d3"},
+    {"id": "CLASSIFICATION", "kind": "repository", "path": "docs/content/classification.md", "bytes": 83448, "sha256": "b29f41a3255f3e2b84c9d18e3b4952efa040fa2badba82972f963d1368957682"}
+  ],
+  "evidence_runs": [{"run": "local/research/codex/step0-windows-controller", "path": "local/evidence-manifests/80d0ae89e2ff8ec0d91de2290036e5715c647907ce25f9ebc7b23aada2e5b7ba.jsonl", "sha256": "80d0ae89e2ff8ec0d91de2290036e5715c647907ce25f9ebc7b23aada2e5b7ba", "bytes": 9330, "count": 47, "files_bytes": 1862649}]
+}
