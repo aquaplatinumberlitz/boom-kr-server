@@ -59,3 +59,32 @@
 
 - Windows에서 연결을 차단하면 **Windows 방화벽을 통해 앱 허용** 설정을 확인하세요. 신뢰할 수 있는 패키지의 런처와 프로그램만 해당 네트워크 유형에서 허용하세요.
 - 방화벽 전체를 끄지 마세요. 문제가 계속되면 서버 운영자에게 문의하세요.
+
+## 내 서버 열기 (S1)
+
+S1은 내 컴퓨터에 계정과 경기 결과를 저장합니다. 다른 사람이 플레이하는 동안 서버를 켜 두세요. `FxMap`, `FxContents`, `fx`의 `.idx`와 `.idd` 파일이 모두 들어 있는 KR 00967 게임 폴더를 준비하세요.
+
+**Windows**
+
+1. Windows 서버 패키지의 압축을 풀고 같은 폴더에 파일을 둡니다. **BoomServer.exe**를 실행하세요.
+2. 서버 이름을 입력하세요. 자동으로 찾은 게임 폴더가 맞으면 그대로 두고, 아니면 **찾아보기…**에서 게임 폴더를 선택합니다. **시작**을 누른 뒤 **실행 중**이 표시될 때까지 기다리세요.
+3. **S1 초대 코드** 옆의 **복사**를 눌러 플레이어에게 코드를 보내세요. 플레이어는 S1을 지원하는 런처에서 **서버 → 서버 추가**를 이용할 수 있습니다.
+4. 창을 닫아도 서버는 계속 실행됩니다. 시스템 트레이에서 BoomServer를 클릭하거나 `BoomServer.exe`를 다시 실행하면 상태를 볼 수 있습니다. 컴퓨터를 끄기 전에 **중지**를 누르세요. **지금 백업**은 데이터베이스 사본을 만들고, **데이터 폴더 열기**는 백업과 호스트 계정 정보가 있는 폴더를 엽니다. **초대 코드 재설정**을 누르면 이전 코드가 무효가 되고 접속 중인 플레이어의 연결이 끊깁니다.
+
+Windows에서 직접 연결을 허용할지 묻는 경우 **개인 네트워크**에서 허용할 수 있습니다. 거부하거나 공유기에서 포트를 열 수 없어도 릴레이 연결을 시도합니다. 바로 접속할 수 없다면 릴레이 연결이 끝난 뒤 다시 시도하세요.
+
+**Linux**
+
+1. Linux 서버 패키지의 압축을 푸세요. Docker Compose를 사용하려면 압축을 푼 폴더에서 터미널을 열고, 컨테이너가 읽을 수 있는 게임 폴더의 절대 경로를 지정합니다.
+
+   ```sh
+   export BOOM_GAME_DIR="/path/to/game"
+   export BOOM_NAME="Boom Club"
+   docker compose -f deploy/compose.yaml up -d --build
+   docker compose -f deploy/compose.yaml exec boom /opt/boom/bin/boom-server invite
+   ```
+
+2. systemd를 사용하는 Linux에서는 대신 `sudo ./deploy/install.sh /path/to/game "Boom Club"`을 실행해도 됩니다. 서버가 실행되면 `sudo -u boom-server boom-server invite`로 코드를 확인하세요.
+3. 플레이어에게 S1 초대 코드를 보내세요. 서버의 식별 정보, 계정, 결과를 보존하려면 Docker 데이터 볼륨이나 systemd 데이터 폴더인 `/var/lib/boom-server`를 보관하세요.
+
+소스와 운영 안내는 [GitHub 저장소](https://github.com/aquaplatinumberlitz/boom-kr-server)에서 볼 수 있습니다.

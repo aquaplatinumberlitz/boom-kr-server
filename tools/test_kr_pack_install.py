@@ -182,7 +182,7 @@ def fake_recipe(root):
                                          send_budget=64, pending_ms=500, lease_seconds=900))
 
 
-def test_bundle(root, binaries):
+def test_bundle(root, binaries, *, self_host=False):
     pins, seeds = fake_game(root / 'game')
     config = fake_recipe(root / 'wire')
     # A pack-backed bundle must build even if an old map fixture is unavailable.
@@ -191,7 +191,7 @@ def test_bundle(root, binaries):
     room['terrain'] = dict(kinds=[2] * 195)
     bundle = root / 'bundle'
     target = f'{platform.machine()}-unknown-linux-gnu'
-    build(config, binaries, bundle, target, pack_scope='g1')
+    build(config, binaries, bundle, target, pack_scope='g1', self_host=self_host)
     template = json.loads((bundle / 'config.template.json').read_bytes())
     room = template['diagnostic_two_lobby']['fixed_room']
     assert 'map_profile' not in room and 'terrain' not in room
@@ -211,8 +211,14 @@ def test_bundle(root, binaries):
     spec.update(bytes=source.stat().st_size, sha256=digest(source))
     manifest.write_text(json.dumps(value) + '\n')
     manifest.chmod(0o400)
-    verify(bundle, digest(manifest))
-    return bundle, digest(manifest)
+    expected = digest(manifest)
+    if self_host:
+        sidecar = bundle / 'manifest.sha256'
+        sidecar.chmod(0o600)
+        sidecar.write_text(expected + '\n')
+        sidecar.chmod(0o400)
+    verify(bundle, expected)
+    return bundle, expected
 
 
 def main():

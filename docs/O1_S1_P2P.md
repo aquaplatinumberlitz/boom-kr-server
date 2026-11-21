@@ -1,6 +1,6 @@
 # O1 / S1 peer transport
 
-**Transport.** Embed iroh 1.5 (Rust, QUIC) without UPnP or port forwarding.
+**Transport.** Embed iroh 1.5 (Rust, QUIC). O1 does not require UPnP or port forwarding; S1 may try a port mapping for its direct path.
 Start via Number 0's public relay and switch to direct UDP when hole punching
 works. A package may configure a private iroh relay later, including on a VPS.
 The game server remains on the host; LAN play needs neither Internet nor relay.
@@ -35,8 +35,20 @@ before handing the certificate to the existing TLS client. At the edges of
 `kr-prelogin` and `kr-tunnel`, adapt reliable control to iroh streams and opaque
 game UDP to QUIC DATAGRAMs. Preserve capability, slot, route and epoch
 checks; avoid nesting whole QUIC packets in game datagrams. Close sessions
-when the host exits. The prototype covers code parsing, identity and a fixed
-loopback UDP bridge. Discovery, native integration and UI remain follow-ups.
+when the host exits. The O1 prototype covers code parsing, identity and a fixed
+loopback UDP bridge.
+
+**Phần server S1.** `boom-kr/s1/1` là ALPN riêng cho server tự dựng. Server dùng khóa node bền vững,
+công bố riêng địa chỉ relay bằng Pkarr và trả tên máy cùng chứng chỉ qua stream đã được iroh xác thực.
+Client kiểm vân tay DER trong mã trước khi mở proxy cục bộ. Tạo lại mã đổi khóa node và đóng các kết nối cũ;
+chứng chỉ TLS, cơ sở dữ liệu và tài khoản giữ nguyên. Mã mời làm nhiệm vụ định tuyến và ghim danh tính;
+đăng nhập và đăng ký vẫn theo cơ chế tài khoản.
+
+Launcher TCP/TLS đi qua stream. Phần prelogin và companion hiện có giữ nguyên xác thực inner QUIC.
+Lát cắt server dùng hai luồng UDP cố định tới loopback; datagram lớn chia tối đa hai mảnh có bộ đệm giới hạn,
+không chuyển qua stream và không phát lại mảnh mất ở lớp S1. Cách ghép tương thích này thêm overhead so
+với tích hợp trực tiếp vào companion. Client đo `kr-load` kết nối bằng mã S1 và giữ TLS inner; hành vi nút
+Thêm máy chủ của launcher thuộc đợt tiếp theo. Xem [đóng gói và vận hành](OPERATIONS.md#self-hosting).
 
 Run `cargo test --manifest-path rust/Cargo.toml --locked -p kr-p2p`.
 Build the lab with `cargo build --manifest-path rust/Cargo.toml --locked

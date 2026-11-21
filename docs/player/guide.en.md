@@ -59,3 +59,32 @@
 
 - If Windows blocks the connection, check **Allow an app through Windows Firewall**. Allow the launcher and programs only from a bundle you trust, for the appropriate network type.
 - Don't turn off the firewall. Ask the server operator for help if you still can't play.
+
+## Host your own server (S1)
+
+An S1 server stores accounts and match results on your computer. Keep it running while people play. Have a KR 00967 game folder with the `FxMap`, `FxContents` and `fx` pairs (an `.idx` and an `.idd` file for each).
+
+**Windows**
+
+1. Extract the entire Windows server package into one folder. Open **BoomServer.exe**.
+2. Name your server. Keep the detected game folder if it is correct, or choose **Browse…** to select your game folder. Click **Start** and wait for **Running**.
+3. Click **Copy** next to **S1 invite** and send the code to players. They can use **Servers → Add server** when their launcher supports S1.
+4. Close the window to keep hosting in the background. Click BoomServer in the system tray or open `BoomServer.exe` again to see its status. Click **Stop** before shutting down. **Back up now** saves a database snapshot; **Open data folder** opens the location of snapshots and the host account details. **Reset invite** invalidates the old code and disconnects current players.
+
+If Windows asks to allow direct connections, you can allow them on **Private networks**. BoomServer will still try the relay if you decline or your router cannot open a port. If players cannot join immediately, wait for the relay connection and try again.
+
+**Linux**
+
+1. Extract the Linux server package. For Docker Compose, open a terminal in the extracted directory. Use an absolute path to a game folder the container can read:
+
+   ```sh
+   export BOOM_GAME_DIR="/path/to/game"
+   export BOOM_NAME="Boom Club"
+   docker compose -f deploy/compose.yaml up -d --build
+   docker compose -f deploy/compose.yaml exec boom /opt/boom/bin/boom-server invite
+   ```
+
+2. On Linux with systemd, you can instead run `sudo ./deploy/install.sh /path/to/game "Boom Club"`. Once it starts, get the code with `sudo -u boom-server boom-server invite`.
+3. Send the S1 invite to your players. Keep the Docker state volume or the systemd data folder at `/var/lib/boom-server` to retain your server identity, accounts and results.
+
+Find the source and operations guide in the [GitHub repository](https://github.com/aquaplatinumberlitz/boom-kr-server).

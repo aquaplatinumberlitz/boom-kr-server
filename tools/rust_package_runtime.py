@@ -8,6 +8,7 @@ import os
 from pathlib import Path, PurePosixPath
 import stat
 import signal
+import socket
 import subprocess
 import sys
 import struct
@@ -75,6 +76,11 @@ def verify(root, expected_sha256, *, check_modes=None):
             raise ValueError('Gói không cho phép symlink hoặc reparse point')
         if path.is_file() and path != manifest:
             actual.add(path.relative_to(root).as_posix())
+    if data.get('self_host') is True:
+        sidecar = member(root, 'manifest.sha256')
+        if sidecar.read_text(encoding='ascii').strip() != expected_sha256:
+            raise ValueError('Mã SHA-256 của gói S1 không khớp bàn giao')
+        actual.remove('manifest.sha256')
     if actual != names:
         raise ValueError('Gói chứa file ngoài manifest')
     return data
@@ -136,14 +142,14 @@ def init_tls(root, state, target):
             raise ValueError('TLS identity chưa đầy đủ; cần provision lại trong state riêng')
 
 
-def prepare(root, state, cache=None, scope=None):
+def prepare(root, state, cache=None, scope=None, *, s1=False):
     state = private_state(root, state)
-    socket = state / 'launch.sock'
-    if os.name != 'nt' and max(len(os.fsencode(p)) for p in [socket, state / 'accounts.admin.sock']) > 100:
+    launch_socket = state / 'launch.sock'
+    if os.name != 'nt' and max(len(os.fsencode(p)) for p in [launch_socket, state / 'accounts.admin.sock']) > 100:
         raise ValueError('Đường dẫn socket cục bộ quá dài')
     config = json.loads((root / 'config.template.json').read_text(encoding='utf-8'))
     admission = config['diagnostic_two_lobby']['account_admission']
-    admission.update(database=str(state / 'accounts.sqlite'), launch_socket=str(socket))
+    admission.update(database=str(state / 'accounts.sqlite'), launch_socket=str(launch_socket))
     for section, key in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
         if admission.get(section) is not None:
             admission[section]['private_key'] = str(state / key)
@@ -152,6 +158,34 @@ def prepare(root, state, cache=None, scope=None):
         admission[section].update(private_key=str(directory / 'private.pk8'),
                                   certificate=dict(path=str(cert), bytes=cert.stat().st_size,
                                                    sha256=digest(cert)))
+    if s1:
+        # Reserve all ports together so we never choose the same UDP port twice.
+        # Rust verifies the service is ready before accepting the first S1 session.
+        with (socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as prelogin,
+              socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as relay,
+              socket.socket(socket.AF_INET, socket.SOCK_STREAM) as launcher):
+            for listener in (prelogin, relay, launcher):
+                listener.bind(('127.0.0.1', 0))
+            prelogin_addr, relay_addr, launcher_addr = [
+                f'127.0.0.1:{listener.getsockname()[1]}' for listener in (prelogin, relay, launcher)
+            ]
+        config.update(bind='127.0.0.1', network_scope='private_lab')
+        for actor in config['diagnostic_two_lobby']['actors']:
+            actor.pop('reported_login_ipv4', None)
+            actor['peer'] = f"127.0.0.{1 + actor['identity']}"
+        config['allowed_peers'] = list(dict.fromkeys([
+            '127.0.0.1', *(actor['peer'] for actor in config['diagnostic_two_lobby']['actors'])
+        ]))
+        primary = admission['prelogin_tls']
+        primary.update(bind=prelogin_addr, max_per_ip=primary['max_connections'])
+        # Both HTTPS and prelogin use the single leaf pinned in the invite.
+        admission['public_launcher'] = {
+            'bind': launcher_addr, 'certificate': primary['certificate'], 'private_key': primary['private_key'],
+            'max_connections': 32, 'timeout_ms': 2000,
+            'session_ttl_seconds': primary['session_ttl_seconds'],
+            'session_idle_seconds': primary['session_idle_seconds']
+        }
+        config['authenticated_relay'].update(bind=relay_addr, advertise=relay_addr)
     run = state / 'runs' / str(time.time_ns())
     run.mkdir(mode=0o700, parents=True)
     if cache is not None:
@@ -172,7 +206,7 @@ def main():
     # The verified package stays immutable even when owned by the runner.
     sys.dont_write_bytecode = True
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['verify', 'init-db', 'init-tls', 'restore-db', 'migrate-db', 'export', 'run'])
+    parser.add_argument('command', choices=['verify', 'init-db', 'init-tls', 'restore-db', 'migrate-db', 'export', 'run', 'prepare-s1'])
     parser.add_argument('--manifest-sha256', required=True)
     parser.add_argument('--state', type=Path)
     parser.add_argument('--snapshot', type=Path)
@@ -198,7 +232,7 @@ def main():
         scope = manifest.get('pack_scope')
         if scope is not None and scope not in ('g1', 'f1'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
-        needs_game = scope is not None and args.command in ('export', 'run')
+        needs_game = scope is not None and args.command in ('export', 'run', 'prepare-s1')
         if needs_game != (args.game_dir is not None):
             raise ValueError('Gói từ pack yêu cầu --game-dir khi export hoặc run')
         if args.command == 'export' and scope is None:
@@ -208,6 +242,17 @@ def main():
         admin = str(executable(root, 'kr-admin', target))
         state = private_state(root, args.state, admin)
         database = state / 'accounts.sqlite'
+        if args.command == 'prepare-s1':
+            # The caller holds the runner lock for its entire lifetime. S1
+            # owns its TLS identity and never uses an externally installed key.
+            if not manifest.get('self_host') or not needs_game or 'prelogin_tls' not in package_tls(root, state):
+                raise ValueError('Cần gói S1 phát hành cùng cấu hình cấp chứng chỉ khi cài')
+            init_tls(root, state, target)
+            from kr_pack_export import export
+            cache, _ = export(args.game_dir, state / 'pack-cache')
+            runtime, out, _ = prepare(root, state, cache, scope, s1=True)
+            print(json.dumps({'runtime': str(runtime), 'out': str(out)}))
+            return
         with package_lock(state) as lock_fd:
             if args.command == 'restore-db':
                 subprocess.run([admin, 'restore', str(args.snapshot.absolute()), str(database)], check=True, cwd=root)
