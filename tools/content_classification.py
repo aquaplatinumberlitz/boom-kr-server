@@ -31,6 +31,47 @@ NATIVE_BATCH_A = {
     "Ocean00", "Patrit01", "Tomb01", "Village00", "Xmas01",
 }
 NATIVE_BATCH_SCOPE = "Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay."
+NATIVE_F1_GAMEPLAY_CHECKPOINT = "CP384"
+NATIVE_F1_GAMEPLAY_SCOPE = "Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay."
+# Map keys with the full native cycle. Content observations describe only what
+# was seen; family promotion additionally requires reviewed item/terrain scope.
+NATIVE_F1_GAMEPLAY = {
+    "BSSmallCamp08": "Thấy dải lưới và thùng trong vùng đấu thu nhỏ.",
+    "BSSmallVillage10": "Thấy hàng cây bao quanh cụm nhà và thùng.",
+    "BSSmallPatrit14": "Thấy tường bao và cột trong vùng đấu.",
+    "CaJJ_CAPong01": "Thấy nền lưới với chướng ngại hình vuông và tròn.",
+    "CaJJ_Camp08": "Thấy dải lưới và cột trong vùng đấu.",
+    "CaJJ_Clover01": "Thấy cụm chướng ngại hình cỏ bốn lá.",
+    "CaJJ_Factory07": "Thấy lưới và cột có sọc trong vùng đấu.",
+    "CaJJ_Forest07": "Thấy ao ở góc dưới bên phải.",
+    "CaJJ_Ocean24": "Thấy nền nước, cụm đá và các khối sáng.",
+    "CaJJ_Patrit14": "Thấy các dãy thùng, cột và giàn ở giữa sân.",
+    "CaJJ_RetroCamp08": "Thấy dải lưới và thùng gỗ; Fire đặt thử chưa có yêu cầu nhặt từ client.",
+    "CaJJ_RetroFactory07": "Thấy cột và dải chướng ngại có sọc.",
+    "CaJJ_RetroForest07": "Thấy ao ở góc dưới bên phải.",
+    "CaJJ_RetroPatrit14": "Thấy cột và giàn ở giữa sân.",
+    "CaJJ_RetroVillage10": "Thấy dãy nhà, cây và thùng dọc đường giữa.",
+    "CaJJ_Tomb12": "Thấy rãnh dài và cầu ngang.",
+    "CaJJ_Village10": "Thấy các dãy nhà, cây và thùng ở đường giữa.",
+    "EventCamp00": "Thấy dãy rào và lưới bao quanh vùng giữa.",
+    "EventFactory00": "Thấy cột có biểu tượng và dải có sọc.",
+    "EventOcean00": "Thấy các cầu gỗ nối vùng đất.",
+    "ExCamp01": "Thấy dải lưới và chướng ngại hình lốp.",
+    "ExFactory01": "Thấy các cột có biểu tượng quanh vùng đấu.",
+    "ExForest01": "Thấy ao và cây lớn ở giữa.",
+    "ExPatrit01": "Thấy cột tròn và công trình ở giữa.",
+    "ExTomb01": "Thấy rãnh tối và cầu ở giữa.",
+    "ExVillage02": "Thấy cụm nhà, thùng và cụm hình cây ở giữa.",
+    "Fm_CAPong01": "Thấy nền lưới với chướng ngại hình vuông và tròn.",
+    "Fm_Camp08": "Thấy nhân vật tiến đến cạnh thùng; có báo cáo 142, chưa xác nhận MaxPower lộ hoặc được nhặt.",
+    "Fm_Patrit14": "Thấy các dãy thùng, cột và giàn ở giữa sân.",
+    "Fm_Tomb22": "Thấy dãy cột và cụm tượng bao quanh vùng giữa.",
+    "NXCL_Ocean02": "Thấy nền nước, các khối sáng và cụm đá giữa.",
+    "forest21": "Thấy cụm cây và hoa nhiều màu chia hai phía.",
+}
+# Full family coverage is explicit: a one-map family can still have unobserved
+# item or terrain mechanics. Do not promote it from a match cycle alone.
+NATIVE_F1_FAMILY_A = frozenset()
 MAPS = {"Forest07", "Patrit14", "Village10", "Camp08", "Tomb12", "Factory07"}
 BASIC_ITEMS = {"Item/ItemBomb", "Item/ItemFire", "Item/ItemRoller", "Item/ItemMaxPower"}
 ACTION_ITEMS = {"Item/ItemShoe", "Item/ItemPunch", "Item/ItemNiddle"}
@@ -87,6 +128,7 @@ def generate(data, digest):
     for m in data["maps"]:
         by_family[m["category"], m["family"]].append(m)
     seen_batch_maps = set()
+    seen_gameplay_maps = set()
     for (category, family), maps in sorted(by_family.items()):
         base = base_theme(family) or family
         family_maps = {m["name"] for m in maps}
@@ -119,22 +161,34 @@ def generate(data, digest):
                      scope=NATIVE_BATCH_SCOPE, checkpoint=NATIVE_BATCH_CHECKPOINT)
                 for name in tested
             ]
-            if extra["probe"]["sample"] in tested:
+            gameplay = sorted(family_maps & NATIVE_F1_GAMEPLAY.keys())
+            seen_gameplay_maps.update(gameplay)
+            observations.extend(
+                dict(map=name, source="kr_runtime", status="confirmed", classification="A",
+                     scope=NATIVE_F1_GAMEPLAY_SCOPE, content=NATIVE_F1_GAMEPLAY[name],
+                     checkpoint=NATIVE_F1_GAMEPLAY_CHECKPOINT)
+                for name in gameplay
+            )
+            sample = extra["probe"]["sample"]
+            if sample in tested or sample in gameplay:
                 extra["probe"].update(status="confirmed", classification="A",
-                                      checkpoint=NATIVE_BATCH_CHECKPOINT)
+                                      checkpoint=(NATIVE_F1_GAMEPLAY_CHECKPOINT if sample in gameplay
+                                                  else NATIVE_BATCH_CHECKPOINT))
             prior = NATIVE_F1.get(family)
             if prior:
                 assert prior["map"] in family_maps
                 extra["native_step0"] = prior
             if observations:
                 extra["native_samples"] = observations
-            if code == "B" and family_maps <= NATIVE_BATCH_A:
-                code, reason = "A", "Đã chạy trên server hiện tại trong phạm vi thử native bên dưới."
+            if family in NATIVE_F1_FAMILY_A:
+                assert code == "B" and family_maps <= set(gameplay)
+                code, reason = "A", "Cả họ đã qua chu trình và các đối chứng nội dung nêu bên dưới."
                 extra["status"] = "confirmed"
         add("map", family, wave, code, reason, category=category, base=base,
             map_count=len(maps), script_count=sum(m["scripted"] for m in maps),
             script_unknown=len(substantial), native_g1=native, **extra)
     assert seen_batch_maps == NATIVE_BATCH_A
+    assert seen_gameplay_maps == NATIVE_F1_GAMEPLAY.keys()
 
     by_group = defaultdict(list)
     lookup = {}
@@ -231,15 +285,16 @@ def markdown(data):
     f1 = Counter(r["classification"] for r in rows if r["kind"] == "map" and r["wave"] == "F1")
     lines.extend([
         "",
-        f"Họ map F1: {f1['A']} A, {f1['B']} B, {f1['C']} C. Có {len(NATIVE_BATCH_A)} map đạt A ở cấp map trong đợt thử mới.",
+        f"Họ map F1: {f1['A']} A, {f1['B']} B, {f1['C']} C. Có {len(NATIVE_BATCH_A | NATIVE_F1_GAMEPLAY.keys())} map đạt A ở cấp map.",
         "",
         "### Phép thử rẻ cho F1",
         "",
         "Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) giữ đối chứng",
         f"ban đầu. [{NATIVE_BATCH_CHECKPOINT}](../evidence/checkpoints/records/{NATIVE_BATCH_CHECKPOINT}.json) ghi",
-        "kết quả trên server hiện tại với catalog dựng từ pack, qua TLS/relay trong LAN cô lập. Mẫu A có",
-        "Start/Load, tương tác trong trận, kết quả và về phòng. Chỉ nâng lớp B của cả họ khi mọi map trong họ",
-        "đã qua phép thử này. Mẫu A không xác nhận item, drop, toàn bộ địa hình, script hoặc roster khác.",
+        f"đối chứng chu trình. [{NATIVE_F1_GAMEPLAY_CHECKPOINT}](../evidence/checkpoints/records/{NATIVE_F1_GAMEPLAY_CHECKPOINT}.json) mở rộng mẫu trên",
+        "catalog dựng từ pack, qua TLS/relay trong LAN cô lập. Mẫu A có Start/Load, tương tác trong trận, kết quả",
+        "và về phòng. Cột quan sát chỉ ghi nội dung thấy hoặc đã đối chứng, kèm giới hạn nếu có. Giữ họ ở lớp B",
+        "nếu còn map chưa qua chu trình hoặc còn thiếu căn cứ về item, đồ rơi và địa hình đặc biệt của họ.",
         f"Route cũ chỉ được dùng theo phạm vi [ma trận G1]({G1}).",
     ])
     for kind, title in titles.items():
@@ -263,6 +318,8 @@ def markdown(data):
             for observed in observations:
                 result = " (A)" if observed.get("classification") == "A" else ""
                 reason += f' **{observed["map"]}{result}:** {observed["scope"]}'
+                if observed.get("content"):
+                    reason += f' {observed["content"]}'
             lines.append(f'| {row["name"]} | {row["wave"]} | {row["classification"] or "—"} | {count} | {reason} |')
     return "\n".join(lines) + "\n"
 

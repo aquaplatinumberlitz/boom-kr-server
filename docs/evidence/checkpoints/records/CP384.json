@@ -1,0 +1,77 @@
+{
+  "id": "CP384",
+  "previous": "CP383",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T08:28:57.216238+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Điều kiện nào ngăn gửi đăng nhập sai ở controller Wine, và mẫu F1 nào chơi được hoặc cho thấy item/địa hình?",
+  "scope": "KRE-STEP0-A (#532) và KRE-STEP0-C (#534). Tối đa bốn lượt native, hai client KR 00967, TLS/relay trong LAN cô lập; không mở F1–F6.",
+  "context_commit": "2ae5a17c90ee7d28b3e0b3ec27fecd358650adde",
+  "artifacts": [
+    {"sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"sha256": "12e9f49b29d66403a331a90f603190cbde2240b45f46d8f4937ea2cffc231909"},
+    {"sha256": "fb44932d870300c2991c64938db83ed50d8ce1a5a2c760e6384d97de56d2bbc2"},
+    {"sha256": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b"},
+    {"sha256": "f5797a744797cd18ff524e42f7645bdecf8869d2462e7bb1245f1f7ddb6d1f98"},
+    {"sha256": "34bc651867ed815860a74686a2e55bef686c1fdaa5e1b1d6cdedd6fd1bf1434e"}
+  ],
+  "locators": [
+    "local/research/codex/step0-f1-gameplay",
+    "Wine wine-10.0-20260425 (CachyOS); batch-1 đến batch-4."
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/native-client-controller.md", "summary": "CP382 có guard opcode 1 và ảnh sau lỗi vẫn có ID điền sẵn; controller cũ chỉ kiểm cửa sổ. Chờ panel, kiểm ô trống/bắt đầu có chữ và đợi đúng tài khoản tới channel/lobby đã qua hai lượt cuối.", "evidence": ["OLD_GUARD", "OLD_ID", "RECEIPT", "LOGIN_TOOL"], "limits": "Hai lượt đầu dừng sớm: con trỏ rồi caret làm phép so ảnh báo sai. Ảnh không cho biết chính xác nội dung gửi trong opcode 1; không suy mọi lỗi guard đều cùng nguyên nhân."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/classification.md", "summary": "32 map chưa có ca này hoàn tất chu trình hai client. Ảnh trong ván ghi địa hình kiểu cầu/nước, lưới/cột và vật cản theo từng mẫu.", "evidence": ["RECEIPT", "VISUAL", "WATERWAY"], "limits": "Bản sao KR 00967 cùng hash CP382; LAN cô lập qua TLS và relay. Quan sát ảnh không chốt mọi va chạm hoặc đường đi."},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/content/classification.md", "summary": "CaJJ_RetroCamp08 và Fm_Camp08 không có yêu cầu nhặt 124. Fm_Camp08 có chuyển động đến cạnh thùng và báo cáo 142 sau đặt bom; ảnh không xác nhận MaxPower lộ ra.", "evidence": ["VISUAL", "FIRE_PICTURE", "ITEM_ARENA", "ITEM_RESULT"], "limits": "Hai ca là đối chứng hẹp với fixture Fire và MaxPower; 142 chỉ xác nhận có báo cáo từ client. Chưa đo việc nhặt, hiệu ứng item hoặc xác suất rơi."},
+    {"source": "emu_choice", "status": "design", "method": "design", "canonical": "docs/content/classification.md", "summary": "Floor Fire cấu hình riêng; route MaxPower ẩn mượn policy terrain Camp08 cho lưới và vị trí trùng pack của Fm_Camp08. Mẫu khác dùng floor rỗng và không bật terrain phía server.", "evidence": ["ITEM_RECIPE", "ITEM_CONFIG", "PREFLIGHT"], "limits": "Không đo thuật toán rơi của server gốc hoặc toàn bộ item/địa hình của bất kỳ họ nào."}
+  ],
+  "verification": [
+    {"check": "Kiểm helper khô trên ảnh đen, ảnh có ID sẵn và ảnh mô phỏng field render trễ; biên dịch Win32 với cảnh báo nghiêm.", "result": "pass", "evidence": ["DRY", "LOGIN_TOOL"], "limits": "Không dùng lượt Wine để chạy test khô."},
+    {"check": "Kiểm chu trình của từng map được xếp A qua 99/118/202 từ client, Start/peer/return trên hai stream, ảnh và SQLite.", "result": "pass", "evidence": ["RECEIPT", "VERIFY", "RUN3", "RUN4"], "limits": "Đăng nhập tới sảnh: [0, 1, 2, 2]; map thử/hoàn tất: [(0, 0), (0, 0), (16, 16), (16, 16)]. Hai lượt đầu không đến bước chọn map."},
+    {"check": "Thử ít nhất tám map chưa đo trong mỗi lượt Wine.", "result": "fail", "evidence": ["RECEIPT"], "limits": "Hai lượt đầu dừng ở cổng nhập; giữ đủ bốn lượt, không chạy bù ngoài ngân sách."},
+    {"check": "Đối chiếu item và terrain với ảnh trước/sau và log opcode trong ván.", "result": "pass", "evidence": ["VISUAL", "ITEM_CONFIG"], "limits": "Hai ca là đối chứng hẹp với fixture Fire và MaxPower; 142 chỉ xác nhận có báo cáo từ client. Chưa đo việc nhặt, hiệu ứng item hoặc xác suất rơi."},
+    {"check": "Dừng hai client và namespace riêng sau mỗi lượt; bỏ qua ba PID thường trực.", "result": "pass", "evidence": ["RECEIPT"], "limits": "Đã dọn 18531996708 byte scratch; không đụng VM thường trực hoặc VPS."}
+  ],
+  "delta": {"added": ["Xếp lớp A ở cấp map từ chu trình native; ghi ảnh vật cản và đối chứng item theo map."], "corrected": ["Chờ login panel và kiểm xóa ID điền sẵn, thêm mốc channel theo tài khoản."], "superseded": []},
+  "blockers": [
+    "Chưa đủ quan sát item/drop và địa hình đặc biệt để nâng cả họ B lên A. Các mẫu script hoặc kích thước khác tiếp tục giữ C."
+  ],
+  "next_steps": [
+    {"id": "STEP0-A-native-samples", "task": "KRE-STEP0-A", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Dùng bảng để chọn đối chứng còn thiếu cho từng họ khi có ngân sách hoặc mở F1."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T08:28:57.216238+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay trạng thái hiện tại ở bước 0 sau khi sửa chặn đăng nhập và đo thêm mẫu."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển mốc trước từ README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi kết quả và phần còn thiếu ở bảng điều hành."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire hoặc policy của cấu hình phục vụ."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Các giới hạn xếp loại nằm ở bảng nội dung; không mở câu hỏi wire."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi nhiệm vụ hay gate."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi nguồn sinh coverage."},
+    {"path": "docs/content/classification.md", "state": "updated", "reason": "Sinh kết quả theo đúng map và phạm vi item hoặc địa hình đã thấy."},
+    {"path": "docs/content/native-client-controller.md", "state": "updated", "reason": "Ghi cách chờ form, kiểm field và xác nhận channel/lobby."},
+    {"path": "docs/evidence/checkpoints/records/CP384.json", "state": "updated", "reason": "Pin receipt, ảnh, recipe, journal, config và log của các lượt."}
+  ],
+  "evidence": [
+    {"id": "OLD_GUARD", "kind": "local", "path": "local/research/codex/step0-native/batch-3/service/rust-events.jsonl", "bytes": 4845, "sha256": "9f77def42af156ac88f21f1a6845c13c17e200dc74543847d62f36ff7f26c56b"},
+    {"id": "OLD_ID", "kind": "local", "path": "local/research/codex/step0-native/batch-3/failure-1-A.png", "bytes": 479369, "sha256": "674d8d92b0f997581fcbaee6edc9f1133a3969cbef53f77f27fb69fba68f20e8"},
+    {"id": "LOGIN_TOOL", "kind": "repository", "path": "tools/native_wine_login.py", "bytes": 2727, "sha256": "1951232c08eb569d976d2aefcb8d5bf3787a3ca0d371a6a2d79a14c3abcb6c0b"},
+    {"id": "DRY", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/dry-verification.txt", "bytes": 1439, "sha256": "5b5879824b82124084a569d6fe2127f297d9db78aaba039c3e1eb08cec681a6b"},
+    {"id": "RECEIPT", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/batch-receipt.json", "bytes": 58507, "sha256": "c19f74fd185239e934ac5adfe218b4709977603c74b951ff013995657a2f190b"},
+    {"id": "VISUAL", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/observations.json", "bytes": 22533, "sha256": "869835039662f87adf309d73910c41d860170b64aea929b235ea101f4fa74dae"},
+    {"id": "PREFLIGHT", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/wide-preflight.json", "bytes": 1657, "sha256": "cf1a6a1f72db0e9de932b9dc16ea5bd977d2cd9112ddadefc813ca062c6f5810"},
+    {"id": "VERIFY", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/verify_batch.py", "bytes": 4673, "sha256": "269374fb372848379a09a1aa6cb5d37d97c8cb0cfc6aba2f79c2b8ade1b93a01"},
+    {"id": "ITEM_RECIPE", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/prepare_items.py", "bytes": 2703, "sha256": "bb453cd61cc5efd58caaf8d4b288219f7bf025e68e4643d1761acb94fe640c40"},
+    {"id": "ITEM_CONFIG", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/wide-catalog-4/items.json", "bytes": 483, "sha256": "e4c378995e433d350ce093cb9223fe2fa506b1f10eb822dd0881e23a1485c95d"},
+    {"id": "WATERWAY", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/batch-3/EventOcean00-post-blast-A.png", "bytes": 193344, "sha256": "d9a92be2709b190fb29e216e0c023a140383cd4c03b66ab1d8491a76e964a29f"},
+    {"id": "RUN3", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/batch-3/service/rust-events.jsonl", "bytes": 113917, "sha256": "23b72311fae34b3c2d14c5dd7b4679d6bfb48e13d9a220fc43abd187662c0ec0"},
+    {"id": "RUN4", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/batch-4/service/rust-events.jsonl", "bytes": 115521, "sha256": "3ac26eb345de1da2396d80170562d7dd4f7ba709e7406669eda5ddbb90ceec02"},
+    {"id": "FIRE_PICTURE", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/batch-4/CaJJ_RetroCamp08-approach-A.png", "bytes": 216180, "sha256": "29d81ac135d7a0d33a610c98e55bd3550cf3be9f464d737b002e5c349bfc5b5c"},
+    {"id": "ITEM_ARENA", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/batch-4/Fm_Camp08-arena-A.png", "bytes": 319234, "sha256": "df911cbb008fbb400f78656feb4cfead71c18a930f1692a528de40ea57c0d62c"},
+    {"id": "ITEM_RESULT", "kind": "local", "path": "local/research/codex/step0-f1-gameplay/batch-4/Fm_Camp08-post-blast-A.png", "bytes": 280830, "sha256": "c7a681314ffe2458ac081cdae772e2572a99ce7e5788c11b20658ec9169633bd"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/step0-f1-gameplay", "path": "local/evidence-manifests/d2248363a76fbd88e2e5f2942d4ef2f3d3235765e8ff4ce658e2530948cb6caf.jsonl", "sha256": "d2248363a76fbd88e2e5f2942d4ef2f3d3235765e8ff4ce658e2530948cb6caf", "bytes": 359465, "count": 1797, "files_bytes": 63043658}
+  ]
+}

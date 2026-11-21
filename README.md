@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP383: Gói Linux đọc pack KR 00967 tại máy cài; hai client TLS tổng hợp hoàn tất một ván, rồi kiểm backup và dừng sạch.** [Cách cài](docs/OPERATIONS.md#gói-linux-và-state-riêng) · [Bằng chứng](docs/evidence/checkpoints/records/CP383.json).
+**CP384: Bước 0 đã qua cổng đăng nhập mới trên Wine và mở rộng mẫu F1 đã chơi đến kết quả; lớp A ở cấp họ vẫn cần đối chứng nội dung.** [Bằng chứng](docs/evidence/checkpoints/records/CP384.json).
 
 ## Bắt đầu
 

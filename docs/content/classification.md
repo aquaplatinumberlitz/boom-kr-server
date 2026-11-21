@@ -20,15 +20,16 @@ Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; gi�
 | Mode | 1 | 0 | 31 | 0 |
 | Hệ thống | 4 | 5 | 51 | 1 |
 
-Họ map F1: 0 A, 86 B, 22 C. Có 15 map đạt A ở cấp map trong đợt thử mới.
+Họ map F1: 0 A, 86 B, 22 C. Có 47 map đạt A ở cấp map.
 
 ### Phép thử rẻ cho F1
 
 Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) giữ đối chứng
 ban đầu. [CP382](../evidence/checkpoints/records/CP382.json) ghi
-kết quả trên server hiện tại với catalog dựng từ pack, qua TLS/relay trong LAN cô lập. Mẫu A có
-Start/Load, tương tác trong trận, kết quả và về phòng. Chỉ nâng lớp B của cả họ khi mọi map trong họ
-đã qua phép thử này. Mẫu A không xác nhận item, drop, toàn bộ địa hình, script hoặc roster khác.
+đối chứng chu trình. [CP384](../evidence/checkpoints/records/CP384.json) mở rộng mẫu trên
+catalog dựng từ pack, qua TLS/relay trong LAN cô lập. Mẫu A có Start/Load, tương tác trong trận, kết quả
+và về phòng. Cột quan sát chỉ ghi nội dung thấy hoặc đã đối chứng, kèm giới hạn nếu có. Giữ họ ở lớp B
+nếu còn map chưa qua chu trình hoặc còn thiếu căn cứ về item, đồ rơi và địa hình đặc biệt của họ.
 Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-service/g1-acceptance-matrix.json).
 
 ## Họ map
@@ -55,55 +56,55 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | Tomb | F1 | B | 5 · `Tomb01`; G1: Tomb12 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Tomb01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
 | Village | F1 | B | 6 · `Village00`; G1: Village10 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Village00 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
 | Xmas | F1 | B | 14 · `Xmas01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Xmas01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
-| forest | F1 | B | 1 · `forest21` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| forest | F1 | B | 1 · `forest21` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **forest21 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cụm cây và hoa nhiều màu chia hai phía. |
 | kfg | F1 | B | 3 · `kfg01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | mine | F1 | B | 1 · `mine23` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | patrit | F1 | B | 1 · `patrit19` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | BSBigCamp | F1 | C | 1 · `BSBigCamp08` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | BSBigPatrit | F1 | C | 1 · `BSBigPatrit14` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | BSBigVillage | F1 | C | 1 · `BSBigVillage10` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| BSSmallCamp | F1 | B | 1 · `BSSmallCamp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| BSSmallPatrit | F1 | B | 1 · `BSSmallPatrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| BSSmallVillage | F1 | B | 1 · `BSSmallVillage10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_CAPong | F1 | B | 5 · `CaJJ_CAPong01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_Camp | F1 | B | 1 · `CaJJ_Camp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_Clover | F1 | B | 5 · `CaJJ_Clover01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_Factory | F1 | B | 1 · `CaJJ_Factory07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_Forest | F1 | B | 1 · `CaJJ_Forest07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_Ocean | F1 | B | 1 · `CaJJ_Ocean24` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_Patrit | F1 | B | 1 · `CaJJ_Patrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_RetroCamp | F1 | B | 1 · `CaJJ_RetroCamp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_RetroFactory | F1 | B | 1 · `CaJJ_RetroFactory07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_RetroForest | F1 | B | 1 · `CaJJ_RetroForest07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_RetroPatrit | F1 | B | 1 · `CaJJ_RetroPatrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_RetroVillage | F1 | B | 1 · `CaJJ_RetroVillage10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| BSSmallCamp | F1 | B | 1 · `BSSmallCamp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **BSSmallCamp08 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dải lưới và thùng trong vùng đấu thu nhỏ. |
+| BSSmallPatrit | F1 | B | 1 · `BSSmallPatrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **BSSmallPatrit14 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy tường bao và cột trong vùng đấu. |
+| BSSmallVillage | F1 | B | 1 · `BSSmallVillage10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **BSSmallVillage10 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy hàng cây bao quanh cụm nhà và thùng. |
+| CaJJ_CAPong | F1 | B | 5 · `CaJJ_CAPong01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_CAPong01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền lưới với chướng ngại hình vuông và tròn. |
+| CaJJ_Camp | F1 | B | 1 · `CaJJ_Camp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Camp08 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dải lưới và cột trong vùng đấu. |
+| CaJJ_Clover | F1 | B | 5 · `CaJJ_Clover01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Clover01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cụm chướng ngại hình cỏ bốn lá. |
+| CaJJ_Factory | F1 | B | 1 · `CaJJ_Factory07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Factory07 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy lưới và cột có sọc trong vùng đấu. |
+| CaJJ_Forest | F1 | B | 1 · `CaJJ_Forest07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Forest07 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy ao ở góc dưới bên phải. |
+| CaJJ_Ocean | F1 | B | 1 · `CaJJ_Ocean24` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Ocean24 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền nước, cụm đá và các khối sáng. |
+| CaJJ_Patrit | F1 | B | 1 · `CaJJ_Patrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Patrit14 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy các dãy thùng, cột và giàn ở giữa sân. |
+| CaJJ_RetroCamp | F1 | B | 1 · `CaJJ_RetroCamp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_RetroCamp08 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dải lưới và thùng gỗ; Fire đặt thử chưa có yêu cầu nhặt từ client. |
+| CaJJ_RetroFactory | F1 | B | 1 · `CaJJ_RetroFactory07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_RetroFactory07 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cột và dải chướng ngại có sọc. |
+| CaJJ_RetroForest | F1 | B | 1 · `CaJJ_RetroForest07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_RetroForest07 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy ao ở góc dưới bên phải. |
+| CaJJ_RetroPatrit | F1 | B | 1 · `CaJJ_RetroPatrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_RetroPatrit14 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cột và giàn ở giữa sân. |
+| CaJJ_RetroVillage | F1 | B | 1 · `CaJJ_RetroVillage10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_RetroVillage10 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dãy nhà, cây và thùng dọc đường giữa. |
 | CaJJ_Space | F1 | C | 2 · `CaJJ_Space02` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| CaJJ_Tomb | F1 | B | 1 · `CaJJ_Tomb12` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| CaJJ_Village | F1 | B | 1 · `CaJJ_Village10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| CaJJ_Tomb | F1 | B | 1 · `CaJJ_Tomb12` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Tomb12 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy rãnh dài và cầu ngang. |
+| CaJJ_Village | F1 | B | 1 · `CaJJ_Village10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **CaJJ_Village10 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy các dãy nhà, cây và thùng ở đường giữa. |
 | CaJJ_Wriggle | F1 | C | 7 · `CaJJ_Wriggle01` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| EventCamp | F1 | B | 1 · `EventCamp00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| EventFactory | F1 | B | 1 · `EventFactory00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| EventCamp | F1 | B | 1 · `EventCamp00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **EventCamp00 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dãy rào và lưới bao quanh vùng giữa. |
+| EventFactory | F1 | B | 1 · `EventFactory00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **EventFactory00 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cột có biểu tượng và dải có sọc. |
 | EventForest | F1 | B | 1 · `EventForest00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| EventOcean | F1 | B | 1 · `EventOcean00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| EventOcean | F1 | B | 1 · `EventOcean00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **EventOcean00 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy các cầu gỗ nối vùng đất. |
 | EventPatrit | F1 | B | 1 · `EventPatrit00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | ExBula | F1 | B | 2 · `ExBula01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| ExCamp | F1 | B | 2 · `ExCamp01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| ExFactory | F1 | B | 2 · `ExFactory01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| ExForest | F1 | B | 1 · `ExForest01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| ExPatrit | F1 | B | 2 · `ExPatrit01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| ExTomb | F1 | B | 2 · `ExTomb01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| ExVillage | F1 | B | 2 · `ExVillage01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| ExCamp | F1 | B | 2 · `ExCamp01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExCamp01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dải lưới và chướng ngại hình lốp. |
+| ExFactory | F1 | B | 2 · `ExFactory01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExFactory01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy các cột có biểu tượng quanh vùng đấu. |
+| ExForest | F1 | B | 1 · `ExForest01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExForest01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy ao và cây lớn ở giữa. |
+| ExPatrit | F1 | B | 2 · `ExPatrit01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExPatrit01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cột tròn và công trình ở giữa. |
+| ExTomb | F1 | B | 2 · `ExTomb01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExTomb01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy rãnh tối và cầu ở giữa. |
+| ExVillage | F1 | B | 2 · `ExVillage01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **ExVillage02 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy cụm nhà, thùng và cụm hình cây ở giữa. |
 | Fm_AIBtlDesert | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Fm_AIBtlForest | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Fm_AIBtlPatrit | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Fm_AIBtlTomb | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Fm_CAPong | F1 | B | 3 · `Fm_CAPong01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Fm_Camp | F1 | B | 1 · `Fm_Camp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Fm_CAPong | F1 | B | 3 · `Fm_CAPong01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Fm_CAPong01 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền lưới với chướng ngại hình vuông và tròn. |
+| Fm_Camp | F1 | B | 1 · `Fm_Camp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Fm_Camp08 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nhân vật tiến đến cạnh thùng; có báo cáo 142, chưa xác nhận MaxPower lộ hoặc được nhặt. |
 | Fm_Coloring | F1 | C | 1 · `Fm_Coloring03` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| Fm_Patrit | F1 | B | 1 · `Fm_Patrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Fm_Patrit | F1 | B | 1 · `Fm_Patrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Fm_Patrit14 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy các dãy thùng, cột và giàn ở giữa sân. |
 | Fm_RescueET | F1 | C | 3 · `Fm_RescueET01` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | Fm_Space | F1 | C | 2 · `Fm_Space01` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| Fm_Tomb | F1 | B | 1 · `Fm_Tomb22` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Fm_Tomb | F1 | B | 1 · `Fm_Tomb22` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Fm_Tomb22 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy dãy cột và cụm tượng bao quanh vùng giữa. |
 | Fm_Village | F1 | B | 1 · `Fm_Village10` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | Fm_Wriggle | F1 | C | 2 · `Fm_Wriggle02` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | LJ_Camp | F1 | B | 1 · `LJ_Camp08` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
@@ -126,7 +127,7 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | NXCL_Forest | F1 | B | 1 · `NXCL_Forest07` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | NXCL_Ice | F1 | B | 1 · `NXCL_Ice13` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | NXCL_Mine | F1 | B | 1 · `NXCL_Mine01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| NXCL_Ocean | F1 | B | 1 · `NXCL_Ocean02` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| NXCL_Ocean | F1 | B | 1 · `NXCL_Ocean02` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **NXCL_Ocean02 (A):** Hai client Wine vào trận, đặt bom, nhận kết quả và về phòng qua TLS/relay. Thấy nền nước, các khối sáng và cụm đá giữa. |
 | NXCL_PangLand | F1 | C | 1 · `NXCL_PangLand15` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | NXCL_Patrit | F1 | B | 1 · `NXCL_Patrit14` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | NXCL_Tomb | F1 | B | 1 · `NXCL_Tomb12` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |

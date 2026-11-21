@@ -57,3 +57,13 @@ Use test text only: the helper receives UTF-16 units as a process argument.
 Clicks accept `settle_ms` for hover after pointer movement. Clicks and held keys are ordinary input. Server gates prove that server state
 advanced; they cannot prove a client rendered the screen, accepted input, or
 showed its match clock. The next server gate can verify the resulting request.
+
+For the isolated KR 00967 Wine probe, `tools/native_wine_login.py` is a separate
+Pillow-based helper for the centered 800×600 client on a 1024×768 desktop. It waits
+for two frames that match the login panel in an empty-form reference from the
+same client build. It clears the existing values with End and Backspace, moves
+the game cursor away from the field, and waits for each field to clear and
+receive input before clicking Sign In. The helper expects short ASCII test
+credentials; a rendered field does not establish that the server accepted
+them. The batch driver must still wait for the channel for the expected
+account and the lobby marker. Use an owned Wine prefix and display.
