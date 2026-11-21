@@ -40,6 +40,7 @@ pub(crate) struct Listener {
     listener: TcpListener,
     key: hmac::Key,
     path: PathBuf,
+    published: bool,
     _lock: File,
 }
 impl Listener {
@@ -65,10 +66,11 @@ impl Listener {
         bytes[..8].copy_from_slice(MAGIC);
         bytes[8..10].copy_from_slice(&listener.local_addr()?.port().to_be_bytes());
         getrandom::fill(&mut bytes[10..]).map_err(io::Error::other)?;
-        let owner = Self {
+        let mut owner = Self {
             listener,
             key: hmac::Key::new(hmac::HMAC_SHA256, &bytes[10..]),
             path: path.to_owned(),
+            published: false,
             _lock: guard,
         };
         // Build a complete descriptor before exposing it to readers. This
@@ -88,6 +90,7 @@ impl Listener {
             let _ = fs::remove_file(stage);
         }
         publish?;
+        owner.published = true;
         Ok(owner)
     }
 
@@ -101,7 +104,9 @@ impl Listener {
 }
 impl Drop for Listener {
     fn drop(&mut self) {
-        let _ = fs::remove_file(&self.path);
+        if self.published {
+            let _ = fs::remove_file(&self.path);
+        }
     }
 }
 

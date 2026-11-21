@@ -1,6 +1,7 @@
 # KR server operations
 
-Run one KR 00967 service instance per private state directory. Run the commands below as a dedicated Linux service user unless a build or firewall step calls for a different account.
+Chạy một instance KR 00967 trên mỗi thư mục state riêng. Các lệnh Linux chạy bằng tài khoản riêng của dịch vụ;
+xem [gói Windows](#gói-server-windows) cho tài khoản và lệnh tương ứng.
 
 ## System requirements
 
@@ -31,7 +32,46 @@ Run one KR 00967 service instance per private state directory. Run the commands 
 
    Builder chỉ lấy mẫu wire và cấu hình vận hành từ recipe; đường dẫn pin tương đối tính từ thư mục của recipe.
    Gói không chứa profile map, terrain, DB hay private key. Mặc định dùng sáu map G1. Dùng `--pack-scope f1` để chạy
-   catalog mẫu CP382 ở phạm vi hai người, floor trống và tắt terrain. Dùng `--legacy-fixtures` để tái lập gói cũ khi rollback.
+   catalog mẫu CP382 ở phạm vi hai người, floor trống và tắt terrain. Trên Linux, dùng `--legacy-fixtures` để tái lập gói cũ khi rollback.
+
+## Gói server Windows
+
+Lõi dùng chung cho **Play with friends / Chơi với bạn bè** (O1) và gói tự dựng (S1). Dùng cùng recipe, mẫu wire
+và exporter KR 00967 như gói Linux. Từ host build có MinGW-w64 x86-64:
+
+```bash
+(cd rust && rustup target add x86_64-pc-windows-gnu &&
+  cargo build --release --locked --target x86_64-pc-windows-gnu \
+    -p kr-service -p kr-tunnel --bin kr-service --bin kr-admin --bin kr-launch-identity)
+mkdir -p local/operator
+python3 tools/rust_service_package.py --base "$SERVING_RECIPE" \
+  --binary-dir rust/target/x86_64-pc-windows-gnu/release \
+  --target x86_64-pc-windows-gnu --out local/operator/server-windows
+```
+
+Trên Windows x64, chạy bằng tài khoản thường, với Python 3.11+ và ổ đĩa cục bộ hỗ trợ ACL. Dùng thư mục state
+tuyệt đối nằm ngoài gói và game; thư mục cha đã tồn tại và do người vận hành tin cậy. Ví dụ PowerShell:
+
+```powershell
+python "$Package\kr-package.py" init-db --manifest-sha256 $ManifestSha256 --state "$State"
+python "$Package\kr-package.py" export --manifest-sha256 $ManifestSha256 --state "$State" --game-dir "$GameDir"
+python "$Package\kr-package.py" run --manifest-sha256 $ManifestSha256 --state "$State" --game-dir "$GameDir"
+```
+
+Runner tạo ACL riêng có quyền kế thừa cho tài khoản chạy và SYSTEM, rồi giữ khóa runner tới khi server thoát.
+Server kiểm chủ sở hữu, ACL và reparse point cho state, DB và khóa TLS; không cấp quyền rộng thêm khi gặp state
+không hợp lệ. Các tệp `launch.sock` và `accounts.admin.sock` trên Windows là thông tin kết nối riêng chứa bí mật
+theo lượt chạy. Hai listener dùng TCP trên `127.0.0.1` và xác thực hai chiều; không chép các tệp này ra khỏi state.
+Trên Linux vẫn dùng socket Unix, mode POSIX và SIGTERM như trước.
+
+Dừng bằng **Ctrl+C** trong console của runner hoặc gửi **Ctrl+Break** tới nhóm tiến trình console của runner.
+Chờ exit 0 và `"stopped": true` trong `service-state.json` trước khi mở lại. Dùng `bin\kr-admin.exe` cho
+`health`, `backup` và `verify-backup` như trên Linux. Đặt snapshot trong thư mục riêng có ACL; có thể tạo
+thư mục bằng `kr-admin.exe private-dir <directory>`. Windows đồng bộ dữ liệu snapshot rồi công bố bằng thao
+tác move có cờ write-through và không ghi đè.
+
+Đây là gói vận hành lõi. Launcher một nút, phòng/mã mời, cài đặt không cần Python và nghiệm thu LAN/Internet
+là các lát tiếp theo của O1/S1.
 
 ## First install
 

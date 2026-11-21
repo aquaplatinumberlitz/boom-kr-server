@@ -43,7 +43,7 @@ fn check_private(path: &Path, directory: bool) -> io::Result<fs::Metadata> {
 
 /// The parent is trusted and already private. On Windows we create the
 /// directory with its own inheritable DACL even if the parent is broader.
-pub(crate) fn create_private_dir(path: &Path) -> io::Result<()> {
+fn create_private_dir(path: &Path) -> io::Result<()> {
     #[cfg(unix)]
     {
         use std::os::unix::fs::DirBuilderExt;

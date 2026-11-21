@@ -61,7 +61,12 @@ def local_ipc(path, request, *, reflect=False):
                 key, b'kr-local-ipc-v1/client\0' + transcript, 'sha256')
             stream.sendall(proof + json.dumps(request).encode() + b'\n')
             stream.shutdown(socket.SHUT_WR)
-            return incoming.read(4096)
+            try:
+                return incoming.read(4096)
+            except ConnectionResetError:
+                if reflect:
+                    return b''
+                raise
 
 
 def main():
@@ -103,6 +108,10 @@ def main():
 
     run('wine-version', ['wine', '--version'])
     run('python-version', ['wine', python, '-V'])
+    shared = out / 'shared'
+    shared.mkdir(mode=0o777)
+    shared.chmod(0o777)
+    run('acl-refused', [*admin, 'private-dir', windows_path(shared)], expected=1)
     install('init-db')
     exported = json.loads(install('export', *game_arg))
     assert not exported['reused']
@@ -179,7 +188,7 @@ def main():
     result = dict(manifest_sha256=manifest_hash, pack_cache=Path(exported['cache'].split('\\')[-1]).name,
                   export=True, cache_reused=True, round_returned=1, map=matches[0][1], players=2,
                   admin_ipc=True, launch_ticket=True, unauthenticated_refused=True, runner_lock=True, instance_lock=True,
-                  backup_verified=True, graceful_stop='CTRL_BREAK_EVENT', exit=0)
+                  public_acl_refused=True, backup_verified=True, graceful_stop='CTRL_BREAK_EVENT', exit=0)
     (out / 'verification.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result))
 

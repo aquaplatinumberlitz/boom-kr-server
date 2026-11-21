@@ -268,7 +268,7 @@ impl Store {
                 Err(_) => return Err(Error::Storage),
             }
         }
-        snapshots::check_private(platform::private_file(path))?;
+        snapshots::check_database_file(path)?;
         let mut db = Connection::open_with_flags(
             path,
             OpenFlags::SQLITE_OPEN_READ_WRITE | OpenFlags::SQLITE_OPEN_NO_MUTEX,

@@ -23,12 +23,30 @@ pub(super) fn private_parent(path: &Path) -> Result<&Path> {
 }
 pub(super) fn read_database(path: &Path) -> Result<Connection> {
     private_parent(path)?;
-    check_private(platform::private_file(path))?;
+    check_database_file(path)?;
     let read = Connection::open_with_flags(path, OpenFlags::SQLITE_OPEN_READ_ONLY)?;
     read.busy_timeout(Duration::from_secs(2))?;
     read.pragma_update(None, "trusted_schema", false)?;
     Ok(read)
 }
+pub(super) fn check_database_file(path: &Path) -> Result<()> {
+    check_private(platform::private_file(path))?;
+    // SQLite creates its sidecars in the parent. Check any left by an earlier
+    // run as well: Windows can traverse a private directory by a known name.
+    #[cfg(windows)]
+    for suffix in ["-wal", "-shm", "-journal"] {
+        let mut name = path.as_os_str().to_owned();
+        name.push(suffix);
+        match platform::private_file(Path::new(&name)) {
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => {}
+            result => {
+                check_private(result)?;
+            }
+        }
+    }
+    Ok(())
+}
+
 fn absent(path: &Path) -> Result<()> {
     match fs::symlink_metadata(path) {
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(()),

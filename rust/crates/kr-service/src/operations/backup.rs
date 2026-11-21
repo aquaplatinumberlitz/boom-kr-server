@@ -40,12 +40,7 @@ impl Scheduled {
     pub(crate) fn open(db: &Path, schedule: BackupSchedule) -> io::Result<Self> {
         schedule.validate()?;
         let directory = db.with_extension("backups");
-        match platform::create_private_dir(&directory) {
-            Ok(()) => {}
-            Err(e) if e.kind() == io::ErrorKind::AlreadyExists => {}
-            Err(e) => return Err(e),
-        }
-        platform::private_dir(&directory)?;
+        platform::provision_private_dir(&directory)?;
         Ok(Self {
             db: db.to_owned(),
             directory,
