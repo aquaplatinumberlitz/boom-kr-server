@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP386: Launcher có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn tiếng Việt, Anh, Hàn xem ngay trong app.** [Bằng chứng](evidence/checkpoints/records/CP386.json).
+
 **CP385: Đã chốt xếp loại bước 0; việc kiểm sâu chuyển sang F1. Bộ điều khiển đã qua Wine, còn thiếu nghiệm thu Windows.** [Bằng chứng](evidence/checkpoints/records/CP385.json).
 
 **CP384: Bước 0 đã qua cổng đăng nhập mới trên Wine và mở rộng mẫu F1 đã chơi đến kết quả; lớp A ở cấp họ vẫn cần đối chứng nội dung.** [Bằng chứng](evidence/checkpoints/records/CP384.json).

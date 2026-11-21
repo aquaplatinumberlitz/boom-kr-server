@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP386: Launcher có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn tiếng Việt, Anh, Hàn xem ngay trong app.** [Bằng chứng](docs/evidence/checkpoints/records/CP386.json).
+**CP387: Bộ điều khiển đã qua bốn map trên Windows VM và Wine, từ Start đến kết quả và về lại phòng.** [Bằng chứng](docs/evidence/checkpoints/records/CP387.json).
 
 ## Bắt đầu
 
