@@ -113,6 +113,36 @@ pub struct Delivery {
     pub max_ms: f64,
     pub late_over_250ms: usize,
     pub pacing_late_over_20ms: usize,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub receive_buckets: Option<ReceiveBuckets>,
+}
+
+/// Full one-second bins on the shared driver clock. Partial seconds and the
+/// drain after the paced workload are available only in the round totals.
+#[derive(Serialize)]
+pub struct ReceiveBuckets {
+    first_second: u64,
+    counts: Vec<usize>,
+}
+
+impl ReceiveBuckets {
+    fn new(origin: Instant, from: Instant, through: Instant) -> Self {
+        let offset = from - origin;
+        let first_second = offset.as_secs() + u64::from(offset.subsec_nanos() != 0);
+        let end = (through - origin).as_secs();
+        Self {
+            first_second,
+            counts: vec![0; end.saturating_sub(first_second) as usize],
+        }
+    }
+
+    fn record(&mut self, origin: Instant, at: Instant) {
+        if let Some(index) = (at - origin).as_secs().checked_sub(self.first_second)
+            && let Some(count) = self.counts.get_mut(index as usize)
+        {
+            *count += 1;
+        }
+    }
 }
 
 struct Receive {
@@ -170,6 +200,7 @@ pub async fn exchange(
     active: Duration,
     seed: usize,
     tag: u8,
+    bucket_clock: Option<Instant>,
 ) -> io::Result<Delivery> {
     let events = timeline(replay, clients.len(), active, seed);
     let epoch = Instant::now() + Duration::from_millis(100);
@@ -252,11 +283,16 @@ pub async fn exchange(
     let (pacing_late_over_20ms, entries) = tokio::try_join!(send, receive)?;
     let mut received = vec![false; events.len()];
     let mut samples = Vec::with_capacity(entries.len());
+    let mut receive_buckets =
+        bucket_clock.map(|origin| ReceiveBuckets::new(origin, epoch, epoch + active));
     for Receive { sequence, at } in entries {
         if std::mem::replace(&mut received[sequence], true) || at < sent[sequence] {
             return Err(failure("duplicate or time-reversed datagram"));
         }
         samples.push((at - sent[sequence]).as_secs_f64() * 1000.);
+        if let (Some(buckets), Some(origin)) = (&mut receive_buckets, bucket_clock) {
+            buckets.record(origin, at);
+        }
     }
     samples.sort_by(f64::total_cmp);
     let percentile = |p: usize| {
@@ -275,5 +311,30 @@ pub async fn exchange(
         max_ms: percentile(100),
         late_over_250ms: samples.iter().filter(|&&ms| ms > 250.).count(),
         pacing_late_over_20ms,
+        receive_buckets,
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn only_complete_seconds_share_a_clock_across_staggered_rooms() {
+        let origin = Instant::now();
+        let at = |ms| origin + Duration::from_millis(ms);
+        let mut first = ReceiveBuckets::new(origin, at(100), at(4100));
+        let mut second = ReceiveBuckets::new(origin, at(1600), at(5600));
+        assert_eq!(first.first_second, 1);
+        assert_eq!(second.first_second, 2);
+        for ms in [
+            105, 999, 1000, 1600, 1999, 2000, 2999, 3000, 3999, 4000, 5000, 5700,
+        ] {
+            first.record(origin, at(ms));
+            second.record(origin, at(ms));
+        }
+        // The common interval [2, 4) contains the same four arrivals.
+        assert_eq!(first.counts, [3, 2, 2]);
+        assert_eq!(second.counts, [2, 2, 1]);
+    }
 }

@@ -51,6 +51,8 @@ pub(crate) struct Config {
     minimum_rounds: u64,
     // Permit operator/controller orchestration with no public control endpoint.
     first_start_file: Option<PathBuf>,
+    #[serde(default)]
+    delivery_buckets: bool,
     delivery_p99_ms_max: f64,
     delivery_loss_percent_max: f64,
 }
@@ -232,6 +234,7 @@ impl RoomContext {
                 Duration::from_secs(self.config.active_seconds),
                 self.offset + *completed as usize,
                 ((self.index << 5) | (*completed as usize & 31)) as u8,
+                self.config.delivery_buckets.then_some(self.start),
             )
             .await?;
             let passed = d.received > 0
@@ -325,10 +328,27 @@ fn emit(value: serde_json::Value) {
     println!("{value}");
 }
 
+fn emit_clock_sample(start: Instant) {
+    let lower = start.elapsed();
+    let wall = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap_or_default();
+    let upper = start.elapsed();
+    emit(json!({
+        "event": "delivery_clock_sample",
+        "elapsed_before_ns": lower.as_nanos(),
+        "unix_ns": wall.as_nanos(),
+        "elapsed_after_ns": upper.as_nanos()
+    }));
+}
+
 async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Result<()> {
     config.validate()?;
     replay.validate()?;
     let start = Instant::now();
+    if config.delivery_buckets {
+        emit_clock_sample(start);
+    }
     let first = Arc::new(Barrier::new(config.rooms.len()));
     let delivery_failed = Arc::new(AtomicBool::new(false));
     let endpoint = prelogin_endpoint(certificate)?;
@@ -359,6 +379,9 @@ async fn drive(config: Config, replay: Replay, certificate: Vec<u8>) -> io::Resu
         result.map_err(io::Error::other)??;
     }
     endpoint.wait_idle().await;
+    if config.delivery_buckets {
+        emit_clock_sample(start);
+    }
     if delivery_failed.load(Ordering::Relaxed) {
         return Err(failure("delivery gate failed after room cleanup"));
     }

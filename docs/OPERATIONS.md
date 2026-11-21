@@ -101,6 +101,16 @@ cat "$RUN_DIR/health.json"
 <a id="m8-udp-workload"></a>
 For load monitoring, measure relay latency and loss at the sender and receiver; `submitted_to_quic` is a handoff count. See the [offline UDP profiler](../tools/m8_udp_profile.py) for workload inputs.
 
+For a mixed load test, set `delivery_buckets: true` in the private `kr-load`
+config. Each `delivery` can then report `receive_buckets` with
+`first_second` and consecutive one-second counts. Bucket indices share a
+monotonic origin across rooms in the same driver invocation. Count only whole
+buckets contained in the confirmed common active interval. The round totals
+still include partial seconds and the final drain window.
+`delivery_clock_sample` brackets each wall clock reading with driver offsets
+near the start and end. Check clock alignment before comparing with observations
+from another process or host; the samples alone do not establish that alignment.
+
 <a id="m8-soak-collector"></a>
 ## Collect load and soak metrics
 
