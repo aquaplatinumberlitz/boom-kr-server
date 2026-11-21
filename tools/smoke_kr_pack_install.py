@@ -95,7 +95,9 @@ def main():
             deadline = time.monotonic() + 25
             while time.monotonic() < deadline:
                 ready = list(STATE.glob('runs/*/service/service-state.json'))
-                if ready and json.loads(ready[0].read_text()).get('ready'):
+                # The first monitoring sample is published independently of readiness.
+                if (ready and json.loads(ready[0].read_text()).get('ready')
+                        and ready[0].with_name('health.json').is_file()):
                     break
                 assert service.poll() is None, (OUTPUT / 'service.log').read_text()
                 time.sleep(.05)
