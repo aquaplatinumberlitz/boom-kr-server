@@ -212,6 +212,14 @@ impl RoomContext {
                         .map_err(|e| phase("routes", e))?,
                 );
             }
+            let warmup = Instant::now();
+            replay::prime(players, &routes)
+                .await
+                .map_err(|e| phase("route warm-up", e))?;
+            emit(
+                json!({"event":"routes_warmed","room":self.index,"round":*completed+1,
+                        "routes":roster*(roster-1),"duration_ms":warmup.elapsed().as_millis()}),
+            );
             began.get_or_insert_with(Instant::now);
             emit(
                 json!({"event":"round_active","room":self.index,"round":*completed+1,

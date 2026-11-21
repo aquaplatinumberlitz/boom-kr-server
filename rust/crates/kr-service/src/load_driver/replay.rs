@@ -1,7 +1,7 @@
 use super::{client::Client, failure};
 use serde::{Deserialize, Serialize};
 use std::{io, net::SocketAddrV4, time::Duration};
-use tokio::time::{Instant, sleep_until, timeout_at};
+use tokio::time::{Instant, sleep_until, timeout, timeout_at};
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -118,6 +118,49 @@ pub struct Delivery {
 struct Receive {
     sequence: usize,
     at: Instant,
+}
+
+// The companion learns the local game socket on the first outbound datagram
+// for each route. Confirm both directions before timing the captured workload.
+// These one-byte markers cannot be confused with the five-byte minimum replay.
+pub async fn prime(clients: &[Client], routes: &[Vec<Option<SocketAddrV4>>]) -> io::Result<()> {
+    let sockets: Vec<_> = clients.iter().map(|client| &client.udp).collect();
+    timeout(Duration::from_secs(5), prime_sockets(&sockets, routes))
+        .await
+        .map_err(|_| failure("route warm-up deadline"))?
+}
+
+async fn prime_sockets(
+    sockets: &[&tokio::net::UdpSocket],
+    routes: &[Vec<Option<SocketAddrV4>>],
+) -> io::Result<()> {
+    // Each receiving socket needs space for at most seven one-byte markers.
+    // Send on all directions before waiting for any one of their replies.
+    for (slot, socket) in sockets.iter().enumerate() {
+        for (peer, target) in routes[slot].iter().enumerate() {
+            if slot != peer {
+                let target = target.ok_or_else(|| failure("missing warm-up route"))?;
+                socket.send_to(&[slot as u8], target).await?;
+            }
+        }
+    }
+    for (slot, socket) in sockets.iter().enumerate() {
+        let mut unseen = ((1_u16 << sockets.len()) - 1) & !(1 << slot);
+        let mut bytes = [0; 2];
+        while unseen != 0 {
+            let (size, source) = socket.recv_from(&mut bytes).await?;
+            let peer = usize::from(bytes[0]);
+            if size != 1
+                || peer >= sockets.len()
+                || unseen & (1 << peer) == 0
+                || routes[slot][peer].map(std::net::SocketAddr::V4) != Some(source)
+            {
+                return Err(failure("unexpected route warm-up datagram"));
+            }
+            unseen &= !(1 << peer);
+        }
+    }
+    Ok(())
 }
 
 pub async fn exchange(
