@@ -1,0 +1,53 @@
+{
+  "id": "CP378",
+  "previous": "CP377",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T03:23:05.338306+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Bước 0 đã xếp loại được gì từ nguồn tĩnh, và phép thử đại diện F1 còn thiếu gì?",
+  "scope": "KRE-STEP0-A / #532; pack KR 00967, baseline origin/main và hai xref trên bản sao unpack. F1–F6 chưa mở.",
+  "context_commit": "914541a25ddf0e5a149307ad62f05348565f9caa",
+  "artifacts": [
+    {"sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"},
+    {"sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"},
+    {"sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"}
+  ],
+  "locators": [
+    "00967 unpack image base 0x400000: ItemAttr xref 0x1196ABF; BomberAttr xref 0x13501B6.",
+    "local/research/codex/step0-classification/pack-consumers.json"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/classification.md", "summary": "IDA trên bản sao xác nhận hai xref tới tên bảng ItemAttr và BomberAttr.", "evidence": ["IDA"], "limits": "Chỉ đối chiếu điểm đọc dữ liệu; không đo wire, thẩm quyền, trọng số hoặc runtime."},
+    {"source": "design", "status": "candidate", "method": "design", "canonical": "docs/content/classification.md", "summary": "Bảng xếp loại sinh 599 dòng; 108 họ map F1 gồm 86 B và 22 C. Sáu map G1 giữ phạm vi từng route.", "evidence": ["TABLE", "INDEX"], "limits": "Dữ liệu và source cũ để chọn phép thử, không chứng nhận cả họ."}
+  ],
+  "verification": [
+    {"check": "content_census.py --check, content_classification.py --check và check_docs.py.", "result": "pass", "evidence": ["TABLE", "INDEX"], "limits": "Kiểm tái lập tài liệu, không đo client."},
+    {"check": "Thử đại diện F1 trên client thật.", "result": "not_run", "evidence": [], "limits": "Kiểm ps thấy VM Windows và Wine đang chạy; không can thiệp runtime đã có."}
+  ],
+  "delta": {"added": ["Bảng A/B/C và mẫu F1, bổ sung chỉ đạo 21/11."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Host chưa trống để thử đại diện F1; giữ trạng thái ứng viên."
+  ],
+  "next_steps": [
+    {"id": "STEP0-A-native-samples", "task": "KRE-STEP0-A", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Kiểm VM/runtime và lease; khi host trống, gộp phép thử ngắn F1 trong tối đa bốn lượt."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T03:23:05.338306+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng mốc."},
+    {"path": "docs/HISTORY.md", "state": "unchanged", "reason": "Chưa đóng mốc."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Bước 0 và blocker native."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi wire."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Ca thử ghi ở bảng xếp loại."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi trạng thái tính năng."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi catalog."},
+    {"path": "docs/content/classification.md", "state": "updated", "reason": "Sinh lớp ứng viên và mẫu F1."},
+    {"path": "docs/evidence/checkpoints/records/CP378.json", "state": "updated", "reason": "Pin nguồn và giới hạn."}
+  ],
+  "evidence": [
+    {"id": "IDA", "kind": "local", "path": "local/research/codex/step0-classification/pack-consumers.json", "bytes": 385, "sha256": "76b2de92515368596b993470293d059b46ab0fbbc143df98800dc3f4ca94e7fb"},
+    {"id": "TABLE", "kind": "repository", "path": "docs/content/classification.json", "bytes": 190081, "sha256": "2678215a3c6b4bb07908e7e65964f211746008b51be338fde7701e7eb581b059"},
+    {"id": "INDEX", "kind": "repository", "path": "docs/content/census.json", "bytes": 1399772, "sha256": "cbd5784b47c6b33512f2aa8b126ee6bed01b685cc612b0383409ec9602b0ce8b"}
+  ],
+  "evidence_runs": []
+}
