@@ -3,6 +3,7 @@
 mod account;
 mod desktop;
 mod game;
+mod guide;
 mod look;
 mod servers;
 mod strings;
@@ -33,7 +34,7 @@ enum Mode {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum Screen {
     Settings,
-    Help,
+    Help(guide::Section),
     Menu,
     Register,
     Change,
@@ -447,6 +448,12 @@ impl Player {
             }
             Message::Open(screen) if !self.submitting => {
                 self.show(Some(screen));
+                if let Screen::Help(section) = screen {
+                    return iced::widget::operation::snap_to(
+                        section.scroll_id(),
+                        iced::widget::scrollable::RelativeOffset::START,
+                    );
+                }
                 if matches!(
                     screen,
                     Screen::Register | Screen::Change | Screen::Delete | Screen::Recover
@@ -606,7 +613,7 @@ impl Player {
             }
             Message::DesktopDone(_action, ok) => {
                 if !ok && matches!(_action, desktop::Action::Release) {
-                    self.show(Some(Screen::Help));
+                    self.show(Some(Screen::Help(guide::Section::Version)));
                     self.modal_notice = Some((Copy::ReleaseError, true));
                 } else if !ok {
                     self.modal_notice = Some((Copy::OpenBad, true));

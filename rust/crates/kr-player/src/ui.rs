@@ -1,4 +1,5 @@
 //! Views of the launcher state. Offline remains a selectable preview for O1.
+use crate::guide::{self, Section};
 use crate::{
     Copy, Files, Language, Message, Mode, PlayState, Player, Screen, Server, desktop, look,
 };
@@ -133,7 +134,12 @@ impl Player {
         container(
             row![
                 selector(Mode::Servers, online, self.t(Copy::Servers), false),
-                selector(Mode::OfflineFriends, !online, self.t(Copy::Offline), true),
+                selector(
+                    Mode::OfflineFriends,
+                    !online,
+                    self.t(Copy::PlayFriends),
+                    true
+                ),
             ]
             .spacing(3),
         )
@@ -158,7 +164,7 @@ impl Player {
     fn play_panel(&self) -> Element<'_, Message> {
         let state = self.play_state();
         let description = match self.mode {
-            Mode::Servers => Copy::NativeLogin,
+            Mode::Servers => Copy::ServersIntro,
             Mode::OfflineFriends => Copy::Friends,
         };
         let key = match state {
@@ -191,14 +197,28 @@ impl Player {
                 .size(12)
                 .font(look::BOLD)
                 .color(look::MUTED),
-            self.modes(),
+            row![
+                self.modes(),
+                button(text("?").font(look::BOLD).size(16))
+                    .style(look::secondary)
+                    .padding([8, 10])
+                    .on_press(Message::Open(Screen::Help(Section::Compare)))
+            ]
+            .spacing(7)
+            .align_y(Alignment::Center),
         ]
         .spacing(8);
+        body = body.push(text(self.t(description)).size(14).color(look::MUTED));
+        let start_section = if self.mode == Mode::Servers {
+            Section::Servers
+        } else {
+            Section::Friends
+        };
+        body = body.push(self.link(Copy::StartGuide, Screen::Help(start_section)));
         if self.mode == Mode::Servers {
             body = body.push(self.server_list());
         }
         body = body
-            .push(text(self.t(description)).size(14).color(look::MUTED))
             .push(primary)
             .push(
                 text(self.t(key))
@@ -215,14 +235,16 @@ impl Player {
         }
         if self.mode == Mode::Servers {
             if state == PlayState::WaitingForServer && self.server == Server::Offline {
-                body = body.push(
-                    button(text(self.t(Copy::Retry)).size(13))
-                        .style(look::secondary)
-                        .padding([6, 9])
-                        .on_press_maybe(
-                            (self.config.is_some() && !self.probing).then_some(Message::Retry),
-                        ),
-                );
+                body = body
+                    .push(
+                        button(text(self.t(Copy::Retry)).size(13))
+                            .style(look::secondary)
+                            .padding([6, 9])
+                            .on_press_maybe(
+                                (self.config.is_some() && !self.probing).then_some(Message::Retry),
+                            ),
+                    )
+                    .push(self.link(Copy::ConnectionGuide, Screen::Help(Section::Connection)));
             }
             if state == PlayState::Error {
                 let action = |label, repair| {
@@ -241,7 +263,14 @@ impl Player {
                             .size(13)
                             .color(look::CORAL),
                     )
-                    .push(row![action(Copy::Retry, false), action(Copy::Repair, true)].spacing(8));
+                    .push(
+                        row![
+                            action(Copy::Retry, false),
+                            action(Copy::Repair, true),
+                            self.link(Copy::VersionGuide, Screen::Help(Section::Version))
+                        ]
+                        .spacing(8),
+                    );
             }
             body = body.push(
                 row![
@@ -272,7 +301,7 @@ impl Player {
             self.t(Copy::Package)
         );
         let info = text(version).size(11).color(look::MUTED);
-        let help = self.link(Copy::Help, Screen::Help);
+        let help = self.link(Copy::Help, Screen::Help(Section::Overview));
         let summary: Element<'_, Message> = if self
             .config
             .as_ref()
@@ -298,7 +327,7 @@ impl Player {
             .into()
     }
 
-    fn modal_body(&self, screen: Screen) -> Element<'_, Message> {
+    fn modal_body(&self, screen: Screen, height: f32) -> Element<'_, Message> {
         let wrap = |key| text(self.t(key)).size(14).color(look::MUTED);
         match screen {
             Screen::Settings => {
@@ -360,7 +389,9 @@ impl Player {
                     items.into()
                 }
             }
-            Screen::Help => wrap(Copy::HelpBody).into(),
+            Screen::Help(section) => {
+                guide::view(self.language, section, (height - 160.0).max(160.0))
+            }
             Screen::Menu => column![
                 self.link(Copy::Change, Screen::Change),
                 self.link(Copy::Delete, Screen::Delete),
@@ -481,7 +512,7 @@ impl Player {
     fn modal(&self, screen: Screen, height: f32) -> Element<'_, Message> {
         let title = match screen {
             Screen::Settings => Copy::Settings,
-            Screen::Help => Copy::Help,
+            Screen::Help(_) => Copy::Help,
             Screen::Menu => Copy::Manage,
             Screen::Register => Copy::Create,
             Screen::Change => Copy::Change,
@@ -502,7 +533,7 @@ impl Player {
         ]
         .align_y(Alignment::Center)
         .spacing(8);
-        let mut content = column![self.modal_body(screen)].spacing(14);
+        let mut content = column![self.modal_body(screen, height)].spacing(14);
         if let Some((notice, error)) = self.modal_notice {
             content = content.push(text(self.t(notice)).size(14).color(if error {
                 look::CORAL
@@ -512,7 +543,11 @@ impl Player {
         }
         let dialog = container(column![titlebar, content].spacing(18))
             .max_height(height - 48.0)
-            .width(480)
+            .width(if matches!(screen, Screen::Help(_)) {
+                820
+            } else {
+                480
+            })
             .padding(24)
             .style(look::modal);
         container(dialog)

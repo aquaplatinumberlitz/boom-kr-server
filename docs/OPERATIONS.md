@@ -223,11 +223,16 @@ Khi phân phối gói có ảnh, dùng launcher dựng cùng phiên bản và gi
 Launcher phủ kín cửa sổ khi đổi kích thước, cắt ưu tiên mép trên và trái để giữ hàng logo phía dưới.
 Cửa sổ mở ở khoảng 1100×820, tối thiểu khoảng 880×660; màn hình thấp dùng khung nhỏ hơn cùng tỉ lệ.
 Launcher nhớ ngôn ngữ và chế độ. Mục Máy chủ hiện máy trong cấu hình gói; đặt `server_name` nếu cần tên riêng.
-Nút thêm máy chờ S1, chế độ offline chờ O1. Enter mở game khi máy đã chọn sẵn sàng; Esc đóng hộp thoại.
+Nút thêm máy chờ S1, chế độ Chơi với bạn bè chờ O1. Enter mở game khi máy đã chọn sẵn sàng; Esc đóng hộp thoại.
 Tạo, đổi, xoá và khôi phục tài khoản dùng TLS của máy đã chọn. ID dùng thành công trong các form launcher được
 nhớ riêng theo máy; mật khẩu và mã khôi phục không được lưu. LoginStage trong game vẫn xử lý đăng nhập.
 Số ms là thời gian của yêu cầu trạng thái qua TLS. `release_url` là link HTTPS Google Drive tùy chọn trong recipe
 Windows hoặc `launcher.json`; để trống thì ẩn **Tải bản mới**. Bấm link mở trình duyệt, launcher không tải hay cập nhật tự động.
+
+**Hướng dẫn** mở trực tiếp trong launcher, có mục lục và cuộn theo từng phần. Nút **?** mở So sánh hai chế độ;
+**Cách bắt đầu** mở phần của tab đang chọn, còn liên kết ở lỗi mở phần xử lý tương ứng. Gói kèm cả ba tệp trong
+`player/`; launcher nhúng cùng nguồn [vi](player/guide.vi.md), [en](player/guide.en.md), [ko](player/guide.ko.md)
+lúc build và đọc được khi không có mạng.
 
 Trong Cài đặt có đường dẫn thư mục game, đường mở log, nút kiểm tra và sửa tệp, và nút tạo lối tắt trên Windows.
 Sửa tệp chỉ thay thư mục cài có biên nhận khớp gói, sau khi dựng và xác minh bản thay thế. Bản cài trước được

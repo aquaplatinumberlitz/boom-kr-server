@@ -5,7 +5,7 @@ import struct
 import tempfile
 import unittest
 
-from player_package import build, digest, windows_runtime
+from player_package import ROOT, build, digest, windows_runtime
 
 
 def index(offset, size):
@@ -49,7 +49,12 @@ class PackageTests(unittest.TestCase):
             self.recipe['pack_stages'].append(dict(language=language, root=str(root)))
             self.recipe['languages'][language]['index_stage'] = language
         output = self.root / 'output'
-        build(self.recipe, output, self.no_art)
+        summary = build(self.recipe, output, self.no_art)
+        self.assertEqual(set(summary['guides']), {f'player/guide.{lang}.md' for lang in ('vi', 'en', 'ko')})
+        for relative, pin in summary['guides'].items():
+            packaged = output / relative
+            self.assertEqual(packaged.read_bytes(), (ROOT / 'docs' / relative).read_bytes())
+            self.assertEqual(digest(packaged), pin['sha256'])
         manifest = json.loads((output / 'manifest.json').read_text())
         pack = manifest['packs'][0]
         self.assertEqual(b''.join((output / part['path']).read_bytes() for part in pack['parts']), b'KRVIEN')

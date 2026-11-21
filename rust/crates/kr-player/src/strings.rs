@@ -49,10 +49,13 @@ strings! {
     AddServer => "Thêm máy chủ", "Add server", "서버 추가";
     Download => "Tải bản mới", "Download latest", "최신 버전 받기";
     ReleaseError => "Không thể mở liên kết tải.", "Could not open the download link.", "다운로드 링크를 열 수 없습니다.";
-    Offline => "Chơi offline với bạn bè", "Offline mode with my friend", "친구와 오프라인 플레이";
+    PlayFriends => "Chơi với bạn bè", "Play with friends", "친구와 플레이";
     Soon => "Sắp có", "Coming soon", "출시 예정";
-    Friends => "Chế độ này sẽ cho phép tạo phòng, mời bạn bằng mã hoặc tìm phòng trong mạng LAN.", "This mode will let you host a room, invite friends with a code, or find a room on LAN.", "방을 만들고 코드로 친구를 초대하거나 같은 네트워크의 방에 들어갈 수 있게 됩니다.";
-    NativeLogin => "Đăng nhập hoặc chơi thử ngay trong game.", "Sign in or try the game from its login screen.", "게임에서 로그인하거나 체험 모드로 즐길 수 있어요.";
+    Friends => "Tạo phòng và gửi mã cho bạn bè, qua LAN hoặc Internet. Không cần tài khoản, mở khoá toàn bộ vật phẩm.", "Host a room and share the code over LAN or Internet. No account, all items unlocked.", "방을 만들고 LAN이나 인터넷에서 친구에게 코드를 공유하세요. 계정 없이 모든 아이템을 사용할 수 있습니다.";
+    ServersIntro => "Vào máy chủ do cộng đồng dựng bằng mã mời. Có tài khoản và lưu tiến trình.", "Join community servers with an invite code. Accounts and saved progress.", "초대 코드로 커뮤니티 서버에 접속하세요. 계정을 사용하고 진행 상황을 저장합니다.";
+    StartGuide => "Cách bắt đầu", "Getting started", "시작하기";
+    ConnectionGuide => "Trợ giúp kết nối", "Connection help", "연결 도움말";
+    VersionGuide => "Phiên bản & tệp", "Version & files", "버전 및 파일";
     Play => "CHƠI", "PLAY", "게임 시작";
     Ready => "Sẵn sàng", "Ready", "준비 완료";
     Checking => "Đang kiểm tra tệp…", "Checking game files…", "게임 파일 확인 중…";
@@ -72,7 +75,6 @@ strings! {
     Launcher => "Launcher", "Launcher", "런처";
     Package => "Gói", "Bundle", "패키지";
     Help => "Hướng dẫn", "Help", "이용 안내";
-    HelpBody => "Chọn một máy chủ rồi bấm Chơi. Đăng nhập, chọn 1P/2P hoặc chơi thử tại màn đăng nhập của game. Tạo và quản lý tài khoản bằng các liên kết bên dưới nút Chơi. Trong Cài đặt, bạn có thể kiểm tra tệp và mở thư mục log.", "Choose a server and press Play. Sign in, choose 1P/2P, or try the game from its login screen. Use the links below Play to create or manage an account. In Settings you can check game files and open the log folder.", "서버를 선택하고 게임 시작을 누르세요. 게임의 로그인 화면에서 1인 또는 2인 플레이, 체험 모드를 선택할 수 있습니다. 게임 시작 아래의 링크에서 계정을 만들거나 관리하고, 설정에서 파일을 확인하거나 로그 폴더를 열 수 있습니다.";
     Close => "Đóng", "Close", "닫기";
     Back => "Quay lại", "Back", "뒤로";
     Create => "Tạo tài khoản", "Create account", "계정 만들기";

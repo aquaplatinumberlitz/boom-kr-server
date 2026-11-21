@@ -165,6 +165,11 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
             relative(name)
             rows.append(dict(path=name, payload=save(source, 'payload/languages/' + language + '/' + name)))
         languages[language] = dict(encoding='949x', images=entry['images'], files=rows)
+    guides = {
+        f'player/guide.{language}.md': save(ROOT / f'docs/player/guide.{language}.md',
+                                           f'player/guide.{language}.md')
+        for language in LANGUAGES
+    }
     manifest = dict(schema='kre-player-package-v1', packs=packs, common=common, languages=languages,
                     limits='Payload được dựng và kiểm hash; chưa chứng nhận cài sạch, client song song hoặc native Internet.')
     if art is not None:
@@ -172,7 +177,7 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
-                languages=list(languages), packs=len(packs))
+                languages=list(languages), packs=len(packs), guides=guides)
 
 
 def windows_runtime(recipe, output, manifest_sha256):
