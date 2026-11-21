@@ -5,7 +5,7 @@ use iced::{
     font::Weight,
     gradient::Linear,
     mouse,
-    widget::{button, canvas, container, text_input},
+    widget::{button, canvas, container, image, text_input},
 };
 use std::f32::consts::{FRAC_PI_2, PI};
 
@@ -52,6 +52,38 @@ fn glow(color: Color, y: f32, blur: f32) -> Shadow {
 
 pub fn window(_: &Theme) -> container::Style {
     container::Style::default().background(linear(2.3, DEEP, SKY))
+}
+
+pub fn art_matte(_: &Theme) -> container::Style {
+    container::Style::default().background(INK)
+}
+
+pub fn art_panel(_: &Theme) -> container::Style {
+    container::Style {
+        background: Some(linear(PI, alpha(INK, 0.87), alpha(INK, 0.95))),
+        border: Border {
+            color: white(0.36),
+            width: 1.0,
+            radius: 20.0.into(),
+        },
+        ..Default::default()
+    }
+}
+
+pub fn decode_art(bytes: Option<Vec<u8>>) -> Option<image::Handle> {
+    let mut reader =
+        ::image::ImageReader::with_format(std::io::Cursor::new(bytes?), ::image::ImageFormat::Jpeg);
+    let mut limits = ::image::Limits::default();
+    limits.max_image_width = Some(1920);
+    limits.max_image_height = Some(1920);
+    limits.max_alloc = Some(24 * 1024 * 1024);
+    reader.limits(limits);
+    let rgba = reader.decode().ok()?.into_rgba8();
+    Some(image::Handle::from_rgba(
+        rgba.width(),
+        rgba.height(),
+        rgba.into_raw(),
+    ))
 }
 
 pub fn pill(tint: Color) -> impl Fn(&Theme) -> container::Style {
@@ -161,7 +193,7 @@ pub fn field(_: &Theme, status: text_input::Status) -> text_input::Style {
     }
 }
 
-/// Nút chính: cam–hồng khi vào chơi, đỏ khi dừng trò chơi, mờ khi chưa bấm được.
+/// Nút chính: cam khi vào chơi, đỏ khi dừng trò chơi, mờ khi chưa bấm được.
 pub fn play(stop: bool) -> impl Fn(&Theme, button::Status) -> button::Style {
     move |_, status| {
         let (from, to) = if stop {
@@ -175,7 +207,7 @@ pub fn play(stop: bool) -> impl Fn(&Theme, button::Status) -> button::Style {
         match status {
             button::Status::Disabled => button::Style {
                 background: Some(white(0.07).into()),
-                text_color: white(0.38),
+                text_color: white(0.64),
                 border: Border {
                     color: white(0.08),
                     width: 1.0,
@@ -188,7 +220,7 @@ pub fn play(stop: bool) -> impl Fn(&Theme, button::Status) -> button::Style {
                 let pressed = status == button::Status::Pressed;
                 button::Style {
                     background: Some(linear(FRAC_PI_2, if hovered { SUN } else { from }, to)),
-                    text_color: Color::WHITE,
+                    text_color: INK,
                     border: Border::default().rounded(14),
                     shadow: if pressed {
                         Shadow::default()
@@ -500,5 +532,16 @@ impl<M> canvas::Program<M> for Arcade {
         let mut live = canvas::Frame::new(renderer, bounds.size());
         spark(&mut live, 240.0, 128.0, 56.0, self.tick.is_multiple_of(2));
         vec![scene, live.into_geometry()]
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::decode_art;
+
+    #[test]
+    fn missing_or_invalid_art_selects_the_gradient() {
+        assert!(decode_art(None).is_none());
+        assert!(decode_art(Some(b"not a JPEG".to_vec())).is_none());
     }
 }

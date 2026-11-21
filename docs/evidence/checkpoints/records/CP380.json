@@ -1,0 +1,51 @@
+{
+  "id": "CP380",
+  "previous": "CP379",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T04:47:40.209003+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Đưa ảnh nền của chủ dự án vào launcher và gói người chơi thế nào để giữ logo và vẫn chạy khi thiếu ảnh?",
+  "scope": "KRE-M8-PLAYER-LAUNCHER / #476. Chỉ đổi ảnh nền, bố cục và đóng gói ảnh tùy chọn của launcher vi/en/ko.",
+  "context_commit": "0ff192228e440eb2441e42cff510c36606ab511a",
+  "artifacts": [
+    {"sha256": "986bd460740341f0f07098144ca4a19211f419b457f8bb5e4a1a34fa80093f9e", "role": "Ảnh PNG của chủ dự án"},
+    {"sha256": "5060780f2bb12ec7d3467e6bfc5f900297d3d05ac307ab135f7d19ec916f20d0", "role": "rust/target/debug/kr-player"},
+    {"sha256": "5a35175f3143d0d1b0e00b368a46f9ba4c48c8833eb125a5dd2bb6accc256b0c", "role": "rust/target/windows-art/x86_64-pc-windows-gnu/debug/kr-player.exe"}
+  ],
+  "locators": ["local/research/codex/launcher-art", "local/assets/launcher/launch.png", "rust/crates/kr-player/src/look.rs", "tools/player_package.py"],
+  "findings": [
+    {"source": "design", "status": "design", "method": "runtime", "canonical": "docs/OPERATIONS.md#launcher-art", "summary": "Launcher hiển thị đủ ảnh và logo, đổi vi/en/ko bằng nút trên panel, giữ logo khi thu cửa sổ và mở form. Thiếu JPEG đã pin thì hiện gradient.", "limits": "Launcher Linux chạy trực tiếp trên Xvfb với gói tổng hợp và TLS loopback chỉ trả trạng thái. Không chạy client KR, Wine, VM, VPS hoặc kiểm runtime Windows.", "evidence": ["CAPTURE", "FALLBACK"]},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#launcher-art", "summary": "Builder đổi PNG 1450×1085, 1.993.337 byte thành JPEG 960×718, 327.170 byte; manifest pin byte và SHA-256 của JPEG. Ảnh sai pin không hiển thị và không chặn cài game.", "limits": "Kích thước là của ảnh chủ dự án với Pillow 13.0.0. Kiểm cài và pin dùng dữ liệu tổng hợp.", "evidence": ["SOURCE_ART", "JPEG_ART", "PY_TEST", "RUST_TEST"]}
+  ],
+  "verification": [
+    {"check": "Build launcher với lockfile trên Linux và cross-build Windows x86_64 GNU; fmt, clippy và test workspace Rust dùng oracle 949x, test builder Python.", "result": "pass", "limits": "Windows chỉ build. Test bao gồm manifest đời cũ, thiếu ảnh, sai pin và JPEG hỏng.", "evidence": ["LINUX_BUILD", "WINDOWS_BUILD", "RUST_TEST", "PY_TEST"]},
+    {"check": "Chụp launcher Linux vi/en/ko, thu 960×720 xuống 760×540, mở form và chạy lại sau khi lấy JPEG ra khỏi gói.", "result": "pass", "limits": "Launcher Linux chạy trực tiếp trên Xvfb với gói tổng hợp và TLS loopback chỉ trả trạng thái. Không chạy client KR, Wine, VM, VPS hoặc kiểm runtime Windows.", "evidence": ["CAPTURE", "FALLBACK"]}
+  ],
+  "delta": {"added": ["Ảnh nền tùy chọn có pin, panel bán trong suốt, cửa sổ đổi kích thước và bằng chứng Linux cho ba ngôn ngữ."], "corrected": [], "superseded": []},
+  "blockers": ["Claude còn duyệt hình và PR. Nghiệm thu phát hành M8 tiếp tục theo PLAN."],
+  "next_steps": [{"id": "M8-476-launcher-art-review", "task": "M8-476", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Xem ảnh chụp Linux và tích hợp PR khi đạt. Giữ riêng nghiệm thu phát hành trong PLAN."}],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T04:47:40.209003+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude duyệt hình và tích hợp PR.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển dòng CP378 từ README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật hàng launcher trong M8."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi giao thức hoặc authority."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở hoặc đóng câu hỏi RE."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi đầu vào, pin và xử lý ảnh tùy chọn."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Gắn nguồn triển khai và bằng chứng vào mục hiện hành."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog hiện hành."},
+    {"path": "docs/evidence/checkpoints/records/CP380.json", "state": "updated", "reason": "Pin ảnh đầu vào, đầu ra, ảnh chụp và log kiểm."}
+  ],
+  "evidence": [
+    {"id": "SOURCE_ART", "path": "local/assets/launcher/launch.png", "kind": "local", "bytes": 1993337, "sha256": "986bd460740341f0f07098144ca4a19211f419b457f8bb5e4a1a34fa80093f9e"},
+    {"id": "CAPTURE", "path": "local/research/codex/launcher-art/capture.log", "kind": "local", "bytes": 223, "sha256": "b9d88e34961a5221b8ed05ca021688f953cbd4404dad5afc4688f165a3374785"},
+    {"id": "FALLBACK", "path": "local/research/codex/launcher-art/fallback-missing-en.png", "kind": "local", "bytes": 219960, "sha256": "f2392f19562ee8fd0d0cb081d3879ed6ae2764c92677ac41ee7ce4fb51c1acf1"},
+    {"id": "JPEG_ART", "path": "local/research/codex/launcher-art/backdrop.jpg", "kind": "local", "bytes": 327170, "sha256": "cd61e1b35bf4723d1afd5714d87b2bbc157e0eeee0e0f868e864b5ba63c2c1ca"},
+    {"id": "LINUX_BUILD", "path": "local/research/codex/launcher-art/linux-build.log", "kind": "local", "bytes": 164, "sha256": "904f73a25e07d3a26f4bde3c8ba876408cb9cf8ff330ecd8fed95986647ca7df"},
+    {"id": "WINDOWS_BUILD", "path": "local/research/codex/launcher-art/windows-build.log", "kind": "local", "bytes": 165, "sha256": "a7ebd6b14ac15257f1d035d54598dcf4f4063616006adf6207338dd08e7651fd"},
+    {"id": "PY_TEST", "path": "local/research/codex/launcher-art/python-package.log", "kind": "local", "bytes": 886, "sha256": "8d2c89cb40e094636a45a4929f4722ed5c515942b6dae96417baf756938ae229"},
+    {"id": "RUST_TEST", "path": "local/research/codex/launcher-art/rust-test.log", "kind": "local", "bytes": 46196, "sha256": "0d0e5db6036586a7e0129603c27dfab0cd3f3cf1d14d17daec1e01688b98e48f"}
+  ],
+  "evidence_runs": [{"run": "local/research/codex/launcher-art", "path": "local/evidence-manifests/96d28802b73122c9e5f5d9c527d5bc00c2d2261e9ac7452a2977c50124133951.jsonl", "sha256": "96d28802b73122c9e5f5d9c527d5bc00c2d2261e9ac7452a2977c50124133951", "bytes": 1923, "count": 10, "files_bytes": 4162426}]
+}

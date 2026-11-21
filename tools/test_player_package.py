@@ -21,6 +21,7 @@ class PackageTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
+        self.no_art = self.root / 'absent.png'
         self.base = self.root / 'base'
         self.base.mkdir()
         (self.base / 'fx.idd').write_bytes(b'KR')
@@ -48,7 +49,7 @@ class PackageTests(unittest.TestCase):
             self.recipe['pack_stages'].append(dict(language=language, root=str(root)))
             self.recipe['languages'][language]['index_stage'] = language
         output = self.root / 'output'
-        build(self.recipe, output)
+        build(self.recipe, output, self.no_art)
         manifest = json.loads((output / 'manifest.json').read_text())
         pack = manifest['packs'][0]
         self.assertEqual(b''.join((output / part['path']).read_bytes() for part in pack['parts']), b'KRVIEN')
@@ -61,13 +62,33 @@ class PackageTests(unittest.TestCase):
             self.assertIn(b'patched-949x', (output / exe['payload']['path']).read_bytes())
         self.assertNotIn('original-must-not', (output / 'manifest.json').read_text())
 
+    def test_launcher_art_is_optional_and_pins_resized_jpeg(self):
+        from PIL import Image
+
+        no_art = self.root / 'without-art'
+        bare = build(self.recipe, no_art, self.no_art)
+        self.assertNotIn('launcher_art', json.loads((no_art / 'manifest.json').read_text()))
+
+        source = self.root / 'launch.png'
+        Image.new('RGB', (1450, 1085), (35, 145, 235)).save(source)
+        output = self.root / 'with-art'
+        summary = build(self.recipe, output, source)
+        pin = json.loads((output / 'manifest.json').read_text())['launcher_art']
+        staged = output / pin['path']
+        self.assertEqual(pin['sha256'], digest(staged))
+        self.assertEqual(pin['bytes'], staged.stat().st_size)
+        self.assertEqual(summary['payload_bytes'] - bare['payload_bytes'], pin['bytes'])
+        with Image.open(staged) as art:
+            self.assertEqual(art.format, 'JPEG')
+            self.assertEqual(art.size, (960, 718))
+
     def test_english_built_on_original_prefix_is_rejected(self):
         for language, data in [('vi', b'KRVI'), ('en', b'KREN')]:
             root = self.root / language
             (root / 'fx.idd').write_bytes(data)
             self.recipe['pack_stages'].append(dict(language=language, root=str(root)))
         with self.assertRaisesRegex(ValueError, 'prefix'):
-            build(self.recipe, self.root / 'output')
+            build(self.recipe, self.root / 'output', self.no_art)
         self.assertFalse((self.root / 'output/manifest.json').exists())
 
     def test_windows_bundle_pins_companion_and_rejects_a_non_pe_binary(self):
@@ -81,7 +102,7 @@ class PackageTests(unittest.TestCase):
         cert = self.root / 'public.der'
         cert.write_bytes(b'test-only-public-certificate')
         output = self.root / 'windows'
-        summary = build(self.recipe, output)
+        summary = build(self.recipe, output, self.no_art)
         recipe = dict(launcher=pin(program), companion=pin(cert), certificate=pin(cert),
                       prelogin_certificate=pin(cert), server='127.0.0.1:2000',
                       prelogin_server='127.0.0.1:2001', ports=[3838, 3938])
@@ -99,11 +120,11 @@ class PackageTests(unittest.TestCase):
     def test_wrong_executable_pin_and_unpatched_korean_are_rejected(self):
         self.recipe['languages']['ko']['encoding'] = 'cp949'
         with self.assertRaisesRegex(ValueError, '949x'):
-            build(self.recipe, self.root / 'output')
+            build(self.recipe, self.root / 'output', self.no_art)
         self.recipe['languages']['ko']['encoding'] = '949x'
         self.recipe['languages']['vi']['executable']['sha256'] = '0' * 64
         with self.assertRaisesRegex(ValueError, 'pin'):
-            build(self.recipe, self.root / 'output2')
+            build(self.recipe, self.root / 'output2', self.no_art)
 
 
 if __name__ == '__main__':

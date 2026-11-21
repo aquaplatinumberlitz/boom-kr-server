@@ -19,6 +19,10 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install Pillow==13.0.0
       - run: python3 tools/check_docs.py
       - run: python3 tools/content_census.py --check
       - run: python3 tools/content_classification.py --check

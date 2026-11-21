@@ -121,6 +121,7 @@ fn fixture(root: &Path) -> String {
         ],
         languages,
         limits: "Synthetic integrity regression, not native evidence".into(),
+        launcher_art: None,
     };
     fs::write(
         root.join("manifest.json"),
@@ -248,4 +249,30 @@ fn installed_game_files_are_writable_and_runtime_changes_reseed_from_pinned_inpu
     assert_eq!(fs::read(dir.0.join("native-log")).unwrap(), b"seed log");
     let error = kr_player::prepare_language(&dir.0, &hash, &target, "wrong").unwrap_err();
     assert!(matches!(error, kr_player::PreparationError::Integrity));
+}
+
+#[test]
+fn decorative_art_requires_its_pin_but_can_be_missing_without_blocking_install() {
+    let dir = Directory::new();
+    let root = &dir.0;
+    let old_hash = fixture(root);
+    assert!(kr_player::launcher_art(root, &old_hash).unwrap().is_none());
+
+    let mut manifest = kr_player::read_manifest(root, &old_hash).unwrap();
+    manifest.launcher_art = Some(payload(root, "backdrop.jpg", b"pinned artwork"));
+    let path = root.join("manifest.json");
+    fs::write(&path, serde_json::to_vec(&manifest).unwrap()).unwrap();
+    let hash = kr_player::sha256(&path).unwrap();
+    assert_eq!(
+        kr_player::launcher_art(root, &hash).unwrap().unwrap(),
+        b"pinned artwork"
+    );
+    fs::write(root.join("backdrop.jpg"), b"wrong! artwork").unwrap();
+    assert!(kr_player::launcher_art(root, &hash).is_err());
+    fs::remove_file(root.join("backdrop.jpg")).unwrap();
+    assert!(kr_player::launcher_art(root, &hash).is_err());
+
+    let target = root.join("install");
+    kr_player::install(root, &hash, &target).unwrap();
+    kr_player::verify_install(root, &hash, &target).unwrap();
 }

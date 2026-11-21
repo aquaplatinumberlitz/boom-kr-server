@@ -9,7 +9,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 khi cần; gate K0–K7 và nhánh RE cũ nằm ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, CP370 / AUD148: đạt phạm vi L1 giai đoạn 1.**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **21/11, CP380 / AUD150.**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
@@ -40,7 +40,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
    | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
    |---|---|
    | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), đã kiểm, chờ tích hợp | Bundle binary/config/fixture có manifest, state riêng; kiểm integrity/path và smoke x86 trên máy phát triển, ARM trên Linux độc lập với repo/local bị che. Cả hai từ chối ghi đè DB và chạy trùng, đạt readiness/dừng sạch. Còn đường xuất từ pack và quy trình cài máy sạch đầy đủ. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476) | [CP375](evidence/checkpoints/records/CP375.json) xác nhận Windows vi và Wine ko dùng gói launcher qua cùng hotspot 4G tới VPS: chat có dấu hai chiều, hai ván cùng phòng qua relay. WAN giả lập đã qua relay, mất đường giữa ván và đăng nhập lại. Nghiệm thu phát hành còn hai mạng Internet độc lập và máy sạch ngoài PC phát triển. |
+   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476) | [CP375](evidence/checkpoints/records/CP375.json) xác nhận Windows vi và Wine ko dùng gói launcher qua cùng hotspot 4G tới VPS: chat có dấu hai chiều, hai ván cùng phòng qua relay. WAN giả lập đã qua relay, mất đường giữa ván và đăng nhập lại. Launcher có [ảnh nền tùy chọn](OPERATIONS.md#launcher-art) và đã chụp giao diện vi/en/ko trên Linux. Nghiệm thu phát hành còn hai mạng Internet độc lập và máy sạch ngoài PC phát triển. |
    | [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) | [Sức khỏe và số đo cục bộ](OPERATIONS.md#health-and-monitoring) đã qua test TLS tổng hợp (CP376). [CP377](evidence/checkpoints/records/CP377.json) giữ nhịp ứng viên từ CP287; [CP378](evidence/checkpoints/records/CP378.json) có collector tài nguyên cho chạy dài; Đo tải 50 người/8 phòng theo [tiêu chí M8](#phase1-acceptance), kiểm cặp native với tải phát từ VPS, rồi chạy dài 12 giờ; ghi lỗi khởi động, RAM/FD và độ trễ/rơi gói. |
    | [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) | [CP374](evidence/checkpoints/records/CP374.json): audit account/phòng, snapshot live và mở ván sau restore vào state sạch qua hai client TLS tổng hợp; SIGTERM, SIGKILL/restart và rollback schema 6 về binary schema 5 đã kiểm loopback. Chờ tích hợp; còn nghiệm thu native trên máy triển khai theo M8. |
    [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
