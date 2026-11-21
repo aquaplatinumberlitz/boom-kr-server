@@ -1,0 +1,58 @@
+{
+  "id": "CP380",
+  "previous": "CP379",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T04:22:48.844943+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Kiểm tải nội VPS và qua hotspot cho kết quả gì, cặp native có phủ tải đồng thời không, và soak 12 giờ đã vào tải chưa?",
+  "scope": "KRE-M8-MONITORING / #523. Ghi phép đo ngắn, blocker native và mốc khởi động soak. Chưa hoàn tất nghiệm thu M8.",
+  "context_commit": "914541a25ddf0e5a149307ad62f05348565f9caa",
+  "artifacts": [
+    {"sha256": "fb05c18aab40f9c7a99d22051dc302e379ec2157b11911f746a402854140f420"},
+    {"sha256": "584c05c35e8e14c643146d28f9b51e9e62e249509d88f803eff40cafef186762"},
+    {"sha256": "a82219dcb6a33f6170e6b5643de95b75c7862f766d9ce2ac3f0f816e7c2a97ec"}
+  ],
+  "locators": [
+    "tools/m8_udp_profile.py",
+    "tools/m8_soak_collect.py",
+    "rust/crates/kr-service/src/bin/kr-load.rs",
+    "docs/PLAN.md#phase1-acceptance"
+  ],
+  "findings": [
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/PLAN.md#phase1-acceptance", "evidence": ["DELIVERY", "INHOST"], "summary": "Nội VPS có 50 client tổng hợp trong 8 phòng đang chơi. Nhận 49.971/49.971 gói, p99 theo phòng 25,5–27,5 ms; FD về 43, phòng và route về 0.", "limits": "Qua ngưỡng độ trễ và tỷ lệ rơi. Build trước #531 còn 21 lỗi owner lúc kết thúc: 20 owner_lifecycle và một account_owner_stale; chưa đạt toàn bộ tiêu chí tải."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/PLAN.md#phase1-acceptance", "evidence": ["WANOBS"], "summary": "Qua cùng hotspot, nhận 49.961/49.971 gói; p99 theo phòng 410,2–432,9 ms.", "limits": "Chỉ quan sát một uplink. Số tổng hợp lấy từ console lượt trước; không có raw driver PC trong worktree này."},
+    {"source": "kr_runtime", "status": "candidate", "method": "runtime", "canonical": "docs/PLAN.md#phase1-acceptance", "evidence": ["WINDOWS1", "NATIVE2"], "summary": "Lượt native đầu thấy hai đồng hồ đếm nhưng không có cửa sổ trùng tải. Lượt sau hai client vào sảnh, một phòng được tạo; không xác nhận chung phòng, không phát tải.", "limits": "Đã dùng hai lượt theo brief. Chưa có kết quả native dưới tải hoặc bằng chứng hai phòng native. Dừng service và gỡ rule của lượt thử."},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/PLAN.md#phase1-acceptance", "evidence": ["SOAKSTART"], "summary": "Soak chạy với 24 client tổng hợp/bốn phòng, TTL 7.200 giây, backup mỗi giờ. Bốn vòng đầu nhận đủ 28.296 gói; p99 cao nhất 28,11 ms, không lỗi dò DB.", "limits": "Mới xác nhận khởi động tải và phiên dò TTL đầu; chưa đo hết hạn, backup theo lịch, độ dốc tài nguyên hoặc mức nền sau tải."}
+  ],
+  "verification": [
+    {"check": "Đối chiếu số gửi/nhận từng phòng với health và log supervisor.", "result": "pass", "evidence": ["DELIVERY", "INHOST", "SOAKSTART"], "limits": "Chỉ kiểm dữ liệu đo và khởi động."},
+    {"check": "Xác nhận hai client native có trận đồng thời với tải nội VPS.", "result": "fail", "evidence": ["WINDOWS1", "NATIVE2"], "limits": "Không có cửa sổ đồng thời."}
+  ],
+  "delta": {"added": ["Kết quả tải nội VPS, quan sát 4G, blocker native và mốc khởi động soak 12 giờ."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Thiếu trận native dưới tải; hết hai lượt theo brief. Chưa có kết quả cuối soak."
+  ],
+  "next_steps": [
+    {"id": "M8-523-native-load-profile", "task": "KRE-M8-MONITORING", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Thu và chấm soak sau 12 giờ. Sửa gate vào phòng offline trước lượt native tiếp theo được cấp."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T04:00:14.284133+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "M8 chưa đóng."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi tải, blocker native và soak đang chạy ở hàng M8."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi contract wire."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Câu hỏi M8 vẫn mở."},
+    {"path": "docs/evidence/checkpoints/records/CP380.json", "state": "updated", "reason": "Pin bằng chứng tải, native và khởi động soak."}
+  ],
+  "evidence": [
+    {"id": "DELIVERY", "path": "local/research/codex/m8-runtime-21/in-vps-driver.jsonl", "kind": "local", "bytes": 4427, "sha256": "7e52962576ef31575e3e74d10c31df9381703947f0af667c71f337d3ea7c4bd8"},
+    {"id": "INHOST", "path": "local/research/codex/m8-runtime-21/in-vps-summary.json", "kind": "local", "bytes": 654, "sha256": "fe99e23c878154e45145075c6f7f139f8aa7b77a120a6b5c1dee105ee243928e"},
+    {"id": "WANOBS", "path": "local/research/codex/m8-runtime-21/shared-hotspot-observation.json", "kind": "local", "bytes": 368, "sha256": "c30489bdb79bb4d89b24cb3845ca532955f12709761ca53ecb5a77a9fff17bcb"},
+    {"id": "WINDOWS1", "path": "local/research/codex/m8-runtime-21/native-first-controller.json", "kind": "local", "bytes": 152, "sha256": "cf3bc88c7f325548df2fedcf219450e7e8a7dc3595f83ba28448fdd3eda33b61"},
+    {"id": "NATIVE2", "path": "local/research/codex/m8-runtime-21/native-second-receipt.json", "kind": "local", "bytes": 373, "sha256": "c03ee30cbd97b140eb61ce87eb0b0fa7beb0187dd2071cd2d3a441bdf47ca2ef"},
+    {"id": "SOAKSTART", "path": "local/research/codex/m8-runtime-21/soak-first-rounds.json", "kind": "local", "bytes": 637, "sha256": "cbe6d137de14be3f946850407e77475a669aee351d88b67729f749b85464e961"}
+  ],
+  "evidence_runs": [
+    {"run": "local/research/codex/m8-runtime-21", "path": "local/evidence-manifests/197b744a2fe2b86168c4578fe1e38f21d7301751dcdb23dc0641a5109ea13d08.jsonl", "sha256": "197b744a2fe2b86168c4578fe1e38f21d7301751dcdb23dc0641a5109ea13d08", "bytes": 1032, "count": 5, "files_bytes": 215213}
+  ]
+}
