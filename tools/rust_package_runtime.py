@@ -253,6 +253,8 @@ def main():
         if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
         needs_game = scope is not None and args.command in ('export', 'run', 'prepare-friends')
+        if scope == 'f1-a' and args.command == 'prepare-friends':
+            raise ValueError('Catalog thử F1-a chỉ dùng với export hoặc run, không hỗ trợ O1')
         if (scope == 'f1-a' and needs_game) != bool(args.f1_map):
             raise ValueError('Gói F1-a yêu cầu --f1-map khi export hoặc run')
         if needs_game != (args.game_dir is not None):
@@ -304,7 +306,7 @@ def main():
                     request = dict(actor='friends-init', reason='Local friends room', command=dict(op='init'))
                     subprocess.run([admin, str(database)], input=json.dumps(request), text=True, check=True,
                                    cwd=root, stdout=subprocess.DEVNULL)
-                config, out, _ = prepare(root, state, cache, scope, args.f1_map, friends=True)
+                config, out, _ = prepare(root, state, cache, scope, friends=True)
                 value = json.loads(config.read_bytes())
                 tls = value['diagnostic_two_lobby']['account_admission']['prelogin_tls']
                 print(json.dumps(dict(config=str(config), out=str(out), address=tls['bind'],

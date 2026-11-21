@@ -697,7 +697,7 @@ inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ
 <a id="full-game-roadmap"></a>
 ### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
 
-Lộ trình tới đủ item, map và mode chưa cam kết thời gian. F1–F6 chưa mở; bước 0 được thực hiện song song phần cuối M8.
+Lộ trình tới đủ item, map và mode chưa cam kết thời gian. Bước 0 đã hoàn tất; chủ dự án cho mở F1 sớm.
 Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng còn chạy. Dùng [xếp loại A/B/C](content/classification.md) để chọn phép thử và ước lượng từng đợt.
 
 | Đợt | Nội dung | Số liệu kiểm kê | Phụ thuộc và điều chưa biết |
@@ -714,7 +714,7 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
-Việc nâng họ map lên A và thử sâu item, phương tiện, nhân vật, mode chuyển vào từng phần tương ứng của F1. Kế tiếp: [O1](evidence/owner-directives/offline-friends.json) → S1 → F1 → F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
+F1 mở sớm song song với [O1](evidence/owner-directives/offline-friends.json) và S1. Sau F1 tiếp tục F4 → F2 → F5 → F3 → F6. Dựng web phía server cho Dwarf/libcef; bỏ phần riêng Nexon. Phát hành: gói đầy đủ qua link Google Drive, launcher chỉ hiện link, không tự cập nhật.
 
 <a id="f1-normal-battle"></a>
 #### F1 — Trận thường đầy đủ
