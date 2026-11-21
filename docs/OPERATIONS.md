@@ -101,6 +101,16 @@ cat "$RUN_DIR/health.json"
 <a id="m8-udp-workload"></a>
 For load monitoring, measure relay latency and loss at the sender and receiver; `submitted_to_quic` is a handoff count. See the [offline UDP profiler](../tools/m8_udp_profile.py) for workload inputs.
 
+<a id="m8-soak-collector"></a>
+## Collect load and soak metrics
+
+Run the [collector](../tools/m8_soak_collect.py) on the same Linux host after readiness, with access to the service's `/proc` entry and run directory. Use a new private output file. Align the driver with the sample windows: start load after 60 seconds, sustain it for 12 hours, then stop the driver and leave the service up for 60 seconds of recovery.
+
+    python3 tools/m8_soak_collect.py --run "$RUN_DIR" --out "$PRIVATE_LOG/new-soak.jsonl" \
+      --interval 5 --baseline 60 --load 43200 --recovery 60
+
+Check the `finished` row and samples from all three phases. Compare CPU per core, RSS, FD, rooms, companions, routes and DB errors against the planned limits and driver logs. The collector does not generate traffic or measure end-to-end delivery.
+
 <a id="server-admin-backup-rollback"></a>
 ## Accounts, rooms, and audit
 

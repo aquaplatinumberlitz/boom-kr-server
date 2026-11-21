@@ -1,0 +1,41 @@
+{
+  "id": "CP378",
+  "previous": "CP377",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T01:28:54.012425+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Thu số đo nào để đối chiếu tài nguyên và phòng/route qua ba giai đoạn của bài tải M8?",
+  "scope": "KRE-M8-MONITORING / #523. Collector Linux chỉ đọc health và trạng thái tiến trình. Không phát traffic, chạy game, VM hoặc VPS.",
+  "context_commit": "06b27f73eadef22ded7756d03874e1cacbc7165b",
+  "artifacts": [
+    {"sha256": "57a82dee7f9ab89c5a22babcbbd790d3fbc9b03bc7f6bc69f21dc8ca111d0abc"}
+  ],
+  "locators": ["local/research/codex/m8-soak-collector", "tools/m8_soak_collect.py", "tools/test_m8_soak_collect.py"],
+  "findings": [
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#m8-soak-collector", "evidence": ["TEST", "TOOL"], "summary": "Collector ghi CPU theo lõi, RSS, FD, số phòng/ván/listener/route và lỗi dò DB theo giai đoạn; từ chối mẫu cũ, PID tái dùng và bỏ kỳ lấy mẫu.", "limits": "Test đọc /proc của chính tiến trình test với health tổng hợp. Chưa chạy tải hoặc soak thật; collector không đo độ trễ hay mất gói."}
+  ],
+  "verification": [
+    {"check": "Sáu test Python cho mẫu /proc, chênh CPU, ranh giới giai đoạn, không ghi đè, PID đổi và lỗi health.", "result": "pass", "evidence": ["TEST", "TOOL"], "limits": "Dữ liệu health tổng hợp, kiểm thời gian bằng đồng hồ test."}
+  ],
+  "delta": {"added": ["Collector tài nguyên Linux và recipe thu ba giai đoạn."], "corrected": [], "superseded": []},
+  "blockers": ["Còn capture UDP trước mã hóa trên build đóng gói và ngưỡng kiểm tải; không dùng kết quả collector thay nghiệm thu."],
+  "next_steps": [
+    {"id": "M8-523-native-load-profile", "task": "KRE-M8-MONITORING", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Chốt nhịp UDP và ngưỡng, chạy driver cùng collector theo PLAN."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T01:28:54.012425+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển CP377."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Thêm công cụ thu tài nguyên vào hàng đang mở."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi lịch thu và giới hạn của collector."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi giao thức."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Câu hỏi kiểm tải M8 vẫn mở."},
+    {"path": "docs/evidence/checkpoints/records/CP378.json", "state": "updated", "reason": "Pin collector và kết quả test."}
+  ],
+  "evidence": [
+    {"id": "TOOL", "path": "tools/m8_soak_collect.py", "kind": "repository", "bytes": 7029, "sha256": "57a82dee7f9ab89c5a22babcbbd790d3fbc9b03bc7f6bc69f21dc8ca111d0abc"},
+    {"id": "TEST", "path": "local/research/codex/m8-soak-collector/tests.log", "kind": "local", "bytes": 758, "sha256": "dea7286b7dedaebf83184f9ca7103f44f22a6d159b2b055d55497cc59510f331"}
+  ],
+  "evidence_runs": []
+}

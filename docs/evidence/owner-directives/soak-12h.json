@@ -1,0 +1,15 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_date": "2026-11-21",
+  "authority": "project_owner",
+  "source": "Chỉ đạo của chủ dự án ngày 21/11/2026 do Claude (director) chuyển tiếp.",
+  "decision": "Rút lượt chạy dài M8 trên VPS từ 24 giờ xuống 12 giờ. Bắt đầu ngay sau khi xong kiểm cặp native dưới tải phát từ VPS.",
+  "requirements": [
+    "Chạy tải nền tổng hợp và backup tự động mỗi giờ.",
+    "Đặt TTL phiên ngắn (chọn 2 giờ) và ghi nhận nhiều chu kỳ hết hạn, đăng nhập lại.",
+    "Xoay log nếu triển khai hỗ trợ; giữ kiểm tài nguyên và trạng thái trở về nền sau tải."
+  ],
+  "supersedes": "docs/evidence/owner-directives/m8-soak-3h.json (yêu cầu 24 giờ trong revision)",
+  "scope": "Chỉ thay đổi lượt chạy dài và cách phủ chu kỳ; không tự đóng nghiệm thu M8.",
+  "plan": "docs/PLAN.md#phase1-acceptance"
+}
