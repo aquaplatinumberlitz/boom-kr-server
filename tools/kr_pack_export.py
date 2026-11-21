@@ -145,44 +145,44 @@ def terrain_for(profile, table):
     return result
 
 
-# Only run the simple adapter on its known 15×13, single-cell descriptor
-# subset. A layer that cannot be projected rejects the entire map.
+# The measured Patrit14 mast blocks its anchor and two cells to the right.
+# Reuse only the exact KR descriptor and anchor/covered cells seen there.
+_MAST_CELLS = ([2106, 2128], [2109, -1], [2106, -1])
+_MAST_NAMES = ((2106, 'Tile04_Ground/TileA01'), (2109, 'Tile04_Ground/TileC00'),
+               (2128, 'Tile04_Static/MastTileA'))
+_MAST_DATA = (1, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 1244184, 4461456,
+              18730216, 4274062, 18730216, 0, 0)
+
+
 def f1_simple_rules(profile, table):
     if profile['rectangles']:
         raise ValueError(f"Vùng chữ nhật ngoài adapter đơn: {profile['name']}")
-    kinds, _, unknown = classify_rules(profile['cells'], table)
+    cells = profile['cells']
+    kinds, _, unknown = classify_rules(cells, table)
     width, height = profile['width'], profile['height']
     names, tiles = table
-    # One measured multi-cell object is reusable only by exact KR descriptor.
-    # It is a candidate adapter, not a generic footprint inference.
-    special = "Tile04_Ground/TileA01 | Tile04_Static/MastTileA"
-    for index, cell in enumerate(profile['cells']):
-        label = " | ".join(names[code] if code >= 0 else "-" for code in cell)
-        if label != special:
-            continue
-        row, col = divmod(index, width)
-        obj = tiles[names[cell[1]]]
-        obj_width, obj_height = obj[6:8]
-        if (obj_width, obj_height) != (3, 1):
-            raise ValueError(f"Footprint MastTileA chưa đo của {profile['name']}")
-        for r in range(max(0, row - obj_height + 1), row + 1):
-            for c in range(col, min(width, col + obj_width)):
-                if kinds[r * width + c] not in (None, 0):
-                    raise ValueError(f"Footprint chồng ô của {profile['name']}")
-                kinds[r * width + c] = 1
-        unknown.pop(label, None)
+    mast_at = None
+    if any(cell[1] == 2128 for cell in cells):
+        anchor = 6 * width + 6
+        if ((width, height) != (15, 13)
+                or any(code >= len(names) or names[code] != name for code, name in _MAST_NAMES)
+                or tiles.get(_MAST_NAMES[-1][1]) != _MAST_DATA
+                or [i for i, cell in enumerate(cells) if cell[1] == 2128] != [anchor]
+                or tuple(cells[anchor:anchor + 3]) != _MAST_CELLS
+                or kinds[anchor:anchor + 3] != [None, 0, 0]):
+            raise ValueError(f"Footprint MastTileA ngoài mẫu đã đo: {profile['name']}")
+        mast_at = anchor
+        unknown.pop(f'{names[2106]} | {names[2128]}')
+        kinds[anchor:anchor + 3] = [1, 1, 1]
     if unknown:
         raise ValueError(f"Ô ngoài adapter đơn của {profile['name']}: {', '.join(sorted(unknown)[:3])}")
-    for ground, obj, *_ in profile['cells']:
+    for index, (ground, obj, *_) in enumerate(cells):
         base = tiles[names[ground]]
         high15 = struct.unpack('<h', struct.pack('<i', base[15])[2:])[0]
         if any(base[11:15]) or high15 >= 10_000:
             raise ValueError(f"Nền có cờ riêng: {profile['name']}")
-        if obj >= 0:
+        if obj >= 0 and index != mast_at:
             tile = tiles[names[obj]]
-            label = f"{names[ground]} | {names[obj]}"
-            if label == special:
-                continue
             if tile[12] != 0 or (tile[0] in (0, 2) and any(tile[11:15])):
                 raise ValueError(f"Vật thể có cờ riêng: {profile['name']}")
     if any(kinds[y * width + x] != 0 for x, y in profile['spawns']):
@@ -314,7 +314,7 @@ def checked_cache(path, identity, pins, maps, measured, f1=False):
 def cache_identity(pins, maps, measured, f1=False):
     key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
     if f1:
-        key['adapter'] = 'f1-a-v1'
+        key['adapter'] = 'f1-a-v2'
     return sha(encode(key))
 
 
