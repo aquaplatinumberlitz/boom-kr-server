@@ -5,6 +5,8 @@ hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời 
 
 ## Các mốc trước
 
+**CP374: Audit admin, phục hồi SQLite và rollback binary đạt kiểm phía server; hai client TLS tổng hợp mở được ván sau restore.** [Bằng chứng](evidence/checkpoints/records/CP374.json).
+
 **CP373: Windows vi và Wine ko hoàn tất hai ván Factory07 liên tiếp trong cùng phòng qua TLS.** [Bằng chứng](evidence/checkpoints/records/CP373.json).
 
 **CP372: Windows vi và Wine ko hoàn tất ván một qua bộ điều khiển chờ đồng hồ; Ready ván hai chưa tới server.** [Bằng chứng](evidence/checkpoints/records/CP372.json).
