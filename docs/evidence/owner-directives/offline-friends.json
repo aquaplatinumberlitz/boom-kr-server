@@ -2,8 +2,9 @@
   "schema": "kre-owner-directive-v1",
   "decision_date": "2026-11-21",
   "authority": "project_owner",
-  "source": "Chủ dự án hỏi qua Claude (director) ngày 21/11/2026 về chế độ chơi không cần VPS/tài khoản: “user chỉ cần bấm chơi offline là vào chơi ko cần settup gì rắc rối”, chế độ này “full item/shop”; đặt tên “Offline mode with my friend” / “Chơi offline với bạn bè”. Claude đề xuất thiết kế và vị trí trong lộ trình; chủ dự án chốt tên.",
-  "decision": "Thêm đợt O1 “Offline mode with my friend” (vi: “Chơi offline với bạn bè”).",
+  "source": "Chủ dự án hỏi qua Claude (director) ngày 21/11/2026 về chế độ chơi không cần VPS/tài khoản: “user chỉ cần bấm chơi offline là vào chơi ko cần settup gì rắc rối”, chế độ này “full item/shop”; Claude đề xuất thiết kế và vị trí trong lộ trình.",
+  "decision": "Thêm đợt O1 “Play with friends” (vi: “Chơi với bạn bè”).",
+  "rename_2026_11_21": "Chủ dự án chốt Play with friends / Chơi với bạn bè / 친구와 플레이 vì chế độ chạy được qua Internet và chữ offline dễ gây hiểu nhầm.",
   "requirements": [
     "Một nút trong launcher; không tài khoản (chỉ tên), không VPS, không mở cổng, không cài phần mềm khác.",
     "Máy người tạo tự chạy server Rust ngầm (bản Windows; Wine/Linux nếu được), tự sinh cấu hình, chứng chỉ và tài khoản khách; hiện mã phòng ngắn.",
@@ -14,6 +15,7 @@
   ],
   "order": "Sau khi đóng M8, trước F1: bước 0 → O1 → F1 → F4 → F2 → F5 → F3 → F6. Dùng chung việc “server đọc dữ liệu từ pack” của M8.",
   "acceptance": "Hai máy thật: cùng LAN, và khác mạng qua Internet (ít nhất một phía 4G), bấm nút là vào chơi một ván tới kết quả; không bước cấu hình thủ công.",
+  "guide_followup": "Khi O1 xong, thay phần Sắp có trong ba hướng dẫn người chơi bằng các bước đã chạy, kèm ảnh chụp.",
   "canonical": "docs/PLAN.md#full-game-roadmap",
   "owner": "Chủ dự án quyết định; Claude ghi lại và điều hành"
 }

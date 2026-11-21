@@ -4,6 +4,7 @@ Recipe local khai base, pack_stages theo thứ tự nối và ba languages. Khô
 đổi offset .idx: một stage mới phải chứa nguyên byte pack stage trước ở đầu.
 """
 import argparse
+import re
 import hashlib
 import ipaddress
 import json
@@ -15,6 +16,7 @@ from content_census import decrypt_idx, parse_idx
 
 ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ('vi', 'en', 'ko')
+DEFAULT_LAUNCHER_ART = ROOT / 'local/assets/launcher/launch.png'
 LOCAL_EXTENSIONS = {'.ini', '.ssd', '.fft', '.bik'}
 
 
@@ -52,7 +54,22 @@ def prefix_equal(prefix, candidate):
                 raise ValueError('Pack stage mới không giữ nguyên prefix trước; không được tái dùng idx')
 
 
-def build(recipe, out):
+def stage_launcher_art(source, out):
+    # Pillow is needed only when a source image is present.
+    from PIL import Image, ImageOps
+
+    destination = 'payload/launcher/backdrop.jpg'
+    target = out / destination
+    target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    with Image.open(source) as original:
+        art = ImageOps.exif_transpose(original).convert('RGB')
+        art.thumbnail((960, 720), Image.Resampling.LANCZOS)
+        with target.open('xb') as stream:
+            art.save(stream, 'JPEG', quality=92, subsampling=0, optimize=True)
+    return dict(path=destination, bytes=target.stat().st_size, sha256=digest(target))
+
+
+def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     if set(recipe['languages']) != set(LANGUAGES):
         raise ValueError('Gói phải khai đủ vi/en/ko đã vá')
     base = Path(recipe['base']).resolve(strict=True)
@@ -74,6 +91,11 @@ def build(recipe, out):
         row = dict(path=destination, bytes=target.stat().st_size, sha256=digest(target))
         payload[destination] = row
         return row
+
+    art = (stage_launcher_art(launcher_art, out)
+           if launcher_art is not None and launcher_art.is_file() else None)
+    if art is not None:
+        payload[art['path']] = art
 
     packs = []
     originals = {name: p for name, p in files.items() if p.suffix.lower() == '.idd'}
@@ -143,19 +165,38 @@ def build(recipe, out):
             relative(name)
             rows.append(dict(path=name, payload=save(source, 'payload/languages/' + language + '/' + name)))
         languages[language] = dict(encoding='949x', images=entry['images'], files=rows)
+    guides = {
+        f'player/guide.{language}.md': save(ROOT / f'docs/player/guide.{language}.md',
+                                           f'player/guide.{language}.md')
+        for language in LANGUAGES
+    }
     manifest = dict(schema='kre-player-package-v1', packs=packs, common=common, languages=languages,
                     limits='Payload được dựng và kiểm hash; chưa chứng nhận cài sạch, client song song hoặc native Internet.')
+    if art is not None:
+        manifest['launcher_art'] = art
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
-                languages=list(languages), packs=len(packs))
+                languages=list(languages), packs=len(packs), guides=guides)
 
 
 def windows_runtime(recipe, output, manifest_sha256):
     """Stage only pinned first-party programs, public certificates and launch settings."""
-    if set(recipe) != {'launcher', 'companion', 'certificate', 'prelogin_certificate',
-                       'server', 'prelogin_server', 'ports'}:
+    required = {'launcher', 'companion', 'certificate', 'prelogin_certificate',
+                'server', 'prelogin_server', 'ports'}
+    if not required <= recipe.keys() <= required | {'server_name', 'release_url'}:
         raise ValueError('Recipe Windows có trường thiếu hoặc không hỗ trợ')
+    release_url = recipe.get('release_url', '')
+    if not isinstance(release_url, str):
+        raise ValueError('Link phát hành phải là chuỗi')
+    release_url = release_url.strip()
+    if release_url and (len(release_url) > 2048 or not re.fullmatch(
+            r"https://drive\.google\.com/[a-zA-Z0-9\-._~/%?&=+#:@!$',;()*]+", release_url)):
+        raise ValueError('Link phát hành phải là HTTPS Google Drive')
+    server_name = recipe.get('server_name', '')
+    if (not isinstance(server_name, str) or len(server_name) > 64
+            or any(not ch.isprintable() for ch in server_name)):
+        raise ValueError('Tên máy chủ không hợp lệ')
     if digest(output / 'manifest.json') != manifest_sha256:
         raise ValueError('Manifest game không khớp pin')
     for key in ('server', 'prelogin_server'):
@@ -198,13 +239,17 @@ def windows_runtime(recipe, output, manifest_sha256):
                   ports=ports, certificate='account.der', prelogin_certificate='prelogin.der',
                   companion='kr-prelogin.exe', bundle='.', manifest_sha256=manifest_sha256,
                   installation='game', state='state', udp_backend='portable')
+    if server_name.strip():
+        config['server_name'] = server_name.strip()
+    if release_url:
+        config['release_url'] = release_url
     with (output / 'launcher.json').open('x') as file:
         json.dump(config, file, indent=2)
         file.write('\n')
     (output / 'MO-GAME.txt').write_text(
         'Giải nén vào thư mục có quyền ghi trên ổ NTFS. Mở kr-player.exe.\n'
         'Có thể chạy Tao-loi-tat.ps1 sau khi giải nén để tạo lối tắt Boom Play.\n'
-        'Chọn ngôn ngữ, bấm Vào game, rồi đăng nhập hoặc chơi thử trong game.\n'
+        'Chọn ngôn ngữ, chọn một máy chủ, bấm CHƠI, rồi đăng nhập hoặc chơi thử trong game.\n'
         'Đừng mở CA.exe trực tiếp: game cần đường TLS do launcher mở.\n',
         encoding='utf-8-sig',
     )
@@ -219,12 +264,14 @@ def main():
     parser.add_argument('--recipe', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--windows-runtime', type=Path, help='Recipe local chứa launcher, companion và certificate đã pin')
+    parser.add_argument('--launcher-art', type=Path, default=DEFAULT_LAUNCHER_ART,
+                        help='Ảnh nền launcher (mặc định: local/assets/launcher/launch.png)')
     args = parser.parse_args()
     local = (ROOT / 'local').resolve(strict=True)
     output = args.out.resolve()
     if output == local or not output.is_relative_to(local):
         parser.error('Gói và tài sản client phải ở local/')
-    summary = build(json.loads(args.recipe.read_text()), output)
+    summary = build(json.loads(args.recipe.read_text()), output, args.launcher_art)
     if args.windows_runtime:
         summary['windows_runtime'] = windows_runtime(
             json.loads(args.windows_runtime.read_text()), output, summary['manifest_sha256'])

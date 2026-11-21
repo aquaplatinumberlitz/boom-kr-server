@@ -1,0 +1,54 @@
+{
+  "id": "CP386",
+  "previous": "CP385",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-21T09:47:48.224964+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Launcher phân biệt máy chủ trong gói, Chơi với bạn bè và hướng dẫn theo ngữ cảnh như thế nào?",
+  "scope": "KRE-M8-PLAYER-LAUNCHER / #476, PR #544. Phạm vi launcher và gói người chơi; O1/S1 chưa mở.",
+  "context_commit": "e6a5896d9d1640744d2e79ce4fc4548c83c841fa",
+  "artifacts": [
+    {"sha256": "986bd460740341f0f07098144ca4a19211f419b457f8bb5e4a1a34fa80093f9e", "role": "Ảnh PNG của chủ dự án"},
+    {"sha256": "216c7e194d9dd563ee0baabd8172396848d43001d5de406e28fae5332fc0bd7b", "role": "rust/target/debug/kr-player"},
+    {"sha256": "052c4768aa695edcec044fb2501fb36cf6fab215ae3dd5eea338112176323fcf", "role": "rust/target/windows-art/x86_64-pc-windows-gnu/debug/kr-player.exe"}
+  ],
+  "locators": ["local/research/codex/launcher-art-v4/window-final", "local/assets/launcher/launch.png", "rust/crates/kr-player/src/ui.rs", "tools/player_package.py"],
+  "findings": [
+    {"source": "design", "status": "design", "method": "runtime", "canonical": "docs/OPERATIONS.md#launcher-art", "summary": "Mục Máy chủ hiển thị máy của gói và trạng thái TLS; thêm máy và Chơi với bạn bè đều chờ. Ảnh giữ cờ cướp biển và logo ở 1100×820 và 880×660; màn hình thấp tự dùng 805×600.", "limits": "Launcher Linux chạy trực tiếp qua Xvfb và TLS loopback tổng hợp. Không chạy client KR, Wine, VM, Windows hoặc VPS.", "evidence": ["CAPTURE", "SMALL", "HELP_COMPARE"]},
+    {"source": "design", "status": "design", "method": "test", "canonical": "docs/OPERATIONS.md#launcher-art", "summary": "Launcher nhớ gợi ý ID theo từng máy, giữ LoginStage; guide vi/en/ko dùng nguồn Markdown được đóng gói và đọc trực tiếp. Link Google Drive tùy chọn chỉ mở trình duyệt.", "limits": "Chỉ dùng máy trong gói; chưa triển khai mã mời, P2P hoặc phòng O1.", "evidence": ["PY_TEST", "RUST_TEST"]}
+  ],
+  "verification": [
+    {"check": "Build launcher có lockfile trên Linux và Windows GNU x86_64; chạy fmt, Clippy, Rust kr-player và test builder Python.", "result": "pass", "limits": "Test gợi ý ID theo máy, mẫu hướng dẫn ba ngôn ngữ, cấu hình link và các hồi quy launcher.", "evidence": ["LINUX_BUILD", "WINDOWS_BUILD", "RUST_TEST", "PY_TEST"]},
+    {"check": "Chụp màn chính và hướng dẫn vi/en/ko, so sánh từ dấu hỏi, 880×660 và 960×600; kiểm link qua stub cục bộ.", "result": "pass", "limits": "Launcher Linux chạy trực tiếp qua Xvfb và TLS loopback tổng hợp. Không chạy client KR, Wine, VM, Windows hoặc VPS.", "evidence": ["CAPTURE", "SMALL", "HELP_COMPARE"]}
+  ],
+  "delta": {"added": ["Danh sách máy chủ, link bản mới, cửa sổ gần 4:3 và trợ giúp ba ngôn ngữ theo ngữ cảnh."], "corrected": [], "superseded": []},
+  "blockers": ["Claude còn duyệt ảnh mới và PR. Nghiệm thu phát hành M8 tiếp tục theo PLAN."],
+  "next_steps": [{"id": "M8-476-launcher-art-review", "task": "M8-476", "state": "active", "owner": "Claude", "reviewer": "waived", "action": "Duyệt bộ ảnh và tích hợp PR #544 khi đạt; giữ nghiệm thu M8 riêng."}],
+  "review": {"status": "waived", "as_of_utc": "2026-11-21T09:47:48.224964+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm; Claude duyệt ảnh và tích hợp.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "updated", "reason": "Thay mốc mới nhất."},
+    {"path": "docs/HISTORY.md", "state": "updated", "reason": "Chuyển dòng CP385 từ README."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật launcher trong M8."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không thay LoginStage, wire hoặc authority."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Không mở hoặc đóng câu hỏi RE."},
+    {"path": "docs/OPERATIONS.md", "state": "updated", "reason": "Ghi cách chơi, cài đặt, cách đo trạng thái và giới hạn sửa tệp."},
+    {"path": "docs/features.json", "state": "updated", "reason": "Gắn nguồn triển khai và bằng chứng vào mục hiện hành."},
+    {"path": "docs/COVERAGE.md", "state": "updated", "reason": "Sinh lại từ catalog hiện hành."},
+    {"path": "docs/evidence/owner-directives/offline-friends.json", "state": "updated", "reason": "Ghi tên O1 đã chốt và phần hướng dẫn còn chờ."},
+    {"path": "docs/evidence/owner-directives/distribution.json", "state": "updated", "reason": "Ghi biên giới O1/S1, mã mời và lưu theo máy."},
+    {"path": "docs/player/guide.vi.md", "state": "updated", "reason": "Hướng dẫn vi và hai bản en/ko cùng cấu trúc."},
+    {"path": "docs/evidence/checkpoints/records/CP386.json", "state": "updated", "reason": "Pin ảnh đầu vào, ảnh chụp và log kiểm."}
+  ],
+  "evidence": [
+    {"id": "SOURCE_ART", "path": "local/assets/launcher/launch.png", "kind": "local", "bytes": 1993337, "sha256": "986bd460740341f0f07098144ca4a19211f419b457f8bb5e4a1a34fa80093f9e"},
+    {"id": "CAPTURE", "path": "local/research/codex/launcher-art-v4/window-final/capture.log", "kind": "local", "bytes": 934, "sha256": "90ed48dee8fe38988e4ebf4516e9b316029b9b7a3d8c164b58c9bd7db8a1bfda"},
+    {"id": "SMALL", "path": "local/research/codex/launcher-art-v4/window-final/small.log", "kind": "local", "bytes": 255, "sha256": "bc5c3349251e08046a28249963fb52ae6de02c5beb0e2743a9ed69da00c43882"},
+    {"id": "HELP_COMPARE", "path": "local/research/codex/launcher-art-v4/window-final/compare-vi.png", "kind": "local", "bytes": 342030, "sha256": "bd4c3cab82c98f8633e467fc482ed50883105b699cd2773c8a46b2030068bc63"},
+    {"id": "LINUX_BUILD", "path": "local/research/codex/launcher-art-v4/window-final/linux-build.log", "kind": "local", "bytes": 164, "sha256": "37c31deaf811cf57e975267ad5d88d33c33f3e4584a25086865af4e2f61c6e01"},
+    {"id": "WINDOWS_BUILD", "path": "local/research/codex/launcher-art-v4/window-final/windows.log", "kind": "local", "bytes": 164, "sha256": "f57264666f98b5d819ccba30923cd8d647f2260aaed8e0730c080d12f5dd13db"},
+    {"id": "RUST_TEST", "path": "local/research/codex/launcher-art-v4/window-final/rust.log", "kind": "local", "bytes": 2414, "sha256": "e24816807261a3d6ca678d32345fc6eedb9a1ef7cc7910a8bd3c5705c7791b00"},
+    {"id": "PY_TEST", "path": "local/research/codex/launcher-art-v4/python.log", "kind": "local", "bytes": 886, "sha256": "dfd8732db1867265983fa88249ae2673e553632b80ff37ce85a99b7db8995552"}
+  ],
+  "evidence_runs": [{"run": "local/research/codex/launcher-art-v4", "path": "local/evidence-manifests/bb8912c9158e32d91a3b0ac8c39576213f28bfe42a562b5b6a4727b7de13d354.jsonl", "sha256": "bb8912c9158e32d91a3b0ac8c39576213f28bfe42a562b5b6a4727b7de13d354", "bytes": 2658, "count": 13, "files_bytes": 6594485}]
+}

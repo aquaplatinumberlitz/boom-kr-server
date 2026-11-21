@@ -1,4 +1,4 @@
-//! First-party player installation. No assets or native wire changes live here.
+//! First-party player installation and verification of optional launcher artwork.
 #![forbid(unsafe_code)]
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -45,6 +45,8 @@ pub struct Manifest {
     pub common: Vec<Entry>,
     pub languages: std::collections::BTreeMap<String, Language>,
     pub limits: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub launcher_art: Option<Pin>,
 }
 fn invalid() -> io::Error {
     io::Error::other("player installation integrity or path check failed")
@@ -163,11 +165,11 @@ pub fn sha256(path: &Path) -> io::Result<String> {
         }
         hash.update(&buffer[..count]);
     }
-    Ok(hash
-        .finalize()
-        .iter()
-        .map(|byte| format!("{byte:02x}"))
-        .collect())
+    Ok(digest_hex(&hash.finalize()))
+}
+
+fn digest_hex(bytes: &[u8]) -> String {
+    bytes.iter().map(|byte| format!("{byte:02x}")).collect()
 }
 fn checked(root: &Path, pin: &Pin) -> io::Result<PathBuf> {
     let path = ordinary(root, &pin.path)?;
@@ -218,6 +220,26 @@ pub fn read_manifest(bundle: &Path, expected: &str) -> io::Result<Manifest> {
     }
     Ok(manifest)
 }
+/// Return only the pinned bytes. Artwork is decorative; callers may fall back on any error.
+pub fn launcher_art(bundle: &Path, expected: &str) -> io::Result<Option<Vec<u8>>> {
+    const MAX_BYTES: u64 = 2 * 1024 * 1024;
+    let Some(pin) = read_manifest(bundle, expected)?.launcher_art else {
+        return Ok(None);
+    };
+    if pin.bytes == 0 || pin.bytes > MAX_BYTES {
+        return Err(invalid());
+    }
+    let path = ordinary(bundle, &pin.path)?;
+    let mut bytes = Vec::new();
+    File::open(path)?
+        .take(pin.bytes + 1)
+        .read_to_end(&mut bytes)?;
+    if bytes.len() as u64 != pin.bytes || digest_hex(&Sha256::digest(&bytes)) != pin.sha256 {
+        return Err(invalid());
+    }
+    Ok(Some(bytes))
+}
+
 fn destination(root: &Path, name: &str) -> io::Result<PathBuf> {
     let target = root.join(relative(name)?);
     fs::create_dir_all(target.parent().ok_or_else(invalid)?)?;
@@ -347,6 +369,85 @@ pub fn verify_install(bundle: &Path, expected: &str, target: &Path) -> io::Resul
         verify_tree(bundle, target, language, &manifest)?;
     }
     Ok(())
+}
+
+/// Hold this while the launcher starts or owns a game from the installation.
+pub fn lock_installation(target: &Path) -> io::Result<File> {
+    let name = target
+        .file_name()
+        .ok_or_else(invalid)?
+        .to_str()
+        .ok_or_else(invalid)?;
+    let filename = format!(".{name}.kr-player.lock");
+    let path = managed_file(target.parent().ok_or_else(invalid)?, &filename, true)?;
+    let lock = OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .truncate(false)
+        .open(path)?;
+    lock.try_lock().map_err(io::Error::from)?;
+    Ok(lock)
+}
+
+/// Verify or install a bundle; on explicit repair replace only a managed
+/// installation. Build and verify the replacement first, then keep the old tree
+/// beside it so user logs and local files remain recoverable.
+pub fn maintain_install(
+    bundle: &Path,
+    expected: &str,
+    target: &Path,
+    repair: bool,
+) -> io::Result<bool> {
+    let _lock = lock_installation(target)?;
+    let existing = match fs::symlink_metadata(target) {
+        Ok(_) => {
+            if verify_install(bundle, expected, target).is_ok() {
+                return Ok(false);
+            }
+            if !repair {
+                return Err(invalid());
+            }
+            // Never move an arbitrary folder or a receipt for a different bundle.
+            check_receipt(target, expected)?;
+            true
+        }
+        Err(error) if error.kind() == io::ErrorKind::NotFound => false,
+        Err(error) => return Err(error),
+    };
+    let parent = target.parent().ok_or_else(invalid)?;
+    let nonce = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map_err(io::Error::other)?
+        .as_nanos();
+    let workspace = parent.join(format!(".kr-player-{}-{nonce}", std::process::id()));
+    fs::create_dir(&workspace)?;
+    let replacement = workspace.join("replacement");
+    install(bundle, expected, &replacement)?;
+    verify_install(bundle, expected, &replacement)?;
+
+    if !existing {
+        // Do not replace a directory that appeared while building.
+        return match fs::symlink_metadata(target) {
+            Err(error) if error.kind() == io::ErrorKind::NotFound => {
+                fs::rename(&replacement, target)?;
+                let _ = fs::remove_dir(&workspace);
+                Ok(false)
+            }
+            _ => Err(invalid()),
+        };
+    }
+
+    check_receipt(target, expected)?;
+    let previous = workspace.join("previous");
+    fs::rename(target, &previous)?;
+    if let Err(error) = fs::rename(&replacement, target) {
+        if fs::symlink_metadata(target).is_err_and(|e| e.kind() == io::ErrorKind::NotFound) {
+            let _ = fs::rename(&previous, target);
+        }
+        return Err(error);
+    }
+    Ok(true)
 }
 
 pub fn verify_language(
