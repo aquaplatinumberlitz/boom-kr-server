@@ -418,7 +418,7 @@ async fn stream(
                 .as_mut()
                 .ok_or_else(|| io::Error::other("native owner absent"))?;
             let opcode = input.opcode;
-            if room.packet(&input, driver, &mut lane, &mut send, &resources).await.map_err(|e|
+            if room.packet(&input, driver, &mut lane, &mut send, &resources, id).await.map_err(|e|
                 native_failure(e, "room_request", last.0, last.1))? {
                 continue;
             }

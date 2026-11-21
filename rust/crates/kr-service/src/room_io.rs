@@ -1544,6 +1544,10 @@ impl Runtime {
     }
 }
 impl Session {
+    pub(crate) fn public_room_key(&self) -> Option<crate::room_registry::RoomKey> {
+        self.shared.lock().ok()?.public_key
+    }
+
     pub(crate) async fn wait_journal(&self) -> io::Result<()> {
         let ticket = {
             self.shared
