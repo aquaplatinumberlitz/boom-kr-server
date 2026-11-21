@@ -1,8 +1,8 @@
 # Xếp loại nội dung KR 00967
 
-Bảng sinh từ [kiểm kê pack](../CONTENT.md). Các lớp là ứng viên kỹ thuật, không phải mức tương thích
-của cả họ. **A**: server đã có hoặc gần đủ với dữ liệu; **B**: cần thêm wire hoặc luật đã hiểu;
-**C**: còn ẩn số cần RE. Dấu **—** là ngoài phạm vi. F1–F6 vẫn chưa mở.
+Bảng sinh từ [kiểm kê pack](../CONTENT.md). **A**: chạy được với server hiện tại trong phạm vi ghi ở dòng
+tương ứng; **B**: cần thêm dữ liệu, wire hoặc luật đã hiểu; **C**: còn ẩn số cần RE.
+Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1–F6 vẫn chưa mở.
 
 Nguồn: số liệu pack và wiki được định tuyến ở CONTENT; đối chiếu `boomkr-re/docs/kr-data.md` §2, §6, §12–13
 và `boom-re/docs/items.md`, `map.md` để định hướng, không nhập opcode/ID VN. IDA trên bản sao unpack 00967
@@ -20,41 +20,41 @@ Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; gi�
 | Mode | 1 | 0 | 31 | 0 |
 | Hệ thống | 4 | 5 | 51 | 1 |
 
-Họ map F1: 86 B, 22 C.
+Họ map F1: 0 A, 86 B, 22 C. Có 15 map đạt A ở cấp map trong đợt thử mới.
 
 ### Phép thử rẻ cho F1
 
-Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) xác nhận đối chứng
-Factory07 hoàn tất một ván và Patrit01 hiện trong menu. Các lớp theo họ chưa đổi. Ưu tiên họ không script;
-đo hai client vào cùng map, nhận Start/Load và journal, một tương tác ô hoặc item rồi về phòng. Dừng
-ca khi lỗi chọn map, thiếu profile hay không có mốc bắt đầu trong vài phút. Ca C có script chỉ đo
-load/trigger tối thiểu khi profile phù hợp. Gộp map trong cùng lượt; trần bốn lượt, các ca còn lại giữ
-`pending`. Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-service/g1-acceptance-matrix.json).
+Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) giữ đối chứng
+ban đầu. [CP382](../evidence/checkpoints/records/CP382.json) ghi
+kết quả trên server hiện tại với catalog dựng từ pack, qua TLS/relay trong LAN cô lập. Mẫu A có
+Start/Load, tương tác trong trận, kết quả và về phòng. Chỉ nâng lớp B của cả họ khi mọi map trong họ
+đã qua phép thử này. Mẫu A không xác nhận item, drop, toàn bộ địa hình, script hoặc roster khác.
+Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-service/g1-acceptance-matrix.json).
 
 ## Họ map
 
 | Nội dung | Đợt | Lớp | Số lượng / mẫu | Server cần làm |
 |---|---|---|---|---|
 | Aqua | F1 | C | 9 · `Aqua01` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| Camp | F1 | B | 13 · `Camp01`; G1: Camp08 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Cemetery | F1 | B | 7 · `Cemetery01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Cookie | F1 | B | 7 · `Cookie01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Desert | F1 | B | 7 · `Desert00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Factory | F1 | B | 7 · `Factory00`; G1: Factory07 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Factory07:** Hai client Wine đặt bom, nhận kết quả và về phòng; journal complete. |
-| Forest | F1 | B | 12 · `Forest02`; G1: Forest07 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Ice | F1 | B | 7 · `Ice00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Island | F1 | B | 15 · `Island01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Kfg | F1 | B | 3 · `Kfg02` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Camp | F1 | B | 13 · `Camp01`; G1: Camp08 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Camp01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Cemetery | F1 | B | 7 · `Cemetery01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Cemetery01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Cookie | F1 | B | 7 · `Cookie01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Cookie01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Desert | F1 | B | 7 · `Desert00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Desert00 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Factory | F1 | B | 7 · `Factory00`; G1: Factory07 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Factory07 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Forest | F1 | B | 12 · `Forest02`; G1: Forest07 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Forest02 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Ice | F1 | B | 7 · `Ice00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Ice00 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Island | F1 | B | 15 · `Island01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Island01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Kfg | F1 | B | 3 · `Kfg02` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Kfg02 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
 | LovelyRoom | F1 | C | 10 · `LovelyRoom01` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| Mine | F1 | B | 7 · `Mine00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Ocean | F1 | B | 7 · `Ocean00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Mine | F1 | B | 7 · `Mine00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Mine00 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Ocean | F1 | B | 7 · `Ocean00` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Ocean00 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
 | PangLand | F1 | C | 10 · `PangLand00` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
 | Pangland | F1 | C | 1 · `Pangland14` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| Patrit | F1 | B | 8 · `Patrit01`; G1: Patrit14 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Patrit01:** Có tên trong menu map; chưa nhận Start/Load native cho Patrit01. |
+| Patrit | F1 | B | 8 · `Patrit01`; G1: Patrit14 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Patrit01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
 | Space | F1 | C | 8 · `Space01` | Chưa biết quyền chạy script, kiểu ô, item hoặc kích thước chưa có profile. |
-| Tomb | F1 | B | 5 · `Tomb01`; G1: Tomb12 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Village | F1 | B | 6 · `Village00`; G1: Village10 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
-| Xmas | F1 | B | 14 · `Xmas01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
+| Tomb | F1 | B | 5 · `Tomb01`; G1: Tomb12 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Tomb01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Village | F1 | B | 6 · `Village00`; G1: Village10 | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Village00 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
+| Xmas | F1 | B | 14 · `Xmas01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. **Xmas01 (A):** Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay. |
 | forest | F1 | B | 1 · `forest21` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | kfg | F1 | B | 3 · `kfg01` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |
 | mine | F1 | B | 1 · `mine23` | Thử ánh xạ mã map, spawn, ô và item bằng adapter G1; cần đối chiếu hành vi chưa có. |

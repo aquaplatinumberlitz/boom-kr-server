@@ -23,6 +23,14 @@ NATIVE_F1 = {
         "checkpoint": "CP381",
     },
 }
+NATIVE_BATCH_CHECKPOINT = "CP382"
+# These names are exact pack keys, never a family-name match.
+NATIVE_BATCH_A = {
+    "Camp01", "Cemetery01", "Cookie01", "Desert00", "Factory07",
+    "Forest02", "Ice00", "Island01", "Kfg02", "Mine00",
+    "Ocean00", "Patrit01", "Tomb01", "Village00", "Xmas01",
+}
+NATIVE_BATCH_SCOPE = "Hai client Wine chọn map, Load, đặt bom, nhận kết quả và về phòng qua TLS/relay."
 MAPS = {"Forest07", "Patrit14", "Village10", "Camp08", "Tomb12", "Factory07"}
 BASIC_ITEMS = {"Item/ItemBomb", "Item/ItemFire", "Item/ItemRoller", "Item/ItemMaxPower"}
 ACTION_ITEMS = {"Item/ItemShoe", "Item/ItemPunch", "Item/ItemNiddle"}
@@ -70,16 +78,18 @@ UNSUPPORTED_WAVE = "chưa xếp đợt"
 
 def generate(data, digest):
     rows = []
-    def add(kind, name, wave, code, reason, **evidence):
+    def add(kind, name, wave, code, reason, *, status=None, **evidence):
         rows.append(dict(kind=kind, name=name, wave=wave, classification=code,
-                         status="design" if code is None else "candidate", reason=reason, **evidence))
+                         status=status or ("design" if code is None else "candidate"), reason=reason, **evidence))
 
     by_family = defaultdict(list)
     f1_used = set()
     for m in data["maps"]:
         by_family[m["category"], m["family"]].append(m)
+    seen_batch_maps = set()
     for (category, family), maps in sorted(by_family.items()):
         base = base_theme(family) or family
+        family_maps = {m["name"] for m in maps}
         f1 = category in {"battle_theme", "battle_variant"} and not family.startswith("Fm_AIBtl")
         wave = ("F1" if f1 else "F2?" if category == "mission" else "F3"
                 if category in {"monster", "rpg", "hidden", "bonus"} or
@@ -102,13 +112,29 @@ def generate(data, digest):
                 (m["width"], m["height"]) != (15, 13), m["name"]))
             extra["probe"] = {"sample": candidates[0]["name"] if candidates else native[0],
                               "status": "pending" if candidates else "prior_g1"}
-        if f1 and family in NATIVE_F1:
-            observed = NATIVE_F1[family]
-            assert any(m["name"] == observed["map"] for m in maps)
-            extra["native_step0"] = observed
+            tested = sorted(family_maps & NATIVE_BATCH_A)
+            seen_batch_maps.update(tested)
+            observations = [
+                dict(map=name, source="kr_runtime", status="confirmed", classification="A",
+                     scope=NATIVE_BATCH_SCOPE, checkpoint=NATIVE_BATCH_CHECKPOINT)
+                for name in tested
+            ]
+            if extra["probe"]["sample"] in tested:
+                extra["probe"].update(status="confirmed", classification="A",
+                                      checkpoint=NATIVE_BATCH_CHECKPOINT)
+            prior = NATIVE_F1.get(family)
+            if prior:
+                assert prior["map"] in family_maps
+                extra["native_step0"] = prior
+            if observations:
+                extra["native_samples"] = observations
+            if code == "B" and family_maps <= NATIVE_BATCH_A:
+                code, reason = "A", "Đã chạy trên server hiện tại trong phạm vi thử native bên dưới."
+                extra["status"] = "confirmed"
         add("map", family, wave, code, reason, category=category, base=base,
             map_count=len(maps), script_count=sum(m["scripted"] for m in maps),
             script_unknown=len(substantial), native_g1=native, **extra)
+    assert seen_batch_maps == NATIVE_BATCH_A
 
     by_group = defaultdict(list)
     lookup = {}
@@ -184,9 +210,9 @@ def markdown(data):
     lines = [
         "# Xếp loại nội dung KR 00967",
         "",
-        "Bảng sinh từ [kiểm kê pack](../CONTENT.md). Các lớp là ứng viên kỹ thuật, không phải mức tương thích",
-        "của cả họ. **A**: server đã có hoặc gần đủ với dữ liệu; **B**: cần thêm wire hoặc luật đã hiểu;",
-        "**C**: còn ẩn số cần RE. Dấu **—** là ngoài phạm vi. F1–F6 vẫn chưa mở.",
+        "Bảng sinh từ [kiểm kê pack](../CONTENT.md). **A**: chạy được với server hiện tại trong phạm vi ghi ở dòng",
+        "tương ứng; **B**: cần thêm dữ liệu, wire hoặc luật đã hiểu; **C**: còn ẩn số cần RE.",
+        "Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1–F6 vẫn chưa mở.",
         "",
         "Nguồn: số liệu pack và wiki được định tuyến ở CONTENT; đối chiếu `boomkr-re/docs/kr-data.md` §2, §6, §12–13",
         "và `boom-re/docs/items.md`, `map.md` để định hướng, không nhập opcode/ID VN. IDA trên bản sao unpack 00967",
@@ -202,19 +228,19 @@ def markdown(data):
     for kind, title in titles.items():
         n = Counter(r["classification"] for r in rows if r["kind"] == kind)
         lines.append(f"| {title} | {n['A']} | {n['B']} | {n['C']} | {n[None]} |")
+    f1 = Counter(r["classification"] for r in rows if r["kind"] == "map" and r["wave"] == "F1")
     lines.extend([
         "",
-        f"Họ map F1: {sum(r['kind'] == 'map' and r['wave'] == 'F1' and r['classification'] == 'B' for r in rows)} B, "
-        f"{sum(r['kind'] == 'map' and r['wave'] == 'F1' and r['classification'] == 'C' for r in rows)} C.",
+        f"Họ map F1: {f1['A']} A, {f1['B']} B, {f1['C']} C. Có {len(NATIVE_BATCH_A)} map đạt A ở cấp map trong đợt thử mới.",
         "",
         "### Phép thử rẻ cho F1",
         "",
-        "Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) xác nhận đối chứng",
-        "Factory07 hoàn tất một ván và Patrit01 hiện trong menu. Các lớp theo họ chưa đổi. Ưu tiên họ không script;",
-        "đo hai client vào cùng map, nhận Start/Load và journal, một tương tác ô hoặc item rồi về phòng. Dừng",
-        "ca khi lỗi chọn map, thiếu profile hay không có mốc bắt đầu trong vài phút. Ca C có script chỉ đo",
-        "load/trigger tối thiểu khi profile phù hợp. Gộp map trong cùng lượt; trần bốn lượt, các ca còn lại giữ",
-        f"`pending`. Route cũ chỉ được dùng theo phạm vi [ma trận G1]({G1}).",
+        "Cột Mẫu chỉ định một map mỗi họ. [CP381](../evidence/checkpoints/records/CP381.json) giữ đối chứng",
+        f"ban đầu. [{NATIVE_BATCH_CHECKPOINT}](../evidence/checkpoints/records/{NATIVE_BATCH_CHECKPOINT}.json) ghi",
+        "kết quả trên server hiện tại với catalog dựng từ pack, qua TLS/relay trong LAN cô lập. Mẫu A có",
+        "Start/Load, tương tác trong trận, kết quả và về phòng. Chỉ nâng lớp B của cả họ khi mọi map trong họ",
+        "đã qua phép thử này. Mẫu A không xác nhận item, drop, toàn bộ địa hình, script hoặc roster khác.",
+        f"Route cũ chỉ được dùng theo phạm vi [ma trận G1]({G1}).",
     ])
     for kind, title in titles.items():
         lines.extend(["", f"## {title}", "",
@@ -229,10 +255,14 @@ def markdown(data):
                 count = f'{count} · `{row["probe"]["sample"]}`'
             if row.get("native_g1"):
                 count = f'{count}; G1: {", ".join(row["native_g1"])}'
-            observed = row.get("native_step0")
             reason = row["reason"]
-            if observed:
-                reason += f' **{observed["map"]}:** {observed["scope"]}'
+            observations = row.get("native_samples", [])
+            prior = row.get("native_step0")
+            if prior and not any(s["map"] == prior["map"] for s in observations):
+                observations = [*observations, prior]
+            for observed in observations:
+                result = " (A)" if observed.get("classification") == "A" else ""
+                reason += f' **{observed["map"]}{result}:** {observed["scope"]}'
             lines.append(f'| {row["name"]} | {row["wave"]} | {row["classification"] or "—"} | {count} | {reason} |')
     return "\n".join(lines) + "\n"
 
