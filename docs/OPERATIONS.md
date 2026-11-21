@@ -1,315 +1,200 @@
-# Vận hành server KR
+# KR server operations
 
-Runbook này dùng cho một instance Linux. Nghiệm thu gói người chơi, tải và chạy dài theo [acceptance M8](PLAN.md#phase1-acceptance).
-Contract xác thực, route và giới hạn ở [UDP/companion](protocol/udp-peer.md#rust-authenticated-serving-relay).
+Run one KR 00967 service instance per private state directory. Run the commands below as a dedicated Linux service user unless a build or firewall step calls for a different account.
 
-## Gói Linux và state riêng
+## System requirements
 
-[Builder](../tools/rust_service_package.py) nhận binary cùng kiến trúc ELF64 và recipe đã pin, gom fixture/profile
-thành đường dẫn tương đối và ghi manifest. Nó không copy DB/session, không tự đổi endpoint/budget và không tự xuất
-lại toàn bộ dữ liệu từ pack. Bước này chưa thay acceptance build-from-pack, Linux sạch hoặc gói người chơi của M8.
-Đầu ra chứa cấu hình hạ tầng và dữ liệu client, chỉ dựng trong `local/`, không commit hoặc phát hành lên GitHub.
+- Linux x86-64 or AArch64 with a GNU/Linux ABI compatible with the package, Python 3.11+, and local disk for SQLite, logs, and snapshots.
+- Build host: Rust via rustup (the repository pins the toolchain) and a C compiler and linker for the Linux target. Windows cross builds also need the x86-64 MinGW-w64 toolchain.
+- Use absolute paths for `PACKAGE` (installed bundle) and `STATE` (short, private path outside the bundle). Keep state and backup directories at mode `0700`; keep the database, snapshots, and private keys at `0600`.
 
-```bash
-python3 tools/rust_service_package.py --base "$BASE_CONFIG" --binary-dir "$BINARY_DIR" \
-  --target "$BUILD_TARGET" --out local/operator/package-new
-```
+<a id="gói-linux-và-state-riêng"></a>
+## Build and package
 
-Giữ `manifest_sha256` từ kết quả builder làm hash bàn giao độc lập với gói. Chuyển thư mục nguyên mode sang đường
-cài mới; target và Linux ABI phải tương thích, Python dùng standard library. State thuộc người chạy, quyền `0700`,
-ở ngoài thư mục gói; socket cần đường dẫn ngắn. Runner kiểm manifest, file/mode và từ chối symlink/path escape.
+1. From the repository root, select `BUILD_TARGET`: `x86_64-unknown-linux-gnu` or `aarch64-unknown-linux-gnu`. Build with the lockfile.
 
-```bash
-python3 "$PACKAGE/kr-package.py" verify --manifest-sha256 "$EXPECTED_MANIFEST_SHA256"
-python3 "$PACKAGE/kr-package.py" init-db --manifest-sha256 "$EXPECTED_MANIFEST_SHA256" --state "$PRIVATE_STATE"
-python3 "$PACKAGE/kr-package.py" run --manifest-sha256 "$EXPECTED_MANIFEST_SHA256" --state "$PRIVATE_STATE"
-```
+   ```bash
+   (cd rust && rustup target add "$BUILD_TARGET" &&
+     cargo build --release --locked --target "$BUILD_TARGET" \
+       -p kr-service -p kr-tunnel --bin kr-service --bin kr-admin --bin kr-companion --bin kr-launch-identity)
+   BINARY_DIR="$PWD/rust/target/$BUILD_TARGET/release"
+   install -d -m 0700 local/operator
+   ```
 
-`init-db` chỉ dùng cho DB mới; restore có quy trình riêng, không ghi đè DB bằng init. `run` re-root DB/socket vào
-state, khóa instance của runner rồi exec service với cwd gói để fixture không cần repo/local. Admin dùng JSON qua
-stdin của `bin/kr-admin`, không đặt mật khẩu/token trên argv. Kiểm namespace bằng
-[smoke tool](../tools/smoke_rust_service_package.py) chỉ chứng minh repo bị che trên cùng kernel/thư viện host;
-không gọi nó là máy Linux sạch, Internet/native client, restore, tải hoặc soak.
+2. Complete [first install steps 1–4](#first-install), then package the serving recipe. Keep the builder's `manifest_sha256` in the handoff record, separate from the bundle. Transfer the verified bundle privately, preserving file modes; use a new installation directory for each version.
 
-[Bằng chứng nền đóng gói](evidence/rust-service/m8-server-package.json) có kiểm x86 và ARM trên hai Linux độc lập.
-Smoke cần `unshare`, `ip`, `mount`, `bwrap` và namespace được kernel cho phép; mỗi lượt chỉ mở loopback trong
-network namespace riêng. Trên máy ARM, lượt dùng user namespace với tài khoản thường vướng quyền đọc
-`/proc/self/mountinfo` của `bwrap`; bản smoke đạt dùng thư mục riêng do root sở hữu và `sudo`. Đây là giới hạn
-của harness, chưa là quy trình chạy production bằng tài khoản service. Giữ raw lỗi trước, không thay cấu hình bảo
-mật host để vượt lỗi. Smoke kiểm DB mới, từ chối init lại mà không đổi DB, từ chối runner thứ hai khi instance đầu
-còn ready, rồi dừng có trật tự. Không suy client đăng nhập hoặc Internet từ readiness.
+   ```bash
+   python3 tools/rust_service_package.py --base "$SERVING_RECIPE" --binary-dir "$BINARY_DIR" \
+     --target "$BUILD_TARGET" --out local/operator/server-new
+   ```
+
+   The builder packages pinned fixtures and profiles from the recipe. Relative fixture paths are resolved from the recipe's directory. The bundle contains no database, live sessions, or private TLS keys.
+
+## First install
+
+1. Start with a pinned DB-backed managed-room recipe (`profile_mode: database_zero`, managed player rounds and choices enabled). Keep its supported maps, roster and fixtures. Select authenticated relay and set peer, route, queue, rate and lease budgets for the planned deployment.
+
+   ```bash
+   SERVING_RECIPE="$PWD/local/operator/service.json"
+   python3 tools/rust_phase1_config.py --base "$BASE_CONFIG" \
+     --relay-bind "$RELAY_BIND" --relay-advertise "$RELAY_ADVERTISE" \
+     --database "$STATE/accounts.sqlite" --launch-socket "$STATE/launch.sock" --out "$SERVING_RECIPE"
+   ```
+
+   Rebase any relative fixture paths when moving the recipe. The package runner sets DB and launch socket paths from `--state`. Make configuration changes in the recipe before building a new manifest.
+
+2. Provision TLS for `public_launcher` and `prelogin_tls` under `diagnostic_two_lobby.account_admission`. For a new identity, run the helper once per distinct certificate with a new destination under a private directory:
+
+   ```bash
+   "$BINARY_DIR/kr-launch-identity" "$NEW_TLS_DIR"
+   ```
+
+   Pin each `certificate.der` in the recipe with `path`, `bytes` and `sha256`; distribute the matching public pins in the trusted player package. Provision the two matching `private.pk8` files separately. Never put private keys in either bundle.
+
+3. For Internet access, set `network_scope: controlled_internet` and add the **source IPv4 addresses seen by the server** to top-level `allowed_peers`, retaining local peers needed by the profile. Allow those sources only at both host and upstream firewalls:
+
+   | Listener | Inbound |
+   | --- | --- |
+   | `public_launcher.bind` | TCP/TLS for the account API |
+   | `prelogin_tls.bind` | UDP/QUIC for the prelogin companion |
+   | `authenticated_relay.bind` | UDP/QUIC for peer relay |
+
+   Bind those listeners to a local interface; set `authenticated_relay.advertise` to the IPv4:port the companion can reach. Allow established replies. Keep native KR ports on loopback at both ends and the admin socket local. One relay listener carries all logical routes (`n × (n − 1)` per full mesh room); no public port range is needed. Players behind one NAT share the prelogin `max_per_ip` limit.
+
+4. For each enabled TLS listener, set `session_ttl_seconds` and `session_idle_seconds` if the package defaults (28,800 s absolute / 1,800 s idle) do not fit. Keep `1 ≤ idle ≤ TTL ≤ 86400`. Room and match activity refresh idle; keepalives do not. The absolute TTL starts at login and is separate from QUIC timeouts.
+
+5. Build the package, then set `PACKAGE` and `MANIFEST_SHA256` from the handoff. Initialize a new database once; for an existing deployment use the restore or upgrade steps.
+
+   ```bash
+   python3 "$PACKAGE/kr-package.py" verify --manifest-sha256 "$MANIFEST_SHA256"
+   install -d -m 0700 "$STATE"
+   install -m 0600 "$LAUNCHER_KEY" "$STATE/launcher.pk8"
+   install -m 0600 "$PRELOGIN_KEY" "$STATE/prelogin.pk8"
+   python3 "$PACKAGE/kr-package.py" init-db --manifest-sha256 "$MANIFEST_SHA256" --state "$STATE"
+   ```
+
+## Start, stop, and restart
+
+1. Run in the foreground under a process supervisor or in a dedicated terminal. The runner takes the state lock and replaces itself with the service.
+
+   ```bash
+   python3 "$PACKAGE/kr-package.py" run --manifest-sha256 "$MANIFEST_SHA256" --state "$STATE"
+   ```
+
+2. Identify the current start's `$STATE/runs/<id>/service` directory as `RUN_DIR`. Wait for health to pass before admitting players.
+3. Schedule a maintenance window, stop new admissions at the perimeter, and let current rounds finish. Stop via the supervisor or send `kill -TERM "$SERVICE_PID"` to the current process. Wait for exit 0, `"stopped": true` in `service-state.json`, and listeners to release. Unfinished rounds are recorded as aborted.
+4. Restart with the same `run` command after the old process exits. Use the new run directory and ask players to relaunch and log in again. After a forced stop, confirm the PID is gone first; boot revokes old sessions and aborts any journal entries still marked running.
 
 <a id="server-health"></a>
-## Kiểm sức khỏe server
+## Health and monitoring
 
-Với cấu hình account DB và phòng managed, dùng đường dẫn `service/` của đúng lượt chạy hiện hành:
+```bash
+ADMIN="$PACKAGE/bin/kr-admin"
+"$ADMIN" health "$RUN_DIR"
+cat "$RUN_DIR/health.json"
+```
 
-    "$PACKAGE/bin/kr-admin" health "$RUN_DIRECTORY"
-
-Lệnh trả JSON và exit 0 khi service đang ready và mẫu gần nhất báo khỏe, không quá 15 giây. Service ghi mẫu
-`health.json` mỗi 5 giây bằng đổi tên nguyên tử, đồng thời ghi sự kiện `health_sample` trong `rust-events.jsonl`.
-Khi bắt đầu dừng, readiness hạ ngay. Sau SIGKILL, mẫu cũ có thể còn hiệu lực tới khi quá 15 giây; kết hợp trạng
-thái tiến trình của service manager để phát hiện sớm. Không mở cổng giám sát ra mạng.
-
-- `lobby.online_players` đếm owner đang gắn vào hệ thống lobby managed (không gồm phiên chỉ đăng nhập xong nhưng
-  chưa gắn channel). `room_count`, `loading_rounds`, `active_rounds` và bảng phòng phân biệt chờ, nạp, đang chơi
-  và kết quả. Log gắn channel TLS có ID connection nội bộ, không chứa token. Ghép `epoch`, `room_session`, `room_id`, `generation`, `round` để đối chiếu journal theo lượt chạy.
-- `relay` phân biệt cổng UDP listener, số companion và số route có đặt chỗ. Bộ đếm datagram tính từ lúc boot;
-  `submitted_to_quic` là số được giao cho QUIC, không xác nhận tới client. Không tính packet loss đầu cuối từ
-  chênh lệch các bộ đếm này; route bị dọn cũng có thể bỏ gói còn chờ.
-- `database_probe` đọc SQLite qua WAL, không chờ KDF hoặc ghi thêm vào DB. Khi lỗi, kiểm mã
-  `busy`, `schema`, `epoch_mismatch` hoặc `unavailable` cùng `database_probe_errors` và log service.
-  Phép dò chỉ đọc schema/epoch, không thay `verify-backup` hoặc xác nhận DB có thể ghi.
-
-So sánh số phòng và route trước tải, trong tải và sau khi client ngắt. Đo CPU, RAM, FD, độ trễ và mất gói từ
-driver tải/OS; các chỉ số nội bộ ở trên không đóng acceptance 50 người/8 phòng hoặc soak 24 giờ.
+- Alert on process exit or a failing health check. The CLI returns JSON and exits 0 when the service is ready and the healthy sample is at most 15 seconds old. Compare with the supervisor's process status: after SIGKILL, the last sample can still pass until it ages out.
+- Read `health.json` locally; the service replaces it atomically every five seconds and emits `health_sample` in `rust-events.jsonl`. Watch lobby players, room phases and rounds, relay companions and reserved routes, and database probe errors. `lobby.online_players` counts players attached to the managed lobby.
+- Track host CPU, RAM, disk space and file descriptors. Monitor backup age and `backup_failed` events.
 
 <a id="m8-udp-workload"></a>
-## Đầu vào UDP cho kiểm tải M8
-
-[Công cụ offline](../tools/m8_udp_profile.py) đọc capture loopback CP287 và bản ghi thời gian đi kèm, kiểm SHA-256
-theo checkpoint. Nó chỉ đếm bản sao hướng gửi tới proxy của đúng vòng, từ mốc đồng hồ trận đến trước kết quả.
-Trên bốn client và hai ván hoàn tất, trung bình từng cửa sổ nằm trong 11,55–14,49 gói/giây/client; trung vị 13,02,
-đỉnh cửa sổ trượt một giây là 27 gói/client. Đây là ứng viên lịch phát cho phép kiểm kỹ thuật, lấy từ build cũ.
-Không ghi raw hoặc payload vào kho mã.
-
-    python3 tools/m8_udp_profile.py --archive "$ARCHIVE_REPO" \
-      --out local/m8-cp287-profile.json
-
-CP375 giữ capture QUIC bên ngoài. Dữ liệu đã mã hóa có cả control và datagram, nên số gói quan sát được không
-thay mẫu UDP native. Cần đối chiếu trên build đóng gói hiện hành: giữ cùng mốc đồng hồ/kết quả, chiều gửi, cửa
-sổ đỉnh, kích thước và số đích theo mỗi client; ghi rõ map, roster, nhịp chơi và hash build.
-
-Một bố trí đề xuất cho đúng 50 người/8 phòng là một phòng 8 và bảy phòng 6, tương ứng 266 route có hướng khi
-đầy; chọn map và roster đã có profile phù hợp. Trước lượt đo, chốt phân bổ phòng native/tổng hợp và lưu profile phát, baseline phần cứng, ngưỡng CPU, RAM,
-độ trễ chuyển tiếp p95 và tỉ lệ rơi cùng recipe. Đối chiếu gói ở driver gửi và nhận để đo mất gói; không suy từ
-bộ đếm giao cho QUIC. Chưa chốt ngưỡng, chưa chạy tải 50 người hoặc soak 24 giờ.
+For load monitoring, measure relay latency and loss at the sender and receiver; `submitted_to_quic` is a handoff count. See the [offline UDP profiler](../tools/m8_udp_profile.py) for workload inputs.
 
 <a id="server-admin-backup-rollback"></a>
-## Quản trị, snapshot và đổi phiên bản
+## Accounts, rooms, and audit
 
-Chạy bằng tài khoản hệ điều hành quản lý service. Tách thư mục gói (đã kiểm manifest) khỏi state riêng `0700`.
-Giữ gói cũ, hash manifest, cấu hình và cặp chứng thư/khóa TLS tương ứng. Khóa TLS nằm ngoài DB; cấp lại đúng khóa
-khớp pin từ kho bí mật khi phục hồi. Cài lần đầu bằng `init-db`, phục hồi thì dùng `restore-db`.
-
-`kr-admin DATABASE` đọc một JSON từ stdin. Khai `actor` là tên operator, `reason` là lý do ngắn; quyền truy cập do
-hệ điều hành bảo vệ, còn actor là khai báo của operator. Không đưa mật khẩu, mã recovery hoặc token vào
-argv, lý do, shell history hay log.
-
-| `command.op` | Trường và hành vi |
-|---|---|
-| `create`, `lookup` | Tạo bằng `login`, `name`, `password`; tra cứu bằng `login`. |
-| `disable`, `enable`, `kick` | Dùng `account_id`; khóa thu hồi phiên, mở khóa cho đăng nhập lại, kick chỉ thu hồi phiên (alias `revoke`). |
-| `password-reset`, `recovery-reset` | Dùng `account_id`; reset mật khẩu cần thêm `password` và hủy mã recovery hiện có. Reset recovery phát mã mới qua stdout một lần. Cả hai thu hồi phiên. |
-| `delete` | Dùng `account_id`; xóa login cũ, thông tin hồ sơ, password/recovery đang dùng và thu hồi phiên. Giữ ID đã vô hiệu để bảo toàn lịch sử trận/audit. |
-| `list-rooms`, `close-room` | Liệt kê phòng hiện hành; truyền nguyên object đã chọn vào `target` gồm `instance`, `epoch`, `room_id`, `session`, `generation`. Close loại phòng khỏi danh sách, ngắt quyền phòng và hủy ván chưa kết thúc. Yêu cầu từ tiến trình cũ bị từ chối, kể cả khi restore dùng lại số epoch. |
-| `audit-list` | `filter` tùy chọn: `actor`, `operation`, `target_kind`, `target_id` (chuỗi), `result`, `since_utc`, `before_id`, `limit` (1–100, mặc định 50). Sắp từ ID mới nhất; dùng ID cuối làm `before_id` cho trang kế. |
-
-    printf '%s\n' '{"actor":"on-call","reason":"tra thao tác đóng phòng","command":{"op":"audit-list","filter":{"operation":"close_room","limit":20}}}' |
-      "$PACKAGE/bin/kr-admin" "$PRIVATE_STATE/accounts.sqlite"
-
-Audit account thành công commit cùng thay đổi, lỗi có mã riêng khi DB ghi được. Đóng phòng ghi `pending` trước
-khi tác động, rồi ghi `ok`, `rejected` hoặc `journal_unconfirmed`; boot kế chuyển yêu cầu còn treo thành `interrupted`.
-Nếu mất phản hồi, tra audit cùng khóa phòng trước khi thử lại. Khi DB không ghi được audit, sửa lỗi lưu trữ trước;
-không coi lỗi CLI là bằng chứng thao tác đã chạy. Đóng phòng không yêu cầu kick toàn bộ tài khoản.
-
-Đặt `"backup": {"interval_seconds": 3600, "keep": 24}` trong `diagnostic_two_lobby.account_admission` của recipe
-rồi dựng và kiểm lại manifest. Lượt đầu chạy sau một chu kỳ; chỉ một snapshot tự động chạy một lúc.
-Service ghi `backup_complete` hoặc `backup_failed` vào `rust-events.jsonl` và giữ N snapshot tự động mới nhất trong
-`accounts.backups/`. Chỉ dọn sau khi snapshot mới đã qua kiểm; file thủ công và bản trước migration nằm ngoài
-lịch dọn. Theo dõi dung lượng, tuổi bản cuối và sao chép bản snapshot đã kiểm sang nơi lưu riêng được phép.
-Snapshot có dữ liệu tài khoản nhạy cảm; giữ quyền `0600`, thư mục `0700` và không đưa vào gói.
-
-    "$PACKAGE/bin/kr-admin" backup "$PRIVATE_STATE/accounts.sqlite" "$PRIVATE_BACKUP/new.sqlite"
-    "$PACKAGE/bin/kr-admin" verify-backup "$PRIVATE_BACKUP/new.sqlite"
-    python3 "$PACKAGE/kr-package.py" restore-db --manifest-sha256 "$EXPECTED_MANIFEST_SHA256" \
-      --state "$NEW_PRIVATE_STATE" --snapshot "$PRIVATE_BACKUP/new.sqlite"
-
-Có thể backup khi service chạy. SQLite `VACUUM INTO` chỉ chụp dữ liệu đã commit, kể cả WAL; kiểm cả schema,
-`integrity_check` và khóa ngoại trước khi công bố file. Không copy file DB live bằng `cp`. Restore yêu cầu DB đích
-chưa tồn tại và không có sidecar; dùng state mới. Cài khóa TLS, khởi động với gói tương thích, kiểm readiness,
-đăng nhập mới và vào một ván. Restore không tiếp tục phiên hay trận trong bộ nhớ; các ván chạy dở trong snapshot
-được ghi hủy ở lần boot sau. Đo RPO từ thời điểm snapshot và RTO tới lúc có thể mở ván trên môi trường triển khai.
-
-Nâng cấp: ngừng nhận người chơi, gửi SIGTERM (hoặc dừng bằng service manager), chờ exit 0 và `stopped: true`.
-Trận đã hoàn tất giữ kết quả; trận dở được ghi hủy, không cấp thưởng. Nếu phải SIGKILL, xác nhận PID cũ đã hết rồi
-khởi động lại; boot thu hồi phiên, dọn socket chỉ khi không còn listener, và hủy journal còn `running`.
-Nếu không thấy readiness, kiểm exit status, `rust-events.jsonl`, quyền state, cổng bị chiếm và DB; giữ log trước khi
-thử lại. Không xóa lock/socket để vượt lỗi chạy trùng.
-
-1. Kiểm hash gói mới và cấu hình. Sau khi dừng bản cũ, tạo thêm snapshot thủ công và kiểm. Có thể chạy
-   `kr-package.py migrate-db --manifest-sha256 … --state …` dưới gói mới trước khi chạy `run`. Migrator tự giữ bản
-   `accounts.sqlite.before-v<old>-to-v<new>-*.sqlite` đã kiểm trước khi áp dụng thay đổi trong một transaction.
-   Nếu snapshot không tạo hoặc không kiểm được, migration dừng.
-2. Kiểm `ready: true`, đăng nhập mới và mở ván. Nếu thất bại, dừng bản mới và giữ DB, cấu hình và log của lần lỗi
-   để đối chiếu. Nếu schema không đổi, dùng lại gói/cấu hình cũ tương thích. Nếu schema đã tăng, dùng bản trước
-   migration để restore vào state mới và chạy gói cũ với cấu hình/khóa TLS tương ứng.
-3. Migration `0001`–`0006` không có chiều ngược tại chỗ. Cụ thể binary schema 5 từ chối DB đã qua
-   `0006_operator_audit` (schema 6). Dùng binary mới hơn để **restore**, sau đó dùng binary cũ để **run**;
-   không chạy `migrate-db` hoặc `run` của gói mới lên state rollback. Dữ liệu phát sinh sau snapshot không có
-   trong DB rollback; giữ state mới để xử lý riêng.
-
-Nếu `backup_failed` lặp lại, kiểm dung lượng và quyền, tạo/kiểm snapshot thủ công rồi theo dõi lượt kế. Khi
-nghi DB hỏng, giữ nguyên DB và sidecar để điều tra; phục hồi bản đã kiểm vào state khác. Luyện rollback bằng
-[script](../tools/test_m8_binary_rollback.py) với hai thư mục binary; tùy chọn `--package` và hash manifest kiểm
-thêm boot/dừng hai server loopback. Test Rust mở ván sau restore qua hai client TLS tổng hợp, không chạy game.
-
-## Launcher TLS đang triển khai
-
-GUI mới ở `kr-player` theo [chỉ đạo vi/en/ko](evidence/owner-directives/m8-multilang-launcher.json); bản ko phải là
-exe đã vá 949x. [Builder người chơi](../tools/player_package.py) nhận recipe local có `base` là client KR gốc,
-`pack_stages` theo thứ tự vi rồi en, và ba phần `languages`. Mỗi phần khai `encoding: 949x`, `data`, `fonts`,
-`executable` và `video` được pin path/bytes/sha256, `index_stage` là base/vi/en và trạng thái `images`. Không lấy
-idx en đã dựng riêng trên pack KR rồi ghép vào sau vi; builder từ chối khi prefix không khớp. Khi chưa có ảnh en,
-phải khai rõ ảnh tạm và giữ giới hạn chưa đạt, không ghi thành gói cuối.
+Run `"$ADMIN" "$DB"` as the service user and send one JSON request on stdin with an `actor`, a short `reason`, and a `command`. OS access controls who can run admin operations. Keep credentials and recovery codes out of arguments, history, audit reasons, and logs.
 
 ```bash
-python3 tools/player_package.py --recipe "$PRIVATE_PLAYER_RECIPE" --out local/operator/player-payload-new
+DB="$STATE/accounts.sqlite"
+"$ADMIN" "$DB" < "$PRIVATE_REQUEST" # e.g. create; keep the JSON file at mode 0600
+printf '%s\n' '{"actor":"on-call","reason":"Check current rooms","command":{"op":"list-rooms"}}' | "$ADMIN" "$DB"
+printf '%s\n' '{"actor":"on-call","reason":"Check room closures","command":{"op":"audit-list","filter":{"operation":"close_room"}}}' |
+  "$ADMIN" "$DB"
 ```
 
-Giữ hash manifest độc lập với payload. Bộ cài Rust ráp pack, kiểm hash từng phần và toàn pack, dùng hard link
-cho pack và tệp dùng chung không cần ghi. Tệp cấu hình, cache và CALog có bản riêng theo ngôn ngữ. Bộ cài bỏ
-thuộc tính chỉ đọc trong cây game của cả ba ngôn ngữ. Chỉ bản cài đủ hash mới có receipt; thư mục cài dở hoặc có
-sẵn bị từ chối ghi đè. Có thể kiểm cùng installer không GUI:
+| `command.op` | Fields and use |
+| --- | --- |
+| `create`, `lookup` | Create with `login`, `name`, `password`; look up with `login`. For secrets, feed JSON from a protected file or a prompt. |
+| `kick`, `disable`, `enable` | Use `account_id`. Kick revokes current sessions; disable also blocks login; enable allows login again. |
+| `password-reset`, `recovery-reset`, `delete` | Use `account_id`; password reset also takes `password` and invalidates the recovery code. Recovery reset returns a new code once on stdout. Delete clears credentials and profile but keeps the ID for history. These operations revoke sessions. |
+| `list-rooms`, `close-room` | List current rooms. To close one, copy its entire object into `command.target` (`instance`, `epoch`, `room_id`, `session`, `generation`). This removes the room and aborts an unfinished round. Refresh the list for a stale target. |
+| `audit-list` | Optional `command.filter`: `actor`, `operation` (e.g. `close_room`), `target_kind`, `target_id` (string), `result`, `since_utc`, `before_id`, `limit` (1–100, default 50). Pass the last row's ID as `before_id` for the next page. |
 
-```bash
-kr-player-install install "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
-kr-player-install verify "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
-```
+If a close-room reply is lost, check the audit and live room list before retrying. Close starts as `pending` and records `ok`, `rejected`, or `journal_unconfirmed`; a pending record left at boot becomes `interrupted`.
 
-Gói Windows dùng hai binary x86-64 từ target `x86_64-pc-windows-gnu`:
+## Backup and restore
 
-```bash
-cargo build --manifest-path rust/Cargo.toml --release --locked --target x86_64-pc-windows-gnu \
-  -p kr-player -p kr-tunnel --bin kr-player --bin kr-prelogin
-python3 tools/player_package.py --recipe "$PRIVATE_PLAYER_RECIPE" \
-  --windows-runtime "$PRIVATE_WINDOWS_RECIPE" --out local/operator/player-windows-new
-```
+1. For scheduled snapshots, add `"backup": {"interval_seconds": 3600, "keep": 24}` under `diagnostic_two_lobby.account_admission`. Rebuild the package. The first snapshot runs after one interval; retention applies only to scheduled snapshots in `accounts.backups/`.
+2. For a manual snapshot, set `SNAPSHOT` to a new file in a private backup directory. This is safe during service: SQLite snapshots committed data, including WAL changes. Keep verified snapshots in approved private storage; never use a raw copy of the live database.
 
-Recipe Windows khai hai endpoint IPv4 có cổng (`server` cho API tài khoản, `prelogin_server` cho QUIC),
-`ports` là danh sách cổng native loopback, và bốn pin path/bytes/sha256: `launcher`, `companion`, `certificate`,
-`prelogin_certificate`. Dùng các exe tương thích LoginStage manual đã được kiểm ở ngôn ngữ định phát hành.
-Giải nén vào thư mục ghi được trên NTFS, mở `kr-player.exe` hoặc chạy `Tao-loi-tat.ps1` để tạo lối tắt.
-Lối tắt chỉ mở launcher. Chọn ngôn ngữ, bấm **Vào game**, rồi đăng nhập hoặc chơi thử trong game.
+   ```bash
+   "$ADMIN" backup "$DB" "$SNAPSHOT"
+   "$ADMIN" verify-backup "$SNAPSHOT"
+   ```
 
-`launcher.json` khai các đường dẫn tương đối với file cấu hình. GUI kiểm và cài payload, lưu ngôn ngữ
-trong state và hỏi status qua TLS. Trước khi chơi nó kiểm lại bản đã chọn, thử mở ghi các tệp `.ssd`, `.ini` và
-CALog. Tệp cấu hình hoặc cache đã đổi được khôi phục từ payload có hash; CALog đang có được giữ. Launcher báo
-lỗi quyền ghi trước khi mở game; quy trình không sửa ACL. Nếu kiểm tra đạt, launcher đợi companion sẵn sàng rồi
-mở game.
-Nút dừng hoặc đóng cửa sổ dừng hai tiến trình. Companion tự đóng đường TLS nếu bộ đếm heartbeat của
-launcher không tăng trong 10 giây. Companion viết log tối đa 32 KiB trong thư mục của lượt chạy; launcher giữ tối đa bốn log
-đã kết thúc dưới `state/prelogin-logs`. Log ghi cổng loopback, mốc TLS, số byte chuyển và nhãn kết thúc;
-launcher thêm mã thoát tiến trình. Log không chứa địa chỉ máy chủ, credential hoặc nội dung gói.
-Gói Windows đặt `udp_backend: portable`. Với launcher Linux gọi Wine, đặt `udp_backend: native` cho companion Linux,
-khai đường dẫn chương trình qua trường `wine` và dùng prefix riêng theo ngôn ngữ.
-Hai đầu TLS cần certificate pin riêng (có thể dùng cùng chứng thư đã phân phối nếu hai đầu dùng cùng identity).
+3. Stop the old instance before switching over. Restore into a new absolute `NEW_STATE` with no destination database or SQLite sidecars. Provision the keys matching the package pins, then start with `--state "$NEW_STATE"`.
 
-Server cho ba client đã vá có thể khai `account_admission.patched_949x_names: true` cùng `profile_mode: database_zero`.
-DB giữ tên UTF-8, adapter đổi đúng 949x khi phát profile và kiểm channel; giới hạn là 3–15 byte trên wire.
-Đây là opt-in theo deployment, không chọn encoding từ ngôn ngữ launcher hoặc IP. Để false/mặc định cho client chưa vá:
-tên ngoài ASCII bị từ chối cấp frontend. Không tự sửa DB/đổi tên khi chuyển policy. [Contract biên tên](protocol/auth-session.md#rust-patched-account-names)
-chưa có native acceptance cho tên Việt/Hàn; chat và tên phòng có ca riêng.
+   ```bash
+   python3 "$PACKAGE/kr-package.py" restore-db --manifest-sha256 "$MANIFEST_SHA256" \
+     --state "$NEW_STATE" --snapshot "$SNAPSHOT"
+   ```
 
-Trạng thái nghiệm thu của [public launcher](protocol/auth-session.md#rust-public-launcher) nằm ở
-[Bảng điều hành M8](PLAN.md#current-order). Tạo identity bằng `kr-launch-identity "$NEW_PRIVATE_DIRECTORY"`;
-command từ chối directory có sẵn. Giữ `private.pk8` trên server trong parent `0700`, file `0600`; phát certificate
-qua kênh/gói tin cậy. Không tự tải pin từ cùng endpoint chưa xác thực hoặc ghi private key vào bundle. Khi đóng
-gói config có launcher và prelogin, builder gom certificate đã pin. Operator cấp key khớp vào
-`launcher.pk8` và `prelogin.pk8` trong state trước khi chạy service. DB và key không được đổi/copy từ raw thí nghiệm đang dùng.
+   Check health, a fresh login and a test round before reopening access. Restore does not resume live sessions or rounds. Keep the old state for recovery or diagnosis.
 
-Gói Linux sinh `config.template.json` với `session_ttl_seconds: 28800` (8 giờ) và
-`session_idle_seconds: 1800` (30 phút) cho từng listener TLS đã bật nếu recipe không ghi giá trị.
-Giữ `1 ≤ idle ≤ TTL ≤ 86400` giây. Hoạt động trong phòng và trận gia hạn idle; keepalive và
-các lượt kiểm nền giữ nguyên hạn. TTL tuyệt đối vẫn tính từ lần đăng nhập. Với gói launcher hiện hành,
-khi phiên tài khoản hết hiệu lực, mở lại game từ launcher và đăng nhập lại khi thấy thông báo.
-Đổi mật khẩu hoặc thu hồi phiên cũng có thể kết thúc phiên đang chơi.
+## Upgrade, migrate, and roll back
 
-Đường dự phòng cho chẩn đoán dùng cấu hình riêng trong local. `kr-launch "$PLAYER_CONFIG"` đọc JSON
-login/password qua stdin; không có trong gói Windows mới. Client mở companion bằng stdin,
-đợi transport ready rồi mở native với frontend token hiện hành. Kết thúc/lỗi/signal dọn hai child rồi thử logout;
-server không tới được thì báo lỗi và giữ TTL, không giả logout đã xác nhận. Gói Wine/Windows và Internet native
-còn theo acceptance M8; không dùng `/bin/true` trong smoke làm bằng chứng chơi trận.
+1. Verify the new package and retain the old package, manifest hash, recipe and TLS identities. Stop the service cleanly, then take and verify a fresh manual snapshot.
+2. Run migration explicitly with the new package before starting it. On a schema change the migrator verifies a snapshot named `accounts.sqlite.before-v<old>-to-v<new>-*.sqlite` before applying changes in a transaction. If migration fails, stop here and keep the logs and database.
 
-Harness Windows hiện dùng [owner](../tools/native_windows_candidate.py), [input QMP tham số hóa](../tools/native_windows_input.py)
-và [installer](../tools/native_windows_install.ps1). Ca đa ngôn ngữ dùng [controller tham số hóa](../tools/native_windows_multilang.py)
-và [guest script](../tools/native_windows_multilang.ps1), nhận vi/en/ko, manifest/hash và executable control đã khai.
-Nó kiểm input đã cài trong runtime folder riêng, chụp trạng thái có hạn, dừng owner và xuất evidence; không coi
-thư mục runtime này là ca cài sạch hoặc gói cuối. Lượt có `--socket-probe` là đối chứng debugger riêng.
-Nếu nguồn Internet đổi, staging lấy đúng IPv4 quan sát từ SSH để thay `/32` ở kế hoạch rule và allowlist gói,
-pin lại config/manifest rồi verify trước chạy; không mở rộng ACL để né lỗi. Mọi cấu hình, media, credential test, overlay và raw chỉ ở local;
-owner giữ lease chung, VM/egress riêng và chờ bản cài kiểm hash xong mới bật runner VPS có hạn và rule test riêng.
-Chọn executable theo hash đã đo, không mặc định tên `CA.exe` trong cây nhiều probe; bản copy từ ISO phải bỏ
-ReadOnly trước khi ghi config/cache. Các lỗi chuẩn bị và sửa tương ứng ở metadata nền launcher, chưa là nghiệm thu KR.
+   ```bash
+   python3 "$NEW_PACKAGE/kr-package.py" migrate-db --manifest-sha256 "$NEW_MANIFEST_SHA256" --state "$STATE"
+   ```
 
-## Nghiệm thu gói qua Internet và WAN giả lập
+3. Provision the keys that match the new package, start it, and check health, a fresh login and a test round. If verification fails, stop it and provision the old keys for rollback.
+4. On an unchanged, compatible schema, start the old package against the same state. After a schema increase, use the new package to restore the verified pre-upgrade snapshot into fresh `ROLLBACK_STATE`, then run the old package. There is no in-place downgrade.
 
-Tạo recipe triển khai trước khi dựng manifest. Giữ các cổng KR nội bộ ở loopback VPS và loopback của companion;
-chỉ mở ba cổng từ IPv4 nguồn của lượt thử ở cả firewall máy và lớp mạng VPS: API launcher TCP/TLS, prelogin UDP/QUIC
-và relay UDP/QUIC. Dùng địa chỉ giao diện riêng cho bind của ba listener và địa chỉ client tới được cho relay
-advertise. Client nhận pin chứng thư và cổng API/prelogin qua payload; địa chỉ relay đến từ offer xác thực.
+   ```bash
+   python3 "$NEW_PACKAGE/kr-package.py" restore-db --manifest-sha256 "$NEW_MANIFEST_SHA256" \
+     --state "$ROLLBACK_STATE" --snapshot "$PRE_UPGRADE_SNAPSHOT"
+   # Provision keys matching the old package before starting.
+   python3 "$OLD_PACKAGE/kr-package.py" run --manifest-sha256 "$OLD_MANIFEST_SHA256" --state "$ROLLBACK_STATE"
+   ```
 
-Đặt `network_scope: controlled_internet` và thêm **IPv4 mà VPS quan sát** vào `allowed_peers`, đồng thời giữ các
-peer nội bộ của profile. API launcher và prelogin đều kiểm danh sách này; firewall mở và TCP kết nối được vẫn
-chưa đủ. Hai client chung IPv4 dùng chung hạn mức `max_per_ip` của prelogin. Giữ hạn phiên mặc định 8 giờ và idle
-30 phút; hai hạn này độc lập timeout im lặng của QUIC. Nếu địa chỉ đổi, cập nhật recipe và rule của lượt thử, tạo
-gói mới và kiểm manifest lại. Không sửa trực tiếp template đã có pin.
+   Repeat the health, login and round checks. Keep the upgraded state; post-snapshot changes are absent from the rollback database.
 
-Khởi tạo state riêng, cấp hai key và account thử nghiệm qua stdin riêng. Sau readiness, xác nhận launcher đã nhận
-`status` qua TLS và đợi prelogin TLS rồi mới thao tác trong game; chỉ chạy thao tác trận khi đồng hồ trên cả hai
-màn hình đang đếm. Ghi RTT tới VPS riêng với bằng chứng relay. Kết thúc lượt bằng tín hiệu dừng cho runner đã tạo,
-kiểm listener đã nhả rồi gỡ các rule có nhãn của lượt đó ở cả hai lớp.
+<a id="launcher-tls-đang-triển-khai"></a>
+## Launcher and player package
 
-[Tool WAN giả lập](../tools/m8_wan_namespace.sh) chạy lệnh kiểm trong namespace mới với server và Wine ở
-`M8_WAN_SERVER`, còn QEMU user networking phải được mở trong `M8_WAN_EDGE_NS` qua `nsenter --net`. Router chỉ
-chuyển các cổng của gói; prelogin và relay dùng hai dải cổng nguồn NAT riêng. Mỗi chiều đường Windows thêm 75 ms
-và mất 3% độc lập. Khi cả hai đồng hồ đã chạy, hạ `wan0` trong namespace edge. Lúc khôi phục, bật lại link và
-đặt lại route `M8_WAN_SERVER/32` qua router của namespace; hạ link có thể xóa route này. Kiểm journal, phiên,
-UI người còn lại và đăng nhập mới sau khi đường trở lại.
+1. Prepare a private player recipe with original KR 00967 `base`, optional `pack_stages` in KR → vi → en order, and all three `languages` (`vi`, `en`, `ko`). Supply the matching 949x LoginStage executables, data, fonts, video, `index_stage`, and image status. Pin file inputs by path, bytes and SHA-256. To serve localized account names to 949x-patched clients, set `patched_949x_names: true` in `account_admission`.
+2. For Windows, prepare the private runtime recipe: reachable IPv4:port values for `server` and `prelogin_server`, native loopback `ports`, and pins for `launcher`, `companion`, `certificate` and `prelogin_certificate`.
 
-## Chọn cấu hình phục vụ
+   ```bash
+   (cd rust && rustup target add x86_64-pc-windows-gnu &&
+     cargo build --release --locked --target x86_64-pc-windows-gnu \
+       -p kr-player -p kr-tunnel --bin kr-player --bin kr-prelogin)
+   python3 tools/player_package.py --recipe "$PLAYER_RECIPE" \
+     --windows-runtime "$WINDOWS_RECIPE" --out local/operator/player-windows-new
+   ```
 
-Giai đoạn 1 dùng **`AuthenticatedRelay`**. `LegacyDirect` và relay UDP prototype giữ làm cấu hình chẩn đoán riêng.
-Binary yêu cầu `--config`, không tự chọn một địa chỉ hạ tầng hoặc biến config chẩn đoán thành config phục vụ.
-Tạo preset bằng [tool cấu hình](../tools/rust_phase1_config.py), từ baseline account DB và managed player round
-đã đo. Tool giữ nguyên map, item, sức chứa và budgets; nó chọn relay xác thực, bỏ pool prototype và yêu cầu chỉ rõ
-DB/socket riêng. Fixture dùng khi đóng gói phải theo manifest hash; việc loại phụ thuộc `local/` khỏi gói thuộc M8.
+   Omit `--windows-runtime` for payload only. For the Linux launcher with Wine, supply a native `kr-prelogin` companion and set `wine` and `udp_backend: native` in `launcher.json`. The launcher uses a Wine prefix per language. Windows uses `udp_backend: portable`.
 
-Thông tin endpoint, đường truy cập, DB và cấu hình triển khai thực chỉ giữ trong `local/`. Tạo thư mục riêng, chọn
-DB/socket dành cho vận hành; không chạy lại trực tiếp config trỏ vào DB/raw đã seal của một phép thử.
+3. Deliver the bundle and manifest hash privately. On Windows, extract to writable NTFS and open `kr-player.exe` (optional shortcut script: `Tao-loi-tat.ps1`). Select a language, click **Play game** (`Vào game` in Vietnamese), and sign in inside the game. The launcher verifies the installation and waits for the companion; starting `CA.exe` directly skips the tunnel.
+4. For scripted payload verification, build the `kr-player-install` binary and use a new installation directory:
 
-```bash
-python3 tools/rust_phase1_config.py --base "$BASE_CONFIG" \
-  --relay-bind "$RELAY_BIND" --relay-advertise "$RELAY_ADVERTISE" \
-  --database "$ACCOUNT_DATABASE" --launch-socket "$PRIVATE_LAUNCH_SOCKET" \
-  --out local/operator/service.json
-kr-service --config local/operator/service.json --out local/operator/run
-```
+   ```bash
+   (cd rust && cargo build --release --locked -p kr-player --bin kr-player-install)
+   rust/target/release/kr-player-install install "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
+   rust/target/release/kr-player-install verify "$PAYLOAD" "$PLAYER_MANIFEST_SHA256" "$NEW_INSTALLATION"
+   ```
 
-Tool tạo file mới mode `0600`, không ghi đè và từ chối đường ra ngoài `local/`. Chuẩn bị quyền riêng của thư mục,
-DB và launcher theo contract account; SQLite từ bản sao phải giữ quyền `0600`. Mỗi lần service mở instance mới
-phải đăng nhập mới qua launcher; không tái dùng capability, pin hoặc session trước restart như một cơ chế resume.
-Chỉ công bố readiness sau khi TCP, launcher và UDP listener đã bind thành công. Đóng có trật tự và xác nhận port
-đã nhả trước khi khởi động mới; Quinn có drain bất đồng bộ hữu hạn, không giả định `close()` đồng bộ nhả socket.
+## Troubleshooting
 
-## Cổng và firewall
-
-| Tài nguyên | Công thức / cấu hình cho tám phòng tám người |
-|---|---|
-| Listener QUIC của server | Một cổng UDP được cấu hình; tái dùng giữa các phòng/vòng và sau restart |
-| Route logic | `n × (n − 1)` mỗi phòng; tối đa 448 cho tám phòng tám người |
-| Peer QUIC | Một connection mỗi companion; tối đa 64 khi mọi slot đều đầy |
-| Proxy tại một client | Bảy socket loopback mỗi snapshot tám người, ngoài socket UDP native và QUIC |
-| TCP game/bootstrap | Các cổng trong config đã chọn; độc lập số route logic |
-| Launcher hiện hành | Unix socket riêng; gói người chơi dùng thêm một listener TCP/TLS và một listener UDP/QUIC prelogin |
-
-Với gói launcher qua Internet, áp dụng ba cổng và allowlist ở mục trên. Nếu chạy một chế độ chẩn đoán riêng,
-chỉ cho inbound tới listener mà chế độ đó cần.
-Cho phép reply của flow hiện hành; không mở dải cổng proxy loopback hoặc dải 448 cổng public. Bind/advertise là hai
-vai trò riêng: địa chỉ listener cục bộ phải bind được, địa chỉ quảng bá phải tới được từ companion. Certificate pin
-và capability được phát qua launcher xác thực, không qua packet native hoặc argv.
-
-Con số trên là ngân sách cấu trúc, chưa là benchmark. Không lấy preset hai route của phép thử làm cấu hình 50 người.
-M8 phải chọn headroom, queues/rate/lease và đo CPU/RAM/độ trễ/rơi gói theo tải đích. Proxy endpoint cũ giữ riêng theo
-session với budget hữu hạn; cạn budget dừng đóng, cần launcher mới. Ghi nhận và xử lý admission/expiry/revoke/DB fault
-thay vì tự rebind identity hoặc mở quyền cho gói đầu không xác thực. Chi tiết firewall/topology thực không commit.
+| Symptom | First checks |
+| --- | --- |
+| Startup fails or health stays red | Check the current process exit status, stderr and `rust-events.jsonl`. Check manifest, state ownership, socket path length, DB schema and port use (`ss -lntu`). Do not remove locks or sockets to bypass an active instance. |
+| Login or relay is unreachable | Match both certificate pins to deployed keys. Check observed source IPv4, both firewalls, TCP API and UDP prelogin/relay reachability, relay advertisement, and shared NAT limits. If an address changes, update the allowlist and firewall, rebuild, and verify the new manifest. |
+| Session ends during play | Check for timeout, kick, password reset, disable, or restart. Reopen the game through the launcher and sign in again. |
+| Launcher cannot verify, install, or start the game | Check manifest and writable storage. Use a fresh installation directory for an incomplete install. Check free loopback ports and the latest log under launcher state `prelogin-logs/`. |
+| DB probe or backup fails | Check `database_probe` (`busy`, `schema`, `epoch_mismatch`, `unavailable`), disk space, permissions and service logs. Verify a fresh snapshot after fixing the cause. If corruption is suspected, preserve the DB and sidecars and restore a verified snapshot into new state. |
