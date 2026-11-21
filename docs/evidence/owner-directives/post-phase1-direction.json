@@ -14,6 +14,16 @@
     "Mỗi đợt có tiêu chí nghiệm thu bằng client thật; tính năng chưa hỗ trợ tắt rõ ràng, không ACK giả.",
     "Ngân sách bằng chứng evidence-budget.json áp dụng cho mọi đợt."
   ],
+  "supplement_2026_11_21": {
+    "source": "Chủ dự án, qua Claude (director), ngày 21/11/2026.",
+    "decision": "Cho làm bước 0 ngay, song song với phần cuối M8. F1–F6 vẫn chưa mở.",
+    "scope": [
+      "Xếp loại A/B/C tĩnh trước, sau đó thử rẻ trên đại diện F1, không quá bốn lượt client thật trong lượt giao việc.",
+      "Ghi và phát lại phiên thật có pin hash; chuyển ít nhất hai phiên lưu thành test CI.",
+      "Gom bộ điều khiển Windows/Wine, chờ theo trạng thái server và hỗ trợ giữ nút, nhập Unicode."
+    ],
+    "limits": "Mỗi phần một nhánh và PR, chờ CI xanh, không tự merge. Không dùng VPS, không sửa OPERATIONS.md. Chỉ chạy native khi không có VM/runtime khác đang chạy."
+  },
   "canonical": "docs/PLAN.md#full-game-roadmap",
   "owner": "Chủ dự án quyết định; Claude ghi lại và điều hành"
 }

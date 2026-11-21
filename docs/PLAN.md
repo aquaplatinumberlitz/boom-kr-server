@@ -13,7 +13,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **20/11, C
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, người chơi qua Internet thật, 50 người
 đồng thời và tối thiểu 8 phòng, chế độ thường trên sáu map ladder với tập item G1 đã giữ lại. Sau giai đoạn 1: gameplay đầy đủ theo
-[lộ trình sáu đợt F1–F6](#full-game-roadmap), chưa mở việc nào.
+[lộ trình sáu đợt F1–F6](#full-game-roadmap); bước 0 làm song song M8, F1–F6 chưa mở.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -709,7 +709,7 @@ inventoryprojection/authorityvalidation làunknown effort; ước lượng chỉ
 ### Lộ trình sau giai đoạn 1: tới gameplay đầy đủ
 
 Chủ dự án muốn dài hạn có đủ item, map và mode của game gốc. Mục này xếp **thứ tự các đợt**; nó chưa phải cam kết
-thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (trừ các phép thử xếp loại rẻ). Số liệu lấy từ
+thời gian. F1–F6 chưa mở; bước 0 được phép làm song song với phần cuối M8. Số liệu lấy từ
 [kiểm kê](CONTENT.md) sinh từ pack; có tài nguyên trong pack không chứng minh tính năng còn chạy. Cỡ từng đợt
 **chưa ước lượng được** cho tới khi các nhóm trong đợt được xếp loại A/B/C.
 
@@ -723,8 +723,11 @@ thời gian và chưa mở việc nào trước khi giai đoạn 1 bàn giao (tr
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa (bỏ ưu đãi phòng máy Nexon) | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
 | L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
 
-**Thứ tự ([quyết định 20/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 xếp loại A/B/C và công cụ ghi/phát lại
-phiên thật, rồi F1 → F4 → F2 → F5 → F3 → F6. Màn trình duyệt nhúng (Dwarf/libcef) làm bằng web phía server; bỏ phần riêng Nexon.
+**Thứ tự ([quyết định 20/11 và bổ sung 21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
+[bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển client theo trạng thái server.
+Làm tĩnh trước; chỉ thử nhanh đại diện F1 khi VM/runtime khác đã dừng, tối đa bốn lượt theo chỉ đạo 21/11.
+Sau bàn giao giai đoạn 1 và bước 0: F1 → F4 → F2 → F5 → F3 → F6. Màn trình duyệt nhúng (Dwarf/libcef) làm
+bằng web phía server; bỏ phần riêng Nexon.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
 `boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
@@ -744,9 +747,9 @@ Giai đoạn 1 vẫn dùng client gốc với bảng mã 949. Mọi thay đổi 
 
 Cách vào mỗi đợt, giống nhau cho mọi đợt:
 
-1. **Xếp loại trước khi ước lượng.** Mỗi họ map, nhóm item hoặc hệ thống chạy một phép thử ngắn trên client thật (tối đa
-   hai lượt native) để xếp A (chỉ cần dữ liệu), B (dùng packet đã có) hay C (cần packet hoặc trạng thái mới). Kết quả
-   ghi vào cột "server phải làm gì" của kiểm kê qua tool sinh, không sửa tay.
+1. **Xếp loại trước khi ước lượng.** Bắt đầu bằng kiểm kê tĩnh, rồi thử ngắn theo họ map, nhóm item hoặc hệ thống
+   (mặc định tối đa hai lượt native mỗi đợt). A là đã có hoặc chỉ cần dữ liệu, B cần wire/luật đã hiểu, C còn ẩn số cần RE.
+   Ghi kết quả qua tool sinh [bảng xếp loại](content/classification.md).
 2. **Chỉ RE cho loại C**, theo từng hệ thống; client KR không có bảng handler tĩnh theo opcode nên không RE trước hàng loạt.
 3. **Code theo dữ liệu:** map, item, nhân vật nạp từ file sinh từ pack; mode là bộ luật trong `RoomRules`; không thêm
    nhánh theo từng map hay từng item vào lõi phòng.
