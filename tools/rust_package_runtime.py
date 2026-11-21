@@ -202,6 +202,27 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False,
     return runtime, run / 'service', state / 'accounts.sqlite'
 
 
+def friends_pack(player, expected_sha256, pins):
+    """Select original package members pinned by the launcher manifest."""
+    path = member(player, 'manifest.json')
+    if path.stat().st_size > 4 * 1024 * 1024 or digest(path) != expected_sha256:
+        raise ValueError('Manifest gói người chơi không khớp')
+    value = json.loads(path.read_bytes())
+    if value.get('schema') != 'kre-player-package-v1':
+        raise ValueError('Cần gói người chơi KR')
+    files = {}
+    for name, hash_value in pins.items():
+        if name.endswith('.idd'):
+            rows = (row['parts'][0] for row in value['packs'] if row['path'].casefold() == name.casefold())
+        else:
+            rows = (row['payload'] for language in value['languages'].values()
+                    for row in language['files'] if row['path'].casefold() == name.casefold())
+        pin = next((row for row in rows if row['sha256'] == hash_value), None)
+        if pin is None:
+            raise ValueError(f'Gói người chơi thiếu pack gốc: {name}')
+        files[name] = member(player, pin['path'])
+    return files
+
 def main():
     # The verified package stays immutable even when owned by the runner.
     sys.dont_write_bytecode = True
