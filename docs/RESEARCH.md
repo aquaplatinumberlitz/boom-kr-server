@@ -194,8 +194,8 @@ setup được đo; không áp lại guard setup=true gây lỗi. Queued selecti
 
 G1 giữ [giới hạn roster đã chốt](evidence/owner-directives/g1-map-roster-limits.json): Village10/Tomb12 2–6;
 bốn map khác 2–8. Với [F1-a](PLAN.md#f1-normal-battle), đối chiếu spawn, đường đi cạnh vật cản, nổ sát thùng
-và pickup/reset trên map có placement hoặc drop; chỉ mở RE ở ô hoặc item khác biệt. Khi gặp
-`account_worker_queue_expired`, kiểm host đã ổn định và đối chiếu journal, 202 cùng hai refresh trước khi kết luận.
+và pickup/reset trên map có placement hoặc drop; chỉ mở RE ở ô hoặc item khác biệt. [CaJJ_Clover đã qua đối chứng](evidence/rust-service/f1-pack-map-adapters.json);
+Cookie06/Xmas15 có pickup quan sát được, còn kiểm stat/reset; các họ khác vẫn cần đối chiếu ô và item riêng. Ca `account_worker_queue_expired` giữ raw; lượt sau đã qua về phòng, chưa quy nguyên nhân.
 
 Factory07 dùng bảng tám màu đội, khác bốn nút A/B/C/D của ExVillage01; click cũ phát đội2 bị guard0/3 từ chối.
 Chỉ chọn màu3 đã hỗ trợ trong lượt đạt; chưa có contract phục vụ đội2/4 hoặc mọi màu, không mở scope từ ảnh UI.

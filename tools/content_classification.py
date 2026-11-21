@@ -10,6 +10,8 @@ from content_census import MODE_ROWS, base_theme, item_keys
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "docs/content"
 CENSUS = CONTENT / "census.json"
+F1_EVIDENCE_REF = "../evidence/rust-service/f1-pack-map-adapters.json"
+F1_EVIDENCE = CONTENT / F1_EVIDENCE_REF
 G1 = "../evidence/rust-service/g1-acceptance-matrix.json"
 NATIVE_F1 = {
     "Factory": {
@@ -69,9 +71,6 @@ NATIVE_F1_GAMEPLAY = {
     "NXCL_Ocean02": "Thấy nền nước, các khối sáng và cụm đá giữa.",
     "forest21": "Thấy cụm cây và hoa nhiều màu chia hai phía.",
 }
-# Full family coverage is explicit: a one-map family can still have unobserved
-# item or terrain mechanics. Do not promote it from a match cycle alone.
-NATIVE_F1_FAMILY_A = frozenset()
 NATIVE_F1_CONTROLLER_A = {"BSSmallPatrit14", "CaJJ_Clover01", "NXCL_Ocean02", "ExTomb01"}
 NATIVE_F1_CONTROLLER_SCOPE = "Windows VM và Wine tải map, tới kết quả và về phòng; chỉ xác nhận chu trình."
 
@@ -120,7 +119,10 @@ ORDER = ["map", "item", "ship", "character", "mode", "system"]
 UNSUPPORTED_WAVE = "chưa xếp đợt"
 
 
-def generate(data, digest):
+def generate(data, digest, f1_native):
+    assert f1_native["schema"] == "kre-f1-pack-map-adapters-v1" and f1_native["build"] == data["build"]
+    f1_maps = {name for run in f1_native["native_runs"] for name in run["completed_maps"]}
+    family_acceptance = {row["family"]: row for row in f1_native["accepted_families"]}
     rows = []
     def add(kind, name, wave, code, reason, *, status=None, **evidence):
         rows.append(dict(kind=kind, name=name, wave=wave, classification=code,
@@ -133,6 +135,8 @@ def generate(data, digest):
     seen_batch_maps = set()
     seen_gameplay_maps = set()
     seen_controller_maps = set()
+    seen_adapter_maps = set()
+    seen_adapter_families = set()
     for (category, family), maps in sorted(by_family.items()):
         base = base_theme(family) or family
         family_maps = {m["name"] for m in maps}
@@ -180,8 +184,19 @@ def generate(data, digest):
                      scope=NATIVE_F1_CONTROLLER_SCOPE, checkpoint="CP387")
                 for name in controller
             )
+            adapter = sorted(family_maps & f1_maps)
+            seen_adapter_maps.update(adapter)
+            observations.extend(
+                dict(map=name, source="kr_runtime", status="confirmed", classification="A",
+                     scope="Hai client KR trên Wine qua trọn ván với adapter pack F1-a.",
+                     evidence=F1_EVIDENCE_REF)
+                for name in adapter
+            )
             sample = extra["probe"]["sample"]
-            if sample in tested or sample in gameplay or sample in controller:
+            if sample in adapter:
+                extra["probe"].update(status="confirmed", classification="A",
+                                      evidence=F1_EVIDENCE_REF)
+            elif sample in tested or sample in gameplay or sample in controller:
                 extra["probe"].update(status="confirmed", classification="A",
                                       checkpoint=("CP387" if sample in controller else NATIVE_F1_GAMEPLAY_CHECKPOINT
                                                   if sample in gameplay else NATIVE_BATCH_CHECKPOINT))
@@ -191,16 +206,22 @@ def generate(data, digest):
                 extra["native_step0"] = prior
             if observations:
                 extra["native_samples"] = observations
-            if family in NATIVE_F1_FAMILY_A:
-                assert code == "B" and family_maps <= set(gameplay)
-                code, reason = "A", "Cả họ đã qua chu trình và các đối chứng nội dung nêu bên dưới."
+            if family in family_acceptance:
+                acceptance = family_acceptance[family]
+                assert code == "B" and family_maps == set(acceptance["maps"]) and family_maps <= f1_maps
+                assert not any(m["placements"] or any(w > 0 for _, w in m["drops"]) for m in maps)
+                seen_adapter_families.add(family)
+                code, reason = "A", acceptance["scope"]
                 extra["status"] = "confirmed"
+                extra["family_evidence"] = F1_EVIDENCE_REF
         add("map", family, wave, code, reason, category=category, base=base,
             map_count=len(maps), script_count=sum(m["scripted"] for m in maps),
             script_unknown=len(substantial), native_g1=native, **extra)
     assert seen_batch_maps == NATIVE_BATCH_A
     assert seen_gameplay_maps == NATIVE_F1_GAMEPLAY.keys()
     assert seen_controller_maps == NATIVE_F1_CONTROLLER_A
+    assert seen_adapter_maps == f1_maps
+    assert seen_adapter_families == family_acceptance.keys()
 
     by_group = defaultdict(list)
     lookup = {}
@@ -268,6 +289,7 @@ def generate(data, digest):
                 source="kr_static", census_sha256=digest, client_sha256=data["client_exe_sha256"],
                 idb_sha256="6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
                 ida_input_sha256="cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+                f1_native_map_count=len(NATIVE_BATCH_A | NATIVE_F1_GAMEPLAY.keys() | NATIVE_F1_CONTROLLER_A | f1_maps),
                 rows=rows)
 
 
@@ -297,7 +319,8 @@ def markdown(data):
     f1 = Counter(r["classification"] for r in rows if r["kind"] == "map" and r["wave"] == "F1")
     lines.extend([
         "",
-        f"Họ map F1: {f1['A']} A, {f1['B']} B, {f1['C']} C. Có {len(NATIVE_BATCH_A | NATIVE_F1_GAMEPLAY.keys() | NATIVE_F1_CONTROLLER_A)} map đạt A ở cấp map.",
+        f"Họ map F1: {f1['A']} A, {f1['B']} B, {f1['C']} C. Có {data['f1_native_map_count']} map đạt A ở cấp map.",
+        f"[Kiểm F1-a với adapter pack]({F1_EVIDENCE_REF}) giữ danh sách map, phép thử nội dung và phạm vi họ đã nghiệm thu.",
         "Bốn map trong số đó đã lặp lại trọn chu trình với cặp Windows/Wine ở [CP387](../evidence/checkpoints/records/CP387.json).",
         "",
         "### Phép thử rẻ cho F1",
@@ -344,7 +367,7 @@ def main():
     mode.add_argument("--check", action="store_true")
     args = p.parse_args()
     source = CENSUS.read_bytes()
-    classification = generate(json.loads(source), hashlib.sha256(source).hexdigest())
+    classification = generate(json.loads(source), hashlib.sha256(source).hexdigest(), json.loads(F1_EVIDENCE.read_bytes()))
     meta = {k: v for k, v in classification.items() if k != "rows"}
     rendered = json.dumps(meta, ensure_ascii=False, indent=2)[:-2] + ',\n  "rows": [\n' + ",\n".join(
         "    " + json.dumps(row, ensure_ascii=False) for row in classification["rows"]

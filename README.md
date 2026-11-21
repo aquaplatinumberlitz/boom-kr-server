@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP388: Server Windows đọc pack KR 00967 dưới Wine, hoàn tất một ván loopback với hai client kr-load, kiểm backup và dừng sạch.** [Bằng chứng](docs/evidence/checkpoints/records/CP388.json).
+**F1-a: Adapter pack đã qua kr-load trên 45 map. Họ CaJJ_Clover đạt lớp A cho hai client KR trong LAN cô lập.** [Bằng chứng](docs/evidence/rust-service/f1-pack-map-adapters.json).
 
 ## Bắt đầu
 
