@@ -1,23 +1,22 @@
 //! Màu, kiểu chữ, kiểu widget và hình vẽ của launcher (chỉ phần nhìn, không có logic).
+use iced::theme::Base;
 use iced::{
-    Background, Border, Color, Font, Gradient, Point, Radians, Rectangle, Shadow, Size, Theme,
-    Vector,
+    Background, Border, Color, ContentFit, Font, Gradient, Length, Point, Radians, Rectangle,
+    Shadow, Size, Theme, Vector,
     font::Weight,
     gradient::Linear,
     mouse,
-    widget::{button, canvas, container, image, text_input},
+    widget::{button, canvas, container, image, pick_list, text_input},
 };
-use std::f32::consts::{FRAC_PI_2, PI};
+use std::f32::consts::FRAC_PI_2;
 
 pub const INK: Color = Color::from_rgb(0.03, 0.10, 0.26);
 pub const DEEP: Color = Color::from_rgb(0.03, 0.17, 0.46);
 pub const SKY: Color = Color::from_rgb(0.09, 0.56, 0.94);
 pub const MUTED: Color = Color::from_rgb(0.80, 0.90, 1.0);
 pub const ORANGE: Color = Color::from_rgb(1.0, 0.50, 0.12);
-pub const PINK: Color = Color::from_rgb(1.0, 0.25, 0.52);
 pub const SUN: Color = Color::from_rgb(1.0, 0.82, 0.24);
 pub const MINT: Color = Color::from_rgb(0.36, 0.95, 0.75);
-pub const VIOLET: Color = Color::from_rgb(0.62, 0.52, 1.0);
 pub const CORAL: Color = Color::from_rgb(1.0, 0.47, 0.47);
 
 pub const BOLD: Font = Font {
@@ -54,19 +53,152 @@ pub fn window(_: &Theme) -> container::Style {
     container::Style::default().background(linear(2.3, DEEP, SKY))
 }
 
-pub fn art_matte(_: &Theme) -> container::Style {
-    container::Style::default().background(INK)
+pub fn surface(theme: &Theme, modal_open: bool) -> iced::theme::Style {
+    let mut style = theme.base();
+    // TinySkia treats a background change as a full repaint on modal transitions.
+    style.background_color = if modal_open { INK } else { DEEP };
+    style
 }
 
-pub fn art_panel(_: &Theme) -> container::Style {
+pub fn shade(_: &Theme) -> container::Style {
+    container::Style::default().background(linear(FRAC_PI_2, alpha(INK, 0.51), alpha(INK, 0.0)))
+}
+
+pub fn panel(_: &Theme) -> container::Style {
     container::Style {
-        background: Some(linear(PI, alpha(INK, 0.87), alpha(INK, 0.95))),
+        background: Some(alpha(INK, 0.91).into()),
         border: Border {
-            color: white(0.36),
+            color: white(0.30),
             width: 1.0,
-            radius: 20.0.into(),
+            radius: 22.0.into(),
+        },
+        shadow: glow(alpha(INK, 0.38), 8.0, 24.0),
+        ..Default::default()
+    }
+}
+
+pub fn scrim(_: &Theme) -> container::Style {
+    container::Style::default().background(alpha(INK, 0.60))
+}
+
+pub fn modal(_: &Theme) -> container::Style {
+    container::Style {
+        background: Some(Color::from_rgb8(15, 33, 67).into()),
+        border: Border {
+            color: white(0.32),
+            width: 1.0,
+            radius: 22.0.into(),
+        },
+        shadow: glow(alpha(INK, 0.58), 12.0, 36.0),
+        ..Default::default()
+    }
+}
+
+pub fn dropdown(_: &Theme, status: pick_list::Status) -> pick_list::Style {
+    pick_list::Style {
+        text_color: Color::WHITE,
+        placeholder_color: MUTED,
+        handle_color: MUTED,
+        background: alpha(INK, 0.96).into(),
+        border: Border {
+            color: if status == pick_list::Status::Active {
+                white(0.25)
+            } else {
+                SUN
+            },
+            width: 1.0,
+            radius: 10.0.into(),
+        },
+    }
+}
+
+pub fn secondary(_: &Theme, status: button::Status) -> button::Style {
+    button::Style {
+        text_color: if status == button::Status::Disabled {
+            white(0.45)
+        } else {
+            Color::WHITE
+        },
+        background: Some(
+            match status {
+                button::Status::Hovered => white(0.20),
+                button::Status::Pressed => white(0.09),
+                _ => white(0.12),
+            }
+            .into(),
+        ),
+        border: Border {
+            color: white(0.18),
+            width: 1.0,
+            radius: 10.0.into(),
         },
         ..Default::default()
+    }
+}
+
+pub fn toolbar(theme: &Theme, status: button::Status) -> button::Style {
+    button::Style {
+        background: Some(
+            alpha(
+                INK,
+                if status == button::Status::Hovered {
+                    0.78
+                } else {
+                    0.95
+                },
+            )
+            .into(),
+        ),
+        ..secondary(theme, status)
+    }
+}
+
+pub fn link(_: &Theme, status: button::Status) -> button::Style {
+    button::Style {
+        text_color: match status {
+            button::Status::Hovered => SUN,
+            button::Status::Pressed => ORANGE,
+            button::Status::Disabled => white(0.45),
+            button::Status::Active => MUTED,
+        },
+        ..Default::default()
+    }
+}
+
+pub fn progress(_: &Theme) -> container::Style {
+    container::Style::default()
+        .background(white(0.13))
+        .border(Border::default().rounded(8))
+}
+
+pub fn progress_fill(_: &Theme) -> container::Style {
+    container::Style::default()
+        .background(SUN)
+        .border(Border::default().rounded(8))
+}
+
+pub fn art(handle: &image::Handle, view: Size) -> image::Image<image::Handle> {
+    let image::Handle::Rgba { width, height, .. } = handle else {
+        unreachable!("decode_art creates a RGBA handle")
+    };
+    image::Image::new(handle.clone())
+        .width(Length::Fill)
+        .height(Length::Fill)
+        .crop(cover_crop(*width, *height, view))
+        .content_fit(ContentFit::Cover)
+}
+
+fn cover_crop(width: u32, height: u32, view: Size) -> Rectangle<u32> {
+    let ratio = view.width.max(1.0) / view.height.max(1.0);
+    let crop_width = ((height as f32 * ratio).floor() as u32).clamp(1, width);
+    let crop_height = ((width as f32 / ratio).floor() as u32).clamp(1, height);
+    Rectangle {
+        // At narrow ratios trim mostly the left border; the logo spans the
+        // middle and right. At wide ratios keep the entire bottom edge.
+        x: (width - crop_width) * 9 / 10,
+        y: height - crop_height,
+        width: crop_width,
+        height: crop_height,
     }
 }
 
@@ -107,15 +239,6 @@ pub fn dot(color: Color) -> impl Fn(&Theme) -> container::Style {
     }
 }
 
-pub fn brand_tag(_: &Theme) -> container::Style {
-    container::Style {
-        background: Some(linear(FRAC_PI_2, SUN, ORANGE)),
-        border: Border::default().rounded(6),
-        text_color: Some(Color::WHITE),
-        ..Default::default()
-    }
-}
-
 pub fn segmented(_: &Theme) -> container::Style {
     container::Style {
         background: Some(white(0.06).into()),
@@ -131,11 +254,12 @@ pub fn segmented(_: &Theme) -> container::Style {
 pub fn segment(selected: bool) -> impl Fn(&Theme, button::Status) -> button::Style {
     move |_, status| {
         let hovered = status == button::Status::Hovered;
+        let pressed = status == button::Status::Pressed;
         button::Style {
             background: if selected {
                 Some(Color::WHITE.into())
-            } else if hovered {
-                Some(white(0.08).into())
+            } else if hovered || pressed {
+                Some(white(if pressed { 0.05 } else { 0.12 }).into())
             } else {
                 None
             },
@@ -154,19 +278,6 @@ pub fn segment(selected: bool) -> impl Fn(&Theme, button::Status) -> button::Sty
             },
             ..Default::default()
         }
-    }
-}
-
-pub fn card(_: &Theme) -> container::Style {
-    container::Style {
-        background: Some(linear(PI, white(0.10), white(0.045))),
-        border: Border {
-            color: white(0.14),
-            width: 1.0,
-            radius: 26.0.into(),
-        },
-        shadow: glow(Color::from_rgba(0.0, 0.05, 0.18, 0.45), 22.0, 60.0),
-        ..Default::default()
     }
 }
 
@@ -258,92 +369,6 @@ fn sparkle(frame: &mut canvas::Frame, x: f32, y: f32, s: f32, color: Color) {
     frame.fill(&path, color);
 }
 
-fn ellipse(frame: &mut canvas::Frame, x: f32, y: f32, rx: f32, ry: f32, color: Color) {
-    let path = canvas::Path::new(|p| {
-        p.ellipse(canvas::path::arc::Elliptical {
-            center: Point::new(x, y),
-            radii: Vector::new(rx, ry),
-            rotation: Radians(0.0),
-            start_angle: Radians(0.0),
-            end_angle: Radians(2.0 * PI),
-        })
-    });
-    frame.fill(&path, color);
-}
-
-fn bomb(frame: &mut canvas::Frame, x: f32, y: f32, r: f32, body: Color) {
-    let stroke = |c: Color, w: f32| {
-        canvas::Stroke::default()
-            .with_color(c)
-            .with_width(w)
-            .with_line_cap(canvas::LineCap::Round)
-    };
-    let top = Point::new(x + r * 0.42, y - r * 0.9);
-    let end = Point::new(x + r * 0.98, y - r * 1.32);
-    let fuse = canvas::Path::new(|p| {
-        p.move_to(top);
-        p.bezier_curve_to(
-            Point::new(x + r * 0.55, y - r * 1.35),
-            Point::new(x + r * 0.85, y - r * 1.05),
-            end,
-        );
-    });
-    frame.stroke(&fuse, stroke(Color::from_rgb(0.85, 0.66, 0.42), r * 0.09));
-    circle(frame, x, y, r, body);
-    frame.stroke(
-        &canvas::Path::circle(Point::new(x, y), r),
-        stroke(white(0.22), r * 0.04),
-    );
-    let rim = canvas::Path::new(|p| {
-        p.arc(canvas::path::Arc {
-            center: Point::new(x, y),
-            radius: r * 0.86,
-            start_angle: Radians(-0.2),
-            end_angle: Radians(1.5),
-        })
-    });
-    frame.stroke(&rim, stroke(alpha(ORANGE, 0.55), r * 0.07));
-    ellipse(
-        frame,
-        x - r * 0.38,
-        y - r * 0.42,
-        r * 0.26,
-        r * 0.15,
-        white(0.32),
-    );
-    circle(frame, x - r * 0.08, y - r * 0.62, r * 0.06, white(0.4));
-    let cap = canvas::Path::rounded_rectangle(
-        Point::new(top.x - r * 0.2, top.y - r * 0.1),
-        Size::new(r * 0.4, r * 0.3),
-        (r * 0.08).into(),
-    );
-    frame.fill(&cap, Color::from_rgb(0.30, 0.27, 0.44));
-}
-
-fn spark(frame: &mut canvas::Frame, x: f32, y: f32, r: f32, lit: bool) {
-    let end = Point::new(x + r * 0.98, y - r * 1.32);
-    let stroke = |c: Color, w: f32| {
-        canvas::Stroke::default()
-            .with_color(c)
-            .with_width(w)
-            .with_line_cap(canvas::LineCap::Round)
-    };
-    let spark = if lit { 1.0 } else { 0.78 };
-    halo(frame, end.x, end.y, r * 0.75 * spark, ORANGE, 0.6);
-    for i in 0..8 {
-        let a = i as f32 * PI / 4.0 + if lit { 0.0 } else { PI / 8.0 };
-        let len = r * if i % 2 == 0 { 0.42 } else { 0.26 } * spark;
-        frame.stroke(
-            &canvas::Path::line(
-                Point::new(end.x + a.cos() * r * 0.1, end.y + a.sin() * r * 0.1),
-                Point::new(end.x + a.cos() * len, end.y + a.sin() * len),
-            ),
-            stroke(SUN, r * 0.05),
-        );
-    }
-    circle(frame, end.x, end.y, r * 0.11, Color::WHITE);
-}
-
 fn cloud(frame: &mut canvas::Frame, x: f32, y: f32, r: f32) {
     // Một path nhiều hình tròn: phủ một lần nên chỗ chồng nhau không đậm hơn.
     let path = canvas::Path::new(|p| {
@@ -357,52 +382,6 @@ fn cloud(frame: &mut canvas::Frame, x: f32, y: f32, r: f32) {
         }
     });
     frame.fill(&path, white(0.08));
-}
-
-fn buddy(frame: &mut canvas::Frame, x: f32, y: f32, r: f32, color: Color, look: f32) {
-    circle(frame, x, y, r, color);
-    ellipse(
-        frame,
-        x - r * 0.35,
-        y - r * 0.5,
-        r * 0.22,
-        r * 0.13,
-        white(0.45),
-    );
-    for side in [-1.0, 1.0] {
-        let ex = x + side * r * 0.3 + look * r * 0.08;
-        let ey = y - r * 0.02;
-        ellipse(frame, ex, ey, r * 0.16, r * 0.2, Color::WHITE);
-        circle(frame, ex + look * r * 0.06, ey + r * 0.03, r * 0.09, INK);
-        circle(
-            frame,
-            ex + look * r * 0.06 - r * 0.03,
-            ey - r * 0.03,
-            r * 0.03,
-            Color::WHITE,
-        );
-        circle(
-            frame,
-            x + side * r * 0.55,
-            y + r * 0.3,
-            r * 0.11,
-            alpha(PINK, 0.45),
-        );
-    }
-    let mouth = canvas::Path::new(|p| {
-        p.move_to(Point::new(x - r * 0.1 + look * r * 0.08, y + r * 0.3));
-        p.quadratic_curve_to(
-            Point::new(x + look * r * 0.08, y + r * 0.44),
-            Point::new(x + r * 0.1 + look * r * 0.08, y + r * 0.3),
-        );
-    });
-    frame.stroke(
-        &mouth,
-        canvas::Stroke::default()
-            .with_color(INK)
-            .with_width(r * 0.06)
-            .with_line_cap(canvas::LineCap::Round),
-    );
 }
 
 /// Ánh sáng nền phía sau toàn cửa sổ.
@@ -453,95 +432,27 @@ impl<M> canvas::Program<M> for Backdrop {
     }
 }
 
-/// Logo nhỏ cạnh chữ BOOM.
-pub struct Mark;
-impl<M> canvas::Program<M> for Mark {
-    type State = ();
-    fn draw(
-        &self,
-        _: &(),
-        renderer: &iced::Renderer,
-        _: &Theme,
-        bounds: Rectangle,
-        _: mouse::Cursor,
-    ) -> Vec<canvas::Geometry> {
-        let mut frame = canvas::Frame::new(renderer, bounds.size());
-        bomb(&mut frame, 15.0, 22.0, 12.0, ORANGE);
-        spark(&mut frame, 15.0, 22.0, 12.0, true);
-        vec![frame.into_geometry()]
-    }
-}
-
-/// Tranh minh hoạ: quả bom đang cháy ngòi giữa nhóm bạn trên sàn ô vuông.
-pub struct Arcade {
-    pub tick: usize,
-}
-impl<M> canvas::Program<M> for Arcade {
-    type State = canvas::Cache;
-    fn draw(
-        &self,
-        cache: &canvas::Cache,
-        renderer: &iced::Renderer,
-        _: &Theme,
-        bounds: Rectangle,
-        _: mouse::Cursor,
-    ) -> Vec<canvas::Geometry> {
-        let scene = cache.draw(renderer, bounds.size(), |frame| {
-            let floor = 168.0;
-            for x in 0..10 {
-                for y in 0..2 {
-                    let tile = canvas::Path::rounded_rectangle(
-                        Point::new(x as f32 * 48.0 + 4.0, floor + y as f32 * 34.0),
-                        Size::new(44.0, 30.0),
-                        7.0.into(),
-                    );
-                    frame.fill(&tile, white(if (x + y) % 2 == 0 { 0.075 } else { 0.04 }));
-                }
-            }
-            halo(frame, 240.0, 132.0, 112.0, ORANGE, 0.32);
-            for (x, y, r) in [
-                (240.0, 186.0, 56.0),
-                (82.0, 190.0, 50.0),
-                (398.0, 190.0, 40.0),
-            ] {
-                ellipse(
-                    frame,
-                    x,
-                    y,
-                    r,
-                    r * 0.22,
-                    Color::from_rgba(0.0, 0.0, 0.05, 0.4),
-                );
-            }
-            bomb(frame, 240.0, 128.0, 56.0, Color::from_rgb(0.10, 0.15, 0.34));
-            buddy(frame, 82.0, 142.0, 50.0, MINT, 1.0);
-            buddy(frame, 398.0, 152.0, 40.0, VIOLET, -1.0);
-            buddy(frame, 452.0, 52.0, 22.0, SUN, -1.0);
-            for (x, y, r, c) in [
-                (30.0, 40.0, 4.0, SUN),
-                (150.0, 30.0, 3.0, PINK),
-                (330.0, 40.0, 5.0, MINT),
-                (360.0, 100.0, 3.0, SUN),
-                (16.0, 110.0, 3.0, VIOLET),
-            ] {
-                circle(frame, x, y, r, c);
-            }
-            sparkle(frame, 120.0, 70.0, 7.0, white(0.8));
-            sparkle(frame, 330.0, 76.0, 5.0, white(0.6));
-        });
-        let mut live = canvas::Frame::new(renderer, bounds.size());
-        spark(&mut live, 240.0, 128.0, 56.0, self.tick.is_multiple_of(2));
-        vec![scene, live.into_geometry()]
-    }
-}
-
 #[cfg(test)]
 mod tests {
-    use super::decode_art;
+    use super::{cover_crop, decode_art};
+    use iced::Size;
 
     #[test]
     fn missing_or_invalid_art_selects_the_gradient() {
         assert!(decode_art(None).is_none());
         assert!(decode_art(Some(b"not a JPEG".to_vec())).is_none());
+    }
+
+    #[test]
+    fn cover_crops_top_or_left_while_keeping_the_logo_edge() {
+        let wide = cover_crop(960, 718, Size::new(1280.0, 720.0));
+        assert_eq!(
+            (wide.x, wide.y, wide.width, wide.height),
+            (0, 178, 960, 540)
+        );
+        let tall = cover_crop(960, 718, Size::new(960.0, 900.0));
+        assert_eq!((tall.y, tall.height), (0, 718));
+        assert!(tall.x > 0);
+        assert!(tall.x + tall.width >= 940);
     }
 }

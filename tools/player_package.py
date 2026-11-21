@@ -227,7 +227,7 @@ def windows_runtime(recipe, output, manifest_sha256):
     (output / 'MO-GAME.txt').write_text(
         'Giải nén vào thư mục có quyền ghi trên ổ NTFS. Mở kr-player.exe.\n'
         'Có thể chạy Tao-loi-tat.ps1 sau khi giải nén để tạo lối tắt Boom Play.\n'
-        'Chọn ngôn ngữ, bấm Vào game, rồi đăng nhập hoặc chơi thử trong game.\n'
+        'Chọn ngôn ngữ, chọn Online, bấm CHƠI, rồi đăng nhập hoặc chơi thử trong game.\n'
         'Đừng mở CA.exe trực tiếp: game cần đường TLS do launcher mở.\n',
         encoding='utf-8-sig',
     )

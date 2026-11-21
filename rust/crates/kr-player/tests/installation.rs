@@ -276,3 +276,36 @@ fn decorative_art_requires_its_pin_but_can_be_missing_without_blocking_install()
     kr_player::install(root, &hash, &target).unwrap();
     kr_player::verify_install(root, &hash, &target).unwrap();
 }
+
+#[test]
+fn repair_preserves_old_tree_and_refuses_unknown_or_running_installations() {
+    let dir = Directory::new();
+    let root = &dir.0;
+    let hash = fixture(root);
+    let game = root.join("game");
+    assert!(!kr_player::maintain_install(root, &hash, &game, false).unwrap());
+    let exe = game.join("vi/CA.exe");
+    fs::write(&exe, b"damaged").unwrap();
+    let log = game.join("player-note.txt");
+    fs::write(&log, b"keep me").unwrap();
+    let lock = kr_player::lock_installation(&game).unwrap();
+    assert!(kr_player::maintain_install(root, &hash, &game, true).is_err());
+    drop(lock);
+    assert!(kr_player::maintain_install(root, &hash, &game, false).is_err());
+    assert!(kr_player::maintain_install(root, &hash, &game, true).unwrap());
+    kr_player::verify_install(root, &hash, &game).unwrap();
+    let previous = fs::read_dir(root)
+        .unwrap()
+        .flatten()
+        .map(|entry| entry.path().join("previous"))
+        .find(|p| p.is_dir())
+        .unwrap();
+    assert_eq!(
+        fs::read(previous.join("player-note.txt")).unwrap(),
+        b"keep me"
+    );
+    let unrelated = root.join("unrelated");
+    fs::create_dir(&unrelated).unwrap();
+    assert!(kr_player::maintain_install(root, &hash, &unrelated, true).is_err());
+    assert!(unrelated.is_dir());
+}

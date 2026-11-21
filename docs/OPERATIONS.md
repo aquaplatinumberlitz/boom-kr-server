@@ -200,7 +200,7 @@ If a close-room reply is lost, check the audit and live room list before retryin
 
    Omit `--windows-runtime` for payload only. For the Linux launcher with Wine, supply a native `kr-prelogin` companion and set `wine` and `udp_backend: native` in `launcher.json`. The launcher uses a Wine prefix per language. Windows uses `udp_backend: portable`.
 
-3. Deliver the bundle and manifest hash privately. On Windows, extract to writable NTFS and open `kr-player.exe` (optional shortcut script: `Tao-loi-tat.ps1`). Select a language, click **Play game** (`Vào game` in Vietnamese), and sign in inside the game. The launcher verifies the installation and waits for the companion; starting `CA.exe` directly skips the tunnel.
+3. Deliver the bundle and manifest hash privately. On Windows, extract to writable NTFS and open `kr-player.exe` (optional shortcut script: `Tao-loi-tat.ps1`). Chọn ngôn ngữ, chọn Online, bấm **Chơi**, rồi đăng nhập hoặc chơi thử ở màn đăng nhập của game. The launcher verifies the installation and waits for the companion; starting `CA.exe` directly skips the tunnel.
 4. For scripted payload verification, build the `kr-player-install` binary and use a new installation directory:
 
    ```bash
@@ -220,7 +220,16 @@ và pin kích thước byte cùng SHA-256 vào trường `launcher_art` của `m
 Khi phân phối gói có ảnh, dùng launcher dựng cùng phiên bản và giữ tệp JPEG tại vị trí trong payload.
 Ảnh nguồn và JPEG xuất ra đều ở `local/` trên máy dựng gói.
 
-Launcher giữ trọn ảnh khi đổi kích thước cửa sổ; các điều khiển cuộn trong panel phía trên logo.
+Launcher phủ kín cửa sổ khi đổi kích thước, cắt ưu tiên mép trên và trái để giữ hàng logo phía dưới.
+Panel điều khiển ở trái; thanh trên có ngôn ngữ và Cài đặt. Launcher nhớ ngôn ngữ và chế độ. Chế độ offline
+cho bạn bè chỉ có phần giới thiệu; nút Chơi bị tắt tới O1. Enter chỉ mở game khi Online đã sẵn sàng;
+Esc đóng hộp thoại. Tạo, đổi, xoá và khôi phục tài khoản dùng kênh TLS hiện hành. Số ms là thời gian của
+yêu cầu trạng thái qua cùng kết nối TLS, không phải RTT UDP của game.
+
+Trong Cài đặt có đường dẫn thư mục game, đường mở log, nút kiểm tra và sửa tệp, và nút tạo lối tắt trên Windows.
+Sửa tệp chỉ thay thư mục cài có biên nhận khớp gói, sau khi dựng và xác minh bản thay thế. Bản cài trước được
+giữ cạnh thư mục game trong `.kr-player-*/previous`. Không sửa khi một launcher đang sở hữu game trong cùng
+thư mục. Nếu thư mục không có biên nhận phù hợp hoặc bản dựng lỗi, dùng thư mục cài mới; không xoá bản cũ trước khi lấy log.
 Launcher dùng nền gradient nếu manifest cũ không có ảnh hoặc ảnh bị thiếu, hỏng hay sai pin.
 Ảnh là phần trang trí; lỗi ảnh không chặn bước kiểm và cài dữ liệu game.
 
