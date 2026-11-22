@@ -141,6 +141,40 @@ Rust vẫn kiểm nhất quán trước khi bind. Terrain G1 được tính từ
 Floor 582 vẫn theo policy server đã dùng, chỉ giữ cho đúng map gốc của mẫu; không suy xác suất rơi hay gameplay mới.
 Preset mẫu F1 giới hạn hai người, floor trống và tắt terrain như CP382.
 
+<a id="f1e-map-scripts"></a>
+### F1-e — Họ map có script và ranh giới client/server ứng viên
+
+Census KR 00967 ghi 770/1.151 map có `<mapscript>`, thuộc 189 họ; các thẻ thường đi cùng là
+`ActionList`, `TriggerTable`, `StageClearScript`, `InitInfo`, `ScriptObject`, `Time` và `Action`.
+`FxMap` có 3.033 entry, `FxMap.idx` SHA-256 `30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b`,
+`FxMap.idd` SHA-256 `9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222`; census build là
+`KR00967`, client SHA-256 `a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e`.
+Ma trận F1-a (SHA-256 `b8212e5e296dfc569122227b3e5ecf212e1e032bb9dcf2cf13e4df61f5ab4610`) mới bao phủ
+214 map/86 họ: 132 `passed_cycle`, 59 `adapter_rejected`, 23 `load_failed`; trong các dòng có `script_tags`
+được ghi hiện tại có `NXCL_Aqua01` (`StageClearScript`, `mapscript`, `adapter_rejected`).
+
+| Nhóm họ (số map script) | Dấu hiệu/cơ chế trong pack | Nhánh client KR ứng viên | Cần đo để biết server làm gì |
+|---|---|---|---|
+| Monster (368; 61 họ) | `ActionList`/`InitInfo`/`ScriptObject`/`TriggerTable`; trigger `default`, `selflocked`, `selfdamaged`, `bomberlocked`, `bossanger`, `lastmonleft` | Client có bảng trigger/action và lớp `CMapScript*` cho quái; tự chạy animation/điều kiện cục bộ là **candidate** | Hai client: kích hoạt boss/quái và đối chứng không kích hoạt; đo tác động peer, kết quả, reset đầu vòng; quyền spawn/điểm thưởng là **unknown** |
+| RPG/CA Hero (97; 53 họ) | `RPGScript`, `MoveMap`, `Move00/01`, `OverrideInitInfo`, `MonDieRewardProb`; trigger `approach`/`appear` | Client đọc dữ liệu di chuyển/đụng và hiển thị boss là **candidate**; phần thưởng chết quái chưa chứng minh | Kích hoạt cùng vị trí và cùng level trên hai client, so sánh movement/HP/result rồi reset; chưa suy authority |
+| Mission/special (95; 14 họ) | `RabbitCatchScript`, `RescueET`, `ZzolmanScript`, `CustomTrigger(Table)`, `WriggleScript`, `SnowyFieldScript` | Các lớp script riêng và `ChangeTile`/action cho puzzle là **candidate**; có thể chờ state từ peer | Kích hoạt từng trigger (bắt/cứu/đổi ô) và control không kích hoạt, đo hai phía và reset; packet/owner **unknown** |
+| Battle theme/variant (93; 20 họ) | `Time`, `wave`, `mapscript`, `changetile`; Retro có `retroscript`/`retroride`, Wriggle có domain/match | Timer, wave, tile và hiệu ứng map do client tự diễn giải là **candidate** | Một vòng kích hoạt và một vòng control trên cùng map, ghi thời điểm/tác động hai client, result/reset; đồng bộ server **unknown** |
+| Bonus/hidden/other (88; 30 họ) | Bonus event/global script; `EscapeMaze` có Door/Key; `GolemRun` có PuzzleBox; `MineExp` có TriggerItem; Hidden có `StageClearScript` | Cửa/puzzle/đổi tile và UI event phía client là **candidate**; portal/switch chưa có tên wire/authority | Kích hoạt cửa/puzzle/switch nếu có, control không kích hoạt và reset đầu vòng; cần bắt packet để phân biệt client-only/server |
+| Lobby/tutorial (29; 11 họ) | `LobbySquareScript`/`SquareScript`, `TutorialScript`, `GlobalScript`, `TriggerTable` | Script sảnh/tutorial có thể chạy cục bộ; không dùng làm bằng chứng luật battle | Chỉ đo nếu F1 mở rộng: kích hoạt và control trên hai client, reset phòng; authority battle **unknown** |
+
+Đối chiếu tĩnh VN/KR: `boomkr-re/docs/kr-data.md` xác nhận 770 map script và các trường bomb-time/target;
+`boom-re/docs/map.md` ghi parser VN thấy script2 XML nhưng `CGamePlayMap__Load` không đọc tiếp tới EOF,
+do đó không chuyển kết luận VN thành hành vi KR. Bản sao IDA riêng `local/ida/f1e-kr-full.exe.i64`
+(SHA-256 `6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1`) là ảnh KR 00967
+(SHA-256 `cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b`, image base `0x400000`).
+Static strings `mapscript` VA `0x170b588` (RVA `0x130b588`), `StageClearScript` VA `0x170b594`,
+`TriggerTable` VA `0x16f8264`, `changetile` VA `0x16f839c`, `EscapeMazeScript` VA `0x16faab8`,
+`CustomTrigger` VA `0x170bdb4`; xref dispatcher candidates include `sub_73C540`/`sub_73C790`
+(RVA `0x33C540`/`0x33C790`) và `sub_EBA2D0` (RVA `0xABA2D0`). Đây là `kr_static`,
+trạng thái **candidate**; chỉ chứng minh client có nhánh đọc/dispatch tên script, không chứng minh packet,
+server authority hay thứ tự thực thi. Đã dùng 3 request IDA (một lần mở MCP lỗi module, hai lượt quét headless),
+0 thân hàm mới; không chạy VM/Wine/client.
+
 <a id="f1-pack-floor"></a>
 ### Floor từ pack trong catalog thử F1-a
 
