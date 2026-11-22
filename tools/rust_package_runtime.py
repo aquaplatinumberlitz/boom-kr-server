@@ -142,7 +142,33 @@ def init_tls(root, state, target):
             raise ValueError('TLS identity chưa đầy đủ; cần provision lại trong state riêng')
 
 
+def configure_friends(config):
+    two = config['diagnostic_two_lobby']
+    admission = two['account_admission']
+    tls = admission.get('prelogin_tls') or {}
+    if tls.get('certificate') != '@INSTALL@' or not admission.get('patched_949x_names'):
+        raise ValueError('O1 yêu cầu TLS tự sinh và client 949x')
+    config.update(bind='127.0.0.1', allowed_peers=['127.0.0.1'], network_scope='private_lab')
+    config.pop('udp_relay', None)
+    for actor in two['actors']:
+        actor['peer'] = '127.0.0.1'
+        actor.pop('reported_login_ipv4', None)
+    for key in ('public_launcher', 'backup', 'diagnostic_identity_strings'):
+        admission.pop(key, None)
+    with (socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as login,
+          socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as peer):
+        login.bind(('127.0.0.1', 0))
+        peer.bind(('127.0.0.1', 0))
+        tls.update(bind=f'127.0.0.1:{login.getsockname()[1]}', friends_guest_only=True,
+                   prelogin_seconds=180, admissions_per_ip_per_minute=60,
+                   max_connections=8, max_unauthenticated=8, max_per_ip=8)
+        relay = f'127.0.0.1:{peer.getsockname()[1]}'
+        config['authenticated_relay'].update(bind=relay, advertise=relay)
+
+
 def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False, s1=False):
+    if friends and s1:
+        raise ValueError('O1 và S1 dùng hai cấu hình phục vụ riêng')
     state = private_state(root, state)
     launch_socket = state / 'launch.sock'
     if os.name != 'nt' and max(len(os.fsencode(p)) for p in [launch_socket, state / 'accounts.admin.sock']) > 100:
@@ -153,7 +179,11 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False,
     for section, key in [('public_launcher', 'launcher.pk8'), ('prelogin_tls', 'prelogin.pk8')]:
         if admission.get(section) is not None:
             admission[section]['private_key'] = str(state / key)
+    if friends:
+        configure_friends(config)
     for section, directory in package_tls(root, state).items():
+        if friends and section != 'prelogin_tls':
+            continue
         cert = directory / 'certificate.der'
         admission[section].update(private_key=str(directory / 'private.pk8'),
                                   certificate=dict(path=str(cert), bytes=cert.stat().st_size,

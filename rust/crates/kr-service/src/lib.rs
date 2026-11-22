@@ -299,6 +299,22 @@ pub fn load_config(path: &Path) -> io::Result<Validated> {
             return Err(io::Error::other("invalid bounded diagnostic endpoints"));
         }
         if let Some(account) = &two.account_admission {
+            if account
+                .prelogin_tls
+                .as_ref()
+                .is_some_and(|tls| tls.friends_guest_only)
+                && (config.bind != Ipv4Addr::LOCALHOST
+                    || config.allowed_peers.as_slice() != [Ipv4Addr::LOCALHOST]
+                    || config.udp_relay.is_some()
+                    || account.public_launcher.is_some()
+                    || config.authenticated_relay.as_ref().is_none_or(|relay| {
+                        !relay.bind.ip().is_loopback() || relay.bind != relay.advertise
+                    }))
+            {
+                return Err(io::Error::other(
+                    "O1 service must be local and passwordless",
+                ));
+            }
             if account.public_launcher.is_some() && config.authenticated_relay.is_none() {
                 return Err(io::Error::other(
                     "public launcher requires authenticated relay",
@@ -1393,18 +1409,49 @@ async fn bound_connection(
     }
 }
 
+impl Validated {
+    fn friends_only(&self) -> bool {
+        self.config
+            .diagnostic_two_lobby
+            .as_ref()
+            .and_then(|two| two.account_admission.as_ref())
+            .and_then(|account| account.prelogin_tls.as_ref())
+            .is_some_and(|tls| tls.friends_guest_only)
+    }
+}
+
 pub async fn serve(profile: Validated, out: &Path) -> io::Result<()> {
-    let mut signal = platform::Shutdown::new()?;
-    serve_until(profile, out, signal.recv()).await
+    serve_owned(profile, out, None).await
 }
 
 pub async fn serve_owned(
     profile: Validated,
     out: &Path,
-    _owner_heartbeat: Option<&Path>,
+    owner_heartbeat: Option<&Path>,
 ) -> io::Result<()> {
+    if profile.friends_only() && owner_heartbeat.is_none() {
+        return Err(io::Error::other("O1 service requires an owning launcher"));
+    }
     let mut signal = platform::Shutdown::new()?;
-    serve_until(profile, out, signal.recv()).await
+    serve_until(profile, out, async {
+        let Some(path) = owner_heartbeat else {
+            return signal.recv().await;
+        };
+        let mut ticks = tokio::time::interval(Duration::from_millis(250));
+        let mut owner = kr_tunnel::prelogin::heartbeat::Heartbeat::new(Instant::now());
+        let cancel = path.with_extension("cancel");
+        loop {
+            tokio::select! {
+                result = signal.recv() => return result,
+                _ = ticks.tick() => {
+                    if cancel.exists() || owner.expired(path, Instant::now()) {
+                        return Ok(());
+                    }
+                }
+            }
+        }
+    })
+    .await
 }
 
 async fn serve_until(
@@ -1413,6 +1460,7 @@ async fn serve_until(
     stop_request: impl Future<Output = io::Result<()>>,
 ) -> io::Result<()> {
     tokio::pin!(stop_request);
+    let friends_only = profile.friends_only();
     tokio::fs::create_dir_all(out).await?;
     let mut account_owner = if let Some(config) = profile
         .config
@@ -1471,10 +1519,12 @@ async fn serve_until(
             .and_then(|a| a.backup.map(|schedule| (&a.database, schedule)))
             .map(|(db, schedule)| operations::Scheduled::open(db, schedule))
             .transpose()?;
-        // Bind the whole configured set before readiness; startup failure drops all.
+        // The companion owns the KR ports in O1; the service accepts QUIC only.
         let mut bound = Vec::new();
-        for &port in &profile.config.ports {
-            bound.push(TcpListener::bind((profile.config.bind, port)).await?);
+        if !friends_only {
+            for &port in &profile.config.ports {
+                bound.push(TcpListener::bind((profile.config.bind, port)).await?);
+            }
         }
         let file = tokio::fs::OpenOptions::new()
             .write(true)
@@ -1655,7 +1705,7 @@ async fn serve_until(
             result=maintenance.join_next(),if !maintenance.is_empty()=>{failure=Some(io::Error::other(format!("maintenance stopped: {result:?}")));break;},
             result=listeners.join_next(),if !listeners.is_empty()=>{failure=Some(io::Error::other(format!("listener stopped: {result:?}")));break;},
             result=workers.join_next(),if !workers.is_empty()=>if let Some(result)=result {match result {Ok(Ok(()))=>{},other=>{failure=Some(io::Error::other(format!("worker stopped: {other:?}")));break;}}},
-            pair=accepted.recv()=>{
+            pair=accepted.recv(),if !friends_only=>{
                 let Some((socket,peer))=pair else {failure=Some(io::Error::other("all listeners stopped"));break;};
                 let permitted=matches!(peer.ip(),IpAddr::V4(ip) if profile.config.allowed_peers.contains(&ip));
                 let Ok(permit)=quota.clone().try_acquire_owned() else {drop(socket);emit(&log,stamp(start,json!({"event":"admission_rejected","reason":"connection_limit"}))).await?;continue;};
