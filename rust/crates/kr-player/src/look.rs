@@ -53,15 +53,21 @@ pub fn window(_: &Theme) -> container::Style {
     container::Style::default().background(linear(2.3, DEEP, SKY))
 }
 
+fn surface_color(modal_open: bool, paint: u8) -> Color {
+    // TinySkia keeps damaged regions between daemon redraws.  A small,
+    // monotonic style change makes iced invalidate the complete surface on
+    // every state update, including the main screen where no modal is open.
+    let tint = f32::from(paint) * 0.00004;
+    if modal_open {
+        Color::from_rgb(0.03, 0.10, 0.25 + tint)
+    } else {
+        Color::from_rgb(DEEP.r, DEEP.g, DEEP.b + tint)
+    }
+}
+
 pub fn surface(theme: &Theme, modal_open: bool, paint: u8) -> iced::theme::Style {
     let mut style = theme.base();
-    // Invalidate the full TinySkia surface on modal edits. Its damaged
-    // regions otherwise leave stale pieces where the dimmer overlaps controls.
-    style.background_color = if modal_open {
-        Color::from_rgb(0.03, 0.10, 0.25 + f32::from(paint) * 0.00004)
-    } else {
-        DEEP
-    };
+    style.background_color = surface_color(modal_open, paint);
     style
 }
 
@@ -439,7 +445,7 @@ impl<M> canvas::Program<M> for Backdrop {
 
 #[cfg(test)]
 mod tests {
-    use super::{cover_crop, decode_art};
+    use super::{DEEP, cover_crop, decode_art, surface_color};
     use iced::Size;
 
     #[test]
@@ -459,5 +465,19 @@ mod tests {
         assert_eq!((tall.y, tall.height), (0, 718));
         assert!(tall.x > 0);
         assert!(tall.x + tall.width >= 940);
+    }
+
+    #[test]
+    fn surface_invalidates_main_screen_between_paints() {
+        let first = surface_color(false, 0);
+        let next = surface_color(false, 1);
+        assert_eq!((first.r, first.g), (DEEP.r, DEEP.g));
+        assert!(next.b > first.b);
+    }
+
+    #[test]
+    fn surface_invalidates_modal_and_main_screen() {
+        assert_ne!(surface_color(false, 7), surface_color(false, 8));
+        assert_ne!(surface_color(true, 7), surface_color(true, 8));
     }
 }
