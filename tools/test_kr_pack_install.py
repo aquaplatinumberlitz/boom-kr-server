@@ -199,7 +199,7 @@ def fake_recipe(root):
                                          send_budget=64, pending_ms=500, lease_seconds=900))
 
 
-def test_bundle(root, binaries, scope, fake, *, self_host=False):
+def test_bundle(root, binaries, scope='g1', fake=True, *, self_host=False):
     if fake:
         pins, seeds = fake_game(root / 'game')
     config = fake_recipe(root / 'wire')
