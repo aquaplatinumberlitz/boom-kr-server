@@ -163,7 +163,7 @@ def prepare(root, state, cache=None, scope=None, *, friends=False):
         from kr_pack_export import F1, G1
         wire = run / 'wire'
         wire.mkdir(mode=0o700)
-        configure(config, root, cache, wire, G1 if scope == 'g1' else F1, scope, unlock_all=friends)
+        configure(config, root, cache, wire, G1 if scope == 'g1' else F1, scope)
     runtime = run / 'config.json'
     fd = os.open(runtime, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, 'w', encoding='utf-8') as stream:

@@ -38,7 +38,11 @@ TERRAIN_SEEDS = dict(zip((*G1, 'ExVillage01'), (
     'e077fddcf2624eb50643b8c9e473627d2bf5d6fce765881cf409cc3387e79135',
     'c96dff8c4d148a229bef97ba8c3a279f1a1cac3516281de1689385353b972144',
 )))
-SCHEMA = 'kr00967-export-v1'
+SCHEMA = 'kr00967-export-v2'
+
+# Khóa BomberAttr f0 đã cắt cho trận thường. Nhánh f1=3 (kể cả các
+# biến thể trùng tên C15/C08/C26) và nhóm đối thủ còn thiếu luật.
+F1_CHARACTERS = frozenset((*range(12), *range(120, 132), 150, 151, *range(3000, 3005)))
 
 
 def encode(value):
@@ -155,16 +159,21 @@ def outputs(files, maps, measured):
     if any(row['name'] != ITEMS[row['kind']] for row in items):
         raise ValueError('ItemAttr có ID khác KR 00967')
     characters = {}
+    seen = set()
     for entry in parse_bomber_attr(attr.read('Attr/BomberAttr')):
-        if entry['name'] in ('C00', 'C01'):
-            key = int(entry['name'][1:])
-            if key in characters or entry['values'][0] != key:
-                raise ValueError('BomberAttr có key trùng hoặc sai KR 00967')
-            speed, max_speed, cap, max_cap, power, max_power = entry['values'][2:8]
+        key, group, speed, max_speed, cap, max_cap, power, max_power, *_ = entry['values']
+        if key in seen or not 0 <= key <= 0x1fff:
+            raise ValueError('BomberAttr có key trùng hoặc nằm ngoài wire KR 00967')
+        seen.add(key)
+        if key in F1_CHARACTERS:
+            if not (0 <= group <= 8 and group not in (3, 4, 6)
+                    and 1 <= speed <= max_speed <= 10 and 1 <= cap <= max_cap <= 10
+                    and 1 <= power <= max_power <= 10):
+                raise ValueError('BomberAttr có nhóm hoặc chỉ số ngoài phạm vi trận thường')
             characters[key] = dict(speed=speed, maximum_speed=max_speed, capacity=cap,
                                    maximum_capacity=max_cap, power=power, maximum_power=max_power)
-    if set(characters) != {0, 1}:
-        raise ValueError('BomberAttr thiếu C00 hoặc C01')
+    if not {0, 1} <= characters.keys():
+        raise ValueError('BomberAttr thiếu khóa nền 0 hoặc 1')
     groups = parse_map_group(attr.read('Attr/MapGroup'))
     yield 'tables.json', dict(items=[{k: row[k] for k in ('kind', 'name', 'weight')} for row in items],
                               characters=characters,

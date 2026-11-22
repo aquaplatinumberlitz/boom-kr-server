@@ -248,7 +248,7 @@ impl Ledger {
         admission: Admission,
     ) -> io::Result<std::result::Result<Placement, &'static str>> {
         let limits = admission.limits;
-        if !(1..=10).contains(&limits.capacity) || !(1..=9).contains(&limits.maximum_power) {
+        if !(1..=10).contains(&limits.capacity) || !(1..=10).contains(&limits.maximum_power) {
             return Err(io::Error::other("unsupported measured bomb limits"));
         }
         let reject = if self.generation != Some(round) {

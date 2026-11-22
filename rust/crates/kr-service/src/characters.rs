@@ -1,10 +1,10 @@
-//! Scoped KR00967 character data. Source: BomberAttr keys0/1, cross-checked
-//! against native six-stat wrappers in CP282 and m7e-start-stat-probe-r2.
+//! KR 00967 character levels. The baseline keys 0/1 were checked against
+//! native six-stat wrappers in CP282 and m7e-start-stat-probe-r2.
 //! These are client levels, never physical movement units or item authority.
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, io};
 
-#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
 pub(crate) struct Stats {
     pub capacity: usize,
@@ -15,6 +15,18 @@ pub(crate) struct Stats {
     pub maximum_speed: u8,
 }
 impl Stats {
+    fn valid(&self) -> bool {
+        self.capacity > 0
+            && self.capacity <= self.maximum_capacity
+            && self.maximum_capacity <= 10
+            && self.power > 0
+            && self.power <= self.maximum_power
+            && self.maximum_power <= 10
+            && self.speed > 0
+            && self.speed <= self.maximum_speed
+            && self.maximum_speed <= 10
+    }
+
     /// Measured Bomb/Fire/Roller/MaxPower levels; never movement authority.
     pub(crate) fn basic_pickup(&mut self, kind: u16) -> io::Result<()> {
         match kind {
@@ -59,18 +71,6 @@ impl Catalog {
                 },
                 _ => return Err(io::Error::other("unmeasured character profile")),
             };
-            if stats.capacity == 0
-                || stats.capacity > stats.maximum_capacity
-                || stats.maximum_capacity > 10
-                || stats.power == 0
-                || stats.power > stats.maximum_power
-                || stats.maximum_power > 9
-                || stats.speed == 0
-                || stats.speed > stats.maximum_speed
-                || stats.maximum_speed > 10
-            {
-                return Err(io::Error::other("invalid measured character bounds"));
-            }
             if rows.insert(key, stats).is_some() {
                 return Err(io::Error::other("duplicate character profile"));
             }
@@ -78,12 +78,34 @@ impl Catalog {
         Ok(Self(rows))
     }
     pub(crate) fn from_pack(keys: &[u16], rows: BTreeMap<u16, Stats>) -> io::Result<Self> {
-        if rows != Self::measured(keys)?.0 {
-            return Err(io::Error::other(
-                "pack character stats differ from measured KR00967 levels",
-            ));
+        let baseline = Self::measured(&[0, 1])?;
+        if !keys.contains(&0)
+            || rows.len() != keys.len()
+            || !keys.iter().all(|key| rows.contains_key(key))
+            || keys
+                .iter()
+                .copied()
+                .collect::<std::collections::BTreeSet<_>>()
+                .len()
+                != keys.len()
+            || rows.iter().any(|(&key, row)| match key {
+                0 | 1 => baseline.0.get(&key) != Some(row),
+                // Matching the pack export scope is intentional. A key that
+                // fits the wire does not automatically qualify for F1.
+                2..=11 | 120..=131 | 150..=151 | 3000..=3004 => !row.valid(),
+                _ => true,
+            })
+        {
+            return Err(io::Error::other("invalid F1 pack character catalog"));
         }
         Ok(Self(rows))
+    }
+    pub(crate) fn maximum_power(&self) -> u8 {
+        self.0
+            .values()
+            .map(|stats| stats.maximum_power)
+            .max()
+            .expect("nonempty catalog")
     }
     pub(crate) fn get(&self, key: u16) -> io::Result<Stats> {
         self.0
@@ -118,6 +140,41 @@ mod tests {
             assert_eq!(catalog.get(key).unwrap(), initial);
         }
     }
+    #[test]
+    fn f1_pack_catalog_serves_all_scoped_b_keys_and_rejects_skill_branch() {
+        let row = |speed, max_speed, capacity, max_capacity, power, max_power| Stats {
+            capacity,
+            maximum_capacity: max_capacity,
+            power,
+            maximum_power: max_power,
+            speed,
+            maximum_speed: max_speed,
+        };
+        let keys = [0, 1, 2, 120, 150, 3000];
+        let rows = BTreeMap::from([
+            (0, row(5, 7, 1, 10, 1, 7)),
+            (1, row(4, 8, 2, 7, 1, 9)),
+            (2, row(5, 8, 1, 8, 1, 8)),
+            (120, row(5, 9, 2, 9, 1, 7)),
+            (150, row(5, 10, 2, 9, 2, 8)),
+            (3000, row(6, 9, 3, 9, 2, 9)),
+        ]);
+        let catalog = Catalog::from_pack(&keys, rows).unwrap();
+        assert_eq!(catalog.get(3000).unwrap().maximum_capacity, 9);
+        assert_eq!(catalog.get(150).unwrap().power, 2);
+        assert!(
+            Catalog::from_pack(
+                &[0, 1, 4019],
+                BTreeMap::from([
+                    (0, row(5, 7, 1, 10, 1, 7)),
+                    (1, row(4, 8, 2, 7, 1, 9)),
+                    (4019, row(6, 9, 3, 9, 3, 7)),
+                ])
+            )
+            .is_err()
+        );
+    }
+
     #[test]
     fn maxpower_uses_each_character_cap_without_changing_other_levels_or_seed() {
         let catalog = Catalog::measured(&[0, 1]).unwrap();
