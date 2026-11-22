@@ -138,6 +138,7 @@ impl Drop for Owner {
 
 pub struct Client {
     _owner: Owner,
+    _bridge: Option<kr_p2p::self_host::ClientSession>,
     wire: Wire,
     pub udp: UdpSocket,
 }
@@ -149,9 +150,15 @@ impl Client {
         account: &Account,
         companions: &mut JoinSet<io::Result<()>>,
         stop: watch::Receiver<bool>,
+        bridge: Option<kr_p2p::self_host::ClientSession>,
     ) -> io::Result<Self> {
         timeout(DEADLINE, async {
-            let conn = Owner(prelogin::connect(endpoint, config.server.into()).await?);
+            let server = bridge
+                .as_ref()
+                .map(|s| s.prelogin)
+                .or(config.server)
+                .expect("validated");
+            let conn = Owner(prelogin::connect(endpoint, server.into()).await?);
             let mut login = Wire::open(&conn.0, config.login_port).await?;
             let mut credentials = Zeroizing::new(fields(&[(0, U8), (1, U8)]));
             for (data, key) in [
@@ -180,7 +187,7 @@ impl Client {
             for op in [241, 91, 14, 291] {
                 wire.expect(op, &[90, 91]).await?;
             }
-            let (relay_endpoint, link) = companion(&conn.0, config).await?;
+            let (relay_endpoint, link) = companion(&conn.0, config, bridge.as_ref()).await?;
             companions.spawn(async move {
                 let result =
                     kr_tunnel::companion::run(link, Ipv4Addr::LOCALHOST.into(), 64, stop).await;
@@ -189,6 +196,7 @@ impl Client {
             });
             Ok(Self {
                 _owner: conn,
+                _bridge: bridge,
                 wire,
                 udp: UdpSocket::bind((Ipv4Addr::LOCALHOST, 0)).await?,
             })
@@ -496,6 +504,7 @@ fn parse_routes(body: &[u8], slot: usize, roster: usize) -> io::Result<Vec<Optio
 async fn companion(
     conn: &quinn::Connection,
     cfg: &Config,
+    bridge: Option<&kr_p2p::self_host::ClientSession>,
 ) -> io::Result<(quinn::Endpoint, kr_tunnel::Link)> {
     let mut offer = conn.accept_uni().await.map_err(io::Error::other)?;
     if offer.read_u8().await? != 1 {
@@ -504,7 +513,9 @@ async fn companion(
     let mut ip = [0; 4];
     offer.read_exact(&mut ip).await.map_err(io::Error::other)?;
     let advertised = SocketAddrV4::new(ip.into(), offer.read_u16().await?);
-    if advertised != cfg.relay {
+    if bridge.map_or(Some(advertised) != cfg.relay, |_| {
+        !advertised.ip().is_loopback()
+    }) {
         return Err(failure("relay offer differs from test target"));
     }
     let size = offer.read_u16().await? as usize;
@@ -529,7 +540,10 @@ async fn companion(
     {
         return Err(failure("unexpected companion offer tail"));
     }
-    let dial = cfg.relay_dial.unwrap_or(advertised);
+    let dial = bridge
+        .map(|s| s.relay)
+        .or(cfg.relay_dial)
+        .unwrap_or(advertised);
     let ep = kr_tunnel::client((Ipv4Addr::UNSPECIFIED, 0).into(), cert.into())?;
     let link =
         kr_tunnel::Link::connect(&ep, dial.into(), &kr_tunnel::Secret::from_bytes(*secret)).await?;
