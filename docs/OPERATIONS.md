@@ -73,8 +73,8 @@ Windows đã dựng, `manifest_sha256` là pin của nó và `python_files` là 
 Dùng recipe client KR đã đo: WCP và candidate TCP 3808–3998 bước 10, login 3838, channel 3858. Recipe rút gọn
 CP388 chỉ dành cho kr-load và không đi tới LoginStage của client phát hành.
 Launcher sẽ gọi exporter trên phần pack KR gốc có trong payload, giữ SQLite, TLS và cache riêng trong
-`state/friends-data`. Runner bật nội dung nhân vật đã có trong catalog xuất, không thêm shop hoặc đồ chưa được
-server hỗ trợ. Gói Internet có thể cấu hình danh sách `friends_directory`; đặt `[]` cho bản chỉ LAN. Gói có
+`state/friends-data`. Runner O1 dùng các nhân vật có trong catalog xuất. Nếu phòng có map dùng terrain, runner chỉ
+cho phép nhân vật có sức nổ tối đa không quá 9 và giữ nguyên chỉ số trong pack. Shop và đồ chưa được server hỗ trợ vẫn chưa có. Gói Internet có thể cấu hình danh sách `friends_directory`; đặt `[]` cho bản chỉ LAN. Gói có
 script `Cai-dat-Windows.ps1` để thêm quy tắc UDP theo ứng dụng trong mạng nội bộ. Launcher và server O1 chạy
 bằng quyền thường; nếu bản game yêu cầu UAC, Windows hiện hộp thoại riêng cho game. Có thể bỏ cấu hình máy
 chủ cộng đồng khi phát hành gói chỉ có O1.

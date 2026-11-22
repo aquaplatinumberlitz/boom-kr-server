@@ -6,6 +6,7 @@ import stat
 import struct
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from rust_package_runtime import digest, prepare, verify
 from rust_service_package import build
@@ -149,6 +150,37 @@ class PackageTests(unittest.TestCase):
         self.config['diagnostic_two_lobby']['fixed_room']['endpoint_policy'] = 'legacy_direct'
         with self.assertRaisesRegex(ValueError, 'relay xác thực'):
             build(self.config, self.binaries, self.root / 'legacy', 'x86_64-unknown-linux-gnu')
+
+    def test_o1_excludes_power_ten_only_if_a_map_uses_terrain(self):
+        from kr_pack_config import configure
+        from kr_pack_export import TERRAIN_SEEDS, export
+        from test_kr_pack_install import MAPS, fake_game, fake_recipe
+
+        game, source = self.root / 'game', self.root / 'wire'
+        pins, seeds = fake_game(game)
+        recipe = fake_recipe(source)
+        recipe['diagnostic_two_lobby']['fixed_room']['map_choices'] = []
+        with patch.dict(TERRAIN_SEEDS, seeds):
+            cache, _ = export(game, self.root / 'cache', pins=pins, maps=MAPS)
+        tables = cache / 'tables.json'
+        value = json.loads(tables.read_bytes())
+        stats = value['characters']
+        stats['3002'] = dict(stats['1'])
+        stats['3003'] = dict(stats['1'], maximum_power=10)
+        tables.write_text(json.dumps(value))
+        for scope, unlocked, expected in [
+            ('g1', True, [0, 1, 3002]),
+            ('g1', False, [0, 1]),
+            ('f1', True, [0, 1, 3002, 3003]),
+        ]:
+            with self.subTest(scope=scope, unlocked=unlocked):
+                config = copy.deepcopy(recipe)
+                out = self.root / f'{scope}-{unlocked}'
+                out.mkdir()
+                configure(config, source, cache, out, MAPS, scope, unlock_all=unlocked)
+                selected = config['diagnostic_two_lobby']['managed_rooms']['player_round']
+                self.assertEqual(selected['characters'], expected)
+                self.assertEqual(selected['pack_stats'], {str(key): stats[str(key)] for key in expected})
 
 
 if __name__ == '__main__':

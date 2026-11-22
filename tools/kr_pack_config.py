@@ -160,11 +160,18 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
     if scope == 'f1-a':
         enable_floor_policies(room, floor_kinds)
 
-    # F1 mở khóa theo key pack; G1 giữ danh sách đã nghiệm thu.
+    # Chế độ thường giữ danh sách đã chọn trong recipe. O1 mở thêm các
+    # nhân vật trong pack mà mọi map của phòng có thể dùng.
     chars = json.loads((cache / 'tables.json').read_bytes())['characters']
     round_config = two['managed_rooms']['player_round']
     if unlock_all:
-        round_config['characters'] = sorted(map(int, chars))
+        uses_terrain = 'terrain' in room or any('terrain' in choice for choice in choices)
+        # Match the service's measured terrain scope; retain the original
+        # stats so a supported character plays with the same stats as the client.
+        round_config['characters'] = sorted(
+            int(key) for key, stats in chars.items()
+            if not uses_terrain or stats['maximum_power'] <= 9
+        )
     round_config['pack_stats'] = {str(key): chars[str(key)] for key in round_config['characters']}
     if scope in ('f1', 'f1-a'):
         two['managed_rooms']['capacity'] = 2
