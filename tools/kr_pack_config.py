@@ -2,7 +2,7 @@
 import json
 import struct
 
-from kr_pack_export import sha
+from kr_pack_export import F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, sha
 from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
 
@@ -13,14 +13,24 @@ def floor582(floor):
         raise ValueError('Floor vượt giới hạn')
     inner = bytearray()
     index = 0
-    for group in lists:
+    for group, allowed in zip(lists, (F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, {})):
         inner.extend(struct.pack('<H', len(group)))
         for y, x, kind in group:
-            if not (0 <= y < 13 and 0 <= x < 15 and kind in (0, 1, 2, 5)):
-                raise ValueError('Floor F1-a có ô hoặc item ngoài phạm vi')
+            if not (0 <= y < 13 and 0 <= x < 15 and kind in allowed.values()):
+                raise ValueError('Floor F1 có ô hoặc item ngoài phạm vi')
             inner.extend(struct.pack('<IBBI', index, y, x, kind))
             index += 1
+    if sum(kind == 145 for _, _, kind in floor['fixed']) > 1:
+        raise ValueError('Floor F1 chỉ hỗ trợ một Kim cố định')
     return raw_blob(inner)[0]
+
+
+def enable_floor_policies(room, kinds):
+    if kinds & {3, 4}:
+        room['item_policy'] = 'report_derived_shoe_punch'
+    if 145 in kinds:
+        room['life_actions'] = ('needle_rescue' if room.get('life_actions') in ('rescue', 'needle_rescue')
+                                else 'needle')
 
 
 def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
@@ -85,7 +95,7 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
     for choice in room['map_choices']:
         floors[original_name(choice['packets']['start'])] = load(choice['packets']['floor'])[1]
 
-    rows, choices = [], []
+    rows, choices, floor_kinds = [], [], set()
     for index, name in enumerate(maps):
         path = cache / (name + '.json')
         data = path.read_bytes()
@@ -119,7 +129,9 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
         applied = json.loads(rules.read_bytes()) if scope in ('g1', 'f1-a') and rules.is_file() else {}
         floor = floors.get(name, raw_blob(bytes(6))[0]) if scope == 'g1' else raw_blob(bytes(6))[0]
         if scope == 'f1-a':
-            floor = floor582(applied.pop('floor'))
+            plan = applied.pop('floor')
+            floor = floor582(plan)
+            floor_kinds.update(kind for group in ('fixed', 'hidden') for _, _, kind in plan[group])
         new = {}
         for key, payload in [('map', codec.pack_fields([0, code, index], [2, 2, 4])),
                              ('start', body[:1] + start + body[end:]),
@@ -145,6 +157,8 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
     room.update(map_choices=choices, map_profile=choices[0]['map_profile'])
     if 'terrain' in choices[0]:
         room['terrain'] = choices[0]['terrain']
+    if scope == 'f1-a':
+        enable_floor_policies(room, floor_kinds)
 
     # F1 mở khóa theo key pack; G1 giữ danh sách đã nghiệm thu.
     chars = json.loads((cache / 'tables.json').read_bytes())['characters']

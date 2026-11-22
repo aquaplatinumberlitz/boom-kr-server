@@ -286,7 +286,7 @@ impl Client {
         Ok(())
     }
 
-    pub async fn claim_basic_item(
+    pub async fn claim_item(
         &mut self,
         slot: usize,
         item: (u32, u8, u8, u16),
@@ -319,7 +319,7 @@ impl Client {
         let (index, row, col, kind) = item;
         let expected = kr_wire::kr00967::pickup165(0, slot as u8, row, col, index, kind)?;
         if self.wire.expect(165, &[90, 91]).await?.payload != expected {
-            return Err(failure("basic item confirmation mismatch"));
+            return Err(failure("item confirmation mismatch"));
         }
         Ok(())
     }
@@ -354,6 +354,7 @@ impl Client {
         &mut self,
         expected: Option<[u16; 2]>,
         expected_map: Option<u16>,
+        inspect_floor: bool,
     ) -> io::Result<Option<crate::pickups::Catalog>> {
         let floor = self.wire.expect(582, &[90, 91, 110]).await?;
         let start = self.wire.expect(121, &[]).await?;
@@ -362,10 +363,12 @@ impl Client {
         {
             return Err(failure("unexpected map in Start121"));
         }
-        let floor = if let Some([a, b]) = expected {
-            if kr_wire::kr00967::start121_characters(&start.payload)? != [(0, a), (1, b)] {
-                return Err(failure("character Start roster mismatch"));
-            }
+        if let Some([a, b]) = expected
+            && kr_wire::kr00967::start121_characters(&start.payload)? != [(0, a), (1, b)]
+        {
+            return Err(failure("character Start roster mismatch"));
+        }
+        let floor = if expected.is_some() || inspect_floor {
             Some(crate::pickups::Catalog::from_floor(&floor.payload)?)
         } else {
             None

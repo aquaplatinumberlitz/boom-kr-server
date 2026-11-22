@@ -79,9 +79,9 @@ def main():
             assert invalid.returncode == 1 and 'Ô ngoài adapter F1-a' in invalid.stderr
             assert set(cache.parent.iterdir()) == before
             next_rules = json.loads((cache / 'SyntheticTwo.rules.json').read_bytes())
-            assert rules['floor']['fixed'] == [[2, 4, 0]]
+            assert rules['floor']['fixed'] == [[2, 4, 0], [3, 4, 3], [4, 4, 145]]
             assert rules['floor']['hidden'] == [[1, 11, 0]]
-            assert next_rules['floor']['fixed'] == [[2, 5, 1]]
+            assert next_rules['floor']['fixed'] == [[2, 5, 1], [3, 5, 4]]
             assert next_rules['floor']['hidden'] == [[1, 12, 1]]
     pkg = json.loads((BUNDLE / 'config.template.json').read_text())
     two = pkg['diagnostic_two_lobby']
@@ -107,7 +107,8 @@ def main():
         json.dump(dict(server=tls, relay=relay, certificate=str(cert), login_port=two['login_port'],
                        channel_port=two['channel_port'], replay=str(replay), rooms=[accounts],
                        ramp_ms=225, active_seconds=2, minimum_run_seconds=0, minimum_rounds=len(expected),
-                       delivery_p99_ms_max=500, delivery_loss_percent_max=0, **selection), file)
+                       delivery_p99_ms_max=500, delivery_loss_percent_max=0, check_fixed_items=f1,
+                       **selection), file)
     with (OUTPUT / 'service.log').open('x') as log:
         service = subprocess.Popen([*bundle, 'run', *options, *game], stdout=log, stderr=subprocess.STDOUT)
         try:
@@ -129,6 +130,10 @@ def main():
                                stderr=subprocess.STDOUT, timeout=max(60, 30 * len(expected)), check=True)
             events = [json.loads(line) for line in (OUTPUT / 'load.log').read_text().splitlines()]
             assert sum(event['event'] == 'round_returned' for event in events) == len(expected)
+            if f1:
+                fixed = [(code, json.loads((cache / f'{name}.rules.json').read_bytes())['floor']['fixed'])
+                         for code, name in expected]
+                assert [(e['map'], e['items']) for e in events if e['event'] == 'fixed_items_confirmed'] == fixed
             snapshot = OUTPUT / 'smoke.sqlite'
             run(admin, 'backup', db, str(snapshot))
             run(admin, 'verify-backup', str(snapshot))

@@ -89,11 +89,16 @@ def fake_game(root):
         boxes = [int(i == (26 + offset)) for i in range(195)]
         cells = [v for box in boxes for v in (0, 1 if box else -1)]
         item = 'Item/ItemFire' if offset else 'Item/ItemBomb'
+        placements = [(item, 4 + offset, 2),
+                      (ITEMS[4 if offset else 3], 4 + offset, 3)]
+        if not offset:
+            placements.append((ITEMS[145], 4, 4))
         maps['Map/' + name] = (
             struct.pack('<' + 'i' * (len(header) + len(spawns) + len(cells) + 2),
                         *header, *spawns, 0, *cells, 2)
             + string('Tank') + struct.pack('<i', 9999) + string(item) + struct.pack('<i', 13)
-            + struct.pack('<2i', 100, 1) + string(item) + bytes((4 + offset, 2, 100))
+            + struct.pack('<2i', 100, len(placements))
+            + b''.join(string(name) + bytes((x, y, 100)) for name, x, y in placements)
             + bytes(12)
         )
         seeds[name] = sha(bytes(2 * box for box in boxes))
