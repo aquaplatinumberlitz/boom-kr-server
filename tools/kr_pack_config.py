@@ -7,7 +7,7 @@ from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
 
 
-def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
+def configure(config, bundle, cache, out, maps, scope):
     two = config['diagnostic_two_lobby']
     room = two['fixed_room']
     packets = room['packets']
@@ -127,10 +127,10 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
     if 'terrain' in choices[0]:
         room['terrain'] = choices[0]['terrain']
 
-    # Only pass the measured character fields, keyed exactly as in the serving recipe.
+    # F1 mở khóa theo key pack; G1 giữ danh sách đã nghiệm thu.
     chars = json.loads((cache / 'tables.json').read_bytes())['characters']
     round_config = two['managed_rooms']['player_round']
-    if unlock_all:
+    if scope == 'f1':
         round_config['characters'] = sorted(map(int, chars))
     round_config['pack_stats'] = {str(key): chars[str(key)] for key in round_config['characters']}
     if scope == 'f1':

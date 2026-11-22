@@ -267,6 +267,17 @@ pub struct StartPlayer {
     pub team: u8,
 }
 
+/// Read character keys by slot from the measured Start roster layout.
+pub fn start121_characters(body: &[u8]) -> io::Result<Vec<(u8, u16)>> {
+    let StartLayout { stream, rows, .. } = start_layout(body)?;
+    Ok(stream[rows..]
+        .as_chunks::<26>()
+        .0
+        .iter()
+        .map(|row| (row[0], u16::from_le_bytes([row[3], row[4]])))
+        .collect())
+}
+
 /// Build current player rows from explicit fields, retaining the measured map
 /// prefix and outer tail. Service admission owns supported characters/rosters;
 /// accepting a wire shape here does not establish native compatibility.

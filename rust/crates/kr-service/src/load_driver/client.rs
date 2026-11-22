@@ -246,6 +246,66 @@ impl Client {
         Ok(())
     }
 
+    pub async fn character(&mut self, character: u16) -> io::Result<()> {
+        self.wire
+            .send(92, &fields(&[(0, U8), (character.into(), U16)]))
+            .await
+    }
+
+    pub async fn character_updates(&mut self, changed: usize, character: u16) -> io::Result<()> {
+        let mut seen = 0;
+        for _ in 0..2 {
+            let body = self.wire.expect(110, &[90, 91, 106, 238]).await?.payload;
+            let slot = get(&body, 0, U8)? as usize;
+            if slot >= 2 || seen & (1 << slot) != 0 {
+                return Err(failure("invalid character choice snapshot"));
+            }
+            seen |= 1 << slot;
+            if slot == changed && (get(&body, 1, U32)? >> 16) & 0x1fff != u64::from(character) {
+                return Err(failure("character selection not acknowledged"));
+            }
+        }
+        Ok(())
+    }
+
+    pub async fn claim_basic_item(
+        &mut self,
+        slot: usize,
+        item: (u32, u8, u8, u16),
+        key: u32,
+    ) -> io::Result<()> {
+        let (index, row, col, kind) = item;
+        self.wire
+            .send(
+                124,
+                &fields(&[
+                    (0, U8),
+                    (slot as u64, U8),
+                    (row.into(), U8),
+                    (col.into(), U8),
+                    (index.into(), U32),
+                    (kind.into(), U16),
+                    (index.into(), U32),
+                    (key.into(), U32),
+                    (0, U8),
+                ]),
+            )
+            .await
+    }
+
+    pub async fn pickup_confirmed(
+        &mut self,
+        slot: usize,
+        item: (u32, u8, u8, u16),
+    ) -> io::Result<()> {
+        let (index, row, col, kind) = item;
+        let expected = kr_wire::kr00967::pickup165(0, slot as u8, row, col, index, kind)?;
+        if self.wire.expect(165, &[90, 91]).await?.payload != expected {
+            return Err(failure("basic item confirmation mismatch"));
+        }
+        Ok(())
+    }
+
     pub async fn ready(&mut self) -> io::Result<()> {
         let mut ready = fields(&[(6, U32)]);
         ready.extend([0; 6]);
@@ -272,9 +332,20 @@ impl Client {
         self.wire.send(104, &[0; 20]).await
     }
 
-    pub async fn load(&mut self) -> io::Result<()> {
-        self.wire.expect(582, &[90, 91, 110]).await?;
-        self.wire.expect(121, &[]).await?;
+    pub async fn load(
+        &mut self,
+        expected: Option<[u16; 2]>,
+    ) -> io::Result<Option<crate::pickups::Catalog>> {
+        let floor = self.wire.expect(582, &[90, 91, 110]).await?;
+        let start = self.wire.expect(121, &[]).await?;
+        let floor = if let Some([a, b]) = expected {
+            if kr_wire::kr00967::start121_characters(&start.payload)? != [(0, a), (1, b)] {
+                return Err(failure("character Start roster mismatch"));
+            }
+            Some(crate::pickups::Catalog::from_floor(&floor.payload)?)
+        } else {
+            None
+        };
         self.wire
             .send(
                 99,
@@ -290,18 +361,22 @@ impl Client {
                     (0, U32),
                 ]),
             )
-            .await
+            .await?;
+        Ok(floor)
     }
 
     pub async fn routes(
         &mut self,
         slot: usize,
         roster: usize,
-    ) -> io::Result<Vec<Option<SocketAddrV4>>> {
+    ) -> io::Result<(u32, Vec<Option<SocketAddrV4>>)> {
         self.wire.expect(197, &[]).await?;
         self.wire.expect(196, &[]).await?;
         let body = self.wire.expect(153, &[]).await?.payload;
-        parse_routes(&body, slot, roster)
+        Ok((
+            get(&body, 15, U32)? as u32,
+            parse_routes(&body, slot, roster)?,
+        ))
     }
 
     pub async fn die(&mut self, slot: usize, round: u64) -> io::Result<()> {
@@ -334,7 +409,7 @@ impl Client {
         self.wire.send(202, &tail).await
     }
 
-    pub async fn returned(&mut self, roster: usize) -> io::Result<()> {
+    pub async fn returned(&mut self, roster: usize, expected: Option<[u16; 2]>) -> io::Result<()> {
         self.wire.expect(180, &[90, 91]).await?;
         self.wire.send(585, &fields(&[(0, U32)])).await?;
         for slot in 0..roster {
@@ -342,6 +417,11 @@ impl Client {
             if get(&update.payload, 0, U8)? != slot as u64 || get(&update.payload, 1, U32)? & 4 != 0
             {
                 return Err(failure("roster did not reset"));
+            }
+            if let Some(keys) = expected
+                && (get(&update.payload, 1, U32)? >> 16) & 0x1fff != u64::from(keys[slot])
+            {
+                return Err(failure("character changed on return"));
             }
         }
         Ok(())

@@ -210,7 +210,7 @@ pub(crate) fn load_managed_round(
     }))
 }
 
-/// Experimental player round: all characters must have independent stat proof.
+/// Player round with measured built-in profiles or the scoped F1 pack catalog.
 /// Native arbitrary roster and active-departure acceptance remains separate.
 pub(crate) fn load_player_round(
     cfg: &PlayerRoundConfig,
@@ -231,6 +231,15 @@ pub(crate) fn load_player_round(
         return Err(err(
             "player rounds require direct UDP and no terrain profile",
         ));
+    }
+    if characters.maximum_power() > 9
+        && (source.model.terrain.is_some()
+            || source
+                .maps
+                .as_ref()
+                .is_some_and(|maps| maps.choices.iter().any(|choice| choice.terrain.is_some())))
+    {
+        return Err(err("power 10 exceeds the measured terrain scope"));
     }
     // Keep the measured source map/outer branch. Rows will be generated from
     // current choices rather than selected by slot in the retained fixture.
@@ -440,8 +449,16 @@ pub struct BombObservation {
     pub id: Option<u16>,
     pub reason: &'static str,
 }
+#[derive(serde::Serialize)]
+pub(crate) struct CharacterStatsObservation {
+    round: u64,
+    slot: u8,
+    character: u16,
+    stats: crate::characters::Stats,
+}
 #[derive(Default)]
 pub struct Observation {
+    pub(crate) character_stats: Vec<CharacterStatsObservation>,
     pub dropped_after_abort: bool,
     pub start_rejection: Option<&'static str>,
     pub map_rejection: Option<&'static str>,
@@ -2202,6 +2219,7 @@ impl Session {
     pub(crate) fn restore_character(&self, character: u16) -> io::Result<()> {
         let mut runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
         let member = runtime.member(self.identity, self.connection)?;
+        Self::validate_character(&runtime, member.key, 0)?;
         Self::validate_character(&runtime, member.key, character)?;
         runtime.model.restore_character(member.key, character)
     }
@@ -2470,6 +2488,7 @@ impl Session {
         let mut room_choice = None;
         let mut dropped_after_abort = false;
         let mut pickup = None;
+        let mut character_stats = Vec::new();
         let mut bomb = None;
         let mut terrain_notice = None;
         let mut life = None;
@@ -2937,13 +2956,17 @@ impl Session {
                         .and_then(|profile| profile.characters.as_ref())
                         .ok_or_else(|| err("basic items require measured player characters"))?;
                     for member in next.members.values_mut() {
-                        member.item_stats = Some(
-                            catalog.get(
-                                member
-                                    .character
-                                    .ok_or_else(|| err("missing chosen character"))?,
-                            )?,
-                        );
+                        let character = member
+                            .character
+                            .ok_or_else(|| err("missing chosen character"))?;
+                        let stats = catalog.get(character)?;
+                        member.item_stats = Some(stats);
+                        character_stats.push(CharacterStatsObservation {
+                            round,
+                            slot: member.slot,
+                            character,
+                            stats,
+                        });
                     }
                 }
                 if matches!(
@@ -3688,6 +3711,18 @@ impl Session {
                             stats.basic_pickup(request.kind())?;
                         }
                         next.bomb_capacity[usize::from(member.slot)] = stats.capacity;
+                        if matches!(request.kind(), 0 | 1 | 2 | 5)
+                            && let Phase::Armed { round } = next.phase
+                        {
+                            character_stats.push(CharacterStatsObservation {
+                                round,
+                                slot: member.slot,
+                                character: member
+                                    .character
+                                    .ok_or_else(|| err("missing chosen character"))?,
+                                stats: *stats,
+                            });
+                        }
                     } else if request.kind() == 0 {
                         let slot = usize::from(member.slot);
                         let maximum = [10, 7][slot];
@@ -3911,6 +3946,7 @@ impl Session {
             admission_rejection: None,
             dropped_after_abort,
             character_rejection,
+            character_stats,
             pickup,
             bomb,
             terrain_notice,

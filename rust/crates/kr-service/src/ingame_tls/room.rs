@@ -250,7 +250,7 @@ impl State {
             session.wait_peer_ready().await?;
             driver.inspect().await?;
         }
-        if opcode == 92 && resources.persist_character {
+        let observation = if opcode == 92 && resources.persist_character {
             if let Some((membership, character)) = session.prepare_character(body)? {
                 let expected = self.preferences[index]
                     .as_ref()
@@ -276,12 +276,23 @@ impl State {
                     }
                 };
                 self.preferences[index] = Some(stored);
-                session.persisted_character(membership, body)?;
+                session.persisted_character(membership, body)?
             } else {
-                session.packet(opcode, body)?;
+                session.packet(opcode, body)?
             }
         } else {
-            session.packet(opcode, body)?;
+            session.packet(opcode, body)?
+        };
+        if !observation.character_stats.is_empty() {
+            emit_room_gate(
+                resources,
+                session,
+                stream_id,
+                serde_json::json!({
+                    "event": "native_tls_character_stats", "opcode": opcode,
+                    "players": observation.character_stats, "pickup": observation.pickup,
+                }),
+            );
         }
         let _ = resources
             .events

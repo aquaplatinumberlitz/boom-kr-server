@@ -105,8 +105,13 @@ impl Catalog {
         }
         Ok(())
     }
-    /// Decode only the already measured raw (tag0) serialized582 branch. Catalog
-    /// and bytes sent to the clients have one source; no parallel config list.
+    pub(crate) fn visible_basic_items(&self) -> impl Iterator<Item = (u32, u8, u8, u16)> + '_ {
+        self.floor
+            .values()
+            .filter(|item| item.kind <= 2)
+            .map(|item| (item.index, item.row, item.column, item.kind))
+    }
+    /// Decode only the measured raw (tag0) serialized582 branch.
     pub fn from_floor(body: &[u8]) -> io::Result<Self> {
         let err = || io::Error::other("unsupported measured floor582 catalog");
         if !(16..=4096).contains(&body.len()) {

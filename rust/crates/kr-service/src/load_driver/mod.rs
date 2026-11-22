@@ -51,6 +51,8 @@ pub(crate) struct Config {
     minimum_rounds: u64,
     // Permit operator/controller orchestration with no public control endpoint.
     first_start_file: Option<PathBuf>,
+    // Isolated TLS duel acceptance; one sequence of up to eight rounds.
+    character_rounds: Option<Vec<[u16; 2]>>,
     #[serde(default)]
     delivery_buckets: bool,
     delivery_p99_ms_max: f64,
@@ -86,6 +88,15 @@ impl Config {
                 .is_some_and(|addr| !addr.ip().is_loopback() || addr.port() == 0)
         {
             return Err(failure("load configuration out of bounds"));
+        }
+        if let Some(rounds) = &self.character_rounds
+            && (self.rooms.len() != 1
+                || self.rooms[0].len() != 2
+                || rounds.len() as u64 != self.minimum_rounds
+                || self.minimum_run_seconds != 0
+                || rounds.iter().flatten().any(|&key| key > 0x1fff))
+        {
+            return Err(failure("character acceptance requires a bounded TLS duel"));
         }
         let mut logins = HashSet::new();
         for account in self.rooms.iter().flatten() {
@@ -194,6 +205,19 @@ impl RoomContext {
             if block != 0 && self.delivery_failed.load(Ordering::Relaxed) {
                 break;
             }
+            let characters = self
+                .config
+                .character_rounds
+                .as_ref()
+                .map(|r| r[*completed as usize]);
+            if let Some(keys) = characters {
+                for (slot, key) in keys.into_iter().enumerate() {
+                    players[slot].character(key).await?;
+                    for p in &mut *players {
+                        p.character_updates(slot, key).await?;
+                    }
+                }
+            }
             for p in &mut players[1..] {
                 p.ready().await?;
             }
@@ -203,16 +227,48 @@ impl RoomContext {
                     .map_err(|e| phase("ready", e))?;
             }
             players[0].start().await?;
-            for p in &mut *players {
-                p.load().await.map_err(|e| phase("start/load", e))?;
+            let mut floor = None;
+            for (slot, p) in players.iter_mut().enumerate() {
+                let received = p
+                    .load(characters)
+                    .await
+                    .map_err(|e| phase("start/load", e))?;
+                if slot == 0 {
+                    floor = received;
+                }
             }
             let mut routes = Vec::with_capacity(roster);
+            let mut round_key = None;
             for (slot, p) in players.iter_mut().enumerate() {
-                routes.push(
-                    p.routes(slot, roster)
-                        .await
-                        .map_err(|e| phase("routes", e))?,
-                );
+                let (key, peers) = p
+                    .routes(slot, roster)
+                    .await
+                    .map_err(|e| phase("routes", e))?;
+                if round_key.replace(key).is_some_and(|prior| prior != key) {
+                    return Err(failure("inconsistent round key"));
+                }
+                routes.push(peers);
+            }
+            if let Some(floor) = floor {
+                let mut count = [0; 3];
+                for item in floor.visible_basic_items() {
+                    let n = &mut count[usize::from(item.3)];
+                    if *n < 20 {
+                        let slot = *n % 2;
+                        players[slot]
+                            .claim_basic_item(slot, item, round_key.expect("duel key"))
+                            .await?;
+                        for p in &mut *players {
+                            p.pickup_confirmed(slot, item).await?;
+                        }
+                        *n += 1;
+                    }
+                }
+                if count != [20; 3] {
+                    return Err(failure(
+                        "character acceptance needs 20 visible items of each basic kind",
+                    ));
+                }
             }
             let warmup = Instant::now();
             replay::prime(players, &routes)
@@ -258,7 +314,9 @@ impl RoomContext {
                 p.finish().await.map_err(|e| phase("result", e))?;
             }
             for p in &mut *players {
-                p.returned(roster).await.map_err(|e| phase("return", e))?;
+                p.returned(roster, characters)
+                    .await
+                    .map_err(|e| phase("return", e))?;
             }
             *completed += 1;
             emit(json!({"event":"round_returned","room":self.index,"round":*completed}));
