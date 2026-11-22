@@ -455,6 +455,15 @@ fn first_retirement_keeps_a_redacted_backend_reason_across_cleanup() {
                 "reason": "storage"
             })
         );
+        assert_eq!(
+            authority_end_event(Error::Stale, "native_stream_ended"),
+            serde_json::json!({
+                "event": "native_account_authority_ended",
+                "stage": "native_stream_ended",
+                "reason": "owner_stale",
+                "classification": "expected_ttl_or_relogin"
+            })
+        );
         assert!(!handles[0].current());
         assert!(*handles[0].stopped().borrow());
         session.finish().await.unwrap();

@@ -1793,6 +1793,28 @@ fn owner_end_event_keeps_safe_guard_and_opcode_without_underlying_error_text() {
 }
 
 #[test]
+fn orderly_peer_close_is_classified_without_becoming_an_owner_error() {
+    let mut result = Err(native_failure(
+        io::Error::other("native stream task ended"),
+        "owner_lifecycle",
+        None,
+        None,
+    ));
+    mark_expected_peer_close(&mut result);
+    assert_eq!(
+        owner_ended(&result),
+        serde_json::json!({
+            "event": "native_tls_owner_ended",
+            "ok": false,
+            "guard": "owner_lifecycle",
+            "opcode": null,
+            "subtype": null,
+            "classification": "expected_peer_close",
+        })
+    );
+}
+
+#[test]
 fn room_poll_owner_event_keeps_stage_and_stream_without_renaming_known_guards() {
     for (err, guard) in [
         ("native room batch retired", "retired_room_batch"),

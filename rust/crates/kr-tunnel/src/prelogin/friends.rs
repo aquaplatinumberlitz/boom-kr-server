@@ -342,6 +342,7 @@ mod tests {
                 recv.read_exact(&mut bytes).await.unwrap();
                 assert_eq!(&bytes, b"request");
                 send.write_all(b"response").await.unwrap();
+                send.flush().await.unwrap();
                 send.finish().unwrap();
                 let _ = send.stopped().await;
             };

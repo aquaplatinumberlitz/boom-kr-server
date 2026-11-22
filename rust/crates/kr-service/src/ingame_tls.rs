@@ -185,6 +185,10 @@ struct NativeFailure {
     subtype: Option<u8>,
     poll_stage: Option<&'static str>,
     stream_id: Option<u64>,
+    /// The peer closed the QUIC connection with application code zero while
+    /// a stream task was still being joined. This is an orderly client close,
+    /// not a service lifecycle failure.
+    expected_close: bool,
 }
 impl std::fmt::Display for NativeFailure {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -247,6 +251,7 @@ fn native_failure(
             subtype,
             poll_stage: None,
             stream_id: None,
+            expected_close: false,
         },
     )
 }
@@ -294,6 +299,9 @@ fn owner_ended(result: &io::Result<()>) -> serde_json::Value {
         event["guard"] = serde_json::json!(failure.map_or("owner_lifecycle", |f| f.guard));
         event["opcode"] = serde_json::json!(failure.and_then(|f| f.opcode));
         event["subtype"] = serde_json::json!(failure.and_then(|f| f.subtype));
+        if failure.is_some_and(|f| f.expected_close) {
+            event["classification"] = serde_json::json!("expected_peer_close");
+        }
         if let Some(stage) = failure.and_then(|f| f.poll_stage) {
             event["poll_stage"] = serde_json::json!(stage);
         }
@@ -302,6 +310,16 @@ fn owner_ended(result: &io::Result<()>) -> serde_json::Value {
         }
     }
     event
+}
+
+fn mark_expected_peer_close(result: &mut io::Result<()>) {
+    if let Err(error) = result
+        && let Some(failure) = error
+            .get_mut()
+            .and_then(|inner| inner.downcast_mut::<NativeFailure>())
+    {
+        failure.expected_close = true;
+    }
 }
 
 // accept_bi, the current native read and the owner health timer can
@@ -526,6 +544,13 @@ async fn stream(
             let mut event = owner_ended(&result);
             event["event"] = serde_json::json!("native_tls_owned_stream_ended");
             event["stream_id"] = serde_json::json!(id);
+            if transport
+                .close_reason()
+                .as_ref()
+                .is_some_and(peer_closed_normally)
+            {
+                event["classification"] = serde_json::json!("expected_peer_close");
+            }
             let _ = resources.events.try_send(event);
         }
         if !retired
@@ -556,7 +581,7 @@ async fn connection(
     let mut health = tokio::time::interval(Duration::from_millis(250));
     let until = tokio::time::sleep(Duration::from_secs(resources.config.prelogin_seconds));
     tokio::pin!(until);
-    let outcome=async{loop{
+    let mut outcome=async{loop{
         if *stop.borrow(){return Ok(());}
         tokio::select!{
             _=stop.changed()=>return Ok(()),
@@ -597,6 +622,14 @@ async fn connection(
             }
         }
     }}.await.map_err(|e| native_failure(e,"owner_lifecycle",None,None));
+    if outcome.is_err()
+        && connection
+            .close_reason()
+            .as_ref()
+            .is_some_and(peer_closed_normally)
+    {
+        mark_expected_peer_close(&mut outcome);
+    }
     close_for_session_end(&connection, &outcome);
     connection.close(0u8.into(), b"native owner ended");
     streams.abort_all();

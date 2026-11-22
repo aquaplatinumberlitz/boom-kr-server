@@ -186,6 +186,22 @@ Run the [collector](../tools/m8_soak_collect.py) on the same Linux host after re
 
 Check the `finished` row and samples from all three phases. Compare CPU per core, RSS, FD, rooms, companions, routes and DB errors against the planned limits and driver logs. The collector does not generate traffic or measure end-to-end delivery.
 
+<a id="m8-accelerated-soak"></a>
+## Accelerated soak (PC or VPS, Linux namespace)
+
+Use the accelerated helper for a short feedback loop before spending a full 12-hour gate. It rewrites a new private driver input with two-second rounds, a short run, and a balanced room split; it never edits the source input or starts a remote process.
+
+```bash
+python3 tools/m8_accelerated_soak.py --driver-config "$PRIVATE/driver.json" \
+  --out "$PRIVATE/accelerated-driver.json" --rooms 8 --round-seconds 2 \
+  --run-seconds 180 --ramp-ms 100 --fault-rate 2
+"$PACKAGE/bin/kr-load" "$PRIVATE/accelerated-driver.json" >"$PRIVATE/driver.out" 2>"$PRIVATE/driver.err" || true
+python3 tools/m8_soak_triage.py --events "$RUN_DIR/rust-events.jsonl" \
+  --driver "$PRIVATE/driver.out" --out "$PRIVATE/owner-triage.json"
+```
+
+Run the emitted `namespace_command` on the workload veth inside an `unshare -Urn` namespace when random delay/loss is required. The driver already stops at the first delivery failure; keep `driver.out`, `driver.err`, `rust-events.jsonl`, and `health.json` as evidence. An accelerated result is diagnostic and does not replace the 43,200-second M8 gate.
+
 <a id="server-admin-backup-rollback"></a>
 ## Accounts, rooms, and audit
 
