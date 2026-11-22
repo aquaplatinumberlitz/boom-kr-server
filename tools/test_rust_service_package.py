@@ -151,6 +151,39 @@ class PackageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'relay xác thực'):
             build(self.config, self.binaries, self.root / 'legacy', 'x86_64-unknown-linux-gnu')
 
+    def test_prepare_friends_uses_private_guest_transport(self):
+        self.package()
+        path = self.out / 'config.template.json'
+        template = json.loads(path.read_bytes())
+        two = template['diagnostic_two_lobby']
+        two['actors'] = [{'identity': 1, 'peer': '192.168.0.2', 'reported_login_ipv4': '192.168.0.2'}]
+        two['account_admission'].update(
+            patched_949x_names=True, public_launcher={'certificate': '@INSTALL@'},
+            prelogin_tls={'certificate': '@INSTALL@'}, backup={}
+        )
+        path.chmod(0o600)
+        path.write_text(json.dumps(template))
+        state = self.root / 'friends-state'
+        state.mkdir(mode=0o700)
+        directory = state / 'prelogin_tls-identity'
+        directory.mkdir(mode=0o700)
+        (directory / 'certificate.der').write_bytes(b'certificate fixture')
+        runtime, _, _ = prepare(self.out, state, friends=True)
+        config = json.loads(runtime.read_bytes())
+        self.assertEqual(config['allowed_peers'], ['127.0.0.1'])
+        self.assertEqual(config['diagnostic_two_lobby']['actors'], [{'identity': 1, 'peer': '127.0.0.1'}])
+        admission = config['diagnostic_two_lobby']['account_admission']
+        self.assertNotIn('public_launcher', admission)
+        self.assertNotIn('backup', admission)
+        tls = admission['prelogin_tls']
+        self.assertTrue(tls['friends_guest_only'])
+        self.assertEqual(tls['certificate']['path'], str(directory / 'certificate.der'))
+        relay = config['authenticated_relay']
+        self.assertEqual(relay['bind'], relay['advertise'])
+        self.assertEqual(relay['bind'].split(':')[0], '127.0.0.1')
+        self.assertEqual(tls['bind'].split(':')[0], '127.0.0.1')
+        self.assertNotEqual(relay['bind'], tls['bind'])
+
     def test_o1_excludes_power_ten_only_if_a_map_uses_terrain(self):
         from kr_pack_config import configure
         from kr_pack_export import TERRAIN_SEEDS, export
