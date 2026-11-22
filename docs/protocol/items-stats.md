@@ -113,6 +113,61 @@ Cho mỗi ca, dùng hai client KR 00967 cô lập và một item nền trong fix
 các loại chủ động; kiểm lại đầu vòng sau. Chưa chạy native cho năm nhóm, nên không suy wire sau
 pickup, số lần dùng, hiệu ứng gameplay hay authority server từ bảng và địa chỉ tĩnh.
 
+<a id="f1d-vehicles"></a>
+### F1-d: Đối chiếu phương tiện cưỡi và biến hình
+
+[Kiểm kê nội dung](../CONTENT.md#item) và [CP045](#item-families) cho phạm vi group 2. Đọc
+`FxContents/Attr/ItemAttr` từ bản sao cặp pack KR 00967 có SHA-256 khớp `PACK_SHA256` của
+`tools/kr_pack_export.py`, rồi dùng `tools/content_census.py::parse_item_attr`. Dữ liệu trùng từng byte
+với `boomkr-re/data/kr/KR_ItemAttr.bin`; nguồn `boomkr-re/docs/kr-data.md` §12 và các JSON cùng thư mục
+không cho thêm consumer phương tiện. `boom-re/docs/items.md` và bản trích VN cho tên và hàng đối chiếu.
+
+- `kr_static`, KR 00967: SHA-256 ItemAttr `a9b55540c85c21de108e8720b4148b2030a231d907f3709dcb06f7ef728fcdba`.
+  IDA batch đọc bản sao DB ảnh giải nén `kr-full.exe`, SHA-256 input
+  `cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b`, SHA-256 DB trước khi mở
+  `6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1`. Địa chỉ KR là VA, `RVA = VA − 0x400000`.
+- `vn_static`, VBNB_116: SHA-256 ItemAttr `a98883ce35f3a509719db637f662f2ec90da64dd3c1faa0c9f7eb22c0de7dd1d`.
+  Loader VN tại VA `0x89F3DE` theo `boom-re/docs/items.md`; chỉ dùng bảng VN để đối chiếu, không dùng kind hoặc VA đó ở KR.
+
+| Item | Kind KR ↔ VN | Group | ItemAttr thô: weight; `+160`; tail | Dòng `Ship/*` cùng seq: tám số thô | Consumer KR (`candidate`) |
+|---|---|---:|---|---|---|
+| ItemAirship | 40 ↔ 34 | 2 | `150; 0; [1,0,0,0,0]` | `Airship: [2,10,0,1,2,0,0,0]` | `11928A2`, selector 1. |
+| ItemOwl | 41 ↔ 35 | 2 | `350; 0; [2,0,0,0,0]` | `Owl: [1,5,0,0,0,0,0,0]` | `11928A2`, selector 2. |
+| ItemTurtle0 | 42 ↔ 36 | 2 | `340; 0; [3,0,0,0,0]` | `Turtle0: [1,2,0,0,0,0,0,0]` | `11928A2`, selector 3. |
+| ItemTurtle1 | 43 ↔ 37 | 2 | `60; 0; [4,0,0,0,0]` | `Turtle1: [1,9,0,0,0,0,0,0]` | `11928A2`, selector 4. |
+| ItemAirshipBroken | 44 ↔ 38 | 2 | `70; 0; [5,0,0,0,0]` | `AirshipBroken: [2,2,0,1,2,0,0,0]` | `11928A2`, selector 5. |
+| ItemUFO | `unknown` ↔ `unknown` | — | Không có dòng tên này trong hai bảng. | Không có mục `Ship/*` tên UFO. | Chưa có kind, selector hay consumer; chưa xác lập tên khác. |
+
+Năm hàng có cùng sprite, thuộc tính ItemAttr và tám số Ship trong hai build. Trong bản sao `FxMap` đã đối chiếu
+hash, `Map/Tomb12` có trọng số dương cho Airship, Owl và hai Turtle; `Map/Village10` có 200 cho AirshipBroken
+và Owl. Các trọng số trong pack không cho biết luật rơi của server gốc hay tốc độ phương tiện.
+
+- **Nhặt và lên (`kr_static/candidate`):** Tái dùng [đường 124/165 đã đo cho item nền](#item-pickup) làm mỏ neo.
+  Dispatch `1192700` rẽ tại `11928A2`, kiểm cast `IEatObject → CGOBomber` và lấy tail đầu qua `64DB00(0)`.
+  Nếu guard `actor+0x584/vf+0x94` trả 0, lời gọi tại `1192957` qua `vf+0x17C` dẫn tới `B479E0`
+  ở cả `CGOBomber`, `CGOGameBomber` và `CGOCAHeroGameBomber`. Khi guard khác 0, `B48000` và
+  `1370710` quyết định có gọi `actor+0x590/vf+0x0C` tại `1192920` hay không; đích tĩnh `B4C7A0`
+  nối qua `B4C9D0` tới cùng bộ khởi tạo Ship. Điều kiện thay phương tiện đang dùng còn `unknown`.
+- **Di chuyển và tháo (`kr_static/candidate`):** `B479E0` gọi `B978B0` trên `CGOShip` tại actor `+0x804`
+  (`B47A60`). Bộ khởi tạo lấy dòng Ship qua `1197900(selector)` và gọi các getter `B98640/B98660/B98680`.
+  Sau đó `B479E0` dùng giá trị đọc từ actor `+0x2998` khi gọi `vf+0x264` tại `B47ABF`.
+  Slot liền sau nhánh lên (`vf+0x180`) trỏ tới `B73680` ở hai lớp GameBomber trên; `B736A4` gọi
+  `B47B80`. Hàm này đọc giá trị tại actor `+0x29A4`, đổi dấu trước khi truyền vào helper, gọi lại `vf+0x264`, rồi gọi
+  `CGOShip/vf+0x60` tại `B47D45`. Đây là điểm đo cho đổi di chuyển và tháo; tốc độ, va chạm, trigger
+  trúng bom, thao tác tự xuống và caller reset đầu vòng vẫn `unknown`.
+- **Wire trạng thái (`kr_static/candidate`):** Switch KR có case S→C `381` tại `E5D930`, gọi
+  `E68BB0 → E84CD0`; `E84E2F` gọi cùng lookup `1197900`. Chưa biết schema, hiệu ứng của gói
+  hay liên hệ với pickup, tháo và reset. So thời điểm với [127/170 đã đo cho trap/death](life-results.md#peer-events)
+  và [UDP movement](udp-peer.md#peer-duo); chưa có subtype hoặc frame trạng thái nào được đo cho phương tiện.
+
+Phép đo tối thiểu: dùng hai client KR cô lập, mỗi ca một kind có trong bảng, cùng nhân vật và đoạn đường
+đối chứng không có item. Ghi claim `124` thực và chỉ xác nhận `165` nếu claim khớp; đo cả hai view trước/sau
+callback, selector, trạng thái Ship, vị trí theo thời gian và frame thực tế. Cho B đặt một bom để A trúng tia
+khi đang cưỡi rồi đi lại cùng đoạn; ghi caller tháo, trạng thái và frame, so với ca trúng tia khi đi bộ.
+Nếu thấy thao tác xuống, thử riêng khi không trúng tia. Qua kết quả, vào
+[đầu vòng kế](load-phase.md#round-go) và đo lại trạng thái Ship cùng tốc độ trước khi nhặt thêm, kể cả ca
+kết thúc vòng khi vẫn cưỡi. Chưa có lượt native F1-d, nên các bước này chưa xác lập hiệu ứng hay quyền server.
+
 <a id="shoe-punch-source"></a>
 ### Shoe/Punch: pickup, hành động và giới hạn đã đo
 
