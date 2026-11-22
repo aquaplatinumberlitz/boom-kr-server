@@ -7,7 +7,23 @@ from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
 
 
-def configure(config, bundle, cache, out, maps, scope):
+def floor582(floor):
+    lists = (floor['fixed'], floor['hidden'], [])
+    if sum(map(len, lists)) > 64:
+        raise ValueError('Floor vượt giới hạn')
+    inner = bytearray()
+    index = 0
+    for group in lists:
+        inner.extend(struct.pack('<H', len(group)))
+        for y, x, kind in group:
+            if not (0 <= y < 13 and 0 <= x < 15 and kind in (0, 1, 2, 5)):
+                raise ValueError('Floor F1-a có ô hoặc item ngoài phạm vi')
+            inner.extend(struct.pack('<IBBI', index, y, x, kind))
+            index += 1
+    return raw_blob(inner)[0]
+
+
+def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
     two = config['diagnostic_two_lobby']
     room = two['fixed_room']
     packets = room['packets']
@@ -99,16 +115,19 @@ def configure(config, bundle, cache, out, maps, scope):
         _, play = load(packets['play'])
         value = codec.read_fields(play, [1, 4, 2])
         value[2] = code
+        rules = cache / (name + '.rules.json')
+        applied = json.loads(rules.read_bytes()) if scope in ('g1', 'f1-a') and rules.is_file() else {}
         floor = floors.get(name, raw_blob(bytes(6))[0]) if scope == 'g1' else raw_blob(bytes(6))[0]
+        if scope == 'f1-a':
+            floor = floor582(applied.pop('floor'))
         new = {}
         for key, payload in [('map', codec.pack_fields([0, code, index], [2, 2, 4])),
                              ('start', body[:1] + start + body[end:]),
                              ('play', codec.pack_fields(value, [1, 4, 2])), ('floor', floor)]:
             new[key] = save(packets[key], payload, f'map-{index}-{key}')
         choice = dict(map_profile=dict(path=str(path), bytes=len(data), sha256=sha(data)), packets=new)
-        rules = cache / (name + '.rules.json')
-        if scope == 'g1' and rules.is_file():
-            choice.update(json.loads(rules.read_bytes()))
+        if applied:
+            choice.update(applied)
             choice['terrain']['fixtures'] = {k: new[k]['fixture']['sha256'] for k in ('map', 'start')}
         choices.append(choice)
 
@@ -130,8 +149,8 @@ def configure(config, bundle, cache, out, maps, scope):
     # F1 mở khóa theo key pack; G1 giữ danh sách đã nghiệm thu.
     chars = json.loads((cache / 'tables.json').read_bytes())['characters']
     round_config = two['managed_rooms']['player_round']
-    if scope == 'f1':
+    if unlock_all:
         round_config['characters'] = sorted(map(int, chars))
     round_config['pack_stats'] = {str(key): chars[str(key)] for key in round_config['characters']}
-    if scope == 'f1':
+    if scope in ('f1', 'f1-a'):
         two['managed_rooms']['capacity'] = 2

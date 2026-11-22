@@ -12,7 +12,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **22/11, C
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
 tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [F1](#f1-normal-battle) đã mở sớm song song với M8 và O1; F2–F6 tiếp tục chờ.
-[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) đã qua kr-load trên 45 map, CaJJ_Clover đạt A trong phạm vi hai người. Dùng lại controller Windows/Wine cho các lượt native kế.
+[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) đã mở rộng adapter pack cho 155/214 map của 86 họ A/B; chưa nâng họ mới, CaJJ_Clover giữ A trong phạm vi hai người. Dùng lại controller Windows/Wine cho các lượt native kế.
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|

@@ -34,6 +34,13 @@ pub(crate) struct Account {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+struct MapChoice {
+    code: u16,
+    index: u32,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 pub(crate) struct Config {
     server: SocketAddrV4,
     relay: SocketAddrV4,
@@ -49,6 +56,8 @@ pub(crate) struct Config {
     active_seconds: u64,
     minimum_run_seconds: u64,
     minimum_rounds: u64,
+    #[serde(default)]
+    maps: Vec<MapChoice>,
     // Permit operator/controller orchestration with no public control endpoint.
     first_start_file: Option<PathBuf>,
     // Isolated TLS duel acceptance; one sequence of up to eight rounds.
@@ -72,6 +81,8 @@ impl Config {
             || !(2..=180).contains(&self.active_seconds)
             || self.minimum_run_seconds > 86400
             || !(1..=8).contains(&self.minimum_rounds)
+            || (!self.maps.is_empty() && self.maps.len() != self.minimum_rounds as usize)
+            || self.maps.iter().any(|m| m.index >= 16)
             || !(1.0..=1000.).contains(&self.delivery_p99_ms_max)
             || !(0.0..=5.).contains(&self.delivery_loss_percent_max)
             || self.login_port == self.channel_port
@@ -205,6 +216,16 @@ impl RoomContext {
             if block != 0 && self.delivery_failed.load(Ordering::Relaxed) {
                 break;
             }
+            let map = self
+                .config
+                .maps
+                .get((*completed % self.config.minimum_rounds) as usize);
+            if let Some(map) = map {
+                players[0].select_map(map.code, map.index).await?;
+                for p in &mut *players {
+                    p.map_selected(map.code, map.index).await?;
+                }
+            }
             let characters = self
                 .config
                 .character_rounds
@@ -230,7 +251,7 @@ impl RoomContext {
             let mut floor = None;
             for (slot, p) in players.iter_mut().enumerate() {
                 let received = p
-                    .load(characters)
+                    .load(characters, map.map(|m| m.code))
                     .await
                     .map_err(|e| phase("start/load", e))?;
                 if slot == 0 {

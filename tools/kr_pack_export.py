@@ -1,6 +1,6 @@
 """Đọc pack KR 00967 và tạo cache dữ liệu phục vụ. Chỉ dùng thư viện chuẩn."""
 import argparse
-from contextlib import ExitStack
+from contextlib import contextmanager, ExitStack
 import hashlib
 import os
 import json
@@ -149,7 +149,173 @@ def terrain_for(profile, table):
     return result
 
 
-def outputs(files, maps, measured):
+# Projection of the KR initializer (EA1EE0/9B0640) and the two
+# dimension getters (7E7350/7E72B0). G1 profiles keep their pinned rules.
+_GROUND = (0, 0, 0, 0, 0, 0)
+_PASS_ALL = 0x01010101
+_TYPE1_PIN_FLAGS = {
+    'Tile16_Static/PinPillar03': 65536,
+    'Tile16_Static/PinPillar04': 1,
+}
+
+
+def f1_terrain_rules(profile, table):
+    name = profile['name']
+    if profile['rectangles']:
+        raise ValueError(f'Vùng chữ nhật ngoài adapter F1-a: {name}')
+    width, height = profile['width'], profile['height']
+    size = width * height
+    kinds, hits, ray, cancel = [0] * size, [0] * size, [0] * size, []
+    names, tiles = table
+
+    def fail(index, role, key):
+        y, x = divmod(index, width)
+        raise ValueError(f'Ô ngoài adapter F1-a của {name} ({x},{y}): {role} {key}')
+
+    def lookup(code, index, role):
+        if code == -1:
+            return '−1', None
+        if not 0 <= code < len(names) or names[code] not in tiles:
+            fail(index, role, code)
+        key = names[code]
+        return key, tiles[key]
+
+    def footprint(index, data, key):
+        y, x = divmod(index, width)
+        w, h = data[6:8]
+        if not (1 <= w <= width and 1 <= h <= height):
+            fail(index, 'footprint', key)
+        for row in range(max(0, y - h + 1), y + 1):
+            for col in range(x, min(width, x + w)):
+                yield row * width + col
+
+    def ground(index, key, d):
+        # Empty ground uses the default CGOTileGround seen in Tomb12.
+        if d is None:
+            return
+        factory_flag = key == 'Tile03_Ground/Tile07' and d[12:15] == (1, 0, 0)
+        if d[:6] != _GROUND or d[8:11] != (0, 0, -1) or (any(d[12:15]) and not factory_flag):
+            fail(index, 'nền', key)
+        if not (1 <= d[6] <= width and 1 <= d[7] <= height and d[11] in (0, 1)):
+            fail(index, 'nền/footprint', key)
+        if d[15] >> 16:
+            if (key not in ('Tile16_Ground/PinGround01', 'Tile62_Ground/PinTile00',
+                            'Tile62_Ground/PinTile01') or d[15] >> 16 != 10_000):
+                fail(index, 'nền/cờ', key)
+            cancel.append(list(divmod(index, width)))
+        if d[11]:
+            for cell in footprint(index, d, key):
+                ray[cell] = 1
+
+    for index, (base, obj, *overlay) in enumerate(profile['cells']):
+        if any(code != -1 for code in overlay):
+            fail(index, 'overlay', overlay)
+        ground(index, *lookup(base, index, 'nền'))
+        key, d = lookup(obj, index, 'vật thể')
+        if d is None:
+            continue
+        if d[0] == 0 and d[6:8] == (1, 1) and not d[11]:
+            ground(index, key, d)
+        elif d[:6] == (1, 0, 0, 0, 0, 0) and d[8:11] == (0, 0, _TYPE1_PIN_FLAGS.get(key, 0)):
+            # EA1EE0 writes the two flags for type 1 after BA1350, using
+            # the dimensions and type regardless of the trailing dwords.
+            for cell in footprint(index, d, key):
+                if kinds[cell] == 2:
+                    fail(cell, 'footprint chồng thùng', key)
+                kinds[cell] = 1
+        elif (d[:6] == (2, 0, 0, 0, 0, 0) and d[7] in (0, 1)
+              and d[8:15] == (0,) * 7 and 0 <= d[6] <= 254):
+            if kinds[index] != 0:
+                fail(index, 'thùng chồng footprint', key)
+            kinds[index], hits[index] = 2, max(1, d[6])
+        elif (d[:6] == (3, 0, 0, 0, 0, 0) and d[6:11] == (_PASS_ALL,) * 3 + (0, 0)
+              and d[11:13] == (0, 0)):
+            # The Herb route confirms type 3 with the three all-ones groups:
+            # the layer neither blocks the ray nor sets the occupied flag.
+            pass
+        elif (key.startswith('Tile16_Passble/Line') and d[:7] == (3, 0, 0, 0, 0, 0, 0)
+              and d[7] in (65537, 16777472) and d[8:13] == (_PASS_ALL, 16777217, 1, 1, 0)):
+            # The G1 shadow keeps these cells clear; native movement can still
+            # be blocked. This is not a projection of directional movement.
+            pass
+        else:
+            fail(index, 'vật thể/cờ', key)
+
+    if any(kinds[y * width + x] != 0 for x, y in profile['spawns']):
+        raise ValueError(f'Spawn không nằm trên ô trống: {name}')
+    terrain = dict(width=width, height=height, kinds=kinds, maximum_power=9,
+                   map_sha256=profile['payload_sha256'], seed_sha256=sha(bytes(kinds)))
+    if any(ray):
+        terrain['ray_barriers'] = ray
+    if any(hit > 1 for hit in hits):
+        terrain['box_hits'] = hits
+    rules = dict(terrain=terrain)
+    if cancel:
+        rules['bomb_cancellation'] = dict(map_sha256=profile['payload_sha256'], cells=cancel)
+    return rules
+
+
+def f1_floor(profile, terrain):
+    """Chính sách nghiệm thu: placement chắc chắn và tối đa một drop có trọng số."""
+    if profile['placement_header'] != 100 and profile['placements']:
+        raise ValueError(f"Placement header chưa biết: {profile['name']}")
+    # Shoe/Punch/Needle have separate enablement. F1-a only enables stat items.
+    items = {name: kind for kind, name in ITEMS.items() if kind in (0, 1, 2, 5)}
+    kinds, width, height = terrain['kinds'], terrain['width'], terrain['height']
+    fixed, hidden, omitted, occupied = [], [], [], set()
+    occupied.update(map(tuple, profile['spawns']))
+    for row in profile['placements']:
+        name, x, y = row['name'], row['x'], row['y']
+        if not (0 <= x < width and 0 <= y < height and 0 <= row['probability'] <= 100):
+            raise ValueError(f"Placement ngoài giới hạn: {profile['name']}")
+        kind = items.get(name)
+        tile = kinds[y * width + x]
+        if kind is None or row['probability'] != 100 or tile != 0 or (x, y) in occupied:
+            omitted.append(row)
+            continue
+        fixed.append([y, x, kind])
+        occupied.add((x, y))
+    # This seed and density are design choices. Retain weighted pack row order
+    # and duplicates; do not interpret excluded entries as another item.
+    weights = [(items[name], weight) for name, weight in profile['drops']
+               if name in items and weight > 0]
+    boxes = [i for i, kind in enumerate(kinds) if kind == 2]
+    total = sum(weight for _, weight in weights)
+    if boxes and total:
+        seed = bytes.fromhex(profile['payload_sha256'])
+        y, x = divmod(boxes[int(sha(seed + b'cell'), 16) % len(boxes)], width)
+        roll = int(sha(seed + b'item'), 16) % total
+        for kind, weight in weights:
+            if roll < weight:
+                hidden.append([y, x, kind])
+                break
+            roll -= weight
+    if len(fixed) + len(hidden) > 64:
+        raise ValueError(f"Floor vượt giới hạn: {profile['name']}")
+    return dict(fixed=fixed, hidden=hidden, omitted_placements=omitted)
+
+
+def read_map(levels, name, code, *, f1):
+    raw = levels.read('Map/' + name)
+    profile = decode_map(raw)
+    profile.update(name=name, map_code=code, payload_sha256=sha(raw))
+    spawns = profile['spawns']
+    if ((profile['width'], profile['height']) != (15, 13) or profile['scripted']
+            or not 2 <= len(spawns) <= 8
+            or any(not (0 <= x < 15 and 0 <= y < 13) for x, y in spawns)
+            or (f1 and len({tuple(pair) for pair in spawns}) != len(spawns))):
+        raise ValueError(f'Map ngoài phạm vi phục vụ: {name}')
+    return profile
+
+
+def f1_rules(profile, table):
+    rules = (terrain_for(profile, table) if profile['name'] in TERRAIN_SEEDS
+             else f1_terrain_rules(profile, table))
+    rules['floor'] = f1_floor(profile, rules['terrain'])
+    return rules
+
+
+def outputs(files, maps, measured, f1=False):
     def pack(name):
         return Pack(files[name + '.idx'], files[name + '.idd'])
 
@@ -181,26 +347,24 @@ def outputs(files, maps, measured):
                                           for row in groups])
     levels = pack('FxMap')
     order = [name for name, *_ in levels.order if name.startswith('Map/')]
-    table = load_tile_table(pack('fx')) if measured else None
+    table = load_tile_table(pack('fx')) if measured or f1 else None
     for name in maps:
         entry = 'Map/' + name
-        raw = levels.read(entry)
-        profile = decode_map(raw)
-        profile.update(name=name, map_code=order.index(entry), payload_sha256=sha(raw),
-                       pack_items={row['name']: row['kind'] for row in items})
-        if (profile['width'], profile['height']) != (15, 13) or profile['scripted'] or not 2 <= len(profile['spawns']) <= 8:
-            raise ValueError(f'Map ngoài phạm vi phục vụ: {name}')
+        profile = read_map(levels, name, order.index(entry), f1=f1)
+        profile['pack_items'] = {row['name']: row['kind'] for row in items}
         yield name + '.json', profile
-        if measured and name in TERRAIN_SEEDS:
+        if f1:
+            yield name + '.rules.json', f1_rules(profile, table)
+        elif measured and name in TERRAIN_SEEDS:
             yield name + '.rules.json', terrain_for(profile, table)
 
 
-def expected_members(maps, measured):
+def expected_members(maps, measured, f1=False):
     return {'tables.json', *(name + '.json' for name in maps),
-            *(name + '.rules.json' for name in maps if measured and name in TERRAIN_SEEDS)}
+            *(name + '.rules.json' for name in maps if f1 or (measured and name in TERRAIN_SEEDS))}
 
 
-def checked_cache(path, identity, pins, maps, measured):
+def checked_cache(path, identity, pins, maps, measured, f1=False):
     if path.is_symlink() or not path.is_dir():
         raise ValueError('Thiếu cache hợp lệ; hãy chạy export')
     manifest_path = path / 'manifest.json'
@@ -208,7 +372,7 @@ def checked_cache(path, identity, pins, maps, measured):
             or manifest_path.stat().st_size > 65_536):
         raise ValueError('Thiếu manifest cache; hãy chạy export')
     manifest = json.loads(manifest_path.read_bytes())
-    expected = expected_members(maps, measured)
+    expected = expected_members(maps, measured, f1)
     if (not isinstance(manifest, dict) or manifest.get('identity') != identity
             or manifest.get('schema') != SCHEMA or manifest.get('packs') != pins
             or not isinstance(manifest.get('files'), dict) or set(manifest['files']) != expected
@@ -223,20 +387,15 @@ def checked_cache(path, identity, pins, maps, measured):
     return manifest
 
 
-def cache_identity(pins, maps, measured):
-    return sha(encode(dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)))
+def cache_identity(pins, maps, measured, f1=False):
+    key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
+    if f1:
+        key['adapter'] = 'f1-a-v3'
+    return sha(encode(key))
 
 
-def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, pack_files=None):
-    """Các tham số pins/maps khác chỉ được dùng qua API trong kiểm thử."""
-    game = game.resolve(strict=True)
-    if cache.is_symlink():
-        raise ValueError('Cache không được là symlink')
-    cache = cache.resolve()
-    if cache.is_relative_to(game):
-        raise ValueError('Cache phải nằm ngoài thư mục game chỉ đọc')
-    identity = cache_identity(pins, maps, measured)
-    dest = cache / identity
+@contextmanager
+def verified_packs(game, pins=PACK_SHA256, pack_files=None):
     with ExitStack() as stack:
         files = {}
         for name, digest in pins.items():
@@ -247,15 +406,33 @@ def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, pack_file
             if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode) or file_sha(stream) != digest:
                 raise ValueError(f'Pack không khớp KR 00967 (SHA-256): {name}')
             files[name] = stream
+        yield files
+
+
+def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False, pack_files=None):
+    """Chỉ dùng pins khác qua API kiểm thử; F1-a là catalog thử có giới hạn."""
+    if f1 and (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
+               or any(not 1 <= len(name) <= 64 or not name.isascii()
+                      or not all(c.isalnum() or c == '_' for c in name) for name in maps)):
+        raise ValueError('F1-a cần 1–16 tên map KR khác nhau')
+    game = game.resolve(strict=True)
+    if cache.is_symlink():
+        raise ValueError('Cache không được là symlink')
+    cache = cache.resolve()
+    if cache.is_relative_to(game):
+        raise ValueError('Cache phải nằm ngoài thư mục game chỉ đọc')
+    identity = cache_identity(pins, maps, measured, f1)
+    dest = cache / identity
+    with verified_packs(game, pins, pack_files) as files:
         if dest.exists() or dest.is_symlink():
-            checked_cache(dest, identity, pins, maps, measured)
+            checked_cache(dest, identity, pins, maps, measured, f1)
             return dest, True
         cache.mkdir(mode=0o700, parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory(prefix='.export-', dir=cache) as work:
             temp = Path(work) / 'data'
             temp.mkdir(mode=0o700)
             hashes = {}
-            for name, value in outputs(files, maps, measured):
+            for name, value in outputs(files, maps, measured, f1):
                 data = encode(value)
                 (temp / name).write_bytes(data)
                 hashes[name] = sha(data)
@@ -263,13 +440,13 @@ def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, pack_file
                 raise ValueError('Pack đã đổi trong lúc xuất')
             (temp / 'manifest.json').write_bytes(encode(dict(schema=SCHEMA, identity=identity,
                                                              packs=pins, files=hashes)))
-            checked_cache(temp, identity, pins, maps, measured)
+            checked_cache(temp, identity, pins, maps, measured, f1)
             try:
                 temp.rename(dest)
             except OSError:
                 if not dest.is_dir():
                     raise
-                checked_cache(dest, identity, pins, maps, measured)
+                checked_cache(dest, identity, pins, maps, measured, f1)
                 return dest, True
     return dest, False
 
@@ -278,9 +455,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--game-dir', type=Path, required=True)
     parser.add_argument('--cache', type=Path, required=True)
+    parser.add_argument('--f1-map', action='append', help='Tên map KR chính xác; lặp lại tối đa 16 lần')
     args = parser.parse_args()
     try:
-        path, reused = export(args.game_dir, args.cache)
+        path, reused = export(args.game_dir, args.cache, maps=args.f1_map or MAPS, f1=bool(args.f1_map))
     except (OSError, ValueError, KeyError, IndexError, struct.error, ET.ParseError) as exc:
         parser.exit(1, f'Không thể xuất pack KR 00967: {exc}\n')
     print(json.dumps(dict(cache=str(path), reused=reused)))
