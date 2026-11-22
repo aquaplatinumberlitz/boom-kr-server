@@ -226,6 +226,24 @@ impl Client {
         Ok(())
     }
 
+    pub async fn select_map(&mut self, code: u16, index: u32) -> io::Result<()> {
+        self.wire
+            .send(96, &fields(&[(code.into(), U16), (index.into(), U32)]))
+            .await
+    }
+
+    pub async fn map_selected(&mut self, code: u16, index: u32) -> io::Result<()> {
+        let body = self
+            .wire
+            .expect(117, &[90, 91, 106, 110, 238])
+            .await?
+            .payload;
+        if get(&body, 2, U16)? != u64::from(code) || get(&body, 4, U32)? != u64::from(index) {
+            return Err(failure("unexpected map selection acknowledgement"));
+        }
+        Ok(())
+    }
+
     pub async fn team(&mut self) -> io::Result<()> {
         self.wire.send(97, &fields(&[(3, U8)])).await
     }
@@ -335,9 +353,15 @@ impl Client {
     pub async fn load(
         &mut self,
         expected: Option<[u16; 2]>,
+        expected_map: Option<u16>,
     ) -> io::Result<Option<crate::pickups::Catalog>> {
         let floor = self.wire.expect(582, &[90, 91, 110]).await?;
         let start = self.wire.expect(121, &[]).await?;
+        if let Some(code) = expected_map
+            && kr_wire::kr00967::start121_map(&start.payload)?.0 != code
+        {
+            return Err(failure("unexpected map in Start121"));
+        }
         let floor = if let Some([a, b]) = expected {
             if kr_wire::kr00967::start121_characters(&start.payload)? != [(0, a), (1, b)] {
                 return Err(failure("character Start roster mismatch"));
