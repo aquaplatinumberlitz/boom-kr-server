@@ -18,6 +18,14 @@ ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ('vi', 'en', 'ko')
 DEFAULT_LAUNCHER_ART = ROOT / 'local/assets/launcher/launch.png'
 LOCAL_EXTENSIONS = {'.ini', '.ssd', '.fft', '.bik'}
+GUIDE_IMAGES = {
+    'o1-create-room.png': dict(path='local/assets/guide/o1-create-room.png', bytes=225709,
+                               sha256='1f0fadaf574286e27209a26173f66bce3cdca9e5d236c034826a478a8e2fcc5d'),
+    'o1-join-code.png': dict(path='local/assets/guide/o1-join-code.png', bytes=163457,
+                             sha256='7807840cfa64adf2b6238ee36bf05127447eb0fdb9023ff18e8bcb90e44a7d11'),
+    'o1-join-lan.png': dict(path='local/assets/guide/o1-join-lan.png', bytes=160845,
+                            sha256='ca4ee7d9ab98fc1764d78b9b3dccb06bb2d0f593ee4f109c1e5a47096be28d94'),
+}
 
 
 def digest(path):
@@ -170,16 +178,24 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
                                            f'player/guide.{language}.md')
         for language in LANGUAGES
     }
-    screenshot = ROOT / 'docs/player/o1-launcher.jpg'
-    screenshot_pin = save(screenshot, 'player/o1-launcher.jpg') if screenshot.is_file() else None
+    guide_images = {}
+    for name, expected in GUIDE_IMAGES.items():
+        source = ROOT / expected['path']
+        if not source.is_file():
+            continue
+        if source.stat().st_size != expected['bytes'] or digest(source) != expected['sha256']:
+            raise ValueError(f'Ảnh hướng dẫn không khớp pin: {name}')
+        guide_images[name] = save(source, f'player/{name}')
     manifest = dict(schema='kre-player-package-v1', packs=packs, common=common, languages=languages,
                     limits='Payload được dựng và kiểm hash; chưa chứng nhận cài sạch, client song song hoặc native Internet.')
+    if guide_images:
+        manifest['guide_images'] = guide_images
     if art is not None:
         manifest['launcher_art'] = art
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
-                languages=list(languages), packs=len(packs), guides=guides, guide_screenshot=screenshot_pin)
+                languages=list(languages), packs=len(packs), guides=guides, guide_images=guide_images)
 
 
 def windows_runtime(recipe, output, manifest_sha256):
