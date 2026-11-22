@@ -502,6 +502,73 @@ pub(crate) fn start_mode(
 mod tests {
     use super::*;
 
+    #[cfg(unix)]
+    #[test]
+    fn server_mode_starts_companion_before_game() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let root = std::env::temp_dir().join(format!(
+            "kr-player-server-start-{}-{:x}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir_all(root.join("install/vi")).unwrap();
+        fs::create_dir_all(root.join("state")).unwrap();
+        let companion = root.join("companion.py");
+        fs::write(
+            &companion,
+            "#!/usr/bin/env python3\nimport json,pathlib,sys,time\nr=json.loads(pathlib.Path(sys.argv[1]).read_text())\npathlib.Path(r['ready_file']).touch()\ntime.sleep(5)\n",
+        )
+        .unwrap();
+        let game = root.join("install/vi/CA.exe");
+        fs::write(&game, "#!/bin/sh\nprintf started > game-started\nsleep 5\n").unwrap();
+        for path in [&companion, &game] {
+            let mut permissions = fs::metadata(path).unwrap().permissions();
+            permissions.set_mode(0o700);
+            fs::set_permissions(path, permissions).unwrap();
+        }
+        let certificate = root.join("certificate.der");
+        fs::write(&certificate, [0u8]).unwrap();
+        let config = Config {
+            server: Some("127.0.0.1:3808".parse().unwrap()),
+            certificate: Some(certificate.clone()),
+            server_name: None,
+            release_url: None,
+            prelogin_server: Some("127.0.0.1:49652".parse().unwrap()),
+            prelogin_certificate: Some(certificate),
+            companion,
+            ports: vec![3808],
+            bundle: root.clone(),
+            manifest_sha256: "0".repeat(64),
+            installation: root.join("install"),
+            state: root.join("state"),
+            wine: None,
+            udp_backend: kr_tunnel::UdpBackend::default(),
+            friends: None,
+            friends_directory: Vec::new(),
+        };
+        let lock = fs::OpenOptions::new()
+            .create(true)
+            .write(true)
+            .truncate(false)
+            .open(root.join("state/lock"))
+            .unwrap();
+        let session = match start_inner(config, Language::Vi, lock, None) {
+            Ok(session) => session,
+            Err(_) => panic!("server-mode companion did not become ready"),
+        };
+        std::thread::sleep(Duration::from_millis(100));
+        assert_eq!(
+            fs::read_to_string(root.join("install/vi/game-started")).unwrap(),
+            "started"
+        );
+        drop(session);
+        fs::remove_dir_all(root).unwrap();
+    }
+
     #[test]
     fn completed_log_rotation_is_bounded_and_preserves_latest_log() {
         let root = std::env::temp_dir().join(format!(

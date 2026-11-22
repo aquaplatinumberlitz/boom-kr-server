@@ -72,6 +72,10 @@ enum PlayState {
     Ready,
 }
 
+fn should_auto_repair(requested_repair: bool, attempted: bool, success: bool) -> bool {
+    !requested_repair && !attempted && !success
+}
+
 #[derive(Clone)]
 enum Message {
     Language(Language),
@@ -182,6 +186,7 @@ struct Player {
     closing: bool,
     launch_error: Option<Copy>,
     preference_error: bool,
+    initial_repair_attempted: bool,
     modal_notice: Option<(Copy, bool)>,
     tick: usize,
     size: iced::Size,
@@ -334,6 +339,7 @@ impl Player {
             closing: false,
             launch_error: None,
             preference_error: false,
+            initial_repair_attempted: false,
             modal_notice: None,
             tick: 0,
             size: WINDOW_SIZE,
@@ -605,11 +611,23 @@ impl Player {
                 return self.update(Message::Play);
             }
             Message::Prepared(result, requested_repair) => {
+                if should_auto_repair(
+                    requested_repair,
+                    self.initial_repair_attempted,
+                    result.is_ok(),
+                ) {
+                    self.files = Files::Error;
+                    self.initial_repair_attempted = true;
+                    return self.check_files(true);
+                }
                 self.files = if result.is_ok() {
                     Files::Ready
                 } else {
                     Files::Error
                 };
+                if result.is_ok() {
+                    self.initial_repair_attempted = false;
+                }
                 if requested_repair {
                     self.modal_notice = Some(match result {
                         Ok(true) => (Copy::FilesRepaired, false),
@@ -1063,6 +1081,14 @@ mod tests {
                 expected
             );
         }
+    }
+
+    #[test]
+    fn invalid_initial_installation_is_repaired_once_before_error() {
+        assert!(should_auto_repair(false, false, false));
+        assert!(!should_auto_repair(false, true, false));
+        assert!(!should_auto_repair(true, false, false));
+        assert!(!should_auto_repair(false, false, true));
     }
 
     #[test]
