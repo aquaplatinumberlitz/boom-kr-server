@@ -28,6 +28,10 @@ pub(crate) struct Config {
     pub ports: Vec<u16>,
     pub bundle: PathBuf,
     pub manifest_sha256: String,
+    // The offline package preflight validates these pins. The launcher uses
+    // the pinned player manifest separately to verify the game installation.
+    #[serde(default, rename = "file_hashes")]
+    _file_hashes: Option<serde::de::IgnoredAny>,
     pub installation: PathBuf,
     pub state: PathBuf,
     #[serde(default)]
@@ -502,6 +506,29 @@ pub(crate) fn start_mode(
 mod tests {
     use super::*;
 
+    #[test]
+    fn config_accepts_package_preflight_pins() {
+        let config = serde_json::json!({
+            "companion": "kr-prelogin.exe",
+            "ports": [3838, 3858],
+            "bundle": ".",
+            "manifest_sha256": "0".repeat(64),
+            "installation": "game",
+            "state": "state",
+            "friends": {
+                "package": "friends-server",
+                "manifest_sha256": "1".repeat(64),
+                "python": "friends-python/python.exe"
+            },
+            "file_hashes": {"manifest.json": {"bytes": 42, "sha256": "0".repeat(64)}}
+        });
+        let parsed = serde_json::from_value::<Config>(config.clone()).unwrap();
+        assert!(parsed.friends.is_some());
+        let mut typo = config;
+        typo["file_hashess"] = serde_json::json!({});
+        assert!(serde_json::from_value::<Config>(typo).is_err());
+    }
+
     #[cfg(unix)]
     #[test]
     fn server_mode_starts_companion_before_game() {
@@ -543,6 +570,7 @@ mod tests {
             ports: vec![3808],
             bundle: root.clone(),
             manifest_sha256: "0".repeat(64),
+            _file_hashes: None,
             installation: root.join("install"),
             state: root.join("state"),
             wine: None,
