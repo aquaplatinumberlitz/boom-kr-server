@@ -416,7 +416,17 @@ fn start_inner(
         let _ = fs::remove_dir_all(&run);
     })
     .map_err(|_| StartError::Launch)?;
-    ready(&mut owned.companion, &signal)?;
+    ready(&mut owned.companion, &signal).inspect_err(|_| {
+        owned.exit = Some((
+            "companion_start",
+            owned
+                .companion
+                .try_wait()
+                .ok()
+                .flatten()
+                .and_then(|s| s.code()),
+        ));
+    })?;
     let directory = config.installation.join(language.id());
     let executable = directory.join("CA.exe");
     let mut game = if let Some(wine) = config.wine {
@@ -449,6 +459,9 @@ fn start_inner(
     let child = Game::spawn(&mut game, &executable, &directory);
     drop(complete);
     owned.generation = pulse.join().unwrap_or_default();
+    if let Err(error) = &child {
+        owned.exit = Some(("game_start", error.raw_os_error()));
+    }
     owned.game = Some(child.map_err(|_| StartError::Launch)?);
     Ok(Session(Arc::new(Mutex::new(owned))))
 }

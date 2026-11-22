@@ -71,12 +71,14 @@ impl Trace {
 /// The binary passes fixed labels, never open-ended error messages or paths.
 pub enum Startup {
     Endpoint,
+    RoomAdmission,
     Ready,
 }
 impl Startup {
     const fn label(self) -> &'static str {
         match self {
             Self::Endpoint => "endpoint",
+            Self::RoomAdmission => "room_admission",
             Self::Ready => "ready",
         }
     }

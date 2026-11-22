@@ -203,6 +203,11 @@ fn installed_game_files_are_writable_and_runtime_changes_reseed_from_pinned_inpu
     kr_player::install(&dir.0, &hash, &target).unwrap();
     let mutable = ["FxDynMapInfo.ssd", "settings/game.INI", "CALog.log"];
     for lang in ["vi", "en", "ko"] {
+        assert!(
+            fs::read(target.join(lang).join("CALog.log"))
+                .unwrap()
+                .is_empty()
+        );
         for name in mutable.into_iter().chain(["fx.idd", "support.dll"]) {
             let installed = target.join(lang).join(name);
             assert!(!fs::metadata(installed).unwrap().permissions().readonly());
@@ -245,7 +250,9 @@ fn installed_game_files_are_writable_and_runtime_changes_reseed_from_pinned_inpu
     for name in mutable {
         fs::write(target.join("ko").join(name), b"second native update").unwrap();
     }
-    assert_eq!(fs::read(target.join("en/CALog.log")).unwrap(), b"seed log");
+    fs::remove_file(target.join("en/CALog.log")).unwrap();
+    kr_player::prepare_language(&dir.0, &hash, &target, "en").unwrap();
+    assert!(fs::read(target.join("en/CALog.log")).unwrap().is_empty());
     assert_eq!(fs::read(dir.0.join("native-log")).unwrap(), b"seed log");
     let error = kr_player::prepare_language(&dir.0, &hash, &target, "wrong").unwrap_err();
     assert!(matches!(error, kr_player::PreparationError::Integrity));
