@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from f1_pack_matrix import failure_kind
+from f1_pack_matrix import failure_kind, load_events
 
 
 def row(**updates):
@@ -36,6 +36,15 @@ class FailureKindTest(unittest.TestCase):
             path = Path(root) / 'load.log'
             path.write_text('{"event":"round_active"}\n')
             self.assertEqual(failure_kind(row(), Path(root)), 'server_or_adapter_error')
+
+    def test_outer_timeout_after_delivery_does_not_blame_server(self):
+        with tempfile.TemporaryDirectory() as root:
+            result = Path(root)
+            (result / 'load.log').write_text(
+                '{"event":"round_active"}\n{"event":"delivery","passed":true}\n{"event":'
+            )
+            self.assertEqual([e['event'] for e in load_events(result)], ['round_active', 'delivery'])
+            self.assertEqual(failure_kind(row(), result, 124), 'harness_timeout')
 
 
 if __name__ == '__main__':
