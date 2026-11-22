@@ -16,6 +16,26 @@ from test_kr_pack_install import ROOT, run_smoke, test_bundle
 STAT_ITEMS = {ITEMS[kind] for kind in (0, 1, 2, 5)}
 
 
+def failure_kind(row, result_dir):
+    """Phân biệt giới hạn nội dung, driver và lỗi service từ một lượt kẹt."""
+    if row['script_tags']:
+        return 'contract_script'
+    if row['omitted_placements'] or row['omitted_positive_drops']:
+        return 'contract_placement_or_flag'
+    load_log = result_dir / 'load.log'
+    events = []
+    if load_log.is_file():
+        for line in load_log.read_text().splitlines():
+            if line.startswith('{'):
+                try:
+                    events.append(json.loads(line))
+                except json.JSONDecodeError:
+                    pass
+    if not any(e.get('event') == 'round_active' for e in events):
+        return 'driver_error'
+    return 'server_or_adapter_error'
+
+
 def inventory(game):
     families = {r['name']: r['map_count']
                 for r in json.loads((ROOT / 'docs/content/classification.json').read_bytes())['rows']
@@ -53,10 +73,11 @@ def inventory(game):
     return rows
 
 
-def run_matrix(game, binaries, out, workers):
+def run_matrix(game, binaries, out, workers, selected=None):
     rows = inventory(game)
     (out / 'inventory.json').write_text(json.dumps(rows, indent=2, ensure_ascii=False) + '\n')
-    pending = [name for name, row in rows.items() if row['status'] == 'pending']
+    pending = [name for name, row in rows.items()
+               if row['status'] == 'pending' and (selected is None or name in selected)]
 
     with tempfile.TemporaryDirectory(dir=out, prefix='.package-') as work:
         bundle, manifest = test_bundle(Path(work), binaries, 'f1-a', False)
@@ -65,7 +86,15 @@ def run_matrix(game, binaries, out, workers):
             label, names = task
             result = out / label
             result.mkdir(mode=0o700)
-            run_names = list(dict.fromkeys([*names, 'CaJJ_Clover01']))
+            # Catalog::load needs at least two choices. Keep a measured Clover
+            # control, but use a different control when the target itself is
+            # Clover01 (the old runner accidentally exercised a one-choice
+            # catalog and reported a driver failure).
+            control = 'CaJJ_Clover01'
+            if control in names:
+                control = next((n for n, row in rows.items()
+                                if n not in names and row['status'] == 'pending'), None)
+            run_names = list(dict.fromkeys([*names, *([control] if control else [])]))
             expected = [(rows[n]['code'], n) for n in run_names]
             (result / 'catalog.json').write_text(json.dumps(expected) + '\n')
             with (result / 'harness.log').open('w') as log:
@@ -100,7 +129,9 @@ def run_matrix(game, binaries, out, workers):
             if len(names) > 1:
                 mid = len(names) // 2
                 return run_catalog((label + '-a', names[:mid])) | run_catalog((label + '-b', names[mid:]))
-            return {names[0]: dict(status='load_failed', run=label, exit=rc)}
+            name = names[0]
+            return {name: dict(status='load_failed', failure=failure_kind(rows[name], result),
+                                run=label, exit=rc)}
 
         batches = [(f'catalog-{i + 1:03}', [name]) for i, name in enumerate(pending)]
         with ThreadPoolExecutor(max_workers=workers) as pool:
@@ -118,9 +149,12 @@ def run_matrix(game, binaries, out, workers):
         dict(build='KR 00967', source='emu_choice', status='candidate', packs=PACK_SHA256,
              bundle_manifest_sha256=manifest, binaries=pins, families=report, maps=rows),
         indent=2, ensure_ascii=False) + '\n')
-    print('Họ map | Đạt | Từ chối adapter | Lỗi kr-load', flush=True)
+    print('Họ map | Số map | Đạt | Từ chối adapter | Từ chối contract | Lỗi driver | Lỗi server/adapter', flush=True)
     for name, counts in report.items():
-        print(f"{name} | {counts['passed']} | {counts['adapter_rejected']} | {counts['load_failed']}")
+        print(f"{name} | {sum(counts.values())} | {counts['passed'] + counts['passed_cycle']} | "
+              f"{counts['adapter_rejected']} | {counts['contract_script'] + counts['contract_placement_or_flag']} | "
+              f"{counts['load_failed'] - counts['contract_script'] - counts['contract_placement_or_flag'] - counts['server_or_adapter_error']} | "
+              f"{counts['server_or_adapter_error']}")
 
 
 def main():
@@ -129,12 +163,14 @@ def main():
     parser.add_argument('--binaries', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--workers', type=int, choices=(1, 2, 3, 4), default=2)
+    parser.add_argument('--map', dest='maps', action='append', help='Chỉ chạy lại map đã nêu')
     args = parser.parse_args()
     out = args.out.resolve()
     if not out.is_relative_to((ROOT / 'local').resolve()) or out == (ROOT / 'local').resolve():
         parser.error('--out phải là thư mục lượt chạy mới dưới local/')
     out.mkdir(mode=0o700, parents=True, exist_ok=False)
-    run_matrix(args.game_dir.resolve(strict=True), args.binaries.resolve(strict=True), out, args.workers)
+    run_matrix(args.game_dir.resolve(strict=True), args.binaries.resolve(strict=True), out, args.workers,
+               set(args.maps) if args.maps else None)
 
 
 if __name__ == '__main__':
