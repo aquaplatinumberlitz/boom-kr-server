@@ -5,11 +5,6 @@ on:
     branches: [main]
     paths:
       - 'rust/**'
-      - '.cargo/config.toml'
-      - 'tools/kr_windows_linker.py'
-      - 'tools/player_package.py'
-      - 'tools/test_player_package.py'
-      - 'tools/player_windows_setup.ps1'
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
       - 'tools/test_m8_binary_rollback.py'
@@ -20,16 +15,14 @@ on:
       - 'tools/rust_map_profile.py'
       - 'server/probe_codec.py'
       - 'server/room_title.py'
+      - 'server/self-host/**'
+      - 'tools/test_s1_install.py'
+      - 'tools/windows_rustc_rlib.sh'
       - '.github/workflows/rust.yml'
   push:
     branches: [main]
     paths:
       - 'rust/**'
-      - '.cargo/config.toml'
-      - 'tools/kr_windows_linker.py'
-      - 'tools/player_package.py'
-      - 'tools/test_player_package.py'
-      - 'tools/player_windows_setup.ps1'
       - 'tools/l10n_949x.py'
       - 'tools/text949x_reference.py'
       - 'tools/test_m8_binary_rollback.py'
@@ -40,6 +33,9 @@ on:
       - 'tools/rust_map_profile.py'
       - 'server/probe_codec.py'
       - 'server/room_title.py'
+      - 'server/self-host/**'
+      - 'tools/test_s1_install.py'
+      - 'tools/windows_rustc_rlib.sh'
       - '.github/workflows/rust.yml'
 
 permissions:
@@ -67,8 +63,6 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('rust/Cargo.lock', 'rust/rust-toolchain.toml') }}
       - name: Install the toolchain pinned in rust-toolchain.toml
         run: rustup toolchain install 2>/dev/null || rustup show
-      - name: Verify O1 exports the original player pack
-        run: python3 ../tools/test_player_package.py PackageTests.test_friends_uses_original_prefix_and_original_index
       - run: cargo fmt --all --check
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Test Rust with the independent CP949 and 949x reference
@@ -87,6 +81,8 @@ jobs:
           rm -rf "$previous"
 
   pack-install:
+    env:
+      CARGO_PROFILE_DEV_DEBUG: '0'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -98,15 +94,20 @@ jobs:
         working-directory: rust
         run: >
           cargo build --locked -p kr-service -p kr-tunnel
-          --bin kr-service --bin kr-admin --bin kr-load --bin kr-companion --bin kr-launch-identity
+          --bin kr-service --bin kr-admin --bin kr-load --bin kr-companion --bin kr-launch-identity --bin boom-server
       - name: Install, export fake pack, finish one TLS round, back up and stop
         run: |
           python3 tools/test_kr_pack_install.py --binaries rust/target/debug
           python3 tools/test_kr_pack_install.py --binaries rust/target/debug --scope f1-a
+      - name: Test the S1 image with an invite, a full round and backup
+        run: python3 tools/test_s1_install.py --binaries rust/target/debug
 
   windows-service:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
+    env:
+      CARGO_PROFILE_DEV_DEBUG: '0'
+      RUSTC_WRAPPER: ${{ github.workspace }}/tools/windows_rustc_rlib.sh
     defaults:
       run:
         working-directory: rust
@@ -118,7 +119,7 @@ jobs:
           sudo apt-get install -y gcc-mingw-w64-x86-64
           rustup toolchain install 2>/dev/null || rustup show
           rustup target add x86_64-pc-windows-gnu
-      - name: Build Windows launcher, companion, server and provisioning binaries
+      - name: Build Windows BoomServer, service, admin and TLS provisioning binaries
         run: >
-          cargo build --locked --target x86_64-pc-windows-gnu -p kr-service -p kr-tunnel -p kr-player
-          --bin kr-service --bin kr-admin --bin kr-launch-identity --bin kr-player --bin kr-prelogin
+          cargo build --locked --target x86_64-pc-windows-gnu -p kr-service -p kr-tunnel
+          --bin kr-service --bin kr-admin --bin kr-launch-identity --bin boom-server

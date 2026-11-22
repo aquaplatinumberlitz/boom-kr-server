@@ -1,0 +1,30 @@
+[Unit]
+Description=Boom Server (S1)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=boom-server
+Group=boom-server
+StateDirectory=boom-server
+StateDirectoryMode=0700
+Environment=BOOM_STATE=/var/lib/boom-server PYTHONDONTWRITEBYTECODE=1
+EnvironmentFile=/etc/boom-server.env
+ExecStart=/opt/boom-server/bin/boom-server serve
+Restart=on-failure
+RestartSec=5
+UMask=0077
+TimeoutStopSec=30s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target

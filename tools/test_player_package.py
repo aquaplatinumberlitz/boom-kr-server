@@ -75,6 +75,8 @@ class PackageTests(unittest.TestCase):
             packaged = output / relative
             self.assertEqual(packaged.read_bytes(), (ROOT / 'docs' / relative).read_bytes())
             self.assertEqual(digest(packaged), pin['sha256'])
+        asset = 'player/images/boomserver-s1.png'
+        self.assertEqual(digest(output / asset), summary['guide_assets'][asset]['sha256'])
         manifest = json.loads((output / 'manifest.json').read_text())
         pack = manifest['packs'][0]
         self.assertEqual(b''.join((output / part['path']).read_bytes() for part in pack['parts']), b'KRVIEN')
