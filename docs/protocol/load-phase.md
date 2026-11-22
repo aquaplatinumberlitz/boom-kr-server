@@ -141,6 +141,22 @@ Rust vẫn kiểm nhất quán trước khi bind. Terrain G1 được tính từ
 Floor 582 vẫn theo policy server đã dùng, chỉ giữ cho đúng map gốc của mẫu; không suy xác suất rơi hay gameplay mới.
 Preset mẫu F1 giới hạn hai người, floor trống và tắt terrain như CP382.
 
+<a id="f1-pack-floor"></a>
+### Floor từ pack trong catalog thử F1-a
+
+F1-b mở rộng catalog thử `f1-a` cho KR 00967. Export giữ placement 100% trên ô trống hợp lệ
+và chọn tối đa một item ẩn trên ô thùng từ các hàng có trọng số dương đã được lọc. Vị trí và
+phép chọn drop dùng seed từ hash entry map; đây là policy `emu_choice`, chưa biết RNG của server gốc.
+Hai ca đối chiếu là Fire cố định tại (6,2) trên Cookie06 và Bomb ẩn tại (1,2) trên Xmas15
+([ảnh và giới hạn quan sát F1-a](../evidence/rust-service/f1-pack-map-adapters.json)).
+
+Bomb, Fire, Roller, MaxPower, Shoe và Punch được phép vào cả hai danh sách. Config bật
+`report_derived_shoe_punch` khi có Shoe hoặc Punch trong catalog đã xuất. Với Kim `Item/ItemNiddle`
+(kind 145), chỉ xuất tối đa một placement hợp lệ mỗi map và bật policy Kim nếu catalog có item này.
+[G1 đã đo nhặt và dùng Kim từ floor cố định](life-results.md#rust-needle-rescue); drop ẩn của Kim và
+các item chưa có hợp đồng vẫn được ghi `omitted_unknown` trong ma trận khi bị lọc. Không truyền các
+item đó vào 582. F1-b có kiểm tự động ở tầng server; nghiệm thu native còn mở.
+
 <a id="rust-map-spawn-capacity"></a>
 ### Catalog có số spawn khác nhau và roster thưa
 

@@ -9,11 +9,15 @@ import sqlite3
 import tempfile
 
 from export_map_profile import load_tile_table
-from kr_pack_export import ITEMS, PACK_SHA256, Pack, f1_rules, file_sha, read_map, verified_packs
+from kr_pack_export import (F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, PACK_SHA256, Pack,
+                            f1_rules, file_sha, read_map, verified_packs)
 from test_kr_pack_install import ROOT, run_smoke, test_bundle
 
 
-STAT_ITEMS = {ITEMS[kind] for kind in (0, 1, 2, 5)}
+def omitted_items(placements, drops):
+    hidden = sorted({name for name, weight in drops if weight > 0 and name not in F1_HIDDEN_ITEMS})
+    fixed = {name for name in placements if name not in F1_FIXED_ITEMS}
+    return hidden, sorted(fixed.union(hidden))
 
 
 def load_events(result_dir):
@@ -59,10 +63,10 @@ def inventory(game):
             if family not in families:
                 continue
             # Preserve content blockers even when the terrain adapter rejects the map.
+            hidden, unknown = omitted_items(entry['placements'], entry['drops'])
             row = rows[name] = dict(family=family, code=order[name], parse=entry['parse'],
                                     script_tags=entry['script_tags'],
-                                    omitted_positive_drops=sorted({item for item, weight in entry['drops']
-                                                                   if weight > 0 and item not in STAT_ITEMS}))
+                                    omitted_positive_drops=hidden, omitted_unknown=unknown)
             try:
                 profile = read_map(pack, name, row['code'], f1=True)
                 rules = f1_rules(profile, table)
@@ -72,7 +76,8 @@ def inventory(game):
             else:
                 row.update(status='pending', map_sha256=profile['payload_sha256'],
                            terrain_sha256=rules['terrain']['seed_sha256'],
-                           omitted_placements=rules['floor']['omitted_placements'])
+                           omitted_placements=rules['floor']['omitted_placements'],
+                           floor={group: rules['floor'][group] for group in ('fixed', 'hidden')})
         if any(file_sha(stream) != PACK_SHA256[name] for name, stream in files.items()):
             raise ValueError('Pack đã đổi trong lúc kiểm kê')
     if Counter(row['family'] for row in rows.values()) != families:
@@ -120,15 +125,18 @@ def run_matrix(game, binaries, out, workers, selected=None):
             # Some KR map descriptors keep the final leave response open after
             # the journal is complete. The cycle itself is still authoritative
             # when every expected round_returned and complete journal is present.
-            returned = sum(e.get('event') == 'round_returned' for e in load_events(result))
+            events = list(load_events(result))
+            returned = sum(e.get('event') == 'round_returned' for e in events)
+            fixed = [(e['map'], e['items']) for e in events if e.get('event') == 'fixed_items_confirmed']
+            expected_fixed = [(rows[n]['code'], rows[n]['floor']['fixed']) for n in run_names]
             db = result / 'state' / 'accounts.sqlite'
-            if db.is_file():
+            if db.is_file() and returned == len(expected) and fixed == expected_fixed:
                 try:
                     complete = {name for state, code, name in sqlite3.connect(db).execute(
                         'SELECT state,map_code,map_name FROM matches WHERE state=\'complete\'')}
                 except sqlite3.Error:
                     complete = set()
-                if all(name in complete for name in names):
+                if all(name in complete for name in run_names):
                     return {name: dict(status='passed_cycle', run=label, return_events=returned)
                             for name in names}
             # A failed catalog does not make the other maps failures. Replay

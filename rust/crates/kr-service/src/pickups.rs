@@ -49,7 +49,7 @@ pub(crate) struct Item {
     pub column: u8,
     pub kind: u16,
 }
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub(crate) struct Catalog {
     floor: BTreeMap<u32, Item>,
     hidden: BTreeMap<u32, Item>,
@@ -106,9 +106,11 @@ impl Catalog {
         Ok(())
     }
     pub(crate) fn visible_basic_items(&self) -> impl Iterator<Item = (u32, u8, u8, u16)> + '_ {
+        self.visible_items().filter(|item| item.3 <= 2)
+    }
+    pub(crate) fn visible_items(&self) -> impl Iterator<Item = (u32, u8, u8, u16)> + '_ {
         self.floor
             .values()
-            .filter(|item| item.kind <= 2)
             .map(|item| (item.index, item.row, item.column, item.kind))
     }
     /// Decode only the measured raw (tag0) serialized582 branch.
@@ -333,6 +335,28 @@ impl Round {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    pub(crate) fn f1_catalog(row: u8, column: u8, kind: u16, hidden: bool) -> Catalog {
+        let item = BTreeMap::from([(
+            0,
+            Item {
+                index: 0,
+                row,
+                column,
+                kind,
+            },
+        )]);
+        if hidden {
+            Catalog {
+                hidden: item,
+                ..Catalog::default()
+            }
+        } else {
+            Catalog {
+                floor: item,
+                ..Catalog::default()
+            }
+        }
+    }
     pub(crate) fn punch_catalog() -> Catalog {
         Catalog {
             floor: BTreeMap::from([(

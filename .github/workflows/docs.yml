@@ -42,6 +42,8 @@ jobs:
           tools.test_m8_udp_profile
           tools.test_m8_soak_collect
           tools.test_rust_service_package
+          tools.test_kr_pack_items
+          tools.test_f1_pack_matrix
           tools.test_player_package
           tools.test_export_preset
           tools.test_four_bundle

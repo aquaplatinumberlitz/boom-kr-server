@@ -29,6 +29,10 @@ F1 = ('Camp01', 'Cemetery01', 'Cookie01', 'Desert00', 'Factory07', 'Forest02', '
 MAPS = tuple(dict.fromkeys((*G1, *F1, 'ExVillage01')))
 ITEMS = {0: 'Item/ItemBomb', 1: 'Item/ItemFire', 2: 'Item/ItemRoller', 3: 'Item/ItemShoe',
          4: 'Item/ItemPunch', 5: 'Item/ItemMaxPower', 145: 'Item/ItemNiddle'}
+# G1 đã đo 582/124/165 cho Kim cố định, giới hạn một Kim mỗi catalog.
+# Luồng lộ Kim từ thùng chưa được đo; chỉ các kind 0–5 vào bảng drop F1.
+F1_HIDDEN_ITEMS = {name: kind for kind, name in ITEMS.items() if kind != 145}
+F1_FIXED_ITEMS = {name: kind for kind, name in ITEMS.items()}
 TERRAIN_SEEDS = dict(zip((*G1, 'ExVillage01'), (
     '6760c3bf47d75cda0273d3ba476c8d0e9a972f582c731606f8c2f4466c76555f',
     '5cda90d6e0b21a910352cddfc55c1c655ab60f8c167f044e967d92cf725e3dc9',
@@ -259,26 +263,27 @@ def f1_floor(profile, terrain):
     """Chính sách nghiệm thu: placement chắc chắn và tối đa một drop có trọng số."""
     if profile['placement_header'] != 100 and profile['placements']:
         raise ValueError(f"Placement header chưa biết: {profile['name']}")
-    # Shoe/Punch/Needle have separate enablement. F1-a only enables stat items.
-    items = {name: kind for kind, name in ITEMS.items() if kind in (0, 1, 2, 5)}
     kinds, width, height = terrain['kinds'], terrain['width'], terrain['height']
     fixed, hidden, omitted, occupied = [], [], [], set()
+    needle_placed = False
     occupied.update(map(tuple, profile['spawns']))
     for row in profile['placements']:
         name, x, y = row['name'], row['x'], row['y']
         if not (0 <= x < width and 0 <= y < height and 0 <= row['probability'] <= 100):
             raise ValueError(f"Placement ngoài giới hạn: {profile['name']}")
-        kind = items.get(name)
+        kind = F1_FIXED_ITEMS.get(name)
         tile = kinds[y * width + x]
-        if kind is None or row['probability'] != 100 or tile != 0 or (x, y) in occupied:
+        if (kind is None or row['probability'] != 100 or tile != 0 or (x, y) in occupied
+                or (kind == 145 and needle_placed)):
             omitted.append(row)
             continue
         fixed.append([y, x, kind])
+        needle_placed |= kind == 145
         occupied.add((x, y))
     # This seed and density are design choices. Retain weighted pack row order
     # and duplicates; do not interpret excluded entries as another item.
-    weights = [(items[name], weight) for name, weight in profile['drops']
-               if name in items and weight > 0]
+    weights = [(F1_HIDDEN_ITEMS[name], weight) for name, weight in profile['drops']
+               if name in F1_HIDDEN_ITEMS and weight > 0]
     boxes = [i for i, kind in enumerate(kinds) if kind == 2]
     total = sum(weight for _, weight in weights)
     if boxes and total:
@@ -390,7 +395,7 @@ def checked_cache(path, identity, pins, maps, measured, f1=False):
 def cache_identity(pins, maps, measured, f1=False):
     key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
     if f1:
-        key['adapter'] = 'f1-a-v3'
+        key['adapter'] = 'f1-b-v1'
     return sha(encode(key))
 
 

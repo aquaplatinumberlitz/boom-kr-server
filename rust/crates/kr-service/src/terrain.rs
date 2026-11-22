@@ -580,6 +580,16 @@ pub(crate) mod tests {
         cfg.maximum_power = 9;
         cfg.validate_measured(b"map", b"start", 9).unwrap()
     }
+    pub(crate) fn f1_item_map(boxes: &[(usize, usize)]) -> Terrain {
+        let mut cfg = config();
+        cfg.kinds = vec![0; 195];
+        for &(row, col) in boxes {
+            cfg.kinds[row * 15 + col] = 2;
+        }
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        cfg.maximum_power = 9;
+        cfg.validate_measured(b"map", b"start", 9).unwrap()
+    }
     pub(crate) fn motion_map() -> Terrain {
         let mut terrain = basic_items_map();
         terrain.kinds[5 * 15 + 4] = 2;

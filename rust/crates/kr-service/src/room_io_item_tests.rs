@@ -418,13 +418,16 @@ fn opaque_hidden_report_requires_configured_current_cell_and_all_blast_completio
     }
 }
 fn bomb(slot: u8, serial: u32, power: u8, key: u32) -> Vec<u8> {
+    bomb_at(slot, serial, power, key, 3, 3)
+}
+fn bomb_at(slot: u8, serial: u32, power: u8, key: u32, row: u8, col: u8) -> Vec<u8> {
     encoded(&[
         (key.into(), Width::U32),
         (0, Width::U8),
         (slot.into(), Width::U8),
         (serial.into(), Width::U32),
-        (3, Width::U8),
-        (3, Width::U8),
+        (row.into(), Width::U8),
+        (col.into(), Width::U8),
         (1, Width::U8),
         (0, Width::U8),
         (0, Width::U8),
@@ -440,6 +443,134 @@ fn confirmations(c: &mut Case) {
         assert!(s.valid(&b));
         assert_eq!(b.packets[0].1.opcode, 165);
         s.finish(&b).unwrap();
+    }
+}
+#[test]
+fn f1_priority_floor_claims_apply_and_reset_in_two_player_rounds() {
+    // Manifest coordinates in wire order (row, column). Only the terrain
+    // cells needed for the checks are modeled here; the matrix exports the actual maps.
+    for (row, col, kind, hidden, box_cell, bomb_cell) in [
+        (2, 6, 1, false, (2, 8), (2, 6)),
+        (2, 1, 0, true, (2, 1), (1, 1)),
+    ] {
+        let mut c = case(2);
+        let catalog = pickups::tests::f1_catalog(row, col, kind, hidden);
+        let seed = crate::characters::Catalog::measured(&[0, 1])
+            .unwrap()
+            .get(0)
+            .unwrap();
+        {
+            let mut r = c.shared.lock().unwrap();
+            let mut terrain = crate::terrain::tests::f1_item_map(&[box_cell]);
+            terrain.begin(c.round);
+            r.model.terrain = Some(terrain);
+            r.floor_catalog = catalog.clone();
+            r.model.pickups = pickups::Round::begin(c.round, &catalog).unwrap();
+        }
+        for cycle in 0..2 {
+            let key = crate::room::wire_key(c.round).unwrap();
+            let claim = pickup(0, row, col, 0, kind, key);
+            let place = |c: &Case, power| {
+                c.sessions[0]
+                    .packet(118, &bomb_at(0, 1, power, key, bomb_cell.0, bomb_cell.1))
+                    .unwrap()
+                    .bomb
+                    .unwrap()
+            };
+            let collect = |c: &Case| {
+                c.sessions[0]
+                    .packet(124, &claim)
+                    .unwrap()
+                    .pickup
+                    .unwrap()
+                    .accepted
+            };
+            let report = reveal_aux(0, row, col, 0);
+            let disclose = |c: &Case| c.sessions[0].packet(142, &report).unwrap().terrain_notice;
+            let blast = |c: &mut Case| {
+                let mut blasts = Vec::new();
+                for s in &mut c.sessions {
+                    assert_eq!(s.inbox.try_recv().unwrap().packets[0].1.opcode, 159);
+                    let due = s.inbox.try_recv().unwrap();
+                    assert_eq!(due.packets[0].1.opcode, 158);
+                    blasts.push(due);
+                }
+                c.sessions[0].finish(&blasts[0]).unwrap();
+                if hidden {
+                    assert_eq!(disclose(c), Some("no_current_committed_clearance"));
+                    assert!(!collect(c));
+                }
+                c.sessions[1].finish(&blasts[1]).unwrap();
+            };
+            if hidden {
+                assert!(!collect(&c));
+                assert_eq!(disclose(&c), Some("no_current_committed_clearance"));
+                assert!(place(&c, seed.power).accepted);
+                blast(&mut c);
+                assert_eq!(disclose(&c), Some("revealed_current_hidden_cell"));
+            } else {
+                assert_eq!(
+                    place(&c, seed.power + 1).reason,
+                    "unsupported_profile_power"
+                );
+            }
+            assert!(collect(&c));
+            confirmations(&mut c);
+            assert!(!collect(&c));
+            {
+                let r = c.shared.lock().unwrap();
+                let stats = r.model.members[&c.keys[0].identity].item_stats.unwrap();
+                assert_eq!(stats.capacity, seed.capacity + usize::from(hidden));
+                assert_eq!(r.model.bomb_capacity[0], stats.capacity);
+                assert_eq!(stats.power, seed.power + u8::from(!hidden));
+                assert_eq!(r.model.members[&c.keys[1].identity].item_stats, Some(seed));
+            }
+            if !hidden {
+                assert_eq!(place(&c, seed.power).reason, "unsupported_profile_power");
+                assert!(place(&c, seed.power + 1).accepted);
+                blast(&mut c);
+                assert!(
+                    c.shared
+                        .lock()
+                        .unwrap()
+                        .model
+                        .terrain
+                        .as_ref()
+                        .unwrap()
+                        .clearance(c.round, box_cell.0 as u8, box_cell.1 as u8)
+                        .is_some()
+                );
+            }
+            if cycle == 0 {
+                let mut r = c.shared.lock().unwrap();
+                r.model.end(c.round).unwrap();
+                for member in &c.keys {
+                    r.model.refreshed(*member, c.round).unwrap();
+                }
+                r.model.ready(c.keys[1]).unwrap();
+                c.round = r.model.begin(c.keys[0]).unwrap();
+                r.model.pickups = pickups::Round::begin(c.round, &catalog).unwrap();
+                for member in &c.keys {
+                    r.model.ack(*member, c.round).unwrap();
+                    let stats = &mut r
+                        .model
+                        .members
+                        .get_mut(&member.identity)
+                        .unwrap()
+                        .item_stats;
+                    assert_eq!(*stats, None);
+                    *stats = Some(seed);
+                }
+                r.model.bomb_capacity[..2].fill(seed.capacity);
+                assert!(
+                    !r.model
+                        .pickups
+                        .clone()
+                        .claim(c.round, 0, &pickups::Request::parse(&claim).unwrap())
+                        .accepted
+                );
+            }
+        }
     }
 }
 #[test]

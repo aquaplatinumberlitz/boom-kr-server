@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from f1_pack_matrix import failure_kind, load_events
+from f1_pack_matrix import failure_kind, load_events, omitted_items
 
 
 def row(**updates):
@@ -16,6 +16,13 @@ def row(**updates):
 
 
 class FailureKindTest(unittest.TestCase):
+    def test_known_placements_and_drops_are_not_reported_as_unknown(self):
+        shoe, punch, needle = ('Item/ItemShoe', 'Item/ItemPunch', 'Item/ItemNiddle')
+        dart, trap, owl = ('Item/ItemDart', 'Item/ItemTrap', 'Item/ItemOwl')
+        self.assertEqual(omitted_items([shoe, punch, needle, trap],
+                                      [(shoe, 30), (punch, 1), (needle, 1), (dart, 1), (owl, 0)]),
+                         ([dart, needle], [dart, needle, trap]))
+
     def test_script_is_contract_refusal(self):
         with tempfile.TemporaryDirectory() as root:
             self.assertEqual(failure_kind(row(script_tags=['boss']), Path(root)), 'contract_script')

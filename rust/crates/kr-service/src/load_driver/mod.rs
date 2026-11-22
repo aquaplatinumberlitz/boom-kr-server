@@ -63,6 +63,8 @@ pub(crate) struct Config {
     // Isolated TLS duel acceptance; one sequence of up to eight rounds.
     character_rounds: Option<Vec<[u16; 2]>>,
     #[serde(default)]
+    check_fixed_items: bool,
+    #[serde(default)]
     delivery_buckets: bool,
     delivery_p99_ms_max: f64,
     delivery_loss_percent_max: f64,
@@ -108,6 +110,17 @@ impl Config {
                 || rounds.iter().flatten().any(|&key| key > 0x1fff))
         {
             return Err(failure("character acceptance requires a bounded TLS duel"));
+        }
+        if self.check_fixed_items
+            && (self.rooms.len() != 1
+                || self.rooms[0].len() != 2
+                || self.maps.is_empty()
+                || self.minimum_run_seconds != 0
+                || self.character_rounds.is_some())
+        {
+            return Err(failure(
+                "fixed floor acceptance requires a bounded map duel",
+            ));
         }
         let mut logins = HashSet::new();
         for account in self.rooms.iter().flatten() {
@@ -251,11 +264,17 @@ impl RoomContext {
             let mut floor = None;
             for (slot, p) in players.iter_mut().enumerate() {
                 let received = p
-                    .load(characters, map.map(|m| m.code))
+                    .load(
+                        characters,
+                        map.map(|m| m.code),
+                        self.config.check_fixed_items,
+                    )
                     .await
                     .map_err(|e| phase("start/load", e))?;
                 if slot == 0 {
                     floor = received;
+                } else if self.config.check_fixed_items && floor != received {
+                    return Err(failure("inconsistent round floor catalogs"));
                 }
             }
             let mut routes = Vec::with_capacity(roster);
@@ -271,24 +290,39 @@ impl RoomContext {
                 routes.push(peers);
             }
             if let Some(floor) = floor {
-                let mut count = [0; 3];
-                for item in floor.visible_basic_items() {
-                    let n = &mut count[usize::from(item.3)];
-                    if *n < 20 {
-                        let slot = *n % 2;
-                        players[slot]
-                            .claim_basic_item(slot, item, round_key.expect("duel key"))
-                            .await?;
+                let key = round_key.expect("duel key");
+                if self.config.check_fixed_items {
+                    let mut claimed = Vec::new();
+                    for (i, item) in floor.visible_items().enumerate() {
+                        let slot = i % 2;
+                        players[slot].claim_item(slot, item, key).await?;
                         for p in &mut *players {
                             p.pickup_confirmed(slot, item).await?;
                         }
-                        *n += 1;
+                        claimed.push([u16::from(item.1), u16::from(item.2), item.3]);
                     }
-                }
-                if count != [20; 3] {
-                    return Err(failure(
-                        "character acceptance needs 20 visible items of each basic kind",
-                    ));
+                    emit(
+                        json!({"event":"fixed_items_confirmed","map":map.expect("map duel").code,
+                                "items":claimed}),
+                    );
+                } else {
+                    let mut count = [0; 3];
+                    for item in floor.visible_basic_items() {
+                        let n = &mut count[usize::from(item.3)];
+                        if *n < 20 {
+                            let slot = *n % 2;
+                            players[slot].claim_item(slot, item, key).await?;
+                            for p in &mut *players {
+                                p.pickup_confirmed(slot, item).await?;
+                            }
+                            *n += 1;
+                        }
+                    }
+                    if count != [20; 3] {
+                        return Err(failure(
+                            "character acceptance needs 20 visible items of each basic kind",
+                        ));
+                    }
                 }
             }
             let warmup = Instant::now();
