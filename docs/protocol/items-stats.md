@@ -74,6 +74,45 @@ catalog/fuse6s/rank/first-arrival là policy emulator, không luật server gố
   toàn túi/entity/UDP hoặc kiểm mọi item. Không có input Ctrl/127sub0 trong hai ca này; chưa đo TTL/
   expiration trong cùng vòng. Không gán “vĩnh viễn” từ việc giữ qua các mốc hoặc table tail0.
 
+<a id="f1b-next-items"></a>
+### F1-b: Đối chiếu Lucci, Dart, Scanner, Bond và Trap
+
+[Kiểm kê map](../CONTENT.md#item-được-map-dùng) cho biết item nào xuất hiện trong bảng rơi hoặc được đặt sẵn.
+[CP045](../evidence/item-families/README.md), `boomkr-re/docs/kr-data.md` §6 và §12, và `boom-re/docs/items.md`
+là nguồn đối chiếu. Parse lại hai bản trích `boomkr-re/data/kr/{KR,VN}_ItemAttr.bin` bằng
+`tools/content_census.py::parse_item_attr`: cả 11 dòng dưới đây khớp tên, sprite, group, trọng số, `+160`
+và tail, nhưng khác kind. `monster_drop.json` trong cùng thư mục chỉ dùng năm tên Lucci này từ Bronze tới
+PocketSilver trong bảng thưởng monster; bảng đó không mô tả pickup Battle. Các JSON KR khác không cho thêm
+nhánh consumer cho năm nhóm. Trọng số là giá trị thô của ItemAttr, chưa có luật rơi Battle gốc.
+
+- `kr_static`, KR 00967: SHA-256 ItemAttr `a9b55540c85c21de108e8720b4148b2030a231d907f3709dcb06f7ef728fcdba`.
+  IDA đọc bản sao riêng của DB ảnh giải nén `kr-full.exe`, SHA-256 input
+  `cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b`. Địa chỉ dưới đây là VA của ảnh;
+  `RVA = VA − 0x400000`. DB trước khi mở có SHA-256 `20f4b3bf608a46236b5a9cfc0843a7aecc2471810a5112185b098ed7d07ed462`.
+- `vn_static`, VBNB_116: SHA-256 ItemAttr `a98883ce35f3a509719db637f662f2ec90da64dd3c1faa0c9f7eb22c0de7dd1d`.
+  `boom-re/docs/items.md` dẫn loader VN VA `0x89F3DE`; chỉ dùng để đối chiếu bảng, không áp VA hoặc kind VN lên KR.
+
+Các hướng consumer trong bảng là `candidate`. Ở đường pickup đã dùng làm mỏ neo tại CP031, `1190A40` có
+nhánh nhận item nếu `B81B40` trả khác 0, trước khi tới dispatch pickup `1192700`; chưa đo giá trị getter hoặc
+inventory của từng kind tại pickup. Ở đường dùng, `B4D710` gọi `1190C20` tại `B4D999`, truyền interface
+actor `+0x590`. Dispatcher kiểm kind hợp lệ, amount dương và gọi guard ảo theo group trước khi chọn nhánh.
+RTTI cho `CGOBomber` gốc đặt interface này tại vtable `1744F30`; bảng ghi đích ở vtable đó, còn đích thực
+của actor đang chạy hoặc lớp con vẫn cần kiểm native.
+
+| Item, kind KR ↔ VN và group | ItemAttr thô (weight; `+160`; tail) | Nhánh KR và hướng consumer (`candidate`) | Phép đo native tối thiểu và phần `unknown` |
+|---|---|---|---|
+| LucciBronze, Silver, Gold, PocketBronze, PocketSilver, PocketGold: 67–72 ↔ 50–55; PocketRandom: 77 ↔ 60. Group 99. | 67–72: weight lần lượt 800, 1100, 250, 30, 30, 15; `+160=0`; tail `[n,0,0,0,1]` với `n=10,20,50,100,200,500` theo thứ tự. 77: `0; 0; [2000,-1,0,0,1]`. | Pickup `1192700` → `1192B40` → `B4A230`, có đường hiển thị theo tọa độ và đường gọi getter/setter `13E4930/13E4950` theo chỉ số actor có guard. Nhánh dùng `1190C20` trả 0 tại `1190D41` cho group 99. | Đặt lần lượt từng kind 67–72 và 77. Đọc đầu vào `B4A230`, chênh lệch trường được getter/setter truy cập và hiển thị trên hai client; lặp 77 ở vòng sạch để phân biệt giá trị cố định với biến thiên. Cách chọn giá trị 77, giới hạn, kết quả trận và quyền cộng tiền bền vững còn chưa rõ. |
+| ItemDart: 143 ↔ 115. Group 21. | `0; 3; [0,0,0,0,0]`. | Nhánh dùng `1190F62` gọi slot `+0x14` (đích gốc `B4A780`) không truyền tail; nếu slot trả khác 0, gọi helper `D1CD10` với ID `0xA2`. | Sau pickup, bấm Ctrl hướng về B và chạy đối chứng quay ra hướng trống. Ghi guard, số lượng trước/sau, đích ảo, vật thể hoặc thay đổi trên B và frame thực tế nếu có. Điều kiện ngắm/trúng, số lần tiêu hao và report/peer còn chưa rõ. |
+| ItemScanner: 146 ↔ 118. Group 24. | `0; 1; [0,0,0,0,0]`. | Nhánh dùng `1191003` gọi slot `+0x20` (đích gốc `B4B350`) không truyền kind hoặc tail. | Dùng Ctrl cạnh một thùng có item ẩn, so với thùng cùng loại không có item. Ghi nhánh, số lượng, thay đổi hiển thị trước/sau trên cả hai client và frame thực tế nếu có. Đối tượng được quét, phạm vi, thời hạn và mức đồng bộ còn chưa rõ. |
+| ItemBond: 224 ↔ 191. Group 11. | `0; 3; [1,0,0,1,0]`. | Nhánh dùng `1190D4F` gọi slot `+0x08` (đích gốc `B4C1F0`) với `(1,false,false,true,0)`: tail đầu là selector thô, ba tail kế đổi thành bool, đối số cuối là hằng 0. | Dùng Ctrl tại một ô trống, theo dõi ô và cho B đi qua; lấy lượt B qua cùng ô không dùng item làm đối chứng. Chụp đối số, số lượng, thay đổi trên ô/actor và frame nếu có. Nghĩa của cờ, điều kiện hợp lệ, vòng đời và hiệu ứng lên B còn chưa rõ. |
+| ItemTrap: 225 ↔ 192. Group 11. | `0; 2; [2,1,1,0,0]`. | Cùng nhánh `1190D4F` và slot `+0x08`, nhưng đối số là `(2,true,true,false,0)`. Dùng chung slot không chứng minh dùng chung hiệu ứng. | Dùng Ctrl với cùng ô và tuyến đi của B như Bond, lần này với kind 225. So thời điểm đặt, B bước vào ô và rời ô; ghi số lượng, trạng thái trên hai client và frame nếu có. Điều kiện kích hoạt, hiệu ứng, thời hạn và quyền áp dụng còn chưa rõ. |
+
+Cho mỗi ca, dùng hai client KR 00967 cô lập và một item nền trong fixture đối chứng. Ghi claim
+`124` thực và chỉ gửi `165` khớp claim nếu có, rồi kiểm nhánh tiêu thụ trên client sau xác nhận.
+Đo inventory hoặc hiệu ứng trước/sau, một lần Ctrl khi còn item và đối chứng khi không có item với
+các loại chủ động; kiểm lại đầu vòng sau. Chưa chạy native cho năm nhóm, nên không suy wire sau
+pickup, số lần dùng, hiệu ứng gameplay hay authority server từ bảng và địa chỉ tĩnh.
+
 <a id="shoe-punch-source"></a>
 ### Shoe/Punch: pickup, hành động và giới hạn đã đo
 
