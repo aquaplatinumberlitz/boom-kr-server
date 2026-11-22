@@ -74,7 +74,11 @@ fn authority_end_event(error: Error, stage: &'static str) -> serde_json::Value {
     };
     // The first retiring path reports only two static labels. No tokens,
     // player fields, packet content or underlying error text cross this boundary.
-    serde_json::json!({"event": "native_account_authority_ended", "stage": stage, "reason": reason})
+    let mut event = serde_json::json!({"event": "native_account_authority_ended", "stage": stage, "reason": reason});
+    if reason == "owner_stale" {
+        event["classification"] = serde_json::json!("expected_ttl_or_relogin");
+    }
+    event
 }
 
 struct Cancel(Shared, bool);
