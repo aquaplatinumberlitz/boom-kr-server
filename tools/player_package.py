@@ -305,12 +305,8 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     path = out / 'manifest.json'
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     return dict(manifest_sha256=digest(path), payload_bytes=sum(row['bytes'] for row in payload.values()),
-<<<<<<< HEAD
-                languages=list(languages), packs=len(packs), guides=guides, guide_images=guide_images)
-=======
-                languages=list(languages), packs=len(packs), guides=guides,
+                languages=list(languages), packs=len(packs), guides=guides, guide_images=guide_images,
                 guide_screenshot=screenshot_pin, guide_assets=guide_assets)
->>>>>>> ed8c291 (Ship the BoomServer guide image and bound Wine test cleanup)
 
 
 def windows_runtime(recipe, output, manifest_sha256):
