@@ -4,7 +4,7 @@ use same_file::Handle;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::{
-    collections::{HashMap, HashSet},
+    collections::{BTreeMap, HashMap, HashSet},
     fs::{self, File, OpenOptions},
     io::{self, Read, Write},
     path::{Path, PathBuf},
@@ -45,10 +45,14 @@ pub struct Manifest {
     pub schema: String,
     pub packs: Vec<Pack>,
     pub common: Vec<Entry>,
-    pub languages: std::collections::BTreeMap<String, Language>,
+    pub languages: BTreeMap<String, Language>,
     pub limits: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub launcher_art: Option<Pin>,
+    // The offline package check validates guide files; they are not part of
+    // any language's game installation.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub guide_images: BTreeMap<String, Pin>,
 }
 fn invalid() -> io::Error {
     io::Error::other("player installation integrity or path check failed")

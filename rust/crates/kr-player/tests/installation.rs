@@ -122,6 +122,7 @@ fn fixture(root: &Path) -> String {
         languages,
         limits: "Synthetic integrity regression, not native evidence".into(),
         launcher_art: None,
+        guide_images: BTreeMap::new(),
     };
     fs::write(
         root.join("manifest.json"),
@@ -158,6 +159,22 @@ fn assembled_pack_is_shared_but_language_indices_and_executables_are_distinct() 
         }
     }
     assert!(kr_player::install(&dir.0, &hash, &target).is_err());
+}
+#[test]
+fn package_with_pinned_guide_images_can_install() {
+    let dir = Directory::new();
+    fixture(&dir.0);
+    let file = dir.0.join("manifest.json");
+    let mut manifest: serde_json::Value =
+        serde_json::from_slice(&fs::read(&file).unwrap()).unwrap();
+    fs::create_dir(dir.0.join("player")).unwrap();
+    let guide = payload(&dir.0, "player/o1-join-lan.png", b"test image");
+    manifest["guide_images"] = serde_json::json!({"o1-join-lan.png": guide});
+    fs::write(&file, serde_json::to_vec(&manifest).unwrap()).unwrap();
+    let hash = kr_player::sha256(&file).unwrap();
+    let target = dir.0.join("install");
+    kr_player::install(&dir.0, &hash, &target).unwrap();
+    kr_player::verify_install(&dir.0, &hash, &target).unwrap();
 }
 #[test]
 fn corrupt_tail_or_wrong_manifest_cannot_complete_installation() {
