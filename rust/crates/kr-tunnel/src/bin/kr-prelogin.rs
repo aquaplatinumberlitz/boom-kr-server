@@ -67,8 +67,12 @@ async fn main() -> io::Result<()> {
         endpoint = Some((configured?, server));
     }
     if let Some(guest) = config.friends {
-        let peer = kr_p2p::room::endpoint(guest.route.relay.is_some()).await?;
-        let session = match friends::join(&peer, guest).await {
+        let peer = kr_p2p::room::endpoint(guest.route.relay.is_some()).await;
+        trace.startup(Startup::Endpoint, peer.is_ok());
+        let peer = peer?;
+        let admission = friends::join(&peer, guest).await;
+        trace.startup(Startup::RoomAdmission, admission.is_ok());
+        let session = match admission {
             Ok(connection) => connection,
             Err(kr_p2p::room::JoinError::Version) => {
                 std::process::exit(friends::DIFFERENT_PACKAGE_EXIT)

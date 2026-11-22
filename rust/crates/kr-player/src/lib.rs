@@ -324,6 +324,10 @@ pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
         }
     }
     for entry in &manifest.common {
+        if runtime_log(&entry.path) {
+            checked(bundle, &entry.payload)?;
+            continue;
+        }
         let path = destination(&shared, &entry.path)?;
         fs::copy(checked(bundle, &entry.payload)?, &path)?;
         checked(
@@ -346,13 +350,20 @@ pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
         for entry in &manifest.common {
             let source = shared.join(relative(&entry.path)?);
             let output = destination(&game, &entry.path)?;
-            if runtime_file(&entry.path) {
+            if runtime_log(&entry.path) {
+                File::create_new(output)?;
+            } else if runtime_file(&entry.path) {
                 fs::copy(source, output)?;
             } else {
                 fs::hard_link(source, output)?;
             }
         }
         for entry in &language.files {
+            if runtime_log(&entry.path) {
+                checked(bundle, &entry.payload)?;
+                File::create_new(destination(&game, &entry.path)?)?;
+                continue;
+            }
             fs::copy(
                 checked(bundle, &entry.payload)?,
                 destination(&game, &entry.path)?,
@@ -575,6 +586,10 @@ fn prepare_runtime_file(bundle: &Path, game: &Path, entry: &Entry) -> io::Result
     open.write(true);
     if unchanged {
         open.open(output)?;
+    } else if runtime_log(&entry.path) {
+        // A legacy manifest can pin a log from the source installation. Its
+        // contents do not describe the installed client.
+        open.create_new(true).open(output)?;
     } else {
         let source = checked(bundle, &entry.payload)?;
         let mut writer = open.create(true).truncate(true).open(output)?;
