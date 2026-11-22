@@ -147,6 +147,7 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(config['udp_backend'], 'portable')
         self.assertIn('manifest.json', config['file_hashes'])
         self.assertIn('kr-prelogin.exe', config['file_hashes'])
+        self.assertIn('MO-GAME.txt', config['file_hashes'])
         self.assertEqual(config['server_name'], recipe['server_name'])
         self.assertEqual(config['release_url'], recipe['release_url'])
         self.assertEqual(runtime['kr-prelogin.exe'], digest(program))

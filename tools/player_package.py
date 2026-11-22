@@ -414,14 +414,6 @@ def windows_runtime(recipe, output, manifest_sha256):
         config['server_name'] = server_name.strip()
     if release_url:
         config['release_url'] = release_url
-    config['file_hashes'] = {
-        path.relative_to(output).as_posix(): dict(bytes=path.stat().st_size, sha256=digest(path))
-        for path in sorted(output.rglob('*'))
-        if path.is_file() and path.name.casefold() != 'launcher.json'
-    }
-    with (output / 'launcher.json').open('x') as file:
-        json.dump(config, file, indent=2)
-        file.write('\n')
     (output / 'MO-GAME.txt').write_text(
         'Giải nén vào thư mục có quyền ghi trên ổ NTFS. Mở kr-player.exe.\n'
         'Có thể chạy Tao-loi-tat.ps1 sau khi giải nén để tạo lối tắt Boom Play.\n'
@@ -433,6 +425,17 @@ def windows_runtime(recipe, output, manifest_sha256):
         'Đừng mở CA.exe trực tiếp: game cần đường TLS do launcher mở.\n',
         encoding='utf-8-sig',
     )
+    # Create the readme before pinning the immutable payload.  Otherwise a
+    # freshly built bundle contains an unpinned file and always fails the
+    # mandatory offline preflight.
+    config['file_hashes'] = {
+        path.relative_to(output).as_posix(): dict(bytes=path.stat().st_size, sha256=digest(path))
+        for path in sorted(output.rglob('*'))
+        if path.is_file() and path.name.casefold() != 'launcher.json'
+    }
+    with (output / 'launcher.json').open('x') as file:
+        json.dump(config, file, indent=2)
+        file.write('\n')
     return friends_files | {
         name: digest(output / name)
         for name in (*files, 'launcher.json', 'MO-GAME.txt')
