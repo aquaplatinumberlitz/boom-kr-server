@@ -1,11 +1,12 @@
 """Kiểm prefix/idx/hash của gói; dữ liệu nhỏ tự dựng không là oracle native."""
 import json
 from pathlib import Path
+import os
 import struct
 import tempfile
 import unittest
 
-from player_package import ROOT, build, digest, windows_runtime
+from player_package import KR_PORTS, ROOT, build, digest, preflight, windows_runtime
 from rust_package_runtime import friends_pack
 
 
@@ -144,6 +145,8 @@ class PackageTests(unittest.TestCase):
         config = json.loads((output / 'launcher.json').read_text())
         self.assertEqual(config['companion'], 'kr-prelogin.exe')
         self.assertEqual(config['udp_backend'], 'portable')
+        self.assertIn('manifest.json', config['file_hashes'])
+        self.assertIn('kr-prelogin.exe', config['file_hashes'])
         self.assertEqual(config['server_name'], recipe['server_name'])
         self.assertEqual(config['release_url'], recipe['release_url'])
         self.assertEqual(runtime['kr-prelogin.exe'], digest(program))
@@ -157,6 +160,52 @@ class PackageTests(unittest.TestCase):
         self.recipe['languages']['vi']['executable']['sha256'] = '0' * 64
         with self.assertRaisesRegex(ValueError, 'pin'):
             build(self.recipe, self.root / 'output2', self.no_art)
+
+    def test_o1_preflight_checks_hashes_ports_and_components(self):
+        output = self.root / 'preflight'
+        build(self.recipe, output, self.no_art)
+        for name in ('kr-player.exe', 'kr-prelogin.exe'):
+            (output / name).write_bytes(name.encode())
+        server = output / 'friends-server'
+        (server / 'bin').mkdir(parents=True)
+        (server / 'bin' / 'kr-service.exe').write_bytes(b'service')
+        (server / 'kr_pack_export.py').write_bytes(b'# exporter\n')
+        service_rows = []
+        for path in (server / 'bin' / 'kr-service.exe', server / 'kr_pack_export.py'):
+            service_rows.append(dict(path=path.relative_to(server).as_posix(),
+                                     mode=os.stat(path).st_mode & 0o777,
+                                     bytes=path.stat().st_size, sha256=digest(path)))
+        service_manifest = dict(schema='kre-service-package-v1', target='x86_64-pc-windows-gnu',
+                                files=service_rows, pack_scope='g1')
+        (server / 'manifest.json').write_text(json.dumps(service_manifest) + '\n')
+        python = output / 'friends-python'
+        python.mkdir()
+        (python / 'python.exe').write_bytes(b'python')
+        launcher = dict(ports=list(KR_PORTS), companion='kr-prelogin.exe',
+                        manifest_sha256=digest(output / 'manifest.json'),
+                        friends=dict(package='friends-server', manifest_sha256=digest(server / 'manifest.json'),
+                                      python='friends-python/python.exe'))
+        launcher['file_hashes'] = {
+            path.relative_to(output).as_posix(): dict(bytes=path.stat().st_size, sha256=digest(path))
+            for path in output.rglob('*') if path.is_file()
+        }
+        (output / 'launcher.json').write_text(json.dumps(launcher) + '\n')
+        result = preflight(output)
+        self.assertEqual(result['ports'], len(KR_PORTS))
+
+        tampered = output / 'friends-server' / 'kr_pack_export.py'
+        tampered.write_bytes(b'changed')
+        with self.assertRaisesRegex(ValueError, 'hash'):
+            preflight(output)
+
+    def test_o1_preflight_rejects_incomplete_recipe_and_nonempty_calog(self):
+        output = self.root / 'preflight-fail'
+        output.mkdir()
+        (output / 'manifest.json').write_text(json.dumps({'schema': 'kre-player-package-v1'}))
+        (output / 'launcher.json').write_text(json.dumps({'manifest_sha256': digest(output / 'manifest.json')}))
+        (output / 'CALog.log').write_bytes(b'stale')
+        with self.assertRaisesRegex(ValueError, 'CALog|file_hashes|cổng'):
+            preflight(output)
 
 
 if __name__ == '__main__':
