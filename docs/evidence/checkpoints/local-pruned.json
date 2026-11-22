@@ -493,6 +493,20 @@
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
     },
     {
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/direct-contest-oldudp-eof-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
       "path": "local/research/codex/direct-contest-pending-eof-r1/game-A",
       "class": "disposable_copy",
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
@@ -535,6 +549,13 @@
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
     },
     {
+      "path": "local/research/codex/duo-round-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
       "path": "local/research/codex/eight-player-r1/game",
       "class": "disposable_copy",
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
@@ -575,6 +596,335 @@
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
       "date": "2026-11-18",
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/g1-factory-native-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-factory-native-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-4-native-r1/game-D",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-D",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-E",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-F",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-G",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-managed-all-dead-8-native-r1/game-H",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-patrit-2-native-r1/prefix-A/system.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-patrit-2-native-r1/prefix-A/user.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-patrit-2-native-r1/prefix-A/userdef.reg",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r3/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r3/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r4/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r4/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r5/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r5/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-reference-r6/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-down-rust-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-reference-r2/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-rust-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-horizontal-rust-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-punch-rust-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r12/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-action-reference-native-r13/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-rust-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-shoe-source-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/g1-vi-client-smoke-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
     },
     {
       "path": "local/research/codex/hidden-cell-native-r1/game-A",
@@ -626,6 +976,13 @@
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
     },
     {
+      "path": "local/research/codex/k2-live-stream-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
       "path": "local/research/codex/k2-retry-reset-r1/game-A",
       "class": "disposable_copy",
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
@@ -640,11 +997,109 @@
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
     },
     {
+      "path": "local/research/codex/k3-ownprofile-integration-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
       "path": "local/research/codex/k3-ownrecord-producer-r1/game-A",
       "class": "disposable_copy",
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
       "date": "2026-11-18",
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-D",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-E",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-F",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-G",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/k4-current-291-r1/game-H",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/l10n-probe-r1/run-0/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/l10n-probe-r1/run-1/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/l10n-probe-r1/run-2/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/l10n-probe-r1/run-3/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/l10n-probe-r1/run-4/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
     },
     {
       "path": "local/research/codex/loading-hot-gate-r5/game-A",
@@ -673,6 +1128,34 @@
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
       "date": "2026-11-18",
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/m7-rooms-native-r1/game-A",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/m7-rooms-native-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/m7-rooms-native-r1/game-C",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/m7-rooms-native-r1/game-D",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
     },
     {
       "path": "local/research/codex/mode-host-rejoin-control-r1/game-A",
@@ -815,6 +1298,13 @@
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
     },
     {
+      "path": "local/research/codex/peer-duo-r1/game-B",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
       "path": "local/research/codex/probe-service-r1/integrated-r2-visual.png",
       "class": "disposable_intermediate",
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_intermediate (screenshot linked only by audit AUD015 read_files; audit links were not counted as references before this fix)",
@@ -841,6 +1331,34 @@
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
       "date": "2026-11-18",
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/r1-final-native-r1/eight/game-E",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/r1-final-native-r1/eight/game-F",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/r1-final-native-r1/eight/game-G",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
+    },
+    {
+      "path": "local/research/codex/r1-final-native-r1/eight/game-H",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
     },
     {
       "path": "local/research/codex/replacement-profile-C0-r2/game-A",
@@ -1072,6 +1590,13 @@
       "reason": "retention plan plan-20261117T175245Z-filtered.json: disposable_copy",
       "date": "2026-11-18",
       "plan_sha256": "56d1bb097f33e3cd327b615c12c882d38debd0c81ff80f0c87bd0bba6cf31262"
+    },
+    {
+      "path": "local/research/codex/wcp-guard-r1/game",
+      "class": "disposable_copy",
+      "reason": "retention plan plan-20261122T101313Z.json: disposable_copy",
+      "date": "2026-11-22",
+      "plan_sha256": "39528ff94476df68dbb44132dccb8eba4d99c621fc98613ad28aabf2f5b3c80c"
     },
     {
       "path": "local/research/l10n-utf8-codex/control-01/game",
