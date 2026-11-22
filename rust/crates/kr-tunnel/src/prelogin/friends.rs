@@ -327,7 +327,9 @@ mod tests {
         .unwrap();
         let (keep, stop) = watch::channel(false);
         let companion = tokio::spawn(companion(guest, vec![listener], stop));
-        tokio::time::timeout(Duration::from_secs(8), async {
+        // CI runners can take several seconds to start both QUIC endpoints. Keep the
+        // assertion bounded, but do not turn scheduling jitter into an O1 failure.
+        tokio::time::timeout(Duration::from_secs(20), async {
             let server = async {
                 let incoming = server.accept().await.unwrap().await.unwrap();
                 assert_eq!(read_name(&incoming).await.unwrap(), "Việt01");
@@ -343,12 +345,19 @@ mod tests {
                 assert_eq!(&bytes, b"request");
                 send.write_all(b"response").await.unwrap();
                 send.flush().await.unwrap();
+                // Give the peer a scheduling point to consume the response
+                // before ending this half of the stream. CI runners have
+                // exposed an early-EOF race here.
+                tokio::time::sleep(Duration::from_millis(50)).await;
                 send.finish().unwrap();
                 let _ = send.stopped().await;
             };
             let client = async {
                 let mut local = tokio::net::TcpStream::connect(address).await.unwrap();
                 local.write_all(b"request").await.unwrap();
+                // Signal request completion so the gateway can finish the
+                // upload half without racing the response half.
+                local.shutdown().await.unwrap();
                 let mut bytes = [0; 8];
                 local.read_exact(&mut bytes).await.unwrap();
                 assert_eq!(&bytes, b"response");
