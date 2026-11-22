@@ -362,11 +362,18 @@ impl Client {
     }
     pub(crate) fn try_named_guest(
         &self,
+        count: u8,
         name: String,
         ttl: i64,
         idle: Option<i64>,
     ) -> Result<Pending<Vec<Grant>>> {
-        self.submit_trial(1, Some(name), ttl, idle, AuthorizationTime::ExecutionUtc)
+        self.submit_trial(
+            count,
+            Some(name),
+            ttl,
+            idle,
+            AuthorizationTime::ExecutionUtc,
+        )
     }
     fn submit_trial(
         &self,

@@ -43,7 +43,7 @@
 1. Mở launcher, chọn **Chơi với bạn bè** và nhập **Tên nhân vật**. Launcher nhớ tên này cho lần sau.
 2. Người tạo bấm **Tạo phòng**. Khi mã xuất hiện, bấm **Sao chép** và gửi mã riêng cho bạn bè. Game của người tạo tự mở.
 3. Người vào dán mã và bấm **Vào phòng**, hoặc chọn phòng trong danh sách **Tìm phòng LAN**. Giữ launcher mở trong lúc chơi.
-4. Ở màn hình đăng nhập của game, chọn **Chơi thử 1P**. Game dùng tên đã nhập trong launcher; bạn không cần điền tài khoản hay mật khẩu. Vào sảnh, một người tạo phòng đấu và người còn lại vào phòng đó.
+4. Ở màn hình đăng nhập của game, chọn **Chơi thử 1P** (hoặc **2P** nếu 2 người chơi chung một máy; người thứ hai tự thêm hậu tố `_2P`). Game dùng tên đã nhập trong launcher; bạn không cần điền tài khoản hay mật khẩu. Vào sảnh, một người tạo phòng đấu và người còn lại vào phòng đó.
 5. Nếu launcher báo khác phiên bản, tải cùng gói với chủ phòng bằng **Tải bản mới** (nếu gói có liên kết). Khi chủ phòng thoát game hoặc launcher, mọi người nhận thông báo phòng đã đóng.
 
 ![Launcher tạo phòng](o1-create-room.png)

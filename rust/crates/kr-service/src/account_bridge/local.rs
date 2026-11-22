@@ -339,8 +339,7 @@ impl LocalSession {
         }
         let mut cancel = Cancel(self.shared.clone(), true);
         let pending = match &self.guest_name {
-            Some(name) if count == 1 => self.client.try_named_guest(name.clone(), ttl, idle),
-            Some(_) => return Err(Error::Denied),
+            Some(name) => self.client.try_named_guest(count, name.clone(), ttl, idle),
             None => self.client.try_trial_local_current(count, ttl, idle),
         };
         let received = pending

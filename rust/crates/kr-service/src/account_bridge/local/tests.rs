@@ -162,7 +162,7 @@ fn in_game_udp_capabilities_bind_both_original_accounts_and_close_on_group_revok
 }
 
 #[test]
-fn friends_name_is_bound_to_the_passwordless_one_player_route() {
+fn friends_name_is_bound_to_the_passwordless_one_and_two_player_routes() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let (temp, _, _) = Temp::new();
     rt().block_on(async {
@@ -176,14 +176,32 @@ fn friends_name_is_bound_to_the_passwordless_one_player_route() {
         };
         let mut session = new();
         assert!(session.login(&[], 60, None).await.is_err());
-        assert!(new().trial(&trial(2), 60, None).await.is_err());
         assert_eq!(active(&temp), 0);
         let rows = session.trial(&trial(1), 60, None).await.unwrap();
+        assert_eq!(rows.len(), 1);
         assert_eq!(rows[0].0.display_name, name);
         session.redirected(1).unwrap();
         let owners = session.channel(&channel(&rows), 2).await.unwrap();
+        assert_eq!(owners.len(), 1);
         assert_eq!(owners[0].player().display_name, name);
         session.finish().await.unwrap();
+        assert_eq!(active(&temp), 0);
+
+        let mut pair = new();
+        let pair_rows = pair.trial(&trial(2), 60, None).await.unwrap();
+        assert_eq!(pair_rows.len(), 2);
+        assert_eq!(pair_rows[0].0.display_name, "Việt01");
+        assert_eq!(pair_rows[1].0.display_name, "Việt01_2P");
+        assert_ne!(pair_rows[0].0.player_id, pair_rows[1].0.player_id);
+        assert_ne!(pair_rows[0].0.wire_id, pair_rows[1].0.wire_id);
+        assert_ne!(pair_rows[0].1, pair_rows[1].1);
+        assert_eq!(active(&temp), 2);
+        pair.redirected(1).unwrap();
+        let pair_owners = pair.channel(&channel(&pair_rows), 2).await.unwrap();
+        assert_eq!(pair_owners.len(), 2);
+        assert_eq!(pair_owners[0].player().display_name, "Việt01");
+        assert_eq!(pair_owners[1].player().display_name, "Việt01_2P");
+        pair.finish().await.unwrap();
         assert_eq!(active(&temp), 0);
         worker.shutdown().await.unwrap();
     });
