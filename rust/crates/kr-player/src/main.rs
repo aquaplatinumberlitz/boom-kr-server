@@ -252,12 +252,27 @@ fn fit_monitor() -> Task<Message> {
         size: iced::Size::new(1.0, 1.0),
         position: window::Position::Centered,
         visible: false,
+        platform_specific: window_platform_settings(),
         ..Default::default()
     });
     opened.then(|id| {
         window::monitor_size(id)
             .map(move |monitor| Message::FitWindow(id, monitor.map_or(WINDOW_SIZE, fitted_window)))
     })
+}
+
+#[cfg(windows)]
+fn window_platform_settings() -> iced::window::settings::PlatformSpecific {
+    let mut settings = iced::window::settings::PlatformSpecific::default();
+    // Wine may expose no OLE drop target and Winit 0.30 asserts on the
+    // resulting E_NOINTERFACE. The launcher has no drag-and-drop flow.
+    settings.drag_and_drop = false;
+    settings
+}
+
+#[cfg(not(windows))]
+fn window_platform_settings() -> iced::window::settings::PlatformSpecific {
+    iced::window::settings::PlatformSpecific::default()
 }
 
 fn probe(config: &Config) -> Server {
@@ -466,6 +481,7 @@ impl Player {
                     )),
                     position: window::Position::Centered,
                     exit_on_close_request: false,
+                    platform_specific: window_platform_settings(),
                     ..Default::default()
                 });
                 return opened.then(move |_| window::close(probe));
@@ -997,6 +1013,12 @@ mod tests {
         assert!(
             (small.width / small.height - WINDOW_SIZE.width / WINDOW_SIZE.height).abs() < 0.002
         );
+    }
+
+    #[cfg(windows)]
+    #[test]
+    fn windows_launcher_disables_ole_drag_and_drop() {
+        assert!(!window_platform_settings().drag_and_drop);
     }
 
     #[test]
