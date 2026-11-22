@@ -16,6 +16,7 @@ from content_census import decrypt_idx, parse_idx
 
 ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ('vi', 'en', 'ko')
+KR_PORTS = tuple(range(3808, 4000, 10))
 DEFAULT_LAUNCHER_ART = ROOT / 'local/assets/launcher/launch.png'
 LOCAL_EXTENSIONS = {'.ini', '.ssd', '.fft', '.bik'}
 GUIDE_IMAGES = {
@@ -31,6 +32,111 @@ GUIDE_IMAGES = {
 def digest(path):
     with Path(path).open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def _manifest_rows(manifest):
+    """Return every payload file row from the player manifest."""
+    rows = []
+    for pack in manifest.get('packs', []):
+        rows.extend(pack.get('parts', []))
+    rows.extend(row['payload'] for row in manifest.get('common', []))
+    for language in manifest.get('languages', {}).values():
+        rows.extend(row['payload'] for row in language.get('files', []))
+    rows.extend(manifest.get('guides', {}).values())
+    rows.extend(manifest.get('guide_images', {}).values())
+    if manifest.get('launcher_art'):
+        rows.append(manifest['launcher_art'])
+    return rows
+
+
+def _check_row(root, row, label):
+    if not isinstance(row, dict) or set(('path', 'bytes', 'sha256')) - row.keys():
+        raise ValueError(f'{label} thiếu pin file')
+    path = root / relative(row['path'])
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f'{label} thiếu file')
+    if path.stat().st_size != row['bytes'] or digest(path) != row['sha256']:
+        raise ValueError(f'{label} không khớp hash')
+    return path
+
+
+def preflight(package):
+    """Verify the exact immutable O1 install directory without network access."""
+    root = Path(package).resolve(strict=True)
+    if not root.is_dir():
+        raise ValueError('Thư mục gói không hợp lệ')
+    launcher_path = root / 'launcher.json'
+    manifest_path = root / 'manifest.json'
+    if not launcher_path.is_file() or not manifest_path.is_file():
+        raise ValueError('Thiếu launcher.json hoặc manifest.json')
+    launcher = json.loads(launcher_path.read_text(encoding='utf-8'))
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+    if manifest.get('schema') != 'kre-player-package-v1':
+        raise ValueError('Schema manifest người chơi không hợp lệ')
+    if launcher.get('manifest_sha256') != digest(manifest_path):
+        raise ValueError('launcher.json không khớp hash manifest.json')
+
+    rows = _manifest_rows(manifest)
+    expected = {}
+    for row in rows:
+        path = relative(row['path'])
+        if path.as_posix() in expected:
+            raise ValueError('Manifest lặp đường dẫn')
+        _check_row(root, row, f'Manifest {path}')
+        expected[path.as_posix()] = dict(bytes=row['bytes'], sha256=row['sha256'])
+
+    # launcher.json pins every immutable file copied by windows_runtime().
+    pins = launcher.get('file_hashes')
+    if not isinstance(pins, dict) or 'manifest.json' not in pins:
+        raise ValueError('launcher.json thiếu file_hashes')
+    for name, row in pins.items():
+        path = relative(name)
+        if path.as_posix() == 'launcher.json':
+            raise ValueError('launcher.json không được tự pin')
+        _check_row(root, dict(path=name, **row), f'launcher.json {name}')
+        pin = dict(bytes=row['bytes'], sha256=row['sha256'])
+        if path.as_posix() in expected and expected[path.as_posix()] != pin:
+            raise ValueError(f'launcher.json pin khác manifest: {path}')
+        expected[path.as_posix()] = pin
+    actual = {
+        path.relative_to(root).as_posix()
+        for path in root.rglob('*')
+        if path.is_file() and not path.is_symlink() and path.name.casefold() != 'launcher.json'
+    }
+    if any(path.is_symlink() for path in root.rglob('*')):
+        raise ValueError('Gói không cho phép symlink')
+    if actual != set(expected):
+        extra = sorted(actual - set(expected))
+        missing = sorted(set(expected) - actual)
+        raise ValueError(f'File gói ngoài/thiếu pin: extra={extra[:3]} missing={missing[:3]}')
+    if expected['manifest.json']['sha256'] != digest(manifest_path):
+        raise ValueError('file_hashes không khớp manifest.json')
+
+    if launcher.get('ports') != list(KR_PORTS):
+        raise ValueError('Recipe cổng KR phải đầy đủ 3808–3998 bước 10')
+    if not (root / 'kr-player.exe').is_file():
+        raise ValueError('Thiếu launcher kr-player.exe')
+    companion = launcher.get('companion')
+    if not isinstance(companion, str) or not (root / relative(companion)).is_file():
+        raise ValueError('Thiếu companion trong gói')
+    friends = launcher.get('friends')
+    if not isinstance(friends, dict):
+        raise ValueError('Thiếu server/exporter O1')
+    server_root = root / relative(friends.get('package', ''))
+    service_manifest = server_root / 'manifest.json'
+    if not service_manifest.is_file() or digest(service_manifest) != friends.get('manifest_sha256'):
+        raise ValueError('Manifest server không khớp launcher.json')
+    if not (server_root / 'bin' / 'kr-service.exe').is_file():
+        raise ValueError('Thiếu server/kr-service.exe')
+    if not (server_root / 'kr_pack_export.py').is_file():
+        raise ValueError('Thiếu exporter/kr_pack_export.py')
+    python = friends.get('python')
+    if not isinstance(python, str) or not (root / relative(python)).is_file():
+        raise ValueError('Thiếu Python companion runtime')
+    for path in root.rglob('*'):
+        if path.is_file() and path.name.casefold() == 'calog.log' and path.stat().st_size:
+            raise ValueError('CALog phải rỗng trước khi cài')
+    return dict(package=str(root), manifest_sha256=digest(manifest_path), files=len(actual), ports=len(KR_PORTS))
 
 
 def relative(value):
@@ -308,6 +414,11 @@ def windows_runtime(recipe, output, manifest_sha256):
         config['server_name'] = server_name.strip()
     if release_url:
         config['release_url'] = release_url
+    config['file_hashes'] = {
+        path.relative_to(output).as_posix(): dict(bytes=path.stat().st_size, sha256=digest(path))
+        for path in sorted(output.rglob('*'))
+        if path.is_file() and path.name.casefold() != 'launcher.json'
+    }
     with (output / 'launcher.json').open('x') as file:
         json.dump(config, file, indent=2)
         file.write('\n')
@@ -330,12 +441,23 @@ def windows_runtime(recipe, output, manifest_sha256):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--recipe', type=Path, required=True)
-    parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--recipe', type=Path)
+    parser.add_argument('--out', type=Path)
+    parser.add_argument('--preflight', type=Path, help='Kiểm offline đúng thư mục gói trước native')
     parser.add_argument('--windows-runtime', type=Path, help='Recipe local chứa launcher, companion và certificate đã pin')
     parser.add_argument('--launcher-art', type=Path, default=DEFAULT_LAUNCHER_ART,
                         help='Ảnh nền launcher (mặc định: local/assets/launcher/launch.png)')
     args = parser.parse_args()
+    if args.preflight is not None:
+        try:
+            result = preflight(args.preflight)
+        except (ValueError, OSError, json.JSONDecodeError) as error:
+            print(f'PREFLIGHT FAIL: {error}')
+            raise SystemExit(1)
+        print(f"PREFLIGHT PASS: {result['package']} files={result['files']} ports={result['ports']}")
+        return
+    if args.recipe is None or args.out is None:
+        parser.error('--recipe và --out là bắt buộc khi build')
     local = (ROOT / 'local').resolve(strict=True)
     output = args.out.resolve()
     if output == local or not output.is_relative_to(local):

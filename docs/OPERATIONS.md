@@ -281,8 +281,16 @@ If a close-room reply is lost, check the audit and live room list before retryin
 
    Omit `--windows-runtime` for payload only. For the Linux launcher with Wine, supply a native `kr-prelogin` companion and set `wine` and `udp_backend: native` in `launcher.json`. The launcher uses a Wine prefix per language. Windows uses `udp_backend: portable`.
 
-3. Deliver the bundle and manifest hash privately. On Windows, extract to writable NTFS and open `kr-player.exe` (optional shortcut script: `Tao-loi-tat.ps1`). Chọn ngôn ngữ, chọn một máy trong mục Máy chủ, bấm **Chơi**, rồi đăng nhập hoặc chơi thử ở màn đăng nhập của game. The launcher verifies the installation and waits for the companion; starting `CA.exe` directly skips the tunnel.
-4. For scripted payload verification, build the `kr-player-install` binary and use a new installation directory:
+3. Trước mọi lượt native, chạy PREFLIGHT offline trên đúng thư mục sẽ cài. Lệnh phải in `PREFLIGHT PASS`; nếu FAIL thì không được mở launcher hoặc `CA.exe`:
+
+   ```bash
+   python3 tools/player_package.py --preflight local/operator/player-windows-new
+   ```
+
+   PREFLIGHT đối chiếu hash `launcher.json` ↔ `manifest.json` ↔ file thật, recipe đủ cổng KR 3808–3998,
+   CALog rỗng và sự hiện diện của server, exporter, companion cùng Python runtime.
+4. Deliver the bundle and manifest hash privately. On Windows, extract to writable NTFS and open `kr-player.exe` (optional shortcut script: `Tao-loi-tat.ps1`). Chọn ngôn ngữ, chọn một máy trong mục Máy chủ, bấm **Chơi**, rồi đăng nhập hoặc chơi thử ở màn đăng nhập của game. The launcher verifies the installation and waits for the companion; starting `CA.exe` directly skips the tunnel.
+5. For scripted payload verification, build the `kr-player-install` binary and use a new installation directory:
 
    ```bash
    (cd rust && cargo build --release --locked -p kr-player --bin kr-player-install)
