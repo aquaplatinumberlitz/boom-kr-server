@@ -16,22 +16,29 @@ from test_kr_pack_install import ROOT, run_smoke, test_bundle
 STAT_ITEMS = {ITEMS[kind] for kind in (0, 1, 2, 5)}
 
 
-def failure_kind(row, result_dir):
+def load_events(result_dir):
+    log = result_dir / 'load.log'
+    if log.is_file():
+        for line in log.read_text().splitlines():
+            if line.startswith('{'):
+                try:
+                    yield json.loads(line)
+                except json.JSONDecodeError:
+                    # A process killed by the deadline may leave a partial line.
+                    pass
+
+
+def failure_kind(row, result_dir, exit_code=None):
     """Phân biệt giới hạn nội dung, driver và lỗi service từ một lượt kẹt."""
     if row['script_tags']:
         return 'contract_script'
     if row['omitted_placements'] or row['omitted_positive_drops']:
         return 'contract_placement_or_flag'
-    load_log = result_dir / 'load.log'
-    events = []
-    if load_log.is_file():
-        for line in load_log.read_text().splitlines():
-            if line.startswith('{'):
-                try:
-                    events.append(json.loads(line))
-                except json.JSONDecodeError:
-                    pass
-    if not any(e.get('event') == 'round_active' for e in events):
+    if exit_code == 124:
+        # The outer harness killed the run; a partial log does not tell
+        # whether the service would have completed its scheduled work.
+        return 'harness_timeout'
+    if not any(e.get('event') == 'round_active' for e in load_events(result_dir)):
         return 'driver_error'
     return 'server_or_adapter_error'
 
@@ -99,7 +106,9 @@ def run_matrix(game, binaries, out, workers, selected=None):
             (result / 'catalog.json').write_text(json.dumps(expected) + '\n')
             with (result / 'harness.log').open('w') as log:
                 try:
-                    rc = run_smoke(bundle, manifest, game, result, expected, fake='', bwrap=True, image=None, timeout=30,
+                    # Keep the smoke harness's outer budget: setup and both
+                    # rounds (including the control) share this deadline.
+                    rc = run_smoke(bundle, manifest, game, result, expected, fake='', bwrap=True, image=None,
                                    stdout=log, stderr=subprocess.STDOUT).returncode
                 except subprocess.TimeoutExpired:
                     rc = 124
@@ -111,9 +120,7 @@ def run_matrix(game, binaries, out, workers, selected=None):
             # Some KR map descriptors keep the final leave response open after
             # the journal is complete. The cycle itself is still authoritative
             # when every expected round_returned and complete journal is present.
-            load_log = result / 'load.log'
-            returned = [json.loads(line) for line in load_log.read_text().splitlines()
-                        if line.startswith('{') and json.loads(line).get('event') == 'round_returned'] if load_log.is_file() else []
+            returned = sum(e.get('event') == 'round_returned' for e in load_events(result))
             db = result / 'state' / 'accounts.sqlite'
             if db.is_file():
                 try:
@@ -122,7 +129,7 @@ def run_matrix(game, binaries, out, workers, selected=None):
                 except sqlite3.Error:
                     complete = set()
                 if all(name in complete for name in names):
-                    return {name: dict(status='passed_cycle', run=label, return_events=len(returned))
+                    return {name: dict(status='passed_cycle', run=label, return_events=returned)
                             for name in names}
             # A failed catalog does not make the other maps failures. Replay
             # sibling groups with a fresh service and preserve the original logs.
@@ -130,7 +137,7 @@ def run_matrix(game, binaries, out, workers, selected=None):
                 mid = len(names) // 2
                 return run_catalog((label + '-a', names[:mid])) | run_catalog((label + '-b', names[mid:]))
             name = names[0]
-            return {name: dict(status='load_failed', failure=failure_kind(rows[name], result),
+            return {name: dict(status='load_failed', failure=failure_kind(rows[name], result, rc),
                                 run=label, exit=rc)}
 
         batches = [(f'catalog-{i + 1:03}', [name]) for i, name in enumerate(pending)]
@@ -141,20 +148,23 @@ def run_matrix(game, binaries, out, workers, selected=None):
                 print(', '.join(f"{name}={row['status']}" for name, row in results.items()), flush=True)
 
     report = {}
+    failures = {}
     for row in rows.values():
         report.setdefault(row['family'], Counter())[row['status']] += 1
+        if row['status'] == 'load_failed':
+            failures.setdefault(row['family'], Counter())[row['failure']] += 1
     with (binaries / 'kr-service').open('rb') as service, (binaries / 'kr-load').open('rb') as driver:
         pins = {'kr-service': file_sha(service), 'kr-load': file_sha(driver)}
     (out / 'matrix.json').write_text(json.dumps(
         dict(build='KR 00967', source='emu_choice', status='candidate', packs=PACK_SHA256,
              bundle_manifest_sha256=manifest, binaries=pins, families=report, maps=rows),
         indent=2, ensure_ascii=False) + '\n')
-    print('Họ map | Số map | Đạt | Từ chối adapter | Từ chối contract | Lỗi driver | Lỗi server/adapter', flush=True)
+    print('Họ map | Số map | Đạt | Từ chối adapter | Từ chối contract | Lỗi driver | Lỗi server/adapter | Timeout harness', flush=True)
     for name, counts in report.items():
+        failed = failures.get(name, Counter())
         print(f"{name} | {sum(counts.values())} | {counts['passed'] + counts['passed_cycle']} | "
-              f"{counts['adapter_rejected']} | {counts['contract_script'] + counts['contract_placement_or_flag']} | "
-              f"{counts['load_failed'] - counts['contract_script'] - counts['contract_placement_or_flag'] - counts['server_or_adapter_error']} | "
-              f"{counts['server_or_adapter_error']}")
+              f"{counts['adapter_rejected']} | {failed['contract_script'] + failed['contract_placement_or_flag']} | "
+              f"{failed['driver_error']} | {failed['server_or_adapter_error']} | {failed['harness_timeout']}")
 
 
 def main():
