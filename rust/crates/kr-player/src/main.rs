@@ -467,9 +467,9 @@ impl Player {
     }
 
     fn update(&mut self, message: Message) -> Task<Message> {
-        if !matches!(message, Message::Tick) {
-            self.paint = self.paint.wrapping_add(1);
-        }
+        // TinySkia needs a full-surface invalidation for every state change,
+        // including animation ticks. `look::surface` consumes this token.
+        self.paint = self.paint.wrapping_add(1);
         match message {
             Message::FitWindow(probe, size) => {
                 self.size = size;
