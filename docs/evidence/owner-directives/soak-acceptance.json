@@ -1,0 +1,14 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_date": "2026-11-22",
+  "authority": "project_owner",
+  "source": "Chỉ đạo của chủ dự án ngày 22/11/2026 do Claude (director) chuyển tiếp.",
+  "quote": "bài 9h trước coi như gần thành công + kiểm chứng thêm 4h hiện tại nữa là đủ tiêu chí",
+  "decision": "M8 soak được coi là đạt nếu soak13 hiện tại không có lỗi.",
+  "evidence_basis": [
+    "CP392: soak lần 1 khoảng 9 giờ, 1.132 ván; dừng do delivery gate của driver, đã sửa ở #565; 14 lỗi lifecycle được phân loại là kỳ vọng ở #569.",
+    "Soak13: khoảng 4 giờ trở lên bằng binary đã sửa, không có lỗi owner hoặc authority lifecycle, DB, delivery gate hay restart; tài nguyên phẳng; backup và TTL/relogin được kiểm."
+  ],
+  "scope": "Chỉ thay đổi cách đối chiếu soak cho M8; không thay đổi các tiêu chí native client dưới tải, đóng gói, backup/restore hoặc Internet thật.",
+  "plan": "docs/PLAN.md#phase1-acceptance"
+}
