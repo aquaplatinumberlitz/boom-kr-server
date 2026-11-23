@@ -35,7 +35,9 @@ fn main() -> std::io::Result<()> {
             Ok(())
         }
         [] | [_] if args.is_empty() || args[0] == "serve" => {
-            let game = PathBuf::from(std::env::var_os("BOOM_GAME").unwrap_or("/game".into()));
+            // Prebuilt game-rule JSON ships in the bundle; BOOM_GAME only
+            // re-exports from a KR 00967 folder for dev/build.
+            let game = self_host::game_from_environment();
             let name = std::env::var("BOOM_NAME").unwrap_or_else(|_| "Boom Server".into());
             let path = std::env::current_exe()?;
             let root = path
@@ -56,8 +58,19 @@ fn main() -> std::io::Result<()> {
                 let print_status = tokio::spawn(async move {
                     let mut was_ready = false;
                     let mut relay = false;
+                    let mut phase = self_host::Phase::Idle;
                     while updates.changed().await.is_ok() {
                         let current = updates.borrow_and_update();
+                        if current.phase != phase {
+                            phase = current.phase;
+                            if let Some(step) = phase.step() {
+                                eprintln!(
+                                    "Boom Server step {step}/{}: {}",
+                                    self_host::Phase::STEPS,
+                                    phase.label()
+                                );
+                            }
+                        }
                         if current.ready != was_ready {
                             eprintln!("Boom Server ready: {}", current.ready);
                             was_ready = current.ready;

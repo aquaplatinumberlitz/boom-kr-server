@@ -1,4 +1,4 @@
-"""Đóng gói server; ở máy cài, xuất dữ liệu từ thư mục game KR 00967."""
+"""Đóng gói server kèm dữ liệu JSON đã xuất sẵn; --game-dir ở máy cài chỉ để xuất lại."""
 import argparse
 import copy
 import json
@@ -14,10 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 # python-3.13.9-embed-amd64.zip from python.org, same runtime as CP388.
 WINDOWS_PYTHON_SHA256 = '91d828c2da3a029b41699e918674a0cb379c02cf20dab9c501306885f837402a'
 DEPLOY_FILES = ('Dockerfile', 'compose.yaml', 'install.sh', 'boom-server.service', 'Dockerfile.dockerignore')
+# Bản export mặc định đã commit theo docs/evidence/owner-directives/pack-data-rights.json.
+PACK_DATA = ROOT / 'server' / 'pack-data'
 
 
 def build(config, binaries, out, target, source_root=None, *, pack_scope=None,
-          external_tls=False, self_host=False, windows_python=None):
+          external_tls=False, self_host=False, windows_python=None, pack_data=None):
     windows = target == 'x86_64-pc-windows-gnu'
     if not windows and target not in {'x86_64-unknown-linux-gnu', 'aarch64-unknown-linux-gnu'}:
         raise ValueError('Target Linux GNU hoặc Windows GNU không được hỗ trợ')
@@ -28,7 +30,14 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None,
     if windows_python is not None and digest(windows_python) != WINDOWS_PYTHON_SHA256:
         raise ValueError('Python nhúng không khớp SHA-256 đã pin')
     if windows and pack_scope is None:
-        raise ValueError('Gói Windows yêu cầu xuất pack ở máy cài')
+        raise ValueError('Gói Windows yêu cầu dữ liệu từ pack KR 00967')
+    if pack_data is not None and pack_scope not in ('g1', 'f1'):
+        raise ValueError('Dữ liệu JSON đóng sẵn chỉ dùng với phạm vi g1 hoặc f1')
+    if self_host and pack_data is None:
+        raise ValueError('Gói S1 yêu cầu dữ liệu JSON đóng sẵn; người dùng cuối không chọn thư mục game')
+    if pack_data is not None:
+        from kr_pack_export import prebuilt
+        pack_data = prebuilt(pack_data)
     source_root = Path.cwd() if source_root is None else Path(source_root)
     out = Path(out)
     out.mkdir(mode=0o700, parents=False, exist_ok=False)
@@ -162,6 +171,18 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None,
             save(ROOT / 'server' / name, 'server/' + name)
         manifest.update(pack_scope=pack_scope, files=[rows[key] for key in sorted(rows)],
                         limits='Pack KR 00967 được kiểm và xuất ở máy cài. Bundle chỉ giữ mẫu wire và cấu hình vận hành.')
+    if pack_data is not None:
+        # Chỉ JSON map/vật phẩm/chỉ số nhân vật; không chứa .idx/.idd/.bik/.exe/.dll của client.
+        (out / 'pack-data').mkdir(mode=0o700)
+        for source in sorted(pack_data.iterdir()):
+            if source.suffix != '.json':
+                raise ValueError('Dữ liệu đóng sẵn chỉ được chứa file JSON')
+            save(source, 'pack-data/' + source.name)
+        export_manifest = json.loads((pack_data / 'manifest.json').read_bytes())
+        manifest.update(pack_data='pack-data', pack_data_identity=export_manifest['identity'],
+                        files=[rows[key] for key in sorted(rows)],
+                        limits='Kèm dữ liệu JSON xuất sẵn từ pack KR 00967 (pack-data/, kiểm hash hai lớp). '
+                               'Không kèm file client; --game-dir chỉ để xuất lại khi dev/build.')
     if self_host:
         if windows:
             (out / 'python').mkdir(mode=0o700)
@@ -206,9 +227,13 @@ def main():
                         help='Giữ pin TLS công khai hiện có; cấp private key qua state')
     parser.add_argument('--legacy-fixtures', action='store_true',
                         help='Gói cũ từ fixture đã pin, dành cho tái lập/rollback')
-    parser.add_argument('--self-host', action='store_true', help='Bao gồm BoomServer và các tệp triển khai S1')
+    parser.add_argument('--self-host', action='store_true', help='Bao gồm BoomServer và các file triển khai S1')
     parser.add_argument('--windows-python', type=Path, help='ZIP Python nhúng x64 đã pin của gói Windows S1')
     parser.add_argument('--archive', action='store_true', help='Tạo ZIP hoặc tar.gz bên cạnh thư mục gói S1')
+    parser.add_argument('--pack-data', type=Path, default=PACK_DATA,
+                        help='Thư mục JSON xuất sẵn (mặc định server/pack-data); tạo lại bằng kr_pack_export.py --prebuilt-out')
+    parser.add_argument('--no-pack-data', action='store_true',
+                        help='Không kèm JSON xuất sẵn; máy cài phải dùng --game-dir (không dùng cho S1)')
     args = parser.parse_args()
     if args.archive and not args.self_host:
         parser.error('--archive yêu cầu --self-host')
@@ -220,7 +245,9 @@ def main():
         value = json.loads(args.base.read_text(encoding='utf-8'))
         result = build(value, args.binary_dir, out, args.target, args.base.resolve().parent,
                        pack_scope=None if args.legacy_fixtures else args.pack_scope, external_tls=args.external_tls,
-                       self_host=args.self_host, windows_python=args.windows_python)
+                       self_host=args.self_host, windows_python=args.windows_python,
+                       pack_data=None if args.no_pack_data or args.legacy_fixtures or args.pack_scope == 'f1-a'
+                       else args.pack_data)
         if args.archive:
             shutil.make_archive(str(out), 'zip' if args.windows_python else 'gztar',
                                 root_dir=out.parent, base_dir=out.name)

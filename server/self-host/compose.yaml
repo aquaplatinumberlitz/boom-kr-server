@@ -1,3 +1,5 @@
+# Run from the extracted Linux bundle: docker compose -f deploy/compose.yaml up -d
+# Game rules come from the prebuilt JSON in pack-data/; no game folder is needed.
 services:
   boom:
     image: boom-server:s1
@@ -11,17 +13,14 @@ services:
     security_opt: [no-new-privileges:true]
     environment:
       BOOM_NAME: "${BOOM_NAME:-Boom Server}"
+      # Dev/build only: re-export from a KR 00967 folder instead of pack-data/.
+      # Set BOOM_GAME=/game and add a read-only bind mount of that folder to /game.
+      BOOM_GAME: "${BOOM_GAME:-}"
     ports:
       - "41600:41600/udp"
     tmpfs:
       - /tmp
     volumes:
-      - type: bind
-        source: "${BOOM_GAME_DIR:?Set BOOM_GAME_DIR to the absolute path of the KR 00967 game folder}"
-        target: /game
-        read_only: true
-        bind:
-          create_host_path: false
       - boom-state:/state
 volumes:
   boom-state:

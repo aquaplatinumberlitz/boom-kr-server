@@ -28,7 +28,10 @@ use zeroize::Zeroizing;
 #[serde(deny_unknown_fields)]
 pub struct Settings {
     pub name: String,
-    pub game: PathBuf,
+    /// Dev/build override only. Without it the bundle's prebuilt `pack-data/`
+    /// JSON is used, so end users never choose a game folder.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub game: Option<PathBuf>,
 }
 
 impl Settings {
@@ -36,30 +39,128 @@ impl Settings {
         if !(1..=128).contains(&self.name.len())
             || self.name.chars().any(char::is_control)
             || self.name.trim().is_empty()
-            || !self.game.is_absolute()
-            || !self.game.is_dir()
         {
-            return Err(io::Error::other("invalid server name or game folder"));
+            return Err(io::Error::other("invalid server name"));
+        }
+        if self
+            .game
+            .as_ref()
+            .is_some_and(|game| !game.is_absolute() || !game.is_dir())
+        {
+            return Err(io::Error::other("invalid game folder override"));
         }
         Ok(())
     }
 }
 
+/// Optional dev/build override shared by the desktop and headless host.
+pub fn game_from_environment() -> Option<PathBuf> {
+    std::env::var_os("BOOM_GAME")
+        .filter(|value| !value.is_empty())
+        .map(PathBuf::from)
+}
+
+/// Startup steps, reported separately so a failure names the step that failed.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum Phase {
+    #[default]
+    Idle,
+    /// Verify the bundle, provision TLS and load the prebuilt game-rule data.
+    Package,
+    /// Open the account database and the local Host account.
+    Accounts,
+    /// Start the game service and wait for its health check.
+    Service,
+    /// Serving; the invite is valid.
+    Online,
+}
+
+impl Phase {
+    /// One-based step number of the preparation steps, if any.
+    pub fn step(self) -> Option<u8> {
+        match self {
+            Self::Package => Some(1),
+            Self::Accounts => Some(2),
+            Self::Service => Some(3),
+            Self::Idle | Self::Online => None,
+        }
+    }
+
+    pub const STEPS: u8 = 3;
+
+    pub fn label(self) -> &'static str {
+        match self {
+            Self::Idle => "stopped",
+            Self::Package => "checking the bundle and prebuilt game data",
+            Self::Accounts => "preparing the account database",
+            Self::Service => "starting the game service",
+            Self::Online => "online",
+        }
+    }
+}
+
 #[derive(Clone, Default)]
 pub struct Status {
+    pub phase: Phase,
     pub ready: bool,
     pub relay_online: bool,
     pub relay_expected: bool,
     pub invite: String,
     pub players: u64,
     pub rooms: u64,
-    pub message: String,
+    /// Result of the latest manual backup and a counter that changes with it.
+    pub backup: Option<Result<PathBuf, String>>,
+    pub backups: u64,
 }
 
 pub enum Action {
     Stop,
     Rotate,
-    Backup,
+    /// Snapshot into the private state; optionally copy into a chosen folder.
+    Backup(Option<PathBuf>),
+}
+
+/// Desktop preferences kept in `settings.json`. Unknown keys are ignored so a
+/// newer build can add options without breaking an older one.
+#[derive(Clone, Debug, Default, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(default)]
+pub struct Preferences {
+    /// `vi`, `en` or `ko`; `None` follows the Windows display language.
+    pub language: Option<String>,
+    /// Folder that receives a copy of each manual backup.
+    pub backup_folder: Option<PathBuf>,
+    /// Whether the one-time tray hint was already shown.
+    pub tray_hint_shown: bool,
+}
+
+pub fn preferences(state: &Path) -> io::Result<Preferences> {
+    let path = state.join("settings.json");
+    match platform::private_file(&path) {
+        Ok(meta) if meta.len() <= 16_384 => Ok(serde_json::from_slice(&fs::read(path)?)?),
+        Ok(_) => Err(io::Error::other("settings.json too large")),
+        Err(error) if error.kind() == io::ErrorKind::NotFound => Ok(Preferences::default()),
+        Err(error) => Err(error),
+    }
+}
+
+pub fn save_preferences(state: &Path, preferences: &Preferences) -> io::Result<()> {
+    if preferences
+        .language
+        .as_deref()
+        .is_some_and(|language| !["vi", "en", "ko"].contains(&language))
+        || preferences
+            .backup_folder
+            .as_ref()
+            .is_some_and(|folder| !folder.is_absolute())
+    {
+        return Err(io::Error::other("invalid preferences"));
+    }
+    atomic_private(
+        state,
+        &state.join("settings.json"),
+        &serde_json::to_vec_pretty(preferences)?,
+        true,
+    )
 }
 
 #[derive(Deserialize)]
@@ -240,7 +341,7 @@ struct HostAccount {
     password: Zeroizing<String>,
 }
 
-async fn prepare(root: &Path, state: &Path, game: &Path) -> io::Result<Prepared> {
+async fn prepare(root: &Path, state: &Path, game: Option<&Path>) -> io::Result<Prepared> {
     #[cfg(windows)]
     let python = root.join("python").join("python.exe");
     #[cfg(not(windows))]
@@ -249,18 +350,18 @@ async fn prepare(root: &Path, state: &Path, game: &Path) -> io::Result<Prepared>
     let mut command = Command::new(python);
     #[cfg(windows)]
     command.creation_flags(0x0800_0000); // CREATE_NO_WINDOW
-    let output = command
+    command
         .current_dir(root)
         .arg(root.join("kr-package.py"))
         .arg("prepare-s1")
         .args(["--manifest-sha256", expected.trim()])
         .arg("--state")
-        .arg(state)
-        .arg("--game-dir")
-        .arg(game)
-        .stdin(Stdio::null())
-        .output()
-        .await?;
+        .arg(state);
+    // The bundle's prebuilt JSON is the default; a game folder only re-exports.
+    if let Some(game) = game {
+        command.arg("--game-dir").arg(game);
+    }
+    let output = command.stdin(Stdio::null()).output().await?;
     if !output.status.success() {
         return Err(io::Error::other(
             String::from_utf8_lossy(&output.stderr).trim().to_owned(),
@@ -282,6 +383,51 @@ pub async fn backup(state: &Path) -> io::Result<PathBuf> {
     Ok(path)
 }
 
+/// Manual backup; a chosen folder receives a copy of the verified snapshot.
+pub async fn backup_to(state: &Path, folder: Option<PathBuf>) -> io::Result<PathBuf> {
+    let snapshot = backup(state).await?;
+    let Some(folder) = folder else {
+        return Ok(snapshot);
+    };
+    if !folder.is_absolute() || !folder.is_dir() {
+        return Err(io::Error::other(format!(
+            "backup folder is not available: {}",
+            folder.display()
+        )));
+    }
+    let name = snapshot
+        .file_name()
+        .ok_or_else(|| io::Error::other("backup name"))?;
+    let destination = folder.join(name);
+    tokio::task::spawn_blocking(move || {
+        let mut source = fs::File::open(&snapshot)?;
+        // The copy still holds password hashes: owner-only, never overwrite.
+        let mut target = platform::private_options()
+            .write(true)
+            .create_new(true)
+            .open(&destination)?;
+        io::copy(&mut source, &mut target)?;
+        target.sync_all()?;
+        Ok(destination)
+    })
+    .await
+    .map_err(io::Error::other)?
+}
+
+fn step<T>(phase: Phase, result: io::Result<T>) -> io::Result<T> {
+    result.map_err(|error| {
+        io::Error::new(
+            error.kind(),
+            format!(
+                "step {}/{} ({}): {error}",
+                phase.step().unwrap_or(0),
+                Phase::STEPS,
+                phase.label()
+            ),
+        )
+    })
+}
+
 pub async fn listen(
     root: PathBuf,
     state: PathBuf,
@@ -294,13 +440,22 @@ pub async fn listen(
     state_dir(&state)?;
     settings.validate()?;
     let _lock = platform::lock_private_file(&state.join("service.lock"))?;
-    let mut prep = prepare(&root, &state, &settings.game).await?;
+    status.send_modify(|s| s.phase = Phase::Package);
+    let mut prep = step(
+        Phase::Package,
+        prepare(&root, &state, settings.game.as_deref()).await,
+    )?;
     let mut key = node_key(&state)?;
-    let certificate = cert(&state)?;
+    let certificate = step(Phase::Package, cert(&state))?;
+    status.send_modify(|s| s.phase = Phase::Accounts);
     let state_for_account = state.clone();
-    tokio::task::spawn_blocking(move || first_account(&state_for_account))
-        .await
-        .map_err(io::Error::other)??;
+    step(
+        Phase::Accounts,
+        tokio::task::spawn_blocking(move || first_account(&state_for_account))
+            .await
+            .map_err(io::Error::other)
+            .and_then(|result| result),
+    )?;
     // Existing fixture paths in the manifest are rooted at the bundle.
     std::env::set_current_dir(&root)?;
     let mut host = Host {
@@ -323,7 +478,11 @@ pub async fn listen(
             true,
         )?;
         key = SecretKey::from_bytes(&bytes);
-        prep = prepare(&root, &host.state, &host.settings.game).await?;
+        host.status.send_modify(|s| s.phase = Phase::Package);
+        prep = step(
+            Phase::Package,
+            prepare(&root, &host.state, host.settings.game.as_deref()).await,
+        )?;
     }
     Ok(())
 }
@@ -368,6 +527,7 @@ impl Host {
             name: self.settings.name.clone(),
             certificate: certificate.to_vec(),
         };
+        self.status.send_modify(|s| s.phase = Phase::Service);
         let (stop, stopped) = oneshot::channel();
         let out = prep.out;
         let mut service = std::pin::pin!(crate::serve_until(profile, &out, async {
@@ -388,7 +548,7 @@ impl Host {
                 if let Err(error) = result {
                     let _ = stop.send(());
                     service.await?;
-                    return Err(error.into());
+                    return step(Phase::Service, Err(error.into()));
                 }
             }
         }
@@ -396,6 +556,7 @@ impl Host {
         let mut backups = tokio::task::JoinSet::new();
         let mut timer = tokio::time::interval(Duration::from_secs(2));
         self.status.send_replace(Status {
+            phase: Phase::Online,
             invite: Invite::server(endpoint.id(), certificate).to_string(),
             ready: true,
             relay_expected,
@@ -424,18 +585,21 @@ impl Host {
                     }
                     action = self.actions.recv() => match action {
                         Some(Action::Rotate) => break Ok(true),
-                        Some(Action::Backup) if backups.is_empty() => {
+                        Some(Action::Backup(folder)) if backups.is_empty() => {
                             let state = self.state.clone();
-                            backups.spawn(async move { backup(&state).await });
+                            backups.spawn(async move { backup_to(&state, folder).await });
                         }
-                        Some(Action::Backup) => {}
+                        Some(Action::Backup(_)) => {}
                         Some(Action::Stop) | None => break Ok(false),
                     },
                     Some(result) = backups.join_next(), if !backups.is_empty() => {
-                        self.status.send_modify(|s| s.message = match result {
-                            Ok(Ok(path)) => path.display().to_string(),
-                            Ok(Err(error)) => error.to_string(),
-                            Err(error) => error.to_string(),
+                        self.status.send_modify(|s| {
+                            s.backups += 1;
+                            s.backup = Some(match result {
+                                Ok(Ok(path)) => Ok(path),
+                                Ok(Err(error)) => Err(error.to_string()),
+                                Err(error) => Err(error.to_string()),
+                            });
                         });
                     }
                 }
@@ -492,4 +656,125 @@ pub fn bind_from_environment() -> io::Result<SocketAddrV4> {
         .unwrap_or_else(|_| "0.0.0.0:41600".into())
         .parse()
         .map_err(io::Error::other)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    struct Temp(PathBuf);
+    impl Temp {
+        fn new(case: &str) -> Self {
+            let path = std::env::temp_dir().join(format!(
+                "kr-self-host-{case}-{}-{}",
+                std::process::id(),
+                stamp().unwrap()
+            ));
+            state_dir(&path).unwrap();
+            Self(path)
+        }
+    }
+    impl Drop for Temp {
+        fn drop(&mut self) {
+            let _ = fs::remove_dir_all(&self.0);
+        }
+    }
+
+    #[test]
+    fn settings_default_to_prebuilt_data_and_keep_old_game_override() {
+        let state = Temp::new("settings");
+        let prebuilt = Settings {
+            name: "Boom Club".into(),
+            game: None,
+        };
+        prebuilt.validate().unwrap();
+        save_settings(&state.0, &prebuilt).unwrap();
+        let saved = fs::read_to_string(state.0.join("self-host.json")).unwrap();
+        assert!(!saved.contains("game"), "{saved}");
+        assert!(settings(&state.0).unwrap().unwrap().game.is_none());
+        // Files written by earlier builds still name a game folder.
+        let old = serde_json::json!({"name": "Old", "game": state.0});
+        let old: Settings = serde_json::from_value(old).unwrap();
+        assert_eq!(old.game.as_deref(), Some(state.0.as_path()));
+        old.validate().unwrap();
+        let missing = Settings {
+            game: Some(state.0.join("missing")),
+            ..prebuilt.clone()
+        };
+        assert!(missing.validate().is_err());
+        let relative = Settings {
+            game: Some("game".into()),
+            ..prebuilt
+        };
+        assert!(relative.validate().is_err());
+        for name in ["", "  ", "a\nb"] {
+            let invalid = Settings {
+                name: name.into(),
+                game: None,
+            };
+            assert!(invalid.validate().is_err(), "{name:?}");
+        }
+    }
+
+    #[test]
+    fn preferences_persist_in_settings_json_and_reject_unknown_languages() {
+        let state = Temp::new("preferences");
+        assert_eq!(preferences(&state.0).unwrap(), Preferences::default());
+        let chosen = Preferences {
+            language: Some("vi".into()),
+            backup_folder: Some(state.0.clone()),
+            tray_hint_shown: true,
+        };
+        save_preferences(&state.0, &chosen).unwrap();
+        assert_eq!(preferences(&state.0).unwrap(), chosen);
+        fs::write(
+            state.0.join("settings.json"),
+            br#"{"language":"ko","future_option":1}"#,
+        )
+        .unwrap();
+        assert_eq!(
+            preferences(&state.0).unwrap().language.as_deref(),
+            Some("ko")
+        );
+        let invalid = Preferences {
+            language: Some("fr".into()),
+            ..Preferences::default()
+        };
+        assert!(save_preferences(&state.0, &invalid).is_err());
+        let relative = Preferences {
+            backup_folder: Some("backups".into()),
+            ..Preferences::default()
+        };
+        assert!(save_preferences(&state.0, &relative).is_err());
+    }
+
+    #[test]
+    fn startup_steps_are_numbered_and_named_in_errors() {
+        assert_eq!(
+            [Phase::Package, Phase::Accounts, Phase::Service].map(Phase::step),
+            [Some(1), Some(2), Some(3)]
+        );
+        assert_eq!(Phase::Online.step(), None);
+        let error = step::<()>(Phase::Accounts, Err(io::Error::other("locked"))).unwrap_err();
+        assert_eq!(
+            error.to_string(),
+            "step 2/3 (preparing the account database): locked"
+        );
+    }
+
+    #[tokio::test]
+    async fn backup_copies_a_verified_snapshot_into_the_chosen_folder() {
+        let state = Temp::new("backup");
+        drop(Store::open(&state.0.join("accounts.sqlite")).unwrap());
+        let folder = Temp::new("backup-copy");
+        let copy = backup_to(&state.0, Some(folder.0.clone())).await.unwrap();
+        assert_eq!(copy.parent(), Some(folder.0.as_path()));
+        let name = copy.file_name().unwrap();
+        let private = state.0.join("manual-backups").join(name);
+        assert_eq!(fs::read(&copy).unwrap(), fs::read(&private).unwrap());
+        crate::accounts::verify_snapshot(&private).unwrap();
+        platform::private_file(&copy).unwrap();
+        let missing = backup_to(&state.0, Some(folder.0.join("missing"))).await;
+        assert!(missing.is_err());
+    }
 }
