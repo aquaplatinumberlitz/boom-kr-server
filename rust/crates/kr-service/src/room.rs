@@ -551,7 +551,10 @@ impl Room {
             || self.phase != Phase::Idle
             || !self.members[&key.identity].setup
             || self.sealed_abort
-            || character.is_some_and(|value| !matches!(value, 0 | 1))
+            // Character entitlement is checked by room_io against the active
+            // Catalog. The room model only enforces the KR wire range so F1
+            // pack keys can flow through selection and Start121.
+            || character.is_some_and(|value| value > 0x1fff)
             || team.is_some_and(|value| !matches!(value, 0 | 3))
             || character.is_some() == team.is_some()
         {
@@ -1199,12 +1202,7 @@ mod tests {
         room.choose(guest, None, Some(0)).unwrap();
         assert_eq!(room.members[&guest.identity].team, 0);
         let before = room.members[&guest.identity].clone();
-        for (character, team) in [
-            (Some(4), None),
-            (None, Some(2)),
-            (None, None),
-            (Some(0), Some(0)),
-        ] {
+        for (character, team) in [(None, Some(2)), (None, None), (Some(0), Some(0))] {
             assert!(room.choose(guest, character, team).is_err());
             assert_eq!(room.members[&guest.identity].character, before.character);
             assert_eq!(room.members[&guest.identity].team, before.team);

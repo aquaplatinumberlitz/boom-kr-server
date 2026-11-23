@@ -2,6 +2,7 @@
 use super::*;
 use crate::rules::{LifePolicy, RoundRoster, SlotAllocation};
 use kr_wire::write_uint;
+use std::collections::BTreeMap;
 fn bytes(s: &str) -> Vec<u8> {
     s.as_bytes()
         .as_chunks::<2>()
@@ -204,6 +205,135 @@ fn unsupported_character_restores_current_slot_without_ready_or_membership_mutat
         .unwrap()
         .connection += 1;
     assert!(c.sessions[0].packet(92, &body).is_err());
+}
+
+#[test]
+fn all_f1_characters_select_in_room_reset_after_round_and_reject_non_roster_c_keys() {
+    let mut c = case(2);
+    let keys: Vec<u16> = [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129,
+        130, 131, 150, 151, 3000, 3001, 3002, 3003, 3004,
+    ]
+    .into_iter()
+    .collect();
+    let row = |key: u16| crate::characters::Stats {
+        capacity: 1 + usize::from(key % 3),
+        maximum_capacity: 8,
+        power: 1,
+        maximum_power: 9,
+        speed: 4,
+        maximum_speed: 9,
+    };
+    let mut rows = BTreeMap::new();
+    rows.insert(
+        0,
+        crate::characters::Stats {
+            capacity: 1,
+            maximum_capacity: 10,
+            power: 1,
+            maximum_power: 7,
+            speed: 5,
+            maximum_speed: 7,
+        },
+    );
+    rows.insert(
+        1,
+        crate::characters::Stats {
+            capacity: 2,
+            maximum_capacity: 7,
+            power: 1,
+            maximum_power: 9,
+            speed: 4,
+            maximum_speed: 8,
+        },
+    );
+    for &key in &keys[2..] {
+        rows.insert(key, row(key));
+    }
+    let catalog = crate::characters::Catalog::from_pack(&keys, rows).unwrap();
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.managed_round = Some(Arc::new(ManagedRound {
+            characters: Some(catalog),
+            bodies: HashMap::new(),
+            initial_bomb_capacity: Vec::new(),
+            rules: r.rules,
+            limits: rules::ReportLimits {
+                power: Vec::new(),
+                opaque167: rules::ReportLimits::PLAYER_OPAQUE167,
+            },
+        }));
+        r.model.phase = Phase::Idle;
+        r.rules.player_choices = true;
+        for key in &c.keys {
+            let member = r.model.members.get_mut(&key.identity).unwrap();
+            member.ready = true;
+            member.character = Some(0);
+            let mut player = vec![0; 204];
+            player[1..5].copy_from_slice(&encoded(&[(u64::from(key.identity), Width::U32)]));
+            player[12..16].copy_from_slice(&encoded(&[(0, Width::U32)]));
+            r.players.insert(key.identity, packet(106, player));
+        }
+    }
+    for character in keys.iter().copied() {
+        let body = encoded(&[(0, Width::U8), (character as u64, Width::U16)]);
+        assert_eq!(
+            c.sessions[0].prepare_character(&body).unwrap(),
+            Some((c.keys[0], character))
+        );
+        let observation = c.sessions[0].packet(92, &body).unwrap();
+        assert!(observation.character_rejection.is_none(), "key {character}");
+        while c
+            .sessions
+            .iter_mut()
+            .any(|session| session.inbox.try_recv().is_ok())
+        {}
+        let r = c.shared.lock().unwrap();
+        assert_eq!(
+            r.model.members[&c.keys[0].identity].character,
+            Some(character)
+        );
+        assert_eq!(r.model.members[&c.keys[1].identity].character, Some(0));
+        drop(r);
+        c.shared
+            .lock()
+            .unwrap()
+            .model
+            .members
+            .get_mut(&c.keys[0].identity)
+            .unwrap()
+            .ready = true;
+    }
+    for character in [4000, 4019, 4025, 4026] {
+        let body = encoded(&[(0, Width::U8), (character as u64, Width::U16)]);
+        assert_eq!(
+            c.sessions[0].packet(92, &body).unwrap().character_rejection,
+            Some("unmeasured_character")
+        );
+        while c
+            .sessions
+            .iter_mut()
+            .any(|session| session.inbox.try_recv().is_ok())
+        {}
+    }
+    {
+        let mut r = c.shared.lock().unwrap();
+        r.model.phase = Phase::Armed { round: c.round };
+        r.model.end(c.round).unwrap();
+        for key in &c.keys {
+            r.model.refreshed(*key, c.round).unwrap();
+        }
+        r.model.ready(c.keys[1]).unwrap();
+        let next = r.model.begin(c.keys[0]).unwrap();
+        assert!(
+            r.model
+                .members
+                .values()
+                .all(|member| member.item_stats.is_none())
+        );
+        assert_eq!(r.model.members[&c.keys[0].identity].character, Some(3004));
+        assert_ne!(next, c.round);
+    }
 }
 #[test]
 fn selected_map_bounds_admission_and_sparse_spawns_without_reassigning_member_slots() {

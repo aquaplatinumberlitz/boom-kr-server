@@ -31,6 +31,20 @@ phase hoặc membership cũ tiếp tục bị từ chối. Writer-lock/revoke v�
 Đây là phần nhân vật của M6; [journal trận/kết quả](life-results.md#rust-match-journal-serving) có acceptance riêng.
 Không suy account resume/match restore, inventory hoặc progression từ persistence. Các nhân vật khác theo G1.
 
+<a id="f1-c-character-catalog"></a>
+### F1-c: catalog nhân vật trận thường từ BomberAttr KR 00967
+
+`Catalog::from_pack` nhận đúng 31 khóa `0..=11`, `120..=131`, `150..=151` và `3000..=3004`, giữ sáu trường
+`capacity`, `power`, `speed` cùng các trần tương ứng. C2S92 kiểm catalog trước khi cập nhật phòng; room model chỉ
+giới hạn ID theo wire `0x1fff`, vì vậy khóa F1 không còn bị nhánh baseline `0/1` chặn. Start121 ghi character
+theo slot; kết thúc round và bắt đầu round kế tiếp xóa stat item hiện hành. Các khóa `4000` (N01), `4019`,
+`4025` và `4026` bị từ chối như khóa ngoài catalog.
+
+Kiểm Rust bao phủ vector pack, Bomb/Fire/Roller/MaxPower và reset; ma trận `kr-load` hai client TLS/relay đã chọn
+đủ 31 khóa, xác nhận Start121 và về phòng trong ba lượt tổng hợp. [Biên nhận và giới hạn](../evidence/rust-service/f1-character-profiles.json).
+Đây là bằng chứng `kr_static` và `emu_choice`; lượt native Wine mới chưa chạy, không nâng lớp bằng chứng và không
+tạo CP394.
+
 <a id="rust-account-backend"></a>
 ## Backend account Rust độc lập client — CP236 / RUST-M5 / KRE-074
 

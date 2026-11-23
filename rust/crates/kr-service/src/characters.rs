@@ -176,6 +176,115 @@ mod tests {
     }
 
     #[test]
+    fn f1_pack_catalog_matches_every_kr_00967_character_vector_and_each_pickup_cap() {
+        // BomberAttr KR 00967, fields are key, group, speed/max, capacity/max,
+        // power/max. Keeping the complete vector here makes a pack regression
+        // fail at the Rust boundary instead of silently serving a partial
+        // roster.
+        let rows = [
+            (0, 5, 7, 1, 10, 1, 7),
+            (1, 4, 8, 2, 7, 1, 9),
+            (2, 5, 8, 1, 8, 1, 5),
+            (3, 4, 8, 1, 10, 1, 8),
+            (4, 4, 8, 2, 9, 1, 6),
+            (5, 5, 9, 1, 6, 1, 7),
+            (6, 5, 8, 1, 6, 2, 7),
+            (7, 4, 8, 1, 9, 2, 8),
+            (8, 6, 10, 2, 9, 1, 7),
+            (9, 5, 10, 3, 9, 1, 7),
+            (10, 6, 10, 2, 9, 1, 7),
+            (11, 6, 10, 2, 9, 1, 7),
+            (120, 5, 9, 2, 9, 1, 7),
+            (121, 5, 9, 2, 8, 1, 9),
+            (122, 5, 8, 2, 8, 2, 7),
+            (123, 6, 10, 2, 8, 1, 8),
+            (124, 5, 10, 3, 9, 1, 7),
+            (125, 6, 10, 2, 9, 2, 8),
+            (126, 7, 9, 1, 9, 1, 8),
+            (127, 6, 8, 2, 9, 1, 9),
+            (128, 5, 9, 2, 9, 2, 8),
+            (129, 6, 10, 3, 9, 2, 8),
+            (130, 6, 10, 2, 9, 2, 8),
+            (131, 6, 10, 2, 9, 2, 8),
+            (150, 5, 10, 2, 9, 2, 8),
+            (151, 7, 10, 2, 10, 1, 7),
+            (3000, 6, 9, 3, 9, 3, 7),
+            (3001, 5, 9, 2, 9, 2, 8),
+            (3002, 5, 9, 2, 9, 2, 8),
+            (3003, 4, 6, 3, 10, 2, 10),
+            (3004, 7, 10, 1, 7, 1, 9),
+        ];
+        let keys: Vec<_> = rows.iter().map(|row| row.0).collect();
+        let map = rows
+            .iter()
+            .map(
+                |&(key, speed, maximum_speed, capacity, maximum_capacity, power, maximum_power)| {
+                    (
+                        key,
+                        Stats {
+                            capacity,
+                            maximum_capacity,
+                            power,
+                            maximum_power,
+                            speed,
+                            maximum_speed,
+                        },
+                    )
+                },
+            )
+            .collect();
+        let catalog = Catalog::from_pack(&keys, map).unwrap();
+        assert_eq!(keys.len(), 31);
+        for &(key, speed, maximum_speed, capacity, maximum_capacity, power, maximum_power) in &rows
+        {
+            let seed = catalog.get(key).unwrap();
+            assert_eq!(
+                (
+                    seed.speed,
+                    seed.maximum_speed,
+                    seed.capacity,
+                    seed.maximum_capacity,
+                    seed.power,
+                    seed.maximum_power
+                ),
+                (
+                    speed,
+                    maximum_speed,
+                    capacity,
+                    maximum_capacity,
+                    power,
+                    maximum_power
+                ),
+            );
+            let mut capped = seed;
+            for _ in 0..12 {
+                for kind in [0, 1, 2] {
+                    capped.basic_pickup(kind).unwrap();
+                }
+            }
+            capped.basic_pickup(5).unwrap();
+            assert_eq!(
+                (capped.capacity, capped.power, capped.speed),
+                (maximum_capacity, maximum_power, maximum_speed),
+            );
+            assert_eq!(catalog.get(key).unwrap(), seed);
+        }
+        for key in [4000, 4019, 4025, 4026] {
+            let mut invalid = rows
+                .iter()
+                .map(|&(key, ..)| (key, catalog.get(key).unwrap()))
+                .collect::<BTreeMap<_, _>>();
+            invalid.insert(key, catalog.get(0).unwrap());
+            let mut keys_with_invalid = keys.clone();
+            keys_with_invalid.push(key);
+            assert!(
+                Catalog::from_pack(&keys_with_invalid, invalid).is_err(),
+                "key {key}"
+            );
+        }
+    }
+
+    #[test]
     fn maxpower_uses_each_character_cap_without_changing_other_levels_or_seed() {
         let catalog = Catalog::measured(&[0, 1]).unwrap();
         for (key, maximum) in [(0, 7), (1, 9)] {

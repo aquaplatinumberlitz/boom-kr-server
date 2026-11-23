@@ -33,7 +33,8 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **24/11, G
 1. **Giai đoạn 2 — F1 (`#559` F1-a, `F1-b`, `#571` F1-c)** ([chi tiết](#f1-normal-battle)):
    - `#559` (`F1-a`): mở rộng adapter pack cho các họ map B còn lại trên `kr-load` và hai client thật (lịch sử nền đã kiểm: 155/214 map).
    - `F1-b`: kiểm native item Shoe, Punch, Kim trên bản pack đã nối trước khi xét nâng họ, sau đó mở rộng placement/drop theo nhóm map.
-   - `#571` (`F1-c`): đối chiếu `BomberAttr` KR 00967 cho nhân vật trận thường (lựa chọn, chỉ số ban đầu, cap và chọn lại sau ván).
+   - `#571` (`F1-c`): **Đã xác minh ma trận tổng hợp 31 nhân vật** từ `BomberAttr` KR 00967 (lựa chọn, Start121,
+     cap/reset qua Rust và đổi lại sau ván); còn chờ một lượt native Wine mới trước khi xét nâng lớp bằng chứng.
    - Tiếp theo sau `F1`: `F4` (giữ nhánh nền benchmark `bench/f4-opus55`) → `F2 → F5 → F3 → F6`.
 2. **Tổng kết M8 & phát hành Giai đoạn 1 (đã chốt):**
    - [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), [Launcher public & S1/O1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) (đã đóng) và [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) đều đã hoàn tất nghiệm thu Giai đoạn 1 (Soak13, `real-load26`, `PR #597`, `PR #598`, Wine S1 E2E và Windows 10 VM GUI smoke). Riêng gói Linux mới đóng gói/test namespace & S1 Docker trên x86_64; số đo ARM riêng giữ tại evidence cũ.
