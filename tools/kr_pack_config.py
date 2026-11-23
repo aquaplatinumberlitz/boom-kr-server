@@ -7,6 +7,14 @@ from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
 
 
+def enabled_characters(chars, *, uses_terrain=False):
+    """Return the pack roster accepted by the selected service floor."""
+    return sorted(
+        int(key) for key, stats in chars.items()
+        if not uses_terrain or stats['maximum_power'] <= 9
+    )
+
+
 def floor582(floor):
     lists = (floor['fixed'], floor['hidden'], [])
     if sum(map(len, lists)) > 64:
@@ -168,10 +176,7 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
         uses_terrain = 'terrain' in room or any('terrain' in choice for choice in choices)
         # Match the service's measured terrain scope; retain the original
         # stats so a supported character plays with the same stats as the client.
-        round_config['characters'] = sorted(
-            int(key) for key, stats in chars.items()
-            if not uses_terrain or stats['maximum_power'] <= 9
-        )
+        round_config['characters'] = enabled_characters(chars, uses_terrain=uses_terrain)
     round_config['pack_stats'] = {str(key): chars[str(key)] for key in round_config['characters']}
     if scope in ('f1', 'f1-a'):
         two['managed_rooms']['capacity'] = 2

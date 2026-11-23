@@ -69,6 +69,11 @@ pub(crate) struct Config {
     character_rounds: Option<Vec<[u16; 2]>>,
     #[serde(default)]
     check_fixed_items: bool,
+    // Character matrix runs may use a pack floor without a measured item
+    // consumer. Pickup caps are covered by the room_io catalog tests; when
+    // this is false the driver still verifies selection, Start121 and reset.
+    #[serde(default)]
+    character_pickups: bool,
     #[serde(default)]
     delivery_buckets: bool,
     delivery_p99_ms_max: f64,
@@ -150,7 +155,12 @@ impl Config {
             || !(100..=10_000).contains(&self.ramp_ms)
             || !(2..=180).contains(&self.active_seconds)
             || self.minimum_run_seconds > 86400
-            || !(1..=8).contains(&self.minimum_rounds)
+            || !(1..=if self.character_rounds.is_some() {
+                32
+            } else {
+                8
+            })
+                .contains(&self.minimum_rounds)
             || (!self.maps.is_empty() && self.maps.len() != self.minimum_rounds as usize)
             || self.maps.iter().any(|m| m.index >= 16)
             || !(1.0..=1000.).contains(&self.delivery_p99_ms_max)
@@ -183,6 +193,7 @@ impl Config {
             && (self.rooms.len() != 1
                 || self.rooms[0].len() != 2
                 || rounds.len() as u64 != self.minimum_rounds
+                || rounds.len() > 32
                 || self.minimum_run_seconds != 0
                 || rounds.iter().flatten().any(|&key| key > 0x1fff))
         {
@@ -309,7 +320,10 @@ impl RoomContext {
                 .await?;
             }
         }
-        for _ in 0..8 {
+        // Normal load remains bounded at eight rounds. Character acceptance
+        // uses up to 32 short rounds so a two-client matrix can cover the
+        // complete F1 catalog without changing the ordinary load contract.
+        for _ in 0..32 {
             if block != 0 && self.delivery_failed.load(Ordering::Relaxed) {
                 break;
             }
@@ -373,7 +387,9 @@ impl RoomContext {
                 }
                 routes.push(peers);
             }
-            if let Some(floor) = floor {
+            if let Some(floor) = floor
+                && (self.config.check_fixed_items || self.config.character_pickups)
+            {
                 let key = round_key.expect("duel key");
                 if self.config.check_fixed_items {
                     let mut claimed = Vec::new();

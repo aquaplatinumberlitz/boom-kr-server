@@ -1,0 +1,503 @@
+{
+  "schema": "kre-f1-c-character-profiles-v1",
+  "issue": 571,
+  "build": "KR 00967",
+  "source": "kr_static + emu_choice",
+  "status": "candidate",
+  "pack_sha256": {
+    "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
+    "FxContents.idx": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+    "FxMap.idd": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+    "FxMap.idx": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+    "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767",
+    "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5"
+  },
+  "catalog_keys": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    150,
+    151,
+    3000,
+    3001,
+    3002,
+    3003,
+    3004
+  ],
+  "profiles": {
+    "0": {
+      "capacity": 1,
+      "maximum_capacity": 10,
+      "maximum_power": 7,
+      "maximum_speed": 7,
+      "power": 1,
+      "speed": 5
+    },
+    "1": {
+      "capacity": 2,
+      "maximum_capacity": 7,
+      "maximum_power": 9,
+      "maximum_speed": 8,
+      "power": 1,
+      "speed": 4
+    },
+    "2": {
+      "capacity": 1,
+      "maximum_capacity": 8,
+      "maximum_power": 5,
+      "maximum_speed": 8,
+      "power": 1,
+      "speed": 5
+    },
+    "3": {
+      "capacity": 1,
+      "maximum_capacity": 10,
+      "maximum_power": 8,
+      "maximum_speed": 8,
+      "power": 1,
+      "speed": 4
+    },
+    "4": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 6,
+      "maximum_speed": 8,
+      "power": 1,
+      "speed": 4
+    },
+    "5": {
+      "capacity": 1,
+      "maximum_capacity": 6,
+      "maximum_power": 7,
+      "maximum_speed": 9,
+      "power": 1,
+      "speed": 5
+    },
+    "6": {
+      "capacity": 1,
+      "maximum_capacity": 6,
+      "maximum_power": 7,
+      "maximum_speed": 8,
+      "power": 2,
+      "speed": 5
+    },
+    "7": {
+      "capacity": 1,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 8,
+      "power": 2,
+      "speed": 4
+    },
+    "8": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 7,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 6
+    },
+    "9": {
+      "capacity": 3,
+      "maximum_capacity": 9,
+      "maximum_power": 7,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 5
+    },
+    "10": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 7,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 6
+    },
+    "11": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 7,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 6
+    },
+    "120": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 7,
+      "maximum_speed": 9,
+      "power": 1,
+      "speed": 5
+    },
+    "121": {
+      "capacity": 2,
+      "maximum_capacity": 8,
+      "maximum_power": 9,
+      "maximum_speed": 9,
+      "power": 1,
+      "speed": 5
+    },
+    "122": {
+      "capacity": 2,
+      "maximum_capacity": 8,
+      "maximum_power": 7,
+      "maximum_speed": 8,
+      "power": 2,
+      "speed": 5
+    },
+    "123": {
+      "capacity": 2,
+      "maximum_capacity": 8,
+      "maximum_power": 8,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 6
+    },
+    "124": {
+      "capacity": 3,
+      "maximum_capacity": 9,
+      "maximum_power": 7,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 5
+    },
+    "125": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 10,
+      "power": 2,
+      "speed": 6
+    },
+    "126": {
+      "capacity": 1,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 9,
+      "power": 1,
+      "speed": 7
+    },
+    "127": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 9,
+      "maximum_speed": 8,
+      "power": 1,
+      "speed": 6
+    },
+    "128": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 9,
+      "power": 2,
+      "speed": 5
+    },
+    "129": {
+      "capacity": 3,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 10,
+      "power": 2,
+      "speed": 6
+    },
+    "130": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 10,
+      "power": 2,
+      "speed": 6
+    },
+    "131": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 10,
+      "power": 2,
+      "speed": 6
+    },
+    "150": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 10,
+      "power": 2,
+      "speed": 5
+    },
+    "151": {
+      "capacity": 2,
+      "maximum_capacity": 10,
+      "maximum_power": 7,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 7
+    },
+    "3000": {
+      "capacity": 3,
+      "maximum_capacity": 9,
+      "maximum_power": 7,
+      "maximum_speed": 9,
+      "power": 3,
+      "speed": 6
+    },
+    "3001": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 9,
+      "power": 2,
+      "speed": 5
+    },
+    "3002": {
+      "capacity": 2,
+      "maximum_capacity": 9,
+      "maximum_power": 8,
+      "maximum_speed": 9,
+      "power": 2,
+      "speed": 5
+    },
+    "3003": {
+      "capacity": 3,
+      "maximum_capacity": 10,
+      "maximum_power": 10,
+      "maximum_speed": 6,
+      "power": 2,
+      "speed": 4
+    },
+    "3004": {
+      "capacity": 1,
+      "maximum_capacity": 7,
+      "maximum_power": 9,
+      "maximum_speed": 10,
+      "power": 1,
+      "speed": 7
+    }
+  },
+  "matrix": {
+    "status": "passed",
+    "clients": 2,
+    "transport": "TLS/relay",
+    "runs": [
+      {
+        "label": "batch-1",
+        "keys": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          120,
+          121
+        ],
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            120,
+            121
+          ]
+        ],
+        "rounds_returned": 7,
+        "start121_checked": 7,
+        "evidence": [
+          {
+            "path": "local/runs/f1c-character-matrix/batch-1/load.log",
+            "bytes": 3525,
+            "sha256": "b5f1d20436288184e72c15aa465d5358160c51f64fd5c99fbbcd2babf3ad4d48"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-1/load.json",
+            "bytes": 1003,
+            "sha256": "24585613f88973a33efe0e0a1b40f6b6249377fd7caf0d989b99a672c2d0af87"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-1/health.json",
+            "bytes": 409,
+            "sha256": "9bf78dc3cf921d192195f79fd4c24ec81926e5533d8d5aa7af73b00d8f71f4d6"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-1/receipt.json",
+            "bytes": 1350,
+            "sha256": "e1546bab1e0bbdcbf38bc04b8849973fbc3a64a2d6719fa1adc39d9599973c40"
+          }
+        ]
+      },
+      {
+        "label": "batch-2",
+        "keys": [
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          150,
+          151,
+          3000,
+          3001
+        ],
+        "pairs": [
+          [
+            122,
+            123
+          ],
+          [
+            124,
+            125
+          ],
+          [
+            126,
+            127
+          ],
+          [
+            128,
+            129
+          ],
+          [
+            130,
+            131
+          ],
+          [
+            150,
+            151
+          ],
+          [
+            3000,
+            3001
+          ]
+        ],
+        "rounds_returned": 7,
+        "start121_checked": 7,
+        "evidence": [
+          {
+            "path": "local/runs/f1c-character-matrix/batch-2/load.log",
+            "bytes": 3476,
+            "sha256": "cf27f5d557df9d43ff9d5cb7a2734b57e2e357071640cd69d83d3244fbd19266"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-2/load.json",
+            "bytes": 1027,
+            "sha256": "3fa2a382bd041714a520ee0d87a3a17b4a0642ed37cd213edc4ea01729e5245f"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-2/health.json",
+            "bytes": 409,
+            "sha256": "565c8f96902379ff700fd24e1e22690f3cacb246263093991cffea96cb26cd49"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-2/receipt.json",
+            "bytes": 1398,
+            "sha256": "04044a84478264a5f5a8ad66237556afde4138bfa62735c8114305d00ddb879a"
+          }
+        ]
+      },
+      {
+        "label": "batch-3",
+        "keys": [
+          3002,
+          3003,
+          3004
+        ],
+        "pairs": [
+          [
+            3002,
+            3003
+          ],
+          [
+            3004,
+            0
+          ]
+        ],
+        "rounds_returned": 2,
+        "start121_checked": 2,
+        "evidence": [
+          {
+            "path": "local/runs/f1c-character-matrix/batch-3/load.log",
+            "bytes": 1145,
+            "sha256": "0198d793d81d7dcd9ec3540f32b048740f02f04f617509fc9936b4076da759d3"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-3/load.json",
+            "bytes": 856,
+            "sha256": "f008e3505764203b558f08f859c6d666011a06b86b7404a99b3b06fd1d8aa8ca"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-3/health.json",
+            "bytes": 409,
+            "sha256": "dbf33277cd65d8220b7c7ef47068d7123caf43ac5360f4533012ccde665ee775"
+          },
+          {
+            "path": "local/runs/f1c-character-matrix/batch-3/receipt.json",
+            "bytes": 1129,
+            "sha256": "6299b97c1a5f90fc1776bfa7fddd744bf1f56ef2d02a8880134c6b31d437fb6f"
+          }
+        ]
+      }
+    ],
+    "rounds": 16,
+    "start121_rounds": 16,
+    "all_keys_covered": true,
+    "native_wine": "pending",
+    "native_limit": "Chưa chạy lượt native Wine mới; không nâng lớp bằng chứng."
+  },
+  "limits": [
+    "Ma trận là kr-load tổng hợp, không phải client CA.exe native.",
+    "Pickup cap/reset được kiểm Rust room_io; driver matrix xác nhận chọn phòng, Start121, kết thúc và về phòng.",
+    "Không tạo CP394."
+  ]
+}
