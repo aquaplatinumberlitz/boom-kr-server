@@ -152,3 +152,139 @@ fn administrative_mutations_and_failures_are_queryable_without_secrets() {
         .any(|secret| text.contains(secret))
     );
 }
+
+#[test]
+fn f4_profile_ledger_inventory_and_audited_grants_over_stdin_json() {
+    let path = TestDir::new();
+    let db = path.0.join("accounts.sqlite");
+    success(&db, json!({"op":"init"}));
+    success(&db, json!({"op":"begin-instance"}));
+    let account = success(
+        &db,
+        json!({"op":"create","login":"Alice","name":"Alice","password":"generated-for-f4-test"}),
+    );
+    let player = account["player"]["player_id"].as_i64().unwrap();
+    let profile = success(&db, json!({"op":"profile-get","player_id":player}));
+    assert_eq!(
+        profile,
+        json!({"profile":{"player_id":player,"exp":0,"level":1,"lucci":0,"version":1},"equipped":[]})
+    );
+
+    let grant = json!({"op":"admin-grant-lucci","player_id":player,"lucci_delta":250,"idempotency_key":"ops-1"});
+    let first = success(&db, grant.clone());
+    assert_eq!(first["replayed"], false);
+    assert_eq!(first["profile"]["lucci"], 250);
+    let replay = success(&db, grant);
+    assert_eq!(replay["replayed"], true);
+    assert_eq!(replay["ledger_id"], first["ledger_id"]);
+    assert_eq!(replay["profile"]["lucci"], 250);
+    failure(
+        &db,
+        json!({"op":"admin-grant-lucci","player_id":player,"lucci_delta":251,"idempotency_key":"ops-1"}),
+        "Conflict",
+    );
+    failure(
+        &db,
+        json!({"op":"admin-grant-lucci","player_id":player,"lucci_delta":-1000,"idempotency_key":"ops-2"}),
+        "InsufficientFunds",
+    );
+    failure(
+        &db,
+        json!({"op":"admin-grant-lucci","player_id":player,"lucci_delta":1,"idempotency_key":"ops-3","extra":1}),
+        "InvalidInput",
+    );
+
+    let item = json!({"op":"admin-grant-item","player_id":player,"sku_id":"hat.red","quantity":2,
+        "grant":{"kind":"timed","duration_seconds":3600},"idempotency_key":"item-1"});
+    let granted = success(&db, item.clone());
+    assert_eq!(granted["replayed"], false);
+    let expires = granted["item"]["expires_at"].as_i64().unwrap();
+    assert_eq!(
+        expires - granted["item"]["acquired_at"].as_i64().unwrap(),
+        7200
+    );
+    assert_eq!(success(&db, item)["item"]["expires_at"], expires);
+    failure(
+        &db,
+        json!({"op":"admin-grant-item","player_id":player,"sku_id":"hat.red","quantity":1,
+            "grant":{"kind":"timed","duration_seconds":3600},"idempotency_key":"item-1"}),
+        "Conflict",
+    );
+    failure(
+        &db,
+        json!({"op":"admin-grant-item","player_id":player,"sku_id":"bad sku","quantity":1,
+            "grant":{"kind":"permanent"},"idempotency_key":"item-2"}),
+        "InvalidInput",
+    );
+    success(
+        &db,
+        json!({"op":"admin-grant-item","player_id":player,"sku_id":"char.bazzi","quantity":1,
+            "grant":{"kind":"permanent"},"idempotency_key":"item-3"}),
+    );
+
+    let inventory = success(&db, json!({"op":"inventory-list","player_id":player}));
+    let items = inventory["inventory"].as_array().unwrap();
+    assert_eq!(items.len(), 2);
+    assert_eq!(items[0]["sku_id"], "char.bazzi");
+    assert_eq!(items[1]["grant_kind"], "timed");
+    assert_eq!(items[1]["active"], true);
+    assert_eq!(items[1]["equipped_slots"], json!([]));
+    let ledger = success(
+        &db,
+        json!({"op":"ledger-list","player_id":player,"limit":10}),
+    );
+    let entries = ledger["ledger"].as_array().unwrap();
+    assert_eq!(entries.len(), 3);
+    assert!(entries.iter().all(|e| e["kind"] == "admin_grant"));
+    assert_eq!(entries[2]["lucci_delta"], 250);
+    failure(
+        &db,
+        json!({"op":"ledger-list","player_id":player,"limit":0}),
+        "InvalidInput",
+    );
+    failure(
+        &db,
+        json!({"op":"profile-get","player_id":999}),
+        "InvalidInput",
+    );
+    assert_eq!(
+        success(&db, json!({"op":"profile-get","player_id":player}))["profile"]["version"],
+        4
+    );
+
+    let audit = success(
+        &db,
+        json!({"op":"audit-list","filter":{"target_kind":"player","target_id":player.to_string(),"limit":100}}),
+    );
+    let rows = audit["audit"].as_array().unwrap();
+    let has = |op: &str, result: &str| {
+        rows.iter()
+            .filter(|r| r["operation"] == op && r["result"] == result && r["actor"] == "on-call")
+            .count()
+    };
+    assert_eq!(has("admin_grant_lucci", "ok"), 1);
+    assert_eq!(has("admin_grant_lucci", "replayed"), 1);
+    assert_eq!(has("admin_grant_lucci", "Conflict"), 1);
+    assert_eq!(has("admin_grant_lucci", "InsufficientFunds"), 1);
+    assert_eq!(has("admin_grant_item", "ok"), 2);
+    assert_eq!(has("admin_grant_item", "replayed"), 1);
+    assert_eq!(has("admin_grant_item", "Conflict"), 1);
+    assert_eq!(has("admin_grant_item", "InvalidInput"), 1);
+    assert_eq!(has("profile_get", "ok"), 2);
+    assert_eq!(has("profile_get", "InvalidInput"), 0);
+    assert_eq!(has("ledger_list", "ok"), 1);
+    assert_eq!(has("inventory_list", "ok"), 1);
+    let sql = rusqlite::Connection::open(&db).unwrap();
+    let applied: i64 = sql
+        .query_row(
+            "SELECT count(*) FROM admin_audit WHERE operation LIKE 'admin_grant_%' AND result='ok' AND account_id IS NOT NULL",
+            [],
+            |r| r.get(0),
+        )
+        .unwrap();
+    assert_eq!(applied, 3);
+    let lucci: i64 = sql
+        .query_row("SELECT lucci FROM player_profiles", [], |r| r.get(0))
+        .unwrap();
+    assert_eq!(lucci, 250);
+}

@@ -1,7 +1,9 @@
 //! Local trusted-administrator interface. JSON credentials are stdin-only.
 #![forbid(unsafe_code)]
 use kr_service::{
-    accounts::{self, Admin, AuditFilter, Error, HistoryFilter, SCHEMA_VERSION, Store, Token},
+    accounts::{
+        self, Admin, AuditFilter, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION, Store, Token,
+    },
     operations::{self, LiveCommand, RoomTarget},
 };
 use serde::Deserialize;
@@ -79,11 +81,33 @@ enum Command {
     },
     #[serde(rename = "password-reset")]
     Reset { account_id: i64, password: Secret },
+    #[serde(rename = "profile-get")]
+    ProfileGet { player_id: i64 },
+    #[serde(rename = "ledger-list")]
+    LedgerList { player_id: i64, limit: u8 },
+    #[serde(rename = "inventory-list")]
+    InventoryList { player_id: i64 },
+    #[serde(rename = "admin-grant-lucci")]
+    AdminGrantLucci {
+        player_id: i64,
+        /// Positive grant or negative correction; never below a zero balance.
+        lucci_delta: i64,
+        idempotency_key: String,
+    },
+    #[serde(rename = "admin-grant-item")]
+    AdminGrantItem {
+        player_id: i64,
+        sku_id: String,
+        quantity: u32,
+        grant: ItemGrant,
+        idempotency_key: String,
+    },
 }
 impl Command {
     fn audit_context(&self) -> (&'static str, &'static str, String, bool) {
         use Command::*;
         let account = |op, id: &i64, recorded| (op, "account", id.to_string(), recorded);
+        let player = |op, id: &i64, recorded| (op, "player", id.to_string(), recorded);
         let login = |op, value: &str, recorded| {
             let id = if (3..=32).contains(&value.len())
                 && value
@@ -117,6 +141,11 @@ impl Command {
             RecoveryReset { account_id } => account("reset_recovery", account_id, true),
             Delete { account_id } => account("delete_account", account_id, true),
             AuditList { .. } => ("audit_list", "service", "audit".into(), false),
+            ProfileGet { player_id } => player("profile_get", player_id, false),
+            LedgerList { player_id, .. } => player("ledger_list", player_id, false),
+            InventoryList { player_id } => player("inventory_list", player_id, false),
+            AdminGrantLucci { player_id, .. } => player("admin_grant_lucci", player_id, true),
+            AdminGrantItem { player_id, .. } => player("admin_grant_item", player_id, true),
             ListRooms {} | CloseRoom { .. } => unreachable!("handled by live admin"),
         }
     }
@@ -175,6 +204,10 @@ fn manage(database: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     };
     let result = execute(&mut s, &admin, cmd);
     match &result {
+        // An idempotent replay applied nothing; record the attempt itself.
+        Ok(value) if recorded && value["replayed"] == true => {
+            s.operator_event(&admin, op, (kind, &id), "replayed")?;
+        }
         Ok(_) if !recorded => {
             s.operator_event(&admin, op, (kind, &id), "ok")?;
         }
@@ -247,6 +280,44 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
             s.reset_password(admin, account_id, password.0.as_bytes(), None)?;
             json!({"ok":true})
         }
+        Command::ProfileGet { player_id } => json!({
+            "profile": s.get_profile(player_id)?,
+            "equipped": s.list_equipped(player_id)?,
+        }),
+        Command::LedgerList { player_id, limit } => {
+            json!({"ledger": s.list_ledger(player_id, limit)?})
+        }
+        Command::InventoryList { player_id } => {
+            json!({"inventory": s.list_inventory(player_id, accounts::utc()?)?})
+        }
+        Command::AdminGrantLucci {
+            player_id,
+            lucci_delta,
+            idempotency_key,
+        } => serde_json::to_value(s.admin_grant_lucci(
+            admin,
+            player_id,
+            lucci_delta,
+            &idempotency_key,
+            None,
+        )?)
+        .map_err(|_| Error::Storage)?,
+        Command::AdminGrantItem {
+            player_id,
+            sku_id,
+            quantity,
+            grant,
+            idempotency_key,
+        } => serde_json::to_value(s.admin_grant_item(
+            admin,
+            player_id,
+            &sku_id,
+            grant,
+            quantity,
+            &idempotency_key,
+            None,
+        )?)
+        .map_err(|_| Error::Storage)?,
     })
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {

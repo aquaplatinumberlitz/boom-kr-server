@@ -15,6 +15,7 @@ use std::{
 };
 use zeroize::Zeroizing;
 
+mod economy;
 mod guests;
 mod local_login;
 mod management;
@@ -24,6 +25,7 @@ mod preferences;
 mod snapshots;
 pub use snapshots::{restore, snapshot, verify_snapshot};
 mod operator;
+pub use economy::*;
 pub use matches::*;
 pub use operator::{AuditFilter, AuditRow, utc};
 pub use preferences::CharacterPreference;
@@ -34,13 +36,16 @@ const MIGRATION_MATCHES: &str = include_str!("../migrations/0003_match_history.s
 const MIGRATION_GUESTS: &str = include_str!("../migrations/0004_guest_accounts.sql");
 const MIGRATION_RECOVERY: &str = include_str!("../migrations/0005_account_recovery.sql");
 const MIGRATION_AUDIT: &str = include_str!("../migrations/0006_operator_audit.sql");
-const SCRIPTS: [&str; 6] = [
+const MIGRATION_ECONOMY: &str =
+    include_str!("../migrations/0007_f4_progression_inventory_shop.sql");
+const SCRIPTS: [&str; 7] = [
     MIGRATION,
     MIGRATION_IDLE,
     MIGRATION_MATCHES,
     MIGRATION_GUESTS,
     MIGRATION_RECOVERY,
     MIGRATION_AUDIT,
+    MIGRATION_ECONOMY,
 ];
 pub const SCHEMA_VERSION: i32 = SCRIPTS.len() as i32;
 const APPLICATION_ID: i32 = 0x4b524143;
@@ -64,6 +69,8 @@ pub enum Error {
     Entropy,
     InstanceRequired,
     Exhausted,
+    /// Redacted: never carries the balance or the price.
+    InsufficientFunds,
 }
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -390,6 +397,10 @@ impl Store {
             })?;
         if state.0 < 0 || state.1 < 0 || state.2 <= max_wire || state.2 > 4_294_967_296 {
             return Err(Error::Schema);
+        }
+        if version >= 7 {
+            // F4: every profile EXP/Lucci balance must equal its append-only ledger.
+            Self::validate_economy(db)?;
         }
         Ok((version, expected))
     }

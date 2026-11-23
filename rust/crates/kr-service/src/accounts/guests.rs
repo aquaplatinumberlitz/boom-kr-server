@@ -135,7 +135,7 @@ mod tests {
         let grant = store
             .login("Alice", b"test-only-password-one", 60, 101)
             .unwrap();
-        store.db.execute_batch("DROP INDEX admin_audit_target; ALTER TABLE admin_audit DROP COLUMN result; ALTER TABLE admin_audit DROP COLUMN target_id; ALTER TABLE admin_audit DROP COLUMN target_kind; DROP TABLE account_recovery; DROP INDEX guest_account_expiry; DROP TABLE guest_accounts; DELETE FROM schema_migrations WHERE version>=4; PRAGMA user_version=3;").unwrap();
+        store.db.execute_batch("DROP TABLE player_equipped; DROP TABLE player_inventory; DROP TABLE ledger_entries; DROP TABLE player_profiles; DROP INDEX admin_audit_target; ALTER TABLE admin_audit DROP COLUMN result; ALTER TABLE admin_audit DROP COLUMN target_id; ALTER TABLE admin_audit DROP COLUMN target_kind; DROP TABLE account_recovery; DROP INDEX guest_account_expiry; DROP TABLE guest_accounts; DELETE FROM schema_migrations WHERE version>=4; PRAGMA user_version=3;").unwrap();
         drop(store);
         let mut reopened = temp.store();
         assert_eq!(
