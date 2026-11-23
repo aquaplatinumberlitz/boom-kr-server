@@ -3,7 +3,7 @@ import struct
 import unittest
 
 from kr_pack_config import enable_floor_policies, floor582
-from kr_pack_export import ITEMS, f1_floor
+from kr_pack_export import ITEMS, f1_floor, f1_terrain_rules
 from rust_map_profile import blob
 
 
@@ -48,6 +48,52 @@ class FloorTests(unittest.TestCase):
         self.assertEqual(room, dict(item_policy='report_derived_shoe_punch', life_actions='rescue'))
         enable_floor_policies(room, {145})
         self.assertEqual(room, dict(item_policy='report_derived_shoe_punch', life_actions='needle_rescue'))
+
+
+class TerrainAdapterTests(unittest.TestCase):
+    def profile(self, tile):
+        names = ['−1', tile]
+        return dict(name='SyntheticMap', width=2, height=1, rectangles=[],
+                    spawns=[[1, 0]], payload_sha256='1' * 64,
+                    cells=[[-1, 1], [-1, -1]]) , (names, {tile: self.tiles[tile]})
+
+    def setUp(self):
+        all_pass = 0x01010101
+        self.tiles = {
+            'Tile16_Static/PinPillar01': (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 16843009, 0, 0, 0, 0, 0, 0, 0),
+            'Tile16_Static/PinPillar02': (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0),
+            'Tile16_Static/PinPillar05': (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 16777216, 0, 0, 0, 0, 0, 0, 0),
+            'Tile62_Static/PinPillar_left': (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 65536, 0, 0, 0, 0, 0, 0, 0),
+            'Tile62_Passable/PoliceLine01': (3, 0, 0, 0, 0, 0, 0, 65537, all_pass, 16777217, 1, 1, 0, 0, 0, 0, 0, 0),
+            'Tile62_Passable/PoliceLine02': (3, 0, 0, 0, 0, 0, 0, 65537, all_pass, 16777217, 1, 1, 0, 0, 0, 0, 0, 0),
+            'Tile10_Passable/BasicBlock_pass00': (3, 0, 0, 0, 0, 0, all_pass, all_pass, all_pass, 0, 0, 0, 99, 0, 0, 0, 0, 0),
+            'Tile10_Passable/BasicBlock_pass01': (3, 0, 0, 0, 0, 0, all_pass, all_pass, all_pass, 0, 0, 0, 99, 0, 0, 0, 0, 0),
+        }
+
+    def test_measured_tile_variants_are_accepted(self):
+        for tile in self.tiles:
+            profile, table = self.profile(tile)
+            rules = f1_terrain_rules(profile, table)
+            self.assertEqual(
+                rules['terrain']['kinds'][0],
+                1 if tile.startswith(('Tile16_', 'Tile62_Static/')) else 0,
+            )
+
+    def test_unmeasured_mechanics_remain_rejected(self):
+        refused = {
+            'TileConv/ConvUR00': (0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 0, 0, 0, 0, 52224, 0, 0),
+            'Tile08_Ground/Rail00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0),
+            'Tile07_Ground/Tile00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64512, 0, 0),
+            'Tile42_Ground/TileRed': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 65536, 0, 0),
+            'Tile42_Static/Block03': (1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+        }
+        for tile, data in refused.items():
+            cells = [[1, -1], [-1, -1]] if not tile.startswith('Tile42_Static/') else [[-1, 1], [-1, -1]]
+            profile = dict(name='SyntheticMap', width=2, height=1, rectangles=[],
+                           spawns=[[1, 0]], payload_sha256='2' * 64,
+                           cells=cells)
+            with self.subTest(tile=tile), self.assertRaisesRegex(ValueError, 'ngoài adapter'):
+                f1_terrain_rules(profile, (['−1', tile], {tile: data}))
 
 
 if __name__ == '__main__':
