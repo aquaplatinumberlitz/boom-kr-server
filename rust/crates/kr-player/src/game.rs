@@ -24,6 +24,9 @@ pub(crate) struct Config {
     pub release_url: Option<String>,
     prelogin_server: Option<SocketAddrV4>,
     prelogin_certificate: Option<PathBuf>,
+    // A runtime-only port, owned by the selected S1 bridge.
+    #[serde(skip)]
+    prelogin_relay: Option<SocketAddrV4>,
     companion: PathBuf,
     pub ports: Vec<u16>,
     pub bundle: PathBuf,
@@ -43,12 +46,18 @@ pub(crate) struct Config {
     pub friends_directory: Vec<String>,
 }
 impl Config {
+    #[cfg(windows)]
+    pub fn companion(&self) -> &Path {
+        &self.companion
+    }
+
     pub fn route(&self) -> Option<crate::servers::Route> {
         Some(crate::servers::Route {
             account: self.server?,
             account_cert: self.certificate.clone()?,
             game: self.prelogin_server?,
             game_cert: self.prelogin_certificate.clone()?,
+            relay: self.prelogin_relay,
         })
     }
 
@@ -57,6 +66,7 @@ impl Config {
         self.certificate = Some(route.account_cert.clone());
         self.prelogin_server = Some(route.game);
         self.prelogin_certificate = Some(route.game_cert.clone());
+        self.prelogin_relay = route.relay;
         self
     }
 
@@ -67,10 +77,13 @@ impl Config {
     }
 
     pub fn load() -> io::Result<Self> {
-        let path = std::env::args_os()
-            .nth(1)
-            .map(PathBuf::from)
-            .unwrap_or(std::env::current_exe()?.with_file_name("launcher.json"));
+        let path = if let Some(path) = std::env::args_os().nth(1) {
+            PathBuf::from(path)
+        } else {
+            let beside = std::env::current_exe()?.with_file_name("launcher.json");
+            let data = beside.with_file_name("data").join("launcher.json");
+            if data.is_file() { data } else { beside }
+        };
         let path = path.canonicalize()?;
         let root = path
             .parent()
@@ -388,6 +401,7 @@ fn start_inner(
         let value = serde_json::json!({
             "server": config.prelogin_server.filter(|_| friends.is_none()),
             "certificate": config.prelogin_certificate.filter(|_| friends.is_none()),
+            "relay_bridge": config.prelogin_relay.filter(|_| friends.is_none()),
             "friends": friends,
             "ports": config.ports, "udp_backend": config.udp_backend,
             "cancel_file": run.join("cancel"), "ready_file": signal, "owner_heartbeat": beat,
@@ -566,6 +580,7 @@ mod tests {
             release_url: None,
             prelogin_server: Some("127.0.0.1:49652".parse().unwrap()),
             prelogin_certificate: Some(certificate),
+            prelogin_relay: None,
             companion,
             ports: vec![3808],
             bundle: root.clone(),

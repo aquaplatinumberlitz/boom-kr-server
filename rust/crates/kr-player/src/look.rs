@@ -83,9 +83,51 @@ pub fn panel(_: &Theme) -> container::Style {
             width: 1.0,
             radius: 22.0.into(),
         },
-        shadow: glow(alpha(INK, 0.38), 8.0, 24.0),
+        // Shadows extend beyond widget bounds and can survive partial damage.
         ..Default::default()
     }
+}
+
+pub fn inset(_: &Theme) -> container::Style {
+    container::Style {
+        background: Some(alpha(INK, 0.84).into()),
+        border: Border {
+            radius: 12.0.into(),
+            color: white(0.20),
+            width: 1.0,
+        },
+        ..Default::default()
+    }
+}
+
+pub fn guide_nav(selected: bool) -> impl Fn(&Theme, button::Status) -> button::Style {
+    move |theme, status| {
+        let mut style = segment(selected)(theme, status);
+        style.border.radius = 10.0.into();
+        style
+    }
+}
+
+fn brand() -> &'static (image::Handle, Vec<u8>) {
+    static BRAND: std::sync::OnceLock<(image::Handle, Vec<u8>)> = std::sync::OnceLock::new();
+    BRAND.get_or_init(|| {
+        let rgba = ::image::load_from_memory_with_format(
+            include_bytes!("../../../../assets/brand/icon-256.png"),
+            ::image::ImageFormat::Png,
+        )
+        .expect("embedded LANBoom icon")
+        .into_rgba8()
+        .into_raw();
+        (image::Handle::from_rgba(256, 256, rgba.clone()), rgba)
+    })
+}
+
+pub fn logo() -> image::Handle {
+    brand().0.clone()
+}
+
+pub fn window_icon() -> Option<iced::window::Icon> {
+    iced::window::icon::from_rgba(brand().1.clone(), 256, 256).ok()
 }
 
 pub fn scrim(_: &Theme) -> container::Style {
@@ -227,18 +269,6 @@ pub fn decode_art(bytes: Option<Vec<u8>>) -> Option<image::Handle> {
         rgba.height(),
         rgba.into_raw(),
     ))
-}
-
-pub fn pill(tint: Color) -> impl Fn(&Theme) -> container::Style {
-    move |_| container::Style {
-        background: Some(alpha(tint, 0.12).into()),
-        border: Border {
-            color: alpha(tint, 0.30),
-            width: 1.0,
-            radius: 999.0.into(),
-        },
-        ..Default::default()
-    }
 }
 
 pub fn dot(color: Color) -> impl Fn(&Theme) -> container::Style {

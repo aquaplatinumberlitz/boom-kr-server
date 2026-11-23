@@ -3,8 +3,11 @@ import json
 from pathlib import Path
 import os
 import struct
+import sys
 import tempfile
 import unittest
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from player_package import KR_PORTS, ROOT, build, digest, preflight, windows_runtime
 from rust_package_runtime import friends_pack
@@ -109,6 +112,15 @@ class PackageTests(unittest.TestCase):
             self.assertEqual(art.format, 'JPEG')
             self.assertEqual(art.size, (960, 718))
 
+    def test_release_assets_reject_missing_backdrop_before_staging(self):
+        output = self.root / 'release'
+        with self.assertRaisesRegex(ValueError, 'backdrop.jpg'):
+            build(self.recipe, output, self.no_art, require_release_assets=True)
+        self.assertFalse(output.exists())
+        output.mkdir()
+        with self.assertRaisesRegex(ValueError, 'backdrop.jpg'):
+            preflight(output, require_release_assets=True)
+
     def test_english_built_on_original_prefix_is_rejected(self):
         for language, data in [('vi', b'KRVI'), ('en', b'KREN')]:
             root = self.root / language
@@ -135,25 +147,26 @@ class PackageTests(unittest.TestCase):
                       prelogin_server='127.0.0.1:2001', ports=[3838, 3938])
         with self.assertRaisesRegex(ValueError, 'PE x86-64'):
             windows_runtime(recipe, output, summary['manifest_sha256'])
-        self.assertFalse((output / 'kr-player.exe').exists())
+        self.assertFalse((output / 'LANBoom.exe').exists())
         recipe['companion'] = pin(program)
         recipe['release_url'] = 'https://drive.google.com.evil.invalid/drive/folders/example'
         with self.assertRaisesRegex(ValueError, 'HTTPS Google Drive'):
             windows_runtime(recipe, output, summary['manifest_sha256'])
-        self.assertFalse((output / 'kr-player.exe').exists())
+        self.assertFalse((output / 'LANBoom.exe').exists())
         recipe['release_url'] = 'https://drive.google.com/drive/folders/example?usp=sharing'
         recipe['server_name'] = 'Máy chủ thử'
         runtime = windows_runtime(recipe, output, summary['manifest_sha256'])
-        config = json.loads((output / 'launcher.json').read_text())
-        self.assertEqual(config['companion'], 'kr-prelogin.exe')
+        config = json.loads((output / 'data/launcher.json').read_text())
+        self.assertEqual(config['companion'], 'bin/kr-prelogin.exe')
         self.assertEqual(config['udp_backend'], 'portable')
-        self.assertIn('manifest.json', config['file_hashes'])
-        self.assertIn('kr-prelogin.exe', config['file_hashes'])
-        self.assertIn('MO-GAME.txt', config['file_hashes'])
+        self.assertIn('data/manifest.json', config['file_hashes'])
+        self.assertIn('data/bin/kr-prelogin.exe', config['file_hashes'])
+        self.assertIn('data/MO-GAME.txt', config['file_hashes'])
         self.assertEqual(config['server_name'], recipe['server_name'])
         self.assertEqual(config['release_url'], recipe['release_url'])
-        self.assertEqual(runtime['kr-prelogin.exe'], digest(program))
-        self.assertEqual(config['manifest_sha256'], digest(output / 'manifest.json'))
+        self.assertEqual(runtime['data/bin/kr-prelogin.exe'], digest(program))
+        self.assertEqual(config['manifest_sha256'], digest(output / 'data/manifest.json'))
+        self.assertEqual({p.name for p in output.iterdir()}, {'LANBoom.exe', 'data'})
 
     def test_wrong_executable_pin_and_unpatched_korean_are_rejected(self):
         self.recipe['languages']['ko']['encoding'] = 'cp949'

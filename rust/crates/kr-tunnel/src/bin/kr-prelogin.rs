@@ -1,7 +1,7 @@
 //! Company companion starts before the game and accepts no account password.
 #![forbid(unsafe_code)]
 use kr_tunnel::prelogin::trace::{Startup, StopCause, Trace};
-use kr_tunnel::prelogin::{friends, heartbeat::Heartbeat};
+use kr_tunnel::prelogin::{RelayBridge, friends, heartbeat::Heartbeat};
 use serde::Deserialize;
 use std::{io, net::SocketAddrV4, path::PathBuf};
 use tokio::sync::watch;
@@ -10,6 +10,7 @@ use tokio::sync::watch;
 struct Config {
     server: Option<SocketAddrV4>,
     certificate: Option<PathBuf>,
+    relay_bridge: Option<SocketAddrV4>,
     friends: Option<friends::Guest>,
     ports: Vec<u16>,
     cancel_file: PathBuf,
@@ -45,6 +46,11 @@ async fn main() -> io::Result<()> {
         }
         (None, None, true) => None,
         _ => return Err(io::Error::other("prelogin configuration bounds")),
+    };
+    let relay = match (online.as_ref(), config.relay_bridge) {
+        (Some((server, _)), Some(relay)) => Some(RelayBridge::new((*server).into(), relay)?),
+        (_, None) => None,
+        (None, Some(_)) => return Err(io::Error::other("relay bridge requires online prelogin")),
     };
     if config.cancel_file.exists() {
         return Err(io::Error::other("prelogin cancelled"));
@@ -125,9 +131,10 @@ async fn main() -> io::Result<()> {
         return result;
     }
     let (endpoint, server) = endpoint.expect("validated online mode");
-    let result = kr_tunnel::prelogin::companion_traced(
+    let result = kr_tunnel::prelogin::companion_with_relay(
         endpoint.clone(),
         server.into(),
+        relay,
         listeners,
         stop,
         config.udp_backend,

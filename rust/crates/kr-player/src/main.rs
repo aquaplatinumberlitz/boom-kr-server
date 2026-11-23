@@ -39,7 +39,6 @@ enum Mode {
 enum Screen {
     Settings,
     Help(guide::Section),
-    Menu,
     Register,
     Change,
     Delete,
@@ -63,7 +62,7 @@ enum Files {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum PlayState {
-    Soon,
+    Inactive,
     Checking,
     Starting,
     Running,
@@ -90,6 +89,9 @@ enum Message {
     Current(Zeroizing<String>),
     Code(Zeroizing<String>),
     Submit,
+    TogglePassword,
+    SaveCode,
+    SavedCode(Result<bool, ()>),
     AccountDone(Result<Option<Zeroizing<String>>, ()>),
     CopyCode,
     Tick,
@@ -104,17 +106,26 @@ enum Message {
     FriendsName(String),
     FriendsCode(String),
     ServerInvite(String),
+    AddServer,
+    RemoveServer(servers::Id),
+    ServerConnected(
+        u64,
+        servers::Id,
+        bool,
+        Result<(std::sync::Arc<servers::Bridge>, Server), ()>,
+    ),
     FriendsHost,
     FriendsHosted(Result<friends::Host, ()>),
     FriendsJoin,
     FriendsFind,
-    FriendsFound(Vec<kr_p2p::room::Route>),
+    FriendsFound(Vec<kr_p2p::room::DiscoveredRoom>),
     FriendsSelect(kr_p2p::room::Route),
     FriendsCopy,
     FriendsLaunch(Result<Session, StartError>),
     Started(Result<Session, StartError>),
     Desktop(desktop::Action),
     DesktopDone(desktop::Action, bool),
+    Stop,
     Close,
 }
 
@@ -125,6 +136,8 @@ struct Form {
     password: Zeroizing<String>,
     current: Zeroizing<String>,
     code: Zeroizing<String>,
+    edited: bool,
+    reveal: bool,
 }
 
 impl Form {
@@ -165,8 +178,14 @@ struct Player {
     friends_name: String,
     friends_code: String,
     server_invite: String,
+    server_notice: Option<Copy>,
+    server_connecting: bool,
+    server_generation: u64,
+    server_bridge: Option<std::sync::Arc<servers::Bridge>>,
+    #[cfg(windows)]
+    firewall_busy: bool,
     friends_host: Option<friends::Host>,
-    friends_list: Vec<kr_p2p::room::Route>,
+    friends_list: Vec<kr_p2p::room::DiscoveredRoom>,
     friends_finding: bool,
     friends_notice: Option<Copy>,
     art: Option<image::Handle>,
@@ -202,7 +221,7 @@ fn play_state(
     failure: bool,
 ) -> PlayState {
     if mode == Mode::OfflineFriends {
-        PlayState::Soon
+        PlayState::Inactive
     } else if running {
         PlayState::Running
     } else if starting {
@@ -233,11 +252,11 @@ fn save_preference(state: Option<&Path>, file: &str, value: impl Serialize) -> b
 
 const ACCOUNT_LOGIN: &str = "account-login";
 const WINDOW_SIZE: iced::Size = iced::Size::new(1100.0, 820.0);
-const MINIMUM: iced::Size = iced::Size::new(880.0, 660.0);
+const MINIMUM: iced::Size = iced::Size::new(805.0, 600.0);
 
 fn fitted_window(monitor: iced::Size) -> iced::Size {
     let scale = (monitor.width / WINDOW_SIZE.width)
-        .min((monitor.height - 72.0) / WINDOW_SIZE.height)
+        .min((monitor.height - 106.0) / WINDOW_SIZE.height)
         .clamp(0.4, 1.0);
     iced::Size::new(
         (WINDOW_SIZE.width * scale).round(),
@@ -311,12 +330,13 @@ impl Player {
         let language = preference(state, "language.json");
         let mode = preference(state, "mode.json");
         let friends_name = preference(state, "friends-name.json");
-        let catalog: Vec<_> = config
+        let mut catalog: Vec<_> = config
             .as_ref()
             .and_then(|cfg| servers::Entry::bundled(cfg).ok())
             .into_iter()
             .collect();
         let mut server_prefs: servers::Preferences = preference(state, "servers.json");
+        catalog.extend(server_prefs.entries());
         if !catalog
             .iter()
             .any(|entry| Some(&entry.id) == server_prefs.selected.as_ref())
@@ -333,6 +353,12 @@ impl Player {
             friends_name,
             friends_code: String::new(),
             server_invite: String::new(),
+            server_notice: None,
+            server_connecting: false,
+            server_generation: 0,
+            server_bridge: None,
+            #[cfg(windows)]
+            firewall_busy: false,
             friends_host: None,
             friends_list: Vec::new(),
             friends_finding: false,
@@ -390,7 +416,12 @@ impl Player {
     }
 
     fn selected_config(&self) -> Option<Config> {
-        Some(self.config.clone()?.with_route(&self.selected()?.route))
+        let selected = self.selected()?;
+        let route = selected
+            .route
+            .as_ref()
+            .or_else(|| self.server_bridge.as_ref().map(|bridge| &bridge.route))?;
+        Some(self.config.clone()?.with_route(route))
     }
 
     fn save_servers(&mut self) {
@@ -401,7 +432,61 @@ impl Player {
         );
     }
 
+    fn connect_server(&mut self, invite: kr_p2p::Invite, add: bool) -> Task<Message> {
+        let Some(config) = self.config.clone() else {
+            return Task::none();
+        };
+        self.server_connecting = true;
+        self.server_generation = self.server_generation.wrapping_add(1);
+        let generation = self.server_generation;
+        let id = invite.to_string();
+        Task::perform(
+            async move {
+                let bridge = servers::Bridge::open(&config.state, &invite)
+                    .await
+                    .map_err(|_| ())?;
+                let config = config.with_route(&bridge.route);
+                let status = tokio::task::spawn_blocking(move || probe(&config))
+                    .await
+                    .unwrap_or(Server::Offline);
+                Ok((bridge, status))
+            },
+            move |result| Message::ServerConnected(generation, id.clone(), add, result),
+        )
+    }
+
+    fn select_server(&mut self, id: Option<servers::Id>) {
+        self.server_prefs.selected = id;
+        self.server_bridge = None;
+        self.server_generation = self.server_generation.wrapping_add(1);
+        self.server_connecting = false;
+        self.probing = false;
+        self.server = Server::Checking;
+        self.launch_error = None;
+        self.save_servers();
+    }
+
+    fn server_editable(&self) -> bool {
+        self.mode == Mode::Servers
+            && self.config.is_some()
+            && self.screen.is_none()
+            && !self.starting
+            && self.session.is_none()
+            && !self.closing
+            && !self.server_connecting
+    }
+
     fn check_server(&mut self) -> Task<Message> {
+        if self.server_connecting || self.closing {
+            return Task::none();
+        }
+        if self.mode == Mode::Servers
+            && self.server == Server::Checking
+            && self.server_bridge.is_none()
+            && let Some(invite) = self.selected().and_then(|entry| entry.invite.clone())
+        {
+            return self.connect_server(invite, false);
+        }
         if !self.probing
             && let Some((c, id)) = self
                 .selected_config()
@@ -481,6 +566,7 @@ impl Player {
                     )),
                     position: window::Position::Centered,
                     exit_on_close_request: false,
+                    icon: look::window_icon(),
                     platform_specific: window_platform_settings(),
                     ..Default::default()
                 });
@@ -496,7 +582,10 @@ impl Player {
                 );
             }
             Message::Mode(mode)
-                if self.screen.is_none() && !self.starting && self.session.is_none() =>
+                if self.screen.is_none()
+                    && !self.starting
+                    && self.session.is_none()
+                    && !self.server_connecting =>
             {
                 self.mode = mode;
                 self.preference_error = !save_preference(
@@ -507,24 +596,82 @@ impl Player {
                 if mode == Mode::OfflineFriends && self.config.is_some() {
                     return self.update(Message::FriendsFind);
                 }
+                return self.check_server();
             }
             Message::Select(id)
-                if self.mode == Mode::Servers
-                    && !self.starting
-                    && self.session.is_none()
-                    && self.screen.is_none()
-                    && self.catalog.iter().any(|entry| entry.id == id) =>
+                if self.server_editable() && self.catalog.iter().any(|entry| entry.id == id) =>
             {
                 if self.server_prefs.selected.as_ref() != Some(&id) {
-                    self.server_prefs.selected = Some(id);
-                    self.server = Server::Checking;
-                    self.probing = false;
-                    self.launch_error = None;
-                    self.save_servers();
+                    self.server_notice = None;
+                    self.select_server(Some(id));
                     return self.check_server();
                 }
             }
+            Message::AddServer if self.server_editable() => {
+                let Ok(invite @ kr_p2p::Invite::Server { .. }) = self.server_invite.trim().parse()
+                else {
+                    self.server_notice = Some(Copy::InviteBad);
+                    return Task::none();
+                };
+                let id = invite.to_string();
+                if !self.catalog.iter().any(|entry| entry.id == id)
+                    && !self.server_prefs.has_space()
+                {
+                    self.server_notice = Some(Copy::ServerListFull);
+                    return Task::none();
+                }
+                self.server_notice = None;
+                return self.connect_server(invite, true);
+            }
+            Message::RemoveServer(id) if self.server_editable() => {
+                if self
+                    .catalog
+                    .iter()
+                    .any(|entry| entry.id == id && entry.invite.is_some())
+                {
+                    self.catalog.retain(|entry| entry.id != id);
+                    self.server_prefs.remove(&id);
+                    self.server_notice = None;
+                    if self.server_prefs.selected.as_ref() == Some(&id) {
+                        self.select_server(self.catalog.first().map(|entry| entry.id.clone()));
+                        return self.check_server();
+                    }
+                    self.save_servers();
+                }
+            }
+            Message::ServerConnected(generation, id, add, result)
+                if generation == self.server_generation =>
+            {
+                self.server_connecting = false;
+                if let Ok((bridge, status)) = result {
+                    if add {
+                        let name = bridge.name().to_owned();
+                        self.server_prefs.add(id.clone(), name.clone());
+                        if let Some(entry) = self.catalog.iter_mut().find(|entry| entry.id == id) {
+                            entry.name = Some(name);
+                        } else if let Some(entry) = servers::Entry::invited(&id, name) {
+                            self.catalog.push(entry);
+                        }
+                        self.select_server(Some(id));
+                        self.server_invite.clear();
+                    }
+                    self.server = status;
+                    self.server_bridge = Some(bridge);
+                } else if add {
+                    self.server_notice = Some(Copy::InviteUnavailable);
+                } else {
+                    self.server = Server::Offline;
+                }
+            }
             Message::Open(screen) if !self.submitting => {
+                if self.server_connecting
+                    && matches!(
+                        screen,
+                        Screen::Register | Screen::Recover | Screen::Change | Screen::Delete
+                    )
+                {
+                    return Task::none();
+                }
                 self.show(Some(screen));
                 if let Screen::Help(section) = screen {
                     return iced::widget::operation::snap_to(
@@ -539,7 +686,7 @@ impl Player {
                     return iced::widget::operation::focus(ACCOUNT_LOGIN);
                 }
             }
-            Message::Tab(back) if self.screen.is_some() && !self.submitting => {
+            Message::Tab(back) if !self.submitting => {
                 return if back {
                     iced::widget::operation::focus_previous()
                 } else {
@@ -547,12 +694,34 @@ impl Player {
                 };
             }
             Message::Dismiss if !self.submitting => self.show(None),
-            Message::Login(login) => self.form.login = login,
-            Message::DisplayName(name) => self.form.display_name = name,
-            Message::Password(password) => self.form.password = password,
-            Message::Current(current) => self.form.current = current,
-            Message::Code(code) => self.form.code = code,
+            Message::Login(login) => {
+                self.form.login = login;
+                self.form.edited = true;
+                self.modal_notice = None;
+            }
+            Message::DisplayName(name) => {
+                self.form.display_name = name;
+                self.form.edited = true;
+                self.modal_notice = None;
+            }
+            Message::Password(password) => {
+                self.form.password = password;
+                self.form.edited = true;
+                self.modal_notice = None;
+            }
+            Message::Current(current) => {
+                self.form.current = current;
+                self.form.edited = true;
+                self.modal_notice = None;
+            }
+            Message::Code(code) => {
+                self.form.code = code;
+                self.form.edited = true;
+                self.modal_notice = None;
+            }
+            Message::TogglePassword if !self.submitting => self.form.reveal = !self.form.reveal,
             Message::Submit if !self.submitting => {
+                self.form.edited = true;
                 if let (
                     Some(c),
                     Some(
@@ -606,6 +775,27 @@ impl Player {
                     return iced::clipboard::write(code.to_string());
                 }
             }
+            Message::SaveCode => {
+                if let Some(code) = self.recovery.clone() {
+                    return Task::perform(
+                        async move {
+                            tokio::task::spawn_blocking(move || {
+                                desktop::save_recovery(&code).map_err(|_| ())
+                            })
+                            .await
+                            .unwrap_or(Err(()))
+                        },
+                        Message::SavedCode,
+                    );
+                }
+            }
+            Message::SavedCode(result) if self.screen == Some(Screen::AccountResult) => {
+                match result {
+                    Ok(true) => self.modal_notice = Some((Copy::CodeSaved, false)),
+                    Err(()) => self.modal_notice = Some((Copy::CodeSaveBad, true)),
+                    Ok(false) => {}
+                }
+            }
             Message::CheckFiles(repair) => return self.check_files(repair),
             Message::RepairFromHome if self.screen.is_none() => {
                 self.show(Some(Screen::Settings));
@@ -614,7 +804,8 @@ impl Player {
             Message::Retry
                 if self.screen.is_none() && self.play_state() == PlayState::WaitingForServer =>
             {
-                if self.server == Server::Offline {
+                if self.server == Server::Offline && !self.server_connecting {
+                    self.server_bridge = None;
                     self.server = Server::Checking;
                     return self.check_server();
                 }
@@ -656,15 +847,24 @@ impl Player {
                 self.server = status;
                 self.probing = false;
             }
-            Message::Play if self.screen.is_none() && self.play_state() == PlayState::Ready => {
+            Message::Play
+                if self.screen.is_none()
+                    && !self.server_connecting
+                    && !self.closing
+                    && self.play_state() == PlayState::Ready =>
+            {
                 if let Some(c) = self.selected_config() {
                     self.starting = true;
                     let language = self.language;
+                    let bridge = self.server_bridge.clone();
                     return Task::perform(
                         async move {
-                            tokio::task::spawn_blocking(move || game::start(c, language))
-                                .await
-                                .unwrap_or(Err(StartError::Launch))
+                            tokio::task::spawn_blocking(move || {
+                                let _bridge = bridge;
+                                game::start(c, language)
+                            })
+                            .await
+                            .unwrap_or(Err(StartError::Launch))
                         },
                         Message::Started,
                     );
@@ -703,6 +903,7 @@ impl Player {
                     self.friends_code = code.trim().to_owned();
                     return self.update(Message::Mode(Mode::OfflineFriends));
                 }
+                self.server_notice = None;
                 self.server_invite = code;
             }
             Message::FriendsFind
@@ -736,10 +937,22 @@ impl Player {
                 {
                     self.starting = true;
                     self.friends_notice = None;
-                    return Task::perform(
-                        async move { friends::host(config).await.map_err(|_| ()) },
+                    let name = self.friends_name.clone();
+                    #[cfg(windows)]
+                    let firewall = if !config.state.join("firewall-asked").exists() {
+                        let _ = fs::write(config.state.join("firewall-asked"), []);
+                        self.update(Message::Desktop(desktop::Action::Firewall))
+                    } else {
+                        Task::none()
+                    };
+                    let host = Task::perform(
+                        async move { friends::host(config, name).await.map_err(|_| ()) },
                         Message::FriendsHosted,
                     );
+                    #[cfg(windows)]
+                    return Task::batch([firewall, host]);
+                    #[cfg(not(windows))]
+                    return host;
                 }
             }
             Message::FriendsHosted(result) => match result {
@@ -771,8 +984,8 @@ impl Player {
                 if let Some(route) = self
                     .friends_list
                     .iter()
-                    .find(|route| code.matches_node(route.node))
-                    .cloned()
+                    .find(|room| code.matches_node(room.route.node))
+                    .map(|room| room.route.clone())
                 {
                     return self.launch_friends(route);
                 }
@@ -825,6 +1038,13 @@ impl Player {
                 }
             }
             Message::Desktop(action) => {
+                #[cfg(windows)]
+                if matches!(action, desktop::Action::Firewall) {
+                    if self.firewall_busy {
+                        return Task::none();
+                    }
+                    self.firewall_busy = true;
+                }
                 if let Some(c) = self.config.clone() {
                     self.modal_notice = None;
                     return Task::perform(
@@ -838,6 +1058,21 @@ impl Player {
                 }
             }
             Message::DesktopDone(_action, ok) => {
+                #[cfg(windows)]
+                if matches!(_action, desktop::Action::Firewall) {
+                    self.firewall_busy = false;
+                    let notice = if ok {
+                        Copy::FirewallOk
+                    } else {
+                        Copy::FirewallBad
+                    };
+                    if self.screen == Some(Screen::Settings) {
+                        self.modal_notice = Some((notice, !ok));
+                    } else if !ok && self.friends_notice.is_none() {
+                        self.friends_notice = Some(notice);
+                    }
+                    return Task::none();
+                }
                 if !ok && matches!(_action, desktop::Action::Release) {
                     self.show(Some(Screen::Help(guide::Section::Version)));
                     self.modal_notice = Some((Copy::ReleaseError, true));
@@ -848,6 +1083,11 @@ impl Player {
                 if ok && matches!(_action, desktop::Action::Shortcut) {
                     self.modal_notice = Some((Copy::ShortcutOk, false));
                 }
+            }
+            Message::Stop => {
+                self.stop_game();
+                self.friends_host = None;
+                self.friends_notice = None;
             }
             Message::Close => {
                 self.closing = true;
@@ -979,6 +1219,21 @@ fn keys(event: Event, status: event::Status, _: window::Id) -> Option<Message> {
     None
 }
 
+#[cfg(unix)]
+fn terminate() -> Subscription<Message> {
+    Subscription::run(|| {
+        iced::futures::stream::once(async {
+            use tokio::signal::unix::{SignalKind, signal};
+            if let Ok(mut sigterm) = signal(SignalKind::terminate()) {
+                sigterm.recv().await;
+                Message::Close
+            } else {
+                std::future::pending().await
+            }
+        })
+    })
+}
+
 fn window_view(player: &Player, _: window::Id) -> iced::Element<'_, Message> {
     player.view()
 }
@@ -992,6 +1247,8 @@ fn main() -> iced::Result {
         })
         .subscription(|_| {
             Subscription::batch([
+                #[cfg(unix)]
+                terminate(),
                 iced::time::every(Duration::from_millis(250)).map(|_| Message::Tick),
                 window::close_requests().map(|_| Message::Close),
                 window::resize_events().map(|(_, size)| Message::Resize(size)),
@@ -1009,7 +1266,7 @@ mod tests {
     fn launcher_fits_short_monitors_without_changing_aspect() {
         assert_eq!(fitted_window(iced::Size::new(1600.0, 1000.0)), WINDOW_SIZE);
         let small = fitted_window(iced::Size::new(1024.0, 768.0));
-        assert_eq!(small.height, 696.0);
+        assert_eq!(small.height, 662.0);
         assert!(
             (small.width / small.height - WINDOW_SIZE.width / WINDOW_SIZE.height).abs() < 0.002
         );
@@ -1040,7 +1297,7 @@ mod tests {
                 false,
                 false,
                 false,
-                PlayState::Soon,
+                PlayState::Inactive,
             ),
             (
                 Mode::Servers,

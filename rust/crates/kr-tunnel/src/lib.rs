@@ -162,6 +162,16 @@ pub fn client_configured(
         return client(address, certificate).map(|endpoint| (endpoint, None));
     }
     let cfg = client_config(certificate)?;
+    let (mut endpoint, counters) = client_socket(address, backend, observe)?;
+    endpoint.set_default_client_config(cfg);
+    Ok((endpoint, counters))
+}
+
+fn client_socket(
+    address: SocketAddr,
+    backend: UdpBackend,
+    observe: bool,
+) -> io::Result<(Endpoint, Option<Arc<udp_diagnostics::Counters>>)> {
     let runtime = quinn::default_runtime().ok_or_else(|| invalid("QUIC runtime unavailable"))?;
     let inner = match backend {
         UdpBackend::Native => runtime.wrap_udp_socket(std::net::UdpSocket::bind(address)?)?,
@@ -179,13 +189,12 @@ pub fn client_configured(
     } else {
         (inner, None)
     };
-    let mut endpoint = Endpoint::new_with_abstract_socket(
+    let endpoint = Endpoint::new_with_abstract_socket(
         quinn::EndpointConfig::default(),
         None,
         socket,
         runtime,
     )?;
-    endpoint.set_default_client_config(cfg);
     Ok((endpoint, counters))
 }
 
@@ -213,11 +222,25 @@ impl Link {
         endpoint: &Endpoint,
         address: SocketAddr,
         secret: &Secret,
+        progress: impl FnMut(&'static str),
+    ) -> io::Result<Self> {
+        Self::connect_using(endpoint, address, secret, None, progress).await
+    }
+
+    async fn connect_using(
+        endpoint: &Endpoint,
+        address: SocketAddr,
+        secret: &Secret,
+        config: Option<ClientConfig>,
         mut progress: impl FnMut(&'static str),
     ) -> io::Result<Self> {
         tokio::time::timeout(Duration::from_secs(5), async {
             progress("quic_connect_setup");
-            let connection = endpoint.connect(address, NAME).map_err(io::Error::other)?;
+            let connection = match config {
+                Some(config) => endpoint.connect_with(config, address, NAME),
+                None => endpoint.connect(address, NAME),
+            }
+            .map_err(io::Error::other)?;
             progress("quic_handshake");
             let connection = connection.await.map_err(io::Error::other)?;
             progress("control_open");
@@ -330,19 +353,25 @@ impl Link {
 pub enum Data {
     Quinn(Connection),
     Friends(kr_p2p::Connection),
+    FriendsLane(prelogin::friends::Lane),
 }
 impl Data {
     pub fn send(&self, packet: &Packet) -> io::Result<()> {
-        let bytes = packet.encode()?.into();
         match self {
-            Self::Quinn(c) => c.send_datagram(bytes).map_err(io::Error::other),
-            Self::Friends(c) => c.send_datagram(bytes).map_err(io::Error::other),
+            Self::Quinn(c) => c
+                .send_datagram(packet.encode()?.into())
+                .map_err(io::Error::other),
+            Self::Friends(c) => c
+                .send_datagram(packet.encode()?.into())
+                .map_err(io::Error::other),
+            Self::FriendsLane(lane) => lane.send(packet),
         }
     }
     pub async fn receive(&self) -> io::Result<Packet> {
         let bytes = match self {
             Self::Quinn(c) => c.read_datagram().await.map_err(io::Error::other)?,
             Self::Friends(c) => c.read_datagram().await.map_err(io::Error::other)?,
+            Self::FriendsLane(lane) => return lane.receive().await,
         };
         Packet::decode(&bytes)
     }

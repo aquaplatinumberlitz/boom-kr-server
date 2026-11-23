@@ -5,7 +5,10 @@ use crate::{
 };
 use iced::{
     Alignment, Color, Element, Font, Length,
-    widget::{Space, button, canvas, column, container, pick_list, row, stack, text, text_input},
+    widget::{
+        Space, button, canvas, column, container, image, pick_list, row, scrollable, stack, text,
+        text_input,
+    },
 };
 use zeroize::Zeroizing;
 
@@ -56,60 +59,92 @@ impl Player {
             let name = entry
                 .name
                 .as_deref()
-                .filter(|name| !name.trim().is_empty())
                 .unwrap_or_else(|| self.t(Copy::BundleServer));
-            let status = if selected {
-                self.server
-            } else {
-                Server::Checking
-            };
-            let check = if selected { "●" } else { "○" };
-            let item = row![
-                text(check)
-                    .size(12)
-                    .color(if selected { look::SUN } else { look::MUTED }),
-                column![
-                    text(name)
-                        .size(14)
-                        .font(look::BOLD)
-                        .wrapping(iced::widget::text::Wrapping::WordOrGlyph),
-                    self.server_status(status),
-                ]
-                .spacing(3)
-                .width(Length::Fill),
+            let mut label = column![
+                text(name)
+                    .size(14)
+                    .font(look::BOLD)
+                    .wrapping(iced::widget::text::Wrapping::WordOrGlyph)
             ]
-            .spacing(9)
-            .align_y(Alignment::Center);
-            items = items.push(
-                button(item)
-                    .padding([7, 10])
-                    .width(Length::Fill)
-                    .style(look::secondary)
-                    .on_press_maybe(
-                        (!self.starting && self.session.is_none())
-                            .then(|| Message::Select(entry.id.clone())),
-                    ),
+            .spacing(3);
+            if selected {
+                label = label.push(self.server_status(self.server));
+            }
+            let item = button(
+                row![
+                    text(if selected { "●" } else { "○" })
+                        .size(12)
+                        .color(if selected { look::SUN } else { look::MUTED }),
+                    label
+                ]
+                .spacing(9)
+                .align_y(Alignment::Center),
+            )
+            .padding([6, 9])
+            .width(Length::Fill)
+            .style(look::secondary)
+            .on_press_maybe(
+                self.server_editable()
+                    .then(|| Message::Select(entry.id.clone())),
             );
+            let mut line = row![item].spacing(5).align_y(Alignment::Center);
+            if entry.invite.is_some() {
+                line = line.push(
+                    button(text(self.t(Copy::RemoveServer)).size(12))
+                        .padding([6, 8])
+                        .style(look::secondary)
+                        .on_press_maybe(
+                            self.server_editable()
+                                .then(|| Message::RemoveServer(entry.id.clone())),
+                        ),
+                );
+            }
+            items = items.push(line);
         }
         if self.catalog.is_empty() {
             items = items.push(text(self.t(Copy::NoServers)).size(13).color(look::MUTED));
         }
-        let add = button(text(self.t(Copy::AddServer)).size(12))
-            .padding([4, 7])
-            .style(look::link);
-        let soon = container(text(self.t(Copy::Soon)).size(10).color(look::SUN))
-            .padding([1, 6])
-            .style(look::pill(look::SUN));
-        items
-            .push(row![add, soon].align_y(Alignment::Center).spacing(5))
-            .into()
+        if self.catalog.len() > 1 {
+            scrollable(items).height(72).into()
+        } else {
+            items.into()
+        }
+    }
+
+    fn header(&self) -> Element<'_, Message> {
+        column![
+            row![
+                image(look::logo()).width(34).height(34),
+                text(self.t(Copy::Title))
+                    .size(32)
+                    .font(look::HEAVY)
+                    .color(Color::WHITE)
+            ]
+            .spacing(9)
+            .align_y(Alignment::Center),
+            text(self.t(Copy::Mode))
+                .size(12)
+                .font(look::BOLD)
+                .color(look::MUTED),
+            row![
+                self.modes(),
+                button(text("?").font(look::BOLD).size(16))
+                    .style(look::secondary)
+                    .padding([8, 10])
+                    .on_press(Message::Open(Screen::Help(Section::Compare)))
+            ]
+            .spacing(7)
+            .align_y(Alignment::Center),
+        ]
+        .spacing(6)
+        .into()
     }
 
     fn modes(&self) -> Element<'_, Message> {
         let online = self.mode == Mode::Servers;
         let selector = |mode, selected, label: &'static str| {
             let content = text(label).size(13).font(look::BOLD).center();
-            button(container(content).center_x(Length::Fill).center_y(45))
+            button(container(content).center_x(Length::Fill).center_y(34))
                 .padding([1, 9])
                 .width(if mode == Mode::OfflineFriends {
                     Length::Fill
@@ -118,7 +153,8 @@ impl Player {
                 })
                 .style(look::segment(selected))
                 .on_press_maybe(
-                    (!self.starting && self.session.is_none()).then_some(Message::Mode(mode)),
+                    (!self.starting && self.session.is_none() && !self.server_connecting)
+                        .then_some(Message::Mode(mode)),
                 )
         };
         container(
@@ -148,84 +184,154 @@ impl Player {
 
     fn friends_panel(&self) -> Element<'_, Message> {
         let enabled = self.can_friends();
-        let hosting = self
-            .config
-            .as_ref()
-            .is_some_and(|config| config.friends.is_some());
-        let name = text_input(self.t(Copy::FriendsName), &self.friends_name)
-            .padding(8)
+        let hosting = self.config.as_ref().is_some_and(|c| c.friends.is_some());
+        let running = self.session.is_some();
+        let label = |key| text(self.t(key)).size(13).font(look::BOLD);
+        let note = |key| text(self.t(key)).size(13).color(look::MUTED);
+        let name = text_input("", &self.friends_name)
+            .padding(6)
             .size(14)
             .style(look::field)
             .on_input_maybe(enabled.then_some(Message::FriendsName));
-        let code = text_input(self.t(Copy::FriendsCode), &self.friends_code)
-            .padding(8)
+        let mut code = text_input("O1-…", &self.friends_code)
+            .padding(6)
             .size(14)
             .style(look::field)
             .on_input_maybe(enabled.then_some(Message::FriendsCode));
-        let action = |label, message: Option<Message>| {
-            button(text(self.t(label)).size(13))
-                .padding([7, 10])
+        if enabled {
+            code = code.on_submit(Message::FriendsJoin);
+        }
+        let action = |key, message: Option<Message>| {
+            button(text(self.t(key)).size(13))
+                .padding([6, 8])
                 .style(look::secondary)
                 .on_press_maybe(message)
         };
-        let mut body = column![
-            self.modes(),
-            text(self.t(Copy::Friends)).size(13).color(look::MUTED),
-            name,
-            action(
-                Copy::FriendsHost,
-                (enabled && hosting).then_some(Message::FriendsHost)
-            ),
+        let host_label = if running {
+            if self.friends_host.is_some() {
+                Copy::FriendsStop
+            } else {
+                Copy::StopGame
+            }
+        } else {
+            Copy::FriendsHost
+        };
+        let primary = button(
+            text(self.t(host_label))
+                .size(15)
+                .font(look::BOLD)
+                .center()
+                .width(Length::Fill),
+        )
+        .padding([9, 10])
+        .width(Length::Fill)
+        .style(look::play(running))
+        .on_press_maybe(if running {
+            Some(Message::Stop)
+        } else {
+            (enabled && hosting).then_some(Message::FriendsHost)
+        });
+        let mut host = column![primary].spacing(6);
+        if let Some(room) = &self.friends_host {
+            host = host.push(
+                container(
+                    column![
+                        row![
+                            label(Copy::FriendsCode),
+                            Space::new().width(Length::Fill),
+                            action(
+                                if matches!(self.friends_notice, Some(Copy::Copied)) {
+                                    Copy::Copied
+                                } else {
+                                    Copy::Clipboard
+                                },
+                                Some(Message::FriendsCopy)
+                            )
+                        ]
+                        .align_y(Alignment::Center),
+                        text(room.code())
+                            .size(13)
+                            .font(Font::MONOSPACE)
+                            .color(look::MINT)
+                            .wrapping(iced::widget::text::Wrapping::WordOrGlyph),
+                        note(Copy::FriendsShare),
+                    ]
+                    .spacing(3),
+                )
+                .padding([6, 10])
+                .width(Length::Fill)
+                .style(look::inset),
+            );
+        }
+        let mut join = column![
+            label(Copy::FriendsJoin),
             row![
                 code,
                 action(Copy::FriendsJoin, enabled.then_some(Message::FriendsJoin))
             ]
-            .spacing(8),
+            .spacing(6)
+            .align_y(Alignment::Center),
             row![
+                label(Copy::FriendsLan).width(Length::Fill),
                 action(
-                    if self.friends_finding {
-                        Copy::FriendsSearching
-                    } else {
-                        Copy::FriendsFind
-                    },
+                    Copy::FriendsFind,
                     (enabled && !self.friends_finding).then_some(Message::FriendsFind)
-                ),
-                self.link(Copy::StartGuide, Screen::Help(Section::Friends)),
+                )
             ]
-            .spacing(10),
+            .spacing(6)
+            .align_y(Alignment::Center),
         ]
-        .spacing(8);
-        if let Some(host) = &self.friends_host {
-            body = body.push(
-                row![
-                    text(host.code())
-                        .size(15)
-                        .font(look::BOLD)
-                        .color(look::MINT),
-                    action(Copy::Clipboard, Some(Message::FriendsCopy)),
-                ]
-                .spacing(8)
-                .align_y(Alignment::Center),
-            );
-        } else if enabled && !self.friends_list.is_empty() {
+        .spacing(5);
+        if enabled && !self.friends_list.is_empty() {
             let mut rooms = column![].spacing(4);
-            for route in &self.friends_list {
+            for room in &self.friends_list {
+                let code = kr_p2p::Invite::room(room.route.node);
+                let title = room
+                    .host
+                    .as_ref()
+                    .map_or_else(|| code.to_string(), |host| format!("{host} · {code}"));
                 rooms = rooms.push(
-                    button(text(kr_p2p::Invite::room(route.node).to_string()).size(13))
-                        .style(look::secondary)
-                        .padding([5, 8])
-                        .on_press(Message::FriendsSelect(route.clone())),
+                    button(
+                        text(title)
+                            .size(12)
+                            .wrapping(iced::widget::text::Wrapping::WordOrGlyph),
+                    )
+                    .width(Length::Fill)
+                    .style(look::secondary)
+                    .padding([5, 8])
+                    .on_press(Message::FriendsSelect(room.route.clone())),
                 );
             }
-            body = body.push(iced::widget::scrollable(rooms).height(60));
+            join = join.push(scrollable(rooms).height(54));
+        }
+        let mut body = column![
+            row![label(Copy::FriendsName).width(112), name]
+                .spacing(6)
+                .align_y(Alignment::Center),
+            host,
+        ]
+        .spacing(7);
+        if running {
+            body = body.push(label(if self.friends_host.is_some() {
+                Copy::FriendsRunning
+            } else {
+                Copy::Running
+            }));
+            let instruction = self.t(Copy::FriendsTrial);
+            body = body.push(guide::rich_line(instruction, 13));
+        } else {
+            body = body.push(note(Copy::FriendsHostHint)).push(join);
         }
         if self.starting || self.files == Files::Checking {
-            let status = if self.starting {
+            body = body.push(note(if self.starting {
                 Copy::Launching
             } else {
                 Copy::Checking
-            };
-            body = body.push(text(self.t(status)).size(13).color(look::MUTED));
+            }));
+            body = body.push(self.loading());
+        }
+        if self.friends_finding {
+            body = body.push(note(Copy::FriendsSearching));
         }
         if self.files == Files::Error {
             body = body.push(action(
@@ -236,20 +342,17 @@ impl Player {
         if let Some(notice) = self
             .friends_notice
             .or((!hosting).then_some(Copy::FriendsNoHost))
+            && !matches!(notice, Copy::Copied)
         {
             body = body.push(text(self.t(notice)).size(13).color(
-                if matches!(notice, Copy::Copied) {
-                    look::MINT
+                if matches!(notice, Copy::FriendsNone) {
+                    look::MUTED
                 } else {
                     look::CORAL
                 },
             ));
             if matches!(notice, Copy::FriendsVersion)
-                && self
-                    .config
-                    .as_ref()
-                    .and_then(|cfg| cfg.release_url())
-                    .is_some()
+                && self.config.as_ref().and_then(|c| c.release_url()).is_some()
             {
                 body = body.push(action(
                     Copy::Download,
@@ -268,13 +371,9 @@ impl Player {
             return self.friends_panel();
         }
         let state = self.play_state();
-        let description = match self.mode {
-            Mode::Servers => Copy::ServersIntro,
-            Mode::OfflineFriends => Copy::Friends,
-        };
         let key = match state {
             PlayState::Ready => Copy::Ready,
-            PlayState::Soon => Copy::Soon,
+            PlayState::Inactive => Copy::Unavailable,
             PlayState::Checking => Copy::Checking,
             PlayState::Starting => Copy::Launching,
             PlayState::Running => Copy::Running,
@@ -283,53 +382,54 @@ impl Player {
             PlayState::Error => Copy::Error,
         };
         let primary = button(
-            text(self.t(Copy::Play))
-                .font(look::HEAVY)
-                .size(22)
-                .center()
-                .width(Length::Fill),
+            text(self.t(if state == PlayState::Running {
+                Copy::StopGame
+            } else {
+                Copy::Play
+            }))
+            .font(look::HEAVY)
+            .size(22)
+            .center()
+            .width(Length::Fill),
         )
-        .padding([14, 12])
+        .padding([9, 12])
         .width(Length::Fill)
-        .style(look::play(false))
-        .on_press_maybe((state == PlayState::Ready).then_some(Message::Play));
+        .style(look::play(state == PlayState::Running))
+        .on_press_maybe(match state {
+            PlayState::Running => Some(Message::Stop),
+            PlayState::Ready if !self.server_connecting => Some(Message::Play),
+            _ => None,
+        });
+        let editable = self.server_editable();
+        let mut invite = text_input(self.t(Copy::ServerInvite), &self.server_invite)
+            .padding(6)
+            .size(13)
+            .style(look::field)
+            .on_input_maybe(editable.then_some(Message::ServerInvite));
+        if editable {
+            invite = invite.on_submit(Message::AddServer);
+        }
         let mut body = column![
-            text(self.t(Copy::Title))
-                .size(32)
-                .font(look::HEAVY)
-                .color(Color::WHITE),
-            text(self.t(Copy::Mode))
-                .size(12)
-                .font(look::BOLD)
-                .color(look::MUTED),
+            self.server_list(),
             row![
-                self.modes(),
-                button(text("?").font(look::BOLD).size(16))
+                invite,
+                button(text(self.t(Copy::AddServer)).size(13))
+                    .padding([6, 8])
                     .style(look::secondary)
-                    .padding([8, 10])
-                    .on_press(Message::Open(Screen::Help(Section::Compare)))
+                    .on_press_maybe(editable.then_some(Message::AddServer))
             ]
             .spacing(7)
             .align_y(Alignment::Center),
         ]
-        .spacing(8);
-        body = body.push(text(self.t(description)).size(14).color(look::MUTED));
-        let start_section = if self.mode == Mode::Servers {
-            Section::Servers
-        } else {
-            Section::Friends
-        };
-        body = body.push(self.link(Copy::StartGuide, Screen::Help(start_section)));
-        if self.mode == Mode::Servers {
-            body = body.push(self.server_list()).push(
-                text_input(self.t(Copy::ServerInvite), &self.server_invite)
-                    .padding(6)
+        .spacing(7);
+        if self.server_connecting {
+            body = body.push(
+                text(self.t(Copy::ServerChecking))
                     .size(13)
-                    .style(look::field)
-                    .on_input_maybe(
-                        (self.session.is_none() && !self.starting).then_some(Message::ServerInvite),
-                    ),
+                    .color(look::MUTED),
             );
+        } else if let Some(notice) = self.server_notice {
+            body = body.push(text(self.t(notice)).size(13).color(look::CORAL));
         }
         body = body
             .push(primary)
@@ -348,16 +448,16 @@ impl Player {
         }
         if self.mode == Mode::Servers {
             if state == PlayState::WaitingForServer && self.server == Server::Offline {
-                body = body
-                    .push(
-                        button(text(self.t(Copy::Retry)).size(13))
-                            .style(look::secondary)
-                            .padding([6, 9])
-                            .on_press_maybe(
-                                (self.config.is_some() && !self.probing).then_some(Message::Retry),
-                            ),
-                    )
-                    .push(self.link(Copy::ConnectionGuide, Screen::Help(Section::Connection)));
+                body = body.push(
+                    button(text(self.t(Copy::Retry)).size(13))
+                        .style(look::secondary)
+                        .padding([6, 9])
+                        .on_press_maybe(
+                            (self.config.is_some() && !self.probing).then_some(Message::Retry),
+                        ),
+                );
+                body =
+                    body.push(self.link(Copy::ConnectionGuide, Screen::Help(Section::Connection)));
             }
             if state == PlayState::Error {
                 let action = |label, repair| {
@@ -385,14 +485,21 @@ impl Player {
                         .spacing(8),
                     );
             }
-            body = body.push(
-                row![
-                    self.link(Copy::Create, Screen::Register),
-                    self.link(Copy::Forgot, Screen::Recover),
-                    self.link(Copy::Manage, Screen::Menu)
-                ]
-                .spacing(11),
-            );
+            body = body
+                .push(
+                    row![
+                        self.link(Copy::Create, Screen::Register),
+                        self.link(Copy::Forgot, Screen::Recover),
+                    ]
+                    .spacing(11),
+                )
+                .push(
+                    row![
+                        self.link(Copy::Change, Screen::Change),
+                        self.link(Copy::Delete, Screen::Delete)
+                    ]
+                    .spacing(11),
+                );
         }
         if self.preference_error {
             body = body.push(text(self.t(Copy::PrefBad)).size(13).color(look::CORAL));
@@ -414,7 +521,7 @@ impl Player {
             self.t(Copy::Package)
         );
         let info = text(version).size(11).color(look::MUTED);
-        let help = self.link(Copy::Help, Screen::Help(Section::Overview));
+        let help = self.link(Copy::QuickHelp, Screen::Help(Section::Overview));
         let summary: Element<'_, Message> = if self
             .config
             .as_ref()
@@ -426,8 +533,6 @@ impl Player {
                 .style(look::link)
                 .on_press(Message::Desktop(desktop::Action::Release));
             column![info, row![help, download].spacing(12)].into()
-        } else if self.size.width < 1100.0 {
-            column![info, help].into()
         } else {
             row![info, help]
                 .spacing(12)
@@ -435,8 +540,8 @@ impl Player {
                 .into()
         };
         container(summary)
-            .padding([2, 10])
-            .style(look::panel)
+            .padding([6, 12])
+            .style(look::inset)
             .into()
     }
 
@@ -451,9 +556,6 @@ impl Player {
                         .style(look::secondary)
                         .on_press_maybe(enabled.then_some(message))
                 };
-                let folder = c
-                    .map(|c| c.installation.display().to_string())
-                    .unwrap_or_else(|| self.t(Copy::Unavailable).into());
                 let items = column![
                     row![
                         wrap(Copy::Lang),
@@ -461,20 +563,11 @@ impl Player {
                         self.language_menu()
                     ]
                     .align_y(Alignment::Center),
-                    wrap(Copy::Folder),
-                    row![
-                        text(folder)
-                            .size(14)
-                            .wrapping(iced::widget::text::Wrapping::WordOrGlyph)
-                            .width(Length::Fill),
-                        action(
-                            Copy::Open,
-                            Message::Desktop(desktop::Action::Game),
-                            c.is_some_and(|c| c.installation.is_dir())
-                        )
-                    ]
-                    .align_y(Alignment::Center)
-                    .spacing(12),
+                    action(
+                        Copy::Folder,
+                        Message::Desktop(desktop::Action::Game),
+                        c.is_some_and(|c| c.installation.is_dir())
+                    ),
                     action(
                         Copy::CheckRepair,
                         Message::CheckFiles(true),
@@ -491,26 +584,24 @@ impl Player {
                 ]
                 .spacing(14);
                 #[cfg(windows)]
-                let items = items.push(action(
-                    Copy::Shortcut,
-                    Message::Desktop(desktop::Action::Shortcut),
-                    c.is_some(),
-                ));
+                let items = items
+                    .push(action(
+                        Copy::Shortcut,
+                        Message::Desktop(desktop::Action::Shortcut),
+                        c.is_some(),
+                    ))
+                    .push(action(
+                        Copy::Firewall,
+                        Message::Desktop(desktop::Action::Firewall),
+                        c.is_some_and(|c| c.friends.is_some()) && !self.firewall_busy,
+                    ));
                 if self.files == Files::Checking {
                     items.push(wrap(Copy::Checking)).push(self.loading()).into()
                 } else {
                     items.into()
                 }
             }
-            Screen::Help(section) => {
-                guide::view(self.language, section, (height - 160.0).max(160.0))
-            }
-            Screen::Menu => column![
-                self.link(Copy::Change, Screen::Change),
-                self.link(Copy::Delete, Screen::Delete),
-            ]
-            .spacing(8)
-            .into(),
+            Screen::Help(section) => guide::view(self.language, section, height),
             Screen::AccountResult => {
                 if let Some(code) = &self.recovery {
                     column![
@@ -518,10 +609,17 @@ impl Player {
                         text(format!("{}\n{}", &code[..32], &code[32..]))
                             .size(16)
                             .font(Font::MONOSPACE),
-                        button(text(self.t(Copy::Clipboard)).size(14))
-                            .style(look::secondary)
-                            .padding([8, 12])
-                            .on_press(Message::CopyCode),
+                        row![
+                            button(text(self.t(Copy::Clipboard)).size(14))
+                                .style(look::secondary)
+                                .padding([8, 12])
+                                .on_press(Message::CopyCode),
+                            button(text(self.t(Copy::SaveCode)).size(14))
+                                .style(look::secondary)
+                                .padding([8, 12])
+                                .on_press(Message::SaveCode)
+                        ]
+                        .spacing(8),
                     ]
                     .spacing(12)
                     .into()
@@ -534,9 +632,14 @@ impl Player {
                     let input = text_input(self.t(key), value)
                         .size(15)
                         .padding([8, 11])
-                        .secure(secret)
+                        .secure(secret && (matches!(key, Copy::Code) || !self.form.reveal))
                         .style(look::field)
                         .on_input_maybe((!self.submitting).then_some(on_input));
+                    let input = if !self.submitting {
+                        input.on_submit(Message::Submit)
+                    } else {
+                        input
+                    };
                     let input = if matches!(key, Copy::LoginId) {
                         input.id(crate::ACCOUNT_LOGIN)
                     } else {
@@ -590,10 +693,25 @@ impl Player {
                         |s| Message::Password(Zeroizing::new(s)),
                     ));
                 }
+                form = form.push(
+                    button(
+                        text(self.t(if self.form.reveal {
+                            Copy::HidePassword
+                        } else {
+                            Copy::ShowPassword
+                        }))
+                        .size(13),
+                    )
+                    .style(look::secondary)
+                    .padding([5, 8])
+                    .on_press_maybe((!self.submitting).then_some(Message::TogglePassword)),
+                );
                 let validation = self.form.error(screen);
                 let feedback = if self.submitting {
                     Some(Copy::Sending)
-                } else if let Some(hint) = validation {
+                } else if let Some(hint) =
+                    validation.filter(|_| self.form.edited && self.modal_notice.is_none())
+                {
                     Some(hint)
                 } else if self.server == Server::Offline {
                     Some(Copy::ServerOffline)
@@ -602,7 +720,7 @@ impl Player {
                 };
                 let feedback: Element<'_, Message> =
                     feedback.map_or_else(|| Space::new().into(), |hint| wrap(hint).into());
-                form = form.push(container(feedback).height(27));
+                form = form.push(container(feedback));
                 form = form.push(
                     button(text(self.t(submit)).size(15).font(look::BOLD))
                         .style(look::play(screen == Screen::Delete))
@@ -614,9 +732,6 @@ impl Player {
                             .then_some(Message::Submit),
                         ),
                 );
-                if matches!(screen, Screen::Change | Screen::Delete) {
-                    form = form.push(self.link(Copy::Back, Screen::Menu));
-                }
                 form.into()
             }
         }
@@ -626,7 +741,6 @@ impl Player {
         let title = match screen {
             Screen::Settings => Copy::Settings,
             Screen::Help(_) => Copy::Help,
-            Screen::Menu => Copy::Manage,
             Screen::Register => Copy::Create,
             Screen::Change => Copy::Change,
             Screen::Delete => Copy::Delete,
@@ -646,7 +760,24 @@ impl Player {
         ]
         .align_y(Alignment::Center)
         .spacing(8);
-        let mut content = column![self.modal_body(screen, height)].spacing(14);
+        let body_height = (height
+            - 48.0
+            - 48.0
+            - 38.0
+            - 18.0
+            - if self.modal_notice.is_some() {
+                62.0
+            } else {
+                0.0
+            })
+        .max(80.0);
+        let body = self.modal_body(screen, body_height);
+        let body: Element<_> = if matches!(screen, Screen::Help(_)) {
+            body
+        } else {
+            scrollable(body).height(Length::Shrink).into()
+        };
+        let mut content = column![body].spacing(14);
         if let Some((notice, error)) = self.modal_notice {
             content = content.push(text(self.t(notice)).size(14).color(if error {
                 look::CORAL
@@ -656,11 +787,13 @@ impl Player {
         }
         let dialog = container(column![titlebar, content].spacing(18))
             .max_height(height - 48.0)
-            .width(if matches!(screen, Screen::Help(_)) {
-                820
-            } else {
-                480
-            })
+            .width(
+                (self.size.width - 48.0).min(if matches!(screen, Screen::Help(_)) {
+                    820.0
+                } else {
+                    480.0
+                }),
+            )
             .padding(24)
             .style(look::modal);
         container(dialog)
@@ -683,7 +816,7 @@ impl Player {
         let toolbar = container(
             row![
                 self.language_menu(),
-                button(text(format!("⚙  {}", self.t(Copy::Settings))).size(14))
+                button(text(self.t(Copy::Settings)).size(14))
                     .padding([9, 13])
                     .style(look::toolbar)
                     .on_press(Message::Open(Screen::Settings)),
@@ -692,18 +825,30 @@ impl Player {
             .align_y(Alignment::Center),
         )
         .align_right(Length::Fill);
-        let card = container(self.play_panel())
-            .padding(18)
-            .width(374)
-            .style(look::panel);
-        let controls = container(
+        let footer = self.footer();
+        let reserve = if self.config.as_ref().and_then(|c| c.release_url()).is_some() {
+            174.0
+        } else {
+            155.0
+        };
+        let card = container(
             column![
-                toolbar,
-                card,
-                Space::new().height(Length::Fill),
-                self.footer(),
+                self.header(),
+                scrollable(self.play_panel())
+                    .height(Length::Shrink)
+                    .spacing(5)
+                    .direction(scrollable::Direction::Vertical(
+                        scrollable::Scrollbar::new().width(4).scroller_width(4)
+                    ))
             ]
-            .spacing(12),
+            .spacing(10),
+        )
+        .padding(15)
+        .max_height((size.height - reserve).max(240.0))
+        .width(374)
+        .style(look::panel);
+        let controls = container(
+            column![toolbar, card, Space::new().height(Length::Fill), footer,].spacing(12),
         )
         .padding([18, 24])
         .width(Length::Fill)

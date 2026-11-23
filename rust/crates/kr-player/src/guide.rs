@@ -3,7 +3,7 @@
 use crate::{Language, Message, Screen, look};
 use iced::{
     Element, Length,
-    widget::{button, column, container, row, scrollable, text},
+    widget::{button, column, container, rich_text, row, scrollable, span, text},
 };
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -92,7 +92,28 @@ fn rendered_table_line(line: &str, head: bool) -> Element<'static, Message> {
                 .width(Length::FillPortion(if i == 0 { 2 } else { 4 })),
         );
     }
-    container(table_row).style(look::segmented).into()
+    container(table_row).style(look::inset).into()
+}
+
+pub(crate) fn rich_line(line: &str, size: u32) -> Element<'static, Message> {
+    let spans = line
+        .split("**")
+        .enumerate()
+        .map(|(index, part)| {
+            let value = span(part.to_owned());
+            if index % 2 == 1 {
+                value.font(look::BOLD)
+            } else {
+                value
+            }
+        })
+        .collect::<Vec<_>>();
+    rich_text::<(), Message, _, _>(spans)
+        .size(size)
+        .color(look::MUTED)
+        .width(Length::Fill)
+        .wrapping(iced::widget::text::Wrapping::WordOrGlyph)
+        .into()
 }
 
 fn render_markdown(body: &str) -> Element<'static, Message> {
@@ -113,12 +134,16 @@ fn render_markdown(body: &str) -> Element<'static, Message> {
             let line = line
                 .strip_prefix("- ")
                 .map_or_else(|| line.to_owned(), |item| format!("•  {item}"));
-            content = content.push(
-                text(line.replace("**", ""))
-                    .size(15)
-                    .color(look::MUTED)
-                    .width(Length::Fill),
-            );
+            content = if let Some(title) = line.strip_prefix("### ") {
+                content.push(
+                    text(title.to_owned())
+                        .size(17)
+                        .font(look::BOLD)
+                        .wrapping(iced::widget::text::Wrapping::WordOrGlyph),
+                )
+            } else {
+                content.push(rich_line(&line, 15))
+            };
         }
     }
     content.into()
@@ -133,11 +158,16 @@ pub(crate) fn view(
     let mut nav = column![].spacing(5).width(160);
     for (section, (title, _)) in Section::ALL.into_iter().zip(&sections) {
         nav = nav.push(
-            button(text(*title).size(13).width(Length::Fill))
-                .width(Length::Fill)
-                .padding([6, 8])
-                .style(look::segment(section == selected))
-                .on_press(Message::Open(Screen::Help(section))),
+            button(
+                text(*title)
+                    .size(13)
+                    .width(Length::Fill)
+                    .wrapping(iced::widget::text::Wrapping::WordOrGlyph),
+            )
+            .width(Length::Fill)
+            .padding([8, 9])
+            .style(look::guide_nav(section == selected))
+            .on_press(Message::Open(Screen::Help(section))),
         );
     }
     let (title, body) = sections[selected.index()];

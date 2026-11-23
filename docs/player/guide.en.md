@@ -1,16 +1,16 @@
-# BOOM PLAY player guide
+# LANBoom player guide
 
 <!-- overview -->
 ## Two ways to play
 
-**Servers** is for communities that run their own server. You use an account for that server, which saves progress according to its settings.
+**Server** is for communities that run their own server. You use an account for that server, which saves progress according to its settings.
 
-**Play with friends** (Coming soon) is for private sessions. One friend hosts the room, and nobody needs an account.
+**Private room** is for private sessions. One friend hosts the room, and nobody needs an account.
 
 <!-- compare -->
 ## Compare the two modes
 
-| Topic | Servers | Play with friends — Coming soon |
+| Topic | Server | Private room |
 | --- | --- | --- |
 | Who hosts? | The community runs a PC or VPS. | The friend who creates the room. |
 | Account | A separate account for each server. | No account; just choose a name. |
@@ -23,27 +23,28 @@
 <!-- choose -->
 ## Which should I choose?
 
-- For a quick game with a few people, choose **Play with friends** when O1 launches.
-- For a regular group that wants to keep items or progress, choose **Servers**.
-- For a long-running community, consider a VPS or a PC that stays on 24/7. S1 setup steps are coming soon.
+- For a quick game with a few people, choose **Private room** for an account-free game.
+- For a regular group that wants to keep items or progress, choose **Server**.
+- For a long-running community, consider a VPS or a PC that stays on 24/7.
 
 <!-- servers -->
-## Get started with Servers
+## Play on a server
 
-1. Open the launcher, choose **Servers**, and select the server included in your bundle. Wait until it is online.
+1. Open the launcher, choose **Server**, and select a server. To add one, paste the S1 invite and click **Add server** or press Enter.
 2. Need an account? Choose **Create account** and keep the recovery code somewhere safe. The account belongs to the selected server.
 3. Press **PLAY**, then sign in on the game's login screen.
 4. To get a newer version, use **Download latest** if your bundle has the link. It opens Google Drive, where you can download the full bundle.
 
-**Coming soon — S1:** Paste an invitation code in **Add server** to save a server. S1 will include instructions for hosting on Windows and Linux.
+The launcher remembers servers you add. Use **Remove** to clear a server from your list.
+An S1 invite connection can relay gameplay traffic when direct UDP is unavailable.
 
 <!-- friends -->
-## Get started with Play with friends
+## Play in a private room
 
-1. Open the launcher, choose **Play with friends**, and enter a **Character name**. The launcher remembers it for next time.
-2. The host clicks **Host room**. When the code appears, click **Copy code** and share it privately with friends. The host's game opens automatically.
-3. Friends paste the code and click **Join room**, or select the room from **Find LAN rooms**. Keep the launcher open while playing.
-4. At the game's login screen, choose **Play trial 1P** (or **2P** to share one PC; the second player automatically gets a `_2P` suffix). The game uses your launcher name. You can leave the account and password fields blank. In the lobby, one player creates a game room and the others join it.
+1. Open the launcher, choose **Private room**, and enter a **Character name**. The launcher remembers it for next time.
+2. The host clicks **Host a private room**. When the code appears, click **Copy code** and share it privately with friends. The host's game opens automatically.
+3. Friends paste the code and click **Join room**, or select the room from **Rooms on this LAN**. Keep the launcher open while playing.
+4. At the game's login screen, choose **Play trial 1P** for one player or **Play trial 2P** for two players on one PC. Leave the account and password fields blank. On separate PCs, choose 1P to chat under separate names. In the lobby, one player creates a game room and the others join it.
 5. If your package differs from the host's, use **Download latest** when the bundle provides a link. If the host closes the game or launcher, friends are told that the room closed.
 
 ![Host room in the launcher](o1-create-room.png)
@@ -69,12 +70,7 @@ Playing across networks needs a bundle with a working room directory. If the roo
 <!-- firewall -->
 ## Windows Firewall
 
-- Run **Cai-dat-Windows.ps1** as administrator to allow inbound local network UDP for the launcher, companion and server.
-- If you do not have permission, ask an administrator to allow local network UDP for `kr-player.exe`, `kr-prelogin.exe` and `friends-server/bin/kr-service.exe`. Keep Windows Firewall on.
-- Start the launcher normally. Only the firewall setup needs administrator rights.
-
-- If Windows blocks the connection, check **Allow an app through Windows Firewall**. Allow the launcher and programs only from a bundle you trust, for the appropriate network type.
-- Don't turn off the firewall. Ask the server operator for help if you still can't play.
+Allow LAN access when Windows asks the first time you host a private room. To retry, go to **Settings → Allow LAN in Windows Firewall**. Keep Windows Firewall on.
 
 <!-- Standalone guide appendix; the launcher embeds the sections above. -->
 
@@ -87,7 +83,7 @@ An S1 server stores accounts and match results on your computer. Keep it running
 
 1. Extract the entire Windows server package into one folder. Open **BoomServer.exe**.
 2. Enter a **Server name** and click **Run**. The message box lists each startup step; wait for the green light and **Running**.
-3. Click **Copy** next to **S1 invite** (it changes to **Copied ✓**) and send the code to players. They can use **Servers → Add server** when their launcher supports S1.
+3. Click **Copy** next to **S1 invite** (it changes to **Copied ✓**) and send the code to players. They can use **Server → Add server** in LANBoom.
 4. Closing the window keeps the server running in the system tray. Click the BoomServer icon to reopen it, or right-click it to **Copy invite** or **Stop & Exit**. Click **Stop** before shutting down. **Back up** saves a database snapshot and shows its file name and time. **Settings** lets you choose the language (Tiếng Việt / English / 한국어), a folder for backup copies, **Open data folder**, and **New invite code** (the old code stops working and current players are disconnected). Errors appear in full in the message box, where you can read or copy them; **Open log** shows the log.
 
 If Windows Firewall asks to allow direct connections, you can allow them on **Private networks**. BoomServer still runs through the relay if you decline or your router cannot open a port. If players cannot join immediately, wait for **Relay connected** and try again.

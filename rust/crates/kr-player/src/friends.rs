@@ -251,7 +251,7 @@ impl Host {
     }
 }
 
-pub(crate) async fn host(cfg: game::Config) -> io::Result<Host> {
+pub(crate) async fn host(cfg: game::Config, name: String) -> io::Result<Host> {
     let relays = cfg.friends_directory.clone();
     let (service, gateway) = tokio::task::spawn_blocking(move || prepare(&cfg))
         .await
@@ -266,7 +266,7 @@ pub(crate) async fn host(cfg: game::Config) -> io::Result<Host> {
     let node = endpoint.id();
     let discovery = Discovery::new()
         .and_then(|discovery| {
-            discovery.advertise(node, port)?;
+            discovery.advertise_host(node, port, &name)?;
             Ok(discovery)
         })
         .ok();
@@ -287,14 +287,15 @@ pub(crate) async fn host(cfg: game::Config) -> io::Result<Host> {
     })))
 }
 
-pub(crate) async fn discover() -> io::Result<Vec<Route>> {
-    Discovery::new()?.rooms(Duration::from_secs(2)).await
+pub(crate) async fn discover() -> io::Result<Vec<room::DiscoveredRoom>> {
+    Discovery::new()?.named_rooms(Duration::from_secs(2)).await
 }
 
 pub(crate) async fn resolve(code: Invite, relays: Vec<String>) -> Option<Route> {
     let lan = discover().await.ok().and_then(|rooms| {
         rooms
             .into_iter()
+            .map(|room| room.route)
             .find(|route| code.matches_node(route.node))
     });
     if lan.is_some() || relays.is_empty() {

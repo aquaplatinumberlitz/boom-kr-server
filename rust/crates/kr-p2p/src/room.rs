@@ -50,6 +50,12 @@ impl Route {
     }
 }
 
+#[derive(Clone)]
+pub struct DiscoveredRoom {
+    pub route: Route,
+    pub host: Option<String>,
+}
+
 pub struct Discovery(ServiceDaemon);
 impl Discovery {
     pub fn new() -> io::Result<Self> {
@@ -57,6 +63,10 @@ impl Discovery {
     }
 
     pub fn advertise(&self, node: EndpointId, port: u16) -> io::Result<()> {
+        self.advertise_host(node, port, "")
+    }
+
+    pub fn advertise_host(&self, node: EndpointId, port: u16, host: &str) -> io::Result<()> {
         let code = Invite::room(node).to_string();
         let endpoint = node.to_string();
         let info = ServiceInfo::new(
@@ -65,7 +75,7 @@ impl Discovery {
             &format!("{code}.local."),
             (),
             port,
-            &[("node", endpoint.as_str())][..],
+            &[("node", endpoint.as_str()), ("host", host)][..],
         )
         .map_err(io::Error::other)?
         .enable_addr_auto();
@@ -73,6 +83,15 @@ impl Discovery {
     }
 
     pub async fn rooms(&self, wait: Duration) -> io::Result<Vec<Route>> {
+        Ok(self
+            .named_rooms(wait)
+            .await?
+            .into_iter()
+            .map(|room| room.route)
+            .collect())
+    }
+
+    pub async fn named_rooms(&self, wait: Duration) -> io::Result<Vec<DiscoveredRoom>> {
         let receiver = self.0.browse(SERVICE).map_err(io::Error::other)?;
         let mut routes = BTreeMap::new();
         let _ = tokio::time::timeout(wait, async {
@@ -111,7 +130,17 @@ impl Discovery {
                             relay: None,
                         };
                         if route.address().is_ok() {
-                            routes.insert(info.get_fullname().to_owned(), route);
+                            let host = info
+                                .get_property_val_str("host")
+                                .filter(|name| {
+                                    (1..=MAX_NAME).contains(&name.len())
+                                        && !name.chars().any(char::is_control)
+                                })
+                                .map(str::to_owned);
+                            routes.insert(
+                                info.get_fullname().to_owned(),
+                                DiscoveredRoom { route, host },
+                            );
                         }
                     }
                     ServiceEvent::ServiceRemoved(_, name) => {
