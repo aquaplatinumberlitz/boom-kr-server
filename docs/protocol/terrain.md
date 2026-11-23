@@ -905,3 +905,19 @@ clock kế khôi phục thùng và sáu stat theo nhân vật. DB ghi hai trận
 overall exit 1: UDP capture dừng trước clock đầu do allowlist bốn máy, không có trace UDP gameplay; GDB B lỗi sau controller completion, output
 unmount busy sau export đúng bytes. Các quan sát TCP/native, hai lớp cờ, bridge và DB được xác minh riêng; không
 coi đó là capture UDP đầy đủ hay debugger/output cleanup sạch. Không chạy lại chỉ để biến exit 1 thành 0.
+
+<a id="f1a-adapter-expansion"></a>
+## F1-a: mở rộng adapter tile đã đo sang 163/214 map (#559)
+
+Từ nền [F1-a ban đầu](../evidence/rust-service/f1-pack-map-adapters.json) (155/214 map), `tools/kr_pack_export.py::f1_terrain_rules`
+mở rộng nhận thêm các biến thể cùng cấu trúc của các tile đã đo trong KR 00967: `Tile16_Static/PinPillar01..05` và
+`Tile62_Static/PinPillar{,_down,_left,_right,_up}` (type 1 giữ nguyên cờ hướng đã pin trong bảng `_TYPE1_PIN_FLAGS`),
+`Tile62_Passable/PoliceLine01..04` (type 3 cùng ngữ nghĩa passable shadow như `Tile16_Passble/Line*`), và
+`Tile10_Passable/BasicBlock_pass00..01` (type 3 có ba nhóm pass-all, tách các dword render/cache đuôi ngoài `EA1EE0`).
+Các cơ chế chưa có hợp đồng (băng chuyền `TileConv/*`, đường ray `Tile08_Ground/Rail00`, cờ `Tile07_Ground/*` / `Tile42_*`,
+và 4 map lỗi parser đuôi payload) tiếp tục bị từ chối rõ ràng.
+
+Tám map vừa được mở (`CaJJ_RetroCamp08`, `Camp04`, `Camp05`, `Camp12`, `Camp15`, `Camp17`, `Cemetery01`, `Cemetery19`)
+đều chạy đạt qua `tools/f1_pack_matrix.py` hai client TLS/relay `kr-load --scope f1-a` (`8/8 passed`), nâng tổng số
+map F1-a hợp lệ lên **163/214** (51 map còn từ chối adapter). [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json).
+Đây là bằng chứng tổng hợp (`kr_static + emu_choice`); không tạo checkpoint native và không tự nâng phân loại họ map.

@@ -12,7 +12,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **24/11, G
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): **ĐÃ ĐẠT** (dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời, tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1; đóng gói phát hành qua PR #597 và PR #598).
 **Đích kế tiếp — Giai đoạn 2 ([F1 Trận thường đầy đủ](#f1-normal-battle)) → F4 → F2 → F5 → F3 → F6:**
-[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) (`#559`) đã mở rộng adapter pack cho 155/214 map của 86 họ A/B (CaJJ_Clover giữ A trong phạm vi hai người). [F1-b](protocol/load-phase.md#f1-pack-floor) đã nối Shoe, Punch và Kim cố định vào adapter pack và đang chờ kiểm native trước khi xét nâng họ; tiếp theo là `#571` (`F1-c` nhân vật).
+[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) (`#559`) đã mở rộng adapter pack cho [163/214 map](protocol/terrain.md#f1a-adapter-expansion) của 86 họ A/B (CaJJ_Clover giữ A trong phạm vi hai người). [F1-b](protocol/load-phase.md#f1-pack-floor) đã nối Shoe, Punch và Kim cố định vào adapter pack và đang chờ kiểm native trước khi xét nâng họ; tiếp theo là `#571` (`F1-c` nhân vật).
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -31,7 +31,7 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **24/11, G
 **Thứ tự việc hiện hành (sau Giai đoạn 1):**
 
 1. **Giai đoạn 2 — F1 (`#559` F1-a, `F1-b`, `#571` F1-c)** ([chi tiết](#f1-normal-battle)):
-   - `#559` (`F1-a`): mở rộng adapter pack cho các họ map B còn lại trên `kr-load` và hai client thật (lịch sử nền đã kiểm: 155/214 map).
+   - `#559` (`F1-a`): mở rộng adapter pack cho các họ map B còn lại trên `kr-load` và hai client thật (tổng hợp hiện đạt: 163/214 map, còn 51 map bị từ chối).
    - `F1-b`: kiểm native item Shoe, Punch, Kim trên bản pack đã nối trước khi xét nâng họ, sau đó mở rộng placement/drop theo nhóm map.
    - `#571` (`F1-c`): **Đã xác minh ma trận tổng hợp 31 nhân vật** từ `BomberAttr` KR 00967 (lựa chọn, Start121,
      cap/reset qua Rust và đổi lại sau ván); còn chờ một lượt native Wine mới trước khi xét nâng lớp bằng chứng.

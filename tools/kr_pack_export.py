@@ -158,8 +158,16 @@ def terrain_for(profile, table):
 _GROUND = (0, 0, 0, 0, 0, 0)
 _PASS_ALL = 0x01010101
 _TYPE1_PIN_FLAGS = {
+    'Tile16_Static/PinPillar01': 16843009,
+    'Tile16_Static/PinPillar02': 256,
     'Tile16_Static/PinPillar03': 65536,
     'Tile16_Static/PinPillar04': 1,
+    'Tile16_Static/PinPillar05': 16777216,
+    'Tile62_Static/PinPillar': 16843009,
+    'Tile62_Static/PinPillar_down': 256,
+    'Tile62_Static/PinPillar_left': 65536,
+    'Tile62_Static/PinPillar_right': 1,
+    'Tile62_Static/PinPillar_up': 16777216,
 }
 
 
@@ -237,10 +245,19 @@ def f1_terrain_rules(profile, table):
             # The Herb route confirms type 3 with the three all-ones groups:
             # the layer neither blocks the ray nor sets the occupied flag.
             pass
-        elif (key.startswith('Tile16_Passble/Line') and d[:7] == (3, 0, 0, 0, 0, 0, 0)
+        elif ((key.startswith('Tile16_Passble/Line') or key.startswith('Tile62_Passable/PoliceLine'))
+              and d[:7] == (3, 0, 0, 0, 0, 0, 0)
               and d[7] in (65537, 16777472) and d[8:13] == (_PASS_ALL, 16777217, 1, 1, 0)):
             # The G1 shadow keeps these cells clear; native movement can still
             # be blocked. This is not a projection of directional movement.
+            pass
+        elif (key in ('Tile10_Passable/BasicBlock_pass00', 'Tile10_Passable/BasicBlock_pass01')
+              and d[:6] == (3, 0, 0, 0, 0, 0)
+              and d[6:11] == (_PASS_ALL, _PASS_ALL, _PASS_ALL, 0, 0)
+              and d[11] == 0):
+            # BasicBlock_pass01 has the same three passable groups as Line*;
+            # its trailing render/cache words are opaque to EA1EE0 and are
+            # deliberately excluded from the terrain projection.
             pass
         else:
             fail(index, 'vật thể/cờ', key)

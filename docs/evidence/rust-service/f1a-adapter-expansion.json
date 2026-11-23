@@ -1,0 +1,106 @@
+{
+  "schema": "kre-f1a-adapter-expansion-v1",
+  "issue": 559,
+  "build": "KR00967",
+  "source": "kr_static + emu_choice",
+  "status": "candidate",
+  "scope": "Synthetic 2-client TLS/relay kr-load (--scope f1-a) only; no native Wine run, no CP394, and no map-family classification promotion.",
+  "counts": {
+    "previous_admitted": 155,
+    "newly_admitted": 8,
+    "total_admitted": 163,
+    "adapter_rejected_remaining": 51,
+    "total_f1_ab_maps": 214
+  },
+  "added_tile_rules": [
+    "Tile16_Static/PinPillar01 (type 1, directional bitmask 16843009)",
+    "Tile16_Static/PinPillar02 (type 1, directional bitmask 256)",
+    "Tile16_Static/PinPillar05 (type 1, directional bitmask 16777216)",
+    "Tile62_Static/PinPillar{,_down,_left,_right,_up} (type 1 directional bitmasks)",
+    "Tile62_Passable/PoliceLine01..04 (type 3 passable layer matching Tile16_Passble/Line*)",
+    "Tile10_Passable/BasicBlock_pass00..01 (type 3 passable layer with opaque trailing render/cache words excluded)"
+  ],
+  "binaries": {
+    "kr-service": "7214467011fbe86c7890b0fae8aff188968aaf87caa96cdf504cb77f69d73bed",
+    "kr-load": "44e97caf4d93a0048ae5087dadbf6f79fd7f134c1fff95d710758c2bce8ef532"
+  },
+  "bundle_manifest_sha256": "2987b73e44cf06ed2f769d17b3777f2013c455c35a886d15e8a0c117ca2b9027",
+  "newly_admitted_maps": [
+    {
+      "name": "CaJJ_RetroCamp08",
+      "code": 162,
+      "status": "passed",
+      "run": "catalog-001",
+      "map_sha256": "184803f1c48f116252e267962fb34e9421c35bc9f804ddb6c2fd01c0380496cb",
+      "terrain_sha256": "1d3274a4c5e6cb72c553351680a0592d2e1134c614f71d2efcb846382c92496e"
+    },
+    {
+      "name": "Camp04",
+      "code": 180,
+      "status": "passed",
+      "run": "catalog-002",
+      "map_sha256": "2bfd1aa3fab666abd3bfc3ab1b62df7674e01fc5c5fee9c23ffacdc29fdf78a2",
+      "terrain_sha256": "fd2d431e522682edbf36f83bea6ba8670320611d4835ec07ca7a77fa07c9cb83"
+    },
+    {
+      "name": "Camp05",
+      "code": 181,
+      "status": "passed",
+      "run": "catalog-003",
+      "map_sha256": "3942f4efa904969cb2964f9809614841ce03c2f805323271f6b5174795ad28c6",
+      "terrain_sha256": "6ba9cf00b24a13a137b286b5f61e2e093ad77dcaf8f93546da01886f56b9812e"
+    },
+    {
+      "name": "Camp12",
+      "code": 184,
+      "status": "passed",
+      "run": "catalog-004",
+      "map_sha256": "2804e620943932701e787e1dd4094761d17161d5e52998f51ec83afb5cb3312e",
+      "terrain_sha256": "150377b988d64f165362ec5efa3a6fba592c40477c83997a559e0502ef91107c"
+    },
+    {
+      "name": "Camp15",
+      "code": 187,
+      "status": "passed",
+      "run": "catalog-005",
+      "map_sha256": "9c4f1cb201ecf8f5f3c834fee6609921ba383f3b626c6c32457eb2acdd3e3e35",
+      "terrain_sha256": "75fbedb7bdf8a6919acc90d18fe6abc81f0233a5cce2ed23a663e6ae71aea8bb"
+    },
+    {
+      "name": "Camp17",
+      "code": 189,
+      "status": "passed",
+      "run": "catalog-006",
+      "map_sha256": "4ec42830a90ed9e73b114da406054b6d36deedab3bdaaec60f37dd7cf5a0ee5f",
+      "terrain_sha256": "ba16dfc08f1837c5ece1740efed9134527857496fa55ed0323d201b0a246c027"
+    },
+    {
+      "name": "Cemetery01",
+      "code": 197,
+      "status": "passed",
+      "run": "catalog-007",
+      "map_sha256": "2b8cda5baf6c45494dafd4d69ee1eb698d477e98fabeb842a575ceabe9403329",
+      "terrain_sha256": "2566a580befded2c26e0431a171851273d27853f3899619f09a2f6c01f8c6074"
+    },
+    {
+      "name": "Cemetery19",
+      "code": 201,
+      "status": "passed",
+      "run": "catalog-008",
+      "map_sha256": "d6e60147eb88eb8419f9af83e87ab97c085b2b60c032c899b8aa5d56d9cbf56c",
+      "terrain_sha256": "0c7fc0533d020a53acf8b54c89a72c79b9a19da58d7d31c0345aa38b97cf14b5"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "local/runs/f1a-adapter-expansion/matrix.json",
+      "bytes": 436007,
+      "sha256": "16df897ee529ac17524dfa6a7ab10a2f09c4fe9cb0fc9c6534b5bcc442c72b7b"
+    },
+    {
+      "path": "local/runs/f1a-adapter-expansion/inventory.json",
+      "bytes": 391395,
+      "sha256": "49f1ec2d2f7eb35a7dbe4cacb087a47ce6074702d316ba06f7b6571e6784ef89"
+    }
+  ]
+}
