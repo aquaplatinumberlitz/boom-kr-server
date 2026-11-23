@@ -277,7 +277,7 @@ kênh đúng roster; cả hai session được thu hồi. Request sau kênh ngo�
 và đóng stream trước khi chuyển request KR. Ở LoginStage, khách chọn Chơi thử 1P hoặc 2P (opcode 62); worker cấp
 1 hoặc 2 khách mới giữ `guest_accounts`, token và các fence như đường chơi thử hiện có: người 1 dùng đúng tên
 từ launcher, người 2 (khi chọn 2P) tự gắn hậu tố `_2P` (cắt gọn theo biên ký tự để vẫn nằm trong 3–15 byte CP949x
-và luôn khác người 1; dự phòng `_P2`/`_2`). Cấu hình O1 vẫn từ chối nhánh credential và không lấy tên từ gói KR.
+và luôn khác người 1; dự phòng `_P2`/`_2`). Transport 2P vẫn dùng chung khung chat trong sảnh/phòng dưới danh nghĩa người 1 (`authorities[0]`) và khử trùng lặp chỉ gửi 1 bản `chat28` trên mỗi kết nối. Cấu hình O1 vẫn từ chối nhánh credential và không lấy tên từ gói KR.
 Nhánh online giữ cách đặt tên ngẫu nhiên. Đây là `design` cho O1, không đổi opcode hay suy hành vi server gốc.
 
 **TLS trước đăng nhập:** cấu hình `account_admission.prelogin_tls` mở ingress QUIC/TLS 1.3, dùng worker và epoch
