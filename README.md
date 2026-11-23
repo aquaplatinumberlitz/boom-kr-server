@@ -33,7 +33,7 @@ thời, chế độ thường với nhiều map và item phổ biến. Dài hạ
 
 ## Tra nhanh và trạng thái hiện tại
 
-**CP392: M8 chưa đạt.** Soak terminal dừng ở 32.378 giây với 1.132 ván hoàn tất, 9 backup và 4 TTL/relogin; drain về 0 nhưng delivery room 3 lỗi và còn 14 owner lifecycle errors. Native client dưới tải chưa có bằng chứng. [Bằng chứng](docs/evidence/checkpoints/records/CP392.json).
+**Giai đoạn 1 & M8 hoàn tất (23/11, PR #595).** Soak13 đạt 15.000 giây với 528 ván hoàn tất, 0 lỗi delivery/DB/owner/authority, 4 backup và restore schema 6 hợp lệ; lượt native-under-load `real-load26` đạt 80 giây liên tục ở tải 50 người/8 phòng (0% rơi gói, `drained=true`) song song 2 ván native Win10 (`vi`) + Wine (`ko`). Chi tiết và trạng thái mốc tiếp theo (F1–F6, O1/S1): [Bảng điều hành](docs/PLAN.md#dashboard).
 
 ## Bắt đầu
 
