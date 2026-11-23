@@ -232,6 +232,14 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False,
     return runtime, run / 'service', state / 'accounts.sqlite'
 
 
+def bundled_pack_data(root, manifest, scope):
+    """JSON xuất sẵn trong gói (pack-data-rights.json), đã qua verify của manifest gói."""
+    if manifest.get('pack_data') != 'pack-data' or scope not in ('g1', 'f1'):
+        return None
+    from kr_pack_export import prebuilt
+    return prebuilt(member(root, 'pack-data'))
+
+
 def friends_pack(player, expected_sha256, pins):
     """Select original package members pinned by the launcher manifest."""
     path = member(player, 'manifest.json')
@@ -261,7 +269,9 @@ def main():
     parser.add_argument('--manifest-sha256', required=True)
     parser.add_argument('--state', type=Path)
     parser.add_argument('--snapshot', type=Path)
-    parser.add_argument('--game-dir', type=Path, help='Thư mục game KR 00967; O1 dùng gốc gói người chơi')
+    parser.add_argument('--game-dir', type=Path,
+                        help='Tuỳ chọn dev/build: xuất lại từ thư mục game KR 00967 thay cho JSON đóng sẵn; '
+                             'O1 dùng gốc gói người chơi')
     parser.add_argument('--f1-map', action='append', help='Tên map chính xác trong gói thử F1-a')
     parser.add_argument('--player-manifest-sha256', help='Pin manifest gói người chơi, chỉ dùng với O1')
     args = parser.parse_args()
@@ -287,13 +297,18 @@ def main():
         scope = manifest.get('pack_scope')
         if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
-        needs_game = scope is not None and args.command in ('export', 'run', 'prepare-friends', 'prepare-s1')
+        needs_pack = scope is not None and args.command in ('export', 'run', 'prepare-friends', 'prepare-s1')
         if scope == 'f1-a' and args.command == 'prepare-friends':
             raise ValueError('Catalog thử F1-a chỉ dùng với export hoặc run, không hỗ trợ O1')
         if (scope == 'f1-a' and args.command in ('export', 'run')) != bool(args.f1_map):
             raise ValueError('Gói F1-a yêu cầu --f1-map khi export hoặc run')
-        if needs_game != (args.game_dir is not None):
-            raise ValueError('Gói từ pack yêu cầu --game-dir khi export hoặc run')
+        # Mặc định dùng JSON đóng sẵn trong gói; --game-dir chỉ là đường xuất lại cho dev/build.
+        prebuilt = (bundled_pack_data(root, manifest, scope)
+                    if needs_pack and args.game_dir is None and args.command != 'prepare-friends' else None)
+        if needs_pack and args.game_dir is None and prebuilt is None:
+            raise ValueError('Gói này không kèm JSON đóng sẵn cho lệnh đã chọn; cần --game-dir')
+        if not needs_pack and args.game_dir is not None:
+            raise ValueError('--game-dir chỉ dùng khi export, run hoặc chuẩn bị server từ gói pack')
         if args.command in ('export', 'prepare-friends') and scope is None:
             raise ValueError('Gói này dùng fixture; cần gói xuất từ pack')
         if args.command != 'prepare-friends' and args.game_dir is not None and args.state.resolve().is_relative_to(args.game_dir.resolve()):
@@ -304,11 +319,14 @@ def main():
         if args.command == 'prepare-s1':
             # The caller holds the runner lock for its entire lifetime. S1
             # owns its TLS identity and never uses an externally installed key.
-            if not manifest.get('self_host') or not needs_game or 'prelogin_tls' not in package_tls(root, state):
+            if not manifest.get('self_host') or not needs_pack or 'prelogin_tls' not in package_tls(root, state):
                 raise ValueError('Cần gói S1 phát hành cùng cấu hình cấp chứng chỉ khi cài')
             init_tls(root, state, target)
-            from kr_pack_export import export
-            cache, _ = export(args.game_dir, state / 'pack-cache')
+            if prebuilt is not None:
+                cache = prebuilt
+            else:
+                from kr_pack_export import export
+                cache, _ = export(args.game_dir, state / 'pack-cache')
             runtime, out, _ = prepare(root, state, cache, scope, s1=True)
             print(json.dumps({'runtime': str(runtime), 'out': str(out)}))
             return
@@ -330,8 +348,11 @@ def main():
                 subprocess.run([admin, str(database)],
                                input=json.dumps(request), text=True, check=True, cwd=root)
                 return
-            cache = None
-            if needs_game:
+            cache = prebuilt
+            if prebuilt is not None and args.command == 'export':
+                print(json.dumps(dict(cache=str(prebuilt), reused=True, prebuilt=True)))
+                return
+            if needs_pack and prebuilt is None:
                 from kr_pack_export import MAPS, PACK_SHA256, export
                 if args.command == 'prepare-friends':
                     files = friends_pack(args.game_dir, args.player_manifest_sha256, PACK_SHA256)

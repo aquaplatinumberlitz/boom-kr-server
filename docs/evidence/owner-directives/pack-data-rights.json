@@ -1,0 +1,25 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-22T12:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án giao việc PR 2 BoomServer ngày 22/11/2026: dự án công ty có toàn quyền bản quyền hợp pháp đối với dữ liệu game; cho phép trích xuất sẵn dữ liệu JSON nhẹ (map, vật phẩm, chỉ số nhân vật), commit vào repo và đóng thẳng vào BoomServer-Windows.zip và BoomServer-Linux.tar.gz, giữ --game-dir làm đường tái trích xuất cho dev/build.",
+  "decision": "Gói BoomServer (S1) mang sẵn dữ liệu JSON luật chơi xuất từ pack KR 00967; người dùng cuối không chọn thư mục game và không đặt BOOM_GAME_DIR.",
+  "requirements": [
+    "Chỉ commit JSON do tools/kr_pack_export.py xuất (map, vật phẩm, chỉ số nhân vật, bảng nhóm map) vào server/pack-data/. Tuyệt đối không commit hoặc đóng gói file client nặng như .idx, .idd, .bik, .exe, .dll.",
+    "Bản đóng sẵn trùng identity với export mặc định của prepare-s1 (G1, F1 và ExVillage01, measured=True) và được kiểm hai lớp: manifest export (identity, pin SHA-256 sáu file pack nguồn, hash từng JSON) và manifest gói (hash, kích thước, quyền từng file).",
+    "rust_service_package.py đóng server/pack-data/ vào pack-data/ của mọi gói g1/f1; gói S1 bắt buộc có. kr-package.py và boom-server mặc định dùng dữ liệu này.",
+    "--game-dir (kr-package.py), BOOM_GAME (boom-server, Docker) và install.sh --game-dir vẫn là tuỳ chọn nâng cao để xuất lại từ client KR chỉ đọc khi dev/build; F1-a với --f1-map và O1 vẫn đọc pack như cũ.",
+    "Tạo lại bằng: python3 tools/kr_pack_export.py --game-dir <KR 00967 chỉ đọc> --prebuilt-out server/pack-data; kiểm bằng --check-prebuilt server/pack-data. Không sửa thư mục client nguồn."
+  ],
+  "measured": {
+    "source": "KR 00967 client (chỉ đọc, pack khớp PACK_SHA256 trong tools/kr_pack_export.py)",
+    "identity": "10eacc81484702252be67d42ec7f0acc9370d343a783316afe101087a88d9b14",
+    "schema": "kr00967-export-v2",
+    "files": 30,
+    "bytes": 77398,
+    "manifest_sha256": "da18a23eed0497bac25b055bb12edeec2f0a485ed7bfa4da46c5abe51f8f5461"
+  },
+  "scope": "Áp dụng cho đóng gói và chạy S1/BoomServer cùng lệnh run/export của gói g1/f1. Không đổi wire, luật phòng, phạm vi map G1/F1 hay tiêu chí nghiệm thu M8.",
+  "plan": "docs/PLAN.md#full-game-roadmap",
+  "owner": "Chủ dự án quyết định; Claude ghi lại"
+}

@@ -456,14 +456,64 @@ def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False,
     return dest, False
 
 
+def prebuilt(path, *, pins=None, maps=None, measured=True):
+    """Kiểm bản JSON xuất sẵn đi kèm repo/gói, không cần thư mục game.
+
+    Bản này là đúng thư mục export mặc định (G1, F1 và ExVillage01), được phép
+    commit theo docs/evidence/owner-directives/pack-data-rights.json. Hằng số
+    được đọc lúc gọi để gói thử với pack giả vẫn kiểm theo pin của chính nó.
+    """
+    pins = PACK_SHA256 if pins is None else pins
+    maps = MAPS if maps is None else tuple(maps)
+    path = Path(path)
+    if path.is_symlink():
+        raise ValueError('Dữ liệu JSON đóng sẵn không được là symlink')
+    checked_cache(path, cache_identity(pins, maps, measured), pins, maps, measured)
+    return path.resolve(strict=True)
+
+
+def refresh_prebuilt(game, out):
+    """Xuất lại dữ liệu JSON đóng sẵn từ client KR chỉ đọc (dev/build)."""
+    out = Path(out)
+    if out.is_symlink() or (out.exists() and not out.is_dir()):
+        raise ValueError('Đích dữ liệu JSON đóng sẵn phải là thư mục thường')
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='.pack-data-', dir=out.parent) as work:
+        cache, _ = export(game, Path(work) / 'cache')
+        if out.exists():
+            for child in out.iterdir():
+                if child.is_symlink() or not child.is_file() or child.suffix != '.json':
+                    raise ValueError(f'Thư mục dữ liệu chỉ chứa file JSON phẳng: {child.name}')
+            for child in out.iterdir():
+                child.unlink()
+        else:
+            out.mkdir()
+        for source in sorted(cache.iterdir()):
+            (out / source.name).write_bytes(source.read_bytes())
+    return prebuilt(out)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--game-dir', type=Path, required=True)
-    parser.add_argument('--cache', type=Path, required=True)
+    parser.add_argument('--game-dir', type=Path, help='Thư mục game KR 00967, chỉ đọc')
+    target = parser.add_mutually_exclusive_group(required=True)
+    target.add_argument('--cache', type=Path, help='Cache theo identity của bản xuất')
+    target.add_argument('--prebuilt-out', type=Path,
+                        help='Ghi đè thư mục dữ liệu JSON đóng sẵn, ví dụ server/pack-data')
+    target.add_argument('--check-prebuilt', type=Path, help='Chỉ kiểm dữ liệu JSON đóng sẵn')
     parser.add_argument('--f1-map', action='append', help='Tên map KR chính xác; lặp lại tối đa 16 lần')
     args = parser.parse_args()
+    if (args.check_prebuilt is None) != (args.game_dir is not None):
+        parser.error('--game-dir bắt buộc khi xuất và không dùng với --check-prebuilt')
+    if args.f1_map and args.cache is None:
+        parser.error('--f1-map chỉ dùng với --cache')
     try:
-        path, reused = export(args.game_dir, args.cache, maps=args.f1_map or MAPS, f1=bool(args.f1_map))
+        if args.check_prebuilt is not None:
+            path, reused = prebuilt(args.check_prebuilt), True
+        elif args.prebuilt_out is not None:
+            path, reused = refresh_prebuilt(args.game_dir, args.prebuilt_out), False
+        else:
+            path, reused = export(args.game_dir, args.cache, maps=args.f1_map or MAPS, f1=bool(args.f1_map))
     except (OSError, ValueError, KeyError, IndexError, struct.error, ET.ParseError) as exc:
         parser.exit(1, f'Không thể xuất pack KR 00967: {exc}\n')
     print(json.dumps(dict(cache=str(path), reused=reused)))

@@ -4,6 +4,8 @@
 !bin/**
 !data
 !data/**
+!pack-data
+!pack-data/**
 !deploy
 !deploy/**
 !server

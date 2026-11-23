@@ -112,18 +112,26 @@ prefix the cross-build command with `RUSTC_WRAPPER="$PWD/tools/windows_rustc_rli
 (or use an absolute path from `rust/`). Add `--self-host --archive --windows-python python-3.13.9-embed-amd64.zip`
 to the Windows packager. Use the [embeddable x64 ZIP from python.org](https://www.python.org/downloads/release/python-3139/);
 the packager verifies the pinned hash. Ship the full archive, without a game directory or any server state.
+Every g1/f1 bundle (and every S1 bundle) carries the prebuilt game-rule JSON from `server/pack-data/` as `pack-data/`,
+pinned twice (export manifest and bundle manifest); see the [owner directive](evidence/owner-directives/pack-data-rights.json).
+Regenerate it from a read-only KR 00967 folder with `python3 tools/kr_pack_export.py --game-dir "$GAME_DIR" --prebuilt-out server/pack-data`
+and check it with `--check-prebuilt server/pack-data`. `kr-package.py export|run|prepare-s1` use it by default; `--game-dir`
+remains an optional re-export for dev/build, and F1-a (`--f1-map`) and O1 still read the pack.
 
-- **Windows:** Open `BoomServer.exe` and choose the local KR 00967 game folder. It uses `%LOCALAPPDATA%\BoomServer`.
-  Use Stop before shutting down and Back up now for a verified SQLite snapshot. The Windows firewall prompt can
+- **Windows:** Open `BoomServer.exe`, enter a server name and press Run; there is no game folder step. It uses
+  `%LOCALAPPDATA%\BoomServer` (UI language and backup folder in `settings.json`, events in `boomserver.log`).
+  Use Stop before shutting down and Back up for a verified SQLite snapshot, optionally copied to a chosen folder. The Windows firewall prompt can
   allow direct IPv4 UDP on Private networks; iroh also tries UPnP when available and can use a relay.
-- **Docker:** From the extracted Linux bundle, set `BOOM_GAME_DIR` to a readable absolute game path and optionally
-  set `BOOM_NAME`. Run `docker compose -f deploy/compose.yaml up -d --build` and
+- **Docker:** From the extracted Linux bundle, optionally set `BOOM_NAME`. Run `docker compose -f deploy/compose.yaml up -d` and
   `docker compose -f deploy/compose.yaml exec boom /opt/boom/bin/boom-server invite`. The image runs as UID 10001
-  with read-only game files and a named state volume. Preserve that volume across reinstalls. To back up on demand,
+  with the bundled `pack-data/` and a named state volume. For a dev re-export, set `BOOM_GAME=/game` and add a
+  read-only bind mount of the game folder to `/game`. Preserve the state volume across reinstalls. To back up on demand,
   replace `invite` with `backup`.
-- **systemd:** Run `sudo ./deploy/install.sh /absolute/game/path "My Server"` from the Linux tarball.
+- **systemd:** Run `sudo ./deploy/install.sh "My Server"` from the Linux tarball (dev re-export:
+  `sudo ./deploy/install.sh --game-dir /absolute/game/path "My Server"`).
   Use `journalctl -u boom-server` for logs, and `sudo -u boom-server boom-server invite` or `backup` for local
-  operations. The service account must be able to read the game folder. Keep `/var/lib/boom-server` across upgrades.
+  operations. With `--game-dir`, the service account must be able to read the game folder. Keep `/var/lib/boom-server`
+  across upgrades.
 
 The invite pins the S1 node key and TLS leaf. Treat `host-account.json` as a private initial game account; OS
 permissions on the state directory protect local admin tools. Only iroh needs external connectivity. The optional UDP

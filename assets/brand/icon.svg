@@ -1,0 +1,441 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+
+    <clipPath id="balloonClip">
+      <circle cx="500" cy="500" r="397" />
+    </clipPath>
+
+
+    <radialGradient id="balloonBodyGrad" cx="37%" cy="30%" r="70%" fx="35%" fy="28%">
+      <stop offset="0%" stop-color="#c9f3ff" />
+      <stop offset="22%" stop-color="#53d2fb" />
+      <stop offset="48%" stop-color="#07b0ee" />
+      <stop offset="76%" stop-color="#0080cf" />
+      <stop offset="93%" stop-color="#0066b5" />
+      <stop offset="100%" stop-color="#199ae0" />
+    </radialGradient>
+
+
+    <linearGradient id="balloonDomeGrad" x1="25%" y1="5%" x2="68%" y2="95%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72" />
+      <stop offset="50%" stop-color="#c4f1ff" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#80e3ff" stop-opacity="0.16" />
+    </linearGradient>
+
+
+    <radialGradient id="balloonHotspot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.92" />
+      <stop offset="32%" stop-color="#e3f8ff" stop-opacity="0.58" />
+      <stop offset="68%" stop-color="#9fe8ff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#7ce0ff" stop-opacity="0" />
+    </radialGradient>
+
+
+    <radialGradient id="balloonRimLight" cx="50%" cy="50%" r="50%">
+      <stop offset="88%" stop-color="#007ac9" stop-opacity="0" />
+      <stop offset="96%" stop-color="#3bc9f7" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#0077c7" stop-opacity="0.55" />
+    </radialGradient>
+
+
+    <radialGradient id="bottomPoolGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#004e9e" stop-opacity="0.92" />
+      <stop offset="58%" stop-color="#005cb0" stop-opacity="0.78" />
+      <stop offset="85%" stop-color="#006ec0" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#0079ca" stop-opacity="0" />
+    </radialGradient>
+
+
+    <linearGradient id="nozzleNeckGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3ac8f6" />
+      <stop offset="35%" stop-color="#08a3e4" />
+      <stop offset="75%" stop-color="#0076c4" />
+      <stop offset="100%" stop-color="#005fa8" />
+    </linearGradient>
+
+
+    <linearGradient id="nozzleUnderShadow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#004d94" stop-opacity="0.72" />
+      <stop offset="65%" stop-color="#006cb8" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#0089d6" stop-opacity="0" />
+    </linearGradient>
+
+
+    <linearGradient id="nozzleLipGrad" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#c6f3ff" />
+      <stop offset="28%" stop-color="#4fd2fa" />
+      <stop offset="65%" stop-color="#04a0e3" />
+      <stop offset="100%" stop-color="#0072c2" />
+    </linearGradient>
+
+
+    <radialGradient id="bubble3dGrad" cx="35%" cy="30%" r="65%" fx="32%" fy="28%">
+      <stop offset="0%" stop-color="#a8eeff" />
+      <stop offset="28%" stop-color="#3ac8ff" />
+      <stop offset="68%" stop-color="#0085e0" />
+      <stop offset="92%" stop-color="#0060b8" />
+      <stop offset="100%" stop-color="#1ca6f2" />
+    </radialGradient>
+
+
+    <radialGradient id="softSpeckGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#c8f4ff" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#8fe6ff" stop-opacity="0" />
+    </radialGradient>
+
+
+    <linearGradient id="rimIceGrad" x1="0%" y1="45%" x2="100%" y2="55%">
+      <stop offset="0%" stop-color="#8ebae0" />
+      <stop offset="12%" stop-color="#bcd9f0" />
+      <stop offset="26%" stop-color="#edf6fc" />
+      <stop offset="42%" stop-color="#ffffff" />
+      <stop offset="72%" stop-color="#ffffff" />
+      <stop offset="86%" stop-color="#d2e6f7" />
+      <stop offset="100%" stop-color="#8db8df" />
+    </linearGradient>
+
+
+    <linearGradient id="rimIceVertGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#b4d5ee" stop-opacity="0.55" />
+      <stop offset="28%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="78%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#96c0e3" stop-opacity="0.55" />
+    </linearGradient>
+
+
+    <linearGradient id="boomTextGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffe700" />
+      <stop offset="28%" stop-color="#ffcf00" />
+      <stop offset="56%" stop-color="#ff9900" />
+      <stop offset="82%" stop-color="#fa6900" />
+      <stop offset="100%" stop-color="#ec4b00" />
+    </linearGradient>
+
+
+    <linearGradient id="boomBGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffe800" />
+      <stop offset="30%" stop-color="#ffd000" />
+      <stop offset="58%" stop-color="#ff9b00" />
+      <stop offset="84%" stop-color="#f86600" />
+      <stop offset="100%" stop-color="#eb4900" />
+    </linearGradient>
+
+
+    <linearGradient id="textGlossGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.88" />
+      <stop offset="60%" stop-color="#fff8c2" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#ffe878" stop-opacity="0.25" />
+    </linearGradient>
+
+
+    <linearGradient id="holeBGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cde3f4" />
+      <stop offset="55%" stop-color="#eff7fd" />
+      <stop offset="100%" stop-color="#ffffff" />
+    </linearGradient>
+
+
+    <linearGradient id="waterDropLargeGrad" x1="22%" y1="12%" x2="82%" y2="88%">
+      <stop offset="0%" stop-color="#3e5363" stop-opacity="0.82" />
+      <stop offset="28%" stop-color="#76848f" stop-opacity="0.58" />
+      <stop offset="58%" stop-color="#e5c8ac" stop-opacity="0.52" />
+      <stop offset="84%" stop-color="#fff0da" stop-opacity="0.88" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.94" />
+    </linearGradient>
+
+
+    <linearGradient id="waterDropSmallGrad" x1="20%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#384e5e" stop-opacity="0.85" />
+      <stop offset="35%" stop-color="#7d8f9c" stop-opacity="0.55" />
+      <stop offset="72%" stop-color="#f3dfc4" stop-opacity="0.72" />
+      <stop offset="100%" stop-color="#fffdf0" stop-opacity="0.95" />
+    </linearGradient>
+
+
+    <filter id="poolBlur" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+
+    <filter id="boomShadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="2" dy="10" stdDeviation="9" flood-color="#003d7a" flood-opacity="0.48" />
+    </filter>
+
+    <filter id="whiteRimSoft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="4.5" />
+    </filter>
+
+    <filter id="letterOverlapShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="2" stdDeviation="3.5" flood-color="#b83c00" flood-opacity="0.32" />
+    </filter>
+
+    <filter id="dropCastShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.2" />
+    </filter>
+
+    <filter id="causticBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.4" />
+    </filter>
+
+
+    <path id="pathB" d="
+          M -444 -48
+          C -444 -162, -404 -218, -326 -218
+          C -254 -218, -222 -176, -222 -124
+          C -222 -86, -238 -62, -256 -48
+          C -224 -32, -210 2, -214 44
+          C -218 86, -264 114, -326 114
+          C -416 114, -444 72, -444 -48 Z" />
+
+    <ellipse id="pathO1" cx="-126" cy="5" rx="103" ry="104" />
+    <ellipse id="pathO2" cx="64" cy="7" rx="103" ry="104" />
+
+    <path id="pathM" d="
+      M 155 58
+      C 150 6, 152 -46, 174 -74
+      C 194 -98, 228 -102, 260 -92
+      C 276 -87, 286 -80, 294 -72
+      C 314 -92, 346 -104, 384 -96
+      C 424 -86, 444 -50, 444 10
+      C 444 50, 440 80, 428 96
+      C 418 110, 400 115, 384 111
+      C 366 107, 360 90, 360 64
+      L 359 -2
+      C 358 -22, 353 -32, 345 -32
+      C 336 -32, 331 -20, 331 0
+      L 332 66
+      C 332 96, 316 114, 295 114
+      C 272 114, 258 96, 258 66
+      L 257 0
+      C 257 -20, 251 -32, 242 -32
+      C 233 -32, 228 -20, 228 0
+      L 228 66
+      C 228 96, 212 114, 191 114
+      C 170 114, 158 94, 155 58 Z" />
+  </defs>
+
+
+  <g transform="translate(767, 206) rotate(42.2)">
+
+    <path d="M -52 18 C -42 -4, -36 -22, -40 -42 L 40 -42 C 36 -22, 42 -4, 52 18 Z" fill="url(#nozzleNeckGrad)" />
+
+    <path d="M -42 -42 L 42 -42 C 38 -24, 42 -10, 46 2 L -46 2 C -42 -10, -38 -24, -42 -42 Z" fill="url(#nozzleUnderShadow)" />
+
+    <path d="M -98 -52
+             C -100 -67, -64 -75, 0 -75
+             C 64 -75, 100 -67, 98 -52
+             C 96 -38, 60 -34, 0 -34
+             C -60 -34, -96 -38, -98 -52 Z" fill="url(#nozzleLipGrad)" stroke="#0687cf" stroke-width="2" />
+
+    <path d="M -86 -57 C -68 -68, -28 -71, 22 -69 C 48 -68, 72 -64, 82 -57 C 56 -61, 14 -63, -30 -61 C -58 -60, -76 -57, -86 -57 Z" fill="#d9f7ff" opacity="0.88" />
+    <ellipse cx="-68" cy="-58" rx="18" ry="6" fill="#ffffff" opacity="0.72" />
+  </g>
+
+
+  <g>
+
+    <circle cx="500" cy="500" r="397" fill="url(#balloonBodyGrad)" />
+
+
+    <g clip-path="url(#balloonClip)">
+
+      <path d="M 135 338
+               C 162 204, 294 116, 468 118
+               C 554 120, 636 148, 662 198
+               C 686 244, 622 332, 492 384
+               C 352 440, 178 422, 135 338 Z" fill="url(#balloonDomeGrad)" />
+
+
+      <circle cx="382" cy="316" r="190" fill="url(#balloonHotspot)" />
+
+
+      <circle cx="441" cy="174" r="6" fill="url(#softSpeckGrad)" opacity="0.75" />
+      <circle cx="462" cy="161" r="4" fill="url(#softSpeckGrad)" opacity="0.7" />
+      <circle cx="539" cy="198" r="5.5" fill="url(#softSpeckGrad)" opacity="0.72" />
+      <circle cx="595" cy="280" r="13" fill="url(#softSpeckGrad)" opacity="0.82" />
+      <circle cx="323" cy="250" r="6" fill="url(#softSpeckGrad)" opacity="0.6" />
+      <circle cx="216" cy="280" r="5" fill="url(#softSpeckGrad)" opacity="0.55" />
+
+
+      <ellipse cx="496" cy="843" rx="146" ry="50" fill="url(#bottomPoolGrad)" filter="url(#poolBlur)" />
+
+
+      <circle cx="330" cy="798" r="10" fill="url(#softSpeckGrad)" opacity="0.28" />
+      <circle cx="431" cy="820" r="4.5" fill="url(#softSpeckGrad)" opacity="0.55" />
+
+
+
+      <g transform="translate(606, 744)">
+        <circle r="24" fill="url(#bubble3dGrad)" />
+        <ellipse cx="-7" cy="-8" rx="7.5" ry="5" transform="rotate(-32, -7, -8)" fill="#ffffff" opacity="0.88" />
+        <path d="M -8 18 A 20 20 0 0 0 18 4" fill="none" stroke="#62d8ff" stroke-width="2.5" stroke-linecap="round" opacity="0.65" />
+      </g>
+
+
+      <g transform="translate(580, 791)">
+        <circle r="18" fill="url(#bubble3dGrad)" />
+        <ellipse cx="-5.5" cy="-6" rx="5.5" ry="3.8" transform="rotate(-32, -5.5, -6)" fill="#ffffff" opacity="0.88" />
+        <path d="M -6 13 A 14 14 0 0 0 13 3" fill="none" stroke="#62d8ff" stroke-width="2" stroke-linecap="round" opacity="0.6" />
+      </g>
+
+
+      <g transform="translate(637, 793)">
+        <circle r="7.5" fill="url(#bubble3dGrad)" />
+        <circle cx="-2.4" cy="-2.5" r="2.2" fill="#ffffff" opacity="0.9" />
+      </g>
+
+
+      <g transform="translate(590, 826)">
+        <circle r="11" fill="url(#bubble3dGrad)" />
+        <ellipse cx="-3.5" cy="-3.8" rx="3.4" ry="2.4" transform="rotate(-30, -3.5, -3.8)" fill="#ffffff" opacity="0.88" />
+      </g>
+
+
+      <g transform="translate(559, 853)">
+        <circle r="8.5" fill="url(#bubble3dGrad)" />
+        <circle cx="-2.6" cy="-2.8" r="2.5" fill="#ffffff" opacity="0.88" />
+      </g>
+
+
+      <g transform="translate(534, 860)">
+        <circle r="3.5" fill="#6cd7ff" opacity="0.85" />
+        <circle cx="-1" cy="-1" r="1.2" fill="#ffffff" />
+      </g>
+
+
+      <circle cx="500" cy="500" r="397" fill="url(#balloonRimLight)" />
+    </g>
+
+
+    <circle cx="500" cy="500" r="396.5" fill="none" stroke="#0c96db" stroke-width="2.5" opacity="0.8" />
+  </g>
+
+
+  <g transform="translate(495, 520) rotate(-7.3)">
+
+
+    <g filter="url(#boomShadow)" fill="#004485" stroke="#004485" stroke-width="84" stroke-linejoin="round" stroke-linecap="round">
+      <use href="#pathB" />
+      <use href="#pathO1" />
+      <use href="#pathO2" />
+      <use href="#pathM" />
+    </g>
+
+
+    <g fill="#2165a6" stroke="#2165a6" stroke-width="82" stroke-linejoin="round" stroke-linecap="round">
+      <use href="#pathB" />
+      <use href="#pathO1" />
+      <use href="#pathO2" />
+      <use href="#pathM" />
+    </g>
+
+
+    <g fill="url(#rimIceGrad)" stroke="url(#rimIceGrad)" stroke-width="72" stroke-linejoin="round" stroke-linecap="round">
+      <use href="#pathB" />
+      <use href="#pathO1" />
+      <use href="#pathO2" />
+      <use href="#pathM" />
+    </g>
+    <g fill="none" stroke="url(#rimIceVertGrad)" stroke-width="72" stroke-linejoin="round" stroke-linecap="round">
+      <use href="#pathB" />
+      <use href="#pathO1" />
+      <use href="#pathO2" />
+      <use href="#pathM" />
+    </g>
+
+
+    <g fill="#ffffff" stroke="#ffffff" stroke-width="52" stroke-linejoin="round" stroke-linecap="round" filter="url(#whiteRimSoft)">
+      <use href="#pathB" />
+      <use href="#pathO1" />
+      <use href="#pathO2" />
+      <use href="#pathM" />
+    </g>
+    <g fill="#ffffff" stroke="#ffffff" stroke-width="38" stroke-linejoin="round" stroke-linecap="round">
+      <use href="#pathB" />
+      <use href="#pathO1" />
+      <use href="#pathO2" />
+      <use href="#pathM" />
+    </g>
+
+
+
+    <g>
+      <use href="#pathM" fill="url(#boomTextGrad)" />
+
+      <path d="M 176 -36 C 178 -62, 198 -78, 224 -81 C 231 -82, 236 -75, 233 -68 C 230 -62, 224 -60, 217 -58 C 201 -54, 193 -44, 191 -31 C 189 -22, 175 -25, 176 -36 Z" fill="url(#textGlossGrad)" />
+      <path d="M 314 -68 C 324 -78, 344 -84, 364 -81 C 371 -80, 372 -71, 365 -68 C 350 -68, 336 -64, 326 -57 C 318 -51, 308 -60, 314 -68 Z" fill="url(#textGlossGrad)" opacity="0.5" />
+    </g>
+
+
+    <g>
+      <use href="#pathO1" fill="url(#boomTextGrad)" />
+
+      <ellipse cx="-127" cy="6" rx="32" ry="38" fill="#ffffff" />
+
+      <path d="M -201 -24 C -196 -54, -172 -76, -142 -81 C -133 -82, -129 -72, -135 -65 C -140 -60, -148 -58, -156 -54 C -172 -46, -180 -34, -184 -19 C -186 -11, -202 -13, -201 -24 Z" fill="url(#textGlossGrad)" />
+    </g>
+
+
+    <g filter="url(#letterOverlapShadow)">
+      <use href="#pathO2" fill="url(#boomTextGrad)" />
+
+      <ellipse cx="63" cy="7" rx="32" ry="38" fill="#ffffff" />
+
+      <path d="M -11 -22 C -6 -52, 18 -74, 48 -79 C 57 -80, 61 -70, 55 -63 C 50 -58, 42 -56, 34 -52 C 18 -44, 10 -32, 6 -17 C 4 -9, -12 -11, -11 -22 Z" fill="url(#textGlossGrad)" />
+    </g>
+
+
+    <g filter="url(#letterOverlapShadow)">
+      <use href="#pathB" fill="url(#boomBGrad)" />
+
+      <path d="M -358 -106 C -358 -128, -342 -140, -322 -138 C -302 -136, -292 -120, -296 -100 C -300 -80, -318 -72, -336 -74 C -352 -76, -358 -90, -358 -106 Z" fill="url(#holeBGrad)" />
+
+      <path d="M -358 10 C -358 -12, -340 -26, -320 -24 C -298 -22, -288 -4, -292 16 C -296 36, -314 44, -334 42 C -350 40, -358 26, -358 10 Z" fill="#ffffff" />
+
+      <path d="M -418 -118 C -416 -156, -392 -184, -358 -192 C -348 -194, -343 -183, -349 -175 C -354 -169, -364 -166, -372 -160 C -390 -148, -398 -132, -400 -114 C -401 -104, -419 -106, -418 -118 Z" fill="url(#textGlossGrad)" />
+    </g>
+  </g>
+
+
+
+  <g>
+
+    <ellipse cx="606" cy="451" rx="13.5" ry="15" transform="rotate(-10, 606, 451)" fill="#9e3e00" opacity="0.45" filter="url(#dropCastShadow)" />
+
+    <path d="M 603 433
+             C 611 433, 617 440, 617 449
+             C 617 458, 610 464, 603 464
+             C 595 464, 590 457, 590 448
+             C 590 440, 596 433, 603 433 Z" fill="url(#waterDropSmallGrad)" stroke="#495f70" stroke-width="0.9" stroke-opacity="0.45" />
+
+    <path d="M 597 458 A 11 11 0 0 0 614 449" fill="none" stroke="#fffbe8" stroke-width="3.2" stroke-linecap="round" opacity="0.9" filter="url(#causticBlur)" />
+
+    <ellipse cx="598.5" cy="441.5" rx="3.8" ry="2.6" transform="rotate(-28, 598.5, 441.5)" fill="#ffffff" opacity="0.96" />
+  </g>
+
+
+  <g>
+
+    <path d="M 638 492
+             C 655 493, 668 509, 667 528
+             C 666 546, 653 559, 637 558
+             C 621 557, 611 542, 612 524
+             C 613 506, 623 491, 638 492 Z" fill="#963900" opacity="0.48" filter="url(#dropCastShadow)" />
+
+    <path d="M 635 488
+             C 651 488, 664 504, 664 523
+             C 664 542, 651 555, 635 554
+             C 619 553, 608 538, 609 520
+             C 610 502, 621 488, 635 488 Z" fill="url(#waterDropLargeGrad)" stroke="#485c6b" stroke-width="1.2" stroke-opacity="0.38" />
+
+    <path d="M 621 542 C 634 552, 655 546, 659 526 C 660 518, 657 510, 653 505 C 655 524, 643 542, 621 542 Z" fill="#fff9eb" opacity="0.88" filter="url(#causticBlur)" />
+
+    <ellipse cx="627.5" cy="502.5" rx="8.5" ry="5.5" transform="rotate(-26, 627.5, 502.5)" fill="#ffffff" opacity="0.96" />
+
+    <circle cx="619.5" cy="513.5" r="2.3" fill="#ffffff" opacity="0.82" />
+  </g>
+</svg>

@@ -74,34 +74,33 @@ Khi chơi khác mạng, cần gói có dịch vụ tra mã đang hoạt động.
 
 <!-- Standalone guide appendix; the launcher embeds the sections above. -->
 
-Tự dựng máy chủ (S1)
+Tự dựng Server (S1)
 --------------------------
 
-Máy chủ S1 lưu tài khoản và kết quả trên máy bạn. Máy bạn cần chạy trong lúc mọi người chơi. Hãy chuẩn bị thư mục game KR 00967 có các cặp tệp `FxMap`, `FxContents` và `fx` (mỗi cặp gồm `.idx` và `.idd`).
+Server S1 lưu tài khoản và kết quả trên máy bạn, nên máy cần bật trong lúc mọi người chơi. Gói server đã có sẵn dữ liệu luật chơi (map, vật phẩm, chỉ số nhân vật), bạn không cần chọn thư mục game.
 
 **Windows**
 
 1. Giải nén cả gói server Windows vào một thư mục. Mở **BoomServer.exe**.
-2. Nhập tên máy chủ. Nếu ứng dụng đã tìm đúng thư mục game thì giữ nguyên; nếu chưa, bấm **Chọn…** và trỏ tới thư mục đã chuẩn bị. Bấm **Chạy** và chờ trạng thái **Đang chạy**.
-3. Bấm **Sao chép** cạnh **Mã mời S1** rồi gửi mã cho người chơi. Người chơi sẽ dùng **Máy chủ → Thêm máy chủ** khi bản launcher hỗ trợ S1.
-4. Đóng cửa sổ để máy chủ chạy nền. Bấm biểu tượng BoomServer ở khay hệ thống hoặc mở lại `BoomServer.exe` để xem trạng thái. Bấm **Dừng** trước khi tắt máy. **Sao lưu ngay** tạo bản sao cơ sở dữ liệu; **Mở thư mục dữ liệu** mở nơi chứa bản sao và thông tin tài khoản chủ máy. **Tạo lại mã mời** khởi động lại máy chủ, làm mã cũ hết hiệu lực và ngắt người đang chơi.
+2. Đặt **Tên Server**, bấm **Chạy**. Ô thông báo hiện từng bước chuẩn bị; chờ đèn trạng thái chuyển xanh và dòng **Đang chạy**.
+3. Bấm **Sao chép** cạnh **Mã mời S1** (nút đổi thành **Đã chép ✓**) rồi gửi mã cho người chơi. Người chơi dùng **Máy chủ → Thêm máy chủ** khi bản launcher hỗ trợ S1.
+4. Đóng cửa sổ thì Server vẫn chạy nền ở khay hệ thống. Bấm biểu tượng BoomServer để mở lại; chuột phải để **Sao chép mã mời** hoặc **Dừng & Thoát**. Bấm **Dừng** trước khi tắt máy. **Sao lưu** tạo bản sao dữ liệu và hiện tên File cùng giờ sao lưu. **Cài đặt** có chọn ngôn ngữ (Tiếng Việt / English / 한국어), thư mục nhận bản sao lưu, **Mở thư mục dữ liệu** và **Tạo mã mời mới** (mã cũ hết hiệu lực, người đang chơi bị ngắt). Khi có lỗi, nội dung đầy đủ hiện ở ô thông báo để đọc hoặc sao chép; bấm **Mở log** để xem Log.
 
-Khi Windows hỏi quyền cho kết nối trực tiếp, bạn có thể cho phép trên mạng **Riêng tư**. Nếu từ chối hoặc router không mở được cổng, BoomServer vẫn thử kết nối qua relay. Nếu người chơi chưa vào được ngay, chờ dòng trạng thái báo kết nối relay rồi thử lại.
+Khi Windows Firewall hỏi quyền kết nối trực tiếp, bạn có thể cho phép trên mạng **Private**. Nếu từ chối hoặc router không mở được Port, BoomServer vẫn chạy qua relay. Nếu người chơi chưa vào được ngay, chờ dòng trạng thái báo **Đã kết nối relay** rồi thử lại.
 
-![Cửa sổ BoomServer khi hai người đang chơi; mã mời đã được rút gọn](images/boomserver-s1.png)
+![Cửa sổ BoomServer trên Windows 10 gồm bốn khối: trạng thái (Đang chạy · Đã kết nối relay, Online: 2 người · Phòng: 1), tên Server, mã mời S1 và thanh nút Dừng, Sao lưu, Cài đặt, Mở log](images/boomserver-s1.png)
 
 **Linux**
 
-1. Giải nén gói server Linux. Với Docker Compose, mở terminal trong thư mục vừa giải nén, dùng đường dẫn tuyệt đối tới thư mục game mà container có thể đọc, rồi chạy:
+1. Giải nén gói server Linux. Với Docker Compose, mở terminal trong thư mục vừa giải nén rồi chạy:
 
    ```sh
-   export BOOM_GAME_DIR="/duong/dan/toi/game"
    export BOOM_NAME="Boom Club"
-   docker compose -f deploy/compose.yaml up -d --build
+   docker compose -f deploy/compose.yaml up -d
    docker compose -f deploy/compose.yaml exec boom /opt/boom/bin/boom-server invite
    ```
 
-2. Nếu dùng Linux có systemd và không muốn dùng Docker, chạy `sudo ./deploy/install.sh /duong/dan/toi/game "Boom Club"`. Khi dịch vụ đã chạy, lấy mã bằng `sudo -u boom-server boom-server invite`.
-3. Gửi mã mời S1 cho người chơi. Giữ volume dữ liệu Docker hoặc thư mục `/var/lib/boom-server` nếu cài bằng systemd; đó là nơi lưu danh tính máy chủ, tài khoản và kết quả.
+2. Nếu dùng Linux có systemd và không muốn dùng Docker, chạy `sudo ./deploy/install.sh "Boom Club"`. Khi Server đã chạy, lấy mã bằng `sudo -u boom-server boom-server invite`.
+3. Gửi mã mời S1 cho người chơi. Giữ volume dữ liệu Docker hoặc thư mục `/var/lib/boom-server` nếu cài bằng systemd; đó là nơi lưu danh tính Server, tài khoản và kết quả.
 
 Xem thêm mã nguồn và tài liệu vận hành ở [repo GitHub](https://github.com/aquaplatinumberlitz/boom-kr-server).

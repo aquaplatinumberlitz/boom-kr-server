@@ -1,15 +1,26 @@
 #!/usr/bin/env python3
-"""Build the S1 Docker image and play one two-player round in an offline container."""
+"""Build the S1 Docker image and play one two-player round in an offline container.
+
+The image uses the bundle's prebuilt game-rule JSON by default. `--game-override`
+re-runs the same round with a read-only game folder mounted for re-export.
+The unit tests below check the deployment files without Docker.
+"""
 import argparse
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import subprocess
+import sys
 import tempfile
 import time
+import unittest
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from test_kr_pack_install import test_bundle
+
+DEPLOY = Path(__file__).resolve().parents[1] / 'server' / 'self-host'
 
 
 def run(*args, **kwargs):
@@ -40,12 +51,16 @@ def main():
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--binaries', type=Path, help='Build a temporary bundle with a synthetic fixture')
     source.add_argument('--bundle', type=Path, help='Use an existing Linux S1 bundle')
-    parser.add_argument('--game', type=Path, help='Game path for --bundle')
+    parser.add_argument('--game', type=Path, help='Optional game path to re-export with --bundle')
+    parser.add_argument('--game-override', action='store_true',
+                        help='Mount the game folder and set BOOM_GAME instead of the prebuilt JSON')
     parser.add_argument('--public-lookup', action='store_true',
                         help='Use public iroh discovery instead of the isolated loopback route')
     args = parser.parse_args()
-    if bool(args.game) != bool(args.bundle):
-        parser.error('--bundle and --game must be used together')
+    if args.game and not args.bundle:
+        parser.error('--game is only used with --bundle')
+    if args.bundle and args.game_override and not args.game:
+        parser.error('--game-override with --bundle needs --game')
     ident = 'kre-s1-smoke-' + secrets.token_hex(4)
     with tempfile.TemporaryDirectory(prefix=ident) as directory:
         root = Path(directory)
@@ -55,16 +70,18 @@ def main():
             game = root / 'game'
         else:
             bundle = args.bundle.resolve(strict=True)
-            game = args.game.resolve(strict=True)
+            game = args.game.resolve(strict=True) if args.game else None
         two = json.loads((bundle / 'config.template.json').read_bytes())['diagnostic_two_lobby']
         docker = ('docker', 'exec', ident)
         try:
             run('docker', 'build', '-t', ident, '-f', str(bundle / 'deploy/Dockerfile'), str(bundle))
             net = ['--network', 'bridge'] if args.public_lookup else ['--network', 'none', '-e', 'BOOM_OFFLINE=1']
+            # Default: no game folder at all; the image serves pack-data/.
+            source = (['--mount', f'type=bind,source={game},target=/game,readonly', '-e', 'BOOM_GAME=/game']
+                      if args.game_override else [])
             run('docker', 'run', '-d', '--name', ident, *net, '--read-only',
                 '--cap-drop=ALL', '--security-opt=no-new-privileges', '--tmpfs', '/tmp',
-                '--mount', f'type=bind,source={game},target=/game,readonly',
-                ident)
+                *source, ident)
             for _ in range(100):
                 log = run('docker', 'logs', ident, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                 if ('Boom Server ready: true' in log
@@ -105,7 +122,8 @@ def main():
             assert run(*docker, '/opt/boom/bin/boom-server', 'invite', capture_output=True).strip() == invite
             run('docker', 'stop', '-t', '30', ident)
             route_name = 'public discovery' if args.public_lookup else 'offline loopback'
-            print(f'S1 Docker ({route_name}): persistent pinned invite, one two-player round, verified backup, clean shutdown')
+            data = 'game folder re-export' if args.game_override else 'prebuilt JSON'
+            print(f'S1 Docker ({route_name}, {data}): persistent pinned invite, one two-player round, verified backup, clean shutdown')
         except subprocess.CalledProcessError as error:
             if error.stderr:
                 print(error.stderr.rstrip())
@@ -114,6 +132,39 @@ def main():
             # Isolated synthetic fixtures only. Never stop or prune other containers/images.
             for command in [('docker', 'rm', '-fv', ident), ('docker', 'image', 'rm', ident)]:
                 subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
+
+
+class DeployFileTests(unittest.TestCase):
+    """End users run the prebuilt JSON; a game folder stays an optional override."""
+
+    def test_compose_needs_no_game_folder(self):
+        compose = (DEPLOY / 'compose.yaml').read_text()
+        self.assertNotIn('BOOM_GAME_DIR', compose)
+        self.assertNotIn('target: /game', compose)
+        self.assertIn('BOOM_GAME: "${BOOM_GAME:-}"', compose)
+        self.assertIn('boom-state:/state', compose)
+
+    def test_image_has_no_mandatory_game_and_copies_pack_data(self):
+        dockerfile = (DEPLOY / 'Dockerfile').read_text()
+        self.assertNotIn('BOOM_GAME=/game', dockerfile)
+        self.assertNotIn('mkdir /game', dockerfile)
+        ignore = (DEPLOY / 'Dockerfile.dockerignore').read_text().splitlines()
+        self.assertIn('!pack-data', ignore)
+        self.assertIn('!pack-data/**', ignore)
+
+    def test_install_script_takes_only_a_name_by_default(self):
+        script = DEPLOY / 'install.sh'
+        subprocess.run(['sh', '-n', str(script)], check=True)
+        text = script.read_text()
+        self.assertRegex(text, re.escape('sudo %s ["Server name"]'))
+        self.assertIn('--game-dir', text)
+        self.assertIn('pack-data/manifest.json', text)
+        # The env file only names a game folder when the override is used.
+        self.assertIn("if os.environ['BOOM_INSTALL_GAME']:", text)
+        if os.getuid() != 0:
+            usage = subprocess.run(['sh', str(script), 'Boom Club'], capture_output=True, text=True)
+            self.assertEqual(usage.returncode, 2)
+            self.assertIn('Usage:', usage.stderr)
 
 
 if __name__ == '__main__':

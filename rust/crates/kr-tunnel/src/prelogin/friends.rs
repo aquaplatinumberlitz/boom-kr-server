@@ -21,6 +21,8 @@ use tokio::{
 
 const GUEST: &[u8; 8] = b"KR-O1-01";
 const PEER: &[u8; 8] = b"KR-O1-UD";
+/// Upper bound for delivering already received stream bytes at teardown.
+const DRAIN: Duration = Duration::from_secs(2);
 
 pub fn valid_name(name: &str) -> bool {
     kr_wire::kr00967::text949x::encode_name(name).is_ok()
@@ -96,11 +98,14 @@ async fn host(
     tokio::pin!(data);
     let mut streams = JoinSet::new();
     let mut total = 0;
-    loop {
+    let result = loop {
         tokio::select! {
-            _ = room.closed() => return Ok(()),
-            _ = native.closed() => return Ok(()),
-            result = &mut data => return result,
+            // A native server may answer and close at once. Its final bytes are
+            // already buffered here, so drain the copies before the caller
+            // closes the room instead of returning (and aborting them) now.
+            _ = room.closed() => break Ok(()),
+            _ = native.closed() => break Ok(()),
+            result = &mut data => break result,
             done = streams.join_next(), if !streams.is_empty() => {
                 if let Some(Err(error)) = done { return Err(io::Error::other(error)); }
             },
@@ -115,11 +120,29 @@ async fn host(
                     let port = tokio::time::timeout(Duration::from_secs(2), input.read_u16()).await.map_err(io::Error::other)??;
                     if !ports.contains(&port) { return Err(io::Error::other("O1 endpoint denied")); }
                     let (mut send, mut recv) = super::open(&native, port).await?;
-                    copy_pair(&mut input, &mut send, &mut recv, &mut out, &bound).await
+                    copy_pair(&mut input, &mut send, &mut recv, &mut out, &bound).await?;
+                    // `finish` only queues the FIN, and closing the room drops
+                    // unacknowledged stream data. Hold the task until the guest
+                    // has acknowledged every forwarded byte.
+                    let _ = out.stopped().await;
+                    Ok(())
                 });
             }
         }
-    }
+    };
+    drain(&mut streams).await;
+    result
+}
+
+/// Bounded hand-over of in-flight stream copies after a connection ended.
+/// QUIC keeps received bytes readable after close; aborting the copy tasks
+/// right away would turn a complete response into an early EOF downstream.
+async fn drain(streams: &mut JoinSet<io::Result<()>>) {
+    let _ = tokio::time::timeout(DRAIN, async {
+        while streams.join_next().await.is_some() {}
+    })
+    .await;
+    streams.shutdown().await;
 }
 
 async fn host_peer(
@@ -229,7 +252,12 @@ pub async fn companion(
         tokio::select! {
             biased;
             _ = stop.changed() => break Ok(()),
-            _ = room.closed() => break Err(io::Error::new(io::ErrorKind::ConnectionAborted, "O1 room closed")),
+            _ = room.closed() => {
+                // The host closes the room once its native server is done. Let
+                // local TCP clients receive the bytes QUIC already delivered.
+                drain(&mut streams).await;
+                break Err(io::Error::new(io::ErrorKind::ConnectionAborted, "O1 room closed"));
+            },
             result = &mut peer => break result,
             done = accepts.join_next(), if !accepts.is_empty() => {
                 break done.ok_or_else(|| io::Error::other("O1 listeners ended"))?.map_err(io::Error::other)?;
@@ -344,12 +372,10 @@ mod tests {
                 recv.read_exact(&mut bytes).await.unwrap();
                 assert_eq!(&bytes, b"request");
                 send.write_all(b"response").await.unwrap();
-                send.flush().await.unwrap();
-                // Give the peer a scheduling point to consume the response
-                // before ending this half of the stream. CI runners have
-                // exposed an early-EOF race here.
-                tokio::time::sleep(Duration::from_millis(50)).await;
                 send.finish().unwrap();
+                // After the acknowledgement this block drops `incoming`, which
+                // closes the native connection while the gateway may still be
+                // forwarding the response. The gateway must deliver it anyway.
                 let _ = send.stopped().await;
             };
             let client = async {

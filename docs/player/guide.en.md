@@ -81,31 +81,30 @@ Playing across networks needs a bundle with a working room directory. If the roo
 Host your own server (S1)
 --------------------------
 
-An S1 server stores accounts and match results on your computer. Keep it running while people play. Have a KR 00967 game folder with the `FxMap`, `FxContents` and `fx` pairs (an `.idx` and an `.idd` file for each).
+An S1 server stores accounts and match results on your computer. Keep it running while people play. The server package already includes the game-rule data (maps, items, character stats), so you do not choose a game folder.
 
 **Windows**
 
 1. Extract the entire Windows server package into one folder. Open **BoomServer.exe**.
-2. Name your server. Keep the detected game folder if it is correct, or choose **Browse…** to select your game folder. Click **Start** and wait for **Running**.
-3. Click **Copy** next to **S1 invite** and send the code to players. They can use **Servers → Add server** when their launcher supports S1.
-4. Close the window to keep hosting in the background. Click BoomServer in the system tray or open `BoomServer.exe` again to see its status. Click **Stop** before shutting down. **Back up now** saves a database snapshot; **Open data folder** opens the location of snapshots and the host account details. **Reset invite** restarts the server, invalidates the old code, and disconnects current players.
+2. Enter a **Server name** and click **Run**. The message box lists each startup step; wait for the green light and **Running**.
+3. Click **Copy** next to **S1 invite** (it changes to **Copied ✓**) and send the code to players. They can use **Servers → Add server** when their launcher supports S1.
+4. Closing the window keeps the server running in the system tray. Click the BoomServer icon to reopen it, or right-click it to **Copy invite** or **Stop & Exit**. Click **Stop** before shutting down. **Back up** saves a database snapshot and shows its file name and time. **Settings** lets you choose the language (Tiếng Việt / English / 한국어), a folder for backup copies, **Open data folder**, and **New invite code** (the old code stops working and current players are disconnected). Errors appear in full in the message box, where you can read or copy them; **Open log** shows the log.
 
-If Windows asks to allow direct connections, you can allow them on **Private networks**. BoomServer will still try the relay if you decline or your router cannot open a port. If players cannot join immediately, wait for the relay connection and try again.
+If Windows Firewall asks to allow direct connections, you can allow them on **Private networks**. BoomServer still runs through the relay if you decline or your router cannot open a port. If players cannot join immediately, wait for **Relay connected** and try again.
 
-![BoomServer with two players online; the invite code is shortened](images/boomserver-s1.png)
+![BoomServer window on Windows 10 (Vietnamese UI) with four blocks: status (running and relay connected, 2 online, 1 room), server name, S1 invite code, and Stop/Back up/Settings/Open log buttons](images/boomserver-s1.png)
 
 **Linux**
 
-1. Extract the Linux server package. For Docker Compose, open a terminal in the extracted directory. Use an absolute path to a game folder the container can read:
+1. Extract the Linux server package. For Docker Compose, open a terminal in the extracted directory and run:
 
    ```sh
-   export BOOM_GAME_DIR="/path/to/game"
    export BOOM_NAME="Boom Club"
-   docker compose -f deploy/compose.yaml up -d --build
+   docker compose -f deploy/compose.yaml up -d
    docker compose -f deploy/compose.yaml exec boom /opt/boom/bin/boom-server invite
    ```
 
-2. On Linux with systemd, you can instead run `sudo ./deploy/install.sh /path/to/game "Boom Club"`. Once it starts, get the code with `sudo -u boom-server boom-server invite`.
+2. On Linux with systemd, you can instead run `sudo ./deploy/install.sh "Boom Club"`. Once it starts, get the code with `sudo -u boom-server boom-server invite`.
 3. Send the S1 invite to your players. Keep the Docker state volume or the systemd data folder at `/var/lib/boom-server` to retain your server identity, accounts and results.
 
 Find the source and operations guide in the [GitHub repository](https://github.com/aquaplatinumberlitz/boom-kr-server).

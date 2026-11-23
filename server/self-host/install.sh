@@ -1,24 +1,38 @@
 #!/bin/sh
+# Install the S1 server with the prebuilt game-rule JSON shipped in pack-data/.
+# Dev/build only: --game-dir re-exports the data from a readable KR 00967 folder.
 set -eu
-if [ "$#" -lt 1 ] || [ "$#" -gt 2 ] || [ "$(id -u)" != 0 ]; then
-    printf 'Usage: sudo %s /absolute/path/to/game [server name]\n' "$0" >&2
+usage() {
+    printf 'Usage: sudo %s ["Server name"]\n       sudo %s --game-dir /absolute/path/to/game ["Server name"]\n' "$0" "$0" >&2
     exit 2
+}
+[ "$(id -u)" = 0 ] || usage
+game=
+if [ "${1:-}" = --game-dir ]; then
+    [ "$#" -ge 2 ] || usage
+    case "$2" in
+        /*) game=$(realpath -e -- "$2");;
+        *) printf 'Use an absolute game path.\n' >&2; exit 2;;
+    esac
+    shift 2
 fi
+[ "$#" -le 1 ] || usage
 bundle=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
-case "$1" in
-    /*) game=$(realpath -e -- "$1");;
-    *) printf 'Use an absolute game path.\n' >&2; exit 2;;
-esac
-name=${2:-Boom Server}
+name=${1:-Boom Server}
 newline='
 '
 case $game$name in
     *"$newline"*) printf 'Game path and name must be on one line.\n' >&2; exit 2;;
 esac
-[ -f "$game/FxMap.idx" ] && [ -f "$game/FxMap.idd" ] || {
-    printf 'Choose the KR 00967 directory containing FxMap.idx and FxMap.idd.\n' >&2
+if [ -n "$game" ]; then
+    [ -f "$game/FxMap.idx" ] && [ -f "$game/FxMap.idd" ] || {
+        printf 'Choose the KR 00967 directory containing FxMap.idx and FxMap.idd.\n' >&2
+        exit 2
+    }
+elif [ ! -f "$bundle/pack-data/manifest.json" ]; then
+    printf 'This bundle has no prebuilt pack-data/; use --game-dir.\n' >&2
     exit 2
-}
+fi
 command -v python3 >/dev/null
 command -v systemctl >/dev/null
 if [ -e /opt/boom-server ] || [ -e /etc/boom-server.env ] ||
@@ -29,7 +43,7 @@ fi
 if ! id boom-server >/dev/null 2>&1; then
     useradd --system --user-group --home-dir /var/lib/boom-server --shell /usr/sbin/nologin boom-server
 fi
-if ! runuser -u boom-server -- test -r "$game/FxMap.idx"; then
+if [ -n "$game" ] && ! runuser -u boom-server -- test -r "$game/FxMap.idx"; then
     printf 'The boom-server system account must be able to read the game directory.\n' >&2
     exit 1
 fi
@@ -47,8 +61,9 @@ def quote(value):
     return '"' + value.replace('\\', '\\\\').replace('"', '\\"') + '"'
 
 with Path('/etc/boom-server.env').open('x', encoding='utf-8') as handle:
-    for key in ('GAME', 'NAME'):
-        handle.write(f'BOOM_{key}={quote(os.environ["BOOM_INSTALL_" + key])}\n')
+    handle.write(f'BOOM_NAME={quote(os.environ["BOOM_INSTALL_NAME"])}\n')
+    if os.environ['BOOM_INSTALL_GAME']:
+        handle.write(f'BOOM_GAME={quote(os.environ["BOOM_INSTALL_GAME"])}\n')
 PYTHON
 # Public operator entry point resolves to the bundle after checking OS permissions.
 cat >/usr/local/bin/boom-server <<'SCRIPT'

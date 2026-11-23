@@ -9,15 +9,19 @@ import struct
 import subprocess
 import sys
 import tempfile
+import unittest
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from server import probe_codec as codec
 from server.room_title import _encode_bytes as wire_bytes
 from content_census import Pack
+import kr_pack_export
 from kr_pack_export import ITEMS, sha
 from rust_map_profile import raw_blob
 from rust_package_runtime import digest, verify
-from rust_service_package import build
+from rust_service_package import PACK_DATA, build
 
 ROOT = Path(__file__).resolve().parents[1]
 MAPS = ('SyntheticOne', 'SyntheticTwo')
@@ -199,7 +203,16 @@ def fake_recipe(root):
                                          send_budget=64, pending_ms=500, lease_seconds=900))
 
 
-def test_bundle(root, binaries, scope='g1', fake=True, *, self_host=False):
+def fake_pack_data(game, cache, pins, seeds):
+    """Bản JSON đóng sẵn của pack giả, cùng chính sách export đã vá trong gói thử."""
+    with mock.patch.dict(kr_pack_export.PACK_SHA256, pins, clear=True), \
+            mock.patch.dict(kr_pack_export.TERRAIN_SEEDS, seeds, clear=True), \
+            mock.patch.object(kr_pack_export, 'MAPS', MAPS):
+        path, _ = kr_pack_export.export(game, cache, pins=pins, maps=MAPS)
+        return path
+
+
+def test_bundle(root, binaries, scope='g1', fake=True, *, self_host=False, pack_data=True):
     if fake:
         pins, seeds = fake_game(root / 'game')
     config = fake_recipe(root / 'wire')
@@ -209,7 +222,18 @@ def test_bundle(root, binaries, scope='g1', fake=True, *, self_host=False):
     room['terrain'] = dict(kinds=[2] * 195)
     bundle = root / 'bundle'
     target = f'{platform.machine()}-unknown-linux-gnu'
-    build(config, binaries, bundle, target, pack_scope=scope, self_host=self_host)
+    if not pack_data or scope == 'f1-a':
+        build(config, binaries, bundle, target, pack_scope=scope, self_host=self_host)
+    elif fake:
+        prebuilt = fake_pack_data(root / 'game', root / 'pack-data-source', pins, seeds)
+        with mock.patch.dict(kr_pack_export.PACK_SHA256, pins, clear=True), \
+                mock.patch.dict(kr_pack_export.TERRAIN_SEEDS, seeds, clear=True), \
+                mock.patch.object(kr_pack_export, 'MAPS', MAPS):
+            build(config, binaries, bundle, target, pack_scope=scope, self_host=self_host,
+                  pack_data=prebuilt)
+    else:
+        build(config, binaries, bundle, target, pack_scope=scope, self_host=self_host,
+              pack_data=PACK_DATA)
     template = json.loads((bundle / 'config.template.json').read_bytes())
     room = template['diagnostic_two_lobby']['fixed_room']
     assert 'map_profile' not in room and 'terrain' not in room
@@ -241,6 +265,92 @@ def test_bundle(root, binaries, scope='g1', fake=True, *, self_host=False):
         sidecar.chmod(0o400)
     verify(bundle, expected)
     return bundle, expected
+
+
+def fake_binaries(root):
+    """ELF giả đủ để đóng gói; các lệnh Python không chạy binary dùng được."""
+    root.mkdir()
+    header = bytearray(32)
+    header[:6] = b'\x7fELF\x02\x01'
+    struct.pack_into('<H', header, 18, {'x86_64': 62, 'aarch64': 183}[platform.machine()])
+    for name in ('kr-service', 'kr-admin', 'kr-companion', 'kr-launch-identity', 'kr-load', 'boom-server'):
+        (root / name).write_bytes(bytes(header) + name.encode())
+    return root
+
+
+class PrebuiltPackDataTests(unittest.TestCase):
+    """Mặc định dùng JSON đóng sẵn; --game-dir chỉ là đường xuất lại cho dev/build."""
+
+    def setUp(self):
+        temp = tempfile.TemporaryDirectory(prefix='kr-prebuilt-')
+        self.addCleanup(temp.cleanup)
+        self.root = Path(temp.name)
+        self.binaries = fake_binaries(self.root / 'binaries')
+
+    def package(self, *argv):
+        return subprocess.run([sys.executable, str(self.bundle / 'kr-package.py'), *argv,
+                               '--manifest-sha256', self.manifest], text=True, capture_output=True,
+                              timeout=60, env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'})
+
+    def bundle_for(self, **options):
+        self.bundle, self.manifest = test_bundle(self.root, self.binaries, **options)
+        return json.loads((self.bundle / 'manifest.json').read_bytes())
+
+    def test_s1_bundle_carries_verified_json_and_exports_without_game(self):
+        manifest = self.bundle_for(self_host=True)
+        self.assertEqual(manifest['pack_data'], 'pack-data')
+        shipped = {row['path'] for row in manifest['files'] if row['path'].startswith('pack-data/')}
+        names = {p.name for p in (self.bundle / 'pack-data').iterdir()}
+        self.assertEqual(shipped, {'pack-data/' + name for name in names})
+        self.assertEqual(names, {'manifest.json', 'tables.json', *(name + suffix for name in MAPS
+                                                                  for suffix in ('.json', '.rules.json'))})
+        self.assertTrue(all(name.endswith('.json') for name in names))
+        self.assertFalse([p for p in self.bundle.rglob('*') if p.suffix in ('.idx', '.idd', '.bik', '.dll')])
+        state = self.root / 'state'
+        result = self.package('export', '--state', str(state))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        value = json.loads(result.stdout)
+        self.assertEqual(value, dict(cache=str((self.bundle / 'pack-data').resolve()), reused=True, prebuilt=True))
+        self.assertFalse((state / 'pack-cache').exists())
+        # Dev/build override: re-export from the read-only game folder into private state.
+        override = self.package('export', '--state', str(state), '--game-dir', str(self.root / 'game'))
+        self.assertEqual(override.returncode, 0, override.stderr)
+        fresh = Path(json.loads(override.stdout)['cache'])
+        self.assertTrue(fresh.is_relative_to(state / 'pack-cache'))
+        for path in (self.bundle / 'pack-data').iterdir():
+            self.assertEqual((fresh / path.name).read_bytes(), path.read_bytes(), path.name)
+
+    def test_tampered_prebuilt_json_is_rejected_before_use(self):
+        self.bundle_for(self_host=True)
+        target = self.bundle / 'pack-data' / 'tables.json'
+        target.chmod(0o600)
+        target.write_bytes(target.read_bytes().replace(b'"', b"'", 1))
+        result = self.package('export', '--state', str(self.root / 'state'))
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('không khớp manifest', result.stderr)
+
+    def test_bundle_without_prebuilt_json_still_requires_game_dir(self):
+        self.bundle_for(pack_data=False)
+        self.assertNotIn('pack_data', json.loads((self.bundle / 'manifest.json').read_bytes()))
+        result = self.package('export', '--state', str(self.root / 'state'))
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('cần --game-dir', result.stderr)
+        with self.assertRaisesRegex(ValueError, 'S1 yêu cầu dữ liệu JSON đóng sẵn'):
+            build(fake_recipe(self.root / 'other-wire'), self.binaries, self.root / 'other',
+                  f'{platform.machine()}-unknown-linux-gnu', pack_scope='g1', self_host=True)
+
+    def test_f1a_catalog_keeps_using_the_game_folder(self):
+        manifest = self.bundle_for(scope='f1-a')
+        self.assertNotIn('pack_data', manifest)
+        self.assertFalse((self.bundle / 'pack-data').exists())
+
+    def test_repository_pack_data_is_the_default_s1_export(self):
+        path = kr_pack_export.prebuilt(PACK_DATA)
+        value = json.loads((path / 'manifest.json').read_bytes())
+        self.assertEqual(value['packs'], kr_pack_export.PACK_SHA256)
+        self.assertEqual(value['identity'], kr_pack_export.cache_identity(
+            kr_pack_export.PACK_SHA256, kr_pack_export.MAPS, True))
+        self.assertLess(sum(p.stat().st_size for p in path.iterdir()), 2 * 1024 * 1024)
 
 
 def run_smoke(bundle, manifest_hash, game, result, expected, *, fake, bwrap, image, timeout=300, **stdio):

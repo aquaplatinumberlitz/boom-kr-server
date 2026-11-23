@@ -33,3 +33,4 @@ __pycache__/
 *.jpg
 *.jpeg
 *.mp4
+!/assets/brand/*.png

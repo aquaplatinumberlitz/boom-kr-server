@@ -3,13 +3,16 @@ import copy
 import json
 from pathlib import Path
 import stat
+import shutil
 import struct
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from rust_package_runtime import digest, prepare, verify
-from rust_service_package import build
+from rust_service_package import PACK_DATA, build
 
 
 class PackageTests(unittest.TestCase):
@@ -214,6 +217,35 @@ class PackageTests(unittest.TestCase):
                 selected = config['diagnostic_two_lobby']['managed_rooms']['player_round']
                 self.assertEqual(selected['characters'], expected)
                 self.assertEqual(selected['pack_stats'], {str(key): stats[str(key)] for key in expected})
+
+    def test_prebuilt_pack_data_needs_a_pack_scope_and_an_exact_export(self):
+        with self.assertRaisesRegex(ValueError, 'g1 hoặc f1'):
+            build(self.config, self.binaries, self.out, 'x86_64-unknown-linux-gnu', pack_data=PACK_DATA)
+        from test_kr_pack_install import fake_recipe
+        recipe = fake_recipe(self.root / 'wire')
+        with self.assertRaisesRegex(ValueError, 'g1 hoặc f1'):
+            build(recipe, self.binaries, self.out, 'x86_64-unknown-linux-gnu', pack_scope='f1-a',
+                  pack_data=PACK_DATA)
+        extra = self.root / 'pack-data'
+        shutil.copytree(PACK_DATA, extra)
+        (extra / 'FxMap.idd').write_bytes(b'client pack is never shipped')
+        with self.assertRaisesRegex(ValueError, 'Manifest cache'):
+            build(recipe, self.binaries, self.out, 'x86_64-unknown-linux-gnu', pack_scope='g1', pack_data=extra)
+        self.assertFalse(self.out.exists())
+
+    def test_repository_pack_data_ships_in_a_g1_bundle(self):
+        from test_kr_pack_install import fake_recipe
+        for name in ['kr-launch-identity', 'kr-load']:
+            (self.binaries / name).write_bytes((self.binaries / 'kr-admin').read_bytes())
+        expected = build(fake_recipe(self.root / 'wire'), self.binaries, self.out, 'x86_64-unknown-linux-gnu',
+                         pack_scope='g1', pack_data=PACK_DATA)
+        manifest = verify(self.out, expected)
+        export = json.loads((PACK_DATA / 'manifest.json').read_bytes())
+        self.assertEqual((manifest['pack_data'], manifest['pack_data_identity']), ('pack-data', export['identity']))
+        rows = {row['path']: row for row in manifest['files'] if row['path'].startswith('pack-data/')}
+        self.assertEqual(set(rows), {'pack-data/' + path.name for path in PACK_DATA.iterdir()})
+        for path in PACK_DATA.iterdir():
+            self.assertEqual(rows['pack-data/' + path.name]['sha256'], digest(path))
 
 
 if __name__ == '__main__':
