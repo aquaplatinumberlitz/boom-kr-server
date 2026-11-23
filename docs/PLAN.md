@@ -8,87 +8,67 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Tra các mục khác theo anchor; gate K0–K7 và RE cũ ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **23/11, M8 hoàn tất (Giai đoạn 1 đạt acceptance).**
+theo quyết định của chủ dự án. Cập nhật gần nhất: **24/11, Giai đoạn 1 & hai PR phát hành (#597 BoomServer, #598 LANBoom) đã hoàn tất; chuyển sang Giai đoạn 2 (F1).**
 
-**Đích giai đoạn 1** ([chi tiết](#delivery-target)): dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời,
-tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1. [F1](#f1-normal-battle) đã mở sớm song song với M8 và O1; F2–F6 tiếp tục chờ.
-[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) đã mở rộng adapter pack cho 155/214 map của 86 họ A/B; CaJJ_Clover giữ A trong phạm vi hai người. [F1-b](protocol/load-phase.md#f1-pack-floor) đã nối Shoe, Punch và Kim cố định vào adapter pack. Chờ kiểm native F1-b trước khi xét nâng họ.
+**Đích giai đoạn 1** ([chi tiết](#delivery-target)): **ĐÃ ĐẠT** (dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời, tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1; đóng gói phát hành qua PR #597 và PR #598).
+**Đích kế tiếp — Giai đoạn 2 ([F1 Trận thường đầy đủ](#f1-normal-battle)) → F4 → F2 → F5 → F3 → F6:**
+[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) (`#559`) đã mở rộng adapter pack cho 155/214 map của 86 họ A/B (CaJJ_Clover giữ A trong phạm vi hai người). [F1-b](protocol/load-phase.md#f1-pack-floor) đã nối Shoe, Punch và Kim cố định vào adapter pack và đang chờ kiểm native trước khi xét nâng họ; tiếp theo là `#571` (`F1-c` nhân vật).
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
 | M0–M3 nền tảng, phòng cố định, trận hai người | Đạt trong phạm vi đã ghi | Không |
 | M4 bốn và tám người | Đạt phần đội cố định và Manner | Free 1v7 là giới hạn đã biết, không retry |
-| M5 tài khoản | [M5b đạt giai đoạn 1](protocol/auth-session.md#rust-db-account-profiles): hồ sơ DB cho account mới, hai ván, native DB/hàng đợi và login KR sau phục hồi | Hồ sơ ban đầu bằng 0; persistence nhân vật/kết quả thuộc M6, recovery/vận hành còn giới hạn |
-| [N1](#rust-n1) Internet thật | **Đạt phạm vi một phía tới được** (CP264 ghi nhận CP261 + owner, [kết luận](#rust-n1-result)) | N1b âm; N1R-b đạt hành vi relay đã đo. Transport xác thực mới trên Internet thật và tải/vận hành còn M8 |
-| [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng; N1R-b có bằng chứng riêng; vận hành còn M8 |
-| M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b đã đạt; relay nhiều người thuộc N1R-b |
-| [G1](#rust-g1) sáu map và tập item đã cắt | **Đạt acceptance giai đoạn 1** theo [ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json): sáu map/roster trong phạm vi, kim/cứu, item nền/MaxPower, ma trận Shoe/Punch, drop đã cắt, từ chối nhân vật giữ phiên và client Việt hai vòng trên Rust | Giữ giới hạn từng route/native và raw cleanup; không whole gameplay, every-tile hoặc L1 closure. Vận hành còn M8 |
-| M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Vận hành/backup/tải thuộc M8; inventory/progression/economy thuộc giai đoạn sau |
-| L1 UTF-8, Claude phụ trách, Codex thực thi | **Đạt phạm vi giai đoạn 1**. [L1a chọn 949x](content/client-language.md#utf8); Rust lưu tên account UTF-8 và chuyển chat sảnh/phòng. [CP370](evidence/checkpoints/records/CP370.json) xác nhận hai bản vi/ko cùng phòng có dấu, chat có dấu hai chiều và chơi một ván tới kết quả. [Sáu ảnh đăng nhập vi đã duyệt và ghép](evidence/checkpoints/records/CP367.json). | Ảnh bổ sung và nghiệm thu en hoãn. Start ván hai theo dõi riêng ở #502. |
-| M8 vận hành | **Đạt acceptance giai đoạn 1 (23/11).** Soak13 sạch (CP392 + 4,17 giờ soak13; 0 delivery/DB/owner/authority error, 4 backup, restore đạt) và lượt native-under-load `real-load26` đạt trọn vẹn: cặp Windows 10 VM (`vi`) + Linux Wine (`ko`) qua 4G tới VPS ARM64 chat hai chiều UTF-8, hoàn tất 2 trận (`elimination` + `all_dead` trên `Factory07`, đồng hồ chạy `108s`, đủ scoreboard, về phòng, `native_flow_exit=0`, `owner_exit=0`), chạy đồng thời liên tục `80s` ở đỉnh `50` người / `8` phòng / `8` ván / `290` route (`healthy=true`, `14/14` delivery `113.160/113.160` gói `0%` rơi, `p99 max 27,55 ms`, `CPU p95 44,6%`, `RSS peak 60,6 MB`, `FD 43->43`, `drained=true`, `journal complete=16`, `0` lỗi DB, `0` sự kiện opcode 59, `service_exit=0`). Receipt: `local/research/codex/m8-load-native-control/real-load26/` (ghi nhận rõ ở pha đóng phòng sau khi đủ 16 ván đã hoàn tất và trả kết quả, `kr-load` gặp `room 1: peer control disconnected` khiến `driver.exit=1` trước khi VPS xả sạch về 0). | Giai đoạn 1 (M7, M5b, N1R-b, G1, M6, M8) đã đủ điều kiện đóng; kiểm tra ngoài lab (2 mạng Internet độc lập + SmartScreen máy Windows sạch) giữ riêng cho bước phát hành sau PR 1 / PR 2. |
-| [O1 / S1](#full-game-roadmap) | **O1 (`#558`) đã đạt nghiệm thu native trọn vẹn.** Windows 10 VM cài bằng standard token, host dùng nút `1P` nhỏ trong hộp `크아체험하기`; Wine phát hiện LAN, vào cùng phòng, chọn đội, ready, chơi trận thường tới scoreboard, trở về phòng, rồi đóng host sau trận để khách nhận rõ thông báo phòng đã đóng hoặc mất kết nối. Receipt: `local/runs/o1-native-accept-r9/`; ba bản `CA.exe` dẫn xuất chỉ sửa 6 byte `trial-ui-control` theo CP341 / `m8-ingame-login.json`. | **S1 VPS ARM64 + 4G đạt nghiệm thu**: fixture `fake_game` tổng hợp, hai account, host và client 4G trong namespace với pure public discovery đều `load_complete`, 2 players, `round_returned`, 0% loss; backup/verify, restart giữ nguyên invite và vệ sinh VPS đạt. Internet thật của O1 còn mở riêng cho lát phát hành M8. |
+| M5 tài khoản | [M5b đạt giai đoạn 1](protocol/auth-session.md#rust-db-account-profiles): hồ sơ DB cho account mới, hai ván, native DB/hàng đợi và login KR sau phục hồi | Hồ sơ ban đầu bằng 0; persistence nhân vật/kết quả thuộc M6, mở rộng progression/inventory thuộc giai đoạn sau |
+| [N1](#rust-n1) Internet thật | **Đạt phạm vi giai đoạn 1** (CP264 + N1R-b + `PR #595` VPS ARM64 qua 4G) | N1b direct UDP qua hai NAT đổi cổng âm (không retry); kiểm O1 ngoài lab trên 2 mạng Internet độc lập do chủ dự án thử 5 phút |
+| [R1](#rust-r1) lõi phòng | Đạt refactor và hồi quy native cho profile 2/4/8 người và account | Không mở rộng tính năng |
+| M7 phòng tổng quát | M7a–e đạt phòng, lựa chọn, roster hiện hành và active EOF trong phạm vi đã đo | M5b và N1R-b đã đạt |
+| [G1](#rust-g1) sáu map và tập item đã cắt | **Đạt acceptance giai đoạn 1** theo [ma trận tám tiêu chí](evidence/rust-service/g1-acceptance-matrix.json): sáu map/roster trong phạm vi, kim/cứu, item nền/MaxPower, ma trận Shoe/Punch, drop đã cắt, từ chối nhân vật giữ phiên và client Việt hai vòng trên Rust | Giữ giới hạn từng route/native và raw cleanup; mở rộng map/item/nhân vật chuyển sang `F1` |
+| M6 lưu kết quả, thưởng 0 | [Đạt acceptance giai đoạn 1](protocol/life-results.md#rust-match-journal-serving): journal, nhân vật, native/relogin, kill/busy và CLI | Inventory, progression và economy thuộc giai đoạn sau |
+| L1 UTF-8, Claude phụ trách, Codex thực thi | **Đạt phạm vi giai đoạn 1**. [L1a chọn 949x](content/client-language.md#utf8); Rust lưu tên account UTF-8 và chuyển chat sảnh/phòng. [CP370](evidence/checkpoints/records/CP370.json) xác nhận hai bản vi/ko cùng phòng có dấu, chat có dấu hai chiều và chơi một ván tới kết quả. Hai ảnh `OneClick_Back_{vi,en}` đã ghép sạch vào gói `LANBoom` (PR #598). | Ảnh bổ sung, IME Hàn thật và nghiệm thu `en` đầy đủ để sau giai đoạn 1; start ván hai theo dõi riêng ở `#502`. |
+| M8 vận hành | **Đạt acceptance giai đoạn 1 (23/11, PR #595; #523 đã đóng).** Soak13 sạch (4,17 giờ, 528 ván, 0 delivery/DB/owner/authority error, 4 backup/restore) và `real-load26` đạt `80s` liên tục ở đỉnh `50` người / `8` phòng / `290` route (0% rơi gói, `journal complete=16`, `0` lỗi DB, `0` opcode 59) song song 2 ván native Win10 (`vi`) + Wine (`ko`) qua 4G tới VPS ARM64. | Kiểm tra ngoài lab (2 mạng Internet độc lập + SmartScreen trên máy Windows sạch) do chủ dự án thực hiện sau PR #597 / PR #598. |
+| [O1 / S1](#full-game-roadmap) & Phát hành | **O1 (`#558`), S1, `BoomServer` (PR #597, đóng `#567`) và `LANBoom` (PR #598, [CP393](evidence/checkpoints/records/CP393.json)) đã merge.** `BoomServer.exe` đóng gói sẵn `pack-data/` (không cần thư mục game), đạt Wine NAT/relay S1 E2E và smoke GUI native trên Windows 10 VM (`Online: 2 người · Phòng: 1`, backup verify schema 6, tray, dừng sạch). `LANBoom.exe` hỗ trợ thêm/xóa S1, tự quét LAN mDNS, hai relay offer O1 2P và cầu relay gameplay S1 trong companion (`relay_tests` đạt). | Follow-up: automation match/chat 2 chiều O1 2P trên Wine, ẩn khung nhập ID/PW của riêng `CA.exe` ở Phòng riêng, và kiểm ngoài lab (2 mạng Internet + SmartScreen). |
 
-**Thứ tự việc:**
+**Thứ tự việc hiện hành (sau Giai đoạn 1):**
 
-1. **M8 vận hành**, sau G1 đã đủ bằng chứng trong [ma trận acceptance](evidence/rust-service/g1-acceptance-matrix.json).
-   G1 không còn lịch native/PR theo selector. Sáu map dùng lại các route 2/4/8 hoặc 2/4/6 đã đo theo scope owner;
-   Shoe/Punch có ma trận chung, và client L1 `vi` hiện hành có Factory07/Bomb/hai vòng/reset trên Rust.
-   Các giới hạn native, wrapper cache, capture/debugger/cleanup cũ giữ tại evidence; không đổi exit 1 thành exit 0.
-   Việc M8 gồm Internet thật cho companion xác thực hiện hành, cấu hình/đóng gói, 50 người/8 phòng, giám sát,
-   backup/restore và chạy dài. N1/relay prototype Internet cũ giữ phạm vi riêng, không suy transport mới đã kiểm Internet.
-   | Nhóm M8 kế tiếp | Đầu ra và kiểm riêng |
-   |---|---|
-   | [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474) | Gói dùng thư mục game KR 00967 chỉ đọc, sinh cache map/item/nhân vật và bảng. [Đã kiểm cài sạch trong namespace Linux](evidence/rust-service/m8-pack-export.json): hai client TLS tổng hợp tới kết quả và về sảnh, backup hợp lệ, dừng sạch. Bản pack này chưa chạy ARM hoặc native; số đo ARM của nền gói cũ giữ riêng. |
-   | [Launcher public và gói người chơi](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476) | [CP375](evidence/checkpoints/records/CP375.json) xác nhận Windows vi và Wine ko dùng gói launcher qua cùng hotspot 4G tới VPS: chat có dấu hai chiều, hai ván cùng phòng qua relay. WAN giả lập đã qua relay, mất đường giữa ván và đăng nhập lại. [Launcher](OPERATIONS.md#launcher-art) có mục Máy chủ, cửa sổ gần 4:3 và hướng dẫn vi/en/ko; thêm máy chờ S1, Chơi với bạn bè có lát O1 riêng. Nghiệm thu phát hành còn hai mạng Internet độc lập và máy sạch ngoài PC phát triển. |
-   | [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) | [CP380](evidence/checkpoints/records/CP380.json) giữ phép đo 50 client/8 phòng. [CP392](evidence/checkpoints/records/CP392.json) thu soak lần 1: 1.132 ván, 9 backup và 4 TTL/relogin; lỗi lifecycle đã phân loại kỳ vọng theo #569. Soak13 đạt 15.000 giây, 528 delivery/round hoàn tất, 0 delivery/DB/owner/authority error, 4 backup và restore schema 6 hợp lệ. Lượt native-under-load `real-load26` (23/11) đạt `80s` liên tục ở `50/8/8/290` (`healthy=true`, `113.160/113.160` gói `0%` rơi, `p99 max 27,55 ms`, `CPU p95 44,6%`, `RSS 60,6 MB`, `FD 43->43`, `drained=true`, `journal complete=16`, `0` opcode 59) song song 2 ván native Win10 (`vi`) + Wine (`ko`) tới scoreboard và về phòng (`local/research/codex/m8-load-native-control/real-load26/`; pha đóng phòng sau vòng 2 ghi nhận `driver.exit=1` ở `room 1` trước khi server xả sạch về 0). |
-   | [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) | [CP374](evidence/checkpoints/records/CP374.json): audit account/phòng, snapshot live và mở ván sau restore vào state sạch qua hai client TLS tổng hợp; SIGTERM, SIGKILL/restart và rollback schema 6 về binary schema 5 đã kiểm loopback. Chờ tích hợp; còn nghiệm thu native trên máy triển khai theo M8. |
-   [Policy59 quan sát có giới hạn](protocol/room-membership.md#rust-bounded-diagnostic59) đã có native59 rồi hai vòng/reset;
-   [issue403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403) giữ semantics gốc/variant và budget phiên dài chưa rõ.
-   Checkpoint mới dùng `pack_evidence`/`evidence_runs`; dọn `local/` chỉ bằng plan/hash được chủ dự án duyệt.
-   Không đụng `tools/export_map_profile.py`.
-   **Lưu trữ M8:** đã dọn 477 file dùng một lần thuộc 80 lượt cũ bằng công cụ sau PR #486 và đúng hash kế hoạch;
-   `/home` trống từ 270,12 GB lên 350,16 GB (tăng 80,04 GB). Bằng chứng, 2.397 evidence manifest, đầu vào dùng lại,
-   chuỗi backing và overlay mới nhất cần tiếp tục được giữ. Harness đã nối tự dọn overlay/seed sau xác nhận VM dừng
-   và xuất bằng chứng, có manifest/hash và guard tham chiếu; 13 ca kiểm an toàn cùng control qcow2/FAT thật đã đạt. Lượt Windows mới đã tự xóa overlay/seed, giữ log/capture
-   và dump cần truy lifetime; lỗi guard Docker trước VM có receipt thất bại và phục hồi riêng. Dump chưa trích thông tin hoặc stop/export chưa xác nhận được giữ để phục hồi.
-   Các lượt mới theo [quy định sau lượt chạy](evidence/owner-directives/run-cleanup.json).
-   L1 đã nghiệm thu trên cùng gói launcher với M8, theo [phạm vi nghiệm thu](evidence/owner-directives/l1-phase1.json).
-   Tiệm, chữ do server gửi và IME Hàn thật để sau giai đoạn 1. Runtime Wine dùng lease chung.
+1. **Giai đoạn 2 — F1 (`#559` F1-a, `F1-b`, `#571` F1-c)** ([chi tiết](#f1-normal-battle)):
+   - `#559` (`F1-a`): mở rộng adapter pack cho các họ map B còn lại trên `kr-load` và hai client thật (lịch sử nền đã kiểm: 155/214 map).
+   - `F1-b`: kiểm native item Shoe, Punch, Kim trên bản pack đã nối trước khi xét nâng họ, sau đó mở rộng placement/drop theo nhóm map.
+   - `#571` (`F1-c`): đối chiếu `BomberAttr` KR 00967 cho nhân vật trận thường (lựa chọn, chỉ số ban đầu, cap và chọn lại sau ván).
+   - Tiếp theo sau `F1`: `F4` (giữ nhánh nền benchmark `bench/f4-opus55`) → `F2 → F5 → F3 → F6`.
+2. **Tổng kết M8 & phát hành Giai đoạn 1 (đã chốt):**
+   - [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), [Launcher public & S1/O1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) (đã đóng) và [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) đều đã hoàn tất nghiệm thu Giai đoạn 1 (Soak13, `real-load26`, `PR #597`, `PR #598`, Wine S1 E2E và Windows 10 VM GUI smoke). Riêng gói Linux mới đóng gói/test namespace & S1 Docker trên x86_64; số đo ARM riêng giữ tại evidence cũ.
+   - Các giới hạn kỹ thuật dài hạn ([Policy59](protocol/room-membership.md#rust-bounded-diagnostic59), [#403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403), quy định dọn `local/` ở [run-cleanup](evidence/owner-directives/run-cleanup.json), và kiểm tra ngoài lab 5 phút) giữ nguyên theo evidence.
+
 Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn 1: [mục riêng](#phase1-acceptance).
 
 **Blocker và việc tồn:**
 
 - Gate local/history đã đạt trên `ffc2ec1`: 580.279 bằng chứng xác minh, 0 unavailable, 6.154 mục prune theo registry,
-  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP342 có hai hồ sơ và chuyển kết nối kênh
-  trên bản tương thích riêng; gate công bố mới chờ chạy. Parser/projection chưa nối listener, DB/guest/prelogin TLS và M8 vẫn mở.
+  lịch sử Git hợp lệ và 0 lỗi. [Receipt kiểm khả thi/parser](evidence/rust-service/m8-login-step1-verification.json) giữ head kiểm và giới hạn; correction giữ lỗi gốc/publication, không sửa record/raw đã khóa. CP342 giữ giới hạn parser/projection cũ ngoài phạm vi Giai đoạn 1.
 
 - [All-dead managed player](protocol/life-results.md#rust-managed-all-dead) đã có đường kết thúc trong scope native
   contiguous 2/4/8 và journal Draw/thưởng 0; native sparse/departed/delayed175 qua revoke/EOF chưa đo. TCP/SQLite
   đã có control departure, DB ticket và old-round. Giữ fixed-team legacy; không suy tie enum server gốc.
 
-- Direct UDP âm ở hai NAT đổi cổng; N1b không retry. Relay xác thực đã đạt hành vi N1R-b bằng native và runtime
-  controls theo ma trận, với [preset phục vụ và ngân sách cổng](OPERATIONS.md). Native mới dùng Wine/LAN cô lập;
-  Internet thật cho transport mới, tải, session budget và độ bền vận hành phải kiểm ở M8. Không mở lại K6c/K7.
-  Native59 đã có [policy quan sát design và native positive](evidence/rust-service/g1-native59-observation.json) cho schema đã đo; không ACK hoặc đổi gameplay. Mã/giá trị record và server gốc vẫn unknown, M8 còn kiểm budget phiên dài; raw lỗi trước giữ nguyên.
+- Direct UDP âm ở hai NAT đổi cổng; N1b không retry. Relay xác thực đạt hành vi N1R-b và O1/S1 trên VPS/VM/Wine qua [preset phục vụ và ngân sách cổng](OPERATIONS.md); Internet độc lập giữa hai nhà dân ngoài lab còn bước kiểm 5 phút của chủ dự án. Native59 đã có [policy quan sát design và native positive](evidence/rust-service/g1-native59-observation.json) cho schema đã đo; mã/giá trị record và budget phiên dài vẫn theo dõi ở `#403`.
 - M7a selection đã đo bốn profile; M7b lifecycle đã đo tám profile cấu hình và contiguous2/4/8. Occupancy chỉ phục hồi
   current/capacity, 20 byte còn lại giữ opaque. Opt-in M7e đã đo roster3/6/sparse và chosen-character Battle; native
-  active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; chưa có progression hoặc inventory.
+  active EOF tới kết quả và roster kế đã đạt. M5b đã nối profile DB cho account tạo sau readiness; progression và inventory mở ở giai đoạn sau.
 - Factory07/Village10 đã có native chọn UI, basic hai ván/reset/ván tiếp và journal map. Các route terrain/item
   đã đo có giới hạn tại contract từng map; Factory07 có route 2/4/8 và Glass control, acceptance G1 theo các route đã đo. Không suy map
   đã mở hoàn chỉnh từ UI/basic hoặc một route. Village10/Tomb12 có 6 spawn; theo [quyết định chủ dự án](evidence/owner-directives/g1-map-roster-limits.json),
-  nghiệm thu hai map này cho 2–6 người, bốn map còn lại cho 2–8 người. Gameplay và nội dung vẫn phải đo theo thứ tự đã chốt.
+  nghiệm thu hai map này cho 2–6 người, bốn map còn lại cho 2–8 người. Mở rộng map, item và nhân vật thực hiện theo thứ tự `F1`.
 - Một phép TCP diagnostic rộng có cache positive nhưng timeout ở idle Back/return241 và cleanup wait. Raw/failure
   đã giữ, cause chưa xác định; test cache hẹp có negative/ownership/shutdown riêng đã đạt. Không gọi toàn bộ hồi quy
-  diagnostic rộng là pass; một lượt TCP setup cũng timeout trước peer106/117. Cause chưa rõ, theo dõi nếu cản G1/M6/M8. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
+  diagnostic rộng là pass; một lượt TCP setup cũng timeout trước peer106/117. Cause chưa rõ, theo dõi nếu cản `F1+`. [Bằng chứng và giới hạn](evidence/rust-service/g1-map-adapter.json).
 - M6 ở [#391](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/391) đạt phạm vi thu hẹp theo
   [acceptance/evidence](evidence/rust-service/m6-journal-serving.json). Serving bật `persist_matches` và `persist_character`
-  cho luồng DB/managed player round; không tự thay hành vi config cũ. DB/schema downgrade, match restore và economy
-  không được suy từ nghiệm thu này; backup/restore, tải và đóng gói còn M8.
+  cho luồng DB/managed player round; không tự thay hành vi config cũ. Đóng gói/backup/restore đã nghiệm thu xong ở M8; progression/economy thuộc giai đoạn sau.
 
 - `local/` không backup ngoài máy theo [quyết định 12/11](evidence/owner-directives/local-backup.json), không phải blocker.
   Máy cài gói Linux không cần repo/`local/`. Dữ liệu nội dung được xuất từ thư mục game, còn mẫu wire đi trong manifest gói.
 - Điều phối Rust ở [#285](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/285); #14 đã được thay thế,
-  #369 đã giao. #2, #3 và #9 giữ làm backlog ngoài giai đoạn 1; lỗi khởi động Wine ở #9 được xem lại trong M8.
+  #369 đã giao. #2, #3 và #9 giữ làm backlog ngoài giai đoạn 1.
 
 **Quy ước:**
 
