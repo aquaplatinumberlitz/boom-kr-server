@@ -1,7 +1,7 @@
 //! Adapt native control streams and authenticated game packets at the edges.
 //! Only the host gateway opens a separate pinned, loopback Quinn connection.
 use super::{STREAM_LIMIT, STREAM_TOTAL, copy_secret};
-use crate::{Data, Link, UdpBackend};
+use crate::{Data, Link, Packet, UdpBackend};
 use kr_p2p::{Connection, Endpoint, Invite, room};
 use std::{
     io,
@@ -15,12 +15,14 @@ use std::{
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     net::TcpListener,
-    sync::{Semaphore, watch},
+    sync::{Mutex, Semaphore, mpsc, watch},
     task::JoinSet,
 };
 
 const GUEST: &[u8; 8] = b"KR-O1-01";
 const PEER: &[u8; 8] = b"KR-O1-UD";
+const TWO_PEERS: &[u8; 8] = b"KR-O1-U2";
+const LANE_QUEUE: usize = 64;
 /// Upper bound for delivering already received stream bytes at teardown.
 const DRAIN: Duration = Duration::from_secs(2);
 
@@ -151,24 +153,42 @@ async fn host_peer(
     bound: &AtomicBool,
     backend: UdpBackend,
 ) -> io::Result<()> {
-    let mut offers = super::read_offers(native).await?;
-    if offers.len() != 1 || !offers[0].0.ip().is_loopback() {
+    let offers = super::read_offers(native).await?;
+    if offers
+        .iter()
+        .any(|(address, _, _)| !address.ip().is_loopback())
+    {
         return Err(io::Error::other("O1 peer offer bounds"));
     }
-    let (address, certificate, secret) = offers.pop().expect("single offer");
-    let endpoint = crate::client_configured(
-        (Ipv4Addr::LOCALHOST, 0).into(),
-        certificate.into(),
-        backend,
-        false,
-    )?
-    .0;
-    let mut link = Link::connect(&endpoint, address.into(), &secret).await?;
-    let (mut local_out, mut local_in) = link.take_control()?;
-    let (mut room_out, mut room_in) = room.open_bi().await.map_err(io::Error::other)?;
-    room_out.write_all(PEER).await.map_err(io::Error::other)?;
+    let marker = if offers.len() == 1 { PEER } else { TWO_PEERS };
+    let (lanes, queues) = lanes(room, offers.len());
+    let mut peers = JoinSet::new();
+    // Open control streams in offer order so the companion can give the
+    // datagram lane and control stream to the same logical player.
+    for ((address, certificate, secret), remote) in offers.into_iter().zip(lanes) {
+        let endpoint = crate::client_configured(
+            (Ipv4Addr::LOCALHOST, 0).into(),
+            certificate.into(),
+            backend,
+            false,
+        )?
+        .0;
+        let link = Link::connect(&endpoint, address.into(), &secret).await?;
+        let (mut out, input) = room.open_bi().await.map_err(io::Error::other)?;
+        out.write_all(marker).await.map_err(io::Error::other)?;
+        peers.spawn(bridge_peer(link, out, input, remote));
+    }
     bound.store(true, Ordering::Release);
-    let remote = Data::Friends(room.clone());
+    run_roster(room, queues, peers).await
+}
+
+async fn bridge_peer(
+    mut link: Link,
+    mut room_out: kr_p2p::SendStream,
+    mut room_in: kr_p2p::RecvStream,
+    remote: Data,
+) -> io::Result<()> {
+    let (mut local_out, mut local_in) = link.take_control()?;
     let local = link.data();
     let packets = async {
         loop {
@@ -186,6 +206,80 @@ async fn host_peer(
         .map(|_| ())
     };
     tokio::select! { result = packets => result, result = control => result }
+}
+
+/// Two-player rooms share one datagram connection. Each receiver gets just
+/// its own lane (an offer index, never a server authority or a KR field).
+#[derive(Clone)]
+pub struct Lane {
+    room: Connection,
+    index: u8,
+    packets: Arc<Mutex<mpsc::Receiver<Packet>>>,
+}
+
+impl Lane {
+    pub(crate) fn send(&self, packet: &Packet) -> io::Result<()> {
+        let mut bytes = vec![self.index];
+        bytes.extend(packet.encode()?);
+        self.room
+            .send_datagram(bytes.into())
+            .map_err(io::Error::other)
+    }
+
+    pub(crate) async fn receive(&self) -> io::Result<Packet> {
+        self.packets
+            .lock()
+            .await
+            .recv()
+            .await
+            .ok_or_else(|| io::Error::other("O1 peer lane ended"))
+    }
+}
+
+fn lanes(room: &Connection, count: usize) -> (Vec<Data>, Vec<mpsc::Sender<Packet>>) {
+    if count == 1 {
+        // Preserve the original 1P framing for already packaged companions.
+        return (vec![Data::Friends(room.clone())], vec![]);
+    }
+    (0..count)
+        .map(|index| {
+            let (tx, rx) = mpsc::channel(LANE_QUEUE);
+            (
+                Data::FriendsLane(Lane {
+                    room: room.clone(),
+                    index: index as u8,
+                    packets: Arc::new(Mutex::new(rx)),
+                }),
+                tx,
+            )
+        })
+        .unzip()
+}
+
+async fn run_roster(
+    room: &Connection,
+    queues: Vec<mpsc::Sender<Packet>>,
+    mut peers: JoinSet<io::Result<()>>,
+) -> io::Result<()> {
+    let result = tokio::select! {
+        result = peers.join_next() => result
+            .ok_or_else(|| io::Error::other("O1 peer roster empty"))?
+            .map_err(io::Error::other)?,
+        result = async {
+            loop {
+                let bytes = room.read_datagram().await.map_err(io::Error::other)?;
+                if let Some((&index, packet)) = bytes.split_first()
+                    && let Some(queue) = queues.get(usize::from(index))
+                    && let Ok(packet) = Packet::decode(packet)
+                {
+                    // A slow reader drops its own UDP packets.
+                    let _ = queue.try_send(packet);
+                }
+            }
+        }, if !queues.is_empty() => result,
+    };
+    peers.shutdown().await;
+    result
 }
 
 async fn copy_pair(
@@ -280,6 +374,8 @@ pub async fn companion(
         }
     };
     room.close(0u32.into(), b"guest companion stopped");
+    accepts.shutdown().await;
+    streams.shutdown().await;
     result
 }
 
@@ -288,25 +384,47 @@ async fn guest_peer(
     stop: watch::Receiver<bool>,
     bound: Arc<AtomicBool>,
 ) -> io::Result<()> {
+    let (first, marker) = peer_stream(&room).await?;
+    let mut streams = vec![first];
+    match &marker {
+        PEER => {}
+        TWO_PEERS => {
+            let (second, marker) = tokio::time::timeout(Duration::from_secs(6), peer_stream(&room))
+                .await
+                .map_err(io::Error::other)??;
+            if marker != *TWO_PEERS {
+                return Err(io::Error::other("O1 peer roster marker"));
+            }
+            streams.push(second);
+        }
+        _ => return Err(io::Error::other("O1 peer marker")),
+    }
+    let (lanes, queues) = lanes(&room, streams.len());
+    let mut peers = JoinSet::new();
+    for ((send, recv), remote) in streams.into_iter().zip(lanes) {
+        peers.spawn(crate::companion::run_parts(
+            send,
+            recv,
+            remote,
+            Ipv4Addr::LOCALHOST.into(),
+            8192,
+            stop.clone(),
+        ));
+    }
+    bound.store(true, Ordering::Release);
+    run_roster(&room, queues, peers).await
+}
+
+async fn peer_stream(
+    room: &Connection,
+) -> io::Result<((kr_p2p::SendStream, kr_p2p::RecvStream), [u8; 8])> {
     let (send, mut recv) = room.accept_bi().await.map_err(io::Error::other)?;
     let mut marker = [0; 8];
     tokio::time::timeout(Duration::from_secs(2), recv.read_exact(&mut marker))
         .await
         .map_err(io::Error::other)?
         .map_err(io::Error::other)?;
-    if marker != *PEER {
-        return Err(io::Error::other("O1 peer marker"));
-    }
-    bound.store(true, Ordering::Release);
-    crate::companion::run_parts(
-        send,
-        recv,
-        Data::Friends(room),
-        Ipv4Addr::LOCALHOST.into(),
-        8192,
-        stop,
-    )
-    .await
+    Ok(((send, recv), marker))
 }
 
 #[cfg(test)]

@@ -22,18 +22,23 @@ Launcher phía tạo giữ gateway. Gateway mở prelogin QUIC tới server cụ
 và giữ pin trong máy người tạo. Chứng thư này không cần phát cho người vào vì phía họ xác thực đầy đủ khóa
 nút iroh qua mã. Gateway chỉ cho phép các selector cổng cố định. Iroh stream mang luồng native và control
 của companion; iroh DATAGRAM mang `Packet` game, gồm route ID, sequence và UDP KR. Gateway dùng capability
-một lần nhận ở đường prelogin cục bộ để mở Link đến relay loopback. Server giữ kiểm slot, route và epoch
-hiện có; không nhét packet QUIC bên trong datagram iroh. Khi host dừng, mọi kết nối theo phòng bị đóng.
-Gateway O1 hiện nhận đúng một đề nghị mở relay cho mỗi người kết nối. Nút chơi thử 2P trên cùng máy tạo
-hai đề nghị, nên gateway kết thúc phiên trước khi vào sảnh. Đây là giới hạn riêng của Phòng riêng.
+một lần nhận ở đường prelogin cục bộ để mở Link đến relay loopback. Gateway chấp nhận một hoặc hai đề
+nghị loopback. Khi chọn 2P trên cùng máy, mỗi người có một stream control riêng; gateway và companion
+phân luồng datagram theo thứ tự đề nghị. Framing 1P giữ nguyên. Server vẫn kiểm slot, route và epoch;
+chỉ số luồng không cấp quyền người chơi. Khi host dừng, mọi kết nối theo phòng bị đóng.
+Hai slot trên cùng một client dùng chung khung chat dưới tên P1. Dùng hai client để chat dưới hai tên riêng.
+Ở Phòng riêng, người chơi vẫn thấy khung ID và mật khẩu của `CA.exe` nhưng có thể để trống.
+Ẩn khung riêng cho chế độ này là việc tiếp theo.
 
 Mã `S1-1-<base64url>` chứa 32 byte node ID và SHA-256 của chứng thư TLS DER. Dán mã S1 vào ô mã phòng
 sẽ chuyển sang tab Server; dán mã O1 vào ô mã mời Server sẽ chuyển sang Phòng riêng. Khi thêm Server,
 launcher mở phiên S1, kiểm khóa nút và hash chứng thư rồi mới lưu tên và mã mời. Mỗi lần chọn lại Server,
 launcher dùng mã đã lưu để tạo cầu loopback cho API tài khoản và companion prelogin. Dữ liệu tài khoản
 thuộc Server; thao tác xóa trong launcher chỉ bỏ mã mời và gợi ý ID đã lưu trên máy người chơi.
-Companion hiện chưa chuyển địa chỉ relay được gửi sau đăng nhập sang cầu UDP S1. Vì vậy phạm vi
-launcher S1 ở đây là thêm, chọn, quản lý tài khoản và mở prelogin; chưa nghiệm thu chơi trận qua S1.
+Companion mở Link gameplay qua cổng relay loopback của chính phiên S1. Mỗi Link vẫn dùng chứng thư và
+capability từ đề nghị sau đăng nhập. Cầu giữ cùng một socket nguồn cho cả hai Link nếu server gửi hai đề
+nghị. Bài kiểm Rust dùng relay iroh riêng, tắt đường IP trực tiếp giữa hai nút và xác nhận UDP đi hai chiều
+trên cả hai Link. Phép kiểm này không thay nghiệm thu một ván native qua launcher S1.
 
 Kiểm transport: `cargo test --manifest-path rust/Cargo.toml --locked -p kr-p2p -p kr-tunnel`. Lab prototype
 dùng `cargo build --manifest-path rust/Cargo.toml --locked -p kr-p2p --features lab --example udp_lab` rồi

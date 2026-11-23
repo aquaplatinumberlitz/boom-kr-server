@@ -7,7 +7,8 @@ pub mod room;
 pub use code::{CodeError, Invite, VERSION};
 use iroh::endpoint::{Builder, PortmapperConfig, presets};
 pub use iroh::{
-    Endpoint, EndpointAddr, EndpointId, RelayMode, RelayUrl, SecretKey, endpoint::Connection,
+    Endpoint, EndpointAddr, EndpointId, RelayMode, RelayUrl, SecretKey,
+    endpoint::{Connection, RecvStream, SendStream},
 };
 use std::{io, net::SocketAddr};
 use tokio::net::UdpSocket;

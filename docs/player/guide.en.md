@@ -36,6 +36,7 @@
 4. To get a newer version, use **Download latest** if your bundle has the link. It opens Google Drive, where you can download the full bundle.
 
 The launcher remembers servers you add. Use **Remove** to clear a server from your list.
+An S1 invite connection can relay gameplay traffic when direct UDP is unavailable.
 
 <!-- friends -->
 ## Play in a private room
@@ -43,7 +44,7 @@ The launcher remembers servers you add. Use **Remove** to clear a server from yo
 1. Open the launcher, choose **Private room**, and enter a **Character name**. The launcher remembers it for next time.
 2. The host clicks **Host a private room**. When the code appears, click **Copy code** and share it privately with friends. The host's game opens automatically.
 3. Friends paste the code and click **Join room**, or select the room from **Rooms on this LAN**. Keep the launcher open while playing.
-4. At the game's login screen, choose **Play trial 1P**. Private rooms do not support 2P on one PC yet. The game uses your launcher name. You can leave the account and password fields blank. In the lobby, one player creates a game room and the others join it.
+4. At the game's login screen, choose **Play trial 1P** for one player or **Play trial 2P** for two players on one PC. Leave the account and password fields blank. On separate PCs, choose 1P to chat under separate names. In the lobby, one player creates a game room and the others join it.
 5. If your package differs from the host's, use **Download latest** when the bundle provides a link. If the host closes the game or launcher, friends are told that the room closed.
 
 ![Host room in the launcher](o1-create-room.png)

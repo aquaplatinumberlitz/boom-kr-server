@@ -22,6 +22,7 @@ pub(crate) struct Route {
     pub account_cert: PathBuf,
     pub game: SocketAddrV4,
     pub game_cert: PathBuf,
+    pub relay: Option<SocketAddrV4>,
 }
 
 impl Route {
@@ -133,6 +134,7 @@ impl Bridge {
             account_cert: cert.clone(),
             game: session.prelogin,
             game_cert: cert.clone(),
+            relay: Some(session.relay),
         };
         Ok(Arc::new(Self {
             session,
@@ -250,6 +252,8 @@ mod tests {
             .unwrap();
         assert_eq!(fs::read(&bridge.route.account_cert).unwrap(), certificate);
         assert!(bridge.route.account.ip().is_loopback() && bridge.route.game.ip().is_loopback());
+        assert_eq!(bridge.route.relay, Some(bridge.session.relay));
+        assert_ne!(bridge.session.relay, bridge.route.game);
         let id = invite.to_string();
         let mut saved = Preferences {
             selected: Some(id.clone()),

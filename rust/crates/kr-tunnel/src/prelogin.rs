@@ -9,7 +9,7 @@ use rustls::{
 };
 use std::{
     io,
-    net::SocketAddr,
+    net::{Ipv4Addr, SocketAddr, SocketAddrV4},
     sync::{
         Arc,
         atomic::{AtomicBool, Ordering},
@@ -382,9 +382,39 @@ pub async fn companion_traced(
     backend: crate::UdpBackend,
     trace: Trace,
 ) -> io::Result<()> {
+    companion_with_relay(endpoint, address, None, listeners, stop, backend, trace).await
+}
+
+/// An S1 session owns a fixed local relay lane. It replaces only the dial
+/// address, leaving each authenticated offer's certificate and secret intact.
+#[derive(Clone, Copy)]
+pub struct RelayBridge(SocketAddrV4);
+
+impl RelayBridge {
+    pub fn new(prelogin: SocketAddr, relay: SocketAddrV4) -> io::Result<Self> {
+        if !prelogin.ip().is_loopback()
+            || !relay.ip().is_loopback()
+            || relay.port() == 0
+            || SocketAddr::V4(relay) == prelogin
+        {
+            return Err(io::Error::other("S1 relay bridge bounds"));
+        }
+        Ok(Self(relay))
+    }
+}
+
+pub async fn companion_with_relay(
+    endpoint: Endpoint,
+    address: SocketAddr,
+    relay: Option<RelayBridge>,
+    listeners: Vec<TcpListener>,
+    stop: watch::Receiver<bool>,
+    backend: crate::UdpBackend,
+    trace: Trace,
+) -> io::Result<()> {
     run_companion(
         None,
-        Some((endpoint, address)),
+        Some((endpoint, address, relay)),
         listeners,
         stop,
         backend,
@@ -412,7 +442,7 @@ async fn companion(
 
 async fn run_companion(
     mut connection: Option<Connection>,
-    dial: Option<(Endpoint, SocketAddr)>,
+    dial: Option<(Endpoint, SocketAddr, Option<RelayBridge>)>,
     listeners: Vec<TcpListener>,
     mut stop: watch::Receiver<bool>,
     backend: crate::UdpBackend,
@@ -452,7 +482,7 @@ async fn run_companion(
                     _ = stop.changed() => return Ok(()),
                     ticket = rx.recv() => ticket.ok_or_else(|| io::Error::other("native listeners ended"))?,
                 };
-                let (endpoint, address) = dial.as_ref().ok_or_else(|| io::Error::other("native TLS ended"))?;
+                let (endpoint, address, _) = dial.as_ref().ok_or_else(|| io::Error::other("native TLS ended"))?;
                 trace.event("tls_connect_start", format_args!(" port={}", ticket.1));
                 let result = tokio::select! {
                     _ = stop.changed() => {
@@ -483,7 +513,8 @@ async fn run_companion(
             let bound = Arc::new(AtomicBool::new(false));
             let mut streams = JoinSet::new();
             let mut total = 0;
-            let peer = peers(tls.clone(), stop.clone(), bound.clone(), backend);
+            let relay = dial.as_ref().and_then(|(_, _, relay)| *relay);
+            let peer = peers(tls.clone(), stop.clone(), bound.clone(), backend, relay);
             tokio::pin!(peer);
             let mut initial = initial;
             let result = loop {
@@ -603,27 +634,40 @@ async fn peers(
     stop: watch::Receiver<bool>,
     bound: Arc<AtomicBool>,
     backend: crate::UdpBackend,
+    relay: Option<RelayBridge>,
 ) -> io::Result<()> {
     let offers = read_offers(&connection).await?;
     // The pinned service sends an offer only after the DB roster has taken
     // ownership of its native channel. This affects copying limits, not auth.
     bound.store(true, Ordering::Release);
+    // S1 binds its relay lane to the first loopback source. Both 2P Links
+    // need that same source socket, with independent Quinn connections/pins.
+    let bridge = relay
+        .map(|relay| {
+            crate::client_socket((Ipv4Addr::LOCALHOST, 0).into(), backend, false)
+                .map(|(endpoint, _)| (relay.0, endpoint))
+        })
+        .transpose()?;
     let mut tasks = JoinSet::new();
     for (address, certificate, secret) in offers {
         let stop = stop.clone();
+        let bridge = bridge.clone();
         tasks.spawn(async move {
-            let endpoint = crate::client_configured(
-                "0.0.0.0:0".parse().expect("fixed bind"),
-                certificate.into(),
-                backend,
-                false,
-            )?
-            .0;
-            let link = crate::Link::connect(&endpoint, address.into(), &secret).await?;
-            let result =
-                crate::companion::run(link, std::net::Ipv4Addr::LOCALHOST.into(), 8192, stop).await;
-            endpoint.close(0u8.into(), b"native peer ended");
-            result
+            let link = if let Some((dial, endpoint)) = bridge.as_ref() {
+                let config = crate::client_config(certificate.into())?;
+                crate::Link::connect_using(endpoint, (*dial).into(), &secret, Some(config), |_| {})
+                    .await?
+            } else {
+                let endpoint = crate::client_configured(
+                    (Ipv4Addr::UNSPECIFIED, 0).into(),
+                    certificate.into(),
+                    backend,
+                    false,
+                )?
+                .0;
+                crate::Link::connect(&endpoint, address.into(), &secret).await?
+            };
+            crate::companion::run(link, Ipv4Addr::LOCALHOST.into(), 8192, stop).await
         });
     }
     // JoinSet aborts all peer owners on cancellation. A stopped peer makes the
@@ -638,5 +682,7 @@ async fn peers(
     result
 }
 
+#[cfg(test)]
+mod relay_tests;
 #[cfg(test)]
 mod tests;

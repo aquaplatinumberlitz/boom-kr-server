@@ -39,13 +39,15 @@ Người chơi tải **LANBooM_client.zip**, giải nén cả gói rồi bấm *
 4. Bấm **Xóa** bên cạnh một Server đã thêm để bỏ Server khỏi danh sách. Tài khoản vẫn do Server lưu.
 5. Nếu gói có nút **Tải bản mới**, bấm để mở Google Drive và tải gói đầy đủ.
 
+Kết nối bằng mã S1 có thể chuyển tiếp dữ liệu trận đấu qua relay khi không có đường UDP trực tiếp.
+
 <!-- friends -->
 ## Cách dùng Phòng riêng
 
 1. Chọn **Phòng riêng** và nhập **Tên nhân vật**.
 2. Host bấm **Mở phòng riêng**. Khi thấy mã O1, bấm **Sao chép mã** rồi gửi riêng cho bạn bè. Launcher tự mở game.
 3. Bạn bè dán mã và bấm **Vào phòng** hoặc Enter. Nếu chung mạng LAN, chọn dòng có tên Host trong danh sách **Phòng trong mạng LAN**. Launcher tự quét khi mở tab; bấm **Quét lại** nếu Host mới mở phòng.
-4. Trong game, bấm **Chơi thử 1P**. Không cần nhập tài khoản. Phòng riêng chưa chơi được 2P chung máy. Vào sảnh rồi tạo bàn đấu để bạn bè vào chung.
+4. Trong game, bấm **Chơi thử 1P** để chơi một người hoặc **Chơi thử 2P** để hai người chơi chung máy. Để trống ID và mật khẩu. Nếu chơi trên hai máy, mỗi người chọn 1P để có tên chat riêng. Vào sảnh rồi tạo bàn đấu để bạn bè vào chung.
 5. Giữ Launcher mở trong lúc chơi. Khi Host bấm **Dừng game / Đóng phòng** hoặc thoát Launcher, cả phòng sẽ ngắt kết nối.
 
 ![Launcher mở phòng riêng](o1-create-room.png)

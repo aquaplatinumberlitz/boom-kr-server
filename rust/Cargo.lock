@@ -2710,6 +2710,7 @@ name = "kr-tunnel"
 version = "0.1.0"
 dependencies = [
  "getrandom 0.4.3",
+ "iroh-relay",
  "kr-p2p",
  "kr-wire",
  "quinn",

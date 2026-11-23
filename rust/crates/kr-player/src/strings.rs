@@ -132,7 +132,7 @@ strings! {
     FriendsHostHint => "Vào sảnh game rồi tạo bàn đấu để bạn bè vào chung.", "Create a table in the game lobby so friends can join.", "게임 로비에서 대전방을 만들어 친구를 초대하세요.";
     FriendsShare => "Gửi mã này cho bạn bè.", "Share this code with friends.", "이 코드를 친구에게 보내세요.";
     FriendsLan => "Phòng trong mạng LAN", "Rooms on this LAN", "LAN 방 목록";
-    FriendsTrial => "Khi game mở lên, bấm **Chơi thử 1P** để vào thẳng sảnh (không cần nhập tài khoản). 2P chung máy chưa hoạt động trong Phòng riêng.", "When the game opens, select **1P** in the trial box to go straight to the lobby. Private rooms do not support 2P on one PC yet.", "게임에서 체험하기의 **1P**를 눌러 로그인 없이 로비에 입장하세요. 비공개 방은 같은 PC에서 2P를 아직 지원하지 않습니다.";
+    FriendsTrial => "Trong game, bấm **Chơi thử 1P** để chơi một người hoặc **Chơi thử 2P** để chơi chung máy. Để trống ID và mật khẩu.", "In the game, choose **1P** for one player or **2P** for two players on one PC. Leave the account and password fields blank.", "게임에서 혼자 플레이하려면 체험하기의 **1P**, 한 PC에서 두 명이 플레이하려면 **2P**를 선택하세요. 계정과 비밀번호는 비워 두세요.";
     ShowPassword => "Hiện mật khẩu", "Show passwords", "비밀번호 표시";
     HidePassword => "Ẩn mật khẩu", "Hide passwords", "비밀번호 숨기기";
     SaveCode => "Lưu ra file .txt", "Save as .txt", ".txt로 저장";

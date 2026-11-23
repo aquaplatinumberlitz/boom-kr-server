@@ -24,6 +24,9 @@ pub(crate) struct Config {
     pub release_url: Option<String>,
     prelogin_server: Option<SocketAddrV4>,
     prelogin_certificate: Option<PathBuf>,
+    // A runtime-only port, owned by the selected S1 bridge.
+    #[serde(skip)]
+    prelogin_relay: Option<SocketAddrV4>,
     companion: PathBuf,
     pub ports: Vec<u16>,
     pub bundle: PathBuf,
@@ -54,6 +57,7 @@ impl Config {
             account_cert: self.certificate.clone()?,
             game: self.prelogin_server?,
             game_cert: self.prelogin_certificate.clone()?,
+            relay: self.prelogin_relay,
         })
     }
 
@@ -62,6 +66,7 @@ impl Config {
         self.certificate = Some(route.account_cert.clone());
         self.prelogin_server = Some(route.game);
         self.prelogin_certificate = Some(route.game_cert.clone());
+        self.prelogin_relay = route.relay;
         self
     }
 
@@ -396,6 +401,7 @@ fn start_inner(
         let value = serde_json::json!({
             "server": config.prelogin_server.filter(|_| friends.is_none()),
             "certificate": config.prelogin_certificate.filter(|_| friends.is_none()),
+            "relay_bridge": config.prelogin_relay.filter(|_| friends.is_none()),
             "friends": friends,
             "ports": config.ports, "udp_backend": config.udp_backend,
             "cancel_file": run.join("cancel"), "ready_file": signal, "owner_heartbeat": beat,
@@ -574,6 +580,7 @@ mod tests {
             release_url: None,
             prelogin_server: Some("127.0.0.1:49652".parse().unwrap()),
             prelogin_certificate: Some(certificate),
+            prelogin_relay: None,
             companion,
             ports: vec![3808],
             bundle: root.clone(),
