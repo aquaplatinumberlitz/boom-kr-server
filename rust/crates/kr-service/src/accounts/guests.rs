@@ -13,6 +13,23 @@ struct NewGuest {
     token: Token,
     audit: String,
 }
+fn second_guest_name(base: &str) -> Result<String> {
+    for suffix in ["_2P", "_P2", "_2"] {
+        let mut prefix = base;
+        loop {
+            let candidate = format!("{prefix}{suffix}");
+            if candidate != base && display_name(&candidate).is_ok() {
+                return Ok(candidate);
+            }
+            let Some((index, _)) = prefix.char_indices().next_back() else {
+                break;
+            };
+            prefix = &prefix[..index];
+        }
+    }
+    Err(Error::InvalidInput)
+}
+
 impl Store {
     pub fn trial_local(
         &mut self,
@@ -52,18 +69,23 @@ impl Store {
         {
             return Err(Error::InvalidInput);
         }
-        if let Some(name) = name {
-            if count != 1 {
-                return Err(Error::InvalidInput);
+        let named = match name {
+            Some(base) => {
+                display_name(base)?;
+                let mut names = vec![base.to_owned()];
+                if count == 2 {
+                    names.push(second_guest_name(base)?);
+                }
+                Some(names)
             }
-            display_name(name)?;
-        }
-        let guests = (0..count)
-            .map(|_| {
+            None => None,
+        };
+        let guests = (0..usize::from(count))
+            .map(|index| {
                 Ok(NewGuest {
                     login: format!("g_{}", hex(&self.random::<12>()?)),
-                    name: match name {
-                        Some(name) => name.to_owned(),
+                    name: match &named {
+                        Some(names) => names[index].clone(),
                         None => format!("Guest{}", hex(&self.random::<3>()?)),
                     },
                     token: Token(Zeroizing::new(hex(&self.random::<32>()?))),
@@ -223,5 +245,52 @@ mod tests {
         store.end_local_session(&grants[..2], 103).unwrap();
         assert_eq!(store.trial_local(2, 60, None, 104).unwrap().len(), 2);
         assert!(store.trial_local(3, 60, None, 104).is_err());
+    }
+    #[test]
+    fn named_trial_supports_one_and_two_local_players_within_name_bounds() {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let (_temp, mut store, _) = fresh();
+        let now = || {
+            i64::try_from(
+                std::time::SystemTime::now()
+                    .duration_since(std::time::UNIX_EPOCH)
+                    .unwrap()
+                    .as_secs(),
+            )
+            .unwrap()
+        };
+        let one = store
+            .trial_local_current(1, Some("Việt01"), 60, None)
+            .unwrap();
+        assert_eq!(one.len(), 1);
+        assert_eq!(one[0].player.display_name, "Việt01");
+        store.end_local_session(&one, now()).unwrap();
+
+        let seven_e = "ệ".repeat(7);
+        for (base, expected_second) in [
+            ("Việt01", "Việt01_2P"),
+            ("abcdefghijklmno", "abcdefghijkl_2P"),
+            (seven_e.as_str(), "ệệệệệệ_2P"),
+            ("abcdefghijkl_2P", "abcdefghijk_2P"),
+        ] {
+            let pair = store.trial_local_current(2, Some(base), 60, None).unwrap();
+            assert_eq!(pair.len(), 2);
+            assert_eq!(pair[0].player.display_name, base);
+            assert_eq!(pair[1].player.display_name, expected_second);
+            assert_ne!(pair[0].player.account_id, pair[1].player.account_id);
+            assert_ne!(pair[0].player.player_id, pair[1].player.player_id);
+            assert_ne!(pair[0].player.wire_id, pair[1].player.wire_id);
+            for grant in &pair {
+                assert!(
+                    kr_wire::kr00967::text949x::encode_name(&grant.player.display_name).is_ok()
+                );
+            }
+            store.end_local_session(&pair, now()).unwrap();
+        }
+
+        assert!(matches!(
+            store.trial_local_current(3, Some("Việt01"), 60, None),
+            Err(Error::InvalidInput)
+        ));
     }
 }

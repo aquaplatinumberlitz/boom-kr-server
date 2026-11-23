@@ -331,3 +331,182 @@ fn queue_full_publishes_no_partial_chat_and_stale_visit_round_or_scope_never_del
         assert!(!c.sessions[1].valid(&next[1]));
     });
 }
+#[test]
+fn two_local_players_sharing_connection_receive_one_chat_copy_from_primary_owner() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    run(async {
+        let path = std::env::temp_dir().join(format!(
+            "kr-chat-2p-{}-{}",
+            std::process::id(),
+            NEXT.fetch_add(1, Ordering::Relaxed)
+        ));
+        fs::create_dir(&path).unwrap();
+        fs::set_permissions(&path, fs::Permissions::from_mode(0o700)).unwrap();
+        let db = path.join("accounts.sqlite");
+        let mut store = Store::open(&db).unwrap();
+        store.begin_instance(&admin(), now()).unwrap();
+        let remote_player = store
+            .create_account(&admin(), "Bob", "한국02", PASSWORD, now())
+            .unwrap();
+        let worker = Worker::open(db, 4, Duration::from_secs(2)).await.unwrap();
+        let bridge = account_bridge::Bridge::new(worker.client(), 4, Duration::from_secs(60))
+            .unwrap()
+            .with_patched_949x_names(true);
+
+        let mut local = account_bridge::local::LocalSession::new(worker.client(), 1)
+            .unwrap()
+            .with_guest_name(Some("Việt01".into()));
+        let rows = local
+            .trial(&account_bridge::local::tests::trial(2), 60, None)
+            .await
+            .unwrap();
+        local.redirected(1).unwrap();
+        let local_owners = local
+            .channel(&account_bridge::local::tests::channel(&rows), 100)
+            .await
+            .unwrap();
+
+        let grant = worker
+            .client()
+            .try_login("Bob", PASSWORD, 60, now())
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        let launch = bridge
+            .issue(&grant.token, remote_player.player_id, PEER)
+            .await
+            .unwrap();
+        let auth = bridge
+            .login(&login_body(launch.token().expose_secret()), PEER, 111)
+            .await
+            .unwrap();
+        let body = channel_body(&remote_player, auth.echo);
+        auth.redirected().unwrap();
+        let remote_owner = bridge.channel(&body, PEER, 101).await.unwrap();
+
+        let mut model = Room::with_allocation(3, rules::SlotAllocation::FirstVacant).unwrap();
+        let mut keys = model
+            .enter_local_roster(
+                &[
+                    local_owners[0].player().wire_id,
+                    local_owners[1].player().wire_id,
+                ],
+                100,
+                true,
+            )
+            .unwrap();
+        keys.push(model.enter(remote_player.wire_id, 101, false).unwrap());
+        let mut channels = HashMap::new();
+        let mut receivers = Vec::new();
+        for (key, conn, authority) in [
+            (keys[0], 100u64, local_owners[0].relay_authority()),
+            (keys[1], 100u64, local_owners[1].relay_authority()),
+            (keys[2], 101u64, remote_owner.relay_authority()),
+        ] {
+            model.setup(key).unwrap();
+            let (sender, inbox) = mpsc::channel(8);
+            receivers.push(inbox);
+            channels.insert(
+                key.identity,
+                Channel {
+                    connection: conn,
+                    sender,
+                    endpoint: 0,
+                    relay_authority: Some(authority),
+                },
+            );
+        }
+
+        let shared = Arc::new(Mutex::new(Runtime {
+            maps: None,
+            selected_map: 0,
+            map_revision: 0,
+            journal: None,
+            public_key: Some(RoomKey {
+                session: 1,
+                id: RoomId(4),
+                generation: 1,
+            }),
+            managed_round: None,
+            relay: None,
+            authenticated: None,
+            scope: Arc::new(()),
+            model,
+            players: HashMap::new(),
+            bodies: HashMap::new(),
+            channels,
+            last_visits: HashMap::new(),
+            requested: HashSet::new(),
+            rostered: HashSet::new(),
+            title: b"Chat2P".to_vec(),
+            selector: 0,
+            ready: packet(241, vec![]),
+            ips: HashMap::new(),
+            ports: HashMap::new(),
+            floor_catalog: pickups::Catalog::default(),
+            rules: RoomRules::default(),
+            abort: None,
+        }));
+        let mut sessions: Vec<_> = receivers
+            .into_iter()
+            .zip(&keys)
+            .map(|(inbox, key)| Session {
+                shared: shared.clone(),
+                inbox,
+                identity: key.identity,
+                connection: key.connection,
+            })
+            .collect();
+
+        let decode = |batch: &Batch| {
+            let reply = &batch.packets[0].1;
+            assert_eq!(reply.opcode, 28);
+            let size = read_uint(&reply.payload[..2], Width::U16).unwrap() as usize;
+            wire::text949x::decode(&wire::decode_bytes(&reply.payload[2..2 + size]).unwrap())
+                .unwrap()
+        };
+
+        sessions[0].room_chat(&request("Xin chào 2P")).unwrap();
+        let host_copy = sessions[0].inbox.try_recv().unwrap();
+        let peer_copy = sessions[2].inbox.try_recv().unwrap();
+        assert!(sessions[0].valid(&host_copy));
+        assert!(
+            sessions[0]
+                .authorize_batch_source(&host_copy)
+                .await
+                .unwrap()
+        );
+        assert_eq!(decode(&host_copy), "Việt01 : Xin chào 2P");
+        assert!(sessions[2].valid(&peer_copy));
+        assert!(
+            sessions[2]
+                .authorize_batch_source(&peer_copy)
+                .await
+                .unwrap()
+        );
+        assert_eq!(decode(&peer_copy), "Việt01 : Xin chào 2P");
+        assert!(sessions[0].inbox.try_recv().is_err());
+        assert!(sessions[1].inbox.try_recv().is_err());
+        assert!(sessions[2].inbox.try_recv().is_err());
+
+        sessions[2].room_chat(&request("Chào 2 bạn")).unwrap();
+        let host_reply = sessions[0].inbox.try_recv().unwrap();
+        let peer_reply = sessions[2].inbox.try_recv().unwrap();
+        assert!(
+            sessions[0]
+                .authorize_batch_source(&host_reply)
+                .await
+                .unwrap()
+        );
+        assert_eq!(decode(&host_reply), "한국02 : Chào 2 bạn");
+        assert_eq!(decode(&peer_reply), "한국02 : Chào 2 bạn");
+        assert!(sessions[1].inbox.try_recv().is_err());
+
+        shared.lock().unwrap().channels.clear();
+        local.finish().await.unwrap();
+        drop(remote_owner);
+        worker.shutdown().await.unwrap();
+        let _ = fs::remove_dir_all(&path);
+    });
+}

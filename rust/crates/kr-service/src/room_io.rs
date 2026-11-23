@@ -2412,7 +2412,9 @@ impl Session {
             wire::chat28_from18(&authority.player().display_name, body)?,
         );
         let mut effects = Vec::new();
-        for recipient in r.model.members.values().filter(|member| member.setup) {
+        for recipient in Runtime::transport_representatives(
+            r.model.members.values().filter(|member| member.setup),
+        ) {
             let mut batch = Runtime::member_batch(
                 recipient.key,
                 None,

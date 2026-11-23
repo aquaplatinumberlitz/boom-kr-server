@@ -43,7 +43,7 @@
 1. Open the launcher, choose **Play with friends**, and enter a **Character name**. The launcher remembers it for next time.
 2. The host clicks **Host room**. When the code appears, click **Copy code** and share it privately with friends. The host's game opens automatically.
 3. Friends paste the code and click **Join room**, or select the room from **Find LAN rooms**. Keep the launcher open while playing.
-4. At the game's login screen, choose **Play trial 1P**. The game uses your launcher name. You can leave the account and password fields blank. In the lobby, one player creates a game room and the others join it.
+4. At the game's login screen, choose **Play trial 1P** (or **2P** to share one PC; the second player automatically gets a `_2P` suffix). The game uses your launcher name. You can leave the account and password fields blank. In the lobby, one player creates a game room and the others join it.
 5. If your package differs from the host's, use **Download latest** when the bundle provides a link. If the host closes the game or launcher, friends are told that the room closed.
 
 ![Host room in the launcher](o1-create-room.png)

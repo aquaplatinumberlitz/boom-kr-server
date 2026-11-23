@@ -74,10 +74,10 @@ impl State {
     }
 
     fn visit_lobby(&mut self, driver: &Driver, resources: &Resources) -> io::Result<()> {
-        // The measured envelope has no local actor selector. Two-principal
-        // transports need their own native chat evidence before enabling it.
+        // Two-principal transports share one in-game chat box attributed to
+        // the primary local player (`authorities[0]`).
         if resources.patched_chat
-            && let [owner] = driver.authorities()
+            && let Some(owner) = driver.authorities().first()
         {
             self.lobby_chat = Some(resources.lobby_chat.enter(owner.clone())?);
         }
@@ -178,15 +178,15 @@ impl State {
                 return Err(io::Error::other("native chat rate bound"));
             }
             driver.inspect().await?;
-            match &self.sessions[..] {
-                [] => {
+            match self.sessions.first() {
+                None => {
                     self.lobby_chat
                         .as_ref()
                         .ok_or_else(|| io::Error::other("native chat has no lobby visit"))?
                         .send(input.body())
                         .await?;
                 }
-                [session] => {
+                Some(session) => {
                     session.wait_journal().await?;
                     driver.inspect().await?;
                     driver.authorities()[0]
@@ -195,7 +195,6 @@ impl State {
                         .map_err(Driver::authority_error)?;
                     session.room_chat(input.body())?;
                 }
-                _ => return Err(io::Error::other("unmeasured multi-local chat")),
             }
             self.last_chat = Some(Instant::now());
             return Ok(true);
