@@ -1,0 +1,63 @@
+{
+  "id": "CP393",
+  "previous": "CP392",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-23T13:48:22+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Bản LANBoom đã sửa launcher, đóng gói và dừng phiên được tới đâu trong smoke cục bộ?",
+  "scope": "PR 1 launcher trên f7887f0. Wine cô lập và Linux/X11; không Windows VM, VPS, Internet, hay thay đổi packet KR.",
+  "context_commit": "f7887f060b3f090ae1b7cd935121d76699034d89",
+  "artifacts": [{"name": "LANBooM_client.zip", "sha256": "e39480a64ecb152d55c0921bcb2e0152ce2fb3053bfe7498c500c3ad8e982f6b"}, {"name": "LANBoom ELF x86_64", "sha256": "cce59a5cf35fd4f95eee77452666d712fc60d925e5533c15ec332cd8da4a0cb5"}, {"name": "LANBoom.exe", "sha256": "9015abf14b09308b6a0153fc546a4d5e3e070872d83c7e400ff641a2016eede9"}],
+  "locators": [
+    "local/runs/pr1-smoke",
+    "docs/evidence/checkpoints/records/CP341.json",
+    "docs/O1_S1_P2P.md",
+    "tools/player_package.py"
+  ],
+  "findings": [
+    {"source": "design", "status": "candidate", "method": "test", "summary": "Gói ZIP chứa LANBoom.exe và data/. Hai ảnh OneClick_Back khớp ảnh duyệt sau khi đọc lại; index và ảnh ko nguyên gốc.", "limits": "Ba CA.exe giữ pin dẫn xuất trial UI CP341. Build, kiểm hash và màu chưa phải chứng nhận cài Windows sạch.", "canonical": "tools/player_package.py", "evidence": ["RELEASE"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "summary": "Phòng riêng 1P vào sảnh qua Wine. Launcher tự quét LAN và hiển thị tên Host; nút dừng, WM_DELETE_WINDOW và SIGTERM đều giải phóng 20 cổng companion.", "limits": "Hai launcher trong namespace trên một máy. SIGTERM gửi tới tiến trình Wine launcher; không suy khả năng cấp Windows Firewall thật.", "canonical": "docs/O1_S1_P2P.md", "evidence": ["O1_LOBBY", "LAN", "LIFECYCLE"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "summary": "O1 2P nhận hai người rồi ngắt trước sảnh. Đối chứng Server loopback vào bàn với hai guest và hiện tin chat do P1 gửi.", "limits": "Gateway O1 đòi đúng một đề nghị relay, trong khi 2P nhận hai. Chưa có tin từ P2 hay ván hoàn chỉnh.", "canonical": "docs/O1_S1_P2P.md", "evidence": ["O1_2P", "SERVER_2P"]},
+    {"source": "design", "status": "candidate", "method": "test", "summary": "Launcher S1 lưu mã đã kiểm chứng thư và bỏ lựa chọn khi xóa.", "limits": "Bài kiểm bridge dùng endpoint loopback. Companion chưa ánh xạ địa chỉ relay sau đăng nhập vào cầu S1.", "canonical": "docs/O1_S1_P2P.md", "evidence": ["RUST"]}
+  ],
+  "verification": [
+    {"check": "Rust, Python, docs và ZIP preflight", "result": "pass", "limits": "Kiểm fmt workspace, clippy kr-player, cross-check Windows, test kr-player/kr-p2p và ZIP CRC.", "evidence": ["RUST", "RELEASE"]},
+    {"check": "Layout cửa sổ, quét LAN, đóng và mở lại companion", "result": "pass", "limits": "Linux/X11 bốn kích thước và Wine cục bộ.", "evidence": ["LAYOUT", "LAN", "LIFECYCLE"]},
+    {"check": "Ván O1 2P và chat do P2 gửi", "result": "fail", "limits": "O1 ngắt trước sảnh. Đối chứng Server có chat P1 trong bàn 2P nhưng chưa hoàn thành ván.", "evidence": ["O1_2P", "SERVER_2P"]},
+    {"check": "Ẩn ID/mật khẩu chỉ ở O1", "result": "not_run", "limits": "CA.exe hiện không có cơ chế launcher đã xác nhận để ẩn khung theo chế độ.", "evidence": ["RECEIPT"]}
+  ],
+  "delta": {"added": ["Metadata smoke LANBoom, ảnh guide mới, giới hạn 2P O1 và đường relay S1."], "corrected": [], "superseded": []},
+  "blockers": [
+    "O1 cần hỗ trợ hai đề nghị relay ở gateway và companion trước khi thử lại 2P.",
+    "Gameplay S1 cần ánh xạ relay trong companion; kr-tunnel nằm ngoài PR 1.",
+    "Ẩn khung đăng nhập O1 cần bằng chứng riêng về cấu hình hoặc hành vi của CA.exe."
+  ],
+  "next_steps": [
+    {"id": "LANBOOM-O1-2P-RELAY", "task": "KRE-O1-LAUNCHER", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Bổ sung hỗ trợ hai relay cho O1 trong lát riêng rồi kiểm trận và tin chat do P2 gửi trên Wine."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-23T13:48:22+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự kiểm trong worktree PR 1.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa chốt mốc phát hành."},
+    {"path": "docs/PLAN.md", "state": "unchanged", "reason": "Chủ dự án giữ file này ngoài PR 1."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi packet KR; ghi giới hạn ở tài liệu O1/S1."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng mốc; phép thử tiếp ghi trong checkpoint."},
+    {"path": "docs/O1_S1_P2P.md", "state": "updated", "reason": "Ghi nhãn Host LAN, luồng S1 và giới hạn relay."},
+    {"path": "docs/player/guide.vi.md", "state": "updated", "reason": "Hướng dẫn đúng launcher mới và giới hạn 2P O1."},
+    {"path": "docs/evidence/checkpoints/records/CP393.json", "state": "updated", "reason": "Pin kết quả và log smoke cục bộ."}
+  ],
+  "evidence": [
+    {"id": "RECEIPT", "kind": "local", "path": "local/runs/pr1-smoke/receipt.json", "bytes": 1144, "sha256": "6b5469f1b91eaf996ed8e087cabcb1874e6e50cfcce23c388ea25631f0aba18f"},
+    {"id": "RELEASE", "kind": "local", "path": "local/runs/pr1-smoke/release-verification.txt", "bytes": 2453, "sha256": "26c9146910482ac5b6781c29bc0f8c6da245e9658b3d0bcbfd7d0f1c0aef1244"},
+    {"id": "RUST", "kind": "local", "path": "local/runs/pr1-smoke/final-rust-tests.log", "bytes": 4141, "sha256": "465fd9f540fda97290e09766a46dda47e01bb3e12e92589ae24b8f79d3d1483b"},
+    {"id": "LAYOUT", "kind": "local", "path": "local/runs/pr1-smoke/linux-layout.log", "bytes": 348, "sha256": "73ca5dc6ca1892653aa61cc75b940371578fd471b1a64199e44f09072a164627"},
+    {"id": "LAN", "kind": "local", "path": "local/runs/pr1-smoke/o1-join-lan.png", "bytes": 662275, "sha256": "a501e611dcdb898f54c31f73e04ff362d20806eacff4fae6d71e0a999df81b4a"},
+    {"id": "O1_LOBBY", "kind": "local", "path": "local/runs/pr1-smoke/o1-1p-after.png", "bytes": 288162, "sha256": "b40897f0f95eefc843d26ff16f27533e19671ae1fc2ff046f0113f3656bdeb85"},
+    {"id": "O1_2P", "kind": "local", "path": "local/runs/pr1-smoke/o1-2p-server-events.jsonl", "bytes": 5669, "sha256": "db3b9f2151bbf4bd000764bcc4ca49adb03d1a4bece12f16bd852f802d62e657"},
+    {"id": "SERVER_2P", "kind": "local", "path": "local/runs/pr1-smoke/server-2p-room-chat.png", "bytes": 175966, "sha256": "52cbce5d19753ce6f2af7d430d7e96a488a72bc970cfe78e18ac893d305c0e31"},
+    {"id": "LIFECYCLE", "kind": "local", "path": "local/runs/pr1-smoke/lifecycle.txt", "bytes": 441, "sha256": "7b4a9951dffb9fcad60924714cc296f2fa7c057cf210671ac3b315bf08b1939b"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/pr1-smoke", "path": "local/evidence-manifests/38eabdce0af3e9714c591c10e66904cfff7e8eb9c41214e5993c6eb5fef0eaaa.jsonl", "sha256": "38eabdce0af3e9714c591c10e66904cfff7e8eb9c41214e5993c6eb5fef0eaaa", "bytes": 4093, "count": 23, "files_bytes": 3185618}
+  ]
+}

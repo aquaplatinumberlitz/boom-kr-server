@@ -7,10 +7,14 @@ import argparse
 import re
 import hashlib
 import ipaddress
+import io
 import json
 from pathlib import Path, PurePosixPath
 import shutil
 import struct
+import subprocess
+import sys
+import zipfile
 
 from content_census import decrypt_idx, parse_idx
 
@@ -18,14 +22,37 @@ ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ('vi', 'en', 'ko')
 KR_PORTS = tuple(range(3808, 4000, 10))
 DEFAULT_LAUNCHER_ART = ROOT / 'local/assets/launcher/launch.png'
+BACKDROP = 'payload/launcher/backdrop.jpg'
+ONECLICK = 'LoginStage/OneClick_Back'
+ONECLICK_PINS = {
+    'vi': '0626678ddd677574c8ca5fd85db76622657d03be2a4735d52884d3b5abf1b3fa',
+    'en': 'edb6c40fca829b7689b967c3e2b7de216e3a7b1dcdb6dfac70ec4bf7a61ea7bc',
+}
+TRIAL_EXE_PINS = {
+    'vi': '11e2ab05eff120585b61fb445e9bbcd31c5aeac4e35347e7a112b500826e00ed',
+    'en': '2465eca52e54f51b862eb66c04aa90ab2f647500f979f540f2c6ec9b1d2ae84f',
+    'ko': 'f73a9657827b2750f4b2d343df6db6a86885866088af65ccba163949fa52ebd2',
+}
+
+
+def common_checkout():
+    result = subprocess.run(['git', 'rev-parse', '--path-format=absolute', '--git-common-dir'],
+                            cwd=ROOT, check=True, capture_output=True, text=True)
+    return Path(result.stdout.strip()).parent
+
+
+def local_asset(name):
+    primary = ROOT / name
+    return primary if primary.is_file() else common_checkout() / name
+
 LOCAL_EXTENSIONS = {'.ini', '.ssd', '.fft', '.bik'}
 GUIDE_IMAGES = {
-    'o1-create-room.png': dict(path='local/assets/guide/o1-create-room.png', bytes=225709,
-                               sha256='1f0fadaf574286e27209a26173f66bce3cdca9e5d236c034826a478a8e2fcc5d'),
-    'o1-join-code.png': dict(path='local/assets/guide/o1-join-code.png', bytes=163457,
-                             sha256='7807840cfa64adf2b6238ee36bf05127447eb0fdb9023ff18e8bcb90e44a7d11'),
-    'o1-join-lan.png': dict(path='local/assets/guide/o1-join-lan.png', bytes=160845,
-                            sha256='ca4ee7d9ab98fc1764d78b9b3dccb06bb2d0f593ee4f109c1e5a47096be28d94'),
+    'o1-create-room.png': dict(path='local/assets/guide/o1-create-room.png', bytes=663107,
+                               sha256='2b3fd18f84c2cfb0fe9558d1c7622aa6a9f48dd3f3558ae93d2eda50d2b02107'),
+    'o1-join-code.png': dict(path='local/assets/guide/o1-join-code.png', bytes=665161,
+                             sha256='37b3b8230c349d637a1ac439788f593adb23560d2d9162a6925d19935d82ec40'),
+    'o1-join-lan.png': dict(path='local/assets/guide/o1-join-lan.png', bytes=662275,
+                            sha256='a501e611dcdb898f54c31f73e04ff362d20806eacff4fae6d71e0a999df81b4a'),
 }
 
 
@@ -60,13 +87,21 @@ def _check_row(root, row, label):
     return path
 
 
-def preflight(package):
+def preflight(package, require_release_assets=False):
     """Verify the exact immutable O1 install directory without network access."""
     root = Path(package).resolve(strict=True)
     if not root.is_dir():
         raise ValueError('Thư mục gói không hợp lệ')
-    launcher_path = root / 'launcher.json'
-    manifest_path = root / 'manifest.json'
+    branded = (root / 'data/launcher.json').is_file()
+    bundle = root / 'data' if branded else root
+    launcher_path = bundle / 'launcher.json'
+    manifest_path = bundle / 'manifest.json'
+    manifest_name = manifest_path.relative_to(root).as_posix()
+    config_name = launcher_path.relative_to(root).as_posix()
+    if require_release_assets and not (bundle / BACKDROP).is_file():
+        raise ValueError(f'Thiếu ảnh nền phát hành: {BACKDROP}')
+    if branded and {p.name for p in root.iterdir()} != {'LANBoom.exe', 'data'}:
+        raise ValueError('Gói LANBoom chỉ cho phép LANBoom.exe và thư mục data ở ngoài')
     if not launcher_path.is_file() or not manifest_path.is_file():
         raise ValueError('Thiếu launcher.json hoặc manifest.json')
     launcher = json.loads(launcher_path.read_text(encoding='utf-8'))
@@ -76,22 +111,40 @@ def preflight(package):
     if launcher.get('manifest_sha256') != digest(manifest_path):
         raise ValueError('launcher.json không khớp hash manifest.json')
 
+    if require_release_assets:
+        if not branded or (manifest.get('launcher_art') or {}).get('path') != BACKDROP:
+            raise ValueError('Gói phát hành thiếu pin ảnh nền hoặc sai layout LANBoom')
+        for name, pin in GUIDE_IMAGES.items():
+            row = manifest.get('guide_images', {}).get(name, {})
+            if (row.get('path'), row.get('bytes'), row.get('sha256')) != (
+                    f'player/{name}', pin['bytes'], pin['sha256']):
+                raise ValueError(f'Gói phát hành thiếu ảnh hướng dẫn đã pin: {name}')
+        for language, exe_sha in TRIAL_EXE_PINS.items():
+            files = manifest.get('languages', {}).get(language, {}).get('files', [])
+            executable = next((row['payload'] for row in files if row['path'] == 'CA.exe'), {})
+            if executable.get('sha256') != exe_sha:
+                raise ValueError(f'Gói thiếu CA.exe tương thích CP341: {language}')
+        desktop = next((pack for pack in manifest.get('packs', [])
+                        if pack['path'] == 'FxDesktop.idd'), {})
+        if not any(part['path'] == 'payload/oneclick/FxDesktop.idd.tail'
+                   for part in desktop.get('parts', [])):
+            raise ValueError('Gói phát hành thiếu ảnh OneClick_Back đã ghép')
     rows = _manifest_rows(manifest)
     expected = {}
     for row in rows:
-        path = relative(row['path'])
+        path = (bundle.relative_to(root) / relative(row['path']))
         if path.as_posix() in expected:
             raise ValueError('Manifest lặp đường dẫn')
-        _check_row(root, row, f'Manifest {path}')
+        _check_row(bundle, row, f'Manifest {path}')
         expected[path.as_posix()] = dict(bytes=row['bytes'], sha256=row['sha256'])
 
     # launcher.json pins every immutable file copied by windows_runtime().
     pins = launcher.get('file_hashes')
-    if not isinstance(pins, dict) or 'manifest.json' not in pins:
+    if not isinstance(pins, dict) or manifest_name not in pins:
         raise ValueError('launcher.json thiếu file_hashes')
     for name, row in pins.items():
         path = relative(name)
-        if path.as_posix() == 'launcher.json':
+        if path.as_posix() == config_name:
             raise ValueError('launcher.json không được tự pin')
         _check_row(root, dict(path=name, **row), f'launcher.json {name}')
         pin = dict(bytes=row['bytes'], sha256=row['sha256'])
@@ -101,7 +154,7 @@ def preflight(package):
     actual = {
         path.relative_to(root).as_posix()
         for path in root.rglob('*')
-        if path.is_file() and not path.is_symlink() and path.name.casefold() != 'launcher.json'
+        if path.is_file() and not path.is_symlink() and path != launcher_path
     }
     if any(path.is_symlink() for path in root.rglob('*')):
         raise ValueError('Gói không cho phép symlink')
@@ -109,20 +162,20 @@ def preflight(package):
         extra = sorted(actual - set(expected))
         missing = sorted(set(expected) - actual)
         raise ValueError(f'File gói ngoài/thiếu pin: extra={extra[:3]} missing={missing[:3]}')
-    if expected['manifest.json']['sha256'] != digest(manifest_path):
+    if expected[manifest_name]['sha256'] != digest(manifest_path):
         raise ValueError('file_hashes không khớp manifest.json')
 
     if launcher.get('ports') != list(KR_PORTS):
         raise ValueError('Recipe cổng KR phải đầy đủ 3808–3998 bước 10')
-    if not (root / 'kr-player.exe').is_file():
-        raise ValueError('Thiếu launcher kr-player.exe')
+    if not (root / ('LANBoom.exe' if branded else 'kr-player.exe')).is_file():
+        raise ValueError('Thiếu launcher LANBoom.exe')
     companion = launcher.get('companion')
-    if not isinstance(companion, str) or not (root / relative(companion)).is_file():
+    if not isinstance(companion, str) or not (bundle / relative(companion)).is_file():
         raise ValueError('Thiếu companion trong gói')
     friends = launcher.get('friends')
     if not isinstance(friends, dict):
         raise ValueError('Thiếu server/exporter O1')
-    server_root = root / relative(friends.get('package', ''))
+    server_root = bundle / relative(friends.get('package', ''))
     service_manifest = server_root / 'manifest.json'
     if not service_manifest.is_file() or digest(service_manifest) != friends.get('manifest_sha256'):
         raise ValueError('Manifest server không khớp launcher.json')
@@ -131,7 +184,7 @@ def preflight(package):
     if not (server_root / 'kr_pack_export.py').is_file():
         raise ValueError('Thiếu exporter/kr_pack_export.py')
     python = friends.get('python')
-    if not isinstance(python, str) or not (root / relative(python)).is_file():
+    if not isinstance(python, str) or not (bundle / relative(python)).is_file():
         raise ValueError('Thiếu Python companion runtime')
     for path in root.rglob('*'):
         if path.is_file() and path.name.casefold() == 'calog.log' and path.stat().st_size:
@@ -183,7 +236,103 @@ def stage_launcher_art(source, out):
     return dict(path=destination, bytes=target.stat().st_size, sha256=digest(target))
 
 
-def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
+def validate_guide_images():
+    for name, pin in GUIDE_IMAGES.items():
+        path = local_asset(pin['path'])
+        if not path.is_file() or (path.stat().st_size, digest(path)) != (pin['bytes'], pin['sha256']):
+            raise ValueError(f'Thiếu ảnh hướng dẫn phát hành đã pin: {name}')
+
+
+def oneclick_codec(codec_dir):
+    # Same reviewed codec as the L1 asset build. Read the sibling checkout,
+    # or allow the release builder to point at its own copy explicitly.
+    path = Path(codec_dir) if codec_dir else common_checkout().parent / 'boom-re-l10n/tools'
+    if not (path / 'i16.py').is_file() or not (path / 'idf.py').is_file():
+        raise ValueError('Cần codec i16.py và idf.py từ boom-re-l10n (dùng --codec-dir)')
+    sys.path.insert(0, str(path))
+    try:
+        import i16
+        import idf
+        import boomproto  # Load the dependency before restoring sys.path.
+        assert boomproto.crc32
+        return i16, idf
+    finally:
+        sys.path.pop(0)
+
+
+def patch_oneclick(codec, idd, tail, index, destination, png):
+    from PIL import Image
+    from l10n_949x import encrypt_idx
+
+    i16, idf = codec
+    cipher = index.read_bytes()
+    idx_key, = struct.unpack_from('<I', cipher)
+    plain = bytearray(decrypt_idx(cipher))
+    version, entries, end = idf.parse_idx(plain)
+    if version is None or end != len(plain):
+        raise ValueError('Index FxDesktop không đúng định dạng')
+    matches = []
+    position = 12
+    for name, offset, size, key, crc in entries:
+        length, = struct.unpack_from('<I', plain, position)
+        position += 4 + length
+        if name == ONECLICK:
+            matches.append((position, offset, size, key, crc))
+        position += 16
+    if len(matches) != 1:
+        raise ValueError('Index thiếu hoặc lặp OneClick_Back')
+    position, offset, size, key, crc = matches[0]
+    with idd.open('rb') as stream:
+        stream.seek(offset)
+        original = idf.unpack_entry(ONECLICK, stream.read(size), key, crc)
+    with Image.open(png) as img:
+        approved = img.convert('RGBA')
+    def rendered(blob):
+        (_, data), = i16.to_pngs(blob)
+        with Image.open(io.BytesIO(data)) as img:
+            return img.convert('RGBA')
+    prior = rendered(original)
+    if prior.size != (129, 111) or approved.size != prior.size:
+        raise ValueError('Kích thước OneClick_Back không khớp')
+    if prior.getchannel('A').tobytes() != approved.getchannel('A').tobytes():
+        raise ValueError('Alpha OneClick_Back không khớp ảnh gốc')
+    # Approval pins the artwork and bounds above the hotspots at y=54.
+    # Encoding must also preserve the original frame table and alpha mask.
+    encoded = i16.encode(original, [approved.tobytes()])
+    decoded = rendered(encoded)
+    if (i16.parse(encoded)['frames'] != i16.parse(original)['frames']
+            or decoded.size != approved.size
+            or decoded.getchannel('A').tobytes() != approved.getchannel('A').tobytes()):
+        raise ValueError('OneClick_Back không giữ nguyên frame, khung ảnh hoặc alpha')
+    intend, actual = approved.tobytes(), decoded.tobytes()
+    if any(intend[i:i+3] != actual[i:i+3] for i in range(0, len(intend), 4) if intend[i+3]):
+        raise ValueError('Màu OneClick_Back khác ảnh đã duyệt sau kiểm khứ hồi')
+    if key and crc not in (0, 1):
+        crc = idf._crc32(key, encoded)
+    raw = idf.encrypt_entry(encoded, key) if key else encoded
+    if idf.unpack_entry(ONECLICK, raw, key, crc) != encoded:
+        raise ValueError('Kiểm khứ hồi dữ liệu OneClick_Back thất bại')
+    offset = idd.stat().st_size + tail.stat().st_size
+    with tail.open('ab') as stream:
+        stream.write(raw)
+    struct.pack_into('<IIII', plain, position, offset, len(raw), key, crc)
+    destination.write_bytes(encrypt_idx(plain, idx_key))
+
+
+def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART, require_release_assets=False,
+          oneclick_assets=None, codec_dir=None):
+    if launcher_art == DEFAULT_LAUNCHER_ART:
+        launcher_art = local_asset('local/assets/launcher/launch.png')
+    if require_release_assets and (launcher_art is None or not launcher_art.is_file()):
+        raise ValueError(f'Thiếu ảnh nền phát hành để dựng {BACKDROP}')
+    if require_release_assets:
+        validate_guide_images()
+        oneclick_assets = oneclick_assets or local_asset(
+            'local/assets/oneclick-l10n/APPROVED.md').parent
+        for language in LANGUAGES:
+            if recipe['languages'][language]['executable']['sha256'] != TRIAL_EXE_PINS[language]:
+                raise ValueError(f'CA.exe chưa khớp bản CP341: {language}')
+    codec = oneclick_codec(codec_dir) if oneclick_assets else None
     if set(recipe['languages']) != set(LANGUAGES):
         raise ValueError('Gói phải khai đủ vi/en/ko đã vá')
     base = Path(recipe['base']).resolve(strict=True)
@@ -211,7 +360,7 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     if art is not None:
         payload[art['path']] = art
 
-    packs = []
+    packs, pack_sources = [], {}
     originals = {name: p for name, p in files.items() if p.suffix.lower() == '.idd'}
     if not originals:
         raise ValueError('Không tìm thấy pack gốc')
@@ -231,6 +380,7 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
                 parts.append(save(candidate, 'payload/tails/' + stage['language'] + '/' + name + '.tail',
                                   current.stat().st_size))
             current = candidate
+        pack_sources[name] = current
         packs.append(dict(path=name, parts=parts, bytes=current.stat().st_size, sha256=digest(current)))
 
     common, localized = [], {}
@@ -243,6 +393,15 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
         else:
             common.append(dict(path=name, payload=save(source, 'payload/common/' + name)))
     languages = {}
+    localized_pack = None
+    if codec:
+        localized_pack = next((pack for pack in packs if pack['path'] == 'FxDesktop.idd'), None)
+        if localized_pack is None:
+            raise ValueError('Thiếu FxDesktop.idd để ghép OneClick_Back')
+        desktop = pack_sources[localized_pack['path']]
+        desktop_tail = out / 'payload/oneclick/FxDesktop.idd.tail'
+        desktop_tail.parent.mkdir(parents=True)
+        desktop_tail.touch(exist_ok=False)
     for language in LANGUAGES:
         entry = recipe['languages'][language]
         if entry.get('encoding') != '949x':
@@ -273,12 +432,31 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
             for _, offset, size, _ in parse_idx(decrypt_idx(source.read_bytes())):
                 if offset + size > pack['bytes']:
                     raise ValueError('Idx trỏ ra ngoài pack chung')
+            if codec and language in ONECLICK_PINS and pack is localized_pack:
+                png = Path(oneclick_assets) / f'OneClick_Back_{language}.png'
+                if digest(png) != ONECLICK_PINS[language]:
+                    raise ValueError(f'OneClick_Back không khớp ảnh đã duyệt: {language}')
+                patched = out / 'payload/oneclick' / f'FxDesktop.{language}.idx'
+                patch_oneclick(codec, desktop, desktop_tail, source, patched, png)
+                source = patched
             overrides[name] = source
         rows = []
         for name, source in sorted(overrides.items()):
             relative(name)
             rows.append(dict(path=name, payload=save(source, 'payload/languages/' + language + '/' + name)))
         languages[language] = dict(encoding='949x', images=entry['images'], files=rows)
+        if codec and language in ONECLICK_PINS:
+            (out / 'payload/oneclick' / f'FxDesktop.{language}.idx').unlink()
+    if localized_pack is not None:
+        tail = dict(path=desktop_tail.relative_to(out).as_posix(),
+                    bytes=desktop_tail.stat().st_size, sha256=digest(desktop_tail))
+        localized_pack['parts'].append(tail)
+        payload[tail['path']] = tail
+        localized_pack['bytes'] += tail['bytes']
+        with desktop.open('rb') as stream:
+            combined = hashlib.file_digest(stream, 'sha256')
+        combined.update(desktop_tail.read_bytes())
+        localized_pack['sha256'] = combined.hexdigest()
     guides = {
         f'player/guide.{language}.md': save(ROOT / f'docs/player/guide.{language}.md',
                                            f'player/guide.{language}.md')
@@ -286,11 +464,13 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART):
     }
     guide_images = {}
     for name, expected in GUIDE_IMAGES.items():
-        source = ROOT / expected['path']
+        source = local_asset(expected['path'])
         if not source.is_file():
             continue
         if source.stat().st_size != expected['bytes'] or digest(source) != expected['sha256']:
-            raise ValueError(f'Ảnh hướng dẫn không khớp pin: {name}')
+            if require_release_assets:
+                raise ValueError(f'Ảnh hướng dẫn không khớp pin: {name}')
+            continue
         guide_images[name] = save(source, f'player/{name}')
     screenshot = ROOT / 'docs/player/o1-launcher.jpg'
     screenshot_pin = save(screenshot, 'player/o1-launcher.jpg') if screenshot.is_file() else None
@@ -353,29 +533,26 @@ def windows_runtime(recipe, output, manifest_sha256):
                 raise ValueError('Binary không phải PE x86-64')
 
     files = {
-        'kr-player.exe': checked_pin(recipe['launcher']),
-        'kr-prelogin.exe': checked_pin(recipe['companion']),
-        'Tao-loi-tat.ps1': ROOT / 'tools/player_shortcut.ps1',
+        'LANBoom.exe': checked_pin(recipe['launcher']),
+        'bin/kr-prelogin.exe': checked_pin(recipe['companion']),
     }
     if online <= recipe.keys():
         files.update({'account.der': checked_pin(recipe['certificate']),
                       'prelogin.der': checked_pin(recipe['prelogin_certificate'])})
-    if 'friends' in recipe:
-        files['Cai-dat-Windows.ps1'] = ROOT / 'tools/player_windows_setup.ps1'
     for name, source in files.items():
         if name.endswith('.exe'):
             windows_exe(source)
         if name.endswith('.der') and not 0 < source.stat().st_size <= 8192:
             raise ValueError('Chứng thư công khai vượt giới hạn')
+    (output / 'bin').mkdir()
     for name, source in files.items():
         with source.open('rb') as src, (output / name).open('xb') as dst:
             shutil.copyfileobj(src, dst)
-    config = dict(ports=ports, companion='kr-prelogin.exe', bundle='.', manifest_sha256=manifest_sha256,
+    config = dict(ports=ports, companion='bin/kr-prelogin.exe', bundle='.', manifest_sha256=manifest_sha256,
                   installation='game', state='state', udp_backend='portable')
     if online <= recipe.keys():
         config.update(server=recipe['server'], prelogin_server=recipe['prelogin_server'],
                       certificate='account.der', prelogin_certificate='prelogin.der')
-    friends_files = {}
     if 'friends' in recipe:
         spec = recipe['friends']
         if set(spec) != {'package', 'manifest_sha256', 'python_files'}:
@@ -407,7 +584,6 @@ def windows_runtime(recipe, output, manifest_sha256):
             destination.parent.mkdir(exist_ok=True, parents=True)
             with source.open('rb') as src, destination.open('xb') as dst:
                 shutil.copyfileobj(src, dst)
-            friends_files[name] = digest(destination)
         config['friends'] = dict(package='friends-server', manifest_sha256=spec['manifest_sha256'],
                                  python='friends-python/python.exe')
         directory = recipe.get('friends_directory', ['wss://relay.damus.io', 'wss://nostr.mom'])
@@ -420,31 +596,39 @@ def windows_runtime(recipe, output, manifest_sha256):
     if release_url:
         config['release_url'] = release_url
     (output / 'MO-GAME.txt').write_text(
-        'Giải nén vào thư mục có quyền ghi trên ổ NTFS. Mở kr-player.exe.\n'
-        'Có thể chạy Tao-loi-tat.ps1 sau khi giải nén để tạo lối tắt Boom Play.\n'
-        + ('Chạy Cai-dat-Windows.ps1 để thêm quy tắc LAN nếu có quyền quản trị.\n'
-           'Mở Chơi với bạn bè, nhập tên, tạo hoặc vào phòng theo Hướng dẫn.\n'
+        'Giải nén cả gói rồi mở LANBoom.exe. Không chạy game khi đang xem file ZIP.\n'
+        'Muốn tạo lối tắt Desktop, mở Cài đặt trong Launcher.\n'
+        + ('Chọn Phòng riêng để mở phòng hoặc vào phòng bạn bè. Nếu Windows hỏi, '
+           'chọn Cho phép để bạn bè cùng mạng LAN tìm thấy phòng.\n'
            if 'friends' in recipe else
-           'Chọn ngôn ngữ, chọn một máy chủ, bấm CHƠI, rồi đăng nhập hoặc chơi thử trong game.\n')
-        +
-        'Đừng mở CA.exe trực tiếp: game cần đường TLS do launcher mở.\n',
+           'Chọn Server, bấm CHƠI rồi đăng nhập trong game.\n'),
         encoding='utf-8-sig',
     )
-    # Create the readme before pinning the immutable payload.  Otherwise a
-    # freshly built bundle contains an unpinned file and always fails the
-    # mandatory offline preflight.
+    data = output / 'data'
+    data.mkdir()
+    for path in output.iterdir():
+        if path.name not in ('data', 'LANBoom.exe'):
+            path.rename(data / path.name)
     config['file_hashes'] = {
         path.relative_to(output).as_posix(): dict(bytes=path.stat().st_size, sha256=digest(path))
-        for path in sorted(output.rglob('*'))
-        if path.is_file() and path.name.casefold() != 'launcher.json'
+        for path in sorted(output.rglob('*')) if path.is_file()
     }
-    with (output / 'launcher.json').open('x') as file:
+    with (data / 'launcher.json').open('x') as file:
         json.dump(config, file, indent=2)
         file.write('\n')
-    return friends_files | {
-        name: digest(output / name)
-        for name in (*files, 'launcher.json', 'MO-GAME.txt')
+    return {name: pin['sha256'] for name, pin in config['file_hashes'].items()
+            if not name.startswith(('data/payload/', 'data/player/'))} | {
+        'data/launcher.json': digest(data / 'launcher.json'),
     }
+
+
+def write_archive(package, archive):
+    if archive.name != 'LANBooM_client.zip' or archive.is_relative_to(package):
+        raise ValueError('Gói ZIP phải tên LANBooM_client.zip và nằm ngoài thư mục staging')
+    with zipfile.ZipFile(archive, 'x', zipfile.ZIP_DEFLATED, compresslevel=3) as zipped:
+        for path in sorted(package.rglob('*')):
+            if path.is_file():
+                zipped.write(path, path.relative_to(package))
 
 
 def main():
@@ -455,10 +639,14 @@ def main():
     parser.add_argument('--windows-runtime', type=Path, help='Recipe local chứa launcher, companion và certificate đã pin')
     parser.add_argument('--launcher-art', type=Path, default=DEFAULT_LAUNCHER_ART,
                         help='Ảnh nền launcher (mặc định: local/assets/launcher/launch.png)')
+    parser.add_argument('--require-release-assets', action='store_true')
+    parser.add_argument('--oneclick-assets', type=Path)
+    parser.add_argument('--codec-dir', type=Path)
+    parser.add_argument('--zip', type=Path, help='Tạo LANBooM_client.zip trong local/')
     args = parser.parse_args()
     if args.preflight is not None:
         try:
-            result = preflight(args.preflight)
+            result = preflight(args.preflight, args.require_release_assets)
         except (ValueError, OSError, json.JSONDecodeError) as error:
             print(f'PREFLIGHT FAIL: {error}')
             raise SystemExit(1)
@@ -470,10 +658,18 @@ def main():
     output = args.out.resolve()
     if output == local or not output.is_relative_to(local):
         parser.error('Gói và tài sản client phải ở local/')
-    summary = build(json.loads(args.recipe.read_text()), output, args.launcher_art)
+    archive = args.zip.resolve() if args.zip else None
+    if archive is not None and (not args.windows_runtime or not archive.is_relative_to(local)):
+        parser.error('--zip yêu cầu --windows-runtime và đường dẫn trong local/')
+    summary = build(json.loads(args.recipe.read_text()), output, args.launcher_art,
+                    args.require_release_assets, args.oneclick_assets, args.codec_dir)
     if args.windows_runtime:
         summary['windows_runtime'] = windows_runtime(
             json.loads(args.windows_runtime.read_text()), output, summary['manifest_sha256'])
+    if archive:
+        preflight(output, args.require_release_assets)
+        write_archive(output, archive)
+        summary['zip_sha256'] = digest(archive)
     print(json.dumps(summary))
 
 

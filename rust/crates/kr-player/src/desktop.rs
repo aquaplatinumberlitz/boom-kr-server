@@ -9,6 +9,8 @@ pub(crate) enum Action {
     Release,
     #[cfg(windows)]
     Shortcut,
+    #[cfg(windows)]
+    Firewall,
 }
 
 fn open_directory(path: &Path) -> io::Result<()> {
@@ -79,6 +81,11 @@ pub(crate) fn run(config: Config, action: Action) -> io::Result<()> {
             open_directory(&path)
         }
         #[cfg(windows)]
+        Action::Firewall => {
+            let owner = std::env::current_exe()?;
+            crate::windows_game::allow_lan(&owner, config.companion())
+        }
+        #[cfg(windows)]
         Action::Shortcut => {
             use std::os::windows::process::CommandExt;
             // Use fixed code. Do not execute a mutable script from the package.
@@ -95,13 +102,13 @@ pub(crate) fn run(config: Config, action: Action) -> io::Result<()> {
                     r#"
                     $ErrorActionPreference = 'Stop'
                     $shell = New-Object -ComObject WScript.Shell
-                    $link = $shell.CreateShortcut((Join-Path $env:KR_SHORTCUT_DIR 'Boom Play.lnk'))
+                    $link = $shell.CreateShortcut((Join-Path $shell.SpecialFolders.Item('Desktop') 'LANBoom.lnk'))
                     $link.TargetPath = $env:KR_SHORTCUT_TARGET
                     $link.WorkingDirectory = $env:KR_SHORTCUT_HOME
+                    $link.IconLocation = "$env:KR_SHORTCUT_TARGET,0"
                     $link.Save()
                 "#,
                 ])
-                .env("KR_SHORTCUT_DIR", &config.bundle)
                 .env("KR_SHORTCUT_TARGET", &launcher)
                 .env("KR_SHORTCUT_HOME", launcher_dir)
                 .creation_flags(0x0800_0000)
@@ -112,6 +119,45 @@ pub(crate) fn run(config: Config, action: Action) -> io::Result<()> {
                 .ok_or_else(|| io::Error::other("shortcut creation failed"))
         }
     }
+}
+
+pub(crate) fn save_recovery(code: &str) -> io::Result<bool> {
+    #[cfg(windows)]
+    let path = crate::windows_game::save_text_path()?;
+    #[cfg(not(windows))]
+    let path = {
+        let output = Command::new("zenity")
+            .args([
+                "--file-selection",
+                "--save",
+                "--confirm-overwrite",
+                "--filename=LANBoom-recovery.txt",
+            ])
+            .output()?;
+        if output.status.code() == Some(1) {
+            return Ok(false);
+        }
+        if !output.status.success() {
+            return Err(io::Error::other("save dialog failed"));
+        }
+        let name = String::from_utf8(output.stdout).map_err(io::Error::other)?;
+        Some(std::path::PathBuf::from(name.trim_end_matches('\n')))
+    };
+    let Some(path) = path else {
+        return Ok(false);
+    };
+    let mut options = std::fs::OpenOptions::new();
+    // Keep an existing file intact, even if the OS dialog allowed picking it.
+    options.write(true).create_new(true);
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::OpenOptionsExt;
+        options.mode(0o600);
+    }
+    use std::io::Write;
+    let mut file = options.open(path)?;
+    writeln!(file, "{code}")?;
+    Ok(true)
 }
 
 #[cfg(test)]

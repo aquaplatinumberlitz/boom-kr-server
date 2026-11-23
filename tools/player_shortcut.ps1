@@ -1,10 +1,10 @@
-# Run after unpacking the Windows player package to its final directory.
+# Optional developer helper; players can use Settings > Create shortcut.
 $ErrorActionPreference = 'Stop'
-$target = Join-Path $PSScriptRoot 'kr-player.exe'
-if (-not (Test-Path -LiteralPath $target -PathType Leaf)) { throw 'kr-player.exe is missing' }
+$target = Join-Path $PSScriptRoot 'LANBoom.exe'
+if (-not (Test-Path -LiteralPath $target -PathType Leaf)) { throw 'LANBoom.exe is missing' }
 $shell = New-Object -ComObject WScript.Shell
-$shortcut = $shell.CreateShortcut((Join-Path $PSScriptRoot 'Boom Play.lnk'))
+$shortcut = $shell.CreateShortcut((Join-Path $shell.SpecialFolders.Item('Desktop') 'LANBoom.lnk'))
 $shortcut.TargetPath = $target
-$shortcut.Arguments = ''
 $shortcut.WorkingDirectory = $PSScriptRoot
+$shortcut.IconLocation = "$target,0"
 $shortcut.Save()

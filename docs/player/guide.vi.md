@@ -1,76 +1,77 @@
-# Hướng dẫn chơi BOOM PLAY
+# Hướng dẫn chơi LANBoom
 
 <!-- overview -->
 ## Hai chế độ chơi
 
-**Máy chủ** dành cho cộng đồng có máy chạy riêng. Bạn dùng tài khoản của máy đó và giữ tiến trình theo cấu hình của họ.
+**Server** dành cho nhóm chơi thường xuyên. Bạn dùng tài khoản riêng của từng Server để đăng nhập.
 
-**Chơi với bạn bè** (Sắp có) dành cho những buổi chơi riêng. Máy của một người bạn tạo phòng, không cần tài khoản.
+**Phòng riêng** dành cho buổi chơi với bạn bè. Một người làm Host, cả nhóm vào bằng mã phòng hoặc qua LAN. Không cần tài khoản.
 
 <!-- compare -->
 ## So sánh hai chế độ
 
-| Tiêu chí | Máy chủ | Chơi với bạn bè — Sắp có |
+| Tiêu chí | Server | Phòng riêng |
 | --- | --- | --- |
-| Ai chạy máy chủ? | Chủ cộng đồng chạy trên PC hoặc VPS. | Máy của người tạo phòng. |
-| Tài khoản | Tài khoản riêng cho từng máy chủ. | Không cần; chỉ đặt tên. |
-| Tiến trình | Lưu trên máy chủ, theo cấu hình. | Không chuyển sang máy chủ cộng đồng. |
-| Nội dung | Theo cấu hình và tính năng máy chủ hỗ trợ. | Mở khoá toàn bộ vật phẩm được hỗ trợ. |
-| Kết nối | Máy có sẵn trong gói; ở S1 dùng mã mời LAN/Internet, không cần tự mở cổng khi kết nối P2P. | Mã phòng qua LAN hoặc Internet ở O1, không cần tự mở cổng. |
-| Thời gian | Có thể chạy lâu dài. | Phòng đóng khi người tạo thoát. |
-| Số người | Theo giới hạn máy chủ và phòng. | Nhóm nhỏ; giới hạn O1 sẽ công bố khi mở. |
+| Ai mở? | Admin mở Server trên PC hoặc VPS. | Host mở phòng từ Launcher. |
+| Tài khoản | Mỗi Server dùng tài khoản riêng. | Chỉ cần nhập tên nhân vật. |
+| Tiến trình | Lưu theo cài đặt của Server. | Không chuyển sang Server. |
+| Nội dung | Theo tính năng Server hỗ trợ. | Dùng các vật phẩm phòng hỗ trợ. |
+| Kết nối | Chọn Server mặc định hoặc thêm bằng mã mời S1. | Quét LAN hoặc dùng mã phòng O1. |
+| Thời gian | Có thể mở liên tục. | Phòng đóng khi Host dừng game. |
+| Số người | Theo giới hạn Server và bàn đấu. | Dành cho nhóm nhỏ. |
 
 <!-- choose -->
 ## Nên chọn chế độ nào?
 
-- Muốn chơi nhanh với vài người: chọn **Chơi với bạn bè** khi O1 mở.
-- Nhóm chơi thường xuyên, muốn giữ đồ hoặc tiến trình: chọn **Máy chủ**.
-- Muốn phục vụ một cộng đồng lâu dài: cân nhắc VPS hay máy chạy 24/7. Quy trình tự dựng gói người chơi ở S1 vẫn sắp có.
+- Muốn chơi nhanh với bạn bè: chọn **Phòng riêng**.
+- Muốn đăng nhập và chơi tiếp vào lần sau: chọn **Server**.
+
+### Tải gói nào?
+
+Người chơi tải **LANBooM_client.zip**, giải nén cả gói rồi bấm **LANBoom.exe**. Nếu cần tự mở Server, dùng **BoomServer-Windows.zip** cho PC Windows hoặc **BoomServer-Linux.tar.gz** cho máy Linux. Xem phần tự mở Server ở cuối file hướng dẫn.
 
 <!-- servers -->
-## Bắt đầu với Máy chủ
+## Cách chơi qua Server
 
-1. Mở launcher, chọn **Máy chủ**, rồi chọn máy có sẵn trong gói. Chờ trạng thái máy hoạt động.
-2. Chưa có tài khoản? Bấm **Tạo tài khoản** và giữ mã khôi phục ở nơi an toàn. Tài khoản chỉ dùng cho máy đã chọn.
-3. Bấm **CHƠI**, rồi đăng nhập tại màn hình trong game.
-4. Muốn lấy bản mới? Nếu gói có liên kết, bấm **Tải bản mới** để mở thư mục Google Drive và tải gói đầy đủ.
-
-**Sắp có — S1:** Dán mã mời trong mục **Thêm máy chủ** để lưu máy. S1 sẽ có hướng dẫn tự dựng máy chủ trên Windows và Linux.
+1. Chọn tab **Server**. Nếu Admin gửi mã S1, dán vào **Mã mời Server** và bấm **Thêm Server** hoặc Enter. Launcher lưu Server và chọn luôn để bạn kết nối.
+2. Khi Server sẵn sàng, bấm **Tạo tài khoản** nếu bạn chưa có. Lưu mã khôi phục ra file .txt hoặc sao chép rồi cất ở nơi an toàn. Launcher chỉ hiện mã một lần.
+3. Bấm **CHƠI**, rồi đăng nhập trong game. Khi cần dừng, bấm **Dừng game**.
+4. Bấm **Xóa** bên cạnh một Server đã thêm để bỏ Server khỏi danh sách. Tài khoản vẫn do Server lưu.
+5. Nếu gói có nút **Tải bản mới**, bấm để mở Google Drive và tải gói đầy đủ.
 
 <!-- friends -->
-## Bắt đầu chơi với bạn bè
+## Cách dùng Phòng riêng
 
-1. Mở launcher, chọn **Chơi với bạn bè** và nhập **Tên nhân vật**. Launcher nhớ tên này cho lần sau.
-2. Người tạo bấm **Tạo phòng**. Khi mã xuất hiện, bấm **Sao chép** và gửi mã riêng cho bạn bè. Game của người tạo tự mở.
-3. Người vào dán mã và bấm **Vào phòng**, hoặc chọn phòng trong danh sách **Tìm phòng LAN**. Giữ launcher mở trong lúc chơi.
-4. Ở màn hình đăng nhập của game, chọn **Chơi thử 1P** (hoặc **2P** nếu 2 người chơi chung một máy; người thứ hai tự thêm hậu tố `_2P`). Game dùng tên đã nhập trong launcher; bạn không cần điền tài khoản hay mật khẩu. Vào sảnh, một người tạo phòng đấu và người còn lại vào phòng đó.
-5. Nếu launcher báo khác phiên bản, tải cùng gói với chủ phòng bằng **Tải bản mới** (nếu gói có liên kết). Khi chủ phòng thoát game hoặc launcher, mọi người nhận thông báo phòng đã đóng.
+1. Chọn **Phòng riêng** và nhập **Tên nhân vật**.
+2. Host bấm **Mở phòng riêng**. Khi thấy mã O1, bấm **Sao chép mã** rồi gửi riêng cho bạn bè. Launcher tự mở game.
+3. Bạn bè dán mã và bấm **Vào phòng** hoặc Enter. Nếu chung mạng LAN, chọn dòng có tên Host trong danh sách **Phòng trong mạng LAN**. Launcher tự quét khi mở tab; bấm **Quét lại** nếu Host mới mở phòng.
+4. Trong game, bấm **Chơi thử 1P**. Không cần nhập tài khoản. Phòng riêng chưa chơi được 2P chung máy. Vào sảnh rồi tạo bàn đấu để bạn bè vào chung.
+5. Giữ Launcher mở trong lúc chơi. Khi Host bấm **Dừng game / Đóng phòng** hoặc thoát Launcher, cả phòng sẽ ngắt kết nối.
 
-![Launcher tạo phòng](o1-create-room.png)
+![Launcher mở phòng riêng](o1-create-room.png)
 
-![Launcher vào phòng bằng mã](o1-join-code.png)
+![Vào phòng bằng mã](o1-join-code.png)
 
-![Launcher chọn phòng LAN](o1-join-lan.png)
+![Chọn Host từ danh sách phòng LAN](o1-join-lan.png)
 
-Khi chơi khác mạng, cần gói có dịch vụ tra mã đang hoạt động. Nếu không tìm thấy phòng, kiểm tra mã và hỏi chủ phòng xem game còn mở không.
+Khi chơi khác mạng, cần gói có dịch vụ tra mã đang hoạt động. Nếu không tìm thấy phòng, kiểm tra mã và hỏi Host xem phòng còn mở không.
 
 <!-- connection -->
-## Không kết nối được
+## Lỗi kết nối?
 
-- Chọn đúng máy trong gói, kiểm tra mạng và bấm **Thử lại**. Nếu vẫn lỗi, hỏi người quản lý máy xem dịch vụ có đang chạy không.
-- Mở game qua launcher để đường kết nối được khởi động đúng.
+- Kiểm tra mạng và chọn đúng Server, sau đó bấm **Thử lại**. Nếu vẫn lỗi, hỏi Admin xem Server còn mở không.
+- Luôn mở game bằng **LANBoom.exe**. Bấm **?** để xem hướng dẫn ngay trong Launcher.
 
 <!-- version -->
-## Khác phiên bản hoặc lỗi tệp
+## Sai phiên bản hoặc lỗi file
 
-- Hỏi chủ máy đang dùng bản nào. Nếu có nút **Tải bản mới**, mở link và tải gói đầy đủ đúng bản. Launcher không tự cập nhật.
-- Nếu launcher báo lỗi tệp, mở **Cài đặt → Kiểm tra & sửa tệp** rồi thử lại.
+- Nếu Launcher báo khác phiên bản, tải đúng gói mà Admin hoặc Host đang dùng. Launcher không tự cập nhật.
+- Nếu báo lỗi file game, mở **Cài đặt → Kiểm tra & sửa file** rồi thử lại.
 
 <!-- firewall -->
-## Tường lửa Windows
+## Cấp quyền Windows Firewall
 
-- Nếu Windows chặn kết nối, kiểm tra mục **Cho phép ứng dụng qua tường lửa**. Chỉ cho phép launcher và các chương trình từ gói mà bạn tin cậy, trên loại mạng phù hợp.
-- Không tắt toàn bộ tường lửa. Hỏi người quản lý máy nếu vẫn không chơi được.
+Lần đầu mở phòng riêng, Windows có thể hỏi quyền để bạn bè cùng mạng LAN tìm được phòng. Chọn **Có** nếu bạn muốn cấp quyền. Nếu đã bỏ qua, mở **Cài đặt → Cấp quyền Windows Firewall** để thử lại. Giữ Windows Firewall bật.
 
 <!-- Standalone guide appendix; the launcher embeds the sections above. -->
 
@@ -83,7 +84,7 @@ Server S1 lưu tài khoản và kết quả trên máy bạn, nên máy cần b�
 
 1. Giải nén cả gói server Windows vào một thư mục. Mở **BoomServer.exe**.
 2. Đặt **Tên Server**, bấm **Chạy**. Ô thông báo hiện từng bước chuẩn bị; chờ đèn trạng thái chuyển xanh và dòng **Đang chạy**.
-3. Bấm **Sao chép** cạnh **Mã mời S1** (nút đổi thành **Đã chép ✓**) rồi gửi mã cho người chơi. Người chơi dùng **Máy chủ → Thêm máy chủ** khi bản launcher hỗ trợ S1.
+3. Bấm **Sao chép** cạnh **Mã mời S1** (nút đổi thành **Đã chép ✓**) rồi gửi mã cho người chơi. Người chơi dùng **Server → Thêm Server** trong LANBoom.
 4. Đóng cửa sổ thì Server vẫn chạy nền ở khay hệ thống. Bấm biểu tượng BoomServer để mở lại; chuột phải để **Sao chép mã mời** hoặc **Dừng & Thoát**. Bấm **Dừng** trước khi tắt máy. **Sao lưu** tạo bản sao dữ liệu và hiện tên File cùng giờ sao lưu. **Cài đặt** có chọn ngôn ngữ (Tiếng Việt / English / 한국어), thư mục nhận bản sao lưu, **Mở thư mục dữ liệu** và **Tạo mã mời mới** (mã cũ hết hiệu lực, người đang chơi bị ngắt). Khi có lỗi, nội dung đầy đủ hiện ở ô thông báo để đọc hoặc sao chép; bấm **Mở log** để xem Log.
 
 Khi Windows Firewall hỏi quyền kết nối trực tiếp, bạn có thể cho phép trên mạng **Private**. Nếu từ chối hoặc router không mở được Port, BoomServer vẫn chạy qua relay. Nếu người chơi chưa vào được ngay, chờ dòng trạng thái báo **Đã kết nối relay** rồi thử lại.

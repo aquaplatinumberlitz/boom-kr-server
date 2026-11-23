@@ -43,6 +43,11 @@ pub(crate) struct Config {
     pub friends_directory: Vec<String>,
 }
 impl Config {
+    #[cfg(windows)]
+    pub fn companion(&self) -> &Path {
+        &self.companion
+    }
+
     pub fn route(&self) -> Option<crate::servers::Route> {
         Some(crate::servers::Route {
             account: self.server?,
@@ -67,10 +72,13 @@ impl Config {
     }
 
     pub fn load() -> io::Result<Self> {
-        let path = std::env::args_os()
-            .nth(1)
-            .map(PathBuf::from)
-            .unwrap_or(std::env::current_exe()?.with_file_name("launcher.json"));
+        let path = if let Some(path) = std::env::args_os().nth(1) {
+            PathBuf::from(path)
+        } else {
+            let beside = std::env::current_exe()?.with_file_name("launcher.json");
+            let data = beside.with_file_name("data").join("launcher.json");
+            if data.is_file() { data } else { beside }
+        };
         let path = path.canonicalize()?;
         let root = path
             .parent()
