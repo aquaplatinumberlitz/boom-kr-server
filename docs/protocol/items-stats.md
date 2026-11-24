@@ -231,8 +231,8 @@ Lượt này mở các phần đã đủ bằng chứng như bảng dưới. M�
 |---|---|---|
 | Sensor 152, group 30 | Không có gói riêng. Case luôn trả thành công rồi gửi `127/sub0` chung; `EA8D80` chỉ hiển thị cục bộ. | **Mở** với policy mới. Pickup cộng 6 charge theo ItemAttr `+160`. Mỗi `sub0` hợp lệ tiêu một charge; server không phát gói cho peer. |
 | Shield 151, group 29 | `127/sub5` chỉ có prefix 14 byte, peer nhận `170/sub5` sáu byte; sau đó là `sub0`. | **Mở** với policy mới. Pickup cộng 2 charge. Mỗi `sub5` cần một charge rồi mới relay; `sub0` tiêu bộ đếm riêng. |
-| RemoteBomb 150 và RemoteBombG 176, group 28 | Đặt bom bằng `118` cờ `0x04` (`E2C0E0`); kích nổ bằng `122` reason 2 với `delay = max(0, 200 − 2 × latency)`. | **Chỉ codec.** `remote_detonation122` đòi đúng 17 byte, reason 2 và delay tối đa 200. Floor vẫn bị từ chối ở mọi policy. |
-| Drill 149 và DrillRPG 258, group 27 | `127/sub3` mang blob `[u32 box_id, hàng, cột, hướng]`; peer đọc blob ở `170/sub3`. | **Giữ từ chối.** Codec từ `#624` vẫn còn, chưa có handler. |
+| RemoteBomb 150 và RemoteBombG 176, group 28 | Đặt bom bằng `118` cờ `0x04` tại byte offset 21 (`v[12]`, `0xE2C0E0 -> 0xE2DF80`); kích nổ bằng `122` reason 2 với `delay = max(0, 200 − 2 × latency)`. | **Mở ở policy mới (`#f1b-remote-drill-rust`).** `RemoteBomb` 150 nhận `3` charge (`+160`), `118` đặt không tự lên hẹn `158`, `122` reason 2 hẹn `158` sau `delay`. `RemoteBombG 176` giữ từ chối. |
+| Drill 149 và DrillRPG 258, group 27 | `127/sub3` mang blob `[u32 box_id, hàng, cột, hướng]`; peer đọc blob ở `170/sub3`. | **Mở ở policy mới (`#f1b-remote-drill-rust`).** `Drill` 149 nhận `3` charge (`+160`), `127/sub3` xóa thùng ở `terrain.rs::clear_box` (không kích dây chuyền `exploding_boxes`) và relay `170/sub3`. `DrillRPG 258` giữ từ chối. |
 | Các biến thể G, C, SP, FD, Winning, PCRoom, E, L và Plus của Sensor và Shield; AutoShield 183/195 (group 53) | Cùng case với hàng gốc, hoặc là case khác. | **Giữ từ chối.** Các hàng này không có tham chiếu floor F1. Group 53 vào case `1191121` riêng. |
 
 Policy mới là `report_derived_f1b_remote_sensor`, đặt qua `fixed_room.item_policy`. Policy này bao trọn
@@ -255,6 +255,25 @@ server vẫn giữ thùng đó. Cần một hợp đồng với `terrain.rs` tr�
 `[30000, 5000]` và Shield `[2000, 1000]`. Số charge lấy từ `+160` và guard tick của `sub0` là lựa chọn emulator. Phép đo
 tối thiểu là chạy Wine hai client trên floor có Sensor và Shield. Phép đo cần ghi byte `sub0`/`sub5`, HUD charge, hiển thị
 khiên trên peer và việc giữ phiên sau khi hết charge.
+
+<a id="f1b-remote-drill-rust"></a>
+### F1-b: RemoteBomb (`118`/`122`) và Drill (`127/sub3` → `170/sub3`) trong Rust
+
+[Metadata, test và giới hạn](../evidence/rust-service/f1b-remote-drill-rust.json). Policy opt-in mới
+`report_derived_f1b_remote_drill` là tập cha của `report_derived_f1b_remote_sensor` (bao gồm toàn bộ `F1-b` aux/sensor
+nhưng không mở xe `F1-d`). Nguồn: `kr_static + emu_choice`, **chưa đo Wine hai client**.
+
+- **Cờ `RemoteBomb` ở `C→S 118` (`kr_static/confirmed`):** `0xB4BE10 → 0xE2C0E0(..., a13=4) → 0xE2DF80`
+  (`CGameMsgCache` vtable `+32`) ghi `v5[64] = a13 = 0x04` thành trường thứ 13 (`v[12]`, `u8` ở byte offset 21 của
+  body 22 byte `C→S 118`; bom thường `0xB76730` ghi `0`).
+- **Luồng `RemoteBomb` (kind `150`, `+160 = 3`, `emu_choice`):** Nhặt `124 → 165` cấp `3` charge. Khi `f1b_remote_drill`
+  bật, `118` với `v[12] == 4` trừ 1 action charge và chỉ phát `159` (không tự lên hẹn `158` 6000ms); `127/sub0` tiêu
+  bộ đếm inventory; `122` reason `2` (`remote_detonation122`, delay `0..=200ms`) xác thực bom remote đang sống của
+  đúng owner/slot/cell (`trigger_remote_detonation`) rồi mới lên hẹn `158` sau `report.delay` cho toàn bộ peer với
+  `Guard::Bomb` và `commit_blast`. Phản hồi riêng khác ngoài `158` của server gốc (nếu có) vẫn `unknown`.
+- **Luồng `Drill` (kind `149`, `+160 = 3`, `emu_choice`):** Nhặt `124 → 165` cấp `3` charge. `127/sub3` kiểm `dir <= 3`,
+  action charge và gọi `terrain.rs::clear_box` (chỉ xóa thùng thật `kinds == 2`, ghi nhận `clearance` cho `142` và không
+  kích dây chuyền `exploding_boxes`) trước khi relay `170/sub3`; nếu ô không phải thùng thì từ chối không trừ charge.
 
 <a id="f1d-vehicles"></a>
 ### F1-d: Đối chiếu phương tiện cưỡi và biến hình

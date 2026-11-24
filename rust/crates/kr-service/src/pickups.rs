@@ -2,8 +2,8 @@
 //! List2 stays unavailable. Extended counts are per round; no account rewards.
 use crate::room::Membership;
 use kr_wire::kr00967::{
-    BANANA1_KIND, BANANA8_KIND, BOND_KIND, DART_KIND, ItemUseKind, PIN_KIND, SCANNER_KIND,
-    SENSOR_KIND, SHIELD_KIND, SPRING_KIND, TRAP_KIND,
+    BANANA1_KIND, BANANA8_KIND, BOND_KIND, DART_KIND, DRILL_KIND, ItemUseKind, PIN_KIND,
+    REMOTE_BOMB_KIND, SCANNER_KIND, SENSOR_KIND, SHIELD_KIND, SPRING_KIND, TRAP_KIND,
 };
 #[cfg(test)]
 use kr_wire::write_uint;
@@ -31,6 +31,8 @@ pub(crate) enum Policy {
     ReportDerivedF1bAux,
     /// F1-b aux plus o8 static Sensor 152 and charged Shield 151 (emu_choice, no Wine run).
     ReportDerivedF1bRemoteSensor,
+    /// F1-b remote-sensor plus RemoteBomb 150 (118 flag 0x04 / 122 reason 2) and Drill 149.
+    ReportDerivedF1bRemoteDrill,
     /// F1-b plus p97b visible vehicle pickups and dismount reports (emu_choice).
     ReportDerivedF1dVehicles,
     /// F1-d vehicles plus static-derived 22 extra Ship/* rows (45..=66, 331, emu_choice).
@@ -48,6 +50,7 @@ impl Policy {
                 || (self.f1b_extended() && f1b_pickup_amount(kind).is_some())
                 || (self.f1b_aux() && f1b_aux_pickup_amount(kind).is_some())
                 || (self.f1b_remote_sensor() && f1b_remote_sensor_pickup_amount(kind).is_some())
+                || (self.f1b_remote_drill() && f1b_remote_drill_pickup_amount(kind).is_some())
                 || (self.f1d_vehicles() && is_vehicle_kind(kind))
                 || (self.f1d_all_ships() && is_extra_ship_kind(kind)))
     }
@@ -64,7 +67,10 @@ impl Policy {
         self == Self::ReportDerivedF1bAux || self.f1b_remote_sensor()
     }
     pub(crate) fn f1b_remote_sensor(self) -> bool {
-        self == Self::ReportDerivedF1bRemoteSensor
+        self == Self::ReportDerivedF1bRemoteSensor || self.f1b_remote_drill()
+    }
+    pub(crate) fn f1b_remote_drill(self) -> bool {
+        self == Self::ReportDerivedF1bRemoteDrill
     }
     /// Which decoded 127/sub0 kinds this policy charges against round inventory.
     /// Needle stays with the life-action path; every other kind needs its own opt-in.
@@ -76,6 +82,7 @@ impl Policy {
                 self.f1b_aux()
             }
             Shield | Sensor => self.f1b_remote_sensor(),
+            Drill | RemoteBomb => self.f1b_remote_drill(),
             Needle => false,
         }
     }
@@ -128,6 +135,14 @@ pub(crate) fn f1b_remote_sensor_pickup_amount(kind: u16) -> Option<u16> {
     Some(match kind {
         SHIELD_KIND => 2,
         SENSOR_KIND => 6,
+        _ => return None,
+    })
+}
+
+/// Group 27/28 Drill 149 & RemoteBomb 150 rows; amount is ItemAttr `+160` (`3`).
+pub(crate) fn f1b_remote_drill_pickup_amount(kind: u16) -> Option<u16> {
+    Some(match kind {
+        DRILL_KIND | REMOTE_BOMB_KIND => 3,
         _ => return None,
     })
 }
@@ -205,6 +220,17 @@ impl Catalog {
         {
             return Err(io::Error::other(
                 "Sensor/Shield floor requires F1-b remote-sensor opt-in",
+            ));
+        }
+        if !policy.f1b_remote_drill()
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| f1b_remote_drill_pickup_amount(item.kind).is_some())
+        {
+            return Err(io::Error::other(
+                "RemoteBomb/Drill floor requires F1-b remote-drill opt-in",
             ));
         }
         if !policy.f1d_vehicles() && self.floor.values().any(|item| is_vehicle_kind(item.kind)) {
@@ -289,6 +315,7 @@ impl Catalog {
                         || f1b_pickup_amount(kind).is_some()
                         || f1b_aux_pickup_amount(kind).is_some()
                         || f1b_remote_sensor_pickup_amount(kind).is_some()
+                        || f1b_remote_drill_pickup_amount(kind).is_some()
                         || (group == 0 && is_any_vehicle_kind(kind)))
                     || !indices.insert(index)
                     || indices.len() > 64
@@ -484,6 +511,13 @@ impl Round {
         }
         credit.count -= 1;
         Ok(())
+    }
+    pub(crate) fn has_action_charge(&self, round: u64, member: Membership, kind: u16) -> bool {
+        self.generation == Some(round)
+            && self
+                .action_charges
+                .get(&(member, kind))
+                .is_some_and(|&left| left > 0)
     }
     pub(crate) fn take_action_charge(&mut self, round: u64, member: Membership, kind: u16) -> bool {
         if self.generation != Some(round) {

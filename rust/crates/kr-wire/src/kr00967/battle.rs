@@ -231,6 +231,10 @@ pub enum ItemUseKind {
     Needle = 145,
     Scanner = 146,
     Spring = 148,
+    /// Group 27 Ctrl case `119108B -> B4BB40` (`127/sub3` + `127/sub0`).
+    Drill = 149,
+    /// Group 28 Ctrl case `11910CF -> B4BE10` (`118` flag `0x04` + `127/sub0`).
+    RemoteBomb = 150,
     /// Group 29 Ctrl case `11910F8`; shares the 127/sub0 writer (o8 `shield_g29`).
     Shield = 151,
     /// Group 30 Ctrl case `119114A`; sub0 is its only report (o8 `sensor_g30`).
@@ -254,8 +258,8 @@ pub const BANANA1_KIND: u16 = ItemUseKind::Banana1 as u16;
 pub const BANANA8_KIND: u16 = ItemUseKind::Banana8 as u16;
 pub const SHIELD_KIND: u16 = ItemUseKind::Shield as u16;
 pub const SENSOR_KIND: u16 = ItemUseKind::Sensor as u16;
-/// Group 28 RemoteBomb row. No item-use variant: its 118 flag byte offset is unpinned.
-pub const REMOTE_BOMB_KIND: u16 = 150;
+pub const DRILL_KIND: u16 = ItemUseKind::Drill as u16;
+pub const REMOTE_BOMB_KIND: u16 = ItemUseKind::RemoteBomb as u16;
 
 pub const SPRING_SUBTYPE: u8 = 2;
 pub const DRILL_SUBTYPE: u8 = 3;
@@ -289,6 +293,8 @@ pub fn item_use127(body: &[u8]) -> io::Result<ItemUse127> {
         145 => ItemUseKind::Needle,
         SCANNER_KIND => ItemUseKind::Scanner,
         SPRING_KIND => ItemUseKind::Spring,
+        DRILL_KIND => ItemUseKind::Drill,
+        REMOTE_BOMB_KIND => ItemUseKind::RemoteBomb,
         SHIELD_KIND => ItemUseKind::Shield,
         SENSOR_KIND => ItemUseKind::Sensor,
         BOND_KIND => ItemUseKind::Bond,

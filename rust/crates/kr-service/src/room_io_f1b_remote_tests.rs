@@ -287,19 +287,14 @@ fn sensor_and_shield_floor_need_the_new_opt_in_and_other_rows_stay_rejected() {
     assert!(!remote.allows(40));
     assert!(!remote.charges_item_use(wire::ItemUseKind::Needle));
 
-    // RemoteBomb/G, Drill/RPG, Sensor and Shield variants and the group 53 AutoShield
-    // have no opened contract: the measured floor parser still refuses them.
-    for kind in [
-        wire::REMOTE_BOMB_KIND,
-        176,
-        149,
-        258,
-        174,
-        188,
-        186,
-        183,
-        195,
-    ] {
+    // Variants and the group 53 AutoShield have no opened contract: the measured floor
+    // parser still refuses them; RemoteBomb 150 / Drill 149 need F1-b remote-drill opt-in.
+    for kind in [wire::REMOTE_BOMB_KIND, wire::DRILL_KIND] {
+        let cat = pickups::Catalog::from_floor(&floor(&[kind])).unwrap();
+        assert!(cat.validate_stat_policy(remote).is_err());
+        assert!(!remote.allows(kind));
+    }
+    for kind in [176, 258, 174, 188, 186, 183, 195] {
         assert!(pickups::Catalog::from_floor(&floor(&[kind])).is_err());
         assert!(!remote.allows(kind));
     }
@@ -342,8 +337,16 @@ fn remote_detonation122_and_item_use_codec_bounds() {
             .kind,
         wire::ItemUseKind::Shield
     );
-    // RemoteBomb, Drill and variant rows have no item-use variant.
-    for kind in [wire::REMOTE_BOMB_KIND, 149, 174, 186] {
+    // RemoteBomb/Drill now decode under sub0 (charged only under report_derived_f1b_remote_drill);
+    // variant rows remain rejected.
+    for (kind, expected) in [
+        (wire::REMOTE_BOMB_KIND, wire::ItemUseKind::RemoteBomb),
+        (wire::DRILL_KIND, wire::ItemUseKind::Drill),
+    ] {
+        let parsed = wire::item_use127(&item_use_sub0(0, kind, 1)).unwrap();
+        assert_eq!(parsed.kind, expected);
+    }
+    for kind in [174, 186] {
         assert!(wire::item_use127(&item_use_sub0(0, kind, 1)).is_err());
     }
     for len in [0, 13, 21, 23] {
