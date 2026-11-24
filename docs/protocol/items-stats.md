@@ -107,11 +107,52 @@ của actor đang chạy hoặc lớp con vẫn cần kiểm native.
 | ItemBond: 224 ↔ 191. Group 11. | `0; 3; [1,0,0,1,0]`. | Nhánh dùng `1190D4F` gọi slot `+0x08` (đích gốc `B4C1F0`) với `(1,false,false,true,0)`: tail đầu là selector thô, ba tail kế đổi thành bool, đối số cuối là hằng 0. | Dùng Ctrl tại một ô trống, theo dõi ô và cho B đi qua; lấy lượt B qua cùng ô không dùng item làm đối chứng. Chụp đối số, số lượng, thay đổi trên ô/actor và frame nếu có. Nghĩa của cờ, điều kiện hợp lệ, vòng đời và hiệu ứng lên B còn chưa rõ. |
 | ItemTrap: 225 ↔ 192. Group 11. | `0; 2; [2,1,1,0,0]`. | Cùng nhánh `1190D4F` và slot `+0x08`, nhưng đối số là `(2,true,true,false,0)`. Dùng chung slot không chứng minh dùng chung hiệu ứng. | Dùng Ctrl với cùng ô và tuyến đi của B như Bond, lần này với kind 225. So thời điểm đặt, B bước vào ô và rời ô; ghi số lượng, trạng thái trên hai client và frame nếu có. Điều kiện kích hoạt, hiệu ứng, thời hạn và quyền áp dụng còn chưa rõ. |
 
-Cho mỗi ca, dùng hai client KR 00967 cô lập và một item nền trong fixture đối chứng. Ghi claim
-`124` thực và chỉ gửi `165` khớp claim nếu có, rồi kiểm nhánh tiêu thụ trên client sau xác nhận.
-Đo inventory hoặc hiệu ứng trước/sau, một lần Ctrl khi còn item và đối chứng khi không có item với
-các loại chủ động; kiểm lại đầu vòng sau. Chưa chạy native cho năm nhóm, nên không suy wire sau
-pickup, số lần dùng, hiệu ứng gameplay hay authority server từ bảng và địa chỉ tĩnh.
+**Native p93 — `kr_runtime`, xác nhận một phần.** Chạy hai lượt, mỗi lượt có hai bản copy client KR
+00967 trong Wine `10.0-20260425 (CachyOS)`. SHA-256 của `CA.exe` chẩn đoán A/B là
+`5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09`, cùng bản CP394.
+Fixture cục bộ (`emu_choice`) dùng binary Rust riêng từ `ba349d8` và floor `S2C582` đặt trên ô hợp lệ.
+Nó mở các kind thử cho bước kiểm claim theo round key, slot, tọa độ, index và kind hiện có. Các report
+ngoài tập life đã biết chỉ được quan sát. Không sửa pack exporter hay mở kind mới cho server chuẩn.
+
+- Lượt 1 hai client vào phòng nhưng còn cùng đội. Sau Start, client hiện hộp thoại và helper nhập liệu dừng;
+  không có `S2C582`, `C2S124` hoặc `S2C165`. Lượt 2 chọn nhân vật và đội riêng thành công, chạy Forest24
+  rồi CAhero119. Có 14 claim hợp lệ (gồm hai pickup Fire đối chứng); tất cả 27 confirm nhìn thấy đều khớp
+  claim. Người nhặt nhận confirm cho cả 14 claim. Peer nhận 13; lúc B nhặt Scanner, phiên A đã ngắt.
+- **Lucci 67–72/77 — `confirmed` cho pickup.** A đi qua bảy ô Forest24, phát `124` và cả hai client nhận
+  `165` cho cả bảy kind; ảnh cho thấy các vật phẩm rời sàn. Trong các mẫu trước pickup, sau hai đồng đầu,
+  sau cả tuyến và đầu ván kế, tám giá trị secure tại context Lucci `[0x19D8A94]+0x11C+12*i` đều bằng 0
+  trên A và B. Không bắt trực tiếp đối số hoặc lần gọi `B4A230/13E4950`; mẫu rời rạc này chưa xác định
+  số Lucci cộng, giá trị ngẫu nhiên của 77, hoặc quyền cộng tiền. Kind 77 chỉ được nhặt một lần.
+- **Dart 143 — `confirmed` cho pickup.** A phát `124`, hai client nhận `165`. HUD A hiện x03 và trường
+  secure chọn item của actor (`+0x1C4C`) đọc được 143 trên hai góc nhìn. Sau hai input `VK_CONTROL`,
+  HUD A vẫn x03; không thấy `127` hoặc `170` trong cửa sổ ngay sau input. Một lần quay ra khoảng trống;
+  lần thử hướng về B không đặt hai actor cùng trục. Lượt này không kiểm chứng được input đã tới nhánh
+  dùng Dart, va chạm hoặc hiệu ứng lên B.
+- **Bond 224 và Trap 225 — `confirmed` cho pickup.** B phát `124` cho hai ô Forest24
+  `(row,col)=(6,13)/(6,11)`, hai client nhận `165`. HUD B hiện Bond x03 rồi Trap x02.
+  Các lần gửi `VK_CONTROL` sau pickup không đổi số trên HUD, không có `127` hoặc `170` trong
+  cửa sổ input, và chưa quan sát được vật đặt. Tuyến di chuyển đã đi qua các ô pickup, chưa có ca
+  B đi qua ô đã đặt và ca đối chứng cùng ô. Bên sử dụng, hiệu ứng lên người đi qua và vòng đời còn
+  `unknown`. Đầu ván CAhero119, HUD Ctrl trống và hai actor đọc được item đang chọn là `-1`
+  trên cả hai góc nhìn; đây là reset của item đang chọn qua hai map đã đo.
+- **Scanner 146 — `confirmed` cho pickup và report tiêu hao.** A nhặt ở `(8,0)`, B ở `(10,1)`;
+  HUD người nhặt từ x01 sang trống sau `Control_L`. Fixture đặt Fire ẩn ở `(9,2)`; A thử phía lối
+  không có item ẩn liền kề, B thử từ lối phía dưới thùng có Fire. Trong khoảng 25 ms sau mỗi input,
+  client phát `C2S127/sub0` dài 22 byte. Theo độ rộng `[1,1,2,2,4,4,1,2,1,4]`, A gửi
+  `[0,0,0,359,8101,2,1,146,0,0]`, B gửi `[0,1,52,439,8145,2,1,146,0,0]`. Đối chứng
+  `Control_L` khi HUD trống không phát sub0 trong cửa sổ đo. Guard life hiện chỉ nhận đuôi sub0
+  của Kim kind 145, nên đóng lần lượt hai phiên Scanner. Không có `S2C170/sub0`; `170/sub19`
+  tới B sau report A là thông báo loại A khỏi trận, không phải confirm Scanner. Ca so sánh hiển
+  thị bị gián đoạn. Phạm vi, việc hiện item ẩn, đồng bộ và reset sau ván Scanner vẫn chưa xác nhận.
+
+Biên nhận và cách tái lập: `local/runs/f1b-next-items-wine/{receipt,recipe}.json`. Wire channel kiểm
+checksum và thứ tự claim/confirm nằm trong `run-2/wire.jsonl` dưới cùng thư mục; UDP thô và cửa sổ
+input theo đồng hồ monotonic nằm cạnh đó. Không gán UDP chưa giải mã cho hành động Ctrl. Ảnh đối chiếu
+chính trong `run-2/`: `lucci-first-A.png`, `lucci-dart-A.png`, `dart-empty-A.png`,
+`bond-picked-r1-B.png`, `trap-ctrl-r1-B.png`, `r2-arena-A.png` và
+`scanner-{no-hidden-before,no-hidden-after}-A.png`, `scanner-{hidden-before,hidden-after}-B.png`.
+Blocker tiếp theo là cho fixture giữ phiên khi quan sát Scanner sub0, rồi đo lại Dart/Bond/Trap
+với input `Control_L` đã quan sát được trên Scanner và với đối chứng vị trí đã ghim.
 
 <a id="f1d-vehicles"></a>
 ### F1-d: Đối chiếu phương tiện cưỡi và biến hình
