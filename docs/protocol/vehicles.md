@@ -1,9 +1,9 @@
 # F1-d: Phương tiện cưỡi trong KR 00967
 
-Kết quả dưới đây là `kr_static`. [Bằng chứng, hash và cách tái lập](../evidence/item-families/f1d-vehicles-static.json)
+Phần phân tích mã dưới đây là `kr_static`. [Bằng chứng, hash và cách tái lập](../evidence/item-families/f1d-vehicles-static.json)
 ghi VA của ảnh giải nén (RVA = VA − `0x400000`). Xem [kiểm kê gốc F1-d](items-stats.md#f1d-vehicles)
-cho tên, trọng số và đối chiếu VN. Bài này cập nhật các nhánh client trong bảng đó. Chưa có lượt Wine
-F1-d; các kết luận tĩnh chỉ áp dụng cho đường mã ghi rõ bên dưới. Quyền và luật của server gốc vẫn chưa biết.
+cho tên, trọng số và đối chiếu VN. [Đối chứng Wine](#f1d-wine) ghi riêng những hành vi đã thấy khi chạy client.
+Các kết luận tĩnh chỉ áp dụng cho đường mã ghi rõ bên dưới. Quyền và luật của server gốc vẫn chưa biết.
 
 ## Nhặt và thay xe
 
@@ -23,8 +23,8 @@ tại `1192920`. `B4C7A0` kiểm validity, selector cũ và cặp tương thích
 `B4C9D0 → B978B0` nạp lại xe, giữ trạng thái hoạt ảnh nếu cờ truyền vào bật.
 Bản thân `1370670` có cả `3→4`, `5→1` và `6→7`, nhưng ba cặp này không qua
 guard của pickup. Cả năm kind 40–44 đều bị từ chối thay xe ở đây, kể cả Turtle0 gặp Turtle1
-và AirshipBroken gặp Airship. Kết quả này nói về trạng thái xe; việc phát claim hoặc giữ/xóa item
-phải kiểm riêng. Airship còn bật cờ chặn nhặt được mô tả dưới đây.
+và AirshipBroken gặp Airship. Đường `165` quyết định có đổi xe hay không; kết quả claim và việc xóa item
+phải kiểm riêng theo từng ca. Airship còn bật cờ chặn nhặt được mô tả dưới đây.
 
 ## Tám số trong `Ship/*`
 
@@ -87,7 +87,8 @@ tại `B78182` thay vì chuyển sang nhánh nhốt; lớp cơ sở `B53AD0` cũ
 đặt bộ đếm âm và gọi `ship/vf+0x60 → B97EE0` tại `B47D45` để cập nhật hoạt ảnh.
 Tick `B44000` kéo số âm về 0 rồi gọi `B47EB0` tại `B448A2`, tắt Ship qua
 `ship/vf+0x0C(0)` và gỡ hiệu ứng qua `1191DD0`. `B73680` còn kiểm ô chồng thùng bằng
-`E9FCF0/E9FF80` và có thể chỉnh vị trí về ô của actor. Chưa đo khoảng thời gian hay trạng thái ở lần hit kế.
+`E9FCF0/E9FF80` và có thể chỉnh vị trí về ô của actor. Khoảng thời gian đã đo với Owl nằm ở mục Wine;
+chưa đo lần hit kế khi vẫn đang tháo xe.
 
 Các caller đã phân loại gồm handler hit `B77FD0/B53AD0`, `S→C 170/sub16 → E866F0`,
 `170/sub10 → E87A00 → B74B30`, `S→C 732 → E6A820 → B57230`,
@@ -109,23 +110,57 @@ trong hai dispatcher room/game đã kiểm, nên chưa gán nó vai trò reset.
 
 - **Confirmed tĩnh:** `S→C 381` vào `E68BB0`, nhưng `703A80` luôn trả AL=0; đi ra trước
   parser. Ở đường tích cực của `165`, lookup theo slot cho phép callback nhặt tác động actor của
-  peer. Chưa đo peer lên xe từ `165` trên Wine hoặc policy server phát gói.
+  peer. Kết quả trên Wine và giới hạn fixture được ghi bên dưới.
 - **Confirmed tĩnh:** Sau khi đã bắt đầu tháo, `B73680` kiểm `actor/vf+0x1D8 == 0`,
   rồi `B73704/B73710 → B53010` ghi **`C→S 127/sub16`** và `B73719 → 1164D50` gửi.
   Thân writer dùng prefix 14 byte đã ghi ở [127](life-results.md#round-result), không nối blob ở callsite này.
   Receiver **`S→C 170/sub16`** đọc đúng header `u8 subtype, u8 slot, u16 x, u16 y` theo
   getter KR (tọa độ sign-extend), không đọc trường sau header. `E866F0` tra actor, yêu cầu
   Ship valid và counter không âm, đặt tọa độ rồi gọi cùng `vf+0x180`.
-- **Candidate:** Phát `165` cho hai view để lên và chuyển tiếp `127/sub16 → 170/sub16`
-  để tháo. Cần đối chứng để biết peer có tự tháo từ mô phỏng tia hay cần `170` trong route được thử.
-  **Unknown:** Không thấy selector/trạng thái tháo trong consumer pose đã xem (`B4E6F0`);
-  [UDP peer](udp-peer.md#peer-duo) chưa được loại trừ như đường bổ sung. Không gửi lại nguyên body
-  `127` làm `170`. Chưa có bằng chứng parity server, cũng chưa mở hỗ trợ Rust từ record này.
+- **Unknown:** Không thấy selector/trạng thái tháo trong consumer pose đã xem (`B4E6F0`).
+  Đối chứng Wine đo khả năng đồng bộ qua `170` khi [UDP peer](udp-peer.md#peer-duo) vẫn hoạt động.
+  Không gửi lại nguyên body `127` làm `170`.
 
-Đo tiếp bằng hai client cô lập. `p94`: giữ cùng nhân vật, lấy mốc đi bộ rồi đo cả năm kind,
-một lượt thử nhặt chồng trên xe mặt đất; so quan sát với `165` chỉ gửi tới người nhặt và gửi cả hai.
-Dùng một đường đối chứng với ô trống, thùng phá được, ô tĩnh, bom (đổi owner) và Waterway; ghi
-getter tốc độ và vị trí chứ không chỉ ảnh. `p95`: một lần trúng tia khi đi bộ, một lần khi đang cưỡi;
-so chặn/chuyển riêng `170/sub16` trong khi giữ UDP, ghi `127` thật, setter/tick và hai view;
-nếu peer tự tháo, cô lập thêm tác động của UDP hoặc tia. Thử phím riêng khi không có đòn và
-giữ một xe tới hết vòng để đo trước/sau Start kế.
+<a id="f1d-wine"></a>
+## Đối chứng Wine hai client — p97b
+
+**`kr_runtime/confirmed` trong phạm vi KR 00967 chạy Wine với fixture cục bộ.**
+[Payload, trace, ảnh, journal và cách tái lập](../evidence/item-families/f1d-vehicles-wine.json).
+Hai client nhận đủ kind `40..44` trong `list1` của `582`, liền trước `121` của mỗi ván.
+Không có `582` giữa trận. Fixture so khớp claim với item định trước và phát `165` cho cả hai view.
+Hai view quan sát được đủ năm selector; khi Owl chạm Turtle0 trên Cookie07, có `124` và cả hai
+view nhận `165` cho Turtle0, nhưng cả hai vẫn giữ selector Owl. Claim/confirmation thành công
+không đồng nghĩa đã đổi xe.
+
+| Mẫu | Selector | Số tốc độ đọc được | Bước dịch chuyển quan sát được khi đi |
+|---|---:|---:|---:|
+| Đi bộ | — | 5 (tốc độ gốc hiện hành) | 5 px |
+| Airship | 1 | 10 | 10 px |
+| Owl | 2 | 5 | 5 px |
+| Turtle0 | 3 | 2 | 2 px |
+| Turtle1 | 4 | 9 | 9 px |
+| AirshipBroken | 5 | 2 | 2 px |
+
+Các bước trên lấy từ thay đổi tọa độ trong trace của client điều khiển khi giữ phím theo một trục.
+Chúng không quy định nhịp tick hay tốc độ theo thời gian cho mọi máy. Trên Cookie07, Airship đi qua
+ô thùng phá được `(12,5)` khi thùng vẫn còn; AirshipBroken qua thùng cùng loại ở `(12,9)`.
+Turtle1 dừng trước thùng `(10,12)`. Airship và Turtle1 dừng trước các ô tĩnh đã thử; Airship cũng
+dừng trước bom của slot kia ở ô trống `(12,7)`. Trên Tomb12, cả năm xe dừng trước ô Waterway
+trong các route đã thử. Tọa độ ô ghi theo `(hàng, cột)` từ 0.
+
+Khi Owl trúng tia, client điều khiển phát `127/sub16` với body 14 byte. Khoảng cách từ mẫu đầu có
+bộ đếm âm đến lúc Ship không còn valid là khoảng 1,5 giây; selector và số tốc độ có thể vẫn còn trong Ship
+đã mất validity. Giữ `170/sub16` lại thì peer vẫn thấy Owl trong cửa sổ đo dù UDP vẫn đến. Điều này
+cũng xảy ra ở ca gửi tia cho cả hai view. Khi fixture lấy đúng 6 byte đầu của `127/sub16` và gửi
+`170/sub16` cho peer, peer bắt đầu tháo rồi mất validity. Đây là bằng chứng cho phép chuyển tiếp
+trong route đã đo, chưa xác nhận mọi nguồn UDP hoặc cách server gốc xác thực báo cáo.
+
+Các phím Ctrl, Shift, Alt, X, Z, C thử riêng trên Owl khi chưa có tia không làm xe tháo hoặc phát
+`127/sub16`. AirshipBroken vẫn valid ở cuối ván một; client điều khiển đã phát
+`127/sub16` ở pha nhận kết quả `175`, trước `180`. Sau `Start 121` ván hai trên cùng Cookie07,
+cả hai view có Ship invalid, selector, bộ đếm và cờ hiệu ứng về 0; bước đi trở lại 5 px.
+Kết quả, quay về phòng và rời phòng qua UI được đối chiếu với wire và journal.
+
+**Còn mở:** Ca chỉ gửi `165` cho người nhặt, ma trận đầy đủ theo loại xe/thùng, bom của chính
+người lái và lần hit kế ngay khi bộ đếm đang âm. Kết quả phím chỉ áp dụng cho các phím và route đã thử.
+Fixture không thiết lập luật server gốc hoặc mở hỗ trợ phương tiện trong Rust phục vụ.
