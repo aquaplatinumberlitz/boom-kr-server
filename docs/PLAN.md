@@ -8,7 +8,7 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Tra các mục khác theo anchor; gate K0–K7 và RE cũ ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **24/11 (`38e84f3`), PR `#602`–`#605` đã merge (`F1-a` 164/214, `F1-b` `CP394` một phần trên Wine, nền `F4` Schema 7 & launcher WinBoat).**
+theo quyết định của chủ dự án. Nếu đang chạy điều phối nhiều tác vụ cục bộ, kiểm tra thêm sổ trạng thái gitignored `local/runs/codex-orchestrator/STATE.md` (nếu có). Cập nhật gần nhất: **24/11 (`38e84f3`), PR `#602`–`#605` đã merge (`F1-a` 164/214, `F1-b` `CP394` một phần trên Wine, nền `F4` Schema 7 & launcher WinBoat).**
 
 **Đích giai đoạn 1** ([chi tiết](#delivery-target)): **ĐÃ ĐẠT** (dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời, tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1; đóng gói phát hành qua PR `#597`, `#598` và bản vá WinBoat PR `#602`).
 **Đích kế tiếp — Giai đoạn 2 ([F1 Trận thường đầy đủ](#f1-normal-battle)) → F4 → F2 → F5 → F3 → F6:**
