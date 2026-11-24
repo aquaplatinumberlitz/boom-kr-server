@@ -2937,6 +2937,9 @@ impl Session {
                 } else {
                     next.begin(m.key)?
                 };
+                if let Some(terrain) = &next.terrain {
+                    next.bombs.set_grid(terrain.grid_size());
+                }
                 next.pickups = pickups::Round::begin(round, &r.floor_catalog)?;
                 if let Some(profile) = &r.managed_round {
                     for member in next.members.values() {
@@ -3329,11 +3332,22 @@ impl Session {
                 }
             }
             118 => {
-                if r.rules.bomb == rules::BombPolicy::Disabled {
+                let map_allows_bombs = rules::RoomRules::map_allows_bombs(next.terrain.as_ref());
+                if map_allows_bombs && r.rules.bomb == rules::BombPolicy::Disabled {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
                 let request = bombs::Request::parse(body)?;
+                if !map_allows_bombs {
+                    return Ok(Observation {
+                        bomb: Some(BombObservation {
+                            accepted: false,
+                            id: None,
+                            reason: "map_bombs_disabled",
+                        }),
+                        ..Observation::default()
+                    });
+                }
                 let wrong_profile_power = if r.rules.item_policy.enabled() {
                     next.members[&self.identity]
                         .item_stats
@@ -5651,6 +5665,10 @@ mod f1b_extended_integration_tests;
 #[cfg(test)]
 #[path = "room_io_f1b_aux_tests.rs"]
 mod room_io_f1b_aux_tests;
+
+#[cfg(test)]
+#[path = "room_io_f1e_tests.rs"]
+mod room_io_f1e_tests;
 
 #[cfg(test)]
 #[path = "room_io_f1d_vehicles_tests.rs"]

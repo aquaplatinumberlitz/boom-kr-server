@@ -1,0 +1,116 @@
+{
+  "task": "p105-f1e-adapter-r1",
+  "build": "KR 00967",
+  "source": "kr_static + emu_choice",
+  "status": "candidate",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "pack_evidence": "docs/evidence/content/f1e-scripts-extracted.json",
+  "packs": {
+    "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
+    "FxContents.idx": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+    "FxMap.idd": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+    "FxMap.idx": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+    "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767",
+    "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5"
+  },
+  "static": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "image_base": "0x400000",
+    "unpacked_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "source_ida_sha256_before_after": "ab960c78a366845a117d1f3abfbe6e9e0e92fbf3a3ce14fb103794e02a355e27",
+    "ida": "IDA 9.4 headless, chỉ đọc bằng bản sao tạm trong local/; đã xóa 393 MiB.",
+    "aqua": "EA1EE0 / 9B0640 chiếu footprint type 1/2; EBA334 nhận marker không có trigger trong blob. JellyBombBlock00 +32=65792 chứa byte +33=1; B9C760 / B9CC10 → E9EEE0 tạo vụ nổ phụ của thùng. Aqua08 còn có Urchins00 (hit 255 và +32=16).",
+    "retro": "EBA2D0 case 0 nhận time; chỉ có popup ms=0 trong blob. EB48E0 và EB4C10 gọi B64870 (trả 0), nên ground +62=102 và Shower03 +52=101 không bật lớp riêng. EA1EE0 → B9C2F0 tách decorator; Shower03 dùng tia N/S theo BA0E30.",
+    "retro_blocked": "EA1EE0 case 10 → 6D3C00 dựng CGOTilePassableBroken. 6D4070 giảm bộ đếm ở cạnh chặn, 6D3DE0 có đường gỡ vật thể. Không dùng ray_ports tĩnh cho BombProof_*.",
+    "lovelyroom": "EA1EE0 → EB2BD0 (xref chuỗi enablebomb ở EB3087); số 0 đi vào nhánh ghi cờ 0. XML đã trích chứa đúng một option sống; item và lịch Lucci nằm trong comment.",
+    "bigbattle": "EA1EE0 dùng getter kích thước E9F690/E9F6B0 và bước lưới theo chiều rộng. Pack chứa đúng 323 ô và tám spawn phân biệt cho từng map; cả ba không có blob."
+  },
+  "regression": {
+    "baseline": "c8b6ff056583c88e1bba78cda6a5fb0d5c289ae2",
+    "adapter": "f1-a-terrain-r5",
+    "equal_maps": 206,
+    "method": "Nhóm tối đa 16 map theo tên đã sắp xếp; so từng byte profile, rules và tables, và so identity cache. Digest ghép từng dòng tên file:sha256 theo tên trong từng nhóm.",
+    "member_digest_sha256": "92663b1d6e9697a2cc449d5f51782cbd7603cc11f51054aa53e85a517d6ea815"
+  },
+  "counts": {
+    "f1a_nxcl_aqua": [
+      0,
+      1
+    ],
+    "f1e_aqua_marker": [
+      0,
+      5
+    ],
+    "retro_popup": [
+      13,
+      18
+    ],
+    "lovelyroom": [
+      10,
+      10
+    ],
+    "bigbattle": [
+      3,
+      3
+    ]
+  },
+  "counts_order": [
+    "exported",
+    "considered"
+  ],
+  "limits": [
+    "Profile và rules được xác nhận theo pack; chưa nghiệm thu Wine, UDP thật hoặc quyền xử lý của server KR gốc.",
+    "Cổng map_profile.rs vẫn từ chối profile script và lưới 19×17; PR chỉ xác nhận export, terrain và handler tổng hợp. BSBigCamp08 còn có ô hủy bom ngoài giới hạn 15×13 của validator hiện tại.",
+    "Floor BigBattle chỉ xuất item trong vùng 15×13 hiện được bộ đọc 582 hỗ trợ. Drop từ thùng LovelyRoom bị lược vì C→S 118 không đặt được bom."
+  ],
+  "reproduction": [
+    "PYTHONPATH=tools python3 tools/test_f1e_adapter.py --pack-root <thư mục KR 00967>",
+    "python3 tools/kr_f1e_script_audit.py --pack-root <thư mục KR 00967> --check docs/evidence/content/f1e-scripts-extracted.json",
+    "PYTHONPATH=tools python3 -m unittest tools.test_kr_pack_items tools.test_f1_pack_matrix tools.test_kr_f1e_script_audit tools.test_f1e_adapter",
+    "cargo test --manifest-path rust/Cargo.toml --workspace --locked"
+  ],
+  "tests": {"python_cases": 33, "rust_cases": ["map_option_rejects_bomb118_without_allocating_or_dropping_members", "big_battle_rays_clear_edge_boxes_without_wrapping", "ledger_uses_big_battle_bounds_only_for_the_selected_round"]},
+  "maps": {
+    "Aqua01": {"code": 1, "family": "aqua", "result": "blocked", "reason": "Ô ngoài adapter F1-e của Aqua01 (6,1): vật thể/cờ Tile30_Box/JellyBombBlock00"},
+    "Aqua02": {"code": 2, "family": "aqua", "result": "blocked", "reason": "Ô ngoài adapter F1-e của Aqua02 (0,0): vật thể/cờ Tile30_Box/JellyBombBlock00"},
+    "Aqua05": {"code": 5, "family": "aqua", "result": "blocked", "reason": "Ô ngoài adapter F1-e của Aqua05 (2,1): vật thể/cờ Tile30_Box/JellyBombBlock00"},
+    "Aqua06": {"code": 6, "family": "aqua", "result": "blocked", "reason": "Ô ngoài adapter F1-e của Aqua06 (4,1): vật thể/cờ Tile30_Box/JellyBombBlock00"},
+    "Aqua08": {"code": 8, "family": "aqua", "result": "blocked", "reason": "Ô ngoài adapter F1-e của Aqua08 (6,0): vật thể/cờ Tile30_Box/JellyBombBlock00"},
+    "BSBigCamp08": {"code": 81, "family": "bigbattle", "result": "exported", "profile_sha256": "6b2f8c45b8c047b3e92def34b28ae091f80dc98a47b41043b0384f60f0eb3579", "rules_sha256": "a3d0bd8c29ca3b8204d0136bdb832fc20b708a2fbe5299513599c2acb2006dc9"},
+    "BSBigPatrit14": {"code": 82, "family": "bigbattle", "result": "exported", "profile_sha256": "843aa11eca564987121d46eb55be7ed2fd88cffe3573fc411537111fdcd96b5e", "rules_sha256": "cff45b0d48ecff21b18d90333be184bc8147446afc8e2ee793ff875032a21fbc"},
+    "BSBigVillage10": {"code": 83, "family": "bigbattle", "result": "exported", "profile_sha256": "70c2a529a8f83d5e7410635a96bc2bd92e46f4af80c5bdcd994a2fdb3bc1324a", "rules_sha256": "e417fc5c2e6ef95051be3bb7b0e3cb91b50dfab1e182c28ef5ea04f2750544d6"},
+    "LovelyRoom01": {"code": 467, "family": "lovelyroom", "result": "exported", "profile_sha256": "75ff50e5e04b1e16a8f7363325203e362a5680b55ca82a1448c1dca17b076909", "rules_sha256": "fdc690b13ae337fa18c3960a919131cc81bdda37e44ff8639ab4576999eddf05"},
+    "LovelyRoom02": {"code": 468, "family": "lovelyroom", "result": "exported", "profile_sha256": "03457b6f2db0593ba753d2998b9e5ada77f3d9647401d6da8e19616d906cd6f7", "rules_sha256": "fc07f876bbdb94c08e8e61c3046317b63e3c87a6df49f78779cfc4a21224052a"},
+    "LovelyRoom03": {"code": 469, "family": "lovelyroom", "result": "exported", "profile_sha256": "a5a18dc93c79fb00f4a33a184d8533d9490a2122f21a9bf9da10493f4cb258e0", "rules_sha256": "5eca877291fb0f9aa8465cf5800449997524e3e62c23106fdc4ab0a8534754e2"},
+    "LovelyRoom04": {"code": 470, "family": "lovelyroom", "result": "exported", "profile_sha256": "7c72028cfc08bd0fae90e3e9bb73d63e5bf63a64045b87baa37ea93b6180ba60", "rules_sha256": "37897c3f1c67dd389c05cf1f87bc56c5db63ef2e5a70bec0299ad9708544648c"},
+    "LovelyRoom05": {"code": 471, "family": "lovelyroom", "result": "exported", "profile_sha256": "c7b018195d0096795efe66f125fe5af31a5c7818178c840809da1eb46d196ee6", "rules_sha256": "83ee024e7fde2e4b3faac6d8a214ea1c59980dac4b27b03083da1de42a00700f"},
+    "LovelyRoom06": {"code": 472, "family": "lovelyroom", "result": "exported", "profile_sha256": "f2be7ab57c582d22bec85f096258b4a9c874cd85571081d384356a8f8f21e98a", "rules_sha256": "369660405a673a56364c3b3f2f24c0c4428d0d48ca44ca77ca7551f4df24f877"},
+    "LovelyRoom07": {"code": 473, "family": "lovelyroom", "result": "exported", "profile_sha256": "c2f26d8d91e7a2ede1418d8683026c8245304071526f125279cdf3e9329657e3", "rules_sha256": "0071c3b115408aa52f3d31b46f69a2a0f6320ced9b30284ce01e0d64f2cad95f"},
+    "LovelyRoom08": {"code": 474, "family": "lovelyroom", "result": "exported", "profile_sha256": "7c868c4e3a558f7df2e67bce580f76ac5e52c9b963e412d87ca914cad4769744", "rules_sha256": "c613444b1b31156204e7ce1107d388e84d94d128359d7073159b56d95b7bc377"},
+    "LovelyRoom09": {"code": 475, "family": "lovelyroom", "result": "exported", "profile_sha256": "99021f9a085307af9b29d0d7c1d0cc05550f477e0b5e6959249c513d0457ac3d", "rules_sha256": "7f1622ddd0d0a65ea39a9c5336af6203c553a9a2a8cbf6dcc878a9706eadb62e"},
+    "LovelyRoom10": {"code": 476, "family": "lovelyroom", "result": "exported", "profile_sha256": "b10d17e648d3f57023757d28067bdb86c16b03a97cf366187f24c3dc196c8c70", "rules_sha256": "072dbb78917ce42ab1f71d180aae614a40cef5e1afcbc3821a52c685a6dce3af"},
+    "NXCL_Aqua01": {"code": 862, "family": "aqua", "result": "blocked", "reason": "Ô ngoài adapter F1-e của NXCL_Aqua01 (6,1): vật thể/cờ Tile30_Box/JellyBombBlock00"},
+    "RetroCampN01": {"code": 929, "family": "retro_popup", "result": "blocked", "reason": "Ô ngoài adapter F1-e của RetroCampN01 (0,4): vật thể/cờ Tile62_Passable/BombProof_Right01"},
+    "RetroCampN02": {"code": 930, "family": "retro_popup", "result": "blocked", "reason": "Ô ngoài adapter F1-e của RetroCampN02 (0,0): vật thể/cờ Tile62_Passable/BombProof_Right01"},
+    "RetroCampN03": {"code": 931, "family": "retro_popup", "result": "blocked", "reason": "Ô ngoài adapter F1-e của RetroCampN03 (7,0): vật thể/cờ Tile62_Passable/BombProof_Down01"},
+    "RetroCampN04": {"code": 932, "family": "retro_popup", "result": "blocked", "reason": "Ô ngoài adapter F1-e của RetroCampN04 (14,2): vật thể/cờ Tile62_Passable/BombProof_Left01"},
+    "RetroCampN05": {"code": 933, "family": "retro_popup", "result": "blocked", "reason": "Ô ngoài adapter F1-e của RetroCampN05 (11,2): vật thể/cờ Tile62_Passable/BombProof_Down01"},
+    "RetroCampN06": {"code": 934, "family": "retro_popup", "result": "exported", "profile_sha256": "527f616f27608dd635da4178cb3eca05d23d2d30d1471f7038d6e80341b3f842", "rules_sha256": "cfd8fa0a7c5047c7b667d821f9cec0865a19e155de4f51b8181b4a83b6c1e748"},
+    "RetroFactoryN01": {"code": 935, "family": "retro_popup", "result": "exported", "profile_sha256": "bbcddc3f280fbad8ae86ee8096dd152c5dc771acb5d0ac56c8592d4239202975", "rules_sha256": "c32ab49d6fe5c321a822f94aebb862d92f8a43d5837242ce9666f443e5ae1970"},
+    "RetroFactoryN02": {"code": 936, "family": "retro_popup", "result": "exported", "profile_sha256": "11807d820cb54f21cda10c6eedda2868e1e3a7973dbf230055b87139007e80df", "rules_sha256": "e5386d2bbc7817a777e989abba312e7aaf15fa6f4353ed6210f6f0938509b439"},
+    "RetroFactoryN03": {"code": 937, "family": "retro_popup", "result": "exported", "profile_sha256": "db302a5d9cbaf155cdfce002e176f823ef200ae41e4e69883eef197710202e45", "rules_sha256": "f36ebd3428a2832d5b4241bcb20cd9ce5898741f4d647fa220bf10ea05319d4f"},
+    "RetroFactoryN04": {"code": 938, "family": "retro_popup", "result": "exported", "profile_sha256": "8797a6b3bae555fb44033a2bef0ca259104d6173f9aefdaec27b0642ca806e89", "rules_sha256": "87a09d88b0f21ea8a458a7b3bfcf3e5a39e8b08070626d89cef373843e31bf60"},
+    "RetroFactoryN05": {"code": 939, "family": "retro_popup", "result": "exported", "profile_sha256": "b88d1e80c793dab78e9c82efa7718c0db19be7c2296329bfef021f76482ae497", "rules_sha256": "658d405e8a4690c340dd2b0a244c54fe04e217053a3c2cddb91279d09b419652"},
+    "RetroFactoryN06": {"code": 940, "family": "retro_popup", "result": "exported", "profile_sha256": "e7c9cb399995cebcf8272b495cb3b8901a8a943ed0df14680afa6ef65f917900", "rules_sha256": "a2f9d8e26daf082e8ff0385464ffc4ad8bc9c0185cb27d5135c30a4599c938cb"},
+    "RetroPatritN01": {"code": 947, "family": "retro_popup", "result": "exported", "profile_sha256": "8ce96262a3057076c74f506c258ae736e091571e563b14f01bd8b926c287762c", "rules_sha256": "2666835c74ac6c62fee5358df6e02a3888513e6ac16096c4c80c10c543dd82c9"},
+    "RetroPatritN02": {"code": 948, "family": "retro_popup", "result": "exported", "profile_sha256": "e59a91e1b744288f644aebbad444f0052ddfcd4ec889a5d9b199ba578c688933", "rules_sha256": "d7eb71f777be4cd74795e7ce59f4b50ca56d66176f12c67556640fadfdb5da57"},
+    "RetroPatritN03": {"code": 949, "family": "retro_popup", "result": "exported", "profile_sha256": "0017bab65d970790d1fdc57b1e73e7868dff17b8cd9af2de6fd8b12ccdfcc21f", "rules_sha256": "20b21ff633161c32cf545609eb64d9f2a839a92f0ea228bc06cee5034e829967"},
+    "RetroPatritN04": {"code": 950, "family": "retro_popup", "result": "exported", "profile_sha256": "b386181e120573b32b42568d824def68399c8e93df178da1dfb7531396ff37af", "rules_sha256": "76d586daa8a3bd96d4679f08b57510d293567f7a189f46ab16641a8b8b1cce49"},
+    "RetroPatritN05": {"code": 951, "family": "retro_popup", "result": "exported", "profile_sha256": "6cca7377dc982790cb35e7d67de31a55c83316818ac2e9184ec8092572c26a6a", "rules_sha256": "f2888b6e967d9ecb1b2c6131dce4d958bc71c97c6a95e90e2cd0cee23ea5102b"},
+    "RetroPatritN06": {"code": 952, "family": "retro_popup", "result": "exported", "profile_sha256": "a15f4d425425626ae1108edb5581ac01ecb9825267d83b22c1e2603b473816d2", "rules_sha256": "03d165c3f3ca18b12b329d2530adfc60342b5456c27339fd28108eb1fc8ce08b"}
+  }
+}

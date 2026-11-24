@@ -197,6 +197,36 @@ comment đặt `enablebomb=0`. Bộ trích xuất đọc được attr số khô
 `unknown`. Phép trích chỉ xác nhận dữ liệu trong pack, chưa xác nhận client chạy Coloring hoặc lịch nào
 tác động đến cả hai client.
 
+<a id="f1e-adapter-r1"></a>
+#### F1-e Batch 4a: adapter profile và luật phòng
+
+`--f1e-map` xuất profile Batch 4a với cache riêng `f1e-adapter-r1`. Adapter F1-a
+`f1-a-terrain-r5` giữ nguyên 206 profile và rules từng byte. [Ma trận và SHA-256 của
+Batch 4a](../evidence/rust-service/f1e-adapter-r1.json) ghi từng map, baseline và lệnh kiểm.
+
+- **RetroPopup:** `kr_static/confirmed` — blob chỉ có một popup ở `time ms=0`, không có lịch cloud,
+  respawn hoặc ride. Adapter giữ cổng tia N/S của Shower03; nhánh Tower ở `EB4C10` và nền riêng
+  cho word `+62=102` ở `EB48E0` đều bị `B64870` trả 0. Layer thứ ba của RetroPatrit được
+  `EA1EE0 → B9C2F0` đưa vào danh sách decorator. Năm map RetroCamp dùng `BombProof_*` còn bị
+  từ chối: `6D4070` đếm hit theo hướng và `6D3DE0` có đường gỡ vật thể. Mặt nạ tia cố định
+  không biểu diễn được thay đổi này.
+- **Aqua marker:** `kr_static/confirmed` — `EBA2D0` nhận marker `StageClearScript`, nhưng blob
+  của sáu map không chứa object hay trigger. Tất cả vẫn bị từ chối ở lớp tile:
+  `B9C760` đọc byte `+33=1` của `JellyBombBlock00`; khi thùng vỡ, `B9CC10 → E9EEE0`
+  tạo vụ nổ tại ô. Chưa chốt owner, hit và dây chuyền. `Aqua08` còn có `Urchins00` với cờ riêng.
+- **LovelyRoom:** `kr_static/confirmed` — `EA1EE0 → EB2BD0` có nhánh đọc `enablebomb=0`;
+  bảng item và lịch Lucci nằm trong comment. Theo `emu_choice/candidate`, terrain xuất
+  `disable_bombs: true`, Rust trả quan sát từ chối cho C→S 118 đã phân tích hợp lệ và
+  không cấp ID, lịch nổ hay thay đổi tư cách thành viên. Các profile bỏ qua trường này vẫn cho phép bom.
+- **BigBattle:** `kr_static/confirmed` — ba payload là 19×17, tám spawn phân biệt, không script.
+  Theo `emu_choice/candidate`, terrain và sổ bom dùng kích thước đã kiểm (15×13 hoặc 19×17);
+  floor vẫn giới hạn trong cửa sổ 15×13 của bộ đọc item hiện tại.
+
+Đây là phép chiếu và kiểm thử tổng hợp, chưa nghiệm thu client hoặc kết luận quyền xử lý của server
+gốc (`unknown`). Cổng `map_profile.rs` hiện vẫn chặn script và lưới 19×17 trước khi Rust nạp terrain;
+profile mới đã xuất chưa phục vụ được qua cổng nạp này. `BSBigCamp08` còn cần kiểm các ô hủy bom
+theo lưới lớn vì có ô nằm ngoài vùng 15×13.
+
 <a id="f1-pack-floor"></a>
 ### Floor từ pack trong catalog thử F1-a
 

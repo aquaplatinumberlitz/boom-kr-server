@@ -1,5 +1,5 @@
 //! Candidate bounded terrain policy; no native oracle or general KR physics.
-//! Port target: pinned15x13 ExVillage01, CP171/172/174. Config is trusted design.
+//! Supports the pinned 15×13 profiles and the 19×17 BigBattle grid.
 use serde::Deserialize;
 use std::{
     collections::{BTreeMap, BTreeSet, VecDeque},
@@ -22,6 +22,9 @@ pub struct Config {
     /// blocks W/E (Tent cells).
     #[serde(default)]
     ray_ports: Vec<u8>,
+    /// Map-owned placement policy; omitted on existing profiles.
+    #[serde(default)]
+    disable_bombs: bool,
     map_sha256: String,
     seed_sha256: String,
     fixtures: BTreeMap<String, String>,
@@ -50,6 +53,7 @@ pub(crate) struct Terrain {
     ray_ports: Vec<u8>,
     width: u8,
     height: u8,
+    disable_bombs: bool,
     max_power: u8,
     owner_slots: u8,
     pending: BTreeMap<u16, Bomb>,
@@ -60,6 +64,8 @@ pub(crate) struct Terrain {
     generation: u64,
 }
 const ALL_RAY_PORTS: u8 = 0b1111;
+pub(crate) const STANDARD_SIZE: (u8, u8) = (15, 13);
+pub(crate) const BIG_BATTLE_SIZE: (u8, u8) = (19, 17);
 
 fn sha(data: &[u8]) -> String {
     crate::sha256_hex(data)
@@ -95,9 +101,8 @@ impl Config {
         owner_slots: u8,
     ) -> io::Result<Terrain> {
         let error = || io::Error::other("unsupported pinned terrain profile");
-        if self.width != 15
-            || self.height != 13
-            || self.kinds.len() != 195
+        if !matches!((self.width, self.height), STANDARD_SIZE | BIG_BATTLE_SIZE)
+            || self.kinds.len() != usize::from(self.width) * usize::from(self.height)
             || self.kinds.iter().any(|k| *k > 2)
             || !(1..=9).contains(&maximum_power)
             || !(1..=maximum_power).contains(&self.maximum_power)
@@ -156,6 +161,7 @@ impl Config {
             ray_ports,
             width: self.width,
             height: self.height,
+            disable_bombs: self.disable_bombs,
             max_power: self.maximum_power,
             owner_slots,
             pending: BTreeMap::new(),
@@ -166,6 +172,12 @@ impl Config {
     }
 }
 impl Terrain {
+    pub(crate) fn grid_size(&self) -> (u8, u8) {
+        (self.width, self.height)
+    }
+    pub(crate) fn bombs_disabled(&self) -> bool {
+        self.disable_bombs
+    }
     pub fn begin(&mut self, generation: u64) {
         self.generation = generation;
         self.kinds = self.seed.clone();
@@ -390,7 +402,60 @@ pub(crate) mod tests {
             box_hits: Vec::new(),
             ray_barriers: Vec::new(),
             ray_ports: Vec::new(),
+            disable_bombs: false,
         }
+    }
+    #[test]
+    fn big_battle_rays_clear_edge_boxes_without_wrapping() {
+        let mut cfg = config();
+        (cfg.width, cfg.height) = BIG_BATTLE_SIZE;
+        cfg.kinds = vec![0; 323];
+        for cell in [18, 15 * 19, 15 * 19 + 18, 16 * 19 + 17] {
+            cfg.kinds[cell] = 2;
+        }
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        let mut terrain = cfg.validate_measured(b"map", b"start", 9).unwrap();
+        terrain.begin(1);
+        for (row, column) in [(17, 18), (16, 19)] {
+            assert!(
+                terrain
+                    .place(Bomb {
+                        id: 1,
+                        owner: 7,
+                        row,
+                        column,
+                        power: 2,
+                    })
+                    .is_err()
+            );
+        }
+        terrain
+            .place(Bomb {
+                id: 1,
+                owner: 7,
+                row: 16,
+                column: 18,
+                power: 2,
+            })
+            .unwrap();
+        assert_eq!(
+            terrain.blast_committed(1, 1).cleared,
+            BTreeSet::from([(15, 18), (16, 17)])
+        );
+        for (width, height) in [(17, 19), (19, 13), (15, 17), STANDARD_SIZE] {
+            (cfg.width, cfg.height) = (width, height);
+            assert!(cfg.validate_measured(b"map", b"start", 9).is_err());
+        }
+        (cfg.width, cfg.height) = BIG_BATTLE_SIZE;
+        cfg.kinds.pop();
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        assert!(cfg.validate_measured(b"map", b"start", 9).is_err());
+    }
+
+    pub(crate) fn lovely_room_map() -> Terrain {
+        let mut cfg = config();
+        cfg.disable_bombs = true;
+        cfg.validate(b"map", b"start").unwrap()
     }
     pub(crate) fn map() -> Terrain {
         config().validate(b"map", b"start").unwrap()

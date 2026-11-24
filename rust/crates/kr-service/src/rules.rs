@@ -249,6 +249,9 @@ impl RoomRules {
     pub(crate) fn owner_bombs(&self) -> bool {
         self.bomb == BombPolicy::OwnerReports
     }
+    pub(crate) fn map_allows_bombs(terrain: Option<&crate::terrain::Terrain>) -> bool {
+        !terrain.is_some_and(crate::terrain::Terrain::bombs_disabled)
+    }
 }
 
 /// Additional source rosters are for DB-owned managed player rounds only.
