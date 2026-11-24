@@ -1,0 +1,143 @@
+{
+  "schema": "kre.f1e_dynamic_scripts_ida.v1",
+  "source": "kr_static",
+  "binary": "kr-full.exe",
+  "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+  "image_base": "0x400000",
+  "factories": {
+    "map_script_factory": {
+      "status": "confirmed",
+      "va": "0xEBA2D0",
+      "mode_gate": "a4 != 130 || sub_E05060(v8) != 0",
+      "init_vslot": "vt+16",
+      "entries": [
+        {"index": 0, "tag": "time", "class": "CMapScriptSprinkler", "ctor_va": "0xF126E0", "wrapper_va": "0x1013B80", "vtable": "0x1770154"},
+        {"index": 1, "tag": "stageclearscript", "class": "CMapScriptStageClear", "ctor_va": "0xF16BC0", "wrapper_va": "0x1013C00"},
+        {"index": 2, "tag": "rabbitcatchscript", "class": "CMapScriptRabbitCatch"},
+        {"index": 4, "tag": "squarescript", "class": "CMapScriptSquare"},
+        {"index": 5, "tag": "lobbysquarescript", "class": "CMapScriptLobbySquare"},
+        {"index": 6, "tag": "wrigglescript", "class": "CMapScriptWriggle", "ctor_va": "0xF9E7F0", "wrapper_va": "0x1013E00"},
+        {"index": 7, "tag": "generalscript", "class": "CMapScriptGeneral"},
+        {"index": 8, "tag": "rpgscript", "class": "CMapScriptRPG"},
+        {"index": 9, "tag": "larvascript", "class": "CMapScriptLarva", "ctor_va": "0x690FD0"},
+        {"index": 10, "tag": "catchtailscript", "class": "CMapScriptCatchTail", "ctor_va": "0x62A100"},
+        {"index": 11, "tag": "changetile", "class": "CMapScriptChangeTile", "ctor_va": "0x634070", "extra_call": "0x978BA0"},
+        {"index": 12, "tag": "escapemazescript", "class": "CMapScriptEscapeMaze", "ctor_va": "0x6513B0"},
+        {"index": 13, "tag": "bulascript", "class": "CMapScriptBula", "ctor_va": "0x610760"},
+        {"index": 14, "tag": "repairminibotscript", "class": "CMapScriptRepairMinibot", "ctor_va": "0x6ABA20"},
+        {"index": 15, "tag": null, "class": "CMapScriptMagNest", "wrapper_va": "0x10143B0"}
+      ]
+    },
+    "mode_component_factory": {
+      "status": "confirmed",
+      "va": "0xEEF020",
+      "coloring_mode": 36,
+      "coloring_helper_va": "0xEEC850",
+      "coloring_ctor_va": "0x637910",
+      "coloring_class": "CColoringComponent"
+    },
+    "authority_checks": {
+      "status": "confirmed",
+      "host_slot_check_va": "0x1240CF0",
+      "host_slot_mask": 2,
+      "changetile_gate_va": "0xE78070"
+    }
+  },
+  "sc_dispatcher": {
+    "status": "confirmed",
+    "va": "0xE5D3A0",
+    "fallback_order": [
+      "CModeComponent::vt+64 (v21[6941])",
+      "CMapScript*::vt+64 (v21 + 6938)",
+      "sub_D5F5A0"
+    ],
+    "d5f5a0_opcodes": [7, 84, 106, 107, 108, 109, 150, 151, 218, 421, 428],
+    "relevant_cases": [
+      {"wire_opcode": 176, "switch_case": 156, "status": "confirmed", "handler_va": "0xE77D20", "note": "reads u16 script_id, compares *(script+16) via 0xEE7360, calls vt+196"},
+      {"wire_opcode": 178, "switch_case": 158, "status": "confirmed", "handler_va": "0xE77DD0", "note": "spawns bombs via 0xE9E090 from buffered list"},
+      {"wire_opcode": 196, "switch_case": 176, "status": "confirmed", "handler_va": "0xE73760"},
+      {"wire_opcode": 197, "switch_case": 177, "status": "confirmed", "handler_va": "0xE751F0"},
+      {"wire_opcode": 198, "switch_case": 178, "status": "confirmed", "handler_va": "0xE74410"},
+      {"wire_opcode": 199, "switch_case": 179, "status": "confirmed", "handler_va": "0xE72EC0"},
+      {"wire_opcode": 584, "switch_case": 36, "range": ">547 (-548)", "status": "confirmed", "handler_va": "0xE853D0"},
+      {"wire_opcode": null, "switch_case": 38, "range": "v20 subswitch", "status": "candidate", "handler_va": "0xE6A3C0", "calls": ["0x483210", "0xE9E270"]},
+      {"wire_opcode": null, "switch_case": 43, "range": "v20 subswitch", "status": "candidate", "handler_va": "0xE73080"}
+    ]
+  },
+  "families": {
+    "space": {
+      "map_count": 13,
+      "script_class": "CMapScriptChangeTile",
+      "status": "confirmed",
+      "vas": {"ctor": "0x634070", "parser": "0x6341A0", "tick": "0x634B50", "action_exec": "0x633A70", "net_send": "0xE736C0", "writer": "0x483060", "reader": "0x483210", "sc_handler": "0xE6A3C0"},
+      "cs_opcodes": [228],
+      "payload_228": ["4 x string (+0,+24,+48,+72)", "4 x u32 (+96..+108)", "u32 count", "count x (u32, u32)", "u8 (+112)", "u8 (+113)"]
+    },
+    "pangland": {
+      "map_count": 12,
+      "script_class": "CMapScriptSprinkler",
+      "status": "confirmed",
+      "vas": {
+        "ctor": "0xF126E0",
+        "parser": "0xF12810",
+        "subparsers": ["0xF12D90", "0xF12F10", "0xF13850", "0xF141E0", "0xF14890", "0xF14B10", "0xF14C80", "0xF14E20"],
+        "send_148": "0xE733D0",
+        "send_233": "0xE71C20",
+        "bomb_detonate_149": "0xF158C0",
+        "local_popup_action": "0x9EA760"
+      },
+      "cs_opcodes": [148, 149, 233],
+      "sc_opcodes": []
+    },
+    "retro": {
+      "map_count": 30,
+      "families": ["retro_popup", "retro_forest", "retro_village"],
+      "popup_class": "CMapScriptPopUp",
+      "status": "confirmed",
+      "vas": {"action_ctor": "0x9EA760", "popup_exec": "0x9EA850", "popup_bridge": "0xE7BF00", "popup_ctor": "0xB2AF70", "popup_render": "0xB2B140"},
+      "cs_opcodes": [],
+      "unknown_xml_literals": ["cloudappearloop", "retroscript", "rideinfo"]
+    },
+    "aqua_stageclear": {
+      "map_count": 9,
+      "active_script_maps": 4,
+      "marker_only_maps": 5,
+      "script_class": "CMapScriptStageClear",
+      "status": "confirmed",
+      "vas": {"ctor": "0xF16BC0", "parser": "0xF17BD0", "template_parser": "0x73C4D0", "tick": "0xF18700", "event_dispatch": "0xF176B0"},
+      "cs_opcodes": [132, 180],
+      "sc_opcodes": [176, 178, 196, 197, 198, 199, 584]
+    },
+    "wriggle": {
+      "map_count": 14,
+      "script_class": "CMapScriptWriggle",
+      "status": "confirmed",
+      "vas": {"ctor": "0xF9E7F0", "parser": "0xF9EF90", "tick": "0xF9F4F0", "event_dispatch": "0xF9F590"},
+      "direct_send_in_wriggle_range": false,
+      "note": "delegates ticks and events to CScriptObject::vt+20 and vt+36"
+    },
+    "rescue_et": {
+      "map_count": 3,
+      "action_classes": ["CMapActionRescueAliensPattern", "CMapActionRescueAliensState", "CMapActionRescueAliensWait"],
+      "factory_class": "CMapScriptCatchTail",
+      "status": "confirmed",
+      "vas": {"action_range": "0x6287A0..0x62A0B0", "catchtail_ctor": "0x62A100", "catchtail_parse": "0x62A9B0", "example_sender_180": "0x629940"},
+      "cs_opcodes": [180],
+      "xml_factory_mismatch": "maps use <RescueAliensScript> while EBA2D0 registers <catchtailscript>"
+    },
+    "coloring": {
+      "map_count": 1,
+      "component_class": "CColoringComponent",
+      "mode_id": 36,
+      "status": "confirmed",
+      "vas": {"ctor": "0x637910", "send_229": "0x639350", "sc_dispatch": "0x638340", "sc_186": "0x639210", "sc_351": "0x639280"},
+      "cs_opcodes": [229],
+      "sc_opcodes": [186, 351]
+    }
+  },
+  "limits": [
+    "All findings above are static disassembly observations (kr_static); runtime Wine captures are required before Rust server state mutation.",
+    "Exact wire opcode numbers for v20 subswitch cases 38 (0xE6A3C0) and 43 (0xE73080) remain candidate until runtime/follow-up confirmation.",
+    "Server-side evaluation of cloudappearloop/retroscript/rideinfo and <RescueAliensScript> remains unknown without Wine runtime capture."
+  ]
+}
