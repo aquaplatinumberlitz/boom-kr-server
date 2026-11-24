@@ -34,7 +34,7 @@
   - Reads wire opcode `v17 = (**a2)(a2)`. Observed range branches:
     - `v17 <= 305`: subtracts `20` (e.g., `case 156` = wire `176` -> `0xE77D20`; `case 158` = wire `178` -> `0xE77DD0`; `case 176..179` = wire `196..199` -> `0xE73760`, `0xE751F0`, `0xE74410`, `0xE72EC0`).
     - `v17 == 306`: `0xE684E0`.
-    - `307..=546`: subtracts `312` (`case 115` = wire `427`). Switch `v20` inside `0xE5D3A0` contains `case 38` -> `0xE6A3C0` and `case 43` -> `0xE73080` (`candidate` wire base `312` -> `350`/`355`, needs confirmation of `v20` entry branch in runtime/follow-up).
+    - `307..=546`: subtracts `312` (`case 115` = wire `427`). Trong switch `v20`, `case 38` là wire `350` → `0xE6A3C0`, còn `case 43` là wire `355` → `0xE73080`. Cả hai ánh xạ đã được xác nhận tĩnh; `350` còn được kiểm với hai client qua relay shadow trong [p108](#f1e-space-pangland-wine). Chưa xác định `355` có phải phản hồi cho `233` hay không.
     - `v17 == 547`: `0xE69090`.
     - `v17 > 547`: subtracts `548` (`case 36` = wire `584` -> `0xE853D0`).
   - `default` / `LABEL_123` fallback: forwards packet to `CModeComponent::vt+64` (`v21[6941]`), then iterates `CMapScript*::vt+64` (`v21 + 6938`), then falls through to `sub_D5F5A0(a2)` (handling opcodes `7`, `84`, `106..109`, `150`, `151`, `218`, `421`, `428`).
@@ -44,7 +44,7 @@
 | Family | Maps | Reader / Component (`kr_static`) | Authority | `C->S` Opcodes | `S->C` Dispatch |
 | --- | --- | --- | --- | --- | --- |
 | `space` | 13 | `CMapScriptChangeTile` (`0x634070`) | Host (`1240CF0` + `E78070`) | `228` (`0xE736C0`) | `350` -> `0xE6A3C0` -> `0x483210` (đo tại [p108](#f1e-space-pangland-wine)) |
-| `pangland` | 12 | `CMapScriptSprinkler` (`0xF126E0`, `<time>`) | Host (`1240CF0`) + Local UI | `148` (`0xE733D0`), `149` (`0xF158C0`), `233` (`0xE71C20`) | `159` / `158` nhận trên cả hai client với shadow; phản hồi server KR gốc còn `unknown` |
+| `pangland` | 12 | `CMapScriptSprinkler` (`0xF126E0`, `<time>`) | Host (`1240CF0`) + Local UI | `148` (`0xE733D0`) đã đo; `149` (`CGOTileStaticLucci::0xF158C0`) và `233` (`0xE71C20`) mới xác nhận tĩnh | `159` / `158` nhận trên cả hai client với shadow; phản hồi server KR gốc còn `unknown` |
 | `retro_*` | 30 | `CMapActionPopUp` (`0x9EA760`) -> `CMapScriptPopUp` (`0xB2AF70`) | Local fade/render inside `<time>` (`0xF14E20`) | None in `CMapScriptPopUp` (`0xB2B140`) | None in `CMapScriptPopUp`; see `unknown` XML tags below |
 | `aqua` | 9 (4 active) | `CMapScriptStageClear` (`0xF16BC0`, `StageClearScriptParser::parseScriptObjectTemplates` `0x73C4D0`) | `CScriptObject` action / host events | `132`, `180` (`CScriptObject` actions) | `176` (`0xE77D20`), `178` (`0xE77DD0`), `196..199`, `584` |
 | `wriggle` | 14 | `CMapScriptWriggle` (`0xF9E7F0`, `0xF9EF90`) | `CScriptObject` delegation (no direct `CSendPacket` in `0xF9E700..0xFA4500`) | Via `CScriptObject` (`unknown` full subset) | Via `CMapScriptWriggle` / `CScriptObject` (`vt+36`) & `0xE77D20`/`0xE77DD0` |
