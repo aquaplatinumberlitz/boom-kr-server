@@ -2,7 +2,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from f1_pack_matrix import failure_kind, load_events, omitted_items
+from f1_pack_matrix import (adapter_rejection_group, failure_kind, load_events,
+                            omitted_items)
 
 
 def row(**updates):
@@ -52,6 +53,25 @@ class FailureKindTest(unittest.TestCase):
             )
             self.assertEqual([e['event'] for e in load_events(result)], ['round_active', 'delivery'])
             self.assertEqual(failure_kind(row(), result, 124), 'harness_timeout')
+
+
+class AdapterRejectionGroupTest(unittest.TestCase):
+    def test_all_remaining_terrain_groups_have_stable_labels(self):
+        cases = {
+            'partial_payload': 'map parser không đọc hết payload',
+            'service_scope': 'Map ngoài phạm vi phục vụ: NXCL_Aqua01',
+            'conveyor': 'nền TileConv/ConvUR00',
+            'mine_rail': 'nền Tile08_Ground/Rail00',
+            'Tile07_ground_flags': 'nền Tile07_Ground/Tile00',
+            'Tile42_gameplay_flags': 'vật thể/cờ Tile42_Static/Block03',
+            'passable_variant_flags': 'vật thể/cờ Tile16_Passble/ArmyTent01',
+            'static_variant_flags': 'vật thể/cờ Tile19_Static/Block12',
+            'box_variant_flags': 'vật thể/cờ Tile53_Box/Block30',
+            'transparent_static_flags': 'vật thể/cờ TileTransParent_Static/Static01',
+        }
+        for expected, error in cases.items():
+            with self.subTest(expected=expected):
+                self.assertEqual(adapter_rejection_group(error), expected)
 
 
 if __name__ == '__main__':

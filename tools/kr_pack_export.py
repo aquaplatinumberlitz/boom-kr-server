@@ -245,6 +245,12 @@ def f1_terrain_rules(profile, table):
             # The Herb route confirms type 3 with the three all-ones groups:
             # the layer neither blocks the ray nor sets the occupied flag.
             pass
+        elif (key in ('Tile53_Passable/Flower01', 'Tile53_Passable/Flower02')
+              and d[:16] == (3, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, _PASS_ALL,
+                             0, 0, 1, 0, 0, 0, 0)):
+            # 9B0640 checks offset 44 only for ground. These type-3 variants
+            # have the same all-ones ray bytes as Herb at offsets 32–35.
+            pass
         elif ((key.startswith('Tile16_Passble/Line') or key.startswith('Tile62_Passable/PoliceLine'))
               and d[:7] == (3, 0, 0, 0, 0, 0, 0)
               and d[7] in (65537, 16777472) and d[8:13] == (_PASS_ALL, 16777217, 1, 1, 0)):

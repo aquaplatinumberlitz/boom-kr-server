@@ -102,5 +102,117 @@
       "bytes": 391395,
       "sha256": "49f1ec2d2f7eb35a7dbe4cacb087a47ce6074702d316ba06f7b6571e6784ef89"
     }
-  ]
+  ],
+  "round_2": {
+    "task": "p89",
+    "baseline": "994daf703d53a5369f538d418b617f68bb783ef2",
+    "source": "kr_static + emu_choice",
+    "status": "candidate",
+    "scope": "Kiểm pack KR 00967 chỉ đọc và chạy hai client tổng hợp qua TLS/relay trong bwrap. Không có Wine, VM, native mới hoặc nâng phân loại họ.",
+    "counts": {
+      "previous_admitted": 163,
+      "newly_admitted": 1,
+      "total_admitted": 164,
+      "adapter_rejected_remaining": 50,
+      "total_f1_ab_maps": 214
+    },
+    "rejection_groups_before": {
+      "Tile07_ground_flags": 11,
+      "Tile42_gameplay_flags": 8,
+      "box_variant_flags": 3,
+      "conveyor": 8,
+      "mine_rail": 5,
+      "partial_payload": 4,
+      "passable_variant_flags": 8,
+      "service_scope": 1,
+      "static_variant_flags": 1,
+      "transparent_static_flags": 2
+    },
+    "partial_payload_rejected": [
+      "EventForest00",
+      "EventPatrit00",
+      "ExBula01",
+      "ExBula02"
+    ],
+    "tileinfo": {
+      "entry": "TileInfo/TileInfoList",
+      "keys": [
+        "Tile53_Passable/Flower01",
+        "Tile53_Passable/Flower02"
+      ],
+      "object_table_ids": [
+        5162,
+        5163
+      ]
+    },
+    "static_control": {
+      "build": "KR00967",
+      "unpacked_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "initializer": "EA1EE0 / 9B0640",
+      "factory": "EB4C10",
+      "ray": "BA0F80 / BA0FC0 / BA0E30",
+      "reused": [
+        "g1-camp08-footprint-predicate.json",
+        "g1-camp08-passable.json"
+      ],
+      "limits": "Hai biến thể Flower vào nhánh BA0290; ba nhóm hướng bằng 0x01010101. Chỉ chiếu lớp terrain hiện có; hành vi di chuyển và gameplay khác chưa đo."
+    },
+    "recipe": "Dùng tools/f1_pack_matrix.py với scope f1-a, hai client và một catalog Island05 + CaJJ_Clover01. Rejections.json do audit.py đối chiếu exporter của baseline với hiện tại và kiểm từng descriptor trong 51 map bị từ chối trước đây.",
+    "newly_admitted_map": {
+      "name": "Island05",
+      "code": 415,
+      "status": "passed",
+      "run": "catalog-001",
+      "map_sha256": "ecf12389452d4ed0f9d717ae4ef2ec3760ed315349e15e3d0f627b59e67e2982",
+      "terrain_sha256": "a6ffd8b7120613a0983cfee3c8ab7cb36ddce9c814264b9fbd0a792913e98598"
+    },
+    "bundle_manifest_sha256": "c54f24a4c62b4fbb4d56b693877c019f51a8ea722487bd262980c079c7208d00",
+    "binaries": {
+      "kr-service": "37490c7c99f6720096ab3be6ec737ed8132568a08827c085c8d5e96910d5bd95",
+      "kr-load": "240f63945d8606b7f247481b0c3ca62cd606e63d6f3c2c1dc05750b3874a0b8b"
+    },
+    "result": "Island05 và CaJJ_Clover01 có ACK chọn map 117, Start121 và journal complete đúng mã/tên; hai client về phòng sau từng ván và rời phòng sạch. Chạy lại tám map tiền nhiệm trước lúc sửa adapter, 8/8 đạt.",
+    "evidence": [
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/rejections.json",
+        "bytes": 228820,
+        "sha256": "ce35170bf7dd4012f5e892467f2693e88e26bc67a1e5bc7debd9c147432906fb"
+      },
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/audit.py",
+        "bytes": 3482,
+        "sha256": "6197eb7221452a256ffeb938f0a735e72ca87f86e55b1f852dfd99c493c4ab7f"
+      },
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/initializer-factory.json",
+        "bytes": 1037,
+        "sha256": "5a8166660ad342ab66dfd27e1570df42a728748a040c34f30c76c2e8617fb940"
+      },
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/inventory.json",
+        "bytes": 393663,
+        "sha256": "0158b84412657de3127196986263b6d269eef6cc11c0aca78ba62205f87fb91c"
+      },
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/matrix.json",
+        "bytes": 438191,
+        "sha256": "7c2691dae2529cf46d185cb0b6be5345e4ccda9bfe20039ba8faa733e982869f"
+      },
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/catalog-001/verification.json",
+        "bytes": 680,
+        "sha256": "0e90f1fb1be188f56a676bc8c4de535a6f242bd4a79c4bd2bd2d74407dea71db"
+      },
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/catalog-001/load.log",
+        "bytes": 1244,
+        "sha256": "64696ba55942ad06a28e993cc8aa89fd2e8014632096798725e3e5d306d23b4a"
+      },
+      {
+        "path": "local/runs/f1a-adapter-expansion-r2/baseline-control/matrix.json",
+        "bytes": 438238,
+        "sha256": "a70559be6f09814725978353d4fe5c58dbd37ac32042f14c321c70accc428ad0"
+      }
+    ]
+  }
 }
