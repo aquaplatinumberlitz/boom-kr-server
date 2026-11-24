@@ -121,8 +121,9 @@ class TerrainAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'spawn trên ô type 3'):
             f1_terrain_rules(profile, table)
 
-    def test_tent_projects_only_kr_east_and_west_ray_ports(self):
-        # TileInfoList KR 00967, ObjectTable 1988–1990 and 2822–2823.
+    def test_tent_keeps_kr_byte_order_ray_ports(self):
+        # TileInfoList KR 00967, ObjectTable 1988–1990 and 2822–2823. Bytes
+        # +33/+35 are KR directions 1 and 3 (north and south, round 5).
         tent = (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 18730216, 0, 18730216, 0, 0)
         army = (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 2010265866, 0, -1, 0, 0)
         variants = {
@@ -145,16 +146,49 @@ class TerrainAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'ngoài adapter'):
             f1_terrain_rules(*self.profile('Tile01_Passable/TentUnknown', tent))
 
+    def test_ida_round5_rail_conveyor_and_pong_tiles_project_as_plain_layers(self):
+        # TileInfoList KR 00967. Rail +52, conveyor +32/+36/+40, Pong word +62
+        # and Block03 +36 have no bomb, ray, flag-grid or placement consumer.
+        rail = (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 1, 0, 64512, 0, 0)
+        conveyor = (0, 0, 0, 0, 0, 0, 1, 1, 2, 1, 3, 0, 0, 0, 0, 52224, 0, 0)
+        red = (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 65536, 0, 0)
+        blue = (*red[:15], 131072, 0, 0)
+        block03 = (1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+        accepted = {
+            'Tile08_Ground/Rail00': (rail, 0), 'Tile08_Ground/Rail06': (rail, 0),
+            'TileConv/ConvLD00': (conveyor, 0), 'TileConv/ConvUU00': ((*conveyor[:9], 2, 1, *conveyor[11:]), 0),
+            'Tile42_Ground/TileRed': (red, 0), 'Tile42_Ground/TileBlue': (blue, 0),
+            'Tile42_Static/Block03': (block03, 1),
+        }
+        for tile, (data, kind) in accepted.items():
+            with self.subTest(tile=tile):
+                rules = f1_terrain_rules(*self.profile(tile, data, ground=data[0] == 0))
+                self.assertEqual(rules['terrain']['kinds'], [kind, 0])
+                self.assertEqual(set(rules), {'terrain'})
+                self.assertEqual(set(rules['terrain']) & {'ray_barriers', 'ray_ports', 'box_hits'}, set())
+        refused = [
+            ('Tile08_Ground/Rail00', (*rail[:12], 1, *rail[13:])),
+            ('Tile08_Ground/Rail07', rail),
+            ('Tile03_Ground/Tile00', rail),
+            ('TileConv/ConvLD00', (*conveyor[:8], 3, *conveyor[9:])),
+            ('TileConv/ConvLD00', (*conveyor[:9], 3, *conveyor[10:])),
+            ('TileConv/ConvLD00', (*conveyor[:10], 4, *conveyor[11:])),
+            ('TileConv/ConvLD00', (*conveyor[:11], 1, *conveyor[12:])),
+            ('Tile03_Ground/Tile00', conveyor),
+            ('Tile42_Ground/TileRed', blue),
+            ('Tile42_Ground/TileBlue', red),
+            ('Tile42_Ground/Tile00', red),
+            ('Tile42_Static/Block03', (*block03[:10], 1, *block03[11:])),
+            ('Tile42_Static/Block03', (*block03[:11], 1, *block03[12:])),
+            ('Tile42_Static/Block04', block03),
+        ]
+        for tile, data in refused:
+            with self.subTest(tile=tile, data=data), self.assertRaisesRegex(ValueError, 'ngoài adapter'):
+                f1_terrain_rules(*self.profile(tile, data, ground=data[0] == 0))
+
     def test_unmeasured_mechanics_remain_rejected(self):
         building = (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 64069472, 1, 1244184, 0, 0)
         refused = {
-            'TileConv/ConvUR00': (0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 0, 0, 0, 0, 52224, 0, 0),
-            # Offset 52 feeds B9E4E0, read by bomber movement code (mine rail).
-            'Tile08_Ground/Rail00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 1, 0, 64512, 0, 0),
-            # Word 62 = 1/2 and type-1 offset 36 (B50370 movement) for CAPong.
-            'Tile42_Ground/TileRed': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 65536, 0, 0),
-            'Tile42_Ground/TileBlue': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 131072, 0, 0),
-            'Tile42_Static/Block03': (1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
             # Block30 has the explosion flag (+33); Block31/32 carry unhandled +29/+30 instead.
             'Tile53_Box/Block30': (2, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 2487818, 117307672),
             'Tile53_Box/Block31': (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118544168),

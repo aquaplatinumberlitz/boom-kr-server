@@ -187,6 +187,20 @@ _TENT_PIECES = frozenset((
     'Tile16_Passble/ArmyTent01', 'Tile16_Passble/ArmyTent02',
 ))
 _TENT_PORTS = 0x01000100
+# Ground offset 52 is copied to CGOTileGround+0xD4 (B9D8E0) and read only via
+# B9E4E0. Every live caller selects a riding speed (B46940: Ship +192 or +180)
+# or draws a riding effect; no bomb, ray, flag-grid or placement consumer.
+_RAIL_GROUNDS = frozenset(f'Tile08_Ground/Rail0{i}' for i in range(7))
+# Ground offset 32 is a conveyor step in pixels, +36 the entry mask and +40 the
+# exit direction (B9DB70/B9DBF0, KR direction order W/N/E/S). Only bomber
+# movement, idle animation and AI read them; CGOBomb and the ray code do not.
+_CONVEYOR_STEP = 2
+# Word offset 62 below 10000 does not cancel bombs (ED2350). Values 1/2 are read
+# only by ground drawing (EA5A10) and CBulaComponent (mode 2 in EEF020).
+_PONG_GROUND_WORDS = {'Tile42_Ground/TileRed': 1, 'Tile42_Ground/TileBlue': 2}
+# Static offset 36 is read only through BA1420: CBulaComponent (10001..10199),
+# CBonusMapLadderWinnerComponent (999) and B50370, which has no reference.
+_TYPE1_UNREAD_OFFSET36 = frozenset(('Tile42_Static/Block03',))
 
 
 def f1_terrain_rules(profile, table):
@@ -226,14 +240,18 @@ def f1_terrain_rules(profile, table):
             return
         factory_flag = key == 'Tile03_Ground/Tile07' and d[12:15] == (1, 0, 0)
         water_flag = key in _WATER_RENDER_GROUNDS and d[12:15] == (0, 0, 1)
-        if (d[:6] != _GROUND or d[8:11] != (0, 0, -1)
-                or (any(d[12:15]) and not (factory_flag or water_flag))
+        rail_flag = key in _RAIL_GROUNDS and d[12:15] == (0, 1, 0)
+        conveyor = (key.startswith('TileConv/') and d[8] == _CONVEYOR_STEP
+                    and d[9] in (1, 2, 4, 8) and d[10] in (0, 1, 2, 3)
+                    and d[6:8] == (1, 1) and not any(d[11:15]))
+        if (d[:6] != _GROUND or (d[8:11] != (0, 0, -1) and not conveyor)
+                or (any(d[12:15]) and not (factory_flag or water_flag or rail_flag))
                 or d[15] & 0xFF):
             # A nonzero byte at offset 60 selects CGOTileLap in EB48E0.
             fail(index, 'nền', key)
         if not (1 <= d[6] <= width and 1 <= d[7] <= height and d[11] in (0, 1)):
             fail(index, 'nền/footprint', key)
-        if d[15] >> 16:
+        if d[15] >> 16 and _PONG_GROUND_WORDS.get(key) != d[15] >> 16:
             if (key not in ('Tile16_Ground/PinGround01', 'Tile62_Ground/PinTile00',
                             'Tile62_Ground/PinTile01') or d[15] >> 16 != 10_000):
                 fail(index, 'nền/cờ', key)
@@ -254,7 +272,8 @@ def f1_terrain_rules(profile, table):
             ground(index, key, d)
         elif d[:6] == (1, 0, 0, 0, 0, 0) and (
                 d[8:11] == (0, 0, _TYPE1_PIN_FLAGS.get(key, 0))
-                or (key in _TYPE1_LEAP_BARRIERS and d[8:11] == (1, 0, 0) and not any(d[12:]))):
+                or (key in _TYPE1_LEAP_BARRIERS and d[8:11] == (1, 0, 0) and not any(d[12:]))
+                or (key in _TYPE1_UNREAD_OFFSET36 and d[8:11] == (0, 1, 0) and not any(d[11:]))):
             # EA1EE0 writes the two flags for type 1 after BA1350, using
             # the dimensions and type regardless of the trailing dwords.
             for cell in footprint(index, d, key):
@@ -303,8 +322,10 @@ def f1_terrain_rules(profile, table):
         elif (key in _TENT_PIECES
               and d[:13] == (3, 0, 0, 0, 0, 0, *([_TENT_PORTS] * 3), 0, 0, 1, 0)
               and d[13] not in (100, 101)):
-            # BA0E30 reads group +32 in KR order N/W/S/E; the byte 1
-            # opens that side for both leaving and entering via BA0EC0.
+            # BA0E30 reads byte +32 + direction; the byte 1 opens that side
+            # for leaving and, via BA0EC0, entering. 17929B0/EB7190 give KR
+            # direction order W/N/E/S, so bits 1 and 3 are north and south.
+            # The value stays in KR bit order; see terrain.md#f1a-ida-round5.
             ray_ports[index] = 0b1010
         else:
             fail(index, 'vật thể/cờ', key)
@@ -461,7 +482,7 @@ def checked_cache(path, identity, pins, maps, measured, f1=False):
 def cache_identity(pins, maps, measured, f1=False):
     key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
     if f1:
-        key['adapter'] = 'f1-a-terrain-r4'
+        key['adapter'] = 'f1-a-terrain-r5'
     return sha(encode(key))
 
 
