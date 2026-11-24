@@ -136,7 +136,14 @@
     "queue_check": "State::poll giữ tối đa 16 batch pending mỗi kênh cho phiên một người local; kiểm trần trước khi phát batch đến hạn. Nhánh 148 tạo batch 159 tức thời và batch 158 sau 2200 ms cho từng ô trên từng transport.",
     "stock_demand": {"NXCL_PangLand15": {"cells": 52, "requests": 52, "span_ms": 113.299}, "PangLand03": {"cells": 9, "requests": 9, "span_ms": 1.569}},
     "limits": "Nếu server nhận và lên lịch theo nhịp đã bắt, NXCL_PangLand15 cần tới 52 timer chưa đến hạn trên mỗi kênh, vượt trần 16 ngay cả khi không tính spawn. Chưa chạy qua handler native chưa sửa; không gán lỗi hàng đợi đã xảy ra.",
-    "next": "Sau khi nối dispatch, nghiệm thu cả PangLand03 và NXCL_PangLand15. Kiểm các request 148, đủ cặp 159/158 theo ID trên cả A/B, channel còn sống qua đợt bom, và không để timer cũ sang vòng sau.",
-    "artifacts": {"receipt": "native-638/queue-audit/receipt.json", "sha256_manifest": "native-638/queue-audit/SHA256SUMS", "sha256_manifest_digest": "a004755eef7f8238e7b3d8b8fc0bb375e2e5750aa19bbd07e214d01dc647e6cd"}
+    "next": "Sau khi nối dispatch, nghiệm thu cả PangLand03 và NXCL_PangLand15. Kiểm các request 148, phân biệt room_recipient_queue với room_timer_queue, đối chiếu đủ cặp 159/158 theo ID trên cả A/B, rồi kiểm channel còn sống qua đợt bom và timer cũ được hủy khi đổi vòng.",
+    "artifacts": {"receipt": "native-638/queue-audit/receipt.json", "sha256_manifest": "native-638/queue-audit/SHA256SUMS", "sha256_manifest_digest": "a004755eef7f8238e7b3d8b8fc0bb375e2e5750aa19bbd07e214d01dc647e6cd"},
+    "recipient_inbox": {
+      "status": "candidate",
+      "check": "managed_rooms.capacity=2 thay capacity 8 của prototype khi fork. rules::recipient_queue(2)=8; Runtime::publish phải đặt đủ chỗ cho cả 159 tức thời và 158 có timer trước khi gửi bất kỳ batch nào của request. Hai gói PangLand03 ở các mốc XML 16 và 20 giây có 6 và 7 ô, cần 12 và 14 chỗ trên mỗi kênh. Nếu tới handler #638 trong pha Armed, cả hai đều vượt giới hạn ngay cả khi inbox trống.",
+      "burst": "Trong cửa sổ 100 ms theo lịch poll, capture có 9 ô trong 1,569 ms trên PangLand03 và 44 ô trong 93,777 ms trên NXCL_PangLand15. Tương ứng 18 và 88 batch nếu tất cả tích lại trước lần lấy kế tiếp. Biên poll và nhịp server nhận gói chưa đo; đây là mô hình ngoại tuyến.",
+      "reproduction": "Dùng env p108 và worktree có mã server #638: python3 \"$P108_RAW/native-638/recipient-audit/audit.py\" \"$PWD\" \"$P108_RAW\". Đối chiếu stdout với receipt.json; chạy sha256sum -c SHA256SUMS trong thư mục audit.",
+      "artifacts": {"receipt": "native-638/recipient-audit/receipt.json", "sha256_manifest": "native-638/recipient-audit/SHA256SUMS", "sha256_manifest_digest": "d2bb33f0e115e57d8d9a7dd26d7c441a5fb0cddcea8f353a3bf1f693f8f72159"}
+    }
   }
 }

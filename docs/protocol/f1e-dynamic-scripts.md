@@ -171,9 +171,12 @@ chỉ giao opcode cho phòng nếu `room_io::Session::handles` nhận; hàm này
 giữ pin build, capture, CRC và ảnh của lượt đối chứng.
 
 Kiểm ngoại tuyến cho thấy codec Rust nhận các body `148/228` đã bắt. Sau khi
-nối dispatch, cần kiểm thêm trần timer của `148` (`status: candidate`): mỗi
-ô đích sinh một batch nổ sau 2,2 giây cho mỗi kênh. Đợt đầu của
-`NXCL_PangLand15` dồn nhiều ô trong cùng cửa sổ fuse, vượt trần 16 batch
-pending của kênh có một client nếu giữ nhịp đã đo. Chưa quan sát tràn hàng đợi
-trong runtime. Dùng cả `PangLand03` và `NXCL_PangLand15` để kiểm reply,
-tuổi thọ channel và việc hủy timer khi đổi vòng sau khi sửa.
+nối dispatch, cần kiểm hai giới hạn của nhánh `148` (`status: candidate` cho
+kết quả runtime). Mỗi ô đặt trước hai batch trong inbox của mỗi kênh. Với
+phòng hai slot của p108, inbox có 8 chỗ; riêng một gói 6 hoặc 7 ô đã đo ở
+`PangLand03` sẽ cần 12 hoặc 14 chỗ, kể cả khi inbox trống.
+`NXCL_PangLand15` gửi từng ô và dồn nhiều gói trong chưa đến một chu kỳ poll;
+nếu đưa được cả đợt vào hàng đợi, số timer cần giữ đồng thời cũng vượt trần
+16 batch pending của kênh có một client. Đây là đối chiếu mã với nhịp capture.
+Lần đo native cần phân biệt `room_recipient_queue` khi đặt chỗ với
+`room_timer_queue` khi giữ batch, rồi kiểm đủ reply và hủy timer khi đổi vòng.
