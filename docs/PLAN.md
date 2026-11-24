@@ -8,11 +8,11 @@ Nguồn chuẩn của project `boom-kr-server`; bản nhập từ plan đã đư
 **Mỗi phiên chỉ cần đọc mục này.** Tra các mục khác theo anchor; gate K0–K7 và RE cũ ở [PLAN_ARCHIVE](PLAN_ARCHIVE.md).
 Các dòng ở đây được **ghi đè**, không nối thêm; lịch sử checkpoint ở manifest, PROTOCOL và [HISTORY](HISTORY.md).
 Codex cập nhật bảng trạng thái và danh sách việc khi xong một bước hoặc đổi blocker. Claude cập nhật đích và thứ tự
-theo quyết định của chủ dự án. Cập nhật gần nhất: **24/11, Giai đoạn 1 & hai PR phát hành (#597 BoomServer, #598 LANBoom) đã hoàn tất; chuyển sang Giai đoạn 2 (F1).**
+theo quyết định của chủ dự án. Nếu đang chạy điều phối nhiều tác vụ cục bộ, kiểm tra thêm sổ trạng thái gitignored `local/runs/codex-orchestrator/STATE.md` (nếu có). Cập nhật gần nhất: **24/11 (`38e84f3`), PR `#602`–`#605` đã merge (`F1-a` 164/214, `F1-b` `CP394` một phần trên Wine, nền `F4` Schema 7 & launcher WinBoat).**
 
-**Đích giai đoạn 1** ([chi tiết](#delivery-target)): **ĐÃ ĐẠT** (dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời, tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1; đóng gói phát hành qua PR #597 và PR #598).
+**Đích giai đoạn 1** ([chi tiết](#delivery-target)): **ĐÃ ĐẠT** (dịch vụ nội bộ bền vững, Internet thật, 50 người đồng thời, tối thiểu 8 phòng và chế độ thường trên sáu map ladder với tập item G1; đóng gói phát hành qua PR `#597`, `#598` và bản vá WinBoat PR `#602`).
 **Đích kế tiếp — Giai đoạn 2 ([F1 Trận thường đầy đủ](#f1-normal-battle)) → F4 → F2 → F5 → F3 → F6:**
-[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) (`#559`) đã mở rộng adapter pack cho [163/214 map](protocol/terrain.md#f1a-adapter-expansion) của 86 họ A/B (CaJJ_Clover giữ A trong phạm vi hai người). [F1-b](protocol/load-phase.md#f1-pack-floor) đã nối Shoe, Punch và Kim cố định vào adapter pack và đang chờ kiểm native trước khi xét nâng họ; tiếp theo là `#571` (`F1-c` nhân vật).
+[Bước 0](content/classification.md) hoàn tất; [F1-a](evidence/rust-service/f1-pack-map-adapters.json) (`#559`) đã mở rộng adapter pack cho [164/214 map](protocol/terrain.md#f1a-adapter-expansion) lớp A/B (86 họ không script trong tổng 313 map đấu thường của pack; `CaJJ_Clover` giữ A trong phạm vi hai người). [F1-b](protocol/load-phase.md#f1-pack-floor) đã nghiệm thu native Wine một phần tại [CP394](evidence/checkpoints/records/CP394.json) (`Forest24` Kim cố định `145`; `CAhero119` Shoe + Punch + reset). Tiếp theo là nghiệm thu native `#571` (`F1-c`) và nối runtime [F4](#full-game-roadmap) (nền Schema 7 + Economy/Shop đã có tại PR `#604`).
 
 | Mốc | Trạng thái | Còn lại |
 |---|---|---|
@@ -31,11 +31,10 @@ theo quyết định của chủ dự án. Cập nhật gần nhất: **24/11, G
 **Thứ tự việc hiện hành (sau Giai đoạn 1):**
 
 1. **Giai đoạn 2 — F1 (`#559` F1-a, `F1-b`, `#571` F1-c)** ([chi tiết](#f1-normal-battle)):
-   - `#559` (`F1-a`): mở rộng adapter pack cho các họ map B còn lại trên `kr-load` và hai client thật (tổng hợp hiện đạt: 163/214 map, còn 51 map bị từ chối).
-   - `F1-b`: kiểm native item Shoe, Punch, Kim trên bản pack đã nối trước khi xét nâng họ, sau đó mở rộng placement/drop theo nhóm map.
-   - `#571` (`F1-c`): **Đã xác minh ma trận tổng hợp 31 nhân vật** từ `BomberAttr` KR 00967 (lựa chọn, Start121,
-     cap/reset qua Rust và đổi lại sau ván); còn chờ một lượt native Wine mới trước khi xét nâng lớp bằng chứng.
-   - Tiếp theo sau `F1`: `F4` (giữ nhánh nền benchmark `bench/f4-opus55`) → `F2 → F5 → F3 → F6`.
+   - `#559` (`F1-a`): đã đạt **164/214 map** lớp A/B (`PR #601`, `#603`; còn 50 map bị từ chối đã phân loại rõ); tiếp tục rà các họ biến thể an toàn (gồm `Cookie07` / `SuperFighter19` cho phép thử gộp 3 item F1-b trên 1 map).
+   - `F1-b`: `CP394` (`PR #605`) đã xác nhận native Wine một phần cho Kim cố định (`Forest24`) và Shoe + Punch + reset (`CAhero119`); còn 1 lượt xác nhận cả 3 item trên cùng 1 map và mở rộng placement/drop.
+   - `#571` (`F1-c`): đã xác minh ma trận tổng hợp 31 nhân vật đấu thường từ `BomberAttr` KR 00967 (trong 67 dòng `BomberAttr`, gồm thêm 3 dòng `f1=3` và 33 dòng lớp C); **đang chạy lượt native Wine mới** cho nhân vật lớp B ngoài `C00`/`C01`.
+   - `F4`: đã merge nền SQLite Schema 7, `EconomyPolicy` mặc định tắt, `ShopCatalog` và 5 lệnh `kr-admin` (`PR #604`); **đang nối vòng đời runtime** (`settle_match_rewards` cuối ván & `AccountService`), rồi tới `F2 → F5 → F3 → F6`.
 2. **Tổng kết M8 & phát hành Giai đoạn 1 (đã chốt):**
    - [Nền gói Linux](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/474), [Launcher public & S1/O1](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/476), [Tải/giám sát/soak](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/523) (đã đóng) và [Admin/backup/rollback](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/520) đều đã hoàn tất nghiệm thu Giai đoạn 1 (Soak13, `real-load26`, `PR #597`, `PR #598`, Wine S1 E2E và Windows 10 VM GUI smoke). Riêng gói Linux mới đóng gói/test namespace & S1 Docker trên x86_64; số đo ARM riêng giữ tại evidence cũ.
    - Các giới hạn kỹ thuật dài hạn ([Policy59](protocol/room-membership.md#rust-bounded-diagnostic59), [#403](https://github.com/aquaplatinumberlitz/boom-kr-server/issues/403), quy định dọn `local/` ở [run-cleanup](evidence/owner-directives/run-cleanup.json), và kiểm tra ngoài lab 5 phút) giữ nguyên theo evidence.
