@@ -175,6 +175,28 @@ trạng thái **candidate**; chỉ chứng minh client có nhánh đọc/dispatc
 server authority hay thứ tự thực thi. Đã dùng 3 request IDA (một lần mở MCP lỗi module, hai lượt quét headless),
 0 thân hàm mới; không chạy VM/Wine/client.
 
+<a id="f1e-script-specs"></a>
+#### Schema đuôi Soul và mapscript F1-e trong pack
+
+[Dữ liệu trích xuất KR 00967](../evidence/content/f1e-scripts-extracted.json) là `kr_static/confirmed`.
+Ở `EventForest00`, `EventPatrit00`, `ExBula01` và `ExBula02`, ngay sau grid, drop và placement là
+số nhóm, rồi từng nhóm gồm số điểm và các cặp `i32`. Tiếp theo là số bản ghi; mỗi bản ghi gồm độ dài
+tên, tên, hai tọa độ `u8` và ba `i32`. Cả bốn đuôi kết thúc đúng tại `u32` độ dài script bằng 0.
+JSON giữ các offset tính từ đầu payload, nhóm điểm và bản ghi `InnerSoul`/`OuterSoul`; xem
+[đường đọc Soul của client](terrain.md#f1a-ida-round4).
+
+Trong 95 map F1-e, 92 map có `mapscript`. Ba map BigBattle có lưới 19×17, 8 spawn và script rỗng.
+Mỗi map có hai dword bằng 0 sau placement, rồi `u32` độ dài script; dữ liệu này đọc vừa khít tới cuối payload.
+`NXCL_Aqua01` thuộc F1-a, có cùng blob chỉ chứa marker `StageClearScript` với `Aqua01`. Bốn map Aqua
+F1-e khác có `ScriptObject`/`TriggerTable`, gồm `SharkMon` và `basicMon` dùng ảnh `Game/SmallGolem`.
+JSON giữ map code, lưới, spawn, mã biến thể theo lớp, lịch Space/PangLand, bảng Wriggle/RescueET, popup,
+cloud/respawn và ride của Retro. Lịch Lucci và bảng item của LovelyRoom nằm trong comment; thẻ ngoài
+comment đặt `enablebomb=0`. Bộ trích xuất đọc được attr số không có dấu nháy của Coloring.
+
+Ý nghĩa nhóm điểm và ba số cuối của Soul, quyền xử lý của server, tick và đồng bộ giữa hai client đều
+`unknown`. Phép trích chỉ xác nhận dữ liệu trong pack, chưa xác nhận client chạy Coloring hoặc lịch nào
+tác động đến cả hai client.
+
 <a id="f1-pack-floor"></a>
 ### Floor từ pack trong catalog thử F1-a
 
