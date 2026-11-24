@@ -1100,3 +1100,31 @@ cùng luật terrain/floor cũ giống từng byte. Tám map còn bị từ ch�
 native, Wine hoặc VM. Phép đo Wine tùy chọn để nâng phép chiếu: hai view trên `Factory00` đặt bom trên ô băng rồi
 đứng lên băng, ghi ô bom lúc nổ và vị trí nhân vật; một bom Tent của `Desert00` với thùng ở bốn hướng để chốt trục
 bắc–nam. [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json) ghi ở khóa `round_5`.
+
+<a id="f1a-island-soul-wine"></a>
+## F1-a — Đối chiếu Island và Soul trên hai client Wine
+
+[Biên nhận p104, công thức tái lập và SHA-256](../evidence/item-families/f1a-island-soul-wine.json).
+Đợt này dùng hai bản chẩn đoán KR 00967, giữ nguyên pack tại client và chạy phòng thường trong mạng
+cô lập. Phép chiếu terrain và deadline của server thử là `emu_choice`.
+
+**Island (`kr_runtime/confirmed` trong ca đo).** Trên `Island09`, A đặt bom công suất 1 tại
+(cột 6, hàng 9). Sau `158` của bom gốc, cả hai view xóa `Block30` ở (6, 10) rồi xóa ba thùng
+kề. Các đợt kế tiếp tiếp tục lan qua thùng mà không có `159/158` riêng giữa các đợt. Cả hai
+client gửi `142` với ô và slot của chính client báo cáo, xen các gói `167`. Slot báo cáo
+không phải owner của tia. Kết quả phù hợp với nhánh phát tia một bước theo bốn hướng tại
+[B9CD85](#f1a-ida-round4); hướng bắc trong ca này đi vào ô đã trống. Trên `Island06`, `Block32`
+chặn A khi còn nguyên. Bom công suất 1 phá ô đó; ô thùng ngay phía sau còn nguyên, không có
+đợt lan tiếp và A đi vào được ô đã mở. Mẫu đọc `FixedBox+0xD0` không thấy chuyển khỏi `-1`;
+ca đo chưa nối nhánh 14 hoặc 0 của `B9CC10` với deadline hay gán owner. Client phát đủ
+nhiều `167` để server thử ngắt hai stream Island09; chưa có hợp đồng đồng bộ terrain hay
+kết thúc ván cho chuỗi này. Một ca trên `Island09` chạm đồng thời `Block31` và `Block03`
+cũng lan sang ba thùng cạnh `Block31`. Chưa cô lập được tác nhân. Ca đặt thêm bom bên cạnh
+không nhận được `159` cho bom thứ hai trước khi stream ngắt, nên chưa đo được chain bom.
+
+**Soul (`kr_runtime/confirmed` trong ca đo, `unknown` về object nội bộ).** Cả hai bản đồ sự
+kiện vào được trận thường từ pack nguyên. Hai view hiển thị sân và vị trí nhân vật khớp với
+UDP khi đi qua đủ tám tọa độ `InnerSoul` và sáu tọa độ `OuterSoul`. Trong các cửa sổ chạm, các gói TCP và UDP quan sát được
+cùng loại với ô đối chứng lân cận; không thấy sprite, thay đổi HUD hoặc hiệu ứng riêng có
+thể gán cho Soul. Ảnh và wire không cho biết `115C770` đã tạo object nội bộ nào hoặc các
+mode khác có kích hoạt chúng hay không. Kết quả không thay đổi phạm vi adapter F1-a.
