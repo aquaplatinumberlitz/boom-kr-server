@@ -214,5 +214,291 @@
         "sha256": "a70559be6f09814725978353d4fe5c58dbd37ac32042f14c321c70accc428ad0"
       }
     ]
+  },
+  "round_3": {
+    "task": "o3-f1a-ida",
+    "baseline": "e8a22f3",
+    "source": "kr_static + emu_choice",
+    "status": "candidate",
+    "scope": "Đọc tĩnh bản sao tạm IDA DB và pack KR 00967 chỉ đọc; hai client tổng hợp qua TLS/relay trong bwrap. Không có Wine, VM, native mới hoặc nâng phân loại họ.",
+    "counts": {
+      "previous_admitted": 164,
+      "newly_admitted": 16,
+      "total_admitted": 180,
+      "adapter_rejected_remaining": 34,
+      "total_f1_ab_maps": 214
+    },
+    "added_tile_rules": [
+      "TileTransParent_Static/Static01, Tile19_Static/Block12: type 1, offset 32 = 1 chỉ ghi map+1D48 (Spring leap, ngoài phạm vi item F1) → static",
+      "Tile07_Ground/Tile00..01: offset 56 = 1 chỉ đọc qua B9E500 trong hàm vẽ → nền thường",
+      "Tile10_Passable/Building00..08, Tile02_Passble/IceHouse00..08: type 3, ba nhóm đồng nhất, offset 44 = 1; nhóm toàn 0 → ray_barriers",
+      "Nền có byte offset 60 khác 0 (CGOTileLap) bị từ chối; không map đã nhận nào bị ảnh hưởng"
+    ],
+    "rejection_groups_after": {
+      "Tile42_gameplay_flags": 8,
+      "passable_variant_flags": 5,
+      "conveyor": 8,
+      "partial_payload": 4,
+      "box_variant_flags": 3,
+      "mine_rail": 5,
+      "service_scope": 1
+    },
+    "static_control": {
+      "build": "KR00967",
+      "unpacked_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "ida_db_sha256_before_open": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+      "initializer": "EA1EE0 / 9B0640 / BB3FD0 / ED2350 / ED23E0",
+      "factories": "EB4C10 / EB48E0 / EBDAD0",
+      "leap": "E9C490 ← B4B5A0 (IUseAbleSpecialItem slot 10, base offset 1424)",
+      "passable": "E90A80 (offset 44) / BA0E30 / BA0EC0 / E9F220 / E9C520",
+      "box": "B9C760 (+0xE0 = byte 33) / B9CC10 → E9EEE0",
+      "ground": "B9D8E0 / B9E500 / B9E4E0",
+      "limits": "Chiếu lên lớp kinds/ray_barriers hiện có. Spring/leap, đánh dấu ô của E9C520 và di chuyển nhân vật không được mô phỏng; chưa có native."
+    },
+    "sc381": "Ghi chú local sc381-re.md: E5D930 (case 381) → E68BB0 bị guard 703A80 (xor al, al) nên không đọc payload trong KR 00967.",
+    "recipe": "python3 tools/f1_pack_matrix.py --game-dir <kr-00967> --binaries rust/target/debug --out local/runs/f1a-ida-expansion --workers 2 với --map cho 16 map mới; rejections.json sinh từ inventory sau sửa.",
+    "newly_admitted_maps": [
+      {
+        "name": "BSSmallCamp08",
+        "code": 84,
+        "status": "passed",
+        "run": "catalog-001",
+        "map_sha256": "69d79eb1cd236caaa531baf712f15f90ace6df9b38647a0cb2588a0a66f20bf3",
+        "terrain_sha256": "32603de216e7e0a188c4f87fb0465613034e1e90eff45be199fc6a46e5221daa"
+      },
+      {
+        "name": "CaJJ_Ocean24",
+        "code": 160,
+        "status": "passed",
+        "run": "catalog-002",
+        "map_sha256": "eae37e9e246995f40bdf7a26c6f29dd828542cf1f07dbc2ad76225f475520276",
+        "terrain_sha256": "ce0397cdb31d8406a46c48f11f910b8ac7c1ee0aafb919e139174c506cfec619"
+      },
+      {
+        "name": "Cemetery04",
+        "code": 199,
+        "status": "passed",
+        "run": "catalog-003",
+        "map_sha256": "3e47921bbe15b82c2bfdf808891e622a853d532818afffdca99cf058d8409f33",
+        "terrain_sha256": "e415d5fab660f2a28c31a0605446e6ef9d5cf3eb3311749e54c7d00aae694e99"
+      },
+      {
+        "name": "Cookie07",
+        "code": 227,
+        "status": "passed",
+        "run": "catalog-004",
+        "map_sha256": "98c43b4ee006378028e73f9d63c0c3c6c8d003cdcb445a479cfa6f58584e49a9",
+        "terrain_sha256": "d6e5c0c7c07fb8028525778b8c28e3ec2882bc4a2f42f816a96700d697e76eb5"
+      },
+      {
+        "name": "EventOcean00",
+        "code": 265,
+        "status": "passed",
+        "run": "catalog-005",
+        "map_sha256": "74ade7833667b37e7ffff8e11f4d74a1dc028ce2b9dcc82abd041fd051bd3497",
+        "terrain_sha256": "900b7959c38c8ac496f4f2cca094682b447a9b77a644e7a4524c97b3059d8128"
+      },
+      {
+        "name": "Island02",
+        "code": 412,
+        "status": "passed",
+        "run": "catalog-006",
+        "map_sha256": "ec59b0b932279cc6df1dfd8b5ddeaf1c8b65010a8eafac098707706f82cd49aa",
+        "terrain_sha256": "df3ab46556a4b48ed7274a1b90a13b69049d0ec3031261e5d4935d7c8fa713da"
+      },
+      {
+        "name": "Island13",
+        "code": 423,
+        "status": "passed",
+        "run": "catalog-007",
+        "map_sha256": "0c137b6be41a60c8dc1a580ead2ee01539936f11eecbf931b414390a9cf1b69d",
+        "terrain_sha256": "f23bfa48a5e8e544f47346e6058b02d3d433df364f39c004e421f45231fbf1b8"
+      },
+      {
+        "name": "Island14",
+        "code": 424,
+        "status": "passed",
+        "run": "catalog-008",
+        "map_sha256": "e0d937740ee4099ee24a1f6f6286a2bb7f01380d36c56d66ee12df309ab53480",
+        "terrain_sha256": "7454235576e41f33fa2acdf1baf9558bab54acda91949f16ef7a29c4a836c471"
+      },
+      {
+        "name": "NXCL_Ice13",
+        "code": 868,
+        "status": "passed",
+        "run": "catalog-009",
+        "map_sha256": "8af89068ee938b69ac498d2e5052cca5a046dd0baf404e877657ca30410702e3",
+        "terrain_sha256": "db0b1b367807e9f5033c613c310907e59189ff984c5283b19d818aa022810941"
+      },
+      {
+        "name": "NXCL_Ocean02",
+        "code": 870,
+        "status": "passed",
+        "run": "catalog-010",
+        "map_sha256": "05429180775495598bc054a84ac988f2bc15f42f7673c6174e858a240f68ca16",
+        "terrain_sha256": "be86ed0322ce643261514711a4d6fb8bc8db284af6977fefb7702b0a10182e7d"
+      },
+      {
+        "name": "Ocean00",
+        "code": 875,
+        "status": "passed",
+        "run": "catalog-011",
+        "map_sha256": "34eaed0178775819c79bdc9c9913106f634fbba1ef1502d6803eeb802e390f62",
+        "terrain_sha256": "fde092f0c05fbc6363f53b389f1e5a42a3f8380f48c5c0f695dff2de704deabd"
+      },
+      {
+        "name": "Ocean01",
+        "code": 876,
+        "status": "passed",
+        "run": "catalog-012",
+        "map_sha256": "b7c17925d677a40ac93f11c687495acb262d683b999421de11fbe98dcc13f5f3",
+        "terrain_sha256": "4700a06e84bd75d7782279d9fc873677b92c152de1c64864ffc8d2680c75f6d9"
+      },
+      {
+        "name": "Ocean02",
+        "code": 877,
+        "status": "passed",
+        "run": "catalog-013",
+        "map_sha256": "b4ef85cae12cff5aa9f7f72eed9cb2ff8e2f2bd4f6e26ee94d7111e2ad6489e0",
+        "terrain_sha256": "be86ed0322ce643261514711a4d6fb8bc8db284af6977fefb7702b0a10182e7d"
+      },
+      {
+        "name": "Ocean08",
+        "code": 879,
+        "status": "passed",
+        "run": "catalog-014",
+        "map_sha256": "689c12c9ba4695cdd7604d11266047ef34a06a5be5f6e9d2cfc6a11f1ac95337",
+        "terrain_sha256": "8bdd243f69b3570f4e3d8f14d1dad8f59af95219a0bb8dfcdc5b0154426a20a8"
+      },
+      {
+        "name": "Ocean24",
+        "code": 880,
+        "status": "passed",
+        "run": "catalog-015",
+        "map_sha256": "eae37e9e246995f40bdf7a26c6f29dd828542cf1f07dbc2ad76225f475520276",
+        "terrain_sha256": "ce0397cdb31d8406a46c48f11f910b8ac7c1ee0aafb919e139174c506cfec619"
+      },
+      {
+        "name": "Ocean26",
+        "code": 881,
+        "status": "passed",
+        "run": "catalog-016",
+        "map_sha256": "7d0f354f5e2db5cba6c2b01a60827c1f514a88d85b22f0d78e0790563c74619f",
+        "terrain_sha256": "5d40c68b68c166abd7884379c4387452d28f1830d9eb004467f81fcc09da436a"
+      }
+    ],
+    "bundle_manifest_sha256": "5f54d29fe316b204633d8235c03c055451da4d17622e43d1ed1b71debff0827e",
+    "binaries": {
+      "kr-service": "99a07daaf0dd7c0f3b18f8617d9f57373ac66a3d41fb8ab674e55a72d48b1b5f",
+      "kr-load": "c0abc6e70b0a6148663d741fd47b0aaab60f9f3c49439010238c29b74205760c"
+    },
+    "result": "16/16 map mới có map_results complete đúng mã/tên cùng CaJJ_Clover01 đối chứng; driver kr-load bắt buộc ACK 117 và Start121 đúng mã trước round_active, hai client về phòng (round_returned 2/2, fixed_items_confirmed 2/2) và room_closed sạch. 164 map đã nhận trước đó giữ nguyên terrain/floor trong inventory.",
+    "evidence": [
+      {
+        "path": "local/runs/f1a-ida-expansion/static/ida-decompile.json",
+        "bytes": 66016,
+        "sha256": "88f18ad6038acb8b921bd3120ee9b11899f8b36e6c2c8a10f52d935d1315528b"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/rejections.json",
+        "bytes": 14512,
+        "sha256": "2cdc37e927a4fb14725e8dc661945357086e6ff77e909818a2d3fa5871205485"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/inventory.json",
+        "bytes": 403951,
+        "sha256": "2e39a7cd85f2296a4013c0d0fd79657b011dee209d4ea1d1f50b0a80b751231c"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/matrix.json",
+        "bytes": 450014,
+        "sha256": "b1fc6807c4f5f6560d97eca755e4bca1511bd88a542757605a251b3c0604363a"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/sc381-re.md",
+        "bytes": 3530,
+        "sha256": "531be382764ec01475c79006851fa494f991359bb4b7b33bbb7c63009f2839b9"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-001/verification.json",
+        "bytes": 688,
+        "sha256": "7302a5253ccd13cbc478f902e78f418502d3f77b249f6805b0adc1106706c241"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-002/verification.json",
+        "bytes": 688,
+        "sha256": "46addb79d54f9b5ab0b9c7c71b07b59e197fbb8596465d9974b5156817fb527b"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-003/verification.json",
+        "bytes": 684,
+        "sha256": "af03a76584c7733d7cc97677b1d71b56129139ea4de79bf8074c6657bd1a7634"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-004/verification.json",
+        "bytes": 680,
+        "sha256": "39d4cabccd67c2fa7887d399585daf4319bf55e36d525a5302993b6fce388090"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-005/verification.json",
+        "bytes": 688,
+        "sha256": "f634da542fcc0ee94a0b93a9c7011ecd551e248db9a99a809beed0e4859e32a7"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-006/verification.json",
+        "bytes": 680,
+        "sha256": "d62a6852d9d567b5a4c063f188aad35f4807adfb188276735b58db0863bc8a36"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-007/verification.json",
+        "bytes": 680,
+        "sha256": "57311f147871be6569779613598d9a2e1058d3ee814d4cd21cf7606a9395b094"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-008/verification.json",
+        "bytes": 680,
+        "sha256": "fe19037389bf3ff33179768cdc549e8b0040cb83cd472f0e9c4178cd474d0b2b"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-009/verification.json",
+        "bytes": 684,
+        "sha256": "6e01fbfa9899252e89341e10007c31049eb4815576fdc409a690d9327077c945"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-010/verification.json",
+        "bytes": 688,
+        "sha256": "3f741f9de8dca5ffd4cc7d57bdac8c837b394bc5655f6f10ed3c556cc74b305d"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-011/verification.json",
+        "bytes": 678,
+        "sha256": "83f09c7dfd6d367df75777d9d75662318e6fbc2f688e0a94ac58313f6175e543"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-012/verification.json",
+        "bytes": 678,
+        "sha256": "a76f8200c3e4bf7e8754c56ef27f6d39c73f752064fe52609047822e090d55bb"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-013/verification.json",
+        "bytes": 678,
+        "sha256": "14e8599b31335992400329e7d70ebb8a98e8d93969b015ec870b41ce21a5aa99"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-014/verification.json",
+        "bytes": 678,
+        "sha256": "fbab62d7776b86aad602914f1ca79ea9294c632c456b15ba6d100ee6384e1158"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-015/verification.json",
+        "bytes": 678,
+        "sha256": "1695b65d91cf03d0454132c1f76fd01d38487696e8977559b507c97201a5621e"
+      },
+      {
+        "path": "local/runs/f1a-ida-expansion/catalog-016/verification.json",
+        "bytes": 678,
+        "sha256": "5faa8f5095f6d8bcfa1acdd73fb343635b1135c9015ab5afcee27705d98ca60c"
+      }
+    ]
   }
 }

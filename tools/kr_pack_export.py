@@ -169,6 +169,19 @@ _TYPE1_PIN_FLAGS = {
     'Tile62_Static/PinPillar_right': 1,
     'Tile62_Static/PinPillar_up': 16777216,
 }
+# Ground offset 56 is copied by B9D8E0 and read only through B9E500, whose
+# callers are bomber/NPC draw routines (alpha 128). No blocking or ray role.
+_WATER_RENDER_GROUNDS = frozenset(('Tile07_Ground/Tile00', 'Tile07_Ground/Tile01'))
+# Type-1 offset 32 sets map+1D48 via BB3FD0/EA7C90. Its only reader E9C490
+# serves IUseAbleSpecialItem slot 10 (B4B5A0, the range-3 leap that tile
+# names call "cantjump"); that special item is outside the F1 item scope.
+_TYPE1_LEAP_BARRIERS = frozenset(('TileTransParent_Static/Static01', 'Tile19_Static/Block12'))
+# Type 3 with offset 44 set enables the directional checks of E9F220/E9C520
+# (E90A80). These pieces have identical uniform groups at offsets 24, 28, 32:
+# all ones is clear, all zero cannot be entered or left by a ray (as 1D24).
+_UNIFORM_PASSABLE_PIECES = frozenset(
+    [f'Tile10_Passable/Building0{i}' for i in range(9)]
+    + [f'Tile02_Passble/IceHouse0{i}' for i in range(9)])
 
 
 def f1_terrain_rules(profile, table):
@@ -206,7 +219,11 @@ def f1_terrain_rules(profile, table):
         if d is None:
             return
         factory_flag = key == 'Tile03_Ground/Tile07' and d[12:15] == (1, 0, 0)
-        if d[:6] != _GROUND or d[8:11] != (0, 0, -1) or (any(d[12:15]) and not factory_flag):
+        water_flag = key in _WATER_RENDER_GROUNDS and d[12:15] == (0, 0, 1)
+        if (d[:6] != _GROUND or d[8:11] != (0, 0, -1)
+                or (any(d[12:15]) and not (factory_flag or water_flag))
+                or d[15] & 0xFF):
+            # A nonzero byte at offset 60 selects CGOTileLap in EB48E0.
             fail(index, 'nền', key)
         if not (1 <= d[6] <= width and 1 <= d[7] <= height and d[11] in (0, 1)):
             fail(index, 'nền/footprint', key)
@@ -219,6 +236,7 @@ def f1_terrain_rules(profile, table):
             for cell in footprint(index, d, key):
                 ray[cell] = 1
 
+    spawn_cells = {y * width + x for x, y in profile['spawns']}
     for index, (base, obj, *overlay) in enumerate(profile['cells']):
         if any(code != -1 for code in overlay):
             fail(index, 'overlay', overlay)
@@ -228,7 +246,9 @@ def f1_terrain_rules(profile, table):
             continue
         if d[0] == 0 and d[6:8] == (1, 1) and not d[11]:
             ground(index, key, d)
-        elif d[:6] == (1, 0, 0, 0, 0, 0) and d[8:11] == (0, 0, _TYPE1_PIN_FLAGS.get(key, 0)):
+        elif d[:6] == (1, 0, 0, 0, 0, 0) and (
+                d[8:11] == (0, 0, _TYPE1_PIN_FLAGS.get(key, 0))
+                or (key in _TYPE1_LEAP_BARRIERS and d[8:11] == (1, 0, 0) and not any(d[12:]))):
             # EA1EE0 writes the two flags for type 1 after BA1350, using
             # the dimensions and type regardless of the trailing dwords.
             for cell in footprint(index, d, key):
@@ -265,6 +285,15 @@ def f1_terrain_rules(profile, table):
             # its trailing render/cache words are opaque to EA1EE0 and are
             # deliberately excluded from the terrain projection.
             pass
+        elif (key in _UNIFORM_PASSABLE_PIECES and d[:6] == (3, 0, 0, 0, 0, 0)
+              and d[6] == d[7] == d[8] and d[6] in (0, _PASS_ALL)
+              and d[9:13] == (0, 0, 1, 0) and d[13] not in (100, 101)):
+            # EB4C10 still builds CGOTilePassable (offset 4 is 0, offset 52
+            # is not 101; 6D29B0 tests 100). Offsets 56-68 are not read.
+            if d[6] == 0:
+                if index in spawn_cells:
+                    fail(index, 'spawn trên ô type 3 bị chặn', key)
+                ray[index] = 1
         else:
             fail(index, 'vật thể/cờ', key)
 
