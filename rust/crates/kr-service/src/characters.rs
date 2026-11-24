@@ -4,6 +4,73 @@
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, io};
 
+// KR 00967 BomberAttr: key, speed/max, capacity/max, power/max.
+// Only the 33 members of cluster_character in f1-full-ida-clusters.json.
+// The same-group rows 4019, 4025 and 4026 are excluded controls.
+const CLASS_C_ROWS: [(u16, u8, u8, usize, usize, u8, u8); 33] = [
+    (4000, 5, 9, 2, 9, 1, 9),
+    (4001, 5, 8, 1, 9, 2, 9),
+    (4002, 5, 9, 1, 9, 1, 8),
+    (4003, 5, 9, 2, 8, 2, 8),
+    (4004, 6, 9, 3, 9, 3, 7),
+    (4005, 6, 9, 3, 9, 3, 7),
+    (4006, 7, 10, 3, 10, 3, 10),
+    (4007, 6, 9, 3, 9, 3, 7),
+    (4008, 6, 9, 3, 9, 3, 7),
+    (4009, 6, 9, 3, 9, 3, 7),
+    (4010, 6, 9, 3, 9, 3, 7),
+    (4011, 6, 9, 3, 9, 3, 7),
+    (4012, 6, 9, 3, 9, 3, 7),
+    (4013, 6, 9, 3, 9, 3, 7),
+    (4014, 6, 9, 3, 9, 3, 7),
+    (4015, 6, 9, 3, 9, 3, 7),
+    (4016, 6, 9, 3, 9, 3, 7),
+    (4017, 5, 9, 2, 9, 1, 7),
+    (4018, 7, 10, 3, 10, 3, 10),
+    (4020, 6, 9, 3, 9, 3, 7),
+    (4021, 6, 9, 3, 9, 3, 7),
+    (4022, 6, 9, 3, 9, 3, 7),
+    (4023, 6, 9, 3, 9, 3, 7),
+    (4024, 6, 9, 3, 7, 5, 8),
+    (4027, 6, 9, 3, 9, 3, 7),
+    (4028, 8, 10, 2, 9, 3, 6),
+    (4029, 7, 10, 3, 10, 3, 10),
+    (4030, 7, 10, 3, 10, 3, 10),
+    (5000, 4, 9, 1, 9, 3, 7),
+    (5001, 4, 9, 1, 9, 3, 7),
+    (5002, 4, 9, 1, 9, 3, 7),
+    (5003, 2, 2, 1, 1, 3, 7),
+    (5004, 4, 9, 1, 9, 3, 7),
+];
+
+fn class_c_index(key: u16) -> Option<usize> {
+    CLASS_C_ROWS.binary_search_by_key(&key, |row| row.0).ok()
+}
+
+pub(crate) fn is_class_c(key: u16) -> bool {
+    class_c_index(key).is_some()
+}
+
+fn class_c_stats(key: u16) -> Option<Stats> {
+    let (_, speed, maximum_speed, capacity, maximum_capacity, power, maximum_power) =
+        CLASS_C_ROWS[class_c_index(key)?];
+    Some(Stats {
+        capacity,
+        maximum_capacity,
+        power,
+        maximum_power,
+        speed,
+        maximum_speed,
+    })
+}
+
+/// C2S79 carries one byte per local player. For a Class C choice the KR
+/// writer can send the low byte or its fallback 5 (ownership check failed).
+/// Neither byte is a new selection or evidence of the client's active actor.
+pub(crate) fn class_c_loading79_matches(key: u16, selected: u8) -> bool {
+    is_class_c(key) && (selected == key.to_le_bytes()[0] || selected == 5)
+}
+
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
 pub(crate) struct Stats {
@@ -99,6 +166,29 @@ impl Catalog {
             return Err(io::Error::other("invalid F1 pack character catalog"));
         }
         Ok(Self(rows))
+    }
+    pub(crate) fn player_round(
+        keys: &[u16],
+        pack_stats: Option<&BTreeMap<u16, Stats>>,
+        allow_class_c_characters: bool,
+    ) -> io::Result<Self> {
+        let mut ordinary = Vec::with_capacity(keys.len());
+        let mut class_c = BTreeMap::new();
+        for &key in keys {
+            if allow_class_c_characters && let Some(stats) = class_c_stats(key) {
+                if !stats.valid() || class_c.insert(key, stats).is_some() {
+                    return Err(io::Error::other("invalid F1 Class C character catalog"));
+                }
+            } else {
+                ordinary.push(key);
+            }
+        }
+        let mut catalog = match pack_stats {
+            Some(rows) => Self::from_pack(&ordinary, rows.clone())?,
+            None => Self::measured(&ordinary)?,
+        };
+        catalog.0.extend(class_c);
+        Ok(catalog)
     }
     pub(crate) fn maximum_power(&self) -> u8 {
         self.0

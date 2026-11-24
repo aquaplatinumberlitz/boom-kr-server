@@ -169,6 +169,8 @@ pub struct RoomRules {
     /// Staged room-only choices. Battle with chosen characters needs its own
     /// measured Start/stat projection before this policy can serve a round.
     pub(crate) player_choices: bool,
+    /// Explicit opt-in to statically verified Class C rows in a player round.
+    pub(crate) allow_class_c_characters: bool,
     /// Opt-in ninth diagnostic lobby actor for the full-room negative consumer.
     pub(crate) ninth_admission_probe: bool,
 }
@@ -248,6 +250,7 @@ impl RoomRules {
                 life_actions: cfg.life_actions,
                 item_policy: cfg.item_policy,
                 player_choices: false,
+                allow_class_c_characters: cfg.allow_class_c_characters,
                 map_bomb_cancellation: cfg
                     .map_choices
                     .iter()

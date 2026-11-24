@@ -1,0 +1,59 @@
+{
+  "schema": "kre-f1c-classc-rust-v1",
+  "task": "p109",
+  "issue": 571,
+  "build": "KR 00967",
+  "source": "kr_static + emu_choice",
+  "status": "confirmed",
+  "scope": "Chỉ xác nhận catalog và hành vi của adapter phòng trong kiểm thử Rust.",
+  "image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+  "bomber_attr_sha256": "193e72b822939ac01f8fe7a15369c412da41bc2d9ada0e93fd3ba5c8ee260870",
+  "sources": [
+    {
+      "path": "docs/evidence/content/f1-full-ida-clusters.json",
+      "pr": 613,
+      "sha256": "afcde66f708d44a082077bef28ff7ff01a421f7123de243be718fcdb5ef0cdae",
+      "locator": "cluster_character và character_other_excluded_control; loader 0x13500D0, tra khóa 0x1350840.",
+      "status": "confirmed",
+      "limit": "Các trường f2..f7 là tốc độ, sức chứa, tầm bom và các trần. Các hàng nạp được chưa chứng minh quyền chọn."
+    },
+    {
+      "path": "docs/evidence/content/f1-aux-opcodes-and-classc-ida.json",
+      "pr": 621,
+      "sha256": "8ba8021fc8a1fc236557229652b068e7d1292a7502f455a1be22ecf90cc5e322",
+      "locator": "start121_character_u16, c2s79_writer, c2s79_large_keys, e0f770_mode95; VA 0xDC8A2A, 0xD75D70, 0xD7CC20 và 0xE0F770.",
+      "status": "confirmed",
+      "limit": "Độ rộng trường và các nhánh writer là xác nhận tĩnh; byte nào được gửi cho từng khóa còn là candidate."
+    }
+  ],
+  "class_c_keys": {
+    "count": 33,
+    "f1_3": [4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4010, 4011, 4012, 4013, 4014, 4015, 4016, 4017, 4018, 4020, 4021, 4022, 4023, 4024, 4027, 4028, 4029, 4030],
+    "f1_4": [5000, 5004],
+    "f1_6": [5001, 5002, 5003],
+    "excluded_controls": [4019, 4025, 4026]
+  },
+  "policy": [
+    "Opt-in ở fixed_room.allow_class_c_characters và whitelist ở managed_rooms.player_round.characters.",
+    "Catalog ghép hàng tĩnh lớp C với hàng F1 thường đã kiểm. Giữ nguyên trần địa hình hiện hành.",
+    "Start121 mang khóa u16. Loading79 lớp C nhận byte thấp hoặc 5 đúng một lần cho thành viên hiện hành trong Loading; không đổi lựa chọn hay hàng rào loading."
+  ],
+  "verification": {
+    "test_file": "rust/crates/kr-service/src/room_io_f1c_classc_tests.rs",
+    "reproduce": "cargo test --manifest-path rust/Cargo.toml --locked -p kr-service room_io_f1c_classc_tests",
+    "coverage": "Catalog, giới hạn chỉ số, lựa chọn, khôi phục trước setup và wire Start121/Loading79. Kiểm đủ 33 khóa trong roster tổng hợp. Có đối chứng tắt cờ, khóa không được cấu hình, khóa lạ, sai byte, sai pha và gói lặp."
+  },
+  "limits": [
+    "Không chạy Wine, VM, client KR hoặc IDA trong p109.",
+    "Chưa xác nhận selector/UI, sở hữu, byte Loading79 thực tế, spawn, skill riêng hoặc hành vi server gốc cho các khóa này.",
+    "Loading79 nhiều người chơi cục bộ chưa được hỗ trợ. CP395 giữ nguyên phạm vi native của C03/C05."
+  ],
+  "docs_sync": {
+    "docs/protocol/f1-aux-opcodes-and-classc.md": "updated",
+    "docs/PLAN.md": "unchanged",
+    "docs/RESEARCH.md": "unchanged",
+    "docs/COVERAGE.md": "unchanged",
+    "docs/features.json": "unchanged",
+    "docs/evidence/checkpoints/": "unchanged"
+  }
+}

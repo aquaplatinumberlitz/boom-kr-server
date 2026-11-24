@@ -27,6 +27,8 @@ pub struct Config {
     pub(crate) life_actions: crate::life_actions::Policy,
     #[serde(default)]
     pub(crate) endpoint_policy: rules::EndpointPolicy,
+    #[serde(default)]
+    pub(crate) allow_class_c_characters: bool,
     pub title: String,
     #[serde(default)]
     pub map_profile: Option<crate::FixturePin>,
@@ -156,6 +158,7 @@ pub(crate) fn load_managed_round(
             life_actions: crate::life_actions::Policy::Disabled,
             item_policy: pickups::Policy::Disabled,
             player_choices: false,
+            allow_class_c_characters: false,
             map_bomb_cancellation: false,
         };
         (
@@ -216,13 +219,15 @@ pub(crate) fn load_player_round(
     cfg: &PlayerRoundConfig,
     prototype: &Shared,
 ) -> io::Result<Arc<ManagedRound>> {
-    let characters = match &cfg.pack_stats {
-        Some(rows) => crate::characters::Catalog::from_pack(&cfg.characters, rows.clone())?,
-        None => crate::characters::Catalog::measured(&cfg.characters)?,
-    };
     let source = prototype
         .lock()
         .map_err(|_| err("room prototype unavailable"))?;
+    let allow_class_c_characters = source.rules.allow_class_c_characters;
+    let characters = crate::characters::Catalog::player_round(
+        &cfg.characters,
+        cfg.pack_stats.as_ref(),
+        allow_class_c_characters,
+    )?;
     if !matches!(
         source.rules.endpoint,
         rules::EndpointPolicy::LegacyDirect | rules::EndpointPolicy::AuthenticatedRelay
@@ -259,6 +264,7 @@ pub(crate) fn load_player_round(
             slot_allocation: rules::SlotAllocation::FirstVacant,
             endpoint: source.rules.endpoint,
             player_choices: true,
+            allow_class_c_characters,
             ninth_admission_probe: false,
             life_actions: source.rules.life_actions,
             item_policy: source.rules.item_policy,
@@ -2224,7 +2230,20 @@ impl Session {
         let member = runtime.member(self.identity, self.connection)?;
         Self::validate_character(&runtime, member.key, 0)?;
         Self::validate_character(&runtime, member.key, character)?;
-        runtime.model.restore_character(member.key, character)
+        if runtime.rules.allow_class_c_characters && crate::characters::is_class_c(character) {
+            // Use the baseline restore fence to validate pre-setup ownership
+            // and phase before installing the already validated Class C key.
+            runtime.model.restore_character(member.key, 0)?;
+            runtime
+                .model
+                .members
+                .get_mut(&self.identity)
+                .expect("current member")
+                .character = Some(character);
+            Ok(())
+        } else {
+            runtime.model.restore_character(member.key, character)
+        }
     }
     pub(crate) fn prepare_character(&self, body: &[u8]) -> io::Result<Option<(Membership, u16)>> {
         let runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
@@ -2499,21 +2518,40 @@ impl Session {
         let mut life = None;
         match opcode {
             79 => {
-                // Native sends this two-byte observation after Start121.
-                // Its meaning is opaque; require an exact match to the current
-                // catalog choice without truncating the u16 character key.
+                // Single-local-player observation after Start121.
                 let member = r.member(self.identity, self.connection)?;
                 let [0x5b, selected] = body else {
                     return Err(err("unsupported observed79 profile/body"));
                 };
-                if r.managed_round
+                let catalog = r
+                    .managed_round
                     .as_ref()
-                    .is_none_or(|p| p.characters.is_none())
+                    .and_then(|p| p.characters.as_ref())
+                    .ok_or_else(|| err("unsupported observed79 profile/body"))?;
+                let selected = read_uint(&[*selected], Width::U8).map_err(io::Error::other)? as u8;
+                if r.rules.allow_class_c_characters
+                    && member.character.is_some_and(|key| {
+                        catalog.get(key).is_ok()
+                            && crate::characters::class_c_loading79_matches(key, selected)
+                    })
                 {
-                    return Err(err("unsupported observed79 profile/body"));
+                    // Adapt the staged member to the existing exact-match
+                    // guard. Publish only its observation bit; the u16 choice
+                    // stays intact even when the client reports its fallback.
+                    let staged = next
+                        .members
+                        .get_mut(&self.identity)
+                        .expect("current member");
+                    staged.character = Some(u16::from(selected));
+                    let observation = next.observe_loading79(member.key, selected);
+                    next.members
+                        .get_mut(&self.identity)
+                        .expect("current member")
+                        .character = member.character;
+                    observation?;
+                } else {
+                    next.observe_loading79(member.key, selected)?;
                 }
-                let selected = read_uint(&[*selected], Width::U8).map_err(io::Error::other)?;
-                next.observe_loading79(member.key, selected as u8)?;
             }
             528 => {
                 if !body.is_empty() {
@@ -5073,6 +5111,7 @@ mod ninth_probe_tests {
                 life_actions: crate::life_actions::Policy::Disabled,
                 item_policy: pickups::Policy::Disabled,
                 player_choices: false,
+                allow_class_c_characters: false,
                 slot_allocation: rules::SlotAllocation::LegacyIdentity,
                 endpoint: rules::EndpointPolicy::LegacyDirect,
             },
@@ -5676,6 +5715,10 @@ mod room_io_f1e_tests;
 #[cfg(test)]
 #[path = "room_io_f1d_vehicles_tests.rs"]
 mod room_io_f1d_vehicles_tests;
+
+#[cfg(test)]
+#[path = "room_io_f1c_classc_tests.rs"]
+mod room_io_f1c_classc_tests;
 
 #[cfg(test)]
 #[path = "room_io_item_tests.rs"]
