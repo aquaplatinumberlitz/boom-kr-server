@@ -2256,17 +2256,33 @@ impl Session {
             runtime.model.restore_character(member.key, character)
         }
     }
+    fn is_class_c_presetup_reset(
+        rules: &rules::RoomRules,
+        phase: &Phase,
+        member: &crate::room::Member,
+        character: u16,
+    ) -> bool {
+        rules.allow_class_c_characters
+            && *phase == Phase::Idle
+            && !member.setup
+            && member.character.is_some_and(crate::characters::is_class_c)
+            && character == 0
+    }
     pub(crate) fn prepare_character(&self, body: &[u8]) -> io::Result<Option<(Membership, u16)>> {
         let runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
         let member = runtime.member(self.identity, self.connection)?;
         let character = wire::character92(body)?;
+        if !runtime.rules.player_choices {
+            return Err(err("character choice disabled"));
+        }
+        if Self::is_class_c_presetup_reset(&runtime.rules, &runtime.model.phase, &member, character)
+        {
+            return Ok(None);
+        }
         // Validate phase/setup/current membership before a soft rejection. This
         // preview never clears Ready in the published room or touches the DB.
         let mut preview = runtime.model.clone();
         preview.choose(member.key, member.character, None)?;
-        if !runtime.rules.player_choices {
-            return Err(err("character choice disabled"));
-        }
         let catalog = runtime
             .managed_round
             .as_ref()
@@ -2838,54 +2854,60 @@ impl Session {
                 } else {
                     (None, Some(wire::team97(body)?))
                 };
-                let unsupported = character.is_some_and(|key| {
-                    r.managed_round
-                        .as_ref()
-                        .and_then(|p| p.characters.as_ref())
-                        .map_or(!matches!(key, 0 | 1), |catalog| catalog.get(key).is_err())
-                });
-                if unsupported {
-                    let mut preview = next.clone();
-                    preview.choose(member.key, member.character, None)?;
-                    // Reuse measured 110 to restore the authoritative selection.
-                    // No invented error packet, DB write, peer update or Ready clear.
-                    effects.push((
-                        member.key.identity,
-                        Runtime::member_batch(
-                            member.key,
-                            None,
-                            0,
-                            vec![("character-rejected110".into(), r.slot(&member, next.host)?)],
-                        ),
-                    ));
-                    character_rejection = Some("unmeasured_character");
+                if let Some(key) = character
+                    && Self::is_class_c_presetup_reset(&r.rules, &next.phase, &member, key)
+                {
+                    character_rejection = Some("class_c_presetup_reset_ignored");
                 } else {
-                    if let Some(character) = character
-                        && let Some(catalog) =
-                            r.managed_round.as_ref().and_then(|p| p.characters.as_ref())
-                    {
-                        catalog.get(character)?;
-                    }
-                    next.choose(member.key, character, team)?;
-                    // Reserve all recipient queues before publishing any choice or
-                    // Ready clear. Each batch carries the current subject fence.
-                    for peer in Runtime::transport_representatives(
-                        next.members.values().filter(|peer| peer.setup),
-                    ) {
-                        let slots = next
-                            .members
-                            .values()
-                            .filter(|subject| subject.setup)
-                            .map(|subject| {
-                                Ok((
-                                    format!("choice110-{}", subject.slot),
-                                    r.slot(subject, next.host)?,
-                                ))
-                            })
-                            .collect::<io::Result<Vec<_>>>()?;
-                        let mut batch = Runtime::member_batch(peer.key, None, 0, slots);
-                        batch.subject = Some(member.key);
-                        effects.push((peer.key.identity, batch));
+                    let unsupported = character.is_some_and(|key| {
+                        r.managed_round
+                            .as_ref()
+                            .and_then(|p| p.characters.as_ref())
+                            .map_or(!matches!(key, 0 | 1), |catalog| catalog.get(key).is_err())
+                    });
+                    if unsupported {
+                        let mut preview = next.clone();
+                        preview.choose(member.key, member.character, None)?;
+                        // Reuse measured 110 to restore the authoritative selection.
+                        // No invented error packet, DB write, peer update or Ready clear.
+                        effects.push((
+                            member.key.identity,
+                            Runtime::member_batch(
+                                member.key,
+                                None,
+                                0,
+                                vec![("character-rejected110".into(), r.slot(&member, next.host)?)],
+                            ),
+                        ));
+                        character_rejection = Some("unmeasured_character");
+                    } else {
+                        if let Some(character) = character
+                            && let Some(catalog) =
+                                r.managed_round.as_ref().and_then(|p| p.characters.as_ref())
+                        {
+                            catalog.get(character)?;
+                        }
+                        next.choose(member.key, character, team)?;
+                        // Reserve all recipient queues before publishing any choice or
+                        // Ready clear. Each batch carries the current subject fence.
+                        for peer in Runtime::transport_representatives(
+                            next.members.values().filter(|peer| peer.setup),
+                        ) {
+                            let slots = next
+                                .members
+                                .values()
+                                .filter(|subject| subject.setup)
+                                .map(|subject| {
+                                    Ok((
+                                        format!("choice110-{}", subject.slot),
+                                        r.slot(subject, next.host)?,
+                                    ))
+                                })
+                                .collect::<io::Result<Vec<_>>>()?;
+                            let mut batch = Runtime::member_batch(peer.key, None, 0, slots);
+                            batch.subject = Some(member.key);
+                            effects.push((peer.key.identity, batch));
+                        }
                     }
                 }
             }
