@@ -1100,3 +1100,46 @@ cùng luật terrain/floor cũ giống từng byte. Tám map còn bị từ ch�
 native, Wine hoặc VM. Phép đo Wine tùy chọn để nâng phép chiếu: hai view trên `Factory00` đặt bom trên ô băng rồi
 đứng lên băng, ghi ô bom lúc nổ và vị trí nhân vật; một bom Tent của `Desert00` với thùng ở bốn hướng để chốt trục
 bắc–nam. [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json) ghi ở khóa `round_5`.
+
+<a id="f1a-island-soul-wine"></a>
+## F1-a — Đối chiếu Island và Soul trên hai client Wine
+
+[Biên nhận p104, công thức tái lập và SHA-256](../evidence/item-families/f1a-island-soul-wine.json).
+Đợt này dùng hai bản chẩn đoán KR 00967 và chạy phòng thường trong mạng cô lập. Bốn payload map,
+`ObjectTable` và `TileInfoList` của gói Wine khớp từng byte với nguồn KR. Phép chiếu terrain và
+deadline của server thử là `emu_choice`.
+
+**Island (`kr_runtime/confirmed` trong ca đo).** Trên `Island09`, A đặt bom công suất 1 tại
+(cột 6, hàng 9). Sau `158` của bom gốc, cả hai view xóa `Block30` ở (6, 10) rồi xóa ba thùng
+kề. Các đợt kế tiếp tiếp tục lan qua thùng mà không có `159/158` riêng giữa các đợt. Cả hai
+client gửi `142` với ô và slot của chính client báo cáo, xen các gói `167`. Slot báo cáo
+không phải owner của tia. Kết quả phù hợp với nhánh phát tia một bước theo bốn hướng tại
+`B9CD85`; hướng bắc trong ca này đi vào ô đã trống. Một ca tiếp theo trên Island09 dọn
+`Block03` trước và chỉ chạm `Block31`; hai view vẫn thấy ba thùng kề bị phá.
+
+**Đính chính đối chiếu đợt 4.** Byte `+33` trong trường XML `Data` bằng 1 ở cả
+`Block30/31/32`. Byte `+34` bằng 1 ở `Block31/32` và bằng 0 ở `Block30`;
+`+29/+30` đều bằng 0 trong ba hàng này. Trên `Island06`, ô (0, 9) trong ca âm
+ban đầu là `Block33`, còn `Block32` nằm ngay sau tại (0, 10). Hai view đọc được
+`FixedBox+0xE0 = 0` ở `Block33` và `1` ở `Block32`. Cả hai loại chặn di
+chuyển trước khi bị phá; chỉ cú nổ ở `Block32` làm mất thêm các ô kề trong ca đối chứng.
+Chưa rõ nghĩa byte `+34`. Mẫu `FixedBox+0xD0` chỉ thấy `-1`. Tĩnh cho thấy `B9CEC0`
+có thể nạp 14 khi thùng còn giá trị bảo vệ khác 0; nhánh phá thành công đặt lại `-1`.
+`B9CC10` dùng các mốc 14 và 0 để cập nhật trạng thái thùng. Đây không phải deadline bom
+của server. Burst `167` ở Island09 vẫn có thể làm server thử ngắt stream.
+
+**Bom kề.** Ca trên Island09 bị ngắt trước khi bom kề nhận `159`. Trên Island06,
+dọn hai Block33 để đặt bom A ở (0, 9) và bom B ở (1, 10), chéo nhau qua Block32
+ở (0, 10). Sau `158` của bom A, hai view thấy tia qua ô bom B và tới (2, 10),
+ngoài phạm vi một bước từ Block32. B phát `127/sub17` trước `158` của bom B.
+Đó là chain cục bộ trong ca đo. Trường thứ hai của blob là `-1`; writer `B77FD0`
+có giá trị mặc định này và chỉ tra `B71670` khi đối số nguồn khác 0. Chưa trace đường
+nguồn trên cùng ván, nên chưa biết công thức ghi công hit. Chưa lặp được cùng bố cục
+cho Block30.
+
+**Soul (`kr_runtime/confirmed` trong ca đo, `unknown` về object nội bộ).** Cả hai bản đồ sự
+kiện vào được trận thường với payload map nguyên. Hai view hiển thị sân và vị trí nhân vật khớp với
+UDP khi đi qua đủ tám tọa độ `InnerSoul` và sáu tọa độ `OuterSoul`. Trong các cửa sổ chạm,
+các gói TCP và UDP quan sát được cùng loại với ô đối chứng lân cận; không thấy sprite, thay đổi HUD hoặc hiệu ứng riêng có
+thể gán cho Soul. Ảnh và wire không cho biết `115C770` đã tạo object nội bộ nào hoặc các
+mode khác có kích hoạt chúng hay không. Kết quả không thay đổi phạm vi adapter F1-a.
