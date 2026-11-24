@@ -1933,6 +1933,9 @@ impl Session {
                 | 118
                 | 119
                 | 122
+                | 126
+                | 138
+                | 139
                 | 142
                 | 167
                 | 202
@@ -3684,7 +3687,8 @@ impl Session {
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
                 let needle = r.rules.life_actions.needle() && request.kind() == 145;
-                let extended = pickups::f1b_pickup_amount(request.kind());
+                let extended = pickups::f1b_pickup_amount(request.kind())
+                    .or_else(|| pickups::f1b_aux_pickup_amount(request.kind()));
                 let allowed = r.rules.item_policy.allows(request.kind());
                 if !needle
                     && !allowed
@@ -3769,6 +3773,100 @@ impl Session {
                 }
                 pickup = Some(decision);
             }
+            126 => {
+                let m = r.member(self.identity, self.connection)?;
+                if !r.rules.item_policy.f1b_aux() {
+                    return Err(err("unsupported trigger126 without F1-b aux policy"));
+                }
+                let trig = wire::trigger_item126(body)?;
+                if trig.slot == m.slot
+                    && let Phase::Armed { round } = next.phase
+                {
+                    let result = next.pickups.trigger_cell(round, trig.row, trig.col);
+                    let reply = packet(
+                        168,
+                        wire::trigger_item168(
+                            result,
+                            trig.world_index,
+                            m.slot,
+                            trig.row,
+                            trig.col,
+                        )?,
+                    );
+                    for recipient in next.members.values() {
+                        let mut batch = Runtime::member_batch(
+                            recipient.key,
+                            Some(round),
+                            0,
+                            vec![("trigger-item168".into(), reply.clone())],
+                        );
+                        batch.subject = Some(m.key);
+                        effects.push((recipient.key.identity, batch));
+                    }
+                }
+            }
+            138 => {
+                let m = r.member(self.identity, self.connection)?;
+                if !r.rules.item_policy.f1b_aux() {
+                    return Err(err("unsupported dart138 without F1-b aux policy"));
+                }
+                let dart = wire::dart138(body)?;
+                if let Phase::Armed { round } = next.phase
+                    && !next.members[&self.identity].life.blocked_pickup()
+                    && next
+                        .pickups
+                        .take_action_charge(round, m.key, wire::DART_KIND)
+                {
+                    let reply = packet(172, wire::dart172(dart)?);
+                    for peer in next.members.values().filter(|peer| peer.key != m.key) {
+                        let mut batch = Runtime::member_batch(
+                            peer.key,
+                            Some(round),
+                            0,
+                            vec![("dart172".into(), reply.clone())],
+                        );
+                        batch.subject = Some(m.key);
+                        effects.push((peer.key.identity, batch));
+                    }
+                }
+            }
+            139 => {
+                let m = r.member(self.identity, self.connection)?;
+                if !r.rules.item_policy.f1b_aux() {
+                    return Err(err("unsupported place139 without F1-b aux policy"));
+                }
+                let place = wire::place_item139(body)?;
+                if place.slot == m.slot
+                    && let Phase::Armed { round } = next.phase
+                    && !next.members[&self.identity].life.blocked_pickup()
+                    && let Some(kind) =
+                        next.pickups
+                            .take_group11_charge(round, m.key, place.selector())
+                {
+                    if next
+                        .pickups
+                        .place_cell(round, place.row, place.col, place.kind_flags)
+                        .is_ok()
+                    {
+                        let reply = packet(
+                            173,
+                            wire::place_item173(place.kind_flags, place.row, place.col)?,
+                        );
+                        for peer in next.members.values().filter(|peer| peer.key != m.key) {
+                            let mut batch = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                0,
+                                vec![("place-item173".into(), reply.clone())],
+                            );
+                            batch.subject = Some(m.key);
+                            effects.push((peer.key.identity, batch));
+                        }
+                    } else {
+                        next.pickups.refund_action_charge(m.key, kind);
+                    }
+                }
+            }
             127 => {
                 let m = r.member(self.identity, self.connection)?;
                 if !(1..=4096).contains(&body.len()) {
@@ -3808,9 +3906,91 @@ impl Session {
                         tick: report.tick,
                         forward,
                     });
-                } else if r.rules.item_policy.f1b_extended()
-                    && subtype == 0
-                    && wire::item_use127(body)?.kind == wire::ItemUseKind::Scanner
+                } else if r.rules.item_policy.f1b_aux() && subtype == wire::SPRING_SUBTYPE {
+                    let report = wire::spring127(body)?;
+                    let (reason, forward) = if report.slot != m.slot {
+                        ("slot_mismatch", false)
+                    } else if let Phase::Armed { round } = next.phase
+                        && !next.members[&self.identity].life.blocked_pickup()
+                        && next
+                            .pickups
+                            .take_action_charge(round, m.key, wire::SPRING_KIND)
+                    {
+                        let reply = packet(
+                            170,
+                            wire::spring170(
+                                m.slot,
+                                report.x,
+                                report.y,
+                                report.row,
+                                report.col,
+                                report.packed_step,
+                            )?,
+                        );
+                        for peer in next.members.values().filter(|peer| peer.key != m.key) {
+                            let mut batch = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                0,
+                                vec![("spring170".into(), reply.clone())],
+                            );
+                            batch.subject = Some(m.key);
+                            effects.push((peer.key.identity, batch));
+                        }
+                        ("accepted", !effects.is_empty())
+                    } else {
+                        ("spring_ineligible", false)
+                    };
+                    life = Some(crate::life::Decision {
+                        accepted: reason == "accepted",
+                        reason,
+                        subtype,
+                        slot: report.slot,
+                        tick: report.tick,
+                        forward,
+                    });
+                } else if r.rules.item_policy.f1b_aux() && subtype == wire::SHIELD_SUBTYPE {
+                    let report = wire::shield127(body)?;
+                    let (reason, forward) = if report.slot != m.slot {
+                        ("slot_mismatch", false)
+                    } else if let Phase::Armed { round } = next.phase
+                        && !next.members[&self.identity].life.blocked_pickup()
+                    {
+                        let reply = packet(170, wire::shield170(m.slot, report.x, report.y)?);
+                        for peer in next.members.values().filter(|peer| peer.key != m.key) {
+                            let mut batch = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                0,
+                                vec![("shield170".into(), reply.clone())],
+                            );
+                            batch.subject = Some(m.key);
+                            effects.push((peer.key.identity, batch));
+                        }
+                        ("accepted", !effects.is_empty())
+                    } else {
+                        ("shield_ineligible", false)
+                    };
+                    life = Some(crate::life::Decision {
+                        accepted: reason == "accepted",
+                        reason,
+                        subtype,
+                        slot: report.slot,
+                        tick: report.tick,
+                        forward,
+                    });
+                } else if subtype == 0
+                    && let Some(item_kind) = r
+                        .rules
+                        .item_policy
+                        .f1b_extended()
+                        .then(|| wire::item_use127(body).ok().map(|u| u.kind))
+                        .flatten()
+                        .filter(|k| {
+                            *k == wire::ItemUseKind::Scanner
+                                || (r.rules.item_policy.f1b_aux()
+                                    && *k != wire::ItemUseKind::Needle)
+                        })
                 {
                     let report = crate::life::Report::parse(body)?;
                     let reason = if let Phase::Armed { round } = next.phase {
@@ -3824,7 +4004,8 @@ impl Session {
                         } else if player.blocked_pickup() {
                             "scanner_actor_ineligible"
                         } else if let Err(reason) =
-                            next.pickups.consume_scanner(round, m.key, report.tick)
+                            next.pickups
+                                .consume_item(round, m.key, item_kind as u16, report.tick)
                         {
                             reason
                         } else {
@@ -5466,6 +5647,10 @@ mod life_action_integration_tests;
 #[cfg(test)]
 #[path = "room_io_f1b_extended_tests.rs"]
 mod f1b_extended_integration_tests;
+
+#[cfg(test)]
+#[path = "room_io_f1b_aux_tests.rs"]
+mod room_io_f1b_aux_tests;
 
 #[cfg(test)]
 #[path = "room_io_f1d_vehicles_tests.rs"]
