@@ -5,6 +5,7 @@ import hashlib
 import os
 import json
 from pathlib import Path
+import re
 import stat
 import struct
 import tempfile
@@ -43,6 +44,15 @@ TERRAIN_SEEDS = dict(zip((*G1, 'ExVillage01'), (
     'c96dff8c4d148a229bef97ba8c3a279f1a1cac3516281de1689385353b972144',
 )))
 SCHEMA = 'kr00967-export-v2'
+F1E_ADAPTER = 'f1e-adapter-r1'
+_AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
+_RETRO_POPUPS = {
+    f'Retro{family}N{n:02}': f'Retro/Retro{popup}Start'
+    for family, popup in (('Camp', 'Camp'), ('Factory', 'Factory'), ('Patrit', 'Pirate'))
+    for n in range(1, 7)
+}
+_LOVELY_ROOMS = frozenset(f'LovelyRoom{n:02}' for n in range(1, 11))
+_BIG_BATTLES = frozenset(('BSBigCamp08', 'BSBigPatrit14', 'BSBigVillage10'))
 
 # Khóa BomberAttr f0 đã cắt cho trận thường. Nhánh f1=3 (kể cả các
 # biến thể trùng tên C15/C08/C26) và nhóm đối thủ còn thiếu luật.
@@ -201,9 +211,15 @@ _PONG_GROUND_WORDS = {'Tile42_Ground/TileRed': 1, 'Tile42_Ground/TileBlue': 2}
 # Static offset 36 is read only through BA1420: CBulaComponent (10001..10199),
 # CBonusMapLadderWinnerComponent (999) and B50370, which has no reference.
 _TYPE1_UNREAD_OFFSET36 = frozenset(('Tile42_Static/Block03',))
+_RETRO_CONVEYORS = {'Tile59_Ground/Conveyor00': (4, 2), 'Tile59_Ground/Conveyor01': (1, 0),
+                   'Tile60_Ground/Conveyor02': (2, 1), 'Tile60_Ground/Conveyor03': (1, 0),
+                   'Tile60_Ground/Conveyor04': (8, 3), 'Tile60_Ground/Conveyor05': (4, 2)}
+_RETRO_DECORATORS = frozenset(f'Tile60_Deco/{tile}' for tile in ('Cloud00', 'Cloud01', 'Deco03'))
+_RETRO_GROUND_102 = frozenset(f'Tile60_Ground/Tile{i:02}' for i in range(3, 12))
+_RETRO_TENTS = frozenset(('Tile62_Passable/ArmyTent00', 'Tile62_Passable/ArmyTent01'))
 
 
-def f1_terrain_rules(profile, table):
+def f1_terrain_rules(profile, table, *, f1e=False):
     name = profile['name']
     if profile['rectangles']:
         raise ValueError(f'Vùng chữ nhật ngoài adapter F1-a: {name}')
@@ -215,7 +231,8 @@ def f1_terrain_rules(profile, table):
 
     def fail(index, role, key):
         y, x = divmod(index, width)
-        raise ValueError(f'Ô ngoài adapter F1-a của {name} ({x},{y}): {role} {key}')
+        adapter = 'F1-e' if f1e else 'F1-a'
+        raise ValueError(f'Ô ngoài adapter {adapter} của {name} ({x},{y}): {role} {key}')
 
     def lookup(code, index, role):
         if code == -1:
@@ -238,10 +255,12 @@ def f1_terrain_rules(profile, table):
         # Empty ground uses the default CGOTileGround seen in Tomb12.
         if d is None:
             return
-        factory_flag = key == 'Tile03_Ground/Tile07' and d[12:15] == (1, 0, 0)
+        factory_flag = (d[12:15] == (1, 0, 0) and
+                        (key == 'Tile03_Ground/Tile07' or (f1e and key == 'Tile59_Ground/Tile05')))
         water_flag = key in _WATER_RENDER_GROUNDS and d[12:15] == (0, 0, 1)
         rail_flag = key in _RAIL_GROUNDS and d[12:15] == (0, 1, 0)
-        conveyor = (key.startswith('TileConv/') and d[8] == _CONVEYOR_STEP
+        conveyor = ((key.startswith('TileConv/') or
+                     (f1e and _RETRO_CONVEYORS.get(key) == d[9:11])) and d[8] == _CONVEYOR_STEP
                     and d[9] in (1, 2, 4, 8) and d[10] in (0, 1, 2, 3)
                     and d[6:8] == (1, 1) and not any(d[11:15]))
         if (d[:6] != _GROUND or (d[8:11] != (0, 0, -1) and not conveyor)
@@ -252,6 +271,13 @@ def f1_terrain_rules(profile, table):
         if not (1 <= d[6] <= width and 1 <= d[7] <= height and d[11] in (0, 1)):
             fail(index, 'nền/footprint', key)
         if d[15] >> 16 and _PONG_GROUND_WORDS.get(key) != d[15] >> 16:
+            # EB48E0's special ground for word 102 is gated by B64870
+            # (constant false). ED2350 only cancels at word +62 >= 10000.
+            retro = (f1e and d[:15] == (*_GROUND, 1, 1, 0, 0, -1, 0, 0, 0, 0)
+                     and d[15] == 102 << 16
+                     and key in _RETRO_GROUND_102)
+            if retro:
+                return
             if (key not in ('Tile16_Ground/PinGround01', 'Tile62_Ground/PinTile00',
                             'Tile62_Ground/PinTile01') or d[15] >> 16 != 10_000):
                 fail(index, 'nền/cờ', key)
@@ -262,8 +288,15 @@ def f1_terrain_rules(profile, table):
 
     spawn_cells = {y * width + x for x, y in profile['spawns']}
     for index, (base, obj, *overlay) in enumerate(profile['cells']):
-        if any(code != -1 for code in overlay):
-            fail(index, 'overlay', overlay)
+        for code in overlay:
+            if code == -1:
+                continue
+            if not f1e:
+                fail(index, 'overlay', overlay)
+            key, d = lookup(code, index, 'overlay')
+            # EA1EE0 puts third-layer decorators in a separate render list.
+            if key not in _RETRO_DECORATORS or d[:16] != (4,) + (0,) * 15:
+                fail(index, 'overlay', key)
         ground(index, *lookup(base, index, 'nền'))
         key, d = lookup(obj, index, 'vật thể')
         if d is None:
@@ -319,13 +352,18 @@ def f1_terrain_rules(profile, table):
                 if index in spawn_cells:
                     fail(index, 'spawn trên ô type 3 bị chặn', key)
                 ray[index] = 1
-        elif (key in _TENT_PIECES
+        elif ((key in _TENT_PIECES or (f1e and key in _RETRO_TENTS))
               and d[:13] == (3, 0, 0, 0, 0, 0, *([_TENT_PORTS] * 3), 0, 0, 1, 0)
               and d[13] not in (100, 101)):
             # BA0E30 reads byte +32 + direction; the byte 1 opens that side
             # for leaving and, via BA0EC0, entering. 17929B0/EB7190 give KR
             # direction order W/N/E/S, so bits 1 and 3 are north and south.
             # The value stays in KR bit order; see terrain.md#f1a-ida-round5.
+            ray_ports[index] = 0b1010
+        elif (f1e and key == 'Tile59_Passable/Shower03'
+              and d[:16] == (3, 0, 0, 0, 0, 0, *([_TENT_PORTS] * 3), 16843008, 0, 1, 0, 101, 0, 1000)):
+            # EB4C10's Tower branch for +52=101 is dead (B64870 returns
+            # false). CGOTilePassable uses the same ray ports as Tent.
             ray_ports[index] = 0b1010
         else:
             fail(index, 'vật thể/cờ', key)
@@ -346,11 +384,14 @@ def f1_terrain_rules(profile, table):
     return rules
 
 
-def f1_floor(profile, terrain):
+def f1_floor(profile, terrain, *, f1e=False):
     """Chính sách nghiệm thu: placement chắc chắn và tối đa một drop có trọng số."""
     if profile['placement_header'] != 100 and profile['placements']:
         raise ValueError(f"Placement header chưa biết: {profile['name']}")
     kinds, width, height = terrain['kinds'], terrain['width'], terrain['height']
+    # The existing 582 config and pickup consumers still have a 15×13
+    # coordinate contract. Only the terrain and bomb ledger use the full grid.
+    floor_width, floor_height = (min(width, 15), min(height, 13)) if f1e else (width, height)
     fixed, hidden, omitted, occupied = [], [], [], set()
     needle_placed = False
     occupied.update(map(tuple, profile['spawns']))
@@ -361,6 +402,7 @@ def f1_floor(profile, terrain):
         kind = F1_FIXED_ITEMS.get(name)
         tile = kinds[y * width + x]
         if (kind is None or row['probability'] != 100 or tile != 0 or (x, y) in occupied
+                or x >= floor_width or y >= floor_height
                 or (kind == 145 and needle_placed)):
             omitted.append(row)
             continue
@@ -371,9 +413,10 @@ def f1_floor(profile, terrain):
     # and duplicates; do not interpret excluded entries as another item.
     weights = [(F1_HIDDEN_ITEMS[name], weight) for name, weight in profile['drops']
                if name in F1_HIDDEN_ITEMS and weight > 0]
-    boxes = [i for i, kind in enumerate(kinds) if kind == 2]
+    boxes = [i for i, kind in enumerate(kinds)
+             if kind == 2 and i % width < floor_width and i // width < floor_height]
     total = sum(weight for _, weight in weights)
-    if boxes and total:
+    if boxes and total and not terrain.get('disable_bombs'):
         seed = bytes.fromhex(profile['payload_sha256'])
         y, x = divmod(boxes[int(sha(seed + b'cell'), 16) % len(boxes)], width)
         roll = int(sha(seed + b'item'), 16) % total
@@ -387,27 +430,79 @@ def f1_floor(profile, terrain):
     return dict(fixed=fixed, hidden=hidden, omitted_placements=omitted)
 
 
-def read_map(levels, name, code, *, f1):
+def f1e_bombs_disabled(raw, name):
+    """Accept only the observed script shapes, without executing any script."""
+    from kr_f1e_script_audit import map_tail_offset, parse_trailer
+
+    def unsupported():
+        return ValueError(f'Script ngoài adapter F1-e: {name}')
+
+    trailer = parse_trailer(raw, map_tail_offset(raw))
+    script = trailer['script']
+    if trailer['groups'] or trailer['records']:
+        raise unsupported()
+    if name in _BIG_BATTLES:
+        if script:
+            raise unsupported()
+        return False
+    if not script or name not in _AQUA_MARKERS | _LOVELY_ROOMS | _RETRO_POPUPS.keys():
+        raise unsupported()
+    source = script.rstrip(b'\0').decode('cp949')
+    if name in _LOVELY_ROOMS:
+        # The shipped comment contains an internal "--" (invalid XML). Drop
+        # only closed comments before requiring an exact live tree.
+        source = re.sub(r'<!--.*?-->', '', source, flags=re.S)
+    try:
+        root = ET.fromstring(source.strip())
+    except ET.ParseError as error:
+        raise unsupported() from error
+    if (root.tag != 'mapscript' or root.attrib or len(root) != 1
+            or any((node.text or '').strip() or (node.tail or '').strip() for node in root.iter())):
+        raise unsupported()
+    node = root[0]
+    if name in _AQUA_MARKERS and node.tag == 'StageClearScript' and not node.attrib and not len(node):
+        return False
+    if name in _LOVELY_ROOMS and node.tag == 'mapscriptoption' and node.attrib == {'enablebomb': '0'} and not len(node):
+        return True
+    if name in _RETRO_POPUPS and node.tag == 'time' and node.attrib == {'ms': '0'} and len(node) == 1:
+        popup = node[0]
+        if (popup.tag == 'popup' and not len(popup) and popup.get('name') == _RETRO_POPUPS[name]
+                and popup.attrib.keys() == {'name', 'targetcx', 'targetcy', 'darkness'}
+                and all(re.fullmatch(r'[0-9]+', popup.get(key)) for key in ('targetcx', 'targetcy', 'darkness'))):
+            return False
+    raise unsupported()
+
+
+def read_map(levels, name, code, *, f1, f1e=False):
     raw = levels.read('Map/' + name)
     profile = decode_map(raw)
     profile.update(name=name, map_code=code, payload_sha256=sha(raw))
     spawns = profile['spawns']
-    if ((profile['width'], profile['height']) != (15, 13) or profile['scripted']
+    width, height = (19, 17) if f1e and name in _BIG_BATTLES else (15, 13)
+    if ((profile['width'], profile['height']) != (width, height)
+            or (not f1e and profile['scripted'])
             or not 2 <= len(spawns) <= 8
-            or any(not (0 <= x < 15 and 0 <= y < 13) for x, y in spawns)
-            or (f1 and len({tuple(pair) for pair in spawns}) != len(spawns))):
+            or (f1e and len(spawns) != 8)
+            or any(not (0 <= x < width and 0 <= y < height) for x, y in spawns)
+            or ((f1 or f1e) and len({tuple(pair) for pair in spawns}) != len(spawns))):
         raise ValueError(f'Map ngoài phạm vi phục vụ: {name}')
+    if f1e:
+        profile['adapter'] = F1E_ADAPTER
+        if f1e_bombs_disabled(raw, name):
+            profile['disable_bombs'] = True
     return profile
 
 
-def f1_rules(profile, table):
+def f1_rules(profile, table, *, f1e=False):
     rules = (terrain_for(profile, table) if profile['name'] in TERRAIN_SEEDS
-             else f1_terrain_rules(profile, table))
-    rules['floor'] = f1_floor(profile, rules['terrain'])
+             else f1_terrain_rules(profile, table, f1e=f1e))
+    if f1e and profile.get('disable_bombs'):
+        rules['terrain']['disable_bombs'] = True
+    rules['floor'] = f1_floor(profile, rules['terrain'], f1e=f1e)
     return rules
 
 
-def outputs(files, maps, measured, f1=False):
+def outputs(files, maps, measured, f1=False, *, f1e=False):
     def pack(name):
         return Pack(files[name + '.idx'], files[name + '.idd'])
 
@@ -439,14 +534,14 @@ def outputs(files, maps, measured, f1=False):
                                           for row in groups])
     levels = pack('FxMap')
     order = [name for name, *_ in levels.order if name.startswith('Map/')]
-    table = load_tile_table(pack('fx')) if measured or f1 else None
+    table = load_tile_table(pack('fx')) if measured or f1 or f1e else None
     for name in maps:
         entry = 'Map/' + name
-        profile = read_map(levels, name, order.index(entry), f1=f1)
+        profile = read_map(levels, name, order.index(entry), f1=f1, f1e=f1e)
         profile['pack_items'] = {row['name']: row['kind'] for row in items}
         yield name + '.json', profile
-        if f1:
-            yield name + '.rules.json', f1_rules(profile, table)
+        if f1 or f1e:
+            yield name + '.rules.json', f1_rules(profile, table, f1e=f1e)
         elif measured and name in TERRAIN_SEEDS:
             yield name + '.rules.json', terrain_for(profile, table)
 
@@ -479,9 +574,11 @@ def checked_cache(path, identity, pins, maps, measured, f1=False):
     return manifest
 
 
-def cache_identity(pins, maps, measured, f1=False):
+def cache_identity(pins, maps, measured, f1=False, *, f1e=False):
     key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
-    if f1:
+    if f1e:
+        key['adapter'] = F1E_ADAPTER
+    elif f1:
         key['adapter'] = 'f1-a-terrain-r5'
     return sha(encode(key))
 
@@ -501,30 +598,32 @@ def verified_packs(game, pins=PACK_SHA256, pack_files=None):
         yield files
 
 
-def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False, pack_files=None):
-    """Chỉ dùng pins khác qua API kiểm thử; F1-a là catalog thử có giới hạn."""
-    if f1 and (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
+def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False, f1e=False, pack_files=None):
+    """Chỉ dùng pins khác qua API kiểm thử; catalog thử có giới hạn."""
+    if f1 and f1e:
+        raise ValueError('Chỉ chọn một adapter F1-a hoặc F1-e')
+    if (f1 or f1e) and (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
                or any(not 1 <= len(name) <= 64 or not name.isascii()
                       or not all(c.isalnum() or c == '_' for c in name) for name in maps)):
-        raise ValueError('F1-a cần 1–16 tên map KR khác nhau')
+        raise ValueError(f'{"F1-e" if f1e else "F1-a"} cần 1–16 tên map KR khác nhau')
     game = game.resolve(strict=True)
     if cache.is_symlink():
         raise ValueError('Cache không được là symlink')
     cache = cache.resolve()
     if cache.is_relative_to(game):
         raise ValueError('Cache phải nằm ngoài thư mục game chỉ đọc')
-    identity = cache_identity(pins, maps, measured, f1)
+    identity = cache_identity(pins, maps, measured, f1, f1e=f1e)
     dest = cache / identity
     with verified_packs(game, pins, pack_files) as files:
         if dest.exists() or dest.is_symlink():
-            checked_cache(dest, identity, pins, maps, measured, f1)
+            checked_cache(dest, identity, pins, maps, measured, f1 or f1e)
             return dest, True
         cache.mkdir(mode=0o700, parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory(prefix='.export-', dir=cache) as work:
             temp = Path(work) / 'data'
             temp.mkdir(mode=0o700)
             hashes = {}
-            for name, value in outputs(files, maps, measured, f1):
+            for name, value in outputs(files, maps, measured, f1, f1e=f1e):
                 data = encode(value)
                 (temp / name).write_bytes(data)
                 hashes[name] = sha(data)
@@ -532,13 +631,13 @@ def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False,
                 raise ValueError('Pack đã đổi trong lúc xuất')
             (temp / 'manifest.json').write_bytes(encode(dict(schema=SCHEMA, identity=identity,
                                                              packs=pins, files=hashes)))
-            checked_cache(temp, identity, pins, maps, measured, f1)
+            checked_cache(temp, identity, pins, maps, measured, f1 or f1e)
             try:
                 temp.rename(dest)
             except OSError:
                 if not dest.is_dir():
                     raise
-                checked_cache(dest, identity, pins, maps, measured, f1)
+                checked_cache(dest, identity, pins, maps, measured, f1 or f1e)
                 return dest, True
     return dest, False
 
@@ -588,19 +687,22 @@ def main():
     target.add_argument('--prebuilt-out', type=Path,
                         help='Ghi đè thư mục dữ liệu JSON đóng sẵn, ví dụ server/pack-data')
     target.add_argument('--check-prebuilt', type=Path, help='Chỉ kiểm dữ liệu JSON đóng sẵn')
-    parser.add_argument('--f1-map', action='append', help='Tên map KR chính xác; lặp lại tối đa 16 lần')
+    adapter = parser.add_mutually_exclusive_group()
+    adapter.add_argument('--f1-map', action='append', help='Tên map F1-a chính xác; lặp lại tối đa 16 lần')
+    adapter.add_argument('--f1e-map', action='append', help='Tên map Batch 4a chính xác; lặp lại tối đa 16 lần')
     args = parser.parse_args()
     if (args.check_prebuilt is None) != (args.game_dir is not None):
         parser.error('--game-dir bắt buộc khi xuất và không dùng với --check-prebuilt')
-    if args.f1_map and args.cache is None:
-        parser.error('--f1-map chỉ dùng với --cache')
+    if (args.f1_map or args.f1e_map) and args.cache is None:
+        parser.error('--f1-map và --f1e-map chỉ dùng với --cache')
     try:
         if args.check_prebuilt is not None:
             path, reused = prebuilt(args.check_prebuilt), True
         elif args.prebuilt_out is not None:
             path, reused = refresh_prebuilt(args.game_dir, args.prebuilt_out), False
         else:
-            path, reused = export(args.game_dir, args.cache, maps=args.f1_map or MAPS, f1=bool(args.f1_map))
+            path, reused = export(args.game_dir, args.cache, maps=args.f1_map or args.f1e_map or MAPS,
+                                  f1=bool(args.f1_map), f1e=bool(args.f1e_map))
     except (OSError, ValueError, KeyError, IndexError, struct.error, ET.ParseError) as exc:
         parser.exit(1, f'Không thể xuất pack KR 00967: {exc}\n')
     print(json.dumps(dict(cache=str(path), reused=reused)))

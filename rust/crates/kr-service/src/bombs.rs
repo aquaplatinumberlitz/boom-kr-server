@@ -137,6 +137,7 @@ impl Active {
 pub(crate) struct Ledger {
     scope: Arc<()>,
     generation: Option<u64>,
+    grid: (u8, u8),
     next_wire: u32,
     next_allocation: u64,
     active: BTreeMap<u16, Active>,
@@ -147,6 +148,7 @@ impl Default for Ledger {
         Self {
             scope: Arc::new(()),
             generation: None,
+            grid: crate::terrain::STANDARD_SIZE,
             next_wire: 1,
             next_allocation: 0,
             active: BTreeMap::new(),
@@ -165,8 +167,12 @@ pub(crate) struct Admission {
 impl Ledger {
     pub fn begin(&mut self, round: u64) {
         self.generation = Some(round);
+        self.grid = crate::terrain::STANDARD_SIZE;
         self.active.clear();
         self.serials.clear();
+    }
+    pub(crate) fn set_grid(&mut self, grid: (u8, u8)) {
+        self.grid = grid;
     }
     pub fn finish(&mut self) {
         self.generation = None;
@@ -257,8 +263,8 @@ impl Ledger {
             Some("round_key_mismatch")
         } else if request.owner != slot || !roster.contains(&owner) {
             Some("owner_mismatch")
-        } else if request.row >= 13
-            || request.column >= 15
+        } else if request.row >= self.grid.1
+            || request.column >= self.grid.0
             || !(1..=limits.maximum_power).contains(&request.power)
         {
             Some("unsupported_cell_or_power")
@@ -418,10 +424,10 @@ impl Ledger {
                 || (vertical && motion.source_column == motion.target_column)
         };
         if !geometry
-            || motion.source_row >= 13
-            || motion.target_row >= 13
-            || motion.source_column >= 15
-            || motion.target_column >= 15
+            || motion.source_row >= self.grid.1
+            || motion.target_row >= self.grid.1
+            || motion.source_column >= self.grid.0
+            || motion.target_column >= self.grid.0
         {
             return Err("unmeasured_motion_geometry");
         }
@@ -430,9 +436,9 @@ impl Ledger {
                 && if horizontal {
                     // No path claim from an endpoint delta: reject even a bomb
                     // beyond the target while reserving the full possible row.
-                    (0..15).any(|column| other.reserves((motion.source_row, column)))
+                    (0..self.grid.0).any(|column| other.reserves((motion.source_row, column)))
                 } else if vertical {
-                    (0..13).any(|row| other.reserves((row, motion.source_column)))
+                    (0..self.grid.1).any(|row| other.reserves((row, motion.source_column)))
                 } else if shoe {
                     motion_cells(motion)
                         .into_iter()
@@ -538,6 +544,58 @@ mod tests {
             column: 3,
             power: 1,
         }
+    }
+    #[test]
+    fn ledger_uses_big_battle_bounds_only_for_the_selected_round() {
+        let a = member(1, 11);
+        let b = member(2, 22);
+        let roster = [a, b];
+        let mut ledger = Ledger::default();
+        let mut request = Request {
+            row: 16,
+            column: 18,
+            ..request(1)
+        };
+        ledger.begin(1);
+        assert_eq!(
+            ledger
+                .place(1, a, 0, &request, &roster, 1)
+                .unwrap()
+                .unwrap_err(),
+            "unsupported_cell_or_power"
+        );
+        ledger.set_grid(crate::terrain::BIG_BATTLE_SIZE);
+        for (row, column) in [(17, 18), (16, 19)] {
+            let outside = Request {
+                row,
+                column,
+                ..request
+            };
+            assert_eq!(
+                ledger
+                    .place(1, a, 0, &outside, &roster, 1)
+                    .unwrap()
+                    .unwrap_err(),
+                "unsupported_cell_or_power"
+            );
+        }
+        assert_eq!(
+            ledger
+                .place(1, a, 0, &request, &roster, 1)
+                .unwrap()
+                .unwrap()
+                .id,
+            1
+        );
+        ledger.begin(2);
+        request.key = wire_key(2).unwrap();
+        assert_eq!(
+            ledger
+                .place(2, a, 0, &request, &roster, 1)
+                .unwrap()
+                .unwrap_err(),
+            "unsupported_cell_or_power"
+        );
     }
     #[test]
     fn shoe_rejects_reversed_direction_without_consuming_the_native_action() {
