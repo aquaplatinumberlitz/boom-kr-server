@@ -1,7 +1,10 @@
 //! Floor-only fixture policy, CP030/031/049/055/063. Not native world authority.
 //! List2 stays unavailable. Extended counts are per round; no account rewards.
 use crate::room::Membership;
-use kr_wire::kr00967::SCANNER_KIND;
+use kr_wire::kr00967::{
+    BANANA1_KIND, BANANA8_KIND, BOND_KIND, DART_KIND, PIN_KIND, SCANNER_KIND, SPRING_KIND,
+    TRAP_KIND,
+};
 #[cfg(test)]
 use kr_wire::write_uint;
 use kr_wire::{Width, read_uint};
@@ -24,6 +27,8 @@ pub(crate) enum Policy {
     ReportDerivedShoePunch,
     /// p93 pickup kinds and report-derived Scanner consumption (emu_choice).
     ReportDerivedF1bExtended,
+    /// F1-b plus p100b/o8 Ctrl & group 11 active items (emu_choice).
+    ReportDerivedF1bAux,
     /// F1-b plus p97b visible vehicle pickups and dismount reports (emu_choice).
     ReportDerivedF1dVehicles,
 }
@@ -37,6 +42,7 @@ impl Policy {
                 || (self.punch() && kind == 4)
                 || (self.shoe() && kind == 3)
                 || (self.f1b_extended() && f1b_pickup_amount(kind).is_some())
+                || (self.f1b_aux() && f1b_aux_pickup_amount(kind).is_some())
                 || (self.f1d_vehicles() && is_vehicle_kind(kind)))
     }
     pub(crate) fn punch(self) -> bool {
@@ -46,7 +52,10 @@ impl Policy {
         self == Self::ReportDerivedShoePunch || self.f1b_extended()
     }
     pub(crate) fn f1b_extended(self) -> bool {
-        self == Self::ReportDerivedF1bExtended || self.f1d_vehicles()
+        self == Self::ReportDerivedF1bExtended || self.f1b_aux() || self.f1d_vehicles()
+    }
+    pub(crate) fn f1b_aux(self) -> bool {
+        self == Self::ReportDerivedF1bAux
     }
     pub(crate) fn f1d_vehicles(self) -> bool {
         self == Self::ReportDerivedF1dVehicles
@@ -61,8 +70,18 @@ pub(crate) fn f1b_pickup_amount(kind: u16) -> Option<u16> {
     Some(match kind {
         // Count each Lucci pickup once. Its currency value is unknown.
         67..=72 | 77 | SCANNER_KIND => 1,
-        143 | 224 => 3,
-        225 => 2,
+        DART_KIND | BOND_KIND => 3,
+        TRAP_KIND => 2,
+        _ => return None,
+    })
+}
+
+pub(crate) fn f1b_aux_pickup_amount(kind: u16) -> Option<u16> {
+    Some(match kind {
+        SPRING_KIND | PIN_KIND | 229 => 3,
+        BANANA1_KIND => 1,
+        228 => 2,
+        BANANA8_KIND => 8,
         _ => return None,
     })
 }
@@ -121,6 +140,15 @@ impl Catalog {
                 .any(|item| f1b_pickup_amount(item.kind).is_some())
         {
             return Err(io::Error::other("extended item floor requires F1-b opt-in"));
+        }
+        if !policy.f1b_aux()
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| f1b_aux_pickup_amount(item.kind).is_some())
+        {
+            return Err(io::Error::other("aux item floor requires F1-b aux opt-in"));
         }
         if !policy.f1d_vehicles() && self.floor.values().any(|item| is_vehicle_kind(item.kind)) {
             return Err(io::Error::other("vehicle floor requires F1-d opt-in"));
@@ -190,6 +218,7 @@ impl Catalog {
                     || row[5] >= 15
                     || !(crate::item_scope::kept_kind(u32::from(kind))
                         || f1b_pickup_amount(kind).is_some()
+                        || f1b_aux_pickup_amount(kind).is_some()
                         || (group == 0 && is_vehicle_kind(kind)))
                     || !indices.insert(index)
                     || indices.len() > 64
@@ -302,6 +331,8 @@ pub(crate) struct Round {
     consumed: BTreeSet<u32>,
     revealed_cells: BTreeSet<(u8, u8)>,
     inventory: BTreeMap<(Membership, u16), InventoryCredit>,
+    action_charges: BTreeMap<(Membership, u16), u16>,
+    placed_cells: BTreeMap<(u8, u8), u8>,
     mounted_vehicles: BTreeMap<Membership, u16>,
 }
 #[derive(Clone, Debug, Default)]
@@ -324,6 +355,8 @@ impl Round {
         self.consumed.clear();
         self.revealed_cells.clear();
         self.inventory.clear();
+        self.action_charges.clear();
+        self.placed_cells.clear();
         self.mounted_vehicles.clear();
     }
     /// p97b: a successful second floor claim still resolves, but keeps the first mount.
@@ -342,14 +375,19 @@ impl Round {
     /// state published after reservation of every pickup confirmation queue.
     pub(crate) fn credit(&mut self, member: Membership, request: &Request, amount: u16) {
         let credit = self.inventory.entry((member, request.kind())).or_default();
-        // At most 64 catalog entries, at most 3 uses per entry.
+        // At most 64 catalog entries, at most 8 uses per entry.
         credit.count += amount;
         credit.last_pickup_tick = request.client_tick;
+        *self
+            .action_charges
+            .entry((member, request.kind()))
+            .or_default() += amount;
     }
-    pub(crate) fn consume_scanner(
+    pub(crate) fn consume_item(
         &mut self,
         round: u64,
         member: Membership,
+        kind: u16,
         tick: u32,
     ) -> Result<(), &'static str> {
         if self.generation != Some(round) {
@@ -357,7 +395,7 @@ impl Round {
         }
         let credit = self
             .inventory
-            .get_mut(&(member, SCANNER_KIND))
+            .get_mut(&(member, kind))
             .filter(|credit| credit.count > 0)
             .ok_or("scanner_no_charge")?;
         // sub0 carries no proven epoch. Fence reports at/before the current
@@ -368,6 +406,86 @@ impl Round {
         }
         credit.count -= 1;
         Ok(())
+    }
+    pub(crate) fn take_action_charge(&mut self, round: u64, member: Membership, kind: u16) -> bool {
+        if self.generation != Some(round) {
+            return false;
+        }
+        let Some(left) = self.action_charges.get_mut(&(member, kind)) else {
+            return false;
+        };
+        if *left == 0 {
+            return false;
+        }
+        *left -= 1;
+        true
+    }
+    pub(crate) fn take_group11_charge(
+        &mut self,
+        round: u64,
+        member: Membership,
+        selector: u8,
+    ) -> Option<u16> {
+        if self.generation != Some(round) {
+            return None;
+        }
+        match selector {
+            1 => self
+                .take_action_charge(round, member, BOND_KIND)
+                .then_some(BOND_KIND),
+            2 => self
+                .take_action_charge(round, member, TRAP_KIND)
+                .then_some(TRAP_KIND),
+            3 => (BANANA1_KIND..=BANANA8_KIND)
+                .find(|&kind| self.take_action_charge(round, member, kind)),
+            4 => self
+                .take_action_charge(round, member, PIN_KIND)
+                .then_some(PIN_KIND),
+            _ => None,
+        }
+    }
+    pub(crate) fn refund_action_charge(&mut self, member: Membership, kind: u16) {
+        *self.action_charges.entry((member, kind)).or_default() += 1;
+    }
+    pub(crate) fn place_cell(
+        &mut self,
+        round: u64,
+        row: u8,
+        col: u8,
+        kind_flags: u8,
+    ) -> Result<(), &'static str> {
+        if self.generation != Some(round) {
+            return Err("inactive_round");
+        }
+        if row >= 13 || col >= 15 {
+            return Err("cell_out_of_bounds");
+        }
+        if self.placed_cells.contains_key(&(row, col)) {
+            return Err("cell_already_occupied");
+        }
+        self.placed_cells.insert((row, col), kind_flags);
+        Ok(())
+    }
+    pub(crate) fn trigger_cell(&mut self, round: u64, row: u8, col: u8) -> u8 {
+        if self.generation != Some(round) || row >= 13 || col >= 15 {
+            return 0;
+        }
+        let Some(&kind_flags) = self.placed_cells.get(&(row, col)) else {
+            return 0;
+        };
+        let selector = kind_flags & 0x0f;
+        if matches!(selector, 1 | 2 | 3 | 7) {
+            self.placed_cells.remove(&(row, col));
+            1
+        } else if selector == 4 {
+            1
+        } else {
+            0
+        }
+    }
+    #[cfg(test)]
+    pub(crate) fn placed_cell(&self, row: u8, col: u8) -> Option<u8> {
+        self.placed_cells.get(&(row, col)).copied()
     }
     #[cfg(test)]
     pub(crate) fn inventory_count(&self, member: Membership, kind: u16) -> u16 {

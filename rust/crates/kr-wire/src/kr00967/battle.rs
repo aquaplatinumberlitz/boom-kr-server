@@ -196,11 +196,31 @@ pub fn pickup165(
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ItemUseKind {
+    Dart = 143,
     Needle = 145,
     Scanner = 146,
+    Spring = 148,
+    Bond = 224,
+    Trap = 225,
+    Pin = 226,
+    Banana1 = 227,
+    Banana2 = 228,
+    Banana3 = 229,
+    Banana8 = 230,
 }
 
+pub const DART_KIND: u16 = ItemUseKind::Dart as u16;
 pub const SCANNER_KIND: u16 = ItemUseKind::Scanner as u16;
+pub const SPRING_KIND: u16 = ItemUseKind::Spring as u16;
+pub const BOND_KIND: u16 = ItemUseKind::Bond as u16;
+pub const TRAP_KIND: u16 = ItemUseKind::Trap as u16;
+pub const PIN_KIND: u16 = ItemUseKind::Pin as u16;
+pub const BANANA1_KIND: u16 = ItemUseKind::Banana1 as u16;
+pub const BANANA8_KIND: u16 = ItemUseKind::Banana8 as u16;
+
+pub const SPRING_SUBTYPE: u8 = 2;
+pub const DRILL_SUBTYPE: u8 = 3;
+pub const SHIELD_SUBTYPE: u8 = 5;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct ItemUse127 {
@@ -213,7 +233,7 @@ pub struct ItemUse127 {
     pub kind: ItemUseKind,
 }
 
-/// The observed 22-byte C2S 127/sub0 body (Needle CP037, Scanner p93).
+/// The observed 22-byte C2S 127/sub0 body (Needle CP037, Scanner p93, active/group11 p100b).
 /// This report does not provide a peer response layout.
 pub fn item_use127(body: &[u8]) -> io::Result<ItemUse127> {
     let error = || io::Error::other("unsupported item-use127/sub0 shape");
@@ -226,8 +246,17 @@ pub fn item_use127(body: &[u8]) -> io::Result<ItemUse127> {
         return Err(error());
     }
     let kind = match uint(&body[15..17], Width::U16)? as u16 {
+        DART_KIND => ItemUseKind::Dart,
         145 => ItemUseKind::Needle,
         SCANNER_KIND => ItemUseKind::Scanner,
+        SPRING_KIND => ItemUseKind::Spring,
+        BOND_KIND => ItemUseKind::Bond,
+        TRAP_KIND => ItemUseKind::Trap,
+        PIN_KIND => ItemUseKind::Pin,
+        BANANA1_KIND => ItemUseKind::Banana1,
+        228 => ItemUseKind::Banana2,
+        229 => ItemUseKind::Banana3,
+        BANANA8_KIND => ItemUseKind::Banana8,
         _ => return Err(error()),
     };
     Ok(ItemUse127 {
@@ -238,6 +267,270 @@ pub fn item_use127(body: &[u8]) -> io::Result<ItemUse127> {
         auxiliary: uint(&body[10..14], Width::U32)? as u32,
         kind,
     })
+}
+
+/// Measured C2S 138 / S2C 172 9-byte Dart projectile report (E2EB30 / E64570).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Dart138 {
+    pub world_index: u8,
+    pub x_px: u16,
+    pub y_px: u16,
+    pub dir: u8,
+    pub distance_px: u16,
+}
+
+pub fn dart138(body: &[u8]) -> io::Result<Dart138> {
+    let error = || io::Error::other("unsupported dart138 shape");
+    if body.len() != 9 || uint(&body[1..2], Width::U8)? != 0 {
+        return Err(error());
+    }
+    Ok(Dart138 {
+        world_index: uint(&body[..1], Width::U8)? as u8,
+        x_px: uint(&body[2..4], Width::U16)? as u16,
+        y_px: uint(&body[4..6], Width::U16)? as u16,
+        dir: uint(&body[6..7], Width::U8)? as u8,
+        distance_px: uint(&body[7..9], Width::U16)? as u16,
+    })
+}
+
+pub fn dart172(dart: Dart138) -> io::Result<Vec<u8>> {
+    let mut out = Vec::with_capacity(9);
+    for (v, w) in [
+        (u64::from(dart.world_index), Width::U8),
+        (0, Width::U8),
+        (u64::from(dart.x_px), Width::U16),
+        (u64::from(dart.y_px), Width::U16),
+        (u64::from(dart.dir), Width::U8),
+        (u64::from(dart.distance_px), Width::U16),
+    ] {
+        out.extend(super::put(v, w)?);
+    }
+    Ok(out)
+}
+
+/// Measured C2S 139 4-byte Group 11 cell placement report (E781B0 -> E646E0 S2C 173).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct PlaceItem139 {
+    pub slot: u8,
+    pub kind_flags: u8,
+    pub row: u8,
+    pub col: u8,
+}
+
+impl PlaceItem139 {
+    pub fn selector(self) -> u8 {
+        self.kind_flags & 0x0f
+    }
+}
+
+pub fn place_item139(body: &[u8]) -> io::Result<PlaceItem139> {
+    if body.len() != 4 {
+        return Err(io::Error::other("unsupported place139 shape"));
+    }
+    Ok(PlaceItem139 {
+        slot: uint(&body[..1], Width::U8)? as u8,
+        kind_flags: uint(&body[1..2], Width::U8)? as u8,
+        row: uint(&body[2..3], Width::U8)? as u8,
+        col: uint(&body[3..4], Width::U8)? as u8,
+    })
+}
+
+/// S2C 173 strips the leading slot byte from C2S 139.
+pub fn place_item173(kind_flags: u8, row: u8, col: u8) -> io::Result<Vec<u8>> {
+    let mut out = Vec::with_capacity(3);
+    for v in [kind_flags, row, col] {
+        out.extend(super::put(u64::from(v), Width::U8)?);
+    }
+    Ok(out)
+}
+
+/// Measured C2S 126 4-byte Group 11 trigger report (E2E610 -> E63F10 S2C 168).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct TriggerItem126 {
+    pub world_index: u8,
+    pub slot: u8,
+    pub row: u8,
+    pub col: u8,
+}
+
+pub fn trigger_item126(body: &[u8]) -> io::Result<TriggerItem126> {
+    if body.len() != 4 {
+        return Err(io::Error::other("unsupported trigger126 shape"));
+    }
+    Ok(TriggerItem126 {
+        world_index: uint(&body[..1], Width::U8)? as u8,
+        slot: uint(&body[1..2], Width::U8)? as u8,
+        row: uint(&body[2..3], Width::U8)? as u8,
+        col: uint(&body[3..4], Width::U8)? as u8,
+    })
+}
+
+pub fn trigger_item168(
+    result: u8,
+    world_index: u8,
+    slot: u8,
+    row: u8,
+    col: u8,
+) -> io::Result<Vec<u8>> {
+    let mut out = Vec::with_capacity(5);
+    for v in [result, world_index, slot, row, col] {
+        out.extend(super::put(u64::from(v), Width::U8)?);
+    }
+    Ok(out)
+}
+
+/// Measured 27-byte C2S 127/sub2 Spring jump report (B4B5A0 -> E86DD0 S2C 170/sub2).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Spring127 {
+    pub slot: u8,
+    pub x: u16,
+    pub y: u16,
+    pub tick: u32,
+    pub extra: u32,
+    pub row: u8,
+    pub col: u8,
+    pub packed_step: u8,
+}
+
+pub fn spring127(body: &[u8]) -> io::Result<Spring127> {
+    let error = || io::Error::other("unsupported spring127/sub2 shape");
+    if body.len() != 27
+        || uint(&body[..1], Width::U8)? != u64::from(SPRING_SUBTYPE)
+        || uint(&body[14..18], Width::U32)? != 9
+    {
+        return Err(error());
+    }
+    let raw = super::decode_bytes(&body[18..27])?;
+    if raw.len() != 9 || raw[..6] != [24, 4, 0, 0, 0, 0] {
+        return Err(error());
+    }
+    Ok(Spring127 {
+        slot: uint(&body[1..2], Width::U8)? as u8,
+        x: uint(&body[2..4], Width::U16)? as u16,
+        y: uint(&body[4..6], Width::U16)? as u16,
+        tick: uint(&body[6..10], Width::U32)? as u32,
+        extra: uint(&body[10..14], Width::U32)? as u32,
+        row: raw[6],
+        col: raw[7],
+        packed_step: raw[8],
+    })
+}
+
+/// S2C 170/sub2 unpacks the serialized blob into 3 plain inline bytes after the 6-byte header.
+pub fn spring170(
+    slot: u8,
+    x: u16,
+    y: u16,
+    row: u8,
+    col: u8,
+    packed_step: u8,
+) -> io::Result<Vec<u8>> {
+    let mut out = Vec::with_capacity(9);
+    for (v, w) in [
+        (u64::from(SPRING_SUBTYPE), Width::U8),
+        (u64::from(slot), Width::U8),
+        (u64::from(x), Width::U16),
+        (u64::from(y), Width::U16),
+        (u64::from(row), Width::U8),
+        (u64::from(col), Width::U8),
+        (u64::from(packed_step), Width::U8),
+    ] {
+        out.extend(super::put(v, w)?);
+    }
+    Ok(out)
+}
+
+/// Static 31-byte C2S 127/sub3 Drill report (B4BB40 -> E86520 S2C 170/sub3).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Drill127 {
+    pub slot: u8,
+    pub x: u16,
+    pub y: u16,
+    pub tick: u32,
+    pub extra: u32,
+    pub box_id: u32,
+    pub row: u8,
+    pub col: u8,
+    pub dir: u8,
+}
+
+pub fn drill127(body: &[u8]) -> io::Result<Drill127> {
+    let error = || io::Error::other("unsupported drill127/sub3 shape");
+    if body.len() != 31
+        || uint(&body[..1], Width::U8)? != u64::from(DRILL_SUBTYPE)
+        || uint(&body[14..18], Width::U32)? != 13
+    {
+        return Err(error());
+    }
+    let raw = super::decode_bytes(&body[18..31])?;
+    if raw.len() != 13 || raw[..6] != [24, 8, 0, 0, 0, 0] {
+        return Err(error());
+    }
+    Ok(Drill127 {
+        slot: uint(&body[1..2], Width::U8)? as u8,
+        x: uint(&body[2..4], Width::U16)? as u16,
+        y: uint(&body[4..6], Width::U16)? as u16,
+        tick: uint(&body[6..10], Width::U32)? as u32,
+        extra: uint(&body[10..14], Width::U32)? as u32,
+        box_id: u32::from_le_bytes(raw[6..10].try_into().expect("bounded")),
+        row: raw[10],
+        col: raw[11],
+        dir: raw[12],
+    })
+}
+
+pub fn drill170(drill: Drill127) -> io::Result<Vec<u8>> {
+    let mut raw = vec![24, 8, 0, 0, 0, 0];
+    raw.extend_from_slice(&drill.box_id.to_le_bytes());
+    raw.extend_from_slice(&[drill.row, drill.col, drill.dir]);
+    let mut out = Vec::with_capacity(23);
+    for (v, w) in [
+        (u64::from(DRILL_SUBTYPE), Width::U8),
+        (u64::from(drill.slot), Width::U8),
+        (u64::from(drill.x), Width::U16),
+        (u64::from(drill.y), Width::U16),
+        (raw.len() as u64, Width::U32),
+    ] {
+        out.extend(super::put(v, w)?);
+    }
+    out.extend(super::encode_bytes(&raw)?);
+    Ok(out)
+}
+
+/// Static 14-byte C2S 127/sub5 Shield report (B73DC0 -> E86670 S2C 170/sub5).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Shield127 {
+    pub slot: u8,
+    pub x: u16,
+    pub y: u16,
+    pub tick: u32,
+    pub extra: u32,
+}
+
+pub fn shield127(body: &[u8]) -> io::Result<Shield127> {
+    if body.len() != 14 || uint(&body[..1], Width::U8)? != u64::from(SHIELD_SUBTYPE) {
+        return Err(io::Error::other("unsupported shield127/sub5 shape"));
+    }
+    Ok(Shield127 {
+        slot: uint(&body[1..2], Width::U8)? as u8,
+        x: uint(&body[2..4], Width::U16)? as u16,
+        y: uint(&body[4..6], Width::U16)? as u16,
+        tick: uint(&body[6..10], Width::U32)? as u32,
+        extra: uint(&body[10..14], Width::U32)? as u32,
+    })
+}
+
+pub fn shield170(slot: u8, x: u16, y: u16) -> io::Result<Vec<u8>> {
+    let mut out = Vec::with_capacity(6);
+    for (v, w) in [
+        (u64::from(SHIELD_SUBTYPE), Width::U8),
+        (u64::from(slot), Width::U8),
+        (u64::from(x), Width::U16),
+        (u64::from(y), Width::U16),
+    ] {
+        out.extend(super::put(v, w)?);
+    }
+    Ok(out)
 }
 
 pub const VEHICLE_DISMOUNT_SUBTYPE: u8 = 16;
@@ -505,10 +798,196 @@ mod tests {
             assert!(item_use127(&SCANNER_A[..len]).is_err());
         }
         assert!(item_use127(&[SCANNER_A.as_slice(), &[0]].concat()).is_err());
-        for (offset, invalid) in [(0, 0x5b), (14, 0x5a), (16, 0xe6), (17, 0x5b), (21, 0x94)] {
+        for (offset, invalid) in [(0, 0x5b), (14, 0x5a), (16, 0x96), (17, 0x5b), (21, 0x94)] {
             let mut body = SCANNER_A;
             body[offset] = invalid;
             assert!(item_use127(&body).is_err());
+        }
+    }
+
+    #[test]
+    fn captured_dart_group11_spring_drill_and_shield_codecs() {
+        // p100b Dart C2S 138 live payloads
+        let dart_left = [0x5a, 0x5a, 0xa5, 0xc9, 0xa7, 0x61, 0x5a, 0xa5, 0xc9];
+        let parsed_left = dart138(&dart_left).unwrap();
+        assert_eq!(
+            parsed_left,
+            Dart138 {
+                world_index: 0,
+                x_px: 160,
+                y_px: 520,
+                dir: 0,
+                distance_px: 160,
+            }
+        );
+        assert_eq!(dart172(parsed_left).unwrap(), dart_left);
+
+        let dart_down = [0x5a, 0x5a, 0xa5, 0xc9, 0xa7, 0x61, 0x59, 0xa5, 0x41];
+        let parsed_down = dart138(&dart_down).unwrap();
+        assert_eq!(
+            parsed_down,
+            Dart138 {
+                world_index: 0,
+                x_px: 160,
+                y_px: 520,
+                dir: 3,
+                distance_px: 40,
+            }
+        );
+        assert_eq!(dart172(parsed_down).unwrap(), dart_down);
+        assert!(dart138(&[0x5a, 0x5b, 0xa5, 0xc9, 0xa7, 0x61, 0x59, 0xa5, 0x41]).is_err());
+        assert!(dart138(&dart_left[..8]).is_err());
+
+        // p100b Group 11 C2S 139 live payloads
+        for (bytes, slot, kind_flags, sel, row, col) in [
+            ([0x5a, 0x5b, 0x51, 0x58], 0, 1, 1, 11, 2),
+            ([0x5a, 0x5b, 0x56, 0x5d], 0, 1, 1, 12, 7),
+            ([0x5a, 0xde, 0x51, 0x5a], 0, 132, 4, 11, 0),
+            ([0x5a, 0x59, 0x50, 0x5a], 0, 3, 3, 10, 0),
+        ] {
+            let p = place_item139(&bytes).unwrap();
+            assert_eq!(p.slot, slot);
+            assert_eq!(p.kind_flags, kind_flags);
+            assert_eq!(p.selector(), sel);
+            assert_eq!(p.row, row);
+            assert_eq!(p.col, col);
+            assert_eq!(
+                place_item173(p.kind_flags, p.row, p.col).unwrap(),
+                bytes[1..]
+            );
+        }
+        assert!(place_item139(&[0x5a, 0x5b, 0x51]).is_err());
+
+        // Trigger 126 <-> 168 round-trip
+        let trig_bytes = [
+            super::super::put(0, Width::U8).unwrap()[0],
+            super::super::put(1, Width::U8).unwrap()[0],
+            super::super::put(11, Width::U8).unwrap()[0],
+            super::super::put(2, Width::U8).unwrap()[0],
+        ];
+        let trig = trigger_item126(&trig_bytes).unwrap();
+        assert_eq!(
+            trig,
+            TriggerItem126 {
+                world_index: 0,
+                slot: 1,
+                row: 11,
+                col: 2,
+            }
+        );
+        let reply168 = trigger_item168(1, trig.world_index, trig.slot, trig.row, trig.col).unwrap();
+        assert_eq!(reply168.len(), 5);
+        assert_eq!(uint(&reply168[0..1], Width::U8).unwrap(), 1);
+        assert_eq!(reply168[1..], trig_bytes);
+
+        // p100b Spring 127/sub2 live payload
+        let spring_bytes = [
+            0x58, 0x5a, 0xa5, 0x41, 0xa4, 0xde, 0x96, 0xca, 0x55, 0xee, 0x96, 0xca, 0x53, 0x9d,
+            0x96, 0xca, 0x53, 0x9c, 0x96, 0xca, 0x57, 0x8d, 0x97, 0xc2, 0x53, 0x95, 0x4b,
+        ];
+        let s = spring127(&spring_bytes).unwrap();
+        assert_eq!(
+            s,
+            Spring127 {
+                slot: 0,
+                x: 40,
+                y: 439,
+                tick: 1659,
+                extra: 8,
+                row: 8,
+                col: 1,
+                packed_step: 17,
+            }
+        );
+        let s170 = spring170(s.slot, s.x, s.y, s.row, s.col, s.packed_step).unwrap();
+        assert_eq!(s170.len(), 9);
+        assert_eq!(uint(&s170[6..7], Width::U8).unwrap(), 8);
+        assert_eq!(uint(&s170[7..8], Width::U8).unwrap(), 1);
+        assert_eq!(uint(&s170[8..9], Width::U8).unwrap(), 17);
+
+        // Drill 127/sub3 -> 170/sub3 round-trip
+        let mut raw_drill = vec![24, 8, 0, 0, 0, 0];
+        raw_drill.extend_from_slice(&0x1122_3344u32.to_le_bytes());
+        raw_drill.extend_from_slice(&[5, 6, 2]);
+        let mut drill_wire = Vec::new();
+        for (v, w) in [
+            (u64::from(DRILL_SUBTYPE), Width::U8),
+            (1, Width::U8),
+            (120, Width::U16),
+            (240, Width::U16),
+            (555, Width::U32),
+            (3, Width::U32),
+            (raw_drill.len() as u64, Width::U32),
+        ] {
+            drill_wire.extend(super::super::put(v, w).unwrap());
+        }
+        drill_wire.extend(super::super::encode_bytes(&raw_drill).unwrap());
+        let d = drill127(&drill_wire).unwrap();
+        assert_eq!(d.box_id, 0x1122_3344);
+        assert_eq!((d.row, d.col, d.dir), (5, 6, 2));
+        let d170 = drill170(d).unwrap();
+        assert_eq!(d170[..6], drill_wire[..6]);
+        assert_eq!(d170[6..], drill_wire[14..]);
+
+        // Shield 127/sub5 -> 170/sub5 round-trip
+        let mut shield_wire = Vec::new();
+        for (v, w) in [
+            (u64::from(SHIELD_SUBTYPE), Width::U8),
+            (0, Width::U8),
+            (80, Width::U16),
+            (160, Width::U16),
+            (999, Width::U32),
+            (1, Width::U32),
+        ] {
+            shield_wire.extend(super::super::put(v, w).unwrap());
+        }
+        let sh = shield127(&shield_wire).unwrap();
+        assert_eq!(
+            (sh.slot, sh.x, sh.y, sh.tick, sh.extra),
+            (0, 80, 160, 999, 1)
+        );
+        assert_eq!(shield170(sh.slot, sh.x, sh.y).unwrap(), shield_wire[..6]);
+
+        // p100b live 127/sub0 payloads for Dart 143, Bond 224, Pin 226, Banana1 227, Spring 148
+        let live_sub0 = [
+            (
+                [
+                    0x5a, 0x5a, 0xa5, 0xff, 0xa7, 0x6e, 0x96, 0xca, 0x55, 0x2f, 0x96, 0xca, 0x53,
+                    0x97, 0x5b, 0xa5, 0xe6, 0x5a, 0x96, 0xca, 0x53, 0x95,
+                ],
+                ItemUseKind::Dart,
+            ),
+            (
+                [
+                    0x5a, 0x5a, 0xa5, 0x39, 0xa4, 0xb6, 0x96, 0xca, 0x5f, 0x11, 0x96, 0xca, 0x53,
+                    0x97, 0x5b, 0xa5, 0x89, 0x5a, 0x96, 0xca, 0x53, 0x95,
+                ],
+                ItemUseKind::Bond,
+            ),
+            (
+                [
+                    0x5a, 0x5a, 0xa5, 0x69, 0xa4, 0xb6, 0x96, 0xca, 0x5d, 0x69, 0x96, 0xca, 0x53,
+                    0x97, 0x5b, 0xa5, 0x8b, 0x5a, 0x96, 0xca, 0x53, 0x95,
+                ],
+                ItemUseKind::Pin,
+            ),
+            (
+                [
+                    0x5a, 0x5a, 0xa5, 0x69, 0xa4, 0xde, 0x96, 0xca, 0x43, 0xac, 0x96, 0xca, 0x53,
+                    0x97, 0x5b, 0xa5, 0x8a, 0x5a, 0x96, 0xca, 0x53, 0x95,
+                ],
+                ItemUseKind::Banana1,
+            ),
+            (
+                [
+                    0x5a, 0x5a, 0xa5, 0x41, 0xa4, 0xde, 0x96, 0xca, 0x55, 0xee, 0x96, 0xca, 0x53,
+                    0x9d, 0x5b, 0xa5, 0xfd, 0x5a, 0x96, 0xca, 0x53, 0x95,
+                ],
+                ItemUseKind::Spring,
+            ),
+        ];
+        for (bytes, expected) in live_sub0 {
+            assert_eq!(item_use127(&bytes).unwrap().kind, expected);
         }
     }
 }
