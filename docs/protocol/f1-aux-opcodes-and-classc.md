@@ -1,6 +1,6 @@
 # F1 phụ trợ: opcode 138/139, item Ctrl chủ động, khóa nhân vật lớn và Ship bổ sung
 
-Toàn bộ mục này là `kr_static` trên ảnh unpack KR 00967 `cf72da11…` (image base `0x400000`, RVA = VA trừ
+Phần phân tích IDA là `kr_static` trên ảnh unpack KR 00967 `cf72da11…` (image base `0x400000`, RVA = VA trừ
 `0x400000`). [Bằng chứng, hash và phạm vi](../evidence/content/f1-aux-opcodes-and-classc-ida.json) giữ VA và trạng
 thái của từng kết luận. Không chạy Wine, client hay server trong lượt này. Hai mẫu wire `138`/`139` do brief cung cấp
 chỉ được giải mã lại bằng writer tĩnh; chúng không tạo thêm bằng chứng runtime. Quyền xử lý của server gốc vẫn
@@ -117,13 +117,40 @@ gửi **5** và ghi 5 lại làm lựa chọn cục bộ (`13E52A0`). `11D2F20` 
 `5b5f` giải ra `(1,5)`.
 
 **Candidate rủi ro.** Với 3000–3004, client sẽ gửi `184–188` nếu byte cắt qua kiểm sở hữu, nếu không thì gửi 5;
-client không thể gửi 3000. Policy Loading79 hiện hành chỉ nhận byte bằng khóa đã chọn. Nhánh 4000–4030 tương ứng
-byte 160–190, còn 5000 thành 136. Lượt này không sửa Rust; cần đo native trước khi mở thêm khóa.
+client không thể gửi 3000. Tại PR #621, policy Loading79 chỉ nhận byte bằng khóa đã chọn. Nhánh 4000–4030 tương ứng
+byte 160–190, còn 5000 thành 136. Các dự đoán byte trên client vẫn cần đo native.
 
 **Confirmed.** Ở `E0F770`, `AEDE60` luôn đúng. Nếu đối số 5 bằng 95 và khóa thuộc 4000–4030, hàm gọi `B3BDE0(0)`
 rồi trả về trước khởi tạo actor và trước bộ đếm spawn. Đối số này là `E02A60(E04F00(map))` từ `E5A290`
 (**candidate**: loại map/mode). Ở giá trị khác, các khóa đó đi đường spawn chung. Chưa thấy guard UI riêng cho
 33 hàng lớp C ngoài kiểm sở hữu `11D2F20`.
+
+<a id="f1c-classc-rust"></a>
+## F1-c: Rust opt-in cho 33 nhân vật lớp C
+
+**Source:** `kr_static + emu_choice`. **Status:** `confirmed` trong kiểm thử Rust.
+[Bằng chứng và cách kiểm](../evidence/rust-service/f1c-classc-rust.json).
+
+Đặt `fixed_room.allow_class_c_characters: true` và thêm các khóa muốn mở vào
+`managed_rooms.player_round.characters`. Cờ mặc định tắt; bật cờ vẫn chỉ mở các khóa được liệt kê.
+Giữ khóa mặc định 0. Với cấu hình dùng `pack_stats`, giữ các hàng F1 thường trong bảng đó; sáu chỉ số của
+nhân vật lớp C lấy trực tiếp từ các hàng `BomberAttr` đã đối chiếu. Chỉ số phải thỏa
+`1 ≤ hiện tại ≤ tối đa ≤ 10` cho tốc độ, sức chứa và tầm bom. Giới hạn hiện có của địa hình vẫn
+từ chối cấu hình có tầm bom tối đa 10.
+
+Danh sách lớp C gồm 28 khóa `4000–4018`, `4020–4024`, `4027–4030` và 5 khóa `5000–5004`.
+Các hàng đối chứng `4019/4025/4026` (C15/C08/C26) nằm ngoài 33 hàng nên vẫn bị từ chối.
+`120–131`, `150/151` và `3000–3004` giữ nguyên phạm vi F1 thường.
+
+C2S92 kiểm catalog trước khi đổi lựa chọn. S2C Start121 giữ nguyên khóa u16 theo slot.
+C2S Loading79 vẫn đọc `[u8 count=1, u8 selected]` và chỉ ghi nhận một lần cho thành viên hiện hành trong
+pha Loading. Với khóa lớp C đã chọn, Rust nhận byte thấp của khóa hoặc giá trị dự phòng 5 theo writer tĩnh
+`D75D70 → D7CC20`. Gói này không đổi lựa chọn của server, không có ACK và không hoàn tất hàng rào tải trận.
+Các khóa F1 thường vẫn dùng phép so khớp đầy đủ trước đây, kể cả khi bật cờ.
+
+Chưa đo Wine cho 33 khóa này. Chưa xác nhận client cho chọn trong UI, byte thực tế khi qua kiểm sở hữu,
+actor/skill trong trận, chế độ có đối số 95, hay hành vi server KR gốc. Kiểm thử dùng roster tổng hợp
+để xác nhận lựa chọn, khóa Start121 và xử lý Loading79 của Rust; chưa mở dạng Loading79 nhiều người chơi cục bộ.
 
 <a id="f1-aux-ship"></a>
 ## Ship bổ sung
