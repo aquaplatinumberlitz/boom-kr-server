@@ -413,7 +413,6 @@ fn batch4a_profile_policy_fails_closed() {
         ("CaJJ_Space02", 167),
         ("NXCL_PangLand15", 871),
         ("Aqua03", 3),
-        ("Aqua06", 6),
         ("Aqua08", 8),
         ("CaJJ_Wriggle01", 171),
         ("Fm_RescueET01", 318),
@@ -438,7 +437,7 @@ fn batch4a_profile_policy_fails_closed() {
     let mut legacy = profile("ExVillage01", 278, (15, 13), false, false);
     legacy.as_object_mut().unwrap().remove("adapter");
     assert!(loads(legacy));
-    for (name, code) in [("Aqua01", 1), ("NXCL_Aqua01", 862)] {
+    for (name, code) in [("Aqua01", 1), ("Aqua06", 6), ("NXCL_Aqua01", 862)] {
         let mut allowed = profile(name, code, (15, 13), true, false);
         assert!(loads(allowed.clone()), "{name}");
         allowed.as_object_mut().unwrap().remove("adapter");

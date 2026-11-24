@@ -1160,3 +1160,16 @@ Phép chiếu Rust trong `terrain.rs` và `map_profile.rs` thuộc mức `emu_ch
   - `ExBula01`, `ExBula02` (`2/214` `F1-a` còn lại): sử dụng nền `Tile15_Ground/Remain*` (`d[15] >> 16` trong vùng `105..115`, `byte +61 == 0xFF` ở `Remain_Green*`), riêng `ExBula01` có `placement_header = 60` ngoài chính sách `100`, và chưa được đo Wine.
   - `Aqua06` (`F1-e`): chứa `Tile30_Static/Coral01` (`type = 3`, cờ tia trộn `16843009`), giữ chặn tới khi kiểm tĩnh.
   - `Aqua08` (`F1-e`): chứa `Tile30_Box/Urchins00` (`hit = 255`, `d[8] = 16`), giữ chặn tới khi kiểm tĩnh/runtime.
+
+<a id="f1a-full-214"></a>
+### F1-a Full 214/214 (`ExBula01`, `ExBula02`) và `Aqua06` (`Coral00/01`)
+
+[Biên nhận 214/214 và SHA-256](../evidence/rust-service/f1a-full-214.json) hoàn tất phủ toàn bộ **`214/214` map `F1-a`** và nâng Batch 4a `F1-e` lên **`31/37` map**, đồng thời vẫn **giữ nguyên 100% từng byte** của 206 map `F1-a` nền (`92663b1d…`).
+
+- **`ExBula01` và `ExBula02` (`kr_static/confirmed` cho client, `emu_choice/candidate` cho chiếu trận thường):**
+  - `Tile15_Ground/Remain00..09` (`word +62` từ `106..116 < 10000`) và `Remain_Green01/02` (`65280`, `byte +61 == 0xFF`, `byte +60 == 0`): `0xB9D8E0` không đọc `byte +61`, `0xED2350` trả `false` với `word +62 < 10000`, và `0xB9DEA0` chỉ phục vụ vẽ nền `EA5A10` hoặc `CBulaComponent` mode 2 (`0xEFC10F`), tương đồng `_PONG_GROUND_WORDS`.
+  - `Tile15_Static/Bf01_01..Bf05_04`: `type = 1`, `d[9]` (`+36`) nằm trong dải `10101..10104` thuộc `CBulaComponent` (`10001..10199` theo `#f1a-ida-round5`), không đọc ở mode thường `0`.
+  - `placement_header` (`60` ở `ExBula01`, `70` ở `ExBula02`): `0x118FC30 → 0x11ED860 → 0x11EB960` dùng làm hệ số `%` cho trọng số drop mặc định toàn cục (`ItemAttr`) khi ô bị bỏ trống ở bảng drop riêng, không ảnh hưởng các placement cố định (`0x11ED8A0`). Giữ giới hạn `unknown`: chưa có lượt đo Wine trực tiếp trên `ExBula01/02`.
+- **`Aqua06` (`Tile30_Static/Coral00/01`, `kr_static/confirmed`):**
+  - `EB4C10 → E90A80 / BA0E30`: `+24 == 0` chặn nhân vật đi vào ô (từ chối spawn trên ô), trong khi `+32 == 0x01010101` mở đủ bốn hướng tia `W/N/E/S` (`0b1111`), tương tự `Tile16_Passble/Line*`. `map_profile.rs` mở allowlist cho `Aqua06`.
+- **6 map Batch 4a còn chặn (`fail-closed`):** `Aqua08` (`Urchins00`, `hit = 255`, `0xED23E0(tile, -1)` kiểm `byte +32 & 0x10`) và `RetroCampN01..05` (`BombProof_*`).
