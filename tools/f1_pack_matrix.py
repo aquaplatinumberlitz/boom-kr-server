@@ -4,6 +4,7 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import json
 from pathlib import Path
+import re
 import subprocess
 import sqlite3
 import tempfile
@@ -47,6 +48,38 @@ def failure_kind(row, result_dir, exit_code=None):
     return 'server_or_adapter_error'
 
 
+def adapter_rejection_group(error):
+    """Gắn nguyên nhân ổn định cho mọi map bị terrain adapter từ chối.
+
+    Nhóm này chỉ là nhãn kiểm kê; nó không nới lỏng predicate terrain.
+    Tên tile đầy đủ vẫn được giữ trong ``error`` để đối chiếu pack KR.
+    """
+    if 'map parser không đọc hết payload' in error:
+        return 'partial_payload'
+    if 'Map ngoài phạm vi phục vụ' in error:
+        return 'service_scope'
+    match = re.search(r'(?:^|: )(?:nền(?:/[^ ]+)?|vật thể(?:/[^ ]+)?|overlay) ([^ ]+)', error)
+    tile = match.group(1) if match else ''
+    if tile.startswith('TileConv/'):
+        return 'conveyor'
+    if tile.startswith('Tile08_Ground/Rail'):
+        return 'mine_rail'
+    if tile.startswith('Tile07_Ground/'):
+        return 'Tile07_ground_flags'
+    if tile.startswith('Tile42_'):
+        return 'Tile42_gameplay_flags'
+    if tile.startswith(('Tile01_Passable/', 'Tile02_Passble/', 'Tile10_Passable/',
+                        'Tile16_Passble/', 'Tile53_Passable/')):
+        return 'passable_variant_flags'
+    if tile.startswith('Tile19_Static/'):
+        return 'static_variant_flags'
+    if tile.startswith('Tile53_Box/'):
+        return 'box_variant_flags'
+    if tile.startswith('TileTransParent_Static/'):
+        return 'transparent_static_flags'
+    return 'other_adapter'
+
+
 def inventory(game):
     families = {r['name']: r['map_count']
                 for r in json.loads((ROOT / 'docs/content/classification.json').read_bytes())['rows']
@@ -72,6 +105,7 @@ def inventory(game):
                 rules = f1_rules(profile, table)
             except ValueError as error:
                 row.update(status='adapter_rejected', error=str(error),
+                           adapter_group=adapter_rejection_group(str(error)),
                            unverified_placements=sorted(set(entry['placements'])))
             else:
                 row.update(status='pending', map_sha256=profile['payload_sha256'],

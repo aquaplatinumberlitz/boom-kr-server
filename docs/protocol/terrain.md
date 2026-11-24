@@ -907,7 +907,7 @@ unmount busy sau export đúng bytes. Các quan sát TCP/native, hai lớp cờ,
 coi đó là capture UDP đầy đủ hay debugger/output cleanup sạch. Không chạy lại chỉ để biến exit 1 thành 0.
 
 <a id="f1a-adapter-expansion"></a>
-## F1-a: mở rộng adapter tile đã đo sang 163/214 map (#559)
+## F1-a: adapter terrain nhận 164/214 map (#559)
 
 Từ nền [F1-a ban đầu](../evidence/rust-service/f1-pack-map-adapters.json) (155/214 map), `tools/kr_pack_export.py::f1_terrain_rules`
 mở rộng nhận thêm các biến thể cùng cấu trúc của các tile đã đo trong KR 00967: `Tile16_Static/PinPillar01..05` và
@@ -918,6 +918,31 @@ Các cơ chế chưa có hợp đồng (băng chuyền `TileConv/*`, đường r
 và 4 map lỗi parser đuôi payload) tiếp tục bị từ chối rõ ràng.
 
 Tám map vừa được mở (`CaJJ_RetroCamp08`, `Camp04`, `Camp05`, `Camp12`, `Camp15`, `Camp17`, `Cemetery01`, `Cemetery19`)
-đều chạy đạt qua `tools/f1_pack_matrix.py` hai client TLS/relay `kr-load --scope f1-a` (`8/8 passed`), nâng tổng số
-map F1-a hợp lệ lên **163/214** (51 map còn từ chối adapter). [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json).
-Đây là bằng chứng tổng hợp (`kr_static + emu_choice`); không tạo checkpoint native và không tự nâng phân loại họ map.
+đều chạy đạt qua `tools/f1_pack_matrix.py` với hai client tổng hợp `kr-load` qua TLS/relay ở scope `f1-a`
+(`8/8 passed`). Đợt đó đưa adapter lên 163/214 map.
+
+Đợt p89 kiểm lại 51 map bị từ chối. Adapter chỉ thêm `Tile53_Passable/Flower01..02` (ObjectTable 5162–5163):
+ba nhóm hướng ở offset 24, 28, 32 đều có bốn byte bằng 1, như Herb. `EA1EE0` gọi factory `EB4C10` cho type 3;
+cả Herb, Line và Flower vào cùng nhánh thường vì dword ở offset 4 bằng 0 và offset 52 khác 101. Predicate `9B0640` chỉ
+xét offset 44 cho type 0. Với type 3, tia dùng byte ở offset 32–35 qua `BA0F80`/`BA0FC0`, nên adapter giữ
+ô Flower trống và không đặt cờ chặn tia. Projection này không xác nhận di chuyển hay tương tác khác của Flower.
+
+`Island05` (mã 415) là map duy nhất mới được nhận, đưa tổng lên **164/214**. Hai client tổng hợp qua TLS/relay
+nhận ACK chọn map 117 và Start121; journal ghi đúng mã và tên. Cả hai về phòng sau ván và rời phòng sạch.
+[Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json) tách kết quả này khỏi tám đối chứng cũ.
+Không chạy client KR native trong đợt p89; không nâng phân loại họ map hoặc xác nhận các item bị lược bỏ.
+
+| Nhóm từ chối đầu tiên sau p89 | Số map | Chi tiết |
+|---|---:|---|
+| Cờ nền `Tile07_Ground` | 11 | `Tile00..01`. |
+| Cờ `Tile42_*` | 8 | Nền `TileRed`, `TileBlue` và vật thể `Block03`. |
+| Băng chuyền `TileConv/*` | 8 | Các biến thể hướng vẫn bị từ chối. |
+| Vật thể type 3 | 7 | `Tile01_Passable/Tent{Blue,Orange,Red}`, `Tile16_Passble/ArmyTent01..02`, `Tile02_Passble/IceHouse00..08`, `Tile10_Passable/Building00..08`. Các nhóm hướng khác mẫu Herb/Line đã đo hoặc có thành phần trong cùng map chưa có hợp đồng. |
+| Ray mỏ | 5 | `Tile08_Ground/Rail00..06`. |
+| Payload chưa đọc hết | 4 | `EventForest00`, `EventPatrit00`, `ExBula01`, `ExBula02`. |
+| Thùng type 2 | 3 | `Tile53_Box/Block30..32` có dword offset 28 khác 0, đi vào nhánh riêng của `EA1EE0`. |
+| Vật thể type 1 | 3 | `TileTransParent_Static/Static01` và `Tile19_Static/Block12` có cờ offset 32 chưa có hợp đồng. |
+| Map có script | 1 | `NXCL_Aqua01` bị chặn trước adapter; còn có `Tile30_Box/JellyBombBlock00` chưa được nhận. |
+
+`local/runs/f1a-adapter-expansion-r2/rejections.json` liệt kê đủ 51 map ban đầu, lỗi đầu tiên và từng tile
+bị từ chối theo lớp và tọa độ trên các map đọc được. Bốn map payload đọc dở chỉ có kết luận từ parser.

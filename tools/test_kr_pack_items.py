@@ -51,11 +51,10 @@ class FloorTests(unittest.TestCase):
 
 
 class TerrainAdapterTests(unittest.TestCase):
-    def profile(self, tile):
-        names = ['−1', tile]
+    def profile(self, tile, data, *, ground=False):
         return dict(name='SyntheticMap', width=2, height=1, rectangles=[],
                     spawns=[[1, 0]], payload_sha256='1' * 64,
-                    cells=[[-1, 1], [-1, -1]]) , (names, {tile: self.tiles[tile]})
+                    cells=[([0, -1] if ground else [-1, 0]), [-1, -1]]), ([tile], {tile: data})
 
     def setUp(self):
         all_pass = 0x01010101
@@ -71,29 +70,45 @@ class TerrainAdapterTests(unittest.TestCase):
         }
 
     def test_measured_tile_variants_are_accepted(self):
-        for tile in self.tiles:
-            profile, table = self.profile(tile)
+        for tile, data in self.tiles.items():
+            profile, table = self.profile(tile, data)
             rules = f1_terrain_rules(profile, table)
-            self.assertEqual(
-                rules['terrain']['kinds'][0],
-                1 if tile.startswith(('Tile16_', 'Tile62_Static/')) else 0,
-            )
+            expected = 1 if tile.startswith(('Tile16_', 'Tile62_Static/')) else 0
+            self.assertEqual(rules['terrain']['kinds'][0], expected)
+
+    def test_island_flower_variants_leave_the_passable_cell_clear(self):
+        # TileInfoList KR 00967, ObjectTable IDs 5162 and 5163.
+        for tile, tail in [('Flower01', 120722392), ('Flower02', 120723496)]:
+            with self.subTest(tile=tile):
+                name = 'Tile53_Passable/' + tile
+                data = (3, 0, 0, 0, 0, 0, 16843009, 16843009, 16843009,
+                        0, 0, 1, 0, 0, 0, 0, 11073034, tail)
+                terrain = f1_terrain_rules(*self.profile(name, data))['terrain']
+                self.assertEqual(terrain['kinds'], [0, 0])
+                self.assertNotIn('ray_barriers', terrain)
+                changed_ray = (*data[:8], 16777472, *data[9:])
+                with self.assertRaisesRegex(ValueError, 'ngoài adapter'):
+                    f1_terrain_rules(*self.profile(name, changed_ray))
 
     def test_unmeasured_mechanics_remain_rejected(self):
         refused = {
             'TileConv/ConvUR00': (0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 0, 0, 0, 0, 52224, 0, 0),
-            'Tile08_Ground/Rail00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0),
+            'Tile08_Ground/Rail00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 1, 0, 64512, 0, 0),
             'Tile07_Ground/Tile00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64512, 0, 0),
+            'Tile07_Ground/Tile01': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64512, 0, 0),
             'Tile42_Ground/TileRed': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 65536, 0, 0),
             'Tile42_Static/Block03': (1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+            'TileTransParent_Static/Static01': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1637888, 0, 0, 0, 0, 0, 0),
+            'Tile19_Static/Block12': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2010089472, 0, 0, 0, 0, 0, 0),
+            'Tile53_Box/Block30': (2, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 2487818, 117307672),
+            'Tile16_Passble/ArmyTent01': (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 2010265866, 0, -1, 0, 0),
+            'Tile01_Passable/TentOrange': (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 18730216, 0, 18730216, 0, 0),
+            'Tile02_Passble/IceHouse00': (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 18730216, 0, 18730216, 0, 0),
+            'Tile10_Passable/Building00': (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 64069472, 1, 1244184, 0, 0),
         }
         for tile, data in refused.items():
-            cells = [[1, -1], [-1, -1]] if not tile.startswith('Tile42_Static/') else [[-1, 1], [-1, -1]]
-            profile = dict(name='SyntheticMap', width=2, height=1, rectangles=[],
-                           spawns=[[1, 0]], payload_sha256='2' * 64,
-                           cells=cells)
             with self.subTest(tile=tile), self.assertRaisesRegex(ValueError, 'ngoài adapter'):
-                f1_terrain_rules(profile, (['−1', tile], {tile: data}))
+                f1_terrain_rules(*self.profile(tile, data, ground=data[0] == 0))
 
 
 if __name__ == '__main__':
