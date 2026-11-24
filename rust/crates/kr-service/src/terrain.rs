@@ -17,7 +17,9 @@ pub struct Config {
     /// Optional map-owned stop-before-cell layer, independent of box/solid flags.
     #[serde(default)]
     ray_barriers: Vec<u8>,
-    /// Optional per-cell open ray sides, bits 0..=3 in KR order N, W, S, E.
+    /// Optional per-cell open ray sides, bits 0..=3 read here as N, W, S, E.
+    /// KR BA0E30/17929B0 order is W, N, E, S (docs/protocol/terrain.md,
+    /// round 5); the remap is pending and changes only Tent cells.
     #[serde(default)]
     ray_ports: Vec<u8>,
     map_sha256: String,
@@ -295,7 +297,8 @@ impl Terrain {
             if self.ray_barriers[origin] != 0 {
                 continue;
             }
-            // Keep the existing cascade order while using KR direction bits.
+            // Keep the existing cascade order and the round-4 bit labels
+            // documented on `Config::ray_ports`.
             for (direction, dr, dc) in [(1, 0, -1), (0, -1, 0), (3, 0, 1), (2, 1, 0)] {
                 let outgoing = 1 << direction;
                 let incoming = 1 << (direction ^ 2);

@@ -608,5 +608,103 @@
       {"path": "local/runs/f1a-terrain-r4/matrix/catalog-005/verification.json", "bytes": 690, "sha256": "c9f2e17855b2e80df1a8591cc1f4e4f8bf48e19885f7cf1f4f247ad3a53c6457"},
       {"path": "local/runs/f1a-terrain-r4/matrix/catalog-005/load.log", "bytes": 1279, "sha256": "598f88c64cda29b6dba30ebb9c54c509f0bc54d5f727a0bb343bfc8f26e78f99"}
     ]
+  },
+  "round_5": {
+    "task": "o7-f1a-terrain-r5",
+    "baseline": "7b32148",
+    "build": "KR 00967",
+    "source": "kr_static + emu_choice",
+    "status": "candidate",
+    "counts": {
+      "previous_admitted": 185,
+      "newly_admitted": 21,
+      "total_admitted": 206,
+      "adapter_rejected_remaining": 8,
+      "total_f1_ab_maps": 214
+    },
+    "rejection_groups_after": {
+      "partial_payload": 4,
+      "box_variant_flags": 3,
+      "service_scope": 1
+    },
+    "static_control": {
+      "image_base": "0x400000",
+      "unpacked_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "source_ida_db_sha256_before_after": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+      "copy_removed": true,
+      "direction_order": {
+        "source": "kr_static",
+        "status": "confirmed",
+        "va": "17929B0 / E9F220 / EA5D90 / EB7190 / B41840 / B9DBF0",
+        "finding": "Cặp (dx, dy) = (-1,0), (0,-1), (1,0), (0,1): hướng 0..3 là W/N/E/S. Tên ConvLL/UU/RR/DD ra 0/1/2/3 xác nhận độc lập.",
+        "discrepancy": "Đợt 4 ghi N/W/S/E. Byte Tent +33/+35 mở bắc–nam; terrain.rs đọc bit 1/3 là tây/đông. Sửa cần đổi room_io_item_tests.rs (ngoài phạm vi), ảnh hưởng 5 map Tent."
+      },
+      "mine_rail": {
+        "source": "kr_static",
+        "status": "confirmed",
+        "tiles": "Tile08_Ground/Rail00..06 (+52 = 1)",
+        "va": "B9D8E0 → +0xD4; B9E4E0 ← B44000 / B46D80 / B475E0 / B57340 / F07AF0 / 825E80 / 826180 / 1123F50; B46CF0 → B46940 → B64F60 / B64FD0; B501D0 không tham chiếu",
+        "finding": "Chỉ chọn tốc độ khi cưỡi (Ship +192 thay +180) và hiệu ứng cưỡi. Không consumer bom, tia, lưới cờ, đặt bom hay va chạm đi bộ."
+      },
+      "conveyor": {
+        "source": "kr_static",
+        "status": "confirmed",
+        "tiles": "TileConv/* (+32 = 2, +36 ∈ {1,2,4,8}, +40 ∈ 0..3)",
+        "va": "B9D8E0 → +0xAC/+0xB0/+0xB4; B44647 → B9DBF0 → B41840; B9DB70 ← B422F0 / F08340 / F8F450; CGOBomb B3A790 / B3B7B0",
+        "finding": "+32 là bước 2 pixel, +36 mặt nạ vào, +40 hướng ra. Chỉ bomber bị kéo (guard B41200); bom, tia và đặt bom như nền thường."
+      },
+      "tile42": {
+        "source": "kr_static",
+        "status": "confirmed",
+        "tiles": "Tile42_Ground/TileRed/TileBlue (word +62 = 1/2), Tile42_Static/Block03 (+36 = 1)",
+        "va": "ED2350 / EB48E0 / B9DEA0 ← EA5A10, EFC020; BA1420 ← EFC020 / EFE6F0 / EFF600 / 60FEB0 / B50370; EEF020 case 2/35/38",
+        "finding": "Word +62 chỉ dùng để vẽ và trong CBulaComponent. Block03 +36 chỉ có reader Bula, BonusMapLadder (999) và B50370 không có tham chiếu.",
+        "limit": "Chưa nối mode id của phòng thường vào factory EEF020."
+      }
+    },
+    "newly_admitted_maps": [
+      {"name": "CaJJ_CAPong01", "code": 148, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-001", "map_sha256": "1049a24a210c791c133a630c76de773d22021a1495363a9dbe0620318f41aea5", "profile_rules_sha256": "eb197e9b414856c5af08a8cb6572ea65c8fe1d7b853d6835d37a3db288f8ac2f"},
+      {"name": "CaJJ_CAPong02", "code": 149, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-002", "map_sha256": "c5fd0a968d30bb235d30e8c1e3eca957fc936d25737e9c7575729931c0a56ed0", "profile_rules_sha256": "97cdf60f3e018b1961ba0b5627763ff88fed37db69008027631ef8177d27448b"},
+      {"name": "CaJJ_CAPong03", "code": 150, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-003", "map_sha256": "d39ee43ab9f47b0b5abaa2d883486b5982b485f4011fe1eff879abe64511b7b2", "profile_rules_sha256": "2aa97a08dc471fc8fda051469ef5d207a5e821e1cd762a1c0b392e5b9aa449eb"},
+      {"name": "CaJJ_CAPong04", "code": 151, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-004", "map_sha256": "d558479ae5ba8900a217339376f109a44fe785cabd5578827fdb0f84520baa61", "profile_rules_sha256": "bd4441688be5351efad100f5a6dfc2ac72b73a971d7aaaac0164390cb66b7342"},
+      {"name": "CaJJ_CAPong05", "code": 152, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-005", "map_sha256": "0089b708f706fcd97e279e8fd08976c2eaff0e94eae0596fd9bef6ae14c45ea2", "profile_rules_sha256": "2478913e26a6b70522c2e919e80808141075f4ede79c08c9bc4aaac40d043633"},
+      {"name": "Desert04", "code": 253, "group": "conveyor", "status": "passed", "run": "catalog-006", "map_sha256": "2e524d31b98d2c6f48ada2281f91b3a21652154dba857abbb4d04fce071127ae", "profile_rules_sha256": "4c91df0b8efb9bb3db70fba66a4ab70c5222eb41f2227cd7398f7f08d50354ce"},
+      {"name": "Desert05", "code": 254, "group": "conveyor", "status": "passed", "run": "catalog-007", "map_sha256": "6a6c6bd75f85c80a682c5341fd90d385c4138f7df504256c94e0188d79c7094b", "profile_rules_sha256": "4ae8d0cc6757fb5bdfe3c7fff057329bd062ba05089259a3dbc092c88fc35031"},
+      {"name": "Desert06", "code": 255, "group": "conveyor", "status": "passed", "run": "catalog-008", "map_sha256": "aaf4a9fdffb9de402aa78156b2fc1918aed04236d514acdb117deb9bc8f58539", "profile_rules_sha256": "3673b3aff4ec1185d7b9feb08d1c80beac40cda066a42469668284c8dd295d43"},
+      {"name": "EventFactory00", "code": 263, "group": "conveyor", "status": "passed", "run": "catalog-009", "map_sha256": "dbc073f637770d23fadf15f190a07d1843d3e4f85b635c3bbd811bac9fc3e60d", "profile_rules_sha256": "a8da7ad0117500279f759b2f8fa086a69d755500db48980b0a6b05da7d79811d"},
+      {"name": "Factory00", "code": 280, "group": "conveyor", "status": "passed", "run": "catalog-010", "map_sha256": "a583d4fd875b853af6cf6daedbd5efe67360dd9374f9567a36b107858beea8bb", "profile_rules_sha256": "fa8ff2aa02a90a6d28632fec1d455614e8f11b181f70ec468ec89c8aab02dc36"},
+      {"name": "Factory11", "code": 283, "group": "conveyor", "status": "passed", "run": "catalog-011", "map_sha256": "128620c97f82dcd3a04b8781da7300e5ba5582cf04714dc2ba95b80aee4a6bef", "profile_rules_sha256": "41b2f26b608107fd882a8858823646724bb62b04d3c4ba4f36037be41caae8bd"},
+      {"name": "Fm_CAPong01", "code": 298, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-012", "map_sha256": "1049a24a210c791c133a630c76de773d22021a1495363a9dbe0620318f41aea5", "profile_rules_sha256": "98c6fd4b1cd664af97c874bcf720a0743fb6d651ca47fce3cc4a8e593dfcf201"},
+      {"name": "Fm_CAPong02", "code": 299, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-013", "map_sha256": "c5fd0a968d30bb235d30e8c1e3eca957fc936d25737e9c7575729931c0a56ed0", "profile_rules_sha256": "1ce19c3ed494078b54a28d579bd084766f8677d5c3c2e77b1dc89bd9b9d8101c"},
+      {"name": "Fm_CAPong03", "code": 300, "group": "Tile42_gameplay_flags", "status": "passed", "run": "catalog-014", "map_sha256": "d39ee43ab9f47b0b5abaa2d883486b5982b485f4011fe1eff879abe64511b7b2", "profile_rules_sha256": "e8c9c3a9dc0bc5627933353495a1c6568da19ee983f44fdf4a2d936c191b3417"},
+      {"name": "Ice01", "code": 405, "group": "conveyor", "status": "passed", "run": "catalog-015", "map_sha256": "cac1092776a72a9dd36a4185193dafe434d451b518a37a7fa94d412693a1f0f9", "profile_rules_sha256": "a2c933f0b854dfd4d224fd891d2e4c395bb701ac50563ca8ebb7bb8c419d94d6"},
+      {"name": "Ice07", "code": 407, "group": "conveyor", "status": "passed", "run": "catalog-016", "map_sha256": "ace9a9fea2313681afbc1b9ad8b3a44173a210ed0217c0f6868dd5d63579e191", "profile_rules_sha256": "d15491583f8135cf6cf92dd82d3bb6b9924a50a3b50159c92d0b255c2fc014e5"},
+      {"name": "Mine01", "code": 480, "group": "mine_rail", "status": "passed", "run": "catalog-017", "map_sha256": "043d560e5586059ce1188a2946d232adfa87c6e7fc6b71457e3d812fce2ea7d5", "profile_rules_sha256": "9afba00e413f9c0cf3792d474b097a4d1a57d846f66a19294f6a4fcd3a6b247c"},
+      {"name": "Mine05", "code": 482, "group": "mine_rail", "status": "passed", "run": "catalog-018", "map_sha256": "1087f73b4bdbbb1b5255bf6a58bbfd515df2d541a370d90ca1db827c7de52aa3", "profile_rules_sha256": "f8cde404ea2becb94d614ef1358d097864f79ae55ce895b9e63c25389bf98ce6"},
+      {"name": "Mine06", "code": 483, "group": "mine_rail", "status": "passed", "run": "catalog-019", "map_sha256": "b358edab2e1cd66a1bba51f38a48b8fe293743df89cebe2203e338368221c5a9", "profile_rules_sha256": "cf2ce67c5d57711c74e252feaa4a445e6076a10b301a2a3fa51ed977f7379d0e"},
+      {"name": "Mine22", "code": 485, "group": "mine_rail", "status": "passed", "run": "catalog-020", "map_sha256": "d70323fdff314c17cc07338d5c9eea18410b4990c23cfa7ac8bf3e4c91391a67", "profile_rules_sha256": "696ce00c2c2ea53cb602c622c55bbae0d6876da50c3918c2621ffd1c9b61592a"},
+      {"name": "NXCL_Mine01", "code": 869, "group": "mine_rail", "status": "passed", "run": "catalog-021", "map_sha256": "561080bd4ba407104135bc7e8e9b18e600e1ca9dab1846a3d12c075fe5ad018d", "profile_rules_sha256": "35c7b4cbcfb4f28f92a6f230ea1fd3e03166ade5ecdf1faca542b47ac1d9b087"}
+    ],
+    "regression": "So byte JSON mã hóa chuẩn của profile và terrain/floor với adapter tại 7b32148: 185/185 giống nhau.",
+    "matrix": {
+      "source": "emu_choice",
+      "status": "candidate",
+      "result": "21/21 map mới: journal complete đúng mã/tên, hai vòng về phòng và room_closed. Mỗi lượt gồm map mới và map đối chứng.",
+      "limit": "TLS/relay trong namespace cục bộ, không Wine, VM hay client gốc. Ma trận chỉ kiểm vòng đời trận.",
+      "bundle_manifest_sha256": "d9e56df6e87a5cfb9807bb670e4b86a12a6e95ca643b22ea20b2bac45a8974bb",
+      "binaries": {
+        "kr-service": "f7cdaed8c23ca633c9ea6f1f5ff8baaef8e44dd6498c57ff8dee6702af1c3196",
+        "kr-load": "d8f09a81b1909a0589bed0ef3fadbaad1d064231a6fdd552b143e8aa1ef69648"
+      }
+    },
+    "recipe": "IDA 9.4 headless trên bản sao .ida-tmp của DB nguồn (đã xóa). pack_trace.py đọc pack chỉ đọc; compare_adapter.py so với baseline_export.py từ 7b32148; cargo build --workspace --locked --bins (dev); run_matrix.py gọi f1_pack_matrix.run_matrix với hai worker và đúng 21 map trong newly_admitted_maps; record.py ghi khóa này.",
+    "evidence": [
+      {"path": "local/runs/f1a-ida-expansion/round-5/ida-r5.json", "bytes": 154804, "sha256": "ad0270f1463fbdcb50048b469f1a0d2e7355b3c30714eb6ebd1bd3bdb11be277"},
+      {"path": "local/runs/f1a-ida-expansion/round-5/pack-trace.json", "bytes": 29700, "sha256": "9af7df929524bb032bb602caca317d453ca2c021dcb2f7af8504baec2ec40c5c"},
+      {"path": "local/runs/f1a-ida-expansion/round-5/regression.json", "bytes": 18823, "sha256": "c3379e2e40c7d6d05fde12a2a5a00e2768fd3f0d3b490269d4bd22757c2db7b4"},
+      {"path": "local/runs/f1a-ida-expansion/round-5/receipts.json", "bytes": 9883, "sha256": "7a0870de78088d184f292b3ca65f073262b9ffd143571887ce631606cca585a6"},
+      {"path": "local/runs/f1a-ida-expansion/round-5/matrix/inventory.json", "bytes": 416002, "sha256": "438fda681955562ff46c42d8c39626c99840add6d89688782b10dedd8cad1e04"},
+      {"path": "local/runs/f1a-ida-expansion/round-5/matrix/matrix.json", "bytes": 463326, "sha256": "3c321599e83d6b5312368c4a958e5d76f2d294a9c59f8dd7dedce5900cecc094"}
+    ]
   }
 }

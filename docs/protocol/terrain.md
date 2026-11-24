@@ -1045,3 +1045,63 @@ so sánh với baseline xác nhận toàn bộ 180 profile và luật terrain/fl
 và ba map Island vẫn bị từ chối. Ma trận kiểm vòng đời trận; test Rust dùng dữ liệu Tent KR để kiểm quy tắc tia.
 Đợt này không chạy native, Wine hoặc VM. [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json)
 ghi ở khóa `round_4`.
+
+<a id="f1a-ida-round5"></a>
+### Đợt 5: ray mỏ, băng chuyền và cờ Tile42, nhận thêm 21 map
+
+Nguồn `kr_static`: bản sao tạm của DB IDA ảnh unpack KR 00967 `cf72da11…`, image base `0x400000`; DB nguồn giữ
+SHA-256 `6be15a1f…` trước và sau. Pack chỉ đọc đã kiểm hash. Địa chỉ dưới đây là VA. Build này không tối ưu:
+mỗi trường tile được đọc qua getter riêng, nên danh sách caller của getter là danh sách consumer. Đợt này vẫn quét
+thêm mẫu byte đọc trực tiếp và lời gọi `rel32`/con trỏ tuyệt đối trên toàn ảnh để kiểm.
+
+**Thứ tự hướng KR.** Bảng `17929B0` là `(-1,0), (0,-1), (1,0), (0,1)` theo cặp (dx, dy). `E9F220` cộng phần tử thứ
+hai vào hàng và phần tử thứ nhất vào cột; `EA5D90` và `EB7190` cho thấy đối số đầu là hàng (chỉ số bằng cột cộng
+hàng nhân chiều rộng). Vậy hướng 0, 1, 2, 3 là tây, bắc, đông, nam (`kr_static/confirmed`). Tên băng chuyền xác nhận
+độc lập: `ConvLL` ra hướng 0, `ConvUU` ra 1, `ConvRR` ra 2, `ConvDD` ra 3. Đợt 4 ghi thứ tự này là bắc, tây, nam,
+đông. Với Tent, byte `+33/+35` mở hướng 1 và 3, nên trong client tia đi qua theo trục bắc–nam và bị chặn đông–tây.
+Adapter vẫn xuất `ray_ports = 0b1010` đúng thứ tự byte KR, nhưng `terrain.rs` đang đọc bit 1 và 3 là tây và đông.
+Sửa ánh xạ trong Rust sẽ làm hỏng test `desert_tent_origin_clears_only_horizontal_boxes_after_both_blast_writes`
+của `room_io_item_tests.rs`, file nằm ngoài phạm vi đợt này; đổi giá trị adapter lại làm 5 profile Tent khác byte.
+Đợt này chỉ ghi lại sai lệch và sửa chú thích. Bước tiếp theo là gán lại bit trong `terrain.rs` (tây bit 0, bắc bit 1,
+đông bit 2, nam bit 3) cùng test đó; thay đổi chỉ ảnh hưởng ô Tent của `Camp07`, `Camp14`, `Desert00`, `Desert03`
+và `NXCL_Desert00`.
+
+**Ray mỏ (`Tile08_Ground/Rail00..06`).** Nền type 0 có `+52 = 1`; các trường còn lại như nền thường (byte `+60` và
+word `+62` bằng 0). `B9D8E0` chép `+52` vào `CGOTileGround+0xD4`, getter duy nhất là `B9E4E0`. Các caller `B44000`
+(update của `CGOBomber`), `B46D80` (`CPetOwnerPlayer`), `F07AF0` (Hedgehog) và `825E80`, `826180`, `1123F50` (bomber
+Square/LobbySquare) đưa cờ vào slot 14 của thành phần cưỡi (`B46CF0 → B46940`). Khi đang cưỡi, cờ chọn `B64F60`
+(Ship `+192` nếu khác 0, nếu không thì `+180`) thay cho `B64FD0` (`+180`). `B44000` và `B57340` chỉ cập nhật và vẽ
+hiệu ứng khi cưỡi ngoài ray; `B475E0` của `CPlayMap` tạo hiệu ứng khi tốc độ từ 4 trở lên. `B501D0` không có tham
+chiếu tĩnh. Không có consumer trong `CGOBomb`, đường đặt bom, tia (`E9F220`, `E9C520`, `E9D100`), lưới cờ của
+`EA1EE0` hay va chạm khi đi bộ. Adapter chiếu Rail như nền thường.
+
+**Băng chuyền (`TileConv/*`).** `+32 = 2` là bước dịch tính bằng pixel (0 nghĩa là không phải băng), `+36` là mặt nạ
+hướng vào 1/2/4/8 và `+40` là hướng ra 0–3; `B9D8E0` chép chúng vào `+0xAC/+0xB0/+0xB4`. `B9DBF0` kéo bomber về tâm
+ô theo trục vào rồi gọi `B41840(hướng ra, phần dư)`; hàm này đi qua các slot va chạm của bomber. Caller là `B44647`
+trong `B44000`, có guard `B41200` (slot `+0x84` của thành phần cưỡi, `B41180` và `CGOBomber+0x24DC` đều bằng 0),
+và hai lớp bomber Square.
+`B9DB70` chỉ được `B422F0` (chọn animation đứng), `F08340` (Hedgehog) và `F8F450` (AI) gọi. Trong vtable
+`CGOTileGround`, chỉ `B9D8E0` chạm ba trường này; `CGOBomb` (`B3A790`, `B3B7B0`) chỉ đọc trường item `+0xC0/+0xC8`.
+Vì vậy bom không bị băng đẩy, còn tia và đặt bom giống nền thường (`kr_static/confirmed`). Server không mô phỏng vị
+trí nhân vật, nên hợp đồng terrain không cần tham số `dist` hay bước 2 pixel. Adapter chỉ nhận ô băng có bước 2,
+mặt nạ 1/2/4/8, hướng ra 0–3, kích thước 1×1 và các cờ `+44..+56` bằng 0.
+
+**Cờ Tile42 (CAPong).** Word `+62` của TileRed và TileBlue (1 và 2) nhỏ hơn ngưỡng hủy bom 10000 của `ED2350` và
+khác giá trị 102 mà `EB48E0`/`B9E940` kiểm. Getter `B9DEA0` chỉ được `EA5A10` (vẽ nền; giá trị 2 chọn biến thể vẽ)
+và `CBulaComponent` (`EFC020`) gọi. `Block03` là type 1 có `+36 = 1`; quét mẫu `[+0xAC]+0x24` chỉ thấy `BA1420`.
+Caller của nó là `CBulaComponent` (giá trị 10001–10199), `CBonusMapLadderWinnerComponent` (999) và `B50370`. `B50370`
+không có lời gọi `rel32` hay con trỏ tuyệt đối nào trong ảnh, nên ghi chú va chạm ở đợt 3 không có đường gọi sống.
+Factory `EEF020` chỉ tạo Bula ở case 2, BonusMapLadder ở case 35 và `CPongComponent` ở case 38; case 0 là
+`CDefaultComponent`. Đợt này không nối mode id của phòng thường vào factory; nếu phòng thường rơi vào một trong ba case
+đó thì phải đo lại. Block03 được chiếu là vật thể cứng như Block01; TileRed và TileBlue là nền thường.
+
+Kết luận về client ở trên là `kr_static/confirmed`; phép chiếu trong adapter là `emu_choice/candidate`. Ma trận hai
+client tổng hợp `kr-load` ở scope `f1-a` qua TLS/relay chạy 21 map mới, mỗi map kèm `CaJJ_Clover01` đối chứng:
+`CaJJ_CAPong01..05`, `Fm_CAPong01..03`, `Desert04..06`, `EventFactory00`, `Factory00`, `Factory11`, `Ice01`, `Ice07`,
+`Mine01`, `Mine05`, `Mine06`, `Mine22` và `NXCL_Mine01`. Cả 21 lượt đạt: journal complete đúng mã và tên, hai vòng về
+phòng và `room_closed`. F1-a đạt **206/214** map qua adapter; so sánh với adapter tại `7b32148` xác nhận 185 profile
+cùng luật terrain/floor cũ giống từng byte. Tám map còn bị từ chối: bốn payload Soul, ba thùng Island và
+`NXCL_Aqua01` có script. Ma trận chỉ kiểm vòng đời trận; test Python kiểm predicate từng tile. Đợt này không chạy
+native, Wine hoặc VM. Phép đo Wine tùy chọn để nâng phép chiếu: hai view trên `Factory00` đặt bom trên ô băng rồi
+đứng lên băng, ghi ô bom lúc nổ và vị trí nhân vật; một bom Tent của `Desert00` với thùng ở bốn hướng để chốt trục
+bắc–nam. [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json) ghi ở khóa `round_5`.
