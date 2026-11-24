@@ -1,0 +1,64 @@
+{
+  "schema": "kr-f1b-cookie07-acceptance-v1",
+  "task": "p94",
+  "checkpoint": "CP396",
+  "baseline": "29ada0944f79cfa6a75ec38b612e82eaff5765c2",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Hai client KR 00967 trên Wine, cùng phòng và cùng hai kết nối qua hai ván Cookie07. Rust dùng policy report_derived_shoe_punch và needle_rescue.",
+  "precedents": [
+    "docs/evidence/checkpoints/records/CP394.json",
+    "docs/evidence/rust-service/f1a-adapter-expansion.json",
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec"
+  ],
+  "map": {
+    "name": "Cookie07",
+    "code": 227,
+    "source": "kr_static",
+    "status": "confirmed",
+    "payload_sha256": "98c43b4ee006378028e73f9d63c0c3c6c8d003cdcb445a479cfa6f58584e49a9",
+    "terrain_sha256": "d6e5c0c7c07fb8028525778b8c28e3ec2882bc4a2f42f816a96700d697e76eb5",
+    "export_manifest_sha256": "8f48cd10089607b5a8ff9e00e8c1def8b4babe92ad640388b677ceccb763daad",
+    "list1": [
+      {"kind": 4, "index": 4, "row": 6, "column": 5},
+      {"kind": 3, "index": 5, "row": 6, "column": 9},
+      {"kind": 145, "index": 0, "row": 7, "column": 7}
+    ],
+    "limits": "Danh sách trích ba item của phép thử. Floor giữ các item nền được adapter hỗ trợ; các placement ngoài policy bị loại. Entry map và minimap trong bản copy Wine khớp từng byte khi giải pack, dù toàn file FxMap.idd khác hash."
+  },
+  "runtime": {
+    "run": "run-7",
+    "started_utc": "2026-11-24T03:46:12Z",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "client_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+    "server_sha256": "44a30df5be29ffc4aec1f638eb9ee2300efbbe6d4f289836aa78fe20e8236db7",
+    "companion_sha256": "88b64af237cc7691766dc74c3b278fe91115347e384663a086e5d13a6aea4c2f",
+    "isolation": "Giữ lease Wine; server và hai client dùng namespace riêng, không có route mặc định. Capture trên TCP loopback của từng client và companion.",
+    "freshness": "Dùng recipe khởi động của CP394. Cả hai bản copy, prefix, tài khoản, SQLite, capture và ảnh của lượt nghiệm thu đều mới."
+  },
+  "acceptance": {
+    "punch": "A nhặt Punch và phát 119 selector 1; bom từ (6,5) sang (9,5). Cả hai client nhận đúng 162, short 158 và 158 nổ cùng ID; ảnh B có bom đang bay.",
+    "shoe": "A nhặt Shoe và phát 119 selector 4; bom từ (5,9) sang (5,8). Cả hai client nhận đúng 162, short 158 và 158 nổ cùng ID; ảnh B thấy bom chuyển ô.",
+    "needle": "A nhặt Kim 145, bị nhốt, rồi Ctrl phát 127/1 và 127/0, kind 145. B nhận 170/1 và thấy A thoát; ô Ctrl của A trống sau khi dùng.",
+    "reset": "Start121 ván hai giữ map và roster, cấp key pickup mới và khôi phục floor 582. Hai view xác nhận spawn, chỉ số C00 và cờ Shoe/Punch về giá trị đầu ván. Ô Ctrl trống và A có claim 124/165 mới cho cả ba item.",
+    "return_and_journal": "Cả hai client thấy kết quả và trở về cùng phòng sau mỗi ván. SQLite có hai kết quả complete/elimination và bốn dòng thưởng 0; join account/player/wire ID khớp A/B, slot 0/1, nhân vật C00 và team 0/3 trên Start121."
+  },
+  "artifacts": {
+    "root": "local/runs/f1b-cookie07-wine",
+    "receipt": {"path": "verification.json", "sha256": "37946548c94992693a72e211f226880978ce71b1636d923df44e6da19843f8b2"},
+    "checksums": {"path": "SHA256SUMS", "sha256": "cbe47043ec0ae6a713f10210bfabbbc40072cdd78efcae636898880f51a43f1a"},
+    "wire": ["run-7/wire-segments-A.jsonl", "run-7/wire-segments-B.jsonl", "run-7/wire.jsonl"],
+    "screens": ["run-7/comparison.png", "run-7/comparison-reset-return.png"],
+    "journal": "run-7/accounts.sqlite",
+    "cleanup": "scratch-cleanup.json"
+  },
+  "reproduction": [
+    "Build release bị khóa dependency: cargo build --manifest-path rust/Cargo.toml --release --locked -p kr-service --bins; cargo build --manifest-path rust/Cargo.toml --release --locked -p kr-tunnel --bin kr-prelogin --bin kr-launch-identity.",
+    "Xuất bằng tools/kr_pack_export.py với pack gốc và --f1-map Cookie07 --f1-map Forest24. Dùng build_catalog.py để tạo config qua adapter chuẩn. Forest24 chỉ là mục phụ vì catalog cần ít nhất hai lựa chọn; cả hai Start121 chọn Cookie07.",
+    "Dựng namespace và chạy hai bản copy bằng run_pair_capture.py. Lặp input theo commands-*.json và biên nhận controller.jsonl của run-7. Decode capture bằng decode_channel.py rồi kiểm verify_run.py; đối chiếu riêng các ảnh thao tác, reset và về phòng."
+  ],
+  "limits": [
+    "Chỉ xác nhận lát cắt Cookie07, hai client C00 trên bản Wine chẩn đoán, hai route bom và Kim cố định list1. Không xác nhận parity của F1/G1, server KR gốc, map hoặc roster khác.",
+    "Đồng hồ UI về 0 trước khi một số thao tác kết thúc; hai kết quả được kích hoạt bằng elimination. Phép thử không nghiệm thu hành vi hết giờ."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "CP396",
+  "previous": "CP395",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-24T04:03:05+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Hai client KR 00967 chạy Rust có thể dùng Punch, Shoe và Kim 145 cố định trên cùng Cookie07 rồi bắt đầu ván hai sạch không?",
+  "scope": "p94; bản dựng release locked tại baseline. Một lượt nghiệm thu mới với hai ván Cookie07, hai client Wine chẩn đoán, hai account cục bộ, cùng phòng và hai kết nối. Forest24 là mục phụ của catalog, không được chơi.",
+  "context_commit": "29ada0944f79cfa6a75ec38b612e82eaff5765c2",
+  "artifacts": [
+    {"name": "kr-service x86_64, release locked", "sha256": "44a30df5be29ffc4aec1f638eb9ee2300efbbe6d4f289836aa78fe20e8236db7"},
+    {"name": "kr-prelogin x86_64, release locked", "sha256": "88b64af237cc7691766dc74c3b278fe91115347e384663a086e5d13a6aea4c2f"},
+    {"name": "CA.exe KR 00967, hai bản copy Wine", "sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"name": "Manifest pack xuất cho p94", "sha256": "8f48cd10089607b5a8ff9e00e8c1def8b4babe92ad640388b677ceccb763daad"}
+  ],
+  "locators": [
+    "docs/protocol/items-stats.md#rust-bomb-motion-codec",
+    "docs/protocol/load-phase.md#f1-pack-floor",
+    "docs/evidence/rust-service/f1b-cookie07.json",
+    "local/runs/f1b-cookie07-wine/run-7"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec", "summary": "Cookie07/227 xuất từ pack pin có Punch (6,5), Shoe (6,9) và Kim 145 (7,7) cùng list1. Entry map và minimap của bản chạy khớp pack gốc.", "limits": "Kết luận chỉ cho hai entry Cookie07, không coi toàn bộ pack chẩn đoán là bản gốc.", "evidence": ["P94_PACK", "P94_META"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec", "summary": "Ván một: A nhặt Punch và Shoe. Punch selector 1 đổi (6,5) → (9,5); Shoe selector 4 đổi (5,9) → (5,8). Cả hai client nhận 162 khớp 119, rồi short 158 và 158 nổ có cùng ID từng bom.", "limits": "Hai route với bom do A đặt. Ảnh đối chiếu cho thấy hiệu ứng ở client B; không suy các hướng khác hay vật lý server gốc.", "evidence": ["P94_WIRE", "P94_MOTION_UI"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec", "summary": "A nhặt Kim 145, tự thoát bóng bằng Ctrl sau trap; actual 127/1 và 127/0 kind 145 đi với 170/1 trên B. Ảnh hai view cho thấy trap rồi thoát và ô Ctrl của A trống.", "limits": "Một ca tiêu thụ Kim cố định list1.", "evidence": ["P94_RECEIPT", "P94_MOTION_UI"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/items-stats.md#rust-bomb-motion-codec", "summary": "Start121 ván hai vẫn là Cookie07, floor 582 đúng pack, key đổi. Cả hai view trở về spawn với chỉ số C00 và cờ Shoe/Punch đầu ván. A nhặt lại ba item; hai client nhận kết quả và về phòng sau cả hai ván. Journal có thưởng 0 đúng account/player, slot, team và nhân vật.", "limits": "Hai kết quả elimination; không nghiệm thu hành vi hết giờ, toàn nhóm F1/G1, Internet hoặc server KR gốc.", "evidence": ["P94_RECEIPT", "P94_RETURN_UI", "P94_JOURNAL"]}
+  ],
+  "verification": [
+    {"check": "Tái lắp TCP loopback, kiểm CRC, floor và identity Start121, claim/confirm, motion/retire/nổ, life và return.", "result": "pass", "limits": "Cùng một kết nối capture trên mỗi client xuyên suốt hai ván.", "evidence": ["P94_WIRE", "P94_RECEIPT"]},
+    {"check": "Đối chiếu ảnh, kiểm checksum wrapper native và join journal SQLite.", "result": "pass", "limits": "Chỉ chỉ số, cờ và trạng thái quan sát được của hai C00.", "evidence": ["P94_RECEIPT", "P94_RETURN_UI", "P94_JOURNAL"]},
+    {"check": "Kiểm namespace không còn tiến trình của lượt, scratch đã dọn và file chứng cứ khớp checksum.", "result": "pass", "limits": "Hai wrapper thử sớm không có mã thoát; dọn scratch sau khi kiểm namespace và lấy lại lease.", "evidence": ["P94_CLEANUP", "P94_SHA256"]}
+  ],
+  "delta": {"added": ["Nghiệm thu ba item cố định trên cùng Cookie07 và reset hai ván, bổ sung cho CP394 vốn đo trên hai map."], "corrected": [], "superseded": []},
+  "blockers": [],
+  "next_steps": [
+    {"id": "F1B-SAME-MAP-ACCEPTANCE", "task": "KRE-F1-B", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Chốt phép thử p94. Các placement, drop và map ngoài lát cắt này giữ phạm vi cũ."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-24T04:03:05+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự đối chiếu capture, ảnh, chỉ số native và journal.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F1."},
+    {"path": "docs/PLAN.md", "state": "unchanged", "reason": "p94 dành phần dashboard cho điều phối."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục và contract wire hiện hành giữ nguyên."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Phạm vi phép thử giữ tại metadata của p94."},
+    {"path": "docs/protocol/items-stats.md", "state": "unchanged", "reason": "Đo thêm map bằng contract 119/162 và policy hiện có."},
+    {"path": "docs/evidence/rust-service/f1b-cookie07.json", "state": "updated", "reason": "Pin lượt runtime Cookie07, ảnh, recipe và giới hạn."},
+    {"path": "docs/evidence/checkpoints/records/CP396.json", "state": "updated", "reason": "Ghi nhận phép thử p94."}
+  ],
+  "evidence": [
+    {"id": "P94_RECEIPT", "kind": "local", "path": "local/runs/f1b-cookie07-wine/verification.json", "bytes": 21119, "sha256": "37946548c94992693a72e211f226880978ce71b1636d923df44e6da19843f8b2"},
+    {"id": "P94_WIRE", "kind": "local", "path": "local/runs/f1b-cookie07-wine/run-7/wire.jsonl", "bytes": 42129, "sha256": "a7ada81abb3240b158e0548872b5b5a1a2eaf93ba5a1be9597bc19816162aaec"},
+    {"id": "P94_MOTION_UI", "kind": "local", "path": "local/runs/f1b-cookie07-wine/run-7/comparison.png", "bytes": 1198737, "sha256": "70a17a6b9bcfffa0eaa16d9f03f5a04ada78e48eba31dced2c402cb1f31dec6d"},
+    {"id": "P94_RETURN_UI", "kind": "local", "path": "local/runs/f1b-cookie07-wine/run-7/comparison-reset-return.png", "bytes": 1777827, "sha256": "497d01e70497e11bbf4cd39de7099025a32dbb8864887704d1654660916743f9"},
+    {"id": "P94_JOURNAL", "kind": "local", "path": "local/runs/f1b-cookie07-wine/run-7/accounts.sqlite", "bytes": 176128, "sha256": "ac7b1283488cf85fd185727cbd53419c959b7b34230e1fbf35f72bbff3d99053"},
+    {"id": "P94_PACK", "kind": "local", "path": "local/runs/f1b-cookie07-wine/client-pack-compare.json", "bytes": 574, "sha256": "a7b66105ba6a916e150a154a1bc36b80ecb6c799618dd3b6b0b9fb723ef4f3d5"},
+    {"id": "P94_CLEANUP", "kind": "local", "path": "local/runs/f1b-cookie07-wine/scratch-cleanup.json", "bytes": 1642, "sha256": "45794e753c9c97dd90581b2afcec55a4efa712d1e6f278654b4b2c54296faaf0"},
+    {"id": "P94_SHA256", "kind": "local", "path": "local/runs/f1b-cookie07-wine/SHA256SUMS", "bytes": 8738, "sha256": "cbe47043ec0ae6a713f10210bfabbbc40072cdd78efcae636898880f51a43f1a"},
+    {"id": "P94_META", "kind": "repository", "path": "docs/evidence/rust-service/f1b-cookie07.json", "bytes": 5082, "sha256": "eefcdf436ca29b7d63f6b0d3f37158b2bb3d52153a07d5d05aa7e1b4c2d7cc74"},
+    {"id": "P94_RAW_003", "kind": "local", "path": "local/runs/f1b-cookie07-wine/catalog/provenance.json", "bytes": 4462, "sha256": "ab5db283726b9c38e4875e76034bc05ccf6a5ad18e5911a7190bb5e8ec143223"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f1b-cookie07-wine", "path": "local/evidence-manifests/0554f838383975b08bdcbe860546162be75447d6ed5c16d0e924f1be2427243b.jsonl", "sha256": "0554f838383975b08bdcbe860546162be75447d6ed5c16d0e924f1be2427243b", "bytes": 2566, "count": 14, "files_bytes": 50956},
+    {"run": "local/runs/f1b-cookie07-wine/run-7", "path": "local/evidence-manifests/e1bd308d5075ca3dbe180ec25633d7cdf42af8691cd124e4ee0f16abd051daa2.jsonl", "sha256": "e1bd308d5075ca3dbe180ec25633d7cdf42af8691cd124e4ee0f16abd051daa2", "bytes": 14328, "count": 76, "files_bytes": 3849842}
+  ]
+}
