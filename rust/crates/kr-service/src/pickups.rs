@@ -24,6 +24,8 @@ pub(crate) enum Policy {
     ReportDerivedShoePunch,
     /// p93 pickup kinds and report-derived Scanner consumption (emu_choice).
     ReportDerivedF1bExtended,
+    /// F1-b plus p97b visible vehicle pickups and dismount reports (emu_choice).
+    ReportDerivedF1dVehicles,
 }
 impl Policy {
     pub(crate) fn enabled(self) -> bool {
@@ -34,25 +36,25 @@ impl Policy {
             && (matches!(kind, 0..=2 | 5)
                 || (self.punch() && kind == 4)
                 || (self.shoe() && kind == 3)
-                || (self.f1b_extended() && f1b_pickup_amount(kind).is_some()))
+                || (self.f1b_extended() && f1b_pickup_amount(kind).is_some())
+                || (self.f1d_vehicles() && is_vehicle_kind(kind)))
     }
     pub(crate) fn punch(self) -> bool {
-        matches!(
-            self,
-            Self::ReportDerivedPunch
-                | Self::ReportDerivedShoePunch
-                | Self::ReportDerivedF1bExtended
-        )
+        self == Self::ReportDerivedPunch || self.shoe()
     }
     pub(crate) fn shoe(self) -> bool {
-        matches!(
-            self,
-            Self::ReportDerivedShoePunch | Self::ReportDerivedF1bExtended
-        )
+        self == Self::ReportDerivedShoePunch || self.f1b_extended()
     }
     pub(crate) fn f1b_extended(self) -> bool {
-        self == Self::ReportDerivedF1bExtended
+        self == Self::ReportDerivedF1bExtended || self.f1d_vehicles()
     }
+    pub(crate) fn f1d_vehicles(self) -> bool {
+        self == Self::ReportDerivedF1dVehicles
+    }
+}
+
+pub(crate) fn is_vehicle_kind(kind: u16) -> bool {
+    matches!(kind, 40..=44)
 }
 
 pub(crate) fn f1b_pickup_amount(kind: u16) -> Option<u16> {
@@ -78,8 +80,7 @@ pub(crate) struct Catalog {
     hidden: BTreeMap<u32, Item>,
 }
 impl Catalog {
-    /// MaxPower changes the server's current per-character power projection.
-    /// Refuse it before bind when that measured projection is not enabled.
+    /// Reject floor kinds that require an opt-in policy before serving them.
     pub(crate) fn validate_stat_policy(&self, policy: Policy) -> io::Result<()> {
         if !policy.allows(5)
             && self
@@ -120,6 +121,9 @@ impl Catalog {
                 .any(|item| f1b_pickup_amount(item.kind).is_some())
         {
             return Err(io::Error::other("extended item floor requires F1-b opt-in"));
+        }
+        if !policy.f1d_vehicles() && self.floor.values().any(|item| is_vehicle_kind(item.kind)) {
+            return Err(io::Error::other("vehicle floor requires F1-d opt-in"));
         }
         Ok(())
     }
@@ -185,7 +189,8 @@ impl Catalog {
                 if row[4] >= 13
                     || row[5] >= 15
                     || !(crate::item_scope::kept_kind(u32::from(kind))
-                        || f1b_pickup_amount(kind).is_some())
+                        || f1b_pickup_amount(kind).is_some()
+                        || (group == 0 && is_vehicle_kind(kind)))
                     || !indices.insert(index)
                     || indices.len() > 64
                 {
@@ -297,6 +302,7 @@ pub(crate) struct Round {
     consumed: BTreeSet<u32>,
     revealed_cells: BTreeSet<(u8, u8)>,
     inventory: BTreeMap<(Membership, u16), InventoryCredit>,
+    mounted_vehicles: BTreeMap<Membership, u16>,
 }
 #[derive(Clone, Debug, Default)]
 struct InventoryCredit {
@@ -318,6 +324,19 @@ impl Round {
         self.consumed.clear();
         self.revealed_cells.clear();
         self.inventory.clear();
+        self.mounted_vehicles.clear();
+    }
+    /// p97b: a successful second floor claim still resolves, but keeps the first mount.
+    pub(crate) fn mount_vehicle(&mut self, member: Membership, kind: u16) {
+        debug_assert!(is_vehicle_kind(kind));
+        self.mounted_vehicles.entry(member).or_insert(kind);
+    }
+    pub(crate) fn dismount_vehicle(&mut self, member: Membership) -> Option<u16> {
+        self.mounted_vehicles.remove(&member)
+    }
+    #[cfg(test)]
+    pub(crate) fn mounted_vehicle(&self, member: Membership) -> Option<u16> {
+        self.mounted_vehicles.get(&member).copied()
     }
     /// The room calls this only for accepted first claims, in the same candidate
     /// state published after reservation of every pickup confirmation queue.
