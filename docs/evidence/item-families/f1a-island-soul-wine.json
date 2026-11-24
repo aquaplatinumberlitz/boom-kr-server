@@ -80,5 +80,16 @@
     "wine_scratch_removed_total_bytes": 37063987837,
     "cleanup_unit": "Kích thước logic của file đã xóa. Trống /home khoảng 475 GiB trước lượt bổ sung và 509601030144 byte sau cleanup. Giữ nguyên SHA256SUMS của lượt gốc."
   },
+  "owner_counter_static": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "input_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "source_database_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+    "counter": "Trong EB9840, cạnh EB9A95 gọi B9CEC0(0). Nếu giá trị được bảo vệ +0xC4 sau xử lý còn khác 0 và byte +0xEC bằng 0 thì B9CF3C ghi 14 vào +0xD0. Nhánh phá thành công đặt lại -1 tại B9CFB9. B9CE90 có đường khác ghi 14 khi getter B332D0 lớn hơn 2. B9CC10 cập nhật trạng thái thùng ở 14/0 rồi giảm bộ đếm theo lượt update. Điều này phù hợp mẫu -1; không dùng bộ đếm để suy deadline của 158 hay owner.",
+    "report": "Writer trap B77FD0 đặt trường thứ hai của cặp về -1 rồi gọi B71670 nếu a2 khác 0; B78342 dựng cặp (a3, kết quả đó), B7838F ghi blob vào 127/sub17. Run-8 B seq208 cho [0,-1]; đối chứng trap trực tiếp trong run-1 của A cho [2,0]. Do chưa trace a2/B71670 trên cùng ván, không biết vì sao đường run-8 giữ -1 và không xem nó là công thức ghi công.",
+    "recipe": "Mở bản sao IDA bằng idalib, không autoanalysis hay save. owner-static/observe.py và observe-setters.py xuất đúng bốn thân hàm và kiểm input SHA. DB nguồn giữ nguyên SHA, xóa bản sao và scratch sau khi đóng. Không khởi động lại Wine.",
+    "raw_manifest_sha256": "8523b4ee108c420f35f56721457d0e2c72135cd268200bd1f491d49242c30d61",
+    "ida_scratch_removed_bytes": 410279731
+  },
   "docs_sync": {"terrain": "appended", "PLAN": "unchanged", "RESEARCH": "unchanged", "HISTORY": "unchanged", "COVERAGE": "unchanged", "features.json": "unchanged"}
 }

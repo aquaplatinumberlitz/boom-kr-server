@@ -1123,16 +1123,19 @@ không phải owner của tia. Kết quả phù hợp với nhánh phát tia m�
 ban đầu là `Block33`, còn `Block32` nằm ngay sau tại (0, 10). Hai view đọc được
 `FixedBox+0xE0 = 0` ở `Block33` và `1` ở `Block32`. Cả hai loại chặn di
 chuyển trước khi bị phá; chỉ cú nổ ở `Block32` làm mất thêm các ô kề trong ca đối chứng.
-Chưa rõ nghĩa byte `+34`. Mẫu `FixedBox+0xD0` chỉ thấy `-1`; chưa nối nhánh 14
-hoặc 0 của `B9CC10` với deadline hay gán owner. Burst `167` ở Island09 vẫn có thể
-làm server thử ngắt stream và chưa là hợp đồng đồng bộ terrain.
+Chưa rõ nghĩa byte `+34`. Mẫu `FixedBox+0xD0` chỉ thấy `-1`. Tĩnh cho thấy `B9CEC0`
+có thể nạp 14 khi thùng còn giá trị bảo vệ khác 0; nhánh phá thành công đặt lại `-1`.
+`B9CC10` dùng các mốc 14 và 0 để cập nhật trạng thái thùng. Đây không phải deadline bom
+của server. Burst `167` ở Island09 vẫn có thể làm server thử ngắt stream.
 
 **Bom kề.** Ca trên Island09 bị ngắt trước khi bom kề nhận `159`. Trên Island06,
 dọn hai Block33 để đặt bom A ở (0, 9) và bom B ở (1, 10), chéo nhau qua Block32
 ở (0, 10). Sau `158` của bom A, hai view thấy tia qua ô bom B và tới (2, 10),
 ngoài phạm vi một bước từ Block32. B phát `127/sub17` trước `158` của bom B.
-Đó là chain cục bộ trong ca đo; chưa biết công thức ghi công hit. Chưa lặp được cùng
-bố cục cho Block30.
+Đó là chain cục bộ trong ca đo. Trường thứ hai của blob là `-1`; writer `B77FD0`
+có giá trị mặc định này và chỉ tra `B71670` khi đối số nguồn khác 0. Chưa trace đường
+nguồn trên cùng ván, nên chưa biết công thức ghi công hit. Chưa lặp được cùng bố cục
+cho Block30.
 
 **Soul (`kr_runtime/confirmed` trong ca đo, `unknown` về object nội bộ).** Cả hai bản đồ sự
 kiện vào được trận thường với payload map nguyên. Hai view hiển thị sân và vị trí nhân vật khớp với
