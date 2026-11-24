@@ -123,6 +123,11 @@ Header170 gồm **u8subtype,u8slot,u16x,u16y**, x/y sign-extend khi truyền con
 |17 |u32aux; tổng10byte |`E85D1B→E86780`, lookupactor`E12C40`, guard`B40D60` đọc secure+5A0; nếu0 thì vf74(tọa độ),vf144 rồi`E72C10(slot,aux)`. Không đồng nhất vf144 với hàm setter: nhánh có thêm tác động, proof là snapshot state thực.|
 |19 |serializedblob; tổng21byte ở ca này |`E85DE2→E86910`, `1403D00/1403E90` đọc u32 +u8count +entries. Ca đo inner5=`FFFFFFFF00`, không entries. vf74; vf1D8=`F73950→1243330(slot)` gate cho vf110/B41150,`E72A50` và`13E13D0`; cuối`E72B80`. Chưa variant inner khác hoặc mọi gate.|
 
+Ở [F1-c](auth-session.md#f1-c-character-catalog), C2S127/sub19 sau khi nhặt tới trần có body 95 byte.
+Blob selector 1 giải nén ra 93 byte, bắt đầu bằng `FFFFFFFF0B`. Rust hiện chỉ nhận body 29 byte
+với blob raw 11 byte ở nhánh này. Client gửi report bị ngắt; chưa đo consumer S2C170 cho payload
+mới và chưa xác định nghĩa từng entry.
+
 **Chuyển report đã kiểm hẹp:** nhận actual127, kiểm CRC theo seq/socket, lấy6byte đầu (sub/slot/x/y).
 Với17, giải serializedblob sau prefix14, inner8 gồm2u32LE; lấy **u32 thứ hai** làmaux170.
 Cùng giá trị đi`E72C10` từ localwriter`B783B7`; ý nghĩa tên field còn unknown. Với19, giữ serializedtail

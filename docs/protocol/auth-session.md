@@ -42,8 +42,19 @@ theo slot; kết thúc round và bắt đầu round kế tiếp xóa stat item h
 
 Kiểm Rust bao phủ vector pack, Bomb/Fire/Roller/MaxPower và reset; ma trận `kr-load` hai client TLS/relay đã chọn
 đủ 31 khóa, xác nhận Start121 và về phòng trong ba lượt tổng hợp. [Biên nhận và giới hạn](../evidence/rust-service/f1-character-profiles.json).
-Đây là bằng chứng `kr_static` và `emu_choice`; lượt native Wine mới chưa chạy, không nâng lớp bằng chứng và không
-tạo CP394.
+
+Hai lượt Wine mới với bản copy KR 00967 đã vá xác nhận C2S92 chọn C03 (khóa 2) và C05 (khóa 3).
+Lượt đầu bị chặn khi client gửi C2S79 `5b58` sau Start121. Sau khi sửa guard, cả hai client nhận Start121
+với đúng khóa theo slot và vào Battle. C2S79 `5b58` và `5b59` được ghi nhận trong Loading; policy chỉ nhận
+một lần cho thành viên hiện hành, khi byte giải mã khớp đầy đủ khóa catalog. Không gửi ACK, gia hạn idle
+hay hoàn thành loading barrier. Không suy định dạng C2S79 cho khóa lớn hơn 255.
+
+Trong Forest24, sáu chỉ số của hai nhân vật đọc từ bộ nhớ client khớp `BomberAttr` và log server khi
+bắt đầu và sau khi nhặt tới trần. Wire 118/159 xác nhận lực bom ban đầu của cả hai và lực bom sau khi
+nhặt của C05. Floor dùng placement cố định do phép thử đặt. Kết nối B bị đóng ở
+[báo chết có blob nén](life-results.md#peer-events); chỉ A nhận kết quả và về phòng trước khi hiện
+thông báo ngắt kết nối. Journal ghi `forfeit`. Chưa có hai ván liên tiếp, chưa xác nhận đổi nhân vật
+cho ván kế hay biến thể 120+, 150+ và 3000+; giữ lớp B.
 
 <a id="rust-account-backend"></a>
 ## Backend account Rust độc lập client — CP236 / RUST-M5 / KRE-074

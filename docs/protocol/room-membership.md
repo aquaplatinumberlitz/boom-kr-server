@@ -1435,6 +1435,7 @@ Client chọn1 có thể gửi opcode79/body `5b5b` sau Start; đổi1 về0 đ�
 cho mỗi current member trong Loading, đúng body tương ứng lựa chọn0/1. Server không phản hồi, không đổi world,
 không hoàn thành loading barrier và không gia hạn idle vì79. Sai body, duplicate, sai phase hoặc profile vẫn đóng
 kết nối. Không suy semantics hoặc định dạng tổng quát từ hai literal này.
+F1-c có [quan sát mới cho khóa 2/3 và guard hiện hành](auth-session.md#f1-c-character-catalog).
 
 Queue, key và membership tiếp tục có guard theo room/connection/visit/round. Synthetic TCP kiểm capacity bom
 theo nhân vật2/1/2, mọi recipient hoàn thành, kết quả/reset, slot thưa và key cũ; không thay native compatibility.
