@@ -240,6 +240,48 @@ pub fn item_use127(body: &[u8]) -> io::Result<ItemUse127> {
     })
 }
 
+pub const VEHICLE_DISMOUNT_SUBTYPE: u8 = 16;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct VehicleDismount127 {
+    pub slot: u8,
+    pub x: u16,
+    pub y: u16,
+    pub tick: u32,
+    /// The trailing client field is not a validated round key.
+    pub extra: u32,
+}
+
+/// Exact 14-byte C2S 127/sub16 body measured in p97b.
+pub fn vehicle_dismount127(body: &[u8]) -> io::Result<VehicleDismount127> {
+    if body.len() != 14 || uint(&body[..1], Width::U8)? != u64::from(VEHICLE_DISMOUNT_SUBTYPE) {
+        return Err(io::Error::other(
+            "unsupported vehicle dismount127/sub16 shape",
+        ));
+    }
+    Ok(VehicleDismount127 {
+        slot: uint(&body[1..2], Width::U8)? as u8,
+        x: uint(&body[2..4], Width::U16)? as u16,
+        y: uint(&body[4..6], Width::U16)? as u16,
+        tick: uint(&body[6..10], Width::U32)? as u32,
+        extra: uint(&body[10..14], Width::U32)? as u32,
+    })
+}
+
+/// The peer receives only the six-byte header, without the tick and extra.
+pub fn vehicle_dismount170(slot: u8, x: u16, y: u16) -> io::Result<Vec<u8>> {
+    let mut out = Vec::with_capacity(6);
+    for (value, width) in [
+        (u64::from(VEHICLE_DISMOUNT_SUBTYPE), Width::U8),
+        (u64::from(slot), Width::U8),
+        (u64::from(x), Width::U16),
+        (u64::from(y), Width::U16),
+    ] {
+        out.extend(super::put(value, width)?);
+    }
+    Ok(out)
+}
+
 pub struct LifeReport127 {
     pub subtype: u8,
     pub slot: u8,
@@ -385,6 +427,41 @@ pub fn report127(body: &[u8]) -> io::Result<LifeReport127> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    // p97b Cookie07, docs/evidence/item-families/f1d-vehicles-wine.json.
+    const DISMOUNT_HOLD: [u8; 14] = [
+        0x4a, 0x5a, 0xa5, 0xc9, 0xa7, 0x6e, 0x96, 0xca, 0x5d, 0xf7, 0x96, 0xca, 0x53, 0x94,
+    ];
+    const DISMOUNT_FORWARD: [u8; 14] = [
+        0x4a, 0x5a, 0xa5, 0xc9, 0xa7, 0x6e, 0x96, 0xca, 0x4f, 0x1c, 0x96, 0xca, 0x53, 0x94,
+    ];
+    const DISMOUNT_PEER: [u8; 6] = [0x4a, 0x5a, 0xa5, 0xc9, 0xa7, 0x6e];
+
+    #[test]
+    fn captured_vehicle_dismount_reports_and_peer_body() {
+        for (body, tick) in [(DISMOUNT_HOLD, 3682), (DISMOUNT_FORWARD, 7305)] {
+            let dismount = vehicle_dismount127(&body).unwrap();
+            assert_eq!(
+                dismount,
+                VehicleDismount127 {
+                    slot: 0,
+                    x: 160,
+                    y: 519,
+                    tick,
+                    extra: 1,
+                }
+            );
+            assert_eq!(
+                vehicle_dismount170(dismount.slot, dismount.x, dismount.y).unwrap(),
+                DISMOUNT_PEER
+            );
+        }
+        assert!(vehicle_dismount127(&DISMOUNT_PEER).is_err());
+        assert!(vehicle_dismount127(&[DISMOUNT_FORWARD.as_slice(), &[0]].concat()).is_err());
+        let mut wrong_subtype = DISMOUNT_FORWARD;
+        wrong_subtype[0] = 0x5a;
+        assert!(vehicle_dismount127(&wrong_subtype).is_err());
+    }
 
     // p93 run-2 wire.jsonl, CRC-verified C2S payloads A/430 and B/376.
     const SCANNER_A: [u8; 22] = [

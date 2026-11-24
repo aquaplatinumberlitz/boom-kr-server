@@ -163,4 +163,12 @@ Kết quả, quay về phòng và rời phòng qua UI được đối chiếu v�
 
 **Còn mở:** Ca chỉ gửi `165` cho người nhặt, ma trận đầy đủ theo loại xe/thùng, bom của chính
 người lái và lần hit kế ngay khi bộ đếm đang âm. Kết quả phím chỉ áp dụng cho các phím và route đã thử.
-Fixture không thiết lập luật server gốc hoặc mở hỗ trợ phương tiện trong Rust phục vụ.
+Fixture không thiết lập luật server gốc.
+
+**Rust (`emu_choice`, `report_derived`):** `item_policy: "report_derived_f1d_vehicles"` mở rộng
+`report_derived_f1b_extended` để nhận kind `40..44` trong `582 list1` trước `121`. Claim hợp lệ
+được xác nhận bằng `165`; nếu người nhặt đã cưỡi xe thì giữ xe cũ. Trong trận, `127/sub16` đúng
+kích thước và đúng slot của phiên đang cưỡi sẽ xóa trạng thái xe và gửi sáu byte `170/sub16`
+cho các peer. Báo cáo hợp lệ khi đã xuống xe hoặc sau `175` được tiếp nhận mà không gửi tiếp;
+sai slot hoặc sai kích thước vẫn bị từ chối. `121` khởi tạo ván mới với trạng thái chưa cưỡi xe.
+Đây là chính sách tương thích theo các báo cáo đã đo, không xác nhận luật server gốc.

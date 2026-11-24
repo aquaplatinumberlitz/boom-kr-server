@@ -3700,7 +3700,9 @@ impl Session {
                     request.decision("inactive_round")
                 };
                 if decision.accepted {
-                    if let Some(amount) = extended {
+                    if allowed && pickups::is_vehicle_kind(request.kind()) {
+                        next.pickups.mount_vehicle(member.key, request.kind());
+                    } else if let Some(amount) = extended {
                         next.pickups.credit(member.key, &request, amount);
                     } else if allowed {
                         let member = next
@@ -3772,10 +3774,44 @@ impl Session {
                 if !(1..=4096).contains(&body.len()) {
                     return Err(err("report observation size"));
                 }
-                let scanner = r.rules.item_policy.f1b_extended()
-                    && read_uint(&body[..1], Width::U8).map_err(io::Error::other)? == 0
-                    && wire::item_use127(body)?.kind == wire::ItemUseKind::Scanner;
-                if scanner {
+                let subtype = read_uint(&body[..1], Width::U8).map_err(io::Error::other)? as u8;
+                if r.rules.item_policy.f1d_vehicles() && subtype == wire::VEHICLE_DISMOUNT_SUBTYPE {
+                    let report = wire::vehicle_dismount127(body)?;
+                    // emu_choice: p97b also saw a dismount shortly after 175.
+                    // Consume valid unmounted or closed-round reports without a reply.
+                    let (reason, forward) = if report.slot != m.slot {
+                        ("slot_mismatch", false)
+                    } else if let Phase::Armed { round } = next.phase
+                        && next.pickups.dismount_vehicle(m.key).is_some()
+                    {
+                        let reply =
+                            packet(170, wire::vehicle_dismount170(m.slot, report.x, report.y)?);
+                        for peer in next.members.values().filter(|peer| peer.key != m.key) {
+                            let mut batch = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                0,
+                                vec![("vehicle-dismount170".into(), reply.clone())],
+                            );
+                            batch.subject = Some(m.key);
+                            effects.push((peer.key.identity, batch));
+                        }
+                        ("accepted", !effects.is_empty())
+                    } else {
+                        ("accepted", false)
+                    };
+                    life = Some(crate::life::Decision {
+                        accepted: reason == "accepted",
+                        reason,
+                        subtype,
+                        slot: report.slot,
+                        tick: report.tick,
+                        forward,
+                    });
+                } else if r.rules.item_policy.f1b_extended()
+                    && subtype == 0
+                    && wire::item_use127(body)?.kind == wire::ItemUseKind::Scanner
+                {
                     let report = crate::life::Report::parse(body)?;
                     let reason = if let Phase::Armed { round } = next.phase {
                         let player = &mut next
@@ -5430,6 +5466,10 @@ mod life_action_integration_tests;
 #[cfg(test)]
 #[path = "room_io_f1b_extended_tests.rs"]
 mod f1b_extended_integration_tests;
+
+#[cfg(test)]
+#[path = "room_io_f1d_vehicles_tests.rs"]
+mod room_io_f1d_vehicles_tests;
 
 #[cfg(test)]
 #[path = "room_io_item_tests.rs"]
