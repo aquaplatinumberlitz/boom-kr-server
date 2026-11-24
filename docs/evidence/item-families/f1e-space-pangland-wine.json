@@ -17,7 +17,7 @@
     "references": ["docs/evidence/checkpoints/records/CP397.json", "docs/evidence/item-families/f1a-island-soul-wine.json", "docs/evidence/content/f1e-dynamic-scripts-ida.json", "docs/evidence/content/f1e-scripts-extracted.json"],
     "legacy": "Đã tra boomkr-re rồi boom-re theo tên map và lớp script; không lấy thêm contract wire từ repo cũ. Đọc kr-full.exe có SHA trùng evidence IDA để đảo bảng nhảy, không mở hoặc ghi IDB nguồn.",
     "client_pack": "Bộ Wine M8 có FxMap.idd khác bản gốc, nên wrapper thay cả idx và idd bằng bản sao từ nguồn chỉ đọc trong từng game scratch, rồi kiểm SHA-256. Không sửa XML hay thêm patch executable.",
-    "fixture": "emu_choice: catalog hình học cho trận thường, floor 582 rỗng, Start 121 roomtype 0 với slot/spawn 0 và 1. Proxy cô lập chuyển nguyên body 228 thành 350 cho A/B và chặn 148 trước server. Không sửa binary, không phát gói mô phỏng PangLand.",
+    "fixture": "emu_choice: catalog hình học cho trận thường, floor 582 rỗng, Start 121 roomtype 0 với slot/spawn 0 và 1. Proxy cô lập chuyển nguyên body 228 thành 350 cho A/B và chặn 148 trước server. Lượt đầu PangLand chỉ chặn 148; lượt followup phóng/nổ một bom bằng shadow 159/158. Không sửa binary.",
     "review": "waived theo docs/evidence/checkpoints/review-waiver.json; tự kiểm capture, bảng nhảy và ảnh."
   },
   "maps": [
@@ -35,9 +35,9 @@
     "228": {"source": "kr_runtime", "status": "confirmed", "direction": "c2s", "writer": "0x483060", "layout": ["4 x string (u16 length + chuỗi bytes mã hóa kiểu): tilecategory, groundodd, groundeven, changepostfix", "4 x u32: dangertime, dangerAlpha, dangerSpeed, dangerColor", "u32 count", "count * (u32 x, u32 y)", "u8 struct+112", "u8 struct+113"]},
     "350": {"source": "kr_runtime", "status": "confirmed", "direction": "s2c", "layout": "Body byte-for-byte của 228; mỗi kênh có sequence/CRC riêng.", "dispatch": "0xE5D426: opcode - 312 = 38; byte 0xE5E022 = 7; [0xE5DFB8] = 0xE5D885 -> 0xE6A3C0 -> 0x483210 -> 0xE9E270.", "limit": "Đo bằng relay shadow, chưa biết hành vi phát của server KR gốc."},
     "148": {"source": "kr_runtime", "status": "confirmed", "direction": "c2s", "writer": "0xE733D0", "layout": ["@0 u32 script_source", "@4 u8 count", "@5 u16 y", "@7 u16 x", "@9 u8 power", "@10 u32 damage", "@14 u16 state", "@16 count * (u8 row, u8 col)"]},
-    "149": {"source": "kr_static", "status": "confirmed", "runtime_status": "unknown", "direction": "c2s", "writer": "0xF158C0 (ghi từ 0xF159D4 đến 0xF15A5D)", "layout": ["@0 u16", "@2 u32", "@6 u32", "@10 u8 row", "@11 u8 col"], "limit": "Nhánh host với đúng một ô đích; không có frame, timestamp hay CRC của 149 trong hai capture PangLand."},
+    "149": {"source": "kr_static", "status": "confirmed", "runtime_status": "unknown", "direction": "c2s", "writer": "CGOTileStaticLucci::0xF158C0 (vtable 0x17703E0, slot +0x94, RTTI 0x19CB3B4)", "layout": ["@0 u16 bảng Lucci", "@2 u32 x", "@6 u32 y", "@10 u8 row", "@11 u8 col"], "limit": "Tile có byte thuộc tính +0x2c bằng 1 và state 1; sau khi chuyển state 2, host chỉ gửi khi lọc còn đúng một ô đích. Opcode này không phải writer trực tiếp của CGOBombSprinkler."},
     "233": {"source": "kr_static", "status": "confirmed", "runtime_status": "unknown", "direction": "c2s", "writer": "0xE71C20", "layout": ["string", "u16", "u16", "u8 count", "count * (u8 row, u8 col)"], "limit": "0xF13850 tìm <item> trong <time>; hai map thử không có node này. Không có frame, timestamp hay CRC của 233."},
-    "pangland_s2c": {"source": "kr_runtime", "status": "unknown", "layout": null, "limit": "Không có gói phản hồi sprinkler đã kiểm. IDA xác định opcode 355 -> 0xE73080, chưa nối với C->S 233."}
+    "pangland_s2c": {"source": "kr_runtime", "status": "confirmed", "layout": "Shadow: S->C 159 owner 25 tạo bom, S->C 158 cùng ID làm nổ trên cả A và B.", "reader": "159: 0xE5E8F0 -> 0xE14600 -> 0xE12CA0; slot 25 do 0xE0F490 / 0xE12540 đặt CGOBombSprinkler. 158: 0xE5F450 tìm ID qua 0xE14360. 355 -> 0xE73080 chưa nối với 233.", "limit": "Chỉ xác nhận client chấp nhận body thử và phản ứng hình ảnh. Chưa biết chính sách trả lời của server KR gốc."}
   },
   "frames": [
     {"run": "space-dual", "role": "A", "dir": "c2s", "opcode": 228, "seq": 175, "t153_ms": 19968.656, "bytes": 67, "crc_octet": 69, "frame_hex": "8800000000e4000000ffffffff4300000002000000020000000200000000000000010000009679c6f5cff57cdc328485a0dd51133cfa7b955b4adac0ff6f698a637005550797d820a3a66579b7e35c4a6af8af7f09d1024aa5a8551541c857e0211804ab85ffcd9045", "body_hex": "a564f3a63ae1e59565a6ffbe32e139a56ff3a63ae19559a56ff3a63ae19459a56dfaa632f396ca544596ca53cf96ca53919635539596ca53946935ac6a96ca53955b5a", "decoded_fields": ["tile36_static", "tile00", "tile01", "fall", 2000, 90, 4, 16711680, 1, 4294967295, 0, 1, 0]},
@@ -50,7 +50,8 @@
   "limits": [
     "Các mốc trong capture dùng thời điểm nhận 153 ở từng client, không coi bằng đồng hồ XML. Độ dài body và offset là sau giải mã lớp stream, trước khi bỏ XOR kiểu dữ liệu.",
     "Capture TCP là channel loopback và không gồm bootstrap. CRC-8 TCP kiểm toàn bộ frame đã tái lắp; UDP kiểm CRC-8 seed 0 ở peer loopback, giữ nguyên QUIC mã hóa và không kiểm CRC game bên trong QUIC.",
-    "Không replay trên server KR gốc. Ảnh PangLand xác nhận hai view và đồng hồ trận, chưa xác nhận tạo/nổ bom sprinkler. Bước tiếp là nhận diện reader S->C tạo CGOBombSprinkler rồi đo 149 trên trận có relay đúng body."
+    "Không replay trên server KR gốc. Xác nhận tạo và nổ bằng một gói shadow mỗi loại, không suy luật chọn ID, fuse hoặc điều kiện chọn ô của server gốc.",
+    "Bước tiếp cho 149: tìm mode/map có CGOTileStaticLucci ở state 1 với cờ thuộc tính bằng 1 và kiểm nhánh một ô đích. Cho 233, cần script gốc có <time><item> hoặc capture của route tương ứng."
   ],
   "reproduction": {
     "prepare": "Đặt P108_RAW trỏ tới raw_root trên host chung và P108_KR_PACK_ROOT trỏ tới nguồn KR chỉ đọc. Từ worktree: export STEP0_WORKTREE=\"$PWD\" PYTHONPATH=\"$PWD/tools:$PWD\" PYTHONDONTWRITEBYTECODE=1; python3 \"$P108_RAW/build_catalog.py\" \"$P108_KR_PACK_ROOT\".",
@@ -58,12 +59,30 @@
     "run": "P108_MAP_RELAY=0 python3 \"$P108_RAW/measure.py\" space-new CaJJ_Space02; P108_MAP_RELAY=1 python3 \"$P108_RAW/measure.py\" space-dual-new CaJJ_Space02. Đổi cặp run/map thành pang-early-new NXCL_PangLand15 và pang-repeat-new PangLand03 với P108_MAP_RELAY=1.",
     "decode": "Trong mỗi thư mục run: python3 \"$P108_RAW/decode_channel.py\" . > tcp-decoded.jsonl; python3 \"$P108_RAW/decode_udp.py\" . > udp-decoded.jsonl; python3 \"$P108_RAW/summarize.py\" .; python3 \"$P108_RAW/verify_xml.py\" . <map>. Tạo ảnh ghép bằng views.py với các nhãn PNG lưu trong run.",
     "static": "python3 \"$P108_RAW/static_dispatch.py\" <kr-full.exe>; lệnh kiểm SHA trước khi đọc bảng nhảy trong PE, không cần IDB.",
-    "checksums": "Từ raw_root: sha256sum -c SHA256SUMS."
+    "checksums": "Từ raw_root: sha256sum -c SHA256SUMS.",
+    "followup": "P108_MAP_RELAY=1 python3 \"$P108_RAW/measure-159.py\" pang-159-new PangLand03; dùng decode-channel-159.py cho TCP. Kiểm sha256sum -c SHA256SUMS-p108-followup từ raw_root.",
+    "gold_control": "P108_MAP_RELAY=1 python3 \"$P108_RAW/measure-lucci-hit4.py\" pang-lucci-hit-new; biên dịch lucci-observe.cpp với i686-w64-mingw32-g++ -static -O2 và tái dùng tile-field-sampler.exe p104."
   },
   "cleanup": {
     "logical_bytes_removed": 27764117655,
     "wrapper_receipts": 8,
     "notes": "Dọn reflink game/prefix, tmpfs namespace và khóa launcher tạm của từng lượt. Không tạo rust/target. Byte logic gồm bản sao reflink; không suy ra số block vật lý từ df.",
-    "sha256sums_sha256": "0ef0492513f4b1f6943d0183b52f5a83a298f66d3ab58c0994d0e0ce8cb1bc71"
+    "sha256sums_sha256": "0ef0492513f4b1f6943d0183b52f5a83a298f66d3ab58c0994d0e0ce8cb1bc71",
+    "followup_logical_bytes_removed": 27764119990
+  },
+  "followup": {
+    "status": "confirmed",
+    "fixture": "emu_choice: đúng một C->S 148 của A, mốc XML 12000 trên PangLand03, x=10, y=277, đích (7,2). Dựng 159 với owner 25 và ID 901; gửi 158 cùng ID sau 2,2 giây. Các báo cáo 148 khác vẫn chỉ giữ trong capture.",
+    "run": "pang-159",
+    "c2s_148_input": {"role": "A", "seq": 160, "t153_ms": 12012.766, "crc_octet": 59, "frame_hex": "870000000094000000ffffffff120000000200000002000000020000000000000001000000552899396be1ba204e3c75e4a3d9e6870ecc3b"},
+    "s2c": {"159": {"layout_widths": [1, 1, 2, 4, 4, 4, 1, 1, 1, 4, 1, 2, 2, 1, 8, 1, 1], "values": [0, 25, 0, 4294967295, 10, 277, 7, 2, 1, 1, 0, 901, 0, 1, 0, 0, 0], "roles": {"A": 12035.585, "B": 12113.345}, "sequence": 115, "crc_octet": 192, "frame_hex": "69000000009f000000ffffffff270000000200000002000000020000000000000001000000b55e903a3f0763ecd63b607e4617d438a8f803d217b6f0acf1af44cf478f0ff18cc76eb1892bebc0"}, "158": {"layout_widths": [1, 2, 1, 4, 4, 1], "values": [1, 901, 0, 2, 4294967295, 255], "roles": {"A": 14236.969, "B": 14315.547}, "sequence": 118, "crc_octet": 101, "frame_hex": "69000000009e000000ffffffff0d0000000200000002000000020000000000000001000000b1bbd909ca1dd522db3b6076cc65"}},
+    "tcp_crc_verified": {"A": {"c2s": 65, "s2c": 27}, "B": {"c2s": 42, "s2c": 26}},
+    "udp_crc_verified": {"A": 270, "B": 269},
+    "udp_quic_not_decoded": {"A": 729, "B": 759},
+    "capture_sha256": {"udp-A.jsonl": "79cd0e6539c6de7fb434e54050f9ab749fdd13ba2711dc30705ef8a66c992328", "udp-B.jsonl": "0f17de27c10fcef2b7ea08f08fbe392b18e98a2bd99ec1660ad72fd3af8b4687", "wire-segments-A.jsonl": "1b38b342046e4da3e117d7d573070637254db769f9ae3731923ece8f05ba536e", "wire-segments-B.jsonl": "232b6d9b8d99d0542d960749c83a5b0e62de6e6a737e414a5293cc2a48fe095d"},
+    "review": "pang-159/frame-review.png: ở t11000 chưa có bom; t12300 và t13200 thấy bom hoặc bóng trên cả hai view; t14600 thấy nước; t15300 thấy thùng đã mất.",
+    "negative": "Lượt pang-lucci dùng sampler đọc riêng tiến trình CA được sở hữu; trước mốc begingold quét các trang MEM_PRIVATE đã chọn, không thấy ứng viên đạt hai vtable và CRC trường. Proxy lượt này lỗi biến cục bộ sau lúc quét. Ba lượt vào vị trí dừng trước khi đặt bom do timeout trace, quá mốc canh input hoặc không lấy được mẫu actor. Không dùng hai lỗi harness này làm bằng chứng âm cho 149.",
+    "checksum_manifest_sha256": "294f806b30fc970c52ef46dc6c6c331938f9e2c4b7684c5f4ba660e02f974e98",
+    "gold_control": {"run": "pang-lucci-hit4", "capture_sha256": {"udp-A.jsonl": "95c5c065023a29edee5ab28ae13c014ac5fd5dd8f09357b0741224d055d7ab40", "udp-B.jsonl": "423899005cb7a5404408cd72eb2e41f23200a4c9e5395b78d3d2166f84291f04", "wire-segments-A.jsonl": "edc9f0c0ae97be7b2e9e330c1c7c7f59f43e28048b6ca7dabd74cca4f2f61f69", "wire-segments-B.jsonl": "d5582ddfb474df2b024661be4f0779910dba87b82b29c11514f296575408aaae"}, "status": "confirmed", "observation": {"A": {"matched": 0, "state1_flag1_tiles": []}, "B": {"matched": 0, "state1_flag1_tiles": []}}, "input": [{"phase": "lucci-bomb-position", "relative": 7.381984710693359}, {"phase": "lucci-bomb-input", "relative": 26.200189352035522}], "tcp_crc_verified": {"A": {"c2s": 74, "s2c": 26}, "B": {"c2s": 42, "s2c": 26}}, "udp_crc_verified": {"A": 381, "B": 381}, "results_149": [], "counts": {"c2s:118": 1, "s2c:159": 2, "s2c:158": 2, "c2s:149": 0, "c2s:233": 0}, "source": "kr_runtime", "layout_149": "unknown", "control_frames": [{"role": "A", "dir": "c2s", "opcode": 118, "seq": 244, "crc_octet": 228, "fields": {"owner": 0, "serial": 0, "row": 1, "col": 5, "power": 1}, "t153_ms": 26514.658}, {"role": "A", "dir": "s2c", "opcode": 159, "seq": 115, "crc_octet": 192, "fields": {"owner": 0, "serial": 0, "row": 1, "col": 5, "power": 1, "id": 1}, "t153_ms": 26600.867}, {"role": "A", "dir": "s2c", "opcode": 158, "seq": 118, "crc_octet": 83, "fields": {"type": 1, "id": 1}, "t153_ms": 32599.659}, {"role": "B", "dir": "s2c", "opcode": 159, "seq": 115, "crc_octet": 192, "fields": {"owner": 0, "serial": 0, "row": 1, "col": 5, "power": 1, "id": 1}, "t153_ms": 26600.216}, {"role": "B", "dir": "s2c", "opcode": 158, "seq": 118, "crc_octet": 83, "fields": {"type": 1, "id": 1}, "t153_ms": 32603.147}], "review": "pang-lucci-hit4/frame-review.png", "limit": "A đặt bom thường tại (1,5) cạnh tile asset Tile17_Static/Lucci00 (2,5). Hai client nhận 159/158 do kr-service phát; proxy không tạo bom cho lượt này. Không thấy 149 hoặc 233. Ảnh sau nổ còn tile, và sampler không thấy instance khớp trong các trang đã quét; không suy cả map hoặc mọi chế độ không có class này."}
   }
 }

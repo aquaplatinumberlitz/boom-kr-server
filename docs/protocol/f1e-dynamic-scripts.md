@@ -44,7 +44,7 @@
 | Family | Maps | Reader / Component (`kr_static`) | Authority | `C->S` Opcodes | `S->C` Dispatch |
 | --- | --- | --- | --- | --- | --- |
 | `space` | 13 | `CMapScriptChangeTile` (`0x634070`) | Host (`1240CF0` + `E78070`) | `228` (`0xE736C0`) | `350` -> `0xE6A3C0` -> `0x483210` (đo tại [p108](#f1e-space-pangland-wine)) |
-| `pangland` | 12 | `CMapScriptSprinkler` (`0xF126E0`, `<time>`) | Host (`1240CF0`) + Local UI | `148` (`0xE733D0`), `149` (`0xF158C0`), `233` (`0xE71C20`) | `unknown` (server relay / room bomb / sprinkler sync via Wine) |
+| `pangland` | 12 | `CMapScriptSprinkler` (`0xF126E0`, `<time>`) | Host (`1240CF0`) + Local UI | `148` (`0xE733D0`), `149` (`0xF158C0`), `233` (`0xE71C20`) | `159` / `158` nhận trên cả hai client với shadow; phản hồi server KR gốc còn `unknown` |
 | `retro_*` | 30 | `CMapActionPopUp` (`0x9EA760`) -> `CMapScriptPopUp` (`0xB2AF70`) | Local fade/render inside `<time>` (`0xF14E20`) | None in `CMapScriptPopUp` (`0xB2B140`) | None in `CMapScriptPopUp`; see `unknown` XML tags below |
 | `aqua` | 9 (4 active) | `CMapScriptStageClear` (`0xF16BC0`, `StageClearScriptParser::parseScriptObjectTemplates` `0x73C4D0`) | `CScriptObject` action / host events | `132`, `180` (`CScriptObject` actions) | `176` (`0xE77D20`), `178` (`0xE77DD0`), `196..199`, `584` |
 | `wriggle` | 14 | `CMapScriptWriggle` (`0xF9E7F0`, `0xF9EF90`) | `CScriptObject` delegation (no direct `CSendPacket` in `0xF9E700..0xFA4500`) | Via `CScriptObject` (`unknown` full subset) | Via `CMapScriptWriggle` / `CScriptObject` (`vt+36`) & `0xE77D20`/`0xE77DD0` |
@@ -65,7 +65,7 @@
      - `0xF12F10` -> `0xF15F30` / `0xF16030`: host calls `sub_E733D0` -> **`C->S 148`**: `u32, u8 count, u16, u16, u8, u32, u16, count * (u8 row, u8 col)`.
      - `0xF13850` -> `0xF163E0` / `0xF16520`: host calls `sub_E71C20` -> **`C->S 233`**: `string, u16, u16, u8 count, count * (u8 row, u8 col)`.
      - `0xF141E0` (`0xF16910`), `0xF14890` (`ground`, modifies local `tile+104` in `0xF16220`), `0xF14B10` (`0xD1CAD0`), `0xF14C80` (`0xD1D710`), and `0xF14E20` (`CMapActionPopUp` `0x9EA760` -> `0xE7BF00` -> `CMapScriptPopUp` `0xB2AF70`) are client-local.
-   - `CGOBombSprinkler` (`0x1770248`) detonation in `0xF158C0` sends **`C->S 149`** when host (`sub_1240CF0 != 0`), including `u16, u32, u32, ...` when a target cell hits.
+   - `0xF158C0` là hàm của tile `CGOTileStaticLucci` (RTTI của vtable `0x17703E0`, slot `+0x94`). Hàm chuyển state 1 → 2 khi cờ thuộc tính tile bằng 1. Host (`0x1240CF0`) phát **`C->S 149`** nếu lọc còn đúng một ô đích. Bom `CGOBombSprinkler` có vtable riêng `0x1770248`.
 
 3. **`retro_popup` / `retro_forest` / `retro_village` (30 maps, `confirmed` + `unknown`)**:
    - Client `.rdata` contains `Retro` HUD/monster/audio assets (`Game/RetroBug`, `Game/RetroVirus`, `Wave/Npc_Retro*`, `RetroWriggle/*`), and `<popup>` actions run via `CMapScriptSprinkler::0xF14E20` -> `CMapActionPopUp` -> `CMapScriptPopUp::0xB2B140` (local fade/render via `0x14B7700`/`0x14B77E0`/`0x14B7E50`, zero network I/O).
@@ -111,7 +111,8 @@ offset, CRC, thời gian tính từ `S->C 153` và ảnh hai view.
 | `CaJJ_Space02`, `S->C 350` | `confirmed` với relay cục bộ | Proxy shadow dùng nguyên body `228` do A phát, đóng lại frame `350` theo sequence và CRC của từng kênh. Cả hai client hiện hàng tile rơi. Ở lượt đối chứng không proxy, binary CP397 đóng channel của A khi nhận `228`; B không hiện hàng 0 rơi. |
 | `NXCL_PangLand15` (871), `C->S 148` | `confirmed` | A phát ở đợt `<time ms="2000">`. Body theo `0xE733D0`: `u32` nguồn script (đo `0xffffffff`), `u8 count`, `u16 y`, `u16 x`, `u8 power`, `u32 damage`, `u16 state`, rồi `count * (u8 row, u8 col)`. |
 | `PangLand03` (887), `C->S 148` | `confirmed` | A phát ở các đợt XML 12, 16, 20 và 24 giây. Hai đợt 16 và 20 giây dùng chung layout với đợt đầu của `NXCL_PangLand15` và có danh sách nhiều ô. |
-| PangLand, `C->S 149`, `233` và phản hồi sprinkler `S->C` | `unknown` trong runtime | Proxy chặn `148` trước khi gói đến server để giữ trận tiếp tục và không gửi gói tạo bom sprinkler. Ảnh hai view kiểm cửa sổ trận, chưa chứng minh hiệu ứng nổ đồng bộ. Hai script được chọn không có `<item>` bên trong `<time>` để kích writer `233`. |
+| `PangLand03`, `S->C 159` rồi `158` | `confirmed` với relay cục bộ | Đối chứng chỉ chặn `148` thì không thấy bom. Lượt thử chọn một `148` có ô đích `(row 7, col 2)`, chiếu tọa độ và power thành `159` (owner 25, ID thử 901), rồi gửi `158` cùng ID. Cả A và B hiện bom bay tới ô đích và hiện vụ nổ. |
+| PangLand, `C->S 149` và `233` | `unknown` trong runtime | Không thấy `149` khi nổ bom sprinkler thử, hoặc khi bom thường nổ cạnh tile mang asset `Lucci00` trong khoảng `begingold`. Sampler chỉ đọc không tìm được instance `CGOTileStaticLucci` khớp ở hai client trong lần quét của lượt đối chứng. Hai script được chọn không có `<item>` bên trong `<time>` để kích writer `233`. |
 
 `source: kr_static`, `status: confirmed` cho ánh xạ dispatcher: `0xE5D426`
 trừ `0x138` khỏi opcode. Chỉ số 38 đọc selector 7 tại `0xE5E022`;
@@ -119,7 +120,9 @@ entry `0xE5DFB8` trỏ `0xE5D885`, gọi `0xE6A3C0` rồi đến reader
 `0x483210`. Chỉ số 43 là `355` (`0xE5E027` → `0xE5DFBC` →
 `0xE5DC61` → `0xE73080`); ánh xạ tĩnh này không chứng minh đó là phản
 hồi cho `233`. Writer `149` tại `0xF159D4`–`0xF15A5D` ghi
-`u16, u32, u32, u8 row, u8 col` ở nhánh một ô đích; layout tĩnh của
+`u16 chọn từ bảng Lucci, u32 x, u32 y, u8 row, u8 col` ở nhánh một ô đích; layout tĩnh của
 `233` tại `0xE71C20` là `string, u16, u16, u8 count, count * (u8 row, u8 col)`.
-Hai layout đó chưa được đối chiếu trên wire. Không suy chính sách chuyển tiếp
-của server KR gốc từ proxy hoặc từ việc client chấp nhận `350`.
+Hai layout đó chưa được đối chiếu trên wire. Reader `159` tại `0xE5E8F0` vào
+`0xE14600` với owner 25, dùng slot được `0xE0F490` / `0xE12540` dành cho
+`CGOBombSprinkler`. Reader `158` tại `0xE5F450` dùng ID để tìm bom cho lượt nổ.
+Không suy chính sách chuyển tiếp của server KR gốc từ các gói shadow.
