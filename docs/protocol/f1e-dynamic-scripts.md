@@ -126,3 +126,16 @@ Hai layout đó chưa được đối chiếu trên wire. Reader `159` tại `0x
 `0xE14600` với owner 25, dùng slot được `0xE0F490` / `0xE12540` dành cho
 `CGOBombSprinkler`. Reader `158` tại `0xE5F450` dùng ID để tìm bom cho lượt nổ.
 Không suy chính sách chuyển tiếp của server KR gốc từ các gói shadow.
+
+Kiểm pack gốc KR 00967 (`kr_static`): không tìm thấy `<item>` là con trực tiếp
+của `<time>` trong các entry `Map/` của `FxMap`. Phép kiểm bỏ comment và đối
+chiếu bằng cả parser thuộc tính lẫn lượt đọc tên thẻ cho script sai cú pháp.
+Kết quả chưa đưa ra map gốc để kích writer `233`.
+
+Asset `Tile17_Static/Lucci00` xuất hiện trong cả map PangLand và map ngoài họ này,
+nhưng mã asset chưa xác định class runtime. `CMapActionState` đọc `<state>` qua
+`0xF141E0`; trong build này hai nhánh `lucci` và `item` từ `0xF16910` gọi
+`0xF169A0` và `0xF169C0`, đều trả 1 mà không tạo hay đổi trạng thái tile.
+Lần theo binary chưa tìm được cạnh gọi trực tiếp tới constructor
+`CGOTileStaticLucci` (`0xF15690`); còn mở khả năng có đường gọi gián tiếp.
+Một mốc XML `begingold` kèm asset `Lucci00` chưa đủ để chọn lượt đo `149`.
