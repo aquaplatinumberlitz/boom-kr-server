@@ -182,6 +182,11 @@ _TYPE1_LEAP_BARRIERS = frozenset(('TileTransParent_Static/Static01', 'Tile19_Sta
 _UNIFORM_PASSABLE_PIECES = frozenset(
     [f'Tile10_Passable/Building0{i}' for i in range(9)]
     + [f'Tile02_Passble/IceHouse0{i}' for i in range(9)])
+_TENT_PIECES = frozenset((
+    'Tile01_Passable/TentBlue', 'Tile01_Passable/TentOrange', 'Tile01_Passable/TentRed',
+    'Tile16_Passble/ArmyTent01', 'Tile16_Passble/ArmyTent02',
+))
+_TENT_PORTS = 0x01000100
 
 
 def f1_terrain_rules(profile, table):
@@ -191,6 +196,7 @@ def f1_terrain_rules(profile, table):
     width, height = profile['width'], profile['height']
     size = width * height
     kinds, hits, ray, cancel = [0] * size, [0] * size, [0] * size, []
+    ray_ports = [0b1111] * size
     names, tiles = table
 
     def fail(index, role, key):
@@ -294,6 +300,12 @@ def f1_terrain_rules(profile, table):
                 if index in spawn_cells:
                     fail(index, 'spawn trên ô type 3 bị chặn', key)
                 ray[index] = 1
+        elif (key in _TENT_PIECES
+              and d[:13] == (3, 0, 0, 0, 0, 0, *([_TENT_PORTS] * 3), 0, 0, 1, 0)
+              and d[13] not in (100, 101)):
+            # BA0E30 reads group +32 in KR order N/W/S/E; the byte 1
+            # opens that side for both leaving and entering via BA0EC0.
+            ray_ports[index] = 0b1010
         else:
             fail(index, 'vật thể/cờ', key)
 
@@ -303,6 +315,8 @@ def f1_terrain_rules(profile, table):
                    map_sha256=profile['payload_sha256'], seed_sha256=sha(bytes(kinds)))
     if any(ray):
         terrain['ray_barriers'] = ray
+    if any(ports != 0b1111 for ports in ray_ports):
+        terrain['ray_ports'] = ray_ports
     if any(hit > 1 for hit in hits):
         terrain['box_hits'] = hits
     rules = dict(terrain=terrain)
@@ -447,7 +461,7 @@ def checked_cache(path, identity, pins, maps, measured, f1=False):
 def cache_identity(pins, maps, measured, f1=False):
     key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
     if f1:
-        key['adapter'] = 'f1-b-v1'
+        key['adapter'] = 'f1-a-terrain-r4'
     return sha(encode(key))
 
 

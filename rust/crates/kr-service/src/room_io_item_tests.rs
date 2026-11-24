@@ -1650,6 +1650,67 @@ fn durable_box_claim_waits_for_fifth_full_delivery_and_reset_restores_hit_count(
     );
 }
 
+#[test]
+fn desert_tent_origin_clears_only_horizontal_boxes_after_both_blast_writes() {
+    let mut c = case(2);
+    // This five-cell cross is from Desert00 (row 1, column 3), KR 00967.
+    // The surrounding room and bomb reports are synthetic.
+    let horizontal = [(1, 2), (1, 4)];
+    let vertical = [(0, 3), (2, 3)];
+    let mut kinds = vec![0u8; 195];
+    for (row, column) in horizontal.into_iter().chain(vertical) {
+        kinds[usize::from(row) * 15 + usize::from(column)] = 2;
+    }
+    let mut ray_ports = vec![0b1111; 195];
+    ray_ports[15 + 3] = 0b1010;
+    let profile: crate::terrain::Config = serde_json::from_value(serde_json::json!({
+        "width": 15,
+        "height": 13,
+        "kinds": kinds,
+        "ray_ports": ray_ports,
+        "map_sha256": "0".repeat(64),
+        "seed_sha256": crate::sha256_hex(&kinds),
+        "fixtures": {"map": crate::sha256_hex(b"map"), "start": crate::sha256_hex(b"start")},
+        "maximum_power": 2,
+    }))
+    .unwrap();
+    let mut terrain = profile.validate(b"map", b"start").unwrap();
+    terrain.begin(c.round);
+    c.shared.lock().unwrap().model.terrain = Some(terrain);
+    let key = crate::room::wire_key(c.round).unwrap();
+    assert!(
+        c.sessions[0]
+            .packet(118, &bomb_at(0, 1, 1, key, 1, 3))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    let mut blasts = Vec::new();
+    for session in &mut c.sessions {
+        assert_eq!(session.inbox.try_recv().unwrap().packets[0].1.opcode, 159);
+        let blast = session.inbox.try_recv().unwrap();
+        assert_eq!(blast.packets[0].1.opcode, 158);
+        blasts.push(blast);
+    }
+    c.sessions[0].finish(&blasts[0]).unwrap();
+    let is_clear = |(row, column)| {
+        c.shared
+            .lock()
+            .unwrap()
+            .model
+            .terrain
+            .as_ref()
+            .unwrap()
+            .clearance(c.round, row, column)
+            .is_some()
+    };
+    assert!(!horizontal.into_iter().any(is_clear));
+    c.sessions[1].finish(&blasts[1]).unwrap();
+    assert!(horizontal.into_iter().all(is_clear));
+    assert!(!vertical.into_iter().any(is_clear));
+}
+
 // Candidate Punch slice integration; these are server invariants, not a native oracle.
 fn punch_case() -> Case {
     let c = case(2);
