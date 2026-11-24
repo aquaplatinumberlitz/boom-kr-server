@@ -189,7 +189,18 @@ Bomb, Fire, Roller, MaxPower, Shoe và Punch được phép vào cả hai danh s
 (kind 145), chỉ xuất tối đa một placement hợp lệ mỗi map và bật policy Kim nếu catalog có item này.
 [G1 đã đo nhặt và dùng Kim từ floor cố định](life-results.md#rust-needle-rescue); drop ẩn của Kim và
 các item chưa có hợp đồng vẫn được ghi `omitted_unknown` trong ma trận khi bị lọc. Không truyền các
-item đó vào 582. F1-b có kiểm tự động ở tầng server; nghiệm thu native còn mở.
+item đó vào 582.
+
+[CP394](../evidence/checkpoints/records/CP394.json) xác nhận một phần F1-b bằng hai client KR 00967
+trên Wine và catalog mới xuất từ pack: `Forest24` có Kim cố định; `CAhero119` có Shoe và Punch cố định.
+Capture đối chiếu 582, claim 124 của người nhặt và confirm 165 tới cả hai client. Shoe đẩy bom và Punch ném
+bom qua 119/162. B thoát bong bóng bằng Kim, gửi 127/1 và 127/0, còn A nhận 170/1. Hai client nhận kết quả
+và về cùng phòng. Có ảnh bảng kết quả trên `CAhero119`; ván kế trên cùng map có floor khởi tạo lại và nhặt
+lại được cả hai item.
+
+Chưa nghiệm thu ba item trên cùng một map: `Cookie07` và `SuperFighter19` có đủ ba placement trong pack
+nhưng bị adapter terrain tại baseline từ chối. Phép kiểm dùng floor cố định; chưa đo Shoe/Punch lộ từ
+thùng, Kim quay lại ở vòng sau trên cùng map, hoặc đủ điều kiện nâng phân loại của họ map.
 
 <a id="rust-map-spawn-capacity"></a>
 ### Catalog có số spawn khác nhau và roster thưa
