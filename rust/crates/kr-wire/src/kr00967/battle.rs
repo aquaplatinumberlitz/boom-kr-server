@@ -277,7 +277,7 @@ fn death_peer_tail(raw: &[u8], encoded: &[u8]) -> io::Result<Vec<u8>> {
     stream.extend_from_slice(&((inner.len() + 1) as u32).to_le_bytes());
     stream.push(0);
     stream.extend_from_slice(&inner[..DEATH_HEADER]);
-    for entry in inner[DEATH_HEADER..].chunks_exact(DEATH_ENTRY) {
+    for entry in inner[DEATH_HEADER..].as_chunks::<DEATH_ENTRY>().0 {
         stream.extend_from_slice(&entry[6..]);
         stream.extend_from_slice(&entry[..6]);
     }
