@@ -17,9 +17,9 @@ pub struct Config {
     /// Optional map-owned stop-before-cell layer, independent of box/solid flags.
     #[serde(default)]
     ray_barriers: Vec<u8>,
-    /// Optional per-cell open ray sides, bits 0..=3 read here as N, W, S, E.
-    /// KR BA0E30/17929B0 order is W, N, E, S (docs/protocol/terrain.md,
-    /// round 5); the remap is pending and changes only Tent cells.
+    /// Optional per-cell open ray sides in KR BA0E30/17929B0 order:
+    /// W (bit 0), N (bit 1), E (bit 2), S (bit 3). `0b1010` opens N/S and
+    /// blocks W/E (Tent cells).
     #[serde(default)]
     ray_ports: Vec<u8>,
     map_sha256: String,
@@ -297,9 +297,9 @@ impl Terrain {
             if self.ray_barriers[origin] != 0 {
                 continue;
             }
-            // Keep the existing cascade order and the round-4 bit labels
-            // documented on `Config::ray_ports`.
-            for (direction, dr, dc) in [(1, 0, -1), (0, -1, 0), (3, 0, 1), (2, 1, 0)] {
+            // Keep the [W, N, E, S] cascade order matching KR BA0E30/17929B0
+            // bit indices (0=W, 1=N, 2=E, 3=S) so `direction ^ 2` flips W<->E and N<->S.
+            for (direction, dr, dc) in [(0, 0, -1), (1, -1, 0), (2, 0, 1), (3, 1, 0)] {
                 let outgoing = 1 << direction;
                 let incoming = 1 << (direction ^ 2);
                 let mut previous = origin;
@@ -482,18 +482,18 @@ pub(crate) mod tests {
     }
 
     #[test]
-    fn tent_ports_block_both_vertical_entries_and_allow_horizontal_chains() {
+    fn tent_ports_block_both_horizontal_entries_and_allow_vertical_chains() {
         let mut cfg = config();
         cfg.kinds.fill(0);
         cfg.seed_sha256 = sha(&cfg.kinds);
         cfg.ray_ports = vec![ALL_RAY_PORTS; 195];
-        // KR TileInfoList TentBlue (1988), dword +32 = 0x01000100.
+        // KR TileInfoList TentBlue (1988), dword +32 = 0x01000100 (bits 1=N, 3=S).
         cfg.ray_ports[6 * 15 + 7] = 0b1010;
         for (source, chains) in [
-            ((5, 7), false),
-            ((7, 7), false),
-            ((6, 6), true),
-            ((6, 8), true),
+            ((5, 7), true),
+            ((7, 7), true),
+            ((6, 6), false),
+            ((6, 8), false),
         ] {
             let mut t = cfg.validate(b"map", b"start").unwrap();
             t.begin(1);
@@ -523,9 +523,9 @@ pub(crate) mod tests {
             assert!(cfg.validate(b"map", b"start").is_err());
         }
         cfg.ray_ports = vec![ALL_RAY_PORTS; 195];
-        // West-only side: entry from the west works, but crossing the cell
-        // (or leaving that cell as the bomb origin) east must stop.
-        cfg.ray_ports[6 * 15 + 7] = 0b0010;
+        // West-only side (bit 0 = W): entry from the west works, but crossing the
+        // cell (or leaving that cell as the bomb origin) east must stop.
+        cfg.ray_ports[6 * 15 + 7] = 0b0001;
         let mut t = cfg.validate(b"map", b"start").unwrap();
         t.begin(1);
         for (id, column) in [(1, 6), (2, 7)] {

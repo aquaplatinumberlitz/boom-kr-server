@@ -1059,12 +1059,7 @@ hai vào hàng và phần tử thứ nhất vào cột; `EA5D90` và `EB7190` ch
 hàng nhân chiều rộng). Vậy hướng 0, 1, 2, 3 là tây, bắc, đông, nam (`kr_static/confirmed`). Tên băng chuyền xác nhận
 độc lập: `ConvLL` ra hướng 0, `ConvUU` ra 1, `ConvRR` ra 2, `ConvDD` ra 3. Đợt 4 ghi thứ tự này là bắc, tây, nam,
 đông. Với Tent, byte `+33/+35` mở hướng 1 và 3, nên trong client tia đi qua theo trục bắc–nam và bị chặn đông–tây.
-Adapter vẫn xuất `ray_ports = 0b1010` đúng thứ tự byte KR, nhưng `terrain.rs` đang đọc bit 1 và 3 là tây và đông.
-Sửa ánh xạ trong Rust sẽ làm hỏng test `desert_tent_origin_clears_only_horizontal_boxes_after_both_blast_writes`
-của `room_io_item_tests.rs`, file nằm ngoài phạm vi đợt này; đổi giá trị adapter lại làm 5 profile Tent khác byte.
-Đợt này chỉ ghi lại sai lệch và sửa chú thích. Bước tiếp theo là gán lại bit trong `terrain.rs` (tây bit 0, bắc bit 1,
-đông bit 2, nam bit 3) cùng test đó; thay đổi chỉ ảnh hưởng ô Tent của `Camp07`, `Camp14`, `Desert00`, `Desert03`
-và `NXCL_Desert00`.
+Adapter vẫn xuất `ray_ports = 0b1010` đúng thứ tự byte KR và giữ nguyên mọi profile đã xuất; `terrain.rs` cùng test `desert_tent_origin_clears_only_vertical_boxes_after_both_blast_writes` trong `room_io_item_tests.rs` đã được gán lại bit `0..3` trực tiếp theo thứ tự KR (tây bit 0, bắc bit 1, đông bit 2, nam bit 3), chỉ ảnh hưởng ô Tent của `Camp07`, `Camp14`, `Desert00`, `Desert03` và `NXCL_Desert00`.
 
 **Ray mỏ (`Tile08_Ground/Rail00..06`).** Nền type 0 có `+52 = 1`; các trường còn lại như nền thường (byte `+60` và
 word `+62` bằng 0). `B9D8E0` chép `+52` vào `CGOTileGround+0xD4`, getter duy nhất là `B9E4E0`. Các caller `B44000`
