@@ -1,0 +1,92 @@
+{
+  "task": "o4-f1d-ida",
+  "baseline": "3091b66",
+  "source": "kr_static",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "image": "kr-full.exe",
+  "image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+  "ida_db": "local/research/dsh1/kr-full.exe.i64",
+  "ida_db_sha256_before_and_after": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+  "item_attr_sha256": "a9b55540c85c21de108e8720b4148b2030a231d907f3709dcb06f7ef728fcdba",
+  "locators": {
+    "protocol": "docs/protocol/vehicles.md",
+    "report": "local/runs/f1d-vehicle-re/report.md",
+    "manifest": "local/runs/f1d-vehicle-re/static/manifest.json",
+    "manifest_sha256": "e1ed71a229107b478902e84110738527e8cef7268ebbc4000ac05871ec209837"
+  },
+  "source_reuse": [
+    "docs/protocol/items-stats.md#f1d-vehicles giữ đối chiếu pack, kind và selector; tài liệu này cập nhật consumer của đúng build.",
+    "boomkr-re/data/kr/KR_ItemAttr.bin khớp SHA-256 ở trên; parse_item_attr đọc lại cả năm hàng. boomkr-re/docs/kr-data.md và boom-re/docs/items.md chỉ dùng đối chiếu, không dùng VA/kind VN cho KR.",
+    "local/runs/f1a-ida-expansion/sc381-re.md cho guard 381; đã kiểm lại E68BB0 và 703A80 trong bản sao IDA.",
+    "docs/protocol/life-results.md#round-result và docs/protocol/udp-peer.md#peer-duo cho prefix 127 và mỏ neo UDP. docs/protocol/terrain.md#rust-tomb12-boundary pin mask Waterway. Runtime cũ không phải lượt Wine F1-d."
+  ],
+  "reproduction": [
+    "Chép IDB đúng SHA-256 vào thư mục tạm gitignored trong worktree. Từ manifest local lấy một probe_groups entry làm JSON cho F1D_GROUP và chọn file kết quả bằng F1D_OUT.",
+    "Chạy IDA 9.4 batch với -A -S trỏ tới static/probe.py trên bản sao; xem pseudocode, asm, xrefs, vtable và call_windows. Các locator trong record là VA.",
+    "Đối chiếu các lệnh nạp offset với cùng receiver trong asm trước khi nhận là virtual call. Vùng chưa nạp và vtable động ngoài độ phủ. Kiểm lại SHA-256 DB nguồn và xóa bản sao."
+  ],
+  "vehicles": [
+    {"kind": 40, "selector": 1, "name": "Airship", "tuple": [2,10,0,1,2,0,0,0]},
+    {"kind": 41, "selector": 2, "name": "Owl", "tuple": [1,5,0,0,0,0,0,0]},
+    {"kind": 42, "selector": 3, "name": "Turtle0", "tuple": [1,2,0,0,0,0,0,0]},
+    {"kind": 43, "selector": 4, "name": "Turtle1", "tuple": [1,9,0,0,0,0,0,0]},
+    {"kind": 44, "selector": 5, "name": "AirshipBroken", "tuple": [2,2,0,1,2,0,0,0]}
+  ],
+  "findings": [
+    {
+      "id": "pickup-and-replace", "status": "confirmed",
+      "va": ["E63260","F73D30","B52840","E14DA0","1190A40","1192700","11928A2","1192957","B479E0","B47E30","B48000","1370710","1370670","1192920","B4C7A0","B4C9D0","B978B0"],
+      "result": "165 có đường lookup slot tới mount nếu item qua guard. Khi Ship valid, nhánh pickup chỉ gọi thay xe cho selector 14→15; không thay giữa kind 40–44.",
+      "limit": "Không suy item đã bị nhặt/xóa hoặc client có phát claim khi đang cưỡi. F73D30 có rewrite kind theo guard, chưa đo đường này."
+    },
+    {
+      "id": "row-layout", "status": "confirmed",
+      "va": ["1196A70","1197900","B978B0","B98640","B98680","B98660","6B5860","1191D20","B49FA0","B49F40","B4F4C9","B4F42B","B77300","B525E0","1191DD0"],
+      "result": "Mỗi hàng stride 192. Selector đứng trước chuỗi trong file và lưu tại +54 trong hàng IDA; tám số sau chuỗi vào +60/+6C/+78/+84/+90/+9C/+A8/+B4. Số 1 chọn cờ bay; số 2/3 là tốc độ chính/thay thế; số 4–8 là mã hiệu ứng. Mã 1 bật NotEatItem, mã 2 bật PassBox. Pickup chỉ bật bốn vị trí đầu.",
+      "limit": "Các số 6–8 đều là 0 ở F1-d. Không đọc năm vị trí như năm boolean độc lập."
+    },
+    {
+      "id": "speed-and-transition", "status": "confirmed",
+      "va": ["B46940","B64FD0","B64F60","B59A7A","B59A99","B47A90","B47ABF","B47C41","B47C70","B4FA52","B784A0","B546C0"],
+      "result": "Getter chọn tốc độ Ship khi valid và counter >= 0; giá trị thay thế 0 rơi về tốc độ chính. +2998=15 và +29A4=50 vào counter +918 với dấu dương khi lên, âm khi tháo. Slot 264 nhận đối số dương ở cả hai callsite.",
+      "limit": "Tác dụng của vf+264 và tốc độ theo pixel/giây là unknown; 64 byte ở 201554F và 2012FA6 đều chưa nạp trong IDB."
+    },
+    {
+      "id": "cell-predicate", "status": "confirmed",
+      "va": ["B52200","B3F7A0","B5BD40","B5C040","B49F80","B51880","EA0B80","EA1230","EA7C20","EA1540","EA1780","EA1930","EA1AE0","E9F9B0","E12C80","E14360","E17650","E17BD0"],
+      "result": "PassBox chuyển từ +1D60/+1D84 sang +1D3C và các phép kiểm object động. Cả hai vẫn kiểm biên, +1D24 và tile directional; Waterway đã pin và tĩnh type 1 có +1D3C vẫn chặn Airship. EA1540 kiểm bom active trong mảng E12C80; E17BD0 kiểm mask +1D60 trước khi tra bom.",
+      "limit": "Qua thùng phá được là candidate theo lớp cờ; chưa chốt từng loại thùng, các biến thể bom, thoát ô bom của chính mình hoặc kết hợp nhiều cờ."
+    },
+    {
+      "id": "hit-and-clear", "status": "confirmed",
+      "va": ["E7C7B0","E6F160","E15230","E15280","B5E120","B77FD0","B53AD0","B78182","B73680","B47B80","B47D45","B97EE0","B44000","B448A2","B47EB0","1191DD0"],
+      "result": "Nhánh hit có xe hợp lệ và counter không âm gọi tháo tại client trước khi gửi report; không vào nhánh nhốt cho hit đó. Tick đếm âm lên 0 mới tắt Ship và gỡ hiệu ứng.",
+      "limit": "Điều kiện của hit lặp, thời điểm trên hai view, và input thủ công chưa được đo. Báo cáo local giữ danh sách callsite theo lớp và hai caller chưa giải lớp."
+    },
+    {
+      "id": "fresh-actor-and-reset", "status": "confirmed",
+      "va": ["DC51F0","DC7F30","DC937B","E56B70","E59F30","E5A290","E0F6C0","E0F970","B3D170","B762A0","F73190","B3CC9A","B79DC0","B58B60","B3D1D0","B3D56E","B3DCB0","B7B100","E5D3A0"],
+      "result": "Khởi tạo và spawn actor, cùng hai routine reset đã xác định đều tắt Ship và xóa counter. 121 chuyển CGameStage ở đường đã biết; 136 là default trong hai dispatcher kiểm.",
+      "limit": "Caller chính xác reset actor cũ đang cưỡi khi kết thúc vòng và một đường 136 ở lớp khác vẫn unknown."
+    },
+    {
+      "id": "wire-endpoints", "status": "confirmed",
+      "va": ["E5D930","E68BB0","703A80","E5D570","E63260","B73704","B53010","B73719","1164D50","E5D5B6","E85D10","E866F0"],
+      "result": "381 thoát trước parse. 127/sub16 được writer TCP ghi sau khi bắt đầu tháo, prefix 14 byte, có guard vf+1D8. 170/sub16 đọc header 6 byte, tra slot và yêu cầu Ship valid/counter >=0 rồi set XY và tháo.",
+      "limit": "Chưa có frame runtime F1-d. 165 hai view và chuyển 127/16→170/16 là candidate về quy trình đồng bộ; nhu cầu chuyển tiếp, authority server gốc và đường UDP bổ sung vẫn chưa biết."
+    }
+  ],
+  "runtime": "Không chạy Wine, VM hoặc client.",
+  "next": {
+    "p94": "Control đi bộ và đo năm kind; thử thay xe trên xe mặt đất, 165 cho một hoặc cả hai view, và đường qua ô trống/thùng/ô tĩnh/bom/Waterway.",
+    "p95": "Hit có/không có xe, control chặn 170/sub16 khi giữ UDP; đo actual 127 và hai actor qua tick tháo. Thử phím riêng và kết thúc vòng khi còn cưỡi."
+  },
+  "docs_sync": {
+    "docs/PLAN.md": "unchanged",
+    "docs/protocol/items-stats.md": "unchanged",
+    "docs/RESEARCH.md": "unchanged",
+    "docs/COVERAGE.md": "unchanged",
+    "docs/features.json": "unchanged"
+  }
+}
