@@ -1,0 +1,53 @@
+{
+ "schema": "kre-f1-aux-opcodes-classc-ida-v1",
+ "task": "o8-f1-aux-classc-ida",
+ "build": "KR 00967",
+ "baseline": "bfec5b2",
+ "source": "kr_static",
+ "status": "candidate",
+ "image_base": "0x400000",
+ "image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+ "image_sha256_check": "IDA retrieve_input_file_sha256 trên DB đã mở khớp giá trị này.",
+ "ida_version": "9.4",
+ "source_idb": {"path": "local/research/dsh1/kr-full.exe.i64", "sha256_before": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1", "sha256_after": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1", "scratch": ".ida-tmp/kr-full.exe.i64 trong worktree; IDA lưu lại bản sao khi đóng (sha256 aef68c30ca5b63cb83c5d074b53720d58e9a507a46dd25bbfc80ce02dbdc3fef, 414629547 byte). Bản sao đã xóa trước commit; không sửa DB nguồn.", "copy_removed": true},
+ "runtime": "Không chạy Wine, VM, client hoặc server; không chạm lease runtime.",
+ "live_samples_from_brief": [
+  {"opcode": "C->S 138", "hex": "5a5aa5c9a7615aa5c9", "decoded": {"world_index": 0, "const0": 0, "x_px": 160, "y_px": 520, "dir": 0, "distance_px": 160}, "note": "Giải bằng writer E2EB30 và primitive XOR; cột 4, hàng 12, hướng 0 (cột -1), 4 ô. Mẫu do brief cung cấp, không có capture mới."},
+  {"opcode": "C->S 139", "hex": "5a5b5158", "decoded": {"slot": 0, "kind_flags": 1, "row": 11, "column": 2}, "note": "Giải bằng writer E781B0; Bond selector 1, không cờ 0x80/0x40."}
+ ],
+ "primitives": {"id": "codec", "source": "kr_static", "status": "confirmed", "va": ["178DAFC", "14EBC70", "14A5C80", "14EBD10", "14A5C90", "14EBD90", "17B0BF4", "14EAFB0", "14EB040", "14EB0D0", "14EB410", "14EC140"], "summary": "Gửi: u8 XOR 0x5A, u16 big-endian XOR 0xA569, u32; blob qua 14EC120 có length/checksum. Nhận: +0x3C u8, +0x40 u16, +0x44 u32, +0x5C blob."},
+ "findings": [
+  {"id": "world_index", "source": "kr_static", "status": "candidate", "va": ["E150F0", "E0E4D0", "E702D0"], "summary": "stage+0x1DF110 là chỉ số world trong danh sách stage; byte đầu của 138/126/157, sau u32 serial ở 118. Tên trường là suy luận."},
+  {"id": "c2s138_dart", "source": "kr_static", "status": "confirmed", "va": ["1190F62", "B4A780", "E2C9D0", "E2C950", "E2D310", "E2EB30", "17929B0"], "summary": "9 byte: u8 world_index, u8 0, u16 x_px=40*cột, u16 y_px=40*hàng+40, u8 dir, u16 distance_px. Xả qua CGameMsgCache khi qua 200 tick; một bản ghi chờ mỗi slot."},
+  {"id": "s2c172_dart_peer", "source": "kr_static", "status": "confirmed", "va": ["E5D3A0", "E64570", "B080C0", "B08180"], "summary": "Đọc cùng 9 byte; bỏ nếu world khác hoặc byte 2 khác 0; dir 255 thành -1; chỉ dựng object 156, không có slot. Relay nguyên body là candidate."},
+  {"id": "c2s122_dart_bomb", "source": "kr_static", "status": "confirmed", "va": ["B4A780", "B731D0", "B5E610"], "summary": "Dart gặp bom: [u32 bomb_id, u16 hàng, u16 cột, u32 reason=0, u8 slot, u32 delay], delay=max(0,1200*distance/1000-2*latency). Phản hồi server unknown."},
+  {"id": "c2s139_place", "source": "kr_static", "status": "confirmed", "va": ["B4C1F0", "B7A710", "E781B0", "B3E4D0", "B4F070"], "summary": "4 u8: slot(m_SlotIdx actor+0x594), kind_flags(selector|0x80 a4|0x40 kẹp trục), hàng, cột; gửi ngay, một gói mỗi ô kể cả biến thể bốn ô chéo."},
+  {"id": "s2c173_place_peer", "source": "kr_static", "status": "confirmed", "va": ["E646E0", "E8FBB0", "B4CAB0", "B9DEF0"], "summary": "3 u8: kind_flags, hàng, cột; không slot/world. Ghi ô miễn cho actor đứng tại ô rồi B9DEF0. Server bỏ byte slot của 139 là candidate."},
+  {"id": "b9def0_kinds", "source": "kr_static", "status": "confirmed", "va": ["B9DEF0"], "summary": "Nhánh 1 Bond, 2 Trap (object 148 theo cờ 0x40), 3 Banana, 4 Pin, 7 Bond biến thể (timer 60/4), 8 object 144."},
+  {"id": "s2c427_sub6_list", "source": "kr_static", "status": "candidate", "va": ["E774C0", "E77740"], "summary": "427 u16 sub=6 + blob: danh sách (kind_flags, hàng, cột); chỉ áp mục kind 7, gặp kind khác thì dừng."},
+  {"id": "c2s126_trigger", "source": "kr_static", "status": "confirmed", "va": ["B77300", "1191F80", "E2C780", "E2E610", "B525E0"], "summary": "Vào ô có vật: lọc theo kind (1/3/7 cần không có m_fAbPassBox, 2 cần B540D0==0, 4 không, 5/6/8 luôn); 4 u8 world_index, slot, hàng, cột; 10 mục mỗi slot. Lớp cơ sở B525E0 áp dụng cục bộ không gửi."},
+  {"id": "s2c168_trigger_result", "source": "kr_static", "status": "confirmed", "va": ["E63F10", "E2C890", "1192040", "B9E310", "E72870"], "summary": "5 u8 result, world_index, slot, hàng, cột; luôn xóa mục chờ; result!=0 và world khớp thì 1192040 (xóa vật 1/2/3/7, Bond B49460(1,12,0), Trap tháo xe vf+0x180 hoặc nhốt, Banana vf+0x130, Pin không), ô trống thì E72870(slot,4,-1). Nghĩa đầy đủ của result unknown."},
+  {"id": "group11_other_clear", "source": "kr_static", "status": "candidate", "va": ["EB9840", "E9E660", "E9EEE0", "B3A790", "B2A890", "E75BE0"], "summary": "B9E310 còn được gọi từ quét ô sau nổ và vtable bom; cục bộ, chưa nối gói."},
+  {"id": "ctrl_use_order", "source": "kr_static", "status": "confirmed", "va": ["B4D710", "1190C20", "AEE0D0", "AEE300", "AEE3B0"], "summary": "Case thành công rồi mới gửi 127/sub0 [prefix14, u8, u16 kind, u8 lượng tiêu, u32]; gói riêng của case đi trước sub0."},
+  {"id": "spring_g26", "source": "kr_static", "status": "confirmed", "va": ["1191063", "B4B5A0", "678F10", "1404130", "E85B60", "E86DD0"], "summary": "127/sub2 + inner 3 byte [hàng, cột, distance<<4|dir]; 170/sub2 đọc ba u8 inline sau header 6 byte rồi vf+0x138. Server phải bóc blob (candidate)."},
+  {"id": "drill_g27", "source": "kr_static", "status": "confirmed", "va": ["119108B", "B73C60", "B4BB40", "1404200", "E86520"], "summary": "127/sub3 + inner 7 byte [u32 box_id, u8 hàng, u8 cột, u8 dir]; 170/sub3 đọc blob."},
+  {"id": "remotebomb_g28", "source": "kr_static", "status": "confirmed", "va": ["11910CF", "B4BE10", "E2C0E0", "E2DF80", "B518C0", "B4C0C0", "B7A8A0", "B731D0"], "summary": "Đặt: 118 cờ 0x04, không xả ngay. Kích nổ bằng phím đặt bom: 122 reason 2, delay=max(0,200-2*latency), không đặt bom mới."},
+  {"id": "shield_g29", "source": "kr_static", "status": "confirmed", "va": ["11910F8", "B73DC0", "E86670"], "summary": "127/sub5 chỉ prefix khi actor/vf+0x1BC trả khác 0; 170/sub5 gọi vf+0x1BC ở peer. Group 53 cũng vào vf+0x34."},
+  {"id": "sensor_g30", "source": "kr_static", "status": "confirmed", "va": ["119114A", "B50110", "EA8D80"], "summary": "Không gói riêng; case luôn trả thành công, EA8D80 hiển thị cục bộ khi guard qua; vẫn có 127/sub0 chung."},
+  {"id": "sub0_relay_shape", "source": "kr_static", "status": "confirmed", "va": ["AEE3B0", "E85B60", "E86480"], "summary": "127/sub0 ghi trường trần nhưng 170/sub0 đọc blob; không relay nguyên body."},
+  {"id": "start121_character_u16", "source": "kr_static", "status": "confirmed", "va": ["DC7F30", "DC8A2A", "14E9910", "1241250", "1241290"], "summary": "Hàng roster đọc khóa u16 (movzx) vào slot+0x60; biểu diễn được khóa >=256."},
+  {"id": "c2s79_writer", "source": "kr_static", "status": "confirmed", "va": ["D75D70", "13B07C0", "13E51F0", "D7CC20", "13E52A0", "11D2F20", "456AD0", "703870", "1351C50"], "summary": "u8 count + u8 mỗi người chơi cục bộ; giá trị là u16 lưu bị cắt còn 8 bit vì 456AD0 luôn 0 làm nhánh ánh xạ chết; byte cắt không qua 11D2F20 thì gửi 5 và ghi 5 lại lựa chọn cục bộ. Caller gồm handler 121 DC92DF và D61990."},
+  {"id": "c2s79_large_keys", "source": "kr_static", "status": "candidate", "va": ["D75D70", "11D2F20", "85CC10", "85CBB0", "85CC70", "1184F20", "13E5DA0"], "summary": "3000-3004 thành 184-188 hoặc 5; 4000-4030 thành 160-190; 5000 thành 136. Policy Rust Loading79 hiện so byte với khóa đã chọn nên sẽ từ chối các khóa >=256 (room.rs observe_loading79). Cần đo native."},
+  {"id": "e0f770_mode95", "source": "kr_static", "status": "confirmed", "va": ["E0F770", "AEDE60", "B3BDE0", "E5A290", "E02A60", "E04F00"], "summary": "AEDE60 luôn đúng; đối số 5 == 95 và khóa 4000-4030 thì B3BDE0(0) và trả về trước khởi tạo actor/đếm spawn. Ý nghĩa 95 (loại map/mode) là candidate."},
+  {"id": "ship_selector_branches", "source": "kr_static", "status": "candidate", "va": ["B48020", "B48000", "B64F40", "B4A620", "B514F0", "B4C7A0", "1192700"], "summary": "B48020 chỉ được gọi với 12/14/15/16; không thấy opcode lên xe riêng theo selector, 22 hàng dùng chung 165 và 127/sub16->170/sub16 trừ các mục dưới. 12/14/15 chỉ hoạt ảnh/âm thanh cục bộ."},
+  {"id": "ship_effect_clear_167", "source": "kr_static", "status": "confirmed", "va": ["1191D20", "1191DD0", "B4A0D0", "B4A150", "B7A590", "B7A650"], "summary": "Xóa hiệu ứng 5 (Tank 12/14/15, Shark 16) gửi C->S 167 [u16 slot, u16 3]; hiệu ứng 6 (Shark) gửi [u16 slot, u16 4]. Hiệu ứng 4/7 không gửi gói."},
+  {"id": "shark_219_157", "source": "kr_static", "status": "confirmed", "va": ["B814C0", "E6F510", "E6FB80", "B76CD0", "E2C1F0", "B73680", "E6FF00", "E2CEA0", "E2EEB0"], "summary": "Nuốt bom: 219 [u32 E704C0, u32 238, u8 0, u32 slot, u32 bomb_serial]; nhả: 118 cờ 1 rồi 219 [u32, 238, u8 1, u32 slot]; tháo xe 50%: 157 [u8 world, u8 slot, u32, u16, u8, u8]. Ngữ nghĩa và handler S->C unknown."}
+ ],
+ "limits": [
+  "Chỉ đường mã ghi VA được kết luận; tên trường như world_index, box_id, ô miễn là suy luận từ cách dùng.",
+  "Các phép relay 138->172, 139->173, bóc blob sub2/sub0 là hệ quả bố cục, không phải bằng chứng hành vi server gốc.",
+  "Dự đoán byte Loading79 cho khóa >=256 phụ thuộc trạng thái sở hữu cục bộ; cần chạy native trước khi đổi policy Rust.",
+  "Không xác nhận handler S->C cho 122 reason 0/2, 167/3-4, 219/238, 157."
+ ],
+ "docs_sync": {"docs/protocol/f1-aux-opcodes-and-classc.md": "new", "docs/content/f1-full-mechanic-clusters.md": "cross-link", "docs/PLAN.md": "unchanged", "docs/protocol/vehicles.md": "unchanged", "docs/protocol/items-stats.md": "unchanged", "docs/protocol/terrain.md": "unchanged", "docs/protocol/load-phase.md": "unchanged", "docs/evidence/checkpoints/": "unchanged", "rust/": "unchanged", "tools/": "unchanged"}
+}
