@@ -1,0 +1,67 @@
+{
+  "schema": "kr-f1b-remote-sensor-rust-v1",
+  "task": "o11-f1b-remote-sensor-rust",
+  "build": "KR 00967",
+  "baseline": "977c2cb",
+  "source": "kr_static + emu_choice",
+  "status": "candidate",
+  "review": {"status": "waived", "source": "docs/evidence/checkpoints/review-waiver.json"},
+  "runtime": "Không chạy Wine, VM, client hoặc IDA trong lượt này. Chưa có đo native cho các nhánh mới.",
+  "static_sources": [
+    "docs/protocol/f1-aux-opcodes-and-classc.md#f1-aux-ctrl",
+    "docs/evidence/content/f1-aux-opcodes-and-classc-ida.json",
+    "docs/evidence/content/f1-full-ida-clusters.json"
+  ],
+  "static_findings_used": [
+    {"id": "sensor_g30", "status": "confirmed", "va": ["119114A", "B50110", "EA8D80"], "use": "Sensor chỉ có 127/sub0 chung, không relay."},
+    {"id": "shield_g29", "status": "confirmed", "va": ["11910F8", "B73DC0", "E86670"], "use": "127/sub5 chỉ prefix rồi 170/sub5 sáu byte; codec có từ PR #624."},
+    {"id": "ctrl_use_order", "status": "confirmed", "va": ["B4D710", "1190C20", "AEE0D0", "AEE300", "AEE3B0"], "use": "Gói riêng của case đi trước sub0; sub0 mang u16 kind."},
+    {"id": "remotebomb_g28", "status": "confirmed", "va": ["11910CF", "B4BE10", "E2C0E0", "B518C0", "B4C0C0", "B7A8A0", "B731D0"], "use": "Codec 122 reason 2 với delay tối đa 200. Offset cờ 0x04 của 118 chưa có trong bằng chứng."},
+    {"id": "cluster_item.field160", "status": "confirmed", "use": "Charge: Shield 151 là 2, Sensor 152 là 6, RemoteBomb 150 là 3, Drill 149 là 3."}
+  ],
+  "opened": {
+    "policy": "report_derived_f1b_remote_sensor (bao trọn report_derived_f1b_aux, không mở xe F1-d)",
+    "pickup_kinds": {"151": 2, "152": 6},
+    "item_use_sub0": ["Shield 151", "Sensor 152"],
+    "relay": "Shield 127/sub5 -> 170/sub5 sau khi tiêu một action charge; Sensor không có gói S->C.",
+    "codec": ["kr_wire::kr00967::remote_detonation122", "ItemUseKind::Shield", "ItemUseKind::Sensor"]
+  },
+  "kept_rejected": [
+    {"kinds": [150, 176], "reason": "Offset byte cờ 0x04 của 118 chưa được chứng minh; handler 118/122 ngoài vùng sửa của lượt này; phản hồi server cho reason 2 unknown."},
+    {"kinds": [149, 258], "reason": "box_id của Drill tác động thùng của terrain; chưa có hợp đồng với terrain server."},
+    {"kinds": [174, 186, 188, 198, 200, 205, 207, 220, 265, 266, 286, 288, 292, 294, 298], "reason": "Biến thể không có tham chiếu floor F1."},
+    {"kinds": [183, 195], "reason": "AutoShield group 53 là case 1191121 riêng."}
+  ],
+  "behavior_unchanged": [
+    "Mọi policy cũ từ chối floor Sensor/Shield (validate_stat_policy).",
+    "report_derived_f1b_aux giữ relay Shield không charge; sub0 Sensor/Shield rơi vào đường life và nhận unsupported_four_report_subtype.",
+    "Parser 118 và handler 118/122 không đổi."
+  ],
+  "tests": {
+    "file": "rust/crates/kr-service/src/room_io_f1b_remote_tests.rs",
+    "cases": [
+      "sensor_and_shield_floor_need_the_new_opt_in_and_other_rows_stay_rejected",
+      "remote_detonation122_and_item_use_codec_bounds",
+      "sensor_consumes_six_charges_and_shield_relays_two_charges_then_resets",
+      "aux_policy_keeps_sensor_and_shield_closed_and_its_legacy_shield_relay"
+    ],
+    "wire_origin": "Tổng hợp theo writer tĩnh, không phải capture."
+  },
+  "verification": [
+    "cargo fmt --manifest-path rust/Cargo.toml --all --check",
+    "cargo clippy --manifest-path rust/Cargo.toml --workspace --all-targets --locked -- -D warnings",
+    "cargo test --manifest-path rust/Cargo.toml --workspace --locked",
+    "python3 tools/check_docs.py"
+  ],
+  "limits": [
+    "Server không áp hiệu ứng Sensor/Shield và không kiểm thời lượng tail ItemAttr.",
+    "Số charge theo +160 và guard tick của sub0 là emu_choice.",
+    "Cần đo Wine hai client cho Sensor và Shield trước khi tuyên bố tương thích."
+  ],
+  "docs_sync": {
+    "docs/protocol/items-stats.md": "new section f1b-remote-sensor-rust",
+    "docs/PLAN.md": "unchanged",
+    "docs/protocol/f1-aux-opcodes-and-classc.md": "unchanged",
+    "docs/evidence/checkpoints/": "unchanged"
+  }
+}

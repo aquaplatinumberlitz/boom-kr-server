@@ -2,8 +2,8 @@
 //! List2 stays unavailable. Extended counts are per round; no account rewards.
 use crate::room::Membership;
 use kr_wire::kr00967::{
-    BANANA1_KIND, BANANA8_KIND, BOND_KIND, DART_KIND, PIN_KIND, SCANNER_KIND, SPRING_KIND,
-    TRAP_KIND,
+    BANANA1_KIND, BANANA8_KIND, BOND_KIND, DART_KIND, ItemUseKind, PIN_KIND, SCANNER_KIND,
+    SENSOR_KIND, SHIELD_KIND, SPRING_KIND, TRAP_KIND,
 };
 #[cfg(test)]
 use kr_wire::write_uint;
@@ -29,6 +29,8 @@ pub(crate) enum Policy {
     ReportDerivedF1bExtended,
     /// F1-b plus p100b/o8 Ctrl & group 11 active items (emu_choice).
     ReportDerivedF1bAux,
+    /// F1-b aux plus o8 static Sensor 152 and charged Shield 151 (emu_choice, no Wine run).
+    ReportDerivedF1bRemoteSensor,
     /// F1-b plus p97b visible vehicle pickups and dismount reports (emu_choice).
     ReportDerivedF1dVehicles,
     /// F1-d vehicles plus static-derived 22 extra Ship/* rows (45..=66, 331, emu_choice).
@@ -45,6 +47,7 @@ impl Policy {
                 || (self.shoe() && kind == 3)
                 || (self.f1b_extended() && f1b_pickup_amount(kind).is_some())
                 || (self.f1b_aux() && f1b_aux_pickup_amount(kind).is_some())
+                || (self.f1b_remote_sensor() && f1b_remote_sensor_pickup_amount(kind).is_some())
                 || (self.f1d_vehicles() && is_vehicle_kind(kind))
                 || (self.f1d_all_ships() && is_extra_ship_kind(kind)))
     }
@@ -58,7 +61,23 @@ impl Policy {
         self == Self::ReportDerivedF1bExtended || self.f1b_aux() || self.f1d_vehicles()
     }
     pub(crate) fn f1b_aux(self) -> bool {
-        self == Self::ReportDerivedF1bAux
+        self == Self::ReportDerivedF1bAux || self.f1b_remote_sensor()
+    }
+    pub(crate) fn f1b_remote_sensor(self) -> bool {
+        self == Self::ReportDerivedF1bRemoteSensor
+    }
+    /// Which decoded 127/sub0 kinds this policy charges against round inventory.
+    /// Needle stays with the life-action path; every other kind needs its own opt-in.
+    pub(crate) fn charges_item_use(self, kind: ItemUseKind) -> bool {
+        use ItemUseKind::*;
+        match kind {
+            Scanner => self.f1b_extended(),
+            Dart | Spring | Bond | Trap | Pin | Banana1 | Banana2 | Banana3 | Banana8 => {
+                self.f1b_aux()
+            }
+            Shield | Sensor => self.f1b_remote_sensor(),
+            Needle => false,
+        }
     }
     pub(crate) fn f1d_vehicles(self) -> bool {
         self == Self::ReportDerivedF1dVehicles || self.f1d_all_ships()
@@ -99,6 +118,16 @@ pub(crate) fn f1b_aux_pickup_amount(kind: u16) -> Option<u16> {
         BANANA1_KIND => 1,
         228 => 2,
         BANANA8_KIND => 8,
+        _ => return None,
+    })
+}
+
+/// o8 `cluster_item` rows with a confirmed Ctrl case; amount is ItemAttr `+160`.
+/// Variant rows (G/C/SP/FD/Winning) have no F1 floor reference and stay rejected.
+pub(crate) fn f1b_remote_sensor_pickup_amount(kind: u16) -> Option<u16> {
+    Some(match kind {
+        SHIELD_KIND => 2,
+        SENSOR_KIND => 6,
         _ => return None,
     })
 }
@@ -166,6 +195,17 @@ impl Catalog {
                 .any(|item| f1b_aux_pickup_amount(item.kind).is_some())
         {
             return Err(io::Error::other("aux item floor requires F1-b aux opt-in"));
+        }
+        if !policy.f1b_remote_sensor()
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| f1b_remote_sensor_pickup_amount(item.kind).is_some())
+        {
+            return Err(io::Error::other(
+                "Sensor/Shield floor requires F1-b remote-sensor opt-in",
+            ));
         }
         if !policy.f1d_vehicles() && self.floor.values().any(|item| is_vehicle_kind(item.kind)) {
             return Err(io::Error::other("vehicle floor requires F1-d opt-in"));
@@ -248,6 +288,7 @@ impl Catalog {
                     || !(crate::item_scope::kept_kind(u32::from(kind))
                         || f1b_pickup_amount(kind).is_some()
                         || f1b_aux_pickup_amount(kind).is_some()
+                        || f1b_remote_sensor_pickup_amount(kind).is_some()
                         || (group == 0 && is_any_vehicle_kind(kind)))
                     || !indices.insert(index)
                     || indices.len() > 64

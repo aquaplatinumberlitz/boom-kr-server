@@ -3743,7 +3743,8 @@ impl Session {
                 let request = pickups::Request::parse(body)?;
                 let needle = r.rules.life_actions.needle() && request.kind() == 145;
                 let extended = pickups::f1b_pickup_amount(request.kind())
-                    .or_else(|| pickups::f1b_aux_pickup_amount(request.kind()));
+                    .or_else(|| pickups::f1b_aux_pickup_amount(request.kind()))
+                    .or_else(|| pickups::f1b_remote_sensor_pickup_amount(request.kind()));
                 let allowed = r.rules.item_policy.allows(request.kind());
                 if !needle
                     && !allowed
@@ -4006,10 +4007,16 @@ impl Session {
                     });
                 } else if r.rules.item_policy.f1b_aux() && subtype == wire::SHIELD_SUBTYPE {
                     let report = wire::shield127(body)?;
+                    // Shield floor exists only under remote-sensor; it then needs a charge.
+                    let uncharged = !r.rules.item_policy.f1b_remote_sensor();
                     let (reason, forward) = if report.slot != m.slot {
                         ("slot_mismatch", false)
                     } else if let Phase::Armed { round } = next.phase
                         && !next.members[&self.identity].life.blocked_pickup()
+                        && (uncharged
+                            || next
+                                .pickups
+                                .take_action_charge(round, m.key, wire::SHIELD_KIND))
                     {
                         let reply = packet(170, wire::shield170(m.slot, report.x, report.y)?);
                         for peer in next.members.values().filter(|peer| peer.key != m.key) {
@@ -4041,11 +4048,7 @@ impl Session {
                         .f1b_extended()
                         .then(|| wire::item_use127(body).ok().map(|u| u.kind))
                         .flatten()
-                        .filter(|k| {
-                            *k == wire::ItemUseKind::Scanner
-                                || (r.rules.item_policy.f1b_aux()
-                                    && *k != wire::ItemUseKind::Needle)
-                        })
+                        .filter(|k| r.rules.item_policy.charges_item_use(*k))
                 {
                     let report = crate::life::Report::parse(body)?;
                     let reason = if let Phase::Armed { round } = next.phase {
@@ -5707,6 +5710,9 @@ mod f1b_extended_integration_tests;
 #[cfg(test)]
 #[path = "room_io_f1b_aux_tests.rs"]
 mod room_io_f1b_aux_tests;
+#[cfg(test)]
+#[path = "room_io_f1b_remote_tests.rs"]
+mod room_io_f1b_remote_tests;
 
 #[cfg(test)]
 #[path = "room_io_f1e_tests.rs"]

@@ -170,6 +170,37 @@ pub fn bomb_report122(body: &[u8]) -> io::Result<BombReport122> {
         trailing: uint(&body[13..17], Width::U32)? as u32,
     })
 }
+/// C2S 122 reason written by the RemoteBomb detonation path `B4C0C0 -> B7A8A0 -> B731D0`.
+pub const REMOTE_DETONATION_REASON: u32 = 2;
+/// `delay = max(0, 200 - 2 * latency)` on the same path, so it never exceeds 200.
+pub const REMOTE_DETONATION_MAX_DELAY: u32 = 200;
+
+/// Static o8 C2S 122 RemoteBomb detonation (`[u32 bomb_id, u16 row, u16 col, u32 reason=2,
+/// u8 slot, u32 delay]`). Codec bound only; the server reply is unknown and no
+/// service handler consumes it.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct RemoteDetonation122 {
+    pub bomb_id: u32,
+    pub row: u16,
+    pub column: u16,
+    pub slot: u8,
+    pub delay: u32,
+}
+
+pub fn remote_detonation122(body: &[u8]) -> io::Result<RemoteDetonation122> {
+    let report = bomb_report122(body)?;
+    if report.reason != REMOTE_DETONATION_REASON || report.trailing > REMOTE_DETONATION_MAX_DELAY {
+        return Err(io::Error::other("unsupported remote detonation122 shape"));
+    }
+    Ok(RemoteDetonation122 {
+        bomb_id: report.property,
+        row: report.row,
+        column: report.column,
+        slot: report.auxiliary,
+        delay: report.trailing,
+    })
+}
+
 pub fn pickup165(
     context: u8,
     slot: u8,
@@ -200,6 +231,10 @@ pub enum ItemUseKind {
     Needle = 145,
     Scanner = 146,
     Spring = 148,
+    /// Group 29 Ctrl case `11910F8`; shares the 127/sub0 writer (o8 `shield_g29`).
+    Shield = 151,
+    /// Group 30 Ctrl case `119114A`; sub0 is its only report (o8 `sensor_g30`).
+    Sensor = 152,
     Bond = 224,
     Trap = 225,
     Pin = 226,
@@ -217,6 +252,10 @@ pub const TRAP_KIND: u16 = ItemUseKind::Trap as u16;
 pub const PIN_KIND: u16 = ItemUseKind::Pin as u16;
 pub const BANANA1_KIND: u16 = ItemUseKind::Banana1 as u16;
 pub const BANANA8_KIND: u16 = ItemUseKind::Banana8 as u16;
+pub const SHIELD_KIND: u16 = ItemUseKind::Shield as u16;
+pub const SENSOR_KIND: u16 = ItemUseKind::Sensor as u16;
+/// Group 28 RemoteBomb row. No item-use variant: its 118 flag byte offset is unpinned.
+pub const REMOTE_BOMB_KIND: u16 = 150;
 
 pub const SPRING_SUBTYPE: u8 = 2;
 pub const DRILL_SUBTYPE: u8 = 3;
@@ -250,6 +289,8 @@ pub fn item_use127(body: &[u8]) -> io::Result<ItemUse127> {
         145 => ItemUseKind::Needle,
         SCANNER_KIND => ItemUseKind::Scanner,
         SPRING_KIND => ItemUseKind::Spring,
+        SHIELD_KIND => ItemUseKind::Shield,
+        SENSOR_KIND => ItemUseKind::Sensor,
         BOND_KIND => ItemUseKind::Bond,
         TRAP_KIND => ItemUseKind::Trap,
         PIN_KIND => ItemUseKind::Pin,
