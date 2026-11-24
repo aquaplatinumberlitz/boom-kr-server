@@ -169,6 +169,10 @@ chỉ giao opcode cho phòng nếu `room_io::Session::handles` nhận; hàm này
 `148/228` ở commit đo. Hai nhánh ở `Session::packet` chưa được nghiệm thu qua
 đường native TLS. [Bằng chứng p108](../evidence/item-families/f1e-space-pangland-wine.json)
 giữ pin build, capture, CRC và ảnh của lượt đối chứng.
+Mỗi kênh A/B của p108 có một người chơi local. Với cấu hình này,
+`local_command` giữ nguyên body sau dispatch; đường ghi phản hồi native
+đóng frame theo opcode và sequence của kênh. Không mở rộng kết luận sang
+hai người chơi dùng chung một kênh.
 
 Kiểm ngoại tuyến cho thấy codec Rust nhận các body `148/228` đã bắt. Sau khi
 nối dispatch, cần kiểm hai giới hạn của nhánh `148` (`status: candidate` cho
@@ -180,3 +184,9 @@ nếu đưa được cả đợt vào hàng đợi, số timer cần giữ đồ
 16 batch pending của kênh có một client. Đây là đối chiếu mã với nhịp capture.
 Lần đo native cần phân biệt `room_recipient_queue` khi đặt chỗ với
 `room_timer_queue` khi giữ batch, rồi kiểm đủ reply và hủy timer khi đổi vòng.
+
+Kiểm thêm trần 512 sự kiện mỗi ván bằng một lượt dài. Trong XML gốc,
+`PangLand03`, `PangLand11` và `PangLand16` đều khai báo tổng số ô bom
+vượt trần. Nếu mỗi action phát đủ ô đã khai báo, handler hiện tại sẽ bỏ
+gói đầu tiên vượt trần ở các mốc tương ứng 171, 96 và 168 giây. Đây là
+dự đoán từ XML và mã; client có thể lọc ô hoặc kết thúc ván sớm hơn.

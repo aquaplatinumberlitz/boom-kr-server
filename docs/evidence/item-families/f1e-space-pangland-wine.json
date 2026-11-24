@@ -144,6 +144,15 @@
       "burst": "Trong cửa sổ 100 ms theo lịch poll, capture có 9 ô trong 1,569 ms trên PangLand03 và 44 ô trong 93,777 ms trên NXCL_PangLand15. Tương ứng 18 và 88 batch nếu tất cả tích lại trước lần lấy kế tiếp. Biên poll và nhịp server nhận gói chưa đo; đây là mô hình ngoại tuyến.",
       "reproduction": "Dùng env p108 và worktree có mã server #638: python3 \"$P108_RAW/native-638/recipient-audit/audit.py\" \"$PWD\" \"$P108_RAW\". Đối chiếu stdout với receipt.json; chạy sha256sum -c SHA256SUMS trong thư mục audit.",
       "artifacts": {"receipt": "native-638/recipient-audit/receipt.json", "sha256_manifest": "native-638/recipient-audit/SHA256SUMS", "sha256_manifest_digest": "d2bb33f0e115e57d8d9a7dd26d7c441a5fb0cddcea8f353a3bf1f693f8f72159"}
+    },
+    "round_event_budget": {
+      "status": "candidate",
+      "limit": 512,
+      "check": "Đọc FxMap gốc theo SHA-256 đã pin. Khớp hash payload, script và tổng khai báo của 13 map Space và 12 map PangLand với trích xuất F1-e. Space có tối đa 161 action đổi tile. PangLand tính trần theo số ô trong gói 148, và bỏ cả gói nếu tổng vượt 512.",
+      "first_projected_drop": {"PangLand03": {"declared_total": 602, "xml_ms": 171000, "used_before": 508, "next_count": 5}, "PangLand11": {"declared_total": 813, "xml_ms": 96000, "used_before": 512, "next_count": 6}, "PangLand16": {"declared_total": 592, "xml_ms": 168000, "used_before": 512, "next_count": 1}},
+      "limits": "Giả định một lượt qua XML theo thứ tự ms và mỗi gói 148 chứa đúng count đã khai báo. Không suy số ô thực tế sau khi client lọc, thứ tự gói cùng tick, hoặc việc ván sống tới các mốc cuối. Sau phép đo ngắn, giữ PangLand03 qua mốc 171 s nếu ván cho phép và đếm từ capture, không dùng tổng XML làm chuẩn wire.",
+      "reproduction": "Dùng env p108 và worktree có mã server #638: python3 \"$P108_RAW/native-638/script-budget/audit.py\" \"$PWD\" \"$P108_KR_PACK_ROOT\". Đối chiếu stdout với receipt.json; kiểm SHA256SUMS trong thư mục audit.",
+      "artifacts": {"receipt": "native-638/script-budget/receipt.json", "sha256_manifest": "native-638/script-budget/SHA256SUMS", "sha256_manifest_digest": "33d464afd3581b46e0b099fefd45959cc72489d45fbcf104d54e8ff2dc2011b9"}
     }
   }
 }
