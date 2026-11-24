@@ -34,7 +34,7 @@
   - Reads wire opcode `v17 = (**a2)(a2)`. Observed range branches:
     - `v17 <= 305`: subtracts `20` (e.g., `case 156` = wire `176` -> `0xE77D20`; `case 158` = wire `178` -> `0xE77DD0`; `case 176..179` = wire `196..199` -> `0xE73760`, `0xE751F0`, `0xE74410`, `0xE72EC0`).
     - `v17 == 306`: `0xE684E0`.
-    - `307..=546`: subtracts `312` (`case 115` = wire `427`). Switch `v20` inside `0xE5D3A0` contains `case 38` -> `0xE6A3C0` and `case 43` -> `0xE73080` (`candidate` wire base `312` -> `350`/`355`, needs confirmation of `v20` entry branch in runtime/follow-up).
+    - `307..=546`: subtracts `312` (`case 115` = wire `427`). Trong switch `v20`, `case 38` là wire `350` → `0xE6A3C0`, còn `case 43` là wire `355` → `0xE73080`. Cả hai ánh xạ đã được xác nhận tĩnh; `350` còn được kiểm với hai client qua relay shadow trong [p108](#f1e-space-pangland-wine). Chưa xác định `355` có phải phản hồi cho `233` hay không.
     - `v17 == 547`: `0xE69090`.
     - `v17 > 547`: subtracts `548` (`case 36` = wire `584` -> `0xE853D0`).
   - `default` / `LABEL_123` fallback: forwards packet to `CModeComponent::vt+64` (`v21[6941]`), then iterates `CMapScript*::vt+64` (`v21 + 6938`), then falls through to `sub_D5F5A0(a2)` (handling opcodes `7`, `84`, `106..109`, `150`, `151`, `218`, `421`, `428`).
@@ -44,7 +44,7 @@
 | Family | Maps | Reader / Component (`kr_static`) | Authority | `C->S` Opcodes | `S->C` Dispatch |
 | --- | --- | --- | --- | --- | --- |
 | `space` | 13 | `CMapScriptChangeTile` (`0x634070`) | Host (`1240CF0` + `E78070`) | `228` (`0xE736C0`) | `350` -> `0xE6A3C0` -> `0x483210` (đo tại [p108](#f1e-space-pangland-wine)) |
-| `pangland` | 12 | `CMapScriptSprinkler` (`0xF126E0`, `<time>`) | Host (`1240CF0`) + Local UI | `148` (`0xE733D0`), `149` (`0xF158C0`), `233` (`0xE71C20`) | `159` / `158` nhận trên cả hai client với shadow; phản hồi server KR gốc còn `unknown` |
+| `pangland` | 12 | `CMapScriptSprinkler` (`0xF126E0`, `<time>`) | Host (`1240CF0`) + Local UI | `148` (`0xE733D0`) đã đo; `149` (`CGOTileStaticLucci::0xF158C0`) và `233` (`0xE71C20`) mới xác nhận tĩnh | `159` / `158` nhận trên cả hai client với shadow; phản hồi server KR gốc còn `unknown` |
 | `retro_*` | 30 | `CMapActionPopUp` (`0x9EA760`) -> `CMapScriptPopUp` (`0xB2AF70`) | Local fade/render inside `<time>` (`0xF14E20`) | None in `CMapScriptPopUp` (`0xB2B140`) | None in `CMapScriptPopUp`; see `unknown` XML tags below |
 | `aqua` | 9 (4 active) | `CMapScriptStageClear` (`0xF16BC0`, `StageClearScriptParser::parseScriptObjectTemplates` `0x73C4D0`) | `CScriptObject` action / host events | `132`, `180` (`CScriptObject` actions) | `176` (`0xE77D20`), `178` (`0xE77DD0`), `196..199`, `584` |
 | `wriggle` | 14 | `CMapScriptWriggle` (`0xF9E7F0`, `0xF9EF90`) | `CScriptObject` delegation (no direct `CSendPacket` in `0xF9E700..0xFA4500`) | Via `CScriptObject` (`unknown` full subset) | Via `CMapScriptWriggle` / `CScriptObject` (`vt+36`) & `0xE77D20`/`0xE77DD0` |
@@ -121,7 +121,7 @@ entry `0xE5DFB8` trỏ `0xE5D885`, gọi `0xE6A3C0` rồi đến reader
 `0xE5DC61` → `0xE73080`); ánh xạ tĩnh này không chứng minh đó là phản
 hồi cho `233`. Writer `149` tại `0xF159D4`–`0xF15A5D` ghi
 `u16 chọn từ bảng Lucci, u32 x, u32 y, u8 row, u8 col` ở nhánh một ô đích; layout tĩnh của
-`233` tại `0xE71C20` là `string, u16, u16, u8 count, count * (u8 row, u8 col)`.
+`233` tại `0xE71C20` là `string itemtablename, u16 x, u16 y, u8 count, count * (u8 row, u8 col)` trên đường XML.
 Hai layout đó chưa được đối chiếu trên wire. Reader `159` tại `0xE5E8F0` vào
 `0xE14600` với owner 25, dùng slot được `0xE0F490` / `0xE12540` dành cho
 `CGOBombSprinkler`. Reader `158` tại `0xE5F450` dùng ID để tìm bom cho lượt nổ.
@@ -140,6 +140,14 @@ Lần theo binary chưa tìm được cạnh gọi trực tiếp tới construct
 `CGOTileStaticLucci` (`0xF15690`); còn mở khả năng có đường gọi gián tiếp.
 Một mốc XML `begingold` kèm asset `Lucci00` chưa đủ để chọn lượt đo `149`.
 
+Writer `233` có hai call site trực tiếp đã xác minh: `CMapActionItem::0xF16520`
+gọi tại `0xF165A6`, còn `0x6D8DD0` gọi tại `0x6D8EAF` khi state là 1 và
+client là host. Chưa tìm thấy tham chiếu vào `0x6D8DD0` trong các dạng địa chỉ
+đã quét, nên chưa xác định được đường kích hoạt thứ hai. Factory tile tĩnh
+`0xEBDAD0` có nhánh `CGOTileStaticFishing` và nhánh mặc định `CGOTileStatic`;
+cả hai dùng `0xBA14A0` tại slot `+0x94`, khác writer Lucci `0xF158C0`.
+Các đường này chưa cung cấp fixture KR gốc để đo thêm `149` hoặc `233`.
+
 <a id="f1e-space-pangland-rust"></a>
 ## 6. Triển khai opt-in Rust và Adapter cho Space & PangLand (`allow_f1e_dynamic_scripts`)
 
@@ -151,4 +159,34 @@ Một mốc XML `begingold` kèm asset `Lucci00` chưa đủ để chọn lượ
 - **Service handler (`room_io.rs`, opt-in `allow_f1e_dynamic_scripts = false` mặc định):**
   - `C->S 228`: Chỉ nhận từ host trong pha `Armed` (trần `512` sự kiện/ván), validate cấu trúc rồi broadcast nguyên body dưới opcode `S->C 350` tới mọi đại diện transport.
   - `C->S 148`: Chỉ nhận từ host trong pha `Armed`, cấp phát `bomb ID` không trùng với `118` của người chơi (`bombs::Ledger::allocate_script_id`), phát ngay `S->C 159` (`owner = 25`) và hẹn `S->C 158` sau `2200 ms` dưới `Guard::ScriptBomb`.
-  - Pha `Ending`/`Idle` ghi nhận an toàn (`observe_closed` / `observe_after_abort`) không ngắt kênh; `C->S 149` và `233` tiếp tục giữ đóng cho tới khi có bằng chứng runtime bổ sung. Chưa chạy nghiệm thu Wine trực tiếp đối với `kr-service` cho 2 họ này.
+  - Pha `Ending`/`Idle` ghi nhận an toàn (`observe_closed` / `observe_after_abort`) không ngắt kênh; `C->S 149` và `233` tiếp tục giữ đóng cho tới khi có bằng chứng runtime bổ sung. Xem kết quả chạy trực tiếp bên dưới.
+
+Đối chứng trực tiếp trên binary release `ae37ac9` (#638), với opt-in bật và
+không dùng proxy shadow (`source: kr_runtime`, `status: confirmed` cho blocker):
+A gửi `228` trên `CaJJ_Space02` và `148` trên `PangLand03`; channel của A
+kết thúc với `native_stage_guard` trước reply dự kiến. `ingame_tls/room.rs`
+chỉ giao opcode cho phòng nếu `room_io::Session::handles` nhận; hàm này chưa liệt kê
+`148/228` ở commit đo. Hai nhánh ở `Session::packet` chưa được nghiệm thu qua
+đường native TLS. [Bằng chứng p108](../evidence/item-families/f1e-space-pangland-wine.json)
+giữ pin build, capture, CRC và ảnh của lượt đối chứng.
+Mỗi kênh A/B của p108 có một người chơi local. Với cấu hình này,
+`local_command` giữ nguyên body sau dispatch; đường ghi phản hồi native
+đóng frame theo opcode và sequence của kênh. Không mở rộng kết luận sang
+hai người chơi dùng chung một kênh.
+
+Kiểm ngoại tuyến cho thấy codec Rust nhận các body `148/228` đã bắt. Sau khi
+nối dispatch, cần kiểm hai giới hạn của nhánh `148` (`status: candidate` cho
+kết quả runtime). Mỗi ô đặt trước hai batch trong inbox của mỗi kênh. Với
+phòng hai slot của p108, inbox có 8 chỗ; riêng một gói 6 hoặc 7 ô đã đo ở
+`PangLand03` sẽ cần 12 hoặc 14 chỗ, kể cả khi inbox trống.
+`NXCL_PangLand15` gửi từng ô và dồn nhiều gói trong chưa đến một chu kỳ poll;
+nếu đưa được cả đợt vào hàng đợi, số timer cần giữ đồng thời cũng vượt trần
+16 batch pending của kênh có một client. Đây là đối chiếu mã với nhịp capture.
+Lần đo native cần phân biệt `room_recipient_queue` khi đặt chỗ với
+`room_timer_queue` khi giữ batch, rồi kiểm đủ reply và hủy timer khi đổi vòng.
+
+Kiểm thêm trần 512 sự kiện mỗi ván bằng một lượt dài. Trong XML gốc,
+`PangLand03`, `PangLand11` và `PangLand16` đều khai báo tổng số ô bom
+vượt trần. Nếu mỗi action phát đủ ô đã khai báo, handler hiện tại sẽ bỏ
+gói đầu tiên vượt trần ở các mốc tương ứng 171, 96 và 168 giây. Đây là
+dự đoán từ XML và mã; client có thể lọc ô hoặc kết thúc ván sớm hơn.
