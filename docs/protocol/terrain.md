@@ -1173,3 +1173,12 @@ Phép chiếu Rust trong `terrain.rs` và `map_profile.rs` thuộc mức `emu_ch
 - **`Aqua06` (`Tile30_Static/Coral00/01`, `kr_static/confirmed`):**
   - `EB4C10 → E90A80 / BA0E30`: `+24 == 0` chặn nhân vật đi vào ô (từ chối spawn trên ô), trong khi `+32 == 0x01010101` mở đủ bốn hướng tia `W/N/E/S` (`0b1111`), tương tự `Tile16_Passble/Line*`. `map_profile.rs` mở allowlist cho `Aqua06`.
 - **6 map Batch 4a còn chặn (`fail-closed`):** `Aqua08` (`Urchins00`, `hit = 255`, `0xED23E0(tile, -1)` kiểm `byte +32 & 0x10`) và `RetroCampN01..05` (`BombProof_*`).
+
+<a id="f1e-batch4a-complete"></a>
+### F1-e Batch 4a hoàn tất 37/37 (`Aqua08`, `RetroCampN01..05`, 62/95 map F1-e)
+
+[Biên nhận hoàn tất Batch 4a](../evidence/rust-service/f1e-batch4a-complete.json) mở nốt 6 map Batch 4a cuối (`Aqua08` và `RetroCampN01..05`) nâng tổng Batch 4a lên **`37/37`** (cùng 25 map `Space`/`PangLand` thành **`62/95` map `F1-e`**), đồng thời giữ nguyên từng byte của 206 map `F1-a` nền (`kr_static + emu_choice`):
+
+- **`Aqua08` (`Tile30_Box/Urchins00`, `hit = 255`, `d[8] = 16`):** `0xEA4332`/`0xEB61D1` → `0xED23E0(a2, -1)` → `0xEA4E40(row, col, -1, 1)` bật bit `0x10` trên thuộc tính ô `+32`; vì `hit = 255` không phá bởi tia nổ bom thông thường nên `kr_pack_export.py` chiếu thành ô đặc không phá (`kinds = 1`) khi `f1e = True`.
+- **`RetroCampN01..05` (`Tile62_Passable/BombProof_*`, `type = 10`):** `0xEB4C10` nhánh `case 0xA` dựng `CGOTilePassableBroken` (`0x6D3C00`), lớp con kế thừa `CGOTilePassable` (`0x1747CEC`, chỉ ghi đè dtor `0x6D42A0` và `+0x60` `0x6D3DE0`, không đổi `0xBA0E30`); do đó mỗi biến thể chỉ mở một hướng tia ở `+32..+35` (`Left01 = 0b0001`, `Up01 = 0b0010`, `Right01 = 0b0100`, `Down01 = 0b1000`). Hành vi nổ phá vật cản trên Wine vẫn là `candidate`/`emu_choice`.
+- `map_profile.rs` mở allowlist `f1e-adapter-r1` cho `(8, "Aqua08")` và `RetroCampN01..05` (`929..=933`).

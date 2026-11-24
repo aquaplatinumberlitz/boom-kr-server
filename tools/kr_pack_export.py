@@ -269,6 +269,12 @@ _RETRO_CONVEYORS = {'Tile59_Ground/Conveyor00': (4, 2), 'Tile59_Ground/Conveyor0
 _RETRO_DECORATORS = frozenset(f'Tile60_Deco/{tile}' for tile in ('Cloud00', 'Cloud01', 'Deco03'))
 _RETRO_GROUND_102 = frozenset(f'Tile60_Ground/Tile{i:02}' for i in range(3, 12))
 _RETRO_TENTS = frozenset(('Tile62_Passable/ArmyTent00', 'Tile62_Passable/ArmyTent01'))
+_RETRO_BOMBPROOF_PORTS = {
+    'Tile62_Passable/BombProof_Left01': (1, 0b0001),
+    'Tile62_Passable/BombProof_Up01': (256, 0b0010),
+    'Tile62_Passable/BombProof_Right01': (65536, 0b0100),
+    'Tile62_Passable/BombProof_Down01': (16777216, 0b1000),
+}
 
 
 def f1_terrain_rules(profile, table, *, f1e=False):
@@ -376,6 +382,13 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             kinds[index], hits[index] = 2, max(1, d[6])
             if d[8]:
                 exploding[index] = 1
+        elif (f1e and key == 'Tile30_Box/Urchins00'
+              and d[:16] == (2, 0, 0, 0, 0, 0, 255, 1, 16, 0, 0, 0, 0, 0, 0, 0)):
+            # EA4332/EB61D1 -> ED23E0(tile, -1) -> EA4E40 sets bit 0x10; hit=255
+            # never breaks from bomb blasts, so project as indestructible solid.
+            if kinds[index] != 0:
+                fail(index, 'thùng chồng footprint', key)
+            kinds[index] = 1
         elif (d[:6] == (3, 0, 0, 0, 0, 0) and d[6:11] == (_PASS_ALL,) * 3 + (0, 0)
               and d[11:13] == (0, 0)):
             # The Herb route confirms type 3 with the three all-ones groups:
@@ -429,6 +442,15 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             # +32 == 0x01010101 keeps all four bomb-ray sides open (0b1111).
             if index in spawn_cells:
                 fail(index, 'spawn trên ô type 3 bị chặn', key)
+        elif (f1e and key in _RETRO_BOMBPROOF_PORTS
+              and d[:16] == (10, 0, 0, 0, 0, 0,
+                             *([_RETRO_BOMBPROOF_PORTS[key][0]] * 3),
+                             0, 0, 1, 0, 0, 0, 0)):
+            # EB4C10 case 0xA -> 6D3C00 CGOTilePassableBroken inherits CGOTilePassable
+            # (1747CEC); BA0E30 opens only the single non-zero byte side in +32..+35.
+            if index in spawn_cells:
+                fail(index, 'spawn trên ô type 10 bị chặn', key)
+            ray_ports[index] = _RETRO_BOMBPROOF_PORTS[key][1]
         else:
             fail(index, 'vật thể/cờ', key)
 

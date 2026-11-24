@@ -78,6 +78,7 @@ impl Profile {
             | (2, "Aqua02")
             | (5, "Aqua05")
             | (6, "Aqua06")
+            | (8, "Aqua08")
             | (862, "NXCL_Aqua01")
             | (167, "CaJJ_Space02")
             | (168, "CaJJ_Space08")
@@ -105,7 +106,9 @@ impl Profile {
             (code @ 467..=476, name) if name == format!("LovelyRoom{:02}", code - 466) => {
                 (STANDARD_SIZE, true, true)
             }
-            (934, "RetroCampN06") => (STANDARD_SIZE, true, false),
+            (code @ 929..=934, name) if name == format!("RetroCampN{:02}", code - 928) => {
+                (STANDARD_SIZE, true, false)
+            }
             (code @ 935..=940, name) if name == format!("RetroFactoryN{:02}", code - 934) => {
                 (STANDARD_SIZE, true, false)
             }
