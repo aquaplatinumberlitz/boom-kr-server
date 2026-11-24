@@ -31,6 +31,8 @@ pub(crate) enum Policy {
     ReportDerivedF1bAux,
     /// F1-b plus p97b visible vehicle pickups and dismount reports (emu_choice).
     ReportDerivedF1dVehicles,
+    /// F1-d vehicles plus static-derived 22 extra Ship/* rows (45..=66, 331, emu_choice).
+    ReportDerivedF1dAllShips,
 }
 impl Policy {
     pub(crate) fn enabled(self) -> bool {
@@ -43,7 +45,8 @@ impl Policy {
                 || (self.shoe() && kind == 3)
                 || (self.f1b_extended() && f1b_pickup_amount(kind).is_some())
                 || (self.f1b_aux() && f1b_aux_pickup_amount(kind).is_some())
-                || (self.f1d_vehicles() && is_vehicle_kind(kind)))
+                || (self.f1d_vehicles() && is_vehicle_kind(kind))
+                || (self.f1d_all_ships() && is_extra_ship_kind(kind)))
     }
     pub(crate) fn punch(self) -> bool {
         self == Self::ReportDerivedPunch || self.shoe()
@@ -58,12 +61,26 @@ impl Policy {
         self == Self::ReportDerivedF1bAux
     }
     pub(crate) fn f1d_vehicles(self) -> bool {
-        self == Self::ReportDerivedF1dVehicles
+        self == Self::ReportDerivedF1dVehicles || self.f1d_all_ships()
+    }
+    pub(crate) fn f1d_all_ships(self) -> bool {
+        self == Self::ReportDerivedF1dAllShips
     }
 }
 
+pub(crate) const MON_S2_TANK_KIND: u16 = 53;
+pub(crate) const MON_S2_UPGRADE_TANK_KIND: u16 = 54;
+
 pub(crate) fn is_vehicle_kind(kind: u16) -> bool {
     matches!(kind, 40..=44)
+}
+
+pub(crate) fn is_extra_ship_kind(kind: u16) -> bool {
+    matches!(kind, 45..=66 | 331)
+}
+
+pub(crate) fn is_any_vehicle_kind(kind: u16) -> bool {
+    is_vehicle_kind(kind) || is_extra_ship_kind(kind)
 }
 
 pub(crate) fn f1b_pickup_amount(kind: u16) -> Option<u16> {
@@ -153,6 +170,17 @@ impl Catalog {
         if !policy.f1d_vehicles() && self.floor.values().any(|item| is_vehicle_kind(item.kind)) {
             return Err(io::Error::other("vehicle floor requires F1-d opt-in"));
         }
+        if !policy.f1d_all_ships()
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| is_extra_ship_kind(item.kind))
+        {
+            return Err(io::Error::other(
+                "extra ship floor requires F1-d all-ships opt-in",
+            ));
+        }
         Ok(())
     }
     pub(crate) fn validate_needle(&self, enabled: bool) -> io::Result<()> {
@@ -219,7 +247,7 @@ impl Catalog {
                     || !(crate::item_scope::kept_kind(u32::from(kind))
                         || f1b_pickup_amount(kind).is_some()
                         || f1b_aux_pickup_amount(kind).is_some()
-                        || (group == 0 && is_vehicle_kind(kind)))
+                        || (group == 0 && is_any_vehicle_kind(kind)))
                     || !indices.insert(index)
                     || indices.len() > 64
                 {
@@ -359,10 +387,18 @@ impl Round {
         self.placed_cells.clear();
         self.mounted_vehicles.clear();
     }
-    /// p97b: a successful second floor claim still resolves, but keeps the first mount.
+    /// p97b/o8: Keep the active mount across claims, except KR 1370710 (`MonS2Tank 53 -> 54`).
     pub(crate) fn mount_vehicle(&mut self, member: Membership, kind: u16) {
-        debug_assert!(is_vehicle_kind(kind));
-        self.mounted_vehicles.entry(member).or_insert(kind);
+        debug_assert!(is_any_vehicle_kind(kind));
+        match self.mounted_vehicles.get_mut(&member) {
+            None => {
+                self.mounted_vehicles.insert(member, kind);
+            }
+            Some(current) if *current == MON_S2_TANK_KIND && kind == MON_S2_UPGRADE_TANK_KIND => {
+                *current = kind;
+            }
+            Some(_) => {}
+        }
     }
     pub(crate) fn dismount_vehicle(&mut self, member: Membership) -> Option<u16> {
         self.mounted_vehicles.remove(&member)
