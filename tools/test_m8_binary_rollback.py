@@ -1,4 +1,6 @@
-"""Rehearse schema-5 -> schema-6 -> previous release with real Linux binaries.
+"""Rehearse schema-5 -> current schema -> previous release with real Linux binaries.
+
+The current schema comes from the current kr-admin (6 at M8, 7 since F4).
 
 With --package, also boot both kr-service binaries using held package fixtures
 read-only. Every DB and config is generated in an isolated temporary directory.
@@ -102,7 +104,7 @@ def service(binary, package, state, *, failure=None, with_backup=False, bad_conf
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--previous', required=True, type=Path, help='Directory with schema-5 kr-admin/kr-service')
-    parser.add_argument('--current', required=True, type=Path, help='Directory with schema-6 kr-admin/kr-service')
+    parser.add_argument('--current', required=True, type=Path, help='Directory with current-schema kr-admin/kr-service')
     parser.add_argument('--package', type=Path, help='Pinned Linux fixture package for kr-service process checks')
     parser.add_argument('--manifest-sha256')
     args = parser.parse_args()
@@ -118,6 +120,11 @@ def main():
         db = state / 'accounts.sqlite'
         older, newer = str(previous / 'kr-admin'), str(current / 'kr-admin')
         password = secrets.token_urlsafe(24)
+        probe = state / 'probe'
+        probe.mkdir(mode=0o700)
+        target = operator(newer, probe / 'accounts.sqlite', 'init')['schema']
+        assert isinstance(target, int) and target >= 6, target
+        snapshots = f'accounts.sqlite.before-v5-to-v{target}-*.sqlite'
         assert operator(older, db, 'init')['schema'] == 5
         account = operator(older, db, 'create', login='m8rollback', name='Rollback',
                            password=password)['player']
@@ -125,15 +132,15 @@ def main():
             service(str(previous / 'kr-service'), package, state)
             service(str(current / 'kr-service'), package, state, with_backup=True)
         else:
-            assert execute(newer, 'migrate', db)['schema'] == 6
-        assert schema(db) == 6
-        pinned, = state.glob('accounts.sqlite.before-v5-to-v6-*.sqlite')
+            assert execute(newer, 'migrate', db)['schema'] == target
+        assert schema(db) == target
+        pinned, = state.glob(snapshots)
         assert execute(newer, 'verify-backup', pinned)['schema'] == 5
 
         # Migration must not run twice and a failed upgrade config must never
         # become the rollback config.
         execute(newer, 'migrate', db)
-        assert list(state.glob('accounts.sqlite.before-v5-to-v6-*.sqlite')) == [pinned]
+        assert list(state.glob(snapshots)) == [pinned]
         if package:
             service(str(current / 'kr-service'), package, state, bad_config=True,
                     failure='unsupported diagnostic configuration')
@@ -158,8 +165,8 @@ def main():
         execute(older, rollback, request=json.dumps(dict(actor='test', reason='RPO fence',
                                                         command=dict(op='lookup', login='afterupgrade'))),
                 failure='InvalidCredentials')
-        assert schema(rollback) == 5 and schema(db) == 6
-    print('PASS: schema 5 → 6; old binary refuses schema 6; schema-5 restore and old login; '
+        assert schema(rollback) == 5 and schema(db) == target
+    print(f'PASS: schema 5 → {target}; old binary refuses schema {target}; schema-5 restore and old login; '
           + ('both service binaries reached readiness and stopped' if package else 'operator binaries only'))
     print(f'Local restore + {"previous service boot/stop + " if package else ""}old login: {elapsed:.3f}s')
 
