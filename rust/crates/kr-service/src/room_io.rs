@@ -1951,8 +1951,10 @@ impl Session {
                 | 138
                 | 139
                 | 142
+                | 148
                 | 167
                 | 202
+                | 228
         )
     }
     pub fn valid(&self, batch: &Batch) -> bool {
@@ -3908,6 +3910,8 @@ impl Session {
                     && next.host == Some(member.key.identity)
                     && next.script_events.saturating_add(report.cells.len()) <= 512
                 {
+                    let mut spawns = Vec::with_capacity(report.cells.len());
+                    let mut blasts = Vec::with_capacity(report.cells.len());
                     for (row, col) in report.cells {
                         let id = next.bombs.allocate_script_id(round)?;
                         next.script_events += 1;
@@ -3925,28 +3929,22 @@ impl Session {
                             )?,
                         );
                         let blast = packet(158, bombs::explode158(id)?);
-                        for peer in Runtime::transport_representatives(next.members.values()) {
-                            let mut immediate = Runtime::member_batch(
-                                peer.key,
-                                Some(round),
-                                0,
-                                vec![("sprinkler159".into(), spawn.clone())],
-                            );
-                            immediate.subject = Some(member.key);
-                            effects.push((peer.key.identity, immediate));
-                            let mut due = Runtime::member_batch(
-                                peer.key,
-                                Some(round),
-                                2200,
-                                vec![("sprinkler158".into(), blast.clone())],
-                            );
-                            due.guard = Guard::ScriptBomb {
-                                member: peer.key,
-                                round,
-                            };
-                            due.subject = Some(member.key);
-                            effects.push((peer.key.identity, due));
-                        }
+                        spawns.push(("sprinkler159".into(), spawn));
+                        blasts.push(("sprinkler158".into(), blast));
+                    }
+                    for peer in Runtime::transport_representatives(next.members.values()) {
+                        let mut immediate =
+                            Runtime::member_batch(peer.key, Some(round), 0, spawns.clone());
+                        immediate.subject = Some(member.key);
+                        effects.push((peer.key.identity, immediate));
+                        let mut due =
+                            Runtime::member_batch(peer.key, Some(round), 2200, blasts.clone());
+                        due.guard = Guard::ScriptBomb {
+                            member: peer.key,
+                            round,
+                        };
+                        due.subject = Some(member.key);
+                        effects.push((peer.key.identity, due));
                     }
                 }
             }

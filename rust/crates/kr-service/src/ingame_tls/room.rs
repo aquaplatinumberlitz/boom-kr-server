@@ -205,7 +205,8 @@ impl State {
         driver.inspect().await?;
         let (index, normalized) = match (count, opcode) {
             (2, 118) => {
-                let slot = crate::bombs::Request::parse(input.body())?.owner_slot();
+                let slot =
+                    crate::bombs::Request::parse_with_remote(input.body(), true)?.owner_slot();
                 (self.owned_slot(slot)?, None)
             }
             (2, 124 | 127) => {

@@ -32,9 +32,6 @@ impl Request {
     pub(crate) fn remote(&self) -> bool {
         self.remote
     }
-    pub fn parse(body: &[u8]) -> io::Result<Self> {
-        Self::parse_with_remote(body, false)
-    }
     /// Parses C2S 118, allowing byte offset 21 (`v[12]`) == 4 when RemoteBomb is opted in
     /// (`0xB4BE10 -> 0xE2C0E0(..., a13=4) -> 0xE2DF80`).
     pub fn parse_with_remote(body: &[u8], allow_remote: bool) -> io::Result<Self> {
