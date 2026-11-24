@@ -77,16 +77,45 @@ class F1eAdapterTests(unittest.TestCase):
         self.assertNotEqual(adapter.cache_identity({}, [name], True, f1=True),
                             adapter.cache_identity({}, [name], True, f1e=True))
 
-    def test_dynamic_boxes_and_bombproof_are_not_flattened(self):
+    def test_exploding_boxes_emit_flag_and_unverified_tiles_fail_closed(self):
+        clear_spawns = [(1, x) for x in range(8)]
         for map_name, body, tile, data in [
-            ('Aqua01', '<StageClearScript/>', 'Tile30_Box/JellyBombBlock00',
+            ('NXCL_Aqua01', '<StageClearScript/>', 'Tile30_Box/JellyBombBlock00',
              (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
+            ('Island09', '', 'Tile53_Box/Block30',
+             (2, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
+            ('Island06', '', 'Tile53_Box/Block32',
+             (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
+        ]:
+            f1e = map_name != 'Island09' and map_name != 'Island06'
+            profile = read(map_name, payload(body, spawns=clear_spawns, obj=0), f1e=f1e)
+            rules = adapter.f1_rules(profile, ([tile], {tile: data}), f1e=f1e)
+            self.assertEqual(rules['terrain']['exploding_boxes'][0], 1)
+        for map_name, body, tile, data in [
+            ('Aqua08', '<StageClearScript/>', 'Tile30_Box/Urchins00',
+             (2, 0, 0, 0, 0, 0, 255, 1, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
+            ('Aqua06', '<StageClearScript/>', 'Tile30_Static/Coral01',
+             (3, 0, 0, 0, 0, 0, 0, 16843009, 16843009, 1, 0, 1, 0, 0, 0, 0, 0, 0)),
             ('RetroCampN01', POPUP, 'Tile62_Passable/BombProof_Right01',
              (10, 0, 0, 0, 0, 0, 65536, 65536, 65536, 0, 0, 1, 0, 0, 0, 0, 0, 0)),
         ]:
             profile = read(map_name, payload(body, obj=0))
             with self.assertRaisesRegex(ValueError, tile):
                 adapter.f1_rules(profile, ([tile], {tile: data}), f1e=True)
+
+    def test_verified_soul_maps_only_unlock_measured_pairs(self):
+        width, height = 15, 13
+        spawns = [(0, x) for x in range(8)]
+        head = struct.pack('<20i', 1000, 0, 0, width, height, len(spawns), *([0] * 14))
+        grid = struct.pack('<2i', -1, -1) * (width * height)
+        soul_tail = struct.pack('<5i', 1, 1, 1, 2, 0) + struct.pack('<I', 0)
+        raw = (head + b''.join(struct.pack('<2i', *p) for p in spawns) + bytes(4)
+               + grid + struct.pack('<3i', 0, 100, 0) + soul_tail)
+        for name in ('EventForest00', 'EventPatrit00'):
+            prof = read(name, raw, f1e=False)
+            self.assertFalse(prof['scripted'])
+        with self.assertRaisesRegex(ValueError, 'map parser không đọc hết payload'):
+            read('ExBula01', raw, f1e=False)
 
     def test_bigbattle_floor_cannot_emit_items_outside_legacy_floor_grid(self):
         profile = read('BSBigCamp08', payload(size=(19, 17)))
@@ -105,11 +134,14 @@ def verify_pack(game, baseline_ref):
     source = subprocess.check_output(['git', 'show', f'{baseline_ref}:tools/kr_pack_export.py'], cwd=ROOT)
     exec(compile(source, 'baseline_kr_pack_export.py', 'exec'), baseline)
     names = sorted(name for name, row in inventory(game).items() if row['status'] == 'pending')
-    assert len(names) == 206
+    unlocked_6 = {'EventForest00', 'EventPatrit00', 'Island06', 'Island09', 'Island10', 'NXCL_Aqua01'}
+    assert len(names) == 212, len(names)
+    baseline_names = [n for n in names if n not in unlocked_6]
+    assert len(baseline_names) == 206
     digest = hashlib.sha256()
     with adapter.verified_packs(game) as files:
-        for start in range(0, len(names), 16):
-            batch = names[start:start + 16]
+        for start in range(0, len(baseline_names), 16):
+            batch = baseline_names[start:start + 16]
             old_id = baseline['cache_identity'](adapter.PACK_SHA256, batch, True, f1=True)
             assert old_id == adapter.cache_identity(adapter.PACK_SHA256, batch, True, f1=True), batch
 
@@ -136,8 +168,8 @@ def verify_pack(game, baseline_ref):
             try:
                 cache, reused = adapter.export(game, Path(tmp), maps=[name], f1e=True)
             except ValueError as error:
-                tile = {'aqua': 'JellyBombBlock00', 'retro_popup': 'BombProof_'}.get(family)
-                assert tile and tile in str(error), (name, error)
+                expected_substr = {'Aqua06': 'Coral01', 'Aqua08': 'Urchins00'}.get(name, 'BombProof_')
+                assert expected_substr in str(error), (name, error)
                 result[name] = dict(result='blocked', reason=str(error))
                 continue
             assert not reused
@@ -152,10 +184,10 @@ def verify_pack(game, baseline_ref):
             result[name] = dict(result='exported', profile_sha256=adapter.sha(blob), rules_sha256=adapter.sha(rules))
     blocked = {name for name, row in result.items() if row['result'] == 'blocked'}
     assert len(result) == 37 and blocked == {
-        'NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08',
-        *(f'RetroCampN{n:02}' for n in range(1, 6)),
+        'Aqua06', 'Aqua08', *(f'RetroCampN{n:02}' for n in range(1, 6)),
     }, result
-    return dict(f1a_baseline=baseline_ref, f1a_equal=len(names), f1a_members_sha256=digest.hexdigest(), maps=result)
+    return dict(f1a_baseline=baseline_ref, f1a_equal=len(baseline_names), f1a_pending=len(names),
+                f1a_unlocked=sorted(unlocked_6), f1a_members_sha256=digest.hexdigest(), maps=result)
 
 
 if __name__ == '__main__':

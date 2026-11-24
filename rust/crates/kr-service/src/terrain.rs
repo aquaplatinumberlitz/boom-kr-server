@@ -14,6 +14,9 @@ pub struct Config {
     /// Optional per-cell hit counts; zero on non-box cells, 1..=254 on boxes.
     #[serde(default)]
     box_hits: Vec<u8>,
+    /// Optional per-cell exploding-box flag (+33 == 1 in KR Tile*_Box): 0 or 1 on boxes.
+    #[serde(default)]
+    exploding_boxes: Vec<u8>,
     /// Optional map-owned stop-before-cell layer, independent of box/solid flags.
     #[serde(default)]
     ray_barriers: Vec<u8>,
@@ -49,6 +52,7 @@ pub(crate) struct Terrain {
     kinds: Vec<u8>,
     seed_hits: Vec<u8>,
     remaining_hits: Vec<u8>,
+    exploding_boxes: Vec<u8>,
     ray_barriers: Vec<u8>,
     ray_ports: Vec<u8>,
     width: u8,
@@ -152,11 +156,25 @@ impl Config {
             }
             self.box_hits.clone()
         };
+        let exploding_boxes = if self.exploding_boxes.is_empty() {
+            vec![0; self.kinds.len()]
+        } else if self.exploding_boxes.len() == self.kinds.len()
+            && self
+                .kinds
+                .iter()
+                .zip(&self.exploding_boxes)
+                .all(|(kind, flag)| if *kind == 2 { *flag <= 1 } else { *flag == 0 })
+        {
+            self.exploding_boxes.clone()
+        } else {
+            return Err(error());
+        };
         Ok(Terrain {
             seed: self.kinds.clone(),
             kinds: self.kinds.clone(),
             seed_hits: hits.clone(),
             remaining_hits: hits,
+            exploding_boxes,
             ray_barriers,
             ray_ports,
             width: self.width,
@@ -283,6 +301,30 @@ impl Terrain {
         }
         self.move_bomb(generation, id, source, target)
     }
+    fn hit_box(
+        &mut self,
+        (row, column): (u8, u8),
+        generation: u64,
+        root: u16,
+        cleared: &mut BTreeSet<(u8, u8)>,
+        secondary: &mut VecDeque<(u8, u8)>,
+    ) {
+        let index = usize::from(row) * usize::from(self.width) + usize::from(column);
+        if self.kinds[index] != 2 || self.remaining_hits[index] == 0 {
+            return;
+        }
+        self.remaining_hits[index] -= 1;
+        if self.remaining_hits[index] == 0 {
+            self.kinds[index] = 0;
+            cleared.insert((row, column));
+            self.cleared
+                .entry((row, column))
+                .or_insert((generation, root));
+            if self.exploding_boxes[index] != 0 {
+                secondary.push_back((row, column));
+            }
+        }
+    }
     /// Must run under the room owner ONLY at full-roster158write completion.
     /// Snapshot immutable for cascade. An earlier chain-processed secondary's
     /// own later158 returns an emptydelta; no duplicate reveal eligibility.
@@ -293,84 +335,111 @@ impl Terrain {
                 cleared: BTreeSet::new(),
             };
         }
-        let occupied: BTreeMap<_, _> = self
+        let mut occupied: BTreeMap<_, _> = self
             .pending
             .values()
             .map(|b| ((b.row, b.column), b.id))
             .collect();
         let mut queue = VecDeque::from([root]);
         let mut queued = BTreeSet::from([root]);
+        let mut secondary = VecDeque::new();
         let mut processed = Vec::new();
-        let mut hit_boxes = BTreeSet::new();
-        while let Some(id) = queue.pop_front() {
-            let bomb = &self.pending[&id];
-            processed.push(id);
-            let origin = usize::from(bomb.row) * usize::from(self.width) + usize::from(bomb.column);
-            if self.ray_barriers[origin] != 0 {
-                continue;
+        let mut cleared = BTreeSet::new();
+        while !queue.is_empty() || !secondary.is_empty() {
+            let mut hit_boxes = BTreeSet::new();
+            while let Some(id) = queue.pop_front() {
+                let bomb = &self.pending[&id];
+                occupied.remove(&(bomb.row, bomb.column));
+                processed.push(id);
+                let origin =
+                    usize::from(bomb.row) * usize::from(self.width) + usize::from(bomb.column);
+                if self.ray_barriers[origin] != 0 {
+                    continue;
+                }
+                // Keep the [W, N, E, S] cascade order matching KR BA0E30/17929B0
+                // bit indices (0=W, 1=N, 2=E, 3=S) so `direction ^ 2` flips W<->E and N<->S.
+                for (direction, dr, dc) in [(0, 0, -1), (1, -1, 0), (2, 0, 1), (3, 1, 0)] {
+                    let outgoing = 1 << direction;
+                    let incoming = 1 << (direction ^ 2);
+                    let mut previous = origin;
+                    for distance in 1..=i16::from(bomb.power) {
+                        if self.ray_ports[previous] & outgoing == 0 {
+                            break;
+                        }
+                        let row = i16::from(bomb.row) + dr * distance;
+                        let column = i16::from(bomb.column) + dc * distance;
+                        if row < 0
+                            || column < 0
+                            || row >= i16::from(self.height)
+                            || column >= i16::from(self.width)
+                        {
+                            break;
+                        }
+                        let index = row as usize * usize::from(self.width) + column as usize;
+                        // E9F220 checks map+1D24 and the incoming side before
+                        // entering the cell, so a blocked cell cannot be hit.
+                        if self.ray_barriers[index] != 0 || self.ray_ports[index] & incoming == 0 {
+                            break;
+                        }
+                        let cell = (row as u8, column as u8);
+                        let kind = self.kinds[index];
+                        if kind != 0 {
+                            if kind == 2 {
+                                hit_boxes.insert(cell);
+                            }
+                            break;
+                        }
+                        if let Some(other) = occupied.get(&cell) {
+                            if queued.insert(*other) {
+                                queue.push_back(*other);
+                            }
+                            break;
+                        }
+                        previous = index;
+                    }
+                }
             }
-            // Keep the [W, N, E, S] cascade order matching KR BA0E30/17929B0
-            // bit indices (0=W, 1=N, 2=E, 3=S) so `direction ^ 2` flips W<->E and N<->S.
-            for (direction, dr, dc) in [(0, 0, -1), (1, -1, 0), (2, 0, 1), (3, 1, 0)] {
-                let outgoing = 1 << direction;
-                let incoming = 1 << (direction ^ 2);
-                let mut previous = origin;
-                for distance in 1..=i16::from(bomb.power) {
-                    if self.ray_ports[previous] & outgoing == 0 {
-                        break;
+            // The immutable ray snapshot stops at a box even on its final hit.
+            // Multiple chain rays mark one cell once in a callback, as the native
+            // shared cell state does; a later secondary timer cannot hit it again.
+            for cell in hit_boxes {
+                self.hit_box(cell, generation, root, &mut cleared, &mut secondary);
+            }
+            if let Some((row, column)) = secondary.pop_front() {
+                let origin = usize::from(row) * usize::from(self.width) + usize::from(column);
+                for (direction, dr, dc) in [(0, 0, -1), (1, -1, 0), (2, 0, 1), (3, 1, 0)] {
+                    let outgoing = 1 << direction;
+                    let incoming = 1 << (direction ^ 2);
+                    if self.ray_ports[origin] & outgoing == 0 {
+                        continue;
                     }
-                    let row = i16::from(bomb.row) + dr * distance;
-                    let column = i16::from(bomb.column) + dc * distance;
-                    if row < 0
-                        || column < 0
-                        || row >= i16::from(self.height)
-                        || column >= i16::from(self.width)
+                    let nr = i16::from(row) + dr;
+                    let nc = i16::from(column) + dc;
+                    if nr < 0
+                        || nc < 0
+                        || nr >= i16::from(self.height)
+                        || nc >= i16::from(self.width)
                     {
-                        break;
+                        continue;
                     }
-                    let index = row as usize * usize::from(self.width) + column as usize;
-                    // E9F220 checks map+1D24 and the incoming side before
-                    // entering the cell, so a blocked cell cannot be hit.
+                    let index = nr as usize * usize::from(self.width) + nc as usize;
                     if self.ray_barriers[index] != 0 || self.ray_ports[index] & incoming == 0 {
-                        break;
+                        continue;
                     }
-                    let cell = (row as u8, column as u8);
-                    let kind = self.kinds[index];
-                    if kind != 0 {
-                        if kind == 2 {
-                            hit_boxes.insert(cell);
-                        }
-                        break;
+                    let cell = (nr as u8, nc as u8);
+                    if self.kinds[index] == 2 {
+                        self.hit_box(cell, generation, root, &mut cleared, &mut secondary);
+                    } else if self.kinds[index] == 0
+                        && let Some(other) = occupied.get(&cell)
+                        && queued.insert(*other)
+                    {
+                        queue.push_back(*other);
                     }
-                    if let Some(other) = occupied.get(&cell) {
-                        if queued.insert(*other) {
-                            queue.push_back(*other);
-                        }
-                        break;
-                    }
-                    previous = index;
                 }
             }
         }
         for id in &processed {
             self.pending.remove(id);
-        }
-        // The immutable ray snapshot stops at a box even on its final hit.
-        // Multiple chain rays mark one cell once in a callback, as the native
-        // shared cell state does; a later secondary timer cannot hit it again.
-        let mut cleared = BTreeSet::new();
-        for (row, column) in hit_boxes {
-            let index = usize::from(row) * usize::from(self.width) + usize::from(column);
-            self.remaining_hits[index] -= 1;
-            if self.remaining_hits[index] == 0 {
-                cleared.insert((row, column));
-            }
-        }
-        for &(row, column) in &cleared {
-            self.kinds[usize::from(row) * usize::from(self.width) + usize::from(column)] = 0;
-            self.cleared
-                .entry((row, column))
-                .or_insert((generation, root));
         }
         Blast { processed, cleared }
     }
@@ -400,6 +469,7 @@ pub(crate) mod tests {
             ]),
             maximum_power: 2,
             box_hits: Vec::new(),
+            exploding_boxes: Vec::new(),
             ray_barriers: Vec::new(),
             ray_ports: Vec::new(),
             disable_bombs: false,
@@ -1011,5 +1081,80 @@ pub(crate) mod tests {
         assert!(t.blast_committed(1, 1).cleared.is_empty());
         t.finish();
         assert_eq!(t.clearance(2, 4, 4), None);
+    }
+    #[test]
+    fn exploding_boxes_validate_flags_cross_clear_chain_and_bomb_cascade() {
+        let idx = |row: usize, col: usize| row * 15 + col;
+        let mut cfg = config();
+        cfg.kinds = vec![0; 195];
+        cfg.kinds[idx(2, 3)] = 1; // Solid neighbor should stay intact.
+        cfg.kinds[idx(0, 9)] = 0; // Bomb A placed here
+        cfg.kinds[idx(0, 10)] = 2; // Block32 exploding
+        cfg.kinds[idx(0, 11)] = 2; // Normal Block33 east of Block32
+        cfg.kinds[idx(0, 12)] = 2; // Normal box 2 cells east (not touched by 1-step cross)
+        cfg.kinds[idx(1, 10)] = 0; // Bomb B placed here (chained by Block32)
+        cfg.kinds[idx(2, 10)] = 2; // Normal box reached by Bomb B's ray (power 1)
+        cfg.kinds[idx(5, 5)] = 2; // Exploding chain starter
+        cfg.kinds[idx(5, 6)] = 2; // Exploding chain second hop
+        cfg.kinds[idx(5, 7)] = 2; // Normal box cleared by second hop
+        cfg.kinds[idx(4, 5)] = 2; // Protected by ray_barrier
+        cfg.ray_barriers = vec![0; 195];
+        cfg.ray_barriers[idx(4, 5)] = 1;
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        // Validation rejects mismatched length, values > 1, or non-box cells marked exploding.
+        for bad_flags in [
+            vec![0; 194],
+            {
+                let mut f = vec![0; 195];
+                f[idx(0, 10)] = 2;
+                f
+            },
+            {
+                let mut f = vec![0; 195];
+                f[idx(2, 3)] = 1;
+                f
+            },
+        ] {
+            let mut bad = cfg.clone();
+            bad.exploding_boxes = bad_flags;
+            assert!(bad.validate_measured(b"map", b"start", 9).is_err());
+        }
+        cfg.exploding_boxes = vec![0; 195];
+        cfg.exploding_boxes[idx(0, 10)] = 1;
+        cfg.exploding_boxes[idx(5, 5)] = 1;
+        cfg.exploding_boxes[idx(5, 6)] = 1;
+        let mut t = cfg.validate_measured(b"map", b"start", 9).unwrap();
+        t.begin(1);
+        t.place(Bomb {
+            id: 3,
+            owner: 0,
+            row: 0,
+            column: 9,
+            power: 1,
+        })
+        .unwrap();
+        t.place(Bomb {
+            id: 4,
+            owner: 1,
+            row: 1,
+            column: 10,
+            power: 1,
+        })
+        .unwrap();
+        let blast = t.blast_committed(1, 3);
+        assert_eq!(blast.processed, vec![3, 4]);
+        assert_eq!(blast.cleared, BTreeSet::from([(0, 10), (0, 11), (2, 10)]));
+        assert!(t.clearance(1, 0, 12).is_none());
+        t.place(Bomb {
+            id: 5,
+            owner: 0,
+            row: 5,
+            column: 4,
+            power: 1,
+        })
+        .unwrap();
+        let chain = t.blast_committed(1, 5);
+        assert_eq!(chain.cleared, BTreeSet::from([(5, 5), (5, 6), (5, 7)]));
+        assert!(t.clearance(1, 4, 5).is_none());
     }
 }

@@ -1143,3 +1143,20 @@ UDP khi đi qua đủ tám tọa độ `InnerSoul` và sáu tọa độ `OuterSo
 các gói TCP và UDP quan sát được cùng loại với ô đối chứng lân cận; không thấy sprite, thay đổi HUD hoặc hiệu ứng riêng có
 thể gán cho Soul. Ảnh và wire không cho biết `115C770` đã tạo object nội bộ nào hoặc các
 mode khác có kích hoạt chúng hay không. Kết quả không thay đổi phạm vi adapter F1-a.
+
+<a id="f1a-adapter-r6"></a>
+### F1-a đợt 6 (212/214 map) và Aqua marker-only (`JellyBombBlock00`)
+
+[Biên nhận đợt 6 và SHA-256](../evidence/rust-service/f1a-adapter-r6.json) nâng kiểm kê `F1-a` từ `206` lên **`212/214` map** và mở thêm bốn map `Aqua` chỉ có marker trong Batch 4a `F1-e` (`26 -> 30/37` map) mà **không thay đổi một byte nào** ở 206 map `F1-a` nền (`c8b6ff05`).
+Phép chiếu Rust trong `terrain.rs` và `map_profile.rs` thuộc mức `emu_choice/confirmed` trên unit test.
+
+- **Ba map `Island` (`Island06`, `Island09`, `Island10`) và bốn map `Aqua` có `JellyBombBlock00` (`NXCL_Aqua01`, `Aqua01`, `Aqua02`, `Aqua05`):**
+  - `kr_pack_export.py` chấp nhận `d[8] == 256` (`Tile53_Box/Block30`) và `d[8] == 65792` (`Tile53_Box/Block31`, `Block32`, `Tile30_Box/JellyBombBlock00`) và xuất trường tùy chọn `exploding_boxes` (chỉ ghi khi có ô mang cờ `+33 == 1`).
+  - `terrain.rs` thêm trường tùy chọn `exploding_boxes`: khi một thùng mang cờ bị phá (`remaining_hits == 0`), nó phát tia phụ một ô theo bốn hướng `W/N/E/S` (tuân thủ `ray_barriers` và `ray_ports`), tiếp tục kích hoạt dây chuyền qua thùng nổ kề hoặc bom chờ kề. Vẫn giữ `unknown` đối với nghĩa byte `+34` và quy tắc ghi công hit cho `127/17`.
+  - `map_profile.rs` mở allowlist `f1e-adapter-r1` cho `Aqua01`, `Aqua02`, `Aqua05` và `NXCL_Aqua01` (vẫn fail-closed nếu thiếu marker `adapter`).
+- **Hai map `Soul` đã đo (`EventForest00`, `EventPatrit00`):**
+  - `_decode_soul_map` đọc phần header/grid tới `map_tail_offset` và kiểm tra đuôi Soul (`groups` hoặc `records`, `script` rỗng) chạm đúng EOF dựa trên `kr_runtime` của đợt đo `p104` (không tạo vật cản hay packet riêng trong trận thường; hành vi mode `ExBula` hoặc sự kiện vẫn `unknown`).
+- **Bốn map còn giữ chặn (`fail-closed`):**
+  - `ExBula01`, `ExBula02` (`2/214` `F1-a` còn lại): sử dụng nền `Tile15_Ground/Remain*` (`d[15] >> 16` trong vùng `105..115`, `byte +61 == 0xFF` ở `Remain_Green*`), riêng `ExBula01` có `placement_header = 60` ngoài chính sách `100`, và chưa được đo Wine.
+  - `Aqua06` (`F1-e`): chứa `Tile30_Static/Coral01` (`type = 3`, cờ tia trộn `16843009`), giữ chặn tới khi kiểm tĩnh.
+  - `Aqua08` (`F1-e`): chứa `Tile30_Box/Urchins00` (`hit = 255`, `d[8] = 16`), giữ chặn tới khi kiểm tĩnh/runtime.

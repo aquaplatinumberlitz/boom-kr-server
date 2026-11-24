@@ -74,6 +74,9 @@ impl Profile {
         // Exact successful exports in f1e-adapter-r1.json. The adapter marker
         // alone cannot admit a different script family or blocked Retro map.
         let expected = match (self.map_code, self.name.as_str()) {
+            (1, "Aqua01") | (2, "Aqua02") | (5, "Aqua05") | (862, "NXCL_Aqua01") => {
+                (STANDARD_SIZE, true, false)
+            }
             (81, "BSBigCamp08") | (82, "BSBigPatrit14") | (83, "BSBigVillage10") => {
                 (BIG_BATTLE_SIZE, false, false)
             }
