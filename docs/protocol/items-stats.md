@@ -154,6 +154,14 @@ chính trong `run-2/`: `lucci-first-A.png`, `lucci-dart-A.png`, `dart-empty-A.pn
 Blocker tiếp theo là cho fixture giữ phiên khi quan sát Scanner sub0, rồi đo lại Dart/Bond/Trap
 với input `Control_L` đã quan sát được trên Scanner và với đối chứng vị trí đã ghim.
 
+**Rust opt-in — `emu_choice/design`.** Với phòng người chơi được quản lý, đặt `fixed_room.item_policy`
+thành `report_derived_f1b_extended` để mở pickup các kind trên. Mỗi lần nhặt hợp lệ cộng một lượt cho từng kind
+Lucci và một charge Scanner, ba charge Dart hoặc Bond, hoặc hai charge Trap. Tồn kho theo thành viên
+và vòng, được làm sạch khi kết thúc vòng và khởi tạo lại ở Start121. Scanner chỉ tiêu charge khi
+actor hiện hành còn sống, không mắc bóng, đúng slot và tick đi sau pickup Scanner của vòng đó.
+Tick là guard của emulator; sub0 chưa có khóa vòng đã xác nhận. Server không phát `170/sub0`,
+cộng tiền Lucci hoặc áp hiệu ứng Scanner, Dart, Bond và Trap. Phần này mới có kiểm thử Rust.
+
 <a id="f1d-vehicles"></a>
 ### F1-d: Đối chiếu phương tiện cưỡi và biến hình
 
