@@ -1,0 +1,76 @@
+{
+  "id": "CP395",
+  "previous": "CP394",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-24T02:29:26+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Codec C2S127/sub19 nhiều entry có giữ được hai client qua kết quả, về phòng và reset chỉ số F1-c không?",
+  "scope": "p92, Refs #571. Một lượt Wine trên hai client KR 00967 bản copy đã vá và Forest24 với floor cố định do phép thử đặt. Hai ván cùng phòng và cùng hai kết nối. Bản dựng native khóa dependency ở context_commit.",
+  "context_commit": "1dde820760a49d894821ffb5d282d576bad6c162",
+  "artifacts": [
+    {"name": "kr-service x86_64, debug locked", "sha256": "a3ef1429f44815972c2ef2f256cbd34dfd086f400d4ddb481b49144d16cd437a"},
+    {"name": "kr-prelogin x86_64, debug locked", "sha256": "0acf740de5e732eb13d082a2071bfc618fcb523c00faff4a4b4d5638ecdb32cd"},
+    {"name": "CA.exe KR 00967, bản copy Wine A/B", "sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"name": "Manifest catalog pack", "sha256": "91a4cf6c030bbf0e3e615a07fbe72179b0d28cf650b9cba5f7d3ee40d37e001d"}
+  ],
+  "locators": [
+    "docs/protocol/life-results.md#c2s127sub19",
+    "docs/protocol/auth-session.md#f1-c-character-catalog",
+    "docs/evidence/rust-service/f1-character-profiles.json",
+    "local/runs/f1c-native-accept-r2",
+    "rust/crates/kr-wire/src/kr00967/battle.rs"
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/life-results.md#c2s127sub19", "summary": "P91 B gửi body 95 byte; selector 1 giải nén thành 93 byte với header FFFFFFFF0B. Cả 11 entry dài 8 byte, index và kind khớp S2C165 của B.", "limits": "Chỉ đối chiếu báo cáo chết đo trên Forest24. Hai byte tọa độ là vị trí thả, không phải vị trí nhặt.", "evidence": ["P91_WIRE", "LAYOUT"]},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/life-results.md#c2s127sub19", "summary": "Consumer E85DE2 → E86910 → 1403D00/1403E90 đọc hàng, cột, index và kind. EA5D90 kiểm biên tọa độ; EB7190 tính hàng nhân chiều rộng cộng cột.", "limits": "Các VA thuộc đúng client Wine đã pin. Không xác định luật xác thực hoặc thả đồ của server gốc.", "evidence": ["LAYOUT"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/auth-session.md#f1-c-character-catalog", "summary": "C03/C05 đạt trần 8/5/8 và 10/8/8. Khi B chết, A nhận 170/sub19 có đủ 11 entry theo thứ tự của consumer và hiển thị vật phẩm. Cả hai nhận 175/180 và về phòng; journal ghi elimination.", "limits": "Chỉ kiểm hiển thị vật phẩm phía peer; chưa kiểm nhặt lại. Ván đầu có bằng chứng scoreboard trên wire của cả hai.", "evidence": ["RECEIPT", "WIRE", "JOURNAL", "PEER_DROP"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/auth-session.md#f1-c-character-catalog", "summary": "Cùng hai kết nối đổi sang C00/C01. Start121 xác nhận khóa 0/1; chỉ số khởi đầu đọc từ cả hai client là 1/1/5 và 2/1/4. Hai client lại thấy bảng kết quả và phòng có đủ hai người.", "limits": "Chỉ số theo thứ tự sức chứa bom, lực bom và tốc độ. Không nâng lớp cho biến thể khác.", "evidence": ["RECEIPT", "WIRE", "JOURNAL", "SCORE_A", "SCORE_B", "ROOM_A", "ROOM_B"]}
+  ],
+  "verification": [
+    {"check": "Đối chiếu CRC, thứ tự 127/170, 175/202/180/585, Start121, ảnh và journal.", "result": "pass", "limits": "Hai kết nối Wine trên mạng cô lập; tái lập theo recipe đã pin.", "evidence": ["WIRE", "RECEIPT", "RECIPE", "JOURNAL"]},
+    {"check": "Chạy vector p91 và các ca sai count, kích thước, checksum hoặc tail.", "result": "pass", "limits": "Test Rust kiểm bố cục và kiểm biên. Bằng chứng native nằm ở capture riêng.", "evidence": ["CODEC_TEST"]},
+    {"check": "Dọn hai bản game, hai prefix và tiến trình của namespace.", "result": "pass", "limits": "Còn 0 tiến trình của lượt, đã xóa 4551444947 byte logic của scratch.", "evidence": ["CLEANUP"]}
+  ],
+  "delta": {"added": ["Nghiệm thu hai ván F1-c phạm vi C03/C05, đổi sang C00/C01 và kiểm reset."], "corrected": ["Báo chết nhiều entry chuyển sang bố cục đọc được của S2C170; bản đo p91 giữ nguyên."], "superseded": []},
+  "blockers": [],
+  "next_steps": [
+    {"id": "F1C-NATIVE-REPEAT", "task": "KRE-F1-C", "state": "closed", "owner": "Codex", "reviewer": "waived", "action": "Đã đo trọn hai ván qua cùng cặp client; chỉ nâng lớp C03/C05."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-24T02:29:26+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự đối chiếu mã máy, capture, ảnh, journal và test.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Phạm vi bàn giao chung giữ nguyên."},
+    {"path": "docs/PLAN.md", "state": "unchanged", "reason": "Điều phối cập nhật dashboard sau tích hợp theo yêu cầu p92."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Trang chỉ mục giữ nguyên, đã cập nhật hai chương bên dưới."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Đóng lát cắt p92, chưa đóng toàn bộ nhóm F1."},
+    {"path": "docs/protocol/life-results.md", "state": "updated", "reason": "Ghi bố cục hai hướng và giới hạn quyền thả đồ."},
+    {"path": "docs/protocol/auth-session.md", "state": "updated", "reason": "Ghi hai ván native và reset hồ sơ Battle."},
+    {"path": "docs/evidence/rust-service/f1-character-profiles.json", "state": "updated", "reason": "Gắn đúng biên nhận và hạn chế của Wine."},
+    {"path": "docs/content/classification.json", "state": "updated", "reason": "Chỉ nâng C03/C05 lên A."},
+    {"path": "docs/content/classification.md", "state": "updated", "reason": "Sinh lại từ dữ liệu phân loại."},
+    {"path": "docs/HISTORY.md", "state": "unchanged", "reason": "Chưa đến mốc cập nhật nhóm F1."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Chưa đến mốc cập nhật nhóm F1."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Chưa đến mốc cập nhật nhóm F1."},
+    {"path": "docs/evidence/checkpoints/records/CP395.json", "state": "updated", "reason": "Pin đầy đủ bằng chứng cục bộ CP395."}
+  ],
+  "evidence": [
+    {"id": "P91_WIRE", "kind": "local", "path": "local/runs/f1c-native-accept/run-2/wire.jsonl", "bytes": 37919, "sha256": "e49a614442b69ee13ee236e79f45d3f5918a3fa2a6ca235f70f00cdcd6a43226"},
+    {"id": "CODEC_TEST", "kind": "local", "path": "local/runs/f1c-native-accept-r2/checks/death-codec.log", "bytes": 399, "sha256": "d6511b65c25163c84669fb12013a9a0c014344742ab5fa95b73510f37595e466"},
+    {"id": "LAYOUT", "kind": "local", "path": "local/runs/f1c-native-accept-r2/death-layout.json", "bytes": 4188, "sha256": "d4b771f9d0235ebc837b4c72bd8d9cec269d1a1d392699b97cab40986e44e2ea"},
+    {"id": "RECEIPT", "kind": "local", "path": "local/runs/f1c-native-accept-r2/receipt.json", "bytes": 10126, "sha256": "b3a02a13dd72e5eca6922daebd034e7e1af836ce2e79a38bbc6e0c13556082d2"},
+    {"id": "RECIPE", "kind": "local", "path": "local/runs/f1c-native-accept-r2/recipe.json", "bytes": 5268, "sha256": "08e4de8521137dd745ea4c6c900b8cc6baaf6516b678f094b6c6aa55e87017bd"},
+    {"id": "CLEANUP", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/cleanup.json", "bytes": 100, "sha256": "dbcbcca3fab28cdaf81557a5dc13729c10a46eedf0bf5a49528350f2418a21c0"},
+    {"id": "JOURNAL", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/journal.json", "bytes": 991, "sha256": "53ec5c45de18f10e31c85d15345771ef879514ec7c92ad69e4bd380fd2c89909"},
+    {"id": "PEER_DROP", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/r1-result-9-A.png", "bytes": 151608, "sha256": "52bb86687da36b895bf9bed482dbcbfdc5e49808b537f8d3ea06edc0bcbd0120"},
+    {"id": "ROOM_A", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/r2-returned-A.png", "bytes": 179132, "sha256": "4ce20ea008eaacbdad163a62ef7a1b28a6b93b6a96700eff1c900bc6509903d7"},
+    {"id": "ROOM_B", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/r2-returned-B.png", "bytes": 178302, "sha256": "4d3a0843eeda6c546a90a20c137796a0cbfc663d51dbea38820a3d44d6c3cd85"},
+    {"id": "SCORE_A", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/r2-score-2-A.png", "bytes": 187708, "sha256": "53e2d8e398cc4f6fd245f5677038cb6078643fe2a4f60b512be62bdc574afb18"},
+    {"id": "SCORE_B", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/r2-score-2-B.png", "bytes": 186698, "sha256": "5b5af1be19222d219d057569081a3619bf09afaf70604d66e3e4ea46f2b65690"},
+    {"id": "WIRE", "kind": "local", "path": "local/runs/f1c-native-accept-r2/run-1/wire.jsonl", "bytes": 47236, "sha256": "e9f2ae2d12b932dd76b6d378aea1a91aef8c45dfb8b57cc9ecdf6500afff9eef"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f1c-native-accept-r2", "path": "local/evidence-manifests/ef56f9956cccc19d9107ee1fff5485aec726fcf48d9a0b35f3e3b9565ed8e80e.jsonl", "sha256": "ef56f9956cccc19d9107ee1fff5485aec726fcf48d9a0b35f3e3b9565ed8e80e", "bytes": 2398, "count": 13, "files_bytes": 3084453},
+    {"run": "local/runs/f1c-native-accept-r2/checks", "path": "local/evidence-manifests/44b7c15421b7237b52e073901adc09037990a79e41201e7c2cbe8c6dd096e221.jsonl", "sha256": "44b7c15421b7237b52e073901adc09037990a79e41201e7c2cbe8c6dd096e221", "bytes": 641, "count": 3, "files_bytes": 10337},
+    {"run": "local/runs/f1c-native-accept-r2/run-1", "path": "local/evidence-manifests/fe8de237ccd7374bd2d5301e12081eb92984556307a4e8b572e20e5277c9d3de.jsonl", "sha256": "fe8de237ccd7374bd2d5301e12081eb92984556307a4e8b572e20e5277c9d3de", "bytes": 32895, "count": 180, "files_bytes": 7954944}
+  ]
+}

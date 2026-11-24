@@ -121,17 +121,28 @@ Header170 gồm **u8subtype,u8slot,u16x,u16y**, x/y sign-extend khi truyền con
 | Subtype170 đã đo | Body sau header6 | Consumer/giới hạn |
 |---|---|---|
 |17 |u32aux; tổng10byte |`E85D1B→E86780`, lookupactor`E12C40`, guard`B40D60` đọc secure+5A0; nếu0 thì vf74(tọa độ),vf144 rồi`E72C10(slot,aux)`. Không đồng nhất vf144 với hàm setter: nhánh có thêm tác động, proof là snapshot state thực.|
-|19 |serializedblob; tổng21byte ở ca này |`E85DE2→E86910`, `1403D00/1403E90` đọc u32 +u8count +entries. Ca đo inner5=`FFFFFFFF00`, không entries. vf74; vf1D8=`F73950→1243330(slot)` gate cho vf110/B41150,`E72A50` và`13E13D0`; cuối`E72B80`. Chưa variant inner khác hoặc mọi gate.|
+|19 | Blob tuần tự hóa; tổng 21 byte cho danh sách rỗng. |`E85DE2 → E86910 → 1403D00 → 1403E90` đọc header và danh sách bên dưới. CP029 đo inner `FFFFFFFF00`. vf74; vf1D8 gọi `F73950 → 1243330(slot)` trước vf110/B41150, `E72A50` và `13E13D0`; cuối cùng gọi `E72B80`. |
 
-Ở [F1-c](auth-session.md#f1-c-character-catalog), C2S127/sub19 sau khi nhặt tới trần có body 95 byte.
-Blob selector 1 giải nén ra 93 byte, bắt đầu bằng `FFFFFFFF0B`. Rust hiện chỉ nhận body 29 byte
-với blob raw 11 byte ở nhánh này. Client gửi report bị ngắt; chưa đo consumer S2C170 cho payload
-mới và chưa xác định nghĩa từng entry.
+<a id="c2s127sub19"></a>
+
+Ở [F1-c](auth-session.md#f1-c-character-catalog), blob của C2S127/sub19 bắt đầu bằng `u32` và
+`u8 count`. Mỗi entry gồm `u32 index, u16 kind, u8 hàng, u8 cột`, theo thứ tự little endian
+cho các trường nhiều byte. Capture p91 đối chiếu index và kind với S2C165 của người chết.
+Hai byte tọa độ thuộc điểm thả đồ, khác tọa độ nhặt ban đầu. Đã gặp selector 0 (raw) khi
+danh sách rỗng và selector 1 (zlib) khi danh sách có entry.
+
+Rust kiểm đúng độ dài envelope và `5 + count × 8` byte sau giải nén, với trần 2045 byte.
+Selector 1 phải kết thúc đúng một luồng zlib và tiêu thụ hết dữ liệu. `1403E90` đọc entry S2C170
+theo thứ tự `u8 hàng, u8 cột, u32 index, u16 kind`. Rust tuần tự hóa danh sách có entry với
+selector 0 theo thứ tự này, giữ nguyên header và giá trị từng trường. Danh sách rỗng giữ nguyên blob.
+[CP395](../evidence/checkpoints/records/CP395.json) xác nhận peer Wine hiển thị vật phẩm sau
+S2C170/sub19 trên Forest24. Đây là đường chuyển tiếp báo cáo, chưa xác thực quyền thả đồ hoặc
+khả năng nhặt lại vật phẩm vừa thả.
 
 **Chuyển report đã kiểm hẹp:** nhận actual127, kiểm CRC theo seq/socket, lấy6byte đầu (sub/slot/x/y).
 Với17, giải serializedblob sau prefix14, inner8 gồm2u32LE; lấy **u32 thứ hai** làmaux170.
-Cùng giá trị đi`E72C10` từ localwriter`B783B7`; ý nghĩa tên field còn unknown. Với19, giữ serializedtail
-sau prefix14, bỏ haiu32 timestamp/field cuối của prefixC2S; mã hóa lại thành170 theo seq receiver.
+Cùng giá trị đi`E72C10` từ localwriter`B783B7`; ý nghĩa tên field còn unknown. Với 19, lấy blob sau
+prefix 14 và áp dụng bố cục trên; bỏ hai trường u32 cuối của prefix C2S và mã hóa frame 170 theo seq receiver.
 Chỉ gửi client đối diện, không phản xạ lại origin. Clock/identity/seq/ID shared giữ theo chuỗi CP028.
 Không coi client report là sự kiện đã được server xác thực; auth/slot/generation/duplicate/stale còn cần validator.
 
