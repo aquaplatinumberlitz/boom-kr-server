@@ -17,6 +17,9 @@ pub struct Config {
     /// Optional map-owned stop-before-cell layer, independent of box/solid flags.
     #[serde(default)]
     ray_barriers: Vec<u8>,
+    /// Optional per-cell open ray sides, bits 0..=3 in KR order N, W, S, E.
+    #[serde(default)]
+    ray_ports: Vec<u8>,
     map_sha256: String,
     seed_sha256: String,
     fixtures: BTreeMap<String, String>,
@@ -42,6 +45,7 @@ pub(crate) struct Terrain {
     seed_hits: Vec<u8>,
     remaining_hits: Vec<u8>,
     ray_barriers: Vec<u8>,
+    ray_ports: Vec<u8>,
     width: u8,
     height: u8,
     max_power: u8,
@@ -53,6 +57,8 @@ pub(crate) struct Terrain {
     cleared: BTreeMap<(u8, u8), (u64, u16)>,
     generation: u64,
 }
+const ALL_RAY_PORTS: u8 = 0b1111;
+
 fn sha(data: &[u8]) -> String {
     crate::sha256_hex(data)
 }
@@ -114,6 +120,15 @@ impl Config {
         } else {
             return Err(error());
         };
+        let ray_ports = if self.ray_ports.is_empty() {
+            vec![ALL_RAY_PORTS; self.kinds.len()]
+        } else if self.ray_ports.len() == self.kinds.len()
+            && self.ray_ports.iter().all(|mask| *mask <= ALL_RAY_PORTS)
+        {
+            self.ray_ports.clone()
+        } else {
+            return Err(error());
+        };
         let hits = if self.box_hits.is_empty() {
             self.kinds.iter().map(|kind| u8::from(*kind == 2)).collect()
         } else {
@@ -136,6 +151,7 @@ impl Config {
             seed_hits: hits.clone(),
             remaining_hits: hits,
             ray_barriers,
+            ray_ports,
             width: self.width,
             height: self.height,
             max_power: self.maximum_power,
@@ -279,8 +295,15 @@ impl Terrain {
             if self.ray_barriers[origin] != 0 {
                 continue;
             }
-            for (dr, dc) in [(0, -1), (-1, 0), (0, 1), (1, 0)] {
+            // Keep the existing cascade order while using KR direction bits.
+            for (direction, dr, dc) in [(1, 0, -1), (0, -1, 0), (3, 0, 1), (2, 1, 0)] {
+                let outgoing = 1 << direction;
+                let incoming = 1 << (direction ^ 2);
+                let mut previous = origin;
                 for distance in 1..=i16::from(bomb.power) {
+                    if self.ray_ports[previous] & outgoing == 0 {
+                        break;
+                    }
                     let row = i16::from(bomb.row) + dr * distance;
                     let column = i16::from(bomb.column) + dc * distance;
                     if row < 0
@@ -291,9 +314,9 @@ impl Terrain {
                         break;
                     }
                     let index = row as usize * usize::from(self.width) + column as usize;
-                    // Native E9F220 checks map+1D24 before entering the cell.
-                    // A barrier therefore cannot hit a box or chain a bomb there.
-                    if self.ray_barriers[index] != 0 {
+                    // E9F220 checks map+1D24 and the incoming side before
+                    // entering the cell, so a blocked cell cannot be hit.
+                    if self.ray_barriers[index] != 0 || self.ray_ports[index] & incoming == 0 {
                         break;
                     }
                     let cell = (row as u8, column as u8);
@@ -310,6 +333,7 @@ impl Terrain {
                         }
                         break;
                     }
+                    previous = index;
                 }
             }
         }
@@ -362,6 +386,7 @@ pub(crate) mod tests {
             maximum_power: 2,
             box_hits: Vec::new(),
             ray_barriers: Vec::new(),
+            ray_ports: Vec::new(),
         }
     }
     pub(crate) fn map() -> Terrain {
@@ -451,6 +476,78 @@ pub(crate) mod tests {
             cfg.ray_barriers = mask;
             assert!(cfg.validate(b"map", b"start").is_err());
         }
+    }
+
+    #[test]
+    fn tent_ports_block_both_vertical_entries_and_allow_horizontal_chains() {
+        let mut cfg = config();
+        cfg.kinds.fill(0);
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        cfg.ray_ports = vec![ALL_RAY_PORTS; 195];
+        // KR TileInfoList TentBlue (1988), dword +32 = 0x01000100.
+        cfg.ray_ports[6 * 15 + 7] = 0b1010;
+        for (source, chains) in [
+            ((5, 7), false),
+            ((7, 7), false),
+            ((6, 6), true),
+            ((6, 8), true),
+        ] {
+            let mut t = cfg.validate(b"map", b"start").unwrap();
+            t.begin(1);
+            for (id, (row, column)) in [(1, source), (2, (6, 7))] {
+                t.place(Bomb {
+                    id,
+                    owner: 0,
+                    row,
+                    column,
+                    power: 1,
+                })
+                .unwrap();
+            }
+            let blast = t.blast_committed(1, 1);
+            assert_eq!(blast.processed, if chains { vec![1, 2] } else { vec![1] });
+        }
+    }
+
+    #[test]
+    fn ray_ports_validate_four_bits_and_use_opposite_side_for_entry() {
+        let mut cfg = config();
+        cfg.kinds.fill(0);
+        cfg.kinds[6 * 15 + 8] = 2;
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        for invalid in [vec![0; 194], vec![16; 195]] {
+            cfg.ray_ports = invalid;
+            assert!(cfg.validate(b"map", b"start").is_err());
+        }
+        cfg.ray_ports = vec![ALL_RAY_PORTS; 195];
+        // West-only side: entry from the west works, but crossing the cell
+        // (or leaving that cell as the bomb origin) east must stop.
+        cfg.ray_ports[6 * 15 + 7] = 0b0010;
+        let mut t = cfg.validate(b"map", b"start").unwrap();
+        t.begin(1);
+        for (id, column) in [(1, 6), (2, 7)] {
+            t.place(Bomb {
+                id,
+                owner: 0,
+                row: 6,
+                column,
+                power: 2,
+            })
+            .unwrap();
+        }
+        let blast = t.blast_committed(1, 1);
+        assert_eq!(blast.processed, vec![1, 2]);
+        assert!(blast.cleared.is_empty());
+        t.begin(2);
+        t.place(Bomb {
+            id: 1,
+            owner: 0,
+            row: 6,
+            column: 6,
+            power: 2,
+        })
+        .unwrap();
+        assert!(t.blast_committed(2, 1).cleared.is_empty());
     }
 
     #[test]

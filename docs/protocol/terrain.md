@@ -940,7 +940,7 @@ Không chạy client KR native trong đợt p89; không nâng phân loại họ 
 | Vật thể type 3 | 7 | `Tile01_Passable/Tent{Blue,Orange,Red}`, `Tile16_Passble/ArmyTent01..02`, `Tile02_Passble/IceHouse00..08`, `Tile10_Passable/Building00..08`. Các nhóm hướng khác mẫu Herb/Line đã đo hoặc có thành phần trong cùng map chưa có hợp đồng. |
 | Ray mỏ | 5 | `Tile08_Ground/Rail00..06`. |
 | Payload chưa đọc hết | 4 | `EventForest00`, `EventPatrit00`, `ExBula01`, `ExBula02`. |
-| Thùng type 2 | 3 | `Tile53_Box/Block30..32` có dword offset 32 khác 0 (byte offset 33 bằng 1); bảng p89 ghi nhầm là offset 28. |
+| Thùng type 2 | 3 | `Tile53_Box/Block30` có byte offset 33 bằng 1; `Block31/32` có byte offset 29 và 30 bằng 1. |
 | Vật thể type 1 | 3 | `TileTransParent_Static/Static01` và `Tile19_Static/Block12` có cờ offset 32 chưa có hợp đồng. |
 | Map có script | 1 | `NXCL_Aqua01` bị chặn trước adapter; còn có `Tile30_Box/JellyBombBlock00` chưa được nhận. |
 
@@ -995,3 +995,53 @@ ACK 117 và Start121 đúng mã, journal ghi complete đúng mã và tên, hai c
 Adapter lên **180/214** map; inventory giữ nguyên terrain và floor của 164 map đã nhận trước đó.
 `Cookie07` giờ có Needle, Bomb, Fire, Roller, Shoe và Punch cố định trên cùng map, nhưng chưa chạy native.
 [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json) ghi ở khóa `round_3`.
+
+<a id="f1a-ida-round4"></a>
+### Đợt 4: tia qua Tent, đuôi Soul và thùng Island
+
+Nguồn `kr_static`: IDA trên bản sao của DB ảnh unpack KR 00967 `cf72da11…`, image base `0x400000`,
+và đối chiếu `FxMap`/TileInfoList từ pack đã kiểm hash. Địa chỉ dưới đây là VA.
+
+**Tent/ArmyTent.** ObjectTable 1988–1990 và 2822–2823 có cùng ba nhóm byte `00 01 00 01` ở
+`+24/+28/+32` và dword `+44 = 1`. `E90A80` đọc `+44` để bật kiểm hướng. `E9F220` gọi
+`BA0F80 → BA0E30` trên ô nguồn để đọc byte `+32 + hướng`; ô đích dùng slot `+0xA8`, kiểm cạnh đối diện
+qua `BA0EC0 → BA0E30`. `E9C520` cũng dùng kiểm cạnh vào/ra. Bảng vector tại `17929B0` xác định thứ tự
+bắc, tây, nam, đông. Như vậy tia mở ở hai cạnh đông và tây, chặn ở cả hai cạnh bắc và nam.
+Đây là kết luận tĩnh về client (`confirmed`); adapter/Rust chiếu thành `ray_ports = 0b1010` mỗi ô Tent
+(`emu_choice/candidate`). Raycast xét cạnh rời và cạnh vào ở mỗi bước, gồm cả ô có bom gốc và ô bom dây chuyền.
+Lớp `ray_barriers` vẫn chặn mọi hướng như trước. Không suy ra va chạm nhân vật hoặc luật Shoe từ tia nổ.
+
+**Đuôi Soul.** `EA1EE0` chuyển con trỏ tại `EA2863` cho `118FC30` đọc drop và placement, rồi gọi
+`vf+0x64` tại `EA287D`. Slot `1769784` của `CGamePlayMap` trỏ đến `E3C6C0`, gọi `115C770` tại
+`E3C6D8`; lớp cơ sở `CPlayMap` có slot khác là `EBAB90`. Với bốn payload, `115C770` giải thích
+hết phần nhị phân (`kr_static/confirmed`): số nhóm, mỗi nhóm có số điểm và cặp `i32`; sau đó là số bản ghi,
+mỗi bản ghi có độ dài và tên, hai byte tọa độ và ba `i32`. Cả bốn vừa khít tới dword độ dài script bằng 0
+mà `EA1EE0` đọc tiếp. `115C770` dùng kết quả tra tên `11676E0` trước khi gọi `115DCF0`; không thể
+lược bỏ bảng chỉ vì script rỗng. Vai trò của nhóm điểm, ba số cuối và quyền/timing của Soul vẫn `unknown`.
+
+| Map | Vị trí đuôi, số nhóm | Lý do còn từ chối |
+|---|---|---|
+| `EventForest00` | 1845, 8 nhóm | Có 8 `InnerSoul`; chưa rõ cách các trường gắn Soul với nhóm điểm và khi nào cả hai client phải thấy nó. |
+| `EventPatrit00` | 1887, 6 nhóm | Có 6 `OuterSoul`; chưa rõ điều kiện kích hoạt hoặc tác động của chúng lên trận. |
+| `ExBula01` | 2218, 6 nhóm | Có 4 `InnerSoul` và 2 `OuterSoul`; chưa rõ thứ tự và tương tác hai loại. Placement header 60 có placement, ngoài chính sách 100 của F1. |
+| `ExBula02` | 1952, 5 nhóm | Có 2 `InnerSoul` và 3 `OuterSoul` dù không có placement; bỏ qua đuôi vẫn sẽ bỏ dữ liệu Soul chưa có hợp đồng. |
+
+**Thùng Island.** `B9C760` tại `B9C80B` lấy byte tile `+33` cho `FixedBox+0xE0`. Trong pack, chỉ
+`Block30` trong ba biến thể đang xét mang cờ này; nó có ở `Island09/10`. `Island06` bị chặn bởi
+`Block32`; `Block31/32` mang byte `+29/+30 = 1/1` và `+33 = 0`. Hai byte chưa có hợp đồng.
+Trong client, `B9CC10` kiểm trạng thái box và kết quả update `B9C180`; khi trạng thái bằng 0 và update
+trả 2, nó xóa ô rồi gọi `E9EEE0(row,col,0,-1)` tại `B9CD85` nếu `+0xE0` khác 0.
+`E9EEE0 → EB73D0` giữ sentinel nguồn `-1` và duyệt một bước theo mỗi hướng qua `E9F220`, không bật
+nhánh đường chéo. Bộ đếm client `+0xD0` khởi tạo `-1`, giảm mỗi lần cập nhật khi không âm và có nhánh
+tại 14 và 0; nó chưa cho biết deadline của vụ nổ trên server. Trigger đầu vào, thứ tự khi cạnh bên có bom/thùng,
+gán hit/owner và quan hệ giữa tick client với deadline server vẫn `unknown`. Phép đo Wine tiếp theo cần hai view:
+kích nổ một Block30 giáp bom/thùng, đối chiếu thời điểm xóa ô, nổ kế tiếp và owner với ca không có ô bên cạnh;
+dùng Block31/32 làm đối chứng riêng. Với Soul, cần ghi hai view khi nạp và chạm điểm Soul để phân biệt lúc tạo,
+trigger và ảnh hưởng lên trận.
+
+Ma trận hai client tổng hợp `kr-load` ở scope `f1-a` qua TLS/relay chạy `Camp07`, `Camp14`, `Desert00`,
+`Desert03` và `NXCL_Desert00`, mỗi map kèm `CaJJ_Clover01` đối chứng. F1-a đạt **185/214** map qua adapter;
+so sánh với baseline xác nhận toàn bộ 180 profile và luật terrain/floor cũ giống từng byte. Bốn map Soul
+và ba map Island vẫn bị từ chối. Ma trận kiểm vòng đời trận; test Rust dùng dữ liệu Tent KR để kiểm quy tắc tia.
+Đợt này không chạy native, Wine hoặc VM. [Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json)
+ghi ở khóa `round_4`.

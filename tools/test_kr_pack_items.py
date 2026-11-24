@@ -121,8 +121,31 @@ class TerrainAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'spawn trên ô type 3'):
             f1_terrain_rules(profile, table)
 
-    def test_unmeasured_mechanics_remain_rejected(self):
+    def test_tent_projects_only_kr_east_and_west_ray_ports(self):
+        # TileInfoList KR 00967, ObjectTable 1988–1990 and 2822–2823.
         tent = (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 18730216, 0, 18730216, 0, 0)
+        army = (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 2010265866, 0, -1, 0, 0)
+        variants = {
+            'Tile01_Passable/TentBlue': tent,
+            'Tile01_Passable/TentOrange': tent,
+            'Tile01_Passable/TentRed': tent,
+            'Tile16_Passble/ArmyTent01': army,
+            'Tile16_Passble/ArmyTent02': army,
+        }
+        for tile, data in variants.items():
+            with self.subTest(tile=tile):
+                terrain = f1_terrain_rules(*self.profile(tile, data))['terrain']
+                self.assertEqual(terrain['kinds'], [0, 0])
+                self.assertEqual(terrain['ray_ports'], [0b1010, 0b1111])
+                self.assertNotIn('ray_barriers', terrain)
+        for field, value in [(6, 0), (7, 0), (8, 0x00010001), (11, 0), (13, 101)]:
+            changed = (*tent[:field], value, *tent[field + 1:])
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'ngoài adapter'):
+                f1_terrain_rules(*self.profile('Tile01_Passable/TentBlue', changed))
+        with self.assertRaisesRegex(ValueError, 'ngoài adapter'):
+            f1_terrain_rules(*self.profile('Tile01_Passable/TentUnknown', tent))
+
+    def test_unmeasured_mechanics_remain_rejected(self):
         building = (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 64069472, 1, 1244184, 0, 0)
         refused = {
             'TileConv/ConvUR00': (0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 0, 0, 0, 0, 52224, 0, 0),
@@ -132,15 +155,10 @@ class TerrainAdapterTests(unittest.TestCase):
             'Tile42_Ground/TileRed': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 65536, 0, 0),
             'Tile42_Ground/TileBlue': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 131072, 0, 0),
             'Tile42_Static/Block03': (1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
-            # Box byte 33 is copied to FixedBox+E0; B9CC10 then calls E9EEE0 (explosion).
+            # Block30 has the explosion flag (+33); Block31/32 carry unhandled +29/+30 instead.
             'Tile53_Box/Block30': (2, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 2487818, 117307672),
             'Tile53_Box/Block31': (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118544168),
             'Tile53_Box/Block32': (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118545824),
-            # Bytes 0,1,0,1 in each group: one axis passes, the other is blocked.
-            'Tile16_Passble/ArmyTent01': (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 2010265866, 0, -1, 0, 0),
-            'Tile01_Passable/TentOrange': tent,
-            'Tile01_Passable/TentRed': tent,
-            'Tile01_Passable/TentBlue': tent,
             # Same leap flag outside the measured keys stays closed (SuperFighter is class C).
             'Tile23_Static/Temple14': (1, 0, 0, 0, 0, 0, 6, 1, 1, 0, 0, 2010089472, 0, 0, 0, 0, 0, 0),
         }

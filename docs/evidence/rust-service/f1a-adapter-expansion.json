@@ -500,5 +500,113 @@
         "sha256": "5faa8f5095f6d8bcfa1acdd73fb343635b1135c9015ab5afcee27705d98ca60c"
       }
     ]
+  },
+  "round_4": {
+    "task": "p96-f1a-terrain-r4",
+    "baseline": "4a1296a",
+    "build": "KR 00967",
+    "source": "kr_static + emu_choice",
+    "status": "candidate",
+    "counts": {
+      "previous_admitted": 180,
+      "newly_admitted": 5,
+      "total_admitted": 185,
+      "adapter_rejected_remaining": 29,
+      "total_f1_ab_maps": 214
+    },
+    "rejection_groups_after": {
+      "Tile42_gameplay_flags": 8,
+      "conveyor": 8,
+      "partial_payload": 4,
+      "box_variant_flags": 3,
+      "mine_rail": 5,
+      "service_scope": 1
+    },
+    "static_control": {
+      "image_base": "0x400000",
+      "unpacked_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "source_ida_db_sha256_before_after": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+      "copy_removed": true,
+      "tent": {
+        "source": "kr_static",
+        "status": "confirmed",
+        "object_table_ids": [
+          1988,
+          1989,
+          1990,
+          2822,
+          2823
+        ],
+        "va": "E90A80 / E9F220 / E9C520 / BA0F80 / BA0E30 / BA0EC0 / 17929B0",
+        "finding": "Ba nhóm +24/+28/+32 = 0x01000100, +44 = 1. Hướng N/W/S/E: +32+hướng khi rời ô; cạnh đối diện khi vào."
+      },
+      "soul_cursor": {
+        "source": "kr_static",
+        "status": "confirmed",
+        "mechanic_status": "unknown",
+        "va": "EA2863 → 118FC30; EA287D → [1769784] → E3C6C0 → 115C770; EA2883 đọc độ dài script",
+        "finding": "Khớp toàn bộ hai bảng: nhóm cặp i32, rồi các bản ghi (tên có độ dài, 2 byte, 3 i32). Bốn payload kết thúc ở độ dài script 0."
+      },
+      "island_box": {
+        "source": "kr_static",
+        "status": "confirmed",
+        "original_server_authority": "unknown",
+        "va": "B9C80B / B9C180 / B9CC10 / B9CD85 / E9EEE0 / EB73D0",
+        "finding": "Block30: +33 → FixedBox+0xE0. Khi trạng thái 0 và update trả 2, client xóa ô và gọi vụ nổ ngay trong update, a4=0, nguồn -1, một bước mỗi hướng. Bộ đếm client +0xD0 không xác nhận deadline hoặc owner của server."
+      }
+    },
+    "blocked_maps": [
+      {"name": "EventForest00", "code": 264, "map_sha256": "8385543c95fa0ec15feb1179badaabee1f2af79cb4bed34b29491337a0555a79", "tail_offset": 1845, "script_length_offset": 2301, "blocker": "8 InnerSoul; chưa rõ vai trò nhóm điểm, các số cuối và thời điểm hiện ở hai view."},
+      {"name": "EventPatrit00", "code": 266, "map_sha256": "8f9290147bfa2711df1bf7a0df114231e02cea41d81d9399440905d49797b630", "tail_offset": 1887, "script_length_offset": 2263, "blocker": "6 OuterSoul; chưa biết điều kiện kích hoạt và ảnh hưởng lên trận."},
+      {"name": "ExBula01", "code": 267, "map_sha256": "3fa77f98d8816d0a8b6ab048a3af8288ff6cf14076623142599f4496a41708bb", "tail_offset": 2218, "script_length_offset": 2802, "blocker": "4 InnerSoul, 2 OuterSoul; chưa biết thứ tự kích hoạt; placement header 60 ngoài chính sách F1."},
+      {"name": "ExBula02", "code": 268, "map_sha256": "83294c374980f1c6bd9d6d969d006cca488762408c3464a4c0d608c58bb07c10", "tail_offset": 1952, "script_length_offset": 2248, "blocker": "2 InnerSoul, 3 OuterSoul dù không có placement; chưa biết quyền/timing của hai loại."},
+      {"name": "Island06", "code": 416, "map_sha256": "c04a2eda7867c942427d54b0856a67a8d232999149efef0cdc66836709de940f", "blocker": "Block32 có +29/+30 = 1/1, +33 = 0; ý nghĩa +29/+30 chưa rõ."},
+      {"name": "Island09", "code": 419, "map_sha256": "19e31d1f6be3163bf06d5b8d36378fd2f5fd40514241eada8beded7d25aa2fe4", "blocker": "Có Block30 (+33 = 1) và Block31 (+29/+30 = 1/1); chưa rõ đồng bộ vụ nổ phụ."},
+      {"name": "Island10", "code": 420, "map_sha256": "537e7e46d7b1ee532c8f34fa68fac7d9ee71af166d51e2e07b95038480f2a40a", "blocker": "Có Block30 (+33 = 1) và Block31 (+29/+30 = 1/1); chưa rõ đồng bộ vụ nổ phụ."}
+    ],
+    "newly_admitted_maps": [
+      {"name": "Camp07", "code": 182, "status": "passed", "run": "catalog-001", "map_sha256": "d96d3d8b7075dd5ca8f9c4b2b13ade92ab5ba70d5e84221a3a6887bdd11f5ab6"},
+      {"name": "Camp14", "code": 186, "status": "passed", "run": "catalog-002", "map_sha256": "b6a12627e7a1074b91ddff0f6026f95deab6fbdd45e697838ea8b9f576067e55"},
+      {"name": "Desert00", "code": 251, "status": "passed", "run": "catalog-003", "map_sha256": "43245202576353515ad4fef96f72f9dc7e7e826e8ee684f1aecc9dd16b2b6c21"},
+      {"name": "Desert03", "code": 252, "status": "passed", "run": "catalog-004", "map_sha256": "4482993d83d56f97791fd72556ea7057db22f9ead4606e0af4065d098ceeb99c"},
+      {"name": "NXCL_Desert00", "code": 865, "status": "passed", "run": "catalog-005", "map_sha256": "3770b0a776f4afa4c84e64d844cedae6cc7446b079c5b493f84dd8be94c88206"}
+    ],
+    "regression": "So byte JSON mã hóa chuẩn của cả profile và terrain/floor với adapter tại 4a1296a: 180/180 giống nhau.",
+    "matrix": {
+      "source": "emu_choice",
+      "status": "candidate",
+      "control": "CaJJ_Clover01",
+      "result": "5/5 map mới: journal complete đúng mã/tên, cả hai vòng về phòng và room_closed. Mỗi lượt gồm map mới và map đối chứng.",
+      "limit": "TLS/relay trong namespace cục bộ, không Wine, VM hay client gốc. Test Rust kiểm tia; ma trận chỉ kiểm vòng đời trận.",
+      "bundle_manifest_sha256": "ce6e30d8a7716463fc93797ae4fdd110d5954ffdc47c7274eb23ebabccf829ee",
+      "binaries": {
+        "kr-service": "250e0d00d3d1ff6fb4812b7dbce8328a22a7451c1d9d22dd8712922fc89a43f5",
+        "kr-load": "bbac8649c7ab0c61735e8877e882b784a982aeb4828619319b9e89958a767eb2"
+      }
+    },
+    "recipe": "Dùng IDA 9.4 trên bản sao: ida_trace.py, ida_follow.py, ida_slots.py và ida_soul_trace.py trong thư mục lượt chạy; đọc pack chỉ đọc bằng pack_trace.py và soul_tail.py. Dùng compare_adapter.py với baseline_export.py từ 4a1296a. Build locked kr-service và kr-tunnel, rồi gọi f1_pack_matrix.run_matrix với hai worker và đúng năm map trong newly_admitted_maps.",
+    "evidence": [
+      {"path": "local/runs/f1a-terrain-r4/ida-cursor.json", "bytes": 352693, "sha256": "fae2cf63bdddd69ab655a39cf42936ea47aa0d5b6a853e9d368a441f305bce82"},
+      {"path": "local/runs/f1a-terrain-r4/ida-tiles.json", "bytes": 56524, "sha256": "46676bebcb821f903dd31fe3cef5cc683094dbbb621908ef65e01a5a0693fe7d"},
+      {"path": "local/runs/f1a-terrain-r4/ida-vtable.json", "bytes": 10327, "sha256": "bfde41dddf57b5efedeefd5f65b8528f5dd71f34d4da05ac738274f43edd00e3"},
+      {"path": "local/runs/f1a-terrain-r4/ida-slots.json", "bytes": 20925, "sha256": "031c4dfa2072bfe8189e66f249389e6e320478f1af947e3a3ed080eb926f3b44"},
+      {"path": "local/runs/f1a-terrain-r4/ida-soul.json", "bytes": 29546, "sha256": "4309fa76a105dbcb7201e4ec3703813d737fd4d45e6e96a1a6667a8e9a2da056"},
+      {"path": "local/runs/f1a-terrain-r4/ida-blast-follow.json", "bytes": 46342, "sha256": "9de96ea79512e83d8c2e22a099d91738caead7d53d2e0fab68a8b789ff219af2"},
+      {"path": "local/runs/f1a-terrain-r4/pack-trace.json", "bytes": 12600, "sha256": "7a0026169d121d6dbda208f3a80472e912376eaabe27bb1f02080f2d54ed42b8"},
+      {"path": "local/runs/f1a-terrain-r4/soul-tail.json", "bytes": 8916, "sha256": "2797f30be35d3ca43810f651fdc3ab1e7cbf2502890570b640a428028817fb76"},
+      {"path": "local/runs/f1a-terrain-r4/regression.json", "bytes": 17070, "sha256": "e6d59f79a796ec0d349990a5fb25a84bc86986acb4f6017890654d229dd5d22f"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/inventory.json", "bytes": 410947, "sha256": "38da2d89e008a80d53c35a612d9d54b88ae8d686565ba589ab4f8be5aa2cc2a7"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/matrix.json", "bytes": 457430, "sha256": "1403f382dc694f43ee684a61345421d44ee5dae1b922547067febc241244e22a"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-001/verification.json", "bytes": 676, "sha256": "e8c8919d55e56d26c9ccc1ef5f2f5508acca04f8979e1da2cfff21c7fbd935f7"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-001/load.log", "bytes": 1254, "sha256": "15b2b7ea07c5b29f24aa8d153cbe436454fd223d256775fb79b19e244717aa95"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-002/verification.json", "bytes": 676, "sha256": "564cb6951c6cb362240fb9de037486834936334267c60bebf5cc61eb8e4a89cc"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-002/load.log", "bytes": 1264, "sha256": "c9e6fe61dbb5fc115d2c859e60105ffaa0bc815f69ae50cffd8094c8e61187c2"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-003/verification.json", "bytes": 680, "sha256": "ed97ca0db1adcb73a4346af072915bff325072982dbf259ef6b558675b623862"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-003/load.log", "bytes": 1251, "sha256": "e73ed04c0abcbce3b11bed021eed2a4b640cd8d72fa5a7292f51a3f536e895c0"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-004/verification.json", "bytes": 680, "sha256": "00780b1960fc4b5d194f351e068f26b4af714cea0b81b5405b015a515f10f5f7"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-004/load.log", "bytes": 1254, "sha256": "6ef0bea83c7e09335e665145b95fad32d4dda31758a0e3db1cec81cac3a58df7"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-005/verification.json", "bytes": 690, "sha256": "c9f2e17855b2e80df1a8591cc1f4e4f8bf48e19885f7cf1f4f247ad3a53c6457"},
+      {"path": "local/runs/f1a-terrain-r4/matrix/catalog-005/load.log", "bytes": 1279, "sha256": "598f88c64cda29b6dba30ebb9c54c509f0bc54d5f727a0bb343bfc8f26e78f99"}
+    ]
   }
 }
