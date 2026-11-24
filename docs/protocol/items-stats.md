@@ -214,6 +214,48 @@ còn ảnh B không có dấu đó. Trace B không cho thấy mắc bóng hay tr
 không có report riêng cho các hiệu ứng đó trong cửa sổ đi qua. Chưa thấy gói S→C ứng viên
 để thử chuyển tiếp; UDP thô được giữ, chưa gán byte UDP cho hiệu ứng.
 
+<a id="f1b-remote-sensor-rust"></a>
+### F1-b: RemoteBomb, Sensor và item lớp C còn lại trong Rust
+
+[Metadata, test và giới hạn](../evidence/rust-service/f1b-remote-sensor-rust.json). Nguồn wire là `kr_static` ở
+[Ctrl chủ động](f1-aux-opcodes-and-classc.md#f1-aux-ctrl) và mục `cluster_item` của
+[bảng cụm IDA](../evidence/content/f1-full-ida-clusters.json). Luật server là `emu_choice`, trạng thái `candidate`.
+**Chưa đo Wine trực tiếp** cho các nhánh mới; test tự động dùng wire tổng hợp theo writer tĩnh, không phải capture.
+
+Kiểm kê sau `PR #624` (`report_derived_f1b_aux`) cho thấy `Dart`, `Group 11`, `Spring` và `Shield` có handler.
+Codec `Drill` đã có nhưng chưa nối handler. `Sensor`, `Shield`, `RemoteBomb` và `Drill` đều chưa vào allowlist floor,
+và `127/sub0` chưa giải mã kind 150–152. Relay `Shield` cũ không đòi charge, nhưng floor cũng không thể có Shield.
+Lượt này mở các phần đã đủ bằng chứng như bảng dưới. Mọi kind khác vẫn bị parser floor từ chối.
+
+| Item (kind, group) | Wire tĩnh | Trạng thái Rust |
+|---|---|---|
+| Sensor 152, group 30 | Không có gói riêng. Case luôn trả thành công rồi gửi `127/sub0` chung; `EA8D80` chỉ hiển thị cục bộ. | **Mở** với policy mới. Pickup cộng 6 charge theo ItemAttr `+160`. Mỗi `sub0` hợp lệ tiêu một charge; server không phát gói cho peer. |
+| Shield 151, group 29 | `127/sub5` chỉ có prefix 14 byte, peer nhận `170/sub5` sáu byte; sau đó là `sub0`. | **Mở** với policy mới. Pickup cộng 2 charge. Mỗi `sub5` cần một charge rồi mới relay; `sub0` tiêu bộ đếm riêng. |
+| RemoteBomb 150 và RemoteBombG 176, group 28 | Đặt bom bằng `118` cờ `0x04` (`E2C0E0`); kích nổ bằng `122` reason 2 với `delay = max(0, 200 − 2 × latency)`. | **Chỉ codec.** `remote_detonation122` đòi đúng 17 byte, reason 2 và delay tối đa 200. Floor vẫn bị từ chối ở mọi policy. |
+| Drill 149 và DrillRPG 258, group 27 | `127/sub3` mang blob `[u32 box_id, hàng, cột, hướng]`; peer đọc blob ở `170/sub3`. | **Giữ từ chối.** Codec từ `#624` vẫn còn, chưa có handler. |
+| Các biến thể G, C, SP, FD, Winning, PCRoom, E, L và Plus của Sensor và Shield; AutoShield 183/195 (group 53) | Cùng case với hàng gốc, hoặc là case khác. | **Giữ từ chối.** Các hàng này không có tham chiếu floor F1. Group 53 vào case `1191121` riêng. |
+
+Policy mới là `report_derived_f1b_remote_sensor`, đặt qua `fixed_room.item_policy`. Policy này bao trọn
+`report_derived_f1b_aux` và `report_derived_f1b_extended`, nhưng không mở xe F1-d. `Policy::charges_item_use` quyết định
+kind nào của `sub0` được tính vào túi theo vòng. Scanner cần F1-b extended. Các item aux cần F1-b aux. Shield và Sensor
+cần policy mới. Kim luôn đi đường hành động life. Khi chạy `report_derived_f1b_aux`, `sub0` của Sensor hoặc Shield rơi vào
+đường report life và nhận quyết định `unsupported_four_report_subtype`; pickup `124` của hai kind này làm lỗi phiên.
+Relay Shield cũ của policy aux giữ nguyên. Charge và túi được xóa khi vòng kết thúc và khởi tạo lại ở Start121.
+
+**Blocker RemoteBomb.** Bằng chứng tĩnh hiện có chưa ghi byte nào trong 22 byte của `118` mang cờ `0x04`.
+Parser `118` cơ bản đã đo từ chối mọi biến thể khác, nên client dùng RemoteBomb sẽ bị ngắt phiên nếu floor có kind 150.
+Handler `118` và `122` cũng nằm ngoài vùng sửa của lượt này, và phản hồi của server gốc cho reason 2 vẫn **unknown**.
+Bước kế tiếp gồm hai phần. Trước hết, một lượt RE tĩnh ghi offset cờ mà `E2C0E0` ghi so với `E2DF80`. Sau đó, chủ sở hữu
+handler bom nối `118` cờ `0x04` cùng `122` reason 2 vào ledger bom, rồi chạy Wine hai client để đo phản hồi.
+
+**Blocker Drill.** `box_id` trỏ tới thùng của terrain. Nếu chỉ relay, peer sẽ phá thùng trong khi ledger terrain của
+server vẫn giữ thùng đó. Cần một hợp đồng với `terrain.rs` trước khi mở.
+
+**Giới hạn.** Server không áp hiệu ứng Sensor hoặc Shield. Server cũng không kiểm thời lượng trong tail ItemAttr: Sensor
+`[30000, 5000]` và Shield `[2000, 1000]`. Số charge lấy từ `+160` và guard tick của `sub0` là lựa chọn emulator. Phép đo
+tối thiểu là chạy Wine hai client trên floor có Sensor và Shield. Phép đo cần ghi byte `sub0`/`sub5`, HUD charge, hiển thị
+khiên trên peer và việc giữ phiên sau khi hết charge.
+
 <a id="f1d-vehicles"></a>
 ### F1-d: Đối chiếu phương tiện cưỡi và biến hình
 
