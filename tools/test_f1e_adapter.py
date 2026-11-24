@@ -91,11 +91,16 @@ class F1eAdapterTests(unittest.TestCase):
             profile = read(map_name, payload(body, spawns=clear_spawns, obj=0), f1e=f1e)
             rules = adapter.f1_rules(profile, ([tile], {tile: data}), f1e=f1e)
             self.assertEqual(rules['terrain']['exploding_boxes'][0], 1)
+        coral = (3, 0, 0, 0, 0, 0, 0, 16843009, 16843009, 1, 0, 1, 0, 0, 0, 0, 0, 0)
+        coral_profile = read('Aqua06', payload('<StageClearScript/>', spawns=clear_spawns, obj=0))
+        coral_rules = adapter.f1_rules(coral_profile, (['Tile30_Static/Coral01'], {'Tile30_Static/Coral01': coral}), f1e=True)
+        self.assertEqual(coral_rules['terrain']['kinds'][0], 0)
+        with self.assertRaisesRegex(ValueError, 'spawn trên ô type 3'):
+            adapter.f1_rules(read('Aqua06', payload('<StageClearScript/>', obj=0)),
+                             (['Tile30_Static/Coral01'], {'Tile30_Static/Coral01': coral}), f1e=True)
         for map_name, body, tile, data in [
             ('Aqua08', '<StageClearScript/>', 'Tile30_Box/Urchins00',
              (2, 0, 0, 0, 0, 0, 255, 1, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
-            ('Aqua06', '<StageClearScript/>', 'Tile30_Static/Coral01',
-             (3, 0, 0, 0, 0, 0, 0, 16843009, 16843009, 1, 0, 1, 0, 0, 0, 0, 0, 0)),
             ('RetroCampN01', POPUP, 'Tile62_Passable/BombProof_Right01',
              (10, 0, 0, 0, 0, 0, 65536, 65536, 65536, 0, 0, 1, 0, 0, 0, 0, 0, 0)),
         ]:
@@ -103,19 +108,40 @@ class F1eAdapterTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, tile):
                 adapter.f1_rules(profile, ([tile], {tile: data}), f1e=True)
 
-    def test_verified_soul_maps_only_unlock_measured_pairs(self):
+    def test_verified_soul_maps_and_remain_ground(self):
         width, height = 15, 13
         spawns = [(0, x) for x in range(8)]
         head = struct.pack('<20i', 1000, 0, 0, width, height, len(spawns), *([0] * 14))
         grid = struct.pack('<2i', -1, -1) * (width * height)
         soul_tail = struct.pack('<5i', 1, 1, 1, 2, 0) + struct.pack('<I', 0)
         raw = (head + b''.join(struct.pack('<2i', *p) for p in spawns) + bytes(4)
-               + grid + struct.pack('<3i', 0, 100, 0) + soul_tail)
-        for name in ('EventForest00', 'EventPatrit00'):
+               + grid + struct.pack('<3i', 0, 60, 0) + soul_tail)
+        for name in ('EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02'):
             prof = read(name, raw, f1e=False)
             self.assertFalse(prof['scripted'])
         with self.assertRaisesRegex(ValueError, 'map parser không đọc hết payload'):
-            read('ExBula01', raw, f1e=False)
+            read('Village10', raw, f1e=False)
+        for tile, d15 in [('Tile15_Ground/Remain00', 7405312), ('Tile15_Ground/Remain_Green01', 65280)]:
+            data = (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, d15, 0, 0)
+            prof = dict(name='ExBula01', width=15, height=13, payload_sha256='0' * 64,
+                        spawns=[[x, 0] for x in range(8)], rectangles=[], cells=[(0, -1)] + [(-1, -1)] * 194,
+                        drops=[], placement_header=60, placements=[dict(name='Item/ItemShoe', x=0, y=1, probability=100)])
+            rules = adapter.f1_rules(prof, ([tile], {tile: data}))
+            self.assertEqual(len(rules['floor']['fixed']), 1)
+        with self.assertRaisesRegex(ValueError, 'nền/cờ'):
+            adapter.f1_rules(prof, (['Tile15_Ground/Remain00'], {
+                'Tile15_Ground/Remain00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 999 << 16, 0, 0),
+            }))
+        bula_tile = (1, 0, 0, 0, 0, 0, 1, 1, 0, 10101, 0, 1243912, 2012964084, 2012754176, -1, 1243928, 0, 0)
+        bula_prof = dict(name='ExBula01', width=15, height=13, payload_sha256='0' * 64,
+                         spawns=[[x, 1] for x in range(8)], rectangles=[], cells=[(-1, 0)] + [(-1, -1)] * 194,
+                         drops=[], placement_header=60, placements=[])
+        bula_rules = adapter.f1_rules(bula_prof, (['Tile15_Static/Bf01_01'], {'Tile15_Static/Bf01_01': bula_tile}))
+        self.assertEqual(bula_rules['terrain']['kinds'][0], 1)
+        with self.assertRaisesRegex(ValueError, 'Tile15_Static/Bf01_01'):
+            adapter.f1_rules(bula_prof, (['Tile15_Static/Bf01_01'], {
+                'Tile15_Static/Bf01_01': (*bula_tile[:9], 10199, *bula_tile[10:]),
+            }))
 
     def test_bigbattle_floor_cannot_emit_items_outside_legacy_floor_grid(self):
         profile = read('BSBigCamp08', payload(size=(19, 17)))
@@ -134,9 +160,10 @@ def verify_pack(game, baseline_ref):
     source = subprocess.check_output(['git', 'show', f'{baseline_ref}:tools/kr_pack_export.py'], cwd=ROOT)
     exec(compile(source, 'baseline_kr_pack_export.py', 'exec'), baseline)
     names = sorted(name for name, row in inventory(game).items() if row['status'] == 'pending')
-    unlocked_6 = {'EventForest00', 'EventPatrit00', 'Island06', 'Island09', 'Island10', 'NXCL_Aqua01'}
-    assert len(names) == 212, len(names)
-    baseline_names = [n for n in names if n not in unlocked_6]
+    unlocked_8 = {'EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02',
+                  'Island06', 'Island09', 'Island10', 'NXCL_Aqua01'}
+    assert len(names) == 214, len(names)
+    baseline_names = [n for n in names if n not in unlocked_8]
     assert len(baseline_names) == 206
     digest = hashlib.sha256()
     with adapter.verified_packs(game) as files:
@@ -168,7 +195,7 @@ def verify_pack(game, baseline_ref):
             try:
                 cache, reused = adapter.export(game, Path(tmp), maps=[name], f1e=True)
             except ValueError as error:
-                expected_substr = {'Aqua06': 'Coral01', 'Aqua08': 'Urchins00'}.get(name, 'BombProof_')
+                expected_substr = 'Urchins00' if name == 'Aqua08' else 'BombProof_'
                 assert expected_substr in str(error), (name, error)
                 result[name] = dict(result='blocked', reason=str(error))
                 continue
@@ -184,10 +211,10 @@ def verify_pack(game, baseline_ref):
             result[name] = dict(result='exported', profile_sha256=adapter.sha(blob), rules_sha256=adapter.sha(rules))
     blocked = {name for name, row in result.items() if row['result'] == 'blocked'}
     assert len(result) == 37 and blocked == {
-        'Aqua06', 'Aqua08', *(f'RetroCampN{n:02}' for n in range(1, 6)),
+        'Aqua08', *(f'RetroCampN{n:02}' for n in range(1, 6)),
     }, result
     return dict(f1a_baseline=baseline_ref, f1a_equal=len(baseline_names), f1a_pending=len(names),
-                f1a_unlocked=sorted(unlocked_6), f1a_members_sha256=digest.hexdigest(), maps=result)
+                f1a_unlocked=sorted(unlocked_8), f1a_members_sha256=digest.hexdigest(), maps=result)
 
 
 if __name__ == '__main__':

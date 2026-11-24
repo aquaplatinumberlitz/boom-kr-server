@@ -46,7 +46,23 @@ TERRAIN_SEEDS = dict(zip((*G1, 'ExVillage01'), (
 SCHEMA = 'kr00967-export-v2'
 F1E_ADAPTER = 'f1e-adapter-r1'
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
-_SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00'))
+_SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02'))
+# Tile15_Ground/Remain*: B9D8E0 ignores byte +61 and B9DEA0 word +62 < 10000 feeds
+# only EA5A10 ground drawing and mode-2 CBulaComponent; ED2350 cancels only >= 10000.
+_REMAIN_GROUND_D15 = {
+    'Tile15_Ground/Remain00': 7405312,
+    'Tile15_Ground/Remain01': 7536384,
+    'Tile15_Ground/Remain02': 7536384,
+    'Tile15_Ground/Remain03': 7012096,
+    'Tile15_Ground/Remain04': 6946560,
+    'Tile15_Ground/Remain05': 7601920,
+    'Tile15_Ground/Remain06': 7470848,
+    'Tile15_Ground/Remain07': 7470848,
+    'Tile15_Ground/Remain08': 7077632,
+    'Tile15_Ground/Remain09': 7077632,
+    'Tile15_Ground/Remain_Green01': 65280,
+    'Tile15_Ground/Remain_Green02': 65280,
+}
 # KR data[8] for Tile*_Box exploding blocks (+33 == 1 -> 1-cell cross blast on break).
 _EXPLODING_BOX_FLAGS = {
     'Tile53_Box/Block30': 256,
@@ -219,6 +235,25 @@ _PONG_GROUND_WORDS = {'Tile42_Ground/TileRed': 1, 'Tile42_Ground/TileBlue': 2}
 # Static offset 36 is read only through BA1420: CBulaComponent (10001..10199),
 # CBonusMapLadderWinnerComponent (999) and B50370, which has no reference.
 _TYPE1_UNREAD_OFFSET36 = frozenset(('Tile42_Static/Block03',))
+_TYPE1_BULA_OFFSET36 = {
+    'Tile15_Static/Bf01_01': 10101,
+    'Tile15_Static/Bf01_02': 10102,
+    'Tile15_Static/Bf01_03': 10103,
+    'Tile15_Static/Bf01_04': 10104,
+    'Tile15_Static/Bf02_02': 10102,
+    'Tile15_Static/Bf02_03': 10103,
+    'Tile15_Static/Bf02_04': 10104,
+    'Tile15_Static/Bf03_01': 10101,
+    'Tile15_Static/Bf03_04': 10104,
+    'Tile15_Static/Bf04_01': 10101,
+    'Tile15_Static/Bf04_02': 10102,
+    'Tile15_Static/Bf04_03': 10103,
+    'Tile15_Static/Bf04_04': 10104,
+    'Tile15_Static/Bf05_01': 10101,
+    'Tile15_Static/Bf05_02': 10102,
+    'Tile15_Static/Bf05_03': 10103,
+    'Tile15_Static/Bf05_04': 10104,
+}
 _RETRO_CONVEYORS = {'Tile59_Ground/Conveyor00': (4, 2), 'Tile59_Ground/Conveyor01': (1, 0),
                    'Tile60_Ground/Conveyor02': (2, 1), 'Tile60_Ground/Conveyor03': (1, 0),
                    'Tile60_Ground/Conveyor04': (8, 3), 'Tile60_Ground/Conveyor05': (4, 2)}
@@ -284,7 +319,9 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             retro = (f1e and d[:15] == (*_GROUND, 1, 1, 0, 0, -1, 0, 0, 0, 0)
                      and d[15] == 102 << 16
                      and key in _RETRO_GROUND_102)
-            if retro:
+            remain = (d[:15] == (*_GROUND, 1, 1, 0, 0, -1, 0, 0, 0, 0)
+                      and _REMAIN_GROUND_D15.get(key) == d[15])
+            if retro or remain:
                 return
             if (key not in ('Tile16_Ground/PinGround01', 'Tile62_Ground/PinTile00',
                             'Tile62_Ground/PinTile01') or d[15] >> 16 != 10_000):
@@ -314,7 +351,8 @@ def f1_terrain_rules(profile, table, *, f1e=False):
         elif d[:6] == (1, 0, 0, 0, 0, 0) and (
                 d[8:11] == (0, 0, _TYPE1_PIN_FLAGS.get(key, 0))
                 or (key in _TYPE1_LEAP_BARRIERS and d[8:11] == (1, 0, 0) and not any(d[12:]))
-                or (key in _TYPE1_UNREAD_OFFSET36 and d[8:11] == (0, 1, 0) and not any(d[11:]))):
+                or (key in _TYPE1_UNREAD_OFFSET36 and d[8:11] == (0, 1, 0) and not any(d[11:]))
+                or (d[6:9] == (1, 1, 0) and d[10] == 0 and _TYPE1_BULA_OFFSET36.get(key) == d[9])):
             # EA1EE0 writes the two flags for type 1 after BA1350, using
             # the dimensions and type regardless of the trailing dwords.
             for cell in footprint(index, d, key):
@@ -376,6 +414,12 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             # EB4C10's Tower branch for +52=101 is dead (B64870 returns
             # false). CGOTilePassable uses the same ray ports as Tent.
             ray_ports[index] = 0b1010
+        elif (f1e and key in ('Tile30_Static/Coral00', 'Tile30_Static/Coral01')
+              and d[:16] == (3, 0, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, 1, 0, 1, 0, 0, 0, 0)):
+            # EB4C10 -> E90A80/BA0E30: +24 == 0 blocks player movement while
+            # +32 == 0x01010101 keeps all four bomb-ray sides open (0b1111).
+            if index in spawn_cells:
+                fail(index, 'spawn trên ô type 3 bị chặn', key)
         else:
             fail(index, 'vật thể/cờ', key)
 
@@ -399,7 +443,9 @@ def f1_terrain_rules(profile, table, *, f1e=False):
 
 def f1_floor(profile, terrain, *, f1e=False):
     """Chính sách nghiệm thu: placement chắc chắn và tối đa một drop có trọng số."""
-    if profile['placement_header'] != 100 and profile['placements']:
+    # 118FC30 -> 11ED860 -> 11EB960 applies placement_header as a default-weight
+    # percent multiplier when per-map weights omit an item; fixed placements ignore it.
+    if profile['placement_header'] not in (60, 70, 100) and profile['placements']:
         raise ValueError(f"Placement header chưa biết: {profile['name']}")
     kinds, width, height = terrain['kinds'], terrain['width'], terrain['height']
     # The existing 582 config and pickup consumers still have a 15×13
