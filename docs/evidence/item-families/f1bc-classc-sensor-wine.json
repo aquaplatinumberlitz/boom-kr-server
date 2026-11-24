@@ -1,0 +1,80 @@
+{
+  "schema": "kre.f1bc_classc_sensor_wine.v1",
+  "task": "o12 / F1-c (PR #635) và F1-b Sensor/Shield (PR #634, #624)",
+  "canonical": "docs/protocol/f1-aux-opcodes-and-classc.md#f1bc-classc-sensor-wine",
+  "source": "kr_runtime",
+  "status": {"f1c_class_c": "unknown (blocked)", "f1b_sensor_shield": "confirmed"},
+  "raw_root": "local/runs/o12-f1bc-wine/",
+  "provenance": {
+    "baseline": "5d9545884ea7faafc114b14ece7fb60df80b01b7",
+    "build_command": "cargo build --manifest-path rust/Cargo.toml --release --offline --locked -p kr-service --bin kr-service --bin kr-admin -p kr-tunnel --bin kr-prelogin --bin kr-launch-identity",
+    "kr_service_sha256": "f081841ed505d2acb513fd929b7a2cfe29a1381bb5bdac4e0395a0a32e5f930c",
+    "kr_prelogin_sha256": "66a1c26302f6f4bb47676733696025b634e4a3b64d91518494435587fa89bac0",
+    "kr_admin_sha256": "6de2168e88298964f59a3c1669a5d4ec087a6725e507b1b03cf530b9870e9623",
+    "kr_launch_identity_sha256": "9254d549fc780d473be814cc82333ada654a3a8d1f0286db7a5376e3b9089495",
+    "build": "KR 00967",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "wine_client_copy_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+    "harness": "Runner namespace hai client của CP397/p104 (Xvfb riêng, netns kre-a/kre-b, bridge riêng, không route ra ngoài). Server không sửa code và không có biến môi trường fixture.",
+    "service_config": {
+      "catalog-f1c": {"sha256": "7081b991d52ebb3c8fcf166db8dd9c5371ba21da4671b30406fd784cb450a8d6", "change_from_cp397": "fixed_room.allow_class_c_characters=true; player_round.characters=[0,1,4000,4013,5000,5001]; floor 582 rỗng", "floor_cookie07_sha256": "86d8594eb79fb59fb117b0f0b3d57789bd451c397f871333086969e9e54b541b"},
+      "catalog-f1b": {"sha256": "a2dc05693bb4b84c8254716c2f0a5ce64690494bb13950d12162704825cf8011", "change_from_cp397": "item_policy=report_derived_f1b_remote_sensor; floor 582 Cookie07 list1 = Shield 151 (12,4), Sensor 152 (12,10), Sensor 152 (11,2), Shield 151 (11,13)", "floor_cookie07_sha256": "8cc67f24740908784b7244ad947290eb3aef0ae503cbdd3ef49637397cb5fb9d"}
+    },
+    "character_seed": "emu_choice: khóa lớp C được nạp vào bảng player_preferences (revision 1) bằng sqlite trước khi đăng nhập; server khôi phục khóa này ở 81/82. UI client không được dùng để chọn khóa lớp C.",
+    "ctrl_input": "Ctrl gửi bằng xdotool keydown/keyup Control_L (sự kiện X11 thật). SendInput VK 17 qua native-input.exe không tới game (f1b-run-1).",
+    "review": "waived theo docs/evidence/checkpoints/review-waiver.json; tự kiểm capture, sự kiện service, SQLite và ảnh."
+  },
+  "runs": [
+    {"name": "preflight-f1c", "result": "kr-service nhận cấu hình (--dry)", "exit": 0},
+    {"name": "preflight-f1b", "result": "kr-service nhận cấu hình (--dry)", "exit": 0},
+    {"name": "f1c-run-1", "seed": "A:4000,B:5000", "result": "Bỏ: panel đăng nhập B chưa hiện trong timeout mặc định; chưa tới phòng.", "exit": 1},
+    {"name": "f1c-run-2", "seed": "A:4000,B:5000", "tcp_frames_crc_verified": 63, "udp_packets": 268, "summary_sha256": "572c9e1c89ae2be54991ad2714866a816e1f4d8fe0063313467d18d291942744", "channel_sha256": "f7df8455cba5564460075eb01dc8e75713213ff842645ecc4e605f2df1070d57", "result": "A (chủ phòng, 81) nhận 106 khóa 4000 rồi gửi 92 (0,0) sau 9,2 ms; server đóng stream (guard room_request, opcode 92).", "exit": 1},
+    {"name": "f1c-ctl-1", "seed": "A:1,B:5000", "tcp_frames_crc_verified": 76, "udp_packets": 324, "summary_sha256": "f1153ad05e85866b3b3ea353b99abc304bb1154bd1d85e61e99600a54a96354e", "channel_sha256": "2e8e2c39b4d5dda11aaccc4df1f46fed20ec6518d672d90a4da709dd97500a73", "result": "Đối chứng: A khóa 1 không gửi 92 và setup xong. B (khách, 82) nhận 106 khóa 5000 rồi gửi 92 (0,0) sau 28,9 ms; stream B bị đóng.", "exit": 1},
+    {"name": "f1c-key-5001", "seed": "A:5001,B:0", "tcp_frames_crc_verified": 62, "udp_packets": 279, "summary_sha256": "8d7e32560aaff37bf05a29513127dc2861c97731281623019e0ac5b3095458d1", "channel_sha256": "2ed910eb39bca20611c19bc045cc9a12443580bea9f8a4e4868125a5bd3260bb", "result": "Chủ phòng nhận 106 khóa 5001, gửi 92 (0,0) sau 9,1 ms; stream bị đóng.", "exit": 1},
+    {"name": "f1c-key-4013", "seed": "A:0,B:4013", "tcp_frames_crc_verified": 76, "udp_packets": 298, "summary_sha256": "a92051750f05eccf4d5aa22e298ea5236f3b13b0a7932b006e2c7822dabf216c", "channel_sha256": "129e956cf6e2c947e621ba654eab7fbef56c3e6ce07c7d9d4616cd48ff3b43aa", "result": "Khách nhận 106 khóa 4013, gửi 92 (0,0) sau 9,1 ms; stream bị đóng.", "exit": 1},
+    {"name": "f1b-run-1", "result": "Hai ván, nhặt 124->165 đúng; Ctrl bằng SendInput VK 17 không tạo 127/sub0 hay sub5 (giới hạn công cụ nhập). Thoát phòng room_count=0.", "exit": 0},
+    {"name": "f1b-run-2", "tcp_frames_crc_verified": 398, "udp_packets": 10117, "udp_native_peer_crc8_ok": "3226/3226", "udp_encrypted_transport": 6891, "summary_sha256": "e573258df484fa7cb0c02c6c056f9f24640ac1733fda887ac26798b4212386bf", "channel_sha256": "7e7840afa834a3eae315890937cf89bc85a1cf5e38ca649c0e321a963fcf8ab1", "udp_decoded_sha256": "fb2c156871a40e9f95e544355358118ef3bb7e8d85d0a593f6bafa85d9df5baa", "accounts_sqlite_sha256": "64208d0b4c6ed05ed36117c7c1ae66266ff4a380cfb8c07daaecb79a3087be15", "result": "Nghiệm thu chính F1-b; xem frames.", "exit": 0}
+  ],
+  "frames": {
+    "f1c": [
+      "S->C 106 (room setup) trường u32 tại offset 12 của body = (khóa u16 << 16) | đội: 0x0FA00002 (4000), 0x13880000 (5000), 0x13890002 (5001), 0x0FAD0000 (4013); khóa 1 là 0x00010002.",
+      "C->S 92 body 5a a5 69 = (local 0, khóa 0) ở cả 4 lượt, frame_sha256 bắt đầu 47cd247268d67658, gửi 9-29 ms sau 106 và trước 96/266 của setup.",
+      "Không có Start 121, C->S 79 hay trận nào cho khóa lớp C; player_preferences giữ nguyên khóa đã nạp."
+    ],
+    "f1b": [
+      "Ván 1: A C->S 124 kind 151 (seq 163) -> S->C 165 tới A và B; B 124 kind 152 (seq 154) -> 165 tới cả hai.",
+      "Shield A: mỗi Ctrl gửi 127/sub5 14 byte rồi 127/sub0 [u8 1, u16 151, u8 0, u32 0] cùng lúc (seq 172/175, 184/187); kr-service gửi 170/sub5 6 byte '5f5aa5c9a76e' tới B sau 20-40 ms (seq 121, 124). Ctrl thứ ba không tạo gói.",
+      "Sensor B: 6 lần 127/sub0 kind 152 (seq 178-202), không có S->C; Ctrl thứ bảy và thứ tám không tạo gói.",
+      "Ván 2 (Start 121 mới, floor 582 nạp lại): A nhặt Sensor (11,2), B nhặt Shield (11,13). B Shield 2 lần 127/sub5+sub0 -> 170/sub5 '5f5ba761a4b6' tới A (seq 169, 172); A Sensor 6 lần 127/sub0. Ctrl thừa không tạo gói.",
+      "Cả hai ván complete/elimination trong SQLite; C->S 86 -> S->C 241 cho B rồi A; health_sample room_count=0."
+    ]
+  },
+  "ui_review": [
+    {"path": "local/runs/o12-f1bc-wine/f1c-room-classc-disconnect.png", "sha256": "88e9249f2dac4550e8d5400e483bf1587a77895efcaf1b71cb59c534d17bf394", "note": "Ô phòng hiển thị sprite khác mặc định cho 4000 (A) và 5000 (B) trước hộp thoại mất kết nối errorcode=10."},
+    {"path": "local/runs/o12-f1bc-wine/f1b-run-2/review-charge-counters.png", "sha256": "4450155f25e95bdafa277b3e51a7db852c63c3cb413c75ffd0e4d0576cc0aaf0", "note": "Ô Ctrl: Shield x02 -> x01 -> trống; Sensor x06 -> x05 -> x01 -> trống, ở cả hai ván."},
+    {"path": "local/runs/o12-f1bc-wine/f1b-run-2/review-r1-shield-video-frames.png", "sha256": "60992a0d77d98ea460ede989e6fadce1c118708b885bd4f2ea7a833c048ef779", "note": "Frame 5 fps từ video: hiệu ứng khiên quanh A hiện cùng lúc trên view A và view B."},
+    {"path": "local/runs/o12-f1bc-wine/f1b-run-2/review-shield-sync.png", "sha256": "415067a1c7ddabefe7f8dd4712c9a9c1f1fcfec82e3c0a8f3373cd306f37c1a7", "note": "Ván 2: hiệu ứng khiên quanh B hiện trên cả hai view."}
+  ],
+  "reproduce": [
+    "cargo build (lệnh ở provenance.build_command) rồi chép bốn binary vào local/runs/o12-f1bc-wine/bin.",
+    "PYTHONPATH=<worktree>:<worktree>/tools python3 local/runs/o12-f1bc-wine/build_catalog.py",
+    "O12_CHARACTERS=A:4000,B:5000 python3 local/runs/o12-f1bc-wine/run_o12.py <run> catalog-f1c phase_f1c_probe.py",
+    "python3 local/runs/o12-f1bc-wine/run_o12.py <run> catalog-f1b phase_f1b.py",
+    "PYTHONPATH=<worktree>:<worktree>/tools python3 local/runs/o12-f1bc-wine/summarize.py <run>"
+  ],
+  "sha256sums": {"path": "local/runs/o12-f1bc-wine/SHA256SUMS", "sha256": "d105b8f28e1eba4157bd933c1f69c65f21803e83b1eaf5a96de59fa85b1ba307", "files": 1121},
+  "cleanup": {
+    "receipt": "local/runs/o12-f1bc-wine/cleanup-receipt.json",
+    "receipt_sha256": "88b06f7fa2cb19b5e860d12a15b2195f1238195ba390169e8e752a0e42516bdb",
+    "wine_scratch_deleted_bytes": 32430863717,
+    "wine_scratch_runs": 9,
+    "rust_target_deleted_bytes": 805777611,
+    "result": "Mọi lượt có scratch_removed=true; không còn tiến trình Wine, Xvfb hay kr-service do o12 tạo; không có scratch trong /tmp. Các PID Wine có sẵn không bị đụng tới."
+  },
+  "limits": [
+    "F1-c bị chặn: client gốc tự đổi khóa lớp C về 0 bằng C->S 92 trước khi setup phòng hoàn tất, và kr-service đóng stream. Chưa đo được Start 121, byte C->S 79, actor trong trận hay đường về phòng cho khóa lớp C.",
+    "Chưa có đường server cấp bản ghi sở hữu nhân vật (13E5DA0/13E3B00) cho client; giả thuyết nguyên nhân là kiểm sở hữu 11D2F20, chưa được RE xác nhận trong lượt này.",
+    "F1-b: client tự dừng gửi khi hết charge, nên chưa đo được kr-service xử lý 127/sub0 thừa. Thời lượng khiên và tác dụng Sensor chỉ xem qua ảnh, server không áp hiệu ứng.",
+    "Wine, mạng ảo cô lập, Cookie07, hai client; không phải server KR gốc hay Internet thật."
+  ]
+}

@@ -176,3 +176,40 @@ Bố cục này khớp mẫu bom `167` ở terrain nếu u16 đầu là slot bá
   (**candidate**: thả lại item).
 
 Handler S→C và luật server cho 167/219/157 vẫn **unknown**.
+
+<a id="f1bc-classc-sensor-wine"></a>
+## Nghiệm thu Wine hai client cho F1-c và F1-b Sensor/Shield
+
+**Source:** `kr_runtime`. Hai client KR 00967 chạy trên Wine trong namespace mạng cô lập, dùng `kr-service` và
+`kr-prelogin` build `--release --offline --locked` từ `5d95458`, không sửa code server.
+[Bằng chứng, hash, số gói và lệnh tái lập](../evidence/item-families/f1bc-classc-sensor-wine.json).
+
+**F1-c lớp C, status `unknown` (bị chặn).** Cấu hình bật `fixed_room.allow_class_c_characters` và liệt kê
+`4000`, `4013`, `5000`, `5001` (đủ ba nhóm f1_3, f1_4 và f1_6). Khóa được nạp sẵn vào `player_preferences`
+(`emu_choice`), vì UI client không chọn được các khóa này. Kết quả **confirmed** trên cả bốn khóa, ở cả vai chủ
+phòng (81) lẫn vai khách (82):
+- `S→C 106` mang khóa ở nửa cao của trường u32 tại offset 12 của body, nửa thấp là đội. Ô phòng của client hiển
+  thị sprite khác nhân vật mặc định.
+- Sau 9–29 ms, client gửi **`C→S 92` = (local 0, khóa 0)**, tức là tự đổi về khóa 0 chứ không dùng giá trị dự phòng 5
+  như `79`. Gói này đến trước `96/266`, khi phòng chưa setup xong. `kr-service` từ chối lựa chọn và đóng stream,
+  client hiện lỗi mất kết nối (errorcode 10).
+- Đối chứng khóa F1 thường `1` không sinh `92` và vào phòng bình thường.
+
+Vì vậy chưa có `Start 121`, byte `C→S 79` thực tế, actor trong trận hay đường về phòng cho khóa lớp C. Nguyên nhân
+**candidate** là client thiếu bản ghi sở hữu (`11D2F20`, `13E5DA0/13E3B00`) mà server hiện chưa cấp. Muốn mở lớp C
+cho client gốc thì cần đường sở hữu nhân vật phía server hoặc cách xử lý `92` trước setup. Cả hai đều ngoài lượt
+đo này.
+
+**F1-b Sensor/Shield, status `confirmed` trên lát cắt Cookie07.** Lượt chạy dùng
+`item_policy: "report_derived_f1b_remote_sensor"`, đặt `151/152` trong list1 của floor `582` nạp trước trận, chơi
+hai ván và đổi vai giữa hai ván. Phím Ctrl phải gửi bằng sự kiện X11 `Control_L`; `SendInput` với VK 17 không tới game.
+- Nhặt item theo luồng `C→S 124 → S→C 165` tới cả hai client. Ô Ctrl hiện Shield `×02` và Sensor `×06`.
+- Shield: mỗi lần Ctrl, client gửi `127/sub5` (prefix 14 byte) rồi `127/sub0` `[u8 1, u16 151, u8 0, u32 0]`.
+  `kr-service` chuyển `170/sub5` 6 byte, gồm byte subtype, slot và bốn byte đầu prefix, tới peer. Hiệu ứng khiên
+  hiện đồng thời trên view A và view B theo cả hai chiều.
+- Sensor: 6 gói `127/sub0` kind 152, không có gói `S→C`.
+- Khi hết charge (Shield 2, Sensor 6), ô Ctrl trống và các lần Ctrl tiếp theo không tạo gói. Phiên vẫn sống, hai ván
+  kết thúc `complete/elimination`, hai client thoát qua `86 → 241` và `room_count=0`.
+
+**Giới hạn.** Vì client tự dừng gửi khi hết charge, chưa đo được cách server xử lý `127/sub0` thừa. Thời lượng khiên
+và tác dụng Sensor chỉ được xem qua ảnh. Kết quả không bao hàm server KR gốc, map khác hoặc Internet thật.
