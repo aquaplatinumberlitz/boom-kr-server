@@ -2496,21 +2496,21 @@ impl Session {
         let mut life = None;
         match opcode {
             79 => {
-                // Native selected1 emits5b5b after121; selected1→0 emits5b5a.
-                // Semantics unknown: one exact current-choice observation per
-                // Loading, without ACK, world mutation or idle renewal.
+                // Native sends this two-byte observation after Start121.
+                // Its meaning is opaque; require an exact match to the current
+                // catalog choice without truncating the u16 character key.
                 let member = r.member(self.identity, self.connection)?;
-                if !matches!(
-                    (member.character, body),
-                    (Some(0), [0x5b, 0x5a]) | (Some(1), [0x5b, 0x5b])
-                ) || r
-                    .managed_round
+                let [0x5b, selected] = body else {
+                    return Err(err("unsupported observed79 profile/body"));
+                };
+                if r.managed_round
                     .as_ref()
                     .is_none_or(|p| p.characters.is_none())
                 {
                     return Err(err("unsupported observed79 profile/body"));
                 }
-                next.observe_loading79(member.key)?;
+                let selected = read_uint(&[*selected], Width::U8).map_err(io::Error::other)?;
+                next.observe_loading79(member.key, selected as u8)?;
             }
             528 => {
                 if !body.is_empty() {

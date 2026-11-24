@@ -891,14 +891,14 @@ impl Room {
     /// not recovered message semantics. No queue, world, inventory or ACK effect.
     /// Exact observed packet79 is budget-only. Its semantics remain unknown;
     /// it cannot authorize activity, mutate gameplay, or complete loading.
-    pub(crate) fn observe_loading79(&mut self, key: Membership) -> io::Result<()> {
+    pub(crate) fn observe_loading79(&mut self, key: Membership, selected: u8) -> io::Result<()> {
         if !self.current(key) || !matches!(self.phase, Phase::Loading { .. }) {
             return Err(io::Error::other(
                 "opaque79 needs current loading membership",
             ));
         }
         let member = self.members.get_mut(&key.identity).expect("current member");
-        if !matches!(member.character, Some(0 | 1)) || member.loading79 {
+        if member.character != Some(u16::from(selected)) || member.loading79 {
             return Err(io::Error::other(
                 "opaque79 outside measured choice or budget",
             ));
@@ -1546,20 +1546,21 @@ mod loading_observation_tests {
         let b = room.enter(42, 22, false).unwrap();
         room.setup(a).unwrap();
         room.setup(b).unwrap();
-        room.choose(a, Some(1), None).unwrap();
+        room.choose(a, Some(2), None).unwrap();
         room.choose(b, None, Some(3)).unwrap();
-        assert!(room.observe_loading79(a).is_err());
+        assert!(room.observe_loading79(a, 2).is_err());
         room.ready(b).unwrap();
         let round = room.begin(a).unwrap();
-        room.members.get_mut(&b.identity).unwrap().character = Some(4);
-        assert!(room.observe_loading79(b).is_err());
-        room.members.get_mut(&b.identity).unwrap().character = Some(0);
-        room.observe_loading79(b).unwrap();
-        room.observe_loading79(a).unwrap();
-        assert!(room.observe_loading79(a).is_err());
+        room.members.get_mut(&b.identity).unwrap().character = Some(3000);
+        assert!(room.observe_loading79(b, 184).is_err());
+        room.members.get_mut(&b.identity).unwrap().character = Some(3);
+        assert!(room.observe_loading79(b, 2).is_err());
+        room.observe_loading79(b, 3).unwrap();
+        room.observe_loading79(a, 2).unwrap();
+        assert!(room.observe_loading79(a, 2).is_err());
         assert!(!room.ack(a, round).unwrap());
         assert!(room.ack(b, round).unwrap());
-        assert!(room.observe_loading79(a).is_err());
+        assert!(room.observe_loading79(a, 2).is_err());
     }
 }
 
