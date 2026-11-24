@@ -98,13 +98,29 @@ class F1eAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'spawn trên ô type 3'):
             adapter.f1_rules(read('Aqua06', payload('<StageClearScript/>', obj=0)),
                              (['Tile30_Static/Coral01'], {'Tile30_Static/Coral01': coral}), f1e=True)
+        urchin = (2, 0, 0, 0, 0, 0, 255, 1, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        urchin_prof = read('Aqua08', payload('<StageClearScript/>', spawns=clear_spawns, obj=0))
+        urchin_rules = adapter.f1_rules(urchin_prof, (['Tile30_Box/Urchins00'], {'Tile30_Box/Urchins00': urchin}), f1e=True)
+        self.assertEqual(urchin_rules['terrain']['kinds'][0], 1)
+        self.assertNotIn('box_hits', urchin_rules['terrain'])
+        with self.assertRaisesRegex(ValueError, 'Spawn không nằm trên ô trống'):
+            adapter.f1_rules(read('Aqua08', payload('<StageClearScript/>', obj=0)),
+                             (['Tile30_Box/Urchins00'], {'Tile30_Box/Urchins00': urchin}), f1e=True)
+        bombproof = (10, 0, 0, 0, 0, 0, 65536, 65536, 65536, 0, 0, 1, 0, 0, 0, 0, 0, 0)
+        bp_prof = read('RetroCampN01', payload(POPUP, spawns=clear_spawns, obj=0))
+        bp_rules = adapter.f1_rules(bp_prof, (['Tile62_Passable/BombProof_Right01'],
+                                              {'Tile62_Passable/BombProof_Right01': bombproof}), f1e=True)
+        self.assertEqual(bp_rules['terrain']['ray_ports'][0], 0b0100)
+        with self.assertRaisesRegex(ValueError, 'spawn trên ô type 10'):
+            adapter.f1_rules(read('RetroCampN01', payload(POPUP, obj=0)),
+                             (['Tile62_Passable/BombProof_Right01'],
+                              {'Tile62_Passable/BombProof_Right01': bombproof}), f1e=True)
         for map_name, body, tile, data in [
             ('Aqua08', '<StageClearScript/>', 'Tile30_Box/Urchins00',
-             (2, 0, 0, 0, 0, 0, 255, 1, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
-            ('RetroCampN01', POPUP, 'Tile62_Passable/BombProof_Right01',
-             (10, 0, 0, 0, 0, 0, 65536, 65536, 65536, 0, 0, 1, 0, 0, 0, 0, 0, 0)),
+             (2, 0, 0, 0, 0, 0, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)),
+            ('RetroCampN01', POPUP, 'Tile62_Passable/BombProof_Center01', bombproof),
         ]:
-            profile = read(map_name, payload(body, obj=0))
+            profile = read(map_name, payload(body, spawns=clear_spawns, obj=0))
             with self.assertRaisesRegex(ValueError, tile):
                 adapter.f1_rules(profile, ([tile], {tile: data}), f1e=True)
 
@@ -225,9 +241,7 @@ def verify_pack(game, baseline_ref):
             assert json.loads(rules)['terrain'].get('disable_bombs', False) == (family == 'lovelyroom')
             result[name] = dict(result='exported', profile_sha256=adapter.sha(blob), rules_sha256=adapter.sha(rules))
     blocked = {name for name, row in result.items() if row['result'] == 'blocked'}
-    assert len(result) == 62 and blocked == {
-        'Aqua08', *(f'RetroCampN{n:02}' for n in range(1, 6)),
-    }, result
+    assert len(result) == 62 and not blocked, result
     return dict(f1a_baseline=baseline_ref, f1a_equal=len(baseline_names), f1a_pending=len(names),
                 f1a_unlocked=sorted(unlocked_8), f1a_members_sha256=digest.hexdigest(), maps=result)
 

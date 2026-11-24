@@ -411,13 +411,11 @@ fn batch4a_profile_policy_fails_closed() {
     };
     for (name, code) in [
         ("Aqua03", 3),
-        ("Aqua08", 8),
         ("CaJJ_Wriggle01", 171),
         ("Fm_RescueET01", 318),
         ("Fm_Coloring03", 301),
         ("RetroForestN01", 941),
         ("RetroVillageN01", 953),
-        ("RetroCampN05", 933),
     ] {
         assert!(!loads(profile(name, code, (15, 13), true, false)), "{name}");
     }
@@ -438,7 +436,10 @@ fn batch4a_profile_policy_fails_closed() {
     for (name, code) in [
         ("Aqua01", 1),
         ("Aqua06", 6),
+        ("Aqua08", 8),
         ("NXCL_Aqua01", 862),
+        ("RetroCampN01", 929),
+        ("RetroCampN05", 933),
         ("CaJJ_Space02", 167),
         ("NXCL_PangLand15", 871),
     ] {

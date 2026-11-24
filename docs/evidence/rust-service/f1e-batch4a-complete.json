@@ -1,0 +1,70 @@
+{
+  "task": "agy-f1e-batch4a-complete",
+  "build": "KR 00967",
+  "baseline": "ae37ac9",
+  "source": "kr_static + emu_choice",
+  "status": "confirmed",
+  "scope": "Hoan tat 37/37 Batch 4a F1-e (nang tong F1-e da xuat len 62/95 map cung 25 map Space/PangLand), giu nguyen 206 map F1-a nen byte-identical; hanh vi no pha BombProof_* va Urchins00 tren Wine chua do rieng.",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "inputs": {
+    "terrain_doc": "docs/protocol/terrain.md#f1e-batch4a-complete",
+    "f1a_full_214": "docs/evidence/rust-service/f1a-full-214.json",
+    "f1e_adapter_r1": "docs/evidence/rust-service/f1e-adapter-r1.json"
+  },
+  "static_ida": {
+    "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "image_base": "0x400000",
+    "urchins00": "Tile30_Box/Urchins00 (hit=255, data[8]=16): 0xEA4332/0xEB61D1 -> 0xED23E0(a2,-1) -> 0xEA4E40(row,col,-1,1) bat bit 0x10; khong vo boi tia bom -> kinds=1.",
+    "bombproof": "Tile62_Passable/BombProof_* (type=10): 0xEB4C10 case 0xA -> 0x6D3C00 CGOTilePassableBroken ke thua CGOTilePassable (0x1747CEC), giu BA0E30 mo 1 huong tia tu +32..+35 (Left01=0b0001, Up01=0b0010, Right01=0b0100, Down01=0b1000)."
+  },
+  "regression": {
+    "baseline_commit": "c8b6ff056583c88e1bba78cda6a5fb0d5c289ae2",
+    "equal_maps": 206,
+    "member_digest_sha256": "92663b1d6e9697a2cc449d5f51782cbd7603cc11f51054aa53e85a517d6ea815"
+  },
+  "f1e_batch4a_complete": {
+    "exported": 62,
+    "blocked": 0,
+    "newly_exported": {
+      "Aqua08": {
+        "profile_sha256": "49d0c8e9d7f9fec4ad13779d73242c8ebe69edd904609de132d8cd06da5e376a",
+        "rules_sha256": "51198bb8cb1ac56e57db24b7ab19bf6d614fee412f1b344aad31ae3dcb129034"
+      },
+      "RetroCampN01": {
+        "profile_sha256": "d57ee7c115c5a22778b990b74ea93b9ac6163ab96f66fd3d10c7dd1686770da1",
+        "rules_sha256": "ceb8e59e1b195fd657de635c1c0a5990d5bd1c04a7368bf1ab8888d27b0ed78"
+      },
+      "RetroCampN02": {
+        "profile_sha256": "899c3affe225003f17748de6f4f532c1a3ecc609ec5c26233792de04c4f5491f",
+        "rules_sha256": "547d2f13fcd43547ffaf1e94d836d33f3014e57f80728101cf5fcee59e3958cf"
+      },
+      "RetroCampN03": {
+        "profile_sha256": "14d3c8cd68f90c700a6f38892da5cdf1f5951bff47b479168bc1634506d3a286",
+        "rules_sha256": "a7946fb7988fbec83b4eba58265e259f8c9d3d69c4da0ab04fcb873066ff951a"
+      },
+      "RetroCampN04": {
+        "profile_sha256": "05ff17f034321edacd9189853a13bb3ce4d34e0867a56fa6733e6dfbf1da9f33",
+        "rules_sha256": "e24b57c4c4cce787cdae4a6a02db1001e35dc8d26ed0ca1d32a370fa5166369e"
+      },
+      "RetroCampN05": {
+        "profile_sha256": "2a3714031fe0b59d0118c6caf44b99e35f6c0b67c6fdd7f6522de0e7f840acb7",
+        "rules_sha256": "20509134378c5d89494af0cce14564796c3dbda2b146b32e33f3877e7274b2a4"
+      }
+    }
+  },
+  "reproduction": [
+    "cargo fmt --manifest-path rust/Cargo.toml --all --check",
+    "cargo clippy --manifest-path rust/Cargo.toml --workspace --all-targets --locked -- -D warnings",
+    "cargo test --manifest-path rust/Cargo.toml --workspace --locked -- --test-threads=4",
+    "PYTHONPATH=tools python3 tools/test_f1e_adapter.py --pack-root <thư mục KR 00967>",
+    "PYTHONPATH=tools python3 -m unittest tools.test_kr_pack_items tools.test_f1_pack_matrix tools.test_kr_f1e_script_audit tools.test_f1e_adapter",
+    "python3 tools/check_docs.py"
+  ],
+  "limits": [
+    "Chua co luot do Wine 2 client rieng cho Aqua08 va RetroCampN01..05.",
+    "CGOTilePassableBroken::+0x60 (0x6D3DE0) huy o BombProof khi bi bom pha van giu trang thai emu_choice/candidate."
+  ]
+}
