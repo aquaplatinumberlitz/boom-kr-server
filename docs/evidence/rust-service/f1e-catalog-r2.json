@@ -1,0 +1,41 @@
+{
+  "task": "p106-f1e-catalog-r2",
+  "build": "KR 00967",
+  "baseline": "bf59d16b1b3ddda3d6a4dd13f1e04dd5fc7dd468",
+  "source": "emu_choice",
+  "status": "confirmed",
+  "scope": "Chỉ xác nhận đường nạp catalog và hành vi Rust trên fixture tổng hợp.",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "inputs": {
+    "exporter": "tools/kr_pack_export.py --f1e-map",
+    "pack_projection": "docs/evidence/rust-service/f1e-adapter-r1.json",
+    "pack_payloads": "docs/evidence/content/f1e-scripts-extracted.json",
+    "client_static": "docs/protocol/f1e-dynamic-scripts.md"
+  },
+  "catalog_policy": {
+    "marker": "f1e-adapter-r1",
+    "allowlist": "Chỉ các cặp tên/mã BigBattle, LovelyRoom và RetroPopup có result=exported trong bằng chứng adapter r1.",
+    "profile_and_rules": "Fixture profile có pin. Catalog kiểm hình dạng profile và ràng buộc terrain với kích thước, hash payload, cờ bom và pin gói 117/121. Bộ kiểm không đọc XML từ pack.",
+    "bounds": "Terrain và hủy bom BigBattle dùng 19×17; floor 582 và profile mặc định giữ 15×13."
+  },
+  "tests": [
+    "cancellation_uses_only_the_two_supported_grids",
+    "batch4a_catalog_selects_and_runs_big_battle_lovely_room_and_retro_popup",
+    "batch4a_profile_policy_fails_closed"
+  ],
+  "reproduction": [
+    "cargo fmt --manifest-path rust/Cargo.toml --all --check",
+    "cargo clippy --manifest-path rust/Cargo.toml --workspace --all-targets --locked -- -D warnings",
+    "cargo test --manifest-path rust/Cargo.toml --workspace --locked",
+    "PYTHONPATH=tools python3 -m unittest tools.test_kr_pack_items tools.test_f1_pack_matrix tools.test_kr_f1e_script_audit tools.test_f1e_adapter",
+    "python3 tools/check_docs.py"
+  ],
+  "limits": [
+    "Bài kiểm nạp catalog và chạy các handler Rust với fixture tổng hợp; chưa kiểm nạp lại toàn bộ 26 map từ pack ở bản này.",
+    "Không chạy Wine hoặc IDA. Chưa nghiệm thu client, đồng bộ UDP, luật kết quả BigBattle hoặc quyền xử lý của server gốc.",
+    "Batch 4a chỉ đi qua catalog; bất kỳ map script hoặc biến thể địa hình ngoài phạm vi adapter trên vẫn chưa được hỗ trợ."
+  ]
+}

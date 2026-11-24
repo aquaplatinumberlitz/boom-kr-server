@@ -241,7 +241,8 @@ impl Catalog {
                 let kind =
                     u16::try_from(u32::from_le_bytes(row[6..10].try_into().expect("bounded")))
                         .map_err(|_| err())?;
-                // Only measured floor kinds. Serving admission checks the policy.
+                // Batch 4a still exports 582 within the measured 15×13 window.
+                // Terrain grid size does not extend the pickup contract.
                 if row[4] >= 13
                     || row[5] >= 15
                     || !(crate::item_scope::kept_kind(u32::from(kind))

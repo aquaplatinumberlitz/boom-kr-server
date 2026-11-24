@@ -223,9 +223,27 @@ Batch 4a](../evidence/rust-service/f1e-adapter-r1.json) ghi từng map, baseline
   floor vẫn giới hạn trong cửa sổ 15×13 của bộ đọc item hiện tại.
 
 Đây là phép chiếu và kiểm thử tổng hợp, chưa nghiệm thu client hoặc kết luận quyền xử lý của server
-gốc (`unknown`). Cổng `map_profile.rs` hiện vẫn chặn script và lưới 19×17 trước khi Rust nạp terrain;
-profile mới đã xuất chưa phục vụ được qua cổng nạp này. `BSBigCamp08` còn cần kiểm các ô hủy bom
-theo lưới lớn vì có ô nằm ngoài vùng 15×13.
+gốc (`unknown`). Bản adapter r1 chỉ xuất profile và rules; bước nối catalog Rust nằm bên dưới.
+
+<a id="f1e-catalog-r2"></a>
+#### F1-e Batch 4a: nạp catalog Rust
+
+**`emu_choice/confirmed` trong phạm vi kiểm thử Rust**, dựa trên dữ liệu pack `kr_static` của adapter r1.
+[`f1e-catalog-r2.json`](../evidence/rust-service/f1e-catalog-r2.json) ghi nguồn và lệnh kiểm.
+
+`fixed_room.map_choices` nhận profile có pin và `adapter: "f1e-adapter-r1"` cho đúng cặp tên/mã
+của ba map BigBattle, `LovelyRoom01..10` và 13 map RetroPopup đã xuất. Mỗi lựa chọn Batch 4a
+phải có tám spawn phân biệt và terrain khớp kích thước, hash payload, pin gói 117/121 và cờ bom của
+profile. LovelyRoom yêu cầu `disable_bombs: true`; Rust từ chối C→S 118 mà không cấp ID hay lịch nổ.
+RetroPopup giữ popup `ms=0` phía client theo nguồn tĩnh; Rust dùng luật bom thường. Profile mặc định
+vẫn yêu cầu lưới 15×13 và không có script. Map động chưa hỗ trợ, kể cả RetroCamp có `BombProof_*`,
+vẫn bị từ chối.
+
+BigBattle dùng lưới 19×17 cho terrain, sổ bom và các ô hủy bom. Floor 582 vẫn giới hạn ở 15×13 như
+exporter. Cấu hình thử cần ghép `terrain`, `bomb_cancellation` nếu có và floor đã mã hóa 582 vào lựa
+chọn tương ứng; bước này chưa thêm chế độ đóng gói Batch 4a. Bài kiểm dùng fixture tổng hợp để nạp catalog,
+chọn map, nổ hoặc từ chối bom; chưa nghiệm thu Wine, script phía client, UDP, kết quả trận BigBattle
+hay quyền xử lý của server KR gốc.
 
 <a id="f1-pack-floor"></a>
 ### Floor từ pack trong catalog thử F1-a

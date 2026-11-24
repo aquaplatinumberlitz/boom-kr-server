@@ -83,19 +83,35 @@ pub(crate) struct BombCancellationConfig {
 pub(crate) struct BombCancellationCells(std::collections::BTreeSet<(u16, u16)>);
 impl BombCancellationConfig {
     pub(crate) fn validate(&self, map_sha256: &str) -> io::Result<BombCancellationCells> {
+        self.validate_for_grid(map_sha256, crate::terrain::STANDARD_SIZE)
+    }
+
+    pub(crate) fn validate_for_grid(
+        &self,
+        map_sha256: &str,
+        grid: (u8, u8),
+    ) -> io::Result<BombCancellationCells> {
+        let (width, height) = match grid {
+            crate::terrain::STANDARD_SIZE | crate::terrain::BIG_BATTLE_SIZE => grid,
+            _ => return Err(err("unsupported bomb cancellation grid")),
+        };
+        let maximum_cells = usize::from(width) * usize::from(height);
+        if self.map_sha256 != map_sha256
+            || self.cells.is_empty()
+            || self.cells.len() > maximum_cells
+            || self
+                .cells
+                .iter()
+                .any(|[row, column]| *row >= height || *column >= width)
+        {
+            return Err(err("invalid map-bound bomb cancellation cells"));
+        }
         let cells: std::collections::BTreeSet<_> = self
             .cells
             .iter()
             .map(|[row, column]| (u16::from(*row), u16::from(*column)))
             .collect();
-        if self.map_sha256 != map_sha256
-            || cells.is_empty()
-            || cells.len() > 195
-            || cells.len() != self.cells.len()
-            || cells
-                .iter()
-                .any(|(row, column)| *row >= 13 || *column >= 15)
-        {
+        if cells.len() != self.cells.len() {
             return Err(err("invalid map-bound bomb cancellation cells"));
         }
         Ok(BombCancellationCells(cells))
@@ -314,6 +330,31 @@ impl ReportLimits {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn cancellation_uses_only_the_two_supported_grids() {
+        let cfg = BombCancellationConfig {
+            map_sha256: "a".repeat(64),
+            cells: vec![[16, 18]],
+        };
+        assert!(cfg.validate(&cfg.map_sha256).is_err());
+        assert!(
+            cfg.validate_for_grid(&cfg.map_sha256, crate::terrain::BIG_BATTLE_SIZE)
+                .unwrap()
+                .contains(16, 18)
+        );
+        assert!(cfg.validate_for_grid(&cfg.map_sha256, (19, 18)).is_err());
+        let mut full = BombCancellationConfig {
+            map_sha256: cfg.map_sha256,
+            cells: (0..17)
+                .flat_map(|row| (0..19).map(move |col| [row, col]))
+                .collect(),
+        };
+        let big = crate::terrain::BIG_BATTLE_SIZE;
+        assert!(full.validate_for_grid(&full.map_sha256, big).is_ok());
+        full.cells.push([16, 18]);
+        assert!(full.validate_for_grid(&full.map_sha256, big).is_err());
+    }
 
     #[test]
     fn cancellation_data_requires_exact_map_hash_unique_cells_and_measured_report() {

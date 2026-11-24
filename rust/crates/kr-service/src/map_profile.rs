@@ -1,6 +1,10 @@
 //! Pack-exported map identity and bounded packet consistency before bind.
 //! This validates input agreement; a profile is not native gameplay acceptance.
-use crate::{ActorProfile, FixturePin, Reply, room::PlayerId};
+use crate::{
+    ActorProfile, FixturePin, Reply,
+    room::PlayerId,
+    terrain::{BIG_BATTLE_SIZE, STANDARD_SIZE},
+};
 use kr_wire::{Width, kr00967 as wire, read_uint};
 use serde::Deserialize;
 use std::{
@@ -17,6 +21,10 @@ pub(crate) struct Profile {
     spawns: Vec<[u8; 2]>,
     scripted: bool,
     payload_sha256: String,
+    #[serde(default)]
+    adapter: Option<String>,
+    #[serde(default)]
+    disable_bombs: bool,
     #[serde(default)]
     drops: Vec<(String, u32)>,
     #[serde(default)]
@@ -51,6 +59,46 @@ fn adler_zero(bytes: &[u8]) -> u32 {
     (b << 16) | a
 }
 impl Profile {
+    fn grid_size(&self) -> (u8, u8) {
+        (self.width, self.height)
+    }
+
+    fn is_batch4a(&self) -> bool {
+        self.adapter.as_deref() == Some("f1e-adapter-r1")
+    }
+
+    fn supported(&self) -> bool {
+        if !self.is_batch4a() {
+            return self.grid_size() == STANDARD_SIZE && !self.scripted && !self.disable_bombs;
+        }
+        // Exact successful exports in f1e-adapter-r1.json. The adapter marker
+        // alone cannot admit a different script family or blocked Retro map.
+        let expected = match (self.map_code, self.name.as_str()) {
+            (81, "BSBigCamp08") | (82, "BSBigPatrit14") | (83, "BSBigVillage10") => {
+                (BIG_BATTLE_SIZE, false, false)
+            }
+            (code @ 467..=476, name) if name == format!("LovelyRoom{:02}", code - 466) => {
+                (STANDARD_SIZE, true, true)
+            }
+            (934, "RetroCampN06") => (STANDARD_SIZE, true, false),
+            (code @ 935..=940, name) if name == format!("RetroFactoryN{:02}", code - 934) => {
+                (STANDARD_SIZE, true, false)
+            }
+            (code @ 947..=952, name) if name == format!("RetroPatritN{:02}", code - 946) => {
+                (STANDARD_SIZE, true, false)
+            }
+            _ => return false,
+        };
+        (self.grid_size(), self.scripted, self.disable_bombs) == expected
+            && self.spawns.len() == 8
+            && self
+                .spawns
+                .iter()
+                .collect::<std::collections::HashSet<_>>()
+                .len()
+                == 8
+    }
+
     pub(crate) fn load(pin: &FixturePin) -> io::Result<Self> {
         let mut value: Self = serde_json::from_slice(&pin.load()?).map_err(io::Error::other)?;
         if let Some(items) = &value.pack_items {
@@ -58,8 +106,7 @@ impl Profile {
         } else {
             crate::item_scope::apply(&value.name, &mut value.drops)?;
         }
-        if value.scripted
-            || (value.width, value.height) != (15, 13)
+        if !value.supported()
             || !(2..=8).contains(&value.spawns.len())
             || value
                 .spawns
@@ -83,6 +130,10 @@ impl Profile {
         packets: &HashMap<String, Reply>,
         actors: &HashMap<PlayerId, ActorProfile>,
     ) -> io::Result<()> {
+        if self.is_batch4a() {
+            // Standalone profiles have no choice-owned rule binding.
+            return Err(error());
+        }
         self.validate_selected(expected_count, packets, actors, 0, 1)
     }
     pub(crate) fn validate_selected(
@@ -324,6 +375,16 @@ impl Catalog {
                     )
                 })
                 .transpose()?;
+            if terrain
+                .as_ref()
+                .is_some_and(|t| t.grid_size() != profile.grid_size())
+                || (profile.is_batch4a()
+                    && terrain
+                        .as_ref()
+                        .is_none_or(|t| t.bombs_disabled() != profile.disable_bombs))
+            {
+                return Err(error());
+            }
             choices.push(Choice {
                 code: profile.map_code,
                 index: index as u32,
@@ -334,7 +395,10 @@ impl Catalog {
                 bomb_cancellation: cfg
                     .bomb_cancellation
                     .as_ref()
-                    .map(|rule| rule.validate(&profile.payload_sha256))
+                    .map(|rule| match profile.grid_size() {
+                        STANDARD_SIZE => rule.validate(&profile.payload_sha256),
+                        grid => rule.validate_for_grid(&profile.payload_sha256, grid),
+                    })
                     .transpose()?,
             });
         }
