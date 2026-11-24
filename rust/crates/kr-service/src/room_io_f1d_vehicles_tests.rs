@@ -3,6 +3,9 @@ use super::*;
 use pickups::Policy;
 
 const VEHICLES: [u16; 5] = [40, 41, 42, 43, 44];
+const EXTRA_SHIPS: [u16; 23] = [
+    45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 331,
+];
 const OWL: u16 = 41;
 const TURTLE0: u16 = 42;
 // p97b Cookie07 forward case, C2S 127 at A/370 and S2C 170 at B/163.
@@ -19,9 +22,9 @@ fn floor(kinds: &[u16], hidden: bool) -> Vec<u8> {
         raw.extend([0; 2]);
     }
     raw.extend((kinds.len() as u16).to_le_bytes());
-    for (column, &kind) in kinds.iter().enumerate() {
+    for (index, &kind) in kinds.iter().enumerate() {
         raw.extend(u32::from(kind).to_le_bytes());
-        raw.extend([12, column as u8]);
+        raw.extend([(12 - index / 15) as u8, (index % 15) as u8]);
         raw.extend(u32::from(kind).to_le_bytes());
     }
     raw.extend(if hidden { &[0; 2][..] } else { &[0; 4] });
@@ -34,10 +37,15 @@ struct Case {
     shared: Shared,
     players: [Session; 2],
     keys: [Membership; 2],
+    kinds: Vec<u16>,
 }
 
 impl Case {
     fn new() -> Self {
+        Self::with_policy_and_kinds(r#""report_derived_f1d_vehicles""#, &VEHICLES)
+    }
+
+    fn with_policy_and_kinds(policy_json: &str, kinds: &[u16]) -> Self {
         let shared = registry_foundation_tests::player_round_prototype();
         let players = [70000, 42].map(|id| {
             Session::open_with_peer(
@@ -55,7 +63,7 @@ impl Case {
             r.players.insert(s.identity, packet(106, body));
         }
         r.rules = RoomRules {
-            item_policy: serde_json::from_str(r#""report_derived_f1d_vehicles""#).unwrap(),
+            item_policy: serde_json::from_str(policy_json).unwrap(),
             life: rules::LifePolicy::TeamReports,
             result: ResultPolicy::Players,
             roster: rules::RoundRoster::Players,
@@ -71,7 +79,7 @@ impl Case {
                 opaque167: &[],
             },
         }));
-        let body = floor(&VEHICLES, false);
+        let body = floor(kinds, false);
         r.floor_catalog = pickups::Catalog::from_floor(&body).unwrap();
         r.floor_catalog
             .validate_stat_policy(r.rules.item_policy)
@@ -92,6 +100,7 @@ impl Case {
             shared,
             players,
             keys,
+            kinds: kinds.to_vec(),
         }
     }
 
@@ -106,7 +115,12 @@ impl Case {
         for s in &mut self.players {
             let batch = receive(s, &[582, 121]);
             let catalog = pickups::Catalog::from_floor(&batch.packets[0].1.payload).unwrap();
-            assert!(catalog.visible_items().map(|item| item.3).eq(VEHICLES));
+            assert!(
+                catalog
+                    .visible_items()
+                    .map(|item| item.3)
+                    .eq(self.kinds.iter().copied())
+            );
         }
         self.shared.lock().unwrap().model.round_generation()
     }
@@ -126,15 +140,21 @@ impl Case {
     }
 
     fn claim(&mut self, slot: usize, kind: u16, round: u64) {
-        let column = u64::from(kind - 40);
+        let index = self
+            .kinds
+            .iter()
+            .position(|&candidate| candidate == kind)
+            .expect("kind in floor catalog");
+        let row = u64::from((12 - index / 15) as u8);
+        let column = u64::from((index % 15) as u8);
         let claim: Vec<_> = [
             (0, Width::U8),
             (slot as u64, Width::U8),
-            (12, Width::U8),
+            (row, Width::U8),
             (column, Width::U8),
             (u64::from(kind), Width::U32),
             (u64::from(kind), Width::U16),
-            (1000 + column, Width::U32),
+            (1000 + index as u64, Width::U32),
             (u64::from(crate::room::wire_key(round).unwrap()), Width::U32),
             (0, Width::U8),
         ]
@@ -212,6 +232,7 @@ fn only_f1d_accepts_the_five_vehicle_kinds_in_preload_list1() {
             Policy::ReportDerivedPunch,
             Policy::ReportDerivedShoePunch,
             Policy::ReportDerivedF1bExtended,
+            Policy::ReportDerivedF1bAux,
         ] {
             assert!(!policy.allows(kind));
             assert!(visible.validate_stat_policy(policy).is_err());
@@ -221,9 +242,36 @@ fn only_f1d_accepts_the_five_vehicle_kinds_in_preload_list1() {
                 .validate_stat_policy(Policy::ReportDerivedF1dVehicles)
                 .is_ok()
         );
+        assert!(
+            visible
+                .validate_stat_policy(Policy::ReportDerivedF1dAllShips)
+                .is_ok()
+        );
         assert!(pickups::Catalog::from_floor(&floor(&[kind], true)).is_err());
     }
-    for kind in [39, 45] {
+    for kind in EXTRA_SHIPS {
+        let visible = pickups::Catalog::from_floor(&floor(&[kind], false)).unwrap();
+        for policy in [
+            Policy::Disabled,
+            Policy::ReportDerivedBasic,
+            Policy::ReportDerivedPunch,
+            Policy::ReportDerivedShoePunch,
+            Policy::ReportDerivedF1bExtended,
+            Policy::ReportDerivedF1bAux,
+            Policy::ReportDerivedF1dVehicles,
+        ] {
+            assert!(!policy.allows(kind));
+            assert!(visible.validate_stat_policy(policy).is_err());
+        }
+        assert!(Policy::ReportDerivedF1dAllShips.allows(kind));
+        assert!(
+            visible
+                .validate_stat_policy(Policy::ReportDerivedF1dAllShips)
+                .is_ok()
+        );
+        assert!(pickups::Catalog::from_floor(&floor(&[kind], true)).is_err());
+    }
+    for kind in [39, 330, 332] {
         assert!(pickups::Catalog::from_floor(&floor(&[kind], false)).is_err());
     }
 }
@@ -322,4 +370,75 @@ fn late_dismount_after_rank_keeps_sessions_alive_and_round_two_starts_unmounted(
     c.claim(1, 43, second);
     assert_eq!(c.mounted(1), Some(43));
     assert_eq!(c.mounted(0), None);
+}
+
+#[test]
+fn all_ships_mount_upgrade_14_to_15_dismount_and_observe_4b_167() {
+    let mut c = Case::with_policy_and_kinds(
+        r#""report_derived_f1d_all_ships""#,
+        &[45, 51, 53, 54, 55, 331],
+    );
+    let first = c.start();
+    c.arm();
+
+    // Octopus0 (45) stays mounted across ItemBat (331), then dismounts cleanly via 127/sub16.
+    c.claim(0, 45, first);
+    assert_eq!(c.mounted(0), Some(45));
+    c.claim(0, 331, first);
+    assert_eq!(c.mounted(0), Some(45));
+    c.dismount(0, &DISMOUNT, "accepted", true);
+    assert_eq!(c.mounted(0), None);
+    assert_eq!(
+        receive(&mut c.players[1], &[170]).packets[0].1.payload,
+        PEER_DISMOUNT
+    );
+    c.no_packets();
+
+    // KR 1370710/1370670: MonS2Tank (53 / selector 14) upgrades only to MonS2UpgradeTank (54 / 15).
+    c.claim(0, 53, first);
+    assert_eq!(c.mounted(0), Some(53));
+    c.claim(0, 54, first);
+    assert_eq!(c.mounted(0), Some(54));
+    c.claim(0, 51, first);
+    assert_eq!(c.mounted(0), Some(54));
+
+    // Shark (55) cleanup 4B C->S 167 ([u16 slot, u16 3|4]) is observed without reply; 5B fails.
+    c.claim(1, 55, first);
+    assert_eq!(c.mounted(1), Some(55));
+    for code in [3u64, 4u64] {
+        let mut msg167 = Vec::with_capacity(4);
+        msg167.extend(kr_wire::write_uint(1, Width::U16).unwrap());
+        msg167.extend(kr_wire::write_uint(code, Width::U16).unwrap());
+        c.players[1].packet(167, &msg167).unwrap();
+    }
+    assert!(c.players[1].packet(167, &[0; 5]).is_err());
+    c.no_packets();
+
+    {
+        let mut r = c.shared.lock().unwrap();
+        let now = Instant::now();
+        r.model
+            .members
+            .get_mut(&c.keys[0].identity)
+            .unwrap()
+            .life
+            .death = Some(now - Duration::from_secs(9));
+        r.model
+            .members
+            .get_mut(&c.keys[1].identity)
+            .unwrap()
+            .life
+            .survivor = Some(now);
+    }
+    c.players[0].tick().unwrap();
+    for s in &mut c.players {
+        receive(s, &[175]);
+        receive(s, &[180]);
+        receive(s, &[110, 110]);
+    }
+    c.no_packets();
+
+    let second = c.start();
+    assert_ne!(first, second);
+    assert_eq!([c.mounted(0), c.mounted(1)], [None, None]);
 }

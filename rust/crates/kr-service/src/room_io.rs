@@ -3277,6 +3277,9 @@ impl Session {
                         // both CP037 and the current native capture. Semantics
                         // stay opaque: bounded observation, no ACK or mutation.
                         || (r.rules.life_actions.needle() && body.len() == 8)
+                        // KR 1191DD0/B7A590/B7A650 (o8): Tank/Shark effect cleanup sends
+                        // 4B C->S 167 ([u16 slot, u16 3|4]). Semantics stay bounded observation.
+                        || (r.rules.item_policy.f1d_all_ships() && body.len() == 4)
                 } else if next.capacity() == 8 {
                     r.rules.owner_bombs() && [4, 22, 42].contains(&body.len())
                 } else {
@@ -3704,7 +3707,7 @@ impl Session {
                     request.decision("inactive_round")
                 };
                 if decision.accepted {
-                    if allowed && pickups::is_vehicle_kind(request.kind()) {
+                    if allowed && pickups::is_any_vehicle_kind(request.kind()) {
                         next.pickups.mount_vehicle(member.key, request.kind());
                     } else if let Some(amount) = extended {
                         next.pickups.credit(member.key, &request, amount);
