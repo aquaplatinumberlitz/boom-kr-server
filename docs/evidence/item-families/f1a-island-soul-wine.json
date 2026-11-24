@@ -7,7 +7,7 @@
   "status": "confirmed",
   "canonical": "docs/protocol/terrain.md#f1a-island-soul-wine",
   "raw_root": "local/runs/p104-f1a-island-soul-wine/",
-  "scope": "Hai client Wine trong hai network namespace, một bridge riêng, không có interface hoặc route ra ngoài; DNS chỉ đọc hosts. Hai Xvfb độc lập. Client đọc nguyên pack KR. Chỉ xác nhận phép đo trong phòng thường cục bộ.",
+  "scope": "Hai client Wine trong hai network namespace, một bridge riêng, không có interface hoặc route ra ngoài; DNS chỉ đọc hosts. Hai Xvfb độc lập. Bốn payload map, ObjectTable và TileInfoList tại gói Wine khớp nguồn KR. Chỉ xác nhận phép đo trong phòng thường cục bộ.",
   "provenance": {
     "refs": ["docs/protocol/terrain.md#f1a-ida-round4", "docs/evidence/content/f1e-scripts-extracted.json", "docs/evidence/item-families/f1d-vehicles-wine.json", "docs/evidence/item-families/f1b-ctrl-group11-wine.json", "docs/evidence/checkpoints/records/CP397.json"],
     "legacy": "Đã tra boomkr-re rồi boom-re theo tên Block30 và hai map Soul; không lấy thêm contract từ repo cũ. Dùng pack đã kiểm SHA và cache IDA đợt 4. Không sửa nguồn client hoặc IDA DB.",
@@ -19,7 +19,7 @@
     "server_commit": "ac06025fb397d8c933da96f4065c1f81af2bdfc4",
     "server_sha256": "e2aafc178666267c617a5616b2cac0be857ab0dda36bfe7c6b11fd2e41bf66d0",
     "prelogin_sha256": "9946ae9921cbcb3fff98646b6e89838144726a301335ae29f74b0624d58348e9",
-    "fixture": "emu_choice: phép chiếu riêng cho shadow server coi Block30/31/32 là thùng thường, bỏ đuôi Soul khỏi bản xuất profile và gửi 582 rỗng trước Start. Tên và mã map trỏ tới pack nguyên của client. Tái dùng binary CP397, copy chẩn đoán M8 đã pin, không build Rust, không thêm patch hoặc tiêm gói giữa trận.",
+    "fixture": "emu_choice: phép chiếu riêng cho shadow server coi Block30/31/32 là thùng thường, bỏ đuôi Soul khỏi bản xuất profile và gửi 582 rỗng trước Start. Tên và mã map trỏ tới payload map KR giữ nguyên trong gói client. Tái dùng binary CP397, copy chẩn đoán M8 đã pin, không build Rust, không thêm patch hoặc tiêm gói giữa trận.",
     "review": "waived theo docs/evidence/checkpoints/review-waiver.json; tự kiểm ảnh, trace và CRC."
   },
   "pack": {
@@ -28,15 +28,22 @@
     "Island06": {"code": 416, "sha256": "c04a2eda7867c942427d54b0856a67a8d232999149efef0cdc66836709de940f", "Block32": 49},
     "EventForest00": {"code": 264, "sha256": "8385543c95fa0ec15feb1179badaabee1f2af79cb4bed34b29491337a0555a79", "InnerSoul": [[12, 6], [12, 10], [10, 0], [6, 1], [6, 8], [4, 0], [3, 12], [0, 9]]},
     "EventPatrit00": {"code": 266, "sha256": "8f9290147bfa2711df1bf7a0df114231e02cea41d81d9399440905d49797b630", "OuterSoul": [[14, 12], [12, 3], [14, 7], [4, 4], [12, 8], [4, 8]]},
-    "limits": "pack-layout.json giữ cả lưới, tên tile và nhóm điểm. Đọc lại đuôi trực tiếp từ pack, so bằng F1-e. Hai byte +29/+30 của Block31/32 chưa được gán nghĩa tổng quát."
+    "limits": "pack-layout.json giữ cả lưới, tên tile và nhóm điểm. Đọc lại đuôi trực tiếp từ pack, so bằng F1-e. Đính chính đợt 4: trong XML Data, +29/+30 đều 0; +33 bằng 1 cho Block30/31/32 và 0 cho Block33; +34 bằng 1 cho Block31/32, chưa rõ nghĩa."
   },
   "island": {
     "run_1_round_3": "A gửi 118 seq475: slot 0, serial 28, power 1, tọa độ [6,9]. Hai 159 seq193/205 cấp id 4. Sau 158 seq196/208, A/B gửi 142 đầu ở [6,10] sau 2,222/7,880 ms và 167 22 byte. Sau khoảng 516–531 ms, cả hai báo [5,10], [7,10], [6,11]; từ khoảng 1,03 s tiếp tục qua các thùng kế. Không có 159 hay 158 phụ trong cửa sổ chuỗi lan. Xem run-1/frame-review/r3-blast-waves-AB.png và measurements.json.",
     "run_1_limits": "Ván 1/2 chỉ mở đường rồi A bị nhốt. Ván 3, mỗi 142 mang slot người báo (A=0, B=1), không phải owner tia. Guard room_request chấm dứt hai stream ở opcode 167 sau burst; journal của ván là cancelled/no_players. Không dùng lỗi server làm kết luận luật gốc.",
-    "run_2_round_1": "Giữ xuống 620 ms từ [0,8] khi còn Block32 tại [0,9]: A vẫn ở x=0, y=359. A gửi 118 seq181 tại [0,8], power 1, id 1 từ 159; cả hai nhận 158 seq118. Chỉ báo ô [0,9] qua 142 seq202/166 và 167 seq205/169; [0,10] còn nguyên. UDP từ A sang B ghi x=0,y=389 sau khi phá, trong ô [0,9].",
+    "run_2_round_1": "Giữ xuống 620 ms từ [0,8] khi còn Block33 tại [0,9]: A vẫn ở x=0, y=359. A gửi 118 seq181 tại [0,8], power 1, id 1 từ 159; cả hai nhận 158 seq118. Chỉ báo ô [0,9] qua 142 seq202/166 và 167 seq205/169; [0,10] còn nguyên. UDP từ A sang B ghi x=0,y=389 sau khi phá, trong ô [0,9]. Trường hợp ban đầu được gán nhầm Block32; đối chiếu lại lưới và runtime +0xE0 ở lượt 7.",
     "run_5_block31": "A giữ xuống 420 ms về [5,10], dừng ở x=205,y=399. Bom id 2 tại [5,9] chạm đồng thời Block03 [4,9] và Block31 [5,10]. Sau 158 seq124, cả hai báo hai ô đầu; khoảng 519–526 ms sau báo [4,10], [6,10], [5,11] mà không có 158 mới. Đây là phép chạm nhiều ô, chưa cô lập tác nhân hoặc giải nghĩa +29/+30.",
     "run_5_adjacent_bomb": "Sau thử Block31, A phát 118 seq607 tại [6,9] và được 159 id 3. B phát 118 seq688 tại [5,10] nhưng không có 159 cho B hoặc 158 id 3 trước khi hai stream dừng ở guard 167. Không có đối chứng với hai bom cùng active; chain bom và phân bổ hit/owner vẫn unknown.",
     "counter": "Sampler read-only xác minh vtable 0x1747724 qua slot 0x1747784 = B9CC10; đọc row/col tại +0x9C/+0xA0 và +0xD0. Các mẫu quanh các phép nổ đã lưu chỉ thấy -1. Object còn trong heap không chứng minh còn ở ô; chưa đo được hai nhánh 14/0 hay nguồn hit của Block30. Định danh bom gốc A và deadline ~6 s là hành vi harness."
+  },
+  "followup": {
+    "pack_comparison": "Đối chiếu chỉ đọc xác nhận FxMap.idd và fx.idd trong gói M8 khác SHA tổng tệp. Chỉ số hai pack giống nhau; bốn map đã nêu và hai thành viên ObjectTable/ObjectTable, TileInfo/TileInfoList khớp từng byte. Xem pack-compare.json và tile-box-flags.json.",
+    "run_6_block31_isolated": "Bom tại [4,8] dọn [4,9] Block03 và [3,8] Block02; không chạm dải ngoài. Sau đó bom id 3 chỉ chạm Block31 [5,10]. Sau 158 seq130, A/B báo ô gốc sau 5,64/13,06 ms và ba ô [4,10], [6,10], [5,11] khoảng 502/543 ms sau 158. Cả hai đọc +0xE0=1 ở [5,10]; mẫu +0xD0=-1.",
+    "run_7_block32_and_block33": "Đối chứng trên cùng map Island06: Block33 [0,9] có +0xE0=0 và chỉ phát 142/167 một ô. Khi còn Block32 [0,10], A giữ xuống 450 ms vẫn ở y=399. Block32 có +0xE0=1. Bom id 2 từ [0,9] làm mất ô [0,10], rồi hai Block33 [1,10] và [0,11] sau khoảng 521–540 ms so với 158; cả hai view báo cùng các ô. Mẫu +0xD0=-1.",
+    "run_8_adjacent_bomb": "Ca có hai bom cùng active. Sau hai bom dọn Block33 [0,9] và [1,10], A gửi 118 seq220 ở [0,9] (slot 0, id 3), B gửi 118 seq190 ở [1,10] (slot 1, id 4), cả hai power 1, cùng nhận 159 seq127/130. Sau 158 id 3 seq133, B báo Block32 [0,10] ở 11,786 ms, rồi [0,11] ở 533,466 ms và 127/sub17 seq208 ở 537,306 ms. A đồng thời có 167 dài 12 và 22 byte; B có 167 dài 22 byte. Cả hai video thấy tia tại [2,10] trước 158 id 4, không thể do tia thẳng power 1 từ [0,9] hoặc riêng một bước từ [0,10].",
+    "run_8_ownership_limits": "B báo bị nhốt tại x=40,y=439 khoảng 1561,559 ms trước 158 riêng của id 4 trên chính stream B. Inner của 127/17 có hai u32 quan sát được [0,4294967295]; chưa gán nghĩa trường ghi công hit. Hai slot qua 118/159 chỉ xác định người đặt bom. Journal complete/elimination là kết quả server thử. Chưa đo lại hai bom cạnh Block30. Xem run-8/frame-review/block32-chain-AB.png."
   },
   "soul": {
     "run_3": "A đi đủ 8 điểm InnerSoul; B lặp [12,6]. [13,5] và [12,5] là đối chứng ô thường. Hai view có vị trí khớp tại mỗi đích.",
@@ -47,6 +54,7 @@
   "reproduction": {
     "prepare": "Từ worktree, đặt STEP0_WORKTREE bằng thư mục hiện hành, PYTHONPATH bằng tools và gốc worktree, PYTHONDONTWRITEBYTECODE=1. Tái dùng template CP397, build_catalog.py đọc source pack và tạo catalog cục bộ; run_pair_cp397.py preflight catalog --dry kiểm health.",
     "run": "Chạy run_pair_cp397.py <run> catalog; wrapper giữ flock .kr-wine-runtime.lock, tạo mount/net/PID namespace và reflink game/prefix, giới hạn /tmp riêng ở 48 MiB. Chạy cp397_control.py <run> <phase>; xem commands-*.json và các log phase dưới raw_root để tái lập các lượt. Tạo file stop trong thư mục run khi đo xong.",
+    "followup": "Biên dịch tile-field-sampler.cpp bằng i686-w64-mingw32-g++ -static -O2. Dùng runner-followup.py thay wrapper cũ, cùng lock và catalog; chạy isolate-block31.py (run-6), box32-counter.py rồi box32-target.py (run-7), box32-chain-pair.py (run-8). Sampler đọc bộ nhớ theo vtable như trước và giải giá trị +0xE0 bằng wrapper có CRC, không ghi trạng thái. followup-summary.py ghép timing, trace và journal. pack-compare.py và tile_box_flags.py đối chiếu chỉ đọc.",
     "decode": "Chạy decode_channel.py và decode_udp.py với đường dẫn từng run, ghi tcp-decoded.jsonl và udp-decoded.jsonl; summarize.py tạo measurements.json. compare_views.py ghép ảnh. TCP gồm mọi frame game ở channel loopback được capture, giải mã và kiểm CRC; UDP gồm mọi datagram IPv4 của hai namespace, giải phần native đã biết và giữ nguyên phần QUIC mã hóa. Capture không bao phủ TCP bootstrap ngoài channel hoặc giải nghĩa toàn bộ body opaque.",
     "cleanup": "Chỉ xóa bản sao game, prefix và scratch thuộc p104. Lượt Forest tự dọn sau gián đoạn khi đã kiểm không còn supervisor hoặc holder của prefix. Giữ ảnh, video, trace, log và biên nhận cục bộ. Không tạo rust/target."
   },
@@ -60,6 +68,17 @@
     "wine_scratch_removed_bytes": 23165026457,
     "ephemeral_identity_and_database_removed_bytes": 1221436,
     "cleanup_unit": "Tổng kích thước logic của file đã xóa, có reflink. Dung lượng trống /home khoảng 472 GiB lúc bắt đầu và 505166016512 byte sau cleanup."
+  },
+  "followup_capture": {
+    "tcp_crc_verified": 947,
+    "udp_captured": 13000,
+    "native_udp_crc_verified": 3825,
+    "manifest_entries": 385,
+    "sha256": {"SHA256SUMS-followup": "8ac079310ef7e72abc97cbdfbb91f85e3fd7bf5204b5d921e1f4bc9ef37b4363", "followup-measurements.json": "bb1f1b85af81b85e82440bcf474390e8f7856fcea6228bdd47118726fff17b7d", "followup-cleanup.json": "55e6d7c808d2f19cef55005fab35326de4b96bfad8a8bc188194c44c43bf7f50", "pack-compare.json": "891aafff324c0d55734a33f65dfe275090db54e80050c3e2afb9e8c8b451cce6", "tile-box-flags.json": "9ae98f00c53d3c3d914a5faf346209b433b5d90e15f4dbf1871a7e41ffd5ded5"},
+    "wine_scratch_removed_bytes": 13898961380,
+    "ephemeral_identity_and_database_removed_bytes": 627102,
+    "wine_scratch_removed_total_bytes": 37063987837,
+    "cleanup_unit": "Kích thước logic của file đã xóa. Trống /home khoảng 475 GiB trước lượt bổ sung và 509601030144 byte sau cleanup. Giữ nguyên SHA256SUMS của lượt gốc."
   },
   "docs_sync": {"terrain": "appended", "PLAN": "unchanged", "RESEARCH": "unchanged", "HISTORY": "unchanged", "COVERAGE": "unchanged", "features.json": "unchanged"}
 }
