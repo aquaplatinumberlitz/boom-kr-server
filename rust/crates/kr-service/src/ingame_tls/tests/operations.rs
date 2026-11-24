@@ -130,6 +130,8 @@ fn loopback_profile(input: &ServerConfig) -> crate::Validated {
                     patched_949x_names: true,
                     max_sessions: Some(16),
                     diagnostic_identity_strings: Default::default(),
+                    economy_policy: Default::default(),
+                    shop_catalog: Default::default(),
                 }),
             }),
         },

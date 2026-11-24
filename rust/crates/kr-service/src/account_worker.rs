@@ -1,8 +1,10 @@
 //! Typed bounded account queue; blocking SQLite/KDF work stays off Tokio tasks.
 //! No KR socket adapter. Queue expiry is checked before execution, not a timeout
 //! or rollback guarantee for an operation already running in SQLite/Argon2.
+mod economy;
 pub(crate) mod rate;
 use crate::accounts::{self, Grant, Player, Store, Token};
+pub use economy::{AccountService, EconomySettings};
 pub use rate::RatePolicy;
 use std::{
     path::PathBuf,
@@ -139,6 +141,7 @@ pub struct Client {
 }
 pub struct Worker {
     client: Client,
+    economy: Arc<EconomySettings>,
     thread: Option<thread::JoinHandle<Result<()>>>,
 }
 
@@ -226,6 +229,11 @@ enum Command {
         deadline: Instant,
         reply: oneshot::Sender<Result<Player>>,
     },
+    Economy {
+        request: economy::EconomyRequest,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<economy::EconomyReply>>,
+    },
     #[cfg(test)]
     Pause {
         entered: oneshot::Sender<()>,
@@ -257,14 +265,40 @@ impl Worker {
         queue_ttl: Duration,
         rate: RatePolicy,
     ) -> Result<Self> {
-        Self::open_mode(path, capacity, queue_ttl, rate, false).await
+        Self::open_mode(path, capacity, queue_ttl, rate, false, Default::default()).await
+    }
+    /// Normal worker with an operator economy. `EconomySettings::default()`
+    /// (rewards disabled, empty catalog) is identical to `open`.
+    pub async fn open_with_economy(
+        path: PathBuf,
+        capacity: usize,
+        queue_ttl: Duration,
+        economy: EconomySettings,
+    ) -> Result<Self> {
+        Self::open_mode(
+            path,
+            capacity,
+            queue_ttl,
+            RatePolicy::default(),
+            false,
+            economy,
+        )
+        .await
     }
     pub(crate) async fn open_live(
         path: PathBuf,
         capacity: usize,
         queue_ttl: Duration,
     ) -> Result<Self> {
-        Self::open_mode(path, capacity, queue_ttl, RatePolicy::default(), true).await
+        Self::open_mode(
+            path,
+            capacity,
+            queue_ttl,
+            RatePolicy::default(),
+            true,
+            Default::default(),
+        )
+        .await
     }
     async fn open_mode(
         path: PathBuf,
@@ -272,6 +306,7 @@ impl Worker {
         queue_ttl: Duration,
         rate: RatePolicy,
         live: bool,
+        economy: EconomySettings,
     ) -> Result<Self> {
         if !(1..=64).contains(&capacity)
             || !(Duration::from_millis(1)..=Duration::from_secs(60)).contains(&queue_ttl)
@@ -287,6 +322,8 @@ impl Worker {
             gate: gate.clone(),
             queue_ttl,
         };
+        let economy = Arc::new(economy);
+        let settings = economy.clone();
         let (startup, ready) = oneshot::channel();
         let task = thread::Builder::new()
             .name("kr-account-db".into())
@@ -303,11 +340,12 @@ impl Worker {
                 if startup.send(Ok(())).is_err() {
                     return Ok(());
                 }
-                run(&mut store, rx, live)
+                run(&mut store, rx, live, &settings)
             })
             .map_err(|_| Error::WorkerFault)?;
         let owner = Self {
             client,
+            economy,
             thread: Some(task),
         };
         match ready.await {
@@ -819,7 +857,12 @@ fn deliver_login(
     }
     accepted.map(|_| ())
 }
-fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> Result<()> {
+fn run(
+    store: &mut Store,
+    mut commands: mpsc::Receiver<Command>,
+    live: bool,
+    economy: &EconomySettings,
+) -> Result<()> {
     while let Some(command) = commands.blocking_recv() {
         match command {
             Command::Manage {
@@ -989,6 +1032,15 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                         PersistenceJob::BeginMatch(start) => {
                             store.begin_match(&start, now).map(PersistenceResult::Match)
                         }
+                        // F4: with rewards enabled the finish and its
+                        // idempotent settlement share one transaction. The
+                        // default disabled policy keeps the M6 path: no
+                        // ledger row and `match_players.reward` stays 0.
+                        PersistenceJob::FinishMatch(key, finish) if economy.rewards_enabled() => {
+                            store
+                                .finish_match_settled(&key, &finish, economy.policy(), now)
+                                .map(|(record, _)| PersistenceResult::Match(record))
+                        }
                         PersistenceJob::FinishMatch(key, finish) => store
                             .finish_match(&key, &finish, now)
                             .map(PersistenceResult::Match),
@@ -1117,6 +1169,27 @@ fn run(store: &mut Store, mut commands: mpsc::Receiver<Command>, live: bool) -> 
                         .map_err(Error::Backend)
                     })
                 };
+                let _ = reply.send(result);
+            }
+            Command::Economy {
+                request,
+                deadline,
+                reply,
+            } => {
+                if live {
+                    let _ = reply.send(Err(Error::InvalidInput));
+                    continue;
+                }
+                if reply.is_closed() {
+                    continue;
+                }
+                if Instant::now() >= deadline {
+                    let _ = reply.send(Err(Error::QueueExpired));
+                    continue;
+                }
+                let result = accounts::utc().map_err(Error::Backend).and_then(|now| {
+                    economy::execute(store, economy, request, now).map_err(Error::Backend)
+                });
                 let _ = reply.send(result);
             }
             #[cfg(test)]
