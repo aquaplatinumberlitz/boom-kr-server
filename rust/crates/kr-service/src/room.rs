@@ -161,6 +161,7 @@ pub struct Room {
     aborted: Option<(u64, Vec<Membership>)>,
     pub(crate) pickups: crate::pickups::Round,
     pub(crate) bombs: crate::bombs::Ledger,
+    pub(crate) script_events: usize,
     capacity: usize,
     pub(crate) round_roster: crate::rules::RoundRoster,
     allocation: SlotAllocation,
@@ -183,6 +184,7 @@ impl Default for Room {
             aborted: None,
             pickups: crate::pickups::Round::default(),
             bombs: crate::bombs::Ledger::default(),
+            script_events: 0,
             capacity: 2,
             round_roster: crate::rules::RoundRoster::Full,
             allocation: SlotAllocation::LegacyIdentity,
@@ -656,6 +658,7 @@ impl Room {
         self.aborted = None;
         self.round = round;
         self.last_blast = None;
+        self.script_events = 0;
         self.participants = if self.player_round() {
             self.members
                 .values()

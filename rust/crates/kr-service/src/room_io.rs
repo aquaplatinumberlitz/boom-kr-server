@@ -29,6 +29,8 @@ pub struct Config {
     pub(crate) endpoint_policy: rules::EndpointPolicy,
     #[serde(default)]
     pub(crate) allow_class_c_characters: bool,
+    #[serde(default)]
+    pub(crate) allow_f1e_dynamic_scripts: bool,
     pub title: String,
     #[serde(default)]
     pub map_profile: Option<crate::FixturePin>,
@@ -159,6 +161,7 @@ pub(crate) fn load_managed_round(
             item_policy: pickups::Policy::Disabled,
             player_choices: false,
             allow_class_c_characters: false,
+            allow_f1e_dynamic_scripts: false,
             map_bomb_cancellation: false,
         };
         (
@@ -265,6 +268,7 @@ pub(crate) fn load_player_round(
             endpoint: source.rules.endpoint,
             player_choices: true,
             allow_class_c_characters,
+            allow_f1e_dynamic_scripts: source.rules.allow_f1e_dynamic_scripts,
             ninth_admission_probe: false,
             life_actions: source.rules.life_actions,
             item_policy: source.rules.item_policy,
@@ -376,6 +380,10 @@ pub enum Guard {
     Bomb {
         member: Membership,
         ticket: bombs::Ticket,
+    },
+    ScriptBomb {
+        member: Membership,
+        round: u64,
     },
     Member(Membership, Option<u64>),
     Outcome(Membership, u64),
@@ -2017,6 +2025,9 @@ impl Session {
             Guard::Bomb { member, ref ticket } => {
                 r.model.deliverable(member, Some(ticket.round))
                     && r.model.bombs.deliverable(ticket, member)
+            }
+            Guard::ScriptBomb { member, round } => {
+                r.model.current(member) && r.model.phase == Phase::Armed { round }
             }
             Guard::Member(key, round) => r.model.deliverable(key, round),
             Guard::Outcome(key, round) => r.model.outcome_deliverable(key, round),
@@ -3738,6 +3749,94 @@ impl Session {
                     "inactive_round"
                 });
             }
+            228 => {
+                if !r.rules.allow_f1e_dynamic_scripts {
+                    return Err(err("f1e dynamic scripts disabled"));
+                }
+                let member = r.member(self.identity, self.connection)?;
+                let payload = wire::space_change_tile350(body)?;
+                if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(member.key)?;
+                    dropped_after_abort = true;
+                } else if next.phase == Phase::Idle {
+                    next.observe_after_abort(member.key)?;
+                    dropped_after_abort = true;
+                } else if let Phase::Armed { round } = next.phase
+                    && next.host == Some(member.key.identity)
+                    && next.script_events < 512
+                {
+                    next.script_events += 1;
+                    let reply = packet(350, payload);
+                    for peer in Runtime::transport_representatives(next.members.values()) {
+                        let mut batch = Runtime::member_batch(
+                            peer.key,
+                            Some(round),
+                            0,
+                            vec![("space350".into(), reply.clone())],
+                        );
+                        batch.subject = Some(member.key);
+                        effects.push((peer.key.identity, batch));
+                    }
+                }
+            }
+            148 => {
+                if !r.rules.allow_f1e_dynamic_scripts {
+                    return Err(err("f1e dynamic scripts disabled"));
+                }
+                let member = r.member(self.identity, self.connection)?;
+                let report = wire::sprinkler148(body)?;
+                if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(member.key)?;
+                    dropped_after_abort = true;
+                } else if next.phase == Phase::Idle {
+                    next.observe_after_abort(member.key)?;
+                    dropped_after_abort = true;
+                } else if let Phase::Armed { round } = next.phase
+                    && next.host == Some(member.key.identity)
+                    && next.script_events.saturating_add(report.cells.len()) <= 512
+                {
+                    for (row, col) in report.cells {
+                        let id = next.bombs.allocate_script_id(round)?;
+                        next.script_events += 1;
+                        let spawn = packet(
+                            159,
+                            wire::sprinkler_spawn159(
+                                report.script_source,
+                                u32::from(report.x),
+                                u32::from(report.y),
+                                row,
+                                col,
+                                report.power,
+                                report.damage,
+                                id,
+                            )?,
+                        );
+                        let blast = packet(158, bombs::explode158(id)?);
+                        for peer in Runtime::transport_representatives(next.members.values()) {
+                            let mut immediate = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                0,
+                                vec![("sprinkler159".into(), spawn.clone())],
+                            );
+                            immediate.subject = Some(member.key);
+                            effects.push((peer.key.identity, immediate));
+                            let mut due = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                2200,
+                                vec![("sprinkler158".into(), blast.clone())],
+                            );
+                            due.guard = Guard::ScriptBomb {
+                                member: peer.key,
+                                round,
+                            };
+                            due.subject = Some(member.key);
+                            effects.push((peer.key.identity, due));
+                        }
+                    }
+                }
+            }
             124 => {
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
@@ -5115,6 +5214,7 @@ mod ninth_probe_tests {
                 item_policy: pickups::Policy::Disabled,
                 player_choices: false,
                 allow_class_c_characters: false,
+                allow_f1e_dynamic_scripts: false,
                 slot_allocation: rules::SlotAllocation::LegacyIdentity,
                 endpoint: rules::EndpointPolicy::LegacyDirect,
             },
@@ -5717,6 +5817,10 @@ mod room_io_f1b_remote_tests;
 #[cfg(test)]
 #[path = "room_io_f1e_tests.rs"]
 mod room_io_f1e_tests;
+
+#[cfg(test)]
+#[path = "room_io_f1e_scripts_tests.rs"]
+mod room_io_f1e_scripts_tests;
 
 #[cfg(test)]
 #[path = "room_io_f1d_vehicles_tests.rs"]

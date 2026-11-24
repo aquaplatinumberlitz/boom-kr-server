@@ -78,7 +78,27 @@ impl Profile {
             | (2, "Aqua02")
             | (5, "Aqua05")
             | (6, "Aqua06")
-            | (862, "NXCL_Aqua01") => (STANDARD_SIZE, true, false),
+            | (862, "NXCL_Aqua01")
+            | (167, "CaJJ_Space02")
+            | (168, "CaJJ_Space08")
+            | (321, "Fm_Space01")
+            | (322, "Fm_Space02")
+            | (1113, "WL_Space08")
+            | (871, "NXCL_PangLand15")
+            | (885, "PangLand00")
+            | (886, "PangLand02")
+            | (887, "PangLand03")
+            | (888, "PangLand04")
+            | (889, "PangLand06")
+            | (890, "PangLand07")
+            | (891, "PangLand11")
+            | (892, "PangLand12")
+            | (893, "Pangland14")
+            | (894, "PangLand15")
+            | (895, "PangLand16") => (STANDARD_SIZE, true, false),
+            (code @ 1063..=1070, name) if name == format!("Space{:02}", code - 1062) => {
+                (STANDARD_SIZE, true, false)
+            }
             (81, "BSBigCamp08") | (82, "BSBigPatrit14") | (83, "BSBigVillage10") => {
                 (BIG_BATTLE_SIZE, false, false)
             }

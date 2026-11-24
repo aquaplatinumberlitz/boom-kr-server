@@ -171,6 +171,8 @@ pub struct RoomRules {
     pub(crate) player_choices: bool,
     /// Explicit opt-in to statically verified Class C rows in a player round.
     pub(crate) allow_class_c_characters: bool,
+    /// Opt-in F1-e Space (`228 -> 350`) and PangLand (`148 -> 159/158`) host script handlers.
+    pub(crate) allow_f1e_dynamic_scripts: bool,
     /// Opt-in ninth diagnostic lobby actor for the full-room negative consumer.
     pub(crate) ninth_admission_probe: bool,
 }
@@ -251,6 +253,7 @@ impl RoomRules {
                 item_policy: cfg.item_policy,
                 player_choices: false,
                 allow_class_c_characters: cfg.allow_class_c_characters,
+                allow_f1e_dynamic_scripts: cfg.allow_f1e_dynamic_scripts,
                 map_bomb_cancellation: cfg
                     .map_choices
                     .iter()

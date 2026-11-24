@@ -77,6 +77,15 @@ _RETRO_POPUPS = {
 }
 _LOVELY_ROOMS = frozenset(f'LovelyRoom{n:02}' for n in range(1, 11))
 _BIG_BATTLES = frozenset(('BSBigCamp08', 'BSBigPatrit14', 'BSBigVillage10'))
+_SPACE_MAPS = frozenset((
+    'CaJJ_Space02', 'CaJJ_Space08', 'Fm_Space01', 'Fm_Space02', 'WL_Space08',
+    *(f'Space{n:02}' for n in range(1, 9)),
+))
+_PANGLAND_MAPS = frozenset((
+    'NXCL_PangLand15', 'PangLand00', 'PangLand02', 'PangLand03', 'PangLand04',
+    'PangLand06', 'PangLand07', 'PangLand11', 'PangLand12', 'Pangland14',
+    'PangLand15', 'PangLand16',
+))
 
 # Khóa BomberAttr f0 đã cắt cho trận thường. Nhánh f1=3 (kể cả các
 # biến thể trùng tên C15/C08/C26) và nhóm đối thủ còn thiếu luật.
@@ -504,7 +513,7 @@ def f1e_bombs_disabled(raw, name):
         if script:
             raise unsupported()
         return False
-    if not script or name not in _AQUA_MARKERS | _LOVELY_ROOMS | _RETRO_POPUPS.keys():
+    if not script or name not in _AQUA_MARKERS | _LOVELY_ROOMS | _RETRO_POPUPS.keys() | _SPACE_MAPS | _PANGLAND_MAPS:
         raise unsupported()
     source = script.rstrip(b'\0').decode('cp949')
     if name in _LOVELY_ROOMS:
@@ -515,8 +524,30 @@ def f1e_bombs_disabled(raw, name):
         root = ET.fromstring(source.strip())
     except ET.ParseError as error:
         raise unsupported() from error
-    if (root.tag != 'mapscript' or root.attrib or len(root) != 1
-            or any((node.text or '').strip() or (node.tail or '').strip() for node in root.iter())):
+    if root.tag != 'mapscript' or root.attrib or not len(root):
+        raise unsupported()
+    if name in _PANGLAND_MAPS:
+        # Shipped PangLand06 contains a "##special attack" marker line beside <time>.
+        for node in root.iter():
+            for chunk in (node.text, node.tail):
+                text_chunk = (chunk or '').strip()
+                if text_chunk and not text_chunk.startswith('#'):
+                    raise unsupported()
+        if all(
+            (ch.tag == 'ground' and not len(ch))
+            or (ch.tag == 'limititemcount' and all(sub.tag == 'item' and not len(sub) for sub in ch))
+            or (ch.tag == 'time' and all(sub.tag in {'bomb', 'ground', 'mp3', 'state', 'wave'} and not len(sub) for sub in ch))
+            for ch in root
+        ) and any(ch.tag == 'time' for ch in root):
+            return False
+        raise unsupported()
+    if any((node.text or '').strip() or (node.tail or '').strip() for node in root.iter()):
+        raise unsupported()
+    if name in _SPACE_MAPS:
+        if all(ch.tag == 'changetile' and all(sub.tag == 'position' and not len(sub) for sub in ch) for ch in root):
+            return False
+        raise unsupported()
+    if len(root) != 1:
         raise unsupported()
     node = root[0]
     if name in _AQUA_MARKERS and node.tag == 'StageClearScript' and not node.attrib and not len(node):

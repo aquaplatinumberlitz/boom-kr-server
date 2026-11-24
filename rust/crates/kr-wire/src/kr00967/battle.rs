@@ -758,6 +758,173 @@ pub fn report127(body: &[u8]) -> io::Result<LifeReport127> {
     })
 }
 
+/// Wire `S->C 159` owner byte assigned to PangLand `CGOBombSprinkler` spawns (`p108` `0xE5E8F0`).
+pub const SPRINKLER_BOMB_OWNER: u8 = 25;
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct SpaceChangeTile228 {
+    pub strings: [Vec<u8>; 4],
+    pub danger_time: u32,
+    pub danger_alpha: u32,
+    pub danger_speed: u32,
+    pub danger_color: u32,
+    pub cells: Vec<(u32, u32)>,
+    pub flag_a: u8,
+    pub flag_b: u8,
+}
+
+/// Decodes host `C->S 228` tile-change broadcast (`p108` `0x483060` / `CaJJ_Space02`).
+pub fn space_change_tile228(body: &[u8]) -> io::Result<SpaceChangeTile228> {
+    let err = || io::Error::other("unsupported Space C->S 228 payload");
+    let mut at = 0usize;
+    let take = |at: &mut usize, n: usize| -> io::Result<&[u8]> {
+        let end = at.checked_add(n).ok_or_else(err)?;
+        let slice = body.get(*at..end).ok_or_else(err)?;
+        *at = end;
+        Ok(slice)
+    };
+    let mut strings = [Vec::new(), Vec::new(), Vec::new(), Vec::new()];
+    for slot in &mut strings {
+        let len = uint(take(&mut at, 2)?, Width::U16)? as usize;
+        if len > 64 {
+            return Err(err());
+        }
+        *slot = super::decode_bytes(take(&mut at, len)?)?;
+    }
+    let danger_time = uint(take(&mut at, 4)?, Width::U32)? as u32;
+    let danger_alpha = uint(take(&mut at, 4)?, Width::U32)? as u32;
+    let danger_speed = uint(take(&mut at, 4)?, Width::U32)? as u32;
+    let danger_color = uint(take(&mut at, 4)?, Width::U32)? as u32;
+    let count = uint(take(&mut at, 4)?, Width::U32)? as usize;
+    if !(1..=195).contains(&count) {
+        return Err(err());
+    }
+    let mut cells = Vec::with_capacity(count);
+    for _ in 0..count {
+        let x = uint(take(&mut at, 4)?, Width::U32)? as u32;
+        let y = uint(take(&mut at, 4)?, Width::U32)? as u32;
+        if (x != u32::MAX && x >= 15)
+            || (y != u32::MAX && y >= 13)
+            || (x == u32::MAX && y == u32::MAX)
+        {
+            return Err(err());
+        }
+        cells.push((x, y));
+    }
+    let flag_a = uint(take(&mut at, 1)?, Width::U8)? as u8;
+    let flag_b = uint(take(&mut at, 1)?, Width::U8)? as u8;
+    if at != body.len() {
+        return Err(err());
+    }
+    Ok(SpaceChangeTile228 {
+        strings,
+        danger_time,
+        danger_alpha,
+        danger_speed,
+        danger_color,
+        cells,
+        flag_a,
+        flag_b,
+    })
+}
+
+/// Validates host `C->S 228` and mirrors its exact body as `S->C 350` (`p108` `0xE6A3C0`).
+pub fn space_change_tile350(body: &[u8]) -> io::Result<Vec<u8>> {
+    space_change_tile228(body)?;
+    Ok(body.to_vec())
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct SprinklerReport148 {
+    pub script_source: u32,
+    pub x: u16,
+    pub y: u16,
+    pub power: u8,
+    pub damage: u32,
+    pub state: u16,
+    pub cells: Vec<(u8, u8)>,
+}
+
+/// Decodes host `C->S 148` sprinkler bomb request (`p108` `0xE733D0` / `PangLand`).
+pub fn sprinkler148(body: &[u8]) -> io::Result<SprinklerReport148> {
+    let err = || io::Error::other("unsupported PangLand C->S 148 payload");
+    if body.len() < 16 {
+        return Err(err());
+    }
+    let script_source = uint(&body[..4], Width::U32)? as u32;
+    let count = uint(&body[4..5], Width::U8)? as usize;
+    if !(1..=64).contains(&count) || body.len() != 16 + 2 * count {
+        return Err(err());
+    }
+    let y = uint(&body[5..7], Width::U16)? as u16;
+    let x = uint(&body[7..9], Width::U16)? as u16;
+    let power = uint(&body[9..10], Width::U8)? as u8;
+    if !(1..=10).contains(&power) {
+        return Err(err());
+    }
+    let damage = uint(&body[10..14], Width::U32)? as u32;
+    let state = uint(&body[14..16], Width::U16)? as u16;
+    let mut cells = Vec::with_capacity(count);
+    for i in 0..count {
+        let base = 16 + 2 * i;
+        let row = uint(&body[base..base + 1], Width::U8)? as u8;
+        let col = uint(&body[base + 1..base + 2], Width::U8)? as u8;
+        if row >= 13 || col >= 15 {
+            return Err(err());
+        }
+        cells.push((row, col));
+    }
+    Ok(SprinklerReport148 {
+        script_source,
+        x,
+        y,
+        power,
+        damage,
+        state,
+        cells,
+    })
+}
+
+/// Serializes the 39-byte `S->C 159` sprinkler bomb spawn (`owner = 25`, `p108` `pang-159`).
+#[allow(clippy::too_many_arguments)]
+pub fn sprinkler_spawn159(
+    serial: u32,
+    x: u32,
+    y: u32,
+    row: u8,
+    column: u8,
+    power: u8,
+    damage: u32,
+    id: u16,
+) -> io::Result<Vec<u8>> {
+    if row >= 13 || column >= 15 || !(1..=10).contains(&power) {
+        return Err(io::Error::other("unsupported sprinkler spawn159 bounds"));
+    }
+    let mut out = Vec::with_capacity(39);
+    for (v, w) in [
+        (0, Width::U8),
+        (u64::from(SPRINKLER_BOMB_OWNER), Width::U8),
+        (0, Width::U16),
+        (u64::from(serial), Width::U32),
+        (u64::from(x), Width::U32),
+        (u64::from(y), Width::U32),
+        (u64::from(row), Width::U8),
+        (u64::from(column), Width::U8),
+        (u64::from(power), Width::U8),
+        (u64::from(damage), Width::U32),
+        (0, Width::U8),
+        (u64::from(id), Width::U16),
+        (0, Width::U16),
+        (1, Width::U8),
+        (0, Width::U64),
+        (0, Width::U8),
+        (0, Width::U8),
+    ] {
+        out.extend(write_uint(v, w).map_err(io::Error::other)?);
+    }
+    Ok(out)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1030,5 +1197,90 @@ mod tests {
         for (bytes, expected) in live_sub0 {
             assert_eq!(item_use127(&bytes).unwrap().kind, expected);
         }
+    }
+
+    #[test]
+    fn captured_space228_and_pangland148_159_codecs() {
+        // p108 CaJJ_Space02 run space-dual, C->S 228 seq 175 -> exact mirror S->C 350.
+        let space228 = [
+            0xa5, 0x64, 0xf3, 0xa6, 0x3a, 0xe1, 0xe5, 0x95, 0x65, 0xa6, 0xff, 0xbe, 0x32, 0xe1,
+            0x39, 0xa5, 0x6f, 0xf3, 0xa6, 0x3a, 0xe1, 0x95, 0x59, 0xa5, 0x6f, 0xf3, 0xa6, 0x3a,
+            0xe1, 0x94, 0x59, 0xa5, 0x6d, 0xfa, 0xa6, 0x32, 0xf3, 0x96, 0xca, 0x54, 0x45, 0x96,
+            0xca, 0x53, 0xcf, 0x96, 0xca, 0x53, 0x91, 0x96, 0x35, 0x53, 0x95, 0x96, 0xca, 0x53,
+            0x94, 0x69, 0x35, 0xac, 0x6a, 0x96, 0xca, 0x53, 0x95, 0x5b, 0x5a,
+        ];
+        let parsed228 = space_change_tile228(&space228).unwrap();
+        assert_eq!(
+            parsed228,
+            SpaceChangeTile228 {
+                strings: [
+                    b"tile36_static".to_vec(),
+                    b"tile00".to_vec(),
+                    b"tile01".to_vec(),
+                    b"fall".to_vec(),
+                ],
+                danger_time: 2000,
+                danger_alpha: 90,
+                danger_speed: 4,
+                danger_color: 16_711_680,
+                cells: vec![(u32::MAX, 0)],
+                flag_a: 1,
+                flag_b: 0,
+            }
+        );
+        assert_eq!(space_change_tile350(&space228).unwrap(), space228);
+        assert!(space_change_tile228(&space228[..66]).is_err());
+        let mut extra228 = space228.to_vec();
+        extra228.push(0);
+        assert!(space_change_tile228(&extra228).is_err());
+
+        // p108 NXCL_PangLand15 (18B) & PangLand03 (28B, 30B) C->S 148 captures.
+        let pang_early = [
+            0x69, 0x35, 0xac, 0x6a, 0x5b, 0xa5, 0xdb, 0xa4, 0x75, 0x5b, 0x96, 0xca, 0x53, 0x94,
+            0xa5, 0x6a, 0x5a, 0x5b,
+        ];
+        assert_eq!(
+            sprinkler148(&pang_early).unwrap(),
+            SprinklerReport148 {
+                script_source: u32::MAX,
+                x: 284,
+                y: 178,
+                power: 1,
+                damage: 1,
+                state: 3,
+                cells: vec![(0, 1)],
+            }
+        );
+
+        let pang_repeat_6 = [
+            0x69, 0x35, 0xac, 0x6a, 0x5c, 0xa5, 0x78, 0xa4, 0x4b, 0x5b, 0x96, 0xca, 0x53, 0x94,
+            0xa5, 0x6a, 0x5d, 0x5e, 0x51, 0x57, 0x56, 0x50, 0x5d, 0x51, 0x5a, 0x5f, 0x59, 0x5b,
+        ];
+        assert_eq!(
+            sprinkler148(&pang_repeat_6).unwrap().cells,
+            vec![(7, 4), (11, 13), (12, 10), (7, 11), (0, 5), (3, 1)]
+        );
+
+        let pang_repeat_7 = [
+            0x69, 0x35, 0xac, 0x6a, 0x5d, 0xa5, 0x78, 0xa4, 0x4b, 0x58, 0x96, 0xca, 0x53, 0x94,
+            0xa5, 0x6a, 0x5f, 0x5d, 0x5d, 0x53, 0x5d, 0x50, 0x5d, 0x5f, 0x56, 0x52, 0x56, 0x5e,
+            0x5b, 0x5e,
+        ];
+        let parsed_7 = sprinkler148(&pang_repeat_7).unwrap();
+        assert_eq!(parsed_7.power, 2);
+        assert_eq!(parsed_7.cells.len(), 7);
+        assert!(sprinkler148(&pang_early[..17]).is_err());
+
+        // Exact 39B body decoded from p108 followup S->C 159 capture (frame seq 115, owner 25, id 901).
+        let expected_159 = [
+            0x5a, 0x43, 0xa5, 0x69, 0x69, 0x35, 0xac, 0x6a, 0x96, 0xca, 0x53, 0x9f, 0x96, 0xca,
+            0x52, 0x80, 0x5d, 0x58, 0x5b, 0x96, 0xca, 0x53, 0x94, 0x5a, 0xa6, 0xec, 0xa5, 0x69,
+            0x5b, 0x00, 0x00, 0x00, 0x00, 0x71, 0xb1, 0x85, 0x89, 0x5a, 0x5a,
+        ];
+        assert_eq!(
+            sprinkler_spawn159(u32::MAX, 10, 277, 7, 2, 1, 1, 901).unwrap(),
+            expected_159
+        );
+        assert!(sprinkler_spawn159(u32::MAX, 10, 277, 13, 2, 1, 1, 901).is_err());
     }
 }

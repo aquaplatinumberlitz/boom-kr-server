@@ -143,6 +143,21 @@ class F1eAdapterTests(unittest.TestCase):
                 'Tile15_Static/Bf01_01': (*bula_tile[:9], 10199, *bula_tile[10:]),
             }))
 
+    def test_space_and_pangland_xml_rules_fail_closed(self):
+        space_ok = '<changetile ms="20000"><position x="-1" y="0"/></changetile>'
+        self.assertNotIn('disable_bombs', read('CaJJ_Space02', payload(space_ok)))
+        pang_ok = '<limititemcount><item name="Item/ItemBomb"/></limititemcount><time ms="2000"><bomb/><wave/></time>'
+        self.assertNotIn('disable_bombs', read('PangLand03', payload(pang_ok)))
+        self.assertNotIn('disable_bombs', read('PangLand06', payload(pang_ok + '\n##special attack\n')))
+        for name, body in [
+            ('CaJJ_Space02', ''),
+            ('CaJJ_Space02', '<changetile><other/></changetile>'),
+            ('PangLand03', '<time ms="2000"><item name="Item/ItemBomb"/></time>'),
+            ('PangLand03', '<ground/>'),
+        ]:
+            with self.subTest(name=name, body=body), self.assertRaisesRegex(ValueError, 'Script ngoài adapter'):
+                read(name, payload(body))
+
     def test_bigbattle_floor_cannot_emit_items_outside_legacy_floor_grid(self):
         profile = read('BSBigCamp08', payload(size=(19, 17)))
         profile['drops'] = [['Item/ItemBomb', 1]]
@@ -189,7 +204,7 @@ def verify_pack(game, baseline_ref):
         for name, row in specs['maps'].items():
             family = row['family']
             if row['spec'].get('variant') != 'stage_clear_marker_only' and family not in {
-                'retro_popup', 'lovelyroom', 'bigbattle'
+                'retro_popup', 'lovelyroom', 'bigbattle', 'space', 'pangland'
             }:
                 continue
             try:
@@ -210,7 +225,7 @@ def verify_pack(game, baseline_ref):
             assert json.loads(rules)['terrain'].get('disable_bombs', False) == (family == 'lovelyroom')
             result[name] = dict(result='exported', profile_sha256=adapter.sha(blob), rules_sha256=adapter.sha(rules))
     blocked = {name for name, row in result.items() if row['result'] == 'blocked'}
-    assert len(result) == 37 and blocked == {
+    assert len(result) == 62 and blocked == {
         'Aqua08', *(f'RetroCampN{n:02}' for n in range(1, 6)),
     }, result
     return dict(f1a_baseline=baseline_ref, f1a_equal=len(baseline_names), f1a_pending=len(names),

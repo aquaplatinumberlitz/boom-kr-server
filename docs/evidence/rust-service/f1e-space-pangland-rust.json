@@ -1,0 +1,53 @@
+{
+  "schema": "kre-f1e-space-pangland-rust-v1",
+  "task": "f1e-space-pangland-rust",
+  "build": "KR 00967",
+  "baseline": "5d95458",
+  "source": "kr_runtime + emu_choice",
+  "status": "candidate",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "sources": [
+    {
+      "path": "docs/evidence/item-families/f1e-space-pangland-wine.json",
+      "pr": 633,
+      "scope": "2-client Wine shadow captures for CaJJ_Space02 (C->S 228 -> S->C 350) and NXCL_PangLand15/PangLand03 (C->S 148 -> S->C 159/158)"
+    },
+    {
+      "path": "docs/evidence/content/f1e-dynamic-scripts-ida.json",
+      "pr": 630,
+      "scope": "Static writers/readers for CMapScriptChangeTile (228/0xE6A3C0) and CMapScriptSprinkler (148/0xE733D0, 159 owner 25)"
+    }
+  ],
+  "implemented": {
+    "opt_in_flag": "fixed_room.allow_f1e_dynamic_scripts (default false)",
+    "codecs": [
+      "kr_wire::kr00967::space_change_tile228",
+      "kr_wire::kr00967::space_change_tile350",
+      "kr_wire::kr00967::sprinkler148",
+      "kr_wire::kr00967::sprinkler_spawn159 (owner 25)"
+    ],
+    "service_handlers": {
+      "228": "Host-only during Armed; validates SpaceChangeTile228 and mirrors exact body as S->C 350 to all transport representatives (cap 512 script events per round).",
+      "148": "Host-only during Armed; validates SprinklerReport148 and allocates non-colliding bomb wire IDs to emit S->C 159 (owner 25) immediately + S->C 158 after 2200ms guarded by Guard::ScriptBomb."
+    },
+    "pack_export_and_catalog": {
+      "space": 13,
+      "pangland": 12
+    }
+  },
+  "kept_closed": [
+    "C->S 149 (CGOTileStaticLucci) and C->S 233 (<time><item>) remain closed/unimplemented because runtime semantics on stock KR 00967 packs are unconfirmed.",
+    "No live Wine end-to-end run against kr-service for Space/PangLand was executed in this turn."
+  ],
+  "verification": [
+    "cargo fmt --manifest-path rust/Cargo.toml --all --check",
+    "cargo clippy --manifest-path rust/Cargo.toml --workspace --all-targets --locked -- -D warnings",
+    "cargo test --manifest-path rust/Cargo.toml --workspace --locked -- --test-threads=4",
+    "PYTHONPATH=tools python3 tools/test_f1e_adapter.py --pack-root <pack-root>",
+    "PYTHONPATH=tools python3 -m unittest tools.test_kr_pack_items tools.test_f1_pack_matrix tools.test_kr_f1e_script_audit tools.test_f1e_adapter",
+    "python3 tools/check_docs.py"
+  ]
+}
