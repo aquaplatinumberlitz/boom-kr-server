@@ -1,0 +1,70 @@
+{
+  "id": "CP394",
+  "previous": "CP393",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-24T01:23:08+00:00",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Hai client KR 00967 trên catalog pack mới xác nhận được gì về Shoe, Punch, Kim cố định và reset F1-b?",
+  "scope": "p90, baseline 994daf7; hai lượt Wine ngày 24/11/2026 trong namespace riêng có lease. Nghiệm thu một phần trên hai map, không dùng run G1 làm bằng chứng.",
+  "context_commit": "994daf703d53a5369f538d418b617f68bb783ef2",
+  "artifacts": [
+    {"name": "kr-service x86_64 release locked", "sha256": "9071eed06dcacabc41310962a747e35573a5747715e04791b630159d1a487130"},
+    {"name": "CA.exe KR 00967, bản copy chẩn đoán Wine A/B", "sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"name": "Manifest catalog pack mới", "sha256": "91a4cf6c030bbf0e3e615a07fbe72179b0d28cf650b9cba5f7d3ee40d37e001d"}
+  ],
+  "locators": ["docs/protocol/load-phase.md#f1-pack-floor", "docs/PLAN.md#f1-normal-battle", "local/runs/f1b-native-accept-r2", "tools/kr_pack_export.py", "tools/kr_pack_config.py"],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/load-phase.md#f1-pack-floor", "summary": "Đọc pack KR 00967 đã pin: Cookie07 và SuperFighter19 có đủ ba placement 100% nhưng baseline từ chối ở Tile19_Static/Block12 và Tile23_Static/Temple14. Catalog F1-a xuất mới dùng Forest24 cho Kim và CAhero119 cho Shoe/Punch.", "limits": "11 entry map không decode được. Chưa đo luật terrain của hai ứng viên; không sửa phần p89 hoặc tự đặt thêm item.", "evidence": ["SURVEY", "BUILD_EXPORT", "CATALOG"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/load-phase.md#f1-pack-floor", "summary": "Trên Forest24, hai client nhận 582 list1 với Kim 145 tại (hàng 6, cột 7), nhận 165 sau claim 124 của B. B bị nhốt, Ctrl trái tạo 127/1 và 127/0 với kind 145, A nhận 170/1. Ảnh B xác nhận thoát và ô Ctrl về trống; Ctrl lại không tạo cặp report mới.", "limits": "Đo đúng một Kim cố định và một lần thoát; không suy Kim ẩn hoặc reset túi trên cùng map.", "evidence": ["WIRE", "VERIFIED", "NEEDLE_TRAP", "NEEDLE_ESCAPE"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/load-phase.md#f1-pack-floor", "summary": "Trên CAhero119, A nhặt Shoe (hàng 2, cột 0) và Punch (hàng 6, cột 0) qua 124/165. Shoe selector 7 đẩy bom (4,0) → (9,0); Punch selector 3 ném bom (7,0) → (5,0). Hai client nhận 162 khớp prefix 119 của từng hành động.", "limits": "Một hành lang và một hướng cho mỗi item; các item đều cố định. Lượt đầu không có capture hai chiều đủ để khẳng định hiệu ứng.", "evidence": ["WIRE", "VERIFIED", "SHOE", "PUNCH"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/load-phase.md#f1-pack-floor", "summary": "Lượt có capture hoàn tất ba ván cùng phòng: Forest24 → CAhero119 → CAhero119. Hai kết nối đều có 99/121/153/196, 175/180 và refresh về phòng. Ván kế trên CAhero119 có key mới, floor giống pack và claim mới cho cả Shoe/Punch. Ảnh xác nhận bảng kết quả và phòng trên client.", "limits": "Reset đã đo ở floor, key và khả năng nhặt lại. Không suy reset mọi cờ nội bộ, toàn bộ họ map, Internet hoặc server KR gốc.", "evidence": ["VERIFIED", "WIRE", "RESET", "SCOREBOARD", "ROOM_A", "ROOM_B"]}
+  ],
+  "verification": [
+    {"check": "Đối chiếu pin pack, manifest export mới, binary locked và CRC capture TCP.", "result": "pass", "evidence": ["BUILD_EXPORT", "WIRE", "VERIFIED"], "limits": "Capture ở TCP loopback giữa client và companion trong namespace riêng."},
+    {"check": "Kết quả, refresh phòng, floor và key ván kế.", "result": "pass", "evidence": ["VERIFIED", "SCOREBOARD", "ROOM_A", "ROOM_B"], "limits": "Chỉ ba ván của lượt có capture; ảnh bảng kết quả ở CAhero119."},
+    {"check": "Tìm map có đủ Shoe, Punch và Kim cố định để nghiệm thu cùng map.", "result": "fail", "limits": "Hai ứng viên có đủ placement 100% bị adapter terrain từ chối trước runtime. Các map được chạy chỉ chứng minh từng item.", "evidence": ["SURVEY"]},
+    {"check": "Dọn hai bản sao game, prefix và tiến trình trong namespace.", "result": "pass", "limits": "Launcher ngoài lượt một kết thúc với 143. Namespace đã lưu biên nhận không còn tiến trình; xóa scratch lượt đó sau khi lấy lại lease. Lượt hai exit 0.", "evidence": ["CLEANUP_1", "CLEANUP_2"]},
+    {"check": "Rust fmt, clippy workspace và test kr-service với oracle 949x tạm.", "result": "pass", "limits": "Build/test không thay bằng chứng gameplay.", "evidence": ["RUST_TEST"]}
+  ],
+  "delta": {"added": ["Bằng chứng Wine mới cho ba item cố định trên hai map trong một catalog, cùng giới hạn nghiệm thu một map."], "corrected": [], "superseded": []},
+  "blockers": ["Cookie07 và SuperFighter19 cần adapter terrain phù hợp trước phép thử ba item trên cùng map. Không nâng phân loại."],
+  "next_steps": [
+    {"id": "F1B-SAME-MAP-ACCEPTANCE", "task": "KRE-F1-B", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Sau p89, xuất lại một map ứng viên có đủ ba placement và kiểm bằng hai client thật; giữ Kim ở list1."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-24T01:23:08+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự đối chiếu capture, ảnh và journal.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa hoàn tất nhóm F1-b."},
+    {"path": "docs/PLAN.md", "state": "unchanged", "reason": "Điều phối cập nhật sau p89 và p90 theo scope được giao."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Trang chỉ mục giữ nguyên; cập nhật chương load phase."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng nhóm; ghi phép thử tiếp trong CP394."},
+    {"path": "docs/content/classification.json", "state": "unchanged", "reason": "Không đủ bằng chứng để nâng lớp của họ map."},
+    {"path": "docs/protocol/load-phase.md", "state": "updated", "reason": "Ghi đúng phần native đã xác nhận và giới hạn một map."},
+    {"path": "docs/evidence/checkpoints/records/CP394.json", "state": "updated", "reason": "Pin bằng chứng mới và biên nhận dọn dẹp."}
+  ],
+  "evidence": [
+    {"id": "BUILD_EXPORT", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-receipt.json", "bytes": 3692, "sha256": "81e8e11f5410e590496475162248a5ae52c35351c31789e6de2215feccb412ff"},
+    {"id": "SURVEY", "kind": "local", "path": "local/runs/f1b-native-accept-r2/floor-survey.json", "bytes": 35146, "sha256": "6aa21e0e4180c4618b15533a1c52f9fb77f6f3f15fcf8876a4ec359ab95c7cb5"},
+    {"id": "VERIFIED", "kind": "local", "path": "local/runs/f1b-native-accept-r2/verification.json", "bytes": 6318, "sha256": "61016a224101bc720353b3a31fb9a87871de40558db13d787abfbb2641841944"},
+    {"id": "CATALOG", "kind": "local", "path": "local/runs/f1b-native-accept-r2/catalog/provenance.json", "bytes": 1747, "sha256": "999343ddf43bf47634f34a3fdfbf79061fe8575ac680521d54f18cbfaca1ac74"},
+    {"id": "WIRE", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/wire.jsonl", "bytes": 33222, "sha256": "e0857d91c519e87cfa4ee4a4755b22bfa5845e4e2df58874a33383a36b81d3fa"},
+    {"id": "NEEDLE_TRAP", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r1-trap-B.png", "bytes": 142398, "sha256": "f7851cab87603646750b313c88ad86152725a186c40f07bed1e70740b2f3ece6"},
+    {"id": "NEEDLE_ESCAPE", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r1-empty-ctrl-B.png", "bytes": 127985, "sha256": "6145597c287e6bca00c63a2f3ecd7ec4e6eed068a0195a2b3e441b5215557280"},
+    {"id": "SHOE", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r2-shoe-action-A.png", "bytes": 149654, "sha256": "b375c3be53c94f23b9cbd114c0b209c6529b24cf9654e1c8c1d0e238dee7cb7a"},
+    {"id": "PUNCH", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r3-punch-motion-A.png", "bytes": 148600, "sha256": "a64e0e30d219b4f4f6ff6b8dc271258b80114f6e7f57eece0b0e02c7a0020b49"},
+    {"id": "RESET", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r3-arena-A.png", "bytes": 196215, "sha256": "69450247b13dcabe3736314bd4b2c6afecd057bad5ba9624ad533c5c31a7c689"},
+    {"id": "SCOREBOARD", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r3-outcome-6-A.png", "bytes": 167689, "sha256": "1dba4f173308ba2a1e23697b71c91df77bf7128b37b3978ebbdbc5365270e3bb"},
+    {"id": "ROOM_A", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r3-room-final-A.png", "bytes": 176467, "sha256": "69306b90950f5bd559fec99aa9d9473faf98cb06e44762d5c3c34a2f10471cb9"},
+    {"id": "ROOM_B", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/r3-room-final-B.png", "bytes": 176638, "sha256": "16e8295e088f512cf627f7672f38a4b57e43c9d28dbb2eb993d9bc56e721fa90"},
+    {"id": "CLEANUP_1", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-1/cleanup.json", "bytes": 147, "sha256": "a324c2603776f6be39a98c060ae89a91f7dd2958c94cc4efe5a93629a0ba17c4"},
+    {"id": "CLEANUP_2", "kind": "local", "path": "local/runs/f1b-native-accept-r2/run-2/cleanup.json", "bytes": 100, "sha256": "4e035d1d559de632962c84859cbf0b8b708dc52618c253feb0e594e6bf99bd38"},
+    {"id": "RUST_TEST", "kind": "local", "path": "local/runs/f1b-native-accept-r2/checks/cargo-test.log", "bytes": 38256, "sha256": "f3cee868ddac2bae31aeaf99aa44bc6b9177813fe8a588f842311d3c16d18fe0"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f1b-native-accept-r2", "path": "local/evidence-manifests/8f6f4aacb32464e7d9dde2319fcbb8fc61d6d0c14b5dbfdad01346cab314908e.jsonl", "sha256": "8f6f4aacb32464e7d9dde2319fcbb8fc61d6d0c14b5dbfdad01346cab314908e", "bytes": 1713, "count": 9, "files_bytes": 49767},
+    {"run": "local/runs/f1b-native-accept-r2/checks", "path": "local/evidence-manifests/5d64ced36917955d7cff0ac958142dd4310b61aa443eafe7f26f204dc60eee52.jsonl", "sha256": "5d64ced36917955d7cff0ac958142dd4310b61aa443eafe7f26f204dc60eee52", "bytes": 440, "count": 2, "files_bytes": 72},
+    {"run": "local/runs/f1b-native-accept-r2/run-1", "path": "local/evidence-manifests/0c5d2e7e6599cb2b065e05b79add8c10eceacd8aa3434cdcd5a3c236749bee4c.jsonl", "sha256": "0c5d2e7e6599cb2b065e05b79add8c10eceacd8aa3434cdcd5a3c236749bee4c", "bytes": 1418, "count": 7, "files_bytes": 210651},
+    {"run": "local/runs/f1b-native-accept-r2/run-2", "path": "local/evidence-manifests/0f113ab68493cd2678bcf9d83b600c71260b7a68df3c3f860ae287148947b34c.jsonl", "sha256": "0f113ab68493cd2678bcf9d83b600c71260b7a68df3c3f860ae287148947b34c", "bytes": 2962, "count": 15, "files_bytes": 1177078},
+    {"run": "local/runs/f1b-native-accept-r2/export", "path": "local/evidence-manifests/a8556b52e5c7ac20d2d24cbdd774c3d6c35a20b78357efaee8224304d5d993f4.jsonl", "sha256": "a8556b52e5c7ac20d2d24cbdd774c3d6c35a20b78357efaee8224304d5d993f4", "bytes": 1604, "count": 6, "files_bytes": 26986}
+  ]
+}

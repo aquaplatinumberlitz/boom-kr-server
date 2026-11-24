@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP393",
-  "completed_count": 393,
+  "last_id": "CP394",
+  "completed_count": 394,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1277,6 +1277,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md#full-game-roadmap",
       "reference": "https://github.com/aquaplatinumberlitz/boom-kr-server/issues/558"
+    },
+    {
+      "id": "KRE-F1-B",
+      "state": "open",
+      "canonical": "docs/PLAN.md#f1-normal-battle",
+      "reference": "docs/protocol/load-phase.md#f1-pack-floor"
     }
   ],
   "version": 2,
@@ -4424,6 +4430,14 @@
       "path": "docs/evidence/checkpoints/records/CP393.json",
       "bytes": 7542,
       "sha256": "3419285a29d8709c67e004cf8f4887bd8913c47cb11fdbfe2e9f3b1c17c45ab7"
+    },
+    {
+      "id": "CP394",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-24T01:23:08+00:00",
+      "path": "docs/evidence/checkpoints/records/CP394.json",
+      "bytes": 11732,
+      "sha256": "c1dcd93d326795261e3a80c74ac7264545338520fe6a065b5ba6efd00aa84b29"
     }
   ],
   "audit_policy": {
