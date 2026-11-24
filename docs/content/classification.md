@@ -16,7 +16,7 @@ Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; gi�
 | Họ map | 1 | 85 | 247 | 0 |
 | Nhóm item | 1 | 2 | 75 | 0 |
 | Phương tiện | 0 | 0 | 28 | 0 |
-| Nhân vật | 2 | 32 | 33 | 0 |
+| Nhân vật | 4 | 30 | 33 | 0 |
 | Mode | 1 | 0 | 31 | 0 |
 | Hệ thống | 4 | 5 | 51 | 1 |
 
@@ -494,8 +494,8 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 |---|---|---|---|---|
 | C00 | F1 | A | 1 | Dùng profile nhân vật G1. |
 | C01 | F1 | A | 2 | Dùng profile nhân vật G1. |
-| C03 | F1 | B | 3 | Đối chiếu key Room/Battle, cap và quyền chọn; không suy key từ tên. |
-| C05 | F1 | B | 4 | Đối chiếu key Room/Battle, cap và quyền chọn; không suy key từ tên. |
+| C03 | F1 | A | 3 | Hai client Wine chọn nhân vật, nhặt tới trần, nhận kết quả và về phòng trên Forest24; ván kế đổi nhân vật và xác nhận reset chỉ số. |
+| C05 | F1 | A | 4 | Hai client Wine chọn nhân vật, nhặt tới trần, nhận kết quả và về phòng trên Forest24; ván kế đổi nhân vật và xác nhận reset chỉ số. |
 | C04 | F1 | B | 5 | Đối chiếu key Room/Battle, cap và quyền chọn; không suy key từ tên. |
 | C06 | F1 | B | 6 | Đối chiếu key Room/Battle, cap và quyền chọn; không suy key từ tên. |
 | C02 | F1 | B | 7 | Đối chiếu key Room/Battle, cap và quyền chọn; không suy key từ tên. |

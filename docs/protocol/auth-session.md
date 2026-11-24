@@ -49,12 +49,15 @@ với đúng khóa theo slot và vào Battle. C2S79 `5b58` và `5b59` được g
 một lần cho thành viên hiện hành, khi byte giải mã khớp đầy đủ khóa catalog. Không gửi ACK, gia hạn idle
 hay hoàn thành loading barrier. Không suy định dạng C2S79 cho khóa lớn hơn 255.
 
-Trong Forest24, sáu chỉ số của hai nhân vật đọc từ bộ nhớ client khớp `BomberAttr` và log server khi
-bắt đầu và sau khi nhặt tới trần. Wire 118/159 xác nhận lực bom ban đầu của cả hai và lực bom sau khi
-nhặt của C05. Floor dùng placement cố định do phép thử đặt. Kết nối B bị đóng ở
-[báo chết có blob nén](life-results.md#peer-events); chỉ A nhận kết quả và về phòng trước khi hiện
-thông báo ngắt kết nối. Journal ghi `forfeit`. Chưa có hai ván liên tiếp, chưa xác nhận đổi nhân vật
-cho ván kế hay biến thể 120+, 150+ và 3000+; giữ lớp B.
+Lượt p91 dừng ở [báo chết có blob nén](life-results.md#c2s127sub19): B mất kết nối và journal ghi
+`forfeit`. Sau khi sửa codec, [CP395](../evidence/checkpoints/records/CP395.json) xác nhận hai ván
+liên tiếp trên cùng phòng Forest24 và cùng hai kết nối Wine. Ván đầu C03/C05 nhặt tới trần;
+A nhận S2C170/sub19 nhiều entry khi B chết. Cả hai nhận 175/180 và về phòng.
+
+Ván sau đổi sang C00/C01. Hai client nhận Start121 với khóa 0/1; sáu chỉ số đọc từ cả hai client
+khớp `BomberAttr` và log server, trong đó chỉ số hiện hành trở về 1/1/5 và 2/1/4
+(sức chứa bom/lực bom/tốc độ). Cả hai lại có kết quả và về phòng. Floor dùng placement cố định
+do phép thử đặt. Nâng C03/C05 trong phạm vi này; chưa nghiệm thu native các biến thể 120+, 150+ và 3000+.
 
 <a id="rust-account-backend"></a>
 ## Backend account Rust độc lập client — CP236 / RUST-M5 / KRE-074

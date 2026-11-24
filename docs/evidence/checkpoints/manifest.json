@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP394",
-  "completed_count": 394,
+  "last_id": "CP395",
+  "completed_count": 395,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1283,6 +1283,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md#f1-normal-battle",
       "reference": "docs/protocol/load-phase.md#f1-pack-floor"
+    },
+    {
+      "id": "KRE-F1-C",
+      "state": "closed",
+      "canonical": "docs/protocol/auth-session.md#f1-c-character-catalog",
+      "reference": "docs/evidence/checkpoints/records/CP395.json"
     }
   ],
   "version": 2,
@@ -4438,6 +4444,14 @@
       "path": "docs/evidence/checkpoints/records/CP394.json",
       "bytes": 11732,
       "sha256": "c1dcd93d326795261e3a80c74ac7264545338520fe6a065b5ba6efd00aa84b29"
+    },
+    {
+      "id": "CP395",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-24T02:29:26+00:00",
+      "path": "docs/evidence/checkpoints/records/CP395.json",
+      "bytes": 10385,
+      "sha256": "9227c83967120dae1932393b9be60ce22a7e00b090eafaf6ae87e273c8c8f7e0"
     }
   ],
   "audit_policy": {

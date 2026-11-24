@@ -12,6 +12,7 @@ CONTENT = ROOT / "docs/content"
 CENSUS = CONTENT / "census.json"
 F1_EVIDENCE_REF = "../evidence/rust-service/f1-pack-map-adapters.json"
 F1_EVIDENCE = CONTENT / F1_EVIDENCE_REF
+F1_CHARACTER_REF = "../evidence/rust-service/f1-character-profiles.json"
 G1 = "../evidence/rust-service/g1-acceptance-matrix.json"
 NATIVE_F1 = {
     "Factory": {
@@ -119,7 +120,7 @@ ORDER = ["map", "item", "ship", "character", "mode", "system"]
 UNSUPPORTED_WAVE = "chưa xếp đợt"
 
 
-def generate(data, digest, f1_native):
+def generate(data, digest, f1_native, f1_characters):
     assert f1_native["schema"] == "kre-f1-pack-map-adapters-v1" and f1_native["build"] == data["build"]
     f1_maps = {name for run in f1_native["native_runs"] for name in run["completed_maps"]}
     family_acceptance = {row["family"]: row for row in f1_native["accepted_families"]}
@@ -257,7 +258,19 @@ def generate(data, digest, f1_native):
     for i in data["ships"]:
         add("ship", i["name"].removeprefix("Ship/"), "F1", "C",
             "Chưa có wire lên/xuống và quyền cập nhật tốc độ/va chạm của phương tiện.", row=i["seq"])
+    assert f1_characters["schema"] == "kre-f1-c-character-profiles-v1"
+    assert f1_characters["build"].replace(" ", "") == data["build"]
+    repeat = f1_characters["native_wine"]["repeat_acceptance"]
+    native_characters = set()
+    if repeat["status"] == "confirmed" and repeat["source"] == "kr_runtime" and repeat["clean_rounds"] >= 2:
+        native_characters.update(repeat["accepted_characters"])
     for row, i in enumerate(data["characters"], 1):
+        if i["name"] in native_characters:
+            add("character", i["name"], "F1", "A",
+                "Hai client Wine chọn nhân vật, nhặt tới trần, nhận kết quả và về phòng trên Forest24; "
+                "ván kế đổi nhân vật và xác nhận reset chỉ số.", row=row, status="confirmed",
+                evidence=F1_CHARACTER_REF, checkpoint=repeat["checkpoint"])
+            continue
         baseline = i["name"] in {"C00", "C01"}
         add("character", i["name"], "F1", "A" if baseline else "B" if i["name"][0] == "C" else "C",
             "Dùng profile nhân vật G1." if baseline else
@@ -367,7 +380,8 @@ def main():
     mode.add_argument("--check", action="store_true")
     args = p.parse_args()
     source = CENSUS.read_bytes()
-    classification = generate(json.loads(source), hashlib.sha256(source).hexdigest(), json.loads(F1_EVIDENCE.read_bytes()))
+    classification = generate(json.loads(source), hashlib.sha256(source).hexdigest(),
+                              json.loads(F1_EVIDENCE.read_bytes()), json.loads((CONTENT / F1_CHARACTER_REF).read_bytes()))
     meta = {k: v for k, v in classification.items() if k != "rows"}
     rendered = json.dumps(meta, ensure_ascii=False, indent=2)[:-2] + ',\n  "rows": [\n' + ",\n".join(
         "    " + json.dumps(row, ensure_ascii=False) for row in classification["rows"]

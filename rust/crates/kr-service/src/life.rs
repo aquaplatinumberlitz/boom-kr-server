@@ -285,6 +285,130 @@ mod tests {
             forward: None,
         }
     }
+
+    #[test]
+    fn native_death_with_eleven_entries_is_translated_to_peer_field_order() {
+        let (body, _) = native_multi_entry_death();
+        let parsed = Report::parse(&body).unwrap();
+        assert_eq!((parsed.subtype, parsed.slot), (19, 1));
+        let peer = parsed.forward.unwrap();
+        assert_eq!(&peer[..6], &body[..6]);
+        assert_eq!(peer.len(), 109);
+        assert_eq!(&peer[6..10], write_uint(99, Width::U32).unwrap());
+        let stream = kr_wire::kr00967::decode_bytes(&peer[10..]).unwrap();
+        assert_eq!(&stream[..11], &[24, 94, 0, 0, 0, 0, 255, 255, 255, 255, 11]);
+        let drops = stream[11..]
+            .as_chunks::<8>()
+            .0
+            .iter()
+            .map(|e| {
+                (
+                    [e[0], e[1]],
+                    u32::from_le_bytes(e[2..6].try_into().unwrap()),
+                    u16::from_le_bytes([e[6], e[7]]),
+                )
+            })
+            .collect::<Vec<_>>();
+        assert_eq!(
+            drops,
+            [
+                ([5, 10], 29, 2),
+                ([2, 3], 32, 2),
+                ([12, 2], 14, 0),
+                ([6, 7], 27, 2),
+                ([1, 11], 11, 0),
+                ([7, 6], 30, 2),
+                ([7, 9], 19, 0),
+                ([0, 11], 13, 0),
+                ([12, 8], 12, 0),
+                ([10, 14], 17, 0),
+                ([7, 13], 18, 0),
+            ]
+        );
+    }
+
+    fn native_multi_entry_death() -> (Vec<u8>, Vec<u8>) {
+        // p91 run-2, role B, C2S127 seq 334, CRC verified. Body 95 bytes.
+        let body = concat!(
+            "495ba511a76e96ca5e4f96ca539596ca53d896ca1b8d969752954cb253956935ac",
+            "6e90933dea90ec5593a6cf7dc351069758daf651958df43347595264ae70cd7e5d",
+            "15c3e0262a56bf6c0d4bc9f5d554f19267b91f85ef2e129c935be494cb"
+        )
+        .as_bytes()
+        .as_chunks::<2>()
+        .0
+        .iter()
+        .map(|chunk| u8::from_str_radix(std::str::from_utf8(chunk).unwrap(), 16).unwrap())
+        .collect::<Vec<_>>();
+        let raw = kr_wire::kr00967::decode_bytes(&body[18..]).unwrap();
+        (body, raw)
+    }
+
+    #[test]
+    fn death_rejects_bad_lengths_counts_and_compressed_tails() {
+        use flate2::{Compression, read::ZlibDecoder, write::ZlibEncoder};
+        use std::io::{Read, Write};
+
+        let (body, raw) = native_multi_entry_death();
+        let wrap = |mut stream: Vec<u8>| {
+            let mut report = body[..14].to_vec();
+            let size = stream.len();
+            stream[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
+            report.extend(write_uint(size as u64, Width::U32).unwrap());
+            report.extend(kr_wire::kr00967::encode_bytes(&stream).unwrap());
+            report
+        };
+        let compress = |inner: &[u8], size: u32| {
+            let mut encoder = ZlibEncoder::new(Vec::new(), Compression::default());
+            encoder.write_all(inner).unwrap();
+            [
+                raw[..6].to_vec(),
+                size.to_le_bytes().to_vec(),
+                encoder.finish().unwrap(),
+            ]
+            .concat()
+        };
+        let mut inner = Vec::new();
+        ZlibDecoder::new(&raw[10..])
+            .read_to_end(&mut inner)
+            .unwrap();
+        assert_eq!(inner.len(), 93);
+        assert_eq!(&inner[..5], &[255, 255, 255, 255, 11]);
+
+        let mut bad_count = inner.clone();
+        bad_count[4] = 10;
+        let mut tail = raw.clone();
+        tail.push(0);
+        let mut corrupt = raw.clone();
+        *corrupt.last_mut().unwrap() ^= 1;
+        let mut unknown_selector = raw.clone();
+        unknown_selector[5] = 2;
+        for stream in [
+            compress(&bad_count, 93),
+            compress(&inner, 85),
+            compress(&inner, 101),
+            compress(&inner, 94),
+            compress(&inner, 5 + 256 * 8),
+            raw[..raw.len() - 1].to_vec(),
+            tail,
+            corrupt,
+            unknown_selector,
+        ] {
+            assert!(Report::parse(&wrap(stream)).is_err());
+        }
+        let mut trailing = body.clone();
+        trailing.push(0);
+        assert!(Report::parse(&trailing).is_err());
+
+        // Selector 0 follows the same exact count rule, with no decompression.
+        let mut uncompressed = raw[..6].to_vec();
+        uncompressed[5] = 0;
+        uncompressed.extend_from_slice(&inner);
+        assert!(Report::parse(&wrap(uncompressed.clone())).is_ok());
+        uncompressed.push(0);
+        assert!(Report::parse(&wrap(uncompressed)).is_err());
+    }
+
     #[test]
     fn malformed_blob_and_unmeasured21_variant_fail_before_admission() {
         fn body(subtype: u8, size: usize) -> Vec<u8> {

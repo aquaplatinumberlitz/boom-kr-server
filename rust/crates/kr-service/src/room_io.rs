@@ -3775,6 +3775,8 @@ impl Session {
                     dropped_after_abort = true;
                 } else if let Phase::Armed { round } = next.phase {
                     if r.rules.life.reports_enabled() {
+                        // The wire parser validates the whole report and builds
+                        // the peer's 170 layout before life or cursor mutation.
                         let report = crate::life::Report::parse(body)?;
                         let now = Instant::now();
                         let last_blast = next.last_blast;

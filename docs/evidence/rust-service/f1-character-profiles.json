@@ -493,16 +493,16 @@
     "start121_rounds": 16,
     "all_keys_covered": true,
     "native_wine": "partial",
-    "native_limit": "Lượt Wine riêng xác nhận chọn, vào Battle và đạt trần cho key 2/3; lỗi báo chết chặn về phòng đủ hai client."
+    "native_limit": "Bằng chứng Wine tách riêng: CP395 đạt hai ván trên Forest24 với C03/C05 rồi C00/C01. Kết quả không mở rộng ra toàn catalog."
   },
   "limits": [
     "Ma trận là kr-load tổng hợp, không phải client CA.exe native.",
     "Pickup cap/reset được kiểm Rust room_io; driver matrix xác nhận chọn phòng, Start121, kết thúc và về phòng.",
-    "Checkpoint và dashboard do điều phối cập nhật."
+    "CP395 lưu biên nhận Wine; dashboard do điều phối cập nhật."
   ],
   "native_wine": {
-    "status": "partial",
-    "acceptance": "blocked",
+    "status": "confirmed",
+    "acceptance": "two_rounds_completed",
     "source": "kr_runtime",
     "room_map": "Forest24",
     "character_keys": {
@@ -548,10 +548,33 @@
       }
     ],
     "limits": [
-      "Hai lượt mới trên hai client Wine và mạng cô lập, không dùng kết quả C00/C01 hoặc kr-load thay cho native.",
-      "Lượt sau kiểm tra sáu chỉ số qua bộ nhớ chỉ đọc của cả hai client và log server, cùng 118/159 và 124/165. Floor cố định do phép thử đặt trên địa hình pack; không suy luật rơi item của server gốc.",
-      "C2S127/sub19 có blob nén không rỗng. Parser chưa nhận body này; B rớt kết nối, chỉ A về phòng và journal ghi forfeit. Chưa đổi được nhân vật cho ván kế hoặc đo biến thể 120+, 150+ và 3000+.",
-      "Giữ lớp B; chưa đạt tiêu chí hai ván liên tiếp."
-    ]
+      "Hai lượt p91 trên hai client Wine và mạng cô lập; không dùng kr-load thay cho native.",
+      "P91 kiểm tra sáu chỉ số qua bộ nhớ chỉ đọc của cả hai client và log server, cùng 118/159 và 124/165. Floor cố định do phép thử đặt trên địa hình pack; không suy luật rơi item của server gốc.",
+      "Lượt p91 có blob nén không rỗng và kết thúc bằng forfeit. Lượt CP395 dùng codec đã sửa, trên cùng map và cùng hai kết nối trong hai ván.",
+      "Chỉ C03/C05 đạt nghiệm thu để nâng lớp. Ván kế đổi sang C00/C01; chưa xác nhận native biến thể 120+, 150+ và 3000+."
+    ],
+    "repeat_acceptance": {
+      "status": "confirmed",
+      "source": "kr_runtime",
+      "checkpoint": "CP395",
+      "accepted_characters": [
+        "C03",
+        "C05"
+      ],
+      "next_round_character_keys": {
+        "C00": 0,
+        "C01": 1
+      },
+      "clean_rounds": 2,
+      "build_commit": "1dde820760a49d894821ffb5d282d576bad6c162",
+      "server_sha256": "a3ef1429f44815972c2ef2f256cbd34dfd086f400d4ddb481b49144d16cd437a",
+      "receipt": {
+        "path": "local/runs/f1c-native-accept-r2/receipt.json",
+        "bytes": 10126,
+        "sha256": "b3a02a13dd72e5eca6922daebd034e7e1af836ce2e79a38bbc6e0c13556082d2"
+      },
+      "wire": "local/runs/f1c-native-accept-r2/run-1/wire.jsonl",
+      "limits": "Bản copy Wine đã vá, mạng cô lập và floor cố định do phép thử đặt; chưa xác minh quyền thả hoặc nhặt lại đồ."
+    }
   }
 }

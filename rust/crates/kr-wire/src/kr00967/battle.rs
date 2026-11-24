@@ -222,31 +222,88 @@ pub fn departure170(slot: u8) -> io::Result<Vec<u8>> {
     out.extend(super::encode_bytes(&raw)?);
     Ok(out)
 }
+// Death drops have a u32 followed by a u8 count and eight bytes per entry.
+// This bounds inflation even when the client supplies a size of its own.
+const DEATH_HEADER: usize = 5;
+const DEATH_ENTRY: usize = 8;
+const DEATH_MAX: usize = DEATH_HEADER + u8::MAX as usize * DEATH_ENTRY;
+
+fn death_entries_match(inner: &[u8]) -> bool {
+    inner
+        .get(DEATH_HEADER - 1)
+        .is_some_and(|count| inner.len() == DEATH_HEADER + usize::from(*count) * DEATH_ENTRY)
+}
+
+fn death_peer_tail(raw: &[u8], encoded: &[u8]) -> io::Result<Vec<u8>> {
+    use flate2::{Decompress, FlushDecompress, Status};
+
+    let error = || io::Error::other("report127 death blob layout");
+    let mut inflated = [0; DEATH_MAX + 1];
+    let inner = match raw[5] {
+        0 => &raw[6..],
+        1 if raw.len() >= 10 => {
+            let size = u32::from_le_bytes(raw[6..10].try_into().expect("bounded")) as usize;
+            if !(DEATH_HEADER..=DEATH_MAX).contains(&size)
+                || !(size - DEATH_HEADER).is_multiple_of(DEATH_ENTRY)
+            {
+                return Err(error());
+            }
+            let compressed = &raw[10..];
+            let mut decoder = Decompress::new(true);
+            let status = decoder
+                .decompress(compressed, &mut inflated[..=size], FlushDecompress::Finish)
+                .map_err(|_| error())?;
+            if status != Status::StreamEnd
+                || decoder.total_in() != compressed.len() as u64
+                || decoder.total_out() != size as u64
+            {
+                return Err(error());
+            }
+            &inflated[..size]
+        }
+        _ => return Err(error()),
+    };
+    if !death_entries_match(inner) {
+        return Err(error());
+    }
+    if inner[4] == 0 {
+        return Ok(encoded.to_vec());
+    }
+
+    // The client writes index/kind/row/column in 127, but the 170 consumer
+    // (1403E90) reads row/column/index/kind. Preserve the header and values.
+    let mut stream = Vec::with_capacity(inner.len() + 6);
+    stream.push(24);
+    stream.extend_from_slice(&((inner.len() + 1) as u32).to_le_bytes());
+    stream.push(0);
+    stream.extend_from_slice(&inner[..DEATH_HEADER]);
+    for entry in inner[DEATH_HEADER..].as_chunks::<DEATH_ENTRY>().0 {
+        stream.extend_from_slice(&entry[6..]);
+        stream.extend_from_slice(&entry[..6]);
+    }
+    let mut tail = super::put(stream.len() as u64, Width::U32)?;
+    tail.extend(super::encode_bytes(&stream)?);
+    Ok(tail)
+}
+
 pub fn report127(body: &[u8]) -> io::Result<LifeReport127> {
     if !(14..=4096).contains(&body.len()) {
         return Err(io::Error::other("report127 bounded prefix"));
     }
     let subtype = uint(&body[..1], Width::U8)? as u8;
     let forward = if matches!(subtype, 17 | 19) {
-        let size = if subtype == 17 { 14usize } else { 11 };
-        if body.len() != 18 + size || uint(&body[14..18], Width::U32)? != size as u64 {
+        let size = body.len().saturating_sub(18);
+        if size < 6
+            || (subtype == 17 && size != 14)
+            || uint(&body[14..18], Width::U32)? != size as u64
+        {
             return Err(io::Error::other("report127 supported blob size"));
         }
-        let mut raw = Vec::new();
-        let mut offset = 18;
-        while offset < body.len() {
-            let (width, n) = match body.len() - offset {
-                4..=usize::MAX => (Width::U32, 4),
-                2..=3 => (Width::U16, 2),
-                _ => (Width::U8, 1),
-            };
-            raw.extend_from_slice(&uint(&body[offset..offset + n], width)?.to_le_bytes()[..n]);
-            offset += n;
-        }
-        let mut envelope = vec![24];
-        envelope.extend_from_slice(&((size - 5) as u32).to_le_bytes());
-        envelope.push(0);
-        if raw[..6] != envelope {
+        let raw = super::decode_bytes(&body[18..])?;
+        if raw[0] != 24
+            || u32::from_le_bytes(raw[1..5].try_into().expect("bounded")) as usize != size - 5
+            || (subtype == 17 && raw[5] != 0)
+        {
             return Err(io::Error::other("report127 supported raw envelope"));
         }
         let mut out = body[..6].to_vec();
@@ -259,7 +316,7 @@ pub fn report127(body: &[u8]) -> io::Result<LifeReport127> {
                 .map_err(io::Error::other)?,
             );
         } else {
-            out.extend_from_slice(&body[14..]);
+            out.extend(death_peer_tail(&raw, &body[14..])?);
         }
         Some(out)
     } else if subtype == 21 {
