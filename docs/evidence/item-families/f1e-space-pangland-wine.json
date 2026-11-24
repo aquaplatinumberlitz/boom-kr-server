@@ -107,5 +107,25 @@
     "limits": "Không thấy nhảy/gọi rel32 vào thân 0x6D8DD0 hoặc 0xF15690, hay literal VA/RVA của entry. Không loại trừ địa chỉ được tính hoặc nguồn ngoài PE. Không có runtime mới; giữ 149/233 chưa xác nhận trên wire.",
     "reproduction": "python3 \"$P108_RAW/alternate-routes.py\" <kr-full.exe> \"$P108_RAW/alternate-routes.json\"",
     "artifacts": {"receipt": "alternate-routes.json", "sha256_manifest": "SHA256SUMS-p108-alternate", "sha256_manifest_digest": "13ae37a4edd4b52432e4ad1431b7e375c668f03e276cd386b6853d74acb06378"}
+  },
+  "native_638": {
+    "source": "kr_runtime",
+    "status": "confirmed",
+    "outcome": "blocked",
+    "service_commit": "ae37ac996bcc52fcc1515911500f4c691ed0ebc6",
+    "service_sha256": "50c6d4f4db0792b9d648e03de4753ea9ce38dd1eac97823c7456e7320ea2d1f7",
+    "client_copy_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+    "companion_sha256": "9946ae9921cbcb3fff98646b6e89838144726a301335ae29f74b0624d58348e9",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "scope": "Build release --offline --locked; chỉ khác đầu #638 ở docs, đối chiếu không đổi rust/tools. Dùng catalog phòng p108 với allow_f1e_dynamic_scripts=true, pack gốc như p108, hai client qua kr-prelogin CP397. Không có proxy shadow.",
+    "runs": [
+      {"run": "native-638/space", "map": "CaJJ_Space02", "code": 167, "client_to_server": 228, "server_to_client_expected": [350], "host_count": 1, "first": {"seq": 169, "crc_octet": 128, "t153_ms": 20000.088}, "server_replies": 0, "guard": "native_stage_guard", "tcp_crc_verified": {"A:c2s": 44, "A:s2c": 24, "B:c2s": 50, "B:s2c": 26}, "udp_crc_verified": {"A": 237, "B": 250}, "captures": {"wire-segments-A.jsonl": "966f75e2b7848352a3e16f1d646897fdd99c50f2697b4c029e557f110831120f", "wire-segments-B.jsonl": "7695d7b9865981854e6d1d22eb5f9a3f67ab64b6e2ecfee4c03cb54f26945929", "udp-A.jsonl": "9bd3c328791addbd056719f2b5bfa27953903332c08132f2b6e7f493d31307c9", "udp-B.jsonl": "241f65e8ebfdc1b95afb65b29f785bb6f6b91e9ef1dcd6047070b5c69171c0be"}, "review": "native-638/space/frame-review.png"},
+      {"run": "native-638/pang", "map": "PangLand03", "code": 887, "client_to_server": 148, "server_to_client_expected": [158, 159], "host_count": 4, "first": {"seq": 163, "crc_octet": 86, "t153_ms": 12006.305}, "server_replies": 0, "guard": "native_stage_guard", "tcp_crc_verified": {"A:c2s": 45, "A:s2c": 24, "B:c2s": 56, "B:s2c": 29}, "udp_crc_verified": {"A": 161, "B": 177}, "captures": {"wire-segments-A.jsonl": "a1eaa213be2253bbda4f94e08616eb373cae28b0a2ddfa1cfcb44fb1caa98c77", "wire-segments-B.jsonl": "e93ca1b6bc0ec2259f6ea04b9e5e1c5e693adf38b2cd6a7bbb17a7d76e4b96d5", "udp-A.jsonl": "71731b0fdd4262112ea7db9a012abe97726115ad1089c322d2beb191d4cae414", "udp-B.jsonl": "d7fbe076f54895ae976db030a5c6a76206e9b85a663c49b42041bb57e12fc4a2"}, "review": "native-638/pang/frame-review.png"}
+    ],
+    "blocker": "ingame_tls/room.rs chuyển room request chỉ khi room_io::Session::handles(opcode) trả true; hàm tại room_io.rs không có 148/228 ở #638. Hai nhánh trong Session::packet chưa được gọi qua native TLS. Lượt này không kiểm được broadcast/timer của nhánh opt-in.",
+    "next": "Nối 148/228 vào đường dispatch của phòng, test qua owner native TLS thay vì chỉ gọi Session::packet, rồi chạy lại hai map bằng binary đã sửa. Giữ 149/233 đóng.",
+    "reproduction": "Với env p108 đã ghi: cargo build --manifest-path rust/Cargo.toml --offline --locked --release -p kr-service --bin kr-service, đặt binary vào native-638/bin-native. P108_MAP_RELAY=0 python3 \"$P108_RAW/measure-native-638.py\" <run> <map>; giải mã bằng decode-channel-159.py và decode_udp.py.",
+    "artifacts": {"sha256_manifest": "SHA256SUMS-p108-native-638", "sha256_manifest_digest": "550e088ca4d13df48080664e13ac689fe6953889fca785b73a3e505d75d162ce"},
+    "cleanup": {"wine_logical_bytes_removed": 9254707386, "cargo_target_logical_bytes_removed": 774005834}
   }
 }

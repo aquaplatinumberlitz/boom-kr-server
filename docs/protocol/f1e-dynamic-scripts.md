@@ -159,4 +159,13 @@ Các đường này chưa cung cấp fixture KR gốc để đo thêm `149` ho�
 - **Service handler (`room_io.rs`, opt-in `allow_f1e_dynamic_scripts = false` mặc định):**
   - `C->S 228`: Chỉ nhận từ host trong pha `Armed` (trần `512` sự kiện/ván), validate cấu trúc rồi broadcast nguyên body dưới opcode `S->C 350` tới mọi đại diện transport.
   - `C->S 148`: Chỉ nhận từ host trong pha `Armed`, cấp phát `bomb ID` không trùng với `118` của người chơi (`bombs::Ledger::allocate_script_id`), phát ngay `S->C 159` (`owner = 25`) và hẹn `S->C 158` sau `2200 ms` dưới `Guard::ScriptBomb`.
-  - Pha `Ending`/`Idle` ghi nhận an toàn (`observe_closed` / `observe_after_abort`) không ngắt kênh; `C->S 149` và `233` tiếp tục giữ đóng cho tới khi có bằng chứng runtime bổ sung. Chưa chạy nghiệm thu Wine trực tiếp đối với `kr-service` cho 2 họ này.
+  - Pha `Ending`/`Idle` ghi nhận an toàn (`observe_closed` / `observe_after_abort`) không ngắt kênh; `C->S 149` và `233` tiếp tục giữ đóng cho tới khi có bằng chứng runtime bổ sung. Xem kết quả chạy trực tiếp bên dưới.
+
+Đối chứng trực tiếp trên binary release `ae37ac9` (#638), với opt-in bật và
+không dùng proxy shadow (`source: kr_runtime`, `status: confirmed` cho blocker):
+A gửi `228` trên `CaJJ_Space02` và `148` trên `PangLand03`; channel của A
+kết thúc với `native_stage_guard` trước reply dự kiến. `ingame_tls/room.rs`
+chỉ giao opcode cho phòng nếu `room_io::Session::handles` nhận; hàm này chưa liệt kê
+`148/228` ở commit đo. Hai nhánh ở `Session::packet` chưa được nghiệm thu qua
+đường native TLS. [Bằng chứng p108](../evidence/item-families/f1e-space-pangland-wine.json)
+giữ pin build, capture, CRC và ảnh của lượt đối chứng.
