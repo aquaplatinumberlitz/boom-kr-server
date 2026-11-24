@@ -212,12 +212,14 @@ impl HashCache {
     }
 
     fn digest(&mut self, path: &Path) -> io::Result<String> {
-        let identity = file_identity(path)?;
+        let Ok(identity) = file_identity(path) else {
+            return sha256(path);
+        };
         if let Some(value) = self.values.get(&identity) {
             return Ok(value.clone());
         }
         let value = sha256(path)?;
-        if file_identity(path)? == identity {
+        if file_identity(path).is_ok_and(|after| after == identity) {
             self.values.insert(identity, value.clone());
         }
         Ok(value)
@@ -309,6 +311,37 @@ fn destination(root: &Path, name: &str) -> io::Result<PathBuf> {
     fs::create_dir_all(target.parent().ok_or_else(invalid)?)?;
     Ok(target)
 }
+fn link_or_copy(source: &Path, destination: &Path) -> io::Result<()> {
+    match fs::hard_link(source, destination) {
+        Ok(()) => Ok(()),
+        Err(_) => fs::copy(source, destination).map(|_| ()),
+    }
+}
+
+fn rename_dir(source: &Path, destination: &Path) -> io::Result<()> {
+    #[cfg(windows)]
+    {
+        for attempt in 0..15 {
+            match fs::rename(source, destination) {
+                Ok(()) => return Ok(()),
+                Err(err)
+                    if attempt < 14
+                        && (err.kind() == io::ErrorKind::PermissionDenied
+                            || matches!(err.raw_os_error(), Some(5 | 32))) =>
+                {
+                    std::thread::sleep(std::time::Duration::from_millis(100));
+                }
+                Err(err) => return Err(err),
+            }
+        }
+        unreachable!()
+    }
+    #[cfg(not(windows))]
+    {
+        fs::rename(source, destination)
+    }
+}
+
 pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
     let manifest = read_manifest(bundle, expected)?;
     // A failed or previous installation is never silently overwritten.
@@ -346,9 +379,9 @@ pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
         let game = target.join(id);
         fs::create_dir(&game)?;
         for pack in &manifest.packs {
-            fs::hard_link(
-                shared.join(relative(&pack.path)?),
-                destination(&game, &pack.path)?,
+            link_or_copy(
+                &shared.join(relative(&pack.path)?),
+                &destination(&game, &pack.path)?,
             )?;
         }
         for entry in &manifest.common {
@@ -359,7 +392,7 @@ pub fn install(bundle: &Path, expected: &str, target: &Path) -> io::Result<()> {
             } else if runtime_file(&entry.path) {
                 fs::copy(source, output)?;
             } else {
-                fs::hard_link(source, output)?;
+                link_or_copy(&source, &output)?;
             }
         }
         for entry in &language.files {
@@ -472,6 +505,10 @@ pub fn lock_installation(target: &Path) -> io::Result<File> {
     Ok(lock)
 }
 
+fn step_error(step: &str, err: io::Error) -> io::Error {
+    io::Error::new(err.kind(), format!("{step}: {err}"))
+}
+
 /// Verify or install a bundle; on explicit repair replace only a managed
 /// installation. Build and verify the replacement first, then keep the old tree
 /// beside it so user logs and local files remain recoverable.
@@ -481,7 +518,7 @@ pub fn maintain_install(
     target: &Path,
     repair: bool,
 ) -> io::Result<bool> {
-    let _lock = lock_installation(target)?;
+    let _lock = lock_installation(target).map_err(|err| step_error("lock", err))?;
     let existing = match fs::symlink_metadata(target) {
         Ok(_) => {
             if verify_install(bundle, expected, target).is_ok() {
@@ -495,7 +532,7 @@ pub fn maintain_install(
             true
         }
         Err(error) if error.kind() == io::ErrorKind::NotFound => false,
-        Err(error) => return Err(error),
+        Err(error) => return Err(step_error("stat_target", error)),
     };
     let parent = target.parent().ok_or_else(invalid)?;
     let nonce = std::time::SystemTime::now()
@@ -503,31 +540,50 @@ pub fn maintain_install(
         .map_err(io::Error::other)?
         .as_nanos();
     let workspace = parent.join(format!(".kr-player-{}-{nonce}", std::process::id()));
-    fs::create_dir(&workspace)?;
+    fs::create_dir(&workspace).map_err(|err| step_error("create_workspace", err))?;
     let replacement = workspace.join("replacement");
-    install(bundle, expected, &replacement)?;
-    verify_install(bundle, expected, &replacement)?;
+    if let Err(err) = install(bundle, expected, &replacement)
+        .map_err(|err| step_error("install", err))
+        .and_then(|()| {
+            verify_install(bundle, expected, &replacement).map_err(|err| step_error("verify", err))
+        })
+    {
+        let _ = fs::remove_dir_all(&workspace);
+        return Err(err);
+    }
 
     if !existing {
         // Do not replace a directory that appeared while building.
         return match fs::symlink_metadata(target) {
             Err(error) if error.kind() == io::ErrorKind::NotFound => {
-                fs::rename(&replacement, target)?;
+                if let Err(err) = rename_dir(&replacement, target) {
+                    let _ = fs::remove_dir_all(&workspace);
+                    return Err(step_error("rename_new", err));
+                }
                 let _ = fs::remove_dir(&workspace);
                 Ok(false)
             }
-            _ => Err(invalid()),
+            _ => {
+                let _ = fs::remove_dir_all(&workspace);
+                Err(invalid())
+            }
         };
     }
 
-    check_receipt(target, expected)?;
+    if let Err(err) = check_receipt(target, expected) {
+        let _ = fs::remove_dir_all(&workspace);
+        return Err(err);
+    }
     let previous = workspace.join("previous");
-    fs::rename(target, &previous)?;
-    if let Err(error) = fs::rename(&replacement, target) {
+    if let Err(err) = rename_dir(target, &previous) {
+        let _ = fs::remove_dir_all(&workspace);
+        return Err(step_error("rename_previous", err));
+    }
+    if let Err(error) = rename_dir(&replacement, target) {
         if fs::symlink_metadata(target).is_err_and(|e| e.kind() == io::ErrorKind::NotFound) {
-            let _ = fs::rename(&previous, target);
+            let _ = rename_dir(&previous, target);
         }
-        return Err(error);
+        return Err(step_error("rename_replacement", error));
     }
     Ok(true)
 }
@@ -600,4 +656,47 @@ fn prepare_runtime_file(bundle: &Path, game: &Path, entry: &Entry) -> io::Result
         io::copy(&mut File::open(source)?, &mut writer)?;
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn link_or_copy_copies_file_contents() {
+        let root = std::env::temp_dir().join(format!(
+            "kr-player-loc-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        fs::create_dir_all(&root).unwrap();
+        let src = root.join("src.bin");
+        let dst = root.join("dst.bin");
+        fs::write(&src, b"boom-payload").unwrap();
+        link_or_copy(&src, &dst).unwrap();
+        assert_eq!(fs::read(&dst).unwrap(), b"boom-payload");
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn maintain_install_cleans_workspace_on_failure() {
+        let root = std::env::temp_dir().join(format!(
+            "kr-player-clean-{}-{:?}",
+            std::process::id(),
+            std::thread::current().id()
+        ));
+        let bundle = root.join("bundle");
+        fs::create_dir_all(&bundle).unwrap();
+        let target = root.join("game");
+        let result = maintain_install(&bundle, &"0".repeat(64), &target, false);
+        assert!(result.is_err());
+        let leftover: Vec<_> = fs::read_dir(&root)
+            .unwrap()
+            .filter_map(Result::ok)
+            .map(|e| e.file_name().to_string_lossy().into_owned())
+            .filter(|name| name.starts_with(".kr-player-"))
+            .collect();
+        assert!(leftover.is_empty(), "leftover workspaces: {leftover:?}");
+        fs::remove_dir_all(root).unwrap();
+    }
 }

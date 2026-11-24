@@ -392,7 +392,10 @@ fn start_inner(
             .map_err(|_| StartError::Launch)?
             .as_nanos()
     ));
-    fs::create_dir(&run).map_err(|_| StartError::Launch)?;
+    fs::create_dir(&run).map_err(|err| {
+        crate::diag::record(&config.state, "game_run_dir_error", &err.to_string());
+        StartError::Launch
+    })?;
     let signal = run.join("ready");
     let path = run.join("prelogin.json");
     let mut owned = (|| {
@@ -430,20 +433,28 @@ fn start_inner(
             game_ended_at: None,
         })
     })()
-    .inspect_err(|_| {
+    .inspect_err(|err| {
+        crate::diag::record(
+            &config.state,
+            "game_companion_spawn_error",
+            &err.to_string(),
+        );
         let _ = fs::remove_dir_all(&run);
     })
     .map_err(|_| StartError::Launch)?;
-    ready(&mut owned.companion, &signal).inspect_err(|_| {
-        owned.exit = Some((
-            "companion_start",
-            owned
-                .companion
-                .try_wait()
-                .ok()
-                .flatten()
-                .and_then(|s| s.code()),
-        ));
+    ready(&mut owned.companion, &signal).inspect_err(|err| {
+        let code = owned
+            .companion
+            .try_wait()
+            .ok()
+            .flatten()
+            .and_then(|s| s.code());
+        crate::diag::record(
+            &config.state,
+            "game_companion_ready_error",
+            &format!("err={err:?} exit={code:?}"),
+        );
+        owned.exit = Some(("companion_start", code));
     })?;
     let directory = config.installation.join(language.id());
     let executable = directory.join("CA.exe");
@@ -478,13 +489,24 @@ fn start_inner(
     drop(complete);
     owned.generation = pulse.join().unwrap_or_default();
     if let Err(error) = &child {
+        crate::diag::record(
+            &config.state,
+            "game_spawn_error",
+            &format!("err={error} raw={:?}", error.raw_os_error()),
+        );
         owned.exit = Some(("game_start", error.raw_os_error()));
+    } else {
+        crate::diag::record(
+            &config.state,
+            "game_started",
+            &format!("lang={} friends={}", language.id(), friends.is_some()),
+        );
     }
     owned.game = Some(child.map_err(|_| StartError::Launch)?);
     Ok(Session(Arc::new(Mutex::new(owned))))
 }
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug)]
 pub(crate) enum StartError {
     Integrity,
     WritableFiles,
@@ -501,17 +523,26 @@ pub(crate) fn start_mode(
     language: Language,
     friends: Option<kr_tunnel::prelogin::friends::Guest>,
 ) -> Result<Session, StartError> {
-    let lock = kr_player::lock_installation(&config.installation)
-        .map_err(|_| StartError::WritableFiles)?;
+    let lock = kr_player::lock_installation(&config.installation).map_err(|err| {
+        crate::diag::record(&config.state, "game_lock_error", &err.to_string());
+        StartError::WritableFiles
+    })?;
     kr_player::prepare_language(
         &config.bundle,
         &config.manifest_sha256,
         &config.installation,
         language.id(),
     )
-    .map_err(|error| match error {
-        kr_player::PreparationError::Integrity => StartError::Integrity,
-        kr_player::PreparationError::WritableFiles => StartError::WritableFiles,
+    .map_err(|error| {
+        crate::diag::record(
+            &config.state,
+            "game_prepare_error",
+            &format!("lang={} err={error:?}", language.id()),
+        );
+        match error {
+            kr_player::PreparationError::Integrity => StartError::Integrity,
+            kr_player::PreparationError::WritableFiles => StartError::WritableFiles,
+        }
     })?;
     start_inner(config, language, lock, friends)
 }

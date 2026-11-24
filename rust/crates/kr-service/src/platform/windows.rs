@@ -22,8 +22,9 @@ use windows_sys::Win32::{
         },
         CONTAINER_INHERIT_ACE, CreateWellKnownSid, DACL_SECURITY_INFORMATION, EqualSid, GetAce,
         GetAclInformation, GetTokenInformation, INHERIT_ONLY_ACE, NO_PROPAGATE_INHERIT_ACE,
-        OBJECT_INHERIT_ACE, OWNER_SECURITY_INFORMATION, PSID, SECURITY_ATTRIBUTES, TOKEN_QUERY,
-        TOKEN_USER, TokenUser, WinLocalSystemSid,
+        OBJECT_INHERIT_ACE, OWNER_SECURITY_INFORMATION, PSID, SECURITY_ATTRIBUTES,
+        TOKEN_INFORMATION_CLASS, TOKEN_OWNER, TOKEN_QUERY, TOKEN_USER, TokenOwner, TokenUser,
+        WinLocalSystemSid,
     },
     Storage::FileSystem::{
         CreateDirectoryW, FILE_ATTRIBUTE_REPARSE_POINT, MOVEFILE_WRITE_THROUGH, MoveFileExW,
@@ -42,38 +43,61 @@ impl Drop for LocalAllocation {
     }
 }
 
-struct User(Vec<usize>);
-impl User {
+struct Token {
+    user: Vec<usize>,
+    owner: Vec<usize>,
+}
+
+fn token_buffer(
+    handle: &OwnedHandle,
+    class: TOKEN_INFORMATION_CLASS,
+    minimum: usize,
+) -> io::Result<Vec<usize>> {
+    // SAFETY: The handle is a valid TOKEN_QUERY token. First call probes the
+    // required byte count; second call fills the aligned buffer.
+    unsafe {
+        let mut bytes = 0;
+        if GetTokenInformation(handle.as_raw_handle(), class, null_mut(), 0, &mut bytes) != 0
+            || io::Error::last_os_error().raw_os_error() != Some(ERROR_INSUFFICIENT_BUFFER as i32)
+            || bytes < minimum as u32
+        {
+            return Err(io::Error::other("could not size Windows process token"));
+        }
+        let mut buffer = vec![0usize; (bytes as usize).div_ceil(mem::size_of::<usize>())];
+        check(GetTokenInformation(
+            handle.as_raw_handle(),
+            class,
+            buffer.as_mut_ptr().cast(),
+            bytes,
+            &mut bytes,
+        ))?;
+        Ok(buffer)
+    }
+}
+
+impl Token {
     fn current() -> io::Result<Self> {
-        // SAFETY: OpenProcessToken initializes the handle on success. The buffer
-        // is aligned for TOKEN_USER and remains allocated while its SID is used.
-        unsafe {
+        // SAFETY: OpenProcessToken initializes the handle on success. Both buffers
+        // stay aligned for TOKEN_USER / TOKEN_OWNER for as long as their SIDs live.
+        let token = unsafe {
             let mut raw = null_mut();
             check(OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &mut raw))?;
-            let token = OwnedHandle::from_raw_handle(raw);
-            let mut bytes = 0;
-            if GetTokenInformation(token.as_raw_handle(), TokenUser, null_mut(), 0, &mut bytes) != 0
-                || io::Error::last_os_error().raw_os_error()
-                    != Some(ERROR_INSUFFICIENT_BUFFER as i32)
-                || bytes < mem::size_of::<TOKEN_USER>() as u32
-            {
-                return Err(io::Error::other("could not size Windows process token"));
-            }
-            let mut buffer = vec![0usize; (bytes as usize).div_ceil(mem::size_of::<usize>())];
-            check(GetTokenInformation(
-                token.as_raw_handle(),
-                TokenUser,
-                buffer.as_mut_ptr().cast(),
-                bytes,
-                &mut bytes,
-            ))?;
-            Ok(Self(buffer))
-        }
+            OwnedHandle::from_raw_handle(raw)
+        };
+        Ok(Self {
+            user: token_buffer(&token, TokenUser, mem::size_of::<TOKEN_USER>())?,
+            owner: token_buffer(&token, TokenOwner, mem::size_of::<TOKEN_OWNER>())?,
+        })
     }
 
-    fn sid(&self) -> PSID {
+    fn user_sid(&self) -> PSID {
         // SAFETY: GetTokenInformation initialized a TOKEN_USER in this aligned buffer.
-        unsafe { (*self.0.as_ptr().cast::<TOKEN_USER>()).User.Sid }
+        unsafe { (*self.user.as_ptr().cast::<TOKEN_USER>()).User.Sid }
+    }
+
+    fn owner_sid(&self) -> PSID {
+        // SAFETY: GetTokenInformation initialized a TOKEN_OWNER in this aligned buffer.
+        unsafe { (*self.owner.as_ptr().cast::<TOKEN_OWNER>()).Owner }
     }
 }
 
@@ -104,17 +128,18 @@ fn wide_path(path: &Path) -> io::Result<Vec<u16>> {
 }
 
 pub(super) fn create_private_dir(path: &Path) -> io::Result<()> {
-    let user = User::current()?;
+    let token = Token::current()?;
     let path = wide_path(path)?;
     // SAFETY: SID and descriptor buffers are alive across the calls. Both
     // Windows-allocated results are released with LocalFree.
     unsafe {
         let mut sid = null_mut();
-        check(ConvertSidToStringSidW(user.sid(), &mut sid))?;
+        check(ConvertSidToStringSidW(token.user_sid(), &mut sid))?;
         let _sid = LocalAllocation(sid.cast());
         let length = (0..).find(|n| *sid.add(*n) == 0).unwrap();
         let sid = String::from_utf16_lossy(std::slice::from_raw_parts(sid, length));
-        let sddl: Vec<_> = format!("D:P(A;OICI;FA;;;{sid})(A;OICI;FA;;;SY)\0")
+        // Pin owner to the user SID so elevated runs do not stamp BUILTIN\Administrators.
+        let sddl: Vec<_> = format!("O:{sid}D:P(A;OICI;FA;;;{sid})(A;OICI;FA;;;SY)\0")
             .encode_utf16()
             .collect();
         let mut descriptor = LocalAllocation(null_mut());
@@ -140,7 +165,7 @@ pub(super) fn check_private(path: &Path, meta: &Metadata, directory: bool) -> io
         return Err(invalid());
     }
     let path = wide_path(path)?;
-    let user = User::current()?;
+    let token = Token::current()?;
     // SAFETY: GetNamedSecurityInfo owns the descriptor and points into it.
     // GetAce returns a valid ACE from its DACL; we look at the SID only for
     // conventional ACCESS_ALLOWED_ACE entries.
@@ -161,7 +186,10 @@ pub(super) fn check_private(path: &Path, meta: &Metadata, directory: bool) -> io
         if status != 0 {
             return Err(io::Error::from_raw_os_error(status as i32));
         }
-        if acl.is_null() || owner.is_null() || EqualSid(owner, user.sid()) == 0 {
+        if acl.is_null()
+            || owner.is_null()
+            || (EqualSid(owner, token.user_sid()) == 0 && EqualSid(owner, token.owner_sid()) == 0)
+        {
             return Err(invalid());
         }
         let mut system_sid = [0u32; 17]; // SECURITY_MAX_SID_SIZE (68 bytes)
@@ -193,7 +221,7 @@ pub(super) fn check_private(path: &Path, meta: &Metadata, directory: bool) -> io
             }
             // ACCESS_ALLOWED_ACE layout: header, access mask, then SID.
             let sid: PSID = entry.cast::<u32>().add(2).cast();
-            if EqualSid(sid, user.sid()) != 0 {
+            if EqualSid(sid, token.user_sid()) != 0 {
                 let flags = u32::from(header.AceFlags);
                 inherited_user_access |=
                     flags & (inherit | NO_PROPAGATE_INHERIT_ACE | INHERIT_ONLY_ACE) == inherit;

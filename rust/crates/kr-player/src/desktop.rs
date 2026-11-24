@@ -2,7 +2,7 @@
 use crate::game::Config;
 use std::{io, path::Path, process::Command};
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug)]
 pub(crate) enum Action {
     Game,
     Logs,

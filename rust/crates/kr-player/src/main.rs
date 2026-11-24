@@ -2,6 +2,7 @@
 #![cfg_attr(target_os = "windows", windows_subsystem = "windows")]
 mod account;
 mod desktop;
+mod diag;
 mod friends;
 mod game;
 mod guide;
@@ -326,6 +327,19 @@ impl Player {
             .nth(1)
             .is_some_and(|arg| arg == "--preview");
         let config = if preview { None } else { Config::load().ok() };
+        if let Some(c) = &config {
+            let pkg = &c.manifest_sha256[..c.manifest_sha256.len().min(8)];
+            diag::record(
+                &c.state,
+                "boot",
+                &format!(
+                    "v={} pkg={pkg} os={}/{}",
+                    env!("CARGO_PKG_VERSION"),
+                    std::env::consts::OS,
+                    std::env::consts::ARCH
+                ),
+            );
+        }
         let state = config.as_ref().map(|c| c.state.as_path());
         let language = preference(state, "language.json");
         let mode = preference(state, "mode.json");
@@ -440,10 +454,12 @@ impl Player {
         self.server_generation = self.server_generation.wrapping_add(1);
         let generation = self.server_generation;
         let id = invite.to_string();
+        let state = config.state.clone();
         Task::perform(
             async move {
                 let bridge = servers::Bridge::open(&config.state, &invite)
                     .await
+                    .inspect_err(|err| diag::record(&state, "s1_connect_error", &err.to_string()))
                     .map_err(|_| ())?;
                 let config = config.with_route(&bridge.route);
                 let status = tokio::task::spawn_blocking(move || probe(&config))
@@ -527,7 +543,16 @@ impl Player {
                         &c.installation,
                         repair,
                     )
-                    .map_err(|_| ())
+                    .inspect(|repaired| {
+                        diag::record(
+                            &c.state,
+                            "files_ok",
+                            &format!("repair={repair} repaired={repaired}"),
+                        );
+                    })
+                    .map_err(|err| {
+                        diag::record(&c.state, "files_error", &format!("repair={repair} {err}"));
+                    })
                 })
                 .await
                 .unwrap_or(Err(()))
@@ -946,7 +971,16 @@ impl Player {
                         Task::none()
                     };
                     let host = Task::perform(
-                        async move { friends::host(config, name).await.map_err(|_| ()) },
+                        async move {
+                            let state = config.state.clone();
+                            friends::host(config, name)
+                                .await
+                                .inspect(|_| diag::record(&state, "o1_host_ok", "ready"))
+                                .inspect_err(|err| {
+                                    diag::record(&state, "o1_host_error", &err.to_string());
+                                })
+                                .map_err(|_| ())
+                        },
                         Message::FriendsHosted,
                     );
                     #[cfg(windows)]
@@ -996,9 +1030,15 @@ impl Player {
                     .as_ref()
                     .map(|cfg| cfg.friends_directory.clone())
                     .unwrap_or_default();
-                return Task::perform(friends::resolve(code, relays), |route| match route {
+                let state = self.config.as_ref().map(|cfg| cfg.state.clone());
+                return Task::perform(friends::resolve(code, relays), move |route| match route {
                     Some(route) => Message::FriendsSelect(route),
-                    None => Message::FriendsLaunch(Err(StartError::Launch)),
+                    None => {
+                        if let Some(state) = &state {
+                            diag::record(state, "o1_resolve_none", "no room route found");
+                        }
+                        Message::FriendsLaunch(Err(StartError::Launch))
+                    }
                 });
             }
             Message::FriendsSelect(route) if self.can_friends() && self.remember_friends_name() => {
@@ -1049,9 +1089,19 @@ impl Player {
                     self.modal_notice = None;
                     return Task::perform(
                         async move {
-                            tokio::task::spawn_blocking(move || desktop::run(c, action).is_ok())
-                                .await
-                                .unwrap_or(false)
+                            tokio::task::spawn_blocking(move || {
+                                desktop::run(c.clone(), action)
+                                    .inspect_err(|err| {
+                                        diag::record(
+                                            &c.state,
+                                            "desktop_error",
+                                            &format!("{action:?}: {err}"),
+                                        );
+                                    })
+                                    .is_ok()
+                            })
+                            .await
+                            .unwrap_or(false)
                         },
                         move |ok| Message::DesktopDone(action, ok),
                     );
@@ -1146,9 +1196,12 @@ impl Player {
     }
 
     fn can_friends(&self) -> bool {
+        self.friends_editable() && self.files == Files::Ready
+    }
+
+    fn friends_editable(&self) -> bool {
         self.mode == Mode::OfflineFriends
             && self.config.is_some()
-            && self.files == Files::Ready
             && !self.starting
             && self.session.is_none()
             && self.screen.is_none()
@@ -1407,5 +1460,24 @@ mod tests {
         assert!(matches!(form.error(Screen::Recover), Some(Copy::CodeHint)));
         form.code = Zeroizing::new("ab".repeat(32));
         assert!(form.error(Screen::Recover).is_none());
+    }
+
+    #[test]
+    fn friends_inputs_remain_editable_when_files_are_pending_or_errored() {
+        let (mut player, _) = Player::boot();
+        player.config = Some(
+            serde_json::from_str(&format!(
+                r#"{{"companion":"bin/kr-prelogin","ports":[3808],"bundle":".","manifest_sha256":"{}","installation":"game","state":"state"}}"#,
+                "0".repeat(64)
+            ))
+            .unwrap(),
+        );
+        player.mode = Mode::OfflineFriends;
+        player.files = Files::Error;
+        assert!(player.friends_editable());
+        assert!(!player.can_friends());
+        player.files = Files::Ready;
+        assert!(player.friends_editable());
+        assert!(player.can_friends());
     }
 }

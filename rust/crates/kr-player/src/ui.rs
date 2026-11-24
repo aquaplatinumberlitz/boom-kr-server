@@ -183,6 +183,7 @@ impl Player {
     }
 
     fn friends_panel(&self) -> Element<'_, Message> {
+        let editable = self.friends_editable();
         let enabled = self.can_friends();
         let hosting = self.config.as_ref().is_some_and(|c| c.friends.is_some());
         let running = self.session.is_some();
@@ -192,12 +193,12 @@ impl Player {
             .padding(6)
             .size(14)
             .style(look::field)
-            .on_input_maybe(enabled.then_some(Message::FriendsName));
+            .on_input_maybe(editable.then_some(Message::FriendsName));
         let mut code = text_input("O1-…", &self.friends_code)
             .padding(6)
             .size(14)
             .style(look::field)
-            .on_input_maybe(enabled.then_some(Message::FriendsCode));
+            .on_input_maybe(editable.then_some(Message::FriendsCode));
         if enabled {
             code = code.on_submit(Message::FriendsJoin);
         }
@@ -334,10 +335,16 @@ impl Player {
             body = body.push(note(Copy::FriendsSearching));
         }
         if self.files == Files::Error {
-            body = body.push(action(
-                Copy::Repair,
-                self.config.is_some().then_some(Message::RepairFromHome),
-            ));
+            body = body
+                .push(
+                    text(self.t(self.launch_error.unwrap_or(Copy::FilesBad)))
+                        .size(13)
+                        .color(look::CORAL),
+                )
+                .push(action(
+                    Copy::Repair,
+                    self.config.is_some().then_some(Message::RepairFromHome),
+                ));
         }
         if let Some(notice) = self
             .friends_notice
@@ -521,7 +528,6 @@ impl Player {
             self.t(Copy::Package)
         );
         let info = text(version).size(11).color(look::MUTED);
-        let help = self.link(Copy::QuickHelp, Screen::Help(Section::Overview));
         let summary: Element<'_, Message> = if self
             .config
             .as_ref()
@@ -532,12 +538,12 @@ impl Player {
                 .padding([6, 0])
                 .style(look::link)
                 .on_press(Message::Desktop(desktop::Action::Release));
-            column![info, row![help, download].spacing(12)].into()
-        } else {
-            row![info, help]
+            row![info, download]
                 .spacing(12)
                 .align_y(Alignment::Center)
                 .into()
+        } else {
+            info.into()
         };
         container(summary)
             .padding([6, 12])
