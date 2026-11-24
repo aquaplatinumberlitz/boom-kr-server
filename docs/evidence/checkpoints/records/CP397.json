@@ -1,0 +1,63 @@
+{
+  "id": "CP397",
+  "previous": "CP396",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-24T07:17:30+00:00",
+  "owner": "Antigravity",
+  "reviewer": "waived",
+  "question": "Hai client KR 00967 chạy kr-service chuẩn (không chỉnh sửa, policy report_derived_f1d_vehicles) có nhặt đủ 5 phương tiện F1-d (40..44) từ pre-load 582 list1, giữ guard đổi xe, bay xuyên thùng trên Airship, chuyển tiếp tháo xe 127/sub16 -> 170/sub16, chịu được 127/sub16 sau 175, reset sạch sang ván hai và thoát phòng an toàn không?",
+  "scope": "CP397; kr-service, kr-prelogin, kr-admin, kr-launch-identity build release --offline --locked không chỉnh sửa trên ac06025. Hai client Wine trong namespace riêng, 2 ván Cookie07 liên tiếp, không inject 582 giữa trận và không dùng fixture gameplay.",
+  "context_commit": "ac06025fb397d8c933da96f4065c1f81af2bdfc4",
+  "artifacts": [
+    {"name": "kr-service x86_64, release locked (ac06025)", "sha256": "e2aafc178666267c617a5616b2cac0be857ab0dda36bfe7c6b11fd2e41bf66d0"},
+    {"name": "kr-prelogin x86_64, release locked (ac06025)", "sha256": "9946ae9921cbcb3fff98646b6e89838144726a301335ae29f74b0624d58348e9"},
+    {"name": "CA.exe KR 00967, hai bản copy Wine", "sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"name": "Floor Cookie07 pre-load 582 (40..44 trong list1)", "sha256": "00a55296a34bd2649d8b2724e660c9e889b14938dde8a49c3b680c1878c209ee"}
+  ],
+  "locators": [
+    "docs/protocol/vehicles.md#cp397-f1d-acceptance",
+    "docs/evidence/rust-service/f1d-vehicles-acceptance.json",
+    "local/runs/cp397-f1d-wine/run-2"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/vehicles.md#cp397-f1d-acceptance", "summary": "Catalog Cookie07 (code 227) chứa đủ 5 loại xe F1-d (40..44) trong pre-load S->C 582 list1 trước Start 121; kr-service chuẩn từ chối catalog khi tắt policy và nhận khi bật report_derived_f1d_vehicles.", "limits": "Chỉ áp dụng cho 5 kind 40..44 trên lát cắt Cookie07.", "evidence": ["CP397_PROV", "CP397_META"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/vehicles.md#cp397-f1d-acceptance", "summary": "Ván 1: A nhặt Owl (41) qua 124/165 và giữ nguyên selector 2 khi qua Turtle0 (42). B nhặt Airship (40), giữ xe khi qua 44 (no_eat=1) và bay xuyên thùng (12,9) nguyên vẹn; bom Space nổ làm B phát 14B C->S 127/sub16 (seq 190), kr-service chuyển tiếp 6B S->C 170/sub16 (seq 133) cho A và cả hai view tháo xe.", "limits": "Bom nổ bằng hành vi Space thật (chu kỳ 6 giây).", "evidence": ["CP397_WIRE", "CP397_UI"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/vehicles.md#cp397-f1d-acceptance", "summary": "B bị loại khi A còn Owl kích hoạt 127/sub16 sau 175 (seq 241) mà không rớt phiên. Ván 2 Start 121 reset cả hai view về chưa cưỡi xe; A nhặt Turtle0 (42), B nhặt rồi tháo Turtle1 (43) và AirshipBroken (44) qua 127/sub16 -> 170/sub16, về phòng, thoát 86/241 và room_count=0.", "limits": "Không bao hàm 22 xe Ship/* khác hoặc server KR gốc.", "evidence": ["CP397_RECEIPT", "CP397_RETURN_UI", "CP397_JOURNAL"]}
+  ],
+  "verification": [
+    {"check": "Tái lắp TCP/UDP hai client, kiểm CRC và thứ tự pre-load 582/121, 124/165, 127/sub16 -> 170/sub16, 175/180 và 86/241.", "result": "pass", "limits": "Hai phiên kết nối xuyên suốt hai ván.", "evidence": ["CP397_WIRE", "CP397_RECEIPT"]},
+    {"check": "Đối chiếu ảnh A/B, trace trạng thái actor, journal SQLite (2 hàng complete/elimination) và health sample.", "result": "pass", "limits": "Giới hạn trong cookieA/cookieB trên Wine.", "evidence": ["CP397_UI", "CP397_RETURN_UI", "CP397_JOURNAL"]},
+    {"check": "Xác nhận dọn sạch scratch Wine, target, tiến trình namespace và toàn bộ SHA256SUMS khớp.", "result": "pass", "limits": "Chạy trong namespace cô lập .kr-wine-runtime.lock.", "evidence": ["CP397_CLEANUP", "CP397_SHA256"]}
+  ],
+  "delta": {"added": ["Nghiệm thu Wine 2 client đủ 5 xe F1-d (40..44) trên kr-service chuẩn chưa chỉnh sửa."], "corrected": [], "superseded": []},
+  "blockers": [
+  ],
+  "next_steps": [
+    {"id": "F1D-EXTRA-SHIPS-RUST", "task": "KRE-F1-D", "state": "active", "owner": "Antigravity", "reviewer": "waived", "action": "Mở rộng policy Rust cho 22 xe Ship/* còn lại từ bằng chứng IDA #621."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-24T07:17:30+00:00", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Tự đối chiếu capture wire, ảnh, trace và journal SQLite.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Chủ dự án miễn review độc lập."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F1."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật Bảng điều hành cho F1-a 206/214, F1-b aux và CP397."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục và contract wire hiện hành giữ nguyên."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Phạm vi phép thử giữ tại metadata của CP397."},
+    {"path": "docs/protocol/vehicles.md", "state": "updated", "reason": "Bổ sung #cp397-f1d-acceptance."},
+    {"path": "docs/evidence/rust-service/f1d-vehicles-acceptance.json", "state": "updated", "reason": "Ghi tóm tắt nghiệm thu F1-d trên kr-service chuẩn."},
+    {"path": "docs/evidence/checkpoints/records/CP397.json", "state": "updated", "reason": "Chốt checkpoint CP397."}
+  ],
+  "evidence": [
+    {"id": "CP397_RECEIPT", "kind": "local", "path": "local/runs/cp397-f1d-wine/verification.json", "bytes": 56326, "sha256": "4f4cd670b7a2d6062da3090b2cfaf0aa6808b0249027bbeb785c5df02a6f9ac8"},
+    {"id": "CP397_WIRE", "kind": "local", "path": "local/runs/cp397-f1d-wine/run-2/channel-decoded.jsonl", "bytes": 49060, "sha256": "1753793767fd71153e52eed6a6101d0d2386e5625eb0c74e52eef74a5c635d00"},
+    {"id": "CP397_UI", "kind": "local", "path": "local/runs/cp397-f1d-wine/run-2/comparison-f1d.png", "bytes": 462403, "sha256": "6c1a0445693ede0c915b9885299eadedeac24708981134e6678a6a7a2ff23466"},
+    {"id": "CP397_RETURN_UI", "kind": "local", "path": "local/runs/cp397-f1d-wine/run-2/comparison-reset-return.png", "bytes": 329678, "sha256": "0a8204342a5ba0bde4c518901f7ff7f93b67358c8dc22c9ecea0c9bc128129d3"},
+    {"id": "CP397_JOURNAL", "kind": "local", "path": "local/runs/cp397-f1d-wine/run-2/accounts.sqlite", "bytes": 176128, "sha256": "b0ac5ee68fa7344e6627d5bd71d5b208765c42243b2a96718fe0557394bd2440"},
+    {"id": "CP397_CLEANUP", "kind": "local", "path": "local/runs/cp397-f1d-wine/run-2/cleanup.json", "bytes": 100, "sha256": "c6a8a75d3797152bf742629566bc35968b42ffa5cc36222903477709c5396498"},
+    {"id": "CP397_SHA256", "kind": "local", "path": "local/runs/cp397-f1d-wine/SHA256SUMS", "bytes": 42591, "sha256": "144240e4e8c9aa04900470ca9caa8bfa5c3b2842cac999edcbaf9797ab542b30"},
+    {"id": "CP397_META", "kind": "repository", "path": "docs/evidence/rust-service/f1d-vehicles-acceptance.json", "bytes": 4968, "sha256": "3bc8f84a965fc6ce937bc9b276b6cc94aef048a0a7f306343a1cf17bfdc29748"},
+    {"id": "CP397_PROV", "kind": "local", "path": "local/runs/cp397-f1d-wine/catalog/provenance.json", "bytes": 1074, "sha256": "783f8a845ad5dfb87917b7752c7f3db365173530535308cef8d90f69ff864ec1"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/cp397-f1d-wine/run-2", "path": "local/evidence-manifests/652a51a7c99d3d8eaeff7be81ab94a2366452dfa3454d11e10c701b045be88fd.jsonl", "sha256": "652a51a7c99d3d8eaeff7be81ab94a2366452dfa3454d11e10c701b045be88fd", "bytes": 1375, "count": 7, "files_bytes": 2332941},
+    {"run": "local/runs/cp397-f1d-wine/catalog", "path": "local/evidence-manifests/95c38743e82739c08d45446af795b68d03eafa9cc25c1f92e4e38362cba4d151.jsonl", "sha256": "95c38743e82739c08d45446af795b68d03eafa9cc25c1f92e4e38362cba4d151", "bytes": 434, "count": 2, "files_bytes": 68614}
+  ]
+}

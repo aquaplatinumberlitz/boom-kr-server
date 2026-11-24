@@ -1,0 +1,61 @@
+{
+  "schema": "kr-f1d-vehicles-acceptance-v1",
+  "task": "cp397-f1d-wine",
+  "checkpoint": "CP397",
+  "baseline": "ac06025fb397d8c933da96f4065c1f81af2bdfc4",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Hai client KR 00967 trên Wine (CookieA slot 0, CookieB slot 1), cùng phòng trên kr-service release không chỉnh sửa với policy report_derived_f1d_vehicles qua hai ván Cookie07 liên tiếp. Không sửa code Rust phục vụ và không dùng fixture giữa trận.",
+  "precedents": [
+    "docs/evidence/checkpoints/records/CP396.json",
+    "docs/evidence/item-families/f1d-vehicles-wine.json",
+    "docs/protocol/vehicles.md#cp397-f1d-acceptance"
+  ],
+  "map": {
+    "name": "Cookie07",
+    "code": 227,
+    "source": "kr_static",
+    "status": "confirmed",
+    "floor_sha256": "00a55296a34bd2649d8b2724e660c9e889b14938dde8a49c3b680c1878c209ee",
+    "list1": [
+      {"index": 0, "row": 12, "column": 4, "kind": 41, "vehicle": "Owl"},
+      {"index": 1, "row": 11, "column": 2, "kind": 41, "vehicle": "Owl"},
+      {"index": 2, "row": 11, "column": 1, "kind": 42, "vehicle": "Turtle0"},
+      {"index": 3, "row": 11, "column": 13, "kind": 43, "vehicle": "Turtle1"},
+      {"index": 4, "row": 12, "column": 10, "kind": 44, "vehicle": "AirshipBroken"},
+      {"index": 5, "row": 12, "column": 13, "kind": 40, "vehicle": "Airship"}
+    ],
+    "limits": "Năm loại xe 40..44 nằm trong pre-load S->C 582 list1 trước Start 121; list2/list3 rỗng. Không inject 582 giữa trận."
+  },
+  "runtime": {
+    "run": "run-2",
+    "started_utc": "2026-11-24T07:11:38Z",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "client_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+    "server_sha256": "e2aafc178666267c617a5616b2cac0be857ab0dda36bfe7c6b11fd2e41bf66d0",
+    "companion_sha256": "9946ae9921cbcb3fff98646b6e89838144726a301335ae29f74b0624d58348e9",
+    "admin_sha256": "833187a3f1f6280869960ed1fc34e4532f45be3323a44b0b858e7adec577d3d7",
+    "launch_identity_sha256": "fdd52c474d83b0a87da4e2bced4d5666ced77b0d4de9e8bb408fb7ac01a33574",
+    "isolation": "Khóa .kr-wine-runtime.lock, namespace user/net/pid riêng cho kr-service và hai client Wine với captured TCP loopback + UDP (4127 gói A, 3963 gói B)."
+  },
+  "acceptance": {
+    "claims_and_guard": "Ván 1: CookieA nhặt Owl (41) tại (12,4) qua 124/165 rồi đi qua (11,1) Turtle0 (42); hai view giữ nguyên Owl (selector 2). CookieB nhặt Airship (40) tại (12,13) với selector 1, tốc độ 10, fly/boxpass/no_eat=1.",
+    "airship_passbox_and_relay": "CookieB bay qua AirshipBroken tại (12,10) mà không ăn xe (no_eat=1) và xuyên thùng phá được (12,9) tới (12,7) với thùng còn nguyên trong ảnh A/B. Bom Space do B đặt nổ sau 6 giây (159 -> 158) làm B tháo Airship: B phát 14B C->S 127/sub16 (seq 190, 4a5ba44ba76e96ca5a2b96ca5394), kr-service chuyển tiếp 6B S->C 170/sub16 (seq 133, 4a5ba44ba76e) cho A và cả hai view ghi nhận ship_valid=0.",
+    "post_175_and_reset": "Ván 1 kết thúc tự nhiên khi CookieB trúng bom kế tiếp trong lúc CookieA vẫn cưỡi Owl: cả hai nhận 175 và A phát 127/sub16 sau 175 (seq 241) mà không rớt phiên, rồi nhận 180 và quay về phòng. Start 121 ván 2 cấp floor 582 mới và reset ship_valid/selector/fly/boxpass/no_eat về 0 ở cả hai view.",
+    "round2_remaining_vehicles": "Ván 2: CookieA nhặt Turtle0 (42) tại (11,1). CookieB nhặt Turtle1 (43) tại (11,13), tự tháo bằng bom Space (127/sub16 seq 310 -> 170/sub16 seq 190 cho A), rồi nhặt AirshipBroken (44) tại (12,10), bay qua thùng (12,9) tới (12,7) và tự tháo (127/sub16 seq 355 -> 170/sub16 seq 202 cho A). Bom kết thúc ván 2 trong lúc A còn Turtle0 kích hoạt lại post-175 127/sub16 (seq 376) sạch.",
+    "leave_and_journal": "SQLite matches có đúng 2 hàng complete/elimination (round 256 và 512, Cookie07/227, reward_lucci=0). B và A bấm rời phòng (86/241), health sample xác nhận room_count=0, error=null và scratch Wine đã xóa sạch (4632987565 bytes)."
+  },
+  "artifacts": {
+    "root": "local/runs/cp397-f1d-wine",
+    "receipt": {"path": "verification.json", "sha256": "4f4cd670b7a2d6062da3090b2cfaf0aa6808b0249027bbeb785c5df02a6f9ac8"},
+    "checksums": {"path": "SHA256SUMS", "sha256": "144240e4e8c9aa04900470ca9caa8bfa5c3b2842cac999edcbaf9797ab542b30"},
+    "wire": ["run-2/wire-segments-A.jsonl", "run-2/wire-segments-B.jsonl", "run-2/channel-decoded.jsonl"],
+    "screens": ["run-2/comparison-f1d.png", "run-2/comparison-reset-return.png"],
+    "journal": "run-2/accounts.sqlite",
+    "cleanup": "run-2/cleanup.json"
+  },
+  "limits": [
+    "Nghiệm thu xác nhận 5 loại xe F1-d (40..44) trên Cookie07 với 2 client Wine và kr-service release trên commit ac06025.",
+    "Không tự động bao hàm 22 loại Ship/* mở rộng, chế độ khác hoặc luật server KR gốc."
+  ]
+}

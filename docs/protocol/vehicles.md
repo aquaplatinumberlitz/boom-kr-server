@@ -172,3 +172,12 @@ kích thước và đúng slot của phiên đang cưỡi sẽ xóa trạng thá
 cho các peer. Báo cáo hợp lệ khi đã xuống xe hoặc sau `175` được tiếp nhận mà không gửi tiếp;
 sai slot hoặc sai kích thước vẫn bị từ chối. `121` khởi tạo ván mới với trạng thái chưa cưỡi xe.
 Đây là chính sách tương thích theo các báo cáo đã đo, không xác nhận luật server gốc.
+
+<a id="cp397-f1d-acceptance"></a>
+## Nghiệm thu trên `kr-service` chuẩn hai client — CP397
+
+**`kr_runtime/confirmed` trên `kr-service` release không chỉnh sửa (`report_derived_f1d_vehicles`, baseline `ac06025`).**
+[Chứng cứ CP397](../evidence/checkpoints/records/CP397.json) và [tóm tắt nghiệm thu](../evidence/rust-service/f1d-vehicles-acceptance.json).
+
+- **Ván 1 (`Cookie07`, `582 list1` đủ `40..44` trước `Start 121`):** `CookieA` nhặt `Owl (41)` tại `(12,4)` qua `124/165` rồi đi qua `Turtle0 (42)` tại `(11,1)`, cả hai view giữ nguyên `Owl (selector=2)`. `CookieB` nhặt `Airship (40)` tại `(12,13)`, giữ nguyên xe khi bay qua `AirshipBroken (44)` tại `(12,10)` (`no_eat=1`) và bay xuyên thùng `(12,9)` sang `(12,7)` (`PassBox=1`, ảnh giữ nguyên thùng). Bom thật (`Space`) nổ sau 6 giây (`159 → 158`) khiến `B` gửi 14 byte `C→S 127/sub16` (`4a5ba44ba76e96ca5a2b96ca5394`), `kr-service` chuyển tiếp 6 byte `S→C 170/sub16` (`4a5ba44ba76e`) cho `A` và cả hai view tháo xe (`ship_valid=0`). `B` tự nổ loại mình trong lúc `A` vẫn giữ `Owl`, `A` gửi `127/sub16` sau `175` mà không rớt phiên, hai client nhận `180` và về phòng.
+- **Ván 2 (`SAME_MAP=1`) và rời phòng:** `Start 121` khôi phục trạng thái chưa cưỡi xe cho cả hai view. `A` nhặt `Turtle0 (42)`; `B` lần lượt nhặt `Turtle1 (43)` tại `(11,13)` rồi `AirshipBroken (44)` tại `(12,10)`, đều tự tháo bằng bom thật với cặp `127/sub16 → 170/sub16` chuyển tiếp cho `A`. Cả hai kết thúc ván 2 (`matches`: 2 hàng `complete/elimination`, `reward_lucci=0`), bấm thoát phòng (`86/241`), `room_count=0`, `0` lỗi và dọn sạch scratch Wine.
