@@ -85,7 +85,6 @@ strings! {
     PrefBad => "Không thể lưu lựa chọn.", "Your choice could not be saved.", "선택 사항을 저장할 수 없습니다.";
     Launcher => "Launcher", "Launcher", "런처";
     Package => "Gói", "Bundle", "패키지";
-    QuickHelp => "Hướng dẫn nhanh", "Quick guide", "빠른 안내";
     Help => "Hướng dẫn", "Help", "이용 안내";
     Close => "Đóng", "Close", "닫기";
     Create => "Tạo tài khoản", "Create account", "계정 만들기";

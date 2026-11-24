@@ -144,9 +144,20 @@ fn prepare(cfg: &game::Config) -> io::Result<(Service, Gateway)> {
             .arg(&cfg.bundle)
             .arg("--player-manifest-sha256")
             .arg(&cfg.manifest_sha256)
+            .stderr(Stdio::piped())
             .output()?;
         if !output.status.success() || output.stdout.len() > 16384 {
-            return Err(io::Error::other("friends server setup"));
+            let stderr = String::from_utf8_lossy(&output.stderr);
+            let tail = stderr.trim();
+            let tail = tail
+                .char_indices()
+                .rev()
+                .nth(239)
+                .map_or(tail, |(idx, _)| &tail[idx..]);
+            return Err(io::Error::other(format!(
+                "friends server setup (exit={:?}): {tail}",
+                output.status.code()
+            )));
         }
         let value: Prepared = serde_json::from_slice(&output.stdout)?;
         if value.ports != cfg.ports || !value.address.ip().is_loopback() {
