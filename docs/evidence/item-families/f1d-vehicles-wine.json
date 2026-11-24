@@ -1,0 +1,101 @@
+{
+  "schema": "kre-item-family-runtime-v1",
+  "task": "p97b-f1d-vehicles-wine",
+  "build": "KR 00967",
+  "canonical": "docs/protocol/vehicles.md#f1d-wine",
+  "baseline": "9799cd1455b3051bed391df48e869d074b8569b4",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Hai client KR chẩn đoán chạy Wine trong hai namespace riêng, relay cục bộ giữ UDP. Không có route mặc định hoặc server Nexon. Kết luận chỉ áp dụng cho hành vi client đã quan sát.",
+  "raw_root": "local/runs/f1d-vehicles-wine/",
+  "provenance": {
+    "static": "docs/evidence/item-families/f1d-vehicles-static.json. Dùng các contract đã ghi; không chạy IDA, không giải mã binary hoặc đọc disassembly.",
+    "reuse": "CP396 pin cùng hash client. p93 tại local/runs/f1b-next-items-wine/run-2 cung cấp mẫu list1 của 582 trước 121. Đối chứng walk-empty cũ tại run-2 của F1-d dùng cùng Cookie07; ca inject 582 muộn của lượt cũ bị loại khỏi kết luận pickup.",
+    "client_copy_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "fixture_kr_service_sha256": "ec06aa3c5b01255232c0f65d1f3435e7d26be89fccfbaae1acad60525d584757",
+    "reused_kr_prelogin_sha256": "3bfb7eaa4a4a8aa4697248cad6a2c8e76425d6745186b35765d4f40fdc27a626",
+    "fixture_source": "emu_choice: patch_fixture.py là fixture p97 đã có. patch_p97b_fixture.py chỉ cho 40..44 trong list1 khởi tạo khi có P97_FIXTURE, đồng thời cấm 582 ở mailbox giữa trận. Không sửa code Rust phục vụ hay patch thêm client.",
+    "review": "waived theo docs/evidence/checkpoints/review-waiver.json; tự kiểm capture, trace và journal."
+  },
+  "runs": {
+    "run-3": {"maps": ["Cookie07/227"], "result": "cancelled/no_players sau đường ép kết quả của fixture: journal_missing_outcome trên một stream, retired_membership trên stream kia; không có dual return. Không dùng ép kết quả ở run-4.", "startup_582_then_121": {"A": [[100, 103]], "B": [[100, 103]]}},
+    "run-4": {"maps": ["Cookie07/227", "Cookie07/227", "Tomb12/1080"], "result": "Ba hàng journal complete/elimination, round 256/512/768. Mỗi client có 175, 180 và refresh phòng từng ván. Hai Back 86/241 và health room_count 0.", "startup_582_then_121": {"A": [[100, 103], [148, 151], [208, 211]], "B": [[100, 103], [145, 148], [196, 199]]}},
+    "preflight": "Bản kr-service p97 cũ từ chối catalog vehicle trước khi Wine khởi động; log ở preflight-p97b-rejected-floor. Hai preflight --dry của binary p97b qua health."
+  },
+  "pickup": {
+    "rule": "Mọi 582 trong capture đều ngay trước 121 của cùng receiver, list1 chứa đủ 40..44, list2/list3 rỗng. Mailbox item chỉ là allowlist để quyết định 165 từ actual 124.",
+    "run-3_cookie07": "A 124 seq166 Owl, seq187 Turtle0, seq214 Airship. 165 của Owl và Turtle0 là seq115 và 118 ở cả hai view. Khi 165 Turtle0 đã tới, cả hai trace a-guard-settled vẫn có selector 2; item index1 qua claim fixture. T0 dự phòng không phát claim sau tia, nên không lấy ca đó làm mẫu T0.",
+    "run-4_tomb12": "Cả hai view xác nhận 40→1, 44→5, 41→2 ở A và 42→3, 43→4 ở B. Đọc b3-water-*-ready và claim/reply trong p97b-measurements.json."
+  },
+  "movement": {
+    "unit": "Tọa độ game (x,y) và bước pixel nguyên từ các mẫu liên tiếp của client điều khiển; ms là thời gian giữ phím, không dùng làm tốc độ server.",
+    "walk_owl": "Cookie07: đi bộ x80→115/200 ms, bước 5; Owl x160→80/432 ms, bước 5.",
+    "airship": "Cookie07: x160→330/460 ms qua ô thùng (12,5), bước 10. Ảnh trước/sau đều còn thùng. Trước ô tĩnh (12,0) x40 giữ nguyên/440 ms; trước bom id402 của slot1 ở (12,7), x240 giữ nguyên/360 ms.",
+    "broken": "Cookie07: x400→346/800 ms qua ô thùng (12,9), bước 2; selector 5, fly/boxpass/no_eat đều bằng 1 ở cả hai view.",
+    "turtle0": "Tomb12: tại cột 14, y79→41/541 ms và y41→77/514 ms, bước 2; cả hai view có selector 3 và tốc độ 2.",
+    "turtle1": "Cookie07: x480→525/120 ms, bước 9. Giữ y479/440 ms trước thùng (10,12); x516→520 rồi dừng trước ô tĩnh (12,14).",
+    "waterway": "Tomb12: đích Airship (11,1), AirshipBroken (10,1), Owl (9,1), Turtle0 (1,13), Turtle1 (2,13); đều có ray_barriers=1 trong map fixture. Tọa độ ngang giữ 0 ở A hoặc 560 ở B khi thử đi vào."
+  },
+  "subtype16": {
+    "control": "Cookie07, Owl slot0 tại (160,519), tia ở đúng ô, 159/158 chỉ gửi cho A ở cả hai mode. Cửa sổ từ hit-begin đến hit-post. Mode hold ở ván 1 và forward ở ván 2 sau khi kiểm reset. Lượt thử forward đầu ở ván 1 chưa lên lại Owl, phát 127/17 và 19 rồi kết thúc ván; không dùng nó làm phép đo 16.",
+    "hold": {"fields_u8_u8_u16_u16_u32_u32": [16, 0, 160, 519, 3682, 1], "packets": [["A", 127, 217, "4a5aa5c9a76e96ca5df796ca5394"]], "ship_valid_post_AB": [0, 1]},
+    "forward": {"fields_u8_u8_u16_u16_u32_u32": [16, 0, 160, 519, 7305, 1], "packets": [["A", 127, 370, "4a5aa5c9a76e96ca4f1c96ca5394"], ["B", 170, 163, "4a5aa5c9a76e"]], "ship_valid_post_AB": [0, 0]},
+    "udp": "So payload loopback 17 byte nguyên vẹn theo UDP port từ 99 của từng client và timestamp nhận sau gửi. Hold: A→B 14/14, B→A 14/14; forward: A→B 14/14, B→A 13/13. Mẫu trước/sau và mốc ns nằm trong p97b-measurements.json.",
+    "shared_blast": "run-3 a-owl-ray có 159/158 tới cả hai; A phát 127/sub16 seq202 (4a5aa539a4b696ca541f96ca5394). Kết thúc cửa sổ valid A=0, B=1 khi không có 170/sub16.",
+    "timing": "Từ mẫu âm đầu đến lần đầu Ship invalid: hold A 1490,3 ms; forward A 1493,7 ms, B 1472,3 ms. Sample đầu tương ứng -50, -50, -49. Hết validity chưa yêu cầu số selector/tốc độ đã về 0."
+  },
+  "keys_and_reset": {
+    "keys": "Trong run-4, b1-no-hit-keys giữ Ctrl, Shift, Alt, X, Z, C bằng input helper; b2-direct-modifiers thử Control_L, Shift_L, Alt_L bằng X input. Owl valid ở cả hai view, không có 127/sub16 trong hai cửa sổ.",
+    "finish_and_reset": "b1-last-mounted: AirshipBroken slot1, valid=1, selector=5, ship_speed=2 và fly/boxpass/no_eat=1 ở cả hai view. B nhận 175 seq130 rồi phát 127/sub16 seq250 sau 10,1 ms, trước 180 seq133. Sau Start ván 2: valid, selector, ride_count, ship_speed, fly, boxpass và no_eat đều 0 ở cả hai view. B giữ trái 200 ms trước/sau reset, x480→440/445 (bước -5 px cả hai).",
+    "leave": "C2S86 B seq565 và A seq610; S2C241 B seq262 và A seq274 sau 86. Ảnh lobby-after-leave và phase room-left-both chứng thực kết thúc phòng."
+  },
+  "reproduction": {
+    "prepare": "Từ raw_root, đặt STEP0_WORKTREE trỏ worktree và PYTHONPATH gồm tools/ và gốc worktree. Chạy make_p97b_floor.py để tạo hai catalog. Khi cần dựng lại, áp patch_p97b_fixture.py lên fixture-src đã có patch p97; cargo build --manifest-path fixture-src/rust/Cargo.toml --offline --locked --release -p kr-service --bin kr-service; chép binary vào bin/kr-service-p97b.",
+    "capture": "Chạy run_pair_p97b.py <run> <catalog> dưới shared flock của chính wrapper; hai lượt dùng catalog-p97b-a/b. Điều khiển bằng p97b_control.py <run> <script>: p97b-a-open/next/air/b-side/turtle; p97b-b-first/resume/second/reset-forward, finish_round(2, B), p97b-b-water và p97b-b-leave. Xem commands-*.json và probe-actions.jsonl để tái lập đúng thứ tự.",
+    "audit": "python3 audit_p97b.py run-3 run-4 tái ráp TCP, kiểm CRC/seq, đối chiếu list1, 124/165, 127/170, UDP và SQLite. Trace, ảnh và mốc input ở từng run; file channel-decoded.jsonl và p97b-measurements.json là kết quả lọc."
+  },
+  "cleanup": {
+    "run_3_removed_bytes": 4632983741,
+    "run_4_removed_bytes": 4632991276,
+    "preflight_copy_removed_bytes": 4632972462,
+    "target_removed_bytes": 1090715353,
+    "preserved": "Giữ binary fixture, recipe, log, trace, ảnh, wire capture và DB đã dùng. Cả hai namespace kết thúc với scratch_removed=true."
+  },
+  "artifact_sha256": {
+    "run-3/wire-segments-A.jsonl": "47cbc6943e81469104e32b988e5c0b972277e1e80c908d04ee1921808da85752",
+    "run-3/wire-segments-B.jsonl": "577162dcda6e499f29a87131402d005e9a8110d937bb6d03277688871e2cb594",
+    "run-4/wire-segments-A.jsonl": "1db9fa417b47cd09b27a62a695e60653c46f2bdcf11bb002acc43f324f18ecd6",
+    "run-4/wire-segments-B.jsonl": "4f240e6bc792a5afd2ec519147d168e0d13fd657b2841a9b5861f593e1ae69a2",
+    "run-3/identities.json": "7a646586018dc915076b21e7376f27b8cf523646968f42e6852998e1f12e496a",
+    "run-4/identities.json": "a9be774bbfc919fa480586220022cbc8f7f3f5290c63be4084ed38f9ea066008",
+    "run-3/cleanup.json": "4d31c5c3d3448af52dac54add1aeefb3a4dbd3387fab27fc380b3da0dc034f74",
+    "run-4/cleanup.json": "c5837875f755a4d6a4894c218be0fee604005ea64b419388eb0a35ef943200fd",
+    "p97b-build-cleanup.json": "fe27c0288c93df44365e74711922da5a20c9dd9a3a7e6574e3bc53b875275cac",
+    "patch_p97b_fixture.py": "91fde8f08ae4b91182470213a21d306b4d37c36d2840b5cb0391eef2c76752a5",
+    "run_pair_p97b.py": "af75473766e90061a828435d31f82c95da4611252cdb29334238b8b14d92b5e6",
+    "make_p97b_floor.py": "3303afa7e683d059d7ed8b4e9557432dfefb58534cf80188fe0e6dd694de4759",
+    "audit_p97b.py": "a9a5cdbf31819aa490ba90bb90344ceaf222982858ac7b7a1f859a359a1089d9",
+    "p97b_decode_channel.py": "a044fd5053404db95e2350e7ce00893fb8827393c8a616b12b302b0cd5b1477a",
+    "catalog-p97b-a/layout.json": "225401bc68d66fc1141fbac531ef348808092bc605bcba332eb85f4312ea7866",
+    "catalog-p97b-b/layout.json": "607971537c08b1976571797181796ac6e07dba5f416e9a61f1341c26d7e1a154",
+    "inputs/Cookie07.rules.json": "333b754b4a8a2ab3e6b717ea5235f9ccaebadcd92fb915e2239cb9ed347ed71f",
+    "inputs/Tomb12.rules.json": "f8501da6aa670797b8f55e6e0bd619e7f9884bbc4b52280b90af7e1512ea1752",
+    "run-3/channel-decoded.jsonl": "6ea915e256a7f3ed95dcde9c686c4c5c1bfd319a16dcce576e74237f938957a0",
+    "run-3/p97b-measurements.json": "45bfc50db3f34246aeef40b33b302389e3d1e0934d20f85d6338513d3f977474",
+    "run-3/probe-actions.jsonl": "8cde45b3a5c1d56225002e8cfd0feca659c28a35972cdfa6fc2e1c2272900ee5",
+    "run-3/service/rust-events.jsonl": "b6fda92afc68555822e8345f8c22f8fc898c50fe85c619894c7441938f7feb43",
+    "run-3/a-air-box-before-A.png": "84bb1a612838e8c1b29f0333b99412ce4dc910d89307c9d150b5971f672bd066",
+    "run-3/a-air-box-after-A.png": "edc174ab860fb8b096abfdc3011d48de1239aef1450aa11226b1524755c96f4d",
+    "run-4/channel-decoded.jsonl": "ee17824ae8d1a85d10d07f9a6d9717cf27c13fde4f082331afa6d4aa0acd8392",
+    "run-4/p97b-measurements.json": "f7ed9186735a5cd78bde05623aea96f3bb25e11e512c4815cfb9e090eed3198f",
+    "run-4/probe-actions.jsonl": "6e3a3349e6b5ffc050b42d7d00fc8414940edc1130b0c7cd1957dd2d60a7d4eb",
+    "run-4/udp-A.jsonl": "3cf2eaa16d01e0132ca05a48a9b2d0151f7f8ddfe0bd8e1c210b36a898848bf7",
+    "run-4/udp-B.jsonl": "ea63908017c8b860d624d158daf3f524d327f6ac373f58da42b1481d0a46d922",
+    "run-4/accounts.sqlite": "abf721d2e707ff705bbc8c8fa4fcea2003279965a6a9147238925bef45bc9bc2",
+    "run-4/service/rust-events.jsonl": "e7ca1eecbfaf7aaaa2c9b059c7d728bd2a707d4eec6a602c52c6c5e2cf9d4c3c",
+    "run-4/lobby-after-leave-A.png": "fbe638187aaad265a2b6289df47c603bea4434718edafe976501df3530b87f2c",
+    "run-4/lobby-after-leave-B.png": "f1c9f0e185b587428fb0e5729d90c80c107342ad962b73481e6c8dd242bf737e"
+  },
+  "unknown": "Chỉ gửi 165 cho người nhặt, toàn bộ tổ hợp xe/địa hình, bom của người lái, lần hit kế trong cửa sổ tháo, và policy validation của server KR gốc chưa được xác nhận. Không suy ra hỗ trợ xe trong production Rust."
+}
