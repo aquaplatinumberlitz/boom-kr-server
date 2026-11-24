@@ -127,5 +127,16 @@
     "reproduction": "Với env p108 đã ghi: cargo build --manifest-path rust/Cargo.toml --offline --locked --release -p kr-service --bin kr-service, đặt binary vào native-638/bin-native. P108_MAP_RELAY=0 python3 \"$P108_RAW/measure-native-638.py\" <run> <map>; giải mã bằng decode-channel-159.py và decode_udp.py.",
     "artifacts": {"sha256_manifest": "SHA256SUMS-p108-native-638", "sha256_manifest_digest": "550e088ca4d13df48080664e13ac689fe6953889fca785b73a3e505d75d162ce"},
     "cleanup": {"wine_logical_bytes_removed": 9254707386, "cargo_target_logical_bytes_removed": 774005834}
+  },
+  "native_dispatch_followup": {
+    "source": "kr_static với input từ kr_runtime",
+    "codec_status": "confirmed",
+    "codec_check": "Dùng kr-wire #638 đọc lại body của 8 frame 228 và 75 frame 148 đã qua CRC. Tất cả được codec nhận. 228 cho body 350 giống nguyên mẫu. Đây là kiểm codec ngoại tuyến.",
+    "queue_status": "candidate",
+    "queue_check": "State::poll giữ tối đa 16 batch pending mỗi kênh cho phiên một người local; kiểm trần trước khi phát batch đến hạn. Nhánh 148 tạo batch 159 tức thời và batch 158 sau 2200 ms cho từng ô trên từng transport.",
+    "stock_demand": {"NXCL_PangLand15": {"cells": 52, "requests": 52, "span_ms": 113.299}, "PangLand03": {"cells": 9, "requests": 9, "span_ms": 1.569}},
+    "limits": "Nếu server nhận và lên lịch theo nhịp đã bắt, NXCL_PangLand15 cần tới 52 timer chưa đến hạn trên mỗi kênh, vượt trần 16 ngay cả khi không tính spawn. Chưa chạy qua handler native chưa sửa; không gán lỗi hàng đợi đã xảy ra.",
+    "next": "Sau khi nối dispatch, nghiệm thu cả PangLand03 và NXCL_PangLand15. Kiểm các request 148, đủ cặp 159/158 theo ID trên cả A/B, channel còn sống qua đợt bom, và không để timer cũ sang vòng sau.",
+    "artifacts": {"receipt": "native-638/queue-audit/receipt.json", "sha256_manifest": "native-638/queue-audit/SHA256SUMS", "sha256_manifest_digest": "a004755eef7f8238e7b3d8b8fc0bb375e2e5750aa19bbd07e214d01dc647e6cd"}
   }
 }

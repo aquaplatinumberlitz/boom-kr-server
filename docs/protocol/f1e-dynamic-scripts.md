@@ -169,3 +169,11 @@ chỉ giao opcode cho phòng nếu `room_io::Session::handles` nhận; hàm này
 `148/228` ở commit đo. Hai nhánh ở `Session::packet` chưa được nghiệm thu qua
 đường native TLS. [Bằng chứng p108](../evidence/item-families/f1e-space-pangland-wine.json)
 giữ pin build, capture, CRC và ảnh của lượt đối chứng.
+
+Kiểm ngoại tuyến cho thấy codec Rust nhận các body `148/228` đã bắt. Sau khi
+nối dispatch, cần kiểm thêm trần timer của `148` (`status: candidate`): mỗi
+ô đích sinh một batch nổ sau 2,2 giây cho mỗi kênh. Đợt đầu của
+`NXCL_PangLand15` dồn nhiều ô trong cùng cửa sổ fuse, vượt trần 16 batch
+pending của kênh có một client nếu giữ nhịp đã đo. Chưa quan sát tràn hàng đợi
+trong runtime. Dùng cả `PangLand03` và `NXCL_PangLand15` để kiểm reply,
+tuổi thọ channel và việc hủy timer khi đổi vòng sau khi sửa.
