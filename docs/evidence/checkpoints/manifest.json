@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP396",
-  "completed_count": 396,
+  "last_id": "CP397",
+  "completed_count": 397,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1289,6 +1289,12 @@
       "state": "closed",
       "canonical": "docs/protocol/auth-session.md#f1-c-character-catalog",
       "reference": "docs/evidence/checkpoints/records/CP395.json"
+    },
+    {
+      "id": "KRE-F1-D",
+      "state": "open",
+      "canonical": "docs/protocol/vehicles.md#cp397-f1d-acceptance",
+      "reference": "docs/evidence/checkpoints/records/CP397.json"
     }
   ],
   "version": 2,
@@ -4460,6 +4466,14 @@
       "path": "docs/evidence/checkpoints/records/CP396.json",
       "bytes": 8807,
       "sha256": "68464acb7cc0d85bb8cdba8840e5c7b2a67bbe9dd98d0b86d1eb9d9276f8491f"
+    },
+    {
+      "id": "CP397",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-24T07:17:30+00:00",
+      "path": "docs/evidence/checkpoints/records/CP397.json",
+      "bytes": 8279,
+      "sha256": "99bd38d37574403bba4a0ffc654efd143b4c51693d2196945e7a404d0bfe6d89"
     }
   ],
   "audit_policy": {
