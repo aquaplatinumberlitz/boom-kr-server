@@ -68,6 +68,8 @@ fn bomb_118(round: u64, serial: u32, row: u8, col: u8) -> Vec<u8> {
 
 #[test]
 fn f1e_dynamic_scripts_require_explicit_opt_in() {
+    assert!(Session::handles(148));
+    assert!(Session::handles(228));
     let (_shared, a, _b, _host, _round) = armed_room(false);
     assert!(a.packet(228, &SPACE_228).is_err());
     assert!(a.packet(148, &PANGLAND_148_2CELLS).is_err());
@@ -117,25 +119,61 @@ fn pangland148_spawns_159_and_2200ms_158_without_colliding_with_bomb118() {
     for (session, member_id) in [(&mut a, 1u32), (&mut b, 2u32)] {
         let key = shared.lock().unwrap().model.members[&member_id].key;
         let expected_ids = [2u16, 3u16];
+        let spawn = session.inbox.try_recv().unwrap();
+        assert!(session.valid(&spawn));
+        assert_eq!(spawn.packets.len(), 2);
         for (idx, (row, col)) in [(7u8, 2u8), (4u8, 1u8)].into_iter().enumerate() {
-            let spawn = session.inbox.try_recv().unwrap();
-            assert!(session.valid(&spawn));
-            assert_eq!(spawn.packets[0].1.opcode, 159);
+            assert_eq!(spawn.packets[idx].1.opcode, 159);
             assert_eq!(
-                spawn.packets[0].1.payload,
+                spawn.packets[idx].1.payload,
                 wire::sprinkler_spawn159(u32::MAX, 290, 17, row, col, 1, 1, expected_ids[idx])
                     .unwrap()
             );
-            let blast = session.inbox.try_recv().unwrap();
-            assert!(session.valid(&blast));
-            assert_eq!(blast.packets[0].1.opcode, 158);
-            assert!(matches!(
-                blast.guard,
-                Guard::ScriptBomb { member, round: r } if member == key && r == round
-            ));
-            let delay = blast.due.saturating_duration_since(spawn.due);
-            assert!(delay >= Duration::from_millis(2150) && delay <= Duration::from_millis(2250));
         }
+        let blast = session.inbox.try_recv().unwrap();
+        assert!(session.valid(&blast));
+        assert_eq!(blast.packets.len(), 2);
+        for idx in 0..2 {
+            assert_eq!(blast.packets[idx].1.opcode, 158);
+        }
+        assert!(matches!(
+            blast.guard,
+            Guard::ScriptBomb { member, round: r } if member == key && r == round
+        ));
+        let delay = blast.due.saturating_duration_since(spawn.due);
+        assert!(delay >= Duration::from_millis(2150) && delay <= Duration::from_millis(2250));
+        assert!(session.inbox.try_recv().is_err());
+    }
+}
+
+#[test]
+fn pangland148_coalesces_large_wave_without_overflowing_channel_queue() {
+    let (_shared, mut a, mut b, _host, _round) = armed_room(true);
+    let fields: Vec<(u64, Width)> = [
+        (u64::from(u32::MAX), Width::U32),
+        (20, Width::U8),
+        (290, Width::U16),
+        (17, Width::U16),
+        (1, Width::U8),
+        (1, Width::U32),
+        (0, Width::U16),
+    ]
+    .into_iter()
+    .chain((0..20).flat_map(|i| [(i / 5, Width::U8), (i % 5, Width::U8)]))
+    .collect();
+    let payload: Vec<u8> = fields
+        .into_iter()
+        .flat_map(|(v, w)| kr_wire::write_uint(v, w).unwrap())
+        .collect();
+    a.packet(148, &payload).unwrap();
+    for session in [&mut a, &mut b] {
+        let spawns = session.inbox.try_recv().unwrap();
+        let blasts = session.inbox.try_recv().unwrap();
+        assert_eq!(spawns.packets.len(), 20);
+        assert_eq!(blasts.packets.len(), 20);
+        assert!(spawns.packets.iter().all(|(_, p)| p.opcode == 159));
+        assert!(blasts.packets.iter().all(|(_, p)| p.opcode == 158));
+        assert!(session.inbox.try_recv().is_err());
     }
 }
 
