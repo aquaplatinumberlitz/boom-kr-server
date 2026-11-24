@@ -36,7 +36,7 @@
     "350": {"source": "kr_runtime", "status": "confirmed", "direction": "s2c", "layout": "Body byte-for-byte của 228; mỗi kênh có sequence/CRC riêng.", "dispatch": "0xE5D426: opcode - 312 = 38; byte 0xE5E022 = 7; [0xE5DFB8] = 0xE5D885 -> 0xE6A3C0 -> 0x483210 -> 0xE9E270.", "limit": "Đo bằng relay shadow, chưa biết hành vi phát của server KR gốc."},
     "148": {"source": "kr_runtime", "status": "confirmed", "direction": "c2s", "writer": "0xE733D0", "layout": ["@0 u32 script_source", "@4 u8 count", "@5 u16 y", "@7 u16 x", "@9 u8 power", "@10 u32 damage", "@14 u16 state", "@16 count * (u8 row, u8 col)"]},
     "149": {"source": "kr_static", "status": "confirmed", "runtime_status": "unknown", "direction": "c2s", "writer": "CGOTileStaticLucci::0xF158C0 (vtable 0x17703E0, slot +0x94, RTTI 0x19CB3B4)", "layout": ["@0 u16 bảng Lucci", "@2 u32 x", "@6 u32 y", "@10 u8 row", "@11 u8 col"], "limit": "Tile có byte thuộc tính +0x2c bằng 1 và state 1; sau khi chuyển state 2, host chỉ gửi khi lọc còn đúng một ô đích. Opcode này không phải writer trực tiếp của CGOBombSprinkler."},
-    "233": {"source": "kr_static", "status": "confirmed", "runtime_status": "unknown", "direction": "c2s", "writer": "0xE71C20", "layout": ["string", "u16", "u16", "u8 count", "count * (u8 row, u8 col)"], "limit": "0xF13850 tìm <item> trong <time>; hai map thử không có node này. Không có frame, timestamp hay CRC của 233."},
+    "233": {"source": "kr_static", "status": "confirmed", "runtime_status": "unknown", "direction": "c2s", "writer": "0xE71C20", "layout": ["string itemtablename (nhánh XML)", "u16 x", "u16 y", "u8 count", "count * (u8 row, u8 col)"], "limit": "Nhánh CMapActionItem đọc <time><item>. Không có node này trong FxMap đã quét; call site thứ hai chưa có đường vào xác minh. Không có frame, timestamp hay CRC của 233."},
     "pangland_s2c": {"source": "kr_runtime", "status": "confirmed", "layout": "Shadow: S->C 159 owner 25 tạo bom, S->C 158 cùng ID làm nổ trên cả A và B.", "reader": "159: 0xE5E8F0 -> 0xE14600 -> 0xE12CA0; slot 25 do 0xE0F490 / 0xE12540 đặt CGOBombSprinkler. 158: 0xE5F450 tìm ID qua 0xE14360. 355 -> 0xE73080 chưa nối với 233.", "limit": "Chỉ xác nhận client chấp nhận body thử và phản ứng hình ảnh. Chưa biết chính sách trả lời của server KR gốc."}
   },
   "frames": [
@@ -97,5 +97,15 @@
     "next": "Cần instance CGOTileStaticLucci có cờ +0x2c và state 1, hoặc locator đường gọi gián tiếp tới constructor, trước lượt 149 khác. 233 cần đầu vào stock khác hoặc capture phù hợp; chưa có lý do lặp Wine với pack và map đã thử.",
     "reproduction": ["python3 \"$P108_RAW/route-census.py\" \"$P108_KR_PACK_ROOT\" \"$P108_RAW/route-census.json\"", "python3 \"$P108_RAW/lucci-links.py\" <kr-full.exe>"],
     "artifacts": {"census": "route-census.json", "rtti": "lucci-links.log", "sha256_manifest": "SHA256SUMS-p108-stock", "sha256_manifest_digest": "31dbcb1003118f3e1358268e7dd96e1948fda6e0a73fac5c2aa604a8316c1016"}
+  },
+  "alternate_stock_routes": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+    "writer_233": "0xF165A6 gọi từ CMapActionItem, vtable 0x1770508 slot +16; 0x6D8EAF gọi từ 0x6D8DD0 sau guard state 1 và host. Nhánh XML chuyển itemtablename/x/y đến writer.",
+    "tile_factory": "0xEBDAD0 gọi constructor Fishing tại 0xEBDD90 và constructor CGOTileStatic mặc định tại 0xEBDE39. RTTI/vtable Fishing 0x1703FC0 và CGOTileStatic 0x1747E38 cùng ánh xạ slot +0x94 tới 0xBA14A0; Lucci 0x17703E0 ánh xạ tới 0xF158C0.",
+    "limits": "Không thấy nhảy/gọi rel32 vào thân 0x6D8DD0 hoặc 0xF15690, hay literal VA/RVA của entry. Không loại trừ địa chỉ được tính hoặc nguồn ngoài PE. Không có runtime mới; giữ 149/233 chưa xác nhận trên wire.",
+    "reproduction": "python3 \"$P108_RAW/alternate-routes.py\" <kr-full.exe> \"$P108_RAW/alternate-routes.json\"",
+    "artifacts": {"receipt": "alternate-routes.json", "sha256_manifest": "SHA256SUMS-p108-alternate", "sha256_manifest_digest": "13ae37a4edd4b52432e4ad1431b7e375c668f03e276cd386b6853d74acb06378"}
   }
 }

@@ -121,7 +121,7 @@ entry `0xE5DFB8` trỏ `0xE5D885`, gọi `0xE6A3C0` rồi đến reader
 `0xE5DC61` → `0xE73080`); ánh xạ tĩnh này không chứng minh đó là phản
 hồi cho `233`. Writer `149` tại `0xF159D4`–`0xF15A5D` ghi
 `u16 chọn từ bảng Lucci, u32 x, u32 y, u8 row, u8 col` ở nhánh một ô đích; layout tĩnh của
-`233` tại `0xE71C20` là `string, u16, u16, u8 count, count * (u8 row, u8 col)`.
+`233` tại `0xE71C20` là `string itemtablename, u16 x, u16 y, u8 count, count * (u8 row, u8 col)` trên đường XML.
 Hai layout đó chưa được đối chiếu trên wire. Reader `159` tại `0xE5E8F0` vào
 `0xE14600` với owner 25, dùng slot được `0xE0F490` / `0xE12540` dành cho
 `CGOBombSprinkler`. Reader `158` tại `0xE5F450` dùng ID để tìm bom cho lượt nổ.
@@ -139,6 +139,14 @@ nhưng mã asset chưa xác định class runtime. `CMapActionState` đọc `<st
 Lần theo binary chưa tìm được cạnh gọi trực tiếp tới constructor
 `CGOTileStaticLucci` (`0xF15690`); còn mở khả năng có đường gọi gián tiếp.
 Một mốc XML `begingold` kèm asset `Lucci00` chưa đủ để chọn lượt đo `149`.
+
+Writer `233` có hai call site trực tiếp đã xác minh: `CMapActionItem::0xF16520`
+gọi tại `0xF165A6`, còn `0x6D8DD0` gọi tại `0x6D8EAF` khi state là 1 và
+client là host. Chưa tìm thấy tham chiếu vào `0x6D8DD0` trong các dạng địa chỉ
+đã quét, nên chưa xác định được đường kích hoạt thứ hai. Factory tile tĩnh
+`0xEBDAD0` có nhánh `CGOTileStaticFishing` và nhánh mặc định `CGOTileStatic`;
+cả hai dùng `0xBA14A0` tại slot `+0x94`, khác writer Lucci `0xF158C0`.
+Các đường này chưa cung cấp fixture KR gốc để đo thêm `149` hoặc `233`.
 
 <a id="f1e-space-pangland-rust"></a>
 ## 6. Triển khai opt-in Rust và Adapter cho Space & PangLand (`allow_f1e_dynamic_scripts`)
