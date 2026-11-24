@@ -2,7 +2,7 @@
   "schema": "kre-f1-c-character-profiles-v1",
   "issue": 571,
   "build": "KR 00967",
-  "source": "kr_static + emu_choice",
+  "source": "kr_static + kr_runtime + emu_choice",
   "status": "candidate",
   "pack_sha256": {
     "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
@@ -492,12 +492,66 @@
     "rounds": 16,
     "start121_rounds": 16,
     "all_keys_covered": true,
-    "native_wine": "pending",
-    "native_limit": "Chưa chạy lượt native Wine mới; không nâng lớp bằng chứng."
+    "native_wine": "partial",
+    "native_limit": "Lượt Wine riêng xác nhận chọn, vào Battle và đạt trần cho key 2/3; lỗi báo chết chặn về phòng đủ hai client."
   },
   "limits": [
     "Ma trận là kr-load tổng hợp, không phải client CA.exe native.",
     "Pickup cap/reset được kiểm Rust room_io; driver matrix xác nhận chọn phòng, Start121, kết thúc và về phòng.",
-    "Không tạo CP394."
-  ]
+    "Checkpoint và dashboard do điều phối cập nhật."
+  ],
+  "native_wine": {
+    "status": "partial",
+    "acceptance": "blocked",
+    "source": "kr_runtime",
+    "room_map": "Forest24",
+    "character_keys": {
+      "C03": 2,
+      "C05": 3
+    },
+    "client": {
+      "build": "KR 00967, bản copy chẩn đoán offline đã vá",
+      "sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+      "wine": "wine-10.0-20260425 (CachyOS)"
+    },
+    "receipt": {
+      "path": "local/runs/f1c-native-accept/receipt.json",
+      "bytes": 11373,
+      "sha256": "a9f0b95e5bc792ef695a51062da643107d1ac124e19c0d0d5671a6ce430ac98a"
+    },
+    "runs": [
+      {
+        "head": "c2d09cfe5285d9d683ca8a930e048e8ece049de6",
+        "server_sha256": "43eee5a1ebead28d52fe47232e93a32d1d752ee53736976c4283f0d22027d597",
+        "started_utc": "2026-11-24T01:33:05Z",
+        "status": "blocked_loading79",
+        "wire": "local/runs/f1c-native-accept/run-1/wire.jsonl",
+        "screens": [
+          "local/runs/f1c-native-accept/run-1/r1-start-failure-A.png",
+          "local/runs/f1c-native-accept/run-1/r1-start-failure-B.png"
+        ]
+      },
+      {
+        "head": "f2d2c8fcb8796f112b96d2df5dbe346a79737f2a",
+        "server_sha256": "aa0b272e757dc68bf21cd395fad368d57a957119d3b0c70e883db9aaf343512f",
+        "started_utc": "2026-11-24T01:40:03Z",
+        "status": "blocked_round_return",
+        "wire": "local/runs/f1c-native-accept/run-2/wire.jsonl",
+        "screens": [
+          "local/runs/f1c-native-accept/run-2/r1-arena-A.png",
+          "local/runs/f1c-native-accept/run-2/r1-arena-B.png",
+          "local/runs/f1c-native-accept/run-2/r1-cap-A.png",
+          "local/runs/f1c-native-accept/run-2/r1-cap-B.png",
+          "local/runs/f1c-native-accept/run-2/r1-after-return-A.png",
+          "local/runs/f1c-native-accept/run-2/r1-after-disconnect-B.png"
+        ]
+      }
+    ],
+    "limits": [
+      "Hai lượt mới trên hai client Wine và mạng cô lập, không dùng kết quả C00/C01 hoặc kr-load thay cho native.",
+      "Lượt sau kiểm tra sáu chỉ số qua bộ nhớ chỉ đọc của cả hai client và log server, cùng 118/159 và 124/165. Floor cố định do phép thử đặt trên địa hình pack; không suy luật rơi item của server gốc.",
+      "C2S127/sub19 có blob nén không rỗng. Parser chưa nhận body này; B rớt kết nối, chỉ A về phòng và journal ghi forfeit. Chưa đổi được nhân vật cho ván kế hoặc đo biến thể 120+, 150+ và 3000+.",
+      "Giữ lớp B; chưa đạt tiêu chí hai ván liên tiếp."
+    ]
+  }
 }
