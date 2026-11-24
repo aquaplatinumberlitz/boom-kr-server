@@ -17,6 +17,7 @@ pub(crate) struct Request {
     row: u8,
     column: u8,
     power: u8,
+    remote: bool,
 }
 impl Request {
     pub(crate) fn cell(&self) -> (u16, u16) {
@@ -28,7 +29,15 @@ impl Request {
     pub fn power(&self) -> u8 {
         self.power
     }
+    pub(crate) fn remote(&self) -> bool {
+        self.remote
+    }
     pub fn parse(body: &[u8]) -> io::Result<Self> {
+        Self::parse_with_remote(body, false)
+    }
+    /// Parses C2S 118, allowing byte offset 21 (`v[12]`) == 4 when RemoteBomb is opted in
+    /// (`0xB4BE10 -> 0xE2C0E0(..., a13=4) -> 0xE2DF80`).
+    pub fn parse_with_remote(body: &[u8], allow_remote: bool) -> io::Result<Self> {
         let widths = [
             Width::U32,
             Width::U8,
@@ -54,7 +63,12 @@ impl Request {
             v.push(read_uint(&body[at..at + n], w).map_err(io::Error::other)?);
             at += n;
         }
-        if [v[1], v[6], v[7], v[8], v[9], v[11], v[12]] != [0, 1, 0, 0, 0, 1, 0] {
+        let remote = match v[12] {
+            0 => false,
+            4 if allow_remote => true,
+            _ => return Err(io::Error::other("unsupported basic bomb118 variant")),
+        };
+        if [v[1], v[6], v[7], v[8], v[9], v[11]] != [0, 1, 0, 0, 0, 1] {
             return Err(io::Error::other("unsupported basic bomb118 variant"));
         }
         Ok(Self {
@@ -64,6 +78,7 @@ impl Request {
             row: v[4] as u8,
             column: v[5] as u8,
             power: v[10] as u8,
+            remote,
         })
     }
     pub fn terrain_bomb(&self, id: u16) -> crate::terrain::Bomb {
@@ -107,6 +122,7 @@ struct Active {
     deadline: Instant,
     motion: Option<kr_wire::kr00967::BombMotion162>,
     preparing: BTreeSet<Membership>,
+    detonated: bool,
 }
 /// Bounded straight corridor for a previously validated axial action.
 /// Source/target are included until every retirement receipt completes.
@@ -356,9 +372,10 @@ impl Ledger {
                 ticket: ticket.clone(),
                 request: request.clone(),
                 pending: recipients,
-                deadline: Instant::now() + Duration::from_secs(6),
+                deadline: Instant::now() + Duration::from_secs(if request.remote { 60 } else { 6 }),
                 motion: None,
                 preparing: BTreeSet::new(),
+                detonated: false,
             },
         );
         Ok(Ok(Placement::Allocated(ticket)))
@@ -476,6 +493,7 @@ impl Ledger {
             return Err("bomb_already_moved");
         }
         if !active.preparing.is_empty()
+            || active.detonated
             || active.deadline.saturating_duration_since(now) < Duration::from_secs(3)
         {
             return Err("motion_deadline_closed");
@@ -487,6 +505,40 @@ impl Ledger {
         active.request.row = motion.target_row;
         active.request.column = motion.target_column;
         active.motion = Some(motion);
+        Ok(active.ticket.clone())
+    }
+    /// Validates a C2S 122 reason=2 RemoteBomb detonation request once per placed remote bomb.
+    pub(crate) fn trigger_remote_detonation(
+        &mut self,
+        round: u64,
+        owner: Membership,
+        slot: u8,
+        report: kr_wire::kr00967::RemoteDetonation122,
+    ) -> Result<Ticket, &'static str> {
+        if self.generation != Some(round) {
+            return Err("inactive_round");
+        }
+        let Ok(id) = u16::try_from(report.bomb_id) else {
+            return Err("inactive_bomb");
+        };
+        let active = self.active.get_mut(&id).ok_or("inactive_bomb")?;
+        if !active.request.remote {
+            return Err("not_remote_bomb");
+        }
+        if active.detonated {
+            return Err("remote_bomb_already_detonated");
+        }
+        if active.ticket.owner != owner || active.request.owner != slot {
+            return Err("foreign_bomb");
+        }
+        if (
+            u16::from(active.request.row),
+            u16::from(active.request.column),
+        ) != (report.row, report.column)
+        {
+            return Err("remote_cell_mismatch");
+        }
+        active.detonated = true;
         Ok(active.ticket.clone())
     }
     /// Close action admission before the first recipient starts its blast write.
@@ -557,6 +609,7 @@ mod tests {
             row: 3,
             column: 3,
             power: 1,
+            remote: false,
         }
     }
     #[test]

@@ -1,0 +1,43 @@
+{
+  "task": "agy-f1b-remotebomb-drill",
+  "build": "KR 00967",
+  "source": "kr_static + emu_choice",
+  "status": "candidate",
+  "scope": "Opt-in policy report_derived_f1b_remote_drill for RemoteBomb 150 (118 byte 21 flag 0x04 / 122 reason 2) and Drill 149 (127/sub3 -> 170/sub3 + terrain::clear_box) under unit/integration tests; no Wine capture yet.",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "inputs": {
+    "items_stats_doc": "docs/protocol/items-stats.md#f1b-remote-drill-rust",
+    "item_attr_sha256": "a9b55540c85c21de108e8720b4148b2030a231d907f3709dcb06f7ef728fcdba",
+    "kr_full_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+  },
+  "static_ida": {
+    "remote_bomb_118_flag": "0xB4BE10 -> 0xE2C0E0(..., a13=4) -> 0xE2DF80 writes v5[64]=0x04 as 13th field v[12] (u8 at byte offset 21 of 22-byte C2S 118); normal bomb 0xB76730 writes 0.",
+    "remote_detonation_122": "0xB518C0 -> 0xB4C0C0 -> 0xB7A8A0 -> 0xB731D0 sends C2S 122 reason=2, delay=max(0, 200-2*latency).",
+    "drill_127_sub3": "0x119108B -> 0xB73C60 -> 0xB4BB40 sends C2S 127/sub3 [u32 box_id, u8 row, u8 col, u8 dir] -> E86520 S2C 170/sub3.",
+    "item_attr_charges": "kind 149 Drill (+160=3, group 27), kind 150 RemoteBomb (+160=3, group 28)."
+  },
+  "implemented": {
+    "policy": "fixed_room.item_policy = \"report_derived_f1b_remote_drill\" (strict superset of report_derived_f1b_remote_sensor)",
+    "crates": [
+      "kr-wire::kr00967::{DRILL_KIND, ItemUseKind::{Drill, RemoteBomb}}",
+      "kr-service::{pickups, terrain::clear_box, bombs::{parse_with_remote, trigger_remote_detonation}, room_io::{118, 122, 127/sub3, 127/sub0}}"
+    ],
+    "tests": [
+      "terrain::tests::clear_box_removes_live_box_and_records_clearance_without_secondary_chain",
+      "room_io_f1b_remote_drill_tests"
+    ]
+  },
+  "reproduction": [
+    "cargo fmt --manifest-path rust/Cargo.toml --all --check",
+    "cargo clippy --manifest-path rust/Cargo.toml --workspace --all-targets --locked -- -D warnings",
+    "cargo test --manifest-path rust/Cargo.toml --workspace --locked -- --test-threads=4",
+    "python3 tools/check_docs.py"
+  ],
+  "limits": [
+    "No live 2-client Wine acceptance for RemoteBomb 150 or Drill 149 yet.",
+    "Variant rows RemoteBombG (176) and DrillRPG (258) remain rejected."
+  ]
+}

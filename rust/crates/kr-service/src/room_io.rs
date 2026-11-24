@@ -3368,19 +3368,85 @@ impl Session {
             }
             122 => {
                 let member = r.member(self.identity, self.connection)?;
-                r.bomb_cancellation_cells()
-                    .ok_or_else(|| err("map report122 disabled"))?
-                    .measured_report(body)?;
-                // No claimed bomb ID, serial or epoch is available in this
-                // measured variant. Observation cannot affect any allocation.
-                if matches!(next.phase, Phase::Ending { .. }) {
-                    next.observe_closed(member.key)?;
-                    dropped_after_abort = true;
-                } else if next.phase == Phase::Idle {
-                    next.observe_after_abort(member.key)?;
-                    dropped_after_abort = true;
+                if r.rules.item_policy.f1b_remote_drill()
+                    && let Ok(report) = wire::remote_detonation122(body)
+                {
+                    if matches!(next.phase, Phase::Ending { .. }) {
+                        next.observe_closed(member.key)?;
+                        dropped_after_abort = true;
+                    } else if next.phase == Phase::Idle {
+                        next.observe_after_abort(member.key)?;
+                        dropped_after_abort = true;
+                    } else if let Phase::Armed { round } = next.phase {
+                        match next.bombs.trigger_remote_detonation(
+                            round,
+                            member.key,
+                            member.slot,
+                            report,
+                        ) {
+                            Ok(ticket) => {
+                                let blast = packet(158, bombs::explode158(ticket.id)?);
+                                for peer in
+                                    Runtime::transport_representatives(next.members.values())
+                                {
+                                    let mut due = Runtime::member_batch(
+                                        peer.key,
+                                        Some(ticket.round),
+                                        u64::from(report.delay),
+                                        vec![("bomb158".into(), blast.clone())],
+                                    );
+                                    due.guard = Guard::Bomb {
+                                        member: peer.key,
+                                        ticket: ticket.clone(),
+                                    };
+                                    due.subject = (!next.player_round()).then_some(member.key);
+                                    due.bomb_complete = Some((ticket.clone(), peer.key));
+                                    due.bomb_partner = next
+                                        .members
+                                        .values()
+                                        .find(|m| {
+                                            m.key != peer.key
+                                                && m.key.connection == peer.key.connection
+                                        })
+                                        .map(|m| m.key);
+                                    effects.push((peer.key.identity, due));
+                                }
+                                bomb = Some(BombObservation {
+                                    accepted: true,
+                                    id: Some(ticket.id),
+                                    reason: "remote_detonation_accepted",
+                                });
+                            }
+                            Err(reason) => {
+                                bomb = Some(BombObservation {
+                                    accepted: false,
+                                    id: None,
+                                    reason,
+                                });
+                            }
+                        }
+                    } else {
+                        bomb = Some(BombObservation {
+                            accepted: false,
+                            id: None,
+                            reason: "inactive_round",
+                        });
+                    }
                 } else {
-                    next.observe_bomb122(member.key)?;
+                    r.bomb_cancellation_cells()
+                        .ok_or_else(|| err("map report122 disabled"))?
+                        .measured_report(body)?;
+                    // No claimed bomb ID, serial or epoch is available in this
+                    // measured variant. Observation cannot affect any allocation.
+                    if matches!(next.phase, Phase::Ending { .. }) {
+                        next.observe_closed(member.key)?;
+                        dropped_after_abort = true;
+                    } else if next.phase == Phase::Idle {
+                        next.observe_after_abort(member.key)?;
+                        dropped_after_abort = true;
+                    } else {
+                        next.observe_bomb122(member.key)?;
+                    }
                 }
             }
             118 => {
@@ -3389,7 +3455,10 @@ impl Session {
                     return Err(err("four-player gameplay not ported"));
                 }
                 let member = r.member(self.identity, self.connection)?;
-                let request = bombs::Request::parse(body)?;
+                let request = bombs::Request::parse_with_remote(
+                    body,
+                    r.rules.item_policy.f1b_remote_drill(),
+                )?;
                 if !map_allows_bombs {
                     return Ok(Observation {
                         bomb: Some(BombObservation {
@@ -3440,7 +3509,16 @@ impl Session {
                         let (row, column) = request.cell();
                         cells.contains(row, column)
                     });
-                    if r.rules.item_policy.enabled() {
+                    if request.remote()
+                        && (next.members[&self.identity].life.blocked_pickup()
+                            || !next.pickups.has_action_charge(
+                                round,
+                                member.key,
+                                wire::REMOTE_BOMB_KIND,
+                            ))
+                    {
+                        Err("remote_bomb_ineligible")
+                    } else if r.rules.item_policy.enabled() {
                         let stats = member
                             .item_stats
                             .ok_or_else(|| err("missing current item stats"))?;
@@ -3506,8 +3584,19 @@ impl Session {
                                 ..Observation::default()
                             });
                         }
+                        if request.remote()
+                            && !next.pickups.take_action_charge(
+                                ticket.round,
+                                member.key,
+                                wire::REMOTE_BOMB_KIND,
+                            )
+                        {
+                            return Err(err("remote bomb charge disappeared"));
+                        }
                         let spawn = packet(159, request.spawn159(ticket.id)?);
-                        let blast = packet(158, bombs::explode158(ticket.id)?);
+                        let blast = (!request.remote())
+                            .then(|| bombs::explode158(ticket.id).map(|b| packet(158, b)))
+                            .transpose()?;
                         for peer in Runtime::transport_representatives(next.members.values()) {
                             let mut immediate = Runtime::member_batch(
                                 peer.key,
@@ -3517,26 +3606,28 @@ impl Session {
                             );
                             immediate.subject = (!next.player_round()).then_some(member.key);
                             effects.push((peer.key.identity, immediate));
-                            let mut due = Runtime::member_batch(
-                                peer.key,
-                                Some(ticket.round),
-                                6000,
-                                vec![("bomb158".into(), blast.clone())],
-                            );
-                            due.guard = Guard::Bomb {
-                                member: peer.key,
-                                ticket: ticket.clone(),
-                            };
-                            due.subject = (!next.player_round()).then_some(member.key);
-                            due.bomb_complete = Some((ticket.clone(), peer.key));
-                            due.bomb_partner = next
-                                .members
-                                .values()
-                                .find(|m| {
-                                    m.key != peer.key && m.key.connection == peer.key.connection
-                                })
-                                .map(|m| m.key);
-                            effects.push((peer.key.identity, due));
+                            if let Some(blast) = &blast {
+                                let mut due = Runtime::member_batch(
+                                    peer.key,
+                                    Some(ticket.round),
+                                    6000,
+                                    vec![("bomb158".into(), blast.clone())],
+                                );
+                                due.guard = Guard::Bomb {
+                                    member: peer.key,
+                                    ticket: ticket.clone(),
+                                };
+                                due.subject = (!next.player_round()).then_some(member.key);
+                                due.bomb_complete = Some((ticket.clone(), peer.key));
+                                due.bomb_partner = next
+                                    .members
+                                    .values()
+                                    .find(|m| {
+                                        m.key != peer.key && m.key.connection == peer.key.connection
+                                    })
+                                    .map(|m| m.key);
+                                effects.push((peer.key.identity, due));
+                            }
                         }
                         bomb = Some(BombObservation {
                             accepted: true,
@@ -3843,7 +3934,8 @@ impl Session {
                 let needle = r.rules.life_actions.needle() && request.kind() == 145;
                 let extended = pickups::f1b_pickup_amount(request.kind())
                     .or_else(|| pickups::f1b_aux_pickup_amount(request.kind()))
-                    .or_else(|| pickups::f1b_remote_sensor_pickup_amount(request.kind()));
+                    .or_else(|| pickups::f1b_remote_sensor_pickup_amount(request.kind()))
+                    .or_else(|| pickups::f1b_remote_drill_pickup_amount(request.kind()));
                 let allowed = r.rules.item_policy.allows(request.kind());
                 if !needle
                     && !allowed
@@ -4095,6 +4187,47 @@ impl Session {
                         ("accepted", !effects.is_empty())
                     } else {
                         ("spring_ineligible", false)
+                    };
+                    life = Some(crate::life::Decision {
+                        accepted: reason == "accepted",
+                        reason,
+                        subtype,
+                        slot: report.slot,
+                        tick: report.tick,
+                        forward,
+                    });
+                } else if r.rules.item_policy.f1b_remote_drill() && subtype == wire::DRILL_SUBTYPE {
+                    let report = wire::drill127(body)?;
+                    let (reason, forward) = if report.slot != m.slot {
+                        ("slot_mismatch", false)
+                    } else if let Phase::Armed { round } = next.phase
+                        && report.dir <= 3
+                        && !next.members[&self.identity].life.blocked_pickup()
+                        && next
+                            .pickups
+                            .has_action_charge(round, m.key, wire::DRILL_KIND)
+                        && next
+                            .terrain
+                            .as_mut()
+                            .is_some_and(|t| t.clear_box(round, report.row, report.col))
+                    {
+                        let _ = next
+                            .pickups
+                            .take_action_charge(round, m.key, wire::DRILL_KIND);
+                        let reply = packet(170, wire::drill170(report)?);
+                        for peer in next.members.values().filter(|peer| peer.key != m.key) {
+                            let mut batch = Runtime::member_batch(
+                                peer.key,
+                                Some(round),
+                                0,
+                                vec![("drill170".into(), reply.clone())],
+                            );
+                            batch.subject = Some(m.key);
+                            effects.push((peer.key.identity, batch));
+                        }
+                        ("accepted", !effects.is_empty())
+                    } else {
+                        ("drill_ineligible", false)
                     };
                     life = Some(crate::life::Decision {
                         accepted: reason == "accepted",
@@ -5813,6 +5946,10 @@ mod room_io_f1b_aux_tests;
 #[cfg(test)]
 #[path = "room_io_f1b_remote_tests.rs"]
 mod room_io_f1b_remote_tests;
+
+#[cfg(test)]
+#[path = "room_io_f1b_remote_drill_tests.rs"]
+mod room_io_f1b_remote_drill_tests;
 
 #[cfg(test)]
 #[path = "room_io_f1e_tests.rs"]

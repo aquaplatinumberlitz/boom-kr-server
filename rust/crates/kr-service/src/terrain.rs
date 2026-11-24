@@ -443,6 +443,21 @@ impl Terrain {
         }
         Blast { processed, cleared }
     }
+    /// Immediately clears a live box cell (used by Drill 127/sub3) and records
+    /// clearance for hidden-item reveal without triggering exploding-box chains.
+    pub(crate) fn clear_box(&mut self, generation: u64, row: u8, column: u8) -> bool {
+        if self.generation != generation || row >= self.height || column >= self.width {
+            return false;
+        }
+        let index = usize::from(row) * usize::from(self.width) + usize::from(column);
+        if self.kinds[index] != 2 || self.remaining_hits[index] == 0 {
+            return false;
+        }
+        self.kinds[index] = 0;
+        self.remaining_hits[index] = 0;
+        self.cleared.entry((row, column)).or_insert((generation, 0));
+        true
+    }
     pub fn clearance(&self, generation: u64, row: u8, column: u8) -> Option<u16> {
         self.cleared
             .get(&(row, column))
@@ -1156,5 +1171,34 @@ pub(crate) mod tests {
         let chain = t.blast_committed(1, 5);
         assert_eq!(chain.cleared, BTreeSet::from([(5, 5), (5, 6), (5, 7)]));
         assert!(t.clearance(1, 4, 5).is_none());
+    }
+    #[test]
+    fn clear_box_removes_live_box_and_records_clearance_without_secondary_chain() {
+        let mut cfg = config();
+        let idx = |r: usize, c: usize| r * 15 + c;
+        cfg.kinds[idx(3, 6)] = 2;
+        cfg.seed_sha256 = sha(&cfg.kinds);
+        cfg.exploding_boxes = vec![0; 195];
+        cfg.exploding_boxes[idx(3, 5)] = 1;
+        let mut t = cfg.validate(b"map", b"start").unwrap();
+        assert!(!t.clear_box(1, 3, 5));
+        t.begin(1);
+        assert!(!t.clear_box(1, 0, 0));
+        assert!(!t.clear_box(1, 2, 3));
+        assert!(!t.clear_box(1, 13, 0));
+        assert!(t.clear_box(1, 3, 5));
+        assert!(!t.clear_box(1, 3, 5));
+        assert_eq!(t.clearance(1, 3, 5), Some(0));
+        assert!(t.clearance(1, 3, 6).is_none());
+        t.place(Bomb {
+            id: 1,
+            owner: 0,
+            row: 3,
+            column: 5,
+            power: 1,
+        })
+        .unwrap();
+        t.begin(2);
+        assert!(t.clearance(1, 3, 5).is_none());
     }
 }
