@@ -11,8 +11,8 @@ import struct
 import tempfile
 import xml.etree.ElementTree as ET
 
-from content_census import decrypt_idx, decrypt_entry, parse_idx, parse_item_attr, parse_bomber_attr, parse_map_group
-from export_map_profile import decode_map, load_tile_table
+from content_census import decrypt_idx, decrypt_entry, parse_idx, parse_item_attr, parse_bomber_attr, parse_map_group, text
+from export_map_profile import FIELDS, decode_map, load_tile_table
 
 # SHA-256 của toàn bộ các cặp pack gốc, theo census và đối chứng CP090.
 PACK_SHA256 = {
@@ -46,6 +46,14 @@ TERRAIN_SEEDS = dict(zip((*G1, 'ExVillage01'), (
 SCHEMA = 'kr00967-export-v2'
 F1E_ADAPTER = 'f1e-adapter-r1'
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
+_SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00'))
+# KR data[8] for Tile*_Box exploding blocks (+33 == 1 -> 1-cell cross blast on break).
+_EXPLODING_BOX_FLAGS = {
+    'Tile53_Box/Block30': 256,
+    'Tile53_Box/Block31': 65792,
+    'Tile53_Box/Block32': 65792,
+    'Tile30_Box/JellyBombBlock00': 65792,
+}
 _RETRO_POPUPS = {
     f'Retro{family}N{n:02}': f'Retro/Retro{popup}Start'
     for family, popup in (('Camp', 'Camp'), ('Factory', 'Factory'), ('Patrit', 'Pirate'))
@@ -225,7 +233,7 @@ def f1_terrain_rules(profile, table, *, f1e=False):
         raise ValueError(f'Vùng chữ nhật ngoài adapter F1-a: {name}')
     width, height = profile['width'], profile['height']
     size = width * height
-    kinds, hits, ray, cancel = [0] * size, [0] * size, [0] * size, []
+    kinds, hits, exploding, ray, cancel = [0] * size, [0] * size, [0] * size, [0] * size, []
     ray_ports = [0b1111] * size
     names, tiles = table
 
@@ -314,10 +322,13 @@ def f1_terrain_rules(profile, table, *, f1e=False):
                     fail(cell, 'footprint chồng thùng', key)
                 kinds[cell] = 1
         elif (d[:6] == (2, 0, 0, 0, 0, 0) and d[7] in (0, 1)
-              and d[8:15] == (0,) * 7 and 0 <= d[6] <= 254):
+              and (d[8] == 0 or _EXPLODING_BOX_FLAGS.get(key) == d[8])
+              and d[9:15] == (0,) * 6 and 0 <= d[6] <= 254):
             if kinds[index] != 0:
                 fail(index, 'thùng chồng footprint', key)
             kinds[index], hits[index] = 2, max(1, d[6])
+            if d[8]:
+                exploding[index] = 1
         elif (d[:6] == (3, 0, 0, 0, 0, 0) and d[6:11] == (_PASS_ALL,) * 3 + (0, 0)
               and d[11:13] == (0, 0)):
             # The Herb route confirms type 3 with the three all-ones groups:
@@ -378,6 +389,8 @@ def f1_terrain_rules(profile, table, *, f1e=False):
         terrain['ray_ports'] = ray_ports
     if any(hit > 1 for hit in hits):
         terrain['box_hits'] = hits
+    if any(exploding):
+        terrain['exploding_boxes'] = exploding
     rules = dict(terrain=terrain)
     if cancel:
         rules['bomb_cancellation'] = dict(map_sha256=profile['payload_sha256'], cells=cancel)
@@ -473,14 +486,57 @@ def f1e_bombs_disabled(raw, name):
     raise unsupported()
 
 
+def _decode_soul_map(data):
+    """Parse Soul map header/grid plus verified group/record trailer to exact EOF."""
+    from kr_f1e_script_audit import map_tail_offset, parse_trailer
+
+    tail_off = map_tail_offset(data)
+    trailer = parse_trailer(data, tail_off)
+    if trailer['script'] or not (trailer['groups'] or trailer['records']):
+        raise ValueError('map parser không đọc hết payload')
+    version, _, _, width, height, spawn_count = struct.unpack_from('<6i', data, 0)
+    off = 80
+    spawns = [list(struct.unpack_from('<2i', data, off + 8 * i)) for i in range(spawn_count)]
+    off += 8 * spawn_count
+    rect_count = struct.unpack_from('<i', data, off)[0]
+    off += 4
+    rects = [list(struct.unpack_from('<4i', data, off + 16 * i)) for i in range(rect_count)]
+    off += 16 * rect_count
+    stride = 2 if version == 1000 else 3
+    cells = [list(struct.unpack_from(f'<{stride}i', data, off + i * stride * 4))
+             for i in range(width * height)]
+    off += width * height * stride * 4
+    drop_count = struct.unpack_from('<i', data, off)[0]
+    off += 4
+    drops = []
+    for _ in range(drop_count):
+        item_name, off = text(data, off)
+        drops.append([item_name, struct.unpack_from('<i', data, off)[0]])
+        off += 4
+    placement_header, count = struct.unpack_from('<2i', data, off)
+    off += 8
+    placements = []
+    for _ in range(count):
+        item_name, off = text(data, off)
+        x, y, probability = struct.unpack_from('<3B', data, off)
+        off += 3
+        placements.append(dict(name=item_name, x=x, y=y, probability=probability))
+    if off != tail_off:
+        raise ValueError('map parser không khớp offset đuôi Soul')
+    return dict(version=version, width=width, height=height, spawns=spawns,
+                rectangles=rects, cell_fields=list(FIELDS[:stride]), cells=cells,
+                drops=drops, placement_header=placement_header,
+                placements=placements, scripted=False)
+
+
 def read_map(levels, name, code, *, f1, f1e=False):
     raw = levels.read('Map/' + name)
-    profile = decode_map(raw)
+    profile = _decode_soul_map(raw) if (f1 and not f1e and name in _SOUL_MAPS) else decode_map(raw)
     profile.update(name=name, map_code=code, payload_sha256=sha(raw))
     spawns = profile['spawns']
     width, height = (19, 17) if f1e and name in _BIG_BATTLES else (15, 13)
     if ((profile['width'], profile['height']) != (width, height)
-            or (not f1e and profile['scripted'])
+            or (not f1e and profile['scripted'] and not (f1 and name == 'NXCL_Aqua01'))
             or not 2 <= len(spawns) <= 8
             or (f1e and len(spawns) != 8)
             or any(not (0 <= x < width and 0 <= y < height) for x, y in spawns)
@@ -490,6 +546,8 @@ def read_map(levels, name, code, *, f1, f1e=False):
         profile['adapter'] = F1E_ADAPTER
         if f1e_bombs_disabled(raw, name):
             profile['disable_bombs'] = True
+    elif f1 and name == 'NXCL_Aqua01' and f1e_bombs_disabled(raw, name):
+        raise ValueError(f'Map ngoài phạm vi phục vụ: {name}')
     return profile
 
 

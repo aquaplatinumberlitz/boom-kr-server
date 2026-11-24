@@ -188,11 +188,16 @@ class TerrainAdapterTests(unittest.TestCase):
 
     def test_unmeasured_mechanics_remain_rejected(self):
         building = (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 64069472, 1, 1244184, 0, 0)
+        for tile, data in [
+            ('Tile53_Box/Block30', (2, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 2487818, 117307672)),
+            ('Tile53_Box/Block31', (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118544168)),
+            ('Tile53_Box/Block32', (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118545824)),
+        ]:
+            rules = f1_terrain_rules(*self.profile(tile, data))
+            self.assertEqual(rules['terrain']['exploding_boxes'][0], 1)
         refused = {
-            # Block30 has the explosion flag (+33); Block31/32 carry unhandled +29/+30 instead.
-            'Tile53_Box/Block30': (2, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 2487818, 117307672),
-            'Tile53_Box/Block31': (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118544168),
-            'Tile53_Box/Block32': (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118545824),
+            # Unverified 255-hit / +32 flag box stays closed.
+            'Tile30_Box/Urchins00': (2, 0, 0, 0, 0, 0, 255, 1, 16, 0, 0, 0, 0, 0, 0, 0, 18613818, 14317496),
             # Same leap flag outside the measured keys stays closed (SuperFighter is class C).
             'Tile23_Static/Temple14': (1, 0, 0, 0, 0, 0, 6, 1, 1, 0, 0, 2010089472, 0, 0, 0, 0, 0, 0),
         }
