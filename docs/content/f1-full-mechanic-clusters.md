@@ -4,6 +4,10 @@ Batch `p95-f1-full-ida` bao phủ **331 kind ngoài lớp A**, **33 hàng nhân 
 
 Nguồn chính là pack KR 00967 đã kiểm hash và ảnh unpack `cf72da11…` (image base `0x400000`, RVA = VA trừ image base). Tái dùng [item p93](../protocol/items-stats.md#f1b-next-items), [nhân vật F1-c](../protocol/auth-session.md#f1-c-character-catalog), [xe F1-d](../protocol/vehicles.md), [địa hình round 3](../protocol/terrain.md#f1a-ida-round3) và [khảo sát mapscript](../protocol/load-phase.md#f1e-map-scripts). Hai Attr khớp bản trích ở `boomkr-re/data/kr/`; `boomkr-re/docs/kr-data.md`, `kr-content.md` và `boom-re/docs/{items,map}.md` giúp đối chiếu bố cục. Kind, selector, VA và giới hạn dưới đây đều lấy từ KR.
 
+Lượt IDA tĩnh tiếp theo đã nối wire cho Dart `138/172`, vật đặt group 11 `139/173` và `126/168`, các item Ctrl chủ động,
+độ rộng khóa nhân vật trong `Start 121`/`C→S 79` và các nhánh Ship riêng. Xem [opcode phụ trợ F1](../protocol/f1-aux-opcodes-and-classc.md)
+và [bằng chứng](../evidence/content/f1-aux-opcodes-and-classc-ida.json).
+
 ## Item: đường nhặt và đường dùng
 
 [Catalog](classification.md) có 75 dòng lớp C: **74 dòng nhóm số chứa 328 kind** và **một token map chưa ghép** (`Item/ItemWinningNiddle`). Thêm Shoe, Punch, Needle lớp B thành 331 kind ngoài A. Trong 328 kind lớp C, 138 nằm ở 13 dòng nhóm có nhãn F1; catalog nối trực tiếp **49 tên** với placement/drop dương F1. Con số 98 tên map candidate tính cả map ngoài F1. Các mẫu số khác nhau nên batch giữ toàn bộ 328 kind, kể cả biến thể chưa có dấu vết F1. Tên `Item/ItemWinningNiddle` chưa được quy thành kind 287 hay 293.
