@@ -1,5 +1,7 @@
 //! Floor-only fixture policy, CP030/031/049/055/063. Not native world authority.
-//! List2 stays unavailable until terrain/reveal is ported; no inventory/reward.
+//! List2 stays unavailable. Extended counts are per round; no account rewards.
+use crate::room::Membership;
+use kr_wire::kr00967::SCANNER_KIND;
 #[cfg(test)]
 use kr_wire::write_uint;
 use kr_wire::{Width, read_uint};
@@ -20,6 +22,8 @@ pub(crate) enum Policy {
     ReportDerivedPunch,
     /// Candidate Shoe selector5/up-three slice plus the measured Punch slice.
     ReportDerivedShoePunch,
+    /// p93 pickup kinds and report-derived Scanner consumption (emu_choice).
+    ReportDerivedF1bExtended,
 }
 impl Policy {
     pub(crate) fn enabled(self) -> bool {
@@ -29,17 +33,36 @@ impl Policy {
         self.enabled()
             && (matches!(kind, 0..=2 | 5)
                 || (self.punch() && kind == 4)
-                || (self.shoe() && kind == 3))
+                || (self.shoe() && kind == 3)
+                || (self.f1b_extended() && f1b_pickup_amount(kind).is_some()))
     }
     pub(crate) fn punch(self) -> bool {
         matches!(
             self,
-            Self::ReportDerivedPunch | Self::ReportDerivedShoePunch
+            Self::ReportDerivedPunch
+                | Self::ReportDerivedShoePunch
+                | Self::ReportDerivedF1bExtended
         )
     }
     pub(crate) fn shoe(self) -> bool {
-        self == Self::ReportDerivedShoePunch
+        matches!(
+            self,
+            Self::ReportDerivedShoePunch | Self::ReportDerivedF1bExtended
+        )
     }
+    pub(crate) fn f1b_extended(self) -> bool {
+        self == Self::ReportDerivedF1bExtended
+    }
+}
+
+pub(crate) fn f1b_pickup_amount(kind: u16) -> Option<u16> {
+    Some(match kind {
+        // Count each Lucci pickup once. Its currency value is unknown.
+        67..=72 | 77 | SCANNER_KIND => 1,
+        143 | 224 => 3,
+        225 => 2,
+        _ => return None,
+    })
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -88,6 +111,15 @@ impl Catalog {
                 .any(|item| item.kind == 3)
         {
             return Err(io::Error::other("Shoe floor requires measured Shoe policy"));
+        }
+        if !policy.f1b_extended()
+            && self
+                .floor
+                .values()
+                .chain(self.hidden.values())
+                .any(|item| f1b_pickup_amount(item.kind).is_some())
+        {
+            return Err(io::Error::other("extended item floor requires F1-b opt-in"));
         }
         Ok(())
     }
@@ -146,11 +178,14 @@ impl Catalog {
                 let row = stream.get(at..at + 10).ok_or_else(err)?;
                 at += 10;
                 let index = u32::from_le_bytes(row[..4].try_into().expect("bounded"));
-                let kind = u32::from_le_bytes(row[6..10].try_into().expect("bounded"));
-                // Only measured stat items and the separate needle policy.
+                let kind =
+                    u16::try_from(u32::from_le_bytes(row[6..10].try_into().expect("bounded")))
+                        .map_err(|_| err())?;
+                // Only measured floor kinds. Serving admission checks the policy.
                 if row[4] >= 13
                     || row[5] >= 15
-                    || !crate::item_scope::kept_kind(kind)
+                    || !(crate::item_scope::kept_kind(u32::from(kind))
+                        || f1b_pickup_amount(kind).is_some())
                     || !indices.insert(index)
                     || indices.len() > 64
                 {
@@ -160,7 +195,7 @@ impl Catalog {
                     index,
                     row: row[4],
                     column: row[5],
-                    kind: kind as u16,
+                    kind,
                 };
                 if group == 0 {
                     result.floor.insert(index, item);
@@ -261,6 +296,12 @@ pub(crate) struct Round {
     catalog: Catalog,
     consumed: BTreeSet<u32>,
     revealed_cells: BTreeSet<(u8, u8)>,
+    inventory: BTreeMap<(Membership, u16), InventoryCredit>,
+}
+#[derive(Clone, Debug, Default)]
+struct InventoryCredit {
+    count: u16,
+    last_pickup_tick: u32,
 }
 impl Round {
     pub fn begin(generation: u64, catalog: &Catalog) -> io::Result<Self> {
@@ -268,8 +309,7 @@ impl Round {
             generation: Some(generation),
             key: crate::room::wire_key(generation)?,
             catalog: catalog.clone(),
-            consumed: BTreeSet::new(),
-            revealed_cells: BTreeSet::new(),
+            ..Self::default()
         })
     }
     pub fn finish(&mut self) {
@@ -277,6 +317,44 @@ impl Round {
         self.catalog = Catalog::default();
         self.consumed.clear();
         self.revealed_cells.clear();
+        self.inventory.clear();
+    }
+    /// The room calls this only for accepted first claims, in the same candidate
+    /// state published after reservation of every pickup confirmation queue.
+    pub(crate) fn credit(&mut self, member: Membership, request: &Request, amount: u16) {
+        let credit = self.inventory.entry((member, request.kind())).or_default();
+        // At most 64 catalog entries, at most 3 uses per entry.
+        credit.count += amount;
+        credit.last_pickup_tick = request.client_tick;
+    }
+    pub(crate) fn consume_scanner(
+        &mut self,
+        round: u64,
+        member: Membership,
+        tick: u32,
+    ) -> Result<(), &'static str> {
+        if self.generation != Some(round) {
+            return Err("inactive_round");
+        }
+        let credit = self
+            .inventory
+            .get_mut(&(member, SCANNER_KIND))
+            .filter(|credit| credit.count > 0)
+            .ok_or("scanner_no_charge")?;
+        // sub0 carries no proven epoch. Fence reports at/before the current
+        // round's accepted pickup tick, using the same serial ordering as life.
+        let delta = tick.wrapping_sub(credit.last_pickup_tick);
+        if delta == 0 || delta >= 0x8000_0000 {
+            return Err("scanner_tick_not_after_pickup");
+        }
+        credit.count -= 1;
+        Ok(())
+    }
+    #[cfg(test)]
+    pub(crate) fn inventory_count(&self, member: Membership, kind: u16) -> u16 {
+        self.inventory
+            .get(&(member, kind))
+            .map_or(0, |credit| credit.count)
     }
     /// Mutate only the candidate model. Caller reserves ALL recipient queues
     /// before publishing this consumed set, under the same room owner lock.

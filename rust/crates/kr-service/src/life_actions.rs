@@ -36,16 +36,9 @@ impl Action {
         match report.subtype {
             1 if body.len() == 14 => Ok(Self::Stage(body[..6].try_into().expect("prefix"))),
             0 if body.len() == 22 => {
-                let mut tail = Vec::new();
-                for (value, width) in [
-                    (1, Width::U8),
-                    (145, Width::U16),
-                    (0, Width::U8),
-                    (0, Width::U32),
-                ] {
-                    tail.extend(write_uint(value, width).map_err(io::Error::other)?);
-                }
-                if body[14..] != tail {
+                if !kr_wire::kr00967::item_use127(body)
+                    .is_ok_and(|usage| usage.kind == kr_wire::kr00967::ItemUseKind::Needle)
+                {
                     return Err(err());
                 }
                 Ok(Self::Consume(body[1..6].try_into().expect("prefix")))

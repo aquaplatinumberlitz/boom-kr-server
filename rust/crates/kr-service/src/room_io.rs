@@ -754,7 +754,7 @@ pub fn load(
             .map(|a| (a.identity, u32::from(a.configured_peer)))
             .collect(),
         ports: HashMap::new(),
-        floor_catalog: pickups::Catalog::from_floor(&packets_floor_body)?,
+        floor_catalog,
         rules,
         abort: None,
     })))
@@ -3684,8 +3684,12 @@ impl Session {
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
                 let needle = r.rules.life_actions.needle() && request.kind() == 145;
-                let basic = r.rules.item_policy.allows(request.kind());
-                if !needle && !basic && (r.managed_round.is_some() || next.capacity() != 2) {
+                let extended = pickups::f1b_pickup_amount(request.kind());
+                let allowed = r.rules.item_policy.allows(request.kind());
+                if !needle
+                    && !allowed
+                    && (extended.is_some() || r.managed_round.is_some() || next.capacity() != 2)
+                {
                     return Err(err("pickup outside measured profile"));
                 }
                 let decision = if next.members[&self.identity].life.blocked_pickup() {
@@ -3696,7 +3700,9 @@ impl Session {
                     request.decision("inactive_round")
                 };
                 if decision.accepted {
-                    if basic {
+                    if let Some(amount) = extended {
+                        next.pickups.credit(member.key, &request, amount);
+                    } else if allowed {
                         let member = next
                             .members
                             .get_mut(&self.identity)
@@ -3766,7 +3772,34 @@ impl Session {
                 if !(1..=4096).contains(&body.len()) {
                     return Err(err("report observation size"));
                 }
-                if next.phase == Phase::Idle {
+                let scanner = r.rules.item_policy.f1b_extended()
+                    && read_uint(&body[..1], Width::U8).map_err(io::Error::other)? == 0
+                    && wire::item_use127(body)?.kind == wire::ItemUseKind::Scanner;
+                if scanner {
+                    let report = crate::life::Report::parse(body)?;
+                    let reason = if let Phase::Armed { round } = next.phase {
+                        let player = &mut next
+                            .members
+                            .get_mut(&self.identity)
+                            .expect("current member")
+                            .life;
+                        if let Some(reason) = player.check_report(m.slot, &report) {
+                            reason
+                        } else if player.blocked_pickup() {
+                            "scanner_actor_ineligible"
+                        } else if let Err(reason) =
+                            next.pickups.consume_scanner(round, m.key, report.tick)
+                        {
+                            reason
+                        } else {
+                            player.record_report(&report);
+                            "accepted"
+                        }
+                    } else {
+                        "inactive_round"
+                    };
+                    life = Some(report.decision(reason, false));
+                } else if next.phase == Phase::Idle {
                     next.observe_after_abort(m.key)?;
                     dropped_after_abort = true;
                 } else if matches!(next.phase, Phase::Ending { .. }) {
@@ -5393,6 +5426,10 @@ pub(crate) mod registry_foundation_tests {
 #[cfg(test)]
 #[path = "room_io_life_tests.rs"]
 mod life_action_integration_tests;
+
+#[cfg(test)]
+#[path = "room_io_f1b_extended_tests.rs"]
+mod f1b_extended_integration_tests;
 
 #[cfg(test)]
 #[path = "room_io_item_tests.rs"]

@@ -193,6 +193,53 @@ pub fn pickup165(
     }
     Ok(result)
 }
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ItemUseKind {
+    Needle = 145,
+    Scanner = 146,
+}
+
+pub const SCANNER_KIND: u16 = ItemUseKind::Scanner as u16;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ItemUse127 {
+    pub slot: u8,
+    pub x: u16,
+    pub y: u16,
+    pub tick: u32,
+    /// Common prefix field, not a validated round key.
+    pub auxiliary: u32,
+    pub kind: ItemUseKind,
+}
+
+/// The observed 22-byte C2S 127/sub0 body (Needle CP037, Scanner p93).
+/// This report does not provide a peer response layout.
+pub fn item_use127(body: &[u8]) -> io::Result<ItemUse127> {
+    let error = || io::Error::other("unsupported item-use127/sub0 shape");
+    if body.len() != 22
+        || uint(&body[..1], Width::U8)? != 0
+        || uint(&body[14..15], Width::U8)? != 1
+        || uint(&body[17..18], Width::U8)? != 0
+        || uint(&body[18..22], Width::U32)? != 0
+    {
+        return Err(error());
+    }
+    let kind = match uint(&body[15..17], Width::U16)? as u16 {
+        145 => ItemUseKind::Needle,
+        SCANNER_KIND => ItemUseKind::Scanner,
+        _ => return Err(error()),
+    };
+    Ok(ItemUse127 {
+        slot: uint(&body[1..2], Width::U8)? as u8,
+        x: uint(&body[2..4], Width::U16)? as u16,
+        y: uint(&body[4..6], Width::U16)? as u16,
+        tick: uint(&body[6..10], Width::U32)? as u32,
+        auxiliary: uint(&body[10..14], Width::U32)? as u32,
+        kind,
+    })
+}
+
 pub struct LifeReport127 {
     pub subtype: u8,
     pub slot: u8,
@@ -333,4 +380,58 @@ pub fn report127(body: &[u8]) -> io::Result<LifeReport127> {
         tick: uint(&body[6..10], Width::U32)? as u32,
         forward,
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // p93 run-2 wire.jsonl, CRC-verified C2S payloads A/430 and B/376.
+    const SCANNER_A: [u8; 22] = [
+        0x5a, 0x5a, 0xa5, 0x69, 0xa4, 0x0e, 0x96, 0xca, 0x4c, 0x30, 0x96, 0xca, 0x53, 0x97, 0x5b,
+        0xa5, 0xfb, 0x5a, 0x96, 0xca, 0x53, 0x95,
+    ];
+    const SCANNER_B: [u8; 22] = [
+        0x5a, 0x5b, 0xa5, 0x5d, 0xa4, 0xde, 0x96, 0xca, 0x4c, 0x44, 0x96, 0xca, 0x53, 0x97, 0x5b,
+        0xa5, 0xfb, 0x5a, 0x96, 0xca, 0x53, 0x95,
+    ];
+
+    #[test]
+    fn captured_scanner_reports_decode_without_peer_layout() {
+        for (body, slot, x, y, tick) in
+            [(SCANNER_A, 0, 0, 359, 8101), (SCANNER_B, 1, 52, 439, 8145)]
+        {
+            assert_eq!(
+                item_use127(&body).unwrap(),
+                ItemUse127 {
+                    slot,
+                    x,
+                    y,
+                    tick,
+                    auxiliary: 2,
+                    kind: ItemUseKind::Scanner
+                }
+            );
+            assert!(report127(&body).unwrap().forward.is_none());
+        }
+    }
+
+    #[test]
+    fn captured_needle_still_decodes_and_bad_item_use_is_rejected() {
+        // CP037 Needle consume body, also used by the service life-action tests.
+        let needle = [
+            0x5a, 0x5a, 0xa5, 0x11, 0xa4, 0x64, 0x96, 0xca, 0x59, 0x35, 0x96, 0xca, 0x53, 0x90,
+            0x5b, 0xa5, 0xf8, 0x5a, 0x96, 0xca, 0x53, 0x95,
+        ];
+        assert_eq!(item_use127(&needle).unwrap().kind, ItemUseKind::Needle);
+        for len in 0..SCANNER_A.len() {
+            assert!(item_use127(&SCANNER_A[..len]).is_err());
+        }
+        assert!(item_use127(&[SCANNER_A.as_slice(), &[0]].concat()).is_err());
+        for (offset, invalid) in [(0, 0x5b), (14, 0x5a), (16, 0xe6), (17, 0x5b), (21, 0x94)] {
+            let mut body = SCANNER_A;
+            body[offset] = invalid;
+            assert!(item_use127(&body).is_err());
+        }
+    }
 }
