@@ -151,8 +151,8 @@ input theo đồng hồ monotonic nằm cạnh đó. Không gán UDP chưa giả
 chính trong `run-2/`: `lucci-first-A.png`, `lucci-dart-A.png`, `dart-empty-A.png`,
 `bond-picked-r1-B.png`, `trap-ctrl-r1-B.png`, `r2-arena-A.png` và
 `scanner-{no-hidden-before,no-hidden-after}-A.png`, `scanner-{hidden-before,hidden-after}-B.png`.
-Blocker tiếp theo là cho fixture giữ phiên khi quan sát Scanner sub0, rồi đo lại Dart/Bond/Trap
-với input `Control_L` đã quan sát được trên Scanner và với đối chứng vị trí đã ghim.
+Phép đo [Cookie07 bên dưới](#f1b-ctrl-group11-wine) kiểm lại các đường Ctrl bằng `Control_L` và
+tách report tiêu hao khỏi các opcode hành động mà fixture chưa nhận.
 
 **Rust opt-in — `emu_choice/design`.** Với phòng người chơi được quản lý, đặt `fixed_room.item_policy`
 thành `report_derived_f1b_extended` để mở pickup các kind trên. Mỗi lần nhặt hợp lệ cộng một lượt cho từng kind
@@ -160,7 +160,59 @@ Lucci và một charge Scanner, ba charge Dart hoặc Bond, hoặc hai charge Tr
 và vòng, được làm sạch khi kết thúc vòng và khởi tạo lại ở Start121. Scanner chỉ tiêu charge khi
 actor hiện hành còn sống, không mắc bóng, đúng slot và tick đi sau pickup Scanner của vòng đó.
 Tick là guard của emulator; sub0 chưa có khóa vòng đã xác nhận. Server không phát `170/sub0`,
-cộng tiền Lucci hoặc áp hiệu ứng Scanner, Dart, Bond và Trap. Phần này mới có kiểm thử Rust.
+cộng tiền Lucci hoặc áp hiệu ứng Scanner, Dart, Bond và Trap. Phép đo bên dưới kiểm đường giữ
+phiên Scanner với đúng policy này.
+
+<a id="f1b-ctrl-group11-wine"></a>
+### F1-b: Ctrl và vật đặt trên Cookie07 với hai client Wine
+
+[Bằng chứng, byte packet và cách chạy lại](../evidence/item-families/f1b-ctrl-group11-wine.json).
+Nguồn `kr_runtime` là hai bản copy chẩn đoán KR 00967 chạy Wine trên mạng ảo cô lập. Fixture
+(`emu_choice`) đặt bảy kind trong list1 của `S→C582` trước `Start 121`; không gửi 582 giữa ván.
+Các kết luận chỉ áp dụng cho client và fixture đã đo.
+
+- **Scanner 146:** Sau `124 → 165` tới cả hai client, A dùng hết x01 và gửi `C→S127/sub0` dài
+  22 byte, với đuôi typed `[1,146,0,0]`. Phiên A và B tiếp tục; lần Ctrl thứ hai không có report
+  dùng item. Không thấy `S→C170/sub0`; góc nhìn B còn giữ kind 146 trên actor A sau khi A hết charge.
+  List2 rỗng, nên ca này không đo được việc Scanner hiện item ẩn.
+- **Dart 143:** Trong hành lang trống, mỗi lần dùng gửi `C→S127/sub0` dài 22 byte
+  (đuôi `[1,143,0,0]`) rồi `C→S138` dài 9 byte. Fixture p100 ngắt phiên A ở 138.
+  Capture bổ sung với fixture p100-long giữ được cả hai phiên qua 138: HUD đi từ x03
+  qua x02 và x01 rồi trống; lần Ctrl thứ tư không gửi hai gói này.
+  Khi A hướng về bom còn hiệu lực ở cùng hàng, client gửi `C→S122` dài 17 byte rồi
+  `127/sub0`. Cả hai fixture ngắt A ở 122. `S→C170/sub19` trên B báo loại A khỏi
+  trận. Tác dụng lên bom và đường gửi hiệu ứng cho peer vẫn chưa xác định.
+- **Spring 148:** A ở `(row,col)=(10,1)`, đi lên trước Ctrl vẫn dừng ở `(x,y)=(40,439)`
+  do thùng `(9,1)`. Sau Ctrl, HUD giảm x03→x02, A phát `C→S127/sub2` dài 27 byte rồi `127/sub0`
+  (đuôi `[1,148,0,0]`). Trace đi từ `(40,439)` qua thùng tới `(40,359)`. Fixture p100
+  đóng phiên ở sub0. Khi fixture p100-long giữ phiên mà không relay các report Spring, B vẫn
+  thấy A đổi tọa độ; mẫu sau thao tác là `y=343` trên B và `y=359` trên A. Chưa xác định
+  đường đồng bộ nhảy hoàn chỉnh.
+- **Reset và thoát phòng:** Trong ca đối chứng riêng trên p100, A giữ Scanner chưa dùng đến hết
+  ván 1. Sau `Start 121` ván 2, cả hai HUD trống và cả hai góc nhìn đọc kind `-1` cho hai actor.
+  Ctrl lúc đó không phát report dùng item. Hai ván hoàn tất do loại người, hai client đều trở về
+  phòng sau mỗi ván. Cả A và B thoát bằng `C→S86 → S→C241`; health còn hai người online và
+  `room_count = 0`.
+
+Với **group 11**, `C→S139` dài 4 byte đi trước `127/sub0` dài 22 byte với đuôi
+`[1,kind,0,0]` khi hành động có report. Hai byte cuối của 139 trùng hàng và cột.
+Bảng giữ nguyên byte selector có cờ; ý nghĩa cờ và trường đầu chưa được chốt. Mỗi kind
+có `124 → 165` tới cả hai client. Fixture p100 đóng phiên ở 139; bảng dưới lấy từ p100-long.
+
+| Kind (selector) | Bốn byte 139 đã giải mã ở ô trống | HUD và Ctrl lặp ở cùng ô |
+|---|---|---|
+| Bond 224 (1) | `[0,1,11,2]` | x02→x01; bấm lại giữ x01, không phát 139 hoặc sub0. |
+| Trap 225 (2) | Không quan sát được 139 hoặc sub0. | x02 giữ nguyên trước và sau Ctrl. |
+| Pin 226 (4) | `[0,132,11,0]` | x03→x02; bấm lại giữ x02, không phát 139 hoặc sub0. |
+| Banana1 227 (3) | `[0,3,10,0]` | x01→trống; bấm lại không phát 139 hoặc sub0. |
+
+Trap cho cùng kết quả âm tại ô `(11,1)` trên p100 và p100-long; điều kiện kích hoạt còn chưa rõ.
+Bond cũng giảm x03→x02 và gửi `139 → 127/sub0` ngay trên bom đang hiệu lực ở `(12,7)`.
+Kết quả này và đối chứng bấm lại cùng ô mô tả hai điều kiện khác nhau. Trong lượt không relay,
+B đi vào cả bốn ô thử bằng input thật. Dấu Bond vẫn hiện trên A khi B đi tiếp qua các ô sau,
+còn ảnh B không có dấu đó. Trace B không cho thấy mắc bóng hay trượt, và capture TCP
+không có report riêng cho các hiệu ứng đó trong cửa sổ đi qua. Chưa thấy gói S→C ứng viên
+để thử chuyển tiếp; UDP thô được giữ, chưa gán byte UDP cho hiệu ứng.
 
 <a id="f1d-vehicles"></a>
 ### F1-d: Đối chiếu phương tiện cưỡi và biến hình
