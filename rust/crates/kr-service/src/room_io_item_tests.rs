@@ -1651,7 +1651,7 @@ fn durable_box_claim_waits_for_fifth_full_delivery_and_reset_restores_hit_count(
 }
 
 #[test]
-fn desert_tent_origin_clears_only_horizontal_boxes_after_both_blast_writes() {
+fn desert_tent_origin_clears_only_vertical_boxes_after_both_blast_writes() {
     let mut c = case(2);
     // This five-cell cross is from Desert00 (row 1, column 3), KR 00967.
     // The surrounding room and bomb reports are synthetic.
@@ -1705,10 +1705,10 @@ fn desert_tent_origin_clears_only_horizontal_boxes_after_both_blast_writes() {
             .clearance(c.round, row, column)
             .is_some()
     };
-    assert!(!horizontal.into_iter().any(is_clear));
-    c.sessions[1].finish(&blasts[1]).unwrap();
-    assert!(horizontal.into_iter().all(is_clear));
     assert!(!vertical.into_iter().any(is_clear));
+    c.sessions[1].finish(&blasts[1]).unwrap();
+    assert!(vertical.into_iter().all(is_clear));
+    assert!(!horizontal.into_iter().any(is_clear));
 }
 
 // Candidate Punch slice integration; these are server invariants, not a native oracle.
