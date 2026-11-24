@@ -194,6 +194,20 @@ impl ShopCatalog {
     pub fn item(&self, sku_id: &str) -> Option<&ShopItem> {
         self.items.iter().find(|item| item.sku_id == sku_id)
     }
+    /// O1 `unlock_all` entitlements: every enabled SKU, computed from the
+    /// catalog alone without any database access or Lucci charge.
+    pub fn session_unlocked(&self) -> Vec<UsableItem> {
+        self.items
+            .iter()
+            .filter(|item| item.enabled)
+            .map(|item| UsableItem {
+                sku_id: item.sku_id.clone(),
+                unlocked_by_session: true,
+                quantity: None,
+                expires_at: None,
+            })
+            .collect()
+    }
 }
 
 fn token(value: &str, max: usize, extra: &[u8]) -> Result<()> {
@@ -435,17 +449,7 @@ impl Store {
     ) -> Result<Vec<UsableItem>> {
         catalog.validate()?;
         if access.unlock_all {
-            return Ok(catalog
-                .items
-                .iter()
-                .filter(|item| item.enabled)
-                .map(|item| UsableItem {
-                    sku_id: item.sku_id.clone(),
-                    unlocked_by_session: true,
-                    quantity: None,
-                    expires_at: None,
-                })
-                .collect());
+            return Ok(catalog.session_unlocked());
         }
         Ok(self
             .list_inventory(player_id, now)?

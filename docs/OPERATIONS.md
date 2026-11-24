@@ -278,6 +278,8 @@ printf '%s\n' '{"actor":"on-call","reason":"Check room closures","command":{"op"
 
 If a close-room reply is lost, check the audit and live room list before retrying. Close starts as `pending` and records `ok`, `rejected`, or `journal_unconfirmed`; a pending record left at boot becomes `interrupted`.
 
+F4 rewards and shop are off unless configured. Under `diagnostic_two_lobby.account_admission`, the optional `economy_policy` (`enabled`, `win`/`loss`/`draw` as `{"exp":N,"lucci":N}`, `grant_on_disconnect_or_left`, `level_thresholds` starting at 0 and strictly increasing) and `shop_catalog` (`{"items":[...]}`) are validated at startup. Omitting them keeps `enabled: false`, an empty catalog, no ledger rows and `match_players.reward` equal to 0. Enabling rewards requires `persist_matches` and `profile_mode: "database_zero"`. When enabled, each completed journaled match settles EXP, level and Lucci in the same transaction as its finish, once per match; a cancelled match grants nothing.
+
 ## Backup and restore
 
 1. For scheduled snapshots, add `"backup": {"interval_seconds": 3600, "keep": 24}` under `diagnostic_two_lobby.account_admission`. Rebuild the package. The first snapshot runs after one interval; retention applies only to scheduled snapshots in `accounts.backups/`.

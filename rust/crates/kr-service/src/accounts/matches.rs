@@ -227,6 +227,25 @@ fn finish_tx(
         ..record
     })
 }
+fn finish_key_tx(
+    tx: &Transaction<'_>,
+    key: &MatchKey,
+    finish: &MatchFinish,
+    now: i64,
+) -> Result<MatchRecord> {
+    let id = find(tx, key)?.ok_or(Error::InvalidInput)?;
+    let record = read_record(tx, id)?;
+    let finish = finish.normalize(&record.start, now, false)?;
+    if record.finish.is_none() {
+        let epoch: i64 = tx.query_row("SELECT epoch FROM runtime_state WHERE id=1", [], |r| {
+            r.get(0)
+        })?;
+        if epoch != key.boot_epoch {
+            return Err(Error::InvalidSession);
+        }
+    }
+    finish_tx(tx, record, finish)
+}
 /// Instance startup and cancellation share one transaction with epoch/session
 /// invalidation. A crash cannot leave a previous instance's match looking live.
 pub(super) fn cancel_running(tx: &Transaction<'_>, now: i64) -> Result<()> {
@@ -291,20 +310,25 @@ impl Store {
         finish: &MatchFinish,
         now: i64,
     ) -> Result<MatchRecord> {
+        self.at(now, |tx| finish_key_tx(tx, key, finish, now))
+    }
+    /// F4 wiring: commit the finish event and settle `policy` in the same
+    /// writer transaction, so a crash cannot leave a finished match without its
+    /// reward. A replayed identical finish replays the original ledger rows;
+    /// a cancelled match or a disabled policy writes no ledger row. M6
+    /// `match_players.reward` and `reward_per_player` stay 0.
+    pub fn finish_match_settled(
+        &mut self,
+        key: &MatchKey,
+        finish: &MatchFinish,
+        policy: &EconomyPolicy,
+        now: i64,
+    ) -> Result<(MatchRecord, MatchRewardReceipt)> {
+        policy.validate()?;
         self.at(now, |tx| {
-            let id = find(tx, key)?.ok_or(Error::InvalidInput)?;
-            let record = read_record(tx, id)?;
-            let finish = finish.normalize(&record.start, now, false)?;
-            if record.finish.is_none() {
-                let epoch: i64 =
-                    tx.query_row("SELECT epoch FROM runtime_state WHERE id=1", [], |r| {
-                        r.get(0)
-                    })?;
-                if epoch != key.boot_epoch {
-                    return Err(Error::InvalidSession);
-                }
-            }
-            finish_tx(tx, record, finish)
+            let record = finish_key_tx(tx, key, finish, now)?;
+            let receipt = Self::settle_tx(tx, record.id, policy, now)?;
+            Ok((record, receipt))
         })
     }
     pub fn match_history(

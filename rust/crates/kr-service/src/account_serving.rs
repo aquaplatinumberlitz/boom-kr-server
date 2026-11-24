@@ -2,8 +2,8 @@
 //! The launcher is private; this does not expose a public password API.
 use crate::{
     account_bridge::{self, Bridge},
-    account_worker::{Client, Worker},
-    accounts::Token,
+    account_worker::{Client, EconomySettings, Worker},
+    accounts::{EconomyPolicy, ShopCatalog, Token},
     platform::{self, local_ipc},
 };
 use serde::Deserialize;
@@ -77,6 +77,14 @@ pub struct Config {
     /// auth reply's empty identity string (L1 room-title editing). Empty by default.
     #[serde(default)]
     pub diagnostic_identity_strings: std::collections::BTreeMap<String, String>,
+    /// F4 match rewards. Absent means `enabled: false`: no ledger row is
+    /// written and M6 `match_players.reward` stays 0. Enabling requires
+    /// `persist_matches`, because only journaled matches settle.
+    #[serde(default)]
+    pub economy_policy: EconomyPolicy,
+    /// F4 shop catalog. Absent means empty: every purchase/equip is rejected.
+    #[serde(default)]
+    pub shop_catalog: ShopCatalog,
 }
 #[derive(Clone, Copy, Default, PartialEq, Eq, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -89,7 +97,24 @@ fn default_worker_queue_capacity() -> usize {
     4
 }
 impl Config {
+    /// Validated economy for the account worker; defaults stay disabled.
+    pub(crate) fn economy(&self) -> io::Result<EconomySettings> {
+        let settings = EconomySettings::new(self.economy_policy.clone(), self.shop_catalog.clone())
+            .map_err(|_| io::Error::other("invalid economy policy or shop catalog"))?;
+        if settings.rewards_enabled() && !self.persist_matches {
+            return Err(io::Error::other(
+                "economy rewards require persisted matches",
+            ));
+        }
+        if (settings.rewards_enabled() || !settings.catalog().items.is_empty())
+            && self.profile_mode != ProfileMode::DatabaseZero
+        {
+            return Err(io::Error::other("economy requires database profiles"));
+        }
+        Ok(settings)
+    }
     pub(crate) fn validate(&self) -> io::Result<()> {
+        self.economy()?;
         if let Some(backup) = &self.backup {
             backup.validate()?;
         }
@@ -196,10 +221,11 @@ impl Owner {
             .as_ref()
             .map(crate::ingame_tls::Config::open)
             .transpose()?;
-        let worker = Worker::open(
+        let worker = Worker::open_with_economy(
             config.database.clone(),
             config.worker_queue_capacity,
             Duration::from_secs(3),
+            config.economy()?,
         )
         .await
         .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
