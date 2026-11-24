@@ -174,6 +174,20 @@ impl Ledger {
     pub(crate) fn set_grid(&mut self, grid: (u8, u8)) {
         self.grid = grid;
     }
+    /// Allocates the next non-reused bomb wire ID for an active script sprinkler spawn
+    /// without touching player bomb capacity or client placement serials.
+    pub(crate) fn allocate_script_id(&mut self, round: u64) -> io::Result<u16> {
+        if self.generation != Some(round) {
+            return Err(io::Error::other("inactive round script bomb allocation"));
+        }
+        let id = u16::try_from(self.next_wire)
+            .map_err(|_| io::Error::other("diagnostic bomb ID space exhausted"))?;
+        if id == 0 {
+            return Err(io::Error::other("diagnostic bomb ID zero"));
+        }
+        self.next_wire += 1;
+        Ok(id)
+    }
     pub fn finish(&mut self) {
         self.generation = None;
         self.active.clear();

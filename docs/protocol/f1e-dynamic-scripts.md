@@ -139,3 +139,16 @@ nhưng mã asset chưa xác định class runtime. `CMapActionState` đọc `<st
 Lần theo binary chưa tìm được cạnh gọi trực tiếp tới constructor
 `CGOTileStaticLucci` (`0xF15690`); còn mở khả năng có đường gọi gián tiếp.
 Một mốc XML `begingold` kèm asset `Lucci00` chưa đủ để chọn lượt đo `149`.
+
+<a id="f1e-space-pangland-rust"></a>
+## 6. Triển khai opt-in Rust và Adapter cho Space & PangLand (`allow_f1e_dynamic_scripts`)
+
+`source: kr_runtime + emu_choice`, `status: candidate` (bằng chứng tổng hợp trong
+[f1e-space-pangland-rust.json](../evidence/rust-service/f1e-space-pangland-rust.json)).
+
+- **Adapter pack & catalog (`tools/kr_pack_export.py`, `map_profile.rs`):** Mở rộng allowlist `f1e-adapter-r1` nhận đủ **13 map `Space`** (`<mapscript><changetile><position/>...</changetile></mapscript>`) và **12 map `PangLand`** (`<ground/>`, `<limititemcount><item/>`, `<time><bomb|ground|mp3|state|wave/></time>`, từ chối `<time><item>` fail-closed).
+- **Wire codecs (`kr-wire::kr00967`):** Thêm `space_change_tile228` / `space_change_tile350` (khớp byte-for-byte frame `CaJJ_Space02` từ `p108`) và `sprinkler148` / `sprinkler_spawn159` (`SPRINKLER_BOMB_OWNER = 25`, khớp byte-for-byte frame `pang-159` từ `p108`).
+- **Service handler (`room_io.rs`, opt-in `allow_f1e_dynamic_scripts = false` mặc định):**
+  - `C->S 228`: Chỉ nhận từ host trong pha `Armed` (trần `512` sự kiện/ván), validate cấu trúc rồi broadcast nguyên body dưới opcode `S->C 350` tới mọi đại diện transport.
+  - `C->S 148`: Chỉ nhận từ host trong pha `Armed`, cấp phát `bomb ID` không trùng với `118` của người chơi (`bombs::Ledger::allocate_script_id`), phát ngay `S->C 159` (`owner = 25`) và hẹn `S->C 158` sau `2200 ms` dưới `Guard::ScriptBomb`.
+  - Pha `Ending`/`Idle` ghi nhận an toàn (`observe_closed` / `observe_after_abort`) không ngắt kênh; `C->S 149` và `233` tiếp tục giữ đóng cho tới khi có bằng chứng runtime bổ sung. Chưa chạy nghiệm thu Wine trực tiếp đối với `kr-service` cho 2 họ này.
