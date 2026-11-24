@@ -273,3 +273,38 @@ fn class_c_preference_is_restored_only_for_current_members_before_setup() {
     assert!(players[0].restore_character(5004).is_err());
     players[0].restore_character(1).unwrap();
 }
+
+#[test]
+fn class_c_ignores_presetup_reset_92_without_disconnecting_or_clearing_key() {
+    let (shared, mut players, keys) = room(ON, &[0, 1, 4000]);
+    players[0].restore_character(4000).unwrap();
+    // o12 live client emits C->S 92=(local 0, key 0) 9-29ms after 106 before setup().
+    assert_eq!(players[0].prepare_character(&choice(0)).unwrap(), None);
+    let ignored = players[0].packet(92, &choice(0)).unwrap();
+    assert_eq!(
+        ignored.character_rejection,
+        Some("class_c_presetup_reset_ignored")
+    );
+    assert!(players.iter_mut().all(|p| p.inbox.try_recv().is_err()));
+    assert_eq!(
+        shared.lock().unwrap().model.members[&1].character,
+        Some(4000)
+    );
+    // Pre-setup non-zero 92 still fails closed.
+    assert!(players[0].packet(92, &choice(1)).is_err());
+    assert!(players[0].prepare_character(&choice(1)).is_err());
+    // Completing setup and starting carries 4000 into Start 121.
+    setup(&shared, keys);
+    shared.lock().unwrap().model.ready(keys[1]).unwrap();
+    start(&mut players, [4000, 0]);
+
+    // Pre-setup 92=(0,0) on non-Class-C restored key or opt-in OFF still fails closed.
+    let (_s2, players2, _k2) = room(ON, &[0, 1, 4000]);
+    players2[0].restore_character(1).unwrap();
+    assert!(players2[0].prepare_character(&choice(0)).is_err());
+    assert!(players2[0].packet(92, &choice(0)).is_err());
+
+    let (_s3, players3, _k3) = room(OFF, &[0, 1]);
+    players3[0].restore_character(1).unwrap();
+    assert!(players3[0].packet(92, &choice(0)).is_err());
+}
