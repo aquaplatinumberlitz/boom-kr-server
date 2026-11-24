@@ -90,26 +90,76 @@ class TerrainAdapterTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'ngoài adapter'):
                     f1_terrain_rules(*self.profile(name, changed_ray))
 
+    def test_ida_round3_static_and_water_variants_project_as_measured_layers(self):
+        # TileInfoList KR 00967: ObjectTable 8167, 2956, 2270 and 2271.
+        cases = {
+            'TileTransParent_Static/Static01': ((1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1637888, 0, 0, 0, 0, 0, 0), 1),
+            'Tile19_Static/Block12': ((1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2010089472, 0, 0, 0, 0, 0, 0), 1),
+            'Tile07_Ground/Tile00': ((0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64512, 0, 0), 0),
+            'Tile07_Ground/Tile01': ((0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64512, 0, 0), 0),
+        }
+        for tile, (data, kind) in cases.items():
+            with self.subTest(tile=tile):
+                terrain = f1_terrain_rules(*self.profile(tile, data, ground=data[0] == 0))['terrain']
+                self.assertEqual(terrain['kinds'], [kind, 0])
+                self.assertNotIn('ray_barriers', terrain)
+
+    def test_uniform_type3_pieces_map_closed_groups_to_ray_barriers(self):
+        # Building00/01 (2554/2555) and IceHouse00/01 (2020/2021).
+        tail = {'Tile10_Passable': (64069472, 1, 1244184), 'Tile02_Passble': (18730216, 0, 18730216)}
+        for family, piece, group in [('Tile10_Passable', 'Building00', 0), ('Tile10_Passable', 'Building01', 0x01010101),
+                                     ('Tile02_Passble', 'IceHouse00', 0), ('Tile02_Passble', 'IceHouse01', 0x01010101)]:
+            with self.subTest(piece=piece):
+                tile = f'{family}/{piece}'
+                data = (3, 0, 0, 0, 0, 0, group, group, group, 0, 0, 1, 0, *tail[family], 0, 0)
+                terrain = f1_terrain_rules(*self.profile(tile, data))['terrain']
+                self.assertEqual(terrain['kinds'], [0, 0])
+                self.assertEqual(terrain.get('ray_barriers', [0, 0]), [0 if group else 1, 0])
+        closed = (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 64069472, 1, 1244184, 0, 0)
+        profile, table = self.profile('Tile10_Passable/Building00', closed)
+        profile['spawns'] = [[0, 0]]
+        with self.assertRaisesRegex(ValueError, 'spawn trên ô type 3'):
+            f1_terrain_rules(profile, table)
+
     def test_unmeasured_mechanics_remain_rejected(self):
+        tent = (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 18730216, 0, 18730216, 0, 0)
+        building = (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 64069472, 1, 1244184, 0, 0)
         refused = {
             'TileConv/ConvUR00': (0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 0, 0, 0, 0, 52224, 0, 0),
+            # Offset 52 feeds B9E4E0, read by bomber movement code (mine rail).
             'Tile08_Ground/Rail00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 1, 0, 64512, 0, 0),
-            'Tile07_Ground/Tile00': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64512, 0, 0),
-            'Tile07_Ground/Tile01': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64512, 0, 0),
+            # Word 62 = 1/2 and type-1 offset 36 (B50370 movement) for CAPong.
             'Tile42_Ground/TileRed': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 65536, 0, 0),
+            'Tile42_Ground/TileBlue': (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 131072, 0, 0),
             'Tile42_Static/Block03': (1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
-            'TileTransParent_Static/Static01': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1637888, 0, 0, 0, 0, 0, 0),
-            'Tile19_Static/Block12': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2010089472, 0, 0, 0, 0, 0, 0),
+            # Box byte 33 is copied to FixedBox+E0; B9CC10 then calls E9EEE0 (explosion).
             'Tile53_Box/Block30': (2, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 2487818, 117307672),
+            'Tile53_Box/Block31': (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118544168),
+            'Tile53_Box/Block32': (2, 0, 0, 0, 0, 0, 0, 0, 65792, 0, 0, 0, 0, 0, 0, 0, 3012106, 118545824),
+            # Bytes 0,1,0,1 in each group: one axis passes, the other is blocked.
             'Tile16_Passble/ArmyTent01': (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 2010265866, 0, -1, 0, 0),
-            'Tile01_Passable/TentOrange': (3, 0, 0, 0, 0, 0, 16777472, 16777472, 16777472, 0, 0, 1, 0, 18730216, 0, 18730216, 0, 0),
-            'Tile02_Passble/IceHouse00': (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 18730216, 0, 18730216, 0, 0),
-            'Tile10_Passable/Building00': (3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 64069472, 1, 1244184, 0, 0),
+            'Tile01_Passable/TentOrange': tent,
+            'Tile01_Passable/TentRed': tent,
+            'Tile01_Passable/TentBlue': tent,
+            # Same leap flag outside the measured keys stays closed (SuperFighter is class C).
+            'Tile23_Static/Temple14': (1, 0, 0, 0, 0, 0, 6, 1, 1, 0, 0, 2010089472, 0, 0, 0, 0, 0, 0),
         }
-        for tile, data in refused.items():
-            with self.subTest(tile=tile), self.assertRaisesRegex(ValueError, 'ngoài adapter'):
+        variants = {
+            'Tile19_Static/Block12': [(1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+                                      (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 256, 0, 0, 0, 0, 0, 0, 0)],
+            'Tile07_Ground/Tile00': [(0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 1, 1, 64512, 0, 0),
+                                     (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 1, 64513, 0, 0)],
+            'Tile10_Passable/Building00': [(*building[:11], 0, *building[12:]),
+                                           (*building[:6], 0, 0x01010101, 0, *building[9:]),
+                                           (*building[:12], 1, *building[13:]),
+                                           (*building[:13], 101, *building[14:])],
+            'Tile02_Passble/IceHouse00': [(*building[:13], 100, *building[14:])],
+        }
+        cases = [(tile, data) for tile, data in refused.items()]
+        cases += [(tile, data) for tile, rows in variants.items() for data in rows]
+        for tile, data in cases:
+            with self.subTest(tile=tile, data=data), self.assertRaisesRegex(ValueError, 'ngoài adapter'):
                 f1_terrain_rules(*self.profile(tile, data, ground=data[0] == 0))
-
 
 if __name__ == '__main__':
     unittest.main()

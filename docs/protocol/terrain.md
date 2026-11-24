@@ -907,7 +907,7 @@ unmount busy sau export đúng bytes. Các quan sát TCP/native, hai lớp cờ,
 coi đó là capture UDP đầy đủ hay debugger/output cleanup sạch. Không chạy lại chỉ để biến exit 1 thành 0.
 
 <a id="f1a-adapter-expansion"></a>
-## F1-a: adapter terrain nhận 164/214 map (#559)
+## F1-a: adapter terrain nhận 180/214 map (#559)
 
 Từ nền [F1-a ban đầu](../evidence/rust-service/f1-pack-map-adapters.json) (155/214 map), `tools/kr_pack_export.py::f1_terrain_rules`
 mở rộng nhận thêm các biến thể cùng cấu trúc của các tile đã đo trong KR 00967: `Tile16_Static/PinPillar01..05` và
@@ -940,9 +940,58 @@ Không chạy client KR native trong đợt p89; không nâng phân loại họ 
 | Vật thể type 3 | 7 | `Tile01_Passable/Tent{Blue,Orange,Red}`, `Tile16_Passble/ArmyTent01..02`, `Tile02_Passble/IceHouse00..08`, `Tile10_Passable/Building00..08`. Các nhóm hướng khác mẫu Herb/Line đã đo hoặc có thành phần trong cùng map chưa có hợp đồng. |
 | Ray mỏ | 5 | `Tile08_Ground/Rail00..06`. |
 | Payload chưa đọc hết | 4 | `EventForest00`, `EventPatrit00`, `ExBula01`, `ExBula02`. |
-| Thùng type 2 | 3 | `Tile53_Box/Block30..32` có dword offset 28 khác 0, đi vào nhánh riêng của `EA1EE0`. |
+| Thùng type 2 | 3 | `Tile53_Box/Block30..32` có dword offset 32 khác 0 (byte offset 33 bằng 1); bảng p89 ghi nhầm là offset 28. |
 | Vật thể type 1 | 3 | `TileTransParent_Static/Static01` và `Tile19_Static/Block12` có cờ offset 32 chưa có hợp đồng. |
 | Map có script | 1 | `NXCL_Aqua01` bị chặn trước adapter; còn có `Tile30_Box/JellyBombBlock00` chưa được nhận. |
 
 `local/runs/f1a-adapter-expansion-r2/rejections.json` liệt kê đủ 51 map ban đầu, lỗi đầu tiên và từng tile
 bị từ chối theo lớp và tọa độ trên các map đọc được. Bốn map payload đọc dở chỉ có kết luận từ parser.
+
+<a id="f1a-ida-round3"></a>
+### Đợt 3: đọc tĩnh IDA các cờ còn lại, nhận thêm 16 map
+
+Đợt 3 đọc bản sao tạm IDA DB của ảnh `kr-full.exe` KR 00967 và pack chỉ đọc. Lưới cờ ô của map do `EA1EE0` ghi
+gồm năm container: `map+1D24` (rào tia của nền), `map+1D30` (hủy bom), `map+1D3C` (đánh dấu type 1),
+`map+1D48` (cờ offset 32 của type 1, offset 48 của type 3 qua `BB3FD0` và `EA7C90`) và `map+1D54` (chặn).
+Các getter TileInfo theo type là `7E72B0`, `7E7350`, `9B0640`, `BB3FD0`, `ED2350` và `ED23E0`.
+Adapter chỉ nhận thêm các tile có ngữ nghĩa trùng lớp terrain Rust đã có:
+
+- `TileTransParent_Static/Static01` và `Tile19_Static/Block12` là type 1 có offset 32 bằng 1, các offset 36 và 40
+  bằng 0. Cờ này chỉ ghi `map+1D48`. Nơi đọc duy nhất là `E9C490`, gọi từ `B4B5A0`, slot 10 của
+  `IUseAbleSpecialItem` trong `CGOBomber`: bước nhảy tầm 3 bị hủy khi gặp ô có cờ. Tên tile cùng mẫu như
+  `Rock10_cantjump` khớp nghĩa "không nhảy qua". Item Spring không thuộc phạm vi item F1, và F1 floor lược bỏ
+  placement Spring (ví dụ `BSSmallCamp08`). Vì vậy hai tile được chiếu thành static `kinds = 1`.
+- `Tile07_Ground/Tile00..01` là nền type 0 có offset 56 bằng 1. `B9D8E0` chép offset này vào `CGOTileGround`,
+  và getter `B9E500` chỉ được gọi từ các hàm vẽ bomber/NPC (alpha 128). Byte offset 60 bằng 0 nên `EB48E0` vẫn
+  tạo `CGOTileGround`, word offset 62 bằng 0 nên không hủy bom. Nền này được chiếu như nền thường.
+- `Tile10_Passable/Building00..08` và `Tile02_Passble/IceHouse00..08` là type 3 có ba nhóm offset 24, 28, 32
+  giống nhau, toàn `0x01010101` hoặc toàn 0, và offset 44 khác 0. `E90A80` đọc offset 44 để bật kiểm tia theo
+  hướng trong `E9F220` và `E9C520`: tia rời ô dùng byte `32 + hướng`, vào ô dùng byte của hướng ngược.
+  Nhóm toàn 1 để ô trống; nhóm toàn 0 không cho tia vào hoặc rời ô, tương đương `ray_barriers` đã đo ở Tomb12.
+  Spawn trên ô bị chặn này bị từ chối. Offset 52 khác 100 và 101 nên `EB4C10` vẫn tạo `CGOTilePassable`.
+
+Exporter cũng từ chối nền có byte offset 60 khác 0, vì `EB48E0` khi đó tạo `CGOTileLap`. Không map nào đã nhận
+trước đây dùng nền này. Các nhóm vẫn bị từ chối:
+
+| Nhóm từ chối sau đợt 3 | Số map | Lý do tĩnh |
+|---|---:|---|
+| Cờ `Tile42_*` | 8 | Word offset 62 của TileRed/TileBlue chỉ dùng ở game mode 38; offset 36 của Block03 được `B50370` đọc khi tính va chạm di chuyển. |
+| Băng chuyền `TileConv/*` | 8 | Offset 32 bằng 2, hướng ở offset 36/40. |
+| Tent/ArmyTent type 3 | 5 | Nhóm `0x01000100` cho tia qua một trục và chặn trục kia; `ray_barriers` không biểu diễn được. |
+| Ray mỏ | 5 | Offset 52 bằng 1, getter `B9E4E0` có caller trong các method bomber. |
+| Payload chưa đọc hết | 4 | Parser chưa đọc hết payload. |
+| Thùng `Tile53_Box/Block30..32` | 3 | `B9C760` chép byte offset 33 vào FixedBox `+0xE0`; khi thùng vỡ, `B9CC10` gọi `E9EEE0` tạo vụ nổ tại ô. |
+| Map có script | 1 | `NXCL_Aqua01`. |
+
+`SuperFighter19` có `Tile23_Static/Temple14` cùng cờ offset 32 như Block12, nhưng họ `SuperFighter` thuộc lớp C
+nên nằm ngoài 214 map F1 A/B. Đợt này không nhận tile đó và không nâng phân loại họ.
+Đây là kết luận `kr_static/candidate`; không có lượt Wine hoặc native trong đợt 3. Ca chiếu khác native còn lại:
+`E9C520` đánh dấu ô `1D24` trước khi dừng nhưng không đánh dấu ô type 3 bị chặn; nhân vật không vào được cả hai loại ô.
+
+Ma trận `tools/f1_pack_matrix.py` chạy 16 map mới (`BSSmallCamp08`, `CaJJ_Ocean24`, `Cemetery04`, `Cookie07`,
+`EventOcean00`, `Island02`, `Island13`, `Island14`, `NXCL_Ice13`, `NXCL_Ocean02`, `Ocean00`, `Ocean01`, `Ocean02`,
+`Ocean08`, `Ocean24`, `Ocean26`) với hai client tổng hợp qua TLS/relay ở scope `f1-a`. Cả 16 lượt đạt: driver nhận
+ACK 117 và Start121 đúng mã, journal ghi complete đúng mã và tên, hai client về phòng và đóng phòng sạch.
+Adapter lên **180/214** map; inventory giữ nguyên terrain và floor của 164 map đã nhận trước đó.
+`Cookie07` giờ có Needle, Bomb, Fire, Roller, Shoe và Punch cố định trên cùng map, nhưng chưa chạy native.
+[Biên nhận và SHA-256](../evidence/rust-service/f1a-adapter-expansion.json) ghi ở khóa `round_3`.
