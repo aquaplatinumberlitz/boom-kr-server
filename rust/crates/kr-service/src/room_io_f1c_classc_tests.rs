@@ -340,3 +340,45 @@ fn class_c_ignores_auto_reset_92_before_and_after_setup_without_clearing_key() {
     players3[0].restore_character(1).unwrap();
     assert!(players3[0].packet(92, &choice(0)).is_err());
 }
+
+#[test]
+fn class_c_ignores_post_return_79_in_idle_and_ending_while_non_class_c_still_fails() {
+    let (shared, mut players, keys) = room(ON, &[0, 1, 4000, 5000]);
+    players[0].restore_character(4000).unwrap();
+    setup(&shared, keys);
+    // Pre-start Idle (no round started yet) still fails closed on 79=(1,0).
+    assert!(players[0].packet(79, &[0x5b, 0x5a]).is_err());
+    assert!(players[1].packet(79, &[0x5b, 0x5a]).is_err());
+
+    // Start one round so round_generation() > 0, then enter Ending and post-return Idle.
+    shared.lock().unwrap().model.ready(keys[1]).unwrap();
+    start(&mut players, [4000, 0]);
+    {
+        let mut r = shared.lock().unwrap();
+        r.model.phase = crate::room::Phase::Ending {
+            round: 1,
+            refreshed: std::collections::BTreeSet::new(),
+        };
+    }
+    players[0].packet(79, &[0x5b, 0x5a]).unwrap();
+    assert!(players[1].packet(79, &[0x5b, 0x5a]).is_err());
+    assert_eq!(
+        shared.lock().unwrap().model.members[&1].character,
+        Some(4000)
+    );
+
+    {
+        let mut r = shared.lock().unwrap();
+        r.model.phase = crate::room::Phase::Idle;
+    }
+    players[0].packet(79, &[0x5b, 0x5a]).unwrap();
+    assert!(players[1].packet(79, &[0x5b, 0x5a]).is_err());
+    assert_eq!(
+        shared.lock().unwrap().model.members[&1].character,
+        Some(4000)
+    );
+
+    // Disabled opt-in still fails closed in Idle.
+    let (_s_off, p_off, _k_off) = room(OFF, &[0, 1]);
+    assert!(p_off[0].packet(79, &[0x5b, 0x5a]).is_err());
+}
