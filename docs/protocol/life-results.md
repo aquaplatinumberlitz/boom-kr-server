@@ -173,6 +173,47 @@ trong170 và snapshot tại mốc; có một retry Space0.8s nếu chưa118. Gi�
 không khẳng định nguyên nhân input chỉ từ recipe thay nhiều yếu tố. Native emulation giữ framer/
 handler/blob/vector nhưng model world/actor/guard/endpoints; runtime state/ảnh là nguồn kiểm riêng.
 
+<a id="f4a-profile-result-projection"></a>
+### F4-a: trường hồ sơ dùng chung giữa S→C 20 và 175 — CP398
+
+**`kr_static/confirmed`** trên ảnh unpack KR 00967 `cf72da11…`. [CP398](../evidence/checkpoints/records/CP398.json)
+giữ hash, công thức và giới hạn. So byte đoạn caller đã lưu ở CP023 với ảnh unpack rồi đối chiếu
+thứ tự parser IDA với trace cursor CP023. Trace này là emulation của parser với dữ liệu tổng hợp.
+Không có phép đo client mới.
+
+`CStage` nhận `20` qua site `0xD68DB3 → 0xD6E890`. Sau byte chỉ số local, byte tại offset 1
+đi vào `0x13E2380 → 0xAE6740`; dword tại offset 2 đi vào `0x13E2440 → 0x55FD30`.
+Cả hai wrapper chỉ ghi khi chỉ số local ≤ 1. Dword tại offset 6 đi qua setter Lucci
+`0x13E4950` giống `135`. Hai dword còn lại và nghĩa nghiệp vụ của cặp byte/dword đầu giữ **unknown**.
+
+| Trường `175` trong variant CP023 | Đường ghi từ bản ghi đã parse |
+|---|---|
+| Raw `+12`, `u32` | Parser `0xE4AEF0` ghi row memory `+0x24`; `0xE5F92E` nạp, `0xE5F948` gọi cùng `0x13E2440` như gói `20`. |
+| Raw `+16`, `u8` | Row memory `+0x28`; `0xE5F95B` nạp, `0xE5F970` gọi cùng `0x13E2380` như gói `20`. |
+| Raw `+22`, `u32`; raw `+26`, `u8` | Row memory `+0x34/+0x38`; `0xE5F99D/0xE5F9C5` gọi `0x13E2600/0x13E25A0`. Nghĩa trường **unknown**. |
+| Raw `+49`, `u16` | Row memory `+0x58`. So với getter local `0x13E4740`; nếu giá trị mới lớn hơn, nhánh gọi `0xE400D0`. `0xE5F9EF` gọi setter `0x13E4790`. Ý nghĩa hiển thị còn **candidate**. |
+
+Offset raw tính từ cờ active của **một hàng**: cờ 1, nhánh `row+0x20 == 0`, header có `+9=0xFF`
+theo variant CP023. Không dùng offset row memory để ghi wire. Đường cập nhật trên đi sau bước
+tra chỉ số local `0x1240B20` và bỏ qua khi trả −1. Việc dùng cùng setter xác nhận chung đích ghi,
+chưa xác định EXP/cấp/total/delta, không tìm được trường Lucci trong `175` từ cạnh này.
+
+Thân `20` đầy đủ xác nhận phần đọc tiếp có nhiều điều kiện. Bảng dưới ghi **thứ tự đọc**
+sau prefix 18 byte. Tên nghiệp vụ và định dạng của các slot còn opaque vẫn **unknown**.
+
+| Điều kiện trong `0xD6E890` | Các lần đọc tiếp theo |
+|---|---|
+| Guard `0xD95C30` | `u8`, bốn `u32`, reader `+0x4C`; chuyển sang `0x123DE50`. |
+| Guard `0xCA4CE0`, rồi guard `0x8C8270` | Lần lượt reader `+0x38` và `u32`; sau đó `u8` nếu guard thứ hai bật. |
+| Guard `0x844760` | `u8` cờ; nếu khác 0 đọc qua slot `+0x80`. Kích thước object trong decompile không khẳng định kích thước wire. |
+| Luôn đọc sau các nhánh trên | `u32, u32, u8, u32`; nếu `0x9C8DF0` bật thì thêm `u32). Tiếp theo là reader `+0x50`, một blob `+0x5C`, rồi dword đếm và từng blob. |
+| Lại kiểm `0x9C8DF0` | Một dword đếm; mỗi nhóm đọc hai dword (khóa, cận lặp), rồi từng dword, chỉ giữ giá trị dương. Khóa là tên trung tính; ngữ nghĩa **unknown**. |
+
+Cuối handler kiểm giá trị 14 trước nhánh chuyển stage. ID stage, request vào luồng và lịch
+post-match vẫn cần đối chiếu trên client. Không thay fixture `175` hay nối DB theo suy luận này.
+Bước kiểm tiếp là đổi từng trường trong một control/payload có cursor sạch, quan sát setter và
+hồ sơ qua Wine cục bộ; so ván đối chứng với ván khác 0 trước khi chọn tên, đơn vị hoặc hướng đồng bộ.
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 

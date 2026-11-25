@@ -31,6 +31,9 @@ cùng kết quả không thưởng hai lần. Worker hiện chỉ trả match re
 [khung hồ sơ `291`](../../rust/crates/kr-wire/src/kr00967/account.rs) vẫn dùng số liệu 0.
 Bảng ngưỡng wiki trong preset và số thưởng của server là cấu hình, chưa có bằng chứng đó là luật KR gốc.
 
+[CP398](../protocol/life-results.md#f4a-profile-result-projection) đọc tiếp thân `20` và nối hai trường
+đầu của hàng `175` với cùng setter hồ sơ. Nghĩa EXP/cấp và lịch phát vẫn cần đo.
+
 Bước kiểm: lần từ setter của `20/135` và parser hàng `175` tới nơi hiển thị. Trên Wine, giữ một ván thưởng 0
 làm đối chứng rồi đo một ván có một khoản thưởng khác 0 đã biết, đủ qua ngưỡng cấp. So cursor và render của
 kết quả, sảnh/MyInfo sau khi quay lại và sau đăng nhập lại với ledger/profile. Kiểm giá trị vừa giới hạn

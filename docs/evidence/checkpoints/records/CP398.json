@@ -1,0 +1,58 @@
+{
+  "id": "CP398",
+  "previous": "CP397",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-25T14:36:47Z",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Trong KR 00967, S→C 20 và 175 có dùng chung trường hồ sơ nào, và offset thực trong hàng active của variant CP023 là bao nhiêu?",
+  "scope": "F4-a. Dùng IDA Pro 9.4 trên bản sao IDB, ảnh unpack KR và cache CP023. Không chạy client, Wine, mạng hay server.",
+  "context_commit": "ca30e170bdd44c6ccc2d8549fd30b2eb2ce047b3",
+  "artifacts": [
+    {"name": "CA.exe KR 00967 gốc", "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"},
+    {"name": "kr-full.exe KR 00967, image base 0x400000", "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"},
+    {"name": "kr-full.exe.i64 nguồn, chỉ đọc", "sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"}
+  ],
+  "locators": [
+    "docs/protocol/life-results.md#f4a-profile-result-projection",
+    "docs/evidence/round-repeat/README.md",
+    "docs/evidence/content/f4-ida-clusters.json",
+    "local/runs/f4a-profile-result-projection"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/life-results.md#f4a-profile-result-projection", "summary": "CStage 20 tại 0xD6E890 đọc prefix 18 byte và phần sau theo guard. Byte +1 đi vào 0x13E2380, dword +2 đi vào 0x13E2440, dword +6 đi vào setter Lucci dùng chung với 135.", "limits": "Định dạng reader riêng, giá trị guard theo phiên và tên các trường chưa đo giữ unknown.", "evidence": ["CP398_VERIFY", "CP398_CONTRACT"]},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/life-results.md#f4a-profile-result-projection", "summary": "S→C 175 dùng 0xE4AEF0 đọc raw +12/u32 và +16/u8 trong hàng active. Caller 0xE5F948 và 0xE5F970 chuyển hai trường vào cùng setter với 20.", "limits": "Chỉ variant hàng CP023. Raw tính từ cờ active; không suy các field đều đi cùng nhau hoặc có cùng producer.", "evidence": ["CP398_VERIFY", "CP398_CONTRACT"]},
+    {"source": "kr_static", "status": "unknown", "method": "static", "canonical": "docs/protocol/life-results.md#f4a-profile-result-projection", "summary": "Chưa định danh trường EXP/cấp/total/delta và Lucci trong 175.", "limits": "Hai setter chung chưa cho đơn vị hoặc nghĩa hiển thị. Chưa nối projection DB hay đặt lịch gửi cho client.", "evidence": ["CP398_VERIFY", "CP398_CONTRACT"]}
+  ],
+  "verification": [
+    {"check": "Đối chiếu entry byte của tám hàm IDA và 381 instruction cache E5F610 với ảnh unpack; so 23 vị trí cursor với trace parser CP023.", "result": "pass", "evidence": ["CP398_VERIFY"], "limits": "Trace dùng hàng tổng hợp trong emulation của parser; đây không phải phép đo Wine."},
+    {"check": "Thử control và gói có một trường khác 0 trên Wine, quan sát setter, UI và ledger.", "result": "not_run", "evidence": [], "limits": "Sau F1 và khi có lease. Không suy từ encoder hoặc từ giá trị zero fixture."}
+  ],
+  "delta": {"added": ["Mở phần reader có guard của 20 và nối đường cập nhật hồ sơ chung của 20/175."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Chưa có đối chứng native với từng giá trị khác 0 để gán nghĩa trường hoặc dùng projection khi phục vụ."
+  ],
+  "next_steps": [
+    {"id": "F4A-PROFILE-RESULT-NATIVE", "task": "KRE-F4-A", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Sau F1, dùng Wine cô lập với một ván đối chứng và một ván có giá trị khác 0, đối chiếu cursor, setter và số liệu hồ sơ/kết quả với ledger."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-25T14:36:47Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự đối chiếu byte, parser, cursor và giới hạn nguồn.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập cho checkpoint Codex."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật dòng F4 hiện có trong Bảng điều hành."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục tiếp tục trỏ tới protocol/life-results.md."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng nhóm; phép kiểm kế ghi ở contract và checkpoint."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không nâng độ phủ hoặc gate."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi ID hoặc trạng thái tính năng."},
+    {"path": "docs/protocol/life-results.md", "state": "updated", "reason": "Thêm giới hạn parser và setter trên variant CP023."},
+    {"path": "docs/content/f4-mechanic-clusters.md", "state": "updated", "reason": "Dẫn từ baseline p116 sang phép đối chiếu mới."},
+    {"path": "docs/evidence/content/f4-ida-clusters.json", "state": "unchanged", "reason": "Giữ snapshot đầu vào của p116."},
+    {"path": "docs/evidence/checkpoints/records/CP398.json", "state": "updated", "reason": "Chốt checkpoint tĩnh."}
+  ],
+  "evidence": [
+    {"id": "CP398_VERIFY", "kind": "local", "path": "local/runs/f4a-profile-result-projection/verification.json", "bytes": 1253, "sha256": "05d45455aa6e51574121985551040f204290a54037db5ab4f648d2660743a1ba"},
+    {"id": "CP398_CONTRACT", "kind": "repository", "path": "docs/protocol/life-results.md", "bytes": 117917, "sha256": "f070c2b20493739b6104a80015183704072f657c184d857fd5c227d29082329c"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f4a-profile-result-projection", "path": "local/evidence-manifests/08287ddae58ed3dceaa0d97b96e1f506402a7a76310b70f60d64f59458c74d81.jsonl", "sha256": "08287ddae58ed3dceaa0d97b96e1f506402a7a76310b70f60d64f59458c74d81", "bytes": 2005, "count": 10, "files_bytes": 68635}
+  ]
+}
