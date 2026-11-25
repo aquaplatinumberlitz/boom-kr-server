@@ -249,3 +249,29 @@ charge còn `×02`. Chiều A→B chưa đo được vì công cụ nhập khôn
 khoảng 70 ms. Byte 21 của `118` là `0x04` như dự đoán tĩnh, nhưng trường `v[6]` (byte offset 12) bằng **2** thay
 vì 1 ở cả vai chủ phòng và vai khách. `Request::parse_with_remote` đòi `v[6]=1` nên từ chối và đóng stream; chưa
 có `159`, `122` hay `158` cho bom remote. Ý nghĩa của `v[6]=2` chưa RE.
+
+<a id="f1-full-wine-accept-v2-bc"></a>
+## Tái nghiệm thu lớp C, Drill và RemoteBomb sau #647 (p113)
+
+`source: kr_runtime`. Hai client KR 00967 chạy trên Wine với `kr-service` trực tiếp, bản
+`f1-full-rust-v2` (`69212df`). [Bằng chứng, frame hex và cách tái lập](../evidence/item-families/f1-full-wine-accept-v2.json).
+
+**F1-c — `blocked` ở bước rời phòng.** Với `allow_class_c_characters` và lựa chọn đã lưu
+`A:4000, B:5000`, các gói `92=(0,0)` quan sát trong pha chờ, trước và sau setup, không đổi khóa.
+Cả hai kênh nhận `Start 121` có roster `[4000, 5000]` và gửi `Loading 79=(1,0)`.
+Hai màn hình đều hiển thị cả hai sprite lớp C trong trận Tomb12. Cả hai nhận `175` và `180`;
+SQLite ghi `complete/elimination`. Sau `180`, B lại gửi `92=(0,0)` trước khi server làm mới
+phòng (`Phase::Ending`). Kênh B kết thúc với guard `room_request` ở opcode `92`, rồi kênh A mất
+membership. Không có `86 → 241`. `room_count=0` sau ngắt phiên không đáp ứng tiêu chí thoát phòng sạch.
+
+**F1-b RemoteBomb `150` — `confirmed` (cả hai vai chủ phòng A và khách B).** Trên `f1b-v2-retry`
+(hai ván `Cookie07`): ở ván 1 (`r1`), A nhặt RemoteBomb `(12,4)` gửi `118` (`v6=2`) và nhận `159`
+(`id=1, flags=4`), giữ `>= 7.5s` không tự nổ (`blasts=[]`), rồi nhấn Space gửi `C->S 122` và nhận
+`S->C 158` (`id=1`). Ở ván 2 (`r2`), B vai khách nhặt `(11,12)` lặp lại đúng chuỗi `118 -> 159`
+(`id=3, flags=4`) → `122 -> 158` (`id=3`). Cả hai ván ghi `complete/elimination`, rời phòng
+`86 -> 241` và `final_room_count=0`.
+
+**F1-b Drill `149` — `confirmed` chiều B→A; chiều A→B chưa đo.** Trong `f1b-v2-retry` ván 1 (`r1`),
+B dùng Drill `(12,10)` gửi `127/sub3` và A nhận `170/sub3` qua server `f1-full-rust-v2` (tiếp tục xác nhận
+chiều B→A sau #647). Ở ván 2 (`r2`), A nhặt Drill tại `(11,2)` nhưng thao tác kích `Control_L` rơi vào
+`r2-a-drill-ctrl-missing` nên chiều A→B vẫn chưa đo được bằng công cụ nhập hiện tại.

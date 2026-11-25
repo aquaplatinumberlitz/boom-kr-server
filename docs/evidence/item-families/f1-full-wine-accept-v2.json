@@ -1,0 +1,139 @@
+{
+ "schema": "kre.f1_full_wine_accept.v2",
+ "task": "p113 / tái nghiệm thu Wine hai client F1-c (#642), F1-b RemoteBomb/Drill (#641), F1-e Space/PangLand (#638, #643) sau #647",
+ "canonical": [
+  "docs/protocol/f1-aux-opcodes-and-classc.md#f1-full-wine-accept-v2-bc",
+  "docs/protocol/f1e-dynamic-scripts.md#f1e-space-pangland-wine-v2"
+ ],
+ "source": "kr_runtime",
+ "status": {
+  "f1c_class_c_4000_5000": "partial (vào trận với [4000,5000], Loading 79=(1,0), 175/180 complete/elimination, song sau 180 ở Phase::Ending bị guard room_request ở 92=(0,0) khi B rời muộn)",
+  "f1b_drill_149": "confirmed (chiều B->A: B gửi 127/sub3 -> A nhận 170/sub3; chiều A->B trong r2 chưa kích được phím nhập)",
+  "f1b_remotebomb_150": "confirmed (A r1 chủ phòng và B r2 khách: 118 v6=2 -> 159 flags=4, giữ >=7s không tự nổ, Space -> 122 -> 158; 86->241, final_room_count=0)",
+  "f1e_space_228_350": "confirmed cho 228->350 (15/15) và C->S 172 (8/8 mỗi kênh không còn native_stage_guard); blocked ở kết thúc trận khi rơi hố gửi 127/sub19 (x66 mỗi bên) mà chưa có 127/sub17 nên server giữ death_no_current_trap",
+  "f1e_pangland_148": "confirmed (22 gói 148 -> 33 gói 159 owner 25 & 33 gói 158 trên cả A và B; complete/all_dead; 86->241; final_room_count=0)"
+ },
+ "raw_root": "local/runs/p113-f1-full-wine-v2/",
+ "provenance": {
+  "git_head": "69212df7a9874d88a5e1e476bc1016e307c8ae64",
+  "binaries": {
+   "cache": "local/cache/kr-bin/f1-full-rust-v2/bins.json",
+   "build": "cargo build --release --offline --locked tại 69212df7a9874d88a5e1e476bc1016e307c8ae64",
+   "kr_service_sha256": "e62c68863164b12738c3105d8ed760ad5b6c395c566b4f2dcabdd384e1f47539",
+   "kr_prelogin_sha256": "b9b879dde1e9ecd0d35f1c9b1d0bcd70ad4ded5d8d6e4de7e932e84db2a8c840",
+   "kr_admin_sha256": "99600d0d99bad0bf0244139ba212bed97f89c654015092fc7dd50d2c62fc2241",
+   "kr_launch_identity_sha256": "b38e968d39a914329081bdb938d3bf3de80711bc273fd0269a5b534cda01f77e"
+  },
+  "build": "KR 00967",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "wine_client_copy_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+  "harness": "Runner hai client namespace tách biệt (unshare --user --map-root-user --mount --net --pid --fork --mount-proc --kill-child=KILL, Xvfb riêng từng client), kr-service trực tiếp không proxy shadow.",
+  "review": "waived theo docs/evidence/checkpoints/review-waiver.json; tự kiểm CRC capture, rust-events, SQLite và cleanup."
+ },
+ "runs": [
+  {
+   "name": "f1c-v2-default",
+   "seed": "A:4000,B:5000",
+   "map": "Tomb12",
+   "tcp_frames_crc_verified": 175,
+   "udp_packets": 2046,
+   "udp_native_peer_crc_ok": {"A": 265, "B": 256},
+   "final_room_count": 0,
+   "summary_sha256": "e6a8b1a19603c2e013e7a0930cdd309849a1ad51664497713daebd6bea7fe4fe",
+   "frame_review_sha256": "0dd477312d9ed58b3c478dbe3cbf38ce1708c8767a70a4db62c44a1c4816c600",
+   "cleanup_sha256": "7c2b2379d68061a72849d2e1f2935fcb9ea107cf40a90c6cf3a1a531b9a4ce35",
+   "matches": [[1, 1, 256, "Tomb12", "complete", "elimination"]],
+   "match_players": [[1, 0, 4000, "win", "present"], [1, 1, 5000, "loss", "present"]],
+   "ended": [
+    {"guard": "room_request", "opcode": 92, "stream_id": 8},
+    {"guard": "account_owner_stale"},
+    {"guard": "retired_membership", "poll_stage": "membership", "stream_id": 6}
+   ],
+   "result": "92=(0,0) trước/sau setup không đổi khóa 4000/5000; Start 121 mang [4000,5000]; Loading 79=(1,0) được nhận; 175 và 180 phát tới A & B (complete/elimination). Sau 180 khi phòng ở Phase::Ending trước lúc làm mới phòng, B gửi lại 92=(0,0) và bị guard room_request ở opcode 92.",
+   "frames": {
+    "A:s2c:121": "690000000079000000ffffffff7c0000000200000002000000020000000000000001000000988bff0075706a8f81c39feb0117d527366a0ac453bd3f6070204cfc8d57ab98aab2e734c16b78beb63e273064b07f3b2f03b5a53956ea415aa91fd1d5fc548a32b075e9af5d404d33f5f4b116492aeb068ed78623031c2243bdcabf5e6a00a48517cb07683b6a94b4420f41e1e12b87dda4fc930b883e1b1b787c7692",
+    "A:c2s:79": "a2000000004f000000ffffffff0200000002000000020000000200000000000000010000004247ed",
+    "B:c2s:79": "db000000004f000000ffffffff020000000200000002000000020000000000000001000000bb4744",
+    "A:c2s:92_post_setup": "db000000005c000000ffffffff030000000200000002000000020000000000000001000000bab85c7f"
+   }
+  },
+  {
+   "name": "f1b-v2-retry",
+   "map": "Cookie07",
+   "tcp_frames_crc_verified": 379,
+   "udp_packets": 6823,
+   "udp_native_peer_crc_ok": {"A": 1053, "B": 1025},
+   "final_room_count": 0,
+   "summary_sha256": "90905fdf8403ecefb286ea166551d9e029946499ec1bb5397b1030414cfc1270",
+   "cleanup_sha256": "7fe58c9eec7dcc09177957aa587027c02a3e8f82b3d61d348bde0f58ddcdf4d5",
+   "matches": [
+    [1, 1, 256, "Cookie07", "complete", "elimination"],
+    [2, 1, 512, "Cookie07", "complete", "elimination"]
+   ],
+   "match_players": [
+    [1, 0, 0, "win", "present"],
+    [1, 1, 0, "loss", "present"],
+    [2, 0, 0, "win", "present"],
+    [2, 1, 0, "loss", "present"]
+   ],
+   "result": "Ván 1: B dùng Drill 149 (127/sub3 -> A nhận 170/sub3); A dùng RemoteBomb 150 vai chủ phòng (118 v6=2 -> 159 id=1 flags=4, giữ >=7.5s blasts=[], Space -> 122 -> 158 id=1). Ván 2: B dùng RemoteBomb 150 vai khách (118 v6=2 -> 159 id=3 flags=4, giữ >=7.5s blasts=[], Space -> 122 -> 158 id=3); A Drill r2-a-drill-ctrl-missing nên chiều Drill A->B chưa đo. Cả hai rời phòng sạch 86->241.",
+   "frames": {
+    "r1_B:c2s:127/sub3": "84000000007f000000ffffffff1f0000000200000002000000020000000000000001000000664691aaa24558dc8bd99f8b90f5d527b3660ac4d8a9c09fe517830fffffc54c",
+    "r1_A:s2c:170/sub3": "6900000000aa000000ffffffff170000000200000002000000020000000000000001000000bc4691aafc4458dceb329f8b34022ad85172fc37ffffc5c7",
+    "r1_A:c2s:118_remote": "950000000076000000ffffffff160000000200000002000000020000005d00000001000000b8d757ff87e09e89610c5f1f8ed9d923a1a59acdcfc890",
+    "r1_A:s2c:159_remote": "69000000009f000000ffffffff270000000200000002000000020000000000000001000000ba47903a31e09c131ac49f8b3717d52794fe02c7edb0f0a8e12b44cb550b0ff193c76eb1892bebf7",
+    "r1_A:c2s:122_remote": "63000000007a000000ffffffff110000000200000002000000020000000000000001000000ced766c746df9c16a16c6971634a4ce307f1",
+    "r1_A:s2c:158_remote": "69000000009e000000ffffffff0d0000000200000002000000020000000000000001000000b8b85d09cd1e5122e23b6076cc7b",
+    "r2_B:c2s:118_remote": "170000000076000000ffffffff16000000020000000200000002000000c6000000010000003ad654ff05fe9d89ef0d581708d8de2b23a59acdcfc869",
+    "r2_B:s2c:159_remote": "69000000009f000000ffffffff2700000002000000020000000200000000000000010000007446903a87e19c1268c39f8a8516d52765f502c724b9f0a8b33644cb07080ff14dc76eb1892beb8f",
+    "r2_B:c2s:122_remote": "18000000007a000000ffffffff11000000020000000200000002000000000000000100000035d666c5f3c79c1cee6a697937494ce3065a",
+    "r2_B:s2c:158_remote": "69000000009e000000ffffffff0d000000020000000200000002000000000000000100000072b85f098b1f53229c3c6076ccdc"
+   }
+  },
+  {
+   "name": "f1e-space-v2",
+   "map": "CaJJ_Space02 (167)",
+   "tcp_frames_crc_verified": 350,
+   "udp_packets": 3460,
+   "udp_native_peer_crc_ok": {"A": 449, "B": 449},
+   "final_room_count": 1,
+   "summary_sha256": "6777a14811ea9cd154a13e9175cc882fad025610e7322793e0c45e3080f79396",
+   "verify_dispatch_sha256": "7b8d0716be6099fef854bc2a133a65fa585b08f61f362fdf495451d20532f6fd",
+   "frame_review_sha256": "ed5f817fc64e11eefc215fabd3c91681d598c08277a85b67d619944761a9390a",
+   "cleanup_sha256": "877094664ec0d0d39c07f9f7a2206ede48eb7a076e3bfa480e4b6f80faa9ef2e",
+   "matches": [[1, 1, 256, "CaJJ_Space02", "cancelled", "no_players"]],
+   "match_players": [[1, 0, 0, "cancelled", "disconnected"], [1, 1, 0, "cancelled", "disconnected"]],
+   "result": "A gửi 15 gói 228 và A/B nhận đủ 15 gói 350 (verify-dispatch.json đạt). Cả A và B gửi 8 gói C->S 172 không còn native_stage_guard. Tuy nhiên khi hàng ngoài rụng ở mốc ~34s, cả A và B gửi 127/sub19 x66 (rơi hố chết trực tiếp không qua 127/sub17); kr-service từ chối theo death_no_current_trap (không phát 170/sub19), khiến ván quá hạn SQLite (TimeoutError: r1 SQLite result).",
+   "frames": {
+    "A:c2s:228": "8100000000e4000000ffffffff430000000200000002000000020000000000000001000000b3ed22dd...",
+    "B:c2s:172": "b100000000ac000000ffffffff0c0000000200000002000000020000000000000001000000af77903a276c6aef44c59f88e1",
+    "A:c2s:127/sub19_first": "6d000000007f000000ffffffff1d0000000200000002000000020000000000000001000000059a0b25a45c4cb25091ac2be684cf6aad9f6b4f2aaee3a4e45d87320f35102d"
+   }
+  },
+  {
+   "name": "f1e-pang-v2",
+   "map": "PangLand03 (887)",
+   "tcp_frames_crc_verified": 479,
+   "udp_packets": 2180,
+   "udp_native_peer_crc_ok": {"A": 223, "B": 220},
+   "final_room_count": 0,
+   "summary_sha256": "517995d0bdc7cffd610f7b3d4dddbe3886387ef2e1e13e8abc05ee05fce9d936",
+   "verify_dispatch_sha256": "9da009c38b7e0c55421f208775883d492e28320a0fdde0c4bea1465d983895cf",
+   "frame_review_sha256": "15dcba4f7d77337a4f3e9461f758f8be2c173d1bcfd6b3b0048d341645ba3d77",
+   "cleanup_sha256": "867c109e24271436bb91289b350e18dc6540e94f49819baf4a18522eb506b729",
+   "matches": [[1, 1, 256, "PangLand03", "complete", "all_dead"]],
+   "match_players": [[1, 0, 0, "draw", "present"], [1, 1, 0, "draw", "present"]],
+   "result": "A gửi 22 gói C->S 148; A và B đều nhận 33 gói 159 owner 25 và 33 gói 158 (verify-dispatch.json đạt). Cả hai nhận 175 và 180 (complete/all_dead), rời phòng 86->241 và final_room_count=0.",
+   "frames": {
+    "A:c2s:148_first": "840000000094000000ffffffff120000000200000002000000020000000000000001000000562899396ee0af20413d60e4a6d9e68709cf56",
+    "A:s2c:159_first": "69000000009f000000ffffffff270000000200000002000000020000000000000001000000b55e903a3f0763ecd63b607e4617d52daffb02c710b5f0acf22b44cf440b0ff18cc76eb1892bebae",
+    "A:s2c:158_first": "69000000009e000000ffffffff0d00000002000000020000000200000000000000010000004cb85d09f91f5122ae3c6076ccae"
+   }
+  }
+ ],
+ "limits": [
+  "F1-c sau 180 trong Phase::Ending vẫn bị guard opcode 92 khi client gửi 92=(0,0) trước lúc làm mới phòng.",
+  "F1-e CaJJ_Space02 chưa kết thúc sạch khi player rơi hố gửi 127/sub19 không kèm 127/sub17 (bị từ chối bởi death_no_current_trap).",
+  "F1-b chiều Drill A->B trong ván 2 chưa kích được do phím nhập (r2-a-drill-ctrl-missing)."
+ ]
+}
