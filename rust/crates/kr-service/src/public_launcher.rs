@@ -96,6 +96,10 @@ enum Request {
         #[serde(default)]
         reported_login_ipv4: Option<Ipv4Addr>,
     },
+    WebShopToken {
+        session: Secret,
+        player_id: i64,
+    },
 }
 
 struct Access {
@@ -177,6 +181,9 @@ fn handle(
                     .bridge
                     .forget_session(&token, player_id)
                     .map_err(|_| io::Error::other("public logout registry unavailable"))?;
+                if let Some(auth) = &active.web_shop {
+                    auth.revoke_player(player_id);
+                }
             }
             let response = if result.is_ok() {
                 b"{\"ok\":true}\n".as_slice()
@@ -261,6 +268,44 @@ fn handle(
             launch_tls::write_frame(&mut stream, prepared.bytes(), launch_tls::RESPONSE_LIMIT)?;
             prepared.delivered();
             Ok(())
+        }
+        Request::WebShopToken { session, player_id } => {
+            let Some(auth) = active.web_shop.as_ref() else {
+                return launch_tls::write_frame(
+                    &mut stream,
+                    b"{\"ok\":false,\"error\":\"denied_or_busy\"}\n",
+                    launch_tls::RESPONSE_LIMIT,
+                );
+            };
+            let authorized = match crate::accounts::Token::parse(&session.0) {
+                Ok(token) => {
+                    let remaining = stream.sock.remaining()?;
+                    match active.client.try_authorize_current(&token, player_id) {
+                        Ok(pending) => runtime
+                            .block_on(async {
+                                tokio::time::timeout(remaining, pending.wait()).await
+                            })
+                            .map_err(|_| io::Error::other("public web shop deadline"))?,
+                        Err(error) => Err(error),
+                    }
+                }
+                Err(_) => {
+                    return launch_tls::write_frame(
+                        &mut stream,
+                        b"{\"ok\":false,\"error\":\"denied_or_busy\"}\n",
+                        launch_tls::RESPONSE_LIMIT,
+                    );
+                }
+            };
+            let issued = match authorized {
+                Ok(player) if player.player_id == player_id => auth.issue_token(player_id).ok(),
+                _ => None,
+            };
+            let response = Zeroizing::new(match issued {
+                Some(token) => format!("{{\"ok\":true,\"token\":\"{}\"}}\n", token.as_str()),
+                None => "{\"ok\":false,\"error\":\"denied_or_busy\"}\n".into(),
+            });
+            launch_tls::write_frame(&mut stream, response.as_bytes(), launch_tls::RESPONSE_LIMIT)
         }
     }
 }
@@ -439,6 +484,7 @@ mod tests {
             r#"{"op":"login","login":"Alice","password":"test-only-password","peer":"127.0.0.2"}"#,
             r#"{"op":"launch","session":"test-only","player_id":1,"peer":"127.0.0.2"}"#,
             r#"{"op":"launch","session":"test-only","player_id":1,"account_id":2}"#,
+            r#"{"op":"web_shop_token","session":"test-only","player_id":1,"account_id":2}"#,
         ] {
             assert!(serde_json::from_str::<Request>(input).is_err());
         }
@@ -448,5 +494,275 @@ mod tests {
             )
             .is_ok()
         );
+        assert!(
+            serde_json::from_str::<Request>(
+                r#"{"op":"web_shop_token","session":"test-only","player_id":1}"#
+            )
+            .is_ok()
+        );
+    }
+
+    async fn http_get_status(addr: std::net::SocketAddr, path: &str, token: &str) -> u16 {
+        use tokio::io::{AsyncReadExt, AsyncWriteExt};
+        let mut stream = tokio::net::TcpStream::connect(addr).await.unwrap();
+        let raw = format!(
+            "GET {path} HTTP/1.1\r\nHost: 127.0.0.1\r\nAuthorization: Bearer {token}\r\n\r\n"
+        );
+        stream.write_all(raw.as_bytes()).await.unwrap();
+        let mut resp = Vec::new();
+        stream.read_to_end(&mut resp).await.unwrap();
+        let text = String::from_utf8(resp).unwrap();
+        let head = text.split_once("\r\n\r\n").unwrap().0;
+        head.lines()
+            .next()
+            .unwrap()
+            .split_whitespace()
+            .nth(1)
+            .unwrap()
+            .parse::<u16>()
+            .unwrap()
+    }
+
+    #[test]
+    fn tls_web_shop_token_authenticates_http_and_logout_revokes_it() {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let directory = std::env::temp_dir().join(format!(
+            "kr-public-ws-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&directory).unwrap();
+        fs::set_permissions(&directory, fs::Permissions::from_mode(0o700)).unwrap();
+        let database = directory.join("accounts.sqlite");
+        let player = {
+            let mut store = Store::open(&database).unwrap();
+            let admin = Admin {
+                actor: "test-admin",
+                reason: "public launcher web shop integration test",
+            };
+            store.begin_instance(&admin, 100).unwrap();
+            store
+                .create_account(
+                    &admin,
+                    "ShopAlice",
+                    "ShopAlice",
+                    b"test-login-password",
+                    100,
+                )
+                .unwrap()
+        };
+        let runtime = tokio::runtime::Builder::new_multi_thread()
+            .worker_threads(2)
+            .enable_all()
+            .build()
+            .unwrap();
+        runtime.block_on(async {
+            let economy = crate::account_worker::EconomySettings::new(
+                crate::accounts::EconomyPolicy::default(),
+                crate::accounts::ShopCatalog::default(),
+            )
+            .unwrap();
+            let worker =
+                Worker::open_with_economy(database.clone(), 4, Duration::from_secs(3), economy)
+                    .await
+                    .unwrap();
+            let ws_config = crate::web_shop::Config {
+                bind: std::net::SocketAddrV4::new(Ipv4Addr::LOCALHOST, 0),
+                allowed_peers: vec![Ipv4Addr::LOCALHOST],
+                max_connections: 4,
+                request_timeout_ms: 1000,
+                max_body_bytes: 1024,
+                session_ttl_seconds: 60,
+                unlock_all: false,
+            };
+            // Verify Config::validate rejects port 0, then bind an ephemeral port with explicit valid config.
+            let probe = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
+                .await
+                .unwrap();
+            let ws_addr = probe.local_addr().unwrap();
+            drop(probe);
+            let std::net::SocketAddr::V4(ws_v4) = ws_addr else {
+                unreachable!()
+            };
+            let mut ws_config = ws_config;
+            ws_config.bind = ws_v4;
+            let opened_ws = crate::web_shop::open(ws_config).await.unwrap();
+            let mut active = Active::login_test_client(worker.client());
+            active.web_shop = Some(opened_ws.auth());
+
+            let (certificate, key) = launch_tls::generate_identity().unwrap();
+            let cert_path = directory.join("certificate.der");
+            let key_path = directory.join("private.pk8");
+            fs::write(&cert_path, &certificate).unwrap();
+            fs::write(&key_path, &*key).unwrap();
+            fs::set_permissions(&key_path, fs::Permissions::from_mode(0o600)).unwrap();
+            let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let std::net::SocketAddr::V4(address) = listener.local_addr().unwrap() else {
+                unreachable!()
+            };
+            let config = Config {
+                bind: address,
+                certificate: FixturePin {
+                    path: cert_path,
+                    bytes: certificate.len(),
+                    sha256: crate::sha256_hex(&certificate),
+                },
+                private_key: key_path,
+                max_connections: 4,
+                timeout_ms: 2000,
+                session_ttl_seconds: 60,
+                session_idle_seconds: 30,
+            };
+            let opened = Opened {
+                listener,
+                tls: launch_tls::server_config(certificate.clone(), key.to_vec()).unwrap(),
+            };
+            let (halt, stop) = watch::channel(false);
+            let ws_server = tokio::spawn(crate::web_shop::serve_until(
+                opened_ws,
+                worker.service(),
+                stop.clone(),
+            ));
+            let server = tokio::spawn(serve(
+                opened,
+                config.clone(),
+                active.clone(),
+                vec![Ipv4Addr::LOCALHOST],
+                stop.clone(),
+            ));
+
+            let rpc = |cert: Vec<u8>, payload: Vec<u8>| {
+                tokio::task::spawn_blocking(move || {
+                    let mut tls = launch_tls::connect(
+                        TcpStream::connect(address).unwrap(),
+                        cert,
+                        Duration::from_secs(3),
+                    )
+                    .unwrap();
+                    launch_tls::write_frame(&mut tls, &payload, launch_tls::REQUEST_LIMIT).unwrap();
+                    let frame =
+                        launch_tls::read_frame(&mut tls, launch_tls::RESPONSE_LIMIT).unwrap();
+                    serde_json::from_slice::<serde_json::Value>(&frame).unwrap()
+                })
+            };
+
+            let login_resp = rpc(
+                certificate.clone(),
+                b"{\"op\":\"login\",\"login\":\"ShopAlice\",\"password\":\"test-login-password\"}\n"
+                    .to_vec(),
+            )
+            .await
+            .unwrap();
+            assert_eq!(login_resp["ok"], true);
+            let session = login_resp["session"].as_str().unwrap().to_owned();
+
+            // Wrong player_id fails closed.
+            let denied = rpc(
+                certificate.clone(),
+                format!(
+                    "{{\"op\":\"web_shop_token\",\"session\":\"{session}\",\"player_id\":{}}}\n",
+                    player.player_id + 1
+                )
+                .into_bytes(),
+            )
+            .await
+            .unwrap();
+            assert_eq!(
+                denied,
+                serde_json::json!({"ok":false,"error":"denied_or_busy"})
+            );
+
+            // Valid player_id receives a token accepted by web_shop::serve_until.
+            let issued = rpc(
+                certificate.clone(),
+                format!(
+                    "{{\"op\":\"web_shop_token\",\"session\":\"{session}\",\"player_id\":{}}}\n",
+                    player.player_id
+                )
+                .into_bytes(),
+            )
+            .await
+            .unwrap();
+            assert_eq!(issued["ok"], true);
+            let ws_token = issued["token"].as_str().unwrap().to_owned();
+            assert_eq!(
+                http_get_status(ws_addr, "/api/v1/profile", &ws_token).await,
+                200
+            );
+
+            // Logout revokes both public session and embedded web shop tokens for the player.
+            let logout_resp = rpc(
+                certificate.clone(),
+                format!(
+                    "{{\"op\":\"logout\",\"session\":\"{session}\",\"player_id\":{}}}\n",
+                    player.player_id
+                )
+                .into_bytes(),
+            )
+            .await
+            .unwrap();
+            assert_eq!(logout_resp, serde_json::json!({"ok":true}));
+            assert_eq!(
+                http_get_status(ws_addr, "/api/v1/profile", &ws_token).await,
+                401
+            );
+
+            // Disabled web_shop on Active also fails closed.
+            let listener_disabled = TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let std::net::SocketAddr::V4(addr_disabled) = listener_disabled.local_addr().unwrap()
+            else {
+                unreachable!()
+            };
+            let disabled_active = Active::login_test_client(worker.client());
+            let disabled_opened = Opened {
+                listener: listener_disabled,
+                tls: launch_tls::server_config(
+                    certificate.clone(),
+                    fs::read(&config.private_key).unwrap(),
+                )
+                .unwrap(),
+            };
+            let disabled_server = tokio::spawn(serve(
+                disabled_opened,
+                config,
+                disabled_active,
+                vec![Ipv4Addr::LOCALHOST],
+                stop,
+            ));
+            let disabled_resp = tokio::task::spawn_blocking(move || {
+                let mut tls = launch_tls::connect(
+                    TcpStream::connect(addr_disabled).unwrap(),
+                    certificate,
+                    Duration::from_secs(3),
+                )
+                .unwrap();
+                launch_tls::write_frame(
+                    &mut tls,
+                    b"{\"op\":\"web_shop_token\",\"session\":\"test-only\",\"player_id\":1}\n",
+                    launch_tls::REQUEST_LIMIT,
+                )
+                .unwrap();
+                serde_json::from_slice::<serde_json::Value>(
+                    &launch_tls::read_frame(&mut tls, launch_tls::RESPONSE_LIMIT).unwrap(),
+                )
+                .unwrap()
+            })
+            .await
+            .unwrap();
+            assert_eq!(
+                disabled_resp,
+                serde_json::json!({"ok":false,"error":"denied_or_busy"})
+            );
+
+            halt.send(true).unwrap();
+            server.await.unwrap().unwrap();
+            disabled_server.await.unwrap().unwrap();
+            ws_server.await.unwrap().unwrap();
+            worker.shutdown().await.unwrap();
+        });
+        fs::remove_dir_all(directory).unwrap();
     }
 }

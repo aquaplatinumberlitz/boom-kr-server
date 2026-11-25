@@ -55,6 +55,7 @@ fn base_config(dir: &Path) -> Config {
         economy_profile_path: None,
         emit_lucci_135: false,
         unlock_all_catalog: false,
+        web_shop: None,
     }
 }
 
@@ -151,6 +152,45 @@ fn config_economy_profile_loader_accepts_exporter_json_and_rejects_ambiguity_or_
     assert!(oversize.economy().is_err());
 }
 
+#[test]
+fn config_web_shop_requires_database_zero_and_matching_unlock_all() {
+    let dir = temp_dir("ws-validate");
+    let mut cfg = base_config(&dir.0);
+    fs::write(&cfg.database, b"").unwrap();
+    fs::set_permissions(&cfg.database, fs::Permissions::from_mode(0o600)).unwrap();
+
+    let mut ws = crate::web_shop::Config {
+        bind: std::net::SocketAddrV4::new(Ipv4Addr::LOCALHOST, 8080),
+        allowed_peers: vec![Ipv4Addr::LOCALHOST],
+        max_connections: 4,
+        request_timeout_ms: 1000,
+        max_body_bytes: 1024,
+        session_ttl_seconds: 60,
+        unlock_all: false,
+    };
+
+    // Valid DatabaseZero + matching unlock_all = false.
+    cfg.web_shop = Some(ws.clone());
+    assert!(cfg.validate().is_ok());
+
+    // Mismatched unlock_all rejected.
+    ws.unlock_all = true;
+    cfg.web_shop = Some(ws.clone());
+    assert!(cfg.validate().is_err());
+
+    // Matching unlock_all = true accepted in DatabaseZero.
+    cfg.unlock_all_catalog = true;
+    assert!(cfg.validate().is_ok());
+
+    // ProfileMode::Fixed rejected even when unlock_all matches.
+    cfg.profile_mode = ProfileMode::Fixed;
+    cfg.persist_matches = false;
+    cfg.unlock_all_catalog = false;
+    ws.unlock_all = false;
+    cfg.web_shop = Some(ws);
+    assert!(cfg.validate().is_err());
+}
+
 #[tokio::test]
 async fn config_unlock_all_catalog_projects_enabled_items_without_db_mutation() {
     let dir = temp_dir("unlock");
@@ -185,6 +225,7 @@ async fn config_unlock_all_catalog_projects_enabled_items_without_db_mutation() 
         service: Some(service.clone()),
         emit_lucci_135: false,
         unlock_all_catalog: true,
+        web_shop: None,
         projections: Arc::new(Default::default()),
         projection: None,
     };
@@ -392,6 +433,7 @@ async fn opt_in_emit_lucci_135_sends_valid_135_frame_with_settled_lucci_and_defa
         service: Some(worker.service()),
         emit_lucci_135: false,
         unlock_all_catalog: false,
+        web_shop: None,
         projections: Arc::new(Default::default()),
         projection: None,
     };
@@ -426,6 +468,7 @@ async fn opt_in_emit_lucci_135_sends_valid_135_frame_with_settled_lucci_and_defa
         service: Some(worker.service()),
         emit_lucci_135: true,
         unlock_all_catalog: false,
+        web_shop: None,
         projections: Arc::new(Default::default()),
         projection: None,
     };

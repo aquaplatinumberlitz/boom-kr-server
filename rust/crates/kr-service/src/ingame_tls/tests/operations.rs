@@ -135,6 +135,7 @@ fn loopback_profile(input: &ServerConfig) -> crate::Validated {
                     economy_profile_path: None,
                     emit_lucci_135: false,
                     unlock_all_catalog: false,
+                    web_shop: None,
                 }),
             }),
         },

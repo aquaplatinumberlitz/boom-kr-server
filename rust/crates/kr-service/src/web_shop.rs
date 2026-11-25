@@ -20,7 +20,7 @@ use std::{
     sync::{Arc, Mutex},
     time::{Duration, Instant},
 };
-use tokio::{net::TcpListener, task::JoinSet, time::timeout};
+use tokio::{net::TcpListener, sync::watch, task::JoinSet, time::timeout};
 use zeroize::Zeroizing;
 
 const TOKEN_CAPACITY: usize = 1024;
@@ -184,6 +184,29 @@ fn digest_eq(a: &[u8; 32], b: &[u8; 32]) -> bool {
     difference == 0
 }
 
+pub(crate) struct Opened {
+    listener: TcpListener,
+    config: Config,
+    auth: WebShopAuth,
+}
+
+impl Opened {
+    pub(crate) fn auth(&self) -> WebShopAuth {
+        self.auth.clone()
+    }
+}
+
+pub(crate) async fn open(config: Config) -> io::Result<Opened> {
+    config.validate()?;
+    let auth = WebShopAuth::new(config.session_ttl_seconds)?;
+    let listener = TcpListener::bind(config.bind).await?;
+    Ok(Opened {
+        listener,
+        config,
+        auth,
+    })
+}
+
 /// Bind the configured IPv4 interface. Dropping this future closes the listener
 /// and aborts connection tasks. A DB mutation already running may still commit.
 pub async fn serve(config: Config, service: AccountService, auth: WebShopAuth) -> io::Result<()> {
@@ -192,19 +215,61 @@ pub async fn serve(config: Config, service: AccountService, auth: WebShopAuth) -
         return Err(invalid("web shop session lifetime mismatch"));
     }
     let listener = TcpListener::bind(config.bind).await?;
-    serve_listener(listener, config, service, auth).await
+    serve_loop(listener, config, service, auth, None).await
 }
 
+pub(crate) async fn serve_until(
+    opened: Opened,
+    service: AccountService,
+    stop: watch::Receiver<bool>,
+) -> io::Result<()> {
+    serve_loop(
+        opened.listener,
+        opened.config,
+        service,
+        opened.auth,
+        Some(stop),
+    )
+    .await
+}
+
+#[cfg(test)]
 async fn serve_listener(
     listener: TcpListener,
     config: Config,
     service: AccountService,
     auth: WebShopAuth,
 ) -> io::Result<()> {
+    serve_loop(listener, config, service, auth, None).await
+}
+
+async fn stop_signal(stop: Option<&mut watch::Receiver<bool>>) {
+    match stop {
+        Some(stop) => {
+            if !*stop.borrow() {
+                let _ = stop.changed().await;
+            }
+        }
+        None => std::future::pending::<()>().await,
+    }
+}
+
+async fn serve_loop(
+    listener: TcpListener,
+    config: Config,
+    service: AccountService,
+    auth: WebShopAuth,
+    mut stop: Option<watch::Receiver<bool>>,
+) -> io::Result<()> {
     let config = Arc::new(config);
     let mut connections = JoinSet::new();
     loop {
+        if stop.as_ref().is_some_and(|s| *s.borrow()) {
+            break;
+        }
         tokio::select! {
+            biased;
+            _ = stop_signal(stop.as_mut()) => break,
             _ = connections.join_next(), if !connections.is_empty() => {}
             accepted = listener.accept() => {
                 let (mut stream, peer) = accepted?;
@@ -229,6 +294,10 @@ async fn serve_listener(
             }
         }
     }
+    drop(listener);
+    connections.abort_all();
+    while connections.join_next().await.is_some() {}
+    Ok(())
 }
 
 #[derive(Deserialize)]
