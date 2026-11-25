@@ -247,6 +247,81 @@ class PackageTests(unittest.TestCase):
         for path in PACK_DATA.iterdir():
             self.assertEqual(rows['pack-data/' + path.name]['sha256'], digest(path))
 
+    def test_f4_economy_and_web_shop_flags_are_opt_in_and_validated(self):
+        self.package()
+        default_cfg, _, _ = prepare(self.out, self.root / 'default-state')
+        default_adm = json.loads(default_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        for key in ('economy_profile_path', 'emit_lucci_135', 'web_shop', 'unlock_all_catalog'):
+            self.assertNotIn(key, default_adm)
+
+        profile = self.root / 'f4-profile.json'
+        profile.write_text('{"economy_policy":{"enabled":true},"shop_catalog":{"items":[]}}')
+        std_cfg, _, _ = prepare(
+            self.out,
+            self.root / 'std-state',
+            economy_profile=profile,
+            emit_lucci_135=True,
+            web_shop_bind='127.0.0.1:8080',
+        )
+        std_adm = json.loads(std_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        self.assertEqual(std_adm['economy_profile_path'], str(profile.resolve()))
+        self.assertTrue(std_adm['persist_matches'])
+        self.assertTrue(std_adm['emit_lucci_135'])
+        self.assertEqual(std_adm['web_shop']['bind'], '127.0.0.1:8080')
+        self.assertFalse(std_adm['web_shop']['unlock_all'])
+        self.assertEqual(std_adm['web_shop']['allowed_peers'], ['127.0.0.1'])
+
+        friends_pkg = self.root / 'friends-pkg'
+        friends_cfg_in = copy.deepcopy(self.config)
+        two = friends_cfg_in['diagnostic_two_lobby']
+        two['actors'] = [{'identity': 1, 'peer': '192.168.0.2', 'reported_login_ipv4': '192.168.0.2'}]
+        two['account_admission'].update(
+            patched_949x_names=True,
+            public_launcher={'certificate': '@INSTALL@'},
+            prelogin_tls={'certificate': '@INSTALL@'},
+        )
+        build(friends_cfg_in, self.binaries, friends_pkg, 'x86_64-unknown-linux-gnu')
+        friends_state = self.root / 'friends-f4-state'
+        friends_state.mkdir(mode=0o700)
+        identity_dir = friends_state / 'prelogin_tls-identity'
+        identity_dir.mkdir(mode=0o700)
+        (identity_dir / 'certificate.der').write_bytes(b'certificate fixture')
+        o1_cfg, _, _ = prepare(
+            friends_pkg,
+            friends_state,
+            friends=True,
+            economy_profile=profile,
+            web_shop_bind='127.0.0.1:8081',
+        )
+        o1_adm = json.loads(o1_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        self.assertTrue(o1_adm['unlock_all_catalog'])
+        self.assertTrue(o1_adm['web_shop']['unlock_all'])
+        self.assertEqual(o1_adm['web_shop']['allowed_peers'], ['127.0.0.1'])
+
+        for bad_bind in ('0.0.0.0:8080', '127.0.0.1:0', 'not-a-host'):
+            with self.subTest(bad_bind=bad_bind):
+                with self.assertRaisesRegex(ValueError, 'web_shop'):
+                    prepare(self.out, self.root / 'bad-bind', web_shop_bind=bad_bind)
+
+        with self.assertRaisesRegex(ValueError, 'Hồ sơ kinh tế'):
+            prepare(self.out, self.root / 'missing-prof', economy_profile=self.root / 'missing.json')
+        symlink_profile = self.root / 'link.json'
+        symlink_profile.symlink_to(profile)
+        with self.assertRaisesRegex(ValueError, 'Hồ sơ kinh tế'):
+            prepare(self.out, self.root / 'sym-prof', economy_profile=symlink_profile)
+
+        fixed_pkg = self.root / 'fixed-pkg'
+        build(copy.deepcopy(self.config), self.binaries, fixed_pkg, 'x86_64-unknown-linux-gnu')
+        tmpl_path = fixed_pkg / 'config.template.json'
+        fixed_cfg = json.loads(tmpl_path.read_bytes())
+        fixed_cfg['diagnostic_two_lobby']['account_admission']['profile_mode'] = 'fixed'
+        tmpl_path.chmod(0o600)
+        tmpl_path.write_text(json.dumps(fixed_cfg))
+        with self.assertRaisesRegex(ValueError, 'database_zero'):
+            prepare(fixed_pkg, self.root / 'fixed-state', emit_lucci_135=True)
+        with self.assertRaisesRegex(ValueError, 'database_zero'):
+            prepare(fixed_pkg, self.root / 'fixed-state-ws', web_shop_bind='127.0.0.1:8080')
+
 
 if __name__ == '__main__':
     unittest.main()
