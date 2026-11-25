@@ -1,0 +1,159 @@
+{
+  "schema": "kre.f4d_webshop_wine_e2e.v1",
+  "run": "f4d-webshop-wine-v1",
+  "baseline": "0df8d81bc02bc30d10ed80de25e2c9bfceadc8f1",
+  "build": "KR 00967",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "binaries": {
+    "tag": "f4-rust-v2",
+    "verified_bins_sha256": "517b14f58373c77a50fdaf1890af77f80d13b0aead43a0dcc96a22075c3738f",
+    "files": {
+      "kr-service": "8c5e53296d1e20ea9b7c7403cb3db21a576cbdba0782c1e568b477bef0d962d5",
+      "kr-prelogin": "2bd6377b156864048ce98692c339a090e0d4e4d90f28adbc0c823363c3688f15",
+      "kr-admin": "284292b2ecbca7067f8dca7fa49497b89bd1f3f3508749376bc8c23b7925e97d",
+      "kr-launch-identity": "5024503f8a2e5b9a5c27eb7ab8bf797dc6c18489675d7c846cf5bdf4665c3ea6"
+    },
+    "client_ca_exe_sha256": {
+      "A": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+      "B": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"
+    }
+  },
+  "economy_profile": {
+    "local_path": "local/runs/w7-f4a-wine/f4-profile-live.json",
+    "sha256": "e558d440e97dca32a502beb051f4df76e2eaff3438eced6504872c5b6766db26",
+    "catalog_items": 8316,
+    "win_reward": { "exp": 500, "lucci": 3500 },
+    "loss_reward": { "exp": 30, "lucci": 30 },
+    "mode": "standard",
+    "unlock_all": false,
+    "emit_lucci_135": true
+  },
+  "local_artifacts": {
+    "run_dir": "local/runs/w7-f4a-wine/f4d-webshop-wine-v1",
+    "db_summary_sha256": "629c35b1579660664f8f54ee04d16f91f3b99f2416791592f6ea3619758d8c3c",
+    "webshop_e2e_sha256": "1922c87e5f296da6d11f7c4da2d5b3a385ced0914ff1f78f23c6d42133b6cd64",
+    "cleanup_sha256": "9db2783c29cc379d8b4dc0b720c130c3f97755e4d7bf3b41c232ed30fa8e0645"
+  },
+  "cleanup": {
+    "namespace_ended": true,
+    "scratch_removed": true,
+    "deleted_bytes": 4632981263,
+    "namespace_exit": 0
+  },
+  "wine_match": {
+    "map_name": "Tomb12",
+    "tcp_frames_crc_verified": 206,
+    "udp_packets": 1867,
+    "final_room_count": 0,
+    "matches": [[1, 1, 256, "Tomb12", "complete", "elimination"]],
+    "match_players": [
+      [1, 0, 0, "win", "present"],
+      [1, 1, 0, "loss", "present"]
+    ],
+    "lucci_135_frames": [
+      {
+        "role": "A",
+        "dir": "s2c",
+        "opcode": 135,
+        "seq": 58,
+        "frame_sha256": "c778eb2efe33e9b4fbc888a1edd75412efa3df262dfe3010f02299b5e66072d8",
+        "fields": { "slot": 0, "lucci": 0 }
+      },
+      {
+        "role": "A",
+        "dir": "s2c",
+        "opcode": 135,
+        "seq": 124,
+        "frame_sha256": "48d4a942f5f5069a29eb217a8d13d945204f47a581c27fd2b6d43ed8fc8894e4",
+        "fields": { "slot": 0, "lucci": 3500 }
+      },
+      {
+        "role": "B",
+        "dir": "s2c",
+        "opcode": 135,
+        "seq": 58,
+        "frame_sha256": "c778eb2efe33e9b4fbc888a1edd75412efa3df262dfe3010f02299b5e66072d8",
+        "fields": { "slot": 0, "lucci": 0 }
+      },
+      {
+        "role": "B",
+        "dir": "s2c",
+        "opcode": 135,
+        "seq": 118,
+        "frame_sha256": "bcc5d290d1506600adcd1dddfbf4a91eaafb06f3a32387484787bd1367262e2c",
+        "fields": { "slot": 0, "lucci": 30 }
+      }
+    ]
+  },
+  "public_launcher_and_web_shop_e2e": {
+    "transport": "TLS 1.3 ALPN kre-launch/1 + loopback HTTP/1.1 embedded web_shop",
+    "concurrent_login_while_ingame_denied": {
+      "ok": false,
+      "error": "denied_or_busy"
+    },
+    "native_disconnect": {
+      "cancel_file_and_wineserver_k": true,
+      "native_tls_owner_ended_ok_count": 2
+    },
+    "health": {
+      "ok": true,
+      "mode": "standard",
+      "rewards_enabled": true,
+      "catalog_items": 8316
+    },
+    "html_root": {
+      "status": 200,
+      "contains_replaceState_scrub": true,
+      "contains_unequip_route": true,
+      "contains_innerHTML": false
+    },
+    "player_a_flow": {
+      "profile_before": {
+        "player_id": 1,
+        "exp": 500,
+        "level": 2,
+        "lucci": 3500,
+        "version": 2,
+        "mode": "standard"
+      },
+      "purchased_sku": "character.0",
+      "purchase_1": { "status": 200, "replayed": false, "lucci_after": 500 },
+      "purchase_retry_same_request_id": { "status": 200, "replayed": true, "lucci_after": 500 },
+      "equip": { "status": 200, "slot": "character", "sku_id": "character.0" },
+      "inventory_after_equip": {
+        "inventory_count": 1,
+        "equipped_count": 1,
+        "equipped_slot": "character",
+        "equipped_sku_id": "character.0"
+      },
+      "unequip": { "status": 200, "ok": true, "removed": true },
+      "logout_ok": true,
+      "post_logout_profile_status": 401
+    },
+    "player_b_insufficient_lucci": {
+      "lucci_available": 30,
+      "sku_price": 3000,
+      "purchase_status": 402,
+      "error": "request_failed"
+    }
+  },
+  "sqlite_final_state": {
+    "player_profiles": [
+      [1, 500, 2, 500, 5],
+      [2, 30, 1, 30, 2]
+    ],
+    "ledger_entries": [
+      [1, 1, "match_reward", 500, 3500, 1, "match:1"],
+      [2, 2, "match_reward", 30, 30, 1, "match:1"],
+      [3, 1, "shop_purchase", 0, -3000, null, "f4d-e2e-req-1"]
+    ],
+    "player_inventory": [
+      [1, "character.0", "permanent", 1, null]
+    ],
+    "player_equipped": []
+  },
+  "finding": {
+    "status": "kre_runtime/e2e_verified",
+    "summary": "Hai client KR 00967 chạy qua Wine hoàn tất ván Tomb12 (S->C 135 đẩy A: 0->3500, B: 0->30 Lucci và thoát phòng room_count=0); public_launcher từ chối đăng nhập trùng khi phiên game đang mở, cho phép đăng nhập + cấp web_shop_token ngay sau khi companion/Wine thoát sạch, và web_shop nhúng xử lý mua idempotent (character.0, trừ 3000 Lucci), equip/inventory/unequip, từ chối 402 khi B thiếu Lucci và thu hồi token 401 sau logout."
+  }
+}
