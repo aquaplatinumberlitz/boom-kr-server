@@ -186,3 +186,18 @@ Chi tiết kiểm chứng ở [f4-w3-ida-records.json](../evidence/content/f4-w3
 ### Kết quả probe Wine `MyPage` (Wave 3)
 
 Trong lần chạy Wine `f4-ui-probe-v1` ([f4-ui-probe-wine.json](../evidence/content/f4-ui-probe-wine.json), `f4a-rust-v1`, bật thưởng `Tomb12`), sau khi `CookieA` nhận `S->C 135` (`lucci=100`) và về sảnh, thao tác click đơn vào nút `마이페이지` tại `(770, 678)` làm bật tooltip `내 아이템 보기` nhưng `CA.exe` giữ nguyên màn hình sảnh và chỉ gửi các gói nền định kỳ (`715`, `15`); chưa phát request mở MyPage hay đồng bộ túi đồ.
+
+<a id="f4b-reader-slots-w4"></a>
+### Giải mã bảng vtable reader `CReceivedPacketBase` (Wave 4)
+
+Từ [f4-w4-ida-gates.json](../evidence/content/f4-w4-ida-gates.json) (`kr_static/confirmed`), `CReceivedPacketBase` (`0x17B0BF4`, kế thừa `IReceivedPacket` `0x17B0AD0`) khóa nguyên thủy của mọi slot reader dùng trong `sub_11CE930` và `S->C 313..317`:
+
+- **`+60` (`0x14EAFB0`)**: `u8/i8` (1 byte, qua `+96`, tăng cursor `+1`).
+- **`+64` (`0x14EB040`)**: `u16` (2 byte, qua `+100`, tăng cursor `+2`).
+- **`+68` (`0x14EB0D0`)**: `u32/i32` (4 byte, qua `+104`, tăng cursor `+4`).
+- **`+72` (`0x14EB160`)**: `u64/i64` (8 byte, qua `+108`, tăng cursor `+8`, khớp `r48` trước đây).
+- **`+76` (`0x14EB9E0`) / `+80` (`0x14EBA70`)**: đọc chuỗi qua `+112` vào `std::string` (`+76`) hoặc buffer đầu ra (`+80`), tăng cursor theo số byte đọc.
+- **`+88` (`0x14EB200`)**: đọc `len` byte thô qua `+120(cursor, buf, len)`.
+- **`+128` (`0x14EBBD0`)**: đọc liên tiếp `8` trường `u16` qua `+64` (`16` byte, khớp `r80` / nhánh có hạn dùng trong `S->C 317`).
+
+Điều này xác nhận phần đọc `sub_11CE930` gồm `(u32, u16, u32, string, 8B + u32, u8)`; nhãn nghiệp vụ từng cột vẫn `unknown` tới khi đo Wine.

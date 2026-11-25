@@ -47,3 +47,11 @@ Bổ sung từ [f4-w3-ida-records.json](../evidence/content/f4-w3-ida-records.js
 ### Kết quả probe Wine nút Cửa hàng (Wave 3)
 
 Trong `f4-ui-probe-v1` ([f4-ui-probe-wine.json](../evidence/content/f4-ui-probe-wine.json)), thao tác click đơn vào nút `상점` tại `(290, 678)` trên `CookieB` làm bật tooltip `상점 가기`, nhưng `CA.exe` không chuyển sang `CShopStageNew`, không mở `CNxOverlayWebBrowser` và không phát `C->S` nào ngoài giữ kết nối sảnh (`715`, `15`). Nguyên nhân (điều kiện click trong Wine vs guard cục bộ kiểu `sub_1220830()` hoặc cờ ở gói vào sảnh) còn `unknown`.
+
+<a id="f4d-shop-gates-w4"></a>
+### Phân tích tĩnh gate `sub_1220830` và stage switch cửa hàng (Wave 4)
+
+Bổ sung từ [f4-w4-ida-gates.json](../evidence/content/f4-w4-ida-gates.json) (`kr_static/confirmed`):
+
+- **Hàm gate `sub_1220830` (`0x1220830`)**: kiểm tra đồng thời `sub_4961E0() != 0` (`sub_456AD0(26) == 0`) và `sub_1220030() == 130` (`sub_13AD5B0(sub_545E30())` trỏ `sub_13A2A10` -> `sub_57A830`). Hàm này được gọi ở `89` vị trí (35 ngoài dải UI/stage, 54 trong `0xD60000..0xD90000` và `0x1030000..0x1260000`), bao gồm `sub_107BA70` trước khi dựng `C->S 541`. Nghĩa của flag `26` và trạng thái `130` còn `unknown`.
+- **Stage switch `sub_125D190` (`0x125D190`, gọi bởi `sub_125E540`)**: dọn stage cũ ở `*(this + 240)` và khởi tạo các stage con kế thừa `CShopStageNew` (`sub_106DF70`), gồm `CUserMarketStage` (`sub_111AA20` tại `0x125D857`) và `CMagicBookMarketStage` (`sub_11543A0` tại `0x125D943`). Bảng giá trị chuyển `a2` và điều kiện nút `상점` gọi tới `sub_125E540` vẫn chờ đo runtime.

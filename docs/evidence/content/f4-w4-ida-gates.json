@@ -1,0 +1,139 @@
+{
+  "schema": "kre.f4_w4_ida_gates.v1",
+  "baseline": "8c73e2d028680da9eb89a462ccff377505d3ce3c",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "scope": "Phân tích tĩnh IDA Wave 4: điều kiện gate `sub_1220830`, switch stage `sub_125D190` tới `CShopStageNew`, giải mã bảng vtable reader `CReceivedPacketBase`, và opcode dispatch thực tế cho nhóm setter F4-a trong `CStage::OnPacket` (`sub_D68C90`).",
+  "inputs": [
+    {
+      "path": "local/runs/codex-orchestrator/f4-w4-ida-dump.json",
+      "sha256": "67d71957209c17af2c69c974686f3d7ebfee47f28c75521c047c8c638ac63e93",
+      "bytes": 16859,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/codex-orchestrator/f4-w4-ida-dump2.json",
+      "sha256": "cf7524b5e8a0431ce186833fa164801061b8cddbd5a1084159d1aa2a46655b7f",
+      "bytes": 15953,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w4-ida-extra.json",
+      "sha256": "fe8d871e11fa5f32ed56abf6a9cd55d29988e1512e590be7e29464dc4cad5b02",
+      "bytes": 7228,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w4-ida-extra2.json",
+      "sha256": "40dc48baa409a2a61123a640980a1686f8142367efae2c42173a81cf11e138dc",
+      "bytes": 7198,
+      "storage": "gitignored"
+    }
+  ],
+  "f4d_gate_1220830": {
+    "status": "kr_static/confirmed",
+    "va": "0x1220830",
+    "decompile_summary": "Trả về `(unsigned __int8)sub_4961E0(&v1) != 0 && sub_1220030() == 130`.",
+    "sub_4961E0": {
+      "va": "0x4961e0",
+      "behavior": "Kiểm tra `sub_456AD0(26) == 0`."
+    },
+    "sub_1220030": {
+      "va": "0x1220030",
+      "behavior": "Đọc `v2 = sub_13AD5B0(sub_545E30())` (`*(this + 6)`), trả `-1` nếu `v2 >= 0xFFFFFFFE`, ngược lại gọi `sub_5708E0()` rồi trả `(unsigned __int8)sub_13A2A10(v2)` (`sub_57A830(this + 228*a2 + 60)`)."
+    },
+    "caller_counts": {
+      "outside_stage_shop_ranges": 35,
+      "inside_0xD60000_0xD90000_and_0x1030000_0x1260000": 54,
+      "notable_callers": [
+        "0x107ba8e (sub_107BA70 -> C->S 541 gate)",
+        "0xd77f33 (sub_D77EF0 -> S->C 316 branch)",
+        "0xd6d24e (sub_D6D230)",
+        "0xd8135a (sub_D80C20)"
+      ]
+    },
+    "unknown": [
+      "Ý nghĩa flag `26` trong `sub_456AD0(26)` và trạng thái `130` của `sub_1220030()` khi chạy trong Wine chưa được đo runtime."
+    ]
+  },
+  "f4d_stage_switch": {
+    "status": "kr_static/confirmed",
+    "dispatcher_va": "0x125d190",
+    "dispatcher_caller": "0x125e5ad (sub_125E540)",
+    "shop_descendants": [
+      {
+        "ctor_va": "0x111aa20",
+        "class": "CUserMarketStage",
+        "call_site": "0x125d857",
+        "inherits": "0x106df70 (CShopStageNew)"
+      },
+      {
+        "ctor_va": "0x11543a0",
+        "class": "CMagicBookMarketStage",
+        "call_site": "0x125d943",
+        "inherits": "0x106df70 (CShopStageNew)"
+      }
+    ],
+    "unknown": [
+      "Bảng giá trị `a2` trong `sub_125D190` và điều kiện nút `상점` ở sảnh gọi tới `sub_125E540` vẫn chờ bắt breakpoint/gói trên Wine."
+    ]
+  },
+  "f4b_reader_vtable": {
+    "status": "kr_static/confirmed",
+    "class": "CReceivedPacketBase",
+    "vtable_va": "0x17b0bf4",
+    "interface_vtable_va": "0x17b0ad0",
+    "slots": [
+      { "offset": 60, "fn_va": "0x14eafb0", "type": "u8/i8 (1 byte)", "behavior": "Kiểm tra `cursor + 1 <= len`, đọc qua `+96`, tăng cursor `+1`." },
+      { "offset": 64, "fn_va": "0x14eb040", "type": "u16 (2 bytes)", "behavior": "Kiểm tra `cursor + 2 <= len`, đọc qua `+100`, tăng cursor `+2`." },
+      { "offset": 68, "fn_va": "0x14eb0d0", "type": "u32/i32 (4 bytes)", "behavior": "Kiểm tra `cursor + 4 <= len`, đọc qua `+104`, tăng cursor `+4`." },
+      { "offset": 72, "fn_va": "0x14eb160", "type": "u64/i64 (8 bytes)", "behavior": "Kiểm tra `cursor + 8 <= len`, đọc qua `+108`, tăng cursor `+8`." },
+      { "offset": 76, "fn_va": "0x14eb9e0", "type": "std::string", "behavior": "Khởi tạo `std::string` (`cap=15`), đọc qua `+112` và cộng độ dài vào cursor." },
+      { "offset": 80, "fn_va": "0x14eba70", "type": "string into caller buffer", "behavior": "Gọi `+112(cursor, out)` và cộng số byte trả về vào cursor." },
+      { "offset": 88, "fn_va": "0x14eb200", "type": "raw bytes(buf, len)", "behavior": "Gọi `+120(cursor, buf, len)` và cộng số byte trả về vào cursor." },
+      { "offset": 128, "fn_va": "0x14ebbd0", "type": "u16[8] (16 bytes)", "behavior": "Đọc liên tiếp 8 trường `vtable+64` (`u16`) vào `_WORD a2[8]`." }
+    ]
+  },
+  "f4a_cstage_setters": {
+    "status": "kr_static/confirmed",
+    "dispatcher": "0xd68c90 (CStage::OnPacket, vtable 0x1765758)",
+    "cases": [
+      {
+        "opcode": 135,
+        "site": "0xd690cb",
+        "callee": "0xd6ced0 (sub_D6CED0)",
+        "reads": ["vtable+60 (u8 slot)", "vtable+68 (i32 remain_lucci)"],
+        "effects": "Gọi `sub_559BB0()`, `sub_13E4950(slot, remain_lucci)` (clamp `0..=sub_13E5150(slot)`) và log `SelfUser[%d] set remain lucci=%d`."
+      },
+      {
+        "opcode": 134,
+        "site": "0xd690dd",
+        "callee": "0xd6cf30 (sub_D6CF30)",
+        "reads": ["vtable+60 (u8)", "vtable+68 (i32)", "vtable+76 (std::string)", "vtable+60 (u8)"],
+        "effects": "Chuyển 4 giá trị vừa đọc sang virtual slot `*(this + 208)` rồi giải phóng string (`sub_449540`)."
+      },
+      {
+        "opcode": 136,
+        "site": "0xd690ef",
+        "callee": "0xd6cff0 (sub_D6CFF0)",
+        "reads": ["vtable+60 (i8 slot)", "vtable+64 (u16 value)", "vtable+68"],
+        "effects": "Kiểm tra `sub_13E4740(this, slot) < value`, gọi `sub_BFDF30(0, 240, 120)` và `sub_13E4790(slot, value)`."
+      }
+    ],
+    "indirect_setters": [
+      {
+        "va": "0xd6cba0",
+        "callers": ["0x6f1d34 (sub_6F1CF0)", "0xd4a6ab (sub_D4A660)", "0xdd7444 (sub_DD7400)"],
+        "vtable_refs": ["0x1716810", "0x1766afc"]
+      },
+      {
+        "va": "0xd6cbd0",
+        "callers": [],
+        "vtable_refs": ["0x1707cf8", "0x176a544"]
+      }
+    ],
+    "unknown": [
+      "Hợp đồng nghiệp vụ đầy đủ của `S->C 134` (`sub_D6CF30` -> slot `+208`) và `S->C 136` (`sub_D6CFF0`, đơn vị `value` vs EXP/level/grade) chưa đối chứng runtime trên Wine."
+    ]
+  }
+}
