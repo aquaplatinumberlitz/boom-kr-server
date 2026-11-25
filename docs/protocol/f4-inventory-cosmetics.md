@@ -181,3 +181,8 @@ Chi tiết kiểm chứng ở [f4-w3-ida-records.json](../evidence/content/f4-w3
 ### Kiểm tra xrefs vtable F4-c Wave 3
 
 `entry 0` của `CCharDecoMan` (`0xB6B0D0`), `CBombDecoMan` (`0xB3BB50`) và `CIDDecoMan` (`0x12772E0`) trong dump tĩnh chỉ là destructor wrapper gọi `sub_B6AD00`/`sub_B36860`/`sub_1276C00`; không dựng route runtime từ ba vftable này khi chưa có đo Wine hoặc tìm được caller thực. Riêng `CCAItemCollectionMgr` có constructor `sub_914130` được `sub_1231BD0` gọi tại `0x1234300`.
+
+<a id="f4b-mypage-wine-probe-w3"></a>
+### Kết quả probe Wine `MyPage` (Wave 3)
+
+Trong lần chạy Wine `f4-ui-probe-v1` ([f4-ui-probe-wine.json](../evidence/content/f4-ui-probe-wine.json), `f4a-rust-v1`, bật thưởng `Tomb12`), sau khi `CookieA` nhận `S->C 135` (`lucci=100`) và về sảnh, thao tác click đơn vào nút `마이페이지` tại `(770, 678)` làm bật tooltip `내 아이템 보기` nhưng `CA.exe` giữ nguyên màn hình sảnh và chỉ gửi các gói nền định kỳ (`715`, `15`); chưa phát request mở MyPage hay đồng bộ túi đồ.
