@@ -108,6 +108,9 @@ pub struct Config {
     /// validated DB account mode without mutating DB inventory or Lucci.
     #[serde(default)]
     pub unlock_all_catalog: bool,
+    /// Optional embedded F4-d HTTP web shop listener bound to DB account mode.
+    #[serde(default)]
+    pub web_shop: Option<crate::web_shop::Config>,
 }
 #[derive(Clone, Copy, Default, PartialEq, Eq, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -203,6 +206,17 @@ impl Config {
             }
             public.validate()?;
         }
+        if let Some(web_shop) = &self.web_shop {
+            if self.profile_mode != ProfileMode::DatabaseZero {
+                return Err(io::Error::other("web shop requires database profiles"));
+            }
+            if web_shop.unlock_all != self.unlock_all_catalog {
+                return Err(io::Error::other(
+                    "web_shop.unlock_all must match unlock_all_catalog",
+                ));
+            }
+            web_shop.validate()?;
+        }
         if ((self.persist_character || self.persist_matches)
             && self.profile_mode != ProfileMode::DatabaseZero)
             || !(30..=120).contains(&self.launch_ttl_seconds)
@@ -243,6 +257,7 @@ pub(crate) struct Active {
     // Consumed by F4-a tests now and Wave 2 runtime F4-b/d routes next.
     #[allow(dead_code)]
     pub(crate) unlock_all_catalog: bool,
+    pub(crate) web_shop: Option<crate::web_shop::WebShopAuth>,
     projections: Arc<std::collections::HashMap<u32, Vec<u8>>>,
     projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
 }
@@ -256,6 +271,7 @@ impl Active {
             service: None,
             emit_lucci_135: false,
             unlock_all_catalog: false,
+            web_shop: None,
             projections: Arc::new(std::collections::HashMap::new()),
             projection: None,
         }
@@ -276,6 +292,7 @@ impl Active {
 pub(crate) struct Owner {
     pub(crate) prelogin_tls: Option<quinn::Endpoint>,
     pub(crate) public_launcher: Option<crate::public_launcher::Opened>,
+    pub(crate) web_shop: Option<crate::web_shop::Opened>,
     pub(crate) boot_epoch: Option<i64>,
     worker: Worker,
     live_worker: Option<Worker>,
@@ -299,6 +316,10 @@ impl Owner {
         let listener = local_ipc::Listener::bind(&config.launch_socket)?;
         let public_launcher = match &config.public_launcher {
             Some(public) => Some(public.open().await?),
+            None => None,
+        };
+        let web_shop = match &config.web_shop {
+            Some(ws) => Some(crate::web_shop::open(ws.clone()).await?),
             None => None,
         };
         let prelogin_tls = config
@@ -367,9 +388,11 @@ impl Owner {
                 service: Some(worker.service()),
                 emit_lucci_135: config.emit_lucci_135,
                 unlock_all_catalog: config.unlock_all_catalog,
+                web_shop: web_shop.as_ref().map(crate::web_shop::Opened::auth),
                 projections: Arc::new(projections),
                 projection,
             },
+            web_shop,
             worker,
             live_worker,
             listener: Some(listener),

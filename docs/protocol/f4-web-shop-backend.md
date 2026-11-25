@@ -7,6 +7,8 @@ Backend này là HTTP/1.1 bounded, chỉ phục vụ catalog kinh tế cục b�
 
 `WebShopAuth` phát token ngẫu nhiên 32 byte, lưu SHA-256 digest trong bảng tối đa 1.024 phiên và gắn mỗi digest với một `player_id` dương. Token hết hạn theo `session_ttl_seconds`; có thể thu hồi theo token hoặc người chơi. So sánh digest chạy theo thời gian không phụ thuộc nội dung. Token chỉ nằm trong bộ nhớ của caller và không có `Debug`/`Display`; HTTP không chấp nhận `player_id` từ query hoặc JSON.
 
+Khi nhúng vào `kr-service` qua trường tùy chọn `account_serving.web_shop`, cấu hình bắt buộc `profile_mode = database_zero` và `web_shop.unlock_all == account_serving.unlock_all_catalog`. Launcher công khai (`public_launcher`) hỗ trợ `{"op":"web_shop_token"}` để cấp token sau khi kiểm tra session hợp lệ của đúng `player_id`, và tự thu hồi toàn bộ web shop token của người chơi khi `{"op":"logout"}` thành công.
+
 ## HTTP contract
 
 `GET /health` không cần đăng nhập và trả mode, số item catalog và `rewards_enabled`. `GET /` trả trang cửa hàng UTF-8. Các route `/api/v1/profile`, `/api/v1/catalog`, `/api/v1/inventory`, `/api/v1/purchase`, `/api/v1/equip` và `/api/v1/unequip` yêu cầu `Authorization: Bearer <token>`. Catalog lọc bằng `?category=character|decoration|emotion|consumable|collection`.

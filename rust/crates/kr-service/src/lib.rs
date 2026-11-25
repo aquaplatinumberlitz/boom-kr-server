@@ -1770,6 +1770,9 @@ async fn serve_until(
                 stop.clone(),
             ));
         }
+        if let (Some(ws), Some(service)) = (owner.web_shop.take(), owner.active.service.clone()) {
+            listeners.spawn(web_shop::serve_until(ws, service, stop.clone()));
+        }
     }
     let mut account_health = tokio::time::interval(Duration::from_secs(1));
     let quota = Arc::new(Semaphore::new(profile.config.max_connections));
