@@ -215,15 +215,11 @@ hai ván và đổi vai giữa hai ván. Phím Ctrl phải gửi bằng sự ki�
 và tác dụng Sensor chỉ được xem qua ảnh. Kết quả không bao hàm server KR gốc, map khác hoặc Internet thật.
 
 <a id="f1c-classc-presetup92"></a>
-### Xử lý gói `C→S 92=(0,0)` trước setup cho lớp C (`kr_runtime + emu_choice`)
+### Xử lý gói `C→S 92=(0,0)` và `Loading 79` cho lớp C (`kr_runtime + emu_choice`)
 
-Để tháo nút chặn `o12` trên client thật (gửi `C→S 92=(local 0, key 0)` sau `S→C 106` 9–29 ms khi phòng chưa
-`setup`), `kr-service` (`room_io.rs`) thêm guard thu hẹp chính xác điều kiện: chỉ khi `allow_class_c_characters` bật,
-phòng đang ở `Phase::Idle`, thành viên chưa `setup`, đang giữ một khóa lớp C (`is_class_c`) và gói `92` mang khóa `0`:
-`prepare_character` trả `Ok(None)` (không ghi DB) và handler `92` bỏ qua an toàn với lý do
-`class_c_presetup_reset_ignored` mà không xóa khóa lớp C hay ngắt stream. Mọi gói `92` trước setup khác (khóa khác
-`0`, thành viên không giữ khóa lớp C hoặc tắt cờ opt-in) vẫn bị từ chối fail-closed như cũ. Cần thêm lượt đo lại
-Wine hai client để xác nhận `Start 121` và `Loading 79` thực tế trên `CA.exe`.
+Để tháo nút chặn `o12` và `o13` trên client thật (gửi `C→S 92=(local 0, key 0)` sau `S→C 106` cả trước lẫn sau `setup` khi nhận `106` của peer, và gửi `C→S 79 = (1, 0)` lúc vào trận), `kr-service` (`room_io.rs` và `characters.rs`) mở hai điều chỉnh thu hẹp dưới cờ `allow_class_c_characters`:
+- `is_class_c_auto_reset`: bỏ qua an toàn mọi gói `92=(0,0)` trong `Phase::Idle` (cả trước và sau `setup`) cho thành viên đang giữ một khóa lớp C (`is_class_c`), trả `class_c_reset_ignored` mà không xóa khóa lớp C hay ngắt stream; mọi gói `92` chọn khóa khác `0` sau `setup` vẫn hoạt động bình thường, còn `92` trước `setup` khác vẫn bị từ chối fail-closed.
+- `class_c_loading79_matches`: chấp nhận byte `0` ngoài byte thấp của khóa và giá trị dự phòng `5`.
 
 <a id="f1-full-wine-accept-bc"></a>
 ## Nghiệm thu Wine hai client sau #641/#642: lớp C, Drill và RemoteBomb

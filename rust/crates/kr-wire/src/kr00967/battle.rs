@@ -102,6 +102,19 @@ pub fn spawn159(
     power: u8,
     id: u16,
 ) -> io::Result<Vec<u8>> {
+    spawn159_with_flags(owner, serial, row, column, power, id, 0)
+}
+/// Serializes S2C 159 with an explicit bomb flags byte (`v9` read at `sub_E5E8F0`
+/// into `var_108`, checked via `sub_B36750` `& 4` for RemoteBomb).
+pub fn spawn159_with_flags(
+    owner: u8,
+    serial: u32,
+    row: u8,
+    column: u8,
+    power: u8,
+    id: u16,
+    flags: u8,
+) -> io::Result<Vec<u8>> {
     let fields = [
         (0, Width::U8),
         (u64::from(owner), Width::U8),
@@ -113,7 +126,7 @@ pub fn spawn159(
         (u64::from(column), Width::U8),
         (u64::from(power), Width::U8),
         (1, Width::U32),
-        (0, Width::U8),
+        (u64::from(flags), Width::U8),
         (u64::from(id), Width::U16),
         (0, Width::U16),
         (1, Width::U8),

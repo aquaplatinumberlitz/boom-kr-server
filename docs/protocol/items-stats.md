@@ -263,14 +263,8 @@ khiên trên peer và việc giữ phiên sau khi hết charge.
 `report_derived_f1b_remote_drill` là tập cha của `report_derived_f1b_remote_sensor` (bao gồm toàn bộ `F1-b` aux/sensor
 nhưng không mở xe `F1-d`). Nguồn: `kr_static + emu_choice`, **chưa đo Wine hai client**.
 
-- **Cờ `RemoteBomb` ở `C→S 118` (`kr_static/confirmed`):** `0xB4BE10 → 0xE2C0E0(..., a13=4) → 0xE2DF80`
-  (`CGameMsgCache` vtable `+32`) ghi `v5[64] = a13 = 0x04` thành trường thứ 13 (`v[12]`, `u8` ở byte offset 21 của
-  body 22 byte `C→S 118`; bom thường `0xB76730` ghi `0`).
-- **Luồng `RemoteBomb` (kind `150`, `+160 = 3`, `emu_choice`):** Nhặt `124 → 165` cấp `3` charge. Khi `f1b_remote_drill`
-  bật, `118` với `v[12] == 4` trừ 1 action charge và chỉ phát `159` (không tự lên hẹn `158` 6000ms); `127/sub0` tiêu
-  bộ đếm inventory; `122` reason `2` (`remote_detonation122`, delay `0..=200ms`) xác thực bom remote đang sống của
-  đúng owner/slot/cell (`trigger_remote_detonation`) rồi mới lên hẹn `158` sau `report.delay` cho toàn bộ peer với
-  `Guard::Bomb` và `commit_blast`. Phản hồi riêng khác ngoài `158` của server gốc (nếu có) vẫn `unknown`.
+- **Cờ `RemoteBomb` ở `C→S 118` và `S→C 159` (`kr_static/confirmed + o13`):** `0xB4BE10` tạo object bom loại `2` (`v14(..., 2)`, `sub_B38390` trả `v[6]=2` tại byte offset 12 của `C→S 118`) và gọi `0xE2C0E0(..., a13=4) → 0xE2DF80` (`v[12]=4` tại byte offset 21); bom thường `0xB76730` dùng loại `1` và `v[12]=0`. Ở chiều nhận `S→C 159` (`sub_E5E8F0 → sub_E14600`), trường u8 `v9` đứng sau `1u32` (byte index 10 trong `kr_wire::spawn159_with_flags`) nạp vào `var_108` và được `sub_B36750` kiểm bit `0x04` để bỏ timer tự nổ cục bộ và cho phép Spacebar kích nổ (`B38070(4) → 122 reason 2`).
+- **Luồng `RemoteBomb` (kind `150`, `+160 = 3`, `emu_choice`):** Nhặt `124 → 165` cấp `3` charge. Khi `f1b_remote_drill` bật, `bombs::Request::parse_with_remote` chấp nhận `v[12] == 4` cùng `v[6] ∈ {1, 2}` (bom thường giữ chặt `v[6] == 1`), trừ 1 action charge và phát `spawn159_with_flags(..., flags=4)` (không tự lên hẹn `158` 6000ms); `127/sub0` tiêu bộ đếm inventory; `122` reason `2` (`remote_detonation122`, delay `0..=200ms`) xác thực bom remote đang sống của đúng owner/slot/cell (`trigger_remote_detonation`) rồi mới lên hẹn `158` sau `report.delay` cho toàn bộ peer với `Guard::Bomb` và `commit_blast`. Phản hồi riêng khác ngoài `158` của server gốc (nếu có) vẫn `unknown`.
 - **Luồng `Drill` (kind `149`, `+160 = 3`, `emu_choice`):** Nhặt `124 → 165` cấp `3` charge. `127/sub3` kiểm `dir <= 3`,
   action charge và gọi `terrain.rs::clear_box` (chỉ xóa thùng thật `kinds == 2`, ghi nhận `clearance` cho `142` và không
   kích dây chuyền `exploding_boxes`) trước khi relay `170/sub3`; nếu ô không phải thùng thì từ chối không trừ charge.

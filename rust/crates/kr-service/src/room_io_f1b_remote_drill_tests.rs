@@ -35,7 +35,15 @@ fn floor_catalog(visible: &[(u8, u8, u16)], hidden: &[(u8, u8, u16)]) -> Vec<u8>
     body
 }
 
-fn bomb118(round: u64, slot: u8, serial: u32, row: u8, col: u8, remote: bool) -> Vec<u8> {
+fn bomb118_with_kind(
+    round: u64,
+    slot: u8,
+    serial: u32,
+    row: u8,
+    col: u8,
+    kind: u8,
+    remote: bool,
+) -> Vec<u8> {
     fields(&[
         (u64::from(wire_key(round).unwrap()), Width::U32),
         (0, Width::U8),
@@ -43,7 +51,7 @@ fn bomb118(round: u64, slot: u8, serial: u32, row: u8, col: u8, remote: bool) ->
         (u64::from(serial), Width::U32),
         (u64::from(row), Width::U8),
         (u64::from(col), Width::U8),
-        (1, Width::U8),
+        (u64::from(kind), Width::U8),
         (0, Width::U8),
         (0, Width::U8),
         (0, Width::U8),
@@ -51,6 +59,18 @@ fn bomb118(round: u64, slot: u8, serial: u32, row: u8, col: u8, remote: bool) ->
         (1, Width::U32),
         (if remote { 4 } else { 0 }, Width::U8),
     ])
+}
+
+fn bomb118(round: u64, slot: u8, serial: u32, row: u8, col: u8, remote: bool) -> Vec<u8> {
+    bomb118_with_kind(
+        round,
+        slot,
+        serial,
+        row,
+        col,
+        if remote { 2 } else { 1 },
+        remote,
+    )
 }
 
 fn remote122(bomb_id: u32, row: u16, col: u16, delay: u32) -> Vec<u8> {
@@ -318,6 +338,10 @@ fn remote_bomb_places_three_charges_without_auto_158_and_detonates_on_122() {
         for s in &mut case.players {
             let spawn = receive(s, &[159]);
             assert_eq!(spawn.packets[0].1.opcode, 159);
+            assert_eq!(
+                spawn.packets[0].1.payload,
+                wire::spawn159_with_flags(0, serial, cell.0, cell.1, 1, id, 4).unwrap()
+            );
             assert!(matches!(
                 s.inbox.try_recv(),
                 Err(mpsc::error::TryRecvError::Empty)
@@ -441,6 +465,12 @@ fn remote_bomb_places_three_charges_without_auto_158_and_detonates_on_122() {
         "scanner_no_charge"
     );
 
+    // Non-remote bomb with v[6] == 2 stays rejected.
+    assert!(
+        case.players[0]
+            .packet(118, &bomb118_with_kind(r1, 0, 98, 0, 0, 2, false))
+            .is_err()
+    );
     // Without remote_drill policy, v[12] == 4 on 118 fails parsing.
     let sensor_case = Case::new(REMOTE_SENSOR_POLICY);
     assert!(
