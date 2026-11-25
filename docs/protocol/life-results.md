@@ -232,6 +232,14 @@ Từ [f4-w4-ida-gates.json](../evidence/content/f4-w4-ida-gates.json) (`kr_stati
 - **`S->C 134` (`0xD690DD` → `sub_D6CF30`)**: đọc `u8`, `i32`, `std::string` (`+76`), `u8`, rồi gọi virtual slot `*(this + 208)`. Ngữ nghĩa trường còn `unknown`.
 - **`S->C 136` (`0xD690EF` → `sub_D6CFF0`)**: gọi `sub_D6CFF0` (đọc `i8 slot`, `u16`, `u32`, kiểm `sub_13E4740`, bật hiệu ứng `sub_BFDF30(0, 240, 120)` và gọi `sub_13E4790(slot, val)`). Trong khi đó `sub_D6CBA0` được gọi từ `sub_6F1CF0`/`sub_D4A660`/`sub_DD7400` + vtable `0x1716810`/`0x1766AFC`, còn `sub_D6CBD0` chỉ nằm trên vtable `0x1707CF8`/`0x176A544`. Chưa dựng codec `134`/`136` khi chưa có đo Wine.
 
+<a id="f4a-sc20-and-level-hud-w5"></a>
+#### Bổ sung tĩnh `S->C 20`/`137`/`217` và HUD `Lv.%3d` (`sub_9022D0`, Wave 5)
+
+Từ [f4-w5-ida-ui-and-exp.json](../evidence/content/f4-w5-ida-ui-and-exp.json) (`kr_static/confirmed`):
+
+- **`S->C 20` (`sub_D6E890`) và nhánh `sub_D95C30`**: `sub_D95C30()` chỉ gọi `sub_456AD0() == 0` nên nhánh đọc nối tiếp `(u8, u32, u32, u32, u32, std::string)` (`sub_123DE50`/`sub_D94050`/`sub_1245CE0`) luôn kích hoạt sau cụm setter `sub_13E2380`, `sub_13E2440`, `sub_13E4950`, `sub_13E4BC0`, `sub_13E4A30`. Ngoài ra `S->C 137` (`sub_D6D1B0`) lặp `count` cặp `(u8 idx, u8 val)` gọi `sub_13E2380`, và `S->C 217` (`sub_D72F80`) gọi `sub_13E3EB0` (`sub_65A320`).
+- **HUD `Lv.%3d` (`sub_9022D0`, `0x9027B5`)**: lấy record `v87 = sub_D2FE90(this[1275])`; ở chế độ thường (`sub_1220830() == 0`), đọc `sub_529C20(v87 + 10)`, `sub_529C20(v87 + 74)`, `sub_1275370(v87[44], v87[45], 0)`, và `sub_529C60(v87 + 22)` để vẽ `Lv.%3d` (còn nhánh `sub_1220830() != 0` dùng `RpgInfoLevel`/`sub_D30320(0)`). Ánh xạ setter EXP/cấp tới từng offset `v87` chờ kiểm trực tiếp trên Wine.
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 

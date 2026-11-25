@@ -1,0 +1,107 @@
+{
+  "schema": "kre.f4_w5_ida_ui_and_exp.v1",
+  "baseline": "07090c1eb261faa2872e9fe8e048568b08d101f6",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "scope": "Phân tích tĩnh IDA Wave 5: giải mã `sub_456AD0`, gate stage `sub_125E540` / `sub_125D190`, bảng token UI `sub_124D6A0`, nhánh đọc `S->C 20`/`137`/`217`, và bộ vẽ HUD `Lv.%3d` (`sub_9022D0`).",
+  "inputs": [
+    {
+      "path": "local/runs/f4-w5-ida-dump.json",
+      "sha256": "73244448c06305022becd02da58b836ca41082a0a4b131ba41740302107aea5b",
+      "bytes": 424018,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w5-ida-dump2.json",
+      "sha256": "955db0e35d8eff71bdc4e1bc7e07e8d7cd072b22f9843b4bf3a78c41f9125d7c",
+      "bytes": 33800,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w5-ida-dump3.json",
+      "sha256": "d4e34616ea11f0a045a7acb4a60ca5285df461b3bc1cb95f1485e74049ef5428",
+      "bytes": 9278,
+      "storage": "gitignored"
+    }
+  ],
+  "f4d_flag26_and_stage_switch": {
+    "status": "kr_static/confirmed",
+    "sub_456AD0": {
+      "va": "0x456ad0",
+      "decompile": "char sub_456AD0() { return 0; }",
+      "impact": "Hàm hằng trả `0`; vì vậy `sub_4961E0` (`0x4961e0`), `sub_D95C30` (`0xd95c30`) và `sub_844690` (`0x844690`) luôn trả true, nên `sub_1220830()` chỉ phụ thuộc `sub_1220030() == 130`."
+    },
+    "sub_76FBA0": {
+      "va": "0x76fba0",
+      "decompile": "char sub_76FBA0() { return 0; }",
+      "impact": "Chặn nhánh khởi tạo `CUserMarketStage` (`0x125D857`) trong `sub_125D190`."
+    },
+    "sub_125E540": {
+      "va": "0x125e540",
+      "caller": "0x125deb1 (sub_125DD40)",
+      "condition": "sub_7A0180() != 0 && sub_1220480() != 0 && u16(packet) == 121 && sub_125D170(this) == 11",
+      "sub_1220480": "Kiểm tra `sub_1220030(this)` thuộc `{72, 73, 74}`.",
+      "action": "Gọi `sub_12562F0(12)` rồi `sub_125D190(sub_12562C0(sub_60FDE0()))`."
+    },
+    "sub_125D190_shop_allocations": {
+      "CShopStageNew": { "site": "0x125d725", "size": "0xDFFCh", "ctor": "0x106df70" },
+      "CUserMarketStage": { "site": "0x125d857", "size": "0x14E00h", "ctor": "0x111aa20", "guard": "sub_76FBA0() == 0" },
+      "CMagicBookMarketStage": { "site": "0x125d943", "size": "0x12B64h", "ctor": "0x11543a0", "guard": "sub_844690()" }
+    },
+    "sub_124D6A0_token_map": {
+      "va": "0x124d6a0",
+      "tokens": {
+        "Shop": 0,
+        "ShopTab": 1,
+        "ShopFreeStock": 2,
+        "ShopStock": 3,
+        "Prepare": 4,
+        "MyPage": 5,
+        "Square": 6,
+        "LowWinRateChannel": 7
+      }
+    },
+    "ui_button_refs": [
+      { "string": "GlobalUI/BtUserMarket", "func": "0xbed910" },
+      { "string": "UserMarket Button", "funcs": ["0x76cda0", "0xbed910"] },
+      { "string": "Dialog/BtMyPage", "funcs": ["0xc17fe0", "0xc5eb80"] },
+      { "string": "ConfirmGoToMyPageNormal", "func": "0xd73c50" }
+    ],
+    "unknown": [
+      "Bảng jump-table đầy đủ từ `0x125D29A` vào từng nhánh `0x125D705`/`0x125D81F`/`0x125D90B` và đường truyền tham số click từ nút `상점` ở sảnh tới `sub_125D190`."
+    ]
+  },
+  "f4a_sc20_setters_and_level_hud": {
+    "status": "kr_static/confirmed",
+    "sub_D6E890_sc20": {
+      "va": "0xd6e890",
+      "prefix_reads": ["vtable+60 (u8 slot)", "vtable+60 (u8)", "vtable+68 (u32)", "vtable+68 (u32)", "vtable+68 (u32)", "vtable+68 (u32)"],
+      "prefix_setters": ["sub_13E2380", "sub_13E2440", "sub_13E4950", "sub_13E4BC0", "sub_13E4A30"],
+      "sub_D95C30_branch": "Vì `sub_D95C30()` (`sub_456AD0() == 0`) luôn bật, đọc tiếp `(u8, u32, u32, u32, u32, std::string)` chuyển tới `sub_123DE50` / `sub_D94050` / `sub_1245CE0`."
+    },
+    "sub_D6D1B0_sc137": {
+      "va": "0xd6d1b0",
+      "reads": "Đọc `u8 count`, lặp đọc `(u8 idx, u8 val)` gọi `sub_13E2380(idx, val)`."
+    },
+    "sub_D72F80_sc217": {
+      "va": "0xd72f80",
+      "reads": "Đọc `(u32 a, u32 b)` gọi `sub_13E3EB0(a, b)` -> `sub_65A320(b)`."
+    },
+    "sub_9022D0_level_hud": {
+      "va": "0x9022d0",
+      "level_format_va": "0x172b91c (\"Lv.%3d\", site 0x9027b5)",
+      "record_source": "v87 = sub_D2FE90(this[1275])",
+      "fields_read_when_not_130": [
+        "sub_529C20(v87 + 10) -> sub_1274FB0",
+        "sub_529C20(v87 + 74) -> sub_1274FF0",
+        "v87[44], v87[45] -> sub_1275370(v87[44], v87[45], 0)",
+        "sub_529C60(v87 + 22) -> sub_1277E30 và format \"Lv.%3d\""
+      ],
+      "rpg_branch": "Khi `sub_1220830() != 0`, đọc `sub_D30320(0)` và định dạng theo `RpgInfoLevel`.",
+      "percent_format_sites": ["0x1098b30", "0x109d810", "0x10a2880", "0x10a4990", "0x10b0a00"]
+    },
+    "unknown": [
+      "Bảng ánh xạ chính xác từ setter `sub_13E4BC0`/`sub_13E4A30` tới các offset `v87 + 10/22/44/45/74` trong `sub_D2FE90` vẫn chờ kiểm chứng trên Wine khi cấp EXP > 0."
+    ]
+  }
+}
