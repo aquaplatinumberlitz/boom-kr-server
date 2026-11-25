@@ -119,12 +119,23 @@ impl Player {
     pub fn blocked_pickup(&self) -> bool {
         self.trap.is_some() || self.death.is_some()
     }
+    #[cfg(test)]
     pub fn apply(
         &mut self,
         slot: u8,
         report: &Report,
         now: Instant,
         last_blast: Option<Instant>,
+    ) -> Decision {
+        self.apply_with_direct_death(slot, report, now, last_blast, false)
+    }
+    pub fn apply_with_direct_death(
+        &mut self,
+        slot: u8,
+        report: &Report,
+        now: Instant,
+        last_blast: Option<Instant>,
+        allow_direct_death: bool,
     ) -> Decision {
         let mut reason = self.check_report(slot, report).unwrap_or("accepted");
         if self.actions.clear_pending() && !matches!(report.subtype, 17 | 19) {
@@ -133,7 +144,7 @@ impl Player {
         if reason == "accepted" && report.subtype == 19 {
             if self.death.is_some() {
                 reason = "death_already_accepted";
-            } else if self.trap.as_ref().is_none_or(|t| t.subtype != 17) {
+            } else if !allow_direct_death && self.trap.as_ref().is_none_or(|t| t.subtype != 17) {
                 reason = "death_no_current_trap";
             }
         }
@@ -577,6 +588,25 @@ mod tests {
             p.forward21_delivered("21:7", target);
         }
         assert!(!p.forward21_valid("21:7", fresh, None));
+    }
+    #[test]
+    fn direct_death_allowed_when_enabled_and_still_deduplicated() {
+        let now = Instant::now();
+        let mut p = Player::default();
+        assert_eq!(
+            p.apply_with_direct_death(0, &report(19, 10), now, None, false)
+                .reason,
+            "death_no_current_trap"
+        );
+        assert!(p.death.is_none());
+        let decision = p.apply_with_direct_death(0, &report(19, 11), now, None, true);
+        assert!(decision.accepted && decision.forward);
+        assert!(p.death.is_some());
+        assert_eq!(
+            p.apply_with_direct_death(0, &report(19, 12), now, None, true)
+                .reason,
+            "death_already_accepted"
+        );
     }
 }
 
