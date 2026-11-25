@@ -1,0 +1,58 @@
+{
+  "id": "CP399",
+  "previous": "CP398",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-25T14:44:51Z",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Case KR nào đi vào consumer D7A260 đã nhận diện ở CP182, và nó có ghi chung chỗ với 20/175 hay không?",
+  "scope": "F4-a, ảnh unpack KR và cache CP182. Đọc tối đa hai lượt IDA trên bản sao DB của CP398; không chạy Wine, client, server hoặc mạng.",
+  "context_commit": "6a1aad41e7094d5186d0018fee7ae244420075a6",
+  "artifacts": [
+    {"name": "CA.exe KR 00967 gốc", "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"},
+    {"name": "kr-full.exe KR 00967, image base 0x400000", "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"},
+    {"name": "kr-full.exe.i64 nguồn của bản sao CP398", "sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"}
+  ],
+  "locators": [
+    "docs/protocol/lobby-profile.md#f4a-profile-395",
+    "docs/evidence/lobby-identity/README.md",
+    "docs/evidence/content/f4-ida-clusters.json",
+    "local/runs/f4a-profile-view-audit"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/lobby-profile.md#f4a-profile-395", "summary": "S→C 395 tại case 0xD6ACF6 gọi 0xD7A260. Reader +0x4C đọc chuỗi rồi +0x44 đọc u32; sau khi khớp tên local, một đường ghi u32 tại own_record+0xC0.", "limits": "Chưa biết encoding và giới hạn của chuỗi, quyền update và lúc phát. Có đường lookup record danh sách riêng.", "evidence": ["CP399_VERIFY", "CP399_CONTRACT"]},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/lobby-profile.md#f4a-profile-395", "summary": "Panel RPG đọc own_record+0xC0 để tra cấp và tính tỷ lệ tiến độ. Panel thường đọc +0x58 cho cấp và +0x208 cho tiến độ. 20/175 ghi vào vùng riêng từ receiver 0x905810.", "limits": "Chỉ hai nhánh panel đã đọc và các setter của CP398; không gán nghĩa EXP/cấp của các field 20/175.", "evidence": ["CP399_VERIFY", "CP399_CONTRACT"]},
+    {"source": "kr_static", "status": "candidate", "method": "static", "canonical": "docs/protocol/lobby-profile.md#f4a-profile-395", "summary": "395 là ứng viên đo scalar tiến độ của nhánh RPG; không dùng cho projection cấp thường.", "limits": "Chưa chạy client nhận 395. Luồng phục vụ và đồng bộ kết quả với hồ sơ thường còn mở.", "evidence": ["CP399_VERIFY", "CP399_CONTRACT"]}
+  ],
+  "verification": [
+    {"check": "Khớp byte 12 hàm với ảnh unpack, kiểm call 0xD6ACFD, reader +0x4C và các địa chỉ đọc/ghi.", "result": "pass", "evidence": ["CP399_VERIFY"], "limits": "Tĩnh; không xác nhận đường wire 395 chạy."},
+    {"check": "Đối chứng Wine cho panel 395 và kết quả 175/20 theo từng trường khác 0.", "result": "not_run", "evidence": [], "limits": "Theo thứ tự PLAN sau F1; cần lease. Các mẫu emulation 175 chỉ đối chứng reader."}
+  ],
+  "delta": {"added": ["Nối case 395 với consumer và phân biệt vị trí scalar RPG với vùng lưu của 20/175."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Chưa biết đường phát thực tế và nghiệm thu native của 395; chưa xác định nghĩa các trường 20/175."
+  ],
+  "next_steps": [
+    {"id": "F4A-PROFILE-RESULT-NATIVE", "task": "KRE-F4-A", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Sau F1, đo pair control/khác 0 cho 175 và 20 trên Wine, quan sát setter, UI và ledger; nếu mở nhánh RPG thì đo 395 riêng với profile local đã nạp."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-25T14:44:51Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự đối chiếu dispatch, byte, hai nhánh render và giới hạn.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập cho checkpoint Codex."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Cập nhật dòng F4 hiện có trong Bảng điều hành."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục tiếp tục trỏ tới protocol/lobby-profile.md."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng nhóm; bước thử kế nằm trong contract."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không nâng độ phủ hoặc gate."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi ID hoặc trạng thái tính năng."},
+    {"path": "docs/protocol/lobby-profile.md", "state": "updated", "reason": "Thêm case 395 và phân biệt hai nhánh panel."},
+    {"path": "docs/protocol/life-results.md", "state": "unchanged", "reason": "Giữ giới hạn của CP398."},
+    {"path": "docs/content/f4-mechanic-clusters.md", "state": "updated", "reason": "Dẫn phép đối chiếu mới từ baseline p116."},
+    {"path": "docs/evidence/checkpoints/records/CP399.json", "state": "updated", "reason": "Chốt checkpoint tĩnh."}
+  ],
+  "evidence": [
+    {"id": "CP399_VERIFY", "kind": "local", "path": "local/runs/f4a-profile-view-audit/verification.json", "bytes": 299, "sha256": "53892a2b9440fe4e22f6449e90d973d5dc9640cf0000a6f22c41c14ddc8e91ec"},
+    {"id": "CP399_CONTRACT", "kind": "repository", "path": "docs/protocol/lobby-profile.md", "bytes": 46450, "sha256": "d274a82e49934ba0efa68165c40be93e5eeb207792127a22f09aea1d366f23fb"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f4a-profile-view-audit", "path": "local/evidence-manifests/a6bddfd4833cdb6873605473270509642cf09320df38a63e96afdeb5db3d0cc8.jsonl", "sha256": "a6bddfd4833cdb6873605473270509642cf09320df38a63e96afdeb5db3d0cc8", "bytes": 2480, "count": 13, "files_bytes": 100921}
+  ]
+}

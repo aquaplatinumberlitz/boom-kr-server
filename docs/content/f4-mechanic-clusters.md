@@ -32,7 +32,9 @@ cùng kết quả không thưởng hai lần. Worker hiện chỉ trả match re
 Bảng ngưỡng wiki trong preset và số thưởng của server là cấu hình, chưa có bằng chứng đó là luật KR gốc.
 
 [CP398](../protocol/life-results.md#f4a-profile-result-projection) đọc tiếp thân `20` và nối hai trường
-đầu của hàng `175` với cùng setter hồ sơ. Nghĩa EXP/cấp và lịch phát vẫn cần đo.
+đầu của hàng `175` với cùng setter hồ sơ. [CP399](../protocol/lobby-profile.md#f4a-profile-395) xác định
+case `395` và tách scalar dùng trong panel RPG khỏi vùng lưu của `20/175`. Nghĩa EXP/cấp thường
+và lịch phát vẫn cần đo.
 
 Bước kiểm: lần từ setter của `20/135` và parser hàng `175` tới nơi hiển thị. Trên Wine, giữ một ván thưởng 0
 làm đối chứng rồi đo một ván có một khoản thưởng khác 0 đã biết, đủ qua ngưỡng cấp. So cursor và render của

@@ -240,8 +240,8 @@ selected0, recordkhác0, **decodedguard=0**. Hai dump544byte có std::string rec
 size0/cap15. Đường auth/getter đúngKRLocal và recordpanel rỗng là hai nguồn dữ liệu riêng;
 tại CP182 chưa biết producer; [CP183](#own-profile-291) bên dưới đã nối S→C291, không sửa record/raw cũ.
 Probe string gặp lỗi đọc0byte trong GDB; raw SSO size/cap xác nhận rỗng, không coi là clienterror.
-`D7A260` tĩnh là consumer đổi level có so tên auth rồi truy record này; chưa xác định producer
-profile tổng quát hoặc opcode/contract để gửi bổ sung.
+Tại CP182, `D7A260` là ứng viên cập nhật level có so tên auth rồi truy record này.
+[CP399](#f4a-profile-395) nối case `395` và xác định nhánh panel dùng trường đó.
 
 Controls giữ nguyên: `panel-r3` đặt probe trướcready dừng C++exception/SIGABRT trướcDA5F90,
 channel chỉ gửi6; harness exit0 chỉ là cleanup. `panel-r4` hoãn probe tớiready có observation trên;
@@ -286,6 +286,32 @@ Labservice chỉ gửi thêm hai frame sau bộready241/room91/channel14, produc
 không đổi. **Chưa nối create/map sau khi thêm291**: các fixtureinitseq55..70 và dynamic73 phải được
 đối chiếu lại khi integration, không chènraw rồi tái dùng sequence. K3/cachematrix/wrongstage/version/
 identityauthority/Windows/LAN/Internet/K6a vẫn mở. Bước tiếp duy nhất [PLAN](../PLAN.md#current-order).
+
+<a id="f4a-profile-395"></a>
+### F4-a: S→C 395 và hai nguồn hiển thị hồ sơ — CP399
+
+**`kr_static/confirmed`** trên ảnh unpack KR 00967 `cf72da11…`.
+[CP399](../evidence/checkpoints/records/CP399.json) đối chiếu case IDA với các thân hàm cache CP182,
+kiểm byte của ảnh và tách các vùng đích của `395`, `20` và `175`.
+Chưa phát gói `395` vào client.
+
+`CStage` case `395` tại `0xD6ACF6` gọi `0xD7A260` tại `0xD6ACFD`. Handler đọc một chuỗi qua
+reader `+0x4C` (`0x14EB9E0` ở vtable reader đã biết), rồi đọc `u32` qua `+0x44`. Cách mã hóa
+và giới hạn của chuỗi trên wire vẫn **unknown**. Handler dùng chuỗi để tra người chơi và so với tên
+auth theo local slot. Khi tìm được local slot và record, `0xD7A3DC` ghi giá trị vào
+`own_record+0xC0` qua `0x55FD30`. Đường cập nhật record trong danh sách người chơi có lookup riêng.
+
+| Consumer | Đích đọc/ghi và ý nghĩa đã xác nhận tĩnh |
+|---|---|
+| Panel nhánh `0x1220830() != 0` | `0x9022D0 → 0xD30320` đọc `own_record+0xC0`, lấy mức từ bảng ngưỡng qua `0x13F4970` và đưa vào chuỗi `RPGInfoLevel`. `0xD303F0` dùng cùng giá trị và hai ngưỡng kề để tính tỷ lệ; panel chuyển tỷ lệ sang giá trị cho thanh tiến độ `0x902A50`. |
+| Panel nhánh thường | In `Lv.%3d` hoặc `Level2` từ `own_record+0x58`; thanh tiến độ đọc `own_record+0x208` như [291](#own-profile-291). `395` không ghi hai offset này trong đường ghi đã nối. |
+| Hai trường ghép ở [CP398](life-results.md#f4a-profile-result-projection) | `20` và `175` qua receiver từ `0x905810` (global `0x19DD7F4`), rồi ghi `base+0x04+12×local_idx` và `base+0x1C+12×local_idx`. Dùng chung primitive `0x55FD30` với `395` không chứng minh chung store: địa chỉ đích khác. |
+
+`395` là ứng viên để đo scalar tiến độ của nhánh RPG; không dùng nó để phát EXP/cấp thường.
+Ý nghĩa, đơn vị và thứ tự phát của các trường `20/175` vẫn **unknown**. Riêng trường `u16` tại raw
+`+49` của hàng `175` đi vào `0x13E4790`; một nhánh feature có thể kẹp giá trị từ 60 trở lên về 60.
+Khi đo Wine sau F1, giữ hai phép thử riêng: xác nhận nhánh panel và giá trị vẽ của `395`, rồi xác nhận
+consumer/render của `20/175` so với gói đối chứng và ledger. Chưa nối producer Rust.
 
 <a id="own-profile-integration"></a>
 ### Opt-in identity291 và sequence sảnh → phòng/map — CP184
