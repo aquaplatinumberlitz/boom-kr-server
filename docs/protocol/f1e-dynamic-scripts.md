@@ -211,3 +211,23 @@ inbox 8 chỗ của mỗi kênh, khớp dự đoán `room_recipient_queue` ở m
 **Khắc phục sau `o13` (`fix/o13-runtime-blockers`, `kr_static` bổ sung):**
 - **`C->S 172` (`0x142AA30`/`0x142AAE0`/`0x142AC10`/`0x142ACE0 ← 0x142B590`):** Writer thống kê trận gửi `u16 sub ∈ 0..=3`, `u16 world_index` (`sub 0`: 8B, `sub 1`: `10 + 4*N` B, `sub 2/3`: 12B; khớp mẫu `o13` `sub=2` 12B); không đòi gói `S->C`. Đã nối `172` vào `Session::handles`, `local_command` và handler quan sát `Phase::Armed`/`Ending`/`Idle` trong `room_io.rs`.
 - **Hàng đợi `PangLand` nhiều gói `148` 1-ô liên tiếp:** Mở `rules::recipient_queue_for(capacity, allow_f1e_dynamic_scripts)` lên `256` batch mỗi kênh và `queue_bound` trong `ingame_tls/room.rs` lên `256 * sessions.len()` khi bật `allow_f1e_dynamic_scripts`, kèm nâng trần `script_events` mỗi ván lên `2048` (phòng không bật giữ nguyên `8`/`16`).
+
+<a id="f1e-space-pangland-wine-v2"></a>
+## 8. Tái nghiệm thu Space và PangLand sau #647 (p113)
+
+`source: kr_runtime`. Hai client KR 00967 trên Wine và `kr-service` trực tiếp, bản
+`f1-full-rust-v2` (`69212df`), bật `allow_f1e_dynamic_scripts`.
+[Bằng chứng, frame hex và cách tái lập](../evidence/item-families/f1-full-wine-accept-v2.json).
+
+**PangLand03 — `confirmed`.** Đợt `148` một ô liên tiếp ở mốc 12 giây và các đợt 16, 20, 24 giây
+đều tạo `159` owner 25 và `158` với cùng ID bom trên hai kênh. Hai màn hình hiện bom và hiệu ứng nổ.
+Không ghi nhận `room_recipient_queue` hay `room_timer_queue` trong lượt này. Cả hai nhận `175` và
+`180`, SQLite ghi `complete/all_dead`. Sau khi về phòng, cả hai rời bằng `86 → 241` và
+health ghi `room_count=0`. Phép đo chưa kiểm trần sự kiện của ván dài.
+
+**CaJJ_Space02 — `228 -> 350` và `C->S 172` `confirmed`; kết thúc rơi hố `blocked` ở `127/sub19`.**
+Ở `f1e-space-v2`, A gửi `15` gói `C->S 228` và A/B nhận đủ `15` gói `S->C 350` (`verify-dispatch.json`
+đạt); cả A và B gửi `8` gói `C->S 172` qua `Session::handles` mà không còn `native_stage_guard`. Tuy nhiên
+khi hàng ngoài rụng ở mốc `~34s`, A và B đứng trên hàng 3 rơi thẳng vào khoảng không nên gửi `C->S 127/sub19`
+(`66` lần mỗi kênh) mà không có `127/sub17` trước đó. `life.rs` từ chối vì `death_no_current_trap` (chưa
+có `trap` `sub17`) và không phát `170/sub19`, dẫn tới ván quá hạn SQLite (`cancelled/no_players`).
