@@ -2,9 +2,38 @@
 import json
 import struct
 
-from kr_pack_export import F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, sha
+from kr_pack_export import F1_CHARACTERS, F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, sha
 from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
+
+
+# Cumulative Policy::allows sets from pickups.rs; numeric ItemUseKind values
+# come from kr-wire's battle.rs. Both F1-d policies inherit F1-b extended only.
+_BASIC = frozenset({0, 1, 2, 5})
+_SHOE_PUNCH = _BASIC | {3, 4}
+_EXTENDED = _SHOE_PUNCH | {*range(67, 73), 77, 143, 146, 224, 225}
+_AUX = _EXTENDED | {148, 226, 227, 228, 229, 230}
+_REMOTE_SENSOR = _AUX | {151, 152}
+_REMOTE_DRILL = _REMOTE_SENSOR | {149, 150}
+_VEHICLES = _EXTENDED | set(range(40, 45))
+_ALL_SHIPS = _VEHICLES | {*range(45, 67), 331}
+_FULL_ITEM_POLICIES = (
+    ('report_derived_basic', _BASIC),
+    ('report_derived_shoe_punch', _SHOE_PUNCH),
+    ('report_derived_f1b_extended', _EXTENDED),
+    ('report_derived_f1b_aux', _AUX),
+    ('report_derived_f1b_remote_sensor', _REMOTE_SENSOR),
+    ('report_derived_f1b_remote_drill', _REMOTE_DRILL),
+    ('report_derived_f1d_vehicles', _VEHICLES),
+    ('report_derived_f1d_all_ships', _ALL_SHIPS),
+)
+_FULL_ITEM_KINDS = _REMOTE_DRILL | _ALL_SHIPS
+
+# characters.rs::CLASS_C_ROWS supplies stats internally. Only these four
+# rows have maximum_power > 9 and must stay out of terrain rooms.
+_CLASS_C_KEYS = frozenset((*range(4000, 4019), *range(4020, 4025),
+                           *range(4027, 4031), *range(5000, 5005)))
+_CLASS_C_POWER_TEN = frozenset({4006, 4018, 4029, 4030})
 
 
 def enabled_characters(chars, *, uses_terrain=False):
@@ -15,16 +44,24 @@ def enabled_characters(chars, *, uses_terrain=False):
     )
 
 
-def floor582(floor):
+def floor582(floor, *, width=15, height=13, scope='f1-a'):
+    if (width, height) != (15, 13) and not (scope == 'f1-full' and (width, height) == (19, 17)):
+        raise ValueError('Kích thước lưới floor không được hỗ trợ')
     lists = (floor['fixed'], floor['hidden'], [])
     if sum(map(len, lists)) > 64:
         raise ValueError('Floor vượt giới hạn')
+    fixed = set(F1_FIXED_ITEMS.values())
+    hidden = set(F1_HIDDEN_ITEMS.values())
+    if scope == 'f1-full':
+        fixed |= _FULL_ITEM_KINDS
+        # Catalog::from_floor admits vehicles and ships in list0 only.
+        hidden |= _REMOTE_DRILL
     inner = bytearray()
     index = 0
-    for group, allowed in zip(lists, (F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, {})):
+    for group, allowed in zip(lists, (fixed, hidden, ())):
         inner.extend(struct.pack('<H', len(group)))
         for y, x, kind in group:
-            if not (0 <= y < 13 and 0 <= x < 15 and kind in allowed.values()):
+            if not (0 <= y < height and 0 <= x < width and kind in allowed):
                 raise ValueError('Floor F1 có ô hoặc item ngoài phạm vi')
             inner.extend(struct.pack('<IBBI', index, y, x, kind))
             index += 1
@@ -33,15 +70,27 @@ def floor582(floor):
     return raw_blob(inner)[0]
 
 
-def enable_floor_policies(room, kinds):
-    if kinds & {3, 4}:
+def enable_floor_policies(room, kinds, *, scope='f1-a'):
+    if scope == 'f1-full':
+        item_kinds = kinds - {145}
+        unknown = item_kinds - _FULL_ITEM_KINDS
+        if unknown:
+            raise ValueError(f'Floor F1-full có item ngoài phạm vi: {sorted(unknown)}')
+        if item_kinds:
+            for policy, allowed in _FULL_ITEM_POLICIES:
+                if item_kinds <= allowed:
+                    room['item_policy'] = policy
+                    break
+            else:
+                raise ValueError('Floor F1-full trộn item F1-b và F1-d không có item_policy chung')
+    elif kinds & {3, 4}:
         room['item_policy'] = 'report_derived_shoe_punch'
     if 145 in kinds:
         room['life_actions'] = ('needle_rescue' if room.get('life_actions') in ('rescue', 'needle_rescue')
                                 else 'needle')
 
 
-def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
+def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False, allow_class_c=False):
     two = config['diagnostic_two_lobby']
     room = two['fixed_room']
     packets = room['packets']
@@ -104,10 +153,13 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
         floors[original_name(choice['packets']['start'])] = load(choice['packets']['floor'])[1]
 
     rows, choices, floor_kinds = [], [], set()
+    scripted = False
     for index, name in enumerate(maps):
         path = cache / (name + '.json')
         data = path.read_bytes()
         profile = json.loads(data)
+        if scope == 'f1-full' and profile.get('scripted') is True:
+            scripted = True
         short = name.encode('ascii')
         code = profile['map_code']
         if profile['name'] != name:
@@ -134,11 +186,15 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
         value = codec.read_fields(play, [1, 4, 2])
         value[2] = code
         rules = cache / (name + '.rules.json')
-        applied = json.loads(rules.read_bytes()) if scope in ('g1', 'f1-a') and rules.is_file() else {}
+        applied = (json.loads(rules.read_bytes())
+                   if scope == 'f1-full' or (scope in ('g1', 'f1-a') and rules.is_file()) else {})
         floor = floors.get(name, raw_blob(bytes(6))[0]) if scope == 'g1' else raw_blob(bytes(6))[0]
-        if scope == 'f1-a':
+        if scope in ('f1-a', 'f1-full'):
             plan = applied.pop('floor')
-            floor = floor582(plan)
+            if scope == 'f1-full':
+                floor = floor582(plan, width=profile['width'], height=profile['height'], scope=scope)
+            else:
+                floor = floor582(plan)
             floor_kinds.update(kind for group in ('fixed', 'hidden') for _, _, kind in plan[group])
         new = {}
         for key, payload in [('map', codec.pack_fields([0, code, index], [2, 2, 4])),
@@ -148,7 +204,8 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
         choice = dict(map_profile=dict(path=str(path), bytes=len(data), sha256=sha(data)), packets=new)
         if applied:
             choice.update(applied)
-            choice['terrain']['fixtures'] = {k: new[k]['fixture']['sha256'] for k in ('map', 'start')}
+            if scope != 'f1-full' or 'terrain' in applied:
+                choice['terrain']['fixtures'] = {k: new[k]['fixture']['sha256'] for k in ('map', 'start')}
         choices.append(choice)
 
     table, crc = raw_blob(struct.pack('<H', len(rows)) + b''.join(rows))
@@ -165,18 +222,30 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False):
     room.update(map_choices=choices, map_profile=choices[0]['map_profile'])
     if 'terrain' in choices[0]:
         room['terrain'] = choices[0]['terrain']
-    if scope == 'f1-a':
-        enable_floor_policies(room, floor_kinds)
+    if scope in ('f1-a', 'f1-full'):
+        enable_floor_policies(room, floor_kinds, scope=scope)
+    if scripted:
+        room['allow_f1e_dynamic_scripts'] = True
 
     # Chế độ thường giữ danh sách đã chọn trong recipe. O1 mở thêm các
     # nhân vật trong pack mà mọi map của phòng có thể dùng.
     chars = json.loads((cache / 'tables.json').read_bytes())['characters']
     round_config = two['managed_rooms']['player_round']
+    uses_terrain = 'terrain' in room or any('terrain' in choice for choice in choices)
     if unlock_all:
-        uses_terrain = 'terrain' in room or any('terrain' in choice for choice in choices)
         # Match the service's measured terrain scope; retain the original
         # stats so a supported character plays with the same stats as the client.
+        if scope == 'f1-full':
+            chars = {key: stats for key, stats in chars.items() if int(key) in F1_CHARACTERS}
         round_config['characters'] = enabled_characters(chars, uses_terrain=uses_terrain)
-    round_config['pack_stats'] = {str(key): chars[str(key)] for key in round_config['characters']}
+    ordinary = round_config['characters']
+    if scope == 'f1-full':
+        ordinary = [key for key in ordinary if key not in _CLASS_C_KEYS]
+        round_config['characters'] = ordinary
+        if allow_class_c:
+            room['allow_class_c_characters'] = True
+            class_c = _CLASS_C_KEYS - _CLASS_C_POWER_TEN if uses_terrain else _CLASS_C_KEYS
+            round_config['characters'] = ordinary + sorted(class_c)
+    round_config['pack_stats'] = {str(key): chars[str(key)] for key in ordinary}
     if scope in ('f1', 'f1-a'):
         two['managed_rooms']['capacity'] = 2

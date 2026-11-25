@@ -1,0 +1,36 @@
+{
+  "task": "p112",
+  "build": "KR 00967",
+  "baseline_commit": "e65482f7ccf850be0bc0fe0e3f4e203541f9809e",
+  "source": "design",
+  "status": "design",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "scope": "Cấu hình pack Python cho f1-full, giữ hành vi của g1, f1 và f1-a.",
+  "contracts": [
+    "rust/crates/kr-service/src/pickups.rs: Policy::allows, Catalog::from_floor và Catalog::validate_needle.",
+    "rust/crates/kr-wire/src/kr00967/battle.rs: ItemUseKind xác định ID của các item F1-b.",
+    "rust/crates/kr-service/src/characters.rs: CLASS_C_ROWS, Catalog::from_pack và Catalog::player_round."
+  ],
+  "verification": {
+    "type": "python_unit",
+    "environment": "PYTHONPATH=tools",
+    "commands": [
+      "python3 -m unittest tools.test_kr_pack_config tools.test_kr_pack_items tools.test_f1_pack_matrix tools.test_kr_f1e_script_audit tools.test_f1e_adapter",
+      "python3 tools/check_docs.py",
+      "git diff --check"
+    ],
+    "coverage": [
+      "Giải mã lại fixture của ba scope cũ và kiểm floor 19×17 với tọa độ sát biên.",
+      "Kiểm policy nhỏ nhất cho từng kind, giới hạn xe và tàu ở nhóm fixed, và từ chối tổ hợp không có policy chung trong một phòng.",
+      "Dùng profile và rules giả lập để kiểm opt-in F1-e và Class C, loại bốn khóa Class C có maximum_power bằng 10 khi có terrain và giữ pack_stats chỉ chứa khóa thường."
+    ]
+  },
+  "limits": [
+    "Fixture tổng hợp chỉ kiểm đầu ra của Python. Bộ đọc floor582 của Rust tại baseline vẫn từ chối tọa độ ngoài 15×13, dù Python có thể xuất 19×17.",
+    "F1-d bao gồm các kind F1-b extended theo Policy::allows, nhưng không bao gồm nhóm aux, remote sensor hay remote drill.",
+    "Công cụ export và tích hợp runtime giữ nguyên. Không có nghiệm thu Rust, Wine hay client mới."
+  ]
+}
