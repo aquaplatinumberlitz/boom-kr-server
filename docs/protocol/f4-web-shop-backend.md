@@ -73,3 +73,11 @@ Bằng chứng thực nghiệm tại [f4d-webshop-wine-e2e.json](../evidence/con
 - **Ván Wine 2 người chơi (`Tomb12`)**: `CA.exe` (A/B) hoàn tất trận loại trực tiếp (`206` frame TCP khớp CRC, `1867` gói UDP, `room_count=0` sau khi rời phòng). `kr-service` đẩy `S->C 135` tăng `0 -> 3500` Lucci cho `CookieA` (thắng, `+500 EXP` lên level 2) và `0 -> 30` Lucci cho `CookieB` (thua, `+30 EXP` level 1).
 - **Giới hạn một phiên hoạt động & thoát sạch**: Khi hai phiên Wine còn mở, `public_launcher` (`TLS 1.3` ALPN `kre-launch/1`) từ chối `login` cho `CookieA` với `denied_or_busy`. Sau khi tắt sạch `kr-prelogin` qua `cancel_file` và `wineserver -k` (`native_tls_owner_ended` ok x2), `CookieA` đăng nhập lại và đổi `web_shop_token` thành công.
 - **`web_shop` nhúng (`8.316` mục, `mode=standard`)**: Kiểm tra HTML `/` không chứa `innerHTML` và giữ `history.replaceState` xóa fragment; `POST /api/v1/purchase` mua `character.0` (`3000` Lucci) với `request_id` idempotent (`500` Lucci còn lại, retry trả `replayed: true`), `equip` -> `inventory` -> `unequip` sạch, `CookieB` (`30` Lucci) bị từ chối `402` (`request_failed`), và `logout` thu hồi token `CookieA` (`401`). SQLite giữ đúng `player_profiles`, `ledger_entries` (`match_reward` x2 + `shop_purchase`), `player_inventory` (`character.0`) và `player_equipped` rỗng.
+
+<a id="f4d-shop-jumptable-w6"></a>
+## Các khối stage của `sub_125D190` và caller `sub_124D6A0` (Wave 6)
+
+Từ [f4-w6-ida-own291-and-hud.json](../evidence/content/f4-w6-ida-own291-and-hud.json) (`kr_static/confirmed`):
+
+- **`sub_125D190` (`0x125D190`, `0x125D29A jmp near ptr word_205DA52`)**: chuyển qua bảng nhảy gián tiếp tới các khối dựng `CShopStageNew` (`0x106DF70`), `CChattingStage` (`0xD556A0`), `CExchangeStage` (`0x10DF8A0`), `CUserMarketStage` (`0x111AA20`, khóa bởi `sub_76FBA0() == 0`), `CSquareStage` (`0x1129180`, qua `sub_BE0B90()`), `CMagicBookMarketStage` (`0x11543A0`, qua `sub_844690()`), và `CCustomMapStage` (`0x98C340`), cùng các nhánh nội bộ `sub_D9F3F0`, `sub_79BB10`, `sub_125E330`, `sub_125E240`.
+- **Caller của `sub_124D6A0` (`0x124D6A0`)**: gồm constructor `CFxMessage` (`0x124D240`), bộ nạp bảng chuỗi `sub_124D5D0` và `sub_D77390`.
