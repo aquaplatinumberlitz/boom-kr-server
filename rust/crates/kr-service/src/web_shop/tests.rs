@@ -47,6 +47,16 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(!page.contains("Content-Security-Policy"));
     assert!(!page.contains("http://"));
     assert!(!page.contains("https://"));
+    assert!(!page.contains("innerHTML"));
+    assert!(page.contains("history.replaceState(null,'',location.pathname)"));
+    assert!(page.contains("if(q('#token').value.trim())load()"));
+    assert!(page.contains("/api/v1/profile"));
+    assert!(page.contains("p.level"));
+    assert!(page.contains("p.exp"));
+    assert!(page.contains("p.lucci"));
+    assert!(page.contains("p.mode"));
+    assert!(page.contains("/api/v1/inventory"));
+    assert!(page.contains("/api/v1/unequip"));
     let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
         .await
         .unwrap();
