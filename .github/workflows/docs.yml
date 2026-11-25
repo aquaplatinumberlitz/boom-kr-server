@@ -43,6 +43,7 @@ jobs:
           tools.test_m8_soak_collect
           tools.test_rust_service_package
           tools.test_kr_pack_items
+          tools.test_kr_f4_catalog_export
           tools.test_f1_character_profiles
           tools.test_f1_pack_matrix
           tools.test_player_package

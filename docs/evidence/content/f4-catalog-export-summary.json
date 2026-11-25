@@ -1,0 +1,82 @@
+{
+  "schema": "kre.f4_catalog_export_summary.v1",
+  "task": "p115",
+  "build": "KR00967",
+  "source": "kr_static",
+  "status": "confirmed",
+  "scope": "Xác nhận phép xuất offline và schema của bản xuất; không xác nhận danh mục, giá hay phần thưởng của server KR gốc.",
+  "packs": {
+    "FxContents.idx": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+    "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
+    "CharTE.idx": "9095e77f111420b6ca7a65ba93326c1e9e2a20cb52ba051b7a6a0f753beea13e",
+    "CharTE.idd": "045cef30a9f0a6fd5d161875e05d93917403a687991752f68f7ab87e9f5fd8fc",
+    "EmoTE.idx": "ae2702ae84fc9733013bdc1b7cb883cc6f4194e80684fb6593771f8c7153aa4c",
+    "EmoTE.idd": "256cb9277b22431c69f84eeb085eb91d706503bb888fadbce1b2efb5366e89cc",
+    "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+    "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"
+  },
+  "locators": {
+    "census": "docs/CONTENT.md#bảng-dữ-liệu-ngoài-attr",
+    "object_index": "boomkr-re@88e11ed30764c753a00f4f23a2f33dafadc4c890:docs/kr-data.md §1",
+    "attr": "boomkr-re@88e11ed30764c753a00f4f23a2f33dafadc4c890:docs/kr-data.md §12–13; tools/content_census.py",
+    "schema_and_limits": "rust/crates/kr-service/src/accounts/economy.rs",
+    "candidate_mapping": "docs/content/f4-economy-catalog.md#nguồn-dữ-liệu-và-phạm-vi"
+  },
+  "economy_data": {
+    "preset": "server/profiles/f4-economy-standard.json",
+    "preset_sha256": "846a3988dcb02f89c4674d83444844749d0542c9b53eeba4f848abcba9178ad5",
+    "level_reference": "boomkr-re@88e11ed30764c753a00f4f23a2f33dafadc4c890:data/kr/exp_table.json (wiki 경험치표)",
+    "level_reference_sha256": "eb1e13fa3210973d1a9fae0e6b0c191359d3277206457ea31d8a0971c3175499",
+    "level_reconciliations": [
+      {"level": 346, "source_total_exp": 5895900, "preset_total_exp": 5835900},
+      {"level": 576, "source_total_exp": 31412900, "preset_total_exp": 34412900}
+    ],
+    "price_reference": "Wiki 크레이지 아케이드/아이템, mục 루찌 게임 아이템; bản text cục bộ.",
+    "price_reference_sha256": "eb84d2197c43ed7fcaf9c23f8c4c1beef681190f98d210669ae47d496bbebd80",
+    "wiki_single_item_prices_for_sku": [146, 147, 151, 153, 154, 231, 234],
+    "wiki_bundle_unit_price_for_sku": [159],
+    "design": "Thưởng trận, giá còn lại, cách cấp vật phẩm và phần kéo dài EXP là lựa chọn thiết kế. Các giá wiki chỉ là giá tham chiếu, chưa xác minh theo build."
+  },
+  "canonical_encoding": "JSON UTF-8, khóa sắp tăng, không khoảng trắng, một LF ở cuối. Hash catalog lấy riêng shop_catalog; hash summary lấy riêng summary.",
+  "real_smoke": {
+    "command": "python3 tools/kr_f4_catalog_export.py --game-dir \"$GAME_DIR\" --out /tmp/p115-f4-export.json",
+    "o1_command": "python3 tools/kr_f4_catalog_export.py --game-dir \"$GAME_DIR\" --unlock-all",
+    "item_count": 8316,
+    "counts_by_category": {"character": 67, "collection": 94, "consumable": 10, "decoration": 7335, "emotion": 810},
+    "level_count": 720,
+    "standard": {
+      "unlock_all": false,
+      "catalog_sha256": "c81cc41c619af984869920baa14ff2f5ace1afb65e6d33edf4977be38c0fa161",
+      "summary_sha256": "869345fdb140c09f7873234c5f1beefba49c73dd1ea0d916646ffdc4e0fe7087",
+      "export_sha256": "569bb2664b6af5c7eb386fabf891a92a892fc0ec542e8e9956788fa593cb87e8"
+    },
+    "o1": {
+      "unlock_all": true,
+      "catalog_sha256": "d3dc0c854abb39fee305a5978fd45d52df10642a02291494f5f0eb4d5ae26ed7",
+      "summary_sha256": "07e135ea2edb23bfff05854eac1b29e0dcdb44c9d1a4e24d127e8316435778d3",
+      "export_sha256": "9ea1e750419dd3672bd3cf600a3c50e4802ab37af167bfc8e98dee71ae28dbad"
+    },
+    "verified_invariants": [
+      "JSON kiểm độc lập tên trường, boolean, và giới hạn thưởng nguyên.",
+      "Mốc EXP bắt đầu ở 0, tăng nghiêm ngặt, không quá i64::MAX và không quá 10.000 cấp.",
+      "SKU ASCII hợp lệ, duy nhất và đã sắp; slot hợp lệ hoặc null. Không quá 100.000 mục.",
+      "Đủ năm nhóm; giá trong giới hạn, grant permanent hoặc stackable đúng schema. Timed kiểm trên fixture.",
+      "Hai lần xuất standard giống từng byte; O1 giữ nguyên mục và đổi mọi giá về 0.",
+      "Hash catalog tái lập từ JSON, không có đường dẫn game trong bản xuất và file smoke đã được xóa."
+    ]
+  },
+  "rust_schema_check": {
+    "source": "design",
+    "status": "confirmed",
+    "baseline": "14f948f",
+    "toolchain": "1.99.0",
+    "method": "Dùng cargo build --locked --offline với một ví dụ Rust tạm. Truyền stdout của exporter qua stdin, chép hai object economy_policy và shop_catalog vào account_serving::Config qua serde_json::from_value rồi gọi EconomySettings::new để chạy hai Validate gốc. Không khởi động dịch vụ hoặc mở DB.",
+    "passed": [
+      "Standard: hai object hợp lệ, thưởng trận vẫn tắt.",
+      "O1: hai object hợp lệ, mọi giá bằng 0 và session_unlocked trả đủ SKU đang bật.",
+      "Ghi đè cùng --enable-economy: thưởng bật; character.0 vẫn tắt, giá 800 Lucci và grant timed 86400 giây được đọc đúng."
+    ],
+    "cleanup": "Đã xóa ví dụ tạm và thư mục build tạm (877 MiB); không ghi bản xuất JSON của ba lượt kiểm Rust ra đĩa."
+  },
+  "fixture_test_command": "PYTHONPATH=tools python3 -m unittest tools/test_kr_f4_catalog_export.py"
+}
