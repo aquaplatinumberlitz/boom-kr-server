@@ -49,6 +49,15 @@ Sau `153`, TCP chỉ có các báo cáo `C→S 15`, `127/sub39` và `190`; UDP n
 giới hạn ở ca thụ động, và chưa nối đồng hồ `153` với thời điểm script thực sự bắt đầu. JSON giữ video, tần suất
 xem mẫu, kiểm kê wire và biên nhận dọn riêng của đối chứng.
 
+## Nguồn mode ứng viên của Coloring
+
+Bản client KR 00967 đọc byte `roomtype` trong blob `S→C 121` ngay sau `dynamicindex`. Tại
+`0xDC864B`, reader `0xDC7F30` chuyển byte này qua setter `0x1243BE0` vào context `+0x23C`.
+`0xE7F830` đọc lại qua `0x1243C00`: giá trị này là mode ứng viên, có thể bị lọc hoặc thay theo map
+và ngữ cảnh. Lời gọi ảo ở `0xE7FE9B` đi qua `CGameStage` slot `+0x30C` đến `0xE7FED0`, rồi vào
+factory `0xEEF020` (`kr_static/confirmed`). Chưa có Wine xác nhận fixture đặt byte `36` đi hết đường
+khởi tạo hoặc phát `229`.
+
 ## Giới hạn và phép đo tiếp
 
 Một opcode vắng mặt chỉ có trạng thái `not_emitted_in_roomtype0` trong ca đo này. Với `S→C`, phép đo chỉ cho biết
