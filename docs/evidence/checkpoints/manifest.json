@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP397",
-  "completed_count": 397,
+  "last_id": "CP399",
+  "completed_count": 399,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1295,6 +1295,12 @@
       "state": "open",
       "canonical": "docs/protocol/vehicles.md#cp397-f1d-acceptance",
       "reference": "docs/evidence/checkpoints/records/CP397.json"
+    },
+    {
+      "id": "KRE-F4-A",
+      "state": "open",
+      "canonical": "docs/PLAN.md#full-game-roadmap",
+      "reference": "docs/protocol/life-results.md#f4a-profile-result-projection"
     }
   ],
   "version": 2,
@@ -4474,6 +4480,22 @@
       "path": "docs/evidence/checkpoints/records/CP397.json",
       "bytes": 8279,
       "sha256": "99bd38d37574403bba4a0ffc654efd143b4c51693d2196945e7a404d0bfe6d89"
+    },
+    {
+      "id": "CP398",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-25T14:36:47Z",
+      "path": "docs/evidence/checkpoints/records/CP398.json",
+      "bytes": 6272,
+      "sha256": "d1de3cb21909c2c4f3f4749a5b244cbeb48550012d4cbb9a8ae8c696e54c32b7"
+    },
+    {
+      "id": "CP399",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-25T14:44:51Z",
+      "path": "docs/evidence/checkpoints/records/CP399.json",
+      "bytes": 6149,
+      "sha256": "24405901e3fe2f85dbc3d96f422a596cf2dc5d1adf06111e5d3910b68411f643"
     }
   ],
   "audit_policy": {
