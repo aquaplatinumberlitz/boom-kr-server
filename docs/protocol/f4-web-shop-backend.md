@@ -81,3 +81,11 @@ Từ [f4-w6-ida-own291-and-hud.json](../evidence/content/f4-w6-ida-own291-and-hu
 
 - **`sub_125D190` (`0x125D190`, `0x125D29A jmp near ptr word_205DA52`)**: chuyển qua bảng nhảy gián tiếp tới các khối dựng `CShopStageNew` (`0x106DF70`), `CChattingStage` (`0xD556A0`), `CExchangeStage` (`0x10DF8A0`), `CUserMarketStage` (`0x111AA20`, khóa bởi `sub_76FBA0() == 0`), `CSquareStage` (`0x1129180`, qua `sub_BE0B90()`), `CMagicBookMarketStage` (`0x11543A0`, qua `sub_844690()`), và `CCustomMapStage` (`0x98C340`), cùng các nhánh nội bộ `sub_D9F3F0`, `sub_79BB10`, `sub_125E330`, `sub_125E240`.
 - **Caller của `sub_124D6A0` (`0x124D6A0`)**: gồm constructor `CFxMessage` (`0x124D240`), bộ nạp bảng chuỗi `sub_124D5D0` và `sub_D77390`.
+
+<a id="f4d-o1-unlock-all-e2e"></a>
+## Kiểm chứng E2E chế độ O1 `--unlock-all` (Wave 6)
+
+Bằng chứng thực nghiệm tại [f4d-o1-unlock-all-e2e.json](../evidence/content/f4d-o1-unlock-all-e2e.json) (`kre_runtime/o1_unlock_all_verified`, build `f4-rust-v2`) chạy `kr-service` với `unlock_all_catalog: true`, `web_shop.unlock_all: true` và catalog `8.316` mục xác nhận:
+
+- **Truy cập O1 theo phiên**: `public_launcher` (`TLS 1.3` ALPN `kre-launch/1`) đăng nhập và cấp `web_shop_token`; `GET /health` trả `mode="unlock_all"`, `catalog_items=8316`; `GET /api/v1/catalog?category=character` trả đủ `67/67` SKU với `usable=true`, `unlocked_by_session=true`, `quantity=null`, `expires_at=null`.
+- **Không trừ Lucci và không ghi DB**: `POST /api/v1/purchase` bị chặn ở `409` `unlock_all_no_purchase`, `GET /api/v1/inventory` rỗng, `logout` thu hồi token về `401`, và SQLite sau tắt `kr-service` giữ `0` dòng trên cả `ledger_entries`, `player_inventory`, `player_equipped` và `player_profiles`.
