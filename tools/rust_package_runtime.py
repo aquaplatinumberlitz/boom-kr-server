@@ -3,6 +3,7 @@
 import argparse
 from contextlib import contextmanager
 import hashlib
+import ipaddress
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -166,7 +167,64 @@ def configure_friends(config):
         config['authenticated_relay'].update(bind=relay, advertise=relay)
 
 
-def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False, s1=False):
+def _concrete_ipv4(host):
+    ip = ipaddress.IPv4Address(host)
+    if ip.is_unspecified or ip.is_multicast or str(ip) == '255.255.255.255':
+        raise ValueError('Địa chỉ IPv4 không hợp lệ')
+    return ip
+
+
+def configure_economy(config, *, friends=False, s1=False, economy_profile=None, emit_lucci_135=False, web_shop_bind=None):
+    """Apply opt-in F4 economy, S->C 135, and embedded web shop settings to runtime config."""
+    if economy_profile is None and not emit_lucci_135 and web_shop_bind is None:
+        return
+    admission = config['diagnostic_two_lobby']['account_admission']
+    if economy_profile is not None:
+        profile = Path(economy_profile)
+        if not os.path.lexists(profile) or link_or_reparse(profile) or not profile.is_file():
+            raise ValueError('Hồ sơ kinh tế F4 không hợp lệ')
+        admission['economy_profile_path'] = str(profile.resolve())
+        admission['persist_matches'] = True
+        if friends:
+            admission['unlock_all_catalog'] = True
+    if emit_lucci_135:
+        if admission.get('profile_mode') != 'database_zero':
+            raise ValueError('emit_lucci_135 yêu cầu profile_mode database_zero')
+        admission['emit_lucci_135'] = True
+    if web_shop_bind is not None:
+        if admission.get('profile_mode') != 'database_zero':
+            raise ValueError('web_shop yêu cầu profile_mode database_zero')
+        try:
+            host, port_text = web_shop_bind.rsplit(':', 1)
+            ip = _concrete_ipv4(host)
+            port = int(port_text)
+        except ValueError as err:
+            raise ValueError('Địa chỉ web_shop không hợp lệ') from err
+        if port < 1 or port > 65535:
+            raise ValueError('Địa chỉ web_shop không hợp lệ')
+        if friends or s1:
+            allowed_peers = ['127.0.0.1']
+        else:
+            peers = []
+            for peer in config.get('allowed_peers') or []:
+                try:
+                    peers.append(str(_concrete_ipv4(peer)))
+                except ValueError:
+                    pass
+            allowed_peers = list(dict.fromkeys(peers)) or ['127.0.0.1']
+        admission['web_shop'] = {
+            'bind': f'{ip}:{port}',
+            'allowed_peers': allowed_peers,
+            'max_connections': 16,
+            'request_timeout_ms': 2000,
+            'max_body_bytes': 8192,
+            'session_ttl_seconds': 300,
+            'unlock_all': bool(admission.get('unlock_all_catalog', False)),
+        }
+
+
+def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False, s1=False,
+            economy_profile=None, emit_lucci_135=False, web_shop_bind=None):
     if friends and s1:
         raise ValueError('O1 và S1 dùng hai cấu hình phục vụ riêng')
     state = private_state(root, state)
@@ -216,6 +274,8 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False,
             'session_idle_seconds': primary['session_idle_seconds']
         }
         config['authenticated_relay'].update(bind=relay_addr, advertise=relay_addr)
+    configure_economy(config, friends=friends, s1=s1, economy_profile=economy_profile,
+                      emit_lucci_135=emit_lucci_135, web_shop_bind=web_shop_bind)
     run = state / 'runs' / str(time.time_ns())
     run.mkdir(mode=0o700, parents=True)
     if cache is not None:
@@ -274,6 +334,9 @@ def main():
                              'O1 dùng gốc gói người chơi')
     parser.add_argument('--f1-map', action='append', help='Tên map chính xác trong gói thử F1-a')
     parser.add_argument('--player-manifest-sha256', help='Pin manifest gói người chơi, chỉ dùng với O1')
+    parser.add_argument('--economy-profile', type=Path, help='File JSON profile kinh tế F4 tuỳ chọn')
+    parser.add_argument('--emit-lucci-135', action='store_true', help='Bật phát S->C 135 sau own291 và 175')
+    parser.add_argument('--web-shop-bind', help='Địa chỉ IPv4:port mở F4-d HTTP web shop nội bộ')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
     try:
@@ -294,6 +357,8 @@ def main():
             raise ValueError('Cần --state riêng')
         if (args.snapshot is not None) != (args.command == 'restore-db'):
             raise ValueError('Chỉ restore-db dùng và yêu cầu --snapshot')
+        if (args.economy_profile is not None or args.emit_lucci_135 or args.web_shop_bind is not None) and args.command not in ('run', 'prepare-friends', 'prepare-s1'):
+            raise ValueError('Cờ F4 chỉ dùng với run, prepare-friends hoặc prepare-s1')
         scope = manifest.get('pack_scope')
         if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
@@ -327,8 +392,15 @@ def main():
             else:
                 from kr_pack_export import export
                 cache, _ = export(args.game_dir, state / 'pack-cache')
-            runtime, out, _ = prepare(root, state, cache, scope, s1=True)
-            print(json.dumps({'runtime': str(runtime), 'out': str(out)}))
+            runtime, out, _ = prepare(root, state, cache, scope, s1=True,
+                                      economy_profile=args.economy_profile,
+                                      emit_lucci_135=args.emit_lucci_135,
+                                      web_shop_bind=args.web_shop_bind)
+            payload = {'runtime': str(runtime), 'out': str(out)}
+            ws = json.loads(runtime.read_bytes())['diagnostic_two_lobby']['account_admission'].get('web_shop')
+            if ws is not None:
+                payload['web_shop_url'] = f"http://{ws['bind']}/"
+            print(json.dumps(payload))
             return
         with package_lock(state) as lock_fd:
             if args.command == 'restore-db':
@@ -371,16 +443,25 @@ def main():
                     request = dict(actor='friends-init', reason='Local friends room', command=dict(op='init'))
                     subprocess.run([admin, str(database)], input=json.dumps(request), text=True, check=True,
                                    cwd=root, stdout=subprocess.DEVNULL)
-                config, out, _ = prepare(root, state, cache, scope, friends=True)
+                config, out, _ = prepare(root, state, cache, scope, friends=True,
+                                         economy_profile=args.economy_profile,
+                                         emit_lucci_135=args.emit_lucci_135,
+                                         web_shop_bind=args.web_shop_bind)
                 value = json.loads(config.read_bytes())
-                tls = value['diagnostic_two_lobby']['account_admission']['prelogin_tls']
-                print(json.dumps(dict(config=str(config), out=str(out), address=tls['bind'],
-                                      certificate=tls['certificate']['path'], ports=value['ports']),
-                                 ensure_ascii=True))
+                admission = value['diagnostic_two_lobby']['account_admission']
+                tls = admission['prelogin_tls']
+                payload = dict(config=str(config), out=str(out), address=tls['bind'],
+                               certificate=tls['certificate']['path'], ports=value['ports'])
+                if admission.get('web_shop') is not None:
+                    payload['web_shop_url'] = f"http://{admission['web_shop']['bind']}/"
+                print(json.dumps(payload, ensure_ascii=True))
                 return
             if not database.is_file():
                 raise ValueError('Cần init-db hoặc restore DB trước khi chạy')
-            config, out, _ = prepare(root, state, cache, scope, args.f1_map)
+            config, out, _ = prepare(root, state, cache, scope, args.f1_map,
+                                     economy_profile=args.economy_profile,
+                                     emit_lucci_135=args.emit_lucci_135,
+                                     web_shop_bind=args.web_shop_bind)
             service = str(executable(root, 'kr-service', target))
             command = [service, '--config', str(config), '--out', str(out)]
             if os.name == 'nt':
