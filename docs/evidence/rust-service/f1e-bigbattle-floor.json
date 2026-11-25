@@ -1,0 +1,28 @@
+{
+  "task": "p114",
+  "build": "KR 00967 (đích tương thích)",
+  "baseline": "9df7e5fc475d3c9372d67a4269786c2cb9f87056",
+  "source": "emu_choice",
+  "status": "candidate",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "scope": "Rust giải mã Floor582 dạng raw tag0 theo lưới 15×13 hoặc 19×17. C->S 124 và C->S 142 kiểm biên theo terrain hiện hành, mặc định 15×13 khi không có terrain.",
+  "tests": {
+    "file": "rust/crates/kr-service/src/room_io_f1e_tests.rs",
+    "floor582_rejects_unsupported_grids_and_visible_or_hidden_items_past_each_edge": "Kiểm cả item cố định lẫn item ẩn tại hai trục biên. API from_floor vẫn dùng lưới chuẩn.",
+    "big_battle_floor_reports_reveal_and_confirm_edge_items": "Nạp fixture tổng hợp với hai item ở (16, 18). Kiểm C->S 142 trước và sau khi commit blast, và S->C 165 gửi tới hai thành viên sau mỗi lượt nhặt.",
+    "batch4a_catalog_selects_and_runs_big_battle_lovely_room_and_retro_popup": "Kiểm C->S 124 và C->S 142 từ chối tọa độ ngoài lưới khi phòng chọn map 15×13."
+  },
+  "reproduction": [
+    "cargo fmt --manifest-path rust/Cargo.toml --all --check",
+    "cargo clippy --manifest-path rust/Cargo.toml --workspace --all-targets --locked -- -D warnings",
+    "cargo test --manifest-path rust/Cargo.toml --workspace --locked -- --test-threads=4",
+    "python3 tools/check_docs.py"
+  ],
+  "limits": [
+    "Fixture tổng hợp chỉ kiểm hành vi Rust. Chưa chạy client KR gốc hoặc Wine.",
+    "Bộ nạp ChoiceConfig trong map_profile.rs còn dùng from_floor chuẩn. Test item mép BigBattle dựng vòng dựa trên terrain và Floor582 đã giải mã, chưa kiểm đường nạp item mép qua map_choices."
+  ]
+}
