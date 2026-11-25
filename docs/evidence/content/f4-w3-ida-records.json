@@ -1,0 +1,103 @@
+{
+  "schema": "kre.f4_w3_ida_records.v1",
+  "baseline": "0cde0de641911bb5506fdcb6c38ad32475abb790",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "scope": "Phân tích tĩnh IDA bổ sung (Wave 3) từ dump `f4-w3-ida-dump.json`: giải mã thứ tự reader của bản ghi item `sub_11CE930` (`219`/`224`), các handler `S->C 313..317`, xrefs ctor/dtor của nhóm manager trang trí/collection F4-c, và caller của `CShopStageNew`/`CNxOverlayWebBrowser`.",
+  "input": {
+    "path": "local/runs/codex-orchestrator/f4-w3-ida-dump.json",
+    "sha256": "86a93c4f8cf1e1ddbae9df37907fbeea48f37c275337cf6b9aacb1eaa8de2e80",
+    "bytes": 30028,
+    "storage": "gitignored"
+  },
+  "f4b_item_record_and_handlers": {
+    "status": "kr_static/confirmed",
+    "item_record_reader": {
+      "va": "0x11ce930",
+      "name": "sub_11CE930",
+      "shared_by": ["sub_11CEA10 (219)", "sub_11CE4C0 (224)"],
+      "read_sequence": [
+        { "order": 1, "reader": "vtable+68 (u32)", "sink": "sub_55FD30" },
+        { "order": 2, "reader": "vtable+64 (u16)", "sink": "sub_81F6D0" },
+        { "order": 3, "reader": "vtable+68 (u32)", "sink": "sub_55FD30" },
+        { "order": 4, "reader": "vtable+80 (str into a2+108)", "sink": "sub_4C2150" },
+        { "order": 5, "reader": "vtable+88 (8 bytes) + vtable+68 (u32)", "sink": "sub_11CB9B0(v10, v8)" },
+        { "order": 6, "reader": "vtable+60 (u8)", "sink": "sub_AE6740" }
+      ],
+      "item_struct_ctor": {
+        "va": "0x11cb1d0",
+        "name": "sub_11CB1D0",
+        "note": "Khởi tạo buffer 196 byte của mỗi bản ghi item trước khi `sub_11CE930` hoặc `sub_D779C0` điền trường."
+      },
+      "unknown": [
+        "Ngữ nghĩa từng trường `vtable+68`/`+64`/`+80`/`+88` (hạn dùng/FILETIME vs số lượng vs serial instance) chưa đối chứng runtime trên Wine."
+      ]
+    },
+    "s2c_handlers": [
+      {
+        "opcode": 313,
+        "callee": "0xd779c0 (sub_D779C0)",
+        "reads": ["vtable+60 (u8 v13)", "vtable+68 (u32 item v15)", "vtable+68 (u32 v12)", "vtable+68 (u32 v14, fallback 100000 -> *24)", "vtable+64 (u16)", "vtable+60 (u8)"],
+        "effects": "Tra catalog `sub_11E0E40(v15)`, dựng struct `196B` `sub_11CB1D0`, chèn bằng `sub_117E750(v5, 0, 0)` và `sub_11799A0(v13, v15, 3)`."
+      },
+      {
+        "opcode": 314,
+        "callee": "0xd77bd0 (sub_D77BD0)",
+        "reads": ["vtable+60 (u8 v5)", "vtable+68 (u32 v7)", "vtable+68 (u32 v8)", "vtable+68 (u32 v9)"],
+        "effects": "Tra item hiện có qua `sub_11CFF80(v5, v7)`, cập nhật `sub_6BC7B0(v8)` và thời hạn `sub_11CB7F0(24*v9)` / `sub_11CB880(24*v9)` kèm `sub_11799A0(v5, v7, 3)`."
+      },
+      {
+        "opcode": 315,
+        "callee": "0xd77d60 (sub_D77D60)",
+        "reads": ["vtable+60 (u8 v12)", "vtable+60 (u8 v13)", "vtable+68 (u32 v21)", "vtable+68 (u32 v15)", "vtable+68 (u32 v16)", "vtable+72 (u64/i64 v9)"],
+        "effects": "Tra catalog `sub_11E0E40(v21)`, gọi `sub_119A960` và chuyển tiếp `sub_11AECE0(v12, 27, v7, &v8, 0, v13)`."
+      },
+      {
+        "opcode": 316,
+        "callee": "0xd77ef0 (sub_D77EF0)",
+        "reads": ["vtable+60 (u8 v9)", "vtable+68 (u32 v7)", "vtable+68 (u32 v4)", "optional vtable+72 (u64 v3) khi sub_11E8F70 != 0"],
+        "effects": "Nhánh đặc biệt gọi `sub_11F28C0`/`sub_11F1FB0`; nhánh thường tra `sub_11CFF80(v9, v7)`, trừ stack (`+96`), khi `<= 0` gọi `sub_11CFD50(v9, v7)` + `sub_1094080(v9, v7)`."
+      },
+      {
+        "opcode": 317,
+        "callee": "0xd84410 (sub_D84410)",
+        "reads": ["vtable+60 (u8 ok v42)", "vtable+60 (u8 slot v46)", "vtable+68 (u32 old v43)", "vtable+68 (u32 item v44)", "vtable+128 (16 bytes v22) + vtable+68 (u32 v31) khi v42 != 0"],
+        "effects": "Khi `v42 != 0` và `*(v45+156) != 4` gọi `sub_11CB960` cập nhật hạn dùng và hiển thị `PeriodChange_Success`; khi `v42 == 0` hiển thị `PeriodChange_fail`."
+      }
+    ]
+  },
+  "f4c_cosmetic_manager_xrefs": {
+    "status": "kr_static/confirmed",
+    "note": "Entry 0 của `CCharDecoMan` (`0xB6B0D0`), `CBombDecoMan` (`0xB3BB50`) và `CIDDecoMan` (`0x12772E0`) trong `kr-full.exe` chỉ là teardown/dtor wrapper gọi `sub_B6AD00` / `sub_B36860` / `sub_1276C00` (gán vftable và gọi `sub_14EF980`); chưa thấy constructor hay consumer runtime trực tiếp trỏ vào ba vftable này. Ngược lại `CCAItemCollectionMgr` có constructor thực `sub_914130` được `sub_1231BD0` gọi tại `0x1234300`."
+  },
+  "f4d_shop_and_browser_xrefs": {
+    "status": "kr_static/confirmed",
+    "CShopStageNew_ctor": {
+      "va": "0x106df70",
+      "name": "sub_106DF70",
+      "callers": ["0x111aa20 (sub_111AA20)", "0x11543a0 (sub_11543A0)", "0x125d190 (sub_125D190)"]
+    },
+    "sub_11A8F80": {
+      "va": "0x11a8f80",
+      "callers": ["0x1072c7c (CShopStageNew case 232)", "0x11551d7"],
+      "behavior": "Stub rỗng (`return`) trong ảnh KR 00967 này (mặc dù chứa chuỗi `URL_CashCharge_CN` trước đó trong xref bảng chuỗi cũ)."
+    },
+    "sub_107BA70": {
+      "va": "0x107ba70",
+      "behavior": "Khi `sub_1220830() == 0`, dựng packet `C->S 541` (`sub_1164D10(541)`) mang một byte `*(this + 56672)` (`0xDD60`) và gửi qua `sub_1257E40`."
+    },
+    "sub_107BB00_124": {
+      "va": "0x107bb00",
+      "behavior": "Đọc `u8 v6` (`vtable+60`), với `v6 ∈ {3, 4, 5}` gọi `sub_1243A30(1)`."
+    },
+    "sub_107BB90_107": {
+      "va": "0x107bb90",
+      "behavior": "Đọc `u8` (`vtable+60`) và `u32 v4` (`vtable+68`), quét `sub_13B07C0`/`sub_13B09C0(i) == v4` rồi gọi `sub_1243A30(1)`."
+    },
+    "CNxOverlayWebBrowser": {
+      "ctor_va": "0x809a60",
+      "ctor_callers": ["0x808990 (sub_808990)"],
+      "sub_80C9B0": "Lưu các tham số (`this+1`, `this+3`, `this+4`, `this+7`), gọi `sub_5B8A70`, `sub_806D60` và vtable `+48` trên `*(this+1)`."
+    }
+  }
+}

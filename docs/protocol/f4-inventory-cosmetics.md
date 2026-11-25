@@ -164,3 +164,20 @@ Bằng chứng JSON chi tiết nằm ở [f4-w2-ida-deepdive.json](../evidence/c
 - **`sub_11CE6A0` (`0x11CE6A0`, callee ứng với nhánh `225`)**: đọc `v7` (`vtable+60`, `u8`), xóa sạch **`8` slot mỗi phần tử** (`sub_55FD30(0)` x2, `sub_455630`), rồi lặp `v7 * 8` lần đọc cặp `v8` (`vtable+68`, `u32`) + chuỗi (`vtable+80`); nếu `v8 != 0` và tra được qua `sub_11E0E40(v8)` thì ghi bằng `sub_55FD30`/`sub_449C90` và đồng bộ qua `sub_11CE080` (`sub_11CF5E0`/`sub_11CF9C0`).
 - **Site `C->S 566` (`0x11AFA5D` trong `sub_11AECE0`, nhánh `sub_1199D00 == 35`)**: đọc bitmask `+56` của mục tra từ `sub_11E0E40` (`& 1` gọi `sub_13E4790(a3, 1)`, `& 0x200` gọi `sub_13E2380(a3, 0)`, `& 0x400` gọi `sub_13E2440(a3, 0)`), sau đó dựng `C->S 566` (`0x236`) với đúng **một byte `u8`** qua `sub_14EBC50` và gửi bằng `sub_1164D50`.
 - **Phần còn `unknown`**: layout bên trong của `sub_11CE930`, ý nghĩa chuỗi `vtable+80` trong `S->C 225`, và thao tác UI kích hoạt thực gửi `C->S 566` trên Wine.
+
+<a id="f4b-item-record-11ce930-w3"></a>
+## Bổ sung tĩnh Wave 3 cho `sub_11CE930` (`219/224`) và `S->C 313..317`
+
+Chi tiết kiểm chứng ở [f4-w3-ida-records.json](../evidence/content/f4-w3-ida-records.json) (`kr_static/confirmed`):
+
+- **Thứ tự đọc một bản ghi item trong `sub_11CE930` (`0x11CE930`, dùng chung cho `219` và `224`)**: đọc lần lượt `vtable+68` (`u32`), `vtable+64` (`u16`), `vtable+68` (`u32`), `vtable+80` (chuỗi vào `a2+108`), `vtable+88` (8 byte vào `v8`) + `vtable+68` (`u32`) qua `sub_11CB9B0`, và cuối cùng `vtable+60` (`u8`). Nghĩa nghiệp vụ từng slot (hạn/timestamp vs số lượng/serial) còn **unknown**.
+- **`S->C 313` (`sub_D779C0`)**: đọc `u8`, `u32`, `u32`, `u32` (fallback `100000`, nhân `24`), `u16`, `u8`; tra catalog `sub_11E0E40`, dựng struct `196B` `sub_11CB1D0` và thêm qua `sub_117E750(v5, 0, 0)`.
+- **`S->C 314` (`sub_D77BD0`)**: đọc `u8`, `u32`, `u32`, `u32`; tra `sub_11CFF80`, cập nhật `sub_6BC7B0` và `sub_11CB7F0(24*v9)` / `sub_11CB880`.
+- **`S->C 315` (`sub_D77D60`)**: đọc `u8`, `u8`, `u32`, `u32`, `u32`, `u64/i64` (`vtable+72`); tra catalog và chuyển tiếp `sub_11AECE0`.
+- **`S->C 316` (`sub_D77EF0`)**: đọc `u8`, `u32`, `u32` (+ `u64` khi nhánh `sub_11E8F70` bật); trừ trường `+96`, khi `<= 0` xóa/gỡ qua `sub_11CFD50` + `sub_1094080`.
+- **`S->C 317` (`sub_D84410`)**: đọc `u8 ok`, `u8 slot`, `u32 old`, `u32 item`; khi `ok != 0` đọc thêm `16` byte (`vtable+128`) + `u32`, cập nhật hạn dùng (`sub_11CB960`) và hiện `PeriodChange_Success` (hoặc `PeriodChange_fail`).
+
+<a id="f4c-cosmetic-xrefs-w3"></a>
+### Kiểm tra xrefs vtable F4-c Wave 3
+
+`entry 0` của `CCharDecoMan` (`0xB6B0D0`), `CBombDecoMan` (`0xB3BB50`) và `CIDDecoMan` (`0x12772E0`) trong dump tĩnh chỉ là destructor wrapper gọi `sub_B6AD00`/`sub_B36860`/`sub_1276C00`; không dựng route runtime từ ba vftable này khi chưa có đo Wine hoặc tìm được caller thực. Riêng `CCAItemCollectionMgr` có constructor `sub_914130` được `sub_1231BD0` gọi tại `0x1234300`.
