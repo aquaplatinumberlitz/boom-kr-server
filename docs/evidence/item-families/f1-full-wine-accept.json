@@ -1,0 +1,60 @@
+{
+ "schema": "kre.f1_full_wine_accept.v1",
+ "task": "o13 / nghiệm thu Wine hai client F1-c (#642), F1-b RemoteBomb/Drill (#641), F1-e Space/PangLand (#638, #643)",
+ "canonical": ["docs/protocol/f1-aux-opcodes-and-classc.md#f1-full-wine-accept-bc", "docs/protocol/f1e-dynamic-scripts.md#f1e-space-pangland-native-wine"],
+ "source": "kr_runtime",
+ "status": {
+  "f1c_class_c_4000_5000": "blocked (Start 121 tới được; Loading 79 bị từ chối)",
+  "f1b_drill_149": "confirmed (B dùng, A nhận)",
+  "f1b_remotebomb_150": "blocked (118 bị từ chối)",
+  "f1e_space_228_350": "confirmed (dispatch trực tiếp); kết thúc ván blocked ở C->S 172",
+  "f1e_pangland_148": "blocked (room_recipient_queue)"
+ },
+ "raw_root": "local/runs/o13-f1-full-wine/",
+ "provenance": {
+  "git_head": "8fe1301bf81653f394f1cc4a3c679d425f05ebc6",
+  "binaries": {"cache": "local/cache/kr-bin/f1-full-rust/bins.json", "build": "cargo build --release --offline --locked tại 8fe1301 (không build lại trong lượt này)", "kr_service_sha256": "b9999903a23daf55992c92106174b13979377909dd815ac1a6a33ebfe4de386b", "kr_prelogin_sha256": "b9b879dde1e9ecd0d35f1c9b1d0bcd70ad4ded5d8d6e4de7e932e84db2a8c840", "kr_admin_sha256": "a7939cd861baa5a43e51e9f80199f49eef380bd8764e888a499ec25e6dbad002", "kr_launch_identity_sha256": "b38e968d39a914329081bdb938d3bf3de80711bc273fd0269a5b534cda01f77e"},
+  "build": "KR 00967",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "wine_client_copy_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+  "harness": "Runner hai client của o12/p108: wrapper kiểm SHA-256 bins.json rồi giữ khóa local/research/codex/.kr-wine-runtime.lock, unshare --user --map-root-user --mount --net --pid --fork --mount-proc --kill-child=KILL, Xvfb riêng mỗi client. kr-service chạy trực tiếp, không proxy shadow, không biến môi trường fixture.",
+  "service_config_sha256": {"catalog-f1c": "dbc77ff460e009358a2df14d012ba1283f94a255647fa0331dea4e756ebd5376", "catalog-f1b": "bc24c664a16c8e0762b5d3ec4d045734e5f5a6a4664e5d0c57b6187dbd699e33", "catalog-f1b2": "6c8eda150cae2c5b629b4a549d70fdf37a341169fc120cc67f255cc0ac3aeb8f", "catalog-f1e": "4e9ec3e45585c3c9dd15e8040facba480e9a9c9534d47805422e02b4d6d11c87"},
+  "config_changes": {"catalog-f1c": "từ catalog CP397: allow_class_c_characters=true; player_round.characters=[0,1,4000,5000]; floor 582 rỗng", "catalog-f1b": "item_policy=report_derived_f1b_remote_drill; floor 582 Cookie07 list1 = RemoteBomb 150 (12,4), Drill 149 (12,10), Drill 149 (11,2), RemoteBomb 150 (11,12)", "catalog-f1b2": "như catalog-f1b; list1 = Drill 149 (11,2), RemoteBomb 150 (12,10)", "catalog-f1e": "tools/kr_pack_export.py --f1e-map CaJJ_Space02 --f1e-map PangLand03 (manifest de17afc7…88e1), kr_pack_config.configure scope f1-a, allow_f1e_dynamic_scripts=true; terrain trùng từng ô với catalog p108"},
+  "character_seed": "emu_choice: khóa lớp C nạp vào player_preferences bằng sqlite trước đăng nhập (O13_CHARACTERS).",
+  "client_pack": "F1-e thay FxMap.idx/idd trong bản sao game scratch bằng bản gốc chỉ đọc (idd 9ce6da28…7222) và kiểm SHA-256, như p108.",
+  "ctrl_input": "Ctrl bằng xdotool keydown/keyup Control_L; Space và phím hướng bằng native-input.exe.",
+  "review": "waived theo docs/evidence/checkpoints/review-waiver.json; tự kiểm capture CRC, sự kiện service, SQLite và ảnh."
+ },
+ "reproduce": [
+  "PYTHONPATH=tools:. python3 local/runs/o13-f1-full-wine/build_catalog.py",
+  "python3 tools/kr_pack_export.py --game-dir <KR 00967 chỉ đọc> --cache local/runs/o13-f1-full-wine/f1e-export --f1e-map CaJJ_Space02 --f1e-map PangLand03",
+  "PYTHONPATH=tools python3 local/runs/o13-f1-full-wine/build_catalog_f1e.py local/runs/o13-f1-full-wine/f1e-export/1d4632e7adcc9dceb1537faf4b7e3cba86c4af4d081d039707844a0c5e1eb2c9",
+  "STEP0_WORKTREE=<worktree> O13_CHARACTERS=A:4000,B:5000 python3 local/runs/o13-f1-full-wine/run_o13.py f1c-run-1 catalog-f1c phase_f1c.py",
+  "python3 local/runs/o13-f1-full-wine/run_o13.py f1b-run-1 catalog-f1b phase_f1b.py",
+  "O13_MAP=CaJJ_Space02 O13_FXMAP_ROOT=<KR 00967 chỉ đọc> python3 local/runs/o13-f1-full-wine/run_o13.py f1e-space-1 catalog-f1e phase_f1e.py",
+  "PYTHONPATH=tools:. python3 local/runs/o13-f1-full-wine/analyze.py <run>; python3 local/runs/o13-f1-full-wine/verify-dispatch.py <run> <map> <kr_service_sha256>"
+ ],
+ "runs": [
+  {"name": "f1c-run-1", "seed": "A:4000,B:5000", "tcp_frames_crc_verified": 110, "summary_sha256": "a77fa9c159e5ee99f391c12ca51437196cabcc1c4a1a7fb34853a31dfdcd421c", "frame_review_sha256": "6e8c10dd63387984431ebc2abbad26b17dbb5036add41cf14e14e6d59386e5c1", "result": "A nhận 106 khóa 4000, gửi 92=(0,0) sau 3,9 ms trước setup: stream sống và setup xong (guard #642 có hiệu lực). B nhận 106 khóa 5000, gửi 92=(0,0) sau 5,7 ms: bỏ qua, setup xong. Khi B vào phòng, A nhận 106 slot 1 rồi gửi lại 92=(0,0) sau 8,3 ms; A đã setup nên server nhận như lựa chọn khóa 0. 121 tới B mang khóa [0, 5000] (u16 tại byte 3 của hàng roster); view B vào arena với sprite lớp C. B gửi 79 = (count 1, byte 0) sau 5 ms; byte 0 khác 0x88 và 5 nên server đóng stream B (guard room_request, opcode 79). A chưa nhận 121. Journal: cancelled/loading_aborted.", "frames": {"B:c2s:79": "d8000000004f000000ffffffff020000000200000002000000020000000000000001000000b8477b", "A:c2s:92": "ca000000005c000000ffffffff030000000200000002000000020000000000000001000000abb85cb6"}, "exit": 1},
+  {"name": "f1c-run-2", "seed": "A:5000,B:4000", "tcp_frames_crc_verified": 117, "summary_sha256": "54714cd463be6bd7a0cf2d5b5b2e6d2d1850c4d2476913c45ae368550cdfce08", "result": "Tái lập cùng chuỗi với khóa đổi vai: 92=(0,0) trước setup của A (5,9 ms) và B (8,8 ms) được bỏ qua; A gửi lại 92=(0,0) 0,9 ms sau 106 của B nên khóa A về 0. 121 tới cả A và B mang [0, 4000]. 79 của A (1, 0) được nhận; 79 của B (1, 0) bị từ chối và B bị đóng stream. Journal: cancelled/loading_aborted.", "exit": 1},
+  {"name": "f1b-run-1", "tcp_frames_crc_verified": 185, "udp_native_peer_crc8_ok": {"A": 193, "B": 208}, "summary_sha256": "c0bd66782d83ab537b9ae41c2107db792c2c855f62dd77f1daaa83d64580f6f3", "drill": "B nhặt Drill (124 -> 165 tới A và B), ô Ctrl x03. Ctrl tạo 127/sub3 với blob [u32 0xFFFFFFFF, hàng 12, cột 9, dir 0] rồi 127/sub0 [1, 149, 0, 0]. kr-service chuyển 170/sub3 (header 6 byte + cùng blob) tới A sau khoảng 15 ms. Ảnh trước/sau cho thấy thùng (12,9) mất trên cả view A và view B; ô Ctrl của B giảm còn x02.", "drill_frames": {"B:c2s:127/sub3": "87000000007f000000ffffffff1f0000000200000002000000020000000000000001000000654691aaa74558dc840a9f8b9526d527b0660ac4c5a9c09fe217830fffffc505", "A:s2c:170/sub3": "6900000000aa000000ffffffff170000000200000002000000020000000000000001000000bc4691aafc4458dceb329f8b34022ad85172fc37ffffc5c7"}, "remotebomb": "A nhặt RemoteBomb (124 -> 165 tới A và B), ô Ctrl x03. Ctrl gửi 127/sub0 [1, 150, 0, 0] rồi 118 sau 71 ms. Byte 21 của 118 là 4 như dự đoán tĩnh, nhưng trường v[6] (byte 12) là 2 thay vì 1. Request::parse_with_remote đòi v[6]=1 nên trả 'unsupported basic bomb118 variant'; server đóng stream A (guard room_request, opcode 118), A hiện errorcode 10. Chưa có 159, 122 hay 158 cho bom remote.", "remotebomb_frame": {"A:c2s:118": "920000000076000000ffffffff160000000200000002000000020000002200000001000000bfd757ff8ae09e896a0c5f1f8bd9d9239ea59acdcfc829", "decoded": [12601, 0, 0, 0, 12, 4, 2, 0, 0, 0, 1, 1, 4]}, "drill_frame_review_sha256": "ee8e125807f6ada8bde621a22cd6bd96580e32805816901d0a3d6a653da2657f", "remote_frame_review_sha256": "4c6b00a97390604dd70d05e6142fbcb1a72ce474b2a834f2f6f7e53d536765e1", "journal": "complete/forfeit", "exit": 0},
+  {"name": "f1b-run-2", "tcp_frames_crc_verified": 163, "summary_sha256": "f3c8913e6d1b7d24a3a3dfcefd94d679e32419ad7dc16f1c7d38431d0927ab3f", "result": "B (vai khách) dùng RemoteBomb: 118 giải ra [12601,0,1,1,12,10,2,0,0,0,1,1,4], cùng v[6]=2 và byte 21 = 4; server đóng stream B. A đứng (11,2) có Drill x03 nhưng phím phải 60 ms không đổi hướng nhìn về thùng (11,3); Ctrl không tạo gói. Chiều Drill A -> B chưa đo được do công cụ nhập.", "exit": 0},
+  {"name": "f1e-space-1", "map": "CaJJ_Space02 (167)", "tcp_frames_crc_verified": 314, "udp_native_peer_crc8_ok": {"A": 377, "B": 387}, "summary_sha256": "6bdb8229f793a9d23ecc64549c2671019eae3869a5d6fdfe559a13bf2bca9b92", "verify_dispatch_sha256": "0debb5215f34f283e217ac888b6f674e5dc80e97c35808f110ac4a4e633239ac", "frame_review_sha256": "795fbd90aee1e56556c0a0aaec0defd5040a8e55b63786b03b6488206ca0718b", "result": "A gửi 10 gói 228 (20,0 / 22,0 / … / 34,0 / 40,0 / 41,0 s sau 153); kr-service nhận qua Session::handles và phát 10 gói 350 tới A và B sau khoảng 90 ms, body trùng từng byte (verify-dispatch.py đạt, không có native_stage_guard ở 228). Ảnh t=32 s cho thấy cùng các hàng ngoài đã rụng trên view A và view B. Ở 46,3 s, A nhận 170/sub19 rồi cả A và B gửi C->S 172 (12 byte); 172 chưa có trong Session::handles nên server đóng cả hai kênh bằng native_stage_guard. Journal cancelled/no_players.", "frames": {"A:c2s:228": "8e00000000e4000000ffffffff4300000002000000020000000200000000000000010000009079c6f5cdf57cdc308485a0db51133cf47b955b48dac0ff6d698a638e04550791d820a3a46579b7e15c4a6afeaf7f09cf024aa5aa551541ca57e0211604ab85ffcd9080", "B:s2c:350": "69000000005e010000ffffffff4300000002000000020000000200000000000000010000004a79c6f593f47cdc768385a01150133c3e78955b0edbc0ff13768a63340455075bd820a36a6579b7a75d4a6aa4b07f0915034aa56c5615418456e0215c03ab85ffcd9036", "A:c2s:172_body": "a56ba569a569a568a569a569", "B:c2s:172_body": "a56ba569a568a569a56fa56a"}, "exit": 1},
+  {"name": "f1e-pang-1", "map": "PangLand03 (887)", "tcp_frames_crc_verified": 135, "summary_sha256": "0ecc4185ae1c8bd1f1fbddfc2f65f6474066c291dc21c220797737e72bf9522f", "frame_review_sha256": "fd400d7c9356a2e0bc4ef4040b768fc1b7f78c07ff125e4a0ca9a6c03d1256a9", "result": "Ở mốc XML 12 s, A gửi 8 gói 148, mỗi gói một ô, trong khoảng 1,2 ms. Server nhận 4 gói vào phòng; ở gói kế tiếp kênh A kết thúc với guard room_recipient_queue, sau đó kênh B kết thúc với retired_membership. B chỉ nhận một 159 (owner 25, ID 1, ô (0,1)), A không nhận 159, không có 158. Ảnh t=12,6 s: cả A và B hiện errorcode 10. Gộp batch của #643 chỉ áp dụng trong một gói nhiều ô, không áp dụng cho chuỗi gói một ô. verify-dispatch.py trả lỗi 'Server room dispatch count does not match host captures'. Journal cancelled/no_players.", "frames": {"A:c2s:148": "840000000094000000ffffffff120000000200000002000000020000000000000001000000562899396ee0af20413d60e4a6d9e68709cf56", "B:s2c:159": "69000000009f000000ffffffff270000000200000002000000020000000000000001000000b55e903a3f0763ecd63b607e4617d52daffb02c710b5f0acf22b44cf440b0ff18cc76eb1892bebae"}, "exit": 1}
+ ],
+ "cleanup": {
+  "receipt": "local/runs/o13-f1-full-wine/cleanup-receipt.json",
+  "receipt_sha256": "86a6142d34c165e67d32512147e84c7181882349b7dc5da4f8b530a49334da38",
+  "deleted_bytes": {"preflight-f1c": 498, "preflight-f1b": 499, "f1c-run-1": 4632978881, "f1b-run-1": 4632981434, "f1e-space-1": 4627359577, "f1e-pang-1": 4627385953, "f1b-run-2": 4632980634, "f1c-run-2": 4632978906},
+  "total_deleted_bytes": 27786666382,
+  "scratch_removed_all": true,
+  "rust_target_created": false,
+  "sha256sums": "local/runs/o13-f1-full-wine/SHA256SUMS"
+ },
+ "limits": [
+  "Không phòng nào thoát sạch theo 86 -> 241 với room_count=0 sau một ván hoàn tất: các lượt F1-c, F1-b và F1-e đều dừng ở blocker ghi trên.",
+  "Ý nghĩa C->S 172 và trường v[6]=2 của 118 RemoteBomb chưa RE; chỉ có giá trị wire đã đo.",
+  "Chiều Drill A -> B, hiệu ứng 122/158 của RemoteBomb và hai mốc 16/20/24 s của PangLand03 chưa đo.",
+  "Không bao hàm server KR gốc hay Internet thật."
+ ]
+}

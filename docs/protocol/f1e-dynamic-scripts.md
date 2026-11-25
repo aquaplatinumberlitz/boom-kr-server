@@ -190,3 +190,20 @@ Kiểm thêm trần 512 sự kiện mỗi ván bằng một lượt dài. Trong 
 vượt trần. Nếu mỗi action phát đủ ô đã khai báo, handler hiện tại sẽ bỏ
 gói đầu tiên vượt trần ở các mốc tương ứng 171, 96 và 168 giây. Đây là
 dự đoán từ XML và mã; client có thể lọc ô hoặc kết thúc ván sớm hơn.
+
+<a id="f1e-space-pangland-native-wine"></a>
+## 7. Space và PangLand trên `kr-service` trực tiếp sau #643
+
+`source: kr_runtime`. Hai client KR 00967 trên Wine, binary release `8fe1301` không sửa code, không proxy shadow,
+`allow_f1e_dynamic_scripts` bật và profile xuất bằng `tools/kr_pack_export.py --f1e-map`. Bản sao game dùng cặp
+`FxMap` gốc như p108. [Bằng chứng, frame hex, hash và cleanup](../evidence/item-families/f1-full-wine-accept.json).
+
+| Map và chiều | Trạng thái | Kết quả |
+| --- | --- | --- |
+| `CaJJ_Space02`, `C->S 228` → `S->C 350` | `confirmed` | A gửi 10 gói `228` (từ mốc 20 s). `Session::handles` giao gói cho phòng và server phát 10 gói `350` tới A và B sau khoảng 90 ms, body trùng từng byte; không còn `native_stage_guard` ở `228`. Ảnh hai view cho thấy cùng các hàng ngoài đã rụng. |
+| `CaJJ_Space02`, kết thúc ván | `unknown` (bị chặn) | Ở 46,3 s, A nhận `170/sub19` rồi cả A và B gửi `C->S 172` (12 byte). Opcode này chưa có trong `Session::handles` nên server đóng cả hai kênh bằng `native_stage_guard`; ván bị hủy `no_players`. Ý nghĩa của `172` chưa RE. |
+| `PangLand03`, `C->S 148` | `unknown` (bị chặn) | Ở mốc XML 12 s, A gửi 8 gói `148`, mỗi gói một ô, trong khoảng 1,2 ms. Server nhận 4 gói; gói kế tiếp làm kênh A kết thúc với `room_recipient_queue`, sau đó kênh B kết thúc với `retired_membership`. B chỉ nhận một `159` owner 25, không có `158`; cả hai client hiện errorcode 10. |
+
+Bản gộp của #643 chỉ gộp các ô **trong một gói** `148`; chuỗi gói một ô ở mốc 12 s vẫn đặt hai batch mỗi gói vào
+inbox 8 chỗ của mỗi kênh, khớp dự đoán `room_recipient_queue` ở mục 6. Hai đợt nhiều ô 16/20 s, hủy timer khi
+đổi vòng và trần 512 sự kiện chưa đo vì ván dừng ở 12 s.

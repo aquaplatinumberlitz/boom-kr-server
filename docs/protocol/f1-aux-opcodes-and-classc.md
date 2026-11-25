@@ -224,3 +224,32 @@ phòng đang ở `Phase::Idle`, thành viên chưa `setup`, đang giữ một kh
 `class_c_presetup_reset_ignored` mà không xóa khóa lớp C hay ngắt stream. Mọi gói `92` trước setup khác (khóa khác
 `0`, thành viên không giữ khóa lớp C hoặc tắt cờ opt-in) vẫn bị từ chối fail-closed như cũ. Cần thêm lượt đo lại
 Wine hai client để xác nhận `Start 121` và `Loading 79` thực tế trên `CA.exe`.
+
+<a id="f1-full-wine-accept-bc"></a>
+## Nghiệm thu Wine hai client sau #641/#642: lớp C, Drill và RemoteBomb
+
+**Source:** `kr_runtime`. Hai client KR 00967 trên Wine, namespace cô lập, `kr-service` chạy trực tiếp từ bộ binary
+`--release --offline --locked` tại `8fe1301`, không proxy và không sửa code.
+[Bằng chứng, hash, frame hex và lệnh tái lập](../evidence/item-families/f1-full-wine-accept.json).
+
+**F1-c lớp C `4000`/`5000`, status `unknown` (bị chặn ở Loading 79).** Hai lượt đổi vai cho cùng kết quả:
+- Guard `class_c_presetup_reset_ignored` của #642 có hiệu lực: gói `C→S 92=(0,0)` mà mỗi client gửi 4–9 ms sau
+  `S→C 106` của chính mình, trước setup, không còn ngắt stream; phòng setup xong cho cả chủ phòng và khách.
+- Client chủ phòng gửi lại `92=(0,0)` 1–8 ms sau khi nhận `106` của khách mới vào. Lúc đó chủ phòng đã setup nên
+  server nhận như lựa chọn hợp lệ khóa `0`; `106` kế tiếp và journal đều ghi khóa `0` cho chủ phòng.
+- `Start 121` tới khách mang khóa lớp C ở u16 tại byte 3 của hàng roster (`[0, 5000]` và `[0, 4000]`). View khách
+  vào arena với sprite lớp C.
+- Khách gửi `C→S 79` = (count 1, byte **0**), không phải byte thấp của khóa (`0x88`/`0xA0`) hay giá trị dự phòng 5.
+  `class_c_loading79_matches` không khớp nên `observe_loading79` từ chối và server đóng stream của khách
+  (`loading_aborted`). Muốn qua bước này, server cần chấp nhận byte `0` cho thành viên lớp C và xử lý `92=(0,0)`
+  sau setup; cả hai là thay đổi code ngoài lượt đo.
+
+**F1-b Drill `149`, status `confirmed` theo chiều B→A.** Nhặt `124 → 165` tới cả hai client, ô Ctrl `×03`. Phím
+`Control_L` tạo `127/sub3` với blob `[u32 0xFFFFFFFF, hàng, cột, dir]` rồi `127/sub0` kind `149`; `kr-service`
+chuyển `170/sub3` (header 6 byte cùng blob) tới peer sau khoảng 15 ms. Thùng biến mất trên cả view A và view B,
+charge còn `×02`. Chiều A→B chưa đo được vì công cụ nhập không quay được hướng nhìn của A về phía thùng.
+
+**F1-b RemoteBomb `150`, status `unknown` (bị chặn ở 118).** Ctrl gửi `127/sub0` kind `150` rồi `C→S 118` sau
+khoảng 70 ms. Byte 21 của `118` là `0x04` như dự đoán tĩnh, nhưng trường `v[6]` (byte offset 12) bằng **2** thay
+vì 1 ở cả vai chủ phòng và vai khách. `Request::parse_with_remote` đòi `v[6]=1` nên từ chối và đóng stream; chưa
+có `159`, `122` hay `158` cho bom remote. Ý nghĩa của `v[6]=2` chưa RE.
