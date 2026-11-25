@@ -1,0 +1,448 @@
+{
+  "schema": "kre.f4_bc_spec_summary.v1",
+  "task": "p118",
+  "baseline": "babcc6353247903a842f7ff99c5935b263e5a2fb",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "scope": "Đọc lại dump F4-0 đã pin, không có capture/Wine mới và không đưa wire VN vào contract KR.",
+  "binary": {
+    "name": "CA.exe",
+    "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+    "ida_image": "kr-full.exe",
+    "ida_image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+  },
+  "inputs": [
+    {
+      "path": "local/runs/codex-orchestrator/f4-0-ida-dump.json",
+      "sha256": "02469dee11b55b334cb3ee6c127ccccaae3702fe402201b50573be837360eec7",
+      "bytes": 213566,
+      "storage": "gitignored"
+    },
+    {
+      "path": "docs/content/f4-mechanic-clusters.md",
+      "sha256": "1a070f79a7e513caff0d0d74a81c5112ed4bc0bfd63556ddd5cfba5cf7620ab1"
+    },
+    {
+      "path": "docs/content/f4-economy-catalog.md",
+      "sha256": "660e97d2be23ece01ad3e6473b57bd79b8a8d846661803dedda15ff8e67d0a67"
+    },
+    {
+      "path": "docs/evidence/content/f4-ida-clusters.json",
+      "sha256": "1c1e00cd7faae64e1621df193ae344a1674879de18a1ea6e37881e8dc7867725"
+    },
+    {
+      "path": "rust/crates/kr-service/src/accounts/economy.rs",
+      "sha256": "1e782717a62e68cdb45f5072745a2a947587c207192f2860867a457ddf6bcd08"
+    },
+    {
+      "path": "rust/crates/kr-service/src/accounts/economy/inventory.rs",
+      "sha256": "49fc782e4b1d0ccdd8672f6aed540b433e2dbd48ac8be61270e8452f3c015dce"
+    },
+    {
+      "path": "docs/CONTENT.md",
+      "sha256": "e351abca89ab8ddae87b9125a93c2616bcc9982634d01fe160ccf5b3b164980e"
+    },
+    {
+      "path": "rust/crates/kr-service/migrations/0007_f4_progression_inventory_shop.sql",
+      "sha256": "1155d06d5e7798c899bbf67660e8d5745323566c982abd4d3b99d75dd52e7da0"
+    },
+    {
+      "path": "rust/crates/kr-service/src/account_worker/economy.rs",
+      "sha256": "b791b928bd22c1208c9aadd9d855c2d6923a91fb3a2fb53611722dca631ee373"
+    }
+  ],
+  "managers": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "dump_key": "f4_class_vfuncs",
+    "limit": "RTTI và entry thô; chưa chốt biên bảng hoặc vai trò từng entry.",
+    "entries": [
+      {
+        "rtti": ".?AVCItemInventoryNew@@",
+        "vtable_va": "0x178E624",
+        "entry_0_va": "0x118E3C0",
+        "raw_entries": 4
+      },
+      {
+        "rtti": ".?AVCCharDecoMan@@",
+        "vtable_va": "0x174590C",
+        "entry_0_va": "0xB6B0D0",
+        "raw_entries": 3
+      },
+      {
+        "rtti": ".?AVCBombDecoMan@@",
+        "vtable_va": "0x174425C",
+        "entry_0_va": "0xB3BB50",
+        "raw_entries": 40
+      },
+      {
+        "rtti": ".?AVCIDDecoMan@@",
+        "vtable_va": "0x17958D4",
+        "entry_0_va": "0x12772E0",
+        "raw_entries": 3
+      },
+      {
+        "rtti": ".?AVCCAItemCollectionMgr@@",
+        "vtable_va": "0x172C618",
+        "entry_0_va": "0x927E20",
+        "raw_entries": 1
+      }
+    ]
+  },
+  "f4b": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "wire_status": "unknown",
+    "limit": "Xác nhận case và phần reader thấy được; prefix null là không thấy reader, mảng rỗng là không thấy lần đọc trực tiếp trong handler đã trích. Không xác nhận payload đầy đủ hay nghĩa nghiệp vụ.",
+    "reader_slots": {
+      "u8": "+0x3C",
+      "u16": "+0x40",
+      "u32": "+0x44",
+      "r48": "+0x48",
+      "r4c": "+0x4C",
+      "r80": "+0x80"
+    },
+    "reader_limits": "r48 trả 64 bit trong decompile; encoding chưa chốt. r4c và r80 còn thiếu kiểu và độ dài mã hóa.",
+    "cstage_s2c": {
+      "dispatcher_va": "0xD68C90",
+      "dump_key": "cstage_s2c_catalog",
+      "cases": [
+        {
+          "opcode": 219,
+          "case_va": "0xD693B7",
+          "handler_va": "0xD76860",
+          "dump_key": "key_decomps.CStage_On_219_0xd76860",
+          "prefix": null,
+          "calls_observed_va": [
+            "0x11CEA10"
+          ]
+        },
+        {
+          "opcode": 224,
+          "case_va": "0xD68FA9",
+          "handler_va": "0xD6D370",
+          "dump_key": "key_decomps.CStage_On_224_0xd6d370",
+          "prefix": null,
+          "calls_observed_va": [
+            "0x11CE4C0",
+            "0x11CDE80",
+            "0xD80C20"
+          ]
+        },
+        {
+          "opcode": 225,
+          "case_va": "0xD68FBB",
+          "handler_va": "0xD6D410",
+          "dump_key": "key_decomps.CStage_On_225_0xd6d410",
+          "prefix": null,
+          "calls_observed_va": [
+            "0x11CE6A0",
+            "0x11CE080"
+          ]
+        },
+        {
+          "opcode": 228,
+          "case_va": "0xD6917C",
+          "handler_va": "0xD85F80",
+          "dump_key": "key_decomps.CStage_On_228_0xd85f80",
+          "prefix": [],
+          "limit": "Không thấy lần đọc trực tiếp trong handler; chưa xác nhận payload rỗng."
+        },
+        {
+          "opcode": 245,
+          "case_va": "0xD6AC9C",
+          "handler_va": "0xD7AC20",
+          "prefix": null
+        },
+        {
+          "opcode": 313,
+          "case_va": "0xD6AB2D",
+          "handler_va": "0xD779C0",
+          "dump_key": "key_decomps.CStage_On_313_0xd779c0",
+          "prefix": [
+            "u8",
+            "u32",
+            "u32"
+          ],
+          "conditional_prefix": {
+            "guard": "Lookup 0x11E0E40 trên u32 thứ nhất trả khác 0.",
+            "reads": [
+              "u32",
+              "u16",
+              "u8"
+            ]
+          }
+        },
+        {
+          "opcode": 314,
+          "case_va": "0xD6AB3F",
+          "handler_va": "0xD77BD0",
+          "dump_key": "key_decomps.CStage_On_314_0xd77bd0",
+          "prefix": [
+            "u8",
+            "u32",
+            "u32",
+            "u32"
+          ]
+        },
+        {
+          "opcode": 315,
+          "case_va": "0xD6AB51",
+          "handler_va": "0xD77D60",
+          "dump_key": "key_decomps.CStage_On_315_0xd77d60",
+          "prefix": [
+            "u8",
+            "u8",
+            "u32",
+            "u32",
+            "u32",
+            "r48"
+          ]
+        },
+        {
+          "opcode": 316,
+          "case_va": "0xD6AB63",
+          "handler_va": "0xD77EF0",
+          "dump_key": "key_decomps.CStage_On_316_0xd77ef0",
+          "prefix": [
+            "u8",
+            "u32",
+            "u32"
+          ],
+          "conditional_prefix": {
+            "guard": "0x1220830, lookup 0x11E0E40 trên u32 thứ nhất và kiểm 0x11E8F70 đều qua.",
+            "reads": [
+              "r48"
+            ]
+          }
+        },
+        {
+          "opcode": 317,
+          "case_va": "0xD6AF10",
+          "handler_va": "0xD84410",
+          "dump_key": "key_decomps.CStage_On_317_0xd84410",
+          "prefix": [
+            "u8",
+            "u8",
+            "u32",
+            "u32"
+          ],
+          "conditional_prefix": {
+            "guard": "u8 đầu khác 0.",
+            "reads": [
+              "r80",
+              "u32"
+            ]
+          }
+        },
+        {
+          "opcode": 377,
+          "case_va": "0xD6ABF3",
+          "handler_va": "0xD78E10",
+          "prefix": null
+        },
+        {
+          "opcode": 378,
+          "case_va": "0xD6AC05",
+          "handler_va": "0xD791D0",
+          "prefix": null
+        },
+        {
+          "opcode": 418,
+          "case_va": "0xD6AF22",
+          "handler_va": "0xD847C0",
+          "prefix": null
+        },
+        {
+          "opcode": 419,
+          "case_va": "0xD6AF34",
+          "handler_va": "0xD852C0",
+          "prefix": null
+        }
+      ]
+    },
+    "cshopstagenew_s2c": {
+      "dispatcher_va": "0x1072B10",
+      "dump_key": "cshopstagenew_s2c_opcodes",
+      "cases": [
+        {
+          "opcode": 236,
+          "case_va": "0x1072DDF",
+          "handler_va": "0x1074130",
+          "dump_key": "extra_decomps.CShopStageNew_On_236_0x1074130",
+          "prefix": null,
+          "limit": "Đoạn trích chỉ có khai báo; Hex-Rays cảnh báo bad sp."
+        },
+        {
+          "opcode": 237,
+          "case_va": "0x1072DFD",
+          "handler_va": "0x1075900",
+          "dump_key": "extra_decomps.CShopStageNew_On_237_0x1075900",
+          "prefix": null,
+          "limit": "Đoạn trích chỉ có khai báo."
+        },
+        {
+          "opcode": 345,
+          "case_va": "0x1072EFC",
+          "handler_va": "0x107E660",
+          "dump_key": "extra_decomps.CShopStageNew_On_345_0x107e660",
+          "prefix": [
+            "r4c"
+          ]
+        },
+        {
+          "opcode": 446,
+          "case_va": "0x1072E2D",
+          "handler_va": "0x107C0F0",
+          "dump_key": "extra_decomps.CShopStageNew_On_446_0x107c0f0",
+          "prefix": [
+            "r4c",
+            "u32 n"
+          ],
+          "loop_record_prefix": [
+            "u32"
+          ]
+        },
+        {
+          "opcode": 447,
+          "case_va": "0x1072E3F",
+          "handler_va": "0x107C3D0",
+          "dump_key": "extra_decomps.CShopStageNew_On_447_0x107c3d0",
+          "prefix": [
+            "r4c",
+            "u32 n"
+          ],
+          "loop_record_prefix": [
+            "u32",
+            "u32"
+          ]
+        }
+      ]
+    },
+    "c2s": [
+      {
+        "opcode": 566,
+        "builder_va": "0x1164C10",
+        "caller_va": "0x11AECE0",
+        "call_site_va": "0x11AFA5D",
+        "dump_key": "c2s_by_op.566",
+        "reachable_in_static_chain_from_s2c": 315,
+        "wire_status": "unknown",
+        "limit": "Chưa thấy điều kiện vào site, writer, frame gửi hoặc vai trò ACK."
+      }
+    ],
+    "candidate": [
+      "Vai trò snapshot/delta/equip của 219/224/225 và 313–316.",
+      "Nghĩa thông báo dựa trên chuỗi và consumer của CStage/Shop."
+    ],
+    "unknown": [
+      "Opcode yêu cầu túi, equip, unequip, tiêu hao và redeem.",
+      "Item key, chỉ số, enum slot, số lượng, hạn, mã lỗi, giới hạn record và đuôi theo guard.",
+      "Kiểu mã coupon, quyền đổi và khóa chống lặp."
+    ]
+  },
+  "f4c": {
+    "source": "kr_static",
+    "status": "confirmed",
+    "wire_status": "unknown",
+    "pack_groups": {
+      "CharTE/AvatarDeco": 7797,
+      "CharTE/CharDeco": 3896,
+      "CharTE/GradeDeco": 211,
+      "CharTE/BombDeco": 594,
+      "EmoTE/IDDeco": 3176,
+      "EmoTE/Character": 1479,
+      "fx/Emoticon": 52,
+      "FxContents/ItemCollection": 27
+    },
+    "candidate": [
+      "Cạnh asset qua manager đến nơi render; mốc RTTI chưa chứng minh consumer."
+    ],
+    "unknown": [
+      "Opcode và payload hai chiều cho equip/unequip, emoticon và collection.",
+      "Token, enum slot, audience, snapshot/delta, guard và persistence của client."
+    ]
+  },
+  "schema7": {
+    "source": "design",
+    "status": "design",
+    "inventory": {
+      "table": "player_inventory",
+      "key": [
+        "player_id",
+        "sku_id"
+      ],
+      "rules": [
+        "quantity >= 1",
+        "expires_at chỉ có cho timed",
+        "permanent có quantity = 1",
+        "active khi không có hạn hoặc expires_at > now"
+      ]
+    },
+    "equipment": {
+      "table": "player_equipped",
+      "key": [
+        "player_id",
+        "slot"
+      ],
+      "owner_fk": [
+        "player_id",
+        "sku_id"
+      ],
+      "rules": [
+        "equip kiểm SKU, catalog slot, sở hữu và hạn",
+        "SKU đã tắt bán vẫn trang bị được nếu hợp lệ",
+        "equipped_list không lọc hạn"
+      ]
+    },
+    "api": [
+      "inventory_list",
+      "equipped_list",
+      "equip_item",
+      "unequip_slot",
+      "usable_items"
+    ],
+    "unlock_all": {
+      "type": "CatalogAccess",
+      "enabled_catalog_only": true,
+      "unlocked_by_session": true,
+      "quantity": null,
+      "expires_at": null,
+      "reads_inventory": false,
+      "writes_inventory": false,
+      "charges_lucci": false,
+      "bypasses_equip_ownership": false
+    },
+    "suggested_cosmetic_slots": {
+      "AvatarDeco": "cosmetic.avatar",
+      "CharDeco": "cosmetic.char",
+      "GradeDeco": "cosmetic.grade nếu có lựa chọn riêng",
+      "BombDeco": "cosmetic.bomb",
+      "IDDeco": "cosmetic.id"
+    },
+    "consumable_decrement": {
+      "implemented": false,
+      "policy": "Trừ sau khi server chấp nhận dùng; giao dịch và biên nhận chống lặp theo người chơi/lượt/hành động. Xóa hàng khi còn 0. O1 theo phiên không trừ túi."
+    }
+  },
+  "verification": {
+    "runtime": "pending",
+    "protocol": "docs/protocol/f4-inventory-cosmetics.md#nghiệm-thu-wine-hai-client-cho-f4-c",
+    "evidence_required": [
+      "Frame đã giải mã, stage/chiều/opcode",
+      "Cursor, nhánh và VA writer/reader",
+      "Ảnh UI A/B và DB trước/sau",
+      "Đối chứng standard, O1, relogin và peer vào muộn"
+    ]
+  },
+  "docs_sync": {
+    "docs/PROTOCOL.md": "updated",
+    "docs/PLAN.md": "unchanged",
+    "README.md": "unchanged",
+    "docs/HISTORY.md": "unchanged",
+    "docs/RESEARCH.md": "unchanged",
+    "docs/COVERAGE.md": "unchanged",
+    "docs/features.json": "unchanged",
+    "docs/evidence/checkpoints/": "unchanged"
+  }
+}
