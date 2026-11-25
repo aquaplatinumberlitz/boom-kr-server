@@ -1,0 +1,78 @@
+{
+  "schema": "kre.f4_ui_probe_wine.v1",
+  "run": "f4-ui-probe-v1",
+  "baseline": "385af566bf67251a3ce278196c0db99a2c14b884",
+  "docs_base": "1648795d28dbf3d43bfd315d4e23ea92b65df915",
+  "build": "KR 00967",
+  "binaries": {
+    "tag": "f4a-rust-v1",
+    "verified_bins_sha256": "03f19ebb75b2b6e507e9995b1936429f11c3d88824a87adda1fccb1adcf15e24",
+    "files": {
+      "kr-service": "d845883191765b80ef361c31750a264c2f2666c8b18ef235348f646c760dc316",
+      "kr-prelogin": "2bd6377b156864048ce98692c339a090e0d4e4d90f28adbc0c823363c3688f15",
+      "kr-admin": "cc21091b1849b75454284a42183a79339e1d80bd0687bfa89b6604a11ea16738",
+      "kr-launch-identity": "5024503f8a2e5b9a5c27eb7ab8bf797dc6c18489675d7c846cf5bdf4665c3ea6"
+    }
+  },
+  "local_artifacts": {
+    "run_dir": "local/runs/w7-f4a-wine/f4-ui-probe-v1",
+    "summary_sha256": "f6f55a7a8ab629abe4cd21ce4c9f8bd84d7d43020d38e98ce6bba52f325504cc",
+    "cleanup_sha256": "1f01ae8c107f4d2d8459eee05eb39a903d46ceb37a776af3918cc014b387fee6"
+  },
+  "cleanup": {
+    "namespace_ended": true,
+    "scratch_removed": true,
+    "deleted_bytes": 4632980909,
+    "namespace_exit": 0
+  },
+  "match_settlement": {
+    "tcp_frames_crc_verified": 213,
+    "udp_packets": 1873,
+    "final_room_count": 0,
+    "matches": [[1, 1, 256, "Tomb12", "complete", "elimination"]],
+    "player_profiles": [
+      [1, 100, 1, 100, 2],
+      [2, 30, 1, 30, 2]
+    ],
+    "ledger_entries": [
+      [1, 1, "match_reward", 100, 100, 1, "match:1"],
+      [2, 2, "match_reward", 30, 30, 1, "match:1"]
+    ]
+  },
+  "ui_clicks": [
+    {
+      "role": "A",
+      "button": "MyPage (마이페이지)",
+      "coords_1024x768": [770, 678],
+      "screenshot": "s2-after-mypage-A.png",
+      "visual_observation": "Con trỏ chuột di chuyển đúng tới nút `마이페이지` và bật tooltip `내 아이템 보기`, nhưng màn hình sảnh không chuyển sang trang MyPage.",
+      "c2s_frames_observed_after_return": [
+        { "opcode": 528, "bytes": 0, "seq": 244 },
+        { "opcode": 715, "bytes": 0, "seq": 247 },
+        { "opcode": 15, "bytes": 31, "seq": 250 },
+        { "opcode": 715, "bytes": 0, "seq": 253 },
+        { "opcode": 15, "bytes": 31, "seq": 256 },
+        { "opcode": 715, "bytes": 0, "seq": 259 }
+      ]
+    },
+    {
+      "role": "B",
+      "button": "Shop (상점)",
+      "coords_1024x768": [290, 678],
+      "screenshot": "s2-after-shop-B.png",
+      "visual_observation": "Con trỏ chuột di chuyển đúng tới nút `상점` và bật tooltip `상점 가기`, nhưng không mở `CShopStageNew` hay hộp thoại trình duyệt.",
+      "c2s_frames_observed_after_return": [
+        { "opcode": 528, "bytes": 0, "seq": 229 },
+        { "opcode": 715, "bytes": 0, "seq": 232 },
+        { "opcode": 715, "bytes": 0, "seq": 235 },
+        { "opcode": 15, "bytes": 31, "seq": 238 },
+        { "opcode": 715, "bytes": 0, "seq": 241 },
+        { "opcode": 15, "bytes": 31, "seq": 244 }
+      ]
+    }
+  ],
+  "finding": {
+    "status": "kr_runtime/negative_guard_observed",
+    "summary": "Sau khi nhấn chuột trái đơn tại `(770, 678)` (MyPage trên A) và `(290, 678)` (Shop trên B), cả hai client đều hiển thị đúng tooltip của nút nhưng không phát thêm packet `C->S` nào ngoài nhịp sảnh chuẩn (`528`, `715`, `15`) và giữ nguyên màn hình sảnh (không đổi stage, không hiện số dư Lucci)."
+  }
+}

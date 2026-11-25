@@ -42,3 +42,8 @@ Bổ sung từ [f4-w3-ida-records.json](../evidence/content/f4-w3-ida-records.js
 
 - **`CShopStageNew` (`sub_106DF70`)**: được gọi khởi tạo tại `sub_111AA20`, `sub_11543A0` và `sub_125D190`. Case `232` (`sub_11A8F80`) thực tế là stub rỗng trong ảnh KR 00967 này; helper `sub_107BA70` khi `sub_1220830() == 0` gửi `C->S 541` (`0x21D`) kèm byte `*(this + 0xDD60)`. Các case `107` (`sub_107BB90`) và `124` (`sub_107BB00`) đều có nhánh gọi `sub_1243A30(1)`.
 - **`CNxOverlayWebBrowser` (`sub_809A60` / `sub_80C9B0`)**: constructor chỉ thấy xref từ `sub_808990`, còn `sub_80C9B0` lưu ngữ cảnh vào `this` và gọi vtable `+48` trên `*(this+1)`. Cạnh kích hoạt UI cửa hàng từ sảnh giữ chờ nghiệm thu trực tiếp qua Wine.
+
+<a id="f4d-shop-wine-probe-w3"></a>
+### Kết quả probe Wine nút Cửa hàng (Wave 3)
+
+Trong `f4-ui-probe-v1` ([f4-ui-probe-wine.json](../evidence/content/f4-ui-probe-wine.json)), thao tác click đơn vào nút `상점` tại `(290, 678)` trên `CookieB` làm bật tooltip `상점 가기`, nhưng `CA.exe` không chuyển sang `CShopStageNew`, không mở `CNxOverlayWebBrowser` và không phát `C->S` nào ngoài giữ kết nối sảnh (`715`, `15`). Nguyên nhân (điều kiện click trong Wine vs guard cục bộ kiểu `sub_1220830()` hoặc cờ ở gói vào sảnh) còn `unknown`.
