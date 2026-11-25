@@ -1,0 +1,197 @@
+{
+  "schema": "kre.f4_w2_ida_deepdive.v1",
+  "baseline": "a897fd99672f25b31a5f429be52e1535111bbbf3",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "scope": "Phân tích tĩnh IDA bổ sung (Wave 2) từ dump `f4-w2-ida-dump.json` trên ảnh `kr-full.exe`; chưa có đo Wine F4-b/c/d mới nên các giá trị opcode, schema bảng và cơ chế chưa đo runtime vẫn giữ nhãn `kr_static/confirmed` hoặc `candidate`/`unknown`.",
+  "input": {
+    "path": "local/runs/codex-orchestrator/f4-w2-ida-dump.json",
+    "sha256": "17cd13155e916f55be1ab1fc412b6e20e59a7c658d8e6cddf534f5d21f2c495b",
+    "bytes": 153526,
+    "storage": "gitignored"
+  },
+  "f4b_inventory_callees": {
+    "status": "kr_static/confirmed",
+    "callees": [
+      {
+        "va": "0x11cea10",
+        "name": "sub_11CEA10",
+        "caller_hint": "S->C 219",
+        "behavior": "Đọc count (`vtable+60`, `u8`), mỗi mục đọc chỉ số/loại (`vtable+60`, `u8`) và số item (`vtable+68`, `i32`/`u32`), lặp `sub_11CE930(v4, a2)`, tra `sub_529C60(v4)` qua `sub_117F1E0` và chèn vào `this + 61320*i + 36` qua `sub_11CB910`; không gọi hàm reset snapshot `sub_11DE900`/`sub_1180360`."
+      },
+      {
+        "va": "0x11ce4c0",
+        "name": "sub_11CE4C0",
+        "caller_hint": "S->C 224",
+        "behavior": "Đọc outer count (`vtable+60`), với mỗi phần tử đọc `v23` (`vtable+60`, `u8`) và `v13` (`vtable+68`, `u32`), gọi reset snapshot `sub_11DE900(&this[20*v23 + 123852])` và `sub_1180360(&this[61320*v23 + 36])`, đọc `v13` lần `sub_11CE930` rồi gọi `sub_11DF610`, cuối vòng gọi `sub_11DEB00`/`sub_11DE6C0`/`sub_11DA990`, sau đó `sub_11CDE80` áp trạng thái và gọi `sub_11D0070`."
+      },
+      {
+        "va": "0x11ce6a0",
+        "name": "sub_11CE6A0",
+        "caller_hint": "S->C 225",
+        "behavior": "Đọc `v7` (`vtable+60`, `u8`); trước khi nạp, xóa `v7 * 8` slot (`sub_55FD30(0)` x2, `sub_455630(&byte_16EC8C0)`). Sau đó lặp `v7 * 8` cặp đọc `v8` (`vtable+68`, `u32`) và chuỗi (`vtable+80`), khi `v8 != 0` tra `sub_11E0E40(v8)` và ghi bằng `sub_55FD30(v8)` + `sub_449C90(v3)`, đồng bộ qua `sub_11CE080` (`for i in 0..2`: `sub_11CF5E0`, `sub_11CF9C0`)."
+      },
+      {
+        "va": "0x11aece0",
+        "name": "sub_11AECE0",
+        "site_566_va": "0x11afa5d",
+        "caller_hint": "S->C 315",
+        "behavior": "Khi `sub_1199D00(v217) == 35` (`0x23`), tra `v211 = sub_11E0E40(...)`, kiểm tra bitmask `+56` (`& 1` -> `sub_13E4790(a3, 1)`, `& 0x200` -> `sub_13E2380(a3, 0)`, `& 0x400` -> `sub_13E2440(a3, 0)`), rồi tại `0x11AFA5D` dựng packet `C->S 566` (`0x236`) qua `sub_1164C10(566)`, ghi đúng một `u8` (`sub_14EBC50((unsigned __int8)a3)`) và gửi qua `sub_1164D50`."
+      }
+    ],
+    "unknown": [
+      "Cấu trúc bên trong của `sub_11CE930` và offset manager thực tế tại `+123852` / `+61320`.",
+      "Nhãn sự kiện/ngữ nghĩa `vtable+80` trong `S->C 225` (`sub_11CE6A0`) và khi nào UI kích hoạt nhánh `sub_1199D00 == 35` phát `C->S 566`."
+    ]
+  },
+  "f4d_shop_stage": {
+    "status": "kr_static/confirmed",
+    "on_packet_va": "0x1072b10",
+    "vftables_found": [
+      "CShopStageNew",
+      "CShopConnectionMan",
+      "CShopItemMan",
+      "CShopOrderMan",
+      "CNxOverlayWebBrowser"
+    ],
+    "switch_tables": [
+      {
+        "table": "jpt_1072B7C",
+        "index_table": "byte_1072F80",
+        "base_opcode": 76,
+        "cases": 189,
+        "max_opcode": 345
+      },
+      {
+        "table": "jpt_1072BB9",
+        "index_table": "byte_1073054",
+        "base_opcode": 380,
+        "cases": 68,
+        "max_opcode": 529
+      },
+      {
+        "table": "jpt_1072BE3",
+        "index_table": "byte_10730AC",
+        "base_opcode": 534,
+        "cases": 178,
+        "note": "nhánh `<= 0x211` còn có jz riêng tới `0x1072E51`; `== 0x159` (`345`) rẽ tới `0x1072EFC`"
+      }
+    ],
+    "notable_cases": [
+      {
+        "opcode": 103,
+        "target": "sub_1076820",
+        "behavior": "Đọc `u16 v14` (`vtable+64`), kiểm `sub_135E950(v14)`; nếu khác 0 (và không phải nhánh `v14 == 12` gọi `sub_12562F0(11)`), dựng `C->S 88` (`sub_1164C10(88)`) gồm `u16` từ `sub_1243940` (`sub_14EBCF0`) và `i32`/`u32` từ `sub_12439D0` (`sub_14EBD90`), gửi qua `sub_1164D50`, và gọi `sub_12562F0(v14)`."
+      },
+      {
+        "opcode": 107,
+        "target": "sub_107BB90"
+      },
+      {
+        "opcode": 124,
+        "target": "sub_107BB00"
+      },
+      {
+        "opcode": 229,
+        "target": "0x1072C96",
+        "behavior": "Kiểm điều kiện (`sub_850D20`, `sub_BFABF0`/`sub_D972B0`, `sub_1073160`), cập nhật manager (`sub_107BA70`, `sub_11D0070`), và nếu `sub_1220830() == 0` dựng packet `C->S 512` (`0x200`) với header `u8 = 2` và `[this + 0xDD60]`."
+      },
+      {
+        "opcode": 232,
+        "target": "0x1072C20",
+        "behavior": "Lấy tên/bối cảnh (`sub_13B40F0`, `sub_125E150`, `[this + 0xDD60]`) rồi gọi `sub_11A8F80` (hàm có xref chuỗi `\"URL_CashCharge_CN\"` tại `0x11A93B2`)."
+      }
+    ],
+    "handlers_decomp": [
+      {
+        "va": "0x10766f0",
+        "name": "sub_10766F0",
+        "behavior": "Gọi vtable `[this + 272]`, đặt `[this + 14333] = 0`, đọc `u32 v8` (`vtable+68`), các giá trị `1..=5` hiển thị dialog `\"CashExchange_Fail\"` (`\"Etc_BtClose\"`, `\"Dialog_CashExchange\"`)."
+      },
+      {
+        "va": "0x1076570",
+        "name": "sub_1076570",
+        "behavior": "Đọc slot `u8` (`vtable+60`) và trường `vtable+68`; nếu `sub_54BC90` && `sub_54BC70` đúng thì đặt `[this+14333] = 0`, đọc `v11` (`vtable+68`), gọi `sub_13E4B50(v10, v11)`, gọi vtable `+272` và `sub_9671C0`."
+      },
+      {
+        "va": "0x809a60",
+        "name": "sub_809A60",
+        "behavior": "Constructor `CNxOverlayWebBrowser`; gán vftable và khởi tạo các trường trạng thái cùng hai chuỗi rỗng (`+36`, `+60` byte theo dword `this+9`, `this+15`); `sub_80C9B0` mở/nạp vào `*(this+1)` và gọi `vtable+48`."
+      }
+    ],
+    "unknown": [
+      "Cách `CShopStageNew` nối tới `CNxOverlayWebBrowser` và đường mở cửa hàng/web URL trong bản KR.",
+      "Mapping exact của `S->C 708` / `711` từ `jpt_1072BE3` chưa kiểm trực tiếp trong jump table này."
+    ]
+  },
+  "f4a_profile_setters": {
+    "status": "kr_static/confirmed",
+    "setters": [
+      {
+        "va": "0x13e4950",
+        "name": "sub_13E4950",
+        "role_candidate": "Lucci setter (kẹp khoảng `0..=sub_13E5150(player)` qua `sub_55FD30`)",
+        "xref_count": 25,
+        "callers_sample": [
+          "sub_B4A230",
+          "sub_D42480",
+          "sub_D6CBA0",
+          "sub_D6CED0",
+          "sub_D6E890",
+          "sub_D75620",
+          "sub_D7AC20",
+          "sub_E610C0"
+        ]
+      },
+      {
+        "va": "0x13e4790",
+        "name": "sub_13E4790",
+        "role_candidate": "Level/grade setter kèm ngưỡng `< 0x3C` (60) từ `sub_D6CBD0` / `sub_D6CFF0`",
+        "xref_count": 15,
+        "callers_sample": [
+          "sub_6F1BA0",
+          "sub_83BB90",
+          "sub_D6CBD0",
+          "sub_D6CFF0",
+          "sub_D6F160",
+          "sub_DA6530",
+          "sub_DD72B0",
+          "sub_E5F610",
+          "sub_1074130",
+          "sub_10F8DA0",
+          "sub_10FD540",
+          "sub_11AECE0"
+        ]
+      },
+      {
+        "va": "0x13e2380",
+        "name": "sub_13E2380",
+        "xref_count": 7,
+        "role_candidate": "Byte flag setter cho `player <= 1` (`sub_AE6740`)"
+      },
+      {
+        "va": "0x13e2440",
+        "name": "sub_13E2440",
+        "xref_count": 4,
+        "role_candidate": "DWORD setter cho `player <= 1` (`sub_55FD30`)"
+      }
+    ],
+    "stage_dispatchers": [
+      {
+        "va": "0xd6cba0",
+        "name": "sub_D6CBA0",
+        "behavior": "Gọi `sub_559BB0` và chuyển tiếp `sub_13E4950(a2, a3)`."
+      },
+      {
+        "va": "0xd6cbd0",
+        "name": "sub_D6CBD0",
+        "behavior": "Đọc `v12 = sub_13E5C50(a2)`, `v11 = sub_13E5C90(a2)`, đặt `sub_13E4790(a2, a3)`, `sub_13E5CB0(a2, a4)`, `sub_13E5C30(a2, a4 + v12)`, `sub_13E5C70(a2, a5 + v11)` (nhiều trường profile/EXP cộng dồn, ý nghĩa từng slot chưa đo Wine)."
+      },
+      {
+        "va": "0xd6cff0",
+        "name": "sub_D6CFF0",
+        "behavior": "Đọc `v6` (`vtable+60`) và `u16 v7` (`vtable+64`), lấy giá trị cũ `sub_13E4740(v5, v6)`; nếu tăng thì gọi hiệu ứng/thông báo (`sub_BFDE50`/`sub_BFDF30(0, 240, 120)`), rồi gọi `sub_13E4790(v6, v7)`."
+      }
+    ]
+  }
+}
