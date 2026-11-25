@@ -2576,20 +2576,27 @@ impl Session {
                             && crate::characters::class_c_loading79_matches(key, selected)
                     })
                 {
-                    // Adapt the staged member to the existing exact-match
-                    // guard. Publish only its observation bit; the u16 choice
-                    // stays intact even when the client reports its fallback.
-                    let staged = next
-                        .members
-                        .get_mut(&self.identity)
-                        .expect("current member");
-                    staged.character = Some(u16::from(selected));
-                    let observation = next.observe_loading79(member.key, selected);
-                    next.members
-                        .get_mut(&self.identity)
-                        .expect("current member")
-                        .character = member.character;
-                    observation?;
+                    if selected == 0
+                        && next.round_generation() > 0
+                        && matches!(next.phase, Phase::Idle | Phase::Ending { .. })
+                    {
+                        // Ignore post-return Class C 79=(1,0) fallback emitted after round end.
+                    } else {
+                        // Adapt the staged member to the existing exact-match
+                        // guard. Publish only its observation bit; the u16 choice
+                        // stays intact even when the client reports its fallback.
+                        let staged = next
+                            .members
+                            .get_mut(&self.identity)
+                            .expect("current member");
+                        staged.character = Some(u16::from(selected));
+                        let observation = next.observe_loading79(member.key, selected);
+                        next.members
+                            .get_mut(&self.identity)
+                            .expect("current member")
+                            .character = member.character;
+                        observation?;
+                    }
                 } else {
                     next.observe_loading79(member.key, selected)?;
                 }
