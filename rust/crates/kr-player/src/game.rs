@@ -22,6 +22,8 @@ pub(crate) struct Config {
     pub server_name: Option<String>,
     #[serde(default)]
     pub release_url: Option<String>,
+    #[serde(default)]
+    pub web_shop_url: Option<String>,
     prelogin_server: Option<SocketAddrV4>,
     prelogin_certificate: Option<PathBuf>,
     // A runtime-only port, owned by the selected S1 bridge.
@@ -74,6 +76,58 @@ impl Config {
         self.release_url
             .as_deref()
             .and_then(crate::desktop::drive_url)
+    }
+
+    // Consumed by unit tests now and launcher WebShop UI in Wave 4.
+    #[allow(dead_code)]
+    pub fn web_shop_url(&self) -> Option<&str> {
+        let raw = self.web_shop_url.as_deref()?;
+        if raw.trim() != raw || raw.len() > 64 || raw.bytes().any(|b| b.is_ascii_control()) {
+            return None;
+        }
+        let rest = raw.strip_prefix("http://")?;
+        if rest.contains(['@', '?', '#']) {
+            return None;
+        }
+        let authority = match rest.split_once('/') {
+            Some((auth, "")) => auth,
+            Some(_) => return None,
+            None => rest,
+        };
+        let addr: SocketAddrV4 = authority.parse().ok()?;
+        (!addr.ip().is_unspecified()
+            && !addr.ip().is_multicast()
+            && !addr.ip().is_broadcast()
+            && addr.port() != 0)
+            .then_some(raw)
+    }
+
+    #[cfg(test)]
+    pub(crate) fn test_tls_config(
+        server: Option<SocketAddrV4>,
+        certificate: Option<PathBuf>,
+    ) -> Self {
+        Self {
+            server,
+            certificate,
+            server_name: None,
+            release_url: None,
+            web_shop_url: None,
+            prelogin_server: None,
+            prelogin_certificate: None,
+            prelogin_relay: None,
+            companion: PathBuf::new(),
+            ports: vec![3808],
+            bundle: PathBuf::new(),
+            manifest_sha256: "0".repeat(64),
+            _file_hashes: None,
+            installation: PathBuf::new(),
+            state: PathBuf::new(),
+            wine: None,
+            udp_backend: kr_tunnel::UdpBackend::default(),
+            friends: None,
+            friends_directory: Vec::new(),
+        }
     }
 
     pub fn load() -> io::Result<Self> {
@@ -609,6 +663,7 @@ mod tests {
             certificate: Some(certificate.clone()),
             server_name: None,
             release_url: None,
+            web_shop_url: None,
             prelogin_server: Some("127.0.0.1:49652".parse().unwrap()),
             prelogin_certificate: Some(certificate),
             prelogin_relay: None,
@@ -671,5 +726,35 @@ mod tests {
                 .any(|e| fs::read_to_string(e.path()).unwrap() == (RETAINED_LOGS + 2).to_string())
         );
         fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn web_shop_url_requires_concrete_loopback_or_ipv4_http_origin() {
+        let with_url = |url: Option<&str>| Config {
+            web_shop_url: url.map(str::to_owned),
+            ..Config::test_tls_config(None, None)
+        };
+        assert_eq!(with_url(None).web_shop_url(), None);
+        assert_eq!(
+            with_url(Some("http://127.0.0.1:8080/")).web_shop_url(),
+            Some("http://127.0.0.1:8080/")
+        );
+        assert_eq!(
+            with_url(Some("http://10.77.0.1:8081")).web_shop_url(),
+            Some("http://10.77.0.1:8081")
+        );
+        for bad in [
+            "https://127.0.0.1:8080/",
+            "http://0.0.0.0:8080/",
+            "http://127.0.0.1:0/",
+            "http://224.0.0.1:8080/",
+            "http://127.0.0.1:8080/shop",
+            "http://127.0.0.1:8080?x=1",
+            "http://user@127.0.0.1:8080/",
+            " http://127.0.0.1:8080/",
+            "http://localhost:8080/",
+        ] {
+            assert_eq!(with_url(Some(bad)).web_shop_url(), None, "{bad}");
+        }
     }
 }
