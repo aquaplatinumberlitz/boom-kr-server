@@ -1070,6 +1070,21 @@ async fn local_lobby_connection(
                     account.redirected()?;
                 }
                 send_sequence = send_sequence.wrapping_add(3);
+                if alias == "own291" {
+                    emit_lucci_135_if_enabled(
+                        &mut socket,
+                        profile,
+                        account.as_ref(),
+                        flow.identity(),
+                        &mut send_sequence,
+                        "lobby_own291",
+                        &log,
+                        id,
+                        &mut stop,
+                        start,
+                    )
+                    .await?;
+                }
             }
             if packet.opcode == 67
                 && flow.stage == lobby::Stage::Lobby
@@ -1199,6 +1214,21 @@ async fn local_lobby_connection(
                 .map_err(|_| io::Error::other("room reply timeout"))??;
                 emit(&log,stamp(start,json!({"event":"room_reply","connection":id,"identity":flow.identity(),"alias":alias,"opcode":reply.opcode,"sequence":send_sequence,"bytes":frame.len(),"sha256":sha256_hex(&frame)}))).await?;
                 send_sequence = send_sequence.wrapping_add(3);
+                if reply.opcode == 175 {
+                    emit_lucci_135_if_enabled(
+                        &mut socket,
+                        profile,
+                        account.as_ref(),
+                        flow.identity(),
+                        &mut send_sequence,
+                        "post_match_175",
+                        &log,
+                        id,
+                        &mut stop,
+                        start,
+                    )
+                    .await?;
+                }
             }
             session.finish(&batch)?;
             if batch.setup.is_some() {
@@ -1267,6 +1297,69 @@ async fn local_lobby_connection(
         read_deadline = Instant::now() + Duration::from_secs(profile.config.idle_timeout_seconds);
         rx.push(&buf[..n]).map_err(io::Error::other)?;
     }
+}
+
+#[allow(clippy::too_many_arguments)]
+pub(crate) async fn emit_lucci_135_if_enabled(
+    socket: &mut TcpStream,
+    profile: &Validated,
+    account: Option<&account_serving::Lease>,
+    identity: u32,
+    send_sequence: &mut u32,
+    stage: &'static str,
+    log: &Log,
+    id: u64,
+    stop: &mut watch::Receiver<bool>,
+    start: Instant,
+) -> io::Result<()> {
+    let Some(active) = &profile.accounts else {
+        return Ok(());
+    };
+    if !active.emit_lucci_135 {
+        return Ok(());
+    }
+    let Some(account_serving::Lease::Channel(channel)) = account else {
+        return Ok(());
+    };
+    let service = active
+        .account_service()
+        .ok_or_else(|| io::Error::other("account service unavailable for lucci135"))?;
+    let player_id = channel.player.player_id;
+    let profile_row = tokio::select! {
+        _ = stop.changed() => return Ok(()),
+        result = service.profile_get(player_id) => result
+            .map_err(|error| io::Error::other(format!("lucci135 profile fetch failed: {error:?}")))?,
+    };
+    let lucci = kr_wire::kr00967::wire_lucci_u32(profile_row.lucci)?;
+    let body = kr_wire::kr00967::lucci135(0, lucci)?;
+    let frame = kr_wire::kr00967::encode(135, &body, *send_sequence).map_err(io::Error::other)?;
+    timeout(
+        Duration::from_millis(profile.config.write_timeout_ms),
+        socket.write_all(&frame),
+    )
+    .await
+    .map_err(|_| io::Error::other("lucci135 reply timeout"))??;
+    emit(
+        log,
+        stamp(
+            start,
+            json!({
+                "event": "economy_lucci_135_sent",
+                "connection": id,
+                "player_id": player_id,
+                "identity": identity,
+                "opcode": 135,
+                "sequence": *send_sequence,
+                "lucci": lucci,
+                "stage": stage,
+                "bytes": frame.len(),
+                "sha256": sha256_hex(&frame),
+            }),
+        ),
+    )
+    .await?;
+    *send_sequence = send_sequence.wrapping_add(3);
+    Ok(())
 }
 
 #[allow(clippy::too_many_arguments)]

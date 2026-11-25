@@ -167,6 +167,41 @@ pub fn local_own291(names: &[&[u8]]) -> io::Result<Vec<u8>> {
     Ok(out)
 }
 
+/// Static-confirmed KR 00967 `CStage` `S->C 135` (`0xD6CED0`): bounds DB `i64`
+/// Lucci into the wire `u32` domain, rejecting negative balances fail-closed.
+pub fn wire_lucci_u32(balance: i64) -> io::Result<u32> {
+    if balance < 0 {
+        return Err(io::Error::other("negative lucci balance"));
+    }
+    Ok(u32::try_from(balance).unwrap_or(u32::MAX))
+}
+
+/// Static-confirmed KR 00967 `CStage` `S->C 135` (`0xD6CED0` -> `0x13E4950`):
+/// `{ u8 local_idx, u32 remain_lucci }` encoded with standard `Width::U8` and
+/// `Width::U32` typed primitives.
+pub fn lucci135(local_idx: u8, remain_lucci: u32) -> io::Result<Vec<u8>> {
+    if local_idx > 1 {
+        return Err(io::Error::other("unsupported local slot for lucci135"));
+    }
+    let mut out = put(u64::from(local_idx), Width::U8)?;
+    out.extend(put(u64::from(remain_lucci), Width::U32)?);
+    Ok(out)
+}
+
+/// Decode `CStage` `S->C 135` `{ u8 local_idx, u32 remain_lucci }` with strict
+/// 5-byte length and local slot validation.
+pub fn decode_lucci135(payload: &[u8]) -> io::Result<(u8, u32)> {
+    if payload.len() != 5 {
+        return Err(io::Error::other("unsupported lucci135 payload length"));
+    }
+    let local_idx = uint(&payload[..1], Width::U8)? as u8;
+    if local_idx > 1 {
+        return Err(io::Error::other("unsupported local slot for lucci135"));
+    }
+    let remain_lucci = uint(&payload[1..5], Width::U32)? as u32;
+    Ok((local_idx, remain_lucci))
+}
+
 #[cfg(test)]
 mod identity_string_tests {
     use super::*;
@@ -186,5 +221,25 @@ mod identity_string_tests {
         assert_eq!(&out[at + 9..], &[1, 2, 3, 4]);
         assert!(with_identity_string(&out, name.len(), b"again").is_err());
         assert!(with_identity_string(&auth, name.len(), b"bad id").is_err());
+    }
+
+    #[test]
+    fn lucci135_round_trip_and_bounds() {
+        assert_eq!(wire_lucci_u32(0).unwrap(), 0);
+        assert_eq!(wire_lucci_u32(123_456).unwrap(), 123_456);
+        assert_eq!(wire_lucci_u32(i64::from(u32::MAX) + 99).unwrap(), u32::MAX);
+        assert!(wire_lucci_u32(-1).is_err());
+
+        for (slot, amount) in [(0, 0), (0, 123_456), (1, u32::MAX)] {
+            let body = lucci135(slot, amount).unwrap();
+            assert_eq!(body.len(), 5);
+            assert_eq!(decode_lucci135(&body).unwrap(), (slot, amount));
+        }
+        assert!(lucci135(2, 100).is_err());
+        assert!(decode_lucci135(&[0x5a; 4]).is_err());
+        assert!(decode_lucci135(&[0x5a; 6]).is_err());
+        let mut bad_slot = lucci135(1, 50).unwrap();
+        bad_slot[0] = put(2, Width::U8).unwrap()[0];
+        assert!(decode_lucci135(&bad_slot).is_err());
     }
 }
