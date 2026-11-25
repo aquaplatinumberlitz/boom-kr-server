@@ -64,11 +64,11 @@ fn class_c_stats(key: u16) -> Option<Stats> {
     })
 }
 
-/// C2S79 carries one byte per local player. For a Class C choice the KR
-/// writer can send the low byte or its fallback 5 (ownership check failed).
-/// Neither byte is a new selection or evidence of the client's active actor.
+/// C2S79 carries one byte per local player. For a Class C choice live KR
+/// clients can send the low byte, fallback 5 (ownership check failed), or 0.
+/// None of these bytes is a new selection or evidence of the client's active actor.
 pub(crate) fn class_c_loading79_matches(key: u16, selected: u8) -> bool {
-    is_class_c(key) && (selected == key.to_le_bytes()[0] || selected == 5)
+    is_class_c(key) && (selected == key.to_le_bytes()[0] || selected == 5 || selected == 0)
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq)]

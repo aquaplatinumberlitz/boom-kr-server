@@ -27,7 +27,7 @@ fn local_command(opcode: u32, body: &[u8], count: usize) -> io::Result<(usize, O
             ))
         }
         // Room-wide control and bounded observations without an actor index.
-        59 | 86 | 96 | 99 | 104 | 122 | 123 | 142 | 167 | 190 | 202 | 266 | 528 | 585 => {
+        59 | 86 | 96 | 99 | 104 | 122 | 123 | 142 | 167 | 172 | 190 | 202 | 266 | 528 | 585 => {
             Ok((0, None))
         }
         _ => Err(io::Error::other("unmeasured multi-local room command")),
@@ -308,7 +308,16 @@ impl State {
         resources: &Resources,
         stream_id: u64,
     ) -> io::Result<()> {
-        let queue_bound = 16 * self.sessions.len();
+        let per_session = if self
+            .sessions
+            .iter()
+            .any(room_io::Session::allows_f1e_dynamic_scripts)
+        {
+            256
+        } else {
+            16
+        };
+        let queue_bound = per_session * self.sessions.len();
         if let Some(primary) = self.sessions.first() {
             driver
                 .inspect()

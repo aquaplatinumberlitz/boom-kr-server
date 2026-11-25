@@ -23,11 +23,13 @@ const PANGLAND_148_2CELLS: [u8; 20] = [
 
 fn armed_room(allow_f1e_dynamic_scripts: bool) -> (Shared, Session, Session, Membership, u64) {
     let shared = registry_foundation_tests::empty(0);
+    {
+        shared.lock().unwrap().rules.allow_f1e_dynamic_scripts = allow_f1e_dynamic_scripts;
+    }
     let mut a = Session::open(&shared, 1, 11).unwrap();
     let mut b = Session::open(&shared, 2, 22).unwrap();
     let (host, round) = {
         let mut runtime = shared.lock().unwrap();
-        runtime.rules.allow_f1e_dynamic_scripts = allow_f1e_dynamic_scripts;
         let model = &mut runtime.model;
         model.terrain = Some(crate::terrain::tests::map());
         let first = model.enter(1, 11, true).unwrap();
@@ -198,6 +200,71 @@ fn script_packets_observe_safely_when_ending_or_idle() {
     let obs_idle = a.packet(148, &PANGLAND_148_2CELLS).unwrap();
     assert!(obs_idle.dropped_after_abort);
     assert!(a.channel_current());
+}
+
+#[test]
+fn pangland148_burst_of_single_cell_packets_and_c2s172_stay_within_bounds() {
+    assert!(Session::handles(172));
+    let (shared, mut a, mut b, _host, _round) = armed_room(true);
+
+    // 52 separate single-cell 148 packets without draining inbox must not hit room_recipient_queue.
+    for idx in 0..52u8 {
+        let fields = [
+            (u64::from(u32::MAX), Width::U32),
+            (1, Width::U8),
+            (290, Width::U16),
+            (17, Width::U16),
+            (1, Width::U8),
+            (1, Width::U32),
+            (0, Width::U16),
+            (u64::from(idx / 15), Width::U8),
+            (u64::from(idx % 15), Width::U8),
+        ];
+        let payload: Vec<u8> = fields
+            .into_iter()
+            .flat_map(|(v, w)| kr_wire::write_uint(v, w).unwrap())
+            .collect();
+        a.packet(148, &payload).unwrap();
+    }
+    let mut ids = std::collections::BTreeSet::new();
+    for session in [&mut a, &mut b] {
+        let mut count_159 = 0usize;
+        let mut count_158 = 0usize;
+        while let Ok(batch) = session.inbox.try_recv() {
+            for (_, pkt) in &batch.packets {
+                match pkt.opcode {
+                    159 => count_159 += 1,
+                    158 => {
+                        count_158 += 1;
+                        let id = u16::from_be_bytes([pkt.payload[1], pkt.payload[2]]) ^ 0xa569;
+                        ids.insert(id);
+                    }
+                    other => panic!("unexpected opcode {other}"),
+                }
+            }
+        }
+        assert_eq!((count_159, count_158), (52, 52));
+    }
+    assert_eq!(ids.len(), 52);
+
+    // Measured C2S 172 (sub=2, 12B) bodies from o13 CaJJ_Space02 pass cleanly in Armed & Ending.
+    let a_172 = [
+        0xa5, 0x6b, 0xa5, 0x69, 0xa5, 0x69, 0xa5, 0x68, 0xa5, 0x69, 0xa5, 0x69,
+    ];
+    let b_172 = [
+        0xa5, 0x6b, 0xa5, 0x69, 0xa5, 0x68, 0xa5, 0x69, 0xa5, 0x6f, 0xa5, 0x6a,
+    ];
+    a.packet(172, &a_172).unwrap();
+    b.packet(172, &b_172).unwrap();
+    assert!(a.packet(172, &a_172[..11]).is_err());
+
+    let round = match shared.lock().unwrap().model.phase {
+        Phase::Armed { round } => round,
+        _ => unreachable!(),
+    };
+    shared.lock().unwrap().model.end(round).unwrap();
+    assert!(a.packet(172, &a_172).unwrap().dropped_after_abort);
+    assert!(a.inbox.try_recv().is_err() && b.inbox.try_recv().is_err());
 }
 
 struct Fixtures(PathBuf);

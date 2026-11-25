@@ -207,3 +207,7 @@ dự đoán từ XML và mã; client có thể lọc ô hoặc kết thúc ván 
 Bản gộp của #643 chỉ gộp các ô **trong một gói** `148`; chuỗi gói một ô ở mốc 12 s vẫn đặt hai batch mỗi gói vào
 inbox 8 chỗ của mỗi kênh, khớp dự đoán `room_recipient_queue` ở mục 6. Hai đợt nhiều ô 16/20 s, hủy timer khi
 đổi vòng và trần 512 sự kiện chưa đo vì ván dừng ở 12 s.
+
+**Khắc phục sau `o13` (`fix/o13-runtime-blockers`, `kr_static` bổ sung):**
+- **`C->S 172` (`0x142AA30`/`0x142AAE0`/`0x142AC10`/`0x142ACE0 ← 0x142B590`):** Writer thống kê trận gửi `u16 sub ∈ 0..=3`, `u16 world_index` (`sub 0`: 8B, `sub 1`: `10 + 4*N` B, `sub 2/3`: 12B; khớp mẫu `o13` `sub=2` 12B); không đòi gói `S->C`. Đã nối `172` vào `Session::handles`, `local_command` và handler quan sát `Phase::Armed`/`Ending`/`Idle` trong `room_io.rs`.
+- **Hàng đợi `PangLand` nhiều gói `148` 1-ô liên tiếp:** Mở `rules::recipient_queue_for(capacity, allow_f1e_dynamic_scripts)` lên `256` batch mỗi kênh và `queue_bound` trong `ingame_tls/room.rs` lên `256 * sessions.len()` khi bật `allow_f1e_dynamic_scripts`, kèm nâng trần `script_events` mỗi ván lên `2048` (phòng không bật giữ nguyên `8`/`16`).

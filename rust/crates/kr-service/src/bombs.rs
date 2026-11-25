@@ -65,7 +65,8 @@ impl Request {
             4 if allow_remote => true,
             _ => return Err(io::Error::other("unsupported basic bomb118 variant")),
         };
-        if [v[1], v[6], v[7], v[8], v[9], v[11]] != [0, 1, 0, 0, 0, 1] {
+        let valid_kind = v[6] == 1 || (remote && v[6] == 2);
+        if [v[1], v[7], v[8], v[9], v[11]] != [0, 0, 0, 0, 1] || !valid_kind {
             return Err(io::Error::other("unsupported basic bomb118 variant"));
         }
         Ok(Self {
@@ -88,13 +89,14 @@ impl Request {
         }
     }
     pub fn spawn159(&self, id: u16) -> io::Result<Vec<u8>> {
-        kr_wire::kr00967::spawn159(
+        kr_wire::kr00967::spawn159_with_flags(
             self.owner,
             self.serial,
             self.row,
             self.column,
             self.power,
             id,
+            if self.remote { 4 } else { 0 },
         )
     }
 }

@@ -299,6 +299,16 @@ pub(crate) fn recipient_queue(capacity: usize) -> usize {
     if capacity == 8 { 16 } else { 8 }
 }
 
+/// Dynamic F1-e script rooms (e.g. PangLand single-cell 148 waves) burst
+/// multiple independent batches per tick and use a larger bounded queue.
+pub(crate) fn recipient_queue_for(capacity: usize, allow_f1e_dynamic_scripts: bool) -> usize {
+    if allow_f1e_dynamic_scripts {
+        256
+    } else {
+        recipient_queue(capacity)
+    }
+}
+
 fn err(s: &str) -> io::Error {
     io::Error::other(s.to_owned())
 }

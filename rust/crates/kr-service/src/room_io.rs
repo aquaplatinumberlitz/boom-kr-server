@@ -1736,7 +1736,10 @@ impl Session {
         if runtime.channels.contains_key(&identity) {
             return Err(err("duplicate room channel"));
         }
-        let (sender, inbox) = mpsc::channel(rules::recipient_queue(runtime.model.capacity()));
+        let (sender, inbox) = mpsc::channel(rules::recipient_queue_for(
+            runtime.model.capacity(),
+            runtime.rules.allow_f1e_dynamic_scripts,
+        ));
         let endpoint = peer
             .map(u32::from)
             .or_else(|| runtime.ips.get(&identity).copied())
@@ -1777,6 +1780,11 @@ impl Session {
                 .get(&self.identity)
                 .is_some_and(|channel| channel.connection == self.connection)
         })
+    }
+    pub(crate) fn allows_f1e_dynamic_scripts(&self) -> bool {
+        self.shared
+            .lock()
+            .is_ok_and(|runtime| runtime.rules.allow_f1e_dynamic_scripts)
     }
     /// Ancillary lobby observations must not be accepted during room/Battle.
     pub fn in_lobby(&self) -> bool {
@@ -1953,6 +1961,7 @@ impl Session {
                 | 142
                 | 148
                 | 167
+                | 172
                 | 202
                 | 228
         )
@@ -2258,7 +2267,7 @@ impl Session {
             runtime.model.restore_character(member.key, character)
         }
     }
-    fn is_class_c_presetup_reset(
+    fn is_class_c_auto_reset(
         rules: &rules::RoomRules,
         phase: &Phase,
         member: &crate::room::Member,
@@ -2266,7 +2275,6 @@ impl Session {
     ) -> bool {
         rules.allow_class_c_characters
             && *phase == Phase::Idle
-            && !member.setup
             && member.character.is_some_and(crate::characters::is_class_c)
             && character == 0
     }
@@ -2277,8 +2285,7 @@ impl Session {
         if !runtime.rules.player_choices {
             return Err(err("character choice disabled"));
         }
-        if Self::is_class_c_presetup_reset(&runtime.rules, &runtime.model.phase, &member, character)
-        {
+        if Self::is_class_c_auto_reset(&runtime.rules, &runtime.model.phase, &member, character) {
             return Ok(None);
         }
         // Validate phase/setup/current membership before a soft rejection. This
@@ -2857,9 +2864,9 @@ impl Session {
                     (None, Some(wire::team97(body)?))
                 };
                 if let Some(key) = character
-                    && Self::is_class_c_presetup_reset(&r.rules, &next.phase, &member, key)
+                    && Self::is_class_c_auto_reset(&r.rules, &next.phase, &member, key)
                 {
-                    character_rejection = Some("class_c_presetup_reset_ignored");
+                    character_rejection = Some("class_c_reset_ignored");
                 } else {
                     let unsupported = character.is_some_and(|key| {
                         r.managed_round
@@ -3254,6 +3261,31 @@ impl Session {
                     dropped_after_abort = true;
                 } else if !matches!(next.phase, Phase::Armed { .. }) {
                     return Err(err("known190 observation phase"));
+                }
+            }
+            172 => {
+                let m = r.member(self.identity, self.connection)?;
+                if !(8..=4096).contains(&body.len()) {
+                    return Err(err("known172 observation shape"));
+                }
+                let sub = read_uint(&body[..2], Width::U16).map_err(io::Error::other)?;
+                let valid = match sub {
+                    0 => body.len() == 8,
+                    1 => body.len() >= 10 && (body.len() - 10).is_multiple_of(4),
+                    2 | 3 => body.len() == 12,
+                    _ => false,
+                };
+                if !valid {
+                    return Err(err("known172 observation shape"));
+                }
+                if next.phase == Phase::Idle {
+                    next.observe_after_abort(m.key)?;
+                    dropped_after_abort = true;
+                } else if matches!(next.phase, Phase::Ending { .. }) {
+                    next.observe_closed(m.key)?;
+                    dropped_after_abort = true;
+                } else if !matches!(next.phase, Phase::Armed { .. }) {
+                    return Err(err("known172 observation phase"));
                 }
             }
             96 if r.maps.is_some() => {
@@ -3878,7 +3910,7 @@ impl Session {
                     dropped_after_abort = true;
                 } else if let Phase::Armed { round } = next.phase
                     && next.host == Some(member.key.identity)
-                    && next.script_events < 512
+                    && next.script_events < 2048
                 {
                     next.script_events += 1;
                     let reply = packet(350, payload);
@@ -3908,7 +3940,7 @@ impl Session {
                     dropped_after_abort = true;
                 } else if let Phase::Armed { round } = next.phase
                     && next.host == Some(member.key.identity)
-                    && next.script_events.saturating_add(report.cells.len()) <= 512
+                    && next.script_events.saturating_add(report.cells.len()) <= 2048
                 {
                     let mut spawns = Vec::with_capacity(report.cells.len());
                     let mut blasts = Vec::with_capacity(report.cells.len());

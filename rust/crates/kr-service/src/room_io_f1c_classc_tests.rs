@@ -192,24 +192,25 @@ fn class_c_selection_retains_full_start121_key_and_observes_loading79_once() {
             assert!(batch.packets.iter().all(|(_, packet)| packet.opcode == 110));
         }
         // XOR masks from the KR writer. A Class C key's low byte belongs
-        // to the selected member, and byte 5 is the ownership fallback.
+        // to the selected member, and bytes 5 or 0 are live ownership fallbacks.
         let low = [0x5b, ((key % 256) as u8) ^ 0x5a];
         let fallback = [0x5b, 0x5f];
+        let zero_fallback = [0x5b, 0x5a];
         assert!(players[0].packet(79, &low).is_err()); // Still Idle.
         shared.lock().unwrap().model.ready(keys[1]).unwrap();
         start(&mut players, [key, 0]);
         let before = shared.lock().unwrap().model.phase.clone();
         assert!(matches!(before, Phase::Loading { .. }));
         assert!(players[0].packet(79, &[0x58, low[1]]).is_err()); // Count 2.
-        assert!(players[0].packet(79, &[0x5b, 0x5a]).is_err()); // Wrong byte.
+        assert!(players[0].packet(79, &[0x5b, 0x59]).is_err()); // Wrong byte (3).
         assert!(players[1].packet(79, &low).is_err()); // Wrong member.
-        let (first, second) = if key % 2 == 0 {
-            (low, fallback)
-        } else {
-            (fallback, low)
+        let choice_byte = match key % 3 {
+            0 => low,
+            1 => fallback,
+            _ => zero_fallback,
         };
-        players[0].packet(79, &first).unwrap();
-        assert!(players[0].packet(79, &second).is_err()); // Shared budget.
+        players[0].packet(79, &choice_byte).unwrap();
+        assert!(players[0].packet(79, &fallback).is_err()); // Shared budget.
         assert!(players[1].packet(79, &fallback).is_err()); // Ordinary choice.
         players[1].packet(79, &[0x5b, 0x5a]).unwrap();
         let r = shared.lock().unwrap();
@@ -275,16 +276,14 @@ fn class_c_preference_is_restored_only_for_current_members_before_setup() {
 }
 
 #[test]
-fn class_c_ignores_presetup_reset_92_without_disconnecting_or_clearing_key() {
-    let (shared, mut players, keys) = room(ON, &[0, 1, 4000]);
+fn class_c_ignores_auto_reset_92_before_and_after_setup_without_clearing_key() {
+    let (shared, mut players, keys) = room(ON, &[0, 1, 4000, 5000]);
     players[0].restore_character(4000).unwrap();
-    // o12 live client emits C->S 92=(local 0, key 0) 9-29ms after 106 before setup().
+    players[1].restore_character(5000).unwrap();
+    // o12/o13 live client emits C->S 92=(local 0, key 0) after S->C 106 both before and after setup.
     assert_eq!(players[0].prepare_character(&choice(0)).unwrap(), None);
     let ignored = players[0].packet(92, &choice(0)).unwrap();
-    assert_eq!(
-        ignored.character_rejection,
-        Some("class_c_presetup_reset_ignored")
-    );
+    assert_eq!(ignored.character_rejection, Some("class_c_reset_ignored"));
     assert!(players.iter_mut().all(|p| p.inbox.try_recv().is_err()));
     assert_eq!(
         shared.lock().unwrap().model.members[&1].character,
@@ -293,10 +292,43 @@ fn class_c_ignores_presetup_reset_92_without_disconnecting_or_clearing_key() {
     // Pre-setup non-zero 92 still fails closed.
     assert!(players[0].packet(92, &choice(1)).is_err());
     assert!(players[0].prepare_character(&choice(1)).is_err());
-    // Completing setup and starting carries 4000 into Start 121.
+    // Completing setup and receiving peer 106 triggers another 92=(0,0) on host while Idle:
+    // keep 4000 intact and keep Ready untouched.
     setup(&shared, keys);
+    assert_eq!(players[0].prepare_character(&choice(0)).unwrap(), None);
+    let post_ignored = players[0].packet(92, &choice(0)).unwrap();
+    assert_eq!(
+        post_ignored.character_rejection,
+        Some("class_c_reset_ignored")
+    );
+    assert!(players.iter_mut().all(|p| p.inbox.try_recv().is_err()));
     shared.lock().unwrap().model.ready(keys[1]).unwrap();
-    start(&mut players, [4000, 0]);
+    start(&mut players, [4000, 5000]);
+    // Both Class C actors can send Loading 79 with byte 0 (as measured in o13).
+    for player in &players {
+        player.packet(79, &[0x5b, 0x5a]).unwrap();
+    }
+
+    // Explicit non-zero 92 after setup on Class C still switches cleanly.
+    let (s_switch, mut p_switch, k_switch) = room(ON, &[0, 1, 4000]);
+    p_switch[0].restore_character(4000).unwrap();
+    setup(&s_switch, k_switch);
+    let sel = p_switch[0].prepare_character(&choice(1)).unwrap().unwrap();
+    assert_eq!(sel.1, 1);
+    assert!(
+        p_switch[0]
+            .persisted_character(sel.0, &choice(1))
+            .unwrap()
+            .character_rejection
+            .is_none()
+    );
+    for player in &mut p_switch {
+        let _ = player.inbox.try_recv().unwrap();
+    }
+    assert_eq!(
+        s_switch.lock().unwrap().model.members[&1].character,
+        Some(1)
+    );
 
     // Pre-setup 92=(0,0) on non-Class-C restored key or opt-in OFF still fails closed.
     let (_s2, players2, _k2) = room(ON, &[0, 1, 4000]);
