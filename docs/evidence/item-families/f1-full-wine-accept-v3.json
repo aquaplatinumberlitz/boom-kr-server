@@ -1,0 +1,102 @@
+{
+ "schema": "kre.f1_full_wine_accept.v3",
+ "task": "closeout F1 Wine hai client sau #655 (f1e-space-v3) và #658 (f1c-v4-chars2)",
+ "canonical": [
+  "docs/protocol/f1-aux-opcodes-and-classc.md#f1-full-wine-accept-v3-c",
+  "docs/protocol/f1e-dynamic-scripts.md#f1e-space-wine-v3"
+ ],
+ "source": "kr_runtime",
+ "status": {
+  "f1_full_100": "ĐÃ ĐẠT (cùng với f1-full-wine-accept-v2.json cho RemoteBomb 150, Drill 149 và PangLand03 148->159/158)",
+  "f1e_space_127_sub19": "confirmed (f1e-space-v3: CaJJ_Space02 hoàn tất ván complete/all_dead sau #655, 10x 228->350, 66x C->S 127/sub19 -> S->C 170/sub19, 175/180, 86->241, final_room_count=0)",
+  "f1c_class_c_4000_5000": "confirmed (f1c-v4-chars2: Tomb12 với A:4000, B:5000 sau #655 và #658, 92=(0,0) trong Idle/Ending và post-return 79=(1,0) đều an toàn, complete/elimination, 86->241, final_room_count=0)"
+ },
+ "raw_root": "local/runs/w6-f1-wine-v3/",
+ "provenance": {
+  "build": "KR 00967",
+  "wine": "wine-10.0-20260425 (CachyOS)",
+  "wine_client_copy_sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+  "harness": "Runner hai client namespace tách biệt (unshare --user --map-root-user --mount --net --pid --fork --mount-proc --kill-child=KILL, Xvfb riêng từng client), kr-service trực tiếp không proxy shadow.",
+  "binaries_v3": {
+   "tag": "f1-full-rust-v3",
+   "git_head": "2c36006ac5d6005721c9305f6fd6ba0eea96a424",
+   "cache": "local/cache/kr-bin/f1-full-rust-v3/bins.json",
+   "kr_service_sha256": "8a330e8d4f463f35e73ed2a038b898a491ef49054707cc197cdfa420a265b54b",
+   "kr_prelogin_sha256": "b9b879dde1e9ecd0d35f1c9b1d0bcd70ad4ded5d8d6e4de7e932e84db2a8c840",
+   "kr_admin_sha256": "bf23027800eafe24cb637e4db8323ddcf29b545387b7739cf4ec92c155dfada1",
+   "kr_launch_identity_sha256": "b38e968d39a914329081bdb938d3bf3de80711bc273fd0269a5b534cda01f77e"
+  },
+  "binaries_v4": {
+   "tag": "f1-full-rust-v4",
+   "git_head": "d5c2cf45d1b2bfb59ae5573e77657408a034c1bc",
+   "cache": "local/cache/kr-bin/f1-full-rust-v4/bins.json",
+   "kr_service_sha256": "598d1e799b420caaf0c419f09614250d918c66b2285887253dbccbcd779bf32c",
+   "kr_prelogin_sha256": "b9b879dde1e9ecd0d35f1c9b1d0bcd70ad4ded5d8d6e4de7e932e84db2a8c840",
+   "kr_admin_sha256": "aaae915cf365928fe4a41233b1223672bb96cf25be113a4b91911ac68c7f41a0",
+   "kr_launch_identity_sha256": "b38e968d39a914329081bdb938d3bf3de80711bc273fd0269a5b534cda01f77e"
+  }
+ },
+ "runs": [
+  {
+   "name": "f1e-space-v3",
+   "binaries": "f1-full-rust-v3",
+   "map": "CaJJ_Space02 (167)",
+   "tcp_frames_crc_verified": 377,
+   "udp_packets": 2911,
+   "udp_native_peer_crc_ok": {"A": 351, "B": 351},
+   "final_room_count": 0,
+   "summary_sha256": "1c83e63194860e58444902f2e82444f6b207a36a65f01d8b5026c65da8925f3",
+   "verify_dispatch_sha256": "41e3ec92c1c65da126d5d58df155451afe49cfebf70c402c0fecb85883a2493b",
+   "cleanup_sha256": "f987e25e4ac7b973168bf53d47376bb69e01daf723fe7a87bc7766e082353f96",
+   "cleanup_deleted_bytes": 4627359665,
+   "matches": [[1, 1, 256, "CaJJ_Space02", "complete", "all_dead"]],
+   "match_players": [[1, 0, 0, "draw", "present"], [1, 1, 0, "draw", "present"]],
+   "result": "A gửi 10 gói C->S 228 và A/B nhận đủ 10 gói S->C 350 (verify-dispatch.json đạt). Khi hàng rụng, rơi hố trực tiếp gửi 66 gói C->S 127/sub19 mỗi phía được apply_with_direct_death chấp nhận khi allow_f1e_dynamic_scripts=true; phát S->C 170/sub19, 175, 180 tới A & B (complete/all_dead). Cả hai thoát phòng 86->241 và final_room_count=0.",
+   "key_counts": {
+    "A:c2s:228": 10,
+    "A:s2c:350": 10,
+    "B:s2c:350": 10,
+    "A:c2s:127/sub19": 66,
+    "B:c2s:127/sub19": 66,
+    "A:s2c:170/sub19": 1,
+    "B:s2c:170/sub19": 1,
+    "A:c2s:86": 1,
+    "B:c2s:86": 1,
+    "A:s2c:241": 2,
+    "B:s2c:241": 2
+   }
+  },
+  {
+   "name": "f1c-v4-chars2",
+   "binaries": "f1-full-rust-v4",
+   "seed": "A:4000,B:5000",
+   "map": "Tomb12",
+   "tcp_frames_crc_verified": 217,
+   "udp_packets": 2199,
+   "udp_native_peer_crc_ok": {"A": 296, "B": 282},
+   "final_room_count": 0,
+   "summary_sha256": "eea6b714f12fb1c4ee4746b213b5e56ef06485f361a1bf7b038c45fcad439ff5",
+   "cleanup_sha256": "9db2783c29cc379d8b4dc0b720c130c3f97755e4d7bf3b41c232ed30fa8e0645",
+   "cleanup_deleted_bytes": 4632981263,
+   "matches": [[1, 1, 256, "Tomb12", "complete", "elimination"]],
+   "match_players": [[1, 0, 4000, "win", "present"], [1, 1, 5000, "loss", "present"]],
+   "result": "native_tls_character_stats ghi nhận A=4000 (slot 0) và B=5000 (slot 1); Start 121 giữ nguyên khóa lớp C; cả A và B gửi 3x C->S 92=(0,0) (Idle/Ending) và 2x C->S 79=(1,0) (Loading & hậu kết trận) mà không bị guard ngắt kênh; nhận đủ 175, 180, native_tls_room_return_refreshed và thoát phòng sạch 86->241 với final_room_count=0.",
+   "key_counts": {
+    "A:c2s:92": 3,
+    "B:c2s:92": 3,
+    "A:c2s:79": 2,
+    "B:c2s:79": 2,
+    "A:s2c:121": 1,
+    "B:s2c:121": 1,
+    "A:s2c:175": 1,
+    "B:s2c:175": 1,
+    "A:s2c:180": 1,
+    "B:s2c:180": 1,
+    "A:c2s:86": 1,
+    "B:c2s:86": 1,
+    "A:s2c:241": 2,
+    "B:s2c:241": 2
+   }
+  }
+ ]
+}
