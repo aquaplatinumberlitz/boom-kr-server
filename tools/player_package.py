@@ -489,11 +489,39 @@ def build(recipe, out, launcher_art=DEFAULT_LAUNCHER_ART, require_release_assets
                 guide_screenshot=screenshot_pin, guide_assets=guide_assets)
 
 
+def _validate_web_shop_url(value):
+    """Validate optional F4-d HTTP IPv4 origin matching kr-player Config::web_shop_url."""
+    if not isinstance(value, str) or value.strip() != value or not 0 < len(value) <= 64:
+        raise ValueError('URL cửa hàng web không hợp lệ')
+    if any(ord(ch) < 32 or ord(ch) == 127 for ch in value) or not value.startswith('http://'):
+        raise ValueError('URL cửa hàng web không hợp lệ')
+    rest = value[7:]
+    if any(ch in rest for ch in ('@', '?', '#')):
+        raise ValueError('URL cửa hàng web không hợp lệ')
+    if '/' in rest:
+        authority, tail = rest.split('/', 1)
+        if tail:
+            raise ValueError('URL cửa hàng web không hợp lệ')
+    else:
+        authority = rest
+    try:
+        host, port_text = authority.rsplit(':', 1)
+        if not port_text.isdigit():
+            raise ValueError('URL cửa hàng web không hợp lệ')
+        ip = ipaddress.IPv4Address(host)
+        port = int(port_text)
+    except ValueError as err:
+        raise ValueError('URL cửa hàng web không hợp lệ') from err
+    if ip.is_unspecified or ip.is_multicast or int(ip) == 0xffffffff or not 1 <= port <= 65535:
+        raise ValueError('URL cửa hàng web không hợp lệ')
+    return value
+
+
 def windows_runtime(recipe, output, manifest_sha256):
     """Stage only pinned first-party programs, public certificates and launch settings."""
     required = {'launcher', 'companion', 'ports'}
     online = {'certificate', 'prelogin_certificate', 'server', 'prelogin_server'}
-    optional = {'server_name', 'release_url', 'friends', 'friends_directory'}
+    optional = {'server_name', 'release_url', 'web_shop_url', 'friends', 'friends_directory'}
     if not required <= recipe.keys() <= required | optional | online or (recipe.keys() & online not in (set(), online)):
         raise ValueError('Recipe Windows có trường thiếu hoặc không hỗ trợ')
     if not online <= recipe.keys() and 'friends' not in recipe:
@@ -505,6 +533,15 @@ def windows_runtime(recipe, output, manifest_sha256):
     if release_url and (len(release_url) > 2048 or not re.fullmatch(
             r"https://drive\.google\.com/[a-zA-Z0-9\-._~/%?&=+#:@!$',;()*]+", release_url)):
         raise ValueError('Link phát hành phải là HTTPS Google Drive')
+    raw_web_shop_url = recipe.get('web_shop_url')
+    web_shop_url = None
+    if raw_web_shop_url is not None:
+        if not isinstance(raw_web_shop_url, str):
+            raise ValueError('URL cửa hàng web không hợp lệ')
+        if raw_web_shop_url != '':
+            if not online <= recipe.keys():
+                raise ValueError('web_shop_url yêu cầu cấu hình máy chủ online')
+            web_shop_url = _validate_web_shop_url(raw_web_shop_url)
     server_name = recipe.get('server_name', '')
     if (not isinstance(server_name, str) or len(server_name) > 64
             or any(not ch.isprintable() for ch in server_name)):
@@ -595,6 +632,8 @@ def windows_runtime(recipe, output, manifest_sha256):
         config['server_name'] = server_name.strip()
     if release_url:
         config['release_url'] = release_url
+    if web_shop_url is not None:
+        config['web_shop_url'] = web_shop_url
     (output / 'MO-GAME.txt').write_text(
         'Giải nén cả gói rồi mở LANBoom.exe. Không chạy game khi đang xem file ZIP.\n'
         'Muốn tạo lối tắt Desktop, mở Cài đặt trong Launcher.\n'

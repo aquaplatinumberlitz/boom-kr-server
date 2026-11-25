@@ -321,6 +321,20 @@ class PackageTests(unittest.TestCase):
             prepare(fixed_pkg, self.root / 'fixed-state', emit_lucci_135=True)
         with self.assertRaisesRegex(ValueError, 'database_zero'):
             prepare(fixed_pkg, self.root / 'fixed-state-ws', web_shop_bind='127.0.0.1:8080')
+        with self.assertRaisesRegex(ValueError, 'database_zero'):
+            prepare(fixed_pkg, self.root / 'fixed-state-ua', unlock_all=True)
+
+        ua_cfg, _, _ = prepare(
+            self.out,
+            self.root / 'ua-state',
+            economy_profile=profile,
+            unlock_all=True,
+            web_shop_bind='127.0.0.1:8082',
+        )
+        ua_adm = json.loads(ua_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        self.assertTrue(ua_adm['unlock_all_catalog'])
+        self.assertTrue(ua_adm['web_shop']['unlock_all'])
+        self.assertEqual(ua_adm['web_shop']['bind'], '127.0.0.1:8082')
 
 
 if __name__ == '__main__':

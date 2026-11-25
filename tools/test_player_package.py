@@ -168,6 +168,58 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(config['manifest_sha256'], digest(output / 'data/manifest.json'))
         self.assertEqual({p.name for p in output.iterdir()}, {'LANBoom.exe', 'data'})
 
+    def test_windows_bundle_validates_and_pins_optional_web_shop_url(self):
+        def pin(path):
+            return dict(path=str(path), bytes=path.stat().st_size, sha256=digest(path))
+        program = self.root / 'first-party.exe'
+        header = bytearray(64)
+        header[:2] = b'MZ'
+        struct.pack_into('<I', header, 60, 64)
+        program.write_bytes(header + b'PE\0\0\x64\x86')
+        cert = self.root / 'public.der'
+        cert.write_bytes(b'test-only-public-certificate')
+
+        for idx, valid_url in enumerate(('http://127.0.0.1:8080/', 'http://10.77.0.1:8081')):
+            output = self.root / f'win-valid-{idx}'
+            summary = build(self.recipe, output, self.no_art)
+            recipe = dict(launcher=pin(program), companion=pin(program), certificate=pin(cert),
+                          prelogin_certificate=pin(cert), server='127.0.0.1:2000',
+                          prelogin_server='127.0.0.1:2001', ports=[3838, 3938],
+                          web_shop_url=valid_url)
+            windows_runtime(recipe, output, summary['manifest_sha256'])
+            config = json.loads((output / 'data/launcher.json').read_text())
+            self.assertEqual(config['web_shop_url'], valid_url)
+
+        for idx, bad_url in enumerate((
+            'https://127.0.0.1:8080/',
+            'http://0.0.0.0:8080/',
+            'http://127.0.0.1:0/',
+            'http://224.0.0.1:8080/',
+            'http://255.255.255.255:8080/',
+            'http://127.0.0.1:8080/shop',
+            'http://127.0.0.1:8080?x=1',
+            'http://user@127.0.0.1:8080/',
+            ' http://127.0.0.1:8080/',
+            'http://localhost:8080/',
+        )):
+            with self.subTest(bad_url=bad_url):
+                output = self.root / f'win-bad-{idx}'
+                summary = build(self.recipe, output, self.no_art)
+                recipe = dict(launcher=pin(program), companion=pin(program), certificate=pin(cert),
+                              prelogin_certificate=pin(cert), server='127.0.0.1:2000',
+                              prelogin_server='127.0.0.1:2001', ports=[3838, 3938],
+                              web_shop_url=bad_url)
+                with self.assertRaisesRegex(ValueError, 'URL cửa hàng web'):
+                    windows_runtime(recipe, output, summary['manifest_sha256'])
+
+        no_online = self.root / 'win-no-online'
+        summary = build(self.recipe, no_online, self.no_art)
+        with self.assertRaisesRegex(ValueError, 'Cần gói O1|web_shop_url'):
+            windows_runtime(
+                dict(launcher=pin(program), companion=pin(program), ports=[3838, 3938],
+                     web_shop_url='http://127.0.0.1:8080/'),
+                no_online, summary['manifest_sha256'])
+
     def test_wrong_executable_pin_and_unpatched_korean_are_rejected(self):
         self.recipe['languages']['ko']['encoding'] = 'cp949'
         with self.assertRaisesRegex(ValueError, '949x'):
