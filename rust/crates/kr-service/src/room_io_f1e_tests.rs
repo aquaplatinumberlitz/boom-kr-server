@@ -1,5 +1,6 @@
 use super::*;
 use crate::map_profile::{Catalog, ChoiceConfig, Profile};
+use crate::terrain::{BIG_BATTLE_SIZE, STANDARD_SIZE};
 use serde_json::{Value, json};
 use std::{
     fs,
@@ -106,6 +107,16 @@ impl Fixtures {
     }
 
     fn choice(&self, profile: &Value, index: u32) -> (ChoiceConfig, HashMap<String, Reply>) {
+        self.choice_with_floor(profile, index, floor582(12, 14), (16, 17))
+    }
+
+    fn choice_with_floor(
+        &self,
+        profile: &Value,
+        index: u32,
+        floor: Vec<u8>,
+        (box_row, box_col): (usize, usize),
+    ) -> (ChoiceConfig, HashMap<String, Reply>) {
         let code = profile["map_code"].as_u64().unwrap();
         let name = profile["name"].as_str().unwrap();
         let mut inner = vec![0; 37 + name.len() + 2 * 26];
@@ -146,7 +157,7 @@ impl Fixtures {
                 196,
                 fields(&[(0, Width::U8), (0, Width::U32), (code, Width::U16)]),
             ),
-            ("floor", 582, floor582(12, 14)),
+            ("floor", 582, floor),
         ] {
             let fixture = self.pin(
                 &format!("{name}-{alias}"),
@@ -166,7 +177,7 @@ impl Fixtures {
         let height = profile["height"].as_u64().unwrap() as usize;
         let mut kinds = vec![0; width * height];
         if width == 19 {
-            kinds[16 * width + 17] = 2;
+            kinds[box_row * width + box_col] = 2;
         }
         let terrain = json!({
             "width": width, "height": height, "kinds": kinds,
@@ -220,10 +231,173 @@ fn raw_blob(inner: &[u8]) -> Vec<u8> {
 }
 
 fn floor582(row: u8, col: u8) -> Vec<u8> {
-    let mut inner = vec![1, 0, 0, 0, 0, 0, row, col];
-    inner.extend(1_u32.to_le_bytes()); // Fixed Fire.
-    inner.extend([0; 4]); // No hidden/third group.
+    floor582_items(&[(0, row, col, 1)], &[])
+}
+
+fn floor582_items(visible: &[(u32, u8, u8, u32)], hidden: &[(u32, u8, u8, u32)]) -> Vec<u8> {
+    let mut inner = Vec::new();
+    for items in [visible, hidden, &[]] {
+        inner.extend((items.len() as u16).to_le_bytes());
+        for &(index, row, col, kind) in items {
+            inner.extend(index.to_le_bytes());
+            inner.extend([row, col]);
+            inner.extend(kind.to_le_bytes());
+        }
+    }
     raw_blob(&inner)
+}
+
+fn pickup124(round: u64, index: u32, row: u8, col: u8, kind: u16) -> Vec<u8> {
+    fields(&[
+        (0, Width::U8),
+        (0, Width::U8),
+        (row.into(), Width::U8),
+        (col.into(), Width::U8),
+        (index.into(), Width::U32),
+        (kind.into(), Width::U16),
+        (1, Width::U32),
+        (crate::room::wire_key(round).unwrap().into(), Width::U32),
+        (0, Width::U8),
+    ])
+}
+
+fn reveal142(row: u8, col: u8) -> Vec<u8> {
+    fields(&[
+        (row.into(), Width::U8),
+        (col.into(), Width::U8),
+        (0, Width::U8),
+        (u32::MAX.into(), Width::U32),
+    ])
+}
+
+fn assert_floor_reports_outside_grid(session: &mut Session, round: u64, cells: &[(u8, u8)]) {
+    for &(row, col) in cells {
+        let claim = pickup124(round, 0, row, col, 1);
+        assert!(session.packet(124, &claim).is_err(), "({row}, {col})");
+        assert!(
+            session.packet(142, &reveal142(row, col)).is_err(),
+            "({row}, {col})"
+        );
+    }
+    assert!(session.inbox.try_recv().is_err());
+}
+
+#[test]
+fn floor582_rejects_unsupported_grids_and_visible_or_hidden_items_past_each_edge() {
+    let edge = floor582_items(&[(0, 16, 18, 1)], &[(1, 16, 18, 0)]);
+    let floor = pickups::Catalog::from_floor_for_grid(&edge, BIG_BATTLE_SIZE).unwrap();
+    assert_eq!(floor.visible_items().collect::<Vec<_>>(), [(0, 16, 18, 1)]);
+    assert!(pickups::Catalog::from_floor(&edge).is_err());
+    assert!(pickups::Catalog::from_floor_for_grid(&floor582(0, 0), (17, 19)).is_err());
+    for (grid, cells) in [
+        (BIG_BATTLE_SIZE, [(17, 18), (16, 19), (17, 19)]),
+        (STANDARD_SIZE, [(13, 14), (12, 15), (13, 15)]),
+    ] {
+        for (row, col) in cells {
+            let item = [(0, row, col, 1)];
+            for body in [floor582_items(&item, &[]), floor582_items(&[], &item)] {
+                assert!(pickups::Catalog::from_floor_for_grid(&body, grid).is_err());
+            }
+        }
+    }
+}
+
+#[test]
+fn big_battle_floor_reports_reveal_and_confirm_edge_items() {
+    let fixtures = Fixtures::new();
+    let (choice, replies) = fixtures.choice_with_floor(
+        &profile("BSBigCamp08", 81, BIG_BATTLE_SIZE, false, false),
+        0,
+        floor582_items(&[(0, 16, 18, 2)], &[(1, 16, 18, 0)]),
+        (16, 18),
+    );
+    let big = choice
+        .terrain
+        .unwrap()
+        .validate_measured(
+            &choice.packets["map"].fixture.load().unwrap(),
+            &choice.packets["start"].fixture.load().unwrap(),
+            9,
+        )
+        .unwrap();
+    let shared = registry_foundation_tests::empty(0);
+    let mut a = Session::open(&shared, 1, 11).unwrap();
+    let mut b = Session::open(&shared, 2, 22).unwrap();
+    let round = {
+        let mut r = shared.lock().unwrap();
+        r.rules.item_policy = pickups::Policy::ReportDerivedBasic;
+        r.model.terrain = Some(big);
+        let first = r.model.enter(1, 11, true).unwrap();
+        let peer = r.model.enter(2, 22, false).unwrap();
+        r.model.setup(first).unwrap();
+        r.model.setup(peer).unwrap();
+        r.model.ready(peer).unwrap();
+        let round = r.model.begin(first).unwrap();
+        r.model.ack(first, round).unwrap();
+        r.model.ack(peer, round).unwrap();
+        r.model.bombs.set_grid(BIG_BATTLE_SIZE);
+        r.model.pickups = pickups::Round::begin(
+            round,
+            &pickups::Catalog::from_floor_for_grid(&replies["floor"].payload, BIG_BATTLE_SIZE)
+                .unwrap(),
+        )
+        .unwrap();
+        let stats = crate::characters::Catalog::measured(&[0, 1])
+            .unwrap()
+            .get(0)
+            .unwrap();
+        for identity in [1, 2] {
+            let member = r.model.members.get_mut(&identity).unwrap();
+            member.character = Some(0);
+            member.item_stats = Some(stats);
+        }
+        round
+    };
+    assert_floor_reports_outside_grid(&mut a, round, &[(17, 18), (16, 19)]);
+    let fixed = pickup124(round, 0, 16, 18, 2);
+    let hidden = pickup124(round, 1, 16, 18, 0);
+    assert!(!a.packet(124, &hidden).unwrap().pickup.unwrap().accepted);
+    let reveal = reveal142(16, 18);
+    assert_eq!(
+        a.packet(142, &reveal).unwrap().terrain_notice,
+        Some("no_current_committed_clearance")
+    );
+    assert!(a.packet(124, &fixed).unwrap().pickup.unwrap().accepted);
+    for inbox in [&mut a.inbox, &mut b.inbox] {
+        let batch = inbox.try_recv().unwrap();
+        assert_eq!(batch.packets[0].1.opcode, 165);
+        assert_eq!(
+            batch.packets[0].1.payload,
+            wire::pickup165(0, 0, 16, 18, 0, 2).unwrap()
+        );
+    }
+    assert!(
+        a.packet(118, &request(round, 1, 16, 17))
+            .unwrap()
+            .bomb
+            .unwrap()
+            .accepted
+    );
+    for session in [&mut a, &mut b] {
+        assert_eq!(session.inbox.try_recv().unwrap().packets[0].1.opcode, 159);
+        let mut batch = session.inbox.try_recv().unwrap();
+        assert!(session.prepare_delivery(&mut batch).unwrap());
+        assert_eq!(batch.packets[0].1.opcode, 158);
+        session.finish(&batch).unwrap();
+    }
+    assert_eq!(
+        a.packet(142, &reveal).unwrap().terrain_notice,
+        Some("revealed_current_hidden_cell")
+    );
+    assert!(a.packet(124, &hidden).unwrap().pickup.unwrap().accepted);
+    for inbox in [&mut a.inbox, &mut b.inbox] {
+        let batch = inbox.try_recv().unwrap();
+        assert_eq!(batch.packets[0].1.opcode, 165);
+        assert_eq!(
+            batch.packets[0].1.payload,
+            wire::pickup165(0, 0, 16, 18, 1, 0).unwrap()
+        );
+    }
 }
 
 fn table(profiles: &[Value]) -> Reply {
@@ -352,6 +526,13 @@ fn batch4a_catalog_selects_and_runs_big_battle_lovely_room_and_retro_popup() {
             r.model.ack(peer, round).unwrap();
             round
         };
+        if index != 0 {
+            assert_floor_reports_outside_grid(
+                &mut a,
+                round,
+                &[(13, 14), (12, 15), (13, 15), (16, 18)],
+            );
+        }
         let edge = a
             .packet(118, &request(round, 1, 16, 18))
             .unwrap()

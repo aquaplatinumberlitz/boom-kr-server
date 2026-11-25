@@ -728,7 +728,12 @@ pub fn load(
             );
         }
     }
-    let floor_catalog = pickups::Catalog::from_floor(&packets_floor_body)?;
+    let floor_terrain = match &maps {
+        Some(catalog) => catalog.choices[0].terrain.as_ref(),
+        None => terrain.as_ref(),
+    };
+    let floor_grid = floor_terrain.map_or(crate::terrain::STANDARD_SIZE, |t| t.grid_size());
+    let floor_catalog = pickups::Catalog::from_floor_for_grid(&packets_floor_body, floor_grid)?;
     floor_catalog.validate_needle(rules.life_actions.needle())?;
     floor_catalog.validate_stat_policy(rules.item_policy)?;
     let mut model = Room::with_allocation(count, rules.slot_allocation)?;
@@ -3816,12 +3821,17 @@ impl Session {
                 if body.len() != 7 {
                     return Err(err("known142 size"));
                 }
+                let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)? as u8;
+                let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? as u8;
+                let (width, height) = next
+                    .terrain
+                    .as_ref()
+                    .map_or(crate::terrain::STANDARD_SIZE, |t| t.grid_size());
+                let outside_grid = row >= height || col >= width;
                 let slot = read_uint(&body[2..3], Width::U8).map_err(io::Error::other)?;
                 let aux = read_uint(&body[3..], Width::U32).map_err(io::Error::other)?;
                 terrain_notice = Some(if r.rules.item_policy.enabled() {
-                    let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)? as u8;
-                    let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? as u8;
-                    if slot != u64::from(member.slot) || row >= 13 || col >= 15 {
+                    if slot != u64::from(member.slot) || outside_grid {
                         return Err(err("unsupported current item142 report"));
                     }
                     if let Phase::Armed { round } = next.phase {
@@ -3853,11 +3863,8 @@ impl Session {
                 } else if matches!(next.capacity(), 4 | 8) {
                     // CP201/209 actual142 follows explosions, including aux37 and -1.
                     // Observe the measured shape only. No reveal/eligibility/item effect.
-                    let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)?;
-                    let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)?;
                     if slot != u64::from(member.slot)
-                        || row >= 13
-                        || col >= 15
+                        || outside_grid
                         // Managed profiles treat aux as an opaque u32. Native
                         // values vary between identical round inputs; accepting
                         // the shape grants no reveal, item, world or ACK effect.
@@ -3874,9 +3881,8 @@ impl Session {
                     next.observe_opaque142(member.key)?;
                     "four_bomb_only_observed_no_reveal"
                 } else if let Phase::Armed { round } = next.phase {
-                    let row = read_uint(&body[..1], Width::U8).map_err(io::Error::other)? as u8;
-                    let col = read_uint(&body[1..2], Width::U8).map_err(io::Error::other)? as u8;
-                    if slot != u64::from(member.slot) || aux != u64::from(u32::MAX) {
+                    if slot != u64::from(member.slot) || outside_grid || aux != u64::from(u32::MAX)
+                    {
                         "unsupported_report"
                     } else if !next.pickups.hidden_cell(row, col) {
                         "unknown_hidden_cell"
@@ -3983,6 +3989,13 @@ impl Session {
             124 => {
                 let member = r.member(self.identity, self.connection)?;
                 let request = pickups::Request::parse(body)?;
+                let grid = next
+                    .terrain
+                    .as_ref()
+                    .map_or(crate::terrain::STANDARD_SIZE, |t| t.grid_size());
+                if !request.within_grid(grid) {
+                    return Err(err("pickup124 outside current grid"));
+                }
                 let needle = r.rules.life_actions.needle() && request.kind() == 145;
                 let extended = pickups::f1b_pickup_amount(request.kind())
                     .or_else(|| pickups::f1b_aux_pickup_amount(request.kind()))

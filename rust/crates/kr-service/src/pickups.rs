@@ -1,6 +1,7 @@
 //! Floor-only fixture policy, CP030/031/049/055/063. Not native world authority.
 //! List2 stays unavailable. Extended counts are per round; no account rewards.
 use crate::room::Membership;
+use crate::terrain::{BIG_BATTLE_SIZE, STANDARD_SIZE};
 use kr_wire::kr00967::{
     BANANA1_KIND, BANANA8_KIND, BOND_KIND, DART_KIND, DRILL_KIND, ItemUseKind, PIN_KIND,
     REMOTE_BOMB_KIND, SCANNER_KIND, SENSOR_KIND, SHIELD_KIND, SPRING_KIND, TRAP_KIND,
@@ -154,10 +155,25 @@ pub(crate) struct Item {
     pub column: u8,
     pub kind: u16,
 }
-#[derive(Clone, Debug, Default, PartialEq, Eq)]
+impl Item {
+    fn within_grid(&self, (width, height): (u8, u8)) -> bool {
+        self.row < height && self.column < width
+    }
+}
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub(crate) struct Catalog {
+    grid: (u8, u8),
     floor: BTreeMap<u32, Item>,
     hidden: BTreeMap<u32, Item>,
+}
+impl Default for Catalog {
+    fn default() -> Self {
+        Self {
+            grid: STANDARD_SIZE,
+            floor: BTreeMap::new(),
+            hidden: BTreeMap::new(),
+        }
+    }
 }
 impl Catalog {
     /// Reject floor kinds that require an opt-in policy before serving them.
@@ -273,8 +289,12 @@ impl Catalog {
     }
     /// Decode only the measured raw (tag0) serialized582 branch.
     pub fn from_floor(body: &[u8]) -> io::Result<Self> {
+        Self::from_floor_for_grid(body, crate::terrain::STANDARD_SIZE)
+    }
+
+    pub(crate) fn from_floor_for_grid(body: &[u8], grid: (u8, u8)) -> io::Result<Self> {
         let err = || io::Error::other("unsupported measured floor582 catalog");
-        if !(16..=4096).contains(&body.len()) {
+        if !matches!(grid, STANDARD_SIZE | BIG_BATTLE_SIZE) || !(16..=4096).contains(&body.len()) {
             return Err(err());
         }
         let size = read_uint(&body[..4], Width::U32).map_err(io::Error::other)? as usize;
@@ -291,7 +311,10 @@ impl Catalog {
             return Err(err());
         }
         let mut at = 6;
-        let mut result = Self::default();
+        let mut result = Self {
+            grid,
+            ..Self::default()
+        };
         let mut indices = BTreeSet::new();
         for group in 0..3 {
             let count = stream.get(at..at + 2).ok_or_else(err)?;
@@ -307,10 +330,13 @@ impl Catalog {
                 let kind =
                     u16::try_from(u32::from_le_bytes(row[6..10].try_into().expect("bounded")))
                         .map_err(|_| err())?;
-                // Batch 4a still exports 582 within the measured 15×13 window.
-                // Terrain grid size does not extend the pickup contract.
-                if row[4] >= 13
-                    || row[5] >= 15
+                let item = Item {
+                    index,
+                    row: row[4],
+                    column: row[5],
+                    kind,
+                };
+                if !item.within_grid(grid)
                     || !(crate::item_scope::kept_kind(u32::from(kind))
                         || f1b_pickup_amount(kind).is_some()
                         || f1b_aux_pickup_amount(kind).is_some()
@@ -322,12 +348,6 @@ impl Catalog {
                 {
                     return Err(err());
                 }
-                let item = Item {
-                    index,
-                    row: row[4],
-                    column: row[5],
-                    kind,
-                };
                 if group == 0 {
                     result.floor.insert(index, item);
                 } else {
@@ -391,6 +411,9 @@ impl Request {
     }
     pub fn kind(&self) -> u16 {
         self.item.kind
+    }
+    pub(crate) fn within_grid(&self, grid: (u8, u8)) -> bool {
+        self.item.within_grid(grid)
     }
     pub fn confirmation(&self) -> io::Result<Vec<u8>> {
         kr_wire::kr00967::pickup165(
@@ -608,7 +631,8 @@ impl Round {
     /// Mutate only the candidate model. Caller reserves ALL recipient queues
     /// before publishing this consumed set, under the same room owner lock.
     pub fn reveal(&mut self, generation: u64, row: u8, column: u8) -> bool {
-        if self.generation != Some(generation) {
+        let (width, height) = self.catalog.grid;
+        if self.generation != Some(generation) || row >= height || column >= width {
             return false;
         }
         let ids: Vec<_> = self
@@ -647,7 +671,9 @@ impl Round {
             "context_mismatch"
         } else if self.catalog.hidden.contains_key(&request.item.index) {
             "hidden_unrevealed"
-        } else if self.catalog.floor.get(&request.item.index) != Some(&request.item) {
+        } else if !request.within_grid(self.catalog.grid)
+            || self.catalog.floor.get(&request.item.index) != Some(&request.item)
+        {
             "catalog_mismatch"
         } else if self.consumed.contains(&request.item.index) {
             "already_consumed"
@@ -695,7 +721,7 @@ pub(crate) mod tests {
                     kind: 4,
                 },
             )]),
-            hidden: BTreeMap::new(),
+            ..Catalog::default()
         }
     }
     #[test]
@@ -726,7 +752,7 @@ pub(crate) mod tests {
                     kind: 3,
                 },
             )]),
-            hidden: BTreeMap::new(),
+            ..Catalog::default()
         }
     }
     #[test]
@@ -755,6 +781,7 @@ pub(crate) mod tests {
     }
     pub(crate) fn catalog() -> Catalog {
         Catalog {
+            grid: STANDARD_SIZE,
             floor: BTreeMap::from([(
                 17,
                 Item {
