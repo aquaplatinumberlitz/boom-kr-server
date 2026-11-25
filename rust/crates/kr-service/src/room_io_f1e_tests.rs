@@ -409,16 +409,6 @@ fn batch4a_profile_policy_fails_closed() {
     let loads = |value| {
         Profile::load(&fixtures.pin("profile", &serde_json::to_vec(&value).unwrap())).is_ok()
     };
-    for (name, code) in [
-        ("Aqua03", 3),
-        ("CaJJ_Wriggle01", 171),
-        ("Fm_RescueET01", 318),
-        ("Fm_Coloring03", 301),
-        ("RetroForestN01", 941),
-        ("RetroVillageN01", 953),
-    ] {
-        assert!(!loads(profile(name, code, (15, 13), true, false)), "{name}");
-    }
     assert!(!loads(profile("RetroCampN06", 933, (15, 13), true, false)));
     assert!(!loads(profile("LovelyRoom01", 467, (15, 13), true, false)));
     assert!(!loads(profile("BSBigCamp08", 81, (19, 16), false, false)));
@@ -447,5 +437,54 @@ fn batch4a_profile_policy_fails_closed() {
         assert!(loads(allowed.clone()), "{name}");
         allowed.as_object_mut().unwrap().remove("adapter");
         assert!(!loads(allowed), "{name} without adapter");
+    }
+}
+
+#[test]
+fn f1e_script_profiles_require_marker_code_and_exact_distinct_spawns() {
+    let fixtures = Fixtures::new();
+    let load =
+        |value| Profile::load(&fixtures.pin("profile", &serde_json::to_vec(&value).unwrap()));
+    for (name, code, expected_spawns) in [
+        ("Aqua03", 3, 8),
+        ("RetroForestN06", 946, 8),
+        ("RetroVillageN01", 953, 8),
+        ("Fm_RescueET01", 318, 4),
+        ("CaJJ_Wriggle07", 177, 4),
+        ("Fm_Wriggle04", 326, 4),
+        ("RetroWriggleN05", 963, 4),
+        ("Fm_Coloring03", 301, 4),
+    ] {
+        let mut allowed = profile(name, code, (15, 13), true, false);
+        allowed["spawns"]
+            .as_array_mut()
+            .unwrap()
+            .truncate(expected_spawns);
+        assert!(load(allowed.clone()).is_ok(), "{name}");
+
+        let mut unmarked = allowed.clone();
+        unmarked.as_object_mut().unwrap().remove("adapter");
+        assert!(load(unmarked).is_err(), "{name} without adapter");
+
+        let mut wrong_code = allowed.clone();
+        wrong_code["map_code"] = json!(code + 1);
+        assert!(load(wrong_code).is_err(), "{name} with wrong code");
+
+        let mut no_bombs = allowed.clone();
+        no_bombs["disable_bombs"] = json!(true);
+        assert!(load(no_bombs).is_err(), "{name} with bombs disabled");
+
+        let mut wrong_count = allowed.clone();
+        let spawns = wrong_count["spawns"].as_array_mut().unwrap();
+        if expected_spawns == 8 {
+            spawns.truncate(4);
+        } else {
+            spawns.extend((4..8).map(|x| json!([x, 0])));
+        }
+        assert!(load(wrong_count).is_err(), "{name} with wrong spawn count");
+
+        let duplicate = allowed["spawns"][0].clone();
+        allowed["spawns"][1] = duplicate;
+        assert!(load(allowed).is_err(), "{name} with duplicate spawn");
     }
 }

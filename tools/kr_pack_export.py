@@ -86,6 +86,20 @@ _PANGLAND_MAPS = frozenset((
     'PangLand06', 'PangLand07', 'PangLand11', 'PangLand12', 'Pangland14',
     'PangLand15', 'PangLand16',
 ))
+_AQUA_OBJECT_MAPS = frozenset(('Aqua03', 'Aqua04', 'Aqua07', 'Aqua09'))
+_RETRO_SCRIPT_MAPS = {
+    f'Retro{family}N{n:02}': (f'Retro/Retro{family}Start', tag)
+    for family, tag in (('Forest', 'cloud'), ('Village', 'retroride'))
+    for n in range(1, 7)
+}
+_RESCUE_ALIEN_MAPS = frozenset(f'Fm_RescueET{n:02}' for n in range(1, 4))
+_RETRO_WRIGGLE_MAPS = frozenset(f'RetroWriggleN{n:02}' for n in range(1, 6))
+_WRIGGLE_MAPS = _RETRO_WRIGGLE_MAPS | {
+    *(f'CaJJ_Wriggle{n:02}' for n in range(1, 8)), 'Fm_Wriggle02', 'Fm_Wriggle04',
+}
+_COLORING_MAP = 'Fm_Coloring03'
+_F1E_FOUR_SPAWN_MAPS = _RESCUE_ALIEN_MAPS | _WRIGGLE_MAPS | {_COLORING_MAP}
+_F1E_NEW_SCRIPT_MAPS = _AQUA_OBJECT_MAPS | _RETRO_SCRIPT_MAPS.keys() | _F1E_FOUR_SPAWN_MAPS
 
 # Khóa BomberAttr f0 đã cắt cho trận thường. Nhánh f1=3 (kể cả các
 # biến thể trùng tên C15/C08/C26) và nhóm đối thủ còn thiếu luật.
@@ -266,7 +280,29 @@ _TYPE1_BULA_OFFSET36 = {
 _RETRO_CONVEYORS = {'Tile59_Ground/Conveyor00': (4, 2), 'Tile59_Ground/Conveyor01': (1, 0),
                    'Tile60_Ground/Conveyor02': (2, 1), 'Tile60_Ground/Conveyor03': (1, 0),
                    'Tile60_Ground/Conveyor04': (8, 3), 'Tile60_Ground/Conveyor05': (4, 2)}
-_RETRO_DECORATORS = frozenset(f'Tile60_Deco/{tile}' for tile in ('Cloud00', 'Cloud01', 'Deco03'))
+_RETRO_DECORATORS = frozenset((
+    'Tile60_Deco/Cloud00', 'Tile60_Deco/Cloud01', 'Tile60_Deco/Deco03',
+    'Tile58_Deco/Cloud00', 'Tile58_Deco/Cloud01', 'Tile61_Deco/Static04_2', 'Tile61_Deco/Static05_2',
+))
+_F1E_LEAP_BARRIERS = frozenset((
+    'Tile20_Static/CenterStatic00', 'Tile20_Static/CenterStatic01',
+    'Tile20_Static/CenterStatic02', 'Tile20_Static/CenterStatic03',
+    'Tile61_Static/GreenHouse01', 'Tile61_Static/GreenHouse02',
+    'Tile64_Static/CenterStatic00', 'Tile64_Static/CenterStatic01', 'Tile64_Static/Static00',
+))
+_F1E_OPEN_PASSABLES = {
+    'Tile61_Passable/GreenHouse03': (3, 0, 0, 0, 0, 0, *([_PASS_ALL] * 3), 0, 0, 1, 0, 0, 0, 0),
+    'Tile61_Passable/GreenHouse04': (3, 0, 0, 0, 0, 0, *([_PASS_ALL] * 3), 0, 0, 1, 0, 0, 0, 0),
+    'TileTransparent_Passable/Passable02': (3, 0, 0, 0, 0, 0, *([_PASS_ALL] * 4), 1, 1, 1, 0, 0, 0),
+}
+_F1E_COLORING_BOXES = {
+    'Tile38_Box/LineBlock_D': 1541,
+    'Tile38_Box/LineBlock_X': 263,
+    'Tile38_Box/LineBlock_Y': 262,
+    'Tile38_Box/NumBlock_09_X': 2308,
+    'Tile38_Box/NumBlock_09_XY': 2306,
+    'Tile38_Box/NumBlock_09_Y': 2307,
+}
 _RETRO_GROUND_102 = frozenset(f'Tile60_Ground/Tile{i:02}' for i in range(3, 12))
 _RETRO_TENTS = frozenset(('Tile62_Passable/ArmyTent00', 'Tile62_Passable/ArmyTent01'))
 _RETRO_BOMBPROOF_PORTS = {
@@ -365,7 +401,8 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             ground(index, key, d)
         elif d[:6] == (1, 0, 0, 0, 0, 0) and (
                 d[8:11] == (0, 0, _TYPE1_PIN_FLAGS.get(key, 0))
-                or (key in _TYPE1_LEAP_BARRIERS and d[8:11] == (1, 0, 0) and not any(d[12:]))
+                or ((key in _TYPE1_LEAP_BARRIERS or (f1e and key in _F1E_LEAP_BARRIERS))
+                    and d[8:11] == (1, 0, 0) and not any(d[12:]))
                 or (key in _TYPE1_UNREAD_OFFSET36 and d[8:11] == (0, 1, 0) and not any(d[11:]))
                 or (d[6:9] == (1, 1, 0) and d[10] == 0 and _TYPE1_BULA_OFFSET36.get(key) == d[9])):
             # EA1EE0 writes the two flags for type 1 after BA1350, using
@@ -389,6 +426,14 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             if kinds[index] != 0:
                 fail(index, 'thùng chồng footprint', key)
             kinds[index] = 1
+        elif (f1e and key in _F1E_COLORING_BOXES
+              and d[:16] == (2, 0, 0, 0, 0, 0, 0, 0, 0, _F1E_COLORING_BOXES[key], 0, 0, 0, 0, 0, 0)):
+            if kinds[index] != 0:
+                fail(index, 'thùng chồng footprint', key)
+            kinds[index], hits[index] = 2, 1
+        elif f1e and _F1E_OPEN_PASSABLES.get(key) == d[:16]:
+            # All four ray ports stay open; no static occupied flag.
+            pass
         elif (d[:6] == (3, 0, 0, 0, 0, 0) and d[6:11] == (_PASS_ALL,) * 3 + (0, 0)
               and d[11:13] == (0, 0)):
             # The Herb route confirms type 3 with the three all-ones groups:
@@ -520,7 +565,123 @@ def f1_floor(profile, terrain, *, f1e=False):
     return dict(fixed=fixed, hidden=hidden, omitted_placements=omitted)
 
 
-def f1e_bombs_disabled(raw, name):
+def _f1e_popup(node, name):
+    if node.tag != 'time' or node.attrib != {'ms': '0'} or len(node) != 1:
+        return False
+    popup = node[0]
+    return (popup.tag == 'popup' and not len(popup) and popup.get('name') == name
+            and popup.attrib.keys() == {'name', 'targetcx', 'targetcy', 'darkness'}
+            and all(re.fullmatch(r'[0-9]+', popup.get(key)) for key in ('targetcx', 'targetcy', 'darkness')))
+
+
+_F1E_OBJECT_CHILDREN = {
+    'ScriptObjects': ('ScriptObject',),
+    'ScriptObject': ('InitInfo', 'TriggerTable', 'ActionList'),
+    'TriggerTable': ('Time',), 'Time': ('Trigger',), 'ActionList': ('Action', 'action'),
+    'ItemTables': ('ItemTable',), 'ItemTable': ('Item',),
+}
+# These fields are inert. Exact values are checked only for the outer control
+# nodes; nothing here is compiled into server-side actions.
+_F1E_SCRIPT_FIELDS = {
+    'InitInfo': ('centerbase collisionattr collisionbase collisionsize boss chatpos class diedropitemprob '
+                 'diedropitemtable firepos fromstart gagebarpos image life lucci passtype pos type '
+                 'noinfluencegameend hide item lockedattr avoidduration createappearsec getontheshipscore '
+                 'getontheshipsec initappearcount killcnttobebadalien maxappearcount'),
+    'Time': 'until', 'Trigger': 'actionlist type', 'ActionList': 'name next',
+    'Action': 'class name pos00 func pos timeout time duration event userdist wait speed appeartime',
+    'action': 'name say01 say02 selfdamage speed collisionbase collisionsize duration event func wait',
+    'ItemTable': 'tablename index weight', 'Item': 'eateffect name weight',
+    'cloud': 'cloudappearloop cloudappeartime cloudattacktime cloudmovetime',
+    'numberofusers': 'count usercount', 'Respawn': 'col row', 'rideinfo': 'ridetype', 'Pos': 'col row',
+    'Domain': 'gridrect index',
+    'Match': ('comboruntime combostartkill combostarttime initialappearcount initialappeardelay '
+              'sweepinggoldscore sweepingscore vs'),
+    'Sweeping': 'combohaggardclass goldwriggleclass haggardclass wriggleclass',
+}
+_COLORING_FIELDS = frozenset(('groupIdx', 'regensecond', 'minboxcount', 'maxboxcount', 'combocount',
+                              'comboIntervalTime', 'comboRunTime', 'scoreLevelGap', 'maxScoreLevel',
+                              'timeLevelGap', 'maxTimeLevel'))
+_F1E_OBJECT_LABELS = frozenset((
+    '#샤크_부활', '#투명몬1', '#외계인', '#외계인꼬리', '#우주선', '#우주인',
+    '#까칠이01', '#까칠이02 콤보용', '#꼬물이', '#황금꼬물이', '=' * 75, '=' * 96,
+))
+
+
+def _f1e_inert_tree(node, grammar):
+    allowed = set(_F1E_SCRIPT_FIELDS.get(node.tag, '').split())
+    if node.tag in ('Domain', 'InitInfo'):
+        allowed.update(f'pos{i:02}' for i in range(18 if node.tag == 'InitInfo' else 12))
+    fields = {key.lower() for key in node.attrib}
+    if not fields <= allowed or len(fields) != len(node.attrib):
+        return False
+    for chunk in (node.text, *(child.tail for child in node)):
+        if chunk and chunk.strip() and (node.tag != 'ScriptObjects' or any(
+                line.strip() not in _F1E_OBJECT_LABELS for line in chunk.splitlines() if line.strip())):
+            return False
+    children = grammar.get(node.tag, ())
+    return bool(len(node)) == bool(children) and all(
+        child.tag in children and _f1e_inert_tree(child, grammar) for child in node)
+
+
+def _f1e_coloring_xml(source):
+    # Only quote decimal values of known fields in the one shipped leaf. Match
+    # quoted strings as tokens so their contents never get rewritten.
+    pattern = re.fullmatch(r'(<mapscript>\s*<ColoringPattern)(\s+[^<>]*?)(/\s*>\s*</mapscript>)', source)
+    if pattern is None:
+        return source
+    fields = '|'.join(sorted(_COLORING_FIELDS))
+    attrs = re.sub(rf'''"[^"]*"|'[^']*'|(\s+(?:{fields})\s*=\s*)([0-9]+)(?=\s|$)''',
+                   lambda match: f'{match[1]}"{match[2]}"' if match[1] else match[0], pattern[2])
+    return pattern[1] + attrs + pattern[3]
+
+
+def _f1e_new_script(root, name):
+    def no_text(node):
+        return not (node.text or '').strip() and not (node.tail or '').strip()
+
+    if not no_text(root) or any((child.tail or '').strip() for child in root):
+        return False
+    tags = tuple(child.tag for child in root)
+    if name == _COLORING_MAP:
+        return (tags == ('ColoringPattern',) and not len(root[0]) and no_text(root[0])
+                and root[0].attrib.keys() == _COLORING_FIELDS
+                and all(re.fullmatch(r'[0-9]+', value) for value in root[0].attrib.values()))
+    if name in _AQUA_OBJECT_MAPS:
+        return (tags == ('StageClearScript',)
+                and tuple(child.tag for child in root[0]) == ('ItemTables', 'ScriptObjects')
+                and _f1e_inert_tree(root[0], {**_F1E_OBJECT_CHILDREN,
+                                             'StageClearScript': ('ItemTables', 'ScriptObjects')}))
+    if name in _RETRO_SCRIPT_MAPS:
+        popup, tag = _RETRO_SCRIPT_MAPS[name]
+        return (tags == ('time', 'retroscript') and _f1e_popup(root[0], popup)
+                and all(no_text(node) for node in root[0].iter())
+                and _f1e_inert_tree(root[1], {
+                    'retroscript': ('InitInfos',), 'InitInfos': (tag,),
+                    tag: ('numberofusers', 'Respawn' if tag == 'cloud' else 'rideinfo'),
+                }))
+
+    option = 0
+    if name in _RETRO_WRIGGLE_MAPS:
+        if (tags[:1] != ('time',) or not _f1e_popup(root[0], 'RetroWriggle/Y2KWriggleStart')
+                or not all(no_text(node) for node in root[0].iter())):
+            return False
+        option = 1
+    if name in _RESCUE_ALIEN_MAPS:
+        script = 'RescueAliensScript'
+        children = ('InitInfos', 'ScriptObjects')
+        grammar = {'InitInfos': ('InitInfo',), 'AppearPosList': ('Pos',), 'AppearActionList': ('Action',),
+                   'ScriptObject': (*_F1E_OBJECT_CHILDREN['ScriptObject'], 'AppearPosList', 'AppearActionList')}
+    else:
+        script = 'WriggleScript'
+        children = ('Domains', 'Matches', 'ItemTables', 'Sweeping', 'ScriptObjects')
+        grammar = {'Domains': ('Domain',), 'Matches': ('Match',)}
+    return (tags[option:] == ('MapScriptOption', script) and not len(root[option])
+            and root[option].attrib == {'playTime': '90000'} and no_text(root[option])
+            and tuple(child.tag for child in root[-1]) == children
+            and _f1e_inert_tree(root[-1], {**_F1E_OBJECT_CHILDREN, **grammar, script: children}))
+
+
+def f1e_bombs_disabled(raw, name, *, f1e=False):
     """Accept only the observed script shapes, without executing any script."""
     from kr_f1e_script_audit import map_tail_offset, parse_trailer
 
@@ -535,9 +696,19 @@ def f1e_bombs_disabled(raw, name):
         if script:
             raise unsupported()
         return False
-    if not script or name not in _AQUA_MARKERS | _LOVELY_ROOMS | _RETRO_POPUPS.keys() | _SPACE_MAPS | _PANGLAND_MAPS:
+    new_script = f1e and name in _F1E_NEW_SCRIPT_MAPS
+    if not script or (not new_script and name not in (
+            _AQUA_MARKERS | _LOVELY_ROOMS | _RETRO_POPUPS.keys() | _SPACE_MAPS | _PANGLAND_MAPS)):
         raise unsupported()
     source = script.rstrip(b'\0').decode('cp949')
+    if new_script:
+        # ElementTree drops declarations, processing instructions and unused
+        # namespace attributes. Reject these before checking the live tree.
+        xml = re.sub(r'<!--.*?-->', '', source, flags=re.S)
+        if re.search(r'<[!?]|\sxmlns(?::[\w.-]+)?\s*=', xml):
+            raise unsupported()
+        if name == _COLORING_MAP:
+            source = _f1e_coloring_xml(source.strip())
     if name in _LOVELY_ROOMS:
         # The shipped comment contains an internal "--" (invalid XML). Drop
         # only closed comments before requiring an exact live tree.
@@ -548,6 +719,10 @@ def f1e_bombs_disabled(raw, name):
         raise unsupported() from error
     if root.tag != 'mapscript' or root.attrib or not len(root):
         raise unsupported()
+    if new_script:
+        if not _f1e_new_script(root, name):
+            raise unsupported()
+        return False
     if name in _PANGLAND_MAPS:
         # Shipped PangLand06 contains a "##special attack" marker line beside <time>.
         for node in root.iter():
@@ -576,12 +751,8 @@ def f1e_bombs_disabled(raw, name):
         return False
     if name in _LOVELY_ROOMS and node.tag == 'mapscriptoption' and node.attrib == {'enablebomb': '0'} and not len(node):
         return True
-    if name in _RETRO_POPUPS and node.tag == 'time' and node.attrib == {'ms': '0'} and len(node) == 1:
-        popup = node[0]
-        if (popup.tag == 'popup' and not len(popup) and popup.get('name') == _RETRO_POPUPS[name]
-                and popup.attrib.keys() == {'name', 'targetcx', 'targetcy', 'darkness'}
-                and all(re.fullmatch(r'[0-9]+', popup.get(key)) for key in ('targetcx', 'targetcy', 'darkness'))):
-            return False
+    if name in _RETRO_POPUPS and _f1e_popup(node, _RETRO_POPUPS[name]):
+        return False
     raise unsupported()
 
 
@@ -637,13 +808,13 @@ def read_map(levels, name, code, *, f1, f1e=False):
     if ((profile['width'], profile['height']) != (width, height)
             or (not f1e and profile['scripted'] and not (f1 and name == 'NXCL_Aqua01'))
             or not 2 <= len(spawns) <= 8
-            or (f1e and len(spawns) != 8)
+            or (f1e and len(spawns) != (4 if name in _F1E_FOUR_SPAWN_MAPS else 8))
             or any(not (0 <= x < width and 0 <= y < height) for x, y in spawns)
             or ((f1 or f1e) and len({tuple(pair) for pair in spawns}) != len(spawns))):
         raise ValueError(f'Map ngoài phạm vi phục vụ: {name}')
     if f1e:
         profile['adapter'] = F1E_ADAPTER
-        if f1e_bombs_disabled(raw, name):
+        if f1e_bombs_disabled(raw, name, f1e=True):
             profile['disable_bombs'] = True
     elif f1 and name == 'NXCL_Aqua01' and f1e_bombs_disabled(raw, name):
         raise ValueError(f'Map ngoài phạm vi phục vụ: {name}')
@@ -846,7 +1017,7 @@ def main():
     target.add_argument('--check-prebuilt', type=Path, help='Chỉ kiểm dữ liệu JSON đóng sẵn')
     adapter = parser.add_mutually_exclusive_group()
     adapter.add_argument('--f1-map', action='append', help='Tên map F1-a chính xác; lặp lại tối đa 16 lần')
-    adapter.add_argument('--f1e-map', action='append', help='Tên map Batch 4a chính xác; lặp lại tối đa 16 lần')
+    adapter.add_argument('--f1e-map', action='append', help='Tên map F1-e chính xác; lặp lại tối đa 16 lần')
     args = parser.parse_args()
     if (args.check_prebuilt is None) != (args.game_dir is not None):
         parser.error('--game-dir bắt buộc khi xuất và không dùng với --check-prebuilt')

@@ -63,22 +63,28 @@ impl Profile {
         (self.width, self.height)
     }
 
-    fn is_batch4a(&self) -> bool {
+    fn is_f1e(&self) -> bool {
         self.adapter.as_deref() == Some("f1e-adapter-r1")
     }
 
     fn supported(&self) -> bool {
-        if !self.is_batch4a() {
+        if !self.is_f1e() {
             return self.grid_size() == STANDARD_SIZE && !self.scripted && !self.disable_bombs;
         }
-        // Exact successful exports in f1e-adapter-r1.json. The adapter marker
-        // alone cannot admit a different script family or blocked Retro map.
-        let expected = match (self.map_code, self.name.as_str()) {
+        // Exact code/name pairs from the KR 00967 script inventory. The marker
+        // alone cannot admit a different map, grid or spawn count.
+        let scripted8 = ((STANDARD_SIZE, true, false), 8);
+        let scripted4 = ((STANDARD_SIZE, true, false), 4);
+        let (expected, expected_spawns) = match (self.map_code, self.name.as_str()) {
             (1, "Aqua01")
             | (2, "Aqua02")
+            | (3, "Aqua03")
+            | (4, "Aqua04")
             | (5, "Aqua05")
             | (6, "Aqua06")
+            | (7, "Aqua07")
             | (8, "Aqua08")
+            | (9, "Aqua09")
             | (862, "NXCL_Aqua01")
             | (167, "CaJJ_Space02")
             | (168, "CaJJ_Space08")
@@ -96,35 +102,47 @@ impl Profile {
             | (892, "PangLand12")
             | (893, "Pangland14")
             | (894, "PangLand15")
-            | (895, "PangLand16") => (STANDARD_SIZE, true, false),
-            (code @ 1063..=1070, name) if name == format!("Space{:02}", code - 1062) => {
-                (STANDARD_SIZE, true, false)
+            | (895, "PangLand16") => scripted8,
+            (301, "Fm_Coloring03") | (325, "Fm_Wriggle02") | (326, "Fm_Wriggle04") => scripted4,
+            (code @ 171..=177, name) if name == format!("CaJJ_Wriggle{:02}", code - 170) => {
+                scripted4
             }
+            (code @ 318..=320, name) if name == format!("Fm_RescueET{:02}", code - 317) => {
+                scripted4
+            }
+            (code @ 1063..=1070, name) if name == format!("Space{:02}", code - 1062) => scripted8,
             (81, "BSBigCamp08") | (82, "BSBigPatrit14") | (83, "BSBigVillage10") => {
-                (BIG_BATTLE_SIZE, false, false)
+                ((BIG_BATTLE_SIZE, false, false), 8)
             }
             (code @ 467..=476, name) if name == format!("LovelyRoom{:02}", code - 466) => {
-                (STANDARD_SIZE, true, true)
+                ((STANDARD_SIZE, true, true), 8)
             }
-            (code @ 929..=934, name) if name == format!("RetroCampN{:02}", code - 928) => {
-                (STANDARD_SIZE, true, false)
-            }
+            (code @ 929..=934, name) if name == format!("RetroCampN{:02}", code - 928) => scripted8,
             (code @ 935..=940, name) if name == format!("RetroFactoryN{:02}", code - 934) => {
-                (STANDARD_SIZE, true, false)
+                scripted8
+            }
+            (code @ 941..=946, name) if name == format!("RetroForestN{:02}", code - 940) => {
+                scripted8
             }
             (code @ 947..=952, name) if name == format!("RetroPatritN{:02}", code - 946) => {
-                (STANDARD_SIZE, true, false)
+                scripted8
+            }
+            (code @ 953..=958, name) if name == format!("RetroVillageN{:02}", code - 952) => {
+                scripted8
+            }
+            (code @ 959..=963, name) if name == format!("RetroWriggleN{:02}", code - 958) => {
+                scripted4
             }
             _ => return false,
         };
         (self.grid_size(), self.scripted, self.disable_bombs) == expected
-            && self.spawns.len() == 8
+            && self.spawns.len() == expected_spawns
             && self
                 .spawns
                 .iter()
                 .collect::<std::collections::HashSet<_>>()
                 .len()
-                == 8
+                == expected_spawns
     }
 
     pub(crate) fn load(pin: &FixturePin) -> io::Result<Self> {
@@ -158,7 +176,7 @@ impl Profile {
         packets: &HashMap<String, Reply>,
         actors: &HashMap<PlayerId, ActorProfile>,
     ) -> io::Result<()> {
-        if self.is_batch4a() {
+        if self.is_f1e() {
             // Standalone profiles have no choice-owned rule binding.
             return Err(error());
         }
@@ -406,7 +424,7 @@ impl Catalog {
             if terrain
                 .as_ref()
                 .is_some_and(|t| t.grid_size() != profile.grid_size())
-                || (profile.is_batch4a()
+                || (profile.is_f1e()
                     && terrain
                         .as_ref()
                         .is_none_or(|t| t.bombs_disabled() != profile.disable_bombs))

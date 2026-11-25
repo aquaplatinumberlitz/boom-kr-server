@@ -1,0 +1,95 @@
+{
+  "task": "f1e-95-complete",
+  "build": "KR 00967",
+  "baseline": "6ce4179407e684f0385b9f8e881c7a33e39206f6",
+  "source": "kr_static + emu_choice",
+  "status": "confirmed",
+  "scope": "Kiểm tra hình dạng script và chiếu hình học, profile và catalog tĩnh cho toàn bộ 96/96 map (95 map F1-e + NXCL_Aqua01).",
+  "review": {
+    "status": "waived",
+    "source": "docs/evidence/checkpoints/review-waiver.json"
+  },
+  "inputs": {
+    "script_inventory": {
+      "path": "docs/evidence/content/f1e-scripts-extracted.json",
+      "sha256": "a4983649a3118b005bb39fc9fe8d6fdc58530fc3e69487cfdabb2b7b9d149576",
+      "f1e_maps": 95,
+      "shared_f1a_map": "NXCL_Aqua01"
+    },
+    "client_static": {
+      "path": "docs/evidence/content/f1e-dynamic-scripts-ida.json",
+      "sha256": "405b22e3929fdb4639de495e6ed5ee659e62a38782b0b0d2c30bc85e7cd78142",
+      "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    "pack_sha256": {
+      "FxMap.idx": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+      "FxMap.idd": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+      "FxContents.idx": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+      "FxContents.idd": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd",
+      "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+      "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"
+    }
+  },
+  "prior_runtime": {
+    "source": "kr_runtime",
+    "run": "wine-f1e-5fam",
+    "host_local_summary": "local/runs/f1e-5fam-capture/batch-summary.json",
+    "summary_sha256": "c261beebf3893199a27283cd6f7c9cc120e2942f0bed1e5c4662a9805212b91d",
+    "maps": ["Aqua03", "RetroForestN03", "RetroVillageN01", "Fm_RescueET01", "CaJJ_Wriggle01", "Fm_Coloring03"],
+    "limit": "Mỗi map mẫu dùng catalog thử có terrain trống. Bản tóm tắt quan sát đường chạy client và không kiểm định phép chiếu terrain ở bản này."
+  },
+  "regression": {
+    "baseline_commit": "c8b6ff056583c88e1bba78cda6a5fb0d5c289ae2",
+    "equal_maps": 206,
+    "f1a_members_sha256": "92663b1d6e9697a2cc449d5f51782cbd7603cc11f51054aa53e85a517d6ea815"
+  },
+  "pack_verification": {
+    "expected": 96,
+    "exported": 96,
+    "blocked": 0,
+    "status": "confirmed",
+    "f1e_members_sha256": "fe6d7cdbe8c75c792b1042973dd48b5ee650be4e9176c6bcd264bdf6cfee1f62",
+    "unlocked_f1e_tiles_22": {
+      "retro_decorators": [
+        "Tile58_Deco/Cloud00",
+        "Tile58_Deco/Cloud01",
+        "Tile61_Deco/Static04_2",
+        "Tile61_Deco/Static05_2"
+      ],
+      "open_passables": [
+        "Tile61_Passable/GreenHouse03",
+        "Tile61_Passable/GreenHouse04",
+        "TileTransparent_Passable/Passable02"
+      ],
+      "type1_leap_barriers": [
+        "Tile20_Static/CenterStatic00",
+        "Tile20_Static/CenterStatic01",
+        "Tile20_Static/CenterStatic02",
+        "Tile20_Static/CenterStatic03",
+        "Tile61_Static/GreenHouse01",
+        "Tile61_Static/GreenHouse02",
+        "Tile64_Static/CenterStatic00",
+        "Tile64_Static/CenterStatic01",
+        "Tile64_Static/Static00"
+      ],
+      "coloring_1hit_boxes": [
+        "Tile38_Box/LineBlock_D",
+        "Tile38_Box/LineBlock_X",
+        "Tile38_Box/LineBlock_Y",
+        "Tile38_Box/NumBlock_09_X",
+        "Tile38_Box/NumBlock_09_XY",
+        "Tile38_Box/NumBlock_09_Y"
+      ]
+    }
+  },
+  "reproduction": [
+    "PYTHONPATH=tools python3 tools/test_f1e_adapter.py --pack-root <thư mục KR 00967>",
+    "PYTHONPATH=tools python3 -m unittest tools.test_kr_pack_items tools.test_f1_pack_matrix tools.test_kr_f1e_script_audit tools.test_f1e_adapter",
+    "python3 tools/check_docs.py",
+    "cd rust && cargo fmt --check && cargo clippy --workspace --all-targets --locked -- -D warnings && cargo test --workspace --locked -- --test-threads=4"
+  ],
+  "limits": [
+    "Không chạy lại Wine hoặc máy ảo. Không có nghiệm thu native cho catalog được xuất ở bản này.",
+    "Runtime Rust chưa thực thi các script động, AI, cơ chế kết quả hoặc opcode riêng 229, 132, 180, 186, 351 của các họ mới."
+  ]
+}
