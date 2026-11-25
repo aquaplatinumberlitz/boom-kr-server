@@ -174,9 +174,10 @@ def _concrete_ipv4(host):
     return ip
 
 
-def configure_economy(config, *, friends=False, s1=False, economy_profile=None, emit_lucci_135=False, web_shop_bind=None):
-    """Apply opt-in F4 economy, S->C 135, and embedded web shop settings to runtime config."""
-    if economy_profile is None and not emit_lucci_135 and web_shop_bind is None:
+def configure_economy(config, *, friends=False, s1=False, economy_profile=None,
+                      emit_lucci_135=False, web_shop_bind=None, unlock_all=False):
+    """Apply opt-in F4 economy, S->C 135, unlock_all, and embedded web shop settings."""
+    if economy_profile is None and not emit_lucci_135 and web_shop_bind is None and not unlock_all:
         return
     admission = config['diagnostic_two_lobby']['account_admission']
     if economy_profile is not None:
@@ -187,6 +188,10 @@ def configure_economy(config, *, friends=False, s1=False, economy_profile=None, 
         admission['persist_matches'] = True
         if friends:
             admission['unlock_all_catalog'] = True
+    if unlock_all:
+        if admission.get('profile_mode') != 'database_zero':
+            raise ValueError('unlock_all yêu cầu profile_mode database_zero')
+        admission['unlock_all_catalog'] = True
     if emit_lucci_135:
         if admission.get('profile_mode') != 'database_zero':
             raise ValueError('emit_lucci_135 yêu cầu profile_mode database_zero')
@@ -224,7 +229,7 @@ def configure_economy(config, *, friends=False, s1=False, economy_profile=None, 
 
 
 def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False, s1=False,
-            economy_profile=None, emit_lucci_135=False, web_shop_bind=None):
+            economy_profile=None, emit_lucci_135=False, web_shop_bind=None, unlock_all=False):
     if friends and s1:
         raise ValueError('O1 và S1 dùng hai cấu hình phục vụ riêng')
     state = private_state(root, state)
@@ -275,7 +280,8 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False,
         }
         config['authenticated_relay'].update(bind=relay_addr, advertise=relay_addr)
     configure_economy(config, friends=friends, s1=s1, economy_profile=economy_profile,
-                      emit_lucci_135=emit_lucci_135, web_shop_bind=web_shop_bind)
+                      emit_lucci_135=emit_lucci_135, web_shop_bind=web_shop_bind,
+                      unlock_all=unlock_all)
     run = state / 'runs' / str(time.time_ns())
     run.mkdir(mode=0o700, parents=True)
     if cache is not None:
@@ -337,6 +343,7 @@ def main():
     parser.add_argument('--economy-profile', type=Path, help='File JSON profile kinh tế F4 tuỳ chọn')
     parser.add_argument('--emit-lucci-135', action='store_true', help='Bật phát S->C 135 sau own291 và 175')
     parser.add_argument('--web-shop-bind', help='Địa chỉ IPv4:port mở F4-d HTTP web shop nội bộ')
+    parser.add_argument('--unlock-all', action='store_true', help='Bật chế độ F4 O1 unlock_all_catalog không ghi DB')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
     try:
@@ -357,7 +364,7 @@ def main():
             raise ValueError('Cần --state riêng')
         if (args.snapshot is not None) != (args.command == 'restore-db'):
             raise ValueError('Chỉ restore-db dùng và yêu cầu --snapshot')
-        if (args.economy_profile is not None or args.emit_lucci_135 or args.web_shop_bind is not None) and args.command not in ('run', 'prepare-friends', 'prepare-s1'):
+        if (args.economy_profile is not None or args.emit_lucci_135 or args.web_shop_bind is not None or args.unlock_all) and args.command not in ('run', 'prepare-friends', 'prepare-s1'):
             raise ValueError('Cờ F4 chỉ dùng với run, prepare-friends hoặc prepare-s1')
         scope = manifest.get('pack_scope')
         if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
@@ -395,7 +402,8 @@ def main():
             runtime, out, _ = prepare(root, state, cache, scope, s1=True,
                                       economy_profile=args.economy_profile,
                                       emit_lucci_135=args.emit_lucci_135,
-                                      web_shop_bind=args.web_shop_bind)
+                                      web_shop_bind=args.web_shop_bind,
+                                      unlock_all=args.unlock_all)
             payload = {'runtime': str(runtime), 'out': str(out)}
             ws = json.loads(runtime.read_bytes())['diagnostic_two_lobby']['account_admission'].get('web_shop')
             if ws is not None:
@@ -446,7 +454,8 @@ def main():
                 config, out, _ = prepare(root, state, cache, scope, friends=True,
                                          economy_profile=args.economy_profile,
                                          emit_lucci_135=args.emit_lucci_135,
-                                         web_shop_bind=args.web_shop_bind)
+                                         web_shop_bind=args.web_shop_bind,
+                                         unlock_all=args.unlock_all)
                 value = json.loads(config.read_bytes())
                 admission = value['diagnostic_two_lobby']['account_admission']
                 tls = admission['prelogin_tls']
@@ -461,7 +470,8 @@ def main():
             config, out, _ = prepare(root, state, cache, scope, args.f1_map,
                                      economy_profile=args.economy_profile,
                                      emit_lucci_135=args.emit_lucci_135,
-                                     web_shop_bind=args.web_shop_bind)
+                                     web_shop_bind=args.web_shop_bind,
+                                     unlock_all=args.unlock_all)
             service = str(executable(root, 'kr-service', target))
             command = [service, '--config', str(config), '--out', str(out)]
             if os.name == 'nt':
