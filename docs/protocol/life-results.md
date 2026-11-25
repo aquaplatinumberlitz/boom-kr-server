@@ -240,6 +240,14 @@ Từ [f4-w5-ida-ui-and-exp.json](../evidence/content/f4-w5-ida-ui-and-exp.json) 
 - **`S->C 20` (`sub_D6E890`) và nhánh `sub_D95C30`**: `sub_D95C30()` chỉ gọi `sub_456AD0() == 0` nên nhánh đọc nối tiếp `(u8, u32, u32, u32, u32, std::string)` (`sub_123DE50`/`sub_D94050`/`sub_1245CE0`) luôn kích hoạt sau cụm setter `sub_13E2380`, `sub_13E2440`, `sub_13E4950`, `sub_13E4BC0`, `sub_13E4A30`. Ngoài ra `S->C 137` (`sub_D6D1B0`) lặp `count` cặp `(u8 idx, u8 val)` gọi `sub_13E2380`, và `S->C 217` (`sub_D72F80`) gọi `sub_13E3EB0` (`sub_65A320`).
 - **HUD `Lv.%3d` (`sub_9022D0`, `0x9027B5`)**: lấy record `v87 = sub_D2FE90(this[1275])`; ở chế độ thường (`sub_1220830() == 0`), đọc `sub_529C20(v87 + 10)`, `sub_529C20(v87 + 74)`, `sub_1275370(v87[44], v87[45], 0)`, và `sub_529C60(v87 + 22)` để vẽ `Lv.%3d` (còn nhánh `sub_1220830() != 0` dùng `RpgInfoLevel`/`sub_D30320(0)`). Ánh xạ setter EXP/cấp tới từng offset `v87` chờ kiểm trực tiếp trên Wine.
 
+<a id="f4a-own291-and-hud-w6"></a>
+#### Bố cục `sub_D2FEB0` / `sub_AE6330` trong `S->C 291` và trường `Lv.%3d` HUD (Wave 6)
+
+Từ [f4-w6-ida-own291-and-hud.json](../evidence/content/f4-w6-ida-own291-and-hud.json) (`kr_static/confirmed`):
+
+- **Cấu trúc `UserSimpleInfo` (`544` byte/slot tại `sub_D2FE90`)**: `sub_D2FEB0` (`0xD2FEB0`, gọi từ `sub_D73BB0`) giải nén blob `v7` (`vtable+92`) rồi gọi `sub_D30BF0` → `sub_AE6330` (`UserSimpleInfoPacket`) điền trực tiếp vào record mà `sub_9022D0` dùng cho HUD sảnh.
+- **Vị trí trường `Lv.%3d` trong blob `own291` (`[0; 98]` hiện tại)**: ngay sau chuỗi tên (`sub_14E9C10`), `sub_AE6330` đọc `u8` (`+7`), `u8` (`+10`), `u32` (`+13`), `u8` (`+16`), `u32` (`+19`), rồi **`u16` tại offset `+11..+13` sau `name`** vào `this + 22` qua `sub_55FD30` (`sub_52A860`). Chính `sub_529C60(v87 + 22)` này được `sub_9022D0` truyền vào `Lv.%3d` và `sub_1277E30`. Các ô tiếp theo tới offset `+73` (`+25` dùng bởi `sub_1277C40`, `+28..+58` và `46/47` gửi ở `C->S 705/706`) đã xác định kiểu `u8/u16/u32/string`; 25 byte đuôi điều kiện (`sub_7036F0`/`sub_7A0130`/`sub_48D8D0`) và thanh `%` EXP giữ chờ đo Wine.
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 

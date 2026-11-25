@@ -1,0 +1,109 @@
+{
+  "schema": "kre.f4_w6_ida_own291_and_hud.v1",
+  "baseline": "2fe240e29ebe237f49e8adc7c8e249bdad1c07b6",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "scope": "Phân tích tĩnh IDA Wave 6: giải mã record 544B `UserSimpleInfo` / `sub_AE6330` trong `S->C 291` (`sub_D2FEB0`), trường `Lv.%3d` HUD `sub_9022D0` (`v87 + 22`), setter chống sửa bộ nhớ `sub_52A030`/`sub_52A350`, và các khối stage trong `sub_125D190` / caller `sub_124D6A0`.",
+  "inputs": [
+    {
+      "path": "local/runs/f4-w6-ida-dump.json",
+      "sha256": "2f00dd469ce6e6b9c276fb383c37046ac9cd7cdc81b2334f9782e1972c0cfd17",
+      "bytes": 121653,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w6-ida-dump2.json",
+      "sha256": "660910802b44167348722ca79824bc1cb65d31fc8fef6ba2a703089cd45f15c4",
+      "bytes": 27132,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w6-ida-dump3.json",
+      "sha256": "2a9324abb72ebc1f39e872af61cdca488bd8f1a399677e9da8e5a4b287228103",
+      "bytes": 45081,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w6-ida-dump4.json",
+      "sha256": "08b4892179650ca3dd1921819ae4e0286d2b7991f5e457a0a3bc2a9a6dae73f4",
+      "bytes": 24695,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w6-ida-dump5.json",
+      "sha256": "5f4a3bcf5bcb9ccb13647e837a4dec3644191d826219e03b5b08c2bd9048dbdb",
+      "bytes": 4636,
+      "storage": "gitignored"
+    },
+    {
+      "path": "local/runs/f4-w6-ida-dump6.json",
+      "sha256": "627a2d8ae6cfbb2b98990bc297959c630b13c0ba38734822755b4e3eeb4f8ea6",
+      "bytes": 15463,
+      "storage": "gitignored"
+    }
+  ],
+  "f4a_own291_and_hud_mapping": {
+    "status": "kr_static/confirmed",
+    "sub_D2FEB0": {
+      "va": "0xd2feb0",
+      "caller": "0xd73bb0 (sub_D73BB0)",
+      "record_array": "&this[136 * i + 6401] (stride 544B, base offset 25604 = sub_D2FE90(this, i))",
+      "blob_deserializer": "vtable + 4 -> sub_D30B80 (reset), vtable + 8 -> sub_D30BF0 -> sub_AE6330(blob)"
+    },
+    "sub_AE6330_inner_blob_prefix": {
+      "va": "0xae6330",
+      "owner_struct": "UserSimpleInfo / UserSimpleInfoPacket (ctor 0xd309f0 -> 0xae5c70)",
+      "fields_after_name_when_empty_strings": [
+        { "offset_after_name": 0, "type": "u8", "dest": "this + 7" },
+        { "offset_after_name": 1, "type": "u8", "dest": "this + 10", "consumer": "sub_9022D0 -> sub_529C20(v87 + 10) -> sub_1274FB0" },
+        { "offset_after_name": 2, "type": "u32", "dest": "this + 13" },
+        { "offset_after_name": 6, "type": "u8", "dest": "this + 16" },
+        { "offset_after_name": 7, "type": "u32", "dest": "this + 19" },
+        { "offset_after_name": 11, "type": "u16", "dest": "this + 22", "consumer": "sub_9022D0 -> sub_529C60(v87 + 22) -> Lv.%3d & sub_1277E30" },
+        { "offset_after_name": 13, "type": "u32", "dest": "this + 25", "consumer": "sub_D30BF0 -> sub_1277C40(sub_529C60(this + 25))" },
+        { "offset_after_name": 17, "type": "u32", "dest": "this + 28" },
+        { "offset_after_name": 21, "type": "u32", "dest": "this + 29" },
+        { "offset_after_name": 25, "type": "u32", "dest": "sub_65A320 (this + 30)" },
+        { "offset_after_name": 29, "type": "u8", "dest": "this + 33" },
+        { "offset_after_name": 30, "type": "u32", "dest": "this + 36", "consumer": "sub_D2FEB0 -> sub_13B0D80" },
+        { "offset_after_name": 34, "type": "string (4B len=0)", "dest": "this + 37", "consumer": "sub_D2FEB0 -> sub_13B0E30" },
+        { "offset_after_name": 38, "type": "5x u16 (10B)", "dest": "this[43..47]", "consumer": "sub_9022D0(44,45) + C->S 705/706(46,47)" },
+        { "offset_after_name": 48, "type": "2x u32 (8B)", "dest": "this + 48, this + 51" },
+        { "offset_after_name": 56, "type": "4x u32 (16B)", "dest": "this[54..57]" },
+        { "offset_after_name": 72, "type": "u8", "dest": "this[58]", "consumer": "sub_9022D0 -> v87[58] -> sub_1247C40" }
+      ],
+      "protected_cell_wrappers": {
+        "u8": "sub_529C20 -> sub_52A030 (get), sub_AE6740 -> sub_52A520 (set)",
+        "u32": "sub_529C60 -> sub_52A350 (get), sub_55FD30 -> sub_52A860 (set)"
+      },
+      "unknown": [
+        "Ngữ nghĩa chi tiết từng guard đuôi (`sub_7036F0`/`sub_7A0130`/`sub_48D8D0`) trên 25 byte cuối của template 98B và ánh xạ giữa `this + 22` (`Lv.%3d`) với `this + 25` / thanh phần trăm `%` sẽ kiểm tiếp trên Wine."
+      ]
+    }
+  },
+  "f4d_stage_switch_and_tokens": {
+    "status": "kr_static/confirmed",
+    "sub_125D190": {
+      "va": "0x125d190",
+      "switch_dispatch": "0x125d29a (`jmp near ptr word_205DA52`, indirect table)",
+      "stage_constructors_observed": [
+        { "site": "0x125d594/64a/69c", "ctor": "0xd9f3f0", "label": "sub_D9F3F0" },
+        { "site": "0x125d5f8", "ctor": "0x79bb10", "label": "sub_79BB10" },
+        { "site": "0x125d6d4", "ctor": "0x125e330", "label": "sub_125E330" },
+        { "site": "0x125d6fa", "ctor": "0x125e240", "label": "sub_125E240" },
+        { "site": "0x125d725", "ctor": "0x106df70", "label": "CShopStageNew" },
+        { "site": "0x125d77a", "ctor": "0xd556a0", "label": "CChattingStage" },
+        { "site": "0x125d7e1", "ctor": "0x10df8a0", "label": "CExchangeStage" },
+        { "site": "0x125d857", "ctor": "0x111aa20", "label": "CUserMarketStage (guard sub_76FBA0() == 0)" },
+        { "site": "0x125d8cd", "ctor": "0x1129180", "label": "CSquareStage (guard sub_BE0B90())" },
+        { "site": "0x125d943", "ctor": "0x11543a0", "label": "CMagicBookMarketStage (guard sub_844690())" },
+        { "site": "0x125d9a7", "ctor": "0x98c340", "label": "CCustomMapStage" }
+      ]
+    },
+    "xrefs_124D6A0": [
+      { "func": "0x124d240", "name": "CFxMessage::CFxMessage" },
+      { "func": "0x124d5d0", "name": "sub_124D5D0" },
+      { "func": "0xd77390", "name": "sub_D77390" }
+    ]
+  }
+}
