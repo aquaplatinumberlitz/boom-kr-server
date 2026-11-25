@@ -65,5 +65,18 @@
       "Hash catalog tái lập từ JSON, không có đường dẫn game trong bản xuất và file smoke đã được xóa."
     ]
   },
+  "rust_schema_check": {
+    "source": "design",
+    "status": "confirmed",
+    "baseline": "14f948f",
+    "toolchain": "1.99.0",
+    "method": "Dùng cargo build --locked --offline với một ví dụ Rust tạm. Truyền stdout của exporter qua stdin, chép hai object economy_policy và shop_catalog vào account_serving::Config qua serde_json::from_value rồi gọi EconomySettings::new để chạy hai Validate gốc. Không khởi động dịch vụ hoặc mở DB.",
+    "passed": [
+      "Standard: hai object hợp lệ, thưởng trận vẫn tắt.",
+      "O1: hai object hợp lệ, mọi giá bằng 0 và session_unlocked trả đủ SKU đang bật.",
+      "Ghi đè cùng --enable-economy: thưởng bật; character.0 vẫn tắt, giá 800 Lucci và grant timed 86400 giây được đọc đúng."
+    ],
+    "cleanup": "Đã xóa ví dụ tạm và thư mục build tạm (877 MiB); không ghi bản xuất JSON của ba lượt kiểm Rust ra đĩa."
+  },
   "fixture_test_command": "PYTHONPATH=tools python3 -m unittest tools/test_kr_f4_catalog_export.py"
 }
