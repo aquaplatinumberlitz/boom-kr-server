@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>Boom KR Web Shop</title>
+<style>body{font:16px sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem}button,select,input{font:inherit;padding:.4rem;margin:.2rem}li{margin:.4rem 0}.muted{color:#666}</style>
+<h1>Boom KR Web Shop</h1><p class="muted">Local shop session</p>
+<label>Bearer token <input id="token" type="password" size="48" autocomplete="off"></label><button onclick="load()">Load</button>
+<p id="balance"></p><label>Category <select id="category" onchange="loadCatalog()"><option value="">All</option><option>character</option><option>decoration</option><option>emotion</option><option>consumable</option><option>collection</option></select></label><ul id="items"></ul><pre id="message"></pre>
+<script>
+const q=x=>document.querySelector(x); q('#token').value=location.hash.startsWith('#token=')?decodeURIComponent(location.hash.slice(7)):'';
+async function api(path,opt={}){const t=q('#token').value.trim(); opt.headers={...(opt.headers||{}),Authorization:'Bearer '+t}; if(opt.body)opt.headers['Content-Type']='application/json'; const r=await fetch(path,opt); const j=await r.json().catch(()=>({})); if(!r.ok)throw Error(j.error||r.status); return j}
+async function load(){try{const p=await api('/api/v1/profile');q('#balance').textContent='Lucci: '+p.lucci; await loadCatalog()}catch(e){q('#message').textContent=String(e)}}
+async function loadCatalog(){try{const c=q('#category').value;const d=await api('/api/v1/catalog'+(c?'?category='+c:''));const ul=q('#items');ul.replaceChildren();for(const i of d.items){const li=document.createElement('li');const b=document.createElement('b');b.textContent=i.sku_id;li.append(b,` · ${i.category} · ${i.price_lucci} Lucci · ${i.usable?'usable':'not owned'} `);const buyBtn=document.createElement('button');buyBtn.textContent='Buy';buyBtn.addEventListener('click',()=>buy(i.sku_id));const eqBtn=document.createElement('button');eqBtn.textContent='Equip';eqBtn.addEventListener('click',()=>equip(i.sku_id));li.append(buyBtn,eqBtn);ul.appendChild(li)}}catch(e){q('#message').textContent=String(e)}}
+async function buy(sku){try{await api('/api/v1/purchase',{method:'POST',body:JSON.stringify({sku,request_id:crypto.randomUUID()})});await load()}catch(e){q('#message').textContent=String(e)}}
+async function equip(sku){try{await api('/api/v1/equip',{method:'POST',body:JSON.stringify({sku})});q('#message').textContent='Equipped'}catch(e){q('#message').textContent=String(e)}}
+</script>
