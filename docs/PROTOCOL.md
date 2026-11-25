@@ -114,6 +114,8 @@ phải từ chối length/count vượt giới hạn trước allocation. Không
 | Terrain, block và cascade | [terrain](protocol/terrain.md) | 142/195, cell/box flags |
 | Item, stat, pickup và kim | [items-stats](protocol/items-stats.md) | 124/145/165/582 |
 | Túi đồ, trang bị và mỹ phẩm F4 | [F4-b](protocol/f4-inventory-cosmetics.md#f4b-inventory-contract), [F4-c](protocol/f4-inventory-cosmetics.md#f4c-cosmetics-contract) | Bản tĩnh: `CStage` 219/224/225, 313–317; các route F4-c còn mở |
+| Cửa hàng web F4-d | [backend HTTP](protocol/f4-web-shop-backend.md#f4d-web-shop-backend) | API cục bộ, `unlock_all` O1 và native callback còn unknown |
+
 | Trap, death, cứu, kết quả và reset | [life-results](protocol/life-results.md), [kim/cứu Rust](protocol/life-results.md#rust-needle-rescue) | 127/170/175/180/202 |
 | Bốn/tám người, đội và admission | [multiplayer-team](protocol/multiplayer-team.md) | 106/110/121/153/175/180 |
 | LAN, WAN và Internet thật | [networks](protocol/networks.md) | endpoint/routing/NAT/netem/EOF |

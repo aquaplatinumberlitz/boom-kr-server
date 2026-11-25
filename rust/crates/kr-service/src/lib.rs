@@ -42,6 +42,7 @@ pub mod self_host;
 mod terrain;
 mod transport_ids;
 pub mod udp_relay;
+pub mod web_shop;
 
 use kr_wire::{HEADER_LEN, Receiver, decode, encode};
 use serde::Deserialize;
