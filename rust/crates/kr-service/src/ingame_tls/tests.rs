@@ -1043,6 +1043,8 @@ fn resources(client: Client) -> Arc<Resources> {
         patched_chat: false,
         persist_character: false,
         authenticated: None,
+        account_service: None,
+        emit_lucci_135: false,
         config: Config {
             friends_guest_only: false,
             bind: "127.0.0.1:50000".parse().unwrap(),
@@ -1933,6 +1935,152 @@ fn companion_reopens_expired_wcp_owner_and_authenticates_two_accounts_on_next_so
         .await
         .unwrap();
     });
+}
+
+#[test]
+fn native_tls_emit_lucci_135_sends_opt_in_settled_balance_and_skips_when_disabled() {
+    use crate::account_worker::EconomySettings;
+    use crate::accounts::{EconomyPolicy, RewardAmount, ShopCatalog};
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let policy = EconomyPolicy {
+        enabled: true,
+        win: RewardAmount {
+            exp: 100,
+            lucci: 250,
+        },
+        loss: RewardAmount { exp: 30, lucci: 50 },
+        draw: RewardAmount { exp: 50, lucci: 80 },
+        grant_on_disconnect_or_left: false,
+        level_thresholds: vec![0, 100, 400],
+    };
+    for emit in [false, true] {
+        let temp = Temp::new();
+        let mut store = Store::open(&temp.db()).unwrap();
+        let admin = Admin {
+            actor: "test",
+            reason: "ingame_tls F4-a 135 test",
+        };
+        let epoch = store.begin_instance(&admin, 100).unwrap();
+        let player = store
+            .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
+            .unwrap();
+        store
+            .admin_grant_lucci(&admin, player.player_id, 250, &format!("seed-{emit}"), 100)
+            .unwrap();
+        drop(store);
+        let _ = epoch;
+
+        runtime().block_on(async {
+            let worker = crate::account_worker::Worker::open_with_economy(
+                temp.db(),
+                8,
+                Duration::from_secs(5),
+                EconomySettings::new(policy.clone(), ShopCatalog::default()).unwrap(),
+            )
+            .await
+            .unwrap();
+            let hub = crate::room_service::Hub::new(
+                &crate::room_service::Config {
+                    max_rooms: 8,
+                    round_profile: None,
+                    player_choices: false,
+                    capacity: None,
+                    player_round: None,
+                },
+                crate::room_io::registry_foundation_tests::selection_prototype(),
+                None,
+                None,
+            )
+            .unwrap();
+            let (events_tx, mut events_rx) = mpsc::channel(32);
+            let mut authority = resources(worker.client());
+            {
+                let res = Arc::get_mut(&mut authority).unwrap();
+                res.hub = Some(hub);
+                res.events = events_tx;
+                res.account_service = Some(worker.service());
+                res.emit_lucci_135 = emit;
+            }
+            let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+            let server = quinn::Endpoint::server(
+                prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
+                "127.0.0.1:0".parse().unwrap(),
+            )
+            .unwrap();
+            let mut client = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+            client.set_default_client_config(prelogin::client_config(cert).unwrap());
+            let endpoint = server.clone();
+            let (halt, stop) = watch::channel(false);
+            let permit = Arc::new(Semaphore::new(1)).acquire_owned().await.unwrap();
+            let task = tokio::spawn(async move {
+                let tls = endpoint.accept().await.unwrap().await.unwrap();
+                connection(tls, authority, stop, permit).await
+            });
+            let conn = prelogin::connect(&client, server.local_addr().unwrap())
+                .await
+                .unwrap();
+            let (mut login, mut replies) = prelogin::open(&conn, 3838).await.unwrap();
+            let mut hello = [0; 15];
+            replies.read_exact(&mut hello).await.unwrap();
+            let (mut tx, mut rx) = (40, 43);
+            send(&mut login, &mut tx, 1, &credentials_for(1)).await;
+            let auth = receive(&mut replies, &mut rx).await;
+            let claims = channel_for(&auth.payload, 1);
+            send(&mut login, &mut tx, 9, &[0; 8]).await;
+            for opcode in [15, 62] {
+                assert_eq!(receive(&mut replies, &mut rx).await.opcode, opcode);
+            }
+            send(&mut login, &mut tx, 5, &[0; 9]).await;
+            assert_eq!(receive(&mut replies, &mut rx).await.opcode, 7);
+            login.finish().unwrap();
+
+            let (mut channel, mut replies) = prelogin::open(&conn, 3938).await.unwrap();
+            replies.read_exact(&mut hello).await.unwrap();
+            let (mut tx, mut rx) = (40, 43);
+            send(&mut channel, &mut tx, 6, &claims).await;
+            assert_eq!(receive(&mut replies, &mut rx).await.opcode, 17);
+            send(
+                &mut channel,
+                &mut tx,
+                67,
+                &write_uint(0, Width::U16).unwrap(),
+            )
+            .await;
+            for opcode in [241, 91, 14, 291] {
+                assert_eq!(receive(&mut replies, &mut rx).await.opcode, opcode);
+            }
+            if emit {
+                let p135 = receive(&mut replies, &mut rx).await;
+                assert_eq!(p135.opcode, 135);
+                assert_eq!(
+                    kr_wire::kr00967::decode_lucci135(&p135.payload).unwrap(),
+                    (0, 250)
+                );
+            } else {
+                assert!(
+                    tokio::time::timeout(
+                        Duration::from_millis(80),
+                        receive(&mut replies, &mut rx),
+                    )
+                    .await
+                    .is_err()
+                );
+            }
+            conn.close(0u8.into(), b"done");
+            let _ = halt.send(true);
+            let _ = task.await;
+            let mut saw_135_event = false;
+            while let Ok(ev) = events_rx.try_recv() {
+                if ev["event"] == "native_tls_economy_lucci_135_sent" {
+                    assert_eq!(ev["stage"], "lobby_enter");
+                    assert_eq!(ev["lucci"], 250);
+                    saw_135_event = true;
+                }
+            }
+            assert_eq!(saw_135_event, emit);
+            worker.shutdown().await.unwrap();
+        });
+    }
 }
 
 mod operations;
