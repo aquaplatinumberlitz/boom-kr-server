@@ -153,3 +153,14 @@ Opcode, payload hai chiều, token/enum, guard, phạm vi peer và persistence n
    consumer, ghép theo thời gian với ảnh A/B và DB trước/sau. Chỉ chốt từng route khi frame, cursor và UI cùng
    khớp đối chứng; local preview không chứng minh peer đã nhận. Giữ raw ở `local/` và dọn bản sao/prefix tạm
    theo [quy định dọn lượt chạy](../evidence/owner-directives/run-cleanup.json).
+
+<a id="f4b-inventory-callees-w2"></a>
+## Bổ sung tĩnh Wave 2 cho callee F4-b (`219/224/225` và `566`)
+
+Bằng chứng JSON chi tiết nằm ở [f4-w2-ida-deepdive.json](../evidence/content/f4-w2-ida-deepdive.json). Các điểm `kr_static/confirmed` mới tách được trong decompile:
+
+- **`sub_11CEA10` (`0x11CEA10`, callee ứng với nhánh `219`)**: đọc outer `count` (`vtable+60`, `u8`), lặp mỗi cụm đọc thêm `u8` (`vtable+60`) và `item_count` (`vtable+68`), rồi lặp `sub_11CE930(v4, a2)`, tra `sub_117F1E0` và chèn vào `this + 61320*i + 36` qua `sub_11CB910`; khác với `sub_11CE4C0`, hàm này **không** gọi bộ reset snapshot.
+- **`sub_11CE4C0` (`0x11CE4C0`, callee ứng với nhánh `224`)**: đọc outer `count` (`vtable+60`), với mỗi phần tử đọc `v23` (`vtable+60`, `u8`) và `v13` (`vtable+68`, `u32`), **gọi reset snapshot `sub_11DE900(&this[20*v23 + 123852])` và `sub_1180360(&this[61320*v23 + 36])`** trước khi đọc `v13` bản ghi qua `sub_11CE930`, tiếp theo là `sub_11DEB00`/`sub_11DE6C0`/`sub_11DA990`, và kết thúc bằng `sub_11CDE80` + `sub_11D0070`.
+- **`sub_11CE6A0` (`0x11CE6A0`, callee ứng với nhánh `225`)**: đọc `v7` (`vtable+60`, `u8`), xóa sạch **`8` slot mỗi phần tử** (`sub_55FD30(0)` x2, `sub_455630`), rồi lặp `v7 * 8` lần đọc cặp `v8` (`vtable+68`, `u32`) + chuỗi (`vtable+80`); nếu `v8 != 0` và tra được qua `sub_11E0E40(v8)` thì ghi bằng `sub_55FD30`/`sub_449C90` và đồng bộ qua `sub_11CE080` (`sub_11CF5E0`/`sub_11CF9C0`).
+- **Site `C->S 566` (`0x11AFA5D` trong `sub_11AECE0`, nhánh `sub_1199D00 == 35`)**: đọc bitmask `+56` của mục tra từ `sub_11E0E40` (`& 1` gọi `sub_13E4790(a3, 1)`, `& 0x200` gọi `sub_13E2380(a3, 0)`, `& 0x400` gọi `sub_13E2440(a3, 0)`), sau đó dựng `C->S 566` (`0x236`) với đúng **một byte `u8`** qua `sub_14EBC50` và gửi bằng `sub_1164D50`.
+- **Phần còn `unknown`**: layout bên trong của `sub_11CE930`, ý nghĩa chuỗi `vtable+80` trong `S->C 225`, và thao tác UI kích hoạt thực gửi `C->S 566` trên Wine.
