@@ -143,4 +143,7 @@ strings! {
     FirewallOk => "Đã cấp quyền LAN.", "LAN access is allowed.", "LAN 접속이 허용되었습니다.";
     #[cfg(windows)]
     FirewallBad => "Chưa cấp quyền LAN. Có thể thử lại trong Cài đặt.", "LAN access was not granted. Retry in Settings.", "LAN 접속이 허용되지 않았습니다. 설정에서 다시 시도하세요.";
+    WebShop => "Cửa hàng Web", "Web Shop", "웹 상점";
+    WebShopOpen => "Mở cửa hàng Web", "Open Web Shop", "웹 상점 열기";
+    WebShopOpened => "Đã mở cửa hàng Web trong trình duyệt.", "Web Shop opened in your browser.", "브라우저에서 웹 상점을 열었습니다.";
 }

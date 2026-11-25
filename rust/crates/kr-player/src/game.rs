@@ -78,8 +78,6 @@ impl Config {
             .and_then(crate::desktop::drive_url)
     }
 
-    // Consumed by unit tests now and launcher WebShop UI in Wave 4.
-    #[allow(dead_code)]
     pub fn web_shop_url(&self) -> Option<&str> {
         let raw = self.web_shop_url.as_deref()?;
         if raw.trim() != raw || raw.len() > 64 || raw.bytes().any(|b| b.is_ascii_control()) {
