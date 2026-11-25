@@ -1,0 +1,68 @@
+{
+  "schema": "kre.f4d_o1_unlock_all_e2e.v1",
+  "run": "o1-unlock-all-e2e-v1",
+  "baseline": "4cdc5a0b1d299bf38dfd2922765df3fefb1532dc",
+  "binaries": {
+    "tag": "f4-rust-v2",
+    "files": {
+      "kr-service": "8c5e53296d1e20ea9b7c7403cb3db21a576cbdba0782c1e568b477bef0d962d5",
+      "kr-admin": "284292b2ecbca7067f8dca7fa49497b89bd1f3f3508749376bc8c23b7925e97d",
+      "kr-launch-identity": "5024503f8a2e5b9a5c27eb7ab8bf797dc6c18489675d7c846cf5bdf4665c3ea6"
+    }
+  },
+  "economy_profile": {
+    "local_path": "local/runs/w7-f4a-wine/f4-profile-live.json",
+    "sha256": "e558d440e97dca32a502beb051f4df76e2eaff3438eced6504872c5b6766db26",
+    "catalog_items": 8316,
+    "unlock_all_catalog": true,
+    "web_shop_unlock_all": true
+  },
+  "local_artifacts": {
+    "summary_path": "local/runs/w7-f4a-wine/o1-unlock-all-e2e-v1/summary.json",
+    "summary_sha256": "d228816ccd135d4da7d618148e73bafa8c5a5166316488abdd1f0fab1efab53a"
+  },
+  "e2e_checks": {
+    "launcher_tls_login_and_web_shop_token": true,
+    "health": {
+      "ok": true,
+      "mode": "unlock_all",
+      "catalog_items": 8316,
+      "rewards_enabled": true
+    },
+    "html_root": {
+      "status": 200,
+      "contains_replaceState_scrub": true,
+      "contains_innerHTML": false
+    },
+    "profile": {
+      "player_id": 1,
+      "exp": 0,
+      "level": 1,
+      "lucci": 0,
+      "version": 1,
+      "mode": "unlock_all"
+    },
+    "catalog_character_count": 67,
+    "all_characters_unlocked_by_session": true,
+    "purchase_blocked": {
+      "status": 409,
+      "body": { "error": "unlock_all_no_purchase" }
+    },
+    "inventory": {
+      "status": 200,
+      "inventory": [],
+      "equipped": []
+    },
+    "logout_revoked_profile_status": 401,
+    "sqlite_counts_after_shutdown": {
+      "ledger_entries": 0,
+      "player_inventory": 0,
+      "player_equipped": 0,
+      "player_profiles": 0
+    }
+  },
+  "finding": {
+    "status": "kre_runtime/o1_unlock_all_verified",
+    "summary": "Live kr-service bật unlock_all_catalog + web_shop.unlock_all phục vụ đủ 8.316 SKU (67/67 nhân vật trả usable=true, unlocked_by_session=true), chặn POST /api/v1/purchase ở HTTP 409 unlock_all_no_purchase, thu hồi token 401 khi logout và giữ SQLite hoàn toàn không phát sinh ghi (0 dòng ledger/inventory/equipped/profiles)."
+  }
+}
