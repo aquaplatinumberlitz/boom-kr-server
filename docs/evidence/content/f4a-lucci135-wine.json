@@ -1,0 +1,102 @@
+{
+  "schema": "kre.f4a_lucci135_wine_accept.v1",
+  "run": "f4a-lucci135-v1",
+  "baseline": "385af566bf67251a3ce278196c0db99a2c14b884",
+  "build": "KR 00967",
+  "binaries": {
+    "tag": "f4a-rust-v1",
+    "verified_bins_sha256": "03f19ebb75b2b6e507e9995b1936429f11c3d88824a87adda1fccb1adcf15e24",
+    "files": {
+      "kr-service": "d845883191765b80ef361c31750a264c2f2666c8b18ef235348f646c760dc316",
+      "kr-prelogin": "2bd6377b156864048ce98692c339a090e0d4e4d90f28adbc0c823363c3688f15",
+      "kr-admin": "cc21091b1849b75454284a42183a79339e1d80bd0687bfa89b6604a11ea16738",
+      "kr-launch-identity": "5024503f8a2e5b9a5c27eb7ab8bf797dc6c18489675d7c846cf5bdf4665c3ea6"
+    }
+  },
+  "config": {
+    "map": "Tomb12",
+    "emit_lucci_135": true,
+    "economy_policy_source": "server/profiles/f4-economy-standard.json (enabled=true, win=100/100, loss=30/30, draw=50/50)"
+  },
+  "local_artifacts": {
+    "run_dir": "local/runs/w7-f4a-wine/f4a-lucci135-v1",
+    "summary_sha256": "92dcde19665563ba8e1a383dcf1f24533711d680f820c480079bcc476f369127",
+    "cleanup_sha256": "a56160ddfdaccdbb82509c36f099d4ea0f91fc5ef83bf2b0ef25c61f7fb529a7"
+  },
+  "cleanup": {
+    "namespace_ended": true,
+    "scratch_removed": true,
+    "deleted_bytes": 4632980800,
+    "namespace_exit": 0
+  },
+  "totals": {
+    "tcp_frames_crc_verified": 210,
+    "udp_packets": 2200,
+    "udp_native_peer_crc_ok": {
+      "A": 297,
+      "B": 283
+    },
+    "final_room_count": 0
+  },
+  "sqlite": {
+    "matches": [[1, 1, 256, "Tomb12", "complete", "elimination"]],
+    "match_players": [
+      [1, 0, 0, "win", "present"],
+      [1, 1, 0, "loss", "present"]
+    ],
+    "player_profiles": [
+      [1, 100, 1, 100, 2],
+      [2, 30, 1, 30, 2]
+    ],
+    "ledger_entries": [
+      [1, 1, "match_reward", 100, 100, 1, "match:1"],
+      [2, 2, "match_reward", 30, 30, 1, "match:1"]
+    ]
+  },
+  "observed_sc_135_frames": [
+    {
+      "role": "A",
+      "stage": "lobby_enter",
+      "seq": 58,
+      "bytes": 5,
+      "t153_ms": -22135.698,
+      "body_hex": "5a96ca5395",
+      "decoded": { "slot": 0, "lucci": 0 },
+      "frame_sha256": "c778eb2efe33e9b4fbc888a1edd75412efa3df262dfe3010f02299b5e66072d8"
+    },
+    {
+      "role": "B",
+      "stage": "lobby_enter",
+      "seq": 58,
+      "bytes": 5,
+      "t153_ms": -15907.705,
+      "body_hex": "5a96ca5395",
+      "decoded": { "slot": 0, "lucci": 0 },
+      "frame_sha256": "c778eb2efe33e9b4fbc888a1edd75412efa3df262dfe3010f02299b5e66072d8"
+    },
+    {
+      "role": "A",
+      "stage": "post_match_175",
+      "seq": 124,
+      "bytes": 5,
+      "t153_ms": 31006.594,
+      "body_hex": "5a96ca53f1",
+      "decoded": { "slot": 0, "lucci": 100 },
+      "frame_sha256": "0e204b57690ecc7de91f1e9fdfe8b4cb63c7d5a0a79a025213ceb8365cf44dbc"
+    },
+    {
+      "role": "B",
+      "stage": "post_match_175",
+      "seq": 118,
+      "bytes": 5,
+      "t153_ms": 31012.246,
+      "body_hex": "5a96ca538b",
+      "decoded": { "slot": 0, "lucci": 30 },
+      "frame_sha256": "bcc5d290d1506600adcd1dddfbf4a91eaafb06f3a32387484787bd1367262e2c"
+    }
+  ],
+  "ui_screenshots": {
+    "lobby_after_leave_A": "s1-lobby-after-leave-A.png (CookieA returned cleanly to lobby; KR lobby HUD shows Lv. 0 00.0% and does not display Lucci balance)",
+    "lobby_after_leave_B": "s1-lobby-after-leave-B.png (CookieB returned cleanly to lobby; KR lobby HUD shows Lv. 0 00.0% and does not display Lucci balance)"
+  }
+}

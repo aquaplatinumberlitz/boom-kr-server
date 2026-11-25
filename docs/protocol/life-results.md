@@ -214,6 +214,15 @@ post-match vẫn cần đối chiếu trên client. Không thay fixture `175` ha
 Bước kiểm tiếp là đổi từng trường trong một control/payload có cursor sạch, quan sát setter và
 hồ sơ qua Wine cục bộ; so ván đối chứng với ván khác 0 trước khi chọn tên, đơn vị hoặc hướng đồng bộ.
 
+<a id="f4a-lucci135-wine-accept"></a>
+#### Nghiệm thu Wine hai client cho `S->C 135` (`f4a-lucci135-v1`)
+
+Đo 2 client KR `00967` qua Wine trên `Tomb12` với `f4a-rust-v1` (`385af56`, bật `emit_lucci_135` và `economy_policy.enabled = true`, chi tiết tại [f4a-lucci135-wine.json](../evidence/content/f4a-lucci135-wine.json)):
+
+- **Wire `S->C 135` (`kr_runtime/confirmed`)**: Cả `CookieA` và `CookieB` nhận 2 bản tin `135` CRC-verified (5 byte): `(slot=0, lucci=0)` (`5a96ca5395`) lúc vào sảnh, rồi ngay sau `S->C 175` nhận `(slot=0, lucci=100)` (`5a96ca53f1`) cho thắng A và `(slot=0, lucci=30)` (`5a96ca538b`) cho thua B, không ngắt kết nối (`final_room_count: 0`, `210` frame TCP).
+- **SQLite Schema 7**: `player_profiles` ghi `[[1, 100, 1, 100, 2], [2, 30, 1, 30, 2]]`; `ledger_entries` ghi đúng hai dòng `match_reward` (`+100` và `+30`).
+- **UI sảnh sau trận**: Cả hai ảnh `s1-lobby-after-leave-{A,B}.png` về sảnh bình thường; HUD sảnh mặc định chỉ hiện `Lv. 0 00.0%` và không hiển thị số dư Lucci (nhánh nối EXP/cấp tới `S->C 175`/`20` giữ nguyên chưa suy đoán).
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 
