@@ -44,6 +44,7 @@ enum Screen {
     Change,
     Delete,
     Recover,
+    WebShop,
     AccountResult,
 }
 
@@ -94,6 +95,7 @@ enum Message {
     SaveCode,
     SavedCode(Result<bool, ()>),
     AccountDone(Result<Option<Zeroizing<String>>, ()>),
+    WebShopDone(Result<(), ()>),
     CopyCode,
     Tick,
     Resize(iced::Size),
@@ -566,7 +568,13 @@ impl Player {
         self.form = Form::default();
         if matches!(
             screen,
-            Some(Screen::Register | Screen::Change | Screen::Delete | Screen::Recover)
+            Some(
+                Screen::Register
+                    | Screen::Change
+                    | Screen::Delete
+                    | Screen::Recover
+                    | Screen::WebShop
+            )
         ) && let Some(id) = &self.server_prefs.selected
             && let Some(login) = self.server_prefs.login(id)
         {
@@ -692,7 +700,11 @@ impl Player {
                 if self.server_connecting
                     && matches!(
                         screen,
-                        Screen::Register | Screen::Recover | Screen::Change | Screen::Delete
+                        Screen::Register
+                            | Screen::Recover
+                            | Screen::Change
+                            | Screen::Delete
+                            | Screen::WebShop
                     )
                 {
                     return Task::none();
@@ -706,7 +718,11 @@ impl Player {
                 }
                 if matches!(
                     screen,
-                    Screen::Register | Screen::Change | Screen::Delete | Screen::Recover
+                    Screen::Register
+                        | Screen::Change
+                        | Screen::Delete
+                        | Screen::Recover
+                        | Screen::WebShop
                 ) {
                     return iced::widget::operation::focus(ACCOUNT_LOGIN);
                 }
@@ -747,31 +763,61 @@ impl Player {
             Message::TogglePassword if !self.submitting => self.form.reveal = !self.form.reveal,
             Message::Submit if !self.submitting => {
                 self.form.edited = true;
-                if let (
-                    Some(c),
-                    Some(
-                        screen @ (Screen::Register
-                        | Screen::Change
-                        | Screen::Delete
-                        | Screen::Recover),
-                    ),
-                ) = (self.selected_config(), self.screen)
+                if let (Some(c), Some(screen)) = (self.selected_config(), self.screen)
                     && matches!(self.server, Server::Ready(_))
                     && self.form.error(screen).is_none()
                 {
-                    self.submitting = true;
-                    self.modal_notice = None;
-                    let form = std::mem::take(&mut self.form);
-                    self.form.login.clone_from(&form.login);
-                    self.form.display_name.clone_from(&form.display_name);
-                    return Task::perform(
-                        async move {
-                            tokio::task::spawn_blocking(move || account::account(&c, screen, form))
+                    if screen == Screen::WebShop {
+                        self.submitting = true;
+                        self.modal_notice = None;
+                        let login = self.form.login.clone();
+                        let password = self.form.password.clone();
+                        return Task::perform(
+                            async move {
+                                tokio::task::spawn_blocking(move || {
+                                    account::open_web_shop_with_login(&c, &login, &password)
+                                })
                                 .await
                                 .unwrap_or(Err(()))
-                        },
-                        Message::AccountDone,
-                    );
+                            },
+                            Message::WebShopDone,
+                        );
+                    }
+                    if matches!(
+                        screen,
+                        Screen::Register | Screen::Change | Screen::Delete | Screen::Recover
+                    ) {
+                        self.submitting = true;
+                        self.modal_notice = None;
+                        let form = std::mem::take(&mut self.form);
+                        self.form.login.clone_from(&form.login);
+                        self.form.display_name.clone_from(&form.display_name);
+                        return Task::perform(
+                            async move {
+                                tokio::task::spawn_blocking(move || {
+                                    account::account(&c, screen, form)
+                                })
+                                .await
+                                .unwrap_or(Err(()))
+                            },
+                            Message::AccountDone,
+                        );
+                    }
+                }
+            }
+            Message::WebShopDone(result) => {
+                self.submitting = false;
+                match result {
+                    Ok(()) => {
+                        if let Some(id) = self.server_prefs.selected.clone() {
+                            self.server_prefs
+                                .remember(id, self.form.login.trim(), false);
+                            self.save_servers();
+                        }
+                        self.form.password = Zeroizing::new(String::new());
+                        self.modal_notice = Some((Copy::WebShopOpened, false));
+                    }
+                    Err(()) => self.modal_notice = Some((Copy::AccountBad, true)),
                 }
             }
             Message::AccountDone(result) => {

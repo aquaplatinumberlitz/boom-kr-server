@@ -69,8 +69,6 @@ fn open_browser_url(url: &str) -> io::Result<()> {
 }
 
 /// Build a validated local Web Shop URL carrying the bearer token only in the URL fragment.
-// Consumed by unit tests now and launcher shop action wiring in Wave 5.
-#[allow(dead_code)]
 pub(crate) fn build_web_shop_url(config: &Config, token: &str) -> io::Result<Zeroizing<String>> {
     let base = config
         .web_shop_url()
@@ -83,8 +81,6 @@ pub(crate) fn build_web_shop_url(config: &Config, token: &str) -> io::Result<Zer
 }
 
 /// Launch the local Web Shop in the user's browser without passing the bearer token on the CLI.
-// Consumed by unit tests now and launcher shop action wiring in Wave 5.
-#[allow(dead_code)]
 pub(crate) fn open_web_shop(config: &Config, token: &str) -> io::Result<()> {
     let url = build_web_shop_url(config, token)?;
     open_browser_url(&url)

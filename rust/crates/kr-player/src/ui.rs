@@ -507,6 +507,12 @@ impl Player {
                     ]
                     .spacing(11),
                 );
+            if self
+                .selected_config()
+                .is_some_and(|c| c.web_shop_url().is_some() && c.server.is_some())
+            {
+                body = body.push(self.link(Copy::WebShop, Screen::WebShop));
+            }
         }
         if self.preference_error {
             body = body.push(text(self.t(Copy::PrefBad)).size(13).color(look::CORAL));
@@ -678,6 +684,7 @@ impl Player {
                         }));
                         Copy::Forgot
                     }
+                    Screen::WebShop => Copy::WebShopOpen,
                     _ => unreachable!(),
                 };
                 if matches!(screen, Screen::Change | Screen::Delete) {
@@ -689,7 +696,7 @@ impl Player {
                     form = form.push(wrap(Copy::DeleteHint));
                 } else {
                     form = form.push(field(
-                        if screen == Screen::Register {
+                        if matches!(screen, Screen::Register | Screen::WebShop) {
                             Copy::Password
                         } else {
                             Copy::New
@@ -751,6 +758,7 @@ impl Player {
             Screen::Change => Copy::Change,
             Screen::Delete => Copy::Delete,
             Screen::Recover => Copy::Forgot,
+            Screen::WebShop => Copy::WebShop,
             Screen::AccountResult if self.recovery.is_some() => Copy::Code,
             Screen::AccountResult => Copy::Manage,
         };
