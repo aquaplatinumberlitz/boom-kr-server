@@ -33,8 +33,8 @@ mọi biên nhận dọn. `Fm_RescueET01` được chạy bù bằng cùng catal
 | `Aqua03` | Thấy bom và các đối tượng dạng cá; cả hai né sang ô khác. | `C→S 132/180` và `S→C 176/178/198/199` có trạng thái `not_emitted_in_roomtype0`. StageClear vẫn `unknown`. |
 | `CaJJ_Wriggle01` | Hai bom thấy rõ ở đợt đầu; ảnh giữa trận có chồng hình nhân vật, còn wire phân biệt hai ID bom. | Chưa thấy opcode riêng có thể gán cho Wriggle; domain, match và tính điểm vẫn `unknown`. |
 | `Fm_RescueET01` | Bom ở hai phía đối diện, hai nhân vật về phía góc sau lúc né. | `C→S 180` có trạng thái `not_emitted_in_roomtype0`; tương tác cứu alien hoặc lên tàu vẫn `unknown`. |
-| `RetroForestN03` | Popup đầu trận có hình mây; hai nhân vật đặt bom rồi đổi vị trí dọc hành lang ngoài. | Không thấy cloud trong ảnh trận. Cửa sổ quan sát chưa tới chu kỳ `cloudappearloop=30000` của pack. Đồng bộ cloud vẫn `unknown`. |
-| `RetroVillageN01` | Popup có hình vật cưỡi; ảnh trận thấy bom và đổi vị trí, chưa thấy cưỡi vật. | Có một `C→S 123` từ A. Phép đo chưa nối gói này với ride; cơ chế ride vẫn `unknown`. |
+| `RetroForestN03` | Popup đầu trận có hình mây; hai nhân vật đặt bom rồi đổi vị trí dọc hành lang ngoài. | Ảnh chụp rời rạc không thấy cloud. XML có `cloudappeartime=10000` và `cloudappearloop=30000`; chưa biết mốc bắt đầu của script. Đồng bộ cloud vẫn `unknown`. |
+| `RetroVillageN01` | Popup có hình vật cưỡi; ảnh trận thấy bom và đổi vị trí, chưa thấy cưỡi vật. | A phát một `C→S 123` dài 10 byte, giữa lệnh mũi tên và lệnh Space ở đợt hai. [CP237](udp-peer.md#rust-movement-floor) từng thấy cùng opcode và độ dài trên `ExVillage01`. Chưa thể gán gói cho thao tác ride. |
 
 `C→S 15` xuất hiện cả trước và sau `153`, cũng có trong đối chứng thụ động; proxy chỉ giữ gói này sau `153`.
 `C→S 172` và `S→C 172` đều vắng mặt. `S→C 170/sub19` được xác nhận ở A trên Coloring, Aqua, Wriggle và
@@ -52,4 +52,6 @@ kênh được ghi riêng trong JSON với hướng và thời điểm, không d
 `132` và `180` cho StageClear và Rescue ET. Cả `RetroForestN03` và `RetroVillageN01` **có** thẻ
 `<retroscript>` trong pack đã pin; forest có `cloudappearloop`, village có `rideinfo`. Consumer và đồng bộ các
 cơ chế đó vẫn `unknown`. Các phép đo tiếp cần mode `36` cho Coloring, điều kiện kích hoạt script object cho
-Aqua/Wriggle/Rescue ET và cửa sổ có trigger cloud/ride cho Retro. Chưa có cơ sở suy luật của server KR gốc.
+Aqua/Wriggle/Rescue ET. Với RetroForest, quay liên tục từ lúc mở trận qua mốc ứng viên 10 giây và chu kỳ tiếp theo;
+đồng bộ ảnh hai phía với đồng hồ trận và `153`. Với RetroVillage, cần đối chứng trước và sau một tương tác ride đã
+quan sát trên client. Chưa có cơ sở suy luật của server KR gốc.
