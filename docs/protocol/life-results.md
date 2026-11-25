@@ -223,6 +223,15 @@ hồ sơ qua Wine cục bộ; so ván đối chứng với ván khác 0 trước
 - **SQLite Schema 7**: `player_profiles` ghi `[[1, 100, 1, 100, 2], [2, 30, 1, 30, 2]]`; `ledger_entries` ghi đúng hai dòng `match_reward` (`+100` và `+30`).
 - **UI sảnh sau trận**: Cả hai ảnh `s1-lobby-after-leave-{A,B}.png` về sảnh bình thường; HUD sảnh mặc định chỉ hiện `Lv. 0 00.0%` và không hiển thị số dư Lucci (nhánh nối EXP/cấp tới `S->C 175`/`20` giữ nguyên chưa suy đoán).
 
+<a id="f4a-setter-opcodes-w4"></a>
+#### Bổ sung tĩnh `CStage::OnPacket` (`0xD68C90`) cho `134`, `135`, `136` (Wave 4)
+
+Từ [f4-w4-ida-gates.json](../evidence/content/f4-w4-ida-gates.json) (`kr_static/confirmed`):
+
+- **`S->C 135` (`0xD690CB` → `sub_D6CED0`)**: đọc `u8 slot` (`+60`) và `i32 remain_lucci` (`+68`), gọi `sub_13E4950(slot, remain_lucci)` (clamp trong `[0, sub_13E5150(slot)]`) và log `"SelfUser[%d] set remain lucci=%d"` — khớp trực tiếp với đo Wine `f4a-lucci135-v1`.
+- **`S->C 134` (`0xD690DD` → `sub_D6CF30`)**: đọc `u8`, `i32`, `std::string` (`+76`), `u8`, rồi gọi virtual slot `*(this + 208)`. Ngữ nghĩa trường còn `unknown`.
+- **`S->C 136` (`0xD690EF` → `sub_D6CFF0`)**: gọi `sub_D6CFF0` (đọc `i8 slot`, `u16`, `u32`, kiểm `sub_13E4740`, bật hiệu ứng `sub_BFDF30(0, 240, 120)` và gọi `sub_13E4790(slot, val)`). Trong khi đó `sub_D6CBA0` được gọi từ `sub_6F1CF0`/`sub_D4A660`/`sub_DD7400` + vtable `0x1716810`/`0x1766AFC`, còn `sub_D6CBD0` chỉ nằm trên vtable `0x1707CF8`/`0x176A544`. Chưa dựng codec `134`/`136` khi chưa có đo Wine.
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 
