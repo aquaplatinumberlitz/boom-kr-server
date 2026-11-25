@@ -158,7 +158,7 @@ impl Drop for EndpointClose {
     }
 }
 type Owner = Arc<AsyncMutex<Option<Driver>>>;
-struct Resources {
+pub(super) struct Resources {
     owner: Owner,
     client: Client,
     templates: Templates,
@@ -174,6 +174,8 @@ struct Resources {
     patched_chat: bool,
     persist_character: bool,
     authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
+    pub(super) account_service: Option<crate::account_worker::AccountService>,
+    pub(super) emit_lucci_135: bool,
 }
 
 /// The log schema contains only service-chosen labels and numeric protocol
@@ -467,6 +469,7 @@ async fn stream(
                 driver
                     .enter_lobby(&mut lane, &mut send, &catalog.packets)
                     .await?;
+                emit_lucci_135(driver, &mut lane, &mut send, &resources, "lobby_enter").await?;
                 room.admitted(&catalog, driver, &resources)?;
                 let _ = resources
                     .events
@@ -690,7 +693,7 @@ pub(crate) async fn serve(
                 let Ok(total_permit)=total.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(unauth)=unauthenticated.clone().try_acquire_owned()else{incoming.refuse();continue;};
                 let Ok(peer_permit)=Admission::admit(&admission,peer,config.max_per_ip,config.admissions_per_ip_per_minute,Instant::now())else{incoming.refuse();continue;};
-                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:Mutex::new(prelogin::TrafficBudget::new(prelogin::BYTE_LIMIT,64*1024)),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),lobby_chat:lobby_chat.clone(),patched_chat:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.patched_949x_names),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone())});
+                let resources=Arc::new(Resources {owner:Arc::new(AsyncMutex::new(None)),client:client.clone(),templates:templates.clone(),hello:hello.clone(),wcp:wcp.clone(),ports:profile.config.ports.clone(),config:config.clone(),bytes:Mutex::new(prelogin::TrafficBudget::new(prelogin::BYTE_LIMIT,64*1024)),events:events.clone(),hub:profile.bound.as_ref().and_then(|bound|bound.managed.clone()),lobby:AsyncMutex::new(None),lobby_chat:lobby_chat.clone(),patched_chat:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.patched_949x_names),persist_character:profile.config.diagnostic_two_lobby.as_ref().and_then(|two|two.account_admission.as_ref()).is_some_and(|account|account.persist_character),authenticated:profile.bound.as_ref().and_then(|bound|bound.authenticated.clone()),account_service:profile.accounts.as_ref().and_then(|a|a.account_service().cloned()),emit_lucci_135:profile.accounts.as_ref().is_some_and(|a|a.emit_lucci_135)});
                 let stop=stop.clone();let events=events.clone();owners.spawn(async move{
                     let _total=total_permit;let _peer=peer_permit;
                     let result=tokio::time::timeout(Duration::from_secs(3),incoming).await;
@@ -714,5 +717,45 @@ pub(crate) async fn serve(
     }
     result
 }
+pub(super) async fn emit_lucci_135(
+    driver: &mut Driver,
+    lane: &mut Lane,
+    send: &mut quinn::SendStream,
+    resources: &Resources,
+    stage: &'static str,
+) -> io::Result<()> {
+    if !resources.emit_lucci_135 {
+        return Ok(());
+    }
+    let service = resources
+        .account_service
+        .as_ref()
+        .ok_or_else(|| io::Error::other("native lucci135 service absent"))?;
+    let players: Vec<i64> = driver
+        .authorities()
+        .iter()
+        .map(|auth| auth.player().player_id)
+        .collect();
+    for (local_idx, player_id) in players.into_iter().enumerate() {
+        let local_idx =
+            u8::try_from(local_idx).map_err(|_| io::Error::other("unsupported lucci135 slot"))?;
+        let profile = service
+            .profile_get(player_id)
+            .await
+            .map_err(|error| io::Error::other(format!("native lucci135 profile: {error:?}")))?;
+        let lucci = kr_wire::kr00967::wire_lucci_u32(profile.lucci)?;
+        let body = kr_wire::kr00967::lucci135(local_idx, lucci)?;
+        driver.lobby_reply(lane, send, 135, &body).await?;
+        let _ = resources.events.try_send(serde_json::json!({
+            "event": "native_tls_economy_lucci_135_sent",
+            "stage": stage,
+            "local_idx": local_idx,
+            "player_id": player_id,
+            "lucci": lucci,
+        }));
+    }
+    Ok(())
+}
+
 #[cfg(test)]
 mod tests;

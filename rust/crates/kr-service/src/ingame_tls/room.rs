@@ -420,6 +420,11 @@ impl State {
                     .lobby_reply(lane, send, reply.opcode, &reply.payload)
                     .await
                     .map_err(|error| room_poll_failure(error, "write", Some(reply.opcode)))?;
+                if reply.opcode == 175 {
+                    super::emit_lucci_135(driver, lane, send, resources, "post_match_175")
+                        .await
+                        .map_err(|error| room_poll_failure(error, "write", Some(135)))?;
+                }
                 let event = match (reply.opcode, label.as_str()) {
                     (110, "ready110") => Some("native_tls_room_ready_written"),
                     (121, "start121") => Some("native_tls_room_start_written"),
