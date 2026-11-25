@@ -2279,7 +2279,7 @@ impl Session {
         character: u16,
     ) -> bool {
         rules.allow_class_c_characters
-            && *phase == Phase::Idle
+            && matches!(*phase, Phase::Idle | Phase::Ending { .. })
             && member.character.is_some_and(crate::characters::is_class_c)
             && character == 0
     }
@@ -4435,7 +4435,13 @@ impl Session {
                                     .get_mut(&self.identity)
                                     .expect("current member")
                                     .life
-                                    .apply(m.slot, &report, now, last_blast)
+                                    .apply_with_direct_death(
+                                        m.slot,
+                                        &report,
+                                        now,
+                                        last_blast,
+                                        r.rules.allow_f1e_dynamic_scripts,
+                                    )
                             }
                         };
                         if decision.forward {
@@ -5993,6 +5999,48 @@ pub(crate) mod registry_foundation_tests {
         assert!(!Arc::ptr_eq(
             &a.lock().unwrap().scope,
             &b.lock().unwrap().scope
+        ));
+    }
+    #[test]
+    fn class_c_auto_reset_allows_ending_phase_and_guards_armed_or_disabled() {
+        let mut room = crate::room::Room::default();
+        let member_key = room.enter(1, 10, true).unwrap();
+        room.members.get_mut(&1).unwrap().character = Some(4000);
+        let _ = member_key;
+        let member = &room.members[&1];
+        let allowed_rules = rules::RoomRules {
+            allow_class_c_characters: true,
+            ..Default::default()
+        };
+        let disabled_rules = rules::RoomRules::default();
+        let ending = Phase::Ending {
+            round: 1,
+            refreshed: std::collections::BTreeSet::new(),
+        };
+        let armed = Phase::Armed { round: 1 };
+        assert!(Session::is_class_c_auto_reset(
+            &allowed_rules,
+            &Phase::Idle,
+            member,
+            0
+        ));
+        assert!(Session::is_class_c_auto_reset(
+            &allowed_rules,
+            &ending,
+            member,
+            0
+        ));
+        assert!(!Session::is_class_c_auto_reset(
+            &allowed_rules,
+            &armed,
+            member,
+            0
+        ));
+        assert!(!Session::is_class_c_auto_reset(
+            &disabled_rules,
+            &ending,
+            member,
+            0
         ));
     }
 }
