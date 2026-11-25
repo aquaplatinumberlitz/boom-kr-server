@@ -41,6 +41,14 @@ mọi biên nhận dọn. `Fm_RescueET01` được chạy bù bằng cùng catal
 Rescue ET sát lúc dừng namespace, cùng log `native_stream_eof` và cùng body 21 byte. Hai map Retro không có gói đó.
 Các mẫu này không chứng minh một sự kiện riêng của script.
 
+## Đối chứng thời gian của RetroForest
+
+Hai client đứng yên trong `RetroForestN03` với cùng fixture `roomtype=0`. Video cả hai phía bao phủ cả mốc
+10 giây và 40 giây tính từ peer `153`. Cả hai hiện popup giới thiệu; các khung đã xem sau popup không thấy cloud.
+Sau `153`, TCP chỉ có các báo cáo `C→S 15`, `127/sub39` và `190`; UDP nội chỉ có selector 0. Kết quả này
+giới hạn ở ca thụ động, và chưa nối đồng hồ `153` với thời điểm script thực sự bắt đầu. JSON giữ video, tần suất
+xem mẫu, kiểm kê wire và biên nhận dọn riêng của đối chứng.
+
 ## Giới hạn và phép đo tiếp
 
 Một opcode vắng mặt chỉ có trạng thái `not_emitted_in_roomtype0` trong ca đo này. Với `S→C`, phép đo chỉ cho biết
@@ -52,6 +60,6 @@ kênh được ghi riêng trong JSON với hướng và thời điểm, không d
 `132` và `180` cho StageClear và Rescue ET. Cả `RetroForestN03` và `RetroVillageN01` **có** thẻ
 `<retroscript>` trong pack đã pin; forest có `cloudappearloop`, village có `rideinfo`. Consumer và đồng bộ các
 cơ chế đó vẫn `unknown`. Các phép đo tiếp cần mode `36` cho Coloring, điều kiện kích hoạt script object cho
-Aqua/Wriggle/Rescue ET. Với RetroForest, quay liên tục từ lúc mở trận qua mốc ứng viên 10 giây và chu kỳ tiếp theo;
-đồng bộ ảnh hai phía với đồng hồ trận và `153`. Với RetroVillage, cần đối chứng trước và sau một tương tác ride đã
-quan sát trên client. Chưa có cơ sở suy luật của server KR gốc.
+Aqua/Wriggle/Rescue ET. Với RetroForest, cần tìm điều kiện khởi tạo consumer hoặc một fixture có cloud quan sát
+được trước khi mở lượt đo mới. Với RetroVillage, cần đối chứng trước và sau một tương tác ride đã quan sát trên
+client. Chưa có cơ sở suy luật của server KR gốc.
