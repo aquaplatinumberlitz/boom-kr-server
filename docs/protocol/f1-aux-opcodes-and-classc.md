@@ -275,3 +275,16 @@ membership. Không có `86 → 241`. `room_count=0` sau ngắt phiên không đ�
 B dùng Drill `(12,10)` gửi `127/sub3` và A nhận `170/sub3` qua server `f1-full-rust-v2` (tiếp tục xác nhận
 chiều B→A sau #647). Ở ván 2 (`r2`), A nhặt Drill tại `(11,2)` nhưng thao tác kích `Control_L` rơi vào
 `r2-a-drill-ctrl-missing` nên chiều A→B vẫn chưa đo được bằng công cụ nhập hiện tại.
+
+<a id="f1-full-wine-accept-v3-c"></a>
+## Khép nghiệm thu lớp C sau `#655`/`#658` (`f1c-v4-chars2`)
+
+`source: kr_runtime`. Sau khi `#655` mở nhận `92=(0,0)` trong `Phase::Ending` và `#658` cho phép bỏ qua
+`79=(1,0)` hậu kết trận trong `Phase::Idle` khi `next.round_generation() > 0` (giữ fail-closed trước lúc vào
+trận), lượt Wine hai client `f1c-v4-chars2` trên `f1-full-rust-v4` (`d5c2cf4`, `Tomb12`, `O13_CHARACTERS=A:4000,B:5000`)
+đã đạt nghiệm thu trọn vòng:
+- `native_tls_character_stats` xác nhận `character 4000` (slot `0`) và `character 5000` (slot `1`); SQLite ghi
+  `[1, 0, 4000, win, present]` và `[1, 1, 5000, loss, present]` (`complete/elimination`).
+- Cả A và B gửi đủ `3× C->S 92=(0,0)` và `2× C->S 79=(1,0)` (bao gồm sau `native_tls_room_return_refreshed`)
+  mà không gặp guard `79` hoặc `92`, rời phòng qua `86 -> 241` và `final_room_count=0`.
+- Xem hash, số frame CRC/UDP và cleanup tại [bằng chứng closeout F1 v3](../evidence/item-families/f1-full-wine-accept-v3.json).

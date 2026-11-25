@@ -231,3 +231,15 @@ health ghi `room_count=0`. Phép đo chưa kiểm trần sự kiện của ván 
 khi hàng ngoài rụng ở mốc `~34s`, A và B đứng trên hàng 3 rơi thẳng vào khoảng không nên gửi `C->S 127/sub19`
 (`66` lần mỗi kênh) mà không có `127/sub17` trước đó. `life.rs` từ chối vì `death_no_current_trap` (chưa
 có `trap` `sub17`) và không phát `170/sub19`, dẫn tới ván quá hạn SQLite (`cancelled/no_players`).
+
+<a id="f1e-space-wine-v3"></a>
+## 9. Khép nghiệm thu `CaJJ_Space02` sau `#655` (`f1e-space-v3`)
+
+`source: kr_runtime`. Sau `#655` (bổ sung `life.rs::apply_with_direct_death` nhận `C->S 127/sub19` rơi hố
+trực tiếp khi bật `allow_f1e_dynamic_scripts`), lượt Wine hai client `f1e-space-v3` trên `f1-full-rust-v3`
+(`2c36006`, `CaJJ_Space02`) đạt **100% end-to-end**:
+- A gửi `10` gói `C->S 228`, cả A và B nhận đủ `10` gói `S->C 350` (`verify-dispatch.json` đạt).
+- Khi rơi hố trực tiếp (`66× C->S 127/sub19` mỗi phía), `kr-service` chấp nhận và phát `S->C 170/sub19`, `175`,
+  `180`; SQLite ghi `[[1, 1, 256, "CaJJ_Space02", "complete", "all_dead"]]`.
+- Cả A và B thoát phòng sạch qua `86 -> 241`, `final_room_count=0`, `scratch_removed=true`.
+- Xem hash và số đo chi tiết tại [bằng chứng closeout F1 v3](../evidence/item-families/f1-full-wine-accept-v3.json).
