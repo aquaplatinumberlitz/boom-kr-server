@@ -1,13 +1,23 @@
 //! Account lobby/basic adapter with explicit fixed or DB zero-profile mode.
 //! The launcher is private; this does not expose a public password API.
+#[cfg(test)]
+#[path = "f4a_economy_wire_tests.rs"]
+mod f4a_economy_wire_tests;
+
 use crate::{
     account_bridge::{self, Bridge},
-    account_worker::{Client, EconomySettings, Worker},
-    accounts::{EconomyPolicy, ShopCatalog, Token},
+    account_worker::{AccountService, Client, EconomySettings, Worker},
+    accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Token},
     platform::{self, local_ipc},
 };
 use serde::Deserialize;
-use std::{fs, io, net::Ipv4Addr, path::PathBuf, sync::Arc, time::Duration};
+use std::{
+    fs, io,
+    net::Ipv4Addr,
+    path::{Component, Path, PathBuf},
+    sync::Arc,
+    time::Duration,
+};
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     sync::{Semaphore, watch},
@@ -85,6 +95,19 @@ pub struct Config {
     /// F4 shop catalog. Absent means empty: every purchase/equip is rejected.
     #[serde(default)]
     pub shop_catalog: ShopCatalog,
+    /// Optional external JSON file containing `{ economy_policy, shop_catalog, summary? }`
+    /// (e.g., emitted by `tools/kr_f4_catalog_export.py`). Must not be combined with
+    /// non-default inline `economy_policy` or `shop_catalog`.
+    #[serde(default)]
+    pub economy_profile_path: Option<PathBuf>,
+    /// Opt-in F4-a projection: emit static-confirmed `S->C 135` (`remain_lucci`)
+    /// after lobby `own291` and settled post-match `175` replies.
+    #[serde(default)]
+    pub emit_lucci_135: bool,
+    /// Opt-in O1 preset flag: expose `CatalogAccess { unlock_all: true }` from
+    /// validated DB account mode without mutating DB inventory or Lucci.
+    #[serde(default)]
+    pub unlock_all_catalog: bool,
 }
 #[derive(Clone, Copy, Default, PartialEq, Eq, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -96,17 +119,62 @@ pub enum ProfileMode {
 fn default_worker_queue_capacity() -> usize {
     4
 }
+const MAX_ECONOMY_PROFILE_BYTES: u64 = 16 * 1024 * 1024;
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct EconomyProfileFile {
+    economy_policy: EconomyPolicy,
+    shop_catalog: ShopCatalog,
+    #[serde(default)]
+    summary: Option<serde::de::IgnoredAny>,
+}
+
+fn load_economy_profile_file(path: &Path) -> io::Result<(EconomyPolicy, ShopCatalog)> {
+    if path.as_os_str().is_empty()
+        || path
+            .components()
+            .any(|part| matches!(part, Component::ParentDir))
+    {
+        return Err(io::Error::other("invalid economy_profile_path"));
+    }
+    let meta = fs::metadata(path)?;
+    if !meta.is_file() || meta.len() > MAX_ECONOMY_PROFILE_BYTES {
+        return Err(io::Error::other("economy profile file size out of bounds"));
+    }
+    let bytes = fs::read(path)?;
+    let parsed: EconomyProfileFile = serde_json::from_slice(&bytes)
+        .map_err(|_| io::Error::other("invalid economy profile json"))?;
+    let _ = parsed.summary;
+    Ok((parsed.economy_policy, parsed.shop_catalog))
+}
+
 impl Config {
     /// Validated economy for the account worker; defaults stay disabled.
     pub(crate) fn economy(&self) -> io::Result<EconomySettings> {
-        let settings = EconomySettings::new(self.economy_policy.clone(), self.shop_catalog.clone())
+        let (policy, catalog) = if let Some(path) = &self.economy_profile_path {
+            if self.economy_policy != EconomyPolicy::default()
+                || !self.shop_catalog.items.is_empty()
+            {
+                return Err(io::Error::other(
+                    "economy_profile_path cannot be combined with inline economy config",
+                ));
+            }
+            load_economy_profile_file(path)?
+        } else {
+            (self.economy_policy.clone(), self.shop_catalog.clone())
+        };
+        let settings = EconomySettings::new(policy, catalog)
             .map_err(|_| io::Error::other("invalid economy policy or shop catalog"))?;
         if settings.rewards_enabled() && !self.persist_matches {
             return Err(io::Error::other(
                 "economy rewards require persisted matches",
             ));
         }
-        if (settings.rewards_enabled() || !settings.catalog().items.is_empty())
+        if (settings.rewards_enabled()
+            || !settings.catalog().items.is_empty()
+            || self.emit_lucci_135
+            || self.unlock_all_catalog)
             && self.profile_mode != ProfileMode::DatabaseZero
         {
             return Err(io::Error::other("economy requires database profiles"));
@@ -170,6 +238,11 @@ pub(crate) struct Active {
     pub(crate) authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
     pub bridge: Bridge,
     pub client: Client,
+    pub(crate) service: Option<AccountService>,
+    pub(crate) emit_lucci_135: bool,
+    // Consumed by F4-a tests now and Wave 2 runtime F4-b/d routes next.
+    #[allow(dead_code)]
+    pub(crate) unlock_all_catalog: bool,
     projections: Arc<std::collections::HashMap<u32, Vec<u8>>>,
     projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
 }
@@ -180,12 +253,24 @@ impl Active {
             authenticated: None,
             bridge: Bridge::new(client.clone(), 4, Duration::from_secs(30)).unwrap(),
             client,
+            service: None,
+            emit_lucci_135: false,
+            unlock_all_catalog: false,
             projections: Arc::new(std::collections::HashMap::new()),
             projection: None,
         }
     }
     pub(crate) fn bridge(&self) -> Bridge {
         self.bridge.clone()
+    }
+    pub(crate) fn account_service(&self) -> Option<&AccountService> {
+        self.service.as_ref()
+    }
+    #[allow(dead_code)]
+    pub(crate) fn catalog_access(&self) -> CatalogAccess {
+        CatalogAccess {
+            unlock_all: self.unlock_all_catalog,
+        }
     }
 }
 pub(crate) struct Owner {
@@ -279,6 +364,9 @@ impl Owner {
                 authenticated: None,
                 bridge,
                 client: worker.client(),
+                service: Some(worker.service()),
+                emit_lucci_135: config.emit_lucci_135,
+                unlock_all_catalog: config.unlock_all_catalog,
                 projections: Arc::new(projections),
                 projection,
             },
