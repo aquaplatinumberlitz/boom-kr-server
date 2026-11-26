@@ -38,10 +38,12 @@
       {
         "direction": "S->C",
         "dispatcher": "0xe5d3a0",
-        "opcode": 165,
+        "opcode": 185,
+        "hexrays_case": 165,
+        "jump_table_offset": -20,
         "handler_va": "0xe67470",
         "reads": ["u8"],
-        "notes": "RebirthToGhost; looks up player name and dispatches vtable +84 across stage entities"
+        "notes": "RebirthToGhost; 0xE5D3A0 indexes jump table 0xE5DE9C by opcode - 20 (wire 185 -> 0xe5d765 -> 0xe67470; wire 165 -> 0xe5d570 -> 0xe63260 pickup); looks up player name and dispatches vtable +84 across stage entities"
       }
     ],
     "rtti_packet_namespaces": ["WeeklyLadderPacket", "ConfusedFightPacket"],
@@ -145,6 +147,7 @@
     "status": "kr_static/confirmed",
     "script_factory_va": "0xeba2d0",
     "script_controller_range": "0x1013b80..0x1014280",
+    "opcode_index_note": "Hex-Rays case labels in 0xE5D3A0; verify against jump table 0xE5DE9C (opcode - 20) before wiring codecs",
     "cgamestage_handlers": [
       {
         "opcode": 9,
