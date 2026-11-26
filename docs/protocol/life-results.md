@@ -269,6 +269,14 @@ Từ [f4-w8-ida-exp-175-f2.json](../evidence/content/f4-w8-ida-exp-175-f2.json) 
   - `Raw +49..+51` (`u16` → `a2 + 88`): đối chiếu nâng cấp qua `sub_13E4740`/`sub_E400D0` và ghi `sub_13E4790` (cận `0x3C`).
   - Ghi chú giới hạn: trong ảnh tĩnh `KR 00967`, `sub_E5F610` chỉ ghi `UserSimpleInfo + 0x58` (`Lv.%3d`), chưa thấy ghi trực tiếp `UserSimpleInfo + 0x208` (`%` EXP sảnh) ngoài `S->C 291`; nghiệm thu Wine sẽ kiểm tra đồng thời màn rời phòng và tái đăng nhập.
 
+<a id="f4a-progression-wine-accept"></a>
+#### Nghiệm thu Wine hai client cho `S->C 175` tiến độ & `own291` `16.6%` EXP (`f4a-progression-v1`)
+
+Đo 2 client KR `00967` qua Wine trên `Tomb12` với `f4-rust-v4` (`PR #685`, `c5bf2b4`, bật `project_own291_level` và `emit_lucci_135` theo `level_thresholds = [0, 400, 1000]`, chi tiết tại [f4a-progression-wine.json](../evidence/content/f4a-progression-wine.json)):
+
+- **Bảng điểm & rời phòng (`S->C 175`, `kr_runtime/confirmed`)**: `CookieA` nhận `S->C 175` (`b46217df…`) với slot 0 `(old_exp_permille=0, new_exp_permille=166, level_hud=2, level_dialog=2)` kèm `S->C 135` `3500` (`48d4a942…`), `CookieB` nhận `S->C 175` (`22da513b…`) với slot 1 `(0, 75, 1, 1)` kèm `S->C 135` `30` (`bcc5d290…`). Ảnh `r1-score-A.png` hiện trực tiếp hiệu ứng `LEVEL UP` ở bảng kết quả, và `s1-lobby-after-leave-A.png` ngay khi vừa rời phòng đã đổi HUD sang **`Lv.  2`** (`00.0%`, xác nhận đúng giới hạn tĩnh rằng `S->C 175` ghi `+0x58` chứ chưa ghi `+0x208`).
+- **Tái đăng nhập (`own291` phần nghìn EXP, `kr_runtime/confirmed`)**: Khi `CookieA` tái đăng nhập qua `companion-A2`, `own291` (`1eff6320…`) mang `level=2, exp_permille=166` (`500` EXP trong ngưỡng `[400, 1000)` → `100/600 = 166‰`), và ảnh `s2-relogin-lobby-A.png` hiển thị trực tiếp **`Lv.  2`** cùng thanh vàng **`16.6%`** (`230` frame TCP CRC-verified, `2073` UDP, `final_room_count: 0`, dọn `4,63 GB` scratch).
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 

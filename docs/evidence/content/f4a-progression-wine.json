@@ -1,0 +1,167 @@
+{
+  "schema": "kre.f4a_progression_wine_accept.v1",
+  "run": "f4a-progression-v1",
+  "baseline": "c5bf2b4f553dd42764a8feb43c0d6de1280af890",
+  "feature_commit": "c5bf2b4f553dd42764a8feb43c0d6de1280af890",
+  "build": "KR 00967",
+  "binaries": {
+    "tag": "f4-rust-v4",
+    "verified_bins_sha256": "017423246d13d570c8bfbb23c819ca0fe4adbd69c418754600ab7588cad68af1",
+    "files": {
+      "kr-service": "0fa8bc7b10c3e75c3936be2afab706b9019bd45fe663597bb99909a4ee4fc9c9",
+      "kr-prelogin": "e509d2716c768bfa2f5c5101eb4427e4fd4cf29aafefeb39b4d89079dc4f1fd9",
+      "kr-admin": "eec5e6ac22565132b20deb7aa4f2e6a99a3df633574b4f4068018d8b20985c7",
+      "kr-launch-identity": "74fb0a4ce63f3c5f5cdaf459b7066dea840da5405ac3f9c3f1c7c545dc185621"
+    }
+  },
+  "config": {
+    "map": "Tomb12",
+    "emit_lucci_135": true,
+    "project_own291_level": true,
+    "economy_policy_source": "local/runs/w7-f4a-wine/f4-profile-live.json (enabled=true, win=500exp/3500lucci, loss=30exp/30lucci, draw=50exp/50lucci, level_thresholds[0..3]=[0, 400, 1000])"
+  },
+  "local_artifacts": {
+    "run_dir": "local/runs/w7-f4a-wine/f4a-progression-v1",
+    "summary_sha256": "28e59d085be7ea05e76d43dcd9a225a837781b20da3b244fd105f2aed408a4dd",
+    "cleanup_sha256": "9938b3d9cb8dd5ed84a5382e47a817db1f1163a61381a016e28e67945f1d6c10"
+  },
+  "cleanup": {
+    "namespace_ended": true,
+    "scratch_removed": true,
+    "deleted_bytes": 4632981870,
+    "namespace_exit": 0
+  },
+  "totals": {
+    "tcp_frames_crc_verified": 230,
+    "udp_packets": 2073,
+    "final_room_count": 0
+  },
+  "sqlite": {
+    "matches": [[1, 1, 256, "Tomb12", "complete", "elimination"]],
+    "match_players": [
+      [1, 0, 0, "win", "present"],
+      [1, 1, 0, "loss", "present"]
+    ],
+    "player_profiles": [
+      [1, 500, 2, 3500, 2],
+      [2, 30, 1, 30, 2]
+    ],
+    "ledger_entries": [
+      [1, 1, "match_reward", 500, 3500, 1, "match:1"],
+      [2, 2, "match_reward", 30, 30, 1, "match:1"]
+    ]
+  },
+  "observed_own291_frames": [
+    {
+      "role": "A",
+      "stage": "initial_lobby",
+      "connection": 38700,
+      "seq": 55,
+      "name": "CookieA",
+      "level": 1,
+      "exp_permille": 0,
+      "tail_len": 98,
+      "frame_sha256": "8e3393e9ef7ac035d8db2f97f074ae70b94a2edd7cc5934619441ad4a82d15cb"
+    },
+    {
+      "role": "B",
+      "stage": "initial_lobby",
+      "connection": 59760,
+      "seq": 55,
+      "name": "CookieB",
+      "level": 1,
+      "exp_permille": 0,
+      "tail_len": 98,
+      "frame_sha256": "9061452f2590699be12987cd7f691c0ca680920b05d1831a92a1e9bd02183fd5"
+    },
+    {
+      "role": "A",
+      "stage": "relogin_lobby",
+      "connection": 59990,
+      "seq": 55,
+      "name": "CookieA",
+      "level": 2,
+      "exp_permille": 166,
+      "tail_len": 98,
+      "frame_sha256": "1eff6320052290a91da97626767caef2c073e754a8e0ac2bbb95deca5d0bbd62"
+    }
+  ],
+  "observed_sc_175_frames": [
+    {
+      "role": "A",
+      "connection": 38700,
+      "seq": 121,
+      "slots": [
+        { "slot": 0, "rank": 1, "old_exp_permille": 0, "new_exp_permille": 166, "level_hud": 2, "level_dialog": 2 },
+        { "slot": 1, "rank": 2, "old_exp_permille": 0, "new_exp_permille": 0, "level_hud": 0, "level_dialog": 0 }
+      ],
+      "frame_sha256": "b46217df98b033053ad01e9e5400befa95e6290a6d6164a01bc693a3092e8050"
+    },
+    {
+      "role": "B",
+      "connection": 59760,
+      "seq": 115,
+      "slots": [
+        { "slot": 0, "rank": 1, "old_exp_permille": 0, "new_exp_permille": 0, "level_hud": 0, "level_dialog": 0 },
+        { "slot": 1, "rank": 2, "old_exp_permille": 0, "new_exp_permille": 75, "level_hud": 1, "level_dialog": 1 }
+      ],
+      "frame_sha256": "22da513bbbae30efe5c7eb029ea34409d0ef246984f1cdda4c69fd7c93930501"
+    }
+  ],
+  "observed_sc_135_frames": [
+    {
+      "role": "A",
+      "stage": "initial_lobby",
+      "connection": 38700,
+      "seq": 58,
+      "decoded": { "slot": 0, "lucci": 0 },
+      "frame_sha256": "c778eb2efe33e9b4fbc888a1edd75412efa3df262dfe3010f02299b5e66072d8"
+    },
+    {
+      "role": "A",
+      "stage": "post_match_175",
+      "connection": 38700,
+      "seq": 124,
+      "decoded": { "slot": 0, "lucci": 3500 },
+      "frame_sha256": "48d4a942f5f5069a29eb217a8d13d945204f47a581c27fd2b6d43ed8fc8894e4"
+    },
+    {
+      "role": "A",
+      "stage": "relogin_lobby",
+      "connection": 59990,
+      "seq": 58,
+      "decoded": { "slot": 0, "lucci": 3500 },
+      "frame_sha256": "08ff35d471e84e95afd4fc5369956a777ec903314e22941b9c3c0f4f90b6e4e6"
+    },
+    {
+      "role": "B",
+      "stage": "initial_lobby",
+      "connection": 59760,
+      "seq": 58,
+      "decoded": { "slot": 0, "lucci": 0 },
+      "frame_sha256": "c778eb2efe33e9b4fbc888a1edd75412efa3df262dfe3010f02299b5e66072d8"
+    },
+    {
+      "role": "B",
+      "stage": "post_match_175",
+      "connection": 59760,
+      "seq": 118,
+      "decoded": { "slot": 0, "lucci": 30 },
+      "frame_sha256": "bcc5d290d1506600adcd1dddfbf4a91eaafb06f3a32387484787bd1367262e2c"
+    }
+  ],
+  "ui_screenshots": [
+    {
+      "file": "r1-score-A.png",
+      "observed": "Hiển thị hiệu ứng LEVEL UP giữa bảng điểm ngay sau ván Tomb12."
+    },
+    {
+      "file": "s1-lobby-after-leave-A.png",
+      "observed": "Ngay khi rời phòng trước tái đăng nhập, HUD sảnh bên trái của CookieA cập nhật thành Lv.  2 (00.0% vì S->C 175 chỉ ghi UserSimpleInfo + 0x58)."
+    },
+    {
+      "file": "s2-relogin-lobby-A.png",
+      "observed": "Sau tái đăng nhập qua companion-A2, HUD sảnh bên trái của CookieA hiển thị Lv.  2 kèm thanh EXP vàng 16.6% (exp_permille=166 trong own291)."
+    }
+  ]
+}
