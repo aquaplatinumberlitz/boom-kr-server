@@ -2,6 +2,7 @@
 //! `kr-account-db` worker. Callers use nonblocking admission and await a reply.
 //! No KR wire adapter; no message body enters the queue.
 
+use super::economy::AccountService;
 use super::{Client, Command, Error, Pending, Result};
 use crate::accounts::{
     self, ChatMuteReason, ChatPermission, FriendRequest, Guild, GuildMember, RankingEntry, Store,
@@ -153,6 +154,94 @@ impl Client {
             reply: Some(rx),
             handoff: None,
         })
+    }
+}
+
+impl AccountService {
+    /// Minimal web-facing social facade. The caller supplies an identity that
+    /// was already bound by the web session; all work remains on the account
+    /// worker and never touches O1 session cosmetics.
+    pub(crate) async fn social_friends(&self, player: i64) -> Result<Vec<i64>> {
+        match self
+            .client
+            .try_social(player, SocialAction::ListFriends)?
+            .wait()
+            .await?
+        {
+            SocialReply::Friends(rows) => Ok(rows),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_blocks(&self, player: i64) -> Result<Vec<i64>> {
+        match self
+            .client
+            .try_social(player, SocialAction::ListBlocks)?
+            .wait()
+            .await?
+        {
+            SocialReply::Blocks(rows) => Ok(rows),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_friend_add(&self, player: i64, target: i64) -> Result<bool> {
+        match self
+            .client
+            .try_social(player, SocialAction::SendFriendRequest(target))?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_friend_remove(&self, player: i64, target: i64) -> Result<bool> {
+        match self
+            .client
+            .try_social(player, SocialAction::RemoveFriend(target))?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_block_add(&self, player: i64, target: i64) -> Result<bool> {
+        match self
+            .client
+            .try_social(player, SocialAction::BlockPlayer(target))?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_block_remove(&self, player: i64, target: i64) -> Result<bool> {
+        match self
+            .client
+            .try_social(player, SocialAction::UnblockPlayer(target))?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_ranking(
+        &self,
+        player: i64,
+        offset: u32,
+        limit: u32,
+    ) -> Result<Vec<accounts::RankingEntry>> {
+        match self
+            .client
+            .try_social(player, SocialAction::Ranking { offset, limit })?
+            .wait()
+            .await?
+        {
+            SocialReply::Ranking(rows) => Ok(rows),
+            _ => Err(Error::WorkerFault),
+        }
     }
 }
 

@@ -135,7 +135,7 @@ pub(super) fn execute(
 /// the queue is full); queue expiry is checked before execution.
 #[derive(Clone)]
 pub struct AccountService {
-    client: Client,
+    pub(crate) client: Client,
     settings: Arc<EconomySettings>,
 }
 impl Worker {
