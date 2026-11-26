@@ -106,6 +106,11 @@ impl F6EventPolicy {
         }
     }
 
+    /// Return the catalog systems in their stable policy order.
+    pub fn system_names() -> &'static [&'static str] {
+        &SYSTEM_NAMES
+    }
+
     /// Return whether the system is opted in at the given Unix second.
     /// Both endpoints of a validated schedule are included.
     pub fn is_system_enabled_at(&self, name: &str, utc_unix_secs: i64) -> bool {

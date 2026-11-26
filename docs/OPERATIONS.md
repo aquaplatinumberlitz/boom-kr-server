@@ -298,6 +298,17 @@ Dùng cùng mẫu JSON qua stdin ở trên. Mọi trường trong bảng là b�
 
 Lý do thao tác là `reason` ngoài `command`. Trong `audit-list`, lọc `operation` bằng tên lệnh với dấu gạch dưới, ví dụ `social_mute_set`. Thao tác ghi và audit thành công được lưu cùng giao dịch; lệnh đọc và lỗi sau khi xác thực yêu cầu cũng được ghi audit.
 
+### Kiểm tra policy sự kiện F6
+
+`f6-policy-check` là lệnh chỉ đọc có audit, dùng cùng `$ADMIN "$DB"` và JSON stdin. Bỏ qua `policy_path` để kiểm tra mặc định tắt; nếu truyền đường dẫn, lệnh yêu cầu file JSON policy F6 đầy đủ, không có symlink, đúng schema và không bật `PCRoomBenefit`. `at_unix_secs` tùy chọn dùng để kiểm tra lịch theo thời điểm cố định; nếu bỏ qua, lệnh dùng giây UTC hiện tại.
+
+```bash
+printf '%s\n' '{"actor":"on-call","reason":"Check F6 policy","command":{"op":"f6-policy-check","at_unix_secs":1798761600}}' |
+  "$ADMIN" "$DB"
+```
+
+Kết quả gồm schema, `default_enabled`, hệ thống bị loại trừ, thời điểm đánh giá và trạng thái của đủ 19 hệ thống. File thiếu, sai schema, có trường lạ, bật mặc định, có `PCRoomBenefit` hoặc vi phạm đường dẫn đều trả lỗi và exit khác 0.
+
 ## Backup and restore
 
 1. For scheduled snapshots, add `"backup": {"interval_seconds": 3600, "keep": 24}` under `diagnostic_two_lobby.account_admission`. Rebuild the package. The first snapshot runs after one interval; retention applies only to scheduled snapshots in `accounts.backups/`.
