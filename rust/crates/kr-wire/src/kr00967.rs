@@ -7,6 +7,7 @@ mod account;
 mod battle;
 mod bomb_motion;
 mod chat;
+pub mod inventory;
 mod player;
 mod room;
 mod room_selection;
