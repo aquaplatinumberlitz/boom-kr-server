@@ -280,6 +280,24 @@ If a close-room reply is lost, check the audit and live room list before retryin
 
 F4 rewards and shop are off unless configured. Under `diagnostic_two_lobby.account_admission`, the optional `economy_policy` (`enabled`, `win`/`loss`/`draw` as `{"exp":N,"lucci":N}`, `grant_on_disconnect_or_left`, `level_thresholds` starting at 0 and strictly increasing) and `shop_catalog` (`{"items":[...]}`) are validated at startup. Omitting them keeps `enabled: false`, an empty catalog, no ledger rows and `match_players.reward` equal to 0. Enabling rewards requires `persist_matches` and `profile_mode: "database_zero"`. When enabled, each completed journaled match settles EXP, level and Lucci in the same transaction as its finish, once per match; a cancelled match grants nothing.
 
+<a id="social-admin"></a>
+### Lệnh quản trị xã hội (F5-2)
+
+Dùng cùng mẫu JSON qua stdin ở trên. Mọi trường trong bảng là bắt buộc, trừ trường được ghi rõ là tùy chọn. Dùng ID số nguyên dương; `player_id` và `leader_player_id` là ID người chơi, khác với `account_id`. Các lệnh này thao tác trên Schema 9 của máy chủ cục bộ.
+
+| `command.op` | Trường và kết quả |
+| --- | --- |
+| `social-friend-list`, `social-block-list` | Dùng `player_id` của người chơi đang hoạt động. Kết quả là mảng ID `friends` hoặc `blocks`. |
+| `social-mute-set` | Dùng `player_id`, `duration_seconds` (1–2.592.000) và `mute_reason` (`spam`, `harassment` hoặc `moderation`). Trả `expires_at` theo giây UTC; lệnh mới có thể chồng lên lệnh cũ. |
+| `social-mute-clear` | Dùng `player_id` để xóa mọi lệnh cấm chat còn hiệu lực và trả số đã xóa trong `cleared`. Lịch sử từ chối chat vẫn còn. |
+| `social-abuse-list` | Dùng `limit` (1–100); có thể lọc theo `sender_id` và dùng ID cuối trang làm `before_id` cho trang kế. Trả `events` theo ID giảm dần, chỉ có metadata về lượt chat bị từ chối. |
+| `social-guild-create`, `social-guild-get` | Tạo với `leader_player_id` và `name`; tên chỉ chứa chữ và số ASCII cùng dấu cách, dài 3–24 ký tự sau khi gộp khoảng trắng. Lệnh tạo trả `guild`; lệnh đọc dùng `guild_id` và trả cả `guild` lẫn `members`. |
+| `social-guild-member-add`, `social-guild-member-remove` | Dùng `guild_id` và `player_id`; trả `changed`. Mỗi người chỉ ở một bang, mỗi bang tối đa 100 người và không thể xóa trưởng bang bằng lệnh này. |
+| `social-guild-disband` | Dùng `guild_id` để giải tán bang và xóa toàn bộ thành viên của bang; trả `ok: true`. |
+| `social-ranking-list` | Dùng `offset` (0–10.000) và `limit` (1–100). Trả `ranking` theo cấp, EXP, số trận thắng giảm dần rồi ID người chơi tăng dần. Các trang được đọc riêng. |
+
+Lý do thao tác là `reason` ngoài `command`. Trong `audit-list`, lọc `operation` bằng tên lệnh với dấu gạch dưới, ví dụ `social_mute_set`. Thao tác ghi và audit thành công được lưu cùng giao dịch; lệnh đọc và lỗi sau khi xác thực yêu cầu cũng được ghi audit.
+
 ## Backup and restore
 
 1. For scheduled snapshots, add `"backup": {"interval_seconds": 3600, "keep": 24}` under `diagnostic_two_lobby.account_admission`. Rebuild the package. The first snapshot runs after one interval; retention applies only to scheduled snapshots in `accounts.backups/`.

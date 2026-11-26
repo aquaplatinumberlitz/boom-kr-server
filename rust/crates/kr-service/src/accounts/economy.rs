@@ -363,15 +363,6 @@ impl Store {
         tx.commit()?;
         Ok(out)
     }
-    fn player_exists(db: &Connection, player: i64) -> Result<i64> {
-        db.query_row(
-            "SELECT account_id FROM players WHERE id=?1",
-            [player],
-            |r| r.get(0),
-        )
-        .optional()?
-        .ok_or(Error::InvalidInput)
-    }
     /// Account is enabled, not deleted and not an expired trial guest.
     fn active_player(db: &Connection, player: i64, now: i64) -> Result<i64> {
         let account = Self::player_exists(db, player)?;

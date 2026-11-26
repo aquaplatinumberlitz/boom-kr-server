@@ -1,5 +1,5 @@
-//! F5-0 storage and company policy. Call from a bounded account worker with
-//! authenticated, server-resolved player IDs. No KR wire route is defined here.
+//! Social storage and company policy. Player actions take server-resolved IDs;
+//! local operator actions take an Admin and audit changes in the same transaction.
 use super::*;
 
 #[cfg(test)]
@@ -18,6 +18,17 @@ pub const SOCIAL_MUTE_MAX_SECONDS: u32 = 30 * 86_400;
 pub const RANKING_PAGE_MAX: u32 = 100;
 pub const RANKING_OFFSET_MAX: u32 = 10_000;
 
+#[derive(Debug, Serialize)]
+pub struct ChatAbuseEvent {
+    pub id: i64,
+    pub sender_id: i64,
+    pub recipient_id: Option<i64>,
+    pub reason: String,
+    pub message_bytes: i64,
+    pub accepted_in_window: i64,
+    pub at_utc: i64,
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 pub struct FriendRequest {
     pub sender_id: i64,
@@ -25,7 +36,8 @@ pub struct FriendRequest {
     pub created_at: i64,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub enum ChatMuteReason {
     Spam,
     Harassment,
@@ -318,6 +330,7 @@ impl Store {
     }
 
     fn social_ids(&mut self, player: i64, now: i64, sql: &str) -> Result<Vec<i64>> {
+        positive_id(player)?;
         self.at(now, |tx| {
             active_player(tx, player, now)?;
             Ok(tx
@@ -346,8 +359,8 @@ impl Store {
         })
     }
 
-    /// Trusted moderator operation. Each grant is kept, and overlapping grants
-    /// never shorten each other. A mute expires exactly at its UTC deadline.
+    /// Trusted moderator operation. A new grant never shortens another one.
+    /// A mute expires exactly at its UTC deadline unless cleared by an operator.
     pub fn mute_social_player(
         &mut self,
         player: i64,
@@ -355,19 +368,9 @@ impl Store {
         reason: ChatMuteReason,
         now: i64,
     ) -> Result<i64> {
-        if !(1..=SOCIAL_MUTE_MAX_SECONDS).contains(&duration) {
-            return Err(Error::InvalidInput);
-        }
-        let expires = now
-            .checked_add(i64::from(duration))
-            .ok_or(Error::Exhausted)?;
-        self.at(now, |tx| {
-            tx.execute(
-                "INSERT INTO social_mutes(player_id,reason,created_at,expires_at) VALUES(?1,?2,?3,?4)",
-                params![player, reason.code(), now, expires],
-            )?;
-            Ok(expires)
-        })
+        positive_id(player)?;
+        validate_mute_duration(duration)?;
+        self.at(now, |tx| insert_mute(tx, player, duration, reason, now))
     }
 
     /// Checks and consumes one send slot atomically. Only `Ok(Allowed)` permits
@@ -448,55 +451,17 @@ impl Store {
 
     pub fn create_guild(&mut self, leader: i64, name: &str, now: i64) -> Result<Guild> {
         let name = normalize_guild_name(name)?;
-        let key = name.to_ascii_lowercase();
-        self.at(now, |tx| {
-            active_player(tx, leader, now)?;
-            tx.execute(
-                "INSERT INTO guilds(name,name_key,leader_player_id,created_at) VALUES(?1,?2,?3,?4)",
-                params![name, key, leader, now],
-            )?;
-            let id = tx.last_insert_rowid();
-            tx.execute(
-                "INSERT INTO guild_members(guild_id,player_id,role,joined_at) VALUES(?1,?2,'leader',?3)",
-                params![id, leader, now],
-            )?;
-            Ok(Guild { id, name, leader_player_id: leader, created_at: now })
-        })
+        self.at(now, |tx| insert_guild(tx, leader, name, now))
     }
 
     pub fn join_guild(&mut self, player: i64, guild_id: i64, now: i64) -> Result<bool> {
-        self.at(now, |tx| {
-            active_player(tx, player, now)?;
-            let current: Option<i64> = tx.query_row(
-                "SELECT guild_id FROM guild_members WHERE player_id=?1",
-                [player], |r| r.get(0),
-            ).optional()?;
-            if let Some(current) = current {
-                return if current == guild_id { Ok(false) } else { Err(Error::Conflict) };
-            }
-            guild_owner(tx, guild_id)?.ok_or(Error::InvalidInput)?;
-            let members: i64 = tx.query_row(
-                "SELECT count(*) FROM guild_members WHERE guild_id=?1", [guild_id], |r| r.get(0),
-            )?;
-            if members >= GUILD_MEMBER_CAP { return Err(Error::Exhausted); }
-            let inserted = tx.execute(
-                "INSERT INTO guild_members(guild_id,player_id,role,joined_at) VALUES(?1,?2,'member',?3)",
-                params![guild_id, player, now],
-            )?;
-            Ok(inserted == 1)
-        })
+        self.at(now, |tx| insert_guild_member(tx, player, guild_id, now))
     }
 
     pub fn leave_guild(&mut self, player: i64, guild_id: i64, now: i64) -> Result<bool> {
         self.at(now, |tx| {
             active_player(tx, player, now)?;
-            if guild_owner(tx, guild_id)? == Some(player) {
-                return Err(Error::Conflict);
-            }
-            Ok(tx.execute(
-                "DELETE FROM guild_members WHERE guild_id=?1 AND player_id=?2",
-                params![guild_id, player],
-            )? == 1)
+            delete_guild_member(tx, guild_id, player, guild_owner(tx, guild_id)?)
         })
     }
 
@@ -565,14 +530,190 @@ impl Store {
     }
 
     pub fn list_guild_members(&mut self, guild_id: i64, now: i64) -> Result<Vec<GuildMember>> {
-        self.at(now, |tx| {
-            Ok(tx.prepare(
-                "SELECT player_id,role,joined_at FROM guild_members WHERE guild_id=?1
-                 ORDER BY CASE role WHEN 'leader' THEN 0 WHEN 'officer' THEN 1 ELSE 2 END,player_id",
-            )?.query_map([guild_id], |r| Ok(GuildMember {
-                player_id: r.get(0)?, role: parse_role(&r.get::<_, String>(1)?)?,
-                joined_at: r.get(2)?,
-            }))?.collect::<std::result::Result<_, _>>()?)
+        self.at(now, |tx| guild_members(tx, guild_id))
+    }
+
+    pub fn get_guild(&mut self, guild_id: i64) -> Result<(Guild, Vec<GuildMember>)> {
+        positive_id(guild_id)?;
+        let tx = self.db.transaction()?;
+        let guild = tx
+            .query_row(
+                "SELECT name,leader_player_id,created_at FROM guilds WHERE id=?1",
+                [guild_id],
+                |r| {
+                    Ok(Guild {
+                        id: guild_id,
+                        name: r.get(0)?,
+                        leader_player_id: r.get(1)?,
+                        created_at: r.get(2)?,
+                    })
+                },
+            )
+            .optional()?
+            .ok_or(Error::InvalidInput)?;
+        let members = guild_members(&tx, guild_id)?;
+        tx.commit()?;
+        Ok((guild, members))
+    }
+
+    pub fn list_chat_abuse(
+        &self,
+        sender_id: Option<i64>,
+        before_id: Option<i64>,
+        limit: u8,
+    ) -> Result<Vec<ChatAbuseEvent>> {
+        if !(1..=100).contains(&limit) {
+            return Err(Error::InvalidInput);
+        }
+        if let Some(id) = before_id {
+            positive_id(id)?;
+        }
+        // Keep a separate sender predicate so SQLite can use the sender history index.
+        let predicate = if let Some(sender) = sender_id {
+            positive_id(sender)?;
+            "sender_id=?1 AND id<=?2"
+        } else {
+            "id<=?2"
+        };
+        let last_id = before_id.map_or(i64::MAX, |id| id - 1);
+        let mut query = self.db.prepare(&format!(
+            "SELECT id,sender_id,recipient_id,reason,message_bytes,accepted_in_window,at_utc
+             FROM chat_abuse_events WHERE {predicate} ORDER BY id DESC LIMIT ?3"
+        ))?;
+        Ok(query
+            .query_map(params![sender_id, last_id, limit], |r| {
+                Ok(ChatAbuseEvent {
+                    id: r.get(0)?,
+                    sender_id: r.get(1)?,
+                    recipient_id: r.get(2)?,
+                    reason: r.get(3)?,
+                    message_bytes: r.get(4)?,
+                    accepted_in_window: r.get(5)?,
+                    at_utc: r.get(6)?,
+                })
+            })?
+            .collect::<std::result::Result<_, _>>()?)
+    }
+
+    pub fn admin_set_social_mute(
+        &mut self,
+        admin: &Admin<'_>,
+        player: i64,
+        duration: u32,
+        reason: ChatMuteReason,
+    ) -> Result<i64> {
+        validate_mute_duration(duration)?;
+        self.social_admin_write(
+            admin,
+            "social_mute_set",
+            ("player", player),
+            Some(player),
+            |tx, now| insert_mute(tx, player, duration, reason, now),
+        )
+    }
+
+    pub fn admin_clear_social_mute(&mut self, admin: &Admin<'_>, player: i64) -> Result<usize> {
+        self.social_admin_write(
+            admin,
+            "social_mute_clear",
+            ("player", player),
+            Some(player),
+            |tx, now| {
+                Ok(tx.execute(
+                    "DELETE FROM social_mutes WHERE player_id=?1 AND expires_at>?2",
+                    params![player, now],
+                )?)
+            },
+        )
+    }
+
+    pub fn admin_create_guild(
+        &mut self,
+        admin: &Admin<'_>,
+        leader: i64,
+        name: &str,
+    ) -> Result<Guild> {
+        let name = normalize_guild_name(name)?;
+        self.social_admin_write(
+            admin,
+            "social_guild_create",
+            ("player", leader),
+            Some(leader),
+            |tx, now| insert_guild(tx, leader, name, now),
+        )
+    }
+
+    pub fn admin_add_guild_member(
+        &mut self,
+        admin: &Admin<'_>,
+        guild_id: i64,
+        player: i64,
+    ) -> Result<bool> {
+        self.social_admin_write(
+            admin,
+            "social_guild_member_add",
+            ("guild", guild_id),
+            Some(player),
+            |tx, now| insert_guild_member(tx, player, guild_id, now),
+        )
+    }
+
+    pub fn admin_remove_guild_member(
+        &mut self,
+        admin: &Admin<'_>,
+        guild_id: i64,
+        player: i64,
+    ) -> Result<bool> {
+        self.social_admin_write(
+            admin,
+            "social_guild_member_remove",
+            ("guild", guild_id),
+            Some(player),
+            |tx, _| {
+                let owner = guild_owner(tx, guild_id)?.ok_or(Error::InvalidInput)?;
+                delete_guild_member(tx, guild_id, player, Some(owner))
+            },
+        )
+    }
+
+    pub fn admin_disband_guild(&mut self, admin: &Admin<'_>, guild_id: i64) -> Result<()> {
+        self.social_admin_write(
+            admin,
+            "social_guild_disband",
+            ("guild", guild_id),
+            None,
+            |tx, _| {
+                if tx.execute("DELETE FROM guilds WHERE id=?1", [guild_id])? != 1 {
+                    return Err(Error::InvalidInput);
+                }
+                Ok(())
+            },
+        )
+    }
+
+    fn social_admin_write<T>(
+        &mut self,
+        admin: &Admin<'_>,
+        op: &str,
+        (kind, id): (&str, i64),
+        player: Option<i64>,
+        apply: impl FnOnce(&Transaction<'_>, i64) -> Result<T>,
+    ) -> Result<T> {
+        admin.validate()?;
+        positive_id(id)?;
+        if let Some(player) = player {
+            positive_id(player)?;
+        }
+        let request = hex(&self.random::<32>()?);
+        self.at_admin(None, |tx, now| {
+            let account = player.map(|player| Self::player_exists(tx, player)).transpose()?;
+            let result = apply(tx, now)?;
+            tx.execute(
+                "INSERT INTO admin_audit(request_id,actor,operation,account_id,reason,at_utc,details,target_kind,target_id)
+                 VALUES(?1,?2,?3,?4,?5,?6,'{}',?7,?8)",
+                params![request, admin.actor, op, account, admin.reason, now, kind, id.to_string()],
+            )?;
+            Ok(result)
         })
     }
 
@@ -604,6 +745,118 @@ impl Store {
             })?
             .collect::<std::result::Result<_, _>>()?)
     }
+}
+
+fn positive_id(id: i64) -> Result<()> {
+    if id <= 0 {
+        return Err(Error::InvalidInput);
+    }
+    Ok(())
+}
+
+fn validate_mute_duration(duration: u32) -> Result<()> {
+    if !(1..=SOCIAL_MUTE_MAX_SECONDS).contains(&duration) {
+        return Err(Error::InvalidInput);
+    }
+    Ok(())
+}
+
+fn insert_mute(
+    db: &Connection,
+    player: i64,
+    duration: u32,
+    reason: ChatMuteReason,
+    now: i64,
+) -> Result<i64> {
+    let expires = now
+        .checked_add(i64::from(duration))
+        .ok_or(Error::Exhausted)?;
+    db.execute(
+        "INSERT INTO social_mutes(player_id,reason,created_at,expires_at) VALUES(?1,?2,?3,?4)",
+        params![player, reason.code(), now, expires],
+    )?;
+    Ok(expires)
+}
+
+fn insert_guild(db: &Connection, leader: i64, name: String, now: i64) -> Result<Guild> {
+    active_player(db, leader, now)?;
+    db.execute(
+        "INSERT INTO guilds(name,name_key,leader_player_id,created_at) VALUES(?1,?2,?3,?4)",
+        params![name, name.to_ascii_lowercase(), leader, now],
+    )?;
+    let id = db.last_insert_rowid();
+    db.execute(
+        "INSERT INTO guild_members(guild_id,player_id,role,joined_at) VALUES(?1,?2,'leader',?3)",
+        params![id, leader, now],
+    )?;
+    Ok(Guild {
+        id,
+        name,
+        leader_player_id: leader,
+        created_at: now,
+    })
+}
+
+fn insert_guild_member(db: &Connection, player: i64, guild_id: i64, now: i64) -> Result<bool> {
+    active_player(db, player, now)?;
+    let current: Option<i64> = db
+        .query_row(
+            "SELECT guild_id FROM guild_members WHERE player_id=?1",
+            [player],
+            |r| r.get(0),
+        )
+        .optional()?;
+    if let Some(current) = current {
+        return if current == guild_id {
+            Ok(false)
+        } else {
+            Err(Error::Conflict)
+        };
+    }
+    guild_owner(db, guild_id)?.ok_or(Error::InvalidInput)?;
+    let members: i64 = db.query_row(
+        "SELECT count(*) FROM guild_members WHERE guild_id=?1",
+        [guild_id],
+        |r| r.get(0),
+    )?;
+    if members >= GUILD_MEMBER_CAP {
+        return Err(Error::Exhausted);
+    }
+    Ok(db.execute(
+        "INSERT INTO guild_members(guild_id,player_id,role,joined_at) VALUES(?1,?2,'member',?3)",
+        params![guild_id, player, now],
+    )? == 1)
+}
+
+fn delete_guild_member(
+    db: &Connection,
+    guild_id: i64,
+    player: i64,
+    owner: Option<i64>,
+) -> Result<bool> {
+    if owner == Some(player) {
+        return Err(Error::Conflict);
+    }
+    Ok(db.execute(
+        "DELETE FROM guild_members WHERE guild_id=?1 AND player_id=?2",
+        params![guild_id, player],
+    )? == 1)
+}
+
+fn guild_members(db: &Connection, guild_id: i64) -> Result<Vec<GuildMember>> {
+    Ok(db
+        .prepare(
+            "SELECT player_id,role,joined_at FROM guild_members WHERE guild_id=?1
+         ORDER BY CASE role WHEN 'leader' THEN 0 WHEN 'officer' THEN 1 ELSE 2 END,player_id",
+        )?
+        .query_map([guild_id], |r| {
+            Ok(GuildMember {
+                player_id: r.get(0)?,
+                role: parse_role(&r.get::<_, String>(1)?)?,
+                joined_at: r.get(2)?,
+            })
+        })?
+        .collect::<std::result::Result<_, _>>()?)
 }
 
 fn normalize_guild_name(value: &str) -> Result<String> {
