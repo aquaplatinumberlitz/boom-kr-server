@@ -46,6 +46,7 @@ jobs:
           tools.test_kr_pack_items
           tools.test_kr_f4_catalog_export
           tools.test_kr_f3_probe_plan
+          tools.test_kr_f2_f3_capture_analyzer
           tools.test_f1_character_profiles
           tools.test_f1_pack_matrix
           tools.test_player_package
