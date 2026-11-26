@@ -2,7 +2,8 @@
 #![forbid(unsafe_code)]
 use kr_service::{
     accounts::{
-        self, Admin, AuditFilter, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION, Store, Token,
+        self, Admin, AuditFilter, ChatMuteReason, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION,
+        Store, Token,
     },
     operations::{self, LiveCommand, RoomTarget},
 };
@@ -107,12 +108,43 @@ enum Command {
         grant: ItemGrant,
         idempotency_key: String,
     },
+    #[serde(rename = "social-friend-list")]
+    SocialFriendList { player_id: i64 },
+    #[serde(rename = "social-block-list")]
+    SocialBlockList { player_id: i64 },
+    #[serde(rename = "social-mute-set")]
+    SocialMuteSet {
+        player_id: i64,
+        duration_seconds: u32,
+        mute_reason: ChatMuteReason,
+    },
+    #[serde(rename = "social-mute-clear")]
+    SocialMuteClear { player_id: i64 },
+    #[serde(rename = "social-abuse-list")]
+    SocialAbuseList {
+        sender_id: Option<i64>,
+        before_id: Option<i64>,
+        limit: u8,
+    },
+    #[serde(rename = "social-guild-create")]
+    SocialGuildCreate { leader_player_id: i64, name: String },
+    #[serde(rename = "social-guild-get")]
+    SocialGuildGet { guild_id: i64 },
+    #[serde(rename = "social-guild-member-add")]
+    SocialGuildMemberAdd { guild_id: i64, player_id: i64 },
+    #[serde(rename = "social-guild-member-remove")]
+    SocialGuildMemberRemove { guild_id: i64, player_id: i64 },
+    #[serde(rename = "social-guild-disband")]
+    SocialGuildDisband { guild_id: i64 },
+    #[serde(rename = "social-ranking-list")]
+    SocialRankingList { offset: u32, limit: u32 },
 }
 impl Command {
     fn audit_context(&self) -> (&'static str, &'static str, String, bool) {
         use Command::*;
         let account = |op, id: &i64, recorded| (op, "account", id.to_string(), recorded);
         let player = |op, id: &i64, recorded| (op, "player", id.to_string(), recorded);
+        let guild = |op, id: &i64, recorded| (op, "guild", id.to_string(), recorded);
         let login = |op, value: &str, recorded| {
             let id = if (3..=32).contains(&value.len())
                 && value
@@ -151,6 +183,29 @@ impl Command {
             InventoryList { player_id } => player("inventory_list", player_id, false),
             AdminGrantLucci { player_id, .. } => player("admin_grant_lucci", player_id, true),
             AdminGrantItem { player_id, .. } => player("admin_grant_item", player_id, true),
+            SocialFriendList { player_id } => player("social_friend_list", player_id, false),
+            SocialBlockList { player_id } => player("social_block_list", player_id, false),
+            SocialMuteSet { player_id, .. } => player("social_mute_set", player_id, true),
+            SocialMuteClear { player_id } => player("social_mute_clear", player_id, true),
+            SocialAbuseList {
+                sender_id: Some(id),
+                ..
+            } => player("social_abuse_list", id, false),
+            SocialAbuseList {
+                sender_id: None, ..
+            } => ("social_abuse_list", "service", "social_abuse".into(), false),
+            SocialGuildCreate {
+                leader_player_id, ..
+            } => player("social_guild_create", leader_player_id, true),
+            SocialGuildGet { guild_id } => guild("social_guild_get", guild_id, false),
+            SocialGuildMemberAdd { guild_id, .. } => {
+                guild("social_guild_member_add", guild_id, true)
+            }
+            SocialGuildMemberRemove { guild_id, .. } => {
+                guild("social_guild_member_remove", guild_id, true)
+            }
+            SocialGuildDisband { guild_id } => guild("social_guild_disband", guild_id, true),
+            SocialRankingList { .. } => ("social_ranking_list", "service", "ranking".into(), false),
             ListRooms {} | CloseRoom { .. } | F2Runtime { .. } => {
                 unreachable!("handled by live admin")
             }
@@ -334,6 +389,58 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
             None,
         )?)
         .map_err(|_| Error::Storage)?,
+        Command::SocialFriendList { player_id } => {
+            json!({"friends": s.list_friends(player_id, accounts::utc()?)?})
+        }
+        Command::SocialBlockList { player_id } => {
+            json!({"blocks": s.list_blocks(player_id, accounts::utc()?)?})
+        }
+        Command::SocialMuteSet {
+            player_id,
+            duration_seconds,
+            mute_reason,
+        } => {
+            json!({"expires_at": s.admin_set_social_mute(admin, player_id, duration_seconds, mute_reason)?})
+        }
+        Command::SocialMuteClear { player_id } => {
+            json!({"cleared": s.admin_clear_social_mute(admin, player_id)?})
+        }
+        Command::SocialAbuseList {
+            sender_id,
+            before_id,
+            limit,
+        } => {
+            json!({"events": s.list_chat_abuse(sender_id, before_id, limit)?})
+        }
+        Command::SocialGuildCreate {
+            leader_player_id,
+            name,
+        } => {
+            json!({"guild": s.admin_create_guild(admin, leader_player_id, &name)?})
+        }
+        Command::SocialGuildGet { guild_id } => {
+            let (guild, members) = s.get_guild(guild_id)?;
+            json!({"guild": guild, "members": members})
+        }
+        Command::SocialGuildMemberAdd {
+            guild_id,
+            player_id,
+        } => {
+            json!({"changed": s.admin_add_guild_member(admin, guild_id, player_id)?})
+        }
+        Command::SocialGuildMemberRemove {
+            guild_id,
+            player_id,
+        } => {
+            json!({"changed": s.admin_remove_guild_member(admin, guild_id, player_id)?})
+        }
+        Command::SocialGuildDisband { guild_id } => {
+            s.admin_disband_guild(admin, guild_id)?;
+            json!({"ok": true})
+        }
+        Command::SocialRankingList { offset, limit } => {
+            json!({"ranking": s.ranking(offset, limit)?})
+        }
     })
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {

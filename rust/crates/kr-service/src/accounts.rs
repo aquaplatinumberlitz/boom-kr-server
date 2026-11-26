@@ -480,6 +480,15 @@ impl Store {
         (self.random)(&mut bytes)?;
         Ok(bytes)
     }
+    fn player_exists(db: &Connection, player: i64) -> Result<i64> {
+        db.query_row(
+            "SELECT account_id FROM players WHERE id=?1",
+            [player],
+            |r| r.get(0),
+        )
+        .optional()?
+        .ok_or(Error::InvalidInput)
+    }
     fn audit(
         tx: &Transaction<'_>,
         id: &str,
