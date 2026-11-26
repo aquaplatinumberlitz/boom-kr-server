@@ -1,0 +1,65 @@
+{
+  "schema": "kre.f4_w8_ida_exp_175_f2.v1",
+  "baseline": "ded6ab8639a09033bb827e846e86ada252d54e47",
+  "build": "KR 00967",
+  "image_base": "0x400000",
+  "scope": "Phân tích tĩnh IDA Wave 8a trên bản sao /tmp/kr-f4-w8.i64 (đã đóng và xóa): giải mã trường phần nghìn EXP (`0..1000`) trong `S->C 291`, bộ 4 trường tiến độ hậu trận (`Raw +43/+45/+47/+49`) trong `S->C 175`, và manh mối tĩnh F2-1 (`Attr/MapGroup`, `Dlg_LB-Create_*`, `roomtype`).",
+  "f4a_own291_exp_permille": {
+    "status": "kr_static/confirmed",
+    "reader_va": "0xd2ffad..0xd2ffc4 (sub_D2FEB0)",
+    "wire_location": "u32 immediately after inner 98B+name `UserSimpleInfo` blob (`vtable+8 -> sub_D30BF0 -> sub_AE6330`)",
+    "memory_dest": "this + 0x208 (`v87 + 130` inside 544B `UserSimpleInfo` at `sub_D2FE90`)",
+    "hud_renderer": {
+      "caller": "0x9022d0 (sub_9022D0 -> sub_529C60(v87 + 130) -> sub_902A50)",
+      "renderer_va": "0x902a50 (sub_902A50)",
+      "semantics": "EXP permille `0..1000`: fills 60px bar (`60 * a3 / 999`, or `60` when `a3 == 1000`) and formats `100%` when `a3 == 1000` else `a3 / 10` `.` `a3 % 10` `%`"
+    },
+    "other_writes_observed": "Across full IDB, only `0xd2ffc4` (`sub_D2FEB0` S->C 291) and `0xd30bd4` (`sub_D30B80` reset to 0) write `UserSimpleInfo + 0x208` (`v87 + 130`)."
+  },
+  "f4a_sc175_progression_fields": {
+    "status": "kr_static/confirmed",
+    "parser_va": "0xe4aef0 (sub_E4AEF0 `case 1` active row, `row[32] == 0`)",
+    "consumer_va": "0xe5f610 (sub_E5F610 -> sub_D2F440 & sub_13E4790)",
+    "fields": [
+      {
+        "raw_row_offset": 43,
+        "struct_offset": "a2 + 76",
+        "type": "u16 (clamped 0..999)",
+        "consumer": "sub_E655B0 (result screen pre-match EXP permille)"
+      },
+      {
+        "raw_row_offset": 45,
+        "struct_offset": "a2 + 80",
+        "type": "u16 (clamped 0..999)",
+        "consumer": "sub_E65A10 (result screen post-match EXP permille)"
+      },
+      {
+        "raw_row_offset": 47,
+        "struct_offset": "a2 + 84",
+        "type": "u16",
+        "consumer": "0xe5fbc9 -> sub_D2F440(name, val) writes `sub_55FD30` at `UserSimpleInfo + 0x58` (`v87 + 22`, lobby HUD `Lv.%3d`) + `0xe5fbb6 -> sub_D2D900(val)`"
+      },
+      {
+        "raw_row_offset": 49,
+        "struct_offset": "a2 + 88",
+        "type": "u16",
+        "consumer": "0xe5f90c compares with `sub_13E4740` (calls `sub_E400D0` if increased), `0xe5f9ef -> sub_13E4790(local_idx, val)` (capped `< 0x3C`)"
+      }
+    ],
+    "unknown": [
+      "Hàm `sub_E5F610` (`S->C 175`) cập nhật `UserSimpleInfo + 0x58` (`Lv.%3d` qua `Raw +47`), không ghi trực tiếp `UserSimpleInfo + 0x208` (`v87 + 130` % EXP sảnh); hành vi thanh % ngay khi vừa rời trận trước tái đăng nhập (`S->C 291`) vẫn cần đối chiếu trên Wine."
+    ]
+  },
+  "f2_1_static_anchors": {
+    "status": "kr_static/confirmed",
+    "map_group_visible": {
+      "serializer_va": "0xe04cb0 (sub_E04CB0, serializes `MapGroupVisible` u16 pairs via `sub_E07310`)",
+      "deserializer_va": "0xe04dd0 (sub_E04DD0, applies `MapGroupVisible` flags from server/stage)"
+    },
+    "mode_create_dialogs": [
+      { "string": "Lobby/Dlg_LB-Create_Ladder", "funcs": ["0xc541e0", "0xc55af0"] },
+      { "string": "Lobby/Dlg_LB-Create_Mission", "funcs": ["0xc8df50"] },
+      { "string": "roomtype", "func": "0x57f520 (sub_57F520)" }
+    ]
+  }
+}

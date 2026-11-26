@@ -705,7 +705,10 @@ pub(crate) async fn connection(
                         .await
                         .map_err(|_| io::Error::other("own291 level profile lookup"))?;
                     let level = kr_wire::kr00967::wire_level_u16(profile.level)?;
-                    kr_wire::kr00967::own291_with_level(&owned_name, level)?
+                    let exp_u64 = u64::try_from(profile.exp)
+                        .map_err(|_| io::Error::other("negative profile exp"))?;
+                    let exp_permille = svc.settings().policy().exp_permille_for(exp_u64);
+                    kr_wire::kr00967::own291_with_progression(&owned_name, level, exp_permille)?
                 } else {
                     rendered.own291
                 };

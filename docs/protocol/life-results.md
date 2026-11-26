@@ -256,6 +256,19 @@ Từ [f4-w6-ida-own291-and-hud.json](../evidence/content/f4-w6-ida-own291-and-hu
 - **Wire `S->C 291` (`kr_runtime/confirmed`)**: Cả `CookieA` và `CookieB` nhận `own291` với `u16@11 = 1` ở phiên đăng nhập đầu (`8e3393e9…`, `9061452f…`). Sau trận `Tomb12`, SQLite `player_profiles` tăng lên `[[1, 500, 2, 3500, 2], [2, 30, 1, 30, 2]]`. Khi `CookieA` ngắt kết nối sạch (`wineserver -k`) và tái đăng nhập qua `companion-A2`, `S->C 291` chiếu đúng `u16@11 = 2` (`e685c14c…`) kèm `S->C 135` `(slot=0, lucci=3500)` (`08ff35d4…`), không ngắt kết nối (`228` frame TCP CRC-verified, `1951` UDP, `final_room_count: 0`, dọn `4,63 GB` scratch).
 - **UI HUD `Lv.%3d`**: Ảnh `s2-relogin-lobby-A.png` sau tái đăng nhập hiển thị trực tiếp **`Lv.  2 00.0%`** trên góc trái sảnh của `CookieA` đúng với trường `v87 + 22` đã giải mã ở Wave 6. Ảnh `s1-lobby-after-leave-A.png` ngay khi vừa rời phòng trước lúc tái đăng nhập vẫn hiện `Lv. 0 00.0%` vì fixture `S->C 175` sau trận hiện còn giữ `0` tại Raw `+49`.
 
+<a id="f4a-w8-exp-and-175-fields"></a>
+#### Bố cục phần nghìn EXP `S->C 291` và trường tiến độ `S->C 175` (Wave 8a)
+
+Từ [f4-w8-ida-exp-175-f2.json](../evidence/content/f4-w8-ida-exp-175-f2.json) (`kr_static/confirmed`):
+
+- **Phần nghìn EXP `0..1000` trong `S->C 291`**: ngay sau blob `98B+name` của `UserSimpleInfo` (`sub_D30BF0 -> sub_AE6330`), `sub_D2FEB0` (`0xd2ffad..0xd2ffc4`) đọc thêm `u32` (`vtable+68`) và ghi vào `UserSimpleInfo + 0x208` (`v87 + 130`), được `sub_9022D0 -> sub_902A50` vẽ thành thanh 60px và chữ `00.0%..100%` cạnh `Lv.%3d`. Khi giá trị là `0`, byte dây giữ nguyên khớp template cũ.
+- **4 trường tiến độ trong mỗi hàng `case 1` (`row[32] == 0`) của `S->C 175` (`sub_E4AEF0 -> sub_E5F610`)**:
+  - `Raw +43..+45` (`u16`, giới hạn `0..=999` → `a2 + 76`): phần nghìn EXP trước trận (`sub_E655B0`).
+  - `Raw +45..+47` (`u16`, giới hạn `0..=999` → `a2 + 80`): phần nghìn EXP sau trận (`sub_E65A10`).
+  - `Raw +47..+49` (`u16` → `a2 + 84`): cấp sau trận đưa qua `sub_D2F440(name, val)` ghi `UserSimpleInfo + 0x58` (`v87 + 22`, `Lv.%3d` HUD sảnh) và `sub_D2D900`.
+  - `Raw +49..+51` (`u16` → `a2 + 88`): đối chiếu nâng cấp qua `sub_13E4740`/`sub_E400D0` và ghi `sub_13E4790` (cận `0x3C`).
+  - Ghi chú giới hạn: trong ảnh tĩnh `KR 00967`, `sub_E5F610` chỉ ghi `UserSimpleInfo + 0x58` (`Lv.%3d`), chưa thấy ghi trực tiếp `UserSimpleInfo + 0x208` (`%` EXP sảnh) ngoài `S->C 291`; nghiệm thu Wine sẽ kiểm tra đồng thời màn rời phòng và tái đăng nhập.
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 

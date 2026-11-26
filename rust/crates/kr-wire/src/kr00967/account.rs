@@ -132,6 +132,10 @@ pub fn with_identity_string(auth: &[u8], name_len: usize, id: &[u8]) -> io::Resu
     out.extend(&auth[at + 2..]);
     Ok(out)
 }
+/// Static-confirmed KR 00967 `UserSimpleInfo` EXP permille upper bound (`sub_902A50`
+/// formats `0..=999` as `00.0%..99.9%` and `1000` as `100%`).
+pub const EXP_PERMILLE_MAX: u32 = 1000;
+
 /// Static-confirmed KR 00967 `UserSimpleInfoPacket` (`0xAE6330` -> `0x9022D0`
 /// `"Lv.%3d"`): bounds DB `i64` level into the wire `u16` domain, rejecting
 /// negative levels fail-closed.
@@ -142,10 +146,17 @@ pub fn wire_level_u16(level: i64) -> io::Result<u16> {
     Ok(u16::try_from(level).unwrap_or(u16::MAX))
 }
 
-/// CP183/184 `own291` template with optional `UserSimpleInfo` level projected at
-/// static-confirmed offset `+11..+13` (`sub_AE6330` -> `sub_9022D0` `"Lv.%3d"`).
-/// When `level == 0`, output is byte-identical to `own291`.
-pub fn own291_with_level(name: &[u8], level: u16) -> io::Result<Vec<u8>> {
+/// Bounds a calculated EXP permille into KR 00967 `sub_902A50` `[0, 1000]`.
+pub fn wire_exp_permille_u32(permille: u32) -> u32 {
+    permille.min(EXP_PERMILLE_MAX)
+}
+
+/// CP183/184 `own291` template with optional `UserSimpleInfo` level at
+/// `tail[11..13]` (`sub_AE6330` -> `sub_9022D0` `"Lv.%3d"`) and outer EXP permille
+/// `u32` (`sub_D2FEB0` `0xd2ffc4` -> `UserSimpleInfo + 0x208` -> `sub_902A50`
+/// `00.0%..100%`). When `(level, exp_permille) == (0, 0)`, output is
+/// byte-identical to `own291`.
+pub fn own291_with_progression(name: &[u8], level: u16, exp_permille: u32) -> io::Result<Vec<u8>> {
     super::player::account_name(name)?;
     let size = 108 + name.len();
     let mut raw = vec![24];
@@ -159,11 +170,19 @@ pub fn own291_with_level(name: &[u8], level: u16) -> io::Result<Vec<u8>> {
     let mut out = put(1, Width::U8)?;
     out.extend(put(size as u64, Width::U32)?);
     out.extend(encode_bytes(&raw)?);
-    out.extend(put(0, Width::U32)?);
+    out.extend(put(
+        u64::from(wire_exp_permille_u32(exp_permille)),
+        Width::U32,
+    )?);
     for _ in 0..4 {
         out.extend(put(0, Width::U8)?);
     }
     Ok(out)
+}
+
+/// Wrapper keeping byte-identical `exp_permille = 0` for level-only callers.
+pub fn own291_with_level(name: &[u8], level: u16) -> io::Result<Vec<u8>> {
+    own291_with_progression(name, level, 0)
 }
 
 /// CP183/184 zero-profile branch: name plus98 zero bytes, zero trailing fields.
@@ -172,18 +191,25 @@ pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
 }
 
 /// D2FEB0 loops over the authenticated local roster and reads one active/blob
-/// record for each slot; there is no count field in291 itself. CP183 measured
-/// the single-slot record. Multi-slot native acceptance remains separate from
-/// this projection of the cached consumer contract.
-pub fn local_own291_with_levels(players: &[(&[u8], u16)]) -> io::Result<Vec<u8>> {
+/// record for each slot; there is no count field in291 itself.
+pub fn local_own291_with_progression(players: &[(&[u8], u16, u32)]) -> io::Result<Vec<u8>> {
     if !(1..=2).contains(&players.len()) {
         return Err(io::Error::other("unsupported local own-profile roster"));
     }
     let mut out = Vec::new();
-    for &(name, level) in players {
-        out.extend(own291_with_level(name, level)?);
+    for &(name, level, exp_permille) in players {
+        out.extend(own291_with_progression(name, level, exp_permille)?);
     }
     Ok(out)
+}
+
+/// Zero-EXP wrapper around `local_own291_with_progression`.
+pub fn local_own291_with_levels(players: &[(&[u8], u16)]) -> io::Result<Vec<u8>> {
+    let triples: Vec<(&[u8], u16, u32)> = players
+        .iter()
+        .map(|&(name, level)| (name, level, 0))
+        .collect();
+    local_own291_with_progression(&triples)
 }
 
 /// Zero-level wrapper around `local_own291_with_levels` keeping byte-identical
@@ -301,6 +327,31 @@ mod identity_string_tests {
             multi.len(),
             own291_with_level(name, 1).unwrap().len()
                 + own291_with_level(b"CookieB", 2).unwrap().len()
+        );
+
+        assert_eq!(wire_exp_permille_u32(0), 0);
+        assert_eq!(wire_exp_permille_u32(166), 166);
+        assert_eq!(wire_exp_permille_u32(1500), EXP_PERMILLE_MAX);
+        assert_eq!(
+            own291_with_progression(name, 2, 0).unwrap(),
+            own291_with_level(name, 2).unwrap()
+        );
+        let prog = own291_with_progression(name, 2, 166).unwrap();
+        assert_eq!(prog.len(), lv2.len());
+        let trailing_u32_at = 5 + size;
+        assert_eq!(
+            uint(&prog[trailing_u32_at..trailing_u32_at + 4], Width::U32).unwrap(),
+            166
+        );
+        let multi_prog =
+            local_own291_with_progression(&[(name, 2, 166), (b"CookieB", 1, 75)]).unwrap();
+        assert_eq!(
+            multi_prog,
+            [
+                own291_with_progression(name, 2, 166).unwrap(),
+                own291_with_progression(b"CookieB", 1, 75).unwrap(),
+            ]
+            .concat()
         );
     }
 }

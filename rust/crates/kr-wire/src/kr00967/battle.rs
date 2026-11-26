@@ -84,6 +84,80 @@ fn player_rank_rows(players: &[(u8, u8)], winner: Option<u8>) -> io::Result<Vec<
     }
     Ok(body)
 }
+/// Static-confirmed KR 00967 `S->C 175` `case 1` row progression fields (`sub_E4AEF0`
+/// -> `sub_E5F610`):
+/// - `Raw +43..45` (`a2+76`, `u16`, clamped `0..=999`): pre-match EXP permille (`sub_E655B0`).
+/// - `Raw +45..47` (`a2+80`, `u16`, clamped `0..=999`): post-match EXP permille (`sub_E65A10`).
+/// - `Raw +47..49` (`a2+84`, `u16`): lobby HUD level (`sub_D2F440` -> `UserSimpleInfo+0x58`).
+/// - `Raw +49..51` (`a2+88`, `u16`): local level counter (`sub_13E4790` / `sub_E400D0`).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct RowProgression175 {
+    pub old_exp_permille: u16,
+    pub new_exp_permille: u16,
+    pub level: u16,
+}
+
+/// Patches per-slot progression fields into an existing `S->C 175` payload built
+/// with 131-byte active (`case 1`, `row[32] == 0`) slot rows while keeping zero
+/// updates byte-identical.
+pub fn patch_rank175_progression(
+    body: &[u8],
+    updates: &[(u8, RowProgression175)],
+) -> io::Result<Vec<u8>> {
+    if body.len() < 4 {
+        return Err(io::Error::other("short rank175 payload"));
+    }
+    let stream_len = usize::try_from(uint(&body[..4], Width::U32)?).map_err(io::Error::other)?;
+    if body.len() != 4 + stream_len {
+        return Err(io::Error::other("rank175 outer stream length mismatch"));
+    }
+    let mut stream = super::decode_bytes(&body[4..])?;
+    if stream.len() < 22 || stream[0] != 24 || stream[5] != 0 || stream[6 + 9] != 255 {
+        return Err(io::Error::other("unsupported rank175 inner header"));
+    }
+    let inner_plus_one = u32::from_le_bytes(stream[1..5].try_into().expect("checked len")) as usize;
+    if inner_plus_one != stream.len() - 5 {
+        return Err(io::Error::other("rank175 inner length mismatch"));
+    }
+    let mut slot_offsets = [None; 16];
+    let mut pos = 6 + 16;
+    for entry in &mut slot_offsets {
+        if pos >= stream.len() {
+            return Err(io::Error::other("truncated rank175 slot table"));
+        }
+        match stream[pos] {
+            0 => pos += 1,
+            1 => {
+                if pos + 131 > stream.len() || stream[pos + 32] != 0 {
+                    return Err(io::Error::other("unsupported rank175 active row"));
+                }
+                *entry = Some(pos);
+                pos += 131;
+            }
+            _ => return Err(io::Error::other("unsupported rank175 row tag")),
+        }
+    }
+    if pos != stream.len() {
+        return Err(io::Error::other("trailing bytes in rank175 stream"));
+    }
+    for &(slot, prog) in updates {
+        let Some(row) = usize::from(slot)
+            .lt(&16)
+            .then(|| slot_offsets[usize::from(slot)])
+            .flatten()
+        else {
+            return Err(io::Error::other("rank175 progression slot missing"));
+        };
+        stream[row + 43..row + 45].copy_from_slice(&prog.old_exp_permille.min(999).to_le_bytes());
+        stream[row + 45..row + 47].copy_from_slice(&prog.new_exp_permille.min(999).to_le_bytes());
+        stream[row + 47..row + 49].copy_from_slice(&prog.level.to_le_bytes());
+        stream[row + 49..row + 51].copy_from_slice(&prog.level.to_le_bytes());
+    }
+    let mut out = crate::write_uint(stream.len() as u64, Width::U32).map_err(io::Error::other)?;
+    out.extend(super::encode_bytes(&stream)?);
+    Ok(out)
+}
+
 pub fn return180(selector: u8) -> io::Result<Vec<u8>> {
     if selector > 1 {
         return Err(io::Error::other("unsupported room selector"));
@@ -1301,5 +1375,95 @@ mod tests {
             expected_159
         );
         assert!(sprinkler_spawn159(u32::MAX, 10, 277, 13, 2, 1, 1, 901).is_err());
+
+        let base175 = rank175_players(&[(0, 0), (1, 1)], 0).unwrap();
+        assert_eq!(base175.len(), 302);
+        assert_eq!(
+            patch_rank175_progression(
+                &base175,
+                &[(
+                    0,
+                    RowProgression175 {
+                        old_exp_permille: 0,
+                        new_exp_permille: 0,
+                        level: 0,
+                    },
+                )],
+            )
+            .unwrap(),
+            base175
+        );
+        let patched175 = patch_rank175_progression(
+            &base175,
+            &[
+                (
+                    0,
+                    RowProgression175 {
+                        old_exp_permille: 123,
+                        new_exp_permille: 1500,
+                        level: 2,
+                    },
+                ),
+                (
+                    1,
+                    RowProgression175 {
+                        old_exp_permille: 0,
+                        new_exp_permille: 75,
+                        level: 1,
+                    },
+                ),
+            ],
+        )
+        .unwrap();
+        assert_eq!(patched175.len(), 302);
+        let stream = crate::kr00967::decode_bytes(&patched175[4..]).unwrap();
+        let row0 = 6 + 16;
+        assert_eq!(
+            u16::from_le_bytes([stream[row0 + 43], stream[row0 + 44]]),
+            123
+        );
+        assert_eq!(
+            u16::from_le_bytes([stream[row0 + 45], stream[row0 + 46]]),
+            999
+        );
+        assert_eq!(
+            u16::from_le_bytes([stream[row0 + 47], stream[row0 + 48]]),
+            2
+        );
+        assert_eq!(
+            u16::from_le_bytes([stream[row0 + 49], stream[row0 + 50]]),
+            2
+        );
+        let row1 = row0 + 131;
+        assert_eq!(
+            u16::from_le_bytes([stream[row1 + 43], stream[row1 + 44]]),
+            0
+        );
+        assert_eq!(
+            u16::from_le_bytes([stream[row1 + 45], stream[row1 + 46]]),
+            75
+        );
+        assert_eq!(
+            u16::from_le_bytes([stream[row1 + 47], stream[row1 + 48]]),
+            1
+        );
+        assert_eq!(
+            u16::from_le_bytes([stream[row1 + 49], stream[row1 + 50]]),
+            1
+        );
+        assert!(
+            patch_rank175_progression(
+                &base175,
+                &[(
+                    2,
+                    RowProgression175 {
+                        old_exp_permille: 0,
+                        new_exp_permille: 0,
+                        level: 1
+                    }
+                )]
+            )
+            .is_err()
+        );
     }
 }
