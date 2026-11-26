@@ -237,6 +237,62 @@ impl Store {
         self.remove_friend_request(recipient, sender, recipient, now)
     }
 
+    /// Respond to a pending request with an explicit recipient ownership check.
+    /// A caller that is neither the request recipient nor the requester cannot
+    /// consume or alter the request.
+    pub fn respond_friend_request(
+        &mut self,
+        recipient: i64,
+        sender: i64,
+        accept: bool,
+        now: i64,
+    ) -> Result<bool> {
+        distinct_players(sender, recipient)?;
+        self.at(now, |tx| {
+            active_player(tx, recipient, now)?;
+            active_player(tx, sender, now)?;
+            let pending_recipient: Option<i64> = tx
+                .query_row(
+                    "SELECT recipient_id FROM friend_requests
+                     WHERE sender_id=?1 AND recipient_id=?2",
+                    params![sender, recipient],
+                    |row| row.get(0),
+                )
+                .optional()?;
+            if pending_recipient.is_none() {
+                let has_other_recipient: bool = tx.query_row(
+                    "SELECT EXISTS(SELECT 1 FROM friend_requests
+                     WHERE sender_id=?1 AND recipient_id<>?2)",
+                    params![sender, recipient],
+                    |row| row.get(0),
+                )?;
+                if has_other_recipient {
+                    return Err(Error::Conflict);
+                }
+                return Ok(false);
+            }
+            if blocked(tx, sender, recipient)? {
+                return Err(Error::Conflict);
+            }
+            if tx.execute(
+                "DELETE FROM friend_requests WHERE sender_id=?1 AND recipient_id=?2",
+                params![sender, recipient],
+            )? == 0
+            {
+                return Ok(false);
+            }
+            if accept {
+                check_friend_capacity(tx, sender)?;
+                check_friend_capacity(tx, recipient)?;
+                tx.execute(
+                    "INSERT INTO friendships VALUES(?1,?2,?3)",
+                    params![sender.min(recipient), sender.max(recipient), now],
+                )?;
+            }
+            Ok(true)
+        })
+    }
+
     pub fn cancel_friend_request(&mut self, sender: i64, recipient: i64, now: i64) -> Result<bool> {
         self.remove_friend_request(sender, sender, recipient, now)
     }
@@ -554,6 +610,53 @@ impl Store {
         let members = guild_members(&tx, guild_id)?;
         tx.commit()?;
         Ok((guild, members))
+    }
+
+    /// Returns the guild containing the player, including its current roster.
+    /// A player without membership is represented by `None`.
+    pub fn guild_for_player(
+        &mut self,
+        player: i64,
+        now: i64,
+    ) -> Result<Option<(Guild, Vec<GuildMember>)>> {
+        positive_id(player)?;
+        self.at(now, |tx| {
+            active_player(tx, player, now)?;
+            let Some(guild_id) = tx
+                .query_row(
+                    "SELECT guild_id FROM guild_members WHERE player_id=?1",
+                    [player],
+                    |row| row.get(0),
+                )
+                .optional()?
+            else {
+                return Ok(None);
+            };
+            let guild = tx
+                .query_row(
+                    "SELECT name,leader_player_id,created_at FROM guilds WHERE id=?1",
+                    [guild_id],
+                    |row| {
+                        Ok(Guild {
+                            id: guild_id,
+                            name: row.get(0)?,
+                            leader_player_id: row.get(1)?,
+                            created_at: row.get(2)?,
+                        })
+                    },
+                )
+                .optional()?
+                .ok_or(Error::Storage)?;
+            Ok(Some((guild, guild_members(tx, guild_id)?)))
+        })
+    }
+
+    pub fn get_player_guild(
+        &mut self,
+        player: i64,
+        now: i64,
+    ) -> Result<Option<(Guild, Vec<GuildMember>)>> {
+        self.guild_for_player(player, now)
     }
 
     pub fn list_chat_abuse(

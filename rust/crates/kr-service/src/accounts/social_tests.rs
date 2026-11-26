@@ -99,6 +99,45 @@ fn friendship_requires_recipient_acceptance_and_blocks_remove_relationships() {
 }
 
 #[test]
+fn strict_friend_response_is_recipient_only_and_guild_lookup_is_player_scoped() {
+    let (temp, mut store) = fixture(3);
+    assert_eq!(store.guild_for_player(1, 100).unwrap(), None);
+    assert_eq!(store.send_friend_request(1, 2, 100), Ok(true));
+    assert_eq!(
+        store.respond_friend_request(3, 1, true, 101),
+        Err(Error::Conflict)
+    );
+    assert_eq!(
+        store.respond_friend_request(1, 1, true, 101),
+        Err(Error::InvalidInput)
+    );
+    assert_eq!(store.respond_friend_request(2, 1, true, 102), Ok(true));
+    assert_eq!(store.list_friends(1, 102).unwrap(), [2]);
+    assert_eq!(store.list_friends(2, 102).unwrap(), [1]);
+
+    let guild = store.create_guild(1, "Social Test", 103).unwrap();
+    assert_eq!(
+        store.guild_for_player(1, 103).unwrap(),
+        Some((
+            guild.clone(),
+            vec![GuildMember {
+                player_id: 1,
+                role: GuildRole::Leader,
+                joined_at: 103,
+            }]
+        ))
+    );
+    assert_eq!(store.guild_for_player(2, 103).unwrap(), None);
+    assert_eq!(store.join_guild(2, guild.id, 104), Ok(true));
+    assert_eq!(store.guild_for_player(2, 104).unwrap().unwrap().0, guild);
+    assert_eq!(store.leave_guild(2, guild.id, 105), Ok(true));
+    assert_eq!(store.guild_for_player(2, 105).unwrap(), None);
+    assert_eq!(store.disband_guild(1, guild.id, 106), Ok(true));
+    assert_eq!(store.guild_for_player(1, 106).unwrap(), None);
+    drop(temp);
+}
+
+#[test]
 fn friend_and_block_caps_and_pending_rollback_hold_across_connections() {
     let extra = FRIEND_CAP + 2;
     let (temp, mut s) = fixture(extra.max(BLOCK_CAP + 2).max(FRIEND_REQUEST_CAP + 2));
