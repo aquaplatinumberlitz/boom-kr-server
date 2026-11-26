@@ -187,6 +187,27 @@ Chi tiết kiểm chứng ở [f4-w3-ida-records.json](../evidence/content/f4-w3
 
 Trong lần chạy Wine `f4-ui-probe-v1` ([f4-ui-probe-wine.json](../evidence/content/f4-ui-probe-wine.json), `f4a-rust-v1`, bật thưởng `Tomb12`), sau khi `CookieA` nhận `S->C 135` (`lucci=100`) và về sảnh, thao tác click đơn vào nút `마이페이지` tại `(770, 678)` làm bật tooltip `내 아이템 보기` nhưng `CA.exe` giữ nguyên màn hình sảnh và chỉ gửi các gói nền định kỳ (`715`, `15`); chưa phát request mở MyPage hay đồng bộ túi đồ.
 
+<a id="f4b-mypage-entry-guards"></a>
+### Các cổng trước khi vào MyPage
+
+[CP401](../evidence/checkpoints/records/CP401.json) xác nhận các cạnh tĩnh trên KR 00967
+(`kr_static/confirmed`). Bảng hàm ảo của `CLobbyStage` tại `0x1766A2C` chứa `0xDA1E80` ở
+`+0x2B4`; handler gọi `0x812090(this + 0xAFDC)` và chỉ chuyển tới `0xD73C50` nếu kết quả bằng 0.
+Hai xref `Dialog/BtMyPage` của Wave 5 nằm trong các dialog thưởng người mới và người quay lại;
+chúng chưa chứng minh nút sảnh tại tọa độ của probe gọi handler này.
+
+`0xD73C50` chứa đường xác nhận `ConfirmGoToMyPageNormal`. Trước khi đi đến các nhánh gửi, hàm
+kiểm chỉ số có dấu trong `-1..1`, tách `sub_1220080() == 3` sang thông báo `DeferShutdown`, và
+chỉ đi tiếp nếu `sub_13E4720(sub_559BB0()) != 0`. Getter `0x13E4720` đọc qua `0x529C60` ở
+`this + 0xF8`; chưa chốt nguồn gán hoặc ý nghĩa giá trị. Case S→C `235` tại `0xD69095` cũng có
+đường gọi `0xD73C50` qua `0xD6D810`, có điều kiện stage 11/12 và cờ; đây là locator tĩnh để
+đối chiếu, chưa đủ layout để tạo gói `235`.
+
+Phép đo tiếp theo: với cùng thao tác và một đối chứng chỉ rê chuột, quan sát vào `0xDA1E80`,
+kết quả tại `0xDA1E95`, rồi chỉ số và các giá trị tại `0xD73C8E` và `0xD73D30`. Nếu hàm đi
+tới builder, đối chiếu opcode, cursor và frame đã gửi; nếu callback không chạy, lần ngược sự kiện
+của nút sảnh trước. Không suy cổng nào đã chặn probe cũ chỉ từ tooltip hoặc việc không thấy gói.
+
 <a id="f4b-reader-slots-w4"></a>
 ### Giải mã bảng vtable reader `CReceivedPacketBase` (Wave 4)
 

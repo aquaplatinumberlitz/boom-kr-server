@@ -1,0 +1,61 @@
+{
+  "id": "CP401",
+  "previous": "CP400",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-26T11:42:00Z",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Các cổng tĩnh nào đứng trước nhánh MyPage của KR 00967, và đặt điểm đo ở đâu để phân loại probe không phát request?",
+  "scope": "Chỉ truy các cạnh từ Wave 5–6 đến callback và builder client F4-b, trên bản sao IDA riêng. Giữ kết quả Wine cũ; không chạy client hoặc thay cờ. Nguồn boomkr-re và boom-re không có cạnh KR phù hợp với các locator đã tìm.",
+  "context_commit": "6c0634c1f18604f00748a4c2b5996306b4ff1805",
+  "artifacts": [
+    {"name": "kr-full.exe KR 00967, image base 0x400000", "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"}
+  ],
+  "locators": [
+    "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards",
+    "docs/protocol/f4-web-shop-backend.md#f4d-shop-jumptable-w6",
+    "docs/evidence/content/f4-w5-ida-ui-and-exp.json",
+    "local/runs/f4b-mypage-gate"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards", "summary": "CLobbyStage vtable 0x1766A2C +0x2B4 trỏ 0xDA1E80. Handler chỉ gọi 0xD73C50 khi 0x812090(this + 0xAFDC) trả 0. Hai hàm tham chiếu Dialog/BtMyPage thuộc dialog thưởng người mới và người quay lại.", "limits": "Chưa quan sát cạnh từ tọa độ nút sảnh của probe tới vtable slot đó.", "evidence": ["CP401_CALLERS", "CP401_SITES"]},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards", "summary": "0xD73C50 kiểm chỉ số có dấu -1..1, chuyển trạng thái 3 sang DeferShutdown, rồi đòi 0x13E4720(sub_559BB0()) khác 0. Getter đọc 0x529C60(this + 0xF8). Mốc dựng gói sau cổng nằm tại 0xD73E52, 0xD7406B, 0xD740FD và 0xD7418A.", "limits": "Chưa đo cổng nào chặn thao tác, nguồn gán +0xF8 hoặc opcode nào thực gửi trong phiên đã đo.", "evidence": ["CP401_ENTRY"]},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards", "summary": "Case 235 tại 0xD69095 gọi 0xD6D810, có đường tới 0xD73C50 ở stage 11/12 tùy cờ và kết quả 0x850D20.", "limits": "Không có layout đầy đủ của 235 và không suy nó là phản hồi của một request đã quan sát.", "evidence": ["CP401_CALLERS", "CP401_SITES"]}
+  ],
+  "verification": [
+    {"check": "Dùng các script IDA ghim trong run, rồi chạy PYTHONPATH=tools python3 local/runs/f4b-mypage-gate/verify.py local/runs/f4b-reader-primitives/kr-full.exe để đối chiếu ảnh PE, các lệnh call và slot.", "result": "pass", "limits": "Đối chiếu tĩnh; không chứng minh callback UI đã chạy.", "evidence": ["CP401_VERIFY", "CP401_VERIFY_SCRIPT"]},
+    {"check": "Đối chiếu SHA-256 của summary Wine đã giữ với metadata của probe.", "result": "pass", "limits": "Probe cũ chỉ chứng minh không thấy request MyPage trong đoạn capture; không có trace handler.", "evidence": ["CP401_WINE_SUMMARY", "CP401_WINE_META"]},
+    {"check": "Đo điểm vào và kết quả từng cổng cho click và đối chứng chỉ rê chuột.", "result": "not_run", "limits": "Lease Wine đang được Wave 7 sử dụng khi kiểm tra; không chạy song song.", "evidence": []}
+  ],
+  "delta": {"added": ["Định vị callback, cổng profile và cạnh từ case 235 cho phép đo MyPage."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Chưa có trace Wine xác định callback/cổng thực tế. Không bật route hoặc dựng gói 235 từ bằng chứng hiện có."
+  ],
+  "next_steps": [
+    {"id": "F4B-INVENTORY-NATIVE", "task": "KRE-F4-B", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Khi lease rảnh, đo 0xDA1E80/0xDA1E95 và 0xD73C8E/0xD73D30 với click và hover; nếu qua cổng thì đối chiếu frame và sau đó mới đo consumer với một item."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-26T11:42:00Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Tự đối chiếu địa chỉ và byte trên ảnh unpack, giữ giới hạn của probe.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập cho checkpoint Codex."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi cổng được định vị và phép đo còn thiếu."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục vẫn trỏ tới contract F4-b/c."},
+    {"path": "docs/protocol/f4-inventory-cosmetics.md", "state": "updated", "reason": "Thêm cạnh tĩnh vào MyPage và điểm đo có đối chứng."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4; phép đo chi tiết ở contract."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không thay trạng thái độ phủ."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi ID hoặc mức bằng chứng của nhóm."},
+    {"path": "docs/evidence/checkpoints/records/CP401.json", "state": "updated", "reason": "Ghim raw IDA, công thức đối chiếu và probe cũ."}
+  ],
+  "evidence": [
+    {"id": "CP401_ENTRY", "kind": "local", "path": "local/runs/f4b-mypage-gate/ida-entry.json", "bytes": 28654, "sha256": "dd526b7ee1535f71d4fa725784583fa49b8615925722e3141fab1740af04f1f6"},
+    {"id": "CP401_CALLERS", "kind": "local", "path": "local/runs/f4b-mypage-gate/ida-callers.json", "bytes": 11696, "sha256": "f9ca0c928045da24a233dabc8fda530280f29ddea9adb9ed944f6384701c7664"},
+    {"id": "CP401_SITES", "kind": "local", "path": "local/runs/f4b-mypage-gate/ida-sites.json", "bytes": 3001, "sha256": "2b90f40efc8f48ff8da52220eacb7f034e614b6f7a64d2fa0afdfb5926879c72"},
+    {"id": "CP401_VERIFY_SCRIPT", "kind": "local", "path": "local/runs/f4b-mypage-gate/verify.py", "bytes": 2060, "sha256": "15170152abdf1f3d1bd9c7d461d3b6518ae8c507f3b5583ec00b7c718ddf4ff7"},
+    {"id": "CP401_VERIFY", "kind": "local", "path": "local/runs/f4b-mypage-gate/verification.json", "bytes": 2038, "sha256": "7192e68575b6744cc5d67ccf8df7543ec68012ca25883a87fac1a57c6a17d93e"},
+    {"id": "CP401_WINE_SUMMARY", "kind": "local", "path": "local/runs/f4b-mypage-gate/prior-probe-summary.json", "bytes": 35304, "sha256": "f6f55a7a8ab629abe4cd21ce4c9f8bd84d7d43020d38e98ce6bba52f325504cc"},
+    {"id": "CP401_WINE_META", "kind": "repository", "path": "docs/evidence/content/f4-ui-probe-wine.json", "bytes": 3399, "sha256": "1f795f5bb73dbe7c7d913f688908c7caf3e15bf4c6da05a41061d5f171416e8d"},
+    {"id": "CP401_CONTRACT", "kind": "repository", "path": "docs/protocol/f4-inventory-cosmetics.md", "bytes": 27220, "sha256": "434ec46012f04cab17528ea1480badb80b8eaba613e10ed7c5f8b9315241ff11"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f4b-mypage-gate", "path": "local/evidence-manifests/d1517cf2705a4dce717759e442f56f864d911e508cb51adb587daf56741e28fe.jsonl", "sha256": "d1517cf2705a4dce717759e442f56f864d911e508cb51adb587daf56741e28fe", "bytes": 614, "count": 3, "files_bytes": 3154}
+  ]
+}
