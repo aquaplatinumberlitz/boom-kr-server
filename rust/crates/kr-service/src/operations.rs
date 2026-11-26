@@ -23,6 +23,8 @@ use tokio::{
     time::timeout,
 };
 
+pub use crate::room_modes::adapter::{Command as F2Command, Event as F2Event, Setup as F2Setup};
+
 mod backup;
 pub use backup::BackupSchedule;
 pub(crate) use backup::Scheduled;
@@ -68,19 +70,30 @@ impl RoomTarget {
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
 pub enum LiveCommand {
     ListRooms,
-    CloseRoom { target: RoomTarget },
+    CloseRoom {
+        target: RoomTarget,
+    },
+    F2Runtime {
+        target: RoomTarget,
+        command: F2Command,
+    },
 }
 impl LiveCommand {
     fn audit_fields(&self) -> (&'static str, &'static str, String) {
         match self {
             Self::ListRooms => ("list_rooms", "service", "rooms".into()),
-            Self::CloseRoom { target } => {
+            Self::CloseRoom { target } | Self::F2Runtime { target, .. } => {
+                let op = if matches!(self, Self::CloseRoom { .. }) {
+                    "close_room"
+                } else {
+                    "f2_runtime"
+                };
                 if target.instance.len() != 32
                     || !target.instance.bytes().all(|b| b.is_ascii_hexdigit())
                 {
-                    ("close_room", "room", "invalid-instance".into())
+                    (op, "room", "invalid-instance".into())
                 } else {
-                    ("close_room", "room", target.audit_id())
+                    (op, "room", target.audit_id())
                 }
             }
         }
@@ -202,6 +215,12 @@ async fn handle(
                     Ok(Some(ticket)) => (json!({"ok":true}), ticket),
                     Ok(None) => (json!({"error":"room not found"}), None),
                     Err(_) => (json!({"error":"room service unavailable"}), None),
+                }
+            }
+            LiveCommand::F2Runtime { target, command } if target.epoch == epoch && target.instance == instance => {
+                match hub.operator_f2(target.key(), command) {
+                    Ok(view) => (json!({"f2_runtime":view}), None),
+                    Err(error) => (json!({"error":error.to_string()}), None),
                 }
             }
             _ => (json!({"error":"stale service epoch"}), None),

@@ -39,8 +39,8 @@ pub struct Config {
     pub map_profile: Option<crate::FixturePin>,
     #[serde(default)]
     pub(crate) map_choices: Vec<crate::map_profile::ChoiceConfig>,
-    /// Internal MapGroup allowlist and operator overrides for Free/Manner.
-    /// F2 candidates remain unavailable for serving.
+    /// Internal map group allowlist and Free/Manner overrides. Only the
+    /// separate F2 runtime override admits operator commands.
     #[serde(default)]
     pub(crate) f2_modes: Option<room_modes::Config>,
     pub packets: HashMap<String, LobbyPacketPin>,
@@ -70,14 +70,17 @@ pub struct Config {
     pub ninth_admission_probe: bool,
 }
 impl Config {
-    fn load_room_modes(&self) -> io::Result<Option<Arc<room_modes::Policy>>> {
+    fn load_room_modes(&self) -> io::Result<Option<F2Modes>> {
         Ok(self
             .f2_modes
             .as_ref()
             .map(room_modes::Policy::load)
             .transpose()?
             .flatten()
-            .map(Arc::new))
+            .map(|policy| F2Modes {
+                policy: Arc::new(policy),
+                installed: None,
+            }))
     }
 }
 #[derive(Deserialize)]
@@ -439,7 +442,7 @@ pub struct Batch {
 }
 pub struct Runtime {
     maps: Option<Arc<crate::map_profile::Catalog>>,
-    f2_modes: Option<Arc<room_modes::Policy>>,
+    f2_modes: Option<F2Modes>,
     selected_map: usize,
     map_revision: u64,
     journal: Option<crate::match_journal::Owner>,
@@ -464,6 +467,11 @@ pub struct Runtime {
     floor_catalog: pickups::Catalog,
     rules: RoomRules,
     abort: Option<FourAbort>,
+}
+
+struct F2Modes {
+    policy: Arc<room_modes::Policy>,
+    installed: Option<room_modes::adapter::RoomMode>,
 }
 /// Single-loss CP205 diagnostic lifecycle; preserved through final cleanup.
 /// A second loss during recovery fails closed, rather than claiming recovery.
@@ -837,7 +845,10 @@ pub(crate) fn fork(
 
     Ok(Arc::new(Mutex::new(Runtime {
         maps: source.maps.clone(),
-        f2_modes: source.f2_modes.clone(),
+        f2_modes: source.f2_modes.as_ref().map(|f2| F2Modes {
+            policy: f2.policy.clone(),
+            installed: None,
+        }),
         selected_map: 0,
         map_revision: 0,
         journal: None,
@@ -883,11 +894,89 @@ pub(crate) fn validate_admission_capacity(
 pub(crate) fn preflight_create_mode(
     prototype: &Shared,
     team: wire::RoomTeamSelector,
-) -> io::Result<()> {
-    prototype
+) -> io::Result<Option<room_modes::adapter::RoomMode>> {
+    let source = prototype
         .lock()
-        .map_err(|_| err("room prototype unavailable"))?
-        .check_create_mode(team)
+        .map_err(|_| err("room prototype unavailable"))?;
+    source.check_create_mode(team)?;
+    source
+        .f2_modes
+        .as_ref()
+        .map(|f2| f2.policy.room_mode(team))
+        .transpose()
+        .map(Option::flatten)
+}
+
+pub(crate) fn install_f2_mode(
+    shared: &Shared,
+    mode: room_modes::adapter::RoomMode,
+) -> io::Result<()> {
+    let mut room = shared.lock().map_err(|_| err("room unavailable"))?;
+    if room.public_key.is_none()
+        || room.managed_round.is_none()
+        || !room.channels.is_empty()
+        || room.journal.is_some()
+    {
+        return Err(err("F2 runtime requires a pristine managed gameplay room"));
+    }
+    let f2 = room
+        .f2_modes
+        .as_mut()
+        .filter(|f2| f2.installed.is_none())
+        .ok_or_else(|| err("F2 runtime requires an uninstalled room policy"))?;
+    f2.installed = Some(mode);
+    Ok(())
+}
+
+pub(crate) fn operator_f2(
+    shared: &Shared,
+    command: room_modes::adapter::Command,
+) -> io::Result<room_modes::adapter::RoundView> {
+    let mut room = shared.lock().map_err(|_| err("room unavailable"))?;
+    let mut staged = room
+        .f2_modes
+        .as_ref()
+        .and_then(|f2| f2.installed.clone())
+        .ok_or_else(|| err("F2 runtime disabled for room"))?;
+    let round = command.round();
+    if room.model.phase != (Phase::Armed { round })
+        || !room.model.valid_round_roster()
+        || room.model.members.values().any(|m| {
+            room.channels.get(&m.key.identity).is_none_or(|channel| {
+                channel.connection != m.key.connection
+                    || channel
+                        .relay_authority
+                        .as_ref()
+                        .is_some_and(|owner| !owner.owns(m.key.identity, m.key.connection))
+            })
+        })
+    {
+        return Err(err(
+            "F2 runtime requires the current armed round and roster",
+        ));
+    }
+    let (view, replies) = staged.apply(command, room.model.members.values())?;
+    let reserved = if replies.is_empty() {
+        Vec::new()
+    } else {
+        let effects = Runtime::transport_representatives(room.model.members.values())
+            .into_iter()
+            .map(|peer| {
+                (
+                    peer.key.identity,
+                    Runtime::member_batch(peer.key, Some(round), 0, replies.clone()),
+                )
+            });
+        room.reserve_batches(effects)?
+    };
+    room.f2_modes
+        .as_mut()
+        .expect("installed F2 policy")
+        .installed = Some(staged);
+    for (permit, batch) in reserved {
+        permit.send(batch);
+    }
+    Ok(view)
 }
 pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
     full_idle_roster(shared, 1)
@@ -949,6 +1038,25 @@ pub(crate) fn listing_row(shared: &Shared) -> io::Result<wire::ListingRow> {
     Ok(row)
 }
 impl Runtime {
+    fn has_f2_runtime(&self) -> bool {
+        self.f2_modes
+            .as_ref()
+            .is_some_and(|f2| f2.installed.is_some())
+    }
+
+    fn f2_armed(&self) -> bool {
+        self.has_f2_runtime() && matches!(self.model.phase, Phase::Armed { .. })
+    }
+
+    fn f2_fences_packet(&self, opcode: u32) -> bool {
+        self.has_f2_runtime()
+            && match self.model.phase {
+                Phase::Loading { .. } => !matches!(opcode, 79 | 99),
+                Phase::Armed { .. } => true,
+                _ => false,
+            }
+    }
+
     fn transport_representatives<'a>(members: impl Iterator<Item = &'a Member>) -> Vec<&'a Member> {
         let mut representatives = std::collections::BTreeMap::new();
         for member in members {
@@ -1047,7 +1155,7 @@ impl Runtime {
         if self
             .f2_modes
             .as_ref()
-            .is_some_and(|policy| policy.has_create_override(team))
+            .is_some_and(|f2| f2.policy.has_create_override(team))
         {
             // A candidate map can refine the rejection, never admit an F2 room.
             self.check_start_dispatch(team).map_err(err)?;
@@ -1055,9 +1163,12 @@ impl Runtime {
         Ok(())
     }
     fn check_start_dispatch(&self, team: wire::RoomTeamSelector) -> Result<(), &'static str> {
-        let Some(policy) = &self.f2_modes else {
+        let Some(f2) = &self.f2_modes else {
             return Ok(());
         };
+        if f2.installed.is_none() && !f2.policy.checks_native_start() {
+            return Ok(());
+        }
         let map = self
             .body_opt(Template::Start121)
             .ok_or("start_map_context_unmeasured")?;
@@ -1067,7 +1178,7 @@ impl Runtime {
             .ok_or("map_selection_context_unmeasured")?;
         let selected =
             wire::map117_selection(selected).map_err(|_| "map_selection_context_unmeasured")?;
-        policy.check_start(team, &map, selected)
+        f2.policy.check_start(team, &map, selected)
     }
     fn reply(&self, key: Template, body: Option<Vec<u8>>) -> Reply {
         packet(
@@ -1224,7 +1335,10 @@ impl Runtime {
     }
     // Reserve every recipient queue entry before publishing any state or batch.
     // Physical TCP delivery can still fail; barrier/recipient fences remain required.
-    fn publish(&mut self, next: Room, effects: Vec<(u32, Batch)>) -> io::Result<()> {
+    fn reserve_batches(
+        &self,
+        effects: impl IntoIterator<Item = (u32, Batch)>,
+    ) -> io::Result<Vec<(mpsc::OwnedPermit<Batch>, Batch)>> {
         let mut reserved = Vec::new();
         for (id, mut batch) in effects {
             let channel = self
@@ -1239,6 +1353,11 @@ impl Runtime {
             batch.origin = Some((self.scope.clone(), id, channel.connection));
             reserved.push((permit, batch));
         }
+        Ok(reserved)
+    }
+
+    fn publish(&mut self, next: Room, effects: Vec<(u32, Batch)>) -> io::Result<()> {
+        let reserved = self.reserve_batches(effects)?;
         if let Some(relay) = &mut self.relay {
             relay.transition(&next)?;
         }
@@ -1427,6 +1546,20 @@ impl Runtime {
             relay.invalidate();
         }
         if let Ok(m) = self.member(id, connection) {
+            if self.f2_fences_packet(86) {
+                // No F2 departure or return contract. Revoke all queued work
+                // without passing through normal battle forfeit or rewards.
+                let _ = self.model.fence_active(m.key);
+                if let Some(authenticated) = &mut self.authenticated {
+                    authenticated.invalidate();
+                }
+                self.requested.remove(&m.key);
+                self.rostered
+                    .retain(|(recipient, subject)| *recipient != m.key && *subject != m.key);
+                self.ports.remove(&m.key);
+                self.channels.clear();
+                return;
+            }
             self.journal_departed(m.key, crate::accounts::MatchExit::Disconnected);
             let mut next = self.model.clone();
             if self.rules.departure == DeparturePolicy::ContinuePlayers
@@ -1868,6 +2001,9 @@ impl Session {
     }
     pub fn tick(&self) -> io::Result<()> {
         let mut r = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if r.f2_armed() {
+            return Ok(());
+        }
         if r.journal
             .as_ref()
             .map(|j| j.ready())
@@ -2350,6 +2486,9 @@ impl Session {
     }
     pub(crate) fn prepare_character(&self, body: &[u8]) -> io::Result<Option<(Membership, u16)>> {
         let runtime = self.shared.lock().map_err(|_| err("room unavailable"))?;
+        if runtime.f2_fences_packet(92) {
+            return Ok(None);
+        }
         let member = runtime.member(self.identity, self.connection)?;
         let character = wire::character92(body)?;
         if !runtime.rules.player_choices {
@@ -2598,6 +2737,15 @@ impl Session {
             && !(r.rules.player_choices && matches!(opcode, 92 | 95 | 97))
         {
             return Err(err("managed room selection does not yet serve gameplay"));
+        }
+        if r.f2_fences_packet(opcode) && Self::handles(opcode) {
+            if matches!(opcode, 81 | 82) {
+                return Err(err("F2 runtime freezes admission during a round"));
+            }
+            r.member(self.identity, self.connection)?;
+            // The carrier loaded through the normal KR barrier. Its client
+            // reports grant no F2 event or legacy result authority.
+            return Ok(Observation::default());
         }
         if expected.is_some_and(|key| {
             !r.model.current(key)
@@ -5763,6 +5911,44 @@ pub(crate) mod registry_foundation_tests {
         r.bodies.insert(Template::Floor582, vec![0x5a]);
         drop(r);
         shared
+    }
+    pub(crate) fn f2_runtime_prototype(config: serde_json::Value) -> Shared {
+        let shared = f2_prototype(config, 3, 0);
+        let mut r = shared.lock().unwrap();
+        r.model = Room::with_capacity(4).unwrap();
+        r.bodies
+            .insert(Template::Start121, synthetic_start_for(b"Factory07", 3, 0));
+        for (key, body) in [
+            (Template::Go197, vec![0; 14]),
+            (Template::Play196, vec![0; 7]),
+            (Template::Peer153, vec![0; 35]),
+        ] {
+            r.bodies.insert(key, body);
+        }
+        drop(r);
+        shared
+    }
+    pub(crate) fn ready_roster(shared: &Shared) {
+        let mut r = shared.lock().unwrap();
+        let keys: Vec<_> = r.model.members.values().map(|m| m.key).collect();
+        for key in keys {
+            r.model.setup(key).unwrap();
+            if r.model.host != Some(key.identity) {
+                r.model.ready(key).unwrap();
+            }
+        }
+    }
+    pub(crate) fn fill_recipient_queue(shared: &Shared, slot: u8) -> usize {
+        let r = shared.lock().unwrap();
+        let m = r.model.members.values().find(|m| m.slot == slot).unwrap();
+        let sender = &r.channels[&m.key.identity].sender;
+        let capacity = sender.capacity();
+        for _ in 0..capacity {
+            sender
+                .try_send(Runtime::member_batch(m.key, None, 0, vec![]))
+                .unwrap();
+        }
+        capacity
     }
     #[test]
     fn room_start_dispatch_checks_the_selected_tuple_and_roomtype_before_any_publication() {

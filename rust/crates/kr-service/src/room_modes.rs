@@ -7,13 +7,9 @@ use kr_wire::kr00967::{RoomTeamSelector, Start121Map};
 use serde::Deserialize;
 use std::{collections::BTreeSet, io};
 
+pub(crate) mod adapter;
 mod rules;
-// The room dispatcher stays closed until F2 start and event authority are measured.
-#[allow(
-    dead_code,
-    reason = "F2 round runtime has no measured live dispatcher yet"
-)]
-pub(crate) mod runtime;
+mod runtime;
 use rules::{RuleTable, Wave};
 
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
@@ -67,15 +63,25 @@ pub(crate) struct Config {
     visible_map_groups: BTreeSet<MapGroup>,
     #[serde(default)]
     create_overrides: CreateOverrides,
+    #[serde(default)]
+    runtime_overrides: CreateOverrides,
 }
 
-/// Explicit operator presets for requests that use a measured team selector.
-/// The native selector always keeps its original meaning and wire value.
-#[derive(Default, Deserialize)]
+/// Operator presets keyed by the unchanged native team selector.
+#[derive(Clone, Copy, Default, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct CreateOverrides {
     free: Option<ModeKind>,
     manner: Option<ModeKind>,
+}
+
+impl CreateOverrides {
+    fn for_team(self, team: RoomTeamSelector) -> Option<ModeKind> {
+        match team {
+            RoomTeamSelector::Free => self.free,
+            RoomTeamSelector::Manner => self.manner,
+        }
+    }
 }
 
 #[derive(Deserialize)]
@@ -130,8 +136,8 @@ pub(crate) struct Policy {
     catalog: Catalog,
     rules: RuleTable,
     visible: BTreeSet<MapGroup>,
-    free: Option<ModeKind>,
-    manner: Option<ModeKind>,
+    create: CreateOverrides,
+    runtime: CreateOverrides,
 }
 
 impl Catalog {
@@ -145,7 +151,12 @@ impl Catalog {
 impl Policy {
     pub(crate) fn load(cfg: &Config) -> io::Result<Option<Self>> {
         let CreateOverrides { free, manner } = cfg.create_overrides;
-        if free.is_none() && manner.is_none() && cfg.visible_map_groups.is_empty() {
+        let runtime = cfg.runtime_overrides;
+        if [free, manner, runtime.free, runtime.manner]
+            .into_iter()
+            .all(|kind| kind.is_none())
+            && cfg.visible_map_groups.is_empty()
+        {
             return Ok(None);
         }
         let catalog: Catalog = serde_json::from_str(CATALOG).map_err(io::Error::other)?;
@@ -160,24 +171,39 @@ impl Policy {
         {
             return Err(io::Error::other("room create override is outside F2"));
         }
+        if (free.is_some() && runtime.free.is_some())
+            || (manner.is_some() && runtime.manner.is_some())
+        {
+            return Err(io::Error::other("F2 create and runtime overrides overlap"));
+        }
         Ok(Some(Self {
             catalog,
             rules,
             visible: cfg.visible_map_groups.clone(),
-            free,
-            manner,
+            create: cfg.create_overrides,
+            runtime,
         }))
     }
 
     fn override_for(&self, team: RoomTeamSelector) -> Option<ModeKind> {
-        match team {
-            RoomTeamSelector::Free => self.free,
-            RoomTeamSelector::Manner => self.manner,
-        }
+        self.create.for_team(team)
     }
 
     pub(crate) fn has_create_override(&self, team: RoomTeamSelector) -> bool {
         self.override_for(team).is_some()
+    }
+
+    pub(crate) fn checks_native_start(&self) -> bool {
+        self.create.free.is_some() || self.create.manner.is_some() || !self.visible.is_empty()
+    }
+
+    pub(crate) fn room_mode(
+        &self,
+        team: RoomTeamSelector,
+    ) -> io::Result<Option<adapter::RoomMode>> {
+        self.runtime_for(team)
+            .map(|runtime| runtime.map(adapter::RoomMode))
+            .map_err(|error| io::Error::other(format!("F2 runtime: {error:?}")))
     }
 
     fn group_visible(&self, group: &Group) -> bool {

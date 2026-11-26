@@ -39,6 +39,11 @@ enum Command {
     ListRooms {},
     #[serde(rename = "close-room")]
     CloseRoom { target: RoomTarget },
+    #[serde(rename = "f2-runtime")]
+    F2Runtime {
+        target: RoomTarget,
+        command: operations::F2Command,
+    },
     #[serde(rename = "delete")]
     Delete { account_id: i64 },
     #[serde(rename = "recovery-reset")]
@@ -146,7 +151,9 @@ impl Command {
             InventoryList { player_id } => player("inventory_list", player_id, false),
             AdminGrantLucci { player_id, .. } => player("admin_grant_lucci", player_id, true),
             AdminGrantItem { player_id, .. } => player("admin_grant_item", player_id, true),
-            ListRooms {} | CloseRoom { .. } => unreachable!("handled by live admin"),
+            ListRooms {} | CloseRoom { .. } | F2Runtime { .. } => {
+                unreachable!("handled by live admin")
+            }
         }
     }
 }
@@ -180,6 +187,13 @@ fn manage(database: &Path) -> Result<Value, Box<dyn std::error::Error>> {
                 database,
                 &admin,
                 LiveCommand::CloseRoom { target },
+            )?);
+        }
+        Command::F2Runtime { target, command } => {
+            return Ok(operations::live_command(
+                database,
+                &admin,
+                LiveCommand::F2Runtime { target, command },
             )?);
         }
         command => command,
@@ -230,7 +244,9 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
             let code = s.reset_recovery(admin, account_id, None)?;
             json!({"recovery_code":code.as_str()})
         }
-        Command::ListRooms {} | Command::CloseRoom { .. } => unreachable!(),
+        Command::ListRooms {} | Command::CloseRoom { .. } | Command::F2Runtime { .. } => {
+            unreachable!()
+        }
         Command::MatchHistoryAccount { account_id, limit } => {
             json!({"matches":s.match_history(admin,HistoryFilter::Account(account_id),limit)?})
         }
