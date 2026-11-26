@@ -13,6 +13,7 @@ mod characters;
 mod diagnostic59;
 #[cfg(test)]
 mod f2_runtime_integration_tests;
+pub mod f6_policy;
 mod four_results;
 pub mod ingame_tls;
 mod item_scope;
