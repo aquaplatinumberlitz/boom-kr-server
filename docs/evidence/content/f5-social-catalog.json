@@ -1,0 +1,136 @@
+{
+  "build": "KR00967",
+  "catalog_sha256": "b2627408acd0d2db1750138e62b1bcc560aa9b65b03c2a0d208acb8bc87f3f21",
+  "client_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+  "inputs": {
+    "census_sha256": "cbd5784b47c6b33512f2aa8b126ee6bed01b685cc612b0383409ec9602b0ce8b",
+    "classification_sha256": "998b0fb727d39162c353bcc7881c630fe19e2b6f6a9d40b69dc974992e829181"
+  },
+  "limits": "Chỉ xác nhận locator và số mục từ census; không suy wire, luật hoặc quyền server.",
+  "schema": "kre-f5-social-catalog-v1",
+  "scope": "F5-0",
+  "source": "kr_static",
+  "status": "confirmed",
+  "subsystems": [
+    {
+      "classification": {
+        "classification": "B",
+        "status": "candidate",
+        "wave": "F5"
+      },
+      "entries": 8,
+      "id": "Chatting",
+      "kr_wire": {
+        "status": "unknown",
+        "unverified": "Thì thầm, danh sách chặn và báo cáo lạm dụng"
+      },
+      "resource_groups": [
+        {
+          "entries": 5,
+          "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+          "locator": "FxDesktop/Chatting"
+        },
+        {
+          "entries": 3,
+          "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+          "locator": "FxDesktop/WhisperLog"
+        }
+      ],
+      "system": "Chat"
+    },
+    {
+      "classification": {
+        "classification": "C",
+        "status": "candidate",
+        "wave": "F5"
+      },
+      "entries": 2,
+      "id": "Messenger",
+      "kr_wire": {
+        "status": "unknown",
+        "unverified": "Lời mời, danh sách bạn và trạng thái hiện diện"
+      },
+      "resource_groups": [
+        {
+          "entries": 2,
+          "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+          "locator": "FxDesktop/GlobalUI:BtMessenger"
+        }
+      ],
+      "system": "Bạn bè / Messenger"
+    },
+    {
+      "classification": {
+        "classification": "C",
+        "status": "candidate",
+        "wave": "F5"
+      },
+      "entries": 28,
+      "id": "Guild",
+      "kr_wire": {
+        "status": "unknown",
+        "unverified": "Danh sách, thành viên và quyền quản lý bang"
+      },
+      "resource_groups": [
+        {
+          "entries": 2,
+          "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+          "locator": "FxDesktop/Etc:Guild"
+        },
+        {
+          "entries": 26,
+          "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+          "locator": "FxDesktop/Guild"
+        }
+      ],
+      "system": "Bang hội"
+    },
+    {
+      "classification": {
+        "classification": "C",
+        "status": "candidate",
+        "wave": "F5"
+      },
+      "entries": 28,
+      "id": "Couple",
+      "kr_wire": {
+        "status": "unknown",
+        "unverified": "Lời mời, xác nhận và trạng thái cặp đôi"
+      },
+      "resource_groups": [
+        {
+          "entries": 28,
+          "idx_sha256": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+          "locator": "fx/Couple"
+        }
+      ],
+      "system": "Couple"
+    },
+    {
+      "classification": {
+        "classification": "C",
+        "status": "candidate",
+        "wave": "F5"
+      },
+      "entries": 61,
+      "id": "Ranking",
+      "kr_wire": {
+        "status": "unknown",
+        "unverified": "Yêu cầu bảng hạng và dữ liệu trả về"
+      },
+      "resource_groups": [
+        {
+          "entries": 61,
+          "idx_sha256": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+          "locator": "FxContents/UXCAJJangRatingMark"
+        }
+      ],
+      "system": "Xếp hạng CAJJang"
+    }
+  ],
+  "summary": {
+    "entries": 127,
+    "resource_groups": 7,
+    "subsystems": 5
+  }
+}
