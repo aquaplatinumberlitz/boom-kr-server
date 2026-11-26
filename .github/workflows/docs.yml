@@ -26,6 +26,7 @@ jobs:
       - run: python3 tools/check_docs.py
       - run: python3 tools/content_census.py --check
       - run: python3 tools/content_classification.py --check
+      - run: python3 tools/kr_f3_probe_plan.py --check
       - name: Test Python tools
         env:
           PYTHONPATH: tools
@@ -44,6 +45,7 @@ jobs:
           tools.test_rust_service_package
           tools.test_kr_pack_items
           tools.test_kr_f4_catalog_export
+          tools.test_kr_f3_probe_plan
           tools.test_f1_character_profiles
           tools.test_f1_pack_matrix
           tools.test_player_package
