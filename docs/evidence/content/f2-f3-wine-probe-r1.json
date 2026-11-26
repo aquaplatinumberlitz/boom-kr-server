@@ -1,0 +1,96 @@
+{
+  "schema": "kre.f2-f3-wine-probe-r1.v1",
+  "build": "KR00967",
+  "status": "observed_roomtype0_baseline_and_blockers",
+  "runner": "f1e-wine-toolkit / kr_f2_f3_capture_analyzer.py",
+  "server_bin_tag": "f1-full-rust-v4",
+  "preflight": {
+    "strict_terrain_and_decode_ok_unscripted_15x13": [
+      "CAPong01",
+      "CAPong02",
+      "CAPong03",
+      "CAPong04",
+      "CAPong05",
+      "SnowyFields04",
+      "SnowyFields05",
+      "SnowyFields06",
+      "SnowyFields17",
+      "SnowyFields18",
+      "CAhero07",
+      "Fm_AIBtlDesert05"
+    ],
+    "strict_terrain_ok_but_blocked_by_map_profile_f1e_allowlist": [
+      "MonSeal01",
+      "SnowyFields07",
+      "Zombie04",
+      "CAhero01",
+      "RescueET01",
+      "SnowyFields01",
+      "Clover01"
+    ],
+    "non_standard_header_or_grid_blocker": [
+      "MonS2Fire03 (40x10 / buffer layout)",
+      "RPG11_N_02 (25x25 / buffer layout)",
+      "Tutorial01 (header layout)"
+    ],
+    "unmapped_tile_blocker_samples": [
+      "Baseball01 (Tile70_Ground/Tile04)",
+      "Coloring01 (Tile38_Box/NumBlock_05_X)",
+      "SuperFighter16 (Tile23_Static/Temple01)",
+      "Gumiho01 (Tile65_Static/Static06)",
+      "Hamster01 (Tile69_Static/Object10)",
+      "Kart02 (Tile12_Ground/Race13)"
+    ]
+  },
+  "live_runs": [
+    {
+      "map": "CAhero07",
+      "map_code": 100,
+      "map_sha256": "fb064f7f69a410f90ad22cfc14e1ad40c42eb09ffde962bbe8f803d54aec2eb9",
+      "grid": "15x13",
+      "scripted": false,
+      "roomtype": 0,
+      "tcp_frames": 130,
+      "normalized_events": 140,
+      "distinct_opcodes": 40,
+      "withheld_c2s_opcodes": [15],
+      "cleanup_namespace_exit": 0,
+      "scratch_removed": true,
+      "observation": "2-client KR00967 Wine loaded CAhero07 arena cleanly under roomtype=0; traffic matched standard room/sync baseline without emitting F3-specific host/server PvE authority opcodes."
+    },
+    {
+      "map": "Fm_AIBtlDesert05",
+      "map_code": 287,
+      "map_sha256": "fd0ee24700768b6a215e2044f1bd0dc610009d70026e949b2ce3eba011996168",
+      "grid": "15x13",
+      "scripted": false,
+      "roomtype": 0,
+      "tcp_frames": 130,
+      "normalized_events": 140,
+      "distinct_opcodes": 40,
+      "withheld_c2s_opcodes": [15],
+      "cleanup_namespace_exit": 0,
+      "scratch_removed": true,
+      "observation": "2-client KR00967 Wine loaded Fm_AIBtlDesert05 cleanly under roomtype=0; traffic matched standard room/sync baseline without AI/PvE authority packets."
+    },
+    {
+      "map": "SnowyFields04",
+      "map_code": 1048,
+      "map_sha256": "42cf4df67305b7fbdacf27858bd304ddc13be928baa5b9f140a901d9708d6f4d",
+      "grid": "15x13",
+      "scripted": false,
+      "roomtype": 0,
+      "tcp_frames": 133,
+      "normalized_events": 143,
+      "distinct_opcodes": 40,
+      "withheld_c2s_opcodes": [15],
+      "cleanup_namespace_exit": 0,
+      "scratch_removed": true,
+      "observation": "2-client KR00967 Wine loaded SnowyFields04 cleanly under roomtype=0; traffic matched standard room/sync baseline."
+    }
+  ],
+  "conclusions": [
+    "Unscripted 15x13 F2/F3 maps (CAhero07, Fm_AIBtlDesert05, SnowyFields04) load cleanly under existing roomtype=0 transport, proving UI entry/roomtype create-room mode selection (non-zero GameType/roomtype) and F3 script allowlist expansion in map_profile.rs are required before F2/F3 mode-specific packets fire.",
+    "All F2 mode win rules and F3 host-vs-server PvE authority remain unknown until mode-specific create-room routes and scripted F3 maps are unlocked."
+  ]
+}
