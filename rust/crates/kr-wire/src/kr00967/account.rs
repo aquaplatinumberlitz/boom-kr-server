@@ -132,8 +132,20 @@ pub fn with_identity_string(auth: &[u8], name_len: usize, id: &[u8]) -> io::Resu
     out.extend(&auth[at + 2..]);
     Ok(out)
 }
-/// CP183/184 zero-profile branch: name plus98 zero bytes, zero trailing fields.
-pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
+/// Static-confirmed KR 00967 `UserSimpleInfoPacket` (`0xAE6330` -> `0x9022D0`
+/// `"Lv.%3d"`): bounds DB `i64` level into the wire `u16` domain, rejecting
+/// negative levels fail-closed.
+pub fn wire_level_u16(level: i64) -> io::Result<u16> {
+    if level < 0 {
+        return Err(io::Error::other("negative profile level"));
+    }
+    Ok(u16::try_from(level).unwrap_or(u16::MAX))
+}
+
+/// CP183/184 `own291` template with optional `UserSimpleInfo` level projected at
+/// static-confirmed offset `+11..+13` (`sub_AE6330` -> `sub_9022D0` `"Lv.%3d"`).
+/// When `level == 0`, output is byte-identical to `own291`.
+pub fn own291_with_level(name: &[u8], level: u16) -> io::Result<Vec<u8>> {
     super::player::account_name(name)?;
     let size = 108 + name.len();
     let mut raw = vec![24];
@@ -141,7 +153,9 @@ pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
     raw.push(0);
     raw.extend((name.len() as u32).to_le_bytes());
     raw.extend(name);
-    raw.extend([0; 98]);
+    let mut tail = [0u8; 98];
+    tail[11..13].copy_from_slice(&level.to_le_bytes());
+    raw.extend(tail);
     let mut out = put(1, Width::U8)?;
     out.extend(put(size as u64, Width::U32)?);
     out.extend(encode_bytes(&raw)?);
@@ -152,19 +166,31 @@ pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
     Ok(out)
 }
 
+/// CP183/184 zero-profile branch: name plus98 zero bytes, zero trailing fields.
+pub fn own291(name: &[u8]) -> io::Result<Vec<u8>> {
+    own291_with_level(name, 0)
+}
+
 /// D2FEB0 loops over the authenticated local roster and reads one active/blob
 /// record for each slot; there is no count field in291 itself. CP183 measured
 /// the single-slot record. Multi-slot native acceptance remains separate from
 /// this projection of the cached consumer contract.
-pub fn local_own291(names: &[&[u8]]) -> io::Result<Vec<u8>> {
-    if !(1..=2).contains(&names.len()) {
+pub fn local_own291_with_levels(players: &[(&[u8], u16)]) -> io::Result<Vec<u8>> {
+    if !(1..=2).contains(&players.len()) {
         return Err(io::Error::other("unsupported local own-profile roster"));
     }
     let mut out = Vec::new();
-    for name in names {
-        out.extend(own291(name)?);
+    for &(name, level) in players {
+        out.extend(own291_with_level(name, level)?);
     }
     Ok(out)
+}
+
+/// Zero-level wrapper around `local_own291_with_levels` keeping byte-identical
+/// M5/M7/F1 output when `project_own291_level` is disabled.
+pub fn local_own291(names: &[&[u8]]) -> io::Result<Vec<u8>> {
+    let pairs: Vec<(&[u8], u16)> = names.iter().map(|&name| (name, 0)).collect();
+    local_own291_with_levels(&pairs)
 }
 
 /// Static-confirmed KR 00967 `CStage` `S->C 135` (`0xD6CED0`): bounds DB `i64`
@@ -241,5 +267,40 @@ mod identity_string_tests {
         let mut bad_slot = lucci135(1, 50).unwrap();
         bad_slot[0] = put(2, Width::U8).unwrap()[0];
         assert!(decode_lucci135(&bad_slot).is_err());
+    }
+
+    #[test]
+    fn own291_with_level_projects_offset_11_and_keeps_zero_byte_identical() {
+        assert_eq!(wire_level_u16(0).unwrap(), 0);
+        assert_eq!(wire_level_u16(720).unwrap(), 720);
+        assert_eq!(wire_level_u16(i64::from(u16::MAX) + 5).unwrap(), u16::MAX);
+        assert!(wire_level_u16(-1).is_err());
+
+        let name = b"CookieA";
+        assert_eq!(own291_with_level(name, 0).unwrap(), own291(name).unwrap());
+        let lv2 = own291_with_level(name, 2).unwrap();
+        let size = 108 + name.len();
+        assert_eq!(uint(&lv2[1..5], Width::U32).unwrap() as usize, size);
+        let raw = decode_bytes(&lv2[5..5 + size]).unwrap();
+        let tail_start = 10 + name.len();
+        assert_eq!(raw.len(), size);
+        assert_eq!(
+            u16::from_le_bytes([raw[tail_start + 11], raw[tail_start + 12]]),
+            2
+        );
+        assert!(
+            raw[tail_start..]
+                .iter()
+                .enumerate()
+                .all(|(idx, &b)| matches!(idx, 11 | 12) || b == 0)
+        );
+        assert!(local_own291_with_levels(&[]).is_err());
+        assert!(local_own291_with_levels(&[(name, 1), (b"CookieB", 2), (b"CookieC", 3)]).is_err());
+        let multi = local_own291_with_levels(&[(name, 1), (b"CookieB", 2)]).unwrap();
+        assert_eq!(
+            multi.len(),
+            own291_with_level(name, 1).unwrap().len()
+                + own291_with_level(b"CookieB", 2).unwrap().len()
+        );
     }
 }

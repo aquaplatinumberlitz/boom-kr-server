@@ -251,7 +251,7 @@ class PackageTests(unittest.TestCase):
         self.package()
         default_cfg, _, _ = prepare(self.out, self.root / 'default-state')
         default_adm = json.loads(default_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
-        for key in ('economy_profile_path', 'emit_lucci_135', 'web_shop', 'unlock_all_catalog'):
+        for key in ('economy_profile_path', 'emit_lucci_135', 'project_own291_level', 'web_shop', 'unlock_all_catalog'):
             self.assertNotIn(key, default_adm)
 
         profile = self.root / 'f4-profile.json'
@@ -261,12 +261,14 @@ class PackageTests(unittest.TestCase):
             self.root / 'std-state',
             economy_profile=profile,
             emit_lucci_135=True,
+            project_own291_level=True,
             web_shop_bind='127.0.0.1:8080',
         )
         std_adm = json.loads(std_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
         self.assertEqual(std_adm['economy_profile_path'], str(profile.resolve()))
         self.assertTrue(std_adm['persist_matches'])
         self.assertTrue(std_adm['emit_lucci_135'])
+        self.assertTrue(std_adm['project_own291_level'])
         self.assertEqual(std_adm['web_shop']['bind'], '127.0.0.1:8080')
         self.assertFalse(std_adm['web_shop']['unlock_all'])
         self.assertEqual(std_adm['web_shop']['allowed_peers'], ['127.0.0.1'])
@@ -319,6 +321,8 @@ class PackageTests(unittest.TestCase):
         tmpl_path.write_text(json.dumps(fixed_cfg))
         with self.assertRaisesRegex(ValueError, 'database_zero'):
             prepare(fixed_pkg, self.root / 'fixed-state', emit_lucci_135=True)
+        with self.assertRaisesRegex(ValueError, 'database_zero'):
+            prepare(fixed_pkg, self.root / 'fixed-state-lvl', project_own291_level=True)
         with self.assertRaisesRegex(ValueError, 'database_zero'):
             prepare(fixed_pkg, self.root / 'fixed-state-ws', web_shop_bind='127.0.0.1:8080')
         with self.assertRaisesRegex(ValueError, 'database_zero'):

@@ -104,6 +104,10 @@ pub struct Config {
     /// after lobby `own291` and settled post-match `175` replies.
     #[serde(default)]
     pub emit_lucci_135: bool,
+    /// Opt-in F4-a projection: write DB `profile.level` (`Lv.%3d` at
+    /// `UserSimpleInfo` offset `+11..+13`) into outgoing `S->C 291` (`own291`).
+    #[serde(default)]
+    pub project_own291_level: bool,
     /// Opt-in O1 preset flag: expose `CatalogAccess { unlock_all: true }` from
     /// validated DB account mode without mutating DB inventory or Lucci.
     #[serde(default)]
@@ -177,6 +181,7 @@ impl Config {
         if (settings.rewards_enabled()
             || !settings.catalog().items.is_empty()
             || self.emit_lucci_135
+            || self.project_own291_level
             || self.unlock_all_catalog)
             && self.profile_mode != ProfileMode::DatabaseZero
         {
@@ -254,6 +259,7 @@ pub(crate) struct Active {
     pub client: Client,
     pub(crate) service: Option<AccountService>,
     pub(crate) emit_lucci_135: bool,
+    pub(crate) project_own291_level: bool,
     // Consumed by F4-a tests now and Wave 2 runtime F4-b/d routes next.
     #[allow(dead_code)]
     pub(crate) unlock_all_catalog: bool,
@@ -270,6 +276,7 @@ impl Active {
             client,
             service: None,
             emit_lucci_135: false,
+            project_own291_level: false,
             unlock_all_catalog: false,
             web_shop: None,
             projections: Arc::new(std::collections::HashMap::new()),
@@ -387,6 +394,7 @@ impl Owner {
                 client: worker.client(),
                 service: Some(worker.service()),
                 emit_lucci_135: config.emit_lucci_135,
+                project_own291_level: config.project_own291_level,
                 unlock_all_catalog: config.unlock_all_catalog,
                 web_shop: web_shop.as_ref().map(crate::web_shop::Opened::auth),
                 projections: Arc::new(projections),
@@ -687,6 +695,20 @@ pub(crate) async fn connection(
             let mut packets = actor.packets.clone();
             if let Some(template) = &active.projection {
                 let rendered = template.project(owned.wire_id, &owned_name, 0)?;
+                let own_payload = if active.project_own291_level {
+                    let svc = active
+                        .service
+                        .as_ref()
+                        .ok_or_else(|| io::Error::other("own291 level service absent"))?;
+                    let profile = svc
+                        .profile_get(owned.player_id)
+                        .await
+                        .map_err(|_| io::Error::other("own291 level profile lookup"))?;
+                    let level = kr_wire::kr00967::wire_level_u16(profile.level)?;
+                    kr_wire::kr00967::own291_with_level(&owned_name, level)?
+                } else {
+                    rendered.own291
+                };
                 packets
                     .get_mut("auth_A")
                     .expect("validated auth template")
@@ -694,7 +716,7 @@ pub(crate) async fn connection(
                 packets
                     .get_mut("own291")
                     .expect("validated own template")
-                    .payload = rendered.own291;
+                    .payload = own_payload;
             }
             if let Some(id) = endpoints
                 .account_admission

@@ -12,8 +12,8 @@ mod room;
 mod room_selection;
 pub mod text949x;
 pub use account::{
-    AccountPackets, AccountTemplate, decode_lucci135, local_own291, lucci135, own291,
-    wire_lucci_u32, with_identity_string,
+    AccountPackets, AccountTemplate, decode_lucci135, local_own291, local_own291_with_levels,
+    lucci135, own291, own291_with_level, wire_level_u16, wire_lucci_u32, with_identity_string,
 };
 pub use battle::*;
 pub use bomb_motion::{BombAction119, BombMotion162, rebind158};

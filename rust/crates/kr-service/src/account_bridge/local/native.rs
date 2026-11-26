@@ -248,9 +248,21 @@ impl Driver {
         writer: &mut S,
         catalog: &[(u32, Vec<u8>)],
     ) -> io::Result<()> {
+        let levels = vec![0u16; self.authorities.len()];
+        self.enter_lobby_with_levels(lane, writer, catalog, &levels)
+            .await
+    }
+    pub(crate) async fn enter_lobby_with_levels<S: AsyncWrite + Unpin>(
+        &mut self,
+        lane: &mut Lane,
+        writer: &mut S,
+        catalog: &[(u32, Vec<u8>)],
+        levels: &[u16],
+    ) -> io::Result<()> {
         let mut cancel = Cancel(self.session.shared.clone(), true);
         if lane.phase != Phase::Bound
             || self.authorities.is_empty()
+            || levels.len() != self.authorities.len()
             || self
                 .authorities
                 .iter()
@@ -272,8 +284,12 @@ impl Driver {
             .iter()
             .map(|owner| kr_wire::kr00967::text949x::encode_name(&owner.player().display_name))
             .collect::<io::Result<Vec<_>>>()?;
-        let borrowed: Vec<_> = names.iter().map(Vec::as_slice).collect();
-        let own = kr_wire::kr00967::local_own291(&borrowed)?;
+        let pairs: Vec<(&[u8], u16)> = names
+            .iter()
+            .zip(levels.iter().copied())
+            .map(|(name, level)| (name.as_slice(), level))
+            .collect();
+        let own = kr_wire::kr00967::local_own291_with_levels(&pairs)?;
         let mut replies = vec![(241, lobby.ready)];
         replies.extend_from_slice(catalog);
         replies.push((14, lobby.channel_list));
