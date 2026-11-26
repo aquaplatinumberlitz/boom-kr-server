@@ -1,5 +1,5 @@
-//! F2-1 operator policy and static KR00967 catalog. These IDs have no wire
-//! representation. Attr membership and candidate family links are only filters.
+//! F2 operator policy, rule descriptors and static KR00967 catalog. These IDs
+//! have no wire representation. Attr membership and candidate links only filter.
 //! KR00967 static anchors: MapGroupVisible writer 0xE04CB0 and reader 0xE04DD0;
 //! create dialogs 0xC541E0 / 0xC55AF0 (Ladder), 0xC8DF50 (Mission), and
 //! roomtype 0x57F520. These do not establish a live F2 packet contract.
@@ -7,9 +7,12 @@ use kr_wire::kr00967::{RoomTeamSelector, Start121Map};
 use serde::Deserialize;
 use std::{collections::BTreeSet, io};
 
+mod rules;
+use rules::{RuleTable, Wave};
+
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
 
-#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "snake_case")]
 enum ModeKind {
     Airplane,
@@ -80,7 +83,7 @@ struct Catalog {
 #[derive(Deserialize)]
 struct Mode {
     ruleset_group: ModeKind,
-    wave: String,
+    wave: Wave,
     related_families: Vec<FamilyRef>,
     pack: Pack,
 }
@@ -119,6 +122,7 @@ struct MapName {
 
 pub(crate) struct Policy {
     catalog: Catalog,
+    rules: RuleTable,
     visible: BTreeSet<MapGroup>,
     free: Option<ModeKind>,
     manner: Option<ModeKind>,
@@ -128,7 +132,7 @@ impl Catalog {
     fn mode(&self, kind: ModeKind) -> Option<&Mode> {
         self.modes
             .iter()
-            .find(|mode| mode.ruleset_group == kind && matches!(mode.wave.as_str(), "F2" | "F2?"))
+            .find(|mode| mode.ruleset_group == kind && mode.wave.in_f2())
     }
 }
 
@@ -142,6 +146,7 @@ impl Policy {
         if catalog.build != "KR00967" || catalog.schema != "kre.f2-mode-catalog.v1" {
             return Err(io::Error::other("unsupported F2 catalog build or schema"));
         }
+        let rules = RuleTable::load(&catalog.modes)?;
         if [free, manner]
             .into_iter()
             .flatten()
@@ -151,6 +156,7 @@ impl Policy {
         }
         Ok(Some(Self {
             catalog,
+            rules,
             visible: cfg.visible_map_groups.clone(),
             free,
             manner,
@@ -218,8 +224,7 @@ impl Policy {
         }
         if let Some(kind) = self.override_for(team) {
             self.validate_candidate_map(kind, &map.name)?;
-            // The catalog has no measured roomtype or rules for any F2 mode.
-            return Err("f2_start_dispatch_unmeasured");
+            return self.rules.check_start(kind);
         }
         if map.roomtype != 0 {
             return Err("start_roomtype_unmeasured");

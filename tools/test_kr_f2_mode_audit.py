@@ -3,9 +3,15 @@
 from copy import deepcopy
 import hashlib
 import json
+from pathlib import Path
+import sys
 import unittest
 
-from kr_f2_mode_audit import build_catalog, render_json, validate_classification
+sys.path.insert(0, str(Path(__file__).parent))
+from kr_f2_mode_audit import (
+    RULES, build_catalog, read_json, render_json, render_markdown,
+    validate_classification, validate_rule_group_parity,
+)
 
 
 def map_row(name, family, *, category="mission", **extra):
@@ -48,6 +54,85 @@ def audit(census, classification=None, **limits):
 
 
 class ModeAuditTests(unittest.TestCase):
+    def test_partial_tail_diagnostics_copy_only_census_metadata(self):
+        census, classification = fixture()
+        census["maps"].extend([
+            map_row("Bula01", "Bula", parse="partial", drops=[["Item/ItemBond", 100]],
+                    script_tags=[], script_funcs=[], script_triggers=[]),
+            map_row("Bula00", "Bula", parse="partial", drops=[["Item/ItemBond", 100]], placements=["Boot"],
+                    partial_reason="missing trailer", missing_tags=["time"],
+                    tail={"offset": 99, "remaining_bytes": 7}),
+            map_row("ExBula01", "ExBula", category="battle_variant", parse="partial"),
+        ])
+        catalog = audit(census, classification, expected_maps=5, expected_families=3)
+        bula = catalog["families"][0]
+        self.assertEqual(bula["partial_maps"], ["Bula00", "Bula01"])
+        self.assertEqual(bula["has_script"], {"yes": 0, "no": 0, "unknown": 2})
+        known, unknown = bula["partial_tail_diagnostics"]
+        self.assertEqual(known, {
+            "map": "Bula00",
+            "reason": "missing trailer",
+            "missing_tags": ["time"],
+            "tail": {"offset": 99, "remaining_bytes": 7},
+            "observed": {
+                "drop_rows": 1, "placement_rows": 1,
+                "script_tags": None, "script_funcs": None, "script_triggers": None,
+            },
+        })
+        self.assertEqual(unknown, {
+            "map": "Bula01", "reason": None, "missing_tags": None, "tail": None,
+            "observed": {"drop_rows": 1, "placement_rows": 0,
+                         "script_tags": [], "script_funcs": [], "script_triggers": []},
+        })
+        report = render_markdown(catalog)
+        self.assertIn('| Bula / `Bula01` | 1/0 | [] | — | — | — |', report)
+        self.assertIn('"remaining_bytes":7', report)
+        self.assertNotIn("ExBula01", report)
+
+    def test_partial_tail_diagnostics_reject_invalid_metadata(self):
+        for key, value in (
+            ("tail", {"remaining_bytes": -1}),
+            ("tail", {"offset": True}),
+            ("tail", {"unexpected": 5}),
+            ("missing_tags", "time"),
+            ("partial_reason", [4]),
+        ):
+            with self.subTest(key=key, value=value):
+                census, classification = fixture()
+                census["maps"][1][key] = value
+                with self.assertRaisesRegex(ValueError, key):
+                    audit(census, classification)
+        census["maps"][1]["partial_reason"] = "/home/test/trailer"
+        with self.assertRaisesRegex(ValueError, "đường dẫn máy"):
+            audit(census, classification)
+
+    def test_rule_group_parity_rejects_drift_and_duplicate_links(self):
+        census, classification = fixture()
+        census["maps"].append(map_row("SnowyFields01", "SnowyFields"))
+        catalog = audit(census, classification, expected_maps=4, expected_families=3)
+        rules, _ = read_json(RULES)
+        self.assertEqual(catalog["rule_group_parity"]["mode_count"], 18)
+        self.assertEqual(catalog["rule_group_parity"]["linked_mission_families"], 2)
+        self.assertEqual(catalog["families"][-1]["grouping"]["ruleset_group"], "snowy_fields")
+        drift = [rules[0] | {"wave": "F3"}, *rules[1:]]
+        for table in (rules[:-1], [*rules, rules[0]], drift):
+            with self.assertRaisesRegex(ValueError, "nhóm luật"):
+                validate_rule_group_parity(catalog, table)
+
+        wrong_group = deepcopy(catalog)
+        wrong_group["families"][-1]["grouping"]["ruleset_group"] = "snowball_event"
+        with self.assertRaisesRegex(ValueError, "họ SnowyFields"):
+            validate_rule_group_parity(wrong_group, rules)
+        missing_ref = deepcopy(catalog)
+        missing_ref["families"][-1]["grouping"]["mode_refs"].clear()
+        with self.assertRaisesRegex(ValueError, "họ SnowyFields"):
+            validate_rule_group_parity(missing_ref, rules)
+        duplicate_link = deepcopy(catalog)
+        refs = next(row for row in duplicate_link["modes"] if row["mode"] == "SnowyFields")["related_families"]
+        refs.append(refs[0])
+        with self.assertRaisesRegex(ValueError, "trùng liên kết"):
+            validate_rule_group_parity(duplicate_link, rules)
+
     def test_family_uses_observed_rows_and_leaves_partial_script_unknown(self):
         catalog = audit(*fixture())
         kart = catalog["families"][0]

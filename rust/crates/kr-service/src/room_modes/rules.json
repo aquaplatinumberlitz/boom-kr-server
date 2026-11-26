@@ -1,0 +1,20 @@
+[
+  {"group":"revive","wave":"F2","win":"revive_outcome","tie":"unknown","respawn":"required","timer":"unknown","reset":"round_and_respawn"},
+  {"group":"timebomb","wave":"F2","win":"bomb_outcome","tie":"unknown","respawn":"unknown","timer":"bomb_countdown","reset":"round_and_bomb"},
+  {"group":"leader_capture","wave":"F2","win":"leader_objective","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round_and_leader"},
+  {"group":"hedgehog","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"co_op","wave":"F2","win":"team_outcome","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"free_1v7","wave":"F2","win":"asymmetric_elimination","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"ladder","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"matchmaking","wave":"F2","win":"not_applicable","tie":"not_applicable","respawn":"not_applicable","timer":"not_applicable","reset":"queue_handoff"},
+  {"group":"popcade","wave":"F3","win":"mission_objective","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"airplane","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"antarctic","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"baseball","wave":"F2?","win":"mission_objective","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"big_battle","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"confused_fight","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"snowball_event","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"snowy_champ","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"snowy_fields","wave":"F2?","win":"mission_objective","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"super_fighter","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"}
+]
