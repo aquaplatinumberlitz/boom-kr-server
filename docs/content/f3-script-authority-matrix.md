@@ -82,5 +82,5 @@ Tiền tố `MonS2` dùng chọn ứng viên mùa 2; không gán mùa 1 cho các
 3. Với chế độ hỗ trợ hai người, lấy một lượt A tạo phòng và một lượt B tạo phòng; lặp cùng thao tác và thêm đối chứng không kích hoạt. Màn chỉ chơi đơn chỉ đo hành vi cục bộ, không dùng để kết luận phần chia quyền.
 4. Đồng bộ dấu thời gian của hai client, capture cục bộ và phía server. Ghi riêng nguồn phát, bên áp dụng và bên ghi bền. Log emulator chỉ mô tả emulator; kết quả chỉ áp dụng cho luồng đã đo.
 
-SHA-256 nội dung ma trận: `3d3d82b842a0bc65aa8d3e6869dd6175444a85717846c836390f73de86e86ada`. Hash tính trên JSON chuẩn hoá UTF-8, bỏ trường `matrix_sha256`.
+SHA-256 nội dung ma trận: `8867bccd3b40bf67f94123c1497a7db1e6d40772374509c15542e959f018d218`. Hash tính trên JSON chuẩn hoá UTF-8, bỏ trường `matrix_sha256`.
 Sinh lại: `python3 tools/kr_f3_script_matrix.py`; so sánh hai đầu ra: `python3 tools/kr_f3_script_matrix.py --check`.
