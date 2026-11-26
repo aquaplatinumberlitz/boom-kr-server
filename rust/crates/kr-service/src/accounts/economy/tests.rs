@@ -2,6 +2,8 @@ use super::*;
 use crate::accounts::tests::{Temp, fresh};
 use std::{fs::OpenOptions, os::unix::fs::OpenOptionsExt};
 
+mod consumption;
+
 const PASSWORD: &[u8] = b"test-only-password-one";
 fn admin() -> Admin<'static> {
     Admin {
@@ -930,7 +932,7 @@ fn admin_grants_are_audited_idempotent_and_conflict_on_changed_request() {
 }
 
 #[test]
-fn tampered_balance_fails_schema_validation_and_v7_snapshot_restore_round_trips() {
+fn tampered_balance_fails_schema_validation_and_snapshot_restore_round_trips() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let (temp, mut store, a) = fresh();
     let b = player(&mut store, "bob");
@@ -951,10 +953,10 @@ fn tampered_balance_fails_schema_validation_and_v7_snapshot_restore_round_trips(
     let db = temp.0.join("accounts.sqlite");
     let saved = temp.0.join("saved.sqlite");
     assert_eq!(snapshot(&db, &saved), Ok(SCHEMA_VERSION));
-    assert_eq!(verify_snapshot(&saved), Ok(7));
+    assert_eq!(verify_snapshot(&saved), Ok(SCHEMA_VERSION));
     let target = Temp::new();
     let restored = target.0.join("restored.sqlite");
-    assert_eq!(restore(&saved, &restored), Ok(7));
+    assert_eq!(restore(&saved, &restored), Ok(SCHEMA_VERSION));
     let reopened = Store::open(&restored).unwrap();
     assert_eq!(economy_state(&reopened.db), state);
     assert_eq!(reopened.get_profile(a.player_id).unwrap().level, 3);
@@ -982,7 +984,7 @@ fn tampered_balance_fails_schema_validation_and_v7_snapshot_restore_round_trips(
     assert_eq!(snapshot(&restored, &tampered), Err(Error::Schema));
 }
 
-fn v6_fixture(path: &std::path::Path) -> Connection {
+fn old_schema_fixture(path: &std::path::Path, version: i32) -> Connection {
     let _file = OpenOptions::new()
         .create_new(true)
         .write(true)
@@ -990,7 +992,7 @@ fn v6_fixture(path: &std::path::Path) -> Connection {
         .open(path)
         .unwrap();
     let db = Connection::open(path).unwrap();
-    for (i, script) in SCRIPTS.iter().take(6).enumerate() {
+    for (i, script) in SCRIPTS.iter().take(version as usize).enumerate() {
         db.execute_batch(script).unwrap();
         db.execute(
             "INSERT INTO schema_migrations VALUES(?1,?2)",
@@ -1000,7 +1002,7 @@ fn v6_fixture(path: &std::path::Path) -> Connection {
     }
     db.pragma_update(None, "application_id", APPLICATION_ID)
         .unwrap();
-    db.pragma_update(None, "user_version", 6).unwrap();
+    db.pragma_update(None, "user_version", version).unwrap();
     let phc = password_hash(PASSWORD, b"fixture-v6-salt0").unwrap();
     db.execute_batch(&format!(
         "UPDATE runtime_state SET epoch=1,last_utc=100,next_wire_id=50 WHERE id=1;
@@ -1038,7 +1040,7 @@ fn schema6_upgrade_backs_up_first_and_preserves_every_old_row() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let temp = Temp::new();
     let path = temp.0.join("accounts.sqlite");
-    let db = v6_fixture(&path);
+    let db = old_schema_fixture(&path, 6);
     let before = v6_data(&db);
     drop(db);
     let store = Store::open(&path).unwrap();
@@ -1047,7 +1049,7 @@ fn schema6_upgrade_backs_up_first_and_preserves_every_old_row() {
             .db
             .pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))
             .unwrap(),
-        7
+        SCHEMA_VERSION
     );
     assert_eq!(v6_data(&store.db), before);
     let backups: Vec<_> = std::fs::read_dir(&temp.0)
@@ -1058,7 +1060,7 @@ fn schema6_upgrade_backs_up_first_and_preserves_every_old_row() {
                 .unwrap()
                 .to_str()
                 .unwrap()
-                .starts_with("accounts.sqlite.before-v6-to-v7-")
+                .starts_with(&format!("accounts.sqlite.before-v6-to-v{SCHEMA_VERSION}-"))
         })
         .collect();
     assert_eq!(backups.len(), 1);

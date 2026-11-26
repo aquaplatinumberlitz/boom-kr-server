@@ -149,6 +149,179 @@ fn catalog() -> ShopCatalog {
 const REWARD_SUM: &str = "SELECT coalesce(sum(reward),0) FROM match_players";
 const LEDGER_ROWS: &str = "SELECT count(*) FROM ledger_entries";
 const PROFILE_ROWS: &str = "SELECT count(*) FROM player_profiles";
+const CONSUMPTION_ROWS: &str = "SELECT count(*) FROM match_item_consumptions";
+
+#[tokio::test]
+async fn standard_consumes_through_the_worker_and_o1_bypasses_it() {
+    let fixture = fixture();
+    let alice = fixture.players[0].player_id;
+    let mut shop = catalog();
+    let potion = shop.items[1].clone();
+    shop.items.push(ShopItem {
+        sku_id: "retired_potion".into(),
+        enabled: false,
+        ..potion.clone()
+    });
+    let (match_id, grant_at) = {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let mut store = Store::open(&fixture.temp.db()).unwrap();
+        let now = utc().unwrap();
+        store
+            .admin_grant_item(
+                &Admin {
+                    actor: "f4-wiring-test",
+                    reason: "match use fixture",
+                },
+                alice,
+                "potion",
+                potion.grant,
+                2,
+                "starter-stack",
+                now,
+            )
+            .unwrap();
+        let start = start(&fixture, 100);
+        (store.begin_match(&start, start.started_at).unwrap().id, now)
+    };
+    let settings = EconomySettings::new(EconomyPolicy::default(), shop).unwrap();
+    let worker = Worker::open_with_economy(fixture.temp.db(), 4, Duration::from_secs(2), settings)
+        .await
+        .unwrap();
+    let service = worker.service();
+    let request = MatchItemConsumptionRequest {
+        player_id: alice,
+        match_id,
+        sku_id: "potion".into(),
+        quantity: 1,
+        idempotency_key: "round:use".into(),
+        request_hash: "d".repeat(64),
+    };
+    let standard = CatalogAccess::default();
+    let MatchItemConsumptionOutcome::Persisted(receipt) = service
+        .consume_item_in_match(&request, standard)
+        .await
+        .unwrap()
+    else {
+        panic!("standard mode must persist a receipt");
+    };
+    assert_eq!((receipt.remaining_qty, receipt.replayed), (1, false));
+    assert!(receipt.created_at >= grant_at);
+    assert_eq!(service.inventory_list(alice).await.unwrap()[0].quantity, 1);
+    assert_eq!(fixture.temp.count(CONSUMPTION_ROWS), 1);
+    assert_eq!(
+        service
+            .consume_item_in_match(&request, standard)
+            .await
+            .unwrap(),
+        MatchItemConsumptionOutcome::Persisted(MatchItemConsumptionReceipt {
+            replayed: true,
+            ..receipt
+        })
+    );
+
+    let db = rusqlite::Connection::open(fixture.temp.db()).unwrap();
+    let version = || {
+        db.pragma_query_value::<i64, _>(None, "data_version", |r| r.get(0))
+            .unwrap()
+    };
+    let resume = crate::account_worker::tests::pause(&worker.client()).await;
+    let before = version();
+    let o1 = CatalogAccess { unlock_all: true };
+    let ephemeral = MatchItemConsumptionRequest {
+        match_id: match_id + 1,
+        quantity: 3,
+        ..request
+    };
+    let outcomes = tokio::time::timeout(Duration::from_millis(500), async {
+        let success = service.consume_item_in_match(&ephemeral, o1).await;
+        let mut denials = Vec::new();
+        for sku in ["unknown", "retired_potion", "hat_red"] {
+            let denied = MatchItemConsumptionRequest {
+                sku_id: sku.into(),
+                ..ephemeral.clone()
+            };
+            denials.push(service.consume_item_in_match(&denied, o1).await);
+        }
+        (success, denials)
+    })
+    .await;
+    resume.send(()).unwrap();
+    let (success, denials) = outcomes.expect("O1 must not wait for the paused worker");
+    assert_eq!(success, Ok(MatchItemConsumptionOutcome::SessionUnlocked));
+    assert_eq!(denials, vec![Err(Error::InvalidInput); 3]);
+    assert_eq!(version(), before);
+    assert_eq!(service.inventory_list(alice).await.unwrap()[0].quantity, 1);
+    assert_eq!(fixture.temp.count(CONSUMPTION_ROWS), 1);
+    assert_eq!(fixture.temp.count(LEDGER_ROWS), 1);
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn o1_cosmetics_are_validated_per_session_without_database_writes() {
+    let fixture = fixture();
+    let mut shop = catalog();
+    shop.items.extend([
+        ShopItem {
+            sku_id: "hat_blue".into(),
+            ..shop.items[0].clone()
+        },
+        ShopItem {
+            sku_id: "char_bazzi".into(),
+            category: ShopCategory::Character,
+            equip_slot: Some("character".into()),
+            ..shop.items[0].clone()
+        },
+    ]);
+    let settings = EconomySettings::new(EconomyPolicy::default(), shop).unwrap();
+    let worker = Worker::open_with_economy(fixture.temp.db(), 4, Duration::from_secs(2), settings)
+        .await
+        .unwrap();
+    let service = worker.service();
+    let db = rusqlite::Connection::open(fixture.temp.db()).unwrap();
+    let version = || {
+        db.pragma_query_value::<i64, _>(None, "data_version", |r| r.get(0))
+            .unwrap()
+    };
+    let resume = crate::account_worker::tests::pause(&worker.client()).await;
+    let before = version();
+    let o1 = CatalogAccess { unlock_all: true };
+    assert!(
+        service
+            .o1_session_cosmetics(CatalogAccess::default())
+            .is_none()
+    );
+    let mut session = service.o1_session_cosmetics(o1).unwrap();
+    let other_session = service.o1_session_cosmetics(o1).unwrap();
+    session.equip("char_bazzi", "character").unwrap();
+    session.equip("hat_red", "head").unwrap();
+    let snapshot = session.snapshot();
+    assert_eq!(snapshot["character"], "char_bazzi");
+    assert_eq!(snapshot["head"], "hat_red");
+    assert!(other_session.snapshot().is_empty());
+    for (sku, slot) in [
+        ("retired", "head"),
+        ("unknown", "head"),
+        ("hat_red", "character"),
+        ("potion", "head"),
+    ] {
+        assert_eq!(session.equip(sku, slot), Err(accounts::Error::InvalidInput));
+    }
+    assert_eq!(
+        session.unequip("unknown"),
+        Err(accounts::Error::InvalidInput)
+    );
+    assert_eq!(session.snapshot(), snapshot);
+    session.equip("hat_blue", "head").unwrap();
+    assert_eq!(session.equipped("head"), Some("hat_blue"));
+    assert_eq!(session.equipped("character"), Some("char_bazzi"));
+    assert!(session.unequip("head").unwrap());
+    assert!(!session.unequip("head").unwrap());
+    session.clear();
+    assert!(session.snapshot().is_empty());
+    resume.send(()).unwrap();
+    assert_eq!(version(), before);
+    worker.shutdown().await.unwrap();
+}
 
 /// Journal one round to its durable finish and return the persisted finish.
 async fn play(

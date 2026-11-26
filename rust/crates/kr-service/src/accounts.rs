@@ -38,7 +38,9 @@ const MIGRATION_RECOVERY: &str = include_str!("../migrations/0005_account_recove
 const MIGRATION_AUDIT: &str = include_str!("../migrations/0006_operator_audit.sql");
 const MIGRATION_ECONOMY: &str =
     include_str!("../migrations/0007_f4_progression_inventory_shop.sql");
-const SCRIPTS: [&str; 7] = [
+const MIGRATION_MATCH_CONSUMPTIONS: &str =
+    include_str!("../migrations/0008_f4_match_consumptions.sql");
+const SCRIPTS: [&str; 8] = [
     MIGRATION,
     MIGRATION_IDLE,
     MIGRATION_MATCHES,
@@ -46,6 +48,7 @@ const SCRIPTS: [&str; 7] = [
     MIGRATION_RECOVERY,
     MIGRATION_AUDIT,
     MIGRATION_ECONOMY,
+    MIGRATION_MATCH_CONSUMPTIONS,
 ];
 pub const SCHEMA_VERSION: i32 = SCRIPTS.len() as i32;
 const APPLICATION_ID: i32 = 0x4b524143;
@@ -71,6 +74,8 @@ pub enum Error {
     Exhausted,
     /// Redacted: never carries the balance or the price.
     InsufficientFunds,
+    /// Redacted: the player has no stack or it has too few units.
+    InsufficientQuantity,
 }
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
