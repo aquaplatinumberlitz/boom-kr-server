@@ -8,6 +8,12 @@ use serde::Deserialize;
 use std::{collections::BTreeSet, io};
 
 mod rules;
+// The room dispatcher stays closed until F2 start and event authority are measured.
+#[allow(
+    dead_code,
+    reason = "F2 round runtime has no measured live dispatcher yet"
+)]
+pub(crate) mod runtime;
 use rules::{RuleTable, Wave};
 
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
