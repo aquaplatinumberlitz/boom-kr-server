@@ -15,6 +15,9 @@ pub struct Request {
     body: Vec<u8>,
 }
 impl Request {
+    pub fn method(&self) -> &str {
+        &self.method
+    }
     pub fn path(&self) -> &str {
         self.target.split('?').next().unwrap_or("")
     }

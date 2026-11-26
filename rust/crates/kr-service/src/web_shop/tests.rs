@@ -57,6 +57,9 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("p.mode"));
     assert!(page.contains("/api/v1/inventory"));
     assert!(page.contains("/api/v1/unequip"));
+    assert!(page.contains("/api/social/friends"));
+    assert!(page.contains("/api/social/blocks"));
+    assert!(page.contains("/api/social/ranking?limit=10"));
     let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
         .await
         .unwrap();
@@ -241,6 +244,18 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
     assert_eq!(code, 401);
     let (code, _, _) = send_http(addr, "GET", "/api/v1/profile", Some(&"a".repeat(64)), None).await;
     assert_eq!(code, 401);
+    let (code, _, _) = send_http(addr, "GET", "/api/social/friends", None, None).await;
+    assert_eq!(code, 401);
+    let (code, _, ranking) = send_http(
+        addr,
+        "GET",
+        "/api/social/ranking?limit=10",
+        Some(token.as_str()),
+        None,
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert!(ranking["ranking"].is_array());
 
     let tok = token.as_str();
     let (code, _, profile) = send_http(addr, "GET", "/api/v1/profile", Some(tok), None).await;

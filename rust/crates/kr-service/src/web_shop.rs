@@ -8,6 +8,7 @@ use crate::{
     accounts::{
         self, CatalogAccess, PlayerProfile, ShopCatalog, ShopCategory, ShopItem, UsableItem,
     },
+    accounts::{Guild, GuildMember, RankingEntry},
 };
 use http::{Request, Response, Status};
 use serde::{Deserialize, Serialize};
@@ -367,6 +368,29 @@ struct Unequip {
     slot: String,
 }
 
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct SocialTarget {
+    player_id: i64,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct RankingQuery {
+    offset: Option<u32>,
+    limit: Option<u32>,
+}
+
+#[derive(Serialize)]
+struct FriendsResponse {
+    friends: Vec<i64>,
+}
+
+#[derive(Serialize)]
+struct BlocksResponse {
+    blocks: Vec<i64>,
+}
+
 #[derive(Serialize)]
 struct Profile {
     #[serde(flatten)]
@@ -530,6 +554,11 @@ async fn route(
         });
     }
 
+    if path.starts_with("/api/social/") {
+        let digest = request.digest().ok_or(Status::Unauthorized)?;
+        let player = auth.player(&digest).ok_or(Status::Unauthorized)?;
+        return social_route(service, player, request).await;
+    }
     if !path.starts_with("/api/v1/") {
         return Err(Status::NotFound);
     }
@@ -608,6 +637,105 @@ async fn route(
         }
         _ => Err(Status::NotFound),
     }
+}
+
+async fn social_route(
+    service: &AccountService,
+    player: i64,
+    request: &Request,
+) -> Result<Response, Status> {
+    if request.query().is_some() && request.path() != "/api/social/ranking" {
+        return Err(Status::BadRequest);
+    }
+    match request.path() {
+        "/api/social/friends" => match request.method() {
+            "GET" => Ok(Response::json(&FriendsResponse {
+                friends: service.social_friends(player).await?,
+            })),
+            "POST" | "DELETE" => {
+                request.require_method(request.method())?;
+                let input: SocialTarget = request.json()?;
+                if input.player_id < 1 || input.player_id == player {
+                    return Err(Status::BadRequest);
+                }
+                let changed = if request.method() == "POST" {
+                    service.social_friend_add(player, input.player_id).await?
+                } else {
+                    service
+                        .social_friend_remove(player, input.player_id)
+                        .await?
+                };
+                Ok(Response::json(&json!({"changed": changed})))
+            }
+            _ => Err(Status::MethodNotAllowed),
+        },
+        "/api/social/blocks" => match request.method() {
+            "GET" => Ok(Response::json(&BlocksResponse {
+                blocks: service.social_blocks(player).await?,
+            })),
+            "POST" | "DELETE" => {
+                request.require_method(request.method())?;
+                let input: SocialTarget = request.json()?;
+                if input.player_id < 1 || input.player_id == player {
+                    return Err(Status::BadRequest);
+                }
+                let changed = if request.method() == "POST" {
+                    service.social_block_add(player, input.player_id).await?
+                } else {
+                    service.social_block_remove(player, input.player_id).await?
+                };
+                Ok(Response::json(&json!({"changed": changed})))
+            }
+            _ => Err(Status::MethodNotAllowed),
+        },
+        "/api/social/guild" => {
+            request.require_method("GET")?;
+            Ok(Response::json(
+                &json!({"guild": Option::<Guild>::None, "members": Vec::<GuildMember>::new()}),
+            ))
+        }
+        "/api/social/ranking" => {
+            request.require_method("GET")?;
+            let query = request.query().unwrap_or("");
+            let input = parse_ranking_query(query)?;
+            let rows: Vec<RankingEntry> = service
+                .social_ranking(
+                    player,
+                    input.offset.unwrap_or(0),
+                    input.limit.unwrap_or(100),
+                )
+                .await?;
+            Ok(Response::json(&json!({"ranking": rows})))
+        }
+        _ => Err(Status::NotFound),
+    }
+}
+
+fn parse_ranking_query(query: &str) -> Result<RankingQuery, Status> {
+    if query.is_empty() {
+        return Ok(RankingQuery {
+            offset: None,
+            limit: None,
+        });
+    }
+    let mut offset = None;
+    let mut limit = None;
+    for pair in query.split('&') {
+        let (key, value) = pair.split_once('=').ok_or(Status::BadRequest)?;
+        match key {
+            "offset" if offset.is_none() => {
+                offset = Some(value.parse().map_err(|_| Status::BadRequest)?)
+            }
+            "limit" if limit.is_none() => {
+                limit = Some(value.parse().map_err(|_| Status::BadRequest)?)
+            }
+            _ => return Err(Status::BadRequest),
+        }
+    }
+    if offset.unwrap_or(0) > 10_000 || !matches!(limit.unwrap_or(100), 1..=100) {
+        return Err(Status::BadRequest);
+    }
+    Ok(RankingQuery { offset, limit })
 }
 
 impl From<Error> for Status {
