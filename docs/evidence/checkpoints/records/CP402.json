@@ -1,0 +1,62 @@
+{
+  "id": "CP402",
+  "previous": "CP401",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-26T11:52:41Z",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Sau khi về sảnh, phép quan sát MyPage của CP401 có chạy được mà không dừng client Wine không?",
+  "scope": "Hai lượt Tomb12 với bản copy KR 00967 trên Wine 10.0, binary f4a-rust-v1 đã ghim, không bật thưởng F4. Dùng mạng cục bộ cô lập và lease chung. Không sửa cờ, client gốc hoặc route dịch vụ.",
+  "context_commit": "b8a98e8fb34aaaf38cf0a4a3c37be9cfd073f8b0",
+  "artifacts": [
+    {"name": "CA.exe bản ko Wine được runner kiểm", "sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"name": "kr-service f4a-rust-v1", "sha256": "d845883191765b80ef361c31750a264c2f2666c8b18ef235348f646c760dc316"}
+  ],
+  "locators": [
+    "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards",
+    "tools/f4_mypage_trace.py",
+    "local/runs/f4b-mypage-observer",
+    "docs/evidence/checkpoints/records/CP401.json"
+  ],
+  "findings": [
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards", "summary": "Cả hai lượt xong Tomb12 và về sảnh. Lượt đầu không chuyển giá trị cổng proxy sang GDB. Lượt hai đã xác minh chín điểm quan sát trên client nhưng GDB dừng với SIGSEGV ngay sau continue, trước hover/click.", "limits": "Đây là kết quả của đường đo; không chứng minh client gốc lỗi, cổng nào chặn MyPage hay route đã chạy.", "evidence": ["CP402_VERIFY", "CP402_DEBUGGER_1", "CP402_DEBUGGER_2", "CP402_TRACE"]},
+    {"source": "kr_runtime", "status": "candidate", "method": "runtime", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards", "summary": "GDB bị ép i386; proxy báo địa chỉ thread 64 bit trong khi GDB hiện địa chỉ thấp. Cần đối chứng attach và resume với kiến trúc do proxy báo.", "limits": "Chưa xác nhận sai khác kiến trúc gây dừng; chưa chạy fixture đối chứng.", "evidence": ["CP402_PROXY_2", "CP402_DEBUGGER_2"]}
+  ],
+  "verification": [
+    {"check": "Tái dựng flow và đối chiếu bằng python3 local/runs/f4b-mypage-observer/verify_setup.py. Decoder loopback từ bộ chạy w7-f4a-wine đã kiểm CRC trước khi phân tích.", "result": "pass", "limits": "Chỉ kiểm hai lượt đã giữ và dọn scratch; không có click MyPage mới.", "evidence": ["CP402_VERIFY", "CP402_VERIFY_SCRIPT"]},
+    {"check": "So sánh hover và click tại các điểm CP401.", "result": "not_run", "limits": "GDB đã dừng trước khi controller gửi lệnh input.", "evidence": ["CP402_TRACE"]}
+  ],
+  "delta": {"added": ["Xác định blocker ở đường attach/resume và ghi cách tái kiểm ngoài client game."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Observer chưa qua bước resume trên Wine WOW64; không dùng lượt này để mở route F4-b/c."
+  ],
+  "next_steps": [
+    {"id": "F4B-INVENTORY-NATIVE", "task": "KRE-F4-B", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Kiểm fixture WOW64 biệt lập không đặt breakpoint với kiến trúc proxy báo. Chỉ khi attach và resume chạy sạch mới lặp phép hover/click và đo item."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-26T11:52:41Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Tự đối chiếu controller, GDB, TCP đã kiểm CRC và cleanup.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập cho checkpoint Codex."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi blocker của observer và phép đối chứng kế."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục vẫn trỏ tới F4-b/c."},
+    {"path": "docs/protocol/f4-inventory-cosmetics.md", "state": "updated", "reason": "Ghi giới hạn của lượt Wine và điều kiện thử lại."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không nâng độ phủ hoặc gate."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi ID hoặc trạng thái."},
+    {"path": "docs/evidence/checkpoints/records/CP402.json", "state": "updated", "reason": "Ghim log, công thức kiểm và dấu vết hai lượt."}
+  ],
+  "evidence": [
+    {"id": "CP402_VERIFY", "kind": "local", "path": "local/runs/f4b-mypage-observer/verification.json", "bytes": 1561, "sha256": "9f44004fd0802b485610f0ef801eefeeeb423760d4930d038632d091c7e13a92"},
+    {"id": "CP402_VERIFY_SCRIPT", "kind": "local", "path": "local/runs/f4b-mypage-observer/verify_setup.py", "bytes": 1941, "sha256": "2a26870f1445e16d9610e84043cb1701fadf7dfbdb27fbce6121ae6fa85e78cd"},
+    {"id": "CP402_DEBUGGER_1", "kind": "local", "path": "local/runs/f4b-mypage-observer/tomb12-01/mypage-debugger.log", "bytes": 220, "sha256": "81447048c1479c0d27972ec27e9464450c5e1e58fa3803128cc732a4314b3045"},
+    {"id": "CP402_DEBUGGER_2", "kind": "local", "path": "local/runs/f4b-mypage-observer/tomb12-02/mypage-debugger.log", "bytes": 543, "sha256": "01d68492b3528a24d0099de08cef106253575ed4c7bfcb95b79c7a6a8372980d"},
+    {"id": "CP402_PROXY_2", "kind": "local", "path": "local/runs/f4b-mypage-observer/tomb12-02/mypage-proxy.log", "bytes": 6245, "sha256": "adf9dde7c14aed37b44bd65f01836b5a68a0f399fa931c631edf4402e761e7d5"},
+    {"id": "CP402_TRACE", "kind": "local", "path": "local/runs/f4b-mypage-observer/tomb12-02/mypage-trace.jsonl", "bytes": 232, "sha256": "5d2ff644b4e0affec0083fee97b01d2da6aec6b021107fd0ce5f6d7d2bfd83a3"},
+    {"id": "CP402_OBSERVER", "kind": "repository", "path": "tools/f4_mypage_trace.py", "bytes": 4789, "sha256": "4eed8d71bc0160a22a8313b7058b497000476d05f5d08eb52a2d39996a1bbd7a"},
+    {"id": "CP402_CONTRACT", "kind": "repository", "path": "docs/protocol/f4-inventory-cosmetics.md", "bytes": 27807, "sha256": "188541438ba6557385eaa5ce4a9b6cd851452aea08edecc96d8fc1ddc4d70703"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f4b-mypage-observer", "path": "local/evidence-manifests/6d3aa879412715ce3b41e52f4ee5df24bec971cb741463e477caeebde6724680.jsonl", "sha256": "6d3aa879412715ce3b41e52f4ee5df24bec971cb741463e477caeebde6724680", "bytes": 607, "count": 3, "files_bytes": 27043},
+    {"run": "local/runs/f4b-mypage-observer/tomb12-01", "path": "local/evidence-manifests/bbdceb9e0e15f3bc26d87581c582e299b1d3bada085a155e80f3f49904974682.jsonl", "sha256": "bbdceb9e0e15f3bc26d87581c582e299b1d3bada085a155e80f3f49904974682", "bytes": 1335, "count": 6, "files_bytes": 104071},
+    {"run": "local/runs/f4b-mypage-observer/tomb12-02", "path": "local/evidence-manifests/71cf84d1775edd5d7c1d6d6123f5fa3443cedcf68d68574be885f6fa25590620.jsonl", "sha256": "71cf84d1775edd5d7c1d6d6123f5fa3443cedcf68d68574be885f6fa25590620", "bytes": 1335, "count": 6, "files_bytes": 104956}
+  ]
+}

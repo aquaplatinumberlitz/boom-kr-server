@@ -208,6 +208,12 @@ kết quả tại `0xDA1E95`, rồi chỉ số và các giá trị tại `0xD73C
 tới builder, đối chiếu opcode, cursor và frame đã gửi; nếu callback không chạy, lần ngược sự kiện
 của nút sảnh trước. Không suy cổng nào đã chặn probe cũ chỉ từ tooltip hoặc việc không thấy gói.
 
+[CP402](../evidence/checkpoints/records/CP402.json) giữ hai lượt chuẩn bị Wine đã về sảnh sau `Tomb12`.
+GDB đã kiểm được byte lệnh của bản copy ở lượt sửa cổng kết nối, nhưng dừng do `SIGSEGV` khi tiếp tục,
+trước cả phép đối chứng rê chuột. Chưa có quan sát cổng MyPage mới. Trước khi lặp ván, kiểm attach và
+resume của GDB với kiến trúc do proxy Wine báo, trên fixture WOW64 cô lập và không đặt breakpoint;
+chỉ thử lại MyPage khi đối chứng debugger không dừng tiến trình.
+
 <a id="f4b-reader-slots-w4"></a>
 ### Giải mã bảng vtable reader `CReceivedPacketBase` (Wave 4)
 

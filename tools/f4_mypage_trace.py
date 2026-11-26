@@ -76,7 +76,8 @@ class Trace(gdb.Command):
         self.points = []
 
     def write(self, event, **fields):
-        print(json.dumps(dict(event=event, unix_ns=time.time_ns(), **fields)), file=self.output, flush=True)
+        row = dict(event=event, ns=time.monotonic_ns(), unix_ns=time.time_ns(), **fields)
+        print(json.dumps(row), file=self.output, flush=True)
 
     def stop(self):
         for point in self.points:
