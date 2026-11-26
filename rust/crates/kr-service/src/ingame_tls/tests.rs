@@ -1045,6 +1045,7 @@ fn resources(client: Client) -> Arc<Resources> {
         authenticated: None,
         account_service: None,
         emit_lucci_135: false,
+        project_own291_level: false,
         config: Config {
             friends_guest_only: false,
             bind: "127.0.0.1:50000".parse().unwrap(),
@@ -1935,6 +1936,198 @@ fn companion_reopens_expired_wcp_owner_and_authenticates_two_accounts_on_next_so
         .await
         .unwrap();
     });
+}
+
+#[test]
+fn native_tls_project_own291_level_encodes_db_level_opt_in_and_keeps_zero_default() {
+    use crate::account_worker::EconomySettings;
+    use crate::accounts::{
+        EconomyPolicy, MatchEndReason, MatchExit, MatchFinish, MatchKey, MatchOutcome,
+        MatchParticipant, MatchPlayerFinish, MatchStart, RewardAmount, ShopCatalog,
+    };
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let policy = EconomyPolicy {
+        enabled: true,
+        win: RewardAmount { exp: 500, lucci: 0 },
+        loss: RewardAmount { exp: 30, lucci: 0 },
+        draw: RewardAmount { exp: 30, lucci: 0 },
+        grant_on_disconnect_or_left: false,
+        level_thresholds: vec![0, 500, 1500],
+    };
+    for project_level in [false, true] {
+        let temp = Temp::new();
+        let mut store = Store::open(&temp.db()).unwrap();
+        let admin = Admin {
+            actor: "test",
+            reason: "ingame_tls F4-a own291 level test",
+        };
+        let boot_epoch = store.begin_instance(&admin, 100).unwrap();
+        let player = store
+            .create_account(&admin, "AlphaOne", "DBUserA", PASSWORD, 100)
+            .unwrap();
+        let peer = store
+            .create_account(&admin, "BetaTwo", "DBUserB", PASSWORD, 100)
+            .unwrap();
+        let key = MatchKey {
+            boot_epoch,
+            room_session: 1,
+            room_id: 1,
+            room_generation: 1,
+            round: 1,
+        };
+        store
+            .begin_match(
+                &MatchStart {
+                    key: key.clone(),
+                    map_code: 1080,
+                    map_name: "Tomb12".into(),
+                    started_at: 100,
+                    players: vec![
+                        MatchParticipant {
+                            account_id: player.account_id,
+                            player_id: player.player_id,
+                            slot: 0,
+                            character_key: 0,
+                            team: 0,
+                        },
+                        MatchParticipant {
+                            account_id: peer.account_id,
+                            player_id: peer.player_id,
+                            slot: 1,
+                            character_key: 0,
+                            team: 1,
+                        },
+                    ],
+                },
+                100,
+            )
+            .unwrap();
+        store
+            .finish_match_settled(
+                &key,
+                &MatchFinish {
+                    ended_at: 105,
+                    reason: MatchEndReason::Elimination,
+                    players: vec![
+                        MatchPlayerFinish {
+                            slot: 0,
+                            outcome: MatchOutcome::Win,
+                            exit: MatchExit::Present,
+                        },
+                        MatchPlayerFinish {
+                            slot: 1,
+                            outcome: MatchOutcome::Loss,
+                            exit: MatchExit::Present,
+                        },
+                    ],
+                },
+                &policy,
+                105,
+            )
+            .unwrap();
+        drop(store);
+
+        runtime().block_on(async {
+            let worker = crate::account_worker::Worker::open_with_economy(
+                temp.db(),
+                8,
+                Duration::from_secs(5),
+                EconomySettings::new(policy.clone(), ShopCatalog::default()).unwrap(),
+            )
+            .await
+            .unwrap();
+            let hub = crate::room_service::Hub::new(
+                &crate::room_service::Config {
+                    max_rooms: 8,
+                    round_profile: None,
+                    player_choices: false,
+                    capacity: None,
+                    player_round: None,
+                },
+                crate::room_io::registry_foundation_tests::selection_prototype(),
+                None,
+                None,
+            )
+            .unwrap();
+            let (events_tx, mut events_rx) = mpsc::channel(32);
+            let mut authority = resources(worker.client());
+            {
+                let res = Arc::get_mut(&mut authority).unwrap();
+                res.hub = Some(hub);
+                res.events = events_tx;
+                res.account_service = Some(worker.service());
+                res.project_own291_level = project_level;
+            }
+            let (cert, key) = kr_tunnel::launch_tls::generate_identity().unwrap();
+            let server = quinn::Endpoint::server(
+                prelogin::server_config(cert.clone(), key.to_vec()).unwrap(),
+                "127.0.0.1:0".parse().unwrap(),
+            )
+            .unwrap();
+            let mut client = quinn::Endpoint::client("127.0.0.1:0".parse().unwrap()).unwrap();
+            client.set_default_client_config(prelogin::client_config(cert).unwrap());
+            let endpoint = server.clone();
+            let (halt, stop) = watch::channel(false);
+            let permit = Arc::new(Semaphore::new(1)).acquire_owned().await.unwrap();
+            let task = tokio::spawn(async move {
+                let tls = endpoint.accept().await.unwrap().await.unwrap();
+                connection(tls, authority, stop, permit).await
+            });
+            let conn = prelogin::connect(&client, server.local_addr().unwrap())
+                .await
+                .unwrap();
+            let (mut login, mut replies) = prelogin::open(&conn, 3838).await.unwrap();
+            let mut hello = [0; 15];
+            replies.read_exact(&mut hello).await.unwrap();
+            let (mut tx, mut rx) = (40, 43);
+            send(&mut login, &mut tx, 1, &credentials_for(1)).await;
+            let auth = receive(&mut replies, &mut rx).await;
+            let claims = channel_for(&auth.payload, 1);
+            send(&mut login, &mut tx, 9, &[0; 8]).await;
+            for opcode in [15, 62] {
+                assert_eq!(receive(&mut replies, &mut rx).await.opcode, opcode);
+            }
+            send(&mut login, &mut tx, 5, &[0; 9]).await;
+            assert_eq!(receive(&mut replies, &mut rx).await.opcode, 7);
+            login.finish().unwrap();
+
+            let (mut channel, mut replies) = prelogin::open(&conn, 3938).await.unwrap();
+            replies.read_exact(&mut hello).await.unwrap();
+            let (mut tx, mut rx) = (40, 43);
+            send(&mut channel, &mut tx, 6, &claims).await;
+            assert_eq!(receive(&mut replies, &mut rx).await.opcode, 17);
+            send(
+                &mut channel,
+                &mut tx,
+                67,
+                &write_uint(0, Width::U16).unwrap(),
+            )
+            .await;
+            for opcode in [241, 91, 14] {
+                assert_eq!(receive(&mut replies, &mut rx).await.opcode, opcode);
+            }
+            let p291 = receive(&mut replies, &mut rx).await;
+            assert_eq!(p291.opcode, 291);
+            let expected_level = if project_level { 2 } else { 0 };
+            assert_eq!(
+                p291.payload,
+                kr_wire::kr00967::local_own291_with_levels(&[(b"DBUserA", expected_level)])
+                    .unwrap()
+            );
+            conn.close(0u8.into(), b"done");
+            let _ = halt.send(true);
+            let _ = task.await;
+            let mut saw_event = false;
+            while let Ok(ev) = events_rx.try_recv() {
+                if ev["event"] == "native_tls_economy_own291_level_projected" {
+                    assert_eq!(ev["levels"], serde_json::json!([2]));
+                    saw_event = true;
+                }
+            }
+            assert_eq!(saw_event, project_level);
+            worker.shutdown().await.unwrap();
+        });
+    }
 }
 
 #[test]

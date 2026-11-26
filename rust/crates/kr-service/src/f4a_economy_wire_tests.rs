@@ -54,6 +54,7 @@ fn base_config(dir: &Path) -> Config {
         shop_catalog: ShopCatalog::default(),
         economy_profile_path: None,
         emit_lucci_135: false,
+        project_own291_level: false,
         unlock_all_catalog: false,
         web_shop: None,
     }
@@ -140,6 +141,9 @@ fn config_economy_profile_loader_accepts_exporter_json_and_rejects_ambiguity_or_
     fixed.emit_lucci_135 = true;
     assert!(fixed.economy().is_err());
     fixed.emit_lucci_135 = false;
+    fixed.project_own291_level = true;
+    assert!(fixed.economy().is_err());
+    fixed.project_own291_level = false;
     fixed.unlock_all_catalog = true;
     assert!(fixed.economy().is_err());
 
@@ -224,6 +228,7 @@ async fn config_unlock_all_catalog_projects_enabled_items_without_db_mutation() 
         client: worker.client(),
         service: Some(service.clone()),
         emit_lucci_135: false,
+        project_own291_level: false,
         unlock_all_catalog: true,
         web_shop: None,
         projections: Arc::new(Default::default()),
@@ -432,6 +437,7 @@ async fn opt_in_emit_lucci_135_sends_valid_135_frame_with_settled_lucci_and_defa
         client: worker.client(),
         service: Some(worker.service()),
         emit_lucci_135: false,
+        project_own291_level: false,
         unlock_all_catalog: false,
         web_shop: None,
         projections: Arc::new(Default::default()),
@@ -467,6 +473,7 @@ async fn opt_in_emit_lucci_135_sends_valid_135_frame_with_settled_lucci_and_defa
         client: worker.client(),
         service: Some(worker.service()),
         emit_lucci_135: true,
+        project_own291_level: false,
         unlock_all_catalog: false,
         web_shop: None,
         projections: Arc::new(Default::default()),
