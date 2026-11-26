@@ -191,10 +191,16 @@ impl Profile {
         count: usize,
     ) -> io::Result<()> {
         let start = &packets["start"].payload;
-        let (code, name) = wire::start121_map(start)?;
+        let wire::Start121Map {
+            map_code: code,
+            name,
+            dynamic_index,
+            ..
+        } = wire::start121_map_context(start)?;
+        let selection = packets["map"].payload.get(..8).ok_or_else(error)?;
         if code != self.map_code
             || name != self.name.as_bytes()
-            || number(&packets["map"].payload[2..4], Width::U16)? != u64::from(code)
+            || wire::map117_selection(selection)? != (code, selected as u32)
             || number(&packets["play"].payload[5..7], Width::U16)? != u64::from(code)
         {
             return Err(error());
@@ -203,9 +209,7 @@ impl Profile {
         // replace pack coordinates with fixture coordinates from another map.
         let (start_stream, _) = stream(&start[1..])?;
         let rows = 43 + name.len();
-        if usize::from(start_stream[rows - 5]) != expected_count
-            || number(&packets["map"].payload[4..8], Width::U32)? != selected as u64
-            || start_stream[32 + name.len()..36 + name.len()] != (selected as u32).to_le_bytes()
+        if usize::from(start_stream[rows - 5]) != expected_count || dynamic_index != selected as u32
         {
             return Err(error());
         }

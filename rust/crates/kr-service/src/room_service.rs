@@ -239,8 +239,9 @@ impl Hub {
     fn selection_key(&self, s: &mut State, opcode: u32, body: &[u8]) -> io::Result<RoomKey> {
         let create = opcode == 81;
         let key = if create {
-            wire::create81_title(body)?;
-            wire::create81_selector(body)?;
+            let request = wire::create81(body)?;
+            // Resolve the operator preset before reserving a public tuple.
+            room_io::preflight_create_mode(&self.prototype, request.team_selector)?;
             if s.rooms.entries().count() >= self.max_rooms || s.next == 0 {
                 return Err(err("room allocation exhausted"));
             }
@@ -648,6 +649,75 @@ mod local_tests {
         local::tests::{channel, login},
     };
     use crate::accounts::TEST_SERIAL;
+
+    #[test]
+    fn room_create_rejects_f2_presets_before_allocation_and_keeps_manner_echo() {
+        use kr_wire::{Width, write_uint};
+        use serde_json::json;
+
+        let cfg: Config = serde_json::from_value(json!({"max_rooms": 2})).unwrap();
+        let prototype = room_io::registry_foundation_tests::f2_prototype(
+            json!({"visible_map_groups": ["LadderMapGroup"], "create_overrides": {"free": "ladder"}}),
+            3,
+            0,
+        );
+        let hub = Hub::new(&cfg, prototype, None, None).unwrap();
+        let mut create = write_uint(1, Width::U16).unwrap();
+        create.extend(wire::encode_bytes(b"A").unwrap());
+        create.extend(write_uint(0, Width::U16).unwrap());
+        for _ in 0..12 {
+            create.extend(write_uint(0, Width::U32).unwrap());
+        }
+        for _ in 0..4 {
+            create.extend(write_uint(0, Width::U8).unwrap());
+        }
+        let changes = hub.changes.subscribe();
+        let mut state = hub.state.lock().unwrap();
+        assert_eq!(
+            hub.selection_key(&mut state, 81, &create)
+                .unwrap_err()
+                .to_string(),
+            "f2_start_dispatch_unmeasured"
+        );
+        assert!(state.rooms.entries().next().is_none());
+        assert!(!changes.has_changed().unwrap());
+
+        create[9..13].copy_from_slice(&write_uint(1, Width::U32).unwrap());
+        let key = hub.selection_key(&mut state, 81, &create).unwrap();
+        assert_eq!((key.session, key.id.0, key.generation), (1, 1, 1));
+        let room = state.rooms.get(key).unwrap();
+        let mut host = room_io::Session::open(room, 1, 11).unwrap();
+        host.packet(81, &create).unwrap();
+        let batch = host.inbox.try_recv().unwrap();
+        assert_eq!(batch.packets[0].1.opcode, 86);
+        assert_eq!(
+            batch.packets[0].1.payload,
+            [
+                0x5a, 0xa5, 0x68, 0x96, 0xca, 0x53, 0x95, 0x5b, 0x5a, 0x5a, 0x5a
+            ]
+        );
+
+        let join: Vec<_> = [
+            (1, Width::U16),
+            (1, Width::U32),
+            (0, Width::U16),
+            (1, Width::U8),
+            (5, Width::U16),
+        ]
+        .into_iter()
+        .flat_map(|(v, w)| write_uint(v, w).unwrap())
+        .collect();
+        assert_eq!(hub.selection_key(&mut state, 82, &join).unwrap(), key);
+        let mut guest = room_io::Session::open(state.rooms.get(key).unwrap(), 2, 22).unwrap();
+        guest.packet(82, &join).unwrap();
+        let batch = guest.inbox.try_recv().unwrap();
+        assert_eq!(batch.packets[0].1.opcode, 87);
+        assert_eq!(
+            batch.packets[0].1.payload,
+            [0x5a, 0x5b, 0xa5, 0x68, 0x5a, 0x5b, 0x5a]
+        );
+    }
+
     #[test]
     fn both_local_accounts_select_atomically_and_a_full_room_never_admits_half_a_pair() {
         use crate::account_bridge::tests::PASSWORD;

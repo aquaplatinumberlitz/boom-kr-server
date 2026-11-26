@@ -31,6 +31,7 @@ mod player_template;
 pub mod public_launcher;
 pub mod room;
 mod room_io;
+mod room_modes;
 mod room_packets;
 pub mod room_registry;
 mod room_relay;

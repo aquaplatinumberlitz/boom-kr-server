@@ -102,7 +102,22 @@ pub fn player106_state(
     Ok(body)
 }
 
-pub fn create81_title(body: &[u8]) -> io::Result<Vec<u8>> {
+/// Measured Free/Manner team selector, echoed by 86/87/180. It has no
+/// established relationship to Attr/MapGroup or to Start121's roomtype.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum RoomTeamSelector {
+    Free = 0,
+    Manner = 1,
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub struct Create81 {
+    pub title: Vec<u8>,
+    pub team_selector: RoomTeamSelector,
+}
+
+pub fn create81(body: &[u8]) -> io::Result<Create81> {
     if !(57..=88).contains(&body.len()) {
         return Err(io::Error::other("create81 size"));
     }
@@ -123,10 +138,19 @@ pub fn create81_title(body: &[u8]) -> io::Result<Vec<u8>> {
     for i in 0..4 {
         uint(&body[52 + n + i..53 + n + i], Width::U8)?;
     }
-    if uint(&body[8 + n..12 + n], Width::U32)? > 1 {
-        return Err(io::Error::other("unsupported fixed room selector"));
-    }
-    Ok(title)
+    let team_selector = match uint(&body[8 + n..12 + n], Width::U32)? {
+        0 => RoomTeamSelector::Free,
+        1 => RoomTeamSelector::Manner,
+        _ => return Err(io::Error::other("unsupported fixed room selector")),
+    };
+    Ok(Create81 {
+        title,
+        team_selector,
+    })
+}
+
+pub fn create81_title(body: &[u8]) -> io::Result<Vec<u8>> {
+    Ok(create81(body)?.title)
 }
 
 pub fn join82_context(body: &[u8]) -> io::Result<()> {
@@ -204,13 +228,44 @@ fn start_layout(body: &[u8]) -> io::Result<StartLayout> {
     })
 }
 
-/// Map identity carried by the measured Start branch. This parses wire data;
-/// the service must separately authorize the map and validate its pack profile.
-pub fn start121_map(body: &[u8]) -> io::Result<(u16, Vec<u8>)> {
+/// CP020 raw profile-list prefix. The roomtype byte is carried as read;
+/// only roomtype 0 has a measured contract here. No F2 IDs are inferred.
+#[derive(Debug, PartialEq, Eq)]
+pub struct Start121Map {
+    pub map_code: u16,
+    pub name: Vec<u8>,
+    pub dynamic_index: u32,
+    pub roomtype: u8,
+}
+
+pub fn start121_map_context(body: &[u8]) -> io::Result<Start121Map> {
     let parsed = start_layout(body)?;
+    let name_end = parsed.rows - 11;
+    Ok(Start121Map {
+        map_code: u16::from_le_bytes(parsed.stream[26..28].try_into().expect("bounded")),
+        name: parsed.stream[32..name_end].to_vec(),
+        dynamic_index: u32::from_le_bytes(
+            parsed.stream[name_end..name_end + 4]
+                .try_into()
+                .expect("bounded"),
+        ),
+        roomtype: parsed.stream[name_end + 4],
+    })
+}
+
+pub fn start121_map(body: &[u8]) -> io::Result<(u16, Vec<u8>)> {
+    let map = start121_map_context(body)?;
+    Ok((map.map_code, map.name))
+}
+
+/// Map code and dynamic index of the measured eight byte S→C117 branch.
+pub fn map117_selection(body: &[u8]) -> io::Result<(u16, u32)> {
+    if body.len() != 8 {
+        return Err(io::Error::other("unsupported map117 size"));
+    }
     Ok((
-        u16::from_le_bytes(parsed.stream[26..28].try_into().expect("bounded")),
-        parsed.stream[32..parsed.rows - 11].to_vec(),
+        uint(&body[2..4], Width::U16)? as u16,
+        uint(&body[4..8], Width::U32)? as u32,
     ))
 }
 
@@ -500,8 +555,7 @@ pub fn listing91_title(body: &[u8]) -> io::Result<Vec<u8>> {
 }
 
 pub fn create81_selector(body: &[u8]) -> io::Result<u8> {
-    let title = create81_title(body)?;
-    Ok(uint(&body[8 + title.len()..12 + title.len()], Width::U32)? as u8)
+    Ok(create81(body)?.team_selector as u8)
 }
 
 pub fn selector_reply(body: &[u8], opcode: u32, selector: u8) -> io::Result<Vec<u8>> {
@@ -691,6 +745,37 @@ mod tests {
         assert!(local_character92(&[0x5b, 0xa5], 2).is_err());
     }
     #[test]
+    fn create81_keeps_the_measured_team_selector_and_cp949_title_bytes() {
+        // Existing Windows two-local create81 input, also used by the room
+        // service tests. Mutations exercise the parser, not native behavior.
+        let captured = "a5796d7ca955561ee3b52b059446e81ae952a56996ca539596ca539496ca539096ca539096ca539596ca539596ca53956935ac6a96ca539596ca539596ca539596ca53955a5a5a5a";
+        let mut body: Vec<u8> = captured
+            .as_bytes()
+            .as_chunks::<2>()
+            .0
+            .iter()
+            .map(|pair| u8::from_str_radix(std::str::from_utf8(pair).unwrap(), 16).unwrap())
+            .collect();
+        let request = create81(&body).unwrap();
+        assert_eq!(request.team_selector, RoomTeamSelector::Manner);
+        assert_eq!(request.title.len(), 16);
+        assert!(request.title.iter().any(|byte| !byte.is_ascii()));
+        assert_eq!(create81_title(&body).unwrap(), request.title);
+        let offset = 8 + request.title.len();
+        body[offset..offset + 4].copy_from_slice(&put(0, Width::U32).unwrap());
+        assert_eq!(
+            create81(&body).unwrap(),
+            Create81 {
+                title: request.title,
+                team_selector: RoomTeamSelector::Free,
+            }
+        );
+        body[offset..offset + 4].copy_from_slice(&put(2, Width::U32).unwrap());
+        assert!(create81(&body).is_err());
+        assert!(create81_selector(&body).is_err());
+    }
+
+    #[test]
     fn native_six_player_start_retains_map_and_rejects_inconsistent_count() {
         // CP283 native run eca76a98, not an encoder-generated oracle.
         // docs/evidence/rust-service/m7e-selected-rosters.json.
@@ -704,6 +789,15 @@ mod tests {
             .collect();
         let parsed = start_layout(&body).unwrap();
         assert_eq!(parsed.count, 6);
+        assert_eq!(
+            start121_map_context(&body).unwrap(),
+            Start121Map {
+                map_code: 278,
+                name: b"ExVillage01".to_vec(),
+                dynamic_index: 0,
+                roomtype: 0,
+            }
+        );
         assert_eq!(start121_map(&body).unwrap(), (278, b"ExVillage01".to_vec()));
         // Actual chosen characters/teams are not the retained diagnostic rows.
         assert!(start121_duel(&body).is_err());
