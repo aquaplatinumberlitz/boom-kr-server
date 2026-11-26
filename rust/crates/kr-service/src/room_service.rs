@@ -11,7 +11,7 @@ use std::{
     collections::{BTreeSet, HashMap},
     io,
     net::Ipv4Addr,
-    sync::{Arc, Mutex},
+    sync::{Arc, Mutex, OnceLock},
 };
 use tokio::sync::watch;
 
@@ -39,6 +39,7 @@ struct State {
 }
 pub(crate) struct Hub {
     journal: Mutex<Option<crate::match_journal::Factory>>,
+    match_items: OnceLock<crate::account_serving::MatchItems>,
     state: Mutex<State>,
     prototype: room_io::Shared,
     max_rooms: usize,
@@ -262,6 +263,9 @@ impl Hub {
                     {
                         room_io::install_journal(&shared, factory.owner())?;
                     }
+                    if let Some(items) = self.match_items.get() {
+                        room_io::install_match_items(&shared, items.clone())?;
+                    }
                     if let Some(factory) = &self.relay {
                         room_io::install_relay(&shared, factory.owner(key))?;
                     }
@@ -376,6 +380,7 @@ impl Hub {
             crate::round_epochs::RoundEpochs::default()
         });
         Ok(Arc::new(Self {
+            match_items: OnceLock::new(),
             journal: Mutex::new(None),
             state: Mutex::new(State {
                 rooms: Registry::default(),
@@ -404,6 +409,18 @@ impl Hub {
         }
         *journal = Some(factory);
         Ok(())
+    }
+    pub(crate) fn install_match_items(
+        &self,
+        items: crate::account_serving::MatchItems,
+    ) -> io::Result<()> {
+        let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
+        if !state.owners.is_empty() || state.rooms.entries().next().is_some() {
+            return Err(err("match item install requires pristine hub"));
+        }
+        self.match_items
+            .set(items)
+            .map_err(|_| err("match items already installed"))
     }
     pub(crate) fn cancel_journals(&self) -> io::Result<()> {
         let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;

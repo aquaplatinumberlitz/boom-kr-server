@@ -73,6 +73,7 @@ fn case(count: usize) -> Case {
         selected_map: 0,
         map_revision: 0,
         journal: None,
+        match_items: None,
         public_key: None,
         managed_round: Some(Arc::new(ManagedRound {
             characters: None,

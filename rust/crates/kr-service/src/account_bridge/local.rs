@@ -138,6 +138,18 @@ impl LocalAuthority {
     pub fn owns(&self, identity: u32, connection: u64) -> bool {
         self.player.wire_id == identity && self.connection == connection && self.current()
     }
+    pub(crate) fn item_use_token(&self) -> Result<Token> {
+        let state = self.shared.lock().map_err(|_| Error::Unavailable)?;
+        if !self.matches(&state) {
+            return Err(Error::Stale);
+        }
+        copy_token(&state.grants[self.slot].token)
+    }
+    pub(crate) fn o1_current(&self, now: i64) -> bool {
+        self.shared
+            .lock()
+            .is_ok_and(|state| self.matches(&state) && now < state.grants[self.slot].expires_at)
+    }
     pub fn stopped(&self) -> watch::Receiver<bool> {
         self.shared
             .lock()

@@ -69,6 +69,7 @@ pub(super) enum EconomyRequest {
         slot: String,
     },
     Consume(MatchItemConsumptionRequest),
+    ConsumeEquipped(MatchItemConsumptionRequest, accounts::Token, String),
 }
 pub(super) enum EconomyReply {
     Profile(PlayerProfile),
@@ -122,6 +123,9 @@ pub(super) fn execute(
         EconomyRequest::Consume(request) => {
             EconomyReply::Consume(store.consume_item_in_match(&request, now)?)
         }
+        EconomyRequest::ConsumeEquipped(request, token, slot) => EconomyReply::Consume(
+            store.consume_equipped_item_in_match(&request, &token, &slot, now)?,
+        ),
     })
 }
 
@@ -272,6 +276,25 @@ impl AccountService {
         }
         match self
             .call(request.player_id, EconomyRequest::Consume(request.clone()))
+            .await?
+        {
+            EconomyReply::Consume(receipt) => Ok(MatchItemConsumptionOutcome::Persisted(receipt)),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn consume_equipped_item_in_match(
+        &self,
+        request: MatchItemConsumptionRequest,
+        token: accounts::Token,
+        slot: &str,
+    ) -> Result<MatchItemConsumptionOutcome> {
+        request.validate().map_err(|_| Error::InvalidInput)?;
+        accounts::equip_slot(slot).map_err(|_| Error::InvalidInput)?;
+        match self
+            .call(
+                request.player_id,
+                EconomyRequest::ConsumeEquipped(request, token, slot.into()),
+            )
             .await?
         {
             EconomyReply::Consume(receipt) => Ok(MatchItemConsumptionOutcome::Persisted(receipt)),

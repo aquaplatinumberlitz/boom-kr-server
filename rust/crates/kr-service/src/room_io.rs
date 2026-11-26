@@ -1,4 +1,6 @@
 //! Fixed-room adapters with bounded recipient queues and membership fences.
+mod match_items;
+
 use super::{ActorProfile, LobbyPacketPin, Reply};
 use crate::bombs;
 use crate::room_packets::{Template, normalize_legacy, packet};
@@ -10,6 +12,7 @@ use crate::{
 };
 use kr_wire::kr00967 as wire;
 use kr_wire::{Width, decode, read_uint};
+pub(crate) use match_items::install_match_items;
 use serde::Deserialize;
 use std::{
     collections::{HashMap, HashSet},
@@ -424,6 +427,7 @@ pub struct Runtime {
     selected_map: usize,
     map_revision: u64,
     journal: Option<crate::match_journal::Owner>,
+    match_items: Option<crate::account_serving::MatchItems>,
     public_key: Option<crate::room_registry::RoomKey>,
     managed_round: Option<Arc<ManagedRound>>,
     relay: Option<crate::room_relay::Owner>,
@@ -753,6 +757,7 @@ pub fn load(
         selected_map: 0,
         map_revision: 0,
         journal: None,
+        match_items: None,
         public_key: None,
         managed_round: None,
         relay: None,
@@ -817,6 +822,7 @@ pub(crate) fn fork(
         selected_map: 0,
         map_revision: 0,
         journal: None,
+        match_items: None,
         public_key: Some(key),
         managed_round,
         relay: None,
@@ -4671,6 +4677,7 @@ mod tests {
             selected_map: 0,
             map_revision: 0,
             journal: None,
+            match_items: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -4807,6 +4814,7 @@ mod tests {
             selected_map: 0,
             map_revision: 0,
             journal: None,
+            match_items: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -5076,6 +5084,7 @@ mod four_abort_tests {
             selected_map: 0,
             map_revision: 0,
             journal: None,
+            match_items: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -5382,6 +5391,7 @@ mod ninth_probe_tests {
             selected_map: 0,
             map_revision: 0,
             journal: None,
+            match_items: None,
             public_key: None,
             managed_round: None,
             relay: None,
@@ -5568,6 +5578,7 @@ pub(crate) mod registry_foundation_tests {
             selected_map: 0,
             map_revision: 0,
             journal: None,
+            match_items: None,
             public_key: None,
             managed_round: None,
             relay: None,
