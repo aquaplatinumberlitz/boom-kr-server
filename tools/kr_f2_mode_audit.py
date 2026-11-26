@@ -1,4 +1,4 @@
-"""Kiểm kê F2-0 từ metadata đã lưu của KR 00967; không đọc pack hay gọi mạng."""
+"""Kiểm kê F2 từ metadata đã lưu của KR 00967; không đọc pack hay gọi mạng."""
 
 import argparse
 from collections import Counter, defaultdict
@@ -14,6 +14,8 @@ from content_census import CENSUS, MISSION, MODE_ROWS, ROOT, spans
 CLASSIFICATION = ROOT / "docs/content/classification.json"
 CATALOG = ROOT / "docs/evidence/content/f2-mode-catalog.json"
 MARKDOWN = ROOT / "docs/content/f2-mode-catalog.md"
+RULES_LOCATOR = "rust/crates/kr-service/src/room_modes/rules.json"
+RULES = ROOT / RULES_LOCATOR
 EXPECTED_MAPS = 122
 EXPECTED_FAMILIES = 18
 MODE_GROUPS = {
@@ -30,7 +32,7 @@ MODE_GROUPS = {
     "Free 1v7": "free_1v7",
 }
 FAMILY_GROUPS = {
-    "Hamster": "farm_mission", "Rabbit": "farm_mission", "SnowyFields": "snowball_event",
+    "Hamster": "farm_mission", "Rabbit": "farm_mission",
 }
 PRIVATE = re.compile(
     r"/home/|/Users/|ocid" r"1\.|BEGIN [A-Z0-9 ]*PRIVATE" r" KEY|"
@@ -90,9 +92,31 @@ def placement_counts(maps):
             "rows": sum(names.values()), "by_name": dict(names)}
 
 
+def partial_tail_diagnostic(row):
+    reason = row.get("partial_reason")
+    missing_tags = row.get("missing_tags")
+    tail = row.get("tail")
+    if reason is not None and not isinstance(reason, str):
+        raise ValueError("partial_reason phải là chuỗi hoặc null")
+    if missing_tags is not None and (not isinstance(missing_tags, list)
+                                     or any(not isinstance(tag, str) for tag in missing_tags)):
+        raise ValueError("missing_tags phải là danh sách tag hoặc null")
+    if tail is not None and (
+            not isinstance(tail, dict) or tail.keys() - {"offset", "remaining_bytes"}
+            or any(type(value) is not int or value < 0 for value in tail.values())):
+        raise ValueError("tail chỉ nhận offset và remaining_bytes không âm")
+    return {
+        "map": row["name"], "reason": reason, "missing_tags": missing_tags, "tail": tail,
+        "observed": {
+            "drop_rows": len(row["drops"]), "placement_rows": len(row["placements"]),
+            **{key: row.get(key) for key in ("script_tags", "script_funcs", "script_triggers")},
+        },
+    }
+
+
 def family_summary(name, maps, mode_refs, classification):
     exact = [row for row in maps if row["parse"] == "exact"]
-    partial = [row for row in maps if row["parse"] == "partial"]
+    partial = sorted((row for row in maps if row["parse"] == "partial"), key=lambda row: row["name"])
     if len(exact) + len(partial) != len(maps):
         raise ValueError("trạng thái parse nằm ngoài exact/partial")
     if classification and classification.get("map_count", len(maps)) != len(maps):
@@ -111,7 +135,8 @@ def family_summary(name, maps, mode_refs, classification):
         "d1_d2_pairs": sorted({(row["d1"], row["d2"]) for row in maps}),
         "has_script": {"yes": sum(row["scripted"] for row in exact),
                        "no": sum(not row["scripted"] for row in exact), "unknown": len(partial)},
-        "partial_maps": sorted(row["name"] for row in partial),
+        "partial_maps": [row["name"] for row in partial],
+        **({"partial_tail_diagnostics": [partial_tail_diagnostic(row) for row in partial]} if partial else {}),
         "drops": {"exact": drop_counts(exact), "partial_observed": drop_counts(partial)},
         "placements": {"exact": placement_counts(exact), "partial_observed": placement_counts(partial)},
         "classification": grade(classification),
@@ -181,8 +206,43 @@ def mode_summaries(census, by_family, mission, grades):
     return sorted(rows, key=lambda row: row["mode"])
 
 
+def validate_rule_group_parity(catalog, rules):
+    expected = {row["group"]: row["wave"] for row in rules}
+    modes = catalog["modes"]
+    actual = {row["ruleset_group"]: row["wave"] for row in modes}
+    if not expected or len(expected) != len(rules) or len(actual) != len(modes) or expected != actual:
+        raise ValueError("tập nhóm luật hoặc đợt trong catalog không khớp bảng F2")
+    if len({row["mode"] for row in modes}) != len(modes):
+        raise ValueError("trùng tên mode trong catalog F2")
+
+    families = {row["family"]: row for row in catalog["families"]}
+    if len(families) != len(catalog["families"]):
+        raise ValueError("trùng tên họ map trong catalog F2")
+    links = defaultdict(dict)
+    for mode in modes:
+        for ref in mode["related_families"]:
+            family = ref["family"]
+            mission_count = families[family]["map_count"] if family in families else 0
+            if ref["mission_map_count"] != mission_count:
+                raise ValueError(f"số map mission của liên kết {family} không khớp")
+            if mission_count:
+                if mode["mode"] in links[family]:
+                    raise ValueError(f"trùng liên kết mode với họ {family}")
+                links[family][mode["mode"]] = mode["ruleset_group"]
+    for family, row in families.items():
+        grouping = row["grouping"]
+        refs = links.get(family, {})
+        group = grouping["ruleset_group"]
+        if (sorted(grouping["mode_refs"]) != sorted(refs)
+                or (refs and set(refs.values()) != {group})
+                or (not refs and group in expected)):
+            raise ValueError(f"nhóm luật hoặc liên kết mode của họ {family} không khớp")
+    return {"source": "design", "status": "design", "locator": RULES_LOCATOR,
+            "mode_count": len(actual), "linked_mission_families": len(links)}
+
+
 def build_catalog(census, classification=None, *, expected_maps=EXPECTED_MAPS,
-                  expected_families=EXPECTED_FAMILIES):
+                  expected_families=EXPECTED_FAMILIES, rules=None):
     by_family, mission = defaultdict(list), defaultdict(list)
     map_names = Counter(row["name"].casefold() for row in census["maps"])
     for row in census["maps"]:
@@ -225,6 +285,9 @@ def build_catalog(census, classification=None, *, expected_maps=EXPECTED_MAPS,
         },
         "families": families, "modes": modes,
     }
+    if rules is None:
+        rules, _ = read_json(RULES)
+    catalog["rule_group_parity"] = validate_rule_group_parity(catalog, rules)
     raw = canonical(catalog)
     reject_private(raw.decode("utf-8"))
     return {"catalog_sha256": sha256(raw), **catalog}
@@ -251,7 +314,7 @@ def render_markdown(catalog):
     scripts = summary["has_script"]
     counts = summary["classification_counts"]
     lines = [
-        "# Kiểm kê mode và map nhiệm vụ F2-0",
+        "# Kiểm kê mode và map nhiệm vụ F2",
         "",
         "Nguồn: [kiểm kê map và pack](../CONTENT.md), [bảng Mode](../CONTENT.md#mode), "
         "và [xếp loại A/B/C](classification.md).",
@@ -294,11 +357,27 @@ def render_markdown(catalog):
             f"{placed['maps_with_rows']}/{placed['rows']} | {grade} | {group} |"
         )
     lines.append("")
-    for row in catalog["families"]:
-        if row["has_script"]["unknown"] == row["map_count"]:
-            drops = row["drops"]["partial_observed"]
-            lines += [f"Toàn bộ họ `{row['family']}` đọc một phần. Census thu được {drops['rows']} hàng rơi "
-                      f"từ {drops['maps_with_rows']} map; chưa xác nhận đủ phần đuôi.", ""]
+    partial = [(family["family"], row) for family in catalog["families"]
+               for row in family.get("partial_tail_diagnostics", [])]
+    if partial:
+        lines += [
+            "## Chẩn đoán phần đuôi đọc một phần",
+            "",
+            "Chỉ dùng hàng `parse=partial` trong phạm vi mission của census. Dấu — là metadata chưa có.",
+            "Số hàng đã đọc và danh sách tag rỗng không xác nhận phần đuôi đã đọc hết hay map không có script.",
+            "",
+            "| Họ / map | Hàng rơi / đặt sẵn đã đọc | Tag đã ghi | Lý do | Tag thiếu | Phần đuôi |",
+            "|---|---:|---|---|---|---|",
+        ]
+        for family, row in partial:
+            seen = row["observed"]
+            lines.append(
+                f"| {family} / `{row['map']}` | {seen['drop_rows']}/{seen['placement_rows']} | "
+                f"{metadata_cell(seen['script_tags'])} | {metadata_cell(row['reason'])} | "
+                f"{metadata_cell(row['missing_tags'])} | {metadata_cell(row['tail'])} |"
+            )
+        lines.append("")
+    parity = catalog["rule_group_parity"]
     lines += [
         "JSON chỉ sao chép mã map nếu census có trường riêng. Tên map hoặc hậu tố số không được dùng làm mã wire.",
         "",
@@ -309,6 +388,12 @@ def render_markdown(catalog):
         "(ví dụ `FxMap/Map`) là của cả nhóm, không phải số tài nguyên riêng của mode.",
         "Họ ngoài `mission` và các khai báo có mẫu như `Tomb?` không cộng vào tổng 122 map. "
         "Popcade có map trong tổng kiểm kê và vẫn mang đợt F3 theo bảng Mode.",
+        f"[Bảng ModeRules](../../{RULES_LOCATOR}) khớp nhóm và đợt của {parity['mode_count']} mode "
+        f"cùng nhóm luật của {parity['linked_mission_families']} họ mission có liên kết. "
+        "Đây là hợp đồng thiết kế cho override do vận hành chọn; các mode vẫn bị chặn khi tạo hoặc bắt đầu trận "
+        "vì chưa có dispatch KR đã đo.",
+        "Các trường thắng, hòa, hồi sinh, đồng hồ và reset mô tả phần cần xác định cho từng mode. "
+        "`unknown` giữ chỗ cho phần chưa rõ, không kế thừa luật trận thường.",
         "",
         "| Mode | Nhóm ứng viên | Đợt / lớp mode | Dấu vết trong pack | Họ map (thuộc mission / tổng) |",
         "|---|---|---|---|---|",
@@ -330,7 +415,8 @@ def render_markdown(catalog):
                      f"{', '.join(evidence) or 'Chưa ghép'} | {related or '—'} |")
     lines += [
         "",
-        "Wiki có nhãn đấu ném tuyết nhưng bảng Mode chưa ghép chắc với `SnowyFields`. "
+        "Họ map `SnowyFields` giữ nhóm riêng `snowy_fields`; nhãn ném tuyết của wiki chưa chứng minh "
+        "đối ứng với mode sự kiện `snowball_event`. "
         "Các họ có chủ đề như `Zombie` hoặc `Gumiho` cũng chưa có đối ứng với hồi sinh, nhím hay bắt thủ lĩnh.",
         "",
         "Cột Dấu vết ghi số mục `Attr/MapGroup` khớp nguyên tên duy nhất trong census trên tổng số mục khai báo. "
@@ -342,7 +428,10 @@ def render_markdown(catalog):
         "",
         "## Phép đo còn thiếu cho F2",
         "",
-        "1. Dùng IDA trên build KR 00967 để lần từ UI chọn mode hoặc `Attr/MapGroup` đến reader/writer. "
+        "1. Dùng IDA trên build KR 00967 để lần từ UI chọn mode hoặc `Attr/MapGroup` đến reader/writer "
+        "([điểm neo tĩnh Wave 8a](../evidence/content/f4-w8-ida-exp-175-f2.json): `MapGroupVisible` "
+        "`0xe04cb0`/`0xe04dd0`, `Dlg_LB-Create_Ladder` `0xc541e0`, "
+        "`Dlg_LB-Create_Mission` `0xc8df50`, `roomtype` `0x57f520`). "
         "Đo native trong mạng cô lập với cùng map, roster, đội và sức chứa; chỉ đổi lựa chọn mode. "
         "Nếu client không mở được lựa chọn Ladder, ghi điểm dừng ở UI hoặc luồng ghép trận trước khi thử gán giá trị wire.",
         "   - Đối chiếu [tạo phòng 81/86](../protocol/room-membership.md#room-create) và "
@@ -368,12 +457,20 @@ def render_markdown(catalog):
         "`catalog_sha256` băm object JSON sau khi bỏ chính trường hash và `input_sha256`: "
         "UTF-8, khóa sắp tăng, không khoảng trắng, một LF cuối. "
         "`input_sha256` băm byte gốc của từng file nguồn.",
-        "Công cụ đọc census và bảng xếp loại, chạy offline và không cần pack, IDA hay client.",
+        "Công cụ đọc census, bảng xếp loại và bảng ModeRules, chạy offline và không cần pack, IDA hay client. "
+        "Nếu census bổ sung `partial_reason`, `missing_tags` hoặc `tail` "
+        "(`offset`, `remaining_bytes`), công cụ sao chép chúng vào chẩn đoán.",
         "Khi dùng `--census` khác, chọn `--classification` tương ứng hoặc `--no-classification` "
         "để giữ lớp chưa rõ. Dùng `--out` và `--markdown-out` để chọn file đầu ra riêng.",
         "",
     ]
     return "\n".join(lines)
+
+
+def metadata_cell(value):
+    if value is None:
+        return "—"
+    return canonical(value).decode().strip().replace("|", "&#124;").replace("<", "&lt;")
 
 
 def read_json(path):
@@ -409,15 +506,16 @@ def main(argv=None):
         classification, class_hash = read_json(class_path) if class_path else (None, None)
         if classification is not None:
             validate_classification(census, census_hash, classification)
-        catalog = build_catalog(census, classification)
-        catalog["input_sha256"] = {"census": census_hash, "classification": class_hash}
+        rules, rules_hash = read_json(RULES)
+        catalog = build_catalog(census, classification, rules=rules)
+        catalog["input_sha256"] = {"census": census_hash, "classification": class_hash, "rules": rules_hash}
         default_targets = args.generate or args.check
         out = args.out or (CATALOG if default_targets else None)
         markdown = args.markdown_out or (MARKDOWN if default_targets else None)
         outputs = [(out, ".json", render_json(catalog))]
         if markdown is not None:
             outputs.append((markdown, ".md", render_markdown(catalog)))
-        inputs = {path.resolve() for path in (args.census, class_path) if path is not None}
+        inputs = {path.resolve() for path in (args.census, class_path, RULES) if path is not None}
         for path, suffix, body in outputs:
             reject_private(body)
             if path is not None and (path.suffix != suffix or path.resolve() in inputs):
@@ -435,9 +533,9 @@ def main(argv=None):
             else:
                 path.write_bytes(raw)
         if args.check:
-            print(f"F2-0 OK: {EXPECTED_MAPS} map / {EXPECTED_FAMILIES} họ; {catalog['catalog_sha256']}")
+            print(f"F2 OK: {EXPECTED_MAPS} map / {EXPECTED_FAMILIES} họ; {catalog['catalog_sha256']}")
     except (OSError, ValueError, KeyError, TypeError) as exc:
-        parser.exit(1, f"Không thể kiểm kê F2-0: {exc}\n")
+        parser.exit(1, f"Không thể kiểm kê F2: {exc}\n")
 
 
 if __name__ == "__main__":

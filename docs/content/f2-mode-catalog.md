@@ -1,4 +1,4 @@
-# Kiểm kê mode và map nhiệm vụ F2-0
+# Kiểm kê mode và map nhiệm vụ F2
 
 Nguồn: [kiểm kê map và pack](../CONTENT.md), [bảng Mode](../CONTENT.md#mode), và [xếp loại A/B/C](classification.md).
 [Catalog JSON](../evidence/content/f2-mode-catalog.json) giữ tên từng map, số đếm, locator tài nguyên và hash đầu vào.
@@ -28,13 +28,26 @@ Cột Nhóm là nhãn ứng viên từ wiki hoặc tên họ. Lớp tham chiếu
 | PopcadeC | 5 | 15×13 | 4 | 5/0/0 | 1/4 | 5/105/18 | 1/4 | C | `popcade` · 팝케이드 |
 | Rabbit | 6 | 15×13 | 8 | 6/0/0 | 4/2 | 6/15/3 | 2/28 | C | `farm_mission` · 바니팜 |
 | RescueET | 3 | 15×13 | 4 | 3/0/0 | 2/2 | 3/15/5 | 3/30 | C | `rescue_et` · 외계인구출 (đã ngừng) |
-| SnowyFields | 18 | 15×13 | 4–8 | 13/5/0 | 1/4, 2/2, 2/4, 8/1 | 17/293/33 | 9/192 | C | `snowball_event` · 눈싸움 (sự kiện, chưa chắc) |
+| SnowyFields | 18 | 15×13 | 4–8 | 13/5/0 | 1/4, 2/2, 2/4, 8/1 | 17/293/33 | 9/192 | C | `snowy_fields` · 눈싸움 (sự kiện, chưa chắc) |
 | SuperFighter | 2 | 15×13 | 8 | 0/2/0 | 2/4 | 2/32/11 | 2/13 | C | `super_fighter` · 슈퍼파이터 (sự kiện) |
 | Wriggle | 7 | 15×13 | 4 | 7/0/0 | 2/2 | 7/161/7 | 1/4 | C | `wriggle` · 꼬물이 |
 | Zombie | 6 | 15×13 | 8 | 6/0/0 | 8/1 | 6/120/10 | 2/20 | C | `zombie` · 좀비 |
 | Zzolman | 5 | 15×13 | 4 | 5/0/0 | 1/4 | 5/105/18 | 1/4 | C | `zzolman` · 쫄맨 (đã ngừng) |
 
-Toàn bộ họ `Bula` đọc một phần. Census thu được 71 hàng rơi từ 7 map; chưa xác nhận đủ phần đuôi.
+## Chẩn đoán phần đuôi đọc một phần
+
+Chỉ dùng hàng `parse=partial` trong phạm vi mission của census. Dấu — là metadata chưa có.
+Số hàng đã đọc và danh sách tag rỗng không xác nhận phần đuôi đã đọc hết hay map không có script.
+
+| Họ / map | Hàng rơi / đặt sẵn đã đọc | Tag đã ghi | Lý do | Tag thiếu | Phần đuôi |
+|---|---:|---|---|---|---|
+| Bula / `Bula00` | 10/0 | [] | — | — | — |
+| Bula / `Bula01` | 10/0 | [] | — | — | — |
+| Bula / `Bula02` | 10/0 | [] | — | — | — |
+| Bula / `Bula03` | 11/0 | [] | — | — | — |
+| Bula / `Bula04` | 10/0 | [] | — | — | — |
+| Bula / `Bula15` | 10/0 | [] | — | — | — |
+| Bula / `Bula16` | 10/0 | [] | — | — | — |
 
 JSON chỉ sao chép mã map nếu census có trường riêng. Tên map hoặc hậu tố số không được dùng làm mã wire.
 
@@ -42,6 +55,8 @@ JSON chỉ sao chép mã map nếu census có trường riêng. Tên map hoặc 
 
 Nhãn wiki và đối ứng theo tên trong [bảng Mode](../CONTENT.md#mode) giúp chọn mẫu đo cho `RoomRules`. Số mục tài nguyên và khai báo `Attr/MapGroup` là metadata tĩnh. Số mục của một nhóm pack (ví dụ `FxMap/Map`) là của cả nhóm, không phải số tài nguyên riêng của mode.
 Họ ngoài `mission` và các khai báo có mẫu như `Tomb?` không cộng vào tổng 122 map. Popcade có map trong tổng kiểm kê và vẫn mang đợt F3 theo bảng Mode.
+[Bảng ModeRules](../../rust/crates/kr-service/src/room_modes/rules.json) khớp nhóm và đợt của 18 mode cùng nhóm luật của 6 họ mission có liên kết. Đây là hợp đồng thiết kế cho override do vận hành chọn; các mode vẫn bị chặn khi tạo hoặc bắt đầu trận vì chưa có dispatch KR đã đo.
+Các trường thắng, hòa, hồi sinh, đồng hồ và reset mô tả phần cần xác định cho từng mode. `unknown` giữ chỗ cho phần chưa rõ, không kế thừa luật trận thường.
 
 | Mode | Nhóm ứng viên | Đợt / lớp mode | Dấu vết trong pack | Họ map (thuộc mission / tổng) |
 |---|---|---|---|---|
@@ -64,7 +79,7 @@ Họ ngoài `mission` và các khai báo có mẫu như `Tomb?` không cộng v�
 | 팝케이드 (Popcade) | `popcade` | F3 / C | `FxMap/Map` (1151) | `PopcadeA` (5/5), `PopcadeB` (5/5), `PopcadeC` (5/5) |
 | 협공배틀 (đánh phối hợp) | `co_op` | F2 / C | Chưa ghép | — |
 
-Wiki có nhãn đấu ném tuyết nhưng bảng Mode chưa ghép chắc với `SnowyFields`. Các họ có chủ đề như `Zombie` hoặc `Gumiho` cũng chưa có đối ứng với hồi sinh, nhím hay bắt thủ lĩnh.
+Họ map `SnowyFields` giữ nhóm riêng `snowy_fields`; nhãn ném tuyết của wiki chưa chứng minh đối ứng với mode sự kiện `snowball_event`. Các họ có chủ đề như `Zombie` hoặc `Gumiho` cũng chưa có đối ứng với hồi sinh, nhím hay bắt thủ lĩnh.
 
 Cột Dấu vết ghi số mục `Attr/MapGroup` khớp nguyên tên duy nhất trong census trên tổng số mục khai báo. JSON giữ nguyên thứ tự và ký tự của khai báo; chưa diễn giải cách client xử lý `?`.
 Khi đo Ladder, dùng một map trùng tên đã có trong [phạm vi nghiệm thu G1](../evidence/rust-service/g1-acceptance-matrix.json), chẳng hạn `Factory07`, làm đối chứng trận thường. Trước khi chọn map thử hồi sinh, đo cách client xử lý các khai báo như `Tomb?` và `Cemetery?`.
@@ -85,5 +100,5 @@ python3 tools/kr_f2_mode_audit.py --check
 ```
 
 `catalog_sha256` băm object JSON sau khi bỏ chính trường hash và `input_sha256`: UTF-8, khóa sắp tăng, không khoảng trắng, một LF cuối. `input_sha256` băm byte gốc của từng file nguồn.
-Công cụ đọc census và bảng xếp loại, chạy offline và không cần pack, IDA hay client.
+Công cụ đọc census, bảng xếp loại và bảng ModeRules, chạy offline và không cần pack, IDA hay client. Nếu census bổ sung `partial_reason`, `missing_tags` hoặc `tail` (`offset`, `remaining_bytes`), công cụ sao chép chúng vào chẩn đoán.
 Khi dùng `--census` khác, chọn `--classification` tương ứng hoặc `--no-classification` để giữ lớp chưa rõ. Dùng `--out` và `--markdown-out` để chọn file đầu ra riêng.
