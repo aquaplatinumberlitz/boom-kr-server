@@ -3,11 +3,15 @@
 #[cfg(test)]
 #[path = "f4a_economy_wire_tests.rs"]
 mod f4a_economy_wire_tests;
+#[cfg(test)]
+#[path = "f6_policy_config_tests.rs"]
+mod f6_policy_config_tests;
 
 use crate::{
     account_bridge::{self, Bridge},
     account_worker::{AccountService, Client, EconomySettings, Worker},
     accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Token},
+    f6_policy::F6EventPolicy,
     platform::{self, local_ipc},
 };
 use serde::Deserialize;
@@ -100,6 +104,9 @@ pub struct Config {
     /// non-default inline `economy_policy` or `shop_catalog`.
     #[serde(default)]
     pub economy_profile_path: Option<PathBuf>,
+    /// Optional F6 event policy JSON. Omitting it disables all F6 systems.
+    #[serde(default)]
+    pub f6_events_policy: Option<PathBuf>,
     /// Opt-in F4-a projection: emit static-confirmed `S->C 135` (`remain_lucci`)
     /// after lobby `own291` and settled post-match `175` replies.
     #[serde(default)]
@@ -157,6 +164,43 @@ fn load_economy_profile_file(path: &Path) -> io::Result<(EconomyPolicy, ShopCata
 }
 
 impl Config {
+    /// Load and validate the configured F6 event policy for inspection.
+    /// If no profile is configured, all systems are disabled.
+    pub fn f6_event_policy(&self) -> io::Result<F6EventPolicy> {
+        let Some(path) = self.f6_events_policy.as_deref() else {
+            return Ok(F6EventPolicy::disabled_default());
+        };
+        if path.as_os_str().is_empty()
+            || path
+                .components()
+                .any(|part| matches!(part, Component::ParentDir))
+        {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "invalid f6_events_policy path",
+            ));
+        }
+        for parent in path
+            .ancestors()
+            .skip(1)
+            .filter(|p| !p.as_os_str().is_empty())
+        {
+            if !fs::symlink_metadata(parent)?.is_dir() {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidInput,
+                    "f6_events_policy parents must be directories without symlinks",
+                ));
+            }
+        }
+        if !fs::symlink_metadata(path)?.is_file() {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "f6_events_policy must be a regular file without symlinks",
+            ));
+        }
+        F6EventPolicy::from_path(path)
+    }
+
     /// Validated economy for the account worker; defaults stay disabled.
     pub(crate) fn economy(&self) -> io::Result<EconomySettings> {
         let (policy, catalog) = if let Some(path) = &self.economy_profile_path {
@@ -190,6 +234,7 @@ impl Config {
         Ok(settings)
     }
     pub(crate) fn validate(&self) -> io::Result<()> {
+        self.f6_event_policy()?;
         self.economy()?;
         if let Some(backup) = &self.backup {
             backup.validate()?;

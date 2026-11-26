@@ -53,6 +53,7 @@ fn base_config(dir: &Path) -> Config {
         economy_policy: EconomyPolicy::default(),
         shop_catalog: ShopCatalog::default(),
         economy_profile_path: None,
+        f6_events_policy: None,
         emit_lucci_135: false,
         project_own291_level: false,
         unlock_all_catalog: false,

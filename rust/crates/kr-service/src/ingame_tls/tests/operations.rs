@@ -133,6 +133,7 @@ fn loopback_profile(input: &ServerConfig) -> crate::Validated {
                     economy_policy: Default::default(),
                     shop_catalog: Default::default(),
                     economy_profile_path: None,
+                    f6_events_policy: None,
                     emit_lucci_135: false,
                     project_own291_level: false,
                     unlock_all_catalog: false,
