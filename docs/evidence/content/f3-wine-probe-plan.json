@@ -1,0 +1,463 @@
+{
+  "authority_decision_rule": "Chỉ gán quyền cho đường chạy đã đo nếu phân biệt được lần tạo hoặc chấp nhận trạng thái với chuyển tiếp và hiển thị. Đảo host và đối chứng phải loại được giải thích còn lại. Khi server cục bộ có nhánh đối chứng rõ, tách chuyển tiếp khỏi áp dụng và so trạng thái; nếu còn nhiều giải thích, ghi unknown dù phép thử có timeline đạt. Log emulator chỉ mô tả hành vi emulator; không suy quyền của server Nexon.",
+  "authority_questions": {
+    "kr_wire_route": {"axis": "wire_mapping", "capture_status": "pending_wine_capture", "discriminator": "Các số 9/80/135/136/177 là nhãn tĩnh từ nguồn IDA. Với mỗi frame bắt được, đối chiếu opcode giải mã từ wire, giá trị vào CGameStage::OnPacket, chỉ số jump table (kiểm phép trừ 20) và VA handler thực chạy. Không lấy nhãn làm opcode wire hoặc tự cộng 20.", "question": "Các neo phía client xuất hiện ở route nào trong mỗi màn?", "status": "unknown"},
+    "monster_ai": {"axis": "host_vs_server", "capture_status": "pending_wine_capture", "discriminator": "Ghép lần quái đổi trạng thái với cờ host, attackSeq và đường nhận; guard riêng lẻ không đủ.", "question": "Bên nào quyết định AI và trạng thái đòn quái?", "status": "unknown"},
+    "monster_hp": {"axis": "host_vs_server", "capture_status": "pending_wine_capture", "discriminator": "So đòn trúng/hụt theo cùng ID; phân biệt dự đoán hoặc hoạt ảnh với HP/chết đã áp dụng.", "question": "Bên nào quyết định sát thương, HP còn lại và quái chết?", "status": "unknown"},
+    "monster_spawn": {"axis": "host_vs_server", "capture_status": "pending_wine_capture", "discriminator": "Đối chiếu ID/đợt/kích hoạt và nơi tạo trạng thái mới với lần phía còn lại áp dụng.", "question": "Bên nào quyết định sinh quái và chuyển đợt?", "status": "unknown"},
+    "stage_clear": {"axis": "host_vs_server", "capture_status": "pending_wine_capture", "discriminator": "So đủ và thiếu mục tiêu; phân biệt UI báo thắng với bên quyết định kết quả hoặc chuyển màn.", "question": "Bên nào xác nhận qua màn và bắt đầu chuyển màn?", "status": "unknown"},
+    "stage_clear_rewards": {"axis": "host_vs_server", "capture_status": "pending_wine_capture", "discriminator": "So hoàn tất và chưa hoàn tất; ghép thông báo, biến động tài khoản và ghi bền.", "question": "Bên nào quyết định cấp thưởng và ghi nhận thưởng qua màn?", "status": "unknown"},
+    "trigger_execution": {"axis": "host_vs_server", "capture_status": "pending_wine_capture", "discriminator": "So action/control khi đảo host; tách thay đổi UI cục bộ khỏi hiệu ứng được bên khác áp dụng.", "question": "Bên nào quyết định điều kiện và hiệu ứng của trigger?", "status": "unknown"}
+  },
+  "build": "KR00967",
+  "inputs": {
+    "ida_anchors": {
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json",
+      "sha256": "93b1980cde472da0b0514c584a96db660e0e19a76428125c6fd79666e21f2cd9"
+    },
+    "matrix": {
+      "locator": "docs/evidence/content/f3-script-authority-matrix.json",
+      "sha256": "5653289672e304df778f29b3fc66923f3a295ebace67f65e136d7bd2445f563e"
+    }
+  },
+  "probes": [
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "ID quái và đợt đầu, lần đổi HP hoặc trạng thái, lần chết cuối và mốc báo qua màn.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_timer_ai", "monster_attack_guard"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Đợi đợt đầu, đánh trúng một quái đã định danh một lần, rồi chơi tới khi UI báo kết quả.", "control": "Cùng vị trí và thời điểm, đánh hụt; dừng trước đòn cuối và giữ hết cửa sổ quan sát.", "procedure_ref": "two_client_procedure"},
+      "focus": "So nhịp sinh quái, một lần thay đổi HP và qua màn khi đảo vai host.",
+      "map": "MonSeal01",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "stage_clear",
+      "stage_group": "monster",
+      "static_map": {"family": "MonSeal", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["free"], "script_tags": ["ActionList", "InitInfo", "ScriptObject", "ScriptObjects", "StageClearScript", "Time", "Trigger", "TriggerTable", "action", "mapscript", "mapscriptoption"], "script_triggers": ["bomberdie", "bomberlocked", "default", "die", "selflocked", "selfreleased"], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Mốc qua ranh vùng, camera/UI từng bên và ID/trạng thái quái trước và sau.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_timer_ai", "monster_attack_guard"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Cho người thao tác đi qua ranh vùng ứng viên một lần khi người còn lại đứng yên.", "control": "Đi song song ngoài ranh vùng cùng khoảng thời gian và giữ nguyên vị trí người quan sát.", "procedure_ref": "two_client_procedure"},
+      "focus": "Tách trigger vùng và cập nhật quái khỏi camera/UI cục bộ.",
+      "map": "MonS2Fire03",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "monster_area_ui",
+      "stage_group": "monster",
+      "static_map": {"family": "MonS2Fire", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["absolute2", "absolutex", "free", "playandwait", "relative"], "script_tags": ["Action", "ActionList", "Area", "AreaList", "GameMapItemAttrTable", "GamePlayAreaScript", "InitInfo", "Item", "ItemSkillAttrTable", "ItemTable", "ItemTables", "MapItemConfig", "MapUIScript", "ScriptObject", "ScriptObjects", "StageClearScript", "Time", "Trigger", "TriggerTable", "UIData", "UILayer", "UIObject", "UIOption", "action", "camerascript", "mapscript", "mapscriptoption", "move"], "script_triggers": ["approach", "selfdamaged", "selfdie"], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Mốc đạt mục tiêu và mốc kết quả; đối chiếu với đường chạy StageClearScript nếu quan sát được.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Qua cửa Quest/Mission đã xác minh, hoàn tất mục tiêu màn do UI hiển thị.", "control": "Giữ thiếu mục tiêu cuối trong cửa sổ quan sát, kể cả khi đã thấy quái chết.", "procedure_ref": "two_client_procedure"},
+      "focus": "Dò trigger qua màn ở nhóm đối chiếu; chưa biết map dùng cửa vào Quest nào.",
+      "map": "SnowyFields07",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "cross_reference",
+      "script_cluster": "stage_clear",
+      "stage_group": "quest_mission",
+      "static_map": {"family": "SnowyFields", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["free", "line"], "script_tags": ["ActionList", "InitInfo", "ScriptObject", "ScriptObjects", "StageClearScript", "Time", "Trigger", "TriggerTable", "action", "mapscript", "mapscriptoption"], "script_triggers": ["bomberdie", "bomberlocked", "default", "die", "selflocked", "selfreleased"], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Mốc tiếp cận, lần chạy MoveMap nếu thấy, và map thực sự tải trên từng client.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Cho người thao tác tiến đến lối chuyển thấy trong game và dừng sau lần chuyển đầu tiên.", "control": "Dừng ngay trước lối chuyển và chờ cùng khoảng thời gian.", "procedure_ref": "two_client_procedure"},
+      "focus": "Thử trigger đến gần và theo dõi chuyển bản đồ qua MoveMap.",
+      "map": "RPG11_N_02",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "rpg_transition",
+      "stage_group": "rpg",
+      "static_map": {"family": "RPG11_N", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["fallingrock"], "script_tags": ["Action", "MonDieRewardProb", "Move00", "Move01", "MoveMap", "OverrideActionList", "OverrideInitInfo", "OverrideTriggerTable", "RPGScript", "ScriptObjectTemplate", "ScriptObjectTemplates", "StageClearScript", "Time", "Trigger", "mapscript", "mapscriptoption"], "script_triggers": ["approach"], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Controller hoặc dấu không quan sát được khi tải màn; mốc cập nhật chế độ và nguồn phát.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_timer_ai"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Chụp từ lúc tải màn, đứng yên lấy mốc rồi cho một người thực hiện một mục tiêu UI chỉ dẫn.", "control": "Lặp lượt đứng yên hết cửa sổ và đối chiếu cùng thao tác trên CAhero07 nếu hai cửa vào tương đương.", "procedure_ref": "two_client_procedure"},
+      "focus": "Dùng màn có dấu mapscript để dò nguồn cập nhật của chế độ.",
+      "map": "CAhero01",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "script_marker",
+      "stage_group": "ca_hero",
+      "static_map": {"family": "CAhero", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": [], "script_tags": ["mapscript", "mapscriptoption"], "script_triggers": [], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Dấu cập nhật chung và dấu riêng của từng map; ghi nhánh quan sát được thay vì suy từ census không có tag.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_timer_ai"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Chụp từ lúc tải màn và lặp thao tác UI hợp lệ đã dùng trên CAhero01 nếu cửa vào tương đương.", "control": "Giữ hai người đứng yên; nếu không thể lặp thao tác CAhero01, ghi cặp đối chứng bị chặn.", "procedure_ref": "two_client_procedure"},
+      "focus": "Đối chứng cùng họ CAhero, census không ghi script.",
+      "map": "CAhero07",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "no_script",
+      "stage_group": "ca_hero",
+      "static_map": {"family": "CAhero", "has_script": "no", "mapscript_tag": "no", "parse": "exact", "script_funcs": [], "script_tags": [], "script_triggers": [], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Mốc cập nhật điểm, mốc kết quả, và lời gọi script nếu quan sát được trên từng bên.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Thực hiện một lựa chọn hợp lệ rồi chơi tới kết quả Hidden Catch do UI báo.", "control": "Để thiếu mục tiêu cuối và so với Hdn_Alche_Cam ở cùng chế độ nếu mở được.", "procedure_ref": "two_client_procedure"},
+      "focus": "So trigger và kết quả với mẫu Hidden Catch không có dấu script.",
+      "map": "Hdn_Alche_Aqua",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "stage_clear",
+      "stage_group": "hidden_catch",
+      "static_map": {"family": "Hdn_Alche_Aqua", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["absolute2"], "script_tags": ["Action", "ActionList", "InitInfo", "Item", "ItemTable", "ItemTables", "ScriptObject", "ScriptObjects", "StageClearScript", "Time", "Trigger", "TriggerTable", "action", "mapscript"], "script_triggers": ["bomberdie", "bomberlocked", "default", "selfdie"], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Thay đổi điểm và kết quả trên từng client, kèm dấu điều phối chế độ hoặc script nếu thấy.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Lặp kiểu lựa chọn Hidden Catch của Hdn_Alche_Aqua ở cùng chế độ nếu mở được.", "control": "Không thực hiện lựa chọn cuối; nếu khác chế độ, ghi cặp đối chứng bị chặn.", "procedure_ref": "two_client_procedure"},
+      "focus": "Đối chứng để tách hiệu ứng của chế độ khỏi script trong map.",
+      "map": "Hdn_Alche_Cam",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "no_script",
+      "stage_group": "hidden_catch",
+      "static_map": {"family": "Hdn_Alche_Cam", "has_script": "no", "mapscript_tag": "no", "parse": "exact", "script_funcs": [], "script_tags": [], "script_triggers": [], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Thông báo qua màn, biến động phần thưởng thực tế và trạng thái lưu sau đăng nhập lại.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Hoàn tất mục tiêu màn thưởng, xem kết quả rồi đăng nhập lại để đọc số dư và túi đồ.", "control": "Dừng trước mục tiêu cuối và đọc lại cùng các trường ở cùng mốc; dùng tài khoản thử riêng cho mỗi lượt.", "procedure_ref": "two_client_procedure"},
+      "focus": "So hoàn thành và không hoàn thành để tìm nguồn thông báo thưởng.",
+      "map": "BonusLargeGourd01",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "bonus_event",
+      "stage_group": "bonus",
+      "static_map": {"family": "BonusLargeGourd", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": [], "script_tags": ["Action", "ActionList", "BonusMapEvent", "BonusMapScript", "InitInfo", "RewardItem", "RewardItemList", "ScriptObject", "ScriptObjects", "StageClearScript", "Time", "Trigger", "TriggerTable", "action", "mapscript", "mapscriptoption"], "script_triggers": ["default", "selfdamaged", "selfdie", "selflocked"], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Số lần thử, số lần UI ghi nhận, và thay đổi túi đồ sau đăng nhập lại nếu có.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Lặp một thao tác nhận vật phẩm mà UI cho phép tới khi thấy giới hạn hoặc hết cửa sổ đã định.", "control": "Giữ cùng thời lượng nhưng bỏ lần nhận cuối; kiểm lại túi đồ ở cùng mốc.", "procedure_ref": "two_client_procedure"},
+      "focus": "Đối chiếu cấu hình giới hạn vật phẩm với thưởng quan sát được.",
+      "map": "BonusBigRPG01",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "bonus_global",
+      "stage_group": "bonus",
+      "static_map": {"family": "BonusBigRPG", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": [], "script_tags": ["GeneralScript", "GlobalScript", "Limit", "PresentBoxLimit", "SpecialItem", "UserItemConfig", "mapscript"], "script_triggers": [], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Giá trị timer, trạng thái AI và lần gọi handler 177 nếu thấy; giữ riêng số nhãn tĩnh và opcode đo được.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["stage_timer_ai"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Đợi hết khoảng đứng yên ban đầu, cho một người tiếp cận AI và ghi lần đổi trạng thái đầu.", "control": "Giữ cả hai ngoài tầm tiếp cận trong cùng cửa sổ, đối chiếu ở cùng mốc timer.", "procedure_ref": "two_client_procedure"},
+      "focus": "Đối chứng AI trên map không có dấu script; theo dõi timer và trạng thái.",
+      "map": "Fm_AIBtlDesert05",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "no_script",
+      "stage_group": "ai_battle",
+      "static_map": {"family": "Fm_AIBtlDesert", "has_script": "no", "mapscript_tag": "no", "parse": "exact", "script_funcs": [], "script_tags": [], "script_triggers": [], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Bước hướng dẫn trước/sau, lời gọi phía client và lưu lượng đi kèm; xác nhận riêng cửa vào chơi đơn nếu có.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Theo UI tới bước dùng hoặc nhặt một vật phẩm được chỉ dẫn và ghi lần đổi bước.", "control": "Dừng trước hành động được yêu cầu, rồi đợi cùng khoảng thời gian.", "procedure_ref": "two_client_procedure"},
+      "focus": "Kiểm trigger hướng dẫn; dùng một client nếu cửa vào chỉ hỗ trợ chơi đơn.",
+      "map": "Tutorial01",
+      "priority": "first",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "tutorial",
+      "stage_group": "tutorial",
+      "static_map": {"family": "Tutorial", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": [], "script_tags": ["Action", "ActionList", "GlobalScript", "Trigger", "TriggerTable", "TutorialScript", "mapscript", "time"], "script_triggers": ["aibomberdied", "aibomberlocked", "aibomberreleased", "bomberdied", "bombereatneedle", "bombereatpunch", "bombereatshield", "bombereatshoe", "bombereatskeleton0", "bombereatskeleton1", "bombereatspring", "bomberlocked", "default", "gameend"], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "ID và trạng thái hộp, dấu gọi PuzzleBox và hiệu ứng trên hai client nếu quan sát được.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_timer_ai", "monster_attack_guard"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Tương tác một lần với hộp ứng viên thấy trên màn và ghi trạng thái hộp trước và sau.", "control": "Tiếp cận cùng vị trí nhưng không tương tác với hộp.", "procedure_ref": "two_client_procedure"},
+      "focus": "Đo tương tác PuzzleBox nếu mẫu Monster đầu chưa giải thích được trigger.",
+      "map": "MonSnowBear22",
+      "priority": "followup",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "f3_core",
+      "script_cluster": "puzzle_box",
+      "stage_group": "monster",
+      "static_map": {"family": "MonSnowBear", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["absolute2", "free"], "script_tags": ["Action", "ActionList", "Box", "GameMapItemAttrTable", "InitInfo", "Item", "ItemSkillAttrTable", "MapItemConfig", "PuzzleBox", "PuzzleBoxScript", "ScriptObject", "ScriptObjects", "StageClearScript", "Time", "Trigger", "TriggerTable", "action", "mapscript", "mapscriptoption"], "script_triggers": [], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Timer và ID đợt trước/sau mốc, cùng bên tạo thông báo nếu có.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Đứng yên từ lúc bắt đầu đến qua mốc timer ứng viên hoặc hết cửa sổ đã định.", "control": "Chụp cùng trạng thái trước mốc trong mỗi lượt; lặp ở lượt đảo host mà không thêm thao tác.", "procedure_ref": "two_client_procedure"},
+      "focus": "Dùng mốc thời gian và đợt làm đối chứng script của một màn F2.",
+      "map": "Baseball01",
+      "priority": "followup",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "cross_reference",
+      "script_cluster": "timed_wave",
+      "stage_group": "quest_mission",
+      "static_map": {"family": "Baseball", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": [], "script_tags": ["bomb", "mapscript", "state", "time", "wave"], "script_triggers": [], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "ID mục tiêu, bộ đếm và mốc thông báo hoàn tất trước/sau thao tác.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Hoàn thành một lần bắt mục tiêu theo UI; thử tới lần bắt cuối nếu UI công bố mục tiêu đếm.", "control": "Thử hụt hoặc giữ thiếu lần bắt cuối trong cùng cửa sổ.", "procedure_ref": "two_client_procedure"},
+      "focus": "Theo dõi điều kiện bắt mục tiêu và thông báo hoàn tất.",
+      "map": "Hamster01",
+      "priority": "followup",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "cross_reference",
+      "script_cluster": "rabbit_catch",
+      "stage_group": "quest_mission",
+      "static_map": {"family": "Hamster", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": [], "script_tags": ["ActionList", "InitInfo", "MissionGoal", "RabbitCatchScript", "ScriptObject", "ScriptObjects", "SmallBird", "TriggerTable", "action", "mapscript", "time", "trigger"], "script_triggers": [], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Mốc qua ranh, vùng trước/sau và hiệu ứng cục bộ hoặc đồng bộ.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Cho một người băng qua ranh vùng ứng viên một lần trong lúc người còn lại đứng yên.", "control": "Đi dọc nhưng không qua cùng ranh vùng trong cùng cửa sổ.", "procedure_ref": "two_client_procedure"},
+      "focus": "Theo dõi thay đổi vùng và tác động quan sát được trên mỗi client.",
+      "map": "Wriggle01",
+      "priority": "followup",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "cross_reference",
+      "script_cluster": "wriggle",
+      "stage_group": "quest_mission",
+      "static_map": {"family": "Wriggle", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["free"], "script_tags": ["Action", "ActionList", "Domain", "Domains", "InitInfo", "Item", "ItemTable", "ItemTables", "MapScriptOption", "Match", "Matches", "ScriptObject", "ScriptObjects", "Sweeping", "Time", "Trigger", "TriggerTable", "WriggleScript", "action", "mapscript"], "script_triggers": [], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Khởi tạo controller hoặc dấu không quan sát được, lần mục tiêu xuất hiện và phản ứng khi đạt mục tiêu.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Ghi lần tải màn và controller nếu thấy, rồi hoàn thành một mục tiêu được UI chỉ dẫn.", "control": "Lặp khởi động nhưng dừng trước khi hoàn thành mục tiêu.", "procedure_ref": "two_client_procedure"},
+      "focus": "Kiểm controller thực sự được tạo và hành vi khi đạt mục tiêu.",
+      "map": "RescueET01",
+      "priority": "followup",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "cross_reference",
+      "script_cluster": "catch_tail",
+      "stage_group": "quest_mission",
+      "static_map": {"family": "RescueET", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["free"], "script_tags": ["Action", "ActionList", "AppearActionList", "AppearPosList", "CatchTailScript", "InitInfo", "InitInfos", "MapScriptOption", "Pos", "ScriptObject", "ScriptObjects", "Time", "Trigger", "TriggerTable", "action", "mapscript"], "script_triggers": [], "spawn_points": 4},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "ID/vị trí/trạng thái NPC và hiệu ứng riêng từng client; xác định thứ tự nếu có cập nhật mạng.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Chọn một NPC thấy trong màn và tiếp cận một lần; ghi đối tượng từ lúc tải màn.", "control": "Giữ nguyên ngoài vùng tiếp cận và ghi ở cùng mốc.", "procedure_ref": "two_client_procedure"},
+      "focus": "Tách cập nhật NPC khỏi các hiệu ứng cục bộ của màn.",
+      "map": "SnowyFields01",
+      "priority": "followup",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "cross_reference",
+      "script_cluster": "snowy_field",
+      "stage_group": "quest_mission",
+      "static_map": {"family": "SnowyFields", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": [], "script_tags": ["mapscript", "snowyfieldscript", "snowynpc", "snowynpcs"], "script_triggers": [], "spawn_points": 8},
+      "wire_status": "pending_wine_capture"
+    },
+    {
+      "acceptance": {"blocked": "Nếu thiếu cửa vào, mục tiêu hoặc lượt 2P có thể so sánh, ghi bước và lý do bị chặn. Với cửa vào đã xác minh chỉ chơi đơn, lưu dấu vết cục bộ để tham khảo; giữ quyền host/server unknown.", "fail": "Đã vào đúng map 2P nhưng thiếu mốc cần so, thiếu đối chứng hoặc không ghép được dấu hiệu với client tương ứng.", "observable": "Mốc mục tiêu, dấu gọi CustomTrigger và hiệu ứng trên từng client tham gia.", "pass": "Có mốc trước/sau cho dấu hiệu trên trong lượt action và control của cả hai vai host. Ghép được với capture/log hoặc có dấu vết cục bộ riêng; ghi cả kết quả giống nhau nếu đo được."},
+      "anchor_observation": {"refs": ["script_factory", "stage_script", "stage_object_36", "stage_object_52", "stage_quest"], "registry_ref": "static_anchors", "status": "candidate"},
+      "authority_status": "unknown",
+      "experiment": {"action": "Dùng cửa vào đã kiểm, thực hiện một mục tiêu UI chỉ dẫn và theo dõi CustomTrigger nếu quan sát được.", "control": "Giữ thiếu mục tiêu vừa chọn trong cửa sổ; ghi riêng nếu cửa vào chỉ chấp nhận một người.", "procedure_ref": "two_client_procedure"},
+      "focus": "Theo dõi CustomTrigger ở màn có một vị trí spawn; không ép chạy hai client.",
+      "map": "PopcadeA01",
+      "priority": "followup",
+      "question_refs": ["kr_wire_route", "monster_ai", "monster_hp", "monster_spawn", "stage_clear", "stage_clear_rewards", "trigger_execution"],
+      "scope": "cross_reference",
+      "script_cluster": "quest_custom",
+      "stage_group": "quest_mission",
+      "static_map": {"family": "PopcadeA", "has_script": "yes", "mapscript_tag": "yes", "parse": "exact", "script_funcs": ["free", "playandwait"], "script_tags": ["Action", "ActionList", "CustomTrigger", "CustomTriggerTable", "InitInfo", "Item", "ItemSkillAttrTable", "ItemTable", "ItemTables", "MapConfig", "MapItemConfig", "ScriptObject", "ScriptObjects", "StageClearScript", "Time", "Trigger", "TriggerTable", "ZzolmanScript", "action", "mapscript", "mapscriptoption"], "script_triggers": [], "spawn_points": 1},
+      "wire_status": "pending_wine_capture"
+    }
+  ],
+  "run_status": "pending_wine_capture",
+  "schema": "kre.f3-wine-probe-plan.v1",
+  "source": "design",
+  "static_anchors": {
+    "anchors": {
+      "monster_attack_guard": {
+        "attack_seq_expr": "*(this + 316)",
+        "fallback_dispatcher": "0xf274e0",
+        "handlers": [
+          "0x6c1bc0",
+          "0xf3b740"
+        ],
+        "host_flag_expr": "*(this + 157)",
+        "host_flag_fn": "0x11656a0",
+        "notes": "RollAttack recv MonsterAttackReq checks host flag sub_11656A0(this - 46) or matching attackSeq (*(this + 316) == v5) before executing directions 34..37",
+        "symbol": "RollAttack::MonsterAttackReq"
+      },
+      "script_factory": {
+        "controller_count": 15,
+        "controller_indices": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "controller_indices_locator": "docs/protocol/f2-f5-f3-ida-anchors.md",
+        "controller_range": "0x1013b80..0x1014280",
+        "controller_selection_status": "unknown",
+        "va": "0xeba2d0"
+      },
+      "stage_object_36": {
+        "dispatcher_va": "0xe5d3a0",
+        "handler_va": "0xe67640",
+        "jump_table_index": "unknown",
+        "notes": "Dispatches vtable +36 on IEatObject/IAbilityObject",
+        "raw_wire_opcode": "unknown",
+        "reads": [
+          "u8",
+          "u8"
+        ],
+        "static_case_label": 135,
+        "symbol": "CGameStage::OnPacket",
+        "wire_status": "pending_wine_capture"
+      },
+      "stage_object_52": {
+        "dispatcher_va": "0xe5d3a0",
+        "handler_va": "0xe67770",
+        "jump_table_index": "unknown",
+        "notes": "Dispatches vtable +52 on IEatObject/IAbilityObject",
+        "raw_wire_opcode": "unknown",
+        "reads": [
+          "u8",
+          "u8"
+        ],
+        "static_case_label": 136,
+        "symbol": "CGameStage::OnPacket",
+        "wire_status": "pending_wine_capture"
+      },
+      "stage_quest": {
+        "dispatcher_va": "0xe5d3a0",
+        "handler_va": "0xe6aa90",
+        "jump_table_index": "unknown",
+        "raw_wire_opcode": "unknown",
+        "static_case_label": 9,
+        "symbol": "CGameStage::OnPacket",
+        "tag": "quest",
+        "wire_status": "pending_wine_capture"
+      },
+      "stage_script": {
+        "dispatcher_va": "0xe5d3a0",
+        "handler_va": "0xe6d730",
+        "jump_table_index": "unknown",
+        "raw_wire_opcode": "unknown",
+        "static_case_label": 80,
+        "symbol": "CGameStage::OnPacket",
+        "tag": "script",
+        "wire_status": "pending_wine_capture"
+      },
+      "stage_timer_ai": {
+        "dispatcher_va": "0xe5d3a0",
+        "handler_va": "0xe751f0",
+        "jump_table_index": "unknown",
+        "notes": "Multiplies two u32 timer values by 1000 for stage timer/AI state",
+        "raw_wire_opcode": "unknown",
+        "reads": [
+          "u32",
+          "u8",
+          "u32",
+          "u32",
+          "u8"
+        ],
+        "static_case_label": 177,
+        "symbol": "CGameStage::OnPacket",
+        "wire_status": "pending_wine_capture"
+      }
+    },
+    "client_exe_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+    "idb_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+    "image_base": "0x400000",
+    "limit": "Chỉ xác nhận điểm quan sát phía client; chưa nối neo với route hay quyền quyết định của từng màn.",
+    "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+    "source": "kr_static",
+    "status": "confirmed",
+    "wire_caveat": "Các số 9/80/135/136/177 là nhãn tĩnh từ nguồn IDA. Với mỗi frame bắt được, đối chiếu opcode giải mã từ wire, giá trị vào CGameStage::OnPacket, chỉ số jump table (kiểm phép trừ 20) và VA handler thực chạy. Không lấy nhãn làm opcode wire hoặc tự cộng 20."
+  },
+  "static_map_metadata": {
+    "limit": "Xác nhận dấu vết đã lưu, không xác nhận đường chạy hay nghĩa của tag.",
+    "locator": "docs/evidence/content/f3-script-authority-matrix.json#maps",
+    "source": "kr_static",
+    "status": "confirmed"
+  },
+  "status": "design",
+  "summary": {
+    "first": 12,
+    "followup": 7
+  },
+  "two_client_procedure": [
+    {
+      "action": "Kiểm lease Wine và cô lập outbound trước khi mở hai bản sao KR00967; chỉ cho server và bộ thu cục bộ. Dùng hai tài khoản thử A/B, pin hash client, cấu hình, phiên bản Wine và binary server; ghi patch nếu có. Đồng bộ thời gian và bật capture TCP/UDP kèm log Wine A/B và server trước khi tạo phòng.",
+      "id": "prepare"
+    },
+    {
+      "action": "A tạo phòng qua UI của chế độ và chọn map nếu cửa vào cho phép; B vào và sẵn sàng, A bắt đầu. Xác minh vai host, chế độ và map thực tải trên cả hai client. Nếu sai map, chưa có cửa vào hoặc không vào được hai người, áp dụng blocked; không ép map hay dùng ACK giả.",
+      "id": "qualify"
+    },
+    {
+      "action": "Ghi mốc tải màn, trạng thái đầu, mục tiêu UI, số dư và túi đồ. Cố định bản build, thiết lập phòng, người thao tác và vị trí nếu có thể. Ghi trước cửa sổ quan sát theo timer thấy được hoặc thời lượng cố định.",
+      "id": "baseline"
+    },
+    {
+      "action": "Ghi lần sinh quái và đổi đợt, ID quái, rồi đối chiếu lần quái tấn công với guard và trạng thái phía nhận nếu thấy. Nếu có quái đánh được, so một đòn trúng và một đòn hụt trong hai lượt mới; ghi HP hoặc trạng thái trước/sau. Thực hiện action và control của map trong các lượt mới, ghi trigger, qua màn/chuyển màn và thưởng nếu có. Nếu không thấy một mốc, ghi cửa sổ và để quyền tương ứng unknown.",
+      "id": "observe"
+    },
+    {
+      "action": "Thoát và lập phòng mới: B tạo/bắt đầu, A vào/sẵn sàng. Lặp lượt action và control với cùng điều kiện và cùng người thao tác nếu UI cho phép; nếu đổi theo vai chơi, ghi biến bị lẫn và không kết luận quyền từ lượt đó.",
+      "id": "swap"
+    },
+    {
+      "action": "Ghép frame TCP/UDP với log Wine A/B, log server và mốc UI theo lượt, thời gian và ID đối tượng. Ghi riêng bên phát, server chuyển tiếp hay kiểm tra/đổi trạng thái, lần client áp dụng và bên ghi bền. Nếu có thưởng, ghi trước, sau và sau đăng nhập lại; lưu capture/log vào local/.",
+      "id": "correlate"
+    }
+  ]
+}
