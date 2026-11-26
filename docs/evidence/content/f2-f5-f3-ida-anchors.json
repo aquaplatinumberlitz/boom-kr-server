@@ -1,0 +1,192 @@
+{
+  "schema": "boom.f2f5f3.ida_anchors.v1",
+  "scope": "static_kr00967_anchors",
+  "source_artifacts": {
+    "kr_full_i64_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+    "kr_ca_exe_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+    "image_base": "0x400000"
+  },
+  "f2_modes": {
+    "status": "kr_static/confirmed",
+    "map_group_visible": {
+      "writer_va": "0xe04cb0",
+      "reader_va": "0xe04dd0",
+      "config_key": "MapGroupVisible"
+    },
+    "game_type_switch_va": "0xc6c080",
+    "game_type_ids": {
+      "0": "CreateDlgGameTypeDefault",
+      "10": "CreateDlgGameTypeRehab",
+      "11": "CreateDlgGameTypeHedgehog",
+      "12": "CreateDlgGameTypeFlagHunt",
+      "13": "CreateDlgGameTypeTimeBomb",
+      "14": "CreateDlgGameTypeNpcBattle",
+      "16": "CreateDlgGameTypeAIBattle",
+      "17": "CreateDlgGameTypeNpcBattle",
+      "18": "CreateDlgGameTypeSuperFighter",
+      "19": "CreateDlgGameTypePopcade",
+      "20": "CreateDlgGameTypeSnowBallFight",
+      "21": "CreateDlgGameTypeSuperFighter",
+      "25": "CreateDlgGameTypeSuperFighter",
+      "27": "CreateDlgGameTypeIamBoss",
+      "28": "HiddenCatch_NormalMode",
+      "29": "HiddenCatch_CompetitionMode",
+      "43": "CreateDlgGameTypeIamWriggle",
+      "100": "CreateDlgGameTypeAll"
+    },
+    "cgamestage_handlers": [
+      {
+        "direction": "S->C",
+        "dispatcher": "0xe5d3a0",
+        "opcode": 165,
+        "handler_va": "0xe67470",
+        "reads": ["u8"],
+        "notes": "RebirthToGhost; looks up player name and dispatches vtable +84 across stage entities"
+      }
+    ],
+    "rtti_packet_namespaces": ["WeeklyLadderPacket", "ConfusedFightPacket"],
+    "rtti_typed_packets": [
+      "PTimebombClient (CGameClientPacket)",
+      "PTimebombServer (CGameServerPacket)",
+      "PWeeklyLadderUserInfoResult (CGameServerPacket)"
+    ],
+    "unknown": [
+      "Confirmed live numeric wire opcodes for PTimebombClient, PTimebombServer, WeeklyLadderPacket, ConfusedFightPacket",
+      "Server-authoritative win/draw/respawn timers across F2 modes"
+    ]
+  },
+  "f5_social": {
+    "status": "kr_static/confirmed",
+    "cstage_dispatcher_va": "0xd68c90",
+    "cstage_handlers": [
+      {
+        "group": "guild",
+        "opcode": 467,
+        "handler_va": "0x6d9340"
+      },
+      {
+        "group": "guild",
+        "opcode": 474,
+        "handler_va": "0xd769d0",
+        "reads": ["str", "str", "u32", "u32", "str"],
+        "auto_refuse_c2s_opcode": 633,
+        "ui_anchor": "ReceiveGuildInvite"
+      },
+      {
+        "group": "guild",
+        "opcode": 478,
+        "handler_va": "0xd76da0",
+        "ui_anchor": "RefuseGuildInvite"
+      },
+      {
+        "group": "couple",
+        "opcode": 257,
+        "handler_va": "0x128d3c0"
+      },
+      {
+        "group": "couple",
+        "opcode": 273,
+        "handler_va": "0xd87250"
+      },
+      {
+        "group": "couple",
+        "opcode": 284,
+        "handler_va": "0x128d120"
+      },
+      {
+        "group": "couple",
+        "opcode": 640,
+        "handler_va": "0xd88830"
+      },
+      {
+        "group": "couple",
+        "opcode": 674,
+        "handler_va": "0xd7fa60"
+      }
+    ],
+    "c2s_anchors": [
+      {
+        "group": "guild",
+        "opcode": 633,
+        "caller_va": "0xd769d0",
+        "notes": "Guild invite auto-refuse builder via sub_1164C10(633)"
+      },
+      {
+        "group": "couple",
+        "opcode": 670,
+        "caller_vas": ["0x583530", "0x583e80"],
+        "notes": "Couple request builder via sub_1164C10(670)"
+      }
+    ],
+    "choco_chat_stage": {
+      "on_res_connect_va": "0xd58760",
+      "reads": ["u8 ok", "u8", "u32", "u32 ip", "u16 port"],
+      "connect_callee_va": "0x13ad4d0",
+      "rtti_packet_namespace": "CHOCOPacket",
+      "rtti_structs": [
+        "P_CHOCO_CHATMSG",
+        "P_CHOCO_GUILDCHATMSG",
+        "P_CHOCO_SHOUTMSG",
+        "P_CHOCO_WHISPERMSG",
+        "P_CHOCO_TEAMCHATMSG",
+        "P_RES_CHOCO_EVENT"
+      ],
+      "slash_registry_va": "0x426f00",
+      "nexon_messenger_funcs": [
+        "CNMCRSendChatMessageFunc (0xab8017)",
+        "CNMCSSendChatMessageFunc (0xab8047)"
+      ]
+    },
+    "unknown": [
+      "Live wire opcodes and payloads for Friend add/remove/list, CHOCOPacket framing, Guild create/roster/disband, Ranking queries, and Couple full flow"
+    ]
+  },
+  "f3_pve": {
+    "status": "kr_static/confirmed",
+    "script_factory_va": "0xeba2d0",
+    "script_controller_range": "0x1013b80..0x1014280",
+    "cgamestage_handlers": [
+      {
+        "opcode": 9,
+        "handler_va": "0xe6aa90",
+        "tag": "quest"
+      },
+      {
+        "opcode": 80,
+        "handler_va": "0xe6d730",
+        "tag": "script"
+      },
+      {
+        "opcode": 135,
+        "handler_va": "0xe67640",
+        "reads": ["u8", "u8"],
+        "notes": "Dispatches vtable +36 on IEatObject/IAbilityObject"
+      },
+      {
+        "opcode": 136,
+        "handler_va": "0xe67770",
+        "reads": ["u8", "u8"],
+        "notes": "Dispatches vtable +52 on IEatObject/IAbilityObject"
+      },
+      {
+        "opcode": 177,
+        "handler_va": "0xe751f0",
+        "reads": ["u32", "u8", "u32", "u32", "u8"],
+        "notes": "Multiplies two u32 timer values by 1000 for stage timer/AI state"
+      }
+    ],
+    "monster_attack_authority": {
+      "handlers": ["0x6c1bc0", "0xf3b740"],
+      "fallback_dispatcher": "0xf274e0",
+      "host_flag_fn": "0x11656a0",
+      "host_flag_expr": "*(this + 157)",
+      "sub_opcode_match": 7,
+      "sub_15_match": 15,
+      "sub_6_match": 6,
+      "notes": "RollAttack recv MonsterAttackReq checks host flag sub_11656A0(this - 46) or matching attackSeq (*(this + 316) == v5) before executing directions 34..37"
+    },
+    "unknown": [
+      "Exact split between room host client and dedicated server for Monster HP/damage, wave spawns, script trigger authority, and stage clear rewards across Monster/Quest/CAHero/HiddenCatch/AIBattle"
+    ]
+  }
+}
