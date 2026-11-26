@@ -15,7 +15,7 @@ fn policy(config: serde_json::Value) -> Option<Policy> {
 }
 
 fn runtime(mode: &str) -> Runtime {
-    policy(json!({"create_overrides": {"free": mode}}))
+    policy(json!({"runtime_overrides": {"free": mode}}))
         .unwrap()
         .runtime_for(RoomTeamSelector::Free)
         .unwrap()
@@ -46,7 +46,7 @@ fn runtime_requires_its_own_explicit_override_and_keeps_native_gate_closed() {
             .is_none()
     );
 
-    let timebomb = policy(json!({"create_overrides": {"free": "timebomb"}})).unwrap();
+    let timebomb = policy(json!({"runtime_overrides": {"free": "timebomb"}})).unwrap();
     assert!(
         timebomb
             .runtime_for(RoomTeamSelector::Manner)
@@ -68,16 +68,23 @@ fn runtime_requires_its_own_explicit_override_and_keeps_native_gate_closed() {
         roomtype: 0,
     };
     assert_eq!(
-        timebomb.check_start(RoomTeamSelector::Manner, &map, (15, 0)),
+        timebomb.check_start(RoomTeamSelector::Free, &map, (15, 0)),
         Ok(())
     );
+    let native = policy(json!({"create_overrides": {"free": "timebomb"}})).unwrap();
     assert!(
-        timebomb
+        native
             .check_start(RoomTeamSelector::Free, &map, (15, 0))
             .is_err()
     );
+    assert!(
+        native
+            .runtime_for(RoomTeamSelector::Free)
+            .unwrap()
+            .is_none()
+    );
     for unsupported in ["ladder", "big_battle", "confused_fight", "matchmaking"] {
-        let p = policy(json!({"create_overrides": {"free": unsupported}})).unwrap();
+        let p = policy(json!({"runtime_overrides": {"free": unsupported}})).unwrap();
         assert!(matches!(
             p.runtime_for(RoomTeamSelector::Free),
             Err(Error::UnsupportedMode)

@@ -2,7 +2,7 @@
 //! The caller supplies an authoritative order and monotonic time in milliseconds.
 use super::{ModeKind, Policy, Wave};
 use kr_wire::kr00967::RoomTeamSelector;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 
 pub(crate) type Slot = u8;
@@ -14,14 +14,16 @@ pub(crate) struct Player {
     pub team: Team,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
 pub(crate) enum Life {
     Alive,
     Ghost,
     Eliminated,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
 pub(crate) enum Outcome {
     Playing,
     Winner(Team),
@@ -30,8 +32,9 @@ pub(crate) enum Outcome {
     Unresolved,
 }
 
-#[derive(Debug)]
-pub(crate) enum Setup {
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(tag = "mode", rename_all = "snake_case", deny_unknown_fields)]
+pub enum Setup {
     Revive {
         team_budget: Option<u16>,
         player_budget: Option<u16>,
@@ -85,6 +88,7 @@ pub(crate) enum Applied {
     Replay,
 }
 
+#[derive(Clone)]
 struct Roster {
     players: BTreeMap<Slot, (Team, Life)>,
     teams: BTreeSet<Team>,
@@ -150,6 +154,7 @@ impl Roster {
     }
 }
 
+#[derive(Clone)]
 struct Revive {
     team_budget: Option<BTreeMap<Team, u16>>,
     player_budget: Option<BTreeMap<Slot, u16>>,
@@ -210,6 +215,7 @@ impl Revive {
     }
 }
 
+#[derive(Clone)]
 struct Timebomb {
     carrier: Option<Slot>,
     remaining_ms: u64,
@@ -249,6 +255,7 @@ impl Timebomb {
     }
 }
 
+#[derive(Clone)]
 struct LeaderCapture {
     leaders: BTreeSet<Slot>,
 }
@@ -268,6 +275,7 @@ impl LeaderCapture {
     }
 }
 
+#[derive(Clone)]
 enum State {
     Revive(Revive),
     Timebomb(Timebomb),
@@ -385,6 +393,7 @@ impl State {
     }
 }
 
+#[derive(Clone)]
 struct Round {
     id: u64,
     last_seq: u64,
@@ -394,6 +403,7 @@ struct Round {
     outcome: Outcome,
 }
 
+#[derive(Clone)]
 pub(crate) struct Runtime {
     mode: ModeKind,
     round: Option<Round>,
@@ -410,7 +420,7 @@ struct RuntimeRule {
 
 impl Policy {
     pub(crate) fn runtime_for(&self, selector: RoomTeamSelector) -> Result<Option<Runtime>, Error> {
-        let Some(mode) = self.override_for(selector) else {
+        let Some(mode) = self.runtime.for_team(selector) else {
             return Ok(None);
         };
         if !self

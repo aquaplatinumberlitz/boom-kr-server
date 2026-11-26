@@ -3,6 +3,7 @@
 use crate::{
     account_bridge::RelayAuthority,
     room_io,
+    room_modes::adapter,
     room_registry::{Registry, RoomId, RoomKey},
     room_relay,
 };
@@ -241,7 +242,10 @@ impl Hub {
         let key = if create {
             let request = wire::create81(body)?;
             // Resolve the operator preset before reserving a public tuple.
-            room_io::preflight_create_mode(&self.prototype, request.team_selector)?;
+            let f2 = room_io::preflight_create_mode(&self.prototype, request.team_selector)?;
+            if f2.is_some() && self.round_profile.is_none() {
+                return Err(err("F2 runtime requires a managed gameplay profile"));
+            }
             if s.rooms.entries().count() >= self.max_rooms || s.next == 0 {
                 return Err(err("room allocation exhausted"));
             }
@@ -257,15 +261,19 @@ impl Hub {
                         self.player_choices,
                         self.capacity,
                     )?;
-                    if let Some(factory) = &*self
-                        .journal
-                        .lock()
-                        .map_err(|_| err("journal factory unavailable"))?
-                    {
-                        room_io::install_journal(&shared, factory.owner())?;
-                    }
-                    if let Some(items) = self.match_items.get() {
-                        room_io::install_match_items(&shared, items.clone())?;
+                    if let Some(mode) = f2 {
+                        room_io::install_f2_mode(&shared, mode)?;
+                    } else {
+                        if let Some(factory) = &*self
+                            .journal
+                            .lock()
+                            .map_err(|_| err("journal factory unavailable"))?
+                        {
+                            room_io::install_journal(&shared, factory.owner())?;
+                        }
+                        if let Some(items) = self.match_items.get() {
+                            room_io::install_match_items(&shared, items.clone())?;
+                        }
                     }
                     if let Some(factory) = &self.relay {
                         room_io::install_relay(&shared, factory.owner(key))?;
@@ -462,6 +470,33 @@ impl Hub {
     pub(crate) fn operator_rooms(&self) -> io::Result<Vec<RoomKey>> {
         let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
         Ok(state.rooms.entries().map(|entry| entry.key).collect())
+    }
+    pub(crate) fn operator_f2(
+        &self,
+        key: RoomKey,
+        command: adapter::Command,
+    ) -> io::Result<adapter::RoundView> {
+        let state = self.state.lock().map_err(|_| err("room hub unavailable"))?;
+        room_io::operator_f2(state.rooms.get(key)?, command)
+    }
+    #[cfg(test)]
+    pub(crate) fn select_fixture(
+        &self,
+        opcode: u32,
+        body: &[u8],
+        identity: u32,
+    ) -> io::Result<(RoomKey, room_io::Shared, room_io::Session)> {
+        let mut state = self.state.lock().unwrap();
+        let key = self.selection_key(&mut state, opcode, body)?;
+        let shared = state.rooms.get(key)?.clone();
+        let session = room_io::Session::open_with_peer(
+            &shared,
+            identity,
+            u64::from(identity),
+            Some(Ipv4Addr::LOCALHOST),
+        )?;
+        session.packet(opcode, body)?;
+        Ok((key, shared, session))
     }
     pub(crate) fn operator_close(
         &self,

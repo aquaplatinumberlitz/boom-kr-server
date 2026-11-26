@@ -11,6 +11,8 @@ pub mod binding;
 mod bombs;
 mod characters;
 mod diagnostic59;
+#[cfg(test)]
+mod f2_runtime_integration_tests;
 mod four_results;
 pub mod ingame_tls;
 mod item_scope;
