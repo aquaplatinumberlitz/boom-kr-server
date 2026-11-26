@@ -58,6 +58,7 @@ pub(super) struct State {
     pending: Vec<(usize, room_io::Batch)>,
     known: BTreeSet<(u16, u32)>,
     preferences: Vec<Option<CharacterPreference>>,
+    pre_match_exp_permille: Vec<u16>,
     last_chat: Option<Instant>,
     lobby_chat: Option<lobby_chat::Visit>,
 }
@@ -407,7 +408,7 @@ impl State {
                         Some(reply.opcode),
                     ));
                 }
-                let Some(reply) = session
+                let Some(mut reply) = session
                     .project(reply)
                     .map_err(|error| room_poll_failure(error, "project", Some(reply.opcode)))?
                 else {
@@ -415,6 +416,114 @@ impl State {
                 };
                 if reply.opcode == 91 {
                     continue;
+                }
+                if reply.opcode == 121
+                    && resources.project_own291_level
+                    && let Some(service) = &resources.account_service
+                {
+                    let policy = service.settings().policy();
+                    let mut pre = Vec::with_capacity(driver.authorities().len());
+                    for owner in driver.authorities() {
+                        let profile = service
+                            .profile_get(owner.player().player_id)
+                            .await
+                            .map_err(|error| {
+                                room_poll_failure(
+                                    io::Error::other(format!("pre-match profile: {error:?}")),
+                                    "project",
+                                    Some(121),
+                                )
+                            })?;
+                        let exp_u64 = u64::try_from(profile.exp).map_err(|_| {
+                            room_poll_failure(
+                                io::Error::other("negative profile exp"),
+                                "project",
+                                Some(121),
+                            )
+                        })?;
+                        pre.push(
+                            u16::try_from(policy.exp_permille_for(exp_u64).min(999)).unwrap_or(999),
+                        );
+                    }
+                    self.pre_match_exp_permille = pre;
+                }
+                if reply.opcode == 175
+                    && resources.project_own291_level
+                    && let Some(service) = &resources.account_service
+                {
+                    let policy = service.settings().policy();
+                    let mut updates = Vec::with_capacity(self.sessions.len());
+                    for (idx, (member_session, owner)) in self
+                        .sessions
+                        .iter()
+                        .zip(driver.authorities().iter())
+                        .enumerate()
+                    {
+                        let mut owned_slot = None;
+                        for candidate in 0..8u8 {
+                            if member_session
+                                .owns_slot(candidate)
+                                .map_err(|e| room_poll_failure(e, "project", Some(175)))?
+                            {
+                                owned_slot = Some(candidate);
+                                break;
+                            }
+                        }
+                        let Some(slot) = owned_slot else {
+                            continue;
+                        };
+                        let profile = service
+                            .profile_get(owner.player().player_id)
+                            .await
+                            .map_err(|error| {
+                                room_poll_failure(
+                                    io::Error::other(format!("post-match profile: {error:?}")),
+                                    "project",
+                                    Some(175),
+                                )
+                            })?;
+                        let level = kr_wire::kr00967::wire_level_u16(profile.level)
+                            .map_err(|e| room_poll_failure(e, "project", Some(175)))?;
+                        let exp_u64 = u64::try_from(profile.exp).map_err(|_| {
+                            room_poll_failure(
+                                io::Error::other("negative profile exp"),
+                                "project",
+                                Some(175),
+                            )
+                        })?;
+                        let new_permille =
+                            u16::try_from(policy.exp_permille_for(exp_u64).min(999)).unwrap_or(999);
+                        let old_permille =
+                            self.pre_match_exp_permille.get(idx).copied().unwrap_or(0);
+                        updates.push((
+                            slot,
+                            kr_wire::kr00967::RowProgression175 {
+                                old_exp_permille: old_permille,
+                                new_exp_permille: new_permille,
+                                level,
+                            },
+                        ));
+                    }
+                    if !updates.is_empty() {
+                        reply.payload =
+                            kr_wire::kr00967::patch_rank175_progression(&reply.payload, &updates)
+                                .map_err(|e| room_poll_failure(e, "project", Some(175)))?;
+                        let summary: Vec<_> = updates
+                            .iter()
+                            .map(|(slot, p)| {
+                                serde_json::json!({
+                                    "slot": slot,
+                                    "old_exp_permille": p.old_exp_permille,
+                                    "new_exp_permille": p.new_exp_permille,
+                                    "level": p.level,
+                                })
+                            })
+                            .collect();
+                        let _ = resources.events.try_send(serde_json::json!({
+                            "event": "native_tls_economy_175_projected",
+                            "updates": summary,
+                        }));
+                    }
                 }
                 driver
                     .lobby_reply(lane, send, reply.opcode, &reply.payload)

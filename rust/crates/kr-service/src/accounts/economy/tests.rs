@@ -1100,3 +1100,23 @@ fn schema6_upgrade_backs_up_first_and_preserves_every_old_row() {
         1
     );
 }
+
+#[test]
+fn exp_permille_for_tracks_fractional_thresholds_and_caps_at_top_threshold() {
+    let pol = EconomyPolicy {
+        enabled: true,
+        win: RewardAmount { exp: 500, lucci: 0 },
+        loss: RewardAmount { exp: 30, lucci: 0 },
+        draw: RewardAmount { exp: 30, lucci: 0 },
+        grant_on_disconnect_or_left: false,
+        level_thresholds: vec![0, 400, 1000],
+    };
+    assert_eq!(pol.exp_permille_for(0), 0);
+    assert_eq!(pol.exp_permille_for(30), 75);
+    assert_eq!(pol.exp_permille_for(399), 997);
+    assert_eq!(pol.exp_permille_for(400), 0);
+    assert_eq!(pol.exp_permille_for(500), 166);
+    assert_eq!(pol.exp_permille_for(999), 998);
+    assert_eq!(pol.exp_permille_for(1000), 0);
+    assert_eq!(pol.exp_permille_for(5000), 0);
+}

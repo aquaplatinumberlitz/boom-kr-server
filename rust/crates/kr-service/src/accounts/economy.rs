@@ -90,6 +90,23 @@ impl EconomyPolicy {
         // Validation keeps thresholds[0] == 0 and len <= LEVEL_MAX.
         reached.max(1) as i64
     }
+    /// EXP progress within the current level in permille `[0, 999]` toward the next threshold,
+    /// returning `0` once `exp` meets or exceeds the final configured threshold.
+    pub fn exp_permille_for(&self, exp: u64) -> u32 {
+        let reached = self.level_thresholds.partition_point(|&t| t <= exp);
+        let cur_idx = reached.saturating_sub(1);
+        let Some(&next) = self.level_thresholds.get(reached) else {
+            return 0;
+        };
+        let cur = self.level_thresholds[cur_idx];
+        let span = next.saturating_sub(cur);
+        if span == 0 || exp < cur {
+            return 0;
+        }
+        let gained = u128::from(exp - cur);
+        let permille = (gained * 1000) / u128::from(span);
+        permille.min(999) as u32
+    }
     pub fn reward(&self, outcome: MatchOutcome, exit: MatchExit) -> RewardAmount {
         let present = match exit {
             MatchExit::Present => true,

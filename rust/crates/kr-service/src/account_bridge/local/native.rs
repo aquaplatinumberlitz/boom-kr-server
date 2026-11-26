@@ -259,10 +259,21 @@ impl Driver {
         catalog: &[(u32, Vec<u8>)],
         levels: &[u16],
     ) -> io::Result<()> {
+        let progression: Vec<(u16, u32)> = levels.iter().map(|&lvl| (lvl, 0)).collect();
+        self.enter_lobby_with_progression(lane, writer, catalog, &progression)
+            .await
+    }
+    pub(crate) async fn enter_lobby_with_progression<S: AsyncWrite + Unpin>(
+        &mut self,
+        lane: &mut Lane,
+        writer: &mut S,
+        catalog: &[(u32, Vec<u8>)],
+        progression: &[(u16, u32)],
+    ) -> io::Result<()> {
         let mut cancel = Cancel(self.session.shared.clone(), true);
         if lane.phase != Phase::Bound
             || self.authorities.is_empty()
-            || levels.len() != self.authorities.len()
+            || progression.len() != self.authorities.len()
             || self
                 .authorities
                 .iter()
@@ -284,12 +295,12 @@ impl Driver {
             .iter()
             .map(|owner| kr_wire::kr00967::text949x::encode_name(&owner.player().display_name))
             .collect::<io::Result<Vec<_>>>()?;
-        let pairs: Vec<(&[u8], u16)> = names
+        let triples: Vec<(&[u8], u16, u32)> = names
             .iter()
-            .zip(levels.iter().copied())
-            .map(|(name, level)| (name.as_slice(), level))
+            .zip(progression.iter().copied())
+            .map(|(name, (level, exp_permille))| (name.as_slice(), level, exp_permille))
             .collect();
-        let own = kr_wire::kr00967::local_own291_with_levels(&pairs)?;
+        let own = kr_wire::kr00967::local_own291_with_progression(&triples)?;
         let mut replies = vec![(241, lobby.ready)];
         replies.extend_from_slice(catalog);
         replies.push((14, lobby.channel_list));

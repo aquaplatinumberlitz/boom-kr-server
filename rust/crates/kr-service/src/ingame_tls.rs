@@ -736,20 +736,27 @@ pub(super) async fn enter_lobby_with_projection(
         .iter()
         .map(|auth| auth.player().player_id)
         .collect();
-    let mut levels = Vec::with_capacity(players.len());
+    let mut progression = Vec::with_capacity(players.len());
+    let policy = service.settings().policy();
     for player_id in players {
         let profile = service
             .profile_get(player_id)
             .await
             .map_err(|error| io::Error::other(format!("native own291 profile: {error:?}")))?;
-        levels.push(kr_wire::kr00967::wire_level_u16(profile.level)?);
+        let level = kr_wire::kr00967::wire_level_u16(profile.level)?;
+        let exp_u64 =
+            u64::try_from(profile.exp).map_err(|_| io::Error::other("negative profile exp"))?;
+        progression.push((level, policy.exp_permille_for(exp_u64)));
     }
     driver
-        .enter_lobby_with_levels(lane, send, catalog, &levels)
+        .enter_lobby_with_progression(lane, send, catalog, &progression)
         .await?;
+    let levels: Vec<u16> = progression.iter().map(|&(lvl, _)| lvl).collect();
+    let exp_permille: Vec<u32> = progression.iter().map(|&(_, pct)| pct).collect();
     let _ = resources.events.try_send(serde_json::json!({
         "event": "native_tls_economy_own291_level_projected",
         "levels": levels,
+        "exp_permille": exp_permille,
     }));
     Ok(())
 }
