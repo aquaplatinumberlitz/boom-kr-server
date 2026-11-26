@@ -35,7 +35,7 @@ pub(crate) fn utc() -> io::Result<i64> {
 #[derive(Clone)]
 enum State {
     Pending,
-    Committed,
+    Committed(i64),
     Failed(String),
 }
 #[derive(Clone)]
@@ -44,7 +44,7 @@ impl Ticket {
     pub(crate) fn ready(&self) -> io::Result<bool> {
         match &*self.0.borrow() {
             State::Pending => Ok(false),
-            State::Committed => Ok(true),
+            State::Committed(_) => Ok(true),
             State::Failed(e) => Err(err(e.clone())),
         }
     }
@@ -52,7 +52,7 @@ impl Ticket {
         let mut status = self.0.clone();
         loop {
             match &*status.borrow_and_update() {
-                State::Committed => return Ok(()),
+                State::Committed(_) => return Ok(()),
                 State::Failed(e) => return Err(err(e.clone())),
                 State::Pending => {}
             }
@@ -148,7 +148,7 @@ impl Manager {
                     persist(&client, &command.event).await
                 };
                 match result {
-                    Ok(()) => {
+                    Ok(id) => {
                         let key = command.event.key();
                         match command.event {
                             Event::Start(start) => {
@@ -158,7 +158,7 @@ impl Manager {
                                 open.remove(&key);
                             }
                         };
-                        command.status.send_replace(State::Committed);
+                        command.status.send_replace(State::Committed(id));
                     }
                     Err(e) => {
                         health.store(true, Ordering::Release);
@@ -194,7 +194,7 @@ impl Manager {
         self.task.await.map_err(io::Error::other)?
     }
 }
-async fn persist(client: &Client, event: &Event) -> io::Result<()> {
+async fn persist(client: &Client, event: &Event) -> io::Result<i64> {
     let deadline = tokio::time::Instant::now() + Duration::from_secs(5);
     loop {
         let attempt = match client.try_persist(event.job()) {
@@ -210,7 +210,7 @@ async fn persist(client: &Client, event: &Event) -> io::Result<()> {
                     }
                 };
                 return if correct && record.reward_per_player == 0 {
-                    Ok(())
+                    Ok(record.id)
                 } else {
                     Err(err("match journal readback differs"))
                 };
@@ -248,6 +248,16 @@ impl Owner {
     }
     pub(crate) fn ticket(&self) -> Option<Ticket> {
         self.ticket.clone()
+    }
+    pub(crate) fn running_id(&self, round: u64) -> Option<i64> {
+        let current = self.current.as_ref()?;
+        if current.finished || u64::try_from(current.start.key.round).ok()? != round {
+            return None;
+        }
+        match *self.ticket.as_ref()?.0.borrow() {
+            State::Committed(id) => Some(id),
+            _ => None,
+        }
     }
     pub(crate) fn ready(&self) -> io::Result<bool> {
         self.ticket.as_ref().map_or(Ok(true), Ticket::ready)

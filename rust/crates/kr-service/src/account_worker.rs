@@ -231,6 +231,12 @@ enum Command {
         deadline: Instant,
         reply: oneshot::Sender<Result<Player>>,
     },
+    SessionDeadlines {
+        token: Token,
+        player: i64,
+        deadline: Instant,
+        reply: oneshot::Sender<Result<(i64, Option<i64>)>>,
+    },
     Economy {
         request: economy::EconomyRequest,
         deadline: Instant,
@@ -802,6 +808,25 @@ impl Client {
         }
         self.authorize(token, player, AuthorizationTime::ExecutionUtc, false)
     }
+    pub(crate) async fn session_deadlines(
+        &self,
+        token: &Token,
+        player: i64,
+    ) -> Result<(i64, Option<i64>)> {
+        let (reply, rx) = oneshot::channel();
+        self.submit(Command::SessionDeadlines {
+            token: Token::parse(token.expose_secret()).map_err(Error::Backend)?,
+            player,
+            deadline: Instant::now() + self.queue_ttl,
+            reply,
+        })?;
+        Pending {
+            reply: Some(rx),
+            handoff: None,
+        }
+        .wait()
+        .await
+    }
     fn authorize(
         &self,
         token: &Token,
@@ -1170,6 +1195,24 @@ fn run(
                         }
                         .map_err(Error::Backend)
                     })
+                };
+                let _ = reply.send(result);
+            }
+            Command::SessionDeadlines {
+                token,
+                player,
+                deadline,
+                reply,
+            } => {
+                if reply.is_closed() {
+                    continue;
+                }
+                let result = if Instant::now() >= deadline {
+                    Err(Error::QueueExpired)
+                } else {
+                    store
+                        .session_deadlines(&token, player)
+                        .map_err(Error::Backend)
                 };
                 let _ = reply.send(result);
             }

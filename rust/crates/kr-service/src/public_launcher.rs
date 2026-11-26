@@ -170,22 +170,12 @@ fn handle(
             let token = crate::accounts::Token::parse(&session.0)
                 .map_err(|_| io::Error::other("invalid public session"))?;
             let remaining = stream.sock.remaining()?;
-            let result = match active.client.try_logout_current(&token, player_id) {
-                Ok(pending) => runtime
-                    .block_on(async { tokio::time::timeout(remaining, pending.wait()).await })
-                    .map_err(|_| io::Error::other("public logout deadline"))?,
-                Err(error) => Err(error),
-            };
-            if result.is_ok() {
-                active
-                    .bridge
-                    .forget_session(&token, player_id)
-                    .map_err(|_| io::Error::other("public logout registry unavailable"))?;
-                if let Some(auth) = &active.web_shop {
-                    auth.revoke_player(player_id);
-                }
-            }
-            let response = if result.is_ok() {
+            let logged_out = runtime
+                .block_on(async {
+                    tokio::time::timeout(remaining, active.logout_public(token, player_id)).await
+                })
+                .map_err(|_| io::Error::other("public logout deadline"))??;
+            let response = if logged_out {
                 b"{\"ok\":true}\n".as_slice()
             } else {
                 b"{\"ok\":false,\"error\":\"denied_or_busy\"}\n".as_slice()
@@ -270,35 +260,19 @@ fn handle(
             Ok(())
         }
         Request::WebShopToken { session, player_id } => {
-            let Some(auth) = active.web_shop.as_ref() else {
-                return launch_tls::write_frame(
-                    &mut stream,
-                    b"{\"ok\":false,\"error\":\"denied_or_busy\"}\n",
-                    launch_tls::RESPONSE_LIMIT,
-                );
-            };
-            let authorized = match crate::accounts::Token::parse(&session.0) {
-                Ok(token) => {
+            let issued = match crate::accounts::Token::parse(&session.0) {
+                Ok(token) if active.web_shop.is_some() => {
                     let remaining = stream.sock.remaining()?;
-                    match active.client.try_authorize_current(&token, player_id) {
-                        Ok(pending) => runtime
-                            .block_on(async {
-                                tokio::time::timeout(remaining, pending.wait()).await
-                            })
-                            .map_err(|_| io::Error::other("public web shop deadline"))?,
-                        Err(error) => Err(error),
-                    }
+                    runtime
+                        .block_on(async {
+                            tokio::time::timeout(
+                                remaining,
+                                active.issue_web_shop_token(&token, player_id),
+                            )
+                            .await
+                        })
+                        .map_err(|_| io::Error::other("public web shop deadline"))?
                 }
-                Err(_) => {
-                    return launch_tls::write_frame(
-                        &mut stream,
-                        b"{\"ok\":false,\"error\":\"denied_or_busy\"}\n",
-                        launch_tls::RESPONSE_LIMIT,
-                    );
-                }
-            };
-            let issued = match authorized {
-                Ok(player) if player.player_id == player_id => auth.issue_token(player_id).ok(),
                 _ => None,
             };
             let response = Zeroizing::new(match issued {

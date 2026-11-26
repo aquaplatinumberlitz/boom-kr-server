@@ -110,6 +110,7 @@ struct Session {
 pub struct WebShopAuth {
     ttl: Duration,
     sessions: Arc<Mutex<Vec<Session>>>,
+    launcher_ops: Arc<tokio::sync::Mutex<()>>,
 }
 
 impl WebShopAuth {
@@ -117,10 +118,23 @@ impl WebShopAuth {
         Ok(Self {
             ttl: session_ttl(session_ttl_seconds)?,
             sessions: Arc::new(Mutex::new(Vec::new())),
+            launcher_ops: Arc::new(tokio::sync::Mutex::new(())),
         })
     }
 
     pub fn issue_token(&self, player_id: i64) -> io::Result<WebShopToken> {
+        self.issue_until(player_id, None)
+    }
+
+    pub(crate) async fn launcher_operation(&self) -> tokio::sync::OwnedMutexGuard<()> {
+        self.launcher_ops.clone().lock_owned().await
+    }
+
+    pub(crate) fn issue_until(
+        &self,
+        player_id: i64,
+        account_deadline: Option<Instant>,
+    ) -> io::Result<WebShopToken> {
         if player_id < 1 {
             return Err(invalid("invalid web shop player"));
         }
@@ -129,6 +143,10 @@ impl WebShopAuth {
             .lock()
             .map_err(|_| io::Error::other("web shop sessions unavailable"))?;
         let now = Instant::now();
+        let expires_at = account_deadline.map_or(now + self.ttl, |limit| limit.min(now + self.ttl));
+        if expires_at <= now {
+            return Err(invalid("web shop session expired"));
+        }
         sessions.retain(|s| s.expires_at > now);
         if sessions.len() >= TOKEN_CAPACITY {
             return Err(io::Error::other("web shop session table full"));
@@ -143,7 +161,7 @@ impl WebShopAuth {
         sessions.push(Session {
             digest: token_digest(&token),
             player_id,
-            expires_at: now + self.ttl,
+            expires_at,
             cosmetics: None,
         });
         Ok(WebShopToken(token))
@@ -175,9 +193,10 @@ impl WebShopAuth {
     ) -> Option<T> {
         let mut sessions = self.sessions.lock().ok()?;
         let now = Instant::now();
+        sessions.retain(|session| session.expires_at > now);
         let mut found = None;
         for (index, session) in sessions.iter().enumerate() {
-            if digest_eq(&session.digest, digest) && session.expires_at > now {
+            if digest_eq(&session.digest, digest) {
                 found = Some(index);
             }
         }

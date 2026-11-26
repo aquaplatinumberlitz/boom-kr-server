@@ -55,10 +55,35 @@ impl Store {
         request: &MatchItemConsumptionRequest,
         now: i64,
     ) -> Result<MatchItemConsumptionReceipt> {
+        self.consume_item(request, None, now)
+    }
+
+    /// Room admission narrows the trusted API to the exact session and slot.
+    /// Check them in the writer transaction so logout/unequip cannot race a debit.
+    pub(crate) fn consume_equipped_item_in_match(
+        &self,
+        request: &MatchItemConsumptionRequest,
+        token: &Token,
+        slot: &str,
+        now: i64,
+    ) -> Result<MatchItemConsumptionReceipt> {
+        equip_slot(slot)?;
+        self.consume_item(request, Some((token, slot)), now)
+    }
+
+    fn consume_item(
+        &self,
+        request: &MatchItemConsumptionRequest,
+        equipped: Option<(&Token, &str)>,
+        now: i64,
+    ) -> Result<MatchItemConsumptionReceipt> {
         request.validate()?;
         let player = request.player_id;
         let sku = &request.sku_id;
         let tx = Transaction::new_unchecked(&self.db, TransactionBehavior::Immediate)?;
+        if let Some((token, _)) = equipped {
+            Self::session_account(&tx, &token.digest(), player, now)?;
+        }
         if let Some((hash, receipt)) = tx
             .query_row(
                 "SELECT request_hash,id,match_id,sku_id,consumed_qty,remaining_qty,created_at
@@ -103,6 +128,17 @@ impl Store {
         )?;
         if !in_match {
             return Err(Error::InvalidSession);
+        }
+        if let Some((_, slot)) = equipped {
+            let selected: bool = tx.query_row(
+                "SELECT EXISTS(SELECT 1 FROM player_equipped
+                               WHERE player_id=?1 AND slot=?2 AND sku_id=?3)",
+                params![player, slot, sku],
+                |r| r.get(0),
+            )?;
+            if !selected {
+                return Err(Error::InvalidInput);
+            }
         }
 
         let (kind, quantity): (String, i64) = tx

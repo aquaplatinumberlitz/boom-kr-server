@@ -791,6 +791,31 @@ impl Store {
             Err(error) => Err(error),
         }
     }
+    /// Inspect a launcher session without touching its idle or clock state.
+    /// Return absolute UTC deadlines for the derived in-memory capabilities.
+    pub(crate) fn session_deadlines(
+        &self,
+        token: &Token,
+        player: i64,
+    ) -> Result<(i64, Option<i64>)> {
+        let tx = Transaction::new_unchecked(&self.db, TransactionBehavior::Deferred)?;
+        let last: i64 = tx.query_row("SELECT last_utc FROM runtime_state WHERE id=1", [], |r| {
+            r.get(0)
+        })?;
+        let now = utc()?;
+        if now < last {
+            return Err(Error::ClockRollback);
+        }
+        let digest = token.digest();
+        Self::session_account(&tx, &digest, player, now)?;
+        let deadlines = tx.query_row(
+            "SELECT expires_at,last_seen_at+idle_timeout_seconds FROM sessions WHERE token_hash=?1",
+            [digest],
+            |r| Ok((r.get(0)?, r.get(1)?)),
+        )?;
+        tx.commit()?;
+        Ok(deadlines)
+    }
     fn session_account(
         db: &Connection,
         digest: &[u8],

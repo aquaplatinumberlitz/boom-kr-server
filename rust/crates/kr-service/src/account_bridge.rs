@@ -89,6 +89,7 @@ struct Entry {
     reported: Option<Ipv4Addr>,
     connection: Option<u64>,
     deadline: Instant,
+    o1_expiry: Option<i64>,
 }
 struct Registry {
     entries: HashMap<i64, Entry>,
@@ -211,13 +212,14 @@ impl LauncherAuthority {
         self.player.wire_id == identity && self.connection == connection && self.current()
     }
     pub(crate) fn current(&self) -> bool {
-        lock(&self.shared).is_ok_and(|r| {
-            r.entries.get(&self.player.player_id).is_some_and(|e| {
-                e.generation == self.generation
-                    && e.phase == Phase::Bound
-                    && e.connection == Some(self.connection)
-                    && e.player.as_ref() == Some(&self.player)
-            })
+        lock(&self.shared).is_ok_and(|r| self.current_entry(&r).is_some())
+    }
+    fn current_entry<'a>(&self, r: &'a Registry) -> Option<&'a Entry> {
+        r.entries.get(&self.player.player_id).filter(|e| {
+            e.generation == self.generation
+                && e.phase == Phase::Bound
+                && e.connection == Some(self.connection)
+                && e.player.as_ref() == Some(&self.player)
         })
     }
     pub(crate) async fn check_idle(&self) -> Result<()> {
@@ -289,6 +291,26 @@ impl RelayAuthority {
         match self {
             Self::Launcher(owner) => owner.current(),
             Self::InGame(owner) => owner.current(),
+        }
+    }
+    pub(crate) fn item_use_token(&self) -> Result<Token> {
+        match self {
+            Self::Launcher(owner) => {
+                let r = lock(&owner.shared)?;
+                copy_token(&owner.current_entry(&r).ok_or(Error::Stale)?.token)
+            }
+            Self::InGame(owner) => owner.item_use_token(),
+        }
+    }
+    pub(crate) fn o1_current(&self, now: i64) -> bool {
+        match self {
+            Self::Launcher(owner) => lock(&owner.shared).is_ok_and(|r| {
+                owner
+                    .current_entry(&r)
+                    .and_then(|entry| entry.o1_expiry)
+                    .is_some_and(|expiry| now < expiry)
+            }),
+            Self::InGame(owner) => owner.o1_current(now),
         }
     }
     pub(crate) async fn check_idle(&self) -> Result<()> {
@@ -414,6 +436,7 @@ pub struct Bridge {
     ttl: Duration,
     random: fn(&mut [u8]) -> Result<()>,
     patched_949x_names: bool,
+    unlock_all: bool,
 }
 impl Bridge {
     /// After an exact-token DB logout, retire only a registry entry belonging
@@ -506,7 +529,12 @@ impl Bridge {
             ttl,
             random: entropy,
             patched_949x_names: false,
+            unlock_all: false,
         })
+    }
+    pub(crate) fn with_unlock_all(mut self, enabled: bool) -> Self {
+        self.unlock_all = enabled;
+        self
     }
     /// Only enable for a deployment whose clients all carry the owner's 949x
     /// patch. Defaults to the historical ASCII admission policy.
@@ -562,6 +590,7 @@ impl Bridge {
                     reported,
                     connection: None,
                     deadline: Instant::now() + self.ttl,
+                    o1_expiry: None,
                 },
             );
             Guard {
@@ -756,6 +785,15 @@ impl Bridge {
             }
         };
         let player = self.authorize(&guard).await?;
+        if self.unlock_all {
+            let token = copy_token(&guard.entry(&mut *lock(&self.shared)?)?.token)?;
+            let (expiry, _) = self
+                .client
+                .session_deadlines(&token, player.player_id)
+                .await
+                .map_err(Error::Backend)?;
+            guard.entry(&mut *lock(&self.shared)?)?.o1_expiry = Some(expiry);
+        }
         guard.transition(Phase::Bound)?;
         Ok(Channel {
             player,

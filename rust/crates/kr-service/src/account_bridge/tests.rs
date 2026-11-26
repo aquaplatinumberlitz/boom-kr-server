@@ -146,7 +146,7 @@ fn launcher_logout_retires_its_registry_generation_without_cancelling_a_newer_la
         worker.shutdown().await.unwrap();
     });
 }
-fn login_body(secret: &str, peer: Ipv4Addr) -> Vec<u8> {
+pub(crate) fn login_body(secret: &str, peer: Ipv4Addr) -> Vec<u8> {
     let mut out = vec![];
     for (value, width) in [
         (4, Width::U8),
@@ -162,7 +162,7 @@ fn login_body(secret: &str, peer: Ipv4Addr) -> Vec<u8> {
     out.extend(write_uint(0, Width::U8).unwrap());
     out
 }
-fn channel_body(player: &Player, echo: u32) -> Vec<u8> {
+pub(crate) fn channel_body(player: &Player, echo: u32) -> Vec<u8> {
     let wire_name = kr_wire::kr00967::text949x::encode(&player.display_name).unwrap();
     let mut out = vec![];
     out.extend(write_uint(1, Width::U8).unwrap());

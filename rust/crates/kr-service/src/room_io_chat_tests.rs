@@ -151,6 +151,7 @@ impl Case {
             selected_map: 0,
             map_revision: 0,
             journal: None,
+            match_items: None,
             public_key: Some(RoomKey {
                 session: 1,
                 id: RoomId(3),
@@ -423,6 +424,7 @@ fn two_local_players_sharing_connection_receive_one_chat_copy_from_primary_owner
             selected_map: 0,
             map_revision: 0,
             journal: None,
+            match_items: None,
             public_key: Some(RoomKey {
                 session: 1,
                 id: RoomId(4),

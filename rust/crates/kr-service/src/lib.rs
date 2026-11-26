@@ -1674,6 +1674,16 @@ async fn serve_until(
     } else {
         None
     };
+    if let Some(hub) = profile
+        .bound
+        .as_ref()
+        .and_then(|bound| bound.managed.as_ref())
+        && let Some(items) = account_owner
+            .as_ref()
+            .and_then(|owner| owner.active.match_items(journal.is_some()))
+    {
+        hub.install_match_items(items)?;
+    }
     let (log, events) = mpsc::channel::<Value>(256);
     let mut writer = tokio::spawn(logging::write_events(file, events, Duration::from_secs(2)));
     let mut writer_result = None;

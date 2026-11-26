@@ -260,8 +260,6 @@ pub(crate) struct Active {
     pub(crate) service: Option<AccountService>,
     pub(crate) emit_lucci_135: bool,
     pub(crate) project_own291_level: bool,
-    // Consumed by F4-a tests now and Wave 2 runtime F4-b/d routes next.
-    #[allow(dead_code)]
     pub(crate) unlock_all_catalog: bool,
     pub(crate) web_shop: Option<crate::web_shop::WebShopAuth>,
     projections: Arc<std::collections::HashMap<u32, Vec<u8>>>,
@@ -289,12 +287,88 @@ impl Active {
     pub(crate) fn account_service(&self) -> Option<&AccountService> {
         self.service.as_ref()
     }
-    #[allow(dead_code)]
     pub(crate) fn catalog_access(&self) -> CatalogAccess {
         CatalogAccess {
             unlock_all: self.unlock_all_catalog,
         }
     }
+    pub(crate) fn match_items(&self, persist_matches: bool) -> Option<MatchItems> {
+        let service = self.account_service()?;
+        if !self.unlock_all_catalog && !(persist_matches && service.settings().rewards_enabled()) {
+            return None;
+        }
+        Some(MatchItems {
+            service: service.clone(),
+            access: self.catalog_access(),
+        })
+    }
+    pub(crate) async fn issue_web_shop_token(
+        &self,
+        token: &Token,
+        player: i64,
+    ) -> Option<crate::web_shop::WebShopToken> {
+        let auth = self.web_shop.as_ref()?;
+        if self.unlock_all_catalog {
+            let _operation = auth.launcher_operation().await;
+            let (hard, idle) = self.client.session_deadlines(token, player).await.ok()?;
+            let observed = std::time::Instant::now();
+            let now = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .ok()?;
+            let deadline = Duration::from_secs(u64::try_from(idle.unwrap_or(hard).min(hard)).ok()?);
+            let lifetime = deadline.checked_sub(now)?;
+            auth.issue_until(player, Some(observed.checked_add(lifetime)?))
+                .ok()
+        } else {
+            let authorized = self
+                .client
+                .try_authorize_current(token, player)
+                .ok()?
+                .wait()
+                .await
+                .ok()?;
+            (authorized.player_id == player)
+                .then(|| auth.issue_token(player).ok())
+                .flatten()
+        }
+    }
+
+    pub(crate) async fn logout_public(&self, token: Token, player: i64) -> io::Result<bool> {
+        if let Some(auth) = self.web_shop.as_ref().filter(|_| self.unlock_all_catalog) {
+            let operation = auth.launcher_operation().await;
+            let active = self.clone();
+            // Finish revocation even if the RPC times out while SQLite is
+            // committing the logout. The operation guard bounds this task.
+            return tokio::spawn(async move {
+                let _operation = operation;
+                active.finish_public_logout(&token, player).await
+            })
+            .await
+            .map_err(|_| io::Error::other("public logout task unavailable"))?;
+        }
+        self.finish_public_logout(&token, player).await
+    }
+
+    async fn finish_public_logout(&self, token: &Token, player: i64) -> io::Result<bool> {
+        let logged_out = match self.client.try_logout_current(token, player) {
+            Ok(pending) => pending.wait().await.is_ok(),
+            Err(_) => false,
+        };
+        if logged_out {
+            if let Some(auth) = &self.web_shop {
+                auth.revoke_player(player);
+            }
+            self.bridge
+                .forget_session(token, player)
+                .map_err(|_| io::Error::other("public logout registry unavailable"))?;
+        }
+        Ok(logged_out)
+    }
+}
+#[derive(Clone)]
+pub(crate) struct MatchItems {
+    pub(crate) service: AccountService,
+    pub(crate) access: CatalogAccess,
 }
 pub(crate) struct Owner {
     pub(crate) prelogin_tls: Option<quinn::Endpoint>,
@@ -383,7 +457,9 @@ impl Owner {
         } else {
             None
         };
-        bridge = bridge.with_patched_949x_names(config.patched_949x_names);
+        bridge = bridge
+            .with_patched_949x_names(config.patched_949x_names)
+            .with_unlock_all(config.unlock_all_catalog);
         Ok(Self {
             prelogin_tls,
             public_launcher,
