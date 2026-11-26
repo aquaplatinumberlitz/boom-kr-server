@@ -13,6 +13,7 @@ use std::{
 };
 
 #[derive(Deserialize)]
+#[cfg_attr(test, derive(Clone))]
 pub(crate) struct Profile {
     name: String,
     map_code: u16,
@@ -68,9 +69,15 @@ impl Profile {
     }
 
     fn supported(&self) -> bool {
-        if !self.is_f1e() {
-            return self.grid_size() == STANDARD_SIZE && !self.scripted && !self.disable_bombs;
+        match self.adapter.as_deref() {
+            None => self.grid_size() == STANDARD_SIZE && !self.scripted && !self.disable_bombs,
+            Some("f1e-adapter-r1") => self.supported_f1e(),
+            Some("f2f3-probe-r1") => self.supported_f2f3_probe(),
+            Some(_) => false,
         }
+    }
+
+    fn supported_f1e(&self) -> bool {
         // Exact code/name pairs from the KR 00967 script inventory. The marker
         // alone cannot admit a different map, grid or spawn count.
         let scripted8 = ((STANDARD_SIZE, true, false), 8);
@@ -136,6 +143,26 @@ impl Profile {
             _ => return false,
         };
         (self.grid_size(), self.scripted, self.disable_bombs) == expected
+            && self.spawns.len() == expected_spawns
+            && self
+                .spawns
+                .iter()
+                .collect::<std::collections::HashSet<_>>()
+                .len()
+                == expected_spawns
+    }
+
+    fn supported_f2f3_probe(&self) -> bool {
+        let expected_spawns = match (self.map_code, self.name.as_str()) {
+            (623, "MonSeal01") | (1051, "SnowyFields07") | (926, "RescueET01") => 4,
+            (1143, "Zombie04") | (94, "CAhero01") | (1045, "SnowyFields01") | (204, "Clover01") => {
+                8
+            }
+            _ => return false,
+        };
+        self.grid_size() == STANDARD_SIZE
+            && self.scripted
+            && !self.disable_bombs
             && self.spawns.len() == expected_spawns
             && self
                 .spawns
@@ -259,6 +286,100 @@ impl Profile {
             }
         }
         Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn profile(map_code: u16, name: &str, spawn_count: usize) -> Profile {
+        Profile {
+            name: name.to_owned(),
+            map_code,
+            width: STANDARD_SIZE.0,
+            height: STANDARD_SIZE.1,
+            spawns: (0..spawn_count).map(|x| [x as u8, 0]).collect(),
+            scripted: true,
+            payload_sha256: "0".repeat(64),
+            adapter: Some("f2f3-probe-r1".to_owned()),
+            disable_bombs: false,
+            drops: Vec::new(),
+            pack_items: None,
+        }
+    }
+
+    #[test]
+    fn f2f3_probe_allowlist_accepts_exact_profiles() {
+        for (map_code, name, spawn_count) in [
+            (623, "MonSeal01", 4),
+            (1051, "SnowyFields07", 4),
+            (1143, "Zombie04", 8),
+            (94, "CAhero01", 8),
+            (926, "RescueET01", 4),
+            (1045, "SnowyFields01", 8),
+            (204, "Clover01", 8),
+        ] {
+            assert!(
+                profile(map_code, name, spawn_count).supported(),
+                "{map_code} {name}"
+            );
+        }
+    }
+
+    #[test]
+    fn f2f3_probe_allowlist_rejects_unpinned_profiles() {
+        let base = profile(623, "MonSeal01", 4);
+
+        let mut unknown_adapter = base.clone();
+        unknown_adapter.adapter = Some("unknown-adapter".to_owned());
+        assert!(!unknown_adapter.supported());
+
+        let mut missing_adapter = base.clone();
+        missing_adapter.adapter = None;
+        assert!(!missing_adapter.supported());
+
+        let mut wrong_code = base.clone();
+        wrong_code.map_code += 1;
+        assert!(!wrong_code.supported());
+
+        let mut wrong_spawn_count = base.clone();
+        wrong_spawn_count.spawns.pop();
+        assert!(!wrong_spawn_count.supported());
+
+        let mut non_standard_grid = base.clone();
+        non_standard_grid.width = BIG_BATTLE_SIZE.0;
+        non_standard_grid.height = BIG_BATTLE_SIZE.1;
+        assert!(!non_standard_grid.supported());
+
+        let mut unlisted_scripted = base.clone();
+        unlisted_scripted.map_code = 999;
+        unlisted_scripted.name = "UnlistedScript".to_owned();
+        assert!(!unlisted_scripted.supported());
+
+        let mut not_scripted = base.clone();
+        not_scripted.scripted = false;
+        assert!(!not_scripted.supported());
+
+        let mut bombs_disabled = base;
+        bombs_disabled.disable_bombs = true;
+        assert!(!bombs_disabled.supported());
+    }
+
+    #[test]
+    fn default_and_f1e_adapter_paths_remain_unchanged() {
+        let mut default_profile = profile(623, "MonSeal01", 4);
+        default_profile.adapter = None;
+        default_profile.scripted = false;
+        assert!(default_profile.supported());
+
+        let mut f1e_profile = profile(3, "Aqua03", 8);
+        f1e_profile.adapter = Some("f1e-adapter-r1".to_owned());
+        assert!(f1e_profile.supported());
+
+        let mut f2f3_under_f1e = profile(623, "MonSeal01", 4);
+        f2f3_under_f1e.adapter = Some("f1e-adapter-r1".to_owned());
+        assert!(!f2f3_under_f1e.supported());
     }
 }
 
