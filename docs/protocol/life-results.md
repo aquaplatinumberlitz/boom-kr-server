@@ -248,6 +248,14 @@ Từ [f4-w6-ida-own291-and-hud.json](../evidence/content/f4-w6-ida-own291-and-hu
 - **Cấu trúc `UserSimpleInfo` (`544` byte/slot tại `sub_D2FE90`)**: `sub_D2FEB0` (`0xD2FEB0`, gọi từ `sub_D73BB0`) giải nén blob `v7` (`vtable+92`) rồi gọi `sub_D30BF0` → `sub_AE6330` (`UserSimpleInfoPacket`) điền trực tiếp vào record mà `sub_9022D0` dùng cho HUD sảnh.
 - **Vị trí trường `Lv.%3d` trong blob `own291` (`[0; 98]` hiện tại)**: ngay sau chuỗi tên (`sub_14E9C10`), `sub_AE6330` đọc `u8` (`+7`), `u8` (`+10`), `u32` (`+13`), `u8` (`+16`), `u32` (`+19`), rồi **`u16` tại offset `+11..+13` sau `name`** vào `this + 22` qua `sub_55FD30` (`sub_52A860`). Chính `sub_529C60(v87 + 22)` này được `sub_9022D0` truyền vào `Lv.%3d` và `sub_1277E30`. Các ô tiếp theo tới offset `+73` (`+25` dùng bởi `sub_1277C40`, `+28..+58` và `46/47` gửi ở `C->S 705/706`) đã xác định kiểu `u8/u16/u32/string`; 25 byte đuôi điều kiện (`sub_7036F0`/`sub_7A0130`/`sub_48D8D0`) và thanh `%` EXP giữ chờ đo Wine.
 
+<a id="f4a-own291-level-wine-accept"></a>
+#### Nghiệm thu Wine hai client cho `own291` `Lv.%3d` khi tái đăng nhập (`f4a-own291-level-v2`)
+
+Đo 2 client KR `00967` qua Wine trên `Tomb12` với `f4-rust-v3` (`PR #679`, bật `project_own291_level` và `emit_lucci_135`, chi tiết tại [f4a-own291-level-wine.json](../evidence/content/f4a-own291-level-wine.json)):
+
+- **Wire `S->C 291` (`kr_runtime/confirmed`)**: Cả `CookieA` và `CookieB` nhận `own291` với `u16@11 = 1` ở phiên đăng nhập đầu (`8e3393e9…`, `9061452f…`). Sau trận `Tomb12`, SQLite `player_profiles` tăng lên `[[1, 500, 2, 3500, 2], [2, 30, 1, 30, 2]]`. Khi `CookieA` ngắt kết nối sạch (`wineserver -k`) và tái đăng nhập qua `companion-A2`, `S->C 291` chiếu đúng `u16@11 = 2` (`e685c14c…`) kèm `S->C 135` `(slot=0, lucci=3500)` (`08ff35d4…`), không ngắt kết nối (`228` frame TCP CRC-verified, `1951` UDP, `final_room_count: 0`, dọn `4,63 GB` scratch).
+- **UI HUD `Lv.%3d`**: Ảnh `s2-relogin-lobby-A.png` sau tái đăng nhập hiển thị trực tiếp **`Lv.  2 00.0%`** trên góc trái sảnh của `CookieA` đúng với trường `v87 + 22` đã giải mã ở Wave 6. Ảnh `s1-lobby-after-leave-A.png` ngay khi vừa rời phòng trước lúc tái đăng nhập vẫn hiện `Lv. 0 00.0%` vì fixture `S->C 175` sau trận hiện còn giữ `0` tại Raw `+49`.
+
 <a id="round-result"></a>
 ### Event trap/death và bảng kết quả — CP023
 
