@@ -23,13 +23,14 @@ def fixture():
                     drops=[["Speed", 1]], placements=["Boot"]),
             map_row("PopcadeA01", "PopcadeA"),
             map_row("ConfusedFight01", "ConfusedFight", category="other"),
+            map_row("Tomb12", "Tomb", category="battle_theme"),
         ],
         "resource_groups": [
             dict(pack="FxContents", name="ConfusedFight", entries=3, system="ConfusedFight"),
             dict(pack="FxMap", name="Map", entries=4, system="Map"),
         ],
         "systems": [dict(name="ConfusedFight", ids=["KR-TEST"]), dict(name="Map", ids=[])],
-        "map_groups": [dict(name="ReBirthMapGroup", maps=["Tomb?", "Cemetery?"]),
+        "map_groups": [dict(name="ReBirthMapGroup", maps=["Tomb?", "Cemetery?", "Tomb12"]),
                        dict(name="LadderMapGroup", maps=["Village10"])],
     }
     classification = {"rows": [
@@ -75,7 +76,11 @@ class ModeAuditTests(unittest.TestCase):
             "locator": "FxContents/ConfusedFight", "entries": 3, "system": "ConfusedFight",
             "system_ids": ["KR-TEST"], "system_classification": {"classification": "C", "wave": "F2"},
         }])
-        self.assertEqual(modes["revive"]["pack"]["map_groups"][0]["entries"], ["Cemetery?", "Tomb?"])
+        revive_group = modes["revive"]["pack"]["map_groups"][0]
+        self.assertEqual(revive_group["entries"], ["Tomb?", "Cemetery?", "Tomb12"])
+        self.assertEqual(revive_group["exact_census_matches"], [
+            {"entry": "Tomb12", "category": "battle_theme", "family": "Tomb"},
+        ])
         self.assertIsNone(modes["revive"]["wire_mode"])
         self.assertEqual(modes["popcade"]["wave"], "F3")
         self.assertEqual(modes["popcade"]["classification"]["classification"], "C")
@@ -91,8 +96,9 @@ class ModeAuditTests(unittest.TestCase):
         for rows in reordered.values():
             if isinstance(rows, list):
                 rows.reverse()
-        reordered["map_groups"][0]["maps"].reverse()
         self.assertEqual(serialized, render_json(audit(reordered, {"rows": classification["rows"][::-1]})))
+        reordered["map_groups"][-1]["maps"].reverse()
+        self.assertNotEqual(catalog["catalog_sha256"], audit(reordered, classification)["catalog_sha256"])
 
         payload = json.loads(serialized)
         digest = payload.pop("catalog_sha256")

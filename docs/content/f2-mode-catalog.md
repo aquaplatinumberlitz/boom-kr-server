@@ -57,14 +57,17 @@ Họ ngoài `mission` và các khai báo có mẫu như `Tomb?` không cộng v�
 | 고슴도치 (nhím) | `hedgehog` | F2 / C | Chưa ghép | — |
 | 눈싸움 (đấu ném tuyết; sự kiện cũ) | `snowball_event` | F2 / C | Chưa ghép | — |
 | 대장잡기 (bắt thủ lĩnh) | `leader_capture` | F2 / C | Chưa ghép | — |
-| 래더 (Ladder) | `ladder` | F2 / C | `CharTE/LadderDeco` (89), `FxContents/Ladder` (9), `FxContents/WeeklyLadder` (12), `FxContents/Attr/MapGroup/LadderMapGroup` (6 mục khai báo) | — |
-| 부활대전 (hồi sinh) | `revive` | F2 / C | `FxContents/Attr:MapGroup` (1), `FxContents/Attr/MapGroup/ReBirthMapGroup` (2 mục khai báo) | — |
+| 래더 (Ladder) | `ladder` | F2 / C | `CharTE/LadderDeco` (89), `FxContents/Ladder` (9), `FxContents/WeeklyLadder` (12), `FxContents/Attr/MapGroup/LadderMapGroup` (6/6 tên khớp) | — |
+| 부활대전 (hồi sinh) | `revive` | F2 / C | `FxContents/Attr:MapGroup` (1), `FxContents/Attr/MapGroup/ReBirthMapGroup` (0/2 tên khớp) | — |
 | 슈퍼파이터 (Super Fighter; sự kiện cũ) | `super_fighter` | F2 / C | `FxMap/Map` (1151) | `SuperFighter` (2/2) |
 | 시한폭탄 (bom hẹn giờ) | `timebomb` | F2 / C | Chưa ghép | — |
 | 팝케이드 (Popcade) | `popcade` | F3 / C | `FxMap/Map` (1151) | `PopcadeA` (5/5), `PopcadeB` (5/5), `PopcadeC` (5/5) |
 | 협공배틀 (đánh phối hợp) | `co_op` | F2 / C | Chưa ghép | — |
 
 Wiki có nhãn đấu ném tuyết nhưng bảng Mode chưa ghép chắc với `SnowyFields`. Các họ có chủ đề như `Zombie` hoặc `Gumiho` cũng chưa có đối ứng với hồi sinh, nhím hay bắt thủ lĩnh.
+
+Cột Dấu vết ghi số mục `Attr/MapGroup` khớp nguyên tên duy nhất trong census trên tổng số mục khai báo. JSON giữ nguyên thứ tự và ký tự của khai báo; chưa diễn giải cách client xử lý `?`.
+Khi đo Ladder, dùng một map trùng tên đã có trong [phạm vi nghiệm thu G1](../evidence/rust-service/g1-acceptance-matrix.json), chẳng hạn `Factory07`, làm đối chứng trận thường. Trước khi chọn map thử hồi sinh, đo cách client xử lý các khai báo như `Tomb?` và `Cemetery?`.
 
 ## Phép đo còn thiếu cho F2
 

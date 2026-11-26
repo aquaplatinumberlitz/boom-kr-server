@@ -125,6 +125,9 @@ def mode_summaries(census, by_family, mission, grades):
     resources = {f"{r['pack']}/{r['name']}": r for r in census.get("resource_groups", [])}
     systems = {r["name"]: r for r in census.get("systems", [])}
     declarations = {r["name"]: r["maps"] for r in census.get("map_groups", [])}
+    maps = defaultdict(list)
+    for row in census["maps"]:
+        maps[row["name"]].append(row)
 
     def resource(key):
         row = resources.get(key, {})
@@ -133,6 +136,16 @@ def mode_summaries(census, by_family, mission, grades):
         return {"locator": key, "entries": row.get("entries"), "system": system,
                 "system_ids": sorted(system_row.get("ids", [])),
                 "system_classification": grade(grades.get(("system", system)))}
+
+    def map_group(key):
+        entries = declarations.get(key)
+        # Preserve declaration order and syntax. Equality is only a census lookup.
+        matches = (None if entries is None else [
+            {"entry": entry, "category": maps[entry][0]["category"], "family": maps[entry][0]["family"]}
+            for entry in entries if len(maps[entry]) == 1
+        ])
+        return {"locator": f"FxContents/Attr/MapGroup/{key}", "entries": None if entries is None else list(entries),
+                "exact_census_matches": matches}
 
     rows = []
     for row in [*MODE_ROWS, {"name": "Free 1v7", "wave": "F2"}]:
@@ -157,11 +170,7 @@ def mode_summaries(census, by_family, mission, grades):
             "pack": {
                 "resource_groups": [resource(key) for key in sorted(groups)],
                 "detail_from_mode_table": row.get("detail"),
-                "map_groups": [
-                    {"locator": f"FxContents/Attr/MapGroup/{key}",
-                     "entries": sorted(declarations[key]) if key in declarations else None}
-                    for key in sorted(map_groups)
-                ],
+                "map_groups": [map_group(key) for key in sorted(map_groups)],
             },
             "related_families": [
                 {"family": family, "map_count": len(by_family[family]),
@@ -309,8 +318,9 @@ def render_markdown(catalog):
         evidence = [f"`{entry['locator']}` ({entry['entries'] if entry['entries'] is not None else 'chưa rõ'})"
                     for entry in pack["resource_groups"]]
         for entry in pack["map_groups"]:
-            count = len(entry["entries"]) if entry["entries"] is not None else "chưa rõ"
-            evidence.append(f"`{entry['locator']}` ({count} mục khai báo)")
+            counts = ("chưa rõ" if entry["entries"] is None else
+                      f"{len(entry['exact_census_matches'])}/{len(entry['entries'])} tên khớp")
+            evidence.append(f"`{entry['locator']}` ({counts})")
         if pack["detail_from_mode_table"]:
             evidence.append(pack["detail_from_mode_table"])
         related = ", ".join(f"`{ref['family']}` ({ref['mission_map_count']}/{ref['map_count']})"
@@ -322,6 +332,13 @@ def render_markdown(catalog):
         "",
         "Wiki có nhãn đấu ném tuyết nhưng bảng Mode chưa ghép chắc với `SnowyFields`. "
         "Các họ có chủ đề như `Zombie` hoặc `Gumiho` cũng chưa có đối ứng với hồi sinh, nhím hay bắt thủ lĩnh.",
+        "",
+        "Cột Dấu vết ghi số mục `Attr/MapGroup` khớp nguyên tên duy nhất trong census trên tổng số mục khai báo. "
+        "JSON giữ nguyên thứ tự và ký tự của khai báo; chưa diễn giải cách client xử lý `?`.",
+        "Khi đo Ladder, dùng một map trùng tên đã có trong "
+        "[phạm vi nghiệm thu G1](../evidence/rust-service/g1-acceptance-matrix.json), chẳng hạn `Factory07`, "
+        "làm đối chứng trận thường. Trước khi chọn map thử hồi sinh, đo cách client xử lý "
+        "các khai báo như `Tomb?` và `Cemetery?`.",
         "",
         "## Phép đo còn thiếu cho F2",
         "",
