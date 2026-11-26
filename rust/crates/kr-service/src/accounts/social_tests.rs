@@ -325,6 +325,9 @@ fn guild_lifecycle_keeps_one_leader_and_transfers_authority() {
     assert_eq!(s.join_guild(3, id, 104), Ok(true));
     assert_eq!(s.leave_guild(3, id, 104), Ok(true));
     assert_eq!(s.leave_guild(3, id, 104), Ok(false));
+    assert_eq!(s.leave_guild_self_service(3, id, 104), Err(Error::Conflict));
+    assert_eq!(s.join_guild(3, id, 104), Ok(true));
+    assert_eq!(s.leave_guild_self_service(3, id, 104), Ok(true));
     assert_eq!(s.leave_guild(1, id, 105), Err(Error::Conflict));
     assert_eq!(
         s.set_guild_officer(2, id, 1, true, 105),

@@ -8,7 +8,7 @@ use crate::{
     accounts::{
         self, CatalogAccess, PlayerProfile, ShopCatalog, ShopCategory, ShopItem, UsableItem,
     },
-    accounts::{FriendRequest, Guild, GuildMember, RankingEntry},
+    accounts::{FriendRequest, Guild, GuildMember, GuildRole, RankingEntry},
 };
 use http::{Request, Response, Status};
 use serde::{Deserialize, Serialize};
@@ -383,6 +383,30 @@ struct FriendResponseInput {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+struct GuildCreateInput {
+    name: String,
+}
+
+/// An empty object is valid for an ordinary member leave. Leaders must send
+/// either explicit confirmation or the leader-leave flag; the disband route is
+/// itself an explicit intent.
+#[derive(Deserialize, Default)]
+#[serde(deny_unknown_fields)]
+struct GuildLeaveInput {
+    guild_id: Option<i64>,
+    confirm: Option<bool>,
+    leader_leave: Option<bool>,
+}
+
+#[derive(Deserialize, Default)]
+#[serde(deny_unknown_fields)]
+struct GuildDisbandInput {
+    guild_id: Option<i64>,
+    confirm: Option<bool>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 struct RankingQuery {
     offset: Option<u32>,
     limit: Option<u32>,
@@ -744,6 +768,63 @@ async fn social_route(
                 |(guild, members)| (Some(guild), members),
             );
             Ok(Response::json(&json!({"guild": guild, "members": members})))
+        }
+        "/api/social/guild/create" => {
+            request.require_method("POST")?;
+            let input: GuildCreateInput = request.json()?;
+            let guild = service.social_guild_create(player, input.name).await?;
+            let members = vec![GuildMember {
+                player_id: player,
+                role: GuildRole::Leader,
+                joined_at: guild.created_at,
+            }];
+            Ok(Response::json(&json!({"guild": guild, "members": members})))
+        }
+        "/api/social/guild/leave" => {
+            request.require_method("POST")?;
+            let input: GuildLeaveInput = request.json()?;
+            let Some((guild, _)) = service.social_guild(player).await? else {
+                return Err(Status::Conflict);
+            };
+            if let Some(requested) = input.guild_id
+                && (requested < 1 || requested != guild.id)
+            {
+                return Err(Status::BadRequest);
+            }
+            let explicit_leader_leave =
+                input.confirm == Some(true) || input.leader_leave == Some(true);
+            if guild.leader_player_id == player {
+                if !explicit_leader_leave {
+                    return Err(Status::Conflict);
+                }
+                let changed = service.social_guild_disband(player, guild.id).await?;
+                return Ok(Response::json(
+                    &json!({"changed": changed, "disbanded": true}),
+                ));
+            }
+            let changed = service.social_guild_leave(player, guild.id).await?;
+            Ok(Response::json(
+                &json!({"changed": changed, "disbanded": false}),
+            ))
+        }
+        "/api/social/guild/disband" => {
+            request.require_method("POST")?;
+            let input: GuildDisbandInput = request.json()?;
+            if input.confirm == Some(false) {
+                return Err(Status::BadRequest);
+            }
+            let Some((guild, _)) = service.social_guild(player).await? else {
+                return Err(Status::Conflict);
+            };
+            if let Some(requested) = input.guild_id
+                && (requested < 1 || requested != guild.id)
+            {
+                return Err(Status::BadRequest);
+            }
+            let changed = service.social_guild_disband(player, guild.id).await?;
+            Ok(Response::json(
+                &json!({"changed": changed, "disbanded": true}),
+            ))
         }
         "/api/social/ranking" => {
             request.require_method("GET")?;
