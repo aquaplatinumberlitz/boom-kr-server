@@ -5,7 +5,7 @@ pub mod ingame_wire;
 pub mod local;
 pub mod wire;
 use crate::{
-    account_worker::{self, Client},
+    account_worker::{self, Client, SocialAction, SocialReply},
     accounts::{Player, Token},
 };
 use sha2::{Digest, Sha256};
@@ -329,6 +329,28 @@ impl Channel {
             connection: self.connection,
             client: self.client.clone(),
         })
+    }
+    /// Server-side social action bound to this launcher channel's actor.
+    pub async fn social(&self, action: SocialAction) -> Result<SocialReply> {
+        let token = {
+            let mut registry = lock(&self.guard.shared)?;
+            let entry = self.guard.entry(&mut registry)?;
+            if entry.player.as_ref() != Some(&self.player)
+                || entry.connection != Some(self.connection)
+            {
+                return Err(Error::Denied);
+            }
+            copy_token(&entry.token)?
+        };
+        let reply = self
+            .persistence
+            .try_session_social(self.guard.player, token, action)
+            .map_err(Error::Backend)?
+            .wait()
+            .await
+            .map_err(Error::Backend)?;
+        self.authorize(false).await?;
+        Ok(reply)
     }
     /// Load a DB preference only for this current frontend/channel generation.
     /// This is an internal seam, not a KR profile field or character entitlement.

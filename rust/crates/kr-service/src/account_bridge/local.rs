@@ -211,6 +211,23 @@ impl LocalAuthority {
         result.map_err(|error| retire_on(&self.shared, error, Some("member_activity")))?;
         self.inspect().await
     }
+    /// Server-side social action scoped to this authorized local roster slot.
+    pub async fn social(
+        &self,
+        action: crate::account_worker::SocialAction,
+    ) -> Result<crate::account_worker::SocialReply> {
+        self.inspect().await?;
+        let token = self.item_use_token()?;
+        let reply = self
+            .client
+            .try_session_social(self.player.player_id, token, action)
+            .map_err(Error::Backend)?
+            .wait()
+            .await
+            .map_err(Error::Backend)?;
+        self.ensure_current()?;
+        Ok(reply)
+    }
     pub(crate) async fn character_preference(
         &self,
         selection: Option<(u16, i64)>,
