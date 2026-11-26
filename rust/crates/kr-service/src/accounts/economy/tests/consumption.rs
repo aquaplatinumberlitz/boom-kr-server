@@ -77,7 +77,7 @@ fn schema7_upgrade_preserves_inventory_and_equipment_and_enables_consumption() {
             .db
             .pragma_query_value::<i32, _>(None, "user_version", |r| r.get(0))
             .unwrap(),
-        8
+        crate::accounts::SCHEMA_VERSION
     );
     assert_eq!(economy_state(&store.db), before);
     assert_eq!(count(&store.db, "match_item_consumptions"), 0);
@@ -89,7 +89,10 @@ fn schema7_upgrade_preserves_inventory_and_equipment_and_enables_consumption() {
                 .unwrap()
                 .to_str()
                 .unwrap()
-                .starts_with("accounts.sqlite.before-v7-to-v8-")
+                .starts_with(&format!(
+                    "accounts.sqlite.before-v7-to-v{}-",
+                    crate::accounts::SCHEMA_VERSION
+                ))
         })
         .unwrap();
     assert_eq!(verify_snapshot(&backup), Ok(7));

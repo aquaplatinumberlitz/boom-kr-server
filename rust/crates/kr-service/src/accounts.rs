@@ -25,10 +25,12 @@ mod preferences;
 mod snapshots;
 pub use snapshots::{restore, snapshot, verify_snapshot};
 mod operator;
+mod social;
 pub use economy::*;
 pub use matches::*;
 pub use operator::{AuditFilter, AuditRow, utc};
 pub use preferences::CharacterPreference;
+pub use social::*;
 
 const MIGRATION: &str = include_str!("../migrations/0001_accounts.sql");
 const MIGRATION_IDLE: &str = include_str!("../migrations/0002_session_idle.sql");
@@ -40,7 +42,8 @@ const MIGRATION_ECONOMY: &str =
     include_str!("../migrations/0007_f4_progression_inventory_shop.sql");
 const MIGRATION_MATCH_CONSUMPTIONS: &str =
     include_str!("../migrations/0008_f4_match_consumptions.sql");
-const SCRIPTS: [&str; 8] = [
+const MIGRATION_SOCIAL: &str = include_str!("../migrations/0009_f5_social_foundation.sql");
+const SCRIPTS: [&str; 9] = [
     MIGRATION,
     MIGRATION_IDLE,
     MIGRATION_MATCHES,
@@ -49,6 +52,7 @@ const SCRIPTS: [&str; 8] = [
     MIGRATION_AUDIT,
     MIGRATION_ECONOMY,
     MIGRATION_MATCH_CONSUMPTIONS,
+    MIGRATION_SOCIAL,
 ];
 pub const SCHEMA_VERSION: i32 = SCRIPTS.len() as i32;
 const APPLICATION_ID: i32 = 0x4b524143;
