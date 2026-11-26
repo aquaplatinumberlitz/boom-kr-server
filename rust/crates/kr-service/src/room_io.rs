@@ -5,7 +5,7 @@ use crate::room_packets::{Template, normalize_legacy, packet};
 use crate::{
     pickups,
     room::{Member, Membership, Phase, PlayerId, Room},
-    room_wire,
+    room_modes, room_wire,
     rules::{self, DeparturePolicy, ResultPolicy, RoomRules, TeamPolicy},
 };
 use kr_wire::kr00967 as wire;
@@ -36,6 +36,10 @@ pub struct Config {
     pub map_profile: Option<crate::FixturePin>,
     #[serde(default)]
     pub(crate) map_choices: Vec<crate::map_profile::ChoiceConfig>,
+    /// Internal MapGroup allowlist and operator overrides for Free/Manner.
+    /// F2 candidates remain unavailable for serving.
+    #[serde(default)]
+    pub(crate) f2_modes: Option<room_modes::Config>,
     pub packets: HashMap<String, LobbyPacketPin>,
     #[serde(default)]
     pub(crate) slot_allocation: rules::SlotAllocation,
@@ -61,6 +65,17 @@ pub struct Config {
     /// Opt-in ninth diagnostic lobby actor for the full-room negative consumer.
     #[serde(default)]
     pub ninth_admission_probe: bool,
+}
+impl Config {
+    fn load_room_modes(&self) -> io::Result<Option<Arc<room_modes::Policy>>> {
+        Ok(self
+            .f2_modes
+            .as_ref()
+            .map(room_modes::Policy::load)
+            .transpose()?
+            .flatten()
+            .map(Arc::new))
+    }
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -421,6 +436,7 @@ pub struct Batch {
 }
 pub struct Runtime {
     maps: Option<Arc<crate::map_profile::Catalog>>,
+    f2_modes: Option<Arc<room_modes::Policy>>,
     selected_map: usize,
     map_revision: u64,
     journal: Option<crate::match_journal::Owner>,
@@ -437,7 +453,7 @@ pub struct Runtime {
     requested: HashSet<Membership>,
     rostered: HashSet<(Membership, Membership)>,
     title: Vec<u8>,
-    selector: u8,
+    selector: wire::RoomTeamSelector,
     ready: Reply,
     ips: HashMap<u32, u32>,
     ports: HashMap<Membership, u16>,
@@ -510,6 +526,7 @@ pub fn load(
     actors: &HashMap<PlayerId, ActorProfile>,
     managed_template: bool,
 ) -> io::Result<Shared> {
+    let f2_modes = cfg.load_room_modes()?;
     if cfg.title.is_empty()
         || cfg.title.len() > 32
         || !cfg.title.bytes().all(|b| (32..=126).contains(&b))
@@ -750,6 +767,7 @@ pub fn load(
     };
     Ok(Arc::new(Mutex::new(Runtime {
         maps,
+        f2_modes,
         selected_map: 0,
         map_revision: 0,
         journal: None,
@@ -766,7 +784,7 @@ pub fn load(
         requested: HashSet::new(),
         rostered: HashSet::new(),
         title: cfg.title.as_bytes().to_vec(),
-        selector: 0,
+        selector: wire::RoomTeamSelector::Free,
         ready,
         ips: actors
             .values()
@@ -814,6 +832,7 @@ pub(crate) fn fork(
 
     Ok(Arc::new(Mutex::new(Runtime {
         maps: source.maps.clone(),
+        f2_modes: source.f2_modes.clone(),
         selected_map: 0,
         map_revision: 0,
         journal: None,
@@ -854,6 +873,15 @@ pub(crate) fn validate_admission_capacity(
         ));
     }
     Ok(())
+}
+pub(crate) fn preflight_create_mode(
+    prototype: &Shared,
+    team: wire::RoomTeamSelector,
+) -> io::Result<()> {
+    prototype
+        .lock()
+        .map_err(|_| err("room prototype unavailable"))?
+        .check_create_mode(team)
 }
 pub(crate) fn full_idle(shared: &Shared) -> io::Result<bool> {
     full_idle_roster(shared, 1)
@@ -994,7 +1022,7 @@ impl Runtime {
             .cloned()
             .ok_or_else(|| err("missing/current room membership"))
     }
-    fn body(&self, key: Template) -> &[u8] {
+    fn body_opt(&self, key: Template) -> Option<&[u8]> {
         self.maps
             .as_ref()
             .and_then(|maps| maps.choices[self.selected_map].bodies.get(&key))
@@ -1003,7 +1031,37 @@ impl Runtime {
                     .as_ref()
                     .and_then(|profile| profile.bodies.get(&key))
             })
-            .unwrap_or_else(|| &self.bodies[&key])
+            .or_else(|| self.bodies.get(&key))
+            .map(Vec::as_slice)
+    }
+    fn body(&self, key: Template) -> &[u8] {
+        self.body_opt(key).expect("validated room template")
+    }
+    fn check_create_mode(&self, team: wire::RoomTeamSelector) -> io::Result<()> {
+        if self
+            .f2_modes
+            .as_ref()
+            .is_some_and(|policy| policy.has_create_override(team))
+        {
+            // A candidate map can refine the rejection, never admit an F2 room.
+            self.check_start_dispatch(team).map_err(err)?;
+        }
+        Ok(())
+    }
+    fn check_start_dispatch(&self, team: wire::RoomTeamSelector) -> Result<(), &'static str> {
+        let Some(policy) = &self.f2_modes else {
+            return Ok(());
+        };
+        let map = self
+            .body_opt(Template::Start121)
+            .ok_or("start_map_context_unmeasured")?;
+        let map = wire::start121_map_context(map).map_err(|_| "start_map_context_unmeasured")?;
+        let selected = self
+            .body_opt(Template::Map117)
+            .ok_or("map_selection_context_unmeasured")?;
+        let selected =
+            wire::map117_selection(selected).map_err(|_| "map_selection_context_unmeasured")?;
+        policy.check_start(team, &map, selected)
     }
     fn reply(&self, key: Template, body: Option<Vec<u8>>) -> Reply {
         packet(
@@ -1269,7 +1327,7 @@ impl Runtime {
             Some(wire::selector_reply(
                 self.body(Template::Return180),
                 180,
-                self.selector,
+                self.selector as u8,
             )?),
         );
         let mut effects = Vec::new();
@@ -1400,7 +1458,8 @@ impl Runtime {
             {
                 let result = (|| -> io::Result<AbortTransition> {
                     let round = next.abort_four(m.key)?;
-                    let returning = packet(180, crate::four_results::return_body(self.selector)?);
+                    let returning =
+                        packet(180, crate::four_results::return_body(self.selector as u8)?);
                     let mut effects = Vec::new();
                     for peer in next.members.values() {
                         let mut batch = Self::member_batch(
@@ -1889,14 +1948,14 @@ impl Session {
         next.end(round)?;
         let mut effects = Vec::new();
         let returning = if r.rules.team_results() {
-            packet(180, crate::four_results::return_body(r.selector)?)
+            packet(180, crate::four_results::return_body(r.selector as u8)?)
         } else {
             r.reply(
                 Template::Return180,
                 Some(wire::selector_reply(
                     r.body(Template::Return180),
                     180,
-                    r.selector,
+                    r.selector as u8,
                 )?),
             )
         };
@@ -2616,7 +2675,9 @@ impl Session {
             }
             81 | 82 => {
                 let (title, selector) = if opcode == 81 {
-                    (wire::create81_title(body)?, wire::create81_selector(body)?)
+                    let request = wire::create81(body)?;
+                    r.check_create_mode(request.team_selector)?;
+                    (request.title, request.team_selector)
                 } else {
                     if let Some(key) = r.public_key {
                         let selection = wire::join82_selection(body)?;
@@ -2678,7 +2739,7 @@ impl Session {
                         Some(wire::selector_reply(
                             r.body(Template::Create86),
                             86,
-                            selector,
+                            selector as u8,
                         )?),
                     )
                 } else {
@@ -2687,7 +2748,7 @@ impl Session {
                         Some(wire::selector_reply(
                             &room_wire::join(r.body(Template::Join87), &m)?,
                             87,
-                            selector,
+                            selector as u8,
                         )?),
                     )
                 };
@@ -2967,6 +3028,12 @@ impl Session {
                 if !(20..=8192).contains(&body.len()) {
                     return Err(err("unsupported Start104 envelope"));
                 }
+                if let Err(reason) = r.check_start_dispatch(r.selector) {
+                    return Ok(Observation {
+                        start_rejection: Some(reason),
+                        ..Observation::default()
+                    });
+                }
                 let transport_count =
                     Runtime::transport_representatives(next.members.values()).len();
                 let local_partner = if transport_count == next.members.len() {
@@ -2983,7 +3050,7 @@ impl Session {
                     });
                 };
                 if r.rules.teams == TeamPolicy::BalancedManner
-                    && r.selector == 1
+                    && r.selector == wire::RoomTeamSelector::Manner
                     && !next.balanced_teams()
                 {
                     return Ok(Observation {
@@ -4667,6 +4734,7 @@ mod tests {
         let (ta, ra) = mpsc::channel(8);
         let (tb, mut rb) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            f2_modes: None,
             maps: None,
             selected_map: 0,
             map_revision: 0,
@@ -4703,7 +4771,7 @@ mod tests {
             requested: HashSet::new(),
             rostered: HashSet::new(),
             title: b"RustRoom".to_vec(),
-            selector: 1,
+            selector: wire::RoomTeamSelector::Manner,
             ready: packet(241, vec![]),
             ips: HashMap::new(),
             ports: HashMap::new(),
@@ -4803,6 +4871,7 @@ mod tests {
         let (ta, mut ra) = mpsc::channel(2);
         let (tb, mut rb) = mpsc::channel(2);
         let mut runtime = Runtime {
+            f2_modes: None,
             maps: None,
             selected_map: 0,
             map_revision: 0,
@@ -4839,7 +4908,7 @@ mod tests {
             requested: HashSet::new(),
             rostered: HashSet::new(),
             title: b"RustRoom".to_vec(),
-            selector: 0,
+            selector: wire::RoomTeamSelector::Free,
             ready: reply.clone(),
             ips: HashMap::new(),
             ports: HashMap::new(),
@@ -5072,6 +5141,7 @@ mod four_abort_tests {
             inboxes.push((i, inbox));
         }
         let shared = Arc::new(Mutex::new(Runtime {
+            f2_modes: None,
             maps: None,
             selected_map: 0,
             map_revision: 0,
@@ -5089,7 +5159,7 @@ mod four_abort_tests {
             requested: keys.into_iter().collect(),
             rostered: HashSet::new(),
             title: b"AbortRoom".to_vec(),
-            selector: 1,
+            selector: wire::RoomTeamSelector::Manner,
             ready: packet(241, vec![]),
             ips: HashMap::new(),
             ports: HashMap::new(),
@@ -5378,6 +5448,7 @@ mod ninth_probe_tests {
         }
         let (sender, inbox) = mpsc::channel(2);
         let shared = Arc::new(Mutex::new(Runtime {
+            f2_modes: None,
             maps: None,
             selected_map: 0,
             map_revision: 0,
@@ -5403,7 +5474,7 @@ mod ninth_probe_tests {
             requested: HashSet::new(),
             rostered: HashSet::new(),
             title: b"RustRoom".to_vec(),
-            selector: 1,
+            selector: wire::RoomTeamSelector::Manner,
             ready: Reply {
                 header: [0; 37],
                 opcode: 241,
@@ -5564,6 +5635,7 @@ pub(crate) mod registry_foundation_tests {
     use crate::room_registry::{Registry, RoomId, RoomKey};
     pub(crate) fn empty(marker: u8) -> Shared {
         Arc::new(Mutex::new(Runtime {
+            f2_modes: None,
             maps: None,
             selected_map: 0,
             map_revision: 0,
@@ -5581,7 +5653,7 @@ pub(crate) mod registry_foundation_tests {
             requested: HashSet::new(),
             rostered: HashSet::new(),
             title: b"ProbeRoom".to_vec(),
-            selector: 0,
+            selector: wire::RoomTeamSelector::Free,
             ready: packet(241, vec![]),
             ips: HashMap::new(),
             ports: HashMap::new(),
@@ -5633,15 +5705,22 @@ pub(crate) mod registry_foundation_tests {
         shared
     }
     fn synthetic_start() -> Vec<u8> {
-        let mut stream = vec![0; 54 + 26 * 8];
+        synthetic_start_for(b"ExVillage01", 0, 0)
+    }
+    fn synthetic_start_for(name: &[u8], index: u32, roomtype: u8) -> Vec<u8> {
+        let name_end = 32 + name.len();
+        let rows = name_end + 11;
+        let mut stream = vec![0; rows + 26 * 8];
         stream[0] = 24;
         let size = stream.len();
         stream[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
-        stream[28..32].copy_from_slice(&11_u32.to_le_bytes());
-        stream[32..43].copy_from_slice(b"ExVillage01");
-        stream[49] = 8;
+        stream[28..32].copy_from_slice(&(name.len() as u32).to_le_bytes());
+        stream[32..name_end].copy_from_slice(name);
+        stream[name_end..name_end + 4].copy_from_slice(&index.to_le_bytes());
+        stream[name_end + 4] = roomtype;
+        stream[rows - 5] = 8;
         for slot in 0..8 {
-            let at = 54 + 26 * slot;
+            let at = rows + 26 * slot;
             stream[at] = slot as u8;
             stream[at + 2] = slot as u8;
             stream[at + 3..at + 5].copy_from_slice(&(slot as u16).to_le_bytes());
@@ -5651,22 +5730,80 @@ pub(crate) mod registry_foundation_tests {
         }
         let mut start = kr_wire::write_uint(0, Width::U8).unwrap();
         start.extend(kr_wire::write_uint(size as u64, Width::U32).unwrap());
-        let mut pos = 0;
-        while pos < size {
-            let (n, width) = if size - pos >= 4 {
-                (4, Width::U32)
-            } else if size - pos >= 2 {
-                (2, Width::U16)
-            } else {
-                (1, Width::U8)
-            };
-            let mut raw = [0; 8];
-            raw[..n].copy_from_slice(&stream[pos..pos + n]);
-            start.extend(kr_wire::write_uint(u64::from_le_bytes(raw), width).unwrap());
-            pos += n;
-        }
+        start.extend(wire::encode_bytes(&stream).unwrap());
         start.extend([0; 18]);
         start
+    }
+    pub(crate) fn f2_prototype(config: serde_json::Value, index: u32, roomtype: u8) -> Shared {
+        let shared = selection_prototype();
+        let mut r = shared.lock().unwrap();
+        let cfg: Config = serde_json::from_value(serde_json::json!({
+            "title": "Template", "packets": {}, "f2_modes": config
+        }))
+        .unwrap();
+        r.f2_modes = cfg.load_room_modes().unwrap();
+        let mut map = kr_wire::write_uint(0, Width::U16).unwrap();
+        map.extend(kr_wire::write_uint(0, Width::U16).unwrap());
+        map.extend(kr_wire::write_uint(3, Width::U32).unwrap());
+        r.bodies.insert(Template::Map117, map);
+        let start =
+            wire::start121_duel(&synthetic_start_for(b"Factory07", index, roomtype)).unwrap();
+        r.bodies.insert(Template::Start121, start);
+        r.bodies.insert(Template::Floor582, vec![0x5a]);
+        drop(r);
+        shared
+    }
+    #[test]
+    fn room_start_dispatch_checks_the_selected_tuple_and_roomtype_before_any_publication() {
+        use serde_json::json;
+        let visibility = json!({"visible_map_groups": ["LadderMapGroup"]});
+        for (cfg, index, roomtype, rejection) in [
+            (visibility.clone(), 3, 0, None),
+            (
+                visibility.clone(),
+                4,
+                0,
+                Some("start_map_selection_mismatch"),
+            ),
+            (visibility, 3, 1, Some("start_roomtype_unmeasured")),
+            (
+                json!({"visible_map_groups": ["LadderMapGroup"], "create_overrides": {"free": "ladder"}}),
+                3,
+                0,
+                Some("f2_start_dispatch_unmeasured"),
+            ),
+            (serde_json::Value::Null, 3, 0, None),
+        ] {
+            let shared = f2_prototype(cfg, index, roomtype);
+            let mut a = Session::open(&shared, 1, 11).unwrap();
+            let mut b = Session::open(&shared, 2, 22).unwrap();
+            let start = {
+                // Seed the roster directly to test the Start guard even if
+                // an F2 preset slips past the separate create guard.
+                let mut r = shared.lock().unwrap();
+                let host = r.model.enter(1, 11, true).unwrap();
+                let guest = r.model.enter(2, 22, false).unwrap();
+                r.model.setup(host).unwrap();
+                r.model.setup(guest).unwrap();
+                r.model.ready(guest).unwrap();
+                r.body(Template::Start121).to_vec()
+            };
+            assert_eq!(a.packet(104, &[0; 20]).unwrap().start_rejection, rejection);
+            let r = shared.lock().unwrap();
+            if rejection.is_some() {
+                assert_eq!(r.model.phase, Phase::Idle);
+                assert_eq!(r.model.round_generation(), 0);
+                assert!(r.model.members[&2].ready);
+                assert!(a.inbox.try_recv().is_err() && b.inbox.try_recv().is_err());
+            } else {
+                assert!(matches!(r.model.phase, Phase::Loading { .. }));
+                for inbox in [&mut a.inbox, &mut b.inbox] {
+                    let batch = inbox.try_recv().unwrap();
+                    assert_eq!(batch.packets[1].1.opcode, 121);
+                    assert_eq!(batch.packets[1].1.payload, start);
+                }
+            }
+        }
     }
     /// Synthetic packet fixture for exercising the real TLS/SQLite round
     /// adapter. It is not a native room or gameplay oracle.

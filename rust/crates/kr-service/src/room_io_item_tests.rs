@@ -76,6 +76,7 @@ fn case(count: usize) -> Case {
         ..RoomRules::default()
     };
     let shared = Arc::new(Mutex::new(Runtime {
+        f2_modes: None,
         maps: None,
         selected_map: 0,
         map_revision: 0,
@@ -102,7 +103,7 @@ fn case(count: usize) -> Case {
         requested: HashSet::new(),
         rostered: HashSet::new(),
         title: b"Test".to_vec(),
-        selector: 0,
+        selector: wire::RoomTeamSelector::Free,
         ready: packet(241, vec![]),
         ips: HashMap::new(),
         ports: HashMap::new(),

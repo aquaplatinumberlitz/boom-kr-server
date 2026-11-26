@@ -147,6 +147,7 @@ impl Case {
             owners.push(owner);
         }
         let shared = Arc::new(Mutex::new(Runtime {
+            f2_modes: None,
             maps: None,
             selected_map: 0,
             map_revision: 0,
@@ -168,7 +169,7 @@ impl Case {
             requested: HashSet::new(),
             rostered: HashSet::new(),
             title: b"Chat".to_vec(),
-            selector: 0,
+            selector: wire::RoomTeamSelector::Free,
             ready: packet(241, vec![]),
             ips: HashMap::new(),
             ports: HashMap::new(),
@@ -419,6 +420,7 @@ fn two_local_players_sharing_connection_receive_one_chat_copy_from_primary_owner
         }
 
         let shared = Arc::new(Mutex::new(Runtime {
+            f2_modes: None,
             maps: None,
             selected_map: 0,
             map_revision: 0,
@@ -440,7 +442,7 @@ fn two_local_players_sharing_connection_receive_one_chat_copy_from_primary_owner
             requested: HashSet::new(),
             rostered: HashSet::new(),
             title: b"Chat2P".to_vec(),
-            selector: 0,
+            selector: wire::RoomTeamSelector::Free,
             ready: packet(241, vec![]),
             ips: HashMap::new(),
             ports: HashMap::new(),
