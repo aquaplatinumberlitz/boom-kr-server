@@ -5,6 +5,7 @@ use kr_service::{
         self, Admin, AuditFilter, ChatMuteReason, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION,
         Store, Token,
     },
+    f6_policy::F6EventPolicy,
     operations::{self, LiveCommand, RoomTarget},
 };
 use serde::Deserialize;
@@ -138,6 +139,11 @@ enum Command {
     SocialGuildDisband { guild_id: i64 },
     #[serde(rename = "social-ranking-list")]
     SocialRankingList { offset: u32, limit: u32 },
+    #[serde(rename = "f6-policy-check")]
+    F6PolicyCheck {
+        policy_path: Option<std::path::PathBuf>,
+        at_unix_secs: Option<i64>,
+    },
 }
 impl Command {
     fn audit_context(&self) -> (&'static str, &'static str, String, bool) {
@@ -206,11 +212,69 @@ impl Command {
             }
             SocialGuildDisband { guild_id } => guild("social_guild_disband", guild_id, true),
             SocialRankingList { .. } => ("social_ranking_list", "service", "ranking".into(), false),
+            F6PolicyCheck { .. } => ("f6_policy_check", "service", "f6_policy".into(), false),
             ListRooms {} | CloseRoom { .. } | F2Runtime { .. } => {
                 unreachable!("handled by live admin")
             }
         }
     }
+}
+
+fn load_f6_policy(path: Option<&Path>) -> io::Result<F6EventPolicy> {
+    let Some(path) = path else {
+        return Ok(F6EventPolicy::disabled_default());
+    };
+    if path.as_os_str().is_empty()
+        || path
+            .components()
+            .any(|part| matches!(part, std::path::Component::ParentDir))
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "invalid f6_events_policy path",
+        ));
+    }
+    for parent in path
+        .ancestors()
+        .skip(1)
+        .filter(|parent| !parent.as_os_str().is_empty())
+    {
+        if !std::fs::symlink_metadata(parent)?.is_dir() {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "f6_events_policy parents must be directories without symlinks",
+            ));
+        }
+    }
+    if !std::fs::symlink_metadata(path)?.is_file() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "f6_events_policy must be a regular file without symlinks",
+        ));
+    }
+    F6EventPolicy::from_path(path)
+}
+
+fn f6_policy_check(policy_path: Option<&Path>, at_unix_secs: Option<i64>) -> io::Result<Value> {
+    let policy = load_f6_policy(policy_path)?;
+    let evaluated_at_unix_secs = at_unix_secs
+        .unwrap_or(accounts::utc().map_err(|error| io::Error::other(error.to_string()))?);
+    let systems = F6EventPolicy::system_names()
+        .iter()
+        .map(|name| {
+            json!({
+                "name": name,
+                "enabled": policy.is_system_enabled_at(name, evaluated_at_unix_secs),
+            })
+        })
+        .collect::<Vec<_>>();
+    Ok(json!({
+        "schema": "kre.f6-events-policy.v1",
+        "default_enabled": false,
+        "excluded_systems": ["PCRoomBenefit"],
+        "evaluated_at_unix_secs": evaluated_at_unix_secs,
+        "systems": systems,
+    }))
 }
 
 fn manage(database: &Path) -> Result<Value, Box<dyn std::error::Error>> {
@@ -441,6 +505,11 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
         Command::SocialRankingList { offset, limit } => {
             json!({"ranking": s.ranking(offset, limit)?})
         }
+        Command::F6PolicyCheck {
+            policy_path,
+            at_unix_secs,
+        } => f6_policy_check(policy_path.as_deref(), at_unix_secs)
+            .map_err(|_| Error::InvalidInput)?,
     })
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
