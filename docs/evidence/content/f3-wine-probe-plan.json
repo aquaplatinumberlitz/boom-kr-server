@@ -13,11 +13,11 @@
   "inputs": {
     "ida_anchors": {
       "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json",
-      "sha256": "93b1980cde472da0b0514c584a96db660e0e19a76428125c6fd79666e21f2cd9"
+      "sha256": "158036dd91bc6bb309b3ec5c1c7ca1797f44a51ff3a653bfc17962f9ac671df0"
     },
     "matrix": {
       "locator": "docs/evidence/content/f3-script-authority-matrix.json",
-      "sha256": "5653289672e304df778f29b3fc66923f3a295ebace67f65e136d7bd2445f563e"
+      "sha256": "d047ca14609b688eed2f994909697dcff006baea546e59180c1832510463f2e3"
     }
   },
   "probes": [
