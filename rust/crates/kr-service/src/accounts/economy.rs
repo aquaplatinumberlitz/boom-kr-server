@@ -4,6 +4,8 @@
 use super::*;
 use serde::Deserialize;
 
+mod consumption;
+pub use consumption::*;
 mod inventory;
 mod ledger;
 #[cfg(test)]

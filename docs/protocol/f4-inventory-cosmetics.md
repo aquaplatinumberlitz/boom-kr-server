@@ -77,16 +77,19 @@ Bind người chơi từ phiên đã xác thực, kể cả khi frame có trư�
 handler cho route đã chốt chiều, stage, nghĩa trường, nhánh và độ dài bằng consumer/capture. Không gửi SKU
 chuỗi, tên slot, timestamp DB, `100000` hay số lượng O1 lên wire như giá trị mặc định.
 
-**Tiêu hao trong trận (`design`, chưa có API).** Tách vật phẩm mua từ túi khỏi pickup và bộ đồ do luật trận cấp.
-Khi xác nhận được lớp vật phẩm và hành động dùng, ràng buộc phiên, lượt trận và người chơi hiện hành, tra SKU
-và kiểm quyền, hạn, số lượng. Chỉ hành động được server chấp nhận mới trừ đúng số đơn vị theo luật đã chọn;
-request lỗi, lệch lượt hay chỉ có hiệu ứng preview không trừ. Dùng một giao dịch ghi cho phép trừ và biên nhận
-không lặp, khóa theo người chơi, lượt và hành động đã được xác nhận; replay cùng hành động không trừ lại.
-Nếu còn 0 thì xóa hàng và tham chiếu trang bị liên quan trong cùng giao dịch, vì Schema 7 cấm hàng `quantity = 0`.
-Chỉ phát kết quả đã xác nhận sau khi ghi thành công; nếu phát thất bại thì dùng biên nhận để phục hồi kết quả.
-Thiếu số lượng, lỗi ghi hoặc lượt đã hết hiệu lực không được phát thành công. O1 dùng quyền phiên không trừ túi;
-giới hạn sử dụng trong trận vẫn theo luật trận. Schema 7 chưa có biên nhận tiêu hao; không dùng loại ledger
-`shop_purchase` hay `match_reward` để giả giao dịch này, và không trừ thêm lúc chốt thưởng trận.
+**Tiêu hao trong trận (`design`).** API nội bộ `consume_item_in_match` nhận hành động dùng vật phẩm trong túi
+đã được luật trận chấp nhận. Bên gọi ràng buộc phiên, người chơi và lượt hiện hành, phân biệt vật phẩm này với
+pickup hay đồ do trận cấp, và giữ nguyên khóa cùng SHA-256 của hành động khi thử lại. Với standard, giao dịch
+chỉ trừ stack của người chơi có trong roster đã lưu của trận đang chạy. Khi hết stack, nó xóa các slot tham
+chiếu trước khi xóa hàng sở hữu; lỗi trừ hoặc lỗi ghi biên nhận đều hoàn tác giao dịch.
+
+[Schema 8](../../rust/crates/kr-service/migrations/0008_f4_match_consumptions.sql) lưu biên nhận riêng theo
+`(player_id, idempotency_key)`. Replay khớp trả lại biên nhận gốc, kể cả số lượng còn lại tại lần dùng đó
+và sau khi trận đã kết thúc; đổi digest, trận, SKU hoặc số lượng với cùng khóa thì bị từ chối. Bên gọi chỉ
+phát kết quả sau khi nhận thành công và có thể dùng biên nhận để phát lại. Tiêu hao không ghi ledger và không
+được lặp khi chốt thưởng. Với O1 `unlock_all`, API chỉ kiểm SKU stackable đang bật trong catalog; quyền phiên
+không đọc hay trừ túi và không ghi biên nhận. Luật trận vẫn quản lý giới hạn dùng và replay của O1. Chưa nối
+API này vào đường xử lý gói KR; các yêu cầu về quyền phiên và luật trận thuộc phần nối đó.
 
 ### Phép đo tối thiểu cho F4-b
 
@@ -122,8 +125,9 @@ enum KR. Số mục là entry pack, không phải số SKU có thể dùng.
 | `FxContents/ItemCollection` (27) | `CCAItemCollectionMgr` vtable `0x172C618`, entry 0 `0x927E20`. | Exporter dùng mẫu `Pet/Pet_<số>` từ `fx/ObjectTable/ObjectTable` làm SKU `collection`. Quyền sở hữu SKU này không suy ra tiến độ, mục tiêu, phần thưởng hay slot collection KR. |
 
 Với standard, gán `equip_slot` rõ trong catalog thử và dùng `equip_item` cho một SKU còn hạn mỗi slot đã nối.
-Với O1, kiểm quyền bằng `usable_items` và chỉ chọn SKU đang bật. Nếu cần chọn mỹ phẩm theo phiên mà chưa
-có sở hữu, giữ lựa chọn trong phiên (`design`); không tạo hàng túi hay gọi `equip_item` bỏ qua kiểm sở hữu.
+Với O1, `O1SessionCosmetics` giữ lựa chọn của từng phiên trong bộ nhớ (`design`). Nó chỉ nhận SKU đang bật
+và có `equip_slot` khớp, kể cả slot `character` cho nhân vật nền. Phiên mới bắt đầu trống; tháo, xóa hoặc
+đổi lựa chọn không đọc hay ghi SQLite. Chưa nối bộ chọn này vào projection hoặc handler KR.
 Không gửi cả catalog như snapshot túi. Khi có route đã đo, dựng projection công khai tối thiểu từ selection
 hợp lệ; dùng cùng selection cho snapshot và cập nhật peer, kiểm hạn khi chiếu, không phát private inventory.
 Opcode, payload hai chiều, token/enum, guard, phạm vi peer và persistence native của F4-c đều còn `unknown`.

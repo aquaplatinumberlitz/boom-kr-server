@@ -4,7 +4,9 @@
 mod economy;
 pub(crate) mod rate;
 use crate::accounts::{self, Grant, Player, Store, Token};
-pub use economy::{AccountService, EconomySettings};
+pub use economy::{
+    AccountService, EconomySettings, MatchItemConsumptionOutcome, O1SessionCosmetics,
+};
 pub use rate::RatePolicy;
 use std::{
     path::PathBuf,

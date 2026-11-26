@@ -4,11 +4,23 @@
 //! operator's validated `EconomyPolicy` and `ShopCatalog`.
 use super::{Client, Command, Error, Pending, Result, Worker};
 use crate::accounts::{
-    self, CatalogAccess, EconomyPolicy, EquippedItem, InventoryItem, LedgerEntry, PlayerProfile,
-    PurchaseReceipt, ShopCatalog, Store, UsableItem, Validate,
+    self, CatalogAccess, EconomyPolicy, EquippedItem, InventoryItem, ItemGrant, LedgerEntry,
+    MatchItemConsumptionReceipt, MatchItemConsumptionRequest, PlayerProfile, PurchaseReceipt,
+    ShopCatalog, Store, UsableItem, Validate,
 };
 use std::{sync::Arc, time::Instant};
 use tokio::sync::oneshot;
+
+mod session_cosmetics;
+pub use session_cosmetics::O1SessionCosmetics;
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum MatchItemConsumptionOutcome {
+    Persisted(MatchItemConsumptionReceipt),
+    /// The session entitlement permits the use. Match rules still manage use
+    /// limits and action replay; there is no inventory decrement or receipt.
+    SessionUnlocked,
+}
 
 /// Validated operator economy configuration. The default keeps the M6/G1/F1
 /// behavior: rewards disabled and an empty catalog, so nothing can be bought.
@@ -56,6 +68,7 @@ pub(super) enum EconomyRequest {
         player: i64,
         slot: String,
     },
+    Consume(MatchItemConsumptionRequest),
 }
 pub(super) enum EconomyReply {
     Profile(PlayerProfile),
@@ -66,6 +79,7 @@ pub(super) enum EconomyReply {
     Purchase(Box<PurchaseReceipt>),
     Equip(EquippedItem),
     Unequip(bool),
+    Consume(MatchItemConsumptionReceipt),
 }
 
 /// Execute one economy request on the worker thread with execution-time UTC.
@@ -104,6 +118,9 @@ pub(super) fn execute(
         }
         EconomyRequest::Unequip { player, slot } => {
             EconomyReply::Unequip(store.unequip_slot(player, &slot, now)?)
+        }
+        EconomyRequest::Consume(request) => {
+            EconomyReply::Consume(store.consume_item_in_match(&request, now)?)
         }
     })
 }
@@ -229,6 +246,43 @@ impl AccountService {
             EconomyReply::Unequip(removed) => Ok(removed),
             _ => Err(Error::WorkerFault),
         }
+    }
+    /// Persist a server-approved item use, or use the O1 catalog entitlement.
+    /// In O1, the caller validates the live round and deduplicates actions in
+    /// match state; its round identifier need not refer to a database match.
+    pub async fn consume_item_in_match(
+        &self,
+        request: &MatchItemConsumptionRequest,
+        access: CatalogAccess,
+    ) -> Result<MatchItemConsumptionOutcome> {
+        request.validate().map_err(|_| Error::InvalidInput)?;
+        if access.unlock_all {
+            let usable = self
+                .settings
+                .catalog
+                .item(&request.sku_id)
+                .is_some_and(|item| {
+                    item.enabled && matches!(item.grant, ItemGrant::Stackable { .. })
+                });
+            return if usable {
+                Ok(MatchItemConsumptionOutcome::SessionUnlocked)
+            } else {
+                Err(Error::InvalidInput)
+            };
+        }
+        match self
+            .call(request.player_id, EconomyRequest::Consume(request.clone()))
+            .await?
+        {
+            EconomyReply::Consume(receipt) => Ok(MatchItemConsumptionOutcome::Persisted(receipt)),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    /// Start with empty selections for one authorized O1 session.
+    pub fn o1_session_cosmetics(&self, access: CatalogAccess) -> Option<O1SessionCosmetics> {
+        access
+            .unlock_all
+            .then(|| O1SessionCosmetics::new(self.settings.clone()))
     }
     /// O1 read-only helper. With `unlock_all` the answer comes from the catalog
     /// in memory: no queue admission, no DB read or write and no Lucci charge.
