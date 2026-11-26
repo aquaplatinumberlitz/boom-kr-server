@@ -131,7 +131,8 @@ pub struct ItemRecord11CE930 {
     pub b: u16,
     pub c: u32,
     pub text: String,
-    /// Eight payload bytes consumed by reader slot `+88`, kept verbatim.
+    /// Eight opaque bytes returned by reader slot `+88` after field decoding.
+    /// KR mode 2 encodes this buffer as two u32 chunks, with no length prefix.
     pub raw8: [u8; 8],
     pub d: u32,
     pub e: u8,
@@ -159,7 +160,9 @@ impl ItemRecord11CE930 {
             b: input.u16()?,
             c: input.u32()?,
             text: input.text()?,
-            raw8: input.take(8)?.try_into().expect("exactly eight bytes"),
+            raw8: decode_bytes(input.take(8)?)?
+                .try_into()
+                .expect("buffer codec preserves length"),
             d: input.u32()?,
             e: input.u8()?,
         })
@@ -172,7 +175,7 @@ impl ItemRecord11CE930 {
             (self.c.into(), Width::U32),
         ])?;
         output.text(&self.text)?;
-        output.bytes(&self.raw8)?;
+        output.bytes(&encode_bytes(&self.raw8)?)?;
         output.fields(&[(self.d.into(), Width::U32), (self.e.into(), Width::U8)])
     }
 }
@@ -614,7 +617,7 @@ mod tests {
     const ITEM: &[u8] = &[
         0x97, 0xc8, 0x50, 0x91, 0xb5, 0x49, 0x87, 0xe8, 0x60, 0xd1, // a, b, c
         0xa5, 0x6c, 0x12, 0x18, 0x3a, 0xc3, 0x2e, // five native bytes
-        0x00, 0x01, 0x7f, 0x80, 0xfe, 0xff, 0x55, 0xaa, // opaque eight bytes
+        0x16, 0xb5, 0x52, 0x95, 0x3c, 0x9f, 0xac, 0x6b, // two encoded u32 chunks
         0x68, 0x16, 0xe9, 0x0d, 0xbf, // d, e
     ];
     const LOOKUP_PREFIX: &[u8] = &[0x5b, 0x97, 0xc8, 0x50, 0x91, 0x87, 0xe8, 0x60, 0xd1];

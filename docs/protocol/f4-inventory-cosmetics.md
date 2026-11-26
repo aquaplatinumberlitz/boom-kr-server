@@ -201,3 +201,11 @@ Từ [f4-w4-ida-gates.json](../evidence/content/f4-w4-ida-gates.json) (`kr_stati
 - **`+128` (`0x14EBBD0`)**: đọc liên tiếp `8` trường `u16` qua `+64` (`16` byte, khớp `r80` / nhánh có hạn dùng trong `S->C 317`).
 
 Điều này xác nhận phần đọc `sub_11CE930` gồm `(u32, u16, u32, string, 8B + u32, u8)`; nhãn nghiệp vụ từng cột vẫn `unknown` tới khi đo Wine.
+
+[CP400](../evidence/checkpoints/records/CP400.json) đối chiếu lại hai slot trên ảnh unpack KR 00967
+(`kr_static/confirmed`, phạm vi mode 2). Slot `+80` gọi `0x14EBA90` qua `+112`: đọc độ dài byte
+`u16` rồi giải mã đúng số byte đó bằng `0x14A5AD0`. Slot `+88` gọi `0x14EB220` qua `+120`:
+độ dài 8 byte do `sub_11CE930` truyền vào, nên không có trường độ dài trên wire. Hàm dùng cùng
+`0x14A5AD0`; với 8 byte, nó giải mã hai nhóm `u32` riêng rồi ghi hai giá trị theo thứ tự little-endian
+vào buffer. `kr-wire` giữ tám byte đã giải mã mà chưa gán nghĩa; bốn byte đầu và bốn byte sau không
+được đọc như một `u64`. Phép kiểm dùng reader biệt lập, chưa có frame túi đồ native hoặc nghiệm thu Wine.

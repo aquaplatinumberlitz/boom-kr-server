@@ -1,0 +1,58 @@
+{
+  "id": "CP400",
+  "previous": "CP399",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-26T11:36:31Z",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Trong mode 2 của KR 00967, slot +80 và +88 của bản ghi túi đồ giải mã phần dữ liệu như thế nào?",
+  "scope": "F4-b, hai lượt IDA trên bản sao riêng và Unicorn cho reader biệt lập. Dùng Wave 3–4, CP058 và các primitive KR hiện có; boomkr-re không bổ sung contract cho hai slot, còn boom-re và boom-rs chỉ dùng để đối chiếu khái niệm. Không chạy client, Wine hoặc kết nối mạng.",
+  "context_commit": "fd637c89c0ead56458b345d189ab75ed5b82d266",
+  "artifacts": [
+    {"name": "kr-full.exe KR 00967, image base 0x400000", "sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"}
+  ],
+  "locators": [
+    "docs/protocol/f4-inventory-cosmetics.md#f4b-reader-slots-w4",
+    "docs/protocol/lobby-profile.md#auth-profile",
+    "docs/evidence/content/f4-w4-ida-gates.json",
+    "local/runs/f4b-reader-primitives"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-reader-slots-w4", "summary": "Slot +80 ở 0x14EBA70 gọi +112 (0x14EBA90), đọc độ dài byte u16 rồi dùng 0x14A5AD0 trong mode 2. Slot +88 ở 0x14EB200 gọi +120 (0x14EB220) với độ dài do caller truyền; bản ghi đọc đúng 8 byte qua cùng helper, không có length prefix.", "limits": "Ảnh unpack KR; không chốt ý nghĩa của chuỗi hoặc buffer, thời điểm gửi hay hành vi UI.", "evidence": ["CP400_IDA_WRAPPERS", "CP400_IDA_LEAVES", "CP400_W3"]},
+    {"source": "kr_static", "status": "confirmed", "method": "emulation", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-reader-slots-w4", "summary": "Reader +88 trên object mode 2 dựng cho Unicorn tiêu thụ 8 byte dưới dạng hai nhóm u32; ca thiếu một byte không ghi buffer, giữ cursor và báo lỗi.", "limits": "Không phải capture hay client chạy thực. Không suy phiên nào chọn mode 2 từ bài kiểm helper.", "evidence": ["CP400_VERIFY"]}
+  ],
+  "verification": [
+    {"check": "Đối chiếu địa chỉ vtable và byte hàm IDA với ảnh PE rồi chạy hai ca trên reader biệt lập bằng PYTHONPATH=tools python3 local/runs/f4b-reader-primitives/verify.py.", "result": "pass", "limits": "Object kiểm thử đặt mode 2 trực tiếp; không đo dispatch, handshake hoặc UI.", "evidence": ["CP400_VERIFY", "CP400_VERIFY_SCRIPT"]},
+    {"check": "Vector bản ghi dùng đúng output của reader cho vùng 8 byte. fmt, Clippy và toàn bộ test kr-wire với lockfile đều đạt.", "result": "pass", "limits": "Ngoài vùng 8 byte đã kiểm bằng helper, vector bản ghi là dữ liệu tổng hợp.", "evidence": ["CP400_VERIFY", "CP400_CONTRACT"]},
+    {"check": "Mở MyPage và đo cursor 219/224/225 trên Wine.", "result": "not_run", "evidence": [], "limits": "Phép thử MyPage đã lưu chưa kích hoạt request; chưa chạy mới."}
+  ],
+  "delta": {"added": ["Khóa primitive của slot +80 và +88 trong mode 2."], "corrected": ["Codec ItemRecord11CE930 giải mã và mã hóa vùng 8 byte bằng primitive vùng byte KR."], "superseded": []},
+  "blockers": [
+    "Cần đo đường vào MyPage và consumer của frame có item trước khi bật route dịch vụ F4-b/c."
+  ],
+  "next_steps": [
+    {"id": "F4B-INVENTORY-NATIVE", "task": "KRE-F4-B", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Theo phép đo trong contract: xác định điều kiện vào MyPage, rồi đo cursor và kết quả của một item đã biết trong bản copy Wine cô lập."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-26T11:36:31Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Codex tự đối chiếu code IDA, byte image, reader biệt lập và hồi quy Rust.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập cho checkpoint Codex."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi primitive đã kiểm và bước đo còn lại trong Bảng điều hành."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục vẫn trỏ tới contract F4-b/c."},
+    {"path": "docs/protocol/f4-inventory-cosmetics.md", "state": "updated", "reason": "Mô tả length chuỗi và cách đọc vùng 8 byte trong mode 2."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4; phép đo ở contract vẫn áp dụng."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Giữ trạng thái gate và độ phủ."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi ID hoặc trạng thái tính năng."},
+    {"path": "docs/evidence/checkpoints/records/CP400.json", "state": "updated", "reason": "Giữ công thức tái lập và hash theo manifest bằng chứng."}
+  ],
+  "evidence": [
+    {"id": "CP400_IDA_WRAPPERS", "kind": "local", "path": "local/runs/f4b-reader-primitives/reader-ida.json", "bytes": 3936, "sha256": "f75b076728c3f72f683e2c683eee8f14ccf33e2b0bc2b9c9e6e392b50937e0a8"},
+    {"id": "CP400_IDA_LEAVES", "kind": "local", "path": "local/runs/f4b-reader-primitives/reader-leaves-ida.json", "bytes": 8271, "sha256": "6cc0ad061383edb44a77848e702fbe422439b9775f90a34030f878e1775525fc"},
+    {"id": "CP400_VERIFY_SCRIPT", "kind": "local", "path": "local/runs/f4b-reader-primitives/verify.py", "bytes": 2957, "sha256": "d25deb2dfc645d39cfb956d04b8a7a81c3ce4d3a41ed3f30179b5dfcbb165735"},
+    {"id": "CP400_VERIFY", "kind": "local", "path": "local/runs/f4b-reader-primitives/verification.json", "bytes": 1384, "sha256": "013c97320161d2c3907270f1d0167afe8cde5214952ca17b9906616775ff362d"},
+    {"id": "CP400_CONTRACT", "kind": "repository", "path": "docs/protocol/f4-inventory-cosmetics.md", "bytes": 25530, "sha256": "9b1310d41a94fe191f9358bc486388c93d1d62ce45c9e6a894bedb872030ff6a"},
+    {"id": "CP400_W3", "kind": "repository", "path": "docs/evidence/content/f4-w3-ida-records.json", "bytes": 5898, "sha256": "bfbd9b89bc644ce7376288f9fcef69723ec3e8aa291c3c50ef5e5491f1e0b961"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f4b-reader-primitives", "path": "local/evidence-manifests/b58d93369211edf0045357cb35c4ccf209e2b33304f7362d460226c7bc7525a4.jsonl", "sha256": "b58d93369211edf0045357cb35c4ccf209e2b33304f7362d460226c7bc7525a4", "bytes": 460, "count": 2, "files_bytes": 1794}
+  ]
+}
