@@ -7,6 +7,7 @@ mod account;
 mod battle;
 mod bomb_motion;
 mod chat;
+mod f2_modes;
 pub mod inventory;
 mod player;
 mod room;
@@ -23,6 +24,7 @@ pub use bomb_motion::{BombAction119, BombMotion162, rebind158};
 pub use chat::{
     MAX_ROOM_CHAT_BYTES, MAX_ROOM_CHAT_REPLY_BYTES, chat28_from18, room_chat18, room_chat28_literal,
 };
+pub use f2_modes::*;
 pub use player::PlayerTemplate;
 pub use room::*;
 pub use room_selection::*;
