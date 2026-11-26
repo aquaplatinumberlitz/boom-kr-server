@@ -3,11 +3,13 @@
 //! or rollback guarantee for an operation already running in SQLite/Argon2.
 mod economy;
 pub(crate) mod rate;
+mod social;
 use crate::accounts::{self, Grant, Player, Store, Token};
 pub use economy::{
     AccountService, EconomySettings, MatchItemConsumptionOutcome, O1SessionCosmetics,
 };
 pub use rate::RatePolicy;
+pub use social::{SocialAction, SocialReply};
 use std::{
     path::PathBuf,
     sync::{Arc, Condvar, Mutex},
@@ -241,6 +243,10 @@ enum Command {
         request: economy::EconomyRequest,
         deadline: Instant,
         reply: oneshot::Sender<Result<economy::EconomyReply>>,
+    },
+    Social {
+        request: social::SocialRequest,
+        deadline: Instant,
     },
     #[cfg(test)]
     Pause {
@@ -1236,6 +1242,19 @@ fn run(
                     economy::execute(store, economy, request, now).map_err(Error::Backend)
                 });
                 let _ = reply.send(result);
+            }
+            Command::Social { request, deadline } => {
+                if request.is_closed() {
+                    continue;
+                }
+                let now = if live {
+                    Err(Error::InvalidInput)
+                } else if Instant::now() >= deadline {
+                    Err(Error::QueueExpired)
+                } else {
+                    accounts::utc().map_err(Error::Backend)
+                };
+                request.execute(store, now);
             }
             #[cfg(test)]
             Command::Pause { entered, resume } => {
