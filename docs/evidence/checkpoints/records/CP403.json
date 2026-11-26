@@ -1,0 +1,67 @@
+{
+  "id": "CP403",
+  "previous": "CP402",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-26T11:59:05Z",
+  "owner": "Codex",
+  "reviewer": "waived",
+  "question": "Fixture WOW64 có phân biệt được lỗi attach của CP402 và đường khởi chạy dưới WineDbg không?",
+  "scope": "Fixture PE32 tự tạo, GDB 18.1, Wine 10.0. So chạy thường, attach muộn và khởi chạy dưới WineDbg, fixture không đặt breakpoint. Một lượt copy KR với observer khởi chạy từ đầu. Mọi lượt dùng lease, mạng cô lập và dọn scratch.",
+  "context_commit": "94bb0af39c1885465c7aa07ef343bc3d08a74956",
+  "artifacts": [
+    {"name": "Fixture PE32 attach", "sha256": "f80d834708aa8b03947b352b2503663a329f2a5a4d78b42a2db8a373944adca1"},
+    {"name": "Fixture PE32 launch", "sha256": "b2582403e1b4d65784a92de92230d32fa8805a3a27238bf60d2bd09e777fc43b"},
+    {"name": "CA.exe bản ko Wine", "sha256": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09"},
+    {"name": "kr-service f4a-rust-v1", "sha256": "d845883191765b80ef361c31750a264c2f2666c8b18ef235348f646c760dc316"}
+  ],
+  "locators": [
+    "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards",
+    "docs/evidence/checkpoints/records/CP402.json",
+    "local/runs/f4b-wow64-seeded",
+    "local/runs/f4b-mypage-launch/tomb12-debug-launch"
+  ],
+  "findings": [
+    {"source": "design", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards", "summary": "Fixture xác nhận PE32 chạy WOW64. Không có debugger thì thoát 0. Attach muộn dừng với SIGSEGV cả khi dùng kiến trúc tự chọn và khi ép i386. Khi WineDbg khởi chạy fixture ngay từ đầu, GDB tự chọn i386, fixture hoàn tất và GDB thấy tiến trình thoát bình thường.", "limits": "Chỉ kiểm công cụ với fixture, không suy nguyên nhân chính xác của SIGSEGV, không phải hành vi KR.", "evidence": ["CP403_FIX_ATTACH", "CP403_FIX_LAUNCH", "CP403_VERIFY_FIX"]},
+    {"source": "kr_runtime", "status": "confirmed", "method": "runtime", "canonical": "docs/protocol/f4-inventory-cosmetics.md#f4b-mypage-entry-guards", "summary": "Khởi chạy bản copy KR qua WineDbg với observer: GDB xác minh chín điểm, client thoát mã 03 trước khi cả hai cửa sổ sẵn sàng, không có thao tác MyPage.", "limits": "Chưa có đối chứng khởi chạy cùng debugger mà không đặt breakpoint. Không suy client thoát do breakpoint hoặc một cơ chế cụ thể.", "evidence": ["CP403_GAME_TRACE", "CP403_GAME_GDB", "CP403_VERIFY_GAME"]}
+  ],
+  "verification": [
+    {"check": "Chạy verify.py ở f4b-wow64-launch để đối chiếu fixture thường, attach muộn, khởi chạy dưới debugger và cleanup.", "result": "pass", "limits": "Prefix mới ban đầu dừng ở wineboot nên phải dùng bản sao prefix đã kiểm. Fixture không phải client.", "evidence": ["CP403_VERIFY_FIX", "CP403_FRESH_LOG"]},
+    {"check": "Chạy verify_launch.py ở f4b-mypage-launch để đối chiếu trace, thoát, không có input và cleanup.", "result": "pass", "limits": "Kiểm âm của thiết lập. Chưa có gói túi đồ hoặc phép đo cursor mới.", "evidence": ["CP403_VERIFY_GAME", "CP403_GAME_TRACE"]},
+    {"check": "So bản copy KR chạy thường và chạy dưới WineDbg không đặt breakpoint.", "result": "not_run", "limits": "Chưa tách được khác biệt do debugger startup hay breakpoint.", "evidence": []}
+  ],
+  "delta": {"added": ["Chốt đối chứng WOW64 không breakpoint và giới hạn của thử nghiệm khởi chạy client cùng observer."], "corrected": [], "superseded": []},
+  "blockers": [
+    "Client thoát trước đăng nhập khi khởi chạy với observer; chưa có phép đo MyPage mới."
+  ],
+  "next_steps": [
+    {"id": "F4B-INVENTORY-NATIVE", "task": "KRE-F4-B", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Dùng cùng copy, prefix và tham số để so khởi chạy thường với WineDbg không đặt breakpoint. Nếu chạy được đến sảnh, thử gắn observer theo từng bước trước khi gửi click."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-26T11:59:05Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Đối chiếu log, fixture, dấu sẵn sàng và cleanup.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập cho checkpoint Codex."}},
+  "docs_sync": [
+    {"path": "README.md", "state": "unchanged", "reason": "Chưa đóng nhóm F4."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi blocker cụ thể và cập nhật Wave 8 theo kết quả đã merge."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Chỉ mục vẫn trỏ tới F4-b/c."},
+    {"path": "docs/protocol/f4-inventory-cosmetics.md", "state": "updated", "reason": "Thêm kết quả đối chứng và giới hạn của lần thử."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Chưa đóng nhóm; phép đo nằm trong contract."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không nâng độ phủ hoặc gate."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không đổi ID hoặc trạng thái."},
+    {"path": "docs/evidence/checkpoints/records/CP403.json", "state": "updated", "reason": "Ghim các raw và công thức kiểm."}
+  ],
+  "evidence": [
+    {"id": "CP403_FIX_ATTACH", "kind": "local", "path": "local/runs/f4b-wow64-seeded/verification.json", "bytes": 661, "sha256": "251ff0f88a1841aa7a51fda54a38fbf1e116a83231d493d632ff6492ba533608"},
+    {"id": "CP403_FIX_LAUNCH", "kind": "local", "path": "local/runs/f4b-wow64-launch/verification.json", "bytes": 276, "sha256": "bb93b8fd168f6d29ec755bbd1b97b077be8586648a2a024bd2067ba74e13cb4d"},
+    {"id": "CP403_VERIFY_FIX", "kind": "local", "path": "local/runs/f4b-wow64-launch/verify.py", "bytes": 1215, "sha256": "a08afbb439c025129e1387004a097cae991d55b2315ad1cdaa0ffbd1fb4e2ae3"},
+    {"id": "CP403_FRESH_LOG", "kind": "local", "path": "local/runs/f4b-wow64-control/namespace.log", "bytes": 1218, "sha256": "b95bfc79a77e10c7521ba23cd800221f4ae39d90a0499c1ee17a881821fb4c57"},
+    {"id": "CP403_GAME_TRACE", "kind": "local", "path": "local/runs/f4b-mypage-launch/tomb12-debug-launch/mypage-trace.jsonl", "bytes": 232, "sha256": "df0ca4501b1c1fd6921a1594c3d015e5d13702389b6ae67e326377904f6bfd14"},
+    {"id": "CP403_GAME_GDB", "kind": "local", "path": "local/runs/f4b-mypage-launch/tomb12-debug-launch/mypage-debugger.log", "bytes": 579, "sha256": "7c4d6cd9cf35f145838cdf719a4a1bd6e75b8e028d36da5799ceec1e6dd326a0"},
+    {"id": "CP403_VERIFY_GAME", "kind": "local", "path": "local/runs/f4b-mypage-launch/verify_launch.py", "bytes": 950, "sha256": "6087e263ee29b8cc0e532866f5f604441ee25df071a5a3bc145f124ac9f8257e"},
+    {"id": "CP403_CONTRACT", "kind": "repository", "path": "docs/protocol/f4-inventory-cosmetics.md", "bytes": 28529, "sha256": "5db6e1950901c5ab99a0332d866686d738090f994b9ef9131b0718fba41c0586"}
+  ],
+  "evidence_runs": [
+    {"run": "local/runs/f4b-wow64-control", "path": "local/evidence-manifests/442c62fba32a81fb5eef41cd5b78bdb47fcdd71274496319591b3422e3595b48.jsonl", "sha256": "442c62fba32a81fb5eef41cd5b78bdb47fcdd71274496319591b3422e3595b48", "bytes": 793, "count": 4, "files_bytes": 6959},
+    {"run": "local/runs/f4b-wow64-seeded", "path": "local/evidence-manifests/eff7fcf29703bb86bcf72249df43ab1bb954e3fad9f7f31ce6954b8ac9eec85a.jsonl", "sha256": "eff7fcf29703bb86bcf72249df43ab1bb954e3fad9f7f31ce6954b8ac9eec85a", "bytes": 1369, "count": 7, "files_bytes": 8246},
+    {"run": "local/runs/f4b-wow64-launch", "path": "local/evidence-manifests/83888764edad997775c3754c18e6f168fe28ee27026890189533189c914c5bab.jsonl", "sha256": "83888764edad997775c3754c18e6f168fe28ee27026890189533189c914c5bab", "bytes": 962, "count": 5, "files_bytes": 7167},
+    {"run": "local/runs/f4b-mypage-launch", "path": "local/evidence-manifests/9494d101cf9ab6b994ef63642f5d18c0bbef59956644783039e91f942df45dcf.jsonl", "sha256": "9494d101cf9ab6b994ef63642f5d18c0bbef59956644783039e91f942df45dcf", "bytes": 629, "count": 3, "files_bytes": 27113},
+    {"run": "local/runs/f4b-mypage-launch/tomb12-debug-launch", "path": "local/evidence-manifests/7f399b0c270f7cc33498964a640dff6557e82d2514aabd31ff26963e16a14a0c.jsonl", "sha256": "7f399b0c270f7cc33498964a640dff6557e82d2514aabd31ff26963e16a14a0c", "bytes": 937, "count": 4, "files_bytes": 6720}
+  ]
+}

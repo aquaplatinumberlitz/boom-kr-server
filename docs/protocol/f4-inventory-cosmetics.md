@@ -214,6 +214,13 @@ trước cả phép đối chứng rê chuột. Chưa có quan sát cổng MyPag
 resume của GDB với kiến trúc do proxy Wine báo, trên fixture WOW64 cô lập và không đặt breakpoint;
 chỉ thử lại MyPage khi đối chứng debugger không dừng tiến trình.
 
+[CP403](../evidence/checkpoints/records/CP403.json) đối chiếu bằng fixture PE32 chạy trên WOW64:
+chạy thường và khởi chạy dưới WineDbg đều hoàn tất; attach muộn với kiến trúc tự chọn hoặc ép `i386`
+đều dừng với `SIGSEGV` khi không đặt breakpoint. Với bản copy KR, khởi chạy dưới WineDbg và gắn
+observer MyPage đã qua kiểm byte lệnh, nhưng tiến trình thoát mã `03` trước khi sẵn sàng đăng nhập.
+Chưa biết nguyên nhân thoát. Nếu thử tiếp, giữ cùng bản copy và tham số, khởi chạy dưới WineDbg
+không gắn observer rồi so với cách chạy thường. Chỉ đo nút khi đối chứng đã tới sảnh.
+
 <a id="f4b-reader-slots-w4"></a>
 ### Giải mã bảng vtable reader `CReceivedPacketBase` (Wave 4)
 
