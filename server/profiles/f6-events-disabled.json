@@ -1,0 +1,177 @@
+{
+  "schema": "kre.f6-events-policy.v1",
+  "default_enabled": false,
+  "systems": {
+    "CAPass": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "Câu cá": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "DIYBomb": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "DTT": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "Exchange": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "GrowSprout": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "HoneyButterChip": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "LineFriends": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "LuckyCard": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "MagicMarket": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "MineExplore": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "MonWars": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "Nhiệm vụ": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "Partners": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "Pet": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "RetroWriggle": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "SelectionBox": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "Sự kiện TakeCareOfEvent": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    },
+    "Sự kiện theo tiền tố Event": {
+      "enabled": false,
+      "start_utc": null,
+      "end_utc": null,
+      "rate_caps": {
+        "per_account_per_hour": 0,
+        "global_per_minute": 0
+      }
+    }
+  }
+}
