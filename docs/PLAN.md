@@ -690,7 +690,7 @@ Số liệu từ [kiểm kê pack](CONTENT.md) không chứng minh tính năng c
 | F6 Sự kiện và kinh tế theo mùa | CAPass, MagicMarket, LuckyCard, nhiệm vụ ngày, câu cá, pet, các sự kiện theo mùa (bỏ ưu đãi phòng máy Nexon) | Khoảng 25 trong 59 hệ thống của mục "Hệ thống của client" | Nhiều giá trị chỉ server gốc giữ; có thể có hệ thống đã ngừng trong build này. Làm sau cùng, từng cái theo yêu cầu |
 | O1 Play with friends ("Chơi với bạn bè") | Một nút trong launcher: không tài khoản, không VPS, không cấu hình. Máy người tạo tự chạy server ngầm và hiện mã phòng; bạn bè nhập mã (cùng LAN thì tự thấy). Qua Internet dùng thư viện P2P nhúng (iroh/QUIC, tự xuyên NAT, relay khi cần). Cờ "mở khoá tất cả": đủ nhân vật/item/trang phục, shop miễn phí | [Lõi server Windows](evidence/rust-service/o1-windows-service.json) đã qua Wine: xuất pack, hai client kr-load hoàn tất một ván, backup và dừng sạch; còn tên khách và dữ liệu lưu tại máy người tạo | Dùng chung bước "server đọc dữ liệu từ pack" của M8. Nội dung đầy đủ theo F1/F4 (cùng mã server, khác cấu hình). Launcher một nút và nghiệm thu LAN/Internet còn mở. Người tạo phải mở game suốt buổi |
 | S1 Máy chủ tự dựng | [Không có máy chủ chính thức](evidence/owner-directives/distribution.json). Thêm máy, xác minh chứng chỉ từ mã mời, nhớ danh sách và ID theo từng máy. Mã mời S1 và mã phòng O1 dùng chung P2P với tiền tố riêng, tự chuyển mục khi dán nhầm; tách dữ liệu offline. | Phần server có BoomServer.exe, Docker và tarball Linux kèm systemd; xem [hướng dẫn tự dựng](player/guide.vi.md). | Mục Thêm máy chủ làm sau O1; hiện trạng nghiệm thu ở [Bảng điều hành](#dashboard). |
-| L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 25.321 chuỗi; 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Chưa biết client 00967 hiển thị được chữ Việt hay không; xem đoạn dưới bảng |
+| L Đa ngôn ngữ | Chữ và ảnh có chữ của client bằng tiếng Hàn, Việt và Anh, người chơi chọn khi mở game | 33.486 chuỗi (`vi`: 33.383, còn 2 mục pháp lý; `en`: 32.937 / 98,36%, còn 549 trống); 3.038 ảnh nghi có chữ | Không phụ thuộc F1–F6. Đợt L cốt lõi cho cặp `vi`/`ko` đã qua `CP370`; bản `en` còn lấp nốt `549` chuỗi trống (`1,64%`), rà chất lượng máy dịch và nghiệm thu `en` đầy đủ |
 
 **Thứ tự ([quyết định 20–21/11](evidence/owner-directives/post-phase1-direction.json)):** bước 0 gồm
 [bảng xếp loại A/B/C](content/classification.md), ghi/phát lại phiên thật và bộ điều khiển theo trạng thái server.
@@ -710,9 +710,15 @@ Làm theo thứ tự; nếu một họ cần item hoặc script chưa biết, gi
 Không mở lại RE ngoài khoảng trống cụ thể. Chỉ chạy khi còn chỗ host và lấy được lease Wine; không dùng tiến trình soak cho F1.
 
 **Đợt L (đa ngôn ngữ)** là mong muốn chủ dự án nêu ngày 12/11, chưa chốt phạm vi. Nguồn có sẵn nằm ở repo
-`boom-re-l10n`, thư mục `l10n/`: bản dịch tiếng Việt cho 25.321 chuỗi (còn 23 chuỗi chờ duyệt) và danh sách 3.038 ảnh
-nghi có chữ, trong đó 8 ảnh đã xử lý và 681 ảnh có bản khác ở client VN. Tiếng Anh có ứng viên cho 6.184 chuỗi (24%),
-lấy từ [client PopTag 0.7.8](content/client-language.md#poptag) công ty cấp ngày 13/11.
+`boom-re-l10n` (nhánh `claude/l10n-kr-vi` @ `89b1497`, thư mục `l10n/`): `catalog.csv` có **33.486 dòng** với bản dịch
+tiếng Việt cho **33.383 chuỗi** (chỉ còn 2 mục điều khoản pháp lý chờ duyệt ở `review_pending.csv`); `catalog_en.csv` có
+**32.937 / 33.486 chuỗi (`98,36%`) tiếng Anh** gồm `26.782` dịch từ `tm_en.csv`/`en_review.csv`/`en_override.csv`,
+`5.719` ứng viên lấy từ [client PopTag 0.7.8](content/client-language.md#poptag) (`5.522` `candidate` + `197`
+`casefold_candidate`), và `441` dòng duyệt tay `en_id.csv` (chỉ còn `549` dòng trống `1,64%`, chủ yếu `csysqstr.ssd`,
+`AIBattleSay_*` và chuỗi cứng exe). Về media/ảnh: `images_text.csv` liệt kê `3.038` ảnh nghi có chữ (trong đó
+`images_en_candidates.csv` có `1.187` ứng viên PopTag với `576` ảnh khác KR, `images_todo` có 8 ảnh đã xử lý và 681 ảnh
+có bản khác ở client VN); nhánh `boom-re-l10n` cũng đã dựng `l10n_share_pack` (gộp `.idd` chung + `.idx` riêng cho `vi`/`en`)
+và video mở đầu `nm.bik` bản VN/Bắc Mỹ.
 
 [So tĩnh hai file exe](content/client-language.md) cho thấy client 00967 là build đa vùng bị khóa ở tiếng Hàn: engine
 tự giữ bảng mã, có sẵn mã ngôn ngữ cho Hàn, Việt, Anh, và font đã đủ chữ Việt. Theo
