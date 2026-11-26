@@ -840,7 +840,7 @@ fn schema1_corruption_or_upgrade_full_rejects_without_partial_columns_or_version
         db.prepare("SELECT idle_timeout_seconds FROM sessions")
             .is_err()
     );
-    db.pragma_update(None, "max_page_count", pages + 32)
+    db.pragma_update(None, "max_page_count", pages + 64)
         .unwrap();
     Store::migrate(&mut db, &temp.db()).unwrap();
     assert_eq!(old_idle_data(&db), before);

@@ -138,7 +138,17 @@ mod tests {
         store
             .db
             .execute_batch(
-                "DROP TABLE match_item_consumptions;
+                "PRAGMA foreign_keys=OFF;
+             DROP INDEX ranking_wins_by_player;
+             DROP TABLE guild_members;
+             DROP TABLE guilds;
+             DROP TABLE chat_abuse_events;
+             DROP TABLE chat_rate_windows;
+             DROP TABLE social_mutes;
+             DROP TABLE player_blocks;
+             DROP TABLE friendships;
+             DROP TABLE friend_requests;
+             DROP TABLE match_item_consumptions;
              DROP TABLE player_equipped;
              DROP TABLE player_inventory;
              DROP TABLE ledger_entries;
@@ -151,7 +161,8 @@ mod tests {
              DROP INDEX guest_account_expiry;
              DROP TABLE guest_accounts;
              DELETE FROM schema_migrations WHERE version>=4;
-             PRAGMA user_version=3;",
+             PRAGMA user_version=3;
+             PRAGMA foreign_keys=ON;",
             )
             .unwrap();
         drop(store);
