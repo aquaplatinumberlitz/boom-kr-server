@@ -366,6 +366,134 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
     worker.shutdown().await.unwrap();
 }
 
+#[tokio::test]
+async fn unlock_all_selection_is_isolated_per_token_and_bypasses_sqlite() {
+    use crate::account_worker::Worker;
+    use crate::accounts::{Admin, ItemGrant, Store, TEST_SERIAL};
+
+    let (_dir, db) = temp_db("o1-selection");
+    let settings = test_settings();
+    let player = {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let mut store = Store::open(&db).unwrap();
+        let now = accounts::utc().unwrap();
+        let admin = Admin {
+            actor: "webshop-test",
+            reason: "standard ownership for O1 control",
+        };
+        let player = store
+            .create_account(&admin, "shopuser", "ShopUser", b"shop-test-password-1", now)
+            .unwrap()
+            .player_id;
+        store
+            .admin_grant_item(
+                &admin,
+                player,
+                "hat.fancy",
+                ItemGrant::Permanent,
+                1,
+                "grant:hat",
+                now,
+            )
+            .unwrap();
+        store
+            .equip_item(player, settings.catalog(), "hat.fancy", "head", now)
+            .unwrap();
+        player
+    };
+    let worker = Worker::open_with_economy(db.clone(), 4, Duration::from_secs(2), settings)
+        .await
+        .unwrap();
+    let mut o1 = config();
+    o1.unlock_all = true;
+    let auth = WebShopAuth::new(60).unwrap();
+    let first = auth.issue_token(player).unwrap();
+    let second = auth.issue_token(player).unwrap();
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    let task = tokio::spawn(serve_listener(listener, o1, worker.service(), auth.clone()));
+    let observer = rusqlite::Connection::open(&db).unwrap();
+    let data_version = || {
+        observer
+            .pragma_query_value::<i64, _>(None, "data_version", |r| r.get(0))
+            .unwrap()
+    };
+    let resume = crate::account_worker::tests::pause(&worker.client()).await;
+    let before = data_version();
+    let tok = Some(first.as_str());
+    let inventory = "/api/v1/inventory";
+    let equip = "/api/v1/equip";
+    let unequip = "/api/v1/unequip";
+    let hat = r#"{"slot":"head"}"#;
+
+    let (code, _, empty) = send_http(addr, "GET", inventory, tok, None).await;
+    assert_eq!(code, 200);
+    assert_eq!(empty, json!({"inventory": [], "equipped": []}));
+    let (code, _, result) =
+        send_http(addr, "POST", equip, tok, Some(r#"{"sku":"char.bazzi"}"#)).await;
+    assert_eq!(code, 200);
+    let character = json!({"sku_id":"char.bazzi", "slot":"character"});
+    assert_eq!(result["equipped"], character);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        equip,
+        tok,
+        Some(r#"{"sku":"hat.fancy","slot":"head"}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    for invalid in [
+        r#"{"sku":"emote.off","slot":"emote"}"#,
+        r#"{"sku":"char.bazzi","slot":"head"}"#,
+        r#"{"sku":"unknown","slot":"head"}"#,
+    ] {
+        assert_eq!(
+            send_http(addr, "POST", equip, tok, Some(invalid)).await.0,
+            400
+        );
+    }
+    let (code, _, selected) = send_http(addr, "GET", inventory, tok, None).await;
+    assert_eq!(code, 200);
+    assert_eq!(
+        selected,
+        json!({"inventory": [], "equipped": [character, {"sku_id":"hat.fancy","slot":"head"}]})
+    );
+    let (code, _, other) = send_http(addr, "GET", inventory, Some(second.as_str()), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(other, empty);
+    for expected in [true, false] {
+        let (code, _, result) = send_http(addr, "POST", unequip, tok, Some(hat)).await;
+        assert_eq!(code, 200);
+        assert_eq!(result["removed"], expected);
+    }
+    let (code, _, selected) = send_http(addr, "GET", inventory, tok, None).await;
+    assert_eq!(code, 200);
+    assert_eq!(selected["equipped"], json!([character]));
+    auth.revoke_player(player);
+    for token in [&first, &second] {
+        assert_eq!(
+            send_http(addr, "GET", inventory, Some(token.as_str()), None)
+                .await
+                .0,
+            401
+        );
+    }
+    let replacement = auth.issue_token(player).unwrap();
+    let (code, _, fresh) =
+        send_http(addr, "GET", inventory, Some(replacement.as_str()), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(fresh, empty);
+    assert_eq!(data_version(), before);
+
+    resume.send(()).unwrap();
+    let standard = worker.service().equipped_list(player).await.unwrap();
+    assert_eq!(standard.len(), 1);
+    assert_eq!(standard[0].sku_id, "hat.fancy");
+    task.abort();
+    worker.shutdown().await.unwrap();
+}
+
 #[test]
 fn peer_allowlist_is_exact() {
     let c = config();

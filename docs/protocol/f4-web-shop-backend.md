@@ -1,7 +1,7 @@
 <a id="f4d-web-shop-backend"></a>
 # F4-d: backend HTTP cửa hàng web nhúng
 
-Backend này là HTTP/1.1 bounded, chỉ phục vụ catalog kinh tế cục bộ của `kr-service` qua `AccountService` Schema 7. Cấu hình yêu cầu địa chỉ IPv4 cụ thể, danh sách peer cho phép, tối đa 64 kết nối, giới hạn header/body và thời gian xử lý. Không có kết nối HTTP ra ngoài; trang `/` tự chứa HTML, CSS và JavaScript, kèm CSP `connect-src 'self'`.
+Backend này là HTTP/1.1 bounded, chỉ phục vụ catalog kinh tế cục bộ của `kr-service` qua `AccountService`. Cấu hình yêu cầu địa chỉ IPv4 cụ thể, danh sách peer cho phép, tối đa 64 kết nối, giới hạn header/body và thời gian xử lý. Không có kết nối HTTP ra ngoài; trang `/` tự chứa HTML, CSS và JavaScript, kèm CSP `connect-src 'self'`.
 
 ## Phiên và danh tính
 
@@ -14,6 +14,12 @@ Khi nhúng vào `kr-service` qua trường tùy chọn `account_serving.web_shop
 `GET /health` không cần đăng nhập và trả mode, số item catalog và `rewards_enabled`. `GET /` trả trang cửa hàng UTF-8. Các route `/api/v1/profile`, `/api/v1/catalog`, `/api/v1/inventory`, `/api/v1/purchase`, `/api/v1/equip` và `/api/v1/unequip` yêu cầu `Authorization: Bearer <token>`. Catalog lọc bằng `?category=character|decoration|emotion|consumable|collection`.
 
 Chế độ thường đọc và ghi inventory/equip, trừ Lucci qua `purchase_shop_item`, và khóa replay bằng `request_id`. Replay cùng payload trả lại receipt; payload khác cùng khóa trả `409`. `unlock_all` chỉ cấp quyền dùng session từ catalog enabled, không đọc/ghi ownership và không trừ Lucci; mọi purchase ở chế độ này trả `409` với `unlock_all_no_purchase`.
+
+Trong `unlock_all`, `equip` và `unequip` dùng `O1SessionCosmetics` của từng token Web Shop (`design`).
+`GET /api/v1/inventory` trả `inventory: []` và danh sách `equipped` gồm cặp `slot`/`sku_id` của phiên.
+Ba route này không đọc hay ghi SQLite; `profile` vẫn đọc cấp, EXP và Lucci. Token khác bắt đầu với lựa chọn
+trống, kể cả cùng người chơi; hết hạn hoặc thu hồi token thì lựa chọn cũ không còn truy cập được. Bộ chọn
+Web Shop chưa nối với trang bị trong client KR.
 
 Lỗi đầu vào trả `400`, token thiếu/sai/hết hạn trả `401`, thiếu Lucci trả `402`, xung đột ownership hoặc idempotency trả `409`, SKU không hợp lệ được trả `400`, queue worker bận/hết hạn trả `503`. Các response có `Cache-Control: no-store` và `X-Content-Type-Options: nosniff`.
 

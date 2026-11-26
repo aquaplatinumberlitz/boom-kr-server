@@ -4,8 +4,10 @@ mod http;
 mod tests;
 
 use crate::{
-    account_worker::{AccountService, Error},
-    accounts::{self, CatalogAccess, PlayerProfile, ShopCategory, ShopItem, UsableItem},
+    account_worker::{AccountService, Error, O1SessionCosmetics},
+    accounts::{
+        self, CatalogAccess, PlayerProfile, ShopCatalog, ShopCategory, ShopItem, UsableItem,
+    },
 };
 use http::{Request, Response, Status};
 use serde::{Deserialize, Serialize};
@@ -99,6 +101,7 @@ struct Session {
     digest: TokenDigest,
     player_id: i64,
     expires_at: Instant,
+    cosmetics: Option<O1SessionCosmetics>,
 }
 
 /// The host issues tokens only after binding an authenticated player. Clones
@@ -141,6 +144,7 @@ impl WebShopAuth {
             digest: token_digest(&token),
             player_id,
             expires_at: now + self.ttl,
+            cosmetics: None,
         });
         Ok(WebShopToken(token))
     }
@@ -159,15 +163,25 @@ impl WebShopAuth {
     }
 
     fn player(&self, digest: &TokenDigest) -> Option<i64> {
-        let sessions = self.sessions.lock().ok()?;
+        self.with_session(digest, |session| session.player_id)
+    }
+
+    // Keep lookup and in-memory selection changes in the same critical section
+    // so they cannot race revocation. Callers must not await under this lock.
+    fn with_session<T>(
+        &self,
+        digest: &TokenDigest,
+        op: impl FnOnce(&mut Session) -> T,
+    ) -> Option<T> {
+        let mut sessions = self.sessions.lock().ok()?;
         let now = Instant::now();
-        let mut player = None;
-        for session in sessions.iter() {
+        let mut found = None;
+        for (index, session) in sessions.iter().enumerate() {
             if digest_eq(&session.digest, digest) && session.expires_at > now {
-                player = Some(session.player_id);
+                found = Some(index);
             }
         }
-        player
+        Some(op(&mut sessions[found?]))
     }
 }
 
@@ -315,6 +329,19 @@ struct Equip {
     slot: Option<String>,
 }
 
+impl Equip {
+    fn resolve_slot<'a>(&'a self, catalog: &'a ShopCatalog) -> Result<&'a str, Status> {
+        self.slot
+            .as_deref()
+            .or_else(|| {
+                catalog
+                    .item(&self.sku)
+                    .and_then(|item| item.equip_slot.as_deref())
+            })
+            .ok_or(Status::BadRequest)
+    }
+}
+
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct Unequip {
@@ -407,6 +434,58 @@ async fn dispatch(
     }
 }
 
+fn o1_selection_route(
+    service: &AccountService,
+    session: &mut Session,
+    request: &Request,
+) -> Result<Response, Status> {
+    #[derive(Serialize)]
+    struct Selection {
+        slot: String,
+        sku_id: String,
+    }
+
+    if request.query().is_some() {
+        return Err(Status::BadRequest);
+    }
+    let cosmetics = session.cosmetics.get_or_insert_with(|| {
+        service
+            .o1_session_cosmetics(CatalogAccess { unlock_all: true })
+            .expect("O1 selection route has unlock_all access")
+    });
+    match request.path() {
+        "/api/v1/inventory" => {
+            request.require_method("GET")?;
+            let equipped: Vec<_> = cosmetics
+                .snapshot()
+                .into_iter()
+                .map(|(slot, sku_id)| Selection { slot, sku_id })
+                .collect();
+            Ok(Response::json(
+                &json!({ "inventory": [], "equipped": equipped }),
+            ))
+        }
+        "/api/v1/equip" => {
+            request.require_method("POST")?;
+            let input: Equip = request.json()?;
+            let slot = input.resolve_slot(service.settings().catalog())?;
+            cosmetics.equip(&input.sku, slot).map_err(Error::Backend)?;
+            let equipped = Selection {
+                slot: slot.into(),
+                sku_id: input.sku.clone(),
+            };
+            Ok(Response::json(&json!({ "ok": true, "equipped": equipped })))
+        }
+        "/api/v1/unequip" => {
+            request.require_method("POST")?;
+            let input: Unequip = request.json()?;
+            let removed = cosmetics.unequip(&input.slot).map_err(Error::Backend)?;
+            Ok(Response::json(&json!({ "ok": true, "removed": removed })))
+        }
+        _ => Err(Status::NotFound),
+    }
+}
+
 async fn route(
     config: &Config,
     service: &AccountService,
@@ -435,10 +514,20 @@ async fn route(
     if !path.starts_with("/api/v1/") {
         return Err(Status::NotFound);
     }
-    let player = request
-        .digest()
-        .and_then(|digest| auth.player(&digest))
-        .ok_or(Status::Unauthorized)?;
+    let digest = request.digest().ok_or(Status::Unauthorized)?;
+    if config.unlock_all
+        && matches!(
+            path,
+            "/api/v1/inventory" | "/api/v1/equip" | "/api/v1/unequip"
+        )
+    {
+        return auth
+            .with_session(&digest, |session| {
+                o1_selection_route(service, session, request)
+            })
+            .ok_or(Status::Unauthorized)?;
+    }
+    let player = auth.player(&digest).ok_or(Status::Unauthorized)?;
 
     if path != "/api/v1/catalog" && query.is_some() {
         return Err(Status::BadRequest);
@@ -488,17 +577,7 @@ async fn route(
         "/api/v1/equip" => {
             request.require_method("POST")?;
             let input: Equip = request.json()?;
-            let slot = input
-                .slot
-                .as_deref()
-                .or_else(|| {
-                    service
-                        .settings()
-                        .catalog()
-                        .item(&input.sku)
-                        .and_then(|item| item.equip_slot.as_deref())
-                })
-                .ok_or(Status::BadRequest)?;
+            let slot = input.resolve_slot(service.settings().catalog())?;
             let equipped = service.equip_item(player, &input.sku, slot).await?;
             Ok(Response::json(&json!({ "ok": true, "equipped": equipped })))
         }
