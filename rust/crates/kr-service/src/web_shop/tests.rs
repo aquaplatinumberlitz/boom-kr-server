@@ -58,6 +58,8 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("/api/v1/inventory"));
     assert!(page.contains("/api/v1/unequip"));
     assert!(page.contains("/api/social/friends"));
+    assert!(page.contains("/api/social/friends/respond"));
+    assert!(page.contains("/api/social/guild"));
     assert!(page.contains("/api/social/blocks"));
     assert!(page.contains("/api/social/ranking?limit=10"));
     let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
@@ -195,7 +197,7 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
 
     let (_dir, db) = temp_db("e2e");
     let now = crate::match_journal::utc().unwrap();
-    let player_id = {
+    let (player_id, friend_id, third_id) = {
         let _serial = TEST_SERIAL.lock().unwrap();
         let mut store = Store::open(&db).unwrap();
         let admin = Admin {
@@ -205,10 +207,28 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
         let player = store
             .create_account(&admin, "shopuser", "ShopUser", b"shop-test-password-1", now)
             .unwrap();
+        let friend = store
+            .create_account(
+                &admin,
+                "frienduser",
+                "FriendUser",
+                b"shop-test-password-2",
+                now,
+            )
+            .unwrap();
+        let third = store
+            .create_account(
+                &admin,
+                "thirduser",
+                "ThirdUser",
+                b"shop-test-password-3",
+                now,
+            )
+            .unwrap();
         store
             .admin_grant_lucci(&admin, player.player_id, 250, "seed-lucci", now)
             .unwrap();
-        player.player_id
+        (player.player_id, friend.player_id, third.player_id)
     };
 
     let worker = Worker::open_with_economy(db.clone(), 8, Duration::from_secs(2), test_settings())
@@ -258,6 +278,145 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
     assert!(ranking["ranking"].is_array());
 
     let tok = token.as_str();
+    let friend_token = auth.issue_token(friend_id).unwrap();
+    let third_token = auth.issue_token(third_id).unwrap();
+    let (code, _, guild_before) =
+        send_http(addr, "GET", "/api/social/guild", Some(tok), None).await;
+    assert_eq!(code, 200);
+    assert!(guild_before["guild"].is_null());
+    let (code, _, request) = send_http(
+        addr,
+        "POST",
+        "/api/social/friends",
+        Some(tok),
+        Some(&format!(r#"{{"player_id":{friend_id}}}"#)),
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert_eq!(request["changed"], true);
+    let (code, _, pending) = send_http(
+        addr,
+        "GET",
+        "/api/social/friends",
+        Some(friend_token.as_str()),
+        None,
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert_eq!(pending["incoming_requests"][0]["sender_id"], player_id);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/friends/respond",
+        Some(third_token.as_str()),
+        Some(&format!(
+            r#"{{"requester_player_id":{player_id},"accept":true}}"#
+        )),
+    )
+    .await;
+    assert_eq!(code, 409);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/friends/respond",
+        Some(friend_token.as_str()),
+        Some(&format!(
+            r#"{{"requester_player_id":{player_id},"accept":true}}"#
+        )),
+    )
+    .await;
+    assert_eq!(code, 200);
+    let (code, _, accepted) = send_http(addr, "GET", "/api/social/friends", Some(tok), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(accepted["friends"][0], friend_id);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/friends",
+        Some(third_token.as_str()),
+        Some(&format!(r#"{{"player_id":{friend_id}}}"#)),
+    )
+    .await;
+    assert_eq!(code, 200);
+    let (code, _, rejected) = send_http(
+        addr,
+        "POST",
+        "/api/social/friends/respond",
+        Some(friend_token.as_str()),
+        Some(&format!(
+            r#"{{"requester_player_id":{third_id},"accept":false}}"#
+        )),
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert_eq!(rejected["changed"], true);
+    let (code, _, third_friends) = send_http(
+        addr,
+        "GET",
+        "/api/social/friends",
+        Some(third_token.as_str()),
+        None,
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert!(third_friends["friends"].as_array().unwrap().is_empty());
+    let guild = worker
+        .client()
+        .try_social(
+            player_id,
+            crate::account_worker::SocialAction::CreateGuild("Web Guild".into()),
+        )
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
+    let crate::account_worker::SocialReply::Guild(guild) = guild else {
+        panic!("wrong guild projection")
+    };
+    let (code, _, guild_after) = send_http(addr, "GET", "/api/social/guild", Some(tok), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(guild_after["guild"]["id"], guild.id);
+    assert_eq!(guild_after["members"].as_array().unwrap().len(), 1);
+    worker
+        .client()
+        .try_social(
+            friend_id,
+            crate::account_worker::SocialAction::JoinGuild(guild.id),
+        )
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
+    worker
+        .client()
+        .try_social(
+            friend_id,
+            crate::account_worker::SocialAction::LeaveGuild(guild.id),
+        )
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
+    let (code, _, guild_left) = send_http(
+        addr,
+        "GET",
+        "/api/social/guild",
+        Some(friend_token.as_str()),
+        None,
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert!(guild_left["guild"].is_null());
+    worker
+        .client()
+        .try_social(
+            player_id,
+            crate::account_worker::SocialAction::DisbandGuild(guild.id),
+        )
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
     let (code, _, profile) = send_http(addr, "GET", "/api/v1/profile", Some(tok), None).await;
     assert_eq!(code, 200);
     assert_eq!(profile["lucci"], 250);

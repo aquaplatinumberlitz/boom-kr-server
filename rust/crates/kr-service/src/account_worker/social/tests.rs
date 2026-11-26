@@ -400,6 +400,81 @@ fn launcher_bridge_binds_actor_and_worker_persists_guild_and_ranking() {
 }
 
 #[test]
+fn worker_strict_friend_response_and_player_guild_projection() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, alice, bob) = Temp::new();
+    let (a, b) = (alice.player_id, bob.player_id);
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let client = worker.client();
+        assert_eq!(
+            call(&client, a, Action::GuildForPlayer).await.unwrap(),
+            Reply::PlayerGuild(None)
+        );
+        assert_eq!(
+            call(&client, a, Action::SendFriendRequest(b))
+                .await
+                .unwrap(),
+            Reply::Changed(true)
+        );
+        assert_eq!(
+            call(
+                &client,
+                a,
+                Action::RespondFriendRequest {
+                    requester: a,
+                    accept: true
+                }
+            )
+            .await,
+            Err(Error::Backend(accounts::Error::InvalidInput))
+        );
+        assert_eq!(
+            call(
+                &client,
+                b,
+                Action::RespondFriendRequest {
+                    requester: a,
+                    accept: true
+                }
+            )
+            .await
+            .unwrap(),
+            Reply::Changed(true)
+        );
+        assert_eq!(
+            call(&client, a, Action::ListFriends).await.unwrap(),
+            Reply::Friends(vec![b])
+        );
+        let Reply::Guild(guild) = call(&client, a, Action::CreateGuild("Worker Guild".into()))
+            .await
+            .unwrap()
+        else {
+            panic!("wrong projection")
+        };
+        let Reply::PlayerGuild(Some((current, members))) =
+            call(&client, a, Action::GuildForPlayer).await.unwrap()
+        else {
+            panic!("missing guild")
+        };
+        assert_eq!(current, guild);
+        assert_eq!(members.len(), 1);
+        assert_eq!(
+            call(&client, b, Action::JoinGuild(guild.id)).await.unwrap(),
+            Reply::Changed(true)
+        );
+        let Reply::PlayerGuild(Some((joined, members))) =
+            call(&client, b, Action::GuildForPlayer).await.unwrap()
+        else {
+            panic!("missing joined guild")
+        };
+        assert_eq!(joined, guild);
+        assert_eq!(members.len(), 2);
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
 fn social_admission_is_bounded_and_cancelled_or_expired_writes_do_not_run() {
     let _serial = TEST_SERIAL.lock().unwrap();
     let (temp, alice, bob) = Temp::new();

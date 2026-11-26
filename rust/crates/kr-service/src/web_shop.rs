@@ -8,7 +8,7 @@ use crate::{
     accounts::{
         self, CatalogAccess, PlayerProfile, ShopCatalog, ShopCategory, ShopItem, UsableItem,
     },
-    accounts::{Guild, GuildMember, RankingEntry},
+    accounts::{FriendRequest, Guild, GuildMember, RankingEntry},
 };
 use http::{Request, Response, Status};
 use serde::{Deserialize, Serialize};
@@ -376,6 +376,13 @@ struct SocialTarget {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+struct FriendResponseInput {
+    requester_player_id: i64,
+    accept: bool,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 struct RankingQuery {
     offset: Option<u32>,
     limit: Option<u32>,
@@ -384,6 +391,15 @@ struct RankingQuery {
 #[derive(Serialize)]
 struct FriendsResponse {
     friends: Vec<i64>,
+    friend_requests: Vec<FriendRequest>,
+    incoming_requests: Vec<FriendRequest>,
+    outgoing_requests: Vec<FriendRequest>,
+}
+
+#[derive(Serialize)]
+struct FriendRequestsResponse {
+    incoming: Vec<FriendRequest>,
+    outgoing: Vec<FriendRequest>,
 }
 
 #[derive(Serialize)]
@@ -649,9 +665,19 @@ async fn social_route(
     }
     match request.path() {
         "/api/social/friends" => match request.method() {
-            "GET" => Ok(Response::json(&FriendsResponse {
-                friends: service.social_friends(player).await?,
-            })),
+            "GET" => {
+                let requests = service.social_friend_requests(player).await?;
+                let friend_requests = requests.clone();
+                let (incoming_requests, outgoing_requests): (Vec<_>, Vec<_>) = requests
+                    .into_iter()
+                    .partition(|request| request.recipient_id == player);
+                Ok(Response::json(&FriendsResponse {
+                    friends: service.social_friends(player).await?,
+                    friend_requests,
+                    incoming_requests,
+                    outgoing_requests,
+                }))
+            }
             "POST" | "DELETE" => {
                 request.require_method(request.method())?;
                 let input: SocialTarget = request.json()?;
@@ -669,6 +695,28 @@ async fn social_route(
             }
             _ => Err(Status::MethodNotAllowed),
         },
+        "/api/social/friend-requests" => {
+            request.require_method("GET")?;
+            let requests = service.social_friend_requests(player).await?;
+            let (incoming, outgoing): (Vec<_>, Vec<_>) = requests
+                .into_iter()
+                .partition(|request| request.recipient_id == player);
+            Ok(Response::json(&FriendRequestsResponse {
+                incoming,
+                outgoing,
+            }))
+        }
+        "/api/social/friends/respond" => {
+            request.require_method("POST")?;
+            let input: FriendResponseInput = request.json()?;
+            if input.requester_player_id < 1 || input.requester_player_id == player {
+                return Err(Status::BadRequest);
+            }
+            let changed = service
+                .social_friend_respond(player, input.requester_player_id, input.accept)
+                .await?;
+            Ok(Response::json(&json!({"changed": changed})))
+        }
         "/api/social/blocks" => match request.method() {
             "GET" => Ok(Response::json(&BlocksResponse {
                 blocks: service.social_blocks(player).await?,
@@ -690,9 +738,12 @@ async fn social_route(
         },
         "/api/social/guild" => {
             request.require_method("GET")?;
-            Ok(Response::json(
-                &json!({"guild": Option::<Guild>::None, "members": Vec::<GuildMember>::new()}),
-            ))
+            let result = service.social_guild(player).await?;
+            let (guild, members) = result.map_or(
+                (Option::<Guild>::None, Vec::<GuildMember>::new()),
+                |(guild, members)| (Some(guild), members),
+            );
+            Ok(Response::json(&json!({"guild": guild, "members": members})))
         }
         "/api/social/ranking" => {
             request.require_method("GET")?;

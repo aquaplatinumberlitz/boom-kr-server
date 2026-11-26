@@ -20,6 +20,10 @@ pub enum SocialAction {
     SendFriendRequest(i64),
     AcceptFriendRequest(i64),
     DeclineFriendRequest(i64),
+    RespondFriendRequest {
+        requester: i64,
+        accept: bool,
+    },
     CancelFriendRequest(i64),
     RemoveFriend(i64),
     BlockPlayer(i64),
@@ -47,6 +51,7 @@ pub enum SocialAction {
         guild_id: i64,
         successor: i64,
     },
+    GuildForPlayer,
     ListGuildMembers(i64),
     /// Stable ordering on unchanged data; requests do not share a snapshot.
     Ranking {
@@ -67,6 +72,7 @@ pub enum SocialReply {
     CanReceivePublicChat(bool),
     Guild(Guild),
     GuildMembers(Vec<GuildMember>),
+    PlayerGuild(Option<(Guild, Vec<GuildMember>)>),
     LeadershipTransferred,
     Ranking(Vec<RankingEntry>),
 }
@@ -205,6 +211,36 @@ impl AccountService {
             _ => Err(Error::WorkerFault),
         }
     }
+    pub(crate) async fn social_friend_requests(&self, player: i64) -> Result<Vec<FriendRequest>> {
+        match self
+            .client
+            .try_social(player, SocialAction::ListFriendRequests)?
+            .wait()
+            .await?
+        {
+            SocialReply::FriendRequests(rows) => Ok(rows),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_friend_respond(
+        &self,
+        player: i64,
+        requester: i64,
+        accept: bool,
+    ) -> Result<bool> {
+        match self
+            .client
+            .try_social(
+                player,
+                SocialAction::RespondFriendRequest { requester, accept },
+            )?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
     pub(crate) async fn social_block_add(&self, player: i64, target: i64) -> Result<bool> {
         match self
             .client
@@ -240,6 +276,20 @@ impl AccountService {
             .await?
         {
             SocialReply::Ranking(rows) => Ok(rows),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    pub(crate) async fn social_guild(
+        &self,
+        player: i64,
+    ) -> Result<Option<(Guild, Vec<GuildMember>)>> {
+        match self
+            .client
+            .try_social(player, SocialAction::GuildForPlayer)?
+            .wait()
+            .await?
+        {
+            SocialReply::PlayerGuild(guild) => Ok(guild),
             _ => Err(Error::WorkerFault),
         }
     }
@@ -304,6 +354,9 @@ fn execute_player(
         SocialAction::DeclineFriendRequest(target) => {
             Changed(store.decline_friend_request(player, target, now)?)
         }
+        SocialAction::RespondFriendRequest { requester, accept } => {
+            Changed(store.respond_friend_request(player, requester, accept, now)?)
+        }
         SocialAction::CancelFriendRequest(target) => {
             Changed(store.cancel_friend_request(player, target, now)?)
         }
@@ -341,6 +394,7 @@ fn execute_player(
         SocialAction::ListGuildMembers(guild) => {
             GuildMembers(store.list_guild_members(guild, now)?)
         }
+        SocialAction::GuildForPlayer => PlayerGuild(store.guild_for_player(player, now)?),
         SocialAction::Ranking { offset, limit } => Ranking(store.ranking(offset, limit)?),
     })
 }
