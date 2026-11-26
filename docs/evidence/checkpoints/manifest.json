@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP399",
-  "completed_count": 399,
+  "last_id": "CP403",
+  "completed_count": 403,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1301,6 +1301,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md#full-game-roadmap",
       "reference": "docs/protocol/life-results.md#f4a-profile-result-projection"
+    },
+    {
+      "id": "KRE-F4-B",
+      "state": "open",
+      "canonical": "docs/PLAN.md#full-game-roadmap",
+      "reference": "docs/protocol/f4-inventory-cosmetics.md#f4b-reader-slots-w4"
     }
   ],
   "version": 2,
@@ -4496,6 +4502,38 @@
       "path": "docs/evidence/checkpoints/records/CP399.json",
       "bytes": 6149,
       "sha256": "24405901e3fe2f85dbc3d96f422a596cf2dc5d1adf06111e5d3910b68411f643"
+    },
+    {
+      "id": "CP400",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-26T11:36:31Z",
+      "path": "docs/evidence/checkpoints/records/CP400.json",
+      "bytes": 6787,
+      "sha256": "66ff95b9db3cfebc5d2ac9d360483e993463d8459bd5b4c1f4d0267a447ffca5"
+    },
+    {
+      "id": "CP401",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-26T11:42:00Z",
+      "path": "docs/evidence/checkpoints/records/CP401.json",
+      "bytes": 7573,
+      "sha256": "41a58f40a810abe843f84c45bd077e6d1fad3e7b9b09790886e1ecc39d05b538"
+    },
+    {
+      "id": "CP402",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-26T11:52:41Z",
+      "path": "docs/evidence/checkpoints/records/CP402.json",
+      "bytes": 7323,
+      "sha256": "38e19f51b901469a827dc24387b3b97e11307b347782cf8a48753b810ccb4a7e"
+    },
+    {
+      "id": "CP403",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-26T11:59:05Z",
+      "path": "docs/evidence/checkpoints/records/CP403.json",
+      "bytes": 8686,
+      "sha256": "5afaefe677dd436be6433be1aae76a53472219c9f1f7dedcbc720611876d2b01"
     }
   ],
   "audit_policy": {
