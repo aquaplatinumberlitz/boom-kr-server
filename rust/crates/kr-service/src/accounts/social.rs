@@ -53,6 +53,13 @@ impl ChatMuteReason {
     }
 }
 
+#[derive(Debug, PartialEq, Eq)]
+pub struct SocialMute {
+    pub mute_until: i64,
+    /// Schema 9 stores only the fixed ChatMuteReason codes.
+    pub reason: String,
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ChatPermission {
     Allowed,
@@ -434,6 +441,29 @@ impl Store {
         positive_id(player)?;
         validate_mute_duration(duration)?;
         self.at(now, |tx| insert_mute(tx, player, duration, reason, now))
+    }
+
+    /// Read the active grant with the latest deadline. The deferred snapshot
+    /// validates the actor and reads the grant without advancing the DB clock.
+    pub fn social_mute_status(&self, player: i64, now: i64) -> Result<Option<SocialMute>> {
+        positive_id(player)?;
+        let tx = self.db.unchecked_transaction()?;
+        active_player(&tx, player, now)?;
+        let mute = tx
+            .query_row(
+                "SELECT expires_at,reason FROM social_mutes
+                 WHERE player_id=?1 AND expires_at>?2 ORDER BY expires_at DESC,id DESC LIMIT 1",
+                params![player, now],
+                |row| {
+                    Ok(SocialMute {
+                        mute_until: row.get(0)?,
+                        reason: row.get(1)?,
+                    })
+                },
+            )
+            .optional()?;
+        tx.commit()?;
+        Ok(mute)
     }
 
     /// Checks and consumes one send slot atomically. Only `Ok(Allowed)` permits

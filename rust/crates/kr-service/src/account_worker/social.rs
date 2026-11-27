@@ -6,7 +6,7 @@ use super::economy::AccountService;
 use super::{Client, Command, Error, Pending, Result};
 use crate::accounts::{
     self, ChatMuteReason, ChatPermission, FriendRequest, Guild, GuildLeaderAction, GuildMember,
-    RankingEntry, Store, Token,
+    RankingEntry, SocialMute, Store, Token,
 };
 use std::time::Instant;
 use tokio::sync::oneshot;
@@ -31,6 +31,8 @@ pub enum SocialAction {
     ListFriends,
     ListBlocks,
     ListFriendRequests,
+    /// Read the active mute without reserving a send slot or recording a denial.
+    MuteStatus,
     /// Only Allowed grants a send slot. Denials record metadata in Schema 9.
     CheckChatPermission {
         recipient: Option<i64>,
@@ -74,6 +76,7 @@ pub enum SocialReply {
     Friends(Vec<i64>),
     Blocks(Vec<i64>),
     FriendRequests(Vec<FriendRequest>),
+    MuteStatus(Option<SocialMute>),
     ChatPermission(ChatPermission),
     CanReceivePublicChat(bool),
     Guild(Guild),
@@ -170,6 +173,18 @@ impl Client {
 }
 
 impl AccountService {
+    pub(crate) async fn social_mute_status(&self, player: i64) -> Result<Option<SocialMute>> {
+        match self
+            .client
+            .try_social(player, SocialAction::MuteStatus)?
+            .wait()
+            .await?
+        {
+            SocialReply::MuteStatus(mute) => Ok(mute),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+
     /// Minimal web-facing social facade. The caller supplies an identity that
     /// was already bound by the web session; all work remains on the account
     /// worker and never touches O1 session cosmetics.
@@ -433,6 +448,7 @@ fn execute_player(
         SocialAction::ListFriendRequests => {
             FriendRequests(store.list_friend_requests(player, now)?)
         }
+        SocialAction::MuteStatus => MuteStatus(store.social_mute_status(player, now)?),
         SocialAction::CheckChatPermission {
             recipient,
             message_bytes,

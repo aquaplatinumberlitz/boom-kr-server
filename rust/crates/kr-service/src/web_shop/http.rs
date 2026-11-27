@@ -31,6 +31,13 @@ impl Request {
             Err(Status::MethodNotAllowed)
         }
     }
+    pub fn require_queryless_get(&self) -> Result<(), Status> {
+        self.require_method("GET")?;
+        if self.query().is_some() {
+            return Err(Status::BadRequest);
+        }
+        Ok(())
+    }
     pub fn digest(&self) -> Option<zeroize::Zeroizing<[u8; 32]>> {
         let value = self
             .headers

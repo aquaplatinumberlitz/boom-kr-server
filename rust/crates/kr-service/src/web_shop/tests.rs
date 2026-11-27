@@ -56,6 +56,7 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("p.lucci"));
     assert!(page.contains("p.mode"));
     assert!(page.contains("/api/v1/inventory"));
+    assert!(page.contains("/api/v1/cosmetics-summary"));
     assert!(page.contains("/api/v1/unequip"));
     assert!(page.contains("/api/social/friends"));
     assert!(page.contains("/api/social/friends/respond"));
@@ -67,6 +68,7 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("leave-guild"));
     assert!(page.contains("disband-guild"));
     assert!(page.contains("/api/social/blocks"));
+    assert!(page.contains("/api/social/chat-status"));
     assert!(page.contains("/api/social/ranking?limit=10"));
     let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
         .await
@@ -202,6 +204,198 @@ fn test_settings() -> crate::account_worker::EconomySettings {
         },
     )
     .unwrap()
+}
+
+#[tokio::test]
+async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
+    use crate::account_worker::Worker;
+    use crate::accounts::{Admin, ChatMuteReason, ItemGrant, Store, TEST_SERIAL};
+
+    const CHAT: &str = "/api/social/chat-status";
+    const COSMETICS: &str = "/api/v1/cosmetics-summary";
+    let (_dir, db) = temp_db("summaries");
+    let (player, expired_player) = {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let mut store = Store::open(&db).unwrap();
+        let now = crate::match_journal::utc().unwrap();
+        let admin = Admin {
+            actor: "webshop-test",
+            reason: "Projection summary loopback fixture",
+        };
+        let player = store
+            .create_account(
+                &admin,
+                "shopuser",
+                "ShopUser",
+                b"shop-test-password-1",
+                now - 60,
+            )
+            .unwrap()
+            .player_id;
+        let expired_player = store
+            .create_account(
+                &admin,
+                "expired",
+                "ExpiredMute",
+                b"shop-test-password-2",
+                now - 60,
+            )
+            .unwrap()
+            .player_id;
+        assert_eq!(
+            store
+                .mute_social_player(expired_player, 60, ChatMuteReason::Moderation, now - 60)
+                .unwrap(),
+            now
+        );
+        assert_eq!(store.social_mute_status(expired_player, now).unwrap(), None);
+        for sku in ["char.bazzi", "hat.fancy"] {
+            store
+                .admin_grant_item(&admin, player, sku, ItemGrant::Permanent, 1, sku, now)
+                .unwrap();
+        }
+        (player, expired_player)
+    };
+    let worker = Worker::open_with_economy(db.clone(), 8, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let token = auth.issue_token(player).unwrap();
+    let expired_token = auth.issue_token(expired_player).unwrap();
+    let revoked = auth.issue_token(player).unwrap();
+    auth.revoke_token(&revoked);
+    let token = Some(token.as_str());
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    let task = tokio::spawn(serve_listener(listener, config(), worker.service(), auth));
+
+    for path in [CHAT, COSMETICS] {
+        for invalid in [None, Some("invalid"), Some(revoked.as_str())] {
+            let (status, _, payload) = send_http(addr, "GET", path, invalid, None).await;
+            assert_eq!((status, payload), (401, json!({"error": "unauthorized"})));
+        }
+        assert_eq!(send_http(addr, "POST", path, token, None).await.0, 405);
+        for query in ["?", "?player_id=1"] {
+            let path = format!("{path}{query}");
+            assert_eq!(send_http(addr, "GET", &path, token, None).await.0, 400);
+        }
+    }
+
+    let observer = rusqlite::Connection::open(&db).unwrap();
+    let db_state = || {
+        let version = observer
+            .pragma_query_value::<i64, _>(None, "data_version", |r| r.get(0))
+            .unwrap();
+        let (quota, abuse_events, audit_events): (i64, i64, i64) = observer
+            .query_row(
+                "SELECT (SELECT coalesce(sum(accepted),0) FROM chat_rate_windows),
+                        (SELECT count(*) FROM chat_abuse_events),
+                        (SELECT count(*) FROM admin_audit)",
+                [],
+                |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
+            )
+            .unwrap();
+        (version, quota, abuse_events, audit_events)
+    };
+    let before = db_state();
+    let (status, head, chat) = send_http(addr, "GET", CHAT, token, None).await;
+    assert_eq!(status, 200);
+    assert!(head.contains("Cache-Control: no-store"));
+    assert_eq!(
+        chat,
+        json!({
+            "mute_status": "available",
+            "muted": false,
+            "mute_until": null,
+            "mute_reason": null,
+            "choco_chat": {
+                "extended_live_routing": false,
+                "wire_status": "unmeasured",
+                "local_policy_defaults": {
+                    "whisper": false, "guild_chat": false, "megaphone": false,
+                    "offline_note": false, "couple": false, "plaza": false,
+                },
+            },
+        })
+    );
+    let (status, head, empty) = send_http(addr, "GET", COSMETICS, token, None).await;
+    assert_eq!(status, 200);
+    assert!(head.contains("Cache-Control: no-store"));
+    assert_eq!(
+        empty,
+        json!({
+            "source": "inventory",
+            "equipped": [],
+            "mutual_exclusion": {"valid": true, "conflicting_slot": null},
+            "inventory_layout": {"status": "static_candidate", "gap": INVENTORY_CAPTURE_GAP},
+        })
+    );
+    assert_eq!(db_state(), before);
+
+    let mute_until = worker
+        .client()
+        .try_mute_social_player(player, 3600, ChatMuteReason::Spam)
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
+    worker
+        .client()
+        .try_mute_social_player(player, 60, ChatMuteReason::Harassment)
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
+    for sku in ["char.bazzi", "hat.fancy"] {
+        let input = json!({"sku": sku}).to_string();
+        assert_eq!(
+            send_http(addr, "POST", "/api/v1/equip", token, Some(&input))
+                .await
+                .0,
+            200
+        );
+    }
+    let before = db_state();
+    let (status, _, chat_after_mute) = send_http(addr, "GET", CHAT, token, None).await;
+    let mut active = chat.clone();
+    active["muted"] = json!(true);
+    active["mute_until"] = json!(mute_until);
+    active["mute_reason"] = json!("spam");
+    assert_eq!((status, chat_after_mute), (200, active));
+    let (status, _, expired) =
+        send_http(addr, "GET", CHAT, Some(expired_token.as_str()), None).await;
+    assert_eq!((status, expired), (200, chat));
+    let (status, _, equipped) = send_http(addr, "GET", COSMETICS, token, None).await;
+    assert_eq!(status, 200);
+    assert_eq!(equipped["mutual_exclusion"], empty["mutual_exclusion"]);
+    assert_eq!(equipped["inventory_layout"], empty["inventory_layout"]);
+    let rows = equipped["equipped"].as_array().unwrap();
+    assert_eq!(rows.len(), 2);
+    for (row, slot, sku, target) in [
+        (&rows[0], "character", "char.bazzi", "character"),
+        (&rows[1], "head", "hat.fancy", "hat"),
+    ] {
+        assert_eq!(row["slot"], slot);
+        assert_eq!(row["sku_id"], sku);
+        assert_eq!(row["target"], target);
+        assert_eq!(row["projection_status"], "unmeasured");
+        assert_eq!(row["wire_gap"], UNMEASURED_WIRE_GAP);
+    }
+    let character = rows[0]["target_surfaces"].as_array().unwrap();
+    assert_eq!(character[0]["anchor"], "character92");
+    assert_eq!(character[0]["status"], "measured");
+    assert_eq!(character[1]["surface"], "own291");
+    assert_eq!(character[1]["status"], "unmeasured");
+    assert_eq!(character[1]["gap"], UNMEASURED_WIRE_GAP);
+    let hat = rows[1]["target_surfaces"].as_array().unwrap();
+    assert_eq!(hat.len(), 4);
+    assert!(hat.iter().all(|surface| surface["status"] == "unmeasured"
+        && surface["gap"] == UNMEASURED_WIRE_GAP
+        && surface["anchor"].is_null()));
+    assert_eq!(db_state(), before);
+
+    task.abort();
+    worker.shutdown().await.unwrap();
 }
 
 #[tokio::test]
@@ -917,6 +1111,16 @@ async fn unlock_all_selection_is_isolated_per_token_and_bypasses_sqlite() {
     let (code, _, other) = send_http(addr, "GET", inventory, Some(second.as_str()), None).await;
     assert_eq!(code, 200);
     assert_eq!(other, empty);
+    let summary = "/api/v1/cosmetics-summary";
+    let (code, _, first_summary) = send_http(addr, "GET", summary, tok, None).await;
+    assert_eq!(code, 200);
+    assert_eq!(first_summary["source"], "session");
+    assert_eq!(first_summary["equipped"][0]["sku_id"], "char.bazzi");
+    assert_eq!(first_summary["equipped"][1]["sku_id"], "hat.fancy");
+    let (code, _, second_summary) =
+        send_http(addr, "GET", summary, Some(second.as_str()), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(second_summary["equipped"], json!([]));
     for expected in [true, false] {
         let (code, _, result) = send_http(addr, "POST", unequip, tok, Some(hat)).await;
         assert_eq!(code, 200);
