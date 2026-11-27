@@ -1,0 +1,354 @@
+{
+  "schema": "kre.f4-powerups-boosters.v1",
+  "task": "F4-e",
+  "build": "KR 00967",
+  "scope": "Đặc tả dựa trên nguồn đã commit. Không có phép đo client mới hoặc hợp đồng wire F4-e.",
+  "sources": {
+    "roadmap": {
+      "classification": "docs/content/classification.json",
+      "plan": "docs/PLAN.md#full-game-roadmap",
+      "pr": 713,
+      "commit": "27b93c0a1dd3a32820cd9176938046a3265117a8"
+    },
+    "owner_directive": {
+      "path": "docs/evidence/owner-directives/full-content-coverage.json",
+      "recorded_utc": "2026-11-27T07:00:00+00:00"
+    },
+    "kr_static": {
+      "path": "docs/evidence/content/f4-ida-clusters.json",
+      "build": "KR 00967",
+      "image_base": "0x400000",
+      "client_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+      "ida_image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b"
+    },
+    "inventory_contract": "docs/protocol/f4-inventory-cosmetics.md#f4b-inventory-contract",
+    "economy_architecture": "docs/architecture/f4-economy-service.md",
+    "result_projection": "docs/protocol/life-results.md#f4a-profile-result-projection",
+    "room_rules": "rust/crates/kr-service/src/rules.rs"
+  },
+  "systems": {
+    "power_up_kits": {
+      "title": "Bộ tăng sức mạnh",
+      "kr_terms": [
+        "파워업 키트"
+      ],
+      "roadmap": {
+        "source": "roadmap",
+        "status": "candidate",
+        "name": "Bộ tăng sức mạnh (파워업 키트)",
+        "note": "Tăng chỉ số khởi đầu, đeo tối đa 2 bộ; chưa biết trường trang bị và giới hạn."
+      },
+      "static_anchors": [
+        {
+          "source": "kr_static",
+          "status": "confirmed",
+          "association_status": "candidate",
+          "wire_status": "unknown",
+          "direction": "S→C",
+          "dispatcher": "CStage",
+          "opcode": 418,
+          "case_va": "0xd6af22",
+          "strings": [
+            "PowerUpKitFail",
+            "PowerUpKitInvenFull",
+            "PowerUpKitUnlimitedFull",
+            "PurchaseItemBagByLevelUpTreasure"
+          ],
+          "limit": "Chưa có reader thân hàm trong dump."
+        }
+      ],
+      "gaps": {
+        "wire": {
+          "status": "unknown",
+          "detail": "Opcode và payload chọn, trang bị, tháo kit và chiếu chỉ số vào Start; ánh xạ SKU, slot và mã lỗi."
+        },
+        "formula": {
+          "status": "unknown",
+          "detail": "Mức cộng theo từng kit, thứ tự cộng dồn, trần KR và cách xử lý kit hết hạn giữa trận."
+        }
+      },
+      "policy": {
+        "source": "design",
+        "status": "design",
+        "server_configurable": true,
+        "enabled_by_default": false,
+        "constraints": {
+          "max_equipped_slots": 2,
+          "enforce_room_stat_caps": true
+        },
+        "rules": [
+          "Máy chủ cho phép tối đa 2 slot kit còn hiệu lực. Cấu hình có thể hạ giới hạn; trang bị quá giới hạn bị từ chối mà không xóa lựa chọn cũ.",
+          "Khi phòng cho phép kit, máy chủ chốt trang bị hợp lệ lúc bắt đầu trận. `RoomRules` quyết định có áp dụng kit và giữ trần hiệu lực theo nhân vật, mode và map cho số bom, sức nổ và tốc độ; kit không nâng các trần đó.",
+          "Phòng cấm kit dùng chỉ số gốc. Chưa chiếu bonus lên client cho đến khi đo được consumer và đơn vị chỉ số."
+        ]
+      },
+      "next_check": "So cùng nhân vật và map khi đeo 0, 1, 2 kit, thử thêm kit thứ ba và thử phòng cấm kit; đối chiếu Start, HUD và chỉ số khi chạm trần."
+    },
+    "boosters_all_maps_pass": {
+      "title": "Vé ưu đãi và quyền chọn map",
+      "kr_terms": [
+        "지존권",
+        "EXP +50%",
+        "루찌 2배"
+      ],
+      "roadmap": {
+        "source": "roadmap",
+        "status": "candidate",
+        "name": "Vé ưu đãi (지존권, EXP +50%, VÀNG x2)",
+        "note": "Chọn mọi map, VÀNG an ủi, thêm EXP và VÀNG, màn thưởng; server tự cấu hình vì game miễn phí."
+      },
+      "static_anchors": [],
+      "gaps": {
+        "wire": {
+          "status": "unknown",
+          "detail": "Opcode, payload, thời hạn và trạng thái bật vé, danh sách map hoặc màn thưởng, và cách chiếu phần thưởng cộng thêm."
+        },
+        "formula": {
+          "status": "unknown",
+          "detail": "Điều kiện hưởng, VÀNG an ủi, lịch màn thưởng, gốc tính, cộng dồn, làm tròn và trần khi chốt EXP/Lucci."
+        }
+      },
+      "policy": {
+        "source": "design",
+        "status": "design",
+        "server_configurable": true,
+        "enabled_by_default": false,
+        "constraints": {
+          "paid_entitlements": false,
+          "combat_bonus": false,
+          "ranked_bonus": false,
+          "enforce_room_map_pool": true,
+          "default_reward_percent": {
+            "exp": 100,
+            "lucci": 100
+          }
+        },
+        "rules": [
+          "Vé chỉ cấp miễn phí theo điều kiện công khai, áp dụng như nhau cho mọi người đủ điều kiện. Không bán vé hoặc dùng vé để mua lợi thế trong trận.",
+          "Cấu hình máy chủ quyết định nhóm phòng thường, cách cấp, hạn dùng và tỷ lệ thưởng. Tỷ lệ mặc định là 100% thưởng gốc; EXP +50% và Lucci x2 chỉ là nhãn tham khảo.",
+          "Mọi map nghĩa là mọi map máy chủ đã mở cho mode và đã qua kiểm tra `RoomRules`. Vé không vượt allowlist, roster, hạn chế sự kiện hay luật phòng và không ưu đãi xếp hạng.",
+          "Nếu bật thưởng, máy chủ tính một lần lúc chốt trận qua `finish_match_settled`; client không tự quyết định mức thưởng."
+        ]
+      },
+      "next_check": "So ván cùng kết quả có và không có vé, thử map hợp lệ và map bị chặn. Đo UI, thay đổi EXP/Lucci và kết quả khi phát lại; projection số dư hoặc tiến độ F4-a riêng lẻ không chứng minh có booster."
+    },
+    "upgrades_enhancement": {
+      "title": "Cường hóa và nâng cấp",
+      "kr_terms": [
+        "강화"
+      ],
+      "roadmap": {
+        "source": "roadmap",
+        "status": "candidate",
+        "name": "Cường hóa và nâng cấp (강화)",
+        "note": "Nâng cấp item, pet, bóng nước và đồ RPG bằng nguyên liệu; chưa có công thức và tỉ lệ."
+      },
+      "static_anchors": [],
+      "gaps": {
+        "wire": {
+          "status": "unknown",
+          "detail": "Opcode và payload xem công thức, gửi yêu cầu, báo kết quả và cập nhật vật phẩm, pet, bóng nước hoặc đồ RPG."
+        },
+        "formula": {
+          "status": "unknown",
+          "detail": "Bảng công thức, nguyên liệu, chi phí, tỷ lệ thành công, mức cộng, trần cấp và xử lý nguyên liệu hoặc vật phẩm khi thất bại."
+        }
+      },
+      "policy": {
+        "source": "design",
+        "status": "design",
+        "server_configurable": true,
+        "enabled_by_default": false,
+        "constraints": {
+          "allow_unconfigured_recipes": false
+        },
+        "rules": [
+          "Công thức, nguyên liệu, chi phí, tỷ lệ và kết quả thất bại phải do máy chủ cấu hình theo từng loại vật phẩm. Không tự suy ra công thức giữa item, pet, bóng nước và đồ RPG.",
+          "Trong chế độ thường có lưu túi, máy chủ kiểm quyền sở hữu và công thức rồi ghi kết quả cùng thay đổi túi trong một giao dịch. Phát lại cùng thao tác trả kết quả cũ, không bốc kết quả mới hoặc trừ hai lần."
+        ]
+      },
+      "next_check": "Đo từng họ riêng, từ xem công thức tới một lượt thành công, thất bại và thiếu nguyên liệu. So UI, gói tin và thay đổi túi; một lần thành công không xác lập tỷ lệ KR."
+    },
+    "gifts_coupons": {
+      "title": "Tặng quà và đổi phiếu",
+      "kr_terms": [
+        "선물하기",
+        "쿠폰"
+      ],
+      "roadmap": {
+        "source": "roadmap",
+        "status": "candidate",
+        "name": "Tặng quà và phiếu (선물하기, 쿠폰)",
+        "note": "Tặng item cho người khác và dùng phiếu đổi; bỏ phần tiền thật của Nexon."
+      },
+      "static_anchors": [
+        {
+          "source": "kr_static",
+          "status": "confirmed",
+          "association_status": "candidate",
+          "wire_status": "unknown",
+          "direction": "S→C",
+          "dispatcher": "CShopStageNew",
+          "opcode": 236,
+          "case_va": "0x1072ddf",
+          "strings": [
+            "UseItemCoupon",
+            "ValidFor",
+            "%s",
+            "Each"
+          ],
+          "limit": "Có cảnh báo bad sp và đoạn trích chỉ có khai báo; chưa có layout."
+        },
+        {
+          "source": "kr_static",
+          "status": "confirmed",
+          "association_status": "candidate",
+          "wire_status": "unknown",
+          "direction": "S→C",
+          "dispatcher": "CShopStageNew",
+          "opcode": 237,
+          "case_va": "0x1072dfd",
+          "strings": [
+            "UseItemCoupon",
+            "%s",
+            "Each",
+            " %d"
+          ],
+          "limit": "Đoạn trích chỉ có khai báo; chưa có layout."
+        },
+        {
+          "source": "kr_static",
+          "status": "confirmed",
+          "association_status": "candidate",
+          "wire_status": "unknown",
+          "direction": "S→C",
+          "dispatcher": "CShopStageNew",
+          "opcode": 345,
+          "case_va": "0x1072efc",
+          "strings": [
+            "CrazyPark_ReceiveCouponGift"
+          ],
+          "limit": "Nhánh dùng chuỗi CrazyPark_ReceiveCouponGift; kiểu nội dung và điều kiện trả về còn thiếu."
+        }
+      ],
+      "gaps": {
+        "wire": {
+          "status": "unknown",
+          "detail": "Opcode và payload gửi, nhận và đổi; mã hóa, độ dài và nghĩa trường của mã phiếu, mã kết quả và cập nhật túi."
+        },
+        "formula": {
+          "status": "unknown",
+          "detail": "Điều kiện nhận hoặc tặng, danh mục đổi, hạn, hạn mức, số lần đổi và phần thưởng KR."
+        }
+      },
+      "policy": {
+        "source": "design",
+        "status": "design",
+        "server_configurable": true,
+        "enabled_by_default": false,
+        "constraints": {
+          "nexon_real_money_billing": false,
+          "paid_currency": false,
+          "o1_transferable": false
+        },
+        "rules": [
+          "Chỉ tặng vật phẩm sở hữu hợp lệ hoặc đổi phiếu cục bộ do máy chủ cấp. Loại trừ hoàn toàn Nexon Cash, thanh toán tiền thật, xác minh hóa đơn và dịch vụ đổi phiếu Nexon.",
+          "Máy chủ cấu hình SKU được phép tặng, thời hạn, hạn mức và grant. Chuyển quà hoặc đổi phiếu ghi thay đổi túi và biên nhận trong một giao dịch; phát lại không cấp thêm. Quyền phiên O1 không chuyển thành vật phẩm có thể tặng."
+        ]
+      },
+      "next_check": "Dùng hai tài khoản và phiếu thử trên stub cục bộ; đo tặng, nhận, đổi hợp lệ, hết hạn, bị từ chối và phát lại. Ghép hành động với frame, UI và biến động túi."
+    },
+    "second_password": {
+      "title": "Mật khẩu cấp 2",
+      "kr_terms": [
+        "2차 비밀번호"
+      ],
+      "roadmap": {
+        "source": "roadmap",
+        "status": "candidate",
+        "name": "Mật khẩu cấp 2 (2차 비밀번호)",
+        "note": "Lớp bảo vệ tài khoản trong game; chưa có wire tạo và xác thực."
+      },
+      "static_anchors": [
+        {
+          "source": "kr_static",
+          "status": "confirmed",
+          "association_status": "candidate",
+          "wire_status": "unknown",
+          "direction": "S→C",
+          "dispatcher": "CStage",
+          "opcode": 245,
+          "case_va": "0xd6ac9c",
+          "strings": [
+            "ItemLockErrWrongPassword",
+            "ResellItemClose",
+            "ResellItemFail",
+            "ResellItemSuccess"
+          ],
+          "limit": "Chưa có reader thân hàm trong dump."
+        },
+        {
+          "source": "kr_static",
+          "status": "confirmed",
+          "association_status": "candidate",
+          "wire_status": "unknown",
+          "direction": "S→C",
+          "dispatcher": "CStage",
+          "opcode": 377,
+          "case_va": "0xd6abf3",
+          "strings": [
+            "ItemLockDisableSuccess",
+            "ItemLockDeleteSuccess",
+            "ItemLockErrWrongPassword",
+            "ItemLockDisableAbnormalFail"
+          ],
+          "limit": "Chưa có reader thân hàm trong dump."
+        },
+        {
+          "source": "kr_static",
+          "status": "confirmed",
+          "association_status": "candidate",
+          "wire_status": "unknown",
+          "direction": "S→C",
+          "dispatcher": "CStage",
+          "opcode": 378,
+          "case_va": "0xd6ac05",
+          "strings": [
+            "9",
+            "ItemLockChangeSuccess",
+            "ItemLockChangeWrongPassword",
+            "ItemLockChangeAbnormalFail"
+          ],
+          "limit": "Chưa có reader thân hàm trong dump."
+        }
+      ],
+      "gaps": {
+        "wire": {
+          "status": "unknown",
+          "detail": "Opcode hai chiều và payload tạo, xác thực, khóa, mở khóa, đổi và tắt; quy cách mã hóa và mã lỗi. Các case ItemLock không xác nhận route mật khẩu cấp 2."
+        },
+        "formula": {
+          "status": "unknown",
+          "detail": "Số lần sai, cửa sổ đếm, thời gian khóa, điều kiện reset và phạm vi thao tác được bảo vệ trong KR."
+        }
+      },
+      "policy": {
+        "source": "design",
+        "status": "design",
+        "server_configurable": true,
+        "enabled_by_default": false,
+        "constraints": {
+          "max_failed_attempts": 5,
+          "failure_window_seconds": 900,
+          "cooldown_seconds": 300
+        },
+        "rules": [
+          "Yêu cầu phiên đăng nhập chính hợp lệ. Quyền mở khóa chỉ có hiệu lực trong phiên; máy chủ thu hồi quyền khi đăng xuất và thu hồi ở mọi phiên khi đổi mật khẩu. Không ghi mật khẩu rõ vào log hay lưu trữ.",
+          "Đếm lỗi theo tài khoản trên mọi phiên cho thao tác mở khóa, đổi hoặc tắt. Mặc định đề xuất: 5 lần sai trong cửa sổ 900 giây sẽ khóa thử lại 300 giây. Cấu hình cho phép 1–5 lần, cửa sổ 60–900 giây và khóa 60–900 giây.",
+          "Thao tác khóa lại thu hồi quyền mở khóa của phiên. Thao tác sai không mở khóa. Kết nối lại không xóa bộ đếm; yêu cầu trong thời gian khóa bị từ chối mà không kéo dài khóa. Xóa bộ đếm khi xác thực đúng, hết cửa sổ đếm ngoài thời gian khóa hoặc hết thời gian khóa."
+        ]
+      },
+      "next_check": "Đo tạo, khóa, mở đúng, mở sai, chạm giới hạn, đổi và tắt trên stub. Kiểm tra khi nối lại và khi hết khóa; chỉ giữ metadata đã loại bỏ dữ liệu xác thực."
+    }
+  }
+}
