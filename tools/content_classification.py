@@ -114,10 +114,24 @@ SPECIAL = {
     "MagicMarket": ("C", "Pack có UI; boomkr-re không tìm thấy công thức trong phạm vi khảo sát."),
     "Cửa hàng": ("C", "Chưa xác định hợp đồng túi đồ và giao dịch; màn nhúng dựng bằng web server."),
     "PCRoomBenefit": (None, "Ngoài phạm vi theo quyết định bỏ ưu đãi Nexon."),
-    "CustomMap": ("C", "Chưa xác định đợt; chưa biết upload, validation và quyền điều khiển."),
+    "CustomMap": ("C", "Đợt F7 theo quyết định 27/11; hình thức chốt sau. Chưa biết upload, validation và quyền điều khiển."),
 }
 ORDER = ["map", "item", "ship", "character", "mode", "system"]
 UNSUPPORTED_WAVE = "chưa xếp đợt"
+# Owner request 27/11: every client map family must sit in a roadmap wave. These were
+# "chưa xếp đợt"; the wave is tentative ("?"), chosen from name, spawns and scripts only.
+TENTATIVE_MAP_WAVES = {
+    **dict.fromkeys(["LobbySquare", "LobbyCaffe", "LobbyClothing", "LobbyJewelry", "LobbyPet", "Square"], "F5?"),
+    **dict.fromkeys(["shopmap", "tlshopmap"], "F4?"),
+    **dict.fromkeys(["CAPassShopMap", "DailyMissionShop", "MagicMarketmap", "SelectionBox",
+                     "LobbySquareFishingTest"], "F6?"),
+    **dict.fromkeys(["Balansa", "Baram", "BlackLucy", "Clovertest", "ConfusedFight", "DarkCastle",
+                     "DarkVampire", "Fm_BigBattle", "Fm_BigBattleH_PreparePlay", "Fm_BigBattle_PreparePlay",
+                     "GoldButterfly", "Hiphopclub", "MagNest", "NewXmas", "OkongOfLegend", "Smash", "Space_TW",
+                     "UserContest", "WhiteAngel", "WinningStreak_Colosseum", "Wriggletest"], "F2?"),
+    **dict.fromkeys(["Antarctic", "DragonPalace", "EscapeMaze", "GolemRun", "IamWriggle", "MineExp",
+                     "Minibot", "SavetheEarth"], "F3?"),
+}
 
 
 def generate(data, digest, f1_native, f1_characters):
@@ -142,9 +156,10 @@ def generate(data, digest, f1_native, f1_characters):
         base = base_theme(family) or family
         family_maps = {m["name"] for m in maps}
         f1 = category in {"battle_theme", "battle_variant"} and not family.startswith("Fm_AIBtl")
-        wave = ("F1" if f1 else "F2?" if category == "mission" else "F3"
+        wave = ("F7" if family.startswith("CustomMap") else "F1" if f1 else "F2?" if category == "mission" else "F3"
                 if category in {"monster", "rpg", "hidden", "bonus"} or
-                family.startswith("Fm_AIBtl") or family == "Tutorial" else UNSUPPORTED_WAVE)
+                family.startswith("Fm_AIBtl") or family == "Tutorial" else
+                TENTATIVE_MAP_WAVES.get(family, UNSUPPORTED_WAVE))
         native = sorted(m["name"] for m in maps if m["name"] in MAPS)
         substantial = [m for m in maps if set(m["script_tags"]) - {"mapscript", "StageClearScript"}]
         unusual = any((m["width"], m["height"]) != (15, 13) for m in maps)
@@ -289,13 +304,44 @@ def generate(data, digest, f1_native, f1_characters):
         name = i["name"]
         wave = next((wave for wave, names in [
             ("F1", F1), ("F2", F2), ("F3", F3), ("F4", F4), ("F5", F5), ("F6", F6),
-            ("giai đoạn 1", BASE), ("ngoài phạm vi", {"PCRoomBenefit"}),
+            ("F7", {"CustomMap"}), ("giai đoạn 1", BASE), ("ngoài phạm vi", {"PCRoomBenefit"}),
         ] if name in names), UNSUPPORTED_WAVE)
         code, reason = SPECIAL.get(name, ("C", UNKNOWN))
         add("system", name, wave, code, reason, groups=i["groups"], wiki=i["wiki"])
     for name, wave, reason in [
         ("Túi đồ", "F4", "Chưa có ledger, projection túi đồ và wire đồng bộ quyền sở hữu."),
         ("Web nhúng: Dwarf/libcef", "F4/F6", "Đã chốt dựng web ở server; chưa biết hợp đồng từng màn."),
+        # Owner request 27/11: systems found in client strings (csysstr/csysqstr) and wiki, not census groups.
+        ("Quảng trường (광장)", "F5", "Sảnh đi lại tự do và các khu quần áo, trang sức, pet, cà phê; chưa có wire di chuyển và đồng bộ."),
+        ("Kênh theo loại (채널)", "F2", "Kênh tân thủ, sự kiện, không item, luyện tập và giải đấu; chưa biết luật vào kênh."),
+        ("Giải đấu (토너먼트)", "F2", "Giải đấu có kênh luyện tập, giới hạn người vừa vô địch và quà; chưa có wire và luật."),
+        ("Siêu chủ phòng (슈퍼방장)", "F2", "Quyền chủ phòng mở rộng như bắt đầu ngay; chưa biết nguồn cấp và giới hạn."),
+        ("Thư (쪽지)", "F5", "Gửi và nhận thư, hộp thư có giới hạn; chưa có wire và lưu trữ."),
+        ("Danh hiệu (칭호)", "F4", "Đạt và gắn danh hiệu, có thông báo khi đạt; chưa biết điều kiện từng danh hiệu."),
+        ("Cường hóa và nâng cấp (강화)", "F4", "Nâng cấp item, pet, bóng nước và đồ RPG bằng nguyên liệu; chưa có công thức và tỉ lệ."),
+        ("Tặng quà và phiếu (선물하기, 쿠폰)", "F4", "Tặng item cho người khác và dùng phiếu đổi; bỏ phần tiền thật của Nexon."),
+        ("Mật khẩu cấp 2 (2차 비밀번호)", "F4", "Lớp bảo vệ tài khoản trong game; chưa có wire tạo và xác thực."),
+        ("Bốc thăm và đậu may mắn (뽀끼뽀끼, 럭키빈)", "F6", "Bốc thăm bằng chìa khóa và đổi đậu may mắn lấy quà; tỉ lệ do server cấu hình."),
+        ("Chợ sách phép (마법거래소)", "F6", "Người chơi đăng bán và mua sách phép; chưa có wire và luật giá."),
+        ("Mini-game sự kiện (빙고, 주사위, 퀴즈)", "F6", "Bingo nhân vật, nhiệm vụ xúc xắc và câu đố; chưa có wire và phần thưởng."),
+        # Namu wiki (namu.moe mirror, crawled 27/11) cross-checked against client strings.
+        ("Đấu loạn 12 người (대난투)", "F2", "Đấu xếp hạng cá nhân 12 người trên map lớn, có kênh và điểm riêng; chưa có wire và luật điểm."),
+        ("Xếp hạng 1:1 theo mùa (크아짱)", "F2", "Đấu 1:1 tính điểm theo mùa, chỉ 1P; chưa có wire mùa và bảng điểm."),
+        ("Luật phòng (노템전, 노샵, 기샵)", "F2", "Phòng không item, không đồ mua hoặc chỉ đồ cơ bản; chưa biết cờ phòng trên wire."),
+        ("Phòng ưu tiên (슈프림, 앞방 잡기)", "F2", "Phòng S01–S50 mỗi kênh cho người có quyền; chưa có wire tạo và giữ phòng."),
+        ("Bỏ phiếu đuổi khỏi phòng (강퇴투표)", "F2", "Bỏ phiếu đuổi người chơi và chống đuổi; chưa có wire và luật bỏ phiếu."),
+        ("Bộ tăng sức mạnh (파워업 키트)", "F4", "Tăng chỉ số khởi đầu, đeo tối đa 2 bộ; chưa biết trường trang bị và giới hạn."),
+        ("Vé ưu đãi (지존권, EXP +50%, VÀNG x2)", "F4", "Chọn mọi map, VÀNG an ủi, thêm EXP và VÀNG, màn thưởng; server tự cấu hình vì game miễn phí."),
+        ("Két VÀNG và giới hạn VÀNG (루찌 금고)", "F4", "Giới hạn VÀNG mặc định và két nâng giới hạn; chưa có wire."),
+        ("Quà lên cấp và rương lên cấp (레벨업 보물상자)", "F4", "VÀNG khi lên cấp và rương theo mốc cấp của từng nhân vật; chưa có bảng quà."),
+        ("Xóa thành tích (전적 지우개, 래더 재도전권)", "F4", "Xóa cấp, thắng thua hoặc điểm ladder; chưa có wire."),
+        ("Hợp thành và dừng thời gian (합성, 타임스톱)", "F6", "Gộp đồ có hạn để kéo dài hạn hoặc làm vĩnh viễn; chưa có công thức."),
+        ("Chăm sóc pet (애정도, 봉인, 듀얼펫)", "F6", "Độ thân thiết, niêm phong và mở niêm phong, nâng cấp pet ba bậc, mang hai pet, tự dùng Khiên/Kim; chưa có wire."),
+        ("Các kiểu bốc thăm (알쏭달쏭 쾅쾅, 마법구슬, 선물상자)", "F6", "Đập trứng bằng búa, ngọc phép, hộp quà pet/nhân vật/bóng nước; tỉ lệ do server cấu hình."),
+        ("Điểm danh và quà quay lại (출석, 귀환 스탬프)", "F6", "Tem điểm danh hằng ngày và tem cho người quay lại; chưa có wire và bảng quà."),
+        ("Phòng chat trao đổi (교환채팅방)", "F5", "Kênh chat để trao đổi đồ giữa người chơi; chưa có wire."),
+        ("Huy hiệu và bang kín (길드 마크, 비공개 길드)", "F5", "Đổi huy hiệu bang, bang kín duyệt đơn tối đa 7 ngày; chưa có wire."),
+        ("Nhân vật ẩn mở bằng điểm (협공배틀 포인트, 로두마니)", "F3", "Điểm trận phối hợp mở nhân vật ẩn; Rodumani xuất hiện ngẫu nhiên; chưa có luật mở."),
     ]:
         add("system", name, wave, "C", reason, roadmap_only=True)
     return dict(schema="kre-content-classification-v1", build=data["build"],
@@ -313,7 +359,7 @@ def markdown(data):
         "",
         "Bảng sinh từ [kiểm kê pack](../CONTENT.md). **A**: chạy được với server hiện tại trong phạm vi ghi ở dòng",
         "tương ứng; **B**: cần thêm dữ liệu, wire hoặc luật đã hiểu; **C**: còn ẩn số cần RE.",
-        "Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1 đang mở; F2–F6 tiếp tục chờ.",
+        "Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1 đang mở; F2–F7 tiếp tục chờ.",
         "",
         "Nguồn: số liệu pack và wiki được định tuyến ở CONTENT; đối chiếu `boomkr-re/docs/kr-data.md` §2, §6, §12–13",
         "và `boom-re/docs/items.md`, `map.md` để định hướng, không nhập opcode/ID VN. IDA trên bản sao unpack 00967",

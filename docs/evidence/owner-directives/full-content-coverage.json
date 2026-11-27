@@ -1,0 +1,47 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-27T07:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-27: \"Tìm trên wiki namu của hàn quốc lẫn trong client xem còn bỏ sót tính năng nào chưa ghi vào readme và roadmap ko (sẽ làm lần lượt ko bỏ sót)\".",
+  "fact": "Trước yêu cầu này, bảng xếp loại còn 42 họ map \"chưa xếp đợt\" (13 họ sảnh/cửa hàng dạng map, 29 họ chưa phân nhóm). Chuỗi client (csysstr.ssd, csysqstr.ssd) và bản tổng hợp wiki trong boomkr-re/docs/game-spec-web.md cho thấy thêm các hệ thống chưa có trong lộ trình: quảng trường, kênh theo loại, giải đấu, siêu chủ phòng, thư, danh hiệu, cường hóa, tặng quà và phiếu, mật khẩu cấp 2, bốc thăm và đậu may mắn, chợ sách phép, bingo, xúc xắc và câu đố.",
+  "decision": [
+    "Mọi họ map, mode và hệ thống của client phải nằm trong một đợt của lộ trình và được giới thiệu trên README; sẽ làm lần lượt, không bỏ sót.",
+    "Họ map chưa phân nhóm được xếp tạm (đợt có dấu ?) theo tên, số chỗ xuất phát và script; chốt khi vào đợt đó.",
+    "Hệ thống tìm thấy qua chuỗi client và wiki được ghi thành dòng roadmap_only trong bảng xếp loại."
+  ],
+  "unchanged": [
+    "Ưu đãi phòng máy (PCRoomBenefit) và phần riêng của Nexon vẫn ngoài phạm vi theo post-phase1-direction.json.",
+    "Thứ tự F4 → F2 → F5 → F3 → F6 giữ nguyên; F7 chốt sau theo custom-map.json."
+  ],
+  "plan": "docs/PLAN.md#full-game-roadmap",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền",
+  "supplement_2026_11_27_wiki": {
+    "source": "Chủ dự án: \"Wiki namu có trang backup có thể crawl được đó thử xem, boomkr-re/docs/game-spec-web trong đây có vẻ ko đủ hết được, cố gắng tổng hợp chính xác những tính năng còn thiếu\".",
+    "method": "Cào 18 trang qua mirror https://namu.moe/w/ bằng boomkr-re/tools/namu2md.py ngày 2026-11-27: 크레이지 아케이드 và các trang con 게임 모드, 맵, 아이템, 펫, 래더, 칭호, 경험치표, 몬스터 모드 (và 시즌2), 협공배틀, 전략 및 플레이 팁, 문제점, cùng 크아 히어로, 몬스터대작전, 크아왕 뽑기 대회, 크아 파트너스, 파워업 키트. Mỗi tính năng được đối chiếu với chuỗi client (catalog.csv của boom-re nhánh feat/l10n-vi-en-95) trước khi ghi. Nội dung namu theo CC BY-NC-SA 2.0 KR nên bản cào không được commit.",
+    "added": [
+      "대난투",
+      "크아짱",
+      "노템전/노샵/기샵",
+      "슈프림 방",
+      "강퇴투표",
+      "파워업 키트",
+      "지존권/EXP +50%/루찌 2배",
+      "루찌 금고",
+      "레벨업 보물상자",
+      "전적 지우개/래더 재도전권",
+      "합성/타임스톱",
+      "펫 애정도/봉인/듀얼펫",
+      "알쏭달쏭 쾅쾅/마법구슬/선물상자",
+      "출석/귀환 스탬프",
+      "교환채팅방",
+      "길드 마크/비공개 길드",
+      "협공배틀 포인트/로두마니"
+    ],
+    "excluded": [
+      "테트리스, 디지팡, 비즈: gỡ khỏi game năm 2004",
+      "히든캐치 구버전: kết thúc năm 2005",
+      "관전: không có chuỗi nào trong client",
+      "대회 ngoại tuyến (크아왕 뽑기 대회, 크아 미니 토너먼트) và 크아 파트너스: hoạt động ngoài game"
+    ]
+  }
+}

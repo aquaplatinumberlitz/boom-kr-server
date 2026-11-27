@@ -1,0 +1,18 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-27T06:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-27, sau khi Claude báo CustomMap (map tự tạo) có trong client nhưng chưa xếp đợt: \"Thêm CustomMap (map tự tạo) vào readme lẫn kế hoạch luôn, sẽ bổ sung. Hình thức sau\".",
+  "fact": "Client KR 00967 có nhóm tài nguyên fx/CustomMap (158 mục, gồm CustomMap*, CustomTileIndexList* và CustomTileList*) và năm map CustomMap ở ba cỡ 15×13, 21×21 và 31×13. Bảng xếp loại trước đây ghi CustomMap là chưa xếp đợt, lớp C.",
+  "decision": [
+    "Đưa CustomMap (map tự tạo) vào lộ trình thành đợt F7 và giới thiệu trên ba README là tính năng sắp ra mắt.",
+    "Hình thức (trình dựng map trong client, công cụ web, file map chia sẻ hoặc kết hợp), cách tải lên, kiểm tra hợp lệ và quyền điều khiển sẽ chốt sau."
+  ],
+  "order": "F7 chưa mở và chưa có thứ tự so với F4 → F2 → F5 → F3 → F6; chủ dự án sẽ chốt khi quyết định hình thức.",
+  "unchanged": [
+    "Nghiệm thu bằng client thật như mọi đợt; tính năng chưa hỗ trợ tắt rõ ràng, không ACK giả.",
+    "Ngân sách bằng chứng evidence-budget.json áp dụng cho F7."
+  ],
+  "plan": "docs/PLAN.md#full-game-roadmap",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}
