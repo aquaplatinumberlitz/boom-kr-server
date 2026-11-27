@@ -12,10 +12,13 @@ use crate::{
     room_registry::RoomId,
 };
 use kr_wire::kr00967::text949x;
+use serde::Deserialize;
 use std::{
     borrow::Cow,
     collections::{BTreeMap, VecDeque},
+    fs, io,
     num::{NonZeroU16, NonZeroU32},
+    path::{Component, Path},
     sync::{
         Arc,
         atomic::{AtomicU64, Ordering},
@@ -82,7 +85,8 @@ type Result<T> = std::result::Result<T, Error>;
 
 /// Opt-in local policy. `Default` disables all extended paths; the legacy
 /// `route` API remains available under its existing Schema 9 policy.
-#[derive(Clone, Debug, Default, PartialEq, Eq)]
+#[derive(Clone, Debug, Default, PartialEq, Eq, Deserialize)]
+#[serde(default, deny_unknown_fields)]
 pub struct F5SocialPolicy {
     pub whisper: bool,
     pub guild_chat: bool,
@@ -97,8 +101,78 @@ const F5_MAX_WINDOW_SECONDS: i64 = 86_400;
 const F5_MAX_INBOX_CAP: u16 = 100;
 const F5_MAX_SEATS: u16 = 256;
 pub const F5_ABUSE_EVENT_CAP: usize = 256;
+const MAX_F5_POLICY_BYTES: u64 = 4096;
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+impl F5SocialPolicy {
+    /// Load a bounded, strictly typed policy from a trusted local JSON file.
+    /// Every path component is checked so symlinks fail closed.
+    pub fn load_from_path(path: impl AsRef<Path>) -> io::Result<Self> {
+        let path = path.as_ref();
+        if path.as_os_str().is_empty()
+            || path
+                .components()
+                .any(|part| matches!(part, Component::ParentDir))
+        {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "invalid f5_social_policy path",
+            ));
+        }
+        for parent in path
+            .ancestors()
+            .skip(1)
+            .filter(|p| !p.as_os_str().is_empty())
+        {
+            if !fs::symlink_metadata(parent)?.is_dir() {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidInput,
+                    "f5_social_policy parents must be directories without symlinks",
+                ));
+            }
+        }
+        if !fs::symlink_metadata(path)?.is_file() {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "f5_social_policy must be a regular file without symlinks",
+            ));
+        }
+        if fs::metadata(path)?.len() > MAX_F5_POLICY_BYTES {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "f5_social_policy file size out of bounds",
+            ));
+        }
+        let bytes = fs::read(path)?;
+        let policy: Self = serde_json::from_slice(&bytes)
+            .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?;
+        policy.validate_bounds()?;
+        Ok(policy)
+    }
+
+    fn validate_bounds(&self) -> io::Result<()> {
+        if self.megaphone.is_some_and(|policy| {
+            !(policy.global || policy.channel)
+                || !(1..=F5_MAX_WINDOW_SECONDS).contains(&policy.window_seconds)
+                || !(1..=policy.window_seconds).contains(&policy.cooldown_seconds)
+                || !(1..=F5_MAX_QUOTA).contains(&policy.quota)
+        }) || self
+            .note_inbox_cap
+            .is_some_and(|cap| cap.get() > F5_MAX_INBOX_CAP)
+            || self.plaza_zones.values().any(|zone| {
+                usize::from(zone.max_occupants.get()) > CHAT_PLAYER_CAP || zone.seats > F5_MAX_SEATS
+            })
+        {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "f5_social_policy limits are out of bounds",
+            ));
+        }
+        Ok(())
+    }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct F5MegaphonePolicy {
     pub global: bool,
     pub channel: bool,
@@ -198,7 +272,8 @@ pub enum F5CoupleAction {
 }
 
 /// Pack family names from the matrix. These are not numeric wire IDs.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub enum F5PlazaZone {
     LobbySquare,
     LobbyCaffe,
@@ -208,7 +283,8 @@ pub enum F5PlazaZone {
     Square,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct F5PlazaLimits {
     pub max_occupants: NonZeroU16,
     /// Seats are zero based. Zero disables seating in this family.

@@ -56,6 +56,8 @@ fn base_config(dir: &Path) -> Config {
         f6_events_policy: None,
         f4_extended_policy: None,
         f3_pve_policy: None,
+        f7_custom_map_policy: None,
+        f5_social_policy: None,
         emit_lucci_135: false,
         project_own291_level: false,
         unlock_all_catalog: false,

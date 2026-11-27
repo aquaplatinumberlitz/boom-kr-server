@@ -12,11 +12,16 @@ mod f4a_economy_wire_tests;
 #[cfg(test)]
 #[path = "f6_policy_config_tests.rs"]
 mod f6_policy_config_tests;
+#[cfg(test)]
+#[path = "f7_f5_policy_config_tests.rs"]
+mod f7_f5_policy_config_tests;
 
 use crate::{
     account_bridge::{self, Bridge},
     account_worker::{AccountService, Client, EconomySettings, Worker},
     accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Token},
+    choco_chat::F5SocialPolicy,
+    custom_map_store::CustomMapPolicy,
     f3_pve_policy::F3PvePolicy,
     f4_extended_policy::{
         BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
@@ -124,6 +129,12 @@ pub struct Config {
     /// Optional F3 PvE policy JSON. Omitting it leaves PvE disabled.
     #[serde(default)]
     pub f3_pve_policy: Option<PathBuf>,
+    /// Optional F7 custom map policy JSON. Omitted means disabled.
+    #[serde(default)]
+    pub f7_custom_map_policy: Option<PathBuf>,
+    /// Optional F5 social policy JSON. Omitted means disabled.
+    #[serde(default)]
+    pub f5_social_policy: Option<PathBuf>,
     /// Opt-in F4-a projection: emit static-confirmed `S->C 135` (`remain_lucci`)
     /// after lobby `own291` and settled post-match `175` replies.
     #[serde(default)]
@@ -151,6 +162,7 @@ fn default_worker_queue_capacity() -> usize {
     4
 }
 const MAX_ECONOMY_PROFILE_BYTES: u64 = 16 * 1024 * 1024;
+const MAX_POLICY_BYTES: u64 = 4096;
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -269,6 +281,35 @@ impl Config {
             .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
     }
 
+    /// Load and validate the configured F7 custom map policy. Omission keeps
+    /// custom maps disabled with the strict built-in defaults.
+    pub fn f7_custom_map_policy(&self) -> io::Result<CustomMapPolicy> {
+        let Some(path) = self.f7_custom_map_policy.as_deref() else {
+            return Ok(CustomMapPolicy::default());
+        };
+        validate_policy_path(path, "f7_custom_map_policy")?;
+        let metadata = fs::metadata(path)?;
+        if metadata.len() > MAX_POLICY_BYTES {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "f7_custom_map_policy file size out of bounds",
+            ));
+        }
+        let contents = fs::read(path)?;
+        serde_json::from_slice(&contents)
+            .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
+    }
+
+    /// Load and validate the configured F5 social policy. Omission disables
+    /// all optional social routes.
+    pub fn f5_social_policy(&self) -> io::Result<F5SocialPolicy> {
+        let Some(path) = self.f5_social_policy.as_deref() else {
+            return Ok(F5SocialPolicy::default());
+        };
+        validate_policy_path(path, "f5_social_policy")?;
+        F5SocialPolicy::load_from_path(path)
+    }
+
     /// Validated economy for the account worker; defaults stay disabled.
     pub(crate) fn economy(&self) -> io::Result<EconomySettings> {
         let (policy, catalog) = if let Some(path) = &self.economy_profile_path {
@@ -305,6 +346,8 @@ impl Config {
         self.f6_event_policy()?;
         self.f4_extended_policy()?;
         self.f3_pve_policy()?;
+        self.f7_custom_map_policy()?;
+        self.f5_social_policy()?;
         self.economy()?;
         if let Some(backup) = &self.backup {
             backup.validate()?;
