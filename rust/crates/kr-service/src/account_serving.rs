@@ -1,6 +1,9 @@
 //! Account lobby/basic adapter with explicit fixed or DB zero-profile mode.
 //! The launcher is private; this does not expose a public password API.
 #[cfg(test)]
+#[path = "f3_pve_policy_config_tests.rs"]
+mod f3_pve_policy_config_tests;
+#[cfg(test)]
 #[path = "f4_extended_policy_config_tests.rs"]
 mod f4_extended_policy_config_tests;
 #[cfg(test)]
@@ -14,6 +17,7 @@ use crate::{
     account_bridge::{self, Bridge},
     account_worker::{AccountService, Client, EconomySettings, Worker},
     accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Token},
+    f3_pve_policy::F3PvePolicy,
     f4_extended_policy::{
         BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
         PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
@@ -117,6 +121,9 @@ pub struct Config {
     /// Optional F4 extended policy JSON. Omitting it disables all nine policies.
     #[serde(default)]
     pub f4_extended_policy: Option<PathBuf>,
+    /// Optional F3 PvE policy JSON. Omitting it leaves PvE disabled.
+    #[serde(default)]
+    pub f3_pve_policy: Option<PathBuf>,
     /// Opt-in F4-a projection: emit static-confirmed `S->C 135` (`remain_lucci`)
     /// after lobby `own291` and settled post-match `175` replies.
     #[serde(default)]
@@ -221,6 +228,17 @@ fn validate_policy_path(path: &Path, policy_name: &str) -> io::Result<()> {
 }
 
 impl Config {
+    /// Load and validate the F3 PvE policy. An omitted profile leaves PvE disabled.
+    pub fn f3_pve_policy(&self) -> io::Result<F3PvePolicy> {
+        let Some(path) = self.f3_pve_policy.as_deref() else {
+            return Ok(F3PvePolicy::default());
+        };
+        validate_policy_path(path, "f3_pve_policy")?;
+        let contents = fs::read_to_string(path)?;
+        serde_json::from_str(&contents)
+            .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
+    }
+
     /// Load and validate the configured F6 event policy for inspection.
     /// If no profile is configured, all systems are disabled.
     pub fn f6_event_policy(&self) -> io::Result<F6EventPolicy> {
@@ -286,6 +304,7 @@ impl Config {
     pub(crate) fn validate(&self) -> io::Result<()> {
         self.f6_event_policy()?;
         self.f4_extended_policy()?;
+        self.f3_pve_policy()?;
         self.economy()?;
         if let Some(backup) = &self.backup {
             backup.validate()?;
