@@ -1,0 +1,54 @@
+{
+  "powerup_kits": {
+    "enabled": false,
+    "max_equipped_slots": 2,
+    "kits": []
+  },
+  "booster_tickets": {
+    "enabled": false,
+    "exp_percent": 100,
+    "lucci_percent": 100,
+    "bonus_cap": null,
+    "allowed_rooms": []
+  },
+  "titles": {
+    "enabled": false,
+    "equip_slot": null,
+    "notify_on_unlock": false,
+    "unlock_table": null
+  },
+  "level_rewards": {
+    "enabled": false,
+    "character_milestones": null,
+    "level_up_lucci_table": null
+  },
+  "lucci_vault": {
+    "enabled": false,
+    "base_lucci_cap": null,
+    "expansion_step": null,
+    "max_expansions": null,
+    "max_lucci_cap": null
+  },
+  "record_erasers": {
+    "enabled": false,
+    "allowed_scopes": [],
+    "require_audit": true,
+    "erasers": []
+  },
+  "gift_coupons": {
+    "enabled": false,
+    "giftable_skus": [],
+    "gift_limits": null,
+    "coupon_offers": []
+  },
+  "second_password": {
+    "enabled": false,
+    "max_failed_attempts": 5,
+    "failure_window_seconds": 900,
+    "cooldown_seconds": 300
+  },
+  "upgrades": {
+    "enabled": false,
+    "recipes": []
+  }
+}
