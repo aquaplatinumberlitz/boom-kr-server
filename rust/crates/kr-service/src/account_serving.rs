@@ -1,6 +1,9 @@
 //! Account lobby/basic adapter with explicit fixed or DB zero-profile mode.
 //! The launcher is private; this does not expose a public password API.
 #[cfg(test)]
+#[path = "f4_extended_policy_config_tests.rs"]
+mod f4_extended_policy_config_tests;
+#[cfg(test)]
 #[path = "f4a_economy_wire_tests.rs"]
 mod f4a_economy_wire_tests;
 #[cfg(test)]
@@ -11,6 +14,10 @@ use crate::{
     account_bridge::{self, Bridge},
     account_worker::{AccountService, Client, EconomySettings, Worker},
     accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Token},
+    f4_extended_policy::{
+        BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
+        PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
+    },
     f6_policy::F6EventPolicy,
     platform::{self, local_ipc},
 };
@@ -107,6 +114,9 @@ pub struct Config {
     /// Optional F6 event policy JSON. Omitting it disables all F6 systems.
     #[serde(default)]
     pub f6_events_policy: Option<PathBuf>,
+    /// Optional F4 extended policy JSON. Omitting it disables all nine policies.
+    #[serde(default)]
+    pub f4_extended_policy: Option<PathBuf>,
     /// Opt-in F4-a projection: emit static-confirmed `S->C 135` (`remain_lucci`)
     /// after lobby `own291` and settled post-match `175` replies.
     #[serde(default)]
@@ -144,6 +154,21 @@ struct EconomyProfileFile {
     summary: Option<serde::de::IgnoredAny>,
 }
 
+/// F4 extended policy settings. Each section validates on deserialization.
+#[derive(Debug, Default, Deserialize, PartialEq, Eq)]
+#[serde(default, deny_unknown_fields)]
+pub struct F4ExtendedPolicyBundle {
+    pub powerup_kits: PowerupKitPolicy,
+    pub booster_tickets: BoosterTicketPolicy,
+    pub titles: TitlePolicy,
+    pub level_rewards: LevelRewardPolicy,
+    pub lucci_vault: LucciVaultPolicy,
+    pub record_erasers: RecordEraserPolicy,
+    pub gift_coupons: GiftCouponPolicy,
+    pub second_password: SecondPasswordPolicy,
+    pub upgrades: UpgradePolicy,
+}
+
 fn load_economy_profile_file(path: &Path) -> io::Result<(EconomyPolicy, ShopCatalog)> {
     if path.as_os_str().is_empty()
         || path
@@ -163,6 +188,38 @@ fn load_economy_profile_file(path: &Path) -> io::Result<(EconomyPolicy, ShopCata
     Ok((parsed.economy_policy, parsed.shop_catalog))
 }
 
+fn validate_policy_path(path: &Path, policy_name: &str) -> io::Result<()> {
+    if path.as_os_str().is_empty()
+        || path
+            .components()
+            .any(|part| matches!(part, Component::ParentDir))
+    {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            format!("invalid {policy_name} path"),
+        ));
+    }
+    for parent in path
+        .ancestors()
+        .skip(1)
+        .filter(|p| !p.as_os_str().is_empty())
+    {
+        if !fs::symlink_metadata(parent)?.is_dir() {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                format!("{policy_name} parents must be directories without symlinks"),
+            ));
+        }
+    }
+    if !fs::symlink_metadata(path)?.is_file() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            format!("{policy_name} must be a regular file without symlinks"),
+        ));
+    }
+    Ok(())
+}
+
 impl Config {
     /// Load and validate the configured F6 event policy for inspection.
     /// If no profile is configured, all systems are disabled.
@@ -170,35 +227,28 @@ impl Config {
         let Some(path) = self.f6_events_policy.as_deref() else {
             return Ok(F6EventPolicy::disabled_default());
         };
-        if path.as_os_str().is_empty()
-            || path
-                .components()
-                .any(|part| matches!(part, Component::ParentDir))
-        {
-            return Err(io::Error::new(
-                io::ErrorKind::InvalidInput,
-                "invalid f6_events_policy path",
-            ));
-        }
-        for parent in path
-            .ancestors()
-            .skip(1)
-            .filter(|p| !p.as_os_str().is_empty())
-        {
-            if !fs::symlink_metadata(parent)?.is_dir() {
-                return Err(io::Error::new(
-                    io::ErrorKind::InvalidInput,
-                    "f6_events_policy parents must be directories without symlinks",
-                ));
-            }
-        }
-        if !fs::symlink_metadata(path)?.is_file() {
-            return Err(io::Error::new(
-                io::ErrorKind::InvalidInput,
-                "f6_events_policy must be a regular file without symlinks",
-            ));
-        }
+        validate_policy_path(path, "f6_events_policy")?;
         F6EventPolicy::from_path(path)
+    }
+
+    /// Load and validate the F4 extended policies. An omitted profile leaves
+    /// all nine policies disabled.
+    pub fn f4_extended_policy(&self) -> io::Result<F4ExtendedPolicyBundle> {
+        let Some(path) = self.f4_extended_policy.as_deref() else {
+            return Ok(F4ExtendedPolicyBundle::default());
+        };
+        validate_policy_path(path, "f4_extended_policy")?;
+        let contents = fs::read_to_string(path)?;
+        // A derived struct also accepts positional arrays. Require an object
+        // and deserialize typed fields directly so duplicate keys are rejected.
+        if !contents.trim_start().starts_with('{') {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "f4_extended_policy must be a JSON object",
+            ));
+        }
+        serde_json::from_str(&contents)
+            .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
     }
 
     /// Validated economy for the account worker; defaults stay disabled.
@@ -235,6 +285,7 @@ impl Config {
     }
     pub(crate) fn validate(&self) -> io::Result<()> {
         self.f6_event_policy()?;
+        self.f4_extended_policy()?;
         self.economy()?;
         if let Some(backup) = &self.backup {
             backup.validate()?;
