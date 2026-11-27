@@ -5,6 +5,7 @@ use kr_service::{
         self, Admin, AuditFilter, ChatMuteReason, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION,
         Store, Token,
     },
+    choco_chat::{F5PlazaZone, F5SocialPolicy},
     custom_map_store::CustomMapPolicy,
     f3_pve_policy::{
         DispatchRejection, F3PvePolicy, MonsterAttackGuard, PveAuthority, PveModeFamily,
@@ -163,6 +164,10 @@ enum Command {
     F3PolicyCheck {
         policy_path: Option<std::path::PathBuf>,
     },
+    #[serde(rename = "f5-policy-check")]
+    F5PolicyCheck {
+        policy_path: Option<std::path::PathBuf>,
+    },
 }
 impl Command {
     fn audit_context(&self) -> (&'static str, &'static str, String, bool) {
@@ -234,6 +239,7 @@ impl Command {
             F6PolicyCheck { .. } => ("f6_policy_check", "service", "f6_policy".into(), false),
             F4PolicyCheck { .. } => ("f4_policy_check", "service", "f4_policy".into(), false),
             F3PolicyCheck { .. } => ("f3_policy_check", "service", "f3_policy".into(), false),
+            F5PolicyCheck { .. } => ("f5_policy_check", "service", "f5_policy".into(), false),
             ListRooms {} | CloseRoom { .. } | F2Runtime { .. } => {
                 unreachable!("handled by live admin")
             }
@@ -515,6 +521,58 @@ fn f7_policy_check(policy_path: Option<&Path>) -> Result<Value, Box<dyn std::err
     }))
 }
 
+fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
+    let policy = match policy_path {
+        None => F5SocialPolicy::default(),
+        Some(path) => {
+            validate_policy_path(path, "f5_social_policy")?;
+            let contents = std::fs::read_to_string(path)?;
+            if !contents.trim_start().starts_with('{') {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    "invalid f5_social_policy configuration",
+                ));
+            }
+            F5SocialPolicy::load_from_path(path).map_err(|error| {
+                io::Error::new(
+                    error.kind(),
+                    format!("invalid f5_social_policy configuration: {error}"),
+                )
+            })?
+        }
+    };
+    let plaza_names = policy
+        .plaza_zones
+        .keys()
+        .map(|zone| match zone {
+            F5PlazaZone::LobbySquare => "lobby_square",
+            F5PlazaZone::LobbyCaffe => "lobby_caffe",
+            F5PlazaZone::LobbyClothing => "lobby_clothing",
+            F5PlazaZone::LobbyJewelry => "lobby_jewelry",
+            F5PlazaZone::LobbyPet => "lobby_pet",
+            F5PlazaZone::Square => "square",
+        })
+        .map(str::to_owned)
+        .collect::<Vec<_>>();
+    Ok(json!({
+        "whisper": policy.whisper,
+        "guild_chat": policy.guild_chat,
+        "megaphone": policy.megaphone.is_some(),
+        "note_inbox_cap": policy.note_inbox_cap.map(|cap| cap.get()),
+        "couple": policy.couple,
+        "plaza_zones": {
+            "count": plaza_names.len(),
+            "names": plaza_names,
+        },
+        "all_disabled": !policy.whisper
+            && !policy.guild_chat
+            && policy.megaphone.is_none()
+            && policy.note_inbox_cap.is_none()
+            && !policy.couple
+            && policy.plaza_zones.is_empty(),
+    }))
+}
+
 fn manage(database: &Path) -> Result<Value, Box<dyn std::error::Error>> {
     let mut input = Zeroizing::new(Vec::new());
     io::stdin()
@@ -754,6 +812,9 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
         Command::F3PolicyCheck { policy_path } => {
             f3_policy_check(policy_path.as_deref()).map_err(|_| Error::InvalidInput)?
         }
+        Command::F5PolicyCheck { policy_path } => {
+            f5_policy_check(policy_path.as_deref()).map_err(|_| Error::InvalidInput)?
+        }
     })
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
@@ -772,6 +833,11 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             [] => f7_policy_check(None)?,
             [option, path] if option == "--policy" => f7_policy_check(Some(Path::new(path)))?,
             _ => return Err("usage: kr-admin f7-policy-check [--policy PATH]".into()),
+        },
+        [flag, options @ ..] if flag == "f5-policy-check" => match options {
+            [] => f5_policy_check(None)?,
+            [option, path] if option == "--policy" => f5_policy_check(Some(Path::new(path)))?,
+            _ => return Err("usage: kr-admin f5-policy-check [--policy PATH]".into()),
         },
         [flag, dir] if flag == "private-dir" => {
             kr_service::platform::provision_private_dir(Path::new(dir))?;
@@ -797,7 +863,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f7-policy-check [--policy PATH]".into()),
+        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]".into()),
     })
 }
 fn main() {
