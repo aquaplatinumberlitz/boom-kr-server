@@ -18,7 +18,7 @@ Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; gi�
 | Phương tiện | 0 | 0 | 28 | 0 |
 | Nhân vật | 4 | 30 | 33 | 0 |
 | Mode | 1 | 0 | 31 | 0 |
-| Hệ thống | 4 | 5 | 63 | 1 |
+| Hệ thống | 4 | 5 | 80 | 1 |
 
 Họ map F1: 1 A, 85 B, 22 C. Có 70 map đạt A ở cấp map.
 [Kiểm F1-a với adapter pack](../evidence/rust-service/f1-pack-map-adapters.json) giữ danh sách map, phép thử nội dung và phạm vi họ đã nghiệm thu.
@@ -674,3 +674,20 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | Bốc thăm và đậu may mắn (뽀끼뽀끼, 럭키빈) | F6 | C | — | Bốc thăm bằng chìa khóa và đổi đậu may mắn lấy quà; tỉ lệ do server cấu hình. |
 | Chợ sách phép (마법거래소) | F6 | C | — | Người chơi đăng bán và mua sách phép; chưa có wire và luật giá. |
 | Mini-game sự kiện (빙고, 주사위, 퀴즈) | F6 | C | — | Bingo nhân vật, nhiệm vụ xúc xắc và câu đố; chưa có wire và phần thưởng. |
+| Đấu loạn 12 người (대난투) | F2 | C | — | Đấu xếp hạng cá nhân 12 người trên map lớn, có kênh và điểm riêng; chưa có wire và luật điểm. |
+| Xếp hạng 1:1 theo mùa (크아짱) | F2 | C | — | Đấu 1:1 tính điểm theo mùa, chỉ 1P; chưa có wire mùa và bảng điểm. |
+| Luật phòng (노템전, 노샵, 기샵) | F2 | C | — | Phòng không item, không đồ mua hoặc chỉ đồ cơ bản; chưa biết cờ phòng trên wire. |
+| Phòng ưu tiên (슈프림, 앞방 잡기) | F2 | C | — | Phòng S01–S50 mỗi kênh cho người có quyền; chưa có wire tạo và giữ phòng. |
+| Bỏ phiếu đuổi khỏi phòng (강퇴투표) | F2 | C | — | Bỏ phiếu đuổi người chơi và chống đuổi; chưa có wire và luật bỏ phiếu. |
+| Bộ tăng sức mạnh (파워업 키트) | F4 | C | — | Tăng chỉ số khởi đầu, đeo tối đa 2 bộ; chưa biết trường trang bị và giới hạn. |
+| Vé ưu đãi (지존권, EXP +50%, VÀNG x2) | F4 | C | — | Chọn mọi map, VÀNG an ủi, thêm EXP và VÀNG, màn thưởng; server tự cấu hình vì game miễn phí. |
+| Két VÀNG và giới hạn VÀNG (루찌 금고) | F4 | C | — | Giới hạn VÀNG mặc định và két nâng giới hạn; chưa có wire. |
+| Quà lên cấp và rương lên cấp (레벨업 보물상자) | F4 | C | — | VÀNG khi lên cấp và rương theo mốc cấp của từng nhân vật; chưa có bảng quà. |
+| Xóa thành tích (전적 지우개, 래더 재도전권) | F4 | C | — | Xóa cấp, thắng thua hoặc điểm ladder; chưa có wire. |
+| Hợp thành và dừng thời gian (합성, 타임스톱) | F6 | C | — | Gộp đồ có hạn để kéo dài hạn hoặc làm vĩnh viễn; chưa có công thức. |
+| Chăm sóc pet (애정도, 봉인, 듀얼펫) | F6 | C | — | Độ thân thiết, niêm phong và mở niêm phong, nâng cấp pet ba bậc, mang hai pet, tự dùng Khiên/Kim; chưa có wire. |
+| Các kiểu bốc thăm (알쏭달쏭 쾅쾅, 마법구슬, 선물상자) | F6 | C | — | Đập trứng bằng búa, ngọc phép, hộp quà pet/nhân vật/bóng nước; tỉ lệ do server cấu hình. |
+| Điểm danh và quà quay lại (출석, 귀환 스탬프) | F6 | C | — | Tem điểm danh hằng ngày và tem cho người quay lại; chưa có wire và bảng quà. |
+| Phòng chat trao đổi (교환채팅방) | F5 | C | — | Kênh chat để trao đổi đồ giữa người chơi; chưa có wire. |
+| Huy hiệu và bang kín (길드 마크, 비공개 길드) | F5 | C | — | Đổi huy hiệu bang, bang kín duyệt đơn tối đa 7 ngày; chưa có wire. |
+| Nhân vật ẩn mở bằng điểm (협공배틀 포인트, 로두마니) | F3 | C | — | Điểm trận phối hợp mở nhân vật ẩn; Rodumani xuất hiện ngẫu nhiên; chưa có luật mở. |

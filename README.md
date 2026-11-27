@@ -44,19 +44,23 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
 | ✅ | **Web social page** | Friends and friend requests, block list, your guild and the server ranking |
 | ✅ | **Languages** | English, Tiếng Việt and 한국어 in the game, launcher and server app, with Vietnamese accents in chat |
 | 🚧 | **In-game shop and customization** | My Page, inventory and shop windows in the game, plus avatar, character, balloon, level and ID decorations, emoticons and titles |
-| 🚧 | **Ladder and matchmaking** | Ranked ladder battles with grades and automatic matchmaking |
+| 🚧 | **Ladder and matchmaking** | Ranked 1v1, 2v2 and 3v3 ladder battles with grades and a bonus map, plus automatic matchmaking |
+| 🚧 | **Big Brawl and 1-on-1 seasons** | 12-player ranked brawls on giant maps and seasonal 1-on-1 ranking (CA Jjang) |
 | 🚧 | **Special modes** | **18** map modes on **122** maps (Baseball, Coloring, Zombie, Kart, Super Fighter, Popcade…), Airplane, Winning Streak Colosseum and rule variants such as Snowball Fight, Revival Battle, Time Bomb, Catch the Leader and Hedgehog |
-| 🚧 | **Battles against AI** | Co-op battles and missions against computer players |
+| 🚧 | **Battles against AI** | Co-op battles against computer players with star difficulty levels, and points that unlock hidden characters |
 | 🚧 | **Tournaments and channels** | Tournaments with a practice channel, and channels for beginners, events, item-free play and training |
-| 🚧 | **Super host** | Extra room-host privileges such as starting the game right away |
+| 🚧 | **Room options and super host** | No-item and no-shop rooms, priority rooms, vote kick, and host privileges such as starting the game right away |
 | 🚧 | **Lobby square** | Walk around the plaza and visit the clothing, jewelry, pet and café areas |
-| 🚧 | **Upgrades** | Upgrade items, pets and water balloons with materials |
+| 🚧 | **Upgrades and synthesis** | Upgrade items, pets and water balloons with materials, and combine timed items to extend them |
+| 🚧 | **Power-up kits and boosters** | Kits that raise starting stats, EXP and Lucci boosters and an all-maps pass, set by the server owner |
+| 🚧 | **Level rewards** | Lucci on every level-up, level-up treasure boxes, a Lucci vault and record erasers |
+| 🚧 | **Pets** | Affection and sealing, three upgrade tiers, dual pets, auto Shield and Needle, EXP and Lucci bonuses |
 | 🚧 | **Gifts and coupons** | Send items to friends and redeem coupons |
 | 🚧 | **Account security** | Second password for your game account |
-| 🚧 | **PvE adventures** | **699** co-op stages: Monster mode, CA Hero, Hidden Catch, RPG, Sandbox, the Antarctic expedition, I am Boss, Golem Run, Dragon Palace, Escape Maze, solo play, bonus stages and a tutorial, with bosses, treasure chests and crafting |
-| 🚧 | **In-game social** | Messenger, whispers, mail, megaphones, guild windows, couples and couple rings |
+| 🚧 | **PvE adventures** | **699** co-op stages: Monster mode, CA Hero with skills and equipment, Hidden Catch with its arcade mode, RPG, Sandbox, the Antarctic expedition, I am Boss, Golem Run, Dragon Palace, Escape Maze, solo play, bonus stages and a tutorial, with bosses, treasure chests and crafting |
+| 🚧 | **In-game social** | Messenger, whispers, mail, megaphones, exchange chat rooms, guild windows with marks and private guilds, couples with couple rings and bonuses |
 | 🚧 | **Quests and season pass** | Daily missions, quests, CA Pass and item collections |
-| 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market, Grow a Sprout, DIY Bomb, Exchange, lucky draws and Lucky Beans, the Magic Book Market, bingo, dice and quizzes, pets and fishing |
+| 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market, Grow a Sprout, DIY Bomb, Exchange, lucky draws (Pokki Pokki, hammer eggs, magic orbs, gift boxes) and Lucky Beans, daily check-in and returning-player stamps, the Magic Book Market, bingo, dice and quizzes, and fishing |
 | 🚧 | **Custom maps** | Build your own maps and play them with friends |
 
 ## Two ways to play
