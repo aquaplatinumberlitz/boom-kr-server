@@ -46,7 +46,9 @@ TERRAIN_SEEDS = dict(zip((*G1, 'ExVillage01'), (
 SCHEMA = 'kr00967-export-v2'
 F1E_ADAPTER = 'f1e-adapter-r1'
 F2_ADAPTER = 'f2-adapter-r1'
+F3_ADAPTER = 'f3-adapter-r1'
 _F2_CATALOG_PATH = 'docs/evidence/content/f2-mode-catalog.json'
+_F3_CATALOG_PATH = 'docs/evidence/content/f3-pve-catalog.json'
 _F2_EVIDENCE = Path('docs/evidence/content')
 # Phạm vi hình học tĩnh: các mẫu của probe F2/F3 r1 và Zombie04. Catalog
 # rộng hơn gồm cả ứng viên và map F3; có tên trong catalog chưa đủ để xuất.
@@ -59,6 +61,101 @@ _F2_FAMILIES = {
     'Wriggle': frozenset(f'Wriggle{n:02}' for n in range(1, 8)),
     'Zzolman': frozenset(f'Zzolman{n:02}' for n in range(1, 6)),
     'Zombie': frozenset(('Zombie04',)),
+}
+# Chỉ nhận các họ 15x13 có địa hình sạch trong census và pack KR 00967.
+# Adapter chỉ chiếu tile tĩnh; chưa có contract PvE cho script hoặc vật phẩm.
+_F3_FAMILIES = {
+    'BonusCP_18th': frozenset(('BonusCP_18th',)),
+    'BonusCP_LINE': frozenset(('BonusCP_LINE',)),
+    'BonusCp': frozenset(('BonusCp01', 'BonusCp02', 'BonusCp03')),
+    'BonusExp': frozenset(('BonusExp01', 'BonusExp02', 'BonusExp03')),
+    'Bonus_16th': frozenset(('Bonus_16th',)),
+    'CAPong': frozenset(f'CAPong{n:02}' for n in range(1, 6)),
+    'Clover': frozenset(f'Clover{n:02}' for n in range(1, 7)),
+    'Fm_AIBtlDesert': frozenset(('Fm_AIBtlDesert05',)),
+    'Fm_AIBtlForest': frozenset(('Fm_AIBtlForest24',)),
+    'Fm_AIBtlPatrit': frozenset(('Fm_AIBtlPatrit14',)),
+    'Fm_AIBtlTomb': frozenset(('Fm_AIBtlTomb22',)),
+    'Fm_MonGolem': frozenset(f'Fm_MonGolem{n:02}' for n in range(1, 4)),
+    'Fm_MonSeal': frozenset(f'Fm_MonSeal{n:02}' for n in range(1, 4)),
+    'Fm_MonTurtle': frozenset(f'Fm_MonTurtle{n:02}' for n in range(1, 4)),
+    'Fm_Monster': frozenset(f'Fm_Monster{n:02}' for n in range(1, 4)),
+    'Hdn_Alche_Aqua': frozenset(('Hdn_Alche_Aqua',)),
+    'Hdn_Alche_Cam': frozenset(('Hdn_Alche_Cam',)),
+    'Hdn_Alche_Ceme': frozenset(('Hdn_Alche_Ceme',)),
+    'Hdn_Alche_Fac': frozenset(('Hdn_Alche_Fac',)),
+    'Hdn_Alche_Rab': frozenset(('Hdn_Alche_Rab',)),
+    'Hdn_Caffe': frozenset(('Hdn_Caffe01',)),
+    'Hdn_Camp': frozenset(('Hdn_Camp17',)),
+    'Hdn_Clover': frozenset(('Hdn_Clover04',)),
+    'Hdn_DarkCastle': frozenset(('Hdn_DarkCastle01',)),
+    'Hdn_Factory': frozenset(('Hdn_Factory22',)),
+    'Hdn_Ice': frozenset(('Hdn_Ice15',)),
+    'Hdn_Mine': frozenset(('Hdn_Mine01', 'Hdn_Mine02')),
+    'Hdn_Ocean': frozenset(('Hdn_Ocean25',)),
+    'Hdn_Patrit': frozenset(('Hdn_Patrit20', 'Hdn_Patrit23')),
+    'Hdn_R_Camp': frozenset(('Hdn_R_Camp08',)),
+    'Hdn_R_Factory': frozenset(('Hdn_R_Factory07',)),
+    'Hdn_R_Forest': frozenset(('Hdn_R_Forest07',)),
+    'Hdn_R_Patrit': frozenset(('Hdn_R_Patrit14',)),
+    'Hdn_R_Village': frozenset(('Hdn_R_Village10',)),
+    'Hdn_Smash': frozenset(('Hdn_Smash01',)),
+    'Hdn_Square': frozenset(('Hdn_Square01',)),
+    'Hdn_Tomb': frozenset(('Hdn_Tomb02',)),
+    'Hdn_Village': frozenset(('Hdn_Village09',)),
+    'Hdn_Wriggle': frozenset(('Hdn_Wriggle02',)),
+    'HiddenCatchTest': frozenset(('HiddenCatchTest00',)),
+    'MonCity': frozenset(f'MonCity{n:02}' for n in range(1, 10)),
+    'MonGolem': frozenset(f'MonGolem{n:02}' for n in range(1, 28)),
+    'MonNoviceGolem': frozenset(f'MonNoviceGolem{n:02}' for n in range(1, 3)),
+    'MonNoviceTako': frozenset(f'MonNoviceTako{n:02}' for n in range(1, 3)),
+    'MonNoviceTurtle': frozenset(f'MonNoviceTurtle{n:02}' for n in range(1, 3)),
+    'MonPen': frozenset((*[f'MonPen{n:02}' for n in range(1, 31)], 'MonPen96', 'MonPen97', 'MonPen98', 'MonPen99')),
+    'MonRobot': frozenset(f'MonRobot{n:02}' for n in range(1, 28)),
+    'MonSeal': frozenset((*[f'MonSeal{n:02}' for n in range(1, 34)], 'MonSeal96', 'MonSeal97', 'MonSeal98', 'MonSeal99')),
+    'MonTurtle': frozenset(f'MonTurtle{n:02}' for n in range(1, 28)),
+    'MonUnlimited': frozenset(f'MonUnlimited{n:02}' for n in range(1, 11)),
+    'MonWarsBBR': frozenset(('MonWarsBBR',)),
+    'MonWarsBG': frozenset(f'MonWarsBG{n:02}' for n in range(1, 5)),
+    'MonWarsBGB': frozenset(('MonWarsBGB01',)),
+    'MonWarsBLB': frozenset(('MonWarsBLB01',)),
+    'MonWarsBM': frozenset(('MonWarsBM01', 'MonWarsBM02', 'MonWarsBM04', 'MonWarsBM06')),
+    'MonWarsBOB': frozenset(('MonWarsBOB01',)),
+    'MonWarsBPB': frozenset(('MonWarsBPB01',)),
+    'MonWarsBR': frozenset(f'MonWarsBR{n:02}' for n in range(1, 5)),
+    'MonWarsBS': frozenset(('MonWarsBS01', 'MonWarsBS02')),
+    'MonWarsBSB': frozenset(('MonWarsBSB01',)),
+    'MonWarsBT': frozenset(('MonWarsBT01', 'MonWarsBT02', 'MonWarsBT07', 'MonWarsBT09')),
+    'MonWarsBTB': frozenset(('MonWarsBTB01',)),
+    'MonWarsHGB': frozenset(('MonWarsHGB01',)),
+    'MonWarsHH': frozenset(('MonWarsHH02', 'MonWarsHH04')),
+    'MonWarsHLB': frozenset(('MonWarsHLB01',)),
+    'MonWarsHM': frozenset(('MonWarsHM01', 'MonWarsHM02')),
+    'MonWarsHOB': frozenset(('MonWarsHOB01',)),
+    'MonWarsHP': frozenset(('MonWarsHP01', 'MonWarsHP03', 'MonWarsHP04', 'MonWarsHP05', 'MonWarsHP06')),
+    'MonWarsHPB': frozenset(('MonWarsHPB01',)),
+    'MonWarsHR': frozenset(('MonWarsHR01', 'MonWarsHR02')),
+    'MonWarsHS': frozenset(('MonWarsHS06', 'MonWarsHS07', 'MonWarsHS08', 'MonWarsHS13', 'MonWarsHS14')),
+    'MonWarsHSB': frozenset(('MonWarsHSB01',)),
+    'MonWarsHTB': frozenset(('MonWarsHTB01',)),
+    'MonWarsNG': frozenset(('MonWarsNG04', 'MonWarsNG06', 'MonWarsNG10')),
+    'MonWarsNGB': frozenset(('MonWarsNGB01',)),
+    'MonWarsNLB': frozenset(('MonWarsNLB01',)),
+    'MonWarsNM': frozenset(('MonWarsNM12', 'MonWarsNM17', 'MonWarsNM19')),
+    'MonWarsNOB': frozenset(('MonWarsNOB01',)),
+    'MonWarsNP': frozenset(('MonWarsNP02', 'MonWarsNP05', 'MonWarsNP06')),
+    'MonWarsNPB': frozenset(('MonWarsNPB01',)),
+    'MonWarsNR': frozenset(('MonWarsNR01', 'MonWarsNR02', 'MonWarsNR04')),
+    'MonWarsNS': frozenset(('MonWarsNS01', 'MonWarsNS02', 'MonWarsNS03')),
+    'MonWarsNSB': frozenset(('MonWarsNSB01',)),
+    'MonWarsNT': frozenset(('MonWarsNT01', 'MonWarsNT02', 'MonWarsNT04')),
+    'MonWarsNTB': frozenset(('MonWarsNTB01',)),
+    'Monster': frozenset((*[f'Monster{n:02}' for n in range(0, 43)], 'Monster96', 'Monster97', 'Monster98', 'Monster99')),
+    'Rabbit': frozenset((*[f'Rabbit{n:02}' for n in range(1, 6)], 'Rabbit11')),
+    'RescueET': frozenset(f'RescueET{n:02}' for n in range(1, 4)),
+    'Tutorial': frozenset(('Tutorial01',)),
+    'Wriggle': frozenset(f'Wriggle{n:02}' for n in range(1, 8)),
+    'Zzolman': frozenset(f'Zzolman{n:02}' for n in range(1, 6)),
 }
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
 _SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02'))
@@ -894,6 +991,51 @@ def load_f2_maps(maps):
         raise ValueError('Không đọc được catalog hoặc census F2 hợp lệ') from exc
 
 
+def load_f3_maps(maps):
+    """Chọn đúng các họ F3 terrain_ready 15x13 đã pin trong census KR."""
+    if (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
+            or any(re.fullmatch(r'[A-Za-z0-9_]{1,64}', name) is None for name in maps)):
+        raise ValueError('F3 cần 1–16 tên map KR khác nhau')
+    try:
+        evidence = Path(__file__).resolve().parents[1] / _F2_EVIDENCE
+        catalog_raw = (evidence / 'f3-pve-catalog.json').read_bytes()
+        catalog = json.loads(catalog_raw)
+        census = json.loads((evidence / 'f2-f3-tile-grid-census.json').read_bytes())
+        if (catalog['schema'] != 'kre.f3-pve-catalog.v1' or catalog['build'] != 'KR00967'
+                or census['schema'] != 'kre.f2-f3-tile-grid-census.v1' or census['build'] != 'KR00967'
+                or (census['source'], census['status']) != ('kr_static', 'confirmed')
+                or census['input_sha256'][_F3_CATALOG_PATH] != sha(catalog_raw)
+                or census.pop('body_sha256') != sha(encode(census)[:-1])
+                or census['pack_sha256'] != {k: PACK_SHA256[k] for k in
+                                             ('FxMap.idx', 'FxMap.idd', 'fx.idx', 'fx.idd')}):
+            raise ValueError('Catalog và census F3 không khớp KR 00967')
+        families = {}
+        for family in catalog['families']:
+            for name in family['maps']['exact']:
+                if name in families:
+                    raise ValueError(f'Tên map trùng trong catalog F3: {name}')
+                families[name] = family['family']
+        ready = {row['family']: row['maps'] for row in census['families']['F3']
+                 if row['priority'] == 'terrain_ready'}
+        selected = {}
+        for name in maps:
+            family = families.get(name)
+            if name not in _F3_FAMILIES.get(family, ()) or name not in ready.get(family, ()):
+                raise ValueError(f'Map không thuộc allowlist F3 terrain_ready: {name}')
+            row = census['maps'][name]
+            if (row['grid'] != [15, 13] or row['decode'] != 'exact'
+                    or row['layout'] != 'length_prefixed_tail' or row['unmapped_tiles'] != {}
+                    or row['terrain_constraints'] != []
+                    or re.fullmatch(r'[0-9a-f]{64}', row['payload_sha256']) is None
+                    or row['version'] not in (1000, 1001) or type(row['scripted']) is not bool):
+                raise ValueError(f'Metadata map F3 chưa hỗ trợ: {name}')
+            selected[name] = dict(family=family, payload_sha256=row['payload_sha256'],
+                                  version=row['version'], scripted=row['scripted'])
+        return selected
+    except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        raise ValueError('Không đọc được catalog hoặc census F3 hợp lệ') from exc
+
+
 def _f2_ground(key, data):
     # Giữ nguyên ID ô trong profile, kể cả nền đỏ/xanh của CAPong.
     flags = {'Tile42_Ground/TileRed': 65536, 'Tile42_Ground/TileBlue': 131072}
@@ -1043,7 +1185,39 @@ def read_f2_map(levels, name, code, evidence, table):
     return profile, f2_terrain_rules(profile, table)
 
 
-def outputs(files, maps, measured, f1=False, *, f1e=False, f2_maps=None):
+def read_f3_map(levels, name, code, evidence, table):
+    """Đọc profile F3 và chỉ chiếu hình học tile đã được kiểm sạch."""
+    try:
+        raw = levels.read('Map/' + name)
+        digest = sha(raw)
+        if digest != evidence['payload_sha256']:
+            raise ValueError('payload không khớp SHA-256 trong census')
+        profile = decode_map(raw)
+    except (KeyError, ValueError, struct.error) as exc:
+        raise ValueError(f'Không giải mã được map F3 {name}: {exc}') from exc
+    if ((profile['width'], profile['height']) != (15, 13)
+            or profile['version'] != evidence['version']
+            or profile['scripted'] != evidence['scripted']
+            or profile['rectangles']):
+        raise ValueError(f'Bố cục map F3 chưa hỗ trợ: {name}')
+    spawns = profile['spawns']
+    if (not 2 <= len(spawns) <= 8 or len(set(map(tuple, spawns))) != len(spawns)
+            or any(not (0 <= x < 15 and 0 <= y < 13) for x, y in spawns)):
+        raise ValueError(f'Tọa độ spawn map F3 không hợp lệ: {name}')
+    # Giữ drop, placement và cờ scripted trong profile dưới dạng metadata.
+    # Không chạy script hoặc chuyển các hàng vật phẩm thành floor rules.
+    profile.update(name=name, map_code=code, payload_sha256=digest,
+                   adapter=F3_ADAPTER, f3_family=evidence['family'])
+    try:
+        rules = f1_terrain_rules(profile, table, f1e=True)
+    except ValueError as exc:
+        raise ValueError(f'Địa hình F3 chưa hỗ trợ: {exc}') from exc
+    # Giới hạn sức nổ của F1 thuộc luật trận, không nằm trong hình học tile F3.
+    del rules['terrain']['maximum_power']
+    return profile, rules
+
+
+def outputs(files, maps, measured, f1=False, *, f1e=False, f2_maps=None, f3_maps=None):
     def pack(name):
         return Pack(files[name + '.idx'], files[name + '.idd'])
 
@@ -1075,13 +1249,20 @@ def outputs(files, maps, measured, f1=False, *, f1e=False, f2_maps=None):
                                           for row in groups])
     levels = pack('FxMap')
     order = [name for name, *_ in levels.order if name.startswith('Map/')]
-    table = load_tile_table(pack('fx')) if measured or f1 or f1e or f2_maps else None
+    table = load_tile_table(pack('fx')) if measured or f1 or f1e or f2_maps or f3_maps else None
     for name in maps:
         entry = 'Map/' + name
         if f2_maps is not None:
             if entry not in levels.entries:
                 raise ValueError(f'Thiếu hoặc trùng entry map F2: {name}')
             profile, rules = read_f2_map(levels, name, order.index(entry), f2_maps[name], table)
+            yield name + '.json', profile
+            yield name + '.rules.json', rules
+            continue
+        if f3_maps is not None:
+            if entry not in levels.entries:
+                raise ValueError(f'Thiếu hoặc trùng entry map F3: {name}')
+            profile, rules = read_f3_map(levels, name, order.index(entry), f3_maps[name], table)
             yield name + '.json', profile
             yield name + '.rules.json', rules
             continue
@@ -1122,7 +1303,7 @@ def checked_cache(path, identity, pins, maps, measured, f1=False):
     return manifest
 
 
-def cache_identity(pins, maps, measured, f1=False, *, f1e=False, f2_maps=None):
+def cache_identity(pins, maps, measured, f1=False, *, f1e=False, f2_maps=None, f3_maps=None):
     key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
     if f1e:
         key['adapter'] = F1E_ADAPTER
@@ -1130,6 +1311,8 @@ def cache_identity(pins, maps, measured, f1=False, *, f1e=False, f2_maps=None):
         key['adapter'] = 'f1-a-terrain-r5'
     elif f2_maps is not None:
         key.update(adapter=F2_ADAPTER, f2_maps=f2_maps)
+    elif f3_maps is not None:
+        key.update(adapter=F3_ADAPTER, f3_maps=f3_maps)
     return sha(encode(key))
 
 
@@ -1148,27 +1331,30 @@ def verified_packs(game, pins=PACK_SHA256, pack_files=None):
         yield files
 
 
-def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False, f1e=False, f2=False,
+def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False, f1e=False, f2=False, f3=False,
            pack_files=None):
     """Chỉ dùng pins khác qua API kiểm thử; catalog thử có giới hạn."""
     if f1 and f1e:
         raise ValueError('Chỉ chọn một adapter F1-a hoặc F1-e')
     if f2 and (f1 or f1e):
         raise ValueError('Không dùng adapter F2 cùng F1-a hoặc F1-e')
+    if f3 and (f1 or f1e or f2):
+        raise ValueError('Không dùng adapter F3 cùng F1-a, F1-e hoặc F2')
     if (f1 or f1e) and (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
                or any(not 1 <= len(name) <= 64 or not name.isascii()
                       or not all(c.isalnum() or c == '_' for c in name) for name in maps)):
         raise ValueError(f'{"F1-e" if f1e else "F1-a"} cần 1–16 tên map KR khác nhau')
     f2_maps = load_f2_maps(maps) if f2 else None
+    f3_maps = load_f3_maps(maps) if f3 else None
     game = game.resolve(strict=True)
     if cache.is_symlink():
         raise ValueError('Cache không được là symlink')
     cache = cache.resolve()
     if cache.is_relative_to(game):
         raise ValueError('Cache phải nằm ngoài thư mục game chỉ đọc')
-    identity = cache_identity(pins, maps, measured, f1, f1e=f1e, f2_maps=f2_maps)
+    identity = cache_identity(pins, maps, measured, f1, f1e=f1e, f2_maps=f2_maps, f3_maps=f3_maps)
     dest = cache / identity
-    with_rules = f1 or f1e or f2
+    with_rules = f1 or f1e or f2 or f3
     with verified_packs(game, pins, pack_files) as files:
         if dest.exists() or dest.is_symlink():
             checked_cache(dest, identity, pins, maps, measured, with_rules)
@@ -1178,7 +1364,7 @@ def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False,
             temp = Path(work) / 'data'
             temp.mkdir(mode=0o700)
             hashes = {}
-            for name, value in outputs(files, maps, measured, f1, f1e=f1e, f2_maps=f2_maps):
+            for name, value in outputs(files, maps, measured, f1, f1e=f1e, f2_maps=f2_maps, f3_maps=f3_maps):
                 data = encode(value)
                 (temp / name).write_bytes(data)
                 hashes[name] = sha(data)
@@ -1246,6 +1432,7 @@ def main():
     adapter.add_argument('--f1-map', action='append', help='Tên map F1-a chính xác; lặp lại tối đa 16 lần')
     adapter.add_argument('--f1e-map', action='append', help='Tên map F1-e chính xác; lặp lại tối đa 16 lần')
     adapter.add_argument('--f2-map', action='append', help='Tên map F2 trong allowlist; lặp lại tối đa 16 lần')
+    adapter.add_argument('--f3-map', action='append', help='Tên map F3 terrain_ready; lặp lại tối đa 16 lần')
     args = parser.parse_args()
     if (args.check_prebuilt is None) != (args.game_dir is not None):
         parser.error('--game-dir bắt buộc khi xuất và không dùng với --check-prebuilt')
@@ -1253,14 +1440,18 @@ def main():
         parser.error('--f1-map và --f1e-map chỉ dùng với --cache')
     if args.f2_map and args.cache is None:
         parser.error('--f2-map chỉ dùng với --cache')
+    if args.f3_map and args.cache is None:
+        parser.error('--f3-map chỉ dùng với --cache')
     try:
         if args.check_prebuilt is not None:
             path, reused = prebuilt(args.check_prebuilt), True
         elif args.prebuilt_out is not None:
             path, reused = refresh_prebuilt(args.game_dir, args.prebuilt_out), False
         else:
-            path, reused = export(args.game_dir, args.cache, maps=args.f1_map or args.f1e_map or args.f2_map or MAPS,
-                                  f1=bool(args.f1_map), f1e=bool(args.f1e_map), f2=bool(args.f2_map))
+            path, reused = export(args.game_dir, args.cache,
+                                  maps=args.f1_map or args.f1e_map or args.f2_map or args.f3_map or MAPS,
+                                  f1=bool(args.f1_map), f1e=bool(args.f1e_map),
+                                  f2=bool(args.f2_map), f3=bool(args.f3_map))
     except (OSError, ValueError, KeyError, IndexError, struct.error, ET.ParseError) as exc:
         parser.exit(1, f'Không thể xuất pack KR 00967: {exc}\n')
     print(json.dumps(dict(cache=str(path), reused=reused)))
