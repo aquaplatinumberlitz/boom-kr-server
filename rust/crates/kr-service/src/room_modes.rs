@@ -1,11 +1,14 @@
-//! F2 operator policy, rule descriptors and static KR00967 catalog. These IDs
-//! have no wire representation. Attr membership and candidate links only filter.
+//! F2 operator policy, rule descriptors and static KR00967 catalog. UI IDs
+//! are opt-in aliases only. Attr membership and candidate links only filter.
 //! KR00967 static anchors: MapGroupVisible writer 0xE04CB0 and reader 0xE04DD0;
 //! create dialogs 0xC541E0 / 0xC55AF0 (Ladder), 0xC8DF50 (Mission), and
 //! roomtype 0x57F520. These do not establish a live F2 packet contract.
-use kr_wire::kr00967::{RoomTeamSelector, Start121Map};
+use kr_wire::kr00967::{GameTypeId, MapGroupVisible, RoomTeamSelector, Start121Map};
 use serde::Deserialize;
-use std::{collections::BTreeSet, io};
+use std::{
+    collections::{BTreeMap, BTreeSet},
+    io,
+};
 
 pub(crate) mod adapter;
 mod rules;
@@ -60,16 +63,123 @@ impl MapGroup {
 #[serde(deny_unknown_fields)]
 pub(crate) struct Config {
     #[serde(default)]
-    visible_map_groups: BTreeSet<MapGroup>,
+    visible_map_groups: VisibilityConfig,
     #[serde(default)]
-    create_overrides: CreateOverrides,
+    create_overrides: OverrideConfig,
     #[serde(default)]
-    runtime_overrides: CreateOverrides,
+    runtime_overrides: OverrideConfig,
+}
+
+#[derive(Deserialize)]
+#[serde(untagged)]
+enum VisibilityConfig {
+    Named(BTreeSet<MapGroup>),
+    Encoded(EncodedVisibility),
+}
+
+impl Default for VisibilityConfig {
+    fn default() -> Self {
+        Self::Named(BTreeSet::new())
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct EncodedVisibility {
+    bytes: Vec<u8>,
+    // The codec only establishes u16 entries. These bindings are supplied by
+    // the operator for this input; the policy assumes no KR numeric group IDs.
+    group_ids: BTreeMap<MapGroup, u16>,
+}
+
+impl VisibilityConfig {
+    fn resolve(&self) -> io::Result<BTreeSet<MapGroup>> {
+        match self {
+            Self::Named(groups) => Ok(groups.clone()),
+            Self::Encoded(input) => {
+                let entries = MapGroupVisible::decode(&input.bytes)?;
+                let mut by_id = BTreeMap::new();
+                for (&group, &id) in &input.group_ids {
+                    if by_id.insert(id, group).is_some() {
+                        return Err(io::Error::other("ambiguous MapGroupVisible binding"));
+                    }
+                }
+                entries
+                    .0
+                    .into_iter()
+                    .map(|id| {
+                        by_id.get(&id).copied().ok_or_else(|| {
+                            io::Error::other(format!("unbound MapGroupVisible entry: {id}"))
+                        })
+                    })
+                    .collect()
+            }
+        }
+    }
+}
+
+#[derive(Clone, Copy, Deserialize)]
+#[serde(untagged)]
+enum Preset {
+    Named(ModeKind),
+    GameType(GameTypePreset),
+}
+
+#[derive(Clone, Copy, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GameTypePreset {
+    #[serde(deserialize_with = "deserialize_game_type_id")]
+    game_type_id: GameTypeId,
+}
+
+fn deserialize_game_type_id<'de, D: serde::Deserializer<'de>>(
+    d: D,
+) -> Result<GameTypeId, D::Error> {
+    GameTypeId::try_from(u32::deserialize(d)?).map_err(serde::de::Error::custom)
+}
+
+#[derive(Default, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct OverrideConfig {
+    free: Option<Preset>,
+    manner: Option<Preset>,
+}
+
+impl OverrideConfig {
+    fn is_empty(&self) -> bool {
+        [self.free, self.manner].into_iter().all(|preset| {
+            matches!(
+                preset,
+                None | Some(Preset::GameType(GameTypePreset {
+                    game_type_id: GameTypeId::Default
+                }))
+            )
+        })
+    }
+
+    fn resolve(&self, rules: &RuleTable) -> io::Result<CreateOverrides> {
+        let resolve = |preset| match preset {
+            None
+            | Some(Preset::GameType(GameTypePreset {
+                game_type_id: GameTypeId::Default,
+            })) => Ok(None),
+            Some(Preset::Named(kind)) => Ok(Some(kind)),
+            Some(Preset::GameType(GameTypePreset { game_type_id })) => rules
+                .mode_for_game_type(game_type_id)
+                .map(Some)
+                .ok_or_else(|| {
+                    io::Error::other(format!("unsupported F2 game type alias: {game_type_id:?}"))
+                }),
+        };
+        Ok(CreateOverrides {
+            free: resolve(self.free)?,
+            manner: resolve(self.manner)?,
+        })
+    }
 }
 
 /// Operator presets keyed by the unchanged native team selector.
-#[derive(Clone, Copy, Default, Deserialize)]
-#[serde(deny_unknown_fields)]
+#[derive(Clone, Copy)]
 struct CreateOverrides {
     free: Option<ModeKind>,
     manner: Option<ModeKind>,
@@ -150,12 +260,8 @@ impl Catalog {
 
 impl Policy {
     pub(crate) fn load(cfg: &Config) -> io::Result<Option<Self>> {
-        let CreateOverrides { free, manner } = cfg.create_overrides;
-        let runtime = cfg.runtime_overrides;
-        if [free, manner, runtime.free, runtime.manner]
-            .into_iter()
-            .all(|kind| kind.is_none())
-            && cfg.visible_map_groups.is_empty()
+        let visible = cfg.visible_map_groups.resolve()?;
+        if cfg.create_overrides.is_empty() && cfg.runtime_overrides.is_empty() && visible.is_empty()
         {
             return Ok(None);
         }
@@ -164,6 +270,9 @@ impl Policy {
             return Err(io::Error::other("unsupported F2 catalog build or schema"));
         }
         let rules = RuleTable::load(&catalog.modes)?;
+        let create = cfg.create_overrides.resolve(&rules)?;
+        let runtime = cfg.runtime_overrides.resolve(&rules)?;
+        let CreateOverrides { free, manner } = create;
         if [free, manner]
             .into_iter()
             .flatten()
@@ -179,8 +288,8 @@ impl Policy {
         Ok(Some(Self {
             catalog,
             rules,
-            visible: cfg.visible_map_groups.clone(),
-            create: cfg.create_overrides,
+            visible,
+            create,
             runtime,
         }))
     }
@@ -195,15 +304,6 @@ impl Policy {
 
     pub(crate) fn checks_native_start(&self) -> bool {
         self.create.free.is_some() || self.create.manner.is_some() || !self.visible.is_empty()
-    }
-
-    pub(crate) fn room_mode(
-        &self,
-        team: RoomTeamSelector,
-    ) -> io::Result<Option<adapter::RoomMode>> {
-        self.runtime_for(team)
-            .map(|runtime| runtime.map(adapter::RoomMode))
-            .map_err(|error| io::Error::other(format!("F2 runtime: {error:?}")))
     }
 
     fn group_visible(&self, group: &Group) -> bool {
