@@ -28,7 +28,7 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
 
 <table>
   <tr>
-    <td align="center" valign="top"><strong>Launcher</strong><br><img src="assets/screenshots/launcher.jpg" width="420" alt="LANBoom launcher showing Play with friends in Vietnamese"></td>
+    <td align="center" valign="top"><strong>Launcher</strong><br><img src="assets/screenshots/launcher-en.jpg" width="420" alt="LANBoom launcher showing Private room in English"></td>
     <td align="center" valign="top"><strong>Login</strong><br><img src="assets/screenshots/en-login.jpg" width="420" alt="LANBoom login screen with English buttons"></td>
   </tr>
   <tr>
@@ -36,7 +36,7 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
     <td align="center" valign="top"><strong>Game room</strong><br><img src="assets/screenshots/en-room.jpg" width="420" alt="Two players in a game room with the English Ready button"></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><strong>Normal battle (Korean UI)</strong><br><img src="assets/screenshots/ko-arena.jpg" width="420" alt="Two players in a water balloon battle on PangLand03 with the Korean interface"></td>
+    <td colspan="2" align="center"><strong>Normal battle</strong><br><img src="assets/screenshots/en-arena.jpg" width="420" alt="Two players in a water balloon battle on PangLand03 with the English interface"></td>
   </tr>
 </table>
 
@@ -124,6 +124,6 @@ The feature exists in the original client and is being brought to LANBoom. It wi
 
 ## Community
 
-- 💬 Discord / Facebook: *(Coming soon: December 2026)*
+- 💬 Discord: [Join the LANBoom Discord](https://discord.gg/ag2eEsryNe) · Facebook: *(Coming soon: December 2026)*
 - 🐛 Bug reports and suggestions: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
 - 🛠️ Developers: see the [technical documentation](docs/DEVELOPMENT.md)

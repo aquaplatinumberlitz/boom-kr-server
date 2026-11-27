@@ -124,6 +124,6 @@ Tính năng có trong bản gốc và đang được đưa vào LANBoom. Tính n
 
 ## Cộng đồng
 
-- 💬 Discord / Facebook: *(Sắp ra mắt: tháng 12/2026)*
+- 💬 Discord: [Tham gia Discord LANBoom](https://discord.gg/ag2eEsryNe) · Facebook: *(Sắp ra mắt: tháng 12/2026)*
 - 🐛 Báo lỗi và góp ý: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
 - 🛠️ Nhà phát triển: xem [tài liệu kỹ thuật](docs/DEVELOPMENT.md)
