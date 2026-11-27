@@ -3,10 +3,15 @@
 //! No KR wire field, price or reward formula is inferred; amounts come from the
 //! operator's validated `EconomyPolicy` and `ShopCatalog`.
 use super::{Client, Command, Error, Pending, Result, Worker};
+use crate::accounts::BoosterSettlementRequest as StoreBoosterSettlementRequest;
 use crate::accounts::{
     self, CatalogAccess, EconomyPolicy, EquippedItem, InventoryItem, ItemGrant, LedgerEntry,
     MatchItemConsumptionReceipt, MatchItemConsumptionRequest, PlayerProfile, PurchaseReceipt,
     ShopCatalog, Store, UsableItem, Validate,
+};
+use crate::f4_extended_policy::{
+    BoosterRoomContext, BoosterTicket, BoosterTicketPolicy, Decision, LevelGrant,
+    LevelRewardPolicy, LucciVaultPolicy, SettlementKey,
 };
 use std::{sync::Arc, time::Instant};
 use tokio::sync::oneshot;
@@ -28,18 +33,63 @@ pub enum MatchItemConsumptionOutcome {
 pub struct EconomySettings {
     policy: EconomyPolicy,
     catalog: ShopCatalog,
+    booster: BoosterTicketPolicy,
+    level_rewards: LevelRewardPolicy,
+    lucci_vault: LucciVaultPolicy,
 }
 impl EconomySettings {
     pub fn new(policy: EconomyPolicy, catalog: ShopCatalog) -> Result<Self> {
         policy.validate().map_err(Error::Backend)?;
         catalog.validate().map_err(Error::Backend)?;
-        Ok(Self { policy, catalog })
+        Ok(Self {
+            policy,
+            catalog,
+            booster: BoosterTicketPolicy::default(),
+            level_rewards: LevelRewardPolicy::default(),
+            lucci_vault: LucciVaultPolicy::default(),
+        })
+    }
+    /// Opt in to the extended F4 settlement policies. Existing callers using
+    /// [`Self::new`] retain the disabled, fail-closed defaults.
+    pub fn with_extended_policies(
+        mut self,
+        booster: BoosterTicketPolicy,
+        level_rewards: LevelRewardPolicy,
+        lucci_vault: LucciVaultPolicy,
+    ) -> Result<Self> {
+        booster.validate().map_err(|_| Error::InvalidInput)?;
+        level_rewards.validate().map_err(|_| Error::InvalidInput)?;
+        lucci_vault.validate().map_err(|_| Error::InvalidInput)?;
+        self.booster = booster;
+        self.level_rewards = level_rewards;
+        self.lucci_vault = lucci_vault;
+        Ok(self)
+    }
+    pub fn set_extended_policies(
+        &mut self,
+        booster: BoosterTicketPolicy,
+        level_rewards: LevelRewardPolicy,
+        lucci_vault: LucciVaultPolicy,
+    ) -> Result<()> {
+        *self = self
+            .clone()
+            .with_extended_policies(booster, level_rewards, lucci_vault)?;
+        Ok(())
     }
     pub fn policy(&self) -> &EconomyPolicy {
         &self.policy
     }
     pub fn catalog(&self) -> &ShopCatalog {
         &self.catalog
+    }
+    pub fn booster_ticket_policy(&self) -> &BoosterTicketPolicy {
+        &self.booster
+    }
+    pub fn level_reward_policy(&self) -> &LevelRewardPolicy {
+        &self.level_rewards
+    }
+    pub fn lucci_vault_policy(&self) -> &LucciVaultPolicy {
+        &self.lucci_vault
     }
     /// True when finished matches settle ledger rewards.
     pub fn rewards_enabled(&self) -> bool {
@@ -70,6 +120,20 @@ pub(super) enum EconomyRequest {
     },
     Consume(MatchItemConsumptionRequest),
     ConsumeEquipped(MatchItemConsumptionRequest, accounts::Token, String),
+    BoosterSettlement {
+        player: i64,
+        key: SettlementKey,
+        room_group: String,
+        mode: String,
+        map: String,
+        room_rules_allow: bool,
+        normal_unranked: bool,
+        ticket: BoosterTicket,
+    },
+    LevelMilestone {
+        player: i64,
+        grant: LevelGrant,
+    },
 }
 pub(super) enum EconomyReply {
     Profile(PlayerProfile),
@@ -81,6 +145,8 @@ pub(super) enum EconomyReply {
     Equip(EquippedItem),
     Unequip(bool),
     Consume(MatchItemConsumptionReceipt),
+    BoosterSettlement(Decision<LedgerEntry>),
+    LevelMilestone(Decision<LedgerEntry>),
 }
 
 /// Execute one economy request on the worker thread with execution-time UTC.
@@ -126,6 +192,49 @@ pub(super) fn execute(
         EconomyRequest::ConsumeEquipped(request, token, slot) => EconomyReply::Consume(
             store.consume_equipped_item_in_match(&request, &token, &slot, now)?,
         ),
+        EconomyRequest::BoosterSettlement {
+            player,
+            key,
+            room_group,
+            mode,
+            map,
+            room_rules_allow,
+            normal_unranked,
+            ticket,
+        } => {
+            if !settings.booster.enabled {
+                return Err(accounts::Error::InvalidInput);
+            }
+            let room = BoosterRoomContext {
+                room_group: &room_group,
+                mode: &mode,
+                map: &map,
+                room_rules_allow,
+                normal_unranked,
+            };
+            let request = StoreBoosterSettlementRequest { key, room, ticket };
+            EconomyReply::BoosterSettlement(store.apply_booster_settlement(
+                player,
+                request,
+                &settings.booster,
+                &settings.lucci_vault,
+                &settings.policy,
+                now,
+            )?)
+        }
+        EconomyRequest::LevelMilestone { player, grant } => {
+            if !settings.level_rewards.enabled {
+                return Err(accounts::Error::InvalidInput);
+            }
+            EconomyReply::LevelMilestone(store.claim_level_milestone_reward(
+                player,
+                &grant,
+                &settings.level_rewards,
+                &settings.lucci_vault,
+                &settings.catalog,
+                now,
+            )?)
+        }
     })
 }
 
@@ -323,6 +432,72 @@ impl AccountService {
             .await?
         {
             EconomyReply::Usable(items) => Ok(items),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    /// Apply the configured booster ticket bonus to a completed match. The
+    /// request is admitted through the same bounded queue as all economy I/O.
+    pub async fn apply_booster_settlement(
+        &self,
+        player_id: i64,
+        key: SettlementKey,
+        room: BoosterRoomContext<'_>,
+        ticket: BoosterTicket,
+    ) -> Result<Decision<LedgerEntry>> {
+        if !self.settings.booster.enabled
+            || key.account == 0
+            || key.match_id == 0
+            || ticket.account != key.account
+            || room.room_group.is_empty()
+            || room.mode.is_empty()
+            || room.map.is_empty()
+            || room.room_group.len() > 64
+            || room.mode.len() > 64
+            || room.map.len() > 64
+        {
+            return Err(Error::InvalidInput);
+        }
+        match self
+            .call(
+                player_id,
+                EconomyRequest::BoosterSettlement {
+                    player: player_id,
+                    key,
+                    room_group: room.room_group.into(),
+                    mode: room.mode.into(),
+                    map: room.map.into(),
+                    room_rules_allow: room.room_rules_allow,
+                    normal_unranked: room.normal_unranked,
+                    ticket,
+                },
+            )
+            .await?
+        {
+            EconomyReply::BoosterSettlement(receipt) => Ok(receipt),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    /// Claim one configured level milestone grant, idempotently.
+    pub async fn claim_level_milestone_reward(
+        &self,
+        player_id: i64,
+        grant: &LevelGrant,
+    ) -> Result<Decision<LedgerEntry>> {
+        if !self.settings.level_rewards.enabled || grant.claim.account == 0 || grant.claim.level < 2
+        {
+            return Err(Error::InvalidInput);
+        }
+        match self
+            .call(
+                player_id,
+                EconomyRequest::LevelMilestone {
+                    player: player_id,
+                    grant: grant.clone(),
+                },
+            )
+            .await?
+        {
+            EconomyReply::LevelMilestone(receipt) => Ok(receipt),
             _ => Err(Error::WorkerFault),
         }
     }
