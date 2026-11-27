@@ -1,0 +1,1062 @@
+{
+  "build": "KR00967",
+  "ida_context": {
+    "game_type_switch_va": "0xc6c080",
+    "limit": "Các neo chỉ dẫn đường kiểm; chưa gắn ID wire hoặc quyền quyết định cho các dòng trong ma trận.",
+    "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f2_modes",
+    "map_group_visible": {
+      "config_key": "MapGroupVisible",
+      "reader_va": "0xe04dd0",
+      "writer_va": "0xe04cb0"
+    },
+    "rtti_packet_namespaces": [
+      "WeeklyLadderPacket",
+      "ConfusedFightPacket"
+    ],
+    "source": "kr_static",
+    "status": "confirmed"
+  },
+  "input_sha256": {
+    "docs/PLAN.md": "5721074eaaf23d68f153488a4451a0d94c42ad42bace3187bc5c225393a2ee07",
+    "docs/content/census.json": "cbd5784b47c6b33512f2aa8b126ee6bed01b685cc612b0383409ec9602b0ce8b",
+    "docs/content/classification.json": "dd8fab5738180bc6cf5e3e79d6c0227833805a8d3d6c353e17f28a94d02c08ba",
+    "docs/evidence/content/f2-f5-f3-ida-anchors.json": "158036dd91bc6bb309b3ec5c1c7ca1797f44a51ff3a653bfc17962f9ac671df0",
+    "docs/evidence/content/f2-mode-catalog.json": "80fce2bba53ffe5666ee0bdec169708e5659ce42da66d6e45310cda3582e43df",
+    "docs/evidence/owner-directives/full-content-coverage.json": "87a442cf44eb4b4f295ae057a5439b657059c6da31f017bf2d851ad5bdc501f9",
+    "rust/crates/kr-service/src/room_modes/rules.json": "2550ecef54f485f05006868095ac0eb4aa3c1393b8bb1f4af6ecb0a241216037"
+  },
+  "invariants": [
+    "Đưa luật mới vào RoomRules hoặc policy do RoomRules dùng; không thêm nhánh `capacity() == N`, cờ theo sức chứa hay alias theo identity vào lõi phòng.",
+    "Tách số điểm spawn trong pack, sức chứa roster và hình thức thi đấu; không suy ra giá trị nào từ hai giá trị còn lại.",
+    "Giữ wire và quyền quyết định chưa đo ở mức unknown; không dùng mặc định trận thường hoặc ID giao diện để điền chỗ trống.",
+    "Kiểm tra quyền và chuyển trạng thái ở server theo policy; giữ luật sảnh, kênh và giải đấu ở lớp chọn policy trước khi tạo phòng."
+  ],
+  "map_families": [
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "Balansa",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 5,
+          "width": 15
+        }
+      ],
+      "map_count": 5,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 5,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 5,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "Baram",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 4,
+          "width": 15
+        }
+      ],
+      "map_count": 4,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 4,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 4,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "BlackLucy",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 9,
+          "width": 15
+        }
+      ],
+      "map_count": 9,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 9,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 9,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "Clovertest",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 3,
+          "width": 15
+        }
+      ],
+      "map_count": 3,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 3,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 3
+      },
+      "script_unknown": 3,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 3,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [
+        "confused_fight"
+      ],
+      "category": "other",
+      "classification": "C",
+      "family": "ConfusedFight",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 3,
+          "width": 15
+        }
+      ],
+      "map_count": 3,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 1,
+      "script_presence": {
+        "no": 2,
+        "unknown": 0,
+        "yes": 1
+      },
+      "script_unknown": 1,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 3,
+          "spawns": 12
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "DarkCastle",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 9,
+          "width": 15
+        }
+      ],
+      "map_count": 9,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 9,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 9
+      },
+      "script_unknown": 9,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 9,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "DarkVampire",
+      "grid_class": "nonstandard",
+      "grid_sizes": [
+        {
+          "height": 28,
+          "maps": 1,
+          "width": 15
+        },
+        {
+          "height": 34,
+          "maps": 1,
+          "width": 15
+        },
+        {
+          "height": 35,
+          "maps": 2,
+          "width": 15
+        },
+        {
+          "height": 40,
+          "maps": 1,
+          "width": 15
+        },
+        {
+          "height": 42,
+          "maps": 2,
+          "width": 15
+        },
+        {
+          "height": 44,
+          "maps": 1,
+          "width": 15
+        }
+      ],
+      "map_count": 8,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 7,
+      "script_presence": {
+        "no": 1,
+        "unknown": 0,
+        "yes": 7
+      },
+      "script_unknown": 7,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 8,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [
+        "big_battle"
+      ],
+      "category": "other",
+      "classification": "C",
+      "family": "Fm_BigBattle",
+      "grid_class": "mixed",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 1,
+          "width": 15
+        },
+        {
+          "height": 26,
+          "maps": 1,
+          "width": 30
+        },
+        {
+          "height": 26,
+          "maps": 1,
+          "width": 45
+        },
+        {
+          "height": 39,
+          "maps": 1,
+          "width": 45
+        }
+      ],
+      "map_count": 4,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 4,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 4
+      },
+      "script_unknown": 4,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 4,
+          "spawns": 24
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [
+        "big_battle"
+      ],
+      "category": "other",
+      "classification": "C",
+      "family": "Fm_BigBattleH_PreparePlay",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 1,
+          "width": 15
+        }
+      ],
+      "map_count": 1,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 1,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 1,
+          "spawns": 24
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [
+        "big_battle"
+      ],
+      "category": "other",
+      "classification": "C",
+      "family": "Fm_BigBattle_PreparePlay",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 1,
+          "width": 15
+        }
+      ],
+      "map_count": 1,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 1,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 1,
+          "spawns": 24
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "GoldButterfly",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 3,
+          "width": 15
+        }
+      ],
+      "map_count": 3,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 3,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 3,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "Hiphopclub",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 1,
+          "width": 15
+        }
+      ],
+      "map_count": 1,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 1,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 1,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "MagNest",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 1,
+          "width": 15
+        }
+      ],
+      "map_count": 1,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 1,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 1
+      },
+      "script_unknown": 1,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 1,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "NewXmas",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 6,
+          "width": 15
+        }
+      ],
+      "map_count": 6,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 6,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 6
+      },
+      "script_unknown": 6,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 6,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "OkongOfLegend",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 3,
+          "width": 15
+        }
+      ],
+      "map_count": 3,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 3,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 3,
+          "spawns": 2
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "Smash",
+      "grid_class": "nonstandard",
+      "grid_sizes": [
+        {
+          "height": 16,
+          "maps": 2,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "maps": 1,
+          "width": 20
+        },
+        {
+          "height": 19,
+          "maps": 1,
+          "width": 20
+        }
+      ],
+      "map_count": 4,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 4,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 4,
+          "spawns": 12
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "Space_TW",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 2,
+          "width": 15
+        }
+      ],
+      "map_count": 2,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 2,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 2
+      },
+      "script_unknown": 2,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 2,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "UserContest",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 17,
+          "width": 15
+        }
+      ],
+      "map_count": 17,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 17,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 1,
+          "spawns": 2
+        },
+        {
+          "maps": 1,
+          "spawns": 6
+        },
+        {
+          "maps": 15,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "WhiteAngel",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 2,
+          "width": 15
+        }
+      ],
+      "map_count": 2,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 2,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 2
+      },
+      "script_unknown": 2,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 2,
+          "spawns": 8
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "WinningStreak_Colosseum",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 1,
+          "width": 15
+        }
+      ],
+      "map_count": 1,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 0,
+      "script_presence": {
+        "no": 1,
+        "unknown": 0,
+        "yes": 0
+      },
+      "script_unknown": 0,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 1,
+          "spawns": 4
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    },
+    {
+      "catalog_group_candidates": [],
+      "category": "other",
+      "classification": "C",
+      "family": "Wriggletest",
+      "grid_class": "standard_15x13",
+      "grid_sizes": [
+        {
+          "height": 13,
+          "maps": 4,
+          "width": 15
+        }
+      ],
+      "map_count": 4,
+      "room_rules": {
+        "slot": "RoomRules.map_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "script_count": 4,
+      "script_presence": {
+        "no": 0,
+        "unknown": 0,
+        "yes": 4
+      },
+      "script_unknown": 4,
+      "source": "kr_static",
+      "spawn_counts": [
+        {
+          "maps": 4,
+          "spawns": 4
+        }
+      ],
+      "status": "candidate",
+      "wave": "F2?",
+      "wire": "unknown"
+    }
+  ],
+  "map_metadata": {
+    "classification_locator": "docs/content/classification.json#rows",
+    "pack_locator": "docs/content/census.json#maps",
+    "script_presence_unknown_meaning": "Số map có parse khác exact.",
+    "script_unknown_meaning": "Số map có tag ngoài mapscript và StageClearScript; cần đo quyền thực thi."
+  },
+  "matrix_sha256": "b034a4508ed186d938857ddcee8f3a76c389825423522dc733540beddd498d39",
+  "schema": "kre.f2-extended-modes.v1",
+  "source_artifacts": {
+    "image_base": "0x400000",
+    "kr_ca_exe_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+    "kr_full_i64_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"
+  },
+  "summary": {
+    "existing_mission_families_excluded": 18,
+    "extended_systems": 9,
+    "map_families": 21,
+    "maps": 91,
+    "roadmap_only_systems": 8
+  },
+  "systems": [
+    {
+      "classification": "C",
+      "id": "big_brawl",
+      "locator": "docs/content/classification.json",
+      "name": "Đấu loạn 12 người (대난투)",
+      "next_check": "Đo chọn chế độ, roster 12 người, map được phép và cách chốt điểm cá nhân.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.roster + map_policy + result",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Đấu xếp hạng cá nhân 12 người trên map lớn, có kênh và điểm riêng; chưa có wire và luật điểm.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "ca_jjang",
+      "locator": "docs/content/classification.json",
+      "name": "Xếp hạng 1:1 theo mùa (크아짱)",
+      "next_check": "Đo ghép 1:1, giới hạn 1P và chuyển mùa; xác định nơi chốt điểm và bảng xếp hạng.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.roster + result; RankingSeason",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Đấu 1:1 tính điểm theo mùa, chỉ 1P; chưa có wire mùa và bảng điểm.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "channel_types",
+      "locator": "docs/content/classification.json",
+      "name": "Kênh theo loại (채널)",
+      "next_check": "Đo điều kiện vào từng loại kênh và preset chuyển xuống phòng.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.admission_policy + item_policy; ChannelPolicy",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Kênh tân thủ, sự kiện, không item, luyện tập và giải đấu; chưa biết luật vào kênh.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "ladder_bonus_map",
+      "locator": "docs/PLAN.md#full-game-roadmap",
+      "name": "Map thưởng Ladder",
+      "next_check": "Đo cách client nhận lựa chọn map thưởng và điều kiện chuyển sang map đó; đối chiếu kết quả và thưởng với một ván Ladder thường.",
+      "room_rules": {
+        "slot": "RoomRules.map_policy + result; LadderPolicy",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Mục riêng trong lộ trình F2. Chưa biết map, điều kiện xuất hiện hoặc phần thưởng.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "room_item_rules",
+      "locator": "docs/content/classification.json",
+      "name": "Luật phòng (노템전, 노샵, 기샵)",
+      "next_check": "Đo từng preset khi tạo hoặc vào phòng; tách quyền mang đồ, dùng đồ và nhặt đồ trong trận.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.item_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Phòng không item, không đồ mua hoặc chỉ đồ cơ bản; chưa biết cờ phòng trên wire.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "super_host",
+      "locator": "docs/content/classification.json",
+      "name": "Siêu chủ phòng (슈퍼방장)",
+      "next_check": "Đo nguồn cấp quyền, điều kiện bắt đầu ngay và việc chuyển quyền khi chủ rời phòng.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.host_permissions",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Quyền chủ phòng mở rộng như bắt đầu ngay; chưa biết nguồn cấp và giới hạn.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "supreme_rooms",
+      "locator": "docs/content/classification.json",
+      "name": "Phòng ưu tiên (슈프림, 앞방 잡기)",
+      "next_check": "Đo quyền đặt chỗ S01–S50 theo kênh, cách giữ và giải phóng chỗ.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.admission_policy; LobbyRoomDirectory",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Phòng S01–S50 mỗi kênh cho người có quyền; chưa có wire tạo và giữ phòng.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "tournaments",
+      "locator": "docs/content/classification.json",
+      "name": "Giải đấu (토너먼트)",
+      "next_check": "Đo đường vào kênh luyện tập và giải, điều kiện dự giải, tiến vòng và chốt quà.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.roster + result; TournamentPolicy",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Giải đấu có kênh luyện tập, giới hạn người vừa vô địch và quà; chưa có wire và luật.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    },
+    {
+      "classification": "C",
+      "id": "vote_kick",
+      "locator": "docs/content/classification.json",
+      "name": "Bỏ phiếu đuổi khỏi phòng (강퇴투표)",
+      "next_check": "Đo người có quyền mở và bỏ phiếu, điều kiện thông qua, thời hạn và quyền chống đuổi.",
+      "roadmap_only": true,
+      "room_rules": {
+        "slot": "RoomRules.moderation_policy",
+        "source": "design",
+        "status": "design"
+      },
+      "scope": "Bỏ phiếu đuổi người chơi và chống đuổi; chưa có wire và luật bỏ phiếu.",
+      "source": "design",
+      "status": "candidate",
+      "wave": "F2",
+      "wire": "unknown"
+    }
+  ]
+}
