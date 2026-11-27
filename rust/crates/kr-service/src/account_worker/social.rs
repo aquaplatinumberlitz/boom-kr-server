@@ -41,6 +41,8 @@ pub enum SocialAction {
     CreateGuild(String),
     JoinGuild(i64),
     LeaveGuild(i64),
+    /// Strict web self-service leave. Leaders and non-members fail closed.
+    LeaveGuildSelfService(i64),
     DisbandGuild(i64),
     SetGuildOfficer {
         guild_id: i64,
@@ -293,6 +295,42 @@ impl AccountService {
             _ => Err(Error::WorkerFault),
         }
     }
+
+    pub(crate) async fn social_guild_create(&self, player: i64, name: String) -> Result<Guild> {
+        match self
+            .client
+            .try_social(player, SocialAction::CreateGuild(name))?
+            .wait()
+            .await?
+        {
+            SocialReply::Guild(guild) => Ok(guild),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+
+    pub(crate) async fn social_guild_leave(&self, player: i64, guild_id: i64) -> Result<bool> {
+        match self
+            .client
+            .try_social(player, SocialAction::LeaveGuildSelfService(guild_id))?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+
+    pub(crate) async fn social_guild_disband(&self, player: i64, guild_id: i64) -> Result<bool> {
+        match self
+            .client
+            .try_social(player, SocialAction::DisbandGuild(guild_id))?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
 }
 
 impl SocialRequest {
@@ -378,6 +416,9 @@ fn execute_player(
         SocialAction::CreateGuild(name) => Guild(store.create_guild(player, &name, now)?),
         SocialAction::JoinGuild(guild) => Changed(store.join_guild(player, guild, now)?),
         SocialAction::LeaveGuild(guild) => Changed(store.leave_guild(player, guild, now)?),
+        SocialAction::LeaveGuildSelfService(guild) => {
+            Changed(store.leave_guild_self_service(player, guild, now)?)
+        }
         SocialAction::DisbandGuild(guild) => Changed(store.disband_guild(player, guild, now)?),
         SocialAction::SetGuildOfficer {
             guild_id,

@@ -521,6 +521,35 @@ impl Store {
         })
     }
 
+    /// Web self-service leave is deliberately fail-closed. A caller must be
+    /// a current non-leader member; leaders use the explicit disband action.
+    pub fn leave_guild_self_service(
+        &mut self,
+        player: i64,
+        guild_id: i64,
+        now: i64,
+    ) -> Result<bool> {
+        self.at(now, |tx| {
+            active_player(tx, player, now)?;
+            let owner = guild_owner(tx, guild_id)?.ok_or(Error::InvalidInput)?;
+            if owner == player {
+                return Err(Error::Conflict);
+            }
+            let member = guild_role(tx, guild_id, player)?.ok_or(Error::Conflict)?;
+            if member == "leader" {
+                return Err(Error::Conflict);
+            }
+            let changed = tx.execute(
+                "DELETE FROM guild_members WHERE guild_id=?1 AND player_id=?2",
+                params![guild_id, player],
+            )?;
+            if changed != 1 {
+                return Err(Error::Conflict);
+            }
+            Ok(true)
+        })
+    }
+
     pub fn disband_guild(&mut self, leader: i64, guild_id: i64, now: i64) -> Result<bool> {
         self.at(now, |tx| {
             active_player(tx, leader, now)?;
@@ -883,6 +912,14 @@ fn insert_mute(
 
 fn insert_guild(db: &Connection, leader: i64, name: String, now: i64) -> Result<Guild> {
     active_player(db, leader, now)?;
+    let already_member: bool = db.query_row(
+        "SELECT EXISTS(SELECT 1 FROM guild_members WHERE player_id=?1)",
+        [leader],
+        |row| row.get(0),
+    )?;
+    if already_member {
+        return Err(Error::Conflict);
+    }
     db.execute(
         "INSERT INTO guilds(name,name_key,leader_player_id,created_at) VALUES(?1,?2,?3,?4)",
         params![name, name.to_ascii_lowercase(), leader, now],

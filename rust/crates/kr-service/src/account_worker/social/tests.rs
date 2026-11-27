@@ -470,6 +470,20 @@ fn worker_strict_friend_response_and_player_guild_projection() {
         };
         assert_eq!(joined, guild);
         assert_eq!(members.len(), 2);
+        assert_eq!(
+            call(&client, b, Action::LeaveGuildSelfService(guild.id))
+                .await
+                .unwrap(),
+            Reply::Changed(true)
+        );
+        assert_eq!(
+            call(&client, b, Action::LeaveGuildSelfService(guild.id)).await,
+            Err(Error::Backend(accounts::Error::Conflict))
+        );
+        assert_eq!(
+            call(&client, b, Action::JoinGuild(guild.id)).await.unwrap(),
+            Reply::Changed(true)
+        );
         worker.shutdown().await.unwrap();
     });
 }

@@ -60,6 +60,12 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("/api/social/friends"));
     assert!(page.contains("/api/social/friends/respond"));
     assert!(page.contains("/api/social/guild"));
+    assert!(page.contains("/api/social/guild/create"));
+    assert!(page.contains("/api/social/guild/leave"));
+    assert!(page.contains("/api/social/guild/disband"));
+    assert!(page.contains("create-guild"));
+    assert!(page.contains("leave-guild"));
+    assert!(page.contains("disband-guild"));
     assert!(page.contains("/api/social/blocks"));
     assert!(page.contains("/api/social/ranking?limit=10"));
     let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
@@ -360,43 +366,97 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
     .await;
     assert_eq!(code, 200);
     assert!(third_friends["friends"].as_array().unwrap().is_empty());
-    let guild = worker
-        .client()
-        .try_social(
-            player_id,
-            crate::account_worker::SocialAction::CreateGuild("Web Guild".into()),
-        )
-        .unwrap()
-        .wait()
-        .await
-        .unwrap();
-    let crate::account_worker::SocialReply::Guild(guild) = guild else {
-        panic!("wrong guild projection")
-    };
+    let (code, _, created) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/create",
+        Some(tok),
+        Some(r#"{"name":"Web Guild"}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    let guild_id = created["guild"]["id"].as_i64().unwrap();
+    assert_eq!(created["guild"]["leader_player_id"], player_id);
+    assert_eq!(created["members"].as_array().unwrap().len(), 1);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/create",
+        Some(tok),
+        Some(r#"{"name":"Web Guild 2"}"#),
+    )
+    .await;
+    assert_eq!(code, 409);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/create",
+        Some(third_token.as_str()),
+        Some(r#"{"name":"web guild"}"#),
+    )
+    .await;
+    assert_eq!(code, 409);
     let (code, _, guild_after) = send_http(addr, "GET", "/api/social/guild", Some(tok), None).await;
     assert_eq!(code, 200);
-    assert_eq!(guild_after["guild"]["id"], guild.id);
+    assert_eq!(guild_after["guild"]["id"], guild_id);
     assert_eq!(guild_after["members"].as_array().unwrap().len(), 1);
     worker
         .client()
         .try_social(
             friend_id,
-            crate::account_worker::SocialAction::JoinGuild(guild.id),
+            crate::account_worker::SocialAction::JoinGuild(guild_id),
         )
         .unwrap()
         .wait()
         .await
         .unwrap();
-    worker
-        .client()
-        .try_social(
-            friend_id,
-            crate::account_worker::SocialAction::LeaveGuild(guild.id),
-        )
-        .unwrap()
-        .wait()
-        .await
-        .unwrap();
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/disband",
+        Some(friend_token.as_str()),
+        Some("{}"),
+    )
+    .await;
+    assert_eq!(code, 409);
+    let (code, _, left) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/leave",
+        Some(friend_token.as_str()),
+        Some("{}"),
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert_eq!(left["changed"], true);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/leave",
+        Some(friend_token.as_str()),
+        Some("{}"),
+    )
+    .await;
+    assert_eq!(code, 409);
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/leave",
+        Some(tok),
+        Some("{}"),
+    )
+    .await;
+    assert_eq!(code, 409);
+    let (code, _, disbanded) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/disband",
+        Some(tok),
+        Some(r#"{"confirm":true}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert_eq!(disbanded["changed"], true);
     let (code, _, guild_left) = send_http(
         addr,
         "GET",
@@ -407,16 +467,43 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
     .await;
     assert_eq!(code, 200);
     assert!(guild_left["guild"].is_null());
-    worker
-        .client()
-        .try_social(
-            player_id,
-            crate::account_worker::SocialAction::DisbandGuild(guild.id),
-        )
-        .unwrap()
-        .wait()
+    let (code, _, guild_after_disband) =
+        send_http(addr, "GET", "/api/social/guild", Some(tok), None).await;
+    assert_eq!(code, 200);
+    assert!(guild_after_disband["guild"].is_null());
+    auth.revoke_token(&third_token);
+    let (code, _, _) = send_http(
+        addr,
+        "GET",
+        "/api/social/guild",
+        Some(third_token.as_str()),
+        None,
+    )
+    .await;
+    assert_eq!(code, 401);
+    let short_auth = WebShopAuth::new(1).unwrap();
+    let short_token = short_auth.issue_token(player_id).unwrap();
+    let short_listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
         .await
         .unwrap();
+    let short_addr = short_listener.local_addr().unwrap();
+    let short_task = tokio::spawn(serve_listener(
+        short_listener,
+        config(),
+        worker.service(),
+        short_auth,
+    ));
+    tokio::time::sleep(Duration::from_millis(1_100)).await;
+    let (code, _, _) = send_http(
+        short_addr,
+        "GET",
+        "/api/social/guild",
+        Some(short_token.as_str()),
+        None,
+    )
+    .await;
+    assert_eq!(code, 401);
+    short_task.abort();
     let (code, _, profile) = send_http(addr, "GET", "/api/v1/profile", Some(tok), None).await;
     assert_eq!(code, 200);
     assert_eq!(profile["lucci"], 250);
