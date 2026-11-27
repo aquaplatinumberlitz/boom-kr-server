@@ -1,0 +1,937 @@
+{
+  "authority_status": "unknown",
+  "build": "KR00967",
+  "families": [
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 1,
+      "family": "Antarctic",
+      "kr_wire_route": "unknown",
+      "map_count": 1,
+      "probe": "So lần vượt mốc có trigger với lượt dừng trước mốc.",
+      "question": "Điều gì kích hoạt đường chạy và qua màn?",
+      "same_name_mode_classification": {
+        "classification": "C",
+        "status": "candidate",
+        "wave": "F2?"
+      },
+      "script_count": 1,
+      "script_tags": [
+        "Action",
+        "ActionList",
+        "Box",
+        "InitInfo",
+        "PuzzleBox",
+        "PuzzleBoxScript",
+        "ScriptObject",
+        "ScriptObjects",
+        "StageClearScript",
+        "Time",
+        "Trigger",
+        "TriggerTable",
+        "action",
+        "camerascript",
+        "mapscript",
+        "mapscriptoption",
+        "move"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "controller_stageclearscript"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 101,
+          "mapscript_tag": true,
+          "name": "Antarctic01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        }
+      ],
+      "wave": "F3?"
+    },
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 1,
+      "family": "DragonPalace",
+      "kr_wire_route": "unknown",
+      "map_count": 1,
+      "probe": "So cùng đoạn đường với và không có trạng thái bị khóa.",
+      "question": "Điều kiện chết hoặc bị khóa có đổi kết quả màn không?",
+      "script_count": 1,
+      "script_tags": [
+        "Action",
+        "ActionList",
+        "Box",
+        "InitInfo",
+        "PuzzleBox",
+        "PuzzleBoxScript",
+        "ScriptObject",
+        "ScriptObjects",
+        "StageClearScript",
+        "Time",
+        "Trigger",
+        "TriggerTable",
+        "action",
+        "camerascript",
+        "mapscript",
+        "mapscriptoption",
+        "move"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "controller_stageclearscript"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 101,
+          "mapscript_tag": true,
+          "name": "DragonPalace01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        }
+      ],
+      "wave": "F3?"
+    },
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 3,
+      "family": "EscapeMaze",
+      "kr_wire_route": "unknown",
+      "map_count": 3,
+      "probe": "Thử cùng cửa khi có và khi thiếu chìa; theo dõi cả hồi sinh.",
+      "question": "Ai xác nhận lấy chìa, mở cửa và thoát mê cung?",
+      "script_count": 3,
+      "script_tags": [
+        "ActionList",
+        "Door",
+        "EscapeMazeScript",
+        "InitInfo",
+        "InitInfos",
+        "Key",
+        "Keys",
+        "MapScriptOption",
+        "Mummy",
+        "Respawn",
+        "ScriptObject",
+        "ScriptObjects",
+        "Time",
+        "Trigger",
+        "TriggerTable",
+        "action",
+        "mapscript"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "controller_escapemazescript"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 25,
+          "mapscript_tag": true,
+          "name": "EscapeMaze00",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 8,
+          "width": 29
+        },
+        {
+          "height": 25,
+          "mapscript_tag": true,
+          "name": "EscapeMaze01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 8,
+          "width": 29
+        },
+        {
+          "height": 25,
+          "mapscript_tag": true,
+          "name": "EscapeMaze02",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 8,
+          "width": 29
+        }
+      ],
+      "wave": "F3?"
+    },
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 1,
+      "family": "GolemRun",
+      "kr_wire_route": "unknown",
+      "map_count": 1,
+      "probe": "So lượt đi qua vùng có dấu trigger với lượt không vào vùng.",
+      "question": "Ai kích hoạt đá rơi và điều kiện qua màn?",
+      "script_count": 1,
+      "script_tags": [
+        "Action",
+        "ActionList",
+        "Box",
+        "InitInfo",
+        "Item",
+        "MessageBox",
+        "PuzzleBox",
+        "PuzzleBoxScript",
+        "RandomBox",
+        "RandomBoxInfo",
+        "RandomboxScript",
+        "ScriptObject",
+        "ScriptObjects",
+        "SpecifyLocationOfMessageBox",
+        "StageClearScript",
+        "Time",
+        "Trigger",
+        "TriggerItem",
+        "TriggerItemSetScript",
+        "TriggerTable",
+        "action",
+        "camerascript",
+        "mapscript",
+        "mapscriptoption",
+        "move",
+        "specialtile",
+        "tile"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "controller_stageclearscript"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 101,
+          "mapscript_tag": true,
+          "name": "GolemRun01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        }
+      ],
+      "wave": "F3?"
+    },
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 3,
+      "family": "IamWriggle",
+      "kr_wire_route": "unknown",
+      "map_count": 3,
+      "probe": "So trạng thái vật phẩm trước và sau thao tác trong mode thật.",
+      "question": "Cửa vào GameType 43 có tải đúng họ map và áp dụng cấu hình vật phẩm không?",
+      "same_name_mode_classification": {
+        "classification": "C",
+        "status": "candidate",
+        "wave": "F3?"
+      },
+      "script_count": 3,
+      "script_tags": [
+        "Item",
+        "ItemSkillAttrTable",
+        "MapItemConfig",
+        "mapscript",
+        "mapscriptoption"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "game_type_43"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "IamWriggle01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 8,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "IamWriggle02",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 8,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "IamWriggle03",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 8,
+          "width": 15
+        }
+      ],
+      "wave": "F3?"
+    },
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 1,
+      "family": "MineExp",
+      "kr_wire_route": "unknown",
+      "map_count": 1,
+      "probe": "So một lượt tiếp xúc laser với một lượt tránh được.",
+      "question": "Ai kích hoạt laser và ghi nhận sát thương?",
+      "script_count": 1,
+      "script_tags": [
+        "Action",
+        "ActionList",
+        "InitInfo",
+        "ScriptObject",
+        "ScriptObjects",
+        "StageClearScript",
+        "Time",
+        "Trigger",
+        "TriggerItem",
+        "TriggerItemSetScript",
+        "TriggerTable",
+        "action",
+        "camerascript",
+        "mapscript",
+        "mapscriptoption",
+        "move"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "controller_stageclearscript"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 101,
+          "mapscript_tag": true,
+          "name": "MineExp01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        }
+      ],
+      "wave": "F3?"
+    },
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 4,
+      "family": "Minibot",
+      "kr_wire_route": "unknown",
+      "map_count": 4,
+      "probe": "So cùng trạng thái trước và sau khi vào trạm với lượt đứng ngoài.",
+      "question": "Ai cập nhật trạng thái Minibot tại trạm sửa?",
+      "script_count": 4,
+      "script_tags": [
+        "Action",
+        "ActionList",
+        "Domain",
+        "InitInfo",
+        "InitInfos",
+        "MapScriptOption",
+        "MinibotDomains",
+        "RepairCenter",
+        "RepairMinibotScript",
+        "ScriptObject",
+        "ScriptObjects",
+        "Time",
+        "Trigger",
+        "TriggerTable",
+        "action",
+        "mapscript",
+        "time"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "controller_repairminibotscript"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "Minibot01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "Minibot02",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "Minibot03",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "Minibot04",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        }
+      ],
+      "wave": "F3?"
+    },
+    {
+      "authority_status": "unknown",
+      "census_category": "other",
+      "classification": "C",
+      "classification_script_unknown": 3,
+      "family": "SavetheEarth",
+      "kr_wire_route": "unknown",
+      "map_count": 3,
+      "probe": "So lần hoàn tất mục tiêu với lượt thiếu điều kiện cuối.",
+      "question": "Ai quyết định bắt mục tiêu hoặc cứu máy bay?",
+      "script_count": 3,
+      "script_tags": [
+        "Action",
+        "ActionList",
+        "CatchAndHunterMonDomains",
+        "CatchTailScript",
+        "Domain",
+        "InitInfo",
+        "InitInfos",
+        "MapScriptOption",
+        "OnActionList",
+        "RescuePlaneDomains",
+        "ScriptObject",
+        "ScriptObjects",
+        "Time",
+        "Trigger",
+        "TriggerTable",
+        "action",
+        "mapscript"
+      ],
+      "static_anchor_ids": [
+        "script_factory",
+        "controller_catchtailscript"
+      ],
+      "status": "candidate",
+      "variants": [
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "SavetheEarth01",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "SavetheEarth02",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        },
+        {
+          "height": 13,
+          "mapscript_tag": true,
+          "name": "SavetheEarth03",
+          "parse": "exact",
+          "scripted": true,
+          "spawn_points": 4,
+          "width": 15
+        }
+      ],
+      "wave": "F3?"
+    }
+  ],
+  "inputs": {
+    "authority_matrix": {
+      "locator": "docs/evidence/content/f3-script-authority-matrix.json",
+      "sha256": "d047ca14609b688eed2f994909697dcff006baea546e59180c1832510463f2e3"
+    },
+    "catalog": {
+      "locator": "docs/evidence/content/f3-pve-catalog.json",
+      "sha256": "ce7b0ff42588982e10a3b842d42f865b9e5c331f62b5716d4b9108164c46cee7"
+    },
+    "census": {
+      "locator": "docs/content/census.json",
+      "sha256": "cbd5784b47c6b33512f2aa8b126ee6bed01b685cc612b0383409ec9602b0ce8b"
+    },
+    "classification": {
+      "locator": "docs/content/classification.json",
+      "sha256": "dd8fab5738180bc6cf5e3e79d6c0227833805a8d3d6c353e17f28a94d02c08ba"
+    },
+    "content": {
+      "locator": "docs/CONTENT.md",
+      "sha256": "e351abca89ab8ddae87b9125a93c2616bcc9982634d01fe160ccf5b3b164980e"
+    },
+    "coverage_directive": {
+      "locator": "docs/evidence/owner-directives/full-content-coverage.json",
+      "sha256": "87a442cf44eb4b4f295ae057a5439b657059c6da31f017bf2d851ad5bdc501f9"
+    },
+    "ida": {
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json",
+      "sha256": "158036dd91bc6bb309b3ec5c1c7ca1797f44a51ff3a653bfc17962f9ac671df0"
+    },
+    "roadmap": {
+      "locator": "docs/PLAN.md",
+      "sha256": "5721074eaaf23d68f153488a4451a0d94c42ad42bace3187bc5c225393a2ee07"
+    },
+    "script_ida": {
+      "locator": "docs/evidence/content/f1e-dynamic-scripts-ida.json",
+      "sha256": "405b22e3929fdb4639de495e6ed5ee659e62a38782b0b0d2c30bc85e7cd78142"
+    }
+  },
+  "matrix_sha256": "22fb721354a7f0aedce5d339b6903cf69ed5f1c32e90db560105399a4210d1e0",
+  "roadmap_metadata": {
+    "limit": "Mô tả tính năng từ lộ trình, đối chiếu theo quyết định bao phủ nội dung.",
+    "pr": 713,
+    "source": "design",
+    "status": "design"
+  },
+  "schema": "kre.f3-extended-pve.v1",
+  "static_anchors": {
+    "controller_catchtailscript": {
+      "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "class": "CMapScriptCatchTail",
+      "ctor_va": "0x62A100",
+      "index": 10,
+      "locator": "docs/evidence/content/f1e-dynamic-scripts-ida.json#map_script_factory",
+      "source": "kr_static",
+      "status": "confirmed",
+      "tag": "catchtailscript"
+    },
+    "controller_escapemazescript": {
+      "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "class": "CMapScriptEscapeMaze",
+      "ctor_va": "0x6513B0",
+      "index": 12,
+      "locator": "docs/evidence/content/f1e-dynamic-scripts-ida.json#map_script_factory",
+      "source": "kr_static",
+      "status": "confirmed",
+      "tag": "escapemazescript"
+    },
+    "controller_repairminibotscript": {
+      "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "class": "CMapScriptRepairMinibot",
+      "ctor_va": "0x6ABA20",
+      "index": 14,
+      "locator": "docs/evidence/content/f1e-dynamic-scripts-ida.json#map_script_factory",
+      "source": "kr_static",
+      "status": "confirmed",
+      "tag": "repairminibotscript"
+    },
+    "controller_stageclearscript": {
+      "binary_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+      "class": "CMapScriptStageClear",
+      "ctor_va": "0xF16BC0",
+      "index": 1,
+      "locator": "docs/evidence/content/f1e-dynamic-scripts-ida.json#map_script_factory",
+      "source": "kr_static",
+      "status": "confirmed",
+      "tag": "stageclearscript",
+      "wrapper_va": "0x1013C00"
+    },
+    "game_type_16": {
+      "client_game_type": 16,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f2_modes",
+      "source": "kr_static",
+      "status": "confirmed",
+      "symbol": "CreateDlgGameTypeAIBattle",
+      "va": "0xc6c080"
+    },
+    "game_type_28": {
+      "client_game_type": 28,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f2_modes",
+      "source": "kr_static",
+      "status": "confirmed",
+      "symbol": "HiddenCatch_NormalMode",
+      "va": "0xc6c080"
+    },
+    "game_type_29": {
+      "client_game_type": 29,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f2_modes",
+      "source": "kr_static",
+      "status": "confirmed",
+      "symbol": "HiddenCatch_CompetitionMode",
+      "va": "0xc6c080"
+    },
+    "game_type_43": {
+      "client_game_type": 43,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f2_modes",
+      "source": "kr_static",
+      "status": "confirmed",
+      "symbol": "CreateDlgGameTypeIamWriggle",
+      "va": "0xc6c080"
+    },
+    "monster_attack_guard": {
+      "handlers": [
+        "0x6c1bc0",
+        "0xf3b740"
+      ],
+      "host_flag_expr": "*(this + 157)",
+      "host_flag_fn": "0x11656a0",
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+      "notes": "RollAttack recv MonsterAttackReq checks host flag sub_11656A0(this - 46) or matching attackSeq (*(this + 316) == v5) before executing directions 34..37",
+      "source": "kr_static",
+      "status": "confirmed"
+    },
+    "script_factory": {
+      "controller_range": "0x1013b80..0x1014280",
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+      "source": "kr_static",
+      "status": "confirmed",
+      "va": "0xeba2d0"
+    },
+    "stage_object_36": {
+      "handler_va": "0xe67640",
+      "hexrays_case": 135,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+      "notes": "Dispatches vtable +36 on IEatObject/IAbilityObject",
+      "reads": [
+        "u8",
+        "u8"
+      ],
+      "source": "kr_static",
+      "status": "confirmed"
+    },
+    "stage_object_52": {
+      "handler_va": "0xe67770",
+      "hexrays_case": 136,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+      "notes": "Dispatches vtable +52 on IEatObject/IAbilityObject",
+      "reads": [
+        "u8",
+        "u8"
+      ],
+      "source": "kr_static",
+      "status": "confirmed"
+    },
+    "stage_quest": {
+      "handler_va": "0xe6aa90",
+      "hexrays_case": 9,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+      "source": "kr_static",
+      "status": "confirmed",
+      "tag": "quest"
+    },
+    "stage_script": {
+      "handler_va": "0xe6d730",
+      "hexrays_case": 80,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+      "source": "kr_static",
+      "status": "confirmed",
+      "tag": "script"
+    },
+    "stage_timer_ai": {
+      "handler_va": "0xe751f0",
+      "hexrays_case": 177,
+      "locator": "docs/evidence/content/f2-f5-f3-ida-anchors.json#f3_pve",
+      "notes": "Multiplies two u32 timer values by 1000 for stage timer/AI state",
+      "reads": [
+        "u32",
+        "u8",
+        "u32",
+        "u32",
+        "u8"
+      ],
+      "source": "kr_static",
+      "status": "confirmed"
+    }
+  },
+  "static_metadata": {
+    "f3_0_f3_1_classification_sha256": "998b0fb727d39162c353bcc7881c630fe19e2b6f6a9d40b69dc974992e829181",
+    "fxmap_pack_hashes": {
+      "idd_sha256": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+      "idx_sha256": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b"
+    },
+    "image_base": "0x400000",
+    "kr_ca_exe_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+    "kr_full_i64_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+    "limit": "Xác nhận metadata pack và điểm quan sát client. Phân nhóm F3? và liên hệ với neo vẫn là ứng viên.",
+    "source": "kr_static",
+    "status": "confirmed"
+  },
+  "summary": {
+    "family_count": 8,
+    "map_count": 17,
+    "scripted_map_count": 17,
+    "system_count": 4
+  },
+  "systems": [
+    {
+      "authority_status": "unknown",
+      "catalog_group": {
+        "family_count": 1,
+        "has_script": {
+          "no": 27,
+          "unknown": 0,
+          "yes": 26
+        },
+        "id": "ca_hero",
+        "map_count": 53,
+        "parse_counts": {
+          "exact": 53,
+          "partial": 0
+        },
+        "resource_groups": [
+          {
+            "entries": 69,
+            "locator": "FxContents/CAHero"
+          }
+        ]
+      },
+      "feature_scope_locator": "docs/PLAN.md#full-game-roadmap",
+      "features": {
+        "gear": "Trang bị",
+        "hp": "HP",
+        "potions": "Thuốc",
+        "quests": "Nhiệm vụ",
+        "skills": "Kỹ năng"
+      },
+      "id": "ca_hero",
+      "kr_wire_route": "unknown",
+      "label": "CA Hero",
+      "mode_classification": {
+        "크아 히어로 (CA Hero)": {
+          "classification": "C",
+          "status": "candidate",
+          "wave": "F3"
+        }
+      },
+      "probe": "So hai cấu hình trang bị, trúng/hụt và dùng/không dùng thuốc; kiểm nhiệm vụ trước, sau và sau đăng nhập lại.",
+      "question": "Ai xác nhận thay đổi HP, hiệu ứng kỹ năng/trang bị, tiêu hao thuốc và tiến độ nhiệm vụ?",
+      "static_anchor_ids": [
+        "script_factory",
+        "stage_script",
+        "stage_timer_ai"
+      ],
+      "status": "candidate"
+    },
+    {
+      "authority_status": "unknown",
+      "catalog_group": {
+        "family_count": 4,
+        "has_script": {
+          "no": 4,
+          "unknown": 0,
+          "yes": 0
+        },
+        "id": "ai_battle",
+        "map_count": 4,
+        "parse_counts": {
+          "exact": 4,
+          "partial": 0
+        },
+        "resource_groups": [
+          {
+            "entries": 10,
+            "locator": "FxContents/AIBattle"
+          }
+        ]
+      },
+      "feature_scope_locator": "docs/PLAN.md#full-game-roadmap",
+      "features": {
+        "hidden_character_unlock": "Nhân vật ẩn mở bằng điểm (협공배틀 포인트, 로두마니)",
+        "star_difficulty": "Độ khó theo sao"
+      },
+      "hidden_character_scope": {
+        "classification_row": "Nhân vật ẩn mở bằng điểm (협공배틀 포인트, 로두마니)",
+        "note": "Điểm trận phối hợp mở nhân vật ẩn; Rodumani xuất hiện ngẫu nhiên; chưa có luật mở.",
+        "roadmap_only": true
+      },
+      "id": "ai_battle",
+      "kr_wire_route": "unknown",
+      "label": "AIBattle (협공배틀)",
+      "mode_classification": {
+        "AIBattle": {
+          "classification": "C",
+          "status": "candidate",
+          "wave": "F3"
+        }
+      },
+      "probe": "So hai mức sao trên cùng map; đối chiếu điểm và danh sách nhân vật trước/sau kết quả và sau đăng nhập lại.",
+      "question": "Mức sao đổi AI thế nào, điểm được tính ở đâu, ngưỡng mở là gì và khi nào 로두마니 xuất hiện?",
+      "static_anchor_ids": [
+        "stage_timer_ai",
+        "game_type_16"
+      ],
+      "status": "candidate"
+    },
+    {
+      "authority_status": "unknown",
+      "catalog_group": {
+        "family_count": 30,
+        "has_script": {
+          "no": 26,
+          "unknown": 0,
+          "yes": 11
+        },
+        "id": "hidden_catch",
+        "map_count": 37,
+        "parse_counts": {
+          "exact": 37,
+          "partial": 0
+        },
+        "resource_groups": [
+          {
+            "entries": 291,
+            "locator": "FxHiddenCatch/HiddenCatch"
+          },
+          {
+            "entries": 12,
+            "locator": "FxHiddenCatch/Prepare_HC"
+          }
+        ]
+      },
+      "feature_scope_locator": "docs/PLAN.md#full-game-roadmap",
+      "features": {
+        "arcade": "Chế độ máy xu, 100 màn theo lộ trình",
+        "standard": "Chế độ thường",
+        "versus": "Chế độ thi đấu (vs)"
+      },
+      "id": "hidden_catch",
+      "kr_wire_route": "unknown",
+      "label": "Hidden Catch (히든 캐치)",
+      "mode_classification": {
+        "히든 캐치 (Hidden Catch)": {
+          "classification": "C",
+          "status": "candidate",
+          "wave": "F3"
+        }
+      },
+      "probe": "So lựa chọn đúng/sai và lần qua màn ở chế độ thường và thi đấu; nếu mở được máy xu, đo luồng vào và chuyển màn riêng.",
+      "question": "Ai xác nhận lựa chọn, điểm và kết quả trong từng mode? Đường vào, thứ tự và số màn máy xu là gì?",
+      "roadmap_arcade_stage_count": 100,
+      "static_anchor_ids": [
+        "script_factory",
+        "stage_script",
+        "stage_object_36",
+        "stage_object_52",
+        "game_type_28",
+        "game_type_29"
+      ],
+      "status": "candidate"
+    },
+    {
+      "authority_status": "unknown",
+      "catalog_group": {
+        "family_count": 61,
+        "has_script": {
+          "no": 0,
+          "unknown": 0,
+          "yes": 368
+        },
+        "id": "monster",
+        "map_count": 368,
+        "parse_counts": {
+          "exact": 368,
+          "partial": 0
+        },
+        "resource_groups": [
+          {
+            "entries": 1022,
+            "locator": "FxMonster/Monster"
+          },
+          {
+            "entries": 236,
+            "locator": "FxMonster/MonsterSeason2"
+          }
+        ]
+      },
+      "feature_scope_locator": "docs/PLAN.md#full-game-roadmap",
+      "features": {
+        "monster_operation": "몬스터대작전",
+        "season_2_action": "Monster mùa 2 dạng hành động"
+      },
+      "id": "monster_season_2",
+      "kr_wire_route": "unknown",
+      "label": "Monster mùa 2 và 몬스터대작전",
+      "limit": "Nhóm Monster gồm cả hai mùa. Tiền tố MonS2 là dấu vết theo tên; chưa nối với 몬스터대작전.",
+      "mode_classification": {
+        "Monster mùa 2": {
+          "classification": "C",
+          "status": "candidate",
+          "wave": "F3"
+        }
+      },
+      "probe": "Đo mẫu MonS2 với đối chứng đánh hụt và thiếu điều kiện qua màn; tìm cửa vào 몬스터대작전 riêng trước khi nối map.",
+      "question": "Ai quyết định AI, đợt quái, sát thương, qua màn và thưởng? 몬스터대작전 dùng cửa vào và map nào?",
+      "season_2_name_candidate": {
+        "families": [
+          "MonS2Fire",
+          "MonS2Sand",
+          "MonS2Sand01Boss",
+          "MonS2Sand02Boss",
+          "MonS2Sand03Boss",
+          "MonS2Sand04Boss",
+          "MonS2Sand05Boss",
+          "MonS2Sand06Boss"
+        ],
+        "family_prefix": "MonS2",
+        "map_count": 26,
+        "parse_counts": {
+          "exact": 26,
+          "partial": 0
+        },
+        "status": "candidate"
+      },
+      "static_anchor_ids": [
+        "script_factory",
+        "stage_script",
+        "stage_object_36",
+        "stage_object_52",
+        "stage_timer_ai",
+        "monster_attack_guard"
+      ],
+      "status": "candidate"
+    }
+  ],
+  "wine_probe": {
+    "authority_status": "unknown",
+    "case_limit": "Nhãn case Hex-Rays không phải opcode; đối chiếu frame, jump table và VA handler.",
+    "control": "Dùng cửa vào thật của mode, lặp với đối chứng và đảo host khi có hai client. Ghi bên phát, bên áp dụng và bên ghi bền; ghi blocker nếu chưa vào được mode.",
+    "plan": "docs/content/f3-pve-authority-design.md",
+    "r1": {
+      "limit": "Probe r1 chỉ tải mẫu CA Hero và AIBattle trong phòng roomtype=0, chưa đo quyền PvE.",
+      "locator": "docs/content/f2-f3-wine-probe-r1.md"
+    },
+    "rounds": [
+      "r2",
+      "r3"
+    ],
+    "source": "design",
+    "status": "pending"
+  }
+}
