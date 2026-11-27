@@ -1,0 +1,5 @@
+{
+  "enabled": false,
+  "max_maps_per_owner": 16,
+  "max_payload_bytes": 8192
+}

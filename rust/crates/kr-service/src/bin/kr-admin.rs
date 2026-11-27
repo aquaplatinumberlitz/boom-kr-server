@@ -5,6 +5,7 @@ use kr_service::{
         self, Admin, AuditFilter, ChatMuteReason, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION,
         Store, Token,
     },
+    custom_map_store::CustomMapPolicy,
     f3_pve_policy::{
         DispatchRejection, F3PvePolicy, MonsterAttackGuard, PveAuthority, PveModeFamily,
     },
@@ -464,6 +465,15 @@ fn f6_policy_check(policy_path: Option<&Path>, at_unix_secs: Option<i64>) -> io:
             })
         })
         .collect::<Vec<_>>();
+    let extended_systems = F6EventPolicy::extended_system_names()
+        .iter()
+        .map(|name| {
+            json!({
+                "name": name,
+                "enabled": policy.is_system_enabled_at(name, evaluated_at_unix_secs),
+            })
+        })
+        .collect::<Vec<_>>();
     let enabled_systems = policy
         .enabled_systems()
         .map(|(name, system)| {
@@ -484,6 +494,24 @@ fn f6_policy_check(policy_path: Option<&Path>, at_unix_secs: Option<i64>) -> io:
         "evaluated_at_unix_secs": evaluated_at_unix_secs,
         "systems": systems,
         "enabled_systems": enabled_systems,
+        "extended_systems": extended_systems,
+    }))
+}
+
+fn f7_policy_check(policy_path: Option<&Path>) -> Result<Value, Box<dyn std::error::Error>> {
+    let policy = match policy_path {
+        None => CustomMapPolicy::default(),
+        Some(path) => {
+            validate_policy_path(path, "f7_custom_map_policy")?;
+            CustomMapPolicy::from_path(path)?
+        }
+    };
+    Ok(json!({
+        "default_enabled": false,
+        "enabled": policy.enabled,
+        "max_maps_per_owner": policy.max_maps_per_owner,
+        "max_payload_bytes": policy.max_payload_bytes,
+        "wire_contract": "unmeasured",
     }))
 }
 
@@ -740,6 +768,11 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             [option, path] if option == "--policy" => f4_policy_check(Some(Path::new(path)))?,
             _ => return Err("usage: kr-admin f4-policy-check [--policy PATH]".into()),
         },
+        [flag, options @ ..] if flag == "f7-policy-check" => match options {
+            [] => f7_policy_check(None)?,
+            [option, path] if option == "--policy" => f7_policy_check(Some(Path::new(path)))?,
+            _ => return Err("usage: kr-admin f7-policy-check [--policy PATH]".into()),
+        },
         [flag, dir] if flag == "private-dir" => {
             kr_service::platform::provision_private_dir(Path::new(dir))?;
             json!({"ok":true})
@@ -764,7 +797,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH]".into()),
+        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f7-policy-check [--policy PATH]".into()),
     })
 }
 fn main() {
