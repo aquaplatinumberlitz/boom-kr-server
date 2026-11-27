@@ -174,12 +174,38 @@ def _concrete_ipv4(host):
     return ip
 
 
+def _validated_policy_path(value, label):
+    """Return a resolved JSON-object policy path after fail-closed checks."""
+    candidate = Path(value)
+    absolute = candidate if candidate.is_absolute() else Path.cwd() / candidate
+    current = Path(absolute.anchor)
+    try:
+        for part in absolute.parts[1:]:
+            current /= part
+            info = current.lstat()
+            if stat.S_ISLNK(info.st_mode) or bool(
+                    getattr(info, 'st_file_attributes', 0) & stat.FILE_ATTRIBUTE_REPARSE_POINT):
+                raise ValueError(f'{label} không được là symlink hoặc nằm trong parent symlink')
+        info = absolute.stat()
+        if not stat.S_ISREG(info.st_mode):
+            raise ValueError(f'{label} phải là file thường')
+        with absolute.open('r', encoding='utf-8') as stream:
+            policy = json.load(stream)
+        if not isinstance(policy, dict):
+            raise ValueError(f'{label} phải là JSON object')
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError(f'{label} không hợp lệ') from error
+    return absolute.resolve(strict=True)
+
+
 def configure_economy(config, *, friends=False, s1=False, economy_profile=None,
                       emit_lucci_135=False, project_own291_level=False,
-                      web_shop_bind=None, unlock_all=False):
+                      web_shop_bind=None, unlock_all=False,
+                      f4_extended_policy=None, f3_pve_policy=None, f6_events_policy=None):
     """Apply opt-in F4 economy, S->C 135/291, unlock_all, and embedded web shop settings."""
     if (economy_profile is None and not emit_lucci_135 and not project_own291_level
-            and web_shop_bind is None and not unlock_all):
+            and web_shop_bind is None and not unlock_all and f4_extended_policy is None
+            and f3_pve_policy is None and f6_events_policy is None):
         return
     admission = config['diagnostic_two_lobby']['account_admission']
     if economy_profile is not None:
@@ -190,6 +216,12 @@ def configure_economy(config, *, friends=False, s1=False, economy_profile=None,
         admission['persist_matches'] = True
         if friends:
             admission['unlock_all_catalog'] = True
+    for value, key, label in (
+            (f4_extended_policy, 'f4_extended_policy', 'Hồ sơ policy F4 extended'),
+            (f3_pve_policy, 'f3_pve_policy', 'Hồ sơ policy F3 PvE'),
+            (f6_events_policy, 'f6_events_policy', 'Hồ sơ policy F6 events')):
+        if value is not None:
+            admission[key] = str(_validated_policy_path(value, label))
     if unlock_all:
         if admission.get('profile_mode') != 'database_zero':
             raise ValueError('unlock_all yêu cầu profile_mode database_zero')
@@ -236,7 +268,8 @@ def configure_economy(config, *, friends=False, s1=False, economy_profile=None,
 
 def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False, s1=False,
             economy_profile=None, emit_lucci_135=False, project_own291_level=False,
-            web_shop_bind=None, unlock_all=False):
+            web_shop_bind=None, unlock_all=False, f4_extended_policy=None,
+            f3_pve_policy=None, f6_events_policy=None):
     if friends and s1:
         raise ValueError('O1 và S1 dùng hai cấu hình phục vụ riêng')
     state = private_state(root, state)
@@ -288,7 +321,9 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False,
         config['authenticated_relay'].update(bind=relay_addr, advertise=relay_addr)
     configure_economy(config, friends=friends, s1=s1, economy_profile=economy_profile,
                       emit_lucci_135=emit_lucci_135, project_own291_level=project_own291_level,
-                      web_shop_bind=web_shop_bind, unlock_all=unlock_all)
+                      web_shop_bind=web_shop_bind, unlock_all=unlock_all,
+                      f4_extended_policy=f4_extended_policy, f3_pve_policy=f3_pve_policy,
+                      f6_events_policy=f6_events_policy)
     run = state / 'runs' / str(time.time_ns())
     run.mkdir(mode=0o700, parents=True)
     if cache is not None:
@@ -352,6 +387,9 @@ def main():
     parser.add_argument('--project-own291-level', action='store_true', help='Chiếu level hồ sơ vào S->C 291 (own291)')
     parser.add_argument('--web-shop-bind', help='Địa chỉ IPv4:port mở F4-d HTTP web shop nội bộ')
     parser.add_argument('--unlock-all', action='store_true', help='Bật chế độ F4 O1 unlock_all_catalog không ghi DB')
+    parser.add_argument('--f4-extended-policy', type=Path, help='File JSON policy F4 extended tuỳ chọn')
+    parser.add_argument('--f3-pve-policy', type=Path, help='File JSON policy F3 PvE tuỳ chọn')
+    parser.add_argument('--f6-events-policy', type=Path, help='File JSON policy F6 events tuỳ chọn')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
     try:
@@ -372,8 +410,11 @@ def main():
             raise ValueError('Cần --state riêng')
         if (args.snapshot is not None) != (args.command == 'restore-db'):
             raise ValueError('Chỉ restore-db dùng và yêu cầu --snapshot')
-        if (args.economy_profile is not None or args.emit_lucci_135 or args.project_own291_level or args.web_shop_bind is not None or args.unlock_all) and args.command not in ('run', 'prepare-friends', 'prepare-s1'):
-            raise ValueError('Cờ F4 chỉ dùng với run, prepare-friends hoặc prepare-s1')
+        if (args.economy_profile is not None or args.emit_lucci_135 or args.project_own291_level
+                or args.web_shop_bind is not None or args.unlock_all
+                or args.f4_extended_policy is not None or args.f3_pve_policy is not None
+                or args.f6_events_policy is not None) and args.command not in ('run', 'prepare-friends', 'prepare-s1'):
+            raise ValueError('Cờ policy chỉ dùng với run, prepare-friends hoặc prepare-s1')
         scope = manifest.get('pack_scope')
         if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
             raise ValueError('Phạm vi pack trong gói không hợp lệ')
@@ -412,7 +453,10 @@ def main():
                                       emit_lucci_135=args.emit_lucci_135,
                                       project_own291_level=args.project_own291_level,
                                       web_shop_bind=args.web_shop_bind,
-                                      unlock_all=args.unlock_all)
+                                      unlock_all=args.unlock_all,
+                                      f4_extended_policy=args.f4_extended_policy,
+                                      f3_pve_policy=args.f3_pve_policy,
+                                      f6_events_policy=args.f6_events_policy)
             payload = {'runtime': str(runtime), 'out': str(out)}
             ws = json.loads(runtime.read_bytes())['diagnostic_two_lobby']['account_admission'].get('web_shop')
             if ws is not None:
@@ -465,7 +509,10 @@ def main():
                                          emit_lucci_135=args.emit_lucci_135,
                                          project_own291_level=args.project_own291_level,
                                          web_shop_bind=args.web_shop_bind,
-                                         unlock_all=args.unlock_all)
+                                         unlock_all=args.unlock_all,
+                                         f4_extended_policy=args.f4_extended_policy,
+                                         f3_pve_policy=args.f3_pve_policy,
+                                         f6_events_policy=args.f6_events_policy)
                 value = json.loads(config.read_bytes())
                 admission = value['diagnostic_two_lobby']['account_admission']
                 tls = admission['prelogin_tls']
@@ -482,7 +529,10 @@ def main():
                                      emit_lucci_135=args.emit_lucci_135,
                                      project_own291_level=args.project_own291_level,
                                      web_shop_bind=args.web_shop_bind,
-                                     unlock_all=args.unlock_all)
+                                     unlock_all=args.unlock_all,
+                                     f4_extended_policy=args.f4_extended_policy,
+                                     f3_pve_policy=args.f3_pve_policy,
+                                     f6_events_policy=args.f6_events_policy)
             service = str(executable(root, 'kr-service', target))
             command = [service, '--config', str(config), '--out', str(out)]
             if os.name == 'nt':
