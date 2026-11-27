@@ -36,15 +36,21 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
 | ✅ | **Vehicles** | **5** rideable vehicles and **22** ship types |
 | ✅ | **Rooms** | Free-for-all or team battles with up to **8 players per room** on a server |
 | ✅ | **Private rooms** | Join with a room code or pick a room from the LAN list. No account is needed, and two players can share one PC |
-| ✅ | **Self-hosted servers** | BoomServer for Windows and Linux, tested with **50 players in 8 rooms** at the same time |
-| ✅ | **Accounts and progress** | Server accounts, saved match results, levels and EXP, and Lucci |
-| ✅ | **Web shop** | Browse and claim outfits through the server's web shop |
+| ✅ | **Launcher** | Saved server list, automatic LAN room scan, file check and repair, a Windows Firewall helper and a download button for new versions |
+| ✅ | **Self-hosted servers** | BoomServer for Windows and Linux (Docker or systemd), tested with **50 players in 8 rooms** at the same time. Tray icon, one-click backups and new invite codes |
+| ✅ | **Server admin tools** | Audited admin commands, chat mutes and abuse logs, health monitoring, database backup, restore and rollback |
+| ✅ | **Accounts and progress** | Server accounts with a recovery code, saved match results, levels and EXP, and Lucci |
+| ✅ | **Web shop and wardrobe** | Browse the catalog, buy outfits with Lucci, and equip or remove them from your inventory |
+| ✅ | **Web social page** | Friends and friend requests, block list, your guild and the server ranking |
 | ✅ | **Languages** | English, Tiếng Việt and 한국어 in the game, launcher and server app, with Vietnamese accents in chat |
-| 🚧 | **In-game shop and inventory** | The original My Page, inventory and shop windows |
-| 🚧 | **Special modes** | **18** rule sets on **122** maps, including Baseball, Coloring, Zombie, Kart and Super Fighter |
-| 🚧 | **PvE adventures** | **699** co-op stages with bosses, treasure chests and crafting |
-| 🚧 | **Social** | Friends, whispers, guilds of up to 100 members, couples and rankings |
-| 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market and pets |
+| 🚧 | **In-game shop and customization** | My Page, inventory and shop windows in the game, plus avatar, character, balloon, level and ID decorations and emoticons |
+| 🚧 | **Ladder and matchmaking** | Ranked ladder battles with grades and automatic matchmaking |
+| 🚧 | **Special modes** | **18** map modes on **122** maps (Baseball, Coloring, Zombie, Kart, Super Fighter, Popcade…) and rule variants such as Snowball Fight, Revival Battle, Time Bomb, Catch the Leader and Hedgehog |
+| 🚧 | **Battles against AI** | Co-op battles and missions against computer players |
+| 🚧 | **PvE adventures** | **699** co-op stages: Monster mode, CA Hero, Hidden Catch, RPG, Sandbox, the Antarctic expedition, I am Boss, bonus stages and a tutorial, with bosses, treasure chests and crafting |
+| 🚧 | **In-game social** | Messenger, whispers, guild windows, couples and couple rings |
+| 🚧 | **Quests and season pass** | Daily missions, quests, CA Pass and item collections |
+| 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market, Grow a Sprout, DIY Bomb, Exchange, pets and fishing |
 
 ## Two ways to play
 
