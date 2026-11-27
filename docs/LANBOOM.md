@@ -5,7 +5,7 @@
 <h1 align="center">LANBoom</h1>
 
 <p align="center">
-  <b>Drop water balloons. Bring your whole crew. Boom!</b><br>
+  <b><i>Drop the balloons, squabble and play,<br>Stuck in a bubble? Friends save the day!</i></b><br><br>
   <b>English</b> · <a href="LANBOOM.vi.md">Tiếng Việt</a> · <a href="LANBOOM.ko.md">한국어</a>
 </p>
 

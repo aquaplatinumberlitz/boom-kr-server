@@ -5,7 +5,7 @@
 <h1 align="center">LANBoom</h1>
 
 <p align="center">
-  <b>Đặt bom nước. Rủ cả đám. Boom!</b><br>
+  <b><i>Đặt boom chí chóe cùng nhau,<br>Kẹt trong bóng nước, cứu mau bạn hiền!</i></b><br><br>
   <a href="LANBOOM.md">English</a> · <b>Tiếng Việt</b> · <a href="LANBOOM.ko.md">한국어</a>
 </p>
 

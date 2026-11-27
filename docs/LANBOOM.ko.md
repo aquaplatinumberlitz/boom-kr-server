@@ -5,7 +5,7 @@
 <h1 align="center">LANBoom</h1>
 
 <p align="center">
-  <b>물풍선 놓고, 친구들 다 모여, 펑!</b><br>
+  <b><i>물풍선 놓고 티격태격 다 같이,<br>물방울에 갇힌 친구, 어서 구하자!</i></b><br><br>
   <a href="LANBOOM.md">English</a> · <a href="LANBOOM.vi.md">Tiếng Việt</a> · <b>한국어</b>
 </p>
 
