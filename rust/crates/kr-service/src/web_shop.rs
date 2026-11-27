@@ -11,6 +11,7 @@ use crate::{
     accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
     choco_chat::F5SocialPolicy,
     custom_map_store::{CustomMapStore, CustomMapStoreError},
+    f6_policy::F6EventPolicy,
 };
 use http::{Request, Response, Status};
 use kr_wire::kr00967::cosmetics::{
@@ -256,6 +257,8 @@ pub(crate) async fn open(config: Config) -> io::Result<Opened> {
 pub struct WebShop {
     config: Config,
     custom_maps: Option<Arc<AsyncMutex<CustomMapStore>>>,
+    f6_policy: Arc<F6EventPolicy>,
+    f6_configured: bool,
 }
 
 impl WebShop {
@@ -263,6 +266,8 @@ impl WebShop {
         Self {
             config,
             custom_maps: None,
+            f6_policy: Arc::new(F6EventPolicy::disabled_default()),
+            f6_configured: false,
         }
     }
 
@@ -270,6 +275,13 @@ impl WebShop {
     /// base64 and JSON overhead (12 KiB accommodates an 8192-byte map).
     pub fn with_custom_map_store(mut self, store: CustomMapStore) -> Self {
         self.custom_maps = Some(Arc::new(AsyncMutex::new(store)));
+        self
+    }
+
+    /// Opt in to the validated, read-only F6 event status policy.
+    pub fn with_f6_policy(mut self, policy: Arc<F6EventPolicy>) -> Self {
+        self.f6_policy = policy;
+        self.f6_configured = true;
         self
     }
 
@@ -587,6 +599,42 @@ async fn chat_status(service: &AccountService, player: i64) -> Result<Response, 
     })))
 }
 
+fn events_status(policy: &F6EventPolicy, configured: bool) -> Response {
+    let core: Vec<_> = policy
+        .enabled_systems()
+        .map(|(system, value)| {
+            json!({
+                "system": system,
+                "start_utc": value.start_utc,
+                "end_utc": value.end_utc,
+                "rate_caps": value.rate_caps,
+            })
+        })
+        .collect();
+    let extended: Vec<_> = policy
+        .enabled_extended_systems()
+        .map(|(system, value)| {
+            json!({
+                "system": system,
+                "start_utc": value.start_utc,
+                "end_utc": value.end_utc,
+                "season_key": &value.season_key,
+                "rate_caps": value.rate_caps,
+                "max_grants_per_day": value.max_grants_per_day,
+                "max_grants_per_season": value.max_grants_per_season,
+            })
+        })
+        .collect();
+    Response::json(&json!({
+        "configured": configured || !core.is_empty() || !extended.is_empty(),
+        "core_total": 19,
+        "extended_total": 25,
+        "excluded_systems": ["PCRoomBenefit"],
+        "enabled_systems": core,
+        "extended_systems": extended,
+    }))
+}
+
 fn projection_status(status: ProjectionStatus) -> &'static str {
     match status {
         ProjectionStatus::Measured => "measured",
@@ -898,6 +946,11 @@ async fn route(
     let digest = request.digest().ok_or(Status::Unauthorized)?;
     if path == "/api/v1/cosmetics-summary" {
         return cosmetics_summary_route(config, service, auth, &digest, request).await;
+    }
+    if path == "/api/v1/events-status" {
+        auth.player(&digest).ok_or(Status::Unauthorized)?;
+        request.require_queryless_get()?;
+        return Ok(events_status(shop.f6_policy.as_ref(), shop.f6_configured));
     }
     if config.unlock_all
         && matches!(
