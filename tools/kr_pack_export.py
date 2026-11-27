@@ -52,7 +52,12 @@ _F2_EVIDENCE = Path('docs/evidence/content')
 # rộng hơn gồm cả ứng viên và map F3; có tên trong catalog chưa đủ để xuất.
 _F2_FAMILIES = {
     'CAPong': frozenset(f'CAPong{n:02}' for n in range(1, 6)),
+    'Clover': frozenset(f'Clover{n:02}' for n in range(1, 7)),
+    'Rabbit': frozenset((*[f'Rabbit{n:02}' for n in range(1, 6)], 'Rabbit11')),
+    'RescueET': frozenset(f'RescueET{n:02}' for n in range(1, 4)),
     'SnowyFields': frozenset(f'SnowyFields{n:02}' for n in (4, 5, 6, 17, 18)),
+    'Wriggle': frozenset(f'Wriggle{n:02}' for n in range(1, 8)),
+    'Zzolman': frozenset(f'Zzolman{n:02}' for n in range(1, 6)),
     'Zombie': frozenset(('Zombie04',)),
 }
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
@@ -880,7 +885,7 @@ def load_f2_maps(maps):
             if name not in _F2_FAMILIES.get(family, ()):
                 raise ValueError(f'Map chưa có trong allowlist adapter F2: {name}')
             if (re.fullmatch(r'[0-9a-f]{64}', row['payload_sha256']) is None
-                    or row['version'] != 1001 or type(row['scripted']) is not bool):
+                    or row['version'] not in (1000, 1001) or type(row['scripted']) is not bool):
                 raise ValueError(f'Metadata map F2 chưa hỗ trợ: {name}')
             selected[name] = dict(family=family, payload_sha256=row['payload_sha256'],
                                   version=row['version'], scripted=row['scripted'])
@@ -892,7 +897,7 @@ def load_f2_maps(maps):
 def _f2_ground(key, data):
     # Giữ nguyên ID ô trong profile, kể cả nền đỏ/xanh của CAPong.
     flags = {'Tile42_Ground/TileRed': 65536, 'Tile42_Ground/TileBlue': 131072}
-    if key.startswith(('Tile00_Ground/', 'Tile05_Ground/')):
+    if key.startswith(('Tile00_Ground/', 'Tile01_Ground/', 'Tile05_Ground/')):
         tail = (52224, 0, 0)
     elif key.startswith('Tile26_Ground/'):
         tail = (64256, 0, 0)
@@ -900,6 +905,17 @@ def _f2_ground(key, data):
         tail = (0, 1243736, 0)
     elif key == 'Tile42_Ground/Tile00' or key in flags:
         tail = (flags.get(key, 0), 0, 0)
+    elif key.startswith(('Tile02_Ground/', 'Tile22_Ground/')):
+        tail = (0, 0, 0)
+    elif key.startswith('Tile18_Ground/'):
+        # Farm/field visuals carry render words at +60..+68; the initializer
+        # still takes the same clear kind-0 path as the other ground tiles.
+        return (data[:6] == (0,) * 6 and data[6:8] == (1, 1)
+                and data[8:15] == (0, 0, -1, 0, 0, 0, 0)
+                and data[15:] in ((4352, 9395096, 9395116), (0, 0, 0)))
+    elif key.startswith('Tile20_Ground/'):
+        return (data[:6] == (0,) * 6 and data[6:8] == (1, 1)
+                and data[8:] == (0, 0, -1, 0, 0, 0, 0, 0, 1243736, 0))
     else:
         return False
     return (data[:6] == (0,) * 6 and data[6:8] in ((1, 1), (2, 1), (2, 2), (3, 2), (5, 3), (6, 6))
@@ -909,30 +925,54 @@ def _f2_ground(key, data):
 def _f2_object(key, data):
     """Trả kind, chiều rộng vật cản và cổng tia cho các dạng TileInfo đã đọc."""
     kind, width, height = data[0], data[6], data[7]
-    if kind == 1 and data[1:6] == (0,) * 5 and height == 1 and width in (1, 3):
+    if kind == 1 and data[1:6] == (0,) * 5 and height in (1, 2) and width in (1, 2, 3, 4):
         if key in ('Tile42_Static/Block01', 'Tile42_Static/Block03'):
             tail = (0, int(key.endswith('03'))) + (0,) * 8
         elif key.startswith(('Tile21_Static/', 'Tile26_Static/')):
             tail = (0, 0, 0, 2010089472) + (0,) * 6
+        elif key.startswith('Tile20_Static/'):
+            if data[8:] == (0, 0, 0, 2010089472) + (0,) * 6:
+                tail = data[8:]
+            elif data[8:] == (1, 0, 0, 2010089472) + (0,) * 6:
+                tail = data[8:]
+            else:
+                return None
+        elif key.startswith('Tile22_Static/') and data[8:] in (
+                (0, 0, 0, 12360960) + (0,) * 6,
+                (0, 0, 0, 13177600) + (0,) * 6):
+            tail = data[8:]
+        elif key.startswith('Tile18_Static/') and data[8:] == (0, 0, 0, 1243648) + (0,) * 6:
+            tail = data[8:]
+        elif key.startswith('Tile00_Static/') and data[8:] == (
+                0, 0, 0, 0, 0, 18730216, 4274062, 18730216, 0, 0):
+            tail = data[8:]
+        elif key.startswith('Tile01_Static/') and data[8:] == (
+                0, 0, 0, 1244184, 0, 18730216, 4274062, 18730216, 0, 0):
+            tail = data[8:]
+        elif key.startswith('Tile02_Static/') and data[8:] == (
+                0, 0, 0, -858993664, 0, 0, 0, 0, 0, 0):
+            tail = data[8:]
         elif key in ('Tile05_Static/Rock02', 'Tile05_Static/Rock03'):
             tail = (0, 0, 0, 1244184, 0, 18730216, 4274062, 18730216, 0, 0)
         else:
             return None
         if data[8:] == tail:
-            return 1, width, 0b1111
-    if (kind == 2 and key.startswith(('Tile05_Box/', 'Tile21_Box/', 'Tile26_Box/'))
+            return 1, width, height, 0b1111
+    if (kind == 2 and key.startswith(('Tile00_Box/', 'Tile01_Box/', 'Tile02_Box/',
+                                      'Tile05_Box/', 'Tile18_Box/', 'Tile20_Box/',
+                                      'Tile21_Box/', 'Tile22_Box/', 'Tile26_Box/'))
             and data[1:7] == (0,) * 6 and height in (0, 1) and data[8:] == (0,) * 10):
-        return 2, 1, 0b1111
+        return 2, 1, max(1, height), 0b1111
     if kind == 3 and data[1:6] == (0,) * 5:
         if (key == 'Tile00_Passable/Herb00' and
                 data[6:] == (16843009,) * 3 + (0, 0, 0, 0, 18730216, 0, 18730216, 0, 0)):
-            return 0, 1, 0b1111
+            return 0, 1, 1, 0b1111
         if (key == 'Tile21_Passible/Z_PassA01' and
                 data[6:] == (16843009,) * 3 + (0, 0, 0, 0, 9278848, 9278868, 20, 1243736, 0)):
-            return 0, 1, 0b1111
-        if (key in ('Tile01_Passable/TentOrange', 'Tile01_Passable/TentRed') and
+            return 0, 1, 1, 0b1111
+        if (key in ('Tile01_Passable/TentBlue', 'Tile01_Passable/TentOrange', 'Tile01_Passable/TentRed') and
                 data[6:] == (16777472,) * 3 + (0, 0, 1, 0, 18730216, 0, 18730216, 0, 0)):
-            return 0, 1, 0b1010
+            return 0, 1, 1, 0b1010
     return None
 
 
@@ -956,12 +996,16 @@ def f2_terrain_rules(profile, table):
             obj = _f2_object(key, data) if role == 'object' else None
             if obj is None:
                 raise ValueError(error)
-            kind, span, ports = obj
-            end = index + span
-            if col + span > width or any(kinds[index:end]):
+            kind, span, object_height, ports = obj
+            covered = [r * width + c
+                       for r in range(row - object_height + 1, row + 1)
+                       for c in range(col, col + span)]
+            if (row - object_height + 1 < 0 or col + span > width
+                    or any(kinds[cell] for cell in covered)):
                 raise ValueError(f'Footprint F2 vượt lưới hoặc chồng vật cản: {name} ({col},{row})')
-            kinds[index:end] = [kind] * span
-            ray_ports[index] = ports
+            for cell in covered:
+                kinds[cell] = kind
+                ray_ports[cell] = ports
     if any(kinds[y * width + x] for x, y in profile['spawns']):
         raise ValueError(f'Spawn F2 không nằm trên ô trống: {name}')
     terrain = dict(width=width, height=height, kinds=kinds, map_sha256=profile['payload_sha256'],
@@ -989,8 +1033,11 @@ def read_f2_map(levels, name, code, evidence, table):
     if (not 2 <= len(spawns) <= 8 or len(set(map(tuple, spawns))) != len(spawns)
             or any(not (0 <= x < 15 and 0 <= y < 13) for x, y in spawns)):
         raise ValueError(f'Tọa độ spawn map F2 không hợp lệ: {name}')
-    # Các hàng item và cờ scripted là metadata gốc. Không tạo floor hay
-    # diễn giải script hoặc luật mode khi chỉ xuất hình học tĩnh.
+    # Các hàng item và cờ scripted là metadata gốc. Các placement/drop mà
+    # census ghi chưa ánh xạ (Spring, Larva, Bomb, SuperMan...) được giữ
+    # nguyên trong profile nhưng cố ý bỏ qua ở rules: chưa có contract mode
+    # để biến chúng thành spawn server, nên không tự suy wire hoặc item.
+    # Không tạo floor hay diễn giải script khi chỉ xuất hình học tĩnh.
     profile.update(name=name, map_code=code, payload_sha256=digest,
                    adapter=F2_ADAPTER, f2_family=evidence['family'])
     return profile, f2_terrain_rules(profile, table)
