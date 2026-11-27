@@ -45,6 +45,16 @@ TERRAIN_SEEDS = dict(zip((*G1, 'ExVillage01'), (
 )))
 SCHEMA = 'kr00967-export-v2'
 F1E_ADAPTER = 'f1e-adapter-r1'
+F2_ADAPTER = 'f2-adapter-r1'
+_F2_CATALOG_PATH = 'docs/evidence/content/f2-mode-catalog.json'
+_F2_EVIDENCE = Path('docs/evidence/content')
+# Phạm vi hình học tĩnh: các mẫu của probe F2/F3 r1 và Zombie04. Catalog
+# rộng hơn gồm cả ứng viên và map F3; có tên trong catalog chưa đủ để xuất.
+_F2_FAMILIES = {
+    'CAPong': frozenset(f'CAPong{n:02}' for n in range(1, 6)),
+    'SnowyFields': frozenset(f'SnowyFields{n:02}' for n in (4, 5, 6, 17, 18)),
+    'Zombie': frozenset(('Zombie04',)),
+}
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
 _SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02'))
 # Tile15_Ground/Remain*: B9D8E0 ignores byte +61 and B9DEA0 word +62 < 10000 feeds
@@ -830,7 +840,163 @@ def f1_rules(profile, table, *, f1e=False):
     return rules
 
 
-def outputs(files, maps, measured, f1=False, *, f1e=False):
+def load_f2_maps(maps):
+    """Chọn các map có catalog và census KR 00967 khớp nhau."""
+    if (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
+            or any(re.fullmatch(r'[A-Za-z0-9_]{1,64}', name) is None for name in maps)):
+        raise ValueError('F2 cần 1–16 tên map KR khác nhau')
+    try:
+        evidence = Path(__file__).resolve().parents[1] / _F2_EVIDENCE
+        raw = (evidence / 'f2-mode-catalog.json').read_bytes()
+        catalog = json.loads(raw)
+        census = json.loads((evidence / 'f2-f3-tile-grid-census.json').read_bytes())
+        if (catalog['schema'] != 'kre.f2-mode-catalog.v1' or catalog['build'] != 'KR00967'
+                or census['schema'] != 'kre.f2-f3-tile-grid-census.v1' or census['build'] != 'KR00967'
+                or (census['source'], census['status']) != ('kr_static', 'confirmed')
+                or census['input_sha256'][_F2_CATALOG_PATH] != sha(raw)
+                or census.pop('body_sha256') != sha(encode(census)[:-1])
+                or census['pack_sha256'] != {k: PACK_SHA256[k] for k in
+                                            ('FxMap.idx', 'FxMap.idd', 'fx.idx', 'fx.idd')}):
+            raise ValueError('Catalog và census F2 không khớp KR 00967')
+        families = {}
+        for family in catalog['families']:
+            for row in family['maps']:
+                name = row['name']
+                if name in families:
+                    raise ValueError(f'Tên map trùng trong catalog F2: {name}')
+                families[name] = family['family']
+        selected = {}
+        for name in maps:
+            family = families.get(name)
+            if not isinstance(family, str) or family.startswith('Popcade'):
+                raise ValueError(f'Map không thuộc phạm vi F2: {name}')
+            row = census['maps'][name]
+            if row['grid'] != [15, 13]:
+                raise ValueError(f'Lưới F2 phải là 15x13: {name}')
+            if row['decode'] != 'exact' or row['layout'] != 'length_prefixed_tail':
+                raise ValueError(f'Payload map F2 chưa được giải mã đầy đủ: {name}')
+            if row['unmapped_tiles'] != {} or row['terrain_constraints'] != []:
+                raise ValueError(f'Map F2 có tile chưa ánh xạ hoặc địa hình chưa hỗ trợ: {name}')
+            if name not in _F2_FAMILIES.get(family, ()):
+                raise ValueError(f'Map chưa có trong allowlist adapter F2: {name}')
+            if (re.fullmatch(r'[0-9a-f]{64}', row['payload_sha256']) is None
+                    or row['version'] != 1001 or type(row['scripted']) is not bool):
+                raise ValueError(f'Metadata map F2 chưa hỗ trợ: {name}')
+            selected[name] = dict(family=family, payload_sha256=row['payload_sha256'],
+                                  version=row['version'], scripted=row['scripted'])
+        return selected
+    except (OSError, KeyError, TypeError) as exc:
+        raise ValueError('Không đọc được catalog hoặc census F2 hợp lệ') from exc
+
+
+def _f2_ground(key, data):
+    # Giữ nguyên ID ô trong profile, kể cả nền đỏ/xanh của CAPong.
+    flags = {'Tile42_Ground/TileRed': 65536, 'Tile42_Ground/TileBlue': 131072}
+    if key.startswith(('Tile00_Ground/', 'Tile05_Ground/')):
+        tail = (52224, 0, 0)
+    elif key.startswith('Tile26_Ground/'):
+        tail = (64256, 0, 0)
+    elif key.startswith('Tile21_Ground/'):
+        tail = (0, 1243736, 0)
+    elif key == 'Tile42_Ground/Tile00' or key in flags:
+        tail = (flags.get(key, 0), 0, 0)
+    else:
+        return False
+    return (data[:6] == (0,) * 6 and data[6:8] in ((1, 1), (2, 1), (2, 2), (3, 2), (5, 3), (6, 6))
+            and data[8:] == (0, 0, -1, 0, 0, 0, 0, *tail))
+
+
+def _f2_object(key, data):
+    """Trả kind, chiều rộng vật cản và cổng tia cho các dạng TileInfo đã đọc."""
+    kind, width, height = data[0], data[6], data[7]
+    if kind == 1 and data[1:6] == (0,) * 5 and height == 1 and width in (1, 3):
+        if key in ('Tile42_Static/Block01', 'Tile42_Static/Block03'):
+            tail = (0, int(key.endswith('03'))) + (0,) * 8
+        elif key.startswith(('Tile21_Static/', 'Tile26_Static/')):
+            tail = (0, 0, 0, 2010089472) + (0,) * 6
+        elif key in ('Tile05_Static/Rock02', 'Tile05_Static/Rock03'):
+            tail = (0, 0, 0, 1244184, 0, 18730216, 4274062, 18730216, 0, 0)
+        else:
+            return None
+        if data[8:] == tail:
+            return 1, width, 0b1111
+    if (kind == 2 and key.startswith(('Tile05_Box/', 'Tile21_Box/', 'Tile26_Box/'))
+            and data[1:7] == (0,) * 6 and height in (0, 1) and data[8:] == (0,) * 10):
+        return 2, 1, 0b1111
+    if kind == 3 and data[1:6] == (0,) * 5:
+        if (key == 'Tile00_Passable/Herb00' and
+                data[6:] == (16843009,) * 3 + (0, 0, 0, 0, 18730216, 0, 18730216, 0, 0)):
+            return 0, 1, 0b1111
+        if (key == 'Tile21_Passible/Z_PassA01' and
+                data[6:] == (16843009,) * 3 + (0, 0, 0, 0, 9278848, 9278868, 20, 1243736, 0)):
+            return 0, 1, 0b1111
+        if (key in ('Tile01_Passable/TentOrange', 'Tile01_Passable/TentRed') and
+                data[6:] == (16777472,) * 3 + (0, 0, 1, 0, 18730216, 0, 18730216, 0, 0)):
+            return 0, 1, 0b1010
+    return None
+
+
+def f2_terrain_rules(profile, table):
+    names, tiles = table
+    name = profile['name']
+    width, height = profile['width'], profile['height']
+    kinds, ray_ports = [0] * (width * height), [0b1111] * (width * height)
+    for index, cell in enumerate(profile['cells']):
+        row, col = divmod(index, width)
+        for role, code in zip(profile['cell_fields'], cell, strict=True):
+            if code == -1:
+                continue
+            key = names[code] if 0 <= code < len(names) else str(code)
+            data = tiles.get(key) if 0 <= code < len(names) else None
+            error = f'Tile F2 chưa ánh xạ: {name} ({col},{row}) {role} {key}'
+            if data is None or len(data) != 18:
+                raise ValueError(error)
+            if role == 'tile' and _f2_ground(key, data):
+                continue
+            obj = _f2_object(key, data) if role == 'object' else None
+            if obj is None:
+                raise ValueError(error)
+            kind, span, ports = obj
+            end = index + span
+            if col + span > width or any(kinds[index:end]):
+                raise ValueError(f'Footprint F2 vượt lưới hoặc chồng vật cản: {name} ({col},{row})')
+            kinds[index:end] = [kind] * span
+            ray_ports[index] = ports
+    if any(kinds[y * width + x] for x, y in profile['spawns']):
+        raise ValueError(f'Spawn F2 không nằm trên ô trống: {name}')
+    terrain = dict(width=width, height=height, kinds=kinds, map_sha256=profile['payload_sha256'],
+                   seed_sha256=sha(bytes(kinds)))
+    if any(ports != 0b1111 for ports in ray_ports):
+        terrain['ray_ports'] = ray_ports
+    return dict(terrain=terrain)
+
+
+def read_f2_map(levels, name, code, evidence, table):
+    try:
+        raw = levels.read('Map/' + name)
+        digest = sha(raw)
+        if digest != evidence['payload_sha256']:
+            raise ValueError('payload không khớp SHA-256 trong census')
+        profile = decode_map(raw)
+    except (KeyError, ValueError, struct.error) as exc:
+        raise ValueError(f'Không giải mã được map F2 {name}: {exc}') from exc
+    if (profile['width'], profile['height']) != (15, 13):
+        raise ValueError(f'Lưới F2 phải là 15x13: {name}')
+    if (profile['version'] != evidence['version'] or profile['scripted'] != evidence['scripted']
+            or profile['rectangles']):
+        raise ValueError(f'Bố cục map F2 chưa hỗ trợ: {name}')
+    spawns = profile['spawns']
+    if (not 2 <= len(spawns) <= 8 or len(set(map(tuple, spawns))) != len(spawns)
+            or any(not (0 <= x < 15 and 0 <= y < 13) for x, y in spawns)):
+        raise ValueError(f'Tọa độ spawn map F2 không hợp lệ: {name}')
+    # Các hàng item và cờ scripted là metadata gốc. Không tạo floor hay
+    # diễn giải script hoặc luật mode khi chỉ xuất hình học tĩnh.
+    profile.update(name=name, map_code=code, payload_sha256=digest,
+                   adapter=F2_ADAPTER, f2_family=evidence['family'])
+    return profile, f2_terrain_rules(profile, table)
+
+
+def outputs(files, maps, measured, f1=False, *, f1e=False, f2_maps=None):
     def pack(name):
         return Pack(files[name + '.idx'], files[name + '.idd'])
 
@@ -862,9 +1028,16 @@ def outputs(files, maps, measured, f1=False, *, f1e=False):
                                           for row in groups])
     levels = pack('FxMap')
     order = [name for name, *_ in levels.order if name.startswith('Map/')]
-    table = load_tile_table(pack('fx')) if measured or f1 or f1e else None
+    table = load_tile_table(pack('fx')) if measured or f1 or f1e or f2_maps else None
     for name in maps:
         entry = 'Map/' + name
+        if f2_maps is not None:
+            if entry not in levels.entries:
+                raise ValueError(f'Thiếu hoặc trùng entry map F2: {name}')
+            profile, rules = read_f2_map(levels, name, order.index(entry), f2_maps[name], table)
+            yield name + '.json', profile
+            yield name + '.rules.json', rules
+            continue
         profile = read_map(levels, name, order.index(entry), f1=f1, f1e=f1e)
         profile['pack_items'] = {row['name']: row['kind'] for row in items}
         yield name + '.json', profile
@@ -902,12 +1075,14 @@ def checked_cache(path, identity, pins, maps, measured, f1=False):
     return manifest
 
 
-def cache_identity(pins, maps, measured, f1=False, *, f1e=False):
+def cache_identity(pins, maps, measured, f1=False, *, f1e=False, f2_maps=None):
     key = dict(schema=SCHEMA, packs=pins, maps=maps, measured=measured)
     if f1e:
         key['adapter'] = F1E_ADAPTER
     elif f1:
         key['adapter'] = 'f1-a-terrain-r5'
+    elif f2_maps is not None:
+        key.update(adapter=F2_ADAPTER, f2_maps=f2_maps)
     return sha(encode(key))
 
 
@@ -926,32 +1101,37 @@ def verified_packs(game, pins=PACK_SHA256, pack_files=None):
         yield files
 
 
-def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False, f1e=False, pack_files=None):
+def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False, f1e=False, f2=False,
+           pack_files=None):
     """Chỉ dùng pins khác qua API kiểm thử; catalog thử có giới hạn."""
     if f1 and f1e:
         raise ValueError('Chỉ chọn một adapter F1-a hoặc F1-e')
+    if f2 and (f1 or f1e):
+        raise ValueError('Không dùng adapter F2 cùng F1-a hoặc F1-e')
     if (f1 or f1e) and (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
                or any(not 1 <= len(name) <= 64 or not name.isascii()
                       or not all(c.isalnum() or c == '_' for c in name) for name in maps)):
         raise ValueError(f'{"F1-e" if f1e else "F1-a"} cần 1–16 tên map KR khác nhau')
+    f2_maps = load_f2_maps(maps) if f2 else None
     game = game.resolve(strict=True)
     if cache.is_symlink():
         raise ValueError('Cache không được là symlink')
     cache = cache.resolve()
     if cache.is_relative_to(game):
         raise ValueError('Cache phải nằm ngoài thư mục game chỉ đọc')
-    identity = cache_identity(pins, maps, measured, f1, f1e=f1e)
+    identity = cache_identity(pins, maps, measured, f1, f1e=f1e, f2_maps=f2_maps)
     dest = cache / identity
+    with_rules = f1 or f1e or f2
     with verified_packs(game, pins, pack_files) as files:
         if dest.exists() or dest.is_symlink():
-            checked_cache(dest, identity, pins, maps, measured, f1 or f1e)
+            checked_cache(dest, identity, pins, maps, measured, with_rules)
             return dest, True
         cache.mkdir(mode=0o700, parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory(prefix='.export-', dir=cache) as work:
             temp = Path(work) / 'data'
             temp.mkdir(mode=0o700)
             hashes = {}
-            for name, value in outputs(files, maps, measured, f1, f1e=f1e):
+            for name, value in outputs(files, maps, measured, f1, f1e=f1e, f2_maps=f2_maps):
                 data = encode(value)
                 (temp / name).write_bytes(data)
                 hashes[name] = sha(data)
@@ -959,13 +1139,13 @@ def export(game, cache, *, pins=PACK_SHA256, maps=MAPS, measured=True, f1=False,
                 raise ValueError('Pack đã đổi trong lúc xuất')
             (temp / 'manifest.json').write_bytes(encode(dict(schema=SCHEMA, identity=identity,
                                                              packs=pins, files=hashes)))
-            checked_cache(temp, identity, pins, maps, measured, f1 or f1e)
+            checked_cache(temp, identity, pins, maps, measured, with_rules)
             try:
                 temp.rename(dest)
             except OSError:
                 if not dest.is_dir():
                     raise
-                checked_cache(dest, identity, pins, maps, measured, f1 or f1e)
+                checked_cache(dest, identity, pins, maps, measured, with_rules)
                 return dest, True
     return dest, False
 
@@ -1018,19 +1198,22 @@ def main():
     adapter = parser.add_mutually_exclusive_group()
     adapter.add_argument('--f1-map', action='append', help='Tên map F1-a chính xác; lặp lại tối đa 16 lần')
     adapter.add_argument('--f1e-map', action='append', help='Tên map F1-e chính xác; lặp lại tối đa 16 lần')
+    adapter.add_argument('--f2-map', action='append', help='Tên map F2 trong allowlist; lặp lại tối đa 16 lần')
     args = parser.parse_args()
     if (args.check_prebuilt is None) != (args.game_dir is not None):
         parser.error('--game-dir bắt buộc khi xuất và không dùng với --check-prebuilt')
     if (args.f1_map or args.f1e_map) and args.cache is None:
         parser.error('--f1-map và --f1e-map chỉ dùng với --cache')
+    if args.f2_map and args.cache is None:
+        parser.error('--f2-map chỉ dùng với --cache')
     try:
         if args.check_prebuilt is not None:
             path, reused = prebuilt(args.check_prebuilt), True
         elif args.prebuilt_out is not None:
             path, reused = refresh_prebuilt(args.game_dir, args.prebuilt_out), False
         else:
-            path, reused = export(args.game_dir, args.cache, maps=args.f1_map or args.f1e_map or MAPS,
-                                  f1=bool(args.f1_map), f1e=bool(args.f1e_map))
+            path, reused = export(args.game_dir, args.cache, maps=args.f1_map or args.f1e_map or args.f2_map or MAPS,
+                                  f1=bool(args.f1_map), f1e=bool(args.f1e_map), f2=bool(args.f2_map))
     except (OSError, ValueError, KeyError, IndexError, struct.error, ET.ParseError) as exc:
         parser.exit(1, f'Không thể xuất pack KR 00967: {exc}\n')
     print(json.dumps(dict(cache=str(path), reused=reused)))
