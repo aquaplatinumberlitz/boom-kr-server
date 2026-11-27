@@ -6,7 +6,7 @@ use std::collections::{BTreeMap, HashMap, hash_map::Entry};
 use std::fmt;
 use std::io;
 use std::marker::PhantomData;
-use std::path::Path;
+use std::path::{Component, Path};
 
 const SCHEMA: &str = "kre.f6-events-policy.v1";
 const EXCLUDED_SYSTEM: &str = "PCRoomBenefit";
@@ -14,6 +14,11 @@ const MAX_PER_ACCOUNT_PER_HOUR: u16 = 60;
 const MAX_GLOBAL_PER_MINUTE: u16 = 600;
 const SECONDS_PER_HOUR: i64 = 3600;
 const SECONDS_PER_MINUTE: i64 = 60;
+const SECONDS_PER_DAY: i64 = 86_400;
+// Runtime policy bounds, not values measured from the original server.
+const MAX_EXTENDED_GRANTS_PER_DAY: u32 = MAX_PER_ACCOUNT_PER_HOUR as u32 * 24;
+const MAX_EXTENDED_GRANTS_PER_SEASON: u32 = 1_000_000;
+const MAX_SEASON_KEY_BYTES: usize = 64;
 
 // The in_scope set from docs/evidence/content/f6-events-catalog.json.
 const SYSTEM_NAMES: [&str; 19] = [
@@ -38,10 +43,42 @@ const SYSTEM_NAMES: [&str; 19] = [
     "Sự kiện theo tiền tố Event",
 ];
 
+// The roadmap_only set from docs/evidence/content/f6-extended-events-spec.json.
+// Keep this list explicit: accepting an arbitrary feature name would make a
+// typo in a profile an accidental opt-in.
+const EXTENDED_SYSTEM_NAMES: [&str; 25] = [
+    "pet-care",
+    "pet-intimacy",
+    "pet-sealing",
+    "pet-upgrade",
+    "dual-pet",
+    "pet-auto-use",
+    "attendance",
+    "comeback",
+    "bingo",
+    "dice",
+    "quiz",
+    "daily-quest",
+    "fishing-loop",
+    "capass-shop-map",
+    "daily-mission-shop-map",
+    "fishing-test-map",
+    "magic-market-map",
+    "selection-box-map",
+    "lucky-card-reveal",
+    "magic-market-craft",
+    "magic-book-market",
+    "bean-lottery",
+    "seasonal-draws",
+    "item-alchemy",
+    "time-stop",
+];
+
 /// A validated policy. Systems are off unless explicitly opted in.
 #[derive(Debug)]
 pub struct F6EventPolicy {
     enabled_systems: HashMap<&'static str, F6EnabledSystem>,
+    enabled_extended_systems: HashMap<&'static str, F6ExtendedSystem>,
 }
 
 /// The configured schedule and limits for an opted-in system.
@@ -52,20 +89,43 @@ pub struct F6EnabledSystem {
     pub rate_caps: RateCaps,
 }
 
+/// A validated extended F6 system and its business grant caps.
+#[derive(Debug)]
+pub struct F6ExtendedSystem {
+    pub start_utc: i64,
+    pub end_utc: i64,
+    pub rate_caps: RateCaps,
+    pub season_key: String,
+    pub max_grants_per_day: u32,
+    pub max_grants_per_season: u32,
+}
+
+impl F6ExtendedSystem {
+    fn contains(&self, now_utc: i64) -> bool {
+        (self.start_utc..self.end_utc).contains(&now_utc)
+    }
+}
+
 impl F6EnabledSystem {
     fn contains(&self, now_utc: i64) -> bool {
         (self.start_utc..=self.end_utc).contains(&now_utc)
     }
 }
 
-/// Keep one tracker for all F6 operations on the server. Counters reset on
-/// UTC hour and minute boundaries respectively, with no wall clock access.
+/// Keep one tracker for all F6 operations on the server. The caller supplies
+/// server time. Rate and daily counts reset on UTC boundaries. Seasonal counts
+/// are retained by system, season key and account for the life of the tracker;
+/// they are in memory only.
 #[derive(Debug, Default)]
 pub struct F6QuotaTracker {
     latest_utc: i64,
     account_counts: BTreeMap<(&'static str, i64), u16>,
     system_counts: BTreeMap<&'static str, u16>,
+    extended_daily_counts: BTreeMap<(&'static str, i64), u32>,
+    extended_season_counts: BTreeMap<&'static str, BTreeMap<String, AccountGrantCounts>>,
 }
+
+type AccountGrantCounts = BTreeMap<i64, u32>;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum QuotaRejection {
@@ -78,6 +138,8 @@ pub enum QuotaRejection {
     ClockRegression,
     AccountQuotaExceeded,
     GlobalQuotaExceeded,
+    ExtendedDailyQuotaExceeded,
+    ExtendedSeasonQuotaExceeded,
 }
 
 impl F6QuotaTracker {
@@ -87,6 +149,7 @@ impl F6QuotaTracker {
         caps: RateCaps,
         account_id: i64,
         now_utc: i64,
+        extended: Option<&F6ExtendedSystem>,
     ) -> Result<(), QuotaRejection> {
         if now_utc < self.latest_utc {
             return Err(QuotaRejection::ClockRegression);
@@ -97,6 +160,9 @@ impl F6QuotaTracker {
         }
         if now_utc / SECONDS_PER_MINUTE != self.latest_utc / SECONDS_PER_MINUTE {
             self.system_counts.clear();
+        }
+        if now_utc / SECONDS_PER_DAY != self.latest_utc / SECONDS_PER_DAY {
+            self.extended_daily_counts.clear();
         }
         self.latest_utc = now_utc;
 
@@ -110,9 +176,47 @@ impl F6QuotaTracker {
             return Err(QuotaRejection::GlobalQuotaExceeded);
         }
 
-        // Only accepted operations allocate entries or increment either quota.
+        if let Some(extended) = extended {
+            self.accept_extended(account, extended)?;
+        }
+        // Only accepted operations allocate entries or increment quotas.
         self.account_counts.insert(account, account_count + 1);
         self.system_counts.insert(system, system_count + 1);
+        Ok(())
+    }
+
+    fn accept_extended(
+        &mut self,
+        account: (&'static str, i64),
+        caps: &F6ExtendedSystem,
+    ) -> Result<(), QuotaRejection> {
+        let (system, account_id) = account;
+        let daily = self
+            .extended_daily_counts
+            .get(&account)
+            .copied()
+            .unwrap_or(0);
+        if daily >= caps.max_grants_per_day {
+            return Err(QuotaRejection::ExtendedDailyQuotaExceeded);
+        }
+        let seasonal = self
+            .extended_season_counts
+            .get(system)
+            .and_then(|seasons| seasons.get(&caps.season_key))
+            .and_then(|accounts| accounts.get(&account_id))
+            .copied()
+            .unwrap_or(0);
+        if seasonal >= caps.max_grants_per_season {
+            return Err(QuotaRejection::ExtendedSeasonQuotaExceeded);
+        }
+        let seasons = self.extended_season_counts.entry(system).or_default();
+        let accounts = if let Some(accounts) = seasons.get_mut(&caps.season_key) {
+            accounts
+        } else {
+            seasons.entry(caps.season_key.clone()).or_default()
+        };
+        accounts.insert(account_id, seasonal + 1);
+        self.extended_daily_counts.insert(account, daily + 1);
         Ok(())
     }
 
@@ -124,9 +228,15 @@ impl F6QuotaTracker {
 
 impl F6EventPolicy {
     /// Load a complete profile. Any invalid field rejects the entire profile.
+    ///
+    /// If present, `extended_systems` must contain every audited ID. Each entry
+    /// uses the core schedule and rate fields plus `max_grants_per_day` and
+    /// `max_grants_per_season` (both may be zero when disabled). An enabled
+    /// entry also requires a stable `season_key` supplied by the operator.
     pub fn from_json_str(json: &str) -> io::Result<Self> {
-        let Object(profile): Object<Profile> = serde_json::from_str(json)
-            .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?;
+        let Object(profile): Object<Profile> = serde_json::from_str(json).map_err(|error| {
+            io::Error::new(io::ErrorKind::InvalidData, F6PolicyError::Json(error))
+        })?;
         if profile.schema != SCHEMA {
             return Err(invalid_data(format!("schema must be {SCHEMA}")));
         }
@@ -138,7 +248,6 @@ impl F6EventPolicy {
         for name in SYSTEM_NAMES {
             let system = profile
                 .systems
-                .0
                 .get(name)
                 .ok_or_else(|| invalid_data(format!("missing system {name:?}")))?;
             let caps = system.rate_caps.0;
@@ -176,11 +285,54 @@ impl F6EventPolicy {
                 }
             }
         }
+        if let Some(extended) = profile.extended_systems {
+            for name in EXTENDED_SYSTEM_NAMES {
+                let system = extended
+                    .get(name)
+                    .ok_or_else(|| invalid_data(format!("missing extended system {name:?}")))?;
+                if let Some(system) = system
+                    .validate()
+                    .map_err(|error| invalid_data(format!("extended_systems.{name}: {error}")))?
+                {
+                    policy.enabled_extended_systems.insert(name, system);
+                }
+            }
+        }
         Ok(policy)
     }
 
-    /// Load a complete UTF-8 JSON profile from disk.
+    /// Load a complete UTF-8 JSON profile at a trusted configuration path.
+    /// Parent traversal, symlinks and non-regular files are rejected.
     pub fn from_path(path: impl AsRef<Path>) -> io::Result<Self> {
+        let path = path.as_ref();
+        if path.as_os_str().is_empty() || path.components().any(|part| part == Component::ParentDir)
+        {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "invalid f6_events_policy path",
+            ));
+        }
+        // Check ancestors from the root outwards so metadata lookups do not
+        // follow a parent symlink on a stable filesystem.
+        let parents: Vec<_> = path
+            .ancestors()
+            .skip(1)
+            .filter(|parent| !parent.as_os_str().is_empty())
+            .collect();
+        for parent in parents.into_iter().rev() {
+            if !std::fs::symlink_metadata(parent)?.is_dir() {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidInput,
+                    "f6_events_policy parents must be directories without symlinks",
+                ));
+            }
+        }
+        if !std::fs::symlink_metadata(path)?.is_file() {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "f6_events_policy must be a regular file without symlinks",
+            ));
+        }
         Self::from_json_str(&std::fs::read_to_string(path)?)
     }
 
@@ -188,12 +340,18 @@ impl F6EventPolicy {
     pub fn disabled_default() -> Self {
         Self {
             enabled_systems: HashMap::new(),
+            enabled_extended_systems: HashMap::new(),
         }
     }
 
     /// Return the catalog systems in their stable policy order.
     pub fn system_names() -> &'static [&'static str] {
         &SYSTEM_NAMES
+    }
+
+    /// Return all 25 audited extended system identifiers in specification order.
+    pub fn extended_system_names() -> &'static [&'static str] {
+        &EXTENDED_SYSTEM_NAMES
     }
 
     /// Report explicit opt-ins in catalog order, including inactive schedules.
@@ -203,16 +361,32 @@ impl F6EventPolicy {
             .filter_map(|name| self.enabled_systems.get(name).map(|system| (name, system)))
     }
 
+    /// Report extended opt-ins in specification order, including inactive schedules.
+    pub fn enabled_extended_systems(
+        &self,
+    ) -> impl Iterator<Item = (&'static str, &F6ExtendedSystem)> {
+        EXTENDED_SYSTEM_NAMES.into_iter().filter_map(|name| {
+            self.enabled_extended_systems
+                .get(name)
+                .map(|system| (name, system))
+        })
+    }
+
     /// Return whether the system is opted in at the given Unix second.
-    /// Both endpoints of a validated schedule are included.
+    /// Core schedules include both endpoints; extended schedules exclude the end.
     pub fn is_system_enabled_at(&self, name: &str, utc_unix_secs: i64) -> bool {
         self.enabled_systems
             .get(name)
             .is_some_and(|system| system.contains(utc_unix_secs))
+            || self
+                .enabled_extended_systems
+                .get(name)
+                .is_some_and(|system| system.contains(utc_unix_secs))
     }
 
-    /// Check and charge both quotas for one operation. Supply timestamps in
-    /// nondecreasing order for a shared tracker; clock regressions fail closed.
+    /// Check and charge one operation against all applicable caps. Extended
+    /// operations charge one grant in the configured season. Supply timestamps
+    /// in nondecreasing order for a shared tracker; clock regressions fail closed.
     pub fn check_operation(
         &self,
         tracker: &mut F6QuotaTracker,
@@ -220,17 +394,30 @@ impl F6EventPolicy {
         account_id: i64,
         now_utc: i64,
     ) -> Result<(), QuotaRejection> {
-        if system == EXCLUDED_SYSTEM {
+        if system.eq_ignore_ascii_case(EXCLUDED_SYSTEM) {
             return Err(QuotaRejection::ExcludedSystem);
         }
-        let Some((&name, policy)) = self.enabled_systems.get_key_value(system) else {
-            return Err(if SYSTEM_NAMES.contains(&system) {
-                QuotaRejection::Disabled
-            } else {
-                QuotaRejection::UnknownSystem
-            });
+        let (name, active, caps, extended) = if let Some((&name, policy)) =
+            self.enabled_systems.get_key_value(system)
+        {
+            (name, policy.contains(now_utc), policy.rate_caps, None)
+        } else if let Some((&name, policy)) = self.enabled_extended_systems.get_key_value(system) {
+            (
+                name,
+                policy.contains(now_utc),
+                policy.rate_caps,
+                Some(policy),
+            )
+        } else {
+            return Err(
+                if SYSTEM_NAMES.contains(&system) || EXTENDED_SYSTEM_NAMES.contains(&system) {
+                    QuotaRejection::Disabled
+                } else {
+                    QuotaRejection::UnknownSystem
+                },
+            );
         };
-        if !policy.contains(now_utc) {
+        if !active {
             return Err(QuotaRejection::OutsideSchedule);
         }
         if now_utc < 0 {
@@ -239,20 +426,53 @@ impl F6EventPolicy {
         if account_id <= 0 {
             return Err(QuotaRejection::InvalidAccountId);
         }
-        tracker.accept(name, policy.rate_caps, account_id, now_utc)
+        tracker.accept(name, caps, account_id, now_utc, extended)
+    }
+}
+
+/// The cause of an `InvalidData` error returned by the policy parser.
+#[derive(Debug)]
+pub enum F6PolicyError {
+    Json(serde_json::Error),
+    Validation(String),
+}
+
+impl fmt::Display for F6PolicyError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Json(error) => error.fmt(formatter),
+            Self::Validation(message) => formatter.write_str(message),
+        }
+    }
+}
+
+impl std::error::Error for F6PolicyError {
+    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+        match self {
+            Self::Json(error) => Some(error),
+            Self::Validation(_) => None,
+        }
     }
 }
 
 fn invalid_data(message: impl Into<String>) -> io::Error {
-    io::Error::new(io::ErrorKind::InvalidData, message.into())
+    io::Error::new(
+        io::ErrorKind::InvalidData,
+        F6PolicyError::Validation(message.into()),
+    )
 }
+
+type SystemMap<T> = HashMap<&'static str, T>;
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct Profile {
     schema: String,
     default_enabled: bool,
-    systems: Systems,
+    #[serde(deserialize_with = "core_systems")]
+    systems: SystemMap<SystemPolicy>,
+    #[serde(default, deserialize_with = "extended_systems")]
+    extended_systems: Option<SystemMap<ExtendedSystemPolicy>>,
 }
 
 #[derive(Deserialize)]
@@ -264,6 +484,83 @@ struct SystemPolicy {
     #[serde(deserialize_with = "nullable_utc")]
     end_utc: Option<i64>,
     rate_caps: Object<RateCaps>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ExtendedSystemPolicy {
+    enabled: bool,
+    #[serde(deserialize_with = "nullable_utc")]
+    start_utc: Option<i64>,
+    #[serde(deserialize_with = "nullable_utc")]
+    end_utc: Option<i64>,
+    rate_caps: Object<RateCaps>,
+    season_key: Option<String>,
+    max_grants_per_day: u32,
+    max_grants_per_season: u32,
+}
+
+impl ExtendedSystemPolicy {
+    fn validate(&self) -> Result<Option<F6ExtendedSystem>, &'static str> {
+        let rate_caps = self.rate_caps.0;
+        if rate_caps.per_account_per_hour > MAX_PER_ACCOUNT_PER_HOUR
+            || rate_caps.global_per_minute > MAX_GLOBAL_PER_MINUTE
+        {
+            return Err("rate caps exceed policy limits");
+        }
+        if self.max_grants_per_day > MAX_EXTENDED_GRANTS_PER_DAY
+            || self.max_grants_per_season > MAX_EXTENDED_GRANTS_PER_SEASON
+        {
+            return Err("grant caps exceed policy limits");
+        }
+        if self.max_grants_per_day > self.max_grants_per_season {
+            return Err("max_grants_per_day must not exceed max_grants_per_season");
+        }
+
+        let season_key = self.season_key.as_deref();
+        if season_key.is_some_and(|key| key.eq_ignore_ascii_case(EXCLUDED_SYSTEM)) {
+            return Err("PCRoomBenefit is excluded by policy");
+        }
+        if season_key.is_some_and(|key| !valid_season_key(key)) {
+            return Err(
+                "season_key must be 1 to 64 ASCII letters, digits, hyphens or underscores and start with a letter or digit",
+            );
+        }
+        let (start_utc, end_utc) = match (self.start_utc, self.end_utc) {
+            (Some(start), Some(end)) if 0 <= start && start < end => (start, end),
+            (None, None) if !self.enabled => return Ok(None),
+            _ => return Err("a schedule requires both timestamps and 0 <= start_utc < end_utc"),
+        };
+        if !self.enabled {
+            return Ok(None);
+        }
+        if rate_caps.per_account_per_hour == 0 || rate_caps.global_per_minute == 0 {
+            return Err("enabled systems require positive rate caps");
+        }
+        if self.max_grants_per_day == 0 || self.max_grants_per_season == 0 {
+            return Err("enabled systems require positive grant caps");
+        }
+        let season_key = season_key.ok_or("enabled systems require season_key")?;
+        Ok(Some(F6ExtendedSystem {
+            start_utc,
+            end_utc,
+            rate_caps,
+            season_key: season_key.to_owned(),
+            max_grants_per_day: self.max_grants_per_day,
+            max_grants_per_season: self.max_grants_per_season,
+        }))
+    }
+}
+
+fn valid_season_key(key: &str) -> bool {
+    key.len() <= MAX_SEASON_KEY_BYTES
+        && key
+            .as_bytes()
+            .first()
+            .is_some_and(u8::is_ascii_alphanumeric)
+        && key
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'_'))
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Serialize)]
@@ -295,40 +592,71 @@ impl<'de, T: Deserialize<'de>> Deserialize<'de> for Object<T> {
     }
 }
 
-struct Systems(HashMap<&'static str, SystemPolicy>);
+fn core_systems<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<SystemMap<SystemPolicy>, D::Error> {
+    system_map(deserializer, "systems", &SYSTEM_NAMES)
+}
 
-impl<'de> Deserialize<'de> for Systems {
-    fn deserialize<D: Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
-        struct SystemsVisitor;
-        impl<'de> Visitor<'de> for SystemsVisitor {
-            type Value = Systems;
+fn extended_systems<'de, D: Deserializer<'de>>(
+    deserializer: D,
+) -> Result<Option<SystemMap<ExtendedSystemPolicy>>, D::Error> {
+    // A present field must be a complete object. Explicit null is invalid.
+    system_map(deserializer, "extended_systems", &EXTENDED_SYSTEM_NAMES).map(Some)
+}
 
-            fn expecting(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
-                formatter.write_str("a JSON object of F6 systems")
-            }
-
-            fn visit_map<M: MapAccess<'de>>(self, mut map: M) -> Result<Systems, M::Error> {
-                let mut systems = HashMap::new();
-                while let Some(name) = map.next_key::<String>()? {
-                    if name == EXCLUDED_SYSTEM {
-                        return Err(de::Error::custom("PCRoomBenefit is excluded by policy"));
-                    }
-                    let name = SYSTEM_NAMES
-                        .iter()
-                        .copied()
-                        .find(|allowed| *allowed == name)
-                        .ok_or_else(|| de::Error::custom(format!("unknown F6 system {name:?}")))?;
-                    let Entry::Vacant(slot) = systems.entry(name) else {
-                        return Err(de::Error::duplicate_field(name));
-                    };
-                    let Object(system) = map.next_value()?;
-                    slot.insert(system);
-                }
-                Ok(Systems(systems))
-            }
-        }
-        deserializer.deserialize_map(SystemsVisitor)
+fn system_map<'de, D, T>(
+    deserializer: D,
+    section: &'static str,
+    allowed_names: &'static [&'static str],
+) -> Result<SystemMap<T>, D::Error>
+where
+    D: Deserializer<'de>,
+    T: Deserialize<'de>,
+{
+    struct SystemsVisitor<T> {
+        section: &'static str,
+        allowed_names: &'static [&'static str],
+        row: PhantomData<T>,
     }
+    impl<'de, T: Deserialize<'de>> Visitor<'de> for SystemsVisitor<T> {
+        type Value = SystemMap<T>;
+
+        fn expecting(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+            write!(formatter, "a JSON object for {}", self.section)
+        }
+
+        fn visit_map<M: MapAccess<'de>>(self, mut map: M) -> Result<Self::Value, M::Error> {
+            let section = self.section;
+            let mut systems = HashMap::new();
+            while let Some(name) = map.next_key::<String>()? {
+                if name.eq_ignore_ascii_case(EXCLUDED_SYSTEM) {
+                    return Err(de::Error::custom(format_args!(
+                        "{section}: PCRoomBenefit is excluded by policy"
+                    )));
+                }
+                let name = self
+                    .allowed_names
+                    .iter()
+                    .copied()
+                    .find(|allowed| *allowed == name)
+                    .ok_or_else(|| {
+                        de::Error::custom(format_args!("{section}: unknown F6 system {name:?}"))
+                    })?;
+                let Entry::Vacant(slot) = systems.entry(name) else {
+                    return Err(de::Error::duplicate_field(name));
+                };
+                let Object(system) = map.next_value()?;
+                slot.insert(system);
+            }
+            Ok(systems)
+        }
+    }
+    deserializer.deserialize_map(SystemsVisitor {
+        section,
+        allowed_names,
+        row: PhantomData,
+    })
 }
 
 fn nullable_utc<'de, D: Deserializer<'de>>(deserializer: D) -> Result<Option<i64>, D::Error> {
@@ -453,7 +781,14 @@ mod tests {
 
         for policy in [
             F6EventPolicy::from_json_str(DISABLED).unwrap(),
-            F6EventPolicy::from_path("../../../server/profiles/f6-events-disabled.json").unwrap(),
+            F6EventPolicy::from_path(
+                Path::new(env!("CARGO_MANIFEST_DIR"))
+                    .ancestors()
+                    .nth(3)
+                    .unwrap()
+                    .join("server/profiles/f6-events-disabled.json"),
+            )
+            .unwrap(),
             F6EventPolicy::disabled_default(),
         ] {
             for name in in_scope.iter().copied().chain([EXCLUDED_SYSTEM, "unknown"]) {
