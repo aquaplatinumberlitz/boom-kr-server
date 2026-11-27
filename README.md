@@ -61,7 +61,7 @@ with everything unlocked or earn it, and what the server keeps.
 
 ## Get started
 
-1. **Download** the LANBoom player package. *(The download link will be published here at launch.)*
+1. **Download** the LANBoom player package. *(Coming soon: December 2026)*
 2. **Open the launcher** and pick your language.
 3. **Choose how to play:**
    - **Private room:** enter a name, click **Host a private room** and send the code to your friends.
@@ -91,6 +91,6 @@ The feature exists in the original client and is being brought to LANBoom. It wi
 
 ## Community
 
-- 💬 Discord / Facebook: *(links coming soon)*
+- 💬 Discord / Facebook: *(Coming soon: December 2026)*
 - 🐛 Bug reports and suggestions: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
 - 🛠️ Developers: see the [technical documentation](docs/DEVELOPMENT.md)

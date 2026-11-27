@@ -61,7 +61,7 @@ cày mới có, server lưu những gì, đều do bạn quyết định.
 
 ## Bắt đầu chơi
 
-1. **Tải** gói LANBoom cho người chơi. *(Link tải sẽ đăng tại đây khi ra mắt.)*
+1. **Tải** gói LANBoom cho người chơi. *(Sắp ra mắt: tháng 12/2026)*
 2. **Mở launcher** và chọn ngôn ngữ.
 3. **Chọn cách chơi:**
    - **Phòng riêng:** nhập tên, bấm **Mở phòng riêng** rồi gửi mã cho bạn bè.
@@ -91,6 +91,6 @@ Tính năng có trong bản gốc và đang được đưa vào LANBoom. Tính n
 
 ## Cộng đồng
 
-- 💬 Discord / Facebook: *(sẽ cập nhật link)*
+- 💬 Discord / Facebook: *(Sắp ra mắt: tháng 12/2026)*
 - 🐛 Báo lỗi và góp ý: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
 - 🛠️ Nhà phát triển: xem [tài liệu kỹ thuật](docs/DEVELOPMENT.md)
