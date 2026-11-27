@@ -6,7 +6,7 @@ không backfill thí nghiệm cũ thành checkpoint giả. Phiên/worker/compact
 
 | Thông tin | Nguồn chuẩn |
 |---|---|
-| Trạng thái,mốc,điểm chặn | [README](../../../README.md) |
+| Trạng thái,mốc,điểm chặn | [DEVELOPMENT](../../DEVELOPMENT.md) |
 | Task/gate/thứ tự | [PLAN](../../PLAN.md) |
 | Contract KR/limits | [PROTOCOL](../../PROTOCOL.md) |
 | Câu hỏi/phép kiểm/owner kế | [RESEARCH](../../RESEARCH.md) |

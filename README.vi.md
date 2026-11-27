@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="../assets/brand/icon-256.png" width="128" alt="LANBoom">
+  <img src="assets/brand/icon-256.png" width="128" alt="LANBoom">
 </p>
 
 <h1 align="center">LANBoom</h1>
 
 <p align="center">
   <b><i>Đặt boom chí chóe cùng nhau,<br>Kẹt trong bóng nước, cứu mau bạn hiền!</i></b><br><br>
-  <a href="LANBOOM.md">English</a> · <b>Tiếng Việt</b> · <a href="LANBOOM.ko.md">한국어</a>
+  <a href="README.md">English</a> · <b>Tiếng Việt</b> · <a href="README.ko.md">한국어</a>
 </p>
 
 LANBoom là game đặt bom nước huyền thoại, dựng lại từ **bản client Hàn Quốc cuối cùng (build 00967)**
@@ -67,7 +67,7 @@ cày mới có, server lưu những gì, đều do bạn quyết định.
    - **Phòng riêng:** nhập tên, bấm **Mở phòng riêng** rồi gửi mã cho bạn bè.
    - **Server:** dán mã mời S1, tạo tài khoản rồi bấm **CHƠI**.
 
-Hướng dẫn chi tiết có trong [hướng dẫn người chơi](player/guide.vi.md). Chủ server xem phần cài đặt cho Windows và Linux
+Hướng dẫn chi tiết có trong [hướng dẫn người chơi](docs/player/guide.vi.md). Chủ server xem phần cài đặt cho Windows và Linux
 trong cùng hướng dẫn, mục *Tự dựng Server (S1)*.
 
 **Cấu hình:** game chạy trên Windows 10 hoặc 11. BoomServer chạy trên Windows hoặc Linux, Linux dùng được cả Docker.
@@ -93,4 +93,4 @@ Tính năng có trong bản gốc và đang được đưa vào LANBoom. Tính n
 
 - 💬 Discord / Facebook: *(sẽ cập nhật link)*
 - 🐛 Báo lỗi và góp ý: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
-- 🛠️ Nhà phát triển: xem [README kỹ thuật](../README.md)
+- 🛠️ Nhà phát triển: xem [tài liệu kỹ thuật](docs/DEVELOPMENT.md)

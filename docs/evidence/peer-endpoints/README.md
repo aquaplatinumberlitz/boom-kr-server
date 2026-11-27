@@ -1,5 +1,5 @@
 Các mục CP dưới đây là snapshot theo run/checkpoint lúc ghi, gồm trạng thái PR/review và bước tiếp
-lịch sử. Trạng thái hiện tại đọc ở [README](../../../README.md), thứ tự ở [PLAN](../../PLAN.md#current-order);
+lịch sử. Trạng thái hiện tại đọc ở [DEVELOPMENT](../../DEVELOPMENT.md), thứ tự ở [PLAN](../../PLAN.md#current-order);
 PR là nguồn trạng thái merge. Không dùng một dòng “chờ PR” hoặc next-step cũ làm trạng thái hiện hành.
 
 # CP138 — IP quảng bá153, UDPsource và peer lookup trên loopbackalias

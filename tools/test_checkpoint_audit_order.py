@@ -9,6 +9,12 @@ class AuditReadOrderTests(unittest.TestCase):
     def test_original_core_first_audit_remains_accepted(self):
         self.assertTrue(audit_core_read_order(list(CORE_DOCS) + ['docs/evidence/a.json']))
 
+    def test_legacy_readme_still_fills_the_development_slot(self):
+        legacy = ['README.md', *CORE_DOCS[1:], 'docs/evidence/a.json']
+        self.assertTrue(audit_core_read_order(legacy))
+        self.assertTrue(audit_core_read_order(['AGENTS.md', *legacy]))
+        self.assertFalse(audit_core_read_order(['README.md', 'docs/DEVELOPMENT.md', *CORE_DOCS[1:]]))
+
     def test_rules_then_core_pass_preserves_immutable_audit_list(self):
         rows = ['AGENTS.md', *CORE_DOCS, 'docs/evidence/a.json']
         before = copy.deepcopy(rows)

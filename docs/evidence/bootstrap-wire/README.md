@@ -1,6 +1,6 @@
 # Phản hồi ProcessPatch KR dưới Wine
 
-Snapshot lịch sử27/10/2026 JST,trước R2. Trạng thái mới ở [README](../../../README.md),
+Snapshot lịch sử27/10/2026 JST,trước R2. Trạng thái mới ở [DEVELOPMENT](../../DEVELOPMENT.md),
 contract hiện hành ở [PROTOCOL](../../PROTOCOL.md#wcp). KRE-002, baseline `fcf5dfb`; tiếp nối [recipe Wine](../wine/README.md).
 **Bản copy đã nhận phản hồi bootstrap local và trả thành công từ `ProcessPatch`.** Đây chưa phải
 hello game/login: client tiếp tục rồi dừng ở UD2 của import `ngclient.aes` ordinal1 chưa phục hồi.

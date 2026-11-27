@@ -1,7 +1,7 @@
 # Lịch sử trạng thái theo checkpoint
 
 Chuyển nguyên văn từ README ngày 12/11. Đây là trạng thái **tại thời điểm ghi** của từng mốc, không phải hiện trạng;
-hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời khỏi README thì nối vào đầu danh sách dưới.
+hiện trạng ở [Bảng điều hành](PLAN.md#dashboard). Mốc mới rời khỏi [DEVELOPMENT](DEVELOPMENT.md) (trước đây là README) thì nối vào đầu danh sách dưới.
 
 ## Các mốc trước
 

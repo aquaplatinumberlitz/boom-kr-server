@@ -1,58 +1,96 @@
-# Boom KR Server
+<p align="center">
+  <img src="assets/brand/icon-256.png" width="128" alt="LANBoom">
+</p>
 
-> 🎮 **Người chơi / Players / 플레이어:** giới thiệu **LANBoom** — [English](docs/LANBOOM.md) · [Tiếng Việt](docs/LANBOOM.vi.md) · [한국어](docs/LANBOOM.ko.md)
+<h1 align="center">LANBoom</h1>
 
-Server giả lập cho **the lastest client Crazy Arcade KR build00967 before end of service**, dựa trên kiến thức từ client
-VN VBNB_116. 
-**Chú ý:**<br>
-1- dự án không cung cấp client game<br>
-2- dự án chứa lượng lớn text và kiến thức RE được viết bằng agents (GPT sol-6.1, claude fable-5.2), không phải con người, nếu đọc không hiểu thì hãy hỏi AI giải thích. 
-<img width="1024" height="1230" alt="fixed-contact" src="https://github.com/user-attachments/assets/739b9237-b44a-47f0-87a3-97ccd3c9f669" />
+<p align="center">
+  <b><i>Drop the balloons, squabble and play,<br>Stuck in a bubble? Friends save the day!</i></b><br><br>
+  <b>English</b> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.ko.md">한국어</a>
+</p>
 
-**Thư mục làm việc hiện tại trên host:** `/home/admin/boom/repos/boom-kr-server`.
-Docs, tools, code và evidence mới đều ở đây. Không cần mở worktree của repo Rust cũ để làm project này.
+LANBoom is the classic water-balloon battle game, rebuilt from the **final Korean client (build 00967)**
+released before the Korean service shut down. It keeps the original maps, items and characters,
+and adds **English and Vietnamese**, **private rooms over LAN or the Internet**, and **servers you can host yourself**.
 
-```text
-boom-kr-server/
-  AGENTS.md                 quy tắc của project này
-  docs/
-    PLAN.md                 lộ trình Rust, acceptance và thứ tự hiện hành
-    features.json           chỉ mục cơ chế/ID/dependency/trạng thái có nguồn
-    COVERAGE.md             bảng/cây/thẻ tra cứu sinh từ catalog
-    PROTOCOL.md             mục lục contract; chi tiết theo chủ đề trong protocol/
-    RESEARCH.md             câu hỏi mở, owner và điều kiện đóng
-    REFERENCES.md           nguồn RE cũ, provenance và bản đồ migration
-    evidence/               metadata/hash; không chứa binary hoặc decompile
-  tools/                    harness, probe và kiểm tra artifact/docs
-  rust/                     kr-wire + kr-service; kr-tunnel companion thử nghiệm
-  server/                   Python serving/RE/reference vẫn giữ
-  local/                    raw/copy client/DB/capture; git-ignored
-```
+LANBoom is a **free community project**. There is no fee, no paid currency and no pay-to-win.
 
-**Đích bàn giao giai đoạn 1 (chốt 11/11):** dịch vụ nội bộ bền vững, người chơi qua Internet thật, khoảng 50 người đồng
-thời, chế độ thường với nhiều map và item phổ biến. Dài hạn vẫn hướng tới gameplay đầy đủ.
-[Đích, việc còn lại và thứ tự](docs/PLAN.md#delivery-target).
+## Why LANBoom?
 
-## Tra nhanh và trạng thái hiện tại
+- **The complete original game.** Every normal-battle map, item and character from the final Korean build, played by the original rules.
+- **Everything unlocked in private rooms.** All supported items, outfits and characters are open from the first game.
+- **No server required.** Host a room on your PC and share a code with your friends. LANBoom connects you over LAN or the Internet, and you never need to open router ports.
+- **It can't be shut down again.** The game runs on your own machines. Nobody can switch it off.
+- **Your server, your rules.** Run your own server for your community and decide how accounts, progress and unlocks work.
+- **Your language.** More than 33,000 lines are translated by hand into English and Vietnamese, with no machine translation. Korean stays as it was in the original.
 
-**Giai đoạn 1 & M8 hoàn tất (23/11, PR #595).** Soak13 đạt 15.000 giây với 528 ván hoàn tất, 0 lỗi delivery/DB/owner/authority, 4 backup và restore schema 6 hợp lệ; lượt native-under-load `real-load26` đạt 80 giây liên tục ở tải 50 người/8 phòng (0% rơi gói, `drained=true`) song song 2 ván native Win10 (`vi`) + Wine (`ko`). Chi tiết và trạng thái mốc tiếp theo (F1–F6, O1/S1): [Bảng điều hành](docs/PLAN.md#dashboard).
+## Features
 
-## Bắt đầu
+✅ Available now · 🚧 Coming soon
 
-Đọc [AGENTS](AGENTS.md), [PLAN](docs/PLAN.md), rồi [PROTOCOL](docs/PROTOCOL.md) và
-[RESEARCH](docs/RESEARCH.md) theo task.
+| | Feature | Details |
+|---|---|---|
+| ✅ | **Normal battle** | All **214** maps, including conveyor belts, mine rails, scripted maps and the 19×17 Big Battle map |
+| ✅ | **Characters** | **31** characters with their original stats |
+| ✅ | **Items** | The full classic item set, including Needle, Shield, Sensor, shoes, gloves, remote bombs, drills and darts |
+| ✅ | **Vehicles** | **5** rideable vehicles and **22** ship types |
+| ✅ | **Rooms** | Free-for-all or team battles with up to **8 players per room** on a server |
+| ✅ | **Private rooms** | Join with a room code or pick a room from the LAN list. No account is needed, and two players can share one PC |
+| ✅ | **Self-hosted servers** | BoomServer for Windows and Linux, tested with **50 players in 8 rooms** at the same time |
+| ✅ | **Accounts and progress** | Server accounts, saved match results, levels and EXP, and Lucci |
+| ✅ | **Web shop** | Browse and claim outfits through the server's web shop |
+| ✅ | **Languages** | English, Tiếng Việt and 한국어 in the game, launcher and server app, with Vietnamese accents in chat |
+| 🚧 | **In-game shop and inventory** | The original My Page, inventory and shop windows |
+| 🚧 | **Special modes** | **18** rule sets on **122** maps, including Baseball, Coloring, Zombie, Kart and Super Fighter |
+| 🚧 | **PvE adventures** | **699** co-op stages with bosses, treasure chests and crafting |
+| 🚧 | **Social** | Friends, whispers, guilds of up to 100 members, couples and rankings |
+| 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market and pets |
 
-```bash
-python3 tools/feature_catalog.py
-python3 tools/check_docs.py
-python3 tools/check_checkpoints.py --require-local --require-history
-python3 tools/artifacts.py verify
-```
+## Two ways to play
 
-`artifacts.py verify` dùng manifest **host-local** trong `docs/evidence/artifacts.json`; client/DB
-không nằm trong Git nên clone sạch trên máy khác chưa thể chạy lệnh này. Khi chuyển máy, dùng
-`--manifest /path/to/local-artifacts.json` với đường dẫn nguồn và hash đã xác nhận tại máy đó.
+| | 🏠 Private room | 🖥️ Server |
+|---|---|---|
+| **Who hosts?** | One friend opens a room in the launcher | A community runs BoomServer on a PC or VPS |
+| **Account** | Not needed, just pick a name | One account per server |
+| **Items, outfits and characters** | **100% unlocked** | Set by the server owner |
+| **Progress** | Not saved | Saved by the server |
+| **Connection** | Room code over LAN or the Internet | S1 invite code, with a relay when a direct connection fails |
 
-Client nguồn giữ ở `/home/admin/boom/clients/kr-00967`; không sửa hoặc commit. Artifact và database
-đã unpack ở repo RE cũ chỉ là đầu vào tham chiếu; mỗi phép thử dùng bản copy riêng trong `local/`.
-Nguồn/commit và giới hạn bằng chứng: [REFERENCES](docs/REFERENCES.md).
+**Hosting your own server?** You are the owner and you have full control. You decide whether players start
+with everything unlocked or earn it, and what the server keeps.
+
+## Get started
+
+1. **Download** the LANBoom player package. *(The download link will be published here at launch.)*
+2. **Open the launcher** and pick your language.
+3. **Choose how to play:**
+   - **Private room:** enter a name, click **Host a private room** and send the code to your friends.
+   - **Server:** paste an S1 invite, create an account and press **PLAY**.
+
+The full walkthrough is in the [player guide](docs/player/guide.en.md). Server owners can find Windows and Linux setup in the
+same guide under *Host your own server (S1)*.
+
+**System requirements:** Windows 10 or 11 for the game. BoomServer runs on Windows or Linux, and Linux can also use Docker.
+
+## FAQ
+
+**Is it really free?**
+Yes. LANBoom is a free community project. Nothing in the game is sold for real money.
+
+**Is it the same as the old Korean game?**
+Yes. LANBoom is built from the final Korean client before the shutdown. Maps, items, characters and rules follow the original.
+
+**Do I need to set up port forwarding?**
+No. Private rooms and S1 servers connect automatically and fall back to a relay when needed.
+
+**Will my progress be lost?**
+Private rooms do not keep progress. On a server, progress is stored by the server owner, and BoomServer can back up its database.
+
+**What does 🚧 mean?**
+The feature exists in the original client and is being brought to LANBoom. It will arrive in future updates.
+
+## Community
+
+- 💬 Discord / Facebook: *(links coming soon)*
+- 🐛 Bug reports and suggestions: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
+- 🛠️ Developers: see the [technical documentation](docs/DEVELOPMENT.md)

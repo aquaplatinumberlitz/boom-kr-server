@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="../assets/brand/icon-256.png" width="128" alt="LANBoom">
+  <img src="assets/brand/icon-256.png" width="128" alt="LANBoom">
 </p>
 
 <h1 align="center">LANBoom</h1>
 
 <p align="center">
   <b><i>물풍선 놓고 티격태격 다 같이,<br>물방울에 갇힌 친구, 어서 구하자!</i></b><br><br>
-  <a href="LANBOOM.md">English</a> · <a href="LANBOOM.vi.md">Tiếng Việt</a> · <b>한국어</b>
+  <a href="README.md">English</a> · <a href="README.vi.md">Tiếng Việt</a> · <b>한국어</b>
 </p>
 
 LANBoom은 한국 서비스 종료 전 **마지막 한국 클라이언트**(빌드 00967)를 바탕으로 되살린 물풍선 대전 게임입니다.
@@ -67,7 +67,7 @@ LANBoom은 **무료 커뮤니티 프로젝트**입니다. 이용료도, 유료 �
    - **비공개 방:** 이름을 넣고 **방 만들기**를 누른 뒤 친구에게 코드를 보냅니다.
    - **서버:** S1 초대 코드를 붙여 넣고 계정을 만든 뒤 **게임 시작**을 누릅니다.
 
-자세한 방법은 [플레이어 가이드](player/guide.ko.md)에 있습니다. 서버 운영자용 Windows·Linux 설치 방법도
+자세한 방법은 [플레이어 가이드](docs/player/guide.ko.md)에 있습니다. 서버 운영자용 Windows·Linux 설치 방법도
 같은 가이드의 *내 서버 열기 (S1)* 부분에 있습니다.
 
 **사양:** 게임은 Windows 10 또는 11에서 실행됩니다. BoomServer는 Windows나 Linux에서 실행되며 Linux에서는 Docker도 쓸 수 있습니다.
@@ -93,4 +93,4 @@ LANBoom은 **무료 커뮤니티 프로젝트**입니다. 이용료도, 유료 �
 
 - 💬 Discord / Facebook: *(링크 준비 중)*
 - 🐛 버그 제보와 제안: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
-- 🛠️ 개발자: [기술 README](../README.md) 참고
+- 🛠️ 개발자: [기술 문서](docs/DEVELOPMENT.md) 참고

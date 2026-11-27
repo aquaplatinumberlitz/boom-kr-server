@@ -16,7 +16,7 @@ Thứ tự task chỉ ở [PLAN](PLAN.md#current-order). Tra phạm vi đã bi�
 Nguồn cũ và run/checkpoint giữ ở [HISTORY](HISTORY.md) và manifest; kết luận tại CP cũ không
 được đọc thành trạng thái hiện tại. Tra mức RE/implementation/runtime/gate theo từng chức năng ở
 [coverage](COVERAGE.md), contract/giới hạn tại link của từng cơ chế trong bảng gap. Không duy trì
-một danh sách tiến độ theo CP khác tại đây; [README](../README.md) giữ mốc hiện tại,
+một danh sách tiến độ theo CP khác tại đây; [DEVELOPMENT](DEVELOPMENT.md) giữ mốc hiện tại,
 [PLAN](PLAN.md#current-order) giữ thứ tự. Full M5 chưa nghiệm thu. K6c WAN giả lập/K7 giữ scope riêng; N1 Internet thật đã đạt phạm vi một phía tới được, không chứng minh mọi ISP/CGNAT.
 
 | Câu hỏi / owner | Trạng thái | Khoảng trống và phép đo hiện hành |
