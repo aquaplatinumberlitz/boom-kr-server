@@ -5,6 +5,9 @@ use kr_service::{
         self, Admin, AuditFilter, ChatMuteReason, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION,
         Store, Token,
     },
+    f3_pve_policy::{
+        DispatchRejection, F3PvePolicy, MonsterAttackGuard, PveAuthority, PveModeFamily,
+    },
     f4_extended_policy::{
         BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
         PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
@@ -155,6 +158,10 @@ enum Command {
     F4PolicyCheck {
         policy_path: Option<std::path::PathBuf>,
     },
+    #[serde(rename = "f3-policy-check")]
+    F3PolicyCheck {
+        policy_path: Option<std::path::PathBuf>,
+    },
 }
 impl Command {
     fn audit_context(&self) -> (&'static str, &'static str, String, bool) {
@@ -225,6 +232,7 @@ impl Command {
             SocialRankingList { .. } => ("social_ranking_list", "service", "ranking".into(), false),
             F6PolicyCheck { .. } => ("f6_policy_check", "service", "f6_policy".into(), false),
             F4PolicyCheck { .. } => ("f4_policy_check", "service", "f4_policy".into(), false),
+            F3PolicyCheck { .. } => ("f3_policy_check", "service", "f3_policy".into(), false),
             ListRooms {} | CloseRoom { .. } | F2Runtime { .. } => {
                 unreachable!("handled by live admin")
             }
@@ -392,6 +400,45 @@ fn f4_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
     })
     .collect::<serde_json::Map<_, _>>();
     Ok(json!({"default_enabled": false, "policies": policies}))
+}
+
+fn f3_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
+    let default = F3PvePolicy::default();
+    let policy: F3PvePolicy = match policy_path {
+        None => default,
+        Some(path) => {
+            validate_policy_path(path, "f3_pve_policy")?;
+            let contents = std::fs::read_to_string(path)?;
+            serde_json::from_str(&contents).map_err(|_| {
+                io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    "invalid f3_pve_policy configuration",
+                )
+            })?
+        }
+    };
+    let monster_s1_dispatch = match policy.ensure_dispatch_allowed(PveModeFamily::MonsterS1) {
+        Ok(()) => "allowed",
+        Err(DispatchRejection::Disabled) => "disabled",
+        Err(DispatchRejection::WineEvidenceRequired(_)) => "wine_evidence_required",
+    };
+    let monster_attack_authority = match MonsterAttackGuard::AUTHORITY {
+        PveAuthority::HostCandidate => "host_candidate",
+        PveAuthority::ServerAuthoritative => "server_authoritative",
+        PveAuthority::Unmeasured => "unmeasured",
+    };
+    Ok(json!({
+        "default_enabled": default.enabled,
+        "enabled": policy.enabled,
+        "authority_default": "unmeasured",
+        "dispatch": {"monster_s1": monster_s1_dispatch},
+        "monster_attack_guard": {
+            "authority": monster_attack_authority,
+            "requires_current_host": true,
+            "requires_current_round_epoch": true,
+            "requires_increasing_attack_sequence": true,
+        },
+    }))
 }
 
 fn load_f6_policy(path: Option<&Path>) -> io::Result<F6EventPolicy> {
@@ -676,10 +723,18 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
         Command::F4PolicyCheck { policy_path } => {
             f4_policy_check(policy_path.as_deref()).map_err(|_| Error::InvalidInput)?
         }
+        Command::F3PolicyCheck { policy_path } => {
+            f3_policy_check(policy_path.as_deref()).map_err(|_| Error::InvalidInput)?
+        }
     })
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
     Ok(match args {
+        [flag, options @ ..] if flag == "f3-policy-check" => match options {
+            [] => f3_policy_check(None)?,
+            [option, path] if option == "--policy" => f3_policy_check(Some(Path::new(path)))?,
+            _ => return Err("usage: kr-admin f3-policy-check [--policy PATH]".into()),
+        },
         [flag, options @ ..] if flag == "f4-policy-check" => match options {
             [] => f4_policy_check(None)?,
             [option, path] if option == "--policy" => f4_policy_check(Some(Path::new(path)))?,
@@ -709,7 +764,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f4-policy-check [--policy PATH]".into()),
+        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH]".into()),
     })
 }
 fn main() {
