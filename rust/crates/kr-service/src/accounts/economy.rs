@@ -6,6 +6,8 @@ use serde::Deserialize;
 
 mod consumption;
 pub use consumption::*;
+mod extended;
+pub use extended::BoosterSettlementRequest;
 mod inventory;
 mod ledger;
 #[cfg(test)]
