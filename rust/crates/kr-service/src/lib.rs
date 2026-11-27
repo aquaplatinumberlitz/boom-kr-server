@@ -11,6 +11,7 @@ pub mod binding;
 mod bombs;
 mod characters;
 pub mod choco_chat;
+pub mod custom_map_store;
 mod diagnostic59;
 #[cfg(test)]
 mod f2_runtime_integration_tests;
