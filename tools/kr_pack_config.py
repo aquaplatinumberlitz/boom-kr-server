@@ -1,8 +1,11 @@
 """Nối dữ liệu đã xuất với template wire có trong gói Linux."""
+import argparse
 import json
+from pathlib import Path
 import struct
 
-from kr_pack_export import F1_CHARACTERS, F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, sha
+from kr_pack_export import (F1_CHARACTERS, F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, F2_ADAPTER,
+                            PACK_SHA256, cache_identity, checked_cache, encode, load_f2_maps, sha)
 from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
 
@@ -34,6 +37,11 @@ _FULL_ITEM_KINDS = _REMOTE_DRILL | _ALL_SHIPS
 _CLASS_C_KEYS = frozenset((*range(4000, 4019), *range(4020, 4025),
                            *range(4027, 4031), *range(5000, 5005)))
 _CLASS_C_POWER_TEN = frozenset({4006, 4018, 4029, 4030})
+_SCOPES = ('g1', 'f1', 'f1-a', 'f1-full', 'f2-optin')
+# Các preset runtime do operator điều khiển trong room_modes/runtime.rs.
+# Họ map trong catalog không xác định preset của phòng.
+_F2_RUNTIME_MODES = frozenset(('revive', 'timebomb', 'leader_capture',
+                              'hedgehog', 'free_1v7', 'co_op'))
 
 
 def enabled_characters(chars, *, uses_terrain=False):
@@ -90,10 +98,105 @@ def enable_floor_policies(room, kinds, *, scope='f1-a'):
                                 else 'needle')
 
 
+def _check_f2_room_modes(room):
+    policy = room.get('f2_modes', {})
+    if not isinstance(policy, dict) or policy.keys() - {'runtime_overrides'}:
+        raise ValueError('F2 opt-in chỉ hỗ trợ f2_modes.runtime_overrides')
+    overrides = policy.get('runtime_overrides', {})
+    if (not isinstance(overrides, dict) or overrides.keys() - {'free', 'manner'}
+            or any(not isinstance(mode, str) or mode not in _F2_RUNTIME_MODES
+                   for mode in overrides.values())):
+        raise ValueError('Preset runtime F2 chưa hỗ trợ')
+    if len(set(overrides.values())) > 1:
+        raise ValueError('F2 opt-in cần cùng preset runtime cho các selector đã bật')
+
+
+def _f2_inputs(cache, maps):
+    width, height = 15, 13
+    cell_count = width * height
+    if any(not isinstance(name, str) for name in maps):
+        raise ValueError('Tên map F2 phải là chuỗi')
+    evidence = load_f2_maps(maps)
+    if len({row['family'] for row in evidence.values()}) != 1:
+        raise ValueError('F2 opt-in không trộn họ map trong cùng phòng')
+    identity = cache_identity(PACK_SHA256, maps, True, f2_maps=evidence)
+    # checked_cache dùng cờ f1 để yêu cầu rules cho mọi map của bản xuất.
+    manifest = checked_cache(cache, identity, PACK_SHA256, maps, measured=True, f1=True)
+
+    def standard_grid(value):
+        return all(type(value.get(key)) is int and value[key] == expected
+                   for key, expected in (('width', width), ('height', height)))
+
+    def read(member):
+        data = (cache / member).read_bytes()
+        if sha(data) != manifest['files'][member]:
+            raise ValueError(f'File cache sai hash: {member}')
+        return json.loads(data)
+
+    choices, codes = {}, set()
+    for name, expected in evidence.items():
+        profile = read(name + '.json')
+        if not isinstance(profile, dict):
+            raise ValueError(f'Profile F2 không hợp lệ: {name}')
+        if not standard_grid(profile):
+            raise ValueError(f'Lưới F2 phải là 15x13: {name}')
+        if (profile.get('name') != name or profile.get('adapter') != F2_ADAPTER
+                or profile.get('f2_family') != expected['family']
+                or profile.get('payload_sha256') != expected['payload_sha256']
+                or profile.get('version') != expected['version']
+                or profile.get('scripted') is not expected['scripted']
+                or profile.get('rectangles') != []):
+            raise ValueError(f'Profile không khớp bằng chứng F2: {name}')
+        code, spawns = profile.get('map_code'), profile.get('spawns')
+        if type(code) is not int or not 0 <= code <= 65535 or code in codes:
+            raise ValueError(f'Mã map F2 không hợp lệ hoặc bị trùng: {name}')
+        codes.add(code)
+        if (not isinstance(spawns, list) or not 2 <= len(spawns) <= 8
+                or any(not isinstance(pair, list) or len(pair) != 2
+                       or any(type(v) is not int for v in pair)
+                       or not (0 <= pair[0] < width and 0 <= pair[1] < height) for pair in spawns)
+                or len(set(map(tuple, spawns))) != len(spawns)):
+            raise ValueError(f'Spawn F2 không hợp lệ: {name}')
+
+        rules = read(name + '.rules.json')
+        if not isinstance(rules, dict) or rules.keys() != {'terrain'}:
+            raise ValueError(f'Bản xuất F2 chỉ hỗ trợ địa hình tĩnh: {name}')
+        terrain = rules['terrain']
+        if (not isinstance(terrain, dict)
+                or terrain.keys() - {'width', 'height', 'kinds', 'map_sha256', 'seed_sha256', 'ray_ports'}
+                or not standard_grid(terrain)):
+            raise ValueError(f'Địa hình F2 phải là lưới 15x13 đã xuất: {name}')
+        kinds, ports = terrain.get('kinds'), terrain.get('ray_ports', [])
+        if (not isinstance(kinds, list) or len(kinds) != cell_count
+                or any(type(k) is not int or not 0 <= k <= 2 for k in kinds)
+                or not isinstance(ports, list) or len(ports) not in (0, cell_count)
+                or any(type(p) is not int or not 0 <= p <= 15 for p in ports)
+                or terrain.get('map_sha256') != expected['payload_sha256']
+                or terrain.get('seed_sha256') != sha(bytes(kinds))
+                or any(kinds[y * width + x] for x, y in spawns)):
+            raise ValueError(f'Địa hình không khớp profile F2: {name}')
+
+        # Profile Rust hiện chỉ nhận marker probe cho Zombie04. Các profile
+        # tĩnh dùng schema chuẩn, không chuyển metadata item/script thành luật.
+        serving = dict(name=name, map_code=code, width=width, height=height, spawns=spawns,
+                       payload_sha256=expected['payload_sha256'], scripted=expected['scripted'])
+        if serving['scripted']:
+            if (name, code, len(spawns)) != ('Zombie04', 1143, 8):
+                raise ValueError(f'Profile script F2 chưa có trong phạm vi probe Rust: {name}')
+            serving['adapter'] = 'f2f3-probe-r1'
+        choices[name] = (serving, dict(terrain, maximum_power=9))
+    return choices, read('tables.json')['characters']
+
+
 def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False, allow_class_c=False):
+    """Gắn fixture map; F2 chỉ dùng runtime khi template khai báo preset."""
     two = config['diagnostic_two_lobby']
     room = two['fixed_room']
     packets = room['packets']
+    f2 = scope == 'f2-optin'
+    if f2:
+        _check_f2_room_modes(room)
+        f2_maps, chars = _f2_inputs(cache, maps)
 
     def load(pin):
         spec = pin['fixture']
@@ -145,6 +248,11 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False, allo
     if (names[1][2] != inner[26:26 + old_size]
             or original[code_at:code_at + 2] != inner[20:22]):
         raise ValueError('Bảng map và Start của mẫu wire không khớp')
+    if f2:
+        if inner[30 + old_size] != 0:
+            raise ValueError('F2 runtime cần mẫu Start roomtype 0')
+        if len(maps) == 1 and len(f2_maps[maps[0]][0]['spawns']) < count:
+            raise ValueError('Map F2 không đủ spawn cho mẫu Start')
 
     # Floor packets are server policy. Preserve a floor only for its original
     # map and G1 mode; do not copy the CP382 diagnostics into other maps.
@@ -155,9 +263,15 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False, allo
     rows, choices, floor_kinds = [], [], set()
     scripted = False
     for index, name in enumerate(maps):
-        path = cache / (name + '.json')
-        data = path.read_bytes()
-        profile = json.loads(data)
+        if f2:
+            profile, terrain = f2_maps[name]
+            path = out / f'map-{index}-profile.json'
+            data = encode(profile)
+            path.write_bytes(data)
+        else:
+            path = cache / (name + '.json')
+            data = path.read_bytes()
+            profile = json.loads(data)
         if scope == 'f1-full' and profile.get('scripted') is True:
             scripted = True
         short = name.encode('ascii')
@@ -186,8 +300,11 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False, allo
         value = codec.read_fields(play, [1, 4, 2])
         value[2] = code
         rules = cache / (name + '.rules.json')
-        applied = (json.loads(rules.read_bytes())
-                   if scope == 'f1-full' or (scope in ('g1', 'f1-a') and rules.is_file()) else {})
+        if f2:
+            applied = dict(terrain=terrain)
+        else:
+            applied = (json.loads(rules.read_bytes())
+                       if scope == 'f1-full' or (scope in ('g1', 'f1-a') and rules.is_file()) else {})
         floor = floors.get(name, raw_blob(bytes(6))[0]) if scope == 'g1' else raw_blob(bytes(6))[0]
         if scope in ('f1-a', 'f1-full'):
             plan = applied.pop('floor')
@@ -219,17 +336,25 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False, allo
             ready, payload[:ready_end] + codec.pack_fields(tail, [4, 4, 1, 4]), f'ready-{i}')
     packets['table'] = save(packets['table'], table, 'map-table')
     packets.update(choices[0]['packets'])
-    room.update(map_choices=choices, map_profile=choices[0]['map_profile'])
+    # Rust's selectable catalog requires 2–16 choices. A single F2 map
+    # uses the standalone profile, packet and terrain pins.
+    room.update(map_choices=[] if f2 and len(choices) == 1 else choices,
+                map_profile=choices[0]['map_profile'])
     if 'terrain' in choices[0]:
         room['terrain'] = choices[0]['terrain']
     if scope in ('f1-a', 'f1-full'):
         enable_floor_policies(room, floor_kinds, scope=scope)
     if scripted:
         room['allow_f1e_dynamic_scripts'] = True
+    if f2:
+        # Giữ floor trống và không bật các route script F1-e của host.
+        room.update(item_policy='report_derived_basic', life_actions='disabled',
+                    allow_f1e_dynamic_scripts=False)
 
     # Chế độ thường giữ danh sách đã chọn trong recipe. O1 mở thêm các
     # nhân vật trong pack mà mọi map của phòng có thể dùng.
-    chars = json.loads((cache / 'tables.json').read_bytes())['characters']
+    if not f2:
+        chars = json.loads((cache / 'tables.json').read_bytes())['characters']
     round_config = two['managed_rooms']['player_round']
     uses_terrain = 'terrain' in room or any('terrain' in choice for choice in choices)
     if unlock_all:
@@ -249,3 +374,34 @@ def configure(config, bundle, cache, out, maps, scope, *, unlock_all=False, allo
     round_config['pack_stats'] = {str(key): chars[str(key)] for key in ordinary}
     if scope in ('f1', 'f1-a'):
         two['managed_rooms']['capacity'] = 2
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--bundle', required=True, type=Path, help='Thư mục chứa fixture nguồn')
+    parser.add_argument('--config', type=Path,
+                        help='Template JSON (mặc định: config.template.json trong bundle). '
+                             'F2 runtime dùng f2_modes.runtime_overrides trong fixed_room.')
+    parser.add_argument('--cache', required=True, type=Path, help='Thư mục cache do exporter trả về')
+    parser.add_argument('--out', required=True, type=Path, help='Thư mục mới cho config.json và fixture')
+    parser.add_argument('--map', required=True, action='append',
+                        help='Tên map; với F2 lặp lại đúng thứ tự --f2-map khi xuất')
+    parser.add_argument('--scope', choices=_SCOPES, default='g1')
+    parser.add_argument('--unlock-all', action='store_true')
+    parser.add_argument('--allow-class-c', action='store_true')
+    args = parser.parse_args()
+    try:
+        source = args.config if args.config is not None else args.bundle / 'config.template.json'
+        config = json.loads(source.read_bytes())
+        out = args.out.absolute()
+        out.mkdir()
+        configure(config, args.bundle.resolve(), args.cache.absolute(), out, args.map, args.scope,
+                  unlock_all=args.unlock_all, allow_class_c=args.allow_class_c)
+        (out / 'config.json').write_bytes(
+            (json.dumps(config, ensure_ascii=False, separators=(',', ':')) + '\n').encode())
+    except (OSError, ValueError, KeyError, TypeError, IndexError, struct.error) as exc:
+        parser.exit(1, f'Không thể tạo cấu hình pack KR 00967: {exc}\n')
+
+
+if __name__ == '__main__':
+    main()
