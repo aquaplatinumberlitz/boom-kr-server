@@ -346,6 +346,8 @@ class PackageTests(unittest.TestCase):
             'f4_extended_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f4-extended-disabled.json',
             'f3_pve_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f3-pve-disabled.json',
             'f6_events_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f6-events-disabled.json',
+            'f5_social_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f5-social-chat-disabled.json',
+            'f7_custom_map_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f7-custom-map-disabled.json',
         }
         self.package()
         default_cfg, _, _ = prepare(self.out, self.root / 'policy-default')
@@ -381,16 +383,19 @@ class PackageTests(unittest.TestCase):
         parent = self.root / 'symlink-parent'
         parent.symlink_to(profiles['f3_pve_policy'].parent, target_is_directory=True)
         cases = [missing, directory, symlink, invalid, non_object, parent / 'f3-pve-disabled.json']
-        for bad in cases:
-            with self.subTest(path=bad):
-                with self.assertRaisesRegex(ValueError, 'policy|Hồ sơ'):
-                    prepare(self.out, self.root / ('bad-' + str(len(str(bad)))), f3_pve_policy=bad)
+        for policy_key in profiles:
+            for bad in cases:
+                with self.subTest(policy=policy_key, path=bad):
+                    with self.assertRaisesRegex(ValueError, 'policy|Hồ sơ'):
+                        prepare(self.out, self.root / f'bad-{policy_key}-{len(str(bad))}', **{policy_key: bad})
 
     def test_policy_profiles_work_for_friends_and_s1_preparation(self):
         profiles = {
             'f4_extended_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f4-extended-disabled.json',
             'f3_pve_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f3-pve-disabled.json',
             'f6_events_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f6-events-disabled.json',
+            'f5_social_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f5-social-chat-disabled.json',
+            'f7_custom_map_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f7-custom-map-disabled.json',
         }
         friends_config = copy.deepcopy(self.config)
         admission = friends_config['diagnostic_two_lobby']['account_admission']
@@ -432,16 +437,17 @@ class PackageTests(unittest.TestCase):
     def test_policy_flags_are_rejected_on_non_runtime_subcommands(self):
         state = self.root / 'unsupported-state'
         for command in ('init-db', 'migrate-db', 'export'):
-            with self.subTest(command=command):
-                argv = [
-                    'rust_package_runtime.py', command, '--manifest-sha256', 'a' * 64,
-                    '--state', str(state), '--f3-pve-policy', str(self.root / 'policy.json'),
-                ]
-                with patch.object(runtime, 'verify', return_value={'target': 'x86_64-unknown-linux-gnu'}), \
-                        patch.object(sys, 'argv', argv):
-                    with self.assertRaises(SystemExit) as error:
-                        runtime.main()
-                self.assertEqual(error.exception.code, 1)
+            for flag in ('--f5-social-policy', '--f7-custom-map-policy'):
+                with self.subTest(command=command, flag=flag):
+                    argv = [
+                        'rust_package_runtime.py', command, '--manifest-sha256', 'a' * 64,
+                        '--state', str(state), flag, str(self.root / 'policy.json'),
+                    ]
+                    with patch.object(runtime, 'verify', return_value={'target': 'x86_64-unknown-linux-gnu'}), \
+                            patch.object(sys, 'argv', argv):
+                        with self.assertRaises(SystemExit) as error:
+                            runtime.main()
+                    self.assertEqual(error.exception.code, 1)
 
 
 if __name__ == '__main__':
