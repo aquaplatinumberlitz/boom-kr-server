@@ -1,0 +1,204 @@
+{
+  "build": "KR00967",
+  "client_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+  "feature": "F7",
+  "inputs": {
+    "census": {
+      "path": "docs/content/census.json",
+      "sha256": "cbd5784b47c6b33512f2aa8b126ee6bed01b685cc612b0383409ec9602b0ce8b"
+    },
+    "classification": {
+      "path": "docs/content/classification.json",
+      "sha256": "dd8fab5738180bc6cf5e3e79d6c0227833805a8d3d6c353e17f28a94d02c08ba"
+    },
+    "owner_directive": {
+      "path": "docs/evidence/owner-directives/custom-map.json",
+      "sha256": "b227656a014ae8e868d532f176d3a0d9ca41aeb444e17d1fc8a8ec6c16f7d819"
+    }
+  },
+  "inventory": {
+    "classification": {
+      "grade": "C",
+      "map_families": {
+        "CustomMap15x": 2,
+        "CustomMap21x": 1,
+        "CustomMap31x": 2
+      },
+      "status": "candidate"
+    },
+    "map_count": 5,
+    "maps": [
+      {
+        "census_spawn_count": 12,
+        "family": "CustomMap15x",
+        "grid": [
+          15,
+          13
+        ],
+        "grid_allowed_by_design": true,
+        "name": "CustomMap15x13",
+        "scripted": true
+      },
+      {
+        "census_spawn_count": 12,
+        "family": "CustomMap15x",
+        "grid": [
+          15,
+          27
+        ],
+        "grid_allowed_by_design": false,
+        "name": "CustomMap15x27",
+        "scripted": true
+      },
+      {
+        "census_spawn_count": 12,
+        "family": "CustomMap21x",
+        "grid": [
+          21,
+          21
+        ],
+        "grid_allowed_by_design": true,
+        "name": "CustomMap21x21",
+        "scripted": true
+      },
+      {
+        "census_spawn_count": 12,
+        "family": "CustomMap31x",
+        "grid": [
+          31,
+          13
+        ],
+        "grid_allowed_by_design": true,
+        "name": "CustomMap31x13",
+        "scripted": true
+      },
+      {
+        "census_spawn_count": 12,
+        "family": "CustomMap31x",
+        "grid": [
+          31,
+          27
+        ],
+        "grid_allowed_by_design": false,
+        "name": "CustomMap31x27",
+        "scripted": true
+      }
+    ],
+    "reported_grids": [
+      [
+        15,
+        13
+      ],
+      [
+        21,
+        21
+      ],
+      [
+        31,
+        13
+      ]
+    ],
+    "resource_entries": 158,
+    "resource_group": "fx/CustomMap",
+    "resource_name_prefixes": [
+      "CustomMap",
+      "CustomTileIndexList",
+      "CustomTileList"
+    ],
+    "scope": "committed_pack_census_metadata_only",
+    "source": "kr_static",
+    "status": "confirmed"
+  },
+  "pack_pins": {
+    "FxMap.idd": {
+      "bytes": 55897232,
+      "sha256": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222"
+    },
+    "FxMap.idx": {
+      "sha256": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b"
+    },
+    "fx.idd": {
+      "bytes": 87822170
+    },
+    "fx.idx": {
+      "sha256": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5"
+    }
+  },
+  "policy": {
+    "allowed_grids": [
+      [
+        15,
+        13
+      ],
+      [
+        21,
+        21
+      ],
+      [
+        31,
+        13
+      ]
+    ],
+    "authority": "server",
+    "compression_allowed": false,
+    "enabled_by_default": false,
+    "executable_content_allowed": false,
+    "fail_closed": true,
+    "max_file_bytes": 8192,
+    "max_payload_bytes": 8192,
+    "normalized_schema": "kre-f7-normalized-map-v1",
+    "pinning": {
+      "algorithm": "sha256",
+      "binds_full_trusted_palette": true,
+      "canonicalization": "compact_sorted_keys_utf8_trailing_lf",
+      "preserves_tile_and_spawn_order": true,
+      "require_approved_pin_on_share_select_load": true
+    },
+    "required_fields": [
+      "height",
+      "schema",
+      "spawns",
+      "tiles",
+      "width"
+    ],
+    "source": "design",
+    "spawns": {
+      "coordinates": "zero_based_xy",
+      "max": 8,
+      "min": 2,
+      "must_cover_active_roster": true,
+      "reachability": "one_cardinal_walkable_component",
+      "unique": true,
+      "walkable_only": true
+    },
+    "status": "design",
+    "tiles": {
+      "id_range": [
+        0,
+        65535
+      ],
+      "layout": "row_major",
+      "trusted_palette_required": true
+    },
+    "validate_before": [
+      "share",
+      "select",
+      "load"
+    ]
+  },
+  "roadmap": "docs/PLAN.md#full-game-roadmap",
+  "schema": "kre-f7-custom-map-spec-v1",
+  "spec_sha256": "60dcafef80e81b2dd8cfcf4d1e613c0d5fabc6fb8e75775ef1826da440a9c78c",
+  "wire": {
+    "enabled": false,
+    "evidence_required": [
+      "kr_static_re",
+      "isolated_wine_client_flow"
+    ],
+    "product_form": "undecided",
+    "selection": "unmeasured",
+    "status": "unmeasured",
+    "synthetic_ack": false,
+    "upload": "unmeasured"
+  }
+}
