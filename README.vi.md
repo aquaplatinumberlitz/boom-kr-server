@@ -51,6 +51,7 @@ LANBoom là **dự án cộng đồng miễn phí**: không thu phí, không bá
 | 🚧 | **Cộng đồng trong game** | Messenger, thì thầm, cửa sổ bang hội, cặp đôi và nhẫn đôi |
 | 🚧 | **Nhiệm vụ và vé mùa** | Nhiệm vụ hằng ngày, nhiệm vụ, CA Pass và bộ sưu tập item |
 | 🚧 | **Sự kiện theo mùa** | Khoảng 20 hệ thống sự kiện: Thẻ May Mắn, Thám Hiểm Mỏ, Chợ Phép Thuật, Trồng Mầm, Tự Chế Bom, Trao đổi, thú cưng và câu cá |
+| 🚧 | **Map tự tạo** | Tự dựng map riêng rồi rủ bạn bè vào chơi |
 
 ## Hai cách chơi
 

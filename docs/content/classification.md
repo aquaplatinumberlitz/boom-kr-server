@@ -2,7 +2,7 @@
 
 Bảng sinh từ [kiểm kê pack](../CONTENT.md). **A**: chạy được với server hiện tại trong phạm vi ghi ở dòng
 tương ứng; **B**: cần thêm dữ liệu, wire hoặc luật đã hiểu; **C**: còn ẩn số cần RE.
-Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1 đang mở; F2–F6 tiếp tục chờ.
+Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1 đang mở; F2–F7 tiếp tục chờ.
 
 Nguồn: số liệu pack và wiki được định tuyến ở CONTENT; đối chiếu `boomkr-re/docs/kr-data.md` §2, §6, §12–13
 và `boom-re/docs/items.md`, `map.md` để định hướng, không nhập opcode/ID VN. IDA trên bản sao unpack 00967
@@ -194,9 +194,9 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | Hidden | F3 | C | 6 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | HiddenCatchTest | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | CAPassShopMap | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| CustomMap15x | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| CustomMap21x | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| CustomMap31x | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| CustomMap15x | F7 | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| CustomMap21x | F7 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| CustomMap31x | F7 | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | DailyMissionShop | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | LobbyCaffe | chưa xếp đợt | C | 5 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | LobbyClothing | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
@@ -650,7 +650,7 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | Kết quả | giai đoạn 1 | A | — | Kết quả/journal trận thường đã có, thưởng hiện là 0. |
 | Trận đấu | F1 | A | — | Lõi RoomRules trận thường đã chạy trong phạm vi G1. |
 | Pet | F6 | C | — | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| CustomMap | chưa xếp đợt | C | — | Chưa xác định đợt; chưa biết upload, validation và quyền điều khiển. |
+| CustomMap | F7 | C | — | Đợt F7 theo quyết định 27/11; hình thức chốt sau. Chưa biết upload, validation và quyền điều khiển. |
 | Câu cá | F6 | C | — | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Couple | F5 | C | — | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | GrowSprout | F6 | C | — | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |

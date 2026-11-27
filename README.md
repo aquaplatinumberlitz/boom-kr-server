@@ -51,6 +51,7 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
 | 🚧 | **In-game social** | Messenger, whispers, guild windows, couples and couple rings |
 | 🚧 | **Quests and season pass** | Daily missions, quests, CA Pass and item collections |
 | 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market, Grow a Sprout, DIY Bomb, Exchange, pets and fishing |
+| 🚧 | **Custom maps** | Build your own maps and play them with friends |
 
 ## Two ways to play
 

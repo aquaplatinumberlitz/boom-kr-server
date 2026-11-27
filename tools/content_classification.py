@@ -114,7 +114,7 @@ SPECIAL = {
     "MagicMarket": ("C", "Pack có UI; boomkr-re không tìm thấy công thức trong phạm vi khảo sát."),
     "Cửa hàng": ("C", "Chưa xác định hợp đồng túi đồ và giao dịch; màn nhúng dựng bằng web server."),
     "PCRoomBenefit": (None, "Ngoài phạm vi theo quyết định bỏ ưu đãi Nexon."),
-    "CustomMap": ("C", "Chưa xác định đợt; chưa biết upload, validation và quyền điều khiển."),
+    "CustomMap": ("C", "Đợt F7 theo quyết định 27/11; hình thức chốt sau. Chưa biết upload, validation và quyền điều khiển."),
 }
 ORDER = ["map", "item", "ship", "character", "mode", "system"]
 UNSUPPORTED_WAVE = "chưa xếp đợt"
@@ -142,7 +142,7 @@ def generate(data, digest, f1_native, f1_characters):
         base = base_theme(family) or family
         family_maps = {m["name"] for m in maps}
         f1 = category in {"battle_theme", "battle_variant"} and not family.startswith("Fm_AIBtl")
-        wave = ("F1" if f1 else "F2?" if category == "mission" else "F3"
+        wave = ("F7" if family.startswith("CustomMap") else "F1" if f1 else "F2?" if category == "mission" else "F3"
                 if category in {"monster", "rpg", "hidden", "bonus"} or
                 family.startswith("Fm_AIBtl") or family == "Tutorial" else UNSUPPORTED_WAVE)
         native = sorted(m["name"] for m in maps if m["name"] in MAPS)
@@ -289,7 +289,7 @@ def generate(data, digest, f1_native, f1_characters):
         name = i["name"]
         wave = next((wave for wave, names in [
             ("F1", F1), ("F2", F2), ("F3", F3), ("F4", F4), ("F5", F5), ("F6", F6),
-            ("giai đoạn 1", BASE), ("ngoài phạm vi", {"PCRoomBenefit"}),
+            ("F7", {"CustomMap"}), ("giai đoạn 1", BASE), ("ngoài phạm vi", {"PCRoomBenefit"}),
         ] if name in names), UNSUPPORTED_WAVE)
         code, reason = SPECIAL.get(name, ("C", UNKNOWN))
         add("system", name, wave, code, reason, groups=i["groups"], wiki=i["wiki"])
@@ -313,7 +313,7 @@ def markdown(data):
         "",
         "Bảng sinh từ [kiểm kê pack](../CONTENT.md). **A**: chạy được với server hiện tại trong phạm vi ghi ở dòng",
         "tương ứng; **B**: cần thêm dữ liệu, wire hoặc luật đã hiểu; **C**: còn ẩn số cần RE.",
-        "Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1 đang mở; F2–F6 tiếp tục chờ.",
+        "Bậc của mẫu không tự áp dụng cho cả họ. Dấu **—** là ngoài phạm vi. F1 đang mở; F2–F7 tiếp tục chờ.",
         "",
         "Nguồn: số liệu pack và wiki được định tuyến ở CONTENT; đối chiếu `boomkr-re/docs/kr-data.md` §2, §6, §12–13",
         "và `boom-re/docs/items.md`, `map.md` để định hướng, không nhập opcode/ID VN. IDA trên bản sao unpack 00967",
