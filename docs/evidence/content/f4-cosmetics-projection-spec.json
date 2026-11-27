@@ -1,0 +1,1385 @@
+{
+  "anchors": {
+    "character92": {
+      "body": "u8 local player, u16 character",
+      "client_locator": "sub_D61990",
+      "description": "Client chọn nhân vật nền bằng ordinal cục bộ và khóa u16.",
+      "direction": "C->S",
+      "evidence": [
+        {
+          "input": "room_wire",
+          "locator": "local_character92"
+        },
+        {
+          "input": "room_protocol",
+          "locator": "Lựa chọn nhân vật, đội và lỗi phòng đầy"
+        }
+      ],
+      "opcode": 92,
+      "source": "kr_runtime",
+      "status": "confirmed"
+    },
+    "character_room_slot": {
+      "client_locator": "sub_DC6700 (110)",
+      "description": "Roster 106 và cập nhật 110 dùng cùng khóa nhân vật trong state.",
+      "direction": "S->C",
+      "evidence": [
+        {
+          "input": "room_wire",
+          "locator": "player106_character"
+        },
+        {
+          "input": "room_adapter",
+          "locator": "player; slot"
+        },
+        {
+          "input": "kr_wire",
+          "locator": "slot110"
+        },
+        {
+          "input": "room_protocol",
+          "locator": "room-player; Lựa chọn nhân vật, đội và lỗi phòng đầy"
+        }
+      ],
+      "fields": {
+        "character": "bit 16..28 inclusive của packed u32",
+        "player106": "packed u32 tại body[12..16]",
+        "slot110": "u8 slot, packed u32, u8 zero"
+      },
+      "opcodes": [
+        106,
+        110
+      ],
+      "source": "kr_runtime",
+      "status": "confirmed"
+    },
+    "character_start121": {
+      "client_locator": "0xDC8A2A → sub_1241250",
+      "description": "Khóa nhân vật nền theo slot, độc lập với spawn và team.",
+      "direction": "S->C",
+      "evidence": [
+        {
+          "input": "room_wire",
+          "locator": "start121_characters; start121_players"
+        },
+        {
+          "input": "room_protocol",
+          "locator": "rust-selected-player-rounds"
+        },
+        {
+          "input": "start_protocol",
+          "locator": "f1-aux-character-keys"
+        }
+      ],
+      "fields": {
+        "character": "u16 LE tại row[3..5]",
+        "layout": "hàng 26 byte trong blob Start đã giải mã",
+        "slot": "row[0]"
+      },
+      "opcode": 121,
+      "source": "kr_runtime",
+      "status": "confirmed"
+    },
+    "db_character_preference": {
+      "description": "Preference nhân vật nền opt-in, riêng với SKU đã equip và không cấp entitlement.",
+      "evidence": [
+        {
+          "input": "schema3",
+          "locator": "player_preferences.character_key"
+        },
+        {
+          "input": "preference_protocol",
+          "locator": "rust-persistent-character"
+        }
+      ],
+      "field": "character_key",
+      "key": [
+        "player_id"
+      ],
+      "migration": 3,
+      "source": "design",
+      "status": "design",
+      "table": "player_preferences"
+    },
+    "db_consumption": {
+      "description": "Schema 8 lưu biên nhận tiêu hao standard; hết stack thì gỡ slot tham chiếu. O1 không ghi DB.",
+      "evidence": [
+        {
+          "input": "schema8",
+          "locator": "match_item_consumptions"
+        },
+        {
+          "input": "architecture",
+          "locator": "Session::consume_item_in_match"
+        },
+        {
+          "input": "consumption_store",
+          "locator": "consume_equipped_item_in_match; consume_item"
+        }
+      ],
+      "key": [
+        "player_id",
+        "idempotency_key"
+      ],
+      "migration": 8,
+      "source": "design",
+      "status": "design",
+      "table": "match_item_consumptions"
+    },
+    "db_equipped": {
+      "description": "Slot là token catalog nội bộ. Hàng trang bị tham chiếu SKU sở hữu của đúng người.",
+      "evidence": [
+        {
+          "input": "schema7",
+          "locator": "player_equipped"
+        },
+        {
+          "input": "inventory_store",
+          "locator": "equip_item; list_equipped"
+        }
+      ],
+      "key": [
+        "player_id",
+        "slot"
+      ],
+      "migration": 7,
+      "owner_foreign_key": [
+        "player_id",
+        "sku_id"
+      ],
+      "source": "design",
+      "status": "design",
+      "table": "player_equipped"
+    },
+    "db_inventory": {
+      "description": "Schema 8 giữ bảng sở hữu từ Schema 7; tài sản có hạn phải còn hiệu lực khi chiếu.",
+      "evidence": [
+        {
+          "input": "schema7",
+          "locator": "player_inventory"
+        },
+        {
+          "input": "inventory_store",
+          "locator": "InventoryItem.active"
+        }
+      ],
+      "key": [
+        "player_id",
+        "sku_id"
+      ],
+      "migration": 7,
+      "source": "design",
+      "status": "design",
+      "table": "player_inventory"
+    },
+    "f1_vehicle_pickup": {
+      "client_locator": "0xE5D570 → 0xE63260 → 0x1192700",
+      "description": "Đối chứng pickup phương tiện F1-d, tách khỏi quyền trang bị trong túi.",
+      "direction": "S->C",
+      "evidence": [
+        {
+          "input": "vehicle_protocol",
+          "locator": "Nhặt và thay xe"
+        }
+      ],
+      "opcode": 165,
+      "source": "kr_static",
+      "status": "confirmed"
+    },
+    "o1_session_cosmetics": {
+      "description": "O1 giữ lựa chọn theo token trong bộ nhớ, không ghi SQLite.",
+      "evidence": [
+        {
+          "input": "session_cosmetics",
+          "locator": "O1SessionCosmetics"
+        },
+        {
+          "input": "architecture",
+          "locator": "WebShopAuth"
+        }
+      ],
+      "source": "design",
+      "status": "design"
+    },
+    "own291_progression": {
+      "client_locator": "sub_D2FEB0; sub_AE6330; sub_902A50",
+      "description": "Đối chứng hồ sơ: bật opt-in để chiếu cấp và EXP; chưa định danh slot mỹ phẩm.",
+      "direction": "S->C",
+      "evidence": [
+        {
+          "input": "account_wire",
+          "locator": "own291; own291_with_progression; local_own291_with_progression"
+        },
+        {
+          "input": "wave6",
+          "locator": "f4a_own291_and_hud_mapping"
+        },
+        {
+          "input": "wave8",
+          "locator": "f4a_own291_exp_permille"
+        },
+        {
+          "input": "progression",
+          "locator": "observed_own291_frames; ui_screenshots"
+        }
+      ],
+      "fields": {
+        "exp_permille": "u32 ngoài, ngay sau blob UserSimpleInfo",
+        "level": "u16 LE tại tail[11..13] tính sau tên trong blob"
+      },
+      "opcode": 291,
+      "run": "f4a-progression-v1",
+      "service_sha256": "0fa8bc7b10c3e75c3936be2afab706b9019bd45fe663597bb99909a4ee4fc9c9",
+      "source": "kr_runtime",
+      "status": "confirmed"
+    },
+    "player106_template": {
+      "description": "PlayerTemplate giữ hậu tố opaque và nhánh hồ sơ rỗng; không gán nghĩa mỹ phẩm.",
+      "evidence": [
+        {
+          "input": "player_wire",
+          "locator": "PlayerTemplate::parse_name_branch; PlayerTemplate::project_name"
+        }
+      ],
+      "source": "design",
+      "status": "design"
+    }
+  },
+  "build": "KR 00967",
+  "catalog": {
+    "counts_by_category": {
+      "character": 67,
+      "collection": 94,
+      "consumable": 10,
+      "decoration": 7335,
+      "emotion": 810
+    },
+    "default_equip_slots": {
+      "character": "character",
+      "collection": null,
+      "consumable": null,
+      "decoration": null,
+      "emotion": null
+    },
+    "object_groups": {
+      "CharTE/AvatarDeco": "decoration",
+      "CharTE/BombDeco": "decoration",
+      "CharTE/CharDeco": "decoration",
+      "CharTE/FishingDeco": "decoration",
+      "CharTE/GradeDeco": "decoration",
+      "CharTE/LadderDeco": "decoration",
+      "EmoTE/Character": "emotion",
+      "EmoTE/Fanfare": "emotion",
+      "EmoTE/IDDeco": "decoration",
+      "EmoTE/Slot": "decoration"
+    }
+  },
+  "client_exe_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+  "gaps": {
+    "in_game_219_224_225_313_317_566_pending_capture": {
+      "c2s": {
+        "566": {
+          "call_site_va": "0x11afa5d",
+          "static_body": "u8"
+        }
+      },
+      "description": "Có mốc tĩnh; còn chờ capture theo thao tác thật để chốt nghĩa, hướng áp dụng và guard.",
+      "evidence": [
+        {
+          "input": "bc_summary",
+          "locator": "f4b"
+        },
+        {
+          "input": "wave2",
+          "locator": "f4b_inventory_callees"
+        },
+        {
+          "input": "wave3",
+          "locator": "f4b_item_record_and_handlers"
+        }
+      ],
+      "s2c": {
+        "219": "0xD76860",
+        "224": "0xD6D370",
+        "225": "0xD6D410",
+        "313": "0xD779C0",
+        "314": "0xD77BD0",
+        "315": "0xD77D60",
+        "316": "0xD77EF0",
+        "317": "0xD84410"
+      },
+      "s2c_225": {
+        "entries_per_outer_element": 8,
+        "entry": "u32 + chuỗi (reader vtable +80)",
+        "reader_va": "0x11ce6a0",
+        "slot_mapping": "unknown"
+      },
+      "static_source": "kr_static",
+      "status": "unknown"
+    },
+    "unmeasured_wire_projection": {
+      "description": "Chưa đo ánh xạ SKU/slot sang token và trường wire cho bề mặt này.",
+      "status": "unknown"
+    }
+  },
+  "ida_image_base": "0x400000",
+  "ida_image_sha256": "cf72da112308d9f1ca256df8089594c5f787875310933073bf6bd5ba6f70e63b",
+  "inputs": {
+    "account_wire": {
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "sha256": "d55678bf3a9bfafdf1bb480f75c6dae11495a45b9baa5c6077bdbbd4a671d226"
+    },
+    "architecture": {
+      "path": "docs/architecture/f4-economy-service.md",
+      "sha256": "21eb13a8695782cc33ad4cdcf8898f36e42c1e2c2edc2dd1e9d499703d7d5eab"
+    },
+    "bc_summary": {
+      "path": "docs/evidence/content/f4-bc-spec-summary.json",
+      "sha256": "30f942e0acc085163cc949367166bcf8277e5a2e36e82cd3093dd9683b516848"
+    },
+    "catalog_summary": {
+      "path": "docs/evidence/content/f4-catalog-export-summary.json",
+      "sha256": "fcc631940a2b318d81fdafeb7ef8d0cb085cc56f4344d7c968c7be9b2cbe1b36"
+    },
+    "consumption_fixtures": {
+      "path": "rust/crates/kr-service/src/accounts/economy/tests/consumption.rs",
+      "sha256": "e7c3281d328fe9020ed9f0400a319f34a4c3ee63661abd4465d6d1fd1c7d9127"
+    },
+    "consumption_store": {
+      "path": "rust/crates/kr-service/src/accounts/economy/consumption.rs",
+      "sha256": "f1e1ba4fc13df730302b3ff4e2b54009c2e241c89d487da76b794f6029d33c8f"
+    },
+    "exporter": {
+      "path": "tools/kr_f4_catalog_export.py",
+      "sha256": "de562d4c021e61f717207a4acf660b389b261fc52df6f67d9067c23cdac42ae2"
+    },
+    "inventory_store": {
+      "path": "rust/crates/kr-service/src/accounts/economy/inventory.rs",
+      "sha256": "49fc782e4b1d0ccdd8672f6aed540b433e2dbd48ac8be61270e8452f3c015dce"
+    },
+    "kr_wire": {
+      "path": "rust/crates/kr-wire/src/kr00967.rs",
+      "sha256": "ee65445db146c5cf0532ae380d2035da0be75a6a4b209ded9b689b92594ba607"
+    },
+    "player_wire": {
+      "path": "rust/crates/kr-wire/src/kr00967/player.rs",
+      "sha256": "00f2e7d29eeb316355c296564a20babacc3b52862e0233cd9cd83b65fdbf0873"
+    },
+    "preference_protocol": {
+      "path": "docs/protocol/auth-session.md",
+      "sha256": "f7382a2ef1ca52f5e8997cabc5a45d42df9531293b8a78a787e866827910c062"
+    },
+    "preset": {
+      "path": "server/profiles/f4-economy-standard.json",
+      "sha256": "846a3988dcb02f89c4674d83444844749d0542c9b53eeba4f848abcba9178ad5"
+    },
+    "progression": {
+      "path": "docs/evidence/content/f4a-progression-wine.json",
+      "sha256": "a640a40b8def649b5dad5e3014164f48d4a6c01312b2e166ca48079875af5888"
+    },
+    "protocol": {
+      "path": "docs/protocol/f4-inventory-cosmetics.md",
+      "sha256": "d3e2d80d9a5e0a62bceccc8c1c5d43608e1da6bbc85bce38b790e52998fa677d"
+    },
+    "room_adapter": {
+      "path": "rust/crates/kr-service/src/room_wire.rs",
+      "sha256": "4bd8473f94393106cdaf976425f91b1e0183eb0e12535b5795878250af73129c"
+    },
+    "room_protocol": {
+      "path": "docs/protocol/room-membership.md",
+      "sha256": "7ea884599b6895639d3ac662cf46485727fd07048fd5b72dd7798e5a702d89ac"
+    },
+    "room_wire": {
+      "path": "rust/crates/kr-wire/src/kr00967/room.rs",
+      "sha256": "b9ea54de373a8e4296f6db31e4f79639572474c3053b85e9449ce833401b2e6e"
+    },
+    "runtime_fixtures": {
+      "path": "rust/crates/kr-service/src/f4bc_runtime_tests.rs",
+      "sha256": "51c35749489ce7c841d827226503e198dc295fec25113b006bb26444ebd80899"
+    },
+    "schema3": {
+      "path": "rust/crates/kr-service/migrations/0003_match_history.sql",
+      "sha256": "cb8305293b1c7577da9f739afb4d5d0fbac63ac93d57c4fc6fec8069863dcbbf"
+    },
+    "schema7": {
+      "path": "rust/crates/kr-service/migrations/0007_f4_progression_inventory_shop.sql",
+      "sha256": "1155d06d5e7798c899bbf67660e8d5745323566c982abd4d3b99d75dd52e7da0"
+    },
+    "schema8": {
+      "path": "rust/crates/kr-service/migrations/0008_f4_match_consumptions.sql",
+      "sha256": "8b5211949a7dd8d14387f1ceff9c568186a4cf40f0fccbcf90831934cfaa0021"
+    },
+    "session_cosmetics": {
+      "path": "rust/crates/kr-service/src/account_worker/economy/session_cosmetics.rs",
+      "sha256": "0a18b9924fddee8db01356306ad3abac287a8ad9039d4431de9cf97a11fcd6f1"
+    },
+    "shop_fixtures": {
+      "path": "rust/crates/kr-service/src/web_shop/tests.rs",
+      "sha256": "9c642a6f1beb8e80855f7f6e315f05ed585f8a4b7403326f7f433aed9d21d33d"
+    },
+    "start_protocol": {
+      "path": "docs/protocol/f1-aux-opcodes-and-classc.md",
+      "sha256": "ddc93e2da901408f0e06bbe3003a7a64c8df52613ce6b15d6c9ddc7e8e0979f7"
+    },
+    "vehicle_protocol": {
+      "path": "docs/protocol/vehicles.md",
+      "sha256": "77d9533abf44ff4fcc09d615b3dd71e2c74692c7884bad27027ca1bf81df3583"
+    },
+    "wave2": {
+      "path": "docs/evidence/content/f4-w2-ida-deepdive.json",
+      "sha256": "47d2aa0607da2cbc7a42b2dfdd7a1662be6e47b8249eb6a5d3f0a74a5a7a671a"
+    },
+    "wave3": {
+      "path": "docs/evidence/content/f4-w3-ida-records.json",
+      "sha256": "bfbd9b89bc644ce7376288f9fcef69723ec3e8aa291c3c50ef5e5491f1e0b961"
+    },
+    "wave6": {
+      "path": "docs/evidence/content/f4-w6-ida-own291-and-hud.json",
+      "sha256": "e5fef91791139a439a8bd78891194abdae5168159a3051e1e1994bf789af0acb"
+    },
+    "wave8": {
+      "path": "docs/evidence/content/f4-w8-ida-exp-175-f2.json",
+      "sha256": "bc2b0cab379766b7338cac96343f8b7fb08e635b16d281f9dbbaff4daa270689"
+    }
+  },
+  "projection_context": {
+    "o1": [
+      "o1_session_cosmetics"
+    ],
+    "own291": [
+      "own291_progression"
+    ],
+    "room_slot": [
+      "player106_template"
+    ]
+  },
+  "schema": "kre.f4_cosmetics_projection_spec.v1",
+  "spec_sha256": "8a91f0ac7302d957094566da06ce41a463d5104aef72c3994694f1a5acfea839",
+  "targets": {
+    "avatar": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": 7797,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "bc_summary",
+        "name": "cosmetic.avatar",
+        "state": "proposed"
+      },
+      "source_group": "CharTE/AvatarDeco"
+    },
+    "backup": {
+      "catalog_category": "consumable",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Kiểm thử thay catalog để hai slot cùng tham chiếu stack; không phải hotbar mặc định.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped",
+          "db_consumption"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "consumption_fixtures",
+        "name": "backup",
+        "state": "fixture"
+      },
+      "source_group": null
+    },
+    "balloon": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": null
+    },
+    "bomb": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": 594,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "bc_summary",
+        "name": "cosmetic.bomb",
+        "state": "proposed"
+      },
+      "source_group": "CharTE/BombDeco"
+    },
+    "char_decoration": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": 3896,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "bc_summary",
+        "name": "cosmetic.char",
+        "state": "proposed"
+      },
+      "source_group": "CharTE/CharDeco"
+    },
+    "character": {
+      "catalog_category": "character",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Khóa BomberAttr của nhân vật nền đã chọn. Chưa nối SKU trang bị với lựa chọn phòng.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "anchor": "character92",
+          "status": "confirmed"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "anchor": "character_room_slot",
+          "status": "confirmed"
+        },
+        "start121": {
+          "anchor": "character_start121",
+          "status": "confirmed"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped",
+          "db_character_preference"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "preset",
+        "name": "character",
+        "state": "preset"
+      },
+      "source_group": "FxContents/Attr/BomberAttr"
+    },
+    "collection": {
+      "catalog_category": "collection",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Chỉ mẫu Pet/Pet_<số> được xuất. Sở hữu Pet chưa xác nhận tiến độ, mục tiêu hoặc thưởng.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "fx/Pet"
+    },
+    "collection_panel": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Tài nguyên panel và constructor manager chưa xác nhận đồng bộ tiến độ.",
+      "pack_entry_count": 27,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "FxContents/ItemCollection"
+    },
+    "consumable": {
+      "catalog_category": "consumable",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Chỉ SKU ItemAttr được preset chọn; pickup trong trận nằm ngoài quyền túi đồ.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_consumption"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "FxContents/Attr/ItemAttr"
+    },
+    "effect": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": null
+    },
+    "emote": {
+      "catalog_category": "emotion",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Slot fixture của Web Shop; không xác nhận trang bị để phát emoticon.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "shop_fixtures",
+        "name": "emote",
+        "state": "fixture"
+      },
+      "source_group": null
+    },
+    "emote_slot": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Tên nhóm asset Slot chưa xác nhận có thanh gán hoặc enum trang bị.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "EmoTE/Slot"
+    },
+    "emoticon": {
+      "catalog_category": "emotion",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Chưa đo quyền phát, chủ thể và bề mặt render của peer.",
+      "pack_entry_count": 1479,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "EmoTE/Character"
+    },
+    "emoticon_effect": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Asset hiệu ứng ngoài exporter. Chưa ghép với SKU của EmoTE/Character.",
+      "pack_entry_count": 52,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "fx/Emoticon"
+    },
+    "fanfare": {
+      "catalog_category": "emotion",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "EmoTE/Fanfare"
+    },
+    "fishing": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "CharTE/FishingDeco"
+    },
+    "flag": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": null
+    },
+    "grade": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Chỉ đặt slot khi xác nhận có lựa chọn riêng. Cấp hồ sơ không cấp quyền sở hữu SKU.",
+      "pack_entry_count": 211,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "bc_summary",
+        "name": "cosmetic.grade",
+        "state": "conditional"
+      },
+      "source_group": "CharTE/GradeDeco"
+    },
+    "hat": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "test.hat dùng slot head trong fixture Rust; chưa có token hoặc phân nhóm hat của KR.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "runtime_fixtures",
+        "name": "head",
+        "state": "fixture"
+      },
+      "source_group": null
+    },
+    "id": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": 3176,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "bc_summary",
+        "name": "cosmetic.id",
+        "state": "proposed"
+      },
+      "source_group": "EmoTE/IDDeco"
+    },
+    "ladder": {
+      "catalog_category": "decoration",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "CharTE/LadderDeco"
+    },
+    "outfit": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": null
+    },
+    "quick": {
+      "catalog_category": "consumable",
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Slot stack trong kiểm thử nội bộ; không có index hotbar KR đã đo.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [
+          "db_inventory",
+          "db_equipped",
+          "db_consumption"
+        ],
+        "status": "design"
+      },
+      "slot": {
+        "input": "runtime_fixtures",
+        "name": "quick",
+        "state": "fixture"
+      },
+      "source_group": null
+    },
+    "ring": {
+      "catalog_category": null,
+      "context_anchors": [],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": null,
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": null
+    },
+    "vehicle": {
+      "catalog_category": null,
+      "context_anchors": [
+        "f1_vehicle_pickup"
+      ],
+      "inventory_capture_gap": "in_game_219_224_225_313_317_566_pending_capture",
+      "note": "Ship/* và route pickup đã đo thuộc F1-d; chưa xác nhận slot trang bị F4.",
+      "pack_entry_count": null,
+      "projection": {
+        "kr_wire": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "own291": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "room_slot": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        },
+        "start121": {
+          "gap": "unmeasured_wire_projection",
+          "status": "unknown"
+        }
+      },
+      "schema8_persistence": {
+        "anchors": [],
+        "status": "unknown"
+      },
+      "slot": {
+        "input": null,
+        "name": null,
+        "state": "unassigned"
+      },
+      "source_group": "FxContents/Attr/ItemAttr: Ship/*"
+    }
+  }
+}
