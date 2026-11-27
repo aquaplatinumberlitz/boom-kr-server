@@ -15,13 +15,16 @@ mod f6_policy_config_tests;
 #[cfg(test)]
 #[path = "f7_f5_policy_config_tests.rs"]
 mod f7_f5_policy_config_tests;
+#[cfg(test)]
+#[path = "live_policy_wiring_tests.rs"]
+mod live_policy_wiring_tests;
 
 use crate::{
     account_bridge::{self, Bridge},
     account_worker::{AccountService, Client, EconomySettings, Worker},
     accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Token},
     choco_chat::F5SocialPolicy,
-    custom_map_store::CustomMapPolicy,
+    custom_map_store::{CustomMapPolicy, CustomMapStore},
     f3_pve_policy::F3PvePolicy,
     f4_extended_policy::{
         BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
@@ -29,6 +32,7 @@ use crate::{
     },
     f6_policy::F6EventPolicy,
     platform::{self, local_ipc},
+    web_shop,
 };
 use serde::Deserialize;
 use std::{
@@ -188,6 +192,12 @@ pub struct F4ExtendedPolicyBundle {
     pub upgrades: UpgradePolicy,
 }
 
+struct LoadedSettings {
+    economy: EconomySettings,
+    f6: Option<Arc<F6EventPolicy>>,
+    f7: CustomMapPolicy,
+}
+
 fn load_economy_profile_file(path: &Path) -> io::Result<(EconomyPolicy, ShopCatalog)> {
     if path.as_os_str().is_empty()
         || path
@@ -251,7 +261,7 @@ impl Config {
             .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))
     }
 
-    /// Load and validate the configured F6 event policy for inspection.
+    /// Load and validate the configured F6 event policy.
     /// If no profile is configured, all systems are disabled.
     pub fn f6_event_policy(&self) -> io::Result<F6EventPolicy> {
         let Some(path) = self.f6_events_policy.as_deref() else {
@@ -310,6 +320,24 @@ impl Config {
         F5SocialPolicy::load_from_path(path)
     }
 
+    /// Build the optional F7 store beside the account database. Disabled or
+    /// omitted policies do not create or touch a directory.
+    fn open_custom_map_store(&self, policy: CustomMapPolicy) -> io::Result<Option<CustomMapStore>> {
+        if !policy.enabled {
+            return Ok(None);
+        }
+        // Use the full database filename so databases with the same stem do
+        // not share custom maps.
+        let mut root = self.database.as_os_str().to_os_string();
+        root.push(".custom-maps");
+        let root = PathBuf::from(root);
+        // The store checks every existing path component for symlinks.
+        let store = CustomMapStore::new(&root, policy)
+            .map_err(|error| io::Error::other(format!("custom map startup: {error}")))?;
+        platform::provision_private_dir(&root)?;
+        Ok(Some(store))
+    }
+
     /// Validated economy for the account worker; defaults stay disabled.
     pub(crate) fn economy(&self) -> io::Result<EconomySettings> {
         let (policy, catalog) = if let Some(path) = &self.economy_profile_path {
@@ -324,6 +352,7 @@ impl Config {
         } else {
             (self.economy_policy.clone(), self.shop_catalog.clone())
         };
+        let extended = self.f4_extended_policy()?;
         let settings = EconomySettings::new(policy, catalog)
             .map_err(|_| io::Error::other("invalid economy policy or shop catalog"))?;
         if settings.rewards_enabled() && !self.persist_matches {
@@ -340,15 +369,28 @@ impl Config {
         {
             return Err(io::Error::other("economy requires database profiles"));
         }
-        Ok(settings)
+        settings
+            .with_extended_policies(
+                extended.booster_tickets,
+                extended.level_rewards,
+                extended.lucci_vault,
+            )
+            .map_err(|_| io::Error::other("invalid extended economy policies"))
     }
     pub(crate) fn validate(&self) -> io::Result<()> {
-        self.f6_event_policy()?;
-        self.f4_extended_policy()?;
+        self.load_settings().map(|_| ())
+    }
+
+    fn load_settings(&self) -> io::Result<LoadedSettings> {
+        let f6 = self
+            .f6_events_policy
+            .as_ref()
+            .map(|_| self.f6_event_policy().map(Arc::new))
+            .transpose()?;
         self.f3_pve_policy()?;
-        self.f7_custom_map_policy()?;
+        let f7 = self.f7_custom_map_policy()?;
         self.f5_social_policy()?;
-        self.economy()?;
+        let economy = self.economy()?;
         if let Some(backup) = &self.backup {
             backup.validate()?;
         }
@@ -407,7 +449,7 @@ impl Config {
             platform::private_dir(parent)?;
         }
         platform::private_file(&self.database)?;
-        Ok(())
+        Ok(LoadedSettings { economy, f6, f7 })
     }
 }
 #[derive(Clone)]
@@ -545,7 +587,7 @@ impl Owner {
         projections: std::collections::HashMap<u32, Vec<u8>>,
         projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
     ) -> io::Result<Self> {
-        config.validate()?;
+        let settings = config.load_settings()?;
         if (config.profile_mode == ProfileMode::DatabaseZero) != projection.is_some() {
             return Err(io::Error::other(
                 "account projection mode/template mismatch",
@@ -558,7 +600,11 @@ impl Owner {
             None => None,
         };
         let web_shop = match &config.web_shop {
-            Some(ws) => Some(crate::web_shop::open(ws.clone()).await?),
+            Some(ws) => {
+                let opened = web_shop::open(ws.clone()).await?;
+                let maps = config.open_custom_map_store(settings.f7)?;
+                Some(opened.with_policies(settings.f6, maps))
+            }
             None => None,
         };
         let prelogin_tls = config
@@ -570,7 +616,7 @@ impl Owner {
             config.database.clone(),
             config.worker_queue_capacity,
             Duration::from_secs(3),
-            config.economy()?,
+            settings.economy,
         )
         .await
         .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
