@@ -10,6 +10,7 @@ mod chat;
 pub mod cosmetics;
 pub mod custom_map;
 mod f2_modes;
+pub mod f3_pve;
 mod f5_social;
 pub mod inventory;
 mod player;
