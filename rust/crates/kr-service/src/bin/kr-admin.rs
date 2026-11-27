@@ -5,10 +5,17 @@ use kr_service::{
         self, Admin, AuditFilter, ChatMuteReason, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION,
         Store, Token,
     },
+    f4_extended_policy::{
+        BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
+        PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
+    },
     f6_policy::F6EventPolicy,
     operations::{self, LiveCommand, RoomTarget},
 };
-use serde::Deserialize;
+use serde::{
+    Deserialize,
+    de::{DeserializeSeed, Deserializer, MapAccess, SeqAccess, Visitor},
+};
 use serde_json::{Value, json};
 use std::{
     ffi::OsString,
@@ -144,6 +151,10 @@ enum Command {
         policy_path: Option<std::path::PathBuf>,
         at_unix_secs: Option<i64>,
     },
+    #[serde(rename = "f4-policy-check")]
+    F4PolicyCheck {
+        policy_path: Option<std::path::PathBuf>,
+    },
 }
 impl Command {
     fn audit_context(&self) -> (&'static str, &'static str, String, bool) {
@@ -213,6 +224,7 @@ impl Command {
             SocialGuildDisband { guild_id } => guild("social_guild_disband", guild_id, true),
             SocialRankingList { .. } => ("social_ranking_list", "service", "ranking".into(), false),
             F6PolicyCheck { .. } => ("f6_policy_check", "service", "f6_policy".into(), false),
+            F4PolicyCheck { .. } => ("f4_policy_check", "service", "f4_policy".into(), false),
             ListRooms {} | CloseRoom { .. } | F2Runtime { .. } => {
                 unreachable!("handled by live admin")
             }
@@ -220,10 +232,7 @@ impl Command {
     }
 }
 
-fn load_f6_policy(path: Option<&Path>) -> io::Result<F6EventPolicy> {
-    let Some(path) = path else {
-        return Ok(F6EventPolicy::disabled_default());
-    };
+fn validate_policy_path(path: &Path, policy_name: &str) -> io::Result<()> {
     if path.as_os_str().is_empty()
         || path
             .components()
@@ -231,7 +240,7 @@ fn load_f6_policy(path: Option<&Path>) -> io::Result<F6EventPolicy> {
     {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
-            "invalid f6_events_policy path",
+            format!("invalid {policy_name} path"),
         ));
     }
     for parent in path
@@ -242,16 +251,154 @@ fn load_f6_policy(path: Option<&Path>) -> io::Result<F6EventPolicy> {
         if !std::fs::symlink_metadata(parent)?.is_dir() {
             return Err(io::Error::new(
                 io::ErrorKind::InvalidInput,
-                "f6_events_policy parents must be directories without symlinks",
+                format!("{policy_name} parents must be directories without symlinks"),
             ));
         }
     }
     if !std::fs::symlink_metadata(path)?.is_file() {
         return Err(io::Error::new(
             io::ErrorKind::InvalidInput,
-            "f6_events_policy must be a regular file without symlinks",
+            format!("{policy_name} must be a regular file without symlinks"),
         ));
     }
+    Ok(())
+}
+
+#[derive(Default, Deserialize)]
+#[serde(default, deny_unknown_fields)]
+struct F4ExtendedPolicy {
+    powerup_kits: PowerupKitPolicy,
+    booster_tickets: BoosterTicketPolicy,
+    titles: TitlePolicy,
+    level_rewards: LevelRewardPolicy,
+    lucci_vault: LucciVaultPolicy,
+    record_erasers: RecordEraserPolicy,
+    gift_coupons: GiftCouponPolicy,
+    second_password: SecondPasswordPolicy,
+    upgrades: UpgradePolicy,
+}
+
+struct DuplicateSeed;
+struct DuplicateVisitor;
+
+impl<'de> DeserializeSeed<'de> for DuplicateSeed {
+    type Value = ();
+
+    fn deserialize<D: serde::Deserializer<'de>>(self, deserializer: D) -> Result<(), D::Error> {
+        deserializer.deserialize_any(DuplicateVisitor)
+    }
+}
+
+impl<'de> Visitor<'de> for DuplicateVisitor {
+    type Value = ();
+
+    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter.write_str("a JSON value")
+    }
+
+    fn visit_map<M: MapAccess<'de>>(self, mut map: M) -> Result<(), M::Error> {
+        let mut keys = std::collections::BTreeSet::new();
+        while let Some(key) = map.next_key::<String>()? {
+            if !keys.insert(key) {
+                return Err(serde::de::Error::custom("duplicate JSON field"));
+            }
+            map.next_value_seed(DuplicateSeed)?;
+        }
+        Ok(())
+    }
+
+    fn visit_seq<S: SeqAccess<'de>>(self, mut sequence: S) -> Result<(), S::Error> {
+        while sequence.next_element_seed(DuplicateSeed)?.is_some() {}
+        Ok(())
+    }
+
+    fn visit_bool<E>(self, _: bool) -> Result<(), E> {
+        Ok(())
+    }
+    fn visit_i64<E>(self, _: i64) -> Result<(), E> {
+        Ok(())
+    }
+    fn visit_u64<E>(self, _: u64) -> Result<(), E> {
+        Ok(())
+    }
+    fn visit_f64<E>(self, _: f64) -> Result<(), E> {
+        Ok(())
+    }
+    fn visit_str<E>(self, _: &str) -> Result<(), E> {
+        Ok(())
+    }
+    fn visit_string<E>(self, _: String) -> Result<(), E> {
+        Ok(())
+    }
+    fn visit_none<E>(self) -> Result<(), E> {
+        Ok(())
+    }
+    fn visit_unit<E>(self) -> Result<(), E> {
+        Ok(())
+    }
+}
+
+fn reject_duplicate_json(input: &str) -> Result<(), serde_json::Error> {
+    let mut deserializer = serde_json::Deserializer::from_str(input);
+    deserializer.deserialize_any(DuplicateVisitor)?;
+    deserializer.end()
+}
+
+fn load_f4_policy(path: Option<&Path>) -> io::Result<(F4ExtendedPolicy, Value)> {
+    let Some(path) = path else {
+        return Ok((F4ExtendedPolicy::default(), json!({})));
+    };
+    validate_policy_path(path, "f4_extended_policy")?;
+    let contents = std::fs::read_to_string(path)?;
+    let invalid = || {
+        io::Error::new(
+            io::ErrorKind::InvalidData,
+            "invalid f4_extended_policy configuration",
+        )
+    };
+    if !contents.trim_start().starts_with('{') {
+        return Err(invalid());
+    }
+    reject_duplicate_json(&contents).map_err(|_| invalid())?;
+    // Deserialize the typed profile first so duplicate and unknown fields are
+    // rejected before the summary view is decoded.
+    let policy: F4ExtendedPolicy = serde_json::from_str(&contents).map_err(|_| invalid())?;
+    let value: Value = serde_json::from_str(&contents).map_err(|_| invalid())?;
+    Ok((policy, value))
+}
+
+fn f4_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
+    let (_policy, value) = load_f4_policy(policy_path)?;
+    let policies = [
+        "powerup_kits",
+        "booster_tickets",
+        "titles",
+        "level_rewards",
+        "lucci_vault",
+        "record_erasers",
+        "gift_coupons",
+        "second_password",
+        "upgrades",
+    ]
+    .into_iter()
+    // These policies are not time-gated; active here describes the config.
+    .map(|name| {
+        let enabled = value
+            .get(name)
+            .and_then(|policy| policy.get("enabled"))
+            .and_then(Value::as_bool)
+            .unwrap_or(false);
+        (name.into(), json!({"enabled": enabled, "active": enabled}))
+    })
+    .collect::<serde_json::Map<_, _>>();
+    Ok(json!({"default_enabled": false, "policies": policies}))
+}
+
+fn load_f6_policy(path: Option<&Path>) -> io::Result<F6EventPolicy> {
+    let Some(path) = path else {
+        return Ok(F6EventPolicy::disabled_default());
+    };
+    validate_policy_path(path, "f6_events_policy")?;
     F6EventPolicy::from_path(path)
 }
 
@@ -526,10 +673,18 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
             at_unix_secs,
         } => f6_policy_check(policy_path.as_deref(), at_unix_secs)
             .map_err(|_| Error::InvalidInput)?,
+        Command::F4PolicyCheck { policy_path } => {
+            f4_policy_check(policy_path.as_deref()).map_err(|_| Error::InvalidInput)?
+        }
     })
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
     Ok(match args {
+        [flag, options @ ..] if flag == "f4-policy-check" => match options {
+            [] => f4_policy_check(None)?,
+            [option, path] if option == "--policy" => f4_policy_check(Some(Path::new(path)))?,
+            _ => return Err("usage: kr-admin f4-policy-check [--policy PATH]".into()),
+        },
         [flag, dir] if flag == "private-dir" => {
             kr_service::platform::provision_private_dir(Path::new(dir))?;
             json!({"ok":true})
@@ -554,7 +709,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY".into()),
+        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f4-policy-check [--policy PATH]".into()),
     })
 }
 fn main() {
