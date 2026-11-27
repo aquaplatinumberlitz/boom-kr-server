@@ -136,6 +136,33 @@ class F2AdapterTests(unittest.TestCase):
                 self.assertIn(message, err)
                 self.assertFalse(self.cache.exists())
 
+    def test_cli_exports_each_new_terrain_ready_family(self):
+        families = {
+            'Clover01': 'Clover', 'Rabbit01': 'Rabbit', 'RescueET01': 'RescueET',
+            'Wriggle01': 'Wriggle', 'Zzolman01': 'Zzolman',
+        }
+
+        def selected(names):
+            return {name: dict(family=families[name], payload_sha256=adapter.sha(self.raw),
+                               version=1001, scripted=False) for name in names}
+
+        fake_pair(self.game, 'FxMap', {
+            'Map/SyntheticOne': self.raw,
+            'Map/Aqua01': f1e_payload('<StageClearScript/>', obj=1, spawns=[(x, 1) for x in range(8)]),
+            'Map/CAPong01': self.raw,
+            'Map/CAPong02': self.raw,
+            **{f'Map/{name}': self.raw for name in families},
+        })
+        self.pins = {p.name: adapter.sha(p.read_bytes()) for p in self.game.iterdir()}
+        with patch.object(adapter, 'load_f2_maps', side_effect=selected):
+            code, result = self.run_f2(*families)
+        self.assertEqual(code, 0, result)
+        cache = Path(result['cache'])
+        for name, family in families.items():
+            profile = json.loads((cache / f'{name}.json').read_bytes())
+            self.assertEqual((profile['adapter'], profile['f2_family']), ('f2-adapter-r1', family))
+            self.assertTrue((cache / f'{name}.rules.json').is_file())
+
     def test_cli_rejects_other_adapters_and_prebuilt_with_f2(self):
         for args in (('--cache', str(self.cache), '--f1-map', 'Factory07'),
                      ('--cache', str(self.cache), '--f1e-map', 'Aqua01'),
