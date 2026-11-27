@@ -1,0 +1,448 @@
+{
+  "build": "KR00967",
+  "client_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+  "ida": {
+    "cstage_dispatcher_va": "0xd68c90",
+    "idb_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"
+  },
+  "inputs": {
+    "classification": {
+      "path": "docs/content/classification.json",
+      "sha256": "dd8fab5738180bc6cf5e3e79d6c0227833805a8d3d6c353e17f28a94d02c08ba"
+    },
+    "coverage": {
+      "path": "docs/evidence/owner-directives/full-content-coverage.json",
+      "sha256": "87a442cf44eb4b4f295ae057a5439b657059c6da31f017bf2d851ad5bdc501f9"
+    },
+    "ida": {
+      "path": "docs/evidence/content/f2-f5-f3-ida-anchors.json",
+      "sha256": "158036dd91bc6bb309b3ec5c1c7ca1797f44a51ff3a653bfc17962f9ac671df0"
+    },
+    "migration": {
+      "path": "rust/crates/kr-service/migrations/0009_f5_social_foundation.sql",
+      "sha256": "ae96d93e7120019c7e8005cd94acd1032b7d8cb85beae5498b34671a85a318f9"
+    },
+    "roadmap": {
+      "locator": "#full-game-roadmap, dòng F5 (UTF-8 và LF cuối dòng)",
+      "path": "docs/PLAN.md",
+      "sha256": "74efecf9a2b1b2efa0849659c457debdc21e84a8a63e430bc82b93e4632a298a"
+    },
+    "social_catalog": {
+      "path": "docs/evidence/content/f5-social-catalog.json",
+      "sha256": "53c9841b32c5868a7e0d536d2b5be8e50ec56681f14e4ab7acb37af0c79bc1e5"
+    },
+    "social_notes": {
+      "path": "docs/content/f5-social-catalog.md",
+      "sha256": "509f43e73485b0d45f880fd8c876b9f59fb96a554101d6d0097be14751a05981"
+    }
+  },
+  "limits": "Đây là kiểm kê offline. Neo IDA tĩnh và tài nguyên pack chưa xác nhận luồng client, luật server hoặc payload KR; chưa có phép đo runtime mới.",
+  "map_families": [
+    {
+      "classification": "C",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Vào, rời và dùng map."
+      },
+      "map_count": 9,
+      "name": "LobbySquare",
+      "role": "Ứng viên cho sảnh quảng trường đi lại tự do.",
+      "role_status": "candidate",
+      "script_count": 9,
+      "script_unknown": 9,
+      "source": "kr_static",
+      "status": "candidate",
+      "wave": "F5?"
+    },
+    {
+      "classification": "C",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Vào, rời và dùng map."
+      },
+      "map_count": 5,
+      "name": "LobbyCaffe",
+      "role": "Khu cà phê; lộ trình nêu quà khi ngồi, chưa biết điều kiện và quà cụ thể.",
+      "role_status": "candidate",
+      "script_count": 5,
+      "script_unknown": 5,
+      "source": "kr_static",
+      "status": "candidate",
+      "wave": "F5?"
+    },
+    {
+      "classification": "C",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Vào, rời và dùng map."
+      },
+      "map_count": 2,
+      "name": "LobbyClothing",
+      "role": "Khu quần áo; chưa biết thao tác tại khu.",
+      "role_status": "candidate",
+      "script_count": 2,
+      "script_unknown": 2,
+      "source": "kr_static",
+      "status": "candidate",
+      "wave": "F5?"
+    },
+    {
+      "classification": "C",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Vào, rời và dùng map."
+      },
+      "map_count": 2,
+      "name": "LobbyJewelry",
+      "role": "Khu trang sức; chưa biết thao tác tại khu.",
+      "role_status": "candidate",
+      "script_count": 2,
+      "script_unknown": 2,
+      "source": "kr_static",
+      "status": "candidate",
+      "wave": "F5?"
+    },
+    {
+      "classification": "C",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Vào, rời và dùng map."
+      },
+      "map_count": 2,
+      "name": "LobbyPet",
+      "role": "Khu thú cưng; chưa biết thao tác tại khu.",
+      "role_status": "candidate",
+      "script_count": 2,
+      "script_unknown": 2,
+      "source": "kr_static",
+      "status": "candidate",
+      "wave": "F5?"
+    },
+    {
+      "classification": "C",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Vào, rời và dùng map."
+      },
+      "map_count": 2,
+      "name": "Square",
+      "role": "Ứng viên cho map quảng trường; chưa biết quan hệ chuyển cảnh với LobbySquare.",
+      "role_status": "candidate",
+      "script_count": 2,
+      "script_unknown": 2,
+      "source": "kr_static",
+      "status": "candidate",
+      "wave": "F5?"
+    }
+  ],
+  "matrix_sha256": "784e82006196d58d80e6b3b869e5c1759d35994f3dbc61ac72811885a78aa089",
+  "plaza": {
+    "classification": "C",
+    "classification_reason": "Sảnh đi lại tự do và các khu quần áo, trang sức, pet, cà phê; chưa có wire di chuyển và đồng bộ.",
+    "id": "Plaza",
+    "kr_wire": {
+      "opcodes": "unknown",
+      "status": "unknown",
+      "unmeasured": "Chuyển cảnh, danh sách người, di chuyển, tương tác và quà cà phê."
+    },
+    "name": "Quảng trường (광장)",
+    "next_measurement": "Vào và rời từng họ; dùng hai client để thử thấy nhau di chuyển. Đối chiếu ngồi và không ngồi ở quán cà phê để xác định đường nhận quà.",
+    "rules": {
+      "cafe_gift": {
+        "note": "Chưa rõ thời gian ngồi, vật phẩm và điều kiện nhận lại. Chưa có bằng chứng về quà ở các khu khác.",
+        "status": "unknown",
+        "value": "unknown"
+      }
+    },
+    "schema_9": {
+      "extension": "Giữ hiện diện và vị trí theo phiên; nếu có quà bền, cần lưu lần nhận và chống cấp trùng khi ghi thưởng vào túi đồ.",
+      "reuse_candidates": [],
+      "status": "design"
+    },
+    "source_refs": [
+      "classification",
+      "roadmap"
+    ],
+    "status": "candidate"
+  },
+  "schema": "kre.f5-extended-social.v1",
+  "schema_9": {
+    "baseline_tables": [
+      "chat_abuse_events",
+      "chat_rate_windows",
+      "friend_requests",
+      "friendships",
+      "guild_members",
+      "guilds",
+      "player_blocks",
+      "social_mutes"
+    ],
+    "extensions_status": "design"
+  },
+  "source": "design",
+  "status": "design",
+  "summary": {
+    "extended_systems": 4,
+    "map_families": 6,
+    "maps": 22,
+    "scripts": 22,
+    "scripts_unknown": 22
+  },
+  "systems": [
+    {
+      "classification": "C",
+      "classification_reason": "Gửi và nhận thư, hộp thư có giới hạn; chưa có wire và lưu trữ.",
+      "id": "Mail",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Gửi, nhận, liệt kê, đọc, xóa và phản hồi khi hộp đầy."
+      },
+      "name": "Thư (쪽지)",
+      "next_measurement": "Gửi cho người đang offline, kiểm sau đăng nhập lại; đo biên đầy, thử gửi thêm và thử lại sau khi xóa một thư.",
+      "rules": {
+        "inbox_cap": {
+          "note": "Có giới hạn hộp thư; chưa biết số thư tối đa và cách xử lý khi đầy.",
+          "status": "unknown",
+          "unit": "messages",
+          "value": "unknown"
+        }
+      },
+      "schema_9": {
+        "extension": "Lưu thư theo người gửi và người nhận, trạng thái đọc/xóa, chỉ mục hộp thư và kiểm giới hạn trong giao dịch ghi.",
+        "reuse_candidates": [
+          "player_blocks"
+        ],
+        "status": "design"
+      },
+      "source_refs": [
+        "classification",
+        "roadmap"
+      ],
+      "status": "candidate"
+    },
+    {
+      "classification": "C",
+      "classification_reason": "Kênh chat để trao đổi đồ giữa người chơi; chưa có wire.",
+      "id": "ExchangeChat",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Tạo, tìm, tham gia, rời phòng và chuyển tin."
+      },
+      "name": "Phòng chat trao đổi (교환채팅방)",
+      "next_measurement": "Tạo và tham gia từ hai client; đo chat, rời phòng và thử thao tác đổi đồ riêng để kiểm quan hệ với phòng chat.",
+      "rules": {
+        "trade_binding": {
+          "note": "Chưa rõ phòng dùng CHOCO hay có giao dịch đồ gắn với phòng.",
+          "status": "unknown",
+          "value": "unknown"
+        }
+      },
+      "schema_9": {
+        "extension": "Thiết kế phòng, thành viên và hiện diện theo phiên. Chỉ xem xét lưu giao dịch đồ sau khi xác nhận có luồng đổi đồ riêng.",
+        "reuse_candidates": [
+          "player_blocks",
+          "social_mutes",
+          "chat_rate_windows"
+        ],
+        "status": "design"
+      },
+      "source_refs": [
+        "classification",
+        "coverage",
+        "roadmap"
+      ],
+      "status": "candidate"
+    },
+    {
+      "classification": "C",
+      "classification_reason": "Đổi huy hiệu bang, bang kín duyệt đơn tối đa 7 ngày; chưa có wire.",
+      "id": "Guild",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Xem/đổi huy hiệu, đổi quyền riêng tư, nộp đơn, duyệt, từ chối và hết hạn."
+      },
+      "name": "Huy hiệu và bang kín (길드 마크, 비공개 길드)",
+      "next_measurement": "Đối chiếu đổi huy hiệu và nộp đơn bang kín với mời bang thường; thử quyền duyệt, hết hạn và trạng thái thành viên sau đăng nhập lại.",
+      "resource_groups": [
+        {
+          "entries": 2,
+          "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+          "locator": "FxDesktop/Etc:Guild"
+        },
+        {
+          "entries": 26,
+          "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+          "locator": "FxDesktop/Guild"
+        }
+      ],
+      "rules": {
+        "private_approval_max": {
+          "note": "Mốc tối đa theo bảng xếp loại; chưa biết lúc bắt đầu tính, biên hết hạn và hành vi khi hết hạn.",
+          "status": "candidate",
+          "unit": "days",
+          "value": 7
+        }
+      },
+      "schema_9": {
+        "extension": "Bổ sung tham chiếu huy hiệu, quyền hiển thị/gia nhập và đơn gia nhập có thời hạn, quyết định và người duyệt. Duyệt và ghi thành viên trong cùng giao dịch.",
+        "reuse_candidates": [
+          "guilds",
+          "guild_members"
+        ],
+        "status": "design"
+      },
+      "source_refs": [
+        "classification",
+        "coverage",
+        "social_catalog",
+        "social_notes",
+        "ida",
+        "roadmap"
+      ],
+      "static_ida": {
+        "anchors": [
+          {
+            "direction": "S->C",
+            "opcode": 467,
+            "vas": [
+              "0x6d9340"
+            ]
+          },
+          {
+            "direction": "S->C",
+            "opcode": 474,
+            "ui_anchor": "ReceiveGuildInvite",
+            "vas": [
+              "0xd769d0"
+            ]
+          },
+          {
+            "direction": "S->C",
+            "opcode": 478,
+            "ui_anchor": "RefuseGuildInvite",
+            "vas": [
+              "0xd76da0"
+            ]
+          },
+          {
+            "direction": "C->S",
+            "opcode": 633,
+            "vas": [
+              "0xd769d0"
+            ]
+          }
+        ],
+        "source": "kr_static",
+        "status": "confirmed"
+      },
+      "status": "candidate"
+    },
+    {
+      "classification": "C",
+      "classification_reason": "Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967.",
+      "id": "Couple",
+      "kr_wire": {
+        "opcodes": "unknown",
+        "status": "unknown",
+        "unmeasured": "Mời, chấp nhận, đồng bộ cặp, đổi trang bị và kết thúc quan hệ."
+      },
+      "name": "Cặp đôi (커플)",
+      "next_measurement": "Đo mời/chấp nhận/từ chối và đăng nhập lại; so hai ván có/không có cặp hoặc trang bị để tách hiệu ứng nhẫn khỏi thưởng EXP/Lucci.",
+      "resource_groups": [
+        {
+          "entries": 28,
+          "idx_sha256": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+          "locator": "fx/Couple"
+        }
+      ],
+      "rules": {
+        "exp_bonus": {
+          "note": "Lộ trình nêu thưởng EXP; chưa biết mức, điều kiện và cách cộng dồn.",
+          "status": "unknown",
+          "value": "unknown"
+        },
+        "lucci_bonus": {
+          "note": "Lộ trình nêu thưởng Lucci (VÀNG); chưa biết mức, điều kiện và cách cộng dồn.",
+          "status": "unknown",
+          "value": "unknown"
+        },
+        "rings": {
+          "note": "Nhẫn đôi thuộc phạm vi khảo sát; chưa có ID, điều kiện trang bị hay quan hệ đã kiểm với Kim đôi trong lộ trình.",
+          "status": "unknown",
+          "value": "unknown"
+        }
+      },
+      "schema_9": {
+        "extension": "Lưu lời mời và quan hệ cặp, tham chiếu nhẫn nếu đo được, và liên kết thưởng EXP/Lucci với lần chốt kết quả để tránh ghi trùng.",
+        "reuse_candidates": [],
+        "status": "design"
+      },
+      "source_refs": [
+        "classification",
+        "social_catalog",
+        "social_notes",
+        "ida",
+        "roadmap"
+      ],
+      "static_ida": {
+        "anchors": [
+          {
+            "direction": "S->C",
+            "opcode": 257,
+            "vas": [
+              "0x128d3c0"
+            ]
+          },
+          {
+            "direction": "S->C",
+            "opcode": 273,
+            "vas": [
+              "0xd87250"
+            ]
+          },
+          {
+            "direction": "S->C",
+            "opcode": 284,
+            "vas": [
+              "0x128d120"
+            ]
+          },
+          {
+            "direction": "S->C",
+            "opcode": 640,
+            "vas": [
+              "0xd88830"
+            ]
+          },
+          {
+            "direction": "S->C",
+            "opcode": 674,
+            "vas": [
+              "0xd7fa60"
+            ]
+          },
+          {
+            "direction": "C->S",
+            "opcode": 670,
+            "vas": [
+              "0x583530",
+              "0x583e80"
+            ]
+          }
+        ],
+        "source": "kr_static",
+        "status": "confirmed"
+      },
+      "status": "candidate"
+    }
+  ]
+}
