@@ -1,5 +1,6 @@
 use super::*;
 use std::net::{Ipv4Addr, SocketAddrV4};
+use std::sync::Arc;
 
 fn config() -> Config {
     Config {
@@ -11,6 +12,50 @@ fn config() -> Config {
         session_ttl_seconds: 60,
         unlock_all: false,
     }
+}
+
+fn opted_f6_policy() -> Arc<crate::f6_policy::F6EventPolicy> {
+    use serde_json::json;
+    let systems = crate::f6_policy::F6EventPolicy::system_names()
+        .iter()
+        .map(|name| {
+            (
+                (*name).to_owned(),
+                json!({"enabled": false, "start_utc": null, "end_utc": null,
+                       "rate_caps": {"per_account_per_hour": 0, "global_per_minute": 0}}),
+            )
+        })
+        .collect::<serde_json::Map<_, _>>();
+    let mut systems = systems;
+    systems.insert(
+        "CAPass".into(),
+        json!({"enabled": true, "start_utc": "2027-01-01T00:00:00Z",
+               "end_utc": "2027-01-02T00:00:00Z",
+               "rate_caps": {"per_account_per_hour": 6, "global_per_minute": 43}}),
+    );
+    let extended_systems = crate::f6_policy::F6EventPolicy::extended_system_names()
+        .iter()
+        .map(|name| {
+            (
+                (*name).to_owned(),
+                json!({"enabled": false, "start_utc": null, "end_utc": null,
+                       "season_key": null, "max_grants_per_day": 0,
+                       "max_grants_per_season": 0,
+                       "rate_caps": {"per_account_per_hour": 0, "global_per_minute": 0}}),
+            )
+        })
+        .collect::<serde_json::Map<_, _>>();
+    let mut extended_systems = extended_systems;
+    extended_systems.insert(
+        "attendance".into(),
+        json!({"enabled": true, "start_utc": "2027-01-01T00:00:00Z",
+               "end_utc": "2027-01-02T00:00:00Z", "season_key": "spring-2027",
+               "max_grants_per_day": 12, "max_grants_per_season": 100,
+               "rate_caps": {"per_account_per_hour": 6, "global_per_minute": 43}}),
+    );
+    let profile = json!({"schema": "kre.f6-events-policy.v1", "default_enabled": false,
+                         "systems": systems, "extended_systems": extended_systems});
+    Arc::new(crate::f6_policy::F6EventPolicy::from_json_str(&profile.to_string()).unwrap())
 }
 #[test]
 fn config_bounds() {
@@ -57,6 +102,8 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("p.mode"));
     assert!(page.contains("/api/v1/inventory"));
     assert!(page.contains("/api/v1/cosmetics-summary"));
+    assert!(page.contains("/api/v1/events-status"));
+    assert!(page.contains("events-status"));
     assert!(page.contains("/api/v1/custom-maps"));
     assert!(page.contains("/api/v1/unequip"));
     assert!(page.contains("/api/social/friends"));
@@ -455,6 +502,7 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
 
     const CHAT: &str = "/api/social/chat-status";
     const COSMETICS: &str = "/api/v1/cosmetics-summary";
+    const EVENTS: &str = "/api/v1/events-status";
     let (_dir, db) = temp_db("summaries");
     let (player, expired_player) = {
         let _serial = TEST_SERIAL.lock().unwrap();
@@ -511,7 +559,7 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
     let addr = listener.local_addr().unwrap();
     let task = tokio::spawn(serve_listener(listener, config(), worker.service(), auth));
 
-    for path in [CHAT, COSMETICS] {
+    for path in [CHAT, COSMETICS, EVENTS] {
         for invalid in [None, Some("invalid"), Some(revoked.as_str())] {
             let (status, _, payload) = send_http(addr, "GET", path, invalid, None).await;
             assert_eq!((status, payload), (401, json!({"error": "unauthorized"})));
@@ -570,6 +618,20 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
             "equipped": [],
             "mutual_exclusion": {"valid": true, "conflicting_slot": null},
             "inventory_layout": {"status": "static_candidate", "gap": INVENTORY_CAPTURE_GAP},
+        })
+    );
+    assert_eq!(db_state(), before);
+    let (status, _, events) = send_http(addr, "GET", EVENTS, token, None).await;
+    assert_eq!(status, 200);
+    assert_eq!(
+        events,
+        json!({
+            "configured": false,
+            "core_total": 19,
+            "extended_total": 25,
+            "excluded_systems": ["PCRoomBenefit"],
+            "enabled_systems": [],
+            "extended_systems": [],
         })
     );
     assert_eq!(db_state(), before);
@@ -637,6 +699,62 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
     assert_eq!(db_state(), before);
 
     task.abort();
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn loopback_events_status_reports_opted_in_core_and_extended_policy() {
+    use crate::account_worker::Worker;
+    use crate::accounts::{Admin, Store, TEST_SERIAL};
+
+    let (_dir, db) = temp_db("events-status");
+    let player = {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        Store::open(&db)
+            .unwrap()
+            .create_account(
+                &Admin {
+                    actor: "webshop-test",
+                    reason: "F6 status fixture",
+                },
+                "eventuser",
+                "EventUser",
+                b"events-test-password",
+                crate::match_journal::utc().unwrap() - 60,
+            )
+            .unwrap()
+            .player_id
+    };
+    let worker = Worker::open_with_economy(db, 8, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let token = auth.issue_token(player).unwrap();
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    let shop = WebShop::new(config()).with_f6_policy(opted_f6_policy());
+    let task = tokio::spawn(serve_loop(listener, shop, worker.service(), auth, None));
+
+    let (status, _, events) = send_http(
+        addr,
+        "GET",
+        "/api/v1/events-status",
+        Some(token.as_str()),
+        None,
+    )
+    .await;
+    assert_eq!(status, 200);
+    assert_eq!(events["configured"], true);
+    assert_eq!(events["enabled_systems"][0]["system"], "CAPass");
+    assert_eq!(events["enabled_systems"][0]["start_utc"], 1798761600i64);
+    assert_eq!(events["enabled_systems"][0]["end_utc"], 1798848000i64);
+    assert_eq!(events["extended_systems"][0]["system"], "attendance");
+    assert_eq!(events["extended_systems"][0]["season_key"], "spring-2027");
+    assert_eq!(events["extended_systems"][0]["max_grants_per_day"], 12);
+    assert_eq!(events["extended_systems"][0]["max_grants_per_season"], 100);
+
+    task.abort();
+    assert!(task.await.unwrap_err().is_cancelled());
     worker.shutdown().await.unwrap();
 }
 

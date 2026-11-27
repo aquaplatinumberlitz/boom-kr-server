@@ -3,6 +3,7 @@
 <h1>Boom KR Web Shop</h1><p class="muted">Local shop session</p>
 <label>Bearer token <input id="token" type="password" size="48" autocomplete="off"></label><button onclick="load()">Load</button>
 <p id="balance"></p>
+<h2>Events</h2><p id="events-status" class="muted" role="status"></p><ul id="events-list"></ul>
 <h2>Equipped</h2><p id="selection-note" class="muted" hidden>These selections are for this shop session.</p><ul id="equipped"></ul>
 <h3>Cosmetics Projection Status</h3><p id="cosmetics-status" class="muted" role="status"></p><ul id="cosmetics-slots"></ul>
 <h2>Custom Maps</h2><p id="custom-maps-status" class="muted" role="status"></p><ul id="custom-maps"></ul>
@@ -29,17 +30,33 @@ async function load(){
     const p=await api('/api/v1/profile');
     if(load!==summaryLoad)return;
     q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
-    await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus()]);
+    await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus(),loadEventsStatus(load)]);
     if(load===summaryLoad)await loadCustomMaps(load);
   }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
 }
 function clearSummaries(){
   chatStatusLoad++;
   q('#chat-status').textContent='';
+  q('#events-status').textContent='';
+  q('#events-list').replaceChildren();
   q('#cosmetics-status').textContent='';
   q('#cosmetics-slots').replaceChildren();
   q('#custom-maps-status').textContent='';
   q('#custom-maps').replaceChildren();
+}
+async function loadEventsStatus(load){
+  try{
+    const d=await api('/api/v1/events-status');
+    if(load!==summaryLoad)return;
+    const enabled=[...(d.enabled_systems||[]).map(item=>({...item,kind:'core'})),...(d.extended_systems||[]).map(item=>({...item,kind:'extended'}))];
+    q('#events-status').textContent=d.configured?`${enabled.length} enabled · ${d.core_total} core / ${d.extended_total} extended`:`No events enabled · ${d.core_total} core / ${d.extended_total} extended`;
+    for(const item of enabled){
+      const li=document.createElement('li');
+      const caps=item.rate_caps||{};
+      li.textContent=`${item.kind} · ${item.system} · ${item.start_utc}–${item.end_utc} UTC · ${caps.per_account_per_hour}/${caps.global_per_minute} caps${item.season_key?` · season ${item.season_key}`:''}`;
+      q('#events-list').append(li);
+    }
+  }catch(e){if(load===summaryLoad)q('#events-status').textContent='Events status unavailable'}
 }
 async function loadChatStatus(){
   const load=++chatStatusLoad;
