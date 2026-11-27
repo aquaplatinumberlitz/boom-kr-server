@@ -7,6 +7,7 @@ mod account;
 mod battle;
 mod bomb_motion;
 mod chat;
+pub mod cosmetics;
 mod f2_modes;
 mod f5_social;
 pub mod inventory;
