@@ -1,0 +1,232 @@
+{
+  "build": "KR00967",
+  "catalog_sha256": "5c9f0cc549432ae9be5d99b5c261b59b4e3df84789812d3d54ba89c8f6119241",
+  "classification_sha256": "dd8fab5738180bc6cf5e3e79d6c0227833805a8d3d6c353e17f28a94d02c08ba",
+  "client_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+  "roadmap_commit": "27b93c0a1dd3a32820cd9176938046a3265117a8",
+  "schema": "kre.f4-progression-rewards.v1",
+  "server_foundation": {
+    "account_serving": {
+      "fact": "Cấu hình economy mặc định tắt thưởng trận. Bật thưởng cần `persist_matches`; thưởng, catalog có mục và các projection opt-in cần hồ sơ DB. Các projection cấp và số dư không xác nhận wire của bốn hệ thống này.",
+      "locators": [
+        "fn economy(&self)",
+        "economy rewards require persisted matches",
+        "economy requires database profiles",
+        "pub project_own291_level",
+        "pub emit_lucci_135"
+      ],
+      "path": "rust/crates/kr-service/src/account_serving.rs",
+      "sha256": "65482fe8efd5d3515f45d57b1aa5a8b8c1c58eabcb8db1bf91c206c66b858e39",
+      "source": "design",
+      "status": "confirmed"
+    },
+    "economy_policy": {
+      "fact": "`EconomyPolicy` cấu hình EXP/Lucci theo kết quả trận và tính cấp từ mốc EXP tổng. `ECONOMY_AMOUNT_MAX` giới hạn một lượng cấu hình, không phải trần ví.",
+      "locators": [
+        "pub struct EconomyPolicy",
+        "enabled: false",
+        "pub fn level_for",
+        "pub const ECONOMY_AMOUNT_MAX"
+      ],
+      "path": "rust/crates/kr-service/src/accounts/economy.rs",
+      "sha256": "c332a05f3ff60f2e788f0bc817a415c79a8e13a7a551005913b36514e6110952",
+      "source": "design",
+      "status": "confirmed"
+    },
+    "equip": {
+      "fact": "`equip_item` cần SKU thuộc người chơi, còn hiệu lực và đúng slot catalog. Đây là trang bị chung, chưa có slot hay danh mục danh hiệu riêng.",
+      "locators": [
+        "pub fn equip_item",
+        "if !owned.active",
+        "item.equip_slot.as_deref()"
+      ],
+      "path": "rust/crates/kr-service/src/accounts/economy/inventory.rs",
+      "sha256": "49fc782e4b1d0ccdd8672f6aed540b433e2dbd48ac8be61270e8452f3c015dce",
+      "source": "design",
+      "status": "confirmed"
+    },
+    "ledger": {
+      "fact": "Số dư Lucci dùng số nguyên 64 bit có dấu; điều chỉnh dùng phép cộng kiểm tràn và từ chối số dư âm. `admin_grant_lucci` ghi ledger và `admin_audit` trong cùng giao dịch. Đây là đường điều chỉnh Lucci, chưa phải đường reset.",
+      "locators": [
+        "pub fn admin_grant_lucci",
+        "pub(super) fn economy_audit",
+        ".checked_add(lucci_delta)",
+        "INSERT INTO admin_audit"
+      ],
+      "path": "rust/crates/kr-service/src/accounts/economy/ledger.rs",
+      "sha256": "ac7a2208cbf0a542d819bcdb96878ce98b1317f49ad9b80f6d5809023f0f8b62",
+      "source": "design",
+      "status": "confirmed"
+    },
+    "lucci_projection": {
+      "fact": "Projection số dư opt-in dùng `remain_lucci` kiểu `u32` và chặn số lớn ở `u32::MAX` khi mã hóa; giới hạn hiển thị này không phải trần ví hoặc luật mở rộng két.",
+      "locators": [
+        "pub fn wire_lucci_u32",
+        "unwrap_or(u32::MAX)",
+        "u32 remain_lucci"
+      ],
+      "path": "rust/crates/kr-wire/src/kr00967/account.rs",
+      "sha256": "d55678bf3a9bfafdf1bb480f75c6dae11495a45b9baa5c6077bdbbd4a671d226",
+      "source": "design",
+      "status": "confirmed"
+    },
+    "schema_7": {
+      "fact": "Schema 7 thêm hồ sơ theo `player_id` với EXP 0, cấp 1 và Lucci 0, ledger chỉ ghi thêm, kho SKU và slot gắn đồ.",
+      "locators": [
+        "CREATE TABLE player_profiles",
+        "exp INTEGER NOT NULL DEFAULT 0",
+        "level INTEGER NOT NULL DEFAULT 1",
+        "lucci INTEGER NOT NULL DEFAULT 0",
+        "CREATE TABLE ledger_entries",
+        "CREATE TRIGGER ledger_entries_append_only_delete",
+        "CREATE TABLE player_inventory",
+        "CREATE TABLE player_equipped"
+      ],
+      "path": "rust/crates/kr-service/migrations/0007_f4_progression_inventory_shop.sql",
+      "sha256": "1155d06d5e7798c899bbf67660e8d5745323566c982abd4d3b99d75dd52e7da0",
+      "source": "design",
+      "status": "confirmed"
+    },
+    "schema_8": {
+      "fact": "Schema 8 thêm biên nhận tiêu hao trong trận theo người chơi và khóa chống lặp. Biên nhận chỉ ghi thêm và tồn tại sau khi hết stack; phạm vi là tiêu hao trong trận.",
+      "locators": [
+        "CREATE TABLE match_item_consumptions",
+        "REFERENCES match_players(match_id,player_id)",
+        "CREATE TRIGGER match_item_consumptions_append_only_delete"
+      ],
+      "path": "rust/crates/kr-service/migrations/0008_f4_match_consumptions.sql",
+      "sha256": "8b5211949a7dd8d14387f1ceff9c568186a4cf40f0fccbcf90831934cfaa0021",
+      "source": "design",
+      "status": "confirmed"
+    },
+    "settlement": {
+      "fact": "`finish_match_settled` ghi kết quả và quyết toán thưởng trận trong cùng giao dịch; `match_players.reward` của M6 vẫn bằng 0.",
+      "locators": [
+        "pub fn finish_match_settled",
+        "Self::settle_tx"
+      ],
+      "path": "rust/crates/kr-service/src/accounts/matches.rs",
+      "sha256": "b92f7c9eaef4ecd28dfcc3448ad142e47a96bf5932153065eae1a4e573e98f77",
+      "source": "design",
+      "status": "confirmed"
+    }
+  },
+  "systems": {
+    "level_up_rewards": {
+      "classification": "C",
+      "client_labels_ko": [
+        "레벨업 보물상자"
+      ],
+      "design_guard": "Cấu hình riêng tiền lên cấp và rương theo cặp nhân vật, mốc cấp; mỗi quyền nhận chỉ cấp một lần, kể cả khi nhảy nhiều cấp hoặc retry.",
+      "known_account_serving_facts": [
+        "account_serving",
+        "schema_7",
+        "economy_policy",
+        "settlement",
+        "schema_8"
+      ],
+      "name": "Quà lên cấp và rương lên cấp (레벨업 보물상자)",
+      "next_probe": "Kiểm mốc trước và sau khi lên cấp trên hai nhân vật; tách tiền trận, tiền lên cấp và rương.",
+      "original_server_rules_status": "unknown",
+      "reward_tables_status": "unknown",
+      "roadmap_only": true,
+      "server_configurable_default": {
+        "character_milestones": null,
+        "enabled": false,
+        "level_up_lucci_table": null
+      },
+      "source": "kr_static",
+      "status": "candidate",
+      "unknowns": "Chưa biết lượng Lucci khi lên cấp, mốc và quà rương theo từng nhân vật, hoặc đường nhận quà. Bảng EXP theo kết quả trận không phải bảng quà lên cấp.",
+      "wire_contract_status": "unknown"
+    },
+    "lucci_vault": {
+      "classification": "C",
+      "client_labels_ko": [
+        "루찌 금고"
+      ],
+      "design_guard": "Khi triển khai, yêu cầu trần cơ sở và bước tăng dương, giới hạn số lần mở rộng và trần cuối; kiểm phép nhân/cộng không tràn, không vượt trần hoặc giới hạn lưu trữ. Không dùng giới hạn một khoản thưởng làm trần ví.",
+      "known_account_serving_facts": [
+        "account_serving",
+        "schema_7",
+        "economy_policy",
+        "ledger",
+        "lucci_projection",
+        "schema_8"
+      ],
+      "name": "Két VÀNG và giới hạn VÀNG (루찌 금고)",
+      "next_probe": "Kiểm số dư ở sát trần và phản hồi khi mở rộng két hoặc nhận tiền vượt trần.",
+      "original_server_rules_status": "unknown",
+      "reward_tables_status": "unknown",
+      "roadmap_only": true,
+      "server_configurable_default": {
+        "base_lucci_cap": null,
+        "enabled": false,
+        "expansion_step": null,
+        "max_expansions": null,
+        "max_lucci_cap": null
+      },
+      "source": "kr_static",
+      "status": "candidate",
+      "unknowns": "Chưa biết trần Lucci gốc, lượng tăng mỗi lần, số lần mở rộng và cách xử lý tiền vượt trần.",
+      "wire_contract_status": "unknown"
+    },
+    "record_erasers": {
+      "classification": "C",
+      "client_labels_ko": [
+        "전적 지우개",
+        "래더 재도전권"
+      ],
+      "design_guard": "Từ chối khi thiếu scope, quyền, vật phẩm hợp lệ hoặc audit. Nếu được triển khai, tiêu vé, cập nhật đúng scope và ghi audit theo tác nhân, mục tiêu, trạng thái trước/sau và khóa chống lặp trong cùng giao dịch; lỗi thì rollback toàn bộ. Giữ lịch sử trận, ledger và biên nhận cũ; Schema 8 không cấp quyền reset ngoài trận.",
+      "known_account_serving_facts": [
+        "account_serving",
+        "schema_7",
+        "ledger",
+        "schema_8"
+      ],
+      "name": "Xóa thành tích (전적 지우개, 래더 재도전권)",
+      "next_probe": "Đo riêng từng vật phẩm và so cấp, thắng/thua, điểm ladder trước và sau; kiểm vật phẩm hết hạn.",
+      "original_server_rules_status": "unknown",
+      "reward_tables_status": "unknown",
+      "roadmap_only": true,
+      "server_configurable_default": {
+        "allowed_scopes": [],
+        "enabled": false,
+        "require_audit": true
+      },
+      "source": "kr_static",
+      "status": "candidate",
+      "unknowns": "Cấp, thắng/thua và điểm ladder là phạm vi ứng viên; chưa biết mục nào ứng với từng vật phẩm, giá trị sau reset hay quan hệ với mùa ladder.",
+      "wire_contract_status": "unknown"
+    },
+    "titles": {
+      "classification": "C",
+      "client_labels_ko": [
+        "칭호"
+      ],
+      "design_guard": "Chỉ gắn danh hiệu đã mở khóa. Nếu bật thông báo, chỉ phát sau lần mở khóa mới đã commit; thao tác gắn lại, retry hoặc đăng nhập lại không phát thêm.",
+      "known_account_serving_facts": [
+        "account_serving",
+        "schema_7",
+        "equip",
+        "schema_8"
+      ],
+      "name": "Danh hiệu (칭호)",
+      "next_probe": "Đối chiếu màn danh hiệu trước và sau khi đạt, gắn và đăng nhập lại.",
+      "original_server_rules_status": "unknown",
+      "reward_tables_status": "unknown",
+      "roadmap_only": true,
+      "server_configurable_default": {
+        "enabled": false,
+        "equip_slot": null,
+        "notify_on_unlock": false,
+        "unlock_table": null
+      },
+      "source": "kr_static",
+      "status": "candidate",
+      "unknowns": "Chưa biết ID, điều kiện mở khóa, trường gắn danh hiệu và cách client nhận thông báo khi đạt.",
+      "wire_contract_status": "unknown"
+    }
+  },
+  "wave": "F4"
+}
