@@ -529,14 +529,14 @@ async fn dispatch(
     }
 }
 
-fn chat_status() -> Response {
-    // The worker's send check writes a rate slot or denial. It has no read-only
-    // mute lookup, so neither a mute nor its absence can be inferred here.
+async fn chat_status(service: &AccountService, player: i64) -> Result<Response, Status> {
+    let mute = service.social_mute_status(player).await?;
     let policy = F5SocialPolicy::default();
-    Response::json(&json!({
-        "mute_status": "unavailable",
-        "muted": null,
-        "mute_until": null,
+    Ok(Response::json(&json!({
+        "mute_status": "available",
+        "muted": mute.is_some(),
+        "mute_until": mute.as_ref().map(|grant| grant.mute_until),
+        "mute_reason": mute.as_ref().map(|grant| grant.reason.as_str()),
         "choco_chat": {
             "extended_live_routing": false,
             "wire_status": "unmeasured",
@@ -549,7 +549,7 @@ fn chat_status() -> Response {
                 "plaza": !policy.plaza_zones.is_empty(),
             },
         },
-    }))
+    })))
 }
 
 fn projection_status(status: ProjectionStatus) -> &'static str {
@@ -816,7 +816,7 @@ async fn social_route(
 ) -> Result<Response, Status> {
     if request.path() == "/api/social/chat-status" {
         request.require_queryless_get()?;
-        return Ok(chat_status());
+        return chat_status(service, player).await;
     }
     if request.query().is_some() && request.path() != "/api/social/ranking" {
         return Err(Status::BadRequest);

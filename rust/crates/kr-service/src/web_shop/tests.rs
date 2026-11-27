@@ -214,7 +214,7 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
     const CHAT: &str = "/api/social/chat-status";
     const COSMETICS: &str = "/api/v1/cosmetics-summary";
     let (_dir, db) = temp_db("summaries");
-    let player = {
+    let (player, expired_player) = {
         let _serial = TEST_SERIAL.lock().unwrap();
         let mut store = Store::open(&db).unwrap();
         let now = crate::match_journal::utc().unwrap();
@@ -223,21 +223,45 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
             reason: "Projection summary loopback fixture",
         };
         let player = store
-            .create_account(&admin, "shopuser", "ShopUser", b"shop-test-password-1", now)
+            .create_account(
+                &admin,
+                "shopuser",
+                "ShopUser",
+                b"shop-test-password-1",
+                now - 60,
+            )
             .unwrap()
             .player_id;
+        let expired_player = store
+            .create_account(
+                &admin,
+                "expired",
+                "ExpiredMute",
+                b"shop-test-password-2",
+                now - 60,
+            )
+            .unwrap()
+            .player_id;
+        assert_eq!(
+            store
+                .mute_social_player(expired_player, 60, ChatMuteReason::Moderation, now - 60)
+                .unwrap(),
+            now
+        );
+        assert_eq!(store.social_mute_status(expired_player, now).unwrap(), None);
         for sku in ["char.bazzi", "hat.fancy"] {
             store
                 .admin_grant_item(&admin, player, sku, ItemGrant::Permanent, 1, sku, now)
                 .unwrap();
         }
-        player
+        (player, expired_player)
     };
     let worker = Worker::open_with_economy(db.clone(), 8, Duration::from_secs(2), test_settings())
         .await
         .unwrap();
     let auth = WebShopAuth::new(60).unwrap();
     let token = auth.issue_token(player).unwrap();
+    let expired_token = auth.issue_token(expired_player).unwrap();
     let revoked = auth.issue_token(player).unwrap();
     auth.revoke_token(&revoked);
     let token = Some(token.as_str());
@@ -258,21 +282,32 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
     }
 
     let observer = rusqlite::Connection::open(&db).unwrap();
-    let data_version = || {
-        observer
+    let db_state = || {
+        let version = observer
             .pragma_query_value::<i64, _>(None, "data_version", |r| r.get(0))
-            .unwrap()
+            .unwrap();
+        let (quota, abuse_events, audit_events): (i64, i64, i64) = observer
+            .query_row(
+                "SELECT (SELECT coalesce(sum(accepted),0) FROM chat_rate_windows),
+                        (SELECT count(*) FROM chat_abuse_events),
+                        (SELECT count(*) FROM admin_audit)",
+                [],
+                |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
+            )
+            .unwrap();
+        (version, quota, abuse_events, audit_events)
     };
-    let before = data_version();
+    let before = db_state();
     let (status, head, chat) = send_http(addr, "GET", CHAT, token, None).await;
     assert_eq!(status, 200);
     assert!(head.contains("Cache-Control: no-store"));
     assert_eq!(
         chat,
         json!({
-            "mute_status": "unavailable",
-            "muted": null,
+            "mute_status": "available",
+            "muted": false,
             "mute_until": null,
+            "mute_reason": null,
             "choco_chat": {
                 "extended_live_routing": false,
                 "wire_status": "unmeasured",
@@ -295,11 +330,18 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
             "inventory_layout": {"status": "static_candidate", "gap": INVENTORY_CAPTURE_GAP},
         })
     );
-    assert_eq!(data_version(), before);
+    assert_eq!(db_state(), before);
 
+    let mute_until = worker
+        .client()
+        .try_mute_social_player(player, 3600, ChatMuteReason::Spam)
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
     worker
         .client()
-        .try_mute_social_player(player, 60, ChatMuteReason::Spam)
+        .try_mute_social_player(player, 60, ChatMuteReason::Harassment)
         .unwrap()
         .wait()
         .await
@@ -313,9 +355,16 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
             200
         );
     }
-    let before = data_version();
+    let before = db_state();
     let (status, _, chat_after_mute) = send_http(addr, "GET", CHAT, token, None).await;
-    assert_eq!((status, chat_after_mute), (200, chat));
+    let mut active = chat.clone();
+    active["muted"] = json!(true);
+    active["mute_until"] = json!(mute_until);
+    active["mute_reason"] = json!("spam");
+    assert_eq!((status, chat_after_mute), (200, active));
+    let (status, _, expired) =
+        send_http(addr, "GET", CHAT, Some(expired_token.as_str()), None).await;
+    assert_eq!((status, expired), (200, chat));
     let (status, _, equipped) = send_http(addr, "GET", COSMETICS, token, None).await;
     assert_eq!(status, 200);
     assert_eq!(equipped["mutual_exclusion"], empty["mutual_exclusion"]);
@@ -343,7 +392,7 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
     assert!(hat.iter().all(|surface| surface["status"] == "unmeasured"
         && surface["gap"] == UNMEASURED_WIRE_GAP
         && surface["anchor"].is_null()));
-    assert_eq!(data_version(), before);
+    assert_eq!(db_state(), before);
 
     task.abort();
     worker.shutdown().await.unwrap();
