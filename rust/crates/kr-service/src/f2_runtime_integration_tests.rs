@@ -329,14 +329,31 @@ fn rejects(result: io::Result<Value>, reason: &str) {
 
 #[test]
 fn default_room_and_unselected_override_keep_legacy_packets_and_reject_f2() {
+    assert!(
+        room_modes::Policy::load(&room_modes::Config::default())
+            .unwrap()
+            .is_none()
+    );
     let mut normal = TestRoom::new(Value::Null);
+    let mut empty_rules = TestRoom::new(json!({"extended_rules": {}}));
     let mut explicit_default = TestRoom::new(json!({
         "create_overrides": {"free": {"game_type_id": 0}},
         "runtime_overrides": {"free": {"game_type_id": 0}},
-        "visible_map_groups": {"bytes": [], "group_ids": {}}
+        "visible_map_groups": {"bytes": [], "group_ids": {}},
+        "candidate_map_family": null,
+        "extended_rules": {
+            "no_item": false, "no_shop": false, "basic_shop": false,
+            "super_host": false, "vote_kick": false, "priority_room": null,
+            "ladder_season": false, "channel_kind": null, "big_battle_12": false
+        }
     }));
     let mut other_selector = TestRoom::new(json!({"runtime_overrides": {"manner": "revive"}}));
-    for room in [&mut normal, &mut explicit_default, &mut other_selector] {
+    for room in [
+        &mut normal,
+        &mut empty_rules,
+        &mut explicit_default,
+        &mut other_selector,
+    ] {
         let round = room.load();
         room.arm();
         rejects(room.start(round, revive(3)), "disabled");
@@ -346,6 +363,7 @@ fn default_room_and_unselected_override_keep_legacy_packets_and_reject_f2() {
         room.clients[0].tick().unwrap();
         room.no_packets();
     }
+    assert_eq!(normal.startup, empty_rules.startup);
     assert_eq!(normal.startup, explicit_default.startup);
     assert_eq!(normal.startup, other_selector.startup);
     assert_eq!(
@@ -362,6 +380,165 @@ fn default_room_and_unselected_override_keep_legacy_packets_and_reject_f2() {
             .iter()
             .map(|(op, _)| *op)
             .eq([87, 582, 121, 197, 196, 153])
+    );
+}
+
+fn rejected_room_config(f2: Value) -> String {
+    let cfg = serde_json::from_value(json!({
+        "title": "Template", "packets": {}, "f2_modes": f2
+    }))
+    .unwrap();
+    room_io::load(&cfg, &HashMap::new(), true)
+        .err()
+        .expect("policy must reject before loading the room")
+        .to_string()
+}
+
+#[test]
+fn extended_item_presets_conflict_and_unmeasured_rules_do_not_create_rooms() {
+    for (left, right) in [
+        ("no_shop", "basic_shop"),
+        ("no_item", "no_shop"),
+        ("no_item", "basic_shop"),
+    ] {
+        assert!(
+            rejected_room_config(json!({"extended_rules": {left: true, right: true}}))
+                .contains("mutually exclusive F2 item presets")
+        );
+    }
+    for policy in [
+        "no_item",
+        "no_shop",
+        "basic_shop",
+        "super_host",
+        "vote_kick",
+        "ladder_season",
+        "big_battle_12",
+    ] {
+        assert_eq!(
+            rejected_room_config(json!({"extended_rules": {policy: true}})),
+            format!("F2 {policy} policy is unmeasured")
+        );
+    }
+}
+
+#[test]
+fn extended_priority_room_validates_slots_without_reserving_them() {
+    for slot in 1..=50 {
+        assert_eq!(
+            rejected_room_config(json!({"extended_rules": {"priority_room": slot}})),
+            format!("F2 priority_room S{slot:02} reservation is unmeasured")
+        );
+    }
+    for slot in [0, 51, 256, u32::MAX] {
+        let error = serde_json::from_value::<room_modes::Config>(json!({
+            "extended_rules": {"priority_room": slot}
+        }))
+        .err()
+        .unwrap();
+        assert!(
+            error
+                .to_string()
+                .contains("priority_room must be in 1..=50")
+        );
+    }
+    for slot in [json!(-1), json!("S01"), json!(1.5), json!(true)] {
+        assert!(
+            serde_json::from_value::<room_modes::Config>(json!({
+                "extended_rules": {"priority_room": slot}
+            }))
+            .is_err()
+        );
+    }
+}
+
+#[test]
+fn extended_channel_kinds_are_recognized_but_grant_no_admission() {
+    for channel in ["beginner", "event", "no_item", "practice"] {
+        assert_eq!(
+            rejected_room_config(json!({"extended_rules": {"channel_kind": channel}})),
+            "F2 channel_kind policy is unmeasured"
+        );
+    }
+    for channel in [json!("unknown"), json!("tournament"), json!(1)] {
+        assert!(
+            serde_json::from_value::<room_modes::Config>(json!({
+                "extended_rules": {"channel_kind": channel}
+            }))
+            .is_err()
+        );
+    }
+    assert!(
+        serde_json::from_value::<room_modes::Config>(json!({
+            "extended_rules": {"channel": "beginner"}
+        }))
+        .is_err()
+    );
+}
+
+#[test]
+fn tentative_map_families_reject_activation_and_exact_census_entries_reject_dispatch() {
+    let matrix: Value = serde_json::from_str(include_str!(
+        "../../../../docs/evidence/content/f2-extended-modes-matrix.json"
+    ))
+    .unwrap();
+    let census: Value =
+        serde_json::from_str(include_str!("../../../../docs/content/census.json")).unwrap();
+    let families = matrix["map_families"].as_array().unwrap();
+    assert_eq!(families.len(), 21);
+    let cfg = serde_json::from_value(json!({
+        "visible_map_groups": ["LadderMapGroup"],
+        "create_overrides": {"manner": "ladder"},
+        "runtime_overrides": {"free": "revive"}
+    }))
+    .unwrap();
+    let policy = room_modes::Policy::load(&cfg).unwrap().unwrap();
+    let mut map = wire::Start121Map {
+        name: Vec::new(),
+        map_code: 7,
+        dynamic_index: 3,
+        roomtype: 0,
+    };
+    let mut total = 0;
+    for row in families {
+        let family = row["family"].as_str().unwrap();
+        assert_eq!(row["wave"], "F2?");
+        assert_eq!(
+            rejected_room_config(json!({"candidate_map_family": family})),
+            "F2 candidate map family activation is unmeasured"
+        );
+        let mut count = 0;
+        for entry in census["maps"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .filter(|m| m["category"] == "other" && m["family"] == family)
+        {
+            map.name = entry["name"].as_str().unwrap().as_bytes().to_vec();
+            for team in [wire::RoomTeamSelector::Free, wire::RoomTeamSelector::Manner] {
+                assert_eq!(
+                    policy.check_start(team, &map, (7, 3)),
+                    Err("f2_candidate_map_dispatch_unmeasured"),
+                    "{:?}",
+                    entry["name"]
+                );
+            }
+            count += 1;
+        }
+        assert_eq!(row["map_count"], count, "{family}");
+        total += count;
+    }
+    assert_eq!(total, 91);
+    for unknown in ["BigBattle", "Factory", "baram"] {
+        assert_eq!(
+            rejected_room_config(json!({"candidate_map_family": unknown})),
+            "unknown F2 candidate map family"
+        );
+    }
+    map.name = b"Factory07".to_vec();
+    assert_eq!(
+        policy.check_start(wire::RoomTeamSelector::Free, &map, (7, 3)),
+        Ok(())
     );
 }
 

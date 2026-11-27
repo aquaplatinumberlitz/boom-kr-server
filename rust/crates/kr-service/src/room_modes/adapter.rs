@@ -1,7 +1,7 @@
 //! Server-owned F2 commands and the single supported wire projection. Normal
 //! KR room startup provides the roster; no client packet is F2 event authority.
 use super::{
-    Policy,
+    Config, Policy, TENTATIVE_MAP_FAMILIES,
     runtime::{Action, Applied, Error, Life, Outcome, Player, Runtime},
 };
 use crate::{Reply, room::Member, room_packets::packet};
@@ -10,6 +10,25 @@ use serde::{Deserialize, Serialize};
 use std::io;
 
 pub use super::runtime::Setup;
+
+impl Config {
+    pub(super) fn check_extended_activation(&self) -> io::Result<()> {
+        // Reject unmeasured requests before choosing any legacy or F2 room
+        // path. No requested policy may silently fall back to a normal room.
+        self.extended_rules.check_activation()?;
+        if let Some(requested) = &self.candidate_map_family {
+            let known = TENTATIVE_MAP_FAMILIES
+                .iter()
+                .any(|(family, _)| *family == requested);
+            return Err(io::Error::other(if known {
+                "F2 candidate map family activation is unmeasured"
+            } else {
+                "unknown F2 candidate map family"
+            }));
+        }
+        Ok(())
+    }
+}
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "command", rename_all = "snake_case", deny_unknown_fields)]
