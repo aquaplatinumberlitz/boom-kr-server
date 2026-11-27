@@ -43,14 +43,20 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
 | ✅ | **Web shop and wardrobe** | Browse the catalog, buy outfits with Lucci, and equip or remove them from your inventory |
 | ✅ | **Web social page** | Friends and friend requests, block list, your guild and the server ranking |
 | ✅ | **Languages** | English, Tiếng Việt and 한국어 in the game, launcher and server app, with Vietnamese accents in chat |
-| 🚧 | **In-game shop and customization** | My Page, inventory and shop windows in the game, plus avatar, character, balloon, level and ID decorations and emoticons |
+| 🚧 | **In-game shop and customization** | My Page, inventory and shop windows in the game, plus avatar, character, balloon, level and ID decorations, emoticons and titles |
 | 🚧 | **Ladder and matchmaking** | Ranked ladder battles with grades and automatic matchmaking |
-| 🚧 | **Special modes** | **18** map modes on **122** maps (Baseball, Coloring, Zombie, Kart, Super Fighter, Popcade…) and rule variants such as Snowball Fight, Revival Battle, Time Bomb, Catch the Leader and Hedgehog |
+| 🚧 | **Special modes** | **18** map modes on **122** maps (Baseball, Coloring, Zombie, Kart, Super Fighter, Popcade…), Airplane, Winning Streak Colosseum and rule variants such as Snowball Fight, Revival Battle, Time Bomb, Catch the Leader and Hedgehog |
 | 🚧 | **Battles against AI** | Co-op battles and missions against computer players |
-| 🚧 | **PvE adventures** | **699** co-op stages: Monster mode, CA Hero, Hidden Catch, RPG, Sandbox, the Antarctic expedition, I am Boss, bonus stages and a tutorial, with bosses, treasure chests and crafting |
-| 🚧 | **In-game social** | Messenger, whispers, guild windows, couples and couple rings |
+| 🚧 | **Tournaments and channels** | Tournaments with a practice channel, and channels for beginners, events, item-free play and training |
+| 🚧 | **Super host** | Extra room-host privileges such as starting the game right away |
+| 🚧 | **Lobby square** | Walk around the plaza and visit the clothing, jewelry, pet and café areas |
+| 🚧 | **Upgrades** | Upgrade items, pets and water balloons with materials |
+| 🚧 | **Gifts and coupons** | Send items to friends and redeem coupons |
+| 🚧 | **Account security** | Second password for your game account |
+| 🚧 | **PvE adventures** | **699** co-op stages: Monster mode, CA Hero, Hidden Catch, RPG, Sandbox, the Antarctic expedition, I am Boss, Golem Run, Dragon Palace, Escape Maze, solo play, bonus stages and a tutorial, with bosses, treasure chests and crafting |
+| 🚧 | **In-game social** | Messenger, whispers, mail, megaphones, guild windows, couples and couple rings |
 | 🚧 | **Quests and season pass** | Daily missions, quests, CA Pass and item collections |
-| 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market, Grow a Sprout, DIY Bomb, Exchange, pets and fishing |
+| 🚧 | **Seasonal events** | About 20 event systems, including Lucky Cards, Mine Exploration, Magic Market, Grow a Sprout, DIY Bomb, Exchange, lucky draws and Lucky Beans, the Magic Book Market, bingo, dice and quizzes, pets and fishing |
 | 🚧 | **Custom maps** | Build your own maps and play them with friends |
 
 ## Two ways to play

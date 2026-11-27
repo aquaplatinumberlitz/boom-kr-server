@@ -118,6 +118,20 @@ SPECIAL = {
 }
 ORDER = ["map", "item", "ship", "character", "mode", "system"]
 UNSUPPORTED_WAVE = "chưa xếp đợt"
+# Owner request 27/11: every client map family must sit in a roadmap wave. These were
+# "chưa xếp đợt"; the wave is tentative ("?"), chosen from name, spawns and scripts only.
+TENTATIVE_MAP_WAVES = {
+    **dict.fromkeys(["LobbySquare", "LobbyCaffe", "LobbyClothing", "LobbyJewelry", "LobbyPet", "Square"], "F5?"),
+    **dict.fromkeys(["shopmap", "tlshopmap"], "F4?"),
+    **dict.fromkeys(["CAPassShopMap", "DailyMissionShop", "MagicMarketmap", "SelectionBox",
+                     "LobbySquareFishingTest"], "F6?"),
+    **dict.fromkeys(["Balansa", "Baram", "BlackLucy", "Clovertest", "ConfusedFight", "DarkCastle",
+                     "DarkVampire", "Fm_BigBattle", "Fm_BigBattleH_PreparePlay", "Fm_BigBattle_PreparePlay",
+                     "GoldButterfly", "Hiphopclub", "MagNest", "NewXmas", "OkongOfLegend", "Smash", "Space_TW",
+                     "UserContest", "WhiteAngel", "WinningStreak_Colosseum", "Wriggletest"], "F2?"),
+    **dict.fromkeys(["Antarctic", "DragonPalace", "EscapeMaze", "GolemRun", "IamWriggle", "MineExp",
+                     "Minibot", "SavetheEarth"], "F3?"),
+}
 
 
 def generate(data, digest, f1_native, f1_characters):
@@ -144,7 +158,8 @@ def generate(data, digest, f1_native, f1_characters):
         f1 = category in {"battle_theme", "battle_variant"} and not family.startswith("Fm_AIBtl")
         wave = ("F7" if family.startswith("CustomMap") else "F1" if f1 else "F2?" if category == "mission" else "F3"
                 if category in {"monster", "rpg", "hidden", "bonus"} or
-                family.startswith("Fm_AIBtl") or family == "Tutorial" else UNSUPPORTED_WAVE)
+                family.startswith("Fm_AIBtl") or family == "Tutorial" else
+                TENTATIVE_MAP_WAVES.get(family, UNSUPPORTED_WAVE))
         native = sorted(m["name"] for m in maps if m["name"] in MAPS)
         substantial = [m for m in maps if set(m["script_tags"]) - {"mapscript", "StageClearScript"}]
         unusual = any((m["width"], m["height"]) != (15, 13) for m in maps)
@@ -296,6 +311,19 @@ def generate(data, digest, f1_native, f1_characters):
     for name, wave, reason in [
         ("Túi đồ", "F4", "Chưa có ledger, projection túi đồ và wire đồng bộ quyền sở hữu."),
         ("Web nhúng: Dwarf/libcef", "F4/F6", "Đã chốt dựng web ở server; chưa biết hợp đồng từng màn."),
+        # Owner request 27/11: systems found in client strings (csysstr/csysqstr) and wiki, not census groups.
+        ("Quảng trường (광장)", "F5", "Sảnh đi lại tự do và các khu quần áo, trang sức, pet, cà phê; chưa có wire di chuyển và đồng bộ."),
+        ("Kênh theo loại (채널)", "F2", "Kênh tân thủ, sự kiện, không item, luyện tập và giải đấu; chưa biết luật vào kênh."),
+        ("Giải đấu (토너먼트)", "F2", "Giải đấu có kênh luyện tập, giới hạn người vừa vô địch và quà; chưa có wire và luật."),
+        ("Siêu chủ phòng (슈퍼방장)", "F2", "Quyền chủ phòng mở rộng như bắt đầu ngay; chưa biết nguồn cấp và giới hạn."),
+        ("Thư (쪽지)", "F5", "Gửi và nhận thư, hộp thư có giới hạn; chưa có wire và lưu trữ."),
+        ("Danh hiệu (칭호)", "F4", "Đạt và gắn danh hiệu, có thông báo khi đạt; chưa biết điều kiện từng danh hiệu."),
+        ("Cường hóa và nâng cấp (강화)", "F4", "Nâng cấp item, pet, bóng nước và đồ RPG bằng nguyên liệu; chưa có công thức và tỉ lệ."),
+        ("Tặng quà và phiếu (선물하기, 쿠폰)", "F4", "Tặng item cho người khác và dùng phiếu đổi; bỏ phần tiền thật của Nexon."),
+        ("Mật khẩu cấp 2 (2차 비밀번호)", "F4", "Lớp bảo vệ tài khoản trong game; chưa có wire tạo và xác thực."),
+        ("Bốc thăm và đậu may mắn (뽀끼뽀끼, 럭키빈)", "F6", "Bốc thăm bằng chìa khóa và đổi đậu may mắn lấy quà; tỉ lệ do server cấu hình."),
+        ("Chợ sách phép (마법거래소)", "F6", "Người chơi đăng bán và mua sách phép; chưa có wire và luật giá."),
+        ("Mini-game sự kiện (빙고, 주사위, 퀴즈)", "F6", "Bingo nhân vật, nhiệm vụ xúc xắc và câu đố; chưa có wire và phần thưởng."),
     ]:
         add("system", name, wave, "C", reason, roadmap_only=True)
     return dict(schema="kre-content-classification-v1", build=data["build"],

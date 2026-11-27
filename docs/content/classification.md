@@ -18,7 +18,7 @@ Lớp B của nhân vật dựa trên layout và luồng chọn đã biết; gi�
 | Phương tiện | 0 | 0 | 28 | 0 |
 | Nhân vật | 4 | 30 | 33 | 0 |
 | Mode | 1 | 0 | 31 | 0 |
-| Hệ thống | 4 | 5 | 51 | 1 |
+| Hệ thống | 4 | 5 | 63 | 1 |
 
 Họ map F1: 1 A, 85 B, 22 C. Có 70 map đạt A ở cấp map.
 [Kiểm F1-a với adapter pack](../evidence/rust-service/f1-pack-map-adapters.json) giữ danh sách map, phép thử nội dung và phạm vi họ đã nghiệm thu.
@@ -193,23 +193,23 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | Hdn_Wriggle | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Hidden | F3 | C | 6 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | HiddenCatchTest | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| CAPassShopMap | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| CAPassShopMap | F6? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | CustomMap15x | F7 | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | CustomMap21x | F7 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | CustomMap31x | F7 | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| DailyMissionShop | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| LobbyCaffe | chưa xếp đợt | C | 5 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| LobbyClothing | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| LobbyJewelry | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| LobbyPet | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| LobbySquare | chưa xếp đợt | C | 9 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| LobbySquareFishingTest | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| MagicMarketmap | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| SelectionBox | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Square | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| DailyMissionShop | F6? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| LobbyCaffe | F5? | C | 5 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| LobbyClothing | F5? | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| LobbyJewelry | F5? | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| LobbyPet | F5? | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| LobbySquare | F5? | C | 9 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| LobbySquareFishingTest | F6? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| MagicMarketmap | F6? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| SelectionBox | F6? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Square | F5? | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Tutorial | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| shopmap | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| tlshopmap | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| shopmap | F4? | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| tlshopmap | F4? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Baseball | F2? | C | 10 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Bula | F2? | C | 7 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | CAPong | F2? | C | 5 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
@@ -289,35 +289,35 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | MonWarsNT | F3 | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | MonWarsNTB | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Monster | F3 | C | 47 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Antarctic | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Balansa | chưa xếp đợt | C | 5 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Baram | chưa xếp đợt | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| BlackLucy | chưa xếp đợt | C | 9 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Clovertest | chưa xếp đợt | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| ConfusedFight | chưa xếp đợt | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| DarkCastle | chưa xếp đợt | C | 9 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| DarkVampire | chưa xếp đợt | C | 8 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| DragonPalace | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| EscapeMaze | chưa xếp đợt | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Fm_BigBattle | chưa xếp đợt | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Fm_BigBattleH_PreparePlay | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Fm_BigBattle_PreparePlay | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| GoldButterfly | chưa xếp đợt | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| GolemRun | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Hiphopclub | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| IamWriggle | chưa xếp đợt | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| MagNest | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| MineExp | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Minibot | chưa xếp đợt | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| NewXmas | chưa xếp đợt | C | 6 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| OkongOfLegend | chưa xếp đợt | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| SavetheEarth | chưa xếp đợt | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Smash | chưa xếp đợt | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Space_TW | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| UserContest | chưa xếp đợt | C | 17 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| WhiteAngel | chưa xếp đợt | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| WinningStreak_Colosseum | chưa xếp đợt | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
-| Wriggletest | chưa xếp đợt | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Antarctic | F3? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Balansa | F2? | C | 5 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Baram | F2? | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| BlackLucy | F2? | C | 9 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Clovertest | F2? | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| ConfusedFight | F2? | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| DarkCastle | F2? | C | 9 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| DarkVampire | F2? | C | 8 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| DragonPalace | F3? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| EscapeMaze | F3? | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Fm_BigBattle | F2? | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Fm_BigBattleH_PreparePlay | F2? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Fm_BigBattle_PreparePlay | F2? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| GoldButterfly | F2? | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| GolemRun | F3? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Hiphopclub | F2? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| IamWriggle | F3? | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| MagNest | F2? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| MineExp | F3? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Minibot | F3? | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| NewXmas | F2? | C | 6 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| OkongOfLegend | F2? | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| SavetheEarth | F3? | C | 3 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Smash | F2? | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Space_TW | F2? | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| UserContest | F2? | C | 17 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| WhiteAngel | F2? | C | 2 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| WinningStreak_Colosseum | F2? | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
+| Wriggletest | F2? | C | 4 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | CAhero | F3 | C | 53 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | RPG | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | RPG01_B | F3 | C | 1 | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
@@ -662,3 +662,15 @@ Route cũ chỉ được dùng theo phạm vi [ma trận G1](../evidence/rust-se
 | SelectionBox | F6 | C | — | Chưa có đủ wire, luật hoặc quyền quyết định của server trong KR 00967. |
 | Túi đồ | F4 | C | — | Chưa có ledger, projection túi đồ và wire đồng bộ quyền sở hữu. |
 | Web nhúng: Dwarf/libcef | F4/F6 | C | — | Đã chốt dựng web ở server; chưa biết hợp đồng từng màn. |
+| Quảng trường (광장) | F5 | C | — | Sảnh đi lại tự do và các khu quần áo, trang sức, pet, cà phê; chưa có wire di chuyển và đồng bộ. |
+| Kênh theo loại (채널) | F2 | C | — | Kênh tân thủ, sự kiện, không item, luyện tập và giải đấu; chưa biết luật vào kênh. |
+| Giải đấu (토너먼트) | F2 | C | — | Giải đấu có kênh luyện tập, giới hạn người vừa vô địch và quà; chưa có wire và luật. |
+| Siêu chủ phòng (슈퍼방장) | F2 | C | — | Quyền chủ phòng mở rộng như bắt đầu ngay; chưa biết nguồn cấp và giới hạn. |
+| Thư (쪽지) | F5 | C | — | Gửi và nhận thư, hộp thư có giới hạn; chưa có wire và lưu trữ. |
+| Danh hiệu (칭호) | F4 | C | — | Đạt và gắn danh hiệu, có thông báo khi đạt; chưa biết điều kiện từng danh hiệu. |
+| Cường hóa và nâng cấp (강화) | F4 | C | — | Nâng cấp item, pet, bóng nước và đồ RPG bằng nguyên liệu; chưa có công thức và tỉ lệ. |
+| Tặng quà và phiếu (선물하기, 쿠폰) | F4 | C | — | Tặng item cho người khác và dùng phiếu đổi; bỏ phần tiền thật của Nexon. |
+| Mật khẩu cấp 2 (2차 비밀번호) | F4 | C | — | Lớp bảo vệ tài khoản trong game; chưa có wire tạo và xác thực. |
+| Bốc thăm và đậu may mắn (뽀끼뽀끼, 럭키빈) | F6 | C | — | Bốc thăm bằng chìa khóa và đổi đậu may mắn lấy quà; tỉ lệ do server cấu hình. |
+| Chợ sách phép (마법거래소) | F6 | C | — | Người chơi đăng bán và mua sách phép; chưa có wire và luật giá. |
+| Mini-game sự kiện (빙고, 주사위, 퀴즈) | F6 | C | — | Bingo nhân vật, nhiệm vụ xúc xắc và câu đố; chưa có wire và phần thưởng. |

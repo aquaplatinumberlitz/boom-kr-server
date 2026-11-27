@@ -1,0 +1,18 @@
+{
+  "schema": "kre-owner-directive-v1",
+  "recorded_utc": "2026-11-27T07:00:00+00:00",
+  "authority": "project_owner",
+  "source": "Chủ dự án nói trong phiên Claude Code ngày 2026-11-27: \"Tìm trên wiki namu của hàn quốc lẫn trong client xem còn bỏ sót tính năng nào chưa ghi vào readme và roadmap ko (sẽ làm lần lượt ko bỏ sót)\".",
+  "fact": "Trước yêu cầu này, bảng xếp loại còn 42 họ map \"chưa xếp đợt\" (13 họ sảnh/cửa hàng dạng map, 29 họ chưa phân nhóm). Chuỗi client (csysstr.ssd, csysqstr.ssd) và bản tổng hợp wiki trong boomkr-re/docs/game-spec-web.md cho thấy thêm các hệ thống chưa có trong lộ trình: quảng trường, kênh theo loại, giải đấu, siêu chủ phòng, thư, danh hiệu, cường hóa, tặng quà và phiếu, mật khẩu cấp 2, bốc thăm và đậu may mắn, chợ sách phép, bingo, xúc xắc và câu đố. Phiên này không truy cập trực tiếp namu.wiki.",
+  "decision": [
+    "Mọi họ map, mode và hệ thống của client phải nằm trong một đợt của lộ trình và được giới thiệu trên README; sẽ làm lần lượt, không bỏ sót.",
+    "Họ map chưa phân nhóm được xếp tạm (đợt có dấu ?) theo tên, số chỗ xuất phát và script; chốt khi vào đợt đó.",
+    "Hệ thống tìm thấy qua chuỗi client và wiki được ghi thành dòng roadmap_only trong bảng xếp loại."
+  ],
+  "unchanged": [
+    "Ưu đãi phòng máy (PCRoomBenefit) và phần riêng của Nexon vẫn ngoài phạm vi theo post-phase1-direction.json.",
+    "Thứ tự F4 → F2 → F5 → F3 → F6 giữ nguyên; F7 chốt sau theo custom-map.json."
+  ],
+  "plan": "docs/PLAN.md#full-game-roadmap",
+  "owner": "Chủ dự án; Claude ghi lại và điều hành theo uỷ quyền"
+}

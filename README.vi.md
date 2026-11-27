@@ -43,14 +43,20 @@ LANBoom là **dự án cộng đồng miễn phí**: không thu phí, không bá
 | ✅ | **Cửa hàng web và tủ đồ** | Xem danh mục, mua trang phục bằng VÀNG, mặc hoặc tháo đồ trong túi đồ |
 | ✅ | **Trang cộng đồng trên web** | Bạn bè và lời mời kết bạn, danh sách chặn, bang hội của bạn và bảng xếp hạng server |
 | ✅ | **Ngôn ngữ** | Tiếng Việt, English và 한국어 trong game, launcher và BoomServer; chat tiếng Việt có dấu |
-| 🚧 | **Cửa hàng và trang trí trong game** | Trang cá nhân, túi đồ và cửa hàng ngay trong game, cùng trang trí avatar, nhân vật, bóng nước, cấp độ, ID và biểu cảm |
+| 🚧 | **Cửa hàng và trang trí trong game** | Trang cá nhân, túi đồ và cửa hàng ngay trong game, cùng trang trí avatar, nhân vật, bóng nước, cấp độ, ID, biểu cảm và danh hiệu |
 | 🚧 | **Thang đấu và ghép trận** | Đấu xếp hạng theo đẳng và tự động ghép trận |
-| 🚧 | **Chế độ đặc biệt** | **18** chế độ trên **122** map (Bóng chày, Tô màu, Zombie, Đua kart, Siêu chiến binh, Popcade…) và các biến thể luật như Ném tuyết, Hồi sinh, Bom hẹn giờ, Bắt thủ lĩnh, Nhím |
+| 🚧 | **Chế độ đặc biệt** | **18** chế độ trên **122** map (Bóng chày, Tô màu, Zombie, Đua kart, Siêu chiến binh, Popcade…), Máy bay, Đấu trường chuỗi thắng và các biến thể luật như Ném tuyết, Hồi sinh, Bom hẹn giờ, Bắt thủ lĩnh, Nhím |
 | 🚧 | **Đấu với máy** | Trận phối hợp và nhiệm vụ đấu với người chơi máy |
-| 🚧 | **Phiêu lưu PvE** | **699** màn đánh quái cùng bạn bè: chế độ Quái vật, CA Hero, Hidden Catch, RPG, Sandbox, Thám hiểm Nam Cực, I am Boss, màn thưởng và hướng dẫn, có trùm, rương báu và chế tạo đồ |
-| 🚧 | **Cộng đồng trong game** | Messenger, thì thầm, cửa sổ bang hội, cặp đôi và nhẫn đôi |
+| 🚧 | **Giải đấu và kênh** | Giải đấu có kênh luyện tập, cùng các kênh tân thủ, sự kiện, không item và luyện tập |
+| 🚧 | **Siêu chủ phòng** | Quyền chủ phòng mở rộng như bắt đầu ván ngay |
+| 🚧 | **Quảng trường** | Đi dạo quảng trường, ghé khu quần áo, trang sức, thú cưng và quán cà phê |
+| 🚧 | **Cường hóa** | Nâng cấp item, thú cưng và bóng nước bằng nguyên liệu |
+| 🚧 | **Tặng quà và phiếu** | Tặng đồ cho bạn bè và dùng phiếu đổi quà |
+| 🚧 | **Bảo mật tài khoản** | Mật khẩu cấp 2 cho tài khoản game |
+| 🚧 | **Phiêu lưu PvE** | **699** màn đánh quái cùng bạn bè: chế độ Quái vật, CA Hero, Hidden Catch, RPG, Sandbox, Thám hiểm Nam Cực, I am Boss, Chạy trốn Golem, Long cung, Mê cung, chơi một mình, màn thưởng và hướng dẫn, có trùm, rương báu và chế tạo đồ |
+| 🚧 | **Cộng đồng trong game** | Messenger, thì thầm, thư, loa, cửa sổ bang hội, cặp đôi và nhẫn đôi |
 | 🚧 | **Nhiệm vụ và vé mùa** | Nhiệm vụ hằng ngày, nhiệm vụ, CA Pass và bộ sưu tập item |
-| 🚧 | **Sự kiện theo mùa** | Khoảng 20 hệ thống sự kiện: Thẻ May Mắn, Thám Hiểm Mỏ, Chợ Phép Thuật, Trồng Mầm, Tự Chế Bom, Trao đổi, thú cưng và câu cá |
+| 🚧 | **Sự kiện theo mùa** | Khoảng 20 hệ thống sự kiện: Thẻ May Mắn, Thám Hiểm Mỏ, Chợ Phép Thuật, Trồng Mầm, Tự Chế Bom, Trao đổi, bốc thăm và đậu may mắn, Chợ sách phép, bingo, xúc xắc, câu đố, thú cưng và câu cá |
 | 🚧 | **Map tự tạo** | Tự dựng map riêng rồi rủ bạn bè vào chơi |
 
 ## Hai cách chơi
