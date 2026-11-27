@@ -8,6 +8,8 @@ mod consumption;
 pub use consumption::*;
 mod extended;
 pub use extended::BoosterSettlementRequest;
+mod extended_ops;
+pub use extended_ops::*;
 mod inventory;
 mod ledger;
 #[cfg(test)]
