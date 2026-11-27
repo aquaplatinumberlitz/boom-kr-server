@@ -8,7 +8,10 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.kr_f6_policy_validate import CATALOG, ROOT, main, validate_policy
+from tools.kr_f6_policy_validate import (
+    CATALOG, EXTENDED_SPEC, ROOT, RUST_POLICY, main, validate_extended_spec,
+    validate_policy,
+)
 
 
 PROFILE = ROOT / "server/profiles/f6-events-disabled.json"
@@ -21,6 +24,8 @@ class PolicyTests(unittest.TestCase):
     def setUpClass(cls):
         cls.catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
         cls.baseline = json.loads(PROFILE.read_text(encoding="utf-8"))
+        cls.extended = json.loads(EXTENDED_SPEC.read_text(encoding="utf-8"))
+        cls.rust_source = RUST_POLICY.read_text(encoding="utf-8")
 
     def setUp(self):
         self.profile = deepcopy(self.baseline)
@@ -144,6 +149,53 @@ class PolicyTests(unittest.TestCase):
                         self.assertEqual(main(["--check", str(path)]), 1)
                     self.assertEqual(stdout.getvalue(), "")
                     self.assertIn(message, stderr.getvalue())
+
+    def test_extended_spec_and_default_cli_check_are_backward_compatible(self):
+        for argv in (
+            ["--check", str(PROFILE)],
+            [str(PROFILE)],
+            ["--check-extended", str(PROFILE)],
+            ["--check-extended", "--check", str(PROFILE)],
+        ):
+            with self.subTest(argv=argv), redirect_stdout(io.StringIO()) as stdout, redirect_stderr(io.StringIO()) as stderr:
+                self.assertEqual(main(argv), 0)
+                self.assertEqual(stdout.getvalue(), "F6: profile hợp lệ (19 hệ thống)\n")
+                self.assertEqual(stderr.getvalue(), "")
+        validate_extended_spec(self.extended, self.rust_source,
+                               {row["system"] for row in self.catalog["systems"]
+                                if row["scope"] == "in_scope"})
+
+    def test_extended_spec_rejects_in_scope_drift_and_pcr_room_benefit(self):
+        spec = deepcopy(self.extended)
+        spec["in_scope"][0]["name"] = "PCRoomBenefit"
+        with self.assertRaisesRegex(ValueError, "PCRoomBenefit"):
+            validate_extended_spec(spec, self.rust_source,
+                                   {row["system"] for row in self.catalog["systems"]
+                                    if row["scope"] == "in_scope"})
+
+    def test_policy_rejects_roadmap_only_injection_and_pcr_room_benefit(self):
+        self.systems["PCRoomBenefit"] = deepcopy(self.entry)
+        with self.assertRaisesRegex(ValueError, "PCRoomBenefit"):
+            self.validate()
+        del self.systems["PCRoomBenefit"]
+        name = self.extended["roadmap_only"][0]["name"]
+        self.systems[name] = deepcopy(self.entry)
+        with self.assertRaisesRegex(ValueError, "khóa lạ"):
+            self.validate()
+
+    def test_extended_spec_rejects_roadmap_only_enablement_or_map_drift(self):
+        spec = deepcopy(self.extended)
+        spec["roadmap_only"][0]["enabled"] = True
+        with self.assertRaisesRegex(ValueError, "enabled"):
+            validate_extended_spec(spec, self.rust_source,
+                                   {row["system"] for row in self.catalog["systems"]
+                                    if row["scope"] == "in_scope"})
+        spec = deepcopy(self.extended)
+        spec["map_families"][0]["name"] = "CAPass"
+        with self.assertRaisesRegex(ValueError, "in_scope|map"):
+            validate_extended_spec(spec, self.rust_source,
+                                   {row["system"] for row in self.catalog["systems"]
+                                    if row["scope"] == "in_scope"})
 
 
 if __name__ == "__main__":
