@@ -28,7 +28,7 @@ LANBoom은 **무료 커뮤니티 프로젝트**입니다. 이용료도, 유료 �
 
 <table>
   <tr>
-    <td align="center" valign="top"><strong>런처</strong><br><img src="assets/screenshots/launcher.jpg" width="420" alt="친구와 플레이 탭을 연 LANBoom 런처(베트남어 화면)"></td>
+    <td align="center" valign="top"><strong>런처</strong><br><img src="assets/screenshots/launcher-ko.jpg" width="420" alt="친구와 플레이 탭을 연 LANBoom 런처"></td>
     <td align="center" valign="top"><strong>로그인</strong><br><img src="assets/screenshots/ko-login.jpg" width="420" alt="LANBoom 한국어 로그인 화면"></td>
   </tr>
   <tr>
@@ -124,6 +124,6 @@ LANBoom은 **무료 커뮤니티 프로젝트**입니다. 이용료도, 유료 �
 
 ## 커뮤니티
 
-- 💬 Discord / Facebook: *(2026년 12월 공개 예정)*
+- 💬 Discord: [LANBoom Discord 참여하기](https://discord.gg/ag2eEsryNe) · Facebook: *(2026년 12월 공개 예정)*
 - 🐛 버그 제보와 제안: [GitHub Issues](https://github.com/aquaplatinumberlitz/boom-kr-server/issues)
 - 🛠️ 개발자: [기술 문서](docs/DEVELOPMENT.md) 참고
