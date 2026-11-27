@@ -68,18 +68,22 @@ impl PacketFixtures {
         Self(dir)
     }
 
+    fn file(&self, name: &str, bytes: &[u8]) -> FixturePin {
+        let path = self.0.join(name);
+        fs::write(&path, bytes).unwrap();
+        FixturePin {
+            path,
+            bytes: bytes.len(),
+            sha256: crate::sha256_hex(bytes),
+        }
+    }
+
     fn pin(&self, name: &str, opcode: u32, body: Vec<u8>) -> (String, LobbyPacketPin) {
         let frame = wire::encode(opcode, &body, 0).unwrap();
-        let path = self.0.join(name);
-        fs::write(&path, &frame).unwrap();
         (
             name.into(),
             LobbyPacketPin {
-                fixture: FixturePin {
-                    path,
-                    bytes: frame.len(),
-                    sha256: crate::sha256_hex(&frame),
-                },
+                fixture: self.file(name, &frame),
                 sequence: Some(0),
                 opcode,
             },
@@ -96,15 +100,27 @@ impl Drop for PacketFixtures {
 /// Synthetic packets for the production eight-player loader. The existing
 /// four-player fixture cannot exercise the measured operator team layout.
 fn eight_player_hub(layout: &str, teams: &[u8; 8]) -> Arc<Hub> {
+    loaded_hub(opt_in("free_1v7"), teams, Some(layout), None)
+}
+
+fn map_hub(f2: Value, name: &str) -> Arc<Hub> {
+    loaded_hub(f2, &[0, 1, 0, 1], None, Some(name))
+}
+
+// Named fixtures exercise room policy on roomtype=0 without executing the
+// corresponding map scripts or claiming their pack terrain or map codes.
+fn loaded_hub(f2: Value, teams: &[u8], layout: Option<&str>, map: Option<&str>) -> Arc<Hub> {
     let files = PacketFixtures::new();
-    let name = b"ExVillage01";
+    let name = map.unwrap_or("ExVillage01").as_bytes();
+    let dynamic_index = if map.is_some() { 0u32 } else { 3 };
+    let count = teams.len() as u8;
     let mut stream = vec![0; 32];
     stream[0] = 24;
     stream[28..32].copy_from_slice(&(name.len() as u32).to_le_bytes());
     stream.extend(name);
-    stream.extend(3u32.to_le_bytes());
-    stream.extend([0, 0, 8, 0, 0, 0, 0]);
-    for slot in 0..8u8 {
+    stream.extend(dynamic_index.to_le_bytes());
+    stream.extend([0, 0, count, 0, 0, 0, 0]);
+    for slot in 0..count {
         let mut row = [0; 26];
         row[0] = slot;
         row[2] = slot;
@@ -131,6 +147,16 @@ fn eight_player_hub(layout: &str, teams: &[u8; 8]) -> Arc<Hub> {
     let mut floor = uint(floor_stream.len() as u64, Width::U32);
     floor.extend(wire::encode_bytes(&floor_stream).unwrap());
 
+    let (table, ready) = if map.is_some() {
+        map_table_and_ready(name)
+    } else {
+        (vec![0; 72], vec![])
+    };
+    let mut play = vec![0; 7];
+    if map.is_some() {
+        play[5..].copy_from_slice(&uint(0, Width::U16));
+    }
+
     let listing = wire::listing91_from_rows(&[wire::ListingRow {
         session: 1,
         room_id: 1,
@@ -148,22 +174,22 @@ fn eight_player_hub(layout: &str, teams: &[u8; 8]) -> Arc<Hub> {
         ),
         ("join", 87, vec![0x5a, 0x5a, 0xa5, 0x68, 0x5a, 0x5a, 0x5a]),
         ("listing", 91, listing),
-        ("table", 238, vec![0; 72]),
+        ("table", 238, table),
         (
             "map",
             117,
             [
                 uint(0, Width::U16),
                 uint(0, Width::U16),
-                uint(3, Width::U32),
+                uint(u64::from(dynamic_index), Width::U32),
             ]
             .concat(),
         ),
         ("floor", 582, floor),
         ("start", 121, start),
         ("go", 197, vec![0; 14]),
-        ("play", 196, vec![0; 7]),
-        ("peer", 153, vec![0; 205]),
+        ("play", 196, play),
+        ("peer", 153, vec![0; 61 + 18 * usize::from(count)]),
     ]
     .into_iter()
     .map(|(name, op, body)| files.pin(name, op, body))
@@ -175,7 +201,7 @@ fn eight_player_hub(layout: &str, teams: &[u8; 8]) -> Arc<Hub> {
         .collect();
     let template = wire::PlayerTemplate::parse(&body).unwrap();
     let mut actors = HashMap::new();
-    for slot in 0..8u8 {
+    for slot in 0..count {
         let identity = u32::from(slot) + 1;
         let name = format!("Test{slot}").into_bytes();
         let body = template.project(identity, &name).unwrap();
@@ -188,19 +214,50 @@ fn eight_player_hub(layout: &str, teams: &[u8; 8]) -> Arc<Hub> {
             ActorProfile {
                 identity,
                 name,
-                packets: HashMap::from([("ready".into(), packet(241, vec![]))]),
+                packets: HashMap::from([("ready".into(), packet(241, ready.clone()))]),
                 reported_login_ipv4: None,
                 configured_peer: Ipv4Addr::LOCALHOST,
             },
         );
     }
     let mut cfg: room_io::Config = serde_json::from_value(json!({
-        "title": "Template", "packets": {}, "eight_battle": true,
-        "eight_team_layout": layout, "f2_modes": opt_in("free_1v7"),
+        "title": "Template", "packets": {}, "eight_battle": layout.is_some(),
+        "eight_team_layout": layout, "f2_modes": f2,
     }))
     .unwrap();
     cfg.packets = packets;
-    managed_hub(room_io::load(&cfg, &actors, true).unwrap(), teams)
+    if let Some(name) = map {
+        let profile = json!({
+            "name": name, "map_code": 0, "width": 15, "height": 13,
+            "scripted": false, "payload_sha256": "0".repeat(64),
+            "spawns": (0..count).map(|slot| [slot, 0]).collect::<Vec<_>>()
+        });
+        cfg.map_profile = Some(files.file("profile", &serde_json::to_vec(&profile).unwrap()));
+    }
+    let prototype = room_io::load(&cfg, &actors, true)
+        .unwrap_or_else(|error| panic!("failed to load map fixture {map:?}: {error}"));
+    managed_hub(prototype, teams)
+}
+
+fn map_table_and_ready(name: &[u8]) -> (Vec<u8>, Vec<u8>) {
+    let mut table = vec![24, 0, 0, 0, 0, 0];
+    table.extend(1u16.to_le_bytes()); // One map at index 0.
+    table.extend([0; 9]); // Index, flag, empty display name.
+    table.extend((name.len() as u32).to_le_bytes());
+    table.extend(name);
+    table.extend([0; 26]); // Remaining row fields, including test map code 0.
+    let size = table.len();
+    table[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
+    let (a, b) = table[5..].iter().fold((0u32, 0u32), |(a, b), byte| {
+        let a = (a + u32::from(*byte)) % 65521;
+        (a, (b + a) % 65521)
+    });
+    let mut body = uint(size as u64, Width::U32);
+    body.extend(wire::encode_bytes(&table).unwrap());
+    let mut ready = body.clone();
+    ready.extend(uint(u64::from((b << 16) | a), Width::U32));
+    ready.extend([0; 9]);
+    (body, ready)
 }
 
 struct TestRoom {
@@ -392,6 +449,101 @@ fn rejected_room_config(f2: Value) -> String {
         .err()
         .expect("policy must reject before loading the room")
         .to_string()
+}
+
+// Literal export names from kr_pack_export.py; candidate groups from the
+// KR00967 F2 mode catalog. Rabbit11 keeps the nonconsecutive suffix covered.
+const F2_EXPORT_SAMPLES: [(&str, &str, &str); 8] = [
+    ("CAPong", "CAPong01", "capong"),
+    ("Clover", "Clover01", "clover"),
+    ("Rabbit", "Rabbit11", "farm_mission"),
+    ("RescueET", "RescueET01", "rescue_et"),
+    ("SnowyFields", "SnowyFields04", "snowy_fields"),
+    ("Wriggle", "Wriggle01", "wriggle"),
+    ("Zzolman", "Zzolman01", "zzolman"),
+    ("Zombie", "Zombie04", "zombie"),
+];
+
+#[test]
+fn f2_export_maps_require_an_explicit_runtime_preset_for_state_and_ticks() {
+    for (family, map, _) in F2_EXPORT_SAMPLES {
+        for enabled in [false, true] {
+            let policy = if enabled {
+                opt_in("timebomb")
+            } else {
+                Value::Null
+            };
+            let mut room = TestRoom::on(map_hub(policy, map), false);
+            let round = room.load();
+            let (_, start) = room.startup[0].iter().find(|(op, _)| *op == 121).unwrap();
+            let selected = wire::start121_map_context(start).unwrap();
+            assert_eq!(selected.name, map.as_bytes(), "{family}");
+            assert_eq!(selected.roomtype, 0, "{family}");
+            room.arm();
+
+            let start = room.start(
+                round,
+                F2Setup::Timebomb {
+                    initial_carrier: 0,
+                    fuse_ms: 10,
+                },
+            );
+            let tick = |milliseconds| F2Event::AdvanceTo { milliseconds };
+            if enabled {
+                let view = start.unwrap();
+                assert_eq!(view["bomb"], json!([0, 10]), "{family}");
+                assert_eq!(view["players"][0]["life"], "alive", "{family}");
+                let view = room.event(round, 1, tick(4)).unwrap();
+                assert_eq!(view["bomb"], json!([0, 6]), "{family}");
+                let view = room.event(round, 2, tick(10)).unwrap();
+                assert_eq!(view["players"][0]["life"], "eliminated", "{family}");
+                assert_eq!(view["bomb"], json!([1, 10]), "{family}");
+            } else {
+                rejects(start, "disabled");
+                rejects(room.event(round, 1, tick(4)), "disabled");
+            }
+            room.no_packets();
+        }
+    }
+}
+
+#[test]
+fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
+    for (index, (family, map, group)) in F2_EXPORT_SAMPLES.into_iter().enumerate() {
+        assert_eq!(
+            rejected_room_config(json!({"candidate_map_family": family})),
+            "F2 candidate map family activation is unmeasured",
+            "{family}"
+        );
+        assert_eq!(
+            rejected_room_config(json!({"candidate_map_family": family.to_ascii_lowercase()})),
+            "unknown F2 candidate map family",
+            "{family}"
+        );
+
+        let create_override = json!({"create_overrides": {"free": group}});
+        let malformed = format!("{map}x");
+        let (_, other_family_map, _) = F2_EXPORT_SAMPLES[(index + 1) % F2_EXPORT_SAMPLES.len()];
+        for (hub, expected) in [
+            (
+                map_hub(create_override.clone(), map),
+                "f2_start_dispatch_unmeasured",
+            ),
+            (
+                map_hub(create_override.clone(), &malformed),
+                "f2_map_not_confirmed_in_group_or_family",
+            ),
+            (
+                map_hub(create_override, other_family_map),
+                "f2_map_not_confirmed_in_group_or_family",
+            ),
+            (map_hub(opt_in(group), map), "F2 runtime: UnsupportedMode"),
+        ] {
+            let rejected = hub.select_fixture(81, &create(false), 70000);
+            assert_eq!(rejected.err().unwrap().to_string(), expected, "{family}");
+            assert!(hub.operator_rooms().unwrap().is_empty(), "{family}");
+        }
+    }
 }
 
 #[test]
