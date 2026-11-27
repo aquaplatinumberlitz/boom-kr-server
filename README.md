@@ -1,5 +1,7 @@
 # Boom KR Server
 
+> 🎮 **Người chơi / Players / 플레이어:** giới thiệu **LANBoom** — [English](docs/LANBOOM.md) · [Tiếng Việt](docs/LANBOOM.vi.md) · [한국어](docs/LANBOOM.ko.md)
+
 Server giả lập cho **the lastest client Crazy Arcade KR build00967 before end of service**, dựa trên kiến thức từ client
 VN VBNB_116. 
 **Chú ý:**<br>
