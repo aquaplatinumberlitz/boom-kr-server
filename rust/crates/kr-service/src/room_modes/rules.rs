@@ -1,10 +1,38 @@
 //! Design contracts for opt-in modes. A named condition identifies what needs
 //! an authority/handler; it does not establish timing, results or KR wire IDs.
 use super::{Mode, ModeKind};
+use kr_wire::kr00967::GameTypeId;
 use serde::Deserialize;
 use std::{collections::BTreeMap, io};
 
 const DESCRIPTORS: &str = include_str!("rules.json");
+
+impl ModeKind {
+    /// Operator aliases for recognizable dialog labels at KR00967 0xC6C080.
+    /// This correspondence is policy, and supplies no native dispatch or
+    /// runtime support. Distinct IDs sharing a label are not interchangeable.
+    fn game_type_id(self) -> Option<GameTypeId> {
+        Some(match self {
+            Self::Revive => GameTypeId::Rehab,
+            Self::Hedgehog => GameTypeId::Hedgehog,
+            Self::Timebomb => GameTypeId::TimeBomb,
+            Self::SuperFighter => GameTypeId::SuperFighter,
+            Self::Popcade => GameTypeId::Popcade,
+            _ => return None,
+        })
+    }
+
+    fn from_game_type_id(id: GameTypeId) -> Option<Self> {
+        match id {
+            GameTypeId::Rehab => Some(Self::Revive),
+            GameTypeId::Hedgehog => Some(Self::Hedgehog),
+            GameTypeId::TimeBomb => Some(Self::Timebomb),
+            GameTypeId::SuperFighter => Some(Self::SuperFighter),
+            GameTypeId::Popcade => Some(Self::Popcade),
+            _ => None,
+        }
+    }
+}
 
 #[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq)]
 pub(super) enum Wave {
@@ -126,6 +154,11 @@ pub(super) struct RuleTable(BTreeMap<ModeKind, ModeRules>);
 impl RuleTable {
     pub(super) fn load(modes: &[Mode]) -> io::Result<Self> {
         Self::parse(DESCRIPTORS, modes)
+    }
+
+    pub(super) fn mode_for_game_type(&self, id: GameTypeId) -> Option<ModeKind> {
+        let mode = ModeKind::from_game_type_id(id)?;
+        (mode.game_type_id() == Some(id) && self.0.contains_key(&mode)).then_some(mode)
     }
 
     fn parse(json: &str, modes: &[Mode]) -> io::Result<Self> {

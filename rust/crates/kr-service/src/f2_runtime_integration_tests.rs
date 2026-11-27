@@ -1,12 +1,15 @@
 use crate::{
+    ActorProfile, FixturePin, LobbyPacketPin,
     operations::{F2Command, F2Event, F2Setup},
     room_io::{self, Session, Shared, registry_foundation_tests},
+    room_modes,
+    room_packets::packet,
     room_registry::RoomKey,
     room_service::{Config, Hub},
 };
 use kr_wire::{Width, kr00967 as wire, write_uint};
 use serde_json::{Value, json};
-use std::{io, sync::Arc};
+use std::{collections::HashMap, fs, io, net::Ipv4Addr, path::PathBuf, sync::Arc};
 
 fn uint(value: u64, width: Width) -> Vec<u8> {
     write_uint(value, width).unwrap()
@@ -37,18 +40,167 @@ fn join(key: RoomKey) -> Vec<u8> {
 }
 
 fn hub(f2: Value) -> Arc<Hub> {
+    managed_hub(
+        registry_foundation_tests::f2_runtime_prototype(f2),
+        &[0, 1, 0, 1],
+    )
+}
+
+fn managed_hub(prototype: Shared, teams: &[u8]) -> Arc<Hub> {
     let cfg: Config = serde_json::from_value(json!({
         "max_rooms": 2,
-        "round_profile": {"mode": "teams", "teams": [0, 1, 0, 1], "initial_bomb_capacity": [1, 2, 1, 1]}
+        "round_profile": {"mode": "teams", "teams": teams,
+            "initial_bomb_capacity": crate::rules::default_bomb_capacity(teams.len())}
     }))
     .unwrap();
-    Hub::new(
-        &cfg,
-        registry_foundation_tests::f2_runtime_prototype(f2),
-        None,
-        None,
-    )
-    .unwrap()
+    Hub::new(&cfg, prototype, None, None).unwrap()
+}
+
+struct PacketFixtures(PathBuf);
+
+impl PacketFixtures {
+    fn new() -> Self {
+        let mut suffix = [0; 8];
+        getrandom::fill(&mut suffix).unwrap();
+        let dir =
+            std::env::temp_dir().join(format!("kr-f2-runtime-{:016x}", u64::from_ne_bytes(suffix)));
+        fs::create_dir(&dir).unwrap();
+        Self(dir)
+    }
+
+    fn pin(&self, name: &str, opcode: u32, body: Vec<u8>) -> (String, LobbyPacketPin) {
+        let frame = wire::encode(opcode, &body, 0).unwrap();
+        let path = self.0.join(name);
+        fs::write(&path, &frame).unwrap();
+        (
+            name.into(),
+            LobbyPacketPin {
+                fixture: FixturePin {
+                    path,
+                    bytes: frame.len(),
+                    sha256: crate::sha256_hex(&frame),
+                },
+                sequence: Some(0),
+                opcode,
+            },
+        )
+    }
+}
+
+impl Drop for PacketFixtures {
+    fn drop(&mut self) {
+        fs::remove_dir_all(&self.0).unwrap();
+    }
+}
+
+/// Synthetic packets for the production eight-player loader. The existing
+/// four-player fixture cannot exercise the measured operator team layout.
+fn eight_player_hub(layout: &str, teams: &[u8; 8]) -> Arc<Hub> {
+    let files = PacketFixtures::new();
+    let name = b"ExVillage01";
+    let mut stream = vec![0; 32];
+    stream[0] = 24;
+    stream[28..32].copy_from_slice(&(name.len() as u32).to_le_bytes());
+    stream.extend(name);
+    stream.extend(3u32.to_le_bytes());
+    stream.extend([0, 0, 8, 0, 0, 0, 0]);
+    for slot in 0..8u8 {
+        let mut row = [0; 26];
+        row[0] = slot;
+        row[2] = slot;
+        row[3] = slot;
+        row[5] = slot % 2;
+        row[8] = 255;
+        row[13..17].fill(255);
+        stream.extend(row);
+    }
+    let size = stream.len();
+    stream[1..5].copy_from_slice(&((size - 5) as u32).to_le_bytes());
+    let mut start = uint(0, Width::U8);
+    start.extend(uint(size as u64, Width::U32));
+    start.extend(wire::encode_bytes(&stream).unwrap());
+    start.extend([0; 18]);
+
+    let mut floor_stream = vec![24, 37, 0, 0, 0, 0, 3, 0];
+    for index in 0..3u32 {
+        floor_stream.extend(index.to_le_bytes());
+        floor_stream.extend([0, index as u8]);
+        floor_stream.extend(1u32.to_le_bytes());
+    }
+    floor_stream.extend([0; 4]);
+    let mut floor = uint(floor_stream.len() as u64, Width::U32);
+    floor.extend(wire::encode_bytes(&floor_stream).unwrap());
+
+    let listing = wire::listing91_from_rows(&[wire::ListingRow {
+        session: 1,
+        room_id: 1,
+        title: b"Template".to_vec(),
+        opaque: [0; 22],
+    }])
+    .unwrap();
+    let mut packets: HashMap<_, _> = [
+        (
+            "create",
+            86,
+            vec![
+                0x5a, 0xa5, 0x68, 0x96, 0xca, 0x53, 0x95, 0x5a, 0x5a, 0x5a, 0x5a,
+            ],
+        ),
+        ("join", 87, vec![0x5a, 0x5a, 0xa5, 0x68, 0x5a, 0x5a, 0x5a]),
+        ("listing", 91, listing),
+        ("table", 238, vec![0; 72]),
+        (
+            "map",
+            117,
+            [
+                uint(0, Width::U16),
+                uint(0, Width::U16),
+                uint(3, Width::U32),
+            ]
+            .concat(),
+        ),
+        ("floor", 582, floor),
+        ("start", 121, start),
+        ("go", 197, vec![0; 14]),
+        ("play", 196, vec![0; 7]),
+        ("peer", 153, vec![0; 205]),
+    ]
+    .into_iter()
+    .map(|(name, op, body)| files.pin(name, op, body))
+    .collect();
+    let source = crate::account_bridge::local::native::fixtures::PLAYER;
+    let body: Vec<_> = (0..source.len())
+        .step_by(2)
+        .map(|i| u8::from_str_radix(&source[i..i + 2], 16).unwrap())
+        .collect();
+    let template = wire::PlayerTemplate::parse(&body).unwrap();
+    let mut actors = HashMap::new();
+    for slot in 0..8u8 {
+        let identity = u32::from(slot) + 1;
+        let name = format!("Test{slot}").into_bytes();
+        let body = template.project(identity, &name).unwrap();
+        let body = wire::player106_state(&body, slot, slot % 2, false, slot == 0).unwrap();
+        let alias = format!("player_{}", char::from(b'A' + slot));
+        let (alias, pin) = files.pin(&alias, 106, body);
+        packets.insert(alias, pin);
+        actors.insert(
+            identity,
+            ActorProfile {
+                identity,
+                name,
+                packets: HashMap::from([("ready".into(), packet(241, vec![]))]),
+                reported_login_ipv4: None,
+                configured_peer: Ipv4Addr::LOCALHOST,
+            },
+        );
+    }
+    let mut cfg: room_io::Config = serde_json::from_value(json!({
+        "title": "Template", "packets": {}, "eight_battle": true,
+        "eight_team_layout": layout, "f2_modes": opt_in("free_1v7"),
+    }))
+    .unwrap();
+    cfg.packets = packets;
+    managed_hub(room_io::load(&cfg, &actors, true).unwrap(), teams)
 }
 
 struct TestRoom {
@@ -65,19 +217,23 @@ impl TestRoom {
     }
 
     fn on(hub: Arc<Hub>, manner: bool) -> Self {
+        Self::with_guests(hub, manner, &[43, 501, 71])
+    }
+
+    fn with_guests(hub: Arc<Hub>, manner: bool, guests: &[u32]) -> Self {
         let (key, room, host) = hub.select_fixture(81, &create(manner), 70000).unwrap();
         let mut clients = vec![host];
         clients.extend(
-            [43, 501, 71]
-                .into_iter()
-                .map(|id| hub.select_fixture(82, &join(key), id).unwrap().2),
+            guests
+                .iter()
+                .map(|&id| hub.select_fixture(82, &join(key), id).unwrap().2),
         );
         let mut result = Self {
             hub,
             key,
             room,
             clients,
-            startup: vec![vec![]; 4],
+            startup: vec![vec![]; guests.len() + 1],
         };
         result.drain_startup();
         result
@@ -100,12 +256,11 @@ impl TestRoom {
 
     fn load(&mut self) -> u64 {
         registry_foundation_tests::ready_roster(&self.room);
+        let observation = self.clients[0].packet(104, &[0; 20]).unwrap();
         assert!(
-            self.clients[0]
-                .packet(104, &[0; 20])
-                .unwrap()
-                .start_rejection
-                .is_none()
+            observation.start_rejection.is_none(),
+            "start rejected: {:?}",
+            observation.start_rejection
         );
         self.drain_startup();
         let (phase, round) = room_io::health(&self.room).unwrap();
@@ -175,8 +330,13 @@ fn rejects(result: io::Result<Value>, reason: &str) {
 #[test]
 fn default_room_and_unselected_override_keep_legacy_packets_and_reject_f2() {
     let mut normal = TestRoom::new(Value::Null);
+    let mut explicit_default = TestRoom::new(json!({
+        "create_overrides": {"free": {"game_type_id": 0}},
+        "runtime_overrides": {"free": {"game_type_id": 0}},
+        "visible_map_groups": {"bytes": [], "group_ids": {}}
+    }));
     let mut other_selector = TestRoom::new(json!({"runtime_overrides": {"manner": "revive"}}));
-    for room in [&mut normal, &mut other_selector] {
+    for room in [&mut normal, &mut explicit_default, &mut other_selector] {
         let round = room.load();
         room.arm();
         rejects(room.start(round, revive(3)), "disabled");
@@ -186,6 +346,7 @@ fn default_room_and_unselected_override_keep_legacy_packets_and_reject_f2() {
         room.clients[0].tick().unwrap();
         room.no_packets();
     }
+    assert_eq!(normal.startup, explicit_default.startup);
     assert_eq!(normal.startup, other_selector.startup);
     assert_eq!(
         normal.startup[0][0],
@@ -356,6 +517,226 @@ fn leader_capture_settles_only_when_a_leader_falls_without_wire() {
         json!({"winner": 1})
     );
     room.no_packets();
+}
+
+#[test]
+fn hedgehog_preserves_unknown_outcome_without_packets() {
+    let mut room = TestRoom::new(json!({"runtime_overrides": {"free": {"game_type_id": 11}}}));
+    let round = room.load();
+    room.arm();
+    // Parse the same nested command that kr-admin accepts.
+    let start = serde_json::from_value(json!({
+        "command": "start", "round": round, "setup": {"mode": "evaluate"}
+    }))
+    .unwrap();
+    assert_eq!(room.run(start).unwrap()["outcome"], "playing");
+    rejects(
+        room.event(round, 1, F2Event::Objective { winner: Some(0) }),
+        "UnsupportedAction",
+    );
+    rejects(room.event(round, 1, defeat(1)), "UnsupportedAction");
+    let result = room
+        .event(round, 1, F2Event::Objective { winner: None })
+        .unwrap();
+    assert_eq!(result["outcome"], "unresolved");
+    assert_eq!(result["players"][1]["life"], "alive");
+    assert_eq!(room.event(round, 1, defeat(1)).unwrap()["replay"], true);
+    rejects(room.event(round, 2, defeat(1)), "Finished");
+    room.no_packets();
+}
+
+#[test]
+fn free_1v7_requires_asymmetric_roster_and_uses_surviving_team_without_packets() {
+    let guests = [43, 501, 71, 88, 602, 777, 1024];
+    let mut balanced = TestRoom::with_guests(
+        eight_player_hub("4v4", &[0, 1, 0, 1, 0, 1, 0, 1]),
+        false,
+        &guests,
+    );
+    let round = balanced.load();
+    balanced.arm();
+    rejects(balanced.start(round, F2Setup::Evaluate), "InvalidRoster");
+    balanced.no_packets();
+
+    let mut room = TestRoom::with_guests(
+        eight_player_hub("1v7", &[0, 1, 1, 1, 1, 1, 1, 1]),
+        false,
+        &guests,
+    );
+    let round = room.load();
+    room.arm();
+    let start = room.start(round, F2Setup::Evaluate).unwrap();
+    let players = start["players"].as_array().unwrap();
+    assert_eq!(players.len(), 8);
+    assert_eq!(players[0]["team"], 0);
+    assert!(players[1..].iter().all(|player| player["team"] == 1));
+    let first = room.event(round, 1, defeat(1)).unwrap();
+    assert_eq!(first["players"][1]["life"], "eliminated");
+    assert_eq!(first["outcome"], "playing");
+    rejects(room.event(round, 2, defeat(1)), "InvalidTransition");
+    let last = room.event(round, 2, defeat(0)).unwrap();
+    assert_eq!(last["players"][0]["life"], "eliminated");
+    assert_eq!(last["outcome"], json!({"winner": 1}));
+    room.no_packets();
+}
+
+#[test]
+fn co_op_uses_only_an_authoritative_objective_result_without_packets() {
+    let mut room = TestRoom::new(opt_in("co_op"));
+    let round = room.load();
+    room.arm();
+    assert_eq!(
+        room.start(round, F2Setup::Evaluate).unwrap()["outcome"],
+        "playing"
+    );
+    rejects(room.event(round, 1, defeat(1)), "UnsupportedAction");
+    rejects(
+        room.event(round, 1, F2Event::Objective { winner: Some(2) }),
+        "UnknownTeam",
+    );
+    let result = room
+        .event(round, 1, F2Event::Objective { winner: Some(1) })
+        .unwrap();
+    assert_eq!(result["outcome"], json!({"winner": 1}));
+    assert_eq!(result["players"][1]["life"], "alive");
+    rejects(
+        room.event(round, 2, F2Event::Objective { winner: None }),
+        "Finished",
+    );
+    room.no_packets();
+}
+
+#[test]
+fn game_type_ids_fail_closed_and_do_not_bypass_native_or_runtime_gates() {
+    for id in [12, 14, 16, 17, 20, 21, 25, 27, 28, 29, 43, 100] {
+        assert!(wire::GameTypeId::try_from(id).is_ok());
+        let cfg =
+            serde_json::from_value(json!({"runtime_overrides": {"free": {"game_type_id": id}}}))
+                .unwrap();
+        assert!(
+            room_modes::Policy::load(&cfg)
+                .err()
+                .unwrap()
+                .to_string()
+                .contains("unsupported F2 game type alias")
+        );
+    }
+    for id in [1, 15, 266, u32::MAX] {
+        assert!(
+            serde_json::from_value::<room_modes::Config>(json!({
+                "runtime_overrides": {"free": {"game_type_id": id}}
+            }))
+            .is_err()
+        );
+    }
+    let f3 = serde_json::from_value(json!({"create_overrides": {"free": {"game_type_id": 19}}}))
+        .unwrap();
+    assert_eq!(
+        room_modes::Policy::load(&f3).err().unwrap().to_string(),
+        "room create override is outside F2"
+    );
+    for id in [18, 19] {
+        let hub = hub(json!({"runtime_overrides": {"free": {"game_type_id": id}}}));
+        assert_eq!(
+            hub.select_fixture(81, &create(false), 70000)
+                .err()
+                .unwrap()
+                .to_string(),
+            "F2 runtime: UnsupportedMode"
+        );
+        assert!(hub.operator_rooms().unwrap().is_empty());
+    }
+
+    let hub = hub(json!({"create_overrides": {"free": {"game_type_id": 10}}}));
+    assert_eq!(
+        hub.select_fixture(81, &create(false), 70000)
+            .err()
+            .unwrap()
+            .to_string(),
+        "f2_map_group_hidden"
+    );
+    assert!(hub.operator_rooms().unwrap().is_empty());
+}
+
+#[test]
+fn map_group_visibility_codec_and_named_policy_have_the_same_room_gate() {
+    // Arbitrary operator bindings for this test; these are not KR group IDs.
+    let bindings = json!({"LadderMapGroup": 0x1234, "ReBirthMapGroup": 0xabcd});
+    for (bytes, named, ladder, revive) in [
+        (
+            vec![],
+            json!([]),
+            "f2_map_group_hidden",
+            "f2_map_group_hidden",
+        ),
+        (
+            vec![0x34, 0x12],
+            json!(["LadderMapGroup"]),
+            "f2_start_dispatch_unmeasured",
+            "f2_map_group_hidden",
+        ),
+        (
+            vec![0xcd, 0xab],
+            json!(["ReBirthMapGroup"]),
+            "f2_map_group_hidden",
+            "f2_map_not_confirmed_in_group_or_family",
+        ),
+        (
+            vec![0xcd, 0xab, 0x34, 0x12, 0xcd, 0xab],
+            json!(["LadderMapGroup", "ReBirthMapGroup"]),
+            "f2_start_dispatch_unmeasured",
+            "f2_map_not_confirmed_in_group_or_family",
+        ),
+    ] {
+        let decoded = wire::MapGroupVisible::decode(&bytes).unwrap();
+        assert_eq!(decoded.encode().unwrap(), bytes);
+        let encoded = json!({"bytes": bytes, "group_ids": bindings});
+        for visibility in [named, encoded] {
+            let hub = hub(json!({
+                "visible_map_groups": visibility,
+                "create_overrides": {"free": "ladder", "manner": {"game_type_id": 10}}
+            }));
+            for (manner, expected) in [(false, ladder), (true, revive)] {
+                let result = hub.select_fixture(81, &create(manner), 70000);
+                assert_eq!(result.err().unwrap().to_string(), expected);
+            }
+            assert!(hub.operator_rooms().unwrap().is_empty());
+        }
+    }
+    for (bytes, bindings, expected) in [
+        (
+            vec![0x34],
+            bindings.clone(),
+            "partial MapGroupVisible entry",
+        ),
+        (
+            vec![0; 3002],
+            bindings.clone(),
+            "oversized MapGroupVisible value",
+        ),
+        (
+            vec![0xff, 0xff],
+            bindings.clone(),
+            "unbound MapGroupVisible entry",
+        ),
+        (
+            vec![0x34, 0x12],
+            json!({"LadderMapGroup": 0x1234, "ReBirthMapGroup": 0x1234}),
+            "ambiguous MapGroupVisible binding",
+        ),
+    ] {
+        let cfg = serde_json::from_value(
+            json!({"visible_map_groups": {"bytes": bytes, "group_ids": bindings}}),
+        )
+        .unwrap();
+        assert!(
+            room_modes::Policy::load(&cfg)
+                .err()
+                .unwrap()
+                .to_string()
+                .contains(expected)
+        );
+    }
 }
 
 #[test]

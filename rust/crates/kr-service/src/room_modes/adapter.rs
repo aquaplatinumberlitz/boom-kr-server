@@ -1,8 +1,11 @@
 //! Server-owned F2 commands and the single supported wire projection. Normal
 //! KR room startup provides the roster; no client packet is F2 event authority.
-use super::runtime::{Action, Applied, Life, Outcome, Player, Runtime};
+use super::{
+    Policy,
+    runtime::{Action, Applied, Error, Life, Outcome, Player, Runtime},
+};
 use crate::{Reply, room::Member, room_packets::packet};
-use kr_wire::kr00967::RebirthToGhost;
+use kr_wire::kr00967::{RebirthToGhost, RoomTeamSelector};
 use serde::{Deserialize, Serialize};
 use std::io;
 
@@ -73,6 +76,19 @@ struct PlayerView {
 #[derive(Clone)]
 pub(crate) struct RoomMode(pub(super) Runtime);
 
+fn runtime_error(error: Error) -> io::Error {
+    io::Error::other(format!("F2 runtime: {error:?}"))
+}
+
+impl Policy {
+    pub(crate) fn room_mode(&self, team: RoomTeamSelector) -> io::Result<Option<RoomMode>> {
+        // Both named and GameType presets have already resolved to ModeKind.
+        self.runtime_for(team)
+            .map(|runtime| runtime.map(RoomMode))
+            .map_err(runtime_error)
+    }
+}
+
 impl RoomMode {
     pub(crate) fn apply<'a>(
         &mut self,
@@ -88,10 +104,11 @@ impl RoomMode {
         roster.sort_unstable_by_key(|p| p.slot);
         let round = command.round();
         let mut replies = Vec::new();
-        let error = |e| io::Error::other(format!("F2 runtime: {e:?}"));
         let replay = match command {
             Command::Start { setup, .. } => {
-                self.0.start_round(round, &roster, setup).map_err(error)?;
+                self.0
+                    .start_round(round, &roster, setup)
+                    .map_err(runtime_error)?;
                 false
             }
             Command::Apply {
@@ -100,7 +117,7 @@ impl RoomMode {
                 let applied = self
                     .0
                     .apply(round, sequence, event.action())
-                    .map_err(error)?;
+                    .map_err(runtime_error)?;
                 if applied == Applied::Applied
                     && let Event::Defeat { slots } = event
                 {
