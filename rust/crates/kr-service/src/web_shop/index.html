@@ -4,10 +4,12 @@
 <label>Bearer token <input id="token" type="password" size="48" autocomplete="off"></label><button onclick="load()">Load</button>
 <p id="balance"></p>
 <h2>Equipped</h2><p id="selection-note" class="muted" hidden>These selections are for this shop session.</p><ul id="equipped"></ul>
+<h3>Cosmetics Projection Status</h3><p id="cosmetics-status" class="muted" role="status"></p><ul id="cosmetics-slots"></ul>
 <h2>Inventory</h2><ul id="inventory"></ul>
 <h2>Catalog</h2>
 <label>Category <select id="category" onchange="loadCatalog()"><option value="">All</option><option>character</option><option>decoration</option><option>emotion</option><option>consumable</option><option>collection</option></select></label><ul id="items"></ul><pre id="message"></pre>
 <h2>Social</h2><p><button onclick="loadSocial()">Refresh social</button></p><p id="social-status" class="muted" role="status"></p>
+<h3>Chat Status</h3><p id="chat-status" class="muted" role="status"></p>
 <h3>Guild</h3><p><input id="guild-name" maxlength="24" placeholder="Guild name" autocomplete="off"><button id="create-guild">Create Guild</button><button id="leave-guild">Leave Guild</button><button id="disband-guild">Disband Guild</button></p>
 <p id="guild"></p>
 <form id="add-guild-member" hidden><label>Player ID <input id="guild-target" inputmode="numeric" pattern="[0-9]+" maxlength="16" required autocomplete="off"></label><button>Add member</button></form>
@@ -16,7 +18,43 @@
 const q=x=>document.querySelector(x);
 if(location.hash.startsWith('#token=')){q('#token').value=decodeURIComponent(location.hash.slice(7));history.replaceState(null,'',location.pathname);}
 async function api(path,opt={}){const t=q('#token').value.trim(); opt.headers={...(opt.headers||{}),Authorization:'Bearer '+t}; if(opt.body)opt.headers['Content-Type']='application/json'; const r=await fetch(path,opt); const j=await r.json().catch(()=>({})); if(!r.ok)throw Error(j.error||r.status); return j}
-async function load(){try{q('#message').textContent='';const p=await api('/api/v1/profile');q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`; await Promise.all([loadInventory(),loadCatalog()])}catch(e){q('#message').textContent=String(e)}}
+let summaryLoad=0;
+async function load(){
+  const load=++summaryLoad;
+  clearSummaries();
+  try{
+    q('#message').textContent='';
+    const p=await api('/api/v1/profile');
+    if(load!==summaryLoad)return;
+    q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
+    await Promise.all([loadInventory(),loadCatalog(),loadSummaries(load)]);
+  }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
+}
+function clearSummaries(){
+  q('#chat-status').textContent='';
+  q('#cosmetics-status').textContent='';
+  q('#cosmetics-slots').replaceChildren();
+}
+async function loadSummaries(load){
+  const [chat,cosmetics]=await Promise.allSettled([api('/api/social/chat-status'),api('/api/v1/cosmetics-summary')]);
+  if(load!==summaryLoad)return;
+  if(chat.status==='fulfilled'){
+    const {muted,mute_until,choco_chat}=chat.value;
+    const mute=muted===null?'Mute status unavailable':muted?`Muted until ${new Date(mute_until*1000).toISOString()}`:'No active mute';
+    const routing=choco_chat.extended_live_routing?'enabled':'disabled';
+    q('#chat-status').textContent=`${mute} · Extended CHOCO routing ${routing} (${choco_chat.wire_status} wire)`;
+  }else q('#chat-status').textContent='Chat status unavailable';
+  if(cosmetics.status==='fulfilled'){
+    const {equipped,mutual_exclusion,inventory_layout}=cosmetics.value;
+    const slots=equipped.length===0?'No equipped slots':mutual_exclusion.valid?'No slot conflicts':'Slot conflict';
+    q('#cosmetics-status').textContent=inventory_layout.gap?`${slots} · In-game inventory routes await capture`:slots;
+    for(const item of equipped){
+      const li=document.createElement('li');
+      li.textContent=`${item.slot} · ${item.sku_id} · ${item.projection_status.replaceAll('_',' ')} wire projection`;
+      q('#cosmetics-slots').append(li);
+    }
+  }else q('#cosmetics-status').textContent='Cosmetics projection status unavailable';
+}
 let socialLoad=0;
 function clearGuild(){q('#guild').textContent='';q('#guild-members').replaceChildren();q('#add-guild-member').hidden=true}
 async function loadSocial(message){const load=++socialLoad;clearGuild();try{const [f,b,r,g]=await Promise.all([api('/api/social/friends'),api('/api/social/blocks'),api('/api/social/ranking?limit=10'),api('/api/social/guild')]);if(load!==socialLoad)return;for(const [id,rows] of [['#friends',f.friends],['#blocks',b.blocks]]){const ul=q(id);ul.replaceChildren();for(const value of rows){const li=document.createElement('li');li.textContent=String(value);ul.append(li)}}
@@ -106,7 +144,6 @@ async function unequip(slot){try{await api('/api/v1/unequip',{method:'POST',body
 q('#create-guild').addEventListener('click',createGuild);
 q('#leave-guild').addEventListener('click',leaveGuild);
 q('#disband-guild').addEventListener('click',disbandGuild);
-q('#token').addEventListener('input',()=>{socialLoad++;clearGuild()});
-if(q('#token').value.trim())load();
-if(q('#token').value.trim())loadSocial();
+q('#token').addEventListener('input',()=>{socialLoad++;summaryLoad++;clearGuild();clearSummaries()});
+if(q('#token').value.trim())load().then(()=>loadSocial());
 </script>

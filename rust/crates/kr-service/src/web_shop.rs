@@ -1,4 +1,4 @@
-//! Local F4-d HTTP API. Player identity comes only from a trusted token issuer.
+//! Local portal HTTP API. Player identity comes only from a trusted token issuer.
 mod http;
 #[cfg(test)]
 mod tests;
@@ -9,8 +9,13 @@ use crate::{
         self, CatalogAccess, PlayerProfile, ShopCatalog, ShopCategory, ShopItem, UsableItem,
     },
     accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
+    choco_chat::F5SocialPolicy,
 };
 use http::{Request, Response, Status};
+use kr_wire::kr00967::cosmetics::{
+    CosmeticTarget, INVENTORY_CAPTURE_GAP, INVENTORY_LAYOUT_STATUS, ProjectionStatus,
+    ProjectionSurface, UNMEASURED_WIRE_GAP, validate_mutual_exclusion,
+};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
@@ -524,6 +529,121 @@ async fn dispatch(
     }
 }
 
+fn chat_status() -> Response {
+    // The worker's send check writes a rate slot or denial. It has no read-only
+    // mute lookup, so neither a mute nor its absence can be inferred here.
+    let policy = F5SocialPolicy::default();
+    Response::json(&json!({
+        "mute_status": "unavailable",
+        "muted": null,
+        "mute_until": null,
+        "choco_chat": {
+            "extended_live_routing": false,
+            "wire_status": "unmeasured",
+            "local_policy_defaults": {
+                "whisper": policy.whisper,
+                "guild_chat": policy.guild_chat,
+                "megaphone": policy.megaphone.is_some(),
+                "offline_note": policy.note_inbox_cap.is_some(),
+                "couple": policy.couple,
+                "plaza": !policy.plaza_zones.is_empty(),
+            },
+        },
+    }))
+}
+
+fn projection_status(status: ProjectionStatus) -> &'static str {
+    match status {
+        ProjectionStatus::Measured => "measured",
+        ProjectionStatus::StaticCandidate => "static_candidate",
+        ProjectionStatus::Unmeasured => "unmeasured",
+    }
+}
+
+fn cosmetics_summary(source: &str, mut equipped: Vec<(String, String)>) -> Response {
+    equipped.sort_unstable_by(|left, right| left.0.cmp(&right.0));
+    let slots: Vec<_> = equipped.iter().map(|(slot, _)| slot.as_str()).collect();
+    let exclusion = validate_mutual_exclusion(&slots);
+    let equipped: Vec<_> = equipped
+        .iter()
+        .map(|(slot, sku_id)| {
+            let target = CosmeticTarget::ALL
+                .iter()
+                .copied()
+                .find(|target| target.spec().slot.token() == Some(slot));
+            // The matrix measures routes for the base character key only.
+            // It supplies no mapping for the equipped SKU, even in that slot.
+            let target_surfaces = ProjectionSurface::ALL.map(|surface| {
+                let status = target.map_or(ProjectionStatus::Unmeasured, |target| {
+                    target.projection_status(surface)
+                });
+                let anchor = target
+                    .and_then(|target| target.validate_slot_projection(slot, surface).ok())
+                    .map(|projection| projection.anchor());
+                json!({
+                    "surface": surface.as_str(),
+                    "status": projection_status(status),
+                    "anchor": anchor,
+                    "gap": (status == ProjectionStatus::Unmeasured).then_some(UNMEASURED_WIRE_GAP),
+                })
+            });
+            json!({
+                "slot": slot,
+                "sku_id": sku_id,
+                "target": target.map(CosmeticTarget::as_str),
+                "projection_status": projection_status(ProjectionStatus::Unmeasured),
+                "wire_gap": UNMEASURED_WIRE_GAP,
+                "target_surfaces": target_surfaces,
+            })
+        })
+        .collect();
+    Response::json(&json!({
+        "source": source,
+        "equipped": equipped,
+        "mutual_exclusion": {"valid": exclusion.is_ok(), "conflicting_slot": exclusion.err()},
+        "inventory_layout": {
+            "status": projection_status(INVENTORY_LAYOUT_STATUS),
+            "gap": INVENTORY_CAPTURE_GAP,
+        },
+    }))
+}
+
+async fn cosmetics_summary_route(
+    config: &Config,
+    service: &AccountService,
+    auth: &WebShopAuth,
+    digest: &TokenDigest,
+    request: &Request,
+) -> Result<Response, Status> {
+    if config.unlock_all {
+        let equipped = auth
+            .with_session(digest, |session| -> Result<_, Status> {
+                request.require_queryless_get()?;
+                Ok(session
+                    .cosmetics
+                    .as_ref()
+                    .map(|cosmetics| cosmetics.snapshot().into_iter().collect())
+                    .unwrap_or_default())
+            })
+            .ok_or(Status::Unauthorized)??;
+        return Ok(cosmetics_summary("session", equipped));
+    }
+    let player = auth.player(digest).ok_or(Status::Unauthorized)?;
+    request.require_queryless_get()?;
+    let equipped = service
+        .inventory_list(player)
+        .await?
+        .into_iter()
+        .filter(|item| item.active)
+        .flat_map(|item| {
+            item.equipped_slots
+                .into_iter()
+                .map(move |slot| (slot, item.sku_id.clone()))
+        })
+        .collect();
+    Ok(cosmetics_summary("inventory", equipped))
+}
+
 fn o1_selection_route(
     service: &AccountService,
     session: &mut Session,
@@ -610,6 +730,9 @@ async fn route(
         return Err(Status::NotFound);
     }
     let digest = request.digest().ok_or(Status::Unauthorized)?;
+    if path == "/api/v1/cosmetics-summary" {
+        return cosmetics_summary_route(config, service, auth, &digest, request).await;
+    }
     if config.unlock_all
         && matches!(
             path,
@@ -691,6 +814,10 @@ async fn social_route(
     player: i64,
     request: &Request,
 ) -> Result<Response, Status> {
+    if request.path() == "/api/social/chat-status" {
+        request.require_queryless_get()?;
+        return Ok(chat_status());
+    }
     if request.query().is_some() && request.path() != "/api/social/ranking" {
         return Err(Status::BadRequest);
     }
