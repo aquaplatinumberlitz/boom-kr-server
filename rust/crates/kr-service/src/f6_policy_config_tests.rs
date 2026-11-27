@@ -1,5 +1,8 @@
 use super::{Config, Owner};
-use crate::{f6_policy::F6EventPolicy, platform};
+use crate::{
+    f6_policy::{F6EventPolicy, F6QuotaTracker, QuotaRejection},
+    platform,
+};
 use serde_json::{Value, json};
 use std::{
     fs, io,
@@ -50,6 +53,15 @@ fn disabled_profile() -> Value {
     serde_json::from_str(DISABLED).unwrap()
 }
 
+fn opted_in_system(account_cap: u16, global_cap: u16) -> Value {
+    json!({
+        "enabled": true,
+        "start_utc": "2027-01-01T00:00:00Z",
+        "end_utc": "2027-01-02T00:00:00Z",
+        "rate_caps": {"per_account_per_hour": account_cap, "global_per_minute": global_cap},
+    })
+}
+
 fn assert_all_disabled(policy: &F6EventPolicy) {
     let profile = disabled_profile();
     let systems = profile["systems"].as_object().unwrap();
@@ -82,12 +94,7 @@ fn valid_opt_in_is_visible_through_config() {
     let dir = TestDir::new();
     let path = dir.0.join("policy.json");
     let mut profile = disabled_profile();
-    profile["systems"]["CAPass"] = json!({
-        "enabled": true,
-        "start_utc": "2027-01-01T00:00:00Z",
-        "end_utc": "2027-01-01T00:01:00Z",
-        "rate_caps": {"per_account_per_hour": 1, "global_per_minute": 1},
-    });
+    profile["systems"]["CAPass"] = opted_in_system(1, 1);
     fs::write(&path, profile.to_string()).unwrap();
 
     let config = dir.config(Some(&path));
@@ -96,6 +103,115 @@ fn valid_opt_in_is_visible_through_config() {
     assert!(policy.is_system_enabled_at("CAPass", START));
     assert!(!policy.is_system_enabled_at("CAPass", START - 1));
     assert!(!policy.is_system_enabled_at("Pet", START));
+
+    let mut tracker = F6QuotaTracker::default();
+    assert_eq!(
+        policy.check_operation(&mut tracker, "CAPass", 1, START),
+        Ok(())
+    );
+    assert_eq!(
+        policy.check_operation(&mut tracker, "CAPass", 2, START),
+        Err(QuotaRejection::GlobalQuotaExceeded)
+    );
+}
+
+#[test]
+fn quotas_roll_over_at_utc_boundaries_and_rejections_do_not_consume_either_cap() {
+    use QuotaRejection::{AccountQuotaExceeded, ClockRegression, GlobalQuotaExceeded};
+
+    let mut profile = disabled_profile();
+    profile["systems"]["CAPass"] = opted_in_system(2, 3);
+    let policy = F6EventPolicy::from_json_str(&profile.to_string()).unwrap();
+    let mut tracker = F6QuotaTracker::default();
+    let mut check = |account_id, elapsed| {
+        policy.check_operation(&mut tracker, "CAPass", account_id, START + elapsed)
+    };
+
+    // Start one second into the buckets so the test distinguishes UTC
+    // boundaries from windows measured since the first operation.
+    assert_eq!(check(1, 1), Ok(()));
+    assert_eq!(check(1, 1), Ok(()));
+    assert_eq!(check(1, 1), Err(AccountQuotaExceeded));
+    assert_eq!(check(2, 1), Ok(()));
+    assert_eq!(check(3, 1), Err(GlobalQuotaExceeded));
+    assert_eq!(check(3, 59), Err(GlobalQuotaExceeded));
+    assert_eq!(check(3, 60), Ok(()));
+    assert_eq!(check(3, 60), Ok(()));
+    assert_eq!(check(1, 3599), Err(AccountQuotaExceeded));
+    assert_eq!(check(1, 3600), Ok(()));
+    assert_eq!(check(2, 3599), Err(ClockRegression));
+    assert_eq!(check(1, 3600), Ok(()));
+    assert_eq!(check(1, 3600), Err(AccountQuotaExceeded));
+}
+
+#[test]
+fn quota_preconditions_fail_closed_in_order_and_include_schedule_endpoints() {
+    use QuotaRejection::*;
+
+    let mut profile = disabled_profile();
+    profile["systems"]["CAPass"] = opted_in_system(2, 1);
+    profile["systems"]["CAPass"]["start_utc"] = json!("1969-12-31T23:59:58Z");
+    profile["systems"]["CAPass"]["end_utc"] = json!("1970-01-01T00:01:00Z");
+    profile["systems"]["Pet"] = opted_in_system(1, 1);
+    let policy = F6EventPolicy::from_json_str(&profile.to_string()).unwrap();
+    let mut tracker = F6QuotaTracker::default();
+    assert_eq!(
+        F6EventPolicy::disabled_default().check_operation(&mut tracker, "CAPass", 1, START),
+        Err(Disabled)
+    );
+    for (system, account, at, rejection) in [
+        ("capass", 0, -3, UnknownSystem),
+        ("PCRoomBenefit", 0, -3, ExcludedSystem),
+        ("DIYBomb", 0, -3, Disabled),
+        ("CAPass", 0, -3, OutsideSchedule),
+        ("CAPass", 0, -2, InvalidTimestamp),
+        ("CAPass", 0, 0, InvalidAccountId),
+        ("CAPass", -1, 0, InvalidAccountId),
+        ("CAPass", 1, 61, OutsideSchedule),
+    ] {
+        assert_eq!(
+            policy.check_operation(&mut tracker, system, account, at),
+            Err(rejection)
+        );
+    }
+    assert_eq!(tracker.tracked_accounts(), 0);
+    assert_eq!(policy.check_operation(&mut tracker, "CAPass", 1, 0), Ok(()));
+    assert_eq!(
+        policy.check_operation(&mut tracker, "CAPass", 1, 60),
+        Ok(())
+    );
+    assert_eq!(
+        policy.check_operation(&mut tracker, "Pet", 1, START),
+        Ok(())
+    );
+}
+
+#[test]
+fn quotas_are_per_system_and_prune_idle_accounts_across_hours() {
+    let mut profile = disabled_profile();
+    profile["systems"]["CAPass"] = opted_in_system(1, 1);
+    profile["systems"]["Pet"] = opted_in_system(1, 1);
+    let policy = F6EventPolicy::from_json_str(&profile.to_string()).unwrap();
+    let mut tracker = F6QuotaTracker::default();
+
+    assert_eq!(
+        policy.check_operation(&mut tracker, "Pet", 1, START),
+        Ok(())
+    );
+    for hour in 0..8 {
+        let now = START + hour * 3600;
+        assert_eq!(
+            policy.check_operation(&mut tracker, "CAPass", hour + 1, now),
+            Ok(())
+        );
+        for rejected_account in 100..200 {
+            assert_eq!(
+                policy.check_operation(&mut tracker, "CAPass", rejected_account, now),
+                Err(QuotaRejection::GlobalQuotaExceeded)
+            );
+        }
+        assert_eq!(tracker.tracked_accounts(), if hour == 0 { 2 } else { 1 });
+    }
 }
 
 #[test]
