@@ -24,6 +24,22 @@ LANBoom là **dự án cộng đồng miễn phí**: không thu phí, không bá
 - **Server của bạn, luật của bạn.** Tự dựng máy chủ cho hội nhóm, tự quyết cách tính tài khoản, tiến trình và mở khóa.
 - **Nói tiếng của bạn.** Hơn 33.000 dòng chữ được dịch tay sang tiếng Việt và tiếng Anh, không dùng dịch máy. Chữ có dấu chuẩn, chat tiếng Việt thoải mái.
 
+## Ảnh chụp trong game
+
+<table>
+  <tr>
+    <td align="center" valign="top"><strong>Launcher</strong><br><img src="assets/screenshots/launcher.jpg" width="420" alt="Launcher LANBoom ở mục Chơi với bạn bè"></td>
+    <td align="center" valign="top"><strong>Đăng nhập</strong><br><img src="assets/screenshots/vi-login.jpg" width="420" alt="Màn hình đăng nhập LANBoom bằng tiếng Việt"></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><strong>Sảnh chờ</strong><br><img src="assets/screenshots/vi-lobby.jpg" width="420" alt="Sảnh chờ tiếng Việt có nút Tạo phòng"></td>
+    <td align="center" valign="top"><strong>Phòng chơi</strong><br><img src="assets/screenshots/vi-room.jpg" width="420" alt="Hai người chơi trong phòng tiếng Việt với nút Bắt đầu"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><strong>Trận thường</strong><br><img src="assets/screenshots/vi-arena.jpg" width="420" alt="Hai người chơi đang đấu trên map Factory07 với giao diện tiếng Việt"></td>
+  </tr>
+</table>
+
 ## Tính năng
 
 ✅ Đã có · 🚧 Sắp ra mắt
@@ -41,7 +57,7 @@ LANBoom là **dự án cộng đồng miễn phí**: không thu phí, không bá
 | ✅ | **Công cụ quản trị server** | Lệnh quản trị có ghi nhật ký, cấm chat và nhật ký lạm dụng, theo dõi tình trạng server, sao lưu, khôi phục và quay lui dữ liệu |
 | ✅ | **Tài khoản và tiến trình** | Tài khoản theo server kèm mã khôi phục, lưu kết quả trận, cấp độ, EXP và VÀNG |
 | ✅ | **Cửa hàng web và tủ đồ** | Xem danh mục, mua trang phục bằng VÀNG, mặc hoặc tháo đồ trong túi đồ |
-| ✅ | **Trang cộng đồng trên web** | Bạn bè và lời mời kết bạn, danh sách chặn, bang hội của bạn và bảng xếp hạng server |
+| ✅ | **Trang cộng đồng trên web** | Bạn bè, lời mời kết bạn, danh sách chặn và bảng xếp hạng server. Tạo hoặc rời bang hội; bang chủ có thể giải tán bang |
 | ✅ | **Ngôn ngữ** | Tiếng Việt, English và 한국어 trong game, launcher và BoomServer; chat tiếng Việt có dấu |
 | 🚧 | **Cửa hàng và trang trí trong game** | Trang cá nhân, túi đồ và cửa hàng ngay trong game, cùng trang trí avatar, nhân vật, bóng nước, cấp độ, ID, biểu cảm và danh hiệu |
 | 🚧 | **Thang đấu và ghép trận** | Đấu xếp hạng 1v1, 2v2, 3v3 theo đẳng, có map thưởng, cùng tự động ghép trận |

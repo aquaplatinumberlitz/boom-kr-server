@@ -24,6 +24,22 @@ LANBoom은 **무료 커뮤니티 프로젝트**입니다. 이용료도, 유료 �
 - **내 서버, 내 규칙.** 커뮤니티 서버를 직접 열고 계정, 진행도, 해금 방식을 직접 정할 수 있습니다.
 - **원하는 언어로.** 33,000줄이 넘는 텍스트를 영어와 베트남어로 사람이 직접 번역했고 기계 번역은 쓰지 않았습니다. 한국어는 원작 그대로입니다.
 
+## 스크린샷
+
+<table>
+  <tr>
+    <td align="center" valign="top"><strong>런처</strong><br><img src="assets/screenshots/launcher.jpg" width="420" alt="친구와 플레이 탭을 연 LANBoom 런처(베트남어 화면)"></td>
+    <td align="center" valign="top"><strong>로그인</strong><br><img src="assets/screenshots/ko-login.jpg" width="420" alt="LANBoom 한국어 로그인 화면"></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><strong>대기실</strong><br><img src="assets/screenshots/ko-lobby.jpg" width="420" alt="방만들기와 바로시작 버튼이 있는 한국어 대기실"></td>
+    <td align="center" valign="top"><strong>게임 방</strong><br><img src="assets/screenshots/ko-room.jpg" width="420" alt="두 플레이어가 캐릭터를 고르는 한국어 게임 방"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><strong>일반전</strong><br><img src="assets/screenshots/ko-arena.jpg" width="420" alt="PangLand03 맵에서 두 플레이어가 겨루는 물풍선 대전"></td>
+  </tr>
+</table>
+
 ## 기능
 
 ✅ 이용 가능 · 🚧 준비 중
@@ -41,7 +57,7 @@ LANBoom은 **무료 커뮤니티 프로젝트**입니다. 이용료도, 유료 �
 | ✅ | **서버 관리 도구** | 감사 기록이 남는 관리 명령, 채팅 금지와 신고 기록, 상태 모니터링, 데이터베이스 백업·복원·롤백 |
 | ✅ | **계정과 진행도** | 복구 코드가 있는 서버별 계정, 경기 결과 저장, 레벨·경험치, 루찌 |
 | ✅ | **웹 상점과 옷장** | 카탈로그를 보고 루찌로 의상을 사서 인벤토리에서 착용하거나 벗을 수 있습니다 |
-| ✅ | **웹 소셜 페이지** | 친구와 친구 요청, 차단 목록, 내 길드, 서버 랭킹 |
+| ✅ | **웹 소셜 페이지** | 친구와 친구 요청, 차단 목록, 서버 랭킹. 길드를 만들거나 탈퇴할 수 있고, 길드장은 길드를 해산할 수 있습니다 |
 | ✅ | **언어** | 게임, 런처, 서버 앱 모두 English·Tiếng Việt·한국어 지원, 채팅에서 베트남어 성조 표기 지원 |
 | 🚧 | **게임 내 상점과 치장** | 게임 안의 마이페이지, 인벤토리, 상점 화면과 아바타·캐릭터·물풍선·레벨·아이디 치장, 이모티콘, 칭호 |
 | 🚧 | **래더와 매칭** | 단수와 보너스 맵이 있는 1:1, 2:2, 3:3 래더 대전과 자동 매칭 |
