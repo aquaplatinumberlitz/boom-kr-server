@@ -14,6 +14,7 @@ pub mod choco_chat;
 mod diagnostic59;
 #[cfg(test)]
 mod f2_runtime_integration_tests;
+pub mod f3_pve_policy;
 pub mod f4_extended_policy;
 pub mod f6_policy;
 mod four_results;
