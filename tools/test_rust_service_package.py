@@ -11,6 +11,7 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import rust_package_runtime as runtime
 from rust_package_runtime import digest, prepare, verify
 from rust_service_package import PACK_DATA, build
 
@@ -339,6 +340,108 @@ class PackageTests(unittest.TestCase):
         self.assertTrue(ua_adm['unlock_all_catalog'])
         self.assertTrue(ua_adm['web_shop']['unlock_all'])
         self.assertEqual(ua_adm['web_shop']['bind'], '127.0.0.1:8082')
+
+    def test_f3_f4_f6_policy_flags_are_opt_in_and_fail_closed(self):
+        profiles = {
+            'f4_extended_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f4-extended-disabled.json',
+            'f3_pve_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f3-pve-disabled.json',
+            'f6_events_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f6-events-disabled.json',
+        }
+        self.package()
+        default_cfg, _, _ = prepare(self.out, self.root / 'policy-default')
+        default_admission = json.loads(default_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        self.assertEqual(
+            set(default_admission),
+            set(self.config['diagnostic_two_lobby']['account_admission']) | {'database', 'launch_socket'},
+        )
+        expected = json.loads((self.out / 'config.template.json').read_bytes())
+        expected_admission = expected['diagnostic_two_lobby']['account_admission']
+        expected_admission.update(
+            database=str(self.root / 'policy-default' / 'accounts.sqlite'),
+            launch_socket=str(self.root / 'policy-default' / 'launch.sock'),
+        )
+        expected_bytes = json.dumps(expected, ensure_ascii=False, separators=(',', ':')) + '\n'
+        self.assertEqual(default_cfg.read_bytes(), expected_bytes.encode())
+        configured_cfg, _, _ = prepare(
+            self.out, self.root / 'policy-configured', **profiles
+        )
+        configured_admission = json.loads(configured_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        for key, path in profiles.items():
+            self.assertEqual(configured_admission[key], str(path.resolve()))
+
+        missing = self.root / 'missing-policy.json'
+        directory = self.root / 'policy-directory'
+        directory.mkdir()
+        symlink = self.root / 'policy-link.json'
+        symlink.symlink_to(profiles['f3_pve_policy'])
+        invalid = self.root / 'invalid-policy.json'
+        invalid.write_text('{not-json')
+        non_object = self.root / 'array-policy.json'
+        non_object.write_text('[]')
+        parent = self.root / 'symlink-parent'
+        parent.symlink_to(profiles['f3_pve_policy'].parent, target_is_directory=True)
+        cases = [missing, directory, symlink, invalid, non_object, parent / 'f3-pve-disabled.json']
+        for bad in cases:
+            with self.subTest(path=bad):
+                with self.assertRaisesRegex(ValueError, 'policy|Hồ sơ'):
+                    prepare(self.out, self.root / ('bad-' + str(len(str(bad)))), f3_pve_policy=bad)
+
+    def test_policy_profiles_work_for_friends_and_s1_preparation(self):
+        profiles = {
+            'f4_extended_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f4-extended-disabled.json',
+            'f3_pve_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f3-pve-disabled.json',
+            'f6_events_policy': Path(__file__).resolve().parents[1] / 'server/profiles/f6-events-disabled.json',
+        }
+        friends_config = copy.deepcopy(self.config)
+        admission = friends_config['diagnostic_two_lobby']['account_admission']
+        friends_config['diagnostic_two_lobby']['actors'] = [{'identity': 1, 'peer': '192.168.0.2'}]
+        admission.update(
+            patched_949x_names=True,
+            prelogin_tls={'certificate': '@INSTALL@'},
+        )
+        friends_pkg = self.root / 'policy-friends-pkg'
+        build(friends_config, self.binaries, friends_pkg, 'x86_64-unknown-linux-gnu')
+        friends_state = self.root / 'policy-friends-state'
+        friends_state.mkdir(mode=0o700)
+        identity = friends_state / 'prelogin_tls-identity'
+        identity.mkdir(mode=0o700, parents=True)
+        (identity / 'certificate.der').write_bytes(b'certificate fixture')
+        friends_cfg, _, _ = prepare(friends_pkg, friends_state, friends=True, **profiles)
+        friends_admission = json.loads(friends_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        for key, path in profiles.items():
+            self.assertEqual(friends_admission[key], str(path.resolve()))
+
+        s1_config = copy.deepcopy(self.config)
+        s1_config['diagnostic_two_lobby']['actors'] = [{'identity': 1, 'peer': '192.168.0.2'}]
+        s1_config['diagnostic_two_lobby']['account_admission']['prelogin_tls'] = {
+            'certificate': '@INSTALL@', 'max_connections': 8,
+            'session_ttl_seconds': 300, 'session_idle_seconds': 120,
+        }
+        s1_pkg = self.root / 'policy-s1-pkg'
+        build(s1_config, self.binaries, s1_pkg, 'x86_64-unknown-linux-gnu')
+        s1_state = self.root / 'policy-s1-state'
+        s1_state.mkdir(mode=0o700)
+        s1_identity = s1_state / 'prelogin_tls-identity'
+        s1_identity.mkdir(mode=0o700, parents=True)
+        (s1_identity / 'certificate.der').write_bytes(b'certificate fixture')
+        s1_cfg, _, _ = prepare(s1_pkg, s1_state, s1=True, **profiles)
+        s1_admission = json.loads(s1_cfg.read_bytes())['diagnostic_two_lobby']['account_admission']
+        for key, path in profiles.items():
+            self.assertEqual(s1_admission[key], str(path.resolve()))
+
+    def test_policy_flags_are_rejected_on_non_runtime_subcommands(self):
+        state = self.root / 'unsupported-state'
+        for command in ('init-db', 'migrate-db', 'export'):
+            with self.subTest(command=command):
+                argv = [
+                    'rust_package_runtime.py', command, '--manifest-sha256', 'a' * 64,
+                    '--state', str(state), '--f3-pve-policy', str(self.root / 'policy.json'),
+                ]
+                with patch.object(runtime, 'verify', return_value={'target': 'x86_64-unknown-linux-gnu'}), \
+                        patch.object(sys, 'argv', argv):
+                    with self.assertRaises(SystemExit) as error:
+                        runtime.main()
+                self.assertEqual(error.exception.code, 1)
 
 
 if __name__ == '__main__':
