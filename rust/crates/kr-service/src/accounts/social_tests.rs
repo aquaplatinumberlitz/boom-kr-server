@@ -404,6 +404,124 @@ fn guild_lifecycle_keeps_one_leader_and_transfers_authority() {
 }
 
 #[test]
+fn guild_management_add_requires_leadership_and_eligible_target() {
+    use GuildLeaderAction::AddMember;
+    let (_temp, mut s) = fixture(6);
+    let guild = s.create_guild(1, "Blue Team", 100).unwrap().id;
+    let other = s.create_guild(4, "Red Team", 100).unwrap().id;
+    assert_eq!(s.manage_guild(1, Some(guild), AddMember(2), 101), Ok(()));
+    assert_eq!(s.set_guild_officer(1, guild, 2, true, 101), Ok(true));
+    for (actor, expected, target, error) in [
+        (2, Some(guild), 3, Error::Conflict), // An officer is not a leader.
+        (3, None, 5, Error::Conflict),
+        (1, Some(other), 3, Error::Conflict),
+        (1, None, 2, Error::Conflict),
+        (1, None, 4, Error::Conflict),
+        (1, None, 7, Error::InvalidInput),
+        (1, None, 0, Error::InvalidInput),
+    ] {
+        assert_eq!(
+            s.manage_guild(actor, expected, AddMember(target), 102),
+            Err(error)
+        );
+    }
+    assert_eq!(s.block_player(1, 3, 103), Ok(true));
+    assert_eq!(s.block_player(5, 1, 103), Ok(true));
+    for target in [3, 5] {
+        assert_eq!(
+            s.manage_guild(1, None, AddMember(target), 104),
+            Err(Error::Conflict)
+        );
+        assert_eq!(s.guild_for_player(target, 104).unwrap(), None);
+    }
+    s.db.execute("UPDATE accounts SET disabled=1 WHERE id=6", [])
+        .unwrap();
+    assert_eq!(
+        s.manage_guild(1, None, AddMember(6), 105),
+        Err(Error::InvalidInput)
+    );
+
+    assert_eq!(s.unblock_player(1, 3, 106), Ok(true));
+    assert_eq!(s.manage_guild(1, None, AddMember(3), 107), Ok(()));
+    assert_eq!(
+        s.list_guild_members(guild, 107).unwrap().last(),
+        Some(&GuildMember {
+            player_id: 3,
+            role: GuildRole::Member,
+            joined_at: 107,
+        })
+    );
+}
+
+#[test]
+fn guild_management_remove_and_transfer_are_scoped_and_persist() {
+    use GuildLeaderAction::{RemoveMember, TransferLeadership};
+    let (temp, mut s) = fixture(5);
+    let guild = s.create_guild(1, "Blue Team", 100).unwrap().id;
+    let other = s.create_guild(4, "Red Team", 100).unwrap().id;
+    assert_eq!(s.join_guild(2, guild, 101), Ok(true));
+    assert_eq!(s.join_guild(3, guild, 101), Ok(true));
+    assert_eq!(s.set_guild_officer(1, guild, 2, true, 101), Ok(true));
+    for (actor, expected, action, error) in [
+        (2, None, RemoveMember(3), Error::Conflict),
+        (2, None, TransferLeadership(3), Error::Conflict),
+        (1, None, RemoveMember(1), Error::InvalidInput),
+        (1, None, TransferLeadership(1), Error::InvalidInput),
+        (1, None, RemoveMember(4), Error::Conflict),
+        (1, None, RemoveMember(5), Error::Conflict),
+        (1, None, TransferLeadership(4), Error::InvalidInput),
+        (1, None, TransferLeadership(5), Error::InvalidInput),
+        (1, Some(other), TransferLeadership(2), Error::Conflict),
+    ] {
+        assert_eq!(s.manage_guild(actor, expected, action, 102), Err(error));
+    }
+    let (before, roster) = s.get_guild(guild).unwrap();
+    assert_eq!(before.leader_player_id, 1);
+    assert_eq!(roster.len(), 3);
+
+    // A failure on the final write must roll back both role changes.
+    s.db.execute_batch(
+        "CREATE TEMP TRIGGER fail_leader_update BEFORE UPDATE OF leader_player_id ON guilds
+         BEGIN SELECT RAISE(ABORT, 'test failure'); END;",
+    )
+    .unwrap();
+    assert_eq!(
+        s.manage_guild(1, Some(guild), TransferLeadership(2), 103),
+        Err(Error::Conflict)
+    );
+    assert_eq!(s.get_guild(guild).unwrap(), (before, roster));
+    s.db.execute_batch("DROP TRIGGER fail_leader_update")
+        .unwrap();
+
+    assert_eq!(
+        s.manage_guild(1, Some(guild), TransferLeadership(2), 103),
+        Ok(())
+    );
+    drop(s);
+    let mut s = temp.store();
+    let (after, roster) = s.get_guild(guild).unwrap();
+    assert_eq!(after.leader_player_id, 2);
+    assert_eq!(
+        roster
+            .iter()
+            .map(|m| (m.player_id, m.role, m.joined_at))
+            .collect::<Vec<_>>(),
+        [
+            (2, GuildRole::Leader, 101),
+            (1, GuildRole::Member, 100),
+            (3, GuildRole::Member, 101),
+        ]
+    );
+    assert_eq!(
+        s.manage_guild(1, None, RemoveMember(3), 104),
+        Err(Error::Conflict)
+    );
+    assert_eq!(s.manage_guild(2, None, RemoveMember(1), 104), Ok(()));
+    assert_eq!(s.guild_for_player(1, 104).unwrap(), None);
+    assert_eq!(s.get_guild(other).unwrap().0.leader_player_id, 4);
+}
+
+#[test]
 fn ranking_breaks_ties_deterministically_and_paginates() {
     let (_temp, s) = fixture(10);
     s.db.execute_batch(

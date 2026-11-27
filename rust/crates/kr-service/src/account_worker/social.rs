@@ -5,8 +5,8 @@
 use super::economy::AccountService;
 use super::{Client, Command, Error, Pending, Result};
 use crate::accounts::{
-    self, ChatMuteReason, ChatPermission, FriendRequest, Guild, GuildMember, RankingEntry, Store,
-    Token,
+    self, ChatMuteReason, ChatPermission, FriendRequest, Guild, GuildLeaderAction, GuildMember,
+    RankingEntry, Store, Token,
 };
 use std::time::Instant;
 use tokio::sync::oneshot;
@@ -52,6 +52,10 @@ pub enum SocialAction {
     TransferGuildLeadership {
         guild_id: i64,
         successor: i64,
+    },
+    ManageGuild {
+        expected_guild: Option<i64>,
+        action: GuildLeaderAction,
     },
     GuildForPlayer,
     ListGuildMembers(i64),
@@ -331,6 +335,29 @@ impl AccountService {
             _ => Err(Error::WorkerFault),
         }
     }
+
+    pub(crate) async fn social_guild_manage(
+        &self,
+        player: i64,
+        expected_guild: Option<i64>,
+        action: GuildLeaderAction,
+    ) -> Result<bool> {
+        match self
+            .client
+            .try_social(
+                player,
+                SocialAction::ManageGuild {
+                    expected_guild,
+                    action,
+                },
+            )?
+            .wait()
+            .await?
+        {
+            SocialReply::Changed(changed) => Ok(changed),
+            _ => Err(Error::WorkerFault),
+        }
+    }
 }
 
 impl SocialRequest {
@@ -431,6 +458,13 @@ fn execute_player(
         } => {
             store.transfer_guild_leadership(player, guild_id, successor, now)?;
             LeadershipTransferred
+        }
+        SocialAction::ManageGuild {
+            expected_guild,
+            action,
+        } => {
+            store.manage_guild(player, expected_guild, action, now)?;
+            Changed(true)
         }
         SocialAction::ListGuildMembers(guild) => {
             GuildMembers(store.list_guild_members(guild, now)?)
