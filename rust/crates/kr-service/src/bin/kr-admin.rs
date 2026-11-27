@@ -257,8 +257,10 @@ fn load_f6_policy(path: Option<&Path>) -> io::Result<F6EventPolicy> {
 
 fn f6_policy_check(policy_path: Option<&Path>, at_unix_secs: Option<i64>) -> io::Result<Value> {
     let policy = load_f6_policy(policy_path)?;
-    let evaluated_at_unix_secs = at_unix_secs
-        .unwrap_or(accounts::utc().map_err(|error| io::Error::other(error.to_string()))?);
+    let evaluated_at_unix_secs = match at_unix_secs {
+        Some(at) => at,
+        None => accounts::utc().map_err(|error| io::Error::other(error.to_string()))?,
+    };
     let systems = F6EventPolicy::system_names()
         .iter()
         .map(|name| {
@@ -268,12 +270,26 @@ fn f6_policy_check(policy_path: Option<&Path>, at_unix_secs: Option<i64>) -> io:
             })
         })
         .collect::<Vec<_>>();
+    let enabled_systems = policy
+        .enabled_systems()
+        .map(|(name, system)| {
+            json!({
+                "name": name,
+                "start_unix_secs": system.start_utc,
+                "end_unix_secs": system.end_utc,
+                "active": evaluated_at_unix_secs >= 0
+                    && policy.is_system_enabled_at(name, evaluated_at_unix_secs),
+                "rate_caps": system.rate_caps,
+            })
+        })
+        .collect::<Vec<_>>();
     Ok(json!({
         "schema": "kre.f6-events-policy.v1",
         "default_enabled": false,
         "excluded_systems": ["PCRoomBenefit"],
         "evaluated_at_unix_secs": evaluated_at_unix_secs,
         "systems": systems,
+        "enabled_systems": enabled_systems,
     }))
 }
 

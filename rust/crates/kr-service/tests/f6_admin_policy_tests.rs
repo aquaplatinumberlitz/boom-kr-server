@@ -8,6 +8,8 @@ use std::{
     process::{Command, Output, Stdio},
 };
 
+const DISABLED_PROFILE: &str = include_str!("../../../../server/profiles/f6-events-disabled.json");
+
 const SYSTEMS: [&str; 19] = [
     "CAPass",
     "Câu cá",
@@ -108,6 +110,7 @@ fn assert_all_disabled(result: &Value, at: i64) {
     assert_eq!(result["default_enabled"], false);
     assert_eq!(result["excluded_systems"], json!(["PCRoomBenefit"]));
     assert_eq!(result["evaluated_at_unix_secs"], at);
+    assert_eq!(result["enabled_systems"], json!([]));
     let systems = result["systems"].as_array().unwrap();
     assert_eq!(systems.len(), SYSTEMS.len());
     for (row, name) in systems.iter().zip(SYSTEMS) {
@@ -152,13 +155,59 @@ fn checked_in_disabled_profile_reports_all_systems_disabled() {
 }
 
 #[test]
+fn opted_in_policy_reports_configured_caps_and_inclusive_active_window() {
+    let dir = setup();
+    let path = dir.0.join("policy.json");
+    let mut profile: Value = serde_json::from_str(DISABLED_PROFILE).unwrap();
+    profile["systems"]["CAPass"] = json!({
+        "enabled": true,
+        "start_utc": "2027-01-01T00:00:00Z",
+        "end_utc": "2027-01-01T00:01:00Z",
+        "rate_caps": {"per_account_per_hour": 6, "global_per_minute": 43},
+    });
+    profile["systems"]["Pet"] = profile["systems"]["CAPass"].clone();
+    profile["systems"]["Pet"]["enabled"] = json!(false);
+    fs::write(&path, serde_json::to_vec(&profile).unwrap()).unwrap();
+
+    let start = 1_798_761_600;
+    let end = start + 60;
+    for (at, active) in [
+        (start - 1, false),
+        (start, true),
+        (end, true),
+        (end + 1, false),
+    ] {
+        let result = check(
+            &dir,
+            json!({"op":"f6-policy-check", "policy_path":path, "at_unix_secs":at}),
+        );
+        assert_eq!(result["evaluated_at_unix_secs"], at);
+        assert_eq!(
+            result["enabled_systems"],
+            json!([{
+                "name": "CAPass",
+                "start_unix_secs": start,
+                "end_unix_secs": end,
+                "active": active,
+                "rate_caps": {"per_account_per_hour": 6, "global_per_minute": 43},
+            }])
+        );
+        let systems = result["systems"].as_array().unwrap();
+        assert_eq!(systems.len(), SYSTEMS.len());
+        for (row, name) in systems.iter().zip(SYSTEMS) {
+            assert_eq!(
+                row,
+                &json!({"name": name, "enabled": name == "CAPass" && active})
+            );
+        }
+    }
+}
+
+#[test]
 fn tampered_profiles_fail_closed() {
     let dir = setup();
     let path = dir.0.join("policy.json");
-    let original: Value = serde_json::from_str(include_str!(
-        "../../../../server/profiles/f6-events-disabled.json"
-    ))
-    .unwrap();
+    let original: Value = serde_json::from_str(DISABLED_PROFILE).unwrap();
     let mut tampered = Vec::new();
 
     let mut excluded = original.clone();
@@ -211,11 +260,7 @@ fn missing_and_symlink_profiles_fail_closed() {
         use std::os::unix::fs::symlink;
         let target = dir.0.join("target.json");
         let link = dir.0.join("policy-link.json");
-        fs::write(
-            &target,
-            include_str!("../../../../server/profiles/f6-events-disabled.json"),
-        )
-        .unwrap();
+        fs::write(&target, DISABLED_PROFILE).unwrap();
         symlink(&target, &link).unwrap();
         let output = command(
             &dir.db(),

@@ -1,18 +1,19 @@
 //! Fail-closed seasonal event policy for KR 00967.
 
 use serde::de::{self, MapAccess, Visitor, value::MapAccessDeserializer};
-use serde::{Deserialize, Deserializer};
-use std::collections::{HashMap, hash_map::Entry};
+use serde::{Deserialize, Deserializer, Serialize};
+use std::collections::{BTreeMap, HashMap, hash_map::Entry};
 use std::fmt;
 use std::io;
 use std::marker::PhantomData;
-use std::ops::RangeInclusive;
 use std::path::Path;
 
 const SCHEMA: &str = "kre.f6-events-policy.v1";
 const EXCLUDED_SYSTEM: &str = "PCRoomBenefit";
 const MAX_PER_ACCOUNT_PER_HOUR: u16 = 60;
 const MAX_GLOBAL_PER_MINUTE: u16 = 600;
+const SECONDS_PER_HOUR: i64 = 3600;
+const SECONDS_PER_MINUTE: i64 = 60;
 
 // The in_scope set from docs/evidence/content/f6-events-catalog.json.
 const SYSTEM_NAMES: [&str; 19] = [
@@ -37,11 +38,88 @@ const SYSTEM_NAMES: [&str; 19] = [
     "Sự kiện theo tiền tố Event",
 ];
 
-/// A validated policy. Enablement checks the opt-in and its schedule;
-/// operation counters and quota enforcement belong to the event handler.
+/// A validated policy. Systems are off unless explicitly opted in.
 #[derive(Debug)]
 pub struct F6EventPolicy {
-    enabled_windows: HashMap<&'static str, RangeInclusive<i64>>,
+    enabled_systems: HashMap<&'static str, F6EnabledSystem>,
+}
+
+/// The configured schedule and limits for an opted-in system.
+#[derive(Debug)]
+pub struct F6EnabledSystem {
+    pub start_utc: i64,
+    pub end_utc: i64,
+    pub rate_caps: RateCaps,
+}
+
+impl F6EnabledSystem {
+    fn contains(&self, now_utc: i64) -> bool {
+        (self.start_utc..=self.end_utc).contains(&now_utc)
+    }
+}
+
+/// Keep one tracker for all F6 operations on the server. Counters reset on
+/// UTC hour and minute boundaries respectively, with no wall clock access.
+#[derive(Debug, Default)]
+pub struct F6QuotaTracker {
+    latest_utc: i64,
+    account_counts: BTreeMap<(&'static str, i64), u16>,
+    system_counts: BTreeMap<&'static str, u16>,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum QuotaRejection {
+    UnknownSystem,
+    ExcludedSystem,
+    Disabled,
+    OutsideSchedule,
+    InvalidTimestamp,
+    InvalidAccountId,
+    ClockRegression,
+    AccountQuotaExceeded,
+    GlobalQuotaExceeded,
+}
+
+impl F6QuotaTracker {
+    fn accept(
+        &mut self,
+        system: &'static str,
+        caps: RateCaps,
+        account_id: i64,
+        now_utc: i64,
+    ) -> Result<(), QuotaRejection> {
+        if now_utc < self.latest_utc {
+            return Err(QuotaRejection::ClockRegression);
+        }
+        // Clear expired buckets for every system, including idle ones.
+        if now_utc / SECONDS_PER_HOUR != self.latest_utc / SECONDS_PER_HOUR {
+            self.account_counts.clear();
+        }
+        if now_utc / SECONDS_PER_MINUTE != self.latest_utc / SECONDS_PER_MINUTE {
+            self.system_counts.clear();
+        }
+        self.latest_utc = now_utc;
+
+        let account = (system, account_id);
+        let account_count = self.account_counts.get(&account).copied().unwrap_or(0);
+        if account_count >= caps.per_account_per_hour {
+            return Err(QuotaRejection::AccountQuotaExceeded);
+        }
+        let system_count = self.system_counts.get(system).copied().unwrap_or(0);
+        if system_count >= caps.global_per_minute {
+            return Err(QuotaRejection::GlobalQuotaExceeded);
+        }
+
+        // Only accepted operations allocate entries or increment either quota.
+        self.account_counts.insert(account, account_count + 1);
+        self.system_counts.insert(system, system_count + 1);
+        Ok(())
+    }
+
+    #[cfg(test)]
+    pub(crate) fn tracked_accounts(&self) -> usize {
+        self.account_counts.len()
+    }
 }
 
 impl F6EventPolicy {
@@ -63,7 +141,7 @@ impl F6EventPolicy {
                 .0
                 .get(name)
                 .ok_or_else(|| invalid_data(format!("missing system {name:?}")))?;
-            let caps = &system.rate_caps.0;
+            let caps = system.rate_caps.0;
             if caps.per_account_per_hour > MAX_PER_ACCOUNT_PER_HOUR
                 || caps.global_per_minute > MAX_GLOBAL_PER_MINUTE
             {
@@ -78,9 +156,16 @@ impl F6EventPolicy {
             }
 
             match (system.start_utc, system.end_utc) {
-                (Some(start), Some(end)) if start < end => {
+                (Some(start_utc), Some(end_utc)) if start_utc < end_utc => {
                     if system.enabled {
-                        policy.enabled_windows.insert(name, start..=end);
+                        policy.enabled_systems.insert(
+                            name,
+                            F6EnabledSystem {
+                                start_utc,
+                                end_utc,
+                                rate_caps: caps,
+                            },
+                        );
                     }
                 }
                 (None, None) if !system.enabled => {}
@@ -102,7 +187,7 @@ impl F6EventPolicy {
     /// Disable all events without relying on an external profile.
     pub fn disabled_default() -> Self {
         Self {
-            enabled_windows: HashMap::new(),
+            enabled_systems: HashMap::new(),
         }
     }
 
@@ -111,12 +196,50 @@ impl F6EventPolicy {
         &SYSTEM_NAMES
     }
 
+    /// Report explicit opt-ins in catalog order, including inactive schedules.
+    pub fn enabled_systems(&self) -> impl Iterator<Item = (&'static str, &F6EnabledSystem)> {
+        SYSTEM_NAMES
+            .into_iter()
+            .filter_map(|name| self.enabled_systems.get(name).map(|system| (name, system)))
+    }
+
     /// Return whether the system is opted in at the given Unix second.
     /// Both endpoints of a validated schedule are included.
     pub fn is_system_enabled_at(&self, name: &str, utc_unix_secs: i64) -> bool {
-        self.enabled_windows
+        self.enabled_systems
             .get(name)
-            .is_some_and(|window| window.contains(&utc_unix_secs))
+            .is_some_and(|system| system.contains(utc_unix_secs))
+    }
+
+    /// Check and charge both quotas for one operation. Supply timestamps in
+    /// nondecreasing order for a shared tracker; clock regressions fail closed.
+    pub fn check_operation(
+        &self,
+        tracker: &mut F6QuotaTracker,
+        system: &str,
+        account_id: i64,
+        now_utc: i64,
+    ) -> Result<(), QuotaRejection> {
+        if system == EXCLUDED_SYSTEM {
+            return Err(QuotaRejection::ExcludedSystem);
+        }
+        let Some((&name, policy)) = self.enabled_systems.get_key_value(system) else {
+            return Err(if SYSTEM_NAMES.contains(&system) {
+                QuotaRejection::Disabled
+            } else {
+                QuotaRejection::UnknownSystem
+            });
+        };
+        if !policy.contains(now_utc) {
+            return Err(QuotaRejection::OutsideSchedule);
+        }
+        if now_utc < 0 {
+            return Err(QuotaRejection::InvalidTimestamp);
+        }
+        if account_id <= 0 {
+            return Err(QuotaRejection::InvalidAccountId);
+        }
+        tracker.accept(name, policy.rate_caps, account_id, now_utc)
     }
 }
 
@@ -143,11 +266,11 @@ struct SystemPolicy {
     rate_caps: Object<RateCaps>,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Copy, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
-struct RateCaps {
-    per_account_per_hour: u16,
-    global_per_minute: u16,
+pub struct RateCaps {
+    pub per_account_per_hour: u16,
+    pub global_per_minute: u16,
 }
 
 // Serde's derived struct deserializer also accepts positional arrays. These
