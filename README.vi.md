@@ -36,15 +36,21 @@ LANBoom là **dự án cộng đồng miễn phí**: không thu phí, không bá
 | ✅ | **Phương tiện** | **5** loại xe cưỡi và **22** loại tàu |
 | ✅ | **Phòng chơi** | Đấu tự do hoặc đấu đội, tối đa **8 người mỗi phòng** trên server |
 | ✅ | **Phòng riêng** | Vào phòng bằng mã hoặc chọn từ danh sách phòng LAN. Không cần tài khoản, hai người chơi chung được một máy |
-| ✅ | **Tự dựng máy chủ** | BoomServer cho Windows và Linux, đã thử với **50 người, 8 phòng** cùng lúc |
-| ✅ | **Tài khoản và tiến trình** | Tài khoản theo server, lưu kết quả trận, cấp độ, EXP và VÀNG |
-| ✅ | **Cửa hàng web** | Xem và nhận trang phục qua cửa hàng web của server |
+| ✅ | **Launcher** | Lưu danh sách server, tự quét phòng LAN, kiểm tra và sửa file, hỗ trợ mở Tường lửa Windows và nút tải bản mới |
+| ✅ | **Tự dựng máy chủ** | BoomServer cho Windows và Linux (Docker hoặc systemd), đã thử với **50 người, 8 phòng** cùng lúc. Có biểu tượng khay hệ thống, sao lưu một chạm và tạo mã mời mới |
+| ✅ | **Công cụ quản trị server** | Lệnh quản trị có ghi nhật ký, cấm chat và nhật ký lạm dụng, theo dõi tình trạng server, sao lưu, khôi phục và quay lui dữ liệu |
+| ✅ | **Tài khoản và tiến trình** | Tài khoản theo server kèm mã khôi phục, lưu kết quả trận, cấp độ, EXP và VÀNG |
+| ✅ | **Cửa hàng web và tủ đồ** | Xem danh mục, mua trang phục bằng VÀNG, mặc hoặc tháo đồ trong túi đồ |
+| ✅ | **Trang cộng đồng trên web** | Bạn bè và lời mời kết bạn, danh sách chặn, bang hội của bạn và bảng xếp hạng server |
 | ✅ | **Ngôn ngữ** | Tiếng Việt, English và 한국어 trong game, launcher và BoomServer; chat tiếng Việt có dấu |
-| 🚧 | **Cửa hàng và túi đồ trong game** | Trang cá nhân, túi đồ và cửa hàng như bản gốc |
-| 🚧 | **Chế độ đặc biệt** | **18** kiểu chơi trên **122** map: Bóng chày, Tô màu, Zombie, Đua kart, Siêu chiến binh… |
-| 🚧 | **Phiêu lưu PvE** | **699** màn đánh quái cùng bạn bè, có trùm, rương báu và chế tạo đồ |
-| 🚧 | **Cộng đồng** | Bạn bè, thì thầm, bang hội tới 100 người, cặp đôi và bảng xếp hạng |
-| 🚧 | **Sự kiện theo mùa** | Khoảng 20 hệ thống sự kiện: Thẻ May Mắn, Thám Hiểm Mỏ, Chợ Phép Thuật, thú cưng… |
+| 🚧 | **Cửa hàng và trang trí trong game** | Trang cá nhân, túi đồ và cửa hàng ngay trong game, cùng trang trí avatar, nhân vật, bóng nước, cấp độ, ID và biểu cảm |
+| 🚧 | **Thang đấu và ghép trận** | Đấu xếp hạng theo đẳng và tự động ghép trận |
+| 🚧 | **Chế độ đặc biệt** | **18** chế độ trên **122** map (Bóng chày, Tô màu, Zombie, Đua kart, Siêu chiến binh, Popcade…) và các biến thể luật như Ném tuyết, Hồi sinh, Bom hẹn giờ, Bắt thủ lĩnh, Nhím |
+| 🚧 | **Đấu với máy** | Trận phối hợp và nhiệm vụ đấu với người chơi máy |
+| 🚧 | **Phiêu lưu PvE** | **699** màn đánh quái cùng bạn bè: chế độ Quái vật, CA Hero, Hidden Catch, RPG, Sandbox, Thám hiểm Nam Cực, I am Boss, màn thưởng và hướng dẫn, có trùm, rương báu và chế tạo đồ |
+| 🚧 | **Cộng đồng trong game** | Messenger, thì thầm, cửa sổ bang hội, cặp đôi và nhẫn đôi |
+| 🚧 | **Nhiệm vụ và vé mùa** | Nhiệm vụ hằng ngày, nhiệm vụ, CA Pass và bộ sưu tập item |
+| 🚧 | **Sự kiện theo mùa** | Khoảng 20 hệ thống sự kiện: Thẻ May Mắn, Thám Hiểm Mỏ, Chợ Phép Thuật, Trồng Mầm, Tự Chế Bom, Trao đổi, thú cưng và câu cá |
 
 ## Hai cách chơi
 
