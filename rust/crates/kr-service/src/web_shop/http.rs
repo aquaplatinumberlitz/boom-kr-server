@@ -59,6 +59,12 @@ impl Request {
     pub fn json<T: DeserializeOwned>(&self) -> Result<T, Status> {
         serde_json::from_slice(&self.body).map_err(|_| Status::BadRequest)
     }
+    pub fn json_object<T: DeserializeOwned>(&self) -> Result<T, Status> {
+        if self.body.iter().copied().find(|b| !b.is_ascii_whitespace()) != Some(b'{') {
+            return Err(Status::BadRequest);
+        }
+        self.json()
+    }
 }
 
 pub async fn read(stream: &mut TcpStream, max_body: usize) -> Result<Request, Option<Status>> {
@@ -200,8 +206,11 @@ pub struct Response {
 }
 impl Response {
     pub fn json<T: Serialize>(value: &T) -> Self {
+        Self::json_with_status(Status::Ok, value)
+    }
+    pub fn json_with_status<T: Serialize>(status: Status, value: &T) -> Self {
         Self {
-            status: Status::Ok,
+            status,
             content_type: "application/json; charset=utf-8",
             body: serde_json::to_vec(value).unwrap_or_else(|_| b"{}".to_vec()),
             csp: false,

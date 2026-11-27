@@ -5,6 +5,7 @@
 <p id="balance"></p>
 <h2>Equipped</h2><p id="selection-note" class="muted" hidden>These selections are for this shop session.</p><ul id="equipped"></ul>
 <h3>Cosmetics Projection Status</h3><p id="cosmetics-status" class="muted" role="status"></p><ul id="cosmetics-slots"></ul>
+<h2>Custom Maps</h2><p id="custom-maps-status" class="muted" role="status"></p><ul id="custom-maps"></ul>
 <h2>Inventory</h2><ul id="inventory"></ul>
 <h2>Catalog</h2>
 <label>Category <select id="category" onchange="loadCatalog()"><option value="">All</option><option>character</option><option>decoration</option><option>emotion</option><option>consumable</option><option>collection</option></select></label><ul id="items"></ul><pre id="message"></pre>
@@ -29,6 +30,7 @@ async function load(){
     if(load!==summaryLoad)return;
     q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
     await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus()]);
+    if(load===summaryLoad)await loadCustomMaps(load);
   }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
 }
 function clearSummaries(){
@@ -36,6 +38,8 @@ function clearSummaries(){
   q('#chat-status').textContent='';
   q('#cosmetics-status').textContent='';
   q('#cosmetics-slots').replaceChildren();
+  q('#custom-maps-status').textContent='';
+  q('#custom-maps').replaceChildren();
 }
 async function loadChatStatus(){
   const load=++chatStatusLoad;
@@ -63,6 +67,24 @@ async function loadCosmeticsSummary(load){
       q('#cosmetics-slots').append(li);
     }
   }catch(e){if(load===summaryLoad)q('#cosmetics-status').textContent='Cosmetics projection status unavailable'}
+}
+async function loadCustomMaps(load){
+  const status=q('#custom-maps-status');
+  try{
+    const {maps,quota_remaining,wire_contract}=await api('/api/v1/custom-maps');
+    if(load!==summaryLoad)return;
+    const count=maps.length===0?'No saved maps':`${maps.length} saved`;
+    status.textContent=`${count} · ${quota_remaining} slots available · Game wire: ${wire_contract}`;
+    for(const {map_id,width,height} of maps){
+      const li=document.createElement('li');
+      li.textContent=`${map_id} · ${width} × ${height}`;
+      q('#custom-maps').append(li);
+    }
+  }catch(e){
+    if(load===summaryLoad)status.textContent=e.message==='custom_maps_disabled'
+      ?'Custom map storage disabled · Game wire: unmeasured'
+      :'Custom map status unavailable';
+  }
 }
 let socialLoad=0;
 function clearGuild(){q('#guild').textContent='';q('#guild-members').replaceChildren();q('#add-guild-member').hidden=true}

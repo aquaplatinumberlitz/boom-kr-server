@@ -57,6 +57,7 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("p.mode"));
     assert!(page.contains("/api/v1/inventory"));
     assert!(page.contains("/api/v1/cosmetics-summary"));
+    assert!(page.contains("/api/v1/custom-maps"));
     assert!(page.contains("/api/v1/unequip"));
     assert!(page.contains("/api/social/friends"));
     assert!(page.contains("/api/social/friends/respond"));
@@ -204,6 +205,247 @@ fn test_settings() -> crate::account_worker::EconomySettings {
         },
     )
     .unwrap()
+}
+
+#[tokio::test]
+async fn loopback_custom_maps_require_auth_and_isolate_owner_storage() {
+    use crate::account_worker::Worker;
+    use crate::accounts::{Admin, Store, TEST_SERIAL};
+    use crate::custom_map_store::CustomMapPolicy;
+    use kr_wire::kr00967::custom_map::{CUSTOM_MAP_SCHEMA, MAX_CUSTOM_MAP_BYTES};
+
+    const MAPS: &str = "/api/v1/custom-maps";
+    const DELETE: &str = "/api/v1/custom-maps/delete";
+    const DELETE_BODY: &str = r#"{"map_id":"first"}"#;
+
+    fn encode_base64(payload: &[u8]) -> String {
+        const ALPHABET: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        let mut encoded = String::new();
+        for chunk in payload.chunks(3) {
+            let a = chunk[0];
+            let b = chunk.get(1).copied().unwrap_or(0);
+            let c = chunk.get(2).copied().unwrap_or(0);
+            for (i, digit) in [
+                a >> 2,
+                (a & 3) << 4 | b >> 4,
+                (b & 15) << 2 | c >> 6,
+                c & 63,
+            ]
+            .into_iter()
+            .enumerate()
+            {
+                encoded.push(if i > chunk.len() {
+                    '='
+                } else {
+                    ALPHABET[usize::from(digit)] as char
+                });
+            }
+        }
+        encoded
+    }
+
+    async fn listen(
+        shop: WebShop,
+        worker: &Worker,
+        auth: &WebShopAuth,
+    ) -> (
+        std::net::SocketAddr,
+        tokio::task::JoinHandle<io::Result<()>>,
+    ) {
+        let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+        let addr = listener.local_addr().unwrap();
+        let task = tokio::spawn(serve_loop(
+            listener,
+            shop,
+            worker.service(),
+            auth.clone(),
+            None,
+        ));
+        (addr, task)
+    }
+
+    let (dir, db) = temp_db("custom-maps");
+    let [owner, other] = {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let mut accounts = Store::open(&db).unwrap();
+        let admin = Admin {
+            actor: "webshop-test",
+            reason: "F7 loopback fixture",
+        };
+        ["mapowner", "mapother"].map(|name| {
+            accounts
+                .create_account(&admin, name, name, b"maps-test-password", 1)
+                .unwrap()
+                .player_id
+        })
+    };
+    let worker = Worker::open_with_economy(db, 8, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let owner_token = auth.issue_token(owner).unwrap();
+    let other_token = auth.issue_token(other).unwrap();
+    let revoked = auth.issue_token(owner).unwrap();
+    auth.revoke_token(&revoked);
+    let token = Some(owner_token.as_str());
+    let other_token = Some(other_token.as_str());
+    let map_root = dir.0.join("maps");
+    let config = Config {
+        max_body_bytes: 12 * 1024,
+        ..config()
+    };
+    let disabled = CustomMapStore::new(&map_root, CustomMapPolicy::default()).unwrap();
+    let disabled_response = json!({"error": "custom_maps_disabled", "wire_contract": "unmeasured"});
+    let mut payload = serde_json::to_vec(&json!({
+        "schema": CUSTOM_MAP_SCHEMA, "width": 15, "height": 13,
+        "tiles": vec![0; 15 * 13], "spawns": [[0, 0], [14, 12]],
+    }))
+    .unwrap();
+    payload.resize(MAX_CUSTOM_MAP_BYTES, b' ');
+    let save = |map_id, bytes: &[u8]| {
+        json!({
+            "map_id": map_id, "payload_base64": encode_base64(bytes),
+        })
+        .to_string()
+    };
+    let first = save("first", &payload);
+
+    for shop in [
+        WebShop::new(config.clone()),
+        WebShop::new(config.clone()).with_custom_map_store(disabled),
+    ] {
+        let (addr, task) = listen(shop, &worker, &auth).await;
+        for (method, path, body) in [
+            ("GET", MAPS, None),
+            ("POST", MAPS, Some(first.as_str())),
+            ("POST", DELETE, Some(DELETE_BODY)),
+        ] {
+            let (code, _, value) = send_http(addr, method, path, token, body).await;
+            assert_eq!((code, value), (403, disabled_response.clone()));
+        }
+        task.abort();
+        assert!(task.await.unwrap_err().is_cancelled());
+    }
+    assert!(!map_root.exists());
+
+    let store = CustomMapStore::new(
+        &map_root,
+        CustomMapPolicy {
+            enabled: true,
+            max_maps_per_owner: 1,
+            ..CustomMapPolicy::default()
+        },
+    )
+    .unwrap();
+    let (addr, task) = listen(
+        WebShop::new(config).with_custom_map_store(store),
+        &worker,
+        &auth,
+    )
+    .await;
+    for (method, path, body) in [
+        ("GET", MAPS, None),
+        ("POST", MAPS, Some(first.as_str())),
+        ("POST", DELETE, Some(DELETE_BODY)),
+    ] {
+        for invalid_token in [None, Some("invalid"), Some(revoked.as_str())] {
+            let (code, _, value) = send_http(addr, method, path, invalid_token, body).await;
+            assert_eq!((code, value), (401, json!({"error": "unauthorized"})));
+        }
+        for query in ["?", "?owner_id=1"] {
+            let target = format!("{path}{query}");
+            assert_eq!(send_http(addr, method, &target, token, body).await.0, 400);
+        }
+    }
+    for (method, path) in [
+        ("PUT", MAPS),
+        ("HEAD", MAPS),
+        ("GET", DELETE),
+        ("DELETE", DELETE),
+    ] {
+        assert_eq!(send_http(addr, method, path, token, None).await.0, 405);
+    }
+
+    let mut oversized = payload.clone();
+    oversized.push(b' ');
+    for (body, code, error) in [
+        (save("first", &oversized), 413, "custom_map_too_large"),
+        (save("first", b"{}"), 400, "invalid_custom_map"),
+        (save("../escape", &payload), 400, "invalid_map_id"),
+        (
+            r#"{"map_id":"first","payload_base64":"e30!"}"#.into(),
+            400,
+            "request_failed",
+        ),
+        (
+            r#"{"map_id":"first","payload_base64":"YR=="}"#.into(),
+            400,
+            "request_failed",
+        ),
+        (r#"["first","e30="]"#.into(), 400, "request_failed"),
+        (
+            r#"{"map_id":"first","payload_base64":"e30=","owner_id":"2"}"#.into(),
+            400,
+            "request_failed",
+        ),
+    ] {
+        let (status, _, value) = send_http(addr, "POST", MAPS, token, Some(&body)).await;
+        assert_eq!((status, &value["error"]), (code, &json!(error)));
+    }
+    assert!(
+        !map_root.exists(),
+        "rejected saves should not create storage"
+    );
+
+    let (code, _, value) = send_http(addr, "POST", MAPS, token, Some(&first)).await;
+    assert_eq!(code, 200, "{value}");
+    assert_eq!(value["wire_contract"], "unmeasured");
+    let saved = &value["map"];
+    assert_eq!(saved["owner_id"], owner.to_string());
+    assert_eq!(saved["map_id"], "first");
+    assert_eq!(saved["sha256"], crate::sha256_hex(&payload));
+    assert_eq!(
+        (saved["width"].as_u64(), saved["height"].as_u64()),
+        (Some(15), Some(13))
+    );
+
+    let (code, head, listed) = send_http(addr, "GET", MAPS, token, None).await;
+    assert_eq!(code, 200);
+    assert!(head.contains("Cache-Control: no-store"));
+    assert_eq!(
+        listed,
+        json!({"maps":[saved], "quota_remaining":0, "wire_contract":"unmeasured"})
+    );
+    let empty = json!({"maps":[], "quota_remaining":1, "wire_contract":"unmeasured"});
+    let (code, _, listed) = send_http(addr, "GET", MAPS, other_token, None).await;
+    assert_eq!((code, listed), (200, empty.clone()));
+    let (code, _, value) = send_http(addr, "POST", DELETE, other_token, Some(DELETE_BODY)).await;
+    assert_eq!(
+        (code, &value["error"]),
+        (404, &json!("custom_map_not_found"))
+    );
+
+    let second = save("second", &payload);
+    let (code, _, value) = send_http(addr, "POST", MAPS, token, Some(&second)).await;
+    assert_eq!(
+        (code, &value["error"]),
+        (409, &json!("custom_map_quota_exceeded"))
+    );
+    assert_eq!(
+        send_http(addr, "POST", MAPS, token, Some(&first)).await.0,
+        200
+    );
+    let (code, _, value) = send_http(addr, "POST", DELETE, token, Some(DELETE_BODY)).await;
+    assert_eq!(
+        (code, value),
+        (200, json!({"removed":true, "wire_contract":"unmeasured"}))
+    );
+    let (code, _, listed) = send_http(addr, "GET", MAPS, token, None).await;
+    assert_eq!((code, listed), (200, empty));
+
+    task.abort();
+    assert!(task.await.unwrap_err().is_cancelled());
+    worker.shutdown().await.unwrap();
 }
 
 #[tokio::test]

@@ -10,6 +10,7 @@ use crate::{
     },
     accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
     choco_chat::F5SocialPolicy,
+    custom_map_store::{CustomMapStore, CustomMapStoreError},
 };
 use http::{Request, Response, Status};
 use kr_wire::kr00967::cosmetics::{
@@ -28,7 +29,12 @@ use std::{
     sync::{Arc, Mutex},
     time::{Duration, Instant},
 };
-use tokio::{net::TcpListener, sync::watch, task::JoinSet, time::timeout};
+use tokio::{
+    net::TcpListener,
+    sync::{Mutex as AsyncMutex, watch},
+    task::{JoinSet, spawn_blocking},
+    time::timeout,
+};
 use zeroize::Zeroizing;
 
 const TOKEN_CAPACITY: usize = 1024;
@@ -225,7 +231,7 @@ fn digest_eq(a: &[u8; 32], b: &[u8; 32]) -> bool {
 
 pub(crate) struct Opened {
     listener: TcpListener,
-    config: Config,
+    shop: WebShop,
     auth: WebShopAuth,
 }
 
@@ -241,20 +247,48 @@ pub(crate) async fn open(config: Config) -> io::Result<Opened> {
     let listener = TcpListener::bind(config.bind).await?;
     Ok(Opened {
         listener,
-        config,
+        shop: WebShop::new(config),
         auth,
     })
 }
 
-/// Bind the configured IPv4 interface. Dropping this future closes the listener
-/// and aborts connection tasks. A DB mutation already running may still commit.
-pub async fn serve(config: Config, service: AccountService, auth: WebShopAuth) -> io::Result<()> {
-    config.validate()?;
-    if session_ttl(config.session_ttl_seconds)? != auth.ttl {
-        return Err(invalid("web shop session lifetime mismatch"));
+/// A local portal with optional custom map storage.
+pub struct WebShop {
+    config: Config,
+    custom_maps: Option<Arc<AsyncMutex<CustomMapStore>>>,
+}
+
+impl WebShop {
+    pub fn new(config: Config) -> Self {
+        Self {
+            config,
+            custom_maps: None,
+        }
     }
-    let listener = TcpListener::bind(config.bind).await?;
-    serve_loop(listener, config, service, auth, None).await
+
+    /// Opt in to local map storage. Set `max_body_bytes` high enough for the
+    /// base64 and JSON overhead (12 KiB accommodates an 8192-byte map).
+    pub fn with_custom_map_store(mut self, store: CustomMapStore) -> Self {
+        self.custom_maps = Some(Arc::new(AsyncMutex::new(store)));
+        self
+    }
+
+    /// Bind the configured IPv4 interface. Dropping this future closes the
+    /// listener and aborts connection tasks. A mutation already running may
+    /// still commit.
+    pub async fn serve(self, service: AccountService, auth: WebShopAuth) -> io::Result<()> {
+        self.config.validate()?;
+        if session_ttl(self.config.session_ttl_seconds)? != auth.ttl {
+            return Err(invalid("web shop session lifetime mismatch"));
+        }
+        let listener = TcpListener::bind(self.config.bind).await?;
+        serve_loop(listener, self, service, auth, None).await
+    }
+}
+
+/// Serve the portal without custom map storage.
+pub async fn serve(config: Config, service: AccountService, auth: WebShopAuth) -> io::Result<()> {
+    WebShop::new(config).serve(service, auth).await
 }
 
 pub(crate) async fn serve_until(
@@ -264,7 +298,7 @@ pub(crate) async fn serve_until(
 ) -> io::Result<()> {
     serve_loop(
         opened.listener,
-        opened.config,
+        opened.shop,
         service,
         opened.auth,
         Some(stop),
@@ -279,7 +313,7 @@ async fn serve_listener(
     service: AccountService,
     auth: WebShopAuth,
 ) -> io::Result<()> {
-    serve_loop(listener, config, service, auth, None).await
+    serve_loop(listener, WebShop::new(config), service, auth, None).await
 }
 
 async fn stop_signal(stop: Option<&mut watch::Receiver<bool>>) {
@@ -295,12 +329,12 @@ async fn stop_signal(stop: Option<&mut watch::Receiver<bool>>) {
 
 async fn serve_loop(
     listener: TcpListener,
-    config: Config,
+    shop: WebShop,
     service: AccountService,
     auth: WebShopAuth,
     mut stop: Option<watch::Receiver<bool>>,
 ) -> io::Result<()> {
-    let config = Arc::new(config);
+    let shop = Arc::new(shop);
     let mut connections = JoinSet::new();
     loop {
         if stop.as_ref().is_some_and(|s| *s.borrow()) {
@@ -312,18 +346,19 @@ async fn serve_loop(
             _ = connections.join_next(), if !connections.is_empty() => {}
             accepted = listener.accept() => {
                 let (mut stream, peer) = accepted?;
-                if !config.allows(peer.ip()) {
+                if !shop.config.allows(peer.ip()) {
                     continue;
                 }
                 while connections.try_join_next().is_some() {}
-                if connections.len() >= config.max_connections {
+                if connections.len() >= shop.config.max_connections {
                     continue;
                 }
-                let (config, service, auth) = (config.clone(), service.clone(), auth.clone());
+                let (shop, service, auth) = (shop.clone(), service.clone(), auth.clone());
                 connections.spawn(async move {
+                    let config = &shop.config;
                     let _ = timeout(Duration::from_millis(config.request_timeout_ms), async {
                         let response = match http::read(&mut stream, config.max_body_bytes).await {
-                            Ok(request) => dispatch(&config, &service, &auth, request).await,
+                            Ok(request) => dispatch(&shop, &service, &auth, request).await,
                             Err(Some(status)) => Response::error(status),
                             Err(None) => return Ok(()),
                         };
@@ -518,12 +553,12 @@ async fn catalog(
 }
 
 async fn dispatch(
-    config: &Config,
+    shop: &WebShop,
     service: &AccountService,
     auth: &WebShopAuth,
     request: Request,
 ) -> Response {
-    match route(config, service, auth, &request).await {
+    match route(shop, service, auth, &request).await {
         Ok(response) => response,
         Err(status) => Response::error(status),
     }
@@ -696,12 +731,143 @@ fn o1_selection_route(
     }
 }
 
+const CUSTOM_MAP_WIRE_CONTRACT: &str = "unmeasured";
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct CustomMapSave {
+    map_id: String,
+    payload_base64: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct CustomMapDelete {
+    map_id: String,
+}
+
+// RFC 4648 standard base64, with padding and zero trailing bits required.
+fn decode_map_payload(encoded: &str) -> Option<Vec<u8>> {
+    fn digit(byte: u8) -> Option<u8> {
+        Some(match byte {
+            b'A'..=b'Z' => byte - b'A',
+            b'a'..=b'z' => byte - b'a' + 26,
+            b'0'..=b'9' => byte - b'0' + 52,
+            b'+' => 62,
+            b'/' => 63,
+            _ => return None,
+        })
+    }
+
+    let (chunks, remainder) = encoded.as_bytes().as_chunks::<4>();
+    if !remainder.is_empty() {
+        return None;
+    }
+    let mut chunks = chunks.iter().peekable();
+    let mut decoded = Vec::with_capacity(encoded.len() / 4 * 3);
+    while let Some(&[a, b, c, d]) = chunks.next() {
+        let (a, b) = (digit(a)?, digit(b)?);
+        decoded.push((a << 2) | (b >> 4));
+        if c == b'=' {
+            return (chunks.peek().is_none() && d == b'=' && b & 15 == 0).then_some(decoded);
+        }
+        let c = digit(c)?;
+        decoded.push((b << 4) | (c >> 2));
+        if d == b'=' {
+            return (chunks.peek().is_none() && c & 3 == 0).then_some(decoded);
+        }
+        decoded.push((c << 6) | digit(d)?);
+    }
+    Some(decoded)
+}
+
+fn custom_map_error(error: CustomMapStoreError) -> Response {
+    use CustomMapStoreError as MapError;
+    let (status, error) = match error {
+        MapError::Disabled => (Status::Forbidden, "custom_maps_disabled"),
+        MapError::InvalidMapId => (Status::BadRequest, "invalid_map_id"),
+        MapError::InvalidMap(_) => (Status::BadRequest, "invalid_custom_map"),
+        MapError::PayloadTooLarge => (Status::RequestTooLarge, "custom_map_too_large"),
+        MapError::QuotaExceeded => (Status::Conflict, "custom_map_quota_exceeded"),
+        MapError::NotFound => (Status::NotFound, "custom_map_not_found"),
+        _ => (Status::Internal, "custom_maps_unavailable"),
+    };
+    Response::json_with_status(
+        status,
+        &json!({"error": error, "wire_contract": CUSTOM_MAP_WIRE_CONTRACT}),
+    )
+}
+
+async fn custom_maps_route(
+    shop: &WebShop,
+    player: i64,
+    request: &Request,
+) -> Result<Response, Status> {
+    let delete = request.path() == "/api/v1/custom-maps/delete";
+    match (delete, request.method()) {
+        (false, "GET" | "POST") | (true, "POST") => {}
+        _ => return Err(Status::MethodNotAllowed),
+    }
+    let Some(store) = &shop.custom_maps else {
+        return Ok(custom_map_error(CustomMapStoreError::Disabled));
+    };
+
+    enum Operation {
+        List,
+        Save { map_id: String, payload: Vec<u8> },
+        Delete(String),
+    }
+    let operation = match (delete, request.method()) {
+        (true, _) => Operation::Delete(request.json_object::<CustomMapDelete>()?.map_id),
+        (false, "GET") => Operation::List,
+        (false, _) => {
+            let CustomMapSave {
+                map_id,
+                payload_base64,
+            } = request.json_object()?;
+            let payload = decode_map_payload(&payload_base64).ok_or(Status::BadRequest)?;
+            Operation::Save { map_id, payload }
+        }
+    };
+
+    // Keep filesystem work off the async runtime. The owned guard limits the
+    // portal to one store operation even if the HTTP request times out.
+    let store = store.clone().lock_owned().await;
+    let owner = player.to_string();
+    let result = spawn_blocking(move || -> Result<_, CustomMapStoreError> {
+        Ok(match operation {
+            Operation::List => json!({
+                "maps": store.list_by_owner(&owner)?,
+                "quota_remaining": store.quota_remaining(&owner)?,
+                "wire_contract": CUSTOM_MAP_WIRE_CONTRACT,
+            }),
+            Operation::Save { map_id, payload } => json!({
+                "map": store.save(&owner, &map_id, &payload)?,
+                "wire_contract": CUSTOM_MAP_WIRE_CONTRACT,
+            }),
+            Operation::Delete(map_id) => {
+                if !store.delete(&owner, &map_id)? {
+                    return Err(CustomMapStoreError::NotFound);
+                }
+                json!({"removed": true, "wire_contract": CUSTOM_MAP_WIRE_CONTRACT})
+            }
+        })
+    })
+    .await
+    .map_err(|_| Status::Internal)?;
+    Ok(match result {
+        Ok(body) => Response::json(&body),
+        Err(error) => custom_map_error(error),
+    })
+}
+
 async fn route(
-    config: &Config,
+    shop: &WebShop,
     service: &AccountService,
     auth: &WebShopAuth,
     request: &Request,
 ) -> Result<Response, Status> {
+    let config = &shop.config;
     let path = request.path();
     let query = request.query();
     if matches!(path, "/" | "/health") {
@@ -751,6 +917,9 @@ async fn route(
         return Err(Status::BadRequest);
     }
     match path {
+        "/api/v1/custom-maps" | "/api/v1/custom-maps/delete" => {
+            custom_maps_route(shop, player, request).await
+        }
         "/api/v1/profile" => {
             request.require_method("GET")?;
             let profile = service.profile_get(player).await?;
