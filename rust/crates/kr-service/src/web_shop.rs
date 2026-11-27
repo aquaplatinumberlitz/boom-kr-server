@@ -240,6 +240,20 @@ impl Opened {
     pub(crate) fn auth(&self) -> WebShopAuth {
         self.auth.clone()
     }
+
+    pub(crate) fn with_policies(
+        mut self,
+        f6_policy: Option<Arc<F6EventPolicy>>,
+        custom_map_store: Option<CustomMapStore>,
+    ) -> Self {
+        if let Some(policy) = f6_policy {
+            self.shop = self.shop.with_f6_policy(policy);
+        }
+        if let Some(store) = custom_map_store {
+            self.shop = self.shop.with_custom_map_store(store);
+        }
+        self
+    }
 }
 
 pub(crate) async fn open(config: Config) -> io::Result<Opened> {
