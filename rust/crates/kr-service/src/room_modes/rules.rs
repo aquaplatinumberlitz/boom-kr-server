@@ -7,6 +7,88 @@ use std::{collections::BTreeMap, io};
 
 const DESCRIPTORS: &str = include_str!("rules.json");
 
+/// Operator choices from the KR00967 extended modes matrix (design/candidate).
+/// These fields describe requests, without granting any room or lobby rights.
+#[derive(Default, Deserialize)]
+#[serde(default, deny_unknown_fields)]
+pub(super) struct ExtendedRules {
+    no_item: bool,    // 노템전
+    no_shop: bool,    // 노샵
+    basic_shop: bool, // 기샵
+    super_host: bool,
+    vote_kick: bool,
+    priority_room: Option<PriorityRoom>,
+    ladder_season: bool, // Seasonal 1:1 (크아짱), distinct from the Ladder preset.
+    channel_kind: Option<ChannelKind>,
+    big_battle_12: bool, // 대난투 has no confirmed relation to the big_battle group.
+}
+
+#[derive(Deserialize)]
+#[serde(try_from = "u32")]
+struct PriorityRoom(u8);
+
+impl TryFrom<u32> for PriorityRoom {
+    type Error = &'static str;
+
+    fn try_from(slot: u32) -> Result<Self, Self::Error> {
+        if !(1..=50).contains(&slot) {
+            return Err("priority_room must be in 1..=50 (S01–S50)");
+        }
+        Ok(Self(slot as u8))
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(rename_all = "snake_case")]
+enum ChannelKind {
+    Beginner,
+    Event,
+    NoItem,
+    Practice,
+}
+
+impl ExtendedRules {
+    fn validate(&self) -> Result<(), &'static str> {
+        // Each label selects a whole item preset. Their composition and the
+        // relationship between a channel and room item permissions are unknown.
+        if [self.no_item, self.no_shop, self.basic_shop]
+            .into_iter()
+            .filter(|&selected| selected)
+            .count()
+            > 1
+        {
+            return Err("no_item, no_shop and basic_shop are mutually exclusive F2 item presets");
+        }
+        Ok(())
+    }
+
+    pub(super) fn check_activation(&self) -> io::Result<()> {
+        self.validate().map_err(io::Error::other)?;
+        if let Some(PriorityRoom(slot)) = self.priority_room {
+            return Err(io::Error::other(format!(
+                "F2 priority_room S{slot:02} reservation is unmeasured"
+            )));
+        }
+        for (requested, policy) in [
+            (self.no_item, "no_item"),
+            (self.no_shop, "no_shop"),
+            (self.basic_shop, "basic_shop"),
+            (self.super_host, "super_host"),
+            (self.vote_kick, "vote_kick"),
+            (self.ladder_season, "ladder_season"),
+            (self.channel_kind.is_some(), "channel_kind"),
+            (self.big_battle_12, "big_battle_12"),
+        ] {
+            if requested {
+                return Err(io::Error::other(format!(
+                    "F2 {policy} policy is unmeasured"
+                )));
+            }
+        }
+        Ok(())
+    }
+}
+
 impl ModeKind {
     /// Operator aliases for recognizable dialog labels at KR00967 0xC6C080.
     /// This correspondence is policy, and supplies no native dispatch or

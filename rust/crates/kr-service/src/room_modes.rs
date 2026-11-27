@@ -13,9 +13,145 @@ use std::{
 pub(crate) mod adapter;
 mod rules;
 mod runtime;
-use rules::{RuleTable, Wave};
+use rules::{ExtendedRules, RuleTable, Wave};
 
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
+
+// The 21 F2? families in f2-extended-modes-matrix.json, paired with their
+// literal KR00967 census entries. Pack membership classifies these maps as
+// tentative; it supplies neither a room type nor a start route.
+const TENTATIVE_MAP_FAMILIES: &[(&str, &[&str])] = &[
+    (
+        "Balansa",
+        &[
+            "Balansa01",
+            "Balansa02",
+            "Balansa03",
+            "Balansa04",
+            "Balansa05",
+        ],
+    ),
+    ("Baram", &["Baram01", "Baram02", "Baram03", "Baram04"]),
+    (
+        "BlackLucy",
+        &[
+            "BlackLucy01",
+            "BlackLucy02",
+            "BlackLucy03",
+            "BlackLucy04",
+            "BlackLucy05",
+            "BlackLucy06",
+            "BlackLucy07",
+            "BlackLucy08",
+            "BlackLucy09",
+        ],
+    ),
+    (
+        "Clovertest",
+        &["Clovertest_01", "Clovertest_02", "Clovertest_03"],
+    ),
+    (
+        "ConfusedFight",
+        &["ConfusedFight01", "ConfusedFight02", "ConfusedFight03"],
+    ),
+    (
+        "DarkCastle",
+        &[
+            "DarkCastle01",
+            "DarkCastle02",
+            "DarkCastle03",
+            "DarkCastle04",
+            "DarkCastle05",
+            "DarkCastle06",
+            "DarkCastle07",
+            "DarkCastle08",
+            "DarkCastle09",
+        ],
+    ),
+    (
+        "DarkVampire",
+        &[
+            "DarkVampire01",
+            "DarkVampire02",
+            "DarkVampire03",
+            "DarkVampire04",
+            "DarkVampire05",
+            "DarkVampire06",
+            "DarkVampire07",
+            "DarkVampire08",
+        ],
+    ),
+    (
+        "Fm_BigBattle",
+        &[
+            "Fm_BigBattle01",
+            "Fm_BigBattle02",
+            "Fm_BigBattle03",
+            "Fm_BigBattle04",
+        ],
+    ),
+    (
+        "Fm_BigBattleH_PreparePlay",
+        &["Fm_BigBattleH_PreparePlay01"],
+    ),
+    ("Fm_BigBattle_PreparePlay", &["Fm_BigBattle_PreparePlay01"]),
+    (
+        "GoldButterfly",
+        &["GoldButterfly01", "GoldButterfly02", "GoldButterfly03"],
+    ),
+    ("Hiphopclub", &["Hiphopclub07"]),
+    ("MagNest", &["MagNest01"]),
+    (
+        "NewXmas",
+        &[
+            "NewXmas01",
+            "NewXmas02",
+            "NewXmas03",
+            "NewXmas04",
+            "NewXmas05",
+            "NewXmas06",
+        ],
+    ),
+    (
+        "OkongOfLegend",
+        &["OkongOfLegend01", "OkongOfLegend02", "OkongOfLegend03"],
+    ),
+    ("Smash", &["Smash01", "Smash02", "Smash03", "Smash04"]),
+    ("Space_TW", &["Space_TW09", "Space_TW10"]),
+    (
+        "UserContest",
+        &[
+            "UserContest06",
+            "UserContest07",
+            "UserContest08",
+            "UserContest09",
+            "UserContest10",
+            "UserContest11",
+            "UserContest12",
+            "UserContest13",
+            "UserContest14",
+            "UserContest15",
+            "UserContest16",
+            "UserContest17",
+            "UserContest18",
+            "UserContest19",
+            "UserContest20",
+            "UserContest21",
+            "UserContest22",
+        ],
+    ),
+    ("WhiteAngel", &["WhiteAngel01", "WhiteAngel02"]),
+    ("WinningStreak_Colosseum", &["WinningStreak_Colosseum01"]),
+    (
+        "Wriggletest",
+        &[
+            "Wriggletest_01",
+            "Wriggletest_02",
+            "Wriggletest_03",
+            "Wriggletest_04",
+        ],
+    ),
+];
 
 #[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "snake_case")]
@@ -59,7 +195,7 @@ impl MapGroup {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Default, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub(crate) struct Config {
     #[serde(default)]
@@ -68,6 +204,10 @@ pub(crate) struct Config {
     create_overrides: OverrideConfig,
     #[serde(default)]
     runtime_overrides: OverrideConfig,
+    #[serde(default)]
+    extended_rules: ExtendedRules,
+    #[serde(default)]
+    candidate_map_family: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -260,6 +400,7 @@ impl Catalog {
 
 impl Policy {
     pub(crate) fn load(cfg: &Config) -> io::Result<Option<Self>> {
+        cfg.check_extended_activation()?;
         let visible = cfg.visible_map_groups.resolve()?;
         if cfg.create_overrides.is_empty() && cfg.runtime_overrides.is_empty() && visible.is_empty()
         {
@@ -353,6 +494,12 @@ impl Policy {
     ) -> Result<(), &'static str> {
         if (map.map_code, map.dynamic_index) != selected {
             return Err("start_map_selection_mismatch");
+        }
+        if TENTATIVE_MAP_FAMILIES
+            .iter()
+            .any(|(_, maps)| maps.iter().any(|name| name.as_bytes() == map.name))
+        {
+            return Err("f2_candidate_map_dispatch_unmeasured");
         }
         if let Some(kind) = self.override_for(team) {
             self.validate_candidate_map(kind, &map.name)?;
