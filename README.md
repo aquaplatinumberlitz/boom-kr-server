@@ -24,6 +24,22 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
 - **Your server, your rules.** Run your own server for your community and decide how accounts, progress and unlocks work.
 - **Your language.** More than 33,000 lines are translated by hand into English and Vietnamese, with no machine translation. Korean stays as it was in the original.
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center" valign="top"><strong>Launcher</strong><br><img src="assets/screenshots/launcher.jpg" width="420" alt="LANBoom launcher showing Play with friends in Vietnamese"></td>
+    <td align="center" valign="top"><strong>Login</strong><br><img src="assets/screenshots/en-login.jpg" width="420" alt="LANBoom login screen with English buttons"></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><strong>Lobby</strong><br><img src="assets/screenshots/en-lobby.jpg" width="420" alt="English lobby with options to create a room or jump into a game"></td>
+    <td align="center" valign="top"><strong>Game room</strong><br><img src="assets/screenshots/en-room.jpg" width="420" alt="Two players in a game room with the English Ready button"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><strong>Normal battle (Korean UI)</strong><br><img src="assets/screenshots/ko-arena.jpg" width="420" alt="Two players in a water balloon battle on PangLand03 with the Korean interface"></td>
+  </tr>
+</table>
+
 ## Features
 
 ✅ Available now · 🚧 Coming soon
@@ -41,7 +57,7 @@ LANBoom is a **free community project**. There is no fee, no paid currency and n
 | ✅ | **Server admin tools** | Audited admin commands, chat mutes and abuse logs, health monitoring, database backup, restore and rollback |
 | ✅ | **Accounts and progress** | Server accounts with a recovery code, saved match results, levels and EXP, and Lucci |
 | ✅ | **Web shop and wardrobe** | Browse the catalog, buy outfits with Lucci, and equip or remove them from your inventory |
-| ✅ | **Web social page** | Friends and friend requests, block list, your guild and the server ranking |
+| ✅ | **Web social page** | Friends and friend requests, block list and server rankings. Create or leave a guild; guild leaders can disband their guild |
 | ✅ | **Languages** | English, Tiếng Việt and 한국어 in the game, launcher and server app, with Vietnamese accents in chat |
 | 🚧 | **In-game shop and customization** | My Page, inventory and shop windows in the game, plus avatar, character, balloon, level and ID decorations, emoticons and titles |
 | 🚧 | **Ladder and matchmaking** | Ranked 1v1, 2v2 and 3v3 ladder battles with grades and a bonus map, plus automatic matchmaking |
