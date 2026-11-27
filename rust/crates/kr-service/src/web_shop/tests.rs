@@ -129,8 +129,6 @@ async fn send_http(
     token: Option<&str>,
     body: Option<&str>,
 ) -> (u16, String, serde_json::Value) {
-    use tokio::io::{AsyncReadExt, AsyncWriteExt};
-    let mut stream = tokio::net::TcpStream::connect(addr).await.unwrap();
     let body_bytes = body.unwrap_or("").as_bytes();
     let mut raw = format!("{method} {target} HTTP/1.1\r\nHost: 127.0.0.1\r\n");
     if let Some(t) = token {
@@ -140,6 +138,16 @@ async fn send_http(
         raw.push_str("Content-Type: application/json\r\n");
     }
     raw.push_str(&format!("Content-Length: {}\r\n\r\n", body_bytes.len()));
+    send_raw_http(addr, &raw, body_bytes).await
+}
+
+async fn send_raw_http(
+    addr: std::net::SocketAddr,
+    raw: &str,
+    body_bytes: &[u8],
+) -> (u16, String, serde_json::Value) {
+    use tokio::io::{AsyncReadExt, AsyncWriteExt};
+    let mut stream = tokio::net::TcpStream::connect(addr).await.unwrap();
     stream.write_all(raw.as_bytes()).await.unwrap();
     if !body_bytes.is_empty() {
         stream.write_all(body_bytes).await.unwrap();
@@ -194,6 +202,192 @@ fn test_settings() -> crate::account_worker::EconomySettings {
         },
     )
     .unwrap()
+}
+
+#[tokio::test]
+async fn guild_leader_actions_require_bearer_and_authority_and_change_the_roster() {
+    use crate::account_worker::Worker;
+    use crate::accounts::{Admin, Store, TEST_SERIAL};
+
+    const ADD: &str = "/api/social/guild/add-member";
+    const REMOVE: &str = "/api/social/guild/remove-member";
+    const TRANSFER: &str = "/api/social/guild/transfer-leader";
+    const GUILD: &str = "/api/social/guild";
+    let (_dir, db) = temp_db("guild-leader");
+    let now = crate::match_journal::utc().unwrap();
+    let [leader, member, outsider, guest] = {
+        let _serial = TEST_SERIAL.lock().unwrap();
+        let mut store = Store::open(&db).unwrap();
+        let admin = Admin {
+            actor: "webshop-test",
+            reason: "Guild management loopback E2E",
+        };
+        ["leader", "member", "outsider", "guest"].map(|name| {
+            store
+                .create_account(&admin, name, name, b"test-fixture-password", now)
+                .unwrap()
+                .player_id
+        })
+    };
+    let worker = Worker::open_with_economy(db, 8, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let [leader_token, member_token, outsider_token, guest_token] =
+        [leader, member, outsider, guest].map(|player| auth.issue_token(player).unwrap());
+    let (lt, mt, ot, gt) = (
+        leader_token.as_str(),
+        member_token.as_str(),
+        outsider_token.as_str(),
+        guest_token.as_str(),
+    );
+    let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
+        .await
+        .unwrap();
+    let addr = listener.local_addr().unwrap();
+    let task = tokio::spawn(serve_listener(
+        listener,
+        config(),
+        worker.service(),
+        auth.clone(),
+    ));
+
+    let (code, _, created) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/create",
+        Some(lt),
+        Some(r#"{"name":"Blue Team"}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    let guild_id = created["guild"]["id"].as_i64().unwrap();
+    let (code, _, other) = send_http(
+        addr,
+        "POST",
+        "/api/social/guild/create",
+        Some(ot),
+        Some(r#"{"name":"Red Team"}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    let other_guild_id = other["guild"]["id"].as_i64().unwrap();
+
+    let add_body = json!({"player_id":member, "guild_id":guild_id}).to_string();
+    let (code, _, reply) = send_http(addr, "POST", ADD, Some(lt), Some(&add_body)).await;
+    assert_eq!((code, reply), (200, json!({"changed":true})));
+    let (code, _, roster) = send_http(addr, "GET", GUILD, Some(mt), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(roster["is_leader"], false);
+    assert_eq!(roster["members"][1]["player_id"], member);
+    assert_eq!(roster["members"][1]["role"], "member");
+
+    // Each request is otherwise valid and would change the guild with a bearer.
+    for (path, target) in [(ADD, guest), (REMOVE, member), (TRANSFER, member)] {
+        let body = json!({"player_id":target}).to_string();
+        let forged_form = format!(
+            "POST {path} HTTP/1.1\r\nHost: local\r\nOrigin: https://outside.invalid\r\nCookie: session={lt}\r\nContent-Type: text/plain\r\nContent-Length: {}\r\n\r\n",
+            body.len(),
+        );
+        let (code, headers, _) = send_raw_http(addr, &forged_form, body.as_bytes()).await;
+        assert_eq!(code, 401, "{path}");
+        assert!(
+            !headers
+                .to_ascii_lowercase()
+                .contains("access-control-allow-origin")
+        );
+        let (code, _, _) = send_http(addr, "POST", path, Some(&"0".repeat(64)), Some(&body)).await;
+        assert_eq!(code, 401, "{path}");
+        for method in ["GET", "DELETE", "OPTIONS"] {
+            let (code, _, _) = send_http(addr, method, path, Some(lt), Some(&body)).await;
+            assert_eq!(code, 405, "{method} {path}");
+        }
+        let with_query = format!("{path}?player_id={target}");
+        let (code, _, _) = send_http(addr, "POST", &with_query, Some(lt), Some(&body)).await;
+        assert_eq!(code, 400, "{path}");
+        let spoofed_actor = json!({"player_id":target, "leader_player_id":leader}).to_string();
+        let (code, _, _) = send_http(addr, "POST", path, Some(mt), Some(&spoofed_actor)).await;
+        assert_eq!(code, 400, "{path}");
+    }
+
+    for (path, token, target, status) in [
+        (ADD, mt, guest, 409),
+        (ADD, gt, member, 409),
+        (REMOVE, mt, leader, 409),
+        (TRANSFER, mt, leader, 409),
+        (ADD, lt, member, 409),
+        (ADD, lt, outsider, 409),
+        (ADD, lt, i64::MAX, 400),
+        (REMOVE, lt, outsider, 409),
+        (REMOVE, lt, guest, 409),
+        (REMOVE, lt, leader, 400),
+        (TRANSFER, lt, outsider, 400),
+        (TRANSFER, lt, guest, 400),
+        (TRANSFER, lt, leader, 400),
+    ] {
+        let body = json!({"player_id":target}).to_string();
+        let (code, _, _) = send_http(addr, "POST", path, Some(token), Some(&body)).await;
+        assert_eq!(code, status, "{path} for target {target}");
+    }
+    let wrong_guild = json!({"player_id":guest, "guild_id":other_guild_id}).to_string();
+    let (code, _, _) = send_http(addr, "POST", ADD, Some(lt), Some(&wrong_guild)).await;
+    assert_eq!(code, 409);
+
+    let guest_body = json!({"player_id":guest}).to_string();
+    for (token, target) in [(lt, guest), (gt, leader)] {
+        let block_body = json!({"player_id":target}).to_string();
+        let (code, _, _) = send_http(
+            addr,
+            "POST",
+            "/api/social/blocks",
+            Some(token),
+            Some(&block_body),
+        )
+        .await;
+        assert_eq!(code, 200);
+        let (code, _, _) = send_http(addr, "POST", ADD, Some(lt), Some(&guest_body)).await;
+        assert_eq!(code, 409);
+        let (code, _, _) = send_http(
+            addr,
+            "DELETE",
+            "/api/social/blocks",
+            Some(token),
+            Some(&block_body),
+        )
+        .await;
+        assert_eq!(code, 200);
+    }
+    let (code, _, empty) = send_http(addr, "GET", GUILD, Some(gt), None).await;
+    assert_eq!(code, 200);
+    assert!(empty["guild"].is_null());
+    assert_eq!(empty["is_leader"], false);
+
+    let (code, _, reply) = send_http(addr, "POST", TRANSFER, Some(lt), Some(&add_body)).await;
+    assert_eq!((code, reply), (200, json!({"changed":true})));
+    let (code, _, old_roster) = send_http(addr, "GET", GUILD, Some(lt), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(old_roster["is_leader"], false);
+    let (code, _, new_roster) = send_http(addr, "GET", GUILD, Some(mt), None).await;
+    assert_eq!(code, 200);
+    assert_eq!(new_roster["is_leader"], true);
+    assert_eq!(new_roster["guild"]["leader_player_id"], member);
+    assert_eq!(new_roster["members"].as_array().unwrap().len(), 2);
+    assert_eq!(new_roster["members"][0]["role"], "leader");
+    assert_eq!(new_roster["members"][1]["player_id"], leader);
+    assert_eq!(new_roster["members"][1]["role"], "member");
+    let (code, _, _) = send_http(addr, "POST", ADD, Some(lt), Some(&guest_body)).await;
+    assert_eq!(code, 409);
+    let old_leader = json!({"player_id":leader}).to_string();
+    let (code, _, reply) = send_http(addr, "POST", REMOVE, Some(mt), Some(&old_leader)).await;
+    assert_eq!((code, reply), (200, json!({"changed":true})));
+    let (code, _, empty) = send_http(addr, "GET", GUILD, Some(lt), None).await;
+    assert_eq!(code, 200);
+    assert!(empty["guild"].is_null());
+
+    auth.revoke_token(&member_token);
+    let (code, _, _) = send_http(addr, "POST", ADD, Some(mt), Some(&guest_body)).await;
+    assert_eq!(code, 401);
+    task.abort();
 }
 
 #[tokio::test]

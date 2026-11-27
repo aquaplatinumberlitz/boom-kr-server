@@ -7,16 +7,64 @@
 <h2>Inventory</h2><ul id="inventory"></ul>
 <h2>Catalog</h2>
 <label>Category <select id="category" onchange="loadCatalog()"><option value="">All</option><option>character</option><option>decoration</option><option>emotion</option><option>consumable</option><option>collection</option></select></label><ul id="items"></ul><pre id="message"></pre>
-<h2>Social</h2><p><button onclick="loadSocial()">Refresh social</button></p><p id="social-status" class="muted"></p><h3>Guild</h3><p><input id="guild-name" maxlength="24" placeholder="Guild name" autocomplete="off"><button id="create-guild">Create Guild</button><button id="leave-guild">Leave Guild</button><button id="disband-guild">Disband Guild</button></p><p id="guild"></p><ul id="guild-members"></ul><h3>Friends</h3><ul id="friends"></ul><h3>Incoming friend requests</h3><ul id="incoming-requests"></ul><h3>Outgoing friend requests</h3><ul id="outgoing-requests"></ul><h3>Blocks</h3><ul id="blocks"></ul>
+<h2>Social</h2><p><button onclick="loadSocial()">Refresh social</button></p><p id="social-status" class="muted" role="status"></p>
+<h3>Guild</h3><p><input id="guild-name" maxlength="24" placeholder="Guild name" autocomplete="off"><button id="create-guild">Create Guild</button><button id="leave-guild">Leave Guild</button><button id="disband-guild">Disband Guild</button></p>
+<p id="guild"></p>
+<form id="add-guild-member" hidden><label>Player ID <input id="guild-target" inputmode="numeric" pattern="[0-9]+" maxlength="16" required autocomplete="off"></label><button>Add member</button></form>
+<ul id="guild-members"></ul><h3>Friends</h3><ul id="friends"></ul><h3>Incoming friend requests</h3><ul id="incoming-requests"></ul><h3>Outgoing friend requests</h3><ul id="outgoing-requests"></ul><h3>Blocks</h3><ul id="blocks"></ul>
 <script>
 const q=x=>document.querySelector(x);
 if(location.hash.startsWith('#token=')){q('#token').value=decodeURIComponent(location.hash.slice(7));history.replaceState(null,'',location.pathname);}
 async function api(path,opt={}){const t=q('#token').value.trim(); opt.headers={...(opt.headers||{}),Authorization:'Bearer '+t}; if(opt.body)opt.headers['Content-Type']='application/json'; const r=await fetch(path,opt); const j=await r.json().catch(()=>({})); if(!r.ok)throw Error(j.error||r.status); return j}
 async function load(){try{q('#message').textContent='';const p=await api('/api/v1/profile');q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`; await Promise.all([loadInventory(),loadCatalog()])}catch(e){q('#message').textContent=String(e)}}
-async function loadSocial(){try{const [f,b,r,g]=await Promise.all([api('/api/social/friends'),api('/api/social/blocks'),api('/api/social/ranking?limit=10'),api('/api/social/guild')]);for(const [id,rows] of [['#friends',f.friends],['#blocks',b.blocks]]){const ul=q(id);ul.replaceChildren();for(const value of rows){const li=document.createElement('li');li.textContent=String(value);ul.append(li)}}
+let socialLoad=0;
+function clearGuild(){q('#guild').textContent='';q('#guild-members').replaceChildren();q('#add-guild-member').hidden=true}
+async function loadSocial(message){const load=++socialLoad;clearGuild();try{const [f,b,r,g]=await Promise.all([api('/api/social/friends'),api('/api/social/blocks'),api('/api/social/ranking?limit=10'),api('/api/social/guild')]);if(load!==socialLoad)return;for(const [id,rows] of [['#friends',f.friends],['#blocks',b.blocks]]){const ul=q(id);ul.replaceChildren();for(const value of rows){const li=document.createElement('li');li.textContent=String(value);ul.append(li)}}
 const renderRequests=(id,rows,respond)=>{const ul=q(id);ul.replaceChildren();for(const request of rows){const li=document.createElement('li');li.textContent=`${request.sender_id} → ${request.recipient_id} `;if(respond){for(const [label,accept] of [['Accept',true],['Reject',false]]){const button=document.createElement('button');button.textContent=label;button.addEventListener('click',()=>respond(request.sender_id,accept));li.append(button)}}ul.append(li)}};
 renderRequests('#incoming-requests',f.incoming_requests||[],async(sender,accept)=>{try{await api('/api/social/friends/respond',{method:'POST',body:JSON.stringify({requester_player_id:sender,accept})});await loadSocial()}catch(e){q('#social-status').textContent=String(e)}});renderRequests('#outgoing-requests',f.outgoing_requests||[],null);
-const guild=q('#guild'),members=q('#guild-members');guild.textContent=g.guild?`${g.guild.name} · leader ${g.guild.leader_player_id}`:'No guild';members.replaceChildren();for(const member of g.members){const li=document.createElement('li');li.textContent=`${member.player_id} · ${member.role}`;members.append(li)}q('#social-status').textContent=`Ranking entries: ${r.ranking.length}`}catch(e){q('#social-status').textContent=String(e)}}
+renderGuild(g);q('#social-status').textContent=message||`Ranking entries: ${r.ranking.length}`}catch(e){if(load===socialLoad)q('#social-status').textContent=String(e)}}
+
+function renderGuild({guild,members,is_leader}) {
+  q('#guild').textContent=guild?`${guild.name} · leader ${guild.leader_player_id}`:'No guild';
+  const add=q('#add-guild-member');
+  add.hidden=!is_leader;
+  add.onsubmit=is_leader?async event=>{
+    event.preventDefault();
+    if(await changeGuild('/api/social/guild/add-member',guild.id,Number(q('#guild-target').value),'Member added'))add.reset();
+  }:null;
+  for(const member of members){
+    const li=document.createElement('li');
+    li.textContent=`${member.player_id} · ${member.role} `;
+    if(is_leader && member.role!=='leader'){
+      const remove=document.createElement('button');
+      remove.textContent='Remove';
+      remove.addEventListener('click',()=>changeGuild('/api/social/guild/remove-member',guild.id,member.player_id,'Member removed'));
+      const transfer=document.createElement('button');
+      transfer.textContent='Transfer leadership';
+      transfer.addEventListener('click',()=>{
+        if(confirm(`Transfer guild leadership to player ${member.player_id}?`)){
+          changeGuild('/api/social/guild/transfer-leader',guild.id,member.player_id,'Leadership transferred');
+        }
+      });
+      li.append(remove,transfer);
+    }
+    q('#guild-members').append(li);
+  }
+}
+
+async function changeGuild(path,guild_id,player_id,message){
+  const session=q('#token').value;
+  try {
+    if(!Number.isSafeInteger(player_id)||player_id<1||!Number.isSafeInteger(guild_id))throw Error('Enter a valid player ID');
+    await api(path,{method:'POST',body:JSON.stringify({guild_id,player_id})});
+    if(q('#token').value!==session)return false;
+    await loadSocial(message);
+    return q('#token').value===session;
+  } catch(e) {
+    if(q('#token').value===session)q('#social-status').textContent=String(e);
+    return false;
+  }
+}
 async function createGuild(){try{const name=q('#guild-name').value.trim();await api('/api/social/guild/create',{method:'POST',body:JSON.stringify({name})});q('#guild-name').value='';q('#social-status').textContent='Guild created';await loadSocial()}catch(e){q('#social-status').textContent=String(e)}}
 async function leaveGuild(){try{await api('/api/social/guild/leave',{method:'POST',body:'{}'});q('#social-status').textContent='Guild left';await loadSocial()}catch(e){q('#social-status').textContent=String(e)}}
 async function disbandGuild(){try{await api('/api/social/guild/disband',{method:'POST',body:JSON.stringify({confirm:true})});q('#social-status').textContent='Guild disbanded';await loadSocial()}catch(e){q('#social-status').textContent=String(e)}}
@@ -58,6 +106,7 @@ async function unequip(slot){try{await api('/api/v1/unequip',{method:'POST',body
 q('#create-guild').addEventListener('click',createGuild);
 q('#leave-guild').addEventListener('click',leaveGuild);
 q('#disband-guild').addEventListener('click',disbandGuild);
+q('#token').addEventListener('input',()=>{socialLoad++;clearGuild()});
 if(q('#token').value.trim())load();
 if(q('#token').value.trim())loadSocial();
 </script>

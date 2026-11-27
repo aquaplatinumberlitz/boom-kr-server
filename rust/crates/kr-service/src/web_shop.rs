@@ -8,7 +8,7 @@ use crate::{
     accounts::{
         self, CatalogAccess, PlayerProfile, ShopCatalog, ShopCategory, ShopItem, UsableItem,
     },
-    accounts::{FriendRequest, Guild, GuildMember, GuildRole, RankingEntry},
+    accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
 };
 use http::{Request, Response, Status};
 use serde::{Deserialize, Serialize};
@@ -385,6 +385,13 @@ struct FriendResponseInput {
 #[serde(deny_unknown_fields)]
 struct GuildCreateInput {
     name: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GuildMemberInput {
+    player_id: i64,
+    guild_id: Option<i64>,
 }
 
 /// An empty object is valid for an ordinary member leave. Leaders must send
@@ -767,7 +774,10 @@ async fn social_route(
                 (Option::<Guild>::None, Vec::<GuildMember>::new()),
                 |(guild, members)| (Some(guild), members),
             );
-            Ok(Response::json(&json!({"guild": guild, "members": members})))
+            let is_leader = guild.as_ref().is_some_and(|g| g.leader_player_id == player);
+            Ok(Response::json(
+                &json!({"guild": guild, "members": members, "is_leader": is_leader}),
+            ))
         }
         "/api/social/guild/create" => {
             request.require_method("POST")?;
@@ -778,7 +788,9 @@ async fn social_route(
                 role: GuildRole::Leader,
                 joined_at: guild.created_at,
             }];
-            Ok(Response::json(&json!({"guild": guild, "members": members})))
+            Ok(Response::json(
+                &json!({"guild": guild, "members": members, "is_leader": true}),
+            ))
         }
         "/api/social/guild/leave" => {
             request.require_method("POST")?;
@@ -826,6 +838,21 @@ async fn social_route(
                 &json!({"changed": changed, "disbanded": true}),
             ))
         }
+        "/api/social/guild/add-member" => {
+            guild_member_route(service, player, request, GuildLeaderAction::AddMember).await
+        }
+        "/api/social/guild/remove-member" => {
+            guild_member_route(service, player, request, GuildLeaderAction::RemoveMember).await
+        }
+        "/api/social/guild/transfer-leader" => {
+            guild_member_route(
+                service,
+                player,
+                request,
+                GuildLeaderAction::TransferLeadership,
+            )
+            .await
+        }
         "/api/social/ranking" => {
             request.require_method("GET")?;
             let query = request.query().unwrap_or("");
@@ -841,6 +868,20 @@ async fn social_route(
         }
         _ => Err(Status::NotFound),
     }
+}
+
+async fn guild_member_route(
+    service: &AccountService,
+    player: i64,
+    request: &Request,
+    action: fn(i64) -> GuildLeaderAction,
+) -> Result<Response, Status> {
+    request.require_method("POST")?;
+    let input: GuildMemberInput = request.json()?;
+    let changed = service
+        .social_guild_manage(player, input.guild_id, action(input.player_id))
+        .await?;
+    Ok(Response::json(&json!({"changed": changed})))
 }
 
 fn parse_ranking_query(query: &str) -> Result<RankingQuery, Status> {

@@ -96,6 +96,13 @@ pub struct GuildMember {
     pub joined_at: i64,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum GuildLeaderAction {
+    AddMember(i64),
+    RemoveMember(i64),
+    TransferLeadership(i64),
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
 pub struct RankingEntry {
     pub player_id: i64,
@@ -586,6 +593,63 @@ impl Store {
         })
     }
 
+    /// Apply a leader action to the actor's current guild. An expected guild
+    /// binds the request to a roster that the caller previously displayed.
+    pub fn manage_guild(
+        &mut self,
+        leader: i64,
+        expected_guild: Option<i64>,
+        action: GuildLeaderAction,
+        now: i64,
+    ) -> Result<()> {
+        use GuildLeaderAction::*;
+        let target = match action {
+            AddMember(target) | RemoveMember(target) | TransferLeadership(target) => target,
+        };
+        distinct_players(leader, target)?;
+        if let Some(id) = expected_guild {
+            positive_id(id)?;
+        }
+
+        self.at(now, |tx| {
+            active_player(tx, leader, now)?;
+            // Schema 9 ties the sole leader membership to guilds.leader_player_id.
+            let guild_id = tx
+                .query_row(
+                    "SELECT guild_id FROM guild_members WHERE player_id=?1 AND role='leader'",
+                    [leader],
+                    |row| row.get(0),
+                )
+                .optional()?
+                .ok_or(Error::Conflict)?;
+            if expected_guild.is_some_and(|id| id != guild_id) {
+                return Err(Error::Conflict);
+            }
+
+            match action {
+                AddMember(_) => {
+                    if blocked(tx, leader, target)? {
+                        return Err(Error::Conflict);
+                    }
+                    match insert_guild_member(tx, target, guild_id, now) {
+                        Ok(true) => Ok(()),
+                        Ok(false) => Err(Error::Conflict),
+                        Err(Error::InvalidCredentials) => Err(Error::InvalidInput),
+                        Err(err) => Err(err),
+                    }
+                }
+                RemoveMember(_) => {
+                    if delete_guild_member(tx, guild_id, target, Some(leader))? {
+                        Ok(())
+                    } else {
+                        Err(Error::Conflict)
+                    }
+                }
+                TransferLeadership(_) => transfer_guild_leader(tx, guild_id, leader, target, now),
+            }
+        })
+    }
+
     pub fn transfer_guild_leadership(
         &mut self,
         leader: i64,
@@ -596,21 +660,7 @@ impl Store {
         distinct_players(leader, successor)?;
         self.at(now, |tx| {
             require_guild_owner(tx, leader, guild_id, now)?;
-            active_player(tx, successor, now)?;
-            guild_role(tx, guild_id, successor)?.ok_or(Error::InvalidInput)?;
-            tx.execute(
-                "UPDATE guild_members SET role='member' WHERE guild_id=?1 AND player_id=?2",
-                params![guild_id, leader],
-            )?;
-            tx.execute(
-                "UPDATE guild_members SET role='leader' WHERE guild_id=?1 AND player_id=?2",
-                params![guild_id, successor],
-            )?;
-            tx.execute(
-                "UPDATE guilds SET leader_player_id=?1 WHERE id=?2",
-                params![successor, guild_id],
-            )?;
-            Ok(())
+            transfer_guild_leader(tx, guild_id, leader, successor, now)
         })
     }
 
@@ -1029,6 +1079,31 @@ fn require_guild_owner(db: &Connection, player: i64, guild_id: i64, now: i64) ->
     if guild_owner(db, guild_id)? != Some(player) {
         return Err(Error::Conflict);
     }
+    Ok(())
+}
+
+fn transfer_guild_leader(
+    tx: &Transaction<'_>,
+    guild_id: i64,
+    leader: i64,
+    successor: i64,
+    now: i64,
+) -> Result<()> {
+    active_player(tx, successor, now)?;
+    guild_role(tx, guild_id, successor)?.ok_or(Error::InvalidInput)?;
+    // Demote first for the unique index; the deferred FK checks the final leader.
+    tx.execute(
+        "UPDATE guild_members SET role='member' WHERE guild_id=?1 AND player_id=?2",
+        params![guild_id, leader],
+    )?;
+    tx.execute(
+        "UPDATE guild_members SET role='leader' WHERE guild_id=?1 AND player_id=?2",
+        params![guild_id, successor],
+    )?;
+    tx.execute(
+        "UPDATE guilds SET leader_player_id=?1 WHERE id=?2",
+        params![successor, guild_id],
+    )?;
     Ok(())
 }
 
