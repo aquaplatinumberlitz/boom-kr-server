@@ -79,7 +79,7 @@ Tiêu chí nghiệm thu của M5b, N1R-b, G1, M6 và M8 theo đích giai đoạn
 **Quy ước:**
 
 - Trước khi merge PR, `gh pr checks <số>` phải đạt. CI đỏ thì sửa, không merge.
-- Không thêm dòng trạng thái theo checkpoint vào đầu file này hay vào mục thứ tự cũ; ghi đè bảng trên. README chỉ giữ
+- Không thêm dòng trạng thái theo checkpoint vào đầu file này hay vào mục thứ tự cũ; ghi đè bảng trên. [DEVELOPMENT](DEVELOPMENT.md) chỉ giữ
   mốc mới nhất, mốc cũ chuyển sang [HISTORY](HISTORY.md).
 - Lát cắt mới không thêm cờ theo sức chứa, alias theo identity hay nhánh `capacity() == N` vào lõi phòng.
 - Viết Bảng điều hành cho người chưa theo dõi đọc được: câu đầy đủ, có dấu cách giữa các từ, không dính chữ kiểu

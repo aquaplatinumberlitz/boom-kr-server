@@ -18,7 +18,11 @@ import checkpoint_store as store
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = Path("docs/evidence/checkpoints/manifest.json")
-CORE_DOCS = ("README.md", "docs/PLAN.md", "docs/PROTOCOL.md", "docs/RESEARCH.md")
+CORE_DOCS = ("docs/DEVELOPMENT.md", "docs/PLAN.md", "docs/PROTOCOL.md", "docs/RESEARCH.md")
+# The technical overview lived at README.md until README became the player-facing
+# introduction. Immutable records keep the old path, so it still satisfies that slot.
+LEGACY_CORE_DOCS = {"docs/DEVELOPMENT.md": "README.md"}
+
 SOURCES = {"kr_static", "kr_runtime", "vn_static", "vn_runtime", "emu_choice", "design"}
 STATES = {"confirmed", "candidate", "unknown", "design"}
 SHA = re.compile(r"[0-9a-f]{64}")
@@ -41,6 +45,10 @@ def record_line_budget(number, raw):
             if number > 342 and lines > 120 else [])
 
 
+def core_doc_matches(expected, actual):
+    return actual == expected or actual == LEGACY_CORE_DOCS.get(expected)
+
+
 def audit_core_read_order(read_files):
     """Keep the core pass ordered, including chapters of the protocol index.
 
@@ -54,7 +62,7 @@ def audit_core_read_order(read_files):
         return False
     offset = 1 if read_files[:1] == ['AGENTS.md'] else 0
     for expected in CORE_DOCS:
-        if offset >= len(read_files) or read_files[offset] != expected:
+        if offset >= len(read_files) or not core_doc_matches(expected, read_files[offset]):
             return False
         offset += 1
         if expected == 'docs/PROTOCOL.md':
@@ -631,7 +639,8 @@ def validate(manifest, root=ROOT, require_local=False, selected=None, changed_pa
                 (errors if lifecycle == "complete" else warnings).append(f"{where}: DOCS UNSYNCED {item.get('path')}: {item.get('reason')}")
             elif item.get("state") not in {"updated", "unchanged"}:
                 errors.append(f"{where}: invalid docs sync state")
-        if not set(CORE_DOCS).issubset(sync_paths) or not any(x.startswith("docs/evidence/") for x in sync_paths):
+        core_synced = all(any(core_doc_matches(doc, path) for path in sync_paths) for doc in CORE_DOCS)
+        if not core_synced or not any(x.startswith("docs/evidence/") for x in sync_paths):
             errors.append(f"{where}: docs_sync must cover all four core docs and evidence")
 
     if manifest.get("last_id") != (ids[-1] if ids else None):

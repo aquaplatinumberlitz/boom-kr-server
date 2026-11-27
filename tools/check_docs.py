@@ -7,7 +7,8 @@ from urllib.parse import unquote
 ROOT = Path(__file__).resolve().parents[1]
 LINE_LIMITS = {
     'docs/PLAN.md': (800, 'docs/HISTORY.md (diễn biến) hoặc docs/PLAN_ARCHIVE.md (nhánh/gate lịch sử)'),
-    'README.md': (150, 'docs/HISTORY.md (mốc cũ); PLAN giữ thứ tự, docs/protocol/ giữ contract'),
+    'README.md': (150, 'docs/DEVELOPMENT.md; README chỉ là trang giới thiệu cho người chơi'),
+    'docs/DEVELOPMENT.md': (150, 'docs/HISTORY.md (mốc cũ); PLAN giữ thứ tự, docs/protocol/ giữ contract'),
     'docs/PROTOCOL.md': (600, 'docs/protocol/; chỉ giữ mục lục và stub anchor tại PROTOCOL.md'),
     'docs/RESEARCH.md': (300, 'docs/HISTORY.md; chỉ giữ câu hỏi mở và khoảng trống theo cơ chế'),
 }
@@ -65,7 +66,7 @@ def link_errors(path, root, anchor_cache):
 
 def main():
     errors, count = [], 0
-    files = [ROOT / "README.md", ROOT / "AGENTS.md"]
+    files = [ROOT / "README.md", ROOT / "README.vi.md", ROOT / "README.ko.md", ROOT / "AGENTS.md"]
     files += sorted((ROOT / "docs").rglob("*.md"))
     files += sorted((ROOT / "tools").glob("*.md"))
     files += sorted((ROOT / "server").glob("*.md"))

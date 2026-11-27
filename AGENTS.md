@@ -14,6 +14,12 @@ Chỉ `docs/PLAN.md` giữ lộ trình; không tạo plan theo phiên. Protocol/
 `docs/COVERAGE.md` sinh bằng `python3 tools/feature_catalog.py --generate`, trích khoảng trống/phép đo từ RESEARCH.
 Khi đến kỳ cập nhật catalog theo quy định bên dưới, sinh lại COVERAGE; không xóa hoặc đổi nghĩa ID đã cấp.
 Nguồn cũ/migration ở REFERENCES, metadata bằng chứng ở `docs/evidence/`.
+Từ 27/11, `README.md` (English), `README.vi.md` và `README.ko.md` là **trang giới thiệu LANBoom cho người chơi**,
+không phải tài liệu kỹ thuật. Tổng quan kỹ thuật, mốc hiện tại và lệnh kiểm trước đây ở README nay nằm ở
+[`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md); mọi chỗ trong quy tắc, PLAN hay record cũ nói "README" với nghĩa
+trạng thái/mốc thì hiểu là file này. Không ghi trạng thái checkpoint, PR hay blocker vào ba README giới thiệu.
+Khi đổi tính năng người chơi thấy được (✅/🚧, cách chơi, link tải), cập nhật cả ba bản cùng lúc.
+Checkpoint mới ghi `docs/DEVELOPMENT.md` trong `docs_sync` và thứ tự audit; record cũ ghi `README.md` vẫn hợp lệ.
 Docs viết tiếng Việt; ID/API/type kỹ thuật giữ nguyên.
 
 Theo [chiến lược công ty08/11](docs/evidence/owner-directives/rust-service.json), chuyển từng contract ổn định
@@ -73,7 +79,7 @@ Không tạo plan hoặc bản kiến thức độc lập theo phiên.
 thành một checkpoint tại mốc quan trọng hoặc blocker rõ ràng, không tạo checkpoint/PR cho mỗi phép thử.
 Theo [chỉ đạo 21/11](docs/evidence/owner-directives/lean-evidence.json), mỗi PR có bằng chứng runtime/RE mới
 chỉ cập nhật **một checkpoint** và dòng liên quan trong Bảng điều hành PLAN. PR chỉ sửa code có test thì không cần
-checkpoint. Chỉ cập nhật README, HISTORY, COVERAGE, RESEARCH và `features.json` khi đóng mốc lớn (milestone/đợt)
+checkpoint. Chỉ cập nhật `docs/DEVELOPMENT.md`, HISTORY, COVERAGE, RESEARCH và `features.json` khi đóng mốc lớn (milestone/đợt)
 hoặc khi nội dung của chính tài liệu đó sai.
 Giữ trần 120 dòng cho record mới, test tự động là bằng chứng chính cho mã và giữ các giới hạn còn hiệu lực của
 [ngân sách bằng chứng 19/11](docs/evidence/owner-directives/evidence-budget.json).
@@ -91,7 +97,7 @@ Phân biệt source/status/loại kiểm với review/merge/gate;chưa review v�
 Không nâng gate từ alive,TCP accept,cửa sổ hoặc encoder tự sinh;không báo phần trăm thiếu bằng chứng.
 Theo [chỉ đạo audit theo nhóm tính năng11/11](docs/evidence/owner-directives/feature-group-audits.json),
 **không còn audit bắt buộc mỗi4checkpoint** từ sau CP256. Khi hoàn tất một nhóm tính năng, audit thủ công
-README→PLAN→PROTOCOL→RESEARCH→evidence/raw và ghi audit/counter bền vững. Checkpoint hoàn tất nhóm khai
+DEVELOPMENT→PLAN→PROTOCOL→RESEARCH→evidence/raw và ghi audit/counter bền vững. Checkpoint hoàn tất nhóm khai
 `completed_feature_groups`; audit `trigger=feature_group` ghi cùng `feature_groups`/`completed_through`.
 PLAN giữ phạm vi/thứ tự nhóm, không tạo lịch checkpoint thay thế. Mâu thuẫn nghiêm trọng vẫn audit ngay.
 Audit/record cũ bất biến; checker giữ kiểm nghĩa vụ lịch sử đến CP256, không ép CP260 hoặc chu kỳ mới.
