@@ -144,7 +144,7 @@ struct ModeRules {
 
 #[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
-enum WinCondition {
+pub(super) enum WinCondition {
     Unknown,
     ReviveOutcome,
     BombOutcome,
@@ -278,6 +278,11 @@ impl RuleTable {
         // An opt-in descriptor and even an exact map match supply no measured
         // start dispatch, event authority or rules implementation.
         Err("f2_start_dispatch_unmeasured")
+    }
+
+    pub(super) fn runtime_win(&self, group: ModeKind) -> Option<WinCondition> {
+        let rules = self.0.get(&group)?;
+        (rules.wave == Wave::F2).then_some(rules.win)
     }
 }
 

@@ -1,13 +1,13 @@
 use super::*;
-use crate::room_modes::{CATALOG, Catalog, Config, Policy};
+use crate::room_modes::{Catalog, Config, Policy};
 use kr_wire::kr00967::{RoomTeamSelector, Start121Map};
 use serde_json::{Value, json};
 
 #[test]
 fn every_catalog_mode_resolves_but_cannot_dispatch() {
-    let catalog: Catalog = serde_json::from_str(CATALOG).unwrap();
+    let catalog = Catalog::load().unwrap();
     let table = RuleTable::load(&catalog.modes).unwrap();
-    assert_eq!(table.0.len(), 18);
+    assert_eq!(table.0.len(), 25);
     for mode in &catalog.modes {
         assert_eq!(
             table.check_start(mode.ruleset_group),
@@ -24,7 +24,7 @@ fn every_catalog_mode_resolves_but_cannot_dispatch() {
 
 #[test]
 fn stateful_design_contracts_distinguish_revive_bomb_leader_and_queue() {
-    let catalog: Catalog = serde_json::from_str(CATALOG).unwrap();
+    let catalog = Catalog::load().unwrap();
     let table = RuleTable::load(&catalog.modes).unwrap();
     let revive = &table.0[&ModeKind::Revive];
     assert_eq!(revive.respawn, RespawnPolicy::Required);
@@ -43,7 +43,7 @@ fn stateful_design_contracts_distinguish_revive_bomb_leader_and_queue() {
 
 #[test]
 fn malformed_or_inconsistent_descriptors_are_rejected() {
-    let catalog: Catalog = serde_json::from_str(CATALOG).unwrap();
+    let catalog = Catalog::load().unwrap();
     let rows: Value = serde_json::from_str(DESCRIPTORS).unwrap();
     for (group, key, value) in [
         ("revive", "respawn", json!("unknown")),
@@ -80,7 +80,7 @@ fn malformed_or_inconsistent_descriptors_are_rejected() {
 
 #[test]
 fn missing_and_duplicate_catalog_or_descriptor_rows_are_rejected() {
-    let mut catalog: Catalog = serde_json::from_str(CATALOG).unwrap();
+    let mut catalog = Catalog::load().unwrap();
     let mut rows: Vec<Value> = serde_json::from_str(DESCRIPTORS).unwrap();
     let removed = rows.pop().unwrap();
     assert!(RuleTable::parse(&json!(rows).to_string(), &catalog.modes).is_err());
@@ -89,7 +89,7 @@ fn missing_and_duplicate_catalog_or_descriptor_rows_are_rejected() {
     assert!(RuleTable::parse(&json!(rows).to_string(), &catalog.modes).is_err());
     catalog.modes.pop();
     assert!(RuleTable::load(&catalog.modes).is_err());
-    let mut duplicate: Catalog = serde_json::from_str(CATALOG).unwrap();
+    let mut duplicate = Catalog::load().unwrap();
     duplicate.modes[1].ruleset_group = duplicate.modes[0].ruleset_group;
     duplicate.modes[1].wave = duplicate.modes[0].wave;
     assert!(RuleTable::load(&duplicate.modes).is_err());

@@ -1,6 +1,6 @@
 //! Design rules for an opt-in emulator, with no implicit defaults or packet authority.
 //! The caller supplies an authoritative order and monotonic time in milliseconds.
-use super::{ModeKind, Policy, Wave};
+use super::{ModeKind, Policy, rules::WinCondition};
 use kr_wire::kr00967::RoomTeamSelector;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
@@ -409,41 +409,21 @@ pub(crate) struct Runtime {
     round: Option<Round>,
 }
 
-// RuleTable validates the complete descriptor when Policy loads. This
-// projection selects the implemented win contracts from that same file while
-// leaving the descriptor's validation and the live start gate in RuleTable.
-#[derive(Deserialize)]
-struct RuntimeRule {
-    group: ModeKind,
-    win: String,
-}
-
 impl Policy {
     pub(crate) fn runtime_for(&self, selector: RoomTeamSelector) -> Result<Option<Runtime>, Error> {
         let Some(mode) = self.runtime.for_team(selector) else {
             return Ok(None);
         };
-        if !self
-            .catalog
-            .mode(mode)
-            .is_some_and(|row| row.wave == Wave::F2)
-        {
-            return Err(Error::UnsupportedMode);
-        }
-        let rules: Vec<RuntimeRule> =
-            serde_json::from_str(include_str!("rules.json")).map_err(|_| Error::UnsupportedMode)?;
-        let rule = rules
-            .iter()
-            .find(|row| row.group == mode)
-            .ok_or(Error::UnsupportedMode)?;
+        // A candidate family or a descriptor with no runtime implementation
+        // cannot install an adapter, even when named explicitly by an operator.
         if !matches!(
-            (mode, rule.win.as_str()),
-            (ModeKind::Revive, "revive_outcome")
-                | (ModeKind::Timebomb, "bomb_outcome")
-                | (ModeKind::LeaderCapture, "leader_objective")
-                | (ModeKind::Hedgehog, "unknown")
-                | (ModeKind::Free1v7, "asymmetric_elimination")
-                | (ModeKind::CoOp, "team_outcome")
+            (mode, self.rules.runtime_win(mode)),
+            (ModeKind::Revive, Some(WinCondition::ReviveOutcome))
+                | (ModeKind::Timebomb, Some(WinCondition::BombOutcome))
+                | (ModeKind::LeaderCapture, Some(WinCondition::LeaderObjective))
+                | (ModeKind::Hedgehog, Some(WinCondition::Unknown))
+                | (ModeKind::Free1v7, Some(WinCondition::AsymmetricElimination))
+                | (ModeKind::CoOp, Some(WinCondition::TeamOutcome))
         ) {
             return Err(Error::UnsupportedMode);
         }

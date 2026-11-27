@@ -17,6 +17,19 @@ use rules::{ExtendedRules, RuleTable, Wave};
 
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
 
+// Families in the KR00967 terrain export allowlist (PR #756). The catalog
+// provides exact map names and candidate groups, but no native start route.
+const EXPORTED_F2_FAMILIES: &[&str] = &[
+    "CAPong",
+    "Clover",
+    "Rabbit",
+    "RescueET",
+    "SnowyFields",
+    "Wriggle",
+    "Zzolman",
+    "Zombie",
+];
+
 // The 21 F2? families in f2-extended-modes-matrix.json, paired with their
 // literal KR00967 census entries. Pack membership classifies these maps as
 // tentative; it supplies neither a room type nor a start route.
@@ -160,8 +173,11 @@ enum ModeKind {
     Antarctic,
     Baseball,
     BigBattle,
+    Capong,
+    Clover,
     CoOp,
     ConfusedFight,
+    FarmMission,
     #[serde(rename = "free_1v7")]
     Free1v7,
     Hedgehog,
@@ -169,12 +185,16 @@ enum ModeKind {
     LeaderCapture,
     Matchmaking,
     Popcade,
+    RescueEt,
     Revive,
     SnowballEvent,
     SnowyChamp,
     SnowyFields,
     SuperFighter,
     Timebomb,
+    Wriggle,
+    Zombie,
+    Zzolman,
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
@@ -374,7 +394,13 @@ struct GroupMatch {
 #[derive(Deserialize)]
 struct Family {
     family: String,
+    grouping: FamilyGrouping,
     maps: Vec<MapName>,
+}
+
+#[derive(Deserialize)]
+struct FamilyGrouping {
+    ruleset_group: String,
 }
 
 #[derive(Deserialize)]
@@ -391,6 +417,45 @@ pub(crate) struct Policy {
 }
 
 impl Catalog {
+    fn load() -> io::Result<Self> {
+        let mut catalog: Self = serde_json::from_str(CATALOG).map_err(io::Error::other)?;
+        if catalog.build != "KR00967" || catalog.schema != "kre.f2-mode-catalog.v1" {
+            return Err(io::Error::other("unsupported F2 catalog build or schema"));
+        }
+        for &name in EXPORTED_F2_FAMILIES {
+            let family = catalog
+                .families
+                .iter()
+                .find(|family| family.family == name)
+                .ok_or_else(|| io::Error::other(format!("missing F2 catalog family: {name}")))?;
+            let group = serde::de::value::StrDeserializer::<serde::de::value::Error>::new(
+                &family.grouping.ruleset_group,
+            );
+            let kind = ModeKind::deserialize(group).map_err(io::Error::other)?;
+            if let Some(mode) = catalog.modes.iter().find(|mode| mode.ruleset_group == kind) {
+                if mode.wave != Wave::F2Candidate
+                    || !mode.related_families.iter().any(|link| link.family == name)
+                {
+                    return Err(io::Error::other(format!(
+                        "inconsistent F2 family group: {name}"
+                    )));
+                }
+            } else {
+                // Keep these catalog groupings as candidates. In particular,
+                // Rabbit's farm_mission label grants no access to Hamster maps.
+                catalog.modes.push(Mode {
+                    ruleset_group: kind,
+                    wave: Wave::F2Candidate,
+                    related_families: vec![FamilyRef {
+                        family: name.into(),
+                    }],
+                    pack: Pack { map_groups: vec![] },
+                });
+            }
+        }
+        Ok(catalog)
+    }
+
     fn mode(&self, kind: ModeKind) -> Option<&Mode> {
         self.modes
             .iter()
@@ -406,10 +471,7 @@ impl Policy {
         {
             return Ok(None);
         }
-        let catalog: Catalog = serde_json::from_str(CATALOG).map_err(io::Error::other)?;
-        if catalog.build != "KR00967" || catalog.schema != "kre.f2-mode-catalog.v1" {
-            return Err(io::Error::other("unsupported F2 catalog build or schema"));
-        }
+        let catalog = Catalog::load()?;
         let rules = RuleTable::load(&catalog.modes)?;
         let create = cfg.create_overrides.resolve(&rules)?;
         let runtime = cfg.runtime_overrides.resolve(&rules)?;

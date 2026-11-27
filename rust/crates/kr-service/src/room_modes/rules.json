@@ -12,9 +12,16 @@
   {"group":"antarctic","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
   {"group":"baseball","wave":"F2?","win":"mission_objective","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
   {"group":"big_battle","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"capong","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"clover","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
   {"group":"confused_fight","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"farm_mission","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"rescue_et","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
   {"group":"snowball_event","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
   {"group":"snowy_champ","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
   {"group":"snowy_fields","wave":"F2?","win":"mission_objective","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
-  {"group":"super_fighter","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"}
+  {"group":"super_fighter","wave":"F2","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"wriggle","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"zombie","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"},
+  {"group":"zzolman","wave":"F2?","win":"unknown","tie":"unknown","respawn":"unknown","timer":"unknown","reset":"round"}
 ]
