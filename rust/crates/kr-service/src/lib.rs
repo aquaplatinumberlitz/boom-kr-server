@@ -10,6 +10,7 @@ mod authenticated_room_relay;
 pub mod binding;
 mod bombs;
 mod characters;
+pub mod choco_chat;
 mod diagnostic59;
 #[cfg(test)]
 mod f2_runtime_integration_tests;
