@@ -1,0 +1,1090 @@
+{
+ "schema": "kr00967-client-tables-v1",
+ "build": "KR00967",
+ "generator": "tools/kr_table_decode.py",
+ "client_exe_sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e",
+ "limits": "JSON giải tĩnh từ pack; tên trường lấy nguyên từ file. Nghĩa gameplay ở tài liệu, không phải bằng chứng runtime hay wire.",
+ "packs": {
+  "CharTE": {
+   "idx_bytes": 1039950,
+   "idx_sha256": "9095e77f111420b6ca7a65ba93326c1e9e2a20cb52ba051b7a6a0f753beea13e",
+   "idd_bytes": 368661975,
+   "idd_sha256": "045cef30a9f0a6fd5d161875e05d93917403a687991752f68f7ab87e9f5fd8fc"
+  },
+  "EmoTE": {
+   "idx_bytes": 421281,
+   "idx_sha256": "ae2702ae84fc9733013bdc1b7cb883cc6f4194e80684fb6593771f8c7153aa4c",
+   "idd_bytes": 275290407,
+   "idd_sha256": "256cb9277b22431c69f84eeb085eb91d706503bb888fadbce1b2efb5366e89cc"
+  },
+  "FxAsset": {
+   "idx_bytes": 612,
+   "idx_sha256": "44a55df7ccae641afe3cd7211fb37905c285af47adc1d27af892db34551fbd22",
+   "idd_bytes": 155592,
+   "idd_sha256": "5f528247fecdb996215a1a1bf652409d99608980b7c39a4dd30e2c5d7590c28a"
+  },
+  "FxCharacter": {
+   "idx_bytes": 191918,
+   "idx_sha256": "39dca93599a06129c60e4ceb1f2dfb9e79dd7b6910c53dffe44193b19119b3c1"
+  },
+  "FxContents": {
+   "idx_bytes": 41129,
+   "idx_sha256": "56ded9cd49079a528abed3b9d9fa7182a1ddb2b63648a835c22134850af52886",
+   "idd_bytes": 59759874,
+   "idd_sha256": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd"
+  },
+  "FxDesktop": {
+   "idx_bytes": 96874,
+   "idx_sha256": "92b7f8b91aa926c29bef0b3af0dff7cdf79c38df96bc5ae87f5c6c44c474ee0c",
+   "idd_bytes": 54003285,
+   "idd_sha256": "fcc57c2cacc9f037ad6dda913d9ae7a2934f7a039d797bee5058c262b3334ccb"
+  },
+  "FxHiddenCatch": {
+   "idx_bytes": 15040,
+   "idx_sha256": "3d6dccf3abe4dac92dce528d259666198d34d7b660e5a5c3ab9cc5b595ef6bfe"
+  },
+  "FxMap": {
+   "idx_bytes": 124628,
+   "idx_sha256": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+   "idd_bytes": 55897232,
+   "idd_sha256": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222"
+  },
+  "FxMonster": {
+   "idx_bytes": 63362,
+   "idx_sha256": "9522083b51eac71fe7edd6ac61bbf882118fcb8f0643f44c63999c8c814f7dba",
+   "idd_bytes": 79552572,
+   "idd_sha256": "6e15a7da569cf58c902d6dc033fee20dd2cd326bd90a049d99ef0e70289bdae9"
+  },
+  "FxSound": {
+   "idx_bytes": 32496,
+   "idx_sha256": "ad7172b1feab63ec9338bc5edf28b57ec011cc57a491bce5eecb3b660e512d77"
+  },
+  "FxStage": {
+   "idx_bytes": 51768,
+   "idx_sha256": "4544d8d29a6b344cdd5a85773f20fed7a9aac4a1307d523749ff5b6af48bda46"
+  },
+  "FxTile": {
+   "idx_bytes": 116936,
+   "idx_sha256": "14f62d1bd283829cad5ee00d3c35f92696e949f2b283daecc8f8853c3050d361"
+  },
+  "fx": {
+   "idx_bytes": 176447,
+   "idx_sha256": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5",
+   "idd_bytes": 87822170,
+   "idd_sha256": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"
+  }
+ },
+ "outputs": [
+  {
+   "path": "skill-tables.json",
+   "table": "skill-tables",
+   "anchor": "skilltable",
+   "unit": "skill",
+   "entries": [
+    "FxContents:RPG/SkillTable",
+    "FxContents:RPG/SnowBallSkillTable",
+    "FxContents:RPG/ZzolmanSkillTable",
+    "FxMonster:MonsterSeason2/SkillTable"
+   ],
+   "source_bytes": 14618,
+   "rows": 15,
+   "issues": {},
+   "bytes": 6285,
+   "sha256": "a8e0d50017dd4277a97803ad6a0ad7d8f91e5002fae555ea002bbed26ab78fc5"
+  },
+  {
+   "path": "equip-item-table.json",
+   "table": "equip-item-table",
+   "anchor": "equipitemtable",
+   "unit": "item",
+   "entries": [
+    "FxContents:RPG/EquipItemTable"
+   ],
+   "source_bytes": 2444,
+   "rows": 6,
+   "issues": {},
+   "bytes": 2320,
+   "sha256": "b14af6fe2363e120f23535cc98a6768db5bc6082bad94271b2e9fa342769119e"
+  },
+  {
+   "path": "gadget-table.json",
+   "table": "gadget-table",
+   "anchor": "gadgettable",
+   "unit": "gadget",
+   "entries": [
+    "FxContents:SandBox/GadgetTable"
+   ],
+   "source_bytes": 786,
+   "rows": 4,
+   "issues": {},
+   "bytes": 1086,
+   "sha256": "222877745e1d5674b3351d6b65335d130fb4023d143f3b59b2581c76838eb470"
+  },
+  {
+   "path": "stage-clear-event-npc.json",
+   "table": "stage-clear-event-npc",
+   "anchor": "stageclearevent",
+   "unit": "ScriptObject",
+   "entries": [
+    "FxDesktop:ClientData/StageClearEventNpc",
+    "FxDesktop:ClientData/StageClearEventNpcBoss"
+   ],
+   "source_bytes": 14302,
+   "rows": 4,
+   "issues": {},
+   "bytes": 12885,
+   "sha256": "ddb4650ad30b582ddd6f5fb28a84c56420961a8d1afb4f209cb68434e6e1f57d"
+  },
+  {
+   "path": "mon-action.json",
+   "table": "mon-action",
+   "anchor": "monaction",
+   "unit": "template",
+   "prefix": "FxMap:MapScriptTemplate/MonAction",
+   "entries": [
+    "FxMap:MapScriptTemplate/MonAction_00_MonGolem_00",
+    "FxMap:MapScriptTemplate/MonAction_00_MonHidden_00",
+    "FxMap:MapScriptTemplate/MonAction_00_MonOcto_00",
+    "FxMap:MapScriptTemplate/MonAction_00_MonOcto_08",
+    "FxMap:MapScriptTemplate/MonAction_00_MonPenguin_00",
+    "FxMap:MapScriptTemplate/MonAction_00_MonSeal_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_Black_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_Golem_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_MiniGolem_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_MonEgg2_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_MonEgg_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_MonIce2_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_MonIce_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_Pudak_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_Red_00",
+    "FxMap:MapScriptTemplate/MonAction_00_SM_Yellow_00",
+    "FxMap:MapScriptTemplate/MonAction_01_MonGolem_Normal",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_Golem_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_Golem_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_Golem_Normal",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_MiniGolem_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_MiniGolem_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_MiniGolem_Appear03",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_MiniGolem_Appear04",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_MiniGolem_Appear05",
+    "FxMap:MapScriptTemplate/MonAction_01_SM_MiniGolem_Normal",
+    "FxMap:MapScriptTemplate/MonAction_02_MonOcto_00",
+    "FxMap:MapScriptTemplate/MonAction_03_MonPenguin_Normal",
+    "FxMap:MapScriptTemplate/MonAction_03_SM_MonIce2_Normal",
+    "FxMap:MapScriptTemplate/MonAction_03_SM_MonIce_Normal",
+    "FxMap:MapScriptTemplate/MonAction_03_SM_MonIce_Wait",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj06",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj07",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj08",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_CreateObj09",
+    "FxMap:MapScriptTemplate/MonAction_04_Hidden_End",
+    "FxMap:MapScriptTemplate/MonAction_04_MonGolem_Normal",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_Golem_Approach",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_Golem_DownRoll",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_Golem_Normal",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_Golem_SideRoll01",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_Golem_SideRoll02",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_Golem_UpRoll",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_Golem_Wait",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_MiniGolem_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_MiniGolem_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_04_SM_MiniGolem_Normal",
+    "FxMap:MapScriptTemplate/MonAction_05_01_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Black_Awake",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Black_Matrix101",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Black_Spin201",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Black_Vending301",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Hidden_Appear101",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Hidden_Appear201",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Hidden_Appear202",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Hidden_Appear203",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Chase",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Guard201",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Guard202",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Guard203",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Guard301",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Guard302",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Guard303",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Guard304",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_LastMonleft",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Line201",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Normal",
+    "FxMap:MapScriptTemplate/MonAction_05_01_SM_Red_Wait",
+    "FxMap:MapScriptTemplate/MonAction_05_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_05_MonOcto_Normal",
+    "FxMap:MapScriptTemplate/MonAction_05_SM_Black_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_05_SM_Black_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_05_SM_Black_Appear03",
+    "FxMap:MapScriptTemplate/MonAction_05_SM_Black_Appear04",
+    "FxMap:MapScriptTemplate/MonAction_05_SM_Black_Normal",
+    "FxMap:MapScriptTemplate/MonAction_05_SM_Red_Normal",
+    "FxMap:MapScriptTemplate/MonAction_05_SM_Red_Wait",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Black_Normal",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Hidden_CreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_06_01_MonOcto_Normal",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush01",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush02",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush03",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush04",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush05",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush07",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush08",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush09",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush10",
+    "FxMap:MapScriptTemplate/MonAction_06_01_Red_Rush50",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush10",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush11",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush12",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush13",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush41",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush42",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush43",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Black_Rush46",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Hidden_CreateObj10",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Hidden_CreateObj21",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush20",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush21",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush27",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush28",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush31",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush32",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush51",
+    "FxMap:MapScriptTemplate/MonAction_06_01_SM_Red_Rush52",
+    "FxMap:MapScriptTemplate/MonAction_06_Hddein_CreateObj",
+    "FxMap:MapScriptTemplate/MonAction_06_Hidden_CreateObj",
+    "FxMap:MapScriptTemplate/MonAction_06_MonPenguin_Normal",
+    "FxMap:MapScriptTemplate/MonAction_06_SM_MonIce2_LastMonLeft",
+    "FxMap:MapScriptTemplate/MonAction_06_SM_MonIce2_Normal",
+    "FxMap:MapScriptTemplate/MonAction_06_SM_MonIce_Normal",
+    "FxMap:MapScriptTemplate/MonAction_06_SM_MonIce_Wait",
+    "FxMap:MapScriptTemplate/MonAction_07_01_Hidden_CreateObj101",
+    "FxMap:MapScriptTemplate/MonAction_07_01_Hidden_CreateObj102",
+    "FxMap:MapScriptTemplate/MonAction_07_01_Hidden_CreateObj301",
+    "FxMap:MapScriptTemplate/MonAction_07_01_Hidden_CreateObj302",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_LeftRight01",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_LeftRight02",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_Matrix101",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_Matrix102",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_Matrix103",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_Matrix104",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_Matrix201",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_Matrix301",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_Normal",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_UpDown01",
+    "FxMap:MapScriptTemplate/MonAction_07_01_SM_Yellow_UpDown02",
+    "FxMap:MapScriptTemplate/MonAction_07_MonSeal_Normal",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Pudak_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Pudak_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Pudak_Appear03",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Pudak_Approach",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Pudak_Approach-Regen",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Yellow_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Yellow_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Yellow_Approach",
+    "FxMap:MapScriptTemplate/MonAction_07_SM_Yellow_Approach-Regen",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_Mon_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_Mon_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_Mon_Hidden_CreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_Mon_Hidden_CreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal11",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal12",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal13",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal14",
+    "FxMap:MapScriptTemplate/MonAction_08_01_1_SM_MonIce_Normal",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj06",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj07",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_Mon_Hidden_CreateObj08",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal05",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal06",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal07",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal08",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal11",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal12",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal13",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal14",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal15",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal16",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal17",
+    "FxMap:MapScriptTemplate/MonAction_08_01_2_SM_MonIce2_Normal18",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj06",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj07",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj08",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj09",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj10",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj11",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_Mon_Hidden_CreateObj12",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal05",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal06",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal07",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal08",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal09",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal10",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal101",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal102",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal103",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal104",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal105",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal106",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal107",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal108",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal109",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal11",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal110",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal111",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal112",
+    "FxMap:MapScriptTemplate/MonAction_08_01_3_SM_MonIce2_Normal12",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj06",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj07",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_Mon_Hidden_CreateObj08",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal01",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal02",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal03",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal04",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal05",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal06",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal07",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal08",
+    "FxMap:MapScriptTemplate/MonAction_08_01_4_SM_MonIce2_Normal101",
+    "FxMap:MapScriptTemplate/MonAction_08_01_5_Mon_Hidden_CreateObj",
+    "FxMap:MapScriptTemplate/MonAction_08_01_5_SM_MonIce2_Normal",
+    "FxMap:MapScriptTemplate/MonAction_08_01_MonPenguin_Normal",
+    "FxMap:MapScriptTemplate/MonAction_08_MonOcto_Normal",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Black_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Black_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Black_CreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Black_Normal",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Black_Normal_Regen",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Black_Rush",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_BossCreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj06",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj07",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj08",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Hidden_CreateObj10",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_CreateObj06",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_CreateObj07",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_CreateObj08",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_CreateObj09",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_CreateObj11",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_Normal",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_Normal_Regen",
+    "FxMap:MapScriptTemplate/MonAction_08_SM_Red_Rush",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_CreateObj00",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj01",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj02",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj03",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj04",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj05",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj06",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj07",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj08",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj09",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj10",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj11",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj12",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj13",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj14",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj15",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj16",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj17",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj18",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj19",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj20",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj30",
+    "FxMap:MapScriptTemplate/MonAction_0901_Hidden_Waterj31",
+    "FxMap:MapScriptTemplate/MonAction_0901_MonOcto_Normal",
+    "FxMap:MapScriptTemplate/MonAction_0901_SM_Black_Normal",
+    "FxMap:MapScriptTemplate/MonAction_0901_SM_Red_Disappear01",
+    "FxMap:MapScriptTemplate/MonAction_0901_SM_Red_Disappear02",
+    "FxMap:MapScriptTemplate/MonAction_0901_SM_Red_Disappear03",
+    "FxMap:MapScriptTemplate/MonAction_0901_SM_Red_Disappear04",
+    "FxMap:MapScriptTemplate/MonAction_0901_SM_Red_Normal",
+    "FxMap:MapScriptTemplate/MonAction_0901_SM_Red_Rush01",
+    "FxMap:MapScriptTemplate/MonAction_09_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_09_MonPenguin_Normal",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_Golem_SideRoll01",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_Golem_UpDownRoll01",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce2_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce2_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce2_Appear03",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce2_Approach",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce2_Approach-Regen",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce2_Approach-Regen01",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce2_Normal",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce_Appear01",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce_Approach",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce_Approach-Regen",
+    "FxMap:MapScriptTemplate/MonAction_09_SM_MonIce_Approach-Regen01",
+    "FxMap:MapScriptTemplate/MonAction_10_01_1_SM_Pudak",
+    "FxMap:MapScriptTemplate/MonAction_10_01_MonSeal_Normal",
+    "FxMap:MapScriptTemplate/MonAction_10_01_SM_Yellow01",
+    "FxMap:MapScriptTemplate/MonAction_10_MonGhost_Approach",
+    "FxMap:MapScriptTemplate/MonAction_10_MonGhost_Guard01",
+    "FxMap:MapScriptTemplate/MonAction_10_MonGhost_Guard02",
+    "FxMap:MapScriptTemplate/MonAction_10_MonGhost_Normal",
+    "FxMap:MapScriptTemplate/MonAction_10_MonSeal_Normal",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_Appear11",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_CreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_CreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_CreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_CreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_CreateObj07",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_TombCreateObj01",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_TombCreateObj02",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_TombCreateObj03",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_TombCreateObj04",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Hidden_TombCreateObj05",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Pudak_01",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Pudak_Appear02",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Pudak_Approach",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Pudak_Regen",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Pudak_Rush",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_00_Regen",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_01",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_02",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_Appear05",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_Approach",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_Normal-Regen",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_Rush",
+    "FxMap:MapScriptTemplate/MonAction_10_SM_Yellow_Speed",
+    "FxMap:MapScriptTemplate/MonAction_11_MonGolem_00",
+    "FxMap:MapScriptTemplate/MonAction_11_MonGolem_hidden",
+    "FxMap:MapScriptTemplate/MonAction_11_SM_Golem_00",
+    "FxMap:MapScriptTemplate/MonAction_11_SM_Golem_01",
+    "FxMap:MapScriptTemplate/MonAction_11_SM_Golem_NeverdieRoll",
+    "FxMap:MapScriptTemplate/MonAction_11_SM_Golem_NeverdieRoll_boss",
+    "FxMap:MapScriptTemplate/MonAction_11_SM_MiniGolem_00",
+    "FxMap:MapScriptTemplate/MonAction_12_SM_Red_Hidden_Boxmon01",
+    "FxMap:MapScriptTemplate/MonAction_Flower_01",
+    "FxMap:MapScriptTemplate/MonAction_Kuo_01",
+    "FxMap:MapScriptTemplate/MonAction_Kuo_Test",
+    "FxMap:MapScriptTemplate/MonAction_MKuo_Test",
+    "FxMap:MapScriptTemplate/MonAction_Monkey_01",
+    "FxMap:MapScriptTemplate/MonAction_Monkey_Test",
+    "FxMap:MapScriptTemplate/MonAction_RKuo_01",
+    "FxMap:MapScriptTemplate/MonAction_Sancho_01",
+    "FxMap:MapScriptTemplate/MonAction_Sancho_Test"
+   ],
+   "source_bytes": 568455,
+   "rows": 364,
+   "issues": {
+    "after_root": 1,
+    "duplicate_attr": 1,
+    "unquoted_attr": 265,
+    "unterminated_comment": 1
+   },
+   "bytes": 656281,
+   "sha256": "686f128c591bb7ed7d751b2274f9bfa0d3b8d5e786a78691a2e9ba7a6ae573aa"
+  },
+  {
+   "path": "custom-maps.json",
+   "table": "custom-maps",
+   "anchor": "custommap",
+   "unit": "map",
+   "prefix": "fx:CustomMap/CustomMap_",
+   "entries": [
+    "fx:CustomMap/CustomMap_15x13_01",
+    "fx:CustomMap/CustomMap_15x27_01",
+    "fx:CustomMap/CustomMap_15x27_02",
+    "fx:CustomMap/CustomMap_21x21_01",
+    "fx:CustomMap/CustomMap_21x21_02",
+    "fx:CustomMap/CustomMap_31x13_01",
+    "fx:CustomMap/CustomMap_31x13_02",
+    "fx:CustomMap/CustomMap_31x27_01",
+    "fx:CustomMap/CustomMap_31x27_02",
+    "fx:CustomMap/CustomMap_Camp08",
+    "fx:CustomMap/CustomMap_Factory07",
+    "fx:CustomMap/CustomMap_Forest07",
+    "fx:CustomMap/CustomMap_Patrit14",
+    "fx:CustomMap/CustomMap_Tomb12",
+    "fx:CustomMap/CustomMap_Village10"
+   ],
+   "source_bytes": 421714,
+   "rows": 15,
+   "issues": {
+    "stray_text": 1
+   },
+   "bytes": 64858,
+   "sha256": "55ea951efda4502860d4e2ff9de4218b93c70187a41e99a498bb5c48d529da7f"
+  },
+  {
+   "path": "custom-tile-index-list.json",
+   "table": "custom-tile-index-list",
+   "anchor": "customtileindexlist",
+   "unit": "tile",
+   "entries": [
+    "fx:CustomMap/CustomTileIndexList"
+   ],
+   "source_bytes": 116890,
+   "rows": 2219,
+   "issues": {},
+   "bytes": 57265,
+   "sha256": "f4bb1d6074f32c0c42ce24cc46be43d0c158f1b3804fda0c804f979ea4b9b2dc"
+  },
+  {
+   "path": "custom-tile-list.json",
+   "table": "custom-tile-list",
+   "anchor": "customtilelist",
+   "unit": "tile theme",
+   "entries": [
+    "fx:CustomMap/CustomTileList"
+   ],
+   "source_bytes": 230865,
+   "rows": 1896,
+   "issues": {},
+   "bytes": 212742,
+   "sha256": "1c932640a67042d84b84a644606334f6b5208eb78ba368644c3a8a5ca2433fde"
+  },
+  {
+   "path": "pet-table.json",
+   "table": "pet-table",
+   "anchor": "pettable",
+   "unit": "dòng",
+   "entries": [
+    "fx:Pet/PetTable"
+   ],
+   "source_bytes": 104517,
+   "rows": 94,
+   "issues": {},
+   "bytes": 13065,
+   "sha256": "57cc2924dbd6b9393e341341f3626930ccf6ebff48f23c19f4991bbfe8b88bc5"
+  },
+  {
+   "path": "pet-random-table.json",
+   "table": "pet-random-table",
+   "anchor": "petrandomtable",
+   "unit": "dòng",
+   "entries": [
+    "fx:Pet/PetRandomTable"
+   ],
+   "source_bytes": 184454,
+   "rows": 276,
+   "issues": {},
+   "bytes": 16320,
+   "sha256": "3cbce153ac03c686c6765fdef03c0ffa187cac6afe99aedf7205b7300d9a6721"
+  },
+  {
+   "path": "speaker-table.json",
+   "table": "speaker-table",
+   "anchor": "speakertable",
+   "unit": "dòng",
+   "entries": [
+    "fx:ObjectTable/SpeakerTable"
+   ],
+   "source_bytes": 174151,
+   "rows": 63,
+   "issues": {},
+   "bytes": 14817,
+   "sha256": "39892c351bf0e8fa18d16dcf0a30d0ad5f2d3e32944a8c58b5c8952055cc1c73"
+  },
+  {
+   "path": "xml-init.json",
+   "table": "xml-init",
+   "anchor": "xmlinit",
+   "unit": "phần tử",
+   "entries": [
+    "fx:XML/init"
+   ],
+   "source_bytes": 116,
+   "rows": 3,
+   "issues": {},
+   "bytes": 371,
+   "sha256": "71b58904cd6c1b18603b47b16d10deb29bb3a1179035480cb7b7d93cd643f68c"
+  }
+ ],
+ "crossrefs": {
+  "mon_action_map_refs": {
+   "maps": 82,
+   "references": 2108,
+   "distinct": 343,
+   "exact": 342,
+   "case_insensitive_only": [
+    "MapScriptTemplate/MonAction_Rkuo_01"
+   ],
+   "missing": [],
+   "templates": 364,
+   "templates_referenced": 342,
+   "unreferenced": [
+    "MapScriptTemplate/MonAction_00_MonGolem_00",
+    "MapScriptTemplate/MonAction_00_MonHidden_00",
+    "MapScriptTemplate/MonAction_00_MonOcto_00",
+    "MapScriptTemplate/MonAction_00_MonOcto_08",
+    "MapScriptTemplate/MonAction_00_MonPenguin_00",
+    "MapScriptTemplate/MonAction_00_MonSeal_00",
+    "MapScriptTemplate/MonAction_00_SM_MonEgg2_00",
+    "MapScriptTemplate/MonAction_00_SM_Yellow_00",
+    "MapScriptTemplate/MonAction_01_SM_MiniGolem_Appear05",
+    "MapScriptTemplate/MonAction_05_01_SM_Red_Normal",
+    "MapScriptTemplate/MonAction_06_Hddein_CreateObj",
+    "MapScriptTemplate/MonAction_07_01_SM_Yellow_Normal",
+    "MapScriptTemplate/MonAction_08_01_1_SM_MonIce2_Normal",
+    "MapScriptTemplate/MonAction_0901_SM_Red_Disappear02",
+    "MapScriptTemplate/MonAction_09_SM_MonIce2_Approach",
+    "MapScriptTemplate/MonAction_09_SM_MonIce_Approach",
+    "MapScriptTemplate/MonAction_10_SM_Pudak_Appear02",
+    "MapScriptTemplate/MonAction_12_SM_Red_Hidden_Boxmon01",
+    "MapScriptTemplate/MonAction_Kuo_Test",
+    "MapScriptTemplate/MonAction_MKuo_Test",
+    "MapScriptTemplate/MonAction_Monkey_Test",
+    "MapScriptTemplate/MonAction_Sancho_Test"
+   ]
+  },
+  "skill_table_map_refs": {
+   "skilltablename": {
+    "monsterseason2/skilltable": 26,
+    "rpg/skilltable": 3,
+    "rpg/snowballskilltable": 35,
+    "rpg/zzolmanskilltable": 20
+   },
+   "item_refs": [
+    {
+     "tables": [
+      "monsterseason2/skilltable"
+     ],
+     "skill": "ThrowNuclearBomb",
+     "level": 1,
+     "items": 26,
+     "resolved": true,
+     "level_present": true
+    },
+    {
+     "tables": [
+      "rpg/skilltable"
+     ],
+     "skill": "RectNuclearBombBoss",
+     "level": 1,
+     "items": 9,
+     "resolved": true,
+     "level_present": true
+    },
+    {
+     "tables": [
+      "rpg/snowballskilltable"
+     ],
+     "skill": "BigSnowBall",
+     "level": 1,
+     "items": 35,
+     "resolved": true,
+     "level_present": true
+    },
+    {
+     "tables": [
+      "rpg/zzolmanskilltable"
+     ],
+     "skill": "RectNuclearBomb",
+     "level": 1,
+     "items": 60,
+     "resolved": true,
+     "level_present": true
+    }
+   ]
+  },
+  "custom_map": {
+   "map_compare": [
+    {
+     "map": "Camp08",
+     "size_equal": true,
+     "map_spawns": 8,
+     "start_points": 8,
+     "spawns_are_prefix": true,
+     "ground_positions_equal": true,
+     "object_positions_equal": true
+    },
+    {
+     "map": "Factory07",
+     "size_equal": true,
+     "map_spawns": 8,
+     "start_points": 8,
+     "spawns_are_prefix": true,
+     "ground_positions_equal": true,
+     "object_positions_equal": true
+    },
+    {
+     "map": "Forest07",
+     "size_equal": true,
+     "map_spawns": 8,
+     "start_points": 8,
+     "spawns_are_prefix": true,
+     "ground_positions_equal": true,
+     "object_positions_equal": true
+    },
+    {
+     "map": "Patrit14",
+     "size_equal": true,
+     "map_spawns": 8,
+     "start_points": 8,
+     "spawns_are_prefix": true,
+     "ground_positions_equal": true,
+     "object_positions_equal": true
+    },
+    {
+     "map": "Tomb12",
+     "size_equal": true,
+     "map_spawns": 6,
+     "start_points": 8,
+     "spawns_are_prefix": true,
+     "ground_positions_equal": true,
+     "object_positions_equal": true
+    },
+    {
+     "map": "Village10",
+     "size_equal": true,
+     "map_spawns": 6,
+     "start_points": 8,
+     "spawns_are_prefix": true,
+     "ground_positions_equal": true,
+     "object_positions_equal": true
+    }
+   ],
+   "maps": 15,
+   "team_count_x_user_count_equals_start_points": 15,
+   "positions_in_range_and_unique": 15,
+   "localdata_theme_names": {
+    "distinct": 36,
+    "resolved": 36,
+    "missing": [],
+    "exact_case": 4
+   },
+   "template_map_info": {
+    "rows": 15,
+    "name_and_size_equal": 13,
+    "theme_resolved": {
+     "distinct": 11,
+     "resolved": 11,
+     "missing": []
+    }
+   },
+   "layer_names_in_index_list": {
+    "distinct": 183,
+    "resolved": 183,
+    "missing": []
+   },
+   "ban_gadgets_in_gadget_table": {
+    "distinct": 4,
+    "resolved": 4,
+    "missing": []
+   }
+  },
+  "custom_tiles": {
+   "index_list_in_tile_info": {
+    "distinct": 2214,
+    "resolved": 2214,
+    "missing": []
+   },
+   "index_items_in_item_attr": {
+    "distinct": 65,
+    "resolved": 65,
+    "missing": []
+   },
+   "theme_tiles_in_index_list": {
+    "distinct": 1896,
+    "resolved": 1896,
+    "missing": []
+   },
+   "theme_idf_in_fxmap": {
+    "distinct": 36,
+    "resolved": 36,
+    "missing": []
+   },
+   "special_blocks_resolved": {
+    "distinct": 127,
+    "resolved": 127,
+    "missing": []
+   },
+   "monsters_resolved": {
+    "distinct": 31,
+    "resolved": 31,
+    "missing": []
+   },
+   "items_in_item_attr": {
+    "distinct": 63,
+    "resolved": 63,
+    "missing": []
+   }
+  },
+  "script_strings": {
+   "stage-clear-event-npc": {
+    "distinct": 14,
+    "resolved": 0,
+    "missing": [
+     "BlueMonSay_event0_01",
+     "BlueMonSay_event0_02",
+     "BlueMonSay_event1_01",
+     "BlueMonSay_event2_02",
+     "BlueMonSay_event3_01",
+     "BlueMonSay_event4_01",
+     "BlueMonSay_event4_02",
+     "BlueMonSay_event5_01",
+     "BlueMonSay_step0_01",
+     "BlueMonSay_step1_01",
+     "BlueMonSay_step1_02",
+     "BlueMonSay_step2_01",
+     "BlueMonSay_step3_01",
+     "BlueMonSay_step4_01"
+    ]
+   },
+   "mon-action": {
+    "distinct": 64,
+    "resolved": 0,
+    "missing": [
+     "",
+     "    @#%$&~",
+     "  @#%$&~",
+     "!",
+     "!!!",
+     "!!!!",
+     "?",
+     "@#%$&~",
+     "MonAction_Monkey_01SelfDamaged01",
+     "MonAction_Monkey_01SelfDamaged02",
+     "MonAction_Monkey_01SelfDie01",
+     "MonAction_Monkey_01SelfDie02",
+     "MonAction_Monkey_01approach01",
+     "MonAction_Monkey_01approach02",
+     "MonAction_Monkey_01approach03",
+     "MonAction_Monkey_01approach04",
+     "MonAction_Monkey_01approach05",
+     "MonAction_Monkey_01approach06",
+     "MonAction_Sancho_01SelfDamaged01",
+     "MonAction_Sancho_01SelfDamaged02",
+     "MonAction_Sancho_01SelfDie01",
+     "MonAction_Sancho_01SelfDie02",
+     "MonAction_Sancho_01Selflocked01",
+     "MonAction_Sancho_01Selflocked02",
+     "MonAction_Sancho_01Selflocked03",
+     "MonAction_Sancho_01Selflocked04",
+     "MonAction_Sancho_01Selflocked05",
+     "MonAction_Sancho_01Selflocked06",
+     "MonAction_Sancho_01approach01",
+     "MonAction_Sancho_01approach02",
+     "MonAction_Sancho_01approach03",
+     "MonAction_Sancho_01approach04",
+     "MonAction_Sancho_01approach05",
+     "MonAction_Sancho_01approach06",
+     "MonS2Fire02Approach12",
+     "MonS2Fire02Approach13",
+     "MonS2Fire02Approach16",
+     "MonS2Fire02Approach17",
+     "MonS2Fire02Approach18",
+     "MonS2Fire02Approach20",
+     "MonS2Fire02Approach22",
+     "MonS2Fire02SelfDamaged01",
+     "MonS2Fire02SelfDamaged02",
+     "MonS2Fire02SelfDamaged03",
+     "MonS2Fire02SelfDie02",
+     "MonS2Fire02SelfDie03",
+     "MonS2Fire02SelfDie07",
+     "MonS2Fire02SelfDie08",
+     "MonS2Fire02SelfDie09",
+     "ZZZ",
+     "ZZZ~",
+     "mons2fire04approach01",
+     "mons2fire04approach09",
+     "mons2fire04selfdamaged04",
+     "mons2fire04selfdie07",
+     "mons2fire05approach11",
+     "mons2fire05approach12",
+     "mons2fire05approach14",
+     "mons2fire05approach20",
+     "mons2fire05selfdamaged03",
+     "mons2fire05selfdie07",
+     "밟으면 죽는다!!!!",
+     "밟혀죽는구나!!!",
+     "할퀸다!"
+    ]
+   },
+   "stage_clear_images": {
+    "distinct": 2,
+    "resolved": 2,
+    "missing": []
+   }
+  },
+  "sheets": {
+   "pet_template_in_objects": {
+    "distinct": 94,
+    "resolved": 94,
+    "missing": []
+   },
+   "speaker_mark_icon": {
+    "distinct": 2,
+    "resolved": 2,
+    "missing": []
+   },
+   "speaker_both_side_img": {
+    "distinct": 10,
+    "resolved": 10,
+    "missing": []
+   },
+   "speaker_templates": {
+    "distinct": 42,
+    "resolved": 42,
+    "missing": []
+   },
+   "pet_random_rate_sum_by_type": {
+    "1": 100000,
+    "2": 100000,
+    "3": 100000,
+    "4": 100000,
+    "5": 100000,
+    "6": 100000
+   }
+  }
+ },
+ "stats": {
+  "mon-action": {
+   "triggers": {
+    "default": 364,
+    "selfdamaged": 206,
+    "selfreleased": 91,
+    "selfdie": 90,
+    "appear": 87,
+    "approach": 71,
+    "bossanger": 21,
+    "selflocked": 13,
+    "bossdamaged": 9,
+    "lastmonleft": 2,
+    "die": 1
+   },
+   "step_tags": {
+    "action": 6490,
+    "wait": 5
+   },
+   "step_names": {
+    "pattern": 1272,
+    "wait": 1178,
+    "setstate": 1069,
+    "createobj": 1015,
+    "attack": 615,
+    "playanim": 367,
+    "settriggeroption": 318,
+    "move": 283,
+    "say": 214,
+    "turn": 97,
+    "createmonmissile": 50,
+    "specialattack": 11,
+    "dropitem": 1
+   },
+   "step_funcs": {
+    "free": 1245,
+    "playandwait": 220,
+    "directiondest": 160,
+    "waitonly": 147,
+    "absolute": 141,
+    "nuclearbomb": 122,
+    "autokick": 120,
+    "relative": 117,
+    "rectangle": 95,
+    "direction": 48,
+    "line": 27,
+    "absolute2": 25,
+    "createboxmon": 25,
+    "roll": 25,
+    "fallingrock": 20
+   },
+   "mixed_case": {
+    "@collisionbase": {
+     "CollisionBase": 14,
+     "collisionBase": 11
+    },
+    "@speed": {
+     "Speed": 11,
+     "speed": 845
+    },
+    "@userdist": {
+     "userDist": 1088,
+     "userdist": 118
+    },
+    "Trigger@type": {
+     "Type": 729,
+     "type": 226
+    },
+    "action": {
+     "Action": 5947,
+     "action": 543
+    }
+   }
+  },
+  "stage-clear-event-npc": {
+   "triggers": {
+    "default": 4,
+    "bomberdie": 2,
+    "bomberlocked": 2,
+    "die": 2,
+    "lastmonleft": 2,
+    "selfdamaged": 2,
+    "selfdie": 2,
+    "bossin": 1,
+    "firstmondie": 1
+   },
+   "step_tags": {
+    "action": 107
+   },
+   "step_names": {
+    "pattern": 52,
+    "say": 20,
+    "wait": 19,
+    "setstate": 8,
+    "orderscript": 4,
+    "createobj": 2,
+    "turn": 2
+   },
+   "step_funcs": {
+    "free": 52,
+    "hurryup1": 2,
+    "hurryup2": 2
+   },
+   "mixed_case": {
+    "Trigger@type": {
+     "Type": 2,
+     "type": 16
+    },
+    "action": {
+     "Action": 20,
+     "action": 87
+    }
+   }
+  }
+ }
+}

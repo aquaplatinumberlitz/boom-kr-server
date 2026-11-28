@@ -1,0 +1,55 @@
+{
+  "id": "CP405",
+  "previous": "CP404",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-28T08:02:36Z",
+  "owner": "Claude",
+  "reviewer": "waived",
+  "question": "Chữ thoại Say của MonAction/StageClearEventNpc lấy từ đâu, client đọc 12 bảng ở hàm nào, và bên nào chạy các bước MonAction?",
+  "scope": "IDA tĩnh trên bản sao IDB unpack 00967 (xoá sau khi dùng, DB nguồn không đổi), đối chiếu csysstr.ssd và catalog boom-re-l10n @ 9b9b068. Chỉ trả lời ba câu hỏi; không giải ngữ nghĩa từng loại bước. Không chạy game hay Wine.",
+  "context_commit": "cf993fecd701f0d7efa77783a6ffda828e49d2c5",
+  "artifacts": [
+    {"name": "kr-full.exe.i64 (IDB unpack 00967)", "sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"},
+    {"name": "csysstr.ssd KR 00967", "sha256": "c8c4d2fb6d1da93e9324597a885f05b1d8d5897fc0e32d1b7f5a27951892fa72"},
+    {"name": "boom-re-l10n l10n/catalog.csv @ 9b9b068", "sha256": "6b3b9806db26d887e132ba5256bc24e8fae98e78a367b97f45d46e450f62d50b"}
+  ],
+  "locators": [
+    "docs/content/client-data-tables.md#say-source",
+    "docs/content/client-data-tables.md#loaders",
+    "docs/content/client-data-tables.md#monaction-runtime",
+    "local/research/kr-table-decode"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/client-data-tables.md#say-source", "summary": "Say gom mọi thuộc tính say*, chạy thì chọn ngẫu nhiên và gửi C->S 132 (0xF53320). Bên nhận (0x61CE90) tra khoá FxClientString (0x13950D0/0x1394D20: chữ thường, không thấy thì hiện nguyên giá trị). Kho nạp từ csysstr.ssd. 14/14 khoá StageClear và 51/64 giá trị MonAction có trong csysstr.ssd. 3 câu tiếng Hàn viết thẳng chỉ nằm trong template *_Test không map nào dùng. 65 khoá có vi/en trong catalog l10n.", "limits": "Cách server chuyển 132 thành thông điệp loại 1 chưa đo. Gói cập nhật bảng chuỗi có thể ghi đè cache.", "evidence": ["CP405_DOC", "CP405_IDA"]},
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/client-data-tables.md#loaders", "summary": "Có hàm đọc cho 10/12 nhóm bảng; EquipItemTable và XML/init không có chuỗi tên trong exe. Nâng lên kr_static: tra tên skill/property không phân biệt hoa thường, Idx/Level/Value là số nguyên, LimitCount là giới hạn đặt trong editor (0x99CD70), cột SpreadsheetML đọc theo tên.", "limits": "Chưa đọc code dùng Rate, đơn vị skill hay mã pet.", "evidence": ["CP405_DOC", "CP405_IDA"]},
+    {"source": "kr_static", "status": "candidate", "method": "static", "canonical": "docs/content/client-data-tables.md#monaction-runtime", "summary": "Client chạy bước MonAction chỉ khi đối tượng thuộc máy này (0xB91F60, cờ 0x11656A0). Quái StageClear đăng ký với chủ -1; gói 204 (u16 obj, u8 slot) giao quyền (0x115D2E0). Kết quả đi qua C->S 132/180. Server phải giao quyền và chuyển tiếp, không cần diễn giải bước.", "limits": "Đường code là kr_static. Slot server gốc giao và cách server chuyển tiếp là candidate; cần capture hai client.", "evidence": ["CP405_DOC", "CP405_IDA"]}
+  ],
+  "verification": [
+    {"check": "Đối chiếu giá trị say* trong JSON đã giải với csysstr.ssd, csysqstr.ssd và catalog l10n.", "result": "pass", "limits": "Dữ liệu tĩnh; không thấy bong bóng trên màn hình.", "evidence": ["CP405_IDA"]},
+    {"check": "Kiểm lại SHA-256 của IDB nguồn sau khi dùng bản sao.", "result": "pass", "limits": "Bản sao đã xoá.", "evidence": ["CP405_IDA"]},
+    {"check": "kr_table_decode.py --check, check_docs.py, content_census.py --check, content_classification.py --check.", "result": "pass", "limits": "JSON giải không đổi; chỉ đổi tài liệu.", "evidence": ["CP405_DOC"]},
+    {"check": "Capture Wine hai client để thấy gói 204 và đường chuyển tiếp 132.", "result": "not_run", "limits": "Ngoài phạm vi; không chạy game.", "evidence": []}
+  ],
+  "delta": {"added": ["Nguồn chữ Say, hàm đọc của 10/12 bảng và bên chạy MonAction."], "corrected": ["CP404 ghi nguồn chữ say và nơi nạp bảng là unknown; nay đã xác định."], "superseded": []},
+  "blockers": [],
+  "next_steps": [
+    {"id": "TABLES-LOADER-XREF", "task": "KRE-CONTENT-TABLES", "state": "closed", "owner": "Claude", "reviewer": "waived", "action": "Đã tìm xref hàm đọc và nâng các trường được code chứng minh (CP405)."},
+    {"id": "TABLES-SYNC-CAPTURE", "task": "KRE-CONTENT-TABLES", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Trong một lượt Wine F3 hai client, ghi gói 204 và đường chuyển tiếp của C->S 132/180 để chốt slot được giao quyền quái."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-28T08:02:36Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Đối chiếu địa chỉ hàm, dữ liệu csysstr và tài liệu.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập; chủ dự án trực tiếp giao việc."}},
+  "docs_sync": [
+    {"path": "docs/DEVELOPMENT.md", "state": "unchanged", "reason": "Không đóng mốc lớn."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Ghi đè dòng trạng thái bảng dữ liệu."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Gói 204/132 chỉ dẫn chiếu từ tài liệu bảng; chưa đổi contract."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Phép đo tiếp ghi ở next step."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi độ phủ."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không thêm ID."},
+    {"path": "docs/content/client-data-tables.md", "state": "updated", "reason": "Thêm ba mục và nâng mức các trường."},
+    {"path": "docs/evidence/checkpoints/records/CP405.json", "state": "updated", "reason": "Pin tài liệu và ghi chú IDA."}
+  ],
+  "evidence": [
+    {"id": "CP405_DOC", "kind": "repository", "path": "docs/content/client-data-tables.md", "bytes": 28659, "sha256": "1696b1dd721dcbb8b1a20c2de80232f02c6f7fd918a5bd5245bc43a9ac95478e"},
+    {"id": "CP405_IDA", "kind": "local", "path": "local/research/kr-table-decode/ida-cp405.json", "bytes": 1362, "sha256": "6ac1374624f103692c453ef1f5c6cd876371d328e2d03ebf6139d6a091ccdee7"}
+  ],
+  "evidence_runs": []
+}

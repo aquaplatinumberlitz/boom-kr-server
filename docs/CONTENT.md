@@ -1005,28 +1005,28 @@ Quét index 13 pack, nhận diện entry có tiền tố độ dài và nội du
 | `CharTE` | `ObjectTable/CharTEObjectTable` | 1,225,830 | 4,349 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
 | `EmoTE` | `ObjectTable/EmoTEObjectTable` | 916,378 | 3,869 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
 | `FxAsset` | `ObjectTable/FxAssetObjectTable` | 69,936 | 26 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
-| `FxContents` | `RPG/EquipItemTable` | 2,444 | chưa đếm | chưa giải |
-| `FxContents` | `RPG/SkillTable` | 9,747 | chưa đếm | chưa giải |
-| `FxContents` | `RPG/SnowBallSkillTable` | 515 | chưa đếm | chưa giải |
-| `FxContents` | `RPG/ZzolmanSkillTable` | 3,929 | chưa đếm | chưa giải |
-| `FxContents` | `SandBox/GadgetTable` | 786 | chưa đếm | chưa giải |
+| `FxContents` | `RPG/EquipItemTable` | 2,444 | chưa đếm | [client-data-tables](content/client-data-tables.md#equipitemtable) (giải tĩnh) |
+| `FxContents` | `RPG/SkillTable` | 9,747 | chưa đếm | [client-data-tables](content/client-data-tables.md#skilltable) (giải tĩnh) |
+| `FxContents` | `RPG/SnowBallSkillTable` | 515 | chưa đếm | [client-data-tables](content/client-data-tables.md#skilltable) (giải tĩnh) |
+| `FxContents` | `RPG/ZzolmanSkillTable` | 3,929 | chưa đếm | [client-data-tables](content/client-data-tables.md#skilltable) (giải tĩnh) |
+| `FxContents` | `SandBox/GadgetTable` | 786 | chưa đếm | [client-data-tables](content/client-data-tables.md#gadgettable) (giải tĩnh) |
 | `FxDesktop` | `ClientData/ClientString` | 892,599 | 6,993 thẻ Elem | boomkr-re/docs/kr-data.md §1 |
-| `FxDesktop` | `ClientData/StageClearEventNpc` | 7,136 | chưa đếm | chưa giải |
-| `FxDesktop` | `ClientData/StageClearEventNpcBoss` | 7,166 | chưa đếm | chưa giải |
-| `FxMap` | `MapScriptTemplate/MonAction*` (364 entry) | 568,455 | chưa đếm | chưa giải |
+| `FxDesktop` | `ClientData/StageClearEventNpc` | 7,136 | chưa đếm | [client-data-tables](content/client-data-tables.md#stageclearevent) (giải tĩnh) |
+| `FxDesktop` | `ClientData/StageClearEventNpcBoss` | 7,166 | chưa đếm | [client-data-tables](content/client-data-tables.md#stageclearevent) (giải tĩnh) |
+| `FxMap` | `MapScriptTemplate/MonAction*` (364 entry) | 568,455 | chưa đếm | [client-data-tables](content/client-data-tables.md#monaction) (giải tĩnh) |
 | `FxMap` | `MapScriptTemplate/MonInfo*` (45 entry) | 717,490 | 760 thẻ RewardItem | boomkr-re/docs/kr-data.md §6 (reward và InitInfo) |
-| `FxMonster` | `MonsterSeason2/SkillTable` | 427 | chưa đếm | chưa giải |
-| `fx` | `CustomMap/CustomMap*` (15 entry) | 421,714 | chưa đếm | chưa giải |
-| `fx` | `CustomMap/CustomTileIndexList*` (1 entry) | 116,890 | chưa đếm | chưa giải |
-| `fx` | `CustomMap/CustomTileList*` (1 entry) | 230,865 | chưa đếm | chưa giải |
+| `FxMonster` | `MonsterSeason2/SkillTable` | 427 | chưa đếm | [client-data-tables](content/client-data-tables.md#skilltable) (giải tĩnh) |
+| `fx` | `CustomMap/CustomMap*` (15 entry) | 421,714 | chưa đếm | [client-data-tables](content/client-data-tables.md#custommap) (giải tĩnh) |
+| `fx` | `CustomMap/CustomTileIndexList*` (1 entry) | 116,890 | chưa đếm | [client-data-tables](content/client-data-tables.md#customtileindexlist) (giải tĩnh) |
+| `fx` | `CustomMap/CustomTileList*` (1 entry) | 230,865 | chưa đếm | [client-data-tables](content/client-data-tables.md#customtilelist) (giải tĩnh) |
 | `fx` | `MotionBlur/MotionBlurTable` | 59,416 | 122 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
 | `fx` | `ObjectTable/NameTable` | 3,249 | 85 thẻ Desc | boomkr-re/docs/kr-data.md §1 (kiểm kê) |
 | `fx` | `ObjectTable/ObjectTable` | 2,391,729 | 8,185 mục index | boomkr-re/docs/kr-data.md §1 (cấu trúc ObjectTable) |
-| `fx` | `ObjectTable/SpeakerTable` | 174,151 | 67 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
-| `fx` | `Pet/PetRandomTable` | 184,454 | 280 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
-| `fx` | `Pet/PetTable` | 104,517 | 98 hàng XML | boomkr-re/docs/kr-data.md §1 (định dạng; chưa giải toàn bộ) |
+| `fx` | `ObjectTable/SpeakerTable` | 174,151 | 67 hàng XML | [client-data-tables](content/client-data-tables.md#speakertable) (giải tĩnh) |
+| `fx` | `Pet/PetRandomTable` | 184,454 | 280 hàng XML | [client-data-tables](content/client-data-tables.md#petrandomtable) (giải tĩnh) |
+| `fx` | `Pet/PetTable` | 104,517 | 98 hàng XML | [client-data-tables](content/client-data-tables.md#pettable) (giải tĩnh) |
 | `fx` | `TileInfo/TileInfoList` | 1,184,206 | 5,929 thẻ Tile | boomkr-re/docs/kr-data.md §1 (cấu trúc ngoài) |
-| `fx` | `XML/init` | 116 | chưa đếm | chưa giải |
+| `fx` | `XML/init` | 116 | chưa đếm | [client-data-tables](content/client-data-tables.md#xmlinit) (giải tĩnh) |
 
 
 ## Script map
