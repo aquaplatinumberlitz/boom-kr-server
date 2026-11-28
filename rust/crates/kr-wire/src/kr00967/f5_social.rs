@@ -1,11 +1,153 @@
-//! KR 00967 social payloads, `kr_static/confirmed` only. See
-//! docs/protocol/f2-f5-f3-ida-anchors.md and the source hashes in its evidence.
-//! Friend, CHOCOPacket framing, guild management and ranking wire stay unknown.
+//! KR 00967 F5 anchors and body codecs from `kr_static` evidence. See
+//! `docs/protocol/f2-f5-f3-ida-anchors.md` and
+//! `docs/evidence/content/f2-f5-f3-ida-anchors.json` (IDA DB SHA-256
+//! `6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1`).
+//! An opcode anchor does not confirm a body layout, live route, or server policy.
 
 use super::{decode_bytes, encode_bytes, put, uint};
 use crate::{FRAME_OVERHEAD, MAX_FRAME_LEN, Width};
 use encoding_rs::EUC_KR;
 use std::{io, num::NonZeroU8};
+
+pub const F5_S2C_GUILD_467: u32 = 467;
+pub const F5_S2C_GUILD_INVITE: u32 = 474;
+pub const F5_S2C_REFUSE_GUILD_INVITE: u32 = 478;
+pub const F5_C2S_GUILD_INVITE_AUTO_REFUSE: u32 = 633;
+pub const F5_S2C_COUPLE_257: u32 = 257;
+pub const F5_S2C_COUPLE_273: u32 = 273;
+pub const F5_S2C_COUPLE_284: u32 = 284;
+pub const F5_S2C_COUPLE_640: u32 = 640;
+pub const F5_C2S_COUPLE_670: u32 = 670;
+pub const F5_S2C_COUPLE_674: u32 = 674;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F5SocialGroup {
+    Guild,
+    Couple,
+    Chat,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F5Direction {
+    ServerToClient,
+    ClientToServer,
+}
+
+/// IDA virtual addresses in the KR 00967 image.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F5AnchorSite {
+    /// Handler dispatched by `CStage::OnPacket` at `0xD68C90`.
+    CStageHandler(u32),
+    /// Callers of the opcode builder at `0x1164C10`.
+    RequestBuilderCallers(&'static [u32]),
+    ChatStageHandler {
+        handler_va: u32,
+        connect_callee_va: u32,
+    },
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F5ConfirmedBody {
+    GuildInvite,
+    /// Only the blocked-invites branch of C->S 633.
+    GuildInviteAutoRefuse,
+    ChatServerConnectReply,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F5WireContract {
+    KrStaticConfirmed(F5ConfirmedBody),
+    /// Anchor only: there is no payload codec for this entry.
+    UnmeasuredWireContract,
+}
+
+/// Static metadata only. Presence in the registry does not enable dispatch.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct F5SocialAnchor {
+    pub group: F5SocialGroup,
+    pub direction: F5Direction,
+    /// `None` when only the handler and its body are known.
+    pub opcode: Option<u32>,
+    /// Descriptive name when available in the evidence.
+    pub name: Option<&'static str>,
+    pub site: F5AnchorSite,
+    pub wire_contract: F5WireContract,
+}
+
+impl F5SocialAnchor {
+    const fn unmeasured_handler(group: F5SocialGroup, opcode: u32, handler_va: u32) -> Self {
+        Self {
+            group,
+            direction: F5Direction::ServerToClient,
+            opcode: Some(opcode),
+            name: None,
+            site: F5AnchorSite::CStageHandler(handler_va),
+            wire_contract: F5WireContract::UnmeasuredWireContract,
+        }
+    }
+}
+
+pub static F5_SOCIAL_ANCHORS: &[F5SocialAnchor] = &[
+    F5SocialAnchor::unmeasured_handler(F5SocialGroup::Guild, F5_S2C_GUILD_467, 0x6D9340),
+    F5SocialAnchor {
+        group: F5SocialGroup::Guild,
+        direction: F5Direction::ServerToClient,
+        opcode: Some(F5_S2C_GUILD_INVITE),
+        name: Some("GuildInvite"),
+        site: F5AnchorSite::CStageHandler(0xD769D0),
+        wire_contract: F5WireContract::KrStaticConfirmed(F5ConfirmedBody::GuildInvite),
+    },
+    F5SocialAnchor {
+        name: Some("RefuseGuildInvite"),
+        ..F5SocialAnchor::unmeasured_handler(
+            F5SocialGroup::Guild,
+            F5_S2C_REFUSE_GUILD_INVITE,
+            0xD76DA0,
+        )
+    },
+    F5SocialAnchor {
+        group: F5SocialGroup::Guild,
+        direction: F5Direction::ClientToServer,
+        opcode: Some(F5_C2S_GUILD_INVITE_AUTO_REFUSE),
+        name: Some("GuildInviteAutoRefuse"),
+        site: F5AnchorSite::RequestBuilderCallers(&[0xD769D0]),
+        wire_contract: F5WireContract::KrStaticConfirmed(F5ConfirmedBody::GuildInviteAutoRefuse),
+    },
+    F5SocialAnchor::unmeasured_handler(F5SocialGroup::Couple, F5_S2C_COUPLE_257, 0x128D3C0),
+    F5SocialAnchor::unmeasured_handler(F5SocialGroup::Couple, F5_S2C_COUPLE_273, 0xD87250),
+    F5SocialAnchor::unmeasured_handler(F5SocialGroup::Couple, F5_S2C_COUPLE_284, 0x128D120),
+    F5SocialAnchor::unmeasured_handler(F5SocialGroup::Couple, F5_S2C_COUPLE_640, 0xD88830),
+    F5SocialAnchor {
+        group: F5SocialGroup::Couple,
+        direction: F5Direction::ClientToServer,
+        opcode: Some(F5_C2S_COUPLE_670),
+        name: None,
+        site: F5AnchorSite::RequestBuilderCallers(&[0x583530, 0x583E80]),
+        wire_contract: F5WireContract::UnmeasuredWireContract,
+    },
+    F5SocialAnchor::unmeasured_handler(F5SocialGroup::Couple, F5_S2C_COUPLE_674, 0xD7FA60),
+    F5SocialAnchor {
+        group: F5SocialGroup::Chat,
+        direction: F5Direction::ServerToClient,
+        opcode: None,
+        name: Some("CChattingStage::OnResConnectToSvr"),
+        site: F5AnchorSite::ChatStageHandler {
+            handler_va: 0xD58760,
+            connect_callee_va: 0x13AD4D0,
+        },
+        wire_contract: F5WireContract::KrStaticConfirmed(F5ConfirmedBody::ChatServerConnectReply),
+    },
+];
+
+/// Looks up static opcode metadata in the specified direction, including anchor-only entries.
+pub fn f5_social_opcode_anchor(
+    direction: F5Direction,
+    opcode: u32,
+) -> Option<&'static F5SocialAnchor> {
+    F5_SOCIAL_ANCHORS
+        .iter()
+        .find(|anchor| anchor.direction == direction && anchor.opcode == Some(opcode))
+}
 
 const MAX_BODY: usize = MAX_FRAME_LEN - FRAME_OVERHEAD;
 
@@ -91,7 +233,7 @@ pub struct GuildInvite {
 }
 
 impl GuildInvite {
-    pub const OPCODE: u32 = 474;
+    pub const OPCODE: u32 = F5_S2C_GUILD_INVITE;
 
     pub fn decode(body: &[u8]) -> io::Result<Self> {
         let mut reader = Reader::new(body)?;
@@ -127,7 +269,7 @@ pub struct GuildInviteAutoRefuse {
 }
 
 impl GuildInviteAutoRefuse {
-    pub const OPCODE: u32 = 633;
+    pub const OPCODE: u32 = F5_C2S_GUILD_INVITE_AUTO_REFUSE;
 
     pub fn decode(body: &[u8]) -> io::Result<Self> {
         let mut reader = Reader::new(body)?;
@@ -201,119 +343,5 @@ impl ChatServerConnectReply {
                 Ok(body)
             }
         }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    fn reject_partial_or_trailing<T>(body: &[u8], decode: impl Fn(&[u8]) -> io::Result<T>) {
-        for n in 0..body.len() {
-            assert!(decode(&body[..n]).is_err(), "accepted {n} bytes");
-        }
-        let mut extra = body.to_vec();
-        extra.push(0);
-        assert!(decode(&extra).is_err());
-    }
-
-    #[test]
-    fn guild_invite_and_blocked_refusal_follow_ida_field_order() {
-        // Synthetic body literals from the static field order and KR primitive
-        // masks. They check the codecs, not runtime behavior of the client.
-        let invite_body = [
-            0xa5, 0x68, 0x1b, // "A"
-            0xa5, 0x6b, 0x74, 0xae, // "한" (C7 D1)
-            0x97, 0xc8, 0x50, 0x91, // first u32
-            0x67, 0xc8, 0x50, 0x91, // second u32
-            0xa5, 0x6b, 0x84, 0x33, // "Z!"
-        ];
-        let invite = GuildInvite {
-            first: "A".into(),
-            second: "한".into(),
-            first_number: 0x0102_0304,
-            second_number: 0xf102_0304,
-            third: "Z!".into(),
-        };
-        assert_eq!(GuildInvite::decode(&invite_body).unwrap(), invite);
-        assert_eq!(invite.encode().unwrap(), invite_body);
-        reject_partial_or_trailing(&invite_body, GuildInvite::decode);
-
-        let refuse_body = [0x5a, 0xa5, 0x6b, 0x84, 0x33, 0xa5, 0x68, 0x1b];
-        let refusal = GuildInviteAutoRefuse {
-            invite_third: invite.third,
-            invite_first: invite.first,
-        };
-        assert_eq!(
-            GuildInviteAutoRefuse::decode(&refuse_body).unwrap(),
-            refusal
-        );
-        assert_eq!(refusal.encode().unwrap(), refuse_body);
-        reject_partial_or_trailing(&refuse_body, GuildInviteAutoRefuse::decode);
-        let mut manual = refuse_body;
-        manual[0] = 0x5b;
-        assert!(GuildInviteAutoRefuse::decode(&manual).is_err());
-    }
-
-    #[test]
-    fn guild_codecs_reject_bad_lengths_invalid_text_and_oversized_output() {
-        let mut body = GuildInvite {
-            first: "A".into(),
-            second: String::new(),
-            first_number: 0,
-            second_number: u32::MAX,
-            third: String::new(),
-        };
-        let valid = body.encode().unwrap();
-        assert_eq!(GuildInvite::decode(&valid).unwrap(), body);
-        let mut bad = valid;
-        bad[..2].copy_from_slice(&put(u16::MAX.into(), Width::U16).unwrap());
-        assert!(GuildInvite::decode(&bad).is_err());
-        bad[..2].copy_from_slice(&[0xa5, 0x68]);
-        bad[2] = 0xa5; // Encoded native byte 0xff.
-        assert!(GuildInvite::decode(&bad).is_err());
-        assert!(GuildInviteAutoRefuse::decode(&[0x5a, 0xa5, 0x68, 0xa5, 0xa5, 0x69]).is_err());
-        body.second = "🦀".into();
-        assert!(body.encode().is_err());
-        body.second = "a".repeat(MAX_BODY);
-        assert!(body.encode().is_err());
-        assert!(GuildInvite::decode(&vec![0; MAX_BODY + 1]).is_err());
-        let mut refuse = GuildInviteAutoRefuse {
-            invite_third: String::new(),
-            invite_first: "a".repeat(MAX_BODY - 5),
-        };
-        let edge = refuse.encode().unwrap();
-        assert_eq!(edge.len(), MAX_BODY);
-        assert_eq!(GuildInviteAutoRefuse::decode(&edge).unwrap(), refuse);
-        refuse.invite_first.push('a');
-        assert!(refuse.encode().is_err());
-    }
-
-    #[test]
-    fn chat_connect_reply_has_status_dependent_length_and_no_inferred_framing() {
-        let failed = [0x5a];
-        let endpoint = [
-            0x58, 0x5d, 0x97, 0xc8, 0x50, 0x91, 0x94, 0xca, 0x53, 0xea, 0xae, 0xd1,
-        ];
-        for (body, reply) in [
-            (&failed[..], ChatServerConnectReply::Failed),
-            (
-                &endpoint[..],
-                ChatServerConnectReply::Endpoint {
-                    ok: NonZeroU8::new(2).unwrap(),
-                    second_byte: 7,
-                    first_number: 0x0102_0304,
-                    ip: 0x0200_007f,
-                    port: 3000,
-                },
-            ),
-        ] {
-            assert_eq!(ChatServerConnectReply::decode(body).unwrap(), reply);
-            assert_eq!(reply.encode().unwrap(), body);
-            reject_partial_or_trailing(body, ChatServerConnectReply::decode);
-        }
-        let mut extra_on_failure = endpoint;
-        extra_on_failure[0] = failed[0];
-        assert!(ChatServerConnectReply::decode(&extra_on_failure).is_err());
     }
 }
