@@ -12,9 +12,9 @@ use crate::{
     room_registry::RoomId,
 };
 use kr_wire::kr00967::text949x;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::{
-    borrow::Cow,
+    borrow::{Borrow, Cow},
     collections::{BTreeMap, VecDeque},
     fs, io,
     num::{NonZeroU16, NonZeroU32},
@@ -254,6 +254,401 @@ fn valid_chat_text(message: &str) -> bool {
 pub struct F5NoteInbox {
     pub recipient_id: i64,
     pub messages: usize,
+    pub unread: usize,
+}
+
+impl F5NoteInbox {
+    /// Create an empty inbox. A missing cap keeps this local runtime disabled.
+    pub fn new<P: Borrow<F5SocialPolicy>>(policy: P, recipient_id: i64) -> F5Result<Self> {
+        let policy = policy.borrow();
+        if policy.note_inbox_cap.is_none() {
+            return Err(F5Error::Disabled);
+        }
+        if recipient_id <= 0 {
+            return Err(F5Error::Chat(Error::TargetUnavailable));
+        }
+        Ok(Self {
+            recipient_id,
+            messages: 0,
+            unread: 0,
+        })
+    }
+
+    /// Add one note after validating both identities and the bounded text.
+    pub fn enqueue(
+        &mut self,
+        policy: &F5SocialPolicy,
+        sender_id: i64,
+        message: F5Message<'_>,
+    ) -> F5Result<usize> {
+        let cap = policy.note_inbox_cap.ok_or(F5Error::Disabled)?;
+        if self.recipient_id <= 0 || sender_id <= 0 || sender_id == self.recipient_id {
+            return Err(F5Error::Chat(Error::TargetUnavailable));
+        }
+        if cap.get() > F5_MAX_INBOX_CAP || self.messages > usize::from(cap.get()) {
+            return Err(F5Error::InvalidPolicy);
+        }
+        let bytes = message.validate()?;
+        if self.messages >= usize::from(cap.get()) {
+            return Err(F5Error::InboxFull);
+        }
+        self.messages = self.messages.saturating_add(1);
+        self.unread = self.unread.saturating_add(1);
+        Ok(bytes)
+    }
+
+    pub fn push(
+        &mut self,
+        policy: &F5SocialPolicy,
+        sender_id: i64,
+        message: &str,
+    ) -> F5Result<usize> {
+        self.enqueue(policy, sender_id, F5Message::Utf8(message))
+    }
+
+    pub fn add_note(
+        &mut self,
+        policy: &F5SocialPolicy,
+        sender_id: i64,
+        message: &str,
+    ) -> F5Result<usize> {
+        self.push(policy, sender_id, message)
+    }
+
+    pub fn mark_read(&mut self, count: usize) -> F5Result<()> {
+        if count > self.unread {
+            return Err(F5Error::InvalidTransition);
+        }
+        self.unread -= count;
+        Ok(())
+    }
+
+    pub fn unread_count(&self) -> usize {
+        self.unread
+    }
+
+    pub fn len(&self) -> usize {
+        self.messages
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.messages == 0
+    }
+
+    pub fn mark_all_read(&mut self) {
+        self.unread = 0;
+    }
+
+    pub fn delete(&mut self, count: usize) -> F5Result<()> {
+        if count > self.messages {
+            return Err(F5Error::InvalidTransition);
+        }
+        self.messages -= count;
+        self.unread = self.unread.min(self.messages);
+        Ok(())
+    }
+
+    pub fn delete_all(&mut self) {
+        self.messages = 0;
+        self.unread = 0;
+    }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+struct F5CoupleState {
+    partner: i64,
+    ring: bool,
+}
+
+/// Bounded process-local couple state. It never stores names or other private data.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct F5CoupleRuntime {
+    enabled: bool,
+    pairs: BTreeMap<i64, F5CoupleState>,
+}
+
+impl F5CoupleRuntime {
+    pub fn new<P: Borrow<F5SocialPolicy>>(policy: P) -> Self {
+        let policy = policy.borrow();
+        Self {
+            enabled: policy.couple,
+            pairs: BTreeMap::new(),
+        }
+    }
+
+    fn gate(&self) -> F5Result<()> {
+        if self.enabled {
+            Ok(())
+        } else {
+            Err(F5Error::Disabled)
+        }
+    }
+
+    pub fn pair(&mut self, sender_id: i64, recipient_id: i64) -> F5Result<()> {
+        self.gate()?;
+        if sender_id <= 0 || recipient_id <= 0 || sender_id == recipient_id {
+            return Err(F5Error::Chat(Error::TargetUnavailable));
+        }
+        if self.pairs.contains_key(&sender_id) || self.pairs.contains_key(&recipient_id) {
+            return Err(F5Error::PartnerOccupied);
+        }
+        self.pairs.insert(
+            sender_id,
+            F5CoupleState {
+                partner: recipient_id,
+                ring: false,
+            },
+        );
+        self.pairs.insert(
+            recipient_id,
+            F5CoupleState {
+                partner: sender_id,
+                ring: false,
+            },
+        );
+        Ok(())
+    }
+
+    pub fn equip_ring(&mut self, player_id: i64) -> F5Result<()> {
+        self.gate()?;
+        let partner = self
+            .pairs
+            .get(&player_id)
+            .ok_or(F5Error::NotPaired)?
+            .partner;
+        if let Some(state) = self.pairs.get_mut(&player_id) {
+            state.ring = true;
+        }
+        if let Some(state) = self.pairs.get_mut(&partner) {
+            state.ring = true;
+        }
+        Ok(())
+    }
+
+    pub fn divorce(&mut self, player_id: i64) -> F5Result<()> {
+        self.gate()?;
+        let partner = self
+            .pairs
+            .get(&player_id)
+            .ok_or(F5Error::NotPaired)?
+            .partner;
+        self.pairs.remove(&player_id);
+        self.pairs.remove(&partner);
+        Ok(())
+    }
+
+    pub fn ring(&mut self, player_id: i64) -> F5Result<()> {
+        self.equip_ring(player_id)
+    }
+
+    pub fn unpair(&mut self, player_id: i64) -> F5Result<()> {
+        self.divorce(player_id)
+    }
+
+    pub fn partner(&self, player_id: i64) -> Option<i64> {
+        self.pairs.get(&player_id).map(|state| state.partner)
+    }
+
+    pub fn has_ring(&self, player_id: i64) -> bool {
+        self.pairs.get(&player_id).is_some_and(|state| state.ring)
+    }
+
+    pub fn is_paired(&self, player_id: i64) -> bool {
+        self.pairs.contains_key(&player_id)
+    }
+
+    pub fn couple_count(&self) -> usize {
+        self.pairs.len() / 2
+    }
+
+    pub fn active(&self) -> bool {
+        self.enabled && !self.pairs.is_empty()
+    }
+
+    pub fn active_couples(&self) -> usize {
+        self.couple_count()
+    }
+}
+
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+struct F5PlazaState {
+    occupants: BTreeMap<i64, ()>,
+    seats: BTreeMap<u16, i64>,
+}
+
+/// Bounded process-local plaza presence and cafe seating.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct F5PlazaRuntime {
+    zones: BTreeMap<F5PlazaZone, (F5PlazaLimits, F5PlazaState)>,
+}
+
+impl F5PlazaRuntime {
+    pub fn new<P: Borrow<F5SocialPolicy>>(policy: P) -> Self {
+        let policy = policy.borrow();
+        let zones = policy
+            .plaza_zones
+            .iter()
+            .filter(|(_, limits)| {
+                usize::from(limits.max_occupants.get()) <= CHAT_PLAYER_CAP
+                    && limits.seats <= F5_MAX_SEATS
+            })
+            .map(|(&zone, &limits)| (zone, (limits, F5PlazaState::default())))
+            .collect();
+        Self { zones }
+    }
+
+    fn zone_mut(&mut self, zone: F5PlazaZone) -> F5Result<&mut (F5PlazaLimits, F5PlazaState)> {
+        self.zones.get_mut(&zone).ok_or(F5Error::Disabled)
+    }
+
+    fn zone(&self, zone: F5PlazaZone) -> F5Result<&(F5PlazaLimits, F5PlazaState)> {
+        self.zones.get(&zone).ok_or(F5Error::Disabled)
+    }
+
+    pub fn enter(&mut self, zone: F5PlazaZone, player_id: i64) -> F5Result<()> {
+        if player_id <= 0 {
+            return Err(F5Error::Chat(Error::TargetUnavailable));
+        }
+        let (limits, state) = self.zone_mut(zone)?;
+        if state.occupants.contains_key(&player_id) {
+            return Err(F5Error::InvalidTransition);
+        }
+        if state.occupants.len() >= usize::from(limits.max_occupants.get()) {
+            return Err(F5Error::PlazaFull);
+        }
+        state.occupants.insert(player_id, ());
+        Ok(())
+    }
+
+    pub fn leave(&mut self, zone: F5PlazaZone, player_id: i64) -> F5Result<()> {
+        let (_, state) = self.zone_mut(zone)?;
+        if state.occupants.remove(&player_id).is_none() {
+            return Err(F5Error::NotInPlaza);
+        }
+        state.seats.retain(|_, occupant| *occupant != player_id);
+        Ok(())
+    }
+
+    pub fn sit(&mut self, zone: F5PlazaZone, player_id: i64, seat: u16) -> F5Result<()> {
+        let (limits, state) = self.zone_mut(zone)?;
+        if !state.occupants.contains_key(&player_id) {
+            return Err(F5Error::NotInPlaza);
+        }
+        if seat >= limits.seats {
+            return Err(F5Error::InvalidSeat);
+        }
+        if state.seats.values().any(|occupant| *occupant == player_id) {
+            return Err(F5Error::InvalidTransition);
+        }
+        if state.seats.contains_key(&seat) {
+            return Err(F5Error::SeatUnavailable);
+        }
+        state.seats.insert(seat, player_id);
+        Ok(())
+    }
+
+    pub fn stand(&mut self, zone: F5PlazaZone, player_id: i64) -> F5Result<()> {
+        let (_, state) = self.zone_mut(zone)?;
+        state.seats.retain(|_, occupant| *occupant != player_id);
+        Ok(())
+    }
+
+    pub fn occupants(&self, zone: F5PlazaZone) -> F5Result<usize> {
+        Ok(self.zone(zone)?.1.occupants.len())
+    }
+
+    pub fn join(&mut self, zone: F5PlazaZone, player_id: i64) -> F5Result<()> {
+        self.enter(zone, player_id)
+    }
+
+    pub fn exit(&mut self, zone: F5PlazaZone, player_id: i64) -> F5Result<()> {
+        self.leave(zone, player_id)
+    }
+
+    pub fn occupant_count(&self, zone: F5PlazaZone) -> F5Result<usize> {
+        self.occupants(zone)
+    }
+
+    pub fn seat(&mut self, zone: F5PlazaZone, player_id: i64, seat: u16) -> F5Result<()> {
+        self.sit(zone, player_id, seat)
+    }
+
+    pub fn unseat(&mut self, zone: F5PlazaZone, player_id: i64) -> F5Result<()> {
+        self.stand(zone, player_id)
+    }
+
+    pub fn seated(&self, zone: F5PlazaZone) -> F5Result<usize> {
+        Ok(self.zone(zone)?.1.seats.len())
+    }
+
+    pub fn active_zones(&self) -> usize {
+        self.zones
+            .values()
+            .filter(|(_, state)| !state.occupants.is_empty())
+            .count()
+    }
+
+    pub fn total_occupants(&self) -> usize {
+        self.zones
+            .values()
+            .map(|(_, state)| state.occupants.len())
+            .sum()
+    }
+
+    pub fn total_seated(&self) -> usize {
+        self.zones
+            .values()
+            .map(|(_, state)| state.seats.len())
+            .sum()
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+pub struct F5SocialRuntimeSnapshot {
+    pub note_inboxes: usize,
+    pub notes: usize,
+    pub unread_notes: usize,
+    pub couples: usize,
+    pub ringed_couples: usize,
+    pub plaza_occupants: usize,
+    pub plaza_seated: usize,
+    pub active_plaza_zones: usize,
+    pub notes_enabled: bool,
+    pub couple_enabled: bool,
+    pub plaza_enabled: bool,
+}
+
+impl F5SocialRuntimeSnapshot {
+    pub fn new(
+        policy: &F5SocialPolicy,
+        inboxes: &[F5NoteInbox],
+        couples: &F5CoupleRuntime,
+        plaza: &F5PlazaRuntime,
+    ) -> Self {
+        let ringed_couples = couples.pairs.values().filter(|state| state.ring).count() / 2;
+        Self {
+            note_inboxes: inboxes.len(),
+            notes: inboxes.iter().map(|inbox| inbox.messages).sum(),
+            unread_notes: inboxes.iter().map(|inbox| inbox.unread).sum(),
+            couples: couples.couple_count(),
+            ringed_couples,
+            plaza_occupants: plaza.total_occupants(),
+            plaza_seated: plaza.total_seated(),
+            active_plaza_zones: plaza.active_zones(),
+            notes_enabled: policy.note_inbox_cap.is_some(),
+            couple_enabled: policy.couple,
+            plaza_enabled: !plaza.zones.is_empty(),
+        }
+    }
+
+    pub fn from_parts(
+        policy: &F5SocialPolicy,
+        inboxes: &[F5NoteInbox],
+        couples: &F5CoupleRuntime,
+        plaza: &F5PlazaRuntime,
+    ) -> Self {
+        Self::new(policy, inboxes, couples, plaza)
+    }
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -328,6 +723,8 @@ pub enum F5SocialError {
     NotInPlaza,
     InvalidSeat,
     SeatUnavailable,
+    InvalidTransition,
+    NotPaired,
     UnmeasuredKrOpcode(u16),
     UnmeasuredRule(F5UnmeasuredRule),
     Chat(ChocoChatError),
@@ -1146,6 +1543,7 @@ mod tests {
                 F5NoteInbox {
                     recipient_id,
                     messages,
+                    unread: messages,
                 },
                 F5Message::Utf8(HELLO),
                 now_utc,
