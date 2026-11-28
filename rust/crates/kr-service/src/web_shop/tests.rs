@@ -138,6 +138,8 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("disband-guild"));
     assert!(page.contains("/api/social/blocks"));
     assert!(page.contains("/api/social/chat-status"));
+    assert!(page.contains("/api/v1/f4/security-kits-status"));
+    assert!(page.contains("/api/social/policy-status"));
     assert!(page.contains("/api/social/ranking?limit=10"));
     let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
         .await
@@ -424,6 +426,239 @@ async fn listen_f4(
 fn sqlite_version(db: &rusqlite::Connection) -> i64 {
     db.pragma_query_value(None, "data_version", |row| row.get(0))
         .unwrap()
+}
+
+#[tokio::test]
+async fn loopback_f4_security_kits_status_binds_unlock_to_primary_session() {
+    use crate::{
+        account_serving::F4ExtendedPolicyBundle,
+        account_worker::Worker,
+        f4_extended_policy::{ItemOrigin, OwnedItem, SecondPasswordAction, SecondPasswordOutcome},
+    };
+
+    const PATH: &str = "/api/v1/f4/security-kits-status";
+    let (_dir, db, player) = f4_player_fixture("security-kits-status");
+    let worker = Worker::open_with_economy(db, 4, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let primary = PrimarySession {
+        account: player.account_id.try_into().unwrap(),
+        session: 65,
+    };
+    assert!(
+        auth.issue_token_for_primary_session(
+            &player,
+            PrimarySession {
+                account: primary.account + 1,
+                ..primary
+            }
+        )
+        .is_err()
+    );
+    let token = auth
+        .issue_token_for_primary_session(&player, primary)
+        .unwrap();
+    let other_session = auth
+        .issue_token_for_primary_session(
+            &player,
+            PrimarySession {
+                session: 66,
+                ..primary
+            },
+        )
+        .unwrap();
+    let unbound = auth.issue_token(player.player_id).unwrap();
+
+    let (addr, task) = listen_f4(config(), &worker, &auth).await;
+    let (code, _, response) = send_http(addr, "GET", PATH, None, None).await;
+    assert_eq!((code, response), (401, json!({"error": "unauthorized"})));
+    let (code, head, response) = send_http(addr, "GET", PATH, Some(token.as_str()), None).await;
+    assert!(head.contains("Cache-Control: no-store"));
+    assert_eq!(
+        (code, response),
+        (
+            200,
+            json!({
+                "powerup_kits": {"enabled": false, "tracked_players": 0, "max_players": 1024},
+                "second_password": {"enabled": false, "tracked_players": 0, "max_players": 1024},
+                "max_unlocked_sessions_per_player": 8,
+                "second_password_unlocked": false,
+            })
+        )
+    );
+    task.abort();
+    let _ = task.await;
+
+    let bundle: F4ExtendedPolicyBundle = serde_json::from_value(json!({
+        "powerup_kits": {"enabled": true, "max_equipped_slots": 1, "kits": [
+            {"sku": "kit.test", "bonus": {"bombs": 1, "blast": 0, "speed": 0}}
+        ]},
+        "second_password": {"enabled": true, "max_failed_attempts": 5,
+            "failure_window_seconds": 900, "cooldown_seconds": 300},
+    }))
+    .unwrap();
+    let kits = Arc::new(F4SecurityKitsRuntime::with_capacity(&bundle, 7).unwrap());
+    kits.powerup_kits
+        .equip(
+            primary.account,
+            1,
+            0,
+            OwnedItem {
+                owner: primary.account,
+                sku: "kit.test",
+                quantity: 1,
+                expires_at: None,
+                origin: ItemOrigin::PersistentInventory,
+            },
+        )
+        .unwrap();
+    kits.second_password.setup(primary).unwrap();
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    let task = tokio::spawn(serve_loop(
+        listener,
+        WebShop::new(config()).with_f4_security_kits(kits.clone()),
+        worker.service(),
+        auth,
+        None,
+    ));
+    assert_eq!(
+        send_http(addr, "POST", PATH, Some(token.as_str()), None)
+            .await
+            .0,
+        405
+    );
+    assert_eq!(
+        send_http(
+            addr,
+            "GET",
+            &format!("{PATH}?session=65"),
+            Some(token.as_str()),
+            None
+        )
+        .await
+        .0,
+        400
+    );
+
+    let status = async |token: &WebShopToken| {
+        let (code, _, response) = send_http(addr, "GET", PATH, Some(token.as_str()), None).await;
+        assert_eq!(code, 200);
+        response
+    };
+    let mut expected = json!({
+        "powerup_kits": {"enabled": true, "tracked_players": 1, "max_players": 7},
+        "second_password": {"enabled": true, "tracked_players": 1, "max_players": 7},
+        "max_unlocked_sessions_per_player": 8,
+        "second_password_unlocked": false,
+    });
+    assert_eq!(status(&token).await, expected);
+    assert_eq!(
+        kits.second_password
+            .attempt(primary, 2, SecondPasswordAction::Unlock, true)
+            .unwrap(),
+        SecondPasswordOutcome::Unlocked
+    );
+    for locked in [&other_session, &unbound] {
+        assert_eq!(status(locked).await, expected);
+    }
+    expected["second_password_unlocked"] = json!(true);
+    assert_eq!(status(&token).await, expected);
+    kits.second_password.revoke_session(primary).unwrap();
+    expected["second_password_unlocked"] = json!(false);
+    assert_eq!(status(&token).await, expected);
+
+    task.abort();
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn loopback_social_policy_status_reports_policy_and_actor_eligibility() {
+    use crate::{account_worker::Worker, accounts::ChatMuteReason};
+
+    const PATH: &str = "/api/social/policy-status";
+    let (_dir, db, player) = f4_player_fixture("social-policy-status");
+    let observer = rusqlite::Connection::open(&db).unwrap();
+    let worker = Worker::open_with_economy(db, 4, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let service = worker.service();
+    let auth = WebShopAuth::new(60).unwrap();
+    let token = auth.issue_token(player.player_id).unwrap();
+    let revoked = auth.issue_token(player.player_id).unwrap();
+    auth.revoke_token(&revoked);
+    let (addr, task) = listen_f4(config(), &worker, &auth).await;
+
+    for invalid in [None, Some(revoked.as_str())] {
+        let (code, _, response) = send_http(addr, "GET", PATH, invalid, None).await;
+        assert_eq!((code, response), (401, json!({"error": "unauthorized"})));
+    }
+    let token = Some(token.as_str());
+    assert_eq!(send_http(addr, "POST", PATH, token, None).await.0, 405);
+    assert_eq!(
+        send_http(addr, "GET", &format!("{PATH}?player_id=1"), token, None)
+            .await
+            .0,
+        400
+    );
+
+    let disabled_channels = json!({"whisper": false, "guild_chat": false,
+        "megaphone_global": false, "megaphone_channel": false});
+    let status = || async {
+        let (code, head, response) = send_http(addr, "GET", PATH, token, None).await;
+        assert_eq!(code, 200);
+        assert!(head.contains("Cache-Control: no-store"));
+        response
+    };
+    let before = sqlite_version(&observer);
+    assert_eq!(
+        status().await,
+        json!({
+            "enabled": {"whisper": false, "guild_chat": false, "megaphone": false,
+                "offline_note": false, "couple": false, "plaza": false},
+            "channel_eligibility": disabled_channels,
+        })
+    );
+    service
+        .client
+        .set_f5_social_policy(
+            serde_json::from_value(json!({
+                "whisper": true,
+                "guild_chat": true,
+                "megaphone": {"global": false, "channel": true, "cooldown_seconds": 1,
+                    "window_seconds": 5, "quota": 2},
+                "note_inbox_cap": 10,
+                "plaza_zones": {"lobby_square": {"max_occupants": 4, "seats": 0}},
+            }))
+            .unwrap(),
+        )
+        .unwrap();
+    let mut expected = json!({
+        "enabled": {"whisper": true, "guild_chat": true, "megaphone": true,
+            "offline_note": true, "couple": false, "plaza": true},
+        "channel_eligibility": {"whisper": true, "guild_chat": true,
+            "megaphone_global": false, "megaphone_channel": true},
+    });
+    assert_eq!(status().await, expected);
+    assert_eq!(sqlite_version(&observer), before);
+
+    service
+        .client
+        .try_mute_social_player(player.player_id, 60, ChatMuteReason::Moderation)
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
+    let muted_version = sqlite_version(&observer);
+    expected["channel_eligibility"] = disabled_channels;
+    assert_eq!(status().await, expected);
+    assert_eq!(sqlite_version(&observer), muted_version);
+
+    worker.shutdown().await.unwrap();
+    let (code, _, response) = send_http(addr, "GET", PATH, token, None).await;
+    assert_eq!((code, response), (503, json!({"error": "request_failed"})));
+    task.abort();
 }
 
 #[tokio::test]

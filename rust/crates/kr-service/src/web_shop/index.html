@@ -4,6 +4,7 @@
 <label>Bearer token <input id="token" type="password" size="48" autocomplete="off"></label><button onclick="load()">Load</button>
 <p id="balance"></p>
 <h2>F4 Extended</h2><p id="f4-extended-status" class="muted" role="status"></p><ul id="f4-extended-policies"></ul>
+<h3>Security &amp; Kits</h3><p id="f4-security-kits-status" class="muted" role="status"></p>
 <h2>Events</h2><p id="events-status" class="muted" role="status"></p><ul id="events-list"></ul>
 <h2>Equipped</h2><p id="selection-note" class="muted" hidden>These selections are for this shop session.</p><ul id="equipped"></ul>
 <h3>Cosmetics Projection Status</h3><p id="cosmetics-status" class="muted" role="status"></p><ul id="cosmetics-slots"></ul>
@@ -11,8 +12,9 @@
 <h2>Inventory</h2><ul id="inventory"></ul>
 <h2>Catalog</h2>
 <label>Category <select id="category" onchange="loadCatalog()"><option value="">All</option><option>character</option><option>decoration</option><option>emotion</option><option>consumable</option><option>collection</option></select></label><ul id="items"></ul><pre id="message"></pre>
-<h2>Social</h2><p><button onclick="loadChatStatus().then(()=>loadSocial())">Refresh social</button></p><p id="social-status" class="muted" role="status"></p>
+<h2>Social</h2><p><button onclick="Promise.all([loadChatStatus(),loadSocialPolicyStatus()]).then(()=>loadSocial())">Refresh social</button></p><p id="social-status" class="muted" role="status"></p>
 <h3>Chat Status</h3><p id="chat-status" class="muted" role="status"></p>
+<h3>Social Policy</h3><p id="social-policy-status" class="muted" role="status"></p>
 <h3>Guild</h3><p><input id="guild-name" maxlength="24" placeholder="Guild name" autocomplete="off"><button id="create-guild">Create Guild</button><button id="leave-guild">Leave Guild</button><button id="disband-guild">Disband Guild</button></p>
 <p id="guild"></p>
 <form id="add-guild-member" hidden><label>Player ID <input id="guild-target" inputmode="numeric" pattern="[0-9]+" maxlength="16" required autocomplete="off"></label><button>Add member</button></form>
@@ -23,6 +25,7 @@ if(location.hash.startsWith('#token=')){q('#token').value=decodeURIComponent(loc
 async function api(path,opt={}){const t=q('#token').value.trim(); opt.headers={...(opt.headers||{}),Authorization:'Bearer '+t}; if(opt.body)opt.headers['Content-Type']='application/json'; const r=await fetch(path,opt); const j=await r.json().catch(()=>({})); if(!r.ok)throw Error(j.error||r.status); return j}
 let summaryLoad=0;
 let chatStatusLoad=0;
+let socialPolicyLoad=0;
 async function load(){
   const load=++summaryLoad;
   clearSummaries();
@@ -32,14 +35,17 @@ async function load(){
     if(load!==summaryLoad)return;
     q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
     await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus(),loadEventsStatus(load)]);
-    if(load===summaryLoad)await Promise.all([loadCustomMaps(load),loadF4ExtendedStatus(load)]);
+    if(load===summaryLoad)await Promise.all([loadCustomMaps(load),loadF4ExtendedStatus(load),loadF4SecurityKitsStatus(load),loadSocialPolicyStatus()]);
   }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
 }
 function clearSummaries(){
   chatStatusLoad++;
+  socialPolicyLoad++;
   q('#chat-status').textContent='';
+  q('#social-policy-status').textContent='';
   q('#f4-extended-status').textContent='';
   q('#f4-extended-policies').replaceChildren();
+  q('#f4-security-kits-status').textContent='';
   q('#events-status').textContent='';
   q('#events-list').replaceChildren();
   q('#cosmetics-status').textContent='';
@@ -69,6 +75,17 @@ async function loadF4ExtendedStatus(load){
     }
   }catch(e){if(load===summaryLoad)status.textContent='F4 Extended status unavailable'}
 }
+async function loadF4SecurityKitsStatus(load){
+  const status=q('#f4-security-kits-status');
+  try{
+    const {powerup_kits,second_password,second_password_unlocked}=await api('/api/v1/f4/security-kits-status');
+    if(load!==summaryLoad)return;
+    const usage=policy=>`${policy.tracked_players}/${policy.max_players} tracked players`;
+    const kits=powerup_kits.enabled?`Enabled (${usage(powerup_kits)})`:'Disabled';
+    const password=second_password.enabled?`${second_password_unlocked?'Unlocked for this session':'Not unlocked for this session'} (${usage(second_password)})`:'Disabled';
+    status.textContent=`Powerup kits: ${kits} · Second password: ${password}`;
+  }catch(e){if(load===summaryLoad)status.textContent='Security and kit status unavailable'}
+}
 async function loadEventsStatus(load){
   try{
     const d=await api('/api/v1/events-status');
@@ -96,6 +113,18 @@ async function loadChatStatus(){
     const routing=choco_chat.extended_live_routing?'enabled':'disabled';
     q('#chat-status').textContent=`${mute} · Extended CHOCO routing ${routing} (${choco_chat.wire_status} wire)`;
   }catch(e){if(load===chatStatusLoad)q('#chat-status').textContent='Chat status unavailable'}
+}
+async function loadSocialPolicyStatus(){
+  const load=++socialPolicyLoad;
+  const status=q('#social-policy-status');
+  try{
+    const {enabled,channel_eligibility}=await api('/api/social/policy-status');
+    if(load!==socialPolicyLoad)return;
+    const features={whisper:'Whisper',guild_chat:'Guild chat',megaphone:'Megaphone',offline_note:'Offline notes',couple:'Couple',plaza:'Plaza'};
+    const channels={whisper:'Whisper',guild_chat:'Guild chat',megaphone_global:'Global megaphone',megaphone_channel:'Channel megaphone'};
+    const names=(labels,flags)=>Object.keys(labels).filter(key=>flags[key]).map(key=>labels[key]).join(', ')||'None';
+    status.textContent=`Enabled: ${names(features,enabled)}. Pass sender policy and mute checks: ${names(channels,channel_eligibility)}.`;
+  }catch(e){if(load===socialPolicyLoad)status.textContent='Social policy status unavailable'}
 }
 async function loadCosmeticsSummary(load){
   try{
