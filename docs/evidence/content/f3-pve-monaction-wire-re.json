@@ -1,0 +1,334 @@
+{
+  "schema": "boom.f3.pve.monaction_wire_re.v1",
+  "source": "kr_static",
+  "status": "confirmed",
+  "build": "KR 00967",
+  "idb_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+  "scope": "IDA static RE of CGameStage::OnPacket jump table, MonAction ownership delegation, and client writers for C->S 132/180",
+  "source_documents": [
+    "docs/protocol/f2-f5-f3-ida-anchors.md",
+    "docs/content/client-data-tables.md#monaction-runtime",
+    "docs/evidence/checkpoints/records/CP405.json"
+  ],
+  "dispatch": {
+    "on_packet_va": "0xE5D3A0",
+    "jump_table_va": "0xE5DE9C",
+    "index_formula": "opcode - 20",
+    "assembly": {
+      "read": "movzx ecx, ds:byte_E5DE9C[eax]",
+      "jump": "jmp ds:jpt_E5D409[ecx*4]",
+      "range": "index 0..254; default otherwise"
+    },
+    "handlers": [
+      {
+        "case": 9,
+        "opcode": 29,
+        "va": "0xE6AA90",
+        "status": "confirmed",
+        "tag": "quest"
+      },
+      {
+        "case": 80,
+        "opcode": 100,
+        "va": "0xE6D730",
+        "status": "confirmed",
+        "tag": "script"
+      },
+      {
+        "case": 135,
+        "opcode": 155,
+        "va": "0xE67640",
+        "status": "confirmed",
+        "reads": [
+          "u8 via a2 vtable +60",
+          "u8 via a2 vtable +56"
+        ],
+        "writes": [
+          "IEatObject/IAbilityObject vtable +36"
+        ],
+        "tag": "object effect"
+      },
+      {
+        "case": 136,
+        "opcode": 156,
+        "va": "0xE67770",
+        "status": "confirmed",
+        "reads": [
+          "u8 via a2 vtable +60",
+          "u8 via a2 vtable +56"
+        ],
+        "writes": [
+          "IEatObject/IAbilityObject vtable +52"
+        ],
+        "tag": "object effect"
+      },
+      {
+        "case": 177,
+        "opcode": 197,
+        "va": "0xE751F0",
+        "status": "confirmed",
+        "reads": [
+          "u32 via a2 vtable +68",
+          "u8 via a2 vtable +60",
+          "u32 via a2 vtable +68",
+          "u32 via a2 vtable +68",
+          "u8 via a2 vtable +60"
+        ],
+        "writes": [
+          "this[6453] = first u32 * 1000",
+          "this[6454] = second u32 * 1000",
+          "this[6455] = 0"
+        ],
+        "tag": "timed stage event"
+      }
+    ],
+    "pve_cluster": [
+      {
+        "case": 155,
+        "opcode": 175,
+        "va": "0xE5F610"
+      },
+      {
+        "case": 156,
+        "opcode": 176,
+        "va": "0xE77D20"
+      },
+      {
+        "case": 157,
+        "opcode": 177,
+        "va": "0xE6DD60"
+      },
+      {
+        "case": 158,
+        "opcode": 178,
+        "va": "0xE77DD0"
+      },
+      {
+        "case": 160,
+        "opcode": 180,
+        "va": "0xE72490/vtable +728"
+      },
+      {
+        "case": 161,
+        "opcode": 181,
+        "va": "0xE652F0"
+      },
+      {
+        "case": 163,
+        "opcode": 183,
+        "va": "0xE65350"
+      },
+      {
+        "case": 164,
+        "opcode": 184,
+        "va": "0xE654F0"
+      },
+      {
+        "case": 165,
+        "opcode": 185,
+        "va": "0xE67470"
+      },
+      {
+        "case": 171,
+        "opcode": 191,
+        "va": "0xE64070"
+      },
+      {
+        "case": 176,
+        "opcode": 196,
+        "va": "0xE73760"
+      },
+      {
+        "case": 177,
+        "opcode": 197,
+        "va": "0xE751F0"
+      },
+      {
+        "case": 178,
+        "opcode": 198,
+        "va": "0xE74410"
+      },
+      {
+        "case": 179,
+        "opcode": 199,
+        "va": "0xE72EC0"
+      },
+      {
+        "case": 180,
+        "opcode": 200,
+        "va": "0xE683C0"
+      },
+      {
+        "case": 181,
+        "opcode": 201,
+        "va": "0xE678A0"
+      }
+    ]
+  },
+  "monaction": {
+    "owner_gate_va": "0xB91F60",
+    "owner_gate_reads": [
+      "object vtable +24",
+      "sub_11656A0(this - 184)"
+    ],
+    "owner_gate_branch": "sub_1017890(a2) only when vtable +24 != 0 and sub_11656A0 == 0",
+    "stageclear_registration": [
+      "0x73C790",
+      "0x115D440",
+      "0x115DD30",
+      "owner=-1"
+    ],
+    "delegation": {
+      "dispatcher_va": "0x115CB10",
+      "opcode": 204,
+      "handler_va": "0x115D2E0",
+      "reads": [
+        "u16 object_id via packet vtable +64",
+        "u8 slot via packet vtable +60"
+      ],
+      "confirmed_effect": [
+        "loop slots and compare sub_1240B00(i) to slot",
+        "local path calls sub_11656C0(0), sub_1165780(0), sub_11652B0(sequence+300)",
+        "unmatched path calls sub_11656C0(1)"
+      ],
+      "log": "Delegate ObjId[%d] to Local SlotIdx %d"
+    }
+  },
+  "writers": {
+    "opcode_132": [
+      {
+        "va": "0xF53320",
+        "reads": [
+          "CScriptObject -> CGONpcObject RTTI",
+          "sub_1165180(object_id)",
+          "random action entry"
+        ],
+        "writes": [
+          "sub_1164C10(132)",
+          "u32 owner/session",
+          "u16 object_id",
+          "u16 kind=0",
+          "object/target id via sub_14EC5E0"
+        ]
+      },
+      {
+        "va": "0xF50DD0",
+        "reads": [
+          "CScriptObject state fields",
+          "u8/u16 action parameters"
+        ],
+        "writes": [
+          "sub_1164C10(132)",
+          "kind values 1,9..19,21,22 and associated u8/u16/object fields"
+        ]
+      }
+    ],
+    "opcode_180": [
+      {
+        "va": "0x629940",
+        "reads": [
+          "sub_1165180(object_id)",
+          "u16 fields at this+44..64",
+          "u8 fields at this+68..76"
+        ],
+        "writes": [
+          "sub_1164C10(180)",
+          "kind 0/4/3/5/6/8",
+          "u16 pairs for kinds 4/3/5",
+          "selector 14/15/16 plus u8 for kind 6"
+        ]
+      },
+      {
+        "va": "0x6292A0",
+        "reads": [
+          "object_id",
+          "target object"
+        ],
+        "writes": [
+          "sub_1164C10(180)",
+          "kind 9",
+          "target object via sub_14EC5E0"
+        ]
+      },
+      {
+        "va": "0x627DE0",
+        "reads": [
+          "object_id",
+          "this+9 object",
+          "this+15/16 fields"
+        ],
+        "writes": [
+          "sub_1164C10(180)",
+          "kind 10",
+          "object and two fields"
+        ]
+      }
+    ],
+    "packet_finish": "writers use sub_1164D50(buffer) then sub_1164C80(buffer)"
+  },
+  "authority_and_limits": [
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "claim": "Client executes MonAction steps only for locally owned object path guarded at 0xB91F60."
+    },
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "claim": "Opcode 204 delegates object ownership using u16 object ID and u8 slot."
+    },
+    {
+      "source": "kr_static",
+      "status": "confirmed",
+      "claim": "Client writers emit 132 and 180 with object/kind and step fields."
+    },
+    {
+      "source": "kr_static",
+      "status": "candidate",
+      "claim": "Original server owner-slot selection algorithm."
+    },
+    {
+      "source": "kr_static",
+      "status": "candidate",
+      "claim": "Relay direction, recipient set, and full body framing for 204/132/180."
+    },
+    {
+      "source": "kr_static",
+      "status": "candidate",
+      "claim": "Gameplay meaning of individual MonAction kind values and timed-event fields."
+    }
+  ],
+  "runtime": {
+    "wine_capture": "pending",
+    "required_probe": "Two-client F3 Wine capture with raw frames, object IDs, slots, sender/receiver roles, and relay order.",
+    "not_run": true
+  },
+  "verification": [
+    {
+      "check": "IDB copy SHA-256",
+      "result": "pass",
+      "value": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"
+    },
+    {
+      "check": "Hex-Rays decompile and assembly cross-check",
+      "result": "pass",
+      "addresses": [
+        "0xE5D3A0",
+        "0xE5DE9C",
+        "0xB91F60",
+        "0x115CB10",
+        "0x115D2E0",
+        "0xF53320",
+        "0xF50DD0",
+        "0x629940",
+        "0x6292A0",
+        "0x627DE0"
+      ]
+    },
+    {
+      "check": "Live Wine capture",
+      "result": "not_run",
+      "reason": "pending two-client owner/relay measurement"
+    }
+  ]
+}
