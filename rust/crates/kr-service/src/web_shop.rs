@@ -29,6 +29,13 @@ use kr_wire::kr00967::cosmetics::{
     CosmeticTarget, F4_SHOP_ANCHORS, F4AnchorSite, INVENTORY_CAPTURE_GAP, INVENTORY_LAYOUT_STATUS,
     ProjectionStatus, ProjectionSurface, UNMEASURED_WIRE_GAP, validate_mutual_exclusion,
 };
+use kr_wire::kr00967::custom_map::{
+    CUSTOM_MAP_PACKET_ANCHORS, CUSTOM_MAP_TYPE_666_ANCHORS, CustomMapWireStatus,
+};
+use kr_wire::kr00967::f6_events::{F6_EVENT_ANCHORS, F6EventWireStatus, F6StageKind};
+use kr_wire::kr00967::{
+    F5_SOCIAL_ANCHORS, F5AnchorSite, F5Direction, F5SocialGroup, F5WireContract,
+};
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
@@ -1574,6 +1581,134 @@ fn f4_anchors_status() -> Response {
     }))
 }
 
+fn f6_events_anchors_status() -> Response {
+    // This registry has no event system mapping and does not include PCRoomBenefit.
+    let static_candidate_count = F6_EVENT_ANCHORS
+        .iter()
+        .filter(|anchor| anchor.status == F6EventWireStatus::StaticCandidatePendingCapture)
+        .count();
+    let anchors: Vec<_> = F6_EVENT_ANCHORS
+        .iter()
+        .map(|anchor| {
+            json!({
+                "stage": match anchor.stage {
+                    F6StageKind::GameStage => "game_stage",
+                    F6StageKind::LobbyStage => "lobby_stage",
+                },
+                "opcode": anchor.opcode,
+                "handler_va": format!("0x{:X}", anchor.handler_va),
+                "dispatcher_va": format!("0x{:X}", anchor.stage.dispatcher_va()),
+                "jump_table_va": anchor.jump_table_va.map(|va| format!("0x{va:X}")),
+                "status": match anchor.status {
+                    F6EventWireStatus::StaticCandidatePendingCapture => "static_candidate_pending_capture",
+                    F6EventWireStatus::UnmeasuredPendingCapture => "unmeasured_pending_capture",
+                },
+                "note": anchor.note,
+            })
+        })
+        .collect();
+    Response::json(&json!({
+        "total": anchors.len(),
+        "static_candidate_count": static_candidate_count,
+        "anchors": anchors,
+    }))
+}
+
+fn custom_map_wire_status(status: CustomMapWireStatus) -> &'static str {
+    match status {
+        CustomMapWireStatus::Unmeasured => CUSTOM_MAP_WIRE_CONTRACT,
+    }
+}
+
+fn f7_wire_anchors_status() -> Response {
+    let family = CUSTOM_MAP_TYPE_666_ANCHORS;
+    let packet_anchors: Vec<_> = CUSTOM_MAP_PACKET_ANCHORS
+        .iter()
+        .map(|anchor| {
+            json!({
+                "name": anchor.name,
+                "reader_va": format!("0x{:X}", anchor.reader_va),
+                "writer_va": format!("0x{:X}", anchor.writer_va),
+                "status": custom_map_wire_status(anchor.status),
+            })
+        })
+        .collect();
+    Response::json(&json!({
+        "type_666": {
+            "packet_type": family.packet_type,
+            "subtype_range": family.subtype_range,
+            "dispatcher_va": format!("0x{:X}", family.dispatcher_va),
+            "upload_ctor_va": format!("0x{:X}", family.upload_ctor_va),
+            "upload_handler_va": format!("0x{:X}", family.upload_handler_va),
+            "usermap_rtti_va": format!("0x{:X}", family.usermap_rtti_va),
+            "usermap_vtable_va": format!("0x{:X}", family.usermap_vtable_va),
+            "room_meta_opcode": family.room_meta_opcode,
+            "room_meta_reader_va": format!("0x{:X}", family.room_meta_reader_va),
+            "status": custom_map_wire_status(family.status),
+        },
+        "packet_anchors": packet_anchors,
+    }))
+}
+
+fn choco_anchors_status() -> Response {
+    let anchors: Vec<_> = F5_SOCIAL_ANCHORS
+        .iter()
+        .filter_map(|anchor| {
+            let group = match anchor.group {
+                F5SocialGroup::ChocoChat => "choco_chat",
+                F5SocialGroup::Note => "note",
+                F5SocialGroup::Plaza => "plaza",
+                F5SocialGroup::Guild | F5SocialGroup::Couple | F5SocialGroup::Chat => return None,
+            };
+            let site = match anchor.site {
+                F5AnchorSite::ChatStageHandler {
+                    handler_va,
+                    connect_callee_va,
+                } => json!({
+                    "kind": "chat_stage_handler",
+                    "handler_va": format!("0x{handler_va:X}"),
+                    "connect_callee_va": format!("0x{connect_callee_va:X}"),
+                }),
+                F5AnchorSite::PacketRtti { namespace } => {
+                    json!({"kind": "packet_rtti", "namespace": namespace})
+                }
+                F5AnchorSite::CatalogSystem(system) => {
+                    json!({"kind": "catalog_system", "system": system})
+                }
+                F5AnchorSite::PlazaMapFamily(family) => json!({
+                    "kind": "plaza_map_family",
+                    "map_count": family.map_count,
+                    "script_count": family.script_count,
+                    "script_unknown": family.script_unknown,
+                }),
+                F5AnchorSite::CStageHandler(va) => {
+                    json!({"kind": "c_stage_handler", "va": format!("0x{va:X}")})
+                }
+                F5AnchorSite::RequestBuilderCallers(callers) => json!({
+                    "kind": "request_builder_callers",
+                    "caller_vas": callers.iter().map(|va| format!("0x{va:X}")).collect::<Vec<_>>(),
+                }),
+            };
+            Some(json!({
+                "group": group,
+                "name": anchor.name,
+                "opcode": anchor.opcode,
+                "direction": match anchor.direction {
+                    F5Direction::ServerToClient => "server_to_client",
+                    F5Direction::ClientToServer => "client_to_server",
+                    F5Direction::Unknown => "unknown",
+                },
+                "site": site,
+                "status": match anchor.wire_contract {
+                    F5WireContract::KrStaticConfirmed(_) => "kr_static_confirmed",
+                    F5WireContract::UnmeasuredWireContract => "unmeasured_wire_contract",
+                },
+            }))
+        })
+        .collect();
+    Response::json(&json!({"total": anchors.len(), "anchors": anchors}))
+}
+
 fn cosmetics_summary(source: &str, mut equipped: Vec<(String, String)>) -> Response {
     equipped.sort_unstable_by(|left, right| left.0.cmp(&right.0));
     let slots: Vec<_> = equipped.iter().map(|(slot, _)| slot.as_str()).collect();
@@ -1893,6 +2028,16 @@ async fn route(
         request.require_queryless_get()?;
         return Ok(f4_anchors_status());
     }
+    if path == "/api/v1/f6/events-anchors-status" {
+        auth.player(&digest).ok_or(Status::Unauthorized)?;
+        request.require_queryless_get()?;
+        return Ok(f6_events_anchors_status());
+    }
+    if path == "/api/v1/f7/wire-anchors-status" {
+        auth.player(&digest).ok_or(Status::Unauthorized)?;
+        request.require_queryless_get()?;
+        return Ok(f7_wire_anchors_status());
+    }
     if path == "/api/v1/f7/custom-maps-policy" {
         auth.player(&digest).ok_or(Status::Unauthorized)?;
         request.require_queryless_get()?;
@@ -2040,6 +2185,10 @@ async fn social_route(
     if request.path() == "/api/social/chat-status" {
         request.require_queryless_get()?;
         return chat_status(service, player).await;
+    }
+    if request.path() == "/api/social/choco-anchors-status" {
+        request.require_queryless_get()?;
+        return Ok(choco_anchors_status());
     }
     if request.query().is_some() && request.path() != "/api/social/ranking" {
         return Err(Status::BadRequest);
