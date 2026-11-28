@@ -78,5 +78,60 @@ class BulaTailTests(unittest.TestCase):
                 read(None, 'Bula00', 0, None, None)
 
 
+class BaseballKartTerrainTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        evidence = Path(__file__).resolve().parents[1] / 'docs/evidence/content/f2-baseball-kart-tiles-re.json'
+        cls.families = json.loads(evidence.read_bytes())['classification']
+
+    def project(self, key, data, role):
+        profile = dict(name='TileProbe', width=15, height=13, payload_sha256='', spawns=[],
+                       cell_fields=['tile', 'object', 'overlay'],
+                       cells=[[-1, -1, -1] for _ in range(195)])
+        profile['cells'][16][profile['cell_fields'].index(role)] = 0
+        return pack.f2_terrain_rules(profile, ([key], {key: data}))['terrain']
+
+    def test_verified_records_project_only_their_static_footprint(self):
+        for family in self.families.values():
+            for key, row in family['static_verified'].items():
+                data = tuple(row['tileinfo_i32'])
+                kind = data[0]
+                role = 'tile' if kind == 0 else 'object'
+                expected = [0] * 195
+                if kind == 1:
+                    for y in range(2 - data[7], 2):
+                        for x in range(1, 1 + data[6]):
+                            expected[y * 15 + x] = 1
+                elif kind == 2:
+                    expected[16] = 2
+                with self.subTest(key=key):
+                    result = self.project(key, data, role)
+                    self.assertEqual(result['kinds'], expected)
+                    self.assertNotIn('ray_ports', result)
+                    for changed, layer in ((data, 'overlay'), ((*data[:-1], data[-1] ^ 1), role)):
+                        with self.assertRaisesRegex(ValueError, 'Tile F2 chưa ánh xạ'):
+                            self.project(key, changed, layer)
+
+    def test_mode_tiles_stay_rejected_even_if_their_tuple_looks_static(self):
+        for family in self.families.values():
+            for key, row in family['fail_closed_dynamic_or_special_physics'].items():
+                data = tuple(row['tileinfo_i32'])
+                role = 'tile' if data[0] == 0 else 'object'
+                static = (family['static_verified']['Tile05_Ground/Road00']['tileinfo_i32']
+                          if key.startswith('Tile70_Ground/') else
+                          self.families['Kart']['static_verified'][
+                              'Tile12_Ground/Sand00' if role == 'tile' else 'Tile12_Static/Signal00'
+                          ]['tileinfo_i32'])
+                with self.subTest(key=key):
+                    for record in (data, tuple(static)):
+                        with self.assertRaisesRegex(ValueError, 'Tile F2 chưa ánh xạ'):
+                            self.project(key, record, role)
+
+    def test_baseball_and_kart_stay_outside_room_export(self):
+        for name in ('Baseball01', 'Kart02'):
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'tile chưa ánh xạ'):
+                pack.load_f2_maps([name])
+
+
 if __name__ == '__main__':
     unittest.main()

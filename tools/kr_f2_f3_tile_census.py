@@ -11,8 +11,9 @@ import struct
 
 from export_map_profile import FIELDS, decode_map, load_tile_table
 from kr_f1e_script_audit import map_tail_offset, parse_trailer
-from kr_pack_export import (BULA_MAPS, BULA_TAIL_EVIDENCE, F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, PACK_SHA256,
-                            Pack, f1_terrain_rules, validate_bula_tail, verified_packs)
+from kr_pack_export import (BASEBALL_KART_STATIC_TILES, BULA_MAPS, BULA_TAIL_EVIDENCE, F1_FIXED_ITEMS,
+                            F1_HIDDEN_ITEMS, PACK_SHA256, Pack, f1_terrain_rules, validate_bula_tail,
+                            verified_packs)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -172,6 +173,10 @@ class TileAudit:
         key = self.names[code]
         if key not in self.tiles:
             return key, "missing_tile_info"
+        if (expected := BASEBALL_KART_STATIC_TILES.get(key)) is not None:
+            role = "tile" if expected[0] == 0 else "object"
+            if field != role or self.tiles[key] != expected:
+                return key, "outside_baseball_kart_static_record"
         # Một lớp, một ô đặt tile, giữ nguyên kích thước để kiểm footprint.
         # Bỏ spawn và rectangle để tách luật của tile khỏi ràng buộc cả map.
         cell = [-1, -1, -1]
@@ -446,6 +451,8 @@ def render_markdown(body):
         "",
         "Mỗi mã ô được nối từ `ObjectTable/ObjectTable` sang `TileInfo/TileInfoList` trong pack `fx`, "
         "rồi kiểm riêng theo lớp nền, vật thể hoặc overlay bằng `f1_terrain_rules(f1e=True)`. "
+        "Các tile Baseball và Kart đã xác nhận tĩnh còn phải khớp tên, lớp và đủ 18 số "
+        "trong [bằng chứng KR 00967](../protocol/f2-baseball-kart-tiles-re.md). "
         "Công cụ cũng thử các lớp đã ánh xạ cùng nhau để phát hiện ràng buộc như footprint chồng nhau.",
         "Khóa đặt sẵn và drop có trọng số dương được đối chiếu riêng với danh sách khóa F1. "
         "Khóa vật phẩm không tính vào số tile; một khóa đặt sẵn hoặc drop trùng tên trong TileInfo được ghi thêm theo lớp tương ứng.",
@@ -456,9 +463,10 @@ def render_markdown(body):
             f"Đối chiếu KR 00967 xét đủ 18 số của {audit['distinct_keys']} khóa còn thiếu trong hai catalog. "
             f"Có {len(audit['mapped_exact_matches'])} khóa trùng tuple với khóa đã ánh xạ ở cùng lớp trên lưới 15x13. "
             "JSON giữ các tuple theo khóa và lớp cùng SHA-256 của tập này và của `TileInfo/TileInfoList`.",
-            "Nền Baseball có cờ lap; nền, ô tăng tốc và lốp của Kart có cờ hoặc marker riêng. "
+            "Bảy tile nền Baseball có cờ lap. Nền đường đua, ô tăng tốc và lốp của Kart có cờ hoặc marker riêng. "
+            "Hai họ vẫn chưa đủ địa hình; census không mở script Baseball hoặc luật đua Kart. "
             "`Temple08` khác `Temple11` ở cờ +40, còn `Tower00` có marker +36 bằng 999. "
-            "Các tile SnowBear và Tornado vẫn chờ xác nhận hành vi riêng. Không mở thêm tile trong lượt kiểm này.",
+            "Các tile SnowBear và Tornado vẫn chờ xác nhận hành vi riêng.",
         ]
     lines += [
         "",
@@ -467,7 +475,7 @@ def render_markdown(body):
         "Ví dụ, `MonS2Fire03` và `RPG11_N_02` đọc được với lưới lớn; `Tutorial01` đọc được với lưới 15x13. "
         "Những kết quả đó mô tả dữ liệu pack; các giới hạn phục vụ vẫn theo [probe Wine r1](f2-f3-wine-probe-r1.md).",
         "",
-        "Sinh lại từ pack gốc: `python3 tools/kr_f2_f3_tile_census.py --write` (có thể chỉ định `--game-dir`). "
+        "Sinh lại từ pack gốc: `python3 tools/kr_f2_f3_tile_census.py --generate` (có thể chỉ định `--game-dir`). "
         "Kiểm hash thân JSON, phạm vi hai catalog và định dạng cả hai đầu ra: "
         "`python3 tools/kr_f2_f3_tile_census.py --check`. Lệnh kiểm chỉ đọc tệp trong repo.",
     ]
@@ -486,7 +494,8 @@ def default_game_dir():
 def main(argv=None, *, root=ROOT):
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument("--write", action="store_true", help="quét pack KR 00967 và sinh hai đầu ra")
+    mode.add_argument("--write", "--generate", dest="write", action="store_true",
+                      help="quét pack KR 00967 và sinh hai đầu ra")
     mode.add_argument("--check", action="store_true", help="kiểm hai đầu ra mà không đọc pack")
     parser.add_argument("--game-dir", type=Path, help="thư mục pack, chỉ dùng với --write")
     args = parser.parse_args(argv)
