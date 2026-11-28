@@ -16,6 +16,11 @@ use kr_wire::kr00967::f3_pve::{
 };
 use serde::Serialize;
 
+use kr_wire::kr00967::f3_pve::{
+    F3JumpTableEntry, F3MonActionProvenance, MonActionStep132Candidate, MonActionStep180Candidate,
+    f3_stage_jump_entry,
+};
+
 pub const MAX_STAGES: u16 = 64;
 pub const MAX_WAVES: u16 = 64;
 pub const MAX_MONSTERS_PER_WAVE: usize = 128;
@@ -55,6 +60,70 @@ impl Limits {
             monsters_per_wave,
         })
     }
+}
+
+/// A recorded KR 00967 client receive entry and its static provenance.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct F3StageJumpInspection {
+    pub provenance: F3JumpTableProvenance,
+    pub entry: &'static F3JumpTableEntry,
+}
+
+/// Look up a wire opcode in the recorded subset of `0xE5DE9C`. An absent
+/// entry is unrecorded; an explicit fallback is returned as recorded. This
+/// client receive table does not describe the C→S MonAction report writers.
+pub fn inspect_f3_stage_jump(wire_opcode: u32) -> Option<F3StageJumpInspection> {
+    Some(F3StageJumpInspection {
+        provenance: F3JumpTableProvenance::C_GAME_STAGE,
+        entry: f3_stage_jump_entry(wire_opcode)?,
+    })
+}
+
+/// A decoded body for static inspection. It carries no room or owner authority.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum MonActionBodyCandidate {
+    Delegation204(MonActionDelegationCandidate),
+    StepReport132(MonActionStep132Candidate),
+    StepReport180(MonActionStep180Candidate),
+}
+
+impl MonActionBodyCandidate {
+    pub const fn provenance(&self) -> F3MonActionProvenance {
+        F3MonActionProvenance::CP405_STATIC
+    }
+}
+
+/// Check only the static Mode2 body candidates: S→C 204 and C→S 132/180.
+/// The caller supplies the wire opcode for the stated direction. The wire
+/// codecs bound the body reads; reports also require a nonzero object ID as
+/// a local runtime bound. Session, template and step authority are not inferred.
+/// Success leaves live dispatch pending a two-client PvE Wine capture of the
+/// owner slot and body layouts, and does not supply `DispatchEvidence`.
+pub fn validate_mon_action_body(
+    wire_opcode: u32,
+    body: &[u8],
+) -> Result<MonActionBodyCandidate, F3WireError> {
+    let (candidate, object_id) = match wire_opcode {
+        MonActionDelegationCandidate::OPCODE => {
+            return MonActionDelegationCandidate::decode(body)
+                .map(MonActionBodyCandidate::Delegation204);
+        }
+        MonActionStep132Candidate::OPCODE => {
+            let report = MonActionStep132Candidate::decode(body)?;
+            let object_id = report.object_id;
+            (MonActionBodyCandidate::StepReport132(report), object_id)
+        }
+        MonActionStep180Candidate::OPCODE => {
+            let report = MonActionStep180Candidate::decode(body)?;
+            let object_id = report.object_id;
+            (MonActionBodyCandidate::StepReport180(report), object_id)
+        }
+        _ => return Err(F3WireError::InvalidMonActionOpcode(wire_opcode)),
+    };
+    if object_id == 0 {
+        return Err(F3WireError::ZeroMonActionObjectId);
+    }
+    Ok(candidate)
 }
 
 /// An explicit, caller-owned assertion that the route was measured.  The
