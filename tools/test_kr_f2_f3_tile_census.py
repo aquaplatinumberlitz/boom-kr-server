@@ -142,16 +142,33 @@ class OfflineCheckTests(unittest.TestCase):
         self.assertEqual(code, 0, message)
         body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
         self.assertEqual([(s["maps"], s["families"]) for s in body["summary"].values()], [(122, 18), (699, 180)])
-        self.assertEqual([s["unmapped_tile_types"] for s in body["summary"].values()], [65, 74])
+        self.assertEqual([s["unmapped_tile_types"] for s in body["summary"].values()], [40, 49])
         self.assertEqual(len(body["maps"]), 699)
-        for name, key in {"Baseball01": "Tile70_Ground/Tile04", "Kart02": "Tile12_Ground/Race13"}.items():
-            self.assertIn(key, body["maps"][name]["unmapped_tiles"])
-            self.assertGreater(len(body["maps"][name]["unmapped_tiles"]), 1)
         self.assertEqual(body["maps"]["Gumiho01"]["unmapped_tiles"], {})
         for name in ("Coloring01", "SuperFighter16", "Hamster01", "Zombie01", "SnowyFields08"):
             self.assertEqual(body["maps"][name]["unmapped_tiles"], {})
         self.assertEqual(body["maps"]["Hdn_SuperFight"]["unmapped_tiles"],
                          {"Tile23_Static/Temple08": {"object": "outside_f1e_rule"}})
+
+    def test_baseball_static_tiles_are_mapped_but_mode_tiles_remain(self):
+        body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
+        baseball_ground = {f"Tile70_Ground/Tile{n:02}" for n in (1, 2, 4, 5, 6, 7, 8)}
+        kart_ground = {f"Tile12_Ground/LapTile{n:02}_{axis}" for n in range(1, 5) for axis in ("Horz", "Vert")}
+        kart_ground |= {f"Tile12_Ground/Start_{axis}{suffix}" for axis in ("Horz", "Vert") for suffix in ("", "1")}
+        kart_ground |= {f"Tile12_Ground/Race{n:02}" for n in range(14)}
+        kart_objects = {f"Tile12_Passable/GasRight{n:02}" for n in range(2)}
+        kart_objects |= {f"Tile12_Static/Tire{n:02}" for n in range(5)}
+        for scope, rows in body["families"].items():
+            for family, ground, objects in (("Baseball", baseball_ground, set()), ("Kart", kart_ground, kart_objects)):
+                with self.subTest(scope=scope, family=family):
+                    row = next(row for row in rows if row["family"] == family)
+                    self.assertEqual((row["priority"], row["terrain_constraints"]), ("many_tiles", []))
+                    self.assertEqual(set(row["unmapped_tiles"]), ground | objects)
+                    for name in row["maps"]:
+                        missing = body["maps"][name]["unmapped_tiles"]
+                        for key, roles in missing.items():
+                            role = "tile" if key in baseball_ground or key in kart_ground else "object"
+                            self.assertEqual(roles, {role: "outside_f1e_rule"})
 
     def test_small_delta_tiles_do_not_upgrade_custom_grids_or_bula_tail(self):
         body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())

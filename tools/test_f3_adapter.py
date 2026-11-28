@@ -12,7 +12,7 @@ from unittest.mock import Mock, patch
 import kr_pack_export as adapter
 from f1_pack_matrix import inventory
 from kr_f2_f3_tile_census import default_game_dir
-from tools.test_f2_adapter import EXPANDED_FAMILIES, payload
+from tools.test_f2_adapter import BASEBALL_WALL, BLOCKED_BASEBALL_KART, EXPANDED_FAMILIES, STATIC_GROUND, payload
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'docs/evidence/content'
@@ -42,6 +42,8 @@ class F3AdapterTests(unittest.TestCase):
                 (('NoSuchMap',), 'NoSuchMap'),
                 (('Factory07',), 'Factory07'),
                 (('Baseball01',), 'Baseball01'),
+                (('Baseball03',), 'Baseball03'),
+                (('Kart02',), 'Kart02'),
                 (('Hdn_SuperFight',), 'Hdn_SuperFight'),
                 (('MonSnowBear01',), 'MonSnowBear01'),
                 (('Fm_MonSnowBear01',), 'Fm_MonSnowBear01'),
@@ -170,6 +172,35 @@ class F3AdapterTests(unittest.TestCase):
         for code, key in enumerate(table[0][1:], start=1):
             with self.subTest(tile=key), self.assertRaisesRegex(ValueError, key):
                 project(code)
+
+    def test_baseball_and_kart_tiles_do_not_fall_back_to_generic_rules(self):
+        def project(role, key, data):
+            cell = (0, -1, -1) if role == 'tile' else (-1, 0, -1)
+            raw = payload(cells=dict.fromkeys(range(195), (-1, -1, -1)) | {6: cell})
+            evidence = dict(family='Baseball', payload_sha256=adapter.sha(raw), version=1001, scripted=False)
+            _, rules = adapter.read_f3_map(Mock(read=Mock(return_value=raw)), 'ModeProbe', 7,
+                                           evidence, ([key], {key: data}))
+            return rules['terrain']
+
+        key = 'Tile70_Static/Static28'
+        terrain = project('object', key, BASEBALL_WALL)
+        self.assertEqual([i for i, kind in enumerate(terrain['kinds']) if kind], [6, 7, 8, 9])
+        self.assertEqual(terrain['kinds'][6:10], [1] * 4)
+        for i, word in enumerate(BASEBALL_WALL):
+            changed = (*BASEBALL_WALL[:i], word ^ 1, *BASEBALL_WALL[i + 1:])
+            with self.subTest(word=i), self.assertRaisesRegex(ValueError, key):
+                project('object', key, changed)
+
+        for role, key, data in BLOCKED_BASEBALL_KART:
+            if role == 'tile':
+                generic = STATIC_GROUND
+            elif key.startswith('Tile12_Passable/'):
+                generic = (3, 0, 0, 0, 0, 0, *(0x01010101,) * 3, *(0,) * 9)
+            else:
+                generic = (1, 0, 0, 0, 0, 0, 1, 1, *(0,) * 10)
+            for record in (data, generic):
+                with self.subTest(tile=key, stock=record == data), self.assertRaisesRegex(ValueError, key):
+                    project(role, key, record)
 
     def test_transparent_tile_allows_rays_but_cannot_host_a_spawn(self):
         key = 'TileTransparent_Passable/Passable01'

@@ -441,11 +441,33 @@ _F1E_STATIC_WALLS = frozenset((
     'Tile23_Static/Temple01', 'Tile23_Static/Temple02', 'Tile23_Static/Temple03',
     'Tile23_Static/Temple14', 'Tile23_Static/Temple15', 'Tile23_Static/Temple45',
 ))
+# KR 00967 fx/TileInfo/TileInfoList (SHA-256 51b738448f5bb0c9dc54c0ef6782bd612561660f256717dc5df1d59c2f5ec795).
+# EA1EE0 đặt footprint type 1; +32 = 1 là cờ chặn nhảy tĩnh
+# (BB3FD0/EA7C90), còn +36..+68 của các vật cản Baseball này đều bằng 0.
+_BASEBALL_STATIC_RECORDS = {
+    f'Tile70_Static/Static{suffix}': (1, 0, 0, 0, 0, 0, width, 1, 1, *(0,) * 9)
+    for width, suffixes in (
+        (1, ('13', '14', '15', '16', '17', '23', '24', '25', '27_1', '27_2',
+             '29', '30', '31', '32', '33', '34', '35', '36')),
+        (2, ('18', '19', '20', '21')),
+        (3, ('22', '26')),
+        (4, ('28',)),
+    )
+    for suffix in suffixes
+}
+# Nền Baseball có byte +60 = 1 (EB48E0 chọn CGOTileLap). Kart Race*
+# có cờ cưỡi +52 = 1, LapTile*/Start_* có thêm byte +60 = 1, GasRight*
+# có +52 = 100, và Tire* có marker +36 ngoài mẫu vật cản đã xác nhận.
+_BASEBALL_KART_UNMAPPED = (
+    'Tile70_Ground/', 'Tile12_Ground/LapTile', 'Tile12_Ground/Start_', 'Tile12_Ground/Goal_',
+    'Tile12_Ground/Race', 'Tile12_Passable/GasRight', 'Tile12_Static/Tire',
+)
 # KR 00967 TileInfo/TileInfoList (hash cặp fx trong PACK_SHA256).
 # EA1EE0 và 7E7350/7E72B0 xác định footprint type 1; cờ +32 chỉ
 # chặn bước nhảy ngoài phép chiếu này. Temple08 có thêm cờ hướng +40
 # (ED23E0), nên không nhận cùng Temple09.
 _F23_STATIC_RECORDS = {
+    **_BASEBALL_STATIC_RECORDS,
     'Tile23_Static/Temple09': (1, 0, 0, 0, 0, 0, 8, 1, 1, 0, 0, 2010089472, *(0,) * 6),
     **{f'Tile21_Static/Z_{name}': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2010089472, *(0,) * 6)
        for name in ('Candlelight', 'Fork', 'Shovel', 'Static07', 'Static08', 'Static09')},
@@ -490,7 +512,8 @@ _F23_SMALL_DELTA_OBJECTS = {
 
 def _f23_unsupported_object(key):
     return (key in ('TileBonusMap_static/Tower00', 'Tile23_Static/Temple08')
-            or key.startswith(('Tile33_Passble/', 'Tile31_Passable_MonS2Desert/Tornado_')))
+            or key.startswith((*_BASEBALL_KART_UNMAPPED, 'Tile33_Passble/',
+                               'Tile31_Passable_MonS2Desert/Tornado_')))
 
 
 def _f23_small_delta_object(key, data):
@@ -596,6 +619,8 @@ def f1_terrain_rules(profile, table, *, f1e=False):
         # Empty ground uses the default CGOTileGround seen in Tomb12.
         if d is None:
             return
+        if key.startswith((*_BASEBALL_KART_UNMAPPED, 'Tile70_Static/')):
+            fail(index, 'nền/cờ', key)
         factory_flag = (d[12:15] == (1, 0, 0) and
                         (key == 'Tile03_Ground/Tile07' or (f1e and key == 'Tile59_Ground/Tile05')))
         water_flag = key in _WATER_RENDER_GROUNDS and d[12:15] == (0, 0, 1)
@@ -655,7 +680,9 @@ def f1_terrain_rules(profile, table, *, f1e=False):
         key, d = lookup(obj, index, 'vật thể')
         if d is None:
             continue
-        if f1e and _f23_unsupported_object(key):
+        if key.startswith('Tile70_Static/') and key in _BASEBALL_STATIC_RECORDS and d != _BASEBALL_STATIC_RECORDS[key]:
+            fail(index, 'vật thể/cờ', key)
+        if key.startswith(_BASEBALL_KART_UNMAPPED) or (f1e and _f23_unsupported_object(key)):
             fail(index, 'vật thể/cờ', key)
         elif f1e and key in _F23_SMALL_DELTA_OBJECTS:
             projection = _f23_small_delta_object(key, d)
