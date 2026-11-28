@@ -471,6 +471,22 @@ const F2_EXPORT_SAMPLES: [(&str, &str, &str); 15] = [
     ("Zzolman", "Zzolman01", "zzolman"),
 ];
 
+#[test]
+fn f2_modes_status_snapshot_serializes_catalog_coverage_and_dispatch_policy() {
+    let snapshot = room_modes::status_snapshot();
+    assert_eq!(
+        serde_json::to_value(snapshot).unwrap(),
+        json!({
+            "exported_families": F2_EXPORT_SAMPLES.map(|(family, _, _)| family),
+            "exported_map_count": 97,
+            "total_catalog_families": 18,
+            "total_catalog_maps": 122,
+            "tentative_family_count": 21,
+            "live_dispatch_status": "opt_in_fail_closed_pending_wine_capture"
+        })
+    );
+}
+
 fn has_evaluation_preset(family: &str) -> bool {
     matches!(
         family,
@@ -596,6 +612,10 @@ fn f2_exported_rosters_match_the_census_and_reject_native_dispatch() {
         }
     }
     assert_eq!(seen_maps.len(), 97);
+    assert_eq!(
+        seen_maps.len(),
+        room_modes::status_snapshot().exported_map_count
+    );
 }
 
 #[test]

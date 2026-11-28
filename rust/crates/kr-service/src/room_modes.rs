@@ -4,7 +4,7 @@
 //! create dialogs 0xC541E0 / 0xC55AF0 (Ladder), 0xC8DF50 (Mission), and
 //! roomtype 0x57F520. These do not establish a live F2 packet contract.
 use kr_wire::kr00967::{GameTypeId, MapGroupVisible, RoomTeamSelector, Start121Map};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::{
     collections::{BTreeMap, BTreeSet},
     io,
@@ -450,12 +450,57 @@ pub(crate) struct Policy {
     runtime: CreateOverrides,
 }
 
+/// Catalog coverage and the current live dispatch policy for F2 modes.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+pub struct F2ModesStatusSnapshot {
+    pub exported_families: Vec<&'static str>,
+    pub exported_map_count: usize,
+    pub total_catalog_families: usize,
+    pub total_catalog_maps: usize,
+    pub tentative_family_count: usize,
+    pub live_dispatch_status: &'static str,
+}
+
+/// Reports F2 status without loading operator settings or activating a mode.
+#[allow(
+    dead_code,
+    reason = "The private room_modes module has no production status consumer yet"
+)]
+pub fn status_snapshot() -> F2ModesStatusSnapshot {
+    let catalog = Catalog::from_embedded().expect("invalid embedded F2 catalog");
+    let exported_families: BTreeSet<_> = EXPORTED_F2_FAMILIES.iter().copied().collect();
+    let exported_maps: BTreeSet<_> = catalog
+        .families
+        .iter()
+        .filter(|family| exported_families.contains(family.family.as_str()))
+        .flat_map(|family| family.maps.iter().map(|map| map.name.as_str()))
+        .collect();
+
+    F2ModesStatusSnapshot {
+        exported_families: exported_families.into_iter().collect(),
+        exported_map_count: exported_maps.len(),
+        total_catalog_families: catalog.families.len(),
+        total_catalog_maps: catalog
+            .families
+            .iter()
+            .map(|family| family.maps.len())
+            .sum(),
+        tentative_family_count: TENTATIVE_MAP_FAMILIES.len(),
+        live_dispatch_status: "opt_in_fail_closed_pending_wine_capture",
+    }
+}
+
 impl Catalog {
-    fn load() -> io::Result<Self> {
-        let mut catalog: Self = serde_json::from_str(CATALOG).map_err(io::Error::other)?;
+    fn from_embedded() -> io::Result<Self> {
+        let catalog: Self = serde_json::from_str(CATALOG).map_err(io::Error::other)?;
         if catalog.build != "KR00967" || catalog.schema != "kre.f2-mode-catalog.v1" {
             return Err(io::Error::other("unsupported F2 catalog build or schema"));
         }
+        Ok(catalog)
+    }
+
+    fn load() -> io::Result<Self> {
+        let mut catalog = Self::from_embedded()?;
         for &name in EXPORTED_F2_FAMILIES {
             let family = catalog
                 .families
@@ -637,6 +682,26 @@ impl Policy {
 mod tests {
     use super::*;
     use serde_json::json;
+
+    #[test]
+    fn status_snapshot_reports_catalog_coverage_with_sorted_unique_families() {
+        let snapshot = status_snapshot();
+        assert_eq!(snapshot.exported_families.len(), 15);
+        assert!(
+            snapshot
+                .exported_families
+                .windows(2)
+                .all(|pair| pair[0] < pair[1])
+        );
+        assert_eq!(snapshot.exported_map_count, 97);
+        assert_eq!(snapshot.total_catalog_families, 18);
+        assert_eq!(snapshot.total_catalog_maps, 122);
+        assert_eq!(snapshot.tentative_family_count, 21);
+        assert_eq!(
+            snapshot.live_dispatch_status,
+            "opt_in_fail_closed_pending_wine_capture"
+        );
+    }
 
     #[test]
     fn room_mode_exported_families_match_the_terrain_ready_census() {
