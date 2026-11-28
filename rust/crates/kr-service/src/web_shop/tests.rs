@@ -104,6 +104,10 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("/api/v1/cosmetics-summary"));
     assert!(page.contains("id=\"f3-pve-status\""));
     assert!(page.contains("await api('/api/v1/f3/pve-status')"));
+    assert!(page.contains("id=\"f2-modes-status\""));
+    assert!(page.contains("await api('/api/v1/f2/modes-status')"));
+    assert!(page.contains("id=\"f4-anchors-status\""));
+    assert!(page.contains("await api('/api/v1/f4/anchors-status')"));
     let f4_panel = page
         .split_once("async function loadF4ExtendedStatus(load){")
         .unwrap()
@@ -433,6 +437,8 @@ async fn listen_f4(
 }
 
 const F3_PVE_STATUS: &str = "/api/v1/f3/pve-status";
+const F2_MODES_STATUS: &str = "/api/v1/f2/modes-status";
+const F4_ANCHORS_STATUS: &str = "/api/v1/f4/anchors-status";
 
 async fn f3_pve_status_fixture() -> (TempDir, crate::account_worker::Worker, Opened, WebShopToken) {
     let (dir, db) = temp_db("pve-status");
@@ -495,6 +501,106 @@ async fn loopback_f3_pve_status_requires_bearer_and_queryless_get() {
                 "opcode_index_subtrahend": 20,
             },
         })
+    );
+    stop.send(true).unwrap();
+    task.await.unwrap().unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f2_modes_and_f4_anchors_status_require_bearer_and_queryless_get() {
+    let (_dir, worker, opened, token) = f3_pve_status_fixture().await;
+    let addr = opened.listener.local_addr().unwrap();
+    let (stop, stopped) = watch::channel(false);
+    let task = tokio::spawn(serve_until(opened, worker.service(), stopped));
+    let unknown_token = "a".repeat(64);
+
+    for path in [F2_MODES_STATUS, F4_ANCHORS_STATUS] {
+        for bearer in [None, Some(unknown_token.as_str())] {
+            let (code, _, body) = send_http(addr, "GET", path, bearer, None).await;
+            assert_eq!(
+                (code, body),
+                (401, json!({"error": "unauthorized"})),
+                "{path}"
+            );
+        }
+        let bearer = Some(token.as_str());
+        for (method, suffix, expected) in [
+            ("POST", "", 405),
+            ("GET", "?room=1", 400),
+            ("GET", "?", 400),
+        ] {
+            let target = format!("{path}{suffix}");
+            let (code, _, _) = send_http(addr, method, &target, bearer, None).await;
+            assert_eq!(code, expected, "{method} {target}");
+        }
+    }
+
+    let (code, headers, body) =
+        send_http(addr, "GET", F2_MODES_STATUS, Some(token.as_str()), None).await;
+    assert_eq!(code, 200);
+    assert!(headers.contains("Content-Type: application/json"));
+    assert!(headers.contains("Cache-Control: no-store"));
+    assert_eq!(
+        body,
+        json!({
+            "exported_families": [
+                "CAPong", "Clover", "Coloring", "Gumiho", "Hamster", "PopcadeA",
+                "PopcadeB", "PopcadeC", "Rabbit", "RescueET", "SnowyFields",
+                "SuperFighter", "Wriggle", "Zombie", "Zzolman"
+            ],
+            "exported_map_count": 97,
+            "total_catalog_families": 18,
+            "total_catalog_maps": 122,
+            "tentative_family_count": 21,
+            "live_dispatch_status": "opt_in_fail_closed_pending_wine_capture",
+        })
+    );
+
+    let (code, headers, body) =
+        send_http(addr, "GET", F4_ANCHORS_STATUS, Some(token.as_str()), None).await;
+    assert_eq!(code, 200);
+    assert!(headers.contains("Content-Type: application/json"));
+    assert!(headers.contains("Cache-Control: no-store"));
+    let anchors = kr_wire::kr00967::cosmetics::F4_SHOP_ANCHORS
+        .iter()
+        .map(|anchor| {
+            use kr_wire::kr00967::cosmetics::F4AnchorSite;
+            let (kind, va) = match anchor.site {
+                F4AnchorSite::ShopStageDispatcher(va) => ("shop_stage_dispatcher", va),
+                F4AnchorSite::Function(va) => ("function", va),
+                F4AnchorSite::ServerToClientHandler(va) => ("server_to_client_handler", va),
+                F4AnchorSite::ClientToServerBuilder(va) => ("client_to_server_builder", va),
+            };
+            json!({
+                "name": anchor.name,
+                "opcode": anchor.opcode,
+                "site": {"kind": kind, "va": format!("0x{va:X}")},
+                "status": match anchor.status {
+                    ProjectionStatus::Measured => "measured",
+                    ProjectionStatus::StaticCandidate => "static_candidate",
+                    ProjectionStatus::Unmeasured => "unmeasured",
+                },
+                "evidence": anchor.evidence,
+            })
+        })
+        .collect::<Vec<_>>();
+    assert_eq!(
+        body,
+        json!({
+            "total": kr_wire::kr00967::cosmetics::F4_SHOP_ANCHORS.len(),
+            "static_candidate_count": 14,
+            "anchors": anchors,
+        })
+    );
+    assert!(body["anchors"].as_array().unwrap().iter().any(|anchor| {
+        anchor["status"] == "static_candidate" && anchor["name"] == "sub_11CE930"
+    }));
+    assert!(
+        body["anchors"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|anchor| { anchor["status"] == "measured" && anchor["name"] == "own291" })
     );
     stop.send(true).unwrap();
     task.await.unwrap().unwrap();

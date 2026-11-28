@@ -26,8 +26,8 @@ use crate::{
 use argon2::{Algorithm, Argon2, Params, Version};
 use http::{Request, Response, Status};
 use kr_wire::kr00967::cosmetics::{
-    CosmeticTarget, INVENTORY_CAPTURE_GAP, INVENTORY_LAYOUT_STATUS, ProjectionStatus,
-    ProjectionSurface, UNMEASURED_WIRE_GAP, validate_mutual_exclusion,
+    CosmeticTarget, F4_SHOP_ANCHORS, F4AnchorSite, INVENTORY_CAPTURE_GAP, INVENTORY_LAYOUT_STATUS,
+    ProjectionStatus, ProjectionSurface, UNMEASURED_WIRE_GAP, validate_mutual_exclusion,
 };
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
@@ -1544,6 +1544,36 @@ fn projection_status(status: ProjectionStatus) -> &'static str {
     }
 }
 
+fn f4_anchors_status() -> Response {
+    let static_candidate_count = F4_SHOP_ANCHORS
+        .iter()
+        .filter(|anchor| anchor.status == ProjectionStatus::StaticCandidate)
+        .count();
+    let anchors: Vec<_> = F4_SHOP_ANCHORS
+        .iter()
+        .map(|anchor| {
+            let (kind, va) = match anchor.site {
+                F4AnchorSite::ShopStageDispatcher(va) => ("shop_stage_dispatcher", va),
+                F4AnchorSite::Function(va) => ("function", va),
+                F4AnchorSite::ServerToClientHandler(va) => ("server_to_client_handler", va),
+                F4AnchorSite::ClientToServerBuilder(va) => ("client_to_server_builder", va),
+            };
+            json!({
+                "name": anchor.name,
+                "opcode": anchor.opcode,
+                "site": {"kind": kind, "va": format!("0x{va:X}")},
+                "status": projection_status(anchor.status),
+                "evidence": anchor.evidence,
+            })
+        })
+        .collect();
+    Response::json(&json!({
+        "total": anchors.len(),
+        "static_candidate_count": static_candidate_count,
+        "anchors": anchors,
+    }))
+}
+
 fn cosmetics_summary(source: &str, mut equipped: Vec<(String, String)>) -> Response {
     equipped.sort_unstable_by(|left, right| left.0.cmp(&right.0));
     let slots: Vec<_> = equipped.iter().map(|(slot, _)| slot.as_str()).collect();
@@ -1848,10 +1878,20 @@ async fn route(
     if path == "/api/v1/cosmetics-summary" {
         return cosmetics_summary_route(config, service, auth, &digest, request).await;
     }
+    if path == "/api/v1/f2/modes-status" {
+        auth.player(&digest).ok_or(Status::Unauthorized)?;
+        request.require_queryless_get()?;
+        return Ok(Response::json(&crate::room_modes::status_snapshot()));
+    }
     if path == "/api/v1/f3/pve-status" {
         auth.player(&digest).ok_or(Status::Unauthorized)?;
         request.require_queryless_get()?;
         return Ok(Response::json(&shop.f3_pve_registry.snapshot()));
+    }
+    if path == "/api/v1/f4/anchors-status" {
+        auth.player(&digest).ok_or(Status::Unauthorized)?;
+        request.require_queryless_get()?;
+        return Ok(f4_anchors_status());
     }
     if path == "/api/v1/f7/custom-maps-policy" {
         auth.player(&digest).ok_or(Status::Unauthorized)?;
