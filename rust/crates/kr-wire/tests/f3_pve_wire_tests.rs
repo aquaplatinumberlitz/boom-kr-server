@@ -1,9 +1,11 @@
 use kr_wire::{
-    Width,
+    CodecError, FRAME_OVERHEAD, MAX_FRAME_LEN, Width,
     kr00967::f3_pve::{
-        F3JumpTableProvenance, F3MonActionProvenance, F3TimerField, F3WireError, F3WireStatus,
-        MonActionDelegationCandidate, MonActionStepReportCandidate, MonsterAttackReqCandidate,
-        ObjectEffectPairCandidate, TimedStageEventCandidate,
+        C_GAME_STAGE_JUMP_ENTRIES, F3JumpTableProvenance, F3MonActionProvenance, F3TimerField,
+        F3WireError, F3WireStatus, MonActionDelegationCandidate, MonActionStep132Candidate,
+        MonActionStep132Payload, MonActionStep180Candidate, MonActionStep180Payload,
+        MonActionStepReportCandidate, MonsterAttackReqCandidate, ObjectEffectPairCandidate,
+        TimedStageEventCandidate, f3_stage_jump_entry,
     },
     write_uint,
 };
@@ -30,6 +32,51 @@ fn all_candidates_mark_capture_as_pending_and_keep_dispatch_indices() {
 }
 
 #[test]
+fn stage_jump_entries_preserve_case_and_wire_opcode_as_distinct_values() {
+    let cases = [
+        0, 5, 9, 64, 80, 90, 91, 103, 112, 119, 120, 121, 122, 132, 133, 134, 135, 136, 137, 138,
+        139, 140, 142, 144, 145, 146, 147, 148, 150, 151, 152, 153, 155, 156, 157, 158, 160, 161,
+        163, 164, 165, 171, 176, 177, 178, 179, 180, 181, 184, 189, 190, 195, 200, 201, 202, 254,
+    ];
+    assert_eq!(
+        C_GAME_STAGE_JUMP_ENTRIES
+            .iter()
+            .map(|entry| entry.case)
+            .collect::<Vec<_>>(),
+        cases
+    );
+    for opcode in (0..=306).chain([u32::MAX]) {
+        let expected = cases.iter().position(|&case| case + 20 == opcode);
+        assert_eq!(
+            f3_stage_jump_entry(opcode),
+            expected.map(|index| &C_GAME_STAGE_JUMP_ENTRIES[index]),
+            "opcode {opcode}"
+        );
+    }
+    for (case, opcode, selector, dispatch_va, handler_va) in [
+        (9, 29, 53, 0xE5DCA9, None),
+        (80, 100, 53, 0xE5DCA9, None),
+        (103, 123, 5, 0xE5D47A, None),
+        (112, 132, 6, 0xE5D691, Some(0xE610C0)),
+        (135, 155, 14, 0xE5D777, Some(0xE67640)),
+        (136, 156, 15, 0xE5D789, Some(0xE67770)),
+        (145, 165, 22, 0xE5D570, Some(0xE63260)),
+        (160, 180, 34, 0xE5D610, Some(0xE72490)),
+        (165, 185, 38, 0xE5D765, Some(0xE67470)),
+        (177, 197, 41, 0xE5D79B, Some(0xE751F0)),
+        (184, 204, 53, 0xE5DCA9, None),
+        (254, 274, 52, 0xE5DAAB, Some(0xD73100)),
+    ] {
+        let entry = f3_stage_jump_entry(opcode).unwrap();
+        assert_eq!(entry.case, case);
+        assert_eq!(entry.wire_opcode, opcode);
+        assert_eq!(entry.table_selector, selector);
+        assert_eq!(entry.dispatch_va, dispatch_va);
+        assert_eq!(entry.handler_va, handler_va);
+    }
+}
+
+#[test]
 fn mon_action_provenance_pins_cp405_and_keeps_capture_pending() {
     let provenance = F3MonActionProvenance::CP405_STATIC;
     assert_eq!(provenance.owner_gate_va, 0xB91F60);
@@ -41,6 +88,11 @@ fn mon_action_provenance_pins_cp405_and_keeps_capture_pending() {
     );
     assert_eq!(MonActionDelegationCandidate::STATUS, provenance.status);
     assert_eq!(MonActionStepReportCandidate::STATUS, provenance.status);
+    assert_eq!(MonActionStep132Candidate::STATUS, provenance.status);
+    assert_eq!(MonActionStep180Candidate::STATUS, provenance.status);
+    assert_eq!(MonActionDelegationCandidate::OPCODE, 204);
+    assert_eq!(MonActionStep132Candidate::OPCODE, 132);
+    assert_eq!(MonActionStep180Candidate::OPCODE, 180);
 }
 
 #[test]
@@ -65,6 +117,7 @@ fn mon_action_delegation_checks_opcode_object_and_slot() {
             owner_slot,
         };
         assert_eq!(candidate.validate(), Err(error));
+        assert_eq!(candidate.encode(), Err(error));
         assert_eq!(
             MonActionDelegationCandidate::new(opcode, object_id, owner_slot),
             Err(error)
@@ -80,6 +133,30 @@ fn mon_action_delegation_checks_opcode_object_and_slot() {
             1,
             slot,
             F3WireError::MonActionOwnerSlotOutOfRange(slot),
+        );
+    }
+}
+
+#[test]
+fn mon_action_delegation_204_uses_one_word_then_one_byte() {
+    for (object_id, owner_slot, body) in [
+        (1, 0, [0xa5, 0x68, 0x5a]),
+        (0x1234, 3, [0xb7, 0x5d, 0x59]),
+        (u16::MAX, 7, [0x5a, 0x96, 0x5d]),
+    ] {
+        let candidate = MonActionDelegationCandidate::new(204, object_id, owner_slot).unwrap();
+        assert_eq!(candidate.encode().unwrap(), body);
+        assert_eq!(MonActionDelegationCandidate::decode(&body), Ok(candidate));
+        assert_exact(&body, MonActionDelegationCandidate::decode);
+    }
+    assert_eq!(
+        MonActionDelegationCandidate::decode(&[0xa5, 0x69, 0x5a]),
+        Err(F3WireError::ZeroMonActionObjectId)
+    );
+    for slot in 8..=u8::MAX {
+        assert_eq!(
+            MonActionDelegationCandidate::decode(&[0xb7, 0x5d, slot ^ 0x5a]),
+            Err(F3WireError::MonActionOwnerSlotOutOfRange(slot))
         );
     }
 }
@@ -175,6 +252,236 @@ fn assert_exact<T: std::fmt::Debug>(body: &[u8], decode: impl Fn(&[u8]) -> Resul
     let mut trailing = body.to_vec();
     trailing.push(0x5a);
     assert_eq!(decode(&trailing).unwrap_err(), F3WireError::TrailingBytes);
+}
+
+#[test]
+fn mon_action_132_matches_each_static_writer_shape() {
+    use MonActionStep132Payload::*;
+
+    let vectors: [(MonActionStep132Payload, u16, &[u8]); 16] = [
+        (
+            Kind0(vec![1, 2, 3, 4, 5, 6, 7]),
+            0,
+            &[0xa5, 0x6e, 0x92, 0xc9, 0x51, 0x94, 0xa3, 0x6c, 0x5d],
+        ),
+        (Kind1(0xff), 1, &[0xa5]),
+        (Kind9(0xffff, 0x0102), 9, &[0x5a, 0x96, 0xa4, 0x6b]),
+        (Kind10(0x0102, 0xffff), 10, &[0xa4, 0x6b, 0x5a, 0x96]),
+        (Kind11(0, 0x1234), 11, &[0xa5, 0x69, 0xb7, 0x5d]),
+        (
+            Kind12 {
+                selector: 3,
+                value: 0xff,
+            },
+            12,
+            &[0x59, 0xa5],
+        ),
+        (Kind13(0x1234), 13, &[0xb7, 0x5d]),
+        (Kind14, 14, &[]),
+        (Kind15(0), 15, &[0x5a]),
+        (Kind16, 16, &[]),
+        (Kind17(0x12), 17, &[0x48]),
+        (Kind18, 18, &[]),
+        (Kind19, 19, &[]),
+        (
+            Kind21(vec![0, 0xff, 0x81]),
+            21,
+            &[0xa5, 0x6a, 0x5a, 0x69, 0xdb],
+        ),
+        (Kind21(vec![]), 21, &[0xa5, 0x69]),
+        (Kind22(0xffff), 22, &[0x5a, 0x96]),
+    ];
+    for (payload, kind, tail) in vectors {
+        let candidate = MonActionStep132Candidate {
+            session_or_owner: 0x0102_0304,
+            object_id: 0x1234,
+            payload,
+        };
+        let mut body = vec![0x97, 0xc8, 0x50, 0x91, 0xb7, 0x5d, 0xa5, 0x69 ^ kind as u8];
+        body.extend(tail);
+        assert_eq!(candidate.action_kind(), kind);
+        assert_eq!(candidate.encode().unwrap(), body);
+        assert_eq!(MonActionStep132Candidate::decode(&body), Ok(candidate));
+        assert_exact(&body, MonActionStep132Candidate::decode);
+    }
+}
+
+#[test]
+fn mon_action_180_matches_each_static_writer_shape() {
+    use MonActionStep180Payload::*;
+
+    let vectors: [(MonActionStep180Payload, u16, &[u8]); 8] = [
+        (Kind0(0xff), 0, &[0xa5]),
+        (Kind3(0xffff, 0x0102), 3, &[0x5a, 0x96, 0xa4, 0x6b]),
+        (Kind4(0x0102, 0xffff), 4, &[0xa4, 0x6b, 0x5a, 0x96]),
+        (Kind5(0, 0x1234), 5, &[0xa5, 0x69, 0xb7, 0x5d]),
+        (
+            Kind6 {
+                selector: 14,
+                value: 0x12,
+            },
+            6,
+            &[0x54, 0x48],
+        ),
+        (Kind8, 8, &[]),
+        (
+            Kind9(vec![0, 0xff, 0x81]),
+            9,
+            &[0xa5, 0x6a, 0x5a, 0x69, 0xdb],
+        ),
+        (
+            Kind10 {
+                target: vec![0, 0xff, 0x81],
+                first: 0x0102_0304,
+                second: 0x1122_3344,
+            },
+            10,
+            &[
+                0xa5, 0x6a, 0x5a, 0x69, 0xdb, 0x97, 0xc8, 0x50, 0x91, 0x87, 0xe8, 0x60, 0xd1,
+            ],
+        ),
+    ];
+    for (payload, kind, tail) in vectors {
+        let candidate = MonActionStep180Candidate {
+            object_id: 0x1234,
+            payload,
+        };
+        let mut body = vec![0xb7, 0x5d, 0xa5, 0x69 ^ kind as u8];
+        body.extend(tail);
+        assert_eq!(candidate.action_kind(), kind);
+        assert_eq!(candidate.encode().unwrap(), body);
+        assert_eq!(MonActionStep180Candidate::decode(&body), Ok(candidate));
+        assert_exact(&body, MonActionStep180Candidate::decode);
+    }
+}
+
+#[test]
+fn mon_action_step_decoders_reject_unrecorded_kind_words() {
+    for kind in [2, 3, 8, 20, 23, 0x100, 0x109, u16::MAX] {
+        let mut body = vec![0x97, 0xc8, 0x50, 0x91, 0xb7, 0x5d];
+        body.extend(write_uint(kind.into(), Width::U16).unwrap());
+        assert_eq!(
+            MonActionStep132Candidate::decode(&body),
+            Err(F3WireError::UnsupportedMonActionKind { opcode: 132, kind })
+        );
+    }
+    for kind in [1, 2, 7, 11, 14, 0x100, 0x103, u16::MAX] {
+        let mut body = vec![0xb7, 0x5d];
+        body.extend(write_uint(kind.into(), Width::U16).unwrap());
+        assert_eq!(
+            MonActionStep180Candidate::decode(&body),
+            Err(F3WireError::UnsupportedMonActionKind { opcode: 180, kind })
+        );
+    }
+}
+
+#[test]
+fn mon_action_step_selectors_are_bounded_on_both_codec_paths() {
+    for selector in 0..=u8::MAX {
+        let step = MonActionStep132Candidate {
+            session_or_owner: 0x0102_0304,
+            object_id: 0x1234,
+            payload: MonActionStep132Payload::Kind12 { selector, value: 0 },
+        };
+        let body = [
+            0x97,
+            0xc8,
+            0x50,
+            0x91,
+            0xb7,
+            0x5d,
+            0xa5,
+            0x65,
+            selector ^ 0x5a,
+            0x5a,
+        ];
+        if selector <= 3 {
+            assert_eq!(step.encode().unwrap(), body);
+            assert_eq!(MonActionStep132Candidate::decode(&body), Ok(step));
+        } else {
+            let error = F3WireError::InvalidMonActionSelector {
+                opcode: 132,
+                selector,
+            };
+            assert_eq!(step.encode(), Err(error));
+            assert_eq!(MonActionStep132Candidate::decode(&body), Err(error));
+        }
+
+        let step = MonActionStep180Candidate {
+            object_id: 0x1234,
+            payload: MonActionStep180Payload::Kind6 {
+                selector,
+                value: 0xff,
+            },
+        };
+        let body = [0xb7, 0x5d, 0xa5, 0x6f, selector ^ 0x5a, 0xa5];
+        if (14..=16).contains(&selector) {
+            assert_eq!(step.encode().unwrap(), body);
+            assert_eq!(MonActionStep180Candidate::decode(&body), Ok(step));
+        } else {
+            let error = F3WireError::InvalidMonActionSelector {
+                opcode: 180,
+                selector,
+            };
+            assert_eq!(step.encode(), Err(error));
+            assert_eq!(MonActionStep180Candidate::decode(&body), Err(error));
+        }
+    }
+}
+
+#[test]
+fn mon_action_step_byte_strings_respect_declared_lengths_and_body_limits() {
+    const MAX_BODY: usize = MAX_FRAME_LEN - FRAME_OVERHEAD;
+    let frame_too_large = F3WireError::Codec(CodecError::FrameTooLarge);
+    // Both bodies declare 65,535 string bytes and supply one.
+    assert_eq!(
+        MonActionStep132Candidate::decode(&[
+            0x97, 0xc8, 0x50, 0x91, 0xb7, 0x5d, 0xa5, 0x69, 0x5a, 0x96, 0x5a,
+        ]),
+        Err(F3WireError::TruncatedEof)
+    );
+    assert_eq!(
+        MonActionStep180Candidate::decode(&[0xb7, 0x5d, 0xa5, 0x63, 0x5a, 0x96, 0x5a]),
+        Err(F3WireError::TruncatedEof)
+    );
+
+    let mut step132 = MonActionStep132Candidate {
+        session_or_owner: u32::MAX,
+        object_id: u16::MAX,
+        payload: MonActionStep132Payload::Kind0(vec![0xff; MAX_BODY - 10]),
+    };
+    let mut body = step132.encode().unwrap();
+    assert_eq!(body.len(), MAX_BODY);
+    assert_eq!(
+        MonActionStep132Candidate::decode(&body),
+        Ok(step132.clone())
+    );
+    body.push(0);
+    assert_eq!(
+        MonActionStep132Candidate::decode(&body),
+        Err(frame_too_large)
+    );
+    step132.payload = MonActionStep132Payload::Kind21(vec![0; MAX_BODY - 9]);
+    assert_eq!(step132.encode(), Err(frame_too_large));
+
+    let step180 = |len| MonActionStep180Candidate {
+        object_id: u16::MAX,
+        payload: MonActionStep180Payload::Kind10 {
+            target: vec![0x81; len],
+            first: 0,
+            second: u32::MAX,
+        },
+    };
+    let limit = step180(MAX_BODY - 14);
+    let mut body = limit.encode().unwrap();
+    assert_eq!(body.len(), MAX_BODY);
+    assert_eq!(MonActionStep180Candidate::decode(&body), Ok(limit));
+    body.push(0);
+    assert_eq!(
+        MonActionStep180Candidate::decode(&body),
+        Err(frame_too_large)
+    );
+    assert_eq!(step180(MAX_BODY - 13).encode(), Err(frame_too_large));
 }
 
 #[test]
