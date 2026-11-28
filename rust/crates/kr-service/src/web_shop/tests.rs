@@ -102,6 +102,8 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("p.mode"));
     assert!(page.contains("/api/v1/inventory"));
     assert!(page.contains("/api/v1/cosmetics-summary"));
+    assert!(page.contains("id=\"f3-pve-status\""));
+    assert!(page.contains("await api('/api/v1/f3/pve-status')"));
     let f4_panel = page
         .split_once("async function loadF4ExtendedStatus(load){")
         .unwrap()
@@ -362,7 +364,7 @@ fn f4_ops_settings() -> crate::account_worker::EconomySettings {
 
 static CREATE_ACCOUNT_GATE: std::sync::Mutex<()> = std::sync::Mutex::new(());
 
-fn create_f4_player(store: &mut accounts::Store, login: &str) -> accounts::Player {
+fn create_shop_player(store: &mut accounts::Store, login: &str) -> accounts::Player {
     let _gate = CREATE_ACCOUNT_GATE
         .lock()
         .unwrap_or_else(std::sync::PoisonError::into_inner);
@@ -371,21 +373,21 @@ fn create_f4_player(store: &mut accounts::Store, login: &str) -> accounts::Playe
         .unwrap_or_else(std::sync::PoisonError::into_inner);
     let admin = accounts::Admin {
         actor: "webshop-test",
-        reason: "F4 account fixture",
+        reason: "Web shop account fixture",
     };
     for _ in 0..50 {
         match store.create_account(
             &admin,
             login,
             login,
-            b"f4-fixture-password",
+            b"shop-fixture-password",
             accounts::utc().unwrap(),
         ) {
             Err(accounts::Error::Busy) => std::thread::sleep(Duration::from_millis(20)),
             result => return result.unwrap(),
         }
     }
-    panic!("F4 fixture account creation remained busy");
+    panic!("Web shop fixture account creation remained busy");
 }
 
 fn f4_player_fixture(suffix: &str) -> (TempDir, std::path::PathBuf, accounts::Player) {
@@ -398,7 +400,7 @@ fn f4_player_fixture(suffix: &str) -> (TempDir, std::path::PathBuf, accounts::Pl
             [],
         )
         .unwrap();
-    let player = create_f4_player(&mut store, "milestoneuser");
+    let player = create_shop_player(&mut store, "milestoneuser");
     assert_ne!(player.account_id, player.player_id);
     fixture
         .execute(
@@ -426,6 +428,123 @@ async fn listen_f4(
         auth.clone(),
     ));
     (addr, task)
+}
+
+const F3_PVE_STATUS: &str = "/api/v1/f3/pve-status";
+
+async fn f3_pve_status_fixture() -> (TempDir, crate::account_worker::Worker, Opened, WebShopToken) {
+    let (dir, db) = temp_db("pve-status");
+    let player = create_shop_player(&mut accounts::Store::open(&db).unwrap(), "pvestatususer");
+    let worker = crate::account_worker::Worker::open_with_economy(
+        db,
+        4,
+        Duration::from_secs(2),
+        test_settings(),
+    )
+    .await
+    .unwrap();
+    let config = config();
+    let auth = WebShopAuth::new(config.session_ttl_seconds).unwrap();
+    let token = auth.issue_token(player.player_id).unwrap();
+    let opened = Opened {
+        listener: TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap(),
+        shop: WebShop::new(config),
+        auth,
+    };
+    (dir, worker, opened, token)
+}
+
+#[tokio::test]
+async fn loopback_f3_pve_status_requires_bearer_and_queryless_get() {
+    let (_dir, worker, opened, token) = f3_pve_status_fixture().await;
+    let addr = opened.listener.local_addr().unwrap();
+    let (stop, stopped) = watch::channel(false);
+    let task = tokio::spawn(serve_until(opened, worker.service(), stopped));
+
+    let unknown_token = "a".repeat(64);
+    for bearer in [None, Some(unknown_token.as_str())] {
+        let (code, _, body) = send_http(addr, "GET", F3_PVE_STATUS, bearer, None).await;
+        assert_eq!((code, body), (401, json!({"error": "unauthorized"})));
+    }
+    let bearer = Some(token.as_str());
+    for (method, suffix, expected) in [
+        ("POST", "", 405),
+        ("GET", "?room=1", 400),
+        ("GET", "?", 400),
+    ] {
+        let target = format!("{F3_PVE_STATUS}{suffix}");
+        let (code, _, _) = send_http(addr, method, &target, bearer, None).await;
+        assert_eq!(code, expected, "{method} {target}");
+    }
+
+    let (code, headers, body) = send_http(addr, "GET", F3_PVE_STATUS, bearer, None).await;
+    assert_eq!(code, 200);
+    assert!(headers.contains("Content-Type: application/json"));
+    assert!(headers.contains("Cache-Control: no-store"));
+    assert_eq!(
+        body,
+        json!({
+            "enabled": false,
+            "active_rooms": 0,
+            "max_rooms": 0,
+            "dispatch": {
+                "status": "static_candidate_pending_live_wine_capture",
+                "jump_table_va": "0xE5DE9C",
+                "opcode_index_subtrahend": 20,
+            },
+        })
+    );
+    stop.send(true).unwrap();
+    task.await.unwrap().unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f3_pve_status_tracks_shared_registry_room_lifecycle() {
+    use crate::{
+        f3_pve_policy::{F3PvePolicy, PveModeFamily},
+        f3_pve_runtime::DispatchEvidence,
+    };
+    use kr_wire::kr00967::f3_pve::F3JumpTableProvenance;
+
+    let (_dir, worker, opened, token) = f3_pve_status_fixture().await;
+    let registry = Arc::new(F3PveRegistry::new(F3PvePolicy { enabled: true }, 2));
+    let opened = opened.with_f3_pve_registry(Arc::clone(&registry));
+    let addr = opened.listener.local_addr().unwrap();
+    let (stop, stopped) = watch::channel(false);
+    let task = tokio::spawn(serve_until(opened, worker.service(), stopped));
+    let fetch = || send_http(addr, "GET", F3_PVE_STATUS, Some(token.as_str()), None);
+
+    let (code, _, mut expected) = fetch().await;
+    assert_eq!(code, 200);
+    assert_eq!(expected["enabled"], true);
+    assert_eq!(expected["active_rooms"], 0);
+    assert_eq!(expected["max_rooms"], 2);
+    assert_eq!(
+        expected["dispatch"]["status"],
+        "static_candidate_pending_live_wine_capture"
+    );
+
+    registry
+        .start_room(
+            1,
+            PveModeFamily::MonsterS1,
+            // Fixture evidence exercises the registry, without verifying dispatch.
+            DispatchEvidence::present(F3JumpTableProvenance::C_GAME_STAGE),
+            1,
+            7,
+            11,
+        )
+        .unwrap();
+    expected["active_rooms"] = json!(1);
+    let (code, _, body) = fetch().await;
+    assert_eq!((code, body), (200, expected.clone()));
+
+    registry.end_room(1).unwrap();
+    expected["active_rooms"] = json!(0);
+    let (code, _, body) = fetch().await;
+    assert_eq!((code, body), (200, expected));
+    stop.send(true).unwrap();
+    task.await.unwrap().unwrap();
 }
 
 fn sqlite_version(db: &rusqlite::Connection) -> i64 {
@@ -1070,7 +1189,7 @@ async fn loopback_f4_extended_ops_apply_once_and_titles_follow_the_player() {
 
     let (_dir, db, player) = f4_player_fixture("f4-ops");
     let mut store = Store::open(&db).unwrap();
-    let other = create_f4_player(&mut store, "otherplayer");
+    let other = create_shop_player(&mut store, "otherplayer");
     let now = accounts::utc().unwrap();
     let admin = Admin {
         actor: "webshop-test",
