@@ -2,7 +2,9 @@ use super::{Active, Config, Owner};
 use crate::{
     account_bridge::local::native::fixtures,
     account_worker::{EconomySettings, Error as WorkerError, SocialReply},
-    accounts::{Admin, Error, ItemUpgradeOperation, Player, RecordEraserOperation, Store, Token},
+    accounts::{
+        Admin, Error, Grant, ItemUpgradeOperation, Player, RecordEraserOperation, Store, Token,
+    },
     choco_chat::F5SocialPolicy,
     f3_pve_policy::{DispatchRejection, PveModeFamily},
     f3_pve_runtime::{DispatchEvidence, MonsterAttack, MonsterSpawn, RuntimeError},
@@ -30,6 +32,7 @@ use tokio::{
 
 const MAPS: &str = "/api/v1/custom-maps";
 const EVENTS: &str = "/api/v1/events-status";
+const F3_PVE_STATUS: &str = "/api/v1/f3/pve-status";
 const SECURITY_KITS: &str = "/api/v1/f4/security-kits-status";
 const SOCIAL_POLICY: &str = "/api/social/policy-status";
 const SAVE: &str = r#"{"map_id":"test","payload_base64":"e30="}"#;
@@ -85,6 +88,24 @@ fn create_account(config: &Config) -> Player {
                 std::thread::sleep(Duration::from_millis(10));
             }
             result => return result.expect("create live policy test account"),
+        }
+    }
+}
+
+async fn login_with_retry(active: &Active) -> Grant {
+    // The account worker admits at most five attempts per login in a minute.
+    let mut retries = 4;
+    loop {
+        let pending = active
+            .client
+            .try_login_with_idle_current("alice", b"test-password", 60, 30)
+            .expect("submit live policy test login");
+        match pending.wait().await {
+            Err(WorkerError::Backend(Error::Busy)) if retries > 0 => {
+                retries -= 1;
+                tokio::time::sleep(Duration::from_secs(1)).await;
+            }
+            result => return result.expect("complete live policy test login"),
         }
     }
 }
@@ -186,7 +207,7 @@ fn run_shop(
     watch::Sender<bool>,
     tokio::task::JoinHandle<io::Result<()>>,
 ) {
-    // The event and map routes only need an authenticated owner ID.
+    // These policy and map routes only need an authenticated owner ID.
     let token = owner
         .web_shop
         .as_ref()
@@ -281,14 +302,7 @@ async fn embedded_web_shop_reports_live_f4_and_f5_and_revokes_sessions_on_logout
     let player = create_account(&config);
     let (addr, mut owner) = open_owner(&mut config).await.unwrap();
 
-    let grant = owner
-        .active
-        .client
-        .try_login_with_idle_current("alice", b"test-password", 60, 30)
-        .unwrap()
-        .wait()
-        .await
-        .unwrap();
+    let grant = login_with_retry(&owner.active).await;
     assert_eq!(grant.player, player);
     let session = Active::public_primary_session(&grant.token, player.player_id);
     let token = owner
@@ -365,6 +379,66 @@ async fn embedded_web_shop_reports_live_f4_and_f5_and_revokes_sessions_on_logout
     for target in [SECURITY_KITS, SOCIAL_POLICY] {
         assert_eq!(request(addr, &token, target, None).await.0, 401);
     }
+    shutdown.send(true).unwrap();
+    task.await.unwrap().unwrap();
+    owner.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn embedded_web_shop_reports_disabled_f3_status_by_default() {
+    let dir = TempDir::new();
+    let mut config = dir.config();
+    let (addr, mut owner) = open_owner(&mut config).await.unwrap();
+    let (token, shutdown, task) = run_shop(&mut owner);
+    assert_eq!(
+        request(addr, &token, F3_PVE_STATUS, None).await,
+        (
+            200,
+            json!({
+                "enabled": false,
+                "active_rooms": 0,
+                "max_rooms": 0,
+                "dispatch": {
+                    "status": "static_candidate_pending_live_wine_capture",
+                    "jump_table_va": "0xE5DE9C",
+                    "opcode_index_subtrahend": 20,
+                },
+            })
+        )
+    );
+    shutdown.send(true).unwrap();
+    task.await.unwrap().unwrap();
+    owner.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn embedded_web_shop_reports_live_f3_room_lifecycle() {
+    let dir = TempDir::new();
+    let mut config = dir.config();
+    config.f3_pve_policy = Some(dir.policy("f3.json", json!({"enabled": true})));
+    let (addr, mut owner) = open_owner(&mut config).await.unwrap();
+    let (token, shutdown, task) = run_shop(&mut owner);
+    let registry = owner.active.f3_pve_registry();
+
+    let fetch = || request(addr, &token, F3_PVE_STATUS, None);
+    let (status, mut expected) = fetch().await;
+    assert_eq!(status, 200);
+    assert_eq!(expected["enabled"], true);
+    assert_eq!(expected["max_rooms"], 64);
+    assert_eq!(expected["active_rooms"], 0);
+
+    // Synthetic evidence exercises the registry API without asserting a Wine capture.
+    let evidence = DispatchEvidence::present(F3JumpTableProvenance::C_GAME_STAGE);
+    registry
+        .start_room(1, PveModeFamily::MonsterS1, evidence, 1, 7, 1)
+        .unwrap();
+    expected["active_rooms"] = json!(1);
+    assert_eq!(fetch().await, (200, expected.clone()));
+
+    registry.end_room(1).unwrap();
+    expected["active_rooms"] = json!(0);
+    assert_eq!(fetch().await, (200, expected));
+
     shutdown.send(true).unwrap();
     task.await.unwrap().unwrap();
     owner.shutdown().await.unwrap();

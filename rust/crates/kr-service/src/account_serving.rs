@@ -693,7 +693,8 @@ impl Owner {
                 Some(
                     opened
                         .with_policies(settings.f6, maps)
-                        .with_f4_security_kits(settings.f4_security_kits.clone()),
+                        .with_f4_security_kits(settings.f4_security_kits.clone())
+                        .with_f3_pve_registry(settings.f3_pve_registry.clone()),
                 )
             }
             None => None,
