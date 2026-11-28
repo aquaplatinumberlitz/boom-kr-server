@@ -1,0 +1,150 @@
+{
+  "schema": "boom.f5f6f7.ingame_wire_re.v1",
+  "build": "KR00967",
+  "source": "kr_static",
+  "status": "confirmed",
+  "source_artifact": {
+    "kind": "IDA database copy",
+    "sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+    "image_base": "0x400000",
+    "analysis": "IDA 9.4 headless IDAPython and Hex-Rays; no runtime execution"
+  },
+  "limitations": [
+    "Static readers and writers establish client-side field order only. They do not establish server authority, live route, framing, or the numeric opcode of an RTTI packet unless a dispatch table names it.",
+    "All candidate and unknown entries require an isolated live Wine capture against a local stub before promotion."
+  ],
+  "f5": {
+    "status": "kr_static/confirmed",
+    "cstage_dispatcher": {"va": "0xD68C90", "kind": "S->C dispatch", "status": "confirmed"},
+    "known_handlers": [
+      {"opcode": 467, "handler_va": "0x6D9340", "group": "guild", "status": "confirmed"},
+      {"opcode": 474, "handler_va": "0xD769D0", "group": "guild", "reader": ["str", "str", "u32", "u32", "str"], "status": "confirmed"},
+      {"opcode": 478, "handler_va": "0xD76DA0", "group": "guild", "status": "confirmed"},
+      {"opcode": 257, "handler_va": "0x128D3C0", "group": "couple", "status": "confirmed"},
+      {"opcode": 273, "handler_va": "0xD72FD0", "post_handler_va": "0xD87250", "group": "couple", "reader": ["u8", "conditional stage lookup", "conditional u8"], "status": "candidate"},
+      {"opcode": 284, "handler_va": "0x128D120", "group": "couple", "status": "confirmed"},
+      {"opcode": 640, "handler_va": "0xD88830", "group": "couple", "reader": ["type-dependent u32", "type-dependent payload"], "status": "candidate"},
+      {"opcode": 674, "handler_va": "0xD7FA60", "group": "couple", "reader": ["type-dependent payload"], "status": "candidate"}
+    ],
+    "c2s_builders": [
+      {"opcode": 633, "caller_va": "0xD769D0", "builder_va": "0x1164C10", "condition": "blocked guild invite branch", "status": "confirmed"},
+      {"opcode": 670, "caller_vas": ["0x583530", "0x583E80"], "builder_va": "0x1164C10", "status": "confirmed", "body": "request object is serialized through 0x14EBD90/0x14EC120; field meanings and wire framing unknown"}
+    ],
+    "choco_connect": {
+      "stage_handler_va": "0xD58760",
+      "connect_callee_va": "0x13AD4D0",
+      "reader": ["u8 ok", "u8", "u32", "u32 ip", "u16 port"],
+      "callee_fields": ["+0x10 u8", "+0x14 u32", "+0x18 derived endpoint", "+0x1C u32", "+0x20 u16"],
+      "status": "confirmed"
+    },
+    "choco_packet_classes": [
+      {"class": "P_CHOCO_CHATMSG", "vtable_va": "0x16EE2E4", "writer_va": "0x4D5EF0", "reader_va": "0x4D5F20", "writer": ["field +4 via serializer +0x24"], "reader": ["packet subtype gate 0/3/4", "field via reader +0x4C"], "status": "candidate"},
+      {"class": "P_CHOCO_GUILDCHATMSG", "vtable_va": "0x16EE2EC", "writer_va": "0x4D6040", "reader_va": "0x4D6090", "writer": ["field +1 via serializer +0x24", "field +7 via serializer +0x1C"], "reader": ["packet subtype gate 1/4/5", "field via reader +0x4C", "u32 via reader +0x44"], "status": "candidate"},
+      {"class": "P_CHOCO_SHOUTMSG", "vtable_va": "0x16EE2F4", "writer_va": "0x4D61E0", "reader_va": "0x4D62D0", "writer": ["u8 +4", "u8 +5", "u8 +6", "u8 +7", "u8 count", "count elements via serializer +0x24"], "reader": ["packet subtype gate 2/5/6", "four u8", "u8 count <=3", "count elements via reader +0x4C"], "status": "candidate"},
+      {"class": "P_CHOCO_WHISPERMSG", "vtable_va": "0x16EE308", "writer_va": "0x4D64B0", "reader_va": "0x4D6500", "writer": ["field +4 via serializer +0x24", "field +28 via serializer +0x24"], "reader": ["packet subtype gate 3/6/7", "two fields via reader +0x4C"], "status": "candidate"},
+      {"class": "P_CHOCO_TEAMCHATMSG", "vtable_va": "0x16EE314", "writer_va": "0x4D6670", "reader_va": "0x4D66A0", "writer": ["field +4 via serializer +0x24"], "reader": ["one field via reader +0x4C"], "status": "candidate"},
+      {"class": "P_RES_CHOCO_EVENT", "vtable_va": "0x16EE320", "writer_va": "0x4D6750", "reader_va": "0x4D67A0", "writer": ["u8 +4", "u8 +5"], "reader": ["packet type 0", "u8 +4 <=1", "u8 +5 <=1"], "status": "candidate"}
+    ],
+    "notes_and_plaza": {
+      "nexon_note_symbols": [
+        {"name": "CNMGetNoteBoxFunc", "va": "0xAB8717"},
+        {"name": "CNMSendNoteMsgFunc", "va": "0xAB8B87"},
+        {"name": "CNMSendAccuseNoteMsgFunc", "va": "0xAB8B57"},
+        {"name": "CNMSendNoteInfoFunc", "va": "0xAB8B77"},
+        {"name": "CNMGetNoteBox2Func", "va": "0xAB8707"},
+        {"name": "CNMSendNoteExMsgFunc", "va": "0xAB8B67"}
+      ],
+      "lobby_square": [
+        {"name": "CLobbySquareStage::OnSquareUserList", "va": "0x82DA60", "status": "confirmed"},
+        {"name": "CLobbySquareStage::InitGameContext", "va": "0x828460", "status": "confirmed"},
+        {"name": "CLobbySquareStage::OnPacket dispatch", "va": "0x82A530", "status": "confirmed", "known_cases": ["496 -> 0x82DA60", "498 -> 0x82F6B0", "499 -> 0x830430", "500 -> 0x830520", "501 -> 0x830640", "502 -> 0x8307C0", "503 -> 0x8308B0", "504 -> 0x831380", "505 -> 0x8313D0", "506 -> 0x831760", "507 -> 0x831890", "521 -> 0x831CB0", "522 -> 0x831B90", "525 -> 0x82DE80", "643 -> 0x83C840", "644 -> 0x82F6F0"]}
+      ],
+      "status": "candidate",
+      "unknown": ["CHOCOPacket outer framing and numeric chat opcodes", "note body and note route", "LobbySquare movement/chat body semantics and server authority", "friend and ranking bodies"]
+    }
+  },
+  "f6": {
+    "status": "kr_static/confirmed",
+    "cgame_stage_dispatcher": {"va": "0xE5D3A0", "jump_tables": ["0xE5DF9C", "0xE5E0DC"], "status": "confirmed"},
+    "event_routes": [
+      {"opcode": 321, "handler_va": "0xE6AA90", "reader": ["u16 event id", "u8-or-reader result", "u8-or-reader result <=24"], "writer": ["C->S 174: u16 event id", "u16 x", "u16 y", "three u32-derived values"], "guard": "event id <= 0x14E and a matching stage entity must accept", "status": "candidate"},
+      {"opcode": 322, "handler_va": "0xE6AEB0", "reader": ["u16/u8/u32 and repeated item/status fields; branch-dependent"], "status": "candidate"},
+      {"opcode": 323, "handler_va": "0xE6AEB0", "reader": ["same shared event-reward reader; branch-dependent"], "status": "candidate"},
+      {"opcode": 548, "handler_va": "0xE69440", "reader": ["u32", "u8", "u8", "u8", "u8", "u32", "u32", "conditional strings/items"], "status": "candidate"},
+      {"opcode": 549, "handler_va": "0xE69D30", "reader": ["handler delegates to event-state routine"], "status": "candidate"},
+      {"opcode": 553, "handler_va": "0xE69D80", "reader": ["u8", "u16", "u8"], "status": "candidate"},
+      {"opcode": 566, "handler_va": "0xE6D830", "reader": ["branch-dependent RPG reward fields"], "status": "candidate"},
+      {"opcode": 569, "handler_va": "0xE76ED0", "reader": ["branch-dependent stage status"], "status": "candidate"},
+      {"opcode": 568, "handler_va": "0xE75C90", "reader": ["branch-dependent stage status"], "status": "candidate"},
+      {"opcode": 574, "handler_va": "0xE75CB0", "reader": ["branch-dependent stage status"], "status": "candidate"},
+      {"opcode": 576, "handler_va": "0xE763A0", "reader": ["branch-dependent stage status"], "status": "candidate"},
+      {"opcode": 577, "handler_va": "0xE760B0", "reader": ["branch-dependent stage status"], "status": "candidate"}
+    ],
+    "status_guards": [
+      {"handler_va": "0xD7B2B0", "opcodes": [408, 413], "reader": ["u32 status", "branch 0/1/2/3..5"], "effects": ["MagicBox wait/event/error UI", "status field used as branch selector"], "status": "candidate"},
+      {"handler_va": "0xD7B5D0", "opcodes": [409], "reader": ["u8", "opaque block via +0x5C", "six repeated table lookups"], "guard": "u8 must be nonzero", "status": "candidate"},
+      {"handler_va": "0xD7C2C0", "opcodes": [414], "reader": ["u8 guard", "u8 state when nonzero"], "guard": "mode must be 11, 14, or 21; otherwise event error UI", "status": "candidate"},
+      {"handler_va": "0xD852C0", "opcodes": [418, 419], "reader": ["u8", "u16", "u32", "branch-dependent additional u32/string fields"], "status": "candidate"}
+    ],
+    "unknown": ["server-side event reward/status policy", "complete payload names and framing", "CLobbyStage event opcodes and preconditions not represented in the listed dispatch tables", "live event route and reward values"]
+  },
+  "f7": {
+    "status": "kr_static/confirmed",
+    "packet_family": {
+      "dispatch_va": "0x5A3BF0",
+      "packet_type": 666,
+      "subtypes": "19..38 (with gaps handled by default)",
+      "status": "confirmed",
+      "known_rtti_classes": [
+        "CustomMap::P_REQ_CHECK_HASH_VALUE",
+        "CustomMap::P_RES_CHECK_HASH_VALUE",
+        "CustomMap::P_REQ_PUBLISH",
+        "CustomMap::P_RES_PUBLISH",
+        "CustomMap::P_REQ_LOAD",
+        "CustomMap::P_RES_LOAD",
+        "CustomMap::P_REQ_REMOVE",
+        "CustomMap::P_RES_REMOVE",
+        "CustomMap::P_REQ_LOAD_NEW_MAP",
+        "CustomMap::P_REQ_LOAD_BEST",
+        "CustomMap::P_RES_LOAD_NEW_MAP",
+        "CustomMap::P_RES_LOAD_BEST",
+        "CustomMap::P_REQ_LOAD_GOOD_LIST",
+        "CustomMap::P_RES_LOAD_GOOD_LIST",
+        "CustomMap::P_REQ_LOAD_SEARCH",
+        "CustomMap::P_RES_LOAD_SEARCH",
+        "CustomMap::P_FESTA_VOTE",
+        "CustomMap::P_REQ_FESTA_CHANGE_VOTE",
+        "CustomMap::P_REQ_LOAD_FESTA",
+        "CustomMap::P_RES_FESTA_MAP_IDX_LIST",
+        "CustomMap::P_REQ_REPORT",
+        "CustomMap::P_RES_REPORT",
+        "CustomMap::P_REQ_GOOD",
+        "CustomMap::P_RES_ERROR",
+        "CustomMap::P_RES_LOAD_MYPC",
+        "CustomMap::P_REQ_LOAD_MYPC",
+        "CustomMap::P_REQ_REMOVE_ADMIN"
+      ]
+    },
+    "packet_layout_anchors": [
+      {"class": "P_REQ_CHECK_HASH_VALUE", "ctor_va": "0x5AAD60", "writer_va": "0x4D68F0", "reader_va": "0x4D6980", "writer": ["u32 +1", "u32 +2", "field +3", "two global u32 values"], "reader": ["u64", "field via +0x4C", "two u32"], "status": "candidate"},
+      {"class": "P_REQ_PUBLISH", "ctor_va": "0x5AB160", "writer_va": "0x4D6B80", "reader_va": "0x4D6C10", "writer": ["u32 +4", "u32 +8", "field +12", "u8 +36", "u32 +37", "trailing collection"], "reader": ["u64", "field", "u8", "u32", "trailing collection"], "status": "candidate"},
+      {"class": "P_REQ_LOAD", "ctor_va": "0x5AAF60", "writer_va": "0x4D6E60", "reader_va": "0x4D6EC0", "writer": ["field +4", "u8 +28", "u32 +29"], "reader": ["field", "u8", "u32"], "status": "candidate"},
+      {"class": "P_REQ_LOAD_SEARCH", "ctor_va": "0x5AB460", "writer_va": "0x4D6FC0", "reader_va": "0x4D7080", "writer": ["field +4", "u8 +28", "u32 +29", "collection", "u32 +33", "u32 +37", "field +41"], "reader": ["field", "u8", "u32", "collection", "u32", "u32", "field"], "status": "candidate"},
+      {"class": "P_REQ_GOOD", "ctor_va": "0x5AAEC0", "writer_va": "0x4D7350", "reader_va": "0x4D73E0", "writer": ["u8 +4", "field +5", "u8 +29", "u32 +30", "trailing collection"], "reader": ["u8", "field", "u8", "u32", "trailing collection"], "status": "candidate"}
+    ],
+    "editor_and_upload": [
+      {"va": "0x508370", "role": "CustomMap XML/table reader", "fields": ["CustomMap description", "name", "url name", "is map new", "map size", "map slot", "multiserver number", "user level", "user nickname"], "status": "confirmed"},
+      {"va": "0x5091F0", "role": "CustomMap XML/table writer", "status": "confirmed"},
+      {"va": "0x4621C0", "role": "CustomMap bookmark/template reader", "status": "confirmed"},
+      {"va": "0x9BFC80", "role": "CCustomMapUpload constructor/state", "status": "confirmed"},
+      {"va": "0x5B11D0", "role": "upload UI handler; emits upload-failed/success UI and invokes upload state", "status": "confirmed"},
+      {"va": "0x5B1460", "role": "save/upload UI path", "status": "candidate"}
+    ],
+    "room_and_usermap": [
+      {"va": "0xD2ED90", "class": "CUserMap", "rtti_va": "0x19C7E80", "vtable_va": "0x175E38C", "status": "confirmed"},
+      {"va": "0xD72FD0", "role": "room map metadata reader reached from CStage opcode 273", "reader": ["u8 map/index", "conditional table lookup", "u8", "stage callback +0x24C"], "status": "candidate"},
+      {"va": "0x57FD80", "role": "local CustomMap object serializer", "fields": ["description", "name", "url name", "is map new", "map size", "map slot", "multiserver number", "user level", "user nickname"], "status": "confirmed"}
+    ],
+    "unknown": ["numeric wire opcode mapping for packet type 666 subtypes", "outer framing and map tile/blob encoding", "server authority for upload/select/sync", "CUserMap network reader/writer route", "room map metadata meaning beyond the observed reader"]
+  }
+}
