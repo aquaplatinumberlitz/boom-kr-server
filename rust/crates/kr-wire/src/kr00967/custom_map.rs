@@ -2,6 +2,7 @@
 //! Policy source: docs/evidence/content/f7-custom-map-spec.json (design).
 //! Normalized JSON and content pins are for server storage. KR upload and
 //! selection remain unmeasured, and validation grants no approval or authority.
+//! Static anchors come from p233: docs/evidence/content/f5-f6-f7-ingame-wire-re.json.
 
 use std::{
     collections::{BTreeMap, VecDeque},
@@ -265,6 +266,13 @@ pub enum CustomMapWireStatus {
     Unmeasured,
 }
 
+impl CustomMapWireStatus {
+    /// Name used by static anchors; it intentionally retains the existing
+    /// unmeasured status and does not promote live wire acceptance.
+    #[allow(non_upper_case_globals)]
+    pub const UnmeasuredWireContract: Self = Self::Unmeasured;
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum CustomMapWireRoute {
     Upload,
@@ -291,6 +299,87 @@ impl CustomMapWireRoute {
             CustomMapWireStatus::Unmeasured => Err(CustomMapError::UnmeasuredWireContract),
         }
     }
+}
+
+/// Static provenance for the KR 00967 CustomMap packet family.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct CustomMapType666Anchors {
+    pub dispatcher_va: u32,
+    pub packet_type: u32,
+    /// Inclusive bounds of the client switch; gaps can take the default branch.
+    pub subtype_range: (u8, u8),
+    pub upload_ctor_va: u32,
+    pub upload_handler_va: u32,
+    pub usermap_rtti_va: u32,
+    pub usermap_vtable_va: u32,
+    pub room_meta_opcode: u32,
+    pub room_meta_reader_va: u32,
+    pub status: CustomMapWireStatus,
+}
+
+/// The p233 static dispatcher and object anchors for packet type 666.
+/// The local editor and object serializers (`0x508370`, `0x5091F0`,
+/// `0x4621C0`, `0x57FD80`) do not establish a wire layout.
+pub const CUSTOM_MAP_TYPE_666_ANCHORS: CustomMapType666Anchors = CustomMapType666Anchors {
+    dispatcher_va: 0x5A3BF0,
+    packet_type: 666,
+    subtype_range: (19, 38),
+    upload_ctor_va: 0x9BFC80,
+    upload_handler_va: 0x5B11D0,
+    usermap_rtti_va: 0x19C7E80,
+    usermap_vtable_va: 0x175E38C,
+    room_meta_opcode: 273,
+    room_meta_reader_va: 0xD72FD0,
+    status: CustomMapWireStatus::UnmeasuredWireContract,
+};
+
+/// Static reader/writer locations by class, without subtype or wire opcode mappings.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct CustomMapPacketAnchor {
+    pub name: &'static str,
+    pub reader_va: u32,
+    pub writer_va: u32,
+    pub status: CustomMapWireStatus,
+}
+
+pub static CUSTOM_MAP_PACKET_ANCHORS: &[CustomMapPacketAnchor] = &[
+    CustomMapPacketAnchor {
+        name: "P_REQ_CHECK_HASH_VALUE",
+        reader_va: 0x4D6980,
+        writer_va: 0x4D68F0,
+        status: CustomMapWireStatus::UnmeasuredWireContract,
+    },
+    CustomMapPacketAnchor {
+        name: "P_REQ_PUBLISH",
+        reader_va: 0x4D6C10,
+        writer_va: 0x4D6B80,
+        status: CustomMapWireStatus::UnmeasuredWireContract,
+    },
+    CustomMapPacketAnchor {
+        name: "P_REQ_LOAD",
+        reader_va: 0x4D6EC0,
+        writer_va: 0x4D6E60,
+        status: CustomMapWireStatus::UnmeasuredWireContract,
+    },
+    CustomMapPacketAnchor {
+        name: "P_REQ_LOAD_SEARCH",
+        reader_va: 0x4D7080,
+        writer_va: 0x4D6FC0,
+        status: CustomMapWireStatus::UnmeasuredWireContract,
+    },
+    CustomMapPacketAnchor {
+        name: "P_REQ_GOOD",
+        reader_va: 0x4D73E0,
+        writer_va: 0x4D7350,
+        status: CustomMapWireStatus::UnmeasuredWireContract,
+    },
+];
+
+/// Finds a static packet anchor by its RTTI class name.
+pub fn custom_map_anchor(name: &str) -> Option<&'static CustomMapPacketAnchor> {
+    CUSTOM_MAP_PACKET_ANCHORS
+        .iter()
+        .find(|anchor| anchor.name == name)
 }
 
 type ParsedMap = (CustomMapGrid, Vec<u16>, Vec<[u16; 2]>);
