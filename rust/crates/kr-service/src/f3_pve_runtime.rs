@@ -4,10 +4,14 @@
 //! dispatch at `0xE5DE9C` is an opcode-minus-20 jump-table candidate pending
 //! live Wine capture; this module does not claim Wine verification.
 
+use std::collections::HashMap;
+use std::sync::{Mutex, MutexGuard};
+
 use crate::f3_pve_policy::{
     DispatchRejection, F3PvePolicy, MonsterAttackGuard, MonsterAttackRejection, PveModeFamily,
 };
-use kr_wire::kr00967::f3_pve::{F3JumpTableProvenance, MonsterAttackReqCandidate};
+use kr_wire::kr00967::f3_pve::{F3JumpTableProvenance, F3WireStatus, MonsterAttackReqCandidate};
+use serde::Serialize;
 
 pub const MAX_STAGES: u16 = 64;
 pub const MAX_WAVES: u16 = 64;
@@ -428,5 +432,150 @@ impl F3PveRuntime {
         self.phase = Phase::Aborted { stage };
         self.monsters.clear();
         Ok(())
+    }
+}
+
+/// Owns up to `max_rooms` independent PvE sessions. A disabled policy, a zero
+/// capacity, or a poisoned room lock disables access. A typed `F3PvePolicy`
+/// has no invalid fields; malformed policy input is rejected when deserialized.
+#[derive(Default)]
+pub struct F3PveRegistry {
+    policy: F3PvePolicy,
+    max_rooms: usize,
+    rooms: Mutex<HashMap<u32, F3PveRuntime>>,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct F3PveRoomStatus {
+    pub phase: Phase,
+    pub host_id: u32,
+    pub round_epoch: u64,
+    pub monster_count: usize,
+}
+
+#[derive(Debug, Serialize)]
+pub struct F3PveRegistrySnapshot {
+    pub enabled: bool,
+    pub active_rooms: usize,
+    pub max_rooms: usize,
+    pub dispatch: F3PveDispatchSnapshot,
+}
+
+#[derive(Debug, Serialize)]
+pub struct F3PveDispatchSnapshot {
+    pub status: &'static str,
+    pub jump_table_va: String,
+    pub opcode_index_subtrahend: u32,
+}
+
+impl F3PveRegistry {
+    pub fn new(policy: F3PvePolicy, max_rooms: usize) -> Self {
+        Self {
+            policy,
+            max_rooms,
+            rooms: Mutex::new(HashMap::new()),
+        }
+    }
+
+    fn lock_rooms(&self) -> Result<MutexGuard<'_, HashMap<u32, F3PveRuntime>>, RuntimeError> {
+        if !self.policy.enabled || self.max_rooms == 0 {
+            return Err(RuntimeError::DispatchDisabled);
+        }
+        // A panic may have interrupted a session transition. Do not reuse its state.
+        self.rooms
+            .lock()
+            .map_err(|_| RuntimeError::DispatchDisabled)
+    }
+
+    /// Start a session in briefing. The caller supplies route evidence and
+    /// the trusted host and epoch. A reused room ID needs a fresh epoch so
+    /// attacks from its previous session cannot match.
+    pub fn start_room(
+        &self,
+        room_id: u32,
+        family: PveModeFamily,
+        evidence: DispatchEvidence,
+        stage: u16,
+        host_id: u32,
+        round_epoch: u64,
+    ) -> Result<(), RuntimeError> {
+        let mut rooms = self.lock_rooms()?;
+        if rooms.contains_key(&room_id) {
+            return Err(RuntimeError::InvalidTransition);
+        }
+        if rooms.len() >= self.max_rooms {
+            return Err(RuntimeError::CapacityExceeded);
+        }
+        let mut runtime = F3PveRuntime::new(self.policy, family, evidence);
+        runtime.begin_briefing(stage, host_id, round_epoch)?;
+        rooms.insert(room_id, runtime);
+        Ok(())
+    }
+
+    /// Apply an attack from an authenticated actor in an existing room.
+    pub fn apply_host_attack(
+        &self,
+        room_id: u32,
+        attack: MonsterAttack,
+    ) -> Result<(), RuntimeError> {
+        self.lock_rooms()?
+            .get_mut(&room_id)
+            .ok_or(RuntimeError::InvalidTransition)?
+            .monster_attack(attack)
+    }
+
+    /// Start the first wave or advance a room whose current wave is defeated.
+    pub fn advance_wave(
+        &self,
+        room_id: u32,
+        wave: u16,
+        spawns: &[MonsterSpawn],
+    ) -> Result<(), RuntimeError> {
+        self.lock_rooms()?
+            .get_mut(&room_id)
+            .ok_or(RuntimeError::InvalidTransition)?
+            .start_wave(wave, spawns)
+    }
+
+    /// Remove a session and free a slot. Unknown rooms return `InvalidTransition`.
+    pub fn end_room(&self, room_id: u32) -> Result<(), RuntimeError> {
+        self.lock_rooms()?
+            .remove(&room_id)
+            .map(|_| ())
+            .ok_or(RuntimeError::InvalidTransition)
+    }
+
+    /// Copy the current room status without holding the lock after return.
+    pub fn room_status(&self, room_id: u32) -> Result<F3PveRoomStatus, RuntimeError> {
+        let rooms = self.lock_rooms()?;
+        let runtime = rooms.get(&room_id).ok_or(RuntimeError::InvalidTransition)?;
+        Ok(F3PveRoomStatus {
+            phase: runtime.phase(),
+            host_id: runtime.host_id.ok_or(RuntimeError::InvalidTransition)?,
+            round_epoch: runtime.round_epoch.ok_or(RuntimeError::InvalidTransition)?,
+            monster_count: runtime.monster_count(),
+        })
+    }
+
+    /// Report registry availability and static wire provenance. Room evidence
+    /// remains caller-owned and cannot change the snapshot's candidate status.
+    pub fn snapshot(&self) -> F3PveRegistrySnapshot {
+        let active_rooms = self.lock_rooms().ok().map(|rooms| rooms.len());
+        let provenance = F3JumpTableProvenance::C_GAME_STAGE;
+        let status = match provenance.status {
+            F3WireStatus::StaticCandidatePendingCapture => {
+                "static_candidate_pending_live_wine_capture"
+            }
+        };
+        F3PveRegistrySnapshot {
+            enabled: active_rooms.is_some(),
+            active_rooms: active_rooms.unwrap_or(0),
+            max_rooms: self.max_rooms,
+            dispatch: F3PveDispatchSnapshot {
+                status,
+                jump_table_va: format!("0x{:X}", provenance.jump_table_va),
+                opcode_index_subtrahend: provenance.opcode_index_subtrahend,
+            },
+        }
     }
 }
