@@ -1,0 +1,120 @@
+{
+  "schema": "kre.f2-wine-probe-r3-r4.v1",
+  "task": "Wave Q — p251",
+  "protocol": "docs/protocol/f2-wine-probe-r3-r4.md",
+  "source": "kr_runtime",
+  "status": "confirmed",
+  "scope": "Quan sát khởi động trận và capture Wine hai client KR 00967; chưa xác nhận luật chơi hoặc quyền quyết định trạng thái.",
+  "provenance": {
+    "build": "KR 00967",
+    "wine": "wine-10.0-20260425 (CachyOS)",
+    "client_copy_sha256_both_roles": "5fcb696d0c36c3b5e161c6a63bf03588f62aedf602eeea7b61941b07e9d40b09",
+    "binary_manifest": {
+      "path": "local/cache/kr-bin/f2f3-probe-r3/bins.json",
+      "sha256": "b4bc3ee1017c1c9a1e88894aee9d5a2f5eb314a4851c0f0a94269c348a69bc60",
+      "git_head": "72635de6bdbf22f75b31f42e7bc4503572370f40",
+      "kr_service_sha256": "6e2e3a40a889a0dd36b88c039c212d60f6d59b1414d2c4dc9446c3a2de99862f"
+    },
+    "raw_root": "local/runs/f2f3-wine-probe",
+    "sources_per_run": ["identities.json", "controller.jsonl", "cleanup.json", "capture-norm.jsonl", "service/rust-events.jsonl"],
+    "batch_summary_sha256": {
+      "r3/batch-summary.json": "c57e34b1f241f59d1ef0d7d8d5c1416cafe8f1ef684e661a22710198161f5500",
+      "r4/batch-summary.json": "b84fee2b665b9456c6b31e6187339535586a2e5eb3407ee0b4e87c16f79235c1"
+    }
+  },
+  "analyzer": {
+    "script": "tools/kr_f2_f3_capture_analyzer.py",
+    "script_sha256": "6fdd0cea25318cb1a98fab81575db0430071a072915e92d790442fabb4e22f02",
+    "command_template": "python3 tools/kr_f2_f3_capture_analyzer.py --host-a \"$PROBE_ROOT/$RUN/capture-norm.jsonl\"",
+    "output_schema": "kre.f2-f3-capture-analysis.v1",
+    "capture_mode": "host_a_only",
+    "authority_candidate": "inconclusive",
+    "authority_status": "unknown",
+    "exit_code_each": 0
+  },
+  "observation_window_sec": 25,
+  "common_opcode_counts": {
+    "C2S": {"6": 2, "67": 2, "81": 1, "82": 1, "87": 2, "95": 1, "96": 2, "97": 1, "99": 2, "104": 1, "266": 2, "528": 2, "544": 6, "549": 4, "567": 2, "585": 2, "741": 4, "742": 2, "744": 6, "745": 6},
+    "S2C": {"14": 2, "17": 2, "86": 1, "87": 1, "91": 3, "106": 4, "110": 12, "117": 5, "121": 2, "153": 2, "196": 2, "197": 2, "238": 4, "241": 2, "291": 2, "582": 2}
+  },
+  "frame_annotation_profile": {
+    "source": "kr_static",
+    "status": "candidate_unmeasured",
+    "idb_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+    "protocol": "docs/protocol/f3-pve-monaction-wire-re.md",
+    "classification": "stage_jump_table",
+    "direction": "S2C",
+    "shared": [
+      {"opcode": 110, "samples": 8, "decode_status": "opaque_static_layout", "body_length": 6, "case_index": 90, "handler_va": "0xe5e2c0"},
+      {"opcode": 153, "samples": 2, "decode_status": "opaque_static_layout", "body_length": 97, "case_index": 133, "handler_va": "0xe5e6d0"},
+      {"opcode": 196, "samples": 2, "decode_status": "opaque_static_layout", "body_length": 7, "case_index": 176, "handler_va": "0xe73760"},
+      {"opcode": 197, "samples": 2, "decode_status": "ok", "body_length": 14, "case_index": 177, "fields": [12345,0,120,30,1], "handler_va": "0xe751f0"}
+    ],
+    "extra": [
+      {"opcode": 170, "samples": 1, "decode_status": "opaque_static_layout", "body_length": 21, "case_index": 150, "handler_va": "0xe85b60", "runs": ["r3/Hamster01", "r4/Wriggle01"]}
+    ]
+  },
+  "withheld_profile": {
+    "direction": "C2S",
+    "opcode": 15,
+    "body_length": 31,
+    "per_run_counts_by_client": {
+      "A": 6,
+      "B": 6
+    },
+    "time_reference": "S2C 153 đầu tiên của cùng client, tính bằng ms.",
+    "accounting": "Frame observer giữ lại vẫn có trong normalized_events và số opcode 15 của analyzer; chưa có giải mã body opcode 15."
+  },
+  "totals": {"runs": 13, "analyzed": 6, "no_normalized_capture": 7, "tcp_frames": 805, "normalized_events": 877, "withheld_frames": 72, "cleanup_deleted_bytes": 60155781334},
+  "successful_runs": [
+    {"run": "r3/Coloring01",
+     "map_code": 213, "batch_status": "ok", "last_phase": "started-ok", "tcp_frames": 135, "normalized_events": 147, "direction_opcode_pairs": 40, "capture_sha256": "c614cc0dfd352d4c6391b007b22f3ee13eee67477964950bb6c86c634e7c5f2a", "additional_opcode_counts": {"C2S": {"15": 35, "127": 2, "190": 3, "715": 8}}, "withheld_first_t153_ms": {"A": 2929.826, "B": 2964.205},
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627368473, "namespace_exit": 0}},
+    {"run": "r3/Hamster01",
+     "map_code": 355, "batch_status": "ok", "last_phase": "started-ok", "tcp_frames": 133, "normalized_events": 145, "direction_opcode_pairs": 41, "capture_sha256": "fe476648248061b8900058141d5e77f912f17ec8abcb48844202e9f00f7af46a", "additional_opcode_counts": {"C2S": {"15": 33, "127": 3, "190": 3, "715": 6}, "S2C": {"170": 1}}, "withheld_first_t153_ms": {"A": 1132.534, "B": 1589.914},
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627368260, "namespace_exit": 0}},
+    {"run": "r3/Gumiho01",
+     "map_code": 344, "batch_status": "ok", "last_phase": "started-ok", "tcp_frames": 134, "normalized_events": 146, "direction_opcode_pairs": 40, "capture_sha256": "208c22ad37a02a8a8a2e0d0049e1fd1e54f3edcec5448f28b0481422f38caf0e", "additional_opcode_counts": {"C2S": {"15": 35, "127": 2, "190": 4, "715": 6}}, "withheld_first_t153_ms": {"A": 758.576, "B": 3003.721},
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627368457, "namespace_exit": 0}},
+    {"run": "r3/SuperFighter16",
+     "map_code": 1075, "batch_status": "ok", "last_phase": "started-ok", "tcp_frames": 136, "normalized_events": 148, "direction_opcode_pairs": 41, "capture_sha256": "f9797c56cd513c8082488f19d4909f06b8b46d96df153a1d93df8a662f1142cd", "additional_opcode_counts": {"C2S": {"15": 37, "59": 1, "127": 2, "190": 3, "715": 6}}, "withheld_first_t153_ms": {"A": 1394.893, "B": 1793.099},
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627368551, "namespace_exit": 0}},
+    {"run": "r4/Rabbit01",
+     "map_code": 920, "batch_status": "ok", "last_phase": "started-ok", "tcp_frames": 134, "normalized_events": 146, "direction_opcode_pairs": 40, "capture_sha256": "14721f690d3636a2969fba3e68749b56518cbafdf213d4c689f6e82bbeb464cb", "additional_opcode_counts": {"C2S": {"15": 35, "127": 2, "190": 4, "715": 6}}, "withheld_first_t153_ms": {"A": 3124.133, "B": 4368.371},
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627368380, "namespace_exit": 0}},
+    {"run": "r4/Wriggle01",
+     "map_code": 1115, "batch_status": "ok", "last_phase": "started-ok", "tcp_frames": 133, "normalized_events": 145, "direction_opcode_pairs": 41, "capture_sha256": "ef3b44a61425f322fe5c03092cdf3c4db75d184fc819c776f23a0a4fea4249a4", "additional_opcode_counts": {"C2S": {"15": 33, "127": 3, "190": 3, "715": 6}, "S2C": {"170": 1}}, "withheld_first_t153_ms": {"A": 1041.755, "B": 1247.953},
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627368256, "namespace_exit": 0}}
+  ],
+  "failed_runs": [
+    {"run": "r3/MonSnowBear07",
+     "last_phase": "r1-ready", "last_phase_from_event_index": 25, "next_phase": "r1-start", "room_setup_writes": 2, "ready_110_writes": 2, "start_121_writes": 0, "native_owned_stream_eof": 2, "start_104_requests": 0,
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627367238, "namespace_exit": 0}},
+    {"run": "r4/CAPong01",
+     "last_phase": "native-lobby", "last_phase_from_event_index": 6, "next_phase": "host-room-setup", "room_setup_writes": 0, "ready_110_writes": 0, "start_121_writes": 0, "native_owned_stream_eof": 0, "room_selected_81": 1, "owner_queue_expired": 2,
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627366714, "namespace_exit": 0}},
+    {"run": "r4/Zzolman01",
+     "last_phase": "r1-ready", "last_phase_from_event_index": 30, "next_phase": "r1-start", "room_setup_writes": 2, "ready_110_writes": 2, "start_121_writes": 0, "native_owned_stream_eof": 1, "start_104_requests": 0,
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627367518, "namespace_exit": 0}},
+    {"run": "r4/PopcadeB01",
+     "last_phase": "r1-ready", "last_phase_from_event_index": 28, "next_phase": "r1-start", "room_setup_writes": 2, "ready_110_writes": 2, "start_121_writes": 0, "native_owned_stream_eof": 1, "start_104_requests": 0,
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627367560, "namespace_exit": 0}},
+    {"run": "r4/PopcadeC01",
+     "last_phase": "r1-ready", "last_phase_from_event_index": 25, "next_phase": "r1-start", "room_setup_writes": 2, "ready_110_writes": 2, "start_121_writes": 0, "native_owned_stream_eof": 2, "start_104_requests": 0,
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627367314, "namespace_exit": 0}},
+    {"run": "r4/MonGolem01",
+     "last_phase": "r1-ready", "last_phase_from_event_index": 25, "next_phase": "r1-start", "room_setup_writes": 2, "ready_110_writes": 2, "start_121_writes": 0, "native_owned_stream_eof": 2, "start_104_requests": 0,
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627367314, "namespace_exit": 0}},
+    {"run": "r4/MonPen01",
+     "last_phase": "r1-ready", "last_phase_from_event_index": 26, "next_phase": "r1-start", "room_setup_writes": 2, "ready_110_writes": 2, "start_121_writes": 0, "native_owned_stream_eof": 1, "start_104_requests": 0,
+     "cleanup": {"namespace_ended": true, "scratch_removed": true, "deleted_bytes": 4627367299, "namespace_exit": 0}}
+  ],
+  "failed_run_defaults": {"batch_status": "failed", "controller_exit_code": 1, "normalized_capture_available": false, "tcp_frames": null, "normalized_events": null},
+  "limits": [
+    "CAPong01 dừng trước host-room-setup; log có account_worker_queue_expired, chưa xác định nguyên nhân gốc hay kết quả retry.",
+    "Sáu lượt qua r1-ready có hai lần ghi S2C 110; log không có yêu cầu bắt đầu 104 hoặc ghi S2C 121. EOF là triệu chứng, chưa xác định xảy ra do đâu.",
+    "Không thấy S2C 185/204 hoặc C2S 132/180 trong sáu capture. Việc không thấy chỉ áp dụng cho cửa sổ đã đo.",
+    "Mốc started-ok giới hạn ở start, hai client load, peer và journal start. Không có đối chứng đổi host hoặc kết quả đủ ván.",
+    "Giá trị giải mã là bản tóm tắt của analyzer; anchor tĩnh không chứng minh client đã thực thi handler hay xác nhận quyền F2/F3."
+  ]
+}
