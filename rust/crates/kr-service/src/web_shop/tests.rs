@@ -102,6 +102,19 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("p.mode"));
     assert!(page.contains("/api/v1/inventory"));
     assert!(page.contains("/api/v1/cosmetics-summary"));
+    let f4_panel = page
+        .split_once("async function loadF4ExtendedStatus(load){")
+        .unwrap()
+        .1
+        .split_once("async function loadEventsStatus")
+        .unwrap()
+        .0;
+    assert!(page.contains("id=\"f4-extended-status\""));
+    assert!(page.contains("loadCustomMaps(load),loadF4ExtendedStatus(load)"));
+    assert!(f4_panel.contains("await api('/api/v1/f4-extended-status')"));
+    assert!(f4_panel.contains("li.textContent=policy.enabled?"));
+    assert!(f4_panel.contains("q('#f4-extended-policies').append(li)"));
+    assert!(!page.contains("/api/v1/f4/claim-milestone"));
     assert!(page.contains("/api/v1/events-status"));
     assert!(page.contains("events-status"));
     assert!(page.contains("/api/v1/custom-maps"));
@@ -252,6 +265,276 @@ fn test_settings() -> crate::account_worker::EconomySettings {
         },
     )
     .unwrap()
+}
+
+const F4_STATUS: &str = "/api/v1/f4-extended-status";
+const F4_CLAIM: &str = "/api/v1/f4/claim-milestone";
+const F4_LUCCI_CLAIM: &str = r#"{"level":2,"kind":"lucci"}"#;
+const F4_CHARACTER: u16 = 17;
+
+fn f4_settings() -> crate::account_worker::EconomySettings {
+    test_settings()
+        .with_extended_policies(
+            serde_json::from_value(json!({
+                "enabled": true, "exp_percent": 125, "lucci_percent": 150,
+                "bonus_cap": {"exp": 100, "lucci": 200},
+                "allowed_rooms": [{"room_group": "local-group", "mode": "normal", "maps": ["LocalMap"]}],
+            }))
+            .unwrap(),
+            serde_json::from_value(json!({
+                "enabled": true,
+                "character_milestones": [
+                    {"character": F4_CHARACTER, "level": 3, "chest": {"sku": "hat.fancy", "quantity": 1}},
+                    {"character": F4_CHARACTER, "level": 2, "chest": {"sku": "hat.fancy", "quantity": 1}},
+                ],
+                "level_up_lucci_table": [
+                    {"character": F4_CHARACTER, "level": 2, "lucci": 75},
+                    {"character": F4_CHARACTER, "level": 4, "lucci": 150},
+                ],
+            }))
+            .unwrap(),
+            serde_json::from_value(json!({
+                "enabled": true, "base_lucci_cap": 1000, "expansion_step": 500,
+                "max_expansions": 2, "max_lucci_cap": 2000,
+            }))
+            .unwrap(),
+        )
+        .unwrap()
+}
+
+fn f4_player_fixture(suffix: &str) -> (TempDir, std::path::PathBuf, accounts::Player) {
+    use crate::accounts::{Admin, Store, TEST_SERIAL};
+
+    let (dir, db) = temp_db(suffix);
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let mut store = Store::open(&db).unwrap();
+    let fixture = rusqlite::Connection::open(&db).unwrap();
+    fixture
+        .execute(
+            "INSERT INTO sqlite_sequence(name,seq) VALUES('accounts',40)",
+            [],
+        )
+        .unwrap();
+    let player = store
+        .create_account(
+            &Admin {
+                actor: "webshop-test",
+                reason: "F4 milestone fixture",
+            },
+            "milestoneuser",
+            "MilestoneUser",
+            b"milestone-test-password",
+            accounts::utc().unwrap(),
+        )
+        .unwrap();
+    assert_ne!(player.account_id, player.player_id);
+    fixture
+        .execute(
+            "INSERT INTO player_profiles (player_id,level) VALUES (?1,3)",
+            [player.player_id],
+        )
+        .unwrap();
+    (dir, db, player)
+}
+
+async fn listen_f4(
+    config: Config,
+    worker: &crate::account_worker::Worker,
+    auth: &WebShopAuth,
+) -> (
+    std::net::SocketAddr,
+    tokio::task::JoinHandle<io::Result<()>>,
+) {
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    let task = tokio::spawn(serve_listener(
+        listener,
+        config,
+        worker.service(),
+        auth.clone(),
+    ));
+    (addr, task)
+}
+
+fn sqlite_version(db: &rusqlite::Connection) -> i64 {
+    db.pragma_query_value(None, "data_version", |row| row.get(0))
+        .unwrap()
+}
+
+#[tokio::test]
+async fn loopback_f4_status_requires_auth_and_exposes_only_public_policy() {
+    use crate::account_worker::{Worker, tests::pause};
+
+    let (_dir, db, player) = f4_player_fixture("f4-status");
+    let observer = rusqlite::Connection::open(&db).unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let token = auth
+        .issue_token_for_milestones(&player, F4_CHARACTER)
+        .unwrap();
+    let revoked = auth.issue_token(player.player_id).unwrap();
+    auth.revoke_token(&revoked);
+    let token = Some(token.as_str());
+    for (settings, expected) in [
+        (
+            test_settings(),
+            json!({
+                "configured": false,
+                "booster_tickets": {"configured": false, "enabled": false, "exp_percent": 100,
+                    "lucci_percent": 100, "bonus_cap": null, "room_rule_count": 0},
+                "level_rewards": {"configured": false, "enabled": false, "chest_rule_count": 0,
+                    "lucci_rule_count": 0, "tiers": []},
+                "lucci_vault": {"configured": false, "enabled": false, "base_lucci_cap": null,
+                    "expansion_step": null, "max_expansions": null, "max_lucci_cap": null},
+            }),
+        ),
+        (
+            f4_settings(),
+            json!({
+                "configured": true,
+                "booster_tickets": {"configured": true, "enabled": true, "exp_percent": 125,
+                    "lucci_percent": 150, "bonus_cap": {"exp": 100, "lucci": 200}, "room_rule_count": 1},
+                "level_rewards": {"configured": true, "enabled": true, "chest_rule_count": 2,
+                    "lucci_rule_count": 2, "tiers": [2, 3, 4]},
+                "lucci_vault": {"configured": true, "enabled": true, "base_lucci_cap": 1000,
+                    "expansion_step": 500, "max_expansions": 2, "max_lucci_cap": 2000},
+            }),
+        ),
+    ] {
+        let worker = Worker::open_with_economy(db.clone(), 4, Duration::from_secs(2), settings)
+            .await
+            .unwrap();
+        let (addr, task) = listen_f4(config(), &worker, &auth).await;
+        let resume = pause(&worker.client()).await;
+        let before = sqlite_version(&observer);
+        for invalid in [None, Some(revoked.as_str())] {
+            for (method, path, body) in [
+                ("GET", F4_STATUS, None),
+                ("POST", F4_CLAIM, Some(F4_LUCCI_CLAIM)),
+            ] {
+                let (code, _, result) = send_http(addr, method, path, invalid, body).await;
+                assert_eq!((code, result), (401, json!({"error": "unauthorized"})));
+            }
+        }
+        let (code, head, result) = send_http(addr, "GET", F4_STATUS, token, None).await;
+        assert_eq!((code, result), (200, expected.clone()));
+        assert!(head.contains("Cache-Control: no-store"));
+        assert_eq!(send_http(addr, "POST", F4_STATUS, token, None).await.0, 405);
+        let query = format!("{F4_STATUS}?player_id=1");
+        assert_eq!(send_http(addr, "GET", &query, token, None).await.0, 400);
+        if expected["configured"] == false {
+            assert_eq!(
+                send_http(addr, "POST", F4_CLAIM, token, Some(F4_LUCCI_CLAIM))
+                    .await
+                    .0,
+                403
+            );
+        }
+        assert_eq!(sqlite_version(&observer), before);
+        resume.send(()).unwrap();
+        task.abort();
+        worker.shutdown().await.unwrap();
+    }
+}
+
+#[tokio::test]
+async fn loopback_f4_claim_is_idempotent_and_blocked_in_unlock_all() {
+    use crate::account_worker::Worker;
+
+    let (_dir, db, player) = f4_player_fixture("f4-claims");
+    let worker = Worker::open_with_economy(db.clone(), 4, Duration::from_secs(2), f4_settings())
+        .await
+        .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let claim_token = auth
+        .issue_token_for_milestones(&player, F4_CHARACTER)
+        .unwrap();
+    let token = Some(claim_token.as_str());
+    let observer = rusqlite::Connection::open(&db).unwrap();
+    let (addr, unlock_task) = listen_f4(
+        Config {
+            unlock_all: true,
+            ..config()
+        },
+        &worker,
+        &auth,
+    )
+    .await;
+    let before = sqlite_version(&observer);
+    let (code, _, result) = send_http(addr, "POST", F4_CLAIM, token, Some(F4_LUCCI_CLAIM)).await;
+    assert_eq!(
+        (code, result),
+        (409, json!({"error": "unlock_all_no_purchase"}))
+    );
+    assert_eq!(sqlite_version(&observer), before);
+    unlock_task.abort();
+
+    let (addr, task) = listen_f4(config(), &worker, &auth).await;
+    let legacy = auth.issue_token(player.player_id).unwrap();
+    assert_eq!(
+        send_http(
+            addr,
+            "POST",
+            F4_CLAIM,
+            Some(legacy.as_str()),
+            Some(F4_LUCCI_CLAIM)
+        )
+        .await
+        .0,
+        403
+    );
+    assert_eq!(send_http(addr, "GET", F4_CLAIM, token, None).await.0, 405);
+    for invalid in [
+        r#"[2,"lucci"]"#,
+        r#"{"level":2,"kind":"lucci","character":17}"#,
+        r#"{"level":65536,"kind":"lucci"}"#,
+        r#"{"level":2,"kind":"invalid"}"#,
+        r#"{"level":3,"kind":"lucci"}"#,
+        r#"{"level":4,"kind":"lucci"}"#, // Configured, but the player has not reached it.
+    ] {
+        assert_eq!(
+            send_http(addr, "POST", F4_CLAIM, token, Some(invalid))
+                .await
+                .0,
+            400
+        );
+    }
+    let oversized = format!(
+        "POST {F4_CLAIM} HTTP/1.1\r\nHost: local\r\nAuthorization: Bearer {}\r\nContent-Length: {}\r\n\r\n",
+        claim_token.as_str(),
+        config().max_body_bytes + 1,
+    );
+    assert_eq!(send_raw_http(addr, &oversized, b"").await.0, 413);
+
+    observer.execute_batch("BEGIN IMMEDIATE").unwrap();
+    let (code, _, result) = send_http(addr, "POST", F4_CLAIM, token, Some(F4_LUCCI_CLAIM)).await;
+    assert_eq!((code, result), (503, json!({"error": "request_failed"})));
+    observer.execute_batch("ROLLBACK").unwrap();
+
+    for replayed in [false, true] {
+        let (code, _, result) =
+            send_http(addr, "POST", F4_CLAIM, token, Some(F4_LUCCI_CLAIM)).await;
+        assert_eq!(
+            (code, result),
+            (
+                200,
+                json!({
+                    "ok": true, "level": 2, "kind": "lucci", "lucci_delta": 75,
+                    "sku_id": null, "replayed": replayed,
+                })
+            )
+        );
+    }
+    let chest_conflict = r#"{"level":2,"kind":"chest"}"#;
+    let (code, _, result) = send_http(addr, "POST", F4_CLAIM, token, Some(chest_conflict)).await;
+    assert_eq!((code, result), (409, json!({"error": "request_failed"})));
+    let (lucci, ledger_rows): (i64, i64) = observer.query_row(
+        "SELECT lucci, (SELECT count(*) FROM ledger_entries) FROM player_profiles WHERE player_id=?1",
+        [player.player_id],
+        |row| Ok((row.get(0)?, row.get(1)?)),
+    ).unwrap();
+    assert_eq!((lucci, ledger_rows), (75, 1));
+    task.abort();
+    worker.shutdown().await.unwrap();
 }
 
 #[tokio::test]

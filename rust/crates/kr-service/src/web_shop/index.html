@@ -3,6 +3,7 @@
 <h1>Boom KR Web Shop</h1><p class="muted">Local shop session</p>
 <label>Bearer token <input id="token" type="password" size="48" autocomplete="off"></label><button onclick="load()">Load</button>
 <p id="balance"></p>
+<h2>F4 Extended</h2><p id="f4-extended-status" class="muted" role="status"></p><ul id="f4-extended-policies"></ul>
 <h2>Events</h2><p id="events-status" class="muted" role="status"></p><ul id="events-list"></ul>
 <h2>Equipped</h2><p id="selection-note" class="muted" hidden>These selections are for this shop session.</p><ul id="equipped"></ul>
 <h3>Cosmetics Projection Status</h3><p id="cosmetics-status" class="muted" role="status"></p><ul id="cosmetics-slots"></ul>
@@ -31,18 +32,38 @@ async function load(){
     if(load!==summaryLoad)return;
     q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
     await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus(),loadEventsStatus(load)]);
-    if(load===summaryLoad)await loadCustomMaps(load);
+    if(load===summaryLoad)await Promise.all([loadCustomMaps(load),loadF4ExtendedStatus(load)]);
   }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
 }
 function clearSummaries(){
   chatStatusLoad++;
   q('#chat-status').textContent='';
+  q('#f4-extended-status').textContent='';
+  q('#f4-extended-policies').replaceChildren();
   q('#events-status').textContent='';
   q('#events-list').replaceChildren();
   q('#cosmetics-status').textContent='';
   q('#cosmetics-slots').replaceChildren();
   q('#custom-maps-status').textContent='';
   q('#custom-maps').replaceChildren();
+}
+async function loadF4ExtendedStatus(load){
+  const status=q('#f4-extended-status');
+  try{
+    const {configured,booster_tickets,level_rewards,lucci_vault}=await api('/api/v1/f4-extended-status');
+    if(load!==summaryLoad)return;
+    const rows=[
+      ['Booster tickets',booster_tickets,`${booster_tickets.exp_percent}% EXP · ${booster_tickets.lucci_percent}% Lucci`],
+      ['Level rewards',level_rewards,`${level_rewards.tiers.length} tiers · ${level_rewards.chest_rule_count} chest / ${level_rewards.lucci_rule_count} Lucci rules`],
+      ['Lucci vault',lucci_vault,`Base cap: ${lucci_vault.base_lucci_cap} Lucci`],
+    ];
+    status.textContent=configured?'Configured policies':'All policies use defaults';
+    for(const [label,policy,summary] of rows){
+      const li=document.createElement('li');
+      li.textContent=policy.enabled?`${label}: Enabled · ${summary}`:`${label}: Disabled`;
+      q('#f4-extended-policies').append(li);
+    }
+  }catch(e){if(load===summaryLoad)status.textContent='F4 Extended status unavailable'}
 }
 async function loadEventsStatus(load){
   try{
