@@ -2,8 +2,8 @@
 #![forbid(unsafe_code)]
 use kr_service::{
     accounts::{
-        self, Admin, AuditFilter, ChatMuteReason, Error, HistoryFilter, ItemGrant, SCHEMA_VERSION,
-        Store, Token,
+        self, Admin, AuditFilter, AuditRow, ChatMuteReason, Error, HistoryFilter, ItemGrant,
+        SCHEMA_VERSION, Store, Token,
     },
     choco_chat::{F5PlazaZone, F5SocialPolicy},
     custom_map_store::CustomMapPolicy,
@@ -14,16 +14,19 @@ use kr_service::{
         BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
         PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
     },
-    f6_policy::F6EventPolicy,
+    f6_policy::{F6EventPolicy, F6QuotaTracker, QuotaRejection},
+    f6_runtime::{ClaimError, ClaimOutcome, F6Claim, F6EventRuntime, F6Reward},
     operations::{self, LiveCommand, RoomTarget},
 };
 use serde::{
-    Deserialize,
+    Deserialize, Serialize,
     de::{DeserializeSeed, Deserializer, MapAccess, SeqAccess, Visitor},
 };
 use serde_json::{Value, json};
+use sha2::{Digest, Sha256};
 use std::{
-    ffi::OsString,
+    collections::{BTreeMap, HashMap},
+    ffi::{OsStr, OsString},
     io::{self, Read},
     path::Path,
 };
@@ -409,10 +412,9 @@ fn f4_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
     Ok(json!({"default_enabled": false, "policies": policies}))
 }
 
-fn f3_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
-    let default = F3PvePolicy::default();
-    let policy: F3PvePolicy = match policy_path {
-        None => default,
+fn load_f3_policy(policy_path: Option<&Path>) -> io::Result<F3PvePolicy> {
+    match policy_path {
+        None => Ok(F3PvePolicy::default()),
         Some(path) => {
             validate_policy_path(path, "f3_pve_policy")?;
             let contents = std::fs::read_to_string(path)?;
@@ -421,9 +423,13 @@ fn f3_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
                     io::ErrorKind::InvalidData,
                     "invalid f3_pve_policy configuration",
                 )
-            })?
+            })
         }
-    };
+    }
+}
+
+fn f3_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
+    let policy = load_f3_policy(policy_path)?;
     let monster_s1_dispatch = match policy.ensure_dispatch_allowed(PveModeFamily::MonsterS1) {
         Ok(()) => "allowed",
         Err(DispatchRejection::Disabled) => "disabled",
@@ -435,7 +441,7 @@ fn f3_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
         PveAuthority::Unmeasured => "unmeasured",
     };
     Ok(json!({
-        "default_enabled": default.enabled,
+        "default_enabled": F3PvePolicy::default().enabled,
         "enabled": policy.enabled,
         "authority_default": "unmeasured",
         "dispatch": {"monster_s1": monster_s1_dispatch},
@@ -504,14 +510,20 @@ fn f6_policy_check(policy_path: Option<&Path>, at_unix_secs: Option<i64>) -> io:
     }))
 }
 
-fn f7_policy_check(policy_path: Option<&Path>) -> Result<Value, Box<dyn std::error::Error>> {
-    let policy = match policy_path {
+fn load_f7_policy(
+    policy_path: Option<&Path>,
+) -> Result<CustomMapPolicy, Box<dyn std::error::Error>> {
+    Ok(match policy_path {
         None => CustomMapPolicy::default(),
         Some(path) => {
             validate_policy_path(path, "f7_custom_map_policy")?;
             CustomMapPolicy::from_path(path)?
         }
-    };
+    })
+}
+
+fn f7_policy_check(policy_path: Option<&Path>) -> Result<Value, Box<dyn std::error::Error>> {
+    let policy = load_f7_policy(policy_path)?;
     Ok(json!({
         "default_enabled": false,
         "enabled": policy.enabled,
@@ -521,13 +533,14 @@ fn f7_policy_check(policy_path: Option<&Path>) -> Result<Value, Box<dyn std::err
     }))
 }
 
-fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
-    let policy = match policy_path {
-        None => F5SocialPolicy::default(),
+fn load_f5_policy(policy_path: Option<&Path>) -> io::Result<F5SocialPolicy> {
+    match policy_path {
+        None => Ok(F5SocialPolicy::default()),
         Some(path) => {
             validate_policy_path(path, "f5_social_policy")?;
             let contents = std::fs::read_to_string(path)?;
-            if !contents.trim_start().starts_with('{') {
+            if !contents.trim_start().starts_with('{') || reject_duplicate_json(&contents).is_err()
+            {
                 return Err(io::Error::new(
                     io::ErrorKind::InvalidData,
                     "invalid f5_social_policy configuration",
@@ -538,9 +551,22 @@ fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
                     error.kind(),
                     format!("invalid f5_social_policy configuration: {error}"),
                 )
-            })?
+            })
         }
-    };
+    }
+}
+
+fn f5_all_disabled(policy: &F5SocialPolicy) -> bool {
+    !policy.whisper
+        && !policy.guild_chat
+        && policy.megaphone.is_none()
+        && policy.note_inbox_cap.is_none()
+        && !policy.couple
+        && policy.plaza_zones.is_empty()
+}
+
+fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
+    let policy = load_f5_policy(policy_path)?;
     let plaza_names = policy
         .plaza_zones
         .keys()
@@ -564,12 +590,364 @@ fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
             "count": plaza_names.len(),
             "names": plaza_names,
         },
-        "all_disabled": !policy.whisper
-            && !policy.guild_chat
-            && policy.megaphone.is_none()
-            && policy.note_inbox_cap.is_none()
-            && !policy.couple
-            && policy.plaza_zones.is_empty(),
+        "all_disabled": f5_all_disabled(&policy),
+    }))
+}
+
+const POLICY_AUDIT_USAGE: &str = "usage: kr-admin policy-audit [--f3-policy PATH] [--f4-policy PATH] [--f5-policy PATH] [--f6-policy PATH] [--f7-policy PATH]";
+const F6_CLAIM_USAGE: &str = "usage: kr-admin f6-claim-event --db PATH --f6-policy PATH [--account LOGIN] [--player-id ID] --event-id ID --now-unix SECS --operator NAME --reason TEXT [--claim-id ID] (--lucci AMOUNT | --sku-id SKU [--quantity N] [--max-stack N | --duration-seconds SECS])";
+
+type CliResult<T> = Result<T, Box<dyn std::error::Error>>;
+
+struct Options<'a>(BTreeMap<&'a str, &'a OsStr>);
+
+impl<'a> Options<'a> {
+    fn parse(args: &'a [OsString], allowed: &[&str], usage: &'static str) -> CliResult<Self> {
+        let mut options = BTreeMap::new();
+        for pair in args.chunks(2) {
+            let [flag, value] = pair else {
+                return Err(usage.into());
+            };
+            let flag = flag.to_str().ok_or(usage)?;
+            if !allowed.contains(&flag) || options.insert(flag, value.as_os_str()).is_some() {
+                return Err(usage.into());
+            }
+        }
+        Ok(Self(options))
+    }
+
+    fn path(&'a self, flag: &str) -> Option<&'a Path> {
+        self.0.get(flag).map(Path::new)
+    }
+
+    fn value<T: std::str::FromStr>(&self, flag: &str) -> CliResult<Option<T>> {
+        self.0
+            .get(flag)
+            .map(|value| {
+                value
+                    .to_str()
+                    .and_then(|value| value.parse().ok())
+                    .ok_or_else(|| format!("invalid {flag}").into())
+            })
+            .transpose()
+    }
+
+    fn text(&self, flag: &str) -> CliResult<Option<&'a str>> {
+        self.0
+            .get(flag)
+            .map(|value| {
+                value
+                    .to_str()
+                    .ok_or_else(|| format!("invalid {flag}").into())
+            })
+            .transpose()
+    }
+}
+
+fn policy_audit(args: &[OsString]) -> CliResult<Value> {
+    let flags = [
+        "--f3-policy",
+        "--f4-policy",
+        "--f5-policy",
+        "--f6-policy",
+        "--f7-policy",
+    ];
+    let options = Options::parse(args, &flags, POLICY_AUDIT_USAGE)?;
+    let [f3, f4, f5, f6, f7] = flags.map(|flag| options.path(flag));
+    let f3 = load_f3_policy(f3)?;
+    let (f4, _) = load_f4_policy(f4)?;
+    let f5 = load_f5_policy(f5)?;
+    let f6 = load_f6_policy(f6)?;
+    let f7 = load_f7_policy(f7)?;
+    Ok(json!({
+        "F3": {"enabled": f3.enabled},
+        "F4": {"enabled": f4.powerup_kits.enabled || f4.booster_tickets.enabled
+            || f4.titles.enabled || f4.level_rewards.enabled || f4.lucci_vault.enabled
+            || f4.record_erasers.enabled || f4.gift_coupons.enabled
+            || f4.second_password.enabled || f4.upgrades.enabled},
+        "F5": {"enabled": !f5_all_disabled(&f5)},
+        // Report opt-ins, even when their scheduled windows have not started.
+        "F6": {"enabled": f6.enabled_systems().next().is_some()
+            || f6.enabled_extended_systems().next().is_some()},
+        "F7": {"enabled": f7.enabled},
+    }))
+}
+
+const F6_RUNTIME_ACTOR: &str = "f6-event-runtime";
+const F6_CLAIM_OP: &str = "f6_claim_event";
+const F6_CLAIM_TARGET: &str = "f6_event_claim";
+
+#[derive(Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct F6ClaimAudit {
+    digest: String,
+    event_id: String,
+    season_key: Option<String>,
+}
+
+fn audit_rows(store: &Store, filter: impl Fn() -> AuditFilter) -> Result<Vec<AuditRow>, Error> {
+    let mut before_id = None;
+    let mut rows = Vec::new();
+    loop {
+        let page = store.operator_audit(AuditFilter {
+            before_id,
+            limit: Some(100),
+            ..filter()
+        })?;
+        let Some(last) = page.last() else {
+            return Ok(rows);
+        };
+        before_id = Some(last.id);
+        rows.extend(page);
+    }
+}
+
+fn f6_policy_rejection(rejection: QuotaRejection) -> Box<dyn std::error::Error> {
+    format!("F6 claim rejected: {rejection:?}").into()
+}
+
+/// The runtime persists claim fingerprints but holds quotas in memory. For
+/// this one-shot CLI, pair each committed grant with its operator audit so
+/// subsequent invocations can count grants by event, player and season.
+fn check_f6_claim_history(
+    store: &Store,
+    policy: &F6EventPolicy,
+    claim: &F6ClaimAudit,
+    player_id: i64,
+    now: i64,
+) -> CliResult<()> {
+    let incomplete = || "incomplete F6 claim audit history";
+    let mut metadata = HashMap::new();
+    for row in audit_rows(store, || AuditFilter {
+        operation: Some(F6_CLAIM_OP.into()),
+        target_kind: Some(F6_CLAIM_TARGET.into()),
+        result: Some("ok".into()),
+        ..AuditFilter::default()
+    })? {
+        let record: F6ClaimAudit =
+            serde_json::from_str(row.target_id.as_deref().ok_or_else(incomplete)?)
+                .map_err(|_| incomplete())?;
+        if metadata.insert(record.digest.clone(), record).is_some() {
+            return Err(incomplete().into());
+        }
+    }
+    let (mut hourly, mut minute, mut daily, mut seasonal) = (0u64, 0u64, 0u64, 0u64);
+    for row in audit_rows(store, || AuditFilter {
+        actor: Some(F6_RUNTIME_ACTOR.into()),
+        ..AuditFilter::default()
+    })? {
+        let (digest, _) = row
+            .reason
+            .strip_prefix("f6:v1:")
+            .and_then(|reason| reason.split_once(':'))
+            .ok_or_else(incomplete)?;
+        let previous = metadata.remove(digest).ok_or_else(incomplete)?;
+        if digest == claim.digest {
+            return Err("duplicate F6 claim".into());
+        }
+        if previous.event_id != claim.event_id {
+            continue;
+        }
+        let target = row
+            .target_id
+            .as_deref()
+            .and_then(|id| id.parse::<i64>().ok())
+            .filter(|_| row.target_kind.as_deref() == Some("player"))
+            .ok_or_else(incomplete)?;
+        if row.at_utc > now {
+            return Err(f6_policy_rejection(QuotaRejection::ClockRegression));
+        }
+        minute += u64::from(row.at_utc / 60 == now / 60);
+        if target == player_id {
+            hourly += u64::from(row.at_utc / 3_600 == now / 3_600);
+            daily += u64::from(row.at_utc / 86_400 == now / 86_400);
+            seasonal += u64::from(previous.season_key == claim.season_key);
+        }
+    }
+    if !metadata.is_empty() {
+        return Err(incomplete().into());
+    }
+
+    let extended = policy
+        .enabled_extended_systems()
+        .find(|(name, _)| *name == claim.event_id);
+    let rates = match extended {
+        Some((_, system)) => system.rate_caps,
+        None => {
+            policy
+                .enabled_systems()
+                .find(|(name, _)| *name == claim.event_id)
+                .ok_or(Error::InvalidInput)?
+                .1
+                .rate_caps
+        }
+    };
+    if hourly >= u64::from(rates.per_account_per_hour) {
+        return Err(f6_policy_rejection(QuotaRejection::AccountQuotaExceeded));
+    }
+    if minute >= u64::from(rates.global_per_minute) {
+        return Err(f6_policy_rejection(QuotaRejection::GlobalQuotaExceeded));
+    }
+    if let Some((_, system)) = extended {
+        if daily >= u64::from(system.max_grants_per_day) {
+            return Err(f6_policy_rejection(
+                QuotaRejection::ExtendedDailyQuotaExceeded,
+            ));
+        }
+        if seasonal >= u64::from(system.max_grants_per_season) {
+            return Err(f6_policy_rejection(
+                QuotaRejection::ExtendedSeasonQuotaExceeded,
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn f6_reward<'a>(options: &Options<'a>) -> CliResult<F6Reward<'a>> {
+    let lucci = options.value("--lucci")?;
+    let sku_id = options.text("--sku-id")?;
+    let quantity = options.value("--quantity")?;
+    let max_stack = options.value("--max-stack")?;
+    let duration_seconds = options.value("--duration-seconds")?;
+    match (lucci, sku_id, quantity, max_stack, duration_seconds) {
+        (Some(amount), None, None, None, None) => Ok(F6Reward::Lucci { amount }),
+        (None, Some(sku_id), quantity, max_stack, duration_seconds) => Ok(F6Reward::Item {
+            sku_id,
+            quantity: quantity.unwrap_or(1),
+            grant: match (max_stack, duration_seconds) {
+                (None, None) => ItemGrant::Permanent,
+                (Some(max_stack), None) => ItemGrant::Stackable { max_stack },
+                (None, Some(duration_seconds)) => ItemGrant::Timed { duration_seconds },
+                _ => return Err(F6_CLAIM_USAGE.into()),
+            },
+        }),
+        _ => Err(F6_CLAIM_USAGE.into()),
+    }
+}
+
+fn f6_claim_event(args: &[OsString]) -> CliResult<Value> {
+    let options = Options::parse(
+        args,
+        &[
+            "--db",
+            "--f6-policy",
+            "--account",
+            "--player-id",
+            "--event-id",
+            "--now-unix",
+            "--operator",
+            "--reason",
+            "--claim-id",
+            "--lucci",
+            "--sku-id",
+            "--quantity",
+            "--max-stack",
+            "--duration-seconds",
+        ],
+        F6_CLAIM_USAGE,
+    )?;
+    let db = options.path("--db").ok_or(F6_CLAIM_USAGE)?;
+    let policy_path = options.path("--f6-policy").ok_or(F6_CLAIM_USAGE)?;
+    let event_id = options.text("--event-id")?.ok_or(F6_CLAIM_USAGE)?;
+    let now = options.value("--now-unix")?.ok_or(F6_CLAIM_USAGE)?;
+    let admin = Admin {
+        actor: options.text("--operator")?.ok_or(F6_CLAIM_USAGE)?,
+        reason: options.text("--reason")?.ok_or(F6_CLAIM_USAGE)?,
+    };
+    admin.validate()?;
+    if admin.actor == F6_RUNTIME_ACTOR {
+        return Err("reserved F6 runtime operator".into());
+    }
+    let account = options.text("--account")?;
+    let player_id = options.value("--player-id")?;
+    if account.is_none() && player_id.is_none() {
+        return Err(F6_CLAIM_USAGE.into());
+    }
+    let claim_id = options.text("--claim-id")?;
+    if claim_id.is_some_and(|id| !(1..=128).contains(&id.len()) || id.chars().any(char::is_control))
+    {
+        return Err("invalid --claim-id".into());
+    }
+    let reward = f6_reward(&options)?;
+
+    let policy = load_f6_policy(Some(policy_path))?;
+    // Check the policy before touching the database; the player is resolved
+    // under the instance lock and the runtime checks the real ID on grant.
+    policy
+        .check_operation(&mut F6QuotaTracker::default(), event_id, 1, now)
+        .map_err(f6_policy_rejection)?;
+    let _instance = operations::lock_database(db)?;
+    let mut store = Store::open_existing(db)?;
+    let account_player_id = account
+        .map(|login| {
+            store
+                .lookup(login)
+                .map(|player| player.player_id)
+                .map_err(|error| format!("F6 account lookup failed: {error}"))
+        })
+        .transpose()?;
+    let player_id = match (player_id, account_player_id) {
+        (Some(pid), Some(apid)) if pid != apid => {
+            return Err("--account and --player-id identify different players".into());
+        }
+        (Some(pid), _) | (None, Some(pid)) => pid,
+        (None, None) => return Err(F6_CLAIM_USAGE.into()),
+    };
+    store
+        .get_profile(player_id)
+        .map_err(|error| format!("F6 player lookup failed: {error}"))?;
+
+    // Scope an operator-supplied occurrence ID to the event and player.
+    // Without one, each player can claim that event only once.
+    let identity =
+        serde_json::to_vec(&("kr-admin/f6-claim-event/v1", event_id, player_id, claim_id))?;
+    let key = Sha256::digest(&identity)
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect::<String>();
+    let audit = F6ClaimAudit {
+        digest: Sha256::digest(key.as_bytes())
+            .iter()
+            .map(|byte| format!("{byte:02x}"))
+            .collect(),
+        event_id: event_id.into(),
+        season_key: policy
+            .enabled_extended_systems()
+            .find(|(name, _)| *name == event_id)
+            .map(|(_, system)| system.season_key.clone()),
+    };
+    check_f6_claim_history(&store, &policy, &audit, player_id, now)?;
+    let target_id = serde_json::to_string(&audit)?;
+    let mut runtime = F6EventRuntime::new(&store, policy)?;
+    match runtime.claim(
+        F6Claim {
+            key: &key,
+            system: event_id,
+            player_id,
+            reward,
+        },
+        now,
+    ) {
+        Ok(ClaimOutcome::Granted) => {}
+        Ok(ClaimOutcome::Replayed) => return Err("duplicate F6 claim".into()),
+        Err(ClaimError::Policy(rejection)) => return Err(f6_policy_rejection(rejection)),
+        Err(ClaimError::Accounts(error)) => return Err(error.into()),
+        Err(error) => return Err(format!("F6 claim rejected: {error:?}").into()),
+    }
+
+    // The grant and runtime audit have already committed atomically. If
+    // attribution fails or the process dies here, future claims fail closed
+    // on the missing metadata instead of resetting quotas or repeating grants.
+    let operator_audit_id = store
+        .operator_event(&admin, F6_CLAIM_OP, (F6_CLAIM_TARGET, &target_id), "ok")
+        .map_err(|error| format!("F6 grant committed; operator audit failed: {error}"))?;
+    Ok(json!({
+        "granted": true,
+        "event_id": event_id,
+        "player_id": player_id,
+        "claimed_at_unix": now,
+        "reward": reward,
+        "operator_audit_request_id": operator_audit_id,
     }))
 }
 
@@ -839,6 +1217,8 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             [option, path] if option == "--policy" => f5_policy_check(Some(Path::new(path)))?,
             _ => return Err("usage: kr-admin f5-policy-check [--policy PATH]".into()),
         },
+        [flag, options @ ..] if flag == "f6-claim-event" => f6_claim_event(options)?,
+        [flag, options @ ..] if flag == "policy-audit" => policy_audit(options)?,
         [flag, dir] if flag == "private-dir" => {
             kr_service::platform::provision_private_dir(Path::new(dir))?;
             json!({"ok":true})
@@ -863,7 +1243,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]".into()),
+        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F6_CLAIM_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
     })
 }
 fn main() {
