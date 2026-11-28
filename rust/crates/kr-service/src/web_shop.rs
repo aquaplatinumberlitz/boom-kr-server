@@ -6,12 +6,16 @@ mod tests;
 use crate::{
     account_worker::{AccountService, Error, O1SessionCosmetics},
     accounts::{
-        self, CatalogAccess, PlayerProfile, ShopCatalog, ShopCategory, ShopItem, UsableItem,
+        self, CatalogAccess, ItemUpgradeOperation, LedgerEntry, PlayerProfile,
+        RecordEraserOperation, ShopCatalog, ShopCategory, ShopItem, UsableItem,
     },
     accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
     choco_chat::F5SocialPolicy,
     custom_map_store::{CustomMapStore, CustomMapStoreError},
-    f4_extended_policy::{Decision, MilestoneKind, PolicyError},
+    f4_extended_policy::{
+        BASIS_POINTS, CouponRequest, Decision, MilestoneKind, OperationKey, PolicyError,
+        RecordScope, UpgradeFamily,
+    },
     f6_policy::F6EventPolicy,
 };
 use http::{Request, Response, Status};
@@ -19,6 +23,7 @@ use kr_wire::kr00967::cosmetics::{
     CosmeticTarget, INVENTORY_CAPTURE_GAP, INVENTORY_LAYOUT_STATUS, ProjectionStatus,
     ProjectionSurface, UNMEASURED_WIRE_GAP, validate_mutual_exclusion,
 };
+use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
@@ -41,6 +46,7 @@ use zeroize::Zeroizing;
 
 const TOKEN_CAPACITY: usize = 1024;
 const TOKEN_HEX_LEN: usize = 64;
+const COUPONS_PER_TOKEN: usize = 32;
 const PAGE: &str = include_str!("web_shop/index.html");
 
 #[derive(Clone, Deserialize)]
@@ -117,12 +123,20 @@ struct MilestoneContext {
     character: u16,
 }
 
+#[derive(Clone)]
+struct LocalCoupon {
+    account: u64,
+    offer: String,
+    issued_at: u64,
+}
+
 struct Session {
     digest: TokenDigest,
     player_id: i64,
     expires_at: Instant,
     cosmetics: Option<O1SessionCosmetics>,
     milestone: Option<MilestoneContext>,
+    coupons: HashMap<u64, LocalCoupon>,
 }
 
 /// The host issues tokens only after binding an authenticated player. Clones
@@ -163,6 +177,44 @@ impl WebShopAuth {
             None,
             Some(MilestoneContext { account, character }),
         )
+    }
+
+    /// Attach an already issued local coupon to the intended player's live
+    /// token. The trusted host supplies the globally unique ID, offer and
+    /// original UTC issue time; the portal does not issue coupons over HTTP.
+    pub fn bind_local_coupon(
+        &self,
+        token: &WebShopToken,
+        player: &accounts::Player,
+        coupon_id: u64,
+        offer: &str,
+        issued_at: u64,
+    ) -> io::Result<()> {
+        let account = u64::try_from(player.account_id)
+            .ok()
+            .filter(|&id| id != 0)
+            .ok_or_else(|| invalid("invalid web shop account"))?;
+        if coupon_id == 0 || !(1..=128).contains(&offer.len()) {
+            return Err(invalid("invalid local coupon"));
+        }
+        self.with_session(&token_digest(token.as_str()), |session| {
+            if session.player_id != player.player_id
+                || session.coupons.len() >= COUPONS_PER_TOKEN
+                || session.coupons.contains_key(&coupon_id)
+            {
+                return Err(invalid("cannot bind local coupon"));
+            }
+            session.coupons.insert(
+                coupon_id,
+                LocalCoupon {
+                    account,
+                    offer: offer.to_owned(),
+                    issued_at,
+                },
+            );
+            Ok(())
+        })
+        .ok_or_else(|| invalid("web shop session unavailable"))?
     }
 
     pub(crate) async fn launcher_operation(&self) -> tokio::sync::OwnedMutexGuard<()> {
@@ -212,6 +264,7 @@ impl WebShopAuth {
             expires_at,
             cosmetics: None,
             milestone,
+            coupons: HashMap::new(),
         });
         Ok(WebShopToken(token))
     }
@@ -449,6 +502,36 @@ struct Purchase {
 struct MilestoneInput {
     level: u16,
     kind: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct RedeemCouponInput {
+    coupon_id: u64,
+    request_id: u64,
+    /// These fields are supplied by a trusted local issuer. A coupon bound to
+    /// a token by `bind_local_coupon` takes precedence over them.
+    offer: Option<String>,
+    issued_to: Option<u64>,
+    issued_at: Option<u64>,
+    locally_issued: Option<bool>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct EraseRecordInput {
+    sku: String,
+    scope: RecordScope,
+    request_id: u64,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct UpgradeItemInput {
+    sku: String,
+    family: UpgradeFamily,
+    level: u16,
+    request_id: u64,
 }
 
 #[derive(Deserialize)]
@@ -697,11 +780,19 @@ fn f4_extended_status(service: &AccountService) -> Response {
     let booster = settings.booster_ticket_policy();
     let levels = settings.level_reward_policy();
     let vault = settings.lucci_vault_policy();
+    let coupons = settings.gift_coupon_policy();
+    let erasers = settings.record_eraser_policy();
+    let upgrades = settings.upgrade_policy();
+    let titles = settings.title_policy();
     // The service stores effective policies, without the source file or a
     // presence flag. Report whether each differs from its disabled default.
     let booster_configured = *booster != Default::default();
     let levels_configured = *levels != Default::default();
     let vault_configured = *vault != Default::default();
+    let coupons_configured = *coupons != Default::default();
+    let erasers_configured = *erasers != Default::default();
+    let upgrades_configured = *upgrades != Default::default();
+    let titles_configured = *titles != Default::default();
     let chests = levels.character_milestones.as_deref().unwrap_or_default();
     let lucci = levels.level_up_lucci_table.as_deref().unwrap_or_default();
     let tiers: BTreeSet<_> = chests
@@ -710,7 +801,8 @@ fn f4_extended_status(service: &AccountService) -> Response {
         .chain(lucci.iter().map(|row| row.level))
         .collect();
     Response::json(&json!({
-        "configured": booster_configured || levels_configured || vault_configured,
+        "configured": booster_configured || levels_configured || vault_configured
+            || coupons_configured || erasers_configured || upgrades_configured || titles_configured,
         "booster_tickets": {
             "configured": booster_configured,
             "enabled": booster.enabled,
@@ -735,6 +827,26 @@ fn f4_extended_status(service: &AccountService) -> Response {
             "expansion_step": vault.expansion_step,
             "max_expansions": vault.max_expansions,
             "max_lucci_cap": vault.max_lucci_cap,
+        },
+        "gift_coupons": {
+            "configured": coupons_configured,
+            "enabled": coupons.enabled,
+            "offer_count": coupons.coupon_offers.len(),
+        },
+        "record_erasers": {
+            "configured": erasers_configured,
+            "enabled": erasers.enabled,
+            "eraser_count": erasers.erasers.len(),
+        },
+        "upgrades": {
+            "configured": upgrades_configured,
+            "enabled": upgrades.enabled,
+            "recipe_count": upgrades.recipes.len(),
+        },
+        "titles": {
+            "configured": titles_configured,
+            "enabled": titles.enabled,
+            "title_count": titles.unlock_table.as_ref().map_or(0, Vec::len),
         },
     }))
 }
@@ -784,6 +896,180 @@ async fn claim_milestone(
         "lucci_delta": entry.lucci_delta,
         "sku_id": entry.sku_id,
     })))
+}
+
+fn f4_mutation_input<T: DeserializeOwned>(
+    config: &Config,
+    request: &Request,
+    enabled: bool,
+) -> Result<T, Status> {
+    request.require_method("POST")?;
+    if config.unlock_all {
+        return Err(Status::UnlockAllNoPurchase);
+    }
+    if !enabled {
+        return Err(Status::Forbidden);
+    }
+    request.json_object()
+}
+
+fn f4_mutation_result(result: Result<Decision<LedgerEntry>, Error>) -> Result<Response, Status> {
+    match result {
+        Ok(Decision::Apply(entry)) => Ok(Response::json(&json!({
+            "ok": true,
+            "lucci_delta": entry.lucci_delta,
+            "sku_id": entry.sku_id,
+        }))),
+        Ok(Decision::Replay(_))
+        | Err(Error::Backend(
+            accounts::Error::InsufficientFunds
+            | accounts::Error::InsufficientQuantity
+            | accounts::Error::Exhausted,
+        )) => Err(Status::Conflict),
+        Err(error) => Err(error.into()),
+    }
+}
+
+async fn redeem_coupon(
+    config: &Config,
+    service: &AccountService,
+    auth: &WebShopAuth,
+    digest: &TokenDigest,
+    request: &Request,
+) -> Result<Response, Status> {
+    let input: RedeemCouponInput = f4_mutation_input(
+        config,
+        request,
+        service.settings().gift_coupon_policy().enabled,
+    )?;
+    let (player, coupon) = auth
+        .with_session(digest, |session| {
+            (
+                session.player_id,
+                session.coupons.get(&input.coupon_id).cloned(),
+            )
+        })
+        .ok_or(Status::Unauthorized)?;
+    let coupon = coupon
+        .or_else(|| {
+            if input.locally_issued != Some(true) {
+                return None;
+            }
+            Some(LocalCoupon {
+                account: input.issued_to?,
+                offer: input.offer?,
+                issued_at: input.issued_at?,
+            })
+        })
+        .ok_or(Status::BadRequest)?;
+    if input
+        .locally_issued
+        .is_some_and(|locally_issued| !locally_issued)
+    {
+        return Err(Status::BadRequest);
+    }
+    f4_mutation_result(
+        service
+            .redeem_gift_coupon(
+                player,
+                CouponRequest {
+                    key: OperationKey {
+                        account: coupon.account,
+                        id: input.request_id,
+                    },
+                    coupon_id: input.coupon_id,
+                    offer: &coupon.offer,
+                    issued_to: coupon.account,
+                    issued_at: coupon.issued_at,
+                    now: 0, // AccountService substitutes the worker's UTC time.
+                    locally_issued: true,
+                },
+            )
+            .await,
+    )
+}
+
+async fn erase_record(
+    config: &Config,
+    service: &AccountService,
+    player: i64,
+    request: &Request,
+) -> Result<Response, Status> {
+    let input: EraseRecordInput = f4_mutation_input(
+        config,
+        request,
+        service.settings().record_eraser_policy().enabled,
+    )?;
+    f4_mutation_result(
+        service
+            .apply_record_eraser(
+                player,
+                RecordEraserOperation {
+                    key: input.request_id,
+                    sku: &input.sku,
+                    scope: input.scope,
+                },
+            )
+            .await,
+    )
+}
+
+fn upgrade_roll() -> Result<u16, Status> {
+    // Reject the tail of the u16 range to give each basis point equal weight.
+    const LIMIT: u16 = u16::MAX - u16::MAX % BASIS_POINTS;
+    loop {
+        let mut bytes = [0; 2];
+        getrandom::fill(&mut bytes).map_err(|_| Status::Internal)?;
+        let value = u16::from_ne_bytes(bytes);
+        if value < LIMIT {
+            return Ok(value % BASIS_POINTS);
+        }
+    }
+}
+
+async fn upgrade_item(
+    config: &Config,
+    service: &AccountService,
+    player: i64,
+    request: &Request,
+) -> Result<Response, Status> {
+    let input: UpgradeItemInput =
+        f4_mutation_input(config, request, service.settings().upgrade_policy().enabled)?;
+    f4_mutation_result(
+        service
+            .apply_item_upgrade(
+                player,
+                ItemUpgradeOperation {
+                    key: input.request_id,
+                    sku: &input.sku,
+                    family: input.family,
+                    level: input.level,
+                    roll_bps: upgrade_roll()?,
+                },
+            )
+            .await,
+    )
+}
+
+async fn titles_status(
+    service: &AccountService,
+    player: i64,
+    request: &Request,
+) -> Result<Response, Status> {
+    request.require_queryless_get()?;
+    let policy = service.settings().title_policy();
+    if !policy.enabled {
+        return Err(Status::Forbidden);
+    }
+    let mut titles = Vec::new();
+    for row in policy.unlock_table.iter().flatten() {
+        let eligible = service
+            .evaluate_title_unlock(player, &row.title)
+            .await?
+            .is_some();
+        titles.push(json!({"title": row.title, "eligible": eligible}));
+    }
+    Ok(Response::json(&json!({"titles": titles})))
 }
 
 fn projection_status(status: ProjectionStatus) -> &'static str {
@@ -1129,6 +1415,10 @@ async fn route(
         "/api/v1/f4/claim-milestone" => {
             claim_milestone(config, service, player, milestone, request).await
         }
+        "/api/v1/f4/redeem-coupon" => redeem_coupon(config, service, auth, &digest, request).await,
+        "/api/v1/f4/erase-record" => erase_record(config, service, player, request).await,
+        "/api/v1/f4/upgrade-item" => upgrade_item(config, service, player, request).await,
+        "/api/v1/f4/titles" => titles_status(service, player, request).await,
         "/api/v1/custom-maps" | "/api/v1/custom-maps/delete" => {
             custom_maps_route(shop, player, request).await
         }

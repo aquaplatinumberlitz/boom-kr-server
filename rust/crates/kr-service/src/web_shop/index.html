@@ -50,12 +50,16 @@ function clearSummaries(){
 async function loadF4ExtendedStatus(load){
   const status=q('#f4-extended-status');
   try{
-    const {configured,booster_tickets,level_rewards,lucci_vault}=await api('/api/v1/f4-extended-status');
+    const {configured,booster_tickets,level_rewards,lucci_vault,gift_coupons,record_erasers,upgrades,titles}=await api('/api/v1/f4-extended-status');
     if(load!==summaryLoad)return;
     const rows=[
       ['Booster tickets',booster_tickets,`${booster_tickets.exp_percent}% EXP · ${booster_tickets.lucci_percent}% Lucci`],
       ['Level rewards',level_rewards,`${level_rewards.tiers.length} tiers · ${level_rewards.chest_rule_count} chest / ${level_rewards.lucci_rule_count} Lucci rules`],
       ['Lucci vault',lucci_vault,`Base cap: ${lucci_vault.base_lucci_cap} Lucci`],
+      ['Gift coupons',gift_coupons,`${gift_coupons.offer_count} offers`],
+      ['Record erasers',record_erasers,`${record_erasers.eraser_count} rules`],
+      ['Item upgrades',upgrades,`${upgrades.recipe_count} recipes`],
+      ['Titles',titles,`${titles.title_count} titles`],
     ];
     status.textContent=configured?'Configured policies':'All policies use defaults';
     for(const [label,policy,summary] of rows){

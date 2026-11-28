@@ -114,6 +114,14 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(f4_panel.contains("await api('/api/v1/f4-extended-status')"));
     assert!(f4_panel.contains("li.textContent=policy.enabled?"));
     assert!(f4_panel.contains("q('#f4-extended-policies').append(li)"));
+    for count in [
+        "gift_coupons.offer_count",
+        "record_erasers.eraser_count",
+        "upgrades.recipe_count",
+        "titles.title_count",
+    ] {
+        assert!(f4_panel.contains(count));
+    }
     assert!(!page.contains("/api/v1/f4/claim-milestone"));
     assert!(page.contains("/api/v1/events-status"));
     assert!(page.contains("events-status"));
@@ -271,6 +279,18 @@ const F4_STATUS: &str = "/api/v1/f4-extended-status";
 const F4_CLAIM: &str = "/api/v1/f4/claim-milestone";
 const F4_LUCCI_CLAIM: &str = r#"{"level":2,"kind":"lucci"}"#;
 const F4_CHARACTER: u16 = 17;
+const F4_REDEEM: &str = "/api/v1/f4/redeem-coupon";
+const F4_ERASE: &str = "/api/v1/f4/erase-record";
+const F4_UPGRADE: &str = "/api/v1/f4/upgrade-item";
+const F4_TITLES: &str = "/api/v1/f4/titles";
+const COUPON_BODY: &str = r#"{"coupon_id":71,"request_id":1}"#;
+const ERASER_BODY: &str = r#"{"sku":"eraser.level","scope":"level","request_id":1}"#;
+const UPGRADE_BODY: &str = r#"{"sku":"hat.fancy","family":"item","level":0,"request_id":1}"#;
+const F4_MUTATIONS: [(&str, &str); 3] = [
+    (F4_REDEEM, COUPON_BODY),
+    (F4_ERASE, ERASER_BODY),
+    (F4_UPGRADE, UPGRADE_BODY),
+];
 
 fn f4_settings() -> crate::account_worker::EconomySettings {
     test_settings()
@@ -302,12 +322,68 @@ fn f4_settings() -> crate::account_worker::EconomySettings {
         .unwrap()
 }
 
-fn f4_player_fixture(suffix: &str) -> (TempDir, std::path::PathBuf, accounts::Player) {
-    use crate::accounts::{Admin, Store, TEST_SERIAL};
+fn f4_ops_settings() -> crate::account_worker::EconomySettings {
+    test_settings()
+        .with_extended_ops_policies(
+            serde_json::from_value(json!({
+                "enabled": true,
+                "coupon_offers": [{"offer": "local-prize", "valid_for_seconds": 3600,
+                    "grant": {"sku": "lucci", "quantity": 75}}],
+            }))
+            .unwrap(),
+            serde_json::from_value(json!({
+                "enabled": true, "allowed_scopes": ["level"],
+                "erasers": [{"sku": "eraser.level", "reset_to": {"level": 1}}],
+            }))
+            .unwrap(),
+            serde_json::from_value(json!({
+                "enabled": true,
+                "recipes": [{"family": "item", "sku": "hat.fancy", "from_level": 0,
+                    "to_level": 1, "max_level": 1, "materials": [], "lucci_cost": 50,
+                    "success_bps": 10000, "on_failure": "keep", "charge_on_failure": false}],
+            }))
+            .unwrap(),
+            serde_json::from_value(json!({
+                "enabled": true, "equip_slot": "title", "notify_on_unlock": true,
+                "unlock_table": [{"title": "Veteran", "condition": "level>=3"},
+                    {"title": "Champion", "condition": "wins>=1"}],
+            }))
+            .unwrap(),
+        )
+        .unwrap()
+}
 
+static CREATE_ACCOUNT_GATE: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
+fn create_f4_player(store: &mut accounts::Store, login: &str) -> accounts::Player {
+    let _gate = CREATE_ACCOUNT_GATE
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
+    let _serial = accounts::TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
+    let admin = accounts::Admin {
+        actor: "webshop-test",
+        reason: "F4 account fixture",
+    };
+    for _ in 0..50 {
+        match store.create_account(
+            &admin,
+            login,
+            login,
+            b"f4-fixture-password",
+            accounts::utc().unwrap(),
+        ) {
+            Err(accounts::Error::Busy) => std::thread::sleep(Duration::from_millis(20)),
+            result => return result.unwrap(),
+        }
+    }
+    panic!("F4 fixture account creation remained busy");
+}
+
+fn f4_player_fixture(suffix: &str) -> (TempDir, std::path::PathBuf, accounts::Player) {
     let (dir, db) = temp_db(suffix);
-    let _serial = TEST_SERIAL.lock().unwrap();
-    let mut store = Store::open(&db).unwrap();
+    let mut store = accounts::Store::open(&db).unwrap();
     let fixture = rusqlite::Connection::open(&db).unwrap();
     fixture
         .execute(
@@ -315,18 +391,7 @@ fn f4_player_fixture(suffix: &str) -> (TempDir, std::path::PathBuf, accounts::Pl
             [],
         )
         .unwrap();
-    let player = store
-        .create_account(
-            &Admin {
-                actor: "webshop-test",
-                reason: "F4 milestone fixture",
-            },
-            "milestoneuser",
-            "MilestoneUser",
-            b"milestone-test-password",
-            accounts::utc().unwrap(),
-        )
-        .unwrap();
+    let player = create_f4_player(&mut store, "milestoneuser");
     assert_ne!(player.account_id, player.player_id);
     fixture
         .execute(
@@ -385,6 +450,10 @@ async fn loopback_f4_status_requires_auth_and_exposes_only_public_policy() {
                     "lucci_rule_count": 0, "tiers": []},
                 "lucci_vault": {"configured": false, "enabled": false, "base_lucci_cap": null,
                     "expansion_step": null, "max_expansions": null, "max_lucci_cap": null},
+                "gift_coupons": {"configured": false, "enabled": false, "offer_count": 0},
+                "record_erasers": {"configured": false, "enabled": false, "eraser_count": 0},
+                "upgrades": {"configured": false, "enabled": false, "recipe_count": 0},
+                "titles": {"configured": false, "enabled": false, "title_count": 0},
             }),
         ),
         (
@@ -397,6 +466,10 @@ async fn loopback_f4_status_requires_auth_and_exposes_only_public_policy() {
                     "lucci_rule_count": 2, "tiers": [2, 3, 4]},
                 "lucci_vault": {"configured": true, "enabled": true, "base_lucci_cap": 1000,
                     "expansion_step": 500, "max_expansions": 2, "max_lucci_cap": 2000},
+                "gift_coupons": {"configured": false, "enabled": false, "offer_count": 0},
+                "record_erasers": {"configured": false, "enabled": false, "eraser_count": 0},
+                "upgrades": {"configured": false, "enabled": false, "recipe_count": 0},
+                "titles": {"configured": false, "enabled": false, "title_count": 0},
             }),
         ),
     ] {
@@ -410,7 +483,11 @@ async fn loopback_f4_status_requires_auth_and_exposes_only_public_policy() {
             for (method, path, body) in [
                 ("GET", F4_STATUS, None),
                 ("POST", F4_CLAIM, Some(F4_LUCCI_CLAIM)),
-            ] {
+                ("GET", F4_TITLES, None),
+            ]
+            .into_iter()
+            .chain(F4_MUTATIONS.map(|(path, body)| ("POST", path, Some(body))))
+            {
                 let (code, _, result) = send_http(addr, method, path, invalid, body).await;
                 assert_eq!((code, result), (401, json!({"error": "unauthorized"})));
             }
@@ -428,6 +505,13 @@ async fn loopback_f4_status_requires_auth_and_exposes_only_public_policy() {
                     .0,
                 403
             );
+        }
+        for (method, path, body) in [("GET", F4_TITLES, None)]
+            .into_iter()
+            .chain(F4_MUTATIONS.map(|(path, body)| ("POST", path, Some(body))))
+        {
+            let (code, _, result) = send_http(addr, method, path, token, body).await;
+            assert_eq!((code, result), (403, json!({"error": "request_failed"})));
         }
         assert_eq!(sqlite_version(&observer), before);
         resume.send(()).unwrap();
@@ -533,6 +617,236 @@ async fn loopback_f4_claim_is_idempotent_and_blocked_in_unlock_all() {
         |row| Ok((row.get(0)?, row.get(1)?)),
     ).unwrap();
     assert_eq!((lucci, ledger_rows), (75, 1));
+    task.abort();
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f4_mutations_bypass_database_in_unlock_all() {
+    use crate::account_worker::{Worker, tests::pause};
+
+    let (_dir, db, player) = f4_player_fixture("f4-ops-unlock-all");
+    let worker =
+        Worker::open_with_economy(db.clone(), 4, Duration::from_secs(2), f4_ops_settings())
+            .await
+            .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let token = auth.issue_token(player.player_id).unwrap();
+    auth.bind_local_coupon(
+        &token,
+        &player,
+        71,
+        "local-prize",
+        accounts::utc().unwrap() as u64,
+    )
+    .unwrap();
+    let observer = rusqlite::Connection::open(&db).unwrap();
+    let (addr, task) = listen_f4(
+        Config {
+            unlock_all: true,
+            ..config()
+        },
+        &worker,
+        &auth,
+    )
+    .await;
+    let resume = pause(&worker.client()).await;
+    let before = sqlite_version(&observer);
+    for (path, body) in F4_MUTATIONS {
+        let (code, _, result) =
+            send_http(addr, "POST", path, Some(token.as_str()), Some(body)).await;
+        assert_eq!(
+            (code, result),
+            (409, json!({"error": "unlock_all_no_purchase"})),
+            "{path}"
+        );
+    }
+    assert_eq!(sqlite_version(&observer), before);
+    resume.send(()).unwrap();
+    task.abort();
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f4_extended_ops_apply_once_and_titles_follow_the_player() {
+    use crate::account_worker::Worker;
+    use crate::accounts::{Admin, ItemGrant, Store};
+
+    let (_dir, db, player) = f4_player_fixture("f4-ops");
+    let mut store = Store::open(&db).unwrap();
+    let other = create_f4_player(&mut store, "otherplayer");
+    let now = accounts::utc().unwrap();
+    let admin = Admin {
+        actor: "webshop-test",
+        reason: "F4 operations inventory fixture",
+    };
+    for sku in ["eraser.level", "hat.fancy"] {
+        store
+            .admin_grant_item(
+                &admin,
+                player.player_id,
+                sku,
+                ItemGrant::Permanent,
+                1,
+                sku,
+                now,
+            )
+            .unwrap();
+    }
+    drop(store);
+    let observer = rusqlite::Connection::open(&db).unwrap();
+    let worker = Worker::open_with_economy(db, 4, Duration::from_secs(2), f4_ops_settings())
+        .await
+        .unwrap();
+    let auth = WebShopAuth::new(60).unwrap();
+    let token = auth.issue_token(player.player_id).unwrap();
+    let other_token = auth.issue_token(other.player_id).unwrap();
+    assert!(
+        auth.bind_local_coupon(&other_token, &player, 71, "local-prize", now as u64)
+            .is_err()
+    );
+    auth.bind_local_coupon(&token, &player, 71, "local-prize", now as u64)
+        .unwrap();
+    auth.bind_local_coupon(&token, &player, 72, "local-prize", (now - 3600) as u64)
+        .unwrap();
+    let token = Some(token.as_str());
+    let other_token = Some(other_token.as_str());
+    let (addr, task) = listen_f4(config(), &worker, &auth).await;
+
+    let before = sqlite_version(&observer);
+    let (code, _, status) = send_http(addr, "GET", F4_STATUS, token, None).await;
+    assert_eq!(code, 200);
+    assert_eq!(status["configured"], true);
+    assert_eq!(status["booster_tickets"]["configured"], false);
+    assert_eq!(
+        status["gift_coupons"],
+        json!({"configured":true,"enabled":true,"offer_count":1})
+    );
+    assert_eq!(
+        status["record_erasers"],
+        json!({"configured":true,"enabled":true,"eraser_count":1})
+    );
+    assert_eq!(
+        status["upgrades"],
+        json!({"configured":true,"enabled":true,"recipe_count":1})
+    );
+    assert_eq!(
+        status["titles"],
+        json!({"configured":true,"enabled":true,"title_count":2})
+    );
+    let titles = |veteran| {
+        json!({"titles": [
+            {"title": "Veteran", "eligible": veteran},
+            {"title": "Champion", "eligible": false},
+        ]})
+    };
+    for (bearer, veteran) in [(token, true), (other_token, false), (token, true)] {
+        let (code, head, result) = send_http(addr, "GET", F4_TITLES, bearer, None).await;
+        assert_eq!((code, result), (200, titles(veteran)));
+        assert!(head.contains("Cache-Control: no-store"));
+    }
+    assert_eq!(sqlite_version(&observer), before);
+
+    assert_eq!(send_http(addr, "POST", F4_TITLES, token, None).await.0, 405);
+    let query = format!("{F4_TITLES}?player_id={}", other.player_id);
+    assert_eq!(send_http(addr, "GET", &query, token, None).await.0, 400);
+    let (code, _, result) =
+        send_http(addr, "POST", F4_REDEEM, other_token, Some(COUPON_BODY)).await;
+    assert_eq!((code, result), (400, json!({"error": "request_failed"})));
+
+    for (path, body, expected) in [
+        (
+            F4_REDEEM,
+            r#"{"coupon_id":71,"request_id":1,"locally_issued":false}"#,
+            400,
+        ),
+        (F4_REDEEM, r#"{"coupon_id":72,"request_id":1}"#, 409),
+        (
+            F4_ERASE,
+            r#"{"sku":"eraser.level","scope":"ladder","request_id":1}"#,
+            400,
+        ),
+        (
+            F4_UPGRADE,
+            r#"{"sku":"hat.fancy","family":"item","level":0,"request_id":1,"roll_bps":0}"#,
+            400,
+        ),
+        (F4_UPGRADE, UPGRADE_BODY, 409),
+    ] {
+        let (code, _, result) = send_http(addr, "POST", path, token, Some(body)).await;
+        assert_eq!(
+            (code, result),
+            (expected, json!({"error": "request_failed"})),
+            "{path}"
+        );
+    }
+
+    for (path, body, delta, sku) in [
+        (F4_REDEEM, COUPON_BODY, 75, None),
+        (F4_ERASE, ERASER_BODY, 0, Some("eraser.level")),
+        (F4_UPGRADE, UPGRADE_BODY, -50, Some("hat.fancy.f4-item-1")),
+    ] {
+        let (code, _, result) = send_http(addr, "POST", path, token, Some(body)).await;
+        assert_eq!(
+            (code, result),
+            (200, json!({"ok":true,"lucci_delta":delta,"sku_id":sku})),
+            "{path}"
+        );
+        let (code, _, result) = send_http(addr, "POST", path, token, Some(body)).await;
+        assert_eq!(
+            (code, result),
+            (409, json!({"error": "request_failed"})),
+            "{path}"
+        );
+    }
+    for (path, body) in [
+        (F4_REDEEM, r#"{"coupon_id":71,"request_id":2}"#),
+        (
+            F4_ERASE,
+            r#"{"sku":"hat.fancy","scope":"level","request_id":1}"#,
+        ),
+        (
+            F4_ERASE,
+            r#"{"sku":"eraser.level","scope":"level","request_id":2}"#,
+        ),
+        (
+            F4_UPGRADE,
+            r#"{"sku":"hat.fancy","family":"pet","level":0,"request_id":1}"#,
+        ),
+        (
+            F4_UPGRADE,
+            r#"{"sku":"hat.fancy","family":"item","level":0,"request_id":2}"#,
+        ),
+    ] {
+        let (code, _, result) = send_http(addr, "POST", path, token, Some(body)).await;
+        assert_eq!(
+            (code, result),
+            (409, json!({"error": "request_failed"})),
+            "{path}"
+        );
+    }
+    let before = sqlite_version(&observer);
+    let (code, _, result) = send_http(addr, "GET", F4_TITLES, token, None).await;
+    assert_eq!((code, result), (200, titles(false)));
+    assert_eq!(sqlite_version(&observer), before);
+
+    let (level, lucci, receipts, erase_audits): (i64, i64, i64, i64) = observer.query_row(
+        "SELECT level, lucci,
+             (SELECT count(*) FROM ledger_entries WHERE player_id=?1 AND idempotency_key GLOB 'f4/*'),
+             (SELECT count(*) FROM admin_audit WHERE operation='f4_record_eraser')
+         FROM player_profiles WHERE player_id=?1",
+        [player.player_id],
+        |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?)),
+    ).unwrap();
+    assert_eq!((level, lucci, receipts, erase_audits), (1, 25, 3, 1));
+    let inventory = worker
+        .service()
+        .inventory_list(player.player_id)
+        .await
+        .unwrap();
+    assert_eq!(inventory.len(), 1);
+    assert_eq!(inventory[0].sku_id, "hat.fancy.f4-item-1");
+    assert_eq!(inventory[0].quantity, 1);
     task.abort();
     worker.shutdown().await.unwrap();
 }
