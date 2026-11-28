@@ -1,5 +1,6 @@
 //! Candidate bounded terrain policy; no native oracle or general KR physics.
 //! Supports the pinned 15×13 profiles and the 19×17 BigBattle grid.
+//! The separate F3 opt-in checks the grid sizes pinned by the KR 00967 pack census.
 use serde::Deserialize;
 use std::{
     collections::{BTreeMap, BTreeSet, VecDeque},
@@ -71,6 +72,50 @@ const ALL_RAY_PORTS: u8 = 0b1111;
 pub(crate) const STANDARD_SIZE: (u8, u8) = (15, 13);
 pub(crate) const BIG_BATTLE_SIZE: (u8, u8) = (19, 17);
 
+/// Exact (width, height) pairs from the KR 00967 F3 pack census.
+/// See `docs/evidence/content/f3-pve-large-grid-re.json` (kr_static/confirmed).
+pub(crate) const F3_LARGE_GRID_SIZES: [(u8, u8); 35] = [
+    (15, 51),
+    (20, 12),
+    (20, 13),
+    (20, 15),
+    (20, 16),
+    (20, 18),
+    (20, 19),
+    (20, 20),
+    (20, 22),
+    (20, 25),
+    (21, 12),
+    (21, 16),
+    (21, 17),
+    (21, 19),
+    (21, 20),
+    (21, 21),
+    (22, 22),
+    (23, 17),
+    (23, 23),
+    (24, 24),
+    (25, 12),
+    (25, 13),
+    (25, 15),
+    (25, 17),
+    (25, 19),
+    (25, 20),
+    (25, 22),
+    (25, 25),
+    (29, 29),
+    (33, 29),
+    (37, 29),
+    (40, 10),
+    (40, 12),
+    (67, 10),
+    (100, 10),
+];
+
+pub(crate) fn is_pinned_f3_large_grid(width: u8, height: u8) -> bool {
+    F3_LARGE_GRID_SIZES.contains(&(width, height))
+}
+
 fn sha(data: &[u8]) -> String {
     crate::sha256_hex(data)
 }
@@ -97,6 +142,23 @@ impl Config {
     ) -> io::Result<Terrain> {
         self.validate_limits(map_frame, start_frame, maximum_power, 8)
     }
+    /// Opt in to F3 large-grid dimensions for a pinned map and its fixtures.
+    /// The existing server terrain limits still apply; the census pins dimensions only.
+    #[allow(dead_code, reason = "F3 large grids are not wired into room loading")]
+    pub(crate) fn validate_large_f3_grid(
+        &self,
+        map_frame: &[u8],
+        start_frame: &[u8],
+        payload_sha256: &str,
+    ) -> io::Result<Terrain> {
+        if self.map_sha256 != payload_sha256 {
+            return Err(io::Error::other("terrain belongs to another pack map"));
+        }
+        if !is_pinned_f3_large_grid(self.width, self.height) {
+            return Err(io::Error::other("unsupported pinned F3 large grid"));
+        }
+        self.validate_profile(map_frame, start_frame, 9, 8)
+    }
     fn validate_limits(
         &self,
         map_frame: &[u8],
@@ -104,9 +166,20 @@ impl Config {
         maximum_power: u8,
         owner_slots: u8,
     ) -> io::Result<Terrain> {
+        if !matches!((self.width, self.height), STANDARD_SIZE | BIG_BATTLE_SIZE) {
+            return Err(io::Error::other("unsupported pinned terrain profile"));
+        }
+        self.validate_profile(map_frame, start_frame, maximum_power, owner_slots)
+    }
+    fn validate_profile(
+        &self,
+        map_frame: &[u8],
+        start_frame: &[u8],
+        maximum_power: u8,
+        owner_slots: u8,
+    ) -> io::Result<Terrain> {
         let error = || io::Error::other("unsupported pinned terrain profile");
-        if !matches!((self.width, self.height), STANDARD_SIZE | BIG_BATTLE_SIZE)
-            || self.kinds.len() != usize::from(self.width) * usize::from(self.height)
+        if self.kinds.len() != usize::from(self.width) * usize::from(self.height)
             || self.kinds.iter().any(|k| *k > 2)
             || !(1..=9).contains(&maximum_power)
             || !(1..=maximum_power).contains(&self.maximum_power)
