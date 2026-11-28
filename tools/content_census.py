@@ -501,6 +501,28 @@ def resource_inventory(packs):
     return groups, systems, sorted(unread_attr, key=lambda row: (row["pack"], row["name"]))
 
 
+# Bảng đã giải bởi tools/kr_table_decode.py: (pack, tên entry hoặc tiền tố) → anchor trong tài liệu định dạng.
+# census.json giữ nguyên kết quả kiểm kê (nhiều evidence pin SHA-256 của file này); link chỉ gắn lúc render.
+DECODED_TABLES = {
+    ("FxContents", "RPG/EquipItemTable"): "equipitemtable", ("FxContents", "RPG/SkillTable"): "skilltable",
+    ("FxContents", "RPG/SnowBallSkillTable"): "skilltable", ("FxContents", "RPG/ZzolmanSkillTable"): "skilltable",
+    ("FxMonster", "MonsterSeason2/SkillTable"): "skilltable", ("FxContents", "SandBox/GadgetTable"): "gadgettable",
+    ("FxDesktop", "ClientData/StageClearEventNpc"): "stageclearevent",
+    ("FxDesktop", "ClientData/StageClearEventNpcBoss"): "stageclearevent",
+    ("FxMap", "MapScriptTemplate/MonAction_"): "monaction", ("fx", "CustomMap/CustomMap_"): "custommap",
+    ("fx", "CustomMap/CustomTileIndexList"): "customtileindexlist", ("fx", "CustomMap/CustomTileList"): "customtilelist",
+    ("fx", "Pet/PetTable"): "pettable", ("fx", "Pet/PetRandomTable"): "petrandomtable",
+    ("fx", "ObjectTable/SpeakerTable"): "speakertable", ("fx", "XML/init"): "xmlinit",
+}
+
+
+def decoded_source(stem, name):
+    for (pack, key), anchor in DECODED_TABLES.items():
+        if pack == stem and (name == key or key.endswith("_") and name.startswith(key)):
+            return f"[client-data-tables](content/client-data-tables.md#{anchor}) (giải tĩnh)"
+    return None
+
+
 def data_tables(packs):
     """Kiểm kê XML có tiền tố độ dài và các ObjectTable nhị phân đã nhận diện."""
     result = []
@@ -847,6 +869,7 @@ def render(census):
     per_dir = collections.Counter((t["pack"], t["name"].rsplit("/", 1)[0]) for t in census["data_tables"])
     grouped = collections.OrderedDict()
     for table in census["data_tables"]:
+        table = dict(table, source=decoded_source(table["pack"], table["name"]) or table["source"])
         directory, _, leaf = table["name"].rpartition("/")
         if per_dir[(table["pack"], directory)] > 8:
             prefix = re.split(r"[_0-9]", leaf, maxsplit=1)[0] or leaf

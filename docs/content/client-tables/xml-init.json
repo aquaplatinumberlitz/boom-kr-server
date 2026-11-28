@@ -1,0 +1,3 @@
+{"schema":"kr00967-client-tables-v1","table":"xml-init","unit":"phần tử","entries":[
+{"pack":"fx","entry":"XML/init","bytes":116,"sha256":"0e44461010d6fca499693df82ea7b5dcfc8058cfdaadaae8303e3b7c3e45bd36","encoding":"ascii","issues":{},"rows":3,"elements":[["nation",{"name":"korea"}],["info",{"name":"couple","attr0":"1"}],["info",{"name":"quest","attr0":"1"}]]}
+]}

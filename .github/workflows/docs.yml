@@ -26,6 +26,7 @@ jobs:
       - run: python3 tools/check_docs.py
       - run: python3 tools/content_census.py --check
       - run: python3 tools/content_classification.py --check
+      - run: python3 tools/kr_table_decode.py --check
       - run: python3 tools/kr_f3_probe_plan.py --check
       - run: python3 tools/kr_f2_f3_tile_census.py --check
       - run: python3 -m unittest tools/test_kr_f2_f3_tile_census.py
@@ -49,6 +50,7 @@ jobs:
           tools.test_kr_f4_catalog_export
           tools.test_kr_f3_probe_plan
           tools.test_kr_f2_f3_capture_analyzer
+          tools.test_kr_table_decode
           tools.test_f1_character_profiles
           tools.test_f1_pack_matrix
           tools.test_player_package
