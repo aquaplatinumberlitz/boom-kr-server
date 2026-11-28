@@ -50,6 +50,9 @@ F3_ADAPTER = 'f3-adapter-r1'
 _F2_CATALOG_PATH = 'docs/evidence/content/f2-mode-catalog.json'
 _F3_CATALOG_PATH = 'docs/evidence/content/f3-pve-catalog.json'
 _F2_EVIDENCE = Path('docs/evidence/content')
+BULA_MAPS = frozenset(f'Bula{n:02}' for n in (0, 1, 2, 3, 4, 15, 16))
+BULA_TAIL_EVIDENCE = _F2_EVIDENCE / 'f2-bula-tail-and-mode-wire-re.json'
+_BULA_TAIL_EVIDENCE_SHA256 = '0266617e9d5c2c15b5f69e6f119d8ee9e2e8fce33ecacbb261ec87d8d6e181e5'
 # Phạm vi xuất hình học tĩnh. Có tên trong catalog chưa đủ để xuất.
 _HAMSTER_MAPS = frozenset(f'Hamster{n:02}' for n in range(1, 9))
 _SNOWY_FIELDS_MAPS = frozenset(f'SnowyFields{n:02}' for n in range(1, 19))
@@ -464,8 +467,8 @@ _BASEBALL_KART_UNMAPPED = (
 )
 # KR 00967 TileInfo/TileInfoList (hash cặp fx trong PACK_SHA256).
 # EA1EE0 và 7E7350/7E72B0 xác định footprint type 1; cờ +32 chỉ
-# chặn bước nhảy ngoài phép chiếu này. Temple08 có thêm cờ hướng +40
-# (ED23E0), nên không nhận cùng Temple09.
+# chặn bước nhảy ngoài phép chiếu này. Temple08 có cùng footprint với
+# Temple11 nhưng thêm cờ hướng +40 (ED23E0), nên giữ ngoài phép chiếu.
 _F23_STATIC_RECORDS = {
     **_BASEBALL_STATIC_RECORDS,
     'Tile23_Static/Temple09': (1, 0, 0, 0, 0, 0, 8, 1, 1, 0, 0, 2010089472, *(0,) * 6),
@@ -1152,7 +1155,61 @@ def _decode_soul_map(data):
                 placements=placements, scripted=False)
 
 
+def _bula_tail_reference():
+    raw = (Path(__file__).resolve().parents[1] / BULA_TAIL_EVIDENCE).read_bytes()
+    if sha(raw) != _BULA_TAIL_EVIDENCE_SHA256:
+        raise ValueError('Bằng chứng đuôi Bula không khớp SHA-256 của P228')
+    return json.loads(raw)['bula_tail']['maps']
+
+
+def validate_bula_tail(raw, name):
+    """Trả phần trước đuôi và dữ liệu đuôi khớp P228; chỉ dùng để kiểm tra tĩnh."""
+    from kr_f1e_script_audit import map_tail_offset, parse_trailer
+
+    if name not in BULA_MAPS:
+        raise ValueError(f'Map ngoài phạm vi kiểm tra Bula: {name}')
+    expected = _bula_tail_reference()[name]
+    try:
+        offset = map_tail_offset(raw)
+        trailer = parse_trailer(raw, offset)
+        profile = decode_map(raw[:offset])
+    except (ValueError, struct.error) as exc:
+        raise ValueError(f'Cấu trúc đuôi Bula không hợp lệ: {name}') from exc
+
+    script = trailer['script']
+    records = [dict(name=key, x_u8=x, y_u8=y, i32=fields)
+               for key, x, y, *fields in trailer['records']]
+    tail = raw[offset:]
+    report = dict(payload_sha256=sha(raw), payload_bytes=len(raw), tail_offset=offset,
+                  tail_bytes=len(tail), tail_sha256=sha(tail), tail_hex=tail.hex(),
+                  group_count=len(trailer['groups']), groups=trailer['groups'],
+                  record_count=len(records), records=records,
+                  script_length_u32=len(script), script_sha256=sha(script))
+    if ((profile['version'], profile['width'], profile['height']) != (1000, 15, 13)
+            or profile['placements'] or script or report != expected):
+        raise ValueError(f'Payload hoặc đuôi Bula không khớp bằng chứng P228: {name}')
+    return profile, report
+
+
+def inspect_bula_maps(game, maps):
+    """Đọc các map Bula từ pack đã pin và trả JSON kiểm tra, không tạo cache phòng."""
+    if not maps or len(set(maps)) != len(maps) or not BULA_MAPS.issuperset(maps):
+        raise ValueError('Chọn các map Bula khác nhau trong Bula00..04, Bula15 và Bula16')
+    pins = {key: PACK_SHA256[key] for key in ('FxMap.idx', 'FxMap.idd')}
+    with verified_packs(game, pins) as files:
+        levels = Pack(files['FxMap.idx'], files['FxMap.idd'])
+        rows = {name: validate_bula_tail(levels.read('Map/' + name), name)[1] for name in maps}
+    return dict(build='KR00967', source='kr_static', status='confirmed',
+                layout='group_record_tail', room_execution=False, maps=rows)
+
+
+def _reject_bula_room_map(name):
+    if name in BULA_MAPS:
+        raise ValueError(f'Map Bula chỉ dùng để kiểm tra tĩnh: {name}')
+
+
 def read_map(levels, name, code, *, f1, f1e=False):
+    _reject_bula_room_map(name)
     raw = levels.read('Map/' + name)
     profile = _decode_soul_map(raw) if (f1 and not f1e and name in _SOUL_MAPS) else decode_map(raw)
     profile.update(name=name, map_code=code, payload_sha256=sha(raw))
@@ -1485,6 +1542,7 @@ def f2_terrain_rules(profile, table):
 
 
 def read_f2_map(levels, name, code, evidence, table):
+    _reject_bula_room_map(name)
     try:
         raw = levels.read('Map/' + name)
         digest = sha(raw)
@@ -1515,6 +1573,7 @@ def read_f2_map(levels, name, code, evidence, table):
 
 def read_f3_map(levels, name, code, evidence, table):
     """Đọc profile F3 và chỉ chiếu hình học tile đã được kiểm sạch."""
+    _reject_bula_room_map(name)
     try:
         raw = levels.read('Map/' + name)
         digest = sha(raw)
@@ -1757,6 +1816,8 @@ def main():
     target.add_argument('--prebuilt-out', type=Path,
                         help='Ghi đè thư mục dữ liệu JSON đóng sẵn, ví dụ server/pack-data')
     target.add_argument('--check-prebuilt', type=Path, help='Chỉ kiểm dữ liệu JSON đóng sẵn')
+    target.add_argument('--inspect-bula', action='append', metavar='MAP',
+                        help='In JSON đuôi Bula đã kiểm; lặp lại cho nhiều map, không tạo cache phòng')
     adapter = parser.add_mutually_exclusive_group()
     adapter.add_argument('--f1-map', action='append', help='Tên map F1-a chính xác; lặp lại tối đa 16 lần')
     adapter.add_argument('--f1e-map', action='append', help='Tên map F1-e chính xác; lặp lại tối đa 16 lần')
@@ -1772,6 +1833,9 @@ def main():
     if args.f3_map and args.cache is None:
         parser.error('--f3-map chỉ dùng với --cache')
     try:
+        if args.inspect_bula:
+            print(encode(inspect_bula_maps(args.game_dir, args.inspect_bula)).decode(), end='')
+            return
         if args.check_prebuilt is not None:
             path, reused = prebuilt(args.check_prebuilt), True
         elif args.prebuilt_out is not None:

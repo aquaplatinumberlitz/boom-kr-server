@@ -51,6 +51,7 @@ Nguồn phạm vi là [F2](f2-mode-catalog.md) và [F3](f3-pve-catalog.md). Mỗ
 
 Kiểu đuôi chưa được `decode_map` đọc đủ: `group_record_tail` (7 map).
 Với đuôi khác bố cục thường, công cụ giữ lưới và chỉ giữ các hàng vật phẩm nếu đọc trọn phần đó. Bộ đọc đuôi nhóm/bản ghi chỉ xác nhận cấu trúc; chưa xác nhận tác dụng các bản ghi.
+Cả bảy map `Bula` khớp từng byte với [bằng chứng P228](../protocol/f2-bula-tail-and-mode-wire-re.md). Có thể xem JSON bằng `python3 tools/kr_pack_export.py --game-dir <thu-muc-pack> --inspect-bula Bula00`. Census vẫn ghi `partial` theo bộ đọc thường; các adapter phòng chưa nhận `Bula`.
 
 ## Họ ưu tiên theo số tile còn thiếu
 
@@ -68,6 +69,9 @@ Chỉ xếp `quick_unlock` khi mọi map trong họ đều giải mã đủ, có
 
 Mỗi mã ô được nối từ `ObjectTable/ObjectTable` sang `TileInfo/TileInfoList` trong pack `fx`, rồi kiểm riêng theo lớp nền, vật thể hoặc overlay bằng `f1_terrain_rules(f1e=True)`. Công cụ cũng thử các lớp đã ánh xạ cùng nhau để phát hiện ràng buộc như footprint chồng nhau.
 Khóa đặt sẵn và drop có trọng số dương được đối chiếu riêng với danh sách khóa F1. Khóa vật phẩm không tính vào số tile; một khóa đặt sẵn hoặc drop trùng tên trong TileInfo được ghi thêm theo lớp tương ứng.
+
+Đối chiếu KR 00967 xét đủ 18 số của 49 khóa còn thiếu trong hai catalog. Có 0 khóa trùng tuple với khóa đã ánh xạ ở cùng lớp trên lưới 15x13. JSON giữ các tuple theo khóa và lớp cùng SHA-256 của tập này và của `TileInfo/TileInfoList`.
+Nền Baseball có cờ lap; nền, ô tăng tốc và lốp của Kart có cờ hoặc marker riêng. `Temple08` khác `Temple11` ở cờ +40, còn `Tower00` có marker +36 bằng 999. Các tile SnowBear và Tornado vẫn chờ xác nhận hành vi riêng. Không mở thêm tile trong lượt kiểm này.
 
 Xếp hạng là `candidate` cho công việc về địa hình. Điều kiện phục vụ như vị trí, xác suất vật phẩm, allowlist script, chế độ phòng và quyền PvE chưa được xác nhận ở đây. Ví dụ, `MonS2Fire03` và `RPG11_N_02` đọc được với lưới lớn; `Tutorial01` đọc được với lưới 15x13. Những kết quả đó mô tả dữ liệu pack; các giới hạn phục vụ vẫn theo [probe Wine r1](f2-f3-wine-probe-r1.md).
 
