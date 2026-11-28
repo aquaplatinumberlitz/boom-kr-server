@@ -1,7 +1,8 @@
 use kr_wire::{
     Width,
     kr00967::f3_pve::{
-        F3JumpTableProvenance, F3TimerField, F3WireError, F3WireStatus, MonsterAttackReqCandidate,
+        F3JumpTableProvenance, F3MonActionProvenance, F3TimerField, F3WireError, F3WireStatus,
+        MonActionDelegationCandidate, MonActionStepReportCandidate, MonsterAttackReqCandidate,
         ObjectEffectPairCandidate, TimedStageEventCandidate,
     },
     write_uint,
@@ -26,6 +27,116 @@ fn all_candidates_mark_capture_as_pending_and_keep_dispatch_indices() {
     assert_eq!(provenance.jump_table_va, 0xE5DE9C);
     assert_eq!(provenance.opcode_index_subtrahend, 20);
     assert_eq!(provenance.hex_rays_cases, [9, 80, 135, 136, 177]);
+}
+
+#[test]
+fn mon_action_provenance_pins_cp405_and_keeps_capture_pending() {
+    let provenance = F3MonActionProvenance::CP405_STATIC;
+    assert_eq!(provenance.owner_gate_va, 0xB91F60);
+    assert_eq!(provenance.delegation_opcode, 204);
+    assert_eq!(provenance.step_report_opcodes, [132, 180]);
+    assert_eq!(
+        provenance.status,
+        F3WireStatus::StaticCandidatePendingCapture
+    );
+    assert_eq!(MonActionDelegationCandidate::STATUS, provenance.status);
+    assert_eq!(MonActionStepReportCandidate::STATUS, provenance.status);
+}
+
+#[test]
+fn mon_action_delegation_checks_opcode_object_and_slot() {
+    for (object_id, owner_slot) in [(1, 0), (u16::MAX, 7)] {
+        let candidate = MonActionDelegationCandidate {
+            opcode: 204,
+            object_id,
+            owner_slot,
+        };
+        assert_eq!(candidate.validate(), Ok(()));
+        assert_eq!(
+            MonActionDelegationCandidate::new(204, object_id, owner_slot),
+            Ok(candidate)
+        );
+    }
+
+    let assert_rejected = |opcode, object_id, owner_slot, error| {
+        let candidate = MonActionDelegationCandidate {
+            opcode,
+            object_id,
+            owner_slot,
+        };
+        assert_eq!(candidate.validate(), Err(error));
+        assert_eq!(
+            MonActionDelegationCandidate::new(opcode, object_id, owner_slot),
+            Err(error)
+        );
+    };
+    for opcode in [0, 132, 180, 203, 205, 0x1_00cc, u32::MAX] {
+        assert_rejected(opcode, 1, 0, F3WireError::InvalidMonActionOpcode(opcode));
+    }
+    assert_rejected(204, 0, 0, F3WireError::ZeroMonActionObjectId);
+    for slot in [8, u8::MAX] {
+        assert_rejected(
+            204,
+            1,
+            slot,
+            F3WireError::MonActionOwnerSlotOutOfRange(slot),
+        );
+    }
+}
+
+#[test]
+fn mon_action_step_report_checks_opcode_object_and_catalog_bounds() {
+    for opcode in [132, 180] {
+        for (object_id, step_index, template_id) in [(1, 0, 0), (u16::MAX, 214, 363)] {
+            let candidate = MonActionStepReportCandidate {
+                opcode,
+                object_id,
+                step_index,
+                template_id,
+            };
+            assert_eq!(candidate.validate(), Ok(()));
+            assert_eq!(
+                MonActionStepReportCandidate::new(opcode, object_id, step_index, template_id),
+                Ok(candidate)
+            );
+        }
+    }
+
+    let assert_rejected = |opcode, object_id, step_index, template_id, error| {
+        let candidate = MonActionStepReportCandidate {
+            opcode,
+            object_id,
+            step_index,
+            template_id,
+        };
+        assert_eq!(candidate.validate(), Err(error));
+        assert_eq!(
+            MonActionStepReportCandidate::new(opcode, object_id, step_index, template_id),
+            Err(error)
+        );
+    };
+    for opcode in [0, 131, 133, 179, 181, 204, 0x1_0084, u32::MAX] {
+        assert_rejected(opcode, 1, 0, 0, F3WireError::InvalidMonActionOpcode(opcode));
+    }
+    assert_rejected(132, 0, 0, 0, F3WireError::ZeroMonActionObjectId);
+    for index in [215, u16::MAX] {
+        assert_rejected(
+            132,
+            1,
+            index,
+            0,
+            F3WireError::MonActionStepIndexOutOfRange(index),
+        );
+    }
+    for id in [364, u16::MAX] {
+        assert_rejected(
+            180,
+            1,
+            0,
+            id,
+            F3WireError::MonActionTemplateIdOutOfRange(id),
+        );
+    }
 }
 
 #[test]
