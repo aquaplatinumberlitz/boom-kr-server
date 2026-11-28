@@ -31,8 +31,16 @@ MODE_GROUPS = {
     "Ghép trận UXMatching": "matchmaking",
     "Free 1v7": "free_1v7",
 }
-FAMILY_GROUPS = {
-    "Hamster": "farm_mission", "Rabbit": "farm_mission",
+# Các nhóm RoomRules chỉ có hàng họ nhiệm vụ, chưa có hàng riêng trong bảng Mode.
+FAMILY_ONLY_GROUPS = {
+    "CAPong": "capong",
+    "Clover": "clover",
+    "Hamster": "farm_mission",
+    "Rabbit": "farm_mission",
+    "RescueET": "rescue_et",
+    "Wriggle": "wriggle",
+    "Zombie": "zombie",
+    "Zzolman": "zzolman",
 }
 PRIVATE = re.compile(
     r"/home/|/Users/|ocid" r"1\.|BEGIN [A-Z0-9 ]*PRIVATE" r" KEY|"
@@ -122,7 +130,7 @@ def family_summary(name, maps, mode_refs, classification):
     if classification and classification.get("map_count", len(maps)) != len(maps):
         raise ValueError("số map theo họ không khớp với bảng xếp loại")
     wiki = sorted({row.get("wiki") or MISSION.get(name, "") for row in maps} - {""})
-    group = FAMILY_GROUPS.get(name)
+    group = FAMILY_ONLY_GROUPS.get(name)
     if group is None and len(mode_refs) == 1:
         group = mode_refs[0]["ruleset_group"]
 
@@ -209,13 +217,15 @@ def mode_summaries(census, by_family, mission, grades):
 def validate_rule_group_parity(catalog, rules):
     expected = {row["group"]: row["wave"] for row in rules}
     modes = catalog["modes"]
-    actual = {row["ruleset_group"]: row["wave"] for row in modes}
-    if not expected or len(expected) != len(rules) or len(actual) != len(modes) or expected != actual:
+    mode_groups = {row["ruleset_group"]: row["wave"] for row in modes}
+    families = {row["family"]: row for row in catalog["families"]}
+    family_groups = {FAMILY_ONLY_GROUPS[name]: "F2?" for name in families if name in FAMILY_ONLY_GROUPS}
+    if (not expected or len(expected) != len(rules) or len(mode_groups) != len(modes)
+            or mode_groups.keys() & family_groups.keys() or expected != (mode_groups | family_groups)):
         raise ValueError("tập nhóm luật hoặc đợt trong catalog không khớp bảng F2")
     if len({row["mode"] for row in modes}) != len(modes):
         raise ValueError("trùng tên mode trong catalog F2")
 
-    families = {row["family"]: row for row in catalog["families"]}
     if len(families) != len(catalog["families"]):
         raise ValueError("trùng tên họ map trong catalog F2")
     links = defaultdict(dict)
@@ -233,12 +243,16 @@ def validate_rule_group_parity(catalog, rules):
         grouping = row["grouping"]
         refs = links.get(family, {})
         group = grouping["ruleset_group"]
-        if (sorted(grouping["mode_refs"]) != sorted(refs)
-                or (refs and set(refs.values()) != {group})
-                or (not refs and group in expected)):
+        if family in FAMILY_ONLY_GROUPS:
+            group_matches = not refs and group == FAMILY_ONLY_GROUPS[family]
+        elif refs:
+            group_matches = set(refs.values()) == {group}
+        else:
+            group_matches = group not in expected
+        if sorted(grouping["mode_refs"]) != sorted(refs) or not group_matches:
             raise ValueError(f"nhóm luật hoặc liên kết mode của họ {family} không khớp")
     return {"source": "design", "status": "design", "locator": RULES_LOCATOR,
-            "mode_count": len(actual), "linked_mission_families": len(links)}
+            "mode_count": len(mode_groups), "linked_mission_families": len(links)}
 
 
 def build_catalog(census, classification=None, *, expected_maps=EXPECTED_MAPS,
