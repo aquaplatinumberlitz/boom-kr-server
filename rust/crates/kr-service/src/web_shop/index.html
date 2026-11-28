@@ -4,7 +4,9 @@
 <label>Bearer token <input id="token" type="password" size="48" autocomplete="off"></label><button onclick="load()">Load</button>
 <p id="balance"></p>
 <h2>PvE Status</h2><p id="f3-pve-status" class="muted" role="status"></p>
+<h2>F2 Modes Status</h2><p id="f2-modes-status" class="muted" role="status"></p><p id="f2-modes-families"></p>
 <h2>F4 Extended</h2><p id="f4-extended-status" class="muted" role="status"></p><ul id="f4-extended-policies"></ul>
+<h3>F4 Shop Anchors</h3><p id="f4-anchors-status" class="muted" role="status"></p><details><summary>View client evidence</summary><ul id="f4-shop-anchors"></ul></details>
 <h3>Security &amp; Kits</h3><p id="f4-security-kits-status" class="muted" role="status"></p>
 <h3>Powerup kits</h3><form id="kit-equip"><label>Slot <input id="kit-slot" type="number" min="0" max="1" required></label><label>SKU <input id="kit-sku" required autocomplete="off"></label><button>Equip kit</button></form><button id="kit-clear">Clear kit slot</button><p id="kit-status" class="muted" role="status"></p>
 <h3>Second password</h3><form id="second-password-setup"><label>PIN <input id="second-password-new" type="password" minlength="4" maxlength="128" autocomplete="new-password" required></label><button>Set up</button></form><form id="second-password-attempt"><label>Action <select id="second-password-action"><option value="unlock">Unlock</option><option value="disable">Disable</option><option value="change">Change</option></select></label><label>PIN <input id="second-password-pin" type="password" minlength="4" maxlength="128" autocomplete="current-password" required></label><label id="second-password-replacement-label" hidden>New PIN <input id="second-password-replacement" type="password" minlength="4" maxlength="128" autocomplete="new-password"></label><button>Submit</button></form><p id="second-password-status" class="muted" role="status"></p>
@@ -40,6 +42,7 @@ async function load(){
     q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
     await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus(),loadEventsStatus(load),loadF7CustomMapsPolicy(load)]);
     if(load===summaryLoad)await Promise.all([loadCustomMaps(load),loadF4ExtendedStatus(load),loadF4SecurityKitsStatus(load),loadF3PveStatus(load),loadSocialPolicyStatus()]);
+    if(load===summaryLoad)await Promise.all([loadF2ModesStatus(load),loadF4AnchorsStatus(load)]);
   }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
 }
 function clearSummaries(){
@@ -48,8 +51,12 @@ function clearSummaries(){
   q('#chat-status').textContent='';
   q('#social-policy-status').textContent='';
   q('#f3-pve-status').textContent='';
+  q('#f2-modes-status').textContent='';
+  q('#f2-modes-families').textContent='';
   q('#f4-extended-status').textContent='';
   q('#f4-extended-policies').replaceChildren();
+  q('#f4-anchors-status').textContent='';
+  q('#f4-shop-anchors').replaceChildren();
   q('#f4-security-kits-status').textContent='';
   q('#events-status').textContent='';
   q('#events-list').replaceChildren();
@@ -66,6 +73,15 @@ async function loadF3PveStatus(load){
     if(load!==summaryLoad)return;
     status.textContent=`${enabled?'Enabled':'Disabled'} · Active rooms: ${active_rooms}/${max_rooms} · Dispatch: ${dispatch.status.replaceAll('_',' ')} · Jump table: ${dispatch.jump_table_va} · Opcode index: opcode − ${dispatch.opcode_index_subtrahend}`;
   }catch(e){if(load===summaryLoad)status.textContent='PvE status unavailable'}
+}
+async function loadF2ModesStatus(load){
+  const status=q('#f2-modes-status');
+  try{
+    const {exported_families,exported_map_count,total_catalog_families,total_catalog_maps,tentative_family_count,live_dispatch_status}=await api('/api/v1/f2/modes-status');
+    if(load!==summaryLoad)return;
+    status.textContent=`Exported: ${exported_families.length}/${total_catalog_families} families · ${exported_map_count}/${total_catalog_maps} maps · ${tentative_family_count} tentative families · Live dispatch: ${live_dispatch_status.replaceAll('_',' ')}`;
+    q('#f2-modes-families').textContent=`Exported families: ${exported_families.join(', ')}`;
+  }catch(e){if(load===summaryLoad)status.textContent='F2 modes status unavailable'}
 }
 async function loadF4ExtendedStatus(load){
   const status=q('#f4-extended-status');
@@ -88,6 +104,19 @@ async function loadF4ExtendedStatus(load){
       q('#f4-extended-policies').append(li);
     }
   }catch(e){if(load===summaryLoad)status.textContent='F4 Extended status unavailable'}
+}
+async function loadF4AnchorsStatus(load){
+  const status=q('#f4-anchors-status');
+  try{
+    const {total,static_candidate_count,anchors}=await api('/api/v1/f4/anchors-status');
+    if(load!==summaryLoad)return;
+    status.textContent=`${total} client anchors · ${static_candidate_count} static candidates`;
+    for(const anchor of anchors){
+      const li=document.createElement('li');
+      li.textContent=`${anchor.name} · opcode ${anchor.opcode??'none'} · ${anchor.site.kind.replaceAll('_',' ')} ${anchor.site.va} · ${anchor.status.replaceAll('_',' ')} · ${anchor.evidence}`;
+      q('#f4-shop-anchors').append(li);
+    }
+  }catch(e){if(load===summaryLoad)status.textContent='F4 shop anchor status unavailable'}
 }
 async function loadF4SecurityKitsStatus(load){
   const status=q('#f4-security-kits-status');
