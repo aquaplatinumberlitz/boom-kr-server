@@ -5,13 +5,14 @@ use crate::{
     accounts::{Admin, Error, ItemUpgradeOperation, Player, RecordEraserOperation, Store, Token},
     choco_chat::F5SocialPolicy,
     f3_pve_policy::{DispatchRejection, PveModeFamily},
+    f3_pve_runtime::{DispatchEvidence, MonsterAttack, MonsterSpawn, RuntimeError},
     f4_extended_policy::{
         CouponRequest, Decision, ItemOrigin, OperationKey, OwnedItem, RecordScope,
         SecondPasswordAction, SecondPasswordOutcome, TitleUnlockDecision, UpgradeFamily,
     },
     platform, web_shop,
 };
-use kr_wire::kr00967::AccountTemplate;
+use kr_wire::kr00967::{AccountTemplate, f3_pve::F3JumpTableProvenance};
 use serde_json::{Value, json};
 use std::{
     fs, io,
@@ -370,11 +371,42 @@ async fn embedded_web_shop_reports_live_f4_and_f5_and_revokes_sessions_on_logout
 }
 
 #[tokio::test]
-async fn enabled_f3_policy_is_live_and_invalid_policy_fails_closed() {
+async fn omitted_and_disabled_f3_policies_keep_registry_closed() {
+    for configured in [false, true] {
+        let dir = TempDir::new();
+        let mut config = dir.config();
+        if configured {
+            config.f3_pve_policy = Some(dir.policy("f3.json", json!({"enabled": false})));
+        }
+        create_account(&config);
+        let owner = Owner::open(&config, Default::default(), Some(projection()))
+            .await
+            .unwrap();
+        let registry = owner.active.f3_pve_registry();
+        let snapshot = registry.snapshot();
+        assert!(!snapshot.enabled);
+        assert_eq!(snapshot.max_rooms, 0);
+        assert_eq!(
+            registry.start_room(
+                1,
+                PveModeFamily::MonsterS1,
+                DispatchEvidence::missing(),
+                1,
+                1,
+                1,
+            ),
+            Err(RuntimeError::DispatchDisabled)
+        );
+        owner.shutdown().await.unwrap();
+    }
+}
+
+#[tokio::test]
+async fn enabled_f3_registry_shares_room_lifecycle_across_active_clones() {
     let dir = TempDir::new();
     let mut config = dir.config();
     config.f3_pve_policy = Some(dir.policy("f3.json", json!({"enabled": true})));
-    drop(Store::open(&config.database).unwrap());
+    create_account(&config);
     let owner = Owner::open(&config, Default::default(), Some(projection()))
         .await
         .unwrap();
@@ -385,8 +417,58 @@ async fn enabled_f3_policy_is_live_and_invalid_policy_fails_closed() {
         policy.ensure_dispatch_allowed(family),
         Err(DispatchRejection::WineEvidenceRequired(family))
     );
-    owner.shutdown().await.unwrap();
+    let registry = owner.active.f3_pve_registry();
+    let snapshot = registry.snapshot();
+    assert!(snapshot.enabled);
+    assert_eq!(snapshot.max_rooms, 64);
+    assert_eq!(snapshot.active_rooms, 0);
 
+    let (room_id, stage, host_id, round_epoch) = (1, 1, 7, 1);
+    assert_eq!(
+        registry.start_room(
+            room_id,
+            family,
+            DispatchEvidence::missing(),
+            stage,
+            host_id,
+            round_epoch,
+        ),
+        Err(RuntimeError::WineDispatchEvidenceRequired)
+    );
+    assert_eq!(registry.snapshot().active_rooms, 0);
+
+    // Synthetic evidence exercises the registry API without asserting a Wine capture.
+    let evidence = DispatchEvidence::present(F3JumpTableProvenance::C_GAME_STAGE);
+    registry
+        .start_room(room_id, family, evidence, stage, host_id, round_epoch)
+        .unwrap();
+
+    let active_clone = owner.active.clone();
+    let shared_registry = active_clone.f3_pve_registry();
+    assert_eq!(shared_registry.snapshot().active_rooms, 1);
+    shared_registry
+        .advance_wave(room_id, 1, &[MonsterSpawn { id: 1, hp: 10 }])
+        .unwrap();
+    shared_registry
+        .apply_host_attack(
+            room_id,
+            MonsterAttack {
+                actor_id: host_id,
+                round_epoch,
+                attack_sequence: 1,
+                monster_id: 1,
+                damage: 10,
+            },
+        )
+        .unwrap();
+    assert_eq!(registry.snapshot().active_rooms, 1);
+    shared_registry.end_room(room_id).unwrap();
+    assert_eq!(registry.snapshot().active_rooms, 0);
+    owner.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn invalid_f3_policy_fails_closed() {
     let invalid = TempDir::new();
     let mut invalid_config = invalid.config();
     drop(Store::open(&invalid_config.database).unwrap());
