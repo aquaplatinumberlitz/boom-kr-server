@@ -2,15 +2,16 @@
 //! capture). See `docs/protocol/f2-f5-f3-ida-anchors.md` and
 //! `docs/evidence/content/f2-f5-f3-ida-anchors.json` (IDA DB SHA-256
 //! `6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1`).
-//! These codecs provide body validation only; see [`F3JumpTableProvenance`]
-//! before associating any Hex-Rays case label with a wire opcode.
+//! Existing codecs provide body validation only; see [`F3JumpTableProvenance`]
+//! before associating any Hex-Rays case label with a wire opcode. The CP405
+//! MonAction descriptors validate metadata and do not encode or decode bytes.
 
 #![deny(unsafe_code)]
 
 use crate::{CodecError, Width, read_uint, write_uint};
 use std::fmt;
 
-/// Evidence status for the F3 PvE body candidates.
+/// Evidence status for the F3 PvE candidates.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum F3WireStatus {
     StaticCandidatePendingCapture,
@@ -40,6 +41,26 @@ impl F3JumpTableProvenance {
     };
 }
 
+/// KR 00967 static evidence from CP405 and `client-data-tables.md#monaction-runtime`.
+/// The client runs MonAction steps for locally owned objects. The server's choice
+/// of owner slot and forwarding of step reports still need a two-client capture.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct F3MonActionProvenance {
+    pub owner_gate_va: u32,
+    pub delegation_opcode: u32,
+    pub step_report_opcodes: [u32; 2],
+    pub status: F3WireStatus,
+}
+
+impl F3MonActionProvenance {
+    pub const CP405_STATIC: Self = Self {
+        owner_gate_va: 0xB91F60,
+        delegation_opcode: 204,
+        step_report_opcodes: [132, 180],
+        status: F3WireStatus::StaticCandidatePendingCapture,
+    };
+}
+
 /// Identifies the timer that overflowed while converting a candidate body.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum F3TimerField {
@@ -47,7 +68,7 @@ pub enum F3TimerField {
     Second,
 }
 
-/// Validation errors for the static candidate bodies pending live Wine capture.
+/// Validation errors for the static candidates pending live Wine capture.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum F3WireError {
     TruncatedEof,
@@ -56,6 +77,11 @@ pub enum F3WireError {
     InvalidAttackState(u8),
     UnsupportedTimedEventFlag(u8),
     TimerOverflow(F3TimerField),
+    InvalidMonActionOpcode(u32),
+    ZeroMonActionObjectId,
+    MonActionOwnerSlotOutOfRange(u8),
+    MonActionStepIndexOutOfRange(u16),
+    MonActionTemplateIdOutOfRange(u16),
     Codec(CodecError),
 }
 
@@ -74,6 +100,19 @@ impl fmt::Display for F3WireError {
             Self::TimerOverflow(field) => {
                 write!(f, "F3 candidate {field:?} timer overflows u32 milliseconds")
             }
+            Self::InvalidMonActionOpcode(opcode) => {
+                write!(f, "invalid MonAction candidate opcode {opcode}")
+            }
+            Self::ZeroMonActionObjectId => f.write_str("MonAction candidate object ID is zero"),
+            Self::MonActionOwnerSlotOutOfRange(slot) => {
+                write!(f, "MonAction candidate owner slot {slot} out of range")
+            }
+            Self::MonActionStepIndexOutOfRange(index) => {
+                write!(f, "MonAction candidate step index {index} out of range")
+            }
+            Self::MonActionTemplateIdOutOfRange(id) => {
+                write!(f, "MonAction candidate template ID {id} out of range")
+            }
             Self::Codec(error) => error.fmt(f),
         }
     }
@@ -91,6 +130,104 @@ impl std::error::Error for F3WireError {
 impl From<CodecError> for F3WireError {
     fn from(error: CodecError) -> Self {
         Self::Codec(error)
+    }
+}
+
+/// Static candidate pending live Wine capture for S→C object ownership delegation.
+/// Validation bounds the proposed slot; it does not determine who owns the object.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct MonActionDelegationCandidate {
+    pub opcode: u32,
+    pub object_id: u16,
+    pub owner_slot: u8,
+}
+
+impl MonActionDelegationCandidate {
+    pub const STATUS: F3WireStatus = F3MonActionProvenance::CP405_STATIC.status;
+
+    /// Bound to the eight supported active player slots; CP405 does not measure
+    /// which slot the server selects or what other slots opcode 204 can address.
+    pub const OWNER_SLOT_COUNT: u8 = 8;
+
+    pub fn new(opcode: u32, object_id: u16, owner_slot: u8) -> Result<Self, F3WireError> {
+        let candidate = Self {
+            opcode,
+            object_id,
+            owner_slot,
+        };
+        candidate.validate()?;
+        Ok(candidate)
+    }
+
+    pub fn validate(self) -> Result<(), F3WireError> {
+        if self.opcode != F3MonActionProvenance::CP405_STATIC.delegation_opcode {
+            return Err(F3WireError::InvalidMonActionOpcode(self.opcode));
+        }
+        if self.object_id == 0 {
+            return Err(F3WireError::ZeroMonActionObjectId);
+        }
+        if self.owner_slot >= Self::OWNER_SLOT_COUNT {
+            return Err(F3WireError::MonActionOwnerSlotOutOfRange(self.owner_slot));
+        }
+        Ok(())
+    }
+}
+
+/// Static candidate pending live Wine capture for a C→S step report.
+/// `template_id` is a zero-based catalog entry index and `step_index` is a
+/// zero-based index within an action list. They are local descriptor metadata,
+/// not observed wire fields. Validation checks global bounds only; it cannot
+/// confirm that the object uses that template or that a particular list has the step.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct MonActionStepReportCandidate {
+    pub opcode: u32,
+    pub object_id: u16,
+    pub step_index: u16,
+    pub template_id: u16,
+}
+
+impl MonActionStepReportCandidate {
+    pub const STATUS: F3WireStatus = F3MonActionProvenance::CP405_STATIC.status;
+
+    /// Maximum `action_lists[].steps` length in `docs/content/client-tables/mon-action.json`.
+    pub const MAX_STEPS_PER_ACTION_LIST: u16 = 215;
+
+    /// Number of `entries` in `docs/content/client-tables/mon-action.json`.
+    pub const TEMPLATE_COUNT: u16 = 364;
+
+    pub fn new(
+        opcode: u32,
+        object_id: u16,
+        step_index: u16,
+        template_id: u16,
+    ) -> Result<Self, F3WireError> {
+        let candidate = Self {
+            opcode,
+            object_id,
+            step_index,
+            template_id,
+        };
+        candidate.validate()?;
+        Ok(candidate)
+    }
+
+    pub fn validate(self) -> Result<(), F3WireError> {
+        if !F3MonActionProvenance::CP405_STATIC
+            .step_report_opcodes
+            .contains(&self.opcode)
+        {
+            return Err(F3WireError::InvalidMonActionOpcode(self.opcode));
+        }
+        if self.object_id == 0 {
+            return Err(F3WireError::ZeroMonActionObjectId);
+        }
+        if self.step_index >= Self::MAX_STEPS_PER_ACTION_LIST {
+            return Err(F3WireError::MonActionStepIndexOutOfRange(self.step_index));
+        }
+        if self.template_id >= Self::TEMPLATE_COUNT {
+            return Err(F3WireError::MonActionTemplateIdOutOfRange(self.template_id));
+        }
+        Ok(())
     }
 }
 
