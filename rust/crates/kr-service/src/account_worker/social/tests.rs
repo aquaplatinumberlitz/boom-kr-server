@@ -3,8 +3,9 @@ use crate::{
     account_bridge::{self as bridge, local::LocalSession},
     account_worker::Worker,
     accounts::{CHAT_WINDOW_CAP, GuildRole, TEST_SERIAL},
+    choco_chat::{F5MegaphonePolicy, F5PlazaLimits, F5PlazaZone, F5SocialPolicy},
 };
-use std::{net::Ipv4Addr, time::Duration};
+use std::{collections::BTreeMap, net::Ipv4Addr, num::NonZeroU16, time::Duration};
 use tokio::time::{sleep, timeout};
 
 use bridge::{
@@ -21,6 +22,153 @@ fn chat(recipient: Option<i64>, message_bytes: usize) -> Action {
         recipient,
         message_bytes,
     }
+}
+
+#[test]
+fn f5_policy_defaults_closed_without_changing_schema9_social() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, alice, bob) = Temp::new();
+    let (a, b) = (alice.player_id, bob.player_id);
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let client = worker.client();
+        for capability in [
+            F5SocialCapability::Whisper(b),
+            F5SocialCapability::GuildChat,
+            F5SocialCapability::MegaphoneGlobal,
+            F5SocialCapability::MegaphoneChannel,
+            F5SocialCapability::NoteInbox(b),
+            F5SocialCapability::Couple(b),
+            F5SocialCapability::Plaza(F5PlazaZone::LobbySquare),
+        ] {
+            assert_eq!(
+                call(&client, a, Action::CheckF5Capability(capability)).await,
+                Ok(Reply::F5Eligibility(F5SocialGate::Disabled))
+            );
+        }
+        assert_eq!(
+            call(&client, a, Action::ListFriends).await,
+            Ok(Reply::Friends(vec![]))
+        );
+        assert_eq!(
+            call(&client, a, Action::BlockPlayer(b)).await,
+            Ok(Reply::Changed(true))
+        );
+        assert_eq!(
+            call(&client, a, chat(Some(b), 8)).await,
+            Ok(Reply::ChatPermission(ChatPermission::Blocked))
+        );
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn f5_policy_status_and_enabled_capabilities_use_the_worker_queue() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, alice, bob) = Temp::new();
+    let (a, b) = (alice.player_id, bob.player_id);
+    let policy = F5SocialPolicy {
+        whisper: true,
+        guild_chat: true,
+        megaphone: Some(F5MegaphonePolicy {
+            global: true,
+            channel: true,
+            cooldown_seconds: 3,
+            window_seconds: 20,
+            quota: 2,
+        }),
+        note_inbox_cap: NonZeroU16::new(4),
+        couple: true,
+        plaza_zones: BTreeMap::from([(
+            F5PlazaZone::LobbySquare,
+            F5PlazaLimits {
+                max_occupants: NonZeroU16::new(8).unwrap(),
+                seats: 2,
+            },
+        )]),
+    };
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let client = worker.client();
+        client.set_f5_social_policy(policy.clone()).unwrap();
+        assert_eq!(client.f5_social_policy(), policy);
+        assert_eq!(
+            call(&client, a, Action::F5PolicyStatus).await,
+            Ok(Reply::F5PolicyStatus(policy))
+        );
+        for capability in [
+            F5SocialCapability::Whisper(b),
+            F5SocialCapability::GuildChat,
+            F5SocialCapability::MegaphoneGlobal,
+            F5SocialCapability::MegaphoneChannel,
+            F5SocialCapability::NoteInbox(b),
+            F5SocialCapability::Couple(b),
+            F5SocialCapability::Plaza(F5PlazaZone::LobbySquare),
+        ] {
+            assert_eq!(
+                call(&client, a, Action::CheckF5Capability(capability)).await,
+                Ok(Reply::F5Eligibility(F5SocialGate::Allowed))
+            );
+        }
+        worker.shutdown().await.unwrap();
+    });
+}
+
+#[test]
+fn f5_policy_never_overrides_schema9_mute_or_block() {
+    let _serial = TEST_SERIAL.lock().unwrap();
+    let (temp, alice, bob) = Temp::new();
+    let (a, b) = (alice.player_id, bob.player_id);
+    rt().block_on(async {
+        let worker = worker(&temp).await;
+        let client = worker.client();
+        client
+            .set_f5_social_policy(F5SocialPolicy {
+                whisper: true,
+                note_inbox_cap: NonZeroU16::new(2),
+                couple: true,
+                ..Default::default()
+            })
+            .unwrap();
+        client
+            .try_mute_social_player(a, 60, ChatMuteReason::Moderation)
+            .unwrap()
+            .wait()
+            .await
+            .unwrap();
+        assert_eq!(
+            call(
+                &client,
+                a,
+                Action::CheckF5Capability(F5SocialCapability::Whisper(b))
+            )
+            .await,
+            Ok(Reply::F5Eligibility(F5SocialGate::Muted))
+        );
+        assert_eq!(
+            call(&client, b, Action::BlockPlayer(a)).await,
+            Ok(Reply::Changed(true))
+        );
+        assert_eq!(
+            call(
+                &client,
+                b,
+                Action::CheckF5Capability(F5SocialCapability::Whisper(a))
+            )
+            .await,
+            Ok(Reply::F5Eligibility(F5SocialGate::Blocked))
+        );
+        assert_eq!(
+            call(
+                &client,
+                b,
+                Action::CheckF5Capability(F5SocialCapability::NoteInbox(a))
+            )
+            .await,
+            Ok(Reply::F5Eligibility(F5SocialGate::Blocked))
+        );
+        worker.shutdown().await.unwrap();
+    });
 }
 
 #[test]
