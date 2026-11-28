@@ -1,9 +1,148 @@
-//! `kr_static`, KR00967: see `docs/evidence/content/f2-f5-f3-ida-anchors.json`
-//! for artifact identity and locators. RTTI names alone do not give wire IDs
-//! for PTimebombClient, PTimebombServer, WeeklyLadderPacket or ConfusedFightPacket.
+//! KR00967 `kr_static` provenance from PR #810. See
+//! `docs/protocol/f2-bula-tail-and-mode-wire-re.md` and
+//! `docs/evidence/content/f2-bula-tail-and-mode-wire-re.json` for locators and
+//! pack hashes. IDA DB SHA-256: `6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1`.
+//! CA.exe SHA-256: `a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e`.
 use super::{put, uint};
 use crate::Width;
 use std::io;
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F2AnchorStatus {
+    /// Confirmed for the stated static finding only.
+    KrStaticConfirmed,
+    UnmeasuredPendingWineCapture,
+}
+
+/// Function addresses are IDA VAs in the KR00967 image.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F2AnchorSite {
+    Function(u32),
+    ServerToClientHandler { va: u32, opcode: u32 },
+    Rtti,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct F2ModeAnchor {
+    pub name: &'static str,
+    pub site: F2AnchorSite,
+    pub status: F2AnchorStatus,
+    pub finding: &'static str,
+}
+
+impl F2ModeAnchor {
+    const fn confirmed(name: &'static str, site: F2AnchorSite, finding: &'static str) -> Self {
+        Self {
+            name,
+            site,
+            status: F2AnchorStatus::KrStaticConfirmed,
+            finding,
+        }
+    }
+
+    const fn rtti(name: &'static str) -> Self {
+        Self::confirmed(name, F2AnchorSite::Rtti, "Name only; live wire ID unknown.")
+    }
+}
+
+/// Static locators carry no family binding or server authority.
+pub static F2_MODE_ANCHORS: &[F2ModeAnchor] = &[
+    F2ModeAnchor::confirmed(
+        "sub_57F520",
+        F2AnchorSite::Function(0x57F520),
+        "The roomtype string is used in room creation; the numeric wire field is unknown.",
+    ),
+    F2ModeAnchor::confirmed(
+        "sub_C6C080",
+        F2AnchorSite::Function(0xC6C080),
+        "The GameType switch selects UI labels; those IDs do not establish wire values.",
+    ),
+    F2ModeAnchor::confirmed(
+        "MapGroupVisible writer",
+        F2AnchorSite::Function(0xE04CB0),
+        "Writes 16-bit entries to the MapGroupVisible config key.",
+    ),
+    F2ModeAnchor::confirmed(
+        "MapGroupVisible reader",
+        F2AnchorSite::Function(0xE04DD0),
+        "Reads the config entries used in map and group selection.",
+    ),
+    F2ModeAnchor::confirmed(
+        "CGamePlayMap Soul reader",
+        F2AnchorSite::Function(0x115C770),
+        "The loader calls virtual slot +0x64 after drop and placement; name lookup is at 0x11676E0.",
+    ),
+    F2ModeAnchor::confirmed(
+        "CGamePlayMap Soul record consumer",
+        F2AnchorSite::Function(0x115DCF0),
+        "Consumes records after the name lookup; per-map timing and authority are unknown.",
+    ),
+    F2ModeAnchor::confirmed(
+        "RebirthToGhost",
+        F2AnchorSite::ServerToClientHandler {
+            va: 0xE67470,
+            opcode: RebirthToGhost::OPCODE,
+        },
+        "The stage jump table binds S->C 185 to a u8 slot reader and entity vtable call; no live capture.",
+    ),
+    F2ModeAnchor::rtti("WeeklyLadderPacket"),
+    F2ModeAnchor::rtti("ConfusedFightPacket"),
+    F2ModeAnchor::rtti("PTimebombClient"),
+    F2ModeAnchor::rtti("PTimebombServer"),
+    F2ModeAnchor::rtti("PWeeklyLadderUserInfoResult"),
+];
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct F2ModeFamily {
+    pub family: &'static str,
+    pub wire_mode: F2AnchorStatus,
+    pub round_objective_wire: F2AnchorStatus,
+    /// Candidate UI associations only.
+    pub static_game_type_candidates: &'static [GameTypeId],
+}
+
+impl F2ModeFamily {
+    const fn pending(
+        family: &'static str,
+        static_game_type_candidates: &'static [GameTypeId],
+    ) -> Self {
+        Self {
+            family,
+            wire_mode: F2AnchorStatus::UnmeasuredPendingWineCapture,
+            round_objective_wire: F2AnchorStatus::UnmeasuredPendingWineCapture,
+            static_game_type_candidates,
+        }
+    }
+}
+
+/// The 18 families in the #810 evidence matrix, with no measured mode or objective wire.
+pub static F2_MODE_FAMILIES: &[F2ModeFamily] = &[
+    F2ModeFamily::pending("Baseball", &[]),
+    F2ModeFamily::pending("Bula", &[]),
+    F2ModeFamily::pending("CAPong", &[]),
+    F2ModeFamily::pending("Clover", &[]),
+    F2ModeFamily::pending("Coloring", &[]),
+    F2ModeFamily::pending("Gumiho", &[]),
+    F2ModeFamily::pending("Hamster", &[]),
+    F2ModeFamily::pending("Kart", &[]),
+    F2ModeFamily::pending("PopcadeA", &[GameTypeId::Popcade]),
+    F2ModeFamily::pending("PopcadeB", &[GameTypeId::Popcade]),
+    F2ModeFamily::pending("PopcadeC", &[GameTypeId::Popcade]),
+    F2ModeFamily::pending("Rabbit", &[]),
+    F2ModeFamily::pending("RescueET", &[]),
+    F2ModeFamily::pending("SnowyFields", &[]),
+    F2ModeFamily::pending(
+        "SuperFighter",
+        &[
+            GameTypeId::SuperFighter,
+            GameTypeId::SuperFighter21,
+            GameTypeId::SuperFighter25,
+        ],
+    ),
+    F2ModeFamily::pending("Wriggle", &[]),
+    F2ModeFamily::pending("Zombie", &[]),
+    F2ModeFamily::pending("Zzolman", &[]),
+];
 
 /// Create-dialog switch at `0xC6C080`. Distinct IDs can select the same label.
 /// This table does not establish a create-room or Start121 field.
@@ -125,6 +264,208 @@ impl MapGroupVisible {
             .flat_map(|entry| entry.to_le_bytes())
             .collect())
     }
+}
+
+/// Ordered raw `(x, y)` pairs from one group in a Bula map tail.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct BulaGroupPoints(pub Vec<(i32, i32)>);
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct BulaTailRecord {
+    /// Length-prefixed name bytes, including any NUL padding in the pack.
+    pub raw_cp949_name: Vec<u8>,
+    pub x: u8,
+    pub y: u8,
+    pub fields: [i32; 3],
+}
+
+/// PR #810 `kr_static/confirmed` little-endian `group_record_tail` at the
+/// end of a map payload. Point coordinates, record fields, and script content
+/// are stored as supplied; the codec does not assign gameplay semantics.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct BulaGroupRecordTail {
+    pub groups: Vec<BulaGroupPoints>,
+    pub records: Vec<BulaTailRecord>,
+    pub script: Vec<u8>,
+}
+
+impl BulaGroupRecordTail {
+    // Allocation limits from tools/kr_f1e_script_audit.py, not client limits.
+    pub const MAX_GROUPS: usize = 256;
+    pub const MAX_POINTS_PER_GROUP: usize = 4096;
+    pub const MAX_RECORDS: usize = 256;
+    pub const MAX_NAME_BYTES: usize = 64;
+    /// Codec allocation limit; all seven Bula assets in #810 have empty scripts.
+    pub const MAX_SCRIPT_BYTES: usize = 1024 * 1024;
+
+    pub fn decode(bytes: &[u8]) -> io::Result<Self> {
+        let mut reader = BulaTailReader(bytes);
+        let group_count = reader.count(Self::MAX_GROUPS, "group count")?;
+        reader.require_entries(group_count, 4)?;
+        let mut groups = Vec::with_capacity(group_count);
+        for _ in 0..group_count {
+            let point_count = reader.count(Self::MAX_POINTS_PER_GROUP, "point count")?;
+            reader.require_entries(point_count, 8)?;
+            let mut points = Vec::with_capacity(point_count);
+            for _ in 0..point_count {
+                points.push((reader.i32()?, reader.i32()?));
+            }
+            groups.push(BulaGroupPoints(points));
+        }
+
+        let record_count = reader.count(Self::MAX_RECORDS, "record count")?;
+        reader.require_entries(record_count, 4 + 1 + 14)?;
+        let mut records = Vec::with_capacity(record_count);
+        for _ in 0..record_count {
+            let name_len = reader.count(Self::MAX_NAME_BYTES, "name length")?;
+            if name_len == 0 {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    "empty Bula name",
+                ));
+            }
+            let name = reader.take(name_len)?;
+            let [x, y] = reader.array()?;
+            let fields = [reader.i32()?, reader.i32()?, reader.i32()?];
+            records.push(BulaTailRecord {
+                raw_cp949_name: name.to_vec(),
+                x,
+                y,
+                fields,
+            });
+        }
+
+        let script_len = u32::from_le_bytes(reader.array()?) as usize;
+        if script_len > Self::MAX_SCRIPT_BYTES {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "oversized Bula script",
+            ));
+        }
+        let script = reader.take(script_len)?;
+        if !reader.0.is_empty() {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "trailing bytes after Bula script",
+            ));
+        }
+
+        Ok(Self {
+            groups,
+            records,
+            script: script.to_vec(),
+        })
+    }
+
+    pub fn encode(&self) -> io::Result<Vec<u8>> {
+        if self.script.len() > Self::MAX_SCRIPT_BYTES {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "oversized Bula script",
+            ));
+        }
+
+        let mut bytes = Vec::new();
+        write_bula_count(
+            &mut bytes,
+            self.groups.len(),
+            Self::MAX_GROUPS,
+            "group count",
+        )?;
+        for group in &self.groups {
+            write_bula_count(
+                &mut bytes,
+                group.0.len(),
+                Self::MAX_POINTS_PER_GROUP,
+                "point count",
+            )?;
+            for &(x, y) in &group.0 {
+                bytes.extend_from_slice(&x.to_le_bytes());
+                bytes.extend_from_slice(&y.to_le_bytes());
+            }
+        }
+        write_bula_count(
+            &mut bytes,
+            self.records.len(),
+            Self::MAX_RECORDS,
+            "record count",
+        )?;
+        for record in &self.records {
+            if record.raw_cp949_name.is_empty() {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidInput,
+                    "empty Bula name",
+                ));
+            }
+            write_bula_count(
+                &mut bytes,
+                record.raw_cp949_name.len(),
+                Self::MAX_NAME_BYTES,
+                "name length",
+            )?;
+            bytes.extend_from_slice(&record.raw_cp949_name);
+            bytes.extend_from_slice(&[record.x, record.y]);
+            for field in record.fields {
+                bytes.extend_from_slice(&field.to_le_bytes());
+            }
+        }
+        bytes.extend_from_slice(&(self.script.len() as u32).to_le_bytes());
+        bytes.extend_from_slice(&self.script);
+        Ok(bytes)
+    }
+}
+
+struct BulaTailReader<'a>(&'a [u8]);
+
+impl<'a> BulaTailReader<'a> {
+    fn take(&mut self, len: usize) -> io::Result<&'a [u8]> {
+        let (head, tail) = self
+            .0
+            .split_at_checked(len)
+            .ok_or(io::ErrorKind::UnexpectedEof)?;
+        self.0 = tail;
+        Ok(head)
+    }
+
+    fn array<const N: usize>(&mut self) -> io::Result<[u8; N]> {
+        let (head, tail) = self
+            .0
+            .split_first_chunk()
+            .ok_or(io::ErrorKind::UnexpectedEof)?;
+        self.0 = tail;
+        Ok(*head)
+    }
+
+    fn i32(&mut self) -> io::Result<i32> {
+        Ok(i32::from_le_bytes(self.array()?))
+    }
+
+    fn count(&mut self, cap: usize, field: &str) -> io::Result<usize> {
+        usize::try_from(self.i32()?)
+            .ok()
+            .filter(|&count| count <= cap)
+            .ok_or_else(|| {
+                io::Error::new(io::ErrorKind::InvalidData, format!("invalid Bula {field}"))
+            })
+    }
+
+    fn require_entries(&self, count: usize, min_size: usize) -> io::Result<()> {
+        if count > self.0.len() / min_size {
+            return Err(io::ErrorKind::UnexpectedEof.into());
+        }
+        Ok(())
+    }
+}
+
+fn write_bula_count(bytes: &mut Vec<u8>, len: usize, cap: usize, field: &str) -> io::Result<()> {
+    if len > cap {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            format!("oversized Bula {field}"),
+        ));
+    }
+    bytes.extend_from_slice(&(len as i32).to_le_bytes());
+    Ok(())
 }
 
 #[cfg(test)]
