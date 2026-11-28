@@ -755,17 +755,14 @@ mod local_tests {
 
     #[test]
     fn both_local_accounts_select_atomically_and_a_full_room_never_admits_half_a_pair() {
-        use crate::account_bridge::tests::PASSWORD;
         use kr_wire::{Width, write_uint};
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         let (temp, a, b) = Temp::new();
-        let c = temp
-            .store()
-            .create_account(&admin(), "Charlie", "Third", PASSWORD, now())
+        let c = crate::account_bridge::tests::create_account(&mut temp.store(), "Charlie", "Third")
             .unwrap();
-        let d = temp
-            .store()
-            .create_account(&admin(), "Delta", "Fourth", PASSWORD, now())
+        let d = crate::account_bridge::tests::create_account(&mut temp.store(), "Delta", "Fourth")
             .unwrap();
         rt().block_on(async {
             let worker = worker(&temp).await;
@@ -832,7 +829,9 @@ mod local_tests {
     }
     #[test]
     fn local_lobby_admission_is_atomic_and_retired_handles_cannot_reclaim_reused_connections() {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         let (temp, a, b) = Temp::new();
         rt().block_on(async {
             let worker = worker(&temp).await;
