@@ -6,10 +6,11 @@ use kr_service::{
         SCHEMA_VERSION, Store, Token,
     },
     choco_chat::{F5PlazaZone, F5SocialPolicy},
-    custom_map_store::CustomMapPolicy,
+    custom_map_store::{CustomMapPolicy, CustomMapStore, CustomMapStoreError},
     f3_pve_policy::{
         DispatchRejection, F3PvePolicy, MonsterAttackGuard, PveAuthority, PveModeFamily,
     },
+    f3_pve_runtime::{DispatchEvidence, F3PveRuntime, MonsterAttack, MonsterSpawn, RuntimeError},
     f4_extended_policy::{
         BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
         PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
@@ -27,6 +28,7 @@ use sha2::{Digest, Sha256};
 use std::{
     collections::{BTreeMap, HashMap},
     ffi::{OsStr, OsString},
+    fs,
     io::{self, Read},
     path::Path,
 };
@@ -596,6 +598,9 @@ fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
 
 const POLICY_AUDIT_USAGE: &str = "usage: kr-admin policy-audit [--f3-policy PATH] [--f4-policy PATH] [--f5-policy PATH] [--f6-policy PATH] [--f7-policy PATH]";
 const F6_CLAIM_USAGE: &str = "usage: kr-admin f6-claim-event --db PATH --f6-policy PATH [--account LOGIN] [--player-id ID] --event-id ID --now-unix SECS --operator NAME --reason TEXT [--claim-id ID] (--lucci AMOUNT | --sku-id SKU [--quantity N] [--max-stack N | --duration-seconds SECS])";
+const F3_DRY_RUN_USAGE: &str = "usage: kr-admin f3-pve-dry-run --f3-policy PATH --mode FAMILY [--host-player-id ID] [--guest-player-id ID]";
+const F7_MAPS_LIST_USAGE: &str =
+    "usage: kr-admin f7-custom-maps-list --f7-policy PATH --custom-maps-dir DIR [--owner ID]";
 
 type CliResult<T> = Result<T, Box<dyn std::error::Error>>;
 
@@ -642,6 +647,204 @@ impl<'a> Options<'a> {
             })
             .transpose()
     }
+}
+
+fn parse_pve_family(mode: &str) -> CliResult<PveModeFamily> {
+    use PveModeFamily::*;
+    Ok(match mode {
+        "MonsterS1" | "monster_s1" => MonsterS1,
+        "MonsterS2" | "monster_s2" => MonsterS2,
+        "Mission" | "mission" => Mission,
+        "RPG" | "rpg" => RPG,
+        "CAHero" | "ca_hero" => CAHero,
+        "HiddenCatch" | "hidden_catch" => HiddenCatch,
+        "Bonus" | "bonus" => Bonus,
+        "AIBattle" | "ai_battle" => AIBattle,
+        "Popcade" | "popcade" => Popcade,
+        "SandBox" | "sand_box" => SandBox,
+        "IamBoss" | "iam_boss" => IamBoss,
+        "Tutorial" | "tutorial" => Tutorial,
+        "Antarctic" | "antarctic" => Antarctic,
+        "DragonPalace" | "dragon_palace" => DragonPalace,
+        "EscapeMaze" | "escape_maze" => EscapeMaze,
+        "GolemRun" | "golem_run" => GolemRun,
+        "IamWriggle" | "iam_wriggle" => IamWriggle,
+        "MineExp" | "mine_exp" => MineExp,
+        "Minibot" | "minibot" => Minibot,
+        "SavetheEarth" | "save_the_earth" => SavetheEarth,
+        _ => return Err("invalid --mode: expected an F3 PvE family".into()),
+    })
+}
+
+fn check_f3_dry_run(
+    check: &str,
+    result: Result<(), RuntimeError>,
+    expected: Result<(), RuntimeError>,
+) -> CliResult<()> {
+    if result != expected {
+        return Err(format!("F3 dry run {check}: expected {expected:?}, got {result:?}").into());
+    }
+    Ok(())
+}
+
+fn f3_pve_dry_run(args: &[OsString]) -> CliResult<Value> {
+    let options = Options::parse(
+        args,
+        &[
+            "--f3-policy",
+            "--mode",
+            "--host-player-id",
+            "--guest-player-id",
+        ],
+        F3_DRY_RUN_USAGE,
+    )?;
+    let policy = load_f3_policy(Some(options.path("--f3-policy").ok_or(F3_DRY_RUN_USAGE)?))?;
+    if !policy.enabled {
+        return Err("F3 PvE policy is disabled".into());
+    }
+    let family = parse_pve_family(options.text("--mode")?.ok_or(F3_DRY_RUN_USAGE)?)?;
+    let host: u32 = options.value("--host-player-id")?.unwrap_or(1);
+    let guest: u32 = options.value("--guest-player-id")?.unwrap_or(2);
+    if host == 0 || guest == 0 || host == guest {
+        return Err("F3 dry run requires distinct, nonzero player IDs".into());
+    }
+
+    let missing = DispatchEvidence::missing();
+    let mut unmeasured = F3PveRuntime::new(policy, family, missing);
+    check_f3_dry_run(
+        "unmeasured session start",
+        unmeasured.begin_briefing(1, host, 1),
+        Err(RuntimeError::WineDispatchEvidenceRequired),
+    )?;
+
+    // The positive control uses a synthetic evidence bit in an isolated
+    // in-memory session. It supplies no measured evidence to the service.
+    let mut fixture = F3PveRuntime::new(
+        policy,
+        family,
+        DispatchEvidence::present(missing.provenance),
+    );
+    check_f3_dry_run("session start", fixture.begin_briefing(1, host, 1), Ok(()))?;
+    check_f3_dry_run(
+        "wave start",
+        fixture.start_wave(1, &[MonsterSpawn { id: 1, hp: 10 }]),
+        Ok(()),
+    )?;
+    let attack = MonsterAttack {
+        actor_id: host,
+        round_epoch: 1,
+        attack_sequence: 2,
+        monster_id: 1,
+        damage: 1,
+    };
+    check_f3_dry_run("host attack", fixture.monster_attack(attack), Ok(()))?;
+    check_f3_dry_run(
+        "guest attack",
+        fixture.monster_attack(MonsterAttack {
+            actor_id: guest,
+            attack_sequence: 3,
+            ..attack
+        }),
+        Err(RuntimeError::NotHost),
+    )?;
+    for sequence in [2, 1] {
+        check_f3_dry_run(
+            "non-increasing attack sequence",
+            fixture.monster_attack(MonsterAttack {
+                attack_sequence: sequence,
+                ..attack
+            }),
+            Err(RuntimeError::NonIncreasingSequence),
+        )?;
+    }
+
+    Ok(json!({
+        "mode": format!("{family:?}"),
+        "host_player_id": host,
+        "guest_player_id": guest,
+        "checks": {
+            "session_start": "accepted",
+            "host_attack": "accepted",
+            "guest_attack": "not_host",
+            "non_monotonic_sequence": "non_increasing_sequence",
+            "missing_dispatch_evidence": "wine_dispatch_evidence_required",
+        },
+        "dispatch": {
+            "fixture_evidence": "synthetic",
+            "status": "static_candidate_pending_live_wine_capture",
+            "jump_table_va": format!("0x{:X}", missing.provenance.jump_table_va),
+            "opcode_index_subtrahend": missing.provenance.opcode_index_subtrahend,
+        },
+    }))
+}
+
+fn custom_map_owners(root: &Path) -> Result<Vec<String>, CustomMapStoreError> {
+    // CustomMapStore has no global listing. Enumerate owner directories only;
+    // map discovery and verification still go through the store.
+    let entries = match fs::read_dir(root) {
+        Ok(entries) => entries,
+        Err(error) if error.kind() == io::ErrorKind::NotFound => return Ok(Vec::new()),
+        Err(error) => return Err(error.into()),
+    };
+    let mut owners = Vec::new();
+    for entry in entries {
+        let entry = entry?;
+        let kind = entry.file_type()?;
+        if kind.is_symlink() {
+            return Err(CustomMapStoreError::Symlink);
+        }
+        if !kind.is_dir() {
+            return Err(CustomMapStoreError::InvalidPath);
+        }
+        owners.push(
+            entry
+                .file_name()
+                .into_string()
+                .map_err(|_| CustomMapStoreError::InvalidOwnerId)?,
+        );
+    }
+    owners.sort_unstable();
+    Ok(owners)
+}
+
+fn f7_custom_maps_list(args: &[OsString]) -> CliResult<Value> {
+    let options = Options::parse(
+        args,
+        &["--f7-policy", "--custom-maps-dir", "--owner"],
+        F7_MAPS_LIST_USAGE,
+    )?;
+    let path = options.path("--f7-policy").ok_or(F7_MAPS_LIST_USAGE)?;
+    let root = options
+        .path("--custom-maps-dir")
+        .ok_or(F7_MAPS_LIST_USAGE)?;
+    // JSON parser diagnostics can quote values from the policy file.
+    let policy =
+        load_f7_policy(Some(path)).map_err(|_| "invalid or unreadable f7_custom_map_policy")?;
+    if !policy.enabled {
+        return Err(CustomMapStoreError::Disabled.into());
+    }
+    let store = CustomMapStore::new(root, policy)?;
+    let owners = match options.text("--owner")? {
+        Some(owner) => vec![owner.to_owned()],
+        None => custom_map_owners(root)?,
+    };
+    let mut maps = Vec::new();
+    for owner in owners {
+        for metadata in store.list_by_owner(&owner)? {
+            let record = store
+                .get(&owner, &metadata.map_id)?
+                .ok_or(CustomMapStoreError::Integrity)?;
+            // The normalized format has no display name; use its public ID.
+            maps.push(json!({
+                "id": record.metadata.map_id,
+                "owner": record.metadata.owner_id,
+                "name": record.metadata.map_id,
+                "bytes": record.payload.len(),
+                "sha256": record.metadata.sha256,
+            }));
+        }
+    }
+    Ok(json!({ "maps": maps }))
 }
 
 fn policy_audit(args: &[OsString]) -> CliResult<Value> {
@@ -1218,6 +1421,8 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             _ => return Err("usage: kr-admin f5-policy-check [--policy PATH]".into()),
         },
         [flag, options @ ..] if flag == "f6-claim-event" => f6_claim_event(options)?,
+        [flag, options @ ..] if flag == "f3-pve-dry-run" => f3_pve_dry_run(options)?,
+        [flag, options @ ..] if flag == "f7-custom-maps-list" => f7_custom_maps_list(options)?,
         [flag, options @ ..] if flag == "policy-audit" => policy_audit(options)?,
         [flag, dir] if flag == "private-dir" => {
             kr_service::platform::provision_private_dir(Path::new(dir))?;
@@ -1243,7 +1448,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F6_CLAIM_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
+        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F3_DRY_RUN_USAGE}\n{F6_CLAIM_USAGE}\n{F7_MAPS_LIST_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
     })
 }
 fn main() {
