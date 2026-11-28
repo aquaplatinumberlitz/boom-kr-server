@@ -14,6 +14,12 @@ pub(crate) struct Player {
     pub team: Team,
 }
 
+impl ModeKind {
+    fn evaluates_unknown_outcome(self) -> bool {
+        self == Self::Hedgehog || self.evaluation_map_group().is_some()
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "snake_case")]
 pub(crate) enum Life {
@@ -62,7 +68,7 @@ pub(crate) enum Action<'a> {
         to: Slot,
     },
     /// A result from the CoOp objective authority; None means no unique winner.
-    /// In Hedgehog only None is accepted because its win condition is unknown.
+    /// Evaluation of an unknown win condition only accepts None.
     Objective(Option<Team>),
 }
 
@@ -280,7 +286,7 @@ enum State {
     Revive(Revive),
     Timebomb(Timebomb),
     LeaderCapture(LeaderCapture),
-    Hedgehog,
+    EvaluateUnknown,
     Free1v7,
     CoOp,
 }
@@ -335,7 +341,7 @@ impl State {
                     leaders: leaders.into_iter().collect(),
                 })
             }
-            (ModeKind::Hedgehog, Setup::Evaluate) => Self::Hedgehog,
+            (mode, Setup::Evaluate) if mode.evaluates_unknown_outcome() => Self::EvaluateUnknown,
             (ModeKind::Free1v7, Setup::Evaluate) if two_teams && roster.players.len() == 8 => {
                 let solo = roster.teams.iter().any(|team| {
                     roster
@@ -387,7 +393,9 @@ impl State {
                 Ok(Outcome::Winner(team))
             }
             (Self::CoOp, Action::Objective(Some(_))) => Err(Error::UnknownTeam),
-            (Self::CoOp | Self::Hedgehog, Action::Objective(None)) => Ok(Outcome::Unresolved),
+            (Self::CoOp | Self::EvaluateUnknown, Action::Objective(None)) => {
+                Ok(Outcome::Unresolved)
+            }
             _ => Err(Error::UnsupportedAction),
         }
     }
@@ -414,17 +422,18 @@ impl Policy {
         let Some(mode) = self.runtime.for_team(selector) else {
             return Ok(None);
         };
-        // A candidate family or a descriptor with no runtime implementation
-        // cannot install an adapter, even when named explicitly by an operator.
-        if !matches!(
-            (mode, self.rules.runtime_win(mode)),
+        // Export coverage alone cannot install an adapter. Coloring and
+        // SuperFighter only opt in to evaluation of an unknown win condition.
+        let supported = match (mode, self.rules.runtime_win(mode)) {
             (ModeKind::Revive, Some(WinCondition::ReviveOutcome))
-                | (ModeKind::Timebomb, Some(WinCondition::BombOutcome))
-                | (ModeKind::LeaderCapture, Some(WinCondition::LeaderObjective))
-                | (ModeKind::Hedgehog, Some(WinCondition::Unknown))
-                | (ModeKind::Free1v7, Some(WinCondition::AsymmetricElimination))
-                | (ModeKind::CoOp, Some(WinCondition::TeamOutcome))
-        ) {
+            | (ModeKind::Timebomb, Some(WinCondition::BombOutcome))
+            | (ModeKind::LeaderCapture, Some(WinCondition::LeaderObjective))
+            | (ModeKind::Free1v7, Some(WinCondition::AsymmetricElimination))
+            | (ModeKind::CoOp, Some(WinCondition::TeamOutcome)) => true,
+            (mode, Some(WinCondition::Unknown)) => mode.evaluates_unknown_outcome(),
+            _ => false,
+        };
+        if !supported {
             return Err(Error::UnsupportedMode);
         }
         Ok(Some(Runtime { mode, round: None }))
