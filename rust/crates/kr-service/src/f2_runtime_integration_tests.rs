@@ -378,10 +378,8 @@ fn defeat(slot: u8) -> F2Event {
 }
 
 fn rejects(result: io::Result<Value>, reason: &str) {
-    assert!(
-        result.unwrap_err().to_string().contains(reason),
-        "expected {reason}"
-    );
+    let error = result.unwrap_err().to_string();
+    assert!(error.contains(reason), "expected {reason}, got {error}");
 }
 
 #[test]
@@ -490,7 +488,14 @@ fn f2_modes_status_snapshot_serializes_catalog_coverage_and_dispatch_policy() {
 fn has_evaluation_preset(family: &str) -> bool {
     matches!(
         family,
-        "Coloring" | "Gumiho" | "Hamster" | "PopcadeA" | "PopcadeB" | "PopcadeC" | "SuperFighter"
+        "CAPong"
+            | "Coloring"
+            | "Gumiho"
+            | "Hamster"
+            | "PopcadeA"
+            | "PopcadeB"
+            | "PopcadeC"
+            | "SuperFighter"
     )
 }
 
@@ -672,6 +677,7 @@ fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
 #[test]
 fn family_presets_evaluate_without_guessing_gameplay_rules() {
     for (map, preset) in [
+        ("CAPong05", json!("capong")),
         ("Coloring01", json!("coloring")),
         ("Coloring02", json!("coloring")),
         ("Coloring03", json!("coloring")),
@@ -691,16 +697,21 @@ fn family_presets_evaluate_without_guessing_gameplay_rules() {
         let round = room.load();
         room.arm();
 
+        rejects(room.event(round, 1, tick(1)), "WrongRound");
         rejects(room.start(round, revive(3)), "InvalidSetup");
         let initial = room.start(round, F2Setup::Evaluate).unwrap();
         assert_eq!(initial["outcome"], "playing", "{map}");
         assert_eq!(initial["bomb"], Value::Null, "{map}");
         rejects(room.start(round, F2Setup::Evaluate), "WrongRound");
 
-        let tick = F2Event::AdvanceTo {
-            milliseconds: 60_000,
-        };
-        assert_eq!(room.event(round, 1, tick).unwrap(), initial, "{map}");
+        rejects(room.event(round, 0, tick(0)), "SequenceGap");
+        rejects(room.event(round, 2, tick(0)), "SequenceGap");
+        assert_eq!(
+            room.event(round, 1, tick(u64::MAX)).unwrap(),
+            initial,
+            "{map}"
+        );
+        rejects(room.event(round, 2, tick(0)), "ClockReversed");
         rejects(room.event(round, 2, defeat(0)), "UnsupportedAction");
         rejects(
             room.event(round, 2, F2Event::Respawn { slot: 0 }),
@@ -710,10 +721,12 @@ fn family_presets_evaluate_without_guessing_gameplay_rules() {
             room.event(round, 2, F2Event::PassBomb { from: 0, to: 1 }),
             "UnsupportedAction",
         );
-        rejects(
-            room.event(round, 2, F2Event::Objective { winner: Some(0) }),
-            "UnsupportedAction",
-        );
+        for team in [0, u8::MAX] {
+            rejects(
+                room.event(round, 2, F2Event::Objective { winner: Some(team) }),
+                "UnsupportedAction",
+            );
+        }
         let unresolved = room
             .event(round, 2, F2Event::Objective { winner: None })
             .unwrap();
@@ -741,6 +754,71 @@ fn family_presets_evaluate_without_guessing_gameplay_rules() {
                 .start_rejection,
             Some("f2_map_not_confirmed_in_group_or_family")
         );
+    }
+}
+
+fn tick(milliseconds: u64) -> F2Event {
+    F2Event::AdvanceTo { milliseconds }
+}
+
+#[test]
+fn extended_evaluators_reset_round_state_and_replay_deterministically() {
+    let mut roster = crate::room::Room::default();
+    roster.enter(1, 1, true).unwrap();
+    roster.enter(2, 2, false).unwrap();
+    for preset in [
+        "gumiho",
+        "popcade_a",
+        "popcade_b",
+        "popcade_c",
+        "super_fighter",
+        "capong",
+    ] {
+        let config = serde_json::from_value(opt_in(preset)).unwrap();
+        let policy = room_modes::Policy::load(&config).unwrap().unwrap();
+        let mut mode = policy
+            .room_mode(wire::RoomTeamSelector::Free)
+            .unwrap()
+            .unwrap();
+        // Exercise two rounds through the same adapter. The managed room
+        // intentionally has no F2 wire return path to start a second round.
+        let mut run = |command| {
+            let (view, replies) = mode.apply(command, roster.members.values()).unwrap();
+            assert!(replies.is_empty(), "{preset}");
+            let mut view = serde_json::to_value(view).unwrap();
+            assert!(view.as_object_mut().unwrap().remove("round").is_some());
+            view
+        };
+        let apply = |round, sequence, event| F2Command::Apply {
+            round,
+            sequence,
+            event,
+        };
+        let mut previous = None;
+        for round in [1, 2] {
+            let initial = run(F2Command::Start {
+                round,
+                setup: F2Setup::Evaluate,
+            });
+            assert_eq!(initial["outcome"], "playing", "{preset}");
+            if round == 2 {
+                let replay = run(apply(1, 99, F2Event::Objective { winner: None }));
+                let mut expected = initial.clone();
+                expected["replay"] = json!(true);
+                assert_eq!(replay, expected, "{preset}");
+            }
+            // A low tick must succeed after the preceding round advanced to
+            // the maximum clock. Sequence numbers also start over at one.
+            assert_eq!(run(apply(round, 1, tick(1))), initial, "{preset}");
+            assert_eq!(run(apply(round, 2, tick(u64::MAX))), initial, "{preset}");
+            let end = run(apply(round, 3, F2Event::Objective { winner: None }));
+            let mut expected = initial;
+            expected["outcome"] = json!("unresolved");
+            assert_eq!(end, expected, "{preset}");
+            if let Some(previous) = previous.replace(end.clone()) {
+                assert_eq!(end, previous, "{preset}");
+            }
+        }
     }
 }
 
