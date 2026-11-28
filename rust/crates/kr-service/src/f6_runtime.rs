@@ -13,6 +13,27 @@ use std::collections::HashMap;
 const ACTOR: &str = "f6-event-runtime";
 const KEY_PREFIX: &str = "f6:v1:";
 const MAX_CLAIM_KEY_BYTES: usize = 128;
+const WIRE_STATUS: &str = "policy_runtime_only_pending_client_capture";
+
+/// Aggregate quota counters for the current runtime and UTC windows.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+pub struct F6QuotaUsage {
+    pub claims: usize,
+    pub hourly: usize,
+    pub minute: usize,
+    pub daily: usize,
+    pub seasonal: usize,
+}
+
+/// A path-free operational view of the F6 policy and claim runtime.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+pub struct F6EventStatusSnapshot {
+    pub enabled: bool,
+    pub configured_systems: Vec<&'static str>,
+    pub active_systems: Vec<&'static str>,
+    pub quota_usage: F6QuotaUsage,
+    pub wire_status: &'static str,
+}
 
 /// One reward per claim keeps the ledger, reward and audit in one transaction.
 #[derive(Clone, Copy, Debug, Serialize)]
@@ -150,6 +171,59 @@ impl<'a> F6EventRuntime<'a> {
             last_quota_rejection: None,
             claims,
         })
+    }
+
+    /// Return a stable, path-free status view of policy and in-memory quota
+    /// usage. The active window is evaluated at the supplied UTC second.
+    pub fn status_snapshot(&self, now_unix_secs: i64) -> F6EventStatusSnapshot {
+        let configured_systems: Vec<&'static str> = self.policy.configured_system_names().collect();
+        let active_systems: Vec<&'static str> = configured_systems
+            .iter()
+            .copied()
+            .filter(|name| self.policy.is_system_enabled_at(name, now_unix_secs))
+            .collect();
+        let is_extended = |system: &str| {
+            self.policy
+                .enabled_extended_systems()
+                .any(|(name, _)| name == system)
+        };
+        let claims = self.charges.len();
+        let hourly = self
+            .charges
+            .iter()
+            .filter(|charge| charge.utc / 3_600 == now_unix_secs / 3_600)
+            .count();
+        let minute = self
+            .charges
+            .iter()
+            .filter(|charge| charge.utc / 60 == now_unix_secs / 60)
+            .count();
+        let daily = self
+            .charges
+            .iter()
+            .filter(|charge| {
+                is_extended(&charge.system) && charge.utc / 86_400 == now_unix_secs / 86_400
+            })
+            .count();
+        let seasonal = self
+            .charges
+            .iter()
+            .filter(|charge| is_extended(&charge.system))
+            .count();
+
+        F6EventStatusSnapshot {
+            enabled: !configured_systems.is_empty(),
+            configured_systems,
+            active_systems,
+            quota_usage: F6QuotaUsage {
+                claims,
+                hourly,
+                minute,
+                daily,
+                seasonal,
+            },
+            wire_status: WIRE_STATUS,
+        }
     }
 
     /// Apply a trusted claim at the supplied server UTC second. An identical
