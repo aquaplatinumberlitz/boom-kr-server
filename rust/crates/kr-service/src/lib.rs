@@ -19,6 +19,7 @@ pub mod f3_pve_policy;
 pub mod f3_pve_runtime;
 pub mod f4_extended_policy;
 pub mod f6_policy;
+pub mod f6_runtime;
 mod four_results;
 pub mod ingame_tls;
 mod item_scope;
