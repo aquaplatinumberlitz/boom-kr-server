@@ -12,6 +12,7 @@ pub mod custom_map;
 mod f2_modes;
 pub mod f3_pve;
 mod f5_social;
+pub mod f6_events;
 pub mod inventory;
 mod player;
 mod room;
