@@ -142,6 +142,7 @@ class OfflineCheckTests(unittest.TestCase):
         self.assertEqual(code, 0, message)
         body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
         self.assertEqual([(s["maps"], s["families"]) for s in body["summary"].values()], [(122, 18), (699, 180)])
+        self.assertEqual([s["unmapped_tile_types"] for s in body["summary"].values()], [65, 74])
         self.assertEqual(len(body["maps"]), 699)
         for name, key in {"Baseball01": "Tile70_Ground/Tile04", "Kart02": "Tile12_Ground/Race13"}.items():
             self.assertIn(key, body["maps"][name]["unmapped_tiles"])
@@ -151,9 +152,47 @@ class OfflineCheckTests(unittest.TestCase):
             self.assertEqual(body["maps"][name]["unmapped_tiles"], {})
         self.assertEqual(body["maps"]["Hdn_SuperFight"]["unmapped_tiles"],
                          {"Tile23_Static/Temple08": {"object": "outside_f1e_rule"}})
-        for name in ("MonSnowBear01", "Fm_MonSnowBear01", "MonNoviceSnow01"):
-            self.assertIn("Tile33_Passble/SnowBoom", body["maps"][name]["unmapped_tiles"])
-            self.assertIn("Tile33_Passble/Pass_Down", body["maps"][name]["unmapped_tiles"])
+
+    def test_small_delta_tiles_do_not_upgrade_custom_grids_or_bula_tail(self):
+        body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
+        families = {scope: {row["family"]: row for row in rows} for scope, rows in body["families"].items()}
+        for scope in ("F2", "F3"):
+            with self.subTest(scope=scope):
+                bula = families[scope]["Bula"]
+                self.assertEqual((bula["priority"], bula["decode_counts"], bula["unmapped_tiles"]),
+                                 ("needs_layout", {"partial": 7}, []))
+                for name in bula["maps"]:
+                    row = body["maps"][name]
+                    self.assertEqual((row["layout"], row["unmapped_tiles"]), ("group_record_tail", {}))
+
+        custom = {
+            "BonusBigReward": ["TileBonusMap_static/Tower00"],
+            "MonS2Fire": [],
+            "MonS2Sand": ["Tile31_Passable_MonS2Desert/Tornado_Day_01"],
+            **{f"MonS2Sand{n:02}Boss": ["Tile31_Passable_MonS2Desert/Tornado_Night_01"]
+               for n in (1, 2, 3, 5)},
+            "MonS2Sand04Boss": [],
+            "MonS2Sand06Boss": [],
+        }
+        for family, remaining in custom.items():
+            with self.subTest(family=family):
+                row = families["F3"][family]
+                self.assertEqual((row["priority"], row["unmapped_tiles"], row["terrain_constraints"]),
+                                 ("custom_grid", remaining, []))
+
+    def test_snow_bear_maps_with_dynamic_tiles_stay_unmapped(self):
+        body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
+        snow_tiles = [f"Tile33_Passble/{name}" for name in
+                      ("Pass_Down", "Pass_Left", "Pass_Right", "Pass_Up", "SnowBoom")]
+        clean = {"MonSnowBear": {"MonSnowBear07", "MonSnowBear23", "MonSnowBear29"},
+                 "Fm_MonSnowBear": set(), "MonNoviceSnow": set()}
+        for row in body["families"]["F3"]:
+            family = row["family"]
+            if family in clean:
+                with self.subTest(family=family):
+                    self.assertEqual((row["priority"], row["unmapped_tiles"]), ("many_tiles", snow_tiles))
+                    self.assertEqual({name for name in row["maps"] if not body["maps"][name]["unmapped_tiles"]},
+                                     clean[family])
 
     def test_rejects_stale_digest_and_noncanonical_json_or_markdown(self):
         with TemporaryDirectory() as temporary:

@@ -5,8 +5,8 @@ Nguồn phạm vi là [F2](f2-mode-catalog.md) và [F3](f3-pve-catalog.md). Mỗ
 
 | Catalog | Map | Họ | Giải mã đủ | Đọc một phần | Lỗi giải mã | Lưới khác 15x13 | Loại tile còn thiếu |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| F2 | 122 | 18 | 115 | 7 | 0 | 0 | 68 |
-| F3 | 699 | 180 | 692 | 7 | 0 | 116 | 91 |
+| F2 | 122 | 18 | 115 | 7 | 0 | 0 | 65 |
+| F3 | 699 | 180 | 692 | 7 | 0 | 116 | 74 |
 
 ## Lưới và đuôi map
 

@@ -19,6 +19,7 @@ EVIDENCE = ROOT / 'docs/evidence/content'
 CENSUS_NAME = 'f2-f3-tile-grid-census.json'
 CATALOG_NAME = 'f3-pve-catalog.json'
 GAME = default_game_dir()
+SNOW_BEAR_STATIC_MAPS = ('MonSnowBear07', 'MonSnowBear23', 'MonSnowBear29')
 
 
 def run_cli(*args):
@@ -47,6 +48,9 @@ class F3AdapterTests(unittest.TestCase):
                 (('MonNoviceSnow01',), 'MonNoviceSnow01'),
                 (('Zombie04',), 'Zombie04'),
                 (('MonS2Fire03',), 'MonS2Fire03'),
+                (('MonS2Sand06Boss',), 'MonS2Sand06Boss'),
+                (('BonusBigReward12',), 'BonusBigReward12'),
+                (('Bula00',), 'Bula00'),
                 (('Bonus01',), 'Bonus01'),
                 (('Tutorial01', 'Tutorial01'), '1–16'),
                 (tuple(f'MonSeal{n:02}' for n in range(1, 18)), '1–16'),
@@ -57,6 +61,16 @@ class F3AdapterTests(unittest.TestCase):
                     self.assertEqual(code, 1, err)
                     self.assertIn(message, err)
                     self.assertFalse(cache.exists())
+
+    def test_admits_only_the_static_maps_of_mon_snow_bear(self):
+        selected = adapter.load_f3_maps(SNOW_BEAR_STATIC_MAPS)
+        self.assertEqual({name: row['family'] for name, row in selected.items()},
+                         dict.fromkeys(SNOW_BEAR_STATIC_MAPS, 'MonSnowBear'))
+        for n in range(1, 31):
+            name = f'MonSnowBear{n:02}'
+            if name not in selected:
+                with self.subTest(name=name), self.assertRaisesRegex(ValueError, name):
+                    adapter.load_f3_maps((name,))
 
     def test_cli_requires_cache_and_rejects_each_other_adapter(self):
         for args in (
@@ -82,14 +96,16 @@ class F3AdapterTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'không khớp KR 00967'):
                     adapter.load_f3_maps(('Tutorial01',))
                 catalog_path.write_bytes(catalog)
-                census['maps']['Tutorial01']['terrain_constraints'] = ['rectangles']
+                for name in ('Tutorial01', 'MonSnowBear07'):
+                    census['maps'][name]['terrain_constraints'] = ['rectangles']
                 census_path.write_bytes(adapter.encode(census))
                 with self.assertRaisesRegex(ValueError, 'không khớp KR 00967'):
                     adapter.load_f3_maps(('Tutorial01',))
                 del census['body_sha256']
                 census_path.write_bytes(adapter.encode(dict(census, body_sha256=adapter.sha(adapter.encode(census)[:-1]))))
-                with self.assertRaisesRegex(ValueError, 'Metadata map F3'):
-                    adapter.load_f3_maps(('Tutorial01',))
+                for name in ('Tutorial01', 'MonSnowBear07'):
+                    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'Metadata map F3'):
+                        adapter.load_f3_maps((name,))
 
     def test_f3_geometry_rejects_unmapped_tiles_and_blocked_spawns(self):
         ground = (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0)
@@ -124,12 +140,19 @@ class F3AdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'không khớp SHA-256'):
             read(raw, '0' * 64)
 
-    def test_snow_box_is_solid_but_snowboom_and_directional_temple_are_unmapped(self):
+    def test_unbreakable_box_is_solid_but_dynamic_objects_stay_unmapped(self):
+        tornado = (3, 0, 0, 0, 0, 0, *(0x01010101,) * 3, 16777473,
+                   0, 1, 0, 1, 1, 5000, 17862522, 13741456)
         tiles = {
             'Tile29_Box/R2_UnbreakableBox': (2, 0, 0, 0, 0, 0, 255, *(0,) * 11),
             'Tile33_Passble/SnowBoom': (
                 3, 0, 0, 0, 0, 0, *(0x01010101,) * 4, 1, 1, 0, 0, 0, 0, 20484810, 112516296),
+            'Tile33_Passble/Pass_Down': (
+                3, 0, 0, 0, 0, 0, *(0x01010101,) * 4, 0, 1, 0, 0, 0, 0, 20484810, 140088616),
             'Tile23_Static/Temple08': (1, 0, 0, 0, 0, 0, 7, 1, 1, 0, 1, 2010089472, *(0,) * 6),
+            'TileBonusMap_static/Tower00': (1, 0, 0, 0, 0, 0, 1, 1, 0, 999, *(0,) * 8),
+            'Tile31_Passable_MonS2Desert/Tornado_Day_01': tornado,
+            'Tile31_Passable_MonS2Desert/Tornado_Night_01': tornado,
         }
         table = (list(tiles), tiles)
 
@@ -144,9 +167,28 @@ class F3AdapterTests(unittest.TestCase):
         terrain = project(0)
         self.assertEqual(terrain['kinds'][6:8], [1, 0])
         self.assertNotIn('box_hits', terrain)
-        for code in (1, 2):
-            with self.subTest(tile=table[0][code]), self.assertRaisesRegex(ValueError, table[0][code]):
+        for code, key in enumerate(table[0][1:], start=1):
+            with self.subTest(tile=key), self.assertRaisesRegex(ValueError, key):
                 project(code)
+
+    def test_transparent_tile_allows_rays_but_cannot_host_a_spawn(self):
+        key = 'TileTransparent_Passable/Passable01'
+        record = (3, 0, 0, 0, 0, 0, 0, 0x01010101, 0x01010101, 0, 1, 1, 0, 112, 0, 0,
+                  1980460265, 1980460433)
+        profile = dict(name='TileProbe', width=15, height=13, rectangles=[], spawns=[],
+                       cells=[(-1, 0, -1)], payload_sha256='')
+        table = ([key], {key: record})
+        terrain = adapter.f1_terrain_rules(profile, table, f1e=True)['terrain']
+        self.assertEqual(terrain['kinds'][0], 0)
+        self.assertNotIn('ray_barriers', terrain)
+        self.assertNotIn('ray_ports', terrain)
+        with self.assertRaisesRegex(ValueError, 'spawn'):
+            adapter.f1_terrain_rules(dict(profile, spawns=[(0, 0)]), table, f1e=True)
+        # A record which would otherwise match the generic all-open rule
+        # cannot pass under this name.
+        changed = (*record[:6], *(0x01010101,) * 3, 0, 0, 0, *record[12:])
+        with self.assertRaisesRegex(ValueError, key):
+            adapter.f1_terrain_rules(profile, ([key], {key: changed}), f1e=True)
 
 
 @unittest.skipUnless(all((GAME / name).is_file() for name in adapter.PACK_SHA256), 'Thiếu pack KR 00967')
@@ -162,6 +204,7 @@ class StockPackTests(unittest.TestCase):
             if family != 'Zombie':
                 self.assertEqual({name for name, label in families.items() if label == family}, set(maps))
         names = sorted(families)
+        digest = hashlib.sha256()
         with tempfile.TemporaryDirectory() as tmp:
             for start in range(0, len(names), 16):
                 batch = names[start:start + 16]
@@ -171,6 +214,8 @@ class StockPackTests(unittest.TestCase):
                 self.assertEqual(code, 0, result)
                 self.assertFalse(result['reused'])
                 cache = Path(result['cache'])
+                for path in sorted(cache.iterdir()):
+                    digest.update(f'{path.name}:{adapter.sha(path.read_bytes())}\n'.encode())
                 if start == 0:
                     self.assertEqual(run_cli(*args), (0, dict(result, reused=True)))
                 for name in batch:
@@ -197,8 +242,30 @@ class StockPackTests(unittest.TestCase):
                         for x, y in spawns:
                             self.assertTrue(0 <= x < 15 and 0 <= y < 13)
                             self.assertEqual(kinds[y * 15 + x], 0)
+        # Toàn bộ 503 map F3 đã xuất trên pack gốc trước p215 (43fe285).
+        self.assertEqual(digest.hexdigest(), '8943e363fb0be9063ed601391d81cbed36535bf18f86dc79616372ef10e1cae2')
 
-    def test_legacy_exports_match_pre_p205_bytes(self):
+    def test_cli_exports_static_mon_snow_bear_maps(self):
+        census = json.loads((EVIDENCE / CENSUS_NAME).read_bytes())
+        with tempfile.TemporaryDirectory() as tmp:
+            code, result = run_cli('--game-dir', str(GAME), '--cache', tmp,
+                                   *(part for name in SNOW_BEAR_STATIC_MAPS for part in ('--f3-map', name)))
+            self.assertEqual(code, 0, result)
+            cache = Path(result['cache'])
+            for name in SNOW_BEAR_STATIC_MAPS:
+                with self.subTest(name=name):
+                    profile = json.loads((cache / f'{name}.json').read_bytes())
+                    rules = json.loads((cache / f'{name}.rules.json').read_bytes())
+                    self.assertEqual((profile['f3_family'], profile['width'], profile['height']),
+                                     ('MonSnowBear', 15, 13))
+                    self.assertEqual(profile['payload_sha256'], census['maps'][name]['payload_sha256'])
+                    self.assertTrue(profile['scripted'])
+                    self.assertEqual(set(rules), {'terrain'})
+                    self.assertEqual(len(rules['terrain']['kinds']), 195)
+                    self.assertTrue(all(rules['terrain']['kinds'][y * 15 + x] == 0
+                                        for x, y in profile['spawns']))
+
+    def test_legacy_exports_match_baseline_bytes(self):
         # Hash thành viên theo lô đã sắp xếp, gồm cả tables và manifest,
         # từ exporter ef285c1 trên pack KR 00967 gốc. F1-a gồm cả 8 map thêm sau mốc 206.
         f1a = sorted(name for name, row in inventory(GAME).items() if row['status'] == 'pending')
