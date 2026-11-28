@@ -1,6 +1,7 @@
 //! Local trusted-administrator interface. JSON credentials are stdin-only.
 #![forbid(unsafe_code)]
 use kr_service::{
+    account_serving::F4ExtendedPolicyBundle,
     accounts::{
         self, Admin, AuditFilter, AuditRow, ChatMuteReason, Error, HistoryFilter, ItemGrant,
         ItemUpgradeOperation, LedgerEntry, RecordEraserOperation, SCHEMA_VERSION, ShopCatalog,
@@ -13,15 +14,15 @@ use kr_service::{
     },
     f3_pve_runtime::{DispatchEvidence, F3PveRuntime, MonsterAttack, MonsterSpawn, RuntimeError},
     f4_extended_policy::{
-        BASIS_POINTS, BoosterTicketPolicy, CouponRequest, Decision, GiftCouponPolicy,
-        LevelRewardPolicy, LucciVaultPolicy, OperationKey, PowerupKitPolicy, RecordEraserPolicy,
-        RecordScope, SecondPasswordPolicy, TitlePolicy, TitleUnlockDecision, UpgradeFamily,
-        UpgradePolicy,
+        BASIS_POINTS, CouponRequest, Decision, OperationKey, RecordScope, TitleUnlockDecision,
+        UpgradeFamily,
     },
+    f4_security_kits::F4SecurityKitsRuntime,
     f6_policy::{F6EventPolicy, F6QuotaTracker, QuotaRejection},
     f6_runtime::{ClaimError, ClaimOutcome, F6Claim, F6EventRuntime, F6Reward},
     operations::{self, LiveCommand, RoomTarget},
 };
+
 use serde::{
     Deserialize, Serialize,
     de::{DeserializeSeed, Deserializer, MapAccess, SeqAccess, Visitor},
@@ -287,20 +288,6 @@ fn validate_policy_path(path: &Path, policy_name: &str) -> io::Result<()> {
     Ok(())
 }
 
-#[derive(Default, Deserialize)]
-#[serde(default, deny_unknown_fields)]
-struct F4ExtendedPolicy {
-    powerup_kits: PowerupKitPolicy,
-    booster_tickets: BoosterTicketPolicy,
-    titles: TitlePolicy,
-    level_rewards: LevelRewardPolicy,
-    lucci_vault: LucciVaultPolicy,
-    record_erasers: RecordEraserPolicy,
-    gift_coupons: GiftCouponPolicy,
-    second_password: SecondPasswordPolicy,
-    upgrades: UpgradePolicy,
-}
-
 struct DuplicateSeed;
 struct DuplicateVisitor;
 
@@ -367,9 +354,9 @@ fn reject_duplicate_json(input: &str) -> Result<(), serde_json::Error> {
     deserializer.end()
 }
 
-fn load_f4_policy(path: Option<&Path>) -> io::Result<(F4ExtendedPolicy, Value)> {
+fn load_f4_policy(path: Option<&Path>) -> io::Result<(F4ExtendedPolicyBundle, Value)> {
     let Some(path) = path else {
-        return Ok((F4ExtendedPolicy::default(), json!({})));
+        return Ok((F4ExtendedPolicyBundle::default(), json!({})));
     };
     validate_policy_path(path, "f4_extended_policy")?;
     let contents = std::fs::read_to_string(path)?;
@@ -385,7 +372,7 @@ fn load_f4_policy(path: Option<&Path>) -> io::Result<(F4ExtendedPolicy, Value)> 
     reject_duplicate_json(&contents).map_err(|_| invalid())?;
     // Deserialize the typed profile first so duplicate and unknown fields are
     // rejected before the summary view is decoded.
-    let policy: F4ExtendedPolicy = serde_json::from_str(&contents).map_err(|_| invalid())?;
+    let policy: F4ExtendedPolicyBundle = serde_json::from_str(&contents).map_err(|_| invalid())?;
     let value: Value = serde_json::from_str(&contents).map_err(|_| invalid())?;
     Ok((policy, value))
 }
@@ -415,6 +402,81 @@ fn f4_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
     })
     .collect::<serde_json::Map<_, _>>();
     Ok(json!({"default_enabled": false, "policies": policies}))
+}
+
+// The service's room_modes module is private. Derive the CLI view from the
+// same embedded catalogs and match room_modes::status_snapshot's output.
+fn f2_modes_status() -> serde_json::Result<Value> {
+    const CATALOG: &str = include_str!("../../../../../docs/evidence/content/f2-mode-catalog.json");
+    const MATRIX: &str =
+        include_str!("../../../../../docs/evidence/content/f2-extended-modes-matrix.json");
+    // KR00967 terrain export allowlist, through PR #795.
+    const EXPORTED_FAMILIES: &[&str] = &[
+        "CAPong",
+        "Clover",
+        "Coloring",
+        "Gumiho",
+        "Hamster",
+        "PopcadeA",
+        "PopcadeB",
+        "PopcadeC",
+        "Rabbit",
+        "RescueET",
+        "SnowyFields",
+        "SuperFighter",
+        "Wriggle",
+        "Zombie",
+        "Zzolman",
+    ];
+
+    #[derive(Deserialize)]
+    struct Catalog<'a> {
+        #[serde(borrow)]
+        families: Vec<Family<'a>>,
+    }
+
+    #[derive(Deserialize)]
+    struct Family<'a> {
+        family: &'a str,
+        #[serde(borrow)]
+        maps: Vec<Map<'a>>,
+    }
+
+    #[derive(Deserialize)]
+    struct Map<'a> {
+        name: &'a str,
+    }
+
+    let catalog: Catalog<'_> = serde_json::from_str(CATALOG)?;
+    let matrix: Value = serde_json::from_str(MATRIX)?;
+    let exported_maps = catalog
+        .families
+        .iter()
+        .filter(|family| EXPORTED_FAMILIES.contains(&family.family))
+        .flat_map(|family| family.maps.iter().map(|map| map.name))
+        .collect::<std::collections::BTreeSet<_>>();
+    Ok(json!({
+        "exported_families": EXPORTED_FAMILIES,
+        "exported_map_count": exported_maps.len(),
+        "total_catalog_families": catalog.families.len(),
+        "total_catalog_maps": catalog.families.iter().map(|family| family.maps.len()).sum::<usize>(),
+        "tentative_family_count": matrix["summary"]["map_families"],
+        "live_dispatch_status": "opt_in_fail_closed_pending_wine_capture",
+    }))
+}
+
+fn f4_security_kits_status(policy_path: Option<&Path>) -> CliResult<Value> {
+    let (bundle, _) = load_f4_policy(policy_path)?;
+    let snapshot = F4SecurityKitsRuntime::from_bundle(&bundle)?.snapshot()?;
+    Ok(json!({
+        "default_enabled": false,
+        "snapshot": snapshot,
+        "policy_enabled": {
+            "powerup_kits": bundle.powerup_kits.enabled,
+            "second_password": bundle.second_password.enabled,
+        },
+        "powerup_kits_non_empty": !bundle.powerup_kits.kits.is_empty(),
+    }))
 }
 
 fn load_f3_policy(policy_path: Option<&Path>) -> io::Result<F3PvePolicy> {
@@ -515,6 +577,29 @@ fn f6_policy_check(policy_path: Option<&Path>, at_unix_secs: Option<i64>) -> io:
     }))
 }
 
+fn f6_events_summary(policy_path: Option<&Path>) -> io::Result<Value> {
+    let policy = load_f6_policy(policy_path)?;
+    let systems = policy
+        .enabled_systems()
+        .map(|(name, _)| name)
+        .collect::<Vec<_>>();
+    let extended_systems = policy
+        .enabled_extended_systems()
+        .map(|(name, _)| name)
+        .collect::<Vec<_>>();
+    Ok(json!({
+        "schema": "kre.f6-events-policy.v1",
+        "enabled": systems.len(),
+        "extended": extended_systems.len(),
+        "systems": systems,
+        "extended_systems": extended_systems,
+        "system_names": F6EventPolicy::system_names(),
+        "extended_system_names": F6EventPolicy::extended_system_names(),
+        "pc_room_benefit_excluded": !F6EventPolicy::system_names()
+            .contains(&"PCRoomBenefit"),
+    }))
+}
+
 fn load_f7_policy(
     policy_path: Option<&Path>,
 ) -> Result<CustomMapPolicy, Box<dyn std::error::Error>> {
@@ -608,6 +693,10 @@ const F6_CLAIM_USAGE: &str = "usage: kr-admin f6-claim-event --db PATH --f6-poli
 const F3_DRY_RUN_USAGE: &str = "usage: kr-admin f3-pve-dry-run --f3-policy PATH --mode FAMILY [--host-player-id ID] [--guest-player-id ID]";
 const F7_MAPS_LIST_USAGE: &str =
     "usage: kr-admin f7-custom-maps-list --f7-policy PATH --custom-maps-dir DIR [--owner ID]";
+const F2_MODES_STATUS_USAGE: &str = "usage: kr-admin f2-modes-status";
+const F4_SECURITY_KITS_STATUS_USAGE: &str =
+    "usage: kr-admin f4-security-kits-status [--policy PATH]";
+const F6_EVENTS_SUMMARY_USAGE: &str = "usage: kr-admin f6-events-summary [--policy PATH]";
 
 type CliResult<T> = Result<T, Box<dyn std::error::Error>>;
 
@@ -1768,6 +1857,24 @@ fn execute(s: &mut Store, admin: &Admin<'_>, command: Command) -> Result<Value, 
 }
 fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
     Ok(match args {
+        [flag, options @ ..] if flag == "f2-modes-status" => match options {
+            [] => f2_modes_status()?,
+            _ => return Err(F2_MODES_STATUS_USAGE.into()),
+        },
+        [flag, options @ ..] if flag == "f4-security-kits-status" => match options {
+            [] => f4_security_kits_status(None)?,
+            [option, path] if option == "--policy" => {
+                f4_security_kits_status(Some(Path::new(path)))?
+            }
+            _ => return Err(F4_SECURITY_KITS_STATUS_USAGE.into()),
+        },
+        [flag, options @ ..] if flag == "f6-events-summary" => match options {
+            [] => f6_events_summary(None)?,
+            [option, path] if option == "--policy" => {
+                f6_events_summary(Some(Path::new(path)))?
+            }
+            _ => return Err(F6_EVENTS_SUMMARY_USAGE.into()),
+        },
         [flag, options @ ..] if flag == "f3-policy-check" => match options {
             [] => f3_policy_check(None)?,
             [option, path] if option == "--policy" => f3_policy_check(Some(Path::new(path)))?,
@@ -1820,7 +1927,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F3_DRY_RUN_USAGE}\n{F4_COUPON_USAGE}\n{F4_TITLE_USAGE}\n{F4_ERASE_USAGE}\n{F4_UPGRADE_USAGE}\n{F6_CLAIM_USAGE}\n{F7_MAPS_LIST_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
+        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F2_MODES_STATUS_USAGE}\n{F4_SECURITY_KITS_STATUS_USAGE}\n{F6_EVENTS_SUMMARY_USAGE}\n{F3_DRY_RUN_USAGE}\n{F4_COUPON_USAGE}\n{F4_TITLE_USAGE}\n{F4_ERASE_USAGE}\n{F4_UPGRADE_USAGE}\n{F6_CLAIM_USAGE}\n{F7_MAPS_LIST_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
     })
 }
 fn main() {
