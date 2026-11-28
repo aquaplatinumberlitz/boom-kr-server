@@ -26,6 +26,7 @@ use crate::{
     choco_chat::F5SocialPolicy,
     custom_map_store::{CustomMapPolicy, CustomMapStore},
     f3_pve_policy::F3PvePolicy,
+    f3_pve_runtime::F3PveRegistry,
     f4_extended_policy::{
         BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy, PolicyError,
         PowerupKitPolicy, PrimarySession, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy,
@@ -171,6 +172,7 @@ fn default_worker_queue_capacity() -> usize {
 }
 const MAX_ECONOMY_PROFILE_BYTES: u64 = 16 * 1024 * 1024;
 const MAX_POLICY_BYTES: u64 = 4096;
+const DEFAULT_F3_PVE_MAX_ROOMS: usize = 64;
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -203,6 +205,7 @@ struct LoadedSettings {
     f7: CustomMapPolicy,
     f4_security_kits: Arc<F4SecurityKitsRuntime>,
     f3_pve_policy: Arc<F3PvePolicy>,
+    f3_pve_registry: Arc<F3PveRegistry>,
 }
 
 fn load_economy_profile_file(path: &Path) -> io::Result<(EconomyPolicy, ShopCatalog)> {
@@ -409,6 +412,11 @@ impl Config {
             .map(|_| self.f6_event_policy().map(Arc::new))
             .transpose()?;
         let f3_pve_policy = Arc::new(self.f3_pve_policy()?);
+        let f3_pve_registry = if f3_pve_policy.enabled {
+            Arc::new(F3PveRegistry::new(*f3_pve_policy, DEFAULT_F3_PVE_MAX_ROOMS))
+        } else {
+            Arc::new(F3PveRegistry::default())
+        };
         let f4_bundle = self.f4_extended_policy()?;
         let f4_security_kits = Arc::new(
             F4SecurityKitsRuntime::from_bundle(&f4_bundle)
@@ -486,6 +494,7 @@ impl Config {
             f7,
             f4_security_kits,
             f3_pve_policy,
+            f3_pve_registry,
         })
     }
 }
@@ -495,6 +504,7 @@ struct ActiveSettings {
     fixed_profiles: HashMap<u32, Vec<u8>>,
     f4_security_kits: Arc<F4SecurityKitsRuntime>,
     f3_pve_policy: Arc<F3PvePolicy>,
+    f3_pve_registry: Arc<F3PveRegistry>,
 }
 
 #[derive(Clone)]
@@ -539,6 +549,11 @@ impl Active {
     #[allow(dead_code)]
     pub(crate) fn f3_pve_policy(&self) -> &Arc<F3PvePolicy> {
         &self.projections.f3_pve_policy
+    }
+    // Available to a future PvE dispatch consumer.
+    #[allow(dead_code)]
+    pub fn f3_pve_registry(&self) -> &Arc<F3PveRegistry> {
+        &self.projections.f3_pve_registry
     }
     pub(crate) fn catalog_access(&self) -> CatalogAccess {
         CatalogAccess {
@@ -766,6 +781,7 @@ impl Owner {
                     fixed_profiles: projections,
                     f4_security_kits: settings.f4_security_kits,
                     f3_pve_policy: settings.f3_pve_policy,
+                    f3_pve_registry: settings.f3_pve_registry,
                 }),
                 projection,
             },
