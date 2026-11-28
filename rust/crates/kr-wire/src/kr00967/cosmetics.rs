@@ -5,6 +5,12 @@
 //! map an equipped SKU to that key. Use the existing room codecs for those
 //! routes; this module does not build packets or grant equipment entitlement.
 
+#![deny(unsafe_code)]
+
+use super::inventory::{
+    Inventory219, Inventory224, Inventory225, Inventory313, Inventory314, Inventory315,
+    Inventory316, Inventory317, Inventory566,
+};
 use std::{collections::BTreeSet, fmt};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -189,6 +195,160 @@ pub enum ProjectionStatus {
     Measured,
     StaticCandidate,
     Unmeasured,
+}
+
+/// Site in the unpacked KR 00967 image, given as an IDA virtual address.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum F4AnchorSite {
+    ShopStageDispatcher(u32),
+    Function(u32),
+    /// Client handler or packet consumer for an incoming opcode.
+    ServerToClientHandler(u32),
+    /// Client site that builds an outgoing packet.
+    ClientToServerBuilder(u32),
+}
+
+/// Evidence for an F4 site. An anchor does not enable a codec or map a SKU
+/// to a cosmetic slot. Measured entries cover only the fields in their capture.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct F4ShopAnchor {
+    pub name: &'static str,
+    /// `None` for dispatchers and helpers without an opcode of their own.
+    pub opcode: Option<u32>,
+    pub site: F4AnchorSite,
+    pub status: ProjectionStatus,
+    /// Repository-relative evidence or protocol reference.
+    pub evidence: &'static str,
+}
+
+impl F4ShopAnchor {
+    const fn static_site(
+        name: &'static str,
+        opcode: Option<u32>,
+        site: F4AnchorSite,
+        evidence: &'static str,
+    ) -> Self {
+        Self {
+            name,
+            opcode,
+            site,
+            status: ProjectionStatus::StaticCandidate,
+            evidence,
+        }
+    }
+}
+
+const F4_INVENTORY_W2: &str = "docs/evidence/content/f4-w2-ida-deepdive.json";
+const F4_INVENTORY_W3: &str = "docs/evidence/content/f4-w3-ida-records.json";
+
+/// Static provenance for shop, inventory and related account packet sites.
+pub static F4_SHOP_ANCHORS: &[F4ShopAnchor] = &[
+    F4ShopAnchor::static_site(
+        "CShopStageNew",
+        None,
+        F4AnchorSite::ShopStageDispatcher(0x1072B10),
+        "docs/protocol/f4-inventory-cosmetics.md#f4b-inventory-contract",
+    ),
+    F4ShopAnchor::static_site(
+        "sub_11CE930",
+        None,
+        F4AnchorSite::Function(0x11CE930),
+        F4_INVENTORY_W3,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_125D190",
+        None,
+        F4AnchorSite::Function(0x125D190),
+        "docs/evidence/content/f4-w4-ida-gates.json",
+    ),
+    F4ShopAnchor::static_site(
+        "sub_AE6330",
+        None,
+        F4AnchorSite::Function(0xAE6330),
+        "docs/evidence/content/f4-w6-ida-own291-and-hud.json",
+    ),
+    F4ShopAnchor::static_site(
+        "sub_D6E890",
+        Some(20),
+        F4AnchorSite::ServerToClientHandler(0xD6E890),
+        "docs/evidence/content/f4-w5-ida-ui-and-exp.json",
+    ),
+    F4ShopAnchor {
+        name: "lucci135",
+        opcode: Some(135),
+        site: F4AnchorSite::ServerToClientHandler(0xD6CED0),
+        status: ProjectionStatus::Measured,
+        evidence: "docs/protocol/life-results.md#f4a-lucci135-wine-accept",
+    },
+    F4ShopAnchor::static_site(
+        "sub_11CEA10",
+        Some(Inventory219::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0x11CEA10),
+        F4_INVENTORY_W2,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_11CE4C0",
+        Some(Inventory224::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0x11CE4C0),
+        F4_INVENTORY_W2,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_11CE6A0",
+        Some(Inventory225::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0x11CE6A0),
+        F4_INVENTORY_W2,
+    ),
+    F4ShopAnchor {
+        name: "own291",
+        opcode: Some(291),
+        site: F4AnchorSite::ServerToClientHandler(0xD73BB0),
+        status: ProjectionStatus::Measured,
+        evidence: "docs/protocol/life-results.md#f4a-own291-level-wine-accept",
+    },
+    F4ShopAnchor::static_site(
+        "sub_D779C0",
+        Some(Inventory313::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0xD779C0),
+        F4_INVENTORY_W3,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_D77BD0",
+        Some(Inventory314::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0xD77BD0),
+        F4_INVENTORY_W3,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_D77D60",
+        Some(Inventory315::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0xD77D60),
+        F4_INVENTORY_W3,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_D77EF0",
+        Some(Inventory316::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0xD77EF0),
+        F4_INVENTORY_W3,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_D84410",
+        Some(Inventory317::OPCODE),
+        F4AnchorSite::ServerToClientHandler(0xD84410),
+        F4_INVENTORY_W3,
+    ),
+    F4ShopAnchor::static_site(
+        "sub_11AECE0",
+        Some(Inventory566::OPCODE),
+        F4AnchorSite::ClientToServerBuilder(0x11AFA5D),
+        F4_INVENTORY_W2,
+    ),
+];
+
+/// Looks up opcode provenance in either direction. A match does not imply a
+/// usable shop or cosmetic projection route.
+pub fn f4_shop_anchor_for_opcode(opcode: u32) -> Option<&'static F4ShopAnchor> {
+    F4_SHOP_ANCHORS
+        .iter()
+        .find(|anchor| anchor.opcode == Some(opcode))
 }
 
 pub const UNMEASURED_WIRE_GAP: &str = "unmeasured_wire_projection";
