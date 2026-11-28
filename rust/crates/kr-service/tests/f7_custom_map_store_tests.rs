@@ -439,3 +439,227 @@ fn rejects_symlinks_in_policy_store_and_record_paths() {
     symlink(&target, &root).unwrap();
     assert!(matches!(store.get("owner", "map"), Err(Error::Symlink)));
 }
+
+#[test]
+fn disabled_policy_rejects_new_helpers_before_validation() {
+    let scratch = Scratch::new();
+    let root = scratch.path("maps");
+    let mut store = store(&root, CustomMapPolicy::default());
+
+    assert!(matches!(
+        store.check_hash_value("bad"),
+        Err(Error::Disabled)
+    ));
+    assert!(matches!(store.search_maps("", 0), Err(Error::Disabled)));
+    assert!(matches!(
+        store.record_good_vote("../bad", 1),
+        Err(Error::Disabled)
+    ));
+    assert!(matches!(
+        store.validate_publish_draft("", "", &[]),
+        Err(Error::Disabled)
+    ));
+    assert!(!root.exists());
+}
+
+#[test]
+fn hash_lookup_requires_a_canonical_digest_and_a_verified_record() {
+    let scratch = Scratch::new();
+    let root = scratch.path("maps");
+    let store = store(&root, policy());
+    let miss = "0".repeat(64);
+    assert!(!store.check_hash_value(&miss).unwrap());
+    assert!(!root.exists());
+
+    let bytes = valid_payload();
+    let saved = store.save("owner", "map", &bytes).unwrap();
+    assert!(store.check_hash_value(&saved.sha256).unwrap());
+    assert!(!store.check_hash_value(&miss).unwrap());
+    for invalid in [
+        "a".repeat(63),
+        "a".repeat(65),
+        "g".repeat(64),
+        "A".repeat(64),
+        "é".repeat(32),
+    ] {
+        assert!(matches!(
+            store.check_hash_value(&invalid),
+            Err(Error::InvalidHash)
+        ));
+    }
+
+    let path = record_path(&root);
+    let mut record: Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+    record["metadata"]["sha256"] = json!(miss);
+    fs::write(&path, serde_json::to_vec(&record).unwrap()).unwrap();
+    assert!(matches!(
+        store.check_hash_value(&miss),
+        Err(Error::Integrity)
+    ));
+}
+
+#[test]
+fn search_returns_only_matching_metadata_in_bounded_sorted_order() {
+    let scratch = Scratch::new();
+    let root = scratch.path("maps");
+    let store = store(&root, policy());
+    assert!(store.search_maps("", 1).unwrap().is_empty());
+    assert!(!root.exists());
+
+    let bytes = valid_payload();
+    for i in (0..33).rev() {
+        let owner = format!("Maker-{i:02}");
+        store.save(&owner, "Beta", &bytes).unwrap();
+        store.save(&owner, "Alpha", &bytes).unwrap();
+    }
+
+    let first = store.search_maps("", 3).unwrap();
+    let keys: Vec<_> = first
+        .iter()
+        .map(|meta| (meta.owner_id.as_str(), meta.map_id.as_str()))
+        .collect();
+    assert_eq!(
+        keys,
+        [
+            ("Maker-00", "Alpha"),
+            ("Maker-00", "Beta"),
+            ("Maker-01", "Alpha")
+        ]
+    );
+    assert_eq!(store.search_maps("MAKER-00", 2).unwrap(), first[..2]);
+    assert_eq!(store.search_maps("ALPh", 1).unwrap(), first[..1]);
+    assert_eq!(store.search_maps("", usize::MAX).unwrap().len(), 64);
+    assert!(store.search_maps("missing", 64).unwrap().is_empty());
+    assert!(store.search_maps("", 0).unwrap().is_empty());
+    assert!(store.search_maps(&"é".repeat(32), 1).unwrap().is_empty());
+    assert!(matches!(
+        store.search_maps(&"é".repeat(33), 1),
+        Err(Error::QueryTooLong)
+    ));
+}
+
+#[test]
+fn query_budget_counts_ignored_directory_entries() {
+    let scratch = Scratch::new();
+    let root = scratch.path("maps");
+    let store = store(&root, policy());
+    let saved = store.save("owner", "map", &valid_payload()).unwrap();
+    let owner_dir = root.join("owner");
+    for i in 0..4095 {
+        fs::write(owner_dir.join(format!(".f7-tmp-{i}")), b"").unwrap();
+    }
+    assert!(matches!(
+        store.search_maps("", 1),
+        Err(Error::QueryScanLimitExceeded)
+    ));
+    assert!(matches!(
+        store.check_hash_value(&saved.sha256),
+        Err(Error::QueryScanLimitExceeded)
+    ));
+    assert_eq!(store.list_by_owner("owner").unwrap(), [saved]);
+}
+
+#[test]
+fn votes_require_an_unambiguous_verified_map_and_deduplicate_accounts() {
+    let scratch = Scratch::new();
+    let root = scratch.path("maps");
+    let mut store = store(&root, policy());
+    assert!(matches!(
+        store.record_good_vote("map", 7),
+        Err(Error::NotFound)
+    ));
+    assert!(matches!(
+        store.record_good_vote("../map", 7),
+        Err(Error::InvalidMapId)
+    ));
+    assert!(!root.exists());
+
+    let mut bytes = valid_payload();
+    store.save("owner", "map", &bytes).unwrap();
+    let path = record_path(&root);
+    let on_disk = fs::read(&path).unwrap();
+    assert_eq!(store.record_good_vote("map", 7).unwrap(), 1);
+    assert_eq!(store.record_good_vote("map", 7).unwrap(), 1);
+    assert_eq!(store.record_good_vote("map", 8).unwrap(), 2);
+    assert_eq!(fs::read(&path).unwrap(), on_disk);
+
+    store.save("other", "map", &bytes).unwrap();
+    assert!(matches!(
+        store.record_good_vote("map", 9),
+        Err(Error::AmbiguousMapId)
+    ));
+    store.delete("other", "map").unwrap();
+    assert_eq!(store.record_good_vote("map", 9).unwrap(), 3);
+
+    fs::write(&path, b"{}").unwrap();
+    assert!(matches!(
+        store.record_good_vote("map", 7),
+        Err(Error::Integrity)
+    ));
+    bytes.push(b'\n');
+    store.save("owner", "map", &bytes).unwrap();
+    assert_eq!(store.record_good_vote("map", 7).unwrap(), 1);
+    store.delete("owner", "map").unwrap();
+    assert!(matches!(
+        store.record_good_vote("map", 7),
+        Err(Error::NotFound)
+    ));
+}
+
+#[test]
+fn vote_capacity_rejects_new_accounts_and_preserves_duplicate_counts() {
+    let scratch = Scratch::new();
+    let mut store = store(&scratch.path("maps"), policy());
+    store.save("owner", "map", &valid_payload()).unwrap();
+
+    for id in 1..=256 {
+        assert_eq!(store.record_good_vote("map", id).unwrap(), id);
+    }
+    assert!(matches!(
+        store.record_good_vote("map", 257),
+        Err(Error::VoteLimitExceeded)
+    ));
+    assert_eq!(store.record_good_vote("map", 1).unwrap(), 256);
+}
+
+#[test]
+fn publish_draft_checks_ids_payload_and_palette_without_saving() {
+    let scratch = Scratch::new();
+    let root = scratch.path("maps");
+    let mut bytes = valid_payload();
+    bytes.resize(MAX_CUSTOM_MAP_BYTES, b' ');
+    let limited = CustomMapPolicy {
+        max_payload_bytes: MAX_CUSTOM_MAP_BYTES - 1,
+        ..policy()
+    };
+    assert!(matches!(
+        store(&root, limited).validate_publish_draft("owner", "map", &bytes),
+        Err(Error::PayloadTooLarge)
+    ));
+    let store = store(&root, policy());
+    let draft = store
+        .validate_publish_draft("owner", "map", &bytes)
+        .unwrap();
+    assert_eq!(
+        draft.wire_contract,
+        CustomMapWireContract::UnmeasuredWireContract
+    );
+    assert!(matches!(
+        store.validate_publish_draft(&"é".repeat(33), "map", &bytes),
+        Err(Error::InvalidOwnerId)
+    ));
+    assert!(matches!(
+        store.validate_publish_draft("owner", "../map", &bytes),
+        Err(Error::InvalidMapId)
+    ));
+    assert!(matches!(
+        store.validate_publish_draft("owner", "map", &[]),
+        Err(Error::InvalidMap(CustomMapError::EmptyPayload))
+    ));
+    assert!(matches!(
+        store.validate_publish_draft("owner", "map", &payload(&[2; 15 * 13])),
+        Err(Error::InvalidMap(CustomMapError::UnknownTile(2)))
+    ));
+    assert!(!root.exists());
+    assert_eq!(store.save("owner", "map", &bytes).unwrap(), draft);
+}
