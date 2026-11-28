@@ -27,15 +27,19 @@ use crate::{
     custom_map_store::{CustomMapPolicy, CustomMapStore},
     f3_pve_policy::F3PvePolicy,
     f4_extended_policy::{
-        BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
-        PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
+        BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy, PolicyError,
+        PowerupKitPolicy, PrimarySession, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy,
+        UpgradePolicy,
     },
+    f4_security_kits::F4SecurityKitsRuntime,
     f6_policy::F6EventPolicy,
     platform::{self, local_ipc},
     web_shop,
 };
 use serde::Deserialize;
+use sha2::{Digest, Sha256};
 use std::{
+    collections::HashMap,
     fs, io,
     net::Ipv4Addr,
     path::{Component, Path, PathBuf},
@@ -197,6 +201,8 @@ struct LoadedSettings {
     f5: Option<F5SocialPolicy>,
     f6: Option<Arc<F6EventPolicy>>,
     f7: CustomMapPolicy,
+    f4_security_kits: Arc<F4SecurityKitsRuntime>,
+    f3_pve_policy: Arc<F3PvePolicy>,
 }
 
 fn load_economy_profile_file(path: &Path) -> io::Result<(EconomyPolicy, ShopCatalog)> {
@@ -340,7 +346,15 @@ impl Config {
     }
 
     /// Validated economy for the account worker; defaults stay disabled.
+    #[cfg(test)]
     pub(crate) fn economy(&self) -> io::Result<EconomySettings> {
+        self.economy_with_extended(self.f4_extended_policy()?)
+    }
+
+    fn economy_with_extended(
+        &self,
+        extended: F4ExtendedPolicyBundle,
+    ) -> io::Result<EconomySettings> {
         let (policy, catalog) = if let Some(path) = &self.economy_profile_path {
             if self.economy_policy != EconomyPolicy::default()
                 || !self.shop_catalog.items.is_empty()
@@ -353,7 +367,6 @@ impl Config {
         } else {
             (self.economy_policy.clone(), self.shop_catalog.clone())
         };
-        let extended = self.f4_extended_policy()?;
         let settings = EconomySettings::new(policy, catalog)
             .map_err(|_| io::Error::other("invalid economy policy or shop catalog"))?;
         if settings.rewards_enabled() && !self.persist_matches {
@@ -395,14 +408,19 @@ impl Config {
             .as_ref()
             .map(|_| self.f6_event_policy().map(Arc::new))
             .transpose()?;
-        self.f3_pve_policy()?;
+        let f3_pve_policy = Arc::new(self.f3_pve_policy()?);
+        let f4_bundle = self.f4_extended_policy()?;
+        let f4_security_kits = Arc::new(
+            F4SecurityKitsRuntime::from_bundle(&f4_bundle)
+                .map_err(|error| io::Error::new(io::ErrorKind::InvalidData, error))?,
+        );
         let f7 = self.f7_custom_map_policy()?;
         let f5 = self
             .f5_social_policy
             .as_ref()
             .map(|_| self.f5_social_policy())
             .transpose()?;
-        let economy = self.economy()?;
+        let economy = self.economy_with_extended(f4_bundle)?;
         if let Some(backup) = &self.backup {
             backup.validate()?;
         }
@@ -466,9 +484,19 @@ impl Config {
             f5,
             f6,
             f7,
+            f4_security_kits,
+            f3_pve_policy,
         })
     }
 }
+// Share the fixed profile index and live policies across Active clones.
+#[derive(Default)]
+struct ActiveSettings {
+    fixed_profiles: HashMap<u32, Vec<u8>>,
+    f4_security_kits: Arc<F4SecurityKitsRuntime>,
+    f3_pve_policy: Arc<F3PvePolicy>,
+}
+
 #[derive(Clone)]
 pub(crate) struct Active {
     pub(crate) authenticated: Option<Arc<crate::authenticated_peer::Hub>>,
@@ -479,7 +507,7 @@ pub(crate) struct Active {
     pub(crate) project_own291_level: bool,
     pub(crate) unlock_all_catalog: bool,
     pub(crate) web_shop: Option<crate::web_shop::WebShopAuth>,
-    projections: Arc<std::collections::HashMap<u32, Vec<u8>>>,
+    projections: Arc<ActiveSettings>,
     projection: Option<Arc<kr_wire::kr00967::AccountTemplate>>,
 }
 impl Active {
@@ -494,7 +522,7 @@ impl Active {
             project_own291_level: false,
             unlock_all_catalog: false,
             web_shop: None,
-            projections: Arc::new(std::collections::HashMap::new()),
+            projections: Arc::default(),
             projection: None,
         }
     }
@@ -503,6 +531,14 @@ impl Active {
     }
     pub(crate) fn account_service(&self) -> Option<&AccountService> {
         self.service.as_ref()
+    }
+    pub(crate) fn f4_security_kits(&self) -> &Arc<F4SecurityKitsRuntime> {
+        &self.projections.f4_security_kits
+    }
+    // Available to a future PvE dispatch consumer.
+    #[allow(dead_code)]
+    pub(crate) fn f3_pve_policy(&self) -> &Arc<F3PvePolicy> {
+        &self.projections.f3_pve_policy
     }
     pub(crate) fn catalog_access(&self) -> CatalogAccess {
         CatalogAccess {
@@ -575,11 +611,30 @@ impl Active {
             if let Some(auth) = &self.web_shop {
                 auth.revoke_player(player);
             }
+            let second_password = self
+                .f4_security_kits()
+                .second_password
+                .revoke_session(Self::public_primary_session(token, player));
             self.bridge
                 .forget_session(token, player)
                 .map_err(|_| io::Error::other("public logout registry unavailable"))?;
+            match second_password {
+                Ok(()) | Err(PolicyError::Disabled) => {}
+                Err(error) => return Err(io::Error::other(error)),
+            }
         }
         Ok(logged_out)
+    }
+
+    /// Use only after authenticating this token for the player. Each account
+    /// has one DB player; key its state by player ID and distinguish logins by
+    /// a nonzero fingerprint of the random token, without retaining the token.
+    pub(crate) fn public_primary_session(token: &Token, player: i64) -> PrimarySession {
+        let digest = Sha256::digest(token.expose_secret().as_bytes());
+        PrimarySession {
+            account: u64::try_from(player).expect("authenticated player ID is positive"),
+            session: u64::from_le_bytes(digest[..8].try_into().expect("eight digest bytes")).max(1),
+        }
     }
 }
 #[derive(Clone)]
@@ -703,7 +758,11 @@ impl Owner {
                 project_own291_level: config.project_own291_level,
                 unlock_all_catalog: config.unlock_all_catalog,
                 web_shop: web_shop.as_ref().map(crate::web_shop::Opened::auth),
-                projections: Arc::new(projections),
+                projections: Arc::new(ActiveSettings {
+                    fixed_profiles: projections,
+                    f4_security_kits: settings.f4_security_kits,
+                    f3_pve_policy: settings.f3_pve_policy,
+                }),
                 projection,
             },
             web_shop,
@@ -842,6 +901,7 @@ pub(crate) async fn prepare_launch(
         && (launch.player.profile_version != 1
             || active
                 .projections
+                .fixed_profiles
                 .get(&launch.player.wire_id)
                 .is_none_or(|name| name.as_slice() != launch_name))
     {

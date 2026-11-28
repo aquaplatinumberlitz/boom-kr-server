@@ -1,11 +1,13 @@
-use super::{Config, Owner};
+use super::{Active, Config, Owner};
 use crate::{
     account_bridge::local::native::fixtures,
     account_worker::{EconomySettings, Error as WorkerError, SocialReply},
-    accounts::{Admin, Error, ItemUpgradeOperation, Player, RecordEraserOperation, Store},
+    accounts::{Admin, Error, ItemUpgradeOperation, Player, RecordEraserOperation, Store, Token},
     choco_chat::F5SocialPolicy,
+    f3_pve_policy::{DispatchRejection, PveModeFamily},
     f4_extended_policy::{
-        CouponRequest, Decision, OperationKey, RecordScope, TitleUnlockDecision, UpgradeFamily,
+        CouponRequest, Decision, ItemOrigin, OperationKey, OwnedItem, RecordScope,
+        SecondPasswordAction, SecondPasswordOutcome, TitleUnlockDecision, UpgradeFamily,
     },
     platform, web_shop,
 };
@@ -189,6 +191,134 @@ fn run_shop(
     let (shutdown, stop) = watch::channel(false);
     let task = tokio::spawn(web_shop::serve_until(opened, service, stop));
     (token, shutdown, task)
+}
+
+#[tokio::test]
+async fn default_live_active_policies_are_disabled() {
+    let dir = TempDir::new();
+    let config = dir.config();
+    drop(Store::open(&config.database).unwrap());
+    let owner = Owner::open(&config, Default::default(), Some(projection()))
+        .await
+        .unwrap();
+    let f4 = owner.active.f4_security_kits().snapshot().unwrap();
+    assert!(!f4.powerup_kits.enabled);
+    assert!(!f4.second_password.enabled);
+    assert!(!owner.active.f3_pve_policy().enabled);
+    owner.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn enabled_f4_security_kits_are_live_and_logout_revokes_password_session() {
+    let dir = TempDir::new();
+    let mut config = dir.config();
+    config.f4_extended_policy = Some(dir.policy(
+        "f4-security.json",
+        json!({
+            "powerup_kits": {
+                "enabled": true,
+                "max_equipped_slots": 1,
+                "kits": [{"sku": "kit.test", "bonus": {"bombs": 1, "blast": 0, "speed": 0}}]
+            },
+            "second_password": {
+                "enabled": true,
+                "max_failed_attempts": 2,
+                "failure_window_seconds": 60,
+                "cooldown_seconds": 60
+            }
+        }),
+    ));
+    let player = create_account(&config);
+    let owner = Owner::open(&config, Default::default(), Some(projection()))
+        .await
+        .unwrap();
+    let active = owner.active.clone();
+    let runtime = active.f4_security_kits();
+    assert!(Arc::ptr_eq(runtime, owner.active.f4_security_kits()));
+    assert!(runtime.snapshot().unwrap().powerup_kits.enabled);
+    assert!(runtime.snapshot().unwrap().second_password.enabled);
+
+    let grant = active
+        .client
+        .try_login_with_idle_current("alice", b"test-password", 60, 30)
+        .unwrap()
+        .wait()
+        .await
+        .unwrap();
+    assert_eq!(grant.player, player);
+    let session = Active::public_primary_session(&grant.token, player.player_id);
+    runtime
+        .powerup_kits
+        .equip(
+            session.account,
+            1,
+            0,
+            OwnedItem {
+                owner: session.account,
+                sku: "kit.test",
+                quantity: 1,
+                expires_at: None,
+                origin: ItemOrigin::PersistentInventory,
+            },
+        )
+        .unwrap();
+    assert_eq!(runtime.snapshot().unwrap().powerup_kits.tracked_players, 1);
+
+    let password = &runtime.second_password;
+    password.setup(session).unwrap();
+    assert_eq!(
+        password.attempt(session, 1, SecondPasswordAction::Unlock, true),
+        Ok(SecondPasswordOutcome::Unlocked)
+    );
+
+    let wrong_token = Token::parse(&"0".repeat(64)).unwrap();
+    assert!(
+        !active
+            .logout_public(wrong_token, player.player_id)
+            .await
+            .unwrap()
+    );
+    assert!(password.is_unlocked(session).unwrap());
+    assert!(
+        owner
+            .active
+            .logout_public(grant.token, player.player_id)
+            .await
+            .unwrap()
+    );
+    assert!(!password.is_unlocked(session).unwrap());
+    owner.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn enabled_f3_policy_is_live_and_invalid_policy_fails_closed() {
+    let dir = TempDir::new();
+    let mut config = dir.config();
+    config.f3_pve_policy = Some(dir.policy("f3.json", json!({"enabled": true})));
+    drop(Store::open(&config.database).unwrap());
+    let owner = Owner::open(&config, Default::default(), Some(projection()))
+        .await
+        .unwrap();
+    let policy = owner.active.f3_pve_policy();
+    assert!(policy.enabled);
+    let family = PveModeFamily::MonsterS1;
+    assert_eq!(
+        policy.ensure_dispatch_allowed(family),
+        Err(DispatchRejection::WineEvidenceRequired(family))
+    );
+    owner.shutdown().await.unwrap();
+
+    let invalid = TempDir::new();
+    let mut invalid_config = invalid.config();
+    drop(Store::open(&invalid_config.database).unwrap());
+    invalid_config.f3_pve_policy =
+        Some(invalid.policy("f3-invalid.json", json!({"unknown": true})));
+    let error = Owner::open(&invalid_config, Default::default(), Some(projection()))
+        .await
+        .err()
+        .expect("invalid F3 policy allowed account serving startup");
+    assert_eq!(error.kind(), io::ErrorKind::InvalidData);
+    assert!(!invalid_config.launch_socket.exists());
 }
 
 #[tokio::test]
