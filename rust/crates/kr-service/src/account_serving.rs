@@ -194,6 +194,7 @@ pub struct F4ExtendedPolicyBundle {
 
 struct LoadedSettings {
     economy: EconomySettings,
+    f5: Option<F5SocialPolicy>,
     f6: Option<Arc<F6EventPolicy>>,
     f7: CustomMapPolicy,
 }
@@ -375,7 +376,14 @@ impl Config {
                 extended.level_rewards,
                 extended.lucci_vault,
             )
-            .map_err(|_| io::Error::other("invalid extended economy policies"))
+            .map_err(|_| io::Error::other("invalid extended economy policies"))?
+            .with_extended_ops_policies(
+                extended.gift_coupons,
+                extended.record_erasers,
+                extended.upgrades,
+                extended.titles,
+            )
+            .map_err(|_| io::Error::other("invalid extended economy operation policies"))
     }
     pub(crate) fn validate(&self) -> io::Result<()> {
         self.load_settings().map(|_| ())
@@ -389,7 +397,11 @@ impl Config {
             .transpose()?;
         self.f3_pve_policy()?;
         let f7 = self.f7_custom_map_policy()?;
-        self.f5_social_policy()?;
+        let f5 = self
+            .f5_social_policy
+            .as_ref()
+            .map(|_| self.f5_social_policy())
+            .transpose()?;
         let economy = self.economy()?;
         if let Some(backup) = &self.backup {
             backup.validate()?;
@@ -449,7 +461,12 @@ impl Config {
             platform::private_dir(parent)?;
         }
         platform::private_file(&self.database)?;
-        Ok(LoadedSettings { economy, f6, f7 })
+        Ok(LoadedSettings {
+            economy,
+            f5,
+            f6,
+            f7,
+        })
     }
 }
 #[derive(Clone)]
@@ -620,6 +637,15 @@ impl Owner {
         )
         .await
         .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
+        // The account service and bridge share this worker's client policy.
+        if let Some(policy) = settings.f5
+            && let Err(error) = worker.client().attach_f5_social_policy(policy)
+        {
+            let _ = worker.shutdown().await;
+            return Err(io::Error::other(format!(
+                "F5 social policy startup: {error:?}"
+            )));
+        }
         let boot_epoch = if projection.is_some() {
             Some(
                 worker
