@@ -49,6 +49,33 @@ class F2SelectionTests(unittest.TestCase):
                                      dict.fromkeys(batch, family))
 
 
+class F2GeometryTests(unittest.TestCase):
+    def test_small_delta_geometry_uses_exact_tile_info(self):
+        tiles = {
+            'Tile15_Static/Bf03_03': (1, 0, 0, 0, 0, 0, 1, 1, 0, 10103, 0, 1243912,
+                                     2012964084, 2012754176, -1, 1243928, 0, 0),
+            'Tile28_Static/MonS2_Rock01': (1, 0, 0, 0, 0, 0, 2, 1, 1, 0, 0, 1637888, *(0,) * 6),
+            'Tile31_Box_MonS2Desert/UnbreakableBox02': (
+                2, 0, 0, 0, 0, 0, 255, *(0,) * 9, 20877178, 198385496),
+            'Tile31_Passable_MonS2Desert/Tent_Red': (
+                3, 0, 0, 0, 0, 0, *(0x01000100,) * 3, 0, 0, 1, 0, 0, 0, 0, 19436346, 70279904),
+        }
+        names = list(tiles)
+        anchors = (1, 3, 6, 8)
+        profile = dict(adapter.decode_map(payload(cells={i: (-1, -1, -1) for i in range(195)})),
+                       name='TileProbe', payload_sha256='')
+        for code, index in enumerate(anchors):
+            profile['cells'][index] = (-1, code, -1)
+        terrain = adapter.f2_terrain_rules(profile, (names, tiles))['terrain']
+        self.assertEqual([i for i, kind in enumerate(terrain['kinds']) if kind == 1], [1, 3, 4, 6])
+        self.assertEqual(terrain['kinds'][8], 0)
+        self.assertEqual(terrain['ray_ports'][7:10], [0b1111, 0b1010, 0b1111])
+        for name, data in tiles.items():
+            with self.subTest(tile=name), self.assertRaisesRegex(ValueError, name):
+                changed = {**tiles, name: (*data[:-1], data[-1] ^ 1)}
+                adapter.f2_terrain_rules(profile, (names, changed))
+
+
 @unittest.skipUnless(all((GAME / name).is_file() for name in adapter.PACK_SHA256), 'Thiếu pack KR 00967')
 class F2StockPackTests(unittest.TestCase):
     def test_exports_expanded_families_and_projects_footprints_and_ray_ports(self):
@@ -179,6 +206,7 @@ class F2AdapterTests(unittest.TestCase):
             (('Factory07',), 'Factory07'),
             (('Aqua01',), 'Aqua01'),
             (('Bula00',), 'chưa được giải mã đầy đủ'),
+            (('Bula16',), 'chưa được giải mã đầy đủ'),
             (('Baseball01',), 'tile chưa ánh xạ'),
         )
         for names, message in cases:

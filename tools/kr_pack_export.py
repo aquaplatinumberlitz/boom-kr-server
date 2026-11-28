@@ -75,7 +75,7 @@ _F2_FAMILIES = {
     'PopcadeC': frozenset(f'PopcadeC{n:02}' for n in range(1, 6)),
     'Gumiho': _GUMIHO_MAPS,
 }
-# Chỉ nhận các họ 15x13 có địa hình sạch trong census và pack KR 00967.
+# Chỉ nhận map 15x13 có địa hình sạch trong census và pack KR 00967.
 # Adapter chỉ chiếu tile tĩnh; chưa có contract PvE cho script hoặc vật phẩm.
 # Zombie giữ phạm vi xuất F2; census không cấp quyền xuất F3.
 _F3_FAMILIES = {
@@ -184,6 +184,10 @@ _F3_FAMILIES = {
     'Hdn_Alice': frozenset(('Hdn_Alice01',)),
     'Hamster': _HAMSTER_MAPS,
     'SnowyFields': _SNOWY_FIELDS_MAPS,
+}
+# Ba map này không dùng tile động của họ MonSnowBear. Vẫn kiểm từng hàng census.
+_F3_TERRAIN_READY_SUBSETS = {
+    'MonSnowBear': frozenset(('MonSnowBear07', 'MonSnowBear23', 'MonSnowBear29')),
 }
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
 _SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02'))
@@ -456,6 +460,50 @@ _F23_STATIC_RECORDS = {
 # Tile33_Passble đi qua nhánh theo tên EA36B3 -> EBBA70, nên chưa chiếu
 # chúng thành ô trống dù các byte cổng tia đều mở.
 _R2_UNBREAKABLE_BOX = (2, 0, 0, 0, 0, 0, 255, *(0,) * 11)
+# KR 00967, fx/TileInfo/TileInfoList SHA-256:
+# 51b738448f5bb0c9dc54c0ef6782bd612561660f256717dc5df1d59c2f5ec795.
+# Khớp đủ 18 số, kể cả các word cuối. Bula chỉ chiếu footprint của type 1;
+# +36 vẫn là marker của CBulaComponent, không phải contract của đuôi map.
+_MONS2_TENT = (3, 0, 0, 0, 0, 0, *(_TENT_PORTS,) * 3, 0, 0, 1, 0)
+_F23_MOVEMENT_BLOCKER = 'TileTransparent_Passable/Passable01'
+_F23_SMALL_DELTA_OBJECTS = {
+    'Tile28_Static/MonS2_Cross00': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1637888, *(0,) * 6),
+    'Tile28_Static/MonS2_Rock01': (1, 0, 0, 0, 0, 0, 2, 1, 1, 0, 0, 1637888, *(0,) * 6),
+    **{f'Tile31_Static_MonS2Desert/RockBox0{n}_cantjump': (1, 0, 0, 0, 0, 0, 1, 1, 1, *(0,) * 9)
+       for n in (1, 2)},
+    **{f'Tile15_Static/{name}': (1, 0, 0, 0, 0, 0, 1, 1, 0, marker, 0, 1243912,
+                               2012964084, 2012754176, -1, 1243928, 0, 0)
+       for name, marker in (('Bf02_01', 10101), ('Bf03_02', 10102), ('Bf03_03', 10103))},
+    'Tile24_Box/PuzzleUnmovablebox': _R2_UNBREAKABLE_BOX,
+    'Tile28_Box/MonS2_UnbreakableBox': _R2_UNBREAKABLE_BOX,
+    'Tile28_Box/MonS2_UnbreakableBox02': _R2_UNBREAKABLE_BOX,
+    'Tile31_Box_MonS2Desert/UnbreakableBox01': (*_R2_UNBREAKABLE_BOX[:16], 18942554, 13002848),
+    'Tile31_Box_MonS2Desert/UnbreakableBox02': (*_R2_UNBREAKABLE_BOX[:16], 20877178, 198385496),
+    **{f'Tile31_Passable_MonS2Desert/Tent_{color}': (*_MONS2_TENT, 0, 0, 0, 19436346, 70279904)
+       for color in ('Blue', 'Orange', 'Red')},
+    'Tile27_Passable_SuperFighter2/TentRed': (*_MONS2_TENT, 20552173, 0, 3144312, 20156698, 25846336),
+    # Như Coral, +24 chặn di chuyển nhưng +32 mở cả bốn hướng tia.
+    _F23_MOVEMENT_BLOCKER: (3, 0, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, 0, 1, 1, 0,
+                            112, 0, 0, 1980460265, 1980460433),
+}
+
+
+def _f23_unsupported_object(key):
+    return (key in ('TileBonusMap_static/Tower00', 'Tile23_Static/Temple08')
+            or key.startswith(('Tile33_Passble/', 'Tile31_Passable_MonS2Desert/Tornado_')))
+
+
+def _f23_small_delta_object(key, data):
+    if _F23_SMALL_DELTA_OBJECTS[key] != data:
+        return None
+    if data[0] == 1:
+        return 1, data[6], data[7], 0b1111
+    if data[0] == 2:
+        # Counter 255 của FixedBox không giảm với hit bom thường.
+        return 1, 1, 1, 0b1111
+    return 0, 1, 1, 0b1111 if key == _F23_MOVEMENT_BLOCKER else 0b1010
+
+
 _ZOMBIE_PASS_B = (3, 0, 0, 0, 0, 0, *(_TENT_PORTS,) * 3,
                   0, 0, 1, 0, 9278848, 0, 20, 1243736, 0)
 _ZOMBIE_PASS_B_NAMES = frozenset(f'Tile21_Passible/Z_PassB0{n}' for n in (1, 2, 3))
@@ -607,7 +655,27 @@ def f1_terrain_rules(profile, table, *, f1e=False):
         key, d = lookup(obj, index, 'vật thể')
         if d is None:
             continue
-        if d[0] == 0 and d[6:8] == (1, 1) and not d[11]:
+        if f1e and _f23_unsupported_object(key):
+            fail(index, 'vật thể/cờ', key)
+        elif f1e and key in _F23_SMALL_DELTA_OBJECTS:
+            projection = _f23_small_delta_object(key, d)
+            if projection is None:
+                fail(index, 'vật thể/cờ', key)
+            kind, _, _, ports = projection
+            if kind and d[0] == 1:
+                for cell in footprint(index, d, key):
+                    if kinds[cell] == 2:
+                        fail(cell, 'footprint chồng thùng', key)
+                    kinds[cell] = 1
+            elif kind:
+                if kinds[index] != 0:
+                    fail(index, 'thùng chồng footprint', key)
+                kinds[index] = 1
+            elif key == _F23_MOVEMENT_BLOCKER and index in spawn_cells:
+                fail(index, 'spawn trên ô type 3 bị chặn', key)
+            else:
+                ray_ports[index] = ports
+        elif d[0] == 0 and d[6:8] == (1, 1) and not d[11]:
             ground(index, key, d)
         elif f1e and (_F23_STATIC_RECORDS.get(key) == d or (
                 key in _F1E_STATIC_WALLS and d[0] == 1
@@ -1138,7 +1206,7 @@ def load_f2_maps(maps):
 
 
 def load_f3_maps(maps):
-    """Chọn đúng các họ F3 terrain_ready 15x13 đã pin trong census KR."""
+    """Chọn map F3 15x13 có trong allowlist và có địa hình sạch trong census KR."""
     if (not 1 <= len(maps) <= 16 or len(set(maps)) != len(maps)
             or any(re.fullmatch(r'[A-Za-z0-9_]{1,64}', name) is None for name in maps)):
         raise ValueError('F3 cần 1–16 tên map KR khác nhau')
@@ -1166,7 +1234,8 @@ def load_f3_maps(maps):
         selected = {}
         for name in maps:
             family = families.get(name)
-            if name not in _F3_FAMILIES.get(family, ()) or name not in ready.get(family, ()):
+            full_family_map = name in _F3_FAMILIES.get(family, ()) and name in ready.get(family, ())
+            if not full_family_map and name not in _F3_TERRAIN_READY_SUBSETS.get(family, ()):
                 raise ValueError(f'Map không thuộc allowlist F3 terrain_ready: {name}')
             row = census['maps'][name]
             if (row['grid'] != [15, 13] or row['decode'] != 'exact'
@@ -1230,6 +1299,10 @@ def _f2_ground(key, data):
 
 def _f2_object(key, data):
     """Trả kind, chiều rộng vật cản và cổng tia cho các dạng TileInfo đã đọc."""
+    if _f23_unsupported_object(key):
+        return None
+    if key in _F23_SMALL_DELTA_OBJECTS:
+        return _f23_small_delta_object(key, data)
     kind, width, height = data[0], data[6], data[7]
     if (key.startswith('Tile38_Box/') and data[:9] == (2, 0, 0, 0, 0, 0, 0, height, 0)
             and height in (0, 1) and data[10:16] == (0,) * 6
@@ -1333,6 +1406,7 @@ def f2_terrain_rules(profile, table):
     name = profile['name']
     width, height = profile['width'], profile['height']
     kinds, ray_ports = [0] * (width * height), [0b1111] * (width * height)
+    spawn_cells = {y * width + x for x, y in profile['spawns']}
     for index, cell in enumerate(profile['cells']):
         row, col = divmod(index, width)
         for role, code in zip(profile['cell_fields'], cell, strict=True):
@@ -1372,7 +1446,9 @@ def f2_terrain_rules(profile, table):
             for cell in covered:
                 kinds[cell] = kind
                 ray_ports[cell] = ports
-    if any(kinds[y * width + x] or not ray_ports[y * width + x] for x, y in profile['spawns']):
+            if key == _F23_MOVEMENT_BLOCKER and index in spawn_cells:
+                raise ValueError(f'Spawn F2 không nằm trên ô trống: {name}')
+    if any(kinds[cell] or not ray_ports[cell] for cell in spawn_cells):
         raise ValueError(f'Spawn F2 không nằm trên ô trống: {name}')
     terrain = dict(width=width, height=height, kinds=kinds, map_sha256=profile['payload_sha256'],
                    seed_sha256=sha(bytes(kinds)))
