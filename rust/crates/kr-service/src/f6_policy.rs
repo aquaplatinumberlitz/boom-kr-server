@@ -372,6 +372,14 @@ impl F6EventPolicy {
         })
     }
 
+    /// Return the configured systems in stable catalog order, including only
+    /// explicit opt-ins. Disabled entries are intentionally omitted.
+    pub(crate) fn configured_system_names(&self) -> impl Iterator<Item = &'static str> + '_ {
+        self.enabled_systems()
+            .map(|(name, _)| name)
+            .chain(self.enabled_extended_systems().map(|(name, _)| name))
+    }
+
     /// Return whether the system is opted in at the given Unix second.
     /// Core schedules include both endpoints; extended schedules exclude the end.
     pub fn is_system_enabled_at(&self, name: &str, utc_unix_secs: i64) -> bool {

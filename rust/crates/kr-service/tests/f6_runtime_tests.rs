@@ -164,6 +164,97 @@ fn default_policy_rejects_all_44_systems_without_writes() {
 }
 
 #[test]
+fn status_snapshot_reports_disabled_defaults_and_policy_windows() {
+    let f = Fixture::new();
+    let disabled = F6EventRuntime::new(&f.store, F6EventPolicy::disabled_default()).unwrap();
+    assert_eq!(
+        disabled.status_snapshot(START),
+        kr_service::f6_runtime::F6EventStatusSnapshot {
+            enabled: false,
+            configured_systems: Vec::new(),
+            active_systems: Vec::new(),
+            quota_usage: kr_service::f6_runtime::F6QuotaUsage {
+                claims: 0,
+                hourly: 0,
+                minute: 0,
+                daily: 0,
+                seasonal: 0,
+            },
+            wire_status: "policy_runtime_only_pending_client_capture",
+        }
+    );
+
+    let mut runtime = f.runtime();
+    let outside = runtime.status_snapshot(START - 1);
+    assert!(outside.enabled);
+    assert_eq!(outside.configured_systems, vec![CORE, "Câu cá", EXTENDED]);
+    assert!(outside.active_systems.is_empty());
+    assert_eq!(
+        runtime.claim(claim("snapshot", EXTENDED, &f.player, ITEM), START),
+        Ok(ClaimOutcome::Granted)
+    );
+    let inside = runtime.status_snapshot(START);
+    assert_eq!(inside.active_systems, vec![CORE, "Câu cá", EXTENDED]);
+    assert_eq!(inside.quota_usage.claims, 1);
+    assert_eq!(inside.quota_usage.hourly, 1);
+    assert_eq!(inside.quota_usage.minute, 1);
+    assert_eq!(inside.quota_usage.daily, 1);
+    assert_eq!(inside.quota_usage.seasonal, 1);
+    assert_eq!(
+        serde_json::to_value(inside).unwrap(),
+        json!({
+            "enabled": true,
+            "configured_systems": [CORE, "Câu cá", EXTENDED],
+            "active_systems": [CORE, "Câu cá", EXTENDED],
+            "quota_usage": {
+                "claims": 1,
+                "hourly": 1,
+                "minute": 1,
+                "daily": 1,
+                "seasonal": 1
+            },
+            "wire_status": "policy_runtime_only_pending_client_capture"
+        })
+    );
+}
+
+#[test]
+fn status_snapshot_tracks_extended_reset_and_replay_without_double_charge() {
+    let f = Fixture::new();
+    let mut runtime = f.runtime();
+    let first = claim("snapshot-day-1", EXTENDED, &f.player, ITEM);
+    assert_eq!(runtime.claim(first, START), Ok(ClaimOutcome::Granted));
+    assert_eq!(
+        runtime.claim(first, START + DAY),
+        Ok(ClaimOutcome::Replayed)
+    );
+    let replay = runtime.status_snapshot(START + DAY);
+    assert_eq!(replay.quota_usage.claims, 1);
+    assert_eq!(replay.quota_usage.daily, 0);
+    assert_eq!(replay.quota_usage.seasonal, 1);
+
+    let second = claim("snapshot-day-2", EXTENDED, &f.player, ITEM);
+    assert_eq!(
+        runtime.claim(second, START + DAY),
+        Ok(ClaimOutcome::Granted)
+    );
+    let reset = runtime.status_snapshot(START + DAY);
+    assert_eq!(reset.quota_usage.claims, 2);
+    assert_eq!(reset.quota_usage.daily, 1);
+    assert_eq!(reset.quota_usage.seasonal, 2);
+    assert_eq!(
+        runtime.claim(
+            F6Claim {
+                reward: LUCCI,
+                ..first
+            },
+            START + DAY
+        ),
+        Err(ClaimError::Conflict)
+    );
+}
+
+#[test]
 fn pc_room_is_excluded_even_with_other_systems_opted_in() {
     let f = Fixture::new();
     let mut runtime = f.runtime();
