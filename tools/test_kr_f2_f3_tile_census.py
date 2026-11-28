@@ -102,6 +102,22 @@ class TileCensusTests(unittest.TestCase):
         self.assertEqual(result["distinct_keys"], 3)
         self.assertEqual(result["mapped_exact_matches"], {"Tile/Exact": {"tile": ["Tile/Ground", "Tile/Overlay"]}})
 
+    def test_baseball_kart_records_require_exact_tuple_and_layer(self):
+        evidence = census.EVIDENCE_DIR / "f2-baseball-kart-tiles-re.json"
+        modes = json.loads((census.ROOT / evidence).read_bytes())["classification"]
+        for family in modes.values():
+            for key, row in family["static_verified"].items():
+                record = tuple(row["tileinfo_i32"])
+                role = "tile" if record[0] == 0 else "object"
+                audit = census.TileAudit(([key], {key: record}))
+                changed = census.TileAudit(([key], {key: (*record[:-1], record[-1] ^ 1)}))
+                with self.subTest(key=key):
+                    self.assertIsNone(audit.check_code(role, 0, 15, 13))
+                    self.assertEqual(audit.check_code("overlay", 0, 15, 13),
+                                     (key, "outside_baseball_kart_static_record"))
+                    self.assertEqual(changed.check_code(role, 0, 15, 13),
+                                     (key, "outside_baseball_kart_static_record"))
+
     def test_collects_all_layers_and_separates_items_from_tiles(self):
         row = census.scan_map(payload(
             cells=[(1, 2, 3), (0, 4, 22), (1, 2, -1)],

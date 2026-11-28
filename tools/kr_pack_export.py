@@ -458,6 +458,39 @@ _BASEBALL_STATIC_RECORDS = {
     )
     for suffix in suffixes
 }
+# P241 (#822), KR 00967: chỉ nhận tên và đủ 18 số TileInfo đã được
+# xác nhận trong docs/evidence/content/f2-baseball-kart-tiles-re.json.
+# Giữ bảng F1 ở trên nguyên vẹn; các tuple bổ sung chỉ dùng cho F2 và census.
+_BASEBALL_KART_GROUND = (*_GROUND, 1, 1, 0, 0, -1, 0, 0, 0, 0)
+BASEBALL_KART_STATIC_TILES = {
+    **{key: (*_BASEBALL_KART_GROUND, 52224, 0, 0) for key in (
+        *(f'Tile05_Ground/Road{n:02}' for n in range(8)),
+        *(f'Tile05_Ground/{name}' for name in ('TileA00', 'TileA01', 'TileA02', 'TileA03',
+                                              'TileB00', 'TileB01', 'TileB03', 'TileFlower00', 'TileFlower01')),
+        'Tile12_Ground/Sand00', 'Tile12_Ground/Sand01',
+    )},
+    **{f'Tile05_Ground/Road{n:02}': (*_BASEBALL_KART_GROUND, 0, 1309272, 0) for n in range(8, 13)},
+    'Tile22_Static/Octop_Small': (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 12360960, *(0,) * 6),
+    **{f'Tile70_Box/Block{n:02}': (2, *(0,) * 6, height, *(0,) * 8, 12200506, tail)
+       for n, (height, tail) in enumerate(((0, 128198344), (0, 128194480), (0, 128192272),
+                                           (0, 128188960), (1, 128192272), (1, 128188960)), 1)},
+    **_BASEBALL_STATIC_RECORDS,
+    **{f'Tile70_Static/Static{n:02}': (1, *(0,) * 5, 1, 1, *(0,) * 10)
+       for n in (*range(1, 11), 12, 37, 38)},
+    'Tile01_Box/Box00': (2, *(0,) * 17),
+    'Tile01_Static/Rock00': (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1244184, 0, 18730216, 4274062, 18730216, 0, 0),
+    **{f'Tile12_Box/{name}': (2, *(0,) * 6, height, *(0,) * 10)
+       for height, names in ((0, ('Brick00', 'Brick01')),
+                             (1, ('Safety00', 'WoodBox00', 'WoodBox01', 'WoodBox02')))
+       for name in names},
+    **{f'Tile12_Static/{name}': (1, *(0,) * 5, width, height, 0, 0, 0, *(-858993460,) * 5, 0, 0)
+       for width, height, names in (
+           (1, 1, ('ColorBox00', 'ColorBox01', 'GasLeft00', 'GasLeft01', 'SafetyRock00', 'SafetyRock01',
+                   'Signal00', 'Signal01', 'TrafficSign02')),
+           (4, 2, ('Oil_Station',)), (3, 2, ('Truck00',)),
+       )
+       for name in names},
+}
 # Nền Baseball có byte +60 = 1 (EB48E0 chọn CGOTileLap). Kart Race*
 # có cờ cưỡi +52 = 1, LapTile*/Start_* có thêm byte +60 = 1, GasRight*
 # có +52 = 100, và Tire* có marker +36 ngoài mẫu vật cản đã xác nhận.
@@ -1337,6 +1370,10 @@ def load_f3_maps(maps):
 
 def _f2_ground(key, data):
     # Giữ nguyên ID ô trong profile, kể cả nền đỏ/xanh của CAPong.
+    if key.startswith(_BASEBALL_KART_UNMAPPED):
+        return False
+    if (expected := BASEBALL_KART_STATIC_TILES.get(key)) is not None:
+        return expected[0] == 0 and data == expected
     if (key.startswith(('Tile65_Ground/', 'Tile67_Ground/'))
             and data[:6] == _GROUND and 1 <= data[6] <= 15 and 1 <= data[7] <= 13
             and data[8:11] == (0, 0, -1) and data[11] == 0
@@ -1385,6 +1422,12 @@ def _f2_object(key, data):
     """Trả kind, chiều rộng vật cản và cổng tia cho các dạng TileInfo đã đọc."""
     if _f23_unsupported_object(key):
         return None
+    if (expected := BASEBALL_KART_STATIC_TILES.get(key)) is not None:
+        if data != expected or expected[0] == 0:
+            return None
+        if expected[0] == 1:
+            return 1, data[6], data[7], 0b1111
+        return 2, 1, 1, 0b1111
     if key in _F23_SMALL_DELTA_OBJECTS:
         return _f23_small_delta_object(key, data)
     kind, width, height = data[0], data[6], data[7]

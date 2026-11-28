@@ -67,12 +67,12 @@ Chỉ xếp `quick_unlock` khi mọi map trong họ đều giải mã đủ, có
 | F3 | `Bonus` | 12 | `TileBonusMap_static/Tower00` | 14 / 0 |
 | F3 | `Hdn_SuperFight` | 1 | `Tile23_Static/Temple08` | 0 / 11 |
 
-Mỗi mã ô được nối từ `ObjectTable/ObjectTable` sang `TileInfo/TileInfoList` trong pack `fx`, rồi kiểm riêng theo lớp nền, vật thể hoặc overlay bằng `f1_terrain_rules(f1e=True)`. Công cụ cũng thử các lớp đã ánh xạ cùng nhau để phát hiện ràng buộc như footprint chồng nhau.
+Mỗi mã ô được nối từ `ObjectTable/ObjectTable` sang `TileInfo/TileInfoList` trong pack `fx`, rồi kiểm riêng theo lớp nền, vật thể hoặc overlay bằng `f1_terrain_rules(f1e=True)`. Các tile Baseball và Kart đã xác nhận tĩnh còn phải khớp tên, lớp và đủ 18 số trong [bằng chứng KR 00967](../protocol/f2-baseball-kart-tiles-re.md). Công cụ cũng thử các lớp đã ánh xạ cùng nhau để phát hiện ràng buộc như footprint chồng nhau.
 Khóa đặt sẵn và drop có trọng số dương được đối chiếu riêng với danh sách khóa F1. Khóa vật phẩm không tính vào số tile; một khóa đặt sẵn hoặc drop trùng tên trong TileInfo được ghi thêm theo lớp tương ứng.
 
 Đối chiếu KR 00967 xét đủ 18 số của 49 khóa còn thiếu trong hai catalog. Có 0 khóa trùng tuple với khóa đã ánh xạ ở cùng lớp trên lưới 15x13. JSON giữ các tuple theo khóa và lớp cùng SHA-256 của tập này và của `TileInfo/TileInfoList`.
-Nền Baseball có cờ lap; nền, ô tăng tốc và lốp của Kart có cờ hoặc marker riêng. `Temple08` khác `Temple11` ở cờ +40, còn `Tower00` có marker +36 bằng 999. Các tile SnowBear và Tornado vẫn chờ xác nhận hành vi riêng. Không mở thêm tile trong lượt kiểm này.
+Bảy tile nền Baseball có cờ lap. Nền đường đua, ô tăng tốc và lốp của Kart có cờ hoặc marker riêng. Hai họ vẫn chưa đủ địa hình; census không mở script Baseball hoặc luật đua Kart. `Temple08` khác `Temple11` ở cờ +40, còn `Tower00` có marker +36 bằng 999. Các tile SnowBear và Tornado vẫn chờ xác nhận hành vi riêng.
 
 Xếp hạng là `candidate` cho công việc về địa hình. Điều kiện phục vụ như vị trí, xác suất vật phẩm, allowlist script, chế độ phòng và quyền PvE chưa được xác nhận ở đây. Ví dụ, `MonS2Fire03` và `RPG11_N_02` đọc được với lưới lớn; `Tutorial01` đọc được với lưới 15x13. Những kết quả đó mô tả dữ liệu pack; các giới hạn phục vụ vẫn theo [probe Wine r1](f2-f3-wine-probe-r1.md).
 
-Sinh lại từ pack gốc: `python3 tools/kr_f2_f3_tile_census.py --write` (có thể chỉ định `--game-dir`). Kiểm hash thân JSON, phạm vi hai catalog và định dạng cả hai đầu ra: `python3 tools/kr_f2_f3_tile_census.py --check`. Lệnh kiểm chỉ đọc tệp trong repo.
+Sinh lại từ pack gốc: `python3 tools/kr_f2_f3_tile_census.py --generate` (có thể chỉ định `--game-dir`). Kiểm hash thân JSON, phạm vi hai catalog và định dạng cả hai đầu ra: `python3 tools/kr_f2_f3_tile_census.py --check`. Lệnh kiểm chỉ đọc tệp trong repo.
