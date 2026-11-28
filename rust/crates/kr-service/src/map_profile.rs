@@ -31,6 +31,14 @@ pub(crate) struct Profile {
     #[serde(default)]
     pack_items: Option<BTreeMap<String, u32>>,
 }
+
+impl FixturePin {
+    /// Check a pinned map profile's admission before room packet validation.
+    pub fn validate_map_profile(&self) -> io::Result<()> {
+        Profile::load(self).map(|_| ())
+    }
+}
+
 fn error() -> io::Error {
     io::Error::other("inconsistent or unsupported pack map profile")
 }
@@ -153,15 +161,33 @@ impl Profile {
     }
 
     fn supported_f2f3_probe(&self) -> bool {
-        let expected_spawns = match (self.map_code, self.name.as_str()) {
-            (623, "MonSeal01") | (1051, "SnowyFields07") | (926, "RescueET01") => 4,
-            (1143, "Zombie04") | (94, "CAhero01") | (1045, "SnowyFields01") | (204, "Clover01") => {
-                8
-            }
+        // Exact profile metadata verified with the KR 00967 pack exporter.
+        let (scripted, expected_spawns) = match (self.map_code, self.name.as_str()) {
+            (910, "PopcadeB01") => (true, 2),
+            (213, "Coloring01")
+            | (501, "MonGolem01")
+            | (536, "MonPen01")
+            | (623, "MonSeal01")
+            | (666, "MonSnowBear07")
+            | (737, "MonTurtle01")
+            | (915, "PopcadeC01")
+            | (926, "RescueET01")
+            | (1051, "SnowyFields07")
+            | (1115, "Wriggle01")
+            | (1146, "Zzolman01") => (true, 4),
+            (94, "CAhero01")
+            | (204, "Clover01")
+            | (344, "Gumiho01")
+            | (355, "Hamster01")
+            | (920, "Rabbit01")
+            | (1045, "SnowyFields01")
+            | (1143, "Zombie04") => (true, 8),
+            (192, "CAPong01") => (false, 4),
+            (1075, "SuperFighter16") => (false, 8),
             _ => return false,
         };
         self.grid_size() == STANDARD_SIZE
-            && self.scripted
+            && self.scripted == scripted
             && !self.disable_bombs
             && self.spawns.len() == expected_spawns
             && self
