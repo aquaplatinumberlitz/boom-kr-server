@@ -1,12 +1,14 @@
 """Compare normalized KR00967 JSON/JSONL captures from A-host and B-host runs.
 
-Report packet sender patterns and static anchor matches. Payload bytes and
-free-form notes stay in the original capture for local correlation.
+Report sender patterns, static anchors and bounded candidate frame summaries.
+In normalized events, payload_hex is the TCP body after framing and opcode
+removal, with KR typed fields still encoded. Raw bytes, strings and notes are
+not printed by the frame annotation.
 """
 
 import argparse
 from collections import Counter, defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import hashlib
 import ipaddress
 import json
@@ -27,6 +29,58 @@ ROLE_LAYOUTS = {
 DISPATCHER = "0xe5d3a0"
 JUMP_TABLE = "0xe5de9c"
 CASE_OFFSET = 20
+# Diagnostic limits, not claims about the original server's wire limits.
+MAX_CANDIDATE_BODY = 65_536
+MAX_FRAME_SAMPLES = 8  # Per direction/opcode in the combined report.
+KR_UINT_MASK = {1: 0x5a, 2: 0xa569, 4: 0x96ca5395, 8: 0x71b18589}
+WAVE_M_IDB_SHA256 = "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"
+WAVE_M_PROTOCOLS = {
+    "F2": ("#810", "docs/protocol/f2-bula-tail-and-mode-wire-re.md"),
+    "F3": ("#811", "docs/protocol/f3-pve-monaction-wire-re.md"),
+    "F4": ("#809", "docs/protocol/f4-shop-ingame-wire-re.md"),
+}
+
+# Wire opcodes for the nondefault entries listed in #811, not Hex-Rays cases.
+# 182 is absent; 204 uses the object sync fallback instead of this table.
+STAGE_HANDLERS = {
+    25: "0xe65a10", 29: "0xe6aa90", 84: "0xe6e1a0", 100: "0xe6d730",
+    110: "0xe5e2c0", 111: "0xe6df60", 123: "vtable this + 0x2d4", 132: "0xe610c0",
+    139: "0xe662b0", 140: "0xe66320", 141: "0xe66360", 142: "0xe66380",
+    152: "0xe5e640", 153: "0xe5e6d0", 154: "0xe5e860", 155: "0xe67640",
+    156: "0xe67770", 157: "0xe5e600", 158: "0xe5f450", 159: "0xe5e8f0",
+    160: "0xe5eec0", 162: "0xe5efc0", 164: "0xe5f2c0", 165: "0xe63260",
+    166: "0xe875e0", 167: "0xe63e50", 168: "0xe63f10", 170: "0xe85b60",
+    171: "0xe64310", 172: "0xe64570", 173: "0xe646e0", 175: "0xe5f610",
+    176: "0xe77d20", 177: "0xe6dd60", 178: "0xe77dd0", 180: "0xe72490 / vtable",
+    181: "0xe652f0", 183: "0xe65350", 184: "0xe654f0", 185: "0xe67470",
+    191: "0xe64070", 196: "0xe73760", 197: "0xe751f0", 198: "0xe74410",
+    199: "0xe72ec0", 200: "0xe683c0", 201: "0xe678a0", 209: "0xe68280",
+    210: "0xe67a60", 215: "0xe7f500", 220: "0xe65d40", 221: "0xe65f20",
+    222: "0xe65e40", 274: "0xd73100",
+}
+
+FRAME_ANCHORS = {
+    ("S2C", 185): ("F2", "RebirthToGhost", "0xe67470"),
+    ("S2C", 204): ("F3", "monaction_delegation", "0x115cb10 -> 0x115d2e0"),
+    ("C2S", 132): ("F3", "monaction_step", "0xf53320 / 0xf50dd0"),
+    ("C2S", 180): ("F3", "monaction_step", "0x629940 / 0x6292a0 / 0x627de0"),
+    ("S2C", 20): ("F4", "profile_wallet_setter", "0xd6e890"),
+    ("S2C", 219): ("F4", "inventory_group_snapshot", "0xd76860 -> 0x11cea10"),
+    ("S2C", 224): ("F4", "inventory_group_replacement", "0xd6d370 -> 0x11ce4c0"),
+    ("S2C", 225): ("F4", "eight_slot_snapshot", "0xd6d410 -> 0x11ce6a0"),
+    ("S2C", 313): ("F4", "item_add_or_update", "0xd779c0"),
+    ("S2C", 314): ("F4", "item_delta", "0xd77bd0"),
+    ("S2C", 315): ("F4", "item_operation_result", "0xd77d60"),
+    ("S2C", 316): ("F4", "item_removal_or_consumption", "0xd77ef0"),
+    ("S2C", 317): ("F4", "item_period_response", "0xd84410"),
+    ("C2S", 566): ("F4", "item_context_byte", "0x11afa52..0x11afa79"),
+}
+
+
+def frame_anchor(direction, opcode):
+    return (direction, opcode) in FRAME_ANCHORS or (
+        direction == "S2C" and opcode in STAGE_HANDLERS
+    )
 
 HEX = re.compile(r"[0-9a-fA-F]*")
 PRIVATE_TEXT = re.compile(
@@ -47,6 +101,8 @@ class Event:
     sender_role: str
     ts_ms: int
     map_name: str | None
+    # Retained only for candidate opcodes and never emitted in a report.
+    payload_hex: str = field(default="", repr=False, compare=False)
 
 
 @dataclass(frozen=True)
@@ -89,7 +145,8 @@ def parse_event(record, label):
     for field in ("map_name", "note"):
         if field in record and not isinstance(record[field], str):
             raise ValueError(f"{label}: {field} must be a string")
-    return Event(direction, opcode, role, timestamp, record.get("map_name"))
+    return Event(direction, opcode, role, timestamp, record.get("map_name"),
+                 payload if frame_anchor(direction, opcode) else "")
 
 
 def parse_capture(raw, label="capture"):
@@ -115,6 +172,278 @@ def parse_capture(raw, label="capture"):
                     raise ValueError(f"{location}: invalid JSONL event") from None
                 events.append(parse_event(record, location))
     return Capture(tuple(events), hashlib.sha256(raw).hexdigest())
+
+
+class FrameDecodeError(Exception):
+    """A bounded candidate decoder error safe to expose in a report."""
+
+    def __init__(self, tag, message):
+        super().__init__(message)
+        self.tag = tag
+
+
+class FrameReader:
+    """Reader for the KR encoded integer primitives used by these packets."""
+
+    def __init__(self, payload):
+        self.payload = payload
+        self.offset = 0
+
+    def take(self, width):
+        end = self.offset + width
+        if end > len(self.payload):
+            raise FrameDecodeError("truncated", f"need {width} bytes at offset {self.offset}")
+        value = int.from_bytes(self.payload[self.offset:end], "big")
+        self.offset = end
+        return value ^ KR_UINT_MASK[width]
+
+    def u8(self):
+        return self.take(1)
+
+    def u16(self):
+        return self.take(2)
+
+    def u32(self):
+        return self.take(4)
+
+    def u64(self):
+        return self.take(8)
+
+    @property
+    def remaining(self):
+        return len(self.payload) - self.offset
+
+
+def _frame_payload(payload_hex):
+    if not isinstance(payload_hex, str) or len(payload_hex) % 2 or not HEX.fullmatch(payload_hex):
+        raise FrameDecodeError("error", "payload_hex is not complete hexadecimal bytes")
+    if len(payload_hex) // 2 > MAX_CANDIDATE_BODY:
+        raise FrameDecodeError("out_of_range", "candidate body exceeds bounded decoder limit")
+    try:
+        return bytes.fromhex(payload_hex)
+    except ValueError:
+        raise FrameDecodeError("error", "payload_hex is not complete hexadecimal bytes") from None
+
+
+def _finish(reader, summary, *, allow_tail=False):
+    if reader.remaining:
+        if not allow_tail:
+            raise FrameDecodeError("error", f"{reader.remaining} trailing bytes")
+        summary["trailing_bytes"] = reader.remaining
+    return summary
+
+
+def _read_item(reader):
+    # sub_11CE930: the encoded string is deliberately counted but not decoded.
+    item = {
+        "a": reader.u32(), "b": reader.u16(), "c": reader.u32(),
+    }
+    text_length = reader.u16()
+    if text_length > 4096:
+        raise FrameDecodeError("out_of_range", "item string exceeds bounded length")
+    if reader.remaining < text_length + 13:  # raw8, d and e
+        raise FrameDecodeError("truncated", "item record ends before fixed tail")
+    reader.offset += text_length
+    reader.offset += 8
+    item.update({"string_length": text_length, "raw8_bytes": 8,
+                 "d": reader.u32(), "e": reader.u8()})
+    return item
+
+
+def _decode_groups(payload, *, replacement):
+    reader = FrameReader(payload)
+    count = reader.u8()
+    if count > 64:
+        raise FrameDecodeError("out_of_range", "group count exceeds 64")
+    groups = []
+    for _ in range(count):
+        selector, item_count = reader.u8(), reader.u32()
+        if item_count > 256:
+            raise FrameDecodeError("out_of_range", "item count exceeds 256")
+        items = [_read_item(reader) for _ in range(item_count)]
+        groups.append({"selector": selector, "item_count": item_count,
+                       "items": items})
+    return _finish(reader, {"group_count": count, "groups": groups,
+                            "snapshot_replacement": replacement})
+
+
+def _decode_225(payload):
+    reader = FrameReader(payload)
+    count = reader.u8()
+    if count > 32:
+        raise FrameDecodeError("out_of_range", "row count exceeds 32")
+    rows = []
+    for _ in range(count):
+        slots = []
+        for slot in range(8):
+            item_id = reader.u32()
+            text_length = reader.u16()
+            if text_length > 4096:
+                raise FrameDecodeError("out_of_range", "slot string exceeds bounded length")
+            if reader.remaining < text_length:
+                raise FrameDecodeError("truncated", "slot string is truncated")
+            reader.offset += text_length
+            slots.append({"slot": slot, "item_id": item_id,
+                          "string_length": text_length})
+        rows.append(slots)
+    return _finish(reader, {"row_count": count, "rows": rows})
+
+
+def _decode_fixed20(payload):
+    reader = FrameReader(payload)
+    values = [reader.u8(), reader.u8(), reader.u32(), reader.u32(), reader.u32(), reader.u32()]
+    return _finish(reader, {"fields": values, "field_widths": [1, 1, 4, 4, 4, 4]}, allow_tail=True)
+
+
+def _decode_inventory_prefix(payload, opcode):
+    reader = FrameReader(payload)
+    widths = {313: (1, 4, 4, 4, 2, 1), 314: (1, 4, 4, 4),
+              315: (1, 1, 4, 4, 4, 8), 316: (1, 4, 4)}[opcode]
+    values = [reader.take(width) for width in widths]
+    return _finish(reader, {"fields": values, "field_widths": list(widths)}, allow_tail=True)
+
+
+def _decode_317(payload):
+    reader = FrameReader(payload)
+    ok, slot, old_item, item = reader.u8(), reader.u8(), reader.u32(), reader.u32()
+    if ok not in (0, 1):
+        raise FrameDecodeError("out_of_range", "317 result byte must be 0 or 1")
+    summary = {"ok": ok, "slot": slot, "old_item": old_item, "item": item}
+    if ok:
+        words = [reader.u16() for _ in range(8)]
+        summary["period_words"] = words
+        summary["period_value"] = reader.u32()
+    return _finish(reader, summary, allow_tail=True)
+
+
+def _decode_204(payload):
+    reader = FrameReader(payload)
+    object_id, slot = reader.u16(), reader.u8()
+    if object_id == 0:
+        raise FrameDecodeError("out_of_range", "object_id must be nonzero")
+    if slot >= 8:
+        raise FrameDecodeError("out_of_range", "owner slot must be below 8")
+    return _finish(reader, {"object_id": object_id, "owner_slot": slot})
+
+
+def _decode_132(payload):
+    reader = FrameReader(payload)
+    owner, object_id, kind = reader.u32(), reader.u16(), reader.u16()
+    if object_id == 0:
+        raise FrameDecodeError("out_of_range", "object_id must be nonzero")
+    # Static writers use several lists (including 21/22 and the older
+    # StageClear values); keep a bounded candidate range instead of treating
+    # an unlisted kind as a malformed frame.
+    if kind > 64:
+        raise FrameDecodeError("out_of_range", f"MonAction kind {kind} exceeds bound")
+    summary = {"owner_or_session": owner, "object_id": object_id, "kind": kind}
+    if kind == 0:
+        summary["target_id"] = reader.u32()
+    else:
+        summary["parameter_bytes"] = reader.remaining
+    return _finish(reader, summary, allow_tail=True)
+
+
+def _decode_180(payload):
+    reader = FrameReader(payload)
+    object_id, kind = reader.u16(), reader.u16()
+    known_kinds = {0, 3, 4, 5, 6, 8, 9, 10}
+    if object_id == 0:
+        raise FrameDecodeError("out_of_range", "object_id must be nonzero")
+    if kind not in known_kinds:
+        raise FrameDecodeError("out_of_range", f"unknown MonAction kind {kind}")
+    summary = {"object_id": object_id, "kind": kind}
+    if kind in {3, 4, 5}:
+        summary["u16_fields"] = [reader.u16(), reader.u16()]
+    elif kind == 6:
+        selector = reader.u8()
+        if selector not in {14, 15, 16}:
+            raise FrameDecodeError("out_of_range", "kind 6 selector must be 14, 15 or 16")
+        summary.update({"selector": selector, "value": reader.u8()})
+    elif kind == 9:
+        summary["target_id"] = reader.u32()
+    elif kind == 10:
+        summary["parameter_bytes"] = reader.remaining
+    return _finish(reader, summary, allow_tail=True)
+
+
+def _decode_stage(payload, opcode):
+    case = opcode - CASE_OFFSET
+    summary = {"case_index": case, "handler_va": STAGE_HANDLERS[opcode],
+               "body_length": len(payload)}
+    if opcode in (155, 156):
+        reader = FrameReader(payload)
+        summary["fields"] = [reader.u8(), reader.u8()]
+        return _finish(reader, summary, allow_tail=True)
+    if opcode == 197:
+        reader = FrameReader(payload)
+        summary["fields"] = [reader.u32(), reader.u8(), reader.u32(), reader.u32(), reader.u8()]
+        return _finish(reader, summary, allow_tail=True)
+    summary["decode_status"] = "opaque_static_layout"
+    return summary
+
+
+def classify_frame(direction, opcode, payload_hex):
+    """Return a bounded candidate annotation for a normalized TCP body.
+
+    The result intentionally distinguishes static provenance from runtime
+    measurement. Unknown/truncated bodies become data in the report rather
+    than exceptions, so malformed captures cannot abort a whole analysis.
+    """
+    anchor = FRAME_ANCHORS.get((direction, opcode))
+    is_stage = direction == "S2C" and opcode in STAGE_HANDLERS
+    if anchor is None and not is_stage:
+        return None
+    feature, role, locator = anchor or ("F3", "stage_jump_table", STAGE_HANDLERS[opcode])
+    issue, protocol_path = WAVE_M_PROTOCOLS[feature]
+    annotation = {
+        "direction": direction, "wire_opcode": opcode, "feature": feature,
+        "classification": role, "source": "kr_static",
+        "status": "candidate_unmeasured", "static_status": "candidate_unmeasured",
+        "static_provenance": {"issue": issue, "source": "kr_static",
+                               "status": "candidate_unmeasured",
+                               "protocol": protocol_path, "idb_sha256": WAVE_M_IDB_SHA256,
+                               "locator": locator},
+    }
+    try:
+        payload = _frame_payload(payload_hex)
+        if (direction, opcode) == ("S2C", 185):
+            reader = FrameReader(payload)
+            annotation["summary"] = _finish(reader, {"selector": reader.u8()})
+        elif (direction, opcode) == ("S2C", 204):
+            annotation["summary"] = _decode_204(payload)
+        elif (direction, opcode) == ("C2S", 132):
+            annotation["summary"] = _decode_132(payload)
+        elif (direction, opcode) == ("C2S", 180):
+            annotation["summary"] = _decode_180(payload)
+        elif opcode == 20:
+            annotation["summary"] = _decode_fixed20(payload)
+        elif opcode in (219, 224):
+            annotation["summary"] = _decode_groups(payload, replacement=opcode == 224)
+        elif opcode == 225:
+            annotation["summary"] = _decode_225(payload)
+        elif opcode in (313, 314, 315, 316):
+            annotation["summary"] = _decode_inventory_prefix(payload, opcode)
+        elif opcode == 317:
+            annotation["summary"] = _decode_317(payload)
+        elif (direction, opcode) == ("C2S", 566):
+            reader = FrameReader(payload)
+            annotation["summary"] = _finish(reader, {"action_byte": reader.u8()})
+        else:
+            annotation["summary"] = _decode_stage(payload, opcode)
+        annotation["decode_status"] = annotation["summary"].pop("decode_status", "ok")
+    except FrameDecodeError as exc:
+        annotation["decode_status"] = exc.tag
+        annotation["error"] = str(exc)
+    except (KeyError, TypeError, ValueError, IndexError):
+        annotation["decode_status"] = "error"
+        annotation["error"] = "candidate payload could not be decoded"
+    return annotation
+
+
+# Alias used by callers that describe this operation as annotation rather than
+# classification; both names are intentionally kept small and side-effect free.
+annotate_frame = classify_frame
 
 
 def load_evidence(root=ROOT):
@@ -170,6 +499,21 @@ def load_evidence(root=ROOT):
 
 def annotate_opcode(direction, opcode, evidence):
     result = {"static_wire_anchor": evidence.exact.get((direction, opcode))}
+    candidate = FRAME_ANCHORS.get((direction, opcode))
+    if candidate is None and direction == "S2C" and opcode in STAGE_HANDLERS:
+        candidate = ("F3", "stage_jump_table", STAGE_HANDLERS[opcode])
+    if candidate is not None:
+        feature, classification, locator = candidate
+        issue, protocol = WAVE_M_PROTOCOLS[feature]
+        result["frame_candidate"] = {
+            "feature": feature, "classification": classification,
+            "source": "kr_static", "status": "candidate_unmeasured",
+            "static_status": "candidate_unmeasured",
+            "static_provenance": {"issue": issue, "protocol": protocol,
+                                   "source": "kr_static",
+                                   "status": "candidate_unmeasured",
+                                   "locator": locator, "idb_sha256": WAVE_M_IDB_SHA256},
+        }
     if direction == "S2C":
         result["f3_jump_table_check"] = {
             "dispatcher_va": DISPATCHER,
@@ -232,15 +576,35 @@ def analyze_captures(host_a, host_b=None, *, evidence):
     opcodes = []
     for direction, opcode in sorted(set().union(*groups.values())):
         observations, roles = {}, {}
+        frame_annotations = []
         for name, group in groups.items():
             observations[name], roles[name] = summarize_maps(group.get((direction, opcode), {}))
-        opcodes.append({
+        for name, group in groups.items():
+            for events in group.get((direction, opcode), {}).values():
+                for event in events[:MAX_FRAME_SAMPLES]:
+                    if frame_anchor(direction, opcode):
+                        annotation = classify_frame(direction, opcode, event.payload_hex)
+                        if annotation is not None:
+                            frame_annotations.append({
+                                **annotation, "capture": name, "map_name": event.map_name,
+                                "sender_role": event.sender_role, "ts_ms": event.ts_ms,
+                            })
+                if len(frame_annotations) >= MAX_FRAME_SAMPLES:
+                    break
+            if len(frame_annotations) >= MAX_FRAME_SAMPLES:
+                break
+        row = {
             "direction": direction,
             "opcode": opcode,
             "observations": observations,
             "authority_candidate": classify_authority(direction, roles["host_a"], roles.get("host_b", {})),
             "authority_status": "unknown",
             **annotate_opcode(direction, opcode, evidence),
+        }
+        if frame_annotations:
+            row["frame_annotations"] = frame_annotations
+        opcodes.append({
+            **row,
         })
     return {
         "schema": "kre.f2-f3-capture-analysis.v1",

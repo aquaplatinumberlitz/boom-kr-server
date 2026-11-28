@@ -20,6 +20,14 @@ def capture(*events):
     return analyzer.parse_capture(json.dumps(events).encode())
 
 
+def encoded(value, width):
+    return (value ^ analyzer.KR_UINT_MASK[width]).to_bytes(width, "big")
+
+
+def fields(*items):
+    return b"".join(encoded(value, width) for value, width in items)
+
+
 class CaptureAnalyzerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -69,6 +77,80 @@ class CaptureAnalyzerTests(unittest.TestCase):
         self.assertEqual(rows["S2C", 474]["static_wire_anchor"]["dispatcher_va"], "0xd68c90")
         self.assertEqual(rows["C2S", 633]["static_wire_anchor"]["feature"], "F5")
         self.assertEqual(rows["C2S", 670]["static_wire_anchor"]["caller_vas"], ["0x583530", "0x583e80"])
+
+    def test_wave_m_valid_frames_get_bounded_candidate_summaries(self):
+        item = fields((7, 4), (8, 2), (9, 4), (0, 2)) + b"\x00" * 8 + fields((10, 4), (11, 1))
+        row_225 = fields((1, 1)) + b"".join(fields((100 + n, 4), (0, 2)) for n in range(8))
+        records = [
+            event(204, "S2C", "server", payload_hex=fields((7, 2), (3, 1)).hex()),
+            event(132, payload_hex=fields((16, 4), (7, 2), (0, 2), (8, 4)).hex()),
+            event(180, payload_hex=fields((7, 2), (4, 2), (11, 2), (12, 2)).hex()),
+            event(219, "S2C", "server", payload_hex=fields((1, 1), (2, 1), (1, 4)).hex() + item.hex()),
+            event(225, "S2C", "server", payload_hex=row_225.hex()),
+            event(317, "S2C", "server", payload_hex=(
+                fields((1, 1), (2, 1), (3, 4), (4, 4))
+                + b"".join(encoded(n, 2) for n in range(8)) + encoded(9, 4)
+            ).hex()),
+            event(566, payload_hex=encoded(6, 1).hex()),
+        ]
+        rows = {(row["direction"], row["opcode"]): row
+                for row in self.report(capture(*records))["opcodes"]}
+        self.assertEqual(rows["S2C", 204]["frame_annotations"][0]["status"], "candidate_unmeasured")
+        self.assertEqual(rows["S2C", 204]["frame_annotations"][0]["summary"],
+                         {"object_id": 7, "owner_slot": 3})
+        self.assertEqual(rows["C2S", 132]["frame_annotations"][0]["summary"]["kind"], 0)
+        self.assertEqual(rows["C2S", 180]["frame_annotations"][0]["summary"]["u16_fields"], [11, 12])
+        self.assertEqual(rows["S2C", 219]["frame_annotations"][0]["summary"]["groups"][0]["item_count"], 1)
+        self.assertEqual(rows["S2C", 225]["frame_annotations"][0]["summary"]["row_count"], 1)
+        self.assertEqual(rows["S2C", 317]["frame_annotations"][0]["summary"]["ok"], 1)
+        self.assertEqual(rows["C2S", 566]["frame_annotations"][0]["summary"]["action_byte"], 6)
+        self.assertEqual(rows["C2S", 566]["frame_candidate"]["static_provenance"]["issue"], "#809")
+
+    def test_wave_m_truncated_frames_are_annotated_without_crashing(self):
+        records = [
+            event(204, "S2C", "server", payload_hex="00"),
+            event(132, payload_hex=""),
+            event(180, payload_hex="00"),
+            event(219, "S2C", "server", payload_hex=encoded(1, 1).hex()),
+            event(225, "S2C", "server", payload_hex=encoded(1, 1).hex()),
+            event(317, "S2C", "server", payload_hex=encoded(1, 1).hex()),
+            event(566, payload_hex=""),
+        ]
+        rows = {(row["direction"], row["opcode"]): row
+                for row in self.report(capture(*records))["opcodes"]}
+        for key in rows:
+            with self.subTest(key=key):
+                self.assertEqual(rows[key]["frame_annotations"][0]["decode_status"], "truncated")
+                self.assertIn("error", rows[key]["frame_annotations"][0])
+
+    def test_wave_m_out_of_range_fields_are_annotated(self):
+        records = [
+            event(204, "S2C", "server", payload_hex=fields((7, 2), (8, 1)).hex()),
+            event(132, payload_hex=fields((1, 4), (7, 2), (0xFFFF, 2)).hex()),
+            event(180, payload_hex=fields((7, 2), (6, 2), (13, 1), (0, 1)).hex()),
+            event(219, "S2C", "server", payload_hex=encoded(65, 1).hex()),
+            event(225, "S2C", "server", payload_hex=encoded(33, 1).hex()),
+            event(317, "S2C", "server", payload_hex=fields((2, 1), (0, 1), (0, 4), (0, 4)).hex()),
+        ]
+        rows = {(row["direction"], row["opcode"]): row
+                for row in self.report(capture(*records))["opcodes"]}
+        for key in rows:
+            with self.subTest(key=key):
+                self.assertEqual(rows[key]["frame_annotations"][0]["decode_status"], "out_of_range")
+                self.assertIn("error", rows[key]["frame_annotations"][0])
+
+    def test_direct_classifier_rejects_bad_hex_as_data(self):
+        annotation = analyzer.classify_frame("C2S", 566, "not-hex")
+        self.assertEqual(annotation["decode_status"], "error")
+        self.assertIn("payload_hex", annotation["error"])
+
+    def test_jump_table_wire_annotation_uses_case_plus_twenty(self):
+        body = fields((100, 4), (2, 1), (300, 4), (400, 4), (5, 1))
+        annotation = analyzer.classify_frame("S2C", 197, body.hex())
+        self.assertEqual(annotation["status"], "candidate_unmeasured")
+        self.assertEqual(annotation["summary"]["case_index"], 177)
+        self.assertEqual(annotation["summary"]["fields"], [100, 2, 300, 400, 5])
+        self.assertEqual(annotation["decode_status"], "ok")
 
     def test_raw_and_shifted_case_matches_remain_static(self):
         cases = {9: "0xe6aa90", 80: "0xe6d730", 135: "0xe67640", 136: "0xe67770", 177: "0xe751f0"}
