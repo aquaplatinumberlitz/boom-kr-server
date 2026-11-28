@@ -9,9 +9,23 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).parent))
 from kr_f2_mode_audit import (
-    RULES, build_catalog, read_json, render_json, render_markdown,
+    CENSUS, CLASSIFICATION, RULES, build_catalog, read_json, render_json, render_markdown,
     validate_classification, validate_rule_group_parity,
 )
+
+
+FIXTURE_RULES = [
+    {"group": group, "wave": wave}
+    for wave, groups in (
+        ("F2", (
+            "revive", "timebomb", "leader_capture", "hedgehog", "co_op", "free_1v7",
+            "ladder", "matchmaking", "confused_fight", "snowball_event", "super_fighter",
+        )),
+        ("F2?", ("airplane", "antarctic", "baseball", "big_battle", "snowy_champ", "snowy_fields")),
+        ("F3", ("popcade",)),
+    )
+    for group in groups
+]
 
 
 def map_row(name, family, *, category="mission", **extra):
@@ -50,7 +64,8 @@ def fixture():
 
 
 def audit(census, classification=None, **limits):
-    return build_catalog(census, classification, **({"expected_maps": 3, "expected_families": 2} | limits))
+    return build_catalog(census, classification, rules=FIXTURE_RULES,
+                         **({"expected_maps": 3, "expected_families": 2} | limits))
 
 
 class ModeAuditTests(unittest.TestCase):
@@ -110,7 +125,7 @@ class ModeAuditTests(unittest.TestCase):
         census, classification = fixture()
         census["maps"].append(map_row("SnowyFields01", "SnowyFields"))
         catalog = audit(census, classification, expected_maps=4, expected_families=3)
-        rules, _ = read_json(RULES)
+        rules = FIXTURE_RULES
         self.assertEqual(catalog["rule_group_parity"]["mode_count"], 18)
         self.assertEqual(catalog["rule_group_parity"]["linked_mission_families"], 2)
         self.assertEqual(catalog["families"][-1]["grouping"]["ruleset_group"], "snowy_fields")
@@ -132,6 +147,23 @@ class ModeAuditTests(unittest.TestCase):
         refs.append(refs[0])
         with self.assertRaisesRegex(ValueError, "trùng liên kết"):
             validate_rule_group_parity(duplicate_link, rules)
+
+    def test_checked_in_rules_match_modes_and_family_only_groups(self):
+        census, _ = read_json(CENSUS)
+        classification, _ = read_json(CLASSIFICATION)
+        rules, _ = read_json(RULES)
+        catalog = build_catalog(census, classification, rules=rules)
+
+        without_farm = [row for row in rules if row["group"] != "farm_mission"]
+        extra = {"group": "unexpected", "wave": "F2?"}
+        for table in (without_farm, [*without_farm, {"group": "farm_mission", "wave": "F2"}], [*rules, extra]):
+            with self.assertRaisesRegex(ValueError, "nhóm luật"):
+                validate_rule_group_parity(catalog, table)
+
+        rabbit = next(row for row in catalog["families"] if row["family"] == "Rabbit")
+        rabbit["grouping"]["ruleset_group"] = "rabbit"
+        with self.assertRaisesRegex(ValueError, "họ Rabbit"):
+            validate_rule_group_parity(catalog, rules)
 
     def test_family_uses_observed_rows_and_leaves_partial_script_unknown(self):
         catalog = audit(*fixture())
@@ -191,7 +223,7 @@ class ModeAuditTests(unittest.TestCase):
         self.assertEqual(digest, hashlib.sha256(canonical.encode("utf-8")).hexdigest())
         self.assertEqual(payload["summary"]["duplicate_map_entries"], 0)
         with self.assertRaisesRegex(ValueError, "122 map / 18 họ"):
-            build_catalog(census, classification)
+            build_catalog(census, classification, rules=FIXTURE_RULES)
         with self.assertRaisesRegex(ValueError, "3 map / 1 họ"):
             audit(census, classification, expected_families=1)
         with self.assertRaisesRegex(ValueError, "trùng tên map"):
