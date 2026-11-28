@@ -2,6 +2,8 @@
 //! `docs/protocol/f2-f5-f3-ida-anchors.md` and
 //! `docs/evidence/content/f2-f5-f3-ida-anchors.json` (IDA DB SHA-256
 //! `6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1`).
+//! Note and Plaza use the offline inventory in
+//! `docs/evidence/content/f5-extended-social-matrix.json` for the same build.
 //! An opcode anchor does not confirm a body layout, live route, or server policy.
 
 use super::{decode_bytes, encode_bytes, put, uint};
@@ -25,15 +27,20 @@ pub enum F5SocialGroup {
     Guild,
     Couple,
     Chat,
+    Note,
+    Plaza,
+    ChocoChat,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum F5Direction {
     ServerToClient,
     ClientToServer,
+    /// The provenance does not establish a packet direction.
+    Unknown,
 }
 
-/// IDA virtual addresses in the KR 00967 image.
+/// A static locator in the KR 00967 image or content inventory.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum F5AnchorSite {
     /// Handler dispatched by `CStage::OnPacket` at `0xD68C90`.
@@ -44,7 +51,43 @@ pub enum F5AnchorSite {
         handler_va: u32,
         connect_callee_va: u32,
     },
+    /// Candidate system ID in `f5-extended-social-matrix.json`.
+    CatalogSystem(&'static str),
+    /// Map family from the offline inventory; its client flow is unmeasured.
+    PlazaMapFamily(LobbySquareFamily),
+    /// IDA RTTI type in this namespace; the anchor name is the type name.
+    PacketRtti { namespace: &'static str },
 }
+
+/// Resource counts for a Plaza family in the KR 00967 content inventory.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct LobbySquareFamily {
+    pub name: &'static str,
+    pub map_count: u8,
+    pub script_count: u8,
+    pub script_unknown: u8,
+}
+
+impl LobbySquareFamily {
+    const fn new(name: &'static str, map_count: u8, script_count: u8, script_unknown: u8) -> Self {
+        Self {
+            name,
+            map_count,
+            script_count,
+            script_unknown,
+        }
+    }
+}
+
+/// The six Plaza map families in `docs/content/f5-extended-social-matrix.md`.
+pub const LOBBY_SQUARE_FAMILIES: [LobbySquareFamily; 6] = [
+    LobbySquareFamily::new("LobbySquare", 9, 9, 9),
+    LobbySquareFamily::new("LobbyCaffe", 5, 5, 5),
+    LobbySquareFamily::new("LobbyClothing", 2, 2, 2),
+    LobbySquareFamily::new("LobbyJewelry", 2, 2, 2),
+    LobbySquareFamily::new("LobbyPet", 2, 2, 2),
+    LobbySquareFamily::new("Square", 2, 2, 2),
+];
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum F5ConfirmedBody {
@@ -66,7 +109,7 @@ pub enum F5WireContract {
 pub struct F5SocialAnchor {
     pub group: F5SocialGroup,
     pub direction: F5Direction,
-    /// `None` when only the handler and its body are known.
+    /// `None` when the evidence does not establish a wire opcode.
     pub opcode: Option<u32>,
     /// Descriptive name when available in the evidence.
     pub name: Option<&'static str>,
@@ -84,6 +127,39 @@ impl F5SocialAnchor {
             site: F5AnchorSite::CStageHandler(handler_va),
             wire_contract: F5WireContract::UnmeasuredWireContract,
         }
+    }
+
+    const fn unmeasured_provenance(
+        group: F5SocialGroup,
+        name: &'static str,
+        site: F5AnchorSite,
+    ) -> Self {
+        Self {
+            group,
+            direction: F5Direction::Unknown,
+            opcode: None,
+            name: Some(name),
+            site,
+            wire_contract: F5WireContract::UnmeasuredWireContract,
+        }
+    }
+
+    const fn plaza_family(family: LobbySquareFamily) -> Self {
+        Self::unmeasured_provenance(
+            F5SocialGroup::Plaza,
+            family.name,
+            F5AnchorSite::PlazaMapFamily(family),
+        )
+    }
+
+    const fn choco_packet(name: &'static str) -> Self {
+        Self::unmeasured_provenance(
+            F5SocialGroup::ChocoChat,
+            name,
+            F5AnchorSite::PacketRtti {
+                namespace: "CHOCOPacket",
+            },
+        )
     }
 }
 
@@ -137,7 +213,45 @@ pub static F5_SOCIAL_ANCHORS: &[F5SocialAnchor] = &[
         },
         wire_contract: F5WireContract::KrStaticConfirmed(F5ConfirmedBody::ChatServerConnectReply),
     },
+    F5SocialAnchor::unmeasured_provenance(
+        F5SocialGroup::Note,
+        "Note",
+        F5AnchorSite::CatalogSystem("Mail"),
+    ),
+    F5SocialAnchor::plaza_family(LOBBY_SQUARE_FAMILIES[0]),
+    F5SocialAnchor::plaza_family(LOBBY_SQUARE_FAMILIES[1]),
+    F5SocialAnchor::plaza_family(LOBBY_SQUARE_FAMILIES[2]),
+    F5SocialAnchor::plaza_family(LOBBY_SQUARE_FAMILIES[3]),
+    F5SocialAnchor::plaza_family(LOBBY_SQUARE_FAMILIES[4]),
+    F5SocialAnchor::plaza_family(LOBBY_SQUARE_FAMILIES[5]),
+    // The connect site leads to CHOCO; the separate Chat entry covers only the reply body.
+    F5SocialAnchor {
+        group: F5SocialGroup::ChocoChat,
+        direction: F5Direction::ServerToClient,
+        opcode: None,
+        name: Some("CChattingStage::OnResConnectToSvr"),
+        site: F5AnchorSite::ChatStageHandler {
+            handler_va: 0xD58760,
+            connect_callee_va: 0x13AD4D0,
+        },
+        wire_contract: F5WireContract::UnmeasuredWireContract,
+    },
+    F5SocialAnchor::choco_packet("P_CHOCO_CHATMSG"),
+    F5SocialAnchor::choco_packet("P_CHOCO_GUILDCHATMSG"),
+    F5SocialAnchor::choco_packet("P_CHOCO_SHOUTMSG"),
+    F5SocialAnchor::choco_packet("P_CHOCO_WHISPERMSG"),
+    F5SocialAnchor::choco_packet("P_CHOCO_TEAMCHATMSG"),
+    F5SocialAnchor::choco_packet("P_RES_CHOCO_EVENT"),
 ];
+
+/// Iterates over all static anchors in a group, including those without an opcode.
+pub fn f5_social_anchors_for_group(
+    group: F5SocialGroup,
+) -> impl Iterator<Item = &'static F5SocialAnchor> {
+    F5_SOCIAL_ANCHORS
+        .iter()
+        .filter(move |anchor| anchor.group == group)
+}
 
 /// Looks up static opcode metadata in the specified direction, including anchor-only entries.
 pub fn f5_social_opcode_anchor(

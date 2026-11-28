@@ -5,7 +5,8 @@ use kr_wire::{
         F5_S2C_COUPLE_257, F5_S2C_COUPLE_273, F5_S2C_COUPLE_284, F5_S2C_COUPLE_640,
         F5_S2C_COUPLE_674, F5_S2C_GUILD_467, F5_S2C_GUILD_INVITE, F5_S2C_REFUSE_GUILD_INVITE,
         F5_SOCIAL_ANCHORS, F5AnchorSite, F5ConfirmedBody, F5Direction, F5SocialAnchor,
-        F5SocialGroup, F5WireContract, GuildInvite, GuildInviteAutoRefuse, f5_social_opcode_anchor,
+        F5SocialGroup, F5WireContract, GuildInvite, GuildInviteAutoRefuse, LOBBY_SQUARE_FAMILIES,
+        f5_social_anchors_for_group, f5_social_opcode_anchor,
     },
 };
 use std::{fmt::Debug, io, num::NonZeroU8};
@@ -204,6 +205,7 @@ fn assert_opcode_anchor(expected: F5SocialAnchor, opcode: u32) {
     let reverse = match expected.direction {
         F5Direction::ServerToClient => F5Direction::ClientToServer,
         F5Direction::ClientToServer => F5Direction::ServerToClient,
+        F5Direction::Unknown => panic!("an opcode anchor requires a known direction"),
     };
     assert_eq!(f5_social_opcode_anchor(reverse, opcode), None);
 }
@@ -300,20 +302,153 @@ fn couple_anchors_have_no_wire_contract() {
 
 #[test]
 fn chat_connect_anchor_confirms_only_the_body() {
-    assert_eq!(F5_SOCIAL_ANCHORS.len(), 11);
-    assert!(F5_SOCIAL_ANCHORS.contains(&F5SocialAnchor {
-        group: F5SocialGroup::Chat,
-        direction: F5Direction::ServerToClient,
-        opcode: None,
-        name: Some("CChattingStage::OnResConnectToSvr"),
-        site: F5AnchorSite::ChatStageHandler {
-            handler_va: 0xD58760,
-            connect_callee_va: 0x13AD4D0,
-        },
-        wire_contract: F5WireContract::KrStaticConfirmed(F5ConfirmedBody::ChatServerConnectReply),
-    }));
+    assert_eq!(
+        f5_social_anchors_for_group(F5SocialGroup::Chat).collect::<Vec<_>>(),
+        [&F5SocialAnchor {
+            group: F5SocialGroup::Chat,
+            direction: F5Direction::ServerToClient,
+            opcode: None,
+            name: Some("CChattingStage::OnResConnectToSvr"),
+            site: F5AnchorSite::ChatStageHandler {
+                handler_va: 0xD58760,
+                connect_callee_va: 0x13AD4D0,
+            },
+            wire_contract: F5WireContract::KrStaticConfirmed(
+                F5ConfirmedBody::ChatServerConnectReply,
+            ),
+        }]
+    );
     assert_eq!(
         f5_social_opcode_anchor(F5Direction::ServerToClient, 0),
         None
     );
+}
+
+#[test]
+fn note_lookup_points_to_the_mail_inventory_entry() {
+    assert_eq!(
+        f5_social_anchors_for_group(F5SocialGroup::Note).collect::<Vec<_>>(),
+        [&F5SocialAnchor {
+            group: F5SocialGroup::Note,
+            direction: F5Direction::Unknown,
+            opcode: None,
+            name: Some("Note"),
+            site: F5AnchorSite::CatalogSystem("Mail"),
+            wire_contract: F5WireContract::UnmeasuredWireContract,
+        }]
+    );
+}
+
+#[test]
+fn plaza_lookup_preserves_all_six_map_families_and_script_counts() {
+    assert_eq!(
+        LOBBY_SQUARE_FAMILIES.map(|family| (
+            family.name,
+            family.map_count,
+            family.script_count,
+            family.script_unknown
+        )),
+        [
+            ("LobbySquare", 9, 9, 9),
+            ("LobbyCaffe", 5, 5, 5),
+            ("LobbyClothing", 2, 2, 2),
+            ("LobbyJewelry", 2, 2, 2),
+            ("LobbyPet", 2, 2, 2),
+            ("Square", 2, 2, 2),
+        ]
+    );
+
+    let mut anchors = f5_social_anchors_for_group(F5SocialGroup::Plaza);
+    for family in LOBBY_SQUARE_FAMILIES {
+        assert_eq!(
+            anchors.next(),
+            Some(&F5SocialAnchor {
+                group: F5SocialGroup::Plaza,
+                direction: F5Direction::Unknown,
+                opcode: None,
+                name: Some(family.name),
+                site: F5AnchorSite::PlazaMapFamily(family),
+                wire_contract: F5WireContract::UnmeasuredWireContract,
+            })
+        );
+    }
+    assert_eq!(anchors.next(), None);
+}
+
+#[test]
+fn choco_lookup_distinguishes_the_connect_site_from_packet_rtti() {
+    let mut anchors = f5_social_anchors_for_group(F5SocialGroup::ChocoChat);
+    assert_eq!(
+        anchors.next(),
+        Some(&F5SocialAnchor {
+            group: F5SocialGroup::ChocoChat,
+            direction: F5Direction::ServerToClient,
+            opcode: None,
+            name: Some("CChattingStage::OnResConnectToSvr"),
+            site: F5AnchorSite::ChatStageHandler {
+                handler_va: 0xD58760,
+                connect_callee_va: 0x13AD4D0,
+            },
+            wire_contract: F5WireContract::UnmeasuredWireContract,
+        })
+    );
+    for name in [
+        "P_CHOCO_CHATMSG",
+        "P_CHOCO_GUILDCHATMSG",
+        "P_CHOCO_SHOUTMSG",
+        "P_CHOCO_WHISPERMSG",
+        "P_CHOCO_TEAMCHATMSG",
+        "P_RES_CHOCO_EVENT",
+    ] {
+        assert_eq!(
+            anchors.next(),
+            Some(&F5SocialAnchor {
+                group: F5SocialGroup::ChocoChat,
+                direction: F5Direction::Unknown,
+                opcode: None,
+                name: Some(name),
+                site: F5AnchorSite::PacketRtti {
+                    namespace: "CHOCOPacket",
+                },
+                wire_contract: F5WireContract::UnmeasuredWireContract,
+            })
+        );
+    }
+    assert_eq!(anchors.next(), None);
+}
+
+#[test]
+fn registry_keeps_opcode_lookup_and_confirmed_bodies_at_the_existing_scope() {
+    use F5ConfirmedBody::{ChatServerConnectReply, GuildInvite, GuildInviteAutoRefuse};
+    use F5SocialGroup::{Chat, Couple, Guild};
+    use F5WireContract::{KrStaticConfirmed, UnmeasuredWireContract};
+
+    let confirmed: Vec<_> = F5_SOCIAL_ANCHORS
+        .iter()
+        .filter_map(|anchor| match anchor.wire_contract {
+            KrStaticConfirmed(body) => Some((anchor.group, body)),
+            UnmeasuredWireContract => None,
+        })
+        .collect();
+    assert_eq!(
+        confirmed,
+        [
+            (Guild, GuildInvite),
+            (Guild, GuildInviteAutoRefuse),
+            (Chat, ChatServerConnectReply),
+        ]
+    );
+
+    let opcodes: Vec<_> = F5_SOCIAL_ANCHORS
+        .iter()
+        .filter(|anchor| anchor.opcode.is_some())
+        .collect();
+    assert_eq!(opcodes.len(), 10);
+    assert!(
+        opcodes
+            .iter()
+            .all(|anchor| matches!(anchor.group, Guild | Couple))
+    );
+    assert_eq!(f5_social_anchors_for_group(Guild).count(), 4);
+    assert_eq!(f5_social_anchors_for_group(Couple).count(), 6);
 }
