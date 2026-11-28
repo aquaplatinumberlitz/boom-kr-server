@@ -17,6 +17,9 @@ import xml.etree.ElementTree as ET
 import time
 
 
+_OPT_IN_ADAPTERS = {'f2-optin': 'f2', 'f3-optin': 'f3'}
+
+
 def digest(path):
     value = hashlib.sha256()
     with Path(path).open('rb') as stream:
@@ -270,13 +273,39 @@ def configure_economy(config, *, friends=False, s1=False, economy_profile=None,
         }
 
 
-def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False, s1=False,
+def opt_in_pack_maps(manifest, args, scope, needs_pack):
+    selected = None
+    for opt_in_scope, adapter in _OPT_IN_ADAPTERS.items():
+        key, flag = f'{adapter}_maps', f'--{adapter}-map'
+        cli_maps = getattr(args, key)
+        if scope != opt_in_scope:
+            if key in manifest or cli_maps is not None:
+                raise ValueError(f'{flag} và {key} chỉ dùng với {opt_in_scope}')
+            continue
+        if cli_maps is not None and not needs_pack:
+            raise ValueError(f'{flag} chỉ dùng với export, run, prepare-friends hoặc prepare-s1')
+        if key in manifest and cli_maps is not None:
+            raise ValueError(f'Chỉ chọn {flag} hoặc {key} trong manifest')
+        if key in manifest or cli_maps is not None:
+            selected = manifest.get(key, cli_maps)
+            if (not isinstance(selected, list) or not selected
+                    or any(not isinstance(name, str) or not name.strip() for name in selected)):
+                raise ValueError(f'{flag} hoặc {key} phải chứa danh sách tên map không rỗng')
+    if scope in _OPT_IN_ADAPTERS and needs_pack and selected is None:
+        adapter = _OPT_IN_ADAPTERS[scope]
+        raise ValueError(f'{scope} yêu cầu --{adapter}-map hoặc {adapter}_maps trong manifest')
+    return selected
+
+
+def prepare(root, state, cache=None, scope=None, f1_maps=None, *, opt_in_maps=None, friends=False, s1=False,
             economy_profile=None, emit_lucci_135=False, project_own291_level=False,
             web_shop_bind=None, unlock_all=False, f4_extended_policy=None,
             f3_pve_policy=None, f6_events_policy=None, f5_social_policy=None,
             f7_custom_map_policy=None):
     if friends and s1:
         raise ValueError('O1 và S1 dùng hai cấu hình phục vụ riêng')
+    if scope in _OPT_IN_ADAPTERS and (cache is None or not opt_in_maps):
+        raise ValueError(f'{scope} yêu cầu cache và danh sách map đã chọn')
     state = private_state(root, state)
     launch_socket = state / 'launch.sock'
     if os.name != 'nt' and max(len(os.fsencode(p)) for p in [launch_socket, state / 'accounts.admin.sock']) > 100:
@@ -337,7 +366,10 @@ def prepare(root, state, cache=None, scope=None, f1_maps=None, *, friends=False,
         from kr_pack_export import F1, G1
         wire = run / 'wire'
         wire.mkdir(mode=0o700)
-        configure(config, root, cache, wire, G1 if scope == 'g1' else F1 if scope == 'f1' else f1_maps, scope, unlock_all=friends)
+        maps = G1 if scope == 'g1' else F1 if scope == 'f1' else f1_maps
+        if scope in _OPT_IN_ADAPTERS:
+            maps = opt_in_maps
+        configure(config, root, cache, wire, maps, scope, unlock_all=friends)
     runtime = run / 'config.json'
     fd = os.open(runtime, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, 'w', encoding='utf-8') as stream:
@@ -387,6 +419,10 @@ def main():
                         help='Tuỳ chọn dev/build: xuất lại từ thư mục game KR 00967 thay cho JSON đóng sẵn; '
                              'O1 dùng gốc gói người chơi')
     parser.add_argument('--f1-map', action='append', help='Tên map chính xác trong gói thử F1-a')
+    parser.add_argument('--f2-map', dest='f2_maps', action='append',
+                        help='Tên map F2 opt-in; lặp lại hoặc dùng danh sách f2_maps trong manifest')
+    parser.add_argument('--f3-map', dest='f3_maps', action='append',
+                        help='Tên map F3 opt-in; lặp lại hoặc dùng danh sách f3_maps trong manifest')
     parser.add_argument('--player-manifest-sha256', help='Pin manifest gói người chơi, chỉ dùng với O1')
     parser.add_argument('--economy-profile', type=Path, help='File JSON profile kinh tế F4 tuỳ chọn')
     parser.add_argument('--emit-lucci-135', action='store_true', help='Bật phát S->C 135 sau own291 và 175')
@@ -409,6 +445,13 @@ def main():
         # Add it only once every member of the package has been verified.
         if os.name == 'nt':
             sys.path.insert(0, str(root))
+        scope = manifest.get('pack_scope')
+        if scope is not None and scope not in ('g1', 'f1', 'f1-a', *_OPT_IN_ADAPTERS):
+            raise ValueError('Phạm vi pack trong gói không hợp lệ')
+        needs_pack = scope is not None and args.command in ('export', 'run', 'prepare-friends', 'prepare-s1')
+        opt_in_maps = opt_in_pack_maps(manifest, args, scope, needs_pack)
+        opt_in_export = ({'maps': opt_in_maps, _OPT_IN_ADAPTERS[scope]: True}
+                         if needs_pack and opt_in_maps is not None else {})
         if args.command == 'verify':
             print('Gói khớp manifest bàn giao.')
             return
@@ -424,10 +467,6 @@ def main():
                 or args.f6_events_policy is not None or args.f5_social_policy is not None
                 or args.f7_custom_map_policy is not None) and args.command not in ('run', 'prepare-friends', 'prepare-s1'):
             raise ValueError('Cờ policy chỉ dùng với run, prepare-friends hoặc prepare-s1')
-        scope = manifest.get('pack_scope')
-        if scope is not None and scope not in ('g1', 'f1', 'f1-a'):
-            raise ValueError('Phạm vi pack trong gói không hợp lệ')
-        needs_pack = scope is not None and args.command in ('export', 'run', 'prepare-friends', 'prepare-s1')
         if scope == 'f1-a' and args.command == 'prepare-friends':
             raise ValueError('Catalog thử F1-a chỉ dùng với export hoặc run, không hỗ trợ O1')
         if (scope == 'f1-a' and args.command in ('export', 'run')) != bool(args.f1_map):
@@ -456,8 +495,8 @@ def main():
                 cache = prebuilt
             else:
                 from kr_pack_export import export
-                cache, _ = export(args.game_dir, state / 'pack-cache')
-            runtime, out, _ = prepare(root, state, cache, scope, s1=True,
+                cache, _ = export(args.game_dir, state / 'pack-cache', **opt_in_export)
+            runtime, out, _ = prepare(root, state, cache, scope, s1=True, opt_in_maps=opt_in_maps,
                                       economy_profile=args.economy_profile,
                                       emit_lucci_135=args.emit_lucci_135,
                                       project_own291_level=args.project_own291_level,
@@ -500,9 +539,11 @@ def main():
                 from kr_pack_export import MAPS, PACK_SHA256, export
                 if args.command == 'prepare-friends':
                     files = friends_pack(args.game_dir, args.player_manifest_sha256, PACK_SHA256)
-                    cache, reused = export(args.game_dir / 'payload', state / 'pack-cache', pack_files=files)
+                    cache, reused = export(args.game_dir / 'payload', state / 'pack-cache', pack_files=files,
+                                           **opt_in_export)
                 else:
-                    cache, reused = export(args.game_dir, state / 'pack-cache', maps=args.f1_map or MAPS, f1=bool(args.f1_map))
+                    options = opt_in_export or dict(maps=args.f1_map or MAPS, f1=bool(args.f1_map))
+                    cache, reused = export(args.game_dir, state / 'pack-cache', **options)
                 if args.command == 'export':
                     print(json.dumps(dict(cache=str(cache), reused=reused)))
                     return
@@ -515,7 +556,7 @@ def main():
                     request = dict(actor='friends-init', reason='Local friends room', command=dict(op='init'))
                     subprocess.run([admin, str(database)], input=json.dumps(request), text=True, check=True,
                                    cwd=root, stdout=subprocess.DEVNULL)
-                config, out, _ = prepare(root, state, cache, scope, friends=True,
+                config, out, _ = prepare(root, state, cache, scope, friends=True, opt_in_maps=opt_in_maps,
                                          economy_profile=args.economy_profile,
                                          emit_lucci_135=args.emit_lucci_135,
                                          project_own291_level=args.project_own291_level,
@@ -538,6 +579,7 @@ def main():
             if not database.is_file():
                 raise ValueError('Cần init-db hoặc restore DB trước khi chạy')
             config, out, _ = prepare(root, state, cache, scope, args.f1_map,
+                                     opt_in_maps=opt_in_maps,
                                      economy_profile=args.economy_profile,
                                      emit_lucci_135=args.emit_lucci_135,
                                      project_own291_level=args.project_own291_level,
