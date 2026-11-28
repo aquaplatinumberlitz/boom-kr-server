@@ -1,5 +1,6 @@
-//! Opt-in F3 policy for KR00967. This module has no wire dispatch or opcodes.
+//! Opt-in F3 policy for KR00967. Wire candidates remain capture-pending.
 
+use kr_wire::kr00967::f3_pve::{F3MonActionProvenance, F3WireStatus};
 use serde::de::{MapAccess, Visitor, value::MapAccessDeserializer};
 use serde::{Deserialize, Deserializer};
 use std::fmt;
@@ -109,6 +110,22 @@ impl F3PvePolicy {
 
     pub fn authority_is_unmeasured(&self, family: PveModeFamily) -> bool {
         self.authority(family) == PveAuthority::Unmeasured
+    }
+
+    /// MonAction remains a static candidate until a live two-client capture
+    /// measures delegation and report routing.  This helper is deliberately a
+    /// policy gate only; room state and candidate bounds are checked by the
+    /// runtime under its room lock.
+    pub fn ensure_mon_action_enabled(&self) -> Result<(), DispatchRejection> {
+        if self.enabled {
+            Ok(())
+        } else {
+            Err(DispatchRejection::Disabled)
+        }
+    }
+
+    pub const fn mon_action_status(&self) -> F3WireStatus {
+        F3MonActionProvenance::CP405_STATIC.status
     }
 
     /// Checks the family gate. Callers must also verify the specific route and
