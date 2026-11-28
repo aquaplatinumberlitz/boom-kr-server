@@ -197,6 +197,48 @@ pub enum ProjectionStatus {
     Unmeasured,
 }
 
+/// KR 00967 client-side entry conditions for `CShopStageNew`. These do not
+/// establish which UI action selects the route or whether a server admits it.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ShopStageGateAnchors {
+    pub dispatcher_va: u32,
+    pub gate_va: u32,
+    pub states: [u32; 3],
+    pub input_opcode: u16,
+    pub from_stage: u32,
+    pub to_stage: u32,
+    pub status: ProjectionStatus,
+}
+
+/// `kr_static` provenance: `shop_stage` in
+/// `docs/evidence/content/f4-shop-ingame-wire-re.json` (PR #809).
+pub const SHOP_STAGE_GATE_ANCHORS: ShopStageGateAnchors = ShopStageGateAnchors {
+    dispatcher_va: 0x1072B10,
+    gate_va: 0x125E540,
+    states: [72, 73, 74],
+    input_opcode: 121,
+    from_stage: 11,
+    to_stage: 12,
+    status: ProjectionStatus::StaticCandidate,
+};
+
+/// KR 00967 `UserSimpleInfo` deserializer and guards for its optional tail
+/// blocks. The block layouts and meanings remain unknown.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct UserSimpleInfoTailGuards {
+    pub deserializer_va: u32,
+    pub guard_vas: [u32; 3],
+    pub status: ProjectionStatus,
+}
+
+/// `kr_static` provenance: `functions.sub_AE6330` in
+/// `docs/evidence/content/f4-shop-ingame-wire-re.json` (PR #809).
+pub const USER_SIMPLE_INFO_TAIL_GUARDS: UserSimpleInfoTailGuards = UserSimpleInfoTailGuards {
+    deserializer_va: 0xAE6330,
+    guard_vas: [0x7036F0, 0x7A0130, 0x48D8D0],
+    status: ProjectionStatus::StaticCandidate,
+};
+
 /// Site in the unpacked KR 00967 image, given as an IDA virtual address.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum F4AnchorSite {

@@ -122,6 +122,82 @@ impl Writer {
     }
 }
 
+/// Extra fields read when the client guard `sub_D95C30()` is nonzero. The
+/// string uses the shared KR u16 byte-length and string codec.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct Stage20SubD95C30 {
+    pub tag: u8,
+    pub words: [u32; 4],
+    pub name: String,
+}
+
+/// KR 00967 S→C 20 (`0xD68DAC` → `0xD6E890`), a `kr_static` candidate for
+/// a profile setter from `docs/evidence/content/f4-shop-ingame-wire-re.json`
+/// (PR #809). The field order does not establish shop semantics.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct Stage20ProfileSetterCandidate {
+    pub flags_or_a: u8,
+    pub b: u8,
+    pub values: [u32; 4],
+    pub sub_d95c30: Option<Stage20SubD95C30>,
+}
+
+impl Stage20ProfileSetterCandidate {
+    pub const OPCODE: u32 = 20;
+
+    /// `has_sub_d95c30` is the result of the client guard. The payload does
+    /// not carry a presence flag for the extension.
+    pub fn decode(body: &[u8], has_sub_d95c30: bool) -> io::Result<Self> {
+        let mut input = Reader::new(body)?;
+        let flags_or_a = input.u8()?;
+        let b = input.u8()?;
+        let mut values = [0; 4];
+        for value in &mut values {
+            *value = input.u32()?;
+        }
+        let sub_d95c30 = if has_sub_d95c30 {
+            let tag = input.u8()?;
+            let mut words = [0; 4];
+            for word in &mut words {
+                *word = input.u32()?;
+            }
+            Some(Stage20SubD95C30 {
+                tag,
+                words,
+                name: input.text()?,
+            })
+        } else {
+            None
+        };
+        input.finish()?;
+        Ok(Self {
+            flags_or_a,
+            b,
+            values,
+            sub_d95c30,
+        })
+    }
+
+    pub fn encode(&self) -> io::Result<Vec<u8>> {
+        let mut output = Writer::default();
+        output.fields(&[
+            (self.flags_or_a.into(), Width::U8),
+            (self.b.into(), Width::U8),
+        ])?;
+        for value in self.values {
+            output.fields(&[(value.into(), Width::U32)])?;
+        }
+        if let Some(extra) = &self.sub_d95c30 {
+            output.fields(&[(extra.tag.into(), Width::U8)])?;
+            for word in extra.words {
+                output.fields(&[(word.into(), Width::U32)])?;
+            }
+            output.text(&extra.name)?;
+        }
+        Ok(output.0)
+    }
+}
+
 /// Record read by `sub_11CE930` for 219 and 224. Names follow wire order, since
 /// the item fields have no verified gameplay meanings. The `+80` text uses
 /// the shared KR u16 byte-length and string codec, without name/chat policy.
