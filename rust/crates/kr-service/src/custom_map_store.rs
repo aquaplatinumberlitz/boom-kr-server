@@ -245,6 +245,10 @@ impl CustomMapStore {
         })
     }
 
+    pub fn policy(&self) -> &CustomMapPolicy {
+        &self.policy
+    }
+
     /// Store or replace a normalized map. Replacing an existing ID does not
     /// consume another quota slot.
     pub fn save(

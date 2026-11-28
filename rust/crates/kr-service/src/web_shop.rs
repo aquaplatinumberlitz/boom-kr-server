@@ -11,7 +11,7 @@ use crate::{
     },
     accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
     choco_chat::F5SocialPolicy,
-    custom_map_store::{CustomMapStore, CustomMapStoreError},
+    custom_map_store::{CustomMapPolicy, CustomMapStore, CustomMapStoreError},
     f3_pve_runtime::F3PveRegistry,
     f4_extended_policy::{
         BASIS_POINTS, CouponRequest, Decision, ItemOrigin, KitRoomRules, KitStats,
@@ -1852,6 +1852,29 @@ async fn route(
         auth.player(&digest).ok_or(Status::Unauthorized)?;
         request.require_queryless_get()?;
         return Ok(Response::json(&shop.f3_pve_registry.snapshot()));
+    }
+    if path == "/api/v1/f7/custom-maps-policy" {
+        auth.player(&digest).ok_or(Status::Unauthorized)?;
+        request.require_queryless_get()?;
+        if let Some(store) = &shop.custom_maps {
+            let store = store.lock().await;
+            let policy = store.policy();
+            return Ok(Response::json(&json!({
+                "configured": true,
+                "enabled": policy.enabled,
+                "max_maps_per_owner": policy.max_maps_per_owner,
+                "max_body_bytes": policy.max_payload_bytes,
+                "wire_status": "static_candidate_pending_capture",
+            })));
+        }
+        let policy = CustomMapPolicy::default();
+        return Ok(Response::json(&json!({
+            "configured": false,
+            "enabled": policy.enabled,
+            "max_maps_per_owner": policy.max_maps_per_owner,
+            "max_body_bytes": policy.max_payload_bytes,
+            "wire_status": "static_candidate_pending_capture",
+        })));
     }
     if path == "/api/v1/events-status" {
         auth.player(&digest).ok_or(Status::Unauthorized)?;

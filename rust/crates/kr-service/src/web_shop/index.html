@@ -12,6 +12,7 @@
 <h2>Equipped</h2><p id="selection-note" class="muted" hidden>These selections are for this shop session.</p><ul id="equipped"></ul>
 <h3>Cosmetics Projection Status</h3><p id="cosmetics-status" class="muted" role="status"></p><ul id="cosmetics-slots"></ul>
 <h2>Custom Maps</h2><p id="custom-maps-status" class="muted" role="status"></p><ul id="custom-maps"></ul>
+<h3>F7 Custom Map Policy</h3><p id="f7-custom-maps-policy" class="muted" role="status"></p>
 <h2>Inventory</h2><ul id="inventory"></ul>
 <h2>Catalog</h2>
 <label>Category <select id="category" onchange="loadCatalog()"><option value="">All</option><option>character</option><option>decoration</option><option>emotion</option><option>consumable</option><option>collection</option></select></label><ul id="items"></ul><pre id="message"></pre>
@@ -37,7 +38,7 @@ async function load(){
     const p=await api('/api/v1/profile');
     if(load!==summaryLoad)return;
     q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
-    await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus(),loadEventsStatus(load)]);
+    await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus(),loadEventsStatus(load),loadF7CustomMapsPolicy(load)]);
     if(load===summaryLoad)await Promise.all([loadCustomMaps(load),loadF4ExtendedStatus(load),loadF4SecurityKitsStatus(load),loadF3PveStatus(load),loadSocialPolicyStatus()]);
   }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
 }
@@ -56,6 +57,7 @@ function clearSummaries(){
   q('#cosmetics-slots').replaceChildren();
   q('#custom-maps-status').textContent='';
   q('#custom-maps').replaceChildren();
+  q('#f7-custom-maps-policy').textContent='';
 }
 async function loadF3PveStatus(load){
   const status=q('#f3-pve-status');
@@ -155,6 +157,14 @@ async function loadCosmeticsSummary(load){
       q('#cosmetics-slots').append(li);
     }
   }catch(e){if(load===summaryLoad)q('#cosmetics-status').textContent='Cosmetics projection status unavailable'}
+}
+async function loadF7CustomMapsPolicy(load){
+  const status=q('#f7-custom-maps-policy');
+  try{
+    const {configured,enabled,max_maps_per_owner,max_body_bytes,wire_status}=await api('/api/v1/f7/custom-maps-policy');
+    if(load!==summaryLoad)return;
+    status.textContent=`${configured?'Configured':'Not configured'} · ${enabled?'Enabled':'Disabled'} · Maps per owner: ${max_maps_per_owner} · Map size limit: ${max_body_bytes} bytes · Game wire: ${wire_status.replaceAll('_',' ')}`;
+  }catch(e){if(load===summaryLoad)status.textContent='Custom map policy unavailable'}
 }
 async function loadCustomMaps(load){
   const status=q('#custom-maps-status');
