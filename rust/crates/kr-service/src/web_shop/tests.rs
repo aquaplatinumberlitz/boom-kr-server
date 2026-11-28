@@ -139,6 +139,11 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("/api/social/blocks"));
     assert!(page.contains("/api/social/chat-status"));
     assert!(page.contains("/api/v1/f4/security-kits-status"));
+    assert!(page.contains("/api/v1/f4/kits/equip"));
+    assert!(page.contains("/api/v1/f4/kits/clear"));
+    assert!(page.contains("/api/v1/f4/second-password/setup"));
+    assert!(page.contains("/api/v1/f4/second-password/attempt"));
+    assert!(!page.contains("innerHTML"));
     assert!(page.contains("/api/social/policy-status"));
     assert!(page.contains("/api/social/ranking?limit=10"));
     let listener = tokio::net::TcpListener::bind((Ipv4Addr::LOCALHOST, 0))
@@ -569,6 +574,162 @@ async fn loopback_f4_security_kits_status_binds_unlock_to_primary_session() {
     expected["second_password_unlocked"] = json!(false);
     assert_eq!(status(&token).await, expected);
 
+    task.abort();
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f4_kit_actions_auth_policy_and_inventory() {
+    use crate::accounts::{Admin, ItemGrant, Store};
+    use crate::{account_serving::F4ExtendedPolicyBundle, account_worker::Worker};
+
+    let (_dir, db, player) = f4_player_fixture("kit-actions");
+    let now = accounts::utc().unwrap();
+    Store::open(&db)
+        .unwrap()
+        .admin_grant_item(
+            &Admin {
+                actor: "webshop-test",
+                reason: "kit action fixture",
+            },
+            player.player_id,
+            "kit.test",
+            ItemGrant::Permanent,
+            1,
+            "kit-action",
+            now,
+        )
+        .unwrap();
+    let worker = Worker::open_with_economy(db, 4, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let bundle: F4ExtendedPolicyBundle = serde_json::from_value(json!({
+        "powerup_kits": {"enabled": true, "max_equipped_slots": 2,
+            "kits": [{"sku": "kit.test", "bonus": {"bombs": 1, "blast": 2, "speed": 3}}]}
+    }))
+    .unwrap();
+    let kits = Arc::new(
+        crate::f4_security_kits::F4SecurityKitsRuntime::with_capacity(&bundle, 4).unwrap(),
+    );
+    let auth = WebShopAuth::new(60).unwrap();
+    let token = auth.issue_token(player.player_id).unwrap();
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    let task = tokio::spawn(serve_loop(
+        listener,
+        WebShop::new(config()).with_f4_security_kits(kits.clone()),
+        worker.service(),
+        auth.clone(),
+        None,
+    ));
+    let (code, _, body) = send_http(
+        addr,
+        "POST",
+        "/api/v1/f4/kits/equip",
+        None,
+        Some(r#"{"slot":0,"sku":"kit.test"}"#),
+    )
+    .await;
+    assert_eq!((code, body), (401, json!({"error":"unauthorized"})));
+    let (code, _, body) = send_http(
+        addr,
+        "POST",
+        "/api/v1/f4/kits/equip",
+        Some(token.as_str()),
+        Some(r#"{"slot":0,"sku":"missing"}"#),
+    )
+    .await;
+    assert_eq!(code, 409);
+    assert_eq!(body["error"], "request_failed");
+    let (code, _, body) = send_http(
+        addr,
+        "POST",
+        "/api/v1/f4/kits/equip",
+        Some(token.as_str()),
+        Some(r#"{"slot":0,"sku":"kit.test"}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert_eq!(
+        body["starting_stats"],
+        json!({"bombs":1,"blast":2,"speed":3})
+    );
+    let (code, _, _) = send_http(
+        addr,
+        "POST",
+        "/api/v1/f4/kits/clear",
+        Some(token.as_str()),
+        Some(r#"{"slot":0}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    task.abort();
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f4_second_password_actions_never_echo_secret() {
+    use crate::{account_serving::F4ExtendedPolicyBundle, account_worker::Worker};
+
+    let (_dir, db, player) = f4_player_fixture("second-password-actions");
+    let worker = Worker::open_with_economy(db, 4, Duration::from_secs(2), test_settings())
+        .await
+        .unwrap();
+    let bundle: F4ExtendedPolicyBundle = serde_json::from_value(json!({
+        "second_password": {"enabled": true, "max_failed_attempts": 5,
+            "failure_window_seconds": 60, "cooldown_seconds": 60}
+    }))
+    .unwrap();
+    let kits = Arc::new(
+        crate::f4_security_kits::F4SecurityKitsRuntime::with_capacity(&bundle, 4).unwrap(),
+    );
+    let auth = WebShopAuth::new(60).unwrap();
+    let session = PrimarySession {
+        account: player.account_id as u64,
+        session: 77,
+    };
+    let token = auth
+        .issue_token_for_primary_session(&player, session)
+        .unwrap();
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    let shop = WebShop::new(config()).with_f4_security_kits(kits);
+    shop.second_password_test_now
+        .store(1, std::sync::atomic::Ordering::Relaxed);
+    let task = tokio::spawn(serve_loop(listener, shop, worker.service(), auth, None));
+    let (code, _, body) = send_http(
+        addr,
+        "POST",
+        "/api/v1/f4/second-password/setup",
+        Some(token.as_str()),
+        Some(r#"{"pin":"1234"}"#),
+    )
+    .await;
+    assert_eq!(code, 200);
+    assert_eq!(body["outcome"], "configured");
+    assert!(!body.to_string().contains("1234"));
+    for expected in ["incorrect", "incorrect", "incorrect", "incorrect", "locked"] {
+        let (code, _, body) = send_http(
+            addr,
+            "POST",
+            "/api/v1/f4/second-password/attempt",
+            Some(token.as_str()),
+            Some(r#"{"action":"unlock","pin":"0000"}"#),
+        )
+        .await;
+        assert_eq!(code, 200);
+        assert_eq!(body["outcome"], expected);
+        assert!(!body.to_string().contains("0000"));
+    }
+    let (code, _, body) = send_http(
+        addr,
+        "POST",
+        "/api/v1/f4/second-password/attempt",
+        Some(token.as_str()),
+        Some(r#"{"action":"unlock","pin":"1234"}"#),
+    )
+    .await;
+    assert_eq!((code, body["outcome"].clone()), (200, json!("locked")));
     task.abort();
     worker.shutdown().await.unwrap();
 }
@@ -1145,7 +1306,9 @@ async fn loopback_custom_maps_require_auth_and_isolate_owner_storage() {
 
     let (dir, db) = temp_db("custom-maps");
     let [owner, other] = {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         let mut accounts = Store::open(&db).unwrap();
         let admin = Admin {
             actor: "webshop-test",
@@ -1337,7 +1500,9 @@ async fn loopback_summary_routes_are_read_only_and_report_wire_limits() {
     const EVENTS: &str = "/api/v1/events-status";
     let (_dir, db) = temp_db("summaries");
     let (player, expired_player) = {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         let mut store = Store::open(&db).unwrap();
         let now = crate::match_journal::utc().unwrap();
         let admin = Admin {
@@ -1541,7 +1706,9 @@ async fn loopback_events_status_reports_opted_in_core_and_extended_policy() {
 
     let (_dir, db) = temp_db("events-status");
     let player = {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         Store::open(&db)
             .unwrap()
             .create_account(
@@ -1602,7 +1769,9 @@ async fn guild_leader_actions_require_bearer_and_authority_and_change_the_roster
     let (_dir, db) = temp_db("guild-leader");
     let now = crate::match_journal::utc().unwrap();
     let [leader, member, outsider, guest] = {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         let mut store = Store::open(&db).unwrap();
         let admin = Admin {
             actor: "webshop-test",
@@ -1784,7 +1953,9 @@ async fn loopback_standard_and_unlock_all_end_to_end() {
     let (_dir, db) = temp_db("e2e");
     let now = crate::match_journal::utc().unwrap();
     let (player_id, friend_id, third_id) = {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         let mut store = Store::open(&db).unwrap();
         let admin = Admin {
             actor: "webshop-test",
@@ -2215,7 +2386,9 @@ async fn unlock_all_selection_is_isolated_per_token_and_bypasses_sqlite() {
     let (_dir, db) = temp_db("o1-selection");
     let settings = test_settings();
     let player = {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         let mut store = Store::open(&db).unwrap();
         let now = accounts::utc().unwrap();
         let admin = Admin {
