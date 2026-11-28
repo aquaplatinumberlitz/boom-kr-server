@@ -408,3 +408,164 @@ fn snapshot_serializes_only_flags_counts_and_bounds() {
         Err(PolicyError::InvalidConfig("kit slot limit"))
     ));
 }
+
+#[test]
+fn player_status_reports_active_slots_and_password_cooldown_without_secrets() {
+    let default = F4SecurityKitsRuntime::default();
+    assert_eq!(
+        default.player_status(1, 10).unwrap(),
+        kr_service::f4_security_kits::PlayerSecurityKitsStatus {
+            powerup_kits_enabled: false,
+            equipped_slot_ids: Vec::new(),
+            second_password_enabled: false,
+            unlocked_session_count: 0,
+            cooldown_active: false,
+        }
+    );
+
+    let runtime = F4SecurityKitsRuntime::with_capacity(&bundle(), 2).unwrap();
+    runtime
+        .powerup_kits
+        .equip(
+            1,
+            10,
+            1,
+            OwnedItem {
+                expires_at: Some(20),
+                ..item(1, "blast")
+            },
+        )
+        .unwrap();
+    runtime
+        .powerup_kits
+        .equip(1, 10, 0, item(1, "speed"))
+        .unwrap();
+    let before_expiry = runtime.player_status(1, 19).unwrap();
+    assert_eq!(before_expiry.equipped_slot_ids, vec![(0, 1), (1, 0)]);
+    assert!(before_expiry.powerup_kits_enabled);
+    assert!(!before_expiry.second_password_enabled);
+
+    let actor = session(1, 1);
+    runtime.second_password.setup(actor).unwrap();
+    assert_eq!(
+        runtime
+            .second_password
+            .attempt(actor, 30, Action::Unlock, false),
+        Ok(Outcome::Incorrect)
+    );
+    assert_eq!(
+        runtime
+            .second_password
+            .attempt(actor, 31, Action::Unlock, false),
+        Ok(Outcome::Locked)
+    );
+    let locked = runtime.player_status(1, 31).unwrap();
+    assert_eq!(locked.equipped_slot_ids, vec![(0, 1)]);
+    assert!(locked.second_password_enabled);
+    assert_eq!(locked.unlocked_session_count, 0);
+    assert!(locked.cooldown_active);
+    assert!(!runtime.player_status(1, 91).unwrap().cooldown_active);
+
+    let serialized = to_value(locked).unwrap();
+    assert_eq!(
+        serialized,
+        json!({
+            "powerup_kits_enabled": true,
+            "equipped_slot_ids": [[0, 1]],
+            "second_password_enabled": true,
+            "unlocked_session_count": 0,
+            "cooldown_active": true,
+        })
+    );
+    let encoded = serialized.to_string();
+    assert!(!encoded.contains("PIN"));
+    assert!(!encoded.contains("hash"));
+    assert!(!encoded.contains("secret"));
+    assert!(!encoded.contains("lock_started"));
+    assert!(!encoded.contains("failure_started"));
+}
+
+#[test]
+fn prune_expired_reclaims_empty_accounts_and_preserves_valid_slots() {
+    let runtime = F4SecurityKitsRuntime::with_capacity(&bundle(), 4).unwrap();
+    runtime
+        .powerup_kits
+        .equip(
+            1,
+            1,
+            0,
+            OwnedItem {
+                expires_at: Some(10),
+                ..item(1, "blast")
+            },
+        )
+        .unwrap();
+    runtime
+        .powerup_kits
+        .equip(1, 1, 1, item(1, "speed"))
+        .unwrap();
+    for account in [2, 3] {
+        runtime
+            .powerup_kits
+            .equip(
+                account,
+                1,
+                0,
+                OwnedItem {
+                    expires_at: Some(10),
+                    ..item(account, "blast")
+                },
+            )
+            .unwrap();
+        runtime
+            .powerup_kits
+            .equip(
+                account,
+                1,
+                1,
+                OwnedItem {
+                    expires_at: Some(10),
+                    ..item(account, "speed")
+                },
+            )
+            .unwrap();
+    }
+
+    assert_eq!(runtime.prune_expired(9).unwrap(), 0);
+    assert_eq!(runtime.prune_expired(10).unwrap(), 5);
+    assert_eq!(
+        runtime.player_status(1, 10).unwrap().equipped_slot_ids,
+        vec![(1, 1)]
+    );
+    assert!(
+        runtime
+            .player_status(2, 10)
+            .unwrap()
+            .equipped_slot_ids
+            .is_empty()
+    );
+    assert!(
+        runtime
+            .player_status(3, 10)
+            .unwrap()
+            .equipped_slot_ids
+            .is_empty()
+    );
+    assert_eq!(runtime.snapshot().unwrap().powerup_kits.tracked_players, 1);
+
+    runtime
+        .powerup_kits
+        .equip(
+            2,
+            10,
+            0,
+            OwnedItem {
+                expires_at: Some(11),
+                ..item(2, "bombs")
+            },
+        )
+        .unwrap();
+    assert_eq!(runtime.powerup_kits.prune_expired(10).unwrap(), 0);
+    assert_eq!(runtime.powerup_kits.prune_expired(11).unwrap(), 1);
+    assert_eq!(runtime.snapshot().unwrap().powerup_kits.tracked_players, 1);
+}
