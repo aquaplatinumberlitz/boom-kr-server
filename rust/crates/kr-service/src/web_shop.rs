@@ -4,7 +4,7 @@ mod http;
 mod tests;
 
 use crate::{
-    account_worker::{AccountService, Error, O1SessionCosmetics},
+    account_worker::{AccountService, Error, O1SessionCosmetics, SocialReply},
     accounts::{
         self, CatalogAccess, ItemUpgradeOperation, LedgerEntry, PlayerProfile,
         RecordEraserOperation, ShopCatalog, ShopCategory, ShopItem, UsableItem,
@@ -14,8 +14,9 @@ use crate::{
     custom_map_store::{CustomMapStore, CustomMapStoreError},
     f4_extended_policy::{
         BASIS_POINTS, CouponRequest, Decision, MilestoneKind, OperationKey, PolicyError,
-        RecordScope, UpgradeFamily,
+        PrimarySession, RecordScope, UpgradeFamily,
     },
+    f4_security_kits::{F4SecurityKitsRuntime, F4SecurityKitsStatus},
     f6_policy::F6EventPolicy,
 };
 use http::{Request, Response, Status};
@@ -134,6 +135,7 @@ struct Session {
     digest: TokenDigest,
     player_id: i64,
     expires_at: Instant,
+    primary_session: Option<PrimarySession>,
     cosmetics: Option<O1SessionCosmetics>,
     milestone: Option<MilestoneContext>,
     coupons: HashMap<u64, LocalCoupon>,
@@ -161,6 +163,22 @@ impl WebShopAuth {
         self.issue_until(player_id, None)
     }
 
+    /// For a trusted host that has authenticated this player and verified the
+    /// primary session. Revoke the token when the primary session ends.
+    pub fn issue_token_for_primary_session(
+        &self,
+        player: &accounts::Player,
+        primary_session: PrimarySession,
+    ) -> io::Result<WebShopToken> {
+        if player.account_id <= 0
+            || primary_session.account != player.account_id as u64
+            || primary_session.session == 0
+        {
+            return Err(invalid("invalid web shop primary session"));
+        }
+        self.issue(player.player_id, None, None, Some(primary_session))
+    }
+
     /// For a trusted issuer with an authenticated player and a server-resolved
     /// character. The claim inputs are bound to the token, never read from HTTP.
     pub fn issue_token_for_milestones(
@@ -176,6 +194,7 @@ impl WebShopAuth {
             player.player_id,
             None,
             Some(MilestoneContext { account, character }),
+            None,
         )
     }
 
@@ -226,7 +245,7 @@ impl WebShopAuth {
         player_id: i64,
         account_deadline: Option<Instant>,
     ) -> io::Result<WebShopToken> {
-        self.issue(player_id, account_deadline, None)
+        self.issue(player_id, account_deadline, None, None)
     }
 
     fn issue(
@@ -234,6 +253,7 @@ impl WebShopAuth {
         player_id: i64,
         account_deadline: Option<Instant>,
         milestone: Option<MilestoneContext>,
+        primary_session: Option<PrimarySession>,
     ) -> io::Result<WebShopToken> {
         if player_id < 1 {
             return Err(invalid("invalid web shop player"));
@@ -262,6 +282,7 @@ impl WebShopAuth {
             digest: token_digest(&token),
             player_id,
             expires_at,
+            primary_session,
             cosmetics: None,
             milestone,
             coupons: HashMap::new(),
@@ -356,10 +377,11 @@ pub(crate) async fn open(config: Config) -> io::Result<Opened> {
     })
 }
 
-/// A local portal with optional custom map storage.
+/// A local portal with optional storage and status policies.
 pub struct WebShop {
     config: Config,
     custom_maps: Option<Arc<AsyncMutex<CustomMapStore>>>,
+    f4_security_kits: Arc<F4SecurityKitsRuntime>,
     f6_policy: Arc<F6EventPolicy>,
     f6_configured: bool,
 }
@@ -369,6 +391,7 @@ impl WebShop {
         Self {
             config,
             custom_maps: None,
+            f4_security_kits: Arc::new(F4SecurityKitsRuntime::default()),
             f6_policy: Arc::new(F6EventPolicy::disabled_default()),
             f6_configured: false,
         }
@@ -378,6 +401,12 @@ impl WebShop {
     /// base64 and JSON overhead (12 KiB accommodates an 8192-byte map).
     pub fn with_custom_map_store(mut self, store: CustomMapStore) -> Self {
         self.custom_maps = Some(Arc::new(AsyncMutex::new(store)));
+        self
+    }
+
+    /// Share the host's runtime for read-only kit and second-password status.
+    pub fn with_f4_security_kits(mut self, kits: Arc<F4SecurityKitsRuntime>) -> Self {
+        self.f4_security_kits = kits;
         self
     }
 
@@ -735,6 +764,59 @@ async fn chat_status(service: &AccountService, player: i64) -> Result<Response, 
                 "couple": policy.couple,
                 "plaza": !policy.plaza_zones.is_empty(),
             },
+        },
+    })))
+}
+
+fn f4_security_kits_status(
+    kits: &F4SecurityKitsRuntime,
+    primary_session: Option<PrimarySession>,
+) -> Result<Response, Status> {
+    #[derive(Serialize)]
+    struct SecurityKitsStatus {
+        #[serde(flatten)]
+        snapshot: F4SecurityKitsStatus,
+        second_password_unlocked: bool,
+    }
+
+    let snapshot = kits.snapshot().map_err(|_| Status::Unavailable)?;
+    let second_password_unlocked = primary_session
+        .is_some_and(|session| kits.second_password.is_unlocked(session) == Ok(true));
+    Ok(Response::json(&SecurityKitsStatus {
+        snapshot,
+        second_password_unlocked,
+    }))
+}
+
+async fn social_policy_status(service: &AccountService, player: i64) -> Result<Response, Status> {
+    let SocialReply::F5PolicyStatus(policy) = service
+        .client
+        .try_f5_social_policy_status(player)?
+        .wait()
+        .await?
+    else {
+        return Err(Status::Internal);
+    };
+    let unmuted = service.social_mute_status(player).await?.is_none();
+    let megaphone_global = policy.megaphone.is_some_and(|p| p.global);
+    let megaphone_channel = policy.megaphone.is_some_and(|p| p.channel);
+
+    // This is the sender-side policy and moderation check. Delivery also
+    // depends on the live route, recipients, and rate limits.
+    Ok(Response::json(&json!({
+        "enabled": {
+            "whisper": policy.whisper,
+            "guild_chat": policy.guild_chat,
+            "megaphone": policy.megaphone.is_some(),
+            "offline_note": policy.note_inbox_cap.is_some(),
+            "couple": policy.couple,
+            "plaza": !policy.plaza_zones.is_empty(),
+        },
+        "channel_eligibility": {
+            "whisper": unmuted && policy.whisper,
+            "guild_chat": unmuted && policy.guild_chat,
+            "megaphone_global": unmuted && megaphone_global,
+            "megaphone_channel": unmuted && megaphone_channel,
         },
     })))
 }
@@ -1401,8 +1483,14 @@ async fn route(
             })
             .ok_or(Status::Unauthorized)?;
     }
-    let (player, milestone) = auth
-        .with_session(&digest, |session| (session.player_id, session.milestone))
+    let (player, milestone, primary_session) = auth
+        .with_session(&digest, |session| {
+            (
+                session.player_id,
+                session.milestone,
+                session.primary_session,
+            )
+        })
         .ok_or(Status::Unauthorized)?;
     if path != "/api/v1/catalog" && query.is_some() {
         return Err(Status::BadRequest);
@@ -1411,6 +1499,10 @@ async fn route(
         "/api/v1/f4-extended-status" => {
             request.require_queryless_get()?;
             Ok(f4_extended_status(service))
+        }
+        "/api/v1/f4/security-kits-status" => {
+            request.require_queryless_get()?;
+            f4_security_kits_status(&shop.f4_security_kits, primary_session)
         }
         "/api/v1/f4/claim-milestone" => {
             claim_milestone(config, service, player, milestone, request).await
@@ -1485,6 +1577,10 @@ async fn social_route(
     player: i64,
     request: &Request,
 ) -> Result<Response, Status> {
+    if request.path() == "/api/social/policy-status" {
+        request.require_queryless_get()?;
+        return social_policy_status(service, player).await;
+    }
     if request.path() == "/api/social/chat-status" {
         request.require_queryless_get()?;
         return chat_status(service, player).await;
