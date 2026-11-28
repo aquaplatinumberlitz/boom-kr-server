@@ -1,0 +1,884 @@
+{
+  "schema": "boom.f3.pve.large_grid_re.v1",
+  "source": "kr_static",
+  "status": "confirmed",
+  "build": "KR 00967",
+  "idb_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+  "scope": "IDA static RE and pack census for F3 PvE families whose grid differs from 15x13",
+  "pack_census": {
+    "schema": "kre.f2-f3-tile-grid-census.v1",
+    "body_sha256": "aa2475c166c985074071d5185a64105699c915acb00030ab49e1727c58ab018c",
+    "pack_sha256": {
+      "FxMap.idd": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222",
+      "FxMap.idx": "30fd16b63d13a4a474daeeae611cbd2329077fdc6d3c5846cd8d2ed02d490b9b",
+      "fx.idd": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767",
+      "fx.idx": "bcf921cc1be51f1cbda081fa0077ea02cdb94a591c714253a3230b4447dc1ae5"
+    },
+    "f3_maps": 699,
+    "f3_families": 180,
+    "decode_counts": {
+      "exact": 692,
+      "partial": 7
+    },
+    "standard_maps": 583,
+    "large_grid_maps": 116,
+    "large_grid_families": 65,
+    "unmapped_tile_types": 49,
+    "custom_grid_priority_maps": 65
+  },
+  "dimensions": [
+    {
+      "grid": "15x13",
+      "width": 15,
+      "height": 13,
+      "cells": 195,
+      "maps": 583,
+      "large": false
+    },
+    {
+      "grid": "15x51",
+      "width": 15,
+      "height": 51,
+      "cells": 765,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "20x12",
+      "width": 20,
+      "height": 12,
+      "cells": 240,
+      "maps": 12,
+      "large": true
+    },
+    {
+      "grid": "20x13",
+      "width": 20,
+      "height": 13,
+      "cells": 260,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "20x15",
+      "width": 20,
+      "height": 15,
+      "cells": 300,
+      "maps": 3,
+      "large": true
+    },
+    {
+      "grid": "20x16",
+      "width": 20,
+      "height": 16,
+      "cells": 320,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "20x18",
+      "width": 20,
+      "height": 18,
+      "cells": 360,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "20x19",
+      "width": 20,
+      "height": 19,
+      "cells": 380,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "20x20",
+      "width": 20,
+      "height": 20,
+      "cells": 400,
+      "maps": 3,
+      "large": true
+    },
+    {
+      "grid": "20x22",
+      "width": 20,
+      "height": 22,
+      "cells": 440,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "20x25",
+      "width": 20,
+      "height": 25,
+      "cells": 500,
+      "maps": 4,
+      "large": true
+    },
+    {
+      "grid": "21x12",
+      "width": 21,
+      "height": 12,
+      "cells": 252,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "21x16",
+      "width": 21,
+      "height": 16,
+      "cells": 336,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "21x17",
+      "width": 21,
+      "height": 17,
+      "cells": 357,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "21x19",
+      "width": 21,
+      "height": 19,
+      "cells": 399,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "21x20",
+      "width": 21,
+      "height": 20,
+      "cells": 420,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "21x21",
+      "width": 21,
+      "height": 21,
+      "cells": 441,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "22x22",
+      "width": 22,
+      "height": 22,
+      "cells": 484,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "23x17",
+      "width": 23,
+      "height": 17,
+      "cells": 391,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "23x23",
+      "width": 23,
+      "height": 23,
+      "cells": 529,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "24x24",
+      "width": 24,
+      "height": 24,
+      "cells": 576,
+      "maps": 8,
+      "large": true
+    },
+    {
+      "grid": "25x12",
+      "width": 25,
+      "height": 12,
+      "cells": 300,
+      "maps": 5,
+      "large": true
+    },
+    {
+      "grid": "25x13",
+      "width": 25,
+      "height": 13,
+      "cells": 325,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "25x15",
+      "width": 25,
+      "height": 15,
+      "cells": 375,
+      "maps": 3,
+      "large": true
+    },
+    {
+      "grid": "25x17",
+      "width": 25,
+      "height": 17,
+      "cells": 425,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "25x19",
+      "width": 25,
+      "height": 19,
+      "cells": 475,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "25x20",
+      "width": 25,
+      "height": 20,
+      "cells": 500,
+      "maps": 7,
+      "large": true
+    },
+    {
+      "grid": "25x22",
+      "width": 25,
+      "height": 22,
+      "cells": 550,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "25x25",
+      "width": 25,
+      "height": 25,
+      "cells": 625,
+      "maps": 12,
+      "large": true
+    },
+    {
+      "grid": "29x29",
+      "width": 29,
+      "height": 29,
+      "cells": 841,
+      "maps": 3,
+      "large": true
+    },
+    {
+      "grid": "33x29",
+      "width": 33,
+      "height": 29,
+      "cells": 957,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "37x29",
+      "width": 37,
+      "height": 29,
+      "cells": 1073,
+      "maps": 2,
+      "large": true
+    },
+    {
+      "grid": "40x10",
+      "width": 40,
+      "height": 10,
+      "cells": 400,
+      "maps": 12,
+      "large": true
+    },
+    {
+      "grid": "40x12",
+      "width": 40,
+      "height": 12,
+      "cells": 480,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "67x10",
+      "width": 67,
+      "height": 10,
+      "cells": 670,
+      "maps": 1,
+      "large": true
+    },
+    {
+      "grid": "100x10",
+      "width": 100,
+      "height": 10,
+      "cells": 1000,
+      "maps": 12,
+      "large": true
+    }
+  ],
+  "large_grid_families": [
+    {
+      "family": "BonusBig",
+      "maps": 1,
+      "grids": {
+        "24x24": 1
+      }
+    },
+    {
+      "family": "BonusBigRPG",
+      "maps": 2,
+      "grids": {
+        "22x22": 1,
+        "24x24": 1
+      }
+    },
+    {
+      "family": "BonusMazeMap",
+      "maps": 2,
+      "grids": {
+        "25x25": 2
+      }
+    },
+    {
+      "family": "BonusPCRoom",
+      "maps": 1,
+      "grids": {
+        "24x24": 1
+      }
+    },
+    {
+      "family": "MonS2Fire",
+      "maps": 15,
+      "grids": {
+        "100x10": 7,
+        "40x10": 6,
+        "40x12": 1,
+        "67x10": 1
+      }
+    },
+    {
+      "family": "MonS2Sand04Boss",
+      "maps": 1,
+      "grids": {
+        "40x10": 1
+      }
+    },
+    {
+      "family": "MonS2Sand06Boss",
+      "maps": 1,
+      "grids": {
+        "40x10": 1
+      }
+    },
+    {
+      "family": "RPG",
+      "maps": 1,
+      "grids": {
+        "21x19": 1
+      }
+    },
+    {
+      "family": "RPG01_B",
+      "maps": 1,
+      "grids": {
+        "20x18": 1
+      }
+    },
+    {
+      "family": "RPG01_N",
+      "maps": 1,
+      "grids": {
+        "25x15": 1
+      }
+    },
+    {
+      "family": "RPG01_S",
+      "maps": 1,
+      "grids": {
+        "25x20": 1
+      }
+    },
+    {
+      "family": "RPG02_B",
+      "maps": 1,
+      "grids": {
+        "21x20": 1
+      }
+    },
+    {
+      "family": "RPG02_N",
+      "maps": 1,
+      "grids": {
+        "25x17": 1
+      }
+    },
+    {
+      "family": "RPG02_S",
+      "maps": 1,
+      "grids": {
+        "20x13": 1
+      }
+    },
+    {
+      "family": "RPG03_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG03_N",
+      "maps": 1,
+      "grids": {
+        "25x12": 1
+      }
+    },
+    {
+      "family": "RPG03_S",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG04_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG04_N",
+      "maps": 2,
+      "grids": {
+        "20x25": 1,
+        "25x25": 1
+      }
+    },
+    {
+      "family": "RPG04_S",
+      "maps": 1,
+      "grids": {
+        "25x20": 1
+      }
+    },
+    {
+      "family": "RPG0501_B",
+      "maps": 1,
+      "grids": {
+        "20x18": 1
+      }
+    },
+    {
+      "family": "RPG0501_N",
+      "maps": 2,
+      "grids": {
+        "25x12": 1,
+        "25x25": 1
+      }
+    },
+    {
+      "family": "RPG0501_S",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG05_B",
+      "maps": 1,
+      "grids": {
+        "25x20": 1
+      }
+    },
+    {
+      "family": "RPG05_N",
+      "maps": 2,
+      "grids": {
+        "25x17": 1,
+        "25x25": 1
+      }
+    },
+    {
+      "family": "RPG05_S",
+      "maps": 1,
+      "grids": {
+        "25x22": 1
+      }
+    },
+    {
+      "family": "RPG0601_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG0601_N",
+      "maps": 2,
+      "grids": {
+        "20x15": 1,
+        "20x22": 1
+      }
+    },
+    {
+      "family": "RPG0601_S",
+      "maps": 1,
+      "grids": {
+        "20x25": 1
+      }
+    },
+    {
+      "family": "RPG06_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG06_N",
+      "maps": 2,
+      "grids": {
+        "20x20": 1,
+        "25x13": 1
+      }
+    },
+    {
+      "family": "RPG06_S",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG0701_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG0701_N",
+      "maps": 2,
+      "grids": {
+        "20x25": 1,
+        "25x12": 1
+      }
+    },
+    {
+      "family": "RPG0701_S",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG07_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG07_N",
+      "maps": 2,
+      "grids": {
+        "25x12": 1,
+        "25x25": 1
+      }
+    },
+    {
+      "family": "RPG07_S",
+      "maps": 1,
+      "grids": {
+        "21x12": 1
+      }
+    },
+    {
+      "family": "RPG0801_B",
+      "maps": 1,
+      "grids": {
+        "21x17": 1
+      }
+    },
+    {
+      "family": "RPG0801_N",
+      "maps": 3,
+      "grids": {
+        "21x16": 1,
+        "21x17": 1,
+        "25x12": 1
+      }
+    },
+    {
+      "family": "RPG0801_S",
+      "maps": 1,
+      "grids": {
+        "21x12": 1
+      }
+    },
+    {
+      "family": "RPG08_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG08_N",
+      "maps": 3,
+      "grids": {
+        "20x22": 1,
+        "25x20": 1,
+        "25x25": 1
+      }
+    },
+    {
+      "family": "RPG08_S",
+      "maps": 1,
+      "grids": {
+        "20x20": 1
+      }
+    },
+    {
+      "family": "RPG0901_B",
+      "maps": 1,
+      "grids": {
+        "20x15": 1
+      }
+    },
+    {
+      "family": "RPG0901_N",
+      "maps": 2,
+      "grids": {
+        "20x25": 1,
+        "25x20": 1
+      }
+    },
+    {
+      "family": "RPG0901_S",
+      "maps": 1,
+      "grids": {
+        "25x15": 1
+      }
+    },
+    {
+      "family": "RPG09_B",
+      "maps": 1,
+      "grids": {
+        "20x12": 1
+      }
+    },
+    {
+      "family": "RPG09_N",
+      "maps": 3,
+      "grids": {
+        "23x17": 1,
+        "25x15": 1,
+        "25x25": 1
+      }
+    },
+    {
+      "family": "RPG09_S",
+      "maps": 1,
+      "grids": {
+        "25x20": 1
+      }
+    },
+    {
+      "family": "RPG1001_B",
+      "maps": 1,
+      "grids": {
+        "20x19": 1
+      }
+    },
+    {
+      "family": "RPG1001_N",
+      "maps": 2,
+      "grids": {
+        "21x21": 1,
+        "25x25": 1
+      }
+    },
+    {
+      "family": "RPG1001_S",
+      "maps": 1,
+      "grids": {
+        "20x20": 1
+      }
+    },
+    {
+      "family": "RPG10_B",
+      "maps": 1,
+      "grids": {
+        "20x15": 1
+      }
+    },
+    {
+      "family": "RPG10_N",
+      "maps": 3,
+      "grids": {
+        "20x16": 1,
+        "23x23": 1,
+        "25x19": 1
+      }
+    },
+    {
+      "family": "RPG10_S",
+      "maps": 1,
+      "grids": {
+        "20x19": 1
+      }
+    },
+    {
+      "family": "RPG11_B",
+      "maps": 1,
+      "grids": {
+        "21x20": 1
+      }
+    },
+    {
+      "family": "RPG11_N",
+      "maps": 3,
+      "grids": {
+        "25x25": 3
+      }
+    },
+    {
+      "family": "RPG11_S",
+      "maps": 1,
+      "grids": {
+        "25x20": 1
+      }
+    },
+    {
+      "family": "BonusBigReward",
+      "maps": 13,
+      "grids": {
+        "15x51": 2,
+        "24x24": 5,
+        "29x29": 3,
+        "33x29": 1,
+        "37x29": 2
+      }
+    },
+    {
+      "family": "MonS2Sand",
+      "maps": 5,
+      "grids": {
+        "100x10": 5
+      }
+    },
+    {
+      "family": "MonS2Sand01Boss",
+      "maps": 1,
+      "grids": {
+        "40x10": 1
+      }
+    },
+    {
+      "family": "MonS2Sand02Boss",
+      "maps": 1,
+      "grids": {
+        "40x10": 1
+      }
+    },
+    {
+      "family": "MonS2Sand03Boss",
+      "maps": 1,
+      "grids": {
+        "40x10": 1
+      }
+    },
+    {
+      "family": "MonS2Sand05Boss",
+      "maps": 1,
+      "grids": {
+        "40x10": 1
+      }
+    }
+  ],
+  "ida_anchors": {
+    "image_base": "0x400000",
+    "cplaymap_vtable": "0x176bff0",
+    "cgameplaymap_vtable": "0x1769720",
+    "grid_cell_pitch_px": 40,
+    "render_bounds_fields": "CGamePlayMap this[1924..1927] and loops over [row_min,row_max), [col_min,col_max)",
+    "camera_scroll_fields": "CGamePlayMap this[83], this[84] added to tile/object render positions",
+    "placement": "CGamePlayMap::IsMovable/ground check at vtable slot 5 (0xe9f830); update path clips objects by bounds and converts pixel positions with /40",
+    "bomb_ray": "exported anchor kCPlayMap_CalcBombDirectionExplosion exists; body/large-grid semantics not fully measured",
+    "drop": "CMapActionDropItem vtable and dropitem/dropitemcount data are present; per-map drop legality remains candidate"
+  },
+  "encoding": {
+    "coordinate_width": "unknown",
+    "status": "unknown",
+    "reason": "Static IDA pass found pixel/grid arithmetic and object fields but no complete packet codec proving u8 versus u16 for every large-grid route.",
+    "cell_index": "candidate row*width+column; must be verified against map loader and wire capture"
+  },
+  "spawns": {
+    "status": "unknown",
+    "reason": "Census records cells, placements, drops and script flags; it does not publish a spawn list for all 116 large-grid maps. One exported control (CAhero01) has 8 spawn coordinates, but it is 15x13 and is not evidence for large-grid families."
+  },
+  "recurring_unmapped": {
+    "tiles": [
+      "Tile31_Passable_MonS2Desert/Tornado_Day_01",
+      "Tile31_Passable_MonS2Desert/Tornado_Night_01",
+      "TileBonusMap_static/Tower00"
+    ],
+    "placements": [
+      "MonS2Tank",
+      "Item/ItemSuperMan",
+      "Item/ItemHPNeedle",
+      "Item/TreasureGold",
+      "Item/TreasurePocketGold",
+      "Item/TreasureSilver",
+      "BonusMapReward4",
+      "Item/TreasureBronze",
+      "Item/TreasurePocketSilver",
+      "BonusMapReward",
+      "MonS2UpgradeTank",
+      "Item/TreasurePocketBronze",
+      "SkillThrowNuclearBomb",
+      "LucciGold",
+      "LucciPocketGold",
+      "Item/ItemCloneBomber"
+    ],
+    "positive_drops": [
+      "Item/ItemDart",
+      "Item/ItemNiddle",
+      "Item/ItemRescueCoin",
+      "Item/ItemSensor",
+      "Item/ItemShield",
+      "Item/ItemWildGinseng",
+      "RemoteBomb",
+      "Spring"
+    ]
+  },
+  "terrain_gap": {
+    "current_standard_size": "15x13",
+    "current_big_battle_size": "19x17",
+    "required": "Accept every exact dimension above, allocate width*height cells, preserve per-map tile/object/overlay layers, validate spawn/placement/drop bounds, and use width-aware ray and camera clipping. Do not alias large grids to STANDARD_SIZE or BIG_BATTLE_SIZE.",
+    "status": "design"
+  },
+  "verification": [
+    {
+      "check": "IDB SHA-256",
+      "result": "pass",
+      "value": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1"
+    },
+    {
+      "check": "pack census summary",
+      "result": "pass",
+      "value": "699 F3 maps, 180 families, 583 standard maps, 116 large-grid maps, 65 large-grid families"
+    },
+    {
+      "check": "Wine/runtime capture",
+      "result": "not_run",
+      "reason": "This is a static RE and pack census checkpoint"
+    }
+  ],
+  "limitations": [
+    "The census is kr_static confirmed for decoded dimensions and payload identity; it does not establish server authority, wire coordinate widths, or runtime spawn counts.",
+    "IDA vtable and decompiler observations establish client-side bounds/render behavior; they do not prove dedicated-server behavior."
+  ]
+}
