@@ -128,6 +128,8 @@ async fn html_is_local_and_parser_bounds_body() {
     assert!(page.contains("/api/v1/events-status"));
     assert!(page.contains("events-status"));
     assert!(page.contains("/api/v1/custom-maps"));
+    assert!(page.contains("id=\"f7-custom-maps-policy\""));
+    assert!(page.contains("await api('/api/v1/f7/custom-maps-policy')"));
     assert!(page.contains("/api/v1/unequip"));
     assert!(page.contains("/api/social/friends"));
     assert!(page.contains("/api/social/friends/respond"));
@@ -1363,6 +1365,94 @@ async fn loopback_f4_extended_ops_apply_once_and_titles_follow_the_player() {
     assert_eq!(inventory[0].sku_id, "hat.fancy.f4-item-1");
     assert_eq!(inventory[0].quantity, 1);
     task.abort();
+    worker.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f7_custom_maps_policy_requires_bearer_and_queryless_get() {
+    const POLICY: &str = "/api/v1/f7/custom-maps-policy";
+
+    let (_dir, db) = temp_db("f7-policy");
+    let player = create_shop_player(&mut accounts::Store::open(&db).unwrap(), "f7policyuser");
+    let worker = crate::account_worker::Worker::open_with_economy(
+        db,
+        4,
+        Duration::from_secs(2),
+        test_settings(),
+    )
+    .await
+    .unwrap();
+    let config = config();
+    let auth = WebShopAuth::new(config.session_ttl_seconds).unwrap();
+    let token = auth.issue_token(player.player_id).unwrap();
+    let revoked = auth.issue_token(player.player_id).unwrap();
+    auth.revoke_token(&revoked);
+    let (addr, task) = listen_f4(config.clone(), &worker, &auth).await;
+
+    for invalid in [None, Some("invalid"), Some(revoked.as_str())] {
+        let (code, _, body) = send_http(addr, "GET", POLICY, invalid, None).await;
+        assert_eq!((code, body), (401, json!({"error": "unauthorized"})));
+    }
+    let bearer = Some(token.as_str());
+    for (method, suffix, expected) in [
+        ("POST", "", 405),
+        ("HEAD", "", 405),
+        ("GET", "?owner_id=1", 400),
+        ("GET", "?", 400),
+    ] {
+        let target = format!("{POLICY}{suffix}");
+        let (code, _, _) = send_http(addr, method, &target, bearer, None).await;
+        assert_eq!(code, expected, "{method} {target}");
+    }
+    let (code, headers, body) = send_http(addr, "GET", POLICY, bearer, None).await;
+    assert_eq!(code, 200);
+    assert!(headers.contains("Content-Type: application/json"));
+    assert!(headers.contains("Cache-Control: no-store"));
+    assert_eq!(
+        body,
+        json!({
+            "configured": false,
+            "enabled": false,
+            "max_maps_per_owner": 16,
+            "max_body_bytes": 8192,
+            "wire_status": "static_candidate_pending_capture",
+        })
+    );
+    task.abort();
+    assert!(task.await.unwrap_err().is_cancelled());
+
+    let store = crate::custom_map_store::CustomMapStore::new(
+        _dir.0.join("maps"),
+        crate::custom_map_store::CustomMapPolicy {
+            enabled: true,
+            max_maps_per_owner: 7,
+            max_payload_bytes: 1234,
+        },
+    )
+    .unwrap();
+    let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).await.unwrap();
+    let configured_addr = listener.local_addr().unwrap();
+    let configured_task = tokio::spawn(serve_loop(
+        listener,
+        WebShop::new(config).with_custom_map_store(store),
+        worker.service(),
+        auth,
+        None,
+    ));
+    let (code, _, body) = send_http(configured_addr, "GET", POLICY, bearer, None).await;
+    assert_eq!(code, 200);
+    assert_eq!(
+        body,
+        json!({
+            "configured": true,
+            "enabled": true,
+            "max_maps_per_owner": 7,
+            "max_body_bytes": 1234,
+            "wire_status": "static_candidate_pending_capture",
+        })
+    );
+    configured_task.abort();
+    assert!(configured_task.await.unwrap_err().is_cancelled());
     worker.shutdown().await.unwrap();
 }
 
