@@ -14,8 +14,16 @@ TOOLS = Path(__file__).resolve().parent
 sys.path.insert(0, str(TOOLS))
 
 import kr_pack_export as adapter
+from kr_f2_f3_tile_census import default_game_dir
 from tools.test_f1e_adapter import payload as f1e_payload
 from tools.test_kr_pack_install import fake_game, fake_pair, string
+
+GAME = default_game_dir()
+EXPANDED_FAMILIES = {
+    'Hamster': tuple(f'Hamster{n:02}' for n in range(1, 9)),
+    'SnowyFields': tuple(f'SnowyFields{n:02}' for n in range(1, 19)),
+    'Zombie': tuple(f'Zombie{n:02}' for n in range(1, 7)),
+}
 
 
 def payload(*, width=15, height=13, cells=None, spawns=((2, 5), (2, 7), (12, 5), (12, 7)), extra=b''):
@@ -24,6 +32,47 @@ def payload(*, width=15, height=13, cells=None, spawns=((2, 5), (2, 7), (12, 5),
     return (header + b''.join(struct.pack('<2i', *p) for p in spawns) + bytes(4)
             + b''.join(struct.pack('<3i', *cells.get(i, (0, -1, -1))) for i in range(width * height))
             + struct.pack('<6i', 0, 100, 0, 0, 0, 0) + extra)
+
+
+class F2SelectionTests(unittest.TestCase):
+    def test_admits_every_map_of_the_three_terrain_ready_families(self):
+        for family, names in EXPANDED_FAMILIES.items():
+            with self.subTest(family=family):
+                for start in range(0, len(names), 16):
+                    batch = names[start:start + 16]
+                    selected = adapter.load_f2_maps(batch)
+                    self.assertEqual({name: row['family'] for name, row in selected.items()},
+                                     dict.fromkeys(batch, family))
+
+
+@unittest.skipUnless(all((GAME / name).is_file() for name in adapter.PACK_SHA256), 'Thiếu pack KR 00967')
+class F2StockPackTests(unittest.TestCase):
+    def test_exports_expanded_families_and_projects_footprints_and_ray_ports(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            terrains = {}
+            for family, names in EXPANDED_FAMILIES.items():
+                for start in range(0, len(names), 16):
+                    batch = names[start:start + 16]
+                    cache, reused = adapter.export(GAME, Path(tmp), maps=batch, f2=True)
+                    self.assertFalse(reused)
+                    for name in batch:
+                        with self.subTest(name=name):
+                            profile = json.loads((cache / f'{name}.json').read_bytes())
+                            self.assertEqual((profile['f2_family'], profile['width'], profile['height']),
+                                             (family, 15, 13))
+                            rules = json.loads((cache / f'{name}.rules.json').read_bytes())
+                            self.assertEqual(set(rules), {'terrain'})
+                            terrains[name] = rules['terrain']
+
+        # Object01 at (row 6, column 6) covers three columns and two rows.
+        hamster = terrains['Hamster02']['kinds']
+        for row in (5, 6):
+            self.assertEqual(hamster[row * 15 + 6:row * 15 + 9], [1, 1, 1])
+        ice_house = terrains['SnowyFields08']
+        self.assertEqual(ice_house['kinds'][81:84], [0, 0, 0])
+        self.assertEqual(ice_house['ray_ports'][81:84], [0, 0b1111, 0])
+        zombie = terrains['Zombie02']
+        self.assertEqual((zombie['kinds'][22], zombie['ray_ports'][22]), (0, 0b1010))
 
 
 class F2AdapterTests(unittest.TestCase):

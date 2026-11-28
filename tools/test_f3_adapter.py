@@ -12,7 +12,7 @@ from unittest.mock import Mock, patch
 import kr_pack_export as adapter
 from f1_pack_matrix import inventory
 from kr_f2_f3_tile_census import default_game_dir
-from tools.test_f2_adapter import payload
+from tools.test_f2_adapter import EXPANDED_FAMILIES, payload
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'docs/evidence/content'
@@ -41,9 +41,12 @@ class F3AdapterTests(unittest.TestCase):
                 (('NoSuchMap',), 'NoSuchMap'),
                 (('Factory07',), 'Factory07'),
                 (('Baseball01',), 'Baseball01'),
-                (('Hamster08',), 'Hamster08'),
+                (('Hdn_SuperFight',), 'Hdn_SuperFight'),
+                (('MonSnowBear01',), 'MonSnowBear01'),
+                (('Fm_MonSnowBear01',), 'Fm_MonSnowBear01'),
+                (('MonNoviceSnow01',), 'MonNoviceSnow01'),
+                (('Zombie04',), 'Zombie04'),
                 (('CAhero07',), 'CAhero07'),
-                (('SnowyFields04',), 'SnowyFields04'),
                 (('MonS2Fire03',), 'MonS2Fire03'),
                 (('Bonus01',), 'Bonus01'),
                 (('Tutorial01', 'Tutorial01'), '1–16'),
@@ -122,15 +125,43 @@ class F3AdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'không khớp SHA-256'):
             read(raw, '0' * 64)
 
+    def test_snow_box_is_solid_but_snowboom_and_directional_temple_are_unmapped(self):
+        tiles = {
+            'Tile29_Box/R2_UnbreakableBox': (2, 0, 0, 0, 0, 0, 255, *(0,) * 11),
+            'Tile33_Passble/SnowBoom': (
+                3, 0, 0, 0, 0, 0, *(0x01010101,) * 4, 1, 1, 0, 0, 0, 0, 20484810, 112516296),
+            'Tile23_Static/Temple08': (1, 0, 0, 0, 0, 0, 7, 1, 1, 0, 1, 2010089472, *(0,) * 6),
+        }
+        table = (list(tiles), tiles)
+
+        def project(code):
+            raw = payload(cells={i: (-1, code if i == 6 else -1, -1) for i in range(195)})
+            levels = Mock()
+            levels.read.return_value = raw
+            evidence = dict(family='MonSnowBear', payload_sha256=adapter.sha(raw), version=1001, scripted=False)
+            _, rules = adapter.read_f3_map(levels, 'GeometryProbe', 7, evidence, table)
+            return rules['terrain']
+
+        terrain = project(0)
+        self.assertEqual(terrain['kinds'][6:8], [1, 0])
+        self.assertNotIn('box_hits', terrain)
+        for code in (1, 2):
+            with self.subTest(tile=table[0][code]), self.assertRaisesRegex(ValueError, table[0][code]):
+                project(code)
+
 
 @unittest.skipUnless(all((GAME / name).is_file() for name in adapter.PACK_SHA256), 'Thiếu pack KR 00967')
 class StockPackTests(unittest.TestCase):
     def test_cli_exports_all_allowlisted_f3_maps_in_batches(self):
         census = json.loads((EVIDENCE / CENSUS_NAME).read_bytes())
         families = {name: row['family'] for row in census['families']['F3']
-                    if row['priority'] == 'terrain_ready' for name in row['maps']}
-        self.assertEqual(len(families), 398)
-        self.assertEqual(len(set(families.values())), 98)
+                    if row['priority'] == 'terrain_ready' and row['family'] != 'Zombie'
+                    for name in row['maps']}
+        self.assertEqual(len(families), 424)
+        self.assertEqual(len(set(families.values())), 100)
+        for family, maps in EXPANDED_FAMILIES.items():
+            if family != 'Zombie':
+                self.assertEqual({name for name, label in families.items() if label == family}, set(maps))
         names = sorted(families)
         with tempfile.TemporaryDirectory() as tmp:
             for start in range(0, len(names), 16):
@@ -160,23 +191,26 @@ class StockPackTests(unittest.TestCase):
                         self.assertEqual(terrain['map_sha256'], row['payload_sha256'])
                         self.assertEqual(terrain['seed_sha256'], adapter.sha(bytes(kinds)))
                         self.assertNotIn('maximum_power', terrain)
+                        if name == 'SnowyFields08':
+                            self.assertEqual(terrain['ray_barriers'][81:84], [1, 0, 1])
                         spawns = profile['spawns']
                         self.assertEqual(len(set(map(tuple, spawns))), len(spawns))
                         for x, y in spawns:
                             self.assertTrue(0 <= x < 15 and 0 <= y < 13)
                             self.assertEqual(kinds[y * 15 + x], 0)
 
-    def test_legacy_exports_match_pre_f3_bytes(self):
+    def test_legacy_exports_match_pre_p205_bytes(self):
         # Hash thành viên theo lô đã sắp xếp, gồm cả tables và manifest,
-        # từ exporter 4f3f1a88 trên pack KR 00967 gốc. F1-a gồm cả 8 map thêm sau mốc 206.
+        # từ exporter ef285c1 trên pack KR 00967 gốc. F1-a gồm cả 8 map thêm sau mốc 206.
         f1a = sorted(name for name, row in inventory(GAME).items() if row['status'] == 'pending')
         f1e = sorted(json.loads((EVIDENCE / 'f1e-scripts-extracted.json').read_bytes())['maps'])
-        f2 = sorted(name for family, names in adapter._F2_FAMILIES.items()
-                    if family not in ('Coloring', 'SuperFighter') for name in names)
+        f2 = [name for family, names in adapter._F2_FAMILIES.items()
+              if family not in EXPANDED_FAMILIES for name in names]
+        f2 = sorted([*f2, *(f'SnowyFields{n:02}' for n in (4, 5, 6, 17, 18)), 'Zombie04'])
         cases = (
             ('f1', f1a, 214, 'cf3fa3b3a89bd64c9a180d0a15b60d41c3bdb97a82809e03c3825fb4cdf36e1a'),
             ('f1e', f1e, 96, 'f926dd350359fa53b777857d155d04bfa0887763407096609033d92553ca4a70'),
-            ('f2', f2, 38, '14af89ab5ca7384d22463edf61b8f0781217b803a839f8e6eab99bc490a903f8'),
+            ('f2', f2, 45, 'db5545dadb32ed62b5bbaba98f9745a6bbb7f9997463239ef71a8a2f6d64f147'),
         )
         with (tempfile.TemporaryDirectory() as tmp,
               patch.object(adapter, 'load_f3_maps', side_effect=AssertionError('F3 phải bật riêng'))):
@@ -192,10 +226,8 @@ class StockPackTests(unittest.TestCase):
                     self.assertEqual(digest.hexdigest(), expected)
 
         census = json.loads((EVIDENCE / CENSUS_NAME).read_bytes())
-        new_families = {'Bonus', 'BonusLargeGourd', 'Bonus_19th', 'Hdn_Alice',
-                        'Hdn_BlackLucy', 'Hidden', 'Coloring', 'SuperFighter'}
         old_f3 = sorted(name for row in census['families']['F3']
-                        if row['priority'] == 'terrain_ready' and row['family'] not in new_families
+                        if row['priority'] == 'terrain_ready' and row['family'] not in EXPANDED_FAMILIES
                         for name in row['maps'])
         with tempfile.TemporaryDirectory() as tmp:
             digest = hashlib.sha256()
@@ -205,7 +237,7 @@ class StockPackTests(unittest.TestCase):
                 for path in sorted(cache.iterdir()):
                     digest.update(f'{path.name}:{adapter.sha(path.read_bytes())}\n'.encode())
             self.assertEqual((len(old_f3), digest.hexdigest()),
-                             (380, '1135320ecbe67bbb0f5ebfcedfefa465017a3bb2fcf592f63351971416eed156'))
+                             (398, '3d5fc41d0cc6cbfebb518abc7a5846560c7b6be07169e0b3ef906b374525cc20'))
 
 
 if __name__ == '__main__':
