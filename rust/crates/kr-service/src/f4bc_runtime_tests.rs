@@ -9,7 +9,7 @@ use crate::{
         tests::{PASSWORD, Temp, admin, channel_body, login_body},
     },
     account_serving::Active,
-    account_worker::{EconomySettings, Worker},
+    account_worker::{self, EconomySettings, Worker},
     accounts::{EconomyPolicy, ItemGrant, ShopCatalog, ShopCategory, ShopItem, Store, TEST_SERIAL},
     match_journal::{Manager, utc},
     room_io::{self, registry_foundation_tests::player_round_prototype},
@@ -32,6 +32,26 @@ use tokio::{
 const QUICK: &str = "quick";
 const STACK: &str = "test.stack";
 
+async fn login_with_busy_retry(
+    client: &account_worker::Client,
+    login: &str,
+) -> account_worker::Result<crate::accounts::Grant> {
+    for attempt in 0..200 {
+        let result = match client.try_login(login, PASSWORD, 60, utc().unwrap()) {
+            Ok(pending) => pending.wait().await,
+            Err(error) => Err(error),
+        };
+        match result {
+            Err(
+                account_worker::Error::Busy
+                | account_worker::Error::Backend(crate::accounts::Error::Busy),
+            ) if attempt < 199 => tokio::time::sleep(Duration::from_millis(25)).await,
+            result => return result,
+        }
+    }
+    unreachable!("busy retry loop returns on its final attempt")
+}
+
 async fn fixture(
     unlock_all: bool,
 ) -> (
@@ -45,7 +65,9 @@ async fn fixture(
     u64,
 ) {
     let (temp, a, _) = {
-        let _serial = TEST_SERIAL.lock().unwrap();
+        let _serial = TEST_SERIAL
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
         Temp::new()
     };
     let stack = ItemGrant::Stackable { max_stack: 8 };
@@ -123,11 +145,7 @@ async fn fixture(
     install_match_items(&shared, items).unwrap();
 
     let peer = Ipv4Addr::LOCALHOST;
-    let grant = worker
-        .client()
-        .try_login("Alice", PASSWORD, 60, utc().unwrap())
-        .unwrap()
-        .wait()
+    let grant = login_with_busy_retry(&worker.client(), "Alice")
         .await
         .unwrap();
     let issued = active

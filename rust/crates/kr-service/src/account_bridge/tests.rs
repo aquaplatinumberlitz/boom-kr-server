@@ -1,7 +1,7 @@
 use super::*;
 use crate::{
     account_worker::Worker,
-    accounts::{Admin, Store, TEST_SERIAL},
+    accounts::{self, Admin, Store, TEST_SERIAL},
 };
 use kr_wire::{Width, write_uint};
 use std::{
@@ -11,6 +11,7 @@ use std::{
     sync::atomic::{AtomicU64, Ordering},
 };
 static NEXT: AtomicU64 = AtomicU64::new(0);
+static CREATE_ACCOUNT_GATE: std::sync::Mutex<()> = std::sync::Mutex::new(());
 pub(crate) const PASSWORD: &[u8] = b"bridge-test-password";
 const PEER: Ipv4Addr = Ipv4Addr::new(127, 0, 0, 2);
 pub(crate) fn now() -> i64 {
@@ -24,6 +25,24 @@ pub(crate) fn admin() -> Admin<'static> {
         actor: "bridge-test",
         reason: "M5 ownership seam tests",
     }
+}
+pub(crate) fn create_account(
+    store: &mut Store,
+    login: &str,
+    name: &str,
+) -> accounts::Result<Player> {
+    let _gate = CREATE_ACCOUNT_GATE
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
+    let mut create = || store.create_account(&admin(), login, name, PASSWORD, now());
+    // Other fixtures can still hold both process-wide password hashing permits.
+    for _ in 0..200 {
+        match create() {
+            Err(accounts::Error::Busy) => std::thread::sleep(Duration::from_millis(25)),
+            result => return result,
+        }
+    }
+    create()
 }
 pub(crate) struct Temp(PathBuf, bool);
 impl Temp {
@@ -54,12 +73,8 @@ impl Temp {
         let temp = Self(p, retain);
         let mut store = temp.store();
         store.begin_instance(&admin(), now()).unwrap();
-        let a = store
-            .create_account(&admin(), "Alice", "Alice", PASSWORD, now())
-            .unwrap();
-        let b = store
-            .create_account(&admin(), "Bob", "KRGuest", PASSWORD, now())
-            .unwrap();
+        let a = create_account(&mut store, "Alice", "Alice").unwrap();
+        let b = create_account(&mut store, "Bob", "KRGuest").unwrap();
         (temp, a, b)
     }
     pub(crate) fn db(&self) -> PathBuf {
@@ -98,7 +113,9 @@ async fn grant(worker: &Worker, login: &str) -> crate::accounts::Grant {
 }
 #[test]
 fn launcher_logout_retires_its_registry_generation_without_cancelling_a_newer_launch() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, player, _) = Temp::new();
     rt().block_on(async {
         let worker = worker(&temp).await;
@@ -191,7 +208,9 @@ pub(crate) fn channel_body(player: &Player, echo: u32) -> Vec<u8> {
 
 #[test]
 fn patched_names_keep_exact_backend_owner_and_revoke_fences() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     let a = temp
         .store()
@@ -334,7 +353,9 @@ fn wire_guards_reject_malformed_count_size_peer_and_unsupported_projection() {
 
 #[test]
 fn two_accounts_same_ip_one_use_and_channel_owner_are_independent() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -410,7 +431,9 @@ fn account_owned_relay_reserves_before_publish_forwards_original_bytes_and_revok
         udp_relay,
     };
     use std::net::{SocketAddr, UdpSocket};
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -567,7 +590,9 @@ fn account_owned_relay_reserves_before_publish_forwards_original_bytes_and_revok
 
 #[test]
 fn controlled_metadata_does_not_replace_transport_or_session_ownership() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, player, _) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -630,7 +655,9 @@ fn controlled_metadata_does_not_replace_transport_or_session_ownership() {
 
 #[test]
 fn private_launch_metadata_is_bound_to_the_frontend_owner_not_an_ip_lookup() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, player, _) = Temp::new();
     rt().block_on(async {
         let worker = Worker::open(temp.db(), 4, Duration::from_secs(2))
@@ -675,7 +702,9 @@ fn private_launch_metadata_is_bound_to_the_frontend_owner_not_an_ip_lookup() {
 
 #[test]
 fn expiry_revoke_rename_and_unknown_session_fail_closed_at_handoff() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, _) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -729,7 +758,9 @@ fn expiry_revoke_rename_and_unknown_session_fail_closed_at_handoff() {
 
 #[test]
 fn abandoned_delivery_capacity_echo_exhaustion_entropy_and_closed_worker_cleanup() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -780,7 +811,9 @@ fn abandoned_delivery_capacity_echo_exhaustion_entropy_and_closed_worker_cleanup
 
 #[test]
 fn queued_cancel_busy_and_expired_generation_cannot_publish_late_results() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = Worker::open(temp.db(), 1, Duration::from_secs(3))
@@ -837,7 +870,9 @@ fn queued_cancel_busy_and_expired_generation_cannot_publish_late_results() {
 
 #[test]
 fn backend_session_expiry_during_queue_wait_uses_execution_utc() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, _) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -881,7 +916,9 @@ fn backend_session_expiry_during_queue_wait_uses_execution_utc() {
 
 #[test]
 fn channel_cancel_and_db_fault_invalidate_only_owned_generation() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, _) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await; let ga = grant(&w, "Alice").await;
@@ -920,7 +957,9 @@ fn channel_cancel_and_db_fault_invalidate_only_owned_generation() {
 
 #[test]
 fn delivered_launch_retained_for_startup_then_new_short_handoff_deadline() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, _) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -955,7 +994,9 @@ fn delivered_launch_retained_for_startup_then_new_short_handoff_deadline() {
 
 #[test]
 fn worker_background_inspection_does_not_renew_idle_but_player_activity_does() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, _) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -1002,7 +1043,9 @@ fn worker_background_inspection_does_not_renew_idle_but_player_activity_does() {
 
 #[test]
 fn frontend_selected_player_validates_distinct_metadata_behind_one_transport_ip() {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -1079,7 +1122,9 @@ fn authenticated_companions_follow_account_room_round_and_revoke_without_ip_owne
     };
     use kr_tunnel::{Link, Secret, client, companion, router::Owner as PeerOwner};
     use tokio::{net::UdpSocket, sync::watch};
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -1331,7 +1376,9 @@ fn same_ip_authenticated_first_packet_spoof_and_old_route_are_denied_with_curren
         router::{Binding, Member, Owner as PeerOwner, Scope},
     };
     use tokio::sync::watch;
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -1562,7 +1609,9 @@ fn restart_rebinds_public_port_but_old_pin_capability_scope_and_route_cannot_aut
         router::{Binding, Member, Owner as PeerOwner, Scope},
     };
     use tokio::sync::watch;
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
@@ -1813,7 +1862,9 @@ fn restart_rebinds_public_port_but_old_pin_capability_scope_and_route_cannot_aut
 #[test]
 fn character_preference_is_bound_to_current_channel_owner_revision_and_normal_worker_not_live_lane()
 {
-    let _serial = TEST_SERIAL.lock().unwrap();
+    let _serial = TEST_SERIAL
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let (temp, a, b) = Temp::new();
     rt().block_on(async {
         let w = worker(&temp).await;
