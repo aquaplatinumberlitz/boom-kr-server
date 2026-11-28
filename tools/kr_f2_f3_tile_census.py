@@ -1,7 +1,7 @@
 """Kiểm kê lưới và khóa địa hình F2/F3 từ pack KR 00967 đã pin."""
 
 import argparse
-from collections import Counter
+from collections import Counter, defaultdict
 import hashlib
 import ipaddress
 import json
@@ -11,7 +11,8 @@ import struct
 
 from export_map_profile import FIELDS, decode_map, load_tile_table
 from kr_f1e_script_audit import map_tail_offset, parse_trailer
-from kr_pack_export import F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, PACK_SHA256, Pack, f1_terrain_rules, verified_packs
+from kr_pack_export import (BULA_MAPS, BULA_TAIL_EVIDENCE, F1_FIXED_ITEMS, F1_HIDDEN_ITEMS, PACK_SHA256,
+                            Pack, f1_terrain_rules, validate_bula_tail, verified_packs)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,6 +90,7 @@ def load_inputs(root):
     for reader in READERS:
         path = f"tools/{reader}.py"
         sources[path] = sha256((root / path).read_bytes())
+    sources[BULA_TAIL_EVIDENCE.as_posix()] = sha256((root / BULA_TAIL_EVIDENCE).read_bytes())
     return catalogs, sources
 
 
@@ -119,8 +121,14 @@ def recover_grid(raw):
                       placements=None, drops=None, scripted=None)
 
 
-def read_profile(raw):
+def read_profile(raw, *, name=None):
     """Phân biệt lỗi trước lưới với đuôi chưa được decoder chính chấp nhận."""
+    if name in BULA_MAPS:
+        profile, tail = validate_bula_tail(raw, name)
+        return profile, dict(decode="partial", layout="group_record_tail", tail_status="kr_static/confirmed",
+                             tail_offset=tail["tail_offset"], tail_bytes=tail["tail_bytes"],
+                             tail_sha256=tail["tail_sha256"], tail_groups=tail["group_count"],
+                             tail_records=tail["record_count"], script_length_u32=tail["script_length_u32"])
     try:
         return decode_map(raw), {"decode": "exact", "layout": "length_prefixed_tail"}
     except PARSE_ERRORS:
@@ -220,14 +228,47 @@ class TileAudit:
                     unmapped_positive_drops=missing_drops, terrain_constraints=constraints)
 
 
-def scan_map(raw, audit):
+def scan_map(raw, audit, *, name=None):
     digest = sha256(raw)
-    profile, row = read_profile(raw)
+    profile, row = read_profile(raw, name=name)
     row["payload_sha256"] = digest
     if profile is not None:
         row.update(grid=[profile["width"], profile["height"]], version=profile["version"],
                    scripted=profile["scripted"], **audit.inspect(profile, digest))
     return row
+
+
+def remaining_tile_roles(maps):
+    roles = defaultdict(set)
+    for row in maps.values():
+        for key, fields in row.get("unmapped_tiles", {}).items():
+            roles[key].update(set(fields).intersection(FIELDS))
+    return {key: sorted(fields) for key, fields in roles.items() if fields}
+
+
+def audit_remaining_tiles(maps, audit, tile_info_sha256):
+    """Đối chiếu đủ 18 số với các khóa đã ánh xạ ở cùng lớp trong lưới chuẩn."""
+    roles = remaining_tile_roles(maps)
+    records, matches = {}, {}
+    by_record = defaultdict(list)
+    for code, key in enumerate(audit.names):
+        if key in audit.tiles:
+            by_record[audit.tiles[key]].append(code)
+
+    for key, fields in sorted(roles.items()):
+        data = audit.tiles.get(key)
+        records[key] = dict(tile_info=data, roles=fields)
+        if data is None:
+            continue
+        for field in fields:
+            peers = sorted({audit.names[code] for code in by_record[data]
+                            if audit.names[code] != key and field not in roles.get(audit.names[code], ())
+                            and audit.check_code(field, code, 15, 13) is None})
+            if peers:
+                matches.setdefault(key, {})[field] = peers
+    return dict(tile_info_sha256=tile_info_sha256, distinct_keys=len(roles),
+                record_set_sha256=canonical_hash(records), records=records,
+                mapped_exact_matches=matches)
 
 
 def map_names(catalogs):
@@ -247,7 +288,8 @@ def scan_packs(game_dir, catalogs):
 def _scan_packs(game_dir, catalogs):
     with verified_packs(game_dir, PINS) as files:
         maps = Pack(files["FxMap.idx"], files["FxMap.idd"])
-        audit = TileAudit(load_tile_table(Pack(files["fx.idx"], files["fx.idd"])))
+        fx = Pack(files["fx.idx"], files["fx.idd"])
+        audit = TileAudit(load_tile_table(fx))
         output = {}
         for name in sorted(map_names(catalogs)):
             try:
@@ -255,9 +297,9 @@ def _scan_packs(game_dir, catalogs):
             except (KeyError, ValueError):
                 row = {"decode": "decode_error", "layout": "pack_entry"}
             else:
-                row = scan_map(raw, audit)
+                row = scan_map(raw, audit, name=name)
             output[name] = row
-        return output
+        return output, audit_remaining_tiles(output, audit, sha256(fx.read("TileInfo/TileInfoList")))
 
 
 def grid_name(row):
@@ -288,7 +330,7 @@ def family_summary(family, names, maps):
                 unmapped_positive_drops=sorted({key for row in rows for key in row.get("unmapped_positive_drops") or []}))
 
 
-def build_body(catalogs, sources, maps):
+def build_body(catalogs, sources, maps, *, remaining_tiles=None):
     if maps.keys() != map_names(catalogs):
         raise CensusError("thiếu hoặc thừa map so với hai catalog")
     families, summaries = {}, {}
@@ -302,18 +344,41 @@ def build_body(catalogs, sources, maps):
                                 grids=Counter(grid_name(row) for row in scans),
                                 unmapped_tile_types=len({key for row in rows for key in row["unmapped_tiles"]}),
                                 priorities=Counter(row["priority"] for row in rows))
-    return dict(schema=SCHEMA, build=BUILD, source="kr_static", status="confirmed", ranking_status="candidate",
+    body = dict(schema=SCHEMA, build=BUILD, source="kr_static", status="confirmed", ranking_status="candidate",
                 input_sha256=sources, pack_sha256=PINS, maps=maps, families=families, summary=summaries)
+    if remaining_tiles is not None:
+        roles = remaining_tile_roles(maps)
+        records = remaining_tiles["records"]
+        if (remaining_tiles["distinct_keys"] != len(roles)
+                or records.keys() != roles.keys()
+                or remaining_tiles["record_set_sha256"] != canonical_hash(records)
+                or any(key not in roles or set(fields) - set(roles[key])
+                       for key, fields in remaining_tiles["mapped_exact_matches"].items())):
+            raise CensusError("đối chiếu TileInfo không khớp các khóa còn thiếu")
+        for key, row in records.items():
+            data = row["tile_info"]
+            if row["roles"] != roles[key] or (data is not None and (
+                    len(data) != 18 or any(type(word) is not int for word in data))):
+                raise CensusError("bản ghi TileInfo hoặc lớp ô không hợp lệ")
+        body["remaining_tile_audit"] = remaining_tiles
+    return body
 
 
 def render_json(body):
     """Mỗi map hoặc họ một dòng để diff giữ đúng phạm vi thay đổi."""
+    def render_rows(rows, indent):
+        entries = [f'{indent}  {json_text(key)}: {json_text(row)}' for key, row in sorted(rows.items())]
+        return "{\n" + ",\n".join(entries) + "\n" + indent + "}" if entries else "{}"
+
     output = dict(body, body_sha256=canonical_hash(body))
     fields = []
     for key, value in sorted(output.items()):
         if key == "maps":
-            rows = [f"    {json_text(name)}: {json_text(row)}" for name, row in sorted(value.items())]
-            rendered = "{\n" + ",\n".join(rows) + "\n  }"
+            rendered = render_rows(value, "  ")
+        elif key == "remaining_tile_audit":
+            entries = [f"    {json_text(k)}: " + (render_rows(v, "    ") if k == "records" else json_text(v))
+                       for k, v in sorted(value.items())]
+            rendered = "{\n" + ",\n".join(entries) + "\n  }"
         elif key == "families":
             scopes = []
             for scope, rows in sorted(value.items()):
@@ -355,6 +420,9 @@ def render_markdown(body):
     lines += ["", f"Kiểu đuôi chưa được `decode_map` đọc đủ: {_partial_layouts(body['maps'])}.",
               "Với đuôi khác bố cục thường, công cụ giữ lưới và chỉ giữ các hàng vật phẩm nếu đọc trọn phần đó. "
               "Bộ đọc đuôi nhóm/bản ghi chỉ xác nhận cấu trúc; chưa xác nhận tác dụng các bản ghi.",
+              "Cả bảy map `Bula` khớp từng byte với [bằng chứng P228](../protocol/f2-bula-tail-and-mode-wire-re.md). "
+              "Có thể xem JSON bằng `python3 tools/kr_pack_export.py --game-dir <thu-muc-pack> --inspect-bula Bula00`. "
+              "Census vẫn ghi `partial` theo bộ đọc thường; các adapter phòng chưa nhận `Bula`.",
               "",
               "## Họ ưu tiên theo số tile còn thiếu", "",
               "Chỉ xếp `quick_unlock` khi mọi map trong họ đều giải mã đủ, có lưới 15x13, "
@@ -381,6 +449,18 @@ def render_markdown(body):
         "Công cụ cũng thử các lớp đã ánh xạ cùng nhau để phát hiện ràng buộc như footprint chồng nhau.",
         "Khóa đặt sẵn và drop có trọng số dương được đối chiếu riêng với danh sách khóa F1. "
         "Khóa vật phẩm không tính vào số tile; một khóa đặt sẵn hoặc drop trùng tên trong TileInfo được ghi thêm theo lớp tương ứng.",
+    ]
+    if (audit := body.get("remaining_tile_audit")) is not None:
+        lines += [
+            "",
+            f"Đối chiếu KR 00967 xét đủ 18 số của {audit['distinct_keys']} khóa còn thiếu trong hai catalog. "
+            f"Có {len(audit['mapped_exact_matches'])} khóa trùng tuple với khóa đã ánh xạ ở cùng lớp trên lưới 15x13. "
+            "JSON giữ các tuple theo khóa và lớp cùng SHA-256 của tập này và của `TileInfo/TileInfoList`.",
+            "Nền Baseball có cờ lap; nền, ô tăng tốc và lốp của Kart có cờ hoặc marker riêng. "
+            "`Temple08` khác `Temple11` ở cờ +40, còn `Tower00` có marker +36 bằng 999. "
+            "Các tile SnowBear và Tornado vẫn chờ xác nhận hành vi riêng. Không mở thêm tile trong lượt kiểm này.",
+        ]
+    lines += [
         "",
         "Xếp hạng là `candidate` cho công việc về địa hình. "
         "Điều kiện phục vụ như vị trí, xác suất vật phẩm, allowlist script, chế độ phòng và quyền PvE chưa được xác nhận ở đây. "
@@ -415,7 +495,8 @@ def main(argv=None, *, root=ROOT):
     try:
         catalogs, sources = load_inputs(root)
         if args.write:
-            maps = scan_packs(args.game_dir if args.game_dir is not None else default_game_dir(), catalogs)
+            maps, remaining_tiles = scan_packs(
+                args.game_dir if args.game_dir is not None else default_game_dir(), catalogs)
         else:
             saved = (root / JSON_OUT).read_text(encoding="utf-8")
             reject_private(saved)
@@ -423,7 +504,8 @@ def main(argv=None, *, root=ROOT):
             if stored.pop("body_sha256") != canonical_hash(stored):
                 raise CensusError("SHA-256 của thân JSON không khớp")
             maps = stored["maps"]
-        body = build_body(catalogs, sources, maps)
+            remaining_tiles = stored["remaining_tile_audit"]
+        body = build_body(catalogs, sources, maps, remaining_tiles=remaining_tiles)
         outputs = {JSON_OUT: render_json(body), MARKDOWN_OUT: render_markdown(body)}
         for path, content in outputs.items():
             reject_private(content)

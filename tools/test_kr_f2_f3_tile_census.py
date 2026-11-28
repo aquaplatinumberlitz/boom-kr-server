@@ -78,6 +78,29 @@ class TileCensusTests(unittest.TestCase):
         self.assertEqual((row["decode"], row["layout"]), ("partial", "group_record_tail"))
         self.assertEqual((row["tail_groups"], row["tail_records"]), (1, 0))
         self.assertFalse(row["scripted"])
+        self.assertNotIn("tail_status", row)
+
+    def test_named_bula_does_not_fall_back_to_unpinned_layouts(self):
+        tail = bytes.fromhex("01000000000000000000000000000000")
+        for data in (payload(version=1000), payload(version=1000, tail=tail),
+                     payload(version=1000, tail=tail[:-1])):
+            with self.subTest(length=len(data)), self.assertRaisesRegex(ValueError, "đuôi Bula"):
+                census.scan_map(data, self.audit, name="Bula00")
+
+    def test_remaining_tile_audit_requires_all_eighteen_ints_and_same_layer(self):
+        record = self.audit.tiles["Tile/Ground"]
+        names = ["Tile/Exact", "Tile/DifferentLastWord", "Tile/Ground", "Tile/Overlay"]
+        tiles = {key: record for key in names}
+        tiles["Tile/DifferentLastWord"] = (*record[:-1], 1)
+        rows = {"Map": {"unmapped_tiles": {
+            "Tile/Exact": {"tile": "outside_f1e_rule"},
+            "Tile/DifferentLastWord": {"tile": "outside_f1e_rule"},
+            "Tile/Overlay": {"overlay": "outside_f1e_rule"},
+            "Tile/OnlyDrop": {"drop": "outside_f1_floor_keys"},
+        }}}
+        result = census.audit_remaining_tiles(rows, census.TileAudit((names, tiles)), "test")
+        self.assertEqual(result["distinct_keys"], 3)
+        self.assertEqual(result["mapped_exact_matches"], {"Tile/Exact": {"tile": ["Tile/Ground", "Tile/Overlay"]}})
 
     def test_collects_all_layers_and_separates_items_from_tiles(self):
         row = census.scan_map(payload(
@@ -143,6 +166,13 @@ class OfflineCheckTests(unittest.TestCase):
         body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
         self.assertEqual([(s["maps"], s["families"]) for s in body["summary"].values()], [(122, 18), (699, 180)])
         self.assertEqual([s["unmapped_tile_types"] for s in body["summary"].values()], [40, 49])
+        audit = body["remaining_tile_audit"]
+        self.assertEqual((audit["distinct_keys"], audit["mapped_exact_matches"]), (49, {}))
+        self.assertEqual(audit["tile_info_sha256"],
+                         "51b738448f5bb0c9dc54c0ef6782bd612561660f256717dc5df1d59c2f5ec795")
+        self.assertEqual(audit["records"]["Tile23_Static/Temple08"],
+                         {"roles": ["object"], "tile_info": [1, 0, 0, 0, 0, 0, 7, 1, 1, 0, 1, 2010089472,
+                                                             0, 0, 0, 0, 0, 0]})
         self.assertEqual(len(body["maps"]), 699)
         self.assertEqual(body["maps"]["Gumiho01"]["unmapped_tiles"], {})
         for name in ("Coloring01", "SuperFighter16", "Hamster01", "Zombie01", "SnowyFields08"):
@@ -172,6 +202,7 @@ class OfflineCheckTests(unittest.TestCase):
 
     def test_small_delta_tiles_do_not_upgrade_custom_grids_or_bula_tail(self):
         body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
+        reference = json.loads((census.ROOT / census.BULA_TAIL_EVIDENCE).read_bytes())["bula_tail"]["maps"]
         families = {scope: {row["family"]: row for row in rows} for scope, rows in body["families"].items()}
         for scope in ("F2", "F3"):
             with self.subTest(scope=scope):
@@ -181,6 +212,12 @@ class OfflineCheckTests(unittest.TestCase):
                 for name in bula["maps"]:
                     row = body["maps"][name]
                     self.assertEqual((row["layout"], row["unmapped_tiles"]), ("group_record_tail", {}))
+                    self.assertEqual(row["tail_status"], "kr_static/confirmed")
+                    pinned = reference[name]
+                    for key in ("payload_sha256", "tail_sha256", "tail_offset", "tail_bytes", "script_length_u32"):
+                        self.assertEqual(row[key], pinned[key])
+                    self.assertEqual((row["tail_groups"], row["tail_records"]),
+                                     (pinned["group_count"], pinned["record_count"]))
 
         custom = {
             "BonusBigReward": ["TileBonusMap_static/Tower00"],
@@ -214,7 +251,7 @@ class OfflineCheckTests(unittest.TestCase):
     def test_rejects_stale_digest_and_noncanonical_json_or_markdown(self):
         with TemporaryDirectory() as temporary:
             root = Path(temporary)
-            paths = [*census.CATALOGS.values(), census.JSON_OUT, census.MARKDOWN_OUT,
+            paths = [*census.CATALOGS.values(), census.BULA_TAIL_EVIDENCE, census.JSON_OUT, census.MARKDOWN_OUT,
                      *(Path("tools") / f"{reader}.py" for reader in census.READERS)]
             for path in paths:
                 (root / path).parent.mkdir(parents=True, exist_ok=True)
