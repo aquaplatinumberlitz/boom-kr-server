@@ -93,7 +93,7 @@ impl ModeKind {
     /// Operator aliases for recognizable dialog labels at KR00967 0xC6C080.
     /// This correspondence is policy, and supplies no native dispatch or
     /// runtime support. Distinct IDs sharing a label are not interchangeable.
-    /// Coloring has no established GameTypeId and is selected by name.
+    /// Coloring and Hamster have no established GameTypeId and are selected by name.
     fn game_type_id(self) -> Option<GameTypeId> {
         Some(match self {
             Self::Revive => GameTypeId::Rehab,
@@ -143,17 +143,23 @@ struct ModeRules {
     reset: ResetPolicy,
 }
 
-// The catalog lists Coloring as a candidate family rather than a mode row.
-// This supplemental descriptor keeps the shipped JSON table unchanged.
-const COLORING_RULES: ModeRules = ModeRules {
-    group: ModeKind::Coloring,
-    wave: Wave::F2Candidate,
-    win: WinCondition::Unknown,
-    tie: TiePolicy::Unknown,
-    respawn: RespawnPolicy::Unknown,
-    timer: TimerPolicy::Unknown,
-    reset: ResetPolicy::Round,
-};
+// These operator evaluation presets have no mode row in the shipped JSON table.
+const EVALUATION_RULES: &[ModeRules] = &[
+    evaluation_rules(ModeKind::Coloring),
+    evaluation_rules(ModeKind::Hamster),
+];
+
+const fn evaluation_rules(group: ModeKind) -> ModeRules {
+    ModeRules {
+        group,
+        wave: Wave::F2Candidate,
+        win: WinCondition::Unknown,
+        tie: TiePolicy::Unknown,
+        respawn: RespawnPolicy::Unknown,
+        timer: TimerPolicy::Unknown,
+        reset: ResetPolicy::Round,
+    }
+}
 
 #[derive(Clone, Copy, Debug, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -257,23 +263,27 @@ impl RuleTable {
     }
 
     fn descriptor(&self, group: ModeKind) -> Option<&ModeRules> {
-        if group == COLORING_RULES.group {
-            Some(&COLORING_RULES)
-        } else {
-            self.0.get(&group)
-        }
+        self.0
+            .get(&group)
+            .or_else(|| EVALUATION_RULES.iter().find(|rules| rules.group == group))
     }
 
     fn parse(json: &str, modes: &[Mode]) -> io::Result<Self> {
         let rows: Vec<ModeRules> = serde_json::from_str(json).map_err(io::Error::other)?;
         let mut table = BTreeMap::new();
+        for rules in EVALUATION_RULES {
+            rules.validate()?;
+        }
         for row in rows {
             row.validate()?;
-            if row.group == COLORING_RULES.group || table.insert(row.group, row).is_some() {
+            if EVALUATION_RULES
+                .iter()
+                .any(|rules| rules.group == row.group)
+                || table.insert(row.group, row).is_some()
+            {
                 return Err(io::Error::other("duplicate F2 rule descriptor"));
             }
         }
-        COLORING_RULES.validate()?;
         let table = Self(table);
         let mut seen = std::collections::BTreeSet::new();
         for mode in modes {
@@ -287,7 +297,7 @@ impl RuleTable {
                 ));
             }
         }
-        if seen.len() != table.0.len() + 1 {
+        if seen.len() != table.0.len() + EVALUATION_RULES.len() {
             return Err(io::Error::other("F2 rule table does not match catalog"));
         }
         Ok(table)
@@ -306,8 +316,9 @@ impl RuleTable {
     pub(super) fn runtime_win(&self, group: ModeKind) -> Option<WinCondition> {
         let rules = self.descriptor(group)?;
         (rules.wave == Wave::F2
-            || (rules.wave == Wave::F2Candidate && group.evaluation_map_group().is_some()))
-        .then_some(rules.win)
+            || (rules.wave == Wave::F2Candidate
+                && (group.evaluation_map_group().is_some() || group == ModeKind::Hamster)))
+            .then_some(rules.win)
     }
 }
 

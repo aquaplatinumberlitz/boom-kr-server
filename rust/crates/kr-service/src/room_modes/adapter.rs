@@ -17,6 +17,8 @@ impl Config {
         // path. No requested policy may silently fall back to a normal room.
         self.extended_rules.check_activation()?;
         if let Some(requested) = &self.candidate_map_family {
+            // Exported terrain and named runtime evaluation presets do not
+            // authorize activation by family name.
             let known = EXPORTED_F2_FAMILIES.contains(&requested.as_str())
                 || TENTATIVE_MAP_FAMILIES
                     .iter()

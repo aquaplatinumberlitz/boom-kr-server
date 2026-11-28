@@ -17,12 +17,13 @@ use rules::{ExtendedRules, RuleTable, Wave};
 
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
 
-// Families in the KR00967 terrain export allowlist (through PR #781). The catalog
+// Families in the KR00967 terrain export allowlist (through PR #789). The catalog
 // provides exact map names and candidate groups, but no native start route.
 const EXPORTED_F2_FAMILIES: &[&str] = &[
     "CAPong",
     "Clover",
     "Coloring",
+    "Hamster",
     "Rabbit",
     "RescueET",
     "SnowyFields",
@@ -183,6 +184,7 @@ enum ModeKind {
     FarmMission,
     #[serde(rename = "free_1v7")]
     Free1v7,
+    Hamster,
     Hedgehog,
     Ladder,
     LeaderCapture,
@@ -206,8 +208,8 @@ enum MapGroup {
     Ladder,
     #[serde(rename = "ReBirthMapGroup")]
     Rebirth,
-    // Operator visibility labels for exact catalog families. Neither label
-    // establishes a KR Attr locator or a default numeric MapGroupVisible ID.
+    // Operator visibility labels for exact catalog families. These labels
+    // establish neither KR Attr locators nor default numeric MapGroupVisible IDs.
     Coloring,
     SuperFighter,
 }
@@ -448,7 +450,15 @@ impl Catalog {
             let group = serde::de::value::StrDeserializer::<serde::de::value::Error>::new(
                 &family.grouping.ruleset_group,
             );
-            let kind = ModeKind::deserialize(group).map_err(io::Error::other)?;
+            let kind = match (
+                name,
+                ModeKind::deserialize(group).map_err(io::Error::other)?,
+            ) {
+                // The catalog labels both farm families farm_mission. Give Hamster
+                // its own operator evaluation preset without widening Rabbit's map gate.
+                ("Hamster", ModeKind::FarmMission) => ModeKind::Hamster,
+                (_, kind) => kind,
+            };
             if let Some(mode) = catalog.modes.iter().find(|mode| mode.ruleset_group == kind) {
                 if !mode.wave.in_f2()
                     || !mode.related_families.iter().any(|link| link.family == name)
@@ -458,8 +468,7 @@ impl Catalog {
                     )));
                 }
             } else {
-                // Keep these catalog groupings as candidates. In particular,
-                // Rabbit's farm_mission label grants no access to Hamster maps.
+                // A family link supplies exact map candidates only.
                 catalog.modes.push(Mode {
                     ruleset_group: kind,
                     wave: Wave::F2Candidate,
@@ -596,7 +605,7 @@ impl Policy {
         // The evaluation presets use the managed roomtype=0 route, limited to
         // exact names in their respective catalog families.
         if let Some(kind) = self.runtime.for_team(team)
-            && kind.evaluation_map_group().is_some()
+            && (kind.evaluation_map_group().is_some() || kind == ModeKind::Hamster)
         {
             self.validate_candidate_map(kind, &map.name)?;
         }

@@ -453,10 +453,11 @@ fn rejected_room_config(f2: Value) -> String {
 
 // Literal export names from kr_pack_export.py; candidate groups from the
 // KR00967 F2 mode catalog. Rabbit11 keeps the nonconsecutive suffix covered.
-const F2_EXPORT_SAMPLES: [(&str, &str, &str); 10] = [
+const F2_EXPORT_SAMPLES: [(&str, &str, &str); 11] = [
     ("CAPong", "CAPong01", "capong"),
     ("Clover", "Clover01", "clover"),
     ("Coloring", "Coloring01", "coloring"),
+    ("Hamster", "Hamster01", "hamster"),
     ("Rabbit", "Rabbit11", "farm_mission"),
     ("RescueET", "RescueET01", "rescue_et"),
     ("SnowyFields", "SnowyFields04", "snowy_fields"),
@@ -470,10 +471,10 @@ const F2_EXPORT_SAMPLES: [(&str, &str, &str); 10] = [
 fn f2_export_maps_require_an_explicit_runtime_preset_for_state_and_ticks() {
     for (family, map, _) in F2_EXPORT_SAMPLES {
         for enabled in [false, true] {
-            let policy = if enabled {
-                opt_in("timebomb")
-            } else {
-                Value::Null
+            let policy = match (family, enabled) {
+                ("Hamster", true) => opt_in("hamster"),
+                (_, true) => opt_in("timebomb"),
+                (_, false) => Value::Null,
             };
             let mut room = TestRoom::on(map_hub(policy, map), false);
             let round = room.load();
@@ -483,28 +484,219 @@ fn f2_export_maps_require_an_explicit_runtime_preset_for_state_and_ticks() {
             assert_eq!(selected.roomtype, 0, "{family}");
             room.arm();
 
-            let start = room.start(
-                round,
-                F2Setup::Timebomb {
-                    initial_carrier: 0,
-                    fuse_ms: 10,
-                },
-            );
-            let tick = |milliseconds| F2Event::AdvanceTo { milliseconds };
             if enabled {
-                let view = start.unwrap();
-                assert_eq!(view["bomb"], json!([0, 10]), "{family}");
-                assert_eq!(view["players"][0]["life"], "alive", "{family}");
-                let view = room.event(round, 1, tick(4)).unwrap();
-                assert_eq!(view["bomb"], json!([0, 6]), "{family}");
-                let view = room.event(round, 2, tick(10)).unwrap();
-                assert_eq!(view["players"][0]["life"], "eliminated", "{family}");
-                assert_eq!(view["bomb"], json!([1, 10]), "{family}");
+                if family == "Hamster" {
+                    let initial = room.start(round, F2Setup::Evaluate).unwrap();
+                    assert_eq!(initial["outcome"], "playing", "{family}");
+                    let unresolved = room
+                        .event(round, 1, F2Event::Objective { winner: None })
+                        .unwrap();
+                    assert_eq!(unresolved["outcome"], "unresolved", "{family}");
+                } else {
+                    let start = room.start(
+                        round,
+                        F2Setup::Timebomb {
+                            initial_carrier: 0,
+                            fuse_ms: 10,
+                        },
+                    );
+                    let view = start.unwrap();
+                    assert_eq!(view["bomb"], json!([0, 10]), "{family}");
+                    assert_eq!(view["players"][0]["life"], "alive", "{family}");
+                    let view = room
+                        .event(round, 1, F2Event::AdvanceTo { milliseconds: 4 })
+                        .unwrap();
+                    assert_eq!(view["bomb"], json!([0, 6]), "{family}");
+                    let view = room
+                        .event(round, 2, F2Event::AdvanceTo { milliseconds: 10 })
+                        .unwrap();
+                    assert_eq!(view["players"][0]["life"], "eliminated", "{family}");
+                    assert_eq!(view["bomb"], json!([1, 10]), "{family}");
+                }
             } else {
-                rejects(start, "disabled");
-                rejects(room.event(round, 1, tick(4)), "disabled");
+                rejects(room.start(round, F2Setup::Evaluate), "disabled");
+                rejects(
+                    room.event(round, 1, F2Event::Objective { winner: None }),
+                    "disabled",
+                );
             }
             room.no_packets();
+        }
+    }
+}
+
+#[test]
+fn hamster_snowy_fields_and_zombie_rosters_use_only_exported_names() {
+    let hamster = [
+        "Hamster01",
+        "Hamster02",
+        "Hamster03",
+        "Hamster04",
+        "Hamster05",
+        "Hamster06",
+        "Hamster07",
+        "Hamster08",
+    ];
+    let snowy = [
+        "SnowyFields01",
+        "SnowyFields02",
+        "SnowyFields03",
+        "SnowyFields04",
+        "SnowyFields05",
+        "SnowyFields06",
+        "SnowyFields07",
+        "SnowyFields08",
+        "SnowyFields09",
+        "SnowyFields10",
+        "SnowyFields11",
+        "SnowyFields12",
+        "SnowyFields13",
+        "SnowyFields14",
+        "SnowyFields15",
+        "SnowyFields16",
+        "SnowyFields17",
+        "SnowyFields18",
+    ];
+    let zombie = [
+        "Zombie01", "Zombie02", "Zombie03", "Zombie04", "Zombie05", "Zombie06",
+    ];
+
+    // Hamster is the only one of these families with a named runtime
+    // evaluation adapter. Every exported map must pass its exact family gate.
+    for map in hamster {
+        let mut room = TestRoom::on(map_hub(opt_in("hamster"), map), false);
+        let round = room.load();
+        room.arm();
+        let initial = room.start(round, F2Setup::Evaluate).unwrap();
+        assert_eq!(initial["outcome"], "playing", "{map}");
+        assert_eq!(
+            room.event(round, 1, F2Event::Objective { winner: None })
+                .unwrap()["outcome"],
+            "unresolved",
+            "{map}"
+        );
+        room.no_packets();
+    }
+    let wrong_hamster = map_hub(
+        json!({"create_overrides": {"free": "hamster"}}),
+        "Hamster09",
+    );
+    let rejected = wrong_hamster.select_fixture(81, &create(false), 70000);
+    assert_eq!(
+        rejected.err().unwrap().to_string(),
+        "f2_map_not_confirmed_in_group_or_family",
+        "Hamster off-roster"
+    );
+
+    // SnowyFields and Zombie retain the complete static export roster while
+    // their gameplay dispatch remains fail-closed.
+    for (family, maps, preset) in [
+        ("SnowyFields", snowy.as_slice(), "snowy_fields"),
+        ("Zombie", zombie.as_slice(), "zombie"),
+    ] {
+        for map in maps {
+            let hub = map_hub(json!({"create_overrides": {"free": preset}}), map);
+            let rejected = hub.select_fixture(81, &create(false), 70000);
+            assert_eq!(
+                rejected.err().unwrap().to_string(),
+                "f2_start_dispatch_unmeasured",
+                "{family} {map}"
+            );
+            assert!(hub.operator_rooms().unwrap().is_empty(), "{family} {map}");
+        }
+        let wrong = if family == "SnowyFields" {
+            "SnowyFields19"
+        } else {
+            "Zombie07"
+        };
+        let hub = map_hub(json!({"create_overrides": {"free": preset}}), wrong);
+        let rejected = hub.select_fixture(81, &create(false), 70000);
+        assert_eq!(
+            rejected.err().unwrap().to_string(),
+            "f2_map_not_confirmed_in_group_or_family",
+            "{family} off-roster"
+        );
+    }
+
+    let remaining: [(&str, &str, &[&str]); 8] = [
+        (
+            "CAPong",
+            "capong",
+            &["CAPong01", "CAPong02", "CAPong03", "CAPong04", "CAPong05"],
+        ),
+        (
+            "Clover",
+            "clover",
+            &[
+                "Clover01", "Clover02", "Clover03", "Clover04", "Clover05", "Clover06",
+            ],
+        ),
+        (
+            "Coloring",
+            "coloring",
+            &[
+                "Coloring01",
+                "Coloring02",
+                "Coloring03",
+                "Coloring04",
+                "Coloring05",
+            ],
+        ),
+        (
+            "Rabbit",
+            "farm_mission",
+            &[
+                "Rabbit01", "Rabbit02", "Rabbit03", "Rabbit04", "Rabbit05", "Rabbit11",
+            ],
+        ),
+        (
+            "RescueET",
+            "rescue_et",
+            &["RescueET01", "RescueET02", "RescueET03"],
+        ),
+        (
+            "SuperFighter",
+            "super_fighter",
+            &["SuperFighter16", "SuperFighter19"],
+        ),
+        (
+            "Wriggle",
+            "wriggle",
+            &[
+                "Wriggle01",
+                "Wriggle02",
+                "Wriggle03",
+                "Wriggle04",
+                "Wriggle05",
+                "Wriggle06",
+                "Wriggle07",
+            ],
+        ),
+        (
+            "Zzolman",
+            "zzolman",
+            &[
+                "Zzolman01",
+                "Zzolman02",
+                "Zzolman03",
+                "Zzolman04",
+                "Zzolman05",
+            ],
+        ),
+    ];
+    for (family, preset, maps) in remaining {
+        for map in maps {
+            let mut config = json!({"create_overrides": {"free": preset}});
+            if matches!(family, "Coloring" | "SuperFighter") {
+                config["visible_map_groups"] = json!([family]);
+            }
+            let hub = map_hub(config, map);
+            let rejected = hub.select_fixture(81, &create(false), 70000);
+            assert_eq!(
+                rejected.err().unwrap().to_string(),
+                "f2_start_dispatch_unmeasured",
+                "{family} {map}"
+            );
         }
     }
 }
@@ -548,7 +740,7 @@ fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
             assert_eq!(rejected.err().unwrap().to_string(), expected, "{family}");
             assert!(hub.operator_rooms().unwrap().is_empty(), "{family}");
         }
-        if !evaluates {
+        if !evaluates && family != "Hamster" {
             let hub = map_hub(opt_in(group), map);
             let rejected = hub.select_fixture(81, &create(false), 70000);
             assert_eq!(

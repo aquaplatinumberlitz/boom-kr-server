@@ -16,7 +16,7 @@ pub(crate) struct Player {
 
 impl ModeKind {
     fn evaluates_unknown_outcome(self) -> bool {
-        self == Self::Hedgehog || self.evaluation_map_group().is_some()
+        self == Self::Hedgehog || self == Self::Hamster || self.evaluation_map_group().is_some()
     }
 }
 
@@ -422,8 +422,8 @@ impl Policy {
         let Some(mode) = self.runtime.for_team(selector) else {
             return Ok(None);
         };
-        // Export coverage alone cannot install an adapter. Coloring and
-        // SuperFighter only opt in to evaluation of an unknown win condition.
+        // Export coverage alone cannot install an adapter. Family evaluation
+        // presets can report an unresolved round without modeling its gameplay.
         let supported = match (mode, self.rules.runtime_win(mode)) {
             (ModeKind::Revive, Some(WinCondition::ReviveOutcome))
             | (ModeKind::Timebomb, Some(WinCondition::BombOutcome))
