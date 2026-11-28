@@ -143,10 +143,10 @@ class OfflineCheckTests(unittest.TestCase):
         body = json.loads((census.ROOT / census.JSON_OUT).read_bytes())
         self.assertEqual([(s["maps"], s["families"]) for s in body["summary"].values()], [(122, 18), (699, 180)])
         self.assertEqual(len(body["maps"]), 699)
-        for name, key in {"Baseball01": "Tile70_Ground/Tile04", "Gumiho01": "Tile65_Static/Static06",
-                          "Kart02": "Tile12_Ground/Race13"}.items():
+        for name, key in {"Baseball01": "Tile70_Ground/Tile04", "Kart02": "Tile12_Ground/Race13"}.items():
             self.assertIn(key, body["maps"][name]["unmapped_tiles"])
             self.assertGreater(len(body["maps"][name]["unmapped_tiles"]), 1)
+        self.assertEqual(body["maps"]["Gumiho01"]["unmapped_tiles"], {})
         for name in ("Coloring01", "SuperFighter16", "Hamster01", "Zombie01", "SnowyFields08"):
             self.assertEqual(body["maps"][name]["unmapped_tiles"], {})
         self.assertEqual(body["maps"]["Hdn_SuperFight"]["unmapped_tiles"],

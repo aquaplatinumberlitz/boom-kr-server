@@ -46,7 +46,6 @@ class F3AdapterTests(unittest.TestCase):
                 (('Fm_MonSnowBear01',), 'Fm_MonSnowBear01'),
                 (('MonNoviceSnow01',), 'MonNoviceSnow01'),
                 (('Zombie04',), 'Zombie04'),
-                (('CAhero07',), 'CAhero07'),
                 (('MonS2Fire03',), 'MonS2Fire03'),
                 (('Bonus01',), 'Bonus01'),
                 (('Tutorial01', 'Tutorial01'), '1–16'),
@@ -157,8 +156,8 @@ class StockPackTests(unittest.TestCase):
         families = {name: row['family'] for row in census['families']['F3']
                     if row['priority'] == 'terrain_ready' and row['family'] != 'Zombie'
                     for name in row['maps']}
-        self.assertEqual(len(families), 424)
-        self.assertEqual(len(set(families.values())), 100)
+        self.assertEqual(len(families), 503)
+        self.assertEqual(len(set(families.values())), 105)
         for family, maps in EXPANDED_FAMILIES.items():
             if family != 'Zombie':
                 self.assertEqual({name for name, label in families.items() if label == family}, set(maps))
@@ -226,8 +225,9 @@ class StockPackTests(unittest.TestCase):
                     self.assertEqual(digest.hexdigest(), expected)
 
         census = json.loads((EVIDENCE / CENSUS_NAME).read_bytes())
+        legacy_expanded = {*EXPANDED_FAMILIES, 'CAhero'}
         old_f3 = sorted(name for row in census['families']['F3']
-                        if row['priority'] == 'terrain_ready' and row['family'] not in EXPANDED_FAMILIES
+                        if row['priority'] == 'terrain_ready' and row['family'] not in legacy_expanded
                         for name in row['maps'])
         with tempfile.TemporaryDirectory() as tmp:
             digest = hashlib.sha256()

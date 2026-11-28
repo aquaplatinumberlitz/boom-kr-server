@@ -5,8 +5,8 @@ Nguồn phạm vi là [F2](f2-mode-catalog.md) và [F3](f3-pve-catalog.md). Mỗ
 
 | Catalog | Map | Họ | Giải mã đủ | Đọc một phần | Lỗi giải mã | Lưới khác 15x13 | Loại tile còn thiếu |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| F2 | 122 | 18 | 115 | 7 | 0 | 0 | 115 |
-| F3 | 699 | 180 | 692 | 7 | 0 | 116 | 159 |
+| F2 | 122 | 18 | 115 | 7 | 0 | 0 | 68 |
+| F3 | 699 | 180 | 692 | 7 | 0 | 116 | 91 |
 
 ## Lưới và đuôi map
 
@@ -58,8 +58,8 @@ Chỉ xếp `quick_unlock` khi mọi map trong họ đều giải mã đủ, có
 
 | Catalog | Địa hình đủ | Ưu tiên | Trên ba tile | Ràng buộc địa hình | Thiếu bố cục | Lưới khác |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| F2 | 11 | 0 | 6 | 0 | 1 | 0 |
-| F3 | 101 | 2 | 11 | 0 | 1 | 65 |
+| F2 | 15 | 0 | 2 | 0 | 1 | 0 |
+| F3 | 106 | 2 | 6 | 0 | 1 | 65 |
 
 | Catalog | Họ ưu tiên | Map | Tile còn thiếu | Khóa đặt sẵn / drop dương còn thiếu |
 | --- | --- | ---: | --- | ---: |
