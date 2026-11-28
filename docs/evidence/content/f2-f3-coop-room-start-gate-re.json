@@ -1,0 +1,55 @@
+{
+  "schema": "kre.p252.f2-f3-coop-room-start-gate-re.v1",
+  "status": "complete_static_plus_bounded_runtime",
+  "source": ["kr_static", "kr_runtime"],
+  "build": "KR00967",
+  "idb_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+  "image_base": "0x400000",
+  "anchors": {
+    "roomtype_parser": {"va": "0x57f520", "symbol": "sub_57F520", "finding": "User_RoomInvited parser; roomtype field offset +692"},
+    "mode_thresholds": {"va": "0x138a940", "symbol": "sub_138A940", "finding": "min-player/min-team selector"},
+    "start_gate": {"va": "0xde0310", "symbol": "sub_DE0310", "finding": "calls DCAD80; sends C2S104 only for return 0/1"},
+    "start_predicate": {"va": "0xdcad80", "symbol": "sub_DCAD80", "finding": "16-slot, player/team/map/ready validation"},
+    "slot_packet": {"va": "0xdc6700", "symbol": "sub_DC6700", "finding": "S2C110 packed slot state; team bits 5..9"},
+    "map_packet": {"va": "0xdc70d0", "symbol": "sub_DC70D0", "finding": "S2C117 result/local-code/dynamic-index"},
+    "error_dispatch": {"va": "0xdcbed0", "symbol": "sub_DCBED0", "finding": "popup/error mapping"},
+    "start_reply_dispatch": {"va": "0xdc51f0", "symbol": "sub_DC51F0", "finding": "dispatcher path to S2C121"}
+  },
+  "packed_state": {
+    "team": "(word >> 5) & 0x1f",
+    "ready_group": "(word >> 2) & 7",
+    "slot_scan": "sub_DCAD80 scans 16 slots; sub_1241090 checks local/identity ownership"
+  },
+  "map_matrix": [
+    {"family": "Mon*", "maps": ["MonSnowBear07", "MonGolem01", "MonPen01"], "codes": [666, 501, 536], "spawns": 4, "runtime": "stalled_before_104"},
+    {"family": "PopcadeB/C", "maps": ["PopcadeB01", "PopcadeC01"], "codes": [910, 915], "spawns": [2, 4], "runtime": "stalled_before_104"},
+    {"family": "Zzolman", "maps": ["Zzolman01"], "codes": [1146], "spawns": 4, "runtime": "stalled_before_104"},
+    {"family": "controls", "maps": ["Coloring01", "Hamster01", "Gumiho01", "SuperFighter16", "Rabbit01", "Wriggle01"], "codes": [213, 355, 344, 1075, 920, 1115], "runtime": "host_sent_104_and_received_121"}
+  ],
+  "runtime_observation": {
+    "failed_common": ["S2C117", "S2C110", "no_C2S104"],
+    "control_common": ["S2C117", "S2C110", "C2S104", "S2C121", "S2C153"],
+    "team_difference": "failed both slots packed team=0; controls both slots packed team=3; this proves a nonzero mode-accepted assignment is needed, not that the two players must differ",
+    "source_status": "kr_runtime/confirmed for packet presence and bounded comparison; exact DCAD80 return for six failed runs unknown"
+  },
+  "requirements_for_r5": [
+    "valid identity in host and guest slots",
+    "S2C117 result 0 with selected local/dynamic map",
+    "S2C110 for both slots with ready_group=1",
+    "assign a mode-accepted nonzero team/color (control uses team 3 for both slots; opposite-team requirement is unknown)",
+    "after C2S104, server emits Start121 profile/slot rows; PvE AI slot semantics remain unknown"
+  ],
+  "run_file_sha256": {
+    "MonSnowBear07/controller.jsonl": "f59a1357fc121d5b92eb498fb5af7149dde35586b1bd925308c7887f76eaf232",
+    "MonSnowBear07/wire-segments-A.jsonl": "1fa91652effc861510ee5adf6650ade1cf89c7b72ace68f3b1846c6489a938a7",
+    "PopcadeB01/controller.jsonl": "1235fe5011b16790413f16d70ddad85255edf956b448178a0d759ffb651bee60",
+    "PopcadeB01/wire-segments-A.jsonl": "ae41f76a844a0bd146c9cd8db47c3cb9daafea8653745fdf60ca0332d898e52",
+    "Zzolman01/controller.jsonl": "636d7754fdcac7bdc9ee90d5d55f6147927bc60fdc4502d6efaaeee321317c06",
+    "Coloring01/controller.jsonl": "f0a576459f6f868b3ca1630faed4e6f6ef70233e7f4dc708b408962c04c526ab"
+  },
+  "limits": [
+    "Static helper cases do not prove every map record's roomtype/game-type byte.",
+    "No original server error response was observed for the failed attempts because client did not send 104.",
+    "AI/team assignment and Start121 PvE rows require the r5 capture."
+  ]
+}
