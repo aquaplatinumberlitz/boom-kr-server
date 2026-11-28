@@ -453,11 +453,15 @@ fn rejected_room_config(f2: Value) -> String {
 
 // Literal export names from kr_pack_export.py; candidate groups from the
 // KR00967 F2 mode catalog. Rabbit11 keeps the nonconsecutive suffix covered.
-const F2_EXPORT_SAMPLES: [(&str, &str, &str); 11] = [
+const F2_EXPORT_SAMPLES: [(&str, &str, &str); 15] = [
     ("CAPong", "CAPong01", "capong"),
     ("Clover", "Clover01", "clover"),
     ("Coloring", "Coloring01", "coloring"),
+    ("Gumiho", "Gumiho01", "gumiho"),
     ("Hamster", "Hamster01", "hamster"),
+    ("PopcadeA", "PopcadeA01", "popcade_a"),
+    ("PopcadeB", "PopcadeB01", "popcade_b"),
+    ("PopcadeC", "PopcadeC01", "popcade_c"),
     ("Rabbit", "Rabbit11", "farm_mission"),
     ("RescueET", "RescueET01", "rescue_et"),
     ("SnowyFields", "SnowyFields04", "snowy_fields"),
@@ -467,14 +471,23 @@ const F2_EXPORT_SAMPLES: [(&str, &str, &str); 11] = [
     ("Zzolman", "Zzolman01", "zzolman"),
 ];
 
+fn has_evaluation_preset(family: &str) -> bool {
+    matches!(
+        family,
+        "Coloring" | "Gumiho" | "Hamster" | "PopcadeA" | "PopcadeB" | "PopcadeC" | "SuperFighter"
+    )
+}
+
 #[test]
 fn f2_export_maps_require_an_explicit_runtime_preset_for_state_and_ticks() {
-    for (family, map, _) in F2_EXPORT_SAMPLES {
+    for (family, map, preset) in F2_EXPORT_SAMPLES {
+        let evaluates = has_evaluation_preset(family);
+        let mut legacy_startup = None;
         for enabled in [false, true] {
-            let policy = match (family, enabled) {
-                ("Hamster", true) => opt_in("hamster"),
-                (_, true) => opt_in("timebomb"),
-                (_, false) => Value::Null,
+            let policy = match (enabled, evaluates) {
+                (true, true) => opt_in(preset),
+                (true, false) => opt_in("timebomb"),
+                (false, _) => Value::Null,
             };
             let mut room = TestRoom::on(map_hub(policy, map), false);
             let round = room.load();
@@ -485,7 +498,7 @@ fn f2_export_maps_require_an_explicit_runtime_preset_for_state_and_ticks() {
             room.arm();
 
             if enabled {
-                if family == "Hamster" {
+                if evaluates {
                     let initial = room.start(round, F2Setup::Evaluate).unwrap();
                     assert_eq!(initial["outcome"], "playing", "{family}");
                     let unresolved = room
@@ -521,81 +534,40 @@ fn f2_export_maps_require_an_explicit_runtime_preset_for_state_and_ticks() {
                 );
             }
             room.no_packets();
+            if enabled {
+                assert_eq!(legacy_startup.as_ref().unwrap(), &room.startup, "{family}");
+            } else {
+                legacy_startup = Some(room.startup);
+            }
         }
     }
 }
 
 #[test]
-fn hamster_snowy_fields_and_zombie_rosters_use_only_exported_names() {
-    let hamster = [
-        "Hamster01",
-        "Hamster02",
-        "Hamster03",
-        "Hamster04",
-        "Hamster05",
-        "Hamster06",
-        "Hamster07",
-        "Hamster08",
-    ];
-    let snowy = [
-        "SnowyFields01",
-        "SnowyFields02",
-        "SnowyFields03",
-        "SnowyFields04",
-        "SnowyFields05",
-        "SnowyFields06",
-        "SnowyFields07",
-        "SnowyFields08",
-        "SnowyFields09",
-        "SnowyFields10",
-        "SnowyFields11",
-        "SnowyFields12",
-        "SnowyFields13",
-        "SnowyFields14",
-        "SnowyFields15",
-        "SnowyFields16",
-        "SnowyFields17",
-        "SnowyFields18",
-    ];
-    let zombie = [
-        "Zombie01", "Zombie02", "Zombie03", "Zombie04", "Zombie05", "Zombie06",
-    ];
-
-    // Hamster is the only one of these families with a named runtime
-    // evaluation adapter. Every exported map must pass its exact family gate.
-    for map in hamster {
-        let mut room = TestRoom::on(map_hub(opt_in("hamster"), map), false);
-        let round = room.load();
-        room.arm();
-        let initial = room.start(round, F2Setup::Evaluate).unwrap();
-        assert_eq!(initial["outcome"], "playing", "{map}");
-        assert_eq!(
-            room.event(round, 1, F2Event::Objective { winner: None })
-                .unwrap()["outcome"],
-            "unresolved",
-            "{map}"
-        );
-        room.no_packets();
-    }
-    let wrong_hamster = map_hub(
-        json!({"create_overrides": {"free": "hamster"}}),
-        "Hamster09",
-    );
-    let rejected = wrong_hamster.select_fixture(81, &create(false), 70000);
-    assert_eq!(
-        rejected.err().unwrap().to_string(),
-        "f2_map_not_confirmed_in_group_or_family",
-        "Hamster off-roster"
-    );
-
-    // SnowyFields and Zombie retain the complete static export roster while
-    // their gameplay dispatch remains fail-closed.
-    for (family, maps, preset) in [
-        ("SnowyFields", snowy.as_slice(), "snowy_fields"),
-        ("Zombie", zombie.as_slice(), "zombie"),
-    ] {
+fn f2_exported_rosters_match_the_census_and_reject_native_dispatch() {
+    let census: Value = serde_json::from_str(include_str!(
+        "../../../../docs/evidence/content/f2-f3-tile-grid-census.json"
+    ))
+    .unwrap();
+    let mut seen_maps = std::collections::BTreeSet::new();
+    for (family, sample, preset) in F2_EXPORT_SAMPLES {
+        let row = census["families"]["F2"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|row| row["family"] == family)
+            .unwrap();
+        assert_eq!(row["priority"], "terrain_ready");
+        let maps = row["maps"].as_array().unwrap();
+        assert!(maps.iter().any(|map| map == sample), "{family}");
+        let mut create_override = json!({"create_overrides": {"free": preset}});
+        if matches!(family, "Coloring" | "SuperFighter") {
+            create_override["visible_map_groups"] = json!([family]);
+        }
         for map in maps {
-            let hub = map_hub(json!({"create_overrides": {"free": preset}}), map);
+            let map = map.as_str().unwrap();
+            assert!(seen_maps.insert(map), "duplicate map: {map}");
+            let hub = map_hub(create_override.clone(), map);
             let rejected = hub.select_fixture(81, &create(false), 70000);
             assert_eq!(
                 rejected.err().unwrap().to_string(),
@@ -603,102 +575,27 @@ fn hamster_snowy_fields_and_zombie_rosters_use_only_exported_names() {
                 "{family} {map}"
             );
             assert!(hub.operator_rooms().unwrap().is_empty(), "{family} {map}");
-        }
-        let wrong = if family == "SnowyFields" {
-            "SnowyFields19"
-        } else {
-            "Zombie07"
-        };
-        let hub = map_hub(json!({"create_overrides": {"free": preset}}), wrong);
-        let rejected = hub.select_fixture(81, &create(false), 70000);
-        assert_eq!(
-            rejected.err().unwrap().to_string(),
-            "f2_map_not_confirmed_in_group_or_family",
-            "{family} off-roster"
-        );
-    }
 
-    let remaining: [(&str, &str, &[&str]); 8] = [
-        (
-            "CAPong",
-            "capong",
-            &["CAPong01", "CAPong02", "CAPong03", "CAPong04", "CAPong05"],
-        ),
-        (
-            "Clover",
-            "clover",
-            &[
-                "Clover01", "Clover02", "Clover03", "Clover04", "Clover05", "Clover06",
-            ],
-        ),
-        (
-            "Coloring",
-            "coloring",
-            &[
-                "Coloring01",
-                "Coloring02",
-                "Coloring03",
-                "Coloring04",
-                "Coloring05",
-            ],
-        ),
-        (
-            "Rabbit",
-            "farm_mission",
-            &[
-                "Rabbit01", "Rabbit02", "Rabbit03", "Rabbit04", "Rabbit05", "Rabbit11",
-            ],
-        ),
-        (
-            "RescueET",
-            "rescue_et",
-            &["RescueET01", "RescueET02", "RescueET03"],
-        ),
-        (
-            "SuperFighter",
-            "super_fighter",
-            &["SuperFighter16", "SuperFighter19"],
-        ),
-        (
-            "Wriggle",
-            "wriggle",
-            &[
-                "Wriggle01",
-                "Wriggle02",
-                "Wriggle03",
-                "Wriggle04",
-                "Wriggle05",
-                "Wriggle06",
-                "Wriggle07",
-            ],
-        ),
-        (
-            "Zzolman",
-            "zzolman",
-            &[
-                "Zzolman01",
-                "Zzolman02",
-                "Zzolman03",
-                "Zzolman04",
-                "Zzolman05",
-            ],
-        ),
-    ];
-    for (family, preset, maps) in remaining {
-        for map in maps {
-            let mut config = json!({"create_overrides": {"free": preset}});
-            if matches!(family, "Coloring" | "SuperFighter") {
-                config["visible_map_groups"] = json!([family]);
+            if has_evaluation_preset(family) {
+                let mut room = TestRoom::on(map_hub(opt_in(preset), map), false);
+                let round = room.load();
+                room.arm();
+                assert_eq!(
+                    room.start(round, F2Setup::Evaluate).unwrap()["outcome"],
+                    "playing",
+                    "{map}"
+                );
+                assert_eq!(
+                    room.event(round, 1, F2Event::Objective { winner: None })
+                        .unwrap()["outcome"],
+                    "unresolved",
+                    "{map}"
+                );
+                room.no_packets();
             }
-            let hub = map_hub(config, map);
-            let rejected = hub.select_fixture(81, &create(false), 70000);
-            assert_eq!(
-                rejected.err().unwrap().to_string(),
-                "f2_start_dispatch_unmeasured",
-                "{family} {map}"
-            );
         }
     }
+    assert_eq!(seen_maps.len(), 97);
 }
 
 #[test]
@@ -715,9 +612,8 @@ fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
             "{family}"
         );
 
-        let evaluates = matches!(family, "Coloring" | "SuperFighter");
         let mut create_override = json!({"create_overrides": {"free": group}});
-        if evaluates {
+        if matches!(family, "Coloring" | "SuperFighter") {
             create_override["visible_map_groups"] = json!([family]);
         }
         let malformed = format!("{map}x");
@@ -740,7 +636,7 @@ fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
             assert_eq!(rejected.err().unwrap().to_string(), expected, "{family}");
             assert!(hub.operator_rooms().unwrap().is_empty(), "{family}");
         }
-        if !evaluates && family != "Hamster" {
+        if !has_evaluation_preset(family) {
             let hub = map_hub(opt_in(group), map);
             let rejected = hub.select_fixture(81, &create(false), 70000);
             assert_eq!(
@@ -754,13 +650,17 @@ fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
 }
 
 #[test]
-fn coloring_and_super_fighter_evaluate_without_guessing_gameplay_rules() {
+fn family_presets_evaluate_without_guessing_gameplay_rules() {
     for (map, preset) in [
         ("Coloring01", json!("coloring")),
         ("Coloring02", json!("coloring")),
         ("Coloring03", json!("coloring")),
         ("Coloring04", json!("coloring")),
         ("Coloring05", json!("coloring")),
+        ("Gumiho11", json!("gumiho")),
+        ("PopcadeA05", json!("popcade_a")),
+        ("PopcadeB05", json!("popcade_b")),
+        ("PopcadeC05", json!("popcade_c")),
         ("SuperFighter16", json!("super_fighter")),
         ("SuperFighter19", json!({"game_type_id": 18})),
     ] {
@@ -783,6 +683,14 @@ fn coloring_and_super_fighter_evaluate_without_guessing_gameplay_rules() {
         assert_eq!(room.event(round, 1, tick).unwrap(), initial, "{map}");
         rejects(room.event(round, 2, defeat(0)), "UnsupportedAction");
         rejects(
+            room.event(round, 2, F2Event::Respawn { slot: 0 }),
+            "UnsupportedAction",
+        );
+        rejects(
+            room.event(round, 2, F2Event::PassBomb { from: 0, to: 1 }),
+            "UnsupportedAction",
+        );
+        rejects(
             room.event(round, 2, F2Event::Objective { winner: Some(0) }),
             "UnsupportedAction",
         );
@@ -799,6 +707,10 @@ fn coloring_and_super_fighter_evaluate_without_guessing_gameplay_rules() {
     for (group, wrong_map) in [
         ("coloring", "SuperFighter16"),
         ("super_fighter", "Coloring01"),
+        ("gumiho", "Zombie01"),
+        ("popcade_a", "PopcadeB01"),
+        ("popcade_b", "PopcadeC01"),
+        ("popcade_c", "PopcadeA01"),
     ] {
         let room = TestRoom::on(map_hub(opt_in(group), wrong_map), false);
         registry_foundation_tests::ready_roster(&room.room);

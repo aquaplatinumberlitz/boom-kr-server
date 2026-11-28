@@ -17,13 +17,17 @@ use rules::{ExtendedRules, RuleTable, Wave};
 
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
 
-// Families in the KR00967 terrain export allowlist (through PR #789). The catalog
+// Families in the KR00967 terrain export allowlist (through PR #795). The catalog
 // provides exact map names and candidate groups, but no native start route.
 const EXPORTED_F2_FAMILIES: &[&str] = &[
     "CAPong",
     "Clover",
     "Coloring",
+    "Gumiho",
     "Hamster",
+    "PopcadeA",
+    "PopcadeB",
+    "PopcadeC",
     "Rabbit",
     "RescueET",
     "SnowyFields",
@@ -184,12 +188,16 @@ enum ModeKind {
     FarmMission,
     #[serde(rename = "free_1v7")]
     Free1v7,
+    Gumiho,
     Hamster,
     Hedgehog,
     Ladder,
     LeaderCapture,
     Matchmaking,
     Popcade,
+    PopcadeA,
+    PopcadeB,
+    PopcadeC,
     RescueEt,
     Revive,
     SnowballEvent,
@@ -215,6 +223,13 @@ enum MapGroup {
 }
 
 impl ModeKind {
+    fn evaluates_family(self) -> bool {
+        matches!(
+            self,
+            Self::Gumiho | Self::Hamster | Self::PopcadeA | Self::PopcadeB | Self::PopcadeC
+        ) || self.evaluation_map_group().is_some()
+    }
+
     fn evaluation_map_group(self) -> Option<MapGroup> {
         match self {
             Self::Coloring => Some(MapGroup::Coloring),
@@ -457,6 +472,11 @@ impl Catalog {
                 // The catalog labels both farm families farm_mission. Give Hamster
                 // its own operator evaluation preset without widening Rabbit's map gate.
                 ("Hamster", ModeKind::FarmMission) => ModeKind::Hamster,
+                // The shared catalog row is F3. These F2 evaluation presets
+                // select one exact terrain family each, with no wire ID.
+                ("PopcadeA", ModeKind::Popcade) => ModeKind::PopcadeA,
+                ("PopcadeB", ModeKind::Popcade) => ModeKind::PopcadeB,
+                ("PopcadeC", ModeKind::Popcade) => ModeKind::PopcadeC,
                 (_, kind) => kind,
             };
             if let Some(mode) = catalog.modes.iter().find(|mode| mode.ruleset_group == kind) {
@@ -605,7 +625,7 @@ impl Policy {
         // The evaluation presets use the managed roomtype=0 route, limited to
         // exact names in their respective catalog families.
         if let Some(kind) = self.runtime.for_team(team)
-            && (kind.evaluation_map_group().is_some() || kind == ModeKind::Hamster)
+            && kind.evaluates_family()
         {
             self.validate_candidate_map(kind, &map.name)?;
         }
@@ -617,6 +637,80 @@ impl Policy {
 mod tests {
     use super::*;
     use serde_json::json;
+
+    #[test]
+    fn room_mode_exported_families_match_the_terrain_ready_census() {
+        let census: serde_json::Value = serde_json::from_str(include_str!(
+            "../../../../docs/evidence/content/f2-f3-tile-grid-census.json"
+        ))
+        .unwrap();
+        let ready: BTreeMap<_, _> = census["families"]["F2"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .filter(|row| row["priority"] == "terrain_ready")
+            .map(|row| {
+                (
+                    row["family"].as_str().unwrap(),
+                    row["maps"].as_array().unwrap(),
+                )
+            })
+            .collect();
+        assert_eq!(
+            ready.keys().copied().collect::<Vec<_>>(),
+            EXPORTED_F2_FAMILIES
+        );
+
+        let catalog = Catalog::load().unwrap();
+        for family in &catalog.families {
+            if let Some(maps) = ready.get(family.family.as_str()) {
+                let expected: BTreeSet<_> = maps.iter().map(|map| map.as_str().unwrap()).collect();
+                let actual: BTreeSet<_> = family.maps.iter().map(|map| map.name.as_str()).collect();
+                assert_eq!(actual, expected, "{}", family.family);
+            }
+        }
+    }
+
+    #[test]
+    fn room_mode_new_evaluators_require_exact_selection_and_normal_roomtype() {
+        for (preset, name) in [
+            ("gumiho", "Gumiho11"),
+            ("popcade_a", "PopcadeA05"),
+            ("popcade_b", "PopcadeB05"),
+            ("popcade_c", "PopcadeC05"),
+        ] {
+            let cfg =
+                serde_json::from_value(json!({"runtime_overrides": {"manner": preset}})).unwrap();
+            let policy = Policy::load(&cfg).unwrap().unwrap();
+            let mut map = Start121Map {
+                map_code: 900,
+                name: name.as_bytes().to_vec(),
+                dynamic_index: 3,
+                roomtype: 0,
+            };
+            let manner = RoomTeamSelector::Manner;
+            let free = RoomTeamSelector::Free;
+            assert!(policy.runtime_for(manner).unwrap().is_some());
+            assert!(policy.runtime_for(free).unwrap().is_none());
+            assert_eq!(policy.check_start(manner, &map, (900, 3)), Ok(()));
+            assert_eq!(
+                policy.check_start(manner, &map, (900, 4)),
+                Err("start_map_selection_mismatch")
+            );
+            map.roomtype = 1;
+            assert_eq!(
+                policy.check_start(manner, &map, (900, 3)),
+                Err("start_roomtype_unmeasured")
+            );
+            map.roomtype = 0;
+            map.name = b"Factory07".to_vec();
+            assert_eq!(
+                policy.check_start(manner, &map, (900, 3)),
+                Err("f2_map_not_confirmed_in_group_or_family")
+            );
+            assert_eq!(policy.check_start(free, &map, (900, 3)), Ok(()));
+        }
+    }
 
     #[test]
     fn room_map_groups_are_hidden_by_default_and_filter_only_exact_matches() {

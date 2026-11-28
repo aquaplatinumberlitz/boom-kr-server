@@ -93,7 +93,8 @@ impl ModeKind {
     /// Operator aliases for recognizable dialog labels at KR00967 0xC6C080.
     /// This correspondence is policy, and supplies no native dispatch or
     /// runtime support. Distinct IDs sharing a label are not interchangeable.
-    /// Coloring and Hamster have no established GameTypeId and are selected by name.
+    /// Family evaluation presets have no separate wire IDs. SuperFighter keeps
+    /// its existing alias, and Popcade's alias does not select an A/B/C family.
     fn game_type_id(self) -> Option<GameTypeId> {
         Some(match self {
             Self::Revive => GameTypeId::Rehab,
@@ -146,7 +147,11 @@ struct ModeRules {
 // These operator evaluation presets have no mode row in the shipped JSON table.
 const EVALUATION_RULES: &[ModeRules] = &[
     evaluation_rules(ModeKind::Coloring),
+    evaluation_rules(ModeKind::Gumiho),
     evaluation_rules(ModeKind::Hamster),
+    evaluation_rules(ModeKind::PopcadeA),
+    evaluation_rules(ModeKind::PopcadeB),
+    evaluation_rules(ModeKind::PopcadeC),
 ];
 
 const fn evaluation_rules(group: ModeKind) -> ModeRules {
@@ -315,9 +320,7 @@ impl RuleTable {
 
     pub(super) fn runtime_win(&self, group: ModeKind) -> Option<WinCondition> {
         let rules = self.descriptor(group)?;
-        (rules.wave == Wave::F2
-            || (rules.wave == Wave::F2Candidate
-                && (group.evaluation_map_group().is_some() || group == ModeKind::Hamster)))
+        (rules.wave == Wave::F2 || (rules.wave == Wave::F2Candidate && group.evaluates_family()))
             .then_some(rules.win)
     }
 }
