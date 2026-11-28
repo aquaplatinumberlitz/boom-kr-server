@@ -4,6 +4,7 @@ use kr_service::f3_pve_runtime::{
     RuntimeError,
 };
 use kr_wire::kr00967::f3_pve::F3JumpTableProvenance;
+use kr_wire::kr00967::f3_pve::{MonActionDelegationCandidate, MonActionStepReportCandidate};
 use serde_json::json;
 use std::{sync::Barrier, thread};
 
@@ -346,4 +347,102 @@ fn snapshot_serializes_counts_and_only_static_dispatch_provenance() {
     let snapshot = registry.snapshot();
     assert!(snapshot.enabled);
     assert_eq!(snapshot.active_rooms, 0);
+}
+
+#[test]
+fn stages_advance_only_after_a_clear_and_return_a_serializable_summary() {
+    let mut runtime = F3PveRuntime::with_limits(
+        ENABLED_POLICY,
+        FAMILY,
+        FIXTURE_EVIDENCE,
+        Limits::new(2, 1, 2).unwrap(),
+    )
+    .unwrap();
+    runtime.begin_briefing(1, 3, 21).unwrap();
+    assert_eq!(
+        runtime.advance_stage(2),
+        Err(RuntimeError::InvalidTransition)
+    );
+    runtime
+        .start_wave(1, &[MonsterSpawn { id: 42, hp: 2 }])
+        .unwrap();
+    runtime
+        .monster_attack(MonsterAttack {
+            actor_id: 3,
+            round_epoch: 21,
+            attack_sequence: 1,
+            monster_id: 42,
+            damage: 2,
+        })
+        .unwrap();
+    let summary = runtime.clear_stage().unwrap();
+    assert_eq!(summary.stage, 1);
+    assert_eq!(serde_json::to_value(summary).unwrap()["defeated"], 1);
+    assert_eq!(runtime.advance_stage(2), Ok(summary));
+    assert_eq!(runtime.phase(), Phase::Briefing { stage: 2 });
+    assert_eq!(
+        runtime.advance_stage(3),
+        Err(RuntimeError::InvalidTransition)
+    );
+}
+
+#[test]
+fn mon_action_validation_requires_active_host_slot_and_object() {
+    let mut runtime = F3PveRuntime::new(ENABLED_POLICY, FAMILY, FIXTURE_EVIDENCE);
+    runtime
+        .begin_briefing_with_slot(1, 77, Some(2), 31)
+        .unwrap();
+    runtime
+        .start_wave(1, &[MonsterSpawn { id: 55, hp: 10 }])
+        .unwrap();
+    let delegation = MonActionDelegationCandidate::new(204, 55, 2).unwrap();
+    let report = MonActionStepReportCandidate::new(132, 55, 0, 0).unwrap();
+    assert_eq!(
+        runtime.validate_mon_action_delegation(77, delegation),
+        Ok(())
+    );
+    assert_eq!(runtime.validate_mon_action_step_report(77, report), Ok(()));
+    assert_eq!(
+        runtime.validate_mon_action_delegation(
+            76,
+            MonActionDelegationCandidate::new(204, 55, 2).unwrap()
+        ),
+        Err(RuntimeError::MonActionHostMismatch)
+    );
+    assert_eq!(
+        runtime.validate_mon_action_delegation(
+            77,
+            MonActionDelegationCandidate::new(204, 55, 1).unwrap()
+        ),
+        Err(RuntimeError::MonActionOwnerSlotMismatch)
+    );
+    assert_eq!(
+        runtime.validate_mon_action_step_report(
+            77,
+            MonActionStepReportCandidate::new(132, 56, 0, 0).unwrap()
+        ),
+        Err(RuntimeError::MonActionObjectInactive)
+    );
+}
+
+#[test]
+fn registry_lists_rooms_in_id_order_and_respects_capacity() {
+    let registry = F3PveRegistry::new(ENABLED_POLICY, 2);
+    registry
+        .start_room(9, FAMILY, FIXTURE_EVIDENCE, 1, 1, 41)
+        .unwrap();
+    registry
+        .start_room(3, FAMILY, FIXTURE_EVIDENCE, 1, 2, 42)
+        .unwrap();
+    let listed = registry.list_active_rooms().unwrap();
+    assert_eq!(listed.len(), 2);
+    assert_eq!(listed[0].0, 3);
+    assert_eq!(listed[1].0, 9);
+    assert_eq!(listed[0].1.host_id, 2);
+    assert_eq!(
+        registry.start_room(12, FAMILY, FIXTURE_EVIDENCE, 1, 3, 43),
+        Err(RuntimeError::CapacityExceeded)
+    );
+    registry.end_room(3).unwrap();
+    assert_eq!(registry.list_active_rooms().unwrap().len(), 1);
 }

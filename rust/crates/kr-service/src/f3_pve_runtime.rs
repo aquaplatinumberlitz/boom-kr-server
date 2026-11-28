@@ -10,7 +10,10 @@ use std::sync::{Mutex, MutexGuard};
 use crate::f3_pve_policy::{
     DispatchRejection, F3PvePolicy, MonsterAttackGuard, MonsterAttackRejection, PveModeFamily,
 };
-use kr_wire::kr00967::f3_pve::{F3JumpTableProvenance, F3WireStatus, MonsterAttackReqCandidate};
+use kr_wire::kr00967::f3_pve::{
+    F3JumpTableProvenance, F3WireError, F3WireStatus, MonActionDelegationCandidate,
+    MonActionStepReportCandidate, MonsterAttackReqCandidate,
+};
 use serde::Serialize;
 
 pub const MAX_STAGES: u16 = 64;
@@ -110,13 +113,16 @@ pub enum Phase {
     Aborted { stage: Option<u16> },
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub struct StageResult {
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+pub struct StageClearSummary {
     pub stage: u16,
     pub waves: u16,
     pub defeated: u32,
     pub damage: u64,
 }
+
+/// Compatibility name retained for callers of the original single-stage API.
+pub type StageResult = StageClearSummary;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum RuntimeError {
@@ -137,6 +143,10 @@ pub enum RuntimeError {
     MonsterAlreadyDefeated,
     InvalidAttackState,
     InvalidRoundEpoch,
+    MonActionCandidate(F3WireError),
+    MonActionHostMismatch,
+    MonActionOwnerSlotMismatch,
+    MonActionObjectInactive,
 }
 
 impl From<DispatchRejection> for RuntimeError {
@@ -162,13 +172,14 @@ pub struct F3PveRuntime {
     limits: Limits,
     phase: Phase,
     host_id: Option<u32>,
+    host_slot: Option<u8>,
     round_epoch: Option<u64>,
     attack_guard: MonsterAttackGuard,
     monsters: Vec<Monster>,
     waves_started: u16,
     defeated: u32,
     damage: u64,
-    last_result: Option<StageResult>,
+    last_result: Option<StageClearSummary>,
 }
 
 impl F3PveRuntime {
@@ -190,6 +201,7 @@ impl F3PveRuntime {
             limits,
             phase: Phase::Idle,
             host_id: None,
+            host_slot: None,
             round_epoch: None,
             attack_guard: MonsterAttackGuard::new(0),
             monsters: Vec::with_capacity(limits.monsters_per_wave),
@@ -223,6 +235,10 @@ impl F3PveRuntime {
         self.last_result
     }
 
+    pub fn host_slot(&self) -> Option<u8> {
+        self.host_slot
+    }
+
     pub fn limits(&self) -> Limits {
         self.limits
     }
@@ -246,7 +262,22 @@ impl F3PveRuntime {
         host_id: u32,
         round_epoch: u64,
     ) -> Result<(), RuntimeError> {
+        self.begin_briefing_with_slot(stage, host_id, None, round_epoch)
+    }
+
+    pub fn begin_briefing_with_slot(
+        &mut self,
+        stage: u16,
+        host_id: u32,
+        host_slot: Option<u8>,
+        round_epoch: u64,
+    ) -> Result<(), RuntimeError> {
         self.gate()?;
+        if let Some(slot) = host_slot
+            && slot >= MonActionDelegationCandidate::OWNER_SLOT_COUNT
+        {
+            return Err(RuntimeError::MonActionOwnerSlotMismatch);
+        }
         if self.phase != Phase::Idle {
             return Err(RuntimeError::InvalidTransition);
         }
@@ -264,6 +295,7 @@ impl F3PveRuntime {
             })?;
         self.phase = Phase::Briefing { stage };
         self.host_id = Some(host_id);
+        self.host_slot = host_slot;
         self.round_epoch = Some(round_epoch);
         self.monsters.clear();
         self.waves_started = 0;
@@ -392,7 +424,7 @@ impl F3PveRuntime {
             }
             _ => return Err(RuntimeError::InvalidTransition),
         };
-        let result = StageResult {
+        let result = StageClearSummary {
             stage,
             waves: self.waves_started,
             defeated: self.defeated,
@@ -401,6 +433,108 @@ impl F3PveRuntime {
         self.phase = Phase::Cleared { stage };
         self.last_result = Some(result);
         Ok(result)
+    }
+
+    /// Move from a cleared stage to its next sequential stage.  The clear
+    /// summary remains available through `last_result`; the returned summary
+    /// is the stage that was just cleared.
+    pub fn advance_stage(&mut self, next_stage: u16) -> Result<StageClearSummary, RuntimeError> {
+        self.gate()?;
+        let (current_stage, summary, was_active) = match self.phase {
+            Phase::Cleared { stage } => (
+                stage,
+                self.last_result.ok_or(RuntimeError::InvalidTransition)?,
+                false,
+            ),
+            Phase::Active { stage, .. } if self.monsters.iter().all(|monster| monster.hp == 0) => (
+                stage,
+                StageClearSummary {
+                    stage,
+                    waves: self.waves_started,
+                    defeated: self.defeated,
+                    damage: self.damage,
+                },
+                true,
+            ),
+            _ => return Err(RuntimeError::InvalidTransition),
+        };
+        if next_stage == 0
+            || next_stage > self.limits.stages
+            || next_stage != current_stage.saturating_add(1)
+        {
+            return Err(RuntimeError::InvalidStage);
+        }
+        if was_active {
+            self.last_result = Some(summary);
+            self.phase = Phase::Cleared {
+                stage: current_stage,
+            };
+        }
+        self.phase = Phase::Briefing { stage: next_stage };
+        self.monsters.clear();
+        self.waves_started = 0;
+        self.defeated = 0;
+        self.damage = 0;
+        Ok(summary)
+    }
+
+    fn validate_mon_action_state(&self, actor_id: u32, object_id: u16) -> Result<(), RuntimeError> {
+        self.gate()?;
+        if !matches!(self.phase, Phase::Active { .. }) {
+            return Err(RuntimeError::InvalidTransition);
+        }
+        if self.host_id != Some(actor_id) {
+            return Err(RuntimeError::MonActionHostMismatch);
+        }
+        if !self
+            .monsters
+            .iter()
+            .any(|monster| monster.id == u32::from(object_id) && monster.hp > 0)
+        {
+            return Err(RuntimeError::MonActionObjectInactive);
+        }
+        Ok(())
+    }
+
+    /// Validate a static S→C delegation candidate against the active host,
+    /// owner slot, and monster object. No forwarding or ownership decision is
+    /// made here while the wire provenance is still capture-pending.
+    pub fn validate_mon_action_delegation(
+        &self,
+        actor_id: u32,
+        candidate: MonActionDelegationCandidate,
+    ) -> Result<(), RuntimeError> {
+        self.policy
+            .ensure_mon_action_enabled()
+            .map_err(RuntimeError::from)?;
+        self.gate()?;
+        candidate
+            .validate()
+            .map_err(RuntimeError::MonActionCandidate)?;
+        self.validate_mon_action_state(actor_id, candidate.object_id)?;
+        if self
+            .host_slot
+            .is_some_and(|host_slot| host_slot != candidate.owner_slot)
+        {
+            return Err(RuntimeError::MonActionOwnerSlotMismatch);
+        }
+        Ok(())
+    }
+
+    /// Validate a static C→S step report against the active host and object.
+    pub fn validate_mon_action_step_report(
+        &self,
+        actor_id: u32,
+        candidate: MonActionStepReportCandidate,
+    ) -> Result<(), RuntimeError> {
+        self.policy
+            .ensure_mon_action_enabled()
+            .map_err(RuntimeError::from)?;
+        self.gate()?;
+        candidate
+            .validate()
+            .map_err(RuntimeError::MonActionCandidate)?;
+        self.validate_mon_action_state(actor_id, candidate.object_id)
     }
 
     pub fn fail_stage(&mut self) -> Result<(), RuntimeError> {
@@ -524,6 +658,30 @@ impl F3PveRegistry {
             .monster_attack(attack)
     }
 
+    pub fn validate_mon_action_delegation(
+        &self,
+        room_id: u32,
+        actor_id: u32,
+        candidate: MonActionDelegationCandidate,
+    ) -> Result<(), RuntimeError> {
+        self.lock_rooms()?
+            .get(&room_id)
+            .ok_or(RuntimeError::InvalidTransition)?
+            .validate_mon_action_delegation(actor_id, candidate)
+    }
+
+    pub fn validate_mon_action_step_report(
+        &self,
+        room_id: u32,
+        actor_id: u32,
+        candidate: MonActionStepReportCandidate,
+    ) -> Result<(), RuntimeError> {
+        self.lock_rooms()?
+            .get(&room_id)
+            .ok_or(RuntimeError::InvalidTransition)?
+            .validate_mon_action_step_report(actor_id, candidate)
+    }
+
     /// Start the first wave or advance a room whose current wave is defeated.
     pub fn advance_wave(
         &self,
@@ -535,6 +693,24 @@ impl F3PveRegistry {
             .get_mut(&room_id)
             .ok_or(RuntimeError::InvalidTransition)?
             .start_wave(wave, spawns)
+    }
+
+    pub fn clear_stage(&self, room_id: u32) -> Result<StageClearSummary, RuntimeError> {
+        self.lock_rooms()?
+            .get_mut(&room_id)
+            .ok_or(RuntimeError::InvalidTransition)?
+            .clear_stage()
+    }
+
+    pub fn advance_stage(
+        &self,
+        room_id: u32,
+        next_stage: u16,
+    ) -> Result<StageClearSummary, RuntimeError> {
+        self.lock_rooms()?
+            .get_mut(&room_id)
+            .ok_or(RuntimeError::InvalidTransition)?
+            .advance_stage(next_stage)
     }
 
     /// Remove a session and free a slot. Unknown rooms return `InvalidTransition`.
@@ -555,6 +731,26 @@ impl F3PveRegistry {
             round_epoch: runtime.round_epoch.ok_or(RuntimeError::InvalidTransition)?,
             monster_count: runtime.monster_count(),
         })
+    }
+
+    pub fn list_active_rooms(&self) -> Result<Vec<(u32, F3PveRoomStatus)>, RuntimeError> {
+        let rooms = self.lock_rooms()?;
+        let mut active = rooms
+            .iter()
+            .map(|(room_id, runtime)| {
+                Ok((
+                    *room_id,
+                    F3PveRoomStatus {
+                        phase: runtime.phase(),
+                        host_id: runtime.host_id.ok_or(RuntimeError::InvalidTransition)?,
+                        round_epoch: runtime.round_epoch.ok_or(RuntimeError::InvalidTransition)?,
+                        monster_count: runtime.monster_count(),
+                    },
+                ))
+            })
+            .collect::<Result<Vec<_>, RuntimeError>>()?;
+        active.sort_by_key(|(room_id, _)| *room_id);
+        Ok(active)
     }
 
     /// Report registry availability and static wire provenance. Room evidence
