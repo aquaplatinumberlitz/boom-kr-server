@@ -9,7 +9,7 @@ use kr_wire::kr00967::custom_map::{
 use serde::de::{MapAccess, Visitor, value::MapAccessDeserializer};
 use serde::{Deserialize, Deserializer, Serialize};
 use std::{
-    collections::BTreeMap,
+    collections::{BTreeMap, BTreeSet},
     fmt::{self, Write as _},
     fs::{self, DirBuilder, File, Metadata},
     io::{self, Read, Write as _},
@@ -23,6 +23,12 @@ const MAX_ID_BYTES: usize = 64;
 const MAX_POLICY_BYTES: usize = 4096;
 // One JSON string can expand to six bytes per input byte when escaped.
 const MAX_RECORD_BYTES: usize = 6 * MAX_CUSTOM_MAP_BYTES + 1024;
+const SHA256_HEX_BYTES: usize = 64;
+const MAX_SEARCH_QUERY_BYTES: usize = 64;
+const MAX_SEARCH_RESULTS: usize = 64;
+const MAX_QUERY_ENTRIES: usize = 4096;
+const MAX_GOOD_VOTE_MAPS: usize = 256;
+const MAX_GOOD_VOTERS_PER_MAP: usize = 256;
 
 // Keep the quota check and publication in one critical section, even when
 // multiple store handles in this service process point at the same directory.
@@ -155,6 +161,11 @@ pub enum CustomMapStoreError {
     InvalidPolicyLimits,
     PolicyJson(serde_json::Error),
     PayloadTooLarge,
+    InvalidHash,
+    QueryTooLong,
+    QueryScanLimitExceeded,
+    AmbiguousMapId,
+    VoteLimitExceeded,
     InvalidMap(CustomMapError),
     QuotaExceeded,
     Integrity,
@@ -173,6 +184,13 @@ impl fmt::Display for CustomMapStoreError {
             Self::InvalidPolicyLimits => f.write_str("custom map policy limits are out of bounds"),
             Self::PolicyJson(error) => write!(f, "invalid custom map policy JSON: {error}"),
             Self::PayloadTooLarge => f.write_str("custom map payload exceeds the policy limit"),
+            Self::InvalidHash => {
+                f.write_str("custom map hash must be 64 lowercase hexadecimal bytes")
+            }
+            Self::QueryTooLong => f.write_str("custom map search query exceeds the bounded length"),
+            Self::QueryScanLimitExceeded => f.write_str("custom map query scan limit exceeded"),
+            Self::AmbiguousMapId => f.write_str("custom map ID matches more than one owner"),
+            Self::VoteLimitExceeded => f.write_str("custom map good-vote bound exceeded"),
             Self::InvalidMap(error) => write!(f, "invalid custom map: {error}"),
             Self::QuotaExceeded => f.write_str("custom map owner quota exceeded"),
             Self::Integrity => f.write_str("stored custom map failed integrity verification"),
@@ -207,6 +225,12 @@ struct StoredMap<T> {
     payload: T,
 }
 
+#[derive(Debug)]
+struct GoodVotes {
+    metadata: CustomMapMetadata,
+    voters: BTreeSet<u64>,
+}
+
 /// Point this store at a service controlled directory. The service process must
 /// be the only writer and untrusted users must not be able to replace path
 /// components. Files are checked again on each operation. The persisted digest
@@ -216,6 +240,7 @@ pub struct CustomMapStore {
     root: PathBuf,
     policy: CustomMapPolicy,
     trusted_palette: BTreeMap<u16, bool>,
+    good_votes: BTreeMap<String, GoodVotes>,
 }
 
 impl CustomMapStore {
@@ -242,6 +267,7 @@ impl CustomMapStore {
             root,
             policy,
             trusted_palette,
+            good_votes: BTreeMap::new(),
         })
     }
 
@@ -348,6 +374,144 @@ impl CustomMapStore {
         self.quota_in(&owner_dir)
     }
 
+    /// Check a stored payload digest without admitting any Type 666 route.
+    /// Hash text is deliberately stricter than a generic hex parser so the
+    /// lookup has one canonical representation.
+    pub fn check_hash_value(&self, sha256_hex: &str) -> Result<bool, CustomMapStoreError> {
+        self.ensure_enabled()?;
+        if sha256_hex.len() != SHA256_HEX_BYTES
+            || !sha256_hex
+                .bytes()
+                .all(|byte| matches!(byte, b'0'..=b'9' | b'a'..=b'f'))
+        {
+            return Err(CustomMapStoreError::InvalidHash);
+        }
+        let _lock = lock_store()?;
+        let mut budget = MAX_QUERY_ENTRIES;
+        for owner_id in self.query_owner_ids(&mut budget)? {
+            let owner_dir = self.root.join(&owner_id);
+            for map_id in map_ids_with_budget(&owner_dir, &mut budget)? {
+                let record = self
+                    .load(&owner_dir, &owner_id, &map_id)?
+                    .ok_or(CustomMapStoreError::Integrity)?;
+                if record.metadata.sha256 == sha256_hex {
+                    return Ok(true);
+                }
+            }
+        }
+        Ok(false)
+    }
+
+    /// Search verified records by owner or map ID (the local format has no
+    /// separate title or author name). Matching ignores ASCII case. An empty
+    /// query lists maps in owner then map ID order, like any other search.
+    /// Returns metadata only, capped at 64 results.
+    pub fn search_maps(
+        &self,
+        query: &str,
+        limit: usize,
+    ) -> Result<Vec<CustomMapMetadata>, CustomMapStoreError> {
+        self.ensure_enabled()?;
+        if query.len() > MAX_SEARCH_QUERY_BYTES {
+            return Err(CustomMapStoreError::QueryTooLong);
+        }
+        let limit = limit.min(MAX_SEARCH_RESULTS);
+        if limit == 0 {
+            return Ok(Vec::new());
+        }
+        let query = query.to_ascii_lowercase();
+        let _lock = lock_store()?;
+        let mut budget = MAX_QUERY_ENTRIES;
+        let mut results = Vec::with_capacity(limit);
+        for owner_id in self.query_owner_ids(&mut budget)? {
+            let owner_dir = self.root.join(&owner_id);
+            let owner_matches = owner_id.to_ascii_lowercase().contains(&query);
+            for map_id in map_ids_with_budget(&owner_dir, &mut budget)? {
+                if !owner_matches && !map_id.to_ascii_lowercase().contains(&query) {
+                    continue;
+                }
+                let record = self
+                    .load(&owner_dir, &owner_id, &map_id)?
+                    .ok_or(CustomMapStoreError::Integrity)?;
+                results.push(record.metadata);
+                if results.len() == limit {
+                    return Ok(results);
+                }
+            }
+        }
+        Ok(results)
+    }
+
+    /// Count at most one good vote per account for a map on this store
+    /// handle. Votes are tied to the verified owner and payload digest. An
+    /// observed change to either resets the count. Votes are not persisted;
+    /// the caller supplies the authenticated voter ID.
+    pub fn record_good_vote(
+        &mut self,
+        map_id: &str,
+        voter_account_id: u64,
+    ) -> Result<u64, CustomMapStoreError> {
+        self.ensure_enabled()?;
+        validate_map_id(map_id)?;
+        let _lock = lock_store()?;
+        let mut budget = MAX_QUERY_ENTRIES;
+        let mut metadata = None;
+        for owner_id in self.query_owner_ids(&mut budget)? {
+            let owner_dir = self.root.join(&owner_id);
+            if let Some(record) = self.load(&owner_dir, &owner_id, map_id)? {
+                if metadata.is_some() {
+                    return Err(CustomMapStoreError::AmbiguousMapId);
+                }
+                metadata = Some(record.metadata);
+            }
+        }
+        let metadata = metadata.ok_or(CustomMapStoreError::NotFound)?;
+        if self.good_votes.len() == MAX_GOOD_VOTE_MAPS && !self.good_votes.contains_key(map_id) {
+            return Err(CustomMapStoreError::VoteLimitExceeded);
+        }
+        let votes = self
+            .good_votes
+            .entry(map_id.to_owned())
+            .or_insert_with(|| GoodVotes {
+                metadata: metadata.clone(),
+                voters: BTreeSet::new(),
+            });
+        if votes.metadata != metadata {
+            votes.metadata = metadata;
+            votes.voters.clear();
+        }
+        if votes.voters.len() == MAX_GOOD_VOTERS_PER_MAP
+            && !votes.voters.contains(&voter_account_id)
+        {
+            return Err(CustomMapStoreError::VoteLimitExceeded);
+        }
+        votes.voters.insert(voter_account_id);
+        Ok(votes.voters.len() as u64)
+    }
+
+    /// Validate a publish draft using the same bounded map parser as `save`,
+    /// without touching the filesystem or claiming quota.
+    pub fn validate_publish_draft(
+        &self,
+        owner_id: &str,
+        map_id: &str,
+        payload: &[u8],
+    ) -> Result<CustomMapMetadata, CustomMapStoreError> {
+        self.ensure_enabled()?;
+        if !valid_id(owner_id) {
+            return Err(CustomMapStoreError::InvalidOwnerId);
+        }
+        validate_map_id(map_id)?;
+        if payload.len() > self.policy.max_payload_bytes {
+            return Err(CustomMapStoreError::PayloadTooLarge);
+        }
+        let map = CustomMap::parse_normalized(payload, &self.trusted_palette)
+            .map_err(CustomMapStoreError::InvalidMap)?;
+        std::str::from_utf8(payload)
+            .map_err(|_| CustomMapStoreError::InvalidMap(CustomMapError::InvalidNormalizedJson))?;
+        Ok(map_metadata(owner_id, map_id, sha256_hex(payload), &map))
+    }
+
     fn quota_in(&self, owner_dir: &Path) -> Result<usize, CustomMapStoreError> {
         Ok(self
             .policy
@@ -361,6 +525,32 @@ impl CustomMapStore {
         } else {
             Err(CustomMapStoreError::Disabled)
         }
+    }
+
+    fn query_owner_ids(&self, budget: &mut usize) -> Result<Vec<String>, CustomMapStoreError> {
+        if !directory_exists(&self.root, false)? {
+            return Ok(Vec::new());
+        }
+        let mut owners = Vec::new();
+        for entry in fs::read_dir(&self.root)? {
+            spend_query_entry(budget)?;
+            let entry = entry?;
+            let file_type = entry.file_type()?;
+            if file_type.is_symlink() {
+                return Err(CustomMapStoreError::Symlink);
+            }
+            if !file_type.is_dir() {
+                return Err(CustomMapStoreError::InvalidPath);
+            }
+            let name = entry.file_name();
+            let name = name.to_str().ok_or(CustomMapStoreError::Integrity)?;
+            if !valid_id(name) {
+                return Err(CustomMapStoreError::InvalidOwnerId);
+            }
+            owners.push(name.to_owned());
+        }
+        owners.sort_unstable();
+        Ok(owners)
     }
 
     fn owner_path(&self, owner_id: &str) -> Result<PathBuf, CustomMapStoreError> {
@@ -522,8 +712,24 @@ fn read_regular(path: &Path, limit: usize) -> Result<Option<Vec<u8>>, CustomMapS
 }
 
 fn map_ids(owner_dir: &Path) -> Result<Vec<String>, CustomMapStoreError> {
+    let mut budget = usize::MAX;
+    map_ids_with_budget(owner_dir, &mut budget)
+}
+
+fn spend_query_entry(budget: &mut usize) -> Result<(), CustomMapStoreError> {
+    *budget = budget
+        .checked_sub(1)
+        .ok_or(CustomMapStoreError::QueryScanLimitExceeded)?;
+    Ok(())
+}
+
+fn map_ids_with_budget(
+    owner_dir: &Path,
+    budget: &mut usize,
+) -> Result<Vec<String>, CustomMapStoreError> {
     let mut ids = Vec::new();
     for entry in fs::read_dir(owner_dir)? {
+        spend_query_entry(budget)?;
         let entry = entry?;
         let file_type = entry.file_type()?;
         if file_type.is_symlink() {
