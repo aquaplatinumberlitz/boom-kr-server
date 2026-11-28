@@ -355,6 +355,11 @@ impl Opened {
         self.auth.clone()
     }
 
+    pub(crate) fn with_f4_security_kits(mut self, kits: Arc<F4SecurityKitsRuntime>) -> Self {
+        self.shop = self.shop.with_f4_security_kits(kits);
+        self
+    }
+
     pub(crate) fn with_policies(
         mut self,
         f6_policy: Option<Arc<F6EventPolicy>>,

@@ -675,7 +675,11 @@ impl Owner {
             Some(ws) => {
                 let opened = web_shop::open(ws.clone()).await?;
                 let maps = config.open_custom_map_store(settings.f7)?;
-                Some(opened.with_policies(settings.f6, maps))
+                Some(
+                    opened
+                        .with_policies(settings.f6, maps)
+                        .with_f4_security_kits(settings.f4_security_kits.clone()),
+                )
             }
             None => None,
         };
