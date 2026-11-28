@@ -439,6 +439,9 @@ async fn listen_f4(
 const F3_PVE_STATUS: &str = "/api/v1/f3/pve-status";
 const F2_MODES_STATUS: &str = "/api/v1/f2/modes-status";
 const F4_ANCHORS_STATUS: &str = "/api/v1/f4/anchors-status";
+const F6_EVENTS_ANCHORS_STATUS: &str = "/api/v1/f6/events-anchors-status";
+const F7_WIRE_ANCHORS_STATUS: &str = "/api/v1/f7/wire-anchors-status";
+const CHOCO_ANCHORS_STATUS: &str = "/api/social/choco-anchors-status";
 
 async fn f3_pve_status_fixture() -> (TempDir, crate::account_worker::Worker, Opened, WebShopToken) {
     let (dir, db) = temp_db("pve-status");
@@ -604,6 +607,191 @@ async fn loopback_f2_modes_and_f4_anchors_status_require_bearer_and_queryless_ge
     );
     stop.send(true).unwrap();
     task.await.unwrap().unwrap();
+}
+
+#[tokio::test]
+async fn loopback_f5_f6_f7_anchor_statuses_are_authenticated_and_read_only() {
+    let (_dir, worker, opened, token) = f3_pve_status_fixture().await;
+    let addr = opened.listener.local_addr().unwrap();
+    let (stop, stopped) = watch::channel(false);
+    let task = tokio::spawn(serve_until(opened, worker.service(), stopped));
+    let unknown_token = "a".repeat(64);
+    let bearer = Some(token.as_str());
+
+    for path in [
+        F6_EVENTS_ANCHORS_STATUS,
+        F7_WIRE_ANCHORS_STATUS,
+        CHOCO_ANCHORS_STATUS,
+    ] {
+        for invalid in [None, Some(unknown_token.as_str())] {
+            let (code, _, body) = send_http(addr, "GET", path, invalid, None).await;
+            assert_eq!(
+                (code, body),
+                (401, json!({"error": "unauthorized"})),
+                "{path}"
+            );
+        }
+        for (method, suffix, expected) in [
+            ("POST", "", 405),
+            ("GET", "?opcode=553", 400),
+            ("GET", "?", 400),
+        ] {
+            let target = format!("{path}{suffix}");
+            let (code, _, _) = send_http(addr, method, &target, bearer, None).await;
+            assert_eq!(code, expected, "{method} {target}");
+        }
+    }
+
+    let fetch = |path: &'static str| async move {
+        let (code, headers, body) = send_http(addr, "GET", path, bearer, None).await;
+        assert_eq!(code, 200, "{path}");
+        assert!(headers.contains("Content-Type: application/json"), "{path}");
+        assert!(headers.contains("Cache-Control: no-store"), "{path}");
+        body
+    };
+
+    let events = fetch(F6_EVENTS_ANCHORS_STATUS).await;
+    let anchors = events["anchors"].as_array().unwrap();
+    assert_eq!(events["total"], anchors.len());
+    assert_eq!(
+        anchors
+            .iter()
+            .map(|anchor| anchor["opcode"].as_u64().unwrap())
+            .collect::<Vec<_>>(),
+        [
+            321, 322, 323, 548, 549, 553, 566, 568, 569, 574, 576, 577, 408, 409, 413, 414, 418,
+            419
+        ]
+    );
+    assert_eq!(events["static_candidate_count"], 2);
+    assert!(anchors.iter().all(|anchor| {
+        let expected = match anchor["opcode"].as_u64().unwrap() {
+            553 | 418 => "static_candidate_pending_capture",
+            _ => "unmeasured_pending_capture",
+        };
+        anchor["status"] == expected
+    }));
+    assert!(anchors.contains(&json!({
+        "stage": "game_stage",
+        "opcode": 553,
+        "handler_va": "0xE69D80",
+        "dispatcher_va": "0xE5D3A0",
+        "jump_table_va": "0xE5DF9C",
+        "status": "static_candidate_pending_capture",
+        "note": "Reads u8, u16, u8.",
+    })));
+    assert!(anchors.iter().any(|anchor| {
+        anchor["opcode"] == 418
+            && anchor["stage"] == "lobby_stage"
+            && anchor["dispatcher_va"] == "0xD68C90"
+            && anchor["jump_table_va"].is_null()
+    }));
+    assert!(!events.to_string().contains("PCRoomBenefit"));
+
+    let maps = fetch(F7_WIRE_ANCHORS_STATUS).await;
+    assert_eq!(
+        maps["type_666"],
+        json!({
+            "packet_type": 666,
+            "subtype_range": [19, 38],
+            "dispatcher_va": "0x5A3BF0",
+            "upload_ctor_va": "0x9BFC80",
+            "upload_handler_va": "0x5B11D0",
+            "usermap_rtti_va": "0x19C7E80",
+            "usermap_vtable_va": "0x175E38C",
+            "room_meta_opcode": 273,
+            "room_meta_reader_va": "0xD72FD0",
+            "status": "unmeasured",
+        })
+    );
+    let packets = maps["packet_anchors"].as_array().unwrap();
+    assert_eq!(
+        packets
+            .iter()
+            .map(|anchor| anchor["name"].as_str().unwrap())
+            .collect::<Vec<_>>(),
+        [
+            "P_REQ_CHECK_HASH_VALUE",
+            "P_REQ_PUBLISH",
+            "P_REQ_LOAD",
+            "P_REQ_LOAD_SEARCH",
+            "P_REQ_GOOD",
+        ]
+    );
+    assert!(packets.iter().all(|anchor| {
+        anchor["status"] == "unmeasured"
+            && anchor.get("opcode").is_none()
+            && anchor.get("subtype").is_none()
+    }));
+    assert_eq!(packets[0]["reader_va"], "0x4D6980");
+    assert_eq!(packets[0]["writer_va"], "0x4D68F0");
+
+    let social = fetch(CHOCO_ANCHORS_STATUS).await;
+    let anchors = social["anchors"].as_array().unwrap();
+    assert_eq!(social["total"], 14);
+    assert_eq!(anchors.len(), 14);
+    for (group, count) in [("choco_chat", 7), ("note", 1), ("plaza", 6)] {
+        assert_eq!(
+            anchors.iter().filter(|a| a["group"] == group).count(),
+            count
+        );
+    }
+    assert!(anchors.iter().all(|anchor| {
+        anchor["status"] == "unmeasured_wire_contract" && anchor["opcode"].is_null()
+    }));
+    for (name, site) in [
+        (
+            "CChattingStage::OnResConnectToSvr",
+            json!({
+                "kind": "chat_stage_handler",
+                "handler_va": "0xD58760",
+                "connect_callee_va": "0x13AD4D0",
+            }),
+        ),
+        (
+            "P_CHOCO_CHATMSG",
+            json!({"kind": "packet_rtti", "namespace": "CHOCOPacket"}),
+        ),
+        ("Note", json!({"kind": "catalog_system", "system": "Mail"})),
+        (
+            "LobbySquare",
+            json!({"kind": "plaza_map_family", "map_count": 9, "script_count": 9, "script_unknown": 9}),
+        ),
+    ] {
+        let anchor = anchors
+            .iter()
+            .find(|anchor| anchor["name"] == name)
+            .unwrap();
+        assert_eq!(anchor["site"], site, "{name}");
+    }
+    stop.send(true).unwrap();
+    task.await.unwrap().unwrap();
+}
+
+#[test]
+fn anchor_status_panels_render_text_in_dom_nodes() {
+    let page = super::PAGE;
+    for (path, list_id) in [
+        (F6_EVENTS_ANCHORS_STATUS, "f6-events-anchors"),
+        (F7_WIRE_ANCHORS_STATUS, "f7-wire-anchors"),
+        (CHOCO_ANCHORS_STATUS, "choco-anchors"),
+    ] {
+        assert!(page.contains(&format!(r#"id="{list_id}-status""#)));
+        assert!(page.contains(&format!(r#"<ul id="{list_id}">"#)));
+        assert!(page.contains(&format!("await api('{path}')")));
+        assert!(page.contains(&format!("const list=q('#{list_id}')")));
+    }
+    assert!(page.contains(
+        "const li=document.createElement('li');\n  li.textContent=text;\n  list.append(li);"
+    ));
+    for sink in [
+        "innerHTML",
+        "outerHTML",
+        "insertAdjacentHTML",
+        "document.write",
+    ] {
+        assert!(!page.contains(sink), "{sink}");
+    }
 }
 
 #[tokio::test]
