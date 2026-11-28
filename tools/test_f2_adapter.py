@@ -28,6 +28,19 @@ EXPANDED_FAMILIES = {
     'PopcadeC': tuple(f'PopcadeC{n:02}' for n in range(1, 6)),
     'Gumiho': tuple(f'Gumiho{n:02}' for n in range(1, 12)),
 }
+# Trích các record đại diện từ TileInfoList của KR 00967.
+BASEBALL_WALL = (1, 0, 0, 0, 0, 0, 4, 1, 1, *(0,) * 9)
+STATIC_GROUND = (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0)
+BLOCKED_BASEBALL_KART = (
+    ('tile', 'Tile70_Ground/Tile04', (*STATIC_GROUND[:15], 1, 12200506, 128201656)),
+    ('tile', 'Tile12_Ground/LapTile01_Horz', (*STATIC_GROUND[:13], 1, 0, 117761, 0, 0)),
+    ('tile', 'Tile12_Ground/Start_Vert1', (*STATIC_GROUND[:13], 1, 0, 52225, 0, 0)),
+    ('tile', 'Tile12_Ground/Race13', (*STATIC_GROUND[:13], 1, 0, 52224, 0, 0)),
+    ('object', 'Tile12_Passable/GasRight00', (3, 0, 0, 0, 0, 0, *(0x01000100,) * 3,
+                                             0, 0, 1, 0, 100, 0, 0, 0, 0)),
+    ('object', 'Tile12_Static/Tire00', (1, 0, 0, 0, 0, 0, 1, 1, 0, 30, 0,
+                                      *(-858993460,) * 5, 0, 0)),
+)
 
 
 def payload(*, width=15, height=13, cells=None, spawns=((2, 5), (2, 7), (12, 5), (12, 7)), extra=b''):
@@ -50,6 +63,25 @@ class F2SelectionTests(unittest.TestCase):
 
 
 class F2GeometryTests(unittest.TestCase):
+    def test_baseball_static_footprint_requires_the_exact_record(self):
+        key = 'Tile70_Static/Static28'
+        profile = dict(name='BaseballProbe', width=15, height=13, spawns=[], payload_sha256='',
+                       cell_fields=['tile', 'object', 'overlay'], cells=[(-1, 0, -1)])
+        terrain = adapter.f2_terrain_rules(profile, ([key], {key: BASEBALL_WALL}))['terrain']
+        self.assertEqual(terrain['kinds'], [1] * 4 + [0] * 191)
+        for i, word in enumerate(BASEBALL_WALL):
+            changed = (*BASEBALL_WALL[:i], word ^ 1, *BASEBALL_WALL[i + 1:])
+            with self.subTest(word=i), self.assertRaisesRegex(ValueError, key):
+                adapter.f2_terrain_rules(profile, ([key], {key: changed}))
+
+    def test_rejects_baseball_and_kart_mode_tiles(self):
+        for role, key, data in BLOCKED_BASEBALL_KART:
+            cell = (0, -1, -1) if role == 'tile' else (-1, 0, -1)
+            profile = dict(name='ModeProbe', width=15, height=13, spawns=[], payload_sha256='',
+                           cell_fields=['tile', 'object', 'overlay'], cells=[cell])
+            with self.subTest(tile=key), self.assertRaisesRegex(ValueError, key):
+                adapter.f2_terrain_rules(profile, ([key], {key: data}))
+
     def test_small_delta_geometry_uses_exact_tile_info(self):
         tiles = {
             'Tile15_Static/Bf03_03': (1, 0, 0, 0, 0, 0, 1, 1, 0, 10103, 0, 1243912,
@@ -208,6 +240,8 @@ class F2AdapterTests(unittest.TestCase):
             (('Bula00',), 'chưa được giải mã đầy đủ'),
             (('Bula16',), 'chưa được giải mã đầy đủ'),
             (('Baseball01',), 'tile chưa ánh xạ'),
+            (('Baseball03',), 'allowlist adapter F2'),
+            (('Kart02',), 'tile chưa ánh xạ'),
         )
         for names, message in cases:
             with self.subTest(names=names):
