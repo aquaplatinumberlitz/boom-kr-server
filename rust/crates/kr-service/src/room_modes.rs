@@ -17,17 +17,19 @@ use rules::{ExtendedRules, RuleTable, Wave};
 
 const CATALOG: &str = include_str!("../../../../docs/evidence/content/f2-mode-catalog.json");
 
-// Families in the KR00967 terrain export allowlist (PR #756). The catalog
+// Families in the KR00967 terrain export allowlist (through PR #781). The catalog
 // provides exact map names and candidate groups, but no native start route.
 const EXPORTED_F2_FAMILIES: &[&str] = &[
     "CAPong",
     "Clover",
+    "Coloring",
     "Rabbit",
     "RescueET",
     "SnowyFields",
+    "SuperFighter",
     "Wriggle",
-    "Zzolman",
     "Zombie",
+    "Zzolman",
 ];
 
 // The 21 F2? families in f2-extended-modes-matrix.json, paired with their
@@ -176,6 +178,7 @@ enum ModeKind {
     Capong,
     Clover,
     CoOp,
+    Coloring,
     ConfusedFight,
     FarmMission,
     #[serde(rename = "free_1v7")]
@@ -203,6 +206,20 @@ enum MapGroup {
     Ladder,
     #[serde(rename = "ReBirthMapGroup")]
     Rebirth,
+    // Operator visibility labels for exact catalog families. Neither label
+    // establishes a KR Attr locator or a default numeric MapGroupVisible ID.
+    Coloring,
+    SuperFighter,
+}
+
+impl ModeKind {
+    fn evaluation_map_group(self) -> Option<MapGroup> {
+        match self {
+            Self::Coloring => Some(MapGroup::Coloring),
+            Self::SuperFighter => Some(MapGroup::SuperFighter),
+            _ => None,
+        }
+    }
 }
 
 impl MapGroup {
@@ -433,7 +450,7 @@ impl Catalog {
             );
             let kind = ModeKind::deserialize(group).map_err(io::Error::other)?;
             if let Some(mode) = catalog.modes.iter().find(|mode| mode.ruleset_group == kind) {
-                if mode.wave != Wave::F2Candidate
+                if !mode.wave.in_f2()
                     || !mode.related_families.iter().any(|link| link.family == name)
                 {
                     return Err(io::Error::other(format!(
@@ -565,10 +582,23 @@ impl Policy {
         }
         if let Some(kind) = self.override_for(team) {
             self.validate_candidate_map(kind, &map.name)?;
+            if kind
+                .evaluation_map_group()
+                .is_some_and(|group| !self.visible.contains(&group))
+            {
+                return Err("f2_map_group_hidden");
+            }
             return self.rules.check_start(kind);
         }
         if map.roomtype != 0 {
             return Err("start_roomtype_unmeasured");
+        }
+        // The evaluation presets use the managed roomtype=0 route, limited to
+        // exact names in their respective catalog families.
+        if let Some(kind) = self.runtime.for_team(team)
+            && kind.evaluation_map_group().is_some()
+        {
+            self.validate_candidate_map(kind, &map.name)?;
         }
         Ok(())
     }

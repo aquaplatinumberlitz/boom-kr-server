@@ -453,15 +453,17 @@ fn rejected_room_config(f2: Value) -> String {
 
 // Literal export names from kr_pack_export.py; candidate groups from the
 // KR00967 F2 mode catalog. Rabbit11 keeps the nonconsecutive suffix covered.
-const F2_EXPORT_SAMPLES: [(&str, &str, &str); 8] = [
+const F2_EXPORT_SAMPLES: [(&str, &str, &str); 10] = [
     ("CAPong", "CAPong01", "capong"),
     ("Clover", "Clover01", "clover"),
+    ("Coloring", "Coloring01", "coloring"),
     ("Rabbit", "Rabbit11", "farm_mission"),
     ("RescueET", "RescueET01", "rescue_et"),
     ("SnowyFields", "SnowyFields04", "snowy_fields"),
+    ("SuperFighter", "SuperFighter16", "super_fighter"),
     ("Wriggle", "Wriggle01", "wriggle"),
-    ("Zzolman", "Zzolman01", "zzolman"),
     ("Zombie", "Zombie04", "zombie"),
+    ("Zzolman", "Zzolman01", "zzolman"),
 ];
 
 #[test]
@@ -521,7 +523,11 @@ fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
             "{family}"
         );
 
-        let create_override = json!({"create_overrides": {"free": group}});
+        let evaluates = matches!(family, "Coloring" | "SuperFighter");
+        let mut create_override = json!({"create_overrides": {"free": group}});
+        if evaluates {
+            create_override["visible_map_groups"] = json!([family]);
+        }
         let malformed = format!("{map}x");
         let (_, other_family_map, _) = F2_EXPORT_SAMPLES[(index + 1) % F2_EXPORT_SAMPLES.len()];
         for (hub, expected) in [
@@ -537,12 +543,126 @@ fn f2_export_family_names_resolve_without_granting_unmeasured_dispatch() {
                 map_hub(create_override, other_family_map),
                 "f2_map_not_confirmed_in_group_or_family",
             ),
-            (map_hub(opt_in(group), map), "F2 runtime: UnsupportedMode"),
         ] {
             let rejected = hub.select_fixture(81, &create(false), 70000);
             assert_eq!(rejected.err().unwrap().to_string(), expected, "{family}");
             assert!(hub.operator_rooms().unwrap().is_empty(), "{family}");
         }
+        if !evaluates {
+            let hub = map_hub(opt_in(group), map);
+            let rejected = hub.select_fixture(81, &create(false), 70000);
+            assert_eq!(
+                rejected.err().unwrap().to_string(),
+                "F2 runtime: UnsupportedMode",
+                "{family}"
+            );
+            assert!(hub.operator_rooms().unwrap().is_empty(), "{family}");
+        }
+    }
+}
+
+#[test]
+fn coloring_and_super_fighter_evaluate_without_guessing_gameplay_rules() {
+    for (map, preset) in [
+        ("Coloring01", json!("coloring")),
+        ("Coloring02", json!("coloring")),
+        ("Coloring03", json!("coloring")),
+        ("Coloring04", json!("coloring")),
+        ("Coloring05", json!("coloring")),
+        ("SuperFighter16", json!("super_fighter")),
+        ("SuperFighter19", json!({"game_type_id": 18})),
+    ] {
+        let mut room = TestRoom::on(
+            map_hub(json!({"runtime_overrides": {"free": preset}}), map),
+            false,
+        );
+        let round = room.load();
+        room.arm();
+
+        rejects(room.start(round, revive(3)), "InvalidSetup");
+        let initial = room.start(round, F2Setup::Evaluate).unwrap();
+        assert_eq!(initial["outcome"], "playing", "{map}");
+        assert_eq!(initial["bomb"], Value::Null, "{map}");
+        rejects(room.start(round, F2Setup::Evaluate), "WrongRound");
+
+        let tick = F2Event::AdvanceTo {
+            milliseconds: 60_000,
+        };
+        assert_eq!(room.event(round, 1, tick).unwrap(), initial, "{map}");
+        rejects(room.event(round, 2, defeat(0)), "UnsupportedAction");
+        rejects(
+            room.event(round, 2, F2Event::Objective { winner: Some(0) }),
+            "UnsupportedAction",
+        );
+        let unresolved = room
+            .event(round, 2, F2Event::Objective { winner: None })
+            .unwrap();
+        assert_eq!(unresolved["outcome"], "unresolved", "{map}");
+        assert_eq!(unresolved["players"], initial["players"], "{map}");
+        assert_eq!(room.event(round, 2, defeat(0)).unwrap()["replay"], true);
+        rejects(room.event(round, 3, defeat(0)), "Finished");
+        room.no_packets();
+    }
+
+    for (group, wrong_map) in [
+        ("coloring", "SuperFighter16"),
+        ("super_fighter", "Coloring01"),
+    ] {
+        let room = TestRoom::on(map_hub(opt_in(group), wrong_map), false);
+        registry_foundation_tests::ready_roster(&room.room);
+        assert_eq!(
+            room.clients[0]
+                .packet(104, &[0; 20])
+                .unwrap()
+                .start_rejection,
+            Some("f2_map_not_confirmed_in_group_or_family")
+        );
+    }
+}
+
+#[test]
+fn exported_evaluation_groups_require_explicit_operator_visibility_bindings() {
+    // A binding is local policy. The same bytes may be bound to either label.
+    let bytes = wire::MapGroupVisible(vec![0x2345]).encode().unwrap();
+    for (family, map, preset) in [
+        ("Coloring", "Coloring01", json!("coloring")),
+        (
+            "SuperFighter",
+            "SuperFighter19",
+            json!({"game_type_id": 18}),
+        ),
+    ] {
+        for (visibility, expected) in [
+            (json!([]), "f2_map_group_hidden"),
+            (json!([family]), "f2_start_dispatch_unmeasured"),
+            (
+                json!({"bytes": bytes, "group_ids": { (family): 0x2345 }}),
+                "f2_start_dispatch_unmeasured",
+            ),
+        ] {
+            let hub = map_hub(
+                json!({"visible_map_groups": visibility, "create_overrides": {"free": preset}}),
+                map,
+            );
+            let rejected = hub.select_fixture(81, &create(false), 70000);
+            assert_eq!(rejected.err().unwrap().to_string(), expected, "{family}");
+            assert!(hub.operator_rooms().unwrap().is_empty(), "{family}");
+        }
+
+        let mut plain = TestRoom::on(map_hub(Value::Null, map), false);
+        let mut visible =
+            TestRoom::on(map_hub(json!({"visible_map_groups": [family]}), map), false);
+        for room in [&mut plain, &mut visible] {
+            let round = room.load();
+            room.arm();
+            rejects(room.start(round, F2Setup::Evaluate), "disabled");
+            rejects(
+                room.event(round, 1, F2Event::Objective { winner: None }),
+                "disabled",
+            );
+            room.no_packets();
+        }
+        assert_eq!(plain.startup, visible.startup, "{family}");
     }
 }
 
@@ -964,8 +1084,8 @@ fn game_type_ids_fail_closed_and_do_not_bypass_native_or_runtime_gates() {
         room_modes::Policy::load(&f3).err().unwrap().to_string(),
         "room create override is outside F2"
     );
-    for id in [18, 19] {
-        let hub = hub(json!({"runtime_overrides": {"free": {"game_type_id": id}}}));
+    {
+        let hub = hub(json!({"runtime_overrides": {"free": {"game_type_id": 19}}}));
         assert_eq!(
             hub.select_fixture(81, &create(false), 70000)
                 .err()
