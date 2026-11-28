@@ -11,6 +11,7 @@ use crate::{
     accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
     choco_chat::F5SocialPolicy,
     custom_map_store::{CustomMapStore, CustomMapStoreError},
+    f4_extended_policy::{Decision, MilestoneKind, PolicyError},
     f6_policy::F6EventPolicy,
 };
 use http::{Request, Response, Status};
@@ -22,7 +23,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
 use std::{
-    collections::HashMap,
+    collections::{BTreeSet, HashMap},
     fmt::Write as _,
     hint::black_box,
     io,
@@ -110,11 +111,18 @@ impl WebShopToken {
 
 type TokenDigest = Zeroizing<[u8; 32]>;
 
+#[derive(Clone, Copy)]
+struct MilestoneContext {
+    account: u64,
+    character: u16,
+}
+
 struct Session {
     digest: TokenDigest,
     player_id: i64,
     expires_at: Instant,
     cosmetics: Option<O1SessionCosmetics>,
+    milestone: Option<MilestoneContext>,
 }
 
 /// The host issues tokens only after binding an authenticated player. Clones
@@ -139,6 +147,24 @@ impl WebShopAuth {
         self.issue_until(player_id, None)
     }
 
+    /// For a trusted issuer with an authenticated player and a server-resolved
+    /// character. The claim inputs are bound to the token, never read from HTTP.
+    pub fn issue_token_for_milestones(
+        &self,
+        player: &accounts::Player,
+        character: u16,
+    ) -> io::Result<WebShopToken> {
+        let account = u64::try_from(player.account_id)
+            .ok()
+            .filter(|&id| id != 0)
+            .ok_or_else(|| invalid("invalid web shop account"))?;
+        self.issue(
+            player.player_id,
+            None,
+            Some(MilestoneContext { account, character }),
+        )
+    }
+
     pub(crate) async fn launcher_operation(&self) -> tokio::sync::OwnedMutexGuard<()> {
         self.launcher_ops.clone().lock_owned().await
     }
@@ -147,6 +173,15 @@ impl WebShopAuth {
         &self,
         player_id: i64,
         account_deadline: Option<Instant>,
+    ) -> io::Result<WebShopToken> {
+        self.issue(player_id, account_deadline, None)
+    }
+
+    fn issue(
+        &self,
+        player_id: i64,
+        account_deadline: Option<Instant>,
+        milestone: Option<MilestoneContext>,
     ) -> io::Result<WebShopToken> {
         if player_id < 1 {
             return Err(invalid("invalid web shop player"));
@@ -176,6 +211,7 @@ impl WebShopAuth {
             player_id,
             expires_at,
             cosmetics: None,
+            milestone,
         });
         Ok(WebShopToken(token))
     }
@@ -406,6 +442,13 @@ struct Purchase {
     sku: String,
     quantity: Option<u32>,
     request_id: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct MilestoneInput {
+    level: u16,
+    kind: String,
 }
 
 #[derive(Deserialize)]
@@ -647,6 +690,100 @@ fn events_status(policy: &F6EventPolicy, configured: bool) -> Response {
         "enabled_systems": core,
         "extended_systems": extended,
     }))
+}
+
+fn f4_extended_status(service: &AccountService) -> Response {
+    let settings = service.settings();
+    let booster = settings.booster_ticket_policy();
+    let levels = settings.level_reward_policy();
+    let vault = settings.lucci_vault_policy();
+    // The service stores effective policies, without the source file or a
+    // presence flag. Report whether each differs from its disabled default.
+    let booster_configured = *booster != Default::default();
+    let levels_configured = *levels != Default::default();
+    let vault_configured = *vault != Default::default();
+    let chests = levels.character_milestones.as_deref().unwrap_or_default();
+    let lucci = levels.level_up_lucci_table.as_deref().unwrap_or_default();
+    let tiers: BTreeSet<_> = chests
+        .iter()
+        .map(|row| row.level)
+        .chain(lucci.iter().map(|row| row.level))
+        .collect();
+    Response::json(&json!({
+        "configured": booster_configured || levels_configured || vault_configured,
+        "booster_tickets": {
+            "configured": booster_configured,
+            "enabled": booster.enabled,
+            "exp_percent": booster.exp_percent,
+            "lucci_percent": booster.lucci_percent,
+            "bonus_cap": booster.bonus_cap.as_ref().map(|cap| json!({
+                "exp": cap.exp, "lucci": cap.lucci,
+            })),
+            "room_rule_count": booster.allowed_rooms.len(),
+        },
+        "level_rewards": {
+            "configured": levels_configured,
+            "enabled": levels.enabled,
+            "chest_rule_count": chests.len(),
+            "lucci_rule_count": lucci.len(),
+            "tiers": tiers,
+        },
+        "lucci_vault": {
+            "configured": vault_configured,
+            "enabled": vault.enabled,
+            "base_lucci_cap": vault.base_lucci_cap,
+            "expansion_step": vault.expansion_step,
+            "max_expansions": vault.max_expansions,
+            "max_lucci_cap": vault.max_lucci_cap,
+        },
+    }))
+}
+
+async fn claim_milestone(
+    config: &Config,
+    service: &AccountService,
+    player: i64,
+    context: Option<MilestoneContext>,
+    request: &Request,
+) -> Result<Response, Status> {
+    request.require_method("POST")?;
+    let MilestoneInput { level, kind } = request.json_object()?;
+    let reward_kind = match kind.as_str() {
+        "lucci" => MilestoneKind::Lucci,
+        "chest" => MilestoneKind::Chest,
+        _ => return Err(Status::BadRequest),
+    };
+    if !(2..=accounts::LEVEL_MAX).contains(&usize::from(level)) {
+        return Err(Status::BadRequest);
+    }
+    if config.unlock_all {
+        return Err(Status::UnlockAllNoPurchase);
+    }
+    let MilestoneContext { account, character } = context.ok_or(Status::Forbidden)?;
+    let grant = service
+        .settings()
+        .level_reward_policy()
+        .grants_for_level_gain(account, character, level - 1, level, &BTreeSet::new())
+        .map_err(|error| match error {
+            PolicyError::Disabled => Status::Forbidden,
+            PolicyError::InvalidInput => Status::BadRequest,
+            _ => Status::Internal,
+        })?
+        .into_iter()
+        .find(|grant| grant.claim.kind == reward_kind)
+        .ok_or(Status::BadRequest)?;
+    let (replayed, entry) = match service.claim_level_milestone_reward(player, &grant).await? {
+        Decision::Apply(entry) => (false, entry),
+        Decision::Replay(entry) => (true, entry),
+    };
+    Ok(Response::json(&json!({
+        "ok": true,
+        "level": level,
+        "kind": kind,
+        "replayed": replayed,
+        "lucci_delta": entry.lucci_delta,
+        "sku_id": entry.sku_id,
+    })))
 }
 
 fn projection_status(status: ProjectionStatus) -> &'static str {
@@ -978,12 +1115,20 @@ async fn route(
             })
             .ok_or(Status::Unauthorized)?;
     }
-    let player = auth.player(&digest).ok_or(Status::Unauthorized)?;
-
+    let (player, milestone) = auth
+        .with_session(&digest, |session| (session.player_id, session.milestone))
+        .ok_or(Status::Unauthorized)?;
     if path != "/api/v1/catalog" && query.is_some() {
         return Err(Status::BadRequest);
     }
     match path {
+        "/api/v1/f4-extended-status" => {
+            request.require_queryless_get()?;
+            Ok(f4_extended_status(service))
+        }
+        "/api/v1/f4/claim-milestone" => {
+            claim_milestone(config, service, player, milestone, request).await
+        }
         "/api/v1/custom-maps" | "/api/v1/custom-maps/delete" => {
             custom_maps_route(shop, player, request).await
         }
