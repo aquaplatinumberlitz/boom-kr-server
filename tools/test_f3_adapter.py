@@ -45,6 +45,7 @@ class F3AdapterTests(unittest.TestCase):
                 (('CAhero07',), 'CAhero07'),
                 (('SnowyFields04',), 'SnowyFields04'),
                 (('MonS2Fire03',), 'MonS2Fire03'),
+                (('Bonus01',), 'Bonus01'),
                 (('Tutorial01', 'Tutorial01'), '1–16'),
                 (tuple(f'MonSeal{n:02}' for n in range(1, 18)), '1–16'),
                 (('../Tutorial01',), '1–16'),
@@ -128,8 +129,8 @@ class StockPackTests(unittest.TestCase):
         census = json.loads((EVIDENCE / CENSUS_NAME).read_bytes())
         families = {name: row['family'] for row in census['families']['F3']
                     if row['priority'] == 'terrain_ready' for name in row['maps']}
-        self.assertEqual(len(families), 380)
-        self.assertEqual(len(set(families.values())), 91)
+        self.assertEqual(len(families), 398)
+        self.assertEqual(len(set(families.values())), 98)
         names = sorted(families)
         with tempfile.TemporaryDirectory() as tmp:
             for start in range(0, len(names), 16):
@@ -170,7 +171,8 @@ class StockPackTests(unittest.TestCase):
         # từ exporter 4f3f1a88 trên pack KR 00967 gốc. F1-a gồm cả 8 map thêm sau mốc 206.
         f1a = sorted(name for name, row in inventory(GAME).items() if row['status'] == 'pending')
         f1e = sorted(json.loads((EVIDENCE / 'f1e-scripts-extracted.json').read_bytes())['maps'])
-        f2 = sorted(name for family in adapter._F2_FAMILIES.values() for name in family)
+        f2 = sorted(name for family, names in adapter._F2_FAMILIES.items()
+                    if family not in ('Coloring', 'SuperFighter') for name in names)
         cases = (
             ('f1', f1a, 214, 'cf3fa3b3a89bd64c9a180d0a15b60d41c3bdb97a82809e03c3825fb4cdf36e1a'),
             ('f1e', f1e, 96, 'f926dd350359fa53b777857d155d04bfa0887763407096609033d92553ca4a70'),
@@ -188,6 +190,22 @@ class StockPackTests(unittest.TestCase):
                         for path in sorted(cache.iterdir()):
                             digest.update(f'{path.name}:{adapter.sha(path.read_bytes())}\n'.encode())
                     self.assertEqual(digest.hexdigest(), expected)
+
+        census = json.loads((EVIDENCE / CENSUS_NAME).read_bytes())
+        new_families = {'Bonus', 'BonusLargeGourd', 'Bonus_19th', 'Hdn_Alice',
+                        'Hdn_BlackLucy', 'Hidden', 'Coloring', 'SuperFighter'}
+        old_f3 = sorted(name for row in census['families']['F3']
+                        if row['priority'] == 'terrain_ready' and row['family'] not in new_families
+                        for name in row['maps'])
+        with tempfile.TemporaryDirectory() as tmp:
+            digest = hashlib.sha256()
+            for start in range(0, len(old_f3), 16):
+                cache, reused = adapter.export(GAME, Path(tmp), maps=old_f3[start:start + 16], f3=True)
+                self.assertFalse(reused)
+                for path in sorted(cache.iterdir()):
+                    digest.update(f'{path.name}:{adapter.sha(path.read_bytes())}\n'.encode())
+            self.assertEqual((len(old_f3), digest.hexdigest()),
+                             (380, '1135320ecbe67bbb0f5ebfcedfefa465017a3bb2fcf592f63351971416eed156'))
 
 
 if __name__ == '__main__':
