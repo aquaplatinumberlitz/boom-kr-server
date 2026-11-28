@@ -3,7 +3,8 @@
 use kr_service::{
     accounts::{
         self, Admin, AuditFilter, AuditRow, ChatMuteReason, Error, HistoryFilter, ItemGrant,
-        SCHEMA_VERSION, ShopCatalog, Store, Token, Validate,
+        ItemUpgradeOperation, LedgerEntry, RecordEraserOperation, SCHEMA_VERSION, ShopCatalog,
+        Store, Token, Validate,
     },
     choco_chat::{F5PlazaZone, F5SocialPolicy},
     custom_map_store::{CustomMapPolicy, CustomMapStore, CustomMapStoreError},
@@ -12,9 +13,10 @@ use kr_service::{
     },
     f3_pve_runtime::{DispatchEvidence, F3PveRuntime, MonsterAttack, MonsterSpawn, RuntimeError},
     f4_extended_policy::{
-        BoosterTicketPolicy, CouponRequest, Decision, GiftCouponPolicy, LevelRewardPolicy,
-        LucciVaultPolicy, OperationKey, PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy,
-        TitlePolicy, TitleUnlockDecision, UpgradePolicy,
+        BASIS_POINTS, BoosterTicketPolicy, CouponRequest, Decision, GiftCouponPolicy,
+        LevelRewardPolicy, LucciVaultPolicy, OperationKey, PowerupKitPolicy, RecordEraserPolicy,
+        RecordScope, SecondPasswordPolicy, TitlePolicy, TitleUnlockDecision, UpgradeFamily,
+        UpgradePolicy,
     },
     f6_policy::{F6EventPolicy, F6QuotaTracker, QuotaRejection},
     f6_runtime::{ClaimError, ClaimOutcome, F6Claim, F6EventRuntime, F6Reward},
@@ -600,6 +602,8 @@ fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
 const POLICY_AUDIT_USAGE: &str = "usage: kr-admin policy-audit [--f3-policy PATH] [--f4-policy PATH] [--f5-policy PATH] [--f6-policy PATH] [--f7-policy PATH]";
 const F4_COUPON_USAGE: &str = "usage: kr-admin f4-redeem-coupon --db PATH --f4-policy PATH [--account LOGIN] [--player-id ID] --coupon-id ID --request-id ID --offer OFFER --issued-to ACCOUNT_ID --issued-at-unix SECS --now-unix SECS --operator NAME --reason TEXT [--shop-catalog PATH]";
 const F4_TITLE_USAGE: &str = "usage: kr-admin f4-evaluate-title --db PATH --f4-policy PATH [--account LOGIN] [--player-id ID] --title TITLE --now-unix SECS --operator NAME --reason TEXT";
+const F4_ERASE_USAGE: &str = "usage: kr-admin f4-erase-record --db PATH --f4-policy PATH [--account LOGIN] [--player-id ID] --request-id ID --sku SKU --scope level|win_loss --now-unix SECS --operator NAME --reason TEXT";
+const F4_UPGRADE_USAGE: &str = "usage: kr-admin f4-upgrade-item --db PATH --f4-policy PATH [--account LOGIN] [--player-id ID] --request-id ID --sku SKU --family item|pet|water_balloon|rpg_gear --level N --roll-bps 0..9999 --now-unix SECS --operator NAME --reason TEXT";
 const F6_CLAIM_USAGE: &str = "usage: kr-admin f6-claim-event --db PATH --f6-policy PATH [--account LOGIN] [--player-id ID] --event-id ID --now-unix SECS --operator NAME --reason TEXT [--claim-id ID] (--lucci AMOUNT | --sku-id SKU [--quantity N] [--max-stack N | --duration-seconds SECS])";
 const F3_DRY_RUN_USAGE: &str = "usage: kr-admin f3-pve-dry-run --f3-policy PATH --mode FAMILY [--host-player-id ID] [--guest-player-id ID]";
 const F7_MAPS_LIST_USAGE: &str =
@@ -867,6 +871,150 @@ fn f4_evaluate_title(args: &[OsString]) -> CliResult<Value> {
         "persisted": false,
         "operator_audit_request_id": audit_id,
     }))
+}
+
+fn f4_request_id(options: &Options<'_>, usage: &'static str) -> CliResult<u64> {
+    match options.value("--request-id")?.ok_or(usage)? {
+        0 => Err("invalid --request-id".into()),
+        id => Ok(id),
+    }
+}
+
+fn f4_mutation_summary(
+    store: &mut Store,
+    admin: &Admin<'_>,
+    operation: &str,
+    target_kind: &str,
+    decision: Decision<LedgerEntry>,
+    mut target: Value,
+) -> CliResult<Value> {
+    let (entry, replayed, result) = match decision {
+        Decision::Apply(entry) => (entry, false, "ok"),
+        Decision::Replay(entry) => (entry, true, "replayed"),
+    };
+    target["ledger_id"] = json!(entry.id);
+    // The mutation and its receipt already committed; retrying can recover a failed operator audit.
+    let audit_id = store
+        .operator_event(admin, operation, (target_kind, &target.to_string()), result)
+        .map_err(|error| {
+            format!("{operation} already committed; operator audit failed: {error}")
+        })?;
+    target["replayed"] = json!(replayed);
+    target["ledger"] = json!(entry);
+    target["operator_audit_request_id"] = json!(audit_id);
+    Ok(target)
+}
+
+fn f4_erase_record(args: &[OsString]) -> CliResult<Value> {
+    let options = Options::parse(
+        args,
+        &[
+            "--db",
+            "--f4-policy",
+            "--account",
+            "--player-id",
+            "--request-id",
+            "--sku",
+            "--scope",
+            "--now-unix",
+            "--operator",
+            "--reason",
+        ],
+        F4_ERASE_USAGE,
+    )?;
+    let operator = F4Operator::parse(&options, F4_ERASE_USAGE)?;
+    let request_id = f4_request_id(&options, F4_ERASE_USAGE)?;
+    let sku = f4_label(&options, "--sku", F4_ERASE_USAGE)?;
+    let scope = options.text("--scope")?.ok_or(F4_ERASE_USAGE)?;
+    let request = RecordEraserOperation {
+        key: request_id,
+        sku,
+        scope: match scope {
+            "level" => RecordScope::Level,
+            "win_loss" => RecordScope::WinLoss,
+            _ => return Err("invalid --scope (expected level or win_loss)".into()),
+        },
+    };
+    let (policy, _) = load_f4_policy(Some(operator.policy))?;
+    if !policy.record_erasers.enabled {
+        return Err("F4 record eraser policy is disabled".into());
+    }
+    let _instance = operations::lock_database(operator.db)?;
+    let mut store = Store::open_existing(operator.db)?;
+    let player_id = operator.resolve_player(&store)?;
+    let decision =
+        store.apply_record_eraser(player_id, request, &policy.record_erasers, operator.now)?;
+    f4_mutation_summary(
+        &mut store,
+        &operator.admin,
+        "f4_erase_record",
+        "f4_eraser",
+        decision,
+        json!({"player_id": player_id, "request_id": request_id, "sku": sku, "scope": scope}),
+    )
+}
+
+fn f4_upgrade_item(args: &[OsString]) -> CliResult<Value> {
+    let options = Options::parse(
+        args,
+        &[
+            "--db",
+            "--f4-policy",
+            "--account",
+            "--player-id",
+            "--request-id",
+            "--sku",
+            "--family",
+            "--level",
+            "--roll-bps",
+            "--now-unix",
+            "--operator",
+            "--reason",
+        ],
+        F4_UPGRADE_USAGE,
+    )?;
+    let operator = F4Operator::parse(&options, F4_UPGRADE_USAGE)?;
+    let request_id = f4_request_id(&options, F4_UPGRADE_USAGE)?;
+    let sku = f4_label(&options, "--sku", F4_UPGRADE_USAGE)?;
+    let family = options.text("--family")?.ok_or(F4_UPGRADE_USAGE)?;
+    let level = options.value("--level")?.ok_or(F4_UPGRADE_USAGE)?;
+    let roll_bps = options.value("--roll-bps")?.ok_or(F4_UPGRADE_USAGE)?;
+    if roll_bps >= BASIS_POINTS {
+        return Err("invalid --roll-bps (expected 0..9999)".into());
+    }
+    let request = ItemUpgradeOperation {
+        key: request_id,
+        sku,
+        family: match family {
+            "item" => UpgradeFamily::Item,
+            "pet" => UpgradeFamily::Pet,
+            "water_balloon" => UpgradeFamily::WaterBalloon,
+            "rpg_gear" => UpgradeFamily::RpgGear,
+            _ => {
+                return Err(
+                    "invalid --family (expected item, pet, water_balloon or rpg_gear)".into(),
+                );
+            }
+        },
+        level,
+        roll_bps,
+    };
+    let (policy, _) = load_f4_policy(Some(operator.policy))?;
+    if !policy.upgrades.enabled {
+        return Err("F4 upgrade policy is disabled".into());
+    }
+    let _instance = operations::lock_database(operator.db)?;
+    let mut store = Store::open_existing(operator.db)?;
+    let player_id = operator.resolve_player(&store)?;
+    let decision = store.apply_item_upgrade(player_id, request, &policy.upgrades, operator.now)?;
+    f4_mutation_summary(
+        &mut store,
+        &operator.admin,
+        "f4_upgrade_item",
+        "f4_upgrade",
+        decision,
+        json!({"player_id": player_id, "request_id": request_id, "sku": sku, "family": family, "level": level}),
+    )
 }
 
 fn parse_pve_family(mode: &str) -> CliResult<PveModeFamily> {
@@ -1642,6 +1790,8 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
         },
         [flag, options @ ..] if flag == "f4-redeem-coupon" => f4_redeem_coupon(options)?,
         [flag, options @ ..] if flag == "f4-evaluate-title" => f4_evaluate_title(options)?,
+        [flag, options @ ..] if flag == "f4-erase-record" => f4_erase_record(options)?,
+        [flag, options @ ..] if flag == "f4-upgrade-item" => f4_upgrade_item(options)?,
         [flag, options @ ..] if flag == "f6-claim-event" => f6_claim_event(options)?,
         [flag, options @ ..] if flag == "f3-pve-dry-run" => f3_pve_dry_run(options)?,
         [flag, options @ ..] if flag == "f7-custom-maps-list" => f7_custom_maps_list(options)?,
@@ -1670,7 +1820,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F3_DRY_RUN_USAGE}\n{F4_COUPON_USAGE}\n{F4_TITLE_USAGE}\n{F6_CLAIM_USAGE}\n{F7_MAPS_LIST_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
+        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F3_DRY_RUN_USAGE}\n{F4_COUPON_USAGE}\n{F4_TITLE_USAGE}\n{F4_ERASE_USAGE}\n{F4_UPGRADE_USAGE}\n{F6_CLAIM_USAGE}\n{F7_MAPS_LIST_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
     })
 }
 fn main() {

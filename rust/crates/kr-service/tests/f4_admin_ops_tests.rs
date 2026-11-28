@@ -1,4 +1,4 @@
-use kr_service::accounts::{Admin, Error, Player, Store};
+use kr_service::accounts::{Admin, Error, ItemGrant, Player, Store};
 use rusqlite::Connection;
 use serde_json::{Value, json};
 use std::{
@@ -12,8 +12,14 @@ use std::{
 
 const COUPON: &str = "f4-redeem-coupon";
 const TITLE: &str = "f4-evaluate-title";
+const ERASE: &str = "f4-erase-record";
+const UPGRADE: &str = "f4-upgrade-item";
 const OPERATOR: &str = "on-call";
 const REASON: &str = "check F4 operator workflow";
+const SEED: Admin<'_> = Admin {
+    actor: "f4-admin-tests",
+    reason: "seed inventory and Lucci",
+};
 static CREATE_ACCOUNT_GATE: Mutex<()> = Mutex::new(());
 
 struct TestDir(PathBuf);
@@ -102,6 +108,19 @@ impl Fixture {
                         {"title": "newbie", "condition": "level>=1"},
                         {"title": "winner", "condition": "wins>=1"}
                     ]
+                },
+                "record_erasers": {
+                    "enabled": true,
+                    "allowed_scopes": ["level"],
+                    "erasers": [{"sku": "eraser", "reset_to": {"level": 1}}]
+                },
+                "upgrades": {
+                    "enabled": true,
+                    "recipes": [{"family": "item", "sku": "gear", "from_level": 0,
+                                 "to_level": 1, "max_level": 1,
+                                 "materials": [{"sku": "material", "quantity": 2}],
+                                 "lucci_cost": 5, "success_bps": 5000,
+                                 "on_failure": "keep", "charge_on_failure": false}]
                 }
             }),
         );
@@ -113,6 +132,12 @@ impl Fixture {
             alice,
             dir,
         }
+    }
+
+    fn seed_item(&self, sku: &str, grant: ItemGrant, quantity: u32) {
+        self.store
+            .admin_grant_item(&SEED, self.alice.player_id, sku, grant, quantity, sku, 100)
+            .unwrap();
     }
 
     fn invoke(&self, subcommand: &str, policy: Option<&Path>, args: &[(&str, &str)]) -> Output {
@@ -127,7 +152,9 @@ impl Fixture {
         let output = cli.output().unwrap();
         let root = self.dir.0.to_string_lossy();
         for stream in [&output.stdout, &output.stderr] {
-            assert!(!String::from_utf8_lossy(stream).contains(root.as_ref()));
+            let stream = String::from_utf8_lossy(stream);
+            assert!(!stream.contains(root.as_ref()));
+            assert!(!stream.contains("/var/private-input"));
         }
         output
     }
@@ -236,6 +263,32 @@ fn title_args(title: &str) -> [(&str, &str); 5] {
     ]
 }
 
+fn erase_args() -> [(&'static str, &'static str); 7] {
+    [
+        ("--account", "Alice"),
+        ("--request-id", "17"),
+        ("--sku", "eraser"),
+        ("--scope", "level"),
+        ("--now-unix", "101"),
+        ("--operator", OPERATOR),
+        ("--reason", REASON),
+    ]
+}
+
+fn upgrade_args() -> [(&'static str, &'static str); 9] {
+    [
+        ("--account", "Alice"),
+        ("--request-id", "17"),
+        ("--sku", "gear"),
+        ("--family", "item"),
+        ("--level", "0"),
+        ("--roll-bps", "4999"),
+        ("--now-unix", "101"),
+        ("--operator", OPERATOR),
+        ("--reason", REASON),
+    ]
+}
+
 fn replace<'a>(
     args: &[(&'a str, &'a str)],
     flag: &'a str,
@@ -263,9 +316,13 @@ fn disabled_and_invalid_profiles_fail_closed() {
     let issued_to = f.alice.account_id.to_string();
     let coupon = coupon_args(&issued_to);
     let title = title_args("newbie");
+    let erase = erase_args();
+    let upgrade = upgrade_args();
     for (subcommand, args, diagnostic) in [
         (COUPON, &coupon[..], "F4 gift coupon policy is disabled"),
         (TITLE, &title[..], "F4 title policy is disabled"),
+        (ERASE, &erase[..], "F4 record eraser policy is disabled"),
+        (UPGRADE, &upgrade[..], "F4 upgrade policy is disabled"),
     ] {
         for path in [&disabled, &defaults] {
             f.rejects_without_writing(diagnostic, || f.invoke(subcommand, Some(path), args));
@@ -410,12 +467,159 @@ fn title_evaluation_repeats_without_unlocking_and_audits_the_decision() {
 }
 
 #[test]
+fn record_eraser_resets_level_once_and_audits_the_reset_and_replay() {
+    let f = Fixture::new();
+    let player = f.alice.player_id;
+    f.observer
+        .execute(
+            "INSERT INTO player_profiles(player_id, level, exp) VALUES (?, 2, 100)",
+            [player],
+        )
+        .unwrap();
+    f.seed_item("eraser", ItemGrant::Stackable { max_stack: 10 }, 1);
+    let args = erase_args();
+    let applied = summary(f.run(ERASE, &args));
+    let profile = f.store.get_profile(player).unwrap();
+    assert_eq!((profile.level, profile.exp), (1, 100));
+    assert_eq!(applied["replayed"], false);
+    assert_eq!(applied["ledger"]["sku_id"], "eraser");
+    assert_eq!(applied["ledger"]["idempotency_key"], "f4/eraser/17");
+
+    let mut args = args;
+    let player_id = player.to_string();
+    args[0] = ("--player-id", &player_id);
+    let replay = summary(f.run(ERASE, &args));
+    assert_eq!(replay["replayed"], true);
+    assert_eq!(replay["ledger"], applied["ledger"]);
+    assert_ne!(
+        replay["operator_audit_request_id"],
+        applied["operator_audit_request_id"]
+    );
+    for (output, result) in [(&applied, "ok"), (&replay, "replayed")] {
+        assert_eq!(output["player_id"], player);
+        assert_eq!(output["scope"], "level");
+        f.assert_audit(
+            output,
+            "f4_erase_record",
+            "f4_eraser",
+            result,
+            json!({"player_id": player, "ledger_id": applied["ledger"]["id"],
+                   "request_id": 17, "scope": "level", "sku": "eraser"}),
+        );
+    }
+    f.observer
+        .query_row(
+            "SELECT account_id, details FROM admin_audit
+             WHERE operation='f4_record_eraser' AND request_id=?",
+            [applied["ledger"]["request_hash"].as_str().unwrap()],
+            |row| {
+                assert_eq!(row.get::<_, i64>(0)?, f.alice.account_id);
+                assert_eq!(
+                    serde_json::from_str::<Value>(&row.get::<_, String>(1)?).unwrap(),
+                    json!({"key": "f4/eraser/17", "sku": "eraser", "scope": "level",
+                           "before": 2, "after": 1}),
+                );
+                Ok(())
+            },
+        )
+        .unwrap();
+
+    f.rejects_without_writing("Conflict", || {
+        f.run(ERASE, &replace(&args, "--scope", "win_loss"))
+    });
+    f.rejects_without_writing("InsufficientQuantity", || {
+        f.run(ERASE, &replace(&args, "--request-id", "18"))
+    });
+    assert_eq!(f.store.get_profile(player).unwrap(), profile);
+    assert!(f.store.list_inventory(player, 101).unwrap().is_empty());
+    assert_eq!(f.store.list_ledger(player, 10).unwrap().len(), 2);
+    assert_eq!(f.audit_count("f4_erase_record"), 2);
+    assert_eq!(f.audit_count("f4_record_eraser"), 1);
+}
+
+#[test]
+fn item_upgrade_debits_once_and_replays_the_original_roll_receipt() {
+    let f = Fixture::new();
+    let player = f.alice.player_id;
+    f.seed_item(
+        "gear",
+        ItemGrant::Timed {
+            duration_seconds: 60,
+        },
+        1,
+    );
+    f.seed_item("material", ItemGrant::Stackable { max_stack: 10 }, 3);
+    let args = upgrade_args();
+    f.rejects_without_writing("InsufficientFunds", || f.run(UPGRADE, &args));
+    f.store
+        .admin_grant_lucci(&SEED, player, 10, "seed-lucci", 100)
+        .unwrap();
+
+    let keep_args = replace(&args, "--request-id", "16");
+    let kept = summary(f.run(UPGRADE, &replace(&keep_args, "--roll-bps", "5000")));
+    assert_eq!(kept["replayed"], false);
+    assert_eq!(kept["ledger"]["sku_id"], "gear");
+    assert_eq!(kept["ledger"]["lucci_delta"], 0);
+
+    let applied = summary(f.run(UPGRADE, &args));
+    assert_eq!(applied["replayed"], false);
+    assert_eq!(applied["ledger"]["sku_id"], "gear.f4-item-1");
+    assert_eq!(applied["ledger"]["idempotency_key"], "f4/upgrade/17");
+    assert_eq!(applied["ledger"]["lucci_delta"], -5);
+    let replay = summary(f.run(UPGRADE, &replace(&args, "--roll-bps", "9999")));
+    assert_eq!(replay["replayed"], true);
+    assert_eq!(replay["ledger"], applied["ledger"]);
+    assert_ne!(
+        replay["operator_audit_request_id"],
+        applied["operator_audit_request_id"]
+    );
+    for (output, result) in [(&applied, "ok"), (&replay, "replayed")] {
+        assert_eq!(output["player_id"], player);
+        assert_eq!(output["family"], "item");
+        assert_eq!(output["level"], 0);
+        f.assert_audit(
+            output,
+            "f4_upgrade_item",
+            "f4_upgrade",
+            result,
+            json!({"player_id": player, "ledger_id": applied["ledger"]["id"],
+                   "request_id": 17, "family": "item", "level": 0, "sku": "gear"}),
+        );
+    }
+
+    for (flag, value) in [("--family", "pet"), ("--level", "1"), ("--sku", "other")] {
+        f.rejects_without_writing("Conflict", || f.run(UPGRADE, &replace(&args, flag, value)));
+    }
+    f.rejects_without_writing("InsufficientQuantity", || {
+        f.run(UPGRADE, &replace(&args, "--request-id", "18"))
+    });
+    let inventory = f.store.list_inventory(player, 101).unwrap();
+    let [gear, material] = &inventory[..] else {
+        panic!("unexpected inventory: {inventory:?}");
+    };
+    assert_eq!(gear.sku_id, "gear.f4-item-1");
+    assert_eq!(gear.expires_at, Some(160));
+    assert_eq!(material.sku_id, "material");
+    assert_eq!(material.quantity, 1);
+    assert_eq!(f.store.get_profile(player).unwrap().lucci, 5);
+    assert_eq!(f.store.list_ledger(player, 10).unwrap().len(), 5);
+    assert_eq!(f.audit_count("f4_upgrade_item"), 3);
+}
+
+#[test]
 fn malformed_arguments_and_unknown_targets_never_write() {
     let f = Fixture::new();
     let issued_to = f.alice.account_id.to_string();
     let coupon = coupon_args(&issued_to);
     let title = title_args("newbie");
-    for (subcommand, args) in [(COUPON, &coupon[..]), (TITLE, &title[..])] {
+    let erase = erase_args();
+    let upgrade = upgrade_args();
+    for (subcommand, args) in [
+        (COUPON, &coupon[..]),
+        (TITLE, &title[..]),
+        (ERASE, &erase[..]),
+        (UPGRADE, &upgrade[..]),
+    ] {
         let usage = format!("usage: kr-admin {subcommand}");
         rejected(admin(subcommand).output().unwrap(), &usage);
         rejected(admin(subcommand).arg("--db").output().unwrap(), &usage);
@@ -459,4 +663,32 @@ fn malformed_arguments_and_unknown_targets_never_write() {
         f.rejects_without_writing(diagnostic, || f.run(COUPON, &replace(&coupon, flag, value)));
     }
     f.rejects_without_writing("invalid --title", || f.run(TITLE, &title_args("")));
+    for (subcommand, args) in [(ERASE, &erase[..]), (UPGRADE, &upgrade[..])] {
+        for (flag, value, diagnostic) in [
+            ("--request-id", "0", "invalid --request-id"),
+            ("--request-id", "-1", "invalid --request-id"),
+            ("--sku", "", "invalid --sku"),
+            ("--sku", "/var/private-input", "InvalidInput"),
+        ] {
+            f.rejects_without_writing(diagnostic, || {
+                f.run(subcommand, &replace(args, flag, value))
+            });
+        }
+    }
+    for scope in ["unknown", "ladder"] {
+        f.rejects_without_writing("invalid --scope", || {
+            f.run(ERASE, &replace(&erase, "--scope", scope))
+        });
+    }
+    for (flag, value) in [
+        ("--family", "unknown"),
+        ("--level", "-1"),
+        ("--level", "65536"),
+        ("--roll-bps", "-1"),
+        ("--roll-bps", "10000"),
+    ] {
+        f.rejects_without_writing(&format!("invalid {flag}"), || {
+            f.run(UPGRADE, &replace(&upgrade, flag, value))
+        });
+    }
 }
