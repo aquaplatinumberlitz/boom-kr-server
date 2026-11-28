@@ -1,6 +1,9 @@
 //! Design rules for an opt-in emulator, with no implicit defaults or packet authority.
 //! The caller supplies an authoritative order and monotonic time in milliseconds.
-use super::{ModeKind, Policy, rules::WinCondition};
+use super::{
+    ModeKind, Policy,
+    rules::{Wave, WinCondition},
+};
 use kr_wire::kr00967::RoomTeamSelector;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
@@ -16,7 +19,20 @@ pub(crate) struct Player {
 
 impl ModeKind {
     fn evaluates_unknown_outcome(self) -> bool {
-        self == Self::Hedgehog || self.evaluates_family()
+        // Explicit evaluator allowlist. An export or an unknown rule
+        // descriptor alone does not enable a runtime.
+        matches!(
+            self,
+            Self::Capong
+                | Self::Coloring
+                | Self::Gumiho
+                | Self::Hamster
+                | Self::Hedgehog
+                | Self::PopcadeA
+                | Self::PopcadeB
+                | Self::PopcadeC
+                | Self::SuperFighter
+        )
     }
 }
 
@@ -286,6 +302,8 @@ enum State {
     Revive(Revive),
     Timebomb(Timebomb),
     LeaderCapture(LeaderCapture),
+    // No native objective is measured. Only an explicit unresolved result
+    // can end this round; the clock never supplies a result.
     EvaluateUnknown,
     Free1v7,
     CoOp,
@@ -431,6 +449,13 @@ impl Policy {
             | (ModeKind::Free1v7, Some(WinCondition::AsymmetricElimination))
             | (ModeKind::CoOp, Some(WinCondition::TeamOutcome)) => true,
             (mode, Some(WinCondition::Unknown)) => mode.evaluates_unknown_outcome(),
+            // RuleTable filters tentative CAPong from runtime_win. Allow its
+            // named local evaluator only; this grants no native start route
+            // and treats the room roster as input, without running map rules.
+            (ModeKind::Capong, None) => self
+                .catalog
+                .mode(mode)
+                .is_some_and(|entry| entry.wave == Wave::F2Candidate),
             _ => false,
         };
         if !supported {
