@@ -125,6 +125,23 @@ impl PowerupKitRuntime {
         Ok(())
     }
 
+    /// Remove slots whose inventory entitlement has expired and return the
+    /// number of slots removed. Empty account loadouts are removed as well.
+    pub fn prune_expired(&self, now: u64) -> Result<usize> {
+        let mut players = lock(&self.players)?;
+        let mut pruned = 0;
+        players.retain(|_, slots| {
+            for slot in &mut *slots {
+                if slot.is_some_and(|kit| kit.expires_at.is_some_and(|end| now >= end)) {
+                    *slot = None;
+                    pruned += 1;
+                }
+            }
+            slots.iter().any(Option::is_some)
+        });
+        Ok(pruned)
+    }
+
     pub fn starting_stats(
         &self,
         account: u64,
@@ -147,7 +164,9 @@ impl PowerupKitRuntime {
 
 struct PasswordEntry {
     state: SecondPasswordState,
+    configured: bool,
     unlocked_sessions: usize,
+    cooldown_started: Option<u64>,
 }
 
 pub struct SecondPasswordRuntime {
@@ -180,7 +199,9 @@ impl SecondPasswordRuntime {
             session.account,
             PasswordEntry {
                 state,
+                configured: true,
                 unlocked_sessions: 0,
+                cooldown_started: None,
             },
         );
         Ok(())
@@ -227,12 +248,32 @@ impl SecondPasswordRuntime {
         let result = self
             .policy
             .attempt(&entry.state, Some(session), now, action, verified)?;
+        let was_in_cooldown = entry
+            .cooldown_started
+            .is_some_and(|start| now >= start && now - start < self.policy.cooldown_seconds);
         match result.outcome {
-            Outcome::Unlocked => entry.unlocked_sessions += usize::from(!was_unlocked),
-            Outcome::Incorrect | Outcome::Locked => {
+            Outcome::Unlocked => {
+                entry.unlocked_sessions += usize::from(!was_unlocked);
+                entry.cooldown_started = None;
+            }
+            Outcome::Incorrect => {
                 entry.unlocked_sessions -= usize::from(was_unlocked);
             }
-            Outcome::Changed | Outcome::Disabled => entry.unlocked_sessions = 0,
+            Outcome::Locked => {
+                entry.unlocked_sessions -= usize::from(was_unlocked);
+                if !was_in_cooldown {
+                    entry.cooldown_started = Some(now);
+                }
+            }
+            Outcome::Changed => {
+                entry.unlocked_sessions = 0;
+                entry.cooldown_started = None;
+            }
+            Outcome::Disabled => {
+                entry.unlocked_sessions = 0;
+                entry.configured = false;
+                entry.cooldown_started = None;
+            }
         }
         if result.outcome == Outcome::Disabled {
             players.remove(&session.account);
@@ -286,6 +327,15 @@ pub struct F4SecurityKitsStatus {
     pub max_unlocked_sessions_per_player: usize,
 }
 
+#[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+pub struct PlayerSecurityKitsStatus {
+    pub powerup_kits_enabled: bool,
+    pub equipped_slot_ids: Vec<(usize, u32)>,
+    pub second_password_enabled: bool,
+    pub unlocked_session_count: usize,
+    pub cooldown_active: bool,
+}
+
 pub struct F4SecurityKitsRuntime {
     pub powerup_kits: PowerupKitRuntime,
     pub second_password: SecondPasswordRuntime,
@@ -332,5 +382,50 @@ impl F4SecurityKitsRuntime {
             },
             max_unlocked_sessions_per_player: MAX_UNLOCKED_SESSIONS_PER_PLAYER,
         })
+    }
+
+    /// Return a non-sensitive view of one account's active kit and password
+    /// state. Missing account state is represented by the disabled/empty
+    /// per-player fields while policy flags remain visible.
+    pub fn player_status(&self, account: u64, now: u64) -> Result<PlayerSecurityKitsStatus> {
+        if account == 0 {
+            return Err(PolicyError::InvalidInput);
+        }
+        let kits = lock(&self.powerup_kits.players)?;
+        let passwords = lock(&self.second_password.players)?;
+        let equipped_slot_ids = kits
+            .get(&account)
+            .into_iter()
+            .flat_map(|slots| slots.iter().enumerate())
+            .filter_map(|(slot, kit)| {
+                kit.filter(|kit| kit.expires_at.is_none_or(|end| now < end))
+                    .map(|kit| (slot, kit.definition as u32))
+            })
+            .collect();
+        let (second_password_enabled, unlocked_session_count, cooldown_active) = passwords
+            .get(&account)
+            .map(|entry| {
+                let cooldown_active = entry.cooldown_started.is_some_and(|start| {
+                    now >= start && now - start < self.second_password.policy.cooldown_seconds
+                });
+                (
+                    self.second_password.policy.enabled && entry.configured,
+                    entry.unlocked_sessions,
+                    cooldown_active,
+                )
+            })
+            .unwrap_or((false, 0, false));
+        Ok(PlayerSecurityKitsStatus {
+            powerup_kits_enabled: self.powerup_kits.policy.enabled,
+            equipped_slot_ids,
+            second_password_enabled,
+            unlocked_session_count,
+            cooldown_active,
+        })
+    }
+
+    /// Prune expired powerup kit slots across all accounts.
+    pub fn prune_expired(&self, now: u64) -> Result<usize> {
+        self.powerup_kits.prune_expired(now)
     }
 }
