@@ -50,22 +50,26 @@ F3_ADAPTER = 'f3-adapter-r1'
 _F2_CATALOG_PATH = 'docs/evidence/content/f2-mode-catalog.json'
 _F3_CATALOG_PATH = 'docs/evidence/content/f3-pve-catalog.json'
 _F2_EVIDENCE = Path('docs/evidence/content')
-# Phạm vi hình học tĩnh: các mẫu của probe F2/F3 r1 và Zombie04. Catalog
-# rộng hơn gồm cả ứng viên và map F3; có tên trong catalog chưa đủ để xuất.
+# Phạm vi xuất hình học tĩnh. Có tên trong catalog chưa đủ để xuất.
+_HAMSTER_MAPS = frozenset(f'Hamster{n:02}' for n in range(1, 9))
+_SNOWY_FIELDS_MAPS = frozenset(f'SnowyFields{n:02}' for n in range(1, 19))
+_ZOMBIE_MAPS = frozenset(f'Zombie{n:02}' for n in range(1, 7))
 _F2_FAMILIES = {
     'CAPong': frozenset(f'CAPong{n:02}' for n in range(1, 6)),
     'Clover': frozenset(f'Clover{n:02}' for n in range(1, 7)),
     'Rabbit': frozenset((*[f'Rabbit{n:02}' for n in range(1, 6)], 'Rabbit11')),
     'RescueET': frozenset(f'RescueET{n:02}' for n in range(1, 4)),
-    'SnowyFields': frozenset(f'SnowyFields{n:02}' for n in (4, 5, 6, 17, 18)),
+    'SnowyFields': _SNOWY_FIELDS_MAPS,
     'Wriggle': frozenset(f'Wriggle{n:02}' for n in range(1, 8)),
     'Zzolman': frozenset(f'Zzolman{n:02}' for n in range(1, 6)),
-    'Zombie': frozenset(('Zombie04',)),
+    'Zombie': _ZOMBIE_MAPS,
+    'Hamster': _HAMSTER_MAPS,
     'Coloring': frozenset(f'Coloring{n:02}' for n in range(1, 6)),
     'SuperFighter': frozenset(('SuperFighter16', 'SuperFighter19')),
 }
 # Chỉ nhận các họ 15x13 có địa hình sạch trong census và pack KR 00967.
 # Adapter chỉ chiếu tile tĩnh; chưa có contract PvE cho script hoặc vật phẩm.
+# Zombie giữ phạm vi xuất F2; census không cấp quyền xuất F3.
 _F3_FAMILIES = {
     'BonusCP_18th': frozenset(('BonusCP_18th',)),
     'BonusCP_LINE': frozenset(('BonusCP_LINE',)),
@@ -165,6 +169,8 @@ _F3_FAMILIES = {
     'Coloring': frozenset(f'Coloring{n:02}' for n in range(1, 6)),
     'SuperFighter': frozenset(('SuperFighter16', 'SuperFighter19')),
     'Hdn_Alice': frozenset(('Hdn_Alice01',)),
+    'Hamster': _HAMSTER_MAPS,
+    'SnowyFields': _SNOWY_FIELDS_MAPS,
 }
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
 _SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02'))
@@ -416,6 +422,36 @@ _F1E_STATIC_WALLS = frozenset((
     'Tile23_Static/Temple01', 'Tile23_Static/Temple02', 'Tile23_Static/Temple03',
     'Tile23_Static/Temple14', 'Tile23_Static/Temple15', 'Tile23_Static/Temple45',
 ))
+# KR 00967 TileInfo/TileInfoList (hash cặp fx trong PACK_SHA256).
+# EA1EE0 và 7E7350/7E72B0 xác định footprint type 1; cờ +32 chỉ
+# chặn bước nhảy ngoài phép chiếu này. Temple08 có thêm cờ hướng +40
+# (ED23E0), nên không nhận cùng Temple09.
+_F23_STATIC_RECORDS = {
+    'Tile23_Static/Temple09': (1, 0, 0, 0, 0, 0, 8, 1, 1, 0, 0, 2010089472, *(0,) * 6),
+    **{f'Tile21_Static/Z_{name}': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 2010089472, *(0,) * 6)
+       for name in ('Candlelight', 'Fork', 'Shovel', 'Static07', 'Static08', 'Static09')},
+    **{f'Tile29_Static/R2_Rock0{n}': (1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, -858993664, *(0,) * 6)
+       for n in (1, 2, 3)},
+    'Tile69_Static/Object01': (1, 0, 0, 0, 0, 0, 3, 2, 1, *(0,) * 9),
+    **{f'Tile69_Static/Object{n:02}': (1, 0, 0, 0, 0, 0, 1, 1, 1, *(0,) * 9)
+       for n in (2, 7, 8, 9, 10, 15, 16, 17, 19, 20)},
+}
+# EA1EE0 chọn CGOTileFixedBox khi +28 = 0. B9C760 nạp counter từ +24;
+# B9CEC0 dùng B9D380 để giữ counter 255 khi nhận hit bom thường.
+# Tile33_Passble đi qua nhánh theo tên EA36B3 -> EBBA70, nên chưa chiếu
+# chúng thành ô trống dù các byte cổng tia đều mở.
+_R2_UNBREAKABLE_BOX = (2, 0, 0, 0, 0, 0, 255, *(0,) * 11)
+_ZOMBIE_PASS_B = (3, 0, 0, 0, 0, 0, *(_TENT_PORTS,) * 3,
+                  0, 0, 1, 0, 9278848, 0, 20, 1243736, 0)
+_ZOMBIE_PASS_B_NAMES = frozenset(f'Tile21_Passible/Z_PassB0{n}' for n in (1, 2, 3))
+# Các record này giống Tile02_Passble/IceHouse00..08 từng byte.
+# E90A80 bật kiểm hướng; BA0E30 đọc các byte +32..35 theo W/N/E/S.
+_R2_ICE_HOUSES = {
+    f'Tile29_Passble/IceHouse0{n}': (
+        3, 0, 0, 0, 0, 0, *((0 if n in (0, 2, 6, 8) else _PASS_ALL),) * 3,
+        0, 0, 1, 0, 0 if n == 7 else 18730216, 0, 18730216, 0, 0)
+    for n in range(9)
+}
 _F1E_OPEN_PASSABLES = {
     'Tile61_Passable/GreenHouse03': (3, 0, 0, 0, 0, 0, *([_PASS_ALL] * 3), 0, 0, 1, 0, 0, 0, 0),
     'Tile61_Passable/GreenHouse04': (3, 0, 0, 0, 0, 0, *([_PASS_ALL] * 3), 0, 0, 1, 0, 0, 0, 0),
@@ -551,10 +587,11 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             continue
         if d[0] == 0 and d[6:8] == (1, 1) and not d[11]:
             ground(index, key, d)
-        elif (f1e and key in _F1E_STATIC_WALLS and d[0] == 1
-              and d[1:6] == (0,) * 5 and d[8] == 1
-              and d[9:11] == (0, 0) and d[11] == 2010089472
-              and d[12:16] == (0, 0, 0, 0)):
+        elif f1e and (_F23_STATIC_RECORDS.get(key) == d or (
+                key in _F1E_STATIC_WALLS and d[0] == 1
+                and d[1:6] == (0,) * 5 and d[8] == 1
+                and d[9:11] == (0, 0) and d[11] == 2010089472
+                and d[12:16] == (0, 0, 0, 0))):
             # These TileInfo records are solid kind-1 footprints. Their
             # trailing values have no break or script consumer in the static
             # initializer; dynamic bonus Tower00 is intentionally excluded.
@@ -582,6 +619,10 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             kinds[index], hits[index] = 2, max(1, d[6])
             if d[8]:
                 exploding[index] = 1
+        elif f1e and key == 'Tile29_Box/R2_UnbreakableBox' and d == _R2_UNBREAKABLE_BOX:
+            if kinds[index] != 0:
+                fail(index, 'thùng chồng footprint', key)
+            kinds[index] = 1
         elif (f1e and key == 'Tile30_Box/Urchins00'
               and d[:16] == (2, 0, 0, 0, 0, 0, 255, 1, 16, 0, 0, 0, 0, 0, 0, 0)):
             # EA4332/EB61D1 -> ED23E0(tile, -1) -> EA4E40 sets bit 0x10; hit=255
@@ -632,9 +673,10 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             # its trailing render/cache words are opaque to EA1EE0 and are
             # deliberately excluded from the terrain projection.
             pass
-        elif (key in _UNIFORM_PASSABLE_PIECES and d[:6] == (3, 0, 0, 0, 0, 0)
-              and d[6] == d[7] == d[8] and d[6] in (0, _PASS_ALL)
-              and d[9:13] == (0, 0, 1, 0) and d[13] not in (100, 101)):
+        elif ((f1e and _R2_ICE_HOUSES.get(key) == d)
+              or (key in _UNIFORM_PASSABLE_PIECES and d[:6] == (3, 0, 0, 0, 0, 0)
+                  and d[6] == d[7] == d[8] and d[6] in (0, _PASS_ALL)
+                  and d[9:13] == (0, 0, 1, 0) and d[13] not in (100, 101))):
             # EB4C10 still builds CGOTilePassable (offset 4 is 0, offset 52
             # is not 101; 6D29B0 tests 100). Offsets 56-68 are not read.
             if d[6] == 0:
@@ -648,6 +690,8 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             # for leaving and, via BA0EC0, entering. 17929B0/EB7190 give KR
             # direction order W/N/E/S, so bits 1 and 3 are north and south.
             # The value stays in KR bit order; see terrain.md#f1a-ida-round5.
+            ray_ports[index] = 0b1010
+        elif f1e and key in _ZOMBIE_PASS_B_NAMES and d == _ZOMBIE_PASS_B:
             ray_ports[index] = 0b1010
         elif (f1e and key == 'Tile59_Passable/Shower03'
               and d[:16] == (3, 0, 0, 0, 0, 0, *([_TENT_PORTS] * 3), 16843008, 0, 1, 0, 101, 0, 1000)):
@@ -1099,6 +1143,14 @@ def load_f3_maps(maps):
 
 def _f2_ground(key, data):
     # Giữ nguyên ID ô trong profile, kể cả nền đỏ/xanh của CAPong.
+    if key.startswith('Tile69_Ground/'):
+        # +64/+68 đi sau các trường nền mà B9D8E0/EB48E0 đọc.
+        return data[:17] == (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 0, 8908730)
+    if key in ('Tile26_Ground/Tile35', 'Tile26_Ground/Tile39'):
+        size = (4, 2) if key.endswith('35') else (5, 6)
+        return data == (0, 0, 0, 0, 0, 0, *size, 0, 0, -1, 0, 0, 0, 0, 64256, 0, 0)
+    if key in ('Tile29_Ground/Icewater00', 'Tile29_Ground/R2_WoodRoad01', 'Tile29_Ground/R2_WoodRoad04'):
+        return data == (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 52224, 0, 0)
     if key.startswith(('Tile23_Ground/', 'Tile38_Ground/')):
         return (data[:6] == (0,) * 6
                 and data[6:8] in ((1, 1), (5, 3))
@@ -1142,6 +1194,30 @@ def _f2_object(key, data):
             and data[8] in (0, 1) and data[9:11] == (0, 0)
             and data[11] in (0, 2010089472) and data[12:] == (0,) * 6):
         return 1, width, height, 0b1111
+    if _F23_STATIC_RECORDS.get(key) == data:
+        return 1, width, height, 0b1111
+    if _R2_ICE_HOUSES.get(key) == data:
+        return 0, 1, 1, 0b1111 if data[6] else 0
+    if key in _ZOMBIE_PASS_B_NAMES and data == _ZOMBIE_PASS_B:
+        return 0, 1, 1, 0b1010
+    # Các mẫu tĩnh bổ sung đã qua census và có đủ trường vật lý cho F2.
+    if ((key.startswith('Tile69_Static/Object') or key == 'Tile29_Passble/Icewater00')
+            and data == (1, 0, 0, 0, 0, 0, 1, 1, *(0,) * 10)):
+        return 1, 1, 1, 0b1111
+    if (key in ('Tile03_Static/Block02', 'Tile29_Static/Tree02')
+            and data == (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1244184, 0, 18730216, 4274062, 18730216, 0, 0)):
+        return 1, 1, 1, 0b1111
+    if (key in ('Tile29_Static/R2_Penguin01', 'Tile29_Static/R2_Penguin02', 'Tile29_Static/R2_Penguin03',
+                'Tile29_Static/R2_Penguin04', 'Tile29_Static/R2_Penguin05')
+            and data[:6] == (1, 0, 0, 0, 0, 0) and (width, height) in ((1, 1), (2, 1))
+            and data[8:] == (0, 0, 0, -858993664, *(0,) * 6)):
+        return 1, width, height, 0b1111
+    if (key.startswith('Tile69_Box/Block') and data[:17] == (2, *(0,) * 15, 8908730)):
+        return 2, 1, 1, 0b1111
+    if (key in ('Tile03_Box/BoxBlue', 'Tile03_Box/Safety00',
+                'Tile29_Box/Box00', 'Tile29_Box/Box01', 'Tile29_Box/Box03')
+            and data[:7] == (2, *(0,) * 6) and height in (0, 1) and data[8:] == (0,) * 10):
+        return 2, 1, 1, 0b1111
     if kind == 1 and data[1:6] == (0,) * 5 and height in (1, 2) and width in (1, 2, 3, 4):
         if key in ('Tile42_Static/Block01', 'Tile42_Static/Block03'):
             tail = (0, int(key.endswith('03'))) + (0,) * 8
@@ -1184,7 +1260,7 @@ def _f2_object(key, data):
         if (key == 'Tile00_Passable/Herb00' and
                 data[6:] == (16843009,) * 3 + (0, 0, 0, 0, 18730216, 0, 18730216, 0, 0)):
             return 0, 1, 1, 0b1111
-        if (key == 'Tile21_Passible/Z_PassA01' and
+        if (key in ('Tile21_Passible/Z_PassA01', 'Tile21_Passible/Z_PassA02') and
                 data[6:] == (16843009,) * 3 + (0, 0, 0, 0, 9278848, 9278868, 20, 1243736, 0)):
             return 0, 1, 1, 0b1111
         if (key in ('Tile01_Passable/TentBlue', 'Tile01_Passable/TentOrange', 'Tile01_Passable/TentRed') and
@@ -1233,7 +1309,7 @@ def f2_terrain_rules(profile, table):
             for cell in covered:
                 kinds[cell] = kind
                 ray_ports[cell] = ports
-    if any(kinds[y * width + x] for x, y in profile['spawns']):
+    if any(kinds[y * width + x] or not ray_ports[y * width + x] for x, y in profile['spawns']):
         raise ValueError(f'Spawn F2 không nằm trên ô trống: {name}')
     terrain = dict(width=width, height=height, kinds=kinds, map_sha256=profile['payload_sha256'],
                    seed_sha256=sha(bytes(kinds)))
