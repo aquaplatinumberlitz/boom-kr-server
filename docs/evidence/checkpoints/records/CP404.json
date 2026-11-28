@@ -1,0 +1,61 @@
+{
+  "id": "CP404",
+  "previous": "CP403",
+  "lifecycle": "complete",
+  "recorded_utc": "2026-11-28T04:35:26Z",
+  "owner": "Claude",
+  "reviewer": "waived",
+  "question": "Các bảng ngoài Attr/ mà CONTENT còn ghi \"chưa giải\" có định dạng gì, và trường nào chứng minh được bằng dữ liệu tĩnh của KR 00967?",
+  "scope": "Giải tĩnh 404 entry XML thuộc 12 nhóm bảng trong FxContents, FxDesktop, FxMap, FxMonster và fx bằng reader của content_census. Đối chiếu chéo với map, ObjectTable, TileInfoList, ClientString và Attr/ItemAttr. Không chạy game, Wine hay IDA.",
+  "context_commit": "ef285c1b6b4dcad92ff121b44c55e490083bb798",
+  "artifacts": [
+    {"name": "CA.exe KR 00967", "sha256": "a52545c14b1fea423de655c3163d6360b628d61c1cd472b46fdbc8a9ffe15f4e"},
+    {"name": "client-tables/manifest.json", "sha256": "5b57d781d5ed80b49d6a330d9dafdcfbbcf752d27e1e1d635e2ca0b0fccbf121"},
+    {"name": "FxContents.idd", "sha256": "1ea0b3eb8b96381cda23f41e9714f5b1ec32bbc3a36b6c5ca138a2075ce661dd"},
+    {"name": "FxDesktop.idd", "sha256": "fcc57c2cacc9f037ad6dda913d9ae7a2934f7a039d797bee5058c262b3334ccb"},
+    {"name": "FxMap.idd", "sha256": "9ce6da28ec24901ee489bdffd024eaf93314e1194fe735bb97e1d2bdd2dd7222"},
+    {"name": "FxMonster.idd", "sha256": "6e15a7da569cf58c902d6dc033fee20dd2cd326bd90a049d99ef0e70289bdae9"},
+    {"name": "fx.idd", "sha256": "4465e5250bb72c0b4bdebb5e65b769c9ec44153676b76cc91415561eddc02767"}
+  ],
+  "locators": [
+    "docs/content/client-data-tables.md",
+    "docs/content/client-tables/manifest.json",
+    "tools/kr_table_decode.py",
+    "docs/CONTENT.md#bảng-dữ-liệu-ngoài-attr"
+  ],
+  "findings": [
+    {"source": "kr_static", "status": "confirmed", "method": "static", "canonical": "docs/content/client-data-tables.md", "summary": "Mọi entry có vỏ u32 độ dài + XML. Tool tách hết phần tử/thuộc tính của 12 nhóm (4.959 dòng) và dừng nếu gặp layout lạ. Đối chiếu chéo chứng minh: 343 tên monAction của 82 map đều có template (342/364 được dùng); 4/4 SkillName trên 130 item map có trong đúng bảng skill; MapSize=(w<<16)|h và vị trí=y*w+x khớp spawn, lớp nền và lớp vật thể của 6 map gốc; tên tile/item/object khớp TileInfoList, Attr/ItemAttr và ObjectTable; Rate của PetRandomTable cộng đúng 100000 mỗi RandomType.", "limits": "Chỉ chứng minh layout, tham chiếu tên và bất biến số. Không chứng minh client dùng trường thế nào khi chạy.", "evidence": ["CP404_TOOL", "CP404_DOC"]},
+    {"source": "kr_static", "status": "candidate", "method": "static", "canonical": "docs/content/client-data-tables.md", "summary": "Nghĩa và đơn vị theo tên trường, ghi chú # hoặc mô tả cột: cooldown/thời lượng theo ms, tầm theo ô, attr1/attr2 của EquipItemTable là ô/bậc, LimitCount là giới hạn đặt, Shortcut là lệnh chat. Client so tên không phân biệt hoa thường và bỏ qua comment XML.", "limits": "Căn cứ là văn bản trong file và một số tham chiếu khớp khi bỏ qua hoa thường; chưa có xref code hay runtime.", "evidence": ["CP404_DOC"]},
+    {"source": "kr_static", "status": "unknown", "method": "static", "canonical": "docs/content/client-data-tables.md#ẩn-số-còn-mở", "summary": "Còn unknown: hành vi bước MonAction/StageClearEventNpc, nguồn văn bản của giá trị say (0/14 khoá StageClear và 0/64 giá trị MonAction có trong ClientString), vai trò Idx tile khi lưu map F7, layout mục rỗng của CustomMap và nơi CA.exe nạp từng bảng.", "limits": "Không có tham chiếu trong pack; cần IDA trên bản sao unpack hoặc capture.", "evidence": ["CP404_DOC"]}
+  ],
+  "verification": [
+    {"check": "python3 tools/kr_table_decode.py --check --client <KR 00967 chỉ đọc>: giải lại và so từng byte với JSON/manifest/khối tài liệu.", "result": "pass", "limits": "Kiểm tính tái lập trên đúng pack đã pin; không phải kiểm ngữ nghĩa.", "evidence": ["CP404_TOOL", "CP404_DOC"]},
+    {"check": "python3 -m unittest tools.test_kr_table_decode (fixture pack mã hoá tổng hợp, không cần client) và kr_table_decode.py --check trong CI.", "result": "pass", "limits": "Fixture tự tạo, chỉ kiểm parser, manifest và phát hiện sửa đổi.", "evidence": ["CP404_TEST"]},
+    {"check": "check_docs.py, content_census.py --check, content_classification.py --check; census.json giữ nguyên byte.", "result": "pass", "limits": "CONTENT chỉ đổi cột nơi giải lúc render.", "evidence": ["CP404_CONTENT"]},
+    {"check": "Tìm xref tên bảng trong IDA để xác định nơi nạp và cách so tên.", "result": "not_run", "limits": "Chưa mở IDA trong lượt này.", "evidence": []}
+  ],
+  "delta": {"added": ["Giải tĩnh 12 nhóm bảng ngoài Attr/ thành JSON có manifest pin pack, kèm tài liệu định dạng và mức chắc chắn từng trường."], "corrected": ["CONTENT không còn ghi \"chưa giải\" cho các bảng này; MotionBlurTable giữ nguyên."], "superseded": []},
+  "blockers": [],
+  "next_steps": [
+    {"id": "TABLES-LOADER-XREF", "task": "KRE-CONTENT-TABLES", "state": "active", "owner": "Codex", "reviewer": "waived", "action": "Trên bản sao IDA của CA.exe đã unpack, tìm xref chuỗi tên các bảng và Say/LimitCount để nâng các trường candidate hoặc unknown; chỉ ghi địa chỉ hàm."}
+  ],
+  "review": {"status": "waived", "as_of_utc": "2026-11-28T04:35:26Z", "reference": "docs/evidence/checkpoints/review-waiver.json", "scope": "Đối chiếu JSON, manifest và tài liệu định dạng.", "authorization": {"by": "project_owner", "reference": "docs/evidence/checkpoints/review-waiver.json", "reason": "Áp dụng miễn review độc lập; chủ dự án trực tiếp giao việc giải bảng."}},
+  "docs_sync": [
+    {"path": "docs/DEVELOPMENT.md", "state": "unchanged", "reason": "Không đóng mốc lớn."},
+    {"path": "docs/PLAN.md", "state": "updated", "reason": "Thêm một dòng trạng thái ở Bảng điều hành."},
+    {"path": "docs/PROTOCOL.md", "state": "unchanged", "reason": "Không đổi contract wire."},
+    {"path": "docs/RESEARCH.md", "state": "unchanged", "reason": "Ẩn số ghi ở tài liệu bảng; chưa đến mốc cập nhật."},
+    {"path": "docs/COVERAGE.md", "state": "unchanged", "reason": "Không đổi độ phủ hoặc gate."},
+    {"path": "docs/features.json", "state": "unchanged", "reason": "Không thêm ID."},
+    {"path": "docs/CONTENT.md", "state": "updated", "reason": "Cột nơi giải trỏ tài liệu mới."},
+    {"path": "docs/content/client-data-tables.md", "state": "updated", "reason": "Tài liệu định dạng mới."},
+    {"path": "docs/evidence/checkpoints/records/CP404.json", "state": "updated", "reason": "Pin tool, test và tài liệu."}
+  ],
+  "evidence": [
+    {"id": "CP404_TOOL", "kind": "repository", "path": "tools/kr_table_decode.py", "bytes": 44836, "sha256": "9110a9115eaa6babcd031b5480aedff33204df7a5d426d015465f6e89a96b635"},
+    {"id": "CP404_TEST", "kind": "repository", "path": "tools/test_kr_table_decode.py", "bytes": 17492, "sha256": "bb5384d5db796d7e51cff504d8ec185565a9bafc91221ca7ddad38ed577abdc8"},
+    {"id": "CP404_DOC", "kind": "repository", "path": "docs/content/client-data-tables.md", "bytes": 22240, "sha256": "a2ae08e56b68d91844613000898d3506a2ba0d96888bf136545840e646f4b1ce"},
+    {"id": "CP404_CONTENT", "kind": "repository", "path": "docs/CONTENT.md", "bytes": 73477, "sha256": "f4879880acb6ee592dcffc6ad91ecbe999ef5c175c35bb1baf6133ebb255c969"}
+  ],
+  "evidence_runs": []
+}

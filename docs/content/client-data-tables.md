@@ -139,6 +139,8 @@ Cây: `MonAction` > `TriggerTable{timeRelative?}` > `Time{until}` > `Trigger{Typ
 - Tên bước theo số lần: `pattern`, `wait`, `setstate`, `createobj`, `attack`, `playanim`, `settriggeroption`, `move`,
   `say`, `turn`, `createmonmissile`, `specialattack`, `dropitem`. Số đếm và danh sách `func` ở `stats.mon-action`.
   Hành vi từng bước là `unknown` khi chưa RE bộ diễn giải AI của client. Server chỉ cần dữ liệu này nếu tự mô phỏng quái.
+- Bước `Say` có 64 giá trị `say01..03` khác nhau, không giá trị nào có trong `ClientString`. Một số là khoá dạng
+  `MonS2Fire02Approach12`, một số là câu thoại viết thẳng như `할퀸다!`, nên nguồn văn bản là `unknown`.
 - Lệch chuẩn: 265 thuộc tính không ngoặc kép ở 130 template, như `name=setTriggerOption`.
   `MonAction_12_SM_Red_Hidden_Boxmon01` lặp thuộc tính `pos01`; JSON giữ giá trị đầu, còn client chọn giá trị nào là
   `unknown`. `MonAction_00_SM_MonEgg2_00` có comment không đóng sau thẻ gốc. Cả hai file này đều không được map nào dùng.

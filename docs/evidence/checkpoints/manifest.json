@@ -1,7 +1,7 @@
 {
   "schema": "kre-checkpoints-v2",
-  "last_id": "CP403",
-  "completed_count": 403,
+  "last_id": "CP404",
+  "completed_count": 404,
   "audit_interval": null,
   "last_periodic_audit": 256,
   "next_periodic_audit": null,
@@ -1307,6 +1307,12 @@
       "state": "open",
       "canonical": "docs/PLAN.md#full-game-roadmap",
       "reference": "docs/protocol/f4-inventory-cosmetics.md#f4b-reader-slots-w4"
+    },
+    {
+      "id": "KRE-CONTENT-TABLES",
+      "state": "open",
+      "canonical": "docs/content/client-data-tables.md",
+      "reference": "docs/PLAN.md#dashboard"
     }
   ],
   "version": 2,
@@ -4534,6 +4540,14 @@
       "path": "docs/evidence/checkpoints/records/CP403.json",
       "bytes": 8686,
       "sha256": "5afaefe677dd436be6433be1aae76a53472219c9f1f7dedcbc720611876d2b01"
+    },
+    {
+      "id": "CP404",
+      "lifecycle": "complete",
+      "recorded_utc": "2026-11-28T04:35:26Z",
+      "path": "docs/evidence/checkpoints/records/CP404.json",
+      "bytes": 7728,
+      "sha256": "78dd37abeebb264ae63d7358d5376595f9a19d48467366f1573e83b16a484a05"
     }
   ],
   "audit_policy": {
