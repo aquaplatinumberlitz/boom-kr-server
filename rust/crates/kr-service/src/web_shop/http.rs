@@ -4,6 +4,7 @@ use serde::de::DeserializeOwned;
 use std::io;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
+use zeroize::Zeroizing;
 
 const MAX_HEADER_BYTES: usize = 8 * 1024;
 const MAX_HEADERS: usize = 32;
@@ -12,7 +13,7 @@ pub struct Request {
     method: String,
     target: String,
     headers: Vec<(String, String)>,
-    body: Vec<u8>,
+    body: Zeroizing<Vec<u8>>,
 }
 impl Request {
     pub fn method(&self) -> &str {
@@ -68,13 +69,14 @@ impl Request {
 }
 
 pub async fn read(stream: &mut TcpStream, max_body: usize) -> Result<Request, Option<Status>> {
-    let mut data = Vec::with_capacity(1024);
+    // A read can contain both the headers and part of a credential body.
+    let mut data = Zeroizing::new(Vec::with_capacity(1024));
+    let mut chunk = Zeroizing::new([0u8; 1024]);
     let header_end = loop {
         if data.len() > MAX_HEADER_BYTES {
             return Err(Some(Status::RequestTooLarge));
         }
-        let mut chunk = [0u8; 1024];
-        let n = stream.read(&mut chunk).await.map_err(|_| None)?;
+        let n = stream.read(chunk.as_mut()).await.map_err(|_| None)?;
         if n == 0 {
             return Err(None);
         }
@@ -125,17 +127,20 @@ pub async fn read(stream: &mut TcpStream, max_body: usize) -> Result<Request, Op
         }
         headers.push((name, value));
     }
-    let mut body = data[header_end..].to_vec();
+    let buffered = content_length.min(data.len() - header_end);
+    let mut body = Zeroizing::new(Vec::with_capacity(content_length));
+    body.extend_from_slice(&data[header_end..header_end + buffered]);
     while body.len() < content_length {
         let need = content_length - body.len();
-        let mut chunk = vec![0u8; need.min(1024)];
-        let n = stream.read(&mut chunk).await.map_err(|_| None)?;
+        let n = stream
+            .read(&mut chunk[..need.min(1024)])
+            .await
+            .map_err(|_| None)?;
         if n == 0 {
             return Err(Some(Status::BadRequest));
         }
         body.extend_from_slice(&chunk[..n]);
     }
-    body.truncate(content_length);
     Ok(Request {
         method: method.to_string(),
         target: target.to_string(),

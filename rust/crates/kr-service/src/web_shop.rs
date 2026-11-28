@@ -13,12 +13,16 @@ use crate::{
     choco_chat::F5SocialPolicy,
     custom_map_store::{CustomMapStore, CustomMapStoreError},
     f4_extended_policy::{
-        BASIS_POINTS, CouponRequest, Decision, MilestoneKind, OperationKey, PolicyError,
-        PrimarySession, RecordScope, UpgradeFamily,
+        BASIS_POINTS, CouponRequest, Decision, ItemOrigin, KitRoomRules, KitStats,
+        MAX_EQUIPPED_KITS, MilestoneKind, OperationKey, OwnedItem, PolicyError, PrimarySession,
+        RecordScope, SecondPasswordAction, SecondPasswordOutcome, UpgradeFamily,
     },
-    f4_security_kits::{F4SecurityKitsRuntime, F4SecurityKitsStatus},
+    f4_security_kits::{
+        F4SecurityKitsRuntime, F4SecurityKitsStatus, PowerupKitRuntime, SecondPasswordRuntime,
+    },
     f6_policy::F6EventPolicy,
 };
+use argon2::{Algorithm, Argon2, Params, Version};
 use http::{Request, Response, Status};
 use kr_wire::kr00967::cosmetics::{
     CosmeticTarget, INVENTORY_CAPTURE_GAP, INVENTORY_LAYOUT_STATUS, ProjectionStatus,
@@ -382,6 +386,9 @@ pub struct WebShop {
     config: Config,
     custom_maps: Option<Arc<AsyncMutex<CustomMapStore>>>,
     f4_security_kits: Arc<F4SecurityKitsRuntime>,
+    second_password_credentials: Arc<AsyncMutex<HashMap<u64, SecondPasswordCredential>>>,
+    #[cfg(test)]
+    second_password_test_now: Arc<std::sync::atomic::AtomicU64>,
     f6_policy: Arc<F6EventPolicy>,
     f6_configured: bool,
 }
@@ -392,6 +399,9 @@ impl WebShop {
             config,
             custom_maps: None,
             f4_security_kits: Arc::new(F4SecurityKitsRuntime::default()),
+            second_password_credentials: Arc::default(),
+            #[cfg(test)]
+            second_password_test_now: Arc::default(),
             f6_policy: Arc::new(F6EventPolicy::disabled_default()),
             f6_configured: false,
         }
@@ -404,7 +414,8 @@ impl WebShop {
         self
     }
 
-    /// Share the host's runtime for read-only kit and second-password status.
+    /// Share the host's kit and second-password runtime. The portal keeps its
+    /// own in-memory credential verifier for passwords set up through HTTP.
     pub fn with_f4_security_kits(mut self, kits: Arc<F4SecurityKitsRuntime>) -> Self {
         self.f4_security_kits = kits;
         self
@@ -561,6 +572,33 @@ struct UpgradeItemInput {
     family: UpgradeFamily,
     level: u16,
     request_id: u64,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct KitEquipInput {
+    slot: usize,
+    sku: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct KitClearInput {
+    slot: usize,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct SecondPasswordSetupInput {
+    pin: Zeroizing<String>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct SecondPasswordAttemptInput {
+    action: String,
+    pin: Zeroizing<String>,
+    new_pin: Option<Zeroizing<String>>,
 }
 
 #[derive(Deserialize)]
@@ -985,14 +1023,335 @@ fn f4_mutation_input<T: DeserializeOwned>(
     request: &Request,
     enabled: bool,
 ) -> Result<T, Status> {
-    request.require_method("POST")?;
-    if config.unlock_all {
-        return Err(Status::UnlockAllNoPurchase);
-    }
+    require_f4_mutation(config, request)?;
     if !enabled {
         return Err(Status::Forbidden);
     }
     request.json_object()
+}
+
+fn require_f4_mutation(config: &Config, request: &Request) -> Result<(), Status> {
+    request.require_method("POST")?;
+    if config.unlock_all {
+        return Err(Status::UnlockAllNoPurchase);
+    }
+    Ok(())
+}
+
+fn f4_runtime_error(error: PolicyError) -> Status {
+    match error {
+        PolicyError::Disabled => Status::Forbidden,
+        PolicyError::InvalidInput => Status::BadRequest,
+        PolicyError::NotAllowed
+        | PolicyError::NotOwnedOrExpired
+        | PolicyError::AlreadyEquipped
+        | PolicyError::CapacityExceeded => Status::Conflict,
+        _ => Status::Internal,
+    }
+}
+
+fn utc_seconds() -> Result<u64, Status> {
+    accounts::utc()
+        .ok()
+        .and_then(|now| u64::try_from(now).ok())
+        .ok_or(Status::Internal)
+}
+
+fn kit_projection(
+    runtime: &PowerupKitRuntime,
+    account: u64,
+    now: u64,
+    slot: usize,
+    outcome: &'static str,
+) -> Result<Response, Status> {
+    // The shop has no character or room. Project the kit contribution from
+    // zero with only the stat type's ceiling; match start supplies real caps.
+    let base = KitStats {
+        bombs: 0,
+        blast: 0,
+        speed: 0,
+    };
+    let caps = KitStats {
+        bombs: u8::MAX,
+        blast: u8::MAX,
+        speed: u8::MAX,
+    };
+    let stats = runtime
+        .starting_stats(
+            account,
+            now,
+            base,
+            KitRoomRules {
+                allows_kits: true,
+                character_caps: caps,
+                mode_caps: caps,
+                map_caps: caps,
+            },
+        )
+        .map_err(f4_runtime_error)?;
+    Ok(Response::json(&json!({
+        "outcome": outcome,
+        "slot": slot,
+        "projection": "kit_bonus_preview",
+        "starting_stats": {"bombs": stats.bombs, "blast": stats.blast, "speed": stats.speed},
+    })))
+}
+
+async fn update_powerup_kit(
+    shop: &WebShop,
+    service: &AccountService,
+    auth: &WebShopAuth,
+    digest: &TokenDigest,
+    player: i64,
+    request: &Request,
+) -> Result<Response, Status> {
+    require_f4_mutation(&shop.config, request)?;
+    let runtime = &shop.f4_security_kits.powerup_kits;
+    if !shop
+        .f4_security_kits
+        .snapshot()
+        .map_err(|_| Status::Unavailable)?
+        .powerup_kits
+        .enabled
+    {
+        return Err(Status::Forbidden);
+    }
+    // Each account has one DB player; use that stable key for every portal
+    // token, including ones without a bound primary session.
+    let account = u64::try_from(player).map_err(|_| Status::Internal)?;
+    if request.path() == "/api/v1/f4/kits/clear" {
+        let KitClearInput { slot } = request.json_object()?;
+        return auth
+            .with_session(digest, |_| {
+                let now = utc_seconds()?;
+                runtime.clear(account, slot).map_err(f4_runtime_error)?;
+                kit_projection(runtime, account, now, slot, "cleared")
+            })
+            .ok_or(Status::Unauthorized)?;
+    }
+
+    let KitEquipInput { slot, sku } = request.json_object()?;
+    if slot >= MAX_EQUIPPED_KITS
+        || sku.is_empty()
+        || sku.trim() != sku
+        || sku.chars().any(char::is_control)
+    {
+        return Err(Status::BadRequest);
+    }
+    let item = service
+        .inventory_list(player)
+        .await?
+        .into_iter()
+        .find(|item| item.active && item.sku_id == sku)
+        .ok_or(Status::Conflict)?;
+    let quantity = u32::try_from(item.quantity).map_err(|_| Status::Conflict)?;
+    let expires_at = item
+        .expires_at
+        .map(u64::try_from)
+        .transpose()
+        .map_err(|_| Status::Conflict)?;
+    auth.with_session(digest, |_| {
+        let now = utc_seconds()?;
+        runtime
+            .equip(
+                account,
+                now,
+                slot,
+                OwnedItem {
+                    owner: account,
+                    sku: &item.sku_id,
+                    quantity,
+                    expires_at,
+                    origin: ItemOrigin::PersistentInventory,
+                },
+            )
+            .map_err(f4_runtime_error)?;
+        kit_projection(runtime, account, now, slot, "equipped")
+    })
+    .ok_or(Status::Unauthorized)?
+}
+
+struct SecondPasswordCredential {
+    salt: [u8; 16],
+    hash: Zeroizing<[u8; 32]>,
+}
+
+impl SecondPasswordCredential {
+    fn derive(pin: &str, salt: &[u8; 16]) -> Result<Zeroizing<[u8; 32]>, Status> {
+        let mut hash = Zeroizing::new([0; 32]);
+        Argon2::new(
+            Algorithm::Argon2id,
+            Version::V0x13,
+            Params::new(19_456, 2, 1, Some(32)).expect("fixed valid Argon2id parameters"),
+        )
+        .hash_password_into(pin.as_bytes(), salt, hash.as_mut())
+        .map_err(|_| Status::Internal)?;
+        Ok(hash)
+    }
+
+    fn new(pin: &str) -> Result<Self, Status> {
+        let mut salt = [0; 16];
+        getrandom::fill(&mut salt).map_err(|_| Status::Internal)?;
+        let hash = Self::derive(pin, &salt)?;
+        Ok(Self { salt, hash })
+    }
+
+    fn verify(&self, pin: &str) -> Result<bool, Status> {
+        Ok(digest_eq(&*Self::derive(pin, &self.salt)?, &self.hash))
+    }
+}
+
+fn validate_pin(pin: &str) -> Result<(), Status> {
+    if !(4..=128).contains(&pin.len()) || pin.trim().is_empty() || pin.chars().any(char::is_control)
+    {
+        return Err(Status::BadRequest);
+    }
+    Ok(())
+}
+
+fn password_summary(
+    runtime: &SecondPasswordRuntime,
+    session: PrimarySession,
+    outcome: &'static str,
+) -> Result<Response, Status> {
+    let unlocked = runtime.is_unlocked(session).map_err(f4_runtime_error)?;
+    Ok(Response::json(
+        &json!({"outcome": outcome, "unlocked": unlocked}),
+    ))
+}
+
+enum VerifiedPasswordAction {
+    Setup(SecondPasswordCredential),
+    Attempt {
+        action: SecondPasswordAction,
+        verified: bool,
+        replacement: Option<SecondPasswordCredential>,
+    },
+}
+
+fn second_password_now(_shop: &WebShop) -> Result<u64, Status> {
+    #[cfg(test)]
+    {
+        let now = _shop
+            .second_password_test_now
+            .load(std::sync::atomic::Ordering::Relaxed);
+        if now != 0 {
+            return Ok(now);
+        }
+    }
+    utc_seconds()
+}
+
+async fn update_second_password(
+    shop: &WebShop,
+    auth: &WebShopAuth,
+    digest: &TokenDigest,
+    request: &Request,
+) -> Result<Response, Status> {
+    require_f4_mutation(&shop.config, request)?;
+    let runtime = &shop.f4_security_kits.second_password;
+    if !shop
+        .f4_security_kits
+        .snapshot()
+        .map_err(|_| Status::Unavailable)?
+        .second_password
+        .enabled
+    {
+        return Err(Status::Forbidden);
+    }
+    // Move the guard into the blocking task to serialize verifier work even if
+    // the HTTP request times out. Commit only after rechecking the live token.
+    let credentials = shop.second_password_credentials.clone().lock_owned().await;
+    let session = auth
+        .with_session(digest, |session| session.primary_session)
+        .ok_or(Status::Unauthorized)?
+        .ok_or(Status::Forbidden)?;
+    let now = second_password_now(shop)?;
+    let (action, pin, new_pin) = if request.path() == "/api/v1/f4/second-password/setup" {
+        let SecondPasswordSetupInput { pin } = request.json_object()?;
+        if credentials.contains_key(&session.account) {
+            return Err(Status::Conflict);
+        }
+        (None, pin, None)
+    } else {
+        let SecondPasswordAttemptInput {
+            action,
+            pin,
+            new_pin,
+        } = request.json_object()?;
+        let action = match (action.as_str(), new_pin.is_some()) {
+            ("unlock", false) => SecondPasswordAction::Unlock,
+            ("change", true) => SecondPasswordAction::Change,
+            ("disable", false) => SecondPasswordAction::Disable,
+            _ => return Err(Status::BadRequest),
+        };
+        if !runtime
+            .may_attempt(session, now)
+            .map_err(f4_runtime_error)?
+        {
+            return password_summary(runtime, session, "locked");
+        }
+        (Some(action), pin, new_pin)
+    };
+    validate_pin(&pin)?;
+    if let Some(pin) = new_pin.as_deref() {
+        validate_pin(pin)?;
+    }
+    let (mut credentials, operation) = spawn_blocking(move || {
+        let operation = if let Some(action) = action {
+            let current = credentials.get(&session.account).ok_or(Status::Conflict)?;
+            let verified = current.verify(&pin)?;
+            let replacement = new_pin
+                .filter(|_| verified)
+                .map(|pin| SecondPasswordCredential::new(&pin))
+                .transpose()?;
+            VerifiedPasswordAction::Attempt {
+                action,
+                verified,
+                replacement,
+            }
+        } else {
+            VerifiedPasswordAction::Setup(SecondPasswordCredential::new(&pin)?)
+        };
+        Ok::<_, Status>((credentials, operation))
+    })
+    .await
+    .map_err(|_| Status::Internal)??;
+
+    auth.with_session(digest, |_| {
+        let outcome = match operation {
+            VerifiedPasswordAction::Setup(credential) => {
+                runtime.setup(session).map_err(f4_runtime_error)?;
+                credentials.insert(session.account, credential);
+                "configured"
+            }
+            VerifiedPasswordAction::Attempt {
+                action,
+                verified,
+                mut replacement,
+            } => {
+                match runtime
+                    .attempt(session, second_password_now(shop)?, action, verified)
+                    .map_err(f4_runtime_error)?
+                {
+                    SecondPasswordOutcome::Unlocked => "unlocked",
+                    SecondPasswordOutcome::Incorrect => "incorrect",
+                    SecondPasswordOutcome::Locked => "locked",
+                    SecondPasswordOutcome::Changed => {
+                        let credential = replacement.take().ok_or(Status::Internal)?;
+                        credentials.insert(session.account, credential);
+                        "changed"
+                    }
+                    SecondPasswordOutcome::Disabled => {
+                        credentials.remove(&session.account);
+                        "disabled"
+                    }
+                }
+            }
+        };
+        password_summary(runtime, session, outcome)
+    })
+    .ok_or(Status::Unauthorized)?
 }
 
 fn f4_mutation_result(result: Result<Decision<LedgerEntry>, Error>) -> Result<Response, Status> {
@@ -1503,6 +1862,12 @@ async fn route(
         "/api/v1/f4/security-kits-status" => {
             request.require_queryless_get()?;
             f4_security_kits_status(&shop.f4_security_kits, primary_session)
+        }
+        "/api/v1/f4/kits/equip" | "/api/v1/f4/kits/clear" => {
+            update_powerup_kit(shop, service, auth, &digest, player, request).await
+        }
+        "/api/v1/f4/second-password/setup" | "/api/v1/f4/second-password/attempt" => {
+            update_second_password(shop, auth, &digest, request).await
         }
         "/api/v1/f4/claim-milestone" => {
             claim_milestone(config, service, player, milestone, request).await

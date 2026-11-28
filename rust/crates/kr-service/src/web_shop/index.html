@@ -5,6 +5,8 @@
 <p id="balance"></p>
 <h2>F4 Extended</h2><p id="f4-extended-status" class="muted" role="status"></p><ul id="f4-extended-policies"></ul>
 <h3>Security &amp; Kits</h3><p id="f4-security-kits-status" class="muted" role="status"></p>
+<h3>Powerup kits</h3><form id="kit-equip"><label>Slot <input id="kit-slot" type="number" min="0" max="1" required></label><label>SKU <input id="kit-sku" required autocomplete="off"></label><button>Equip kit</button></form><button id="kit-clear">Clear kit slot</button><p id="kit-status" class="muted" role="status"></p>
+<h3>Second password</h3><form id="second-password-setup"><label>PIN <input id="second-password-new" type="password" minlength="4" maxlength="128" autocomplete="new-password" required></label><button>Set up</button></form><form id="second-password-attempt"><label>Action <select id="second-password-action"><option value="unlock">Unlock</option><option value="disable">Disable</option><option value="change">Change</option></select></label><label>PIN <input id="second-password-pin" type="password" minlength="4" maxlength="128" autocomplete="current-password" required></label><label id="second-password-replacement-label" hidden>New PIN <input id="second-password-replacement" type="password" minlength="4" maxlength="128" autocomplete="new-password"></label><button>Submit</button></form><p id="second-password-status" class="muted" role="status"></p>
 <h2>Events</h2><p id="events-status" class="muted" role="status"></p><ul id="events-list"></ul>
 <h2>Equipped</h2><p id="selection-note" class="muted" hidden>These selections are for this shop session.</p><ul id="equipped"></ul>
 <h3>Cosmetics Projection Status</h3><p id="cosmetics-status" class="muted" role="status"></p><ul id="cosmetics-slots"></ul>
@@ -86,6 +88,11 @@ async function loadF4SecurityKitsStatus(load){
     status.textContent=`Powerup kits: ${kits} · Second password: ${password}`;
   }catch(e){if(load===summaryLoad)status.textContent='Security and kit status unavailable'}
 }
+async function equipKit(event){event.preventDefault();try{const slot=Number(q('#kit-slot').value);const sku=q('#kit-sku').value.trim();const d=await api('/api/v1/f4/kits/equip',{method:'POST',body:JSON.stringify({slot,sku})});q('#kit-status').textContent=`${d.outcome} · slot ${d.slot} · bombs ${d.starting_stats.bombs}, blast ${d.starting_stats.blast}, speed ${d.starting_stats.speed}`}catch(e){q('#kit-status').textContent=String(e)}}
+async function clearKit(){try{const slot=Number(q('#kit-slot').value);const d=await api('/api/v1/f4/kits/clear',{method:'POST',body:JSON.stringify({slot})});q('#kit-status').textContent=`${d.outcome} · slot ${d.slot}`}catch(e){q('#kit-status').textContent=String(e)}}
+async function setupSecondPassword(event){event.preventDefault();try{const pin=q('#second-password-new').value;const d=await api('/api/v1/f4/second-password/setup',{method:'POST',body:JSON.stringify({pin})});q('#second-password-status').textContent=`${d.outcome} · unlocked: ${d.unlocked}`;event.target.reset()}catch(e){q('#second-password-status').textContent=String(e)}}
+async function attemptSecondPassword(event){event.preventDefault();try{const action=q('#second-password-action').value;const body={action,pin:q('#second-password-pin').value};if(action==='change')body.new_pin=q('#second-password-replacement').value;const d=await api('/api/v1/f4/second-password/attempt',{method:'POST',body:JSON.stringify(body)});q('#second-password-status').textContent=`${d.outcome} · unlocked: ${d.unlocked}`;event.target.reset()}catch(e){q('#second-password-status').textContent=String(e)}}
+q('#kit-equip').addEventListener('submit',equipKit);q('#kit-clear').addEventListener('click',clearKit);q('#second-password-setup').addEventListener('submit',setupSecondPassword);q('#second-password-attempt').addEventListener('submit',attemptSecondPassword);q('#second-password-action').addEventListener('change',()=>{q('#second-password-replacement-label').hidden=q('#second-password-action').value!=='change'});
 async function loadEventsStatus(load){
   try{
     const d=await api('/api/v1/events-status');
