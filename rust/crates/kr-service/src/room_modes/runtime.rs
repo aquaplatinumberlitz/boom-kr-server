@@ -16,7 +16,7 @@ pub(crate) struct Player {
 
 impl ModeKind {
     fn evaluates_unknown_outcome(self) -> bool {
-        self == Self::Hedgehog || self == Self::Hamster || self.evaluation_map_group().is_some()
+        self == Self::Hedgehog || self.evaluates_family()
     }
 }
 
