@@ -1,6 +1,6 @@
 """Kiểm integrity/đường dẫn gói; fake ELF ở đây không phải chứng nhận runtime."""
 import copy
-from contextlib import redirect_stderr, redirect_stdout
+from contextlib import nullcontext, redirect_stderr, redirect_stdout
 import hashlib
 from io import StringIO
 import json
@@ -8,6 +8,7 @@ from pathlib import Path
 import stat
 import shutil
 import struct
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -15,6 +16,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import rust_package_runtime as runtime
+import rust_service_package as builder
 from rust_package_runtime import digest, prepare, verify
 from rust_service_package import PACK_DATA, build
 
@@ -29,7 +31,7 @@ class PackageTests(unittest.TestCase):
         header = bytearray(32)
         header[:6] = b'\x7fELF\x02\x01'
         struct.pack_into('<H', header, 18, 62)
-        for name in ['kr-service', 'kr-admin', 'kr-companion']:
+        for name in ['kr-service', 'kr-admin', 'kr-companion', 'kr-launch-identity', 'kr-load']:
             (self.binaries / name).write_bytes(header + name.encode())
         self.fixture = self.root / 'source.bin'
         self.fixture.write_bytes(b'owned fixture bytes')
@@ -239,8 +241,6 @@ class PackageTests(unittest.TestCase):
 
     def test_repository_pack_data_ships_in_a_g1_bundle(self):
         from test_kr_pack_install import fake_recipe
-        for name in ['kr-launch-identity', 'kr-load']:
-            (self.binaries / name).write_bytes((self.binaries / 'kr-admin').read_bytes())
         expected = build(fake_recipe(self.root / 'wire'), self.binaries, self.out, 'x86_64-unknown-linux-gnu',
                          pack_scope='g1', pack_data=PACK_DATA)
         manifest = verify(self.out, expected)
@@ -251,12 +251,112 @@ class PackageTests(unittest.TestCase):
         for path in PACK_DATA.iterdir():
             self.assertEqual(rows['pack-data/' + path.name]['sha256'], digest(path))
 
+    def test_legacy_bundle_manifests_match_pre_opt_in_bytes(self):
+        # Pin the whole manifest (including every member's hash and mode) with stable source bytes.
+        for relative in (
+            'tools/rust_package_runtime.py', 'tools/kr_pack_export.py', 'tools/kr_pack_config.py',
+            'tools/content_census.py', 'tools/export_map_profile.py', 'tools/rust_map_profile.py',
+            'server/probe_codec.py', 'server/room_title.py',
+        ):
+            source = self.root / relative
+            source.parent.mkdir(exist_ok=True)
+            source.write_bytes(relative.encode())
+        pack_data = self.root / 'prebuilt'
+        pack_data.mkdir()
+        (pack_data / 'manifest.json').write_bytes(b'{"identity":"test-export"}\n')
+        (pack_data / 'tables.json').write_bytes(b'{}\n')
+        self.config['diagnostic_two_lobby']['managed_rooms'] = dict(player_round={'characters': [0]}, player_choices=True)
+        recipe = self.root / 'recipe.json'
+        recipe.write_text(json.dumps(self.config), encoding='utf-8')
+        local = self.root / 'local'
+        local.mkdir()
+        # Fingerprints from the builder at ef285c1.
+        baselines = {
+            'g1': '72d6b4704cdfec416025d3a5c516c208c7cad14e699abd2bfa4dc7a7ef1c488a',
+            'f1': '2219fe741fcbd931098f3ddd055c2506636043092870a8abdb0a0b3823b7de19',
+            'f1-a': 'a7dccff47646239fe4a348d18869cc73d3fbc217c116d95abc2cd0ed00747252',
+        }
+        with (patch.object(builder, 'ROOT', self.root),
+              patch.object(builder, 'PACK_DATA', pack_data),
+              patch.object(builder, '__file__', str(self.root / 'tools/rust_service_package.py')),
+              patch('kr_pack_export.prebuilt', return_value=pack_data)):
+            for scope, baseline in baselines.items():
+                with self.subTest(scope=scope):
+                    bundle = local / scope
+                    options = [] if scope == 'g1' else ['--pack-scope', scope]
+                    with (patch.object(sys, 'argv', self.builder_argv(recipe, bundle, *options)),
+                          redirect_stdout(StringIO()) as stdout):
+                        builder.main()
+                    expected = json.loads(stdout.getvalue())['manifest_sha256']
+                    manifest = verify(bundle, expected)
+                    self.assertNotIn('f2_maps', manifest)
+                    self.assertNotIn('f3_maps', manifest)
+                    self.assertEqual(digest(bundle / 'manifest.json'), baseline)
+
+    def test_builder_rejects_invalid_opt_in_selections_before_creating_bundle(self):
+        target = 'x86_64-unknown-linux-gnu'
+        for adapter, other in [('f2', 'f3'), ('f3', 'f2')]:
+            key, flag = f'{adapter}_maps', f'--{adapter}-map'
+            selected = {key: ['CAPong01']}
+            scope = f'{adapter}-optin'
+            cases = [
+                (scope, {}, flag),
+                (scope, dict(selected, **{f'{other}_maps': ['CAPong02']}), f'--{other}-map'),
+                (scope, dict(selected, pack_data=PACK_DATA), 'g1 hoặc f1'),
+            ]
+            for malformed in ([], '', 'CAPong01', [1], [''], [' Map'], ['../Map'], ['Map-1'], ['맵01'],
+                              ['A' * 65], ['CAPong01', 'CAPong01'], [f'Map{i}' for i in range(17)]):
+                cases.append((scope, {key: malformed}, flag))
+            for legacy in (None, 'g1', 'f1', 'f1-a'):
+                cases.append((legacy, selected, flag))
+            for pack_scope, options, message in cases:
+                with (self.subTest(scope=pack_scope, options=options),
+                      self.assertRaisesRegex(ValueError, message)):
+                    build(self.config, self.binaries, self.out, target, pack_scope=pack_scope, **options)
+                self.assertFalse(self.out.exists())
+
+    def builder_argv(self, recipe, out, *options):
+        return ['rust_service_package.py', '--base', str(recipe), '--binary-dir', str(self.binaries),
+                '--out', str(out), '--target', 'x86_64-unknown-linux-gnu', *options]
+
+    def test_builder_cli_rejects_conflicting_pack_options(self):
+        recipe = self.root / 'recipe.json'
+        recipe.write_text(json.dumps(self.config), encoding='utf-8')
+        out = self.root / 'local' / 'package'
+        out.parent.mkdir()
+        for adapter, other in (('f2', 'f3'), ('f3', 'f2')):
+            scope, flag = f'{adapter}-optin', f'--{adapter}-map'
+            opt_in = ('--pack-scope', scope, flag, 'CAPong01')
+            cases = [
+                (('--pack-scope', scope), flag),
+                (('--pack-scope', scope, flag, ''), flag),
+                ((*opt_in, f'--{other}-map', 'CAPong02'), f'--{other}-map'),
+                ((*opt_in, '--pack-data', str(PACK_DATA)), '--pack-data'),
+                ((*opt_in, '--pack-data', str(PACK_DATA), '--no-pack-data'), '--pack-data'),
+                ((*opt_in, '--legacy-fixtures'), '--legacy-fixtures'),
+            ]
+            cases.extend((('--pack-scope', legacy, flag, 'CAPong01'), flag) for legacy in ('g1', 'f1', 'f1-a'))
+            for options, message in cases:
+                with (self.subTest(options=options), patch.object(builder, 'ROOT', self.root),
+                      patch.object(sys, 'argv', self.builder_argv(recipe, out, *options)),
+                      redirect_stderr(StringIO()) as stderr, self.assertRaises(SystemExit) as error):
+                    builder.main()
+                self.assertIn(error.exception.code, (1, 2))
+                self.assertIn(message, stderr.getvalue().splitlines()[-1])
+                self.assertFalse(out.exists())
+
     def invoke_pack_runtime(self, manifest, command, state, *options):
         entry = self.out / 'kr-package.py'
-        argv = [str(entry), command, '--manifest-sha256', 'a' * 64, '--state', str(state), *options]
+        if manifest is None:
+            expected = digest(self.out / 'manifest.json')
+            verify_context = nullcontext()
+        else:
+            expected = 'a' * 64
+            verify_context = patch.object(runtime, 'verify', return_value=dict(manifest, target='x86_64-unknown-linux-gnu'))
+        argv = [str(entry), command, '--manifest-sha256', expected, '--state', str(state), *options]
         output = StringIO()
         with (patch.object(runtime, '__file__', str(entry)),
-              patch.object(runtime, 'verify', return_value=dict(manifest, target='x86_64-unknown-linux-gnu')),
+              verify_context,
               patch.object(sys, 'argv', argv), patch.object(sys, 'dont_write_bytecode'),
               patch.object(runtime.os, 'chdir'), patch.object(runtime.os, 'execv') as execv,
               redirect_stdout(output)):
@@ -266,22 +366,52 @@ class PackageTests(unittest.TestCase):
         return output.getvalue()
 
     def test_opt_in_pack_maps_keep_order_through_export_and_run(self):
-        self.package()
+        from test_kr_pack_install import fake_recipe
+
         game, cache = self.root / 'game', self.root / 'cache'
-        for adapter, names in [('f2', ['CAPong02', 'CAPong01']), ('f3', ['Tutorial01', 'CAPong01'])]:
+        game.mkdir()
+        recipe = self.root / 'recipe.json'
+        recipe.write_text(json.dumps(fake_recipe(self.root / 'wire')), encoding='utf-8')
+        local = self.root / 'local'
+        local.mkdir()
+        for directory in ('tools', 'server', 'docs'):
+            (self.root / directory).symlink_to(builder.ROOT / directory, target_is_directory=True)
+        for adapter, names in [('f2', ['CAPong02', 'CAPong01']), ('f3', ['Tutorial01', 'MonSeal01'])]:
             scope = f'{adapter}-optin'
+            other = 'f3' if adapter == 'f2' else 'f2'
+            self.out = local / scope
+            options = ['--pack-scope', scope, *(arg for name in names for arg in (f'--{adapter}-map', name))]
+            with (patch.object(builder, 'ROOT', self.root),
+                  patch.object(sys, 'argv', self.builder_argv(recipe, self.out, *options)),
+                  redirect_stdout(StringIO()) as stdout):
+                builder.main()
+            expected = json.loads(stdout.getvalue())['manifest_sha256']
+            manifest = verify(self.out, expected)
+            self.assertEqual(manifest['pack_scope'], scope)
+            self.assertEqual(manifest[f'{adapter}_maps'], names)
+            self.assertNotIn(f'{other}_maps', manifest)
+            self.assertNotIn('pack_data', manifest)
+            entry = self.out / 'kr-package.py'
+            command = [sys.executable, '-E', str(entry), 'export', '--manifest-sha256', expected,
+                       '--state', str(self.root / f'{adapter}-standalone'), '--game-dir', str(game)]
+            result = subprocess.run(command, cwd=self.root, capture_output=True, text=True)
+            # The standalone exporter must pass catalog checks inside the bundle before checking the game pack.
+            self.assertEqual(result.returncode, 1, result.stderr)
+            self.assertIn('Thiếu pack KR 00967', result.stderr)
             for source in ('cli', 'manifest'):
                 with self.subTest(scope=scope, source=source):
                     state = self.root / f'{adapter}-{source}'
                     state.mkdir(mode=0o700)
                     (state / 'accounts.sqlite').touch()
-                    manifest = {'pack_scope': scope}
+                    tls = state / 'prelogin_tls-identity'
+                    tls.mkdir(mode=0o700)
+                    (tls / 'certificate.der').write_bytes(b'certificate fixture')
+                    manifest = None
                     options = ['--game-dir', str(game)]
                     if source == 'cli':
+                        manifest = {'pack_scope': scope}
                         for name in names:
                             options.extend([f'--{adapter}-map', name])
-                    else:
-                        manifest[f'{adapter}_maps'] = names
                     with (patch('kr_pack_export.export', return_value=(cache, False)) as export,
                           patch('kr_pack_config.configure') as configure):
                         result = self.invoke_pack_runtime(manifest, 'export', state, *options)

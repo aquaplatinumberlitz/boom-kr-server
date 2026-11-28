@@ -3,6 +3,7 @@ import argparse
 import copy
 import json
 from pathlib import Path
+import re
 import shutil
 import struct
 import tempfile
@@ -16,10 +17,28 @@ WINDOWS_PYTHON_SHA256 = '91d828c2da3a029b41699e918674a0cb379c02cf20dab9c50130688
 DEPLOY_FILES = ('Dockerfile', 'compose.yaml', 'install.sh', 'boom-server.service', 'Dockerfile.dockerignore')
 # Bản export mặc định đã commit theo docs/evidence/owner-directives/pack-data-rights.json.
 PACK_DATA = ROOT / 'server' / 'pack-data'
+OPT_IN_CATALOGS = {'f2-optin': 'f2-mode-catalog.json', 'f3-optin': 'f3-pve-catalog.json'}
+PACK_SCOPES = ('g1', 'f1', 'f1-a', *OPT_IN_CATALOGS)
 
 
 def build(config, binaries, out, target, source_root=None, *, pack_scope=None,
-          external_tls=False, self_host=False, windows_python=None, pack_data=None):
+          external_tls=False, self_host=False, windows_python=None, pack_data=None,
+          f2_maps=None, f3_maps=None):
+    if pack_scope is not None and pack_scope not in PACK_SCOPES:
+        raise ValueError('Phạm vi pack không hợp lệ')
+    map_selection = {}
+    for adapter, maps in (('f2', f2_maps), ('f3', f3_maps)):
+        scope, flag = f'{adapter}-optin', f'--{adapter}-map'
+        if pack_scope != scope:
+            if maps is not None:
+                raise ValueError(f'{flag} chỉ dùng với {scope}')
+        elif (not isinstance(maps, (list, tuple)) or not 1 <= len(maps) <= 16
+              or any(not isinstance(name, str) or re.fullmatch(r'[A-Za-z0-9_]{1,64}', name) is None
+                     for name in maps)
+              or len(set(maps)) != len(maps)):
+            raise ValueError(f'{scope} yêu cầu 1–16 tên map KR hợp lệ và khác nhau qua {flag}')
+        else:
+            map_selection[f'{adapter}_maps'] = list(maps)
     windows = target == 'x86_64-pc-windows-gnu'
     if not windows and target not in {'x86_64-unknown-linux-gnu', 'aarch64-unknown-linux-gnu'}:
         raise ValueError('Target Linux GNU hoặc Windows GNU không được hỗ trợ')
@@ -90,8 +109,6 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None,
     if self_host and not admission.get('prelogin_tls'):
         raise ValueError('Gói S1 yêu cầu prelogin_tls')
     if pack_scope is not None:
-        if pack_scope not in ('g1', 'f1', 'f1-a'):
-            raise ValueError('Phạm vi pack phải là g1, f1 hoặc f1-a')
         two = value['diagnostic_two_lobby']
         managed = two['managed_rooms']
         room = two['fixed_room']
@@ -164,13 +181,25 @@ def build(config, binaries, out, target, source_root=None, *, pack_scope=None,
     if pack_scope is not None:
         support = ('kr_pack_export.py', 'kr_pack_config.py', 'content_census.py',
                    'export_map_profile.py', 'rust_map_profile.py')
+        catalog = OPT_IN_CATALOGS.get(pack_scope)
+        if catalog is not None:
+            # Đặt exporter sâu một cấp để phép tra Path(__file__).parents[1] trỏ vào gốc gói.
+            (out / 'kr_pack_export').mkdir(mode=0o700)
+            (out / 'docs/evidence/content').mkdir(mode=0o700, parents=True)
+            for name in (catalog, 'f2-f3-tile-grid-census.json'):
+                relative = 'docs/evidence/content/' + name
+                save(ROOT / relative, relative)
         for name in support:
-            save(ROOT / 'tools' / name, name)
+            relative = 'kr_pack_export/__init__.py' if catalog is not None and name == 'kr_pack_export.py' else name
+            save(ROOT / 'tools' / name, relative)
         (out / 'server').mkdir(mode=0o700)
         for name in ('probe_codec.py', 'room_title.py'):
             save(ROOT / 'server' / name, 'server/' + name)
         manifest.update(pack_scope=pack_scope, files=[rows[key] for key in sorted(rows)],
                         limits='Pack KR 00967 được kiểm và xuất ở máy cài. Bundle chỉ giữ mẫu wire và cấu hình vận hành.')
+        if catalog is not None:
+            manifest.update(map_selection, limits='Yêu cầu pack KR 00967 ở máy cài. '
+                                                   'Gói giữ mẫu wire, cấu hình, catalog và census cho phạm vi đã chọn.')
     if pack_data is not None:
         # Chỉ JSON map/vật phẩm/chỉ số nhân vật; không chứa .idx/.idd/.bik/.exe/.dll của client.
         (out / 'pack-data').mkdir(mode=0o700)
@@ -222,7 +251,9 @@ def main():
     parser.add_argument('--binary-dir', type=Path, required=True)
     parser.add_argument('--target', required=True)
     parser.add_argument('--out', type=Path, required=True)
-    parser.add_argument('--pack-scope', choices=['g1', 'f1', 'f1-a'], default='g1')
+    parser.add_argument('--pack-scope', choices=PACK_SCOPES, default='g1')
+    parser.add_argument('--f2-map', dest='f2_maps', action='append', help='Tên map F2 opt-in chính xác; có thể lặp lại')
+    parser.add_argument('--f3-map', dest='f3_maps', action='append', help='Tên map F3 opt-in chính xác; có thể lặp lại')
     parser.add_argument('--external-tls', action='store_true',
                         help='Giữ pin TLS công khai hiện có; cấp private key qua state')
     parser.add_argument('--legacy-fixtures', action='store_true',
@@ -230,13 +261,22 @@ def main():
     parser.add_argument('--self-host', action='store_true', help='Bao gồm BoomServer và các file triển khai S1')
     parser.add_argument('--windows-python', type=Path, help='ZIP Python nhúng x64 đã pin của gói Windows S1')
     parser.add_argument('--archive', action='store_true', help='Tạo ZIP hoặc tar.gz bên cạnh thư mục gói S1')
-    parser.add_argument('--pack-data', type=Path, default=PACK_DATA,
-                        help='Thư mục JSON xuất sẵn (mặc định server/pack-data); tạo lại bằng kr_pack_export.py --prebuilt-out')
+    parser.add_argument('--pack-data', type=Path,
+                        help='Thư mục JSON xuất sẵn cho g1/f1 (mặc định server/pack-data); '
+                             'tạo lại bằng kr_pack_export.py --prebuilt-out')
     parser.add_argument('--no-pack-data', action='store_true',
                         help='Không kèm JSON xuất sẵn; máy cài phải dùng --game-dir (không dùng cho S1)')
     args = parser.parse_args()
     if args.archive and not args.self_host:
         parser.error('--archive yêu cầu --self-host')
+    if args.pack_scope in OPT_IN_CATALOGS:
+        if args.pack_data is not None:
+            parser.error('--pack-data chỉ dùng với g1 hoặc f1')
+        if args.legacy_fixtures:
+            parser.error(f'--legacy-fixtures không dùng với {args.pack_scope}')
+    pack_data = (args.pack_data or PACK_DATA
+                 if args.pack_scope in ('g1', 'f1') and not (args.no_pack_data or args.legacy_fixtures)
+                 else None)
     out = args.out.resolve()
     local = (ROOT / 'local').resolve()
     if out == local or not out.is_relative_to(local):
@@ -246,8 +286,7 @@ def main():
         result = build(value, args.binary_dir, out, args.target, args.base.resolve().parent,
                        pack_scope=None if args.legacy_fixtures else args.pack_scope, external_tls=args.external_tls,
                        self_host=args.self_host, windows_python=args.windows_python,
-                       pack_data=None if args.no_pack_data or args.legacy_fixtures or args.pack_scope == 'f1-a'
-                       else args.pack_data)
+                       pack_data=pack_data, f2_maps=args.f2_maps, f3_maps=args.f3_maps)
         if args.archive:
             shutil.make_archive(str(out), 'zip' if args.windows_python else 'gztar',
                                 root_dir=out.parent, base_dir=out.name)
