@@ -5,13 +5,14 @@ use crate::{
     accounts::{
         Admin, Error, Grant, ItemUpgradeOperation, Player, RecordEraserOperation, Store, Token,
     },
-    choco_chat::F5SocialPolicy,
+    choco_chat::{F5SocialPolicy, F5SocialRuntimeSnapshot},
     f3_pve_policy::{DispatchRejection, PveModeFamily},
     f3_pve_runtime::{DispatchEvidence, MonsterAttack, MonsterSpawn, RuntimeError},
     f4_extended_policy::{
         CouponRequest, Decision, ItemOrigin, OperationKey, OwnedItem, RecordScope,
         SecondPasswordAction, SecondPasswordOutcome, TitleUnlockDecision, UpgradeFamily,
     },
+    f6_runtime::F6QuotaUsage,
     platform, web_shop,
 };
 use kr_wire::kr00967::{AccountTemplate, f3_pve::F3JumpTableProvenance};
@@ -35,6 +36,7 @@ const EVENTS: &str = "/api/v1/events-status";
 const F3_PVE_STATUS: &str = "/api/v1/f3/pve-status";
 const SECURITY_KITS: &str = "/api/v1/f4/security-kits-status";
 const SOCIAL_POLICY: &str = "/api/social/policy-status";
+const CAPASS_START: i64 = 1_798_761_600;
 const SAVE: &str = r#"{"map_id":"test","payload_base64":"e30="}"#;
 static CREATE_ACCOUNT_GATE: std::sync::Mutex<()> = std::sync::Mutex::new(());
 
@@ -124,6 +126,36 @@ fn welcome_coupon(account_id: i64) -> CouponRequest<'static> {
         issued_at: now,
         now,
         locally_issued: true,
+    }
+}
+
+fn capass_policy(dir: &TempDir) -> PathBuf {
+    let mut policy: Value = serde_json::from_str(include_str!(
+        "../../../../server/profiles/f6-events-disabled.json"
+    ))
+    .unwrap();
+    policy["systems"]["CAPass"] = json!({
+        "enabled": true,
+        "start_utc": "2027-01-01T00:00:00Z",
+        "end_utc": "2027-01-02T00:00:00Z",
+        "rate_caps": {"per_account_per_hour": 6, "global_per_minute": 43}
+    });
+    dir.policy("f6.json", policy)
+}
+
+fn empty_f5_snapshot(enabled: bool) -> F5SocialRuntimeSnapshot {
+    F5SocialRuntimeSnapshot {
+        note_inboxes: 0,
+        notes: 0,
+        unread_notes: 0,
+        couples: 0,
+        ringed_couples: 0,
+        plaza_occupants: 0,
+        plaza_seated: 0,
+        active_plaza_zones: 0,
+        notes_enabled: enabled,
+        couple_enabled: enabled,
+        plaza_enabled: enabled,
     }
 }
 
@@ -245,6 +277,16 @@ async fn default_active_and_embedded_web_shop_policies_are_disabled() {
     assert!(!f4.powerup_kits.enabled);
     assert!(!f4.second_password.enabled);
     assert!(!owner.active.f3_pve_policy().enabled);
+    assert_eq!(
+        owner.active.f5_social_runtime_snapshot(),
+        empty_f5_snapshot(false)
+    );
+    assert!(
+        owner
+            .active
+            .f6_event_status_snapshot(CAPASS_START)
+            .is_none()
+    );
     let (status, body) = request(addr, &token, SECURITY_KITS, None).await;
     assert_eq!(status, 200);
     assert_eq!(body["powerup_kits"], json!(f4.powerup_kits));
@@ -741,6 +783,55 @@ async fn f5_policy_file_reaches_the_live_account_service() {
 }
 
 #[tokio::test]
+async fn configured_f5_and_f6_snapshots_are_available_without_a_web_shop() {
+    let dir = TempDir::new();
+    let mut config = dir.config();
+    config.f5_social_policy = Some(dir.policy(
+        "f5.json",
+        json!({
+            "note_inbox_cap": 4,
+            "couple": true,
+            "plaza_zones": {"lobby_square": {"max_occupants": 8, "seats": 2}}
+        }),
+    ));
+    config.f6_events_policy = Some(capass_policy(&dir));
+    drop(Store::open(&config.database).unwrap());
+    let owner = Owner::open(&config, Default::default(), Some(projection()))
+        .await
+        .unwrap();
+    let active = owner.active.clone();
+    assert_eq!(active.f5_social_runtime_snapshot(), empty_f5_snapshot(true));
+
+    let before = active.f6_event_status_snapshot(CAPASS_START - 1).unwrap();
+    assert!(before.enabled);
+    assert_eq!(before.configured_systems, ["CAPass"]);
+    assert!(before.active_systems.is_empty());
+    let during = owner.active.f6_event_status_snapshot(CAPASS_START).unwrap();
+    assert_eq!(during.configured_systems, before.configured_systems);
+    assert_eq!(during.active_systems, ["CAPass"]);
+    assert_eq!(
+        during.quota_usage,
+        F6QuotaUsage {
+            claims: 0,
+            hourly: 0,
+            minute: 0,
+            daily: 0,
+            seasonal: 0
+        }
+    );
+
+    let login_only = Active::login_test_client(active.client.clone());
+    assert_eq!(
+        login_only.f5_social_runtime_snapshot(),
+        empty_f5_snapshot(false)
+    );
+    assert!(login_only.f6_event_status_snapshot(CAPASS_START).is_none());
+
+    owner.shutdown().await.unwrap();
+    assert!(active.f6_event_status_snapshot(CAPASS_START).is_none());
+}
+
+#[tokio::test]
 async fn invalid_f5_policy_files_prevent_account_serving_startup() {
     let dir = TempDir::new();
     let mut config = dir.config();
@@ -762,17 +853,7 @@ async fn invalid_f5_policy_files_prevent_account_serving_startup() {
 async fn embedded_web_shop_reports_opted_in_f6_status() {
     let dir = TempDir::new();
     let mut config = dir.config();
-    let mut policy: Value = serde_json::from_str(include_str!(
-        "../../../../server/profiles/f6-events-disabled.json"
-    ))
-    .unwrap();
-    policy["systems"]["CAPass"] = json!({
-        "enabled": true,
-        "start_utc": "2027-01-01T00:00:00Z",
-        "end_utc": "2027-01-02T00:00:00Z",
-        "rate_caps": {"per_account_per_hour": 6, "global_per_minute": 43}
-    });
-    config.f6_events_policy = Some(dir.policy("f6.json", policy));
+    config.f6_events_policy = Some(capass_policy(&dir));
 
     let (addr, mut owner) = open_owner(&mut config).await.unwrap();
     let (token, shutdown, task) = run_shop(&mut owner);
@@ -783,7 +864,7 @@ async fn embedded_web_shop_reports_opted_in_f6_status() {
         body["enabled_systems"],
         json!([{
             "system": "CAPass",
-            "start_utc": 1_798_761_600,
+            "start_utc": CAPASS_START,
             "end_utc": 1_798_848_000,
             "rate_caps": {"per_account_per_hour": 6, "global_per_minute": 43}
         }])

@@ -22,8 +22,8 @@ mod live_policy_wiring_tests;
 use crate::{
     account_bridge::{self, Bridge},
     account_worker::{AccountService, Client, EconomySettings, Worker},
-    accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Token},
-    choco_chat::F5SocialPolicy,
+    accounts::{CatalogAccess, EconomyPolicy, ShopCatalog, Store, Token},
+    choco_chat::{F5CoupleRuntime, F5PlazaRuntime, F5SocialPolicy, F5SocialRuntimeSnapshot},
     custom_map_store::{CustomMapPolicy, CustomMapStore},
     f3_pve_policy::F3PvePolicy,
     f3_pve_runtime::F3PveRegistry,
@@ -34,6 +34,7 @@ use crate::{
     },
     f4_security_kits::F4SecurityKitsRuntime,
     f6_policy::F6EventPolicy,
+    f6_runtime::{F6EventRuntime, F6EventStatusSnapshot},
     platform::{self, local_ipc},
     web_shop,
 };
@@ -44,12 +45,13 @@ use std::{
     fs, io,
     net::Ipv4Addr,
     path::{Component, Path, PathBuf},
-    sync::Arc,
+    sync::{Arc, Mutex, mpsc},
+    thread,
     time::Duration,
 };
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
-    sync::{Semaphore, watch},
+    sync::{Semaphore, oneshot, watch},
     task::JoinSet,
     time::timeout,
 };
@@ -202,6 +204,7 @@ struct LoadedSettings {
     economy: EconomySettings,
     f5: Option<F5SocialPolicy>,
     f6: Option<Arc<F6EventPolicy>>,
+    f6_runtime_policy: Option<F6EventPolicy>,
     f7: CustomMapPolicy,
     f4_security_kits: Arc<F4SecurityKitsRuntime>,
     f3_pve_policy: Arc<F3PvePolicy>,
@@ -274,11 +277,18 @@ impl Config {
     /// Load and validate the configured F6 event policy.
     /// If no profile is configured, all systems are disabled.
     pub fn f6_event_policy(&self) -> io::Result<F6EventPolicy> {
+        match self.read_f6_event_policy()? {
+            Some(source) => F6EventPolicy::from_json_str(&source),
+            None => Ok(F6EventPolicy::disabled_default()),
+        }
+    }
+
+    fn read_f6_event_policy(&self) -> io::Result<Option<String>> {
         let Some(path) = self.f6_events_policy.as_deref() else {
-            return Ok(F6EventPolicy::disabled_default());
+            return Ok(None);
         };
         validate_policy_path(path, "f6_events_policy")?;
-        F6EventPolicy::from_path(path)
+        fs::read_to_string(path).map(Some)
     }
 
     /// Load and validate the F4 extended policies. An omitted profile leaves
@@ -406,11 +416,16 @@ impl Config {
     }
 
     fn load_settings(&self) -> io::Result<LoadedSettings> {
-        let f6 = self
-            .f6_events_policy
-            .as_ref()
-            .map(|_| self.f6_event_policy().map(Arc::new))
-            .transpose()?;
+        let (f6, f6_runtime_policy) = if let Some(source) = self.read_f6_event_policy()? {
+            // The runtime takes policy ownership; the shop keeps a separate
+            // policy view. Parse both from the same read of the profile.
+            (
+                Some(Arc::new(F6EventPolicy::from_json_str(&source)?)),
+                Some(F6EventPolicy::from_json_str(&source)?),
+            )
+        } else {
+            (None, None)
+        };
         let f3_pve_policy = Arc::new(self.f3_pve_policy()?);
         let f3_pve_registry = if f3_pve_policy.enabled {
             Arc::new(F3PveRegistry::new(*f3_pve_policy, DEFAULT_F3_PVE_MAX_ROOMS))
@@ -491,6 +506,7 @@ impl Config {
             economy,
             f5,
             f6,
+            f6_runtime_policy,
             f7,
             f4_security_kits,
             f3_pve_policy,
@@ -498,10 +514,90 @@ impl Config {
         })
     }
 }
+struct F6StatusRequest {
+    now_unix: i64,
+    reply: mpsc::Sender<F6EventStatusSnapshot>,
+}
+
+struct F6StatusConnection {
+    requests: mpsc::SyncSender<F6StatusRequest>,
+    task: thread::JoinHandle<()>,
+}
+
+/// Owns the status channel for the thread that keeps the runtime and its
+/// borrowed SQLite store together. The channel accepts only snapshot reads.
+struct F6StatusRuntime(Mutex<Option<F6StatusConnection>>);
+
+impl F6StatusRuntime {
+    async fn open(database: PathBuf, policy: F6EventPolicy) -> io::Result<Self> {
+        let (requests, incoming) = mpsc::sync_channel::<F6StatusRequest>(0);
+        let (startup, ready) = oneshot::channel();
+        let task = thread::Builder::new()
+            .name("kr-f6-status".into())
+            .spawn(move || {
+                let store = Store::open_existing(&database);
+                let runtime = match store
+                    .as_ref()
+                    .map_err(|error| *error)
+                    .and_then(|store| F6EventRuntime::new(store, policy))
+                {
+                    Ok(runtime) => runtime,
+                    Err(error) => {
+                        let _ = startup.send(Err(io::Error::other(format!(
+                            "F6 runtime startup: {error:?}"
+                        ))));
+                        return;
+                    }
+                };
+                if startup.send(Ok(())).is_ok() {
+                    for F6StatusRequest { now_unix, reply } in incoming {
+                        let _ = reply.send(runtime.status_snapshot(now_unix));
+                    }
+                }
+            })?;
+        ready.await.map_err(io::Error::other)??;
+        Ok(Self(Mutex::new(Some(F6StatusConnection {
+            requests,
+            task,
+        }))))
+    }
+
+    fn snapshot(&self, now_unix: i64) -> Option<F6EventStatusSnapshot> {
+        let (reply, response) = mpsc::channel();
+        // The rendezvous queues no requests and the runtime does no DB I/O
+        // after startup. Keep the connection alive through the reply.
+        let connection = self.0.lock().ok()?;
+        connection
+            .as_ref()?
+            .requests
+            .send(F6StatusRequest { now_unix, reply })
+            .ok()?;
+        response.recv().ok()
+    }
+
+    async fn shutdown(&self) -> io::Result<()> {
+        let connection = self
+            .0
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .take();
+        if let Some(F6StatusConnection { requests, task }) = connection {
+            drop(requests);
+            tokio::task::spawn_blocking(move || task.join())
+                .await
+                .map_err(io::Error::other)?
+                .map_err(|_| io::Error::other("F6 runtime thread failed"))?;
+        }
+        Ok(())
+    }
+}
+
 // Share the fixed profile index and live policies across Active clones.
 #[derive(Default)]
 struct ActiveSettings {
     fixed_profiles: HashMap<u32, Vec<u8>>,
+    f5_social_policy: Arc<F5SocialPolicy>,
+    f6_event_runtime: Option<F6StatusRuntime>,
     f4_security_kits: Arc<F4SecurityKitsRuntime>,
     f3_pve_policy: Arc<F3PvePolicy>,
     f3_pve_registry: Arc<F3PveRegistry>,
@@ -544,6 +640,25 @@ impl Active {
     }
     pub(crate) fn f4_security_kits(&self) -> &Arc<F4SecurityKitsRuntime> {
         &self.projections.f4_security_kits
+    }
+    /// Read-only process-local F5 state. Packet routing remains owned by the
+    /// Schema 9 worker and its existing mute/block checks.
+    #[allow(dead_code, reason = "available to a future status consumer")]
+    pub fn f5_social_runtime_snapshot(&self) -> F5SocialRuntimeSnapshot {
+        let policy = self.projections.f5_social_policy.as_ref();
+        // There is no serving route that populates inbox, couple or plaza state.
+        let couples = F5CoupleRuntime::new(policy);
+        let plaza = F5PlazaRuntime::new(policy);
+        F5SocialRuntimeSnapshot::new(policy, &[], &couples, &plaza)
+    }
+    /// Read-only F6 status. An omitted policy has no runtime and is reported
+    /// as absent, preserving the fail-closed default.
+    #[allow(dead_code, reason = "available to a future status consumer")]
+    pub fn f6_event_status_snapshot(&self, now_unix: i64) -> Option<F6EventStatusSnapshot> {
+        self.projections
+            .f6_event_runtime
+            .as_ref()
+            .and_then(|runtime| runtime.snapshot(now_unix))
     }
     // Available to a future PvE dispatch consumer.
     #[allow(dead_code)]
@@ -713,7 +828,7 @@ impl Owner {
         .await
         .map_err(|e| io::Error::other(format!("account worker startup: {e:?}")))?;
         // The account service and bridge share this worker's client policy.
-        if let Some(policy) = settings.f5
+        if let Some(policy) = settings.f5.clone()
             && let Err(error) = worker.client().attach_f5_social_policy(policy)
         {
             let _ = worker.shutdown().await;
@@ -721,6 +836,16 @@ impl Owner {
                 "F5 social policy startup: {error:?}"
             )));
         }
+        let f6_event_runtime = match settings.f6_runtime_policy {
+            Some(policy) => match F6StatusRuntime::open(config.database.clone(), policy).await {
+                Ok(runtime) => Some(runtime),
+                Err(error) => {
+                    let _ = worker.shutdown().await;
+                    return Err(error);
+                }
+            },
+            None => None,
+        };
         let boot_epoch = if projection.is_some() {
             Some(
                 worker
@@ -780,6 +905,8 @@ impl Owner {
                 web_shop: web_shop.as_ref().map(crate::web_shop::Opened::auth),
                 projections: Arc::new(ActiveSettings {
                     fixed_profiles: projections,
+                    f5_social_policy: Arc::new(settings.f5.unwrap_or_default()),
+                    f6_event_runtime,
                     f4_security_kits: settings.f4_security_kits,
                     f3_pve_policy: settings.f3_pve_policy,
                     f3_pve_registry: settings.f3_pve_registry,
@@ -794,6 +921,10 @@ impl Owner {
         })
     }
     pub async fn shutdown(self) -> io::Result<()> {
+        let f6_shutdown = match &self.active.projections.f6_event_runtime {
+            Some(runtime) => runtime.shutdown().await,
+            None => Ok(()),
+        };
         if let Some(live) = self.live_worker {
             live.shutdown()
                 .await
@@ -802,7 +933,8 @@ impl Owner {
         self.worker
             .shutdown()
             .await
-            .map_err(|e| io::Error::other(format!("account worker shutdown: {e:?}")))
+            .map_err(|e| io::Error::other(format!("account worker shutdown: {e:?}")))?;
+        f6_shutdown
     }
 }
 pub(crate) struct Secret(pub(crate) Zeroizing<String>);
