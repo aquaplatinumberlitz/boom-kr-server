@@ -5,19 +5,24 @@
 use super::{Client, Command, Error, Pending, Result, Worker};
 use crate::accounts::BoosterSettlementRequest as StoreBoosterSettlementRequest;
 use crate::accounts::{
-    self, CatalogAccess, EconomyPolicy, EquippedItem, InventoryItem, ItemGrant, LedgerEntry,
-    MatchItemConsumptionReceipt, MatchItemConsumptionRequest, PlayerProfile, PurchaseReceipt,
-    ShopCatalog, Store, UsableItem, Validate,
+    self, CatalogAccess, EconomyPolicy, EquippedItem, InventoryItem, ItemGrant,
+    ItemUpgradeOperation, LedgerEntry, MatchItemConsumptionReceipt, MatchItemConsumptionRequest,
+    PlayerProfile, PurchaseReceipt, RecordEraserOperation, ShopCatalog, Store, UsableItem,
+    Validate,
 };
 use crate::f4_extended_policy::{
-    BoosterRoomContext, BoosterTicket, BoosterTicketPolicy, Decision, LevelGrant,
-    LevelRewardPolicy, LucciVaultPolicy, SettlementKey,
+    BoosterRoomContext, BoosterTicket, BoosterTicketPolicy, CouponRequest, Decision,
+    GiftCouponPolicy, LevelGrant, LevelRewardPolicy, LucciVaultPolicy, OperationKey,
+    RecordEraserPolicy, RecordScope, SettlementKey, TitlePolicy, TitleUnlockDecision,
+    UpgradeFamily, UpgradePolicy,
 };
 use std::{sync::Arc, time::Instant};
 use tokio::sync::oneshot;
 
 mod session_cosmetics;
 pub use session_cosmetics::O1SessionCosmetics;
+
+const MAX_EXTENDED_LABEL_BYTES: usize = 128;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum MatchItemConsumptionOutcome {
@@ -36,6 +41,10 @@ pub struct EconomySettings {
     booster: BoosterTicketPolicy,
     level_rewards: LevelRewardPolicy,
     lucci_vault: LucciVaultPolicy,
+    gift_coupon: GiftCouponPolicy,
+    record_eraser: RecordEraserPolicy,
+    upgrade: UpgradePolicy,
+    title: TitlePolicy,
 }
 impl EconomySettings {
     pub fn new(policy: EconomyPolicy, catalog: ShopCatalog) -> Result<Self> {
@@ -44,9 +53,7 @@ impl EconomySettings {
         Ok(Self {
             policy,
             catalog,
-            booster: BoosterTicketPolicy::default(),
-            level_rewards: LevelRewardPolicy::default(),
-            lucci_vault: LucciVaultPolicy::default(),
+            ..Self::default()
         })
     }
     /// Opt in to the extended F4 settlement policies. Existing callers using
@@ -76,6 +83,47 @@ impl EconomySettings {
             .with_extended_policies(booster, level_rewards, lucci_vault)?;
         Ok(())
     }
+    /// Opt in to additional F4 operations independently of settlement policies.
+    /// Coupon offer and title labels are limited to 128 bytes in the worker API.
+    pub fn with_extended_ops_policies(
+        mut self,
+        gift_coupon: GiftCouponPolicy,
+        record_eraser: RecordEraserPolicy,
+        upgrade: UpgradePolicy,
+        title: TitlePolicy,
+    ) -> Result<Self> {
+        self.set_extended_ops_policies(gift_coupon, record_eraser, upgrade, title)?;
+        Ok(self)
+    }
+    pub fn set_extended_ops_policies(
+        &mut self,
+        gift_coupon: GiftCouponPolicy,
+        record_eraser: RecordEraserPolicy,
+        upgrade: UpgradePolicy,
+        title: TitlePolicy,
+    ) -> Result<()> {
+        gift_coupon.validate().map_err(|_| Error::InvalidInput)?;
+        record_eraser.validate().map_err(|_| Error::InvalidInput)?;
+        upgrade.validate().map_err(|_| Error::InvalidInput)?;
+        title.validate().map_err(|_| Error::InvalidInput)?;
+        if gift_coupon
+            .coupon_offers
+            .iter()
+            .any(|row| row.offer.len() > MAX_EXTENDED_LABEL_BYTES)
+            || title
+                .unlock_table
+                .iter()
+                .flatten()
+                .any(|row| row.title.len() > MAX_EXTENDED_LABEL_BYTES)
+        {
+            return Err(Error::InvalidInput);
+        }
+        self.gift_coupon = gift_coupon;
+        self.record_eraser = record_eraser;
+        self.upgrade = upgrade;
+        self.title = title;
+        Ok(())
+    }
     pub fn policy(&self) -> &EconomyPolicy {
         &self.policy
     }
@@ -90,6 +138,18 @@ impl EconomySettings {
     }
     pub fn lucci_vault_policy(&self) -> &LucciVaultPolicy {
         &self.lucci_vault
+    }
+    pub fn gift_coupon_policy(&self) -> &GiftCouponPolicy {
+        &self.gift_coupon
+    }
+    pub fn record_eraser_policy(&self) -> &RecordEraserPolicy {
+        &self.record_eraser
+    }
+    pub fn upgrade_policy(&self) -> &UpgradePolicy {
+        &self.upgrade
+    }
+    pub fn title_policy(&self) -> &TitlePolicy {
+        &self.title
     }
     /// True when finished matches settle ledger rewards.
     pub fn rewards_enabled(&self) -> bool {
@@ -134,6 +194,33 @@ pub(super) enum EconomyRequest {
         player: i64,
         grant: LevelGrant,
     },
+    RedeemGiftCoupon {
+        player: i64,
+        key: OperationKey,
+        coupon_id: u64,
+        offer: String,
+        issued_to: u64,
+        issued_at: u64,
+        locally_issued: bool,
+    },
+    RecordEraser {
+        player: i64,
+        key: u64,
+        sku: String,
+        scope: RecordScope,
+    },
+    ItemUpgrade {
+        player: i64,
+        key: u64,
+        sku: String,
+        family: UpgradeFamily,
+        level: u16,
+        roll_bps: u16,
+    },
+    TitleUnlock {
+        player: i64,
+        title: String,
+    },
 }
 pub(super) enum EconomyReply {
     Profile(PlayerProfile),
@@ -147,6 +234,10 @@ pub(super) enum EconomyReply {
     Consume(MatchItemConsumptionReceipt),
     BoosterSettlement(Decision<LedgerEntry>),
     LevelMilestone(Decision<LedgerEntry>),
+    GiftCoupon(Decision<LedgerEntry>),
+    RecordEraser(Decision<LedgerEntry>),
+    ItemUpgrade(Decision<LedgerEntry>),
+    TitleUnlock(Option<TitleUnlockDecision>),
 }
 
 /// Execute one economy request on the worker thread with execution-time UTC.
@@ -232,6 +323,74 @@ pub(super) fn execute(
                 &settings.level_rewards,
                 &settings.lucci_vault,
                 &settings.catalog,
+                now,
+            )?)
+        }
+        EconomyRequest::RedeemGiftCoupon {
+            player,
+            key,
+            coupon_id,
+            offer,
+            issued_to,
+            issued_at,
+            locally_issued,
+        } => EconomyReply::GiftCoupon(store.redeem_gift_coupon(
+            player,
+            CouponRequest {
+                key,
+                coupon_id,
+                offer: &offer,
+                issued_to,
+                issued_at,
+                now: u64::try_from(now).map_err(|_| accounts::Error::InvalidInput)?,
+                locally_issued,
+            },
+            &settings.gift_coupon,
+            &settings.lucci_vault,
+            catalog,
+        )?),
+        EconomyRequest::RecordEraser {
+            player,
+            key,
+            sku,
+            scope,
+        } => EconomyReply::RecordEraser(store.apply_record_eraser(
+            player,
+            RecordEraserOperation {
+                key,
+                sku: &sku,
+                scope,
+            },
+            &settings.record_eraser,
+            now,
+        )?),
+        EconomyRequest::ItemUpgrade {
+            player,
+            key,
+            sku,
+            family,
+            level,
+            roll_bps,
+        } => EconomyReply::ItemUpgrade(store.apply_item_upgrade(
+            player,
+            ItemUpgradeOperation {
+                key,
+                sku: &sku,
+                family,
+                level,
+                roll_bps,
+            },
+            &settings.upgrade,
+            now,
+        )?),
+        EconomyRequest::TitleUnlock { player, title } => {
+            if !settings.title.enabled {
+                return Err(accounts::Error::InvalidInput);
+            }
+            EconomyReply::TitleUnlock(store.evaluate_title_unlock(
+                player,
+                &title,
+                &settings.title,
                 now,
             )?)
         }
@@ -498,6 +657,101 @@ impl AccountService {
             .await?
         {
             EconomyReply::LevelMilestone(receipt) => Ok(receipt),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    /// Redeem a server-resolved local coupon. The worker uses execution-time
+    /// UTC in place of `request.now`.
+    pub async fn redeem_gift_coupon(
+        &self,
+        player_id: i64,
+        request: CouponRequest<'_>,
+    ) -> Result<Decision<LedgerEntry>> {
+        if !self.settings.gift_coupon.enabled
+            || request.key.account == 0
+            || request.key.id == 0
+            || request.coupon_id == 0
+            || !request.locally_issued
+            || request.issued_to != request.key.account
+            || !(1..=MAX_EXTENDED_LABEL_BYTES).contains(&request.offer.len())
+        {
+            return Err(Error::InvalidInput);
+        }
+        let request = EconomyRequest::RedeemGiftCoupon {
+            player: player_id,
+            key: request.key,
+            coupon_id: request.coupon_id,
+            offer: request.offer.into(),
+            issued_to: request.issued_to,
+            issued_at: request.issued_at,
+            locally_issued: request.locally_issued,
+        };
+        match self.call(player_id, request).await? {
+            EconomyReply::GiftCoupon(receipt) => Ok(receipt),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    /// Consume an owned eraser and apply the configured record reset.
+    pub async fn apply_record_eraser(
+        &self,
+        player_id: i64,
+        request: RecordEraserOperation<'_>,
+    ) -> Result<Decision<LedgerEntry>> {
+        if !self.settings.record_eraser.enabled || request.key == 0 {
+            return Err(Error::InvalidInput);
+        }
+        accounts::sku(request.sku).map_err(|_| Error::InvalidInput)?;
+        let request = EconomyRequest::RecordEraser {
+            player: player_id,
+            key: request.key,
+            sku: request.sku.into(),
+            scope: request.scope,
+        };
+        match self.call(player_id, request).await? {
+            EconomyReply::RecordEraser(receipt) => Ok(receipt),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    /// Apply one configured upgrade using a trusted roll. A replay returns
+    /// the stored receipt regardless of the new roll.
+    pub async fn apply_item_upgrade(
+        &self,
+        player_id: i64,
+        request: ItemUpgradeOperation<'_>,
+    ) -> Result<Decision<LedgerEntry>> {
+        if !self.settings.upgrade.enabled || request.key == 0 {
+            return Err(Error::InvalidInput);
+        }
+        accounts::sku(request.sku).map_err(|_| Error::InvalidInput)?;
+        let request = EconomyRequest::ItemUpgrade {
+            player: player_id,
+            key: request.key,
+            sku: request.sku.into(),
+            family: request.family,
+            level: request.level,
+            roll_bps: request.roll_bps,
+        };
+        match self.call(player_id, request).await? {
+            EconomyReply::ItemUpgrade(receipt) => Ok(receipt),
+            _ => Err(Error::WorkerFault),
+        }
+    }
+    /// Read title eligibility. Returns `None` for an unknown or unmet title
+    /// when enabled. This does not persist a title or emit a notification.
+    pub async fn evaluate_title_unlock(
+        &self,
+        player_id: i64,
+        title: &str,
+    ) -> Result<Option<TitleUnlockDecision>> {
+        if !self.settings.title.enabled || !(1..=MAX_EXTENDED_LABEL_BYTES).contains(&title.len()) {
+            return Err(Error::InvalidInput);
+        }
+        let request = EconomyRequest::TitleUnlock {
+            player: player_id,
+            title: title.into(),
+        };
+        match self.call(player_id, request).await? {
+            EconomyReply::TitleUnlock(decision) => Ok(decision),
             _ => Err(Error::WorkerFault),
         }
     }
