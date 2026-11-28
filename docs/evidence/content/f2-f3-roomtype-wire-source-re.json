@@ -1,0 +1,202 @@
+{
+  "schema": "kre.p256.f2-f3-roomtype-wire-source-re.v1",
+  "status": "complete_static_plus_bounded_runtime",
+  "source": [
+    "kr_static",
+    "kr_runtime"
+  ],
+  "build": "KR00967",
+  "idb_sha256": "6be15a1fccea0837ee95c50893345e9f13dc217b0fa570975b5c284f0d547fd1",
+  "image_base": "0x400000",
+  "anchors": {
+    "room_invited_parser": {
+      "va": "0x57f520",
+      "symbol": "sub_57F520",
+      "fields": {
+        "roommode": "+628",
+        "roomtype": "+692"
+      }
+    },
+    "mode_ui_selector": {
+      "va": "0xc6c080",
+      "symbol": "sub_C6C080",
+      "known_ids": {
+        "19": "Popcade",
+        "18/21/25": "SuperFighter",
+        "36/37/38": "selector_family",
+        "39": "selector_family"
+      }
+    },
+    "map_record_reader": {
+      "va": "0xdfeb10",
+      "symbol": "sub_DFEB10",
+      "record_mode_bytes": [
+        40,
+        41
+      ],
+      "local_code_offset": 68
+    },
+    "selector_caller": {
+      "va": "0xde1f20",
+      "symbol": "sub_DE1F20",
+      "args": {
+        "a3": "game_type",
+        "a4": "sub_1243C00(sub_544520())",
+        "a5": "policy_phase"
+      }
+    },
+    "threshold_selector": {
+      "va": "0x138a940",
+      "symbol": "sub_138A940",
+      "helper": "0x1389ad0",
+      "helper_set": "Y..c"
+    },
+    "start_gate": {
+      "va": "0xde0310",
+      "symbol": "sub_DE0310",
+      "send_opcode": 104,
+      "accepted_returns": [
+        0,
+        1
+      ]
+    },
+    "validation": {
+      "va": "0xdcad80",
+      "symbol": "sub_DCAD80",
+      "returns": {
+        "2": "map/filter/policy",
+        "3": "slot not ready",
+        "4": "too few players",
+        "5": "mode capacity",
+        "6": "too few teams",
+        "7": "balance/roster",
+        "12": "secondary policy"
+      }
+    },
+    "slot_packet": {
+      "va": "0xdc6700",
+      "symbol": "sub_DC6700",
+      "opcode": 110
+    },
+    "team_writer": {
+      "va": "0xdcacc0",
+      "symbol": "sub_DCACC0",
+      "formula": "(word & 0xfc1f) | ((team & 0x1f) << 5)",
+      "live_action": "team selector UI emits C2S 110; reflected S2C 110 body is opaque here"
+    },
+    "packed_state": {
+      "va": "0x124b7b0",
+      "symbol": "sub_124B7B0",
+      "team": "(word >> 5) & 0x1f",
+      "ready_group": "(word >> 2) & 7",
+      "active": "word & 1",
+      "position": "next_word & 0x1fff"
+    },
+    "map_packet": {
+      "va": "0xdc70d0",
+      "symbol": "sub_DC70D0",
+      "opcode": 117,
+      "fields": [
+        "result:u16",
+        "local_code:u16",
+        "dynamic_index:u32"
+      ]
+    },
+    "start_dispatch": {
+      "va": "0xdc51f0",
+      "symbol": "sub_DC51F0",
+      "post_start": [
+        121,
+        153
+      ]
+    },
+    "prepare_profile_packet": {
+      "va": "0xde28a0",
+      "symbol": "sub_DE28A0",
+      "opcode": 106,
+      "team_call": "sub_D62950(slot, position, team, player_blob, 1)"
+    }
+  },
+  "runtime_matrix": {
+    "stalled": {
+      "maps": {
+        "Mon*": [
+          "MonSnowBear07",
+          "MonGolem01",
+          "MonPen01"
+        ],
+        "PopcadeB/C": [
+          "PopcadeB01",
+          "PopcadeC01"
+        ],
+        "Zzolman": [
+          "Zzolman01"
+        ]
+      },
+      "map_codes": [
+        666,
+        501,
+        536,
+        910,
+        915,
+        1146
+      ],
+      "observed": [
+        117,
+        110
+      ],
+      "missing": [
+        104,
+        121,
+        153
+      ],
+      "team_words": [
+        0,
+        0
+      ]
+    },
+    "control": {
+      "maps": [
+        "Coloring01",
+        "Hamster01",
+        "Gumiho01",
+        "SuperFighter16",
+        "Rabbit01",
+        "Wriggle01"
+      ],
+      "map_codes": [
+        213,
+        355,
+        344,
+        1075,
+        920,
+        1115
+      ],
+      "observed": [
+        117,
+        110,
+        104,
+        121,
+        153
+      ],
+      "team_words": [
+        3,
+        3
+      ]
+    }
+  },
+  "r5_conditions": [
+    "identity and slot valid",
+    "117 result=0 with code/index",
+    "both 110 ready_group=1",
+    "set both teams to a nonzero mode-accepted color; control evidence uses 3",
+    "verify 104 then 121 and 153",
+    "record 204/132/180 for PvE if present"
+  ],
+  "limits": [
+    "exact DCAD80 return was not captured in r3/r4",
+    "map-family-to-row mode ID is unresolved",
+    "opposite-team and AI-slot rules are unknown",
+    "runtime comparison is bounded client Wine evidence"
+  ]
+}
