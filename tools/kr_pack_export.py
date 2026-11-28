@@ -54,6 +54,10 @@ _F2_EVIDENCE = Path('docs/evidence/content')
 _HAMSTER_MAPS = frozenset(f'Hamster{n:02}' for n in range(1, 9))
 _SNOWY_FIELDS_MAPS = frozenset(f'SnowyFields{n:02}' for n in range(1, 19))
 _ZOMBIE_MAPS = frozenset(f'Zombie{n:02}' for n in range(1, 7))
+_POPCADE_MAPS = frozenset(f'Popcade{family}{n:02}' for family in 'ABC' for n in range(1, 6))
+_GUMIHO_MAPS = frozenset(f'Gumiho{n:02}' for n in range(1, 12))
+_CAHERO_MAPS = frozenset((*[f'CAhero{n:02}' for n in range(1, 20)],
+                          *[f'CAhero{n:02}' for n in range(100, 134)]))
 _F2_FAMILIES = {
     'CAPong': frozenset(f'CAPong{n:02}' for n in range(1, 6)),
     'Clover': frozenset(f'Clover{n:02}' for n in range(1, 7)),
@@ -66,6 +70,10 @@ _F2_FAMILIES = {
     'Hamster': _HAMSTER_MAPS,
     'Coloring': frozenset(f'Coloring{n:02}' for n in range(1, 6)),
     'SuperFighter': frozenset(('SuperFighter16', 'SuperFighter19')),
+    'PopcadeA': frozenset(f'PopcadeA{n:02}' for n in range(1, 6)),
+    'PopcadeB': frozenset(f'PopcadeB{n:02}' for n in range(1, 6)),
+    'PopcadeC': frozenset(f'PopcadeC{n:02}' for n in range(1, 6)),
+    'Gumiho': _GUMIHO_MAPS,
 }
 # Chỉ nhận các họ 15x13 có địa hình sạch trong census và pack KR 00967.
 # Adapter chỉ chiếu tile tĩnh; chưa có contract PvE cho script hoặc vật phẩm.
@@ -110,6 +118,11 @@ _F3_FAMILIES = {
     'Hdn_Tomb': frozenset(('Hdn_Tomb02',)),
     'Hdn_Village': frozenset(('Hdn_Village09',)),
     'Hdn_Wriggle': frozenset(('Hdn_Wriggle02',)),
+    'PopcadeA': frozenset(f'PopcadeA{n:02}' for n in range(1, 6)),
+    'PopcadeB': frozenset(f'PopcadeB{n:02}' for n in range(1, 6)),
+    'PopcadeC': frozenset(f'PopcadeC{n:02}' for n in range(1, 6)),
+    'Gumiho': _GUMIHO_MAPS,
+    'CAhero': _CAHERO_MAPS,
     'HiddenCatchTest': frozenset(('HiddenCatchTest00',)),
     'MonCity': frozenset(f'MonCity{n:02}' for n in range(1, 10)),
     'MonGolem': frozenset(f'MonGolem{n:02}' for n in range(1, 28)),
@@ -365,7 +378,9 @@ _TYPE1_LEAP_BARRIERS = frozenset(('TileTransParent_Static/Static01', 'Tile19_Sta
 # all ones is clear, all zero cannot be entered or left by a ray (as 1D24).
 _UNIFORM_PASSABLE_PIECES = frozenset(
     [f'Tile10_Passable/Building0{i}' for i in range(9)]
-    + [f'Tile02_Passble/IceHouse0{i}' for i in range(9)])
+    + [f'Tile02_Passble/IceHouse0{i}' for i in range(9)]
+    + ['Tile65_Passable/FlowerBush', 'Tile65_Passable/FlowerBush03',
+       'Tile65_Passable/Gate01', 'Tile65_Passable/Gate02'])
 _TENT_PIECES = frozenset((
     'Tile01_Passable/TentBlue', 'Tile01_Passable/TentOrange', 'Tile01_Passable/TentRed',
     'Tile16_Passble/ArmyTent01', 'Tile16_Passble/ArmyTent02',
@@ -544,9 +559,13 @@ def f1_terrain_rules(profile, table, *, f1e=False):
         cancel_ground = (f1e and key == 'Tile50_Ground/Tile44'
                          and d[:15] == (*_GROUND, 1, 1, 0, 0, -1, 0, 0, 0, 0)
                          and d[15] == 655360001)
-        if (d[:6] != _GROUND or (d[8:11] != (0, 0, -1) and not conveyor)
+        grid_ground = (key.startswith(('Tile65_Ground/', 'Tile67_Ground/'))
+                       and d[:6] == _GROUND and 1 <= d[6] <= width and 1 <= d[7] <= height
+                       and d[8:11] == (0, 0, -1) and d[11] == 0
+                       and d[12:15] == (0, 0, 0) and d[15] == 1)
+        if (d[:6] != _GROUND or (d[8:11] != (0, 0, -1) and not conveyor and not grid_ground)
                 or (any(d[12:15]) and not (factory_flag or water_flag or rail_flag))
-                or (d[15] & 0xFF and not cancel_ground)):
+                or (d[15] & 0xFF and not cancel_ground and not grid_ground)):
             # A nonzero byte at offset 60 selects CGOTileLap in EB48E0.
             fail(index, 'nền', key)
         if not (1 <= d[6] <= width and 1 <= d[7] <= height and d[11] in (0, 1)):
@@ -579,6 +598,9 @@ def f1_terrain_rules(profile, table, *, f1e=False):
                 fail(index, 'overlay', overlay)
             key, d = lookup(code, index, 'overlay')
             # EA1EE0 puts third-layer decorators in a separate render list.
+            if ((key.startswith(('Tile65_Deco/', 'Tile67_Deco/', 'Tile65_Static/')) and d[0] == 4)
+                    or key in _RETRO_DECORATORS and d[:16] == (4,) + (0,) * 15):
+                continue
             if key not in _RETRO_DECORATORS or d[:16] != (4,) + (0,) * 15:
                 fail(index, 'overlay', key)
         ground(index, *lookup(base, index, 'nền'))
@@ -591,7 +613,14 @@ def f1_terrain_rules(profile, table, *, f1e=False):
                 key in _F1E_STATIC_WALLS and d[0] == 1
                 and d[1:6] == (0,) * 5 and d[8] == 1
                 and d[9:11] == (0, 0) and d[11] == 2010089472
-                and d[12:16] == (0, 0, 0, 0))):
+                and d[12:16] == (0, 0, 0, 0)) or (
+                key.startswith(('Tile65_Static/', 'Tile67_Static/'))
+                and d[0] == 1 and d[1:6] == (0,) * 5 and d[8] in (0, 1)
+                and d[9:12] == (0, 0, 0) and not any(d[12:])) or (
+                key.startswith('Tile23_Static/') and d[:6] == (1, 0, 0, 0, 0, 0)
+                and d[8:11] == (1, 0, 0) and d[11] == 2010089472 and not any(d[12:])) or (
+                key == 'Tile29_Static/R2_Temple01' and d[11] == -858993664 and not any(d[12:])) or (
+                key == 'Tile29_Static/R2_torchlight' and d[11] == 10155264 and not any(d[12:]))):
             # These TileInfo records are solid kind-1 footprints. Their
             # trailing values have no break or script consumer in the static
             # initializer; dynamic bonus Tower00 is intentionally excluded.
@@ -659,12 +688,24 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             # 9B0640 checks offset 44 only for ground. These type-3 variants
             # have the same all-ones ray bytes as Herb at offsets 32–35.
             pass
+        elif (key.startswith('Tile07_Passable/IslandA') or key == 'Tile07_Passable/Tile00'):
+            if (d[:6] == (3, 0, 0, 0, 0, 0) and d[6:9] == (0, _PASS_ALL, 0)
+                    and d[9:13] == (16777472, 1, 1, 0)):
+                ray_ports[index] = 0
+            else:
+                fail(index, 'vật thể/cờ', key)
         elif ((key.startswith('Tile16_Passble/Line') or key.startswith('Tile62_Passable/PoliceLine'))
               and d[:7] == (3, 0, 0, 0, 0, 0, 0)
               and d[7] in (65537, 16777472) and d[8:13] == (_PASS_ALL, 16777217, 1, 1, 0)):
             # The G1 shadow keeps these cells clear; native movement can still
             # be blocked. This is not a projection of directional movement.
             pass
+        elif (key.startswith('Tile65_Passable/') or key.startswith('Tile50_Passable/RabbitBurrow')):
+            if (d[:6] == (3, 0, 0, 0, 0, 0) and d[6] == d[7] == d[8]
+                    and d[6] in (_PASS_ALL, 16777472)):
+                pass
+            else:
+                fail(index, 'vật thể/cờ', key)
         elif (key in ('Tile10_Passable/BasicBlock_pass00', 'Tile10_Passable/BasicBlock_pass01')
               and d[:6] == (3, 0, 0, 0, 0, 0)
               and d[6:11] == (_PASS_ALL, _PASS_ALL, _PASS_ALL, 0, 0)
@@ -1075,7 +1116,7 @@ def load_f2_maps(maps):
         selected = {}
         for name in maps:
             family = families.get(name)
-            if not isinstance(family, str) or family.startswith('Popcade'):
+            if not isinstance(family, str):
                 raise ValueError(f'Map không thuộc phạm vi F2: {name}')
             row = census['maps'][name]
             if row['grid'] != [15, 13]:
@@ -1143,6 +1184,11 @@ def load_f3_maps(maps):
 
 def _f2_ground(key, data):
     # Giữ nguyên ID ô trong profile, kể cả nền đỏ/xanh của CAPong.
+    if (key.startswith(('Tile65_Ground/', 'Tile67_Ground/'))
+            and data[:6] == _GROUND and 1 <= data[6] <= 15 and 1 <= data[7] <= 13
+            and data[8:11] == (0, 0, -1) and data[11] == 0
+            and data[12:15] == (0, 0, 0) and data[15] in (0, 1)):
+        return True
     if key.startswith('Tile69_Ground/'):
         # +64/+68 đi sau các trường nền mà B9D8E0/EB48E0 đọc.
         return data[:17] == (0, 0, 0, 0, 0, 0, 1, 1, 0, 0, -1, 0, 0, 0, 0, 0, 8908730)
@@ -1196,6 +1242,13 @@ def _f2_object(key, data):
         return 1, width, height, 0b1111
     if _F23_STATIC_RECORDS.get(key) == data:
         return 1, width, height, 0b1111
+    if (key.startswith(('Tile65_Static/', 'Tile67_Static/'))
+            and kind == 1 and data[1:6] == (0,) * 5 and data[8] in (0, 1)
+            and data[9:12] == (0, 0, 0)
+            and not any(data[12:])):
+        return 1, width, height, 0b1111
+    if key == 'TileTransParent_Static/Jump_Static' and data[:12] == (1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0):
+        return 1, 1, 1, 0b1111
     if _R2_ICE_HOUSES.get(key) == data:
         return 0, 1, 1, 0b1111 if data[6] else 0
     if key in _ZOMBIE_PASS_B_NAMES and data == _ZOMBIE_PASS_B:
@@ -1251,12 +1304,18 @@ def _f2_object(key, data):
             return None
         if data[8:] == tail:
             return 1, width, height, 0b1111
-    if (kind == 2 and key.startswith(('Tile00_Box/', 'Tile01_Box/', 'Tile02_Box/',
+    if (kind == 2 and key.startswith(('Tile00_Box/', 'Tile01_Box/', 'Tile02_Box/', 'Tile65_Box/', 'Tile67_Box/',
                                       'Tile05_Box/', 'Tile18_Box/', 'Tile20_Box/',
                                       'Tile21_Box/', 'Tile22_Box/', 'Tile26_Box/'))
             and data[1:7] == (0,) * 6 and height in (0, 1) and data[8:] == (0,) * 10):
         return 2, 1, max(1, height), 0b1111
+    if (key.startswith(('Tile65_Box/', 'Tile67_Box/')) and data[:6] == (2, 0, 0, 0, 0, 0)
+            and data[8:16] == (0,) * 8):
+        return 2, 1, 1, 0b1111
     if kind == 3 and data[1:6] == (0,) * 5:
+        if (key.startswith(('Tile65_Passable/', 'Tile67_Passable/'))
+                and data[6] == data[7] == data[8] in (_PASS_ALL, 16777472)):
+            return 0, 1, 1, 0b1111
         if (key == 'Tile00_Passable/Herb00' and
                 data[6:] == (16843009,) * 3 + (0, 0, 0, 0, 18730216, 0, 18730216, 0, 0)):
             return 0, 1, 1, 0b1111
@@ -1284,6 +1343,10 @@ def f2_terrain_rules(profile, table):
             error = f'Tile F2 chưa ánh xạ: {name} ({col},{row}) {role} {key}'
             if data is None or len(data) != 18:
                 raise ValueError(error)
+            if role == 'overlay' and key.startswith(('Tile65_Deco/', 'Tile67_Deco/')) and data[0] == 4:
+                continue
+            if role == 'overlay' and key.startswith('Tile65_Static/') and data[0] == 4:
+                continue
             if role == 'tile' and _f2_ground(key, data):
                 continue
             obj = _f2_object(key, data) if role == 'object' else None
@@ -1333,7 +1396,8 @@ def read_f2_map(levels, name, code, evidence, table):
             or profile['rectangles']):
         raise ValueError(f'Bố cục map F2 chưa hỗ trợ: {name}')
     spawns = profile['spawns']
-    if (not 2 <= len(spawns) <= 8 or len(set(map(tuple, spawns))) != len(spawns)
+    min_spawns = 1 if evidence['family'].startswith('Popcade') else 2
+    if (not min_spawns <= len(spawns) <= 8 or len(set(map(tuple, spawns))) != len(spawns)
             or any(not (0 <= x < 15 and 0 <= y < 13) for x, y in spawns)):
         raise ValueError(f'Tọa độ spawn map F2 không hợp lệ: {name}')
     # Các hàng item và cờ scripted là metadata gốc. Các placement/drop mà
@@ -1362,7 +1426,8 @@ def read_f3_map(levels, name, code, evidence, table):
             or profile['rectangles']):
         raise ValueError(f'Bố cục map F3 chưa hỗ trợ: {name}')
     spawns = profile['spawns']
-    if (not 2 <= len(spawns) <= 8 or len(set(map(tuple, spawns))) != len(spawns)
+    min_spawns = 1 if evidence['family'].startswith('Popcade') else 2
+    if (not min_spawns <= len(spawns) <= 8 or len(set(map(tuple, spawns))) != len(spawns)
             or any(not (0 <= x < 15 and 0 <= y < 13) for x, y in spawns)):
         raise ValueError(f'Tọa độ spawn map F3 không hợp lệ: {name}')
     # Giữ drop, placement và cờ scripted trong profile dưới dạng metadata.

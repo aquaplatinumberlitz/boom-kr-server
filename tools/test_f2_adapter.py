@@ -23,6 +23,10 @@ EXPANDED_FAMILIES = {
     'Hamster': tuple(f'Hamster{n:02}' for n in range(1, 9)),
     'SnowyFields': tuple(f'SnowyFields{n:02}' for n in range(1, 19)),
     'Zombie': tuple(f'Zombie{n:02}' for n in range(1, 7)),
+    'PopcadeA': tuple(f'PopcadeA{n:02}' for n in range(1, 6)),
+    'PopcadeB': tuple(f'PopcadeB{n:02}' for n in range(1, 6)),
+    'PopcadeC': tuple(f'PopcadeC{n:02}' for n in range(1, 6)),
+    'Gumiho': tuple(f'Gumiho{n:02}' for n in range(1, 12)),
 }
 
 
@@ -174,7 +178,6 @@ class F2AdapterTests(unittest.TestCase):
             (('NoSuchMap',), 'NoSuchMap'),
             (('Factory07',), 'Factory07'),
             (('Aqua01',), 'Aqua01'),
-            (('PopcadeA01',), 'PopcadeA01'),
             (('Bula00',), 'chưa được giải mã đầy đủ'),
             (('Baseball01',), 'tile chưa ánh xạ'),
         )
