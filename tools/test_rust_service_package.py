@@ -1,5 +1,8 @@
 """Kiểm integrity/đường dẫn gói; fake ELF ở đây không phải chứng nhận runtime."""
 import copy
+from contextlib import redirect_stderr, redirect_stdout
+import hashlib
+from io import StringIO
 import json
 from pathlib import Path
 import stat
@@ -247,6 +250,126 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(set(rows), {'pack-data/' + path.name for path in PACK_DATA.iterdir()})
         for path in PACK_DATA.iterdir():
             self.assertEqual(rows['pack-data/' + path.name]['sha256'], digest(path))
+
+    def invoke_pack_runtime(self, manifest, command, state, *options):
+        entry = self.out / 'kr-package.py'
+        argv = [str(entry), command, '--manifest-sha256', 'a' * 64, '--state', str(state), *options]
+        output = StringIO()
+        with (patch.object(runtime, '__file__', str(entry)),
+              patch.object(runtime, 'verify', return_value=dict(manifest, target='x86_64-unknown-linux-gnu')),
+              patch.object(sys, 'argv', argv), patch.object(sys, 'dont_write_bytecode'),
+              patch.object(runtime.os, 'chdir'), patch.object(runtime.os, 'execv') as execv,
+              redirect_stdout(output)):
+            runtime.main()
+        if command == 'run':
+            execv.assert_called_once()
+        return output.getvalue()
+
+    def test_opt_in_pack_maps_keep_order_through_export_and_run(self):
+        self.package()
+        game, cache = self.root / 'game', self.root / 'cache'
+        for adapter, names in [('f2', ['CAPong02', 'CAPong01']), ('f3', ['Tutorial01', 'CAPong01'])]:
+            scope = f'{adapter}-optin'
+            for source in ('cli', 'manifest'):
+                with self.subTest(scope=scope, source=source):
+                    state = self.root / f'{adapter}-{source}'
+                    state.mkdir(mode=0o700)
+                    (state / 'accounts.sqlite').touch()
+                    manifest = {'pack_scope': scope}
+                    options = ['--game-dir', str(game)]
+                    if source == 'cli':
+                        for name in names:
+                            options.extend([f'--{adapter}-map', name])
+                    else:
+                        manifest[f'{adapter}_maps'] = names
+                    with (patch('kr_pack_export.export', return_value=(cache, False)) as export,
+                          patch('kr_pack_config.configure') as configure):
+                        result = self.invoke_pack_runtime(manifest, 'export', state, *options)
+                        self.assertEqual(json.loads(result), {'cache': str(cache), 'reused': False})
+                        configure.assert_not_called()
+                        self.invoke_pack_runtime(manifest, 'run', state, *options)
+                    self.assertEqual(export.call_count, 2)
+                    for invocation in export.call_args_list:
+                        self.assertEqual(invocation.args, (game, state / 'pack-cache'))
+                        self.assertEqual(invocation.kwargs, {'maps': names, adapter: True})
+                    configure.assert_called_once()
+                    self.assertEqual(configure.call_args.args[1:3], (self.out, cache))
+                    self.assertEqual(configure.call_args.args[4:], (names, scope))
+
+    def test_pack_scope_and_opt_in_map_validation_fail_before_export(self):
+        state = self.root / 'invalid-state'
+        cases = [('not-a-scope', {}, [], 'Phạm vi pack'), ([], {}, [], 'Phạm vi pack')]
+        for adapter, other in [('f2', 'f3'), ('f3', 'f2')]:
+            scope, key, flag = f'{adapter}-optin', f'{adapter}_maps', f'--{adapter}-map'
+            cases.extend([
+                (scope, {}, [], flag),
+                (scope, {}, [flag, ''], flag),
+                (scope, {}, [flag, 'CAPong01', f'--{other}-map', 'CAPong02'], f'--{other}-map'),
+                (scope, {key: ['CAPong01'], f'{other}_maps': []}, [], f'{other}_maps'),
+                (scope, {key: ['CAPong01']}, [flag, 'CAPong02'], 'Chỉ chọn'),
+                (scope, {}, [flag, 'CAPong01', '--f1-map', 'Camp01'], '--f1-map'),
+            ])
+            for malformed in ([], None, 'CAPong01', [' '], [1]):
+                cases.append((scope, {key: malformed}, [], key))
+            for legacy in (None, 'g1', 'f1', 'f1-a'):
+                cases.extend([(legacy, {}, [flag, 'CAPong01'], flag),
+                              (legacy, {key: ['CAPong01']}, [], key)])
+        with patch('kr_pack_export.export') as export:
+            for scope, extra, flags, error_text in cases:
+                with (self.subTest(scope=scope, manifest=extra, flags=flags),
+                      redirect_stderr(StringIO()) as stderr, self.assertRaises(SystemExit) as error):
+                    self.invoke_pack_runtime(dict(extra, pack_scope=scope), 'export', state,
+                                             '--game-dir', str(self.root / 'game'), *flags)
+                self.assertEqual(error.exception.code, 1)
+                self.assertIn(error_text, stderr.getvalue())
+            for command in ('verify', 'init-db'):
+                with (self.subTest(command=command), redirect_stderr(StringIO()) as stderr,
+                      self.assertRaises(SystemExit) as error):
+                    self.invoke_pack_runtime({'pack_scope': 'f2-optin'}, command, state,
+                                             '--f2-map', 'CAPong01')
+                self.assertEqual(error.exception.code, 1)
+                self.assertIn('--f2-map', stderr.getvalue())
+            export.assert_not_called()
+        self.assertFalse(state.exists())
+
+    def test_legacy_runtime_export_and_run_match_baseline_bytes(self):
+        import kr_pack_export
+        from test_kr_pack_install import MAPS, fake_game, fake_recipe
+
+        game = self.root / 'game'
+        pins, seeds = fake_game(game)
+        recipe = fake_recipe(self.out)
+        recipe['diagnostic_two_lobby']['fixed_room']['map_choices'] = []
+        (self.out / 'config.template.json').write_text(json.dumps(recipe), encoding='utf-8')
+        # Fingerprints of the export cache, wire files and normalized config at 9d44fe3.
+        baselines = {
+            'g1': 'c01a9319f4a6182daa17e39ee1ff69a749a4253f3d6ff0da769e13a854b066b1',
+            'f1': '62e2d827792b55f8dc32d50b8bdc163a830444fb00470242a10d43c27898f729',
+            'f1-a': '65483129bc33a9e300fadc5cedd015699b255c246d550776f98a4e864c600da5',
+        }
+        with (patch.dict(kr_pack_export.PACK_SHA256, pins, clear=True),
+              patch.dict(kr_pack_export.TERRAIN_SEEDS, seeds, clear=True),
+              patch.multiple(kr_pack_export, MAPS=MAPS, G1=MAPS, F1=MAPS[::-1]),
+              patch.object(runtime.time, 'time_ns', return_value=123)):
+            for scope, baseline in baselines.items():
+                with self.subTest(scope=scope):
+                    state = self.root / scope
+                    options = ['--game-dir', str(game)]
+                    if scope == 'f1-a':
+                        for name in MAPS[::-1]:
+                            options.extend(['--f1-map', name])
+                    manifest = {'pack_scope': scope}
+                    result = self.invoke_pack_runtime(manifest, 'export', state, *options)
+                    cache = Path(json.loads(result)['cache'])
+                    (state / 'accounts.sqlite').touch()
+                    self.invoke_pack_runtime(manifest, 'run', state, *options)
+                    run = state / 'runs/123'
+                    outputs = {p.relative_to(state).as_posix(): digest(p)
+                               for folder in (cache, run / 'wire') for p in folder.iterdir()}
+                    config = (run / 'config.json').read_bytes().replace(str(self.root).encode(), b'<temp>')
+                    outputs['config.json'] = hashlib.sha256(config).hexdigest()
+                    sha = hashlib.sha256(json.dumps(outputs, sort_keys=True).encode()).hexdigest()
+                    self.assertEqual(sha, baseline)
 
     def test_f4_economy_and_web_shop_flags_are_opt_in_and_validated(self):
         self.package()
