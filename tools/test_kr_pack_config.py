@@ -12,7 +12,8 @@ TOOLS = Path(__file__).resolve().parent
 sys.path.insert(0, str(TOOLS))
 
 from kr_pack_config import configure, enable_floor_policies, floor582
-from kr_pack_export import F2_ADAPTER, PACK_SHA256, SCHEMA, cache_identity, load_f2_maps, sha
+from kr_pack_export import (F2_ADAPTER, F3_ADAPTER, PACK_SHA256, SCHEMA, cache_identity,
+                            load_f2_maps, load_f3_maps, sha)
 from rust_map_profile import blob, raw_blob, table_row
 from server import probe_codec as codec
 from tools.test_kr_pack_install import HEADER, MAPS, fake_recipe
@@ -146,6 +147,12 @@ class ConfigureTests(unittest.TestCase):
         self.assertEqual(len(frame), pin['fixture']['bytes'])
         return codec.frame_body(frame, pin['sequence'])
 
+    def output_digest(self, config, out):
+        encoded = json.dumps(config, ensure_ascii=False, separators=(',', ':'))
+        data = encoded.replace(json.dumps(str(self.root))[1:-1], '<temp>').encode()
+        digests = {'config.json': sha(data), **{p.name: sha(p.read_bytes()) for p in out.iterdir()}}
+        return sha(json.dumps(digests, sort_keys=True).encode())
+
     def prepare_legacy_scopes(self):
         two = self.recipe['diagnostic_two_lobby']
         two['managed_rooms']['capacity'] = 4
@@ -239,10 +246,7 @@ class ConfigureTests(unittest.TestCase):
                 cfg = copy.deepcopy(self.recipe)
                 maps = (*MAPS, 'BigBattle') if scope == 'f1-full' else MAPS
                 configure(cfg, self.bundle, self.cache, out, maps, scope, unlock_all=True, allow_class_c=True)
-                encoded = json.dumps(cfg, ensure_ascii=False, separators=(',', ':'))
-                data = encoded.replace(json.dumps(str(self.root))[1:-1], '<temp>').encode()
-                digests = {'config.json': sha(data), **{p.name: sha(p.read_bytes()) for p in out.iterdir()}}
-                self.assertEqual(sha(json.dumps(digests, sort_keys=True).encode()), expected)
+                self.assertEqual(self.output_digest(cfg, out), expected)
 
     def write_f2_cache(self, *names):
         evidence = load_f2_maps(names)
@@ -264,9 +268,12 @@ class ConfigureTests(unittest.TestCase):
     def pin_f2_cache(self, names, evidence=None):
         if evidence is None:
             evidence = load_f2_maps(names)
+        self.pin_cache(names, f2_maps=evidence)
+
+    def pin_cache(self, names, **evidence):
         members = ['tables.json', *(name + ext for name in names for ext in ('.json', '.rules.json'))]
         self.write_json('manifest.json', dict(
-            schema=SCHEMA, identity=cache_identity(PACK_SHA256, names, True, f2_maps=evidence),
+            schema=SCHEMA, identity=cache_identity(PACK_SHA256, names, True, **evidence),
             packs=PACK_SHA256, files={name: sha((self.cache / name).read_bytes()) for name in members}))
 
     def test_f2_static_maps_bind_their_terrain_and_keep_an_empty_floor(self):
@@ -415,6 +422,153 @@ class ConfigureTests(unittest.TestCase):
         self.assertIn('UnknownMap', result.stderr)
         self.assertNotIn('Traceback', result.stderr)
         self.assertFalse((failed / 'config.json').exists())
+
+    def test_f2_config_and_wire_bytes_match_pre_f3_baseline(self):
+        # Hashes from configure at ba8d186, for selectable and standalone profiles.
+        cases = (
+            (('CAPong02', 'CAPong01'), 'db6a66d9dee626a1cdf0e2fd66af40d13ae8e8f2a298d184e32bf23d1262f076'),
+            (('Zombie04',), '237e9a2ff285aa8bf14773704a13f921fb54c12dc7e0a6bcc371741461138c2a'),
+        )
+        self.recipe['diagnostic_two_lobby']['fixed_room']['f2_modes'] = {
+            'runtime_overrides': {'free': 'revive'}}
+        # The baseline includes fixture paths. Use the same paths for each case.
+        for names, expected in cases:
+            with self.subTest(names=names):
+                self.write_f2_cache(*names)
+                config = copy.deepcopy(self.recipe)
+                configure(config, self.bundle, self.cache, self.out, names, 'f2-optin',
+                          unlock_all=True, allow_class_c=True)
+                self.assertEqual(self.output_digest(config, self.out), expected)
+                for path in self.out.iterdir():
+                    path.unlink()
+                for name in names:
+                    (self.cache / (name + '.json')).unlink()
+                    (self.cache / (name + '.rules.json')).unlink()
+
+    def write_f3_cache(self, *names):
+        evidence = load_f3_maps(names)
+        for i, (name, row) in enumerate(evidence.items()):
+            profile = dict(name=name, map_code=60 + i, adapter=F3_ADAPTER, f3_family=row['family'],
+                           payload_sha256=row['payload_sha256'], version=row['version'],
+                           scripted=row['scripted'], width=15, height=13, rectangles=[],
+                           spawns=[[x, 1] for x in range(4)], drops=[['Item/ItemFire', 100]],
+                           placements=[{'name': 'Item/ItemFire', 'x': 5, 'y': 3, 'probability': 100}])
+            kinds = [0] * 195
+            kinds[30 + i] = 2
+            terrain = dict(width=15, height=13, kinds=kinds, map_sha256=row['payload_sha256'],
+                           seed_sha256=sha(bytes(kinds)), ray_ports=[10] + [15] * 194)
+            self.write_json(name + '.json', profile)
+            self.write_json(name + '.rules.json', dict(terrain=terrain, bomb_cancellation={
+                'map_sha256': row['payload_sha256'], 'cells': [[3, 5]]}))
+        self.pin_cache(names, f3_maps=evidence)
+
+    def test_f3_projects_static_terrain_without_enabling_runtime_modes(self):
+        names = ('Tutorial01', 'CAPong01')
+        self.write_f3_cache(*names)
+        self.assertTrue(json.loads((self.cache / 'Tutorial01.json').read_bytes())['scripted'])
+        self.recipe['diagnostic_two_lobby']['fixed_room'].update(
+            f2_modes={'runtime_overrides': {'free': 'revive'}}, allow_f1e_dynamic_scripts=True,
+            life_actions='needle_rescue', item_policy='report_derived_f1d_vehicles')
+        room, managed = self.configure(names, 'f3-optin', unlock_all=True)
+        self.assertNotIn('f2_modes', room)
+        self.assertNotIn('f3_pve_policy', room)
+        self.assertIs(room['allow_f1e_dynamic_scripts'], False)
+        self.assertEqual(room['life_actions'], 'disabled')
+        self.assertEqual(room['item_policy'], 'report_derived_basic')
+        self.assertEqual(managed['player_round']['characters'], [0, 1, 3001])
+        self.assertEqual(room['map_profile'], room['map_choices'][0]['map_profile'])
+        self.assertEqual(room['terrain'], room['map_choices'][0]['terrain'])
+        for i, (name, choice) in enumerate(zip(names, room['map_choices'], strict=True)):
+            with self.subTest(name=name):
+                source = json.loads((self.cache / (name + '.json')).read_bytes())
+                pin = choice['map_profile']
+                data = Path(pin['path']).read_bytes()
+                self.assertEqual((len(data), sha(data)), (pin['bytes'], pin['sha256']))
+                self.assertEqual(json.loads(data), dict(name=name, map_code=60 + i, width=15, height=13,
+                                                       spawns=source['spawns'], scripted=False,
+                                                       payload_sha256=source['payload_sha256']))
+                self.assertEqual(set(choice), {'packets', 'map_profile', 'terrain'})
+                terrain = choice['terrain']
+                self.assertEqual(terrain['map_sha256'], source['payload_sha256'])
+                self.assertEqual(terrain['kinds'][30 + i], 2)
+                self.assertEqual(terrain['ray_ports'][0], 10)
+                self.assertEqual(terrain['maximum_power'], 9)
+                packets = choice['packets']
+                self.assertEqual(terrain['fixtures'],
+                                 {key: packets[key]['fixture']['sha256'] for key in ('map', 'start')})
+                start, _, _ = blob(self.read_packet(packets['start']), 1)
+                self.assertEqual(struct.unpack_from('<HI', start, 20), (60 + i, len(name)))
+                self.assertEqual(start[26:26 + len(name)], name.encode())
+                self.assertEqual(struct.unpack_from('<IB', start, 26 + len(name)), (i, 0))
+                self.assertEqual(self.read_choice_floor(choice), [[], [], []])
+
+    def test_f3_rejects_wrong_cache_scope_or_selection_before_writing(self):
+        self.write_f2_cache('CAPong01', 'CAPong02')
+        with self.assertRaisesRegex(ValueError, 'Manifest cache'):
+            self.configure(('CAPong01', 'CAPong02'), 'f3-optin')
+        self.write_f3_cache('CAPong01', 'CAPong02')
+        for names, message in (
+            (('CAPong02', 'CAPong01'), 'Manifest cache'), (('CAPong01',), 'Manifest cache'),
+            (('CAPong01', 'CAPong01'), '1–16'), ((), '1–16'),
+            (('Zombie04',), 'Zombie04'), (('../CAPong01',), '1–16'),
+        ):
+            with self.subTest(names=names), self.assertRaisesRegex(ValueError, message):
+                self.configure(names, 'f3-optin')
+        self.assertEqual(list(self.out.iterdir()), [])
+
+    def test_f3_rejects_invalid_profile_or_terrain_even_with_updated_file_hash(self):
+        name = 'Tutorial01'
+        for suffix, update, repin, message in (
+            ('.json', {'adapter': F2_ADAPTER}, True, 'bằng chứng F3'),
+            ('.json', {'width': 15.0}, True, '15x13'),
+            ('.json', {'height': 17}, True, '15x13'),
+            ('.json', {'f3_family': 'Clover'}, True, 'bằng chứng F3'),
+            ('.json', {'version': 1000.0}, True, 'bằng chứng F3'),
+            ('.json', {'payload_sha256': '0' * 64}, True, 'bằng chứng F3'),
+            ('.json', {'spawns': [[15, 1], [2, 2]]}, True, 'Spawn F3'),
+            ('.json', {'spawns': [[0, 2], [2, 2]]}, True, 'không khớp profile'),
+            ('.json', {'map_code': 999}, False, 'sai hash'),
+            ('.rules.json', {'terrain': {'width': 19, 'height': 13}}, True, '15x13'),
+            ('.rules.json', {'terrain': {'seed_sha256': '0' * 64}}, True, 'không khớp profile'),
+            ('.rules.json', {'terrain': {'ray_ports': [16] * 195}}, True, 'Lớp địa hình'),
+            ('.rules.json', {'floor': {'fixed': [[1, 1, 1]]}}, True, 'địa hình tĩnh'),
+        ):
+            with self.subTest(update=update):
+                self.write_f3_cache(name)
+                member = name + suffix
+                original = json.loads((self.cache / member).read_bytes())
+                if 'terrain' in update:
+                    original['terrain'].update(update['terrain'])
+                else:
+                    original.update(update)
+                self.write_json(member, original)
+                if repin:
+                    self.pin_cache((name,), f3_maps=load_f3_maps((name,)))
+                with self.assertRaisesRegex(ValueError, message):
+                    self.configure((name,), 'f3-optin')
+        self.assertEqual(list(self.out.iterdir()), [])
+
+    def test_f3_cli_accepts_standalone_map_and_rejects_a_mismatched_cache(self):
+        (self.bundle / 'config.template.json').write_text(json.dumps(self.recipe), encoding='utf-8')
+        command = [sys.executable, str(TOOLS / 'kr_pack_config.py'), '--bundle', str(self.bundle),
+                   '--cache', str(self.cache), '--scope', 'f3-optin', '--map', 'CAPong01']
+        self.write_f2_cache('CAPong01')
+        failed = self.root / 'mismatch'
+        result = subprocess.run([*command, '--out', str(failed)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertIn('Manifest cache', result.stderr)
+        self.assertNotIn('Traceback', result.stderr)
+        self.assertFalse((failed / 'config.json').exists())
+
+        self.write_f3_cache('CAPong01')
+        dest = self.root / 'cli'
+        result = subprocess.run([*command, '--out', str(dest)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        config = json.loads((dest / 'config.json').read_bytes())
+        self.assertNotIn('f3_pve_policy', config)
+        room = config['diagnostic_two_lobby']['fixed_room']
+        self.assertEqual(room['map_choices'], [])
+        self.assertEqual(json.loads(Path(room['map_profile']['path']).read_bytes())['name'], 'CAPong01')
 
 
 if __name__ == '__main__':
