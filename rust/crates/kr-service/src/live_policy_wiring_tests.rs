@@ -29,6 +29,8 @@ use tokio::{
 
 const MAPS: &str = "/api/v1/custom-maps";
 const EVENTS: &str = "/api/v1/events-status";
+const SECURITY_KITS: &str = "/api/v1/f4/security-kits-status";
+const SOCIAL_POLICY: &str = "/api/social/policy-status";
 const SAVE: &str = r#"{"map_id":"test","payload_base64":"e30="}"#;
 static CREATE_ACCOUNT_GATE: std::sync::Mutex<()> = std::sync::Mutex::new(());
 
@@ -183,33 +185,78 @@ fn run_shop(
     watch::Sender<bool>,
     tokio::task::JoinHandle<io::Result<()>>,
 ) {
-    let opened = owner.web_shop.take().unwrap();
-    // Exercise policy wiring using the trusted token issuer. These routes
-    // need an authenticated owner ID but do not read an account row.
-    let token = opened.auth().issue_token(1).unwrap();
-    let service = owner.active.account_service().unwrap().clone();
-    let (shutdown, stop) = watch::channel(false);
-    let task = tokio::spawn(web_shop::serve_until(opened, service, stop));
+    // The event and map routes only need an authenticated owner ID.
+    let token = owner
+        .web_shop
+        .as_ref()
+        .unwrap()
+        .auth()
+        .issue_token(1)
+        .unwrap();
+    let (shutdown, task) = serve_shop(owner);
     (token, shutdown, task)
 }
 
+fn serve_shop(owner: &mut Owner) -> (watch::Sender<bool>, tokio::task::JoinHandle<io::Result<()>>) {
+    let opened = owner.web_shop.take().unwrap();
+    let service = owner.active.account_service().unwrap().clone();
+    let (shutdown, stop) = watch::channel(false);
+    let task = tokio::spawn(web_shop::serve_until(opened, service, stop));
+    (shutdown, task)
+}
+
 #[tokio::test]
-async fn default_live_active_policies_are_disabled() {
+async fn default_active_and_embedded_web_shop_policies_are_disabled() {
     let dir = TempDir::new();
-    let config = dir.config();
-    drop(Store::open(&config.database).unwrap());
-    let owner = Owner::open(&config, Default::default(), Some(projection()))
-        .await
+    let mut config = dir.config();
+    let player = create_account(&config);
+    let (addr, mut owner) = open_owner(&mut config).await.unwrap();
+    let token = owner
+        .web_shop
+        .as_ref()
+        .unwrap()
+        .auth()
+        .issue_token(player.player_id)
         .unwrap();
+    let (shutdown, task) = serve_shop(&mut owner);
     let f4 = owner.active.f4_security_kits().snapshot().unwrap();
     assert!(!f4.powerup_kits.enabled);
     assert!(!f4.second_password.enabled);
     assert!(!owner.active.f3_pve_policy().enabled);
+    let (status, body) = request(addr, &token, SECURITY_KITS, None).await;
+    assert_eq!(status, 200);
+    assert_eq!(body["powerup_kits"], json!(f4.powerup_kits));
+    assert_eq!(body["second_password"], json!(f4.second_password));
+    assert_eq!(body["second_password_unlocked"], false);
+    assert_eq!(
+        request(addr, &token, SOCIAL_POLICY, None).await,
+        (
+            200,
+            json!({
+                "enabled": {
+                    "whisper": false,
+                    "guild_chat": false,
+                    "megaphone": false,
+                    "offline_note": false,
+                    "couple": false,
+                    "plaza": false
+                },
+                "channel_eligibility": {
+                    "whisper": false,
+                    "guild_chat": false,
+                    "megaphone_global": false,
+                    "megaphone_channel": false
+                }
+            })
+        )
+    );
+    shutdown.send(true).unwrap();
+    task.await.unwrap().unwrap();
     owner.shutdown().await.unwrap();
 }
 
 #[tokio::test]
-async fn enabled_f4_security_kits_are_live_and_logout_revokes_password_session() {
+async fn embedded_web_shop_reports_live_f4_and_f5_and_revokes_sessions_on_logout() {
     let dir = TempDir::new();
     let mut config = dir.config();
     config.f4_extended_policy = Some(dir.policy(
@@ -228,17 +275,13 @@ async fn enabled_f4_security_kits_are_live_and_logout_revokes_password_session()
             }
         }),
     ));
+    config.f5_social_policy =
+        Some(dir.policy("f5.json", json!({"whisper": true, "guild_chat": true})));
     let player = create_account(&config);
-    let owner = Owner::open(&config, Default::default(), Some(projection()))
-        .await
-        .unwrap();
-    let active = owner.active.clone();
-    let runtime = active.f4_security_kits();
-    assert!(Arc::ptr_eq(runtime, owner.active.f4_security_kits()));
-    assert!(runtime.snapshot().unwrap().powerup_kits.enabled);
-    assert!(runtime.snapshot().unwrap().second_password.enabled);
+    let (addr, mut owner) = open_owner(&mut config).await.unwrap();
 
-    let grant = active
+    let grant = owner
+        .active
         .client
         .try_login_with_idle_current("alice", b"test-password", 60, 30)
         .unwrap()
@@ -247,6 +290,29 @@ async fn enabled_f4_security_kits_are_live_and_logout_revokes_password_session()
         .unwrap();
     assert_eq!(grant.player, player);
     let session = Active::public_primary_session(&grant.token, player.player_id);
+    let token = owner
+        .web_shop
+        .as_ref()
+        .unwrap()
+        .auth()
+        .issue_token_for_primary_session(&player, session)
+        .unwrap();
+    let (shutdown, task) = serve_shop(&mut owner);
+    let (status, before) = request(addr, &token, SECURITY_KITS, None).await;
+    assert_eq!(status, 200);
+    assert_eq!(before["powerup_kits"]["enabled"], true);
+    assert_eq!(before["second_password"]["enabled"], true);
+    assert_eq!(before["powerup_kits"]["tracked_players"], 0);
+    assert_eq!(before["second_password_unlocked"], false);
+
+    let (status, social) = request(addr, &token, SOCIAL_POLICY, None).await;
+    assert_eq!(status, 200);
+    for channel in ["whisper", "guild_chat"] {
+        assert_eq!(social["enabled"][channel], true);
+        assert_eq!(social["channel_eligibility"][channel], true);
+    }
+
+    let runtime = owner.active.f4_security_kits();
     runtime
         .powerup_kits
         .equip(
@@ -262,8 +328,6 @@ async fn enabled_f4_security_kits_are_live_and_logout_revokes_password_session()
             },
         )
         .unwrap();
-    assert_eq!(runtime.snapshot().unwrap().powerup_kits.tracked_players, 1);
-
     let password = &runtime.second_password;
     password.setup(session).unwrap();
     assert_eq!(
@@ -271,14 +335,24 @@ async fn enabled_f4_security_kits_are_live_and_logout_revokes_password_session()
         Ok(SecondPasswordOutcome::Unlocked)
     );
 
+    let (status, after) = request(addr, &token, SECURITY_KITS, None).await;
+    assert_eq!(status, 200);
+    assert_eq!(after["powerup_kits"]["tracked_players"], 1);
+    assert_eq!(after["second_password"]["tracked_players"], 1);
+    assert_eq!(after["second_password_unlocked"], true);
+
     let wrong_token = Token::parse(&"0".repeat(64)).unwrap();
     assert!(
-        !active
+        !owner
+            .active
             .logout_public(wrong_token, player.player_id)
             .await
             .unwrap()
     );
-    assert!(password.is_unlocked(session).unwrap());
+    assert_eq!(
+        request(addr, &token, SECURITY_KITS, None).await,
+        (200, after)
+    );
     assert!(
         owner
             .active
@@ -287,6 +361,11 @@ async fn enabled_f4_security_kits_are_live_and_logout_revokes_password_session()
             .unwrap()
     );
     assert!(!password.is_unlocked(session).unwrap());
+    for target in [SECURITY_KITS, SOCIAL_POLICY] {
+        assert_eq!(request(addr, &token, target, None).await.0, 401);
+    }
+    shutdown.send(true).unwrap();
+    task.await.unwrap().unwrap();
     owner.shutdown().await.unwrap();
 }
 
