@@ -140,6 +140,8 @@ class F2AdapterTests(unittest.TestCase):
         families = {
             'Clover01': 'Clover', 'Rabbit01': 'Rabbit', 'RescueET01': 'RescueET',
             'Wriggle01': 'Wriggle', 'Zzolman01': 'Zzolman',
+            **{f'Coloring{n:02}': 'Coloring' for n in range(1, 6)},
+            'SuperFighter16': 'SuperFighter', 'SuperFighter19': 'SuperFighter',
         }
 
         def selected(names):

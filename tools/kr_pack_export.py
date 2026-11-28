@@ -61,6 +61,8 @@ _F2_FAMILIES = {
     'Wriggle': frozenset(f'Wriggle{n:02}' for n in range(1, 8)),
     'Zzolman': frozenset(f'Zzolman{n:02}' for n in range(1, 6)),
     'Zombie': frozenset(('Zombie04',)),
+    'Coloring': frozenset(f'Coloring{n:02}' for n in range(1, 6)),
+    'SuperFighter': frozenset(('SuperFighter16', 'SuperFighter19')),
 }
 # Chỉ nhận các họ 15x13 có địa hình sạch trong census và pack KR 00967.
 # Adapter chỉ chiếu tile tĩnh; chưa có contract PvE cho script hoặc vật phẩm.
@@ -156,6 +158,13 @@ _F3_FAMILIES = {
     'Tutorial': frozenset(('Tutorial01',)),
     'Wriggle': frozenset(f'Wriggle{n:02}' for n in range(1, 8)),
     'Zzolman': frozenset(f'Zzolman{n:02}' for n in range(1, 6)),
+    'BonusLargeGourd': frozenset(('BonusLargeGourd01', 'BonusLargeGourd02')),
+    'Hdn_BlackLucy': frozenset(('Hdn_BlackLucy07',)),
+    'Hidden': frozenset(('Hidden13', 'Hidden14', 'Hidden15', 'Hidden19', 'Hidden20', 'Hidden21')),
+    'Bonus_19th': frozenset(('Bonus_19th',)),
+    'Coloring': frozenset(f'Coloring{n:02}' for n in range(1, 6)),
+    'SuperFighter': frozenset(('SuperFighter16', 'SuperFighter19')),
+    'Hdn_Alice': frozenset(('Hdn_Alice01',)),
 }
 _AQUA_MARKERS = frozenset(('NXCL_Aqua01', 'Aqua01', 'Aqua02', 'Aqua05', 'Aqua06', 'Aqua08'))
 _SOUL_MAPS = frozenset(('EventForest00', 'EventPatrit00', 'ExBula01', 'ExBula02'))
@@ -402,6 +411,11 @@ _F1E_LEAP_BARRIERS = frozenset((
     'Tile61_Static/GreenHouse01', 'Tile61_Static/GreenHouse02',
     'Tile64_Static/CenterStatic00', 'Tile64_Static/CenterStatic01', 'Tile64_Static/Static00',
 ))
+_F1E_STATIC_WALLS = frozenset((
+    'Tile19_Static/Block11', 'Tile19_Static/Doughnut02',
+    'Tile23_Static/Temple01', 'Tile23_Static/Temple02', 'Tile23_Static/Temple03',
+    'Tile23_Static/Temple14', 'Tile23_Static/Temple15', 'Tile23_Static/Temple45',
+))
 _F1E_OPEN_PASSABLES = {
     'Tile61_Passable/GreenHouse03': (3, 0, 0, 0, 0, 0, *([_PASS_ALL] * 3), 0, 0, 1, 0, 0, 0, 0),
     'Tile61_Passable/GreenHouse04': (3, 0, 0, 0, 0, 0, *([_PASS_ALL] * 3), 0, 0, 1, 0, 0, 0, 0),
@@ -414,6 +428,28 @@ _F1E_COLORING_BOXES = {
     'Tile38_Box/NumBlock_09_X': 2308,
     'Tile38_Box/NumBlock_09_XY': 2306,
     'Tile38_Box/NumBlock_09_Y': 2307,
+}
+_F2_COLORING_BOXES = {
+    'Tile38_Box/NumBlock_01': 257,
+    'Tile38_Box/NumBlock_03_XY': 770,
+    'Tile38_Box/NumBlock_05_X': 1284,
+    'Tile38_Box/NumBlock_07_X': 1796,
+}
+_F2_STATIC_WALLS = frozenset((
+    'Tile23_Static/Temple01', 'Tile23_Static/Temple02', 'Tile23_Static/Temple03',
+    'Tile23_Static/Temple14', 'Tile23_Static/Temple15', 'Tile23_Static/Temple45',
+))
+_F1E_OPEN_SPECIAL_PASSABLES = {
+    'Tile25_Passable/TransparentBlock':
+        (3, 0, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, 16777217, 1, 1, 0, 0, 0, 0),
+    'Tile50_Passable/DarkBigRabbit':
+        (3, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, _PASS_ALL, 0, 0, 1, 0, 0, 0, 0),
+    'Tile50_Passable/LittleDarkRabbit':
+        (3, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, _PASS_ALL, 0, 0, 1, 0, 0, 0, 0),
+    'Tile50_Passable/LittleRabbit':
+        (3, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, _PASS_ALL, 0, 0, 1, 0, 0, 0, 0),
+    'Tile16_Passble/PinTile01':
+        (3, 0, 0, 0, 0, 0, _PASS_ALL, _PASS_ALL, _PASS_ALL, _PASS_ALL, 1, 1, 0, 14876672, 0, 0),
 }
 _RETRO_GROUND_102 = frozenset(f'Tile60_Ground/Tile{i:02}' for i in range(3, 12))
 _RETRO_TENTS = frozenset(('Tile62_Passable/ArmyTent00', 'Tile62_Passable/ArmyTent01'))
@@ -469,9 +505,12 @@ def f1_terrain_rules(profile, table, *, f1e=False):
                      (f1e and _RETRO_CONVEYORS.get(key) == d[9:11])) and d[8] == _CONVEYOR_STEP
                     and d[9] in (1, 2, 4, 8) and d[10] in (0, 1, 2, 3)
                     and d[6:8] == (1, 1) and not any(d[11:15]))
+        cancel_ground = (f1e and key == 'Tile50_Ground/Tile44'
+                         and d[:15] == (*_GROUND, 1, 1, 0, 0, -1, 0, 0, 0, 0)
+                         and d[15] == 655360001)
         if (d[:6] != _GROUND or (d[8:11] != (0, 0, -1) and not conveyor)
                 or (any(d[12:15]) and not (factory_flag or water_flag or rail_flag))
-                or d[15] & 0xFF):
+                or (d[15] & 0xFF and not cancel_ground)):
             # A nonzero byte at offset 60 selects CGOTileLap in EB48E0.
             fail(index, 'nền', key)
         if not (1 <= d[6] <= width and 1 <= d[7] <= height and d[11] in (0, 1)):
@@ -486,7 +525,8 @@ def f1_terrain_rules(profile, table, *, f1e=False):
                       and _REMAIN_GROUND_D15.get(key) == d[15])
             if retro or remain:
                 return
-            if (key not in ('Tile16_Ground/PinGround01', 'Tile62_Ground/PinTile00',
+            if (key not in ('Tile16_Ground/PinGround01', 'Tile50_Ground/Tile44',
+                            'Tile62_Ground/PinTile00',
                             'Tile62_Ground/PinTile01') or d[15] >> 16 != 10_000):
                 fail(index, 'nền/cờ', key)
             cancel.append(list(divmod(index, width)))
@@ -511,6 +551,17 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             continue
         if d[0] == 0 and d[6:8] == (1, 1) and not d[11]:
             ground(index, key, d)
+        elif (f1e and key in _F1E_STATIC_WALLS and d[0] == 1
+              and d[1:6] == (0,) * 5 and d[8] == 1
+              and d[9:11] == (0, 0) and d[11] == 2010089472
+              and d[12:16] == (0, 0, 0, 0)):
+            # These TileInfo records are solid kind-1 footprints. Their
+            # trailing values have no break or script consumer in the static
+            # initializer; dynamic bonus Tower00 is intentionally excluded.
+            for cell in footprint(index, d, key):
+                if kinds[cell] == 2:
+                    fail(cell, 'footprint chồng thùng', key)
+                kinds[cell] = 1
         elif d[:6] == (1, 0, 0, 0, 0, 0) and (
                 d[8:11] == (0, 0, _TYPE1_PIN_FLAGS.get(key, 0))
                 or ((key in _TYPE1_LEAP_BARRIERS or (f1e and key in _F1E_LEAP_BARRIERS))
@@ -543,6 +594,16 @@ def f1_terrain_rules(profile, table, *, f1e=False):
             if kinds[index] != 0:
                 fail(index, 'thùng chồng footprint', key)
             kinds[index], hits[index] = 2, 1
+        elif (f1e and key in _F2_COLORING_BOXES
+              and d[:16] == (2, 0, 0, 0, 0, 0, 0, 0, 0, _F2_COLORING_BOXES[key], 0, 0, 0, 0, 0, 0)):
+            if kinds[index] != 0:
+                fail(index, 'thùng chồng footprint', key)
+            kinds[index], hits[index] = 2, 1
+        elif f1e and _F1E_OPEN_SPECIAL_PASSABLES.get(key) == d[:16]:
+            if key == 'Tile25_Passable/TransparentBlock':
+                if index in spawn_cells:
+                    fail(index, 'spawn trên ô type 3 bị chặn', key)
+                ray[index] = 1
         elif f1e and _F1E_OPEN_PASSABLES.get(key) == d[:16]:
             # All four ray ports stay open; no static occupied flag.
             pass
@@ -1038,6 +1099,11 @@ def load_f3_maps(maps):
 
 def _f2_ground(key, data):
     # Giữ nguyên ID ô trong profile, kể cả nền đỏ/xanh của CAPong.
+    if key.startswith(('Tile23_Ground/', 'Tile38_Ground/')):
+        return (data[:6] == (0,) * 6
+                and data[6:8] in ((1, 1), (5, 3))
+                and data[8:15] == (0, 0, -1, 0, 0, 0, 0)
+                and data[15:] in ((0, 1243736, 0), (0, 17602042, 53084256)))
     flags = {'Tile42_Ground/TileRed': 65536, 'Tile42_Ground/TileBlue': 131072}
     if key.startswith(('Tile00_Ground/', 'Tile01_Ground/', 'Tile05_Ground/')):
         tail = (52224, 0, 0)
@@ -1067,6 +1133,15 @@ def _f2_ground(key, data):
 def _f2_object(key, data):
     """Trả kind, chiều rộng vật cản và cổng tia cho các dạng TileInfo đã đọc."""
     kind, width, height = data[0], data[6], data[7]
+    if (key.startswith('Tile38_Box/') and data[:9] == (2, 0, 0, 0, 0, 0, 0, height, 0)
+            and height in (0, 1) and data[10:16] == (0,) * 6
+            and data[16:] in ((3249658, 45157264), (19764730, 11575648))):
+        return 2, 1, max(1, height), 0b1111
+    if (key.startswith(('Tile23_Static/', 'Tile38_Static/')) and kind == 1
+            and data[1:6] == (0,) * 5 and height == 1
+            and data[8] in (0, 1) and data[9:11] == (0, 0)
+            and data[11] in (0, 2010089472) and data[12:] == (0,) * 6):
+        return 1, width, height, 0b1111
     if kind == 1 and data[1:6] == (0,) * 5 and height in (1, 2) and width in (1, 2, 3, 4):
         if key in ('Tile42_Static/Block01', 'Tile42_Static/Block03'):
             tail = (0, int(key.endswith('03'))) + (0,) * 8
@@ -1136,6 +1211,16 @@ def f2_terrain_rules(profile, table):
             if role == 'tile' and _f2_ground(key, data):
                 continue
             obj = _f2_object(key, data) if role == 'object' else None
+            if role == 'object' and key in _F2_COLORING_BOXES:
+                expected = (2, 0, 0, 0, 0, 0, 0, 0, 0,
+                            _F2_COLORING_BOXES[key], 0, 0, 0, 0, 0, 0, 3249658, 45157264)
+                if data == expected:
+                    obj = (2, 1, 1, 0b1111)
+            if role == 'object' and key in _F2_STATIC_WALLS:
+                if (data[0] == 1 and data[1:6] == (0,) * 5 and data[8] == 1
+                        and data[9:11] == (0, 0) and data[11] == 2010089472
+                        and data[12:] == (0,) * 6):
+                    obj = (1, data[6], data[7], 0b1111)
             if obj is None:
                 raise ValueError(error)
             kind, span, object_height, ports = obj
