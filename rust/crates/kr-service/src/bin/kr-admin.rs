@@ -3,7 +3,7 @@
 use kr_service::{
     accounts::{
         self, Admin, AuditFilter, AuditRow, ChatMuteReason, Error, HistoryFilter, ItemGrant,
-        SCHEMA_VERSION, Store, Token,
+        SCHEMA_VERSION, ShopCatalog, Store, Token, Validate,
     },
     choco_chat::{F5PlazaZone, F5SocialPolicy},
     custom_map_store::{CustomMapPolicy, CustomMapStore, CustomMapStoreError},
@@ -12,8 +12,9 @@ use kr_service::{
     },
     f3_pve_runtime::{DispatchEvidence, F3PveRuntime, MonsterAttack, MonsterSpawn, RuntimeError},
     f4_extended_policy::{
-        BoosterTicketPolicy, GiftCouponPolicy, LevelRewardPolicy, LucciVaultPolicy,
-        PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy, TitlePolicy, UpgradePolicy,
+        BoosterTicketPolicy, CouponRequest, Decision, GiftCouponPolicy, LevelRewardPolicy,
+        LucciVaultPolicy, OperationKey, PowerupKitPolicy, RecordEraserPolicy, SecondPasswordPolicy,
+        TitlePolicy, TitleUnlockDecision, UpgradePolicy,
     },
     f6_policy::{F6EventPolicy, F6QuotaTracker, QuotaRejection},
     f6_runtime::{ClaimError, ClaimOutcome, F6Claim, F6EventRuntime, F6Reward},
@@ -597,6 +598,8 @@ fn f5_policy_check(policy_path: Option<&Path>) -> io::Result<Value> {
 }
 
 const POLICY_AUDIT_USAGE: &str = "usage: kr-admin policy-audit [--f3-policy PATH] [--f4-policy PATH] [--f5-policy PATH] [--f6-policy PATH] [--f7-policy PATH]";
+const F4_COUPON_USAGE: &str = "usage: kr-admin f4-redeem-coupon --db PATH --f4-policy PATH [--account LOGIN] [--player-id ID] --coupon-id ID --request-id ID --offer OFFER --issued-to ACCOUNT_ID --issued-at-unix SECS --now-unix SECS --operator NAME --reason TEXT [--shop-catalog PATH]";
+const F4_TITLE_USAGE: &str = "usage: kr-admin f4-evaluate-title --db PATH --f4-policy PATH [--account LOGIN] [--player-id ID] --title TITLE --now-unix SECS --operator NAME --reason TEXT";
 const F6_CLAIM_USAGE: &str = "usage: kr-admin f6-claim-event --db PATH --f6-policy PATH [--account LOGIN] [--player-id ID] --event-id ID --now-unix SECS --operator NAME --reason TEXT [--claim-id ID] (--lucci AMOUNT | --sku-id SKU [--quantity N] [--max-stack N | --duration-seconds SECS])";
 const F3_DRY_RUN_USAGE: &str = "usage: kr-admin f3-pve-dry-run --f3-policy PATH --mode FAMILY [--host-player-id ID] [--guest-player-id ID]";
 const F7_MAPS_LIST_USAGE: &str =
@@ -647,6 +650,223 @@ impl<'a> Options<'a> {
             })
             .transpose()
     }
+}
+
+struct F4Operator<'a> {
+    db: &'a Path,
+    policy: &'a Path,
+    account: Option<&'a str>,
+    player_id: Option<i64>,
+    now: i64,
+    admin: Admin<'a>,
+}
+
+impl<'a> F4Operator<'a> {
+    fn parse(options: &'a Options<'a>, usage: &'static str) -> CliResult<Self> {
+        let db = options.path("--db").ok_or(usage)?;
+        let policy = options.path("--f4-policy").ok_or(usage)?;
+        let account = options.text("--account")?;
+        let player_id = options.value("--player-id")?;
+        if account.is_none() && player_id.is_none() {
+            return Err(usage.into());
+        }
+        if player_id.is_some_and(|id| id <= 0) {
+            return Err("invalid --player-id".into());
+        }
+        let now = options.value("--now-unix")?.ok_or(usage)?;
+        if now < 0 {
+            return Err("invalid --now-unix".into());
+        }
+        let admin = Admin {
+            actor: options.text("--operator")?.ok_or(usage)?,
+            reason: options.text("--reason")?.ok_or(usage)?,
+        };
+        admin.validate()?;
+        Ok(Self {
+            db,
+            policy,
+            account,
+            player_id,
+            now,
+            admin,
+        })
+    }
+
+    fn resolve_player(&self, store: &Store) -> CliResult<i64> {
+        let account_player = self
+            .account
+            .map(|login| store.lookup(login).map(|player| player.player_id))
+            .transpose()?;
+        let player_id = match (self.player_id, account_player) {
+            (Some(id), Some(account_id)) if id != account_id => {
+                return Err("--account and --player-id identify different players".into());
+            }
+            (Some(id), _) | (None, Some(id)) => id,
+            (None, None) => return Err(Error::InvalidInput.into()),
+        };
+        store.get_profile(player_id)?;
+        Ok(player_id)
+    }
+}
+
+fn f4_label<'a>(options: &Options<'a>, flag: &str, usage: &'static str) -> CliResult<&'a str> {
+    let label = options.text(flag)?.ok_or(usage)?;
+    if label.is_empty() || label.trim() != label || label.chars().any(char::is_control) {
+        return Err(format!("invalid {flag}").into());
+    }
+    Ok(label)
+}
+
+fn f4_coupon_catalog(path: Option<&Path>) -> CliResult<ShopCatalog> {
+    let Some(path) = path else {
+        return Ok(ShopCatalog::default());
+    };
+    validate_policy_path(path, "shop_catalog")?;
+    let contents = fs::read_to_string(path)?;
+    let invalid = "invalid shop_catalog configuration";
+    if !contents.trim_start().starts_with('{') {
+        return Err(invalid.into());
+    }
+    let catalog: ShopCatalog = serde_json::from_str(&contents).map_err(|_| invalid)?;
+    catalog.validate().map_err(|_| invalid)?;
+    Ok(catalog)
+}
+
+fn f4_redeem_coupon(args: &[OsString]) -> CliResult<Value> {
+    let options = Options::parse(
+        args,
+        &[
+            "--db",
+            "--f4-policy",
+            "--account",
+            "--player-id",
+            "--coupon-id",
+            "--request-id",
+            "--offer",
+            "--issued-to",
+            "--issued-at-unix",
+            "--now-unix",
+            "--operator",
+            "--reason",
+            "--shop-catalog",
+        ],
+        F4_COUPON_USAGE,
+    )?;
+    let operator = F4Operator::parse(&options, F4_COUPON_USAGE)?;
+    let offer = f4_label(&options, "--offer", F4_COUPON_USAGE)?;
+    let nonzero = |flag| match options.value(flag)?.ok_or(F4_COUPON_USAGE)? {
+        0 => Err(format!("invalid {flag}").into()),
+        value => Ok::<u64, Box<dyn std::error::Error>>(value),
+    };
+    let issued_to = nonzero("--issued-to")?;
+    let request = CouponRequest {
+        key: OperationKey {
+            account: issued_to,
+            id: nonzero("--request-id")?,
+        },
+        coupon_id: nonzero("--coupon-id")?,
+        offer,
+        issued_to,
+        issued_at: options.value("--issued-at-unix")?.ok_or(F4_COUPON_USAGE)?,
+        now: u64::try_from(operator.now)?,
+        // This local operator command takes an issued coupon reference, never a raw code.
+        locally_issued: true,
+    };
+    if request.issued_at > request.now {
+        return Err("--issued-at-unix must not exceed --now-unix".into());
+    }
+    let (policy, _) = load_f4_policy(Some(operator.policy))?;
+    if !policy.gift_coupons.enabled {
+        return Err("F4 gift coupon policy is disabled".into());
+    }
+    let catalog = f4_coupon_catalog(options.path("--shop-catalog"))?;
+    let _instance = operations::lock_database(operator.db)?;
+    let mut store = Store::open_existing(operator.db)?;
+    let player_id = operator.resolve_player(&store)?;
+    let (entry, replayed, result) = match store.redeem_gift_coupon(
+        player_id,
+        request,
+        &policy.gift_coupons,
+        &policy.lucci_vault,
+        &catalog,
+    )? {
+        Decision::Apply(entry) => (entry, false, "ok"),
+        Decision::Replay(entry) => (entry, true, "replayed"),
+    };
+    let target = json!({
+        "player_id": player_id,
+        "coupon_id": request.coupon_id,
+        "ledger_id": entry.id,
+    })
+    .to_string();
+    // The store commits the reward with its receipt before the operator audit.
+    // A retry still returns the original receipt if audit recording failed.
+    let audit_id = store
+        .operator_event(
+            &operator.admin,
+            "f4_redeem_coupon",
+            ("f4_coupon", &target),
+            result,
+        )
+        .map_err(|error| {
+            format!("F4 coupon redemption already committed; operator audit failed: {error}")
+        })?;
+    Ok(json!({
+        "player_id": player_id,
+        "coupon_id": request.coupon_id,
+        "replayed": replayed,
+        "ledger": entry,
+        "operator_audit_request_id": audit_id,
+    }))
+}
+
+fn f4_evaluate_title(args: &[OsString]) -> CliResult<Value> {
+    let options = Options::parse(
+        args,
+        &[
+            "--db",
+            "--f4-policy",
+            "--account",
+            "--player-id",
+            "--title",
+            "--now-unix",
+            "--operator",
+            "--reason",
+        ],
+        F4_TITLE_USAGE,
+    )?;
+    let operator = F4Operator::parse(&options, F4_TITLE_USAGE)?;
+    let title = f4_label(&options, "--title", F4_TITLE_USAGE)?;
+    let (policy, _) = load_f4_policy(Some(operator.policy))?;
+    if !policy.titles.enabled {
+        return Err("F4 title policy is disabled".into());
+    }
+    let _instance = operations::lock_database(operator.db)?;
+    let mut store = Store::open_existing(operator.db)?;
+    let player_id = operator.resolve_player(&store)?;
+    let (decision, eligible, notify_after_commit) =
+        match store.evaluate_title_unlock(player_id, title, &policy.titles, operator.now)? {
+            Some(TitleUnlockDecision::New {
+                notify_after_commit,
+            }) => ("eligible", true, notify_after_commit),
+            Some(TitleUnlockDecision::AlreadyUnlocked) => ("already_unlocked", true, false),
+            None => ("not_eligible", false, false),
+        };
+    let target = json!({"player_id": player_id, "title": title, "decision": decision}).to_string();
+    let audit_id = store.operator_event(
+        &operator.admin,
+        "f4_evaluate_title",
+        ("f4_title", &target),
+        "ok",
+    )?;
+    Ok(json!({
+        "player_id": player_id,
+        "decision": decision,
+        "eligible": eligible,
+        "notify_after_commit": notify_after_commit,
+        "persisted": false,
+        "operator_audit_request_id": audit_id,
+    }))
 }
 
 fn parse_pve_family(mode: &str) -> CliResult<PveModeFamily> {
@@ -1420,6 +1640,8 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             [option, path] if option == "--policy" => f5_policy_check(Some(Path::new(path)))?,
             _ => return Err("usage: kr-admin f5-policy-check [--policy PATH]".into()),
         },
+        [flag, options @ ..] if flag == "f4-redeem-coupon" => f4_redeem_coupon(options)?,
+        [flag, options @ ..] if flag == "f4-evaluate-title" => f4_evaluate_title(options)?,
         [flag, options @ ..] if flag == "f6-claim-event" => f6_claim_event(options)?,
         [flag, options @ ..] if flag == "f3-pve-dry-run" => f3_pve_dry_run(options)?,
         [flag, options @ ..] if flag == "f7-custom-maps-list" => f7_custom_maps_list(options)?,
@@ -1448,7 +1670,7 @@ fn run(args: &[OsString]) -> Result<Value, Box<dyn std::error::Error>> {
             json!({"schema": SCHEMA_VERSION})
         }
         [database] => manage(Path::new(database))?,
-        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F3_DRY_RUN_USAGE}\n{F6_CLAIM_USAGE}\n{F7_MAPS_LIST_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
+        _ => return Err(format!("usage: kr-admin DATABASE | backup SOURCE DESTINATION | verify-backup SNAPSHOT | restore SNAPSHOT DATABASE | migrate DATABASE | health RUN_DIRECTORY | private-dir DIRECTORY | f3-policy-check [--policy PATH] | f4-policy-check [--policy PATH] | f5-policy-check [--policy PATH] | f7-policy-check [--policy PATH]\n{F3_DRY_RUN_USAGE}\n{F4_COUPON_USAGE}\n{F4_TITLE_USAGE}\n{F6_CLAIM_USAGE}\n{F7_MAPS_LIST_USAGE}\n{POLICY_AUDIT_USAGE}").into()),
     })
 }
 fn main() {
