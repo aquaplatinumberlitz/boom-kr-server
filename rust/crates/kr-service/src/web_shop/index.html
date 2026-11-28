@@ -3,6 +3,7 @@
 <h1>Boom KR Web Shop</h1><p class="muted">Local shop session</p>
 <label>Bearer token <input id="token" type="password" size="48" autocomplete="off"></label><button onclick="load()">Load</button>
 <p id="balance"></p>
+<h2>PvE Status</h2><p id="f3-pve-status" class="muted" role="status"></p>
 <h2>F4 Extended</h2><p id="f4-extended-status" class="muted" role="status"></p><ul id="f4-extended-policies"></ul>
 <h3>Security &amp; Kits</h3><p id="f4-security-kits-status" class="muted" role="status"></p>
 <h3>Powerup kits</h3><form id="kit-equip"><label>Slot <input id="kit-slot" type="number" min="0" max="1" required></label><label>SKU <input id="kit-sku" required autocomplete="off"></label><button>Equip kit</button></form><button id="kit-clear">Clear kit slot</button><p id="kit-status" class="muted" role="status"></p>
@@ -37,7 +38,7 @@ async function load(){
     if(load!==summaryLoad)return;
     q('#balance').textContent=`Level ${p.level} · EXP ${p.exp} · Lucci: ${p.lucci} (${p.mode})`;
     await Promise.all([loadInventory(),loadCatalog(),loadCosmeticsSummary(load),loadChatStatus(),loadEventsStatus(load)]);
-    if(load===summaryLoad)await Promise.all([loadCustomMaps(load),loadF4ExtendedStatus(load),loadF4SecurityKitsStatus(load),loadSocialPolicyStatus()]);
+    if(load===summaryLoad)await Promise.all([loadCustomMaps(load),loadF4ExtendedStatus(load),loadF4SecurityKitsStatus(load),loadF3PveStatus(load),loadSocialPolicyStatus()]);
   }catch(e){if(load===summaryLoad)q('#message').textContent=String(e)}
 }
 function clearSummaries(){
@@ -45,6 +46,7 @@ function clearSummaries(){
   socialPolicyLoad++;
   q('#chat-status').textContent='';
   q('#social-policy-status').textContent='';
+  q('#f3-pve-status').textContent='';
   q('#f4-extended-status').textContent='';
   q('#f4-extended-policies').replaceChildren();
   q('#f4-security-kits-status').textContent='';
@@ -54,6 +56,14 @@ function clearSummaries(){
   q('#cosmetics-slots').replaceChildren();
   q('#custom-maps-status').textContent='';
   q('#custom-maps').replaceChildren();
+}
+async function loadF3PveStatus(load){
+  const status=q('#f3-pve-status');
+  try{
+    const {enabled,active_rooms,max_rooms,dispatch}=await api('/api/v1/f3/pve-status');
+    if(load!==summaryLoad)return;
+    status.textContent=`${enabled?'Enabled':'Disabled'} · Active rooms: ${active_rooms}/${max_rooms} · Dispatch: ${dispatch.status.replaceAll('_',' ')} · Jump table: ${dispatch.jump_table_va} · Opcode index: opcode − ${dispatch.opcode_index_subtrahend}`;
+  }catch(e){if(load===summaryLoad)status.textContent='PvE status unavailable'}
 }
 async function loadF4ExtendedStatus(load){
   const status=q('#f4-extended-status');

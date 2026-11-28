@@ -12,6 +12,7 @@ use crate::{
     accounts::{FriendRequest, Guild, GuildLeaderAction, GuildMember, GuildRole, RankingEntry},
     choco_chat::F5SocialPolicy,
     custom_map_store::{CustomMapStore, CustomMapStoreError},
+    f3_pve_runtime::F3PveRegistry,
     f4_extended_policy::{
         BASIS_POINTS, CouponRequest, Decision, ItemOrigin, KitRoomRules, KitStats,
         MAX_EQUIPPED_KITS, MilestoneKind, OperationKey, OwnedItem, PolicyError, PrimarySession,
@@ -355,6 +356,15 @@ impl Opened {
         self.auth.clone()
     }
 
+    #[allow(
+        dead_code,
+        reason = "available for the host to attach its PvE registry"
+    )]
+    pub(crate) fn with_f3_pve_registry(mut self, registry: Arc<F3PveRegistry>) -> Self {
+        self.shop = self.shop.with_f3_pve_registry(registry);
+        self
+    }
+
     pub(crate) fn with_f4_security_kits(mut self, kits: Arc<F4SecurityKitsRuntime>) -> Self {
         self.shop = self.shop.with_f4_security_kits(kits);
         self
@@ -390,6 +400,7 @@ pub(crate) async fn open(config: Config) -> io::Result<Opened> {
 pub struct WebShop {
     config: Config,
     custom_maps: Option<Arc<AsyncMutex<CustomMapStore>>>,
+    f3_pve_registry: Arc<F3PveRegistry>,
     f4_security_kits: Arc<F4SecurityKitsRuntime>,
     second_password_credentials: Arc<AsyncMutex<HashMap<u64, SecondPasswordCredential>>>,
     #[cfg(test)]
@@ -403,6 +414,7 @@ impl WebShop {
         Self {
             config,
             custom_maps: None,
+            f3_pve_registry: Arc::new(F3PveRegistry::default()),
             f4_security_kits: Arc::new(F4SecurityKitsRuntime::default()),
             second_password_credentials: Arc::default(),
             #[cfg(test)]
@@ -416,6 +428,12 @@ impl WebShop {
     /// base64 and JSON overhead (12 KiB accommodates an 8192-byte map).
     pub fn with_custom_map_store(mut self, store: CustomMapStore) -> Self {
         self.custom_maps = Some(Arc::new(AsyncMutex::new(store)));
+        self
+    }
+
+    /// Share the host's PvE registry for read-only status snapshots.
+    pub fn with_f3_pve_registry(mut self, registry: Arc<F3PveRegistry>) -> Self {
+        self.f3_pve_registry = registry;
         self
     }
 
@@ -1829,6 +1847,11 @@ async fn route(
     let digest = request.digest().ok_or(Status::Unauthorized)?;
     if path == "/api/v1/cosmetics-summary" {
         return cosmetics_summary_route(config, service, auth, &digest, request).await;
+    }
+    if path == "/api/v1/f3/pve-status" {
+        auth.player(&digest).ok_or(Status::Unauthorized)?;
+        request.require_queryless_get()?;
+        return Ok(Response::json(&shop.f3_pve_registry.snapshot()));
     }
     if path == "/api/v1/events-status" {
         auth.player(&digest).ok_or(Status::Unauthorized)?;
